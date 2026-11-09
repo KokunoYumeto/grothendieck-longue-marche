@@ -55,36 +55,36 @@
 | 411–420 | LM_P042 (second pass) |
 | 421–430 | LM_P043 (second pass) |
 | 431–440 | LM_P044 (second pass) |
-| 441–450 | LM_P045 (fixed) |
-| 451–460 | LM_P046 (fixed) |
-| 461–470 | LM_P047 (fixed) |
-| 471–480 | LM_P048 (fixed) |
-| 481–490 | LM_P049 (original) |
-| 491–500 | LM_P050 (original) |
-| 501–510 | LM_P051 (fixed) |
-| 511–520 | LM_P052 (fixed) |
-| 521–530 | LM_P053 (fixed) |
-| 531–540 | LM_P054 (fixed) |
-| 541–550 | LM_P055 (fixed) |
-| 551–560 | LM_P056 (fixed) |
+| 441–450 | LM_P045 (second pass) |
+| 451–460 | LM_P046 (second pass) |
+| 461–470 | LM_P047 (second pass) |
+| 471–480 | LM_P048 (second pass) |
+| 481–490 | LM_P049 (second pass) |
+| 491–500 | LM_P050 (second pass) |
+| 501–510 | LM_P051 (second pass) |
+| 511–520 | LM_P052 (second pass) |
+| 521–530 | LM_P053 (second pass) |
+| 531–540 | LM_P054 (second pass) |
+| 541–550 | LM_P055 (second pass) |
+| 551–560 | LM_P056 (second pass) |
 | 561–570 | LM_P057 (second pass (API first pass)) |
-| 571–575 | LM_P058 (fixed) |
+| 571–575 | LM_P058 (second pass) |
 
 ## cote 140-3
 
 | scans | text |
 |---|---|
-| 1–10 | LM_P059 (fixed) |
-| 11–20 | LM_P060 (fixed) |
-| 21–30 | LM_P061 (fixed) |
-| 31–40 | LM_P062 (fixed) |
-| 41–50 | LM_P063 (fixed) |
-| 51–60 | LM_P064 (fixed) |
-| 61–70 | LM_P065 (fixed) |
-| 71–80 | LM_P066 (fixed) |
-| 81–90 | LM_P067 (fixed) |
-| 91–110 | LM_P068-069 (fixed) |
-| 111–130 | LM_P070-071 (fixed) |
+| 1–10 | LM_P059 (second pass) |
+| 11–20 | LM_P060 (second pass) |
+| 21–30 | LM_P061 (second pass) |
+| 31–40 | LM_P062 (second pass) |
+| 41–50 | LM_P063 (second pass) |
+| 51–60 | LM_P064 (second pass) |
+| 61–70 | LM_P065 (second pass) |
+| 71–80 | LM_P066 (second pass) |
+| 81–90 | LM_P067 (second pass) |
+| 91–110 | LM_P068-069 (second pass) |
+| 111–130 | LM_P070-071 (second pass) |
 | 131–149 | LM_C3-131-149 (fixed) |
 | 150–168 | LM_C3-150-168 (fixed) |
 | 169–187 | LM_C3-169-187 (fixed) |

@@ -31,15 +31,19 @@ La transcription est diplomatique : le français de Grothendieck, son orthograph
 ses ratures, ajouts et notes marginales tels qu'écrits, avec le doute marqué (`\unsure{a|b}`, `\illegible{n}`). Les
 mathématiques gardent ses lettres, indices et flèches ; les diagrammes sont composés avec tikz-cd.
 
-## État (8 novembre 2026)
+## État (9 novembre 2026)
 
 - Premier jet : les 1 588 scans.
 - Seconde passe, où chaque ligne est vérifiée sur les images d'archive en pleine résolution et collationnée avec les
-  transcriptions antérieures citées plus bas : cote 140-2, scans 21–30, 101–440 et 561–570. Les autres paquets sont
-  en cours de vérification.
-- Dans les paquets vérifiés, le premier jet lisait mal environ 1,5 % des mots, le plus souvent sans marque de doute.
-  Il faut s'attendre à des erreurs de ce genre dans les paquets pas encore vérifiés. Les endroits que les images ne
-  tranchent pas restent marqués.
+  transcriptions antérieures citées plus bas là où elles couvrent le texte : cote 140-2, scans 21–30 et 101–575 ;
+  cote 140-3, scans 1–130. Les autres scans (cote 140-2, scans 1–20 et 31–100 ; cote 140-3, scans 131–696 ; cotes
+  140-4 et 140-1) n'ont que le premier jet.
+- Les transcriptions antérieures couvrent la première partie du manuscrit (§§ 1–37, cote 140-2). Pour la cote 140-3,
+  elles n'offrent que les titres de sections de la table des matières : les images décident donc seules de la lecture.
+- Dans les paquets vérifiés, la seconde passe a changé la lecture du premier jet à environ 2 endroits sur 100 mots
+  (en comptant les changements faits avec une confiance haute ou moyenne), et environ la moitié de ces endroits ne
+  portaient pas de marque de doute. Il faut s'attendre à des erreurs de ce genre dans les paquets pas encore vérifiés.
+  Les endroits que les images ne tranchent pas restent marqués.
 
 ## Comment elle a été faite
 
