@@ -1,0 +1,906 @@
+\section{D. Points, central extensions, and arithmetic realizations}
+\label{sec:D}
+Here $M$ means exactly the scheme of C3-399(13).
+All extension sequences of group schemes are fppf exact.
+This is a mathematical reconstruction; it is not a claim
+that the inaccessible original files were recovered byte for byte.
+
+\begin{statement}{D.1}{Proved}{The exact all-ring functor}
+For every commutative ring $R$, put
+
+$$
+x(a,b)=\begin{pmatrix}a&b\\-b&a+b\end{pmatrix},\quad
+ n=a^2+ab+b^2,\quad
+ y(c,d,e)=\begin{pmatrix}c&d\\-ed&ec\end{pmatrix},\quad q=c^2+d^2.
+$$
+
+Then $M(R)$ is exactly the triples $(x,y,f)$ satisfying
+
+$$
+e^2=t^2=1,\quad q\in R^\times,\quad n=etq,\quad
+ f\in\operatorname{GL}_2(R),\quad\det f=eq.
+$$
+
+If $H$ is the functor of the six scalar coordinates and
+$\delta=eq$, then
+
+$$
+M\simeq\operatorname{SL}_2\rtimes H,\qquad
+ (g,h)\longmapsto(x(h),y(h),g\operatorname{diag}(\delta(h),1)).
+$$
+
+The action is conjugation by $\operatorname{diag}(\delta,1)$.
+\end{statement}
+\begin{proof}
+The determinants are $n$ and $eq$.
+The source relation $\det f=\det y=t\det x$ is equivalent
+to the equations above, since $t^2=1$.
+Multiplication of scalar coordinates is
+
+$$
+(a,b)(a',b')=(aa'-bb',ab'+ba'+bb'),
+$$
+
+
+$$
+(c,d,e)(c',d',e')=(cc'-e'dd',cd'+e'dc',ee'),\quad t''=tt'.
+$$
+
+These polynomial laws make $H$ a group and $\delta$ a character.
+Factoring $f$ uniquely as $g\operatorname{diag}(\delta,1)$
+proves the semidirect product, including over nilpotent rings.
+This is also the point description of B.1.
+\end{proof}
+
+\begin{statement}{D.2}{Proved}{Integral, local, and adelic points}
+The scalar coordinates are precisely the norm fibres
+
+$$
+x\in N_\rho^{-1}(etq),\qquad c-di\in N_\sigma^{-1}(q)
+$$
+
+in $R[T]/(T^2-T+1)$ and $R[i]$.
+For $R=\mathbb Z_p$ the necessary and sufficient restrictions are
+
+$$
+p=2:\ q\equiv1\pmod4;\qquad
+ p=3:\ q\equiv et\pmod3;\qquad p\ge5:\ \text{none}.
+$$
+
+For $\mathbb Q_p$, write $q=p^ku$ with $u$ a unit. Then
+
+$$
+\begin{array}{c|l}
+p&\text{conditions}\\\hline
+2&k\text{ even},\ u\equiv1\pmod4\\
+3&k\text{ even},\ u\equiv et\pmod3\\
+p\ge5,\ p\equiv1\pmod{12}&\text{none}\\
+p\ge5,\ p\not\equiv1\pmod{12}&k\text{ even}.
+\end{array}
+$$
+
+Moreover
+
+$$
+M(\mathbb Z)=(C_6\times C_4)\rtimes\operatorname{GL}_2(\mathbb Z),
+ \quad M(\widehat{\mathbb Z})=\prod_pM(\mathbb Z_p),\quad
+ M(\mathbb A_f)=\prod_p'M(\mathbb Q_p).
+$$
+
+Determinant minus one acts by inversion on $C_4$ and trivially
+on $C_6$. For $M^+=\ker\delta$, impose $q=e$;
+this forces $e=1$ at two and $t=1$ at three.
+In particular $M^+(\mathbb Z)=C_6\times C_4\times\operatorname{SL}_2(\mathbb Z)$.
+\end{statement}
+\begin{proof}
+Split quadratic algebras have all scalars as norms.
+An unramified quadratic extension has all unit norms and even
+norm valuations: finite-field norm surjectivity lifts through
+successive powers of the maximal ideal using the surjective trace.
+The Gaussian algebra ramifies only at two.
+Its unit norms are one modulo four; conversely a unit one
+modulo eight is a square, and a unit five modulo eight is
+$(\sqrt{u-4})^2+2^2$. Also $N(1+i)=2$.
+The Eisenstein algebra ramifies only at three.
+Its unit norms reduce to squares, hence to one; every such
+unit is a square by Hensel. Also $N(2\rho-1)=3$.
+Combining both norm conditions gives the tables.
+Both quadratic algebras split at $p\ge5$ exactly for
+$p\equiv1\pmod{12}$.
+
+Over $\mathbb Z$, positivity forces both invertible norms
+to equal one, giving unit groups $C_6,C_4$ and $e=t=\det f$.
+The section $f\mapsto(1,\operatorname{diag}(1,\det f),f)$
+has the indicated action. Affine functors preserve products
+of rings. Finite presentation gives the restricted product
+over the finite adeles, using these integral subgroups.
+Substituting $q=e$ proves the determinant-one assertions.
+\end{proof}
+
+\begin{statement}{D.3}{Refuted}{The literal cyclotomic target map is impossible}
+There is no continuous homomorphism
+$G_{\mathbb Q}\to M(\widehat{\mathbb Z})$ with cyclotomic
+determinant. A multiplier-preserving homomorphism from
+$\widehat{GT}$ or $\widehat{GT}_0$ therefore cannot restrict
+to this proposed arithmetic map.
+This concerns this exact $M$, not a different normalizer
+or an extension of $G_{\mathbb Q}$.
+\end{statement}
+\begin{proof}
+The projections to $T_\rho(\mathbb Z_5)$ and to the sign $t$
+are abelian. By Kronecker--Weber they factor through
+$G_{\mathbb Q}^{ab}=\widehat{\mathbb Z}^{\times}$ via the
+cyclotomic character \cite[I, Theorem 4.16]{D_MilneCFT}.
+Choose the order-four element whose fifth component is the
+Teichmuller lift of two and whose other components are one.
+Its image in $T_\rho(\mathbb F_5)=\mathbb F_{25}^{\times}$
+has order dividing four, so its norm, its sixth power,
+is $1$ or $4$. The equation $N_\rho(x)=t\chi_5$ instead
+requires $2$ or $3$. This is a contradiction.
+The executed enumeration finds exactly the four fourth-torsion
+pairs $(a,b)=(1,0),(2,0),(3,0),(4,0)$, with norms $1,4,4,1$.
+Composition with the arithmetic inclusion proves the GT
+consequence.
+\end{proof}
+
+\begin{statement}{D.4}{Refuted}{No arithmetic image is open}
+Every continuous homomorphism
+$G_{\mathbb Q}\to M(\widehat{\mathbb Z})$ has nonopen image.
+No determinant hypothesis is needed.
+\end{statement}
+\begin{proof}
+At seven, $T_\rho(\mathbb Z_7)=(\mathbb Z_7^\times)^2$.
+The projection of $M(\widehat{\mathbb Z})$ to this group is
+onto: choose $e=t=1$, a Gaussian unit of the prescribed norm,
+and $f$ of that determinant, taking identity elsewhere.
+It is an open quotient of compact groups.
+The arithmetic projection factors through
+$\prod_p\mathbb Z_p^\times$.
+After applying the two seven-adic logarithms, every factor
+$p\ne7$ vanishes: its open pro-$p$ subgroup and its finite
+quotient have zero image in the torsion-free pro-seven group.
+Continuity and density of finite-support elements kill their
+product. The remaining factor has rank one, whereas the
+target principal units have rank two.
+Modulo $7^r$ the index is at least $7^{r-1}$, hence unbounded.
+\end{proof}
+
+\begin{statement}{D.5}{Proved}{Finite GT equation shadows}
+Modulo $n$, put
+
+$$
+X=\begin{pmatrix}-1&2\\0&-1\end{pmatrix},\
+ Y=\begin{pmatrix}-1&0\\-2&-1\end{pmatrix},\
+ Z=(XY)^{-1},\ S=\sigma,\ R=Y^{-1}\rho.
+$$
+
+Let $H_n=\langle X,Y\rangle$ have exponent $d_n$.
+For $\lambda\in(\mathbb Z/2d_n)^\times$, $m=(\lambda-1)/2$,
+and $F\in[H_n,H_n]$, impose
+
+$$
+SFS^{-1}F=1,\qquad
+ (R^2FR^{-2})Z^m(RFR^{-1})Y^mFX^m=1.
+$$
+
+The exhaustive counts are
+
+$$
+\begin{array}{c|rrrrr}
+n&2&3&4&6&12\\\hline
+|H_n|&1&24&4&24&96\\
+|H_n'|&1&8&1&8&8\\
+d_n&1&12&2&12&12\\
+\text{pairs}&1&24&2&24&24.
+\end{array}
+$$
+
+Every counted pair gives an automorphism
+$X\mapsto X^\lambda$, $Y\mapsto F^{-1}Y^\lambda F$.
+These are finite shadows, not asserted global images.
+\end{statement}
+\begin{proof}
+Conjugation by $S$ exchanges $X,Y$, and conjugation by $R$
+cycles $X,Y,Z$. Thus these are the finite two-cycle and
+three-cycle relations of \cite[Section 0.1]{D_HS}.
+The program enumerates $H_n$, closes all commutators,
+computes every element order, and tests every allowed pair.
+It verifies the proposed homomorphisms on the complete
+Cayley graph with $X,Y,X^{-1},Y^{-1}$ edges, checking
+consistency at every revisited vertex and distinctness
+of all images. This proves bijective homomorphisms,
+without assuming an unverified finite presentation.
+Compatibility across quotients and the pentagon are
+additional conditions.
+\end{proof}
+
+\begin{statement}{D.6}{Proved}{A noncongruence quotient}
+The kernel
+
+$$
+K=\ker\bigl(\widehat{\operatorname{SL}_2(\mathbb Z)}
+       \to\operatorname{SL}_2(\widehat{\mathbb Z})\bigr)
+$$
+
+surjects onto $\operatorname{SL}_2(\mathbb F_8)$.
+This does not construct a GT automorphism.
+\end{statement}
+\begin{proof}
+For $\alpha^3+\alpha+1=0$, set
+
+$$
+A=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+ B=\begin{pmatrix}0&\alpha\\\alpha^{-1}&1\end{pmatrix}.
+$$
+
+Their orders are $2,3$, and $AB$ has order $7$.
+The amalgam gives a homomorphism $\sigma\mapsto A,\rho\mapsto B$.
+The program enumerates all $504$ elements. The conjugacy
+class orders and sizes are
+
+$$
+(1,1),(2,63),(3,56),(7,72),(7,72),(7,72),
+ (9,56),(9,56),(9,56).
+$$
+
+The normal closure of each nonidentity class is all $504$
+elements, proving simplicity by exhaustive calculation.
+
+The image of $K$ is normal, hence trivial or all.
+If trivial, this simple quotient would factor through a
+finite product of $\operatorname{SL}_2(\mathbb Z/p^a)$.
+One factor would surject. Its congruence kernel is a
+$p$-group and must have trivial normal image.
+For $p=2,3,7$, the residual groups have orders $6,24,336$.
+For any other $p$, the target has no element of order $p$;
+its elementary unipotent subgroups would be killed, but
+they generate $\operatorname{SL}_2(\mathbb F_p)$.
+All cases contradict surjectivity.
+\end{proof}
+
+\begin{statement}{D.7}{Proved}{An extra adelic sign}
+There is a determinant-one point with $e_5=-1$ and
+$e_p=1$ elsewhere. It violates $e=\varepsilon_2(\delta)$.
+\end{statement}
+\begin{proof}
+Choose $i_5^2=-1$ in $\mathbb Z_5$ and take at five
+$x=I$, $y=\operatorname{diag}(i_5,-i_5)$, $f=I$,
+$e=-1$, $t=1$. Then $q=-1$ and both required determinants
+are one. Use identities elsewhere.
+The checked residues of $i_5$ modulo $5^1,\ldots,5^6$
+are $2,7,57,182,2057,14557$.
+Every character takes value one at $\delta=1$,
+whereas this $e$ does not.
+\end{proof}
+
+\begin{statement}{D.8}{Open}{The corrected global comparison remains unfinished}
+After a corrected target or source extension is specified,
+the requested global image/kernel comparison and an explicit
+GT automorphism invisible to a congruence representation
+remain unproved here. The missing finite-to-global step is
+compatible lifting through all finite quotients and, for
+$\widehat{GT}$, the pentagon. D.6 is not that step.
+\end{statement}
+\begin{proof}[Proved cases and limitation]
+The pairs $(1,1)$ and $(-1,1)$ are global examples.
+The second inverts both free profinite generators and is
+an involution. Its two-cycle and pentagon are trivial,
+and its three-cycle is $z^{-1}y^{-1}x^{-1}=1$.
+With standard real tangential basepoints it is complex
+conjugation. The definitions and arithmetic inclusion
+are those in \cite[Section 0.1 and Main Theorem]{D_HS}.
+D.5 proves no lifting theorem for the other finite pairs.
+For the literal target the obstruction already occurs
+modulo five in D.3.
+\end{proof}
+
+\begin{statement}{D.9}{Proved}{Marked central extensions of the Klein four group}
+For $V=C_2^2$, marked central extensions by $C_2$
+form $H^2(V,C_2)=\mathbb F_2^3$.
+Write $X^2=z^a$, $Y^2=z^b$, $[X,Y]=z^c$.
+For $c=0$ the group is $C_2^3$ when $a=b=0$,
+and $C_4\times C_2$ otherwise.
+For $c=1$ it is $Q_8$ when $a=b=1$, and $D_8$ otherwise.
+The square function is $au+bv+cuv$.
+\end{statement}
+\begin{proof}
+Changing lifts by $z$ changes none of these invariants.
+Every element has normal form $z^wX^uY^v$.
+Conversely the law
+
+$$
+(w,u,v)(w',u',v')=
+ (w+w'+auu'+bvv'+cvu',u+u',v+v')
+$$
+
+is associative by bilinearity and realizes every triple.
+It also shows addition of parameters under Baer sum.
+Squaring gives the stated quadratic form.
+For $c=1$ the centre is $\langle z\rangle$; all six
+noncentral elements have order four precisely in the
+quaternion case. Otherwise an involution and an order-four
+element give the dihedral presentation.
+The independent cochain computation tests $512$ normalized
+cochains, obtaining $16$ cocycles, $2$ coboundaries,
+and $8$ classes.
+\end{proof}
+
+\begin{statement}{D.10}{Proved}{The manuscript square rule}
+Writing $\varepsilon_3=(-1)^u$, $\varepsilon_2=(-1)^v$,
+the rule that the square is one exactly when
+$\varepsilon_3=1$ or $\varepsilon_3\varepsilon_2=1$
+gives $q(u,v)=u+uv$. Its class is $(1,0,1)$, hence $D_8$.
+Both isotropic lines have split inverse-image extensions,
+but their order-two complements are nonnormal in the
+whole group. Pullback gives $\alpha^2+\alpha\beta$.
+\end{statement}
+\begin{proof}
+Use the cocycle $u(u'+v')$.
+Its commutator pairing $uv'+u'v$ is nondegenerate.
+For any nonzero isotropic $\ell$, choose $w$ pairing to one.
+Conjugation sends an involutive lift $L$ to $zL$,
+which is outside $\{1,L\}$. Pullback gives the stated cup class.
+
+This retains the logical OR on C3-602.
+The separate reflection ambiguity on C3-608 is not used:
+the exchange matrix conjugates $\rho$ to $\rho^{-1}$,
+whereas $\operatorname{diag}(1,-1)$ does not.
+The order and kernel ambiguities on scans 609--610
+remain separately recorded in the readings register.
+\end{proof}
+
+\begin{statement}{D.11}{Refuted}{The literal class on C3-611 is zero}
+For the quadratic characters literally displayed there,
+
+$$
+\chi_{-3}\smile\chi_3=(-3,3)=0
+       \quad\hbox{in }\operatorname{Br}(\mathbb Q)[2].
+$$
+
+The characters belong to $H^1$; the cup belongs to $H^2$.
+With $\alpha=\chi_{-3}$, $\beta=\chi_{-1}$ this is
+D.10's $\alpha(\alpha+\beta)$.
+\end{statement}
+\begin{proof}
+The matrices
+
+$$
+I=\begin{pmatrix}0&-3\\1&0\end{pmatrix},\qquad
+ J=\begin{pmatrix}0&3\\1&0\end{pmatrix}
+$$
+
+satisfy $I^2=-3$, $J^2=3$, $IJ=-JI$.
+The four matrices $1,I,J,IJ$ are independent and span
+$M_2(\mathbb Q)$, proving splitting.
+Equivalently $3$ is the norm of $\sqrt{-3}$.
+The product of square classes $(-3)(-1)=3$ gives
+the identification with D.10.
+Thus the literal class has order one, not a nonzero
+Brauer order. This is Task D.d and Lead 4.
+\end{proof}
+
+\begin{statement}{D.12}{Proved}{The distinct cyclic-four obstruction}
+Pulling $1\to C_2\to C_4\to C_2\to1$ back by $\chi_{-3}$
+instead gives
+
+$$
+\chi_{-3}^2=(-3,-3)=(-1,-3).
+$$
+
+Its Brauer order is two and its ramified places are
+$3,\infty$. It splits over $\mathbb Q(i)$ and
+$\mathbb Q(\sqrt{-3})$, but not over $\mathbb Q(\sqrt3)$.
+\end{statement}
+\begin{proof}
+The cyclic-four cocycle is $uu'$, giving the cup square;
+the quaternion identity $(a,a)=(a,-1)$ gives the symbol.
+For a field of characteristic not two, $(-1,b)$ splits
+exactly when $b$ is a norm from $F(i)$.
+If $N(z)=b$, multiplication by $i$ and
+$v\mapsto z\bar v$ give splitting matrices.
+Conversely a split module is rank one over $F(i)$,
+and its anticommuting operator has this form.
+
+At infinity, $-3$ is not a norm.
+At three the Gaussian extension is unramified, so its
+odd valuation excludes a norm.
+At two, $-3=(\sqrt{-7})^2+2^2$, with $-7\equiv1\pmod8$.
+At every other prime the algebra is split or $-3$ is a
+unit norm in an unramified quadratic extension.
+Quaternion conjugation identifies the algebra with its
+opposite, so the nonzero class has order two.
+Making a parameter square splits it.
+A real embedding of $\mathbb Q(\sqrt3)$ retains the real
+obstruction. The $C_4$ notation in C3-631 describes the
+extension group, not the Brauer order.
+\end{proof}
+
+\begin{statement}{D.13}{Refuted}{Imaginary quadratic quotients of constant Dic3}
+For
+
+$$
+\operatorname{Dic}_3=C_3\rtimes C_4
+ =\langle r,s:r^3=s^4=1,\ srs^{-1}=r^{-1}\rangle,
+$$
+
+no homomorphism from $G_{\mathbb Q}$ induces an imaginary
+quadratic character under its index-two quotient.
+This does not settle a cocycle for an unspecified
+nonconstant group scheme.
+\end{statement}
+\begin{proof}
+Every element outside the cyclic order-six kernel is
+$r^as^b$ with $b$ odd and square $s^2\ne1$.
+It has order four, whereas complex conjugation has order two.
+For a nonconstant target the cocycle rule is instead
+$c(g^2)=c(g)g(c(g))$, so that action must first be specified.
+\end{proof}
+
+\begin{statement}{D.14}{Proved}{The full lifting criterion and a class-field example}
+For $K=\mathbb Q(\sqrt d)\ne\mathbb Q$, a surjective
+constant $\operatorname{Dic}_3$ lift with quadratic field
+$K$ exists exactly when $(d,-1)=0$.
+Equivalently $K$ embeds in a cyclic quartic field.
+An $S_3$-field with quadratic field $K$ always exists.
+For $d=37$, take
+
+$$
+L=\operatorname{Spl}(X^3-X^2-3X+1),\qquad
+ N=\text{the quartic subfield of }\mathbb Q(\zeta_{37}).
+$$
+
+Then $LN$ is such a dicyclic field, ramified only at
+$2,37,\infty$, with $(e,f)=(3,4)$ at two and $(4,1)$
+at $37$. Complex conjugation is the central involution.
+\end{statement}
+\begin{proof}
+There is an isomorphism
+$\operatorname{Dic}_3=S_3\times_{C_2}C_4$:
+send $r$ to $((123),0)$ and $s$ to $((12),1)$.
+An $S_3$-field and a cyclic quartic field with common $K$
+intersect exactly in $K$, since the intersection degree
+divides six and four. Their compositum gives the fibre product.
+Class-field theory identifies the required data with an
+order-four character of $\mathbb Q$ squaring to $\chi_K$
+and a cubic character $\theta$ of $K$ satisfying
+$\theta^\iota=\theta^{-1}$
+\cite[V, Theorems 5.3,5.5]{D_MilneCFT}.
+The first obstruction is the cyclic-four Bockstein
+$\chi_K^2=(d,-1)$. A lift is automatically onto $C_4$.
+
+For completeness the cubic character always exists.
+Let $s=\dim_{\mathbb F_3}\operatorname{Cl}(K)/3$ and
+choose $r=s+2$ rational primes splitting completely in
+$K(\zeta_3)$, by Chebotarev
+\cite[V, Theorem 3.23]{D_MilneCFT}.
+For their product modulus $\mathfrak m$, put
+$A=(\mathcal O_K/\mathfrak m)^\times$.
+Each exchanged pair of residue factors contributes one
+dimension to $\operatorname{Hom}(A,\mathbb F_3)^-$,
+so that dimension is $r$.
+The unit theorem gives
+$\dim\mathcal O_K^\times/\mathcal O_K^{\times3}\le1$
+\cite[Theorem 5.1]{D_MilneANT}.
+If $A_0$ is the image in the ray class group $C_{\mathfrak m}$,
+then $\dim\operatorname{Hom}(A_0,\mathbb F_3)^-\ge r-1$.
+Applying $\operatorname{Hom}(-,\mathbb F_3)$ to
+$0\to A_0\to C_{\mathfrak m}\to\operatorname{Cl}(K)\to0$
+shows that the obstruction to extension lies in
+$\operatorname{Ext}^1_{\mathbb Z}(\operatorname{Cl}(K),\mathbb F_3)$,
+of dimension $s$.
+Minus eigenspaces preserve exactness because two is invertible
+modulo three. Thus at least $r-1-s=1$ anti-invariant characters
+extend. A nonzero one gives a cyclic cubic extension of $K$
+stable under conjugation, with inversion action.
+A lift of conjugation has square fixed by inversion in $C_3$,
+hence square one; the group is $S_3$.
+This proves sufficiency of the sole quartic obstruction.
+
+For $37$, the primitive quartic character is $\psi(2)=i$
+modulo $37$, since two has order $36$.
+Also $37=1^2+6^2$ exhibits the vanishing quaternion obstruction.
+Let $\omega=(1+\sqrt{37})/2$.
+Minkowski's bound is $\sqrt{37}/2<3.05$;
+two is inert and the ideals of norm three are principal,
+as $N((7+\sqrt{37})/2)=3$.
+Thus the class number is one
+\cite[Theorem 4.3]{D_MilneANT}.
+The fundamental unit is $6+\sqrt{37}$, of norm minus one.
+A smaller positive unit would have
+$(a+b\sqrt{37})/2$ with $b=1$ or $2$ and
+$a^2-37b^2=\pm4$; these equations give no smaller unit.
+Division by its powers proves generation.
+Both it and $-1$ reduce to one modulo two, so
+
+$$
+\operatorname{Cl}_{(2)}(K)=
+ (\mathcal O_K/2)^\times=\mathbb F_4^\times.
+$$
+
+The character $\theta(\bar\omega)=\zeta_3$ is anti-invariant.
+
+The cubic has no rational root and discriminant
+$148=4\cdot37$, giving group $S_3$ and quadratic field $K$.
+At two its translate is $X^3+2X^2-2X-2$, Eisenstein.
+The local splitting field has tame inertia $C_3$ and
+unramified quadratic subfield $K_2$.
+At $37$ the reduction is $(X-4)^2(X-30)$,
+and discriminant valuation one gives local splitting field
+$K_{37}$. The positive discriminant gives three real roots.
+Thus $L/K$ is precisely the cubic ray extension of modulus $(2)$.
+
+For an explicit equation of $N$, let $H=\langle2^4\rangle$
+modulo $37$ and $\eta_j=\sum_{h\in H}\zeta_{37}^{2^jh}$.
+Exact multiplication yields
+
+$$
+\prod_{j=0}^3(T-\eta_j)=T^4+T^3+5T^2+7T+49.
+$$
+
+The periods are distinct: equality would give a nonzero
+polynomial of degree at most $36$ with zero constant term,
+divisible by $\Phi_{37}$, impossible since its coefficients
+would all be equal.
+At two the quartic Frobenius has order four, so adjoining it
+to $L_2$ gives $(e,f)=(3,4)$.
+At $37$ it is totally ramified quartic and contains $K_{37}$.
+Finally $-1=2^{18}$ maps to two in $C_4$, while $L$ is real.
+The discriminant, periods, root order and local reductions
+are all included in the executed certificate.
+\end{proof}
+
+\begin{statement}{D.15}{Proved}{An explicit dihedral field}
+For $\theta^4=-3$, the field $\mathbb Q(\theta,i)$ has group
+$D_8$, quadratic subfields
+$\mathbb Q(i),\mathbb Q(\sqrt{-3}),\mathbb Q(\sqrt3)$,
+and only finite ramified primes two and three.
+At both, $(e,f)=(4,2)$.
+\end{statement}
+\begin{proof}
+At three the quartic is Eisenstein and tame, while adjoining
+$i$ is unramified quadratic. The global degree is therefore
+eight. The automorphisms
+$a(\theta)=i\theta,a(i)=i$ and
+$b(\theta)=\theta,b(i)=-i$ satisfy the dihedral relations.
+The quadratic fields follow from $\theta^2$, $i$, and their
+product. Discriminants exclude all other finite primes.
+
+At two let $K_0=\mathbb Q_2(s)$, $s^2=-3$, the unramified
+quadratic field, and $\omega=(1+s)/2$, so $\omega^2=\omega-1$.
+The local field is $K_0(\sqrt{-1},\sqrt{s})$.
+The unit squares modulo four are exactly
+$1,-1+\omega,-\omega$, by enumerating the twelve unit residues.
+None equals $-1=3$, $s=3+2\omega$, or $-s=1+2\omega$.
+These three nontrivial square classes are independent as
+needed for a biquadratic extension.
+None is the unramified quadratic class: that class has
+a unit representative $1+4a$, by lifting an irreducible
+Artin--Schreier polynomial, and is square modulo four.
+Thus all three quadratic subextensions ramify.
+A nontrivial unramified quotient would yield an unramified
+quadratic subextension, so the relative degree-four
+extension is totally ramified. This proves $(4,2)$ at two.
+\end{proof}
+
+\begin{statement}{D.16}{Proved}{All central double covers of the exact M}
+Let $N=M^{00}=\ker(e,t)$, $V=\mu_2^2$, and $\delta=\det f$.
+Let $\operatorname{CExt}$ classify central extensions
+with the identifications of kernel and quotient fixed.
+Then
+
+$$
+\operatorname{CExt}_{\overline{\mathbb Q}}(M,\mu_2)=\mathbb F_2^5,
+ \qquad
+ \operatorname{CExt}_{\mathbb Q}(M,\mu_2)
+   =\mathbb F_2^4\oplus(\mathbb Q^\times/\mathbb Q^{\times2})^2,
+$$
+
+
+$$
+\boxed{\operatorname{CExt}_{\mathbb Z}(M,\mu_2)=\mathbb F_2^3.}
+$$
+
+The eight integral representatives are
+
+$$
+\widetilde M_{a,b,c}(R)=
+ \{(m,z):z\in R^\times,\ z^2=\delta(m)^a e(m)^b t(m)^c\},
+ \qquad a,b,c\in\{0,1\},
+$$
+
+with componentwise multiplication. They are finite locally
+free of rank two over $M$ and fppf surjective, although
+not necessarily surjective on $R$-points.
+\end{statement}
+\begin{proof}
+Over $k=\overline{\mathbb Q}$ choose eigenvalues $z$ for $x$
+and $u$ for $y$. On $N$, the other eigenvalues are
+$\delta/z,\delta/u$, giving
+$N_k=\operatorname{GL}_{2,k}\times\mathbb G_m^2$ as groups.
+Its ring is a polynomial localization, so has trivial
+Picard group, and its units modulo constants are freely
+generated by $\delta,u,z$.
+The fppf Kummer sequence
+\cite[Lemma 59.28.3]{D_StacksKummer} gives
+$H^1(N_k,\mu_2)=\langle\delta,u,z\rangle_{\mathbb F_2}$.
+Each class is a square-root torsor of a character, with
+its standard group law and chosen identity.
+A pointed torsor isomorphism is unique, since a morphism
+$N_k\to\mu_2$ is constant; it is multiplicative, since
+its multiplication defect on $N_k^2$ is constant and
+one at the identity.
+
+The $e$-component sends $[u]$ to $[\delta]+[u]$ and fixes
+$[\delta],[z]$; the $t$-component is trivial.
+Thus restrictions of central extensions of $M_k$ lie
+in $\langle\delta,z\rangle$. Both extend globally as
+character square-root covers, since the first projection
+always takes values in the commutative $T_\rho$.
+After subtracting them an extension splits on $N_k$.
+The section is unique because $\operatorname{Hom}(N_k,\mu_2)=0$;
+conjugation therefore preserves its image.
+Its right action gives descent of the finite flat torsor
+along $M_k\to V_k$, including multiplication.
+Thus the extension is the pullback of a unique extension
+of $V_k$, and equivalences descend too.
+D.9 gives the remaining $\mathbb F_2^3$.
+This proves the geometric formula.
+
+Over $\mathbb Q$, conjugation of $\mathbb Q(i)$ sends
+$[u]\mapsto[\delta]+[u]$, while that of
+$\mathbb Q(\sqrt{-3})$ sends $[z]\mapsto[\delta]+[z]$.
+These distinct quadratic fields leave only $[\delta]$
+invariant. Pointed automorphism groups of connected
+extensions are trivial, so there are no additional
+descent forms there. Subtracting the determinant cover
+reduces to extensions of $V_{\mathbb Q}$.
+Their eight constant geometric representatives have the
+law in D.9, and automorphisms fixing kernel and quotient are
+
+$$
+(w,u,v)\longmapsto(w+\ell_1u+\ell_2v,u,v).
+$$
+
+Rational forms are therefore specified by two quadratic
+Galois characters. The explicit formulas show that Baer
+sum adds the three geometric parameters and these two
+characters. Adding the determinant class proves the
+rational formula.
+
+For the integral argument, $N$ is smooth with geometrically
+connected fibres. Indeed the norm $a^2+ab+b^2$ has derivatives
+$2a+b,a+2b$ which cannot vanish together on its unit locus.
+At three their common zero forces $a=b$ and norm zero.
+The norm fibre product is therefore smooth.
+Its geometric scalar factors are $\mathbb G_m^3$
+away from two and three, and $\mathbb G_m^2\times\mathbb G_a$
+at each exceptional characteristic: one algebra becomes
+dual numbers, the other splits and permits eliminating
+one coordinate. The factor $\operatorname{SL}_2$ preserves
+connectedness. Hence $N$ is normal and integral.
+
+Subtract the generic determinant class from an integral
+extension. The unique splitting over $N_{\mathbb Q}$
+extends over $N$: on a normal affine ring $B$, the finite
+covering algebra maps under the generic section to
+$\operatorname{Frac}B$, and each image is integral over
+$B$, hence lies in $B$. Uniqueness glues the sections.
+Multiplicativity and normality extend by flatness and
+generic density on $N^2$ and $\widetilde M\times N$.
+Affine descent along the faithfully flat quotient
+$M\to\mu_2^2$ reduces to
+
+$$
+1\to\mu_2\to E\to\mu_2^2\to1.
+$$
+
+
+Such $E$ is commutative. Its commutator is a bilinear
+pairing $V\times V\to\mu_2$, hence a morphism
+$V\to\underline{\operatorname{Hom}}(V,\mu_2)=V^D
+=(C_2^2)_{\mathbb Z}$.
+The total scheme $V$ is connected: its four closed
+sign sections cover its underlying space and meet at
+the sole point above two. A morphism to this constant
+scheme is constant, and the identity forces zero.
+The commutator vanishes.
+
+Exact Cartier duality
+\cite[Sections 3.2.2--3.2.3 and Proposition 29]{D_Stix}
+now gives
+
+$$
+0\to(C_2^2)_{\mathbb Z}\to E^D\to(C_2)_{\mathbb Z}\to0.
+$$
+
+The middle scheme is finite etale, since its map to the
+quotient is a torsor under a finite etale group.
+Every finite etale $\mathbb Z$-scheme is constant:
+a connected component would be a number field unramified
+at all finite primes, excluded except for $\mathbb Q$
+by Minkowski \cite[Theorem 4.9]{D_MilneANT}.
+Thus the problem is ordinary abelian extensions
+$0\to C_2^2\to A\to C_2\to0$.
+For a lift $r$ of the quotient generator, $2r\in C_2^2$
+is independent of the lift and completely classifies it.
+The four possibilities dualize to the covers $z^2=e^bt^c$.
+The determinant class is independent already on $N_k$.
+This proves the eight marked integral classes.
+
+Finally $(a,b,c,d,e,t)=(1,2,1,1,1,1)$ with
+$f=\operatorname{diag}(2,1)$ is a point of $N(\mathbb F_5)$.
+It has no lift to $z^2=\delta$, since two is nonsquare.
+This explicitly distinguishes fppf and point surjectivity.
+\end{proof}
+
+\begin{statement}{D.17}{Proved}{Generation and exact indices}
+For every $n\ge1$, $\rho,\sigma$ generate
+$\operatorname{SL}_2(\mathbb Z/n)$.
+Adding the exchange matrix $\tau$ gives
+$\det^{-1}(\{1,-1\})$ in GL, of index one for $n=1,2$
+and $\varphi(n)/2$ otherwise.
+The integral SL closure is all profinite SL.
+The integral GL closure is $\det^{-1}(\{1,-1\})$,
+of infinite index in profinite GL.
+\end{statement}
+\begin{proof}
+The products $\rho\sigma$ and $\sigma\rho$ are the lower
+and upper elementary matrices of parameters $1,-1$.
+Their powers give every parameter modulo $n$.
+Local row reduction and the elementary factorization of
+$\operatorname{diag}(a,a^{-1})$ generate SL over
+$\mathbb Z/p^r$. Chinese remaindering gives all $n$.
+Since $\det\tau=-1$, adding it gives exactly the stated
+determinants and indices. Finite quotients determine
+the closures. The two-element determinant subgroup is
+not open in $\widehat{\mathbb Z}^{\times}$.
+The program checks every $1\le n\le48$.
+An unrestricted ambient-group assertion is false:
+embedding both generators in the first factor of
+$\operatorname{SL}_2\times\mathbb G_m$ never generates
+the second factor.
+\end{proof}
+
+\begin{statement}{D.18}{Proved}{A precise motivic arithmetic representation}
+For an elliptic curve over a number field, torsion gives
+
+$$
+G_k\to\operatorname{Aut}(T_\ell E)
+       =\operatorname{GL}_2(\mathbb Z_\ell),\qquad\det=\chi_\ell.
+$$
+
+This is the specialization of the universal elliptic local
+system and rationally the dual realization of $h^1(E)$.
+Matrices require a basis and change by conjugation with it.
+\end{statement}
+\begin{proof}
+The finite etale groups $E[\ell^a]$ have compatible Galois
+actions; their inverse limit is free of rank two.
+The Weil pairing gives
+$\bigwedge^2T_\ell E=\mathbb Z_\ell(1)$.
+These constructions and specialization are those of
+\cite[II, Section 6; V, Sections 7--8]{D_MilneEC}.
+A fine modular curve of level at least three supplies
+the universal local system after adjoining the level
+structure; the moduli stack avoids this auxiliary step.
+The correspondence
+
+$$
+[\Delta_E]-[\{0\}\times E]-[E\times\{0\}]
+$$
+
+is the idempotent projector to degree one: the other
+two terms are orthogonal projectors to degrees zero and
+two. Its realization is $H^1$, dual to the rational
+Tate module. For $y^2=x^3-x$, the complete count at five
+is eight, giving trace $-2$ and polynomial $T^2+2T+5$.
+D.3 concerns additional norm coordinates and does not
+contradict this GL representation.
+\end{proof}
+
+\begin{statement}{D.19}{Known}{Specified unipotent realizations}
+Finite lower-central quotients of the punctured elliptic
+fundamental Lie algebra have the Hain--Matsumoto universal
+mixed elliptic realizations. A rational or tangential
+basepoint gives a genuine arithmetic action; otherwise
+the intrinsic action is outer.
+For finitely generated discrete groups, rational unipotent
+completion extended to $\mathbb Q_\ell$ agrees with
+the corresponding unipotent completions of the profinite
+and pro-$\ell$ completions.
+\end{statement}
+\begin{proof}[Exact reductions]
+Theorem 6.9 and Corollary 6.10 of \cite{D_HMelliptic}
+give the specified tangential punctured-elliptic fibre and
+its extension in the defined category $\mathrm{MEM}_2$.
+Brackets and lower-central quotients inherit those
+realizations. Specialization at a pointed arithmetic
+curve gives its fundamental-group section; forgetting
+the point leaves the outer action.
+The completion comparison is
+\cite[Theorem A.6]{D_HMweighted}; the based application
+is Remark 8.1 and Corollary A.11.
+The crystalline theorem 9.8 there concerns the outer
+action on the thrice-punctured line, with its stated
+hypotheses. It does not apply to arbitrary integral
+representations.
+For a concrete quotient the free Lie algebra on $A,B$
+has bases $A,B$; $[A,B]$;
+$[A,[A,B]],[B,[A,B]]$ in degrees one to three,
+of dimensions $2,1,2$.
+Degree two is $\bigwedge^2H$, with cyclotomic action
+in the covariant Tate convention.
+\end{proof}
+
+\begin{statement}{D.20}{Refuted}{An integral non-geometric representation}
+The assignments
+
+$$
+r(\sigma)=\sigma,\qquad
+ r(\rho)=P\rho P^{-1}=\begin{pmatrix}-1&3\\-1&2\end{pmatrix},
+ \quad P=\begin{pmatrix}1&1\\0&1\end{pmatrix}
+$$
+
+define an integral modular representation which is not
+of geometric origin on any finite-level modular curve.
+This refutes an unrestricted geometric-origin reading
+of C3-489, not every possible use of the word motivic.
+\end{statement}
+\begin{proof}
+The squared and cubed generators both give $-I$, so the
+amalgam defines the representation.
+Its cusp generator has image
+
+$$
+T=\begin{pmatrix}1&-2\\-1&3\end{pmatrix},
+ \qquad\det(X-T)=X^2-4X+1.
+$$
+
+The eigenvalues $2\pm\sqrt3$ are not roots of unity,
+nor are any positive powers.
+A level-$N$ cusp gives $T^N$, up to conjugacy and inversion.
+The monodromy theorem
+\cite[Theorem 1.2]{D_EsnaultKerz} requires
+quasi-unipotent boundary monodromy for geometric-origin
+local systems. This excludes the representation and
+every finite pullback.
+\end{proof}
+
+\begin{statement}{D.21}{Proved}{Continuous arithmetic descent}
+Let $\Pi=N\rtimes G_k$ be continuously split and
+$r:N\to\operatorname{GL}(V)$ continuous, with $V$
+finite-dimensional over a specified topological field $F$.
+It extends continuously exactly when there is a continuous
+homomorphism $A:G_k\to\operatorname{GL}(V)$ satisfying
+
+$$
+A_gr(n)A_g^{-1}=r(gng^{-1}).
+$$
+
+If $r$ is absolutely irreducible and continuous normalized
+intertwiners $B_g$ exist, the scalar defect
+$B_gB_hB_{gh}^{-1}$ defines a class in
+$H^2_{\mathrm{cts}}(G_k,F^\times)$ with trivial scalar
+action. Extension is equivalent to its vanishing.
+Pointwise intertwiners and a continuous choice are prior
+conditions.
+\end{statement}
+\begin{proof}
+An extension restricts along the section to $A$.
+Conversely $R(n,g)=r(n)A_g$ is a continuous representation
+by direct multiplication.
+For an irreducible $r$, Schur's lemma makes the defect
+scalar. Associativity gives the cocycle identity,
+and continuous scalar rescaling changes it by a
+continuous coboundary. Thus vanishing is necessary
+and sufficient under the stated existence hypothesis.
+
+For an explicit earlier obstruction, let $N=C_2^2$
+with the quotient involution swapping coordinates, and
+$r(u,v)=(-1)^u$ over characteristic not two.
+The swapped character differs at $(1,0)$, so no scalar
+intertwiner exists. Conversely an invariant character
+extends with $A_g=1$, and can be twisted by any continuous
+character of $G_k$. D.18 provides the geometric positive
+case with its intertwiners.
+\end{proof}

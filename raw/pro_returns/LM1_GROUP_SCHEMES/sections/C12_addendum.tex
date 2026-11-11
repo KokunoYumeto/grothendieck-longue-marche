@@ -1,0 +1,209 @@
+\subsection*{Addendum: the projective image over
+\texorpdfstring{$\mathbb Z/4$}{Z/4}}
+
+\begin{statement}{C.12}{Proved}
+{The remaining finite projective image has order twenty-four}
+Let $R=\mathbb Z/4$. Then
+
+$$
+\operatorname{im}\bigl(A_p(R)\longrightarrow\operatorname{PGL}_2(R)\bigr)
+ =
+ \operatorname{im}\bigl(\operatorname{SL}_2(R)
+                  \longrightarrow\operatorname{PGL}_2(R)\bigr).
+$$
+
+This image has order $24$. Its complement is exactly the $24$
+projective classes of nonsquare determinant listed in the
+$R=\mathbb Z/4$ row of the replacement computation. In particular
+$[\operatorname{diag}(3,1)]$ does not lift through $A_p(R)$.
+This settles the finite image question left open in C.11.
+The other source-section and integral-point questions stated there
+are not settled by this addendum.
+\end{statement}
+
+\begin{proof}
+We use the big fppf sheaf, which can be evaluated on arbitrary
+$R$-algebras. In particular a localization not finitely presented
+over $R$ is a legitimate object on which to pull back a section;
+it is not thereby asserted to be an fppf cover.
+
+\emph{The source on flat objects.}
+Write $t=u(1)$ in
+$\Gamma_p=\operatorname{PSL}_2(\mathbb Z)$.
+Since $4=0$ in every additive $R$-group, the pushout defining $A_p$
+factors the constant group through
+
+$$
+H=\Gamma_p/\langle\!\langle t^4\rangle\!\rangle
+  =\operatorname{SL}_2(R)/\{\pm I\}.
+$$
+
+The last equality, including order $24$, is C.7. Its cusp
+$C=\langle t\rangle$ has order four. The universal property of
+pushouts therefore identifies the base-changed source with
+$\underline H*_{\underline C}\mathbb G_a$.
+
+Restricting to flat $R$-objects commutes with sheafification:
+every fppf cover of a flat $R$-object still consists of flat
+$R$-objects, so the same local constructions compute the restriction.
+On this restricted site $\underline C\to\mathbb G_a$ is a
+monomorphism. Indeed every nonzero flat algebra over the Artinian
+local ring $R$ is faithfully flat. The same applies to any nonzero
+clopen factor, so distinct locally constant residues modulo four
+cannot acquire the same additive value. This assertion is not used
+on the nonflat $R$-object $\mathbb F_2$.
+
+\emph{Local preservation of ordinary normal forms.}
+For every nonzero local flat $R$-algebra $S$, put
+$W(S)=H*_C(S,+)$. The natural map $W(S)\to A_p(S)$ is injective.
+To prove this, suppose an ordinary reduced word becomes the identity
+in the sheaf. Equality in sheafification is witnessed locally by
+equality in the presheaf, after refining a cover if necessary.
+Choose a covering point above the closed point of
+$\operatorname{Spec}S$ and localize its covering algebra there.
+The resulting local map $S\to S'$ is flat and hence faithfully flat
+\citep[Lemma~10.39.17, Tag~00HR]{C_Stacks_00HR}.
+In particular it is injective. Since both rings are local, their
+constant $H$ and $C$ sections are exactly $H$ and $C$.
+An additive syllable outside $C$ cannot become an element of $C$
+in $S'$, and the constant syllables do not change. The ordinary
+amalgam normal-form theorem gives a contradiction.
+
+\emph{A fixed reduced word on an Artinian local refinement.}
+Take $\alpha\in A_p(R)$, and let
+$g\in\operatorname{PGL}_2(R)$ be its matrix image.
+Choose a nonempty affine fppf cover
+$\operatorname{Spec}B\to\operatorname{Spec}R$ on which $\alpha$
+is represented by a finite word. We may choose $B$ finitely
+presented over $R$, so it is Noetherian. Let $P$ be a minimal prime
+of $B$ and put $B_0=B_P$. This is a nonzero Noetherian local ring
+of dimension zero, hence Artinian. It is flat and faithfully flat
+over $R$. The map
+$\operatorname{Spec}B_0\to\operatorname{Spec}R$
+is an affine fpqc cover; it need not be fppf.
+
+Reduce the pulled-back word in $W(B_0)$. If it is the identity,
+then $g=1$ by fpqc separatedness of the representable target.
+Otherwise write it as $x_1\cdots x_m$, with fixed alternating
+factor types. For $m\geq2$ every syllable lies outside $C$.
+For $m=1$ the subsequent argument uses the trivial insertion group.
+
+Set $D=B_0\otimes_R B_0$. For every prime $q$ of $D$, the ring
+$D_q$ is nonzero and flat over either copy of $B_0$.
+Because $B_0$ is Artinian local, each map $B_0\to D_q$ is local,
+and is therefore faithfully flat by Tag~00HR. Equivalently one
+may use flatness over an Artinian local ring
+\citep[Lemma~10.101.2, Tag~051G]{C_Stacks_051G}.
+Consequently both pullback words retain the same reduced length
+and factor types over $D_q$. Their products are equal in $A_p(D_q)$,
+since both come from $\alpha$. The local injectivity just proved
+makes them equal as ordinary reduced words.
+
+\emph{Unique finite insertions and their descent.}
+Equality of reduced words of these fixed types is equivalent to
+unique elements $c_1,\ldots,c_{m-1}\in C$ satisfying
+
+$$
+y_1=x_1c_1,\qquad
+ y_i=c_{i-1}^{-1}x_i c_i\quad(1<i<m),\qquad
+ y_m=c_{m-1}^{-1}x_m.
+$$
+
+For clarity, uniqueness and existence follow by cancellation:
+$x_1^{-1}y_1$ must lie in $C$, or the full inverse-product word
+would remain reduced; this determines $c_1$, and induction gives
+the rest. At each $D_q$ the inserted elements are ordinary
+constant residues. There are finitely many additive equalities
+in the displayed formulas. Each equality holding in $D_q$ holds
+on some principal open neighbourhood of $q$. The constant-group
+equalities hold there too. Thus the insertion tuples exist
+Zariski locally on $\operatorname{Spec}D$.
+
+Let $G=\underline C^{\,m-1}$ and let $X$ be the product of the
+$m$ indicated factors, each either $\underline H$ or
+$\mathbb G_a$. This is an affine $R$-scheme. There is a right action
+
+$$
+(x_1,\ldots,x_m)\cdot(c_1,\ldots,c_{m-1})
+ =
+ (x_1c_1,c_1^{-1}x_2c_2,\ldots,c_{m-1}^{-1}x_m).
+$$
+
+It is free on flat $R$-objects: equality of first coordinates
+forces $c_1=1$, and induction forces every $c_i=1$, using the
+monomorphism $C\to\mathbb G_a$ only on flat objects.
+Therefore the local insertion tuples agree on intersections and
+glue to $c\in G(D)$. On the triple overlap, freeness gives
+$c_{13}=c_{12}c_{23}$.
+
+No globally decidable word-length stratum has been introduced:
+the fixed word was obtained over $B_0$, its reducedness was
+checked in the local rings of overlaps, and the finite equalities
+were then spread to open neighbourhoods.
+
+The cocycle descends the trivial $G$-torsor over $B_0$ to a finite
+\'etale $G$-torsor $T\to\operatorname{Spec}R$.
+Effective descent of affine morphisms is
+\citet[Lemma~35.37.1, Tag~0245]{C_Stacks_0245};
+finite locally free algebras descend by faithfully flat module
+descent, and \'etaleness descends by
+\citet[Lemma~35.23.31, Tag~02VN]{C_Stacks_02VN}.
+The tuple $(x_1,\ldots,x_m)$ gives a compatible equivariant map
+from that trivial torsor to $X$, so it descends to a morphism
+$f:T\to X$. Equivalently, $f$ is a tuple of ordinary word
+coordinates over the finite \'etale cover $T$.
+
+\emph{Only the matrix image is descended back.}
+Let $\theta:X\to\operatorname{PGL}_2$ multiply the matrix images
+of the coordinates. Cusp insertions cancel, so $\theta$ is
+$G$-invariant. Consequently $\theta\circ f$ agrees with $g_T$
+after the faithfully flat pullback
+$B_0\otimes_R\mathcal O(T)$.
+Since scheme-representable functors are fpqc sheaves
+\citep[Lemma~35.13.7, Tag~023Q]{C_Stacks_023Q},
+the two maps agree already over $T$.
+
+Each $H$-coordinate has a determinant-one matrix representative
+over $R$; choosing one for each of the finitely many elements of
+$H$ also gives representatives for locally constant
+$H$-coordinates over $T$. The additive coordinates have their
+elementary determinant-one representatives. Their product is
+therefore an element of $\operatorname{SL}_2(T)$ representing
+$g_T$.
+
+This conclusion uses fpqc descent for the affine coordinates and
+the matrix target. It does not claim fpqc descent for $A_p$, nor
+that $\alpha_T$ itself has been identified with the descended
+word inside $A_p(T)$.
+
+\emph{The determinant obstruction survives every such cover.}
+The element $3$ is not a square in any nonzero finite \'etale
+$R$-algebra $T$. Indeed $T/2T$ is reduced. If $z^2=3$, then
+$(\overline z-1)^2=0$, so $\overline z=1$.
+Hence $z=1+2b$ for some $b\in T$, and $z^2=1$, a contradiction
+to $3\ne1$ in the faithfully flat algebra $T$.
+
+If $g=[\operatorname{diag}(3,1)]$ had arisen from $A_p(R)$,
+the preceding construction would give a determinant-one matrix
+representing it over $T$. Equality of two matrix representatives
+in $\operatorname{PGL}_2(T)$ means that their ratio is a global
+scalar unit. Taking determinants would make $3$ a square in $T$,
+which is impossible.
+
+Finally C.10 already supplies the whole projective special-linear
+subgroup, of order $24$ and index two. Any additional image
+element would yield the excluded class after multiplication by
+an element of that subgroup. Thus the image is exactly the
+stated subgroup.
+\end{proof}
+
+\paragraph{Effect on the earlier residual.}
+In C.11, the uncertainty about the order of the projective image
+over $\mathbb Z/4$ and the lifting of
+$[\operatorname{diag}(3,1)]$ is superseded by C.12:
+that class does not lift, and the image has order $24$.
+The computed list of $24$ missing word-image classes is now also
+the complete list of missing sheaf-image classes.
+The countably infinite source point group in C.8 is unchanged.
+Complete source-group descriptions and the stated integral-point
+questions remain outside this addendum.

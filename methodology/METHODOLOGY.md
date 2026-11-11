@@ -263,7 +263,7 @@ plus one delivery paragraph (the two files as text, since the API cannot return 
 The folder [`raw/`](../raw/README.md) holds raw outputs of two further kinds of work, published as returned. This
 section says how each was made. Paths are relative to `raw/`.
 
-### Research prompts on the Teichmüller tower
+### Research prompts on *La Longue Marche*
 
 The research prompts on *La Longue Marche* follow Grothendieck's own programme: each takes one of the things he set
 out to do, collects his statements and questions on it across the manuscript with their scans, and asks for the
@@ -276,8 +276,44 @@ LaTeX with its PDF, every statement numbered and labelled Proved, Refuted, Known
 statements, a report, a bibliography, and every program run with its output. The user pasted each prompt into ChatGPT
 with its background zip; the model was GPT-6 Astra in ChatGPT Pro mode. For every prompt,
 `prompts/<name>/ATTACHMENTS.md` lists every file of the zip: our own files link to where they are published, and
-papers by other authors are listed with their citation and address and are not re-published. Two prompts have been
+papers by other authors are listed with their citation and address and are not re-published. Four prompts have been
 answered so far.
+
+**`LM1_GROUP_SCHEMES`: the group schemes `M_{ρ,σ}` over `Z` and the schematic envelopes of discrete groups (§§48–50).**
+
+- Prompt: [prompts/LM1_GROUP_SCHEMES/PROMPT.md](../raw/prompts/LM1_GROUP_SCHEMES/PROMPT.md); attached:
+  [ATTACHMENTS.md](../raw/prompts/LM1_GROUP_SCHEMES/ATTACHMENTS.md).
+- Model and run: GPT-6 Astra (ChatGPT Pro mode), 11 November 2026. The model's workspace disconnected during the final
+  assembly, and the model then wrote every file into the chat as text, as the prompt provides. The files in
+  `pro_returns/LM1_GROUP_SCHEMES/` are split by a script
+  ([tools/lm1_text_copy/lm1_split.py](../raw/tools/lm1_text_copy/lm1_split.py)) from the text copy of the chat saved at
+  21:03 UTC, which is beside them (`chat_text_copy_2026-11-11T2103Z.md`; the note it was saved in was overwritten a
+  minute later, and the copy was read back from the note application's file-recovery snapshot,
+  [tools/lm1_text_copy/recover_obsidian_snapshot.py](../raw/tools/lm1_text_copy/recover_obsidian_snapshot.py)). Each file
+  keeps its lines as copied; the chat around the files (status lines and the model's short messages) is left out, and
+  the log of the split lists every line left out. Checks of the split: `code/e_additional.out` has exactly the 1,723
+  bytes the model reports for it, and the registers have the 97 statement rows and 57 reading rows its build script
+  expects. The model kept working after the copy (on A.10 and a citation of Stix); that part is not included. The
+  model reports that its original workspace files were lost: several of its Python programs are replaced by
+  reconstructions, marked as such in `report.md`, and its two build helpers (`build_reconstruction.py`,
+  `integrate_and_build_recovery.py`) are supplied unexecuted.
+- Statements by the model's own labels: 97 in `results.csv` (71 Proved, 16 Refuted, 4 Known, 5 Open, 1 Unfinished),
+  and C.12, Proved, in `RECOVERY_UPDATE.md` and `sections/C12_addendum.tex`.
+- Build: as delivered, the paper does not compile. Its displayed formulas put amsmath's `split` inside `$$...$$`,
+  which LaTeX rejects, and the run stops without a PDF. With the 159 displays written as `\[...\]` and the two text
+  repairs the model lists (A.2, F.1), it compiles to 46 pages without errors; three citation keys (four citations)
+  are missing from the bibliography. The files here are as delivered.
+- Review: not yet made. Every statement of this answer is unchecked.
+
+**`LM2_LOOP_EQUATIONS`: the equation of loops in types (0,3) and (1,1); Grothendieck's conditions on the image of
+Galois, against the Grothendieck–Teichmüller relations (§§36–47).**
+
+- Prompt: [prompts/LM2_LOOP_EQUATIONS/PROMPT.md](../raw/prompts/LM2_LOOP_EQUATIONS/PROMPT.md); attached:
+  [ATTACHMENTS.md](../raw/prompts/LM2_LOOP_EQUATIONS/ATTACHMENTS.md).
+- Model and run: GPT-6 Astra (ChatGPT Pro mode); returned 11 November 2026 with the paper and its PDF, the
+  registers, the report, and 27 programs with their outputs and build logs.
+  79 statements by its own labels: 51 Proved, 12 Known, 10 Refuted, 6 Open.
+- Review: not yet made. Every statement of this answer is unchecked.
 
 **`LM3_TEICHMULLER_TOWER`: the Teichmüller tower, its profinite forms and the "conjecture fondamentale" (§§19, 21,
 26–30, 32–36).**
@@ -310,7 +346,7 @@ answered so far.
   93 statements: 53 Proved, 11 Refuted, 15 Known, 14 Open.
 - Review: not yet made. Every statement of this answer is unchecked.
 
-The other Longue Marche prompts (`LM1` to `LM8` apart from these two) have not been answered yet; they will be
+The other Longue Marche prompts (`LM4` to `LM8`) have not been answered yet; they will be
 published with their answers. Inserts for them that came out of the review of the prompts on *Les Dérivateurs* are
 published in the repository `grothendieck-derivateurs`, in `raw/reviews/7_BISITE/FOLLOW_UPS.md`.
 
@@ -338,6 +374,7 @@ times below are read from it.
 | `MPL_147_138-190` | 14:19–15:30 | not yet |
 | `MPL_149_091-136` | from 15:44; the last time logged is 17:11 | not yet |
 | `MPL_146_001-099` | 16:12–17:15 | not yet |
+| `MPL_146_100-134` | 21:56–23:02; the transcription was frozen at 22:33, before the context zip was opened | not yet |
 
 The sample checks are by Claude Opus 5.5 ([reviews/MPL_147_003-047/SAMPLE_CHECK.md](../raw/reviews/MPL_147_003-047/SAMPLE_CHECK.md),
 [reviews/MPL_147_048-137/SAMPLE_CHECK.md](../raw/reviews/MPL_147_048-137/SAMPLE_CHECK.md)). Each compared eight pages

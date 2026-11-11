@@ -1,0 +1,982 @@
+\subsection{The graded loop equations: three spaces that must be distinguished}
+
+The manuscript anchors are \S41, folio 315 (cote 140-3, scan 54),
+\S42, folio 331 (scan 85), and its explicit-solution question at
+folio 349 (scan 120).  The computations below answer the added graded
+questions while keeping their profinite lifting problem explicit.
+
+We fix a prime $\ell$, put $k=\mathbb Q_\ell$, and use positive word weight,
+so that the corresponding motivic weight is $-2n$.  Write
+$F^{(\ell)}=\langle X,Y\rangle_{\mathrm{pro}\text{-}\ell}$,
+$Z=(XY)^{-1}$, and $\mathfrak L=\operatorname{Lie}_k\langle x,y\rangle$,
+with $x=\log X$, $y=\log Y$ in unipotent completion.  In the associated
+graded Lie algebra, and only there, $z=-x-y$.  In the filtered Lie algebra
+$\log Z=-\operatorname{BCH}(x,y)$.
+This distinction changes the answer to the dimension question.
+
+\begin{claim}{B.g1}{Proved}{The precise leading-term map and its limitation}
+Restrict normalized loop automorphisms to $\lambda=1$, writing
+$\alpha_f(X)=X$, $\alpha_f(Y)=f^{-1}Yf$ with $f$ in the closed commutator
+subgroup.  Give this group the filtration in which $f$ has lower-central
+weight at least $n$.  For $n\geq2$ its degree-$n$ leading term is
+\[
+ \psi=(\log f)_n\in\mathfrak L_n,\qquad
+ D_\psi(x)=0,\quad D_\psi(y)=[y,\psi].
+\]
+This gives an injective map on the associated graded of the normalized
+pro-$\ell$ group, after tensoring with $k$, into outer special derivations.
+If the outer automorphism commutes with the geometric $\mathfrak S_3$,
+its image is $\mathfrak S_3$-invariant.  Its bracket is the Ihara bracket
+\[
+ \{\psi,\phi\}=D_\psi(\phi)-D_\phi(\psi)+[\psi,\phi].
+\]
+We do not identify the image of this map with the entire space of
+invariant special derivations.
+\end{claim}
+% anchor:B.g1
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+The graded Lie algebra of a free pro-$\ell$ group for the closed lower
+central series is the free Lie algebra over $\mathbb Z_\ell$; its
+rationalization is $\mathfrak L$.  One may obtain this description
+from the integral Lyndon basis and the Magnus embedding.  Its
+compatibility with the rational unipotent completion is supplied by
+\citet[Theorem~A.6 and Corollary~A.10]{HM2003}.
+In logarithmic coordinates,
+$\alpha_f(y)=\exp(-\operatorname{ad}\log f)y
+=y+[y,\psi]+\text{terms of degree greater than }n+1$.
+A Lie element of degree greater than one commuting with $y$ is zero:
+its associative expansion would be a polynomial in $y$, whereas the
+ordinary free Lie algebra on one generator has no such degree.
+Thus the normalized leading term is recovered from the automorphism.
+Changing a general lift of an outer automorphism adds an inner
+derivation.  The normalized lift has no ambiguity in degrees $n>1$,
+since a possible inner change must centralize $x$ and hence vanish in
+that degree.
+
+Preservation of the conjugacy class of $Z$ implies that the leading
+variation of $z$ is $[c,z]$ for some $c\in\mathfrak L_n$.
+The geometric permutations of $X,Y,Z$ act on the associated graded by
+permuting $x,y,z$; all higher terms in $\log Z$ disappear in this
+leading comparison.  Commutation modulo inner automorphisms therefore
+implies invariance of the outer derivation class.  Finally, applying
+$[D_\psi,D_\phi]$ to $y$ and using Jacobi gives
+$[D_\psi,D_\phi](y)=[y,\{\psi,\phi\}]$.
+These arguments establish the inclusion and the bracket; they contain
+no assertion that an arbitrary graded derivation has a compatible
+integral lift at every subsequent degree.
+\end{proof}
+
+For clarity we define the exact formal system we compute.  Let
+$\mathcal H_n\subset\mathfrak L_n$ be the solution space of
+\begin{align}
+ \psi(x,y)+\psi(y,x)&=0,\label{eq:graded-two}\\
+ \psi(x,y)+\psi(y,z)+\psi(z,x)&=0,\qquad z=-x-y.
+ \label{eq:graded-three}
+\end{align}
+The normalization $f\in(F^{(\ell)})'$ removes $\mathcal H_1$.
+Let $W^{\mathrm{lac}}_n$ denote the verified graded loop-and-symmetry
+system: the $\mathfrak S_3$-invariant outer derivations satisfying
+$D(x)=[a,x]$, $D(y)=[b,y]$, $D(z)=[c,z]$.
+This is the complete infinitesimal envelope of loop preservation and
+commutation with $\mathfrak S_3$.  Congruence conditions that do not
+descend to this quotient are not silently inserted into its definition.
+In particular, $W^{\mathrm{lac}}_n$ is not notation for an unproved
+surjectivity statement about the associated graded of the full
+profinite solution group.
+
+\begin{claim}{B.g2}{Proved}{The missing special identity}
+For $n>1$, normalized representatives identify $W^{\mathrm{lac}}_n$
+with the polynomials satisfying \eqref{eq:graded-two},
+\eqref{eq:graded-three}, and
+\begin{equation}
+ J(\psi):=[x,\psi(x,y)]-[x+y,\psi(-x-y,y)]=0.
+ \label{eq:graded-special}
+\end{equation}
+Indeed antisymmetry and \eqref{eq:graded-special} already imply
+\eqref{eq:graded-three} in this normalized setting.
+\end{claim}
+% anchor:B.g2
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+Subtract $\operatorname{ad}a$ from a special derivation to make its
+value on $x$ zero.  The remaining value on $y$ has the form
+$[y,\psi]$, uniquely in degree $n>1$.
+Let $s(x)=y,s(y)=x$ and $r(x)=y,r(y)=z,r(z)=x$.
+The difference $sD_\psi s^{-1}-D_\psi$ is inner precisely when
+$\psi(y,x)=-\psi(x,y)$: its value on $y$ forces the inner conjugator
+to be $\psi$, and its value on $x$ gives this equation.
+Similarly
+\[
+ (rD_\psi r^{-1})(x)=-[z,\psi(y,z)],\qquad
+ (rD_\psi r^{-1})(y)=0.
+\]
+The difference is $\operatorname{ad}\psi$ if and only if
+$[x,\psi(x,y)]=[z,\psi(y,z)]$, which by antisymmetry is
+\eqref{eq:graded-special}.  Adding its three cyclic transforms gives
+$\operatorname{ad}(\psi+r\psi+r^2\psi)=0$.
+The free Lie algebra has zero centre, so this is
+\eqref{eq:graded-three}.
+Conversely this same computation gives invariance under $s$ and $r$.
+Moreover
+$[y,\psi]=-[z,\psi+r\psi]$, so $D_\psi(z)=-[y,\psi]$
+is tangential at $z$.  Thus the derivation is special as well.
+\end{proof}
+
+\begin{claim}{B.g3}{Proved}{Exact dimensions through weight twelve}
+The independently recomputed dimensions are as follows.  The column
+$\mathcal H_n$ is literally the solution space of the two displayed
+linear equations, before removing its weight-one line.
+\begin{center}
+\begin{tabular}{r|rrrr}
+$n$&$\dim\mathfrak L_n$&$\dim\mathcal H_n$&$\dim W^{\mathrm{lac}}_n$&$d_n$\\\hline
+1&2&1&0&0\\
+2&1&0&0&0\\
+3&2&1&1&1\\
+4&3&1&0&0\\
+5&6&2&1&1\\
+6&9&3&0&0\\
+7&18&6&2&1\\
+8&30&10&1&1\\
+9&56&19&4&1\\
+10&99&33&2&1\\
+11&186&62&9&2\\
+12&335&112&7&2
+\end{tabular}
+\end{center}
+The review's invariant counts in weights one through eight are correct
+for special outer derivations.  Their identification with the solution
+space of \eqref{eq:graded-two}--\eqref{eq:graded-three} alone is false.
+The first excess over $d_n$ is weight four for the normalized
+$\mathcal H_n$, and weight seven for $W^{\mathrm{lac}}_n$.
+\end{claim}
+% anchor:B.g3
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+Here is a dimension calculation independent of Gaussian elimination.
+Let $V$ be the standard two-dimensional representation of
+$\mathfrak S_3$ with coordinates $x,y,z$, $x+y+z=0$.
+For $g\in\mathfrak S_3$ put
+\[
+ q_n(g)=\frac1n\sum_{d\mid n}\mu(d)
+        \bigl(\operatorname{tr}(g^d\mid V)\bigr)^{n/d}.
+\]
+The Witt character formula gives
+$q_n(g)=\operatorname{tr}(g\mid\operatorname{Lie}_nV)$.
+It follows by taking the logarithm of the tensor-algebra character
+identity, or equivalently the PBW product, and applying M\"obius
+inversion.  The traces of $1,s,r$ on $V$ are $2,0,-1$.
+In a standard representation the $s$-odd subspace is one-dimensional
+and $1+r+r^2$ vanishes; in the sign and trivial representations the
+cyclic sum does not vanish.  Hence
+\[
+ \dim\mathcal H_n=\frac{q_n(1)-q_n(r)}3.
+\]
+
+For $n>1$ the conjugator triples form
+$\mathfrak L_n\otimes k\{x,y,z\}$, and the map
+$(a,b,c)\mapsto[a,x]+[b,y]+[c,z]$ onto $\mathfrak L_{n+1}$ is
+surjective because $[\mathfrak L_n,x]+[\mathfrak L_n,y]
+=\mathfrak L_{n+1}$.
+There is no conjugator ambiguity in degree greater than one.
+Dividing its kernel by the diagonal inner copy of $\mathfrak L_n$
+gives, as a virtual $\mathfrak S_3$-representation,
+\[
+ \operatorname{OutSDer}_n=V\otimes\mathfrak L_n-\mathfrak L_{n+1}.
+\]
+Taking invariants, exact in characteristic zero, gives
+\[
+ \dim W^{\mathrm{lac}}_n
+ =\frac{q_n(1)-q_n(r)}3
+ -\frac{q_{n+1}(1)+3q_{n+1}(s)+2q_{n+1}(r)}6.
+\]
+Degree one is handled separately: all special derivations there are
+inner.  Finally PBW for one generator in every odd weight at least
+three gives
+$\prod_{n\geq1}(1-t^n)^{-d_n}=(1-t^2)/(1-t^2-t^3)$.
+Substitution yields the table.
+
+The program \texttt{graded\_dimensions.py} separately constructs
+standard Lyndon brackets in the free associative algebra.  It forms
+the exact symmetry projection
+$(1-s)(2-r-r^2)$, extracts an independent rational basis, and computes
+the rational nullspace of \eqref{eq:graded-special} on it.
+A nonzero minor modulo $1000003$ proves independence; the character
+formula supplies the matching characteristic-zero upper bound, so
+there is no unproved modular-rank inference.  The final kernel
+calculation uses exact rational arithmetic, and agrees in every weight
+with the formula above.  The code, full output, CSV and integer witness
+coefficients are included.
+\end{proof}
+
+Write $b_w$ for the standard Lyndon bracket of a word $w$ in $x<y$;
+thus $b_x=x,b_y=y$, and $b_w=[b_u,b_v]$ when $v$ is the longest
+proper Lyndon suffix and $w=uv$.
+
+\begin{claim}{B.g4}{Refuted}{A fourth-weight obstruction to the naive linearization}
+The polynomial
+\[
+ q_4=b_{xxxy}-4b_{xxyy}+b_{xyyy}
+\]
+satisfies the two-cycle and three-cycle linear equations but is not a
+leading term of any solution of the genuine group equations (I),(II)
+over a characteristic-zero field.  The failure already occurs in
+weight five.
+\end{claim}
+% anchor:B.g4
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+Direct substitution verifies both linear equations.  Its special
+defect is
+\[
+ J(q_4)=2b_{xxxxy}-3b_{xxxyy}+b_{xxyxy}
+       -3b_{xxyyy}-2b_{xyxyy}+2b_{xyyyy}\ne0.
+\]
+Thus B.g1--B.g2 already obstruct an actual loop-and-symmetry lift.
+For a direct check in Drinfeld's group equations, write
+$f=\exp(q_4+q_5+\cdots)$ and
+$\log Z=z_0+z_2+\cdots$, where
+$z_0=-x-y$ and $z_2=-[x,y]/2$.
+Through weight five the equation
+$f(Z,X)f(Y,Z)f(X,Y)=1$ is linear in $\log f$ because products of
+terms of weight four have weight at least eight.
+Its weight-five inhomogeneous term is
+\[
+ R_5=(\partial_1q_4)(z_0,x)z_2
+       +(\partial_2q_4)(y,z_0)z_2.
+\]
+Consequently $q_5\in\mathfrak L_5$ must satisfy
+$q_5+s q_5=0$ and $(1+r+r^2)q_5=-R_5$.
+The supplied exact program \texttt{graded\_first\_lifts.py} constructs
+this six-unknown system: its coefficient matrix has rank four, whereas
+its augmented matrix has rank five.  The output includes a left-kernel
+vector annihilating the matrix and pairing to one with the right-hand
+side, a complete rational inconsistency certificate.  Thus no higher
+coefficients can repair this leading term.
+\end{proof}
+
+\begin{claim}{B.g5}{Proved}{An explicit seventh-weight loop solution failing the pentagon}
+The polynomial
+\begin{align*}
+ q_7={}&3b_{xxxyxyy}+3b_{xxxyyxy}+b_{xxyxyxy}
+       -3b_{xxyxyyy}\\
+      &-3b_{xxyyxyy}-3b_{xxyyyxy}-b_{xyxyxyy}
+\end{align*}
+belongs to $W^{\mathrm{lac}}_7$ but does not satisfy the infinitesimal
+pentagon.  This is an explicit rational graded counterexample; it is
+not asserted to be an element of $\GTz$ or of its pro-$\ell$ image.
+Moreover $\dim W_7=1$ follows without the 2026 all-weight upper bound.
+\end{claim}
+% anchor:B.g5
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+The polynomial is an integer linear combination of two independently
+computed basis vectors of $W^{\mathrm{lac}}_7$.  The program expands
+it in associative words and verifies all three displayed linear
+identities exactly.
+For a certified nonzero pentagon defect use the following representation
+of $\mathfrak t_4$ on $\operatorname{Lie}\langle a,b,c\rangle$.
+For $i,j\leq3$, $t_{ij}$ is the derivation sending
+$a_i\mapsto[a_i,a_j]$, $a_j\mapsto[a_j,a_i]$ and the third generator
+to zero, where $(a_1,a_2,a_3)=(a,b,c)$; $t_{i4}$ acts by
+$\operatorname{ad}a_i$.
+All defining relations hold: for example the derivation $t_{ij}$ fixes
+$a_i+a_j$, so it commutes with
+$\operatorname{ad}(a_i+a_j)$; the remaining relations follow by Jacobi
+or disjoint support.  The program also checks all eighteen such
+relations directly.
+
+Let $P(\psi)$ be the left side minus the right side of the pentagon
+(1.4) in the prompt.  Under this representation, the coefficient of
+the associative word $a^5bcb$ in $P(q_7)(a)$ is $16$.
+It is therefore nonzero in characteristic zero, and hence the original
+pentagon defect in $\mathfrak t_4$ is nonzero.  No faithfulness of the
+representation is needed for this implication.
+\nolinkurl{graded_pentagon_witness.py} prints this coefficient and
+writes the entire image; its exact output is part of the archive.
+Since $W_7\subset W^{\mathrm{lac}}_7$ by B.g8, a nonzero pentagon
+map on the latter two-dimensional space leaves a kernel of dimension
+at most one.  The classical free odd-weight subalgebra of B.g7
+supplies dimension at least one.  Thus $\dim W_7=1$.
+\end{proof}
+
+\subsection{Comparison with the Grothendieck--Teichm\"uller Lie algebra}
+
+\begin{claim}{B.g6}{Known}{The typed rational comparison chain}
+Let $\mathrm{GT}^{\mathrm{eq}}_\ell$ mean the group of normalized
+invertible pairs satisfying the pro-$\ell$ forms of (I),(II),(III).
+This notation is distinct from the image of $\GT$ in that group.
+There are continuous homomorphisms
+\[
+ G_{\mathbb Q}\hookrightarrow\GT
+ \longrightarrow\mathrm{GT}^{\mathrm{eq}}_\ell
+ \longrightarrow\mathrm{GT}(\mathbb Q_\ell).
+\]
+The last arrow is injective for normalized free-group pairs; no
+surjectivity of either completion arrow is asserted.  On the
+characteristic-zero algebraic group with $\lambda=1$, a choice of
+associator gives
+\[
+ \mathrm{GRT}_1(k)\simeq\mathrm{GT}_1(k),\qquad
+ \operatorname{gr}\mathfrak{gt}_1(k)=\mathfrak{grt}_1(k).
+\]
+The first isomorphism depends on the associator, while the induced
+map on the graded Lie algebra is the identity in the standard
+coordinates.  The space $W$ in the prompt is $\mathfrak{grt}_1$.
+\end{claim}
+% anchor:B.g6
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+The arithmetic inclusion and the normalized pair convention are
+those of \citet[Proposition~1, Proposition~2 and Main Theorem]{HS2000}:
+Belyi supplies injectivity of the outer tripod action, and the
+normalized representative is unique.  Projection of the free
+profinite group to its characteristic pro-$\ell$ quotient sends each
+defining relation to the corresponding pro-$\ell$ relation and sends
+an automorphism and its inverse to inverse maps.  This defines the
+middle arrow; it does not show that every solution in the new category
+comes from a profinite one.
+
+The continuous unipotent comparison is
+\citet[Theorem~A.6 and Corollary~A.10]{HM2003}.
+Its hypotheses hold for the finitely generated discrete free group
+$F_2$.  The Magnus expansion embeds its free pro-$\ell$ completion
+in $1+\mathbb Z_\ell\langle\!\langle u,v\rangle\!\rangle$.
+The expansion can be recovered from all its finite-degree truncations,
+and scalar extension to $\mathbb Q_\ell$ loses no coefficient.
+Consequently the free pro-$\ell$ group embeds in its unipotent
+completion.  Equality of two normalized pairs after completion
+therefore gives equality of their scalar parameters and of $f$;
+this proves the stated injectivity.
+
+Drinfeld defines the pro-unipotent group in \S4 of
+\citet{Drinfeld1990g}.  His Propositions~5.1 and~5.5 give the left
+$\mathrm{GT}(k)$-torsor and right $\mathrm{GRT}(k)$-torsor of
+associators.  Proposition~5.6 is the exact theorem identifying these
+groups after an associator has been chosen; it also explicitly states
+$\operatorname{gr}\mathfrak{gt}_1=\mathfrak{grt}_1$ and that the
+induced graded map is the identity.  The Lie equations are
+(5.17)--(5.20), and Proposition~5.7 removes the redundant special
+identity.  Thus these are comparisons of proalgebraic groups, their
+Lie algebras and their weight filtrations, not comparisons of arbitrary
+finite congruence quotients.
+\end{proof}
+
+\begin{claim}{B.g7}{Known}{The arithmetic lower bound and its hypotheses}
+Let $I^n_\ell G_{\mathbb Q}$ be the kernel of the outer action on
+$F^{(\ell)}/L^{n+1}F^{(\ell)}$.  The positive graded arithmetic Lie
+image, tensored with $\mathbb Q_\ell$, contains the free odd-weight
+Lie algebra and therefore has dimension at least $d_n$ in weight $n$.
+In the standard mixed-Tate comparison this image is itself freely
+generated by one element in each odd weight at least three.  Hence
+any correctly derived graded condition on the Galois image must leave
+at least $d_n$ independent solutions.  Our table satisfies this test
+in every computed weight.
+\end{claim}
+% anchor:B.g7
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+The exact results needed from
+\citet{HM2003}, \emph{Weighted completion of Galois groups and Galois
+actions on the fundamental group of $\mathbb P^1-\{0,1,\infty\}$},
+are Theorem~7.3, Theorem~8.4, Lemma~8.5 and Remark~8.6.
+The action factors through the Galois group unramified outside $\ell$,
+as used explicitly in their \S8.4.
+For this curve $H^1_{\mathrm{et}}(X,\mathbb Q_\ell(1))$ is a trivial
+Galois module because the three punctures are rational.  Thus
+Theorem~8.4 applies: its graded outer Lie image is precisely the
+rationalization of $\operatorname{gr}^{>0}_{I_\ell}G_{\mathbb Q}$.
+Theorem~7.3 supplies generators in odd weights, initially including
+weight one; Lemma~8.5 kills weight one in the outer action, and
+Remark~8.6 identifies the nonzero higher odd abelian classes by
+Soul\'e's characters.  Hain--Matsumoto alone proves generation, not
+freeness, a limitation stated explicitly in their introduction.
+
+Brown's \emph{Mixed Tate motives over $\mathbb Z$}, Theorem~1.1 and
+its stated consequence called Conjecture~1 in the introduction,
+prove faithfulness of the mixed Tate action
+\citep{Brown2012g}.  The unipotent motivic Lie algebra is free on one
+generator in each odd weight at least three, as recalled in that
+paper's \S1.1.  Its action respects the braid associativity and
+symmetry operations, so its image satisfies the pentagon and the two
+cycle equations.  This gives the free odd-weight subalgebra of $W$.
+For the $\ell$-adic arithmetic comparison the same generators are
+identified by their nonzero Soul\'e abelian classes: the crystalline
+mixed Tate completion in Hain--Matsumoto, Theorem~9.2, Proposition~9.6 and
+Theorem~9.8, has the same free graded source with weight one removed.
+The realization comparison on abelian generators is the regulator
+$K_{2n-1}(\mathbb Z)\otimes\mathbb Q_\ell\to H^1_f(G_{\mathbb Q},\mathbb Q_\ell(n))$.
+Its isomorphism is the final assertion of Theorem~9.2, with the
+crystalline modification stated immediately after Proposition~9.6;
+the proof explicitly includes $\ell=2$ via Rognes--Weibel, and odd
+primes via Soul\'e.  Thus it is an isomorphism on these one-dimensional
+odd abelian generators.  A graded map between free Lie algebras on
+these generators that is invertible on their abelianizations is
+surjective degree by degree; their dimensions agree by PBW, so it is
+an isomorphism.  Brown's faithfulness then rules out relations in the
+arithmetic image.  This is also the Deligne--Ihara consequence stated
+at the beginning of Brown's paper.  Applying an actual graded
+condition to this embedded free subalgebra proves the inequality.
+This argument uses positive word weight, not Hain--Matsumoto's
+negative doubled motivic weight without reindexing.
+\end{proof}
+
+\begin{claim}{B.g8}{Proved}{The special identity follows from the pentagon}
+Over any field of characteristic zero, the two-cycle, three-cycle and
+infinitesimal pentagon imply \eqref{eq:graded-special}.  Thus this
+part of the loop system is of type (a) in the requested classification;
+it does not depend on the 2026 upper bound.
+\end{claim}
+% anchor:B.g8
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+We give the reduction rather than only invoke Drinfeld's
+Proposition~5.7.  In degree greater than two forget strand $2$ in
+$\mathfrak t_4$ and write
+$a=t_{12},b=t_{23},c=t_{24},u=t_{13},v=t_{34}$.
+The kernel is the free Lie algebra on $a,b,c$; the base acts by the
+usual braid derivations.  This follows directly from the presentation:
+$t_{ij}$ acts on the free fibre generators $s_i,s_j$ by
+$[s_i,s_j],[s_j,s_i]$ and kills the others; these derivations satisfy
+all the base braid relations.
+Put $S=a+b+c$ and
+\[
+ F_a=\psi(u+b,v)-\psi(u,v),\quad
+ F_b=\psi(u+a,v+c)-\psi(u,v),\quad
+ F_c=\psi(u,v+b)-\psi(u,v).
+\]
+All three belong to this free kernel.  The braid relations give
+\[
+ [S,F_b]=[a,\Delta_a]+[c,\Delta_c],\qquad
+ \Delta_a=F_b-F_a,\quad\Delta_c=F_b-F_c.
+\]
+The pentagon and its image under exchange of strands $1,4$ give
+\begin{align*}
+ \Delta_a&=\psi(a,b+c)-\psi(a,b)-\psi(b,-b-c),\\
+ \Delta_c&=-\psi(c,a+b)+\psi(c,b)+\psi(b,-b-a).
+\end{align*}
+Both vanish at $S=0$.  In that quotient the actions of $u,v$ are
+$\operatorname{ad}c,\operatorname{ad}a$; hence
+$[b,F_b+\psi(c,a)]=0$.
+The degree-$n>1$ centralizer of $b$ is zero, so
+$F_b|_{S=0}=-\psi(c,a)$.
+
+Every degree-$n$ Lie polynomial linear in a free direction $T$ and
+otherwise involving $a$ is a scalar multiple of
+$\operatorname{ad}_a^{n-1}T$.  Write
+$\partial_2\psi(a,-a)T=k\operatorname{ad}_a^{n-1}T$.
+Differentiating $\psi(a,-a)=0$ gives the same expression for
+$\partial_1\psi(a,-a)T$.
+Now differentiate the displayed free-kernel identity with
+$c=S-a-b$, at $S=0$ in direction $T$.  Substitution of the two
+expressions for $\Delta$ gives
+\[
+ -[T,\psi(c,a)]
+ =k(\operatorname{ad}_a^n-\operatorname{ad}_c^n)T
+  +[a,\partial_2\psi(b,a)T]-[c,\partial_2\psi(b,c)T].
+\]
+Set $G(a,b)=[a,\psi(b,a)]+[c,\psi(b,c)]$, $c=-a-b$.
+The three-cycle and antisymmetry turn its derivative into
+\[
+ d_aG(T)=-k(\operatorname{ad}_a^n-\operatorname{ad}_c^n)T.
+\]
+Equality of mixed derivatives in directions $U,V$, specialized to
+$a=a_0,b=-a_0,c=0,U=a_0,V=T$, gives
+$(n+1)k\operatorname{ad}_{a_0}^nT=0$.
+Indeed the two derivatives of $\operatorname{ad}_a^n$ are respectively
+$n\operatorname{ad}_{a_0}^nT$ and
+$-\operatorname{ad}_{a_0}^nT$, while the derivatives at $c=0$ vanish.
+Thus $k=0$.  All $a$-derivatives of $G$ vanish; characteristic zero and
+evaluation at $a=0$ give $G=0$.
+Using antisymmetry, this is $J(\psi)=0$.
+Weights one and two vanish for the full system: the degree-one
+pentagon forces both coefficients to vanish, and the degree-two
+three-cycle is $3[x,y]$ times its scalar coefficient.
+This completes the proof, including the low weights.  The free-fibre
+calculation is also the argument of OpenAI, Lemma~2.4; its logic has
+been reproduced here independently of their all-weight estimate.
+\end{proof}
+
+\begin{claim}{B.g9}{Proved}{The conditional consequence of the 2026 upper bound}
+Assume \citet[Corollary~5.4]{OpenAI2026g}, namely $\dim W_n\leq d_n$ in every
+weight.  Then the free arithmetic graded subalgebra in B.g7 equals
+$W\otimes\mathbb Q_\ell$ in every weight.  Consequently every
+homogeneous linear relation on that Lie algebra which holds on the
+arithmetic graded image holds on all of $W\otimes\mathbb Q_\ell$.
+When its premise is supplied by the attached manuscript, the equality
+is labelled \emph{claimed (OpenAI, 2026, unrefereed)}.
+It does not identify $G_{\mathbb Q}$ with $\GT$.
+\end{claim}
+% anchor:B.g9
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+The injected free subalgebra has dimension $d_n$ in degree $n$ by
+PBW.  The opposite inequality forces equality of each finite-dimensional
+weight piece.  Taking their products gives equality after weight
+completion because each coefficient of a bracket involves finitely
+many weight pieces.  A linear relation is a linear map out of such a
+piece; a map vanishing on a spanning subspace vanishes on the whole
+space.  For a claimed nonlinear condition one would additionally
+need a specified algebraic equation and the appropriate Zariski-density
+argument; the existence of a tangent space by itself is insufficient.
+A filtered or graded Lie algebra does not recover the finite,
+disconnected, torsion or integral data lost under completion, so none
+of these arguments imply the profinite assertion.
+\end{proof}
+
+\paragraph{Audit of the imported upper bound.}
+We opened the attached 41-page manuscript and followed the chain from
+\S2 to Corollary~5.4, rather than using its abstract as a theorem.
+We also opened the attached manuscript of \citet{Willwacher2026g}, its introductory
+statements and the beginning of its alternative construction.  The
+following distinctions record the extent of our check.
+
+\begin{enumerate}[leftmargin=*]
+\item \emph{Integral reduction (OpenAI, Lemmas 2.1--2.4 and
+Proposition 2.5).}  The centralizer, free-fibre and derivative argument
+for the special identity is reproduced in B.g8.  A rational solution
+space intersects the finite free $\mathbb Z_{(2)}$ Lie lattice in a
+saturated submodule: if $2v$ belongs, then $v$ belongs to the rational
+solution space.  Thus $L\cap2K=2L$, and reduction embeds with dimension
+unchanged.  Integral Lyndon bases and the iterated free-fibre PBW basis
+make the two equation targets torsion free.  These are exactly the
+hypotheses required to reduce the rational equations, and we checked
+them.  No claim that the reduction equals \emph{every} solution in
+characteristic two is used.
+\item \emph{The alphabet $A=x^2,C=[x,y],B=y$ (Lemma 3.1).}
+With $x>y$ the leading words $xx,xy,y$ form a prefix code, proving
+associative injectivity.  Lazard elimination uses
+$e_j=\operatorname{ad}_x^j y$; in characteristic two
+$e_{2i}=\operatorname{ad}_A^iB$ and
+$e_{2i+1}=\operatorname{ad}_A^iC$.  We checked the inference that every
+ordinary Lie element of weight greater than one has this expression.
+It does not identify $x^2$ itself as an ordinary Lie element in $x,y$.
+\item \emph{The transfer of the pentagon (Lemma 3.3 and
+Proposition 3.2).}  We independently evaluated all 63 source
+commutator cases needed for the incident and nonincident index patterns
+in the free associative fibre over $\mathbb F_2$; all agree with the
+displayed formulas.  The ordering argument uses the decreasing pair
+(number of base letters, number of base--fibre inversions), so its
+termination does not require preservation of symbolic length.
+We checked why source corrections increase the $u$-count, target
+corrections decrease it, and the common quadratic parts agree.
+The independent source normal forms come from the prefix code
+$XX,XU_i,U_i$.  These are the logical points on which the claimed
+transfer rests.  We have not supplied a second all-weight construction
+of the complete target rewriting calculation: the transferred
+Proposition~3.2 remains an imported assertion in our conditional use
+of Corollary~5.4, \emph{claimed, steps not checked by us} beyond the
+checks just specified.
+\item \emph{Deletion and injectivity (\S4).}  The integer edge
+valuations use the distinct rational hyperplanes $z_i-z_j=0$ and
+$z_i+z_j=0$ before reduction.  They must not be merged in characteristic
+two.  We checked the logarithmic triangle/residue argument for the
+incidence relations, including repeated letters.  Independently,
+\nolinkurl{graded_preprint_audit.py} finds the thirteen codimension-two
+flats of the $B_3$ arrangement and verifies 13,104 exact integral
+deletion incidence relations on all words of lengths zero through
+five.  We followed the minimal-$A$ argument: an $e$ before a nonempty
+$p,0$ block cannot be deleted before that block, and its final $p$ or
+$0$ has coefficient zero modulo two.  Reversal excludes the remaining
+terminal-$e$ words.  In Proposition~4.4 the two-marked-position test
+forces all $A,B$ coefficients to agree, and the three-marked-position
+test kills their common value when there are at least two $A$'s.
+We checked separately the one-$A$ exceptions $r=1,2$.
+These observations check the stated argument conditional on the
+transferred relation; bounded deletion tests alone are not an
+all-weight proof.
+\item \emph{The image bound (Lemmas 5.1--5.2, Proposition 5.3).}
+The $e_j$ expansion makes the number of even elimination letters equal
+to the $B$-count.  The Ore algebra with $DB=C,DC=0,X^2=0$ is valid
+because $D^2=0$ in characteristic two.  We checked the lower-count
+argument proving $f(C,B+s(C))=f(C,B)$.
+The subsequent Vandermonde matrix is inverted over
+$\mathbb F_2(t_0,\ldots,t_{r-1})$, where its determinant is a nonzero
+polynomial; it is not evaluated on the two-element field, and there
+is no division by the length $r$.  Divisibility by every
+$s_{i-1}-s_i$ excludes $g_0=B$ from the associative expansion in
+$g_j=\operatorname{ad}_C^jB$; the retraction $g_0\mapsto0$ preserves
+ordinary Lie membership.  We checked this logical passage and the
+finite filtration sum in Corollary~5.4.  It remains conditional here
+on the preceding imported transfer.
+\item \emph{Material not imported as checked.}  OpenAI's holonomy
+construction in \S\S6--8, especially Proposition~7.1, is
+\emph{claimed, steps not checked by us}; Brown supplies the independent
+lower bound used here.  Willwacher's Theorems~1.1 and~1.3 are
+\emph{claimed, steps not checked by us}: we have not checked his
+complete alternative proof.  The attached Lean comparator ends with
+\texttt{theorem main : MainStatement := by sorry}; it is a precise
+statement, not an attached proof certificate.  The separate scope
+note does not change this fact.
+\end{enumerate}
+
+\subsection{Torsion, lifting and what a congruence condition can retain}
+
+\begin{claim}{B.g10}{Proved}{Torsion in the normalized pro-$\ell$ kernel}
+The subgroup $\lambda=1$ of normalized loop-and-symmetry automorphisms
+of the free pro-$\ell$ group has no nonidentity element of finite
+order.  The same is true in characteristic-zero unipotent completion.
+For an element of finite order in the full pro-$\ell$ solution group,
+its order equals the order of its scalar image in
+$\mathbb Z_\ell^\times$.  Thus its possible order divides $\ell-1$
+for odd $\ell$, and divides two for $\ell=2$.
+Every divisor of $\ell-1$ is realized in the pro-$\ell$ arithmetic
+image when $\ell$ is odd.  Finite subgroups of a fixed order in the
+full pro-$\ell$ solution group are then conjugate by its $\lambda=1$
+kernel.  For $\ell=2$ only the trivial group and order two occur;
+we make no conjugacy assertion at two.  The pair $(-1,1)$ has order two.
+The odd-prime existence statement does not give explicit normalized
+coefficients $f$.
+\end{claim}
+% anchor:B.g10
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+The normalized representative is unique by the free-group centralizer
+argument used in B.g1, so a finite-order outer element has a finite-order
+normalized representative.  Suppose $\alpha\ne1$ acts trivially on
+abelianization.  The Magnus filtration is separated; take its first
+nonzero derivation term $D$ in positive degree.  Composition adds this
+term, so the first term of $\alpha^m$ is $mD$.
+The module of homogeneous derivations embeds in a finite direct sum
+of free $\mathbb Z_\ell$ Lie pieces and is torsion free.  Hence
+$mD\ne0$ for every nonzero integer $m$, contradiction.
+The same proof works over $\mathbb Q_\ell$, or follows from
+exponential and logarithm for a prounipotent group in characteristic
+zero.
+If an element $g$ has finite order and its scalar has order $e$,
+then $g^e$ is a finite-order element in the torsion-free kernel, so
+$g^e=1$.  The reverse divisibility is immediate.  The torsion units of
+$\mathbb Z_\ell^\times$ are $\mu_{\ell-1}$ for odd $\ell$ and
+$\{\pm1\}$ for two.  Finally $X\mapsto X^{-1},Y\mapsto Y^{-1}$
+is an involution and represents $(-1,1)$ in the normalized convention.
+For completeness, the normalized $\lambda=1$ kernel is a pro-$\ell$
+group.  The kernel of the action of $\operatorname{Aut}(F^{(\ell)})$
+on the Frattini quotient is pro-$\ell$: on each successive finite
+lower exponent-$\ell$ central quotient, automorphisms trivial on the
+preceding quotient differ by homomorphisms to an elementary abelian
+$\ell$-group.  Taking inverse limits proves the assertion, and the
+normalized kernel is a closed subgroup of it.
+The cyclotomic character of $G_{\mathbb Q}$ is onto
+$\mathbb Z_\ell^\times$.  For odd $\ell$, the inverse image of
+$\mu_{\ell-1}$ in the arithmetic image is therefore an extension
+of this finite cyclic group by a pro-$\ell$ group.
+It has a complement, unique up to conjugation by that kernel.
+Here is the requisite form of Schur--Zassenhaus: for a finite
+$\ell$-group kernel, induct on its order using a characteristic
+elementary abelian subgroup of its centre; on that subgroup the
+obstruction and ambiguity are $H^2(C_m,V)$ and $H^1(C_m,V)$, both
+zero since multiplication by $m$ is invertible and averaging contracts
+the positive-degree cochain complex.  Induction gives existence and
+conjugacy.  Passage to the inverse limit follows by compactness of
+the finite nonempty sets of complements and conjugators.
+The same argument in the full solution group conjugates any two
+finite subgroups with the same scalar image.  A complement for
+$\mu_{\ell-1}$ contains its subgroups of every divisor order.
+At two the displayed complex-conjugation pair supplies the nontrivial
+allowed order; no coprime argument applies there.
+Finite nilpotent or finite congruence quotients may acquire torsion
+because their graded pieces are finite; the torsion-freeness argument
+does not apply to those quotients.  Conversely, these separate
+pro-$\ell$ results do not classify torsion in the full profinite
+group unless a further joint injectivity theorem is supplied.
+\end{proof}
+
+\begin{claim}{B.g11}{Open}{The remaining infinite lifting problem, with a verified finite jet}
+For the explicit $q_7$ of B.g5, we construct
+\[
+ F=q_7+F_9+F_{11},\qquad f=\exp F,
+\]
+satisfying the genuine group equations (I),(II) with $\lambda=1$
+through weight twelve.  The complete rational Lyndon coefficients
+are supplied: $F_9$ has 46 nonzero coefficients with common denominator
+dividing $720$, and $F_{11}$ has 160 with common denominator dividing
+$8640$; the even corrections through weight twelve are zero.
+Reduction gives a solution in the finite nilpotent Lazard group
+\[
+ \exp\bigl(\operatorname{Lie}_{\mathbb F_{13}}\langle x,y\rangle/
+                 \mathfrak L_{>12}\bigr),
+ \qquad |G|=13^{747}.
+\]
+Its leading seventh-weight infinitesimal pentagon defect remains
+nonzero.  We have not settled whether $q_7$ admits compatible
+coefficients in an actual free pro-$\ell$ group satisfying (I),(II)
+in every degree, or whether any such element lifts to $\GTz$.
+The first uncomputed rational correction is weight thirteen; for
+$\ell=13$ this is also the first class outside the class-less-than-prime
+Lazard argument used for the finite example.
+\end{claim}
+% anchor:B.g11
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}[Proof of the finite assertion and record of the obstruction]
+Put $Z=(XY)^{-1}$ and substitute the actual
+$\log Z=-\operatorname{BCH}(x,y)$, not $-x-y$.
+Since $F$ starts in degree seven, every commutator between two values
+of $F$ has degree at least fourteen.  Thus through degree twelve the
+logarithm of (II) is exactly
+\[
+ F(\log Z,x)+F(y,\log Z)+F(x,y).
+\]
+Equation (I) is likewise $F(x,y)+F(y,x)=0$ in this range.
+The program \nolinkurl{graded_rational_jets.py} computes the required
+BCH terms, imposes the additional simplifying ansatz that even
+corrections vanish, and solves all the remaining exact rational
+constraints while retaining the free parameters from earlier weights.
+There are 242 unknown Lyndon coefficients, and the full system has
+rank 229.  It then substitutes the resulting $F_9,F_{11}$ back into
+both identities and checks every associative coefficient through
+weight twelve.  Both defects are zero.
+
+The retained failed greedy computation is relevant to the claimed
+``successive approximation'' argument in the prompt: choosing all
+free ninth-weight coefficients to be zero after the preceding equations
+produces an inconsistent tenth-weight system.  This is not an
+obstruction to every lift; preserving those parameters and solving
+the coupled constraints gives the successful jet just described.
+Thus unrestricted choices at one stage do not prove an integral
+infinite lifting theorem.
+
+For the finite example, class $12$ is smaller than $13$, so the
+BCH and exponential denominators in this class are units in
+$\mathbb F_{13}$.  The displayed rational corrections also have
+unit denominators at thirteen.  The truncated free Lie algebra
+therefore defines its finite BCH group, and its dimension is
+$\sum_{n=1}^{12}\dim\mathfrak L_n=747$.
+The independent program \texttt{graded\_lazard13.py} repeats the
+substitutions directly modulo thirteen and verifies both defects
+are zero.  The normalized substitution has identity linear part;
+solving successively by degree gives its inverse, so it is an
+automorphism of this finite nilpotent group.  The leading pentagon
+coefficient computed in B.g5 reduces to $16\equiv3\pmod{13}$.
+This establishes the stated finite equation solution and its
+infinitesimal pentagon failure without enumerating $13^{747}$ elements.
+
+An infinite pro-$\ell$ lift requires compatible integral choices at
+all further nilpotent and $\ell$-power levels.  Rational exponential
+alone does not control denominators in unbounded degree.  Moreover
+a pro-$\ell$ solution need not lie in the image of the profinite
+solution group.  Those are the precise unproved steps; neither is
+supplied by our finite computation or by the additive formal
+exponential of B.g14.
+\end{proof}
+
+\begin{claim}{B.g12}{Proved}{Failure of literal descent of finite congruence maps}
+A homomorphism $\Fhat\to H$ to a finite group factors through the
+maximal pro-$\ell$ quotient only if its image is an $\ell$-group;
+this condition is also sufficient.  No nontrivial finite quotient of
+$\Fhat$ extends as a homomorphism from all the rational points of its
+characteristic-zero unipotent completion.  Consequently a congruence
+condition imposed through a specified finite matrix quotient has no
+automatic informative graded form in the system above.
+\end{claim}
+% anchor:B.g12
+\manuscriptanchor{\S 41; folios315--316; cote140-3 scans54--57}
+
+\begin{proof}
+Every continuous finite image of a pro-$\ell$ group is an $\ell$-group,
+which proves necessity.  Sufficiency is the universal property of the
+maximal pro-$\ell$ quotient.  A characteristic-zero unipotent group,
+and its inverse limit, has a unique $m$th root for every positive
+integer $m$, given by $\exp((\log g)/m)$.
+If a homomorphism to a finite group of exponent $m$ were nontrivial,
+write $g=h^m$; its image would nevertheless be one.  Thus every such
+homomorphism is trivial.  A finite congruence predicate can still imply
+some rational Lie relation, but that requires an explicit comparison
+argument.  It cannot be inferred by substituting $z=-x-y$ in the
+original finite quotient.
+\end{proof}
+
+We found no map identifying the degenerate pentagon (3.5), or a
+$2$-adic version of it, with one of Grothendieck's level-two or
+level-four congruence conditions.
+
+\begin{claim}{B.g13}{Proved}{The characteristic-two arrangement is not naive reduction of its hyperplanes}
+The Lie algebra used in the degenerate pentagon of OpenAI,
+Proposition~3.2, retains nine degree-one generators when $d=3$.
+The arrangement obtained by identifying the equations
+$z_i-z_j=0$ and $z_i+z_j=0$ after reduction to $\mathbb F_2$ has
+only six hyperplanes.  Their holonomy Lie algebras are therefore
+not identified by the reduction used in that proposition.
+\end{claim}
+% anchor:B.g13
+\manuscriptanchor{\S 38; fol.297; cote140-3 scan18; added Recent results task4}
+
+\begin{proof}
+The defining incidence relations are brackets, so impose no
+relations in degree one.  Over $\mathbb Q$ the three coordinate
+hyperplanes and six signed diagonal hyperplanes are distinct.
+Reduction of the integral incidence \emph{presentation} preserves
+these nine generator symbols.  Reducing the hyperplane \emph{equations}
+first identifies each signed pair, leaving three coordinate and three
+diagonal hyperplanes.  The degree-one dimensions, nine and six, are
+already different.  Our deletion program accordingly constructs all
+thirteen rational codimension-two flats before any scalar reduction.
+This checks a concrete obstruction to the proposed naive comparison;
+it neither proves nor presupposes a link to a modular congruence
+quotient of level two or four.
+\end{proof}
+
+\begin{claim}{B.g14}{Proved}{An infinite element in the additive graded formal loop group}
+Let $\mathcal A^{\mathrm{add}}$ be the group of continuous outer
+$k$-Lie automorphisms of $\widehat{\mathfrak L}$, equal to the identity
+on abelianization, preserving the three adjoint-conjugacy classes of
+$x,y,z=-x-y$, and commuting with the linear $\mathfrak S_3$ action.
+The exponential of $D_{q_7}$ defines a nonidentity element of
+$\mathcal A^{\mathrm{add}}$ outside $\mathrm{GRT}_1(k)$.
+This supplies an explicit infinite element in this additive graded
+formal group.  We do not identify $\mathcal A^{\mathrm{add}}$ with
+$\mathrm{GT}_0(k)$ or with any pro-$\ell$ group.
+\end{claim}
+% anchor:B.g14
+\manuscriptanchor{\S 42; folios 331, 349; cote 140-3 scans 85, 120}
+
+\begin{proof}
+The derivation raises degree by seven, so
+$\exp D_{q_7}=\sum_{j\geq0}D_{q_7}^j/j!$ converges for the weight
+filtration, with only finitely many terms affecting a fixed weight.
+It is an automorphism, with inverse $\exp(-D_{q_7})$.
+Tangentiality integrates directly.  If $D(u)=[u,c]$, set
+$U(t)=\exp(tD)u$ and $C(t)=\exp(tD)c$.  Then
+$U'(t)=[U(t),C(t)]$.
+The equation $g'(t)=g(t)C(t)$, $g(0)=1$, has a unique solution
+weight by weight in the completed enveloping algebra, using integration
+of polynomials in $t$ over the characteristic-zero field.
+The solution is group-like because $C(t)$ is primitive, and
+$U(t)=g(t)^{-1}ug(t)$.  Apply this to $x,y,z$.
+In the quotient by inner derivations, B.g2 says that $D_{q_7}$ is
+$\mathfrak S_3$-invariant.  Exponential commutes with conjugation and
+with this quotient, so its outer class centralizes $\mathfrak S_3$.
+Finally the degree-seven logarithmic term of an element of
+$\mathrm{GRT}_1(k)$ must satisfy the infinitesimal pentagon.
+B.g5 proves that $q_7$ does not; higher terms cannot cancel that
+lowest defect.  Thus the constructed element is outside
+$\mathrm{GRT}_1(k)$, as asserted.
+\end{proof}
+
+\begin{claim}{B.g15}{Proved}{A genuine finite non-arithmetic outer solution}
+Let $N_2$ be the characteristic finite quotient of $\Fhat$ given by
+the free class-twelve BCH group over $\mathbb F_{13}$ in B.g11.
+The normalized automorphism defined there solves (I),(II) but is not
+the projection of an element of $\GT$.  Its outer class is not in
+the image of $G_{\mathbb Q}$ in $\operatorname{Out}(N_2)$.
+This gives a finite non-arithmetic equation solution, of order-quotient
+$|N_2|=13^{747}$; it does not prove that the solution lifts to $\GTz$.
+It is an additional nilpotent quotient, not one of the small matrix
+or permutation quotients prescribed in B(e).
+\end{claim}
+% anchor:B.g15
+\manuscriptanchor{\S 42; folio349; cote140-3 scan120}
+
+\begin{proof}
+We first supply an actual finite pure-braid target for the pentagon;
+replacing it by the exponential of a braid Lie algebra without a
+comparison would not suffice.
+Forgetting the fourth strand gives
+$1\to F_3\to P_4\to P_3\to1$, with fibre generators
+$a_i=A_{i4}$, $1\leq i\leq3$.
+Conjugation gives an action of $P_4$ on its normal free fibre.
+Let
+\[
+ N_3=\exp\bigl(\operatorname{Lie}_{\mathbb F_{13}}
+                 \langle a,b,c\rangle/\mathfrak L_{>8}\bigr).
+\]
+The fibre action descends to $N_3$.  The full twist is central in
+$P_4$, hence acts trivially on the fibre; thus the action factors
+through $P_4/Z(P_4)=\pi_1(M_{0,5})$.
+This identifies a finite quotient of the actual pentagon target.
+The split free-fibre sequence follows directly from forgetting a
+point in the ordered configuration space: locally the punctures
+move by disjoint-disc isotopies, its fibre is a three-punctured
+plane, and induction gives asphericity and the stated fundamental
+sequence.  A far-away fourth point supplies a section.
+
+Here are explicit signs for its action.  In the inverse Artin
+convention the base half-twists act by
+\[
+ \beta_i(a_i)=a_{i+1},\qquad
+ \beta_i(a_{i+1})=a_{i+1}^{-1}a_i a_{i+1},
+\]
+fixing the other generator.  The base pure generators are
+$\beta_1^2,\ \beta_2\beta_1^2\beta_2^{-1},\ \beta_2^2$.
+Their first Lie terms are precisely the derivations $t_{12},t_{13},t_{23}$
+used in B.g5.  The fibre generators act by inner conjugation and
+have first terms $\operatorname{ad}a_i=t_{i4}$.
+The program \texttt{graded\_braid\_transfer.py} verifies the Artin
+relation as reduced free words, all six first Lie terms, and the
+identity that the base full twist acts by conjugation with
+$(abc)^{-1}$; fibre conjugation by $abc$ cancels it.
+Thus the signs and central quotient in this transfer are checked
+without an associator or a braid-formality assertion.
+
+The image lies in the group of automorphisms inducing the identity
+on $H_1(N_3,\mathbb F_{13})$.  If $\operatorname{IA}_i$ denotes
+those raising Lie degree by at least $i$, then
+$[\operatorname{IA}_i,\operatorname{IA}_j]\subset
+\operatorname{IA}_{i+j}$ and $\operatorname{IA}_8=1$.
+This finite target has class at most seven.  As a linear operator
+$\phi=1+T$ on the truncated Lie algebra, $T^8=0$, whence
+$\phi^{13}=1+T^{13}=1$ in characteristic thirteen.
+Truncated exponential and logarithm identify these degree-raising
+automorphisms with degree-raising derivations.  To check the latter
+statement directly, $\exp(t\log\phi)=\phi^t$ for all
+$t\in\mathbb F_{13}$ preserves brackets.  In every relevant
+homogeneous component the bracket-preservation polynomial has degree
+less than thirteen in $t$, so it vanishes identically; differentiating
+at zero shows that $\log\phi$ is a derivation.
+All denominators used have index at most eight and are units.
+Thus the free BCH group $N_2$ admits evaluation homomorphisms into
+this target for arbitrary pairs of its elements: apply the universal
+property of the free truncated Lie algebra to their logarithms.
+The same property shows that the kernel defining $N_2$ is fully
+invariant in $\Fhat$, hence characteristic.
+
+Evaluate the genuine group pentagon, equation (4.10) of
+\citet{Drinfeld1990g} in this finite pure-braid target.
+Every occurrence of $f$ starts in degree seven.  Since the target
+has class seven, its value depends only on $q_7$ and on the
+degree-one parts of the braid arguments.  Products of braid
+arguments give the sums of chords in (1.4), so the lowest group
+pentagon defect is exactly the infinitesimal defect evaluated in
+B.g5.  On $a$ its coefficient at the word $a^5bcb$ is
+$16\equiv3\pmod{13}$.  This word has length eight and survives
+in $N_3$; the defect is nonidentity.  The corrections $F_9,F_{11}$
+vanish in this target and cannot cancel it.  Therefore our finite
+pair is not the projection of a pair satisfying the group pentagon.
+
+Finally we check that taking outer classes cannot remove the
+obstruction.  In $N_2$,
+\[
+ C_{N_2}(X)=\langle X\rangle Z(N_2),\quad
+ C_{N_2}(Y)=\langle Y\rangle Z(N_2),\quad
+ Z(N_2)=\exp\mathfrak L_{12}.
+\]
+Indeed the associative centralizer of a free letter consists of its
+power series, and its intersection with the ordinary free Lie algebra
+below the top degree is just the line spanned by that letter.
+The invertible factor in $\exp(\operatorname{ad}x)-1
+=\operatorname{ad}x\,(1+\cdots)$ identifies the group and Lie
+centralizer conditions.  Hence the displayed formulas hold in this
+class-less-than-prime quotient.
+If two normalized pairs $f,g\in[N_2,N_2]$ give inner-conjugate
+automorphisms fixing $X$, their inner conjugator is $X^a z$ with
+$z$ central.  Comparing their values on $Y$ gives a difference by
+an element of $\langle Y\rangle Z(N_2)$; abelianization forces both
+powers of $X,Y$ to be zero.  Thus $f$ and $g$ differ only by
+$Z(N_2)$.  That difference is invisible in the class-seven pentagon
+target, so both have the same nonzero defect.
+Any arithmetic outer class equal to ours has scalar $1$ modulo
+thirteen by its action on abelianization, and has such a normalized
+representative.  The Galois image lies in $\GT$, so its pentagon
+defect must vanish.  This contradiction proves the outer-class
+assertion as well.
+\end{proof}
