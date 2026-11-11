@@ -257,3 +257,92 @@ plus one delivery paragraph (the two files as text, since the API cannot return 
   1 page (its 37 scans not yet transcribed), 140-2 210 pages, 140-3 405 pages, 140-4 137 pages.
 - 8 Nov 2026, 17:51 local: the two cote 140-1 packages (LM_C1-001-019, LM_C1-020-037; 37 scans) returned. strict_check.py: no images; 70 diagrams, 65 in tikz-cd, the other five arrays; 13 drawings, all in TikZ; no bracketed descriptions; no illegible mark in a formula; every scan in the inventory. The first pass of La Longue Marche is complete: all four cotes (1,588 scans). Pro prompts for the first pass: 112 transcription packages and 16 fix packages.
 - Compile check after the 140-1 intake (compile_reader_sources_20261108j.log): 116 sources, 0 failing; reader drafts 140-1 24 pages, 140-2 210, 140-3 405, 140-4 137 (776 pages). The reader preamble (answers/fixed/build/wrap.tex) now loads decorations.pathreplacing (a brace decoration in LM_C1-001-019).
+
+## Raw research outputs (11 November 2026)
+
+The folder [`raw/`](../raw/README.md) holds raw outputs of two further kinds of work, published as returned. This
+section says how each was made. Paths are relative to `raw/`.
+
+### Research prompts on the Teichmüller tower
+
+The research prompts on *La Longue Marche* follow Grothendieck's own programme: each takes one of the things he set
+out to do, collects his statements and questions on it across the manuscript with their scans, and asks for the
+mathematics to be carried through. Claude Fable 5.2 wrote them from its reading of the transcription
+([prompts/OVERVIEW.md](../raw/prompts/OVERVIEW.md); index and state of every prompt in
+[prompts/README.md](../raw/prompts/README.md)). Each prompt has a part specific to its question (what is to be
+settled, leads marked as the author's unverified inferences, Parts) and a shared second half
+([prompts/_COMMON_BLOCK.md](../raw/prompts/_COMMON_BLOCK.md)) with the rules of proof and the deliverables: a paper in
+LaTeX with its PDF, every statement numbered and labelled Proved, Refuted, Known or Open, a register of the
+statements, a report, a bibliography, and every program run with its output. The user pasted each prompt into ChatGPT
+with its background zip; the model was GPT-6 Astra in ChatGPT Pro mode. For every prompt,
+`prompts/<name>/ATTACHMENTS.md` lists every file of the zip: our own files link to where they are published, and
+papers by other authors are listed with their citation and address and are not re-published. Two prompts have been
+answered so far.
+
+**`LM3_TEICHMULLER_TOWER`: the Teichmüller tower, its profinite forms and the "conjecture fondamentale" (§§19, 21,
+26–30, 32–36).**
+
+- Prompt: [prompts/LM3_TEICHMULLER_TOWER/PROMPT.md](../raw/prompts/LM3_TEICHMULLER_TOWER/PROMPT.md); attached:
+  [ATTACHMENTS.md](../raw/prompts/LM3_TEICHMULLER_TOWER/ATTACHMENTS.md); notes and the record of the sections added
+  after answers to the prompts on *Les Dérivateurs* came back (`work/CHANGES_20261110.md`, `work/BACKGROUND_ADD.md`).
+- Model and run: GPT-6 Astra (ChatGPT Pro mode); returned 11 November 2026; the return records no run time.
+  110 statements by its own labels: 57 Proved, 30 Known, 11 Refuted, 12 Open.
+- Review: Claude Fable 5.2, the author of the prompt
+  ([reviews/LM3_TEICHMULLER_TOWER/REVIEW_author.md](../raw/reviews/LM3_TEICHMULLER_TOWER/REVIEW_author.md)). It read
+  the register (all 110 rows), the readings of the manuscript (42 rows), the report and Parts B to F with their proofs
+  (Part A in statement only); it opened Hoshi–Mochizuki, Hoshi–Minamide–Mochizuki, Harbater–Schneps, a Lean
+  comparator attached to the prompt and the transcription at scan 483, and lists the sources it did not open; its own
+  program (`checks_author/check_lm3.py`, exact arithmetic) checks B.4, B.5, D.2, D.20, E.20 and F.11 and two pro-ℓ
+  results of the review itself. Each statement has a verdict (proved; proved in outline; known, checked; known, not
+  opened; open). No statement labelled Proved, Known or Refuted was found false; two labels claim less than they seem
+  to (D.2, E.27).
+- Path forward: the second prompt on the tower, `LM3b_TEICHMULLER_PUSH`, takes the rows the answer left open and the
+  statements that rest on theorems the answer only cited, with the answer, the review and the reviewer's programs
+  attached.
+
+**`LM3b_TEICHMULLER_PUSH`: the Teichmüller tower, second run.**
+
+- Prompt: [prompts/LM3b_TEICHMULLER_PUSH/PROMPT.md](../raw/prompts/LM3b_TEICHMULLER_PUSH/PROMPT.md); attached:
+  [ATTACHMENTS.md](../raw/prompts/LM3b_TEICHMULLER_PUSH/ATTACHMENTS.md). It was written to a stricter standard for
+  what a prompt must demand (proofs and attacks on the open items, a stated outcome for every item); the standard and
+  the record of the rewrite of the later prompts are in `prompts/work/`, and the scripts in `tools/prompts/`.
+- Model and run: GPT-6 Astra (ChatGPT Pro mode); returned 11 November 2026; the return records no run time.
+  93 statements: 53 Proved, 11 Refuted, 15 Known, 14 Open.
+- Review: not yet made. Every statement of this answer is unchecked.
+
+The other Longue Marche prompts (`LM1` to `LM8` apart from these two) have not been answered yet; they will be
+published with their answers. Inserts for them that came out of the review of the prompts on *Les Dérivateurs* are
+published in the repository `grothendieck-derivateurs`, in `raw/reviews/7_BISITE/FOLLOW_UPS.md`.
+
+### First-pass transcriptions of the manuscripts around *La Longue Marche*
+
+The Montpellier archive (<https://grothendieck.umontpellier.fr>) groups cotes 146, 147 and 149 with *La Longue
+Marche*. Their scans are being transcribed in packages of up to 90 scans, by the same two-pass method as the
+manuscript itself (sections 2 and 3 above). The scripts in [tools/archive/](../raw/tools/archive/) download the
+archive's scans, enhance the page images and build each package: a prompt filled from the template
+[tools/archive/ARCHIVE_PROMPT_TEMPLATE.md](../raw/tools/archive/ARCHIVE_PROMPT_TEMPLATE.md) (its three earlier versions
+are beside it, with the message used when a run's execution environment disconnects), a zip of the page images, and a
+zip of context: the transcription of *La Longue Marche* and the first passes of the earlier packages. The prompt asks
+for a diplomatic transcription into LaTeX, page by page, with every doubt marked, an inventory of every element of
+every page, a list of doubts, and research notes on what the pages contain. For each package,
+`prompts/<name>/ATTACHMENTS.md` lists every page image with its place in the archive's own scan file, and
+`prompts/<name>/work/MANIFEST.json` records how each page was enhanced and which blank scans were skipped.
+
+The model was GPT-6 Astra (ChatGPT Pro mode). Each return keeps a `progress.log` with the time of every page; the run
+times below are read from it.
+
+| Package | Run (11 Nov 2026, UTC) | Checked |
+|---|---|---|
+| `MPL_147_003-047` | 00:29–02:06; the 45 pages took 59 minutes in one stream, the notes the rest | sample check of eight pages |
+| `MPL_147_048-137` | 09:14–10:56; the 90 pages took 45 minutes in four parallel streams. The context zip the model received was empty (its log records 0 entries), so its notes make no comparison with earlier material | sample check of eight pages |
+| `MPL_147_138-190` | 14:19–15:30 | not yet |
+| `MPL_149_091-136` | from 15:44; the last time logged is 17:11 | not yet |
+| `MPL_146_001-099` | 16:12–17:15 | not yet |
+
+The sample checks are by Claude Opus 5.5 ([reviews/MPL_147_003-047/SAMPLE_CHECK.md](../raw/reviews/MPL_147_003-047/SAMPLE_CHECK.md),
+[reviews/MPL_147_048-137/SAMPLE_CHECK.md](../raw/reviews/MPL_147_048-137/SAMPLE_CHECK.md)). Each compared eight pages
+with the scans, word by word and sign by sign, counted the errors per 100 words (all errors, misread words and
+symbols, errors without a doubt mark) and the minutes per page, and wrote the eight pages corrected (`pages_checked/`).
+The first had 0.73 errors per 100 words, 0.27 of them without a doubt mark; the second 2.15 and 1.52, ten of its 24
+errors being one notation decision repeated on one scan. Their recommendations set the size of the later packages
+(90 scans) and added a rule to the template: parallel streams first write one shared table of notation. The second pass of these packages, against the scans, has not been made yet.

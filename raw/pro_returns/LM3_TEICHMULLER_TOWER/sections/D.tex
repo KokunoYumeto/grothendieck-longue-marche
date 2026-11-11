@@ -1,0 +1,1072 @@
+\section{Arithmetic curves, inertia, sections, and faithfulness}
+\label{sec:D}
+
+Throughout this section a hyperbolic curve is a smooth geometrically connected
+curve $U/K$ with smooth proper completion $X$, reduced complement $S=X\setminus U$,
+and type $(g,n)=(g(X),\#S(\overline K))$ satisfying $2g-2+n>0$.
+Unless a different coefficient set is explicitly specified, all fundamental groups
+are full profinite \'etale groups.  We choose compatible geometric base points and
+write
+\[
+ 1\longrightarrow\Delta_U\longrightarrow\Pi_U
+   \xrightarrow{p_U}G_K\longrightarrow1,
+ \qquad \Delta_U=\pi_1(U_{\overline K}),\quad G_K=\operatorname{Gal}(\overline K/K).
+\]
+Changing a geometric base point changes maps by geometric inner conjugacy.
+An inertia subgroup is the image of the geometric fundamental group of the
+punctured strict henselian local scheme at a point of $S_{\overline K}$;
+it is a conjugacy class of closed subgroups $I_s\simeq\widehat{\mathbb Z}(1)$.
+We write $\operatorname{Sec}(U/K)$ for continuous sections of $p_U$, modulo
+conjugation by $\Delta_U$, and $\rho_U:G_K\to\operatorname{Out}(\Delta_U)$ for
+the outer action.  The topology on automorphism groups is the topology of
+uniform agreement on finite characteristic quotients.
+
+The distinction between an extension, a rational-point section of that extension,
+and a section of a moduli-stack extension is essential in reading \S34.
+We first settle the statements that do not depend on the three 2026 proof packs.
+
+\subsection{What the arithmetic extension determines}
+
+\statement{D.1}{Proved}{A centre-free extension is its outer-action pullback}
+Let $\Delta$ be a topologically finitely generated centre-free profinite group
+and let $1\to\Delta\to E\xrightarrow{p}G\to1$ be an extension of profinite groups.
+If $\rho:G\to\operatorname{Out}(\Delta)$ is its associated outer action, then
+\[
+ E\longrightarrow
+ \operatorname{Aut}(\Delta)\mathbin{\times}_{\operatorname{Out}(\Delta)}G,
+ \qquad e\longmapsto(\operatorname{conj}_e|_\Delta,p(e))
+\]
+is an isomorphism of extensions.  Sections of $p$, modulo $\Delta$-conjugacy,
+therefore correspond exactly to homomorphic lifts of $\rho$ to
+$\operatorname{Aut}(\Delta)$, modulo $\operatorname{Inn}(\Delta)$-conjugacy.
+This justifies the equivalence asserted in \S34, folio 245, scan 483.
+\begin{proof}
+The displayed map is a continuous homomorphism.  Its kernel lies in $\Delta$
+and centralizes $\Delta$, hence is trivial.  Given $(a,g)$ in the fibre product,
+choose $e\in E$ above $g$.  Equality of outer classes says
+$a=\operatorname{conj}_d\operatorname{conj}_e$ for some $d\in\Delta$; thus
+$(a,g)$ is the image of $de$.  A continuous bijection between compact Hausdorff
+groups is an isomorphism.  Both assertions about sections follow from this
+isomorphism.  Notice that $E\to\operatorname{Aut}(\Delta)$ by itself need not be
+injective: it is the pair with $p$ that is always injective.
+\end{proof}
+
+\statement{D.2}{Refuted}{The literal open-normalizer criterion in scan 483}
+It is false that the cuspidal inertia subgroups are the maximal closed subgroups
+$L\subseteq\Delta_U$ for which $p_U(N_{\Pi_U}(L))$ is open in $G_K$.
+It is also false that every nontrivial closed subgroup with this property is
+contained in one inertia subgroup, as suggested in the margin of scan 483.
+These failures already occur for $U=\mathbb P^1_{\mathbb Q}\setminus\{0,1,\infty\}$.
+\begin{proof}
+The subgroup $L=\Delta_U$ is normal in $\Pi_U$, so its normalizer is all of
+$\Pi_U$ and its projected normalizer is $G_K$.  It is maximal among subgroups
+with the stated property simply because it contains every subgroup under
+consideration.  Here $\Delta_U\simeq\widehat F_2$ has quotient
+$(\mathbb Z/2)^2$, whereas every inertia subgroup is procyclic.  Thus it cannot
+be an inertia subgroup or be contained in one.  This is an example in the
+arithmetic group of the curve, not merely an abstract profinite extension.
+
+Even adding the word ``proper'' would not repair the marginal assertion.
+The characteristic subgroup $[\Delta_U,\Delta_U]$ is proper, is normalized by
+$\Pi_U$, and is not procyclic.  For the last assertion map the two free generators
+onto $(12345)$ and $(123)$ in $A_5$.  They generate $A_5$: conjugates give
+adjacent $3$-cycles, which generate all even permutations.  Since $A_5$ is
+perfect, the image of $[\Delta_U,\Delta_U]$ is $A_5$, which is not cyclic.
+The attached computation \texttt{code/d\_counterexamples.py} verifies these
+finite calculations and records its output.
+
+Finally, if the condition were instead imposed on subgroups of $\Pi_U$, every
+rational-point section $s(G_K)$ would qualify because its normalizer contains
+$s(G_K)$.  Such a subgroup projects isomorphically onto $G_K$ and is not
+geometric inertia.  For instance $2\in U(\mathbb Q)$ gives such a section.
+This explains why rational-point decomposition groups must not be silently
+identified with cuspidal inertia.
+\end{proof}
+The scan actually says subgroups ``dans $\pi$''; no doubtful glyph supplies the
+missing procyclic or cyclotomic hypotheses.  The alternatives
+$\Gamma^+$ and $\Gamma$ in the projected-normalizer phrase make no difference:
+$G_K$ is open in $G_{\mathbb Q}$.
+
+\statement{D.3}{Known}{The cyclotomic recognition theorem for affine inertia}
+Let $U/K$ be an affine hyperbolic curve over a number field.  A nontrivial
+element $z\in\Delta_U$ belongs to a cuspidal inertia subgroup if and only if
+there is a closed subgroup $N\subseteq\Pi_U$ such that $N$ normalizes
+$\overline{\langle z\rangle}$, $p_U(N)$ is open in $G_K$, and
+\[
+ hzh^{-1}=z^{\chi_K(p_U(h))}\qquad(h\in N),
+\]
+where $\chi_K:G_K\to\widehat{\mathbb Z}^{\times}$ is the full cyclotomic
+character.  In particular the action factors through $p_U(N)$; this condition
+includes triviality of the conjugation action of $N\cap\Delta_U$.
+The maximal procyclic subgroups having this property are precisely the
+cuspidal inertia subgroups.  The collection is intrinsic to the arithmetic
+extension together with its cyclotomic character.
+\begin{proof}
+The equivalence is \citet[Theorem (2.1.1)]{Nakamura1994}, applied to the full
+class of finite groups.  The source assumes $n\geq1$, characteristic zero,
+and a number field; all these hypotheses have been retained here.
+For a cusp the branch-cycle description of its decomposition group gives
+the displayed conjugation law.  Conversely Nakamura's weight argument identifies
+$z$ as peripheral.  If a procyclic subgroup satisfying the condition is generated
+topologically by $z$, it lies in the inertia subgroup supplied by the theorem.
+The inertia subgroup itself satisfies the condition and is therefore the maximal
+one.  For completeness, distinct maximal peripheral inertia subgroups intersect
+trivially: if $1\ne x$ belongs to two of them, \citet[Proposition 3.6]{BoggiZalesskii2019BC}
+gives $C_{\Delta_U}(x)=I$ for the first subgroup $I$, since a peripheral
+generator is algebraically simple.  The second subgroup centralizes $x$, hence
+is contained in $I$ and equals $I$ by maximality.  This also gives uniqueness
+of the containing inertia subgroup for a nontrivial cyclotomic subgroup.
+\end{proof}
+We do not erase ``cyclotomic'' from this theorem.  The literal assertion refuted
+in D.2 and the published assertion in D.3 have different hypotheses.  An
+isomorphism of arithmetic extensions over $G_K$ preserves the latter hypotheses,
+so it recovers the inertia conjugacy classes without their being supplied as
+extra data.  The conclusion for arbitrary open homomorphisms follows more
+cleanly from the Hom theorem below than by treating a normalizer calculation
+as if it commuted with a noninjective homomorphism.
+
+\statement{D.4}{Known}{The relative Hom theorem, including its exact ambiguity}
+Let $K$ be sub-$p$-adic, meaning a subfield of a finitely generated extension
+of $\mathbb Q_p$, and let $U,V$ be hyperbolic curves over $K$.  There is a
+bijection
+\[
+ \operatorname{Hom}^{\mathrm{dom}}_K(U,V)
+ \xrightarrow{\ \sim\ }
+ \operatorname{Hom}^{\mathrm{open}}_{G_K}(\Pi_U,\Pi_V)/\operatorname{Inn}(\Delta_V).
+\]
+On the right the maps are continuous homomorphisms with open image whose
+composite with $p_V$ is $p_U$.  In particular this applies over every number
+field and every finite extension of $\mathbb Q_p$, including $p=2,3$.
+A homomorphism in this set takes a cuspidal inertia subgroup either to the
+trivial group or into a conjugate of a target cuspidal inertia subgroup.
+\begin{proof}
+The bijection is \citet[Theorem A; Theorem 16.5 and its following
+Remark]{Mochizuki1999}.  We use the full profinite version.  The paper also has a
+geometrically pro-$p$ version, whose arithmetic quotient is still the full
+$G_K$; it is not a theorem about replacing the whole arithmetic group by its
+maximal pro-$p$ quotient.
+
+For clarity we verify the peripheral consequence, which is the assertion of
+\S34, folios 245--245 verso, scans 483--484.  The associated nonconstant morphism
+$f:U\to V$ extends uniquely to the smooth proper completions $\bar f:X\to Y$.
+If a deleted point of $X$ maps to a point of $V$, its local inertia maps trivially
+in $\pi_1(V)$.  If it maps to a deleted point of $Y$, choose local parameters
+$t,u$ at the source and target.  The equality $\bar f^*u=t^e a$ with $a$ a local
+unit shows that tame geometric inertia maps into the target inertia by
+multiplication by the positive ramification index $e$.  Characteristic zero
+makes all these horizontal inertia groups tame.  Thus ``respects loops''
+allows a loop to be killed; it does not mean a permutation of all punctures.
+\end{proof}
+The relative Isom theorem follows formally: the two homomorphisms associated
+to a group isomorphism and its inverse give morphisms whose composites are
+identities by the injectivity of this bijection.  No separate compatibility
+with a previously chosen loop system is required.
+
+\statement{D.5}{Proved}{Admissible effective lifts are exactly the point sections}
+Let $U/K$ be hyperbolic with $K$ sub-$p$-adic.  Call a lift of $\rho_U$
+\emph{geometrically admissible} if it is obtained from a hyperbolic curve $V/K$,
+a point $v\in V(K)$, and a $G_K$-equivariant outer isomorphism
+$\Delta_V\simeq\Delta_U$ by transporting the action defined by $v$.
+Then the admissible lifts modulo $\Delta_U$-conjugacy are in bijection with
+$U(K)$.  This proves the deduction in \S34, scan 485, folio read
+$246\mid245$, without assuming surjectivity of the section map.
+\begin{proof}
+By D.1 the given outer isomorphism produces an isomorphism
+$\Pi_V\simeq\Pi_U$ over $G_K$, with the stated geometric ambiguity.
+The Isom consequence of D.4 gives a unique $K$-isomorphism $f:V\to U$.
+Functoriality carries the section at $v$ to the section at $f(v)$.
+Conversely the point $u\in U(K)$ supplies the required admissible datum by
+taking $V=U$, $v=u$, and the identity outer isomorphism.
+Finally two points cannot give the same section class:
+\citet[Theorem C = Theorem 19.1]{Mochizuki1999} proves injectivity of the
+point-to-section map under precisely these field and hyperbolicity hypotheses.
+Thus the two constructions give the asserted bijection.  Changing the chosen
+representative of the outer isomorphism conjugates the lift by $\Delta_U$,
+which is exactly the ambiguity already factored out.
+\end{proof}
+This proposition is about lifts that are already assumed admissible.  It does
+not say that every lift is admissible.  For a proper curve of genus at least two
+that additional assertion is the section conjecture; for an affine curve the
+presence of cuspidal sections changes the assertion itself.
+
+\statement{D.6}{Refuted}{All affine sections need not come from interior points}
+For $U=\mathbb P^1_{\mathbb Q}\setminus\{0,1,\infty\}$ there is a continuous
+section of $\Pi_U\to G_{\mathbb Q}$ which is not the section of any point of
+$U(\mathbb Q)$.  Thus an unqualified affine version of ``every lift is the
+lift of a rational point of $U$'' is false.
+\begin{proof}
+Take the rational tangential base point at $t=0$ with tangent vector $1$.
+The associated fibre functor gives a section $s_0$.  More explicitly, embed the
+local punctured disk in the Puiseux field
+$\bigcup_m\overline{\mathbb Q}((t^{1/m}))$ and let $G_{\mathbb Q}$ act on
+coefficients while fixing the compatible symbols $t^{1/m}$.  On the finite
+covers of $U$ this gives the tangential section; changing paths conjugates it
+by $\Delta_U$.
+
+Under the morphism $t:U\to\mathbb G_m$, its Kummer class in
+$H^1(G_{\mathbb Q},\mu_m)=\mathbb Q^\times/(\mathbb Q^\times)^m$ is zero for
+every $m$, since each $t^{1/m}$ is fixed by the section.  If $s_0$ were the
+section of $u\in U(\mathbb Q)$, the same classes would be the classes of $u$.
+Hence $u$ would belong to $\bigcap_{m\geq1}(\mathbb Q^\times)^m$.
+Every rational prime valuation of such a number is divisible by every $m$,
+so all valuations vanish and $u=\pm1$.  Taking $m=2$ removes $-1$, giving
+$u=1$, which is not in $U$.  This contradiction proves the assertion.
+\end{proof}
+The appropriate affine section conjecture includes rational cusps and their
+cuspidal sections.  D.6 does not refute that conjecture.
+
+\subsection{The section manuscript: an audited conditional chain}
+
+\statement{D.7}{Open}{The 2026 proper $p$-adic section claim}
+The assertion
+\[
+ X(k)\xrightarrow{\sim}\operatorname{Sec}(X/k)
+ \quad(k/\mathbb Q_p\text{ finite},\ X/k\text{ proper},\ g(X)\geq2)
+\]
+for every prime $p$ is claimed in \citet[Theorem 1.1]{OpenAI019}.
+The precise new input is its Theorem 1.2: for $F=k(X)$, a fixed separable
+closure $F^{\mathrm{sep}}$, and the subfield $F^{\mathrm{et}}$ generated by all
+connected finite \'etale covers of $X$ with all their $F$-embeddings,
+\[
+ F^{\mathrm{sep}}\subseteq\widehat{F^{\mathrm{et}}}
+ \quad\hbox{inside }\widehat{F^{\mathrm{sep}}}
+ \tag{D.7.1}
+\]
+for every fixed prolongation of every real-valued rank-one norm on $F$
+extending the normalized $p$-adic norm.  The copies of the fields in this
+inclusion are specified; an abstract embedding of a finite extension into
+some unrelated completion would not suffice.
+We retain the label Open for the unconditional new claim in this audit:
+claimed, unrefereed, and not completely verified by us.  We have found no
+counterexample.  The conditional implication D.8 is proved below.
+
+\paragraph{What we checked in Sections 3--6 of the pack.}
+We read these sections in full and followed their logical order, including
+the distinction between horizontal ramification in characteristic zero and
+wild reduction in characteristic $p$.
+The patching construction in Proposition 3.2 requires a root on every
+component above each overlap annulus.  With that hypothesis the pulled-back
+branched cover splits on the overlap, so gluing trivial covers over the inner
+disks produces a cover \'etale over the entire proper curve.  Proper GAGA and
+invariance of finite \'etale covers under extension between algebraically
+closed characteristic-zero fields are used after gluing.  Lemma 3.3 then
+evaluates at the chosen completion-valued point.  We checked why this yields
+a field embedding rather than merely an analytic map.  Lemma 3.4 uses cyclic
+horizontal inertia over $\overline k((t))$: divisibility of the branch indices
+by one integer is preserved under compositum and Galois closure, and an
+upper cover \'etale over a lower cover introduces no further horizontal
+ramification.
+
+For Lemma 4.2 we checked the graph constructions separately.  A cycle in the
+stable dual graph carries a tame cyclic cover of degree $\ell\ne p$, with
+expansion factor $\ell$ on each lifted edge.  A separating edge is first
+lifted to parallel edges using an unramified cover on the two sides; stability
+ensures that each side has a cycle or a component of positive genus.
+We checked that taking fibre products and then connected components retains
+the required roots on all remaining sheets.  The external lifting result is
+\citet[Theorem 7.7]{ABBR2015}; its tame-cover definition includes absence of
+additional branch points when the marked puncture set is empty.
+For Lemma 4.3 we opened \citet[Theorem A and Proposition 2.4(iv)]{MochizukiTsujimura2024}.
+The latter gives a stable model of a finite \'etale cover dominating a prescribed
+model.  Taking an irrational valuation level excludes vertices and smooth
+disk tubes, so the inverse image of a sufficiently small rational-ended
+collar lies in node annuli.  This is the specific model domination needed;
+semistable reduction alone would not provide it.  The accessible primary
+version is dated June 16, 2023; we did not silently identify it with the
+March 30, 2024 revision cited by the pack.
+
+In Section 5 the period lattice in a totally degenerate Jacobian is torsion-free.
+Consequently local lifts of a multiplication-by-$m$ pullback can be adjusted
+by periods and glued without a residual torsion ambiguity.  We checked that
+Lemma 5.1 is intended to give a root of a torus character on the whole pullback,
+not just one component.  Proposition 5.2 uses
+$y^\ell=T(T-1)/(T-\alpha)$, with $\ell$ odd and $\ell\ne p$,
+whose skeleton has two rational vertices joined by $\ell$ edges.
+A cycle formed from two edges supplies a torus character with slope one on
+the chosen edge.  If $u=cT(1+h)$ and $s=v(T)$ on an annulus of length $a$,
+the Laurent coefficient inequalities give
+$v(h)\geq\min(s,a-s)$.  The trimming condition
+\[
+ \min(s,a-s)>v_p(m)+1/(p-1)
+\]
+is sufficient for an analytic $m$th root of $1+h$, also when $p\mid m$.
+We checked this numerical point; replacing it by a prime-to-$p$ root argument
+would not prove Theorem 1.2.  We also checked the use of normality in Section 6:
+a completion-valued embedding of a finite normal extension into the fixed
+completion forces its specified image there to be the same normal subfield.
+
+This is a substantial audit of the proof's mechanism, not a complete independent
+verification of all analytic constructions.  In particular we have not fully
+reproduced the asserted simultaneous stable-model and toric-uniformization
+construction of Proposition 5.2, with its identification of the chosen
+annular coordinate on every inverse component.  The opened Abel--Jacobi
+skeleton comparison of \citet[Proposition 6.1 and Corollary 6.6]{BakerRabinoff2015}
+explains the slope calculation but is not by itself the whole analytic
+construction.  This is the remaining verification obligation at which we
+stop promoting (D.7.1) to a theorem.  All later uses of (D.7.1) below are
+explicitly conditional.  The separate attachment
+\emph{\'Etale covers with a prescribed exterior sheet} is not cited by the
+main section manuscript and is not used here; its theorem is claimed,
+steps not checked by us.  Nor do we use Corollary 8.4, which depends on an
+unattached Selmer-converse manuscript.
+
+\statement{D.8}{Proved}{The completion assertion implies the proper local section theorem}
+Assume (D.7.1) for a fixed proper hyperbolic curve $X/k$, with
+$k/\mathbb Q_p$ finite.  Then $X(k)\to\operatorname{Sec}(X/k)$ is bijective.
+Thus the group-theoretic and valuative passage in Section 7 of the pack does
+not require an additional affine or birational-lifting conjecture.
+\begin{proof}
+Put $F=k(X)$, $F^{\mathrm{et}}$ as above, and prolong a rank-one valuation $w$
+extending the $p$-adic valuation to $F^{\mathrm{sep}}$.
+Restriction gives
+\[
+ D_{\bar w}(F^{\mathrm{sep}}/F)
+   \longrightarrow D_{\widetilde w}(F^{\mathrm{et}}/F).
+ \tag{D.8.1}
+\]
+It is surjective: lift an automorphism of $F^{\mathrm{et}}/F$ to
+$F^{\mathrm{sep}}/F$, then correct the lift using the transitive action of
+$\operatorname{Gal}(F^{\mathrm{sep}}/F^{\mathrm{et}})$ on prolongations.
+The infinite-extension assertion follows from the finite assertions by
+compactness.  It is injective because an element of its kernel is an isometry
+fixing $F^{\mathrm{et}}$, hence fixes its completion, which contains the
+specified $F^{\mathrm{sep}}$ by (D.7.1).  Normalization $w(p)=1$ ensures that
+stabilizing the valuation ring preserves the absolute value itself.  The two
+decomposition groups are closed, so (D.8.1) is an isomorphism of profinite groups.
+
+No such rank-one decomposition group in $\Pi_X$ can contain the image of a
+section.  Otherwise (D.8.1) lifts it to a birational section
+$\widetilde s:G_k\to G_F$.  By
+\citet[Proposition 2.4(2), Definition 1.4, and Observation 1.3]{Koenigsmann2005},
+the entire image $\Sigma$ is also contained in a decomposition group of
+$\operatorname{ord}_a$ for some $a\in X(k)$.
+In the fixed field $M=(F^{\mathrm{sep}})^\Sigma$ the restrictions $v_1,v_2$
+of these two selected prolongations are nontrivial rank-one henselian
+valuations.  Henselianity follows because $G_M=\Sigma$ stabilizes the
+prolongation, while transitivity gives uniqueness.  Algebraic extension
+changes the value group by a torsion quotient and hence preserves its rank.
+They satisfy $v_1(p)=1$ and $v_2|_{k^\times}=0$.
+
+Here is the explicit contradiction, including the dyadic case.  Choose a
+nonsquare $d\in k^\times$.  It is still a nonsquare in $M$, because
+$\Sigma\to G_k$ is onto.  Let $t\in F$ be a uniformizer at $a$, choose an
+integer $N>v_1(t)$, and set $z=p^N/t$.  Then $v_1(z)>0$ and $v_2(z)<0$.
+For positive integers $r$ put
+\[
+ q_r=d+(1-d)\frac{z^r}{1+z^r}.
+\]
+The denominator is nonzero.  Direct valuation computations give
+\[
+ \begin{split}
+ v_1(q_r/d-1)&=v_1((1-d)/d)+r v_1(z)\longrightarrow+\infty,\\
+ v_2(q_r-1)&=v_2(d-1)-r v_2(z)\longrightarrow+\infty.
+ \end{split}
+\]
+For large $r$ these values exceed $2v_1(2)$ and $2v_2(2)$, respectively.
+Hensel's lemma at $1$ gives square roots of $q_r/d$ and $q_r$ in $M$;
+the quotient makes $d$ a square.  The contradiction uses neither discrete
+value groups nor $p\ne2$.
+
+Now let $s:G_k\to\Pi_X$ be arbitrary.
+\citet[Theorem 26 in the 2011 preprint]{PopStix2017} places its image in the
+decomposition group of a valuation of $F$ extending the $p$-adic valuation.
+The valuation transcendence inequality gives rational rank at most two,
+hence ordered rank at most two.  Rank one has just been excluded.
+For rank two, let $u$ be the rank-one coarsening.  Its prolongation is preserved
+by the section: the relevant convex subgroup of the value group has a unique
+extension under an algebraic field extension, because the quotient of value
+groups is torsion.  If $u$ is nontrivial on $k$, the preceding rank-one
+argument excludes it.  Otherwise properness gives a closed centre $a\in X$,
+and a valuation dominating the discrete valuation ring $\mathcal O_{X,a}$
+and trivial on $k$ is equivalent to $\operatorname{ord}_a$.
+Its residue field is $k(a)$, and the remaining refinement is the unique
+$p$-adic valuation of this finite extension.  The image on constants of its
+horizontal decomposition group is $G_{k(a)}$.  Since $s$ projects onto $G_k$,
+we obtain $k(a)=k$.  Horizontal inertia is trivial in the full \'etale tower
+of the proper smooth curve, so this decomposition group is precisely the
+point section at $a$.  This is also the type-$2h$ calculation in
+\citet[Section 6.1]{PopStix2017}.  Surjectivity follows.
+
+For completeness, injectivity can be checked without (D.7.1).  If $a,b\in X(k)$
+give the same section, use $a$ for the Abel--Jacobi embedding into $J$.
+The multiplication-by-$m$ torsor is finite \'etale for every $m\geq1$ in
+characteristic zero.  Equality of section classes implies
+$[b-a]\in mJ(k)$ for every $m$.  An open subgroup of the compact analytic
+group $J(k)$ is $\mathbb Z_p^{g[k:\mathbb Q_p]}$.  If it has index $q$,
+then $\bigcap_m mJ(k)\subseteq\bigcap_r p^r\mathbb Z_p^{g[k:\mathbb Q_p]}=0$,
+using $m=qp^r$.  Thus $[b-a]=0$.  A nontrivial equivalence of the two distinct
+degree-one divisors would give a degree-one map $X\to\mathbb P^1$;
+this is impossible for positive genus.  Hence $a=b$.
+\end{proof}
+
+\statement{D.9}{Proved}{The exact conditional global descent statement}
+Assume the proper local section theorem in D.7 over every finite completion
+of a number field $K$.  For a proper hyperbolic curve $C/K$, define
+\[
+ C(\mathbb A_K)_\bullet=
+ \prod_{v\nmid\infty} C(K_v)\times
+ \prod_{v\text{ real}}\pi_0(C(K_v)).
+\]
+Complex places are omitted.  Let $C(\mathbb A_K)_\bullet^{\mathrm{f\text{-}cov}}$
+be the locus surviving every torsor under a finite $K$-group scheme, with
+survival meaning liftability to some global twist.  Then
+\[
+ \operatorname{loc}(\operatorname{Sec}(C/K))
+   = C(\mathbb A_K)_\bullet^{\mathrm{f\text{-}cov}},
+ \qquad
+ C(K)\xrightarrow{\sim}\operatorname{Sec}(C/K)
+ \ \Longleftrightarrow\
+ C(\mathbb A_K)_\bullet^{\mathrm{f\text{-}cov}}=C(K).
+ \tag{D.9.1}
+\]
+This is the precise conditional content of Proposition 8.1 and Theorem 8.2
+of \citet{OpenAI019}.  The general equality on the right remains an additional
+number-theoretic assertion, not a consequence of local point-theoreticity.
+\begin{proof}
+The local theorem gives a unique point at each finite place; the real section
+theorem gives a connected component at each real place
+\citep[Introduction, Theorem]{BrescianiVistoli2020}.  Thus localization is
+well-defined.  Apply \citet[Theorem 2.1 and Remark 2.2(1), preprint
+numbering]{HarariStix2012} with its normal subgroup $U=1$ and omitted set of
+places $S=\varnothing$.  Its equivalence between condition (i) and condition
+(iii) is exactly the equivalence between survival of all finite torsors and
+interpolation of the local point sections by a global section, modulo the
+full geometric group.  Evaluations are constant on real components and
+complex places impose no condition.  We use the corrected convention of
+\citet[Section 1]{Stoll2017Errata}; disconnected torsors are included.
+This proves the first equality.
+
+If the descent locus is $C(K)$, the local points of a section are the
+localizations of one $a\in C(K)$.  Its localization has finite support
+$\{a\}$, so \citet[Corollary 5]{Stix2015} makes the section geometric.
+Properness excludes cuspidal sections.  Injectivity is D.5, or follows by
+restriction to a single finite completion.  Conversely bijectivity of the
+point-to-section map and the first equality immediately give the descent
+equality.  These arguments also cover empty sets.
+\end{proof}
+
+\statement{D.10}{Proved}{What the modular-curve consequence says about a moduli section}
+Assume the local theorem of D.7.  Let $N$ satisfy $g(X_1(N))\geq2$, and let
+$s:G_{\mathbb Q}\to\pi_1(Y_1(N))$ be a section.  Its composite with
+$\pi_1(Y_1(N))\to\pi_1(X_1(N))$ is geometrically conjugate to the section of
+a unique rational cusp of $X_1(N)$.  Consequently the same conclusion applies
+to a section of the arithmetic $N_{1,1}$ whose image is contained in the
+open subgroup belonging to $Y_1(N)$, under the faithful stack identification
+of Part E.  It does not assert that $s(G_{\mathbb Q})$ is contained in a
+cuspidal decomposition subgroup of $\pi_1(Y_1(N))$.
+\begin{proof}
+The forgetful map from the fine modular curve $Y_1(N)$ to
+$\mathcal M_{1,1,\mathbb Q}$ is finite \'etale in characteristic zero, so its
+fundamental group is an open subgroup, up to conjugacy.  Containment of the
+image of a section makes the same homomorphism a section of this open
+subgroup's projection onto $G_{\mathbb Q}$.  Here $g(X_1(N))\geq2$ ensures
+that $N$ is outside the small levels with stabilizers on $Y_1(N)$.
+The compactification homomorphism is over $G_{\mathbb Q}$ and hence its
+composite is a section of the proper curve.
+
+\citet[Corollary 8.8]{Stoll2007}, with \citet{Stoll2017Errata}, proves
+$X_1(N)(\mathbb A_{\mathbb Q})_\bullet^{\mathrm{f\text{-}ab}}=X_1(N)(\mathbb Q)$
+when the genus is positive.  Since rational points are contained in the
+finite-cover locus and that locus is contained in the finite-abelian locus,
+D.9 applies.  This verifies the implication used in
+\citet[Corollary 8.5]{OpenAI019} without its unrelated Corollary 8.4.
+Finally \citet[Introduction, Theorem (7), p.~35]{Mazur1977} states directly
+that all rational points of $X_1(N)$ are cusps whenever its genus is positive.
+The equivalent torsion-order assertion is Theorem (7'); the full torsion
+classification is Theorem (8).  Thus the proper section comes from a cusp,
+and D.5 gives its uniqueness.
+
+The kernel of compactification is generated normally by cusp inertia.
+Identifying the image of $s$ after quotienting by this kernel does not identify
+$s$ before quotienting.  D.7 is a theorem claimed for proper curves and
+provides no such lifting assertion for $Y_1(N)$.  Nor does the conclusion
+imply nonexistence of these splittings: a nonzero rational tangent vector at
+any rational cusp gives a cuspidal section of $Y_1(N)$, exactly as in D.6.
+\end{proof}
+
+\subsection{Relative and absolute open homomorphisms}
+
+\statement{D.11}{Proved}{An absolute open homomorphism preserves the geometric kernel}
+Let $U/K$ and $V/K'$ be hyperbolic curves over number fields and let
+$h:\Pi_U\to\Pi_V$ be a continuous homomorphism with open image, with no
+compatibility assumed.  Then $h(\Delta_U)\subseteq\Delta_V$, and there is a
+unique continuous homomorphism with open image
+$\alpha:G_K\to G_{K'}$ such that $p_Vh=\alpha p_U$.
+This conclusion does not depend on the 2026 open-Hom manuscript.
+\begin{proof}
+Set $J=p_V(h(\Pi_U))$.  The projection $p_V$ is an open map of profinite
+groups, so $J$ is open in $G_{K'}$, and $J=G_L$ for a finite extension
+$L/K'$ in the chosen algebraic closure.  The subgroup
+$A=p_V(h(\Delta_U))$ is compact, hence closed, is topologically finitely
+generated because $\Delta_U$ is, and is normal in $J$ because $\Delta_U$
+is normal in $\Pi_U$.  By \citet[Theorem 2.4]{Mochizuki2006}, a number
+field's absolute Galois group has no nontrivial topologically finitely
+generated closed normal subgroup.  Thus $A=1$.  The universal property of
+the quotient gives a unique continuous $\alpha$, and its image is $J$.
+\end{proof}
+The same argument is the mechanism behind
+\citet[Proposition 3.3]{Mochizuki2006} for isomorphisms.  Merely calling a
+geometric subgroup ``characteristic'' would not justify its preservation
+by an arbitrary homomorphism; the proof above supplies the missing step.
+Openness matters because it makes $J$ an absolute Galois group of a number
+field, to which the theorem applies.
+
+\statement{D.12}{Proved}{The conditional absolute Hom theorem and its known cases}
+Assume \citet[Theorem 1.1]{OpenAI031} for absolute Galois groups of number
+fields.  Then every $h$ as in D.11 is induced, up to target geometric inner
+conjugacy after fixing the base-field map, by a unique field embedding
+$j:K'\hookrightarrow K$ and a unique dominant $K$-morphism
+\[
+ f:U\longrightarrow V\otimes_{K',j}K.
+\]
+More invariantly there is a bijection
+\[
+ \coprod_{j:K'\hookrightarrow K}
+ \operatorname{Hom}^{\mathrm{dom}}_K(U,V\otimes_{K',j}K)
+ \ \simeq\
+ \operatorname{Hom}^{\mathrm{open}}(\Pi_U,\Pi_V)\big/\operatorname{Inn}(\Pi_V).
+ \tag{D.12.1}
+\]
+Without the 2026 claim the same conclusion is known whenever the induced
+$\alpha$ of D.11 is injective, or is cyclotomic-compatible, and in particular
+for isomorphisms $h$.  It is also known when the source field is $\mathbb Q$.
+\begin{proof}
+Apply the assumed theorem to $\alpha$.  It gives a unique compatible embedding
+$\bar j:\overline {K'}\to\overline K$ with
+$\alpha(\sigma)=\bar j^{-1}\sigma\bar j$ and $j=\bar j|_{K'}$ taking values
+in $K$.  Between algebraic closures of number fields such an embedding is
+onto: its image is algebraically closed and contains $\mathbb Q$, so it
+contains every element algebraic over $\mathbb Q$.  Consequently $\alpha$
+is injective as well as having open image.
+
+Base change identifies the arithmetic group of $V\otimes_{K',j}K$ with
+\[
+ P=\Pi_V\mathbin{\times}_{G_{K'},\alpha}G_K.
+\]
+The map $\widetilde h(x)=(h(x),p_U(x))$ takes values in $P$ by D.11 and is
+over $G_K$.  The first projection identifies $P$ with the open subgroup
+$p_V^{-1}(\alpha(G_K))$ of $\Pi_V$, since $\alpha$ is injective.
+Thus $\widetilde h$ has open image in $P$.  D.4 supplies the unique dominant
+$f$ with the prescribed geometric conjugacy class.
+
+We check the larger ambiguity in (D.12.1).  Conjugating $h$ by $e\in\Pi_V$
+conjugates $\alpha$ by $p_V(e)\in G_{K'}$; the associated change of $\bar j$
+does not alter its restriction to $K'$.  Hence $j$ is intrinsic to the absolute
+outer class.  Once $\alpha$ is fixed, an $e$ conjugating one representative
+to another over the same $\alpha$ has $p_V(e)$ centralizing the open subgroup
+$\alpha(G_K)$.  This centralizer is trivial by
+\citet[Corollary 2.2]{Mochizuki2006}.  The remaining conjugation is therefore
+geometric and D.4 gives exactly the stated uniqueness of $f$.  Conversely a
+pair $(j,f)$ gives such an open homomorphism: the relative map has open image
+and the base-change subgroup is open in $\Pi_V$.
+
+For the unconditional variants, an injective $\alpha$ is an isomorphism onto
+an open subgroup $G_L$; the Neukirch--Uchida isomorphism theorem gives the
+compatible field embedding.  One precise solvably-closed formulation is
+\citet[Theorem, p.~359]{Uchida1979}, also reproduced as
+\citet[Theorem 3.1]{Mochizuki2006}.  For cyclotomic compatibility use
+\citet[Theorem 3.4]{Hoshi2025}.  If $h$ is an isomorphism, apply D.11 also
+to $h^{-1}$, so that $\alpha$ is an isomorphism.  If $K=\mathbb Q$, use
+\citet[Theorem 1]{Uchida1981}.  The rest of the proof is unchanged.
+\end{proof}
+For the original relative formulation in \S34, scans 483--484, the base
+fields lie in one $\overline{\mathbb Q}$ and the maps are already over
+$G_{\mathbb Q}$.  Its use of the Hom theorem is unconditional.  The additional
+absolute assertion in D.12 is the part depending on the new claim; D.11 is
+not an unresolved geometric-kernel gap.
+
+\statement{D.13}{Open}{The 2026 unrestricted Galois open-Hom claim}
+Let $E_i/F_i$ be solvably closed Galois extensions of number fields, meaning
+that $E_i$ have no nontrivial abelian algebraic extensions.  The assertion
+that every continuous homomorphism with open image
+\[
+ \alpha:\operatorname{Gal}(E_1/F_1)\longrightarrow
+                \operatorname{Gal}(E_2/F_2)
+\]
+is induced by a unique compatible field embedding $E_2\hookrightarrow E_1$
+is \citet[Theorem 1.1]{OpenAI031}, the conjecture on p.~595 of
+\citet{Uchida1981}.  We record it as claimed, unrefereed, with its full
+unconditional validity not completely verified by us.  D.12 is a proved
+conditional consequence, not an assertion that the conjecture has thereby
+been settled.
+
+\paragraph{Proof audit of the open-Hom manuscript.}
+We read Sections 1--6, including the full proofs of the new lemmas rather
+than only the outline, and checked the following dependencies.
+The reduction to $P=\operatorname{Gal}(\mathbb Q^{\mathrm{sol}}/\mathbb Q)$
+is valid: a solvably closed algebraic field contains the roots of unity and
+is closed under radicals, hence contains $\mathbb Q^{\mathrm{sol}}$.
+For a number field $M\subset\mathbb Q^{\mathrm{sol}}$ this is also its maximal
+prosolvable extension; a solvable normal closure of $M/\mathbb Q$ followed by
+a compositum of conjugates proves the assertion.
+We opened the precise local input in \citet[Section 1, pp.~595--597 and
+Proposition 1]{Uchida1981}: for a fixed odd prime $\ell$, nontrivial
+pro-$\ell$ inertia forces the nonabelian local case and hence an injective
+map on that inertia into a unique target prime; all but finitely many target
+primes occur.  The excluded torsion case is dyadic.  This result gives
+cofinite coverage for each fixed $\ell$, not a bound uniform in $\ell$.
+The claimed uniform bound later in the pack is therefore a real new step.
+We also opened the uniqueness statement, Proposition 2 of Uchida, and
+\citet[Theorem 3.4]{Hoshi2025}; the latter proves that full cyclotomic
+compatibility is equivalent to geometricity.
+
+Lemma 3.1 supplies the additive-character detection that drives the proof.
+We followed its interpolation determinant and its separate translate/degree
+zero estimate.  The relevant strict inequality is
+\[
+ n+n/r>n+1+n/m\qquad(1\leq r<n,\ m>n(n-1)).
+\]
+It compares the nonarchimedean determinant decay with the archimedean height
+bound; no asserted Leopoldt rank is substituted.  In Proposition 3.2 the
+logarithmic image of global units is the actual image, and generators of
+powers of distinct prime ideals give disjoint divisor supports.  Thus the
+claimed independence argument is compatible with class-field theory without
+assuming Leopoldt's conjecture.  We checked the distinct roles of the
+absolute-degree-one version, the Frobenius-average version, and the
+nonzero-corestriction version.  Confusing them would invalidate the later
+prime comparisons.
+
+In Section 4 the map is first restricted to a normal open subgroup and then
+extended to the normalizer of its kernel.  The regular-module enlargement
+in Lemma 4.2 increases subgroup orders while keeping the bound on element
+orders fixed.  Proposition 4.3 compares characters via a cyclic subgroup
+and its proper subgroups.  We checked that its semisimple projection is
+$U$-equivariant for the normal open subgroup $U$; the argument does not
+require the larger intermediate subgroups to be normal in the whole
+normalizer.  We followed the explicit source and target prime choices,
+the residue-degree $f$, and the separation into those powers of Frobenius
+that lie in $U$ and those that lie in the other kernel conjugates.
+The result is surjectivity and logarithmic cyclotomic compatibility, not yet
+full cyclotomic compatibility.
+
+Section 5 passes to $\mathbb Q(i)$ and uses a sign character to show that
+almost every split target prime has only finitely many possible source
+partners, as the auxiliary prime varies.  Lemma 5.2 is an $S$-unit Kummer
+statement; the finite class-group contribution vanishes in the relevant
+inverse limit, so it is not a mistaken direct-sum assertion about all primes.
+In Proposition 5.3 a finite cyclotomic twist is killed in a cyclic extension.
+The extension degree can grow with $\ell$, but the multiplicity of the one
+specified character in the $S$-unit representation is bounded by the number
+of $S$-orbits.  The resulting bound $2[K:\mathbb Q]+2$ is independent of
+$\ell$.  We checked why this independence is needed before applying the
+simultaneous Kummer/Chebotarev separation of Lemma 5.4; the fixed-$\ell$
+cofiniteness from Uchida cannot replace it.
+
+Finally Section 6 compares character pullbacks at rational primes split
+completely in an auxiliary finite field.  An infinite subset with one fixed
+conjugate gives equality of the corresponding additive characters by
+Proposition 3.2.  Faithfulness of the signed regular representation yields
+equality modulo each finite quotient.  Compactness of the sets of possible
+conjugating elements, with the finite-intersection property obtained by
+passing to composita, supplies a single conjugation.  Extending equality
+from a normal open subgroup uses the trivial centralizer of an open subgroup
+of $P$.  The resulting full cyclotomic compatibility is the hypothesis of
+Hoshi's theorem, which finishes the claimed proof.
+
+These checks identify a coherent chain and expose where an apparently weaker
+replacement would fail.  They do not constitute an independently reproduced
+proof of every technical generality of the zero estimate in Lemma 3.1, the
+character-separation argument of Proposition 4.3, and the uniform multiplicity
+bound in Proposition 5.3.  We therefore do not treat those three new inputs
+as established merely because their conclusions fit the reduction.  No
+verified counterexample or contradictory hypothesis was found.  The attached
+eight-lesson exposition is not evidence of independent verification; we do
+not use it as an authority.  No Lean proof is supplied for this pack.
+
+\subsection{Centres, restriction to covers, and the faithfulness questions}
+
+\statement{D.14}{Known}{The centres and centralizers needed in \S35}
+For a hyperbolic type $(g,n)$ in characteristic zero, the geometric profinite
+surface group $\Delta_{g,n}$ is torsion-free and slim: every open subgroup has
+trivial centralizer in $\Delta_{g,n}$.  In particular it and all its open
+subgroups have trivial centre.  The absolute Galois group of a number field
+is also slim, and hence has trivial centre and no nontrivial finite normal
+subgroup.  These settle the two centre questions in \S35, folio 251 verso,
+scan 496.  The second assertion does not assert that a number field's
+absolute Galois group is torsion-free.
+\begin{proof}
+For $n>0$ the geometric group is free profinite of rank $2g+n-1\geq2$;
+for $n=0$ it is the profinite completion of the closed oriented surface group
+of genus $g\geq2$.
+\citet[Corollaries (1.3.3)--(1.3.4)]{Nakamura1994} give centre-freeness
+and the finite projective resolutions obtained from goodness of these groups.
+Their cohomological dimensions at every prime are finite (one in the free
+case, two in the closed surface case), so they have no elements of prime
+order and are torsion-free.  Every open subgroup is again a hyperbolic
+surface group of finite index, by the correspondence with finite covers.
+Its Euler characteristic is its index times the original negative Euler
+characteristic; thus the same centre assertion applies.
+
+To derive slimness directly, suppose $c$ centralizes an open subgroup $H$.
+Its normal core $H_0$ is open; some positive power $c^m$ belongs to $H_0$.
+That power lies in the centre of $H_0$, hence is $1$.  Torsion-freeness gives
+$c=1$.  This agrees with \citet[Lemma 3.2]{Mochizuki2006}.
+For number fields use \citet[Corollary 2.2]{Mochizuki2006}.
+If a finite subgroup $F$ is normal in a slim profinite group $G$, the kernel
+of the conjugation map $G\to\operatorname{Aut}(F)$ is open and centralized
+by $F$, forcing $F=1$.  Complex conjugation, when a real embedding exists,
+is an element of order two of $G_K$; its subgroup is not normal.
+\end{proof}
+
+\statement{D.15}{Proved}{Rigidity on open subgroups and the two centralizer formulas}
+If $G$ is slim and $u\in\operatorname{Aut}(G)$ is the identity on an open
+subgroup $H$, then $u=1$.  If $u(H)=H$ and $u|_H$ is conjugation by an
+element of $H$, then $u$ is that inner automorphism on $G$.
+For a free basis element $x$ of $\widehat F_r$, or a standard nonseparating
+simple generator $x$ of the profinite closed surface group of genus at least
+two, and for every integer $m\geq1$,
+\[
+ C_G(x^m)=C_G(\overline{\langle x^m\rangle})
+    =\overline{\langle x\rangle}.
+ \tag{D.15.1}
+\]
+Thus Lemma 5 and equations (2), (4) in \S35, scans 498--501,
+folios 252 verso--254, are valid with their stated hyperbolic hypotheses.
+\begin{proof}
+Let $H_0$ be the normal core of $H$ in $G$.  For $g\in G$ and $a\in H_0$
+both $a$ and $gag^{-1}$ lie in $H$, so
+\[
+ u(g)a u(g)^{-1}=u(gag^{-1})=gag^{-1}.
+\]
+Consequently $g^{-1}u(g)$ centralizes the open subgroup $H_0$, hence is $1$.
+This proves the first assertion.  Compose with the inverse of the specified
+inner automorphism to obtain the second.
+
+For the free basis case (D.15.1) is
+\citet[Lemma (2.1.2)]{Nakamura1994}.
+For the surface case, a standard generator is an algebraically simple element
+in the sense of \citet[Definition 1.3]{BoggiZalesskii2019BC}.
+Their Proposition 3.6 gives the stronger identity
+$N_G(\overline{\langle x^m\rangle})=\overline{\langle x\rangle}$;
+the centralizer contains the right-hand side and is contained in this
+normalizer.  Both formulas follow.  Centralizing one element is equivalent
+to centralizing the closed subgroup it topologically generates, so the
+scan's alternatives $L_i^m$ and $\ell_i^m$ are mathematically equivalent in
+this use.  The subgroup $\overline{\langle x\rangle}\simeq\widehat{\mathbb Z}$
+has injective multiplication by every positive integer, which also completes
+the power argument written across scans 500--501.
+\end{proof}
+
+\statement{D.16}{Known}{Faithful outer actions for every hyperbolic curve}
+For every hyperbolic curve $U/K$ over a number field or a $p$-adic local
+field, the full profinite outer representation
+\[
+ \rho_U:G_K\longrightarrow\operatorname{Out}(\Delta_U)
+\]
+is injective.  This includes affine and proper curves, type $(0,3)$,
+type $(1,1)$, and all proper types $(g,0)$ with $g\geq2$.
+It proves the expectation in \S35, scan 497, rather than only the weaker
+assertion that a sufficiently small open subscheme is faithful.
+\begin{proof}
+The precise general result is
+\citet[Corollary 6.3(i), with one configuration point]{HoshiMochizuki2011}.
+Its full-prime-set hypothesis is essential.  The source explicitly identifies
+the earlier affine assertion as
+\citet[Theorem 2.1]{Matsumoto1996}; the 2011 result supplies the proper case
+as well.
+
+We also give the short Belyi argument for the particular theorem proved in
+\S35, scans 491--495.  Suppose $\sigma\in G_{\mathbb Q}$ acts trivially in
+$\operatorname{Out}(\widehat F_2)$ for the tripod.  Then it fixes the
+isomorphism class of every connected finite \'etale cover of the tripod,
+since these correspond to conjugacy classes of open subgroups of
+$\widehat F_2$.  For any $j\in\overline{\mathbb Q}$ choose an elliptic curve
+$E_j$ with that invariant.  By \citet[Section 4, Theorem 4]{Belyi1980} it
+has a finite map to $\mathbb P^1$ branched only over $0,1,\infty$.
+Deleting the inverse images of the three points gives a cover whose
+$\sigma$-conjugate is isomorphic to it.  An isomorphism extends uniquely to
+smooth proper completions, so $E_j\simeq E_j^\sigma$ and
+$j=\sigma(j)$.  Since every algebraic $j$ was allowed, $\sigma=1$.
+The unnumbered corollary on p.~256 of Belyi's English paper is exactly this
+faithfulness consequence.  This argument proves injectivity, and has no
+surjectivity conclusion about a separately defined normalizer or GT group.
+\end{proof}
+For fixed $\ell$, the analogous pro-$\ell$ assertion over a number field
+is not a consequence of this theorem.  In fact for a curve with good
+reduction, and a good finite place of residue characteristic different from
+$\ell$, the geometrically pro-$\ell$ outer representation is unramified
+there.  Nontrivial inertia of $G_K$ therefore lies in its kernel.
+The full profinite statement cannot be replaced by a single-prime statement.
+
+\statement{D.17}{Known}{Faithfulness even modulo geometric Teichm\"uller monodromy}
+Let $2g-2+n>0$ and let $\mathcal M_{g,n}/\mathbb Q$ denote the stack with
+ordered marked points.  Write
+\[
+ \Psi:\pi_1(\mathcal M_{g,n})\longrightarrow
+                \operatorname{Out}(\Delta_{g,n}),\qquad
+ N^{\mathrm{arith}}_{g,n}=\operatorname{im}(\Psi),\qquad
+ \Sigma_{g,n}=\operatorname{im}(\pi_1(\mathcal M_{g,n,\overline{\mathbb Q}})).
+\]
+Then the canonical surjection
+\[
+ G_{\mathbb Q}\longrightarrow
+       N^{\mathrm{arith}}_{g,n}/\Sigma_{g,n}
+ \tag{D.17.1}
+\]
+is an isomorphism.  The same assertion holds with unordered marked points
+and the corresponding unordered geometric monodromy group.
+Here $\Sigma_{g,n}$ is the procongruence image of the orientation-preserving
+mapping class group, not an assumed copy of its entire profinite completion.
+This answers affirmatively the precise arithmetic-image question of \S35,
+scans 502--505, including the proper types and $(1,1)$ singled out on scan 504
+as possibly ``tout \`a fait faux''.
+\begin{proof}
+The geometric image is closed and normal because it is the continuous image
+of the geometric kernel in the arithmetic stack extension.  Hence the
+surjection (D.17.1) is well-defined without a rational base point on the stack.
+Choose a finite extension $L/\mathbb Q$ and an $L$-point of
+$\mathcal M_{g,n}$, equivalently a curve of the given type with ordered
+$L$-rational marked points.  Such an $L$ exists by taking a closed point of
+a nonempty finite type atlas.  We do not assume the existence of a
+$\mathbb Q$-point for an arbitrary prescribed $(g,n)$.
+The point gives a section over $G_L$ whose universal outer representation is
+$\rho_{U/L}$.  By \citet[Corollary 6.4]{HoshiMochizuki2011},
+\[
+ \rho_{U/L}^{-1}(\Sigma_{g,n})=1.
+\]
+Thus the kernel $A$ of (D.17.1) intersects $G_L$ trivially.  It is finite,
+normal in $G_{\mathbb Q}$, and therefore trivial by D.14.  This proves the
+ordered assertion.
+
+For unordered marks the ordered geometric image is a normal subgroup of
+finite index in the unordered image.  Over $L$ the inverse image under
+$\rho_{U/L}$ of the latter group is finite, because its map to the finite
+quotient has trivial kernel by the ordered assertion of Corollary 6.4.
+It is also normal in $G_L$, since geometric monodromy is normal in arithmetic
+monodromy.  Slimness forces it to be trivial.  The same finite-normal-kernel
+argument over $\mathbb Q$ completes the proof.
+\end{proof}
+The distinction from the congruence subgroup problem is exact.
+\citet[Corollary 6.5]{HoshiMochizuki2011} says that the full universal
+monodromy $\Psi$ is injective if and only if its geometric restriction is
+injective.  Thus identifying $\Sigma_{g,n}$ with the profinite mapping class
+group still requires the relevant congruence theorem.  The quotient
+faithfulness (D.17.1) does not.  Equally, replacing $N^{\mathrm{arith}}$ by
+a full normalizer is a different problem, retained separately in Part E.
+Quotienting by orientation-reversing mapping classes would also change the
+assertion; D.21 below gives the obstruction.
+
+\statement{D.18}{Proved}{The direction of faithfulness under finite covers}
+Let $k$ have characteristic zero, let $V\to U$ be a finite \'etale morphism
+of geometrically connected hyperbolic curves over $k$, and assume that
+$\rho_U:G_k\to\operatorname{Out}(\Delta_U)$ is faithful.  Then $\rho_V$
+is faithful.  No rational point and no replacement of $k$ by a finite
+extension are necessary.  This proves the finite-cover assertion in \S35,
+folios 253--253 verso, scans 499--500, in its stated characteristic-zero scope.
+\begin{proof}
+Choose compatible base points.  Then $\Pi_V\subseteq\Pi_U$ is an open
+subgroup, maps onto $G_k$ by geometric connectedness, and
+$\Delta_V=\Delta_U\cap\Pi_V$ is open in $\Delta_U$.
+For $\sigma\in\ker\rho_V$ choose $e\in\Pi_V$ above $\sigma$.
+Its conjugation on $\Delta_V$ is conjugation by some $d\in\Delta_V$.
+Thus $d^{-1}e$ centralizes $\Delta_V$.  Its conjugation on $\Delta_U$ is
+an automorphism that is the identity on an open subgroup, hence is the
+identity by D.14--D.15.  Therefore $\rho_U(\sigma)=1$, whence $\sigma=1$.
+\end{proof}
+This proof also explains the direction of the comparison map: an open
+geometric subgroup detects an automorphism of the larger group once the
+inner automorphism on the subgroup has been removed.  In the manuscript's
+longer argument a finite residual kernel had to be eliminated; it is not
+enough merely to observe that this kernel acts through a finite group.
+Filling punctures is a surjection of geometric groups, so it is not the
+same argument; the proper faithfulness needed after filling is supplied by
+D.16 and D.17.
+
+\statement{D.19}{Proved}{The tripod centralizer is the symmetric group}
+For $U=\mathbb P^1_K\setminus\{0,1,\infty\}$ over a sub-$p$-adic field $K$,
+\[
+ C_{\operatorname{Out}(\Delta_U)}(\rho_U(G_K))
+       =\operatorname{Aut}_K(U)\simeq\mathfrak S_3.
+\]
+In particular the automorphism assertion of \S34, scans 485--486, does not
+require assuming a chosen arithmetic normalizer in addition to commuting
+with the arithmetic action.
+\begin{proof}
+An outer automorphism $a$ commuting with $\rho_U$ induces, by D.1, an
+isomorphism of the arithmetic extension over $G_K$.
+D.4 and its Isom consequence identify it with a unique automorphism of $U$.
+Conversely every such scheme automorphism commutes with the Galois action.
+An automorphism extends to $\mathbb P^1$ and permutes $\{0,1,\infty\}$;
+three distinct points determine a fractional linear transformation, and all
+six permutations are defined over $\mathbb Q$.  This gives exactly
+$\mathfrak S_3$.  Its injectivity on the outer group follows from the same
+Isom theorem.  The alternatives $\mathfrak S_3\mid\mathcal S_3$ in scan 485
+are two notations for this six-element group; the mathematics does not decide
+the handwritten font.
+\end{proof}
+
+\subsection{Small types and the exact remaining qualifications}
+
+\statement{D.20}{Refuted}{Dropping hyperbolicity from the faithfulness assertion}
+The uniform assertion of D.16 becomes false if any of $(0,0)$, $(0,1)$,
+$(0,2)$, $(1,0)$ is admitted.  The geometric centres and the counterexamples
+are as follows:
+\[
+\begin{array}{c|c|c}
+ (g,n)&\Delta_{g,n}&Z(\Delta_{g,n})\\\hline
+ (0,0),(0,1)&1&1\\
+ (0,2)&\widehat{\mathbb Z}&\widehat{\mathbb Z}\\
+ (1,0)&\widehat{\mathbb Z}^{,2}&\widehat{\mathbb Z}^{,2}
+\end{array}
+\]
+In contrast $(0,3)$ and $(1,1)$ are both hyperbolic with geometric group
+$\widehat F_2$, but have different peripheral structures.
+\begin{proof}
+Over an algebraically closed field of characteristic zero, comparison with
+the sphere, plane, punctured plane, and torus gives the displayed groups.
+Thus the first two outer actions over $\mathbb Q$ are trivial.  For
+$\mathbb G_m/\mathbb Q$ the outer action is the cyclotomic character, whose
+abelian image cannot be faithful on $G_{\mathbb Q}$.  Explicitly the splitting
+field of $x^3-2$ has Galois group $\mathfrak S_3$: Eisenstein's criterion at
+$2$ proves irreducibility and the discriminant is $-108$, a nonsquare.
+Hence $G_{\mathbb Q}$ has nontrivial commutator subgroup, killed by its
+cyclotomic character.
+
+For $(1,0)$ take $E:y^2=x^3-x$ over $K=\mathbb Q(i)$.
+The endomorphism $[i](x,y)=(-x,iy)$ is defined over $K$.
+Complex uniformization makes the integral lattice a free rank-one
+$\mathbb Z[i]$-module, so the full Tate module is free rank one over
+$\widehat{\mathbb Z}[i]$.  Equivalently one can choose a basis on which $[i]$
+has matrix $J=\left(\begin{smallmatrix}0&-1\\1&0\end{smallmatrix}\right)$.
+All Galois matrices commute with $J$.  Solving $AJ=JA$ over any commutative
+ring gives $A=aI+bJ$; its invertible solutions commute with each other.
+Thus the entire adelic representation has abelian image.  On the other hand
+the $\mathfrak S_3$ splitting field of $x^3-2$ intersects $\mathbb Q(i)$
+trivially: its only quadratic subfield is $\mathbb Q(\sqrt{-3})$.
+Its compositum with $K$ is therefore an $\mathfrak S_3$-extension of $K$.
+Consequently $G_K$ is nonabelian and the representation on
+$\Delta_E=\widehat{\mathbb Z}^{,2}$ is not faithful.  The code verifies the
+discriminant, the finite commutator calculation, and the centralizer
+calculation modulo several integers, including $2$ and $3$; the ring
+calculation above is the proof for all moduli.
+
+For $(0,3)$ the peripheral generators are $x,y,(xy)^{-1}$, each primitive
+in abelianization.  For $(1,1)$ the only peripheral subgroup is generated
+by $[x,y]$, which has zero image in abelianization.  A bare identification
+of their free profinite groups is therefore not an identification of curves
+with their loop data.
+\end{proof}
+
+\statement{D.21}{Proved}{Orientation, real fields, and residue characteristics}
+The subgroup in D.17 must be the geometric orientation-preserving group.
+If a full extended mapping class group containing orientation reversal is
+used instead, the analogous faithfulness assertion fails already at the
+tripod.  The geometric centre statements remain valid over $\mathbb R$,
+but the number-field Galois slimness statement does not extend to
+$G_{\mathbb R}$.  None of D.4, D.8, D.16, or D.17 has a residue-characteristic
+exclusion at $2$ or $3$ in its stated characteristic-zero setting.
+\begin{proof}
+Complex conjugation on the complex tripod is an orientation-reversing
+homeomorphism preserving its punctures.  Its outer class belongs to the
+image of the extended mapping class group and is nontrivial: on the
+abelianization $\widehat{\mathbb Z}^{,2}(1)$ it acts by $-1$.
+Therefore quotienting by that extended image kills a nontrivial element
+of $G_{\mathbb Q}$.  Moreover the extended image need not be normal in
+$N^{\mathrm{arith}}$: at the unordered tripod its image under the
+isomorphism of D.17 is the subgroup generated by complex conjugation.
+If it were normal it would be a nontrivial finite normal subgroup of
+$G_{\mathbb Q}$, contradicting D.14.  One cannot silently form an ordinary
+group quotient by it.  Taking its normal closure would still kill complex
+conjugation.
+
+Over $\mathbb R$ the arithmetic quotient is $C_2$, whose centre is itself.
+The correct real section map for a hyperbolic curve is
+$\pi_0(U(\mathbb R))\simeq\operatorname{Sec}(U/\mathbb R)$, by
+\citet[Introduction, Theorem]{BrescianiVistoli2020}; it is not a bijection
+from individual real points.  The outer action of $C_2$ is nevertheless
+faithful for a hyperbolic real curve.  If the proper completion has positive
+genus, conjugation reverses its orientation and is anti-symplectic on
+$H_1$; identity action would contradict its nondegenerate intersection
+pairing over $\mathbb Q_\ell$.  If the genus is zero and $n\geq3$, its action
+on puncture homology is minus the permutation of the punctures.  An
+involution on at least three punctures has at least two orbits, so the
+reduced permutation representation has a nonzero $+1$ eigenspace.
+The action on that subspace after the minus sign is nontrivial.
+
+A smooth complex algebraic curve is orientable.  The fundamental group of
+a nonorientable topological surface is therefore not the geometric group
+of one of these curves.  A real curve can have a nonorientable quotient by
+conjugation; its arithmetic datum is the geometric oriented group together
+with the involution and its extension, not the fundamental group of the
+quotient surface alone.  The orientation double cover does not identify
+these different arithmetic extensions.
+
+All the local fields in D.4 and D.8 have characteristic zero.  Horizontal
+ramification along a deleted point is consequently tame even if its
+ramification index is divisible by the residue characteristic; the analytic
+unit-root threshold in D.7 handles that divisibility.  The proof of D.8
+explicitly uses the correct dyadic Hensel bound.  The universal-monodromy
+and full profinite theorems in D.16--D.17 are also characteristic-zero
+statements.  In \S36 the orbifold orders $2$ and $3$ do prevent transporting
+an argument through tame coarse moduli in characteristics $2,3$; this
+requires retaining the stack and is not an exception to the theorems over
+$\mathbb Q$ or $\mathbb Q_p$ stated here.
+\end{proof}
+
+\statement{D.22}{Proved}{Uniqueness of a Galois-invariant tripod loop structure}
+Let $K$ be a number field and equip
+$\Delta=\pi_1((\mathbb P^1\setminus\{0,1,\infty\})_{\overline K})$
+with its usual outer $G_K$-action.  Among loop structures of type $(0,3)$,
+meaning the three conjugacy classes
+$\overline{\langle a\rangle},\overline{\langle b\rangle},
+\overline{\langle (ab)^{-1}\rangle}$ for a profinite free basis $(a,b)$,
+the usual loop structure is the unique one invariant under this action.
+This is a precise instance of the first sentence of the conjecture in
+\S34, scan 483, independent of its false normalizer explanation.
+\begin{proof}
+Let such a triple be invariant.  After a finite extension $L/K$, each
+conjugacy class is individually fixed.  For any one of its topological
+generators $z$, the normalizer of $I=\overline{\langle z\rangle}$ in
+$\Pi_{U_L}$ projects onto $G_L$.  Its conjugation action on $z$ is
+$z\mapsto z^{\lambda(h)}$ for some
+$\lambda(h)\in\widehat{\mathbb Z}^{\times}$.
+The true Galois action on $\Delta^{\mathrm{ab}}$ is scalar multiplication
+by $\chi_K$, since all three actual punctures are rational.  The image of
+$z$ in $\Delta^{\mathrm{ab}}$ is a primitive vector: this is evident for
+$a,b$ and for $-a-b$.  Thus
+$\lambda(h)[z]=\chi_K(p(h))[z]$ implies
+$\lambda(h)=\chi_K(p(h))$.  In particular the geometric part of the
+normalizer acts trivially.  D.3, applied over $L$, identifies $I$ with
+one of the actual inertia subgroups: it is contained in one and is maximal
+procyclic, being a free-basis factor or its automorphic image.
+The three candidate conjugacy classes are distinct, as their abelianized
+lines are distinct.  Hence they are exactly the three actual classes.
+Finite base extension does not change the geometric inertia subgroups,
+so the result holds over $K$.
+\end{proof}
+
+\statement{D.23}{Open}{What invariant loop data and admissible moduli splittings still require}
+For an arbitrary affine hyperbolic $U/K$ over a number field, consider the
+assertion that every profinite surface loop structure of its type on
+$\Delta_U$ which is invariant under $\rho_U(G_K)$ equals the geometric
+cuspidal loop structure.  The cyclotomic version is D.3 and the tripod case
+is D.22.  We have not established this bare invariance assertion in the
+remaining types, and do not identify it with the false assertion of D.2.
+The first type not covered by our elementary argument is $(1,1)$: its
+peripheral commutator has zero abelianization, so the primitive-vector
+argument forcing the cyclotomic exponent does not apply.
+Precisely the missing implication in that argument is that invariance of
+an alternative peripheral subgroup forces the normalizer action required
+by D.3 after an open restriction of $G_K$.
+
+Independently, the proposed description of admissible partial splittings
+of $N_{g,n}$ in \S34, folios 247--247 verso, scans 487--488, is not a
+consequence of the Hom theorem or the proper section manuscript.
+Once $N^{\mathrm{arith}}$ is identified with an arithmetic moduli-stack
+fundamental group in a type where the congruence kernel vanishes, these
+splittings concern points of that stack.  Classifying all of them as
+curve-moduli points is a moduli-stack section problem; neither D.5 nor
+D.7 supplies that classification.  In particular the empty list of
+extra conditions at $(1,1)$ in scan 487 is not proved sufficient by the
+2026 proper-curve result.  D.10 is the exact consequence obtained on the
+specified high-genus modular-curve open subgroup.  In higher genus, even
+the identification with the full arithmetic stack fundamental group must
+retain the congruence-kernel qualification of D.17.
+
+These Open labels state the exact assertions left unproved by this audit;
+they are not claims that every formulation of inertia recognition or every
+special section theorem is unknown in the literature.  Our searches and
+checks used Nakamura's cyclotomic criterion, Mochizuki's relative Hom theorem,
+the full Hoshi--Mochizuki monodromy theorem, and the two new proof packs.
+An assertion left conditional or unverified has not been refuted merely
+because our proof stops at an identified implication.
