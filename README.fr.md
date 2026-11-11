@@ -26,6 +26,10 @@ transcrit en premier jet, et la transcription est en cours de vérification page
   que Grothendieck laisse ouvertes, avec les numéros de scan (en anglais).
 - `methodology/` : comment la transcription est faite, les prompts utilisés, la liste des paquets et la couverture
   (en anglais).
+- [`raw/`](raw/README.md) : résultats de recherche bruts, non revus pour publication (en anglais) : réponses de
+  GPT-6 Astra (ChatGPT, mode Pro) à des prompts de recherche sur la tour de Teichmüller, premières passes de
+  transcription des cotes 146, 147 et 149 des archives, leurs relectures, les prompts avec tout ce qui y était joint,
+  et les scripts.
 
 La transcription est diplomatique : le français de Grothendieck, son orthographe, ses abréviations, sa numérotation,
 ses ratures, ajouts et notes marginales tels qu'écrits, avec le doute marqué (`\unsure{a|b}`, `\illegible{n}`). Les

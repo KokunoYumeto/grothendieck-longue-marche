@@ -1,0 +1,207 @@
+\section{F. One stratified object, its completion, and its automorphisms}
+\subsection{F.1. Which category is being completed}
+
+\statement{F.1}{Known}{The input category, with its variance}
+Let $n\geq3$, $G_n=P_{0,n}$, and let $\mathcal C_n$ be the set of isotopy classes of essential multicurves on the labelled punctured sphere, including the empty multicurve. For $\sigma\in\mathcal C_n$ put $\Delta_\sigma=\langle t_c:c\in\sigma\rangle\simeq\mathbb Z^{|\sigma|}$. The exit category is
+\[
+ \operatorname{Ob}C_n=\mathcal C_n,\qquad
+ \Hom_{C_n}(\sigma,\tau)=
+ \{g\in G_n:g\sigma\supseteq\tau\}/\Delta_\sigma,
+ \qquad [h]\circ[g]=[hg].                                      \tag{F.1}
+\]
+Its nerve is the exit-path $\infty$-category of the boundary-stratified $\overline{\mathscr M}_{0,n}(\mathbb C)$. Put $T_n=C_n^{\op}$. Thus arrows in $C_n$ smooth nodes, arrows in $T_n$ degenerate, and constructible coefficients are covariant functors on $C_n$, or presheaves on $T_n$.
+This is \citet[Construction 3.18, Proposition 3.23, Corollary 6.6, and Theorem 6.7]{AF_Jansen2023}, with the pure labelled genus-zero convention of A.
+\begin{proof}[Verification of the input used]
+We use Jansen's identification, not a new proof of the topology of the stratification. Its group-theoretic composition is well-defined: if $\tau\subseteq g\sigma$, then $g^{-1}\Delta_\tau g\subseteq\Delta_\sigma$. This is exactly the identity needed to replace $h$ by $hd$ and $g$ by $ge$ without changing the composite coset. The stabilizer quotient is
+\[
+\Aut_{C_n}(\sigma)=\Stab_{G_n}(\sigma)/\Delta_\sigma
+ \simeq\prod_v P_{0,\operatorname{val}(v)}.
+\]
+There are finitely many orbits, indexed by stable labelled trees. We choose one representative $\sigma_s$ per tree $s$ and henceforth work with this finite-object skeleton $C_n^0$. This changes the category by equivalence, not by groupoid completion. We retain its actual composition maps. For $n=4$ there are four objects and for $n=5$ there are twenty-six, with the Hom-sets specified in STRATA; the combinatorial counts and forgetting map are independently checked by the accompanying program.
+\end{proof}
+
+\statement{F.2}{Proved}{A strict, universal finite-category completion}
+For a category $C$ with a finite specified object set, a finite congruence $R$ is an equivalence relation of finite index on each $\Hom_C(x,y)$ that respects identities and composition. Let $C/R$ retain the same objects and the quotient Hom-sets. The poset of these congruences, ordered by refinement, is cofiltered, and
+\[
+ C^{\mathrm{fin}}=(C/R)_R\in\operatorname{Pro}(\mathrm{FinCat}),
+ \qquad C/R'\longrightarrow C/R\quad(R'\subseteq R)             \tag{F.2}
+\]
+is our strict profinite completion. Every transition functor is the identity on objects and surjective on each Hom-set. Its materialization $|C^{\mathrm{fin}}|=\varprojlim_R C/R$ is a category object in profinite sets with a finite discrete object set. Continuous functors from it to a finite category are precisely the functors represented by the pro-object. Continuous natural isomorphisms are retained, and can be computed at this level. In particular their automorphism groups agree.
+\begin{proof}
+Intersection of two finite congruences is again a finite congruence: its classes inject into the product of the two finite quotient sets. Thus the system and its transitions are explicit. Composition on the inverse-limit Hom-sets is the inverse limit of the finite composition maps, and is continuous and associative. A functor from $C$ to a finite category has a finite kernel congruence, including when different objects have the same image, so factors through a quotient in (F.2).
+
+Conversely a continuous map from a compact profinite Hom-set to a finite set factors through finitely many quotient coordinates. There are only finitely many pairs of objects. Taking a common refinement makes all Hom-maps factor at one stage. Because the projections are surjective on each Hom-set, identities and every composable pair lift from that stage; the functorial equations therefore hold already there. This proves the functor assertion. Apply the same argument to the finitely many components and naturality equations of a natural transformation. Equivalently,
+\[
+ \Hom_{\operatorname{Pro}}((C_i),(D_j))
+   =\varprojlim_j\varinjlim_i\Hom(C_i,D_j)
+\]
+with the corresponding groupoid of functors and natural isomorphisms. Invertibility is imposed by an inverse with its two natural isomorphisms. Thus replacing this strict pro-system by its continuous materialization does not erase transitions; their equivalence follows from the stated finite-object and quotient hypotheses. It would not follow for an arbitrary pro-system presented only in a homotopy category.
+\end{proof}
+
+\statement{F.3}{Refuted}{Arbitrary natural transformations may not be inverted}
+It is false that quotienting functors by arbitrary natural transformations is harmless for the completed exit category. The appropriate equivalence is natural \emph{isomorphism}, not a zigzag of transformations whose components need not be invertible.
+\begin{proof}
+Let $[1]$ have objects $0,1$ and its single nonidentity arrow $0\to1$. The functors $[1]\to\{*\}$ and $\{*\}\to[1]$ choosing $1$ have composite naturally related to the identity by the arrow $0\to1$. They become inverse after arbitrary natural transformations are inverted. They are not equivalences of categories, since $0$ and $1$ are not isomorphic. Both categories are already finite, hence already complete under (F.2). Moreover $\Fun([1],\mathrm{Set})$ has three subobjects of its terminal object, whereas $\mathrm{Set}$ has two; the associated coefficient categories are different. The program enumerates these subobjects and checks the transformation. This gives a finite counterexample to the proposed inference. The CATHOT warning about stagewise groupoidification is therefore respected, not applied as an identification of the exit category itself with a groupoid.
+\end{proof}
+
+\statement{F.4}{Proved}{Finite representations, split representations, and all continuous representations}
+For (F.2), finite-valued continuous functors satisfy
+\[
+ \Fun_{\cts}(|C^{\mathrm{fin}}|,\mathrm{FinSet})
+   \simeq\varinjlim_R\Fun(C/R,\mathrm{FinSet}).                 \tag{F.3}
+\]
+For arbitrary sets, the analogous colimit denotes representations that factor through \emph{one} finite stage. It need not contain every continuous representation. For a profinite group $H$, all discrete continuous $H$-sets form the filtered-colimit completion of the finite continuous $H$-sets. They are not the actions of the abstract group with its topology forgotten.
+\begin{proof}
+The first assertion is F.2 applied to the finite category of maps among the finitely many finite values of a given functor; it also treats its natural transformations. For the distinction, take $H=\widehat{\mathbb Z}$ and
+\[
+ S=\coprod_{m\geq1}\mathbb Z/m!\mathbb Z.
+\]
+Each orbit has open stabilizer, so this is a continuous action on a discrete set. A finite stage $\mathbb Z/N\mathbb Z$ cannot act through the given action on all summands, since that would force every $m!$ to divide $N$. On the other hand $S$ is the filtered union of its finite invariant subsets. The abstract regular action of $\widehat{\mathbb Z}$ on itself with the discrete topology is not continuous, since its point stabilizer is not open. This proves both distinctions. Finite representations in this paper always mean (F.3).
+
+This verifies the precise relevant content of the attached GALOIS F.4: \citet[notation preceding Definition 2.10, Theorem 3.13, and Corollary 3.20]{AF_Hoyois2018} distinguishes the pro-object functor category from its classifying topos and calls the stagewise objects \emph{split}. The attached statement includes that distinction. We do not refute it; we refute the unqualified inference that every continuous set action factors through one finite quotient. No Kan--Thurston or rational-local-system claim is needed here.
+\end{proof}
+
+\subsection{F.2. Transporters, closed stabilizers, and an explicit model}
+
+\statement{F.5}{Known}{The profinite curve complex and multitwist stabilizers}
+For genus zero and every $n\geq3$, let $\widehat G_n$ be the full profinite completion. It equals the procongruence completion. The profinite curve complex is defined by embedding an unoriented simple curve in the space of conjugacy classes $\{\gamma,\gamma^{-1}\}$ in $\widehat\Pi_{0,n}$, taking the closure of simple curves, and then taking the closure of the discrete $r$-multicurves in its finite-subset space, for each $r$. Include the empty simplex. It is also the inverse limit of the finite orbit complexes over congruence levels. For a discrete multicurve $\sigma$, its profinite stabilizer is $\overline{H_\sigma}$, where $H_\sigma=\Stab_{G_n}(\sigma)$, and
+\[
+1\longrightarrow\overline\Delta_\sigma\simeq\widehat{\mathbb Z}^{|\sigma|}
+ \longrightarrow\overline H_\sigma
+ \longrightarrow\prod_v\widehat P_{0,\operatorname{val}(v)}\longrightarrow1. \tag{F.4}
+\]
+Furthermore $N_{\widehat G_n}(\overline\Delta_\sigma)=\overline H_\sigma$.
+The sources are \citet[Definitions 3.3--3.4, Theorems 3.5--3.6, Theorem 4.2, and Corollary 4.3]{Boggi2020BC}, with the genus-zero congruence theorem. The trivial empty-multicurve case is interpreted separately.
+\begin{proof}[Scope and hypotheses]
+Boggi's statements are initially about the procongruence group, with a general class of finite quotients. We take the class of all finite groups. Part B verifies equality with the full profinite topology in genus zero, so the substitution here is legitimate. Pure mapping classes on a labelled sphere cannot permute the edges or reverse the sides of a fixed multicurve, since each edge has a distinct labelled split. Thus the finite permutation group in the general stabilizer theorem is trivial, giving (F.4). The multitwist normalizer theorem gives the last equality. Distinct disjoint twists are independent, so no prime, including $2$ or $3$, is excluded from $\widehat{\mathbb Z}^{|\sigma|}$. This verifies the precise results needed below; it does not assume that an arbitrary subgroup of a residually finite group inherits its full profinite topology.
+\end{proof}
+
+\statement{F.6}{Proved}{The completion of a stabilizer really is the stabilizer}
+For the groups in F.5, the natural map $\widehat H_\sigma\to\overline H_\sigma$ is an isomorphism. Both $H_\sigma$ and $\Delta_\sigma$ are closed in the profinite topology of $G_n$, and $C_n^0\to|(C_n^0)^{\mathrm{fin}}|$ will be faithful.
+\begin{proof}
+Cutting the sphere along $\sigma$ gives the discrete exact sequence
+\[
+1\to\Delta_\sigma\to H_\sigma\to
+ Q_\sigma:=\prod_vP_{0,\operatorname{val}(v)}\to1.
+\]
+Its completion is right exact. The natural homomorphism $\widehat\Delta_\sigma\to\widehat H_\sigma$ is injective because its composite into $\widehat G_n$ is the injection in (F.4). The kernel of $\widehat H_\sigma\to\widehat Q_\sigma$ is exactly the closed image of $\widehat\Delta_\sigma$: quotienting by it has the universal finite quotients of $H_\sigma/\Delta_\sigma$. Comparison with (F.4), and equality of the component completions with their procongruence groups, gives an isomorphism of both ends. A direct kernel-and-surjectivity argument, or the short five lemma, gives the asserted middle isomorphism.
+
+The discrete curve complex injects into the profinite one by surface-group conjugacy separability, used in its construction. If $g\in G_n\cap\overline H_\sigma$, then $g\sigma=\sigma$ in the profinite complex, hence already in the discrete complex; thus $g\in H_\sigma$. This proves closedness of $H_\sigma$. Within $H_\sigma$, the subgroup $\Delta_\sigma$ is the kernel of the map to the residually finite group $Q_\sigma$, so is closed there. The full induced topology on $H_\sigma$ just proved makes it closed also in $G_n$. Distinct cosets modulo $\Delta_\sigma$ can therefore be separated in a finite quotient of $G_n$. The transporter formula in the next statement proves faithfulness on every Hom-set.
+\end{proof}
+
+\statement{F.7}{Proved}{Finite quotient categories and the transporter completion agree}
+For representatives $\sigma_s$ of the stable labelled trees put
+$A_{st}=\{g\in G_n:g\sigma_s\supseteq\sigma_t\}$.
+For each finite-index normal subgroup $V\lhd G_n$ let $p_V:G_n\to G_n/V$, and define a finite category $C_{n,V}$ by
+\[
+\operatorname{Ob}C_{n,V}=\{s\},\qquad
+\Hom_{C_{n,V}}(s,t)=p_V(A_{st})/p_V(\Delta_{\sigma_s}),
+\quad[h][g]=[hg].                                            \tag{F.5}
+\]
+If $V'\subseteq V$, its transition functor is induced by $G_n/V'\to G_n/V$. These quotient categories are cofinal among all finite congruence quotients of $C_n^0$. Thus
+\[
+\widehat C_n:=\varprojlim_V C_{n,V},\qquad
+\Hom_{\widehat C_n}(s,t)=\overline{A_{st}}/\overline\Delta_{\sigma_s} \tag{F.6}
+\]
+materializes the strict pro-object of F.2. In the full profinite multicurve model this is the candidate transporter formula from the prompt:
+\[
+\Hom(\sigma,\tau)=
+ \{g\in\widehat G_n:g\sigma\supseteq\tau\}/\overline\Delta_\sigma.
+\]
+It is a category in profinite sets, and the discrete comparison is faithful for every $n\geq3$.
+\begin{proof}
+The group-theoretic identity $g^{-1}\Delta_{\sigma_t}g\subseteq\Delta_{\sigma_s}$ in F.1 proves composition in (F.5) well-defined even after inserting elements of $V$, because $V$ is normal. Associativity and identities descend from multiplication. The stated transitions are actual functors, not merely outer homomorphisms.
+
+If $A_{st}$ is nonempty, pure mapping classes preserve every split of a tree. Exactly one subset $\eta\subseteq\sigma_s$ has the splits of $\sigma_t$. Choose $r$ with $r\eta=\sigma_t$. Then
+$A_{st}=H_{\sigma_t}r$. Hence its closure is $\overline H_{\sigma_t}r$, and the compact coset quotient gives (F.6). Conversely, a profinite transporter must send that same subset to $\sigma_t$, by the discrete finite set of split labels, so lies in this closed coset. This proves agreement with the proposed formula, including the empty Hom-sets.
+
+To prove cofinality, let $F:C_n^0\to D$ be a functor to a finite category. Its restriction to $\Aut(s)=H_{\sigma_s}/\Delta_{\sigma_s}$ has finite-index kernel. By F.6 this kernel pulls back to a subgroup of $H_{\sigma_s}$ containing $V_s\cap H_{\sigma_s}$ for some finite-index normal $V_s\lhd G_n$. There are only finitely many $s$, so take $V=\bigcap_sV_s$. Suppose $g,g'\in A_{st}$ have the same class in (F.5). For some $d\in\Delta_{\sigma_s}$,
+$h=g'd^{-1}g^{-1}\in V\cap H_{\sigma_t}$. The restriction of $F$ kills $h$, and $d$ already represents the identity at $s$, so $F([g'])=F([g])$. Thus $F$ factors through $C_{n,V}$. This is the missing cofinality assertion that could not be deduced from residual finiteness alone.
+
+Each Hom in (F.6) is a closed subset of the profinite coset space $\widehat G_n/\overline\Delta_{\sigma_s}$, and multiplication is continuous. The full object space is the finite disjoint union $\coprod_s\widehat G_n/\overline H_{\sigma_s}$. Its transporter category is continuously equivalent to the skeleton just defined. To see that continuous choices are possible here, use the countable descending basis of open normal subgroups of the finitely generated profinite group and choose compatible transversals at successive finite quotients. Their inverse limits provide continuous transporters on each orbit. The choices are not canonical, but change the model by continuous natural equivalence. Faithfulness follows from the closedness of $\Delta_{\sigma_s}$ proved in F.6.
+\end{proof}
+
+\statement{F.8}{Proved}{Forgetting, clutching, and relabelling survive completion}
+Every specified forgetful functor $Q:C_{n+1}\to C_n$, and every clutching functor, extends to the strict pro-completions by its universal property. On the transporter model, forgetting is induced by the completed pure Birman homomorphism $\widehat\phi:\widehat G_{n+1}\twoheadrightarrow\widehat G_n$ and the continuous map on profinite multicurves. In degeneration variance it is $\widehat Q^{\op}:\widehat T_{n+1}\to\widehat T_n$. Relabelling remains a pseudo-action with its specified natural isomorphisms; choosing a skeleton does not manufacture a splitting of a mapping class permutation extension.
+\begin{proof}
+Pulling a finite congruence back along a functor gives a finite congruence. This defines the pro-morphism together with its comparison maps at all stages; composition is respected by functoriality of pullback. On a discrete multicurve forgetting drops peripheral components and identifies curves that become isotopic. The images of its twists lie in the multitwist subgroup of the resulting multicurve, which proves well-definedness on cosets. The continuous extension exists by F.7 and agrees on a dense subcategory, hence agrees with the universal extension. No arbitrary point of the profinite curve complex is assigned an image without this continuity argument.
+
+For clutching, the discrete full replete subcategory consists of the objects whose tree contains the prescribed split. Cutting along it identifies the relevant stabilizer quotient and its transporter Hom-sets with the product categories of the components. Their full induced profinite topologies, proved in F.6, imply that completion is still fully faithful. One can also apply the finite congruence argument to this product: finite functors on finitely many factor Hom-sets are controlled by a common finite quotient. This proves the product identification in genus zero. In $T$-variance it is a cosieve; in $C$-variance it is a sieve.
+
+A change of marking conjugates a group homomorphism by its transporter, which is a natural isomorphism of the corresponding functors. Retaining these isomorphisms and their cocycle identity proves pseudoequivariance for permutations and for repeated forgetting. It is stronger data than a list of homomorphisms modulo unrelated inner automorphisms.
+\end{proof}
+
+\subsection{F.3. Geometric comparison and the Galois action}
+
+\statement{F.9}{Known}{Stratified Riemann existence supplies the geometric comparison}
+Let $X_n=\overline{\mathscr M}_{0,n}$ over $\mathbb Q$, stratified by its stable labelled trees. Fix $\overline{\mathbb Q}\hookrightarrow\mathbb C$. The finite boundary-constructible \etale sheaves on $X_{n,\overline{\mathbb Q}}$, with their stalk functors at one chosen geometric point of each stratum, are equivalent to
+\[
+ \Fun_{\cts}(\widehat C_n,\mathrm{FinSet}),                    \tag{F.7}
+\]
+with their evaluation functors. The finite-category exodromy object reconstructed from these data is therefore equivalent to the strict completion in F.7. At the full stratified $\infty$-categorical level, the precise theorem is
+\[
+ \operatorname{Gal}(X_{n,\mathbb C}/P_n)
+    \simeq\operatorname{Exit}^{P_n}(X_n(\mathbb C))^{\wedge}_{\pi}, \tag{F.8}
+\]
+where the right-hand completion is in profinite stratified spaces. Here $P_n$ denotes the finite poset of strata, not the mapping class group $P_{g,n}$. This is \citet[Proposition 12.6.4 and Corollaries 12.6.6--12.6.7]{AF_BGH2020}. We take its finite-category, finite-set exodromy part in (F.7); we do not replace its full $\infty$-categorical completion by a limit of ordinary categories without a further comparison.
+\begin{proof}[Precise deduction at the level used]
+Base extension between algebraically closed characteristic-zero fields preserves finite \etale coverings of the strata and their constructible gluing data. Apply the analytic/\etale constructible comparison of the cited proposition and Jansen's exodromy theorem F.1. Their restriction to finite stalks gives $\Fun(C_n^0,\mathrm{FinSet})$. By F.2 and F.7 every such functor factors through a finite quotient category, with its maps and natural transformations. This yields (F.7), including compatibility with stalks.
+
+For a finite category, the natural transformations between evaluation functors on its finite covariant representations recover its Hom-sets by the covariant representables. Passing through the actual finite quotient system gives the corresponding profinite Hom-sets by inverse limit. Thus the finite representations \emph{with their evaluation functors} recover precisely (F.6). This proves the claimed comparison rather than inferring it from equality of ordinary fundamental groups. Formula (F.8) is the stronger theorem at its own level. It is not a claim that the unstratified compactification is a $K(\pi,1)$, nor that the full point-and-specialization category $\operatorname{Gal}(X)$ equals the object for one fixed stratification. The latter object is the boundary-constructible localization/spectrification denoted $\operatorname{Gal}(X/P_n)$ in the source.
+\end{proof}
+
+\statement{F.10}{Proved}{Continuous outer Galois action on the completed category}
+Galois descent defines a coherent continuous action
+\[
+ BG_{\mathbb Q}\longrightarrow\operatorname{Aut}(\widehat C_n)
+\]
+in the $2$-category of profinite categories and continuous equivalences. On equivalence classes it gives a homomorphism
+$G_{\mathbb Q}\to\pi_0\operatorname{Aut}(\widehat C_n)$.
+It is compatible with forgetting, clutching, and relabelling, and with the opposite category $\widehat T_n$. On a local normal-crossings inertia group at a rational boundary point it acts, modulo simultaneous geometric conjugation, by
+\[
+ t_e\longmapsto t_e^{\chi(\sigma)} \quad\text{for every node }e. \tag{F.9}
+\]
+For $n\geq4$ the outer action on $\widehat C_n$ is faithful.
+\begin{proof}
+Every $\sigma\in G_{\mathbb Q}$ acts on $X_{n,\overline{\mathbb Q}}$ over $\mathbb Q$ and hence, by inverse pullback $(\sigma^{-1})^*$, on finite boundary-constructible sheaves; this convention gives a left action. The natural associativity of pullback supplies the coherence for products of $\sigma$'s. Each finite sheaf and morphism descends to a number field, so this action is continuous on the finite data. Transfer by (F.7), including the stalks and their transports, gives the displayed outer categorical action. Changing the chosen geometric paths changes it by continuous natural isomorphism. It does not alter its class in $\pi_0$.
+
+The geometric maps forgetting or clutching markings and the relabellings are defined over $\mathbb Q$. Their pullbacks commute coherently with this descent action, proving compatibility. Locally at a rational boundary point there are smoothing coordinates $q_e$ with divisor $q_e=0$. In characteristic zero Kummer covers $q_e^{1/m}$ have inertia $\mu_m$; Galois acts on their roots of unity by $\chi\bmod m$. Taking all $m$ gives (F.9). If parameters, tangential points, or paths are changed, the common local inertia group is conjugated, which explains the stated ambiguity; there is no preferred global generator independent of these choices.
+
+For $n=4$, the open-stratum group is $\widehat G_4\simeq\widehat F_2$ for $\mathbb P^1\setminus\{0,1,\infty\}$, and Belyi faithfulness, proved or cited precisely in D, detects $G_{\mathbb Q}$. For $n>4$, forgetting to four markings is a surjective map on open-stratum groups and intertwines the Galois action. If the upstairs action were inner, its induced downstairs action would be inner, so faithfulness transfers in the needed direction. For $n=3$ the labelled category is a point and this action is trivial. Simple connectedness of the compactification does not contradict these statements: it concerns its unstratified fundamental group, which is a different quotient of the category.
+\end{proof}
+
+\statement{F.11}{Proved}{The failure of smoothness persists profinitely}
+For forgetting the fifth marking at the stratum $q_{12,34}$, the continuous lifting groupoid in the STRATA smoothness test is equivalent to
+$B\widehat{\mathbb Z}$. Its stabilizer is
+\[
+\ker(\widehat\phi)\cap\overline\Delta_q
+  =\{(a,-a):a\in\widehat{\mathbb Z}\}
+  =\overline{\langle t_1t_2^{-1}\rangle}.                      \tag{F.10}
+\]
+Thus the forgetful functor fails the analogous homotopy-smoothness test with continuous finite derived coefficients. Galois preserves this procyclic stabilizer and acts on it by the cyclotomic character, up to simultaneous conjugation.
+\begin{proof}
+The two distinct twists upstairs generate $\widehat{\mathbb Z}^2$ by F.5. Both map to the same primitive twist downstairs, so the exponent map is $(a,b)\mapsto a+b$. The only lift targets in the relevant test are open objects: a curve disappearing on forgetting $5$ would have split $i5\mid\{1,2,3,4\}\setminus\{i\}$, which occurs in neither of the two specified source splits. This is exactly the discrete split-label argument, and it persists on the profinite complex because the labels form a finite discrete invariant. The kernel $K=\ker\widehat\phi$ acts transitively on the lift objects, since $\widehat\phi(\overline\Delta_q)$ is the full downstairs twist group. Its stabilizer is (F.10), so the action groupoid is equivalent to $B\widehat{\mathbb Z}$.
+
+For every prime $\ell$, its continuous cohomology has
+$H^1_{\cts}(\widehat{\mathbb Z},\mathbb F_\ell)
+ =\Hom_{\cts}(\widehat{\mathbb Z},\mathbb F_\ell)\simeq\mathbb F_\ell$.
+Consequently this pro-homotopy type is not terminal and the required homotopy-cofinality condition fails. We are not claiming that connectedness alone fails, or that ordinary set-valued colimits detect this $H^1$. At the rational normal-crossings point, (F.9) uses one exponent on both branches; hence $t_1t_2^{-1}\mapsto(t_1t_2^{-1})^{\chi(\sigma)}$ under a compatible local lift. This also proves the statement for the corresponding degeneration functor, with variance reversed. The program checks the kernel and its cyclotomic stability in every finite modulus $2\leq m\leq24$; the displayed algebra proves it in the inverse limit.
+\end{proof}
+
+\subsection{F.4. Boundary-category automorphisms and the two levels}
+
+\statement{F.12}{Proved}{Restriction to the open stratum detects every categorical automorphism}
+Let $n\geq4$. A continuous autoequivalence of $\widehat C_n$ fixing the labelled stratum types is determined up to natural isomorphism by its outer action on $\widehat G_n=\Aut(u)$. Its image consists precisely of the outer automorphisms preserving the conjugacy classes of all boundary multitwist subgroups. Such an automorphism lifts if it preserves the associated profinite multicurve incidence. An inertia-preserving automorphism does preserve that incidence, by the commuting-twist characterization of simplices. These assertions hold for the continuous materialization and the strict pro-object alike.
+\begin{proof}
+For each object $s$ choose the standard arrow $j_s:s\to u$ represented by $1$. Its orbit is the left $\widehat G_n$-set
+$\Hom(s,u)=\widehat G_n/\overline\Delta_{\sigma_s}$.
+Its stabilizer therefore recovers the conjugacy class of $\overline\Delta_{\sigma_s}$. An autoequivalence must preserve these classes. Suppose first that its outer action at $u$ is trivial. Conjugate the functor by a natural isomorphism at $u$ to make the action literally the identity. Its map on $\Hom(s,u)$ is then an equivariant automorphism of a transitive profinite $\widehat G_n$-set, hence is given by an element of
+$N_{\widehat G_n}(\overline\Delta_{\sigma_s})/\overline\Delta_{\sigma_s}$.
+By F.5 this is exactly $\Aut(s)$. A natural change at $s$ therefore makes the map on $\Hom(s,u)$ the identity. Postcomposition with $j_t$ embeds $\Hom(s,t)$ into $\Hom(s,u)$ by the transporter formula. Thus the functor is the identity on every Hom-set. This proves injectivity after natural isomorphism.
+
+Conversely let $\alpha\in\Aut(\widehat G_n)$ preserve the inertia subgroups and labelled strata. A profinite simple curve is determined by its inertia subgroup, and a finite set of distinct curves is a simplex precisely when the corresponding twist subgroups commute. The injectivity and commutation assertions are \citet[Theorem 4.11, Corollary 4.12, and Proposition 7.2]{AF_BoggiFunar2023}; the exact resulting extension to all inertia groups is also \citet[Proposition 3.5]{Boggi2026Automorphisms}. Hence $\alpha$ induces a continuous simplicial map $f$ on profinite multicurves with
+$\alpha(\overline\Delta_\sigma)=\overline\Delta_{f\sigma}$ and
+$f(g\sigma)=\alpha(g)f(\sigma)$.
+The formula $(\sigma,[g],\tau)\mapsto(f\sigma,[\alpha(g)],f\tau)$ is consequently a well-defined continuous functor on the full transporter category. Its inverse is induced by $\alpha^{-1}$. Transferring to the skeleton gives the desired autoequivalence, independent of the transporters up to natural isomorphism. Inner $\alpha$ give naturally isomorphic functors. The injection already proved gives uniqueness of this extension. F.2 proves agreement with pro-object automorphisms.
+\end{proof}
+

@@ -25,6 +25,9 @@ and the transcription is being checked page by page against the scans.
 - [notes/RESEARCH_TOPICS.md](notes/RESEARCH_TOPICS.md): an initial map of the manuscript's topics and of the
   questions Grothendieck leaves open, with scan references.
 - `methodology/`: how the transcription is made, the prompts used, the list of packages and the coverage.
+- [`raw/`](raw/README.md): raw research outputs, not edited for publication: answers of GPT-6 Astra (ChatGPT Pro
+  mode) to research prompts on the Teichmüller tower, first-pass transcriptions of the archive's cotes 146, 147 and
+  149, their reviews, the prompts with everything attached, and the scripts.
 
 The transcription is diplomatic: Grothendieck's French, spelling, abbreviations, numbering, deletions, insertions and
 margin notes as written, with doubt marked (`\unsure{a|b}`, `\illegible{n}`). Mathematics keeps his letters, indices
