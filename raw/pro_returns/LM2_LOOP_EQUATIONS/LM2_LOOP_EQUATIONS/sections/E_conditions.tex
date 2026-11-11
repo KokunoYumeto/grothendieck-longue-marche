@@ -1,0 +1,257 @@
+\section{E. The remaining conditions and what the graded comparison sees}
+
+\begin{claim}{E.1}{Proved}{The extra orbifold compatibility is arithmetic}
+The outer action of $G_\mathbb Q$ satisfies the compatibility of B.m3,
+understood first modulo inner automorphisms of the target $\widehat B$.
+After its allowed cusp normalization it satisfies the equations
+(7),(10),(15),(47),(51),(54) of \S47, with the sign and conjugator
+corrections specified in B.m5--B.m6. These are formulations and consequences
+of one compatibility, not six independent conjectural constraints.
+\end{claim}
+% anchor:E.1
+\manuscriptanchor{\S 41; fols.315--316 verso; scans54--57; \S 47; fols.415--425; scans229--250 (cote140-3)}
+
+\begin{proof}
+Let $\mathcal X$ be the orbifold whose coarse curve is
+$\mathbb P^1_\mathbb Q\setminus\{0\}$, with stabilizer orders two at
+$1$ and three at $\infty$. The coordinate $T=1728/j$ identifies it with
+the rigidification of $\mathcal M_{1,1}$ by its generic elliptic
+involution; this can equally be seen from the weighted projective
+presentation with weights two and three. Its geometric fundamental
+group is $\widehat B=C_2\widehat * C_3$.
+
+There are two maps over $\mathbb Q$ relevant here. The level-two cover
+from the Legendre coordinate is
+\[
+ U\longrightarrow\mathcal X,\qquad
+ T=\frac{27\lambda^2(1-\lambda)^2}
+          {4(1-\lambda+\lambda^2)^3};
+\]
+it induces the inclusion $F\hookrightarrow B$ and the action used in
+the dictionary. The open immersion
+$\mathbb P^1_\mathbb Q\setminus\{0,1,\infty\}\hookrightarrow\mathcal X$
+induces the surjection $\varphi$, because a meridian about $1$ acquires
+order two and a meridian about $\infty$ acquires order three. Identify
+the two tripod coordinates over $\mathbb Q$; this is the identification
+used in the manuscript. Functoriality of the arithmetic fundamental
+group for the immersion gives a homomorphism of arithmetic extensions.
+Conjugating by a lift of a Galois element proves equivariance up to
+geometric conjugation in $\widehat B$. This proves the outer assertion
+without assuming a description of $G_\mathbb Q$ by equations.
+
+For the explicit normalized equations, write the images of the two
+free generators using B.m1. The first equation determines the possible
+conjugator up to the procyclic centralizer of $e=sr$; write that conjugator as $e^t$. Replacing $u_0$ by
+$\operatorname{Int}(y^n)u_0$ changes it to
+$\varphi(y^n)e^t y^{-n}=e^{t-n}$, so the allowed choice $n=t$
+removes it. The centralizer of $e$ is procyclic: reduce in $S_3$,
+remove a power of $e$, and use the procyclic centralizer of
+$e^2=y$ in $\widehat F$. The second is then exactly
+B.m3. Checking instead the other free basis gives the order-three
+formula (47); reducing these equalities modulo $F$ gives (51), and
+their product gives (54). This is the generator-by-generator reduction
+of B.m6. No assertion that (I),(II),(III) imply this compatibility is
+used in the argument.
+\end{proof}
+
+\begin{claim}{E.2}{Proved}{The two-evaluation finite test through levels two and three}
+There are twelve generating cycle residues in the characteristic
+$S_3=\PSL_2(\mathbb F_2)$ envelope and twenty-four in the characteristic
+$A_4=\PSL_2(\mathbb F_3)$ envelope. Every one admits a gauge satisfying
+the normalized additional equation B.m3 after evaluation in the
+respective projective congruence group. Thus the extra equation removes
+none of these enumerated residues at these two levels. In particular every
+actual profinite $\GTz$ element admits an allowed gauge with
+$\varphi^\bullet(\xi)\in\{1,s\}$ in $S_3$; this finite consequence of
+scan233 is therefore derived from (I),(II) and the automorphism condition.
+\end{claim}
+% anchor:E.2
+\manuscriptanchor{\S 47; fols.417--420; scans233--240}
+
+\begin{proof}
+This calculation uses two homomorphisms from the \emph{same}
+characteristic envelope to $Q_n$, not an ill-defined application of
+$\varphi$ to an element of $H_n$. They are
+\[
+ j:(x,y)\mapsto(L_1,L_0),\qquad
+ v:(x,y)\mapsto(S,SR).
+\]
+For $n=3$ the characteristic envelope has order $2304$, exponent six,
+and derived group of order $256$. The analogous data at $n=2$ are in
+B.f3; the map $j$ is trivial there and is still a well-defined map of
+the envelope. The program constructs both maps by Cayley-graph
+propagation and checks every relation. It enumerates (I),(II) and
+generation exactly, with $\lambda$ modulo twelve and $f$ in the
+computed derived group. For each solution put
+$\nu=(\lambda-1)/2$, $\xi=y^\nu f$ and, for every $a$ modulo six,
+$\xi_a=y^a\xi x^{-a}$. It then tests
+\[
+ j(\xi_a)=v(\xi_a)S v(\xi_a)^{-1}S^{-1}L_1^\nu.
+ \tag{E.2.1}
+\]
+The period six includes every possible profinite gauge residue.
+The recorded sets of successful gauges are nonempty for every one of
+the twelve and twenty-four solutions, respectively. All coefficients,
+all solutions, and all six defects per solution are retained in
+\texttt{finite\_phi.json}; \texttt{finite\_phi.py} is the complete
+enumeration. The assertion is exactly this necessary finite test; it
+does not state that every such residue has an infinite lift.
+
+For the last assertion, every actual profinite pair projects into this
+list: the envelope is characteristic, the induced map is an automorphism,
+and $f$ projects into its derived group. Its multiplier modulo twelve
+determines $\nu$ modulo six. At level two $j$ and $L_1$ are trivial, so
+(E.2.1) says that $v(\xi_a)$ centralizes $S$. That centralizer in $S_3$
+is $\{1,S\}$. A successful residue $a\bmod6$ lifts to an allowed
+$a\in\widehat{\mathbb Z}$. This is only a finite gauge condition;
+it need not solve all the higher or full profinite equations.
+\end{proof}
+
+\begin{claim}{E.3}{Open}{Does the pentagon imply the additional orbifold compatibility?}
+With the precise groups and normalizations of B.m3 and B.m5, the
+remaining statement is
+\[
+ \GT\ \subseteq\ C^\varphi\ \subseteq\ \GTz.
+ \tag{E.3.1}
+\]
+The second inclusion is definitional and the arithmetic image lies in
+$C^\varphi$ by E.1. In this return we prove neither the first inclusion
+nor its negation. The direct finite attack E.2 finds no violation at
+target levels two and three. The next simultaneous-evaluation target
+not enumerated for this equation is $Q_4\simeq S_4$, whose characteristic
+envelope has the explicitly constructed order $442368$. Its outer
+shadow is arithmetic by B.s4.1, but that outer shadow alone does not
+retain the normalizing multiplier and conjugators needed in (E.2.1).
+\end{claim}
+% anchor:E.3
+\manuscriptanchor{\S 41; fols.315--316 verso; scans54--57; \S 47; fols.415--425; scans229--250 (cote140-3)}
+
+\begin{proof}[Attack and precise remaining step]
+The proof of B.m2 derives every \S46 loop and symmetry equation from
+(I),(II), with an inverse change of variables. It stops before applying
+$\varphi$ to an unknown profinite word. Applying the congruence
+homomorphism also does not supply that missing value: $j$ and $v$
+are different maps. E.2 repairs this problem at two explicit finite
+targets by retaining both evaluations. At level four the next required
+calculation is to range over the normalized pairs in the characteristic
+$S_4$ envelope, retaining their residue multiplier, and test (E.2.1)
+for every gauge; the normalizer calculation of B.s4.1 does not by itself
+perform that test. Even a violating finite pair would still require a
+compatible pentagon lift before it could refute the first inclusion
+in (E.3.1). Conversely finitely many passing targets would not prove
+the inverse-limit inclusion.
+
+We also compared the actual presentation with
+\citet[Theorems 1.1--1.4 and relations (III$'$),(IV)]{NakamuraSchneps2000root}.
+That source constructs an arithmetic-containing subgroup of $\GT$
+using additional genus-one relations, including a Kummer cocycle for
+the roots of two. It does not give an identified substitution proving
+(E.3.1). We therefore do not rename its subgroup as $C^\varphi$ or
+claim an equivalence of the additional relations without the missing
+comparison. This is the exact literature-comparison obstruction, in
+addition to the explicit finite calculation still required.
+\end{proof}
+
+\begin{claim}{E.4}{Proved}{Why the additional compatibility has no faithful graded form here}
+The full condition E.1 cannot be faithfully linearized by replacing
+both occurrences of the group by the single completed free Lie
+algebra of Part B. The characteristic-zero pro-unipotent completion
+of $B=C_2*C_3$ is trivial. Its pro-$\ell$ completion is $C_2$ for
+$\ell=2$, $C_3$ for $\ell=3$, and trivial for every other prime.
+Consequently the rational Lie algebra obtained from that target is
+zero in every case. A relative completion retaining the $S_3$ quotient
+would be additional data, not this absolute completion.
+\end{claim}
+% anchor:E.4
+\manuscriptanchor{\S 47; fols.415--420; scans229--240}
+
+\begin{proof}
+An element of finite order in a characteristic-zero unipotent group
+is the identity: taking its logarithm makes its order times that
+logarithm zero. Any homomorphism from $C_2*C_3$ to such a group
+therefore kills both generators. For a pro-$\ell$ target a generator
+of order prime to $\ell$ is killed; the one surviving cyclic factor
+at $\ell=2$ or $3$ gives precisely the claimed completion by its
+universal property. These finite groups have zero rational
+Malcev Lie algebra. Meanwhile $v:F\to S_3$ in E.2 is nontrivial,
+so it cannot factor through a connected unipotent algebraic group
+into the component group of a relative completion. One can restrict
+to $\ker(v)$ and retain its larger free Lie algebra and comparison
+maps, but this changes the input and the filtration. No such replacement
+is silently made in $W^{\rm lac}$.
+\end{proof}
+
+\begin{claim}{E.5}{Proved}{The sorted inventory has one unresolved compatibility family}
+Within the explicitly stated equations of \S\S38--47, the loop and
+symmetry equations are (I),(II); the congruence-kernel and square-class
+conditions follow for the whole actual profinite $\GTz$ by
+C.d1 and C.a15--C.a16; the quadratic signs follow algebraically by
+C.d2; and the literal uniqueness and multiplier claims have the
+corrections proved in C.r2 and Part D. The additional equations still
+not derived here from $\GT$ form the orbifold-compatibility family
+in the following table. They are recorded separately in the condition
+CSV because they retain different data, and their dependence is made
+explicit rather than presented as independent discoveries.
+\end{claim}
+% anchor:E.5
+\manuscriptanchor{\S 46; fols.390--413; scans182--227; \S 47; fols.415--427; scans229--253; inventory of \S \S 38--47}
+
+\begin{longtable}{p{.13\textwidth}p{.37\textwidth}p{.13\textwidth}p{.26\textwidth}}
+\toprule
+Entry&Condition and location&Graded class&Decision and attack\\\midrule\endhead
+E01&Outer $\varphi$ compatibility; \S41 scans55--57 and \S47 scans229--231, (5),(7).& (c)&Arithmetic by E.1; $\GT$, $\GTz$ undecided as in E.3.\\
+E02&Normalized equation $\xi=[\varphi(\xi),s]x^\nu$; scans234,240, (15),(30).&(c)&Equivalent normalized version; complete simultaneous tests at levels2,3 in E.2.\\
+E04&Cyclic order-three formula and its $S_3$ reduction; scans244--248, (47),(51).&(c)&Equivalent free-basis formulation after normalization; same unresolved global comparison.\\
+E05&The pair of equations (57),(58) when $\mu\equiv1\pmod3$; scan250.&(c)&Their conjunction follows from E01; no claim that either single equation suffices.\\
+\bottomrule
+\end{longtable}
+Here (a) would mean a proved derivation on the rational graded
+pentagon Lie algebra, (b) would mean only a conditional use of the
+2026 dimension equality, and (c) means there is no faithful graded
+form in the specified absolute completion. All four remaining entries
+are of class (c), by E.4. No entry is assigned to (b) merely to conceal
+an unavailable completion map. The special-derivation identity itself
+belongs to (a), by the direct pentagon derivation B.g8. The conditional
+equality and its exact hypotheses are isolated in B.g9. The finite
+signs restrict to $+1$ on $\lambda=1$ and have vacuous differentials,
+as proved in C.a14.
+
+The order-two finite consequence of scan233, formerly designated E03,
+is excluded from this unresolved list: E.2 derives its existential-gauge
+form for the whole $\GTz$. It remains in the complete condition inventory.
+This distinction prevents a successful finite test from being reported
+as an unresolved condition, or from being inflated into full compatibility.
+
+For the auxiliary labels on scans247--248, B.m6 proves
+$i\equiv\nu\pmod2$, equivalently
+$i=(1-\epsilon_2(\mu))/2$, by applying the sign character to
+$\varphi(\xi)=\beta s^i$. Thus this order-two label is already
+determined algebraically once compatibility holds. The remaining
+question whether $j'\in C_3$ is a function of the multiplier is not
+an additional equation already proved on Galois. The explicit
+complex-conjugation case gives $(i,a_3,j')=(1,1,-1)$, while the
+identity gives $(0,0,0)$. The dependence of $j'$ is retained in the
+finite-normalization problem E.3, without a guessed character.
+
+\begin{claim}{E.6}{Proved}{No inference from the graded equality to profinite equality is used}
+Even if the claimed 2026 upper bound is correct, it cannot on its own
+decide (E.3.1), remove the congruence kernel of B.f6, distinguish the
+four central lifts of C.a10, or classify full profinite torsion. It
+also does not turn the finite Lazard counterexample of B.g15 into an
+element of $\GTz\setminus\GT$.
+\end{claim}
+% anchor:E.6
+\manuscriptanchor{\S 46; fols.390--413; scans182--227; \S 47; fols.415--427; scans229--253; inventory of \S \S 38--47}
+
+\begin{proof}
+Each proposed inference needs a comparison that is absent. E.4 shows
+that the orbifold target disappears in the absolute Lie construction.
+B.f6 supplies a noncongruence finite quotient missing from the matrix
+completion. The four lifts differ by finite characters with zero
+rational tangent space. A finite group quotient or a weight-truncated
+Lie algebra does not produce a compatible inverse system of lifts.
+Finally B.f8 gives an explicit endomorphism which is an automorphism
+in every nilpotent and pro-$\ell$ realization but not in the full
+profinite one. These are concrete obstructions to the respective
+inferences, independent of the truth of the rational dimension theorem.
+\end{proof}

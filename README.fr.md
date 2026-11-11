@@ -27,7 +27,8 @@ transcrit en premier jet, et la transcription est en cours de vérification page
 - `methodology/` : comment la transcription est faite, les prompts utilisés, la liste des paquets et la couverture
   (en anglais).
 - [`raw/`](raw/README.md) : résultats de recherche bruts, non revus pour publication (en anglais) : réponses de
-  GPT-6 Astra (ChatGPT, mode Pro) à des prompts de recherche sur la tour de Teichmüller, premières passes de
+  GPT-6 Astra (ChatGPT, mode Pro) à des prompts de recherche sur *La Longue Marche* (schémas en groupes, équation
+  des lacets, tour de Teichmüller), premières passes de
   transcription des cotes 146, 147 et 149 des archives, leurs relectures, les prompts avec tout ce qui y était joint,
   et les scripts.
 

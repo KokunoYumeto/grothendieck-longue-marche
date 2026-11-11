@@ -1,0 +1,226 @@
+\subsection{A complete additional finite case: the characteristic $\mathfrak S_4$ envelope}
+
+\begin{claim}{B.s4.1}{Proved}{The characteristic $\mathfrak S_4$ shadow is arithmetic of order two}
+Let $N_G$ be the intersection of the kernels of all continuous epimorphisms
+$\widehat F_2\twoheadrightarrow G$, and put $\overline G=\widehat F_2/N_G$.
+For $G=\mathfrak S_4$, let $\mathrm{GT}(G)$ and $\mathrm{GT}_1(G)$ have
+Guillot's finite-shadow definitions (power-conjugacy and commutation with the
+two standard outer symmetries, not an asserted image of the full profinite
+pentagon group). Then
+\[
+ |\overline{\mathfrak S_4}|=442368=108\cdot2^{12},\qquad
+ \mathrm{GT}(\mathfrak S_4)=\mathrm{GT}_1(\mathfrak S_4)
+       =\operatorname{im}(G_{\mathbb Q}\to
+           \operatorname{Out}(\overline{\mathfrak S_4}))\simeq C_2.
+ \tag{B.s4.1.1}
+\]
+There is therefore no nonarithmetic finite-shadow element in this quotient.
+This supplements the requested finite range of B(e); it asserts no
+surjectivity theorem for arbitrary finite shadows.
+\end{claim}
+% anchor:B.s4.1
+\manuscriptanchor{\S 42; fol.349 verso; cote140-3 scan120; added finite-quotient task B(e)}
+
+\begin{proof}
+\emph{The envelope and its kernel.}
+All automorphisms of $\mathfrak S_4$ are inner. Its $216$ ordered generating
+pairs form nine simultaneous-conjugacy classes, represented by the pairs
+printed in \texttt{arithmetic\_s4.json}. Write $x,y\in\mathfrak S_4^9$
+for their two coordinate tuples and $H=\langle x,y\rangle$. By the
+intersection-of-kernels definition, $H=\overline{\mathfrak S_4}$.
+Project each factor through $\mathfrak S_4\twoheadrightarrow\mathfrak S_3$
+by its action on the three partitions into two pairs. Its kernel is the
+Klein four group $V$. The projected group $Q$ has order $108$: each of the
+three generating-pair classes of $\mathfrak S_3$ occurs three times among
+the nine projections, and after conjugating coordinates it is the
+threefold repeated embedding of
+\[
+ Q_0=\{(a,b,c)\in\mathfrak S_3^3:
+           \operatorname{sgn}(a)\operatorname{sgn}(b)
+             \operatorname{sgn}(c)=1\}.
+ \tag{B.s4.1.2}
+\]
+The program verifies this by a $108$-element traversal, independent of a
+large permutation-group package. A Schreier transversal in $H$ over $Q$
+gives $216$ generators for the kernel $V_0=H\cap V^9$. Identify $V^9$
+with $\mathbb F_2^{18}$. Their span has rank $12$, with the full bit-vector
+basis printed in the output; Schreier's lemma proves that it is exactly
+the kernel. Hence $|H|=108\cdot2^{12}$.
+
+\emph{The permutation action has trivial image.}
+Let $\mathcal P_c$ be the nine generating-pair classes. The two symmetries
+are
+\[
+ [a,b]\longmapsto[b,a],\qquad
+ [a,b]\longmapsto[(ab)^{-1},b].
+\]
+Their permutations on the program's zero-based indices are respectively
+\[
+ (2,5,0,6,7,1,3,4,8),\qquad(7,4,5,8,1,2,6,0,3).
+\]
+The blocks obtained by fixing the separate conjugacy classes of the two
+entries are
+\[
+ \{0\},\{1\},\{2\},\{3,4\},\{5\},\{6,7\},\{8\}.
+\]
+Of the four block-preserving permutations, only the identity commutes with
+both displayed permutations, as direct substitution verifies. Thus
+$\mathcal S(\mathfrak S_4)=1$ in the terminology of
+\citet[Proposition 4.3, Lemmas 4.5--4.7, \S4.3]{Guillot2015root}.
+Every unit power of a permutation has the same cycle type. Consequently
+the action of the entire finite $\mathrm{GT}(\mathfrak S_4)$, not just
+its multiplier-one subgroup, preserves these blocks. It has trivial image
+on $\mathcal P_c$.
+
+\emph{Bounding the kernel of the action.}
+Put $N=N_{\mathfrak S_4^9}(H)$ and $W=V^9$.
+An automorphism of $H$ acting trivially on $\mathcal P_c$ is, in every
+coordinate, conjugation by some element of $\mathfrak S_4$. Conversely
+such a tuple defines an automorphism of $H$ exactly when it belongs to
+$N$. The centralizer of $H$ in $\mathfrak S_4^9$ is trivial, because its
+coordinate projections are surjective and $Z(\mathfrak S_4)=1$.
+Modulo inner automorphisms of $H$, the kernel is therefore exactly $N/H$.
+In particular $\mathrm{GT}(\mathfrak S_4)\subseteq N/H$.
+
+We compute this normalizer quotient without enumerating its ambient group.
+The normalizer of the repeated group $Q$ in $\mathfrak S_3^9$ lies in
+the corresponding repeated copy of $\mathfrak S_3^3$: within any repeated
+block, two conjugators must induce the same conjugation on the surjective
+$\mathfrak S_3$ factor, and so coincide, since its centre is trivial.
+By (B.s4.1.2) the resulting quotient of normalizer by $Q$ has order two.
+Next
+\[
+ (W/V_0)^Q=0. \tag{B.s4.1.3}
+\]
+There is a conceptual check as well as the rank certificate: the normal
+odd-order subgroup $A=C_3^3$ of $Q_0$ projects onto $C_3$ in every
+coordinate, which acts without fixed vectors on each copy of
+$V\simeq\mathbb F_2^2$. Hence $W^A=0$. Taking invariants under $A$ is
+exact in characteristic two, by averaging over its odd order, and so
+$(W/V_0)^A=0$ and a fortiori (B.s4.1.3). The program independently
+computes the two-generator fixed-vector equations: their rank is $6$ on
+$W$, their solution space has dimension $12$, and quotienting by the
+$12$-dimensional $V_0$ leaves dimension zero.
+If $w\in N\cap W$, then $[w,H]\subseteq V_0$, so (B.s4.1.3) implies
+$w\in V_0$. Thus $N\cap W=V_0$ and
+\[
+ N/H\hookrightarrow N_{\mathfrak S_3^9}(Q)/Q\simeq C_2.
+\]
+
+\emph{An explicit nontrivial finite-shadow class.}
+The code solves the normalizer equations in the $64$-element vector-space
+quotient $W/V_0$, and prints a tuple $n\in N\setminus H$. In the nine
+coordinates and using permutation arrays on $\{0,1,2,3\}$, it is
+\[
+ n=(1,(01),1,1,1,(13),1,1,(13)).
+ \tag{B.s4.1.4}
+\]
+Here $1$ denotes the identity permutation; the cycle notation is in the
+zero-based labeling just specified. The output additionally prints
+conjugators \emph{in $H$} showing that $n^{-1}xn$ is conjugate to $x$
+and $n^{-1}yn$ to $y$. These tests use the Schreier transversal and exact
+linear solving in $V_0$, and verify the resulting conjugators by direct
+multiplication. The kernel $N/H$, being the kernel of the natural action
+of $\operatorname{Out}(H)$ on $\mathcal P_c$, is normal in that outer
+automorphism group. Since it has order two, all outer automorphisms
+centralize it, in particular the two standard symmetries. Therefore the
+class of $n$ is in $\mathrm{GT}_1(\mathfrak S_4)$, proving both finite
+shadow orders in (B.s4.1.1). We emphasize the extra conjugacy check:
+rational conjugacy classes of $\mathfrak S_4$ alone would not prove
+conjugacy by an element of the proper subgroup $H\subset\mathfrak S_4^9$.
+
+\emph{The arithmetic lower bound.}
+The projection to $Q$ identifies it with
+$\overline{\mathfrak S_3}$, so $N_{\mathfrak S_4}\subseteq
+N_{\mathfrak S_3}$ and the arithmetic outer action descends. We verify the
+nontriviality of this descended action by the explicit fields, rather than
+assuming every finite shadow is arithmetic. The rational quotient map
+\[
+ \beta(t)=\frac{27t^2(t-1)^2}{4(t^2-t+1)^3}
+\]
+is invariant under $t\mapsto1-t$ and $t\mapsto1/t$, has degree six,
+and is a regular $\mathfrak S_3$ cover. Its branch orders at $0,1,\infty$
+are $(2,2,3)$. The covers obtained by the equations
+$\beta(t)=T$, $\beta(t)=1/T$ and $\beta(t)=1/(1-T)$ therefore represent
+all three generating-pair classes. If
+\[
+ w=\frac{t^3-3t+1}{t(t-1)}-\frac32,
+\]
+then $w^2=\frac{27}{4}(1-\beta)/\beta$; this rational-function identity
+and the invariances are verified in \texttt{finite\_s3\_fields.py}.
+The three quadratic subfields have square classes
+\[
+ 3T(1-T),\quad3(T-1),\quad-3T.
+\]
+Their product is $27T^2(T-1)^2$, so their compositum contains
+$\mathbb Q(\sqrt3)$. Its geometric group has the already computed order
+$108$, while its arithmetic group is a subgroup of $\mathfrak S_3^3$,
+of order at most $216$. The degree of its constant field is consequently
+at most two and at least two; it is exactly $\mathbb Q(\sqrt3)$, and
+the arithmetic group is all of $\mathfrak S_3^3$. An element outside the
+geometric subgroup acts noninner on it: otherwise the element divided
+by an appropriate geometric conjugator would centralize that subgroup,
+whose centralizer in $\mathfrak S_3^3$ is trivial by the surjective
+coordinate projections. Thus the arithmetic outer image on
+$\overline{\mathfrak S_3}$ has order two. The image on $H$ has order
+at least two, and is contained in the finite shadow of order two just
+proved. This finishes (B.s4.1.1).
+\end{proof}
+
+\begin{claim}{B.s4.2}{Proved}{What the simple-group shadow counts do and do not prove}
+The finite calculations for $A_5$ and $\mathrm{PSL}_2(\mathbb F_7)$,
+when interpreted by \citet[Theorem 4.9]{Guillot2015root}, give
+\[
+\begin{array}{c|rrr}
+ G&|\mathrm{GT}_1(G)|&|\mathrm{GT}(G)|&
+       |\operatorname{im}G_{\mathbb Q}|\\\hline
+ A_5&1&2&2\\
+ \mathrm{PSL}_2(\mathbb F_7)&512&1024&\text{not determined here}
+\end{array}
+\]
+The lower bound on the last unknown size is two. Neither the colored
+centralizer computation nor cyclotomic surjectivity proves its equality
+to $1024$.
+\end{claim}
+% anchor:B.s4.2
+\manuscriptanchor{\S 42; fol.349 verso; cote140-3 scan120; added finite-quotient task B(e)}
+
+\begin{proof}
+Both groups are finite, nonabelian and simple, exactly the hypothesis of
+Guillot's Theorem 4.9. The standard outer involution is conjugation by an
+odd permutation for $A_5$, and by a matrix of nonsquare determinant for
+$\mathrm{PSL}_2(\mathbb F_7)$. These generate their respective outer
+automorphism groups of order two; this is also verified by enumerating
+all automorphisms in \texttt{arithmetic\_simple\_audit.py}. The
+permutations used in \texttt{finite\_shadows.py} are exactly the swap,
+$(g,h)\mapsto((gh)^{-1},h)$, and those outer involutions appearing in
+the theorem. The color is the pair of separate conjugacy classes, not
+an incorrectly assumed action of $G\times G$ on generating pairs.
+Thus the computed colored centralizer orders $1$ and $512$ have precisely
+the stated multiplier-one meaning.
+
+For completeness we justify the passage to the full finite group.
+Guillot's Lemma 4.10 gives $\overline G=G^r$. Therefore $x^k$ is
+conjugate to $x$ in $\overline G$ exactly when each coordinate has the
+same conjugacy class under the power $k$. In these two groups every
+nontrivial conjugacy class occurs in a generating pair; this too is
+checked in the audit. The kernel of the power action on all conjugacy
+classes is
+\[
+\begin{array}{c|l}
+ A_5,\ e=30&1,11,19,29\pmod {30}\\
+ \mathrm{PSL}_2(\mathbb F_7),\ e=84&
+ 1,11,23,25,29,37,43,53,65,67,71,79\pmod {84}.
+\end{array}
+\]
+Its index among all units is two in each case. The quotient of the full
+finite shadow by its multiplier-one subgroup embeds in this power-action
+group, by its definition, and the cyclotomic character of Galois realizes
+every residue unit. Hence it is all of that group and doubles the orders.
+For $A_5$ this same arithmetic lower bound fills the entire group of
+order two. For $\mathrm{PSL}_2(\mathbb F_7)$ it says nothing about how
+much of the kernel of order $512$ is realized by Galois. The smallest
+unsettled question within this row remains the exact image on this
+specified characteristic quotient, not the polynomial-time computation
+of its finite-shadow upper bound.
+\end{proof}

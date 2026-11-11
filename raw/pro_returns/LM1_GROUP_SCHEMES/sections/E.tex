@@ -1,0 +1,1108 @@
+\section{E. One-parameter subgroups, envelopes, and completions}
+
+The manuscript's ``metabelian'' class in C4, section 50.4,
+is the class of finitely generated virtually abelian groups.
+It is not the class of all groups of modern derived length two.
+Write $E_L(\Gamma)$ for a finite lattice model,
+$\operatorname{Env}(\Gamma)$ for their inverse limit,
+$\widehat\Gamma_{\rm const}$ for the affine inverse limit
+of constant finite quotients, and $\Gamma_k^{\rm alg}$,
+$\Gamma_k^{\rm un}$ for the full proalgebraic and prounipotent
+completions. Constant finite schemes remain etale at primes
+dividing their orders. In section 51 the manuscript's full
+GL group has finite quotient of order 24; the requested
+orientation-preserving group $S$ has quotient of order 12.
+
+\begin{statement}{E.1}{Proved}{Characteristic-zero existence and uniqueness}
+Let $A$ be a $\mathbb Q$-algebra, $G\hookrightarrow\operatorname{GL}_{r,A}$
+closed, and $g\in G(A)$ fibrewise ordinary unipotent.
+There is a unique homomorphism $\mathbb G_{a,A}\to G$
+taking $1$ to $g$, namely $\exp(T\log g)$.
+Uniqueness holds for every separated group scheme over $A$.
+Over a characteristic-zero field, existence also holds for
+a separated group scheme locally of finite presentation
+when the section geometrically lies on an additive subgroup.
+Nonlinear existence over an arbitrary $\mathbb Q$-algebra
+is not established here.
+\end{statement}
+\begin{proof}
+For $N=g-I$, the entries of $N^r$ lie in the nilradical.
+A finitely generated ideal of nilpotent elements is nilpotent:
+if the generators have exponents $a_i$, monomials of degree
+greater than $\sum(a_i-1)$ vanish. Thus $N$ is nilpotent.
+Logarithm and exponential are finite polynomials and satisfy
+the group law. Every defining equation of $G$ vanishes at
+all nonnegative integral values, since $u(m)=g^m$.
+A polynomial of degree $d$ over a $\mathbb Q$-algebra
+vanishing at $0,\ldots,d$ is zero by the invertible
+Vandermonde determinant. Hence $u$ lands in $G$.
+
+For two homomorphisms into a separated group, the equalizer
+is closed in $\mathbb A^1_A$. Its defining polynomials vanish
+at all these integers, so the equalizer is the whole line.
+Over a field, the two pullbacks of a geometric homomorphism
+to $\overline k\otimes_k\overline k$ agree by this uniqueness.
+Faithfully flat descent gives existence over $k$.
+\end{proof}
+
+\begin{statement}{E.2}{Refuted}{Positive characteristic requires more than ordinary unipotence}
+Over a field of characteristic $p$, a matrix $g$ lies at
+parameter one on an additive subgroup exactly when
+$(g-I)^p=0$; the homomorphism need not be unique.
+Even geometric membership in an additive subgroup need
+not descend over an imperfect field.
+\end{statement}
+\begin{proof}
+A Jordan block of size $p+1$ has order $p^2$ and cannot
+be a value of $\mathbb G_a$, which is killed by $p$.
+Likewise in the length-two Witt group, with law
+
+$$
+(a,b)+(c,d)=
+ \left(a+c,b+d-\sum_{i=1}^{p-1}\binom pi a^ic^{p-i}/p\right),
+$$
+
+one has $p(1,0)=(0,1)$, so $(1,0)$ has order $p^2$.
+These examples do not satisfy the stronger geometric
+hypothesis and are not counterexamples to that hypothesis.
+
+A counterexample which does satisfy it is over
+$k=\mathbb F_p(t)$:
+
+$$
+U:\ y^p=x-t^{1-p}x^p,\qquad g=(t,0).
+$$
+
+The equation is additive and its $x$ derivative is $-1$,
+so $U$ is smooth of dimension one.
+For $b^p=-t^{1-p}$ the map
+$z\mapsto(z^p,z+bz^p)$ is a geometric isomorphism
+$\mathbb G_a\to U$, inverse $z=y-bx$.
+If polynomials $P,Q$ with zero constants define a map
+$\mathbb G_a\to U$, then $Q^p=P-t^{1-p}P^p$.
+For $\deg P>0$, leading coefficients would make
+$-t^{1-p}$ a $p$th power, impossible by its valuation
+$1-p$. Thus $P=Q=0$; no such map takes $1$ to $g$.
+
+For matrices, necessity follows from $g^p=I$.
+If $N^p=0$, the logarithm and exponential truncated
+below degree $p$ have invertible denominators and give
+the homomorphism. Nonuniqueness already follows from
+the maps $T$ and $T^p$ on $\mathbb G_a$.
+\end{proof}
+
+\begin{statement}{E.3}{Refuted}{A smooth obstruction over every Z/p-squared}
+Over $\mathbb Z/p^2$, geometric fibrewise additive
+unipotence, even with order $p$, need not give an
+integral additive subgroup.
+\end{statement}
+\begin{proof}
+Put $C_p(X,Y)=((X+Y)^p-X^p-Y^p)/p\in\mathbb Z[X,Y]$
+and give $\mathbb A^1_{\mathbb Z/p^2}$ the law
+$x*y=x+y+pC_p(x,y)$.
+The integral cocycle identity for $C_p$ proves associativity;
+changes of its arguments by multiples of $p$ disappear
+after the outer multiplication by $p$.
+The inverse is $-x-pC_p(x,-x)$.
+The special fibre is $\mathbb G_a$, and telescoping gives
+
+$$
+[p]_G(T)=p(T-T^p).
+$$
+
+Thus $1$ has order $p$.
+If a homomorphism $P:\mathbb G_a\to G$ takes $1$ to $1$,
+write $B=P\bmod p$ and let $c_1$ be its linear coefficient.
+Compatibility with multiplication by $p$ yields
+
+$$
+\bar c_1T=B-B^p.
+$$
+
+But $B(0)=0$, $B(1)=1$, and the right side has degree
+$p\deg B>1$, contradiction.
+At two the law is $x+y+2xy$ over $\mathbb Z/4$.
+The replacement verifies the identities symbolically,
+all finite associativity triples at $p=2,3,5$, and
+all normalized additive polynomials of degree at most
+12: respectively $8,9,5$ candidates and no survivors.
+The proof excludes all degrees.
+\end{proof}
+
+\begin{statement}{E.4}{Proved}{The divided-power criterion}
+For a torsion-free $\mathbb Z$-algebra $A$, a closed linear
+group $G/A$, and $g\in G(A)$ with $g-I$ nilpotent,
+put $X=\log g$. An additive subgroup taking $1$ to $g$
+exists exactly when every $X^j/j!$ is integral.
+It is then uniquely $\exp(TX)$.
+\end{statement}
+\begin{proof}
+E.1 forces that polynomial after rationalization,
+so each coefficient must be integral if the map exists.
+Conversely the coefficients give an integral matrix
+polynomial and inverse $\exp(-TX)$.
+The group identity and defining equations of $G$ hold
+rationally and therefore integrally by torsion-freeness.
+The same argument proves uniqueness.
+\end{proof}
+
+\begin{statement}{E.5}{Refuted}{The signed implication needs integral X}
+For rational nilpotent $X$, integrality of
+$X^2/2\pm X^3/6$ does not imply integrality of the summands,
+even if $2X$ is integral and primitive.
+The same failure holds with $X^3/2$.
+The version explicitly assuming integral $X$ is true.
+\end{statement}
+\begin{proof}
+Take
+
+$$
+X=\begin{pmatrix}0&3/2&-2&0\\0&0&4&0\\0&0&0&1/2\\0&0&0&0\end{pmatrix}.
+$$
+
+Then $A=X^2/2=3E_{13}-E_{14}/2+E_{24}$ and
+$B=X^3/6=E_{14}/2$.
+Both $A\pm B$ and $A\pm3B$ are integral; neither summand
+is integral. However $\exp X$ is not integral, so this
+does not refute a hypothesis requiring that too.
+
+If $X$ is integral, away from two average the signed
+sums. At two use $A+B=A(I+X/3)$, whose last factor has
+an integral inverse by nilpotence.
+For the denominator-two alternative use $A(I+X)$.
+This proves the corrected assertion.
+
+For C4 scan 13, formula (20), retain the separate readings
+$M_5(A)$ and $M_5(K)$.
+If the terminal conclusion is merely $X\in M_5(A)$,
+the first reading is tautological; the second is false
+from higher-power conditions alone, as $X=E_{12}/2$
+shows. E.7 addresses the stronger divided-power reading
+with all geometric-fibre hypotheses retained.
+\end{proof}
+
+\begin{statement}{E.6}{Refuted}{Integral exponential is weaker than divided powers}
+Integral $\exp(\pm X)$ does not imply integral divided
+powers. The minimum rank for this weaker failure is three.
+\end{statement}
+\begin{proof}
+For $J=E_{12}+E_{23}$, put $X=J-J^2/2$.
+Then $\exp X=I+J$ and $\exp(-X)=I-J+J^2$ are integral,
+but $X$ and $X^2/2$ are not.
+In rank two, $X^2=0$, so integral $\exp X$ forces integral
+$X$. The rank-three example has order four modulo two
+and fails the manuscript's geometric additive condition.
+\end{proof}
+
+\begin{statement}{E.7}{Refuted}{A sharp bound and a genuine rank-five counterexample}
+For a torsion-free $\mathbb Z_{(p)}$-algebra, if $N^r=0$,
+$N^p\in pM_r(A)$, and $r\le p^2$, then $I+N$ lies on
+an additive subgroup. The bound is sharp at rank $p^2+1$.
+Over $\mathbb Z$ the minimum rank for failure with every
+geometric-fibre hypothesis retained is five.
+One example is the shift with weights $1,6,1,6$.
+\end{statement}
+\begin{proof}
+Use
+
+$$
+\exp(T\log(I+N))=\sum_{k<r}\binom TkN^k.
+$$
+
+For $k=ap+b<p^2$, $0\le b<p$, the numerator $N^k$
+is divisible by $p^a$, while $v_p(k!)=a$.
+Thus all coefficients are integral.
+
+For sharpness take $p^2$ consecutive shift weights,
+equal to $p$ in positions divisible by $p$ and one elsewhere.
+Every block of $p$ contains a multiple of $p$.
+The product of all weights has valuation $p$, but
+$v_p((p^2)!)=p+1$, so the top polynomial coefficient
+has valuation $-1$.
+
+For the global example,
+$N=E_{12}+6E_{23}+E_{34}+6E_{45}$.
+Then $N^2\in2M_5(\mathbb Z)$, $N^3\in3M_5(\mathbb Z)$,
+and $N^5=0$. E.2 proves additive membership in every
+positive-characteristic fibre, and E.1 in the generic fibre.
+But the top coefficient is $N^4_{15}/4!=36/24=3/2$.
+Its logarithm is nevertheless integral:
+
+$$
+\begin{pmatrix}
+0&1&-3&2&-9\\0&0&6&-3&12\\0&0&0&1&-3\\
+0&0&0&0&6\\0&0&0&0&0
+\end{pmatrix}.
+$$
+
+The divided-power integrality flags in degrees zero to
+four are true, true, false, true, false.
+In rank at most four the geometric hypotheses imply
+$N^p\equiv0\pmod p$ for every prime and $N^r=0$.
+The local bound applies at every prime; a rational
+coefficient integral in every $\mathbb Z_{(p)}$ is integral.
+This proves minimality.
+\end{proof}
+
+\begin{statement}{E.8}{Proved}{Finite differences and bounded exhaustive checks}
+A rational polynomial is integer-valued exactly when
+its expansion in $\binom Tj$ has integral coefficients.
+The integers $0,1,\ldots$ form a $p$-ordering, with
+factorial valuations $v_p(j!)$.
+For all positive-length words of lengths at most 12
+in weights $\{1,p\}$, the replacement checks all 8190
+words for each prime and obtains
+
+$$
+\begin{array}{c|rrr}
+p&\text{admissible}&\text{negative top valuations}&
+\text{first failure degree}\\\hline
+2&984&604&4\\3&3734&30&9\\5&7172&0&\text{none}\le12.
+\end{array}
+$$
+
+Admissible means every consecutive block of $p$ weights
+contains $p$. A separate 5292-member signed family
+has exactly 46 counterexamples.
+\end{statement}
+\begin{proof}
+Newton's formula is
+$f(T)=\sum_j(\Delta^jf)(0)\binom Tj$.
+Integral values give integral differences, and the binomial
+polynomials are integer-valued also at negative integers.
+The product $a(a-1)\cdots(a-j+1)$ is divisible by $j!$,
+with equality of valuation at $a=j$.
+This proves the special $p$-ordering statement; compare
+\cite[Theorem 2, equation (1)]{E_Bhargava2009}.
+
+For a bit word of length $d$ with $a$ weights equal to $p$,
+the top valuation is $a-v_p(d!)$. Enumerating every word
+gives the displayed counts and the supplied degree tables.
+The signed family has
+$X_{12}=a/2$, $X_{23}=b$, $X_{34}=c/2$, $X_{13}=d$,
+with $1\le a,c\le7$, $1\le b\le12$, $-4\le d\le4$.
+The relevant entries are $ab/4,dc/4,bc/4$ and $abc/24$.
+Exact divisibility tests give 46 witnesses.
+The first ordered by height $\max(a,2b,c,2|d|)$ and
+then parameters is $(1,4,3,-2)$, of height eight.
+The program independently verifies formal-exponential
+and binomial recurrences through degree 12.
+These finite families do not exhaust all nilpotent matrices.
+\end{proof}
+
+\begin{statement}{E.9}{Proved}{Positive powers over the integers}
+For affine finitely presented $G/\mathbb Z$ and
+$g\in G(\mathbb Z)$, the following are equivalent:
+all geometric fibres are quasi-unipotent; the generic
+geometric fibre is quasi-unipotent; some positive power
+of $g$ is the value at one of an integral additive subgroup.
+No flatness of $G$ is required.
+\end{statement}
+\begin{proof}
+The first implication is immediate.
+A generic geometric additive map for a power descends
+to $\mathbb Q$ by E.1 and spreads to $\mathbb Z[1/N]$
+using its finitely many coordinates and identities.
+E.10 extends a parameter rescaling integrally.
+Its value at one agrees generically with the corresponding
+power of $g$, hence integrally by schematic density
+and separatedness. Specialization proves the remaining
+implication.
+
+For a matrix $I+N$ with $N^d=0$, take $m=(d-1)!$.
+Every $\binom{mT}{j}$ for $j<d$ is integral, since the
+factor $mT$ supplies the denominator $j!$.
+The binomial sum is a homomorphism with value $g^m$.
+Equations of a closed subgroup hold at all integer
+parameters and therefore as polynomials over $\mathbb Z$.
+\end{proof}
+
+\begin{statement}{E.10}{Proved}{The denominator-clearing lemma}
+Let $S$ be quasi-compact, $U=S[1/N]$ schematically dense,
+and $G/S$ affine of finite type.
+If $f_U:\mathbb A^1_U\to G_U$ has value at zero extending
+to a section over $S$, then $f_U(N^bT)$ extends uniquely
+for some $b$. A homomorphism extends as a homomorphism.
+The parameter is multiplied, not raised to a power.
+\end{statement}
+\begin{proof}
+On a finite affine cover of $S$, choose finite coordinate
+generators. Their pullbacks are
+$e^*(z)+\sum_{j\ge1}a_jT^j$ with $a_j\in A[1/N]$.
+One exponent makes every $N^{bj}a_j$ integral.
+The relations hold by the injection $A[T]\to A[1/N][T]$.
+The same injection gives uniqueness and gluing;
+its two-variable version gives the group identity.
+Evaluation at zero explains the necessary constant-term
+condition.
+\end{proof}
+
+\begin{statement}{E.11}{Open}{The remaining positive-power scope}
+The unrestricted non-affine quasi-compact-base assertion
+is not proved here. An exact residual is a separated
+finitely presented non-affine $G/\mathbb Z$ with
+quasi-unipotent generic section.
+A proved extension is: for noetherian $A$ and a specified
+closed finitely presented $G\hookrightarrow\operatorname{GL}_{r,A}$,
+every fibrewise quasi-unipotent section has a positive
+power on an additive subgroup.
+\end{statement}
+\begin{proof}[Partial result and gap]
+Choose a common unipotent power at the finitely many
+minimal-prime fraction fields. The entries of its
+$r$th nilpotent power lie in the nilradical, hence some
+higher power vanishes. E.9's binomial construction
+gives a GL-valued homomorphism. Rationally it lies in
+$G$ by E.1. The finitely many coefficients of the pulled-back
+defining equations are integer torsion with zero constants.
+Rescaling by a common annihilator kills them and makes
+the map land in $G$.
+
+For a non-affine target the finite global coordinates
+used in E.10 are unavailable. Scaling does not itself
+supply an affine target chart. Abelian schemes do not
+provide counterexamples: a characteristic-zero additive
+map to an abelian variety is constant, so the relevant
+generic power is identity and separatedness extends
+that equality. The divided-power examples refute
+unpowered statements and do not settle this residual.
+\end{proof}
+
+\begin{statement}{E.12}{Proved}{The finite lattice model}
+For $1\to L\to\Gamma\to H\to1$, with $L=\mathbb Z^r$
+and $H$ finite, there is a smooth affine marked model
+$E_L(\Gamma)$ with underlying scheme
+$\coprod_H\mathbb A^r$ and exact sequence
+
+$$
+1\to L\otimes\mathbb G_a\to E_L(\Gamma)\to H_{\mathbb Z}\to1.
+$$
+
+\end{statement}
+\begin{proof}
+Choose a normalized section $s(h)$ and its cocycle
+$c(h,k)=s(h)s(k)s(hk)^{-1}\in L$.
+On the disjoint union put
+
+$$
+(v,h)(w,k)=(v+hw+c(h,k),hk).
+$$
+
+The cocycle identity proves associativity; the inverse is
+$(-h^{-1}(v+c(h,h^{-1})),h^{-1})$.
+The ring is $\prod_H\operatorname{Sym}_{\mathbb Z}(L^*)$.
+The quotient has a scheme section, so is even surjective
+on sections, with locally constant component labels understood.
+The marking is $ls(h)\mapsto(l,h)$.
+
+For $s'(h)=b(h)s(h)$,
+$c'=c+b(h)+hb(k)-b(hk)$ and the marked isomorphism is
+$(v,h)\mapsto(v+b(h),h)$.
+A homomorphism $f:\Gamma\to G(S)$ together with a
+conjugation-equivariant additive map
+$u:L\otimes\mathbb G_a\to G$ agreeing on $L$ extends
+uniquely by $(v,h)\mapsto u(v)f(s(h))$.
+Substitution proves its law and uniqueness.
+This is the precise pushout property.
+\end{proof}
+
+\begin{statement}{E.13}{Proved}{The integral envelope and its universal range}
+For finitely generated virtually abelian $\Gamma$, let
+$\mathcal L$ be its normal finite-index free lattices.
+Then
+
+$$
+\operatorname{Env}(\Gamma)=\varprojlim_{L\in\mathcal L}E_L(\Gamma),
+ \qquad
+ \mathcal O(\operatorname{Env}(\Gamma))
+ =\varinjlim_L\prod_{\Gamma/L}\operatorname{Sym}_{\mathbb Z}(L^*).
+$$
+
+For affine finitely presented $G/\mathbb Z$, restriction
+is a bijection from envelope morphisms to fibrewise
+quasi-unipotent homomorphisms $\Gamma\to G(\mathbb Z)$.
+The same holds over a noetherian base for a target with
+a specified closed linear embedding.
+The finite-presentation Hom formula is a filtered colimit.
+\end{statement}
+\begin{proof}
+Remove torsion from a finite-index abelian subgroup and
+intersect its finitely many conjugates to obtain $L_0$.
+The lattices $nL_0$ are cofinal.
+Inclusions give the transition maps by E.12 and hence
+the affine inverse limit.
+
+Over $\mathbb Z$, apply E.9 to a lattice basis and take
+a common multiple. The resulting additive maps commute:
+their commutators vanish on all integer pairs, a
+schematically dense set. The same polynomial argument
+gives equivariance under $\Gamma$.
+E.12 therefore supplies a finite-stage extension.
+Conversely a map to a finitely presented affine target
+factors through a finite stage: lift finite generators
+and relations, then refine to enforce the Hopf identities.
+Every marked element has a positive power in that
+stage's lattice. Uniqueness follows from integer-lattice
+density on each component.
+
+Over a noetherian base with linear target, use E.11.
+Commutation and equivariance hold rationally by E.1;
+their finitely many defect coefficients are integer
+torsion with zero constants. A common rescaling kills
+them. For uniqueness, rational equality leaves finitely
+many torsion coefficient differences; a lattice refinement
+kills the nonconstant terms, and the constants vanish
+on marked elements. Thus the inverse-limit maps agree.
+The nonlinear general-base assertion is left to E.27.
+\end{proof}
+
+\begin{statement}{E.14}{Proved}{Kernel, flatness, and special fibres}
+For virtual rank $r$, the envelope is flat over $\mathbb Z$,
+and its kernel over $\widehat\Gamma_{\rm const}$ is
+
+$$
+K_r=\operatorname{Spec}\bigl(\mathbb Z+
+       (X_1,\ldots,X_r)\mathbb Q[X_1,\ldots,X_r]\bigr).
+$$
+
+Its rational fibre is $\mathbb G_a^r$, its characteristic-$p$
+fibre is trivial, and
+$\operatorname{Env}(\Gamma)_{\mathbb F_p}
+=\widehat\Gamma_{{\rm const},\mathbb F_p}$.
+For $K_1$, points are compatible sequences $x_n=mx_{mn}$.
+They equal $A$ for a $\mathbb Q$-algebra, and zero for
+$A=\mathbb Z,\mathbb Z_p$, or a ring killed by an integer.
+\end{statement}
+\begin{proof}
+Finite-stage rings are finite products of polynomial
+rings and hence flat; filtered colimits preserve flatness.
+Identity-component transitions are $T_n=(m/n)T_m$.
+Putting $T_{n,i}=X_i/n$ identifies the kernel ring with
+$\bigcup_n\mathbb Z[X_1/n,\ldots,X_r/n]$,
+which is the displayed ring: sufficiently divisible $n$
+supplies any finite list of rational nonconstant coefficients.
+Its positive-degree ideal is divisible by every prime.
+
+For the full special fibre, refinement from $n$ to $pn$
+sends an old coordinate to an integer translation plus
+$p$ times a new one. Modulo $p$, every old polynomial
+becomes constant on refined components. The colimit
+is exactly the locally constant function ring on
+$\widehat\Gamma$, with injective finite quotient function
+maps. It is reduced, zero-dimensional and usually
+not of finite type.
+The point assertions follow from arbitrary divisibility;
+over a $\mathbb Q$-algebra the sequence is uniquely $x_1/n$.
+Thus ``characteristic zero'' alone cannot imply $K_1(A)=A$.
+\end{proof}
+
+\begin{statement}{E.15}{Refuted}{Fpqc does not become fppf at the inverse limit}
+The envelope map to $\widehat\Gamma_{\rm const}$ is
+faithfully flat affine, hence an fpqc cover, but need
+not be an epimorphism of fppf sheaves.
+Failure already occurs for $\Gamma=\mathbb Z$
+over $\mathbb Z_{(p)}$, for every prime $p$.
+\end{statement}
+\begin{proof}
+A prime of $C_{\rm lc}(\widehat\Gamma,\mathbb Z)$ determines
+a profinite point and a prime of $\mathbb Z$.
+The local ring is $\mathbb Q$ or $\mathbb Z_{(p)}$:
+locally constant functions become constant on a clopen
+neighbourhood of that point.
+The envelope algebra localized there is a filtered
+colimit of polynomial rings with affine transitions
+having nonzero integer linear part. It is torsion-free
+over $\mathbb Z_{(p)}$ and thus flat.
+E.14 gives nonempty characteristic-$p$ fibres; generically
+the transitions are isomorphisms of polynomial algebras.
+This proves faithful flatness.
+
+Choose $a\in\widehat{\mathbb Z}$ with
+$a_p=\sum_{j\ge1}p^{j!}$ and other components zero.
+This $p$-adic number is transcendental.
+For if $F(a_p)=0$, its distinct integral partial sums
+$u_N$ give $p^{(N+1)!}\mid F(u_N)$, while
+$|F(u_N)|\le C N^{\deg F}p^{(\deg F)N!}$.
+For large $N$, the nonzero values cannot satisfy both.
+
+A hypothetical fppf lift gives, after localizing a
+covering member at a point above $p$, a noetherian local
+faithfully flat essentially finite-type algebra $B$
+and a coordinate $x$ with $x-a_n\in p^nB$ for all $n$.
+Then $dx\in\bigcap_n p^n\Omega_{B/\mathbb Z_{(p)}}=0$
+by Krull intersection.
+Every minimal prime avoids $p$, since $p$ is a
+nonzerodivisor. In each finitely generated characteristic-zero
+fraction field the image of $x$ has zero differential,
+hence is algebraic over $\mathbb Q$: a transcendental
+element belongs to a transcendence basis and has nonzero
+differential in characteristic zero.
+Multiply the finitely many annihilating integral polynomials
+and raise to a power to kill the nilpotent value.
+This gives nonzero $F\in\mathbb Z[T]$ with $F(x)=0$ in $B$.
+Faithful-flat ideal contraction now gives
+$F(a_n)\in p^nB\cap\mathbb Z_{(p)}=p^n\mathbb Z_{(p)}$.
+Passing to the limit contradicts transcendence.
+The finite lattice quotients of E.12 remain fppf exact.
+\end{proof}
+
+\begin{statement}{E.16}{Proved}{Relative and full completions are different}
+In characteristic zero, $E_L(\Gamma)_k$ is the relative
+unipotent completion for the finite quotient $\Gamma\to H$.
+The envelope is their inverse limit, with marked maps
+
+$$
+\Gamma_k^{\rm alg}\to\operatorname{Env}(\Gamma)_k
+                  \to\Gamma_k^{\rm un}.
+$$
+
+For $\mathbb Z$,
+
+$$
+\operatorname{Env}(\mathbb Z)_{\mathbb Q}
+   =\mathbb G_a\times\widehat{\mathbb Z}_{\rm const},
+ \quad n\mapsto(n,\widehat n).
+$$
+
+Its ordinary unipotent completion is $\mathbb G_a$.
+Relative completion for $n\mapsto2^n$ into $\mathbb G_m$
+is $\mathbb G_a\times\mathbb G_m$, marked by $(n,2^n)$.
+There is no marked morphism in either direction between
+the last group and the envelope. This refutes Lead 3.
+\end{statement}
+\begin{proof}
+Use the relative universal problem of
+\cite[Section 1; Proposition 11.1]{E_Hain1998}.
+In an extension of $H$ by a prounipotent group, the
+lattice images have commuting logarithms in every
+finite-dimensional quotient. They extend uniquely
+linearly and then by exponential. Uniqueness gives
+equivariance, and E.12 gives the unique extension on
+all components. This proves the claimed universal property.
+The full representation completion maps to every finite
+envelope stage; the same lattice argument maps the
+envelope to unipotent completion.
+
+For $\mathbb Z$, the coordinate $X=a+nT$ on component
+$a\bmod n$ identifies the rational stage with
+$\mathbb G_a\times(\mathbb Z/n)$, compatibly in $n$.
+A character from the envelope to $\mathbb G_m$ factors
+through a finite stage, is trivial on $\mathbb G_a$,
+and has finite marked image. Hence $2^n$ does not extend.
+
+For the relative infinite quotient, in an algebraic
+extension of $\mathbb G_m$ by a unipotent group write
+a lift of $2$ as $g_sg_u$.
+The diagonalizable cyclic closure of $g_s$ maps onto
+$\mathbb G_m$ and has kernel both diagonalizable and
+unipotent, hence trivial. It is therefore $\mathbb G_m$.
+It centralizes $g_u$, so
+$(t,z)\mapsto\exp(t\log g_u)g_s(z)$ supplies the desired
+map. The points $(n,2^n)$ are Zariski dense: a relation
+$\sum_jP_j(n)2^{jn}=0$ is impossible by the largest
+exponential term. Uniqueness and passage to inverse
+limits prove the relative universal property.
+An envelope map to this group would extend $2^n$.
+A reverse marked map would map a connected group
+nontrivially to the constant quotient $C_2$, impossible.
+\end{proof}
+
+\begin{statement}{E.17}{Proved}{Integer-valued, divided-power, and Hall models}
+For
+
+$$
+\operatorname{Int}(\mathbb Z)=
+ \{f\in\mathbb Q[T]:f(\mathbb Z)\subset\mathbb Z\},\qquad
+ D=\bigoplus_{j\ge0}\mathbb Z\,T^j/j!,
+$$
+
+there are additive Hopf maps
+
+$$
+\operatorname{Env}(\mathbb Z)\to
+ \operatorname{Spec}\operatorname{Int}(\mathbb Z),\qquad
+ K_1\to\operatorname{Spec}D.
+$$
+
+Moreover $\operatorname{Int}(\mathbb Z)/p
+=C_{\rm lc}(\mathbb Z_p,\mathbb F_p)$, while $D/p$
+is nonreduced. The rank-one integral Hall model and
+the abelian BCH model are additive groups, not the envelope.
+\end{statement}
+\begin{proof}
+The binomial basis and
+$\binom{T+U}{j}=\sum_i\binom Ti\binom U{j-i}$
+give the first Hopf algebra.
+Choose $n$ divisible by ordinary coefficient denominators;
+then $f(a+nT)$ is integral on every stage component.
+This embeds its ring in the envelope ring and respects
+Hopf operations by equality on integer points.
+The inclusion $D\subset\mathbb Z+T\mathbb Q[T]$ gives
+the second map.
+
+Integer-valued polynomials extend continuously to
+$\mathbb Z_p$. Reduction has kernel $p\operatorname{Int}(\mathbb Z)$.
+The functions $\binom a{p^i}\bmod p$ are the base-$p$
+digits, by expansion of $(1+X)^a$.
+Digit functions and finite-field interpolation give
+all functions on $\mathbb Z/p^m$, hence every locally
+constant function. The corresponding special-fibre
+map is $\widehat{\mathbb Z}\to\mathbb Z_p$.
+In $D/p$, the nonzero basis vector $\gamma_1=T$ satisfies
+$\gamma_1^p=p!\gamma_p=0$.
+
+For a generator $b$ of $\mathbb Z$, collection is
+$b^ab^c=b^{a+c}$, so the Hall polynomial is $a+c$.
+All brackets vanish in the abelian $\mathbb Z_p$ Lie
+algebra, giving the same BCH law. These direct rank-one
+calculations require no general Lazard hypothesis.
+The envelope maps to its additive finite stage, but
+has the additional profinite generic component factor
+and the constant special fibres of E.14.
+\end{proof}
+
+\begin{statement}{E.18}{Proved}{The marked orientation-preserving modular quotient}
+Put
+
+$$
+\lambda_0=\sigma\rho\sigma^{-1}\rho=
+ \begin{pmatrix}-1&2\\0&-1\end{pmatrix},\qquad
+ \lambda_1=\rho\lambda_0\rho^{-1}=
+ \begin{pmatrix}-1&0\\-2&-1\end{pmatrix}.
+$$
+
+Then $\Pi_0=\langle\lambda_0,\lambda_1\rangle$ is free
+of rank two, normal of indices 12 and 24 in SL and GL.
+For $S=\operatorname{SL}_2(\mathbb Z)/[\Pi_0,\Pi_0]$,
+
+$$
+S=\mathbb Z^2\rtimes H,\qquad H=\operatorname{Dic}_3,
+$$
+
+where, in this presentation, $r^6=1$, $s^2=r^3$,
+$srs^{-1}=r^{-1}$, and the action is
+
+$$
+R=\begin{pmatrix}0&-1\\1&-1\end{pmatrix},\quad
+ J=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+$$
+
+The marking is $\rho\mapsto(-e_0,r)$, $\sigma\mapsto(0,s)$,
+$\lambda_i\mapsto(e_i,1)$. This group is virtually
+abelian but not modern metabelian.
+\end{statement}
+\begin{proof}
+C.2 identifies the projective level-two kernel as free
+on the corresponding elementary matrices.
+The signed lifts $\lambda_i$ give a complement to
+$\{\pm I\}$ in $\Gamma(2)$, hence index 12.
+Modulo four their subgroup is
+
+$$
+K=\left\{I,
+ \begin{pmatrix}3&2\\0&3\end{pmatrix},
+ \begin{pmatrix}3&0\\2&3\end{pmatrix},
+ \begin{pmatrix}1&2\\2&1\end{pmatrix}\right\}.
+$$
+
+Conjugation by $\rho$ sends its generators $a,b$ to
+$b,ab$, and $\sigma$ exchanges them.
+The kernel modulo two in SL modulo four has order eight
+and is generated by $a,b,-I$; the total order is 48.
+The inverse image of $K$ thus has index 12 and equals
+$\Pi_0$. Finally $\operatorname{diag}(-1,1)$ inverts
+both $\lambda_i$, proving GL normality and index 24.
+
+The quotient has the displayed dicyclic presentation
+and exactly 12 elements by the index.
+The matrices satisfy $R^3=J^2=I$, $JRJ=R^{-1}$.
+The marked $\rho,\sigma$ satisfy their modular relations,
+and direct multiplication sends the two free basis
+elements to the lattice basis. The resulting surjection
+has kernel exactly $[\Pi_0,\Pi_0]$.
+In the derived group, $(1,-1)$ and $r^2$ have commutator
+$(3,0)\ne0$, so the group is not metabelian.
+The finite quotient at two independently has derived
+orders $48,12,4,1$.
+\end{proof}
+
+\begin{statement}{E.19}{Proved}{Coordinates, points, and fibres of S}
+The finite model is
+$\underline S=\mathbb G_a^2\rtimes H$ with ring
+$\prod_H\mathbb Z[X,Y]$: twelve smooth affine planes
+in every characteristic.
+The envelope ring is
+
+$$
+\varinjlim_n
+ \prod_{(a,h)\in(\mathbb Z/n)^2\rtimes H}\mathbb Z[T_1,T_2].
+$$
+
+For $m=nq$ and $b=a+nc$, transitions are $T_n=c+qT_m$.
+Furthermore
+
+$$
+\widehat S=\widehat{\mathbb Z}^{\,2}\rtimes H,\quad
+ \operatorname{Env}(S)(\mathbb Z)=S,\quad
+ \operatorname{Env}(S)(\mathbb Z_p)=\widehat S,\quad
+ \operatorname{Env}(S)(\widehat{\mathbb Z})=\prod_p\widehat S.
+$$
+
+For the finite model,
+$\underline S(\widehat{\mathbb Z})=\prod_p(\mathbb Z_p^2\rtimes H)$;
+its common-component subset is $\widehat S$.
+The full special fibre is constant $\widehat S$, not
+twelve affine planes.
+\end{statement}
+\begin{proof}
+Represent the point in component $(a,h)$ as $(a+nT,h)$.
+Its semidirect multiplication gives the Hopf operations
+with integral carries and all transition formulas.
+These finite quotients are cofinal, proving the completion.
+At integral points every stage is the same group $S$,
+with identity transition.
+At $\mathbb Z_p$ a compatible component label is
+$(a,h)\in\widehat S$, and the first lattice coordinate
+is forced by $x-a_n\in n\mathbb Z_p^2$ to be $a_p$.
+Conversely $(a_p-a_n)/n$ supplies all higher coordinates.
+Affine functors preserve products of rings.
+E.14 gives the full special fibre.
+The marked generators generate quotients of orders
+$12n^2$ for $n=1,2,3,4,8,9$, as actually checked.
+\end{proof}
+
+\begin{statement}{E.20}{Proved}{The specified relative quotient}
+The quotient of relative unipotent completion of
+$\operatorname{SL}_2(\mathbb Z)\to H$ by the closed
+commutator of its prounipotent kernel is
+$\underline S_{\mathbb Q}$, with E.18's marking.
+It is not the full integral envelope.
+\end{statement}
+\begin{proof}
+A lift into an extension of $H$ by a vector group kills
+$[\Pi_0,\Pi_0]$, hence factors through $S$.
+E.16 extends it uniquely to $\underline S_{\mathbb Q}$.
+That group itself is such an extension, proving the
+universal property. Abelianizing a prounipotent kernel
+represents precisely this problem.
+The full GL variant has 24 components; the envelope
+also retains every lattice refinement.
+\end{proof}
+
+\begin{statement}{E.21}{Open}{The full normalizer action remains unfinished}
+A sign-consistent construction of all actions on C4
+scans 36--41 on one marked integral relative-completion
+model is not completed here.
+Proved: $\underline S_{\mathbb Q}$ has dimension two
+and cannot be $M_{\mathbb Q}$ of dimension six.
+B.23 computes the finer three-dimensional parameter
+scheme. Inner conjugation acts on $\underline S$,
+with kernel the constant $\langle r^3\rangle$
+over $\mathbb Z[1/6]$.
+\end{statement}
+\begin{proof}[Partial assertions and gap]
+A centralizing $(v,h)$ must have $h$ in the kernel
+$\langle r^3\rangle$ of the lattice action.
+Then $v$ is fixed by $R,J$; $\det(R-I)=3$ forces
+$v=0$ on the stated base.
+This proves the inner action and kernel.
+Dimension excludes the proposed group-scheme identification.
+The finite checks in E.19 and B.23 do not identify an
+external parameter group with a full automorphism
+functor or verify the entire sign-bearing action.
+The arithmetic quotient in E.28 is also outside its
+proved scope.
+\end{proof}
+
+\begin{statement}{E.22}{Proved}{An explicit Stallings-type test}
+For $F=\langle x,y\rangle$, let
+$f(x)=x$, $f(y)=y[x,y]$.
+It induces automorphisms of every lower-central quotient,
+every pro-$\ell$ completion, and the rational Malcev
+completion. It is not onto $F$ or its full profinite
+completion. The representation $x\mapsto(12)$,
+$y\mapsto(13)$ has image six and, after $f$, image two.
+\end{statement}
+\begin{proof}
+The map is identity on abelianization.
+Each graded lower-central piece is generated by
+commutators in the generators, so changing a generator
+by a weight-two term changes no associated graded term.
+Induction on the central series gives an automorphism
+of each lower-central quotient.
+
+On the free pro-$\ell$ group it is identity modulo
+$\Phi(P)=\overline{P^\ell[P,P]}$.
+Its compact image is closed. A proper image would
+remain proper in a finite $\ell$-quotient and lie
+in a maximal subgroup of index $\ell$, contradicting
+Frattini surjectivity.
+A finitely generated profinite group is Hopfian:
+there are finitely many open normal subgroups of any
+given index, and inverse image under a surjective
+endomorphism permutes them. Some iterate preserves each,
+forcing the kernel into every open normal subgroup.
+Thus the map is an automorphism.
+
+On the completed free Lie algebra it sends each generator
+to itself plus higher degree. A continuous inverse is
+constructed recursively degree by degree.
+Finally direct multiplication of the two transpositions
+gives $y[x,y]=x$. The image drops from six to two,
+which is impossible for a surjective endomorphism.
+The finite-group program checks this.
+\end{proof}
+
+\begin{statement}{E.23}{Refuted}{The two S3-cover claims differ}
+The representation of $\Pi_0$ sending its free basis
+to $(12),(13)$ cannot factor through $S$ or its marked
+envelope. The modern metabelian quotient
+$\Pi_0/\Pi_0''$ retains it but is not virtually abelian.
+In contrast, ordinary reduction
+$\operatorname{SL}_2(\mathbb Z)\to S_3$ factors through
+$S$ and its envelope.
+\end{statement}
+\begin{proof}
+The first images do not commute, while $S$ kills
+$[\Pi_0,\Pi_0]$. Since $S_3''=1$, the modern metabelian
+quotient retains them.
+For a free rank-two group, the universal abelian
+covering graph has boundary
+
+$$
+\mathbb Z[u^{\pm1},v^{\pm1}]^2
+ \xrightarrow{(u-1,v-1)}\mathbb Z[u^{\pm1},v^{\pm1}].
+$$
+
+Its kernel is freely generated over the Laurent ring
+by $(1-v,u-1)$: divisibility by the prime $u-1$
+proves this directly. There are no two-cells.
+Thus $F'/F''$ is the additive Laurent polynomial group,
+not finitely generated. Every subgroup of a finitely
+generated virtually abelian group is finitely generated,
+so $F/F''$ is not virtually abelian.
+
+Reduction modulo two kills $\Pi_0$ and factors through
+$H/\langle r^3\rangle=S_3$, a retained finite quotient.
+Its restriction to $\Pi_0$ is trivial and is therefore
+a different representation.
+In E.22 the transitive three-letter action pulls back
+to a two-element orbit and a fixed point, giving a
+disconnected pulled-back degree-three cover.
+\end{proof}
+
+\begin{statement}{E.24}{Known}{The two rational theories}
+Fibrewise rationalization preserves the discrete
+fundamental group of $BS=K(S,1)$ and changes no higher
+homotopy groups, so $BS$ is already fibrewise rational.
+Its rational local-system derived category is $D(\mathbb Q[S])$.
+The fundamental affine group of its schematization is
+$S_{\mathbb Q}^{\rm alg}$, whereas
+
+$$
+\operatorname{Env}(S)_{\mathbb Q}
+ =(\mathbb G_a^2\times\widehat{\mathbb Z}_{\rm const}^{\,2})
+       \rtimes H.
+$$
+
+All retain the reduction quotient to $S_3$.
+The marked maps of $S$ into its envelope and full
+proalgebraic completion are injective.
+No assertion about the entire schematization being a
+classifying stack is made without a goodness hypothesis.
+\end{statement}
+\begin{proof}[Exact reductions and explicit calculation]
+The fundamental-group-preserving rational equivalences
+are those of \cite[Theorem 3]{E_RiveraWierstraZeinalian2021}.
+There are no higher groups to rationalize in $BS$.
+Descent from its contractible universal cover identifies
+complexes of local systems with derived $\mathbb Q[S]$-modules.
+The schematic fundamental-group statement is
+\cite[Corollary 3.3.7]{E_Toen2006}.
+
+At a rational envelope stage, use $X=a+nT$.
+The multiplication becomes
+$(X,a,h)(Y,b,k)=(X+hY,a+hb,hk)$.
+Taking the inverse limit gives the displayed formula
+and marking $(v,h)\mapsto((v,\widehat v),h)$.
+The finite quotients $(\mathbb Z/n)^2\rtimes H$ separate
+all elements; their permutation representations also
+separate elements in full proalgebraic completion.
+The finite quotient $S\to H\to S_3$ survives throughout.
+\end{proof}
+
+\begin{statement}{E.25}{Proved}{Representations separating the theories}
+A twelve-dimensional rational representation of $S$
+extends to full proalgebraic completion but not its
+envelope. The regular local system $\mathbb Q[S]$
+is not the restriction of any rational comodule of
+an affine group scheme along a marked map from $S$.
+\end{statement}
+\begin{proof}
+Induce $\chi(a,b)=2^a$ from $L=\mathbb Z^2$ to $S=L\rtimes H$.
+On basis $e_h$, let $v e_h=\chi(h^{-1}v)e_h$ and let
+$H$ permute the basis. The lattice generator has
+eigenvalue two. An envelope representation factors
+through a finite stage, where a positive power of
+each marked element lies on an additive subgroup;
+its eigenvalues must be roots of unity.
+Thus this representation does not extend to the envelope,
+but extends by the definition of full proalgebraic completion.
+
+Every vector in a rational comodule lies in a finite-dimensional
+subcomodule. Indeed write
+$\delta(v)=\sum_i v_i\otimes a_i$ with independent $a_i$.
+The counit puts $v$ in $W=\operatorname{span}(v_i)$.
+Projecting the first tensor factor of coassociativity
+to $V/W$ gives $\delta(v_i)\in W\otimes B$.
+But the orbit of $1$ in $\mathbb Q[S]$ contains the
+whole infinite basis $S$, so cannot lie in such a
+finite-dimensional invariant space.
+\end{proof}
+
+\begin{statement}{E.26}{Proved}{The nilpotent completions of S}
+For $L_0=(R-I)\mathbb Z^2$,
+
+$$
+S'=L_0\rtimes\langle r^2\rangle,\qquad
+ S^{ab}=C_{12},\qquad \gamma_nS=S'\ (n\ge2).
+$$
+
+Its lower-central and finite pronilpotent completions
+are $C_{12}$; its pro-two and pro-three completions
+are $C_4,C_3$; other pro-$\ell$ completions and its
+characteristic-zero Malcev completion are trivial.
+\end{statement}
+\begin{proof}
+The columns of $J-I$ lie in $(R-I)\mathbb Z^2$,
+whose index is three.
+Also $H'=\langle r^2\rangle=C_3$ and $H^{ab}=C_4$.
+This computes $S'$ and $S^{ab}=C_3\times C_4$.
+Since $R^2-I=(R-I)(R+I)$ and $\det(R+I)=1$,
+$[L,\langle r^2\rangle]=L_0$.
+Also $[s,r^2]=r^2$, so $[S,S']=S'$.
+Every nilpotent quotient therefore factors through
+$C_{12}$. Taking Sylow quotients gives the pro-$\ell$
+claims. A characteristic-zero unipotent group is nilpotent
+and torsion-free, by logarithm, so all such images vanish.
+The finite quotients are envelope quotients.
+The checked mod-two quotient has lower-central orders
+$48,12,12,12$ and derived orders $48,12,4,1$.
+\end{proof}
+
+\begin{statement}{E.27}{Open}{Two exact general-base residuals}
+Unproved here are:
+existence for a nonlinear separated locally finitely
+presented group over an arbitrary $\mathbb Q$-algebra
+with a geometrically additive section;
+and the arbitrary-noetherian-base envelope universal
+property for affine targets without a supplied linear
+embedding. Specific unresolved instances in this work
+are a nonlinear group over $\mathbb Q[\epsilon]/(\epsilon^2)$
+and such an affine group over $\mathbb Z[t]$.
+These are not claims of literature-wide openness.
+\end{statement}
+\begin{proof}[Proved range and missing inputs]
+E.1 proves all closed linear cases over $\mathbb Q$-algebras
+and general groups over characteristic-zero fields.
+Nilpotents alone are not an obstruction in that range:
+
+$$
+g=\begin{pmatrix}1+\epsilon&1\\0&1\end{pmatrix},\qquad
+ u(T)=\begin{pmatrix}
+ 1+\epsilon T&T+\epsilon(T^2-T)/2\\0&1
+ \end{pmatrix}
+$$
+
+satisfies $u(T+U)=u(T)u(U)$ and $u(1)=g$.
+The program checks these identities modulo $\epsilon^2$.
+Without a linear embedding, the missing input is
+existence of the interpolating morphism into the
+nonlinear target; fieldwise descent alone does not
+construct a map on a thickening.
+For the general noetherian affine case the missing
+input is an appropriate positive-power theorem.
+Once additive lattice maps exist, E.13 handles their
+finite torsion defects and uniqueness after refinement.
+\end{proof}
+
+\begin{statement}{E.28}{Proved}{Discrete Fermat relative completions}
+Let $F=\pi_1(\mathbb P^1(\mathbb C)\setminus\{0,1,\infty\})
+=\langle x,y\rangle$ and
+$q_n:F\to A_n=(\mathbb Z/n)^2$ send meridians to its basis.
+Relative completion over $\mathbb Q$ has free prounipotent
+kernel of rank $n^2+1$.
+Its abelian-kernel quotient has dimension $n^2+1$,
+equal to five at $n=2$; its full completion is not
+of finite type. It cannot be $M_{\mathbb Q}$.
+For $n\ge2$ its abelian-kernel quotient cannot be
+$\underline S_{\mathbb Q}$.
+The arithmetic/profinite comparison relative to
+$S_3\times\widehat{\mathbb Z}^{\times}$ remains unresolved.
+\end{statement}
+\begin{proof}
+The covering graph of the two-petal rose has $n^2$
+vertices and $2n^2$ positive edges.
+Contracting a spanning tree leaves $n^2+1$ edges,
+so $K_n=\ker q_n$ is free of that rank.
+This is the connected cover adjoining $n$th roots
+of $z$ and $1-z$.
+The executed graph check covers $1\le n\le12$.
+At two it gives the basis
+
+$$
+x^2,\quad yxy^{-1}x^{-1},\quad y^2,\quad
+ xyxy^{-1},\quad xy^2x^{-1}.
+$$
+
+
+Let $U_n$ be exponential of the completed free Lie
+algebra on that basis.
+Assigning logarithms of the generators uniquely
+extends a map from $K_n$ to any finite-dimensional
+unipotent group, and then to inverse limits.
+Thus $U_n$ is its unipotent completion.
+Choose representatives $s(a)$ in $F$.
+Their conjugations extend to $C_a$ on $U_n$, and put
+$c(a,b)=s(a)s(b)s(a+b)^{-1}$ in $U_n$.
+They satisfy
+
+$$
+C_aC_b=\operatorname{Inn}(c(a,b))C_{a+b},\qquad
+ c(a,b)c(a+b,d)=C_a(c(b,d))c(a,b+d).
+$$
+
+Hence
+
+$$
+(u,a)(v,b)=(uC_a(v)c(a,b),a+b)
+$$
+
+defines a proalgebraic extension with the given marking.
+Any competing relative extension receives the unique
+map from $U_n$; uniqueness forces compatibility with
+the conjugations and cocycle, extending it on each
+component. This is the relative universal property.
+
+For $s'(a)=b_as(a)$,
+
+$$
+C'_a=\operatorname{Inn}(b_a)C_a,\qquad
+ c'(a,b)=b_aC_a(b_b)c(a,b)b_{a+b}^{-1}.
+$$
+
+The isomorphism to old coordinates is $(u,a)\mapsto(ub_a,a)$,
+as direct substitution shows.
+Thus there is no dependence on the section.
+
+The free Lie abelianization has dimension $n^2+1$.
+For at least two generators, $\operatorname{ad}(X)^mY$
+has associative word $X^mY$ with coefficient one,
+so nonzero degrees occur arbitrarily far out.
+The full kernel is not of finite type.
+No square $n^2$ equals five, so the abelian-kernel
+dimension is never six, and exceeds two for $n\ge2$.
+These are discrete complex comparisons; adjoining
+the requested arithmetic quotient requires its own
+marking, topology and representation category.
+\end{proof}

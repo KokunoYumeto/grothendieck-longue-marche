@@ -1,0 +1,384 @@
+\subsection{What a finite quotient can, and cannot, test}
+
+\begin{claim}{B.f1}{Refuted}{An arbitrary two-generator finite quotient does not carry the full system}
+A surjection $F_2\to G$ alone does not define the substitutions
+$f(x,y)\mapsto f(y,x)$ and $f(x,y)\mapsto f(y,z)$ on elements of $G$.
+Nor does it define a pentagon test. A correct finite test either retains
+the word and all its evaluations, or uses a common invariant quotient for
+all required maps. In particular the Legendre images at even level $n$
+are not the full groups $\SL_2(\mathbb Z/n)$ requested literally in B(e).
+\end{claim}
+% anchor:B.f1
+\manuscriptanchor{\S \S 38--39; fols.297--300; scans18--24}
+
+\begin{proof}
+In $S_3$ choose $x=(12)$ and $y=(123)$. The relation $x^2=1$ holds,
+but its image under swapping the two generators is $y^2\ne1$.
+Thus the swapping map does not descend. This counterexample is checked
+in \nolinkurl{finite_congruence.py}. The pentagon has five evaluations in
+a quotient of the geometric group of $M_{0,5}$; one quotient of $F_2$
+does not specify that target or its five structure maps. Finally both
+Legendre matrices $L_0=\left(\begin{smallmatrix}1&-2\\0&1\end{smallmatrix}\right)$,
+$L_1=\left(\begin{smallmatrix}1&0\\2&1\end{smallmatrix}\right)$ are
+identity modulo $2$, whereas $\SL_2(\mathbb F_2)$ has order six.
+The projective image is the kernel of reduction to $S_3$ at even level,
+as follows from the index-six modular covering and reduction; its orders
+are computed below. These are failures of the proposed formulation, not
+counterexamples to a correctly formulated Grothendieck--Teichm\"uller relation.
+\end{proof}
+
+For a finite two-generated $G$, put
+\[
+ N_G=\bigcap_{q:F_2\twoheadrightarrow G}\ker q,
+ \qquad \overline G=F_2/N_G.
+\]
+The intersection is finite. It is invariant under all automorphisms of
+$F_2$, including the swapping and cyclic substitutions. More strongly,
+any generating pair of $\overline G$ is the image of its distinguished
+pair under an automorphism: every epimorphism to $G$ is accounted for in
+the intersection. We use the finite shadow $\mathcal D(G)$ consisting of
+outer automorphisms of $\overline G$ that send $x$ to a conjugate of
+$x^k$, with $k$ prime to its order, and commute in the outer group with
+$\theta:(x,y)\mapsto(y,x)$ and
+$\delta:(x,y)\mapsto((xy)^{-1},y)$. This is Guillot's $GT(G)$, whose
+inverse limit is $\GTz$, not his notation for the pentagon group
+\citep[\S\S2.1--2.4]{Guillot2015root}. Its subgroup with a representative
+$k=1$ is denoted $\mathcal D_1(G)$. At a finite level the multiplier need
+not be unique, so this subgroup is not automatically the image of the
+global subgroup $\lambda=1$.
+
+\begin{claim}{B.f2}{Proved}{Complete matrix residue enumeration at the requested levels}
+Let $Q_n=\SL_2(\mathbb Z/n)/\langle-I\rangle$ and
+$H_n=\langle L_0,L_1\rangle\subseteq Q_n$. Write
+$R=\left(\begin{smallmatrix}0&1\\-1&1\end{smallmatrix}\right)$ and
+$S=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$, so that
+$\rho=\Ad R$, $\sigma=\Ad S$ on $H_n$. The following is an exhaustive
+enumeration of
+\[
+ \xi\rho(\xi)\rho^2(\xi)=1,\quad
+ \eta\sigma(\eta)=1,\quad \xi=\eta L_1^\nu,
+ \qquad 2\nu+1\in(\mathbb Z/n)^\times,
+ \tag{B.f2.1}
+\]
+with $\nu$ taken modulo the order of $L_1$. The columns headed cycles
+enumerate (I),(II) with $f\in H_n'$ in the convention of B.m2.
+\end{claim}
+% anchor:B.f2
+\manuscriptanchor{\S 46; fols.393--394,407--408; scans189--190,215--217}
+
+\begin{center}\small
+\begin{tabular}{rrrrrrrr}
+\toprule
+$n$&$|H_n|$&$|H_n'|$&pairs&gauge orbits&descend&cycles&generating cycles\\
+\midrule
+2&1&1&1&1&1&1&1\\
+3&12&4&8&4&6&8&6\\
+4&4&1&4&2&4&2&2\\
+5&60&60&20&4&20&20&20\\
+6&12&4&8&4&6&8&6\\
+7&168&168&42&6&42&42&42\\
+8&32&2&16&4&16&4&4\\
+12&96&8&24&4&24&12&12\\
+24&768&16&96&8&96&24&24\\
+\bottomrule
+\end{tabular}\end{center}
+\begin{proof}
+The algorithm constructs $Q_n$ by enumerating determinant-one matrices,
+identifying a matrix with its negative, and closing $L_0,L_1$ under
+multiplication. It constructs $H_n'$ from all conjugates of $[L_1,L_0]$;
+in a two-generator group their normal closure is the derived group.
+For each allowed $\nu$ and each $\xi\in H_n$, $\eta$ is forced by
+(B.f2.1), after which both products are evaluated exactly. Gauge orbits
+use $(\xi,\eta)\mapsto(L_0^a\xi L_1^{-a},L_0^a\eta L_1^{-a})$;
+the program checks that every such orbit stays in the solution set.
+
+``Descend'' is a separate test: the proposed images
+$S\mapsto\eta S$, $R\mapsto\xi R$ are propagated along the Cayley
+graph of $Q_n$ and checked on every edge. Consistency and bijectivity
+are both required. Thus it is a test of an automorphism of this
+particular finite quotient, not a presumed consequence of two order
+relations. The cycle columns enumerate $f\in H_n'$ with the swapping
+and cyclic maps actually defined on $H_n$, then test whether
+$L_1^{2\nu+1}$ and $f^{-1}L_0^{2\nu+1}f$ generate $H_n$.
+All loops are finite and exhaustive; all solutions, not just the counts,
+are retained in \nolinkurl{finite_matrix_cycles.json}. Level $1$ is the
+single trivial solution. No conclusion about lifting any remaining
+residue to $\Fhat$ is built into the algorithm.
+\end{proof}
+For example, the first failed quotient descent at level $3$ has
+$\nu=0$ and $\xi=\eta=S$. It sends $S$ to $1$, and hence is not an
+automorphism. This is why Grothendieck's generation condition cannot be
+discarded. The outer images among the descending pairs have orders
+$1,2,1,2,2,2,4,4,8$ in the displayed level order. The projective level-four
+outer image is trivial because $Q_4\simeq S_4$ has no outer automorphisms;
+it must not be substituted for the nontrivial outer image on $\SL_2(\mathbb Z/4)$.
+
+\begin{claim}{B.f3}{Proved}{The characteristic $S_3$ calculation}
+The characteristic envelope $\overline{S_3}$ has order $108$ and
+exponent $6$, with derived group of order $27$. There are exactly twelve
+pairs $(\lambda\bmod12,f)$ satisfying (I),(II), with
+$f\in\overline{S_3}'$ and an induced automorphism. Their outer image is
+\[
+ \mathcal D(S_3)=\mathcal D_1(S_3)\simeq C_2.
+\]
+Complex conjugation is trivial in this particular outer quotient.
+\end{claim}
+% anchor:B.f3
+\manuscriptanchor{\S 42; fols.331 verso--337; cote 140-3 scans85--96}
+
+\begin{proof}
+There are three generating-pair orbits modulo $\Aut(S_3)$.
+They give an embedding $\overline{S_3}\subseteq S_3^3$.
+It is the subgroup in which the product of the three signs is $+1$:
+its image on signs has order four, and the squares of the distinguished
+generators and their product generate the three independent $C_3$
+factors. Thus its order is $4\cdot3^3=108$.
+
+\texttt{finite\_shadows.py} enumerates all four unit residues modulo
+$12$ and all $27$ commutator elements. It computes the actual
+substitution automorphisms and checks both cycle products, generation,
+and the induced homomorphism on every Cayley edge. An independent
+enumeration uses the definition of $\mathcal D(S_3)$: fix
+$y\mapsto y^k$, range over every conjugate of $x^k$, and check
+commutation with both $\theta,\delta$ modulo every possible inner
+conjugator. The two enumerations yield the same two outer classes.
+The twelve pairs and their orders are printed in the JSON certificate.
+The involution $x\mapsto x^{-1},y\mapsto y^{-1}$ has the same outer
+key as the identity. This last computation prevents an erroneous
+identification of every finite order-two Galois image with complex
+conjugation.
+\end{proof}
+
+\begin{claim}{B.f4}{Proved}{The arithmetic image of the $S_3$ envelope is all of $C_2$}
+The outer Galois image in B.f3 is $C_2$, with fixed field
+$\mathbb Q(\sqrt3)$. Consequently the images of $G_\mathbb Q$, $\GT$
+and $\GTz$ in $\mathcal D(S_3)$ all coincide; there is no nonarithmetic
+outer shadow at this level.
+\end{claim}
+% anchor:B.f4
+\manuscriptanchor{\S 44; fols.365 verso--368 verso; cote 140-3 scans152--158}
+
+\begin{proof}
+Use the rational $S_3$-Galois cover
+\[
+ b(t)=\frac{27t^2(t-1)^2}{4(t^2-t+1)^3},\qquad
+ a(t)=\frac{t^3-3t+1}{t(t-1)},\quad w=a-\frac32.
+\]
+The rational transformations $t\mapsto1-t,1/t$ generate its deck group;
+the degree is six. The three distinct orders-of-inertia patterns are
+obtained by taking $b=T,1/T,1/(1-T)$, so these are exactly the three
+epimorphism kernels used in B.f3. Direct rational identities give
+\[
+ a\bigl(1/(1-t)\bigr)=a(t),\quad a(1-t)=3-a(t),\quad
+ w^2=\frac{27}{4}\frac{1-b}{b}.
+\]
+Thus the quadratic subfields of the three covers have square classes
+$3T(1-T)$, $3(T-1)$, and $-3T$. Their product is the square class of $3$.
+Their compositum therefore contains $\sqrt3$ as a constant.
+Its geometric Galois group has order $108$ by B.f3, whereas its
+arithmetic group is a subgroup of $S_3^3$ of order at most $216$.
+The constant quadratic extension forces its order to be at least $216$;
+both bounds are equal. No other constant is possible.
+
+The centralizer of the geometric subgroup in $S_3^3$ is trivial,
+since its projection to every center-free factor is surjective.
+An element outside the geometric subgroup cannot act by an inner
+automorphism of it: multiplying it by the inverse of a putative inner
+conjugator would centralize that subgroup. Hence the constant-field
+quotient acts faithfully in the outer group. This proves the claim.
+All rational identities are independently checked in
+\texttt{finite\_s3\_fields.py}. The arithmetic character is
+$\chi_{-4}\chi_{-3}$, in agreement with C.a2.
+\end{proof}
+
+\begin{claim}{B.f5}{Known}{Exact simple-group finite shadows, recomputed}
+For the characteristic envelopes attached to $A_5$ and $\PSL_2(\mathbb F_7)$,
+\[
+ \mathcal D_1(A_5)=1,\quad |\mathcal D(A_5)|=2,
+ \qquad
+ \mathcal D_1(\PSL_2(\mathbb F_7))\simeq C_2^3\times D_8^2,
+ \quad |\mathcal D(\PSL_2(\mathbb F_7))|=1024,
+\]
+where $D_8$ has order eight. The first of these full shadows is entirely
+arithmetic, with cyclotomic quadratic field $\mathbb Q(\sqrt5)$.
+We do not determine the order of the arithmetic image in the second.
+The full $1024$-element shadow has exactly one element of order one,
+$575$ of order two, and $448$ of order four; its exponent is four.
+\end{claim}
+% anchor:B.f5
+\manuscriptanchor{\S 42; fol.349 verso; scan120}
+
+\begin{proof}
+We use and verify the mechanism of
+\citet[Theorem 4.9 and Proposition 4.12]{Guillot2015root}.
+For a nonabelian simple $G$, the distinct epimorphism kernels give
+$\overline G=G^r$. This follows by induction from the subdirect-product
+lemma: a proper subdirect subgroup of a product with one new simple
+factor identifies that factor with an old quotient, contradicting
+distinctness of the kernels. Every automorphism of $G^r$ permutes its
+simple normal factors and acts on each by $\Aut(G)$.
+Consequently its outer group acts faithfully on generating pairs modulo
+simultaneous inner conjugacy.
+
+On this set, take the centralizer of the permutations induced by
+$\Out(G)$, swapping the pair, and $(x,y)\mapsto((xy)^{-1},y)$.
+Intersect it with the permutations preserving the ordered pair of
+conjugacy classes. The result is exactly $\mathcal D_1(G)$: the
+class-preserving condition translates coordinatewise into conjugacy of
+the distinguished elements in $G^r$. The program constructs the set,
+these permutations, and every color-preserving equivariant bijection
+between their orbits. If a block contains $r$ isomorphic colored orbits
+with $a$ equivariant self-maps, its factor has order $a^r r!$.
+It also generates every element of the resulting group and checks the
+centralizer and color conditions anew.
+
+For $A_5$ the set has $38$ elements (from $2280$ generating pairs), and
+the centralizer intersection is trivial. For $\PSL_2(\mathbb F_7)$ it
+has $114$ elements (from $19152$ generating pairs); the blocks give
+three $C_2$ factors and two $C_2\wr S_2=D_8$ factors. The orders of its
+elements are $1$ once, $2$ in $287$ cases, and $4$ in $224$ cases.
+These are independent recomputations of the corresponding entries of
+\citet[Theorem 5.2]{Guillot2015root}.
+
+The full shadow is obtained by allowing a common power $k$ on all
+conjugacy classes. Every unit power pattern is realized by Galois,
+because the cyclotomic character is surjective and inertia is raised
+to that power; this is also \citet[Lemma 2.3]{Guillot2015root}.
+Two such patterns give the same coset precisely when every class is
+preserved by their ratio. The power-class kernel has index two in both
+examples, as verified for every group element. For $A_5$ it is the
+quadratic character modulo five. Since the residual class-preserving
+group is trivial, the arithmetic image is the entire order-two group.
+For $\PSL_2(\mathbb F_7)$ this argument only gives the quotient of
+order two, not all $512$ elements in its kernel.
+
+For the full finite-order calculation, adjoin to the recorded subgroup
+$\mathcal D_1$ the permutation
+\[
+ c:[(x,y)]\longmapsto[(x^{-1},y^{-1})]
+\]
+of the $114$ inner generating-pair classes. The power class of $-1$
+is nontrivial modulo seven, so $c\notin\mathcal D_1$. The established
+index-two result identifies the generated group with the full shadow.
+The program \nolinkurl{finite_shadow_orders.py} verifies that $c$
+normalizes all nine recorded generators, enumerates the full group,
+checks all $1024^2$ products for closure, and computes every element
+order. The coset $c\mathcal D_1$ contains $288$ involutions and $224$
+elements of order four. The other three named full shadows are $C_2$,
+so their only orders are one and two. These are finite-shadow orders;
+the full arithmetic subgroup at $\PSL_2(\mathbb F_7)$ remains undetermined.
+\end{proof}
+
+\input{sections/B_s4}
+
+\begin{claim}{B.f6}{Proved}{A noncongruence finite quotient detects information lost by matrices}
+The continuous map
+$\widehat{\SL_2(\mathbb Z)}\to\SL_2(\Zhat)$ is not injective.
+The corresponding loss is already present in the index-six free
+subgroup after passing to projective groups. Thus the matrix equations
+are necessary conditions and are not an equivalent encoding of the
+full profinite equations merely because their matrix calculation is correct.
+\end{claim}
+% anchor:B.f6
+\manuscriptanchor{\S \S 39,42; fols.299--301,349 verso; scans22--26,120}
+
+\begin{proof}
+Let $\mathbb F_8=\mathbb F_2[a]/(a^3+a+1)$. The matrices
+\[
+ A=\begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+ B=\begin{pmatrix}0&a\\a^{-1}&1\end{pmatrix}
+\]
+have orders two and three and generate $\SL_2(\mathbb F_8)$ of order
+$504$. The program \nolinkurl{finite_noncongruence.py} verifies generation
+and simplicity: for every nonidentity conjugacy class its normal
+closure is the whole group. This is a complete finite simplicity
+certificate, not a probabilistic test. Hence $C_2*C_3$ surjects onto
+this group, and the map extends to its profinite completion.
+
+No congruence quotient has this simple quotient. By the Chinese
+remainder theorem and the successive reduction kernels, the
+nonabelian simple composition factors of $\SL_2(\mathbb Z/n)$ are
+$\PSL_2(\mathbb F_p)$ for primes $p\ge5$; the kernels between prime
+powers are $p$-groups and the cases $p=2,3$ are solvable. The order
+$p(p^2-1)/2$ is $168$ at $p=7$ and $660$ at $p=11$, strictly increasing,
+and never $504$. A continuous map from the congruence completion to a
+finite group factors through some finite level. Thus the quotient of
+order $504$ cannot factor through that completion. If the completion
+map were injective it would be an isomorphism of compact groups, which
+would force just such a factorization.
+
+Its projective kernel lies in the kernel of reduction modulo two,
+which is the free subgroup $F$. If the comparison restricted to $F$
+were injective, that projective kernel would vanish. This proves the
+free-group version as well. What is lost is the closed congruence
+kernel and the action on all its finite quotients, not merely a sign.
+\end{proof}
+
+\begin{claim}{B.f7}{Open}{The exact remaining finite-image and pentagon problem}
+For $G=S_3,S_4,A_5$, the outer characteristic shadows of $G_\mathbb Q$,
+$\GT$, and $\GTz$ are all the computed order-two group. For
+$G=\PSL_2(\mathbb F_7)$, the unresolved arithmetic image is a subgroup
+of the explicitly given group of order $1024$, surjecting onto its
+power-class quotient $C_2$. Determining this subgroup requires the
+Galois action on the $57$ regular covers and on their labeled structures,
+not the conjugacy-class calculation alone. In addition, the raw
+matrix residues in B.f2 do not come with the compatible five-puncture
+quotient required to test (III); the uncomputed datum is that quotient
+and its five evaluation maps, already at level $n=3$, the first nontrivial Legendre matrix image
+after the trivial level-two image.
+\end{claim}
+% anchor:B.f7
+\manuscriptanchor{\S 42; fol.349 verso; scan120}
+
+The attack is B.f2--B.f5 and B.s4.1: complete residue lists and finite
+shadow groups are available, and arithmetic fields close three of the
+four named cases. No finite shadow outside the arithmetic image has
+been established in this range. We have neither equated a finite shadow
+with the image of the inverse limit nor reported a pentagon count for
+an undefined finite target. The first unresolved member of the four
+named characteristic examples is the group of order $168$; a universal
+characteristic-envelope pentagon calculation for all the separately
+listed $\SL_2(\mathbb Z/n)$ is not supplied by these matrix tests.
+
+\begin{claim}{B.f8}{Proved}{The BISITE endomorphism is invisible to every nilpotent completion}
+The endomorphism $v:F_2\to F_2$ defined by
+$v(x)=x$, $v(y)=y[x,y]$ induces an automorphism of every lower-central
+nilpotent quotient, every free pro-$\ell$ completion, and every
+characteristic-zero pro-unipotent completion. It is not an automorphism
+of the full profinite completion. It preserves the first two peripheral
+conjugacy classes, but not the third; thus it is not a counterexample
+inside $\GTz$ or the group of all loop automorphisms.
+\end{claim}
+% anchor:B.f8
+\manuscriptanchor{\S 42; fol.349 verso; cote140-3 scan120; added BISITE B.11 follow-up}
+
+\begin{proof}
+It is the identity on abelianization. The graded Lie ring of a free
+group is generated by degree one, so the induced maps on every
+lower-central graded quotient are the identity. Induction on the
+central extensions proves the nilpotent quotient assertion. For the
+pro-$\ell$ completion the images generate the Frattini quotient,
+so they topologically generate the free pro-$\ell$ group. The resulting
+surjection is an automorphism: a finitely generated profinite group is
+Hopfian, since it has only finitely many open normal subgroups of any
+fixed index, and a surjective endomorphism permutes these subgroups.
+Alternatively the Magnus realization and the preceding nilpotent
+argument prove the same result. In the pro-unipotent Lie algebra the
+map is a filtered identity on the associated graded, and is inverted
+recursively degree by degree.
+
+On three letters put $x=(12)$, $y=(13)$. Exact multiplication gives
+$y[x,y]=(12)$. The old pair generates $S_3$ and is transitive, while
+the new pair generates $C_2$ and fixes the third letter. Precomposing
+a transitive finite action with a surjective profinite endomorphism
+would preserve its image and its orbits. Hence the profinite map is
+not surjective. The full calculation is in
+\texttt{finite\_congruence.json}.
+Finally $y[x,y]=(yx)y(yx)^{-1}$ is conjugate to $y$, but
+$v(xy)=xyxyx^{-1}y^{-1}$ is cyclically reduced of length six, whereas
+$xy$ has cyclic length two. They are not conjugate in the discrete
+free group. In the same finite $S_3$ quotient, $xy$ has order three
+whereas its image under $v$ is the identity, so they are not conjugate
+in the full profinite group either. The third-loop condition cannot therefore be inferred
+from the first two, or from the completion assertions just proved.
+\end{proof}

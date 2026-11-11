@@ -1,0 +1,569 @@
+\subsection{Quadratic signs and the precise arithmetic meaning of Frobenius}
+
+\begin{claim}{C.a1}{Proved}{The two signs are already forced by the matrix norm equations}
+Let $\mu\in\widehat{\mathbb Z}^{\times}$, let $t,u,c,d\in\widehat{\mathbb Z}$,
+and let $\epsilon_2,\epsilon_3\in\{1,-1\}$ be diagonal signs. If
+\[
+ \mu(t^2+u^2)=\epsilon_2,\qquad
+ \mu(c^2+cd+d^2)=\epsilon_3,
+ \tag{C.a1.1}
+\]
+then
+\[
+ \epsilon_2=\chi_{-4}(\mu),\qquad
+ \epsilon_3=\chi_{-3}(\mu),
+\]
+where $\chi_{-4}(a)$ is $1$ or $-1$ according as $a\equiv1$ or $-1\pmod4$,
+and $\chi_{-3}(a)$ is $1$ or $-1$ according as $a\equiv1$ or $-1\pmod3$.
+These are the signs of \S44, folios 365 verso--367, scans 152--155, in
+(63), (66)--(68). In particular they do not furnish an additional
+arithmetic restriction on a solution for which (C.a1.1) has already been proved.
+\end{claim}
+\begin{proof}
+A square modulo $4$ is $0$ or $1$. Consequently a unit represented by
+$t^2+u^2$ is $1\pmod4$. Since both sides of its equation are units,
+$\mu\equiv\epsilon_2\pmod4$. Modulo $3$ we have
+$c^2+cd+d^2=(c-d)^2$. Its nonzero value is therefore $1$, giving
+$\mu\equiv\epsilon_3\pmod3$. Each modulus distinguishes the two diagonal
+signs. These are exact calculations in finite rings, also exhaustively
+checked in \texttt{code/arithmetic\_checks.py}.
+\end{proof}
+
+\begin{claim}{C.a2}{Proved}{Class field interpretation, and the sign $\epsilon'$}
+For $\gamma\in G_{\mathbb Q}$ put $\mu=\chi_{\rm cyc}(\gamma)$, the
+cyclotomic character for the convention
+$\gamma(\zeta_m)=\zeta_m^{\mu\bmod m}$. Then
+\[
+ \epsilon_2(\gamma)=\frac{\gamma(i)}i,\qquad
+ \epsilon_3(\gamma)=\frac{\gamma(\sqrt{-3})}{\sqrt{-3}},\qquad
+ \epsilon_2(\gamma)\epsilon_3(\gamma)
+       =\frac{\gamma(\sqrt3)}{\sqrt3}.
+ \tag{C.a2.1}
+\]
+Here the quotients are ordinary signs, and changing any of the square roots
+does not change its character. If the matrix in scan 155 is written in
+the final form of scan 158,
+\[
+ S=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+ A=\mu\begin{pmatrix}u&\epsilon_2t\\-t&\epsilon_2u\end{pmatrix},
+\]
+then $ASA^{-1}=\epsilon_2 S$. Thus the $\epsilon'$ of (67) is
+$\epsilon_2$. If $g\rho(g)\rho^2(g)=\epsilon_2$ in the chosen
+lift and $A\rho(A)^{-1}=\epsilon''g$, then also
+$\epsilon''=\epsilon_2$, as in (68 bis). For an odd prime $p$, its value on arithmetic Frobenius in
+$\mathbb Q(i)/\mathbb Q$ is $+1$ exactly when $p\equiv1\pmod4$.
+\end{claim}
+% anchor:C.a2
+\manuscriptanchor{\S 44; folio367; scan155; folio368 verso; scan158}
+
+\begin{proof}
+The first equality follows from $i=\zeta_4$ and the fact that the units
+modulo $4$ are $1,-1$. Write $\sqrt{-3}=2\zeta_3+1$; exchanging
+$\zeta_3$ and $\zeta_3^{-1}$ negates this expression. The second equality
+follows, and multiplication gives the third because
+$i\sqrt{-3}=-\sqrt3$ after a choice of roots. These are the Artin
+characters of the indicated quadratic extensions: at an unramified prime
+arithmetic Frobenius sends the residue of a root of unity to its $p$th
+power. This proves the Frobenius formula without an unspecified appeal to
+class field theory. Geometric Frobenius has the same value because these
+characters have order two. Direct multiplication gives $AS=\epsilon_2SA$;
+$A$ is invertible by (C.a1.1), so the conjugation formula follows. The product of the three $\rho$-translates
+of a coboundary $A\rho(A)^{-1}$ is $1$; the same product for
+$\epsilon''g$ is $\epsilon''\epsilon_2$, giving the asserted second sign.
+
+Alternatively, the endomorphism $[i]$ of $y^2=x^3-x$ is
+$(x,y)\mapsto(-x,iy)$; Galois conjugation takes it to $[i]$ or $[-i]$
+according to its action on $i$. This realizes the same sign intrinsically
+on the Tate modules, whenever the matrix represents this complex
+multiplication symmetry. The analogous order-three symmetry of
+$y^2=x^3-1$ is defined over $\mathbb Q(\zeta_3)$.
+\end{proof}
+The table, verified by the program, is
+\[
+\begin{array}{c|rrrr}
+ \mu\bmod12&1&5&7&11\\\hline
+ \epsilon_2&+1&+1&-1&-1\\
+ \epsilon_3&+1&-1&+1&-1\\
+ \epsilon_2\epsilon_3&+1&-1&-1&+1
+\end{array}
+\]
+The prime $2$ is ramified in $\mathbb Q(i)$, and the prime $3$ in
+$\mathbb Q(\sqrt{-3})$; there is no unramified Frobenius assertion there.
+Nor is a global Frobenius multiplier literally the integer $p$ in
+$\widehat{\mathbb Z}^{\times}$: $p$ is not a unit at $p$. The statement
+uses its residue modulo the conductor, away from $p$.
+
+\begin{claim}{C.a3}{Refuted}{The $2$-adic square criterion in scan 152}
+The sentence in \S44, folio 365 verso, scan 152 identifying
+$\epsilon_p(\mu)=1$ with $\mu_p\in(\mathbb Z_p^{\times})^2$ cannot
+apply to the sign $\epsilon_2$ defined there. The strongest valid uniform
+replacement is the explicit pair of conductor-$4$ and conductor-$3$
+characters in C.a1; for $p=2$ the square test requires modulus $8$.
+\end{claim}
+\begin{proof}
+For example $5\equiv1\pmod4$, so $\chi_{-4}(5)=1$, whereas the square
+of every odd integer is $1\pmod8$; therefore $5\notin
+(\mathbb Z_2^{\times})^2$. If an actual profinite unit is wanted, choose
+its $2$-component equal to $5$ and every odd component equal to $1$.
+The finite counterexample is printed by the program. Conversely an odd
+$2$-adic unit is a square exactly when it is $1\pmod8$: necessity is
+as above; for sufficiency, starting with a square root modulo $8$, replace
+an odd root $r$ modulo $2^k$ by $r+2^{k-1}$ to change its square by
+$2^kr$ modulo $2^{k+1}$, and choose the sign of the correction to lift
+one step. Compactness gives a $2$-adic root. For an odd prime the usual
+lifting argument has invertible derivative $2r$ and proves the square
+criterion modulo $p$; at $p=3$ it agrees with C.a1.
+\end{proof}
+No handwriting is silently changed by this correction. The scan-155 image
+supports the displayed modulus $4$; the mathematical error is the overly
+uniform square interpretation of a different passage, not that modulus.
+The later formula $\mu\equiv\epsilon_2\pmod2$ in scan 165 determines
+no sign and must be strengthened to modulus $4$ if it is to do the work
+claimed for it.
+
+\subsection{Faithfulness on the modular group and its centralizer}
+
+Throughout this subsection $U=\mathbb P^1_{\mathbb Q}\setminus
+\{0,1,\infty\}$,
+$F=\pi_1(U_{\overline{\mathbb Q}})\simeq\widehat F_2$,
+$H=\widehat{\mathrm{SL}_2(\mathbb Z)}$, and
+$P=H/\langle -I\rangle\simeq\widehat{\mathrm{PSL}_2(\mathbb Z)}$.
+Every automorphism is continuous and every outer automorphism is taken
+modulo conjugation by an element of its target. Compatible geometric
+base points identify $F$ with $\ker(P\to\mathfrak S_3)$, up to
+$P$-conjugacy. We use the arithmetic actions arising from the stacks
+$\mathcal M_{1,1}$ and its rigidification by $\{\pm1\}$.
+
+\begin{claim}{C.a4}{Known}{Exactly what faithfulness modulo geometric monodromy means}
+Let $\Delta=\pi_1(E_{\overline{\mathbb Q}}\setminus\{0\})$ for an
+elliptic curve $E/\mathbb Q$. Let
+\[
+ \Psi:\pi_1(\mathcal M_{1,1})\longrightarrow\operatorname{Out}(\Delta),
+ \quad N_{\rm ar}=\operatorname{im}\Psi,\quad
+ \Sigma=\Psi\bigl(\pi_1(\mathcal M_{1,1,\overline{\mathbb Q}})\bigr).
+\]
+Then the canonical map $G_{\mathbb Q}\to N_{\rm ar}/\Sigma$ is an
+isomorphism of profinite groups. This is faithfulness modulo the geometric
+orientation-preserving monodromy image, as asked in \S35--36, folios
+254--255 verso, scans 502--505. It is not by itself the assertion
+$G_{\mathbb Q}\hookrightarrow\operatorname{Out}(H)$.
+\end{claim}
+\begin{proof}
+The chosen elliptic curve gives a section over $G_{\mathbb Q}$ of the
+arithmetic stack extension, and hence identifies its action on $\Delta$
+with the usual elliptic-curve outer action. Apply
+\citet[Corollary 6.4]{HM2011arith} with $k=\mathbb Q$ and $(g,r)=(1,1)$.
+Its precise conclusion is
+$\rho_{E\setminus0}^{-1}(\Sigma)\subseteq
+\ker(G_{\mathbb Q}\to G_{\mathbb Q})=1$.
+Surjectivity of $G_{\mathbb Q}\to N_{\rm ar}/\Sigma$ follows from
+surjectivity of the stack extension onto $G_{\mathbb Q}$. A continuous
+bijection between compact Hausdorff groups is a topological isomorphism.
+The theorem concerns $\Sigma$, whether or not it has already been
+identified with $H$; \citet[Corollary 6.5]{HM2011arith} explicitly
+separates injectivity of total monodromy from that geometric congruence
+question. It also applies with any number field in place of $\mathbb Q$.
+\end{proof}
+
+\begin{claim}{C.a5}{Proved}{Faithfulness on $H$ and already on $P$}
+The natural continuous outer actions
+\[
+ G_{\mathbb Q}\longrightarrow\operatorname{Out}(P),\qquad
+ G_{\mathbb Q}\longrightarrow\operatorname{Out}(H)
+\]
+are injective. This proves the stronger statement eventually written in
+\S36, folio 270 verso, scan 530, as well as answering the earlier doubt.
+\end{claim}
+\begin{proof}
+The ordered level-two covering of the rigidified modular stack is defined
+over $\mathbb Q$. It gives the Galois-compatible exact sequence
+$1\to F\to P\to\mathfrak S_3\to1$ of scans 521--523. If
+$\gamma$ acts on $P$ by conjugation by $p$, its action on $F$, modulo
+$F$-conjugacy, equals the anharmonic permutation represented by
+$pF\in\mathfrak S_3$. On $F^{\rm ab}\simeq\widehat{\mathbb Z}^2$,
+Galois acts by the scalar $\chi_{\rm cyc}(\gamma)$, whereas
+$\mathfrak S_3$ acts by its standard action on the three vectors
+$e_0,e_1,e_\infty$ with $e_0+e_1+e_\infty=0$. A scalar permuting these
+three distinct vectors is the identity: it cannot send $e_0$ to $e_1$
+or $-e_0-e_1$, so fixes $e_0$, and then fixes all three. Thus $p\in F$.
+Consequently $\gamma$ acts trivially in $\operatorname{Out}(F)$.
+Belyi's faithfulness theorem
+\citep[Theorem 4 and its Corollary]{Belyi1980arith}, or the directly
+applicable \citet[Corollary 6.3(i)]{HM2011arith}, gives $\gamma=1$.
+An inner action on $H$ induces an inner action on $P$, so the second
+assertion follows from the first. This argument needs no assertion that
+$\operatorname{Out}(H)$ is $\widehat{\mathrm{GT}}$.
+\end{proof}
+
+\begin{claim}{C.a6}{Known}{The tripod centralizer used below}
+For its standard arithmetic action,
+\[
+ C_{\operatorname{Out}(F)}(G_{\mathbb Q})=\mathfrak S_3.
+\]
+\end{claim}
+% anchor:C.a6
+\manuscriptanchor{\S 36; folios266--270 verso; scans521--530 (cote140-2)}
+
+\begin{proof}
+We give the reduction to the primary theorem actually opened, rather
+than importing the assertion from LM3. In
+\citet[Corollary 6.3(iii),(iv)]{HM2011arith}, take $X=U$, $k=k_0=
+\mathbb Q$, and $n=1$. The tripod is of quasi-Belyi type, and the
+fibration-preserving qualification $\operatorname{Out}^{F}$ is empty
+for one point. The theorem says that
+$A=\operatorname{Aut}(U_{\overline{\mathbb Q}}/\mathbb Q)
+=G_{\mathbb Q}\times\mathfrak S_3$ embeds and is commensurably terminal
+in $\operatorname{Out}(F)$: its commensurator equals $A$.
+If $a$ centralizes $G_{\mathbb Q}$, the intersection $A\cap aAa^{-1}$
+contains $G_{\mathbb Q}$, of index six in each group. Hence $a\in A$.
+It remains to see that $Z(G_{\mathbb Q})=1$. Choose the real algebraic
+closure $R\subset\overline{\mathbb Q}\subset\mathbb C$ and its
+complex conjugation $c$. An element commuting with $c$ preserves $R$.
+Every automorphism of $R$ preserves its order because positive elements
+are squares, and fixes its dense rational subfield, hence fixes $R$
+pointwise. Thus $C_{G_{\mathbb Q}}(c)=\{1,c\}$. The image of $c$ in
+the splitting field of $X^3-2$ is a noncentral transposition of
+$\mathfrak S_3$, so $c$ is not central in $G_{\mathbb Q}$. Therefore
+$Z(G_{\mathbb Q})=1$, and the centralizer inside $A$ is exactly its
+second factor, as asserted.
+\end{proof}
+
+\begin{claim}{C.a7}{Proved}{The centralizer on the modular group is a central transvection}
+With the arithmetic actions of C.a5,
+\[
+ C_{\operatorname{Out}(P)}(G_{\mathbb Q})=1,\qquad
+ C_{\operatorname{Out}(H)}(G_{\mathbb Q})\simeq C_2.
+ \tag{C.a7.1}
+\]
+The second group is generated by the outer class of
+\[
+ \theta(h)=(-I)^{\eta(h)}h,
+ \qquad \eta:H\longrightarrow C_2,
+ \tag{C.a7.2}
+\]
+where $\eta$ is the unique nonzero character, equivalently the sign of
+reduction modulo $2$ in $\mathfrak S_3$.
+\end{claim}
+% anchor:C.a7
+\manuscriptanchor{\S 36; folios266--270 verso; scans521--530 (cote140-2)}
+
+\begin{proof}
+We spell out the group-theoretic comparison. Since
+$P=C_2\widehat{*}C_3$, every surjection $P\to\mathfrak S_3$ sends the
+order-two generator to a transposition and the order-three generator to
+a three-cycle. The six choices are conjugate, so their common kernel
+$F$ is characteristic. The induced action of $P/F$ on $F^{\rm ab}$ is
+faithful, and the free profinite group $F$ is centre-free; thus
+$C_P(F)=1$. The centre-free property is the Corollary to Lemma 1 of
+\citet[\S1, pp.~248--249]{Belyi1980arith}; its proof uses the universal
+lifting property of $\widehat F_2$ and noncommuting central extensions
+of elementary abelian finite quotients.
+An automorphism of $P$ restricting to the identity on $F$ is the identity:
+for $p\in P$, its discrepancy $\alpha(p)p^{-1}$ centralizes $F$.
+It follows that restriction gives an injection
+\[
+ \operatorname{Out}(P)\hookrightarrow
+ N_{\operatorname{Out}(F)}(\mathfrak S_3)/\mathfrak S_3.
+ \tag{C.a7.3}
+\]
+If $a\in\operatorname{Out}(P)$ centralizes Galois, choose a restriction
+$\widetilde a\in N_{\operatorname{Out}(F)}(\mathfrak S_3)$. For every
+$\gamma\in G_{\mathbb Q}$ the commutator
+$[\widetilde a,\rho_F(\gamma)]$ belongs to $\mathfrak S_3$.
+Both $\rho_F(\gamma)$ and its $\widetilde a$-conjugate centralize
+$\mathfrak S_3$, since the anharmonic maps are defined over $\mathbb Q$.
+This commutator consequently lies in $Z(\mathfrak S_3)=1$.
+C.a6 yields $\widetilde a\in\mathfrak S_3$, and (C.a7.3) gives $a=1$.
+
+Now $Z(P)=1$ by $C_P(F)=1$, so $Z(H)=\langle-I\rangle$ is
+characteristic. If an automorphism of $H$ is inner after passage to $P$,
+remove the inner automorphism by lifting its conjugator to $H$. The
+result has the form $h\mapsto(-I)^{b(h)}h$ for a continuous character
+$b:H\to C_2$ vanishing on $-I$. Abelianizing the presentation
+$S^4=1$, $S^2=(ST)^3$ gives $H^{\rm ab}=\mathbb Z/12$, with $T$ a
+generator and $-I$ corresponding to $6$. Therefore exactly two such
+characters occur, zero and $\eta$. Their automorphisms are invertible;
+$\theta^2=1$ because $\eta(-I)=0$. The nonzero one is not inner,
+since it acts on $H^{\rm ab}$ by multiplication by $7$, rather than $1$.
+It commutes with every automorphism of $H$, because both $-I$ and
+$\eta$ are characteristic. The kernel of
+$\operatorname{Out}(H)\to\operatorname{Out}(P)$ is therefore this
+central $C_2$. Combining it with the already proved centralizer on $P$
+gives (C.a7.1).
+\end{proof}
+The program checks (C.a7.2) on every element and a generating pair of
+$\mathrm{SL}_2(\mathbb Z/n)$ for $n=2,4,6,8,12,24$, and searches every
+inner conjugator. It is trivial at $n=2$ and noninner at each of the other
+five levels. This finite check supports the explicit formula; the proof
+above is the assertion about the full profinite group. The theorem of
+\citet[Theorem B, Theorem 4.3 and Corollary C]{MN2022arith} concerns
+four or more strands and $\widehat\Gamma_{1,2}$. It must not be
+specialized to three strands or used to identify
+$\operatorname{Out}(H)$ with $\widehat{\mathrm{GT}}$.
+
+\subsection{The lifts through $\{\pm1\}$ and the withdrawn nonexistence doubt}
+
+\begin{claim}{C.a8}{Proved}{The obstruction and the torsor of lifts}
+Let $1\to A\to E\xrightarrow{q}B\to1$ be a central extension of
+profinite groups with $A=C_2$, and let $j:D\to B$ be continuous.
+The obstruction to a continuous lift $\widetilde j:D\to E$ is the
+pullback class $j^*[E]\in H^2_{\rm cont}(D,A)$. When a lift exists,
+its set is a torsor under $H^1_{\rm cont}(D,A)=\operatorname{Hom}_{\rm cont}(D,A)$.
+For $D=\widehat F_2$ this obstruction vanishes and there are exactly
+four lifts of a fixed $j$. For $D=F_2$ the same statements hold in the
+discrete category.
+\end{claim}
+% anchor:C.a8
+\manuscriptanchor{\S 36; folios267--268; scans523--525 (cote140-2)}
+
+\begin{proof}
+A finite-kernel surjection of profinite groups admits a continuous
+set-theoretic section: take an open subgroup meeting $A$ trivially,
+use its inverse section over its open image, and choose representatives
+on finitely many clopen cosets. Such a section gives a continuous factor
+set $c\in Z^2(B,A)$. A lift is a function $b:D\to A$ with
+$\delta b=j^*c$ (up to the immaterial inverse convention for $c$).
+This proves the obstruction criterion. Given two lifts, their pointwise
+ratio is a continuous homomorphism $D\to A$ because $A$ is central;
+every such homomorphism changes a lift to another, freely and
+transitively. A lift for $\widehat F_2$ is obtained by choosing
+arbitrary lifts of its two free generators and using the universal
+property. The choices in each fiber are exactly two. The same argument
+works for the discrete free group.
+\end{proof}
+For specified genuine actions of a group $\Gamma$ on this diagram, the
+set of equivariant lifts, if nonempty, is the fixed torsor under
+$H^1(D,A)^\Gamma$. A fixed point is an extra condition on an affine
+$\Gamma$-action, not an automatic consequence of $H^2(D,A)=0$.
+For outer arithmetic actions one must use the full arithmetic extensions;
+scan 524 makes precisely this correction. The next result solves that
+extra condition in the case actually considered there.
+
+\begin{claim}{C.a9}{Refuted}{The family doubted on scan 524 exists over $\mathbb Q$}
+The nonexistence suggested in \S36, folio 267 verso, scan 524 is false.
+Indeed it is explicitly withdrawn in the checked continuation at scans
+527--528, folio 269. Over
+$U=\operatorname{Spec}\mathbb Q[\lambda,1/\lambda,1/(\lambda-1)]$,
+\[
+ E_\lambda:\quad Y^2Z=X(X-Z)(X-\lambda Z)
+ \tag{C.a9.1}
+\]
+with origin $[0:1:0]$ and ordered nonzero two-torsion points
+$(0,0),(1,0),(\lambda,0)$ is the required family. It gives a morphism
+$U\to\mathcal M_{1,1}$ lifting the tautological map to its
+$\{\pm1\}$-rigidification, and therefore a morphism of arithmetic
+fundamental-group extensions over $G_{\mathbb Q}$.
+\end{claim}
+\begin{proof}
+The discriminant is $16\lambda^2(\lambda-1)^2$, a unit on $U$;
+the projective cubic is smooth, with the stated origin and three distinct
+nonzero points of order two. Its quotient by negation is the projective
+$X/Z$-line branched at $0,1,\lambda,\infty$, so its ordered level-two
+invariant is exactly $\lambda$. Functoriality of \'etale $\pi_1$ gives
+the asserted homomorphism, continuous and well-defined up to conjugation
+by the geometric target group. This is the homomorphism (40) on scan
+528. The polynomial discriminant is also checked symbolically by the
+program. The construction works over $\mathbb Z[1/2]$ with
+$\lambda$ and $\lambda-1$ inverted, including characteristic $3$;
+it makes no assertion about ordinary full level two in characteristic $2$.
+\end{proof}
+
+\begin{claim}{C.a10}{Proved}{All four geometric lifts are arithmetic and geometric}
+Fix the quotient map $U\to\mathcal M_{1,1}^{\rm rig}$ just used and
+fix the Legendre lift as origin. The isomorphism classes of its lifts
+through the $C_2$-gerbe $\mathcal M_{1,1}\to\mathcal M_{1,1}^{\rm rig}$
+are in bijection with
+\[
+ H^1_{\rm et}(U,\mu_2)
+ =\mathbb Q^{\times}/\mathbb Q^{\times2}\ \oplus\ (\mathbb Z/2)^2.
+ \tag{C.a10.1}
+\]
+They are realized by
+\[
+ a\lambda^e(\lambda-1)^fY^2Z=X(X-Z)(X-\lambda Z),
+ \quad a\in\mathbb Q^{\times}/\mathbb Q^{\times2},\quad e,f\in\{0,1\}.
+ \tag{C.a10.2}
+\]
+The restriction to geometric fundamental groups gives exactly the four
+lifts $F\to H$ of $F\hookrightarrow P$ in C.a8. All four are fixed
+under the outer $G_{\mathbb Q}$-action, and all arise from (C.a10.2)
+already over $\mathbb Q$.
+\end{claim}
+% anchor:C.a10
+\manuscriptanchor{\S 36; folios267--269 verso; scans523--528 (cote140-2)}
+
+\begin{proof}
+A choice of object in a gerbe banded by $\mu_2$ identifies its other
+objects with $\mu_2$-torsors by their sheaves of isomorphisms. Here the
+Legendre family is that object, and the band is $\mu_2$: after rigidifying
+by all labels, the only automorphisms are $\pm1$. Let
+$R=\mathbb Q[\lambda,\lambda^{-1},(\lambda-1)^{-1}]$. This is a
+localization of a principal ideal domain, so $\operatorname{Pic}(R)=0$;
+its units are exactly $a\lambda^m(\lambda-1)^n$, with
+$a\in\mathbb Q^{\times}$ and $m,n\in\mathbb Z$. The Kummer sequence
+therefore gives (C.a10.1), and descent along $w^2=a\lambda^e
+(\lambda-1)^f$ gives precisely the quadratic twists (C.a10.2).
+Over $\overline{\mathbb Q}$ the constant $a$ becomes a square, whereas
+$\lambda$ and $\lambda-1$ have independent odd valuations at $0$ and
+$1$; they give the two independent characters of $F$ into $C_2$.
+Their four combinations exhaust C.a8. They are defined over $\mathbb Q$,
+so all four have arithmetic representatives and are Galois-fixed.
+They remain distinct modulo conjugation: a conjugator identifying two
+lifts while fixing their quotient inclusion would project to an element
+of $C_P(F)=1$, and hence would be central in $H$ and act trivially.
+\end{proof}
+
+\begin{claim}{C.a11}{Proved}{The precise anabelian converse here needs no section conjecture}
+For the fixed tautological quotient map in scans 523--526, every lift of
+the arithmetic fundamental-group homomorphism through $\{\pm1\}$ is
+induced by a geometric lift, up to its stated geometric inner ambiguity;
+the same is true of every outer-Galois-compatible geometric lift
+$F\to H$. No assertion that every section of
+$\pi_1(\mathcal M_{1,1})\to G_{\mathbb Q}$ is geometric is used or
+implied.
+\end{claim}
+% anchor:C.a11
+\manuscriptanchor{\S 36; folios267--269; scans523--528 (cote140-2)}
+
+\begin{proof}
+For arithmetic fundamental groups, fix the lift furnished by C.a9.
+The ratio of any other lift is a continuous $C_2$-character of
+$\pi_1(U)$, by C.a8. Finite \'etale torsors are classified by the
+fundamental group, so
+\[
+ H^1_{\rm cont}(\pi_1(U),C_2)=H^1_{\rm et}(U,\mu_2).
+\]
+The corresponding twist in C.a10 induces that character and hence that
+lift. For geometric groups, C.a10 realizes all four possible lifts and
+therefore all Galois-compatible ones. The weaker datum of a geometric
+lift does not determine the arithmetic lift uniquely: the kernel of
+restriction in (C.a10.1) is
+$\mathbb Q^{\times}/\mathbb Q^{\times2}$. This explains exactly the
+ambiguity that the manuscript starts to detect on scan 524. The
+$H^2$ comparison suggested on scan 526 is unnecessary after the explicit
+neutralization by the Legendre family; if one uses it, both obstruction
+classes are already zero.
+\end{proof}
+Thus the particular request C(h) is settled more strongly than a reduction
+to a section conjecture. A classification of arbitrary sections of a
+modular curve is a separate assertion with different input data. It would
+be a mistake to transfer an unverified statement about such sections to
+this finite-band gerbe problem, or conversely to deduce a section theorem
+from the elementary lifting result proved here.
+
+\subsection{A characterization of the arithmetic image with specified additional data}
+
+\begin{claim}{C.a12}{Known}{Pop's theorem gives an exact extendability criterion}
+Let $X=\mathbb A^2_{\mathbb Q}$ with coordinates $u,v$, and let
+$\mathcal V$ be the category with objects $U$ and a basis of sufficiently
+small nonempty principal open subsets of $X$ defined over $\mathbb Q$.
+Include all inclusions between these opens and the maps to $U$ defined
+by the three rational functions $u,v,v-u$, whenever regular with values
+in $U$. Put $\pi_{\mathcal V}(Y)=\pi_1(Y_{\overline{\mathbb Q}})$ in
+the category of profinite groups and outer continuous homomorphisms.
+Then evaluation at $U$ identifies
+\[
+ \operatorname{Aut}(\pi_{\mathcal V})\xrightarrow{\ \sim\ }
+ \rho_U(G_{\mathbb Q})\subset\operatorname{Out}(F).
+ \tag{C.a12.1}
+\]
+In particular an element of any of Grothendieck's candidate groups
+acting on $F$ is arithmetic exactly when its outer action extends to
+such a compatible family. This answers the characterization question
+of \S45, scans 170,178,185, by specifying data beyond the two types.
+\end{claim}
+% anchor:C.a12
+\manuscriptanchor{\S \S 45--46; fols.384,388,391 verso; cote140-3 scans170,178,185}
+
+\begin{proof}
+We verify Hypothesis (H) of \citet[Definition/Remark 2.2]{Pop2018arith}.
+The function field $\overline{\mathbb Q}(u,v)$ has transcendence degree
+$2$ and is generated by the indicated functions. A compatible birational
+automorphism has one common automorphism of the tripod on all three
+maps. Its restriction to constants is some $\sigma\in G_{\mathbb Q}$;
+after removing $\sigma$, the tripod automorphism is one of the six
+anharmonic fractional linear functions $r$. Compatibility forces
+\[
+ r(v)-r(u)=r(v-u).
+\]
+Only $r(t)=t$ satisfies this rational identity. For $r=1-t$ its discrepancy
+is $-1$; for the four remaining nonidentity functions it is a nonzero
+rational function, listed in the exact symbolic output of the program.
+Thus the birational automorphism fixes $u,v$ and is exactly $\sigma$ on
+constants. Conversely every $\sigma$ fixes every rationally defined
+open and the three maps. This proves rigidity and hence Hypothesis (H).
+Apply \citet[Theorem 2.7(1)]{Pop2018arith}; characteristic zero makes its
+valuation-tame fundamental groups equal to the full groups under
+consideration. It gives $G_{\mathbb Q}\simeq
+\operatorname{Aut}(\pi_{\mathcal V})$. Evaluation is the usual action
+on $F$, faithful by C.a5's tripod input, proving (C.a12.1).
+\end{proof}
+The extra datum is not a finite list of finite quotients: even though
+there are only three designated tripod functions, the neighborhood
+category includes complements of arbitrarily many divisors in a
+surface. The theorem does not say that checking the two original
+modular types or any fixed level in the requested computations suffices.
+
+\begin{claim}{C.a13}{Known}{The combinatorial characterization determines a conjugacy class}
+Let $\mathcal A$ be the collection of closed subgroups of
+$\widehat{\mathrm{GT}}$ satisfying the AA-property of
+\citet[Definition 5.12]{HMT2025arith}, including its COF, RGC and
+ArBC prerequisites. The maximal elements of
+$\mathcal A$ are exactly the
+$\widehat{\mathrm{GT}}$-conjugates of $\rho_U(G_{\mathbb Q})$.
+This is a characterization of a conjugacy class of subgroups, not a
+canonical distinguished embedding or an elementwise equation on
+$(\lambda,f)$.
+\end{claim}
+% anchor:C.a13
+\manuscriptanchor{\S \S 45--46; fols.384,388,391 verso; cote140-3 scans170,178,185}
+
+\begin{proof}
+The precise theorem is \citet[Theorem 5.17(ii), also Theorem C(ii)]{HMT2025arith}.
+We record its reduction to prevent a stronger reading. The arithmetic
+subgroup itself satisfies AA (their Remark 5.12.1). Their Theorem
+5.15(iv) puts any AA subgroup in a conjugate of the arithmetic subgroup.
+Their Lemma 5.16 rules out a proper containment between the relevant
+conjugates of the latter. Thus maximal AA subgroups and exactly those
+conjugates coincide. Transport the statement along the chosen
+identification $F\simeq\widehat\pi_{0,3}$ and, when appropriate, along
+the quotient from Grothendieck's extension group to its outer loop
+action. Transport changes the embedded subgroup by the declared
+conjugacy ambiguity, and changes nothing about maximality or closure.
+\end{proof}
+The input from which the theorem reconstructs this collection is the
+abstract topological group of the second configuration space of the
+tripod, $\pi_1(M_{0,5,\overline{\mathbb Q}})$, together with its
+intrinsically reconstructed structure. Definition 5.12 quantifies over
+all normal open subgroups and cusp sets and requires nondegenerate
+Kummer data and compatible fields of functions. These conditions are
+substantially more than the order-two and order-three equations on one
+copy of $F$. We opened the stated theorem, the reduction just cited,
+and Definition 5.12; we do not claim an independent verification of all
+125 pages of the argument.
+
+\begin{claim}{C.a14}{Proved}{The arithmetic conclusions have the following graded limits}
+On the subgroup $\lambda=1$, the characters $\epsilon_2$ and
+$\epsilon_3$ of C.a1--C.a2 are identically $+1$. Their infinitesimal
+conditions are therefore vacuous. The order-two transvection in C.a7,
+the finite-band lifting choices in C.a8--C.a11, and the inverse-limit
+extendability condition of C.a12 are not recovered by merely taking
+rational weight-graded Lie algebras of $F$.
+\end{claim}
+% anchor:C.a14
+\manuscriptanchor{\S 44; fols.365 verso--368 verso; cote140-3 scans152--158; \S 36; fols.267--269 verso; cote140-2 scans523--528}
+
+\begin{proof}
+The first assertion is evaluation of the two characters at $1$. Any
+map from a uniquely divisible unipotent group over a characteristic-zero
+field to a group of exponent two is trivial; equivalently the tangent
+space of the constant finite group $C_2$ is zero. Consequently neither
+four distinct $C_2$-twists nor the nonzero transvection can be encoded by
+that tangent space. The criterion C.a12 includes the full geometric
+fundamental groups of every object and all comparison maps, whereas
+the stated graded construction only retains the lower-central
+successive quotients of $F$. No implication from the latter data to the
+former is part of Pop's theorem. This last observation identifies the
+missing comparison map; it is not an assertion that no other Lie-theoretic
+reconstruction could ever exist.
+\end{proof}

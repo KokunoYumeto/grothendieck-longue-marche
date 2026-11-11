@@ -1,0 +1,422 @@
+\section{Definitions, pinning, and the modular triple}
+
+\begin{statement}{A.1}{Proved}{The explicit matrix dictionary}
+In the conventions of this paper, the following are functorial
+definitions over every commutative ring. Their identities are
+proved in A.2--A.9 and Part B. The principal source passages
+are C3-259, C3-264--282, C3-321--359, C3-370, C3-393,
+C3-399, and C3-479--480.
+
+$$
+\begin{array}{c|l}
+\text{symbol}&\text{definition}\\ \hline
+\rho(A)&rAr^{-1}\\
+\sigma(A)&sAs^{-1}\\
+\xi&\alpha\rho(\alpha)^{-1}
+       =\alpha r\alpha^{-1}r^{-1}\\
+\eta&\beta\sigma(\beta)^{-1}
+       =\beta s\beta^{-1}s^{-1}\\
+\epsilon&-I\\
+\epsilon_1&rs=u_1(1)\\
+\epsilon_0&-s^{-1}r=sr=u_0(1)\\
+T_r&\operatorname{Cent}_{\GL_2}(r)\\
+T_s&\operatorname{Cent}_{\GL_2}(s)\\
+ST_r&\ker(N_r:T_r\longrightarrow\Gm)\\
+ST_s&\ker(N_s:T_s\longrightarrow\Gm)\\
+N'_s&\{y:ys=e\,sy,\ e^2=1\}\\
+B_0&\left\{\left(\begin{smallmatrix}a&b\\0&d\end{smallmatrix}\right):
+                  a,d\text{ units}\right\}\\
+B'_0&\left\{\left(\begin{smallmatrix}m&n\\0&1\end{smallmatrix}\right):
+                  m\text{ a unit}\right\}\\
+U_0&\{u_0(z):z\in R\}\\
+U_1&\{u_1(z):z\in R\}\\
+M&\{(x,y,f):\det f=\det y=t\det x,\ t^2=1\}\\
+M^{00}&\ker(e,t)\\
+M^+&\ker(\det f)\\
+K&ST_r\times ST_s\\
+R_M&\ker(M\longrightarrow\PGL_2)\\
+S'T_r&N_r^{-1}(\mu_2)\\
+SM&M\times_{\det f,\Gm,\det}B'_0 .
+\end{array}
+$$
+
+The indices on the two root elements are fixed by their displayed
+matrices; a source using the opposite sigma convention must also
+translate these indices and signs. In particular $\eta$ is not
+$\beta s\beta^{-1}$: the latter is $\eta s$.
+\end{statement}
+\begin{proof}
+The conjugation formulas are definitions. Multiplication of the
+fixed matrices gives the three displayed root and central elements.
+Commuting a general matrix with $r$ gives
+$\left(\begin{smallmatrix}a&b\\-b&a+b\end{smallmatrix}\right)$;
+commuting it with $s$ gives
+$\left(\begin{smallmatrix}c&d\\-d&c\end{smallmatrix}\right)$.
+The relation $ys=e\,sy$ gives the stated signed normalizer in
+A.5. The remaining entries are kernels or fibre products of
+the explicitly indicated morphisms. Their representability,
+dimensions, and exactness properties are proved in Part B.
+No equality between the last fibre product and $M^+$ is implied.
+\end{proof}
+
+\begin{statement}{A.2}{Proved}{Regular root elements and their fixed lines}
+Let $g\in\SL_2(R)$ have trace two. Then $N=g-I$ satisfies $N^2=0$.
+If the entries of $N$ generate the unit ideal, its image and kernel
+are the same locally direct-summand line. Locally on the base,
+$g$ is conjugate to
+$\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$.
+Its unique fixed line is $\ker N$, and the associated root subgroup
+is canonically the vector group
+$\operatorname{Hom}(R^2/\ker N,\ker N)$.
+These statements concern the indicated primitive root elements;
+they do not identify all abstract unipotent elements over
+nonreduced rings.
+\end{statement}
+\begin{proof}
+Cayley--Hamilton gives $g^2-2g+I=0$, hence $N^2=0$.
+Also $\det N=\det g-\tr g+1=0$.
+On an open set where an entry of $N$ is a unit, elementary row
+and column operations exhibit a rank-one map with projective
+image and kernel. The inclusion $\im N\subseteq\ker N$ is an
+equality because both are direct-summand lines and the induced
+map from the quotient to the image is an isomorphism.
+Choose a basis of the line and a quotient basis so that this
+isomorphism has coefficient one. This gives the displayed matrix.
+A fixed line on which the induced root action is trivial must
+lie in $\ker N$, hence equals it. Maps from the quotient line
+to the fixed line square to zero; $h\mapsto I+h$ therefore
+identifies their additive vector group with the root subgroup.
+This is the rank-two instance of the root-group conventions
+in \citet[Expos\'e XXIII, Definitions1.1--1.2]{AB_SGA3};
+the argument above proves the particular integral assertion used.
+\end{proof}
+
+\begin{statement}{A.3}{Proved}{Canonical algebraic pinning}
+Let $A$ be an Azumaya algebra of rank four over a ring $R$.
+Suppose $r_0,s_0\in A^\times$ satisfy
+
+$$
+\det r_0=\det s_0,\qquad
+ \det(r_0+s_0)=0,\qquad
+ u=\tr(r_0+s_0)\in R^\times .
+$$
+
+Reduced trace and determinant are meant. Then there is a unique
+algebra isomorphism with $M_2(R)$ under which
+
+$$
+r_0=\begin{pmatrix}0&u\\v&w\end{pmatrix},\qquad
+ s_0=\begin{pmatrix}0&-u\\-v&u-w\end{pmatrix},
+ \quad v=-\det(r_0)/u\in R^\times,\quad w=\tr(r_0).
+$$
+
+Thus these hypotheses themselves split the Azumaya algebra.
+The uniqueness is uniqueness of this algebraic pinning,
+not uniqueness among all abstract group automorphisms of $\GL_2$.
+\end{statement}
+\begin{proof}
+Put $p=(r_0+s_0)/u$. Cayley--Hamilton gives $p^2=p$,
+$\tr p=1$, and $\det p=0$. After a faithfully flat splitting
+of $A$, this is a rank-one projector. Write $q=1-p$.
+In a local basis with $p=E_{22}$, write
+$r_0=\left(\begin{smallmatrix}a&b\\c&d\end{smallmatrix}\right)$.
+Then
+$s_0=\left(\begin{smallmatrix}-a&-b\\-c&u-d\end{smallmatrix}\right)$,
+and
+$\det s_0-\det r_0=-ua$.
+Consequently $a=0$ and $bc=-\det r_0$ is a unit.
+
+The following globally defined elements therefore form matrix units:
+
+$$
+E_{22}=p,\quad E_{11}=q,\quad
+ E_{12}=u^{-1}q r_0p,\quad
+ E_{21}=-u(\det r_0)^{-1}p r_0q.
+$$
+
+Their products can be checked after the faithfully flat splitting,
+where $E_{12}E_{21}=q$ and $E_{21}E_{12}=p$.
+They give an algebra isomorphism $M_2(R)\to A$.
+The coefficients of $r_0,s_0$ in these units are exactly those
+displayed. Every compatible isomorphism must preserve $p,q$
+and the two off-diagonal units, so is identical.
+\end{proof}
+
+\begin{statement}{A.4}{Refuted}{Uniqueness of a projective unipotent lift}
+A primitive determinant-one, trace-two lift of a given projective
+root element need not be unique. The scalar ambiguity is precisely
+
+$$
+g\longmapsto(1+\tau)g,\qquad 2\tau=0,\quad \tau^2=0.
+$$
+
+On a fixed base it vanishes exactly when there is no such nonzero
+global scalar. It vanishes after every base change exactly when
+two is invertible. Rings of cardinality four already give
+counterexamples.
+\end{statement}
+\begin{proof}
+Two lifts to $\GL_2$ of the same projective point differ by a
+unique scalar unit $\lambda$. Requiring determinant one and
+trace two gives $\lambda^2=1$ and $2\lambda=2$.
+Writing $\lambda=1+\tau$ gives the two equations stated.
+Conversely they suffice; primitivity is preserved.
+
+Over $\Z/4$, the distinct matrices
+
+$$
+\begin{pmatrix}1&0\\1&1\end{pmatrix},\qquad
+ \begin{pmatrix}3&0\\3&3\end{pmatrix}
+$$
+
+have determinant one, trace two, square-zero differences from
+the identity, and the same projective image.
+The lower off-diagonal entries are units.
+No field has a nonzero square-zero scalar, so no smaller finite
+ring is a counterexample. If two is not invertible, base change
+to $(R/2R)[\tau]/(\tau^2)$ produces a nonzero ambiguity.
+If two is invertible, $2\tau=0$ forces $\tau=0$.
+\end{proof}
+
+\begin{statement}{A.5}{Proved}{Full centralizers and the signed normalizer}
+The full centralizers have dimensions two:
+
+$$
+T_r=\Res_{\Z[T]/(T^2-T+1)/\Z}\Gm,\qquad
+ T_s=\Res_{\Z[i]/\Z}\Gm.
+$$
+
+Their determinants are $n=a^2+ab+b^2$ and $q=c^2+d^2$.
+They are not the one-dimensional norm-one groups $ST_r,ST_s$.
+Moreover
+
+$$
+N'_s=\left\{
+ y(c,d,e)=\begin{pmatrix}c&d\\-ed&ec\end{pmatrix}:
+ e^2=1,\ q\text{ a unit}\right\},
+\quad \det y=eq .
+$$
+
+The sign is uniquely determined by $y$, even over nonreduced
+rings. The multiplication law is
+
+$$
+(c,d,e)(c',d',e')
+ =(cc'-e'dd',\,cd'+e'dc',\,ee').
+$$
+
+\end{statement}
+\begin{proof}
+The commutant calculations in A.1 give the two quadratic
+algebras and their unit loci. Direct multiplication gives their
+norms. Solving $ys=e\,sy$ gives the displayed matrix.
+If two signs work, their difference times both $c,d$ is zero;
+since $c^2+d^2$ is a unit, the signs agree.
+The multiplication formula follows by multiplying the matrices.
+Thus the signed normalizer is a semidirect product of $T_s$
+with $\mu_2$, with the indicated conjugation action.
+The quadratic algebras fail to be etale at three and two,
+respectively. Calling their full unit groups norm-one tori
+changes both their dimension and their functor of points.
+\end{proof}
+
+\begin{statement}{A.6}{Proved}{The universal Borel commutator chart}
+For
+$U=\left(\begin{smallmatrix}m&n\\0&1\end{smallmatrix}\right)$,
+put $D=m^{-1}$ and $B=n/m$. Then
+
+$$
+[U,s]=
+ \begin{pmatrix}(1+B^2)/D&B\\B&D\end{pmatrix},
+$$
+
+
+$$
+[U,r]=
+ \begin{pmatrix}(1+B+B^2)/D-B&B\\1+B-D&D\end{pmatrix}.
+$$
+
+Consequently the scheme of pairs of matrices with exactly these
+shared entries, determinant one, and $D$ a unit is isomorphic
+over $\Z$ to $B'_0\simeq\Gm\times\Ga$.
+For a fixed chart point, all solutions of
+
+$$
+[\alpha,r]=[U,r],\qquad [\beta,s]=e[U,s],\quad e^2=1
+$$
+
+are uniquely
+
+$$
+\alpha=Ux^{-1},\qquad \beta=Uy^{-1},
+ \quad x\in T_r,\quad y\in N'_s,\quad ys=e\,sy.
+$$
+
+This describes the stated chart and its fibres. It is not
+an identification of this chart with the full group $M$.
+\end{statement}
+\begin{proof}
+The two commutators are obtained by multiplying $U,r,s$
+and their inverses. Conversely the common entries recover
+$m=D^{-1}$ and $n=B/D$. The determinant equations recover
+the upper-left entries, so no reducedness or field assumption
+is used.
+The first commutator equation is equivalent to
+$\alpha^{-1}U$ commuting with $r$.
+The second is equivalent to
+$(\beta^{-1}U)s=e\,s(\beta^{-1}U)$.
+Thus $x=\alpha^{-1}U$ and $y=\beta^{-1}U$ are the unique
+parameters. All these identities are checked over the
+universal Laurent polynomial ring by
+\texttt{code/ab\_reconstructed.js}.
+\end{proof}
+
+\begin{statement}{A.7}{Proved}{Normalized modular triples over the requested bases}
+Call a triple normalized if $\epsilon=-I$ and
+
+$$
+\det r_0=\det s_0=1,\quad
+ \tr r_0=1,\quad\tr s_0=0,\quad
+ \det(r_0+s_0)=0.
+$$
+
+Over $\Z$, over every field, and over $\Z/4,\Z/8,\Z/9$,
+all such triples form one $\GL_2$-conjugacy orbit.
+Their $\SL_2$-conjugacy classes are naturally indexed by
+$R^\times/R^{\times2}$.
+The relations $r_0^3=s_0^2=-I$ follow.
+In characteristic two these are relations with $\epsilon=I$;
+an additional requirement that $\epsilon$ have exact order two
+would instead make that locus empty.
+\end{statement}
+\begin{proof}
+A.3 applies with $u=1,v=-1,w=1$, giving the fixed matrices.
+For the listed bases every rank-one projective module is free.
+The matrix units in A.3 therefore arise from a basis of $R^2$,
+so the algebraic pinning is induced by $\GL_2(R)$ conjugation.
+The common centralizer is the scalar group because the two
+matrices generate all of $M_2(R)$.
+Hence the orbit is $\GL_2(R)/R^\times$ and its $\SL_2$-orbits
+are the double quotient
+
+$$
+\SL_2(R)\backslash\GL_2(R)/R^\times
+ \simeq R^\times/R^{\times2}.
+$$
+
+The determinant map is surjective and scalar determinants
+are squares, proving the last isomorphism.
+Cayley--Hamilton gives $r_0^2-r_0+I=0$ and $s_0^2+I=0$,
+hence the asserted relations.
+The square-class formulation also covers imperfect fields
+of characteristic two; their units need not all be squares.
+\end{proof}
+
+\begin{statement}{A.8}{Proved}{The finite orbit census}
+For the indicated rings, exhaustive enumeration gives
+
+$$
+\begin{array}{c|r|r|r}
+R&\text{triples}&\SL_2\text{ orbits}&\text{size of each orbit}\\\hline
+\F_2&6&1&6\\
+\F_3&24&2&12\\
+\F_5&120&2&60\\
+\F_7&336&2&168\\
+\F_{11}&1320&2&660\\
+\F_{13}&2184&2&1092\\
+\Z/4&48&2&24\\
+\Z/8&384&4&96\\
+\Z/9&648&2&324
+\end{array}
+$$
+
+The signed chart of A.6 has respectively $12,576,1536$
+distinct pairs over $\F_2,\F_3,\Z/4$.
+\end{statement}
+\begin{proof}
+A.7 gives the orbit count and orbit size
+$|\SL_2(R)|/|\mu_2(R)|$. The replacement program independently
+enumerates every determinant-one trace-one matrix and every
+determinant-one trace-zero matrix, retaining precisely the
+pairs with singular sum. It checks their total against
+$|\SL_2(R)|$ and verifies the square-class partition.
+For the signed chart it enumerates all $U,x,y$ and stores
+the resulting ordered matrix pairs. Equality of the number
+of distinct images with the number of parameters verifies
+injectivity and the displayed cardinalities on those rings.
+The universal inverse in A.6 supplies the all-ring proof.
+\end{proof}
+
+\begin{statement}{A.9}{Refuted}{Two invalid weakenings}
+The algebraic pinning is not unique among all group-scheme
+automorphisms of $\GL_2$. Also regularity of two unrelated
+matrices and equality of their twisted commutators do not
+suffice for the Borel parametrization of A.6.
+\end{statement}
+\begin{proof}
+The automorphism
+$g\mapsto(\det g)^{-1}g$ is an involution of $\GL_2$ fixing
+$\SL_2$ pointwise. It fixes $r,s$ but is not the identity,
+for example on $\operatorname{diag}(2,1)$ over $\Q$.
+
+For the second assertion work over $\F_5$, set $r'=s'=s$,
+and take
+$\alpha=\beta=\left(\begin{smallmatrix}0&1\\1&2\end{smallmatrix}\right)$.
+The commutators are equal, and $r',s'$ are regular.
+But $\alpha$ cannot belong to $B'_0T_s$: the lower row of
+a matrix in that product is $(-d,c)$ with $c^2+d^2$ a unit,
+whereas the lower row $(1,2)$ has norm $1+4=0$.
+This obstruction persists after faithfully flat base change.
+It refutes the weakened conditions just stated; it does not
+remove the pinning and chart hypotheses in A.3 and A.6.
+\end{proof}
+
+\begin{statement}{A.10}{Unfinished}{The complete later symbol-by-symbol concordance}
+The explicit core dictionary above and the formal constructions
+in B.13--B.22 do not constitute a recovered, complete transcription
+of every later symbol in §§48--49. The inaccessible original
+working table included further entries and scan concordances.
+Those entries cannot now be certified verbatim.
+In particular, the source-specific restricted-normalizer
+projections around C3-683--695 must not be declared surjective
+merely from the formal fibre-product argument.
+\end{statement}
+\begin{proof}[What is established and what is missing]
+B.17 proves the exact reconstruction theorem with its explicit
+equivariance and kernel hypotheses. B.18 gives a finite
+counterexample to an unrestricted later normality assertion.
+B.19--B.22 identify the exact image, cocycle, and diagonal-gluing
+conditions required in the subsequent constructions.
+The finite counterexample and the chart computations were
+executed again in the surviving runtime.
+What is missing from this fallback is the full recovered
+source-specific list of restricted functors and a proof of
+the required image equalities for its designated universal
+profinite input. Accordingly the unrestricted dictionary and
+all-formulas subrequests are not marked complete.
+\end{proof}
+
+\begin{statement}{A.11}{Proved}{A typed dictionary for the later formal constructions}
+For group data $(C,L,B)$ with $B\subseteq\Aut(C)$ preserving $L$,
+the construction of B.13 is a quotient group, or a profinite
+quotient when all data are profinite and closed.
+For equivariant data $(C,N,A,\phi)$ as in B.17 it is the
+diagonal quotient $(C\rtimes N)/D_\phi$.
+For maps to a common quotient $\Gamma$, the constructions in
+B.19 and B.21 are fibre products and inverse-image subgroups.
+For several marked extensions by $C$, the construction in B.22
+is a diagonal subextension of their fibre product.
+None of these statements alone asserts representability of an
+arbitrary fppf sheaf quotient by an affine group scheme.
+\end{statement}
+\begin{proof}
+The exact hypotheses and proofs are given in the cited statements.
+Quotients in groups, closed quotients in profinite groups, and
+quotient fppf sheaves have different existence theorems.
+The constructions provide the corresponding objects in the
+categories explicitly named. Representability, where needed,
+is proved separately for the finite-dimensional matrix schemes
+of Part B and the affine inverse limits of Part E.
+This distinction prevents a formal group calculation from being
+used as an unproved representability or point-surjectivity claim.
+\end{proof}
