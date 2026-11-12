@@ -1,0 +1,29 @@
+Reruns of the CYCLOTOMIC_KERNEL programs, 12 Nov 2026 (review by Claude Opus 5.5, effort max)
+Local runtime: Python 3.13.9 (Anaconda, Windows), SymPy 1.13.1. Return: Python 3.12.14, SymPy 1.14.0.
+
+Mathematical programs, copied to rerun\pro_code\, each run as `python -I <copy>`:
+  A_boundary_checks.py            exit 0, stderr empty, stdout identical to shipped A_boundary_checks.out
+  B_field_certificates.py         exit 0, stderr empty, identical except line 1 (Python/SymPy versions)
+  D_coverings.py                  exit 0, stderr empty, stdout identical to shipped D_coverings_output.txt
+  D_cyclotomic_counterexample.py  exit 0, stderr empty, identical to shipped output
+  root_math_checks.py             exit 0, stderr empty; its JSON (written next to the copy) equals the shipped
+                                  JSON apart from the "runtime" entry (parsed comparison: equal)
+
+Ledger and paper assembly, in a full copy of the bundle (rerun\bundle_copy\):
+  assemble_ledgers.py  `python -I -X utf8`: exit 0; results.csv, readings.csv, coverage.json, report.md and
+                       code/assemble_ledgers_output.json identical to the shipped files (CR ignored).
+                       Without -X utf8 it fails on Windows (cp1252 cannot encode U+0393); no mathematical cause.
+  prepare_paper.py     `python -I -X utf8`: exit 0; paper .tex, references .bib, source_audit.md and
+                       code/prepare_paper_output.json identical to the shipped files.
+  validate_bundle.py   `python -I -X utf8`: exit 1 at its PDF first-page text check (line 61: the extracted
+                       first page is None with the local Poppler build); the ledger assertions before it passed.
+Not run: fetch_root_sources.py (downloads four PDFs), package_bundle.py (rewrites SHA256SUMS and the zip),
+build_pdf.sh (LuaLaTeX), run_checks.py (runs the five programs above without -I; they were run directly).
+
+Independent code (rerun\indep\d4_d5_indep.py, pure Python, written from the paper):
+  exit 0; output in rerun\indep\out\d4_d5_indep.out. Confirms: P=(zeta18, 1/zeta18) has order 9, 3P=(0,12*sqrt(-3));
+  all nine Q_ij - P over zeta6^-1 have order 9 and 3(Q_ij-P)=3P; over zeta6 the orders are 1,3,...,3;
+  (1-omega)^3 P = O; <P>+E[3] has 27 points, all over Q(zeta18), exponent 9 = E[(1-omega)^3];
+  Frobenius data for the 37 primes p<400, p=1 mod 3: v_pi(beta_p - conj beta_p) >= 3, = 3 at p=7;
+  hence E(Q^ab)[3^inf] = E[(1-omega)^3] = Z/9 x Z/3, and 3R = Q_ij - P has no solution in E(Q^ab).
+  D5: genus 4 by the superelliptic formula and by Riemann-Hurwitz; the 2-adic residue certificate.
