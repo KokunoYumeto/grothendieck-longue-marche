@@ -20,6 +20,8 @@ not updated here.
 | `PROGRAM_WARGAME_20261112.md`, `.html` | War game, round 1: a planning and simulation pass over the plan made at effort medium; how the programme develops from what has been found, what has to change for it to be a coherent whole, and what mathematics follows from the totality | Claude Fable 5.2, effort max | 12 Nov 2026 |
 | `PROGRAM_WARGAME_ROUND2_20261112.md`, `.html` | War game, round 2: corrects and extends round 1 and replaces its summary; to be read first | Claude Fable 5.2, effort max | 12 Nov 2026 |
 | `ROUND2_STATE_20261112.md` | State note written at the end of round 2: what was finished, what was not checked, the lookups that failed | Claude Fable 5.2, effort max | 12 Nov 2026 |
+| `WARGAME_MATH_HUNCHES_20261112.md` | Nine mathematical hunches drawn from the war game (H1–H9), each with its statement, the reason for it, the smallest test, what would refute it, the cotes and results it bears on, and a prompt specification; unchecked when written | Claude Fable 5.2, effort max (the round-2 war-game agent, consulted) | 12 Nov 2026 |
+| `H8_CHECK_20261112.py`, `H8_CHECK_20261112_output.txt` | Machine check of hunch H8: the cokernel of the divided-power Lefschetz map Λ^i(Z^2g) → Λ^(2g−i)(Z^2g) by Smith normal form, for g ≤ 5 and for g = 6 with i ≤ 3, against the prediction from Wilson's diagonal form for inclusion matrices; all 22 cases agree | Claude Opus 5.5, effort max | 12 Nov 2026 |
 | `AGENT_USAGE_20261112.csv` | Raw usage metadata, one row per agent run on 12 Nov 2026 | Extracted from the session records | 12 Nov 2026 |
 
 Columns of `AGENT_USAGE_20261112.csv`: `agent` (short agent id), `description` (the agent's task), `model`,
