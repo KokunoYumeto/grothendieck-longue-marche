@@ -5,17 +5,19 @@ This folder holds raw research outputs, not edited for publication:
 - the answers of GPT-6 Astra (ChatGPT Pro mode) to four research prompts on *La Longue Marche*: the group schemes
   and schematic envelopes of §§48–50 (LM1), the equation of loops of §§36–47 (LM2) and the Teichmüller tower (LM3,
   LM3b), with the reviews of LM3 and LM2 by Claude Fable 5.2 and of LM3 and LM3b by Claude Opus 5.5 at effort max
-  (`reviews_max_20261112/`), and a second run of LM1 (12 November);
-- first-pass transcriptions by GPT-6 Astra (ChatGPT Pro mode) of nine packages of Grothendieck's manuscript notes from
-  the Montpellier archive, cotes 142, 146, 147 and 149, which the archive groups with *La Longue Marche*, with sample
-  checks of three of them by Claude Opus 5.5; and of one package of cotes 16, 47, 54 and 44, which belong to Book II
-  (Cohomology and motives) of the archive plan, and of one package of cote 1 (scans 2–50, with a sample check), which
-  belongs to the Workshop of the archive plan; these are filed here with the other archive returns until the archive
-  has its own repository;
+  (`reviews_max_20261112/`), and a second run of LM1 (12 November); and the answer to the archive prompt
+  CYCLOTOMIC_KERNEL on cote 149, with its review by Claude Opus 5.5 at effort max;
+- first-pass transcriptions by GPT-6 Astra (ChatGPT Pro mode) of packages of Grothendieck's manuscript notes from the
+  Montpellier archive: nine of cotes 142, 146, 147 and 149, which the archive groups with *La Longue Marche*, with
+  sample checks of three of them by Claude Opus 5.5; three of cotes 16, 47, 54 and 44 and of cotes 5, 6 and 7, which
+  belong to Book II (Cohomology and motives) of the archive plan; and one of cote 1 (scans 2–50, with a sample check),
+  which belongs to the Workshop of the archive plan. These are filed here with the other archive returns until the
+  archive has its own repository;
 - transcriptions by Claude Opus 5.5 over the Anthropic API of three typescripts of the archive, collated page by page
   with the existing editions: *Pursuing Stacks* (cote 134), the *Esquisse d'un programme* (cote 119) and pilot pages
   of EGA V (cotes 24 and 25) (`archive_api_typescripts_20261112/`, with its own README);
-- the prompts with the full list of what was attached to each, the working notes, and the scripts that built the
+- the prompts with the full list of what was attached to each (the archive prompts of 12 November in
+  `prompts/archive_20261112/`), the working notes, and the scripts that built the
   prompts and the archive packages;
 - second passes of the transcription of *La Longue Marche* itself, against the archive's scans, that are not yet in
   the edition's `transcription/` and `notes/` folders, with their prompts and scripts (`second_pass/`, described at
@@ -27,7 +29,7 @@ How this was done, return by return, is in the section "Raw research outputs (11
 - Each paper and transcription in `pro_returns/` is AI-produced by GPT-6 Astra (ChatGPT Pro mode). The date of each
   return is given below.
 - The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` in `reviews/` are by Claude Fable 5.2; the reviews
-  of `LM3_TEICHMULLER_TOWER` and `LM3b_TEICHMULLER_PUSH` in `reviews_max_20261112/` are by Claude Opus 5.5, effort
+  of `LM3_TEICHMULLER_TOWER`, `LM3b_TEICHMULLER_PUSH` and `CYCLOTOMIC_KERNEL` in `reviews_max_20261112/` are by Claude Opus 5.5, effort
   max; the four sample checks of the archive transcriptions are by Claude Opus 5.5.
 - The second passes in `second_pass/` are by Claude Opus 5.5, one subagent per package, over the first pass by
   GPT-6 Astra (ChatGPT Pro mode).
@@ -53,9 +55,12 @@ Dates are those of the return (UTC).
 |---|---|---|---|
 | `pro_returns/LM1_GROUP_SCHEMES/` | Answer to the prompt on the group schemes `M_{ρ,σ}` over `Z` and the schematic envelopes of discrete groups (§§48–50). The model's workspace disconnected during the final assembly and it wrote every file into the chat as text: these files are split by script from the text copy of the chat of 21:03 UTC (`chat_text_copy_2026-11-11T2103Z.md`, beside them; the script and the log of the split are in `tools/lm1_text_copy/`). The model kept working after this copy (on A.10 and a citation of Stix); that part is not included | 11 Nov 2026 | not yet |
 | `pro_returns/LM1_GROUP_SCHEMES_rerun_20261112/` | Second run of the same prompt as `LM1_GROUP_SCHEMES/` (whose first run came back only as text), returned as a complete folder: an 85-page paper with its sources, the report, the CSVs and the code with its outputs (`README.md` beside it) | 12 Nov 2026 | not yet; a comparison with the first run and a review by Claude Opus 5.5 (effort max) are running |
+| `pro_returns/CYCLOTOMIC_KERNEL/` | Answer to the archive prompt CYCLOTOMIC_KERNEL (`prompts/archive_20261112/`): the kernel of the cyclotomic character and the cusps, centralizers of sections restricted to `Γ°` (cote 149, scans 44–66 and 126–127; *La Longue Marche* §§32–34) | 12 Nov 2026 | yes (`reviews_max_20261112/CYCLOTOMIC_REVIEW_OPUS/`) |
 | `pro_returns/LM2_LOOP_EQUATIONS/` | Answer to the prompt on the equation of loops in types (0,3) and (1,1): Grothendieck's conditions on the image of Galois, against the Grothendieck–Teichmüller relations (§§36–47) | 11 Nov 2026 | yes (`reviews/LM2_LOOP_EQUATIONS/`) |
 | `pro_returns/LM3_TEICHMULLER_TOWER/` | Answer to the prompt on the Teichmüller tower, its profinite forms and the "conjecture fondamentale" (§§19, 21, 26–30, 32–36) | 11 Nov 2026 | yes (`reviews/LM3_TEICHMULLER_TOWER/`) |
 | `pro_returns/LM3b_TEICHMULLER_PUSH/` | Answer to the second prompt on the tower: the rows the first answer left open, and his statements derived from theorems that were only cited | 11 Nov 2026 | not yet |
+| `pro_returns/MPL_5+6_001-037/` | First-pass transcription, cote 5, scans 1–53 (52 nonblank), and cote 6, scans 1–37: 89 pages. Cotes 5–7 belong to Book II (Cohomology and motives), chapter II.1 (De Rham cohomology and crystals) of the archive plan; filed here with the other archive returns until the archive has its own repository | 12 Nov 2026 | not yet |
+| `pro_returns/MPL_6_038-067+7_001-060/` | First-pass transcription, cote 6, scans 38–67 (27 nonblank), and cote 7, scans 1–60 (58 nonblank): 85 pages, with notes, doubts, inventory and progress log. The combined `MPL_6_038-067+7_001-060_transcription.tex` was missing from the returned zip; it was rebuilt from the page files, and the rebuilt file is byte-identical to the SHA-256 recorded for it in `progress.log` | 12 Nov 2026 | not yet |
 | `pro_returns/MPL_1_002-050/` | First-pass transcription, cote 1, scans 2–50 (45 nonblank): Grothendieck's notes on functional analysis (1953), which belong to the Workshop of the archive plan; filed here with the other archive returns until the archive has its own repository | 10 Nov 2026 | sample check of eight pages (`reviews/MPL_1_002-050/`) |
 | `pro_returns/MPL_142_001-093/` | First-pass transcription, cote 142, scans 1–93 (90 nonblank) | 12 Nov 2026 | sample check of eight pages (`reviews/MPL_142_001-093/`) |
 | `pro_returns/MPL_142_094-122/` | First-pass transcription, cote 142, scans 94–122 | 12 Nov 2026 | not yet |
@@ -68,8 +73,9 @@ Dates are those of the return (UTC).
 | `pro_returns/MPL_149_001-090/` | First-pass transcription, cote 149, scans 1–90 | 12 Nov 2026 | not yet |
 | `pro_returns/MPL_16+47+54+44/` | First-pass transcription, cotes 16 (scans 1–56, 54 nonblank), 47 (scans 1–11), 54 (scans 1–8) and 44 (scans 1–9): 82 scans. These cotes belong to Book II (Cohomology and motives) of the archive plan; they are filed here with the other archive returns until the archive has its own repository | 12 Nov 2026 | not yet |
 | `reviews/` | The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` with the reviewer's programs; the four sample checks with the checked pages corrected (`pages_checked/`) and the list of page images they used (`IMAGES.md`), with the two comparison crops cited by the check of `MPL_142_001-093` (`img/`) | 11–12 Nov 2026 | — |
-| `reviews_max_20261112/` | Work at effort max of 12 Nov (`README.md` there): the reviews of `LM3_TEICHMULLER_TOWER` (`LM3_REVIEW_OPUS/`) and `LM3b_TEICHMULLER_PUSH` (`LM3b_REVIEW_OPUS/`) by Claude Opus 5.5, each with the return's programs rerun and the reviewer's own checks; the Longue Marche field expert's notes (`LM_EXPERT/`) and new Parts for LM4–LM6 (`PUSH_REDO/`) by Claude Fable 5.2 | 12 Nov 2026 | — |
+| `reviews_max_20261112/` | Work at effort max of 12 Nov (`README.md` there): the reviews of `LM3_TEICHMULLER_TOWER` (`LM3_REVIEW_OPUS/`), `LM3b_TEICHMULLER_PUSH` (`LM3b_REVIEW_OPUS/`) and `CYCLOTOMIC_KERNEL` (`CYCLOTOMIC_REVIEW_OPUS/`) by Claude Opus 5.5, each with the return's programs rerun and the reviewer's own checks; the Longue Marche field expert's notes (`LM_EXPERT/`) and new Parts for LM4–LM6 (`PUSH_REDO/`) by Claude Fable 5.2 | 12 Nov 2026 | — |
 | `archive_api_typescripts_20261112/` | Page-by-page transcriptions of *Pursuing Stacks* (680 pages), the *Esquisse d'un programme* (58 pages) and 6 pilot pages of EGA V by Claude Opus 5.5 over the Anthropic API, collated with the arXiv and Grothendieck Circle texts, with the lists of differences, the pilot, the raw requests and answers, and the scripts; unchecked outside the 28 pilot pages (`README.md` there) | 12 Nov 2026 | pilot of 28 pages |
+| `prompts/archive_20261112/` | The research prompts of the Montpellier archive programme as packaged on 12 Nov (CYCLOTOMIC_KERNEL, EXIT_ONE_TYPE, EXIT_TOWER, FLAGGED_149, GOOD_REDUCTION), each with the list of its background zip, the note on the global shape after the CYCLOTOMIC_KERNEL review, and three excerpts of the working trace of the EXIT_ONE_TYPE run (`README.md` there) | 12 Nov 2026 | — |
 | `prompts/` | Each prompt (`<name>/PROMPT.md`) with `ATTACHMENTS.md`, `attached/` (our own attached files not published elsewhere in this repository) and `work/` (background notes, manifests, earlier versions); the index and overview of the Longue Marche prompts (`README.md`, `OVERVIEW.md`), their shared second half (`_COMMON_BLOCK.md`) and the record of their rewrite (`work/`) | 10–11 Nov 2026 | — |
 | `tools/archive/` | The scripts that download the archive's scans, enhance the pages and build the transcription packages, and the transcription prompt template | 10–11 Nov 2026 | — |
 | `tools/prompts/` | The scripts that rewrote and packaged the Longue Marche prompts | 11 Nov 2026 | — |
