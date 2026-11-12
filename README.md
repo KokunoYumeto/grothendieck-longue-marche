@@ -34,13 +34,15 @@ The transcription is diplomatic: Grothendieck's French, spelling, abbreviations,
 margin notes as written, with doubt marked (`\unsure{a|b}`, `\illegible{n}`). Mathematics keeps his letters, indices
 and arrows; diagrams are typeset with tikz-cd.
 
-## Status (9 November 2026)
+## Status (12 November 2026)
 
 - First pass: all 1,588 scans.
 - Second pass, in which every line is checked against the archive images at full resolution and collated with the
-  earlier transcriptions listed below where they cover the text: cote 140-2, scans 21–30 and 101–575; cote 140-3,
-  scans 1–130. The other scans (cote 140-2, scans 1–20 and 31–100; cote 140-3, scans 131–696; cotes 140-4 and 140-1)
-  have the first pass only.
+  earlier transcriptions listed below where they cover the text: all 1,588 scans (116 packages, cotes 140-1 to
+  140-4), with 4,890 changes to the first pass and 3,636 places left unresolved and marked. The edition's
+  `transcription/` and `notes/` and the draft readers hold it for cote 140-2, scans 21–30 and 101–575, and cote 140-3,
+  scans 1–130; the rest is under [`raw/`](raw/README.md) (section "Second passes") until the next
+  release.
 - The earlier transcriptions cover the first part of the manuscript (§§ 1–37, cote 140-2). For cote 140-3 they offer
   only the section titles of the table of contents, so the images alone decide the reading.
 - In the checked packages, the second pass changed the first pass's reading at about 2 places in every 100 words
