@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Archive plan, 12 Nov</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1d1d1b;--mut:#5f5e5a;--line:#d9d6cf;--acc:#7a3e1d;--box:#f1eee7;--warn:#8a1c1c;--done:#2f6b3a;--ret:#1f5f8b;--built:#8a6d1c;--api:#6b4a8a;--plan:#5f5e5a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1a1a18;--fg:#ecebe6;--mut:#a9a79f;--line:#3a3935;--acc:#e0a27a;--box:#24231f;--warn:#f08a8a;--done:#8fd19e;--ret:#8cc4ee;--built:#e3c46b;--api:#c7a6ea;--plan:#a9a79f}}
+:root[data-theme="dark"]{--bg:#1a1a18;--fg:#ecebe6;--mut:#a9a79f;--line:#3a3935;--acc:#e0a27a;--box:#24231f;--warn:#f08a8a;--done:#8fd19e;--ret:#8cc4ee;--built:#e3c46b;--api:#c7a6ea;--plan:#a9a79f}
+body{background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif;margin:0;padding:0 16px}
+main{max-width:1000px;margin:0 auto;padding:24px 0 64px}
+h1{font-size:1.7em;margin:.2em 0}h2{font-size:1.3em;margin-top:2em;border-bottom:1px solid var(--line);padding-bottom:.2em;color:var(--acc)}
+h3{font-size:1.1em;margin-top:1.6em}
+.mut{color:var(--mut)}.warn{color:var(--warn);font-weight:bold}
+.box{background:var(--box);border:1px solid var(--line);border-radius:6px;padding:10px 14px;margin:12px 0}
+table{border-collapse:collapse;width:100%;margin:10px 0;font-size:.9em;display:block;overflow-x:auto}
+th,td{border:1px solid var(--line);padding:5px 7px;vertical-align:top;text-align:left}th{background:var(--box)}
+td.n,th.n{text-align:right;white-space:nowrap}code{font-size:.88em;word-break:break-all}
+li{margin:.25em 0}.why{border-left:3px solid var(--acc);padding-left:10px;margin:.3em 0 .8em}
+.st-done{color:var(--done)}.st-ret{color:var(--ret);font-weight:bold}.st-built{color:var(--built);font-weight:bold}.st-api{color:var(--api)}.st-plan{color:var(--plan)}
+blockquote{border-left:3px solid var(--line);margin:.6em 0;padding:.1em 12px;color:var(--mut)}
+</style>
+</head>
+<body><main>
+<h1>The Montpellier archive: what is being transcribed, the works it goes into, the second pass, and the Fable plan</h1>
+<p class="mut">Report by Claude Opus 5.5 (effort max), 12 Nov 2026, 15:40 UTC.</p>
+<p class="mut">Sources:</p>
+<ul class="mut">
+<li><code>grothendieck_archive_montpellier\PLAN_EVERYTHING.md</code>, the plan you adopted on 10 Nov.</li>
+<li><code>ORGANIZATION_RECOMMENDATION.md</code>, by Claude Fable 5.2 on 10 Nov at effort <b>medium</b>.</li>
+<li><code>PLACEMENT_EVERYTHING.md</code> and <code>.csv</code>, by Claude Fable 5.2 on 11 Nov at effort <b>medium</b>.</li>
+<li><code>SECTIONS_STATE.md</code>.</li>
+<li>The package manifests and the returns in <code>grothendieck_archive_transcription_20261110</code>.</li>
+<li>The sample-check reports.</li>
+<li>Today's agent transcripts and usage meter.</li>
+</ul>
+<p class="mut">Every number below was measured today unless it is marked as an estimate. Nothing in this report has been launched; the decisions are listed in section 9.</p>
+
+<h2>1. In short</h2>
+<div class="box"><ul>
+<li><b>The archive</b> is 178 cotes and 16,074 scan pages.
+ <ul>
+ <li><b>Already done (3,719 pages):</b> <i>La Longue Marche</i> (1,584 pages) is ours, with its second pass finishing. <i>Les Dérivateurs</i> (2,135 pages) is covered through the printed edition, which we transcribed. No other part of the archive has been edited.</li>
+ <li><b>By Pro (10,761 pages):</b> everything else that is handwritten goes to GPT-6 Astra in Pro mode. About 11,300 pages of the archive had no edition, transcription or study at all.</li>
+ <li><b>By the API (1,592 pages):</b> the clean typescripts. <i>Pursuing Stacks</i> and the Esquisse have outside editions, in French and in English. Whether those editions are complete and faithful to the archive's typescripts is being checked against the scans now (Claude Opus 5.5, effort max; report pending). "Nouveau EGA V" (cote 25) is checked in the same run.</li>
+ </ul></li>
+<li><b>What is being transcribed now: Book III, "The Long March".</b> These are the manuscripts around La Longue Marche, plus the first 45 pages of cote 1.
+ <ul>
+ <li><b>Returned:</b> chapter 1 (origins, 1978–80: cotes 146 and 142) and chapter 4 (the structure at infinity of M(g,ν) and its paginated sequel: cotes 147 and 149). That is 10 packages and 611 pages.</li>
+ <li><b>Built and waiting:</b> five packages for Book II: the 1960s test (cotes 16, 47, 54, 44) and the crystals (cotes 4–9 and 100), 438 scans.</li>
+ </ul></li>
+<li><b>The works.</b> Everything is organized into a front door (the Esquisse, annotated), six books and a workshop, in 46 chapters with cotes. Section 4 lists every chapter and the state of every cote.
+ <ul>
+ <li>The six books: I. Elements, continued (EGA V and after); II. Cohomology and motives; III. The Long March; IV. Maps and polyhedra; V. Tame topology and the geometry of forms; VI. Stacks and derivators.</li>
+ </ul></li>
+<li><b>Prompts.</b> For everything, the plan counts 134 Pro prompts at 90 scans a package. That is an upper bound before blank sheets drop out. 15 are built and 10 have returned.
+ <ul>
+ <li>At 70 scans a package it would be about 160–170.</li>
+ <li>The "about 90" you remembered is not in any of our files. The first tranche alone (ranks 0–11) is 53 prompts at 90 scans.</li>
+ </ul></li>
+<li><b>Quality of the first pass.</b> The sample checks find 0.7 to 2.2 errors per 100 words, and almost none of them is marked as a doubt. A real second pass is therefore needed wherever we want an edition. Section 5 also covers two packaging defects that must be fixed before the next sends.</li>
+<li><b>Cost of a full second pass, as done for La Longue Marche</b> (Claude Opus 5.5 at max, against the scans): about <b>0.04 points</b> of the weekly all-models meter per scan, measured at 16:00 UTC on two finished 19-scan passes. <span class="warn">Corrected: the first version of this report said 0.025, read from the same two passes before they had finished.</span>
+ <ul>
+ <li>Done in full everywhere, it would cost about 430 points.</li>
+ <li>With the split in section 6 (full where nothing has been edited, light where an edition or print exists), about 350 points: about seven weeks of the Opus half of the week, or three and a half full weeks once the Fable resets are used up.</li>
+ <li>A cheaper option to test: the line check at effort high (you exempted scan checks from max), and only the global pass at max.</li>
+ </ul></li>
+<li><b>Fable.</b> A Fable reader at max costs about 4.5 Fable points. To finish its reading at 55–60 % of its window, it can read about 220k tokens of source.
+ <ul>
+ <li>What is left this week plus the three resets is about 314 Fable points, roughly 65–70 readers.</li>
+ <li>That is just enough for one Fable reading of every page Pro transcribes (with Pro's notes), plus La Longue Marche Parts II–IV and the Dérivateurs returns 5–8.</li>
+ <li>Pro's pace, not Fable, sets how fast this can go.</li>
+ </ul></li>
+</ul></div>
+
+<h2>2. Your decision today (12 Nov, about 15:25 UTC)</h2>
+<p>You made the complete untranscribed archive, transcribed and developed in full by the most advanced current models, the main project for the coming weeks. You gave four reasons:</p>
+<ul>
+<li>It is frontier mathematics.</li>
+<li>It is a bounded program whose shape you, I and Fable all know.</li>
+<li>Most of it has never been edited.</li>
+<li>Its second pass builds on what we already have for La Longue Marche and Les Dérivateurs, so each companion builds on the earlier ones.</li>
+</ul>
+<p>What it displaces:</p>
+<ul>
+<li>Deligne's work is well written up already; its translation stays planned for later.</li>
+<li>Klein–Fricke (transcription, translation, modern context) is valuable but more historical. It waits until after this, or goes to Codex.</li>
+</ul>
+<p>SGA, the other main deliverable, is nearly done: SGA 5 has 79 of its 97 batches done and 9 running, and SGA 6 follows within this week's budget. You also noted that doing it all in one project keeps it all in one place.</p>
+
+<h2>3. What is being transcribed now</h2>
+<h3>3.1 Returned (10 packages, 611 pages; GPT-6 Astra, effort Pro)</h3>
+<table>
+<tr><th>Package</th><th>Cote: scans</th><th>What it is</th><th>Chapter</th><th class="n">Pages</th><th>Dropped as "blank"</th><th>Sample check (errors per 100 words)</th></tr>
+<tr><td>MPL_1_002-050 (pilot)</td><td>1: 2–50</td><td>Functional analysis, notes with a letter of 1953</td><td>Workshop W.1</td><td class="n">45</td><td>4 (scans 2, 37, 43, 47)</td><td>1.90</td></tr>
+<tr><td>MPL_147_003-047</td><td>147: 3–47</td><td>Structure at infinity of M(g,ν), ms. pp. 1–90 with his contents</td><td>III.4</td><td class="n">45</td><td>0</td><td>0.73 (the only package run in one stream)</td></tr>
+<tr><td>MPL_147_048-137</td><td>147: 48–137</td><td>same</td><td>III.4</td><td class="n">90</td><td>0</td><td>2.15 (1.25 without one repeated choice)</td></tr>
+<tr><td>04_MPL_147_138-190</td><td>147: 138–190</td><td>same</td><td>III.4</td><td class="n">53</td><td>0</td><td>not checked</td></tr>
+<tr><td>05_MPL_149_001-090</td><td>149: 1–90</td><td>Untitled paginated text, ms. pp. 1–67</td><td>III.4</td><td class="n">90</td><td>0</td><td>not checked</td></tr>
+<tr><td>06_MPL_149_091-136</td><td>149: 91–136</td><td>same</td><td>III.4</td><td class="n">46</td><td>0</td><td>not checked</td></tr>
+<tr><td>07_MPL_146_001-099</td><td>146: 1–99</td><td>Teichmüller groupoids (from 1978)</td><td>III.1</td><td class="n">90</td><td>9</td><td>not checked</td></tr>
+<tr><td>08_MPL_146_100-134</td><td>146: 100–134</td><td>same</td><td>III.1</td><td class="n">33</td><td>2</td><td>not checked</td></tr>
+<tr><td>09_MPL_142_001-093</td><td>142: 1–93</td><td>Galois action on Teichmüller (from 1978)</td><td>III.1</td><td class="n">90</td><td><span class="warn">3, none of them blank</span></td><td>1.56 (checked today)</td></tr>
+<tr><td>10_MPL_142_094-122</td><td>142: 94–122</td><td>same</td><td>III.1</td><td class="n">29</td><td>0</td><td>not checked (returned today)</td></tr>
+</table>
+<p>Measured sizes of these returns: transcription 1.15 MB, about 350k tokens; Pro's research notes 1.59 MB, about 480k; doubts 1.12 MB; inventories 0.74 MB. Per page that is about 570 tokens of transcription and 850 of notes.</p>
+<p>By cote (transcription + notes, in tokens):</p>
+<ul>
+<li>147: 91k + 139k</li>
+<li>149: 55k + 107k</li>
+<li>146: 87k + 84k</li>
+<li>142: 86k + 152k</li>
+<li>1 (scans 2–50): 29k, with no notes file</li>
+</ul>
+
+<h3>3.2 Built, not sent (5 packages, 438 scans): Book II</h3>
+<table>
+<tr><th>Package</th><th>Cotes</th><th>What it is</th><th>Chapter</th><th class="n">Scans</th></tr>
+<tr><td>11_MPL_16+47+54+44</td><td>16, 47, 54, 44</td><td>Poincaré–Hodge algebras and the algebraic formalism of correspondences, letters 1966–67 (16, the folder on the standard conjectures); Fourier transform on abelian varieties (47); duality in their cohomology (54); intermediate Jacobians, letter to Serre 1964 (44)</td><td>II.5, II.4</td><td class="n">82</td></tr>
+<tr><td>30_MPL_5+6_001-037</td><td>5; 6: 1–37</td><td>Crystals and de Rham cohomology, letter to Deligne 1965 (5); the letter to Tate, May 1966 (6)</td><td>II.1</td><td class="n">89</td></tr>
+<tr><td>31_MPL_6_038-067+7_001-060</td><td>6: 38–67; 7: 1–60</td><td>Tate letter, typescript and notes; notes for the talks of Nov.–Dec. 1967 on crystals (7: the opening text of Book II)</td><td>II.1</td><td class="n">85</td></tr>
+<tr><td>32_MPL_7_061-072+8_001-078</td><td>7: 61–72; 8: 1–78</td><td>Talk notes, end; "Cristaux (1970)": scribbles and calculations</td><td>II.1</td><td class="n">86</td></tr>
+<tr><td>33_MPL_8_079-081+9+4+100</td><td>8; 9; 4; 100</td><td>Barsotti–Tate groups and crystals to summer 1969 (9); torsion in crystalline cohomology (4); good reduction of abelian varieties via the Barsotti–Tate group, 1967–68 (100)</td><td>II.1, II.2</td><td class="n">96</td></tr>
+</table>
+<p class="why">Why this part, and why the crystals (rank 7) before ranks 3–6. The transcription order is Fable's (section 5 of <code>ORGANIZATION_RECOMMENDATION.md</code>, adopted on 10 Nov): first what feeds a book in progress (Book III, around the Longue Marche), then a test of the 1960s hand on a small unit with outside checks (rank 2). Ranks 3–6 need context zips that did not exist yet:</p>
+<ul>
+<li><b>Rank 3 (the EGA drafts and plans)</b> needs our EGA table of contents, and waits for the EGA source-of-record check.</li>
+<li><b>Ranks 4 and 5 (the dated notes around the Longue Marche; stratified spaces and tame topology)</b> need the returns of rank 1. Those are all in since today, so ranks 4 and 5 can be built now.</li>
+<li><b>Rank 6 (motives)</b> needs the return of cote 16 (package 11).</li>
+</ul>
+<p>The crystals need no context zip, so they were built first.</p>
+
+<h2>4. The works everything goes into</h2>
+<p>The shape is Fable's, adopted on 10 Nov and placed cote by cote on 11 Nov (both by Claude Fable 5.2 at effort medium). Every cote has one slot. Grothendieck's own two tables of contents are the spines: the plan of the EGA (chapters V–XII) for the Paris years, and the Esquisse (1984) for the Montpellier years.</p>
+<ul>
+<li><b>Edition.</b> Each page has three layers: his text (scan, French, English); a commentary saying what it is and what became of it; and, where he left the work open, a development with full proofs. His text and ours never share a paragraph.</li>
+<li><b>The second pass also writes</b> each chapter's page headers, the entries of a register of every question and conjecture in the notes (with its status today), and the concordance from cote and scan to book and chapter.</li>
+</ul>
+<table>
+<tr><th>Part</th><th>What it is</th><th class="n">Done</th><th class="n">Returned</th><th class="n">Built</th><th class="n">API route</th><th class="n">Pro, planned</th><th class="n">All</th></tr>
+<tr><td>Front door</td><td>The Esquisse, annotated (cote 119, by the API); his two popular presentations (161-3 "Topos", 161-4 "Introduction à la géométrie algébrique")</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">313</td><td class="n">85</td><td class="n">398</td></tr>
+<tr><td>I. Elements, continued</td><td>"EGA V and after": his plan of chapters V–XII, each Paris-period draft filed under its planned chapter</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">260</td><td class="n">2,898</td><td class="n">3,158</td></tr>
+<tr><td>II. Cohomology and motives</td><td>De Rham and crystals, Barsotti–Tate, Gauss–Manin, cycles and the standard conjectures, motives and motivic Galois groups, tensor categories, the 1976 de Rham notes</td><td class="n">0</td><td class="n">0</td><td class="n">440</td><td class="n">114</td><td class="n">1,843</td><td class="n">2,397</td></tr>
+<tr><td>III. The Long March</td><td>La Longue Marche and the notes around it (origins 1978–80, drafts, structure at infinity, Teichmülleries 1981–83, elliptic curves and uniformization, arithmetic of maps)</td><td class="n">1,584</td><td class="n">578</td><td class="n">0</td><td class="n">0</td><td class="n">760</td><td class="n">2,922</td></tr>
+<tr><td>IV. Maps and polyhedra</td><td>The icosahedron courses of 1976–78, maps on surfaces, regular polyhedra over rings and finite fields, quadrics</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">1,954</td><td class="n">1,954</td></tr>
+<tr><td>V. Tame topology and the geometry of forms</td><td>Tame topology 1973–79, pseudolines, stratified spaces 1981–82, <i>Vers une géométrie des formes</i> (1986) and its three earlier versions</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">0</td><td class="n">1,319</td><td class="n">1,319</td></tr>
+<tr><td>VI. Stacks and derivators</td><td>Categories and topos, the Tapis de Quillen (1968), the Sính correspondence, <i>Pursuing Stacks</i> (API), the dossier around it, <i>Les Dérivateurs</i> and the notes around them</td><td class="n">2,135</td><td class="n">0</td><td class="n">0</td><td class="n">905</td><td class="n">662</td><td class="n">3,702</td></tr>
+<tr><td>Workshop</td><td>Functional analysis 1953 (cote 1), documents; the concordance, timeline and question register</td><td class="n">2</td><td class="n">149*</td><td class="n">0</td><td class="n">0</td><td class="n">73</td><td class="n">224</td></tr>
+<tr><th>All</th><th></th><th class="n">3,721</th><th class="n">727*</th><th class="n">440</th><th class="n">1,592</th><th class="n">9,594</th><th class="n">16,074</th></tr>
+</table>
+<p class="mut">* Cote 1 is counted whole (149 pages); only its scans 2–50 are back. Counted by package instead, 611 pages are back.</p>
+<h3>Every chapter, with the state of each cote</h3>
+<p class="mut">Colours: <span class="st-done">done</span>, <span class="st-ret">returned</span>, <span class="st-built">built, not sent</span>, <span class="st-api">API route</span>, <span class="st-plan">planned (with its transcription rank)</span>. Book order is the reading order; the rank is the transcription order (rank 0 the pilot, rank 25 last).</p>
+<table><tr><th>Book</th><th>Chapter</th><th>Cotes (pages): state</th><th class="n">Pages</th></tr>
+<tr><td>Front door, Workshop</td><td>D.1 The Esquisse, annotated</td><td><span class="st-api">119 (313): API route (clean typescript), not started</span></td><td class="n">313</td></tr>
+<tr><td>Front door</td><td>D.2 Two presentations in his explaining voice</td><td><span class="st-plan">161-4 (31): planned, rank 16</span><br><span class="st-plan">161-3 (54): planned, rank 16</span></td><td class="n">85</td></tr>
+<tr><td>I</td><td>I.0 The plan, and complements to EGA 0-IV</td><td><span class="st-plan">26 (10): planned, rank 3</span><br><span class="st-plan">48 (5): planned, rank 3</span><br><span class="st-plan">21 (28): planned, rank 3</span><br><span class="st-plan">22 (29): planned, rank 3</span><br><span class="st-plan">23 (98): planned, rank 3</span><br><span class="st-plan">32 (47): planned, rank 21</span><br><span class="st-plan">37 (99): planned, rank 24</span></td><td class="n">316</td></tr>
+<tr><td>I</td><td>I.V Chapter V: hyperplane sections and projective methods</td><td><span class="st-api">25 (184): API route (clean typescript), not started</span><br><span class="st-api">24 (76): API route (clean typescript), not started</span><br><span class="st-plan">125 (8): planned, rank 22</span></td><td class="n">268</td></tr>
+<tr><td>I</td><td>I.VI Chapter VI: construction techniques (descent, representable functors, Hilbert and Hom)</td><td><span class="st-plan">102 (13): planned, rank 3</span><br><span class="st-plan">126 (34): planned, rank 22</span><br><span class="st-plan">127 (23): planned, rank 22</span><br><span class="st-plan">128 (31): planned, rank 22</span><br><span class="st-plan">131 (41): planned, rank 22</span><br><span class="st-plan">98 (43): planned, rank 20</span><br><span class="st-plan">91 (142): planned, rank 20</span><br><span class="st-plan">41 (13): planned, rank 21</span><br><span class="st-plan">39 (19): planned, rank 21</span><br><span class="st-plan">42 (6): planned, rank 21</span><br><span class="st-plan">55 (17): planned, rank 19</span></td><td class="n">382</td></tr>
+<tr><td>I</td><td>I.VII Chapter VII: group schemes and torsors</td><td><span class="st-plan">45 (79): planned, rank 19</span><br><span class="st-plan">27 (36): planned, rank 24</span><br><span class="st-plan">28 (10): planned, rank 24</span><br><span class="st-plan">160 (22): planned, rank 24</span><br><span class="st-plan">46 (94): planned, rank 19</span><br><span class="st-plan">40 (27): planned, rank 21</span><br><span class="st-plan">53 (33): planned, rank 19</span></td><td class="n">301</td></tr>
+<tr><td>I</td><td>I.VIII Chapter VIII: Picard schemes, Jacobians, abelian schemes, elliptic curves</td><td><span class="st-plan">57 (314): planned, rank 23</span><br><span class="st-plan">59 (27): planned, rank 19</span><br><span class="st-plan">58 (66): planned, rank 19</span><br><span class="st-plan">43 (207): planned, rank 19</span><br><span class="st-plan">49 (9): planned, rank 19</span><br><span class="st-plan">50 (10): planned, rank 19</span><br><span class="st-plan">51 (22): planned, rank 19</span><br><span class="st-plan">52 (13): planned, rank 19</span><br><span class="st-plan">62 (96): planned, rank 23</span><br><span class="st-plan">63 (100): planned, rank 23</span></td><td class="n">864</td></tr>
+<tr><td>I</td><td>I.IX Chapter IX: residues, duality, local cohomology</td><td><span class="st-plan">101 (42): planned, rank 20</span><br><span class="st-plan">94 (23): planned, rank 20</span></td><td class="n">65</td></tr>
+<tr><td>I</td><td>I.X Chapter X: intersections, Chern classes, Riemann-Roch</td><td><span class="st-plan">2 (44): planned, rank 25</span><br><span class="st-plan">90 (24): planned, rank 20</span><br><span class="st-plan">97 (18): planned, rank 20</span></td><td class="n">86</td></tr>
+<tr><td>I</td><td>I.XI Chapters XI-XII: étale cohomology, fundamental group, monodromy</td><td><span class="st-plan">29 (216): planned, rank 24</span><br><span class="st-plan">31 (101): planned, rank 21</span><br><span class="st-plan">33 (180): planned, rank 21</span><br><span class="st-plan">35 (5): planned, rank 3</span><br><span class="st-plan">36 (84): planned, rank 21</span><br><span class="st-plan">34 (209): planned, rank 21</span><br><span class="st-plan">122 (34): planned, rank 22</span><br><span class="st-plan">123 (47): planned, rank 22</span></td><td class="n">876</td></tr>
+<tr><td>II</td><td>II.1 De Rham cohomology and crystals</td><td><span class="st-built">7 (71): built, not sent</span><br><span class="st-built">5 (52): built, not sent</span><br><span class="st-built">6 (66): built, not sent</span><br><span class="st-built">4 (11): built, not sent</span><br><span class="st-built">8 (80): built, not sent</span></td><td class="n">280</td></tr>
+<tr><td>II</td><td>II.2 Barsotti-Tate groups</td><td><span class="st-built">9 (28): built, not sent</span><br><span class="st-built">100 (52): built, not sent</span><br><span class="st-api">129 (114): API route (clean typescript), not started</span><br><span class="st-plan">161-5 (28): planned, rank 15</span></td><td class="n">222</td></tr>
+<tr><td>II</td><td>II.3 Gauss-Manin connections, Picard-Fuchs equations, the Cartier operation</td><td><span class="st-plan">93 (235): planned, rank 15</span></td><td class="n">235</td></tr>
+<tr><td>II</td><td>II.4 Duality on abelian varieties, intermediate Jacobians</td><td><span class="st-built">47 (10): built, not sent</span><br><span class="st-built">54 (7): built, not sent</span><br><span class="st-built">44 (8): built, not sent</span></td><td class="n">25</td></tr>
+<tr><td>II</td><td>II.5 Algebraic cycles and the standard conjectures</td><td><span class="st-built">16 (55): built, not sent</span><br><span class="st-plan">14 (131): planned, rank 6</span><br><span class="st-plan">11 (57): planned, rank 13</span><br><span class="st-plan">56 (38): planned, rank 13</span></td><td class="n">281</td></tr>
+<tr><td>II</td><td>II.6 Motives and their Galois groups</td><td><span class="st-plan">13 (51): planned, rank 6</span><br><span class="st-plan">12 (167): planned, rank 6</span><br><span class="st-plan">15 (227): planned, rank 6</span><br><span class="st-plan">18 (61): planned, rank 6</span></td><td class="n">506</td></tr>
+<tr><td>II</td><td>II.7 Tensor categories</td><td><span class="st-plan">10 (197): planned, rank 13</span><br><span class="st-plan">155 (10): planned, rank 5</span></td><td class="n">207</td></tr>
+<tr><td>II</td><td>II.8 L-functions, heights and local symbols</td><td><span class="st-plan">60 (69): planned, rank 13</span><br><span class="st-plan">130 (49): planned, rank 22</span></td><td class="n">118</td></tr>
+<tr><td>II</td><td>II.9 1974-76: Witt groups, universal operations, the divided-power de Rham complex</td><td><span class="st-plan">133 (53): planned, rank 22</span><br><span class="st-plan">137 (85): planned, rank 8</span><br><span class="st-plan">136 (375): planned, rank 8</span><br><span class="st-plan">153 (10): planned, rank 5</span></td><td class="n">523</td></tr>
+<tr><td>III</td><td>III.1 Origins, 1978-80: Teichmüller groupoids and the Galois action</td><td><span class="st-ret">146 (133): returned (2 packages)</span><br><span class="st-ret">142 (121): returned (2 packages)</span></td><td class="n">254</td></tr>
+<tr><td>III</td><td>III.2 Towards the manuscript, 1980-81</td><td><span class="st-plan">143 (33): planned, rank 4</span><br><span class="st-plan">145 (37): planned, rank 4</span><br><span class="st-done">140-1 (36): done: our transcription; second pass finishing</span><br><span class="st-plan">141 (15): planned, rank 4</span></td><td class="n">121</td></tr>
+<tr><td>III</td><td>III.3 La Longue Marche à travers la théorie de Galois (1981)</td><td><span class="st-done">140-2 (574): done: our transcription; second pass finishing</span><br><span class="st-done">140-3 (695): done: our transcription; second pass finishing</span><br><span class="st-done">140-4 (279): done: our transcription; second pass finishing</span></td><td class="n">1548</td></tr>
+<tr><td>III</td><td>III.4 The structure at infinity of the moduli spaces, and the paginated sequel</td><td><span class="st-ret">147 (189): returned (3 packages)</span><br><span class="st-ret">149 (135): returned (2 packages)</span></td><td class="n">324</td></tr>
+<tr><td>III</td><td>III.5 Teichmülleries, 1981-83</td><td><span class="st-plan">144 (183): planned, rank 4</span><br><span class="st-plan">148 (71): planned, rank 4</span></td><td class="n">254</td></tr>
+<tr><td>III</td><td>III.6 Elliptic curves, conformal surfaces, uniformization</td><td><span class="st-plan">64 (156): planned, rank 12</span><br><span class="st-plan">67 (100): planned, rank 12</span><br><span class="st-plan">159 (33): planned, rank 12</span></td><td class="n">289</td></tr>
+<tr><td>III</td><td>III.7 The arithmetic of maps, 1976-78</td><td><span class="st-plan">138 (132): planned, rank 10</span></td><td class="n">132</td></tr>
+<tr><td>IV</td><td>IV.1 The icosahedron and the courses of 1976-78</td><td><span class="st-plan">161-6 (33): planned, rank 10</span><br><span class="st-plan">75 (32): planned, rank 10</span></td><td class="n">65</td></tr>
+<tr><td>IV</td><td>IV.2 Maps on surfaces</td><td><span class="st-plan">76 (62): planned, rank 10</span><br><span class="st-plan">88 (15): planned, rank 10</span><br><span class="st-plan">70 (125): planned, rank 10</span><br><span class="st-plan">132 (31): planned, rank 18</span></td><td class="n">233</td></tr>
+<tr><td>IV</td><td>IV.3 Graphs, cubic complexes, convex polyhedra</td><td><span class="st-plan">69 (119): planned, rank 14</span><br><span class="st-plan">74 (135): planned, rank 14</span><br><span class="st-plan">89 (20): planned, rank 18</span><br><span class="st-plan">87 (40): planned, rank 18</span></td><td class="n">314</td></tr>
+<tr><td>IV</td><td>IV.4 Regular polyhedra over rings and finite fields</td><td><span class="st-plan">86 (32): planned, rank 14</span><br><span class="st-plan">72 (112): planned, rank 14</span><br><span class="st-plan">85 (97): planned, rank 14</span><br><span class="st-plan">79 (296): planned, rank 14</span><br><span class="st-plan">83 (221): planned, rank 14</span></td><td class="n">758</td></tr>
+<tr><td>IV</td><td>IV.5 Regular polygons and cyclotomy</td><td><span class="st-plan">73 (28): planned, rank 18</span><br><span class="st-plan">78 (129): planned, rank 18</span></td><td class="n">157</td></tr>
+<tr><td>IV</td><td>IV.6 Quadrics, quadratic forms, SO(3)</td><td><span class="st-plan">77 (157): planned, rank 18</span><br><span class="st-plan">82 (78): planned, rank 18</span><br><span class="st-plan">84 (192): planned, rank 18</span></td><td class="n">427</td></tr>
+<tr><td>V</td><td>V.1 Tame topology, 1973-79</td><td><span class="st-plan">121 (72): planned, rank 5</span><br><span class="st-plan">120 (24): planned, rank 5</span></td><td class="n">96</td></tr>
+<tr><td>V</td><td>V.2 Jordan, immersions, pseudolines</td><td><span class="st-plan">71 (47): planned, rank 18</span><br><span class="st-plan">81 (54): planned, rank 18</span><br><span class="st-plan">80 (72): planned, rank 18</span><br><span class="st-plan">154 (175): planned, rank 18</span></td><td class="n">348</td></tr>
+<tr><td>V</td><td>V.3 Stratified spaces and stratified topoi, 1981-82</td><td><span class="st-plan">150 (98): planned, rank 5</span><br><span class="st-plan">151 (74): planned, rank 5</span><br><span class="st-plan">152 (12): planned, rank 5</span></td><td class="n">184</td></tr>
+<tr><td>V</td><td>V.4 Vers une géométrie des formes (1986): the final state</td><td><span class="st-plan">156-1 (26): planned, rank 11</span><br><span class="st-plan">156-2 (18): planned, rank 11</span><br><span class="st-plan">156-3 (40): planned, rank 11</span><br><span class="st-plan">156-5 (48): planned, rank 11</span><br><span class="st-plan">156-8 (126): planned, rank 11</span><br><span class="st-plan">156-9 (139): planned, rank 11</span></td><td class="n">397</td></tr>
+<tr><td>V</td><td>V.5 The three earlier versions of Analysis situs</td><td><span class="st-plan">156-4 (88): planned, rank 17</span><br><span class="st-plan">156-6 (93): planned, rank 17</span><br><span class="st-plan">156-7 (113): planned, rank 17</span></td><td class="n">294</td></tr>
+<tr><td>VI</td><td>VI.1 Categories, universal algebra, topos (1958-73)</td><td><span class="st-plan">161-1 (19): planned, rank 16</span><br><span class="st-plan">161-2 (111): planned, rank 16</span><br><span class="st-plan">19 (95): planned, rank 16</span></td><td class="n">225</td></tr>
+<tr><td>VI</td><td>VI.2 The Tapis de Quillen (1968)</td><td><span class="st-api">162-5 (68): API route (clean typescript), not started</span><br><span class="st-plan">111 (16): planned, rank 9</span></td><td class="n">84</td></tr>
+<tr><td>VI</td><td>VI.3 Gr-categories and the Sính correspondence (1974-75)</td><td><span class="st-plan">103 (17): planned, rank 9</span><br><span class="st-plan">135 (58): planned, rank 9</span></td><td class="n">75</td></tr>
+<tr><td>VI</td><td>VI.4 Pursuing Stacks (1983)</td><td><span class="st-api">134-1 (6): API route (clean typescript), not started</span><br><span class="st-api">134-2 (184): API route (clean typescript), not started</span><br><span class="st-api">134-3 (93): API route (clean typescript), not started</span><br><span class="st-api">134-4 (100): API route (clean typescript), not started</span><br><span class="st-api">134-5 (132): API route (clean typescript), not started</span><br><span class="st-api">134-6 (124): API route (clean typescript), not started</span><br><span class="st-api">134-7 (112): API route (clean typescript), not started</span><br><span class="st-api">134-8 (86): API route (clean typescript), not started</span></td><td class="n">837</td></tr>
+<tr><td>VI</td><td>VI.5 The dossier around Pursuing Stacks (1982-84)</td><td><span class="st-plan">104 (16): planned, rank 9</span><br><span class="st-plan">105 (52): planned, rank 9</span><br><span class="st-plan">106 (16): planned, rank 9</span><br><span class="st-plan">107 (25): planned, rank 9</span><br><span class="st-plan">108 (5): planned, rank 9</span><br><span class="st-plan">109 (37): planned, rank 9</span><br><span class="st-plan">110 (): planned, rank </span><br><span class="st-plan">112 (4): planned, rank 9</span><br><span class="st-plan">113 (12): planned, rank 9</span><br><span class="st-plan">114 (5): planned, rank 9</span><br><span class="st-plan">115 (14): planned, rank 9</span><br><span class="st-plan">116 (10): planned, rank 9</span><br><span class="st-plan">117 (25): planned, rank 9</span><br><span class="st-plan">118 (40): planned, rank 9</span></td><td class="n">261</td></tr>
+<tr><td>VI</td><td>VI.6 Les Dérivateurs (1990-91), the manuscript</td><td><span class="st-done">157-1 (270): done: printed edition (KMM) transcribed by us</span><br><span class="st-done">157-2 (441): done: printed edition (KMM) transcribed by us</span><br><span class="st-done">157-3 (355): done: printed edition (KMM) transcribed by us</span><br><span class="st-done">157-4 (408): done: printed edition (KMM) transcribed by us</span><br><span class="st-done">157-5 (661): done: printed edition (KMM) transcribed by us</span></td><td class="n">2135</td></tr>
+<tr><td>VI</td><td>VI.7 Around the derivators (1990-91)</td><td><span class="st-plan">158 (85): planned, rank 9</span></td><td class="n">85</td></tr>
+<tr><td>Workshop</td><td>W.1 Functional analysis (1953)</td><td><span class="st-ret">1 (149): scans 2-50 returned (pilot); rest rank 25</span></td><td class="n">149</td></tr>
+<tr><td>Workshop</td><td>W.2 Documents, lists and side topics</td><td><span class="st-plan">66 (4): planned, rank 25</span><br><span class="st-plan">68 (55): planned, rank 25</span><br><span class="st-plan">162-1 (9): planned, rank 25</span><br><span class="st-plan">162-6 (5): planned, rank 25</span><br><span class="st-done">139 (2): concordance only</span></td><td class="n">75</td></tr>
+</table>
+
+<h2>5. How good the first pass is, and what must change before the next sends</h2>
+<p><b>Error rates.</b> Four packages have been sample-checked against the scans. Today's check of MPL_142_001-093 (Claude Opus 5.5, effort max) found:</p>
+<ul>
+<li><b>17 errors in 1,093 words</b> on eight pages, 1.56 per 100 words. The earlier packages had 1.90, 0.73 and 2.15.</li>
+<li><b>16 of the 17 errors carry no doubt mark.</b> Where the scan settles a doubt mark, the first reading is right 17 times in 18. So the marks do not show a reader where the errors are.</li>
+<li><b>The new second-reader audit inside the prompt left every error in place.</b></li>
+</ul>
+<p class="why">What it settles: a sample check measures the error rate; it cannot replace a second pass. For an edition, every page needs a reading against its scan.</p>
+<p><b>Streams and package size.</b> Pro splits a 90-scan package into several parallel streams (about 0.6 minutes a page on the clock, 1.83 within a stream). The one package run in a single stream, 45 scans, had the lowest error rate, and the streams of the others disagree on recurring signs (here his curled G, written three ways). The check recommends a one-stream sentence in the template before anything else is sent. In one stream, a run takes about:</p>
+<ul>
+<li>45 scans: 80 minutes</li>
+<li>70 scans: 130 minutes</li>
+<li>80 scans: 145 minutes</li>
+<li>90 scans: 165 minutes</li>
+</ul>
+<p>Longer runs risk the workspace losses seen on 11 Nov; the checkpoint every ten pages limits the damage. You said 70 or 80, or a change to the prompt.</p>
+<p>My proposal: put the one-stream sentence in the template now, and re-cut packages 11 and 30–33 to about 70 scans. Then sample-check the first return: if it is under 1.0 error per 100 words, try 80 for the following packages; if not, stay at 70.</p>
+<p><b>Scans dropped as "blank".</b> The packager drops scans with little ink. On cote 142 it dropped scans 23, 43 and 65, which carry Grothendieck's pencil page numbers and notes such as "pages 5 à 23 (= 19 pages)". The return only repeated our word that they were blank.</p>
+<ul>
+<li><b>Returned packages:</b> 18 scans were dropped (cote 1: 4; 142: 3; 146: 11).</li>
+<li><b>Packages waiting to be sent:</b> 13 (16: scans 2, 24; 5: 2; 6: 39, 58, 64; 7: 2, 20; 8: 24, 28, 33, 77; 100: 47).</li>
+</ul>
+<p><b>Checked at 16:10 UTC</b> (Claude Opus 5.5, effort high; report <code>grothendieck_archive_transcription_20261110\DROPPED_SCANS_CHECK_20261112.md</code>):</p>
+<ul>
+<li><b>3 of the 31 carry his writing</b>, all in packages already returned:
+ <ul>
+ <li>142/23: "pages 5 à 23 (= 19 pages)";</li>
+ <li>142/43: "22 pages";</li>
+ <li>146/79: a cover sheet, "(19 p)" and "Groupoïdes".</li>
+ </ul>
+ They go into one small top-up package.</li>
+<li><b>28 are blank.</b> Seven carry only the archive's own sheet count (142/65 among them, so it is not his writing), and 21 carry show-through from a neighbouring sheet.</li>
+<li><b>None of the 13 dropped from the waiting packages carries writing</b>, so those packages need nothing put back.</li>
+</ul>
+<p>The packager's ink threshold wrongly dropped 1 in 10 of what it dropped. From now on it should keep any sheet with his writing, however faint.</p>
+
+<h2>6. The second pass</h2>
+<h3>6.1 What the plan already says, per book</h3>
+<p>From <code>PLACEMENT_EVERYTHING.md</code> §5, condensed. The pass runs as stage 3 of the plan: Claude checks each package against its scans, then one global pass per chapter. That global pass writes the page headers, the question-register entries and the concordance rows. A chapter is published when its packages have passed; a book does not wait for its last chapter.</p>
+<table>
+<tr><th>Book</th><th>Second pass: its checks</th><th>Development: the aim</th><th>Question register: first sources</th></tr>
+<tr><td>Front door</td><td>The Esquisse against the printed French text</td><td>None of its own. The annotation says, for each paragraph, which folders stand behind it and what became of the claim</td><td>Every programme statement of the Esquisse</td></tr>
+<tr><td>I</td><td>Each draft against the printed EGA, SGA and FGA by number. The first output is the map of what the drafts contain that print does not</td><td>"EGA V and after": the unwritten chapters written out with proofs in Stacks format, his plan as the table of contents; print cited, not redone. First chapters: V (from cote 25) and VI</td><td>The open problems for EGA VI (26); the thesis topics of 1964 (66)</td></tr>
+<tr><td>II</td><td>Outside witnesses: the letters to Tate, Deligne, Coates and Serre; "Motifs" (Elbaz-Vincent) for part of 12</td><td>His route to motives beside Saavedra, Deligne, Jannsen, André, Voevodsky; for each standard conjecture, what it gives and what stands without it; the Fourier transform of 47 beside Mukai's; a reconstruction of the 1976 lecture</td><td>Questions on cycles (14), the conjectures of 16, every "?" of 12, 13, 15</td></tr>
+<tr><td>III</td><td>The global pass of the Longue Marche: same notation, same hand</td><td>The Longue Marche book, with chapters 1, 4, 5 as its chapters on Teichmüller groupoids, the boundary, the anabelian questions; each conjecture with its status today</td><td>The "conjecture hâtive" and its revision; the notes files of the Longue Marche packages</td></tr>
+<tr><td>IV</td><td>The course texts at the CSG for 69 and 75; every enumeration and table recomputed by script</td><td>A self-contained text from the cube and icosahedron to regular polyhedra over finite fields and to maps; lessons from it chapter by chapter</td><td>His statements in Esquisse §§3–4 that nobody had taken the programme up</td></tr>
+<tr><td>V</td><td>For 156, the four versions against each other: 156-8 is the base, the others are variants against it</td><td>Tame topology and the dévissage of stratified spaces beside o-minimality and exit paths; for the geometry of forms, first a faithful account</td><td>The axioms he asks for in Esquisse §5; every "à expliciter" of 150, 151</td></tr>
+<tr><td>VI</td><td><i>Pursuing Stacks</i> against the arXiv and SMF editions; the <i>Dérivateurs</i> manuscript only where the companion marks a doubt</td><td>The <i>Dérivateurs</i> companion closed with 158 and carried back through 1982–84 to <i>Pursuing Stacks</i> and the Tapis de Quillen</td><td>The list of questions (108); the questions of 113–118 that return in <i>Les Dérivateurs</i></td></tr>
+<tr><td>Workshop</td><td>Cote 1 against the thesis and the Résumé</td><td>None planned</td><td>The thesis topics of 1964 (66)</td></tr>
+</table>
+
+<h3>6.2 Which parts need a full pass and which a light one (your question today)</h3>
+<p>Two kinds of pass:</p>
+<ul>
+<li><b>Full pass, as for La Longue Marche, all by Claude Opus 5.5 at effort max.</b>
+ <ul>
+ <li>First, every line is read against its scan and the fixes are applied.</li>
+ <li>Then the global pass per chapter writes the page headers, the question-register entries and the concordance. It works in what we already have (the Longue Marche findings, <i>Les Dérivateurs</i> companion and NEW_RESULTS, the Pro returns), so each chapter's companion builds on the earlier ones.</li>
+ </ul>
+ This is the part you called essential: most of this has never been edited. Fable takes no part in the second pass. After the pass, Fable reads the checked chapter and does the mathematics (section 7).</li>
+<li><b>Light pass</b>, where an edition or print already exists:
+ <ul>
+ <li><b>Against print:</b> drafts of texts that were printed (most of Book I) get a map against the print. The full pass then covers only what print does not contain.</li>
+ <li><b>Against an existing edition, by script:</b> typescripts and texts already written up are diffed against that edition, and Opus reads only the places that differ. This covers <i>Pursuing Stacks</i> (arXiv and SMF), the Esquisse (print), the Tapis de Quillen (partial transcription), part of cote 12 ("Motifs") and cotes 69 and 75 (the CSG course texts).</li>
+ <li><b>Les Dérivateurs:</b> only the concordance and the doubtful places.</li>
+ </ul></li>
+</ul>
+<p><b>Measured cost of the full pass.</b> Two Longue Marche second passes finished today (19 scans each, Claude Opus 5.5, effort max, about 170 turns each). They cost 7.1 and 8.1 cost units, that is 0.71 and 0.81 points of the weekly all-models meter: <b>about 0.04 points per scan</b>. <span class="warn">Corrected from 0.025, which was read before the two passes had finished.</span> A cost unit weights tokens by their price ratios: input 1, cache writes 1.25, cache reads 0.1, output 5, per million tokens.</p>
+<p>Conversions, calibrated on today's meter readings (±20 %):</p>
+<ul>
+<li>Opus: about 0.10 all-models points per unit.</li>
+<li>Fable: about 0.83 Fable points per unit, which is about 0.42 all-models points. Fable costs about four times Opus per token.</li>
+</ul>
+<p>The light pass has not been measured; I estimate it at a quarter of the full pass against print, and a sixth by diff. A pilot settles it.</p>
+<table>
+<tr><th>Book</th><th class="n">Pro pages</th><th>Proposed pass</th><th class="n">Opus, all-models points</th><th class="n">Fable readers (mathematics, after the pass)</th></tr>
+<tr><td>Front door</td><td class="n">85 (+313 API)</td><td>Full for 161-3 and 161-4. The Esquisse: if the check finds its printed text complete and faithful to the typescript, we use it; otherwise we transcribe what it lacks</td><td class="n">about 5</td><td class="n">1</td></tr>
+<tr><td>I</td><td class="n">2,898 (+260 API)</td><td>Full for the plans and unpublished drafts (rank 3 and what the map against print finds); against print for the rest</td><td class="n">about 40</td><td class="n">about 8 (transcription only for drafts of printed texts)</td></tr>
+<tr><td>II</td><td class="n">2,283 (+114 API)</td><td>Full: almost none of it is in print in any language</td><td class="n">about 90</td><td class="n">about 15</td></tr>
+<tr><td>III</td><td class="n">1,338</td><td>Full (La Longue Marche itself: second pass finishing)</td><td class="n">about 53</td><td class="n">about 9</td></tr>
+<tr><td>IV</td><td class="n">1,954</td><td>Full; enumerations recomputed by script</td><td class="n">about 78</td><td class="n">about 13</td></tr>
+<tr><td>V</td><td class="n">1,319</td><td>Full for 156-8 and the notes; the three earlier versions as variants against 156-8</td><td class="n">about 43</td><td class="n">about 8</td></tr>
+<tr><td>VI</td><td class="n">662 (+905 API)</td><td>Full for the notes. <i>Pursuing Stacks</i>: if the check finds the arXiv edition complete and faithful, we use it and transcribe only what it lacks (his handwritten annotations, if it leaves them out). <i>Les Dérivateurs</i>: concordance only</td><td class="n">about 29</td><td class="n">about 4</td></tr>
+<tr><td>Workshop</td><td class="n">222</td><td>Full</td><td class="n">about 10</td><td class="n">1</td></tr>
+<tr><th>All</th><th class="n">10,761</th><th></th><th class="n">about 350</th><th class="n">about 59</th></tr>
+</table>
+<p>About 350 points is about seven weeks of the Opus half of the week (the half that must stay free for the Fable cycles), or three and a half full weeks once the Fable resets are used up.</p>
+<p><b>This week</b> (meter at 15:22 UTC: all models 53 %, Fable 86 %; the non-Fable share is about 10 of its 50 points):</p>
+<ul>
+<li><b>Already committed, about 31 points</b> (16:00 UTC: all models 61 %, Fable 90 %, so the non-Fable share is about 16): the 10 Longue Marche second passes left (about 7.5); the last SGA 5 batches (about 2.5); SGA 6 (62 batches, about 16–19); my own coordination (about 4).</li>
+<li><b>Left for the archive this week: almost nothing.</b> The full second pass of Book III chapter 4 (cotes 147 and 149, 324 scans) costs about 13 points, and chapter 1 (cotes 146 and 142, 242 scans) about 10. Both wait for next week, unless SGA 6 waits instead: your choice.</li>
+</ul>
+
+<h2>7. The Fable plan</h2>
+<h3>7.1 What a Fable reader is and costs (measured)</h3>
+<ul>
+<li><b>The one clean example is Longue Marche expert 1</b> (Claude Fable 5.2, effort max). It read about 306k tokens of source (Part I, cote 140-2) and its own reasoning and notes added 486k. It ended at 855k of its 1M window in 91 turns, at a cost of 5.9 units, about <b>4.9 Fable points</b>.</li>
+<li><b>At effort max, the reader's own reasoning while it reads is about 1.6 times what it reads.</b> To end its reading at 55–60 % of the window, as you asked, a reader can take about <b>200–230k tokens of source</b>. Measured: about 1,420 tokens per archive page (transcription plus Pro's notes), so 220k is about 150 archive pages. With the transcription alone it is about 380 pages.</li>
+<li><b>Per reader:</b> about 4–4.5 Fable points for the reading and its write-up. After that it is a consultant: a short question at 600k costs about 0.05 Fable points.</li>
+<li><b>This morning's fan-outs cost more than all the planned readers below.</b> The S6 survey's 14 readers cost about 33 Fable points, and the Longue Marche successor's 5 forks about 20.</li>
+<li><b>Capacity:</b> 14 Fable points are left this week, then three resets of 100 each, about 314 Fable points in all. That is <b>about 65–70 readers</b>.</li>
+</ul>
+<h3>7.2 What there is to read (measured, current texts)</h3>
+<table>
+<tr><th>Material</th><th class="n">Transcription</th><th class="n">Notes</th><th>State</th></tr>
+<tr><td>Archive returns: Book III ch. 4 (147, 149)</td><td class="n">146k</td><td class="n">246k</td><td>no Fable has read them</td></tr>
+<tr><td>Archive returns: Book III ch. 1 (146, 142)</td><td class="n">173k</td><td class="n">236k</td><td>no Fable has read them</td></tr>
+<tr><td>Archive return: cote 1, scans 2–50</td><td class="n">29k</td><td class="n">—</td><td>no Fable has read it; functional analysis, wait for the rest of cote 1</td></tr>
+<tr><td><i>Les Dérivateurs</i> Pro returns 5–8 (STRATA, PATHS, BISITE, RESIDUE), TeX and reports without data files</td><td class="n">97k / 115k / 130k / 185k</td><td class="n">—</td><td>not reviewed at max (the Dérivateurs expert's reading was lost to its compactions)</td></tr>
+<tr><td>La Longue Marche Part II, cote 140-3 (695 pp.)</td><td class="n">455k</td><td class="n">190k</td><td>second pass done; no Fable has read it</td></tr>
+<tr><td>Part II continued, 140-4 (279 pp.), and the draft 140-1 (36 pp.)</td><td class="n">160k + 25k</td><td class="n">33k</td><td>second pass 7 of 15 done, 2 running; no Fable reading</td></tr>
+<tr><td>La Longue Marche Part I, 140-2</td><td class="n">280k</td><td class="n">255k</td><td>read by expert 1 (85 %, consultant)</td></tr>
+<tr><td>Everything Pro will transcribe (10,761 pp.), estimate</td><td class="n">about 6.1M</td><td class="n">about 9M</td><td>as it returns</td></tr>
+</table>
+<h3>7.3 Readers, in the order you set (untouched archive cotes first, then the Dérivateurs returns 5–8, then La Longue Marche Parts II–IV)</h3>
+<p>A Fable reader takes no part in the second pass. It reads the chapter once Opus has checked it, and does the mathematics, which then becomes prompts for GPT-6 Astra. Every reader runs as Claude Fable 5.2 at effort max. The brief allows no sub-agents ("Sub-agents allowed: 0") and sets a compute bound of a 600k context. A reader reads its chapter's checked text, Pro's notes, and the background its chapter needs: the Longue Marche section it links to, the relevant findings and NEW_RESULTS.</p>
+<p>It writes:</p>
+<ul>
+<li>FINDINGS: what the mathematics is, what is right, wrong or open in it, and how it bears on the Longue Marche and Dérivateurs results;</li>
+<li>HUNCHES;</li>
+<li>draft Pro prompts that push the mathematics. Claude Opus 5.5 then collects their zips.</li>
+</ul>
+<p>Afterwards it is a consultant, and a member of the later debate club.</p>
+<table>
+<tr><th>When</th><th>Reader</th><th>Reads (source tokens)</th><th class="n">End of reading</th><th class="n">Fable points</th></tr>
+<tr><td rowspan="3">Now (14 points left)</td><td>R1 Book III ch. 4, cote 147: structure at infinity of M(g,ν)</td><td>147 transcription 91k + notes 139k</td><td class="n">about 60 %</td><td class="n">4.5</td></tr>
+<tr><td>R2 Book III ch. 4, cote 149: the paginated sequel</td><td>149: 55k + 107k; La Longue Marche §§26–34 about 45k</td><td class="n">about 55 %</td><td class="n">4.5</td></tr>
+<tr><td>R3 Book III ch. 1, cote 146: Teichmüller groupoids</td><td>146: 87k + 84k; La Longue Marche §§19–25 about 40k</td><td class="n">about 55 %</td><td class="n">4.5</td></tr>
+<tr><td rowspan="7">Reset 1</td><td>R4 Book III ch. 1, cote 142: Galois action on Teichmüller</td><td>142: 86k + 152k (notes trimmed to fit)</td><td class="n">about 60 %</td><td class="n">4.5</td></tr>
+<tr><td>R5–R8 <i>Les Dérivateurs</i> returns 5, 6, 7, 8, one reader each</td><td>the return (97–185k) + the chapters of <i>Les Dérivateurs</i> it concerns, to about 220k</td><td class="n">about 55–60 %</td><td class="n">18</td></tr>
+<tr><td>R9–R11 La Longue Marche Part II, cote 140-3, in three thirds</td><td>about 150k transcription + 65k notes each; expert 1's findings on Part I</td><td class="n">about 55–60 %</td><td class="n">13.5</td></tr>
+<tr><td>R12 Part II continued (140-4) and the draft (140-1)</td><td>185k + 33k</td><td class="n">about 60 %</td><td class="n">4.5</td></tr>
+<tr><td>R13 Book II.4–5 test: cotes 16, 47, 54, 44 (when back)</td><td>about 50k + 70k</td><td class="n">about 40 %</td><td class="n">3.5</td></tr>
+<tr><td>R14–R15 Book II.1–2: crystals (when back)</td><td>about 200k + 300k, split in two</td><td class="n">about 55–60 %</td><td class="n">9</td></tr>
+<tr><td>Ranks 3–6 as they return: EGA plans, the dated notes around La Longue Marche, stratified spaces, motives (about 1,460 pp.)</td><td>about 10 readers</td><td class="n">about 55–60 %</td><td class="n">about 45</td></tr>
+<tr><td>Resets 2 and 3</td><td>Ranks 8–25 as Pro returns them (about 8,000 pp.)</td><td>about 45–50 readers; transcription only for the drafts of printed texts</td><td class="n">about 55–60 %</td><td class="n">about 200</td></tr>
+</table>
+<p class="why">What this means:</p>
+<ul>
+<li>The three resets are just enough for one Fable reading of the whole archive, with no room for fan-outs.</li>
+<li>Pro is the limit. About 120 packages at 90 scans (or about 150 at 70) remain. With two or three running at a time, at two hours or more each, that is two to three weeks of steady sending.</li>
+<li>So the Fable readers follow the returns, chapter by chapter, each after its Opus second pass.</li>
+</ul>
+
+<h2>8. Exact counts (12 Nov, 15:40 UTC)</h2>
+<table>
+<tr><th>Item</th><th class="n">Count</th></tr>
+<tr><td>Cotes in the open archive (cote 110 is not in the open listing)</td><td class="n">178</td></tr>
+<tr><td>Scan pages</td><td class="n">16,074</td></tr>
+<tr><td>Pages with no edition, transcription or study before us (estimate of SECTIONS_STATE)</td><td class="n">about 11,300</td></tr>
+<tr><td>Done: La Longue Marche 1,584; Les Dérivateurs 2,135; the medal 2 (concordance only)</td><td class="n">3,721</td></tr>
+<tr><td>Pro route / API route</td><td class="n">10,761 / 1,592</td></tr>
+<tr><td>Pro prompts for everything at 90 scans (upper bound) / at 45 / at 70 (estimate)</td><td class="n">134 / 254 / about 160–170</td></tr>
+<tr><td>Packages built / sent / returned / waiting (on hold)</td><td class="n">15 / 10 / 10 / 5</td></tr>
+<tr><td>Pages returned / scans built and waiting</td><td class="n">611 / 438</td></tr>
+<tr><td>Share of the Pro route returned</td><td class="n">5.7 %</td></tr>
+<tr><td>Packages left to build at 90 scans (ranks 3–6, 8–25)</td><td class="n">120</td></tr>
+<tr><td>Returned packages with a full second pass / with a sample check</td><td class="n">0 / 4</td></tr>
+<tr><td>Scans dropped as blank, to re-check (returned / waiting)</td><td class="n">18 / 13</td></tr>
+<tr><td>La Longue Marche second passes left (after the 2 running)</td><td class="n">10</td></tr>
+</table>
+
+<h2>9. Decisions for you</h2>
+<ol>
+<li><b>Packages:</b> the one-stream sentence in the template, and 11 and 30–33 re-cut to about 70 scans (80 if the first one checks under 1.0). Until then they stay on hold.</li>
+<li><b>The 31 dropped scans:</b> I look at each (contrast-enhanced, cheap) and put back the ones with writing.</li>
+<li><b>The second-pass split</b> of section 6.2: full where nothing has been edited, light against print or an existing edition.</li>
+<li><b>Book III chapters 4 and 1, Opus second pass</b> (about 13 and 10 points): next week, or this week instead of SGA 6. And whether to pilot the cheaper line check at effort high first.</li>
+<li><b>Fable:</b> your permission for readers R1–R3 now (about 13.5 of the 14 Fable points left), each Claude Fable 5.2 at effort max with no sub-agents. The guard blocks Fable until you say so. When the meter reaches 100 % I tell you so that you can reset; then R4 onward.</li>
+<li><b>Build ranks 4 and 5</b> now: the dated notes around La Longue Marche (cotes 144, 148, 143, 145, 141) and stratified spaces and tame topology (150–153, 155, 120, 121). Their context, the rank-1 returns, is in.</li>
+<li><b>The API route, with the $118 on the user's API account.</b> <span class="warn">Checked at 16:4x UTC</span> (Claude Opus 5.5, effort max; <code>grothendieck_archive_montpellier\EXISTING_EDITIONS_CHECK_20261112.md</code>): none of the three outside editions is faithful enough to be our text.
+ <ul>
+ <li><b><i>Pursuing Stacks</i>:</b> the arXiv text (CC0) covers all 593 typescript pages and the appendix. On 11 sample pages, though, it has 18 wording or formula changes; one is "B×C → C" where Grothendieck corrected by hand to "B×C → B". It also corrects silently, and merges or rewrites his handwritten notes without marking them. It leaves out 134-1, his draft table of contents, the dedication, Brown's documents, the French originals of the letters and the handwritten notes in 134-8.</li>
+ <li><b>The Esquisse</b> (cote 119, site pages 2–59): the Circle's text and CSG G94d both follow this typescript, footnotes included, but change words ("illusoires" to "illusoire", "et corps finis" to "sur les corps finis") and correct a formula silently; G94d also normalizes heavily. Six of the 11 sample pages show no difference in the Circle text.</li>
+ <li><b>EGA V:</b> cote 24 is Piotr Blass's English typescript translation of 1987 (§20, sections 1–11). Cote 25 is Grothendieck's French "Nouveau EGA V" prenotes: §§16, 17.15–16, 20 and 21, a letter to Dieudonné, and correction pages. Every outside text is an English translation; nobody has transcribed cote 25.</li>
+ </ul>
+ Proposed: collate the typed text against the scans over the API, using the arXiv text and the Circle's Esquisse as drafts (cheaper than transcribing from nothing, and checked page by page). Cote 25 is transcribed in full. His handwritten notes and annotations go by Pro, since handwriting needs the app. At about $0.06 a page that is about $70 (cote 134 about $50, the Esquisse about $4, cotes 24–25 about $16), within the $118. One batch at a time, with a ledger row each.</li>
+</ol>
+<p class="mut">Not launched: nothing in this report. Running meanwhile: SGA 5 batches 396–440 (9 agents, Claude Opus 5.5, effort max); the two Longue Marche second passes; the Dérivateurs expert placing results into its drafts (Claude Fable 5.2, effort max).</p>
+</main></body></html>
