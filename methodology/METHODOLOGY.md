@@ -313,7 +313,21 @@ Galois, against the Grothendieck–Teichmüller relations (§§36–47).**
 - Model and run: GPT-6 Astra (ChatGPT Pro mode); returned 11 November 2026 with the paper and its PDF, the
   registers, the report, and 27 programs with their outputs and build logs.
   79 statements by its own labels: 51 Proved, 12 Known, 10 Refuted, 6 Open.
-- Review: not yet made. Every statement of this answer is unchecked.
+- Review: Claude Fable 5.2, the author of the prompt, 12 November 2026
+  ([reviews/LM2_LOOP_EQUATIONS/REVIEW_author.md](../raw/reviews/LM2_LOOP_EQUATIONS/REVIEW_author.md)). It read the
+  register (all 79 rows), the report, the new conditions, the proofs of B.g1, B.g2, B.g4, B.g5, B.g11, E.1 to E.4,
+  B.f5, B.f7, B.f8, C.d5, D.6 and D.7, and the other sections in the register only; it ran none of the return's
+  programs. Its own programs (`checks_author/check_lm2.py`, exact arithmetic, and `checks_author/check_psl27.py`)
+  recompute B.g2 to B.g5 through weight 9 (the pentagon coefficient 16 of the element of weight 7 included), C.r1, C.r2,
+  C.a3, D.5 and the 57 classes of generating pairs of `PSL_2(F_7)` (B.f5). Each of the 79 statements has a verdict,
+  many of them "not followed" (statement read, proof not read). No statement labelled Proved, Known or Refuted was
+  found false among those it checked; C.d1, on which the congruence results rest, was not followed. The return
+  corrects the LM3 review: the solution space of the two linear cycle equations first exceeds that of `grt_1` in
+  weight 4, not in weight 7 (B.g4), and the review says so. The review adds results of its own, checked by no one
+  else: for every ℓ ≥ 5, an element with leading term `q_7` in the pro-ℓ centralizer of `𝔖_3`, outside the pro-ℓ
+  `GT` (the pro-ℓ half of B.g11 and F.3), and reductions of E.3, D.6, C.d5 and B.f7. The readings register was not
+  reviewed row by row.
+- Path forward: sections "After LM2" in the prompts `LM4` to `LM8`, which will be published with their answers.
 
 **`LM3_TEICHMULLER_TOWER`: the Teichmüller tower, its profinite forms and the "conjecture fondamentale" (§§19, 21,
 26–30, 32–36).**
