@@ -7,7 +7,9 @@ This folder holds raw research outputs, not edited for publication:
   LM3b), with the reviews of LM3 and LM2 by Claude Fable 5.2;
 - first-pass transcriptions by GPT-6 Astra (ChatGPT Pro mode) of nine packages of Grothendieck's manuscript notes from
   the Montpellier archive, cotes 142, 146, 147 and 149, which the archive groups with *La Longue Marche*, with sample
-  checks of three of them by Claude Opus 5.5;
+  checks of three of them by Claude Opus 5.5; and of one package of cotes 16, 47, 54 and 44, which belong to Book II
+  (Cohomology and motives) of the archive plan and are filed here with the other archive returns until the archive has
+  its own repository;
 - the prompts with the full list of what was attached to each, the working notes, and the scripts that built the
   prompts and the archive packages;
 - second passes of the transcription of *La Longue Marche* itself, against the archive's scans, that are not yet in
@@ -56,6 +58,7 @@ Dates are those of the return (UTC).
 | `pro_returns/MPL_146_001-099/` | First-pass transcription, cote 146, scans 1–99 | 11 Nov 2026 | not yet |
 | `pro_returns/MPL_146_100-134/` | First-pass transcription, cote 146, scans 100–134 | 11 Nov 2026 | not yet |
 | `pro_returns/MPL_149_001-090/` | First-pass transcription, cote 149, scans 1–90 | 12 Nov 2026 | not yet |
+| `pro_returns/MPL_16+47+54+44/` | First-pass transcription, cotes 16 (scans 1–56, 54 nonblank), 47 (scans 1–11), 54 (scans 1–8) and 44 (scans 1–9): 82 scans. These cotes belong to Book II (Cohomology and motives) of the archive plan; they are filed here with the other archive returns until the archive has its own repository | 12 Nov 2026 | not yet |
 | `reviews/` | The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` with the reviewer's programs; the three sample checks with the checked pages corrected (`pages_checked/`) and the list of page images they used (`IMAGES.md`), with the two comparison crops cited by the check of `MPL_142_001-093` (`img/`) | 11–12 Nov 2026 | — |
 | `prompts/` | Each prompt (`<name>/PROMPT.md`) with `ATTACHMENTS.md`, `attached/` (our own attached files not published elsewhere in this repository) and `work/` (background notes, manifests, earlier versions); the index and overview of the Longue Marche prompts (`README.md`, `OVERVIEW.md`), their shared second half (`_COMMON_BLOCK.md`) and the record of their rewrite (`work/`) | 10–11 Nov 2026 | — |
 | `tools/archive/` | The scripts that download the archive's scans, enhance the pages and build the transcription packages, and the transcription prompt template | 10–11 Nov 2026 | — |
