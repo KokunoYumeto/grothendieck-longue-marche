@@ -47,6 +47,7 @@ Dates are those of the return (UTC).
 | `pro_returns/LM2_LOOP_EQUATIONS/` | Answer to the prompt on the equation of loops in types (0,3) and (1,1): Grothendieck's conditions on the image of Galois, against the Grothendieck–Teichmüller relations (§§36–47) | 11 Nov 2026 | yes (`reviews/LM2_LOOP_EQUATIONS/`) |
 | `pro_returns/LM3_TEICHMULLER_TOWER/` | Answer to the prompt on the Teichmüller tower, its profinite forms and the "conjecture fondamentale" (§§19, 21, 26–30, 32–36) | 11 Nov 2026 | yes (`reviews/LM3_TEICHMULLER_TOWER/`) |
 | `pro_returns/LM3b_TEICHMULLER_PUSH/` | Answer to the second prompt on the tower: the rows the first answer left open, and his statements derived from theorems that were only cited | 11 Nov 2026 | not yet |
+| `pro_returns/MPL_142_001-093/` | First-pass transcription, cote 142, scans 1–93 (90 nonblank) | 12 Nov 2026 | not yet |
 | `pro_returns/MPL_147_003-047/` | First-pass transcription, cote 147, scans 3–47 | 11 Nov 2026 | sample check of eight pages (`reviews/MPL_147_003-047/`) |
 | `pro_returns/MPL_147_048-137/` | First-pass transcription, cote 147, scans 48–137 | 11 Nov 2026 | sample check of eight pages (`reviews/MPL_147_048-137/`) |
 | `pro_returns/MPL_147_138-190/` | First-pass transcription, cote 147, scans 138–190 | 11 Nov 2026 | not yet |
