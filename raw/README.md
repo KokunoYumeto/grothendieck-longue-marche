@@ -9,7 +9,10 @@ This folder holds raw research outputs, not edited for publication:
   the Montpellier archive, cotes 146, 147 and 149, which the archive groups with *La Longue Marche*, with sample checks
   of two of them by Claude Opus 5.5;
 - the prompts with the full list of what was attached to each, the working notes, and the scripts that built the
-  prompts and the archive packages.
+  prompts and the archive packages;
+- second passes of the transcription of *La Longue Marche* itself, against the archive's scans, that are not yet in
+  the edition's `transcription/` and `notes/` folders, with their prompts and scripts (`second_pass/`, described at
+  the end of this file).
 
 How this was done, return by return, is in the section "Raw research outputs (11 November 2026)" of
 [../methodology/METHODOLOGY.md](../methodology/METHODOLOGY.md).
@@ -18,6 +21,8 @@ How this was done, return by return, is in the section "Raw research outputs (11
   return is given below.
 - The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` are by Claude Fable 5.2; the two sample checks of
   the archive transcriptions are by Claude Opus 5.5.
+- The second passes in `second_pass/` are by Claude Opus 5.5, one subagent per package, over the first pass by
+  GPT-6 Astra (ChatGPT Pro mode).
 - The labels Proved, Refuted, Known and Open are the model's own. The reviews give the verdicts checked so far;
   statements the reviews do not cover are unchecked.
 - No priority or novelty is claimed.
@@ -54,3 +59,44 @@ Dates are those of the return (UTC).
 | `tools/archive/` | The scripts that download the archive's scans, enhance the pages and build the transcription packages, and the transcription prompt template | 10–11 Nov 2026 | — |
 | `tools/prompts/` | The scripts that rewrote and packaged the Longue Marche prompts | 11 Nov 2026 | — |
 | `tools/lm1_text_copy/` | The scripts that recovered the text copy of the LM1 chat and split it into the files of the answer, with the log of the split (every line left out, with its text) | 11 Nov 2026 | — |
+| `second_pass/` | Second passes of the transcription that are not yet in the edition, with their prompts and scripts, and the fixes merged by hand on 12 Nov (section "Second passes" below) | 12 Nov 2026 | — |
+
+## Second passes (`second_pass/`)
+
+The method is section 3 of [../methodology/METHODOLOGY.md](../methodology/METHODOLOGY.md). For each package one
+subagent (Claude Opus 5.5) reads the first pass line by line against the archive's scans, enlarged where the hand is
+hard, and against the earlier transcriptions used as witnesses. It writes `LM_<KEY>_checked.tex` (the corrected
+transcription), `LM_<KEY>_changes.md` (each change with its evidence and confidence, the places still unresolved, the
+witnesses' own errors) and `LM_<KEY>_notes_checked.md` (the first pass's research notes checked against the corrected
+text, and its own notes). Its prompt is `PROMPT_LM_<KEY>.md`. The edition's `transcription/` and `notes/` hold these
+files for the packages up to `LM_P070-071` (cote 140-3, scan 130). The files here are in no release yet.
+
+### 12 November 2026
+
+The pilot packages of cote 140-2 (first pass of prompt version 1). Claude Opus 5.5, subagent, 12 Nov 2026:
+
+| Package | Scans | Changes (high, medium, low) | Places unresolved | First-pass notes | Own notes |
+|---|---|---|---|---|---|
+| `LM_P06` | 51–60 | 68 (14, 42, 12) | 67 | 14 kept with corrections, 1 sharpened, 7 kept as they were, none dropped | 10 |
+| `LM_P07` | 61–70 | 69 (18, 35, 16) | 57, 26 of them in struck-through text | 12 kept, 15 corrected, none dropped | 6 |
+| `LM_P08` | 71–80 | 63 (13, 32, 18) | 35 | 19 kept, 4 corrected, none dropped | 3 |
+| `LM_P09` | 81–90 | 70 (18, 34, 18) | 51 | 27 kept, 10 corrected, none dropped | 5 |
+| `LM_P10` | 91–100 | 57 (2, 37, 18) | 60 | 17 kept, 6 corrected, none dropped | 3 |
+
+`work_LM_P08/` and `work_LM_P10/` hold the scripts these two passes wrote (crops, a check of the TeX) and the wrapper in
+which each compiled its text; `work_LM_P10/PROGRESS.md` is that pass's own record. The other three wrote crops only.
+
+The fixes merged by hand. Claude Opus 5.5, subagent, 12 Nov 2026: `merge_fixes_open.md` lists the 33 fixes from the
+fix packages (METHODOLOGY.md, "Fix packages and the strict prompt"; cote 140-2, scans 110–400) that the scripted merge
+of 8 Nov had not placed in the second-pass texts. Each
+was checked against its scan, and the outcome is written after it: 12 applied, 3 rejected (the ink does not show the
+fix's reading), 18 already in. The twelve texts that changed are `LM_<KEY>_checked_fixed.tex` of P011, P013, P017,
+P019, P022, P024, P025, P026, P032, P033, P034 and P035 (scans 101–350); before the merge they were
+`transcription/140-2/LM_<KEY>_checked.tex` of this repository. `work_merge_20261112/` holds the scripts, the dump of
+each fix with the text around it (`open_dump.md`), the record of the work (`PROGRESS.md`), and
+`fix_tikzcd_in_macros.py` (written 8 Nov), which repaired the LaTeX of seven diagrams of P013 without changing what
+they say.
+
+Not included: the crops of the scans (the scans are the archive's own), LaTeX logs and auxiliary files, the
+compile-check PDFs and the merge's `build/` folder (wrappers written by `compile_changed.py`), and the merge's dated
+copies of files already in this repository.
