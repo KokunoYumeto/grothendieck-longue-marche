@@ -1,0 +1,478 @@
+\section{Definitions, normalizations and the modular triple}
+
+\begin{statement}{A.1}{Proved}{The modular dictionary and its polynomial identities}
+For the matrices fixed above, the following table defines affine group
+schemes over $\Z$. In entries involving solutions of an equation, the
+group law is transported through the indicated isomorphism; it is not
+asserted to be componentwise multiplication in $(\alpha,\beta)$.
+\end{statement}
+\begin{longtable}{p{.16\linewidth}p{.56\linewidth}p{.18\linewidth}}
+\toprule Symbol&Definition or corrected formula&C3 scan; folio\\\midrule\endhead
+$G,SG,PG$&$\GL_2,\SL_2,\PGL_2$&323;462\\
+$B_0,B'_0$&Upper triangular invertible matrices;
+ $b_0(m,l)=\left(\begin{smallmatrix}m&l\\0&1\end{smallmatrix}\right)$&368;485\\
+$T_0,L_0,L_1$&$D(m)=\operatorname{diag}(m,1)$; $L_0(z)$; $L_1(z)$&414;508--509\\
+$T_r$&$\{cr+dI:Q_3(c,d)\in R^\times\}$&479;(9)\\
+$T_s$&$\{ts+uI:Q_2(t,u)\in R^\times\}$&479;(9)\\
+$ST_r,ST_s$&Kernels of the respective determinant (norm) maps&376;489\\
+$N'_s$&$\{b\in G:b s b^{-1}=e s,\ e^2=1\}$&325,479\\
+$\mathcal X$&$(\zeta,\eta,\mu)$ with determinants $1$,
+ $\operatorname{tr}(\zeta r)=1$, $\operatorname{tr}(\eta s)=0$,
+ $\zeta=\eta L_1(\mu-1)$&268,370;435,486\\
+$\mathcal G_{r,s}$&$[\alpha,r]=[\beta,s]L_1(\mu-1)$,
+ $\alpha,\beta\in G$; $\simeq B'_0\times T_r\times T_s$&368;(1)--(2)\\
+$\mathcal G^*_{r,s}$&$[\alpha,r]=e[\beta,s]L_1(\mu-1)$,
+ $e^2=1$; $\simeq B'_0\times T_r\times N'_s$&371;(9)--(10)\\
+$S\mathcal G^*_{r,s}$&Previous row with $(\det\alpha)^2=1$, $\det\beta=1$&373;487\\
+$\widetilde S\mathcal M$&$B'_0\times T_r\times N'_s\times\GL_2$ in the coordinates of B.4&393;(43)--(44)\\
+$\widetilde{\mathcal M}$&$\Gm\times T_r\times N'_s\times\GL_2$; quotient of the preceding row by $L_0$&393;(43)--(44)\\
+$\mathcal H$&$\{(a,b)\in T_r\times N'_s:(\det b/\det a)^2=1\}$&375,416;509\\
+$\mathcal M$&$\{(a,b,U):\det U=\det b=e'\det a,\ (e')^2=1\}$&399;(13);479;(3)\\
+$S\mathcal M$&$B'_0\times_{\Gm,\det,\chi}\mathcal M$&479;(4)\\
+$\chi,e,e'$&$\det U=\det b$; $b s b^{-1}=e s$; $\det b/\det a$&480;(12bis)\\
+$\mathcal M^0,\mathcal H^0$&Kernels of $(e,e')$; equal-norm triples or pairs&400,416\\
+$\mathcal M(0)$&$(a,b)\mapsto(a,b,D(\det b))$&402--403,417\\
+$\mathcal M[0]$&$\mathcal M(0)L_0=\{(a,b,U):U\in B'_0\}$&417--418\\
+$\mathcal M(s),\mathcal M(r)$&$U=b$; $U=a$, the latter only over $e'=1$&476,491\\
+$\Sigma$&Scalar sign factors in $ST_r\times ST_s\times\SL_2$;
+ the scheme is $\mu_2^3$, whereas global discrete signs form $(C_2)^3$&401--402\\
+$I^0,J^0$&$\ker(\mathcal M^0\to G)$;
+ $\ker(\mathcal M^0\to PG)$&400;(17)--(18)\\\bottomrule
+\end{longtable}
+\begin{proof}
+Solving $Ar=rA$ gives $A=cr+dI$; solving $As=sA$ gives $A=ts+uI$.
+Their determinants are the displayed quadratic forms. Solving
+$bs=e sb$, with $e^2=1$, gives
+\[
+ b=\begin{pmatrix}u&t\\-et&eu\end{pmatrix},\qquad
+ \det b=e(t^2+u^2).
+\]
+Thus the sign is unique, including over nonreduced rings. It is a
+character because conjugation is multiplicative. The subgroup $N'_s$
+is $T_s\rtimes\mu_2$: a splitting is $e\mapsto\operatorname{diag}(1,e)$,
+and its action on $ts+uI$ sends $t$ to $et$. All remaining determinant
+conditions are equalities between characters and hence define closed
+subgroups of the indicated affine groups. Representability of inverses
+uses the explicitly inverted norms. The parametrization assertions are
+proved in B.1; the subgroup and exact-sequence assertions are proved in
+B.4--B.6.
+
+The program \texttt{AB\_identities.py} works over universal polynomial
+rings and their indicated localizations. It verifies matrix powers,
+both norms, commutator formulas, the parametrizing identity and the
+general $(v,w)$ normalization. It does not replace proofs of
+representability or exactness by finite testing.
+\end{proof}
+
+\begin{statement}{A.2}{Proved}{Exactly when a regular unipotent lift is unique}
+Let $R$ be a ring and let $U\in\GL_2(R)$ have trace $2$, determinant $1$
+and a non-scalar image in every residue field. The matrices with those
+properties and the same image as $U$ in $\PGL_2(R)$ are exactly
+\[
+ (1+\tau)U,\qquad \tau\in R,\quad 2\tau=0,\quad\tau^2=0.
+\]
+Here ``same image'' is equality of sections of the fppf quotient;
+the scalar relating two global matrix lifts is global. Consequently
+uniqueness on $R$-points is equivalent to
+$\{\tau\in R:2\tau=\tau^2=0\}=0$. For a scheme $S$ the analogous
+statement uses $\Gamma(S,\mathcal O_S)$; uniqueness after every base
+change is equivalent to $2$ being invertible on $S$.
+\end{statement}
+\begin{proof}
+If $U'=\lambda U$, determinants give $\lambda^2=1$ and traces give
+$2\lambda=2$. With $\tau=\lambda-1$ these equations are precisely
+$2\tau=\tau^2=0$. Conversely these equations preserve trace and
+determinant, and Cayley--Hamilton gives $(U'-I)^2=0$. They preserve
+regularity because $\lambda=1$ in every residue field. The scalar is
+global since the kernel sheaf of $\GL_2\to\PGL_2$ is $\Gm$.
+If $2$ is invertible the assertion persists under all base changes.
+If a characteristic-$2$ point exists, base change to
+$k[\delta]/(\delta^2)$ supplies the nonzero $\tau=\delta$.
+
+The ambiguity is represented by the nonflat finite group scheme
+\[
+ H=\Spec\Z[\tau]/(2\tau,\tau^2),\qquad
+ \Delta\tau=\tau\otimes1+1\otimes\tau+\tau\otimes\tau.
+\]
+This is exactly the manuscript's $\mu'_2$, not a finite flat replacement
+for it (C3:358--360, fols.480--481). Over $\Z/4$, the two matrices
+$\left(\begin{smallmatrix}1&0\\1&1\end{smallmatrix}\right)$ and
+$\left(\begin{smallmatrix}3&0\\3&3\end{smallmatrix}\right)$ are a
+counterexample to unrestricted uniqueness. Both rings of cardinality
+$2$ and $3$ are fields, so cardinality $4$ is minimal. The computation
+checks all stated equalities, not only their reductions modulo $2$.
+\end{proof}
+
+\begin{statement}{A.3}{Proved}{Pinning with specified lifts, and its projective ambiguity}
+Suppose $R=\Z$, a field, or a local ring, and let $(E,R_0,S_0)$ be a
+triple in $\GL_2(R)$ satisfying
+\[
+ E=-R_0S_0^{-1},\quad \det R_0=\det S_0=1,\quad
+ \operatorname{tr}R_0=1,\quad\operatorname{tr}S_0=0.
+\]
+Assume $E$ is regular unipotent and its fixed line and its inverse
+image under $S_0$ are complementary. There is a basis, unique modulo
+a common scalar, carrying the triple to
+$(L_1(1),r,s_-)$. Therefore the corresponding inner identification
+of group schemes is unique. For the pair of projective images alone,
+the stabilizer of the standard pair in $\PGL_2(R)$ is
+\[
+ \{[I+\tau r]:2\tau=\tau^2=0\}.
+\]
+Thus projective data alone need not determine a unique pinning.
+\end{statement}
+\begin{proof}
+Write $N=E-I$. A regular nilpotent endomorphism of a rank-two free
+module has image and kernel the same invertible direct summand $L_1$.
+Locally this follows by choosing a unit entry of $N$ and solving
+$N^2=0$; the kernel and image constructions then glue. Put
+$L_0=S_0^{-1}L_1$. Complementarity implies that
+$N:L_0\to L_1$ is an isomorphism. Over the listed rings both lines
+are free. Choose $e_0$ generating $L_0$ and put $e_1=N e_0$.
+Then $E=L_1(1)$ and $S_0$ has form
+$\left(\begin{smallmatrix}0&b\\c&d\end{smallmatrix}\right)$.
+Its trace gives $d=0$; from $R_0=-ES_0$ and its trace we get
+$b=-1$; the determinant gives $c=1$. Only the common scalar remains.
+The same proof for a rank-two vector bundle gives
+$V\simeq L\otimes\mathcal O_S^2$, hence an identification of its
+endomorphism algebra even when $L$ is not trivial. For an Azumaya
+algebra the argument is made fppf locally and descends because the
+identification just obtained is unique. This proves the assertion for
+specified nilpotent/root-subgroup data on a general base as well.
+
+For projective data, a matrix representative of a conjugator satisfies
+$grg^{-1}=\lambda r$. Taking traces gives $\lambda=1$, so
+$g=cr+dI$. Write $gs_-=e s_-g$; determinant comparison gives $e^2=1$.
+The entries give $c=(e-1)d$ and $(e-1)c=0$. Since $g$ is invertible,
+$d$ is a unit, so $\tau=e-1$ satisfies $\tau^2=2\tau=0$ and
+$[g]=[I+\tau r]$. Conversely these equations suffice. Over $\Z/4$
+the matrix $\left(\begin{smallmatrix}1&2\\2&3\end{smallmatrix}\right)$
+is a nonidentity projective stabilizer; this is checked in the code.
+For the listed rings every projective conjugator has a matrix
+representative because their Picard groups vanish. On a general base
+the calculation describes the stabilizer sheaf fppf locally.
+The qualification in the margin of C3:323, fol.462, is therefore
+essential. The later inclusion of a based additive subgroup in
+C3:413, fol.508, repairs the ambiguity.
+\end{proof}
+
+\begin{statement}{A.4}{Proved}{Classification of normalized modular triples}
+Over each of $R=\Z$, an arbitrary field, $\Z/4$, $\Z/8$ and $\Z/9$,
+the triples of A.3 form one $\GL_2(R)$ conjugacy class. Their
+$\SL_2(R)$ conjugacy classes are naturally indexed by
+$R^\times/(R^\times)^2$. In particular there are respectively
+$2,2,4,2$ such classes over $\Z,\Z/4,\Z/8,\Z/9$; for a field the
+square-class formula applies in every characteristic, including
+imperfect characteristic $2$.
+\end{statement}
+\begin{proof}
+A.3 gives transitivity. The common centralizer of $r,s_-$ is the
+scalar group: commuting with their sum $\operatorname{diag}(0,1)$
+forces a matrix to be diagonal, and commuting with $s_-$ makes the
+diagonal entries equal. Two conjugators yield the same $\SL_2$ orbit
+exactly when their determinants differ by the determinant of a
+scalar, namely a square. Every unit is the determinant of
+$\operatorname{diag}(a,1)$. This proves both completeness and
+separation of the invariant.
+
+For finite rings the program enumerates every matrix, every pair with
+the prescribed traces and determinants, and the regularity and
+transversality conditions in every residue field. Independently it
+forms every conjugacy orbit. The results are
+\[
+\begin{array}{c|rrrrrrr}
+R&\F_2&\F_3&\Z/4&\F_5&\F_7&\Z/8&\Z/9\\\hline
+\text{triples}&6&24&48&120&336&384&648\\
+\GL_2\text{ orbits}&1&1&1&1&1&1&1\\
+\SL_2\text{ orbits}&1&2&2&2&2&4&2
+\end{array}
+\]
+Complete representatives and orbit sizes are in
+\texttt{AB\_enumeration.json}. This classification concerns the
+normalized lifts, not arbitrary matrices merely having powers
+$R_0^3=S_0^2=-I$. The latter conditions alone permit additional
+triples; transversality and the based unipotent datum cannot be deleted.
+\end{proof}
+
+\begin{statement}{A.5}{Proved}{The regular conjugacy condition and the two norm obstructions}
+For $z=r$ or $s$, let $\mathcal A_z$ consist of matrices $Y\in\SL_2$
+such that $\operatorname{tr}(Yz)=\operatorname{tr}z$, and let
+$\mathcal A_z^{\rm reg}$ be the open locus where $Yz$ is non-scalar
+in every geometric fibre. The map
+\[
+ \GL_2\longrightarrow\mathcal A_z^{\rm reg},\qquad
+ A\longmapsto[A,z]
+\]
+is an fppf $T_z$-torsor. The same map from $\SL_2$ is an fppf
+$ST_z$-torsor. Over a ring $R$, once a $\GL_2(R)$ conjugator exists,
+its $\SL_2(R)$ obstruction is exactly its determinant in
+$R^\times/N(\mathcal O_z\otimes R)^\times$.
+\end{statement}
+\begin{proof}
+The trace and determinant conditions say that $Yz$ and $z$ have the
+same characteristic polynomial. A matrix that is non-scalar over
+every residue field is locally cyclic: a cyclic vector in a residue
+field lifts to one after localizing at its cyclic determinant.
+Relative to a cyclic basis its matrix is the companion matrix of that
+polynomial. Consequently $Yz$ and $z$ are Zariski locally conjugate,
+and two conjugators differ on the right by $T_z$. This proves the
+first torsor assertion. The norm $T_z\to\Gm$ is fppf surjective:
+a unit has a square root after the finite faithfully flat extension
+$R[T]/(T^2-a)$, and scalar elements have square norm. Adjusting a
+conjugator by such an element gives determinant $1$, proving the
+second assertion and the exact point obstruction. A global
+$\GL_2(R)$ conjugator can additionally be obstructed by a rank-one
+module over the quadratic algebra; local cyclicity does not erase
+this Picard obstruction.
+
+For $R=\Z$, the Gaussian and Eisenstein orders are Euclidean for
+their norms. Indeed rounding a complex coordinate to the nearest
+Gaussian lattice point gives squared distance at most $1/2$; for the
+triangular Eisenstein lattice the corresponding bound is $1/3$.
+Division with remainder therefore decreases the positive integral
+norm. Both ideal class groups vanish. A matrix with either
+irreducible characteristic polynomial makes $\Z^2$ a torsion-free
+rank-one module over the corresponding order, hence a free one.
+Thus global conjugators exist for the numerical targets over $\Z$.
+For $r$, the identity
+\[
+ \det(A)[A,r]_{22}=g^2+gh+h^2
+ \quad\left(A=\begin{pmatrix}a&b\\g&h\end{pmatrix}\right)
+\]
+shows that the $\SL_2(\Z)$ image is exactly $Y_{22}>0$; for $s$ the
+identity $[A,s]=AA^t/\det A$ shows it is exactly the positive definite
+target, equivalently $Y_{22}>0$. The missed integral points are
+therefore specified completely by $Y_{22}<0$ in the respective
+numerical target. No finite list is intended for these infinite sets.
+\end{proof}
+
+\begin{statement}{A.6}{Refuted}{Specific formula slips and their corrections}
+The following formulas, in the stated matrix convention, are false:
+the trace condition $B+D-C=1$ in the transcription of C3:266;
+$s(b)=b^{-t}$ and $bb^t=eI$ for arbitrary $b\in N'_s$ in C3:480;
+and the claim in C3:401 that $ST_s$ is central in the entire signed
+$\mathcal M$. Their correct forms are, respectively,
+\[
+ C+D-B=1,\qquad sbs^{-1}=(\det b)b^{-t},\qquad
+ bb^t=e(\det b)I,
+\]
+and centrality of $ST_r\times ST_s$ in $\mathcal M^0$ only.
+\end{statement}
+\begin{proof}
+Direct multiplication gives $\operatorname{tr}(Yr)=C+D-B$.
+The universal $2\times2$ adjugate formula gives
+$sbs^{-1}=(\det b)b^{-t}$. The normalizer condition then gives the
+displayed equation for $bb^t$. Taking $b=2I$ over $\Q$ disproves
+the formula omitting its determinant. Conjugation by the splitting
+of $e=-1$ in $N'_s$ inverts $ST_s$. For example $s\in ST_s(\Z)$
+is sent to $s^{-1}=-s\ne s$. This is a concrete counterexample to
+the asserted centrality. The first correction is supported also by
+C3:151's $C+D-B=1$; the incorrect order of $B,C$ was checked
+visually on scan266 itself. The centrality restriction is already
+corrected in the manuscript at C3:419, (45). The alternatives in C3:328 for the lower-right entry
+of $R_0^2S_0$ are tested universally: the correct expression is
+$-w(w^2+2v)+v+w^2$. All these checks and the degree-three identities
+of C3:327--330 are recorded in the output and readings register.
+\end{proof}
+
+\begin{statement}{A.7}{Proved}{Projective modular pairs, including imperfect fields}
+Consider projective pairs satisfying the order-$3$, order-$2$,
+fppf-local regular unipotence and fibrewise transversality conditions
+of C3:323, without specifying a unipotent lift. Over a field $k$ of
+characteristic different from $2$ there is one $\GL_2(k)$ orbit,
+with $\SL_2(k)$ orbits indexed by $k^\times/k^{\times2}$.
+In characteristic $2$, put $K=k[T]/(T^2+T+1)$, a quadratic etale
+algebra. The $\GL_2(k)$ orbits are indexed by
+\[
+ N_{K/k}(K^\times)/k^{\times2}.
+\]
+Each such orbit has its $\SL_2(k)$ orbits forming a torsor for
+$k^\times/k^{\times2}$. Over $\Z,\Z/4,\Z/8,\Z/9$ there is one
+$\GL_2$ orbit; the numbers of $\SL_2$ orbits are $2,1,2,2$.
+These projective counts differ from A.4's counts of normalized lifts.
+\end{statement}
+\begin{proof}
+Transversality implies that both projective elements are non-scalar
+in every residue field. Otherwise the two unipotent fixed lines
+would coincide in that fibre. For a representative $R$ of the
+order-$3$ element, Cayley--Hamilton gives
+\[
+ R^3=((\operatorname{tr}R)^2-\det R)R
+       -(\operatorname{tr}R)\det R\,I.
+\]
+Since $R^3$ is scalar and the off-diagonal entries and diagonal
+difference generate the unit ideal, $\det R=(\operatorname{tr}R)^2$.
+The trace is a unit. Dividing by it gives trace and determinant $1$.
+A cyclic basis conjugates it to $r$ over a field or local ring;
+over $\Z$ the Eisenstein ideal argument in A.5 gives the same result.
+The projective involution has a trace-zero representative $S$, by
+the same regularity argument applied to its square.
+
+If $2$ is invertible, a projectively unipotent matrix $V$ has the
+unique unipotent normalization $2V/\operatorname{tr}V$.
+A.3 applies after scaling $S$ compatibly. In characteristic $2$
+the condition is $\operatorname{tr}(rS)=0$, since
+$S^{-1}=S/\det S$. The solutions are precisely $S=z s$ with
+$z\in K^\times$. Here $s$ induces the nontrivial automorphism
+$z\mapsto\bar z$ of $K$ by conjugation, and $\det S=N(z)$.
+Scalar changes of $S$ multiply $z$ by $k^\times$; conjugation
+preserving $r$ multiplies it by $g/\bar g$ for $g\in K^\times$.
+The kernel of the norm consists exactly of such quotients:
+if $N(w)=1$ and $w\ne1$, take $g=1+w$, obtaining
+$g/\bar g=w$. The split-algebra case obeys the same formula,
+and $w=1$ is immediate. Thus the orbit invariant is exactly
+the norm modulo squares. These forms are projectively regular
+unipotent after adjoining the required square root. If their
+two fixed lines coincided geometrically, $r,S$ would preserve
+that line; the diagonal entries would then give
+$\operatorname{tr}(rS)=\lambda\operatorname{tr}r=\lambda\ne0$.
+This checks transversality. A stabilizing $g\in K^\times$ must have
+$g/\bar g\in k^\times$. Its norm is $1$, so this scalar has square
+$1$ and hence is $1$ in a characteristic-$2$ field. Therefore
+$g\in k^\times$. The projective stabilizer on field points is trivial,
+and the determinant argument of A.4 proves the $\SL_2$ assertion.
+
+For $R=\Z/2^n$ with $n\ge2$, an fppf unipotent normalization
+$\lambda V$ satisfies $\lambda\operatorname{tr}V=2$ and
+$\lambda^2\det V=1$. A faithfully flat algebra $B$ preserves
+$\operatorname{Ann}_B(2)=2^{n-1}B$. Reduction modulo $2$ first
+shows that $\operatorname{tr}V=2a$ in $R$. Then
+$\lambda a=1+2^{n-1}b$, so $a$ is a unit and
+$\lambda^2a^2=1$. Hence $\det V=a^2$ already in $R$.
+The global scalar $a^{-1}$ supplies a unipotent normalization.
+Over $\Z$, $(\operatorname{tr}V)^2=4\det V$ with
+$\det V\in\{\pm1\}$ likewise gives a global normalization;
+over $\Z/9$ the argument with invertible $2$ applies. Scaling
+$S$ to make $E=-rS^{-1}$ this normalization makes
+$\det S=1$, while its trace stays zero. A.3 now gives the
+unique $\GL_2$ orbit. Its stabilizer determinants are
+\[
+ R^{\times2}\{1+\tau:2\tau=\tau^2=0\}.
+\]
+Their indices in $R^\times$ give $2,1,2,2$. The finite program
+projects all normalized triples and forms their $\SL_2$ orbits,
+confirming these different projective counts.
+
+The imperfect-field phenomenon is concrete. Over $\F_2(t)$ take
+$S=\left(\begin{smallmatrix}1&t\\t+1&1\end{smallmatrix}\right)$.
+Its norm is $t^2+t+1$, whose derivative is $1$ and which is
+therefore not a square in $\F_2(t)$. This pair is not conjugate
+to the standard projective pair, despite satisfying the weak
+projective conditions. The nonsquare certificate is in the code.
+\end{proof}
+
+\begin{statement}{A.8}{Refuted}{Unrestricted uniqueness among all group-scheme isomorphisms}
+The modular data cannot determine a unique arbitrary group-scheme
+isomorphism $\GL_2\to\GL_2$, even over $\Z$ or $\Q$.
+The correct uniqueness in A.3 is among algebra-induced inner
+identifications. Indeed
+\[
+ \theta(g)=(\det g)^{-1}g
+\]
+is a nonidentity involutive automorphism of $\GL_2$ fixing
+$\SL_2$ pointwise, hence fixing $r,s$ and both root subgroups.
+\end{statement}
+\begin{proof}
+Determinants are central scalars, so the formula is multiplicative.
+In rank two $\det\theta(g)=(\det g)^{-1}$, and hence $\theta^2(g)=g$.
+On the centre it sends $aI$ to $a^{-1}I$; an inner or algebra-induced
+automorphism fixes that centre pointwise. For example $2I$ goes
+to $I/2$ over $\Q$. The program verifies multiplicativity and
+involutivity universally. Thus a uniqueness claim encompassing
+all group-scheme isomorphisms needs the inner/algebra condition,
+independently of the characteristic-$2$ infinitesimal ambiguity.
+\end{proof}
+
+\begin{statement}{A.9}{Open}{The general dictionary and its exact remaining comparison}
+For the general groups of \S49 we use the following dictionary.
+It is a dictionary of discrete or profinite groups, or of sheaves
+when those objects are explicitly supplied, and does not silently
+assert that their automorphism functors are group schemes.
+For the signed rows we impose
+$\rho^3=\sigma^2=\omega\in Z(C)$ and $\omega^2=1$,
+and retain the inversion involution specified in B.13.
+The symbol $-1$ in those rows means this common central element
+when $\omega$ has order two.
+The signed fibre-product rows additionally use
+$L_0^{\rm sgn}\cap Z(C)=1$, as in B.13; the unsigned and signed
+cyclic subgroups are distinguished in the table.
+\end{statement}
+\begin{longtable}{p{.17\linewidth}p{.57\linewidth}p{.16\linewidth}}
+\toprule Our symbol&Definition; manuscript symbol&C3 scan\\\midrule\endhead
+$C$&The group generated by $\rho,\sigma$; $\mathcal C$ or $\mathcal G$&502;530\\
+$L_0,L_1$&Closed cyclic groups generated by $\sigma^{-1}\rho$, $\rho\sigma^{-1}$ in the unsigned convention&502\\
+$B$&Automorphisms preserving both conjugacy classes and normalizing $L_0$; $B_{\rho,\sigma}$&503 (7)\\
+$\Sigma$&Numerical commutator pairs with $\eta^{-1}\zeta\in L_1$; $\Sigma_{\rho,\sigma}$&503 (8)\\
+$\Phi$&$u\mapsto(u(\rho)\rho^{-1},u(\sigma)\sigma^{-1})$; realization is an extra hypothesis&502--503\\
+$S_0G,G$&$C\rtimes B$ and its quotient by $(\ell^{-1},\operatorname{Int}\ell)$; $S_0G_{\rho,\sigma},G_{\rho,\sigma}$&505\\
+$\gamma$&$B/\operatorname{Int}(L_0)$; $\gamma_{\rho,\sigma}$, previously $\Gamma_{\rho,\sigma}$&506\\
+$Z_\rho,Z_\sigma$&Centralizers in $G$; their kernels over $\gamma$ are $C_\rho,C_\sigma$ when $L_0\cap Z(C)=1$&509;511\\
+$T^0,ST^0$&$Z_\rho\times_\gamma Z_\sigma$ and $B\times_\gamma T^0$; $\Gamma^0_{\rho,\sigma},S_0\Gamma^0_{\rho,\sigma}$&510--511\\
+$M^0,SM^0$&$T^0\times_\gamma G$ and $B\times_\gamma M^0$; $M^0_{\rho,\sigma},S_0M^0_{\rho,\sigma}$&512--514\\
+$\widetilde K$&Pullback of a specified global-sign quotient representation; specializes to the definition of $\widetilde N_{1,1}$ after the map is fixed&492;524 (2)--(3)\\
+$\varepsilon_2,\varepsilon_3$&Characters of $\widehat\Z^\times$ modulo $4$ and $3$; their additive forms are $\nu_2,\nu_3$&531--534\\
+$B^{\rm sgn}$&Pairs $(u,\mu)$ with $u(\sigma^{-1}\rho)=(\sigma^{-1}\rho)^\mu$, $u(\rho)\sim_C\rho^\mu$, $u(\sigma)\sim_C\sigma^\mu$&530 (7)\\
+$Z^{\rm sgn}$&Tuples $(u,\mu,e_\rho,e_\sigma)$ with the same loop condition and $u(\rho)\sim_C\rho^{e_\rho}$, $u(\sigma)\sim_C\sigma^{e_\sigma}$; the two signs are independent numerical coordinates&549 (6)\\
+$L_0^{\rm sgn},e_1,\ell_1$&$\overline{\langle\sigma\rho\rangle}$, $\rho\sigma$, and $(\rho\sigma)^2$; these are the signed loop conventions used in B.13&530--534\\
+$D,\gamma_D,G_D$&$D=B^{\rm sgn}$ or $Z^{\rm sgn}$; $\gamma_D=D/j(L_0^{\rm sgn})$, $G_D=(C\rtimes D)/\{(\ell^{-1},j(\ell))\}$, with $j(\ell)=(\operatorname{Int}\ell,1,1,1)$ and the last signs suppressed for $B^{\rm sgn}$&535--536; 551--553\\
+$\Sigma^{\rm eff}$&Numerical signed pairs that are realized by an automorphism; the fourth condition is essential&534--535\\
+$N_x,N_x^*,Z_x^*$&For $x=\rho,\sigma$, $N_x=\{(g,e):gxg^{-1}=x^e\}$, $N_x^*=\{(g,e)\in N_x:e=\chi_x(\delta g)\}$, $Z_x^*=C_{G_D}(x)\cap\delta^{-1}\ker\chi_x$, where $\delta:G_D\to\gamma_D$ and $\chi_x$ is the recorded sign&540--541; 555--556\\
+$\Gamma_D,S_0\Gamma_D$&$N_\rho^*\times_{\gamma_D}N_\sigma^*$ and $D\times_{\gamma_D}\Gamma_D$; the starred normalizers keep the numerical signs&559 (51), (55)--(56)\\
+$\mathcal M_D,S_0\mathcal M_D$&$\Gamma_D\times_{\gamma_D}G_D$ and $D\times_{\gamma_D}\mathcal M_D$; kernels and the cartesian square are proved in B.13&559 (50), (52)--(54); 560 (57), (59)\\
+$D_q,H_q,A_q$&For $q:C\twoheadrightarrow C'$, $D_q$ stabilizes $\ker q$; $H_q$ and $A_q$ are the image and kernel of the descended coefficient-group map. Exact formulas are B.15.1--B.15.5&570--572 (88)--(94)\\
+$D_0,L(D_0),G_0$&A restricted coefficient subgroup; $L(D_0)=j^{-1}(D_0)$ and $G_0=CD_0\subset G_D$. This keeps all of $C$ as conjugators&571--572 (94)\\
+$A,Z^A,L_A,H_A$&The different restriction $A=C^\natural\triangleleft C$ is an open normal conjugating subgroup; $L_A=j^{-1}(Z^A)$ and $H_A=\operatorname{im}(A\rtimes Z^A\to G)$. The antidiagonal uses $L_A\cap A$, as proved in B.17&651--664 (1)--(52 bis)\\
+$\mathscr E_{1,1,\Q},\mathscr E'_{1,1,\Q}$&The elliptic moduli stack and its rigidification by $[-1]$, written $M_{1,1},M'_{1,1}$ in the source; their gerbe and coarse $j$-map are distinguished from the affine group $\mathcal M$ in B.16&628 (26)\\
+$\mathcal E,\phi,J$&Reconstruction of an extension from $(P,T,J,\theta,\phi)$ satisfying the two compatibilities in B.15.9; compatible gluing additionally requires the diagonal subgroup B.15.11&691--696; fols.~648--650\\\bottomrule
+\end{longtable}
+\begin{proof}[Proved dictionary, computation, and residual question]
+The unsigned entries and every map between them are proved in B.11;
+the global-sign pullback is proved in B.9. The finite construction
+is executed for $S_3,S_4$, and B.12 supplies a fully executed
+failure of $\Sigma^{\rm eff}=\Sigma$ in $\mathrm{PSL}_2(\F_{13})$.
+For the signed entries the character definitions follow from
+$\rho^3=\sigma^2=\omega$ and $\omega^2=1$.
+The generator-image conditions fix $\omega$, because the square
+of either conjugate of $\sigma^{\pm1}$ is $\omega$.
+Since $\mu$ is odd, replacing $\sigma^{-1}\rho$ by
+$\sigma\rho=\omega(\sigma^{-1}\rho)$ then preserves the condition
+that it is raised to its $\mu$th power. The two
+possible loop conventions must nevertheless not be interchanged
+inside unqualified formulas. A formal signed theorem is given in B.13.
+
+The remaining identifications are distinct questions, rather than
+one unspecified notation audit. First, numerical signed parameters
+must be compared with effective automorphism parameters for
+$C=\widehat{\SL_2(\Z)}$.
+B.8 defines the numerical triples explicitly and proves that each
+gives a continuous endomorphism; its exact remaining assertion
+(B.8.5) is surjectivity of every such endomorphism.
+The finite unsigned and signed realization computations in B.11
+and B.14 are proved cases for that question.
+
+Second, B.15 supplies the quotient functoriality of scans~570--572,
+proves stability of the actual congruence kernel, and gives exact
+kernel formulas. Its full effective image and compatible lifts
+remain separately specified. Third, B.16 treats the central twist
+and normalized conjugators of scans~573--582, retaining the exact
+named geometric-image and unquotiented-section comparisons of those
+scans and scans~612--616. Fourth, the continuation of the dictionary
+in B.18 records the normalized sections of scans~583--595, the
+normality and index-kernel assertions of scans~635--647, the
+bisection of scans~648--650, and the extra open-conjugator datum
+of scans~651--690. B.17 refutes the literal smaller quotient and
+proves the necessary intersection repair. B.18 specifies the
+remaining comparisons first for the named index-six and index-twelve
+modular subgroups, with proved formal cases and finite calculations.
+The reconstruction and gluing at scans~691--696 are proved in B.15.
+
+D.7 separately records the first modulus-$3$ GT lifting instance
+and the remaining arithmetic comparison. Integral representability and comparison
+with the schemes of \S48 require an additional construction:
+B.8 proves that the naive constant profinite scheme cannot even
+realize $\widehat\Z\ni1\mapsto L_0(1)$ over $\Z$.
+No untyped fppf quotient or descent theorem is asserted here.
+These source-indexed residuals are recorded as partly settled in
+A(a), A(b), B(c), and B(g); none is absorbed into (B.8.5).
+\end{proof}
+
