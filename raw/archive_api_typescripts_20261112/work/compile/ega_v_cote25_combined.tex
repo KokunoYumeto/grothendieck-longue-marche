@@ -1,0 +1,172 @@
+\documentclass[11pt]{article}
+% Diplomatic transcription macros (12 Nov 2026). Typed text is plain; the handwritten layer is blue,
+% deletions red, typewriter strike-outs grey, doubtful readings in brackets with a question mark.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{tikz-cd}
+\usepackage{environ}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\title{Nouveau EGA V (cote 25)\\[4pt]\large Diplomatic transcription from the Montpellier scans}
+\author{AI-transcribed by Claude Opus 5.5}
+\date{12 November 2026}
+\newcommand{\scanpage}[1]{\par\bigskip\noindent{\small\sffamily[scan #1]}\par}
+\newcommand{\mspage}[1]{{\small\sffamily[p.\,#1]}}
+% The markup may stand in text or in math, and its argument may itself contain $...$: in math mode an argument
+% with a $ in it is set through \text (so that its $...$ is math again), one without stays math.
+\makeatletter
+\long\def\dip@has@dollar#1$#2\dip@end{\ifx\relax#2\relax\@secondoftwo\else\@firstoftwo\fi}
+\newcommand{\dip@wrap}[1]{\ifmmode\dip@has@dollar#1$\dip@end{\text{#1}}{#1}\else#1\fi}
+\newcommand{\hand}[1]{\textcolor{blue}{\dip@wrap{#1}}}
+\let\over\relax
+\newcommand{\over}[2]{\textcolor{gray}{\dip@wrap{#1}}\textcolor{blue}{\ensuremath{^{\!\nearrow}}\dip@wrap{#2}}}
+\newcommand{\inserted}[2][]{\textcolor{blue}{\ensuremath{\langle}\dip@wrap{#2}\ensuremath{\rangle}}}
+\newcommand{\margin}[1]{\textcolor{blue}{\{\dip@wrap{\textsf{marg.:} #1}\}}}
+\newcommand{\deleted}[1]{\textcolor{red}{[\dip@wrap{\textsf{del.:} #1}]}}
+\newcommand{\xout}[1]{\textcolor{gray}{[\dip@wrap{\textsf{x:} #1}]}}
+\newcommand{\uline}[1]{\underline{\dip@wrap{#1}}}
+\makeatother
+\newcommand{\uuline}[1]{\underline{\underline{#1}}}
+\newcommand{\unsure}[1]{[#1?]}
+\newcommand{\illegible}[1]{[\textsf{illeg.\ #1}]}
+\newcommand{\diagram}[1]{\par{\centering #1\par}}
+\newenvironment{diagramblock}{\par\begin{center}}{\end{center}\par}
+
+\begin{document}
+\maketitle
+
+% Nouveau EGA V (cote 25): archive cote 25, site page 2 (PDF page 3).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch pilot (msgbatch_0189Nhf1xB615YWnztubtLfc), 2026-11-12; not yet checked by eye.
+\scanpage{25/2}
+\margin{\unsure{Nouveau EGA V}} \mspage{0}
+
+EGA IV 20 \quad \uline{Sections hyperplanes et projections coniques.} (Etat \unsure{000|0})
+
+1. Notations.
+
+2. Section hyperplane générique: propriétés locales.
+
+3. Section hyperplane générique: irréductibilité et connexité géo\unsure{métriques.}
+
+4. Section hypérplane variable: sections ``assez g\unsure{énérales|éńérales}''.
+
+5. Théorèmes du\unsure{type|ttype} Seidenberg.
+
+6. Connexion d'une section hyperplane quelconque.
+
+7. Application a des constructions de sections hyperplanes et multisec-%
+tions spéciales.
+
+8. Dimension de l'ensem\xout{m}ble  des hyperplans exceptionnels.
+
+9. Changement d'immersion projective.
+
+10. Pinceaux de sections hyperplanes, et fibrations de variétés éclatées
+
+11. Grassmaniennes.
+
+12. Généralisation de résultats antérieurs à des sections linéaires.
+
+13. Morphismes élémentaires et théorème de M. Artin.
+
+14. Projections coniques.
+
+15. Axiomatisation de certains des résultats précédents.
+
+16. Traductions en langage de systèmes linéaires.
+
+\uline{Commentaires}. Cette rédaction donne pêle mêle  une esquisse détaillée
+de l'ensemble des résultats qui devraient figurer dans une rédaction
+finale. Pour parvenir à cette dernière, il faudra une réorganisation de
+fond en comble  du présent Etat 0, la première tâche étant probablement
+l'établissement d'un nouveau plan (dans lequel sans doute  les actuels
+nºs 11,12,14,15  viendront beaucoup plus tôt). Je n'ai pas encore rédi\unsure{-}
+le nº 16 , qui en principe ne doit offrir aucune difficulté ni
+influer en aucune manière sur les nºs précédents, puisqu'il s'agit d'u\unsure{n}
+
+\margin{2}
+
+\clearpage
+% Nouveau EGA V (cote 25): archive cote 25, site page 4 (PDF page 5).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch pilot (msgbatch_0189Nhf1xB615YWnztubtLfc), 2026-11-12; not yet checked by eye.
+\scanpage{25/4}
+IV 20 \quad \uline{Sections hyperplanes et projections \deleted{linéaires}\inserted{coniques}}.
+
+20.1. \quad \uline{Préliminaires \over{de}{\unsure{et}} notations}.
+
+Soient S un \quad préschéma , $\underline{E}$ un Module loc libre de type fini sur S,
+$\check{\underline{E}}$ son dual. Nous noterons par P=$\underline{P}(\underline{E})$ le fibré projectif défini par $\underline{E}$,
+par $\check{P}$ celui défini par $\check{\underline{E}}$ . Nous\hand{|}appelerons \ $\check{P}$ \ le \uline{schéma des hyperplans}
+de P, cette terminologie se justifiant de la façon suivante. \ Soit
+$\hand{\xi}$ une section de $\check{P}$ sur S, qui est donc\hand{/}déterminée par un module quotient
+inversible L de $\check{\underline{E}}$ . On en conclut un module quotient inversible
+$\underline{L}_P$ de$(\check{\underline{E}})_P$ = $(\underline{E}_P)^{\hand{\vee}}$ , d'autre part on dispose d'un module quotient inversibl
+$\underline{O}_P(1)$ de \ $\underline{E}_P$ . Passant \ aux duals, on peut envisager \ $\underline{L}_P^{-1}$ resp. $\underline{O}_P(-1)$
+comme des sous-modules inversibles (loc facteurs directs) de \ $\underline{E}_P$ resp.
+de $(\underline{E}_P)^{\hand{\vee}}$ , \ et l'accouplement \ $\underline{E}_P \otimes \check{\underline{E}}_P \longrightarrow \underline{O}_P$ \ définit \ donc un
+accouplement naturel
+(x) \[ \underline{O}_P(-1)\otimes\underline{L}_P^{-1} \to \underline{O}_P \]
+ou encore un homomorphisme \ transposé
+(xx) \[ \underline{O}_P \longrightarrow \underline{O}_P(1)\otimes\underline{L}_P \ = \ \unsure{\underline{L}_P(1)|\underline{D}_P(1)} \ , \]
+i.e. une section de $\underline{L}_P(1)$, canoniquement déterminée par $\hand{\xi}$ . Le''diviseur''
+de cette section, \ i.e. le sous-schéma\inserted{fermé} $H_{\hand{\xi}}$ de \ P défini par l'Idéal
+image de (x), \ est \ appelé l'\uline{hyperplan dans P} \ défini par \ l'élément
+$\hand{\xi} \hand{\in} \check{P}(S)$ . \ Il peut encore se décrire en notant que localement sur S \xout{la}
+\xout{\unsure{donnée de $\check{\xi}$ équivaut}} \quad $\hand{\xi}$ \ est donné par une section \ $\phi$ de \ $\underline{E}$ , \xout{de} telle
+\xout{\illegible{1}} que $\phi(s) \neq 0$ pour tout s \ ( $\phi$ étant déterminé par $\hand{\xi}$ \ modulo
+multiplication par une section inversible de $\underline{O}_S$ ); comme $\underline{E}$ = $p_{\hand{*}}(\underline{O}_P(1))$
+( p: P$\to$S étant la projection), \ $\phi$ \ peut être considéré comme une section
+de \ $\underline{O}_P(1)$, don\over{c}{t} le diviseur n'est autre que $H_{\hand{\xi}}$. \ Bien entendu, si on
+\inserted[typed]{\uline{considére}}\xout{\illegible{1}} $\underline{L}^{-1}$ \ comme un sous-\xout{\illegible{1}} module inversible de \ $\underline{E}$ locale
+ment facteur direct dans $\underline{E}$, alors la correspondance entre $\hand{\xi}$ \ (i.e. $\underline{L}$ \hand{\unsure{$\xi$,}}
+
+\mspage{\hand{4}}
+
+\clearpage
+% Nouveau EGA V (cote 25): archive cote 25, site page 140 (PDF page 141).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch pilot (msgbatch_0189Nhf1xB615YWnztubtLfc), 2026-11-12; not yet checked by eye.
+\scanpage{25/140}
+\margin{\uline{nouveau EGA V}}
+
+IV 16
+
+Un nouveau n$^{\text{o}}$ : \uline{Ensemble singulier et supersingulier d'une fonction},
+\uline{et critères différentiels}.
+
+Ce n$^{\text{o}}$ sera utilisé au par.20 des sections hyperplanes, mais sa
+place naturelle me semble bien au par. 16.
+
+\uline{Définition} 1 Soient X un préschéma régulier, $\phi$ une section de $\underline{O}_X$ . Un
+point $x \in X$ est dit \uline{zéro} \xout{\illegible{3}} \uline{singulier} pour $\phi$
+si on a $\phi_x \in \underline{m}_x^2$, zéro \uline{supersingulier} si c'est un zéro singulier
+et si de plus l'élément de $\underline{m}_x^2/\underline{m}_x^3 \simeq \mathrm{Sym}(\underline{m}_x/\underline{m}_x^2)$ qu'il définit,
+interprété comme une forme quadratique sur le dual $\underline{t}_x$ de $\underline{m}_x/\underline{m}_x^2$ sur k(x),
+est une forme \deleted{non} dégénérée.( Un zéro singulier qui n'est pas supersingu-%
+lier est parfois appelé \uline{zéro singulier ordinaire}).
+
+\uline{Remarques} 2 Si $x \in V(\phi)$\hand{,} alors x est un zéro \inserted{non} singulier de $\phi$ sss
+$\phi_x \neq 0$ et x est un point \xout{\unsure{régxxx}} non singulier i.e. régulier de $V(\phi)$,
+i.e. sss x est un point régulier de $V(\phi)$ et $V(\phi) \neq X$ au voisinage de
+x . \deleted{On peut prouver que si x est singulier pour $\phi$ , il est singulier
+ordinaire sss $\phi_x \neq 0$ et la multiplicité de $\underline{O}_{V(\phi),x}$ est égale à 2
+(ou, comme on dit encore parfois, x est un \uline{point singulier ordinaire}
+\uline{du préschéma} $V(\phi)$ ); donc un $x \in V(\phi)$ est non supersingulier \inserted{pour $\phi$} sss
+$\phi_x \neq 0$ et la multiplicité de $O_{V(\phi),x}$ est $\leq 2$.}
+
+\uline{Définition} 3. Soient X un préschéma lisse sur un corps k, $\phi$ une
+section de $\underline{O}_X$ , $x \in V(\phi)$ . On dit que x est un zéro \uline{géométriquement}
+\uline{singulier} \xout{\unsure{dexx}} (resp. \uline{géométriquement \unsure{supersingulier}} ) de $\phi$ rel à k,
+si pour toute extension k' de k et tout point \hand{$\xi$} de X à valeurs dans
+k\hand{,} localisé en x, la \xout{\illegible{1}} point correspondant x' de $X_{k'}$, est un zéro
+\xout{\unsure{géom}} singulier (resp. supersingulier) de $\phi_{k'}$ .
+
+\mspage{140}
+
+\end{document}
