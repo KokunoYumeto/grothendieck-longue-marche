@@ -96,7 +96,8 @@ Published: the checked text, changes, checked notes and prompt of the twelve pas
 `_checked_fixed.tex` (P046, P065, P068-069, C3-302-320, C3-321-339); `CURRENT_TEXT_INDEX.tsv`; this report; the close's
 scripts and tables (`work_close_20261112/`). Crops, page images and the compile build files are left out.
 
-Commits: see the end of this file.
+Commits: see the end of this file. Privacy scan before the commit: grothendieck-longue-marche clean (0 hits; four
+whitelisted French words in -rent).
 
 ## Not done
 
@@ -105,3 +106,9 @@ Commits: see the end of this file.
 - The unresolved counts of 101 packages are counts by rule (§3), not exact.
 - The edition (`transcription/`, `notes/`, the readers and a release) is not updated: the second-pass texts after
   LM_P070-071 are in `raw/second_pass/` and in the prompts' attachments only.
+
+## Commits
+
+- `70e3cef` (pushed to main, 12 Nov 2026): the outputs above (76 files) and the README updates (`README.md`,
+  `README.fr.md`: status of 12 November with the totals; `raw/README.md`: the twelve passes, the close, the totals line).
+- The commit that adds this list to the published copy of the report follows it.
