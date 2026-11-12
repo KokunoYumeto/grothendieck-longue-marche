@@ -104,6 +104,38 @@ each fix with the text around it (`open_dump.md`), the record of the work (`PROG
 `fix_tikzcd_in_macros.py` (written 8 Nov), which repaired the LaTeX of seven diagrams of P013 without changing what
 they say.
 
+The last twelve packages. Claude Opus 5.5 (effort max), one subagent per package, 12 Nov 2026. Places unresolved are
+counted by the rule of `CURRENT_TEXT_INDEX.tsv` (below) where the file states no number:
+
+| Package | Cote, scans | Changes (high, medium, low) | Places unresolved |
+|---|---|---|---|
+| `LM_P04` | 140-2, 31–40 | 73 (20, 36, 17) | 36 |
+| `LM_P05` | 140-2, 41–50 | 54 (11, 33, 10) | 30 |
+| `LM_C4-134-152` | 140-4, 134–152 | 23 (1, 13, 9) | 17 |
+| `LM_C4-153-171` | 140-4, 153–171 | 20 (1, 12, 7) | 29 |
+| `LM_C4-172-190` | 140-4, 172–190 | 32 (6, 25, 1) | 69 |
+| `LM_C4-191-209` | 140-4, 191–209 | 29 (3, 17, 9) | 17 |
+| `LM_C4-210-228` | 140-4, 210–228 | 15 (2, 7, 6) | 20 |
+| `LM_C4-229-247` | 140-4, 229–247 | 20 (4, 13, 3) | 65 |
+| `LM_C4-248-266` | 140-4, 248–266 | 17 (3, 11, 3) | 39 |
+| `LM_C4-267-280` | 140-4, 267–280 | 20 (2, 10, 8) | 56 |
+| `LM_C1-001-019` | 140-1, 1–19 | 17 (5, 9, 3) | 22 |
+| `LM_C1-020-037` | 140-1, 20–37 | 25 (2, 15, 8) | 11 |
+
+The close of the second pass. Claude Opus 5.5, 12 Nov 2026 (`SECOND_PASS_CLOSE_REPORT.md`; scripts and tables in
+`work_close_20261112/`). Every item of the sixteen fix packages (444) was traced into the current texts
+(`work_close_20261112/fix_outcomes_20261112.tsv`): none is open. Three more were applied after a check on the scan
+(`LM_P046_checked_fixed.tex`, `LM_P068-069_checked_fixed.tex`, `LM_C3-321-339_checked_fixed.tex`) and two rejected;
+`LM_P065_checked_fixed.tex` and `LM_C3-302-320_checked_fixed.tex` repair one LaTeX error each, the reading unchanged.
+`CURRENT_TEXT_INDEX.tsv` names, for every package, the file that is now its text (`_checked_fixed.tex` if there is
+one, else `_checked.tex`; paths as in the working folder, where all of them are), with its cote and scans, its counts
+of changes and unresolved places, and its numbers of `\unsure` and `\illegible` marks. The English translation reads
+the texts it names.
+
+**Second pass, all packages (12 Nov 2026): 116 packages, 1,588 scans (cotes 140-1 to 140-4); 4,890 changes; 3,636
+places unresolved (by the counting rule of the index); 17,117 `\unsure` and 1,261 `\illegible` marks in the current
+texts.**
+
 ### Earlier second passes not yet in the edition
 
 Claude Opus 5.5, subagents, 9–10 Nov 2026: cote 140-3, scans 131–696, and cote 140-4, scans 1–133, in packages of up to
@@ -160,8 +192,8 @@ second pass's own text is the edition's.
 
 `PROMPT_LM_<KEY>.md`: the prompt of every finished second pass, 101 with the five above (P03 was run from
 `methodology/SECOND_PASS_PROMPT.md` itself), written by `make_prompts.py`, `make_prompts_v2.py` and
-`make_prompts_v3.py`. The prompts of the passes not yet finished (P01, P02, P04, P05, cote 140-1, and cote 140-4 from
-scan 134) will be published with their outputs.
+`make_prompts_v3.py`. The prompts of the passes finished later (P01, P02, P04, P05, cote 140-1, and cote 140-4 from
+scan 134) are here with their outputs.
 
 Scripts: `prep_images.py` and `prep_images_cote.py` take the page images out of the archive's PDFs at the archive's
 resolution (the images are not included). The folders `work_LM_<KEY>/` of fifteen packages from P013 to
