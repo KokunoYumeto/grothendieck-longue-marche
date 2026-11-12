@@ -29,6 +29,7 @@ and the transcription is being checked page by page against the scans.
   mode) to research prompts on *La Longue Marche* (its group schemes, the equation of loops, the Teichmüller tower),
   first-pass transcriptions of the archive's cotes 146, 147 and
   149, their reviews, the prompts with everything attached, and the scripts.
+- [`raw/planning/montpellier_archive/`](raw/planning/montpellier_archive/README.md): the working plans of the Montpellier archive work (plans, war games, cost and usage records), not results.
 
 The transcription is diplomatic: Grothendieck's French, spelling, abbreviations, numbering, deletions, insertions and
 margin notes as written, with doubt marked (`\unsure{a|b}`, `\illegible{n}`). Mathematics keeps his letters, indices
