@@ -1,0 +1,42 @@
+# Fixes not carried into the second-pass texts
+
+- LM_FIX_01-013 (LM_P011, scan 110): snippet found 0 times in the second-pass text
+- LM_FIX_01-014 (LM_P012, scan 118): snippet found 0 times in the second-pass text
+- LM_FIX_01-016 (LM_P012, scan 120): replacement restates the text around the snippet
+- LM_FIX_09-008 (LM_P012, scan 112): snippet found 0 times in the second-pass text
+- LM_FIX_01-018 (LM_P013, scan 128): snippet found 0 times in the second-pass text
+- LM_FIX_09-009 (LM_P013, scan 126): no \unsure reading
+- LM_FIX_01-020 (LM_P014, scan 136): snippet found 0 times in the second-pass text
+- LM_FIX_01-021 (LM_P016, scan 154): snippet found 0 times in the second-pass text
+- LM_FIX_01-022 (LM_P016, scan 154): snippet found 0 times in the second-pass text
+- LM_FIX_01-025 (LM_P016, scan 159): snippet found 0 times in the second-pass text
+- LM_FIX_01-026 (LM_P017, scan 163): snippet found 0 times in the second-pass text
+- LM_FIX_01-030 (LM_P017, scan 166): snippet found 0 times in the second-pass text
+- LM_FIX_01-031 (LM_P017, scan 170): snippet found 0 times in the second-pass text
+- LM_FIX_02-003 (LM_P018, scan 178): snippet found 0 times in the second-pass text
+- LM_FIX_09-013 (LM_P019, scan 182): snippet found 0 times in the second-pass text
+- LM_FIX_09-016 (LM_P021, scan 205): snippet found 0 times in the second-pass text
+- LM_FIX_02-007 (LM_P022, scan 212): snippet found 0 times in the second-pass text
+- LM_FIX_02-008 (LM_P022, scan 220): snippet found 0 times in the second-pass text
+- LM_FIX_09-021 (LM_P022, scan 215): no \unsure reading
+- LM_FIX_09-022 (LM_P022, scan 217): no \unsure reading
+- LM_FIX_09-023 (LM_P023, scan 225): snippet found 0 times in the second-pass text
+- LM_FIX_02-010 (LM_P024, scan 236): snippet found 0 times in the second-pass text
+- LM_FIX_02-012 (LM_P025, scan 246): snippet found 0 times in the second-pass text
+- LM_FIX_09-025 (LM_P026, scan 254): no \unsure reading
+- LM_FIX_09-026 (LM_P026, scan 254): no \unsure reading
+- LM_FIX_10-002 (LM_P026, scan 256): snippet found 0 times in the second-pass text
+- LM_FIX_02-013 (LM_P027, scan 265): snippet found 0 times in the second-pass text
+- LM_FIX_02-019 (LM_P030, scan 299): snippet found 0 times in the second-pass text
+- LM_FIX_10-007 (LM_P030, scan 300): snippet found 0 times in the second-pass text
+- LM_FIX_10-009 (LM_P031, scan 302): no \unsure reading
+- LM_FIX_10-011 (LM_P032, scan 318): no \unsure reading
+- LM_FIX_02-022 (LM_P033, scan 329): snippet found 0 times in the second-pass text
+- LM_FIX_10-013 (LM_P033, scan 323): snippet found 0 times in the second-pass text
+- LM_FIX_10-015 (LM_P033, scan 327): no \unsure reading
+- LM_FIX_10-016 (LM_P034, scan 331): snippet found 0 times in the second-pass text
+- LM_FIX_10-017 (LM_P034, scan 339): snippet found 0 times in the second-pass text
+- LM_FIX_03-002 (LM_P035, scan 348): snippet found 0 times in the second-pass text
+- LM_FIX_10-024 (LM_P035, scan 347): no \unsure reading
+- LM_FIX_03-008 (LM_P038, scan 372): snippet found 0 times in the second-pass text
+- LM_FIX_03-013 (LM_P040, scan 400): snippet found 0 times in the second-pass text
