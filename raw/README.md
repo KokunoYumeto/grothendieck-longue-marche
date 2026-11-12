@@ -59,7 +59,7 @@ Dates are those of the return (UTC).
 | `tools/archive/` | The scripts that download the archive's scans, enhance the pages and build the transcription packages, and the transcription prompt template | 10–11 Nov 2026 | — |
 | `tools/prompts/` | The scripts that rewrote and packaged the Longue Marche prompts | 11 Nov 2026 | — |
 | `tools/lm1_text_copy/` | The scripts that recovered the text copy of the LM1 chat and split it into the files of the answer, with the log of the split (every line left out, with its text) | 11 Nov 2026 | — |
-| `second_pass/` | Second passes of the transcription that are not yet in the edition, with their prompts and scripts, and the fixes merged by hand on 12 Nov (section "Second passes" below) | 12 Nov 2026 | — |
+| `second_pass/` | Second passes of the transcription that are not yet in the edition, with their prompts and scripts, and the fixes merged by hand on 12 Nov (section "Second passes" below) | 5–12 Nov 2026 | — |
 
 ## Second passes (`second_pass/`)
 
@@ -88,15 +88,89 @@ which each compiled its text; `work_LM_P10/PROGRESS.md` is that pass's own recor
 
 The fixes merged by hand. Claude Opus 5.5, subagent, 12 Nov 2026: `merge_fixes_open.md` lists the 33 fixes from the
 fix packages (METHODOLOGY.md, "Fix packages and the strict prompt"; cote 140-2, scans 110–400) that the scripted merge
-of 8 Nov had not placed in the second-pass texts. Each
-was checked against its scan, and the outcome is written after it: 12 applied, 3 rejected (the ink does not show the
-fix's reading), 18 already in. The twelve texts that changed are `LM_<KEY>_checked_fixed.tex` of P011, P013, P017,
+of 8 Nov had not placed in the second-pass texts. Each was checked against its scan, and the outcome is written after
+it: 12 applied, 3 rejected (the ink does not show the fix's reading), 18 already in. The twelve texts that changed are `LM_<KEY>_checked_fixed.tex` of P011, P013, P017,
 P019, P022, P024, P025, P026, P032, P033, P034 and P035 (scans 101–350); before the merge they were
 `transcription/140-2/LM_<KEY>_checked.tex` of this repository. `work_merge_20261112/` holds the scripts, the dump of
 each fix with the text around it (`open_dump.md`), the record of the work (`PROGRESS.md`), and
 `fix_tikzcd_in_macros.py` (written 8 Nov), which repaired the LaTeX of seven diagrams of P013 without changing what
 they say.
 
-Not included: the crops of the scans (the scans are the archive's own), LaTeX logs and auxiliary files, the
-compile-check PDFs and the merge's `build/` folder (wrappers written by `compile_changed.py`), and the merge's dated
-copies of files already in this repository.
+### Earlier second passes not yet in the edition
+
+Claude Opus 5.5, subagents, 9–10 Nov 2026: cote 140-3, scans 131–696, and cote 140-4, scans 1–133, in packages of up to
+19 scans. The checked texts and notes of the first 33 packages were attached to the prompts LM1 and LM2 and are published
+with them; their tables of changes are here. For the last four packages all three files are here. The changes are the
+totals each table states; where it states none (*), its rows counted by confidence.
+
+| Package | Cote, scans | Date | Changes (high, medium, low) | Here | Checked text and notes |
+|---|---|---|---|---|---|
+| `LM_C3-131-149` | 140-3, 131–149 | 9 Nov 2026 | 31 (8, 14, 9) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-131-149/` |
+| `LM_C3-150-168` | 140-3, 150–168 | 9 Nov 2026 | 40 (9, 26, 5) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-150-168/` |
+| `LM_C3-169-187` | 140-3, 169–187 | 9 Nov 2026 | 28 (5, 18, 5) | table of changes | `prompts/LM2_LOOP_EQUATIONS/attached/longue_marche/LM_C3-169-187/` |
+| `LM_C3-188-206` | 140-3, 188–206 | 9 Nov 2026 | 30 (5, 16, 9)* | table of changes | `prompts/LM2_LOOP_EQUATIONS/attached/longue_marche/LM_C3-188-206/` |
+| `LM_C3-207-225` | 140-3, 207–225 | 10 Nov 2026 | 50 (2, 29, 19) | table of changes | `prompts/LM2_LOOP_EQUATIONS/attached/longue_marche/LM_C3-207-225/` |
+| `LM_C3-226-244` | 140-3, 226–244 | 10 Nov 2026 | 30 (3, 19, 8) | table of changes | `prompts/LM2_LOOP_EQUATIONS/attached/longue_marche/LM_C3-226-244/` |
+| `LM_C3-245-263` | 140-3, 245–263 | 10 Nov 2026 | 37 (5, 19, 13) | table of changes | `prompts/LM2_LOOP_EQUATIONS/attached/longue_marche/LM_C3-245-263/` |
+| `LM_C3-264-282` | 140-3, 264–282 | 10 Nov 2026 | 23 (6, 6, 11) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-264-282/` |
+| `LM_C3-283-301` | 140-3, 283–301 | 10 Nov 2026 | 22 (5, 14, 3) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-283-301/` |
+| `LM_C3-302-320` | 140-3, 302–320 | 10 Nov 2026 | 41 (3, 33, 5) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-302-320/` |
+| `LM_C3-321-339` | 140-3, 321–339 | 10 Nov 2026 | 43 (6, 25, 12) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-321-339/` |
+| `LM_C3-340-358` | 140-3, 340–358 | 10 Nov 2026 | 25 (7, 15, 3) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-340-358/` |
+| `LM_C3-359-377` | 140-3, 359–377 | 10 Nov 2026 | 39 (1, 26, 12) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-359-377/` |
+| `LM_C3-378-396` | 140-3, 378–396 | 10 Nov 2026 | 33 (1, 18, 14) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-378-396/` |
+| `LM_C3-397-415` | 140-3, 397–415 | 10 Nov 2026 | 31 (2, 15, 14) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-397-415/` |
+| `LM_C3-416-434` | 140-3, 416–434 | 10 Nov 2026 | 51 (6, 32, 13) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-416-434/` |
+| `LM_C3-435-453` | 140-3, 435–453 | 10 Nov 2026 | 34 (7, 14, 13) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-435-453/` |
+| `LM_C3-454-472` | 140-3, 454–472 | 10 Nov 2026 | 53 (4, 37, 12) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-454-472/` |
+| `LM_C3-473-491` | 140-3, 473–491 | 10 Nov 2026 | 18 (3, 11, 4)* | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-473-491/` |
+| `LM_C3-492-510` | 140-3, 492–510 | 10 Nov 2026 | 30 (2, 16, 12) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-492-510/` |
+| `LM_C3-511-529` | 140-3, 511–529 | 10 Nov 2026 | 45 (4, 27, 14) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-511-529/` |
+| `LM_C3-530-548` | 140-3, 530–548 | 10 Nov 2026 | 30 (3, 15, 12) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-530-548/` |
+| `LM_C3-549-567` | 140-3, 549–567 | 10 Nov 2026 | 34 (4, 20, 10) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-549-567/` |
+| `LM_C3-568-586` | 140-3, 568–586 | 10 Nov 2026 | 38 (6, 21, 11) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-568-586/` |
+| `LM_C3-587-605` | 140-3, 587–605 | 10 Nov 2026 | 23 (2, 19, 2) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-587-605/` |
+| `LM_C3-606-624` | 140-3, 606–624 | 10 Nov 2026 | 49 (6, 35, 8) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-606-624/` |
+| `LM_C3-625-643` | 140-3, 625–643 | 10 Nov 2026 | 34 (2, 24, 8) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-625-643/` |
+| `LM_C3-644-662` | 140-3, 644–662 | 10 Nov 2026 | 58 (2, 45, 11) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-644-662/` |
+| `LM_C3-663-681` | 140-3, 663–681 | 10 Nov 2026 | 46 (8, 28, 10)* | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-663-681/` |
+| `LM_C3-682-696` | 140-3, 682–696 | 10 Nov 2026 | 17 (5, 8, 4) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C3-682-696/` |
+| `LM_C4-001-019` | 140-4, 1–19 | 10 Nov 2026 | 35 (4, 24, 7) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C4-001-019/` |
+| `LM_C4-020-038` | 140-4, 20–38 | 10 Nov 2026 | 30 (12, 9, 9) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C4-020-038/` |
+| `LM_C4-039-057` | 140-4, 39–57 | 10 Nov 2026 | 22 (1, 14, 7) | table of changes | `prompts/LM1_GROUP_SCHEMES/attached/longue_marche/LM_C4-039-057/` |
+| `LM_C4-058-076` | 140-4, 58–76 | 10 Nov 2026 | 29 (11, 13, 5) | text, table of changes, notes | here |
+| `LM_C4-077-095` | 140-4, 77–95 | 10 Nov 2026 | 29 (5, 19, 5) | text, table of changes, notes | here |
+| `LM_C4-096-114` | 140-4, 96–114 | 10 Nov 2026 | 30 (7, 13, 10) | text, table of changes, notes | here |
+| `LM_C4-115-133` | 140-4, 115–133 | 10 Nov 2026 | 26 (1, 19, 6) | text, table of changes, notes | here |
+
+The second pass's own texts of P011–P040 (Claude Opus 5.5, subagents, 5–6 Nov 2026): `LM_<KEY>_checked.tex` of the 25
+packages whose text the merge of the fix packages on 8 Nov changed. Their tables of changes
+(`transcription/140-2/LM_<KEY>_changes.md`) describe these texts. The edition's
+`transcription/140-2/LM_<KEY>_checked.tex` holds them as merged on 8 Nov, and `LM_<KEY>_checked_fixed.tex` above
+holds the twelve texts changed on 12 Nov. For the other second passes of cote 140-2, P025 and P034 included, the
+second pass's own text is the edition's.
+
+`PROMPT_LM_<KEY>.md`: the prompt of every finished second pass, 101 with the five above (P03 was run from
+`methodology/SECOND_PASS_PROMPT.md` itself), written by `make_prompts.py`, `make_prompts_v2.py` and
+`make_prompts_v3.py`. The prompts of the passes not yet finished (P01, P02, P04, P05, cote 140-1, and cote 140-4 from
+scan 134) will be published with their outputs.
+
+Scripts: `prep_images.py` and `prep_images_cote.py` take the page images out of the archive's PDFs at the archive's
+resolution (the images are not included). The folders `work_LM_<KEY>/` of fifteen packages from P013 to
+P044 hold the scripts those passes wrote (crops, checks of the TeX, diffs, and lists of crops as JSON) and the working
+notes of P043.
+
+The research notes collected by script on 8 Nov 2026, from the checked notes where a package had its second pass and
+from the first pass's notes otherwise: `ALL_RESEARCH_NOTES.md` (all notes in manuscript order;
+`collect_research_notes.py`), `ALL_NOTES_MAP.md` (one line per note; `note_titles.py`), `NOTES_A_conjectures.md`,
+`NOTES_B_implications.md` and `NOTES_C_claims_ideas.md` (the notes sorted by kind; `notes_by_kind.py`) and
+`NOTES_A_P011_P027.md` (the checked notes of P011–P027, which the sorting missed). They were the reading of the
+global pass over the notes, published with the prompt LM3 as
+`prompts/LM3_TEICHMULLER_TOWER/attached/context/GLOBAL_PASS.md`.
+`merge_fixes_left.md` is the list, of 8 Nov, of the fixes the scripted merge did not carry into the second-pass texts.
+
+Not included: the page images and the crops of the scans (the scans are the archive's own); the witnesses
+(`witness/`, the text of the earlier transcriptions by others, taken from their PDFs); LaTeX logs and auxiliary files,
+the compile-check PDFs and the merge's `build/` folder (wrappers written by `compile_changed.py`); and copies of files
+already in this repository: the merge's dated copies, `SECOND_PASS_PROMPT.md` (as
+`methodology/SECOND_PASS_PROMPT.md`) and `GLOBAL_PASS.md` (above).
