@@ -5,9 +5,9 @@ This folder holds raw research outputs, not edited for publication:
 - the answers of GPT-6 Astra (ChatGPT Pro mode) to four research prompts on *La Longue Marche*: the group schemes
   and schematic envelopes of §§48–50 (LM1), the equation of loops of §§36–47 (LM2) and the Teichmüller tower (LM3,
   LM3b), with the reviews of LM3 and LM2 by Claude Fable 5.2;
-- first-pass transcriptions by GPT-6 Astra (ChatGPT Pro mode) of seven packages of Grothendieck's manuscript notes from
-  the Montpellier archive, cotes 146, 147 and 149, which the archive groups with *La Longue Marche*, with sample checks
-  of two of them by Claude Opus 5.5;
+- first-pass transcriptions by GPT-6 Astra (ChatGPT Pro mode) of nine packages of Grothendieck's manuscript notes from
+  the Montpellier archive, cotes 142, 146, 147 and 149, which the archive groups with *La Longue Marche*, with sample
+  checks of three of them by Claude Opus 5.5;
 - the prompts with the full list of what was attached to each, the working notes, and the scripts that built the
   prompts and the archive packages;
 - second passes of the transcription of *La Longue Marche* itself, against the archive's scans, that are not yet in
@@ -19,7 +19,7 @@ How this was done, return by return, is in the section "Raw research outputs (11
 
 - Each paper and transcription in `pro_returns/` is AI-produced by GPT-6 Astra (ChatGPT Pro mode). The date of each
   return is given below.
-- The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` are by Claude Fable 5.2; the two sample checks of
+- The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` are by Claude Fable 5.2; the three sample checks of
   the archive transcriptions are by Claude Opus 5.5.
 - The second passes in `second_pass/` are by Claude Opus 5.5, one subagent per package, over the first pass by
   GPT-6 Astra (ChatGPT Pro mode).
@@ -47,7 +47,8 @@ Dates are those of the return (UTC).
 | `pro_returns/LM2_LOOP_EQUATIONS/` | Answer to the prompt on the equation of loops in types (0,3) and (1,1): Grothendieck's conditions on the image of Galois, against the Grothendieck–Teichmüller relations (§§36–47) | 11 Nov 2026 | yes (`reviews/LM2_LOOP_EQUATIONS/`) |
 | `pro_returns/LM3_TEICHMULLER_TOWER/` | Answer to the prompt on the Teichmüller tower, its profinite forms and the "conjecture fondamentale" (§§19, 21, 26–30, 32–36) | 11 Nov 2026 | yes (`reviews/LM3_TEICHMULLER_TOWER/`) |
 | `pro_returns/LM3b_TEICHMULLER_PUSH/` | Answer to the second prompt on the tower: the rows the first answer left open, and his statements derived from theorems that were only cited | 11 Nov 2026 | not yet |
-| `pro_returns/MPL_142_001-093/` | First-pass transcription, cote 142, scans 1–93 (90 nonblank) | 12 Nov 2026 | not yet |
+| `pro_returns/MPL_142_001-093/` | First-pass transcription, cote 142, scans 1–93 (90 nonblank) | 12 Nov 2026 | sample check of eight pages (`reviews/MPL_142_001-093/`) |
+| `pro_returns/MPL_142_094-122/` | First-pass transcription, cote 142, scans 94–122 | 12 Nov 2026 | not yet |
 | `pro_returns/MPL_147_003-047/` | First-pass transcription, cote 147, scans 3–47 | 11 Nov 2026 | sample check of eight pages (`reviews/MPL_147_003-047/`) |
 | `pro_returns/MPL_147_048-137/` | First-pass transcription, cote 147, scans 48–137 | 11 Nov 2026 | sample check of eight pages (`reviews/MPL_147_048-137/`) |
 | `pro_returns/MPL_147_138-190/` | First-pass transcription, cote 147, scans 138–190 | 11 Nov 2026 | not yet |
@@ -55,7 +56,7 @@ Dates are those of the return (UTC).
 | `pro_returns/MPL_146_001-099/` | First-pass transcription, cote 146, scans 1–99 | 11 Nov 2026 | not yet |
 | `pro_returns/MPL_146_100-134/` | First-pass transcription, cote 146, scans 100–134 | 11 Nov 2026 | not yet |
 | `pro_returns/MPL_149_001-090/` | First-pass transcription, cote 149, scans 1–90 | 12 Nov 2026 | not yet |
-| `reviews/` | The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` with the reviewer's programs; the two sample checks with the checked pages corrected (`pages_checked/`) and the list of page images they used (`IMAGES.md`) | 11–12 Nov 2026 | — |
+| `reviews/` | The reviews of `LM3_TEICHMULLER_TOWER` and `LM2_LOOP_EQUATIONS` with the reviewer's programs; the three sample checks with the checked pages corrected (`pages_checked/`) and the list of page images they used (`IMAGES.md`), with the two comparison crops cited by the check of `MPL_142_001-093` (`img/`) | 11–12 Nov 2026 | — |
 | `prompts/` | Each prompt (`<name>/PROMPT.md`) with `ATTACHMENTS.md`, `attached/` (our own attached files not published elsewhere in this repository) and `work/` (background notes, manifests, earlier versions); the index and overview of the Longue Marche prompts (`README.md`, `OVERVIEW.md`), their shared second half (`_COMMON_BLOCK.md`) and the record of their rewrite (`work/`) | 10–11 Nov 2026 | — |
 | `tools/archive/` | The scripts that download the archive's scans, enhance the pages and build the transcription packages, and the transcription prompt template | 10–11 Nov 2026 | — |
 | `tools/prompts/` | The scripts that rewrote and packaged the Longue Marche prompts | 11 Nov 2026 | — |
