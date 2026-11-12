@@ -1,0 +1,63 @@
+You transcribe one page of a typescript from the Grothendieck archive at the University of Montpellier into diplomatic LaTeX: exactly what the page shows, nothing more and nothing less. The page comes as two images of the same scan: its upper part and its lower part, which overlap by a few lines. Transcribe the overlapping lines once.
+
+A typescript page has two layers: the typed text, and handwritten material added to it (corrections over or between the lines, insertions, deletions, marginal notes, symbols written by hand into formulas, page numbers, instructions to the typist). Both are transcribed, and the handwritten layer is marked as such.
+
+The task is complete when every typed and handwritten word, symbol, formula, diagram, deletion, insertion and marginal note of the page is in your transcription, in the order of the page, with the handwritten layer marked. Anything left out is an error. A wrong confident reading is worse than an honest mark of doubt, but doubt is never a reason to leave something out. A description is not a transcription: never replace content by a description, a summary, "[...]" or "etc.".
+
+RULES
+
+1. Transcribe only what you see. Do not fill in from memory, from published texts, from the draft, or from what the mathematics should say. If the page says something surprising, transcribe the surprise.
+
+2. No correction, no normalization. Keep the spelling and the typos exactly as typed ("standart", "developped", "it's" for "its", "was'nt", a doubled "the the"), accents and their absence ("A la", "disparaitre", "IHES"), punctuation and the spaces around it (a space before "!" or "?" where typed), capitalization, abbreviations ("dim.", "loc. cit.", "cf.", "resp."), the author's own numbering and references. Never expand an abbreviation, never add or remove a comma.
+
+3. Mathematics exactly as written, in LaTeX: the same letters, alphabets, indices, exponents, primes, arrows, bars, hats, tildes, and the same direction of every arrow and inclusion. Typed underlined letters (a typewriter's way of marking a special alphabet) are written \underline{X} in math. Do not "fix" notation; do not replace a letter by the one the argument seems to need.
+
+4. Mark the handwritten layer and the state of the page with these macros (and only these, plus standard LaTeX, amsmath and tikz-cd):
+   \mspage{n}            the page number at the head or foot of the page, as written there (typed or by hand);
+   \hand{...}            handwritten material written in the line itself: a word, letter or symbol written by hand into the typed line or into a formula, including symbols filled in by hand in blanks left by the typist;
+   \over{typed}{written} handwritten characters written over typed ones, which they replace (e.g. a typed C overwritten by hand with B: \over{C}{B});
+   \inserted{...}        handwritten words added above or below the line or in the margin and meant to go in at a place (by a caret, a line or an arrow); put it where the mark points;
+   \inserted[typed]{...} the same for typed insertions above the line;
+   \margin{...}          handwritten marginal notes that are not insertions: comments, dated remarks, notes to the typist ("à la ligne", "id"), signs; put it at the line it stands next to;
+   \deleted{...}         text struck through by hand (typed or handwritten text); \deleted{\illegible{2}} if it cannot be read;
+   \xout{...}            text struck out on the typewriter itself (overtyped with x, /, = or -);
+   \uline{...}, \uuline{...}  underlined, doubly underlined words (typed or by hand);
+   \diagram{...}         a diagram, typeset in tikz-cd (or array for a table) with every object, arrow, label and direction as drawn; never described in words;
+   \unsure{reading} or \unsure{reading|alternative}   a reading you believe but are not certain of; the first reading is what the ink shows;
+   \illegible{n}         n words that cannot be read at all; try a reading first and prefer \unsure.
+   Nesting is allowed: a handwritten insertion with a struck word in it is \inserted{... \deleted{...} ...}. A struck word is never live text: before you write a word as live text, look for a line through it.
+
+5. Layout. One line of your LaTeX per typed line of the page, in the order of the page. A paragraph break on the page is a blank line in your LaTeX. A word hyphenated at the end of a typed line keeps its hyphen, followed by % at the end of the source line ("develop-%"). Displayed formulas as \[ ... \] where they are displayed. Footnotes typed at the foot of the page are transcribed there, in the order of the page, with their typed markers ("(*)", "(1)"), never as \footnote. Section headings and numbers as typed, as plain lines. Typed double quotation marks as ``...''. If something on the scan hides part of the page (a white box, a fold, a cut), write a LaTeX comment line "% NOTE: ..." at that place saying what is hidden; transcribe everything that is visible.
+
+6. Read the faint and the small. Carbon copies can be faint; handwriting can be small, between the lines, in the margins and at the very top or bottom of the page. Look at every margin and between every pair of lines before you finish. Check every formula symbol by symbol against the image, including subscripts, primes, and handwritten symbols.
+
+THE DRAFT (when one is given)
+
+Some pages come with a draft: the passage of an existing edition of the text that corresponds to this page. The draft is not the source and is known to normalize, correct silently, change words and formulas and merge the handwritten layer into the text. Transcribe from the image first, independently. Then compare your transcription with the draft, word by word and formula by formula, and look at the image again at every place where they differ: the image decides. If, after looking again, the image cannot decide, use \unsure{your reading|draft reading}.
+
+Then list every place where the draft differs from the page, in these classes:
+   wording          a different word, or a typo the draft introduces;
+   formula          a different symbol, letter, index, arrow or formula;
+   omission         on the page, missing from the draft;
+   addition         in the draft, not on the page;
+   silent-correction  the draft corrects a slip of the page (spelling, grammar, a typo, a wrong letter) without saying so;
+   normalization    spelling, accents, hyphenation, punctuation, capitalization, an abbreviation written out, notation changed to a convention;
+   hand-unmarked    handwritten material printed in the draft as ordinary text, without any mark (one line per insertion, correction or note);
+   hand-altered     handwritten material changed in the draft: reworded, shortened, put in another place;
+   hand-missing     a handwritten insertion or correction that the draft does not have, or a handwritten deletion that the draft does not apply;
+   struck-printed   struck text printed as live text;
+   other            anything else.
+Do not list: the draft's LaTeX macros and fonts where they render what the page has (\Cat for "Cat", \Hot for "Hot", italics or emphasis for underlining); line breaks and page layout; the draft's own page markers, labels and editorial comments marked as such; draft text that belongs to the neighbouring pages (the passage may begin before and end after this page). A margin note that the draft turns into a footnote with the same words is one hand-unmarked line; with different words it is hand-altered.
+
+OUTPUT
+
+Write exactly these sections, each introduced by its header line, and nothing before the first header:
+
+%%% TRANSCRIPTION
+(the LaTeX of the page, body only: no preamble, no \begin{document})
+
+%%% DIFFERENCES
+(only when a draft was given: one JSON object per line, with the keys "class", "draft" (the draft's words at that place, quoted exactly; "" if nothing), "page" (the page's words there, as in your transcription; "" if nothing), "note" (short; say where on the page, and for hand- classes what the hand did). Write "none" if there is no difference.)
+
+%%% NOTES
+(short lines, or "none": places where a reading needs a check by eye on the scan, with where they are on the page; and whether the page has long handwritten passages, written as the line "LONG-HANDWRITING: yes" or "LONG-HANDWRITING: no")

@@ -1,0 +1,82 @@
+%%% draft: ps3.tex, lines 2044-2124
+``left'' and ``right'' homotopies, involving respectively ``cylinder''
+and ``path'' objects). This is in keeping with the highly non-autodual
+axiom on universal disjoint sums in $M$, which we finally introduced
+by the end of yesterday's reflection.
+
+To come back however upon the relationships between the four basic
+``homotopy notions'' introduced in yesterday's notes, I would now
+rather symbolize these relations in the following diagram of maps
+between sets\pspage{129}
+\[\begin{tikzpicture}[commutative diagrams/every diagram]
+  \matrix[matrix of math nodes, name=m, commutative diagrams/every cell] {
+    Q(M) & L(M) \\
+    Q_0=\Hom_1(M) & \Hom_2(M)=L_0 \\
+    \Hom_3(M) & \Hom_4(M) \\};
+  \path[commutative diagrams/.cd, every arrow, every label]
+  (m-1-1) edge[bend left=10] node {$r$} (m-1-2)
+  (m-1-2) edge[bend left=10] node {$s$} (m-1-1)
+  (m-2-1) edge[commutative diagrams/hook] (m-1-1)
+  (m-2-1) edge[<->] node {$\sim$} (m-2-2)
+  (m-2-2) edge[commutative diagrams/hook] (m-1-2)
+  (m-3-1) edge[commutative diagrams/hook] (m-2-1)
+  (m-3-2) edge[commutative diagrams/hook] (m-2-2)
+  (m-3-2) edge[commutative diagrams/hook] (m-3-1);
+  \path[commutative diagrams/.cd, every arrow, every label]
+  (m-1-1) edge[controls=+(190:15mm) and +(150:10mm)] (m-3-1.north west);
+%    (m-1-1.west) edge[<-,controls=+(180:1cm) and +(180:8mm)] (m-3-1.west)
+  \node (P1) [right=6pt,text width=4cm,align=left] at (m-2-2.east) {("homotopy
+    structures" on $M$, defined in terms of homotopy relations, or
+    homotopism structures)};
+  \draw[decorate,decoration={brace,mirror,amplitude=6pt},yshift=0pt]
+    (P1.north west) -- (P1.south west);
+  \node (P2) [below,text width=3cm,align=left,xshift=3mm] at (m-3-1.south) {(weak
+    homotopy interval structures)};
+  \node (P3) [below,text width=3cm,align=left,xshift=5mm] at (m-3-2.south) {(contractibility
+    structures)};
+  \node[right,yshift=-3mm] at (P3.east) {,};
+\end{tikzpicture}\]
+which\footnote{D\'eployer le diagramme, trop tass\'e dans les deux
+  dimensions. \scrcommentinline{I think I've fixed that; I also reversed the brace for
+  clarity.}} in terms of the preceding reflections, and yesterday's, is
+self-explanatory. The vertical arrow from $Q(M)$ to $\Hom_3(M)$ is the
+canonical retraction -- in terms of the latter, and its composition
+with $s:L(M)\to Q(M)$, there \emph{are} ways after all to associate to
+any $R$ in $Q(M)$ or $W$ in $L(M)$ a homotopy structure on $M$,
+provided only $M$ admits finite products, by using weak homotopy
+intervals. If $h$ is the homotopy structure thus defined, we get a
+priori a functor
+\[ M_h \to M_R=M/R\quad\text{resp.}\quad M_h\to M_W=W^{-1}M,\]
+provided we assume $R$ resp.\ $W$ satisfy the ``accessory
+assumption'', namely that the corresponding functor $M\to M'$ (where
+$M'$ is either $M_R$ or $M_W$) commute with finite products.
+
+The main fact to remember from this whole discussion, it seems to me,
+is that there are not really \emph{four}, but only \emph{three}
+essentially distinct types of structure (among yesterday's) we may
+consider upon $M$ as ``homotopy-flavored'' structures, namely
+\[\parbox[c]{0.345\textwidth}{\raggedright
+  homotopy structures $\Hom_1(M)\leftrightarrow\Hom_2(M)$}
+\Leftarrow
+\parbox[c]{0.26\textwidth}{\raggedright
+  weak homotopy interval structures $\Hom_3(M)$}
+\Leftarrow
+\parbox[c]{0.30\textwidth}{\raggedright
+  contractibility structures $\Hom_4(M)$.}
+\]
+It would seem at present that the homotopy structures that naturally
+come up in our present ``modelizer story'' are all of the strictest
+type, and even describable in terms of just one \emph{generating
+  contractible weak homotopy interval} (I would like to drop the
+qualification ``weak'', definitely when a contractibility assumption
+comes in!), and even a \emph{generating contractor}, with commutative
+idempotent composition law.\pspage{130}
+
+% 53
+\hangsection[Compatibility of a functor $u: M\to N$ with a
+homotopy \dots]{Compatibility of a functor \texorpdfstring{$u: M\to N$}{u:
+    M->N} with a homotopy structure on
+  \texorpdfstring{$M$}{M}.}\label{sec:53}%
+Before pursuing yesterday's reflection about the $\pi_0$-functor and
+its relation to homotopy structures on $M$, it seems more convenient
+to interpolate some more or less obvious ``functorialities'' on the
