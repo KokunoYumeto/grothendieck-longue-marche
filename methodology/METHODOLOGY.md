@@ -389,6 +389,7 @@ times below are read from it.
 | `MPL_149_091-136` | from 15:44; the last time logged is 17:11 | not yet |
 | `MPL_146_001-099` | 16:12–17:15 | not yet |
 | `MPL_146_100-134` | 21:56–23:02; the transcription was frozen at 22:33, before the context zip was opened | not yet |
+| `MPL_149_001-090` | 21:56 to 00:06 on 12 Nov; the transcription was frozen at 23:18, before the context zip was opened. The run saved checkpoints of the finished pages along the way; the return replaces them, and its 90 pages are identical to those of the last checkpoint | not yet |
 
 The sample checks are by Claude Opus 5.5 ([reviews/MPL_147_003-047/SAMPLE_CHECK.md](../raw/reviews/MPL_147_003-047/SAMPLE_CHECK.md),
 [reviews/MPL_147_048-137/SAMPLE_CHECK.md](../raw/reviews/MPL_147_048-137/SAMPLE_CHECK.md)). Each compared eight pages
