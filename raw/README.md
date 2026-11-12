@@ -73,10 +73,13 @@ files for the packages up to `LM_P070-071` (cote 140-3, scan 130). The files her
 
 ### 12 November 2026
 
-The pilot packages of cote 140-2 (first pass of prompt version 1). Claude Opus 5.5, subagent, 12 Nov 2026:
+The pilot packages of cote 140-2 (first pass of prompt version 1). Claude Opus 5.5 (effort max), one subagent per
+package, 12 Nov 2026:
 
 | Package | Scans | Changes (high, medium, low) | Places unresolved | First-pass notes | Own notes |
 |---|---|---|---|---|---|
+| `LM_P01` | 1–10 | 70 (15, 46, 9) | 36 | none written; its abbreviation list and legibility note checked and corrected | 16 |
+| `LM_P02` | 11–20 | 49 (13, 25, 11) | 43 | none written; its abbreviation table corrected | 20 |
 | `LM_P06` | 51–60 | 68 (14, 42, 12) | 67 | 14 kept with corrections, 1 sharpened, 7 kept as they were, none dropped | 10 |
 | `LM_P07` | 61–70 | 69 (18, 35, 16) | 57, 26 of them in struck-through text | 12 kept, 15 corrected, none dropped | 6 |
 | `LM_P08` | 71–80 | 63 (13, 32, 18) | 35 | 19 kept, 4 corrected, none dropped | 3 |
