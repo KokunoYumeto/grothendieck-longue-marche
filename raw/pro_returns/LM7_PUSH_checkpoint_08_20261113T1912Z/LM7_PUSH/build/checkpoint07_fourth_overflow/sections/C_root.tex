@@ -1,0 +1,260 @@
+\subsection{Separating the point germs by the nine tangent lines}
+
+The following calculation gives additional geometric information about
+Task C.3 directly in the abelian quotient. We work with the actual maps
+on fundamental groups induced by regular invertible functions on $U$.
+Their coefficient field is $K_0=\mathbb Q(\zeta)$; enlarging a field of
+definition to contain $K_0$ is a restriction map of section sets, hence
+is permitted in the germ colimit.
+
+\begin{statement}{C.8}{Proved}{An exact tangent-line separation identity}
+Let $\ell_d$ be a row vector defining the flex tangent line at $d\in D$.
+The nine rows can be chosen as
+\[
+ (1,\zeta^a,0),\quad(0,1,\zeta^a),\quad(\zeta^a,0,1)
+ \qquad (a=0,1,2).
+\]
+Set $P_d=\ell_d^*\ell_d/2$, a rank-one Hermitian projector on
+$\mathbb C^3$. The real-linear map
+\[
+ \operatorname{Herm}_3(\mathbb C)\longrightarrow\mathbb R^9,
+ \qquad H\longmapsto\bigl(\operatorname{tr}(P_d H)\bigr)_d
+\]
+is an isomorphism, and
+\[
+ \sum_d P_d=3I_3,\qquad
+ \operatorname{tr}(P_dP_e)=
+ \begin{cases}1&d=e,\\1/4&d\ne e.\end{cases}
+ \tag{C.8.1}
+\]
+The kernel after deleting coordinate $d$ is the line
+$\mathbb R(4P_d-I_3)$. A positive semidefinite matrix with the
+eight undeleted measurements of $vv^*$, where $v\ne0$ and
+$\ell_d(v)=0$, is exactly $vv^*$.
+\end{statement}
+\begin{proof}
+Each row has norm squared two. The scalar product of two distinct
+rows has absolute value one: for rows with the same two nonzero
+positions this follows from $|1+\zeta|=|1+\zeta^2|=1$; for
+different positions their supports meet in one coordinate.
+Summing the projectors cancels the off-diagonal terms and gives
+three on each diagonal entry. This proves (C.8.1). Their Gram
+matrix is $(3I_9+J_9)/4$, with eigenvalues $3$ and $3/4$, so the
+nine projectors are a real basis of the nine-dimensional
+Hermitian space. Moreover
+\[
+ \operatorname{tr}\bigl(P_e(4P_d-I_3)\bigr)=3\delta_{de},
+\]
+which proves the assertion about the deleted coordinate.
+
+Write a matrix with the prescribed eight measurements as
+$vv^*+t(4P_d-I_3)$, $t\in\mathbb R$. The vector spanning
+$\operatorname{im}P_d$ is orthogonal to $v$, and its quadratic
+value is $3t$ times its norm squared. A nonzero vector orthogonal
+to both this line and $v$ has quadratic value $-t$ times its
+norm squared. Positive semidefiniteness therefore gives both
+$t\ge0$ and $t\le0$. Thus $t=0$.
+The exact program \texttt{code/c\_point\_separation.py} verifies
+the rank, all 81 dual pairings, all nine tangent annihilations,
+and the eigenvalues $(3,-1,-1)$ over $\mathbb Q(\sqrt{-3})$.
+\end{proof}
+
+\begin{statement}{C.13}{Proved}{The initial cuspidally central obstruction over every number field}
+Let $L\subset\overline\Q$ be a number field and let
+$\alpha\in H^1(G_L,V)$, with image $\beta\in H^1(G_L,T)$.
+Orient $\bigwedge^2T\simeq\Z_3(1)$ by the commutator in
+the once-punctured elliptic curve, and write $\omega$ for
+this alternating pairing. For each $v\mid3$ define
+\[
+ q_v(\beta)=\tfrac12\operatorname{inv}_v
+       \omega_*(\beta_v\smile\beta_v)\in\Z_3.
+ \tag{C.13.1}
+\]
+Here $\operatorname{inv}_v:H^2_{\rm cts}(G_{L_v},\Z_3(1))
+\xrightarrow{\sim}\Z_3$ is the inverse limit of the
+normalized local Brauer invariant maps. Then
+\[
+ \alpha\in\operatorname{im}
+   \bigl(\operatorname{Sec}_L(N^{\rm cc})\to H^1(G_L,V)\bigr)
+ \quad\Longleftrightarrow\quad
+             q_v(\beta)=0\text{ for every }v\mid3.
+ \tag{C.13.2}
+\]
+The tuple satisfies $\sum_{v\mid3}q_v(\beta)=0$.
+Every nonempty fiber is a torsor under
+$H^1(G_L,\Z_3(1))=\varprojlim_n L^\times/(L^\times)^{3^n}$,
+with no further stabilizer quotient. In particular, every
+abelian section lifts to $N^{\rm cc}$ over a number field
+having exactly one place above three, including $\Q$.
+This statement makes no assertion that every tuple subject
+to the displayed sum occurs as a self-pairing.
+\par\smallskip\noindent\emph{Manuscript comparison: \S51.16,
+folios 733v--736v, scans 172--178, formulas (371)--(379).}
+\end{statement}
+\begin{proof}
+We first specify the genuine arithmetic action on the
+once-punctured elliptic class-two quotient $C$. The
+automorphism $[x:y:z]\mapsto[y:x:z]$ is elliptic inversion
+for origin $O$. It preserves $E\setminus\{O\}$ and has
+derivative $-1$ at $O$. Its comparison from the tangent
+$-1$ to the tangent $1$ admits a $G_\Q$-fixed pro-three
+path: the compatible $3^n$th roots of $-1$ can all be
+chosen to be $-1$. Composition with this path gives a
+genuine involution $j$ of the based pro-three group,
+commuting with the arithmetic action. Applying the
+comparison twice gives the constant path, as the product
+of the two chosen roots is one at every level.
+
+The integral class-two logarithm is available at three:
+its group law is the Baker--Campbell--Hausdorff law with
+the single denominator two. The central exact sequence
+of Lie lattices is
+\[
+ 0\longrightarrow\bigwedge^2T\longrightarrow\log C
+       \longrightarrow T\longrightarrow0.
+\]
+The involution acts as $-1$ on $T$ and as $1$ on the
+center. The operator $(1-j)/2$ therefore gives a
+canonical lift of $T$ to its negative eigenspace.
+An arithmetic automorphism commutes with $j$, so it
+preserves this lift. In these coordinates
+\[
+ (t,z)(t',z')=(t+t',z+z'+\tfrac12\omega(t,t')),
+ \qquad g(t,z)=(g t,\chi_3(g)z).
+ \tag{C.13.3}
+\]
+This proves the claimed diagonalization by an actual
+based morphism. In particular the central extension
+obstruction for a $T$-cocycle $\beta$ is represented by
+the continuous two-cocycle
+\[
+ (g,h)\longmapsto\tfrac12\omega(\beta(g),g\beta(h)).
+ \tag{C.13.4}
+\]
+
+At a finite place $v\nmid3$, the curve has good reduction,
+so $T$ is unramified. The two Frobenius eigenvalues have
+complex absolute value $\sqrt{Q_v}$. Thus both
+$T^{F_v=1}$ and $T(-1)^{F_v=1}$ vanish. The local
+inertia sequence gives
+\[
+ H^1(G_{L_v},T)=T/(F_v-1)T,
+\]
+a finite group. This equality also follows at the
+integral level by the finite-coefficient inverse limit;
+the invariant towers are finite and have zero first
+derived limit. The self-pairing of any element of a
+finite group is torsion, whereas
+$H^2_{\rm cts}(G_{L_v},\Z_3(1))=\Z_3$ is torsion-free.
+Consequently (C.13.4) restricts to zero at every such
+place. Its restrictions at archimedean places vanish
+because three is odd.
+
+For clarity, the required global injectivity retains
+the topology. At each finite level the Kummer sequence
+identifies $H^2(G_L,\mu_{3^n})$ with $\operatorname{Br}(L)[3^n]$.
+The global Brauer invariant exact sequence, followed
+by inverse limit, identifies its limit with
+\[
+ \left\{(b_v)_v\in\mathcal R_{v\ {
+m finite}}(\Z_3):
+                       \sum_v b_v=0\right\}.
+ \tag{C.13.5}
+\]
+The sum converges because the family is restricted.
+Conversely, reduction of such a tuple modulo $3^n$
+has finite support and zero sum, and hence gives the
+unique global Brauer class at that level; these
+classes are compatible. Statement F.5 gives
+$\varprojlim{}^1 H^1(G_L,\mu_{3^n})=0$, so Jannsen's
+sequence identifies the continuous integral second
+cohomology itself with (C.13.5). Equivalently one can
+apply the same Kummer inverse-limit argument to the
+completed multiplicative group. The local and global
+Brauer invariant theorems are used in their stated
+normalizations \cite{MilneCFT}.
+
+The only possibly nonzero entries of (C.13.4) are
+therefore precisely (C.13.1). Formula (C.13.5) proves
+both the sum relation and the vanishing equivalence.
+The arithmetic fiber product
+$N^{\rm cc}=C\times_TV$ transports this equivalence
+to (C.13.2). The central lifting fiber is acted on
+transitively by $H^1(G_L,\Z_3(1))$. Its potential
+stabilizer is the image of $H^0(G_L,V)$, which is
+zero: a good Frobenius outside three has no eigenvalue
+one on $V\otimes\Q_3$, since its boundary and elliptic
+eigenvalues have absolute values $Q_v$ and
+$\sqrt{Q_v}$. As $V$ is torsion-free, the integral
+invariants vanish as well. This proves the assertion
+about fibers. A tuple supported at one place and
+having sum zero is zero, which proves the last claim.
+\end{proof}
+
+\begin{statement}{C.9}{Proved}{Injective point germs and their separation from cusp germs}
+The canonical map
+\[
+ U(\overline{\mathbb Q})\longrightarrow
+ \varinjlim_L\operatorname{Sec}_L(N/\gamma_3N)
+\]
+is injective and $G_{\mathbb Q}$-equivariant. Its image is
+disjoint from all the cuspidal germs. Both assertions already
+hold after projecting to the germ colimit of $H^1(G_L,V)$.
+The smallest field of definition of a point germ is the field
+of definition of the point.
+\end{statement}
+\begin{proof}
+For distinct cusps $d,e$, the regular invertible function
+$f_{d,e}=\ell_d/\ell_e$ on $U$ has divisor $3d-3e$ on $E$.
+Its morphism $U\to\mathbb G_m$ gives a continuous map of
+geometric pro-three groups $N\to\mathbb Z_3(1)$, factoring
+through $V$. On the difference of the section classes of two
+points $A,B\in U(L)$, the induced cohomology map is exactly
+\[
+ \kappa_L\bigl(f_{d,e}(A)/f_{d,e}(B)\bigr).
+ \tag{C.9.1}
+\]
+This follows by pulling back the covers $z^{3^n}=t$ on
+$\mathbb G_m$; their fibers are the compatible division roots
+used to define the Kummer cocycle. Thus the comparison is a
+map of actual section torsors, with the tangential origin
+cancelling in the difference.
+
+The kernel of $L^\times\to\varprojlim_n L^\times/L^{\times3^n}$
+is its group of roots of unity of order prime to three.
+Indeed every finite valuation of an infinitely three-divisible
+element is zero. Dirichlet's unit theorem then reduces the
+assertion to the finite roots-of-unity group. In particular
+every complex absolute value of a kernel element is one.
+
+Equality of two abelian germs is equality after restriction to
+one finite number field containing $A,B$ and $K_0$. By (C.9.1)
+the ratios of all these function values have absolute value one.
+Fix a complex embedding and normalize vector representatives
+$a,b$ of $A,B$ by $\ell_e(a)=\ell_e(b)=1$.
+This is possible because the tangent at a flex meets $E$ only
+at that cusp and $A,B\in U$. We obtain
+$|\ell_d(a)|^2=|\ell_d(b)|^2$ for all nine $d$.
+C.8 gives $aa^*=bb^*$, hence the same projective point $A=B$.
+
+Now compare a point $A\in U$ with a section in the packet of
+a cusp $d$. Choose $e\ne d$. For every $j\ne d$, the function
+$f_{j,e}$ has order zero at $d$ and is a unit in its local ring.
+The morphism on the tangential packet is consequently the
+constant Kummer class of $f_{j,e}(d)$: extracting roots of a
+local unit gives that constant fiber, and the varying tangent
+parameter has exponent zero. Equality of abelian germs would
+therefore give, after normalization at $\ell_e$,
+\[
+ |\ell_j(a)|^2=|\ell_j(d)|^2\quad(j\ne d).
+\]
+The cusp vector satisfies $\ell_d(d)=0$. The final assertion
+of C.8 applied to the positive matrix $aa^*$ forces $A=d$,
+contradicting $A\in U$. This proves disjointness for every
+algebraic cusp and every completed Kummer parameter.
+
+Equivariance follows from functoriality of the point section
+and restriction. Injectivity identifies the stabilizer of a
+point germ with the stabilizer of the point, which proves the
+assertion about its smallest field of definition.
+\end{proof}

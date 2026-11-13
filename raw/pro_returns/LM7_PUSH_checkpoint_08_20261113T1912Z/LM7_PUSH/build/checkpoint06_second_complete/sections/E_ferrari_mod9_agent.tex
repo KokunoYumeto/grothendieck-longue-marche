@@ -1,0 +1,213 @@
+\begin{statement}{E.19}{Proved}{Complete compatible corrections at the modulus-nine Ferrari test}
+For $R=\mathbb Z/9$, let $\mathcal H(R)$ have coordinates
+$(u,v,z)\in R^3$ and multiplication
+\[
+ (u,v,z)(u',v',z')=
+ (u+u',v+v',z+z'+\tfrac12(uv'-vu')),
+ \qquad \tfrac12=5\text{ in }R.
+\]
+Put $H_9=\mathcal H(R)\rtimes\mathrm{SL}_2(R)$, with
+the linear action on $(u,v)$ and the identity on $z$.
+The assignments (E.18.1), with the final central coordinate
+changed from $2$ to $5$ and the matrices taken modulo nine,
+define an epimorphism $\rho_{4,9}:B_4\to H_9$.
+Its composition with reduction modulo three is precisely
+$\widetilde\rho_4$ of E.18.
+
+Let $\theta_i:F_2\to H_9$, $1\leq i\leq6$, be the
+six actual evaluation maps of E.17. For
+$B=C_2*C_3$, choose representatives $b_q$ of
+$B/F_2\simeq\mathfrak S_3$ and set
+\[
+ K_6=N'N^6,\qquad
+ K_{3,9}=K_6\cap
+   \bigcap_{i=1}^6\bigcap_{q\in B/F_2}
+       b_q^{-1}\ker(\theta_i)b_q,
+ \qquad D_9=B/K_{3,9}.
+ \tag{E.19.1}
+\]
+Thus $K_{3,9}$ is normal of finite index in $B$ and lies
+in $F_2$. The kernel of $D_9\to G_6$ is
+$\F_3^4$, and the image of $K_6\cap F_2'$ in that
+kernel is $\F_3^3$.
+
+For each of the 24 particular $G_6$ points retained in
+E.17, all three commutator-correction parameters can be
+solved simultaneously. The gentle norm equations have
+rank two. The modulus-nine pentagon has rank three and
+selects exactly one correction in this three-dimensional
+image. The resulting literal words have zero integral
+$F_2$-abelianization, satisfy both complete hexagons in
+$D_9$, give surjective three-strand shadow maps, and
+satisfy the complete pentagon in $H_9$. Their three
+four-strand braid images satisfy all braid relations
+and generate $H_9$.
+
+This yields nonempty compatible finite tests for all
+24 CM fibres. In this particular construction
+$N'N^{18}\subset K_{3,9}$: the three-strand quotient
+is an explicit quotient of $G_{18}$. The new condition
+is the specified four-strand pentagon; no cofinal
+extension follows from this statement.
+\end{statement}
+\begin{proof}
+The exact coordinate change from the ordinary free
+class-two coordinates is
+$z=z_0+(u-v)/2$. It removes the central terms in the
+two literal Ferrari actions over every ring in which
+two is invertible. The free generators therefore map
+to $(1,0,1/2)$ and $(0,1,-1/2)$. Direct multiplication
+verifies their four action formulas and all three
+braid relations over $R$. They generate
+$\mathcal H(R)$, and the two elementary matrices
+$A,B$ generate $\mathrm{SL}_2(R)$: row reduction
+over the local ring $R$ first chooses a unit in the
+first column, clears the other entry, and then
+expresses the resulting diagonal matrix as a product
+of elementary matrices. This proves the asserted
+epimorphism. Its target has order
+$9^3\cdot648=472392$.
+
+Here is a faithful model for the core in (E.19.1).
+An element $b\in B$ has permutation
+$q\mapsto q\bar b$ of the six cosets and coordinates
+\[
+ h_{q,i}(b)=\theta_i(b_q b b_{q\bar b}^{-1}).
+ \tag{E.19.2}
+\]
+The product rule is
+$h_{q,i}(bc)=h_{q,i}(b)h_{q\bar b,i}(c)$.
+Together with the original map to $G_6$, this is an
+actual faithful representation of $D_9$; its kernel
+is exactly (E.19.1). The program
+\texttt{de\_ferrari\_mod9\_lift.py} constructs the
+six representatives and checks $s^2=r^3=1$ in this
+model. Its evaluation on $x,y$ is checked against
+the six original maps $\theta_i$.
+
+Reduction modulo three maps every $K_6$ coordinate
+to the identity by E.18. The kernel of
+$H_9\to\widetilde H_3$ is elementary abelian:
+subtract the identity matrix and the zero
+Heisenberg vector, divide all coordinates by three,
+and reduce modulo three. Products add because
+every cross term contains a factor nine. The
+36 coordinates in (E.19.2) therefore give an
+injective linear coordinate map on the image
+of $K_6$.
+
+The complete $K_6$ image is computed from the
+4656 pairwise commutators of the 97 actual
+Schreier generators $n_i$ of $N$, their sixth
+powers, and their conjugates by the $n_i$.
+These normally generate $N'N^6$ in $N$.
+All pairwise commutator images are zero, and
+all ninth powers are the identity. Thus this
+particular core factors through $G_{18}$.
+The span of the sixth-power images has rank
+four; stability under every $n_i$ is checked.
+This proves the exact kernel assertion.
+
+The zero-abelianization restriction is imposed
+integrally. With the previously retained matrix
+$B_N=\left(\begin{smallmatrix}6&4\\0&2\end{smallmatrix}\right)$,
+write
+\[
+       \operatorname{ab}_{F_2}(n_i)=B_N h_i,
+       \qquad H=(h_i)_{0\leq i<97}.
+\]
+The columns numbered $0,8$ form a determinant-one
+minor of $H$. They give an explicit integral
+basis of the rank-95 lattice $\ker H$.
+Modulo the commutator image, every element of
+$K_6$ is represented by $\prod_i n_i^{6a_i}$.
+Its $F_2$-abelianization vanishes exactly when
+$a\in\ker H$. Evaluating this entire integral
+lattice gives a rank-three image. The code
+retains three literal words forming a basis;
+their integral abelianizations are checked
+to be zero. Their images are also checked
+to be stable under $s,r$. This proves that
+the allowed correction space is the entire
+image of $K_6\cap F_2'$, with no omitted
+power corrections.
+
+For a retained E.17 conjugator $\beta$, put
+\[
+ S_0=\beta s\beta^{-1},\qquad
+ t=sr,\qquad R_0=S_0t.
+\]
+Let $M=\im(K_6\cap F_2'\to D_9)$, and write
+$S,R$ for conjugation by $S_0,R_0$ on $M$.
+Replacing $S_0,R_0$ by $S_0k,k^{-1}R_0$ preserves
+their product. Since $M$ is abelian, the two
+torsion equations are exactly
+\[
+       (1+S)k=0,\qquad
+       (1+R+R^2)k=R_0^3.
+ \tag{E.19.3}
+\]
+All terms lie in the explicitly computed image
+$M$; the code checks this by expressing them in
+the retained basis. These equations have rank
+two in every fibre.
+
+Let $g$ be the exact integral cusp gauge of
+the E.17 word. The corrected conjugator is
+the literal commutator word
+\[
+          f=sx^gS_0k x^{-g}.
+ \tag{E.19.4}
+\]
+For each evaluation map, changing $k$ changes
+$f$ by an element of the elementary abelian
+congruence kernel. Multiplying the five
+pentagon factors therefore gives an affine
+linear equation on $M$. The calculation
+evaluates all $3^3=27$ correction values in
+each of the 24 fibres, checking every
+coefficient of this linear description.
+The pentagon matrix has rank three; the
+three braid-relation matrices have rank
+zero. The joint system with (E.19.3) is
+consistent of rank three, and so selects
+one point of $M$ in every case.
+
+The retained point is then verified by
+complete literal substitution, without
+using only its linear equations. The two
+hexagons are checked in all 36 induced
+coordinates, and hold in $G_6$ by E.17;
+hence they hold in the faithful combined
+quotient $D_9$. The word (E.19.4) has zero
+integral abelianization because both its
+base word and $k$ do.
+
+For generation, the new three-strand map
+is already onto $G_6$. Substitution of all
+97 generators, their commutators and sixth
+powers, followed by closure under their
+conjugations, gives rank four in the kernel
+of $D_9\to G_6$. Thus the map is onto $D_9$.
+This supplies the finite gentle-shadow
+generation condition, with multiplier one.
+For the four-strand map, the first two
+matrix images generate all 648 elements
+of $\mathrm{SL}_2(R)$, as directly
+enumerated. The two Ferrari generators
+have trivial matrix part and determinant
+nonzero modulo three on their two
+Heisenberg homology coordinates. They
+therefore generate the finite three-group
+$\mathcal H(R)$ by its Frattini quotient.
+The whole four-strand image is $H_9$.
+
+Every correction word, source word, linear
+matrix and right-hand side is retained
+in the JSON and compressed certificates.
+The distinction between these specified
+finite tests and a compatible lift
+through every four-strand quotient is
+exactly the untested extension beyond
+(E.19.1); it is not removed here.
+\end{proof}

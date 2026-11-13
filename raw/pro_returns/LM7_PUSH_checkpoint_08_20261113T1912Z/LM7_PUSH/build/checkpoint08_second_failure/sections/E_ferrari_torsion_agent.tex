@@ -1,0 +1,113 @@
+\begin{statement}{E.32}{Proved}{Every retained binary fibre passes the order-two torsion-class test}
+Let $T_{2,6}$ be the exact characteristic-two Ferrari target of E.24,
+and put $\delta=abc$, $z_4=\delta^4$.
+For all $96$ branch/line inputs of E.24, including both multiplier
+residues $1,73$ and both binary correction points in each of the
+$24$ retained fibres, the resulting triple satisfies
+\[
+ (a'b'c')^2=h\delta^2h^{-1}
+       \qquad\text{for an explicitly certified }h\in T_{2,6}.
+ \tag{E.32.1}
+\]
+Thus the necessary conjugacy condition of E.30 holds already in
+$T_{2,6}$ itself. It holds for every one of the $864$ joint points
+of E.24, since its nine ternary parameters leave the binary
+coordinates unchanged. This assertion retains the specified
+finite fibres and makes no full profinite realization assertion.
+\end{statement}
+\begin{proof}
+All group operations take place in the exact tensor-algebra
+semidirect product of E.24. Let
+$U=\ker(T_{2,6}\to\operatorname{SL}_2(\mathbb F_2))$.
+The complete collection certificate gives $|U|=2^{40}$.
+Give a unit increment of degree $d$ weight $d$, and an
+automorphism increment of degree $d+1$ weight $d$.
+Let $U_d$ consist of the elements having zero coordinates of
+weight less than $d$. Multiplication and substitution in the
+actual truncated tensor algebra show
+\[
+ [U_i,U_j]\subset U_{i+j},\qquad
+ U_d/U_{d+1}\text{ has exponent two},\qquad U_7=1.
+ \tag{E.32.2}
+\]
+These assertions use the positive-weight filtration of the
+collected group, including all square terms.
+
+Here is the complete conjugacy algorithm, including its
+centralizer fibres. Enumerate six actual representatives of
+$T_{2,6}/U$. For each representative $g$, put
+$x_g=g\delta^2g^{-1}$, which belongs to $U$.
+At stage $d$, let $C_d$ be the full subgroup of $U$ centralizing
+$x_g$ modulo $U_d$. Initially $C_1=U$.
+The actual commutator gives a homomorphism
+\[
+ L_d:C_d\longrightarrow U_d/U_{d+1},\qquad
+ c\longmapsto[c,x_g]\bmod U_{d+1}.
+ \tag{E.32.3}
+\]
+It is a homomorphism because the target is central in
+$U/U_{d+1}$. Its matrix is computed on an exact polycyclic
+basis of $C_d$. Products corresponding to the binary nullspace
+give actual elements of $\ker L_d$; exact group collection of
+these products has order
+$|C_d|/2^{\operatorname{rank}L_d}$. Containment in the kernel
+is checked by substitution. This order equality proves that
+the entire kernel, rather than a subset of its lifts, has been
+retained. The next centralizer is exactly
+$C_{d+1}=\ker L_d$.
+
+Suppose $h x_g h^{-1}$ agrees with a specified target $y$ modulo
+$U_d$. Its discrepancy in $U_d/U_{d+1}$ is an explicit vector.
+Solving (E.32.3) for that vector replaces $h$ by $hc$ and gives
+agreement modulo $U_{d+1}$. All solutions at that stage form
+the coset $hC_{d+1}$. An inconsistent linear system rules out
+that entire coset. Running through all six outer representatives
+therefore decides conjugacy in the full target. The exact
+centralizer dimensions and successive image ranks are, in
+every outer coset,
+\[
+ \begin{array}{c|rrrrrrr}
+  &C_1&C_2&C_3&C_4&C_5&C_6&C_7\\\hline
+  \log_2|C_d|&40&40&38&37&34&31&27
+ \end{array},
+ \qquad
+ (\operatorname{rank}L_d)_{d=1}^6=(0,2,1,3,3,4).
+ \tag{E.32.4}
+\]
+
+The central element $z_4$ has order four. The program tests all
+four possible translates $(a'b'c')^2z_4^j$ for each input.
+There are exactly two distinct values of $(a'b'c')^2$, hence
+eight distinct translated targets. In every one of the
+$96$ inputs, precisely the translate $j=0$ is conjugate to
+$\delta^2$. The resulting conjugators are substituted into
+the complete group multiplication to verify (E.32.1).
+
+The $96$ inputs are reconstructed directly from the complete
+seven-dimensional binary correction module, its two affine
+branches, and the retained cusp gauge. If $f$ changes to $fk$,
+its two corrected braid generators change to
+$k_5^{-1}b'k_5$ and $k_6^{-1}c'k_6$ in the corresponding
+evaluation factors. This exact formula retains both binary
+points at both multiplier residues. The ternary homogeneous
+corrections are represented by the powers $u^{-2}$ of E.24,
+whose binary image is identity, proving the assertion about
+all $864$ joint points.
+
+Two independent controls accompany the computation.
+First, the same conjugacy algorithm is run in the
+degree-two target of order $1536$ and compared with direct
+enumeration of every target element and every conjugate.
+All $1536$ decisions agree; the conjugacy class has size
+$12$. Second, a separate program imports no conjugacy
+solver. It reconstructs all $40$ collected basis elements
+from their literal words in the original braid generators,
+collects each certified conjugator, and obtains explicit
+$B_4$ words. Substitution of these words verifies all $96$
+equalities (E.32.1). The certificates are
+\texttt{de\_ferrari\_two\_conjugacy.py},
+\texttt{de\_ferrari\_two\_torsion.py}, and
+\texttt{de\_ferrari\_two\_torsion\_words.py}, together
+with the executed outputs, all centralizer matrices,
+literal conjugators and indexed input map.
+\end{proof}

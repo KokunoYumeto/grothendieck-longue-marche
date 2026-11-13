@@ -1,0 +1,249 @@
+\subsection{Class-preserving weight-five shadows and the odd-base \texorpdfstring{$A_6$}{A6} comparison}
+
+\begin{statement}{D.38}{Proved}{Exact constraints on the first mixed tests above the characteristic five-group}
+Every automorphism \(\beta_Q\) of \(P_1\) constructed in D.37 is
+class-preserving.  There is an explicit conjugator for every element,
+given in \textup{(D.38.3)} below.  The nonzero parameters nevertheless
+retain their nonzero ordinary outer classes by the exact centralizer
+calculation of D.37.
+
+In addition, let
+\[
+ 1\longrightarrow A_6^\Omega\longrightarrow E
+       \xrightarrow{\pi}D\longrightarrow1
+ \tag{D.38.1}
+\]
+be a finite chief extension with \(D\) of odd order.  Fix an
+epimorphism \(q_E:\widehat F\twoheadrightarrow E\), write
+\(X_i=q_E(x_i)\), \(q=\pi q_E\), \(d_i=q(x_i)\), and let
+\(q_1:\widehat F\twoheadrightarrow D\) be any epimorphism with
+\(q_1(x_i)=h_i d_i^\lambda h_i^{-1}\), for specified \(h_i\in D\)
+and \(\lambda\in\widehat{\mathbf Z}^{\times}\).
+For any lifts \(H_i\) of \(h_i\), there is an epimorphism
+\(f:\widehat F\twoheadrightarrow E\) satisfying
+\[
+ \pi f=q_1,\qquad
+ f(x_i)=a_iH_iX_i^\lambda H_i^{-1}a_i^{-1}
+                  \quad(a_i\in A_6^\Omega).
+ \tag{D.38.2}
+\]
+The number of these literal epimorphisms is the same as in the
+original case \((q_1,\lambda,h_i)=(q,1,1)\).
+The comparison also holds in the actual coupled pullback with
+any finite odd-order group over \(D\), retaining its prescribed
+peripheral epimorphism and conjugators.
+In particular every \(\beta_Q\) passes every such chief step
+over its fixed characteristic target \(P_1\).
+\end{statement}
+
+\begin{proof}
+We first prove the elementwise conjugacy assertion in the actual
+Magnus group, with the notation and multiplication of D.37.
+Let \(g\in P_1\) have abelian coordinates \(r,s\) modulo five,
+and write \(Q=AX^2+BXY+CY^2\).
+If \(s=0\), then \(\beta_Q(g)=g\) by D.37.16.
+Suppose \(s\ne0\), and put
+\[
+ \begin{split}
+ d&=-sY(X+Y)Q,\\
+ t&=d(s,-r)/s\in\mathbf F_5,\\
+ p&=\frac{tsX^4-d}{rX+sY}\in\mathbf F_5[X,Y]_3,\\
+ u_g&=x^{5t}c^p.
+ \end{split}
+ \tag{D.38.3}
+\]
+The quotient displayed here is an exact polynomial division.
+Its homogeneous degree-four numerator vanishes at \((s,-r)\):
+the first term evaluates to \(ts^5=ts=d(s,-r)\).
+The kernel of substitution \(Y=-rX/s\) is the principal ideal
+\((rX+sY)\), and the coefficient \(s\) is a unit.  This proves
+existence and uniqueness of the cubic \(p\).
+
+The following two commutators are exact in \(P_1\):
+\[
+ [x^5,g]=c^{sX^4},\qquad
+ [c^p,g]=c^{-(rX+sY)p}.
+ \tag{D.38.4}
+\]
+For the first, \([x,g]\) belongs to the polynomial derived module
+and its constant coefficient is \(s\).  The product formula for
+\([x^5,g]\) multiplies this coefficient polynomial by
+\(1+(1+X)+\cdots+(1+X)^4=X^4\) in characteristic five.
+Every positive-degree term then disappears at the cutoff \(I^5\).
+For the second, conjugation by \(g\) on that module multiplies
+by its diagonal \(a_g\); the linear part of \(a_g-1\) is
+\(rX+sY\), and the terms of degree at least two kill the cubic
+\(p\) at the same cutoff.  Both commutators in
+\textup{(D.38.4)} are central.  Consequently
+\[
+ [u_g,g]=c^{tsX^4-(rX+sY)p}=c^d,
+ \qquad u_ggu_g^{-1}=g c^d=\beta_Q(g).
+ \tag{D.38.5}
+\]
+This proof includes all higher abelian coordinates and all fifteen
+derived coordinates of \(g\); none was discarded from the group.
+The term \(x^{5t}\) is essential.  For example, for
+\(Q=X^2\), \((r,s)=(1,2)\), the value \(d(2,-1)\) is nonzero,
+so a conjugator from the cubic derived module alone cannot give
+the displayed central change.
+
+The program \texttt{a\_weight5\_class\_preserving.py} evaluates
+\textup{(D.38.3)--(D.38.5)} with actual Magnus multiplication
+for all 125 parameters and all 25 abelian residue pairs, retaining
+higher abelian and derived coordinates.  All 3,125 checks pass;
+1,200 of them have nonzero displayed \(x^5\) coefficient.
+
+We next give the complete odd-base chief comparison.  Set \(S=A_6\).
+The actual automorphism enumeration of D.31 supplies
+\(Z(S)=1\), simplicity, and
+\(\operatorname{Out}(S)=\mathbf F_2^2\).
+Let \(\rho:D\to\operatorname{Sym}(\Omega)\) be the transitive
+factor action of \textup{(D.38.1)}.  Its outer action is
+\((b_d,\rho(d))\), where
+\(b_d\in(\mathbf F_2^2)^\Omega\) and
+\(b_{de}=b_d+\rho(d)b_e\).
+The explicit vector
+\[
+ B=|D|^{-1}\sum_{e\in D}b_e,
+       \qquad b_d=B-\rho(d)B
+ \tag{D.38.6}
+\]
+removes this twisting by componentwise actual automorphisms of
+\(S\) having the prescribed outer coordinates.
+The centreless pullback
+\[
+ E\longrightarrow
+ \operatorname{Aut}(S^\Omega)
+       \times_{\operatorname{Out}(S^\Omega)}D,
+ \qquad e\longmapsto(\operatorname{Ad}_e,\pi(e))
+ \tag{D.38.7}
+\]
+is an isomorphism: its kernel is \(Z(S^\Omega)=1\), and each
+required automorphism differs from a chosen lift by a unique
+inner automorphism.  After \textup{(D.38.6)}, the unique
+coefficient \(a_e\) in
+\(\tau_B^{-1}\operatorname{Ad}_e\tau_B
+ =\operatorname{Inn}(a_e)\rho(\pi(e))\)
+gives the actual isomorphism
+\(e\mapsto(a_e,\pi(e))\) with \(S^\Omega\rtimes D\).
+It transports the source and all specified conjugators.
+
+Choose a factor stabilizer \(D_*\leq D\).
+For every \(D_*\leq C\leq D\), use the two actual subgroups
+\(H_C=q^{-1}(C)\), \(H'_C=q_1^{-1}(C)\), with respective
+kernels \(K=\ker q\), \(K'=\ker q_1\).
+The exact boundary bijection is
+\[
+ C d\langle q_1(x_i)\rangle
+       \longmapsto C d h_i\langle d_i\rangle.
+ \tag{D.38.8}
+\]
+It preserves each cycle length and every intermediate boundary
+degree, because \(q_1(x_i)h_i=h_i d_i^\lambda\).
+The induced cycle-product class is the \(\lambda\)th power
+of the old class.  Kernel components of \(H_i\) only conjugate
+that cycle product in \(S\).
+For a boundary \(\delta\) of \(H_C\), let \(C_\gamma\)
+be its specified classes upstairs and \(r_\gamma\) their
+relative boundary degrees.  The exact allowable set is
+\[
+ T_{C,\delta}=
+    \bigcap_{\gamma\mapsto\delta}
+       \{s\in S:s^{r_\gamma}\in C_\gamma\}.
+ \tag{D.38.9}
+\]
+The set on the new cover is \(T_{C,\delta}^\lambda\), with
+the labels matched by \textup{(D.38.8)}; this equality retains
+all roots when a boundary degree is not invertible on \(S\).
+
+All unit-power class permutations of \(A_6\) are realized by
+one actual automorphism \(\tau_\lambda\): use the identity
+for \(\lambda\equiv1,4\pmod5\), and conjugation by \((01)\)
+in \(S_6\) for \(\lambda\equiv2,3\pmod5\).
+The only moved classes are the two classes of five-cycles;
+the other cycle types each form one \(A_6\)-class.
+Thus \(\tau_\lambda(T)=T^\lambda\) for every conjugacy-invariant
+subset \(T\subset S\).
+The program \texttt{a\_weight5\_a6\_odd.py} verifies this for
+all sixteen units modulo \(\exp(A_6)=60\), on all 360 actual
+permutations, and locates the literal odd conjugation in the
+certified D.31 automorphism table.
+
+The two covers have equal genus and matched oriented boundaries.
+The adjacent Hurwitz maps and inverses displayed in D.29.13
+therefore give an actual isomorphism \(u_C:H'_C\to H_C\)
+with \textup{(D.38.8)} as its boundary correspondence.
+The map
+\[
+                 \psi\longmapsto\tau_\lambda\psi u_C
+ \tag{D.38.10}
+\]
+is a bijection on epimorphisms to \(S\) satisfying the sets
+\textup{(D.38.9)}.  Denote the common count by \(N_C\).
+
+Every epimorphism \(\varphi:H_{D_*}\to S\) maps \(K\)
+onto \(S\): its normal image is either \(S\) or trivial,
+and the latter would give an even-order quotient of the
+odd-order group \(D_*\).  If
+\(N=\ker(\varphi|_K)\), an overgroup \(H_C\) normalizes
+\(N\) precisely when \(\varphi\) extends to \(H_C\).
+Indeed its conjugation action on \(K/N\simeq S\) has outer
+part factoring through the odd-order group \(C\), hence
+trivial in \(\mathbf F_2^2\).
+The inverse of \(S\xrightarrow{\operatorname{Inn}}
+\operatorname{Inn}(S)\) supplies the extension.  It agrees
+with \(\varphi\) and is unique by centrelessness and
+surjectivity on \(K\).
+Conversely each epimorphism from \(H_C\) restricts onto
+\(S\) on \(K\), so every extension is counted exactly once.
+Repeating the argument with \(K'\) proves that the numbers
+with minimal kernel normalizer agree, by the explicit
+finite subgroup-poset formula
+\[
+ e_{D_*}=\sum_{C\geq D_*}\mu(D_*,C)N_C.
+ \tag{D.38.11}
+\]
+The original generating source makes this number positive.
+The nonabelian Shapiro map of D.28.13 identifies the coordinate
+kernels with the conjugates of \(N\); minimal normalizer makes
+them pairwise distinct.  Surjective maps to a simple group
+with distinct kernels have full product image: a proper
+subdirect product would identify two factors by an
+automorphism and hence identify their kernels.  This proves
+generation of the new full kernel.
+The literal gauge normalization of D.29.16, with \(S=A_6\),
+has exactly \(360^{|\Omega|-1}\) choices, and retains the
+specified base conjugators.  The exact literal count is
+therefore
+\[
+       360^{|\Omega|-1}
+           \sum_{C\geq D_*}\mu(D_*,C)N_C,
+ \tag{D.38.12}
+\]
+which is unchanged under \textup{(D.38.10)}.
+
+For a coupled odd-order group \(L\to D\), pair this lift
+with its prescribed new map to \(L\), using the images of
+its conjugators as the \(h_i\).  The paired conjugators
+are actual elements of the fibre product.
+The possible missing quotient of \(S^\Omega\) would be a
+quotient of \(\ker(L\to D)\), of odd order.  Every nontrivial
+quotient of \(S^\Omega\) contains an \(S\)-factor and has
+even order, so no such quotient occurs.  The paired map
+is therefore onto.  When \(L\) is a five-group, the
+projection to \(L\) is the exact maximal pro-five quotient,
+since the perfect kernel has trivial image in every
+finite five-group.
+\end{proof}
+
+The single-kernel comparison in D.33 concerns odd-order
+automorphisms over arbitrary finite bases, while D.34 and
+D.35 use cyclic or two-group outer images of a centreless
+kernel.  The comparison in D.38 instead handles every
+transitive \(A_6\)-factor permutation action over an
+odd-order base, arbitrary prescribed peripheral base
+epimorphisms, and all unit multipliers.  Its maps
+\textup{(D.38.6)} and \textup{(D.38.11)} explicitly use
+oddness of the base.  D.36 has an even base and its
+ordinary obstruction therefore remains in the further
+mixed layers that D.38 does not decide.

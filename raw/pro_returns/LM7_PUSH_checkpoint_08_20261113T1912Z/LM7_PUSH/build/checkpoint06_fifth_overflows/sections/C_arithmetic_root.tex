@@ -1,0 +1,364 @@
+\subsection{Finite arithmetic matrices over an arbitrary number field}
+
+\begin{statement}{C.14}{Proved}{An explicit finite Galois construction of the retained arithmetic groups}
+Fix a number field $L\subset\overline{\mathbb Q}$ and put
+$S=\{v:v\mid3\}\cup\{v:v\mid\infty\}$.
+For $n\ge1$ write
+\[
+ A_n=\mathcal K/3^n,\qquad
+ A_n^D=\operatorname{Hom}(A_n,\mu_{3^n}),\qquad
+ F_n=L(J_{E,D}[3^n],\mu_{3^n}),\qquad
+ d_n=3^{44n}[F_n:L].                                      \tag{C.14.1}
+\]
+The homomorphisms in the dual have their usual contragredient
+Galois action. Let $\Omega_n$ be the compositum, inside the
+fixed algebraic closure, of all finite Galois extensions $E/L$
+containing $F_n$, unramified outside $S$, and satisfying
+$[E:L]\le d_n$. Put $G_n=\operatorname{Gal}(\Omega_n/L)$.
+At each $v\mid3$ choose a prolongation to $\Omega_n$ and
+write $D_{n,v}\le G_n$ for its decomposition subgroup.
+These are finite fields and finite groups, obtained by the
+bounded enumeration in the proof.
+
+For a finite $G_n$-module $A$, use the finite matrices
+\[
+ \begin{split}
+  (\delta^0 b)(g)&=g b-b,\\
+  (\delta^1 z)(g,h)&=g z(h)-z(gh)+z(g).
+ \end{split}                                               \tag{C.14.2}
+\]
+Define the following finite abelian groups by kernels and
+images of these matrices:
+\[
+ U_n=\ker\bigl(\delta^1:\operatorname{Map}(G_n,A_n)
+                   \to\operatorname{Map}(G_n^2,A_n)\bigr)
+                      /\delta^0 A_n,                       \tag{C.14.3}
+\]
+and
+\[
+\begin{split}
+ C_n={}&\{(z,(b_v)_{v\mid3}):
+       \delta^1z=0,\ b_v\in A_n^D,\\
+     &\hspace{26mm}z(g)=g b_v-b_v
+             \text{ for }g\in D_{n,v}\}\big/
+        \{(\delta^0 b,(b)_{v\mid3}):b\in A_n^D\}.
+\end{split}                                                 \tag{C.14.4}
+\]
+In (C.14.4), $z$ ranges over all functions $G_n\to A_n^D$.
+There are canonical identifications
+\[
+\begin{split}
+ H^1(G_{L,S},A_n)&\simeq U_n,\qquad
+ H^2(G_{L,S},A_n)\simeq C_n^\vee,\\
+ H^1_{\rm cts}(G_{L,S},\mathcal K)&\simeq\varprojlim_n U_n,\qquad
+ H^2_{\rm cts}(G_{L,S},\mathcal K)
+       \simeq\varprojlim_n C_n^\vee .
+\end{split}                                                 \tag{C.14.5}
+\]
+Here $C_n^\vee=\operatorname{Hom}(C_n,\mathbb Q/\mathbb Z)$;
+the transition maps are induced by coefficient reduction
+and its Cartier dual. Thus the arithmetic terms of C.12
+are specified by finite arithmetic fields and finite matrices
+at every precision. The construction applies to every $L$;
+it does not assume that either displayed inverse limit is zero.
+\end{statement}
+\begin{proof}
+The reduction $A_n$ is a submodule of
+$\bigwedge^2(V/3^n)$: the quotient $\bigwedge^2T$ in the
+definition of $\mathcal K$ is torsion-free. The finite group
+scheme $J_{E,D}[3^n]$ therefore splits its action. Adjoining
+$\mu_{3^n}$ also splits the Cartier dual. Both coefficients
+are unramified outside $S$, because the original generalized
+Jacobian and its three-adic representation are unramified
+outside three. All the fields in (C.14.1) are algebraic data
+of the specified curve. For example, multiplication by $3^n$
+on its framed divisor classes constructs $J_{E,D}[3^n]$;
+Riemann--Roch and factorization give its finite defining
+equations and their splitting field. No presentation of an
+unknown infinite Galois group is an input to the construction.
+
+We give a bound for the field enumeration. For any integer
+$d\ge1$, every extension $E/L$ of degree at most $d$
+unramified outside $S$ has
+\[
+ |\operatorname{disc}(E)|\le
+ B_L(d):=|\operatorname{disc}(L)|^d
+       \prod_{v\mid3}(Nv)^{d(1+e_v\lfloor\log_3 d\rfloor)},
+                                                               \tag{C.14.6}
+\]
+where $e_v$ is the ramification index of $L_v/\mathbb Q_3$.
+Indeed, pass first to the maximal unramified subextension
+of a completion $E_w/L_v$. Its remaining totally ramified
+part has ramification index $e$ and an Eisenstein polynomial
+$P$ for a uniformizer $\pi$. The terms of $P'(\pi)$ have
+pairwise distinct valuations modulo $e$. Its valuation is
+therefore their minimum and is at most
+$e-1+e e_v v_3(e)$. Multiplying by the residue degree and
+summing over $w\mid v$ bounds the relative discriminant
+exponent by $d(1+e_v\lfloor\log_3d\rfloor)$. The tower
+formula for the discriminant proves (C.14.6).
+
+Hermite's proof, in the explicit form of Milne,
+Theorems 8.42--8.43 \cite{CMilneANT}, bounds the conjugates
+of a primitive integral element in terms of the absolute
+discriminant. Consequently one can list a finite collection
+of monic integral polynomials of degree at most $d[L:\mathbb Q]$
+that contains a defining polynomial for every $E$ in question.
+For a deliberately generous choice, a bound
+$2(B_L(d)+1)$ for every conjugate suffices in that proof;
+the coefficient of degree $r-i$ is then bounded by
+$\binom ri[2(B_L(d)+1)]^i$. Enumerate these polynomials,
+factor them, calculate rings of integers and discriminants,
+and retain precisely their embeddings over $L$ that are
+Galois, contain $F_n$, have the required degree, and are
+unramified away from $S$. All these tests are finite exact
+number-field operations. Taking their compositum constructs
+$\Omega_n$. The bound is used to prove termination; no
+feasibility estimate is asserted.
+
+Let $A$ be either $A_n$ or $A_n^D$, and let
+$\rho:G_{L,S}\to\operatorname{Gal}(F_n/L)$ be the quotient.
+Every continuous crossed homomorphism $z:G_{L,S}\to A$
+gives the continuous homomorphism
+\[
+       g\longmapsto(z(g),\rho(g)):
+       G_{L,S}\longrightarrow A\rtimes\operatorname{Gal}(F_n/L).
+                                                               \tag{C.14.7}
+\]
+Its kernel cuts out a Galois extension containing $F_n$
+of degree at most $|A|[F_n:L]=d_n$, unramified outside $S$.
+It is one of the fields used in $\Omega_n$. Thus every
+crossed homomorphism factors through $G_n$.
+Conversely every crossed homomorphism on $G_n$ inflates to
+one on $G_{L,S}$, and the coboundaries on the two groups
+are exactly the same functions $g\mapsto gb-b$.
+This proves (C.14.3) and its analogue for $A_n^D$.
+
+Use the compact-support complex
+\[
+ R\Gamma_c(\mathcal O_L[1/3],A_n^D)
+ =\operatorname{Cone}\!\left(
+ R\Gamma(G_{L,S},A_n^D)
+ \longrightarrow\bigoplus_{v\in S}R\Gamma(L_v,A_n^D)
+                          \right)[-1].                       \tag{C.14.8}
+\]
+The local complexes at infinite places here are the modified
+Tate complexes. They are acyclic for these odd-primary
+coefficients, including at a real place. Degree-one cycles
+in (C.14.8) are exactly a global one-cocycle together with
+the indicated local degree-zero trivializations. A change
+by a global zero-cochain is exactly the denominator of
+(C.14.4). Since the global cocycle factors through $G_n$,
+each local equation holds on $G_{L_v}$ exactly when it
+holds on its image $D_{n,v}$. We have proved the explicit
+identification of $C_n$ with that compact-support group.
+
+Milne's Corollary II.3.3(a),(b) \cite{MilneADT}, applied
+to the locally constant sheaf $A_n^D$, identifies its
+derived Cartier dual with $A_n$ and gives the perfect
+pairing
+\[
+ H^2(G_{L,S},A_n)\times C_n
+               \longrightarrow\mathbb Q/\mathbb Z.          \tag{C.14.9}
+\]
+The Galois-to-etale comparison is the same II.2.9 used
+in C.11. This proves the second finite identification.
+Every finite group in degrees one and two is finite, so
+each coefficient tower is Mittag--Leffler. The continuous
+cohomology inverse-limit sequences therefore have zero
+first derived-limit term at finite $S$ and give the last
+two identifications in (C.14.5). Coefficient naturality
+of (C.14.7)--(C.14.9) specifies all transition maps.
+
+For a small arithmetic verification of the matrix convention,
+the program \texttt{c\_arithmetic\_matrices.py}
+in \texttt{code/} constructs the actual
+group of $\mathbb Q(\zeta_9,\sqrt[3]3)/\mathbb Q$, of order
+$18$. Over $K_0$ the two Kummer classes $\zeta,3$ are
+independent and span the $S$-unit classes: $3=-\zeta^2\lambda^2$.
+Thus this quotient captures all one-cocycles for
+$\mathbb F_3$ and $\mu_3$ over $\mathbb Q$, including
+their coboundaries. Its decomposition group at three is
+the whole group. Indeed a Kummer line involving $3$
+has valuation nonzero modulo three over $K_{0,3}$;
+the remaining line $\zeta$ gives the ramified cyclotomic
+cubic extension. Hence no nontrivial cubic subextension
+is unramified there. In coordinates the group law is
+$(a,b,c)(a',b',c')=(a+a',b+(-1)^c b',c+c')$,
+with the first two coordinates modulo three and the
+last modulo two. The program verifies this law and
+both coefficient actions. The respective cocycle
+matrix ranks are $17$ and $16$, the coboundary ranks
+are $0$ and $1$, and both first-cohomology dimensions
+are one. Both compact-support dimensions are zero.
+A separately labelled duplicated-subgroup fixture
+checks the local-trivialization quotient; it is not
+assigned to a number field. These are checks of the
+finite matrices, with their complete output retained;
+the proof above establishes their general arithmetic use.
+\end{proof}
+
+\begin{statement}{C.15}{Proved}{The complete number-field class-two test with its finite arithmetic evaluations}
+Let $s$ be a continuous section of $N^{\rm cc}$ over $L$.
+Use the actual obstruction two-cocycle $o$ and its
+origin-corrected residue family $r=(r_v)_{v\nmid3,\infty}$
+from A.8, restricted to $G_L$. Write
+$D_v=\operatorname{Frob}_v-1$ on $\mathcal K(-1)$.
+First require
+\[
+ y_v=-D_v^{-1}r_v\in\mathcal K(-1),\qquad
+ (y_v)_v\in\mathcal R_L(\mathcal K(-1)).                    \tag{C.15.1}
+\]
+The actual localization homotopy-fibre cycle $(o,y)$
+then supplies, at each $n$, a two-cocycle
+$\xi_n\in Z^2(G_{L,S},A_n)$, by the comparison below.
+For every class represented by $(z,(b_v))$ in the
+explicit finite group $C_n$ of C.14, choose a continuous
+two-cochain $a$ with values in $\mu_{3^n}$ satisfying
+\[
+                        da=\xi_n\cup z.                    \tag{C.15.2}
+\]
+Such a cochain always exists. Define
+\[
+ \ell_n(s)(z,(b_v))
+   =\sum_{v\mid3}\operatorname{inv}_v
+       \bigl((\operatorname{res}_v\xi_n)\cup b_v
+                          -\operatorname{res}_v a\bigr).
+                                                               \tag{C.15.3}
+\]
+The expression in each local invariant is a two-cocycle.
+Formula (C.15.3) is independent of all the auxiliary
+cochain choices and is an element of $C_n^\vee$.
+There is an exact criterion
+\[
+ s\text{ lifts to }N/\gamma_3N
+ \quad\Longleftrightarrow\quad
+ \text{(C.15.1) holds and }
+        \ell_n(s)=0\text{ for every }n\ge1.                 \tag{C.15.4}
+\]
+Every nonempty fibre is a torsor under
+$\varprojlim_n U_n$, with $U_n$ given by the finite
+matrices (C.14.3), and no further geometric-stabilizer
+quotient. Together with C.13 for the initial lift,
+C.14--C.15 give the number-field version requested
+in Task C.1: both the residue convergence and the
+arithmetic test are retained.
+\end{statement}
+\begin{proof}
+We specify the comparison that enters (C.15.2).
+Put $\mathcal A_v=\mathcal K(-1)$ and
+$R^\bullet=[\mathcal R_L(\mathcal A)
+                     \xrightarrow{D}\mathcal R_L(\mathcal A)]$
+in degrees zero and one. The localization triangle of F.1
+provides a continuous cochain model and a quasi-isomorphism
+\[
+ R\Gamma(G_{L,S},\mathcal K)
+ \longrightarrow
+ \operatorname{Cone}\!\left(
+   R\Gamma(G_L,\mathcal K)\longrightarrow R^\bullet[-1]
+                         \right)[-1].                       \tag{C.15.5}
+\]
+Choose the cone sign so that a degree-two cycle is
+$(o,y)$ with $do=0$ and $r+Dy=0$. This is the sign in
+(C.15.1). All restrictions, residue maps, and homotopies
+are the actual maps in the localization construction;
+in particular $y$ is retained as part of the cycle.
+Reduction modulo $3^n$ in (C.15.5) gives its finite
+coefficient comparison. A representative $\xi_n$ is
+any finite-coefficient two-cocycle on the left whose
+image is cohomologous to the reduction of $(o,y)$ on
+the right. It exists because (C.15.5) is a
+quasi-isomorphism. Its cohomology class is uniquely
+determined. This prescription keeps the arithmetic
+class in the homotopy fibre, including when the
+finite-coefficient map from that class to global
+cohomology has a kernel.
+
+There is a finite-data method for obtaining such
+representatives at any specified $n$. Continuous
+finite-valued cochains factor through finite Galois
+quotients. Enumerate finite $S$-ramified quotients
+and their normalized bar two-cocycles. For the
+comparison homotopies, enumerate finite global
+quotients with ramification allowed in a finite
+set $T$ containing the ramification of $o_n$ and
+the support of $y_n$; enumerate larger finite
+sets $T$ as well. Use the tame resolution at the
+finite residue support. Thus only the arithmetic
+representative is required to factor through an
+$S$-ramified quotient; the global comparison
+homotopy retains its necessary ramification.
+Test the cochain
+identities in the finite multiplication tables.
+For the prescribed cycle a matching representative
+and homotopy occur, so this search terminates.
+The inverse in (C.15.5) is thereby a cochain
+comparison, not a choice of a splitting of the
+short exact sequence (C.12.1).
+At a finite coefficient level the residue support
+is finite: this is precisely where the restricted
+condition in (C.15.1) is used. As with C.14, this
+is an exact construction and no claim of practical
+running time is made.
+
+The group $G_{L,S}$ has three-cohomological dimension
+at most two. Therefore $H^3(G_{L,S},\mu_{3^n})=0$,
+which proves existence in (C.15.2). Its right side
+is the standard evaluation cup product for
+$A_n\otimes A_n^D\to\mu_{3^n}$. Since
+$db_v=\operatorname{res}_v z$ and $d\xi_n=0$,
+\[
+ d\bigl((\operatorname{res}_v\xi_n)\cup b_v
+                         -\operatorname{res}_v a\bigr)=0.
+\]
+We can obtain $a$ by enumerating finite $S$-ramified
+quotients refining those through which $\xi_n,z$
+factor and solving the finite linear cochain
+equation. The vanishing just proved guarantees
+termination of this search as well.
+
+In the compact-support cone (C.14.8) the product
+of $\xi_n$ and $(z,(b_v))$ is represented by
+\[
+ \bigl(\xi_n\cup z,
+              ((\operatorname{res}_v\xi_n)\cup b_v)_v\bigr).
+\]
+Subtracting the coboundary of $(a,0)$ gives
+$(0,((\operatorname{res}_v\xi_n)\cup b_v
+                            -\operatorname{res}_v a)_v)$.
+Normalize the compact-support trace by the sum of
+the local Brauer invariants on such a representative.
+This is the trace compatibility in Milne II.3,
+preceding Theorem 3.1 \cite{MilneADT}.
+The resulting trace is exactly (C.15.3). Each local
+invariant is that of a finite crossed-product
+algebra, so it is determined by finite extension,
+norm, and valuation data over $L_v$.
+The construction proves directly that (C.15.3)
+is the perfect pairing (C.14.9), applied to the
+class of $\xi_n$. It consequently descends to
+$C_n$ and is independent of the representatives
+and of $a$. In particular, changing $a$ by a
+global two-cocycle changes the sum by zero, by
+the global Brauer invariant relation.
+
+At the integral level, injectivity of each $D_v$
+proves that (C.15.1) is exactly the vanishing of
+the residue obstruction, with its unique integral
+correction. Under that condition the class of
+$(o,y)$ is the unique arithmetic class of C.12.
+By (C.14.5), this class vanishes exactly when
+all its finite components pair to zero with
+$C_n$. Those components are exactly (C.15.3).
+This proves both directions of (C.15.4).
+The finite-$S$ first-cohomology inverse-limit
+identification and the stabilizer calculation
+of C.12 give the stated torsor and its precise
+conjugacy quotient. The global Milnor term is
+still the one computed in F.1--F.3; the additional
+finite arithmetic evaluations introduce no
+new first derived limit. Thus the criterion
+includes infinitely ramified classes, all
+torsion classes, every prime above three, and
+the modified real-place convention.
+\end{proof}
