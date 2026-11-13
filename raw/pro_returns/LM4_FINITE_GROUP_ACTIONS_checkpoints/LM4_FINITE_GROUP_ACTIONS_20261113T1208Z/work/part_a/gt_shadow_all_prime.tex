@@ -1,0 +1,152 @@
+\begin{claim}{D.25}{Proved}{All-prime dihedral compatibility and the multiplier-one obstruction}
+The inverse limit $D$ over all the dihedral levels of D.24 has the
+following explicit isomorphism of profinite groups:
+\[
+ D\xrightarrow{\ \sim\ }
+ \left(\prod_{p\text{ odd}}\operatorname{Aff}(\Z_p)\right)
+ \times H_2.                                                   \tag{D.25a}
+\]
+There is a canonical continuous homomorphism $GT_0\to D$.
+The group $D$ contains an element of every prime order. In
+particular, imposing order three throughout this entire
+dihedral system still permits a multiplier whose $7$-adic
+coordinate is a primitive cube root and whose other prime
+coordinates are $1$.
+
+Put $F=\widehat F_2=\langle x,y\rangle$ and define the continuous
+epimorphism and its closed kernel by
+\[
+ \kappa:F\longrightarrow\prod_pF_2^{(p)},\qquad
+ R=\ker\kappa.
+\]
+Write $\lambda:GT_0\to\widehat\Z^\times$ for the multiplier.
+For every integer $d\geq2$, the elements $a\in\ker\lambda$
+with $a^d=1$ correspond exactly to the following elements
+$f\in R$. The continuous endomorphism
+\[
+ \alpha_f:F\to F,\qquad x\mapsto x,\quad y\mapsto f^{-1}yf
+\]
+must be an automorphism and satisfy
+\[
+ \theta(f)f=1,\qquad
+ \tau^2(f)\tau(f)f=1,\qquad
+ \prod_{j=0}^{d-1}\alpha_f^{j}(f)=1,                         \tag{D.25b}
+\]
+where the product is in increasing order of $j$,
+$\theta(x)=y$, $\theta(y)=x$, $\tau(x)=y$, and
+$\tau(y)=(xy)^{-1}$. Every such finite-order element has identity
+image in $D$. The kernel $R$ itself maps onto the explicit
+perfect group $A_5$ used in D.24.
+The finite-order solutions of (D.25b) in the stated
+automorphism domain are exactly $f=1$, by D.32's subsequent
+full fixed-subgroup argument.  Thus the nontrivial prime-order
+points of the dihedral inverse limit exhibited here do not
+lift with that order to $GT_0$ when the prime is odd.
+\end{claim}
+\begin{proof}
+It suffices to use the even levels $n=2^\alpha n_0$ with
+$\alpha\geq1$ and $n_0$ odd; every odd level agrees with its
+double. Apply the Chinese remainder isomorphism separately to
+the translation coordinate modulo $n/2$ and to the multiplier
+coordinate modulo $2n$ in (D.24b). The odd factors give
+$\operatorname{Aff}(\Z/n_0)$, and the powers of two give
+the finite groups defining $H_2$. These coordinate maps commute
+with every reduction $n\mid q$. Conversely, specified odd
+coordinates and a specified point of $H_2$ reconstruct every
+finite pair $(k,u)$ by the Chinese remainder theorem. They
+satisfy the parity condition because that condition involves
+only the power-of-two coordinates. The resulting inverse
+maps are continuous, being continuous at every finite
+coordinate. This proves (D.25a), including its topology.
+Restriction of the full inverse-limit point in D.23 defines
+the indicated map from $GT_0$; surjectivity onto $D$ is not
+used or asserted.
+
+Let $q$ be a prime, and choose a prime divisor $p$ of $2^q-1$.
+The residue of $2$ in $\F_p^\times$ has order $q$: its order
+divides $q$, and order one would give $p\mid2-1$. Hence
+$q\mid p-1$, in particular $p$ is odd and $p\ne q$.
+The element $2\bmod p$ lifts to a unique $q$th root
+$\zeta\in\Z_p^\times$. Explicitly, after a root $a$ modulo
+$p^j$ is chosen, substitute $a+p^jt$, $0\leq t<p$,
+in $X^q-1$ modulo $p^{j+1}$. Its coefficient of $t$ is
+$p^jqa^{q-1}$, and $qa^{q-1}$ is a unit modulo $p$;
+there is exactly one permitted value of $t$.
+The compatible limit has order exactly $q$ because its
+residue already does. Put $(0,\zeta)$ in the $p$-factor
+of (D.25a), and put the identity in all the other factors.
+This gives the asserted element of order $q$ in $D$.
+
+For $q=3$, take $p=7$. The executed program
+\texttt{code/part\_a/gt\_shadow\_all\_prime.py} constructs ten
+successive roots of $X^2+X+1$ starting with $2\bmod7$, and
+uses the exact Chinese remainder formulas to construct
+compatible shadow coordinates at sixteen levels through
+$n=2744$. At $n=14$ its affine pair is $(0,9\bmod28)$;
+at $n=98$ it is $(0,177\bmod196)$. Their orders are three
+and the latter reduces to the former. The preceding
+root-lifting proof constructs the infinite point, while
+the program verifies the displayed finite coordinates.
+Thus the equations tested over all dihedral levels admit
+prime-dependent torsion multipliers. They do not force
+the global alternatives $1$ and $-1$.
+
+We next prove the statement about $R$. Each projection
+$F\to F_2^{(p)}$ is the canonical maximal pro-$p$ quotient
+map. Their product is onto: in any finite collection of
+finite $p$-group quotients at distinct primes, its image
+surjects to each factor. Its order is consequently divisible
+by every factor order, hence by their product, since these
+orders are pairwise coprime. The image is the full product.
+These finite products form the finite quotients of
+$\prod_pF_2^{(p)}$, so the compact image of $F$ is the whole
+product. Also $R\subset F'$, since the abelianization
+$F^{\mathrm{ab}}=\widehat\Z^2$ is detected by the
+abelianizations of all these pro-$p$ quotients.
+
+Let $a=(1,f)\in GT_0$ have finite order dividing $d$.
+It induces a finite-order automorphism of each free pro-$p$
+quotient with trivial action on its abelianization. The
+Magnus leading-term argument in D.10, which also applies
+at $p=2$, makes this automorphism the identity. Its normalized
+formula then gives
+$f_p\in C_{F_2^{(p)}}(y)\cap(F_2^{(p)})'=1$ by A.7 and
+the primitive abelianization coordinate of $y$.
+Thus $f\in R$.
+
+The two first equations of (D.25b) are precisely the defining
+cycle equations at multiplier one; the required invertibility
+is stated explicitly. To obtain the last equation, put
+$w_d=f\alpha_f(f)\cdots\alpha_f^{d-1}(f)$.
+Induction on $d$ gives
+\[
+ \alpha_f^d(x)=x,\qquad
+ \alpha_f^d(y)=w_d^{-1}yw_d.
+\]
+Therefore $\alpha_f^d=1$ is equivalent to
+$w_d\in C_F(y)$. But $w_d\in F'$ and
+$C_F(y)\cap F'=\overline{\langle y\rangle}\cap F'=1$,
+again by A.7 and abelianization. This proves the necessity
+of the last equation and its sufficiency. The normalized
+identification of $GT_0$ with these automorphisms gives
+the asserted bijection. The kernel of the multiplier on
+$D$ is a subgroup of the additive translation group
+$\prod_p\Z_p$, which is torsion-free. Consequently every
+finite-order multiplier-one element maps to the identity
+of $D$.
+
+Finally let $\eta:F\to A_5$ be the epimorphism from D.24.
+The quotient $A_5/\eta(R)$ is a finite quotient of
+$F/R=\prod_pF_2^{(p)}$ and is therefore nilpotent.
+It is also perfect, since the executed permutation
+calculation in D.24 proves $A_5'=A_5$. A finite nilpotent
+perfect group is trivial: its lower central series would
+otherwise be constantly equal to the nontrivial group
+and could not terminate. Hence $\eta(R)=A_5$.
+This identifies a nontrivial part of the residual group in the
+exact equation (D.25b). The full three-cusp argument in D.32
+proves that this equation, together with its stated cycle and
+invertibility requirements, has only the identity solution.
+The surjection $R\to A_5$ and the compatible points of $D$
+remain the exact quotient calculations proved above.
+\end{proof}

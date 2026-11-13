@@ -1,0 +1,187 @@
+\begin{claim}{B.34}{Proved}{The complete genus-three subcatalogue containing a hyperelliptic involution}
+There are exactly $79$ conjugacy classes of finite subgroups of the
+extended mapping class group of a closed orientable genus-three surface
+that contain a hyperelliptic involution.  Exactly $18$ preserve orientation
+and $61$ contain orientation-reversing elements.  The latter $61$ classes
+are listed below and are specified, together with every section and its
+extension incidences, in
+\texttt{type\_3\_0\_hyperelliptic\_mixed\_catalogue.csv} and
+\texttt{type\_3\_0\_hyperelliptic\_sections.json}.
+\end{claim}
+\begin{proof}
+Fix a hyperelliptic involution $z$ and its branched quotient
+$p:S_3\longrightarrow S^2$, with branch set $P$ of size eight.
+On the unbranched complements this is the connected double cover
+classified by the homomorphism
+\[
+ \pi_1(S^2\setminus P)\longrightarrow C_2
+ \quad\hbox{sending each of the eight meridians to }1.
+                                                        \tag{B.34.1}
+\]
+Their sum is zero modulo two.  Every homeomorphism of the sphere
+preserving $P$ preserves (B.34.1), and therefore has exactly two lifts.
+The Birman--Hilden isotopy property gives the exact sequence
+\[
+ 1\longrightarrow\langle z\rangle\longrightarrow
+ C_{\mathcal T_{3,0}}(z)\longrightarrow\mathcal T_{0,8}
+ \longrightarrow1.                                    \tag{B.34.2}
+\]
+Here the left group is the centralizer of this specified involution;
+the map is induced by the quotient $p$.  The lifting and isotopy argument
+is precisely the fully ramified hyperelliptic case of
+\cite[\S9.4]{bFarbMargalit2012}.  Allowing orientation reversal adds the
+negative lifts of the same sphere homeomorphisms, with the same kernel.
+
+The involution $z$ is the unique hyperelliptic involution inside any
+finite subgroup $K$ containing it.  To verify the assertion directly,
+realize $K$ by isometries and use the resulting invariant complex
+structure.  A hyperelliptic involution acts as $-1$ on $H^1(S_3;\mathbb R)$:
+its invariant subspace is the pullback of $H^1(S^2;\mathbb R)=0$ under
+its quotient, as follows by averaging cochains, or by the transfer
+outside the branch points and filling their meridians.  If $z'$ were
+another, the finite-order holomorphic map $zz'$ would act trivially on
+$H^1$.  A nonidentity such map has isolated fixed points, each of
+positive local Lefschetz index; a fixed-point-free map has Lefschetz
+number zero.  But its Lefschetz number from homology is $2-6=-4$.
+Thus $zz'=1$, proving uniqueness.
+Consequently every element of $K$ centralizes $z$, and any conjugacy
+between two such finite groups maps their hyperelliptic involutions
+to one another.  Once $z$ is fixed, (B.34.2) therefore gives a bijection
+\[
+ \left\{\begin{array}{c}\text{finite subgroup conjugacy classes}\\
+ \text{in }\mathcal T_{3,0}\text{ containing }z\end{array}\right\}
+ \longleftrightarrow
+ \left\{\begin{array}{c}\text{finite subgroup conjugacy classes}\\
+ \text{in }\mathcal T_{0,8}\end{array}\right\}.
+                                                        \tag{B.34.3}
+\]
+The inverse takes the full preimage, of order twice the sphere group.
+The inclusion of every kernel element follows from the assumption
+$z\in K$.  This also proves that no additional fusion occurs when the
+chosen hyperelliptic involution is forgotten.
+
+For completeness, B.26's decorated spherical-orbifold enumeration
+applies verbatim to eight marked points: a selected cone orbit has
+size $|H|/m$, a selected corner orbit has size $|H|/(2m)$, an orbit
+on an open mirror edge has size $|H|/2$, and a regular orbit has size
+$|H|$.  Their sum is eight.  The cyclic and dihedral rotation orders
+are at most eight, since every non-polar point orbit has at least that
+many points.  The tetrahedral and octahedral cases are included.
+An icosahedral orbit has at least twelve points, so cannot occur.
+The spherical classification and the homeomorphism classification
+of these decorations in B.26 prove exhaustiveness and irredundancy.
+Executing the integer weight equation gives $79$ decorated quotients,
+$18$ spherical and $61$ with a negative element.
+
+For each decorated quotient, the full lift is given by the exact
+central extension presentation (B.28.3)--(B.28.5), now with eight
+branch points.  Its presentation proof uses (B.34.1) in exactly the
+same way: the displayed group surjects onto the full geometric lift
+group of order $2|H|$, while its quotient by the central element $z$
+is $H$, so it has at most $2|H|$ elements.  The two groups are
+therefore isomorphic by that surjection.  For a projective-plane
+quotient its generators include both $z$ and the crosscap element;
+their relation is $u^2\prod x_i=z^a$.  In particular no cyclicity
+assumption from the six-branch-point case is imposed.
+
+The program \texttt{catalogue\_genus3\_hyperelliptic.py} was executed.
+For every presentation it computes an exact regular permutation
+representation of degree $2|H|$, verifies every defining relator,
+checks that $z$ has order two, and checks injectivity on every local
+cyclic or dihedral stabilizer.  The resulting orbifold Euler
+characteristic is $-4/|K|$, so its oriented surface kernel has genus
+three.  Exactly eight point sections have image $\langle z\rangle$,
+providing an independent branch-number check.
+The finite coset incidence graph of B.26 then computes every point
+and oval fixed component and every partial section.  Each point
+section has trivial centralizer in the surface group, each oval
+section has infinite-cyclic centralizer, and the rotation multipliers,
+extensions, maximal sections $\Phi$, group orbits and stabilizers
+are recorded explicitly in the JSON file.  The calculation retains
+all intersections of reflection ovals at dihedral stabilizers.
+\end{proof}
+
+In the following table, $b$ is both the G3H class suffix and the decorated sphere-eight row number
+in \texttt{type\_3\_0\_hyperelliptic\_catalogue.csv}; $N$ is the group
+order; $p$ counts all nontrivial partial splitting classes; and $m,o$
+are respectively $|\Phi|$ and $|K\backslash\Phi|$.  The CSV gives the
+cone, corner, mirror and ordinary branch decorations of every row,
+and the JSON gives its finite group generators and all relators.
+\begin{longtable}{r|r|r|r|r}
+b&N&p&m&o\\\hline
+\endhead
+2&4&8&8&4\\
+3&4&10&10&5\\
+4&4&12&8&5\\
+5&4&16&8&6\\
+6&4&20&8&7\\
+7&4&24&8&8\\
+11&8&12&12&3\\
+12&8&14&14&4\\
+13&8&20&12&4\\
+14&8&28&12&5\\
+15&8&14&8&3\\
+16&8&22&8&4\\
+17&8&20&12&4\\
+18&8&26&12&5\\
+19&8&34&12&6\\
+20&8&24&12&5\\
+21&8&32&12&6\\
+22&8&32&12&6\\
+23&8&24&8&4\\
+24&8&32&8&5\\
+25&8&32&8&5\\
+29&12&12&8&2\\
+30&12&14&10&3\\
+31&12&24&8&3\\
+32&12&30&8&3\\
+33&12&42&8&4\\
+34&12&42&8&4\\
+39&16&16&12&2\\
+40&16&28&20&3\\
+41&16&40&20&4\\
+42&16&28&12&3\\
+43&16&18&14&3\\
+44&16&32&12&3\\
+45&16&38&20&4\\
+46&16&52&20&5\\
+47&16&50&20&5\\
+48&16&48&12&4\\
+49&16&48&12&4\\
+50&16&36&12&3\\
+51&16&48&12&4\\
+52&16&44&12&4\\
+56&24&54&20&3\\
+57&24&36&8&2\\
+58&24&28&8&2\\
+59&24&68&20&4\\
+60&24&66&20&4\\
+61&24&66&8&3\\
+62&24&72&8&3\\
+65&28&45&10&3\\
+66&32&60&28&3\\
+67&32&44&12&2\\
+68&32&36&12&2\\
+69&32&82&28&4\\
+70&32&84&28&4\\
+71&32&76&12&3\\
+72&32&72&12&3\\
+74&48&54&20&2\\
+75&48&120&20&3\\
+76&48&120&20&3\\
+78&64&136&28&3\\
+79&96&210&44&3\\
+\end{longtable}
+The mixed-class order distribution is
+\[
+\begin{array}{c|rrrrrrrrrr}
+ |K|&4&8&12&16&24&28&32&48&64&96\\\hline
+ \#&6&15&6&14&7&1&7&3&1&1.
+\end{array}                                             \tag{B.34.4}
+\]
+The scope of (B.34.3) is the condition that the subgroup itself
+contain a hyperelliptic involution.  A finite subgroup that only
+centralizes an involution outside itself is represented by a
+complement in a lift group; its conjugacy after forgetting the
+external involution requires an additional calculation.  No such
+complement is counted among these $79$ classes.

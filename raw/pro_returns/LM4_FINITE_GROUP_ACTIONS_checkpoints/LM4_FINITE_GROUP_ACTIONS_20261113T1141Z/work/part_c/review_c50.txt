@@ -1,0 +1,228 @@
+Independent audit of C.50
+Reviewer: /root/part_c_continue
+Verdict: PASS. No mathematical correction required.
+
+Scope and execution
+-------------------
+I read the current c50.tex, c50_result.json, and the complete symbolic
+certificate. I independently reopened the primary signed-measure source,
+including Theorem 4.7 and its proof in Section 4.3.2. I reread the C.37
+two-dimensional word identity and its affine coordinate map. All 462
+symbolic checks over the 62 sign patterns of lengths one through five
+reran successfully; the independent rerun stdout is
+work/part_c/c50_independent_rerun_stdout.txt.
+
+The conclusion is exactly a contraction on X_* = closure(U_2 union U_3),
+including arbitrary accumulation among the newly classified homothety
+orbits. The final paragraph correctly retains the extension problem
+through the remaining one/two-foliation regions and their frontiers.
+No global C.12 conclusion is inferred.
+
+Primary source and the three-dimensional additive identity
+---------------------------------------------------------
+Grandoni, Ravi, Singh and Zenklusen, "New Approaches to Multi-Objective
+Optimization", author version dated July 17, 2013:
+https://people.idsia.ch/~grandoni/Pubblicazioni/GRSZ13mp.pdf
+Theorem 4.7 on manuscript p.22 explicitly treats non-atomic signed
+measures and gives at most d-1 circular intervals. Section 4.3.2,
+manuscript pp.25--26, supplies the signed halfspace argument and the
+closure/complementation/halving construction. Its final printed count
+has the previously identified mismatch. The specialized corrected count
+used in the current C.50 is sufficient and correct:
+
+For two intervals, at most three cuts produce at most five pieces.
+The two equal-measure halves partition these pieces, so one of the
+halves uses at most two intervals. If the original set is the whole
+interval, at most three cuts produce at most four pieces, and one half
+again uses at most two intervals. For a proper union of circular
+intervals the origin can first be placed in its complement. The
+complement of at most two circular intervals has at most two circular
+components. These facts preserve the required class of sets throughout
+halving and complementation; compactness then gives every fraction.
+
+Apply this to the three signed coordinate derivative measures of a
+polygonal path. Integrating over two disjoint circular intervals gives
+two endpoint differences and, for at most one interval crossing the
+identified origin, an additional total path increment. Thus there are
+at most five signed original path values. Uniform polygonal
+approximation with the same endpoints and compactness of the five
+parameters and finite sign set prove the identity for every continuous
+path. No bounded-variation hypothesis is imposed on that limiting path.
+The same reasoning with one circular interval is the C.37 planar
+identity used later in the commutator plane.
+
+1. Anchor normalization and fractional translations
+--------------------------------------------------
+For the actual path k(s)=(a_s,v_s), the maximum A=max|a_s| is attained.
+When A>0, the maximizing value or its inverse is one original letter
+with positive logarithmic scale A. Such a homothety has a unique fixed
+point. Conjugating every group element by the translation carrying that
+point to zero gives h=(A,0) and preserves all word lengths and the
+fractional-power identities. It is one group isomorphism applied to
+both sides, rather than additional letters in the sought word.
+
+In those exact coordinates,
+[h,k(s)] = (0,(exp(A)-1)v_s).
+I checked the multiplication and inverse formulas directly. These
+commutators form a based continuous path in the translation plane; each
+value and inverse has word length at most four in original path values.
+The planar identity represents a fraction in [0,1] of any prefix
+endpoint by three signed commutator values. A coefficient beta of
+absolute value at most a positive integer B is obtained as B copies of
+the beta/B fraction, inverting when negative. It therefore has length
+at most 12B. All parameters remain in the original prefix [0,t], even
+when the fixed anchor time is later than a commutator-prefix time.
+
+2. Large logarithmic scale
+-------------------------
+When A>=log(2), D=exp(A)-1>=1. Both T_{v_s} and any
+T_{q v_s}, 0<=q<=1, are commutator fractions of coefficients at most one
+and use at most twelve letters. The exact factorization
+D_{a_s}=T_{v_s}^{-1} k(s)
+therefore uses at most thirteen.
+
+The exponential fraction of g=(a,v) is
+(r a, theta(a,r)v), where theta is the quotient of exponential
+increments and extends to r at a=0. The integral formula shows theta
+is continuous and lies in [0,1]. The intermediate value theorem on
+a_s supplies a time with a_s=r a, whether a is positive, negative or
+zero. Left multiplication of this dilation by the endpoint translation
+therefore gives the required fraction in at most 25 letters.
+
+3. Small logarithmic scale and exact correction
+----------------------------------------------
+When 0<A<=log(2), the three-dimensional path identity supplies
+sum epsilon_j a_{s_j}=r a and sum epsilon_j v_{s_j}=r v with m<=5.
+In the actual noncommutative product, an inverse letter has translation
+-exp(-a_{s_j})v_{s_j}. Thus its coefficient is
+-exp(prefix scale including that inverse letter), whereas a positive
+letter uses the prefix before the letter. This is precisely the two
+cases in C.50.8. In particular every prefix exponent has absolute
+value at most m A.
+
+The actual product has the required logarithmic scale r a, but its
+translation is r v plus the sum of all epsilon_j(exp(p_j)-1)v_{s_j}.
+The left translation in C.50.10 cancels this entire error and replaces
+r v by theta(a,r)v. Since all correcting commutators are pure
+translations, their powers commute and their displayed product is
+exactly that correcting translation. This proves C.50.11 as a group
+identity, including all inverse letters.
+
+The coefficient bounds are independent of coordinates and path.
+For |a|<=A, the integral denominator is at least exp(-A)>=1/2.
+The two numerator integrals after subtracting r each have absolute
+value at most D, so |theta-r|<=4D, including a=0.
+For every other coefficient, |p_j|<=mA gives
+|exp(p_j)-1|/D <= (exp(mA)-1)/(exp(A)-1)
+              = sum_{l=0}^{m-1} exp(l A)
+              <= 2^m-1 <=31.
+The negative-exponent inequality is valid since 1-exp(-mA) is at most
+exp(mA)-1. Substitution into the commutator word bound gives exactly
+5 + 12(4 + 5*31) = 1913.
+The zero-maximum case is the translation-plane case. Thus the regimes
+cover every path, including paths with zero endpoint scale but nonzero
+intermediate scale.
+
+The executable correctly checks the coefficient formula, the full
+translation correction modulo the exact additive relation used in the
+proof, the commutator normalization, the zero-scale limit and the word
+count. The path-selection theorem and analytic bounds are proved in
+the text and are not inferred from finite tests.
+
+4. One fixed compact family, with its covering labels
+----------------------------------------------------
+Every representation expands into at most 1913 original letters.
+Padding with f_0 or its inverse puts all of them in a single fixed
+parameter cube with a finite sign set. The isotopy obtained by replacing
+each time s_j with u s_j depends continuously on all parameters, for
+maps and inverses uniformly in u. This gives genuine compactness in
+the relevant homeomorphism path topology, without a continuous choice
+of maximizing anchor, conjugating translation or measure cuts.
+
+For a C.49 orbit the word equality holds in its actual simply connected
+generated Lie group. For a C.36 orbit it holds in the specified universal
+covering group. The based lift of the expanded word isotopy is the
+product of the based lifts of its original factors. Therefore the
+endpoint equality retains the exact lift and has no unknown deck
+translation. This is the essential input to the later circle argument.
+
+The common groups are metabelian, so the corresponding four-variable
+commutator identity passes by continuity from U_* to X_*. The
+path-connected intrinsic image on a nonopen nontrivial orbit is
+therefore the same exact line translation/affine or circle rotation
+group proved in C.37. The boundary prescriptions are exactly those of
+C.36 and C.49.
+
+5. Dense-orbit limits and logarithmic residuals
+---------------------------------------------
+For x_i in open orbits O_i converging to x, compactness supplies a
+limiting word isotopy W. If x is in an open orbit in X_*, that orbit
+must already be part of U_*, and eventually all x_i belong to it.
+If x is fixed, every word fixes it. For every other orbit B, evaluating
+identities at h x_i for a fixed h in G passes them to all points h x of B.
+In particular the limiting word endpoint w commutes with the endpoint
+g=f_t on B.
+
+For each fixed n, the floor m_i=floor(n r_i) is bounded and can be
+made constant along a subsequence. The residual fraction n r_i-m_i
+lies in [0,1), so it again has a representation in the identical
+compact word family, with the same specified source lift. Taking
+limits gives w^n g^{-m_n}=z_n and |m_n-nr|<=1. All z_n belong to a
+single compact family of intrinsic endpoints independent of n.
+
+On a line the logarithm of that compact family is bounded. The
+centralizer of a nonidentity positive affine map is its unique
+one-parameter subgroup; the same assertion is immediate for
+translations. If one endpoint is the identity, the logarithm equation
+still holds directly for powers of the other endpoint. Dividing
+n log(w)-m_n log(g)=log(z_n) by n proves the required fractional
+endpoint. This uses the exact Lie image topology already established,
+rather than ambient compactness as a substitute for intrinsic
+compactness.
+
+6. The real circle comparison
+-----------------------------
+On a circle, the endpoint equality alone would only give equality of
+angles modulo integers. C.50 retains the needed integer exactly.
+The plane word isotopies
+W_i(u)^n f_{u t_i}^{-m_i} Z_i(u)^{-1}
+lift to closed loops in the specified simply connected source groups.
+They are null-homotopic there. Evaluation at the two distinct points
+x_i and h x_i therefore has zero difference-direction winding.
+
+The limiting two-point isotopy remains off the diagonal because it is
+the evaluation of a path of plane homeomorphisms on distinct x and h x.
+Compactness of its parameter interval gives a positive separation from
+the diagonal; uniform convergence consequently preserves its winding
+number. C.29 then identifies that zero winding with the real number
+n A_W-m_n T-C_n, with the same orientation sign throughout. Hence
+the real equality C.50.19 is valid.
+
+Each residual word has length at most 1913 and each original based
+angle is bounded by M, so |C_n|<=1913M independently of n. Dividing
+the real equality by n proves A_W=rT. This also handles an identity
+circle endpoint whose prescribed based angle is a nonzero integer;
+no principal-angle choice enters the proof.
+
+7. Joint continuity, inverses and exact scope
+---------------------------------------------
+Every convergent subsequence of word parameters yields the uniquely
+prescribed endpoint action, so the original dense-set sequence
+converges. For a general sequence in X_*, the diagonal approximation
+chooses a nearby U_* point with both source and image errors below
+1/i at its fixed parameter. The established dense-set limit supplies
+this choice and gives full joint continuity.
+
+Repeating the same argument for f_t^{-1} leaves the generated group
+and orbit partitions unchanged and gives the orbitwise inverse
+fractional actions, since logarithms negate under inversion. Thus
+the inverse family is jointly continuous. The orbitwise formulas
+are bijective and mutually inverse, giving homeomorphisms of X_*.
+The based identities hold on every orbit, including at t=1 via the
+specified zero lifted winding. Operator transport holds on U_* by
+C.36/C.49 and extends to X_* by continuity.
+
+This closes the infinite accumulation step for the newly included
+three-foliation Lie orbits. It does not assert a compatible relative
+extension through the remaining regions. The final status statement
+preserves that unresolved step explicitly.

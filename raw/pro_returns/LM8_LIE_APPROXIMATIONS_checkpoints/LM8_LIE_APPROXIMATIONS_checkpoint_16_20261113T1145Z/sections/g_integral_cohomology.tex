@@ -1,0 +1,107 @@
+\begin{statement}{B.14c}{Proved}{The displayed integral first cohomology groups vanish}
+Put $T_{n,p}=\mathfrak s_{2,n}\otimes\mathbb Z_p$, with the
+geometric integral $S_3$-action of B.10, and let
+$\overline T_{n,p}=T_{n,p}/pT_{n,p}$ be the module called
+$M_n$ in B.13. For $p=2,3$ and $1\leq n\leq9$,
+\[
+ H^1(S_3,T_{n,p})=0.
+\]
+Every positive-degree integral cohomology group is killed
+by $p$. In the displayed range $H^2(S_3,T_{n,p})$ is an
+$\mathbb F_p$-vector space of the following dimension:
+\[
+\begin{array}{c|rrrrrrrrr}
+n&1&2&3&4&5&6&7&8&9\\\hline
+p=2&0&0&1&0&1&0&2&0&3\\
+p=3&0&0&0&0&0&0&0&1&0.
+\end{array}
+\]
+Thus the nonzero modular first cohomology groups in B.13
+do not give nonzero integral first cohomology obstructions
+in these degrees.
+\end{statement}
+\begin{proof}
+For $n\geq2$, B.10 gives the equivariant identification
+\[
+ T_{n,p}=\ker\bigl(V\otimes L_n(V)\longrightarrow L_{n+1}(V)\bigr),
+ \qquad V=\mathbb Z_p^3/\mathbb Z_p(1,1,1).
+\]
+Here $x,y,z$ are the three images of the coordinate vectors,
+$x+y+z=0$, and the indicated map is the bracket map.
+The three peripheral conjugators are taken modulo their
+common inner conjugator, giving precisely $V\otimes L_n$;
+there is no further inner quotient for $n\geq2$.
+The generator conventions are
+$\rho(x)=y$, $\rho(y)=-x-y$, $\tau(x)=y$, $\tau(y)=x$.
+These give exactly the tensor-action matrices used in B.13.
+Changing the bracket map from $[v,a]$ to $[a,v]$ only
+changes its global sign, not its kernel or its action.
+In degree one the peripheral-centralizer quotient gives
+$T_{1,p}=0$. Integral bracket surjectivity makes every
+$T_{n,p}$ finite free and identifies its reduction with
+the kernel calculated in B.13.
+
+We record the coefficient argument explicitly. For a
+finite group $G$ and an integral $G$-module $T$, the
+homogeneous equivariant cochain complex admits the map
+\[
+ (hc)(g_0,\ldots,g_{q-1})
+       =\sum_{s\in G}c(s,g_0,\ldots,g_{q-1}).
+\]
+It is equivariant by reindexing the sum, and direct
+cancellation of the alternating-face terms gives
+$dh+hd=|G|$ in positive degrees. Hence $|G|$ kills all
+positive cohomology. For $G=S_3$ and $p=2,3$, its
+prime-to-$p$ factor is a unit, so $p$ kills the integral
+cohomology of $T_{n,p}$. These groups are finite-dimensional
+$\mathbb F_p$-spaces: all cochain modules in each degree
+are finite free over the Noetherian ring $\mathbb Z_p$.
+
+Apply the coefficient sequence
+$0\to T\xrightarrow{p}T\to T/pT\to0$ to the normalized
+bar complex. It is a short exact sequence of cochain
+complexes, since $S_3$ is finite and each cochain has
+only finitely many values to lift. Its long exact sequence
+contains
+\[
+ 0\longrightarrow T^{S_3}/pT^{S_3}
+ \longrightarrow(T/pT)^{S_3}
+ \longrightarrow H^1(S_3,T)[p]\longrightarrow0
+\]
+and
+\[
+ 0\longrightarrow H^1(S_3,T)/pH^1(S_3,T)
+ \longrightarrow H^1(S_3,T/pT)
+ \longrightarrow H^2(S_3,T)[p]\longrightarrow0.
+\]
+
+The rational invariant ranks from B.10, in degrees one
+through nine, are
+\[
+ (0,0,1,0,1,0,2,1,4).
+\]
+The exact saved $d^0$ ranks in B.13 give this same list for
+$\dim(\overline T_{n,p})^{S_3}$ at both primes: the latter
+dimension is $\dim\overline T_{n,p}-\rank d^0$.
+The script \texttt{code/g\_integral\_cohomology.py}
+independently recomputes these modular invariant ranks
+from the two saved generator matrices, verifies equality
+with the saved $d^0$ ranks, and recomputes the rational
+ranks by the character formula of B.10.
+The first exact sequence therefore gives
+$H^1(S_3,T_{n,p})[p]=0$. Since $p$ already kills the whole
+group, its integral first cohomology vanishes.
+
+The second exact sequence now identifies
+\[
+ H^1(S_3,\overline T_{n,p})
+       \simeq H^2(S_3,T_{n,p})[p]
+       =H^2(S_3,T_{n,p}).
+\]
+The $H^1$ column of B.13 gives the displayed dimensions.
+All input and output ranks are recorded in
+\texttt{g\_integral\_cohomology.json}.
+This calculation by itself asserts no vanishing beyond
+the displayed range and evaluates no specific higher
+lifting obstruction.
+\end{proof}

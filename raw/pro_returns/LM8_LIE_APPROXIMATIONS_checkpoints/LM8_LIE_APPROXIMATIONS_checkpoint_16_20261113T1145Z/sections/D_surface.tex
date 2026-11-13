@@ -1,0 +1,637 @@
+\subsection{Integer interpolation and the quasi-separated positive-power theorem}
+
+The regular-surface test admits a direct argument which extends further.
+The key input is that powers of the given section lie in one affine
+identity chart for infinitely many integers. This controls rational
+coordinate denominators without constructing a relative Chevalley
+quotient or assuming that a schematic closure is flat. The conclusion
+first concerns the positive-power assertion in \S50.2, folios
+652 verso--654, C4 scans 10--13. We then resolve the smooth-model
+question of \S52.3, scan 213, while distinguishing its preceding
+requirements from the supplementary axioms introduced afterwards.
+
+\begin{statement}{D.17}{Proved}{Rational interpolation with an integral denominator}
+Let $R$ be a Noetherian domain containing $\Q$, with fraction field
+$K$. If $F\in K(T)$ is defined and belongs to $R$ at infinitely
+many integers $T=n$, then
+\[
+       F=A(T)/B(T),\qquad A,B\in R[T],\qquad B(n_0)=1
+\]
+for some integer $n_0$, after multiplying numerator and denominator
+by a sign if necessary.
+
+If $R$ is local and $M$ is a finite torsion-free $R$-module, the
+same argument for $F\in M_K\otimes_K K(T)$ with $F(n)\in M$
+at infinitely many integers supplies
+$F=N(T)/D(T)$, where $N\in M[T]$, $D\in R[T]$, and the
+reduction of $D$ modulo the maximal ideal is nonzero. In particular
+$D(n)$ is a unit at all but finitely many integers.
+\end{statement}
+\begin{proof}
+We first prove the scalar assertion for a Krull domain $R$ containing
+$\Q$; Noetherianity is not needed in this first step. Choose
+$a,b\in R[T]$ representing $F$, with $a,b$ coprime over $K$.
+Clearing a Bezout identity over $K[T]$ gives
+\[
+              u(T)a(T)+v(T)b(T)=r\ne0,
+              \qquad u,v\in R[T],\ r\in R.
+\]
+On the infinite set of good integers, $b(n)\ne0$ and
+$b(n)$ divides $a(n)$ in $R$, hence divides $r$.
+
+Use the discrete valuations defining the Krull domain, with their
+finite-character property. Only finitely many of them, say
+$v_1,\ldots,v_h$, are positive on $r$. For each $v_i$, let $b_i$
+be the minimum of the valuations of the nonzero coefficients of
+$b$. Dividing by a uniformizer to this minimum and reducing gives
+a nonzero polynomial over the residue field. Its values at
+distinct integers are distinct inputs, since every nonzero
+integer is a unit in $R$ and in these valuation rings. Thus
+\[
+                       v_i(b(n))=b_i
+\]
+except at finitely many integers. At every other defining
+valuation, divisibility $b(n)\mid r$ forces $v(b(n))=0$.
+After finitely many exclusions from the good integer set, all
+$b(n)$ therefore have the same valuations. Fix one such $n_0$.
+The Krull intersection description shows that
+$b(n)/b(n_0)$ and its inverse lie in $R$ for every remaining
+good $n$. Consequently both polynomials
+\[
+                        a/b(n_0),\qquad b/b(n_0)
+\]
+have values in $R$ at infinitely many integers. Vandermonde
+interpolation at sufficiently many of them puts all their
+coefficients in $R$: every nonzero integer difference is a unit.
+The second polynomial has value $1$ at $n_0$.
+The finite-character and intersection properties used here are
+the definition and Lemma 1.1 of \citet[p.~998]{DS_Nagata1996}.
+
+For a general Noetherian domain $R$, its integral closure
+$\overline R\subset K$ is a Krull domain by the Mori--Nagata
+theorem, in the precise form stated in
+\citet[Lemma 1.2, p.~998]{DS_Nagata1996}. The preceding argument
+gives $F=a'/b'$ with $a',b'\in\overline R[T]$ and
+$b'(n_0)=1$. We now descend the denominator; finiteness of
+$\overline R/R$ is not assumed.
+
+Put $c=(b'-1)/(T-n_0)\in\overline R[T]$. This element is
+integral over $R[T]$, since it has only finitely many coefficients
+integral over $R$. Choose a monic relation
+\[
+ c^d+a_{d-1}(T)c^{d-1}+\cdots+a_0(T)=0,
+                       \qquad a_i\in R[T].
+\]
+The polynomial
+\[
+ Q(U)=(U-1)^d+\sum_{i=0}^{d-1}
+                   a_i(T)(T-n_0)^{d-i}(U-1)^i
+\]
+satisfies $Q(b')=0$. Write $Q(U)=UQ_1(U)+D(T)$. Then
+\[
+ D(n_0)=(-1)^d,\qquad D/b'=-Q_1(b')\in\overline R[T].
+\]
+Hence $F=N/D$ for $N=-a'Q_1(b')\in\overline R[T]$.
+At all good integers outside a finite set,
+$N(n)=F(n)D(n)\in R$. A second Vandermonde interpolation
+puts $N$ in $R[T]$. Multiplying by $(-1)^d$ normalizes the
+denominator at $n_0$. This proves the scalar assertion even
+when normalization is not finite.
+
+For the module assertion, choose an embedding $M\hookrightarrow R^q$
+by choosing a basis of $M_K$ and clearing the coordinates of a
+finite set of generators. Apply the scalar assertion to all
+coordinates of $F$. Each resulting denominator has a unit
+value somewhere, and thus a nonzero reduction over the residue
+field of the local ring. Their product $D$ also has nonzero
+reduction. Now $DF$ is a polynomial with coefficients in $R^q$,
+and its values at infinitely many good integers belong to $M$.
+Vandermonde interpolation expresses every coefficient as an
+$R$-linear combination of those values, so every coefficient
+belongs to $M$. This proves the module assertion.
+\end{proof}
+
+\begin{statement}{D.18}{Proved}{All Noetherian bases in characteristic zero}
+Let $S$ be a Noetherian $\Q$-scheme, $G/S$ a separated group scheme
+of finite presentation, and $g\in G(S)$ a fibrewise quasi-unipotent
+section. There exist $m>0$ and a homomorphism
+$u:\mathbb G_{a,S}\to G$ with $u(1)=g^m$.
+For any fixed value at $1$, the homomorphism is unique.
+The base may be reducible or nonreduced, and $G$ need not be
+flat, smooth, or affine.
+\end{statement}
+\begin{proof}
+We first record the denominator argument for a Noetherian local
+$\Q$-algebra $A$ whose zero ideal is primary. Its nilradical
+$\mathfrak p$ is prime, and every element outside $\mathfrak p$
+is a nonzerodivisor. Thus the localization
+\[
+ B=(A\setminus\mathfrak p)^{-1}A
+\]
+contains $A$ injectively and is an Artinian local ring. Write
+$J=\operatorname{rad}(B)$ and $R=A/\mathfrak p$, whose fraction
+field is $K=B/J$. The Artinian ring $B$ has a coefficient field
+$K$ by the equicharacteristic-zero case of the Cohen structure
+theorem \citep[Theorem 10.160.8, Tag 032A]{DS_StacksCohen}.
+It is finite-dimensional over that field.
+
+For $j\ge1$, set $I_j=A\cap J^j\subset B$ and
+$M_j=I_j/I_{j+1}$. These are finite modules, and
+\[
+ M_j\hookrightarrow J^j/J^{j+1},\qquad
+ M_j\otimes_R K=J^j/J^{j+1}.
+\]
+The action factors through $R$ because
+$\mathfrak p I_j\subset I_{j+1}$. The displayed inclusion
+therefore makes $M_j$ a finite torsion-free $R$-module. The
+filtration is saturated by its definition; one must not replace
+it without justification by the potentially nonsaturated powers
+of $\mathfrak p$ in $A$.
+
+Let $B(T)=B\otimes_K K(T)$, and suppose $F\in B(T)$ has
+values in $A$ at infinitely many integers. Reduce modulo $J$
+and apply D.17 over the local domain $R$. Lift its numerator
+and denominator to $A[T]$. The denominator is a unit at all
+but finitely many integers. Subtracting the lifted fraction
+leaves an element of $J B(T)$ whose good integer values belong
+to $I_1$. Reduce the error modulo $J^2$ and apply the module
+assertion of D.17 to $M_1$. Lift that numerator to $I_1[T]$
+and its denominator to $A[T]$, and subtract again. Iteration
+through the finite nilpotent filtration gives
+\[
+              F=N(T)/D(T),\qquad N,D\in A[T],
+\]
+where $D$ has nonzero reduction in the residue field of $A$.
+Only finitely many integers were discarded at each step.
+Products of the finitely many denominators still have nonzero
+reduction. This proves the required denominator lemma for
+primary rings, including their nilpotents.
+
+Now let $G/A$ and $g$ be as in the statement, with $A$ primary
+and local. After a positive power, assume that $g$ is unipotent
+both over $K$ and over the closed residue field of $A$.
+Over the Artinian coefficient-field algebra $B$, the iterated
+argument of D.11 gives a homomorphism
+$u_B:\mathbb G_{a,B}\to G_B$ with $u_B(1)=g_B$.
+More explicitly, restriction of scalars to $K$ is representable
+by a separated finite-type group because $B/K$ is finite free
+and a universal homeomorphism. The reduction kernel has a finite
+filtration by subgroups of additive vector groups. Its inverse
+image over the actual unipotent cyclic image is unipotent;
+exponential and adjunction give $u_B$. This uses neither
+flatness of $G$ nor surjectivity onto the entire reduced group.
+
+Choose an affine open $V\subset G$ containing the identity at
+the closed point. The whole identity section lies in $V$, since
+$\Spec A$ is local. The closed-fibre parameter through $g$
+meets $V$ on a nonempty open of the affine line. Therefore
+$g^n\in V(A)$ for all but finitely many integers $n$: its
+closed-point image lies in $V$, and an open of a local spectrum
+containing the closed point is the whole spectrum.
+
+Choose finite algebra generators $h_1,\ldots,h_q$ of
+$\mathcal O(V)$. Their pullbacks under $u_B$, initially on
+$u_B^{-1}(V_B)$, are rational functions $F_i\in B(T)$.
+At all but finitely many integers they satisfy
+\[
+                        F_i(n)=h_i(g^n)\in A.
+\]
+Apply the primary-ring denominator lemma and take a common
+denominator $D\in A[T]$ with nonzero reduction at the closed
+point. The coordinate formulas give a map
+$v:D(D)\to V$. All defining relations hold because
+$A[T,1/D]\hookrightarrow B(T)$ is injective: $A\hookrightarrow B$
+is injective and $D$ has nonzero reduction in the residue field
+of $B$. The map agrees with $u_B$ on their common domain.
+
+At every prime of the local ring $A$, the polynomial $D$ has
+nonzero reduction: a coefficient that is a unit at the maximal
+ideal is a unit everywhere. All residue characteristics are
+zero. Hence the translates $D(D)+n$, $n\in\mathbb Z$, cover
+$\mathbb A^1_A$, because a nonzero polynomial has only finitely
+many roots whereas integer translates of any geometric point
+are distinct. On $D(D)+n$ put
+\[
+                         v_n(T)=v(T-n)g^n.
+\]
+They agree after localization to $B$. That localization is
+schematically dense on $\mathbb A^1_A$ and on every open
+intersection, since it inverts nonzerodivisors. Separatedness
+therefore makes the maps agree, and they glue. The same
+schematic-density argument on $\mathbb A^2_A$ proves the
+group law, and on $\Spec A$ proves the value at $1$.
+This settles every primary local ring.
+
+For a general Noetherian local $\Q$-algebra $A$, take a finite
+primary decomposition $0=\bigcap_{i=1}^r Q_i$. Recall briefly
+why it exists: the ascending chain condition makes every ideal
+a finite intersection of irreducible ideals. An irreducible zero
+ideal is primary, since stabilization of the annihilators of
+$y^j$ shows that, if $xy=0$ and $x\ne0$, then
+$(x)\cap(y^j)=0$ for a sufficiently large $j$, forcing $y^j=0$.
+Apply this in the quotients by the irreducible ideals.
+
+The primary-ring argument supplies parameters on all
+$A/Q_i$. Choose a common power and rescale. Their restrictions
+to every closed overlap agree by D.12, since these are
+$\Q$-schemes and the value at $1$ is the same.
+Closed patching gives a map over $A$: for two ideals with
+intersection zero,
+\[
+                 A=A/I\times_{A/(I+J)}A/J,
+\]
+and the same identity holds after adjoining one or two
+polynomial variables. Compatible maps from the two closed
+pieces to any scheme glue. Indeed, inverse images of an affine
+target open form one open in the source, since a finite closed
+cover detects openness; the fibre product of structure sheaves
+then glues their algebra maps. It also proves uniqueness.
+Induct on the number of primary pieces. Patching on the affine
+plane checks the group law, and patching the sections checks
+the value at $1$. In the induction, the overlap of the next
+primary piece with the already patched union is itself a
+$\Q$-scheme; D.12 makes the two parameters equal on this full
+scheme-theoretic overlap. Pairwise agreement on reduced
+intersections alone is not used as a descent criterion.
+
+Finally, over a general Noetherian $\Q$-scheme, spread the local
+maps, their group laws, and their values from local rings to
+open neighbourhoods by finite presentation. Take a finite
+cover and a common multiple of its exponents. Characteristic-zero
+uniqueness in D.12 makes the rescaled maps agree on overlaps,
+so they glue. That same result supplies the asserted uniqueness.
+\end{proof}
+
+\begin{statement}{D.19}{Proved}{Integer localization with torsion errors}
+Let $A$ be a local ring, $G/A$ separated of finite
+presentation, and $g\in G(A)$ fibrewise quasi-unipotent.
+If some positive power of $g$ has an additive parameter over
+$A[1/n]$, for an integer $n>0$, then some positive power has
+an additive parameter over $A$. The integer $n$ may be a
+zerodivisor in $A$.
+\end{statement}
+\begin{proof}
+If $n$ is a unit there is nothing to prove; if it is nilpotent,
+D.13 applies. Otherwise let $u$ over $A[1/n]$ have value
+$g^m$ at $1$. Choose an affine identity chart $V=\Spec C$
+as in D.16. This affine open is of finite presentation over $A$:
+its inclusion in the quasi-separated finite-presentation scheme
+$G$ is a quasi-compact open immersion. The inverse image of $V$ contains the whole zero
+section; choose $f$ with $f(0)=1$ and $D(f)$ in that inverse
+image. Write the finitely many coordinate images as
+$a_i/f^{k_i}$, with constant terms $e^*(h_i)\in A$.
+After replacing $T$ by $n^N T$, choose lifts
+$F,A_i\in A[T]$ with
+\[
+          F(0)=1,\quad F\equiv1\pmod n,\quad
+          A_i(0)=e^*(h_i).
+\]
+The algebra $C$ is finitely presented. Evaluate its finite set
+of defining relations at $A_i/F^{k_i}$, and clear powers of
+$F$. Their numerators $P_j(T)$ vanish after inverting $n$
+and have constant term zero. Each is killed by a power of $n$.
+Here $A[T]\hookrightarrow A[T,1/F]$ is injective: a polynomial
+with constant term $1$ is a nonzerodivisor, as comparison of
+the lowest nonzero coefficient shows. A further substitution
+$T\mapsto n^eT$ therefore kills all the relation numerators.
+
+We obtain a morphism $D(F)\to V$, agreeing with a rescaling of
+$u$ after inverting $n$. The cover
+$D(F)\cup\mathbb A^1_{A[1/n]}=\mathbb A^1_A$ glues it
+to a scheme map $\phi:\mathbb A^1_A\to G$ with
+$\phi(0)=e$ exactly. It need not yet be a homomorphism.
+
+The equalizer of $\phi(T+U)$ and $\phi(T)\phi(U)$ is a
+finitely presented closed subscheme of $\mathbb A^2_A$.
+Its ideal is finitely generated, becomes zero after inverting
+$n$, and every generator has zero constant coefficient.
+Likewise for the equalizer of $\phi(T)g^m$ and $g^m\phi(T)$:
+after inverting $n$, a homomorphism commutes with its value
+$g^m$ at $1$. A common further dilation by a power of $n$
+kills all the coefficient errors. The resulting map $\psi$
+is a group homomorphism and centralizes $g^m$. Put
+\[
+                  h=\psi(1),\qquad
+                  a=mn^b,\qquad\delta=h^{-1}g^a,
+\]
+where $b$ is the total dilation exponent. Then $h$ and $g^a$
+commute, and $\delta=1$ after inverting $n$.
+
+Every geometric fibre of $\delta$ has finite order. Outside
+$V(n)$ it is the identity. On $V(n)$ the residue characteristic
+is some $p\mid n$; there $h$ is killed by $p$ and $g^a$ has
+finite order by quasi-unipotence. Their commuting product has
+finite order. Constructible compactness, applied to the
+finitely presented equalizers of $\delta^q$ and $1$, gives
+$q>0$ such that $\delta^q$ is the identity in every geometric
+fibre, exactly as in D.13.
+
+Let $I$ be its equalizer ideal. It is finitely generated and
+nilpotent, say $I^r=0$. It also vanishes after inverting $n$,
+so $n^c I=0$ for some $c\ge0$. The successive square-zero
+identity kernels for $I^j/I^{j+1}$ are additive and killed
+by $n^c$. Consequently
+\[
+                         \delta^{q n^{c(r-1)}}=1.
+\]
+Write this exponent as $d$. Because $h$ and $g^a$ commute,
+$g^{ad}=h^d=\psi(d)$. Thus $T\mapsto\psi(dT)$ is the required
+parameter. This handles the value error as well as the relation
+and group-law errors; generic agreement alone would not do so
+over a ring with integer torsion.
+Every ideal used in this proof has an explicit finite set of
+generators, supplied by finite presentation. A finitely generated
+nil ideal is nilpotent over any ring. Thus no Noetherian hypothesis
+on $A$ is needed in this localization lemma.
+\end{proof}
+
+\begin{statement}{D.20}{Proved}{The positive-power theorem over every Noetherian base}
+Let $S$ be a Noetherian scheme, let $G/S$ be a separated group
+scheme of finite presentation, and let $g\in G(S)$ be fibrewise
+quasi-unipotent in the sense of \S50.1, C4 scan 5. Then there
+exist an integer $m>0$ and a homomorphism
+\[
+                 u:\mathbb G_{a,S}\longrightarrow G,
+                 \qquad u(1)=g^m.
+\]
+No reducedness, irreducibility, regularity, or flatness assumption
+on $S$ is required, and $G$ need not be affine, smooth, or flat.
+\end{statement}
+\begin{proof}
+Apply D.18 over $S_{\Q}$. Finite-presentation limit descent
+of the map, group law, and value at $1$ supplies a parameter
+for some power over $S[1/n]$, for one integer $n>0$, as in
+D.16. The inverse system has affine transition maps and
+Noetherian, hence quasi-compact quasi-separated, bases.
+
+At every local ring of $S$, D.19 now supplies a positive-power
+parameter. Spread it and its identities to an open neighbourhood.
+A finite cover exists, and the powers can be made common.
+D.12 descends the local maps after one further common dilation.
+This proves the assertion. The argument includes the case
+$S_{\Q}$ is empty.
+\end{proof}
+
+\begin{statement}{D.21}{Proved}{All quasi-compact quasi-separated bases}
+Let $S$ be a quasi-compact quasi-separated scheme, $G/S$ a
+separated group scheme of finite presentation, and $g\in G(S)$
+fibrewise quasi-unipotent. There are $m>0$ and a homomorphism
+$u:\mathbb G_{a,S}\to G$ with $u(1)=g^m$.
+Thus the positive-power assertion of \S50.2, C4 scans 10--13,
+is true with this base hypothesis. The base may be non-Noetherian;
+the group need not be affine, smooth, or flat.
+\end{statement}
+\begin{proof}
+We first treat an arbitrary $\Q$-algebra $R$. Descend $G$, its
+group operations, and $g$ to a finitely generated $\Q$-subalgebra
+$R_0\subset R$. After enlarging $R_0$ the descended group $G_0$
+is separated and of finite presentation. These assertions use
+\citet[Lemma 32.10.1, Tag 01ZM]{DN_StacksLimits} for objects,
+morphisms, and identities, and
+\citet[Lemma 32.8.6, Tag 01ZQ]{DS_StacksSeparatedLimit} for
+separatedness.
+
+Let $C\subset\Spec R_0$ be the geometric fibrewise
+quasi-unipotence locus of $g_0$. It is a union of constructible
+subsets for the following elementary reason. Given $x\in C$,
+a homomorphism over $\overline{\kappa(x)}$ taking $1$ to
+$g_0^m$ descends, together with its group law and value, to a
+finitely generated $R_0$-subalgebra
+$B\subset\overline{\kappa(x)}$. Thus $\Spec B\to\Spec R_0$
+has constructible image by Chevalley's theorem
+\citep[Theorem 29.23.3, Tag 054K]{DS_StacksChevalley}.
+Every point in this image belongs to $C$: after a residue-field
+extension $L/k$ the same homomorphism is a witness. Its two
+pullbacks over $L\otimes_k L$ agree by D.12, since this is
+a $\Q$-algebra and both have the same value at $1$. Faithfully
+flat descent of morphisms therefore gives a parameter over $k$
+itself. Conversely every $x\in C$ is in one
+of these constructible images. This proves the assertion about
+$C$ without representing the full functor of homomorphisms.
+
+Their inverse images cover $\Spec R$, by the hypothesis on $g$.
+They are open in its constructible topology, so compactness
+\citep[Lemma 5.23.2, Tag 0901]{DN_StacksConstructible} gives
+a finite subcover. Write $C'$ for the corresponding finite
+union of constructible subsets of $\Spec R_0$. The complement
+$E=\Spec R_0\setminus C'$ has empty inverse image in $\Spec R$.
+Since $R_0$ is Noetherian, write $E$ as a finite union of sets
+$V(I_\alpha)\cap D(f_\alpha)$ with each $I_\alpha$ finitely
+generated. Empty inverse image means
+\[
+                      (R/I_\alpha R)[1/f_\alpha]=0.
+\]
+The finitely many identities expressing this vanishing use
+only finitely many coefficients from $R$. A finitely generated
+$\Q$-subalgebra $R_1\subset R$ containing these coefficients
+and $R_0$ therefore has its entire spectrum mapped into $C'$.
+Every geometric fibre of $(G_0,g_0)_{R_1}$ is quasi-unipotent.
+Apply D.18 over the Noetherian ring $R_1$, and pull the resulting
+parameter back to $R$. This proves the assertion for every
+affine $\Q$-base. A finite affine cover and D.12 give it over
+every quasi-compact quasi-separated $\Q$-scheme.
+
+For general $S$, apply that result to $S_{\Q}$. The inverse
+system $S[1/n]$ has affine transition maps and quasi-compact
+quasi-separated terms. Finite-presentation limit descent
+supplies a parameter through a power of $g$ over some $S[1/n]$.
+D.19 applies at each local ring of $S$, with no Noetherian
+assumption. Spreading each resulting parameter and its identities
+to a neighbourhood, choosing a finite cover, and applying D.12
+after a common dilation proves the assertion.
+\end{proof}
+
+\begin{statement}{D.22}{Known}{Smooth integral models of compact adelic representations}
+Let $H/\Q$ be an affine group scheme of finite type, $M$ a
+profinite group, $\rho:M\to H(\mathbb A_f)$ a continuous
+homomorphism, and $\chi:H\to\mathbb G_{m,\Q}$ a character.
+There exist a smooth affine group scheme $\mathscr H/\mathbb Z$
+of finite type, an identification $\mathscr H_{\Q}=H$, a
+character $\chi_{\mathbb Z}:\mathscr H\to\mathbb G_{m,\mathbb Z}$
+extending $\chi$, and a continuous factorization
+\[
+                  M\longrightarrow\mathscr H(\widehat{\mathbb Z})
+                    \longrightarrow H(\mathbb A_f)
+\]
+of $\rho$. If a subgroup $\Lambda\subset M$ has its image
+in diagonal $H(\Q)$, then that image lies in $\mathscr H(\mathbb Z)$.
+
+This answers the smooth-model existence question of \S52.3,
+folio 754, C4 scan 213, with the adelic factorization specified
+in (45) and (47), scans 211--212. It does not assert the later
+supplementary conditions (55)--(64). No connectedness hypothesis
+on $H$ is required.
+\end{statement}
+\begin{proof}
+Choose a faithful closed representation $H\hookrightarrow
+\operatorname{GL}(V)$ over $\Q$
+\citep[Theorem 4.9 and Corollary 4.10]{D_Milne2022}.
+We explain the integral lattice
+step. The compact subgroup $K=\rho(M)$ maps into
+$\operatorname{GL}(V)(\mathbb A_f)$. For every prime $p$, its
+projection $K_p$ is compact, hence bounded. If $L_{0,p}$ is a
+lattice in $V_{\Q_p}$, the $\mathbb Z_p$-module
+\[
+                  L_p=\sum_{k\in K_p}kL_{0,p}
+\]
+lies between $L_{0,p}$ and $p^{-a_p}L_{0,p}$ for some $a_p$.
+It is therefore a lattice, and it is stable under $K_p$.
+Compactness in the restricted product implies that
+$K_p\subset\operatorname{GL}(L_{0,p})$ for all but finitely
+many $p$, with $L_{0,p}$ taken from one rational lattice $L_0$.
+At those primes take $L_p=L_{0,p}$.
+
+These local lattices come from a global lattice
+$L\subset V$. For completeness, choose $N>0$ with
+$NL_{0,p}\subset L_p\subset N^{-1}L_{0,p}$ for all $p$.
+The finite local submodules of
+$N^{-1}L_{0,p}/NL_{0,p}$ specify, by the Chinese remainder
+theorem, a subgroup of $N^{-1}L_0/NL_0$; its inverse image is
+$L$, and $L\otimes\mathbb Z_p=L_p$.
+The character of a compact subgroup has valuation zero at every
+prime: the image of the continuous homomorphism
+$v_p\circ\chi:K_p\to\mathbb Z$ is finite, hence zero.
+Thus $\chi(K)\subset\widehat{\mathbb Z}^{\times}$.
+
+Take the schematic closure $\mathscr H_0$ of the graph of
+$\chi$ in $\operatorname{GL}(L)\times\mathbb G_{m,\mathbb Z}$.
+It is an affine group scheme of finite type, flat over
+$\mathbb Z$, with generic fibre $H$; flatness follows because
+its coordinate ring is torsion-free. Projection to the second
+factor extends $\chi$. The whole subgroup $K$ lies in
+$\mathscr H_0(\widehat{\mathbb Z})$: at every prime its
+matrix and character coordinates are integral, and the closure
+equations vanish because they vanish on the generic fibre.
+
+Cartier's theorem makes $H$ smooth
+\citep[Lemma 39.8.2, Tag 047N]{D_StacksCartier}, and finite presentation
+shows that $\mathscr H_0$ is smooth away from finitely many
+primes. At each remaining prime apply the group-smoothening
+theorem of \citet[\S7.1, Theorem 5, p.~175]{DS_BLR1990}
+over $R=\mathbb Z_{(p)}$. It supplies a smooth finite-type
+group $\mathscr H_p'\to(\mathscr H_0)_R$, isomorphic on
+generic fibres, through which every morphism from a smooth
+$R$-scheme factors uniquely. Its construction is a finite
+sequence of affine dilatations, so $\mathscr H_p'$ is affine
+\citep[\S3.2, pp.~62--64; \S7.1, pp.~174--175]{DS_BLR1990}.
+
+We check explicitly that all $\mathbb Z_p$-points are retained.
+The extension $\mathbb Z_{(p)}\subset\mathbb Z_p$ has
+ramification index one and the same residue field.
+Given $a\in\mathscr H_0(\mathbb Z_p)$,
+\citet[\S3.6, Proposition 4, p.~79]{DS_BLR1990} supplies
+a finite sequence of dilatations $X\to(\mathscr H_0)_R$
+such that $a$ lifts into the $R$-smooth locus of $X$.
+That locus maps to $\mathscr H_p'$ by the preceding universal
+property, yielding a lift of $a$. The lift is unique by the
+generic-fibre isomorphism and separatedness. This argument
+does not assume that the original group is a N\'eron model.
+
+Spread these finitely many local modifications to neighbourhoods
+of their primes and glue them with the unchanged smooth model
+on the complementary open. The modifications are generic
+isomorphisms, so after shrinking each neighbourhood they agree
+on its punctured part. This gives a smooth affine finite-type
+$\mathbb Z$-group $\mathscr H\to\mathscr H_0$ with unchanged
+generic fibre. Affineness is local on the base. This is also
+the finite-local-modification gluing used in
+\citet[proof of \S7.1, Corollary 6, p.~175]{DS_BLR1990}.
+Compose with $\mathscr H_0\to\mathbb G_m$ to extend $\chi$.
+The equality on all $\mathbb Z_p$-points supplies the required
+factorization. It is continuous: for an affine finite-type
+$\mathbb Z_p$-scheme its set of $\mathbb Z_p$-points is compact,
+so the continuous bijection onto the original point set is a
+homeomorphism; take the product over $p$.
+
+Finally, for any affine $\mathbb Z$-scheme with the specified
+generic fibre,
+\[
+             H(\Q)\cap\mathscr H(\widehat{\mathbb Z})
+                         =\mathscr H(\mathbb Z).
+\]
+Indeed each coordinate of a rational point integral at every
+prime belongs to $\Q\cap\prod_p\mathbb Z_p=\mathbb Z$.
+This proves the assertion for $\Lambda$ and gives (47) for
+the prescribed rational images of $\Pi_0$ and $\mathcal G_0$.
+Their schematic closures contain these integral sections. If
+one of the quotient schemes in (46) is represented, the
+character, trivial on the relevant closure by generic density,
+factors through it as in (49). Representability remains the
+explicit proviso in the manuscript, not an extra conclusion
+silently used here.
+\end{proof}
+
+\begin{statement}{D.23}{Refuted}{The integral-point recap and uniqueness from the preceding data}
+The literal replacement of $M\to\mathscr H(\widehat{\mathbb Z})$
+by $M\to\mathscr H(\mathbb Z)$ in the parenthetical recap
+on C4 scan 213 is false for a Lie homomorphism whose multiplier
+has open image in $\widehat{\mathbb Z}^{\times}$, as required
+in \S52.3, scans 201 and 207. The factorization in (45) and
+(47) must be kept distinct from this stronger integral-point
+reading.
+
+Moreover, the existence data (45)--(49) alone do not specify
+a unique smooth model with its fixed generic-fibre identification.
+The author's suggestion of uniqueness under further conditions
+does not state such conditions and is not treated as a uniqueness
+theorem.
+\end{statement}
+\begin{proof}
+If the whole of $M$ mapped to $\mathscr H(\mathbb Z)$ and
+$\chi$ extended over $\mathbb Z$, its multiplier would take
+values in $\mathbb G_m(\mathbb Z)=\{\pm1\}$. This contradicts
+its open image in $\widehat{\mathbb Z}^{\times}$, since no
+finite subgroup is open there. For the last assertion, every
+basic neighbourhood imposes congruence conditions at only
+finitely many primes and leaves an infinite unit subgroup at
+another prime. Already $H=\mathbb G_m$, $M=\widehat{\mathbb Z}^{\times}$,
+$\rho$ the natural inclusion, and $\chi=\mathrm{id}$ give
+the explicit obstruction.
+
+To see the failure of uniqueness from the preceding data, use
+\[
+ \begin{aligned}
+ H&=\mathbb G_a\rtimes\mathbb G_m,
+ & (x,u)(y,v)&=(x+uy,uv),\\
+ M&=\widehat{\mathbb Z}\rtimes\widehat{\mathbb Z}^{\times}.
+ \end{aligned}
+\]
+with its natural adelic representation and character $(x,u)\mapsto u$.
+For each integer $c>0$, take the smooth model
+$\mathscr H_c=\mathbb G_{a,\mathbb Z}\rtimes\mathbb G_{m,\mathbb Z}$
+whose generic identification with $H$ sends $(z,u)$ to $(z/c,u)$.
+The adelic factorization is $(a,u)\mapsto(ca,u)$, and the
+character extends. Rational integral subgroups, such as the
+integer translations, satisfy the required factorization too.
+An isomorphism $\mathscr H_1\simeq\mathscr H_2$ inducing the
+identity on $H$ would have to be $(z,u)\mapsto(2z,u)$ by generic
+density. This morphism is not an isomorphism at $2$, where it
+kills the additive coordinate. Thus these are distinct models
+of the specified rational group, although the underlying
+unmarked group schemes are isomorphic. This does not refute
+a uniqueness theorem with additional precisely stated conditions;
+it proves that the data currently preceding scan 213 are
+insufficient for one.
+\end{proof}
+
+\paragraph{Scope after the surface argument.}
+D.21 settles every quasi-compact quasi-separated base for separated
+finitely presented groups. D.14 proves that quasi-compactness
+alone, the literal base hypothesis in the manuscript, is
+insufficient. Neither Noetherian singularities and nilpotents
+nor non-Noetherian affine bases are retained as unresolved tests.
+The smooth integral-model existence question at scan 213, folio 754,
+with the coherent adelic reading of (45)--(49), is answered by D.22;
+the stronger integral-point recap and bare uniqueness are corrected
+in D.23. Conditions (55)--(64), introduced later
+as additional hypotheses and then used to define a nondegenerate
+integral approximation, are not an asserted universal existence
+theorem.
+
+The argument does not infer representability of the full functor
+$\operatorname{Hom}_{\rm gp}(\mathbb G_a,G)$. Such a shortcut
+would already fail for $G=\mathbb G_m$ over a characteristic-zero
+field: nilpotent test rings admit nontrivial exponential maps,
+and this Hom functor is not represented by a scheme
+\citep[p.~2]{DS_BrionHom}. The proof uses coordinate denominators,
+integer interpolation, and finite nilpotent filtrations instead.

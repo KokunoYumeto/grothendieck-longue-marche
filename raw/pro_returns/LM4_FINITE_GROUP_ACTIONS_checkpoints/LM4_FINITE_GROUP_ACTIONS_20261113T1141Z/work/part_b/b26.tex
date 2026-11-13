@@ -1,0 +1,221 @@
+\begin{claim}{B.26}{Proved}{Complete executed spherical catalogues through six punctures}
+For $\nu=3,4,5,6$, the extended mapping class group of the sphere with
+$\nu$ unlabelled punctures has respectively
+\[
+                         10,\quad30,\quad20,\quad57
+\]
+conjugacy classes of finite subgroups, including the trivial subgroup.
+The exact finite parameterization below gives every class once.  The
+executed files \texttt{type\_0\_\nu\_orbifold\_catalogue.csv} and
+\texttt{type\_0\_\nu\_orbifold\_sections.json}, for each of these four
+values of $\nu$, give all partial-section classes, all their inclusion
+relations, $\Phi$, its group action and stabilizers, the centralizers,
+the multiplier on each section element, and the puncture stabilizers.
+Thus these files settle the whole computation requested in B(f) for
+the hyperbolic spherical types with $2g+\nu\le6$.
+\end{claim}
+\begin{proof}
+Extend an action over the punctures.  By B.1 and the sphere theorem of
+\cite[Theorem 1.2]{bKolev2006}, a finite topological action on $S^2$ is
+conjugate to an orthogonal action.  Write $Q=S^2/G$ with its local
+orbifold groups.  A point has cyclic positive stabilizer, or a dihedral
+stabilizer with mirrors; the mirror-only stabilizer has order two.
+The covering formula is
+\[
+ \chi_{\rm orb}(Q)=\chi(|Q|)
+  -\sum_{j=1}^r(1-1/m_j)
+  -\frac12\sum_{j=1}^k(1-1/n_j)=\frac2N,
+ \qquad N=|G|.                                      \tag{B.26.1}
+\]
+Here the $m_j$ are interior cone orders and the $n_j$ are corner orders.
+One proves this formula directly by a triangulation whose vertices
+include all cone and corner points: count each cell in the covering
+with weight equal to the reciprocal of its stabilizer order.  Mirrors
+are boundary strata; they introduce no additional term after the
+boundary cells and their endpoints are counted together.
+
+Since (B.26.1) is positive, the underlying compact surface is $S^2$,
+$\mathbb{RP}^2$, or a disc.  The sphere has at most three cones.  A
+single cone is impossible, since its local generator would be trivial
+in the orbifold presentation.  Two cones have equal orders, since the
+two local generators are inverses and both local cyclic groups inject.
+For three cones the inequality $1/m_1+1/m_2+1/m_3>1$ gives precisely
+$(2,2,n),(2,3,3),(2,3,4),(2,3,5)$.
+The projective plane has at most one cone.  For a disc, positivity gives
+$2r+k\le3$.  A single corner without a cone is impossible; two corners
+without a cone have equal orders, by the same local-injectivity argument.
+Three corners give the same four triples.  One cone and one corner
+give $2/m+1/n>1$, hence $(m,n)=(2,n)$ or $(3,2)$.
+Consequently the following table is exhaustive.  In its notation
+$S(m_1,\ldots,m_r)$ is a sphere with cones, $P(m)$ is a projective
+plane with one cone, $D(m_1,\ldots,m_r;n_1,\ldots,n_k)$ is a mirror
+disc with the specified interior cones and cyclically ordered corners,
+and an empty list means no such singularities.
+\[
+\begin{array}{c|c@{\qquad}c|c}
+Q&N&Q&N\\\hline
+S()&1&P()&2\\
+S(n,n)&n&P(n)&2n\\
+S(2,2,n)&2n&D(;)&2\\
+S(2,3,3)&12&D(;n,n)&2n\\
+S(2,3,4)&24&D(n;)&2n\\
+S(2,3,5)&60&D(;2,2,n)&4n\\
+&&D(2;n)&4n\\
+&&D(;2,3,3)&24\\
+&&D(;2,3,4)&48\\
+&&D(;2,3,5)&120\\
+&&D(3;2)&24
+\end{array}                                                   \tag{B.26.2}
+\]
+Every integer $n$ in this table is at least two.  For $3\le\nu\le6$
+only $2\le n\le6$ can occur.  Indeed, in every family depending on
+$n$, the union of all point orbits of size strictly smaller than $n$
+has at most two points; an invariant set of at least three punctures
+therefore contains an orbit of size at least $n$.  This assertion also
+follows immediately by dividing $N$ by each local group order in
+(B.26.2).  In the two icosahedral rows every point orbit has at least
+twelve points.  Those rows cannot occur in the present range.  These
+are proved finite bounds, rather than bounds inferred from the output.
+
+We now give the exact decoration rule used in the program.  A cone
+orbit may be removed or retained; put $c_j\in\{0,1\}$ accordingly.
+A corner orbit similarly has $d_j\in\{0,1\}$.  For each open mirror
+edge let $e_i\ge0$ be the number of removed orbits on that edge; a
+cornerless mirror circle is one edge for this purpose.  Finally let
+$a\ge0$ be the number of regular interior orbits removed.  The single
+equation is
+\[
+ \sum_jc_j\frac N{m_j}
+ +\sum_jd_j\frac N{2n_j}
+ +\sum_i e_i\frac N2+aN=\nu.                       \tag{B.26.3}
+\]
+On a sphere, permutations of cones of equal order identify decorations.
+On a mirror disc, identify them under precisely the rotations and
+reflections of the cyclic corner list that preserve its order labels.
+The corresponding edge counts move with their edges.  For two corners
+this rule includes the independent exchanges of the two corners and
+the two edges.  For one or zero corners it introduces no further
+identification of the single edge count.  There is at most one interior
+cone in every remaining disc or projective-plane row.
+
+For clarity, this rule also proves completeness of the conjugacy
+classification.  A homeomorphism of an interval moves any two
+unlabelled finite subsets of the same size into one another, and the
+same assertion holds in the connected regular interior of each quotient
+surface.  Such moves extend to the quotient surface by disjoint small
+discs and strips.  The only remaining data are therefore the selected
+singular strata and the cyclic mirror-edge counts in (B.26.3), modulo
+the explicitly stated symmetries.  Conversely every quotient
+homeomorphism preserves those strata, their orders, and their cyclic
+incidence.  Since $S^2$ is the universal orbifold cover, a homeomorphism
+between the decorated quotient orbifolds lifts to a conjugacy between
+their covering actions; this follows by lifting paths and their local
+cone or mirror charts.  A conjugacy of actions descends to such a
+quotient homeomorphism.  Thus no extra equivalence of decorations is
+possible.  Finally C.5 and C.6 identify these topological action classes
+with conjugacy classes of finite subgroups in the extended mapping
+class group of the punctured sphere.  The induced action there is
+faithful: a nonidentity positive periodic map isotopic to the identity
+would fix every puncture individually, whereas a nonidentity sphere
+rotation has exactly two fixed points; a negative map cannot be
+isotopic to the identity.  Here $\nu\ge3$ is essential.
+
+Here are certificates for the finite group calculations.  The source
+\texttt{catalogue\_spheres.py} constructs the cyclic and dihedral
+families as regular permutation groups, the tetrahedral and octahedral
+positive groups as $A_4,S_4$, their needed extensions by an explicitly
+given central involution, and the full octahedral group as signed
+permutations of three axes.  All generators, products, orders and signs
+are recorded as finite permutations.  The program verifies each
+orbifold relation, injection of every local cyclic or dihedral group,
+and $N\chi_{\rm orb}(Q)=2$ using rational arithmetic.  These checks
+prove that the permutation group is the entire orbifold group, as
+follows.  The kernel of the displayed quotient of the orbifold
+presentation produces a covering with no cone, corner or mirror
+singularity because all local groups inject.  Its orientation
+character is trivial, and its Euler characteristic is two.  It is
+therefore a closed orientable sphere; its fundamental group is trivial.
+This proves injectivity of the quotient presentation as well as its
+already checked surjectivity.  In particular these certificates do
+not merely exhibit a possibly proper finite quotient of an unexamined
+presentation.
+
+We describe how the section data are recovered without numerical
+sampling.  Cone and corner lifts are cosets of their cyclic and
+dihedral stabilizers.  In a disc presentation choose reflections
+$r_0,\ldots,r_k$ with
+\[
+ (r_jr_{j+1})^{n_j}=1,\qquad
+ r_k=e r_0e^{-1},\qquad x_1\cdots x_r e=1.            \tag{B.26.4}
+\]
+Indices of the corner orders are shifted here to start at zero.
+The code stores $r_0,\ldots,r_{k-1}$ and derives the final reflection.
+An edge lift is a coset of $\langle r_i\rangle$ and meets the adjacent
+corner cosets; the closing incidence at edge zero is multiplied by
+$e^{-1}$.  With no corners it instead joins the corresponding two
+cosets of $\langle r_0\rangle$ by that same rule.  Insert the prescribed
+removed vertices along each edge, retaining two auxiliary vertices in
+each complementary segment.  These auxiliary vertices prevent a
+one-edge loop from collapsing when represented as an ordinary finite
+adjacency graph.  This is exactly the lifted mirror locus with a
+finite subdivision.
+
+For any reflection $r\in G$, keep the vertices whose stabilizers
+contain $r$.  Before punctures are deleted the program verifies degree
+two at every such vertex.  Its components are consequently the full
+fixed circles of $r$.  Deleting the selected puncture vertices gives
+all the fixed lines and ovals, with their exact incidence.  For a
+subgroup whose positive part is nontrivial, the fixed points are
+precisely the retained cone and corner lifts whose stabilizers contain
+that subgroup.  A negative involution without a mirror has an empty
+fixed set.  Thus B.3 and B.4 supply every section class, with centralizer
+$1$ for a point or a line and $\Z$ for an oval.  A section over $H$
+extends a section over $K<H$ exactly when its fixed component is
+contained in the latter fixed component.  Hence the same finite
+incidence calculation gives the entire partial-section poset and all
+its maximal elements, including the reflection cases with several
+maximal extensions.  Left multiplication on cosets gives the group
+action and every stabilizer without a choice of orbit representatives.
+
+The multiplier is exact as well.  Orient a local lift of each cone,
+and at a corner use the positive generator $r_jr_{j+1}$ determined by
+the oriented boundary order.  Write this generator as $u$, of order
+$m$.  At the point represented by a coset $gD$, an element $h$ of its
+positive stabilizer satisfies $g^{-1}hg=u^b$, and
+\[
+                   \mu(h)=\operatorname{sgn}(g)\frac bm
+                                \pmod{\Z}.           \tag{B.26.5}
+\]
+Replacing $g$ by another coset representative leaves this value
+unchanged: a positive local element commutes with $u$, while a
+negative local element both reverses the sign and inverts $u$.
+For a reflection the value is $1/2$, and for the identity it is zero.
+Formula (B.26.5) is the local instance of B.12, and applies to all
+sections in the files.  The code checks its order and every power
+identity, as well as uniqueness of the maximal extension for every
+section with nontrivial positive part.  All nontrivial subgroups of
+each finite permutation group are enumerated by saturation under
+adjoining each group element; this stops only when the subgroup set
+is closed under every possible enlargement.
+
+The following compact census is part of the executed output; each
+entry is the number of conjugacy classes of that group order.  A dash
+denotes zero.  Complete individual rows, rather than just this census,
+are in the CSV files specified in the statement.
+\[
+\begin{array}{c|rrrrrrrrrrrrr|r}
+\nu\backslash N&1&2&3&4&5&6&8&10&12&16&20&24&48&\text{total}\\\hline
+3&1&3&1&1&-&3&-&-&1&-&-&-&-&10\\
+4&1&6&1&11&-&1&7&-&1&1&-&1&-&30\\
+5&1&4&1&4&1&3&1&3&1&-&1&-&-&20\\
+6&1&7&1&14&1&9&8&1&9&1&-&4&1&57
+\end{array}                                                    \tag{B.26.6}
+\]
+As an independent check, the program compares the multisets of all
+six columns consisting of group order, positive order, full-section
+count, nontrivial partial-section count, maximal-section count, and
+group-orbit count, for $\nu=3,4$, against the previous permutation and
+amalgam calculations in B.23 and B.25.  Both multisets agree, with
+multiplicities.  The check and its inputs are attached; the completeness
+proof above does not depend on that agreement.
+\end{proof}

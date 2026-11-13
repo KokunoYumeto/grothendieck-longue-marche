@@ -1,0 +1,109 @@
+# Transcription task MPL_1_002-050: Alexander Grothendieck, manuscript notes from the Montpellier archive, cote 1
+
+You are transcribing mathematical notes in Alexander Grothendieck's own hand. The attached zip `MPL_1_002-050_scans.zip` holds
+**45 scan pages** of the Montpellier archive file `1.pdf`: "Analyse fonctionnelle : notes manuscrites (s.d.), lettre (1953)." (1953). For every scan page N there
+are three images: `MPL_1_002-050_scanNNN.jpg` (the whole page) and `MPL_1_002-050_scanNNN_a.jpg`, `MPL_1_002-050_scanNNN_b.jpg` (its top and
+bottom halves, or left and right halves of a landscape sheet, overlapping a little, at full resolution). N is the page
+number in the archive's PDF. The images are contrast-enhanced and sharpened. Scan pages that are blank were left out:
+scans 2, 37, 43, 47.
+
+Unzip the file in your sandbox and **look at every image yourself**, the whole page first and then the halves for
+the small writing. Reading software (OCR) is not a substitute for looking and must not be used on these pages.
+
+The handwriting is fast and hard. Your job is a **diplomatic transcription into LaTeX**: exactly what is on the
+page, in Grothendieck's language (mostly French, sometimes English or German), nothing more and nothing less.
+
+**The task is a complete transcription: every word, symbol, formula, diagram, drawing, deletion, insertion and
+marginal note on every page, in the order on the page.** Anything left out is an error. Accuracy is required as
+well: a wrong confident reading is worse than an honest mark of doubt, but a mark of doubt is never a reason to leave
+something out. Take the time this needs. Work page by page and line by line.
+
+**A description is not a transcription.** You never replace content by a description, a summary, a paraphrase,
+"[...]", "etc.", "and so on", or a note that something is there. You never include an image. If you cannot read
+something, you transcribe what you can and mark the rest with the doubt macros (rule 5), in place.
+
+## Absolute rules
+
+1. **Transcribe only what you see.** Do not fill in from memory, from published texts, from what the mathematics
+   "should" say, or from your knowledge of Grothendieck's published work. If the page says something surprising,
+   transcribe the surprise.
+2. **No translation, no modernization, no correction.** Keep his spelling, accents (or their absence),
+   punctuation, abbreviations ("cat.", "gr.", "resp.", "cf.", "th.", "prop.", "dém.", …) and his own numbering
+   ("N° 3", "Prop. 1.7", "§ 2") exactly as written. Never expand an abbreviation in the text.
+3. **Mathematics exactly as written**, in LaTeX: the same letters, the same alphabet (script, Gothic, bold, Greek),
+   the same indices and exponents, the same arrows, bars, hats and tildes. Do not "fix" notation. If a symbol could
+   be two things, mark it (rule 5).
+4. **Mark the state of the page**, with these macros only:
+   - `\scanpage{N}` at the top of each scan page (N as above);
+   - `\mspage{n}` where Grothendieck's own page or sheet number is visible;
+   - `\deleted{…}` for struck-through text you can still read; `\deleted{\illegible{2}}` if you cannot;
+   - `\inserted{…}` for words added above the line or in the margin and meant to go in at that place;
+   - `\margin{…}` for marginal notes that are not insertions;
+   - `\uline{…}` for underlined words; keep double underlining as `\uuline{…}`;
+   - `\diagram{…}`: every diagram typeset in `tikz-cd` (or an array for a table), with every object, arrow, label,
+     direction and decoration exactly as written, including struck-out parts (`\deleted` inside the diagram). A
+     diagram is **never** described in words; if part of it is hard to read, typeset it anyway and put `\unsure` or
+     `\illegible` inside the diagram at that place;
+   - `\figure{…}` for drawings that are not diagrams (curves, graphs, regions, pictures): **reproduce the drawing in
+     TikZ**, with its shape, the relative positions of its parts and every written label, as closely as you can. A
+     verbal description of a drawing is not allowed. Only if a drawing is a genuine picture too complex for TikZ (not
+     text, not a formula, not a diagram), give your best TikZ approximation and add the comment
+     `% crop-candidate: scan N` after it.
+5. **Doubt, explicitly:**
+   - `\unsure{reading}` for a reading you believe but are not certain of;
+   - `\unsure{reading|alternative}` when two readings are possible;
+   - `\illegible{n}` for n words whose ink is physically unreadable at the highest zoom (estimate n). Before you use
+     it, try a reading and prefer `\unsure{…}`. Never use it for a symbol inside a formula or a diagram: give your
+     best reading there with `\unsure`.
+   Never silently guess.
+6. Keep his paragraphing and the order of the text on the page. Line breaks inside a paragraph need not be kept.
+   A page that is not mathematics (a letter, an envelope, a printed sheet, a form) is transcribed all the same.
+
+## Where readings go wrong
+
+On his manuscripts about one word in seventy was misread in earlier work of this kind, and only a third of the
+misreadings carried a doubt mark. The typical errors, to guard against:
+- **A plausible mathematical word in place of the ink.** The context makes the wrong word look right. If you have not
+  seen every letter of a word, mark it `\unsure`, however well it fits.
+- **A short condition or symbol left out**: a "≠ 0", an inclusion sign between two lines of a display, an "Ob",
+  inner parentheses. After each display, margin note and insertion, check symbol by symbol that everything on the
+  page is in your text.
+- **An insertion attached to the wrong place.** Put each insertion where its caret, arrow or line points.
+- **Inequalities and arrow directions.** ≤ and ≥, ⇒ and ⇐, the direction of an arrow, of an inclusion and of an
+  isomorphism: read them from the ink, never from what the argument needs.
+- **His own spellings, and word endings.** Write the form on the page, not the dictionary form. Read each ending
+  (singular or plural, -é or -er, -ant or -ent) from the ink, not from the grammar; if the ending is only a stroke,
+  mark the word `\unsure`.
+
+## Method
+
+1. Before the first page, write the current time (UTC) as the first line of `progress.log`.
+2. For each scan page: read the whole page once, then transcribe it line by line. Re-read the image (and its halves)
+   against your transcription, line by line; correct, or mark doubt. Then make the page **inventory**: every text
+   block, display, diagram, drawing, margin note, insertion and deletion on the page, top to bottom, and check that
+   each one is in your transcription, complete. Fix any gap.
+3. **As soon as a page is done**, write it to its own file `pages/MPL_1_002-050_scanNNN.tex`, add its rows to the inventory
+   file, and append a line `scan NNN done <current UTC time>` to `progress.log`. Only then go to the next page. If the
+   work is interrupted, everything finished so far is on disk.
+4. If the mathematics tempts you to fill in, complete or correct a reading, do not: write the thought as one line in
+   the pointers file (item 4 below), never in the transcription.
+
+This task is long by design: 45 pages. Work through all of them completely; do not stop at a sample or a plan,
+and do not ask whether to continue. Ignore any clock.
+
+## What to return
+
+One zip file, `MPL_1_002-050.zip`, offered as the only download. It holds:
+
+1. `MPL_1_002-050_transcription.tex`: all pages in order, one LaTeX fragment (no preamble, no `\documentclass`), starting with
+   `\scanpage{N}` of the first page, using only the macros above plus standard LaTeX and `tikz-cd`; and the folder
+   `pages/` with one file per page.
+2. `MPL_1_002-050_doubts.md`: a table of doubts (scan page, line approximately, your reading, the alternatives, your
+   confidence high / medium / low); the abbreviations met, each with what you think it stands for (in this list only,
+   never in the text); and a short honest note on how legible these pages were and which parts you trust least.
+3. `MPL_1_002-050_inventory.csv` (columns `scan,element,kind,position,first_words_or_objects,transcribed`): one row per
+   element of every page (kind: text, display, diagram, drawing, margin note, insertion, deletion), with
+   `transcribed` = yes for every row. A row that is not yes means the transcription is not finished.
+4. `MPL_1_002-050_pointers.md`: one line per place where he states a conjecture, asks a question, claims something without
+   proof, or names a link to other work: scan page, kind, his words in brief. One line each; no commentary.
+5. `progress.log`.

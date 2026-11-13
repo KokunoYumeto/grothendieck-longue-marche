@@ -1,0 +1,167 @@
+\begin{claim}{F.8}{Proved}{The seven-point kernel and its peripheral restrictions}
+In the regular $A=A_4$ labelling of (F.7.8), all twelve
+seven-point subsets in (F.7.9) form one free orbit for
+left multiplication by $A$.  Consequently their kernels
+on the specified $F_{13}$ are equal; their kernels on
+its profinite completion are equal as well.
+The completed kernel meets every conjugate of every
+full source cusp subgroup $\widehat\Z$ trivially.
+The discrete kernel contains no nonidentity reducible
+mapping class under the specified index-twelve
+inclusion $F_{13}\le P\Gamma_{0,4}$.
+\end{claim}
+\begin{proof}
+
+Here is the actual comparison of maps.  Regard the target
+as $M_{0,I}$ with its seven labels $I\subset A$, and write
+\[
+ f_I:X\longrightarrow M_{0,I},\qquad
+             z\longmapsto[(gz)_{g\in I}].
+\]
+For $h\in A$, let
+$r_h:M_{0,I}\xrightarrow{\sim}M_{0,hI}$ be the relabelling
+which assigns to the label $hg$ the former coordinate
+with label $g$.  The configuration defining $f_{hI}(z)$
+has coordinate $h(gz)$ at that label.  Applying the same
+M\"obius transformation $h^{-1}$ to every coordinate
+therefore gives the exact identity of maps
+\[
+                         f_{hI}=r_h\circ f_I.
+\]
+This identity also identifies the base configurations;
+it induces an isomorphism of the target fundamental
+groups intertwining the two homomorphisms from
+$\pi_1(X)$.  Functoriality of profinite completion gives
+the same commuting diagram for their completions.
+Since $r_h$ and its completion are isomorphisms, the
+two kernel equalities follow.
+
+The exact label certificate is
+\path{code/part_a/seven_point_same_kernel.py}.
+It constructs the twelve subsets in the action
+$A_5/C_5$ and gives all twelve left multipliers and
+the corresponding seven-label permutations.  With
+the certificate's zero-based vertex numbering, one
+subset is $I=\{0,1,2,3,4,7,10\}$.  Its intersections
+with the three cosets of the normal subgroup
+$V_4\le A_4$ are respectively
+\[
+ \begin{array}{c|c}
+ \text{coset}&I\text{ retained in that coset}\\ \hline
+ \{0,2,7,11\}&\{0,2,7\}\\
+ \{1,4,5,9\}&\{1,4\}\\
+ \{3,6,8,10\}&\{3,10\}.
+ \end{array}
+\]
+The program checks that none of the twelve subsets
+contains a full $V_4$ coset.  Thus the four-label
+$V_4$-orbit cross-ratio is not one of the forgetful
+projections of any of these seven-point maps.
+
+The intersection of the twelve kernels in (F.7.9)
+is therefore the kernel of any one of these named
+maps.  F.9 below proves it nontrivial by an exact braid certificate.
+This discrete kernel contains no nonidentity reducible
+mapping class in the source subgroup of
+$P\Gamma_{0,4}$.  To prove this, use the exact
+$A_4$ covering
+\[
+ X=S^2\setminus R_A\longrightarrow
+ S^2\setminus\{b_2,b_3,b'_3\}
+\]
+and its index-twelve injection on fundamental groups
+in (F.7.8).  On the four-punctured quotient sphere,
+every essential curve separates the moving puncture
+$q$ and one branch point $b$ from the other two
+branch points.  Let $e=2$ or $3$ be the order at $b$.
+The preimage of the disk containing $q,b$ consists
+of $12/e$ disks, each containing $e$ of the twelve
+points above $q$.  These assertions hold for every
+such curve: its monodromy subgroup is the conjugate
+of the inertia subgroup at $b$, so its connected
+components have degree $e$, and each is a disk
+branched only at the one point above $b$.
+
+The lift of a nonzero twist power belonging to the
+index-twelve subgroup is a product of twists about
+these boundary curves.  More precisely, its exponent
+is divisible by $e$, and each lifted twist has exponent
+equal to the original exponent divided by $e$.  After
+forgetting five points, at least one of these boundaries
+remains essential: seven retained points distributed
+among six pairs or four triples force a disk containing
+at least two retained points, and its complement
+contains at least four.  The surviving twists all have
+the same nonzero sign; parallel essential components
+add their exponents.  Independence of twists about
+pairwise disjoint nonisotopic essential curves makes
+the resulting mapping class nonidentity.  Finally,
+each nonidentity reducible pure mapping class of a
+four-punctured sphere is a nonzero power of one such
+twist: its invariant multicurve has just one component,
+and cutting along it gives two three-punctured spheres.
+This proves the asserted exclusion of reducible
+elements from the discrete kernel.
+
+There is also an injective detector for each full
+profinite cusp.  Let $c$ be a primitive peripheral
+generator at any one of the fourteen punctures of
+$X$.  Its image in $P\Gamma_{0,4}$ is a conjugate
+of $T^e$, where $T$ is a twist as above.  Thus its
+lift is the indicated product of twists of exponent
+one.  Choose two retained labels in an essential
+lifted disk and two outside that disk.  Forgetting
+all other labels gives a specified map to
+$P\Gamma_{0,4}$.  The inside disk contributes one
+twist $U$.  Among the other disks, another twist
+survives exactly when both outside labels lie in
+one disk; it then gives the same isotopy class and
+the same sign.  Hence the image of $c$ is $U^d$
+with $d\in\{1,2\}$, up to conjugation.
+
+There is a character
+$\ell:P\Gamma_{0,4}\to\Z$ with $\ell(U)=1$.
+For example the three peripheral twists in the
+free group $P\Gamma_{0,4}=F_2$ have abelianization
+vectors $(1,0),(0,1),(-1,-1)$, and an essential
+twist is conjugate to one of these under the pure
+group.  Choose the corresponding integral linear
+functional.  Completing this character and the
+two forgetting maps gives a continuous homomorphism
+\[
+ \widehat F_{13}\longrightarrow
+ \widehat{P\Gamma}_{0,7}\longrightarrow
+ \widehat{P\Gamma}_{0,4}\longrightarrow\widehat\Z
+\]
+whose restriction to $\overline{\langle c\rangle}$
+is $a\mapsto da$.  Multiplication by $1$ or $2$
+is injective on $\widehat\Z$.  The cusp is a full
+embedded $\widehat\Z$ in $\widehat F_{13}$, since
+its primitive generator is a member of a free
+basis after choosing the omitted sphere peripheral.
+The same final character detects every conjugate
+$g c^a g^{-1}$ with $g\in\widehat F_{13}$, because
+its target is abelian.  This proves the asserted
+trivial intersection of the completed kernel with
+all conjugate cusp groups.  The program gives the
+four retained labels and $d$ in each of the
+$12\cdot7=84$ subset--inertia-partition checks;
+the two fixed points of each inertia subgroup
+have the same partition.
+
+The exclusion just proved confines nonidentity discrete
+kernel elements to pseudo-Anosov mapping classes. F.9 supplies
+an explicit such element by an exact braid certificate.
+No assertion about a Nielsen--Thurston type for profinite
+elements is used.
+
+The preceding rank-six calculation is a calculation
+of its induced abelian map, and does not identify
+the kernel of the fundamental-group homomorphism.
+The separate file
+\path{code/part_a/seven_point_braid_explore.py}
+contains a numerical crossing exploration; it is
+explicitly exploratory and is not used in this
+map comparison. F.9 replaces the discovery computation
+by a separate exact rational certificate of a kernel relation.
+\end{proof}
