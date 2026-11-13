@@ -1,0 +1,189 @@
+\begin{claim}{B.33}{Proved}{Executed positive catalogues in genera two and three}
+For $(g,\nu)=(2,0),(2,1),(2,2),(3,0)$, the numbers of conjugacy
+classes of finite orientation-preserving subgroups, allowing conjugacy
+in the full extended mapping class group, are respectively
+\[
+                         21,\qquad10,\qquad23,\qquad55.
+\]
+The trivial subgroup is included. The files
+\texttt{oriented\_higher\_genus\_catalogue.csv} and
+\texttt{oriented\_higher\_genus\_sections.json} give each class,
+its actual finite permutation group, every subgroup's number of
+sections, all nontrivial partial-section classes and their inclusion
+relations, the $G$-set $\Phi$, its stabilizers, and every value of
+$\mu$ on every section. Punctures are unlabelled. These assertions
+concern positive subgroups; they do not enumerate subgroups containing
+orientation-reversing elements.
+\end{claim}
+\begin{proof}
+We specify the classification input and the computation using it.
+Karab\'a\v{s}--Nedela--Skyvov\'a
+\cite[Theorem 2.2, Corollary 2.3, Theorem 4.1 and \S8]{R-KNS}
+identify the positive topological classes with the orbits of smooth
+epimorphisms from the Fuchsian group
+\[
+ \Delta=\langle x_1,\ldots,x_r,a_1,b_1,\ldots,a_h,b_h\mid
+ x_i^{m_i}=1,\ [a_1,b_1]\cdots[a_h,b_h]x_1\cdots x_r=1\rangle
+\]
+under target automorphisms and orientation-preserving orbifold
+automorphisms. Here smooth means that every image of $x_i$ has
+order exactly $m_i$. Their \S8 gives a complete genus-two list
+of 21 classes and a genus-three list of 55 classes in 49
+group/signature pairs, including the trivial actions. We opened
+the accompanying data \cite{R-KNSData}, downloaded the two original
+JSON files, and retained their attribution and SHA-256 digests.
+The attached program reads those exact files. It verifies that
+each generating vector generates the group of the stated order,
+each elliptic generator has its specified order, every presentation
+relation holds, and
+\[
+ |G|\left(2-2h-\sum_i(1-1/m_i)\right)=2-2g.
+\]
+The conversion from the source's right-acting permutations to the
+left-acting permutations in our code is the isomorphism sending
+each permutation to its inverse. For a handle word the two
+commutator conventions are compared explicitly; replacing both
+handle generators by their inverses converts $a^{-1}b^{-1}ab$
+to the convention $aba^{-1}b^{-1}$. The files retain the actual
+generating vector, so this convention does not affect a recorded
+elliptic rotation.
+
+The local-order checks imply that the kernel of each epimorphism
+is torsion-free: every finite-order element of a Fuchsian group
+is conjugate to a power of an elliptic generator. The covering
+formula then identifies its quotient surface as genus $g$.
+Conversely a positive finite action determines this epimorphism
+by lifting paths in the quotient. The two constructions are
+inverse modulo the stated source and target automorphisms.
+Finally C.5--C.6 identify these action classes with conjugacy
+classes of finite mapping-class subgroups. This supplies the
+exact reduction from the classification input to the groups
+asked for here.
+
+We also recompute the equivalence relation whenever $h=0$,
+rather than using only the published class count. For an ordered
+generating vector $(u_1,\ldots,u_r)$ with product one, the braid
+generator acts by
+\[
+ \sigma_i:(u_i,u_{i+1})\longmapsto
+               (u_i u_{i+1}u_i^{-1},u_i).
+\]
+Use adjacent such generators when $m_i=m_{i+1}$ and all pure
+braid generators, obtained by moving the $j$th entry next to the
+$i$th, applying $\sigma_i^2$, and reversing the moves.
+Theorem 4.1 of the cited paper proves that these transformations
+induce the full orientation-preserving orbifold automorphism
+action after inner automorphisms have been divided out. A
+generating vector is compared modulo $\Aut(G)$ by its rooted,
+edge-coloured Cayley graph: breadth-first enumeration with the
+ordered generators gives a canonical transition table. Equality
+of tables gives the explicit bijection of vertices preserving
+every labelled multiplication edge; induction on words proves
+that it is the unique target-group isomorphism carrying the
+generating vectors to one another. Thus the canonicalization
+does not approximate group automorphisms.
+
+To allow conjugacy by negative homeomorphisms, we add the
+reflection of the marked sphere. Its effect on the tuple is
+\[
+ (u_i)_{i=1}^r\longmapsto
+ \left(p_{i-1}u_i^{-1}p_{i-1}^{-1}\right)_{i=1}^r,
+ \qquad p_{i-1}=u_1\cdots u_{i-1}.
+\]
+The product of the new tuple is $(u_1\cdots u_r)^{-1}=1$,
+as successive cancellation shows. The program computes the
+orbits both before and after adding this transformation; it
+recovers the published planar counts and finds no fusion.
+All nonplanar group/signature pairs in these two genera have
+only one positive class in the input classification. Reversing
+orientation preserves the group and signature and hence fixes
+that class. Consequently the positive counts remain 21 and 55
+under conjugacy in the extended group.
+
+For genus two we add all puncture configurations with
+$\nu\leq2$. An invariant finite puncture set consists of selected
+elliptic orbits and a number $a$ of ordinary orbits. Write
+$c_i\in\{0,1\}$ for selection of the $i$th elliptic orbit.
+The exact equation is
+\[
+                  \sum_i c_i\frac{|G|}{m_i}+a|G|=\nu.
+                                                               \tag{B.33.1}
+\]
+The program enumerates every solution. It carries the bits
+$c_i$ along under each braid move, exchanging the two bits
+when the corresponding two elliptic entries are exchanged.
+It then takes orbits of these decorated generating vectors
+under the same coloured braids, target automorphisms, and
+reflection. These are exactly the decorated topological
+classes: an equivariant homeomorphism descends to the quotient
+orbifold, and its action on the covering is the compatibility
+of its induced automorphism with the epimorphism just described.
+Conversely that compatibility lifts the quotient homeomorphism
+to an equivariant homeomorphism. Ordinary unlabelled punctures
+can be moved to any other such configuration through paths in
+the regular part of the quotient; point-pushing the paths is
+isotopic to the identity after these additional points are
+forgotten and so preserves the original covering kernel.
+Thus $a$ records all their remaining data.
+
+There are just two nonplanar genus-two entries. For the trivial
+group, there is one configuration for each $\nu$. The other
+has group $C_2$ and signature $(1;2,2)$. Its two elliptic
+images are the unique involution, and exchanging their small
+discs preserves the monodromy after an adjustment of the two
+handle paths. The four possible pairs of handle images in
+$C_2^2$ are connected by point-pushing either branch point
+around a handle: crossing the branch cut adds its nonzero
+monodromy to the transverse handle image. These two pushes
+change either handle coordinate independently. Hence the
+exchange lifts and only the number of selected branch orbits
+matters. These elementary moves account for all four vectors
+in the supplied data and prove the nonplanar decoration step
+used by the code. Equation (B.33.1) and the decorated orbits
+give 10 and 23 classes at one and two punctures.
+
+We now derive every section entry from the checked finite
+groups. A retained elliptic orbit is the left $G$-set
+$G/\langle u_i\rangle$. Its point at the coset
+$v\langle u_i\rangle$ has stabilizer
+$v\langle u_i\rangle v^{-1}$ and positive generator
+$v u_i v^{-1}$. B.3 gives exactly one kernel-conjugacy class
+of sections for every point fixed by a specified nontrivial
+subgroup $K\leq G$. Such a subgroup is cyclic because it is
+contained in the cyclic point stabilizer. Conversely every
+such containment gives a section. Thus the exact count is
+\[
+ \#\Sec(E_K\to K)/\pi
+  =\sum_{i:c_i=0}
+       \#\{v\langle u_i\rangle:
+                    K\leq v\langle u_i\rangle v^{-1}\}.
+                                                               \tag{B.33.2}
+\]
+The formula is used for every subgroup, which the program
+enumerates by saturation under adjoining each remaining group
+element. It checks that no noncyclic subgroup has a section.
+The trivial subgroup has one section, and it is not included
+in the nontrivial partial-section totals.
+
+The maximal partial sections are precisely these individual
+elliptic points, with $G$ acting by left multiplication on the
+cosets. A partial section lies below another exactly when
+they have the same point and its subgroup is contained in the
+other subgroup. This determines the whole inclusion relation
+and proves uniqueness of a maximal extension in the positive
+case. Each nontrivial section has centralizer one by B.3.
+The total number of nontrivial partial-section classes is
+independently checked against
+\[
+             \sum_{i:c_i=0}\frac{|G|}{m_i}\bigl(\tau(m_i)-1\bigr),
+\]
+where $\tau(m)$ is the number of positive divisors of $m$.
+Finally, for $h=v u_i^b v^{-1}$ the value of $\mu$ at this
+section is $b/m_i\pmod\Z$. This lists every power of every
+local generator and is exactly the intrinsic multiplier
+identified in B.12. Puncture stabilizers are the removed
+cyclic groups or the trivial group for ordinary orbits.
+All these data are computed with integer permutations and
+rational fractions. The output has 109 individual action
+rows and 59 independent planar braid-orbit checks.
+\end{proof}

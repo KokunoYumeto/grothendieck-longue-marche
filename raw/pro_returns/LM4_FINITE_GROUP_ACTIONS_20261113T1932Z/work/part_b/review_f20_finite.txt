@@ -1,0 +1,158 @@
+Independent F20 finite-producer audit
+Result: PASS. No correction required.
+
+Audited:
+  work/part_a/code/cross_divisor_finite_f20.py
+  work/part_a/code/cross_divisor_finite_f20_output.json
+  work/part_a/f_cross_divisor_monodromy.tex
+  work/part_a/code/cross_divisor_monodromy_f20.py
+  work/part_a/code/cross_divisor_monodromy_f20_output.json
+
+Independent rerun:
+  python work/part_a/code/cross_divisor_finite_f20.py
+  stdout: work/part_b/f20_finite_independent_rerun_stdout.txt
+  exact output/hash summary: work/part_b/f20_finite_independent_audit_summary.json
+
+The rerun passed all assertions. Its actual counts are 22 new exact
+number-field sign checks, 200,160 generating triples of A5, 1,668 distinct
+epimorphism kernels, 82 kernels invariant under all eleven source actions,
+3,321 synchronized two-factor actions, and six mod-two homology-cover
+actions. Every single action has one orbit of size 60; every paired action
+has one orbit of size 3,600. Each homology-cover translation subgroup has
+projection A5 and vector-kernel dimension 119. Its index is four, and the
+actual source generators have one orbit on those four right cosets. All
+660 semilinear-versus-word comparisons passed.
+
+1. Exact geometric input and the new basepoint/whisker checks
+
+The geometric producer is identical to the previously independently
+audited f19_relative_tracks_exact.py except for its explanatory docstring,
+the import path after relocation into code/, and the output filename.
+The exact field, rational paths, Bernstein subdivision, all 172 crossings,
+and the 22 based braid words therefore retain the earlier audit. No
+numerical discovery output is read by either producer.
+
+The new sign checks use that same Q(theta), theta^4-5 theta^2+5=0,
+19/10<theta<2, with the specified s0=i(theta^2-2) zeta. They establish
+|s0|>1, 3 Re(s0)<-2 and Im(s0)>0. For each of the four outer collision
+square-values A_u=u(2 zeta-u), u != zeta, the cross product with s0^2 is
+nonzero and |A_u|<3. The first radial edge of the stated polygon therefore
+misses every outer collision root; it misses the inner roots because
+their absolute values are less than one. The subsequent vertical,
+horizontal and last diagonal edges remain outside the radius-two disk.
+This proves the claimed entire original-basepoint transport in Y-dagger,
+not merely the clearance of its vertices.
+
+The five other cross-product checks are precisely the differences of
+the old point coordinates ((u-s*)/(u+s*))^2 from R against Q(s*)-R.
+They are all nonzero. Thus the actual straight new transport also avoids
+the old marked points. The earlier geometric certificate already checks
+its avoidance of 0, 1 and B. The written original path and the retained
+one-point whisker T_n^{-1}T_o have the stated source and target labels.
+
+2. Literal Artin and diagonal-coset action
+
+Deleting the fourth strand tracks its position after every crossing;
+the computed three-strand words give exactly the recorded base
+automorphisms. All eleven old/new erased conjugators agree with F20.12.
+The three point-pushing images are computed by the actual standard kernel
+braids and give the displayed involutive free-basis substitution.
+
+I checked the right diagonal-coset formula used by the finite producer:
+(b_o,b_n) diag(P5) maps to b_n b_o^{-1}, with inverse
+v maps to (1,v) diag(P5). With the literal semidirect coordinates
+b_o=(p^{-1},alpha), b_n=(q^{-1},alpha), left multiplication on these
+cosets is exactly v maps to q^{-1} alpha(v) p. This is the multiplication
+order in all the finite arrays; neither transport is silently inverted.
+The wider completed configuration comparison is undergoing its separate
+full mathematical review. This audit verifies the stated action as the
+input to the finite computations, as well as its displayed coset maps.
+
+3. Exhaustive A5 kernels and synchronized products
+
+The multiplication table uses p composed with q, so its identity is the
+lexicographically first permutation. The inverse table is exact. The
+subgroup generation routine adjoins x and its inverse to all members of
+the previously computed subgroup, then takes finite closure; the triple
+enumeration is consequently exhaustive. The 120 S5 conjugations act
+freely on every generating triple. Quotienting by that action identifies
+exactly equal epimorphism kernels, using the verified Aut(A5)=S5 action.
+
+For each source automorphism alpha, evaluation on the three generators
+is matched to an actual automorphism of A5, and kernel invariance is
+tested for all eleven source generators. Each recorded descending
+automorphism is uniquely determined by the generating triple. The
+permutation array is literally
+  mul[inverse[q], mul[sigma(v), p]].
+Its finite directed orbit enumeration gives the whole group orbit:
+every generator is a permutation, and its inverse is a positive power.
+
+For two distinct kernels the written subdirect-product argument proves
+surjectivity onto A5 x A5. The program then uses the SAME source generator
+on both coordinates at each step, through its 60-by-60 broadcast array.
+The 3,321 transitivity checks are therefore checks of the actual joint
+actions, rather than separate checks of marginal transitivity.
+
+4. The actual noncentral homology-cover group
+
+The edge convention is e_(i,a): a -> a rho(x_i), with left translation
+by the group element. The word routine adds a positive edge before
+updating its endpoint; a negative letter first moves to the predecessor
+and subtracts that edge. Thus the chain always has boundary e_a-e_1.
+Its product and inverse routines are exactly
+  (v,a)(w,b)=(v+a w,ab),
+  (v,a)^{-1}=(-a^{-1}v,a^{-1}).
+The connected 60-vertex, 180-edge Cayley graph has mod-two cycle dimension
+121. Every chain with prescribed endpoint boundary is realized by a
+word, because its difference from a fixed path is a graph-homology
+class. This verifies the stated group of order 60 times 2^121 and its
+identification with F3/[N,N]N^2; no splitting of that extension is used.
+
+The substitution matrix has column (i,a) equal to sigma(a) times the
+chain of alpha(x_i). It is therefore precisely the induced map on actual
+lifted edges. Left multiplication by q^{-1} and right multiplication by p
+give the affine formula F20.20. The separate psi routine computes
+p^{-1} alpha(h) p. The 660 comparisons test both formulas on literal
+source words in the same group law. All calculations use exact integer
+arrays reduced modulo two; the matrix dimensions and bounds preclude
+machine-integer overflow in the displayed operations.
+
+5. Translation subgroup, its kernel, and the four actual right cosets
+
+The eight filled source generators are exactly the indices whose new
+conjugator and base automorphism are trivial. Their old words act by
+right translations. Conjugation by any source action changes h to
+p^{-1} alpha(h) p, exactly the separate psi action.
+
+The subgroup algorithm first chooses representatives of its finite base
+projection. For a generator (v,a) and its representative (r_a,a), the
+kernel vector is v-r_a. Its representative-generator Schreier products
+give all additional kernel generators. Closing their vector span under
+the regular actions of the chosen base generators gives the full kernel:
+conjugation on a vector kernel is just that regular action. On a finite
+vector space invariance under an invertible generator implies invariance
+under its inverse. Adding the psi-images of every base representative
+and every kernel-basis vector therefore computes the exact normal source
+translation subgroup. Stabilization under the actual injective finite
+maps supplies their inverse invariance as well.
+
+For a right coset with base a, the routine selects a0=min(a B) and
+b=a^{-1}a0 in the subgroup projection. Right multiplication by its
+representative changes the vector to v+a r_b and the endpoint to a0.
+The remaining kernel ambiguity is precisely the translated subspace
+a0 V, which is reduced by the stored row-reduced basis. Hence the
+canonical key is an exact right-coset key. In all six cases B=A5 and
+dim V=119, so there are exactly 2^(121-119)=4 keys. All four are reached,
+and the queue is exhausted. Since the filling-kernel right translations
+act transitively inside each of these cosets, this proves transitivity
+on all 60 times 2^121 elements, without enumerating that entire group.
+
+6. Scope
+
+The actual one-point forgetting and finite wreath map of F20.13--16
+turn transitivity into the asserted equal full finite images for K+
+and D+. The tested list consists exactly of the enumerated A5 kernels,
+their distinct pairs, and the six named homology refinements. This
+calculation supplies no identification of K+ with D+ and no solution of
+the remaining full source-membership or centralizer equation. Those
+limitations are stated accurately in the written fragment.
