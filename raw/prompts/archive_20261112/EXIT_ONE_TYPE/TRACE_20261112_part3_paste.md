@@ -1,4 +1,4 @@
-# EXIT_ONE_TYPE: trace excerpt, part 3 (pasted by the user, 12 Nov 2026 ~23:4x UTC)
+# EXIT_ONE_TYPE: trace excerpt, part 3 (pasted by the user, 12 Nov 2026 ~23:1x UTC)
 
 GPT-6 Astra (ChatGPT Pro mode), run EXIT_ONE_TYPE. The workspace came back empty ("fresh workspace"); the run restores
 its sections from the conversation and saves a new checkpoint. Parts 1 and 2 are beside this file. Verbatim below.

@@ -1,0 +1,678 @@
+\section{Exit paths, torus links, and the exact criterion}
+\label{sec:criterion}
+
+\subsection{The geometric datum behind the groupoids}
+
+\begin{definition}[\status{Proved}: the exit category and its link model]\label{P1a1}
+For a normal-crossings pair in the preceding scope, $\Exit(X,D)$ is the
+exit-path $\infty$-category of the stratification by connected open strata.
+On a manifold it is the stratified singular simplicial set: the last-vertex
+stratification on each simplex is required to map increasingly to the
+frontier order.  On a stack it is the colimit of these categories on an
+étale presentation.  Its restriction to a stratum $S$ is $\Pi_\infty S$.
+For incident strata $S<T$, of complex codimensions $d>e$, let $F_{ST}\to S$
+be the finite cover that chooses the local branch of $\overline T$ along
+$S$.  There is a torus bundle
+\[
+ (S^1)^{d-e}\longrightarrow L_{ST}\xrightarrow{p}F_{ST},
+ \qquad (a,b):L_{ST}\longrightarrow S\times T,                 \tag{1}
+\]
+where $a$ is the projection and $b$ is a small positive radial displacement,
+well defined up to a coherent homotopy.  For geometric points $s\in S$,
+$t\in T$,
+\[
+ \Map_{\Exit(X,D)}(s,t)\simeq
+ \hofib_{(s,t)}\bigl(L_{ST}\xrightarrow{(a,b)}S\times T\bigr). \tag{2}
+The right side is the disjoint union over \emph{all} incidence components
+and endpoint transports.  For $S=T$ it is the ordinary path space in $S$.
+The bundle in (1), not the fixed-endpoint mapping space in (2), is the
+geometric object represented by $\breve N^{**}$ in 147/177--178, (295).
+\end{definition}
+\begin{proof}
+Near a point with branch set $I$, use normal-crossing coordinates
+$(z_i)_{i\in I},w$, with $D=\{\prod z_i=0\}$.  A local branch of $T$ is a
+subset $J\subset I$, $|J|=e$, of coordinates that stay zero.  An immediate
+exit to $T$ has $z_j=0$ for $j\in J$ and $z_i\ne0$ for $i\in I\setminus J$.
+Its normal-direction space has a deformation retraction onto
+$(S^1)^{I\setminus J}$: first divide by the positive radial coordinate, then
+contract the positive ratios of the $d-e$ absolute values.  The latter
+parameter space is the interior of a simplex and is contractible.  Changes
+of adapted coordinates permute the normal lines and multiply them by
+nonzero transition functions.  Thus these local direction spaces glue to
+exactly the product of their unit normal line bundles over $F_{ST}$.
+
+We explain why using immediate exits loses no mapping-space information.
+The normal-crossing stratification is a Whitney stratification and has
+control data obtained by the coordinate radial contractions.  These give
+neighbourhood tameness and the fibration of the homotopy-link evaluation
+over the source stratum.  Miller's endpoint-preserving comparison
+\citep[Theorem 4.9]{Miller2009} deforms the popath space to the homotopy
+link; the theorem applies to the induced finite interval of strata between
+$S$ and $T$.  The proof is local over the source and is compatible with
+restriction, so locally finite pairs are covered as well.  Equivalently,
+successively shorten the intervals spent in intermediate coordinate
+strata and use the radial contraction to make all coordinates in
+$I\setminus J$ nonzero immediately.  The parameter spaces of positive
+shortening functions and radii are contractible.  This is a weak
+equivalence over both endpoint spaces.  Replacing endpoint evaluation by
+a fibration gives (2), rather than an incorrect ordinary fibre of a
+chosen, non-fibrant link map.
+
+For a stack perform these constructions on every term of its étale Čech
+nerve.  Branch choices, normal line bundles, and endpoint evaluations all
+pull back under étale maps.  Descent of constructible sheaves identifies
+the resulting colimit with the stack exit category
+\citep[Proposition 3.16 and Corollary 3.17]{JansenToolbox2024}; applying this also to the
+endpoint diagrams gives the stack version of (2).  Finite stabilizers
+are not discarded, and a finite cover $F_{ST}\to S$ is interpreted as a
+representable covering of stacks.  The manifold exodromy and
+groupoidification assertions are
+\citet[Theorem A.9.3 and Corollary A.9.4]{LurieHA2017}: their hypotheses
+hold because normal-crossing coordinate charts are conical, locally
+contractible, and have finite depth.  This also fixes the direction of
+the exit arrows.
+\end{proof}
+
+\subsection{What the Remarque actually reconstructs}
+
+\begin{theorem}[\status{Proved}: three distinct reconstruction statements]\label{P1c1}
+Let $\mathsf T$ be the \emph{whole coherent} diagram of elementary pieces
+of 147/163--178, including all flags, endpoint maps, and their composition
+coherences.  For a normal-crossings manifold or stack:
+\begin{enumerate}[label=(\alph*)]
+\item Without an asphericity or meridian-injectivity hypothesis,
+ $\Pi_1\mathsf T$ determines the fundamental groupoids of $X$, its
+ locally closed unions of strata, and their tubes and punctured tubes.
+ It also determines their ordinary categories of constructible sheaves
+ of sets.  In particular it determines the quasi-Galois topos meant in
+ 147/179--180.
+\item If all strata are aspherical, the same coherent diagram determines
+ the \emph{actual homotopy types} of these spaces by homotopy colimits
+ of the classifying spaces of its groupoids.  No injectivity assumption
+ is needed for this assertion.
+\item If all strata are aspherical and (6) holds, it furthermore
+ determines their constructible $\infty$-topoi as functor categories on
+ ordinary exit categories; the shapes of these $\infty$-topoi and of
+ their associated ordinary presheaf topoi agree with the actual
+ homotopy types.  Thus every homotopy assertion of the Remarque is
+ valid in this precise interpretation under the criterion.
+\end{enumerate}
+The word ``hence'' in the passage from the ordinary constructible topos
+to the actual homotopy type is false under asphericity alone.  Conversely,
+the claim that meridian injectivity is \emph{necessary} for all derived
+reconstruction from the groupoid system is false.  A strict colimit of
+groups, a bicategorical colimit of groupoids, a homotopy colimit of their
+classifying spaces, and an ordinary constructible topos are different
+constructions.
+\end{theorem}
+\begin{proof}
+For two strata $S$ closed and $T$ open, the exit datum consists of the
+two fundamental $\infty$-groupoids and the crossing bimodule in (2).
+A constructible sheaf of sets consists of local systems $F_S,F_T$ and
+a map $a^*F_S\to b^*F_T$ on the link.  Local systems of sets on any
+locally contractible space or étale stack are functors from its
+fundamental groupoid.  The same is true of their natural
+transformations on the link.  These data and their descent condition
+therefore use only $\Pi_1 S$, $\Pi_1 T$, and $\Pi_1 L_{ST}$ with
+their maps.  With more strata, the equality of two composites is
+imposed on each flag space; all the necessary data are included in
+$\Pi_1\mathsf T$.  This reconstructs $h\Exit$ and
+\[
+ \operatorname{Shv}_{\rm cbl}(X;\mathbf{Set})
+      \simeq\operatorname{Fun}(h\Exit(X,D),\mathbf{Set}).    \tag{12}
+\]
+The same argument on a locally closed union or elementary tube gives
+the stated canonical topoi.  No assertion about the whole topological
+topos of \emph{all} sheaves, or about its ringed analytic structure,
+is being made.
+
+The homotopy-colimit decomposition of the next theorem gives the
+fundamental groupoid assertion.  Indeed $\tau_{\leq1}$ is left
+adjoint to the inclusion of 1-types, so it preserves colimits in
+1-types.  Thus $\Pi_1\hocolim\mathsf T$ is the 2-colimit of
+$\Pi_1\mathsf T$.  This includes the transport isomorphisms and
+the flag relations; a colimit of chosen one-object groups would
+discard some of them.
+
+If the strata are aspherical, every elementary piece is a torus
+bundle over a finite cover of a stratum, with some contractible disc
+factors.  Its homotopy exact sequence makes it a 1-type.  The natural
+map $\mathsf T\to B\Pi_1\mathsf T$ is then an objectwise equivalence
+of coherent diagrams, so its homotopy colimit is an equivalence.
+This proves (b).  There is no replacement of a homotopy fibre by a
+set at this step.
+
+Under (6), Theorem~\ref{P1b1} gives
+$\Exit(X,D)\simeq N h\Exit(X,D)$, and the same calculation applies
+to its restrictions, links, and flag pieces.  Exodromy gives
+$\operatorname{Shv}_{\rm cbl}(X;\mathcal S)\simeq
+\operatorname{Fun}(h\Exit,\mathcal S)$; the stack case follows from
+\citet[Proposition 3.24]{JansenToolbox2024}.  The shape of a functor
+$\infty$-topos on an ordinary category $C$ is $BC$, since for every
+space $K$ its global sections of the constant object are
+$\lim_C K=\operatorname{Map}(BC,K)$.  Groupoidification of exit paths
+is $X$ by the theorem cited in the proof of~\ref{P1a1}.  This proves
+(c).  Examples~\ref{P1c2} and~\ref{P1d2} prove both negative
+assertions and explain precisely which inference the Remords rejects.
+\end{proof}
+
+\begin{example}[\status{Refuted}: dropping either hypothesis and reading the margin]\label{P1c2}
+There are independent failures of the two hypotheses, with different
+consequences for the Remarque (147/179, fol.~85, and 147/180).
+\end{example}
+\begin{proof}
+For $(\PP^1,\{\infty\})$, both strata are contractible, but its
+meridian $\Z\to\pi_1(\C)=1$ is zero.  The coherent elementary
+diagram has homotopy types $*\leftarrow S^1\to *$, so the
+homotopy colimit of its fundamental-groupoid classifying spaces is
+$\Sigma S^1\simeq S^2$.  Its ordinary exit category is $[1]$,
+whose classifying space is contractible.  Thus only condition (ii)
+fails; the ordinary constructible topos and the fundamental groupoid
+remain reconstructible, and even the actual homotopy type remains
+reconstructible by (b).  It is its identification with the shape of
+that ordinary topos that fails.
+
+For $X=\PP^1\times\C$, $D=\PP^1\times\{0\}$, condition (ii)
+holds: the meridian maps isomorphically to the $\Z$ factor of
+$\pi_1(U)=\Z$.  Condition (i) fails because both $D$ and $U$
+have $\pi_2=\Z$.  Its elementary fundamental-groupoid diagram is
+identical to that for $(\C^2,\C\times\{0\})$, including the
+codimensions and all maps: the base group is trivial and the open
+and link groups are $\Z$.  Their ambient homotopy types are $S^2$
+and a point.  Thus no reconstruction from that diagram can recover
+the ambient homotopy type in the absence of (i).  Their ordinary
+constructible topoi and fundamental groupoids are nonetheless
+correctly recovered by (a).
+
+The marginal phrase ``indépendt de tt autre hypothèse'' can therefore
+be valid for the fundamental-groupoid and constructible-set claims,
+not for a claim equating all higher homotopy types with ordinary
+presheaf-topos shapes.  We retain the word ``quasi-galoisien'' visible
+on scan 179 and ``1-descriptif'' on scan 180; the mathematics does not
+justify silently deleting either qualification.  The homology of
+the suspension model and of $N[1]$ is independently checked in
+\texttt{criterion\_checks.py}.
+\end{proof}
+
+\subsection{Gluing, and the homotopy lost by ordinary exit paths}
+
+\begin{theorem}[\status{Proved}: the answer to the gluing question]\label{P1d1}
+If a normal-crossings stratification has one closed stratum $S$ and
+open complement $T$, its homotopy type and its constructible
+$\infty$-topos have shape
+\[
+ X\simeq\hocolim\bigl(S\xleftarrow{a}L_{ST}
+                               \xrightarrow{b}T\bigr).     \tag{13}
+\]
+For finitely many strata, iterate this formula, retaining crossing
+categories at each step, or equivalently realize the full flag
+diagram of strata and their iterated homotopy links.  The same formula
+holds for the stack homotopy type by descent.  In contrast, the
+ordinary constructible-set topos has shape $B h\Exit(X,D)$, obtained
+by first taking connected components of the fixed-endpoint mapping
+spaces, not by merely replacing $L_{ST}$ by $B\Pi_1L_{ST}$.
+\end{theorem}
+\begin{proof}
+Choose an open tube $N$ of $S$ that retracts onto $S$.  Its intersection
+with $T$ is a punctured tube and has type $L_{ST}$ by
+Proposition~\ref{P1a2}.  The open cover $X=N\cup T$ has homotopy
+Čech realization equivalent to $X$: a partition of unity subordinate
+to this two-element cover gives a map into its double mapping
+cylinder and a homotopy inverse.  This proves (13), with the maps
+specified by the tube projection and the inclusion into $T$.
+The same argument can be made in the tubular germ, so different
+admissible tubes give the same coherent cocone.
+
+For a finite filtration, apply this two-piece construction to its
+successive closed and open parts.  An iterated crossing consists of
+a chain of strata and compatible exits; hence all multiple
+intersections are exactly the flag spaces.  Associativity of
+homotopy colimits gives the flag realization.  Locally finite
+stratifications are the filtered union of these constructions on
+relatively compact chart unions, and the comparison is checked on
+maps from finite spheres and discs, whose images are compact.
+For a stack, apply the argument to the étale hypercover and realize;
+iterated colimits commute.  This proves the assertion in the stated
+generality without assuming a globally embedded stack tube.
+
+Exodromy identifies the constructible $\infty$-topos with
+$\operatorname{Fun}(\Exit,\mathcal S)$, whose shape is $B\Exit=X$,
+by the constant-object computation in the preceding proof.
+Replacing its indexing category by $h\Exit$ gives the distinct
+ordinary-presheaf shape.  In the two-stratum case with aspherical
+pieces, write
+$G=\pi_1(L_{ST})$, $A=\pi_1(S)$, $B=\pi_1(T)$ on one incidence
+component.  The original crossing space is $BG$, whereas the
+crossing-arrow groupoid for the ordinary category has type
+$B\operatorname{im}\{G\to A\times B\}$: its transitive action on
+the set of mapping components has exactly this stabilizer.
+The quotient by the kernel in (8) is the precise additional step.
+For nonconnected incidences use their disjoint union.  This also
+derives the appropriate gluing assertion of STRATA C.1--C.3 in the
+form needed here, rather than importing its unaudited notation.
+\end{proof}
+
+\begin{example}[\status{Proved}: the three requested homotopy fibres]\label{P1d2}
+Let $q:X\simeq B\Exit(X,D)\to B h\Exit(X,D)$ be the truncation
+comparison.  The following are homotopy fibres over the unique
+component of the target:
+\[
+\begin{array}{c|c|c|c}
+(X,D)&B h\Exit(X,D)&\hofib(q)&\text{first failed group}\\ \hline
+(\PP^1,\infty)& *&S^2&\pi_2=\Z\\
+(\PP^n,H),\ n\geq1& *&\PP^n&\pi_2=\Z\\
+((\PP^1)^2,\{\infty\}\times\PP^1\cup\PP^1\times\{\infty\})
+ & *&S^2\times S^2&\pi_2=\Z^2
+\end{array}                                                   \tag{14}
+\]
+Only (ii) fails in the first and third rows.  In the second row it
+fails for every $n$, and (i) also fails when $n\geq2$.
+\end{example}
+\begin{proof}
+In the first row take objects $p,u$.  Their endomorphism spaces are
+contractible and $\Map(p,u)=\hofib(S^1\to\C)=S^1$; all arrows
+in the reverse direction are absent.  Thus $h\Exit=[1]$ and its
+classifying space is contractible, while $X=S^2$.
+
+For the second row the two strata are $H=\PP^{n-1}$ and
+$U=\C^n$.  The crossing total space is the unit normal circle
+bundle of $\mathcal O_H(1)$, namely $S^{2n-1}$, up to orientation
+of the Hopf fibre.  Equation (2) gives a circle as its fixed-endpoint
+mapping space, since $U$ is contractible and the Hopf projection
+has fibre $S^1$.  The endomorphism space on the closed stratum is
+$\Omega\PP^{n-1}$ and on the open stratum is contractible.  Both
+strata are simply connected, so all automorphism \emph{groups} in
+$h\Exit$ are trivial and its only cross-stratum Hom-set is a
+singleton.  Again $h\Exit=[1]$.  The fibre of a map to a contractible
+space is its source, and the standard affine-cell filtration of
+$\PP^n$ gives $\pi_2=H_2=\Z$.
+
+Exit paths and their homotopies in a product are coordinatewise,
+so the third exit category is the product of two copies of the
+first.  Its four strata are $\C^2$, two copies of $\C$, and a
+point.  A mapping space that exits in $j$ factors is $(S^1)^j$;
+all same-stratum endomorphism spaces are contractible.  Its ordinary
+category is $[1]\times[1]$, with terminal object $(u,u)$.
+All meridians map to the trivial group of $\C^2$.
+The fibre is therefore $(S^2)^2$, and the product CW complex has
+two independent two-cells.  These finite chain complexes and all
+displayed ranks are checked by the accompanying program.
+\end{proof}
+
+\begin{theorem}[\status{Proved}: a general first-obstruction calculation]\label{P1d3}
+For any small $\infty$-category $\mathcal C$, the canonical map
+$q:B\mathcal C\to B h\mathcal C$ is 2-connected: it is bijective
+on $\pi_0$, isomorphic on $\pi_1$, and surjective on $\pi_2$.
+Its homotopy fibre is simply connected.  More generally, suppose
+every nonempty component of every mapping space is $(r-1)$-connected,
+$r\geq1$.  Then $q$ is $(r+1)$-connected.
+
+Here is an explicit first-obstruction module, which also specifies
+what ``the first group lost'' can mean without assuming a false
+universal numerical degree.  Choose a Kan-enriched category
+representing $\mathcal C$, with discrete object set, and put
+\[
+ V_p=\coprod_{x_0,\ldots,x_p}\prod_{i=1}^p
+         \Map_{\mathcal C}(x_{i-1},x_i),\qquad
+ W_p=\pi_0V_p=N_p(h\mathcal C).
+\]
+On a component of $Y=|W_\bullet|$, pull back its universal cover
+to the realizations, and denote the resulting degreewise spaces
+by $\widetilde V_p,\widetilde W_p$.  Equivalently, label each
+component of $V_p$ by the lifts of its simplex in $Y$.
+If $F=\hofib(q)$, then
+\[
+ \pi_{r+1}(F)\cong
+ \operatorname{coker}\left[
+ H_r(\widetilde V_2;\Z)
+ \xrightarrow{d_0-d_1+d_2}
+ H_r(\widetilde V_1;\Z)\right].                            \tag{15}
+\]
+The face $d_1$ is composition; the other two faces are endpoint
+projections, with the indicated deck transports.  This is a module
+over $\pi_1Y$.  The exact sequence
+\[
+ \pi_{r+2}(X)\to\pi_{r+2}(Y)\to\pi_{r+1}(F)
+ \to\pi_{r+1}(X)\to\pi_{r+1}(Y)\to0                      \tag{16}
+\]
+identifies the first possible failure, where $X=B\mathcal C$.
+For a normal-crossing pair with aspherical strata, $r=1$ and the
+generators in (15) are precisely the failed meridian lattices in
+(8), transported and subjected to the flag composition relations.
+Without additional hypotheses the first failed homotopy group
+can occur in any prescribed degree $m\geq2$.
+\end{theorem}
+\begin{proof}
+A Kan-enriched presentation exists by
+\citet[Theorem 2.2.5.1]{LurieHTT2009}.  Replacing it by a cofibrant,
+well-pointed presentation does not change either realization.
+The map $V_p\to W_p$ is $(r)$-connected for $p>0$, since its
+fibres are $(r-1)$-connected; it is an isomorphism for $p=0$.
+The skeletal filtration of realization shifts the relative cells
+in degree $p$ upward by $p$.  Relative cells for these degreewise
+maps start in dimension $r+1$, so the relative cells of $q$ start
+in dimension $r+2$.  This proves $(r+1)$-connectivity.  This
+cellular argument can equally be applied to singular bisimplicial
+sets, where latching maps are monomorphisms; it therefore requires
+no CW hypothesis on the original mapping spaces.  Taking $r=1$
+proves the unconditional assertion.
+
+The same filtration on the mapping-cone chain complex in the
+universal covers gives the relative homology spectral sequence
+\[
+ E^1_{p,j}=H_j(\widetilde W_p,\widetilde V_p;\Z)
+       \Longrightarrow H_{p+j}(\widetilde Y,\widetilde X;\Z).
+\]
+For $p=0$ every group is zero.  For $p>0$ the groups with
+$j\leq r$ vanish, and the first row is
+$E^1_{p,r+1}=H_r(\widetilde V_p;\Z)$, because
+$\widetilde W_p$ is discrete.  At total degree $r+2$ only the
+entry $(p,j)=(1,r+1)$ occurs.  Its sole incoming differential is
+the displayed alternating sum from $p=2$; all higher incoming
+differentials start in the zero rows.  There are no outgoing
+differentials.  Consequently this cokernel is
+$H_{r+2}(\widetilde Y,\widetilde X;\Z)$.
+Relative Hurewicz applies to this $(r+1)$-connected pair of simply
+connected spaces and identifies the last group with
+$\pi_{r+2}(Y,X)=\pi_{r+1}F$.  This proves (15), and the homotopy
+exact sequence gives (16).  For normal crossings under (i), (8)
+identifies $H_1$ of each mapping component with its meridian
+kernel, proving the interpretation claimed.
+
+Finally let
+$Q^m=\{z_0^2+\cdots+z_m^2=1\}\subset\C^{m+1}$ and take
+$(X,D)=(Q^m\times\C,Q^m\times\{0\})$.  Writing $z=x+iy$ gives
+$x\cdot y=0$, $|x|^2=1+|y|^2$; hence
+$(x,y)\mapsto(x/\sqrt{1+|y|^2},y)$ is a diffeomorphism
+$Q^m\cong TS^m$.  Thus $Q^m\simeq S^m$.  For $m\geq2$ it is
+simply connected.  The ordinary exit category is that of
+$(\C,0)$: the closed object has trivial automorphisms, the open
+object has group $\Z$, and there is a unique arrow from the
+closed to the open object, fixed by the target action.  The closed
+object is initial, so its classifying space is contractible.
+The source has type $S^m$, and the first failed group is exactly
+$\pi_m=\Z$.  The normal meridian is still injective, so these
+examples specifically isolate failures of asphericity.  They also
+show why one cannot replace (15)--(16) by a claim that every
+failure of the criterion first changes $\pi_2$ of the ambient
+space.
+\end{proof}
+
+\begin{proposition}[\status{Proved}: faces, tubes, and flags]\label{P1a2}
+For manifolds, the real oriented blow-up is locally
+\[
+ M=X^{\log}=\{(r_i,\theta_i,w):r_i\geq0,\ \theta_i\in S^1\},
+ \qquad z_i=r_i\theta_i.                                   \tag{3}
+For stacks this formula is interpreted by étale descent.  Over $D_d^\circ$
+its open codimension-$d$ face is canonically
+$P_d^*/(\R_{>0})^d$.  The quotient is by the corresponding positive-real
+subgroup of the possibly twisted torus, not by globally labelled factors.
+The interior inclusion into each normalized closed face is a homotopy
+equivalence.  For a flag, the inclusion of its deeper open face into the
+shallower closed face, followed by the inverse of this equivalence, induces
+Grothendieck's generization morphism on fundamental groupoids
+(147/133--139, (219)--(222)).
+
+The punctured tubular germ of a normalized branch intersection $D'$
+has the homotopy type of its punctured multinormal bundle over the open
+part $D'^\circ$:
+\[
+ \Pi_\infty\mathcal V^*_{D',X}\simeq
+ \Pi_\infty P_{D'^\circ}.                                  \tag{4}
+This implies (239), 147/145, including the stack case without a global
+tubular embedding.  The equivalence is natural as a specialization
+zigzag; base-point comparisons have the usual path and conjugacy choices.
+
+Let $\mathcal A=\Exit(X,D)$, $\mathcal A_D$ its closed part, and
+$\mathcal A_U=\Pi_\infty U$.  The crossing category is
+\[
+ \mathcal H=\operatorname{Fun}(\Delta^1,\mathcal A)
+       \mathop{\times}_{\mathcal A\times\mathcal A}
+       (\mathcal A_D\times\mathcal A_U).
+\]
+The space of $r$ composable morphisms in $\mathcal H$, with stratum flags
+specified and equivalences in the endpoints retained, has homotopy type
+$P^*_{d_0,\ldots,d_r}$.  Hence $\widetilde\Pi_{d_*}$ is the
+\emph{degreewise fundamental groupoid} of this coherent nerve.  It is not
+in general the nerve of the crossing category of $h\mathcal A$.
+Finally,
+\[
+ L\simeq B\mathcal H\simeq
+ \hocolim_{d_0>\cdots>d_r>0}P^*_{d_0,\ldots,d_r},           \tag{5}
+\]
+where the last expression is the semisimplicial realization with all
+coherent face maps.  Inserting repeated ranks gives the equivalent full
+simplicial nerve with degeneracies.  The internal flag category,
+not $M$, is the ``déploiement'' of 147/114.
+\end{proposition}
+\begin{proof}
+Formula (3) is coordinate independent: a change $z'_i=u_i z_{\sigma(i)}$
+changes the boundary angle by $u_i/|u_i|$ and permutes the factors.  It is
+also the divisorial instance of the definition of
+\citet[\S1.2]{KatoNakayama1999}.  On an open face the nonzero normal
+vectors have independent positive lengths, and dividing them out gives
+the unit-torus bundle.  In a manifold with corners an inward pointing
+vector field, multiplied by a sufficiently small positive function on a
+locally finite chart cover, has a short flow defined everywhere.  Its
+flow takes a closed face into its interior and is homotopic to the
+identity.  The same flow restricted to the interior stays there.  This
+proves the asserted homotopy equivalence, also for a noncompact face.
+
+The punctured tube corresponds in $M$ to a collar of the normalized closed
+face.  Projection along its positive normal radii is a homotopy
+equivalence onto that face.  Composing with the preceding interior
+equivalence proves (4) for a manifold.  The construction treats the
+additional branches meeting $D'$ as boundary faces, which is why its
+right side lies over $D'^\circ$ and not over the closed intersection.
+
+Here is a descent formulation that does not assume compatible global
+tubular embeddings.  Use the germ of deformation to the normal cone of
+the local immersion.  In adapted coordinates its specialization chart
+is $(s,v,t)\mapsto(s,tv,t)$, with the required $v_i$ nonzero.  At $t=0$
+one obtains the punctured normal bundle and at $t>0$ the punctured tube
+germ.  On every coordinate intersection both fibre inclusions into this
+germ over the contractible interval are weak equivalences: contract the
+positive radii in these coordinates.  This is a natural zigzag on an
+étale hypercover; the deformation construction itself commutes with
+étale pullback.  Realizing the hypercover preserves its termwise weak
+equivalences and proves (4) on the stack.  Equivalently, a covering is
+continued along a nonzero normal tangent ray; coverings and this
+continuation descend uniquely.  This supplies the equivalence on
+$\Pi_1$ without any chosen invariant splitting of a tangent sequence.
+The transvection example in scan 146 therefore obstructs an embedding,
+not this equivalence.
+
+For the crossing assertion, a string of squares between arrows into
+$U$ can be contracted along its target row, since that row lies in a
+groupoid.  What remains is a string
+$S_0\to S_1\to\cdots\to S_r\to U$.  Pull back the successive link
+bundles of (1).  Their relative ranks add to $d_0$, and their positive
+radial choices form a contractible space.  Their product is precisely
+the multinormal torus bundle over the incidence cover
+$D_{d_0,\ldots,d_r}^\circ$.  Dropping a middle term composes exits;
+dropping the first uses the closed-face generization just described.
+This proves the assertion including its coherences.
+
+The normalized closed faces of $M$ cover $\partial M$.  Their multiple
+intersections are indexed locally by nonempty subsets of the boundary
+branches.  Barycentrically refining this incidence resolution replaces
+such subsets by their strict chains and gives exactly the flag incidence
+faces.  Their inclusions are
+cofibrations in corner charts.  The augmented Čech realization is
+therefore equivalent to their union: the fibre over a point is the
+simplex on the finite set of local boundary faces containing it, hence
+contractible; collars give the required local contraction.  Replacing
+each face by its interior uses a termwise equivalence, proving (5).
+The same Čech argument on a stack presentation gives stack homotopy
+types, not coarse orbit spaces.  For an ordinary categorical crossing
+category the simplicial-link identification in
+\citet[Theorem 6.1]{DouteauWaas2022} applies after identifying its nerve
+with $\operatorname{Map}_{\Delta^1}(\Delta^1,N\mathcal A)$.
+That result justifies the STRATA C.2 comparison in that special setting;
+it does not license replacing $\mathcal H$ by its level-zero truncation.
+\end{proof}
+
+\subsection{Meridians and the one-type criterion}
+
+\begin{theorem}[\status{Proved}: the exact ordinary-exit criterion]\label{P1b1}
+For every normal-crossings manifold or analytic DM stack in our scope,
+the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $\Exit(X,D)$ is equivalent to the nerve of an ordinary category.
+\item Every connected stratum has a $K(\pi,1)$ homotopy type, and for
+ every geometric boundary point $x$, every local branch choice and every
+ path to a base point $u$ in the appropriate component of $U$, the map
+ \[
+  \mu_x:\Z^{I(x)}\longrightarrow\pi_1(U,u)                 \tag{6}
+ \]
+ induced by a small oriented normal torus is injective.
+\item Every stratum is aspherical, and every relative torus lattice
+ for every incidence $S<T$ injects into $\pi_1(T,t)$.
+\end{enumerate}
+Injectivity is independent of the indicated connecting paths.  Moreover,
+the open-stratum condition (6) implies the relative condition without
+assuming asphericity.  This proves the precise categorical part of
+Lead 2 and 149/130; it does not assert that (6) is needed for every
+possible derived reconstruction from the groupoid diagram.
+\end{theorem}
+\begin{proof}
+An $\infty$-category is ordinary exactly when all its mapping spaces are
+homotopy-discrete.  On one stratum the endomorphism space is $\Omega S$;
+it is homotopy-discrete exactly when $\pi_j(S)=0$ for $j\geq2$.
+Suppose henceforth that the strata are aspherical.  Each component $F$
+of $F_{ST}$ is also aspherical, because it is a covering of $S$.
+The fibration $(S^1)^r\to L_F\to F$, $r=d-e$, has exact sequence
+\[
+ 1\longrightarrow\Z^r\longrightarrow G_F:=\pi_1(L_F)
+   \longrightarrow\pi_1(F)\longrightarrow1,               \tag{7}
+\]
+and $L_F$ is aspherical, by its homotopy exact sequence.  The covering
+map embeds $\pi_1(F)$ in $\pi_1(S)$.  By (2), each nonempty mapping-space
+component is
+\[
+ K\!\left(\ker\{G_F\longrightarrow
+       \pi_1(S)\times\pi_1(T)\},1\right).                 \tag{8}
+Indeed the exact homotopy sequence of the homotopy fibre gives this
+kernel as $\pi_1$ and makes all higher homotopy groups zero.  The kernel
+of the first projection of the homomorphism in (8) is exactly the
+fibre group $\Z^r$.  Therefore the kernel in (8) is the kernel of the
+relative meridian homomorphism $\Z^r\to\pi_1(T)$.  This proves the
+equivalence of the first and third conditions.  Applying it to $T=U$
+proves that the first implies the second.
+
+For the remaining implication we prove the stronger assertion stated
+last.  At $x\in S$ let $I$ be its full branch set and let $J\subset I$
+be the branches containing the selected germ of $T$.  Put
+$L_T=P_T/(\R_{>0})^{|J|}$, the normal torus bundle over $T$.  In one
+adapted coordinate chart there is a homomorphism
+\[
+ \Z^I\xrightarrow{a}\pi_1(L_T)\xrightarrow{b}\pi_1(U),
+ \qquad ba=\mu_x,                                        \tag{9}
+\]
+obtained by displacing the coordinates in $I\setminus J$.  Its composite
+to $\pi_1(T)$ is the relative meridian map on
+$\Z^{I\setminus J}$ and zero on $\Z^J$.  The homotopy exact sequence
+of $L_T\to T$ says
+\[
+ \ker\{\pi_1(L_T)\to\pi_1(T)\}
+       =\operatorname{im}\{\Z^J\to\pi_1(L_T)\}.            \tag{10}
+If $v\in\Z^{I\setminus J}$ maps to $1$ in $\pi_1(T)$, (10) gives
+$w\in\Z^J$ with $a(v)=a(w)$.  Thus $\mu_x(v-w)=1$.
+Injectivity of (6) implies $v-w=0$ in the \emph{domain} decomposition
+$\Z^I=\Z^{I\setminus J}\oplus\Z^J$, so $v=w=0$.
+This argument does not assume that the image of a torus lattice is a
+direct summand of any fundamental group; that assertion in the lead
+would be unjustified.  Coordinate paths specify (9); changing them
+simultaneously conjugates the homomorphisms and leaves their kernels
+unchanged.  The argument applies after any incidence cover and to the
+stack homotopy fibre sequence, completing all cases.
+\end{proof}
+
+\begin{proposition}[\status{Refuted}: adjacent incidences are insufficient]\label{P1b2}
+Even if every stratum is aspherical, injectivity for every incidence of
+relative complex codimension one does not imply (6).  This already
+fails for a smooth quasi-projective complex surface with a simple
+normal-crossing divisor.
+\end{proposition}
+\begin{proof}
+Start with the two axes in $\C^2$.  Blow up $p=(0,1)$ on the branch
+$A=\{x=0\}$, denote the exceptional curve by $E$, and let
+$q=E\cap A'$.  Delete one point $r\in E\setminus\{q\}$ from the
+ambient blown-up surface.  Take $D=A'\cup B'\cup(E\setminus\{r\})$.
+The open complement is unchanged: $U=(\C^*)^2$ with group
+$\Z e_x\oplus\Z e_y$.  The other strata are
+\[
+ A'^\circ\simeq\C\setminus\{0,1\},\qquad
+ B'^\circ\simeq\C^*,\qquad E^\circ\simeq\C^*,
+\]
+and the two point strata $o=A'\cap B'$ and $q=A'\cap E$.
+Thus every stratum is aspherical.  The three rank-one meridians into
+$U$ are $e_x,e_y,e_x$, respectively, so all are injective.
+Every point-to-curve meridian is a puncture loop in a curve with at
+least two punctures in its compactification; it has infinite order.
+These are all relative-codimension-one incidences.
+
+At $q$, however, both local boundary meridians map to $e_x$.  In a
+blow-up chart $x=uv$, $y-1=v$, the two equations $u=0$ and $v=0$
+exhibit this directly.  The lattice map is
+$(a,b)\mapsto(a+b)e_x$ and has kernel $\Z(1,-1)$.
+At the other double point it is the identity matrix on $\Z^2$.
+The integer matrices and the punctured-curve ranks are checked in
+\texttt{code/criterion\_checks.py}.  The deleted point is essential to
+this example: before deleting it $E^\circ=\C$, and its adjacent test
+already fails.  No properness of $X$ was assumed in the question.
+\end{proof}
+
+\begin{theorem}[\status{Proved}: the left-hand term and the meaning of $D_J$]\label{P1b3}
+For a connected component $S$ of an open flag stratum and a rank-$r$
+punctured normal torus bundle $P\to S$, based compatibly, the exact
+sequence is
+\[
+ \pi_2(S)\xrightarrow{\partial}\Z^r\xrightarrow{\iota}
+ \pi_1(P)\longrightarrow\pi_1(S)\longrightarrow1.           \tag{11}
+\]
+Consequently its kernel group is $\Z^r/\operatorname{im}\partial$,
+which can have torsion and need not be a lattice,
+and a zero can be inserted on the left exactly when $\partial=0$.
+After pulling back to a sphere, the $i$th coordinate of $\partial$ is
+the first Chern number of the $i$th normal line.  The assertion is valid
+for stack homotopy groups and twisted branch lattices as well.
+
+The topological form of 149/(37) for the trace of $U$ on a tube has
+base $D_J^\circ$, the open intersection in (36).  It is not, in general,
+exact with base the closed intersection $\overline D_J$ and kernel
+generated only by the branches in $J$.  If its lattice map to
+$\pi_1(U)$ is injective, then $\partial=0$, exactly as argued in
+149/134.
+\end{theorem}
+\begin{proof}
+The fibre $(\C^*)^r$ is connected with $\pi_1=\Z^r$ and no higher
+homotopy.  The homotopy exact sequence is (11), with the usual
+$\pi_1(S)$-action on the lattice.  Pulling back along a based sphere
+trivializes the branch permutation local system.  The clutching map
+on its equator has $i$th winding number equal to the Chern number;
+the definition of the boundary homomorphism by lifting the two
+hemispheres gives precisely that tuple.  This proves both the
+necessity and sufficiency of $\partial=0$, without replacing it by
+the stronger hypothesis $\pi_2(S)=0$.
+
+For example, the normal circle bundle of a projective line in
+$\PP^2$ is the Hopf bundle.  Here $\partial:\Z\to\Z$ is multiplication
+by $1$, and $\pi_1(P)=1$.  For the trivial normal line of
+$\PP^1\times\{0\}\subset\PP^1\times\C$, $\pi_2(S)=\Z$ but
+$\partial=0$ and the meridian injection is exact on the left.
+
+To see the closed-intersection error without any $\pi_2$ complication,
+use the axes in $\C^2$ and $J=\{x=0\}$.  A punctured tube traced on
+$U=(\C^*)^2$ has group $\Z^2$.  Its open base is $\C^*$ and its
+sequence is $1\to\Z\to\Z^2\to\Z\to1$.  If the base is changed to
+the closed axis $\C$, the claimed kernel would be $\Z$, whereas the
+actual kernel of $\Z^2\to1$ has rank two.  The missing generator
+goes around the other branch on the base.  A logarithmic closed base
+could retain that generator, but an ordinary closed base cannot.
+Finally, $\iota\partial=0$ in (11); its composite with
+$\pi_1(P)\to\pi_1(U)$ is zero.  Injectivity of the latter composite
+on $\Z^r$ forces $\partial=0$.  This is the exact content of the
+manuscript's argument, independent of either doubtful decoration on
+$D_J$.  The Hopf and rank computations are included in the program.
+\end{proof}

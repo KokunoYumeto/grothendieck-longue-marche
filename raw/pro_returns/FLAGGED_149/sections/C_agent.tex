@@ -1,0 +1,631 @@
+\section{C. Sections over a base and the cusp extension}
+\label{part:C}
+
+We use the following notation throughout this part. A smooth pair over a scheme
+$S$ is a smooth proper curve $\bar U\to S$ with geometrically connected fibres,
+together with an effective relative divisor $D\subset\bar U$ finite and
+\emph{\'etale} over $S$; we put $U=\bar U\setminus D$. Thus collisions of
+marked points are excluded from the term ``smooth pair''. The type of a fibre
+is $(g,r)$, with $r=\deg(D/S)$. We fix compatible geometric base points when
+writing homomorphisms of fundamental groups. Changing a path to a base point
+conjugates a displayed homomorphism by an element of the indicated geometric
+kernel. We write $G=\pi_1(S)$, $E=\pi_1(U)$ and
+$\Pi=\pi_1(U_{\bar s})$. These are respectively $E_S$, $E_U$ and $\pi$ in
+\S3 of the manuscript, scans 64 and 79. In residue characteristic $p>0$, a
+superscript $(p')$ on a geometric kernel means its maximal pro-prime-to-$p$
+quotient; we retain the full arithmetic quotient. We write
+$T_{p'}=\prod_{\ell\ne p}\mathbb Z_\ell(1)$, and write $T$ when $p=0$ and
+all primes occur. All cohomology of profinite groups below is continuous.
+
+\begin{result}{C1}{Proved}{The Hartogs extension of a rational section}
+\textup{[F11; \S3, manuscript pp.\ 32, 34--35, 41; scans 65, 70--72, 83.]}
+Let $S$ be a smooth integral scheme of finite type over a field of
+characteristic zero. Let $U\to S$ be a smooth pair of constant type different
+from $(0,0)$ and $(0,1)$. For a closed subset $Z\subset S$ of codimension at
+least two, restriction is a bijection
+\[
+ \operatorname{Sect}_S(U)\longrightarrow
+ \operatorname{Sect}_{S\setminus Z}(U\times_S(S\setminus Z)).
+\]
+The same assertion holds for a finite tower of such relative curves.
+\end{result}
+
+\begin{proof}
+Uniqueness follows from separatedness: two sections agree on the schematically
+dense open set $S\setminus Z$, hence their equalizer, the inverse image of the
+diagonal, is all of the reduced scheme $S$.
+
+First suppose $g\geq1$. We give the resolution argument behind the manuscript's
+reference to Weil. The question is local for the \'etale topology of $S$.
+A smooth proper curve has a section after an \'etale localization, and then
+a divisor of sufficiently large relative degree gives a projective embedding.
+We can consequently resolve the rational section $S\dashrightarrow\bar U$
+by principalizing its base ideal. Bierstone--Milman, Theorem 1.10, supplies
+a finite sequence of blowups with smooth centres, disjoint from the locus
+where the rational map is defined, on which the ideal becomes invertible
+\cite{CF_BierstoneMilman1997}. The resolved map is an $S$-morphism.
+
+Consider the last blowup $b:S_m\to S_{m-1}$. Its geometric fibres are points
+or projective spaces. Every morphism from $\mathbb P^1$ to a smooth proper
+curve of genus at least one is constant: a nonconstant morphism would be
+finite, and the Riemann--Hurwitz equality
+$-2=d(2g-2)+\deg R$ is impossible. Since any two points of a projective
+space lie on a projective line, the resolved map is constant on every
+geometric fibre of $b$. Let $\Gamma$ be its scheme-theoretic graph image in
+$S_{m-1}\times_S\bar U$. Projection $\Gamma\to S_{m-1}$ is proper,
+birational, and has finite fibres, hence is finite. The target is normal,
+so this finite birational morphism is an isomorphism: on an affine open,
+its coordinate ring is an integral subalgebra of the common fraction field
+and is contained in the integrally closed coordinate ring of the target.
+The map therefore descends across $b$. Descending successively gives a
+section $\bar f:S\to\bar U$. The inverse image $\bar f^{-1}D$ is the zero
+scheme of a nonzero section of an invertible sheaf. If nonempty, it has a
+codimension-one component, by the principal ideal theorem in the regular
+local rings of $S$. Its support lies in $Z$, so it is empty.
+
+For $g=0$, the hypothesis gives $r\geq2$. After an \'etale localization a
+boundary section is defined. A genus-zero smooth proper curve with this
+section is locally a projective-line bundle; locally on $S$, its complement
+is $\mathbb A^1_S$. The given section is a regular function on $S\setminus Z$.
+The normality equality
+$\mathcal O_S=j_*\mathcal O_{S\setminus Z}$ extends that function to $S$.
+For each remaining boundary section, its intersection with the extended
+section is again an effective Cartier divisor supported in $Z$, and is empty.
+The unique local extensions descend.
+
+For a tower, first extend the section of the bottom curve. Pull the next
+curve back along that extended section, apply the one-curve assertion, and
+continue. These are actual Cartesian base changes, and the restriction of
+each pullback to $S\setminus Z$ is the pullback already carrying the given
+section. This proves the assertion without assuming that the entire tower
+embeds in a semiabelian variety.
+
+The exclusion of $(0,0)$ matters: the section
+$(x,y)\mapsto[x:y]$ of $\mathbb P^1\times(\mathbb A^2\setminus\{0\})$
+does not extend at the origin. Its restrictions to the two coordinate axes
+have different constant limits. The genus-zero proof also proves Hartogs
+extension for an affine-line bundle; that observation does not give the
+inertia criterion below, which fails for type $(0,1)$.
+\end{proof}
+
+\begin{result}{C2}{Proved}{The trait criterion, including the two nonhyperbolic types}
+\textup{[F12; \S3, manuscript pp.\ 36--38; scans 74--78.]}
+Let $R$ be a discrete valuation ring, $K$ its fraction field, and let
+$U=\bar U\setminus D$ be a smooth pair over $R$ of type other than
+$(0,0),(0,1)$. Let $f_K\in U(K)$. In characteristic zero for the residue
+field use all geometric covers; in residue characteristic $p>0$ use the
+geometrically pro-prime-to-$p$ fundamental groups. The following are
+equivalent:
+\begin{enumerate}
+\item $f_K$ extends to an $R$-section of $U$;
+\item the continuous lift $G_K\to E_U^{(p')}$ induced by $f_K$ factors
+through $\pi_1(\operatorname{Spec}R)$;
+\item this lift is trivial on an inertia group at the closed point.
+\end{enumerate}
+Here ``factors'' means that the induced map on the quotient is a section
+of $E_U^{(p')}\to\pi_1(R)$. For nonhenselian $R$, inertia is taken in a
+chosen decomposition group, and its closed normal closure is the kernel
+of $G_K\to\pi_1(R)$. The statement extends to a tower of smooth pairs
+whose curve factors have these types.
+\end{result}
+
+\begin{proof}
+We can pass to the strict henselization to test the last condition. Extension
+of the rational point can also be tested there: properness first extends it
+uniquely to $\bar U$ over $R$, and whether its closed-point image lies in $D$
+is unchanged by faithfully flat base change. Thus the descent in this step
+is descent of this specified proper extension, not descent of an arbitrarily
+chosen section.
+
+If its closed-point image is in $U$, functoriality gives the required
+factorization. Otherwise it is a cusp $q$. C3 below identifies the inertia
+map with $\kappa_q\circ[\mu]$, where $\mu>0$ and $\kappa_q$ is injective.
+Multiplication by a nonzero integer is injective and nonzero on
+$T_{p'}$. The inertia map is consequently nontrivial. This proves the
+one-curve assertion. The peripheral injection used here follows from the
+prime-to-$p$ presentation of a punctured smooth curve in SGA~1,
+Expos\'e XIII, Corollary 2.12, and its peripheral-subgroup form recorded in
+Stix, \S2 and Corollary 12 \cite{CF_SGA1,CF_Stix2008}. For a single cusp
+the group can be nonabelian with the cusp zero in its abelianization; C3
+does not abelianize it.
+
+For reference, the needed peripheral injection can be checked in every
+pro-$\ell$ quotient directly. The presentation of an affine curve is the
+free pro-$\ell$ group on $a_1,b_1,\ldots,a_g,b_g,c_1,\ldots,c_{r-1}$,
+with the last cusp the inverse of
+$\prod_j[a_j,b_j]\prod_i c_i$. For $r\geq2$ each peripheral word has
+nonzero abelianization after choosing that cusp among the free generators.
+For $r=1,g\geq1$ its degree-two class is
+$\sum_j[a_j,b_j]\ne0$ in the free degree-two Lie module. It is therefore
+nontrivial and has infinite order in this torsion-free free pro-$\ell$
+group. The homomorphism $\mathbb Z_\ell(1)$ is injective. Taking all
+$\ell\ne p$ detects every coordinate of $T_{p'}$ and proves the required
+injection, including the one-cusp case.
+
+For type $(0,2)$ the cusp is the whole geometric group $T_{p'}$, so the
+same proof applies. For $(1,0)$ properness already gives extension into
+$U=\bar U$, and smooth proper specialization gives trivial inertia in the
+indicated quotient. No centre-free hypothesis is needed for either case.
+For $(0,1)$, $R=k[[t]]$ and $f_K=t^{-1}\in\mathbb A^1(K)$ give a
+counterexample: the prime-to-$p$ geometric group of the affine line is
+trivial, whereas the point has a pole.
+
+For a tower, project the lift to the first curve. The one-curve criterion
+extends that projected point. Pull back the next curve to $\operatorname{Spec}R$
+along this extended section. The fundamental-group square is Cartesian:
+both its horizontal maps induce the same isomorphism on geometric kernels,
+and the right-hand quotient is $G_K\to\pi_1(R)$; its exact sequences give
+the Cartesian assertion by the elementary kernel-and-quotient argument.
+For the exceptional centre-bearing types over a trait the same exactness
+follows from the smooth proper or tame homotopy sequence with section,
+SGA~1 XIII, Proposition 4.3 and Examples 4.4. The induced lift to this
+pullback therefore kills inertia. Apply the one-curve criterion again and
+iterate. This also proves exactly which comparison maps support the
+manuscript's d\'evissage.
+\end{proof}
+
+\begin{result}{C3}{Proved}{The nonabelian intersection formula and the five conditions}
+\textup{[F12; \S3, manuscript pp.\ 37--39 and 44; scans 75--79, 90.]}
+Let $R$ be henselian and use the notation of C2. Suppose that the proper
+extension of $f_K$ meets a rational cusp $q$ in the closed fibre. If $z$ is
+a local equation of $q$ and $t$ a uniformizer of $R$, write
+\[
+ f_K^*z=t^\mu u,\qquad u\in R^*,\qquad \mu>0.
+\]
+With positive Kummer inertia defined by
+$\tau\mapsto\tau(z^{1/n})/z^{1/n}$, the induced continuous homomorphism on
+inertia is, up to the geometric conjugation arising from the chosen path,
+\[
+ I_K\longrightarrow I_K/P_K=T_{p'}
+       \xrightarrow{[\mu]}T_{p'}\xrightarrow{\kappa_q}\Pi^{(p')}.
+ \tag{C.1}
+\]
+For $p=0$, $P_K=1$. The formula holds with one cusp. With at least two
+cusps it induces on the toric part of homology
+\[
+ T_\ell\longrightarrow T_\ell^{D(\bar k)}/T_\ell,
+ \qquad a\longmapsto\mu a e_q \pmod{T_\ell\cdot(1,\ldots,1)}.
+ \tag{C.2}
+\]
+In equicharacteristic zero, the five conditions a)--e) of scan 90 are
+equivalent for the lift $\lambda:G_K\to E_U$: injectivity of $\lambda$;
+the positive-multiplicity formula (C.1); nontrivial inertia; failure of
+descent to $\pi_1(R)$; and failure of $f_K$ to extend into $U$. In that
+case its image has index $\mu$ in the cusp normalizer. For $p>0$, replace
+the domain in the injectivity assertion by $G_K/P_K$, and replace the
+index by
+$\mu_{p'}=\prod_{\ell\ne p}\ell^{v_\ell(\mu)}$.
+\end{result}
+
+\begin{proof}
+The local ring of $\bar U$ at $q(s)$ is regular of dimension two and $z=0$
+is a regular divisor. Over its strict henselization the prime-to-$p$ tame
+covers of its complement are dominated by $z^{1/n}$, with $(n,p)=1$.
+This is precisely SGA~1 XIII, Proposition 5.1 together with its
+normal-crossings formulation, Proposition 5.2: adjoining prime-to-residue-
+characteristic roots of regular parameters makes the cover \'etale
+\cite{CF_SGA1}. These statements apply here to the one divisor $z=0$.
+In the strict henselization of $R$, the unit $u$ has an $n$th root, by
+Hensel's lemma. Compatible such roots exist over the inverse system
+(its nonempty finite levels have surjective transition maps). Pulling
+back $z^{1/n}$ along $f_K$ gives $t^{\mu/n}u^{1/n}$; its inertia character
+is $\mu$ times the character of $t^{1/n}$. Passing through the local
+fundamental group and then into the global group proves (C.1). Every
+stage is a homomorphism of fundamental groups; no abelianization of the
+target has occurred. Formula (C.2) follows by applying the specified
+abelianization map and the single relation that the sum of peripheral
+classes is zero. For one cusp this latter class is zero; the injection
+$\kappa_q$ before abelianization remains injective.
+
+The equality of intersection multiplicities in scans 77--78 is also
+literal. If $A=\mathcal O_{\bar U,q(s)}$ and $I_f,I_q$ are the ideals of
+the two sections, then
+\[
+ R/q^*I_f\simeq A/(I_f+I_q)\simeq R/f^*I_q.
+\]
+The lengths of these Artinian modules are equal to $\mu$.
+
+For scan 90, the composite $G_K\xrightarrow\lambda E_U\to G_k$ is the
+residue quotient. Hence $\ker\lambda\subset I_K$. In characteristic zero,
+(C.1) is injective on $I_K$ whenever the section meets the boundary; this
+proves injectivity of $\lambda$. If it does not meet the boundary, it
+kills $I_K\ne1$ and is not injective. C2 proves the other equivalences.
+The image normalizes $\mu L_q$. In a hyperbolic curve the normalizer of
+any open subgroup of a peripheral group is the cusp normalizer, by the
+peripheral self-normalization theorem; in type $(0,2)$ the entire
+geometric group is peripheral and the same conclusion is immediate.
+Alternatively, the map from the local punctured tube constructed above
+lands directly in this normalizer. Its intersection with $L_q$ is
+$\mu L_q$ and its image in $G_k$ is all of $G_k$. The coset index is
+therefore $[T:\mu T]=\mu$. With prime-to-$p$ kernels the same proof
+applies after quotienting $P_K$, and gives $[T_{p'}:\mu T_{p'}]=\mu_{p'}$.
+Full $G_K$ need not inject in this version: wild inertia has been killed.
+
+For the proposed test $\mathbb P^1_R\setminus\{0,\infty,q\}$ with
+$q=t^\mu u$, the sections $0$ and $q$ collide. Thus its marked boundary
+is not \'etale and it is not a smooth pair over $R$. The local Kummer
+calculation $z\mapsto t^\mu u$ still tests the factor $\mu$ at the cusp
+$0$. A test within the precise hypotheses is the fixed smooth pair
+$\mathbb P^1_R\setminus\{0,1,\infty\}$ and the point $z=t^\mu u$.
+Both tests have trivial normal line at $0$, so neither distinguishes
+$c_1(N)$ from $-c_1(N)$. The global transition calculation in C6 fixes
+that sign; assigning a nonzero Chern sign to a trivial line would not
+test it.
+\end{proof}
+
+\begin{result}{C4}{Proved}{The exact sequence and the centre-free extension}
+\textup{[F13; \S3, manuscript p.\ 39; scan 79; also scans 64, 73.]}
+Let $S$ be a connected normal scheme of finite type over a field of
+characteristic zero, and let $U\to S$ be a hyperbolic smooth pair. Then
+\[
+ 1\longrightarrow\Pi\longrightarrow E\longrightarrow G\longrightarrow1
+ \tag{C.3}
+\]
+is exact. Its formation commutes with the base changes to a normal
+connected scheme used in this part, with the chosen geometric fibre
+identified by a path. If $\rho:G\to\operatorname{Out}(\Pi)$ is its
+continuous outer action, the continuous map
+\[
+ E\longrightarrow
+ E_\rho=\{(a,g)\in\operatorname{Aut}(\Pi)\times G:
+               [a]=\rho(g)\},\qquad
+ e\longmapsto(\operatorname{conj}_e,\bar e)
+ \tag{C.4}
+\]
+is an isomorphism. For a tower with factors also of types $(0,2)$ or
+$(1,0)$, exactness holds over an \'etale $K(\pi,1)$ base, and at each
+stage over a trait as in C2. It is false for arbitrary bases without
+the hyperbolic or $\pi_2$ hypothesis.
+\end{result}
+
+\begin{proof}
+Holzschuh--Schmidt--Stix, Theorem 5.6, applies to a geometric fibration
+with geometrically connected fibres over a normal quasi-compact
+quasi-separated scheme of characteristic zero. A smooth proper curve
+with a relative normal-crossings boundary, in particular our finite
+\'etale boundary, is such a fibration (their Definition 5.5). Their
+quasifibration theorem gives the homotopy sequence. In the segment
+\[
+ \pi_2^{\mathrm{et}}(S)\xrightarrow\partial\Pi
+                 \longrightarrow E\longrightarrow G\longrightarrow1,
+\]
+the image of $\partial$ is central in $\Pi$. This is the fibration
+boundary property: the action of a fibre loop on a spherical lift is
+trivial after the two boundary homotopies are composed; equivalently,
+the crossed-module identity gives
+$\partial(x)b\partial(x)^{-1}=b$ for every $b\in\Pi$.
+Hyperbolic geometric curve groups are centre-free. The same argument
+and conclusion are explicitly given in the proof of their Proposition
+8.3, using Lemma 8.2 \cite{CF_HSS2026}. Hence $\partial=0$ and (C.3)
+is exact. The same theorem for a base change identifies the geometric
+kernel; the homomorphism to $E\times_G\pi_1(S')$ is the identity on
+that kernel and on the quotient, and is an isomorphism.
+
+For (C.4), an element in its kernel lies in $\Pi$ and centralizes
+$\Pi$, so is trivial. Given $(a,g)$ choose $e\in E$ over $g$.
+The automorphism $a\operatorname{conj}_e^{-1}$ is inner, so equals
+$\operatorname{conj}_b$ for a unique $b\in\Pi$. Then $be$ maps to
+$(a,g)$. This proves bijectivity, and compactness gives the topological
+isomorphism. Thus the extension reconstructed in the margin is not
+merely a larger object mapping onto $\pi_1(U)$ in this setting: the
+displayed map is an isomorphism and supplies its inverse explicitly.
+
+If $S$ is a $K(\pi,1)$, its $\pi_2$ is zero, so the same homotopy
+sequence proves the centre-bearing cases. Over a trait the version
+with section is SGA~1 XIII, Proposition 4.3 and Examples 4.4 (a section
+exists \'etale locally and the claimed injection can be tested there).
+An actual counterexample to the deleted unrestricted margin is
+$S=\mathbb P^1_{\mathbb C}$ and
+$U=\mathcal O_{\mathbb P^1}(-1)^\times$. The map
+$(\ell,v)\mapsto v$ identifies $U$ with
+$\mathbb A^2_{\mathbb C}\setminus\{0\}$; its complex analytification
+retracts onto $S^3$ and has trivial fundamental group. Riemann existence
+identifies its finite \'etale covers with finite topological covers.
+Consequently $\pi_1(U)=1$, although its fibre $\mathbb G_m$ has group
+$\widehat{\mathbb Z}(1)$. The boundary map from
+$\pi_2(\mathbb P^1(\mathbb C))=\mathbb Z$ is multiplication by the
+degree $-1$ of the line bundle and kills the fibre group. This computes
+the obstruction which the margin had set aside.
+\end{proof}
+
+\begin{result}{C5}{Proved}{Unramified rational geometric sections extend}
+\textup{[F11; \S3, manuscript pp.\ 32, 34--36, 41--42; scans 65,
+70--74, 83--84.]}
+Let $S$ be smooth integral of finite type over a characteristic-zero
+field, with function field $K$, and let $U/S$ be a tower as in C1 for
+which the exact geometric sequences of C4 hold. A rational section
+$f_K$ extends to $S$ if and only if its induced lift
+\[
+ \lambda_f:G_K\longrightarrow\pi_1(U)
+\]
+kills $\ker(G_K\to\pi_1(S))$. Equivalently, it kills every divisorial
+inertia subgroup of $G_K$ whose centre has codimension one in $S$.
+\end{result}
+
+\begin{proof}
+The kernel in question is the closed normal subgroup generated by those
+inertia groups. Indeed, a finite Galois extension of $K$ on which all
+these inertia groups vanish has normalization \'etale in codimension
+one over $S$; purity of the branch locus makes it \'etale everywhere.
+Conversely an \'etale cover is unramified at each such valuation. This
+identifies the finite quotients of the two proposed quotient groups,
+and therefore identifies the profinite groups themselves. The purity
+statement used here is the Zariski--Nagata theorem: a finite dominant
+map with normal source and regular target, generically \'etale, has
+branch locus either empty or of pure codimension one
+\cite{CF_StacksPurity}.
+
+If $\lambda_f$ kills the kernel, C2 applied at every height-one local
+ring extends the section there. Finite presentation spreads each such
+extension to a neighborhood of that point. The union with the original
+domain of definition is an open set whose complement has codimension
+at least two. C1 extends across that complement. The reverse implication
+is the functorial factorization of fundamental groups associated with
+the actual section. This proof specifies why the purity comparison
+$\pi_1(S\setminus Z)\simeq\pi_1(S)$ by itself would not prove the
+extension of a morphism: C1 supplies that geometric step.
+\end{proof}
+
+\begin{result}{C6}{Proved}{The normalizer extension and its sign}
+\textup{[F14; \S3, manuscript pp.\ 39--41; scans 79--82.]}
+Assume the hyperbolic case of C4 and let $q:S\to D$ be a boundary
+section. Put $M=I_q/I_q^2$ and $N=M^\vee=q^*\mathcal O_{\bar U}(q)$.
+For a chosen peripheral subgroup $L_q=\kappa_q(T)\subset\Pi$, the
+normalizer $N_E(L_q)$ fits in an exact sequence
+\[
+ 1\longrightarrow T\longrightarrow N_E(L_q)
+       \longrightarrow G\longrightarrow1.                 \tag{C.5}
+\]
+With the positive Kummer inertia convention of C3 its extension class
+is $c_1(N)$, and hence is $-c_1(M)$. More precisely, its image in
+$H^2(G,\mu_n)$ corresponds under the comparison map to the Kummer
+class of $N$ in $H^2(S,\mu_n)$; when $S$ is an \'etale $K(\pi,1)$ this
+comparison is an isomorphism.
+For type $(0,2)$ the same conclusion holds whenever the exact
+sequence of C4 holds (in particular over the arithmetic $K(\pi,1)$
+bases of C7): here $L_q=\Pi=T$, its arithmetic normalizer is all of
+$E$, and the two distinguished boundary sections identify $U$
+with the punctured normal line $N^\times$. Type $(1,0)$ has no cusp,
+so no normalizer extension of this kind is asserted there.
+\end{result}
+
+\begin{proof}
+The conjugacy class of $L_q$ is stable under $G$, because $q$ is defined
+over $S$. For any $g\in G$, choose $e\in E$ over $g$ and $b\in\Pi$
+with $eL_qe^{-1}=bL_qb^{-1}$. Then $b^{-1}e$ lies in the normalizer
+and maps to $g$. Its kernel is $N_\Pi(L_q)=L_q$, by peripheral
+self-normalization (Stix, Corollary 12). This proves surjectivity and
+exactness, without asserting that a surjective homomorphism has a section.
+
+The punctured formal neighborhood of $q$ has the same tame-cover
+category as the punctured normal line $N^\times$. This statement means
+the following concrete comparison. On an \'etale open where a local
+equation $z_i$ for $q$ has been chosen, all tame covers are dominated by
+the Kummer covers $z_i^{1/n}$; on overlaps their identifications are the
+identifications of the corresponding roots of the normal transition
+functions. SGA~1 XIII, Proposition 5.2 gives this local description;
+descent of finite \'etale covers gives the gluing. It produces a
+homomorphism $\pi_1(N^\times)\to E$ whose image normalizes $L_q$,
+which is the identity on the base quotient and the peripheral injection
+on the fibre. In particular the fibre map into $\pi_1(N^\times)$ is injective, since its composite with $E$ is $\kappa_q$. The homotopy sequence for $N^\times\to S$ is therefore short exact. The exact sequences consequently identify the tube
+extension with (C.5). This is also the identification of Stix,
+\S10.3, with the line $q^*\mathcal O(q)$ \cite{CF_Stix2008}.
+
+Here is the sign computation with all conventions fixed. Choose frames
+$e_i$ of $N$ and write $e_j=g_{ij}e_i$. For a vector
+$v=e_iw_i=e_jw_j$, its scalar coordinates satisfy $w_i=g_{ij}w_j$.
+Choose local roots $h_{ij}^n=g_{ij}$ and write $r_i^n=w_i$;
+the transition of the root cover is $r_i=h_{ij}r_j$. On triple overlaps
+the defect is $h_{ij}h_{jk}h_{ki}\in\mu_n$. This is exactly the
+Kummer connecting cocycle $\delta_n([N])$. The deck transformation
+$r_i\mapsto\zeta r_i$ is the positive inertia element specified in C3.
+Thus the extension cocycle, computed by multiplying three local
+trivializations, has sign $+\delta_n(N)$. The dual transition
+functions are $g_{ij}^{-1}$, so $\delta_n(M)=-\delta_n(N)$.
+Stix, \S6.4, makes the line-bundle extension/Chern comparison and its
+sign explicit. This computation resolves the manuscript's alternatives
+``conormal (ou normal, le diable sait)'' mathematically; it does not
+claim to remove the author's written doubt by palaeography.
+
+For example $N=\mathcal O_{\mathbb P^1}(-1)$ has degree $-1$ and
+$N^\times=\mathbb A^2\setminus0$ as computed in C4. Its homotopy
+boundary is the degree $-1$, agreeing with the displayed normal-line
+convention. A dual convention for the generator of inertia would
+reverse both signs, and must also reverse the Kummer character in C3.
+\end{proof}
+
+\begin{result}{C7}{Proved}{The arithmetic splitting and completed-unit criteria}
+\textup{[F14--F15; \S3, manuscript pp.\ 40--42; scans 81--82, 85.]}
+Let $S$ be smooth connected of finite type over a field finitely generated
+over $\mathbb Q$, and suppose that $S$ is an \'etale $K(\pi,1)$.
+Then $\operatorname{Pic}(S)$ is finitely generated, the integral continuous
+comparison in degree two is an isomorphism
+\[
+ H^2(G,T)\simeq H^2(S,T),
+\]
+and Kummer theory gives
+\[
+ H^1(G,T)\simeq H^1(S,T)
+       \simeq\widehat{\mathcal O(S)^*}
+       :=\varprojlim_n\mathcal O(S)^*/\mathcal O(S)^{*n}.       \tag{C.6}
+\]
+For the boundary section of C6, (C.5) splits if and only if $M$,
+equivalently $N$, is a trivial line bundle. A global basis of $M$ is
+sufficient over any characteristic-zero base for which (C.5) exists.
+Here a ``uniformizer along $q$'' means a basis of $I_q/I_q^2$; the
+statement does not require a global equation of $q$ on an entire
+neighborhood of its image.
+\end{result}
+
+\begin{proof}
+Guralnick--Jaffe--Raskind--Wiegand, Proposition 6.1, states that the Picard
+group of a normal scheme of finite type over a finitely generated field,
+or over $\mathbb Z$, is finitely generated \cite{CF_GJRW1996}. Its
+normality and arithmetic field hypotheses hold here. They cannot be
+deleted, for example $\operatorname{Pic}^0$ of a positive-genus curve
+over an algebraically closed field is divisible and usually infinite.
+
+For every positive integer $n$, the Kummer sequence gives
+\[
+ 0\to\mathcal O(S)^*/\mathcal O(S)^{*n}
+  \to H^1(S,\mu_n)\to\operatorname{Pic}(S)[n]\to0,
+\]
+and an injection
+$\operatorname{Pic}(S)/n\hookrightarrow H^2(S,\mu_n)$.
+If $N_0$ annihilates the torsion of $\operatorname{Pic}(S)$, the
+transition from an index divisible by $nN_0$ to $n$ kills the Picard
+torsion term; the transition on units modulo powers is onto. Thus the
+images in the system $H^1(S,\mu_n)$ eventually equal the unit subgroup,
+and this inverse system is Mittag--Leffler. The system $H^0(S,\mu_n)$
+is also Mittag--Leffler, since its terms are finite. Taking a factorial
+cofinal sequence of indices, the derived-limit exact sequence for
+continuous cohomology has zero $\varprojlim^1$ in the degrees at issue.
+This is the sequence (0.2) of Jannsen \cite{CF_Jannsen1988}, with
+the Mittag--Leffler hypotheses just verified. It follows that
+$H^i(S,T)=\varprojlim_nH^i(S,\mu_n)$ for $i=1,2$ here.
+
+For a $K(\pi,1)$ the finite local-system comparison
+$H^i(G,\mu_n)\simeq H^i(S,\mu_n)$ holds in every degree by its
+definition (equivalently by the contractibility of its universal
+\'etale homotopy cover). Applying the same inverse-limit sequence on
+both sides proves the asserted integral comparison. The inverse
+limit of $\operatorname{Pic}(S)[n]$, with its multiplication transition
+maps, is zero because its torsion has bounded exponent. This proves
+(C.6). In particular we have justified the limit operation in scan 82,
+including the potentially missing right exactness.
+
+If the extension splits, its continuous class vanishes, hence all
+$c_1(N)\bmod n$ vanish. The Kummer injections imply
+$[N]\in n\operatorname{Pic}(S)$ for every $n$. In a finitely generated
+abelian group the intersection of these subgroups is zero, so $N$ is
+trivial. Conversely a nonzero normal vector along the entire section
+defines its tangential fibre functor, or equivalently a section of
+$N^\times\to S$ followed by the tube comparison in C6. It splits
+(C.5). This construction does not use finite generation or the
+$K(\pi,1)$ assumption.
+
+Surjectivity of the normalizer map alone does not imply splitting.
+For a concrete correction to scan 80, let $C/\mathbb Q$ be a smooth
+proper genus-two curve and use $S=C$,
+$\bar U=C\times C\to C$ and the diagonal as its single cusp. The
+normal line is $T_C$, of degree $-2$. Its Kummer class modulo $3$ has
+nonzero degree in $\mathbb Z/3$; hence (C.5) does not split, although
+it surjects onto $G$. The curve $C:y^2=x^5-x$ supplies a specified
+example (the polynomial has no repeated root, and the smooth proper
+completion has genus two).
+\end{proof}
+
+\begin{result}{C8}{Proved}{The geometric torsor inside the completed torsor}
+\textup{[F15; \S3, manuscript p.\ 42; scan 85.]}
+Under the arithmetic hypotheses of C7, $\mathcal O(S)^*$ contains no
+nonidentity element divisible by every positive integer in that group.
+The completion map in (C.6) is injective. When $N$ is trivial, the set
+of its nowhere-zero sections is a torsor under $\mathcal O(S)^*$.
+Its tangential splittings inject into the set of $T$-conjugacy classes
+of splittings of (C.5), a torsor under $H^1(G,T)$. Under these actions
+the map of torsors is induced by the injective Kummer map
+\[
+ \mathcal O(S)^*\hookrightarrow\widehat{\mathcal O(S)^*}.
+\]
+For bases of the conormal line, rather than normal vectors, multiplying
+the basis by $a$ changes this Kummer class by $-\kappa(a)$.
+\end{result}
+
+\begin{proof}
+Let $F$ be the function field of $S$, finitely generated over $\mathbb Q$,
+and let $k$ be the algebraic closure of $\mathbb Q$ in $F$; it is a
+number field. Suppose $a\in F^*$ is an $n$th power in $F$ for every
+$n>0$. On a normal projective geometrically integral model of $F/k$,
+each prime-divisor valuation of $a$ is divisible by every positive
+integer and hence is zero. Consequently $a$ and $a^{-1}$ are global
+regular functions and $a\in k^*$. Every root of $a$ lying in $F$ is
+algebraic over $k$, and hence lies in $k$. At each finite prime of
+$k$, its valuation is again zero; thus $a\in\mathcal O_k^*$ and all
+its roots in $k$ are units. Dirichlet's unit theorem (Milne, Theorem~5.1 \cite{CF_MilneANT}) makes this group
+finitely generated; its intersection of all power subgroups is the
+identity. Thus $a=1$. Applying this to
+$\mathcal O(S)^*\subset F^*$ proves the first assertions. The same
+argument covers transcendence degree zero by starting directly with
+the number field.
+
+For completeness, the classification of the splitting torsor is
+explicit. Fix a splitting $s:G\to N_E(L_q)$. Every other splitting
+has the unique form $s_c(g)=c(g)s(g)$ for a continuous crossed
+homomorphism $c:G\to T$. The homomorphism identity for $s_c$ is
+$c(gh)=c(g)+g c(h)$, and conjugation by $b\in T$ adds the coboundary
+$b-gb$. Thus the classes form the $H^1(G,T)$-torsor asserted. If a
+normal frame is multiplied by $a$, the corresponding root frames
+differ by compatible roots of $a$; the cocycle is exactly
+$g\mapsto g(a^{1/n})/a^{1/n}$. Therefore its class is $\kappa(a)$.
+The kernel is the intersection of all power subgroups, already proved
+trivial. Dualizing a conormal frame replaces $a$ by $a^{-1}$ and
+changes the sign. It is the ordinary unit group, not its completion,
+that acts on actual algebraic frames. This is the mathematical
+correction supported by scan 85, where a possible circumflex remains
+a palaeographic uncertainty.
+\end{proof}
+
+\begin{result}{C9}{Proved}{Divisorial failure of extension and tangential specialization}
+\textup{[F16; \S3, manuscript pp.\ 46--47; scans 93--95.]}
+Let $S$ be smooth integral in characteristic zero and let $f_K$ be a
+rational section of a smooth pair as in C1. Let $S'$ be its maximal
+open domain as a section of $U$. Every irreducible component of
+$S\setminus S'$ has codimension one. At the generic point of such a
+component $D_\alpha$, the proper extension meets a unique cusp, and
+\[
+ \mu_\alpha=\operatorname{ord}_{D_\alpha}(f_K^*z)>0
+\]
+is its intersection multiplicity, independent of a unit multiple of
+the local cusp equation $z$. The sum
+$\sum_\alpha\mu_\alpha D_\alpha$ is an effective Cartier divisor
+because $S$ is regular.
+
+On an open subset $W$ of the regular locus of $D_\alpha$ where the
+compactified section and the cusp are defined, and where a uniformizer
+$t$ of $D_\alpha$ has been fixed, write
+$z\circ f=t^{\mu_\alpha}u$ with $u$ regular and invertible along $W$.
+The resulting conormal isomorphism is
+\[
+ f_W^*(I_q/I_q^2)\xrightarrow{\sim}
+            (I_{D_\alpha}/I_{D_\alpha}^2)^{\otimes\mu_\alpha},
+       \qquad z\longmapsto u\,t^{\mu_\alpha}.               \tag{C.7}
+\]
+It produces tangential specialization of the geometric section at
+every point of $W$, compatible with specialization inside $W$. Changing
+$t$ to $at$ replaces the leading coefficient by
+$a^{-\mu_\alpha}u$, and changes the associated Kummer class by
+$-\mu_\alpha\kappa(a)$ in the scalar-coordinate convention.
+\end{result}
+
+\begin{proof}
+If an irreducible component of the complement had codimension at least
+two, remove the other components and work near its generic point. The
+section is then defined outside a codimension-at-least-two closed set,
+and C1 extends it, contradicting maximality. At a codimension-one
+generic point, properness extends $f_K$ to $\bar U$. Its image cannot
+lie in $U$, again by maximality and finite presentation. The finite
+\'etale boundary has disjoint sections after an \'etale localization,
+so exactly one is met, and C3 gives the stated multiplicity. The
+divisorial sum is locally finite because the complement is a closed
+subset of the noetherian scheme $S$; on a regular scheme Weil
+divisors are Cartier. We do not identify it with the pullback of a
+global divisor by an everywhere-defined compactified rational map:
+such a map can still have a codimension-two indeterminacy in genus
+zero.
+
+Where $z\circ f=t^\mu u$ with $u$ a unit, reduction modulo the next
+power of $I_D$ gives precisely (C.7). On the punctured normal lines
+the corresponding map is, in scalar coordinates, $v\mapsto u v^\mu$.
+It sends the source tangent vector with $t(v)=1$ to the target tangent
+vector with $z(w)=u$. For every $n$, pulling the Kummer cover of the
+target back by this map gives the $\mu$th-power Kummer cover multiplied
+by the unit $u$. These compatible maps of finite covers define the
+map of tangential fibre functors, hence the specialization of sections
+of the exact fundamental-group extensions. Evaluation at a point of
+$W$ commutes with these pullbacks of covers, proving the asserted
+compatibility. The replacement $t'=at$ gives
+$u'=a^{-\mu}u$ directly, and Kummer functoriality gives the final
+formula. At a zero or pole of $u$, this construction no longer gives
+a nonzero tangent vector; this is exactly the regular-and-invertible
+restriction in the manuscript.
+\end{proof}

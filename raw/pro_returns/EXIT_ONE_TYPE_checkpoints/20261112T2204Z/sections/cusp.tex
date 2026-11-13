@@ -1,0 +1,190 @@
+\subsection{The cuspidal fibre: the precise stacky correction}
+
+\begin{proposition}[\status{Refuted}: roots cannot repair a meridian kernel]\label{P1e-roots}
+Let $(X,D)$ be a smooth complex normal-crossings pair, and let a finite root
+construction along its branches leave $U=X\setminus D$ unchanged.
+If the old meridian homomorphism $\rho:\Z^r\to\pi_1(U)$ has nonzero kernel,
+the corresponding meridian map of the root stack also has nonzero kernel.
+More generally this holds for any finite Kummer change of the local lattice.
+Finite local monodromy of a family does not by itself force failure of the
+criterion on smooth models.
+\end{proposition}
+\begin{proof}
+In a local chart for roots of orders $n_1,\ldots,n_r$, write $z_i=w_i^{n_i}$.
+A normal circle in the chart maps to $n_i$ old normal circles.  Thus the new
+map is $\rho\circ\operatorname{diag}(n_1,\ldots,n_r)$.  The image of this
+diagonal matrix is a finite-index sublattice of $\Z^r$; it meets every nonzero
+subgroup of $\Z^r$ nontrivially.  This proves the assertion, and the same
+argument applies to any finite-index Kummer sublattice.  The displayed integer
+kernel remains a kernel after profinite completion.  A root of the entire
+nonreduced fibre may itself be singular; merely calling that operation a root
+does not bypass this lattice obstruction.
+
+For finite monodromy without failure, take $F\times\Delta$ with boundary
+$F\times\{0\}$, where $F$ is an affine hyperbolic curve.  Both strata are
+aspherical and the normal circle is the direct $\Z$ factor of
+$\pi_1(F)\times\Z$.  Its monodromy is the identity.  For nontrivial finite
+monodromy choose a free finite-order automorphism $\phi$ of a hyperbolic curve
+$F$ (for example a deck transformation of an unramified cyclic cover), and
+let $\mu_m$ act on $F\times\Delta_s$ by $(p,s)\mapsto(\phi(p),\zeta s)$.
+The total quotient is a smooth manifold because the action on $F$ is free.
+Its reduced central fibre is $F/\mu_m$, and its normal circle projects to
+$m$ times the generator around $t=s^m=0$.  It therefore injects.  The open
+space is a surface bundle over $\Delta^*$, and the closed stratum is a
+hyperbolic curve, so the criterion holds on this smooth model.
+\end{proof}
+
+\begin{example}[\status{Proved}: all lattices and mapping spaces of the cusp]\label{P1e-cusp}
+Consider $f(x,y)=y^2-x^3$ and the family $f=t$ over a sufficiently small disk,
+with the affine point at infinity of each elliptic curve omitted.  It has
+pointed type $(1,1)$, not the unmarked proper type $(1,0)$.
+The minimal embedded normal-crossings resolution of $f^{-1}(0)$ has four
+components $C,E_2,E_3,E_6$ of multiplicities $1,2,3,6$, with $E_6$ meeting
+each of the other three once and no other intersections.
+The open complement has
+\[
+ G=\pi_1(U)=\langle a,b\mid a^2=b^3\rangle\cong B_3,\qquad
+ z=a^2=b^3,\qquad m=ab^{-1}.
+\]
+With paths chosen compatibly, the meridians of $E_3,E_2,E_6,C$ are respectively
+$a,b,z,m$.  All rank-one meridian maps inject.  At the three nodes, written
+in the order $(E_6,E_j)$, the rank-two maps have the following kernels:
+\[
+ \begin{array}{c|c|c}
+ \text{node}&(r,s)\longmapsto&\text{kernel}\\ \hline
+ E_6\cap E_2&z^r b^s&\Z(1,-3)\\
+ E_6\cap E_3&z^r a^s&\Z(1,-2)\\
+ E_6\cap C&z^r m^s&0 .
+ \end{array}                                                   \tag{CU}
+\]
+All strata are aspherical, but the criterion fails at the first two nodes.
+Taking one object per connected stratum gives eight objects: the open object
+with automorphism group $G$; four component objects with groups
+$\Z,1,1,F_2$ for $C,E_2,E_3,E_6$; and three node objects with trivial groups.
+For a component object, its mapping space to the open object is the discrete
+coset set $G/\langle m_j\rangle$, with $m_j=m,b,a,z$ respectively.
+At the first two nodes the mapping spaces to the open object are disjoint
+unions of circles indexed by $G/\langle b\rangle$ and $G/\langle a\rangle$.
+At the last node the mapping space is the discrete set
+$G/\langle z,m\rangle$.
+The maps from a node to the incident $E_2$ or $E_3$ object form a circle;
+the maps to $E_6$ are $F_2/\langle c_j\rangle$, where $c_j$ is the appropriate
+boundary word of the three-punctured sphere; the maps from $E_6\cap C$ to
+$C$ form a singleton.  All other distinct-stratum mapping spaces are empty.
+The group actions and compositions are induced by the inclusions of these
+normal links; choices of the displayed paths change the descriptions by
+compatible conjugations.
+\end{example}
+\begin{proof}
+The three blow-up charts relevant to the successive singular points are
+\[
+ f=x^2(v^2-x),\qquad
+ f=u^2v^3(v-u),\qquad
+ f=u^6w^3(w-1).
+\]
+They follow from $y=xv$, then $x=uv$, then $v=uw$.  The last chart shows the
+multiplicity six and the three distinct intersection points $w=0,1,\infty$.
+The other charts show the strict components of multiplicity two and three.
+After the first blow-up the strict cusp is tangent to $E_2$; after the second
+there is a triple point; the third is therefore necessary for a normal-crossings
+divisor on a surface.  These polynomial identities are checked symbolically
+in \texttt{compactifications\_checks.py}.
+
+The weighted circle action $(x,y)\mapsto(e^{2i\theta}x,e^{3i\theta}y)$ has
+regular orbit $z$ and exceptional orbit multiplicities two and three.
+Cutting its torus-knot exterior along the separating annulus gives the
+amalgamated presentation $\langle a,b\mid a^2=b^3\rangle$: the annulus core
+is twice the core of one solid torus and three times the other.  Equivalently,
+this is the complement of the $(2,3)$ torus knot, since intersecting
+$x=s^2,y=s^3$ with a small sphere gives that knot.  Weighted radial contraction
+identifies its complement homotopy type with $f^{-1}(\Delta^*)$.
+The degree homomorphism induced by $f$ is
+\[
+ \deg(a)=3,\quad\deg(b)=2,\quad\deg(z)=6,\quad\deg(m)=1.
+\]
+In a chart near the unmodified end of $E_2$, $f=y^2(1-u^3y)$, so its meridian
+is the exceptional orbit of degree two, namely $b$.  At the other end,
+$f=x^3(w^2x-1)$ identifies the $E_3$ meridian with $a$.  In the last blow-up
+chart, $(x,y)=(u^2w,u^3w^2)$, rotation of $u$ is exactly the weighted circle
+$z$.  The meridian $m=ab^{-1}=a^{-1}b^2$ of the strict cusp is the usual
+peripheral meridian; the two expressions agree because $z$ is central.
+The centrality of $z$ follows directly from the amalgam presentation.
+
+The first two kernels in (CU) now follow from $z=b^3=a^2$ and the infinite
+orders certified by the degree homomorphism.  For the last one, quotient by
+the central $\langle z\rangle$.  The result is $C_2*C_3$, in which the image
+of $m=ab^{-1}$ is a cyclically reduced alternating word and has infinite
+order.  Thus $z^rm^s=1$ forces $s=0$, then $r=0$ by the degree homomorphism.
+The program independently checks the representation
+\[
+ a\longmapsto\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+ b\longmapsto\begin{pmatrix}0&-1\\1&1\end{pmatrix},
+\]
+where $a^2=b^3=-I$ and $m$ is nontrivial unipotent.  Combined with the degree
+homomorphism this also proves the last lattice injective.
+
+The component strata are $C^\circ\simeq\C^*$,
+$E_2^\circ\simeq\C$, $E_3^\circ\simeq\C$, and
+$E_6^\circ\simeq\PP^1\setminus\{0,1,\infty\}$.
+The open space fibres over a circle with once-punctured torus fibre and is
+aspherical.  For a homomorphism from a torus lattice to an aspherical target,
+the mapping-space homotopy fibre has components $K(\ker\rho,1)$ indexed by
+the cosets of its image.  Applying this to (CU), and to the rank-one links
+inside the four component strata, gives every displayed mapping space.
+In particular the failed adjacent maps into $\C$ have a whole circle as
+mapping space, while the adjacent maps into the three-punctured sphere have
+injective peripheral cyclic subgroups.  This accounts for all incidence
+relations of the four-component star.
+\end{proof}
+
+\begin{theorem}[\status{Proved}: stable reduction supplies a different good stack]\label{P1e-cusp-stack}
+For the cusp family, no finite roots along the resolved fibre repair the two
+failed lattices in (CU).  A good stacky compactification of the same open
+family is instead
+\[
+ \mathcal X=[(E^\circ\times\Delta_s)/\mu_6],\qquad
+ E^\circ=\{Y^2=X^3+1\},
+\]
+with action
+\[
+ (X,Y,s)\longmapsto(\zeta^{-2}X,\zeta^{-3}Y,\zeta s),
+ \qquad t=s^6,quad x=s^2X,quad y=s^3Y.
+\]
+Its boundary is the smooth stack $[E^\circ/\mu_6]$.  It is aspherical, with
+fundamental group $C_2*C_3$, and its normal-circle injection is
+$\Z\langle z\rangle\hookrightarrow B_3$.
+The exit category is ordinary, with two stratum objects, automorphism groups
+$C_2*C_3$ and $B_3$, and crossing Hom-set $B_3/\langle z\rangle$.
+The two actions on this set are the left regular $B_3$ action and the right
+action through $B_3/\langle z\rangle\cong C_2*C_3$, with composition fixed by
+these actions.
+\end{theorem}
+\begin{proof}
+For $s\ne0$ the coordinate transformation is invertible after choosing a sixth
+root of $t$, and two choices differ by precisely the displayed action.
+Consequently its quotient open substack is the original $U$.
+The action is free on $s\ne0$, so no extra open stabilizers have been introduced.
+The stack itself is smooth because its atlas is smooth; its boundary is a
+smooth divisor in this atlas.
+
+The quotient of the affine elliptic curve by $\mu_6$ has coarse coordinate
+$w=Y^2=X^3+1$.  At $w=0$ the stabilizer is $\mu_2$, and at $w=1$ it is
+$\mu_3$; there is no other nontrivial stabilizer.  Its orbifold fundamental
+group is therefore $C_2*C_3$.  The finite \'etale atlas $E^\circ$ is a
+once-punctured torus and aspherical; the universal orbifold cover of the
+quotient is consequently contractible.  Rotation of $s$ once at a fixed
+point of the atlas gives the weighted rotation $(x,y)=(s^2X,s^3Y)$, hence the
+normal meridian $z$, which has infinite order by degree six.  The open stratum
+is already aspherical, so the criterion applies, and its mapping spaces are
+the stated discrete cosets.  The first assertion is
+Proposition~\ref{P1e-roots} applied to the two nonzero kernels of (CU).
+
+This construction combines finite stable base change, a new model, and the
+quotient stack retaining the finite automorphism action.  It is not the root
+stack of the resolved boundary.  In a general finite-monodromy stable
+reduction of order $m$, the analogous quotient of the equivariant stable model
+by $\mu_m$ is the relevant stack structure.  A smooth coarse model may already
+suffice when that action is free, as shown in Proposition~\ref{P1e-roots}.
+All statements here are over $\C$; the smooth tame $\mu_6$ discussion does not
+extend unchanged to residue characteristics two and three.
+\end{proof}

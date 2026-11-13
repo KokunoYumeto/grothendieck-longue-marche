@@ -1,0 +1,101 @@
+# LM6_POINTS_AS_SECTIONS: changes of 13 November 2026 (FLAGGED_149)
+
+By Claude Fable 5.2 (effort max). Backup of the prompt as it was: `PROMPT_before_flagged149_20261113.md` in this folder.
+
+1. Added after the first "New since" block: the second block, on the return FLAGGED_149 (intake and source check): what is settled of Parts A (e), B (a), B (b), C, F (b)–(g); ZCF4 against "open image ⟹ dominant" for targets of dimension ≥ 2; the three sentences of the map CONNES_CONSANI_CFT that were addressed to FLAGGED_149, placed at F (d) (shortened: A9 proves the fibre-product reconstruction), F (g) (3 bis) and C (b), (c).
+2. Exact replacements (id, old, new). M-25 rewrites task F (f); M-23, M-24 repair two broken sentences that pointed to GOOD_REDUCTION; M-27, M-28 record the revision and the attachments; M-22 completes the closing paragraph of the template; the others remove clauses that let an ask end without a proof or a refutation (rules for every prompt, 12 November 2026).
+
+- **M-1**
+  - old: `by program as far as it goes; if it lifts`
+  - new: `by program, class by class; if it lifts`
+- **M-2**
+  - old: `write the global argument or isolate what is missing)`
+  - new: `write the global argument, or refute the statement)`
+- **M-3**
+  - old: `; or partly settled with the cases proved, the computations run and the obstruction as an exact statement with the smallest undecided instance.`
+  - new: `; nothing else finishes an ask.`
+- **M-4**
+  - old: `there, or isolate the step of the 2026 proof that fails)`
+  - new: `there, or refute it by a counterexample)`
+- **M-5**
+  - old: `the question is the global one: reduce it to an exact statement)`
+  - new: `the question is the global one: decide it)`
+- **M-6**
+  - old: `(d) is a theorem or an exact obstruction;`
+  - new: `(d) is a theorem, or a refutation with the strongest true statement proved;`
+- **M-7**
+  - old: ` as far as they are unconditional:`
+  - new: ` in their unconditional form:`
+- **M-8**
+  - old: `, naming the missing statement exactly (finite fibres of 'loc_v' at one place) with the smallest curve for which it is not known.`
+  - new: ` (the step at issue is the finiteness of the fibres of 'loc_v' at one place).`
+- **M-9**
+  - old: `theorems or exact obstructions`
+  - new: `theorems, or refutations with the strongest true statements proved`
+- **M-10a**
+  - old: `Carry it out as far as it goes:`
+  - new: `Carry it out:`
+- **M-10b**
+  - old: `and in general as far as it can be proved;`
+  - new: `and in general, with proof;`
+- **M-11**
+  - old: `(b) and (c) are theorems, computations with code, or exact obstructions with the smallest undecided exponent.`
+  - new: `(b) and (c) are theorems with their computations and code, or refutations with the strongest true statements proved.`
+- **M-12**
+  - old: `, or state exactly what else is needed.`
+  - new: `, or refute the reduction by a counterexample.`
+- **M-13**
+  - old: `and name the smallest case they leave.`
+  - new: `name the smallest case they leave, and decide it.`
+- **M-14**
+  - old: `quote what the literature has on this reduction, and state exactly what is missing.`
+  - new: `quote what the literature has on this reduction, and prove or refute the reduction itself.`
+- **M-15**
+  - old: `for the fibre: say what is missing).`
+  - new: `for the fibre: supply the missing step or refute the implication).`
+- **M-16**
+  - old: ` State what you prove and the exact obstruction.`
+  - new: `(removed)`
+- **M-17a**
+  - old: `and the reduction to number fields proved or reduced to an exact statement;`
+  - new: `and the reduction to number fields proved or refuted;`
+- **M-17b**
+  - old: `(5) decided or reduced to an exact obstruction.`
+  - new: `(5) decided.`
+- **M-18**
+  - old: `What you cannot settle stays on the page as an exact statement, with what you tried, the step that fails and the smallest undecided instance. Never write it up as proved, and never drop it.`
+  - new: `What is not yet settled stays on the page as an exact statement, with what you tried and the step that fails, and you go on attacking it; it never finishes an item. Never write it up as proved, and never drop it.`
+- **M-19a**
+  - old: `An Open statement records your own attack:`
+  - new: `A statement may be labelled Open only in a return marked INCOMPLETE (point 4 of "What the outcome must be"); it then records your own attack:`
+- **M-19b**
+  - old: ` without your own attempt is unfinished.`
+  - new: ` is not acceptable.`
+- **M-20**
+  - old: `applies that you can exhibit (`
+  - new: `applies (`
+- **M-21**
+  - old: `corrections to the leads and to the notes, what remains open)`
+  - new: `corrections to the leads and to the notes, and, only in a return marked INCOMPLETE, the state of every undecided line)`
+- **M-22**
+  - old: `Write the files from the start and extend them as you go.`
+  - new: `Write the files from the start and extend them as you go, so that an interruption loses little.`
+- **M-23**
+  - old: `The statement to prove is: e) holds if and only if the reduction is potentially good. the prompt GOOD_REDUCTION.`
+  - new: `The statement to prove is: e) holds if and only if the reduction is potentially good; it is now proved (FLAGGED_149 F17.7: see the second "New since" block below).`
+- **M-27**
+  - old: `The corrections made the same day after the reviews of the returns LM3 and LM3b are kept unchanged.`
+  - new: `The corrections made the same day after the reviews of the returns LM3 and LM3b are kept unchanged. On 13 November 2026 the second "New since" block (the return FLAGGED_149, its intake and its source check) was added by Claude Fable 5.2 (effort max), task F (f) was rewritten, and the clauses that let an ask end without a proof or a refutation were removed.`
+- **M-28**
+  - old: `and, if they have been answered, 'CYCLOTOMIC_KERNEL_return/' and 'FLAGGED_149_return/'.`
+  - new: `and, if they have been answered, 'CYCLOTOMIC_KERNEL_return/' and 'FLAGGED_149_return/'. With the FLAGGED_149 return: 'FLAGGED_149_REVIEW.md', 'FLAGGED_149_SOURCE_CHECK.md', 'CONNES_CONSANI_MAP.md' and the LaTeX source of arXiv:2501.06560.`
+- **M-24**
+  - old: `leaves H2 \(b\) open, with\s+the genus-2 CM test is Part D of the prompt GOOD_REDUCTION\.`
+  - new: `leaves H2 (b) open (now proved: FLAGGED_149 F17.6;
+  the genus-2 CM test is its F17.2 with F17.6; see the second block below).`
+- **M-25**
+  - old: `\(f\) \(F5\) is asked in the separate prompt GOOD_REDUCTION:[^\n]*?cite its statements by number\.`
+  - new: `(f) (F5). The theorem "e) if and only if potentially good marked reduction", for every splitting, is FLAGGED_149 F17.7 with F17.6, and the table of his conditions a)–e) is in the second "New since" block: cite them after checking the steps you rely on. What (F5) still leaves (the multi-twist formula with the thicknesses, the weights, d) ⇒ c), the predicate for f), the case ℓ = p, effective actions) is asked in the separate prompt ANABELIAN_149_PUSH, Part B, which replaces GOOD_REDUCTION. If its return is attached, cite its statements by number.`
+- **M-29**
+  - old: `the paper's LaTeX as far as it is written`
+  - new: `the paper's LaTeX in the state it has reached`

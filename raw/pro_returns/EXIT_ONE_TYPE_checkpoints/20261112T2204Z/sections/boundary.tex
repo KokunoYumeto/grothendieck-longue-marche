@@ -1,0 +1,216 @@
+\section{The maquette, the boundary link, and weights}
+\label{sec:maquette}
+
+Throughout this section the divisor is reduced.  Its multiplicities, when present in a defining equation, do not alter the combinatorial complex.  Topological statements concern complex manifolds, or separated smooth analytic Deligne--Mumford stacks with finite stabilizers, and their actual homotopy types.  Statements about weights additionally assume algebraicity over $\C$ and properness of the compactification.  A homotopy type of a stack is never silently replaced by its coarse space.  By contrast, the usual dual complex is explicitly a \emph{coarse} combinatorial realization: finite branch permutations act by ordinary quotient, not by homotopy quotient.
+
+\subsection{Which component construction is legitimate?}
+
+Write $\mathcal F_q$ for the disjoint union of Grothendieck's normalized closed flag spaces
+\[
+ D_{d_0,\ldots,d_q},\qquad d_0>\cdots>d_q>0,
+\]
+with face maps obtained by deleting a member of the flag.  The restriction $d_q>0$ is essential.  Set $K_q=\pi_0\mathcal F_q$, retaining every face map, and let $K$ be the resulting semisimplicial set.  The indexing category $A_K$ has one object for every simplex of $K$ and an arrow for every specified face inclusion, directed from the simplex to its face.  Thus $BA_K$ is the barycentric subdivision of $|K|$.  This construction uses all flag components; it does not try to recover them from the components of objects and arrows alone.
+
+\begin{proposition}[Failure of the proposed component category; \status{Refuted}]
+\label{P4a1}
+For a normal crossings divisor with branch monodromy, the objects $\pi_0D_d$ and arrows $\pi_0D_{d,d'}$ need not form a category with composition induced by that of $\mathcal D$.  In particular, $\pi_0N\mathcal D$ need not satisfy the Segal identities.  This failure occurs for an ordinary smooth complex manifold, not only for a stack.  Consequently, the categorical formulation of Lead~5 and Part~4(a) is false in its stated generality.
+\end{proposition}
+\begin{proof}
+Let $G=\Z/2$ act on $\C^4\times\C^*$ by
+\[
+ (z_1,z_2,z_3,z_4,w)\longmapsto(z_2,z_1,z_4,z_3,-w).
+\]
+The action is free, so $X=(\C^4\times\C^*)/G$ is a smooth complex manifold.  The union of the four coordinate hyperplanes descends to a normal crossings divisor $D$.  Components of its normalized flag spaces are the $G$-orbits of flags of subsets of $\{1,2,3,4\}$; this follows because every coordinate intersection times $\C^*$ is connected and normalization separates the different branch choices.
+
+Put $B=\{1,2\}$.  The two flags
+\[
+ (\{1,2,3\},B),\quad(\{1,2,4\},B)
+\]
+belong to one component of $D_{3,2}$, and $(B,\{1\})$, $(B,\{2\})$ belong to one component of $D_{2,1}$.  These components are composable over the component represented by $B$.  There are, however, two components of $D_{3,2,1}$ above this one composable pair: their representatives are
+\[
+ (\{1,2,3\},B,\{1\}),\qquad
+ (\{1,2,3\},B,\{2\}).
+\]
+Their composites belong to distinct components of $D_{3,1}$: the involution sends $(\{1,2,3\},\{1\})$ to $(\{1,2,4\},\{2\})$, not to $(\{1,2,3\},\{2\})$.  The Segal map therefore has a two-element fibre, and the proposed composition would have two different values.  The exact orbit enumeration is reproduced in \texttt{code/boundary\_checks.py} and its output.
+
+For a simple normal crossings divisor without this monodromy, the usual category of connected intersection components and specified incidences does exist.  The counterexample explains precisely why it cannot be carried unchanged into the generality requested.  It does not challenge the internal analytic category defined in cote~147, \S11, folio~56, scan~114; it challenges the subsequent, unjustified application of $\pi_0$ to its fibre products.
+\end{proof}
+
+For a flag component $a\in A_K$, let $Y_D(a)$ be the corresponding connected component of $\mathcal F_q$.  Let $Y_L(a)$ be its pullback to the normalized closed face of the real oriented blow-up, where $L=\partial X^{\log}$.  Over the open deepest stratum this closed face has interior the unit multinormal torus bundle.  All these definitions include the branch flag, so a face map remains unambiguous even in the preceding example.
+
+\begin{theorem}[The corrected maquette and its homotopy fibres; \status{Proved}]
+\label{P4a2}
+There are equivalences and maps of spaces
+\[
+ D\simeq\hocolim_{A_K}Y_D\xrightarrow{q_D}BA_K,
+ \qquad
+ L\simeq\hocolim_{A_K}Y_L\xrightarrow{q_L}BA_K.
+\]
+The space $BA_K\simeq|K|$ is the coarse dual complex $\Delta(D)$.  Equivalently, it is the realization of the symmetric $\Delta$-complex of ordered local branches and their connected intersection components.  This statement allows self-intersections and finite stabilizers.  Inertia acting trivially on the branches disappears from $\Delta(D)$.
+
+The maps induce functors from the exit category of $D$, and from the category of crossing arrows from $D$ to $U$, to the \emph{fundamental infinity-groupoid} of $\Delta(D)$, by groupoid completion of their sources.  These are the appropriate general replacements for functors to the nonexistent component category of Proposition~\ref{P4a1}.
+
+Here is an exact, component-sensitive description of their homotopy fibres.  Let $G_K=\Pi_\infty(BA_K)$, let $b\in BA_K$, and form the infinity-category
+\[
+ A_{K,b}=A_K\mathbin{\times}_{G_K}(G_K)_{/b}.
+\]
+Its objects are a flag component $a$ together with a path from its barycentre to $b$, and its morphisms include the specified homotopies of such paths.  For $Y=Y_D$ or $Y_L$,
+\begin{equation}
+ \hofib_b(q_Y)\simeq
+ \operatorname*{colim}_{(a,\gamma)\in A_{K,b}}Y(a).
+ \tag{M1}
+\end{equation}
+The fibre is a single value $Y(a)$ when all transition maps in the relevant connected diagram are equivalences.  There is no such simplification in general.
+\end{theorem}
+\begin{proof}
+At a point on $r$ branches, the fibre of the augmented flag resolution $|\mathcal F_\bullet|\to D$ is the nerve of the poset of nonempty subsets of an $r$-element set.  This poset has a largest element, so its nerve is contractible.  To justify the passage from fibres to total spaces, take a coordinate polydisc with divisor $z_1\cdots z_r=0$.  Radial contraction of its coordinates preserves every chosen branch flag and contracts the inverse image of the polydisc onto this contractible nerve.  Such polydiscs form a local basis.  Applying the ordinary open-cover homotopy-colimit argument to a numerable refinement proves that the augmentation is a weak equivalence.  The same proof for $L$ retains the angular coordinates: the local augmentation is a product with $(S^1)^r$, and its remaining flag fibre is still contractible.  The construction descends along an orbifold atlas.  Equivalently, a local finite group acts on the flag resolution and its contractible fibre, and the equivariant augmentation remains an equivalence after taking homotopy quotients.  This proves the assertions about the actual stack homotopy types.
+
+Decomposing each level into connected components and taking the category of its simplices gives the displayed homotopy-colimit presentations.  Passing to components gives the barycentric subdivision of the usual dual complex: a codimension-$r$ branch intersection contributes an $(r-1)$-simplex, and a strict chain of nonempty branch subsets contributes one simplex in its barycentric subdivision.  Monodromy permutes the vertices of the original simplex.  After barycentric subdivision a simplex stabilizer fixes it pointwise, since its vertices have distinct ranks.  Thus the quotient is exactly the realization of the component flag set $K$.  This also proves the assertion for self-intersections and shows why stabilizer classifying spaces are not part of the coarse complex.  This is the local construction used in Chan, Galatius, and Payne's symmetric-$\Delta$ formulation \cite[\S5.2, Lemma~5.4 and Corollary~5.6]{CGP2021}.
+
+The equivalence between groupoid completion of exit paths and the underlying space, and its crossing-arrow version for the link, turn the two maps into the stated functors.  In the simple normal crossings case the ordinary incidence functor gives the same maps after groupoid completion.  The blow-down maps $Y_L(a)\to Y_D(a)$ commute with the incidence maps, so $q_L=q_D\circ(L\to D)$ up to the specified homotopy.
+
+Finally, regard a diagram $Y:A_K\to\mathrm{Spaces}$ as a diagram over $BA_K$ using the canonical coherent paths associated to its arrows.  Left Kan extension along $A_K\to G_K$ gives a functor $G_K\to\mathrm{Spaces}$ whose unstraightening is $\hocolim Y\to BA_K$.  The pointwise formula for this left Kan extension is precisely (M1).  This proves the fibre formula, rather than identifying a homotopy fibre with an ordinary point fibre.  If all structure maps are equivalences, the diagram already factors through $G_K$, giving the stated simplification.  Otherwise it need not: for the triangle of lines in $\PP^2$, $\Delta(D)=S^1$ and $D\simeq S^1\vee S^2\vee S^2\vee S^2$; the fibre of $q_D$ is its infinite cyclic cover, homotopy equivalent to a wedge of countably many $2$-spheres.  It is not one of the three closed lines.
+\end{proof}
+
+\subsection{The sentence on folio 66}
+
+\begin{theorem}[The nerve lemma applies to $D$, not to its link; \status{Proved}]
+\label{P4b}
+If every connected component of every normalized closed branch intersection is contractible as an actual space or stack homotopy type, then $q_D:D\to\Delta(D)$ is a homotopy equivalence.  If $X$ is compact of pure positive complex dimension $n$ and $D\ne\varnothing$, then $q_L:L\to\Delta(D)$ is never a homotopy equivalence.  This second assertion holds for compact complex manifolds and proper smooth analytic Deligne--Mumford stacks with finite stabilizers.  The nonemptiness condition is necessary: when $D=\varnothing$, both spaces are empty.
+\end{theorem}
+\begin{proof}
+A flag space is a finite covering of the relevant normalized deepest intersection.  A connected finite covering of a contractible homotopy type is contractible.  Hence every $Y_D(a)$ is contractible, and the natural transformation $Y_D\to *$ is objectwise a weak equivalence.  Homotopy colimits preserve this equivalence, proving the first assertion by Theorem~\ref{P4a2}.  The same argument does not apply to $Y_L$: its angular directions have not been removed.
+
+The real oriented blow-up of a compact $n$-fold is a compact oriented real $2n$-manifold with corners.  Rounding its corners shows that its nonempty boundary $L$ is a closed oriented $(2n-1)$-manifold, so $H^{2n-1}(L;\Q)\ne0$.  The dual complex has dimension at most $n-1$, hence its cohomology in degree $2n-1$ is zero.  For a proper finite-stabilizer stack, rational cohomology agrees with that of its coarse oriented orbifold, because finite-group cohomology in positive degree vanishes over $\Q$; the same top-dimensional orientation class gives the obstruction.  Thus even a rational homology equivalence is impossible.
+
+We inspected cote~149, folio~66, scan~133 directly.  The final symbol in the sentence is visibly $U_\infty$, not $D$.  Its mathematics therefore needs correction; it is not evidence authorizing an emendation of the handwriting to $D$.  The hypotheses of the first assertion explain the nearby caveat that a positive-dimensional proper intersection cannot be contractible: its top fundamental class is nonzero.  We retain the manuscript's $U_\infty$ as the reading and distinguish the corrected theorem from it.
+\end{proof}
+
+\subsection{Blow-ups and independence}
+
+\begin{theorem}[Admissible blow-ups preserve the coarse maquette; \status{Proved}]
+\label{P4c1}
+Let $Z\subset D$ be a smooth closed centre having normal crossings with $D$, and let $D'$ be the reduced inverse image in $\operatorname{Bl}_ZX$.  Then $\Delta(D')\simeq\Delta(D)$.  If $Z$ is a stratum closure this is a stellar subdivision; if it is properly contained in that closure, the new cells admit a deformation retraction onto the old complex.  The result is valid locally analytically, with self-intersections and finite branch symmetries.
+
+Consequently the homotopy type is independent of a smooth proper algebraic normal crossings compactification of a fixed smooth complex variety.  The same holds for proper smooth algebraic Deligne--Mumford stacks.  In the analytic category the same proof applies to compactifications for which the identification of the open parts extends to a bimeromorphic map.  No mixed Hodge structure, and no algebraic weak-factorization conclusion without its hypotheses, is asserted for an arbitrary analytic open embedding.
+\end{theorem}
+\begin{proof}
+We give the combinatorial operation on the flag model.  Locally at a point of the centre choose coordinates so that the branches containing the centre are $x_1=0,\ldots,x_r=0$ and
+\[
+ Z=\{x_1=\cdots=x_r=y_1=\cdots=y_s=0\}.
+\]
+Additional branches meet $Z$ transversely.  The exceptional fibre is $\PP^{r+s-1}$; the $r$ containing branches restrict to its $r$ coordinate hyperplanes.  When $s=0$, these hyperplanes have empty total intersection.  Thus the old face on the $r$ branches is replaced by the cone from the exceptional vertex on its boundary, together with the same replacement in every incident simplex.  This is stellar subdivision.  It induces a homeomorphism of realizations by sending the exceptional vertex to the barycentre of the old face.
+
+When $s>0$, the total intersection of the $r$ hyperplanes is $\PP^{s-1}$ and is nonempty.  All the old faces remain.  The exceptional cells are cones on the relevant incidence faces, one for each connected component of an intersection with $Z$.  Move the exceptional vertex to the barycentre of the $r$ containing vertices, extending linearly on each cell.  Every simplex required during this homotopy exists, because the $r$ strict transforms still meet on the exceptional divisor.  This gives a deformation retraction fixing the old complex.  Disconnected intersections produce repeated cones with their own incidence labels; the same contraction applies to every copy.  Branch monodromy permutes the $r$ vertices and fixes their barycentre, so the construction is equivariant and descends.  In terms of $A_K$, it is the corresponding subdivision or cone extension of its flag category.  This establishes the local and global assertions directly, including self-intersections.
+
+For algebraic varieties, the weak factorization theorem of Abramovich, Karu, Matsuki, and W{\l}odarczyk \cite[Theorem~0.3.1, especially clause~(6)]{AKMW2002} factors the birational identification of two compactifications into blow-ups and blow-downs with exactly these centres, preserving the common open subset.  Repeated application proves independence.  Their same theorem includes compact complex manifolds and bimeromorphic maps, giving precisely the stated analytic version.  For proper algebraic Deligne--Mumford stacks, Harper's factorization adds root constructions along boundary components \cite[Theorems~1.1--1.2]{Harper2017}.  A root construction changes the primitive scale of the normal direction and its stabilizer, but neither the connected branch-incidence sets nor their coarse simplex quotients.  Thus it leaves $K$ and $\Delta(D)$ unchanged, and the same reduction proves stack independence.
+
+For comparison with the leads, Payne's published Theorem~1.1 proves the stronger invariance of simple homotopy type; his Stepanov lemma and Remark~5.1 describe the above local operations \cite{Payne2013}.  Thuillier's non-Archimedean result over a perfect field identifies the skeleton of the punctured formal neighbourhood with the dual complex times a contractible radial factor, and proves invariance under proper modifications supported on the boundary.  In the full text actually checked, dated 28 July 2006, these are Theorem~3.25, Proposition~4.5, and Theorem~4.6 \cite{Thuillier2006}.  The publication is \cite{Thuillier2007}; we do not transfer the preprint's numbering to the journal without verification.  To derive compactification independence from the modification statement, resolve the closure of the graph of the birational identification, obtaining a common smooth proper model with boundary, and apply invariance to each projection.  The common graph is used only in the algebraic, or explicitly bimeromorphic analytic, situation where those projections are proper modifications.
+\end{proof}
+
+\subsection{What is true about weights}
+
+\begin{theorem}[Weight zero of the link and compact supports; \status{Proved}]
+\label{P4c2}
+Let $X$ be a connected smooth proper complex algebraic variety, or a connected proper smooth separated Deligne--Mumford stack over $\C$, of dimension $n$.  Let $D\ne\varnothing$ be a normal crossings divisor and $U=X-D$.  Equip the rational cohomology of $L$ with the link mixed Hodge structure.  Then pullback along $q_L$ is injective and has image exactly weight zero:
+\[
+ q_L^*:H^k(\Delta(D);\Q)\xrightarrow{\ \sim\ }W_0H^k(L;\Q)
+ \quad(k\ge0).
+\]
+For compact supports and top weights one has, for $k\ge1$,
+\[
+ W_0H_c^k(U;\Q)\simeq\widetilde H^{k-1}(\Delta(D);\Q),
+\qquad
+ \operatorname{Gr}^{W}_{2n}H^{2n-k}(U;\Q)
+ \simeq\widetilde H_{k-1}(\Delta(D);\Q)\otimes\Q(-n).
+\]
+The Tate twist is needed when the last formula is read as an isomorphism of mixed Hodge structures; it may be omitted only when remembering rational vector spaces alone.  These assertions do not assert the existence of a canonical weight filtration for unrestricted analytic manifolds.
+\end{theorem}
+\begin{proof}
+Use the normalized proper branch-intersection resolution, with branch orderings when necessary.  Its cohomology spectral sequence has terms which are sums of cohomology groups of smooth proper intersections.  Their degree-$q$ cohomology is pure of weight $q$.  Taking weight zero leaves just the degree-zero row, whose differential is the alternating incidence differential on the component flag set.  The projection of the resolution onto its component flags therefore identifies
+\[
+ q_D^*:H^k(\Delta(D);\Q)\xrightarrow{\sim}W_0H^k(D;\Q).
+\]
+This also proves that the identification is the pullback of the map in Theorem~\ref{P4a2}, rather than an abstract equality of dimensions.  Finite stabilizers and finite branch symmetries cause no difficulty rationally: take invariants in an atlas presentation, an exact operation over $\Q$.
+
+Let $i:D\hookrightarrow X$ and $j:U\hookrightarrow X$.  The triangle
+\[
+ i^!\Q_X\longrightarrow\Q_D\longrightarrow i^*Rj_*\Q_U
+\]
+induces the exact sequence of mixed Hodge structures
+\[
+ \cdots\to H_D^k(X)\to H^k(D)\to H^k(L)
+       \to H_D^{k+1}(X)\to\cdots.
+\]
+Here the identification with actual link cohomology is the local-to-global link construction; Durfee and Saito's definitions~2.7--2.8 and Propositions~2.9 and~3.5 give its derived formulation \cite{DurfeeSaito1990}.  Poincar\'e--Verdier duality gives
+\[
+ H_D^a(X)\simeq H^{2n-a}(D)^\vee(-n).
+\]
+Properness of $D$ bounds the weights of $H^{2n-a}(D)$ above by $2n-a$, so the weights of $H_D^a(X)$ are at least $a$.  Also $H_D^0(X)=0$, since $D$ contains no component of $X$.  Thus $W_0H_D^a(X)=0$ for every $a\ge0$.  Exactness and strictness of the weight filtration identify $W_0H^k(D)$ with $W_0H^k(L)$.  The map is pullback by the link retraction, which is compatible with the flag maps, proving the first assertion.
+
+Finally the pair sequence
+\[
+ \cdots\to H^{k-1}(X)\to H^{k-1}(D)\to H_c^k(U)
+       \to H^k(X)\to\cdots
+\]
+and purity of $H^a(X)$ identify weight zero for $k>1$ with $W_0H^{k-1}(D)$.  For $k=1$ they give the cokernel of $H^0(X)=\Q\to H^0(D)$, which is reduced degree-zero cohomology.  This proves the compact-support formula uniformly.  Poincar\'e duality on $U$ gives the top-weight formula, including its twist.  This is the smooth case of Payne's Proposition~4.2 and Theorem~4.4 \cite{Payne2013}; the reduction above states exactly how the manuscript's maquette enters.  For separated smooth DM stacks the corresponding top-weight theorem is Chan--Galatius--Payne, Theorem~5.8 \cite{CGP2021}; the same argument proves the link formulation.
+\end{proof}
+
+\subsection{Stable graphs and tropical curves}
+
+\begin{theorem}[The graph realization and two necessary corrections; \status{Proved}]
+\label{P4d1}
+Let $2g-2+n>0$ and let $D=\overline{\mathcal M}_{g,n}-\mathcal M_{g,n}$ over $\C$.  The coarse dual complex is
+\[
+ \Delta_{g,n}=
+ \left(\coprod_{\substack{\Gamma\ \mathrm{stable}\ (g,n)\text{-graph}\\E(\Gamma)\ne\varnothing}}
+ \left\{(\ell_e)\in\R_{\ge0}^{E(\Gamma)}:\sum_e\ell_e=1\right\}\right)\big/\sim,
+\]
+where $\sim$ identifies graph isomorphisms and contracts zero-length edges.  This is the moduli space of stable tropical curves of \emph{total length one}.  The full tropical moduli space is its cone, and is not the boundary complex.
+
+The ordinary category of stable graphs with all graph automorphisms, with classifying space interpreted homotopically, is generally not this coarse complex.  For $(g,n)=(1,1)$, restricting that category to graphs with an edge gives $B(\Z/2)$, while $\Delta_{1,1}$ is a point.  Including the no-edge graph instead supplies a terminal object and produces a contractible cone.  Thus the literal graph-category identification in Part~4(d) and Lead~5 requires these corrections.
+\end{theorem}
+\begin{proof}
+A stable curve determines its dual graph: vertices are irreducible components of its normalization, weighted by their geometric genera; edges are nodes; legs are the $n$ labels.  The normalization of the stratum with graph $\Gamma$ is the product of the connected moduli spaces $\mathcal M_{g(v),n(v)}$, modulo the finite group of graph automorphisms.  The independent smoothing parameters of the nodes are local normal coordinates to that stratum.  Hence local boundary branches are exactly $E(\Gamma)$.  Choosing nonempty nested subsets of these branches is choosing an edge-contraction flag.  Its component identifications are exactly those supplied by graph isomorphisms.  Taking normalized nonnegative weights on the branches therefore gives the displayed quotient, with a vanishing weight implementing the same contraction as smoothing the corresponding node.  Conversely, every stable graph is realized by gluing smooth pointed curves at its half-edges, and all its edge contractions occur by smoothing the corresponding independent node parameters.  This proves surjectivity, injectivity of the identifications, and compatibility of the cell topologies.  It is the boundary-link form of Abramovich--Caporaso--Payne's skeleton theorem \cite[Theorem~1.2.1]{ACP2015}, and agrees with Chan--Galatius--Payne's Corollaries~5.6--5.7 \cite{CGP2021}.  Allowing arbitrary total length adds the radial coordinate and the unique zero-length apex, proving the cone statement.
+
+In type $(1,1)$ the only stable graph with an edge has one genus-zero vertex, one marked leg, and one loop.  Its graph automorphism interchanges the two loop half-edges; it has order two and fixes the sole edge.  The coarse length-one simplex is therefore a point, whereas the classifying space of this one-object automorphism category is $B(\Z/2)$, with $H_1=\Z/2$.  The normalized bar boundary in degree two is multiplication by two; the accompanying program records this finite computation.  The finite stabilizer has not become a topological circle or a cell symmetry of positive dimension: it has simply been discarded by the coarse component construction.  This is precisely the distinction required for all genera.
+\end{proof}
+
+\begin{theorem}[Genus-zero maquettes; \status{Known}, with explicit reduction]
+\label{P4d2}
+For $n\ge4$,
+\[
+ \Delta_{0,n}\simeq\bigvee_{(n-2)!}S^{n-4}.
+\]
+For $n=3$ the boundary complex is empty (the usual $S^{-1}$ convention); types $(0,0),(0,1),(0,2)$ are not stable and are not instances of this formula.  In particular,
+\[
+ \Delta_{0,4}=\{\text{three points}\},\quad
+ \Delta_{0,5}\simeq\bigvee_6S^1,\quad
+ \Delta_{0,6}\simeq\bigvee_{24}S^2.
+\]
+Their face vectors are respectively $(3)$, $(10,15)$, and $(25,105,105)$.
+\end{theorem}
+\begin{proof}
+Root a stable labelled genus-zero tree at its leaf $n$.  Each internal edge determines the subset $A\subset\{1,\ldots,n-1\}$ on the side away from that root, with $2\le|A|\le n-2$.  Two such subsets occur in one tree exactly when they are nested or disjoint.  For completeness, the converse is constructive.  Given a laminar family of these subsets, adjoin all singleton subsets and the full set $\{1,\ldots,n-1\}$, connect every subset to the least strictly larger one in this family, and attach the root leaf $n$ to the full-set vertex.  Maximal proper subsets and residual singleton subsets partition each vertex-set into at least two parts.  Thus every internal vertex has valence at least three, and the resulting graph is a stable tree.  Its internal-edge clusters are the original family.  Removing a cluster contracts exactly its edge, so this is an isomorphism of simplicial complexes, not just a bijection on vertices.
+
+The target is exactly the Whitehouse complex in the definition in Readdy's \S2 (preprint, p.~3).  Readdy's Theorem~4.7 proves that this complex is a wedge of $(n-2)!$ spheres of dimension $n-4$ \cite{Readdy2005}.  All its hypotheses have now been checked: our labels are fixed, there are no nontrivial automorphisms of a stable tree fixing its labelled leaves, and the allowed subsets and compatibility relation coincide.  This proves the stated reduction.  Independently, the same identification is the minimal nested-set complex of the partition lattice on $n-1$ letters; Feichtner's Theorem~3.1 and Corollary~3.2 identify its subdivision with that partition complex \cite{Feichtner2006}.
+
+The finite check enumerates every subset and every compatible set of subsets.  For $n=5$ it finds ten vertices, fifteen edges, one connected component and six independent graph cycles.  For $n=6$ it finds twenty-five vertices, one hundred and five edges, and one hundred and five triangles.  Collapsing a spanning tree leaves an $81\times105$ triangle-boundary matrix whose Smith normal form has $81$ diagonal entries equal to one.  Hence $H_1=0$ integrally and $H_2=\Z^{24}$.  These are actual computations in \texttt{boundary\_checks.py}, using exact integers, consistent with the full homotopy theorem.  The complex here is the finite quotient of the sphere's curve complex by the pure mapping class group; it is not the infinite curve complex or the rank-selected lifted poset used in Part~5.  Its finite Betti numbers alone therefore cannot prove the connectivity claim in Lead~6.
+\end{proof}
+
+\subsection{Information discarded by the maquette}
+
+\begin{proposition}[Identical maquettes and different links; \status{Proved}]
+\label{P4e}
+The pairs $(\PP^2,\text{line})$ and $(\PP^2,\text{smooth conic})$ have the same dual complex, a point, but have non-homotopy-equivalent links at infinity.  Their links are respectively $S^3$ and the oriented circle bundle of Euler number $4$ over $S^2$ (a lens space with fundamental group $\Z/4$).  More generally, the map to the maquette discards the homotopy types of strata, angular lattices, their monodromy and characteristic classes, and the coherent incidence maps between these data.
+\end{proposition}
+\begin{proof}
+A smooth connected divisor has one dual vertex.  Its link is the unit circle bundle of its normal line bundle.  For a line in $\PP^2$, the normal bundle has degree one and its unit circle bundle is the Hopf $S^3$.  A smooth conic is $\PP^1$, and $\mathcal O_{\PP^2}(2)$ restricts to $\mathcal O_{\PP^1}(4)$, so its normal degree is four.  The homotopy sequence of its circle bundle contains
+\[
+ \pi_2(S^2)=\Z\xrightarrow{\times4}\pi_1(S^1)=\Z
+ \longrightarrow\pi_1(L)\longrightarrow0,
+\]
+which gives $\pi_1(L)=\Z/4$.  Equivalently it is the quotient of the Hopf circle bundle by the fourth roots of unity in each fibre.  Both links have $H_3=\Z$, but their first homology groups are $0$ and $\Z/4$.  The program records the corresponding integral cokernels.  The distinction is not only torsion: for $(\PP^1\times E,\{\infty\}\times E)$, with $E$ an elliptic curve, the same one-vertex complex has link $E\times S^1$, with $H_1=\Z^3$.
+
+The complete content added by the exit paths at infinity is the diagram $Y_L$ of Theorem~\ref{P4a2}, including all coherent maps, whose homotopy colimit is $L$.  Replacing every value by its component discards precisely that enrichment.  In the algebraic proper case its rational cohomological remainder is weight zero by Theorem~\ref{P4c2}; higher weights and integral torsion are not determined by the maquette.  The two explicit pairs already prove failure of reconstruction even when the dual complex is contractible.
+\end{proof}

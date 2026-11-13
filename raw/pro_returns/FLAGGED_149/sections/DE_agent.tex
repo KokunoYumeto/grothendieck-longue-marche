@@ -1,0 +1,303 @@
+% Parts D--E. Intermediate authoring fragment; root supplies the result environment.
+\section{D. Valuations and the birational quotient}
+\label{sec:DE-valuations}
+Throughout this part, $L/K$ is a finitely generated field extension of characteristic zero. We fix an algebraic closure $\overline L$, put $\overline K=\overline L\cap K^{\mathrm{alg}}$, and write $G_L=\operatorname{Gal}(\overline L/L)$ and $P_{L/K}=\operatorname{Gal}(\overline L/L\overline K)$. A valuation $v$ is trivial on $K$, and a chosen prolongation $\overline v$ to $\overline L$ fixes its decomposition group $D_v$ and inertia group $I_v$ as actual closed subgroups. Changing the prolongation conjugates both by $G_L$. We use additive value groups $\Gamma_v=v(L^\times)$ and residue fields $\kappa(v)$. The notation $T=\widehat{\mathbb Z}(1)$ means $\varprojlim_n\mu_n(\overline K)$, with power transition maps.\par
+The distinction between the initially discrete valuations of scans 117--120 and the arbitrary valuations of scans 121--127 changes several answers. We give explicit comparison homomorphisms throughout; no inference about a valuation is made merely from its rational rank.
+
+\begin{result}{D1}{Known}{The model-independent quotient (F18)}
+Let $X$ and $Y$ be proper, regular, integral finite-type $K$-schemes with function field $L$. Their finite \emph{\'etale} extensions of $L$ form the same full subcategory of finite separable $L$-algebras. Consequently their quotients $G_L\twoheadrightarrow\pi_1(X)$ and $G_L\twoheadrightarrow\pi_1(Y)$ have the same kernel, with the generic geometric point fixed. The assertion also holds in positive characteristic whenever these proper regular models exist.
+\par\emph{Passage:} cote 149, \S4, manuscript p.~57, scans 115--116, ``ne d\'epend pas du mod\`ele $X$ choisi''.
+\end{result}
+\begin{proof}
+We use purity in the form of Stacks, Lemma 58.21.4, Tag 0BMB \cite{DE_StacksPurity}: for a quasi-finite morphism of locally noetherian schemes, a normal source local ring and a regular target local ring of the same positive dimension, unramifiedness at the generizations of source codimension one implies \emph{\'etaleness} at the point under consideration. These are all the hypotheses used below.
+Let $M/L$ be a connected finite \emph{\'etale} cover of $X$. At a codimension-one point $y$ of $Y$, properness of $X$ extends the generic map $\operatorname{Spec}L\to X$ uniquely to $\operatorname{Spec}\mathcal O_{Y,y}\to X$. Pullback of the given cover is finite \emph{\'etale}; its generic algebra is $M$. The normalization $Y_M$ of $Y$ in $M$ is finite, because finite-type schemes over fields are excellent. Thus $Y_M\to Y$ is unramified at every codimension-one point. Purity makes it \emph{\'etale} everywhere. Exchanging $X,Y$ proves equality of the two categories. Their fiber functors are both the set of $L$-embeddings into $\overline L$, so their corresponding kernels in $G_L$ agree. This proves equality as quotients, including the specified generic base point.
+\end{proof}
+
+\begin{result}{D2}{Proved}{Riemann--Zariski points and the noetherian correction (F21)}
+The inverse limit of all proper integral $K$-models of $L$, with its colimit local rings, has points exactly the valuation rings $V$ of $L$ containing $K$. This identification uses no resolution of singularities. Its noetherian local rings are exactly $L$ and the discrete valuation rings of $L/K$. A discrete valuation ring need not be divisorial: there exists one for $\mathbb Q(x,y)/\mathbb Q$ with residue field $\mathbb Q$ and hence manuscript codimension two.
+\par\emph{Passage:} cote 149, \S4, manuscript pp.~60--61, scans 121--123.
+\end{result}
+\begin{proof}
+Products followed by the closure of the common generic point give a directed family of models. For a compatible point $a=(a_X)_X$, the union $V_a=\varinjlim_X\mathcal O_{X,a_X}\subset L$ is local and contains $K$. For $f\in L^\times$, take the closure of the graph of the rational map $f:X\dashrightarrow\mathbb P^1_K$. This is a proper model with a morphism to $\mathbb P^1_K$. At its center, either $f$ or $f^{-1}$ is regular. Therefore $V_a$ is a valuation ring, and its fraction field is $L$.
+Conversely properness gives a unique center on each model to $\operatorname{Spec}V\to\operatorname{Spec}K$ and its generic identification with $\operatorname{Spec}L$. The centers are compatible. To prove that their colimit ring is exactly $V$, take $f\in V$ and use the same graph model. The map $\operatorname{Spec}V\to\mathbb P^1$ defined by $f$ has its closed point in the finite affine chart, so $f$ belongs to the local ring at the center on that graph. This proves both inverse identifications. Normalizing models gives the same limit and does not change the proof.
+In a valuation ring a finitely generated ideal is principal, since any two principal ideals are comparable. A noetherian valuation domain is therefore a local principal ideal domain. For a nonfield let $\mathfrak m=(\varpi)$. Every nonzero element is a unit times a nonnegative power of $\varpi$: otherwise repeatedly dividing that element by $\varpi$ produces a strictly increasing chain of principal ideals. Hence its value group is $\mathbb Z$ and it is a DVR. Conversely a DVR and a field are noetherian.
+For the counterexample let $h(t)=\sum_{j\ge2}t^{j!}\in\mathbb Q[[t]]$, and put $x=t$, $y=t^2+t^3h(t)$. The series $h$ is transcendental over $\mathbb Q(t)$: viewed on the complex unit disc, for every root of unity $\zeta$ the terms $\zeta^{j!}$ are eventually $1$, so $h(r\zeta)$ tends to infinity as $r\uparrow1$. An algebraic function has only finitely many branch points and poles on the complex projective line, whereas this gives infinitely many singularities. Thus $\mathbb Q(x,y)$ embeds in $\mathbb Q((t))$. Its restricted $t$-adic valuation has value group $\mathbb Z$, because $t=x$ belongs to the field, and residue field $\mathbb Q$, because every Laurent coefficient is rational. Its valuation ring is a DVR. Since $\operatorname{trdeg}_{\mathbb Q}\mathbb Q(x,y)=2$ and $\operatorname{trdeg}_{\mathbb Q}\kappa(v)=0$, the codimension defined at scan 121 is two. This refutes the asserted exhaustion by the generic and divisorial points.
+\end{proof}
+
+\begin{result}{D3}{Proved}{Explicit valuations with divisible value groups}
+For $K$ of characteristic zero and $L=K(x,y)$, the following valuations trivial on $K$ exist:
+\[
+ (\Gamma_v,\kappa(v))=(\mathbb Q,K),\qquad
+ (\Gamma_v,\kappa(v))=(\mathbb Z[1/2],K).
+\]
+They have centers on the boundary of $(\mathbb P^1\setminus\{0,1,\infty\})^2$, and their centers can lie on only one boundary component. This construction will supply the corrections to F19, F20, F22 and F25.
+\par\emph{Passages:} cote 149, \S4, manuscript pp.~59--65, scans 119--131.
+\end{result}
+\begin{proof}
+Work in the Hahn field $K((t^{\mathbb Q}))$. Take $N_j=j!$ for $j\ge1$, or take $N_j=2^j$ for $j\ge1$, respectively. Put
+\[
+ a_j=j+N_j^{-1},\quad s_m=\sum_{j=1}^m t^{a_j},\quad
+ x=t,\quad y=2+\sum_{j\ge1}t^{a_j}.
+\]
+The support is well ordered and the sums belong to the Hahn field. Only the subfield of series whose supports are finite below each real bound is needed here: sums and products are defined coefficientwise, and the inverse of a series is obtained by factoring out its least monomial and using the geometric series, whose remaining terms have a positive least exponent. This verifies the required field operations directly. We prove directly that the value group of $K(t,y)$ is $\bigcup_mN_m^{-1}\mathbb Z$. For a fixed $m$, form
+\[
+ P_m(X,Y)=\operatorname{Norm}_{K(X^{1/N_m})/K(X)}
+ \left(Y-2-\sum_{j=1}^mX^{a_j}\right)\in K(X)[Y].
+\]
+In a splitting field this is a product indexed by $N_m$ roots of unity. The partial sum $s_m$ has $N_m$ distinct conjugates: its last exponent has numerator coprime to $N_m$, and equality of Hahn series forces equality coefficient by coefficient. At $(X,Y)=(t,y)$ the identity factor has value $a_{m+1}$, while every other factor has value in $N_m^{-1}\mathbb Z$, since its first nonzero term occurs in the difference of two partial sums. Hence
+\[
+ v(P_m(t,y))=a_{m+1}+c_m,\qquad c_m\in N_m^{-1}\mathbb Z.
+\]
+Starting with $v(x)=1$ and $v(y-2)=a_1$, induction gives $1/N_m$ in the value group and then $1/N_{m+1}$ by subtracting $c_m+(m+1)$. The reverse containment follows because every term of a rational expression in $t,y$ has exponent in the union group. If $y$ were algebraic over $K(t)$, the fundamental inequality would bound the index of its value group over $\mathbb Z$ by $[K(t,y):K(t)]$, contradicting this unbounded index. Thus the indicated field is a rational function field in two variables. Its residue field is $K$, since all leading coefficients of its Hahn series belong to $K$.
+On the product compactification its center is $(0,2)$. The element $x$ has positive value, while $y$ and $y-1$ are units. Thus this center lies on precisely the boundary branch $x=0$. The same construction with $y$ instead of $y-2$ gives a center at $(0,0)$.
+\end{proof}
+
+\begin{result}{D4}{Known}{Inertia, its ranks, and a splitting (F22)}
+For every valuation $v$ of $L/K$ there are a continuous exact sequence and a canonical pairing
+\[
+ 1\longrightarrow I_v\longrightarrow D_v\longrightarrow G_{\kappa(v)}\longrightarrow1,
+ \qquad
+ I_v\simeq\operatorname{Hom}\bigl(\Gamma_v\otimes\mathbb Q/\Gamma_v,\mu_\infty\bigr)
+ \simeq\operatorname{Hom}(\Gamma_v,T).
+\]
+The sequence has a continuous splitting, with no canonical choice. The conjugation action on inertia is the cyclotomic action on the values in $T$. More precisely,
+\[
+ I_v\simeq\prod_{\ell}\mathbb Z_\ell(1)^{r_\ell},\qquad
+ r_\ell=\dim_{\mathbb F_\ell}(\Gamma_v/\ell\Gamma_v)
+ \le\dim_{\mathbb Q}(\Gamma_v\otimes\mathbb Q)
+ \le\operatorname{trdeg}_K L-\operatorname{trdeg}_K\kappa(v).
+\]
+The product decomposition is noncanonical. Neither the manuscript codimension nor, in general, the rational rank determines the inertia group. In particular $\Gamma_v=\mathbb Q$ gives $I_v=1$, and $\Gamma_v=\mathbb Z[1/2]$ gives $I_v=\prod_{\ell\ne2}\mathbb Z_\ell(1)$.
+\par\emph{Passage:} cote 149, \S4, manuscript p.~61, scan 124, ``des $T_\infty^\alpha$ essentiellement'' and ``scinder''.
+\end{result}
+\begin{proof}
+The fixed field of $D_v$ is the chosen henselization $L_v^h$. Reduction of finite \emph{\'etale} extensions of its valuation ring gives the quotient $G_{\kappa(v)}$ and its kernel $I_v$. The fixed field $F=\overline L^{I_v}$ is strictly henselian, has residue field $\kappa(v)^{\mathrm{sep}}$, and has value group $\Gamma_v$.
+The precise tame input is Temkin, Theorem 3.4.4 and Corollary 3.5.3 \cite{DE_Temkin}: over a strictly henselian field, a value-group enlargement with quotient of order prime to the residue characteristic determines the corresponding tame extension and its character group; wild inertia is a pro-$p$ group in residue characteristic $p$, and is trivial in residue characteristic zero. Thus all algebraic extensions of $F$ are obtained by adjoining the roots of elements representing the divisible hull of $\Gamma_v$. For $a\in F^\times$, $a^{1/n}\in\overline L$, and $\sigma\in I_v$, the value
+\[
+ \langle\sigma,v(a)/n\bmod\Gamma_v\rangle
+ =\sigma(a^{1/n})/a^{1/n}\in\mu_n
+\]
+is independent of $a$ and the root: units in $F$ have all $n$th roots in $F$ by the simple-root form of Hensel's lemma. These finite Kummer pairings give the first character-group identification. Sending a character $c$ to the compatible functions
+$\gamma\mapsto c(\gamma/n\bmod\Gamma_v)$ gives the second one. This explicitly types the comparison with $T$.
+The torsion group $\Gamma_v\otimes\mathbb Q/\Gamma_v$ is divisible, and its $\ell$-torsion is $\Gamma_v/\ell\Gamma_v$ via $\gamma\mapsto\gamma/\ell$. The classification of divisible torsion abelian groups, obtained by successively choosing compatible $\ell$th roots of a basis of the $\ell$-torsion, therefore gives the displayed $\ell$-adic factors. Linear independence modulo $\ell$ implies rational linear independence after clearing denominators and canceling a maximal common power of $\ell$, proving the first bound. For the last bound, choose elements with rationally independent values and units whose residues are algebraically independent. Any polynomial relation in them has a unique least-value collection of monomials, and the coefficient of this least value remains a nonzero polynomial in the independent residues. This proves their algebraic independence and the bound.
+We include a direct construction of a complement. Among algebraic extensions of $L_v^h$ in $\overline L$ having unchanged residue field, choose a maximal one $M$ by unions of chains. Its value group is divisible. Indeed, a value $\gamma\notin\ell\Gamma_M$ gives a degree-$\ell$ extension by an $\ell$th root of an element of value $\gamma$; its ramification index is already $\ell$, so its residue extension is trivial, contradicting maximality. The field $M$ is henselian. Every finite extension of a henselian field of residue characteristic zero has degree equal to its ramification index times residue degree; this is the characteristic-zero case of the defect formula, also recorded as Corollary 2.9 of \cite{DE_KuhlmannTame}. Its maximal unramified extension has divisible value group and algebraically closed residue field, and hence admits no further finite extension. Therefore $G_M\to G_{\kappa(v)}$ is an isomorphism. Its inverse, followed by $G_M\hookrightarrow D_v$, is the required section. This is also the characteristic-zero instance of Haran--Jarden--Pop, Proposition 7.3(a) \cite{DE_HJP}.
+Every element of $D_v$ fixes the value of every element of $L$; applying it to the Kummer quotient above changes only the root of unity. This proves the cyclotomic action and also proves $I_v\subset P_{L/K}$.
+\end{proof}
+
+\begin{result}{D5}{Proved}{The exact inertia normalizer for arbitrary valuations (F19)}
+Let $I_v\ne1$. Let $\Delta_v$ be the largest divisible convex subgroup of the ordered group $\Gamma_v$, and let $w$ be the coarsening with value group $\Gamma_v/\Delta_v$, with its prolongation induced by $\overline v$. Then
+\[
+ I_w=I_v,\qquad N_{G_L}(I_v)=D_w,
+ \qquad N_{P_{L/K}}(I_v)=D_w\cap P_{L/K}.
+\]
+There is an exact sequence
+\[
+ 1\longrightarrow I_v\longrightarrow N_{P_{L/K}}(I_v)
+ \longrightarrow G_{\kappa(w)\overline K}\longrightarrow1.
+\]
+Here $\kappa(w)\overline K$ is the compositum inside the residue algebraic closure induced by $\overline v$. Consequently geometric self-normalization holds precisely when that compositum is separably closed. The arithmetic identity $N_{G_L}(I_v)=D_v$ holds precisely when the induced residual valuation $v/w$ is henselian on $\kappa(w)$. It holds in particular for every rank-one valuation with nontrivial inertia, including every DVR. For $I_v=1$ the inertia normalizer is all of $G_L$.
+\par\emph{Passages:} cote 149, \S4, manuscript pp.~59 and 63, scans 119--120 and 127.
+\end{result}
+\begin{proof}
+Convex subgroups form a chain, and a union of divisible subgroups in that chain is divisible, so $\Delta_v$ exists. For a convex subgroup $\Delta\subset\Gamma_v$ the quotient is torsion free. The resulting exact sequence of divisible torsion groups, followed by character duality, gives
+\[
+ 1\longrightarrow I_{v/\Delta}\longrightarrow I_v
+ \longrightarrow\operatorname{Hom}(\Delta,T)\longrightarrow1.
+\]
+The first arrow is the actual subgroup inclusion of the inertia of the coarsening: in the Kummer pairing it is pullback along $\Gamma_v\to\Gamma_v/\Delta$. In particular it is an equality precisely when $\Delta$ is divisible. This proves $I_w=I_v$.
+Set $F=\overline L^{I_v}$. It is henselian for the induced valuation, has separably closed residue field, and value group $\Gamma_v$. A coarsening of that valuation has separably closed residue field precisely when its convex kernel is divisible. To verify this assertion, the residual refinement is henselian of characteristic zero, has separably closed final residue field and value group that convex kernel; D4 identifies its absolute Galois group with the character group of that kernel. Thus $w|F$ is the coarsest henselian valuation on $F$ with separably closed residue field.
+We justify ``coarsest'' among all such valuations, not merely those already in the displayed chain. The exact input is the F.~K.~Schmidt theorem in Kuhlmann, Theorem 9.44 and Corollary 9.45 \cite{DE_KuhlmannHensel}: two independent nontrivial henselian valuations force a field to be separably closed; for two incomparable henselian valuations the residue field of their finest common coarsening is separably closed. Given another henselian valuation $u$ of $F$ with separably closed residue field, incomparability with $w|F$ would give a strictly coarser such valuation, contrary to the construction. Comparability then shows that $u$ refines $w|F$. Since $I_v\ne1$, $F$ is not separably closed, and this coarsest valuation is nontrivial.
+An element $g\in N_{G_L}(I_v)$ acts on $F$ as an $L$-automorphism. The just-proved intrinsic description makes it preserve $w|F$. Henselianity gives a unique extension of $w|F$ to $\overline L$, so $g\in D_w$. Conversely $D_w$ normalizes $I_w=I_v$ by the definition of inertia. This proves the arithmetic formula, and intersection with the explicitly specified subgroup $P_{L/K}$ proves the geometric formula. Reduction identifies the kernel of $D_w\to G_K$ with the inverse image of $G_{\kappa(w)\overline K}$; its kernel in that sequence is $I_v$. Finally $D_v$ is the inverse image in $D_w$ of the decomposition group of $v/w$ on $\kappa(w)$. That subgroup is the whole residue Galois group exactly when the residual valuation is henselian. Rank one has only the convex subgroups $0,\Gamma_v$; nontrivial inertia excludes the divisibility of the latter, so then $w=v$.
+\end{proof}
+
+\begin{result}{D6}{Refuted}{Both unqualified self-normalization assertions (F19)}
+The geometric assertion $N_{P_{L/K}}(I_v)=I_v$ is false for the $x$-adic valuation of $L=\mathbb Q(x,y)$ over $K=\mathbb Q$. The arithmetic assertion $N_{G_L}(I_v)=D_v$ is false for general valuations with $I_v\ne1$, already for $L=\mathbb Q(x,y,z)$. D5 is the exact replacement.
+\par\emph{Passages:} cote 149, \S4, manuscript pp.~59 and 63, scans 119--120 and 127.
+\end{result}
+\begin{proof}
+For the first example $\Gamma_v=\mathbb Z$ and $\kappa(v)=\mathbb Q(y)$. The last quotient in D5 is $G_{\overline{\mathbb Q}(y)}$, which has the nontrivial quadratic extension obtained by adjoining $\sqrt y$. Thus the normalizer strictly contains $I_v$.
+For the second let $w$ be the $x$-adic valuation of $\mathbb Q(x,y,z)$, and on $\kappa(w)=\mathbb Q(y,z)$ take the valuation $r$ of D3 with $\Gamma_r=\mathbb Q$, $\kappa(r)=\mathbb Q$, $r(y)>0$. Compose $w$ and $r$ to obtain $v$. Its value group is $\mathbb Z\oplus_{\mathrm{lex}}\mathbb Q$; the divisible convex subgroup is the second factor. Therefore $I_v=I_w=T$ and $N_{G_L}(I_v)=D_w$.
+The residual decomposition group $D_r$ is proper. Indeed $Z^2-(1+y)$ is irreducible over $\mathbb Q(y,z)$, and its two roots have residues $+1,-1$ under the two prolongations of $r$. They give different valuations on this quadratic field: the root minus $1$ has positive value for the first and value zero for the second. Thus $D_r$ has trivial image in this quadratic quotient. Since $D_v$ is the inverse image of $D_r$ in $D_w$, it is a proper subgroup. These are actual unequal subgroups for compatible choices of prolongations, with the same nonzero inertia subgroup.
+\end{proof}
+
+\begin{result}{D7}{Refuted}{Detecting a center: the DVR assertion and its arbitrary-valuation extension (F20)}
+For a DVR $V$ of $L/K$ and an elementary tower $U/K$ of smooth curves with good relative compactifications and no fiber of type $(0,0)$ or $(0,1)$, the homomorphism $I_v\to\pi_1(U)$ is trivial precisely when $V$ has a center on $U$. For an arbitrary valuation, having a center still implies that this homomorphism is trivial, but its converse is false even for $U=(\mathbb P^1\setminus\{0,1,\infty\})^2$. Outside the indicated curve-type hypothesis the converse fails already for $\mathbb A^1$ and a DVR.
+\par\emph{Passage:} cote 149, \S4, manuscript p.~59, scan 120, ``A t-on une r\'eciproque?''.
+\end{result}
+\begin{proof}
+For every valuation with a center, the morphism from its generic point to $U$ extends to $\operatorname{Spec}V$. After strict henselization its inertia homomorphism factors through $\pi_1(\operatorname{Spec}V^{\mathrm{sh}})=1$. This proves the implication without a discreteness hypothesis.
+For a DVR, make this same strict henselian base change and apply the trait criterion of C2 successively along the tower. If the composite generic map has trivial fundamental-group image, its projection to the next stage has trivial image, so it extends there by induction. Relative to this extended base map, C2 extends the generic map to the last curve. For hyperbolic fibers this is exactly Hoshi's Lemma 2.8 \cite{DE_Hoshi}; the $(0,2)$ case uses Kummer theory, and the proper $(1,0)$ case uses the valuative criterion of properness, as proved in C2. Uniqueness by separatedness descends the extended map from the strict henselization to $V$: the two pullbacks agree at the generic point and therefore agree everywhere. All the homomorphisms in this induction are those induced by the displayed tower projections and base changes.
+Now use the valuation with group $\mathbb Q$ in D3. Its center on $(\mathbb P^1)^2$ is $(0,2)$, outside $U$, and uniqueness of centers on the proper separated compactification rules out a center on $U$. But D4 gives $I_v=1$, so the homomorphism is trivial. Finally the valuation at infinity of $K(t)$ has no center on $\mathbb A^1_K$, while its geometric inertia dies in $\pi_1(\mathbb A^1_K)=G_K$ in characteristic zero. This is the promised counterexample without the curve-type restriction.
+\end{proof}
+
+\begin{result}{D8}{Proved}{Restriction of valuation rings and of local Galois groups (F23)}
+Let $K\subset L_1\subset L$ and $V_1=V\cap L_1$. Then $V_1$ is a valuation ring with fraction field $L_1$, and reduction embeds $\kappa(V_1)$ into $\kappa(V)$. With compatible algebraic closures and prolongations, restriction gives continuous homomorphisms
+\[
+ D_V\longrightarrow D_{V_1},\qquad I_V\longrightarrow I_{V_1}.
+\]
+Their existence does not assert that either homomorphism is injective or surjective. If $L_1/K$ has transcendence degree one and $\kappa(V)$ is algebraic over $K$, $V_1$ is the DVR of a closed point on the proper smooth curve with function field $L_1$.
+\par\emph{Passage:} cote 149, \S4, manuscript p.~62, scans 125--126.
+\end{result}
+\begin{proof}
+For $a\in L_1^\times$, either $a\in V$ or $a^{-1}\in V$; these alternatives take place in $V_1$. Moreover either $a=a/1$ or $a=1/a^{-1}$ is a quotient of elements of $V_1$, proving its fraction-field assertion directly. The maximal ideal is $\mathfrak m_V\cap V_1$, so the residue map is injective. Inside $\overline L$, let $\overline {L_1}$ be the algebraic closure of $L_1$. An automorphism preserving the prolonged valuation on $\overline L$ preserves its restriction. An inertia automorphism acts identically on the larger residue field and hence on the residue subfield of $\overline {L_1}$. This proves the two homomorphisms, and their continuity is continuity of restriction in the Krull topology.
+In transcendence degree one, a nontrivial valuation trivial on $K$ has its center at a closed point of the proper smooth curve. The local ring there is a DVR, and any valuation ring of the same function field dominating a DVR is either that DVR or the field; the latter has no closed-point center. The valuation cannot be trivial because its residue field would then be $L_1$, which does not embed over $K$ in the algebraic field $\kappa(V)$. This proves the final assertion.
+\end{proof}
+
+\begin{result}{D9}{Refuted}{The written function-field formula at scan 127 (F24)}
+Assume here that $K$ is finitely generated over $\mathbb Q$. The two assertions (32)--(33) with subscript $L$ have the same truth value, but their common assertion of triviality is false. For $L=\mathbb Q(t)$, the $t$-adic place, and a decomposition section $s:G_{\mathbb Q}\to D_v\subset G_L$, both fixed groups are $I_v=T\ne1$. Under the quotient to $\pi_1(U)$ for $U=\mathbb P^1\setminus\{1,2,\infty\}$, this section becomes the point section at $0$ and both fixed groups become trivial. For point sections of elementary anabelian $U$ the corresponding $U$-formulas hold.
+\par\emph{Passage:} cote 149, \S4, manuscript p.~63, scans 127--128, (32)--(33).
+\end{result}
+\begin{proof}
+We use the attached return \cite[Statements B6--B8 and C6]{DE_CyclotomicReturn}, whose maps and arguments were reread here. In B6 the quotient $G_L\to G_K$ sends any element centralizing $s(G_K^\circ)$ into $C_{G_K}(G_K^\circ)=1$, so the arithmetic centralizer equals its intersection with $P_{L/K}$. This proves the equivalence using the actual inclusion $P_{L/K}\hookrightarrow G_L$. In B7 the compatible inertia groups on the hyperbolic open curves in the function field inverse system identify the centralizer of a decomposition section with $I_v$; B8 applies it to the explicit point above. Nontriviality is witnessed already by $\sqrt t$, whose inertia quotient is $\mathbb Z/2$. The continuous quotient $q_U:G_L\twoheadrightarrow\pi_1(U)$ kills $I_v$, because $0$ is an interior point. Its image section is the point section at $0$, whose centralizer is trivial by C6, proved there by induction through the fiber inclusions and tower projections. We do not infer the reverse centralizer implication under $q_U$.
+The scan was also visually inspected: it supports the written $L$ in both formulas. The mathematics corrects the assertion to its model quotient in this context; it does not justify changing the transcription silently.
+\end{proof}
+
+\begin{result}{D10}{Proved}{Normalizers of decomposition groups (completion of F19)}
+Put $H=L_v^h$. If $\kappa(v)$ is not separably closed, then
+\[
+ N_{G_L}(D_v)=D_v.
+\]
+If $\kappa(v)$ is separably closed, then $D_v=I_v$; its normalizer is $D_w$ as in D5 when $I_v\ne1$, and is $G_L$ when $I_v=1$. In all cases $N_{P_{L/K}}(D_v)=N_{G_L}(D_v)\cap P_{L/K}$. For the geometric decomposition subgroup $D_v^{\mathrm{geom}}=D_v\cap P_{L/K}$, the same alternatives hold with $G_L,L,\kappa(v)$ replaced by $P_{L/K},L\overline K,\kappa(v)\overline K$: it is self-normalizing when this last residue field is not separably closed; otherwise it equals $I_v$ and D5 gives its normalizer.
+\par\emph{Passages:} cote 149, \S4, manuscript pp.~59 and 63, scans 119--120 and 127.
+\end{result}
+\begin{proof}
+An element of $N_{G_L}(D_v)$ restricts to an $L$-automorphism of $H$. The given valuation on $H$ is henselian and immediate over $L$: its value group and residue field are $\Gamma_v$ and $\kappa(v)$. The transported valuation under that automorphism is another henselian valuation, with the same restriction to $L$. If the two valuations were incomparable, Corollary 9.45 of \cite{DE_KuhlmannHensel} would make the residue field of their finest common coarsening separably closed. The residue of every valuation of a separably closed field in characteristic zero is algebraically closed: a monic polynomial over the residue field lifts to a monic polynomial over the valuation ring, splits in the algebraically closed field, and its integral roots reduce to a splitting. The residue field $\kappa(v)$ of the refinement would therefore be separably closed, a contradiction. The two valuations are thus comparable. A proper coarsening of the valuation on $H$ kills a nonzero convex subgroup of $\Gamma_v$; because $H/L$ is immediate, that subgroup already contains values of elements of $L$. It cannot have the same restriction to $L$. Therefore the two valuations coincide. Uniqueness of prolongation of a henselian valuation to $\overline L$ puts the normalizer element in $D_v$.
+When $\kappa(v)$ is separably closed the decomposition--inertia exact sequence in D4 gives $D_v=I_v$, proving the other alternatives by D5. Restriction of the chosen valuation to $L\overline K$ has unchanged value group and residue field $\kappa(v)\overline K$. Its decomposition group in $\operatorname{Gal}(\overline L/L\overline K)$ is exactly $D_v\cap P_{L/K}$ by the definition as a stabilizer. Applying the proof just given to that field proves the geometric assertion, with all subgroup comparisons explicit.
+\end{proof}
+
+\section{E. Boundary meridians and the homotopy obstruction}
+\label{sec:DE-boundary}
+We write $X$ for a smooth proper compactification of a smooth $U$ in characteristic zero, and $D=X\setminus U$ for a simple normal crossings divisor. At a geometric point $\bar x$ on exactly $r$ branches, choose regular parameters $z_1,\ldots,z_r$ defining them and a compatible geometric generic point. All meridian homomorphisms below are genuine continuous homomorphisms with these choices; changing the connecting path conjugates their images in $\pi_1(U)$.
+
+\begin{result}{E1}{Proved}{The local group and the two local injectivity assertions (F25, 1$^\circ$)}
+For the strict henselization $R=\mathcal O_{X,\bar x}^{\mathrm{sh}}$ there is a parameter-labelled isomorphism
+\[
+ \pi_1\bigl(\operatorname{Spec}R[1/(z_1\cdots z_r)]\bigr)=T^r.
+\]
+Its $i$th factor is the meridian of $D_i$, characterized by its action on compatible roots of $z_i$. For an ordinary point $x$, the henselian local group fits into
+\[
+ 1\longrightarrow T^r\longrightarrow
+ \pi_1\bigl(\operatorname{Spec}\mathcal O_{X,x}^{h}\cap U\bigr)
+ \longrightarrow G_{\kappa(x)}\longrightarrow1.
+\]
+When $\kappa(x)/K$ is finite, injectivity of the entire local homomorphism into $\pi_1(U)$ is equivalent to injectivity of its restriction to $T^r$. This equivalence does not hold for general nonclosed points. If $U$ is a hyperbolic elementary polycurve, each individual branch meridian $T\to\pi_1(U)$ is injective, so the geometric local homomorphism is injective whenever $r=1$.
+\par\emph{Passage:} cote 149, \S4, manuscript pp.~64--65, scans 130--131, the two versions of 1$^\circ$.
+\end{result}
+\begin{proof}
+Adjoining all $N$th roots of the $z_i$ gives a finite cover of the punctured local scheme with group $(\mu_N)^r$. The corresponding ring over $R$ is regular local and strictly henselian: the adjoined roots replace the first $r$ members of a regular system of parameters, and the residue field is unchanged. Conversely, take a connected finite \emph{\'etale} cover of the punctured scheme and normalize $R$ in its function field. This normalization is finite because $R$ is excellent. The possible codimension-one ramification is confined to the $z_i=0$. Choose $N$ divisible by the inertia exponents of its finite Galois closure at all those divisors. D4, applied to their henselian DVRs, shows that adjoining the indicated roots kills that ramification: its character pairing becomes restriction along $\mathbb Z\hookrightarrow N^{-1}\mathbb Z$, and the finite inertia quotient becomes trivial. The normalization after this base change is unramified in codimension one. Purity, with the regular target and normal finite source of D1, makes it \emph{\'etale} everywhere, and strict henselianity makes it a disjoint union of copies of the base. Thus these Kummer covers are cofinal, proving the displayed group and its specified generators. Descent from the strict henselization to the henselization gives the second exact sequence.
+The composite of the local homomorphism with $\pi_1(U)\to G_K$ is reduction $G_{\kappa(x)}\to G_K$. For a finite residue extension this last map is the injective restriction map associated to the chosen embedding $\kappa(x)\subset\overline K$. A kernel element of the entire local map consequently lies in $T^r$, proving the equivalence.
+For the one-branch assertion, take the DVR at the generic point of that branch. Follow its generic map through the hyperbolic tower and let $U_i\to U_{i-1}$ be the first stage to which the map does not extend, although its projection extends. Its good relative compactification gives a boundary section after an unramified residue extension. C3 identifies the inertia homomorphism, followed by $\pi_1(U)\to\pi_1(U_i)$, with multiplication by a positive intersection multiplicity $\mu$ followed by that cusp's inertia embedding into the fiber group. The latter embedding is injective by the hyperbolic loop theorem of A, and the fiber group embeds into $\pi_1(U_i)$: Hoshi, Proposition 2.4(i), gives this exact sequence for a hyperbolic curve over a connected normal locally noetherian base \cite{DE_Hoshi}. Multiplication by $\mu$ is injective on $T$. Thus the original divisorial inertia is injective. The $i$th local coordinate factor above identifies with this inertia by the common Kummer character of $z_i$, proving the assertion at every $\bar x$.
+Finally the need for the finite-residue hypothesis is explicit on a product $U=C_1\times C_2$ of affine hyperbolic curves. Take $x$ to be the generic point of the divisor $\{c\}\times\overline C_2$, where $c$ is a $K$-rational cusp of $C_1$. The residue field is $K(C_2)$. Product coordinates and a tangential parameter at $c$ give a section of the local group over $G_{K(C_2)}$ whose global image in $\pi_1(U)$ is the tangential section in the first factor and $G_{K(C_2)}\to\pi_1(C_2)$ in the second. At an interior rational point of $C_2$, the latter homomorphism kills its nonzero inertia group, and its image in $G_K$ is also trivial. Its image under the displayed local section is therefore a nontrivial kernel subgroup of the whole local homomorphism. The local meridian $T$ still embeds in the first curve factor. Taking $C_1=C_2=\mathbb P^1\setminus\{0,1,\infty\}$ supplies all rational points and parameters used here.
+\end{proof}
+
+\begin{result}{E2}{Refuted}{The blow-up map, and the product compactification (F25, 1$^\circ$)}
+For $U=(\mathbb P^1\setminus\{0,1,\infty\})^2$, blow up $(0,2)$ in $(\mathbb P^1)^2$. At the intersection of the exceptional divisor with the strict transform of $x=0$, the local homomorphism is
+\[
+ T^2\longrightarrow T\hookrightarrow\pi_1(U),\qquad (a,b)\longmapsto a+b.
+\]
+Its kernel is $\{(a,-a):a\in T\}$. Thus 1$^\circ$ is false even for an elementary hyperbolic surface. On the original product compactification of any two smooth hyperbolic curves, every geometric local meridian homomorphism is injective. That product compactification is terminal among smooth proper compactifications of the same $U$ with simple normal crossings boundary: every such compactification has a unique morphism to it inducing the identity on $U$.
+\par\emph{Passage:} cote 149, \S4, manuscript pp.~64--65, scans 130--131, the blow-up margin and ``Minimalit\'e''.
+\end{result}
+\begin{proof}
+Use coordinates $x$ and $y-2$ at the center. In the chart $x=uv$, $y-2=v$, the strict transform is $u=0$ and the exceptional divisor is $v=0$. A positive loop in either $u$ or $v$ gives one positive loop in $x$; the coordinate $y=2+v$ lies in a disc about the interior point $2$ and has zero image in $\pi_1(C_2)$. Thus the actual homomorphism on Kummer characters is addition in the first cusp group and zero in the second. The latter cusp group is embedded, so the kernel is exactly the stated antidiagonal. The same computation over $\mathbb C$ uses ordinary positive meridians, and its compatible finite cyclic quotients are the displayed profinite formula.
+On $\overline C_1\times\overline C_2$, at most one boundary branch comes from each factor. The product isomorphism
+$\pi_1(U_{\overline K})\simeq\pi_1((C_1)_{\overline K})\times\pi_1((C_2)_{\overline K})$
+sends each local meridian into the corresponding cusp factor and the other coordinate to the identity. Since each cusp factor embeds, their product embeds.
+For terminality let $Y$ be another such compactification. Each projection $U\to C_i\subset\overline C_i$ defines a rational map $Y\dashrightarrow\overline C_i$. For $g(\overline C_i)\ge1$, the extension theorem C1 applies; its proof resolves the rational map by blow-ups of points and contracts each exceptional rational tree because a positive-genus curve admits no nonconstant map from $\mathbb P^1$. Thus this rational map extends to $Y$. For genus zero, make a finite extension of $K$ splitting its at least three omitted points and identify the target with $\mathbb P^1$. At an alleged base point of the rational map, write it as $[a:b]$ in the two-dimensional regular local ring of $Y$, with $a,b$ coprime and both in its maximal ideal. For three distinct omitted values, the three local equations $a-cb$ (and $b$ for the value at infinity) are nonunits with pairwise disjoint sets of irreducible factors. Their zeros all lie in $Y\setminus U$, because the map on $U$ avoids the three values. They give at least three distinct boundary branches through that point. Simple normal crossings on a smooth surface permit at most two. This contradiction eliminates every base point. The extension is unique by separatedness, and therefore descends from the finite field extension. The two extended projections define $Y\to\overline C_1\times\overline C_2$, a proper birational morphism equal to the identity on $U$. Uniqueness follows because $U$ is dense and the target is separated. This is the precise minimality property proved here.
+\end{proof}
+
+\begin{result}{E3}{Proved}{The image of an arbitrary valuation at a crossing (F25, 2$^\circ$)}
+Let a valuation $v$ have center $x$ on $X$, let the branches through $x$ have parameters $z_1,\ldots,z_r$, and put $\gamma_i=v(z_i)$. The homomorphism from valuation inertia to the local geometric group is
+\[
+ \rho_v:\operatorname{Hom}(\Gamma_v,T)\longrightarrow T^r,
+ \qquad \chi\longmapsto(\chi(\gamma_1),\ldots,\chi(\gamma_r)).
+\]
+It is dual to the homomorphism of discrete torsion groups
+\[
+ \psi_v:\mathbb Q^r/\mathbb Z^r\longrightarrow
+ (\Gamma_v\otimes\mathbb Q)/\Gamma_v,
+ \qquad (q_i)\longmapsto\sum_iq_i\gamma_i\pmod{\Gamma_v}.
+\]
+Consequently $\operatorname{im}\rho_v$ is open exactly when $\ker\psi_v$ is finite, and it is all of $T^r$ exactly when $\ker\psi_v=0$. More explicitly, openness requires rational independence of the $\gamma_i$. Under that independence, with $\Lambda=\sum_i\mathbb Z\gamma_i$,
+\[
+ \ker\psi_v=(\Gamma_v\cap\operatorname{span}_{\mathbb Q}\{\gamma_i\})/\Lambda.
+\]
+Thus openness is exactly finite saturation index, and surjectivity is exactly equality of this saturation with $\Lambda$. Equality of rational rank and number of branches alone is insufficient.
+\par\emph{Passage:} cote 149, \S4, manuscript pp.~64--65, scans 130--131, 2$^\circ$ and the monomial example (36).
+\end{result}
+\begin{proof}
+The root $z_i^{1/n}$ defines the $i$th cyclic local Kummer cover. On its pullback to the valuation field, the action of $\sigma\in I_v$ is
+$\sigma(z_i^{1/n})/z_i^{1/n}=\langle\sigma,\gamma_i/n\bmod\Gamma_v\rangle$.
+This proves the formula in every finite quotient and hence in the inverse limit. Replacing a parameter by a unit times that parameter does not change the formula: its unit has value zero and an $n$th root in the strictly henselian valuation ring. This also proves independence of the chosen regular equations, with only the specified branch labels retained.
+The character group $\mu_\infty$ is divisible, so a character of a subgroup of a discrete torsion abelian group extends to the whole group. Taking such characters is therefore an exact contravariant operation. It identifies the image of $\rho_v$ with the annihilator of $\ker\psi_v$ and identifies $T^r/\operatorname{im}\rho_v$ with its character dual. The image is compact and closed. Its quotient is finite precisely when that kernel is finite, and trivial precisely when that kernel is zero, proving the first criteria. If the values have a nontrivial integer relation, its rational span maps to zero and supplies an infinite divisible subgroup of $\ker\psi_v$; the image cannot be open. Under rational independence the rational map $\mathbb Q^r\to\Gamma_v\otimes\mathbb Q$ is injective. Taking the preimage of $\Gamma_v$ and quotienting by $\mathbb Z^r$ gives exactly the displayed saturation quotient.
+For a DVR, choose the positive generator of $\Gamma_v=\mathbb Z$ and write $\gamma_i=m_i>0$. The formula is $a\mapsto(m_1a,\ldots,m_ra)$. For $r=1$ its index is $m_1$ and it is surjective exactly when $m_1=1$; for $r>1$ it is never open. This includes nondivisorial DVRs: D2 at $(0,0)$ has $(m_1,m_2)=(1,2)$. For a monomial valuation whose independent parameter weights generate its value group, the selected boundary weights are part of a basis, and $\rho_v$ is surjective. More generally, for a finitely generated monomial value lattice the full-rank integer weight matrix gives an open image; its finite index is the product of its Smith invariants, and surjectivity says all those invariants are one.
+Finally take the valuation with $\Gamma_v=\mathbb Z[1/2]$ of D3 at $(0,2)$. Here $r=1$, $\gamma_1=1$, and $\ker\psi_v=\mathbb Z[1/2]/\mathbb Z$ is infinite. The inertia image in $T$ is exactly $\prod_{\ell\ne2}\mathbb Z_\ell(1)$, by D4 and evaluation at $1$; it is closed and not open. The rational rank and branch count are both one. Taking $\Gamma_v=\mathbb Q$ instead makes the same boundary inertia map zero. These examples decide the general-valuation assertion, including its rational-rank shortcut.
+\end{proof}
+
+\begin{result}{E4}{Proved}{The precise criterion for the stratum extension (F26)}
+Work first over an algebraically closed field of characteristic zero. For a nonempty connected open stratum
+\[
+ S=D_J^\circ=\Bigl(\bigcap_{j\in J}D_j\Bigr)\setminus\Bigl(\bigcup_{i\notin J}D_i\Bigr),
+ \qquad L_j=N_{D_j/X}|_S,
+\]
+let $P=\prod_{j\in J,S}L_j^\times$ be the product of the punctured normal line bundles. Its fundamental groups have the exact homotopy sequence
+\[
+ \pi_2^{\mathrm{et}}(S)\xrightarrow{\partial}T^J
+ \longrightarrow\pi_1(P)\longrightarrow\pi_1(S)\longrightarrow1.
+\]
+The same sequence computes the punctured tubular neighborhood of this stratum. With positive fiber meridians and the clutching convention specified below,
+\[
+ \partial(a)=\bigl(\langle c_1(L_j),a\rangle\bigr)_{j\in J}.
+\]
+In particular (37) is left exact precisely when these Chern evaluations vanish. An equivalent criterion, involving only finite covers and line bundles, is: for every positive integer $n$ there is a connected finite \emph{\'etale} cover $S'\to S$ such that every $L_j|_{S'}$ is an $n$th tensor power in $\operatorname{Pic}(S')$. Vanishing of $\pi_2^{\mathrm{et}}(S)$ suffices, but is not necessary. Over a nonclosed field the same assertion descends with the cyclotomic action and the permutation of geometric branch labels.
+\par\emph{Passage:} cote 149, \S4, manuscript pp.~66--67, scans 133--135, (37) and its qualification.
+\end{result}
+\begin{proof}
+The bundle $P\to S$ is a Zariski locally trivial torsor under $\mathbb G_m^J$. The exact sequence displayed above is the geometric-fibration sequence explicitly used in the proof of Borne--Emsalem--Stix, Proposition 8 \cite{DE_BES}; its hypotheses are characteristic zero, a geometrically connected geometrically unibranch base, and a torsor under a torus. Our smooth stratum satisfies them. Their proof identifies the fiber fundamental group with $T^J$. Their Proposition 16 and its proof identify the transgression with the Kummer first Chern class, including its finite-coefficient versions; the vanishing assumption of that proposition is used there for the cohomology isomorphism, whereas the transgression computation by transition functions does not use it. We give the transition computation and an independent finite-cover proof of the criterion.
+Choose trivializations of $L_j$ on a cover of $S$. Their transition functions $g_{ab,j}$ define the line bundles. For a sphere mapped into the complex analytic stratum, trivialize each pullback on its northern and southern discs. We orient the equator as the boundary used when comparing the northern lift with the southern lift; the clutching function has winding number $\langle c_1(L_j),[S^2]\rangle$. The difference of the lifted boundaries is precisely that winding number of the positive fiber loop. This fixes the sign convention and proves the displayed formula. Algebraically, choose local $n$th roots $h_{ab,j}$ of $g_{ab,j}$. The triple-overlap products $h_{ab,j}h_{bc,j}h_{ca,j}\in\mu_n$ are both the obstruction to lifting transition functions through $[n]:\mathbb G_m\to\mathbb G_m$ and the Kummer cocycle $c_1(L_j)\bmod n$. Evaluation on the universal \emph{\'etale} cover gives the same boundary modulo $n$. Since all $n$ are used, this proves the formula for $T^J$, with no replacement by a single prime or by an uncompleted group.
+Here is a proof of the finite-cover criterion that also checks its necessity. Suppose $A=T^J$ injects into $G=\pi_1(P)$. For a given $n$, compactness and separation in the profinite group give an open normal subgroup $N$ of $G$ with $N\cap A\subset nA$. Put $Q=G/N$. The quotient $Q/\operatorname{im}(A)$ is a finite quotient of $\pi_1(S)$. The associated connected cover $S'\to S$ makes the image of $\pi_1(P_{S'})$ in $Q$ lie in $\operatorname{im}(A)$. Compose with its quotient $A/nA$. We obtain a finite \emph{\'etale} $(\mu_n)^J$-torsor on $P_{S'}$ restricting to the standard $n$th-power cover on every torus fiber. On an \emph{\'etale} cover of $S'$ where the line bundles and this cover trivialize, its coordinates are $w_{a,j}^n=z_{a,j}$. On overlaps $w_{a,j}=h_{ab,j}w_{b,j}$ with $h_{ab,j}^n=g_{ab,j}$; these functions satisfy the cocycle condition because they are the transition functions of the actual cover. Thus they define line bundles $M_j$ with $M_j^{\otimes n}\simeq L_j|_{S'}$.
+Conversely these roots give a finite \emph{\'etale} cover $\prod M_j^\times\to P_{S'}\to P$ whose restriction to each torus fiber is the $n$th-power map. The image of $A$ in its finite permutation representation has kernel contained in $nA$. Doing this for every $n$ separates every nonidentity element of $A$, proving injectivity. This proves the exact equivalence without any assumption that profinite completion preserves an arbitrary discrete exact sequence.
+To identify the stratum neighborhood, use local equations $z_{a,j}$ along $S$. Their quotients on overlaps restrict to the same $g_{ab,j}$ for the normal bundle. Any higher-order difference is a unit congruent to $1$ along $S$, and has a unique compatible $n$th root with residue $1$ in the henselian neighborhood, by Hensel's lemma. E1 shows that all local finite covers are Kummer covers of the $z_{a,j}$. Their gluing therefore depends exactly on the above transition functions modulo $n$ and has the same finite-cover category as the normal-bundle torsor, for every $n$. This identifies the required fundamental-group sequence. Finally finite \emph{\'etale} descent records permutation of the branches, while conjugation acts on their Kummer roots through the cyclotomic character, giving the stated arithmetic form.
+\end{proof}
+
+\begin{result}{E5}{Refuted}{Nonzero Chern boundary for an elementary hyperbolic variety (F26)}
+The homomorphism $\pi_2(D_J^\circ)\to T^J$ need not vanish for an elementary anabelian $U$, even when $U$ is a product of three copies of the thrice-punctured line. Thus the proposed extension (37) is not left exact for every simple normal crossings compactification of an elementary variety.
+\par\emph{Passage:} cote 149, \S4, manuscript p.~67, scan 135, ``On va donc admettre que (37) d\'efinit bien une structure d'extension''.
+\end{result}
+\begin{proof}
+Take $U=(\mathbb P^1\setminus\{0,1,\infty\})^3$ over $\mathbb Q$, $X_0=(\mathbb P^1)^3$, and blow up $p=(0,2,2)$. Only the boundary component $D_0=\{x=0\}$ contains $p$. Let $E\simeq\mathbb P^2$ be the exceptional divisor and $D'$ the strict transform of $D_0$. They meet in the full line $S=D'\cap E\simeq\mathbb P^1$, and no other boundary component meets $E$. Hence $S=D_{\{D',E\}}^\circ$ is indeed an open stratum, not merely a closed intersection from which further points must be removed.
+The total transform relation is $D'=b^*D_0-E$. The restriction of $b^*\mathcal O(D_0)$ to $S$ is trivial, since $S$ maps to the point $p$. The exceptional normal bundle is $\mathcal O_E(E)=\mathcal O_{\mathbb P^2}(-1)$. Therefore
+\[
+ N_{D'/X}|_S=\mathcal O_{\mathbb P^1}(1),\qquad
+ N_{E/X}|_S=\mathcal O_{\mathbb P^1}(-1).
+\]
+E4 gives, with its convention,
+\[
+ \partial:T=\pi_2^{\mathrm{et}}(\mathbb P^1)\longrightarrow T^2,
+ \qquad a\longmapsto(a,-a).
+\]
+The same nonzero map on ordinary complex homotopy groups is $\mathbb Z\to\mathbb Z^2$, $1\mapsto(1,-1)$. In particular its quotient modulo every $n>1$ is nonzero, so no issue about completion can erase this counterexample. The neighborhood torsor is $\mathcal O(1)^\times\times_S\mathcal O(-1)^\times$; its fundamental group is the quotient $T^2/\{(a,-a)\}=T$. The map to $\pi_1(U)$ sends both meridians to the original $x$-cusp, by exactly the coordinate calculation of E2. Thus the Chern relation is killed by the actual global homomorphism as required. This also explains why nonzero diagonal inertia, established in the prior return, cannot imply (37).
+\end{proof}
+
+\begin{result}{E6}{Refuted}{Algebraic residues need not be finite; the arithmetic openness criterion}
+A valuation of a finitely generated extension $L/K$ can have residue field algebraic and infinite over $K$, even when it is a DVR. For a valuation with algebraic residue field centered at $x$ on $X$, the entire homomorphism $D_v\to\pi_1(\operatorname{Spec}\mathcal O_{X,x}^h\cap U)$ has open image precisely when both $[\kappa(v):\kappa(x)]$ and $|\ker\psi_v|$ of E3 are finite. Its image is the entire local group precisely when $\kappa(v)=\kappa(x)$ and $\ker\psi_v=0$. Thus the inserted ``fini'' on scans 124 and 130 is an additional hypothesis, not a consequence of algebraicity.
+\par\emph{Passages:} cote 149, \S4, manuscript pp.~61 and 64--65, scans 124 and 130--131.
+\end{result}
+\begin{proof}
+Let $p_0,p_1,\ldots$ be distinct rational primes, $a_j=\sqrt{p_j}\in\overline{\mathbb Q}$, $F_m=\mathbb Q(a_0,\ldots,a_m)$, and put
+\[
+ x=t,\qquad y=\sum_{j\ge0}a_jt^{j+1}\in\overline{\mathbb Q}[[t]].
+\]
+The series $y$ is transcendental over $\mathbb Q(t)$. Otherwise its orbit under coefficientwise $G_{\mathbb Q}$ would be contained in the finite root set of its minimal polynomial over $\mathbb Q(t)$. Its coefficient fields $F_m$ have unbounded degrees $2^{m+1}$, so that orbit is infinite. Thus $L=\mathbb Q(t,y)$ is a rational function field of transcendence degree two. Its restricted $t$-adic valuation has group $\mathbb Z$.
+We prove that its residue field is exactly $F_\infty=\bigcup_mF_m$. First $a_0$ is the residue of $y/t$. Suppose $F_m$ has already been obtained. Put $s_m=\sum_{j=0}^ma_jt^{j+1}$ and take
+\[
+ P_m(X,Y)=\operatorname{Norm}_{F_m(X)/\mathbb Q(X)}(Y-s_m(X))\in\mathbb Q[X,Y].
+\]
+At $(t,y)$ the identity factor has leading term $a_{m+1}t^{m+2}$. Every other factor has a leading term determined by the first changed sign among $a_0,\ldots,a_m$. Therefore the product has leading coefficient $c_ma_{m+1}$ for an explicit $c_m\in F_m^\times$, and integral order $M_m$. The residue of $P_m(t,y)/t^{M_m}$ is $c_ma_{m+1}$; dividing in the residue field by $c_m$ recovers $a_{m+1}$. Induction proves $F_\infty\subset\kappa(v)$. Conversely the leading coefficient of any rational expression in $t,y$ uses only finitely many of the coefficients $a_j$, so belongs to $F_\infty$. This proves equality. The valuation is a DVR by D2, and its residue extension over $\mathbb Q$ is algebraic and infinite.
+For the criterion, algebraicity of $\kappa(v)/K$ makes $x$ a closed point, so $\kappa(x)/K$ is finite. In characteristic zero the inclusion $\kappa(x)\subset\kappa(v)$ identifies $G_{\kappa(v)}$ with a closed subgroup of $G_{\kappa(x)}$ for compatible separable closures. Reduction of the homomorphism $D_v\to N_x$ is exactly this inclusion, by D8. Therefore, writing $H$ for its image and $A=T^r$ for local inertia, we have
+\[
+ H\cap A=\operatorname{im}(I_v\to A),\qquad
+ [N_x:H]=[G_{\kappa(x)}:G_{\kappa(v)}]\,[A:H\cap A]
+\]
+with the usual cardinal interpretation when an index is infinite. The first index is the field degree and the second is $|\ker\psi_v|$ by character duality in E3. This proves both assertions, including the infinite-residue case excluded by the manuscript's inserted assumption.
+\end{proof}
