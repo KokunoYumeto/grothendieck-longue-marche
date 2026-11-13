@@ -1,0 +1,166 @@
+% AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode).
+% No priority is claimed. Compile with LuaLaTeX, BibTeX, LuaLaTeX twice.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=25mm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}[Scale=0.88]
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{array,booktabs,longtable,enumitem,microtype,xcolor}
+\usepackage{needspace}
+\usepackage{fancyhdr}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\usepackage{hyperref}
+\usepackage{xurl}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black,
+ pdftitle={FLAGGED 149: proofs, counterexamples, and remaining obstructions},
+ pdfauthor={AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode)}}
+\urlstyle{same}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{0.18em}
+\setlist{itemsep=2pt,topsep=4pt,parsep=0pt}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small FLAGGED\_149}
+\fancyhead[R]{\small Proof audit and unresolved statements}
+\fancyfoot[C]{\thepage}
+\newcounter{result}
+\newenvironment{result}[3]{%
+ \par\Needspace{5\baselineskip}%
+ \renewcommand{\theresult}{#1}\refstepcounter{result}%
+ \par\addvspace{1.1em}\noindent\textbf{#1. #3}\quad\textit{[#2]}\par\nobreak\smallskip
+}{\par\smallskip}
+\newcommand{\passage}[1]{\par\smallskip\noindent{\small\emph{Manuscript passage:} #1}\par}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\trdeg}{trdeg}
+\DeclareMathOperator{\cd}{cd}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Div}{Div}
+\DeclareMathOperator{\NS}{NS}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Gm}{\mathbb G_m}
+\newcommand{\A}{\mathbb A}
+\newcommand{\Pp}{\mathbb P}
+\newcommand{\et}{\mathrm{\acute et}}
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+{\Large\bfseries FLAGGED\_149}\par\medskip
+{\large Proofs, counterexamples, and remaining obstructions\par
+in cote 149 and the opening of cote 142}\par\medskip
+{\small AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode)}\par
+{\small 12 November 2026\quad No priority is claimed}
+\end{center}
+\noindent\textbf{Status: INCOMPLETE.}
+We distinguish proved statements, exact literature deductions, refutations,
+and explicitly unresolved assertions. In particular, we do not prove the
+remaining positive-characteristic point-section assertion or the section
+and birational lifting assertions encountered in the sweep. The report
+and ledgers specify the failed steps and next mathematical obligations.
+The presence of an \emph{Open} result never supplies a hypothesis for a
+preceding proof.
+
+\smallskip
+\noindent\textbf{Notation concordance.}
+Groups are profinite and homomorphisms continuous unless otherwise stated.
+A geometric base point and paths fix actual homomorphisms; changing those
+paths gives the stated inner-conjugacy ambiguity. Further local variables
+are defined at their first use. This table fixes the recurrent manuscript
+symbols on the first page.
+\begin{center}\small
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{@{}L{.17\textwidth}L{.39\textwidth}L{.34\textwidth}@{}}
+\toprule
+Our notation & Meaning and manuscript notation & Introduction / relevant scans\\
+\midrule
+$G_K$ & $\Gal(K^{\rm sep}/K)$; his $E_K$, later $\mathcal E_K$ & 149: 3--4; 105--106\\
+$E_U$ & $\pi_1(U)$; his $E_U$, $\mathcal E_U$ & 149: 24, 53; 107--108\\
+$\Pi_U$, $P_{L/K}$ & Geometric kernels; his $\pi$, $\Pi_U$, $\pi_{L/K}$ & 149: 9--13, 24, 53, 113--114\\
+$\Gamma$, $\Gamma^\circ$ & Arithmetic group and $\ker\chi$; his $\Gamma$, $\Gamma^0$, $E^\circ$ & 149: 8--9, 45, 54--56\\
+$T$, $T_{p'}$ & $\widehat{\mathbb Z}(1)$, $\prod_{\ell\ne p}\mathbb Z_\ell(1)$; his $T_\infty$, $T$ & 149: 53--54, 75--78, 100\\
+$I_c$, $I_v$ & Cusp or valuation inertia; his $L_i$, $I_x$, $I_V$ & 149: 53--55, 117--124\\
+$D_c$, $D_v$ & Decomposition; his $Z(L_i)$ or $N_x,N_V$ & 149: 54, 117--127\\
+$\Gamma_v$, $\kappa(v)$ & Additive value group and residue field; his $V$, $k(x)$ data & 149: 121--126\\
+$\widehat B$ & Specified completion with its canonical map $B\to\widehat B$ & 149: 81--85; 142: 9--14\\
+$A(S)$, $A_0(S)$ & Oriented homeomorphisms and identity component; his $\mathcal A_S,\mathcal A_S^0$ & 142: 4--8\\
+$M(S)$, $G_u,H_u$ & Mapping classes and arrow stabilizer/projection; his $\mathcal T_S,G_u,H_u$ & 142: 8--14\\
+\bottomrule
+\end{tabular}
+\end{center}
+\noindent\small A type $(g,\nu)$ is hyperbolic when $2g-2+\nu>0$.
+The symbol $(p')$ on an arithmetic curve group replaces its geometric
+kernel by the maximal prime-to-$p$ quotient and retains the full
+arithmetic quotient. ``Page'' in a passage citation means the handwritten
+manuscript page; a scan continuing that page is identified as such.
+\normalsize
+\clearpage
+\section*{Scope and method}
+We read both supplied transcriptions of cote 149, scans 1--136, and the
+opening of cote 142, scans 1--22, with scans 4, 6, 5, 7 in their reading
+order. The first-pass transcriptions and selected images are evidence
+for the wording, not premises of the mathematics
+\cite{Manuscript149,Manuscript142}. The readings ledger records every
+mathematical correction and every doubtful alternative on which our
+arguments bear. An inspected image supplies editorial evidence; it does
+not make a reading final.
+
+Each result is labelled \emph{Proved}, \emph{Known}, \emph{Refuted}, or
+\emph{Open}. ``Known'' includes an exact statement of the opened input
+and the comparison maps needed to derive the manuscript assertion.
+``Refuted'' identifies the assertion being refuted and proves the
+replacement stated there. A heading that combines a true part with a
+refuted overstatement is classified in the coverage table at the level
+of each manuscript row. The result identifiers are stable labels,
+not a chronological account of discovery.
+
+The attached \emph{CYCLOTOMIC\_KERNEL} return is used only where the
+prompt expressly permits it or where we identify its precise proved
+statement and check the comparison being used. We distinguish its proof
+text from primary literature. The bibliography records opened versions;
+all numerical references are to those versions. We make no novelty
+claim. Computations verify finite examples and displayed formulas; none
+is used to extrapolate a profinite assertion from finitely many tests.
+
+\begingroup
+\small\setlength{\parskip}{0pt}
+\tableofcontents
+\endgroup
+\clearpage
+\input{sections/AB_agent.tex}
+\IfFileExists{sections/F7_test.tex}{\input{sections/F7_test.tex}}{}
+\IfFileExists{sections/F7_test5.tex}{\input{sections/F7_test5.tex}}{}
+\clearpage
+\input{sections/C_agent.tex}
+\clearpage
+\input{sections/DE_agent.tex}
+\clearpage
+\section{F. Arithmetic centralizers, topoi, and reduction}
+\input{sections/F_root.tex}
+\input{sections/F_agent.tex}
+\input{sections/G_root.tex}
+\clearpage
+\input{sections/AB_Z_agent.tex}
+\input{sections/CF_Z_agent.tex}
+\input{sections/DE_Z_agent.tex}
+\input{sections/Z_root.tex}
+\clearpage
+\section*{Bibliography and source verification}
+\addcontentsline{toc}{section}{Bibliography and source verification}
+Every entry includes an explicit verification note. A manuscript or an
+attached AI return is identified as such; verification of its contents
+is not a claim of independent literature authority.
+{\small\bibliographystyle{alpha}\bibliography{FLAGGED_149_references}}
+\end{document}

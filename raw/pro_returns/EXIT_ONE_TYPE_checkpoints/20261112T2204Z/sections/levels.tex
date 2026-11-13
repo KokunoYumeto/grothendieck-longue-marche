@@ -1,0 +1,708 @@
+\section{The two different level filtrations}\label{sec:levels}
+We distinguish a filtration by the number of local branches from one by the
+complex dimension of a moduli stratum.  They have different indexing
+categories.  Throughout this section a $q$-connected map has homotopy fibres
+that are $(q-1)$-connected.  A $k$-equivalence means an equivalence on
+Postnikov $k$-truncations, including components.  A colimit of fundamental
+groupoids means a bicategorical colimit, with its comparison isomorphisms;
+it never means the strict colimit of arbitrarily chosen one-object groups.
+
+\subsection{Branch depth: the omitted triangle}
+
+\begin{proposition}[The hexagon really is a counterexample]\label{P5a1}
+\status{Refuted.}
+For the complex manifold pair
+\[
+ X=\C^3,\qquad \Theta=\{z_1z_2z_3=0\},\qquad U=(\C^*)^3,
+\]
+the bicategorical colimit of the span in (246), cote 147, \S11,
+folio 75, scan 152, has automorphism group $\Z^4$ on its single connected
+component, whereas $\pi_1(U_\infty)=\Z^3$.  Thus (246), as a statement about
+that span alone, is false.  The additional flags involving depth three kill
+exactly the extra generator.
+\end{proposition}
+\begin{proof}
+At depth one there are three open faces, at depth two three, and the
+incidences between them form a hexagon.  Each face direction bundle has
+homotopy type $T^3=(S^1)^3$.  Using the three ambient coordinate arguments
+identifies all its meridians with the same ordered basis of $\Z^3$; every
+incidence map is the identity on this basis.  The homotopy colimit of the
+six vertex spaces and six mapping cylinders is therefore
+$T^3\times S^1$.  Equivalently, choose five edges of the hexagon as a maximal
+tree.  The graph-of-groups presentation identifies all vertex groups and
+has one remaining edge letter $t$, with
+\[
+ \langle a,b,c,t\mid [a,b]=[a,c]=[b,c]
+ =[t,a]=[t,b]=[t,c]=1\rangle=\Z^4.
+\]
+This proves the assertion about the bicategorical colimit by van Kampen.
+The real oriented blow-up is
+$[0,\infty)^3\times T^3$.  Its boundary has contractible radial factor
+$\partial[0,\infty)^3$, so its fundamental group is $\Z^3$.
+Adding the depth-three face cones the hexagon to the barycentric
+subdivision of a two-simplex.  There are seven vertices, twelve edges,
+and six two-simplices; the six triangular relations kill the six
+non-tree edge generators in that subdivision.  The program
+\texttt{code/levels\_colimit.py} builds these two order complexes,
+constructs their spanning-tree presentations, and performs exact
+Tietze eliminations.  Its output is respectively one and zero surviving
+index-space generators, hence $\Z^4$ and $\Z^3$ after including the torus.
+
+A strict colimit of six isomorphic one-object groups would give $\Z^3$;
+that calculation discards the comparison paths around the hexagon and
+is not the descent or van Kampen colimit.  Conversely, if one includes
+additional two-isomorphisms from depth three as extra data, one has
+already enlarged the displayed span.  The author's marginal request to
+make the ``2-fl\`eches'' explicit points precisely to the missing
+coherence, without supplying it in (246).
+\end{proof}
+
+\begin{theorem}[Sharp branch-depth bound]\label{P5a2}
+\status{Proved.}
+Let $(X,\Theta)$ be a paracompact complex normal-crossings manifold pair,
+with self-intersections allowed, or a smooth analytic Deligne--Mumford
+stack with this structure.  Write $M=X^{\log}$ and $L=\partial M$, using
+classifying spaces in the stack case.  Let $L_{\le r}$ be the locus of
+branch depth at most $r$.  For $k\ge0$ the map
+\[
+ L_{\le k+2}\longrightarrow L
+\]
+is $(k+1)$-connected and in particular a $k$-equivalence.  The homotopy
+colimit of the direction bundles and all their coherent flag maps in
+depths $1,\ldots,k+2$ has the same $k$-type as $L$.
+The bound $k+2$ cannot be replaced uniformly by $k+1$.
+
+This is a theorem about the spaces of the pieces.  Their fundamental
+groupoids alone can replace them in this assertion if every open stratum
+is aspherical; no assertion that arbitrary $k$-types follow from
+fundamental groupoids is implicit.
+\end{theorem}
+\begin{proof}
+In coordinates $z_i=r_i e^{i\theta_i}$, a depth-$d$ face is given by
+$d$ radial equations $r_i=0$.  In the topological manifold
+$\partial[0,\infty)^d\times\R^{2\dim_\C X-d}$ its codimension is
+$d-1$, not $2d$.  The deleted locus $L\setminus L_{\le k+2}$ thus has
+codimension at least $k+2$.  Triangulate the corner stratification locally.
+Relative general position moves a map of a disk of dimension at most
+$k+1$, whose boundary avoids that locus, off every deleted stratum:
+for a source simplex of dimension $j$ and a deleted stratum of
+codimension $c$, the transverse intersection has dimension at most
+$j-c<0$.  The perturbations are made relative to the boundary and
+successively over a locally finite subdivision.  A compact disk uses
+only finitely many of the locally finite charts.  This proves
+$\pi_j(L,L_{\le k+2})=0$ for $j\le k+1$, component by component, with
+the analogous path-lifting assertion in degree zero.  The long exact
+sequence gives the stated connectivity and equivalence of $k$-types.
+
+For a smooth analytic Deligne--Mumford stack choose an \'etale
+atlas and its \v Cech nerve $X_\bullet$.  Every $X_j$ is a manifold
+with the pulled-back normal-crossings structure.  The depth-complement
+inclusion on $\partial X_j^{\log}$ is $(k+1)$-connected by the
+manifold argument.  Realization of a diagram of $(k+1)$-connected maps
+preserves that connectivity.  One proof replaces the diagrams by
+relative CW diagrams: every relative cell starts in dimension at
+least $k+2$, and realization multiplies it by a simplex, only increasing
+its dimension.  Equivalently, connected maps of a fixed degree are
+closed under colimits in spaces.  Applying this to the \'etale nerve
+gives the claimed statement on stack classifying spaces.  It does not
+require finite isotropy or a proper orbifold presentation.  Branch
+permutations are retained by the nerve and do not change the local
+codimension calculation.
+
+Here is the comparison with the flag diagram.  In the truncated
+manifold with corners, cover the boundary by small collars of its
+normalized closed faces.  An intersection indexed by a flag retracts
+to the corresponding truncated face.  A truncated face is homotopy
+equivalent to its open face: an inward collar vector field makes all
+its remaining radial coordinates positive.  The resulting
+homotopy-coherent diagram of open faces has homotopy colimit
+$L_{\le k+2}$ by the collar cover.  This argument retains the normalized
+branch flags, so also handles self-intersections and finite chart
+symmetries.  The open face is the quotient of the punctured normal
+bundle by the contractible positive radial factors.
+
+For sharpness put $m=k+2$ and take the coordinate divisor in $\C^m$.
+Keeping depths at most $m-1$ removes the radial origin from
+$\partial[0,\infty)^m$.  Radial normalization $\sum r_i=1$ identifies
+its homotopy type with $\partial\Delta^{m-1}=S^{m-2}=S^k$.  Thus
+\[
+ L_{\le k+1}\simeq T^{k+2}\times S^k,
+ \qquad L\simeq T^{k+2}.
+\]
+For $k=0$ their component sets differ; for $k=1$ their fundamental
+groups differ; for $k\ge2$ the sphere contributes a nonzero
+$\pi_k$ killed by the inclusion.  The code checks the boundary-simplex
+chain matrices for $0\le k\le4$; the radial argument proves every $k$.
+Finally a torus bundle over an aspherical open stratum is aspherical
+by its homotopy exact sequence.  Finite flag covers preserve
+asphericity.  On these pieces $B\Pi_1$ is therefore a homotopy
+equivalence, naturally in the homotopy-coherent sense, and can be
+substituted in the homotopy colimit.
+\end{proof}
+
+\begin{corollary}[Corrected Corollaires 2 and 3]\label{P5a3}
+\status{Proved.}
+In the generality of Theorem~\ref{P5a2}, the fundamental groupoid of
+$U_\infty$ is the bicategorical colimit of the complete coherent flag
+diagram in branch depths $1,2,3$.  If no three branches meet, the span
+in (246) suffices.  If $U_\infty\to U$ is a $1$-equivalence, that same
+corrected colimit is $\Pi_1(U)=\Pi_1(X^*)$, not generally $\Pi_1(X)$.
+\end{corollary}
+\begin{proof}
+Apply Theorem~\ref{P5a2} with $k=1$ and the groupoid version of van
+Kampen to its collar diagram.  Fundamental groupoids preserve
+homotopy colimits after passage to the $1$-type, independently of
+asphericity: a functor to any groupoid is exactly compatible local
+functors with the comparison isomorphisms and their cocycle conditions.
+When depths three and higher are absent only the displayed span
+remains.  The additional assumption identifies its answer with
+$\Pi_1(U)$ by composition.
+For the error in (247), take $X=\C$, $\Theta=\{0\}$.  Its link
+$S^1\to\C^*$ is a homotopy equivalence, but $\pi_1(X)=0$ and the
+colimit is $\Z$.  Thus the unstarred conclusion is false even when
+there are no multiple crossings.  On inspecting scan 152 we read
+an unstarred $X$ in (247); the mathematical correction is an added
+star, not a claim that an invisible star has been deciphered.  The
+struck draft on scan 151 includes depths through three and is
+mathematically closer to the corrected formulation.
+\end{proof}
+
+\subsection{Dimension: the infinite multicurve poset}
+
+For a stable oriented surface type $(g,n)$, $2g-2+n>0$, let
+$d=3g-3+n$.  The $n$ markings are individually labelled punctures.
+Let $\Gamma_{g,n}$ denote the pure mapping class group and
+$\mathcal T_{g,n}$ Teichm\"uller space.  A multicurve is a finite set
+of isotopy classes of pairwise disjoint, pairwise nonisotopic,
+essential nonperipheral simple closed curves.  We allow the empty
+multicurve and put
+\[
+ \mathcal P_k(g,n)=\{\sigma: |\sigma|\ge d-k\},
+\]
+ordered by inclusion.  If $k\ge d$, the empty multicurve is a minimum.
+This is the infinite multicurve poset, not the finite poset of
+combinatorial stable-tree types.  Even on a four-punctured sphere
+there are infinitely many curve isotopy classes.
+
+\begin{theorem}[The homotopy fibre of a dimension level]\label{P5b1}
+\status{Proved.}
+For every stable $(g,n)$ and integer $0\le k\le d$, choose the
+standard sufficiently thin plumbing neighbourhood of the union of
+Deligne--Mumford strata of dimension at most $k$, and intersect it
+with $\mathcal M_{g,n}$.  Denote the resulting orbifold by $W_k$.
+There is a natural weak equivalence, up to the choice of marking,
+\[
+ \operatorname{hofib}\bigl(BW_k\longrightarrow B\mathcal M_{g,n}\bigr)
+ \simeq |\mathcal P_k(g,n)|.
+\]
+For $k=d$ we take $W_d=\mathcal M_{g,n}$; both sides are contractible.
+Replacing this poset by its set of $\Gamma_{g,n}$-orbits does not
+compute the homotopy fibre.
+\end{theorem}
+\begin{proof}
+Fix a collar-lemma constant $\epsilon>0$ such that two geodesics
+of length less than $\epsilon$ cannot intersect.  For a multicurve
+$\sigma$ let
+\[
+ V_\sigma=\{t\in\mathcal T_{g,n}:
+        \ell_\alpha(t)<\epsilon\text{ for all }\alpha\in\sigma\}.
+\]
+Extend $\sigma$ to a pants decomposition.  Fenchel--Nielsen
+coordinates identify $V_\sigma$ with a product of intervals
+$(0,\epsilon)$, intervals $(0,\infty)$, and copies of $\R$;
+it is contractible.  An intersection of finitely many such sets
+is $V_{\cup\sigma_i}$ if the union is a multicurve and is empty
+otherwise.  These coordinate facts, including the description of
+nodes by vanishing lengths, are stated in \citet[Chapter 1, \S2, Theorem 1.1]{Harer1988} and the paragraph following it; we have applied
+them only after extending a specified multicurve to a pants
+decomposition.
+
+Let $V_k=\bigcup_{|\sigma|\ge d-k}V_\sigma$ when $k<d$.
+The homotopy colimit of this system maps to $V_k$ by evaluation.
+Over a point $t$ its incidence category consists of subsets, of
+size at least $d-k$, of the finite set of all $\epsilon$-short
+curves of $t$.  It has that full short-curve set as a maximum,
+so its nerve is contractible.  Equivalently the good-cover nerve
+lemma, followed by the subdivision indexed by unions, proves
+\[
+ V_k\simeq |\mathcal P_k(g,n)|.
+\]
+The construction is $\Gamma_{g,n}$-equivariant.  The plumbing
+interpretation of Fenchel--Nielsen coordinates identifies
+$[V_k/\Gamma_{g,n}]$ with a sufficiently thin model of the requested
+neighbourhood: a curve with $c$ nodes has moduli dimension $d-c$,
+so $c\ge d-k$ is exactly the level condition.  Shrinking the
+collars changes neither the homotopy type nor the map to the
+open moduli stack.  One can alternatively take this short-geodesic
+model as the precise meaning of its thickening.
+
+Teichm\"uller space is contractible, again by the same coordinates.
+The map of Borel spaces
+\[
+ E\Gamma\times_\Gamma V_k\longrightarrow
+ E\Gamma\times_\Gamma\mathcal T_{g,n}\simeq B\Gamma
+\]
+has homotopy fibre $V_k$.  This proves the assertion, with all
+finite automorphism groups retained.  It also explains why taking
+a coarse quotient before forming the fibre is invalid.  For
+$k=d$ the set $V_\varnothing$ is all of Teichm\"uller space and the
+poset has a minimum, proving the endpoint assertion.
+\end{proof}
+
+\begin{theorem}[Genus-zero connectivity, with the endpoint corrected]\label{P5b2}
+\status{Known, with reduction proved.}
+For $n\ge3$, $d=n-3$, and every $k\ge0$, the poset
+$\mathcal P_k(0,n)$ is $(k-1)$-connected.  Consequently
+$W_k\to\mathcal M_{0,n}$ is $k$-connected.
+For $k\ge d$ the poset must include the empty multicurve; it is
+then contractible.  If one excludes the empty multicurve at
+$k=d$, the assertion is false, already for $(n,k)=(4,1)$ and
+also for the requested test $(n,k)=(6,3)$.
+\end{theorem}
+\begin{proof}
+Let $K=\mathcal C_{0,n}$ be the unmodified disjointness curve
+complex: a simplex of dimension $s-1$ is a nonempty multicurve
+with $s$ components.  In particular, $\mathcal C_{0,4}$ is an
+infinite discrete set, not the Farey graph obtained by changing
+the edge rule.  The Harer theorem, in the directly checked form
+\citet[Chapter 4, Theorem 4.1]{Harer1988}, together with Chapter 3,
+Lemma 3.6, gives $K\simeq\bigvee S^{n-4}$ for $n\ge4$.
+Only the resulting $(n-5)$-connectivity is needed here.
+
+We verify the requisite assertion for every link.  Cutting along
+$s$ curves gives $s+1$ genus-zero components with $n_j$ special
+points, where $\sum_j n_j=n+2s$.  A further curve is exactly a
+curve in one of those components, and disjointness is componentwise.
+Thus the link is the join of their curve complexes.  Components
+with three special points contribute no curves and are omitted,
+or equivalently contribute the augmented complex $S^{-1}$.
+The connectivity formula for joins, applied to Harer's theorem
+on each remaining component, gives link dimension
+\[
+ \sum_j(n_j-3)-1=n-s-4=d-s-1
+\]
+and connectivity $d-s-2$.  This proves homotopy
+Cohen--Macaulayness of $K$, including the empty links of maximal
+pants decompositions.  We now give the particular rank-selection
+argument, rather than just invoking its name.
+
+Put $r=d-k>0$ and begin with the barycentric subdivision of $K$.
+Delete vertices corresponding to simplices of sizes
+$1,2,\ldots,r-1$, in this order.  At the stage of deleting a
+size-$s$ vertex, all smaller faces have gone, so its remaining
+link is the barycentric subdivision of the original link of
+that simplex.  It is $(d-s-2)$-connected, and in every stage
+$s\le r-1$ this is at least $(k-1)$-connected.  Reattaching a
+vertex is coning off that link.  A cone on an $(k-1)$-connected
+CW complex can, relative to the link, be built with cells of
+dimension at least $k+1$; hence deletion preserves all
+connectivity assertions through degree $k-1$.
+Vertices of the same rank are pairwise nonadjacent, so all can
+be treated at once.  For an infinite complex the same conclusion
+follows by cellular approximation of compact disks, which uses
+finitely many cells, followed by the corresponding relative
+homotopies.  The remaining complex is $|\mathcal P_k(0,n)|$.
+Since $K$ is $(d-2)$-connected, this proves the claim for $k<d$.
+This is also the instance of rank selection covered by
+\citet[Corollary 4.4]{BjornerWachsWelker2009}; the argument
+above specifies the rank interval and treats the infinite case.
+
+For $k\ge d$, the minimum $\varnothing$ cones the whole order
+complex.  For $n=3$ this is the entire argument.  Without that
+minimum, at $(n,k)=(4,1)$ the complex is disconnected, and at
+$(6,3)$ it is a noncontractible wedge of two-spheres, not
+$2$-connected.  The map connectivity follows from
+Theorem~\ref{P5b1} and our stated convention.
+\end{proof}
+
+\begin{proposition}[Independent low-dimensional verification]\label{P5b3}
+\status{Proved.}
+The cases $(0,5),k=1$ and $(0,6),k=2$ of Theorem~\ref{P5b2}
+follow independently of the curve-complex and rank-selection
+theorems from an explicit strictly plurisubharmonic exhaustion.
+The case $(0,6),k=3$ is contractible by the empty-multicurve cone.
+The exact algebraic checks are recorded in
+\texttt{code/levels\_stein.py} and its output.
+\end{proposition}
+\begin{proof}
+Fix three markings at $\infty,0,1$.  For $d=n-3$ this gives
+\[
+ \mathcal M_{0,n}=\{(z_1,\ldots,z_d)\in\C^d:
+ z_i\ne0,1,\ z_i\ne z_j\}.
+\]
+Let $\mathscr A_d$ be the list of linear forms $z_i,z_i-1,z_i-z_j$
+with $i<j$, and put
+\[
+ f(z)=\sum_i|z_i|^2+\sum_{\ell\in\mathscr A_d}|\ell(z)|^{-2}.
+\]
+This is proper: its first term controls escape to Euclidean
+infinity and its other terms control approach to the deleted
+hyperplanes.  If $a_\ell$ is the row of coefficients of $\ell$,
+its Levi matrix is exactly
+\[
+ I_d+\sum_{\ell\in\mathscr A_d}
+       |\ell|^{-4}a_\ell^*a_\ell.
+\]
+For every nonzero vector $v$ its quadratic value is
+$\|v\|^2+\sum_\ell|\ell|^{-4}|a_\ell v|^2>0$.
+The code independently expands every principal minor, treating
+the positive numbers $|\ell|^{-4}$ as independent indeterminates.
+For $d=2$ there are five forms and the determinant has fourteen
+positive monomials.  For $d=3$ there are nine forms and the
+determinant has ninety-three positive monomials.  Every
+principal minor has constant term one and strictly positive
+coefficients.  These are exact polynomial calculations, not
+numerical samples of an infinite curve complex.
+
+Add a generic real linear function to $f$.  Strict Levi
+positivity and properness remain true, and Sard's theorem
+applied to the gradient makes the perturbed function Morse.
+Its critical locus is a discrete semialgebraic set, hence
+finite.  At a critical point let $Q$ be its real Hessian.  Levi
+positivity says $Q(v)+Q(Jv)>0$ for every nonzero $v$.  If a
+negative subspace had dimension greater than $d$, it would
+intersect its $J$-translate nontrivially; for a nonzero vector
+in that intersection both summands would be negative.  Thus
+every Morse index is at most $d$.  This is the index argument
+underlying \citet[Theorem 7.2]{Milnor1963}; the handle comparison
+uses Theorem 3.2 and Remark 3.3 of the same source.
+
+Choose a regular value above every critical value.  The
+sublevel is a compact core $K$, and its boundary represents the
+end of this algebraic manifold: outside the core the normalized
+gradient integrates to a collar because there are no further
+critical values.  The end represented by a small punctured
+neighbourhood in any smooth normal-crossings compactification
+is the same end.  Reversing the finite Morse handle decomposition
+builds $K$ from its boundary by handles of indices
+$2d-\lambda\ge d$.  Therefore $\partial K\to K\simeq
+\mathcal M_{0,n}$ is $(d-1)$-connected.
+When $n=5,k=1$ or $n=6,k=2$, the selected strata are all boundary
+strata, since $k=d-1$.  The thickening in
+Theorem~\ref{P5b1} represents this end, so its fibre is
+$(d-2)$-connected: connected in the first case and simply
+connected in the second.  This proves exactly the requested
+checks by a second method.  Finally $k=d=3$ includes the open
+stratum and the empty multicurve, giving a contractible fibre.
+\end{proof}
+
+\subsection{Presentations and the meaning of two levels}
+
+\begin{theorem}[The complex-of-groups presentation at dimension two]\label{P5c1}
+\status{Proved.}
+For $n\ge5$, the pure punctured-sphere mapping class group
+$\Gamma_{0,n}$ is the fundamental group of the developable
+complex of groups obtained from its action on
+$|\mathcal P_2(0,n)|$.  Vertex groups are stabilizers of
+multicurves whose moduli strata have dimension at most two;
+their inertia subgroups are the free abelian multitwist groups.
+A spanning tree gives the presentation described below.
+Connectedness of $\mathcal P_1$ supplies generators from
+strata of dimensions zero and one and their incident paths;
+simply connectedness of $\mathcal P_2$ supplies the required
+relations, together with the internal relations of the groups
+of the pieces.  All incidence maps and twisting elements are
+part of the data.
+\end{theorem}
+\begin{proof}
+Here is a formulation avoiding an unspecified complex of
+groups.  Let $Y=|\mathcal P_2(0,n)|$ and $G=\Gamma_{0,n}$.
+Barycentric simplices have strictly increasing numbers of
+curves, so the action has no inversions.  Choose a representative
+$\widetilde v$ for each vertex of $Y/G$, representatives of
+incidence edges, and group elements carrying their endpoints
+to the chosen representatives.  Put $G_v=\operatorname{Stab}_G
+(\widetilde v)$.  Orient an incidence edge from the larger multicurve
+$\tau$ to a contained multicurve $\sigma$; a pure genus-zero mapping
+class stabilizing $\tau$ fixes its curves individually and stabilizes
+$\sigma$.  The chosen transport elements give injective
+homomorphisms $\psi_a:G_{i(a)}\longrightarrow G_{t(a)}$ between
+the corresponding stabilizers
+and twisting elements $c_{a,b}$ for composable edges; by their
+construction inside $G$ they satisfy the usual cocycle equation.
+Fix a maximal tree $T$ in the quotient one-skeleton.
+The presentation has every element of each $G_v$ and one
+oriented edge letter $t_a$ as generators, with relations
+\[
+ \begin{gathered}
+ \text{multiplication in each }G_v,\qquad
+ t_{\bar a}=t_a^{-1},\qquad t_a=1\ (a\in T),\\
+ t_a g t_a^{-1}=\psi_a(g),\qquad
+ t_a t_b=c_{a,b}t_{ab}
+ \quad\text{for each incidence triangle.}
+ \end{gathered}
+\]
+Orientation choices can replace these equations by their
+inverses; the displayed convention defines ours.  The natural
+homomorphism to $G$ sends the stabilizer generators to their
+actual mapping classes and the edge letters to their chosen
+transport elements.
+
+To prove surjectivity, connect a chosen lift of a vertex to its
+translate by an arbitrary $g\in G$ through the connected space
+$Y$.  Subdivision turns the path into an edge path, and successive
+transport expresses $g$ by the displayed letters and a final
+vertex stabilizer.  To prove injectivity, a word mapping to one
+lifts to a loop in $Y$.  By Theorem~\ref{P5b2}, $Y$ is simply
+connected.  A simplicial null-homotopy decomposes into edge
+cancellations and triangle moves; these are exactly the
+presentation relations.  This proves the claim without a
+faithfulness assumption about a coarse quotient.  The same
+argument for the connected subspace $|\mathcal P_1|$ gives generation
+by its vertex groups and edge transports.  A new dimension-two vertex
+group introduces no necessary new generator: its base is either
+$\mathcal M_{0,5}$ or $\mathcal M_{0,4}^2$, and its boundary
+thickening surjects on its fundamental group by the same theorem
+applied to that two-dimensional pair (or by the product argument).
+The direction-torus generators are already present over deeper
+strata.  Thus its generators can be eliminated in favour of dimension
+zero and one generators, while its internal relations supply the
+new relations.  This proves the stated generation assertion.  Local surface cutting identifies the
+stabilizer with the mapping classes of the cut components,
+extended by the independent twists about the cut curves.
+Independence follows by testing on arcs transverse to one cut
+curve at a time; a nonzero twist exponent changes that arc's
+relative isotopy class.
+
+The quotient is finite and indexed by stable labelled trees,
+but its stabilizer groups and transport elements are indispensable.
+The finite tree complex alone is not the development $Y$.
+For $n=5$, $\mathcal P_2$ includes the empty multicurve and its
+vertex group is $G$; the explicit presentation below calculates
+that group rather than using this tautological vertex as an
+uncomputed input.  For $n=6$, $\mathcal P_2$ consists of the
+nonempty multicurves and no such vertex occurs.
+\end{proof}
+
+We now write finite presentations with all words specified.
+They are a concrete reduction of the group just reconstructed,
+and fix the choices of base points and generators.  Write
+\[
+ A_{ij}=\sigma_{j-1}\cdots\sigma_{i+1}\sigma_i^2
+             \sigma_{i+1}^{-1}\cdots\sigma_{j-1}^{-1}
+ \quad(1\le i<j)
+\]
+in the usual disk braid group, with real ordered base
+configuration.  We retain the subgroup in which the first
+two strands have trivial braid, so that their positions may be
+fixed at $0$ and $1$.  For words $u,v$ abbreviate
+\[
+ c(u,v)=v^{-1}u^{-1}vu.
+\]
+This is only a written-word abbreviation, not an extra generator.
+
+\begin{proposition}[Five labelled punctures: five generators, six relations]\label{P5c2}
+\status{Proved.}
+For $a=A_{13}$, $b=A_{23}$, $x=A_{14}$, $y=A_{24}$,
+$z=A_{34}$, a presentation of $\Gamma_{0,5}$ is
+\[
+ \langle a,b,x,y,z\mid\text{the following six equations}\rangle:
+\]
+\begin{align*}
+ axa^{-1}&=z^{-1}xz,&
+ aya^{-1}&=c(x,z)y c(x,z)^{-1},&
+ aza^{-1}&=c(x,z)z,\\
+ bxb^{-1}&=x,&
+ byb^{-1}&=z^{-1}yz,&
+ bzb^{-1}&=c(y,z)z.
+\end{align*}
+In particular $\Gamma_{0,5}=F(x,y,z)\rtimes F(a,b)$ for the
+specified action.  The presentation complex is an aspherical
+finite two-dimensional complex.
+\end{proposition}
+\begin{proof}
+Forgetting the last moving point in
+$\operatorname{Conf}_2(\C\setminus\{0,1\})$ is a locally trivial
+fibration with fibre a plane minus three points and base a plane
+minus two.  Local triviality follows by choosing pairwise
+disjoint disks about the retained points and moving their
+centres by ambient isotopies supported in those disks.  This
+is the instance of \citet[Theorem 1]{FadellNeuwirth1962},
+needed here.  It has a section: choose the new point on the
+positive real axis at a radius exceeding the absolute values
+of every retained point and $1$, continuously in the configuration.
+Both base and fibre are aspherical graphs.  The homotopy exact
+sequence gives the split extension displayed above.
+
+For the action, use the Artin substitutions
+\[
+ \rho(\sigma_i):\quad
+ X_i\mapsto X_iX_{i+1}X_i^{-1},\quad
+ X_{i+1}\mapsto X_i,
+\]
+with all other $X_j$ fixed, composing functions in the usual
+right-to-left order.  Positive conjugation by a standard base
+braid on the kernel basis $A_{j,4}$ is the Artin substitution
+for its mirror word, obtained by replacing each $\sigma_i$ by
+$\sigma_i^{-1}$.  Substituting the two words $A_{13}$ and
+$A_{23}$ and freely reducing gives exactly the six equations
+above.  This sign convention is checked independently in
+\texttt{levels\_braids.py}: each side is expanded as a braid on
+four strands and the two resulting free-group automorphisms
+are equal.  The Artin representation is faithful; the checked
+source \citet[Theorem A, case (1), parameter $1$]{Shpilrain2001}, supplies this fact.  The semidirect-product normal form
+shows that the six conjugation equations, with no relators
+inside either free group, are a complete presentation.
+
+Finally a graph bundle over a graph is built by attaching
+mapping cylinders of the fibre homotopy equivalences.  Its
+universal cover is a tree of contractible universal covers of
+the fibre graphs, hence contractible.  Its cells are one
+vertex, five edges, and six two-cells with precisely these
+attaching words.  This proves the last assertion.
+\end{proof}
+
+\begin{proposition}[Six labelled punctures: nine generators, twenty-six relations]\label{P5c3}
+\status{Proved.}
+Use the five generators and six relations of
+Proposition~\ref{P5c2}, and add
+\[
+ p=A_{15},\quad q=A_{25},\quad r=A_{35},\quad s=A_{45}.
+\]
+For each row $h$ and column $u$ in the following table impose
+$huh^{-1}=$ the displayed entry.  These twenty equations,
+together with the previous six, are a presentation of
+$\Gamma_{0,6}$.
+\[
+\begin{array}{c|llll}
+ &p&q&r&s\\ \hline
+ a&r^{-1}pr&c(p,r)q c(p,r)^{-1}&c(p,r)r&s\\
+ b&p&r^{-1}qr&c(q,r)r&s\\
+ x&s^{-1}ps&c(p,s)q c(p,s)^{-1}&c(p,s)r c(p,s)^{-1}&c(p,s)s\\
+ y&p&s^{-1}qs&c(q,s)r c(q,s)^{-1}&c(q,s)s\\
+ z&p&q&s^{-1}rs&c(r,s)s
+\end{array}
+\]
+Thus
+$\Gamma_{0,6}=F(p,q,r,s)\rtimes
+(F(x,y,z)\rtimes F(a,b))$ with the specified actions.
+There is an aspherical finite three-dimensional complex with
+this two-skeleton and cell counts $(1,9,26,24)$.
+\end{proposition}
+\begin{proof}
+Apply the same forgetting fibration and section to three
+moving points.  Its fibre is a plane minus four points.
+The base is the aspherical space of
+Proposition~\ref{P5c2}; the homotopy exact sequence therefore
+makes the fibre group injective and gives the asserted split
+extension.  The mirror-Artin substitutions for
+$A_{13},A_{23},A_{14},A_{24},A_{34}$ on a free group of rank four
+are the twenty table entries.  The code checks all of them as
+actual identities of braids on five strands.  The split
+extension normal form proves completeness of the presentation.
+
+To see the cell count and the first syzygies, let $R_4$ be the
+rose with four oriented edges and a chosen vertex.  Each component of
+$\operatorname{Map}_*(R_4,R_4)=(\Omega R_4)^4$ is contractible, since
+$R_4$ is aspherical.  Thus the monoid of based homotopy equivalences
+has contractible components indexed by $\operatorname{Aut}(F_4)$.
+The exact action just computed determines, up to fibre homotopy, a
+graph bundle with section over the finite aspherical two-complex of
+Proposition~\ref{P5c2}.  This statement can also be constructed cell
+by cell: choose based graph maps on the base edges and homotopies
+realizing the six exact action relations on its two-cells.  The
+contractibility just proved supplies all required compatibility.
+
+For a base $q$-cell, first attach its section cell.  Its remaining
+relative fibre pair is
+\[
+ (D^q\times R_4,
+  (S^{q-1}\times R_4)\cup(D^q\times\{*\})),
+\]
+whose quotient is $S^q\wedge R_4$, a wedge of four
+$(q+1)$-spheres.  Consequently exactly four further cells of degree
+$q+1$ are attached.  For $q=1$ their attaching words are exactly the
+twenty conjugation equations in the table; for $q=2$ they are
+three-cells.  This gives a homotopy CW model with the displayed
+two-skeleton and cell counts
+\[
+ (1+4t)(1+5t+6t^2)=1+9t+26t^2+24t^3.
+\]
+The six base relators act identically on every fibre generator;
+these are the twenty-four compatibility homotopies that attach
+the three-cells.  The code verifies all twenty-four word identities
+in the free group on $p,q,r,s$, and records the six base words in
+\texttt{levels\_braids\_actions.json}.  Based graph maps inducing the same homomorphism
+have contractible spaces of based homotopies, as follows by
+lifting to the tree universal cover.  Hence these homotopies
+exist coherently and no further cells are required.  The
+fibration has aspherical base and fibre, so its total space is
+aspherical by the homotopy exact sequence.  Its universal-cover
+cellular complex has no cells above dimension three and is
+acyclic.  Consequently its twenty-four three-cells give a free
+$\Z[\Gamma_{0,6}]$-basis of the second homotopy module of the
+displayed presentation two-complex.  This is a precise first
+relations-among-relations statement for these chosen words.
+\end{proof}
+
+\begin{theorem}[The genus-zero two-level statement and its scope]\label{P5c4}
+\status{Proved.}
+For the pure punctured-sphere groups, gluing all strata of
+modular dimension at most two, with their direction tori,
+fundamental groupoids, incidence maps, and two-dimensional
+coherence, determines $\Gamma_{0,n}$.  Its indecomposable
+positive-dimensional building blocks at those levels are
+$\mathcal M_{0,4}$ and $\mathcal M_{0,5}$; the other
+dimension-two possibility is
+$\mathcal M_{0,4}\times\mathcal M_{0,4}$.
+At dimension three the support types are
+\[
+ \mathcal M_{0,6},\qquad
+ \mathcal M_{0,5}\times\mathcal M_{0,4},\qquad
+ (\mathcal M_{0,4})^3.
+\]
+They supply the next coherence needed to remove the second
+homotopy left at level two.  This does not exclude syzygies
+already internal to the direction tori or the pieces.
+
+The four elementary types actually named in cote 147,
+\S9, folio 29, scan 60, are
+$(0,4),(1,1),(0,5),(1,2)$.  The statement above establishes
+the genus-zero part of that expectation; it is not a statement
+about profinite or Galois actions.
+\end{theorem}
+\begin{proof}
+Every genus-zero boundary stratum is a product
+$\prod_v\mathcal M_{0,n_v}$ with dimension
+$\sum_v(n_v-3)$.  The nonnegative partitions of dimensions one,
+two, and three give exactly the listed factor types, after
+suppressing zero-dimensional $\mathcal M_{0,3}$ factors.
+All these factors are aspherical by induction using the
+forgetting fibrations in the preceding proofs; their torus
+bundles are also aspherical.  Theorem~\ref{P5b2} says that the
+dimension-two thickening has the same fundamental group as
+$\mathcal M_{0,n}$.  Van Kampen and
+Theorem~\ref{P5c1} therefore reconstruct that group from the
+stated pieces and coherence.  The dimension-one thickening
+surjects on fundamental groups, whereas the dimension-two
+thickening accounts for all relations.  At dimension three
+the inclusion is $3$-connected, so its second homotopy agrees
+with that of the aspherical open moduli space and vanishes.
+Thus the new compatibility data can be supplied on the three
+listed support types.  At $n=6$ the only dimension-three
+stratum is the open $\mathcal M_{0,6}$, and
+Proposition~\ref{P5c3} makes the twenty-four syzygies explicit
+as fibre-generator/base-relator pairs.
+
+There is a complementary presentation in terms of pants moves:
+the elementary moves are supported on $(0,4)$, the essential
+new connected-support relation on $(0,5)$ is the pentagon,
+and disjoint moves commute.  The checked \citet[\S2, Theorem 2 and Remark 4, p.~9]{HatcherLochakSchneps2000} says that the pants complex with its five specified relation types is simply connected.  Its
+genus-zero restriction leaves the triangle, pentagon, and
+disjoint-support square, precisely the support dimensions just
+listed.  This independent formulation also makes clear why
+one must include transports and coherence, not just abstract
+isomorphism types of the small groups.
+
+Finally, if ``holes'' means boundary circles fixed pointwise,
+cap them to labelled punctures.  The resulting mapping class
+group is a central extension of $\Gamma_{0,n}$ by the $n$
+boundary twists.  For genus zero and $n\ge3$ it is noncanonically
+$\Z^n\times\Gamma_{0,n}$: keep one boundary as the outside of
+a disk, identify the others with framed punctures, trivialize
+their tangent framings in the plane, and split the disk pure
+braid group into its full-twist centre and the punctured-sphere
+group.  Changing the framings changes that splitting.
+The presentations above concern punctures; the boundary-fixed
+version is obtained by adjoining $n$ central generators.
+\end{proof}

@@ -1,0 +1,104 @@
+\begin{result}{B15}{Proved}{An elliptic quotient separates the genus-two quintic test}
+Let $C/\mathbb F_5$ be the smooth projective curve
+\[
+       y^2=x^5+(x^2+1)^2,
+       \qquad P=(0,1),\quad Q=\infty.
+\]
+Although $[P-Q]$ has exact order five in $J_C$, the points $P,Q$
+give distinct geometrically prime-to-five point-section classes
+over every finite extension of $\mathbb F_5$. There is a finite
+\emph{\'etale} cover of degree $16$ over $\mathbb F_5$, with geometric
+monodromy of order prime to five, having a rational point above $P$
+and none above $Q$.
+\par\emph{Passage:} cote 149, \S1, manuscript p.~17, scans 35--36,
+the prime-to-characteristic covering assertion (F7).
+\end{result}
+
+\begin{proof}
+Put
+\[
+ F(x)=x^5+(x^2+1)^2=(x-1)H(x),\qquad
+ H(x)=x^4+2x^3+2x^2-x-1.
+\]
+Both $F$ and $H$ are square-free, and $H(1)=3$ in $\mathbb F_5$.
+Thus $C$ has genus two and one rational point $Q$ at infinity.
+The identity
+$(y-x^2-1)(y+x^2+1)=x^5$ shows
+\[
+              \operatorname{div}(y-x^2-1)=5P-5Q.
+\]
+At $P$, the second factor is the unit $2$, while at $Q$ the
+orders of $x,y$ are $-2,-5$, so that the first factor has order
+$-5$. There are no other zeros or poles. The class is nonzero
+because a degree-one function would make this genus-two curve
+rational; hence its order is exactly five.
+
+Take the degree-two cover $f:D\to C$ given on function fields by
+\[
+        v^2=x-1,\qquad w=y/v,
+        \qquad w^2=H(x)=H(v^2+1).
+ \tag{B15.1}
+\]
+The function $x-1$ has divisor $2R-2Q$, where $R=(1,0)$ is a
+simple hyperelliptic branch point. The quadratic Kummer extension
+is therefore unramified everywhere, including at $Q$. It is
+geometrically connected: neither $x-1$ nor
+$(x-1)/F(x)=1/H(x)$ is a square in $\overline{\mathbb F}_5(x)$.
+The smooth projective model $D$ is hyperelliptic of genus three;
+the degree-eight polynomial $H(v^2+1)$ has eight distinct roots,
+since $H$ is square-free, $H(1)\ne0$, and $2$ is invertible.
+
+The second quotient is the smooth elliptic curve
+\[
+                  g:D\to E,\qquad E:w^2=H(x).
+\]
+Choose $P'=(v,w)=(2,3)$, which maps to $P$ because
+$x=v^2+1=0$ and $y=vw=1$. Its elliptic image is $r=(0,3)$.
+The two points $Q_+,Q_-$ above $Q$ are rational: the polynomial
+$H(v^2+1)$ has degree eight and leading coefficient one, so they
+are labelled by $w/v^4=+1,-1$. The map $g$ sends them to the
+two distinct rational infinity points $e_+,e_-$ of $E$, labelled
+by $w/x^2=+1,-1$. In particular neither equals $r$.
+
+Direct enumeration gives
+\[
+ E(\mathbb F_5)=
+ \{(0,2),(0,3),(3,2),(3,3),(4,1),(4,4),e_+,e_-\}.
+\]
+With $r$ as origin this is an elliptic group of order eight.
+Consequently each $e_\pm-r$ is nonzero and has order a power of
+two. This property persists in every extension field. The norm
+maps on Jacobians therefore show that neither
+$[Q_\pm-P']\in J_D(\overline{\mathbb F}_5)$ is five-primary.
+
+There is also a small actual separating cover. Let $F_E$ denote
+the $5$-power Frobenius of the elliptic curve with origin $r$.
+The map $F_E-1:E\to E$ is finite \emph{\'etale} of degree eight
+and has constant kernel $E(\mathbb F_5)$. Form
+\[
+       V=D\times_{g,E,F_E-1}E\longrightarrow D\longrightarrow C,
+ \tag{B15.2}
+\]
+where $g(P')=r$ is the identity. It has a rational point over $P'$.
+It has no rational point above $Q_+$ or $Q_-$, because
+$(F_E-1)(E(\mathbb F_5))=\{r\}$ whereas $g(Q_\pm)=e_\pm\ne r$.
+These are all points above $Q$. The cover (B15.2) has degree
+$8\cdot2=16$. Its geometric Galois closure has order prime to
+five by the same deck-conjugate product argument as in B14.
+Its rational fibre sets therefore distinguish the two point
+sections in the specified prime-to-five quotient.
+
+For an arbitrary finite constant extension, equality of the point
+sections would, by the fixed-coset comparison in B8 and B14,
+give a rational lift $Q'$ to $D$ whose section equals that of $P'$.
+There are still exactly the two possibilities $Q_+,Q_-$. The
+geometric prime-to-five group of $D$ is the open subgroup induced
+from $C$, since the cover has degree two. Kummer theory on $J_D$
+would make $[Q'-P']$ five-primary. Its nonzero two-primary norm
+$e_\pm-r$ contradicts that conclusion. This proves persistence
+over every finite extension, not merely separation over the
+original ground field. The exact polynomial, branch and rational
+point checks are recorded in \texttt{code/F7\_test5.py} and its
+output; the comparison with sections uses the explicit morphisms
+above.
+\end{proof}

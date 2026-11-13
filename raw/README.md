@@ -230,3 +230,21 @@ Not included: the page images and the crops of the scans (the scans are the arch
 the compile-check PDFs and the merge's `build/` folder (wrappers written by `compile_changed.py`); and copies of files
 already in this repository: the merge's dated copies, `SECOND_PASS_PROMPT.md` (as
 `methodology/SECOND_PASS_PROMPT.md`) and `GLOBAL_PASS.md` (above).
+
+## Added 13 November 2026
+
+Raw, as returned or as written; none of it is edited, and what a review does not cover is unchecked.
+
+| Folder | What it is | Date |
+|---|---|---|
+| `pro_returns/FLAGGED_149/` | Answer of GPT-6 Astra (ChatGPT Pro mode) to the archive prompt FLAGGED_149 (cote 149 and the opening of cote 142). The model marked it incomplete: by its own labels 57 statements proved, 31 refuted, 15 known, 4 open (B9, ZCF6, ZD10, Z142g). Intake in `reviews_max_20261112/FLAGGED_149_REVIEW_FABLE/`, source check in `reviews_max_20261112/FLAGGED_149_SOURCE_CHECK_OPUS/` | 12 Nov 2026 |
+| `pro_returns/EXIT_ONE_TYPE/` | Final answer of GPT-6 Astra (ChatGPT Pro mode) to the archive prompt EXIT_ONE_TYPE (cote 147, scans 106-190; cote 149). The model marked it incomplete: by its own labels 53 statements proved, 8 refuted, 1 known, 1 open (P3c in general). Not reviewed yet | 13 Nov 2026 |
+| `pro_returns/EXIT_ONE_TYPE_checkpoints/` | The three checkpoints the model packaged during that run (`20261112T2204Z/`, `20261112T2325Z/`, `20261112T2337Z/`), `CHECKPOINT_DIFF_20261112.md` (what differs between them) and a PDF of the paper downloaded separately, an older build than the one in the final answer | 12-13 Nov 2026 |
+| `pro_returns/MPL_7_061-072+8_001-078_checkpoint_018/` | Checkpoint of the first-pass transcription of cote 7, scans 61-72, and cote 8, scans 1-78, by GPT-6 Astra (ChatGPT Pro mode): the 30 pages finished when the run stopped (cote 7, 61-72; cote 8, 1-18), with the inventory, the doubts and the progress log. The prompt that continues it is `prompts/MPL_7_061-072+8_001-078_continue/PROMPT.md`; the message sent first in the same chat is `prompts/MPL_7_061-072+8_001-078/RECOVERY_MESSAGE.md` | 13 Nov 2026 |
+| `reviews_max_20261112/` | Three more folders (`README.md` there): `LM1_RERUN_REVIEW_OPUS/`, `FLAGGED_149_REVIEW_FABLE/`, `FLAGGED_149_SOURCE_CHECK_OPUS/` | 12-13 Nov 2026 |
+| `prompts/archive_20261112/` | `ANABELIAN_149_PUSH/` (new), `GOOD_REDUCTION_SUPERSEDED_20261113/` (set aside, not sent), the current `EXIT_TOWER/PROMPT.md`, a fourth trace excerpt of EXIT_ONE_TYPE (`README.md` there) | 13 Nov 2026 |
+| `prompts/LM4_FINITE_GROUP_ACTIONS/` to `prompts/LM8_LIE_APPROXIMATIONS/` | The Longue Marche research prompts LM4 to LM8 as they stand in their upload folders (`PROMPT.md`), each with `ZIP_CONTENTS.tsv` (every member of its background zips: zip, member, bytes, CRC-32; the zips themselves are not uploaded) and `work/` (the list the zip was built from, background and change notes, earlier versions of the prompt, the scripts). `LM8_LIE_APPROXIMATIONS/LM8_PART_G_AFTER_CYCLOTOMIC_20261113.md` is the Part G written for LM8 after the review of CYCLOTOMIC_KERNEL. Written by Claude Fable 5.2; LM7 was sent on 12 Nov | 12-13 Nov 2026 |
+| `prompts/MPL_<cotes and scans>/PROMPT.md` | The transcription prompt of every package of the Montpellier archive built so far (packages 30 to 178; 150 new folders), without the scans. How the packages were cut is in `planning/montpellier_archive/PACKAGING_REPORT_FULL_ARCHIVE_20261112.md` and `PACKAGING_REPORT_RANKS_4_5_PROBES_20261112.md` | 12-13 Nov 2026 |
+| `research_maps_20261112/CONNES_CONSANI_CFT/` | A map between the geometric class field theory of Connes and Consani and the statements on the kernel of the cyclotomic character, sections and cusps in cote 149 (`MAP.md`, Claude Fable 5.2, effort max; its own flags say what is open), with the list of their arXiv papers and abstracts it started from (`LISTING_ABSTRACTS.md`). The papers are not included | 13 Nov 2026 |
+
+In these copies the first name of the user who ran the project is replaced by "user", local paths included.
