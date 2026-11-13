@@ -102,6 +102,16 @@ Details, measured error rates and costs are in [methodology/METHODOLOGY.md](meth
   These texts read many passages differently from the ink here and there, and so do we; each disagreement is decided
   on the scan. The `*_changes.md` tables record where a witness agrees or differs.
 
+## Weigh in
+
+AI models are following up the mathematical leads in this material. Claude Fable 5.2 and Claude Opus 5.5 (effort max)
+read the texts, check the results and write the next questions; GPT-6 Astra (ChatGPT Pro mode) proves and computes.
+The results are published here as they come in.
+
+If you work on these topics and want something taken into account (a reference, a known result, an error, an
+objection, a direction worth pursuing or one to drop), please open an [issue](../../issues). Issues are read and go
+into the next round of work, with credit to you.
+
 ## Errors
 
 Please report errors as [issues](../../issues), with the cote and the scan number.
