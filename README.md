@@ -35,14 +35,40 @@ The transcription is diplomatic: Grothendieck's French, spelling, abbreviations,
 margin notes as written, with doubt marked (`\unsure{a|b}`, `\illegible{n}`). Mathematics keeps his letters, indices
 and arrows; diagrams are typeset with tikz-cd.
 
+## English translation
+
+An English translation of the whole manuscript: all 245 units of the transcription, 1,588 scans.
+
+- **A draft reader**, one PDF: `La_Longue_Marche_English.pdf`, under [Releases](../../releases)
+  (English translation, 13 November 2026). Its LaTeX source is
+  [reader/LaLongueMarche_English.tex](reader/LaLongueMarche_English.tex). It is a draft: the packages set one
+  after another, with provisional typesetting (a wide formula or diagram is reduced or turned on its side, a long
+  marginal note is set in the text block). A typeset reader will replace it.
+- `translation/en/`: the English of each package of scans, as LaTeX (116 files).
+- [methodology/translation_en/](methodology/translation_en/README.md): how it was translated and checked, with the
+  prompts, the scripts, the checks (every fix and every waiver) and the run reports.
+
+It translates the checked transcription with its marks: deletions, insertions, marginal notes, underlining, doubtful
+and illegible readings. The formulas are the transcription's, character for character. Terms follow one glossary for
+the whole manuscript, built on Grothendieck's own English (*Pursuing Stacks*) and on the English *Sketch of a
+Programme*.
+
+In the draft readers (the English one and the four French ones), every doubtful reading (blue), every `[illeg. n]` and
+every `[scan n]` is a link: it opens that scan in the viewer of the Grothendieck archive of the Université de
+Montpellier, so that you can look at the handwriting yourself.
+
+AI-translated by GPT-6.1 Sol (OpenAI, reasoning effort max, API Flex tier) from the AI-transcribed French text (transcription by GPT-6 Astra, ChatGPT Pro mode, checked by Claude Opus 5.5); prompts, checks, fixes and build by Claude (Anthropic).
+
+The rights in the original work belong to its author or the author's representatives or heirs. Where we hold rights, in the AI-produced transcription, translation, corrections and typesetting, they are dedicated to the public domain under CC0 1.0. This edition is published for educational, non-profit purposes, and we claim no rights we do not hold. If you hold rights in this work and object to its publication here, please open a GitHub issue and we will take it down.
+
 ## Status (12 November 2026)
 
 - First pass: all 1,588 scans.
 - Second pass, in which every line is checked against the archive images at full resolution and collated with the
   earlier transcriptions listed below where they cover the text: all 1,588 scans (116 packages, cotes 140-1 to
-  140-4), with 4,890 changes to the first pass and 3,636 places left unresolved and marked. The edition's
-  `transcription/` and `notes/` and the draft readers hold it for cote 140-2, scans 21–30 and 101–575, and cote 140-3,
-  scans 1–130; the rest is under [`raw/`](raw/README.md) (section "Second passes") until the next
+  140-4), with 4,890 changes to the first pass and 3,636 places left unresolved and marked. The draft readers of
+  13 November hold it for all four cotes. The edition's `transcription/` and `notes/` hold it for cote 140-2, scans
+  21–30 and 101–575, and cote 140-3, scans 1–130; the rest is under [`raw/`](raw/README.md) (section "Second passes") until the next
   release.
 - The earlier transcriptions cover the first part of the manuscript (§§ 1–37, cote 140-2). For cote 140-3 they offer
   only the section titles of the table of contents, so the images alone decide the reading.

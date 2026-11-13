@@ -1,0 +1,151 @@
+# For each entry of translation_glossary_20261110/scripts/entries_LM.txt (the first field, exactly): the line that the
+# prompt carries when the entry's French occurs on a unit's pages, the regular expression (case-insensitive) that finds
+# the English form in the translation, for the glossary check (as the EN table of the comparison's checks.py), and the
+# check level: "fail" (the English form must be on the page, or across the page break) or "review" (listed only).
+# Format: french ;; prompt line ;; English regex ;; level
+# The entries of the comparison keep its prompt lines (translation_comparison_20261111/prompt/PROMPT_PARTS.txt, LM
+# TERMS) and its regexes where it had them; the others are written in the same way from the glossary (Claude Opus 5.5,
+# 12 Nov 2026), as terms_DER.txt was for Les Dérivateurs. Where the French regex also catches an ordinary word or an
+# abbreviation whose English depends on the context ("genre": genus or kind; "bord": boundary or edge; "ext.": outer or
+# extension), the English regex accepts the ordinary renderings too, or the level is "review", so that the check flags
+# only a missing term. Level "review": his abbreviations (section E of the glossary) and the entries whose French
+# pattern catches ordinary words.
+# Changed after the pilot (12 Nov; the file as first used: checks/terms_LM_as_first_used.txt): the English pattern of
+# "commutant" also accepts "commuting" and the like, since the French pattern catches the participle ("un autom.
+# commutant à rho"); the prompt lines did not change.
+# Changed after b02 (12 Nov), as the faithfulness review of the pilot gives them (checks/FAITHFULNESS_REVIEW_PILOT_
+# 20261112.md, changes 3 and 4, approved by the coordinator): the line of "hom, isom, autom" (maps between schemes,
+# pairs, spaces, topoi, sheaves of sets are morphisms; its English pattern also accepts "morphism"); the new entry
+# "automorphisme à lacets" (also entered in the glossary's entries_LM.txt; the files before: glossary_before_20261112/).
+# Widened after b02 (12 Nov), where they missed correct English: the English patterns of automorphisme à lacets
+# ("homomorphism of groups with loops" for "hom. de groupes à lacets", which the review's French pattern also
+# catches), morphisme de topos and topos modulaire (an adjective between: "morphism of multi-Galois topoi",
+# "modular Teichmüller topos"), suite exacte ("exact cohomology sequence"), N.B. ("nb" is also his "nombre":
+# "prime number"), conjugaison ("conj." is also his "conjecture"), classe de conjugaison ("class of conjugacy"),
+# transport de structure (plural), point base ("base|fixed point").
+# Widened after b03 (12 Nov): orientation ("unoriented", "nonorientable"), groupe de Galois ("Galois-Poincaré
+# group"), sous-groupe invariant (a doubt mark between: "\unsure{invariant|inscribed} subgroups").
+# Widened after b04 (12 Nov): schéma en groupes ("group \unsure{subschemes}" for "\unsure{ss-schémas} en groupes"), passage au quotient ("passage to the additive quotient").
+#
+# --- A. His coinages and the main objects
+groupe à lacets ;; groupe à lacets → group with loops (also: profinite, discrete, outer group with loops); not "loop group", which means something else in English ;; \bgroups? (with|of) loops\b ;; fail
+structure à lacets ;; structure à lacets → loop structure ;; loop[- ]structures?|structures? (with|of) loops ;; fail
+relation des lacets ;; relation (équation, formule) des lacets → loop relation (loop equation, loop formula) ;; loop (relations?|equations?|formulas?|formulae)|(relations?|equations?|formulas?) (of|for) (the )?loops ;; fail
+lacet ;; lacet → loop ;; \bloops?\b ;; fail
+sous-groupe à lacets ;; sous-groupe à lacets → loop subgroup ;; loop[- ]subgroups?|subgroups? (with|of) loops ;; fail
+automorphisme à lacets ;; automorphisme (homomorphisme, isomorphisme) à lacets, autom. à lacets → loop automorphism (loop homomorphism, loop isomorphism), as loop structure and loop subgroup; not "automorphism with loops" ;; \bloop[- ](auto|homo|iso)morphisms?\b|(auto|homo|iso)morphisms? of (\w+ ){0,2}groups? with loops ;; fail
+action extérieure ;; action extérieure, action ext., opération extérieure → outer action, outer operation ;; outer (\w+ )?(actions?|operations?) ;; fail
+groupe extérieur ;; groupe extérieur, groupe ext. → outer group (a group taken up to inner automorphisms) ;; outer (\w+ )?(§-)?groups?|extensions? ;; fail
+homomorphisme extérieur ;; hom. (isom., autom.) extérieur, hom. ext. → outer homomorphism (outer isomorphism, outer automorphism) ;; outer (\w+ )?(homo|iso|auto)morphisms?|(homo|iso|auto)morphisms? of extensions?|extension (homo|iso|auto)morphisms? ;; fail
+extérieurement ;; extérieurement → no adverb "outerly": an English phrase in context ("acts by outer automorphisms", "commute as outer actions") ;; \bouter\b|\bexterior\w*|\bexternal\w* ;; review
+arithmétiquement extérieur ;; arithmétiquement extérieur → arithmetically outer ;; arithmetically outer ;; fail
+anabélien ;; anabélien, anabélianité → anabelian, anabelianity ;; anabelian\w* ;; fail
+discrétification ;; discrétification → discretification (his coinage) ;; discretifi\w* ;; fail
+prédiscrétification ;; prédiscrétification → prediscretification ;; pre-?discretifi\w* ;; fail
+quasi-discrétification ;; quasi-discrétification → quasi-discretification ;; quasi-discretifi\w* ;; fail
+arithmétisation ;; arithmétisation, arithmétisé, préarithmétisation → arithmetization, arithmetized, prearithmetization ;; arithmetiz\w* ;; fail
+rigidification ;; rigidification, rigidifié → rigidification, rigidified ;; rigidif\w* ;; fail
+bouchage de trous ;; boucher les trous, bouchage de trous → plug the holes, plugging holes ;; \bplug\w*|\bboucher\b ;; fail
+forage de trous ;; forer des trous, forage de trous → drill holes, drilling holes (the inverse of plugging) ;; \bdrill\w* ;; fail
+trou ;; trou → hole ;; \bholes?\b ;; fail
+topos multigaloisien ;; topos (catégorie) multigaloisien → multi-Galois topos (category) (his coinage) ;; multi-?galois\w* ;; fail
+multiplicité modulaire ;; multiplicité modulaire → modular multiplicity ;; modular multiplicit\w+ ;; fail
+multiplicité ;; multiplicité → multiplicity (his word for what is now a stack or orbifold; kept) ;; multiplicit\w+ ;; fail
+topos modulaire ;; topos modulaire → modular topos (plural topoi) ;; modular (\S+ ){0,2}top(os|oi) ;; fail
+groupe de Teichmüller ;; groupe de Teichmüller (étendu, spécial, géométrique, profini) → Teichmüller group (extended, special, geometric, profinite) ;; teichm\w*ller(['’]s)? (\w+ )?(sub)?groups?|(sub)?groups? of teichm ;; fail
+tour, groupoïde de Teichmüller ;; tour (groupoïde, espace) de Teichmüller → Teichmüller tower (Teichmüller groupoid, Teichmüller space) ;; teichm\w*ller(['’]s)? (\w+ )?(towers?|groupoids?|spaces?)|(towers?|groupoids?|spaces?) of teichm ;; fail
+Galois-Teichmüller ;; Galois-Teichmüller → Galois-Teichmüller ;; galois-teichm ;; fail
+groupe cartographique ;; groupe cartographique, cartographique → cartographic group, cartographic ;; cartographic ;; fail
+carte ;; carte → map (a 2-dimensional map, as in the Sketch) ;; \bmaps?\b|\bcards?\b|\bcharts?\b ;; review
+drapeau ;; drapeau → flag ;; \bflags?\b ;; fail
+germe ;; germe (d'espace, d'arc, de relèvement, de scindage; germe résiduel) → germ (of spaces, of arcs, of liftings, of splitting; residual germ) ;; \bgerms?\b ;; fail
+tour de Fermat ;; tour de Fermat; tour des courbes (des revêtements, des isogénies) → Fermat tower; tower of curves (of coverings, of isogenies) ;; \btowers?\b ;; fail
+approximation de Lie ;; approximation de Lie → Lie approximation ;; lie approximations?|approximations? of lie ;; fail
+enveloppe schématique ;; enveloppe schématique, adhérence schématique → schematic envelope, schematic closure ;; schematic (envelopes?|closures?) ;; fail
+épinglage ;; épinglage, épinglé → pinning, pinned ;; \bpinn\w*|\bpins?\b ;; fail
+L-groupe, L-structure ;; L-groupe, LT-groupe, L-structure → L-group, LT-group, L-structure (L for "lacets"; not the Langlands L-group) ;; \bl-(groups?|structures?)|\blt-groups? ;; fail
+Gr-catégorie, Gr-champ ;; Gr-catégorie, Gr-champ → Gr-category, Gr-stack ;; gr-(categor\w+|stacks?) ;; fail
+multiplicateur ;; multiplicateur → multiplier ;; multipliers? ;; fail
+relèvement admissible ;; relèvement (action, façon) admissible, admissibilité → admissible lifting (action, way), admissibility ;; admissib\w+ ;; fail
+relèvement ;; relèvement → lifting ;; \blift\w* ;; fail
+section ;; section (partielle, régulière, unipotente, canonique, locale, ensembliste), quasi-section → section (partial, regular, unipotent, canonical, local, set-theoretic), quasi-section ;; \bsections?\b|quasi-sections? ;; fail
+scindage ;; scindage, scindé → splitting, split ;; \bsplit\w* ;; fail
+unipotent régulier ;; unipotent (nilpotent) régulier → regular unipotent (regular nilpotent) ;; \bregular\w* ;; fail
+anti-involution ;; anti-involution → anti-involution ;; anti-?involutions? ;; fail
+antipodisme ;; antipodisme → antipodism (his word for the antipodal map) ;; antipodism\w* ;; fail
+condition liminaire ;; condition liminaire → preliminary condition ;; preliminary conditions? ;; fail
+module d'orientation ;; module d'orientation → orientation module ;; orientation modules?|modules? of orientation ;; fail
+structure d'extension ;; structure d'extension → extension structure ;; extension structures?|structures? of (an )?extension ;; fail
+isotopique ;; isotopique, isotopie → isotopic, isotopy ;; isotop\w+ ;; fail
+topossique ;; topossique → topossic (his adjective) ;; topossic ;; fail
+proétale ;; proétale → pro-étale ;; pro-?(é|e)tale ;; fail
+congruentiel ;; congruentiel → congruential ;; congruen\w+ ;; fail
+cyclotomique ;; cyclotomique → cyclotomic ;; cyclotomic ;; fail
+générateurs involutifs ;; involutif → involutive ;; involuti\w+ ;; fail
+# --- B. Groups
+sous-groupe ;; sous-groupe, ss-groupe, ss-gr., ss-gpe, s-groupe → subgroup ;; subgroups? ;; fail
+sous-groupe invariant ;; sous-groupe invariant → invariant subgroup (his two words kept apart: invariant, distingué) ;; invariant\W+(\w+\W+){0,2}subgroups? ;; fail
+sous-groupe distingué ;; sous-groupe distingué → normal subgroup ;; normal (\w+ )?subgroups? ;; fail
+sous-groupe ouvert, d'indice fini ;; sous-groupe ouvert (fermé, d'indice fini) → open subgroup (closed subgroup, subgroup of finite index) ;; (open|closed) (\w+ )?subgroups?|subgroups? of finite index|finite[- ]index subgroups? ;; fail
+groupe profini ;; profini → profinite ;; profinite ;; fail
+compactifié profini, complété profini ;; compactifié profini, complété profini → profinite compactification, profinite completion ;; compactif\w+|complet\w+ ;; fail
+groupe fondamental, groupoïde fondamental ;; groupe (groupoïde) fondamental → fundamental group (fundamental groupoid) ;; fundamental (\w+ )?groups?|fundamental (\w+ )?groupoids? ;; fail
+extension ;; extension (centrale, finie, scindée), sous-extension → extension (central, finite, split), subextension ;; extensions? ;; fail
+suite exacte ;; suite exacte (d'homotopie) → exact sequence (homotopy exact sequence) ;; exact (\w+ )?sequences? ;; fail
+image inverse ;; image inverse → inverse image (of an extension: its pull-back; his term is kept) ;; inverse images? ;; fail
+noyau ;; noyau → kernel ;; \bkernels?\b ;; fail
+commutant ;; commutant → commutant (his word, kept apart from centralisateur → centralizer) ;; commutants?|\bcommut\w* ;; fail
+centralisateur, normalisateur, stabilisateur ;; centralisateur, normalisateur, stabilisateur → centralizer, normalizer, stabilizer ;; centralizers?|normalizers?|stabilizers? ;; fail
+centre ;; centre → center ;; \bcenters?\b|\bcentral\w*|\bmiddle\b ;; review
+conjugaison ;; conjugaison, conj. → conjugation ;; conjugat\w+|conjugacy|conjectur\w* ;; fail
+classe de conjugaison ;; classe de conjugaison, classe de conj. → conjugacy class ;; conjugacy class\w*|class\w* of (§-)?conjuga\w+|conjugat\w+ class\w* ;; fail
+conjugué ;; conjugué → conjugate ;; conjugat\w+ ;; fail
+produit semi-direct ;; produit semi-direct → semidirect product ;; semi-?direct\w* ;; fail
+somme amalgamée ;; somme amalgamée → amalgamated sum (his term, kept) ;; amalgamated sums? ;; fail
+opérer, opération ;; opérer, opération → operate, operation (kept apart from action, agir → action, act) ;; \boperat\w+ ;; fail
+action ;; action → action ;; \bactions?\b ;; fail
+action effective ;; action effective → actual action where it is opposed to the outer action; effective action only where he means a faithful one ;; (actual|effective) actions? ;; fail
+fidèle, fidèlement ;; fidèle, fidèlement, fidélité → faithful, faithfully, faithfulness ;; faithful\w* ;; fail
+librement, transitif ;; librement; transitif, simplement transitif → freely; transitive, simply transitive ;; \bfree\w*|transitiv\w* ;; review
+torseur ;; torseur → torsor ;; torsors? ;; fail
+tordu, tordre ;; tordu, tordre → twisted, twist ;; \btwist\w* ;; review
+schéma en groupes ;; schéma en groupes → group scheme ;; group[- ](sub)?schemes?|schemes? (in|of) groups ;; fail
+groupe de Galois ;; groupe de Galois → Galois group ;; galois\S* (\w+ )?groups?|groups? of galois ;; fail
+caractère cyclotomique ;; caractère cyclotomique → cyclotomic character ;; cyclotomic characters? ;; fail
+# --- C. Topology, curves, topoi
+revêtement ;; revêtement, rev. → covering (universal covering, étale covering) ;; \bcover\w* ;; fail
+point base ;; point de base, pt base → base point ;; base[- ]?points?|\bbase\b ;; fail
+points à l'infini ;; points à l'infini → points at infinity ;; points? at infinity|\binfinity\b ;; fail
+voisinage ;; voisinage (tubulaire) → neighborhood (tubular neighborhood) ;; neighborhoods? ;; fail
+surface, genre, bord ;; surface (compacte, orientée, orientable, à bord); genre; bord → surface (compact, oriented, orientable, with boundary); genus; boundary ("genre" also in the sense "kind") ;; \bsurfaces?\b|\bgenus\b|\bgenera\b|\bboundar(y|ies)\b|\bkinds?\b|\bsorts?\b|\bedges?\b|\btypes?\b|\bborders?\b|\bbounded\b ;; review
+orientation ;; orientation, orienté, orientable → orientation, oriented, orientable ;; orient\w* ;; fail
+courbe elliptique, courbe algébrique ;; courbe elliptique (algébrique, alg., complexe, rationnelle) → elliptic curve (algebraic, complex, rational curve) ;; \bcurves?\b ;; fail
+rigidification de Jacobi d'échelon n ;; d'échelon n → of level n (his word of 1960-61 for the level) ;; \blevels?\b ;; review
+classe de chemins ;; chemin, classe de chemins → path, class of paths ;; \bpaths?\b ;; review
+homéomorphisme ;; homéomorphisme, homéom. → homeomorphism ;; homeomorph\w+ ;; fail
+topos ;; topos → topos, plural topoi ;; \btop(os|oi)\b ;; fail
+topos classifiant, topos étale ;; topos classifiant (étale, discret, induit) → classifying topos (étale, discrete, induced topos) ;; (classifying|étale|etale|discrete|induced) top(os|oi) ;; fail
+morphisme de topos ;; morphisme de topos → morphism of topoi ;; morphisms? of [^.;]{0,40}?top(os|oi)|top(os|oi) morphisms? ;; fail
+foncteur fibre ;; foncteur fibre → fiber functor ;; fiber functors? ;; fail
+catégorie fibrée, champ, gerbe ;; catégorie fibrée, champ, gerbe → fibered category, stack, gerbe ;; fibered|\bstacks?\b|\bgerbes?\b|\bfields?\b ;; review
+équivalence de catégories ;; équivalence de catégories → equivalence of categories ;; equivalences? of categories ;; fail
+pleinement fidèle ;; pleinement fidèle, pleine fidélité → fully faithful, full faithfulness ;; fully faithful|full faithfulness ;; fail
+transport de structure ;; transport de structure → transport of structure ;; transports? of structures? ;; fail
+passage au quotient ;; passer (passage) au quotient → pass to the quotient (passage to the quotient) ;; pass\w* to the (\w+ )?quotient ;; fail
+# --- D. Register and working words
+bordélique ;; bordélique → messy ;; \bmess\w* ;; fail
+draconien ;; draconien → draconian ;; draconian ;; fail
+dévissage ;; dévissage → dévissage (kept in French, as in the Sketch) ;; d(é|e)vissage ;; fail
+yoga ;; yoga → yoga ;; \byoga ;; fail
+sauf erreur ;; sauf erreur → unless I am mistaken ;; unless I am mistaken|unless I'm mistaken|if I am not mistaken|if I'm not mistaken ;; fail
+sans doute ;; sans doute → probably (his hedge; not "no doubt", "doubtless" or "without doubt") ;; \bprobabl\w* ;; fail
+cqfd ;; cqfd → q.e.d. ;; q\.?e\.?d ;; fail
+N.B., Rmq ;; NB → N.B.; Rmq → Remark ;; \bN\.\s?B\.|\bremarks?\b|\bnumbers?\b ;; fail
+# --- E. His abbreviations (written out in the English; the French transcription keeps them)
+hom, isom, autom ;; hom, isom, autom, endom → homomorphism, isomorphism, automorphism, endomorphism; but "hom" between schemes, preschemes, pairs (X,S), spaces, topoi or sheaves of sets is a morphism ("hom de schémas" morphism of schemes, "hom de topos" morphism of topoi, as in his Pursuing Stacks); "hom de schémas en groupes" stays homomorphism of group schemes ;; (homo|iso|auto|endo)?morph\w* ;; review
+ssi ;; ssi → iff ;; \biff\b ;; review
+tt, tte, ts, tjrs ;; tt, tte, ts → every, all; tjrs → always ;; \bevery\w*|\ball\b|\balways\b|\bany\w*|\beach\b|\bwhole\b ;; review
+pt, élt, mb ;; pt, élt → point, element; mb → side (of an equation) ;; \bpoints?\b|\belements?\b|\bsides?\b|\bmembers?\b ;; review
+néc., gén., loc., can., alg., géom., top. ;; his abbreviations with a full stop are written out: néc. necessarily, gén. general, loc. local(ly), can. canonical, alg. algebraic, géom. geometric, top. topological, arithm. arithmetic, ens. set, cat. category, hyp. hypothesis, déf. definition, dém. proof, prop. proposition, cor. corollary, ex. example, dim. dimension, comm. commutative, univ. universal, ess. essential(ly), équiv. equivalent, inv. inverse, int. inner, ext. outer or extension (from the context) ;; necessar\w*|general\w*|local\w*|canonical\w*|algebraic\w*|geometric\w*|topolog\w*|arithmetic\w*|\bsets?\b|categor\w*|hypothes\w*|definition\w*|\bproofs?\b|propos\w*|propert\w*|corollar\w*|example\w*|dimension\w*|commutativ\w*|universal\w*|essential\w*|equivalen\w*|invers\w*|invariant\w*|\binner\b|interior|outer|extension\w*|resp\.|respectively|correspond\w*|component\w*|connected\w*|compos\w*|compact\w*|character\w*|rank|system\w*|structur\w*|schem\w*|arbitrar\w*|\bany\b|supplement\w*|integ\w*|necessar\w* ;; review
+m̄ (même) ;; - ;; - ;; review
+i.e., cf., resp. ;; i.e., cf, resp. → i.e., cf., resp. ;; \bi\.e\.|\bcf\.|\bresp\.|\brespectively\b|\bthat is\b ;; review

@@ -7,6 +7,8 @@ transcrit en premier jet, et la transcription est en cours de vérification page
 
 [English version](README.md)
 
+Une traduction anglaise de tout le manuscrit (245 unités, 1 588 scans ; traduite par IA) se trouve dans `translation/en/` et, en un seul PDF, dans les [Releases](../../releases) : voir la section [English translation](README.md#english-translation) du README anglais.
+
 ## Contenu
 
 - **Lecteurs provisoires**, un PDF par fichier d'archive, dans les [Releases](../../releases) : cote 140-2 (pages

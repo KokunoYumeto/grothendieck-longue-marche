@@ -15,8 +15,351 @@
 \newcommand{\margin}[1]{\ifinner{\footnotesize[#1]}\else\marginpar{\footnotesize #1}\fi}
 \newcommand{\diagram}[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\fi\fi}
 \let\figure\relax\newcommand{\figure}[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\fi\fi}
+\raggedbottom
+\usepackage{newunicodechar}
+\newfontfamily\cyrfont{DejaVu Serif}[Scale=MatchLowercase]
+\newunicodechar{А}{{\cyrfont\char"0410}}
+\newunicodechar{Б}{{\cyrfont\char"0411}}
+\newunicodechar{В}{{\cyrfont\char"0412}}
+\newunicodechar{Г}{{\cyrfont\char"0413}}
+\newunicodechar{Д}{{\cyrfont\char"0414}}
+\newunicodechar{Е}{{\cyrfont\char"0415}}
+\newunicodechar{Ж}{{\cyrfont\char"0416}}
+\newunicodechar{З}{{\cyrfont\char"0417}}
+\newunicodechar{И}{{\cyrfont\char"0418}}
+\newunicodechar{Й}{{\cyrfont\char"0419}}
+\newunicodechar{К}{{\cyrfont\char"041A}}
+\newunicodechar{Л}{{\cyrfont\char"041B}}
+\newunicodechar{М}{{\cyrfont\char"041C}}
+\newunicodechar{Н}{{\cyrfont\char"041D}}
+\newunicodechar{О}{{\cyrfont\char"041E}}
+\newunicodechar{П}{{\cyrfont\char"041F}}
+\newunicodechar{Р}{{\cyrfont\char"0420}}
+\newunicodechar{С}{{\cyrfont\char"0421}}
+\newunicodechar{Т}{{\cyrfont\char"0422}}
+\newunicodechar{У}{{\cyrfont\char"0423}}
+\newunicodechar{Ф}{{\cyrfont\char"0424}}
+\newunicodechar{Х}{{\cyrfont\char"0425}}
+\newunicodechar{Ц}{{\cyrfont\char"0426}}
+\newunicodechar{Ч}{{\cyrfont\char"0427}}
+\newunicodechar{Ш}{{\cyrfont\char"0428}}
+\newunicodechar{Щ}{{\cyrfont\char"0429}}
+\newunicodechar{Ъ}{{\cyrfont\char"042A}}
+\newunicodechar{Ы}{{\cyrfont\char"042B}}
+\newunicodechar{Ь}{{\cyrfont\char"042C}}
+\newunicodechar{Э}{{\cyrfont\char"042D}}
+\newunicodechar{Ю}{{\cyrfont\char"042E}}
+\newunicodechar{Я}{{\cyrfont\char"042F}}
+\newunicodechar{а}{{\cyrfont\char"0430}}
+\newunicodechar{б}{{\cyrfont\char"0431}}
+\newunicodechar{в}{{\cyrfont\char"0432}}
+\newunicodechar{г}{{\cyrfont\char"0433}}
+\newunicodechar{д}{{\cyrfont\char"0434}}
+\newunicodechar{е}{{\cyrfont\char"0435}}
+\newunicodechar{ж}{{\cyrfont\char"0436}}
+\newunicodechar{з}{{\cyrfont\char"0437}}
+\newunicodechar{и}{{\cyrfont\char"0438}}
+\newunicodechar{й}{{\cyrfont\char"0439}}
+\newunicodechar{к}{{\cyrfont\char"043A}}
+\newunicodechar{л}{{\cyrfont\char"043B}}
+\newunicodechar{м}{{\cyrfont\char"043C}}
+\newunicodechar{н}{{\cyrfont\char"043D}}
+\newunicodechar{о}{{\cyrfont\char"043E}}
+\newunicodechar{п}{{\cyrfont\char"043F}}
+\newunicodechar{р}{{\cyrfont\char"0440}}
+\newunicodechar{с}{{\cyrfont\char"0441}}
+\newunicodechar{т}{{\cyrfont\char"0442}}
+\newunicodechar{у}{{\cyrfont\char"0443}}
+\newunicodechar{ф}{{\cyrfont\char"0444}}
+\newunicodechar{х}{{\cyrfont\char"0445}}
+\newunicodechar{ц}{{\cyrfont\char"0446}}
+\newunicodechar{ч}{{\cyrfont\char"0447}}
+\newunicodechar{ш}{{\cyrfont\char"0448}}
+\newunicodechar{щ}{{\cyrfont\char"0449}}
+\newunicodechar{ъ}{{\cyrfont\char"044A}}
+\newunicodechar{ы}{{\cyrfont\char"044B}}
+\newunicodechar{ь}{{\cyrfont\char"044C}}
+\newunicodechar{э}{{\cyrfont\char"044D}}
+\newunicodechar{ю}{{\cyrfont\char"044E}}
+\newunicodechar{я}{{\cyrfont\char"044F}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\setmathfont{Latin Modern Math}
+\setmathfont{STIX Two Math}[range={"27CB,"27CD}]
+
+% ---- typesetting pass of the readers (reader_typeset.py, 13 Nov 2026): fit to the page; links to the scans ----
+\usepackage{luacode}
+\newattribute\LMattr
+\newcount\LMscanvalue
+\tolerance=1000 \emergencystretch=3em \tracinglostchars=3
+\begin{luacode*}
+LMFIT = LMFIT or {}
+local F = LMFIT
+F.measure = false   -- a trial setting of a marginal note: record the widths, change nothing
+F.maxw = 0          -- widest natural line of the trial (sp)
+F.inpar = false
+F.A = luatexbase.registernumber("LMattr")
+F.n = {scaled_display = 0, rotated_display = 0, scaled_line = 0, rotated_line = 0, small_line = 0}
+local HLIST, GLUE, KERN, WHATSIT, GLYPH = node.id("hlist"), node.id("glue"), node.id("kern"), node.id("whatsit"), node.id("glyph")
+local SETMATRIX = node.subtype("pdf_setmatrix")
+local MINSCALE = 0.70
+local function note(kind, s, extra)
+  F.n[kind] = (F.n[kind] or 0) + 1
+  texio.write_nl("log", string.format("LMFIT %s scale %.3f at input line %d%s", kind, s, tex.inputlineno, extra or ""))
+end
+local function matrix(a, b, c, d)
+  local n = node.new(WHATSIT, SETMATRIX)
+  n.data = string.format("%.8f %.8f %.8f %.8f", a, b, c, d)
+  return n
+end
+local function kern(w)
+  local k = node.new(KERN, 1)
+  k.kern = w
+  return k
+end
+local function chain(...)
+  local t = {...}
+  for i = 1, #t do
+    t[i].prev = t[i - 1]
+    t[i].next = t[i + 1]
+  end
+  return t[1]
+end
+-- b: a box at its natural width. Returns a list that draws b scaled by s (about its reference point) and takes up
+-- the scaled width; the matrix is undone at the same point, so colours that run on after the box are kept.
+local function scaled(b, s)
+  return chain(matrix(s, 0, 0, s), b, kern(-b.width), matrix(1 / s, 0, 0, 1 / s), kern(math.floor(s * b.width)))
+end
+-- b turned 90 degrees counter-clockwise and scaled by s: width s(h+d), height s*w
+local function rotated(b, s, left)
+  return chain(kern(left + math.floor(s * b.height)), matrix(0, s, -s, 0), b, kern(-b.width), matrix(0, -1 / s, 1 / s, 0),
+               kern(math.floor(s * b.depth)))
+end
+local function rotscale(w)
+  local room = 0.92 * tex.vsize
+  if room < 100 * 65536 then room = 600 * 65536 end
+  return math.min(1, room / w)
+end
+
+local function fit_lines(head)
+  F.inpar = false
+  for line in node.traverse_id(HLIST, head) do
+    if line.subtype == 1 and line.head and line.width > 10 * 65536 then
+      local nw = node.dimensions(line.head)
+      if F.measure and nw > F.maxw then F.maxw = nw end
+      if nw > line.width + 6554 then
+        local shrink, inf, glyphs = 0, false, false
+        for n in node.traverse(line.head) do
+          if n.id == GLUE then
+            if n.shrink_order > 0 and n.shrink ~= 0 then inf = true else shrink = shrink + n.shrink end
+          elseif n.id == GLYPH then
+            glyphs = true
+          end
+        end
+        if not inf and nw - shrink > line.width + 6554 and not F.measure then
+          local s = line.width / nw
+          local b = node.hpack(line.head)
+          node.unset_attribute(b, LMFIT.A)
+          if s >= MINSCALE or glyphs then
+            line.head = scaled(b, s)
+            if s >= MINSCALE then note("scaled_line", s) else note("small_line", s) end
+          else
+            local r = rotscale(nw)
+            local w2 = r * (b.height + b.depth)
+            line.head = rotated(b, r, math.max(0, math.floor((line.width - w2) / 2)))
+            line.height = math.floor(r * nw)
+            line.depth = 0
+            note("rotated_line", r)
+          end
+          line.glue_set, line.glue_sign, line.glue_order = 0, 0, 0
+        end
+      end
+    end
+  end
+  return head
+end
+
+local prev = {}
+local function fit_display(head, display_type, need_penalties)
+  if not head then return head end
+  if display_type ~= "display" then
+    prev.text = true
+    prev.w = node.dimensions(head)
+    return head
+  end
+  local z = tex.displaywidth
+  local w = node.dimensions(head)
+  local q = 0
+  local tag = token.get_macro("df@tag")
+  if tag and tag ~= "" and prev.text then q = prev.w + tex.getmath("quad", "text") end
+  prev.text = false
+  if F.measure then
+    if w + q > F.maxw then F.maxw = w + q end
+    return head
+  end
+  if z < 10 * 65536 or w <= z - q + 6554 then return head end
+  local shrink = 0
+  for n in node.traverse_id(GLUE, head) do
+    if n.shrink_order > 0 and n.shrink ~= 0 then return head end
+    shrink = shrink + n.shrink
+  end
+  if w - shrink <= z - q then return head end
+  local target = z - q
+  if target / w < MINSCALE then target = z end   -- the tag goes on a line of its own
+  local s = target / w
+  local b = node.hpack(head)
+  node.unset_attribute(b, LMFIT.A)
+  local h, d = b.height, b.depth
+  local nb
+  if s >= MINSCALE then
+    nb = node.hpack(scaled(b, s))
+    nb.width, nb.height, nb.depth = math.floor(target) - 2, math.floor(s * h) + 1, math.floor(s * d) + 1
+    note("scaled_display", s)
+  else
+    local r = rotscale(w)
+    nb = node.hpack(rotated(b, r, 0))
+    nb.width, nb.height, nb.depth = math.floor(r * (h + d)) + 1, math.floor(r * w) + 1, 0
+    note("rotated_display", r)
+  end
+  return nb
+end
+
+luatexbase.add_to_callback("pre_linebreak_filter", function(head) F.inpar = true return head end, "lmfit.pre")
+luatexbase.add_to_callback("post_linebreak_filter", fit_lines, "lmfit.lines")
+luatexbase.add_to_callback("hpack_filter", function(head) F.inpar = false return head end, "lmfit.hpack")
+luatexbase.add_to_callback("post_mlist_to_hlist_filter", fit_display, "lmfit.display")
+-- TeX reports an overfull line while it breaks the paragraph, before the line is repaired above: such reports are
+-- dropped; every other overfull box is reported in TeX's words.
+luatexbase.add_to_callback("hpack_quality", function(incident, detail, head, first, last)
+  if incident == "overfull" and not F.inpar and not F.measure then
+    texio.write_nl("log", string.format("Overfull \\hbox (%.5fpt too wide) not repaired, at lines %d--%d", detail / 65536, first, last))
+  end
+end, "lmfit.quality")
+
+-- Links to the scans. \unsure and \illegible set the attribute LMattr to (number of the cote) * 10000 + scan; when a
+-- page is shipped out, every run of marked material inside one line or box becomes one link annotation. (A link made
+-- with \href cannot hold a paragraph break and must start and end in the same box; these marks do neither.)
+local A = luatexbase.registernumber("LMattr")
+local VLIST, PENALTY, MATH = node.id("vlist"), node.id("penalty"), node.id("math")
+local STARTLINK, ENDLINK, ACTION = node.subtype("pdf_start_link"), node.subtype("pdf_end_link"), node.subtype("pdf_action")
+local inert = {[GLUE] = true, [KERN] = true, [PENALTY] = true, [WHATSIT] = true, [MATH] = true}
+F.cotes = {}
+F.links = 0
+function F.at(cote, scan)
+  local n = string.match(scan, "^%s*(%d+)")
+  if cote == "" or not n then return end
+  local k
+  for i, c in ipairs(F.cotes) do if c == cote then k = i end end
+  if not k then F.cotes[#F.cotes + 1] = cote k = #F.cotes end
+  tex.setcount("global", "LMscanvalue", k * 10000 + tonumber(n))
+end
+local function url(v)
+  return "https://grothendieck.umontpellier.fr/web/viewer.html?file=../" .. F.cotes[v // 10000] .. ".pdf#page=" .. (v % 10000)
+end
+local link_lists
+local function link_runs(box)
+  local n = box.head
+  while n do
+    local v = node.has_attribute(n, A)
+    if v and v > 0 and not inert[n.id] then
+      local last, m = n, n.next
+      while m do
+        if inert[m.id] then
+        elseif node.has_attribute(m, A) == v then last = m
+        else break end
+        m = m.next
+      end
+      local w, h, d = node.dimensions(box.glue_set, box.glue_sign, box.glue_order, n, last.next)
+      local s = node.new(WHATSIT, STARTLINK)
+      s.width, s.height, s.depth = w, h, d
+      local a = node.new(WHATSIT, ACTION)
+      a.action_type = 3
+      a.data = "/Subtype/Link/Border[0 0 0]/A<</Type/Action/S/URI/URI(" .. url(v) .. ")>>"
+      s.action = a
+      local e = node.new(WHATSIT, ENDLINK)
+      box.head = node.insert_before(box.head, n, s)
+      node.insert_after(box.head, last, e)
+      F.links = F.links + 1
+      n = e.next
+    else
+      if n.id == HLIST then link_runs(n) elseif n.id == VLIST then link_lists(n) end
+      n = n.next
+    end
+  end
+end
+link_lists = function(box)
+  for n in node.traverse(box.head) do
+    if n.id == HLIST then link_runs(n) elseif n.id == VLIST then link_lists(n) end
+  end
+end
+luatexbase.add_to_callback("pre_shipout_filter", function(box)
+  if box.id == HLIST then link_runs(box) elseif box.id == VLIST then link_lists(box) end
+  return true
+end, "lmfit.links")
+function F.summary()
+  for k, v in pairs(F.n) do texio.write_nl("log", "LMFIT-SUMMARY " .. k .. " " .. v) end
+  texio.write_nl("log", "LMFIT-SUMMARY links " .. F.links)
+end
+\end{luacode*}
+\makeatletter
+\AtEndDocument{\directlua{LMFIT.summary()}}
+% a \simeq or \Gamma that stands outside a formula (a diagram label set as text) is set as mathematics: the text font
+% has neither sign
+\AtBeginDocument{\let\LMsimeq\simeq \protected\def\simeq{\ifmmode\LMsimeq\else$\LMsimeq$\fi}%
+  \let\LMGamma\Gamma \protected\def\Gamma{\ifmmode\LMGamma\else$\LMGamma$\fi}}
+% the page number and the placing of marginal notes are not part of a marked passage that runs over a page break
+\output\expandafter{\expandafter\unsetattribute\expandafter\LMattr\the\output}
+% -- links to the scans
+\gdef\LMcotename{}
+\newcommand\LMcote[1]{\gdef\LMcotename{#1}}
+\newcommand\LMmark{\ifnum\LMscanvalue>0 \LMattr=\LMscanvalue\relax\fi}
+\renewcommand{\scanpage}[1]{\directlua{LMFIT.at("\luaescapestring{\LMcotename}", "\luaescapestring{\detokenize{#1}}")}%
+  \par\medskip\noindent{\footnotesize\LMmark\textcolor{gray}{[scan #1]}}\par}
+\renewcommand{\unsure}[1]{{\color{blue}\LMmark #1}}
+\renewcommand{\illegible}[1]{{\LMmark\textcolor{red}{[illeg.~#1]}}}
+% -- marginal notes
+\newsavebox\LMmbox
+\newdimen\LMmw
+\newdimen\LMmh
+\newcommand\LMmarginstyle{\footnotesize\rightskip=0pt plus 2.5em\relax\parfillskip=0pt plus 1fil\relax\hyphenpenalty=50\relax
+  \def\margin##1{{[##1]}}}
+\newcommand\LMtrial[2]{% #1 a width, #2 the note: \LMmw its widest natural line, \LMmh its height
+  \directlua{LMFIT.measure = true LMFIT.maxw = 0}%
+  \setbox\LMmbox\vbox{\hsize=#1\relax\@parboxrestore\LMmarginstyle #2\par}%
+  \directlua{LMFIT.measure = false tex.setdimen("LMmw", LMFIT.maxw)}%
+  \LMmh=\dimexpr\ht\LMmbox+\dp\LMmbox\relax}
+\newcommand\LMblock{\nobreak\vskip 3pt\moveright\@totalleftmargin\hbox to\linewidth{\hfill
+  {\color{gray}\vrule width .6pt}\hskip 5pt\box\LMmbox}\vskip 3pt}
+\newcommand\LMinblock[1]{%
+  \LMtrial{.62\linewidth}{#1}%
+  \ifdim\LMmw>.62\linewidth
+    \ifdim\LMmw>\dimexpr\linewidth-6pt\relax \LMmw=\dimexpr\linewidth-6pt\relax \fi
+  \else \advance\LMmw 0.5pt \fi
+  \setbox\LMmbox\vbox{\hsize=\LMmw\@parboxrestore\LMmarginstyle #1\par}%
+  \ifhmode \@bsphack\vadjust{\LMblock}\@esphack \else \LMblock \fi}
+\newcommand\LMmargin[1]{\begingroup
+  \LMtrial{\marginparwidth}{\rightskip=5pt plus 2.5em\relax #1}%
+  \ifdim\LMmw>1.18\marginparwidth \LMinblock{#1}%
+  \else\ifdim\LMmh>35pt \LMinblock{#1}%
+  \else \marginpar{\LMmarginstyle\rightskip=5pt plus 2.5em\relax #1}%
+  \fi\fi
+  \endgroup}
+\renewcommand{\margin}[1]{\ifinner{\footnotesize[#1]}\else\ifmmode{\footnotesize[#1]}\else\LMmargin{#1}\fi\fi}
+\makeatother
+% ---- end of the typesetting pass ----
 \begin{document}
+\LMcote{140-1}
 \section*{La Longue Marche, cote 140-1 (draft)}
+
+{\small\noindent Transcription diplomatique du manuscrit, faite par IA. Les lectures incertaines sont en
+{\color{blue}bleu} (deux lectures possibles sont séparées par une barre, A|B), \textcolor{red}{[illeg.~$n$]} tient lieu
+de $n$ mots illisibles, les mots biffés sont en {\color{gray}gris}, les ajouts entre les lignes en {\color{teal}bleu-vert}.
+Chaque lecture en bleu, chaque \textcolor{red}{[illeg.~$n$]} et chaque repère
+{\footnotesize\textcolor{gray}{[scan $n$]}} est un lien : il ouvre le scan correspondant dans la visionneuse des
+archives Grothendieck de l'Université de Montpellier, pour que chacun puisse regarder l'écriture. Une note marginale
+courte est placée dans la marge ; une note plus longue est composée en petit corps à droite du texte, avec un filet
+gris à sa gauche, sous la ligne à laquelle elle se rattache. Une formule ou un diagramme plus large que la page est
+réduit à la largeur de la ligne ; les plus larges sont tournés d'un quart de tour.\par}
+\medskip
 \scanpage{1}
 % not manuscript: couverture de l'Université de Montpellier / IMAG, « La "Longue Marche" à travers la théorie de Galois », cote n° 140-1, 36 pages.
 
@@ -186,7 +529,7 @@ On a
 \underbrace{\tilde\rho^{n-2}\tilde\rho_0\tilde\rho^{-(n-2)}}
 \cdots(\tilde\rho\tilde\rho_0\tilde\rho^{-1})\tilde\rho_0\\
 &=\tilde\rho^{n-1}\tilde\rho_0\tilde\rho^{-1}\tilde\rho_0\tilde\rho^{-1}
-\cdots\tilde\rho^{-1}\deleted{\unsure{\rho_0}}\tilde\rho_0\tilde\rho^{-1}\tilde\rho_0
+\cdots\tilde\rho^{-1}\deleted{\unsure{{}_0}}\tilde\rho_0\tilde\rho^{-1}\tilde\rho_0
 \qquad\begin{gathered}(n\ \text{\unsure{facteurs}}\\\tilde\rho_0\end{gathered}\\
 &=\tilde\rho^n\underbrace{(\tilde\rho^{-1}\tilde\rho_0)\cdots(\tilde\rho^{-1}\tilde\rho_0)}_{n\ \text{facteurs}}
 =\underbrace{\tilde\rho^n}_{\tilde\omega_0}(\tilde\rho^{-1}\tilde\rho_0)^n
@@ -213,7 +556,7 @@ d'où
 
 Soit $\widetilde\Pi_n$
 \deleted{le \unsure{sous-groupe} de $\unsure{\widetilde\Pi_n^D|\Pi_n^D}$ \unsure{engendré}}
-\inserted{l'image inverse de $\Pi_n\subset\Pi_n^D$ \unsure{en|dans} $\widetilde\Pi_n^D$}
+\inserted{l'image inverse de $\Pi_n\subset\Pi_n^D$ dans $\widetilde\Pi_n^D$}
 \deleted{par les $\tilde\rho_i$, il est \unsure{invariant} par $\rho$, et aussi par $\sigma$}
 \margin{\deleted{$\unsure{\widetilde\Pi_n^D}\ \unsure{\neq}\ \tilde\rho_{n-1}\tilde\rho_{n-2}$}}
 
@@ -276,7 +619,7 @@ dans $\Pi_n^D$
 \begin{aligned}
 \sigma^{\unsure{\ast|-1}}(\rho_0)&=\rho_1,\quad
 \sigma^{\unsure{\ast|-1}}(\rho_1)=\rho_0,\quad
-\sigma^{\unsure{\ast|-1}}(\rho_{\unsure{2|n}})=\rho_0(\rho_{n-1}),\quad\cdots\\
+\sigma^{\unsure{\ast|-1}}(\rho_2)=\rho_0(\rho_{n-1}),\quad\cdots\\
 \sigma^{\unsure{\ast|-1}}(\rho_i)&=\rho_n\cdots\rho_{n+2-i}(\rho_{n+1-i})\cdots
 \end{aligned}
 \]
@@ -308,7 +651,7 @@ dans $(\widetilde\Pi_n^D)_{\mathrm{ab}}$
 $z_i=\tilde\omega_0^{\unsure{\nu_i|\gamma_i}}$
 la condition d'\unsure{invariance} de $\unsure{\widetilde\Pi_n^\circ|\Pi_n^\circ}$ est
 que les $\unsure{\nu_i|\gamma_i}\equiv0\ (2)$.
-On va \unsure{essayer} de les \unsure{calculer} au moins $z_0,z_1$.
+On va \unsure{essayer} de \deleted{\unsure{les}} \unsure{calculer} au moins $z_0,z_1$.
 
 \margin{$\tilde\rho_0=\tilde\sigma\tilde\rho\tilde\sigma^{-1}\tilde\rho$}
 \[
@@ -343,10 +686,10 @@ On va \unsure{essayer} de les \unsure{calculer} au moins $z_0,z_1$.
 \[
 \tilde\rho_0^{-1}\tilde\sigma(\tilde\rho_1)
 =\unsure{\tilde\rho^{-1}}
-\underbrace{\tilde\sigma^{\unsure{\ast|2}}
+\underbrace{\tilde\sigma^{\unsure{\ast|-1}}
 \underbrace{\tilde\rho^{-1}
 \underbrace{\unsure{\tilde\sigma^{-1}}\tilde\sigma^{-1}}_{
-\omega_0^{\unsure{-2|-1}}}\tilde\rho}_{\omega_0^{\unsure{-2|-1}}}
+\omega_0^{-2}}\tilde\rho}_{\omega_0^{\unsure{-2|-1}}}
 \tilde\sigma}_{1}\tilde\rho=1
 \]
 
@@ -440,27 +783,27 @@ sont d'ordre \unsure{6}, non \unsure{3})
 \scanpage{10}
 \diagram{
 \begin{tikzcd}[ampersand replacement=\&,column sep=1.2em,row sep=1.7em]
-\Pi_{0,3}^{D} \arrow[r] \arrow[dr,no head]
+\Pi_{0,3}^{D} \arrow[r] \arrow[ddrr]
 \& \Pi_{0,3}^{D}/\uline{\Pi'_{0,3}} \arrow[r,"\sim"]
 \& \overbrace{\mathbb Z/6\mathbb Z\times_{\mathbb Z/2\mathbb Z}\mathbb D_3}^{18}
   \arrow[rr,"{\simeq(\mathbb F_3\times\mathbb F_3)\unsure{\rtimes|\cdot}\{1,\sigma\}}"]
-  \arrow[dd,"\unsure{Can}"]
+  \arrow[dd]
 \& \& \mathbb Z/6\mathbb Z \arrow[r]
 \& \mathbb Z/2\mathbb Z
 \\
-\mathrm S\ell(2,\mathbb Z) \arrow[u] \arrow[rrr,"\unsure{Can}"]
-  \arrow[ddrrr] \arrow[drr,"\unsure{Can}"']
-\& {\begin{gathered}\text{sous-groupe}\\
+\mathrm S\ell(2,\mathbb Z) \arrow[u] \arrow[rrr]
+  \arrow[ddrrr]
+\& \begin{gathered}\text{sous-groupe}\\
    \text{d'indice }3\text{ de }\Pi_{0,3}\\
    \text{obtenu en}\\
    \text{faisant }\rho_0=\unsure{\rho_1}(=\rho_\infty)\\
-   \rho_0^3=1\end{gathered}}
-\& \& {\begin{gathered}\deleted{\unsure{\mathrm S\ell(2,\mathbb Z)/\varepsilon}}\quad\mathcal E^{36}\\
+   \rho_0^3=1\end{gathered}
+\& \& \begin{gathered}\deleted{\unsure{\mathrm S\ell(2,\mathbb Z)/\varepsilon}}\quad\mathcal E^{36}\\
 \simeq\mathrm S\ell(2,\mathbb Z/6\mathbb Z)/\bigl(\text{sous-groupe d'ordre }2\bigr)\\
-\text{à déterminer}\end{gathered}}
+\text{à déterminer}\end{gathered}
 \arrow[ul] \arrow[dd] \arrow[r]
 \& \deleted{\unsure{\mathbb Z/2\mathbb Z}}\ \mathbb Z/12\mathbb Z
-  \arrow[u] \arrow[ur,"\unsure{Can}"] \arrow[r,no head]
+  \arrow[u] \arrow[ur] \arrow[r,no head]
 \& \mathbb Z/4\mathbb Z \arrow[u]
 \\
 \& \widetilde{\mathrm S\ell}(2,\mathbb Z) \arrow[ul] \arrow[rrrr]
@@ -470,6 +813,12 @@ sont d'ordre \unsure{6}, non \unsure{3})
 \& \& \& \underset{12}{\mathbb D'_3\ \unsure{\sim}}
   \arrow[ul] \arrow[uurr]
 \& \&
+% five squares carry the word Cart (cartesien) written inside them, not on an arrow
+\arrow[from=2-2,to=1-3,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-4,to=1-5,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-5,to=1-6,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-4,to=3-3,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-2,to=3-3,phantom,"\mathrm{Cart}"{description}]
 \end{tikzcd}}
 
 \[
@@ -481,20 +830,20 @@ sont d'ordre \unsure{6}, non \unsure{3})
 \rho^6=1\deleted{\unsure{\omega}}\ (=\sigma^4)\}
 \]
 \diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep=2em]
-{\begin{gathered}
+\begin{gathered}
 \Pi_{0,3}^{D}/\Pi'_{0,3}\simeq
 \{\rho,\sigma\mid\rho^3=\sigma^2=(\sigma\rho)^6=1,\
 (\sigma\rho)^2\deleted{\text{central}}\inserted{=(\rho\sigma)^2}\}
 \qquad18
-\end{gathered}}
+\end{gathered}
 \arrow[d,"{\substack{\rho\mapsto4\ \mathrm{mod}\ 6\\\sigma\mapsto3\ \mathrm{mod}\ 6}}"]
 \arrow[dr,"{\substack{\rho\mapsto\rho\\\sigma\mapsto\sigma}}"]
 \& \\
 \mathbb Z/6\mathbb Z
-\& {\begin{gathered}\mathbb D_3=\{\rho,\sigma\mid\rho^3=\sigma^{2}\deleted{\unsure{2}}=1,\
+\& \begin{gathered}\mathbb D_3=\{\rho,\sigma\mid\rho^3=\sigma^{2}\deleted{\unsure{2}}=1,\
 \sigma(\rho)=\rho^{-1}\}\!\\
 \inserted{\text{i.e. }(\sigma\rho)^2=1}
-\end{gathered}}
+\end{gathered}
 \end{tikzcd}}
 
 \[
@@ -619,10 +968,10 @@ Pour $\nu$ fixé, $\widetilde\rho,\widetilde\sigma$ sont \unsure{uniquement} \un
 \& \& (\Pi_n^D)_{\mathrm{ab}}\simeq\mathbb Z/2n\mathbb Z
 \\
 1 \& \&
-{\begin{gathered}
+\begin{gathered}
 \rho\longmapsto(n+1\ \mathrm{mod}\ 2n)=(1-n\ \mathrm{mod}\ 2n)\\
 \sigma\longmapsto n\ \mathrm{mod}\ 2n
-\end{gathered}}
+\end{gathered}
 \end{tikzcd}}
 
 \[
@@ -714,7 +1063,7 @@ x=
 \[
 \begin{aligned}
 \widetilde\rho^{\unsure{*|n}}&=(\rho,n^2+1)\\
-\widetilde\sigma^{2}&=\left(\sigma,\frac{n^3+n}{2}\right)
+\widetilde\sigma^{\unsure{2|*}}&=\left(\sigma,\frac{n^3+n}{2}\right)
 \end{aligned}
 \qquad
 \bigl(\widetilde\rho\widetilde\omega^{\beta}\bigr)^n
@@ -882,11 +1231,12 @@ p(p-1)(p+1)
 \unsure{.}\,2\quad4
 \]
 \diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.7em,row sep=1.4em]
-\rho\arrow[r,mapsto]\&{\begin{gathered}2\ \mathrm{mod}\ 6\\4\ \mathrm{mod}\ 6\end{gathered}}\\
+\rho\arrow[r,mapsto]\&\begin{gathered}2\ \mathrm{mod}\ 6\\4\ \mathrm{mod}\ 6\end{gathered}\\
 \unsure{\sigma}\arrow[r,no head]\&3\ \mathrm{mod}\ 6
 \end{tikzcd}}}
 
 \[
+% the last glyph is inverted: it stands in the orientation of the printed text, not of the handwriting
 \rho_0\qquad\rho_1\qquad\rho_\infty\qquad\unsure{5|\varepsilon}
 \]
 \[
@@ -933,10 +1283,10 @@ On a donc
 
 \diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=small]
 \mathcal T_{11} \arrow[r,phantom,"\simeq"] \arrow[d,phantom,"\simeq"{sloped}] \& \Pi_1\overbrace{(U_{0,3},\mathbb D'_3;P_+)}^{\Pi_{0,3}^{\mathbb D'_3}} \\
-\mathrm{SL}(2,\mathbb Z) \&
+\mathrm S\ell(2,\mathbb Z) \&
 \end{tikzcd}}
 
-\margin{dépend du choix d'un pt du demi-plan de Poincaré \unsure{au dessus} de $P_+$, \unsure{on prend|ou prendre} $\zeta=\exp(2i\pi/6)$\quad$\uline{\unsure{a}}$}
+\margin{dépend du choix d'un pt du demi-plan de Poincaré \unsure{au dessus} de $P_+$, \unsure{on prendra|ou prendre} $\zeta=\exp(2i\pi/6)$\quad$\uline{\unsure{a}}$}
 
 et ainsi
 
@@ -969,7 +1319,7 @@ $\rho'^{\,6}=\sigma'^{\,4}=1,$\par
 $\rho'^{\,3}=\sigma'^{\,2}=(\underbrace{1,2\bmod4}_{\omega})$.}
 
 \margin{On vérifie alors aisément que\par
-$\mathrm{SL}(2,\mathbb Z)\simeq\{\rho',\sigma'\mid \unsure{\rho'^{\,6}=\sigma'^{\,4}=1},\ \unsure{\rho'^{\,3}=\sigma'^{\,2}}\}$.}
+$\mathrm S\ell(2,\mathbb Z)\simeq\{\rho',\sigma'\mid \unsure{\rho'^{\,6}=\sigma'^{\,4}=1},\ \unsure{\rho'^{\,3}=\sigma'^{\,2}}\}$.}
 
 \margin{\figure{\begin{tikzpicture}[x=1cm,y=1cm]
 \draw[->] (2.92,3.25) .. controls (2.82,2.34) and (1.35,2.38) .. (1.05,1.46) .. controls (.92,1.12) and (.86,.77) .. (.71,.58);
@@ -977,7 +1327,7 @@ $\mathrm{SL}(2,\mathbb Z)\simeq\{\rho',\sigma'\mid \unsure{\rho'^{\,6}=\sigma'^{
 \draw (.59,.98) .. controls (.43,.46) and (.48,.12) .. (.35,-.02) .. controls (.62,.12) and (.63,-.29) .. (.67,-.72);
 \end{tikzpicture}}}
 
-Ainsi $\Pi_{0,3}^{\mathbb D'}\simeq\mathrm{SL}(2,\mathbb Z)$ \unsure{apparaît} comme extension de $\Pi_{0,3}^{\mathbb D}$ par $\mathbb Z/2\mathbb Z$, image inverse \deleted{\unsure{de}} l'ext. \inserted{$\mathbb D'_3$} de $\mathbb D_3$ par $\mathbb Z/2\mathbb Z$, ou de l'ext. $\mathbb Z/4\mathbb Z$ de $\mathbb Z/2\mathbb Z$ par $\mathbb Z/2\mathbb Z$, via $\Pi_{0,3}^{\mathbb D}\to\mathbb D_3$ \unsure{resp.} composé $\Pi_{0,3}^{\mathbb D}\to\deleted{\unsure{\mathbb D_3}}\mathbb Z/2\mathbb Z$. \unsure{C'est} une ext. de $\mathbb D'_3$ par un \unsure{gr.} $\simeq\Pi_{0,3}$, \unsure{de base} $\rho_0,\rho_1,\rho_\infty$ \unsure{---}
+Ainsi $\Pi_{0,3}^{\mathbb D'}\simeq\mathrm S\ell(2,\mathbb Z)$ \unsure{apparaît} comme extension de $\Pi_{0,3}^{\mathbb D}$ par $\mathbb Z/2\mathbb Z$, image inverse \deleted{\unsure{de}} l'ext. \inserted{$\mathbb D'_3$} de $\mathbb D_3$ par $\mathbb Z/2\mathbb Z$, ou de l'ext. $\mathbb Z/4\mathbb Z$ de $\mathbb Z/2\mathbb Z$ par $\mathbb Z/2\mathbb Z$, via $\Pi_{0,3}^{\mathbb D}\to\mathbb D_3$ \unsure{resp.} composé $\Pi_{0,3}^{\mathbb D}\to\deleted{\unsure{\mathbb D_3}}\mathbb Z/2\mathbb Z$. \unsure{C'est} une ext. de $\mathbb D'_3$ par un \unsure{gr.} $\simeq\Pi_{0,3}$, \unsure{de base} $\rho_0,\rho_1,\rho_\infty$ \unsure{---}
 
 \margin{15}
 
@@ -1058,7 +1408,7 @@ A_3&=\operatorname{Im}(R\to S\times F)
 \scanpage{18}
 \mspage{6}
 
-$S\mathcal T_{1,1}\simeq$ \unsure{image inverse} de $\mathrm{SL}(2,\mathbb Z)$ dans $\unsure{\deleted{\mathrm{GL}}\mathrm{SL}(2,\mathbb R)^{\sim}|\mathrm{GL}(2,\mathbb R)^{\sim}}$
+$S\mathcal T_{1,1}\simeq$ \unsure{image inverse} de $\mathrm S\ell(2,\mathbb Z)$ dans $\unsure{\deleted{\mathrm G\ell}\mathrm S\ell(2,\mathbb R)^{\sim}|\mathrm G\ell(2,\mathbb R)^{\sim}}$
 \[
 \simeq\{\rho,\sigma\mid\rho^3=\sigma^2\ (=\omega)\}
 \]
@@ -1088,7 +1438,7 @@ $S\mathcal T_{1,1}\simeq$ \unsure{image inverse} de $\mathrm{SL}(2,\mathbb Z)$ d
 
 \margin{donc $S\mathcal T_{11}$ se déduit de $\mathcal T_{11}$ par image inverse de l'ext. canonique de $\mathbb Z/12\mathbb Z$ par $\mathbb Z$, via $\mathcal T_{11}\to\mathbb Z/12\mathbb Z$.}
 
-\deleted{une \unsure{normalisation|uniformisation} de $(K,\unsure{N|k_0})$, \unsure{alors} elle est \unsure{spéciale} : la cat. des rev. étales dans $\unsure{K'_fN|K'_{fN}}$ -- \deleted{\illegible{1}} $\Delta$ \unsure{rev.|i.e.} $\Delta$ top. \unsure{a} une unique \unsure{normalisation|uniformisation} pour laquelle la projection \unsure{est|soit} un \unsure{morphisme} de $\Delta$-complexes \unsure{normalisés}. [Mais attention, \unsure{ça ne marche} \uline{\unsure{pas}} pour \unsure{strictes normalisations} \unsure{$\overline{\mathrm m}$|néc.}\ldots]}
+\deleted{une normalisation de $(K,\unsure{K_0|N|k_0})$, \unsure{alors} elle est \unsure{spéciale} : la cat. des rev. étales dans $\unsure{K'_fN|K'_{fN}}$ -- \deleted{\illegible{1}} $\Delta$ \unsure{rev.|i.e.} $\Delta$ top. \unsure{a} une unique normalisation pour laquelle la projection \unsure{est|soit} un \unsure{morphisme} de $\Delta$-complexes \unsure{normalisés}. [Mais attention, \unsure{ça ne marche} \uline{\unsure{pas}} pour \unsure{strictes normalisations} \unsure{$\overline{\mathrm m}$|néc.}\ldots]}
 
 \deleted{\unsure{8.|$\beta$.} \unsure{Groupes|Groupe} et groupoïdes \unsure{fondamentaux|fondamental}. On \unsure{montrera|montre} la relation entre construction top. et construction algébrique.}
 
@@ -1096,7 +1446,8 @@ $S\mathcal T_{1,1}\simeq$ \unsure{image inverse} de $\mathrm{SL}(2,\mathbb Z)$ d
 
 \scanpage{19}
 
-\margin{18}
+% pencil numeral at the top right corner; no other foliation numeral is visible on this sheet
+\margin{8v}
 
 \figure{\begin{tikzpicture}[x=.014cm,y=-.014cm,every node/.style={font=\footnotesize,inner sep=0pt},line width=.45pt]
 \node[anchor=west] at (385,80) {$\deleted{\unsure{\mathbb Z|\widetilde\sigma}}$};
@@ -1171,27 +1522,27 @@ $S\mathcal T_{1,1}\simeq$ \unsure{image inverse} de $\mathrm{SL}(2,\mathbb Z)$ d
 
 \diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.6em,row sep=2.8em]
 \&\&
-{\begin{gathered}
+\begin{gathered}
 \widetilde\rho=(\rho_0,2)=(\rho,2)\\
 \widetilde\sigma=(\sigma_0,3)=(\sigma,3)
-\end{gathered}}
+\end{gathered}
 \arrow[d, bend right=20]
 \&
-{\begin{gathered}
+\begin{gathered}
 \deleted{\unsure{\Pi_{0,3}^{D}}}\\[-2pt]
 \inserted{\text{\uline{\unsure{identifié à}}}}\\[-2pt]
 \inserted{\unsure{S\mathcal T_{11}\times_{\Pi_{0,3}^{D}}\mathbb Z/12\mathbb Z}}
-\end{gathered}}
+\end{gathered}
 \arrow[d]
 \&
-{\begin{gathered}
+\begin{gathered}
 \rho_0=(\rho,\dot 2)\\[-2pt]
 \unsure{\Pi_{0,3}}\\[-2pt]
 \sigma_0=(\sigma,\dot 3)=(\sigma,-1)
-\end{gathered}}
+\end{gathered}
 \arrow[d]
 \&\\
-\unsure{1}\arrow[r,dash]\&
+\unsure{0|1}\arrow[r,dash]\&
 \mathbb Z\arrow[r,dash,"1\unsure{-|\mapsto}\overline\omega=\omega^2"]\arrow[dd,equal]\&
 S\mathcal T_{11}\arrow[r,Rightarrow]\arrow[dd,"\substack{\widetilde\rho\mapsto\deleted{\unsure{4}}2\\\widetilde\sigma\mapsto3}"']
 \arrow[ddr,phantom,"\text{Cart}"]\&
@@ -1199,7 +1550,7 @@ S\mathcal T_{11}\arrow[r,Rightarrow]\arrow[dd,"\substack{\widetilde\rho\mapsto\d
 \&\Pi_{0,3}^{\prime D}\arrow[dr,"\text{can}"]\arrow[dd,"\substack{\rho\mapsto2\\\sigma\mapsto3}"{pos=.25,xshift=2pt}]
 \arrow[dl,phantom,"\text{cart}" description]\&\\
 \&\&\&{}\&
-|[xshift=-3em]|\mathbb D'_3\arrow[r,"\text{\unsure{cart|can}}"{pos=.75}]\arrow[dd]
+|[xshift=-3em]|\mathbb D'_3\arrow[r,"\text{cart}"{pos=.75}]\arrow[dd]
 \&\mathbb D_3\arrow[dd,"\text{can}"]\\
 1\arrow[r,dash]\&\mathbb Z\arrow[r,"12"]\&\mathbb Z\arrow[r,"\text{can}"]\&
 \mathbb Z/12\mathbb Z\arrow[r,"\text{can}"]\arrow[dr,"\text{can}"']
@@ -1219,7 +1570,7 @@ il semblerait plutôt, pourtant
 \[
 \deleted{\unsure{\mathcal T_{11}}}\quad
 PM_{11}\simeq
-\left(\underbrace{T^*U_{0,3}}_{\substack{\text{fibré}\\\text{\uuline{tangent}}}},\mathfrak S_3\right)
+\left(\underbrace{T^*U_{0,3}}_{\substack{\text{fibré}\\\text{\uline{tangent}}}},\mathfrak S_3\right)
 \]
 \inserted{(et \uline{non} $\unsure{PU_{0,3}}$ !!)}
 
@@ -1229,29 +1580,32 @@ PM_{11}\simeq
 \margin{19}
 
 \scanpage{21}
+% Trois longs traits obliques au crayon, terminés chacun en crochet, traversent tout le feuillet : rature d'ensemble.
+% Les ratures à l'encre (ligne « Op. ext. … », « compatible avec l'op. ext. », E corrigé en F, 1 et π_1 de la dernière suite) restent marquées à l'intérieur.
+\deleted{
 \[
 \pi\qquad l_1\ \cdots\ l_n
 \]
 
-\deleted{\diagram{\begin{tikzpicture}
+\diagram{\begin{tikzpicture}
 \node[inner sep=7pt] (p) {$\begin{array}{ccc}
-u,&\sigma,&(\unsure{g_i|q_i})_{i\le n}\\
+u,&\sigma,&(\unsure{g_i|q_i})_{i\in n}\\
 \rotatebox{90}{$\in$}&\rotatebox{90}{$\in$}&\rotatebox{90}{$\in$}\\
 \operatorname{Aut}\pi&\mathfrak S_n&\pi
 \end{array}$};
 \draw (p.north west) -- (p.north east) -- (p.south east);
 \draw ([yshift=-5pt]p.north west) -- (p.south west) -- ([xshift=3pt]p.south east);
-\end{tikzpicture}}}
+\end{tikzpicture}}
 \diagram{\begin{tikzpicture}
 \node[inner sep=4pt] (u) {$u(l_i)=\unsure{g_i|q_i}\,l_{\sigma(i)}\,\unsure{g_i|q_i}^{-1}$};
 \draw ([yshift=4pt]u.south west) -- (u.south west) -- (u.south east) -- ([yshift=4pt]u.south east);
 \end{tikzpicture}}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.5em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.5em]
 1\arrow[r,dash]\&\pi_1(\operatorname{Aut}(X)\arrow[r]\&\mathbb Z^n\arrow[r]\&S\mathcal T\arrow[r]\&\mathcal T\arrow[r,dash]\&\mathfrak S_n\arrow[r,dash]\&1
-\end{tikzcd}}}
+\end{tikzcd}}
 
-\deleted{\diagram{\begin{tikzpicture}
+\diagram{\begin{tikzpicture}
 \node[inner sep=9pt] (b) {\begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep=2.5em]
 \pi\arrow[r,hook]\&\widetilde E\arrow[r]\arrow[d,leftrightarrow]\&\mathfrak S_n\\
 \unsure{\mathfrak Z\pi|\mathfrak z\pi}\arrow[u]\arrow[r]\&\mathbb Z^n\&{}
@@ -1259,22 +1613,22 @@ u,&\sigma,&(\unsure{g_i|q_i})_{i\le n}\\
 \draw (b.north west) -- (b.north east) -- ([yshift=2pt]b.east) -- ([xshift=-6pt]b.east)
  -- ([xshift=-12pt,yshift=5pt]b.south east) -- ([xshift=0.7cm,yshift=5pt]b.south)
  -- ([xshift=0.6cm,yshift=-6pt]b.south) -- ([yshift=-6pt]b.south west) -- (b.north west);
-\end{tikzpicture}}}
+\end{tikzpicture}}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=2.3em,row sep=1.8em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=2.3em,row sep=1.8em]
 \&\&1\&\&\\
 1\arrow[r]\&\underbrace{S\operatorname{Aut}^{+}(X)}\arrow[r]\arrow[d,"\simeq"]\&
 \operatorname{Aut}^{+}(X)\arrow[u]\arrow[r,dash]\&\operatorname{Aut}^{+}(\partial X)\arrow[r,dash]\&1\\
 \&\uline{S\mathcal T}\&\operatorname{Aut}^{+}_{!}(\widetilde X)\arrow[u]\&\uline{\mathfrak S_n\cdot\mathbb T^n}\arrow[u,"\simeq"]\&\\
 \&\&\pi\arrow[u]\&\&\\
 \&\&1\arrow[u]\&\&
-\end{tikzcd}}}
+\end{tikzcd}}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.6em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.6em]
 1\arrow[r,dash]\&\underbrace{\pi_1\operatorname{Aut}^{+}(X)}_{0\ \text{ou}\ \mathbb Z}\arrow[r,Rightarrow]\&\mathbb Z^n\arrow[r,dash]\&S\mathcal T\arrow[r,dash]\&\mathcal T\arrow[r,dash]\&\mathfrak S_n\arrow[r,dash]\&1
-\end{tikzcd}}}
+\end{tikzcd}}
 
-\deleted{\diagram{\begin{tikzpicture}
+\diagram{\begin{tikzpicture}
 \node[inner sep=6pt] (e) {\begin{tikzcd}[ampersand replacement=\&,column sep=2em,row sep=1.8em]
 1\arrow[r,dash]\&S\mathcal T\arrow[r,dash]\&E\arrow[r]\arrow[d,equal]\&\mathfrak S_n\arrow[r,dash]\&1\\
 \&\mathbb Z^n\arrow[u]\&\widetilde E/\pi\&\&{}
@@ -1284,25 +1638,25 @@ u,&\sigma,&(\unsure{g_i|q_i})_{i\le n}\\
  -- ([xshift=-0.5cm,yshift=-1.1cm]e.north)
  .. controls ([xshift=-0.8cm,yshift=-1.2cm]e.north) and ([xshift=-0.8cm,yshift=-0.3cm]e.south) .. ([xshift=-1.5cm]e.south)
  .. controls (e.south west) and ([xshift=-8pt]e.west) .. ([yshift=-4pt]e.north west);
-\end{tikzpicture}}}
+\end{tikzpicture}}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=2.4em,row sep=2em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=2.4em,row sep=2em]
 1\arrow[r,dash]\&\unsure{\widetilde F|\widehat F}\arrow[r,dash]\arrow[d]\&\widetilde A\arrow[r,dash]\arrow[d]\&\widetilde G\arrow[d]\&\\
 1\arrow[r,dash]\&\substack{\deleted{\unsure{E}}\inserted{F}\\\text{discret}}\arrow[r]\&A\arrow[r]\&G\arrow[dr]\&
 \bigl(=\mathfrak S_n\unsure{\ast|\cdot}\mathbb T^n\bigr)\\
 \&\&\&\&1
-\end{tikzcd}}}
+\end{tikzcd}}
 
 \deleted{\unsure{Op.} ext. de $\pi_0$ sur $F$}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=3.8em,row sep=2.3em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=3.8em,row sep=2.3em]
 \pi_1(G)=\pi_1\arrow[r]\arrow[dr,bend right=20,"\substack{\text{\unsure{compatible}}\\\text{avec }\pi_0}"']\&F\arrow[d,phantom,"\cup" description]\\
 \&\unsure{\mathfrak Z(F)|\mathfrak z(F)}
-\end{tikzcd}}}
+\end{tikzcd}}
 \inserted{\unsure{central}}
 
-\deleted{$\pi_0(G)=\pi_0$ opère \unsure{extérieurement} sur $F$
-\quad donc opère sur $\unsure{\mathfrak Z(F)|\mathfrak z(F)}$}
+$\pi_0(G)=\pi_0$ opère \unsure{extérieurement} sur $F$
+\quad donc opère sur $\unsure{\mathfrak Z(F)|\mathfrak z(F)}$
 
 \diagram{$\begin{array}{cc}
 \pi_0&\pi_1\\
@@ -1310,23 +1664,24 @@ u,&\sigma,&(\unsure{g_i|q_i})_{i\le n}\\
 \end{array}$}
 \deleted{\unsure{compatible} avec l'op. ext.}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=2.4em,row sep=1.7em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=2.4em,row sep=1.7em]
 1\arrow[r,dash]\&F\arrow[r]\&E\arrow[r]\arrow[d,equal]\&\pi_0\arrow[r,dash]\&1\\
 \&\&\pi_0(\widetilde A)\&\&{}
-\end{tikzcd}}}
+\end{tikzcd}}
 \figure{\begin{tikzpicture}[x=1cm,y=1cm]
 \draw[->] (0.3,2.5) .. controls (0.0,2.0) and (0.25,0.5) .. (0.2,0);
 \draw[->] (0.75,1.95) .. controls (-1.0,0.7) and (-0.4,0.2) .. (0.8,-0.1);
 \end{tikzpicture}}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.6em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.6em]
 1\arrow[r,dash]\&\pi_1(A)\arrow[r,dash]\&\pi_1\arrow[r]\&\unsure{F}\arrow[r]\&\underbrace{\pi_0(A)}\arrow[r]\&\substack{\unsure{\pi_0|\pi_\infty}\\ /}\arrow[r,dash]\&1
-\end{tikzcd}}}
+\end{tikzcd}}
 
-\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.7em,row sep=1.5em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.7em,row sep=1.5em]
 \deleted{\unsure{1}}\arrow[r,dash]\&\deleted{\unsure{\pi_1}}\arrow[r,dash]\&F\arrow[r,dash]\&\pi_0(\widetilde A)\arrow[r]\arrow[d,equal]\&\pi_0\arrow[r]\&1\\
 \&\&\&E\&\&{}
-\end{tikzcd}}}
+\end{tikzcd}}
+}
 \margin{20}
 
 \scanpage{22}
@@ -1339,7 +1694,7 @@ $S$ schéma \deleted{\unsure{satisfaisant|strictement}}
 régulier intègre tel que $\operatorname{Pic}(S)=0$,
 car. du point générique $\ne2$ Alors \deleted{$\unsure{H^1}$}
 \[
-H^1(U_{0,3},\mathfrak S_3;\mathbb G_m)\simeq\mathbb Z/6\mathbb Z
+H^1(U_{0,3},\mathfrak S_3;\mathbb G_m]\simeq\mathbb Z/6\mathbb Z
 \]
 (\deleted{\unsure{résiduelle}}\inserted{\unsure{pt gén.|si gén.}} est $2$, on trouve $\mathbb Z/3\mathbb Z$)
 
@@ -1362,7 +1717,7 @@ alors le fibré \unsure{principal}
 \[
 P\Sigma_J=\check V(\mathcal O_{\Sigma_J}(1))^{*}
 \]
-est un générateur de
+est un générateur du
 $H^1(\deleted{\unsure{U_{0,3}}}\inserted{\Sigma_J^*},
 \deleted{\unsure{\mathfrak S_3}}\inserted{\mathfrak S_J};\mathbb G_m)$.
 
@@ -1389,9 +1744,9 @@ et on prendra
 =\prod_{i\in J}\underbrace{(e_j-e_h)}_{J=\{i,j,h\}}^{2}.
 \end{gathered}
 \]
-Ainsi, sur $\deleted{\unsure{U_J}}\inserted{\Sigma_J^{\unsure{*|\wedge}}}$, le groupe \unsure{structural|structurel}
+Ainsi, sur $\deleted{\unsure{U_J}}\inserted{\Sigma_J^{*}}$, le groupe \unsure{structural|structurel}
 \deleted{\unsure{de}}
-$\mathbb G_m$ de $P\Sigma_J^{\unsure{*|\wedge}}$ est réduit à $\mu_6$.
+$\mathbb G_m$ de $P\Sigma_J^{*}$ est réduit \unsure{à|:} $\mu_6$.
 
 \uline{NB}\quad Sauf erreur, on a
 \[
@@ -1418,14 +1773,14 @@ B)
 
 \deleted{\unsure{Si} $2$ \unsure{inversible}, on \unsure{aura} \unsure{donc}}
 \[
-\deleted{\operatorname{Sym}^{*}\unsure{W_J|V_J}^{\mathfrak S_{\unsure{J|3}}}\simeq\mathcal O[}
+\deleted{\operatorname{Sym}^{*}(\unsure{V_J|W_J})^{\mathfrak S_{\unsure{J|3}}}\simeq\mathcal O[}
 \]
 \deleted{\unsure{Remarque}}
 
-Comme $\gamma_2$ s'annule en \deleted{\unsure{les}} $P_{\unsure{\omega|m}}$,
+Comme $\gamma_2$ s'annule en \deleted{\unsure{les}} $P_\omega$,
 $\gamma_3$ en les $Q_i$, il s'ensuit qu'il n'y a pas de section invariante
 d'un $\mathcal O(n)^*$ \deleted{\unsure{pour}} sur
-$\Sigma_J^{\unsure{*|\wedge}}$ \deleted{\unsure{en degré} $<$}
+$\Sigma_J^{*}$ \deleted{\unsure{en degré} $<$}
 pour $n\le6$, donc que l'ordre de
 $\operatorname{cl}(\mathcal O(1))$ dans
 $H^1(\Sigma_J,\mathfrak S_J;\mathbb G_m)$ est bien $6$,
@@ -1457,7 +1812,7 @@ PM_{11}(2^{\sim})\overset{?}{\simeq}PU_{0,3}
 \& PM_{11}(2)\simeq TU_{0,3} \arrow[d]\\
 U_{0,3}\simeq M_{11}(\unsure{\widetilde{2}^{\sim}|2^{\sim}})
   \arrow[r,very thick]
-\& {\begin{gathered}(U_{0,3},\{1,\omega\})\\[-2pt]{}\simeq M_{11}(\unsure{2})\end{gathered}}
+\& \begin{gathered}(U_{0,3},\{1,\omega\})\\[-2pt]{}\simeq M_{11}(\unsure{2})\end{gathered}
 \arrow[ul,phantom,"\mathrm{cart}" description]
 \end{tikzcd}}
 
@@ -1470,7 +1825,7 @@ U_{0,3}\simeq M_{11}(\unsure{\widetilde{2}^{\sim}|2^{\sim}})
 
 \diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large]
 M_{11}(2^{\sim}) \arrow[rr]
-  \arrow[dr,"{\deleted{\unsure{\mathcal D/\Pi_{0,3}}}}"']
+  \arrow[dr,"{\deleted{\unsure{\mathcal D/\Pi_{0,3}|\mathbb Z/2\,\Pi_{0,3}}}}"']
 \& \& M_{11}(2)\unsure{-|'} \arrow[dl] \arrow[d,leftrightarrow] \& \phantom{M}\\
 \& M_{11} \arrow[d] \& M_{11}(2)' \arrow[dl] \& \\
 \phantom{M}\arrow[rrruu,dashed,no head,shorten <=-10pt,shorten >=-10pt]
@@ -1487,7 +1842,7 @@ U_{03} \arrow[rr,"{\{1,\omega\}}"] \arrow[dr,"{\mathbb D'_3}"']
 \end{tikzcd}}
 
 \diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large]
-{\begin{gathered}(\mathcal D,\Pi_{03})\\[-2pt]{}\simeq\mathcal D/\Pi_{03}\end{gathered}}
+\begin{gathered}(\mathcal D,\Pi_{03})\\[-2pt]{}\simeq\mathcal D/\Pi_{03}\end{gathered}
  \arrow[rr,very thick,"{\mathrm{gal}}","{\{1,\omega\}}"']
  \arrow[dr,"{\begin{gathered}\mathrm{gal}\\\mathbb D'_3\end{gathered}}"']
 \& \& (\mathcal D,\Pi_{03}\times\{1,\omega\})
@@ -1556,8 +1911,8 @@ U_{03} \arrow[rr,"{\{1,\omega\}}"] \arrow[dr,"{\mathbb D'_3}"']
 \& \& \Pi_{0,3}^{D}\arrow[d]\arrow[ddr] \& \\
 \mathbb Z\arrow[r]\arrow[dd,equal]
 \& \widetilde{\mathbb D}_3\arrow[rr]\arrow[dd]
-\& \& {\begin{gathered}\mathbb D'''_3\\\margin{3}\end{gathered}}\arrow[rr,"2"]\arrow[dr,"3"']\arrow[dd,"3"']
-\& \& {\begin{gathered}\mathbb D''_3\\\margin{\unsure{12|10}}\end{gathered}}\arrow[dr,"3"]\arrow[dd,"3"'{pos=.72}] \& \\
+\& \& \begin{gathered}\mathbb D'''_3\\\margin{3}\end{gathered}\arrow[rr,"2"]\arrow[dr,"3"']\arrow[dd,"3"']
+\& \& \begin{gathered}\mathbb D''_3\\\margin{\unsure{12|10}}\end{gathered}\arrow[dr,"3"]\arrow[dd,"3"'{pos=.72}] \& \\
 \& \& \& \& \mathbb D'_3\arrow[rr,"2"{pos=.75}]\arrow[dd,"3"{pos=.77}]
 \& \& \mathbb D_3\arrow[dd,"3"]\\
 \mathbb Z\arrow[r,"12"]
@@ -1603,7 +1958,8 @@ U_{03} \arrow[rr,"{\{1,\omega\}}"] \arrow[dr,"{\mathbb D'_3}"']
 \margin{28}
 
 \scanpage{30}
-
+% Secteur supérieur : un long trait courbe au crayon, terminé en crochet, descend de « par les e_i-e_j » vers le bas à gauche ;
+% il traverse les trois premières lignes, la suite Z — Π̃_03 — Π_03 → 1 et la formule V(ω) ≃ V, barrées ici en bloc.
 \deleted{
 $V_J\deleted{\unsure{\simeq}}\inserted{=\unsure{\Gamma(X,\uline{\mathcal O}(1))}}
 \deleted{e_i-e_j}$ \unsure{engendré} par les $e_i-e_j$
@@ -1642,12 +1998,12 @@ $V_J\deleted{\unsure{\simeq}}\inserted{=\unsure{\Gamma(X,\uline{\mathcal O}(1))}
 \lambda \& \lambda^6=\displaystyle\prod_{i,j}\xi_{ij}(x)
 \end{tikzcd}}
 
-\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\deleted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
 \mathbb Z\arrow[r,no head]
-\& \deleted{\widetilde\Pi_{\unsure{03}}}\arrow[r]
+\& \widetilde\Pi_{\unsure{03}}\arrow[r]
 \& \Pi_{03}^{\unsure{\sharp|\ast}}\arrow[r,very thick]
 \& 1
-\end{tikzcd}}
+\end{tikzcd}}}
 
 \[
 (e_i-e_j)(\uline{\unsure{Q_n|Q_k}})
@@ -1655,7 +2011,7 @@ $V_J\deleted{\unsure{\simeq}}\inserted{=\unsure{\Gamma(X,\uline{\mathcal O}(1))}
 \]
 
 \[
-\mathbf V(\omega)\deleted{\overset{!!}{\simeq}}\mathbf V
+\deleted{\mathbf V(\omega)\overset{!!}{\simeq}\mathbf V}
 \qquad \varphi\in V
 \qquad e_i-e_j(\deleted{\unsure{Q_k}}\,
 \]
@@ -1673,45 +2029,45 @@ e_i-e_j\bmod L_{Q_k}
 
 % Secteur inférieur, écrit à l'envers par rapport au secteur précédent.
 \deleted{
-On a vu qu'une orientation d'une \deleted{\unsure{surface}}
-\inserted{\unsure{cellulation|cellulaire}} combinatoire $A$
+On a vu qu'une orientation d'une \deleted{\unsure{surface}}\inserted{\unsure{carte}}
+\inserted{\unsure{cellulaire|cellulation}} combinatoire $A$
 \unsure{donne} lieu \unsure{à|:} deux \unsure{opérateurs|opérations}
-$\bar\rho_s,\bar\rho_f$ sur $\bar A$, \unsure{satisfaisant}
+$\vec\rho_s,\vec\rho_f$ sur $\vec A$, \unsure{satisfaisant}
 \[
-\bar\rho_s^{-1}\bar\rho_f=\sigma
+\vec\rho_s^{-1}\vec\rho_f=\sigma
 \]
 
 Si on prend l'orientation inverse, \unsure{quels|quelles} sont les
 \unsure{opérateurs|opérations} \unsure{correspondants|correspondantes}
-$\bar\rho'_s,\bar\rho'_f$ ?
-Si $\bar a\in\bar A$ \unsure{provient} de $a\in A^L_+$,
-il \unsure{provient} de $\sigma_{\unsure{m|n}}a\in A^L_-$, et on a
+$\vec\rho'_s,\vec\rho'_f$ ?
+Si $\vec a\in\vec A$ \unsure{provient} de $a\in A^L_+$,
+il \unsure{provient} de $\sigma_na\in A^L_-$, et on a
 \[
-\rho_s(\sigma_{\unsure{m|n}}a)
- =\sigma_{\unsure{m|n}}
-   (\underbrace{\sigma_{\unsure{m|n}}\rho_s\sigma_{\unsure{m|n}}}
-     _{\sigma_{\unsure{m|n}}\varepsilon=\rho_s^{-1}}a)
- =\sigma_{\unsure{m|n}}\rho_s^{-1}a)\,-
+\rho_s(\sigma_na)
+ =\sigma_n
+   (\underbrace{\sigma_n\rho_s\sigma_n}
+     _{\sigma_n\varepsilon=\rho_s^{-1}}a)
+ =\sigma_n(\rho_s^{-1}a)\,-
 \]
-\unsure{donc} la classe dans $\bar A\simeq A^L/\sigma_{\unsure{m|n}}$
+\unsure{donc} la classe dans $\vec A\simeq A^L/\sigma_n$
 est celle de $\rho_s^{-1}a$,
-i.e. $\bar\rho_s^{-1}\bar a$.
+i.e. $\vec\rho_s^{-1}\vec a$.
 \deleted{\unsure{E}}t on a donc
 \[
-\deleted{\rho_f(\sigma_{\unsure{m|n}}a)
- =\sigma_{\unsure{m|n}}
-  (\underbrace{\sigma_{\unsure{m|n}}\rho_f\sigma_{\unsure{m|n}}}
-   _{\sigma_{\unsure{m|n}}\varepsilon\sigma}a)}
+\deleted{\rho_f(\sigma_na)
+ =\sigma_n
+  (\underbrace{\sigma_n\rho_f\sigma_n}
+   _{\sigma_n\varepsilon\sigma}a)}
 \]
 \[
-\bar\rho'_s=\bar\rho_s^{-1}
+\vec\rho'_s=\vec\rho_s^{-1}
 \]
 d'où
 \[
-\bar\rho'_f=\bar\rho'_s\sigma
- =\bar\rho_s^{-1}\sigma
- =\sigma\bar\rho_f^{-1}\sigma
- =\mathrm{int}(\sigma)\bar\rho_f^{-1}
+\vec\rho'_f=\vec\rho'_s\sigma
+ =\vec\rho_s^{-1}\sigma
+ =\sigma\vec\rho_f^{-1}\sigma
+ =\mathrm{int}(\sigma)\vec\rho_f^{-1}
 \]
 (Ce n'est pas tellement \unsure{plaisant}.)
 }
@@ -1726,7 +2082,7 @@ d'où
 \deleted{\unsure{\xi}}\quad\unsure{\gamma_h\ i\gamma_h}
 \]
 \[
-e_j-e_i\ \unsure{=}\ -(e_i-e_{\unsure{j|n}})
+e_j-e_i\quad -(e_i-e_h)
 \]
 }
 
@@ -1795,7 +2151,7 @@ e_j-e_i\ \unsure{=}\ -(e_i-e_{\unsure{j|n}})
 \end{tikzcd}}
 
 \[
-\Pi'\ \unsure{\subset|\leftarrow}\ \Pi
+\Pi'\subset\joinrel\relbar\joinrel\relbar\ \Pi
 \]
 \[
 \deleted{\unsure{\widetilde\Pi}\times\unsure{\mathbb Z/4|\mathbb Z/4\mathbb Z}}
@@ -1810,17 +2166,17 @@ e_j-e_i\ \unsure{=}\ -(e_i-e_{\unsure{j|n}})
 \margin{31}
 % Une longue barre oblique traverse le corps du feuillet.
 \deleted{
-\uline{C} a) La construction \inserted{\unsure{ne}} \unsure{peut} se continuer \unsure{indéfiniment}
+\uline{Cas} a) La construction \inserted{\unsure{ne}} \unsure{peut} se continuer \unsure{indéfiniment}
 i.e. on finit par avoir $\sigma a_n\notin A'$, on \unsure{pose}
 alors $\sigma a_n=\rho a_0$.
 
-\uline{C} b) La construction se prolonge \unsure{indéfiniment}.
+\uline{Cas} b) La construction se prolonge \unsure{indéfiniment}.
 
 (\deleted{\unsure{soit que} \unsure{l'on} \inserted{\unsure{donc}} \unsure{a un cycle fini}}, \unsure{ou un}
 cycle \unsure{infini}). On ne \unsure{définit} pas $\rho\unsure{\widehat a|a}$ \unsure{alors}.
 
 \margin{\figure{\begin{tikzpicture}
-\node[align=left,inner sep=3pt] (m) {\unsure{notion de connexité}\\\unsure{définie dans un}\\\unsure{sens restreint}};
+\node[align=left,inner sep=3pt] (m) {\unsure{notion de circuit|notion de connexité}\\\unsure{définie dans un}\\\unsure{sens restreint}};
 \draw ([xshift=7pt,yshift=5pt]m.north east)
  .. controls ([xshift=4pt,yshift=5pt]m.north east) and ([xshift=4pt,yshift=2pt]m.east) .. ([xshift=10pt]m.east)
  .. controls ([xshift=4pt,yshift=-2pt]m.east) and ([xshift=4pt,yshift=-5pt]m.south east) .. ([xshift=7pt,yshift=-5pt]m.south east);
@@ -1836,7 +2192,7 @@ que : $\unsure{K^\circ}$\inserted{\unsure{$\simeq\Pi_{0,3}$}}), l'image inverse 
 $\widehat S$ dans $A$ \inserted{\unsure{contient $A'$ et}}
 est \unsure{st.} \unsure{$\forall$} par $\rho$ et $\sigma$
 mais \deleted{\unsure{n'est pas|ce n'est pas} néc. égal \unsure{à|avec} $A'$.}
-\inserted{$A$ \unsure{tt entier|est entier}.}
+\inserted{: $A$ \unsure{tt entier|est entier}.}
 
 \margin{\figure{\begin{tikzpicture}
 \node[align=left,inner sep=5pt] (m) {\unsure{st. liberté de l'action}\\\unsure{en passant de} $A':\widehat A'$ ?};
@@ -1911,13 +2267,13 @@ $\alpha\in(\mathbb Z/p\mathbb Z)^*$\\
 \margin{32}
 
 \scanpage{34}
-\deleted{$\unsure{4)}\ \unsure{\widetilde{\mathrm{SL}}}(2,\mathbb Z)\simeq
+\deleted{$\unsure{4)}\ \unsure{\widetilde{\mathrm{Sl}}}(2,\mathbb Z)\simeq
 \unsure{\mathcal T_{1,1}}\,\unsure{\mathrm{SL}}\,\unsure{\Pi}$}
 
 1)
 \[
 \begin{gathered}
- S\mathcal T_{11}\simeq\widetilde{\mathrm{SL}}(2,\mathbb Z)
+ S\mathcal T_{11}\simeq\widetilde{\mathrm{Sl}}(2,\mathbb Z)
  \simeq\{\rho,\sigma\mid\underbrace{\rho^3=\sigma^2}_{\omega}\}
  \simeq
  \underset{\substack{\Vert\\\{\rho,\sigma\mid\rho^3=\sigma^2=1\}}}{\Pi_{0,3}^D}
@@ -1996,7 +2352,7 @@ $\cdot$
 \unsure{revêt}\deleted{\unsure{ement}} principal de $(U_{0,3},\mathfrak S_3)$
 de groupe $\mathbb Z/6\mathbb Z$, défini par
 la \unsure{multisection|multiplication} \inserted{canonique} de
-\deleted{$\unsure{\mathcal O(1)}$}$\mathcal O_{U_{0,3}}(\unsure{4|1})^*$
+\deleted{$\unsure{\mathcal O(1)}$}$\mathcal O_{U_{0,3}}(1)^*$
 $=PU_{0,3}$}
 
 \[
