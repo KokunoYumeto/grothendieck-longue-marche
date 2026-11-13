@@ -1,0 +1,200 @@
+\begin{claim}{B.29}{Proved}{Complete executed punctured genus-two catalogues}
+The extended mapping class groups of types $(2,1)$ and $(2,2)$ have
+respectively $32$ and $121$ conjugacy classes of finite subgroups.
+Their positive subgroups form $10$ and $23$ of these classes.
+The files \texttt{type\_2\_\nu\_extended\_catalogue.csv} and
+\texttt{type\_2\_\nu\_extended\_sections.json}, for $\nu=1,2$,
+list every class with its exact group, puncture orbits and stabilizers,
+all section classes and their incidences, $\Phi$, its group action
+and stabilizers, centralizers, and all section and puncture multipliers.
+\end{claim}
+\begin{proof}
+Fill the punctures of a finite action on the genus-two surface.
+The resulting finite subgroup in the closed mapping class group is
+faithful: a finite homeomorphism isotopic to the identity on a closed
+hyperbolic surface is the identity, by B.6.  Thus B.28 supplies the
+complete list of closed actions that must be decorated.
+For such an action $K$, keep the notation
+$E=K\langle\iota\rangle$, $H=E/\langle\iota\rangle$, and
+$Q=S^2/H$ from that proof.
+
+The strata relevant to punctures are intrinsic to $K$.
+Let $\mathcal V_K$ be the set of points whose stabilizer in $K$
+contains a positive nonidentity element.  Take its $K$-orbits.
+Cut the fixed circles of the reflections in $K$ at
+$\mathcal V_K$ and take the $K$-orbits of the resulting open
+intervals or uncut circles.  These are the mirror strata.
+There is one connected regular interior in the quotient $S_2/K$.
+A vertex orbit is selected zero or one time; a mirror stratum
+receives any nonnegative number of puncture orbits; so does the
+regular interior.  Their weights are, respectively,
+\[
+       |Kp|,\qquad |K|/2,\qquad |K|.                  \tag{B.29.1}
+\]
+The weighted sum must equal $\nu$.
+Points fixed by $\iota$ but having no positive stabilizer in $K$
+are ordinary points of these $K$-strata.  They introduce no extra
+puncture label.  In particular punctures need not be preserved
+by $\iota$ when $K$ is a complement in $E$.
+
+We prove the normalizer permutations used to identify these
+decorations.  Every mapping class normalizing $K$ normalizes $E$,
+since $\iota$ is central in $\mathcal T_{2,0}$.  At the homeomorphism
+level it may be represented by a normalizer of the chosen finite
+action $E$ without changing its action on the intrinsic $K$-strata.
+Indeed compare the two commuting involutions $\iota$ and
+$h\iota h^{-1}$ after conjugating $K$ by $h$.  The finite actions of
+the abstract extension $K\langle\iota\rangle$ have the same mapping
+classes.  Uniqueness of realization in C.6 gives a conjugating
+homeomorphism isotopic to the identity and commuting with $K$.
+C.7 gives an isotopy through such commuting homeomorphisms.
+It fixes the isolated $K$-fixed points individually and preserves
+every reflection component.  Composing with it makes $h$ normalize
+the chosen $E$ and leaves the required stratum permutation unchanged.
+Thus it suffices, and is necessary, to compute the action of the
+normalizer of $E$ that preserves $K$.
+
+The full-group case $K=E$ is direct.  A cone in $Q$ has the color
+consisting of its original order and its branch flag.
+An ordinary branch orbit has its own color $(1,1)$.
+The normalizer permits all permutations of identical interior
+cone colors and exactly the dihedral symmetries of the expanded
+colored boundary list of B.28.  Each is realized by a quotient
+orbifold homeomorphism and hence lifts.  Pure interior braids
+conjugate local generators, so they leave the corresponding
+$E$-orbits unchanged.  These observations prove that this finite
+permutation group is the whole normalizer action on the strata.
+
+Suppose now $K=\ker\chi$ with $\chi(z)=1$.
+For a local stabilizer $L\subset E$, its point orbit is $E/L$.
+It is a single $K$-orbit when $\chi(L)=\mathbf F_2$.
+When $\chi(L)=0$, it consists of two $K$-orbits, labelled
+\[
+                       b=\chi(g),\qquad gL\in E/L.    \tag{B.29.2}
+\]
+This is well defined precisely in the latter case.
+It gives the exact orbit comparison, including the ambiguity in
+choosing a lift of a quotient homeomorphism: composing with $z$
+simultaneously changes every available sheet label $b$ to $b+1$.
+The code includes this deck permutation.
+
+An interior cone with generator $x$ contributes an intrinsic
+$K$-vertex only when $K\cap\langle x\rangle$ is nontrivial.
+For cone permutations, retain exactly the equal-color permutations
+that also preserve the character values on their local generators.
+On a sphere quotient, every split cone pair has an additional
+independent interchange.  Here is the explicit lift proving that
+assertion.  Choose a branch local generator $y$ with $\chi(y)=1$;
+one exists because the branch decoration is nonempty.
+An ordinary branch generator is $z$.  A branched old cone has
+$y^m=z$ with $m$ odd whenever a character with $\chi(z)=1$ exists,
+and therefore also has $\chi(y)=1$.
+For a split cone generator $x$, we have $\chi(x)=0$.
+A pure braid about these two quotient points acts by
+\[
+       x\longmapsto(xy)x(xy)^{-1},
+       \qquad y\longmapsto xyx^{-1}.                 \tag{B.29.3}
+\]
+The other local generators are unchanged.
+The character is preserved.  The conjugator for $x$ has character
+one, so (B.29.2) interchanges its two $K$-orbits; the conjugator for
+$y$ has character zero.  Thus it leaves the other split pairs
+unchanged.  This proves the claimed independent interchanges.
+Together with cone permutations they generate the whole stratum
+action: pure braids generate the remaining mapping classes of a
+punctured sphere, and their action on the two-element fibers can
+only be these interchanges.
+
+For a disc quotient there is at most one old interior cone.
+An ordinary interior branch point permits exactly the same
+interchange (B.29.3) of that split cone pair, supported away from
+the boundary.  When there is no such interior branch point, the
+disc has at most one interior marked cone; its pure braid group
+introduces no additional permutation.  Boundary permutations are
+computed as follows.  Let $L$ be the length of the expanded corner
+list, write $R_{j+L}=eR_je^{-1}$, and put
+$\epsilon=\chi(e)$.  A colored cyclic shift sends a corner index
+$j$ to $s+j$ and an edge index $i$ to $s+i$.
+A reversal sends them to $s-j-1$ and $s-i$, respectively.
+For either image write the resulting integer as $qL+t$,
+$0\le t<L$.  Its local generator is conjugated by $e^q$;
+hence the sheet label changes by
+\[
+                          b\longmapsto b+q\epsilon.   \tag{B.29.4}
+\]
+Retain precisely the colored symmetries that preserve the reflection
+character values, and include the global deck interchange.
+These formulas give both vertex and mirror-component permutations.
+For a cornerless boundary the same rule is its circular covering
+with monodromy $\chi(e)$; the lifted mirror graph records whether
+the two local sheet labels belong to one or two components.
+
+There are no omitted boundary permutations.  An orbifold
+homeomorphism of the disc preserves its cyclic boundary order
+up to reversal.  After its colored dihedral permutation has been
+removed, its remaining mapping class is an interior braid or a
+boundary twist.  An interior braid has the local conjugators
+already described and fixes the boundary.  A boundary twist has
+the conjugator $e$, already represented by (B.29.4) and the deck
+permutation.  Inner automorphisms coming from $K$ leave $K$-orbits
+unchanged.  The projective-plane cases in B.28 have no complements;
+their full-group decorations require only permutations of identical
+interior cone colors.  Thus every case has an explicit complete
+finite normalizer permutation group.
+
+We spell out how this calculation handles smooth points of the
+$K$-mirror locus that were corners for $E$.  The code starts with
+the exact finite mirror coset graph of the full action $E$.
+It finds the vertices with positive stabilizer in $K$, removes
+only these vertices to form the open mirror strata, and computes
+the fixed circles of each actual reflection in $K$.
+Thus an $E$-corner that has only a reflection stabilizer in $K$
+lies inside a single $K$-mirror stratum.  The sheet and boundary
+formulas above are applied to an ordinary edge sample in each
+such component.  They determine its whole component by
+connectedness.  This is also a direct check that a puncture can
+move through a noncritical Weierstrass point whenever the
+$K$-stratum allows it.
+
+Enumerate all vectors with the weights (B.29.1) summing to
+$\nu=1$ or $2$, and divide by the proved finite permutation group.
+These are precisely the topological action classes with punctures.
+Indeed unlabelled finite subsets of an interval or circle with
+the same cardinality are related by a homeomorphism of prescribed
+degree, and the regular interior configuration space is connected.
+Extend such moves by small discs and strips in the quotient and
+lift the isotopies through the finite orbifold cover.  Conversely
+an equivariant homeomorphism preserves the intrinsic strata,
+their weights, and a stratum permutation in the normalizer just
+computed.  C.5--C.6 then identify these action classes with the
+finite-subgroup conjugacy classes in the punctured mapping class
+group.
+
+The executed program \texttt{catalogue\_genus2\_punctures.py}
+returns $32$ and $121$ classes.  It places the punctures on the
+exact coset graph, with one midpoint inserted in every edge before
+any vertex is removed.  This subdivision guarantees that even
+two punctures at formerly adjacent samples leave the intervening
+open interval represented.  The program checks that an element
+stabilizing an edge fixes both its endpoints, so the inserted
+midpoint has exactly the edge stabilizer and creates no artificial
+critical point.  It records regular puncture orbits by the free
+$K$-set $K$, with trivial stabilizer.
+
+All positive section classes from B.28 are retained exactly when
+their fixed point has not been removed and their image subgroup
+lies in $K$.  For every reflection, remove the punctures from its
+actual fixed-circle graph and recompute the resulting ovals and
+lines.  These operations give all partial-section classes by
+B.3--B.4.  Their inclusion poset, maximal classes, $K$-action,
+stabilizers and centralizers are then recomputed.
+Local multipliers at punctures are retained from the positive
+local generators or assigned $1/2$ to a reflection.
+The positive portions contain $10$ and $23$ classes and agree
+with the independent primary-source calculation in B.33 on the
+full multiset of group order, full sections, partial sections,
+$|\Phi|$, and $|\Phi/K|$.  The negative involutions provide
+another independent check: there are $4$ classes with one
+puncture and $11$ with two, exactly the decorations of the five
+closed real types in B.16.
+\end{proof}

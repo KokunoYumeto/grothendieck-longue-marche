@@ -1,0 +1,172 @@
+# Files uploaded with the prompt: MPL_149_091-136
+
+The prompt `PROMPT.md` in this folder was sent to GPT-6 Astra (ChatGPT Pro mode) together with the ZIP files below. This is the file list of each ZIP as it was uploaded. The ZIPs are not republished here.
+
+## `MPL_149_091-136_context.zip`
+
+15 files, 1,797,250 bytes, SHA-256 `caf4f118ffef5f15f29c3c9a3a48a8410765b5940d54d5983c6625800a5e17df`, built 11 Nov 2026, 13:42:38 UTC.
+
+```text
+       bytes  file
+      331618  ARCH_147_003-137_notes.md
+      215867  ARCH_147_003-137_text.tex
+      154863  LM_140-1_notes.md
+       82339  LM_140-1_text.tex
+      973255  LM_140-2_notes.md
+      955818  LM_140-2_text.tex
+      668637  LM_140-3_notes.md
+     1525183  LM_140-3_text.tex
+      537203  LM_140-4_notes.md
+      540060  LM_140-4_text.tex
+       14587  LM_GLOBAL_PASS.md
+       11188  LM_OVERVIEW.md
+       13642  LM_table_of_contents.txt
+        3286  README.md
+       87980  SECTIONS_STATE.md
+```
+
+## `MPL_149_091-136_scans.zip`
+
+138 files, 38,054,707 bytes, SHA-256 `2811a3178a75ac41951de55da001d6b46acfee1c77764cda20192185e19eae6e`, built 11 Nov 2026, 13:42:38 UTC.
+
+```text
+       bytes  file
+      371306  MPL_149_091-136_scan091.jpg
+      202854  MPL_149_091-136_scan091_a.jpg
+      230840  MPL_149_091-136_scan091_b.jpg
+      345324  MPL_149_091-136_scan092.jpg
+      181904  MPL_149_091-136_scan092_a.jpg
+      230092  MPL_149_091-136_scan092_b.jpg
+      355315  MPL_149_091-136_scan093.jpg
+      200887  MPL_149_091-136_scan093_a.jpg
+      216459  MPL_149_091-136_scan093_b.jpg
+      364825  MPL_149_091-136_scan094.jpg
+      196191  MPL_149_091-136_scan094_a.jpg
+      234019  MPL_149_091-136_scan094_b.jpg
+      357113  MPL_149_091-136_scan095.jpg
+      191656  MPL_149_091-136_scan095_a.jpg
+      232450  MPL_149_091-136_scan095_b.jpg
+      354748  MPL_149_091-136_scan096.jpg
+      183645  MPL_149_091-136_scan096_a.jpg
+      238821  MPL_149_091-136_scan096_b.jpg
+      345722  MPL_149_091-136_scan097.jpg
+      188553  MPL_149_091-136_scan097_a.jpg
+      218457  MPL_149_091-136_scan097_b.jpg
+      371166  MPL_149_091-136_scan098.jpg
+      200448  MPL_149_091-136_scan098_a.jpg
+      232611  MPL_149_091-136_scan098_b.jpg
+      359421  MPL_149_091-136_scan099.jpg
+      192347  MPL_149_091-136_scan099_a.jpg
+      228096  MPL_149_091-136_scan099_b.jpg
+      344645  MPL_149_091-136_scan100.jpg
+      178176  MPL_149_091-136_scan100_a.jpg
+      223680  MPL_149_091-136_scan100_b.jpg
+      357872  MPL_149_091-136_scan101.jpg
+      191440  MPL_149_091-136_scan101_a.jpg
+      229276  MPL_149_091-136_scan101_b.jpg
+      342964  MPL_149_091-136_scan102.jpg
+      180293  MPL_149_091-136_scan102_a.jpg
+      225144  MPL_149_091-136_scan102_b.jpg
+      376927  MPL_149_091-136_scan103.jpg
+      205060  MPL_149_091-136_scan103_a.jpg
+      242032  MPL_149_091-136_scan103_b.jpg
+      345485  MPL_149_091-136_scan104.jpg
+      196322  MPL_149_091-136_scan104_a.jpg
+      212534  MPL_149_091-136_scan104_b.jpg
+      400115  MPL_149_091-136_scan105.jpg
+      222667  MPL_149_091-136_scan105_a.jpg
+      244467  MPL_149_091-136_scan105_b.jpg
+      374135  MPL_149_091-136_scan106.jpg
+      199733  MPL_149_091-136_scan106_a.jpg
+      241395  MPL_149_091-136_scan106_b.jpg
+      389020  MPL_149_091-136_scan107.jpg
+      212271  MPL_149_091-136_scan107_a.jpg
+      246605  MPL_149_091-136_scan107_b.jpg
+      338433  MPL_149_091-136_scan108.jpg
+      180889  MPL_149_091-136_scan108_a.jpg
+      218768  MPL_149_091-136_scan108_b.jpg
+      406139  MPL_149_091-136_scan109.jpg
+      225560  MPL_149_091-136_scan109_a.jpg
+      252067  MPL_149_091-136_scan109_b.jpg
+      330873  MPL_149_091-136_scan110.jpg
+      170496  MPL_149_091-136_scan110_a.jpg
+      230247  MPL_149_091-136_scan110_b.jpg
+      344032  MPL_149_091-136_scan111.jpg
+      182826  MPL_149_091-136_scan111_a.jpg
+      222186  MPL_149_091-136_scan111_b.jpg
+      365085  MPL_149_091-136_scan112.jpg
+      201326  MPL_149_091-136_scan112_a.jpg
+      226438  MPL_149_091-136_scan112_b.jpg
+      344767  MPL_149_091-136_scan113.jpg
+      182982  MPL_149_091-136_scan113_a.jpg
+      228210  MPL_149_091-136_scan113_b.jpg
+      345409  MPL_149_091-136_scan114.jpg
+      173772  MPL_149_091-136_scan114_a.jpg
+      234133  MPL_149_091-136_scan114_b.jpg
+      347960  MPL_149_091-136_scan115.jpg
+      186914  MPL_149_091-136_scan115_a.jpg
+      216243  MPL_149_091-136_scan115_b.jpg
+      345092  MPL_149_091-136_scan116.jpg
+      189504  MPL_149_091-136_scan116_a.jpg
+      219489  MPL_149_091-136_scan116_b.jpg
+      421654  MPL_149_091-136_scan117.jpg
+      206200  MPL_149_091-136_scan117_a.jpg
+      285306  MPL_149_091-136_scan117_b.jpg
+      357424  MPL_149_091-136_scan118.jpg
+      190940  MPL_149_091-136_scan118_a.jpg
+      232845  MPL_149_091-136_scan118_b.jpg
+      387077  MPL_149_091-136_scan119.jpg
+      194539  MPL_149_091-136_scan119_a.jpg
+      253227  MPL_149_091-136_scan119_b.jpg
+      373450  MPL_149_091-136_scan120.jpg
+      191702  MPL_149_091-136_scan120_a.jpg
+      250852  MPL_149_091-136_scan120_b.jpg
+      416479  MPL_149_091-136_scan121.jpg
+      213755  MPL_149_091-136_scan121_a.jpg
+      276519  MPL_149_091-136_scan121_b.jpg
+      412552  MPL_149_091-136_scan122.jpg
+      209420  MPL_149_091-136_scan122_a.jpg
+      277174  MPL_149_091-136_scan122_b.jpg
+      370917  MPL_149_091-136_scan123.jpg
+      186941  MPL_149_091-136_scan123_a.jpg
+      245649  MPL_149_091-136_scan123_b.jpg
+      385174  MPL_149_091-136_scan124.jpg
+      200914  MPL_149_091-136_scan124_a.jpg
+      247970  MPL_149_091-136_scan124_b.jpg
+      346082  MPL_149_091-136_scan125.jpg
+      180562  MPL_149_091-136_scan125_a.jpg
+      235801  MPL_149_091-136_scan125_b.jpg
+      408214  MPL_149_091-136_scan126.jpg
+      232217  MPL_149_091-136_scan126_a.jpg
+      251690  MPL_149_091-136_scan126_b.jpg
+      482663  MPL_149_091-136_scan127.jpg
+      274478  MPL_149_091-136_scan127_a.jpg
+      294407  MPL_149_091-136_scan127_b.jpg
+      413168  MPL_149_091-136_scan128.jpg
+      223442  MPL_149_091-136_scan128_a.jpg
+      264967  MPL_149_091-136_scan128_b.jpg
+      384642  MPL_149_091-136_scan129.jpg
+      206531  MPL_149_091-136_scan129_a.jpg
+      256283  MPL_149_091-136_scan129_b.jpg
+      429790  MPL_149_091-136_scan130.jpg
+      232563  MPL_149_091-136_scan130_a.jpg
+      283221  MPL_149_091-136_scan130_b.jpg
+      439121  MPL_149_091-136_scan131.jpg
+      249803  MPL_149_091-136_scan131_a.jpg
+      274006  MPL_149_091-136_scan131_b.jpg
+      396350  MPL_149_091-136_scan132.jpg
+      200424  MPL_149_091-136_scan132_a.jpg
+      260905  MPL_149_091-136_scan132_b.jpg
+      448729  MPL_149_091-136_scan133.jpg
+      229551  MPL_149_091-136_scan133_a.jpg
+      292318  MPL_149_091-136_scan133_b.jpg
+      389733  MPL_149_091-136_scan134.jpg
+      210066  MPL_149_091-136_scan134_a.jpg
+      244038  MPL_149_091-136_scan134_b.jpg
+      384567  MPL_149_091-136_scan135.jpg
+      209062  MPL_149_091-136_scan135_a.jpg
+      249142  MPL_149_091-136_scan135_b.jpg
+      485933  MPL_149_091-136_scan136.jpg
+      262957  MPL_149_091-136_scan136_a.jpg
+      302903  MPL_149_091-136_scan136_b.jpg
+```

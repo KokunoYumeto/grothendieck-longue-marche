@@ -1,0 +1,168 @@
+Independent audit of F.9
+Reviewer: /root/part_c_continue
+Verdict: PASS. No mathematical correction required.
+
+Files and execution
+-------------------
+I read the complete seven_point_kernel_f9.py, its exact JSON certificate,
+the full proof f_seven_point_kernel.tex, the F.8 map-comparison proof, and
+the finite A4 label code imported by the certificate. I reran the full
+producer successfully. Its independent rerun stdout is saved at
+work/part_c/f9_independent_rerun_stdout.txt.
+
+I also wrote and executed a separate certificate reader:
+work/part_c/code/seven_point_sturm_audit.py
+with adjacent output JSON and stdout. This reader uses explicit rational
+Euclidean Sturm sequences, rather than the producer's root isolation and
+count_roots calls. It verifies all 270 pair polynomials, all 64 isolated
+simple roots, every height sign and crossing order, and all endpoint
+orders. It separately applies free-group substitutions in the opposite
+composition order and obtains the identity on all six basis generators.
+The maximum crossing-polynomial degree is exactly twelve. All assertions
+pass.
+
+Primary theorem verification
+----------------------------
+I independently opened Emil Artin, "Theory of Braids", Annals of
+Mathematics, Second Series 48(1) (1947), 101--126,
+DOI 10.2307/1969218, at
+https://webhomes.maths.ed.ac.uk/~v1ranick/papers/artinbraids.pdf.
+The projection-pattern lemma and Theorem 3 on p.103 give the isotopy
+comparison used to extract elementary braid pieces. Theorem 14 on p.112
+identifies braid classes with their free-group substitutions. Equations
+(14)--(15) on p.113 give the inverse pair of elementary substitutions.
+The displayed convention in F.9 is one of this inverse pair. Simultaneous
+inversion of all Artin generators is an automorphism of the braid group,
+and reversal of word order is an anti-automorphism, as is checked directly
+on the braid relations. Thus either global drawing/stacking convention
+retains the identity test.
+
+I additionally opened Shpilrain's author PDF "Representing braids by
+automorphisms", https://shpilrain.ccny.cuny.edu/braids.pdf. Its introductory
+formula is exactly the substitution implemented in F.9, and Theorem A
+contains its faithfulness. The manuscript's original Artin citation
+already suffices; no additional source is required.
+
+1. The exact A4-labelled configuration map
+----------------------------------------
+The imported label program constructs the regular A4 labelling of the
+twelve A5/C5 vertices. The producer builds the corresponding projective
+2x2 matrices from the two specified generators, checks every one of the
+144 products, and compares all seven displayed rational functions with
+the seven stated labels. It also multiplies the fixed-point polynomials
+of the seven distinct nontrivial cyclic subgroups, counts the sole point
+at infinity, and obtains precisely
+z(z^4-1)(z^8+14z^4+1).
+
+Outside this ramification set the complete A4 orbit is free, so the seven
+selected coordinates are distinct. The displayed L_z sends exactly the
+first, second and seventh coordinate to 0,1,infinity. Every coordinate
+denominator zero represents one of the excluded collisions. This gives
+the actual normalized map Phi to the ordered six-point plane
+configuration space. Adding infinity and passing to the labelled
+Möbius quotient is an actual continuous map q, and q Phi=f_I with the
+specified base configurations.
+
+The ordered-to-unordered configuration cover injects the pure braid
+group into B6. Consequently an identity braid in B6 already gives the
+identity in the ordered configuration fundamental group, and its image
+under q is the desired target identity. No converse recognition or
+injectivity of q is needed or used.
+
+2. Source lassos and the winding detector
+---------------------------------------
+All vertices, stems and square edges are Gaussian rational. Each stem is
+followed by its reverse. The squares are counterclockwise and enclose
+their indicated point. The other eight roots have coordinates whose
+absolute values are (sqrt(3)-1)/2 or (sqrt(3)+1)/2; the half-width 27/1000
+therefore excludes them from the three squares, and the remaining roots
+0,+/-1,+/-i are also separated. Every segment avoids the punctures by the
+exact real/imaginary gcd check.
+
+In particular the map z -> z+1 to C* has winding one on m_{-1} and zero
+on the other two lassos. Its value on
+m_{-1} m_i m_1^{-1} m_i^{-1}
+is exactly one. This directly proves nontriviality without requiring the
+three named lassos to be members of a simultaneously chosen free basis.
+
+3. Completeness and signs of the crossing certificate
+----------------------------------------------------
+For each rational segment, every normalized coordinate is a rational
+function of the real parameter with Gaussian-rational coefficients.
+The program excludes a zero of each complex numerator or denominator on
+the segment by taking the gcd of its rational real and imaginary parts.
+It applies the same check to the domain puncture polynomial.
+
+If the difference is A/B, then A times conjugate(B), divided by the
+strictly positive |B|^2, is the actual complex difference. Therefore its
+real numerator detects every projected coincidence and its imaginary
+numerator gives the actual height difference. Clearing rational
+denominators from the real polynomial affects no root. The producer
+records the possible overall real sign separately; the ordering update
+does not depend on that sign because it starts from exact evaluations
+and swaps at each odd simple crossing.
+
+Every real root in the open unit interval is isolated exactly. The
+separate Euclidean Sturm reader verifies that the sum of the listed
+isolating intervals contains all roots, that each interval contains one,
+and that the imaginary polynomial has no root on that interval. Its
+midpoint sign is therefore the height sign at the crossing. All roots
+in this certificate have multiplicity one. No segment endpoint is a
+crossing. The root intervals for all pairs in each segment are pairwise
+disjoint, excluding simultaneous or triple crossings.
+
+The exact starting real order is propagated through those events. Each
+event exchanges adjacent positions, and its sign is the height of the
+left strand minus that of the right strand. The propagated final order
+agrees with a separate exact endpoint evaluation. Reversing a segment
+gives the inverse word, so the cached stem reversals retain the source
+lassos exactly.
+
+The chambers with a fixed strict projected ordering are convex. Between
+successive crossings, all paths can be straightened within their
+chambers. At a crossing, only the named adjacent pair changes order and
+its height separation is nonzero. Artin's projection-pattern result
+then identifies the actual configuration path with the recorded
+elementary braid pieces. Thus these are exact monodromy braid words,
+not only values in a linear braid representation.
+
+4. The free-word identity
+------------------------
+The words A, B and C printed in the proof agree with the JSON words for
+the three lassos. The producer evaluates both AB and BC by free
+substitution and reduction and records the same images of all six
+generators. It also evaluates A B C^{-1} B^{-1} and obtains the six
+single-letter images. I checked the substitution and inverse formulas
+in the source. The independent checker applies successive
+substitutions to each basis word in the reverse composition convention
+and again obtains all six identity images.
+
+Faithfulness therefore gives the identity in B6 itself. The actual
+factorization q Phi=f_I puts the stated source word in the named
+seven-point map's kernel.
+
+5. Full profinite kernel and the other targets
+--------------------------------------------
+Completing the winding character gives a continuous homomorphism to
+Zhat taking w to 1. The continuous power homomorphism a -> w^a has
+composite the identity of Zhat. It is therefore injective and identifies
+its compact image with the full procyclic closure of w. Since the
+completed target map kills w and its kernel is closed, it kills this
+entire embedded Zhat. This establishes more than nontriviality of a
+single finite quotient image.
+
+F.8's exact map identity f_{hI}=r_h f_I retains the source and changes
+only the target labels. Its twelve left translates consequently kill
+this same word and its entire procyclic closure.
+
+The announced six-point refinement also follows from actual maps:
+each six-set consisting of one C5 pole and one five-cycle is contained
+in its seven-set consisting of both poles and that cycle. Forgetting
+the other pole is a labelled target map whose composite with the
+seven-point map is the six-point map. Thus the same subgroup lies in
+all twenty-four six-point kernels as well.
+
+The conclusion concerns the specified restriction maps. It does not
+construct an element of the residual A5 centralizer, and no converse
+from their common kernel to that centralizer is used. The stated
+remaining centralizer obligation is accurate.

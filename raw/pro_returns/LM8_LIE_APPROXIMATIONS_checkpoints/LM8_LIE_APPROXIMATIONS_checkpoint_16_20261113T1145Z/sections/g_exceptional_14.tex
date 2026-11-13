@@ -1,0 +1,160 @@
+\begin{statement}{B.14b}{Proved}{The unscaled exceptional-prime witness has an integral lift through class fourteen}
+Let $F=\langle x,y\rangle$, $N_{14}=F/\gamma_{15}F$,
+and $z=(xy)^{-1}$. There is an integral Hall group word
+$f\in\gamma_7N_{14}$ with leading term the specified $q_7$ of
+B.12, without scaling, such that
+\[
+ f(y,x)f(x,y)=1,\qquad
+ f(z,x)f(y,z)f(x,y)=1
+ \quad\text{in }N_{14}.
+\]
+The complete affine system in all Hall exponents of weights
+eight through fourteen has $5030$ Lyndon equations and $2497$
+unknowns, exact rational rank $2066$, and nullity $431$.
+Its integral solutions form a nonempty affine lattice of rank
+$431$. In particular the unscaled finite jet exists over
+$\mathbb Z_p$ for every prime $p$, including $2$ and $3$.
+This assertion does not establish an infinite lift.
+\end{statement}
+\begin{proof}
+Use the commutators $C_w$ and Magnus conventions of B.14a,
+ordering first by weight and then lexicographically. Write
+\[
+ f=\left(\prod_{|w|=7}C_w^{Q_w}\right)
+       \left(\prod_{8\leq |w|\leq14}C_w^{u_w}\right),
+\]
+where the $Q_w$ are the fixed coefficients of $q_7$.
+Every one of the $2497$ variables $u_w$ is included; no earlier
+free parameter is specialized to the previously chosen
+class-thirteen certificate.
+
+The quadratic terms in weight fourteen must now be retained.
+For any of the four cycle substitutions, put $a_w=C_w-1$
+and denote its degree-seven part by $a_{w,7}$. The fixed
+weight-seven Hall word has deviation $S+R$, where
+\[
+ S=\sum_{|w|=7}Q_wa_w,
+ \qquad
+ R=\sum_w\binom{Q_w}{2}a_{w,7}^2
+       +\sum_{v<w}Q_vQ_wa_{v,7}a_{w,7}.
+\]
+These formulas hold for negative as well as positive integral
+exponents, and $R$ is homogeneous of degree fourteen. For
+$|w|\geq8$, however,
+$C_w^{u_w}-1=u_w(C_w-1)$ through degree fourteen.
+An interaction of an unknown factor with a fixed weight-seven
+factor starts in degree $15$, and an interaction of two
+unknown factors starts in degree $16$. Thus the complete
+system remains \emph{affine linear} in all the $u_w$.
+
+Index the substitutions by
+$(x,y),(y,x),(z,x),(y,z)$, numbered $0,1,2,3$.
+If $F_i$ is the fixed Hall-word deviation and $L_i$ its
+degree-seven part, the two fixed cycle defects are exactly
+\[
+ F_1+F_0+L_1L_0,\qquad
+ F_2+F_3+F_0+L_2L_3+L_2L_0+L_3L_0.
+\]
+The code includes every one of these ordered products.
+The resulting quadratic corrections have respectively
+$2048$ and $9200$ nonzero associative-word coefficients.
+The complete system $Au=b$ is stored in
+\texttt{code/g\_exceptional\_matrix\_14.json.gz}; its
+entire part through weight thirteen agrees exactly with the
+independent matrix of B.14a.
+
+Selecting Lyndon-word rows loses no equation. Each cycle
+product is group-like; formal binomial powers over
+$\mathbb Q$ give the same formulas for rational kernels.
+Its first nonzero homogeneous
+deviation, if present, would therefore be an ordinary
+homogeneous free Lie polynomial over $\mathbb Q$.
+The triangular Lyndon basis detects such a polynomial on
+Lyndon words. Induction on the first nonzero degree proves
+the assertion. The same argument with zero weight-seven
+term applies to the homogeneous matrix kernel, so its
+rank is also the rank of the complete associative-word
+system.
+
+For the exact rank and integral solve, first eliminate
+$1776$ variables using only pivots $+1$ and $-1$.
+Each eliminated equation is recorded as
+$u_j=b_i-\sum_{k\ne j}a_{ik}u_k$.
+These operations are reversible over $\mathbb Z$ and
+preserve every integral choice of the remaining variables.
+The resulting $2787\times721$ matrix has exact rank $290$;
+a modular row basis modulo $1000003$ has the same rank.
+Consequently the full rank is $1776+290=2066$.
+The exact residual system and the back-substitution equations
+are stored in
+\texttt{g\_exceptional\_reduction\_14.json.gz}.
+
+We establish integral consistency by an exact finite local
+calculation, without assuming that a rational solution is
+integral. Select $290$ independent residual rows and write
+their system as
+\[
+ Bv+Ct=y,\qquad
+ v=\beta-St,\quad
+ \beta=B^{-1}y,\quad S=B^{-1}C,
+\]
+where $B$ is an invertible rational minor and the $431$
+coordinates $t$ remain free. For a prime $p$, let $d$ be
+the largest $p$-denominator exponent among the entries of
+$\beta$ and $S$. For $t\in\mathbb Z_p^{431}$, the vector
+$v$ is $p$-integral precisely when
+\[
+ p^dSt\equiv p^d\beta\pmod{p^d}.
+\]
+The coefficients belong to $\mathbb Z_{(p)}$ and are
+reduced by inverting their prime-to-$p$ denominators.
+This is an exact finite congruence criterion: an integral
+representative of any solution for $t$ gives a rational
+solution with $p$-unit denominator.
+
+The finite congruence solver in
+\texttt{g\_exceptional\_local14.py} inverts only unit
+pivots. When every remaining coefficient is divisible by
+$p$, it checks the same divisibility on every right side
+before dividing the whole residual system and its modulus
+by $p$. Back-substitution uses the modulus of each recorded
+unit equation. The resulting vector is checked against
+the original finite congruences and then against
+\emph{every} residual rational equation.
+
+For both $p=2$ and $p=3$, the selected minor gives $d=1$.
+The two exact local solutions are $U_2/d_2$ and $U_3/d_3$,
+where the $U_p$ are integral and $p\nmid d_p$.
+The denominators have respectively $129$ and $108$ decimal
+digits and are coprime. The certificate records integers
+$s_2,s_3$ with $s_2d_2+s_3d_3=1$.
+Thus $s_2U_2+s_3U_3$ solves the residual system integrally.
+Integer back-substitution recovers all $2497$ coordinates,
+and every row of the original $Au=b$ is checked exactly.
+This combines affine correction vectors while keeping
+$q_7$ fixed; it does not scale the quadratic right side or
+assert that scaling it scales the leading group term.
+
+The resulting group word has $2079$ nonzero Hall
+coordinates, including the seven fixed weight-seven
+coordinates. Its largest exponent has $242$ decimal
+digits; all integers, local minors, congruence solutions,
+and B\'ezout coefficients are retained in
+\texttt{g\_exceptional\_local\_14.json}.
+Finally \texttt{g\_exceptional\_14.py} reconstructs all
+four substituted Hall group words and checks every
+associative-word coefficient of the two group products
+through degree fourteen. Both defects are exactly zero.
+The fixed quadratic terms are also checked independently
+by repeated multiplication and inverse factors.
+As in B.14a, a nonzero lower-central component through
+degree fourteen would give a nonzero leading Magnus term.
+The verified identities therefore hold in $N_{14}$.
+
+Since an integral solution exists, all integral solutions
+are its translate by $\ker(A:\mathbb Z^{2497}\to
+\mathbb Z^{5030})$, a free lattice of rank $431$.
+Passing the displayed word to the pro-$p$ nilpotent quotient
+preserves both identities. No compatibility at uncomputed
+higher classes is inferred.
+\end{proof}

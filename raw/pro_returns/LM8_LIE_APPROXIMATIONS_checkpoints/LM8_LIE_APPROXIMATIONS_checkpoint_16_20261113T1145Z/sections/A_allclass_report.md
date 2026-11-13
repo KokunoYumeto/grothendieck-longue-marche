@@ -1,0 +1,43 @@
+# A.25–A.26: class five and the all-class relative lift
+
+The specified metabelian involution now survives the entire relative pro-5 completion of the index-three subgroup of the free profinite tripod group. A separate exact calculation also extends the previously fixed class-two conjugators through class five, with the complete earlier parameter family retained. These are different conclusions: the all-class theorem prescribes the A.22 metabelian action, but does not prescribe which A.23 nonmetabelian pair it extends.
+
+## Complete integral class-five calculation
+
+The open class-five kernel is free nilpotent pro-5 on four generators. Its lower-central ranks are 4, 6, 20, 60, and 204, for a total of 294 coordinates. At class five one cannot simply treat the free integral Lie lattice as a BCH group, because the rational formulas can have denominators divisible by 5. The calculation instead uses actual recursively bracketed Hall group words and their ordered 5-adic power coordinates inside a rational truncated Magnus algebra.
+
+Every Hall generator's leading Lyndon bracket is checked, and all 294 individual Hall logarithms are integral at 5. Actual group collection lifts the class-four particular pair. Each of the twenty class-four parameters is retained as an actual weight-four group correction, with its necessary degree-five commutator correction in logarithmic coordinates. There are also 204 central coordinates for each of the two conjugators. This describes every class-five pair above the earlier family.
+
+The second-derived lattice is checked integrally, not merely over the rational numbers. Its rank is 252. The code constructs 308 actual group commutators in the second-derived subgroup; their logarithms span that lattice modulo 5. The matching rational and modular ranks, together with the explicit integral basis, prove saturation. Since the derived subgroup of the open kernel has nilpotency class at most two, its integral logarithm is controlled using only the invertible denominator 2.
+
+The full seven-residual system has 1,428 rows and 428 columns. Twenty columns represent every preceding parameter and 408 are the new central coordinates. The residuals are affine by weight: a quadratic occurrence of two old corrections would first appear in degree seven. Every old-parameter column is evaluated by the full group formulas. All central derivatives are derived explicitly in the proof and calculated on all 204 basis elements for each conjugator. Four declared basis indices for each side are also checked by full group evaluation; these eight checks are identified as cross-checks, not as an exhaustive second evaluation of all columns.
+
+The rational and mod-5 ranks are 338, with an integral particular solution and ninety integral nullspace vectors. The independent verifier reads the saved sparse matrix and hash, checks all ninety exact kernel equations, checks the identity minor on the free coordinates, and recomputes the rank modulo 5. The solution space is therefore exactly an affine Z5-space of dimension 90.
+
+Projection to the entire class-four parameter space has affine image dimension 2 and fibres dimension 88. The image basis has a unit identity minor on coordinates 0 and 3. All twenty offset coordinates and both image vectors are displayed in the section, while the certificate also saves the eighteen equivalent affine constraints. The class-four point with all twenty parameters zero fails those constraints. This is another explicit instance where retaining the previous family changes the outcome.
+
+Modulo 5^n the integral parameter equations have 5^(90n) solutions, 5^(2n) extending class-four parameter points, and 5^(88n) points per fibre. These count residues of parameter equations. They do not assert that naive Hall-coordinate reduction modulo 5^n is a group quotient at class five. Every integral solution itself gives an exact order-two peripheral automorphism, and the same finite order-75 witness proves outerness.
+
+## All-class relative theorem
+
+Write F=Fhat2, K=ker(F→C3), N=K^(5), R=ker(K→N), and Q=F/R. The group N is free pro-5 of rank four, and Q=N⋊C3. Its three peripheral cubes are primitive elements corresponding to the three boundary components of a genus-one cover. The proof works in the closed automorphism subgroup that fixes the first cube exactly and preserves each of the other two oriented conjugacy classes separately.
+
+The required mod-5 homology involution is in this subgroup's image. This is proved by two handle twists and four boundary shears, each shear given by the explicit difference of twists about a handle curve and its band sum with one boundary component. Those shears generate every homomorphism from proper homology to the boundary radical. This proves the needed boundary statement directly; Putman's closed-surface symplectic theorem is cited only for comparison.
+
+The congruence kernel is pro-5. Schur–Zassenhaus gives a complement over the order-six subgroup generated by the involution and the deck transformation. Conjugacy of complements aligns its order-three subgroup with the actual given deck action. Its order-two element therefore extends to Q fixing the split deck generator. The exact source is Hajir and Maire's 2016 author preprint, Section 2 and Theorem 2.5, subsequently published in 2019.
+
+Primitivity identifies the centralizers of the three boundary cubes. Equality of cubes is used together with the specified nontrivial C3 coset; the proof does not claim unrestricted uniqueness of cube roots in the semidirect product. This produces individual peripheral conjugators. Each is then adjusted by a half-power of the appropriate boundary cube, simultaneously giving exact norm one and zero abelianization without changing the involution.
+
+The relative Alexander module is proved to be free of rank one over Z5[[Z5²×C3]]. A cyclic surjection is made injective by a specialized profinite Magnus representation: the commutator vector has zero annihilator. The coefficient ring has two domain factors, the trivial C3 character and the irreducible nontrivial character over Z5[ζ3]. The involution multiplier has square one. Augmentation forces sign +1 on the trivial factor; the prescribed proper-homology action forces sign −1 on the nontrivial factor. The conjugator and third-peripheral equations then determine precisely the A.22 residues. This avoids any assumption that completion automatically preserves a discrete Alexander calculation.
+
+Finally, the normal-subgroup pullback lemma identifies F/(F''∩R) with the fibre product (F/F'')×_(Q/Q'')Q. The all-class relative action and the full A.22 metabelian action agree on the common quotient, so they act componentwise on this fibre product. Their conjugators agree there as well and satisfy the exact norms. Thus the entire specified metabelian action has an all-class nonmetabelian lift, not only a lift after discarding its other metabelian factors.
+
+## Exact residual and scope
+
+The relative group and the fibre product are prosolvable, whereas the full free profinite group also has nonabelian simple finite quotients. No automorphism of the full free profinite group has been constructed. The remaining concrete A.12 question is compatibility of the specified A.22 involution with the other finite quotients, beyond this relative-pro5/full-metabelian fibre product. Increasing nilpotency class inside this particular open pro-5 kernel alone cannot supply an obstruction to the A.22 action, because A.26 provides a compatible all-class lift. Extending the specifically selected A.23 pair through all classes is a separate question; A.25 establishes that pair's survival through class five.
+
+## Reproduction and files
+
+Run `python code/a_metabelian_lift_class5.py` for the exact group and linear construction, then `python code/a_class5_verify.py` for the independent saved-certificate checks. The first recorded construction took approximately 665 seconds. The sparse system and complete particular solution, all ninety kernel vectors, actual Hall coordinates, all prior-parameter corrections, exact hash, and transcript are retained. The verifier saves the entire projection and all affine image equations.
+
+The manuscript supplement is `sections/A_allclass.tex`; its separate result, coverage, source-reading, bibliography, and report files have the same stem. The data are `code/a_metabelian_lift_class5.json`, `code/a_metabelian_lift_class5_system.json`, `code/a_metabelian_lift_class5.out`, `code/a_class5_verify.json`, and `code/a_class5_verify.out`. No randomized search, sampled solution count, or numerical rank inference is used.

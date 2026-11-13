@@ -1,0 +1,270 @@
+\subsection*{Auxiliary calculation: a nonsplit cross-factor refinement}
+
+This calculation records a finite refinement of D.38 with a noncentral
+kernel.  It gives no additional exclusion among the tested base tuples.
+The complete systems, the specified cocycle, and their executed outputs
+are retained so that this outcome can be checked independently.
+No claim number is assigned to this auxiliary calculation.
+
+\paragraph{The explicit nonsplit extension.}
+Use the permutation numbering of D.38 and its checked identification
+$A=A_5=\operatorname{PSL}_2(\F_5)$ from D.45.  Put
+$V=\mathfrak{sl}_2(\F_5)$, with basis
+\[
+ \begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+ \begin{pmatrix}0&1\\0&0\end{pmatrix},\qquad
+ \begin{pmatrix}0&0\\1&0\end{pmatrix}.
+\]
+Write $\rho$ for conjugation on these matrices.  The program
+\path{code/part_a/a5_cross_module.py} verifies the representation law on
+all $3600$ pairs, and row reduction shows that the span of the sixty
+matrices $\rho(g)$ is the full $9$-dimensional matrix algebra.
+In particular $V$ is absolutely simple, $V^A=0$, and
+$\operatorname{End}_A(V)=\F_5$.
+The same program enumerates the crossed homomorphisms using the two
+triangle generators with indices $3,19$ and obtains
+\[
+ \dim Z^1(A,V)=4,\qquad \dim B^1(A,V)=3,
+                 \qquad \dim H^1(A,V)=1.
+\]
+It retains all sixty values of a representative $c$ of the nonzero
+class, with $c(3)=(0,0,0)$ and $c(19)=(0,1,1)$, and verifies
+$c(gh)=c(g)+\rho(g)c(h)$ for every pair.
+
+For $A\times A$ acting on $V\otimes V$, define
+\[
+ b\bigl((g,h),(u,v)\bigr)=c(g)\otimes\rho(h)c(v).       \tag{Aux.1}
+\]
+The crossed-homomorphism identity gives the two-cocycle identity
+directly.  For example, the two middle terms on either side agree
+after expanding $c(gu)$ and $c(vw)$.  The program additionally checks
+$57\,600$ generating-grid instances.  This cocycle is not a
+coboundary.  Indeed, a cochain with coboundary $b$ would restrict to
+crossed homomorphisms $a(g)$ and $d(h)$ on the two factors, since
+$b$ vanishes on either individual factor.  Comparing the orders of
+the two commuting factors gives
+\[
+ c(g)\otimes c(h)=(\rho(g)-1)d(h)-(\rho(h)-1)a(g).
+\]
+Taking first-factor cohomology yields
+$[c]\otimes c(h)=-(\rho(h)-1)[a]$ in
+$H^1(A,V)\otimes V$.  Writing $[a]=[c]\otimes w$ would make
+$c(h)=-(\rho(h)-1)w$, contrary to the enumerated nonzero class.
+
+Also $H^1(A\times A,V\otimes V)=0$.  The same commuting-factor
+comparison for a one-cocycle shows that its restriction class to
+the first factor lies in
+$H^1(A,V)\otimes V^A=0$.  Subtract a coboundary to make that
+restriction zero.  Its second-factor values are then fixed by the
+first factor and are zero because $(V\otimes V)^{A\times1}=0$.
+Tensoring the matrix spans proves that $V\otimes V$ is simple and
+has scalar endomorphisms.
+
+Take the following orbit of ordered factor pairs under the actual
+$\theta,\omega$ component maps of D.38:
+\[
+ \mathcal O=\{(3,13),(5,15),(6,8),(7,8),(11,13),(14,15)\}.
+\]
+Its support is
+$I=\{3,5,6,7,8,11,13,14,15\}$.  The projection of the specified
+quotient $A_5^{19}$ to these factors is the specified epimorphism
+$F\twoheadrightarrow Q=A^I$.  Put
+\[
+ M=\bigoplus_{(i,j)\in\mathcal O} V_i\otimes V_j,
+ \qquad \dim_{\F_5}M=54,
+ \qquad
+ B(q,r)_{i,j}=c(q_i)\otimes\rho(q_j)c(r_j).
+\]
+The finite group used in the test is the set $M\times Q$ with
+the exact multiplication
+\[
+ (m,q)(n,r)=(m+q n+B(q,r),qr).                            \tag{Aux.2}
+\]
+Denote it by $L$.  It has order $5^{54}60^9$.
+The six summands of $M$ are pairwise nonisomorphic simple
+$Q$-modules, as their two-factor supports are distinct.  Each
+component of the extension class is nonzero by (Aux.1).
+Consequently every subgroup of $L$ surjecting to $Q$ equals $L$:
+its intersection with $M$ is a $Q$-submodule, and an omitted
+simple summand would give a splitting of that component after
+quotienting by the intersection.  Thus $M\subset\Phi(L)$.
+
+The group $L$ is center-free: a central element projects to
+$Z(Q)=1$ and then lies in $M^Q=0$.  It is also perfect, since
+$Q$ is perfect and $[Q,M]=M$.  Finally every automorphism of $L$
+over the identity of $Q$ is conjugation by an element of $M$.
+Its module map is scalar on each of the six summands.  Preservation
+of the nonzero extension component forces every scalar to be one.
+The remaining difference is a one-cocycle, and
+$H^1(Q,M)=0$ by the preceding two-factor argument, with the
+other factors contributing no invariant vectors.  Composing with
+an inner automorphism gives the corresponding statement for
+automorphisms over an inner automorphism of $Q$.
+
+\paragraph{The exact symmetry maps and the kernel family.}
+The program uses the actual $S_5$ conjugations in each component
+map.  For such a conjugation $a$, it finds $L_a$ and $b_a$ with
+\[
+ c(a g)=L_a c(g)+(\rho(a g)-1)b_a                       \tag{Aux.3}
+\]
+for all sixty $g$.  Here $L_a$ is a nonzero scalar multiple of
+the adjoint matrix of the specified $\operatorname{PGL}_2(\F_5)$
+representative.  The scalar and vector are unique and retained
+in the output.  On a target summand $(i,j)$ with source summand
+$(s_i,s_j)$, put
+\[
+ A=L_i c(q_{s_i}),\quad D=L_j c(q_{s_j}),\quad
+ r=\rho(a_jq_{s_j})b_j,
+ \qquad
+ J_a(q)_{i,j}=-b_i\otimes D+A\otimes r-b_i\otimes(r-b_j).
+\]
+With the corresponding block permutation map $L_a$ on $M$,
+the formula
+\[
+ \Phi_a(q,m)=(a(q),L_a m+J_a(q))                         \tag{Aux.4}
+\]
+is an automorphism of (Aux.2).  Substituting (Aux.3) proves
+\[
+ L_a B(q,r)+J_a(qr)=J_a(q)+\rho(aq)J_a(r)+B(aq,ar),
+\]
+which is exactly its multiplication condition.  The program
+also checks this equality on all forty-nine pairs of the seven
+named elements $1,X,Y,Z,X^{-1},Y^{-1},Z^{-1}$, for each of
+$a=\theta,\omega$.  Every other lift of the same component map
+is obtained by adding $(1-\rho(aq))b$ to (Aux.4).
+
+Here $X,Y$ denote the specified base images of $x,y$ and
+$Z=(XY)^{-1}$.  An epimorphism $F\to L$ over the fixed map to
+$Q$ is specified by arbitrary module coordinates $X_v,Y_v$.
+It is surjective by $M\subset\Phi(L)$.
+Two such maps have the same kernel exactly when they differ
+by an automorphism over $Q$, hence by simultaneous conjugation
+by $M$.  The space of kernels is therefore the affine space
+\[
+ \F_5^{108}/
+   \{((1-\rho(X))m,(1-\rho(Y))m):m\in M\},
+                                                        \tag{Aux.5}
+\]
+of dimension $54$.  The denominator has dimension $54$
+because $M^Q=0$.
+
+The exact first linear system imposes, on the lifts,
+\[
+ \Theta(X)=Y,\quad\Theta(Y)=X,\quad
+ \Omega(X)=Y,\quad\Omega(Y)=(XY)^{-1}.                  \tag{Aux.6}
+\]
+Its unknowns are $X_v,Y_v,b_\theta,b_\omega\in M$;
+$b_\theta,b_\omega$ are the inner corrections in (Aux.4).
+Writing $R_W=\rho(W)$ and $L_\theta,L_\omega$ for the
+two block maps, its matrix before choosing the conjugation
+gauge is
+\[
+ \begin{pmatrix}
+ L_\theta&-1&1-R_Y&0\\
+ -1&L_\theta&1-R_X&0\\
+ L_\omega&-1&0&1-R_Y\\
+ R_Z&L_\omega+R_ZR_X&0&1-R_Z
+ \end{pmatrix}.                                        \tag{Aux.7}
+\]
+The right side is the column with entries
+$-J_\theta(X)$, $-J_\theta(Y)$, $-J_\omega(X)$, and
+$-J_\omega(Y)-R_Z(B(X,Y)+B(XY,Z))$.
+The program chooses $54$ independent coordinate rows of
+the denominator in (Aux.5) and sets those coordinates to zero.
+Row reduction gives an affine solution space of dimension
+$9$, parametrizing exactly $5^9$ kernels satisfying (Aux.6).
+
+This family supplies a necessary finite test for an actual
+$GT_0$ involution.  Precomposition on epimorphisms, followed
+by a specified lift on the target, acts affinely on (Aux.5).
+Changing that target lift by inner conjugation does not change
+the kernel.  Inner automorphisms of $F$ also act trivially on
+kernels.  For an actual involution, the outer subgroup generated
+by it and the geometric $S_3$ therefore acts through
+$C_2\times S_3$ on this affine space.  Averaging the orbit of
+a point, with division by $12$ in $\F_5$, gives a common fixed
+kernel.  The induced involution of $L$ is inner by the
+automorphism calculation above.  This explains the scope of
+the simultaneous system without assuming that one arbitrarily
+chosen epimorphism kernel is invariant.
+
+\paragraph{The involution and peripheral equations.}
+For every base tuple $t$ surviving the D.38 triangle conditions
+on $I$, introduce $T=(t,m)$ and impose
+\[
+ T^2=1,\qquad TXT^{-1}=X^{-1},\qquad
+                  \Omega(T)=Y^{-1}\Theta(T).            \tag{Aux.8}
+\]
+These are affine linear equations over $\F_5$, jointly in
+the nine parameters of (Aux.7) and the $54$ coordinates of
+$m$.  In particular the third equation is the full finite
+three-cycle compatibility, rather than an independent local
+inversion test.  To specify the equations completely, their
+left sides before inserting the nine-parameter solution are
+\[
+ \begin{split}
+ &(1+R_t)m,\\
+ &(1-R_{X^{-1}})m+(R_t+R_{X^{-1}})X_v,\\
+ &(L_\omega-R_{Y^{-1}}L_\theta)m
+ +(1-R_{\omega t})b_\omega
+ -R_{Y^{-1}}(1-R_{\theta t})b_\theta+R_{Y^{-1}}Y_v.
+ \end{split}                                           \tag{Aux.9}
+\]
+Their right sides, in the same order, are
+\[
+ \begin{split}
+ &-B(t,t),\\
+ &-B(t,X)-R_{X^{-1}}B(X,X^{-1})+B(X^{-1},t),\\
+ &-J_\omega(t)+R_{Y^{-1}}J_\theta(t)
+       -R_{Y^{-1}}B(Y,Y^{-1})+B(Y^{-1},\theta t).
+ \end{split}
+\]
+All matrices and constants are specified by (Aux.1)--(Aux.4)
+and the retained D.38 factor maps.
+
+The five independent component sets are
+$\{3,5\},\{6,7\},\{8\},\{11,14\},\{13,15\}$,
+with respectively $3,2,2,5,5$ choices.  Thus exactly
+$300$ base tuples occur.  The executed outcome is
+\[
+ \begin{array}{l|r}
+ \text{quantity}&\text{value}\\ \hline
+ \text{base tuples in the restricted D.38 conjugacy model}&150\\
+ \text{base tuples outside that model}&150\\
+ \text{base tuples admitting (Aux.6) and (Aux.8)}&300\\
+ \text{solution dimension over }\F_5\text{ for every tuple}&6\\
+ \text{dimension of its projection to the kernel family}&3\\
+ \text{compatible kernels for each base tuple}&125\\
+ \text{involutions over each compatible kernel}&125.
+ \end{array}                                           \tag{Aux.10}
+\]
+The last count uses center-freeness: different elements $T$
+give different inner automorphisms.  The total is
+$300\cdot5^6=4\,687\,500$ kernel--involution pairs,
+split equally between the base tuples inside and outside
+the restricted D.38 conjugacy model.
+
+For a particular solution of each of the $300$ systems the
+program also evaluates the original group multiplications,
+independently of the row-reduction equations.  With
+$f=\Theta(T)T^{-1}$ it verifies
+\[
+ \Theta(f)f=1,\qquad f\operatorname{Inn}(T)(f)=1,
+ \qquad
+ \Omega^2(f)Z^{-1}\Omega(f)Y^{-1}fX^{-1}=1.              \tag{Aux.11}
+\]
+These identities hold throughout the affine solution sets:
+(Aux.6) gives the actual word maps on the generating pair,
+and (Aux.8) implies (Aux.11) by the cancellations used in
+D.38.  Thus this refinement tests the simultaneous finite
+peripheral and power equations and still eliminates no base
+tuple.  It does not establish a solution of D.35's conjugator
+equation, or a compatible lift through all finite quotients.
+
+The executed programs are
+\path{code/part_a/a5_cross_module.py} and
+\path{code/part_a/a5_cross_peripheral_lifts.py}.
+Their adjacent JSON files retain the cocycle, the component
+orbit, the cohomology corrections, every one of the $300$
+base tuples, and all dimensions in (Aux.10); adjacent text
+files retain their standard output.

@@ -1,0 +1,201 @@
+\begin{claim}{B.37}{Proved}{Complete genus-three mirror-disc quotient catalogue}
+There are exactly $145$ conjugacy classes of finite subgroups $K$ of
+$\mathcal T_{3,0}$ for which $H=K\cap\mathcal T^+_{3,0}$ has spherical
+quotient and the induced involution on $S_3/H$ has a fixed circle.
+Exactly $57$ contain a hyperelliptic involution, and $88$ do not.
+The files \path{type_3_0_reflection_quotient_catalogue.csv},
+\path{type_3_0_reflection_quotient_certificates.json}, and
+\path{type_3_0_reflection_quotient_sections.json} give every
+class, its exact finite group, and all its section data.
+\end{claim}
+\begin{proof}
+The quotient by the induced involution is a mirror disc $Q$.  Let
+$(m_1,\ldots,m_k)$ be its cyclic list of corner orders and
+$(n_1,\ldots,n_l)$ its list of interior cone orders.  The orientation
+double of $Q$ is the spherical orbifold with cone multiset
+\[
+               \{m_1,\ldots,m_k,n_1,n_1,\ldots,n_l,n_l\}.
+                                                        \tag{B.37.1}
+\]
+The involution on a sphere with a fixed circle is conjugate to a
+reflection: cut along that circle into two discs and extend a boundary
+parametrization over either disc, then use the involution to define
+the parametrization on the other disc.  Cone points on its circle
+become the corners of $Q$, while its other cone points occur in
+exchanged pairs.  Thus the corner and interior data in (B.37.1)
+exhaust its quotient types.  The corner list is considered up to
+cyclic permutation and reversal; the interior list is unordered.
+
+Use the following presentation of $\Lambda=\pi_1^{\rm orb}(Q)$:
+\[
+ \left\langle x_1,\ldots,x_l,e,c_0,\ldots,c_k\ \left|
+ \begin{array}{c}
+ x_i^{n_i}=1,\quad x_1\cdots x_l e=1,\\
+ c_j^2=1,\quad(c_{j-1}c_j)^{m_j}=1,\quad c_k=ec_0e^{-1}
+ \end{array}\right.\right\rangle .                    \tag{B.37.2}
+\]
+For $k=0$ there is one reflection $c_0$, commuting with $e$.
+The orientation kernel $\Delta=\Lambda^+$ is the orbifold group
+of (B.37.1).  Put $t=c_0$, $Z_j=c_{j-1}c_j$,
+$P_j=Z_1\cdots Z_j$, $U_i=x_{l+1-i}^{-1}$, and $V_i=tU_it$.
+Schreier rewriting, or the doubled fundamental polygon, gives the
+spherical generating vector
+\[
+ (Z_1,\ldots,Z_k,U_1,\ldots,U_l,V_l^{-1},\ldots,V_1^{-1}),
+ \qquad P_k\,U_1\cdots U_l\,(V_1\cdots V_l)^{-1}=1.
+                                                        \tag{B.37.3}
+\]
+For example $e=U_1\cdots U_l$ and
+$P_k=t c_k=tet e^{-1}=(V_1\cdots V_l)e^{-1}$, which proves
+the product relation with its stated order.  Conjugation by $t$
+acts on these generators by
+\[
+ \psi(Z_j)=P_{j-1}Z_j^{-1}P_{j-1}^{-1},\qquad
+ \psi(U_i)=V_i,\qquad\psi(V_i)=U_i.                    \tag{B.37.4}
+\]
+These formulas include every base-path conjugation.
+
+The input \cite{R-KNSData}, whose completeness is established in
+\cite[Theorem 2.2, Corollary 2.3, and the planar calculation]{R-KNS},
+contains every $\operatorname{Aut}(H)$-class of smooth epimorphisms
+$\theta:\Delta\to H$ in genus three.  Its $197$ vectors cover all
+$49$ genus-three signature/group pairs, including those with positive
+quotient genus.  Here we use precisely the spherical-quotient pairs.
+The original input and its attribution are retained in
+\texttt{research\_data/actions-genus3.json}; B.33 verifies its orders
+and surface signatures.  A prescribed ordering (B.37.3) is obtained
+from the published sorted ordering by explicit adjacent Hurwitz
+moves.  This is a bijection of epimorphism sets, since each move has
+its displayed inverse in the program.
+
+For each vector the program tests whether its kernel is invariant
+under (B.37.4).  More explicitly, it attempts to define
+\[
+              \alpha(\theta(a))=\theta(\psi(a))
+                         \qquad(a\in\Delta)             \tag{B.37.5}
+\]
+by propagation on the finite Cayley graph.  Agreement on every edge
+is exactly the condition that (B.37.5) be well defined.  Surjectivity
+then makes it an automorphism and (B.37.4) gives $\alpha^2=1$.
+The resulting full action group is explicitly
+\[
+           K=H\rtimes_\alpha\langle t\rangle,
+                 \quad t^2=1.                         \tag{B.37.6}
+\]
+Its epimorphism from (B.37.2) sends $x_i$ to their recovered vector
+entries and $c_j$ to $t\theta(P_j)$.  Its kernel is exactly
+$\ker\theta\subset\Delta$.  In particular no choice of a further
+extension class is omitted: the orbifold kernel determines
+$\Lambda/\ker\theta$ and hence (B.37.6).  Conversely every action
+in the claim supplies this invariant kernel and therefore occurs.
+
+We now prove the precise fusion calculation.  Two epimorphisms from
+the same orbifold group have the same kernel exactly when a unique
+isomorphism between their finite images intertwines them: define
+that isomorphism by $\theta(a)\mapsto\theta'(a)$, which is well defined
+exactly when the kernels agree.  Thus the published
+$\operatorname{Aut}(H)$-normalization records kernels without loss.
+A conjugacy of the surface actions descends to a decorated-orbifold
+homeomorphism of $Q$ carrying one kernel to the other.  Conversely
+such a quotient homeomorphism lifts through the two regular
+orbifold coverings because it carries their defining kernels to
+one another; its lift is the required surface conjugacy.  This is
+an exact equivalence, so it remains to calculate the full action of
+these disc homeomorphisms on the finite kernel set.
+
+A disc homeomorphism permutes its colored boundary corners cyclically,
+or reverses their cyclic order.  After composing with that boundary
+map it fixes the boundary pointwise up to isotopy.  The remaining
+mapping class is a braid of the interior cone points.  To see this,
+forget the interior points and isotope the boundary-fixed disc map
+to the identity by the Alexander isotopy; the tracks of the points
+are its braid, and an isotopy of those tracks gives precisely an
+isotopy of the punctured disc map by isotopy extension.  The colored
+braid subgroup is generated by pure braid generators and adjacent
+exchanges among equal colors after the colors are sorted.  The
+program uses the standard words
+$\sigma_{j-1}\cdots\sigma_{i+1}\sigma_i^2
+\sigma_{i+1}^{-1}\cdots\sigma_{j-1}^{-1}$ and those equal-color
+exchanges.  On interior generators an adjacent positive move is
+\[
+                    (x_i,x_{i+1})\longmapsto
+                    (x_ix_{i+1}x_i^{-1},x_i),           \tag{B.37.7}
+\]
+fixing $e$ and every boundary reflection.  The inverse is also used
+when forming the pure braid words.
+
+Here are the boundary moves, including their effect on the chosen
+reflection.  Extend the sequence by $c_{j+k}=ec_je^{-1}$.  One cyclic
+shift has
+\[
+ \begin{split}
+ (Z_1,\ldots,Z_k)&\longmapsto
+       (Z_2,\ldots,Z_k,eZ_1e^{-1}),\\
+ (x_1,\ldots,x_l)&\longmapsto(x_1,\ldots,x_l),\\
+ t&\longmapsto tZ_1,\qquad
+ \alpha\longmapsto\operatorname{Inn}(Z_1^{-1})\alpha.
+ \end{split}                                           \tag{B.37.8}
+\]
+A reversal has
+\[
+ \begin{split}
+ (Z_1,\ldots,Z_k)&\longmapsto(Z_k^{-1},\ldots,Z_1^{-1}),\\
+ (x_1,\ldots,x_l)&\longmapsto(x_l^{-1},\ldots,x_1^{-1}),\\
+ t&\longmapsto tP_k,\qquad
+ \alpha\longmapsto\operatorname{Inn}(P_k^{-1})\alpha.
+ \end{split}                                           \tag{B.37.9}
+\]
+They follow by sending $c_j$ respectively to $c_{j+1}$ and
+$c_{k-j}$ in (B.37.2); in the reversal $e$ goes to $e^{-1}$.
+Only the shifts and shifted reversals preserving the corner-order
+list are self-homeomorphisms of the chosen colored quotient.
+A fixed braid restores the sorted interior order after a reversal.
+Equations (B.37.7)--(B.37.9), together with the preceding braid
+argument, prove both that every programmed fusion is realized and
+that every actual conjugacy is included.
+
+The program computes the finite orbits under these moves.  It
+identifies two generating vectors under $\operatorname{Aut}(H)$ by
+their rooted, edge-colored Cayley graphs: starting at the identity,
+visit vertices in generator order and record each colored successor.
+Equality defines a unique group isomorphism mapping each generator
+to the corresponding generator, and such an isomorphism plainly
+gives equality.  Thus this is an exact isomorphism test rather than
+a coarse group invariant.  The computation gives $145$ orbits.
+
+For each orbit the second program constructs the regular action of
+(B.37.6) explicitly from
+$(h,\epsilon)(h',\epsilon')=(h\alpha^\epsilon(h'),\epsilon+\epsilon')$.
+It checks (B.37.2), every local stabilizer injection, and
+$|K|\chi^{\rm orb}(Q)=-4$.  The resulting cover is therefore a closed
+orientable genus-three surface.  The finite coset incidence graph
+then gives every fixed point and oval, multiplier, section,
+extension, maximal section, centralizer, orbit and stabilizer as in
+B.26.  These checks passed for all $145$ classes.
+
+Finally the overlap with B.34 is identified by actual monodromy
+isomorphisms.  In each of B.34's $57$ mirror-disc groups the program
+extracts the positive group and the generators $x_i$, $Z_j$ and
+conjugation by $c_0$.  It applies (B.37.8)--(B.37.9) and the interior
+braids to put the signature in the same ordering, and locates its
+rooted colored Cayley graph in the computed kernel orbit.  The file
+\texttt{genus3\_hyperelliptic\_reflection\_crosscheck.json} records
+the resulting bijection with $57$ different rows and equality of
+all eight reported section-count columns.  Thus these are exactly
+the common classes, leaving $88$ additional ones.
+\end{proof}
+
+The $145$ classes have the following order distribution:
+\[
+\begin{array}{c|rrrrrrrr}
+ |K|&4&6&8&12&14&16&18&24\\\hline
+ \#&5&3&36&13&3&35&1&15\\[2pt]
+ |K|&28&32&42&48&64&96&192&336\\\hline
+ \#&1&13&1&11&2&4&1&1.
+\end{array}                                             \tag{B.37.10}
+\]
+Together B.34 and B.37 therefore give $149$ distinct mixed classes.
+The additional four are the projective-plane quotients in B.34.
+The scope of B.37 requires both a spherical positive quotient and a
+fixed-circle involution on it; the remaining quotient types are
+listed in the accompanying computation report.

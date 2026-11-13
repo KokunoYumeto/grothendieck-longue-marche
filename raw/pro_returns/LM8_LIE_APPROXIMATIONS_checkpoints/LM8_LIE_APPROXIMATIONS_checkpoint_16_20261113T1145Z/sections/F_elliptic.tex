@@ -1,0 +1,408 @@
+\subsection{Part F(c). Two punctured elliptic curves, with exact local dimensions}
+
+This subsection implements the successive examination of splittings proposed
+in the closing pages of \S51, folio 734, scan 173, and folio 736, scan 178.
+It concerns the geometric group of type $(1,1)$ occurring in \S52,
+folios 743--746, scans 191--197. It supplies calculations for the abelian,
+nilpotent and free metabelian unipotent approximations, with their Galois
+actions. Splittings always mean conjugacy classes of splittings satisfying
+the specified local conditions. Their parameter schemes can have positive
+dimension even when the set of integral points is finite.
+
+Let $E_d:y^2=x^3-d^2x$, $X_d=E_d\setminus\{O\}$, and take $d=1,6$.
+We use $p=5$ and the rational base point $b=(0,0)$. Let $\mathcal E_d$
+be the minimal proper regular model over $\mathbb Z$ and let
+$\mathcal X_d=\mathcal E_d\setminus\overline{\{O\}}$. This model contains
+the integral affine points on the displayed Weierstrass equation. We allow
+a finite set $S$ of denominator primes, with $5\notin S$, and put $s=|S|$.
+The bad primes are $B_1=\{2\}$ and $B_6=\{2,3\}$; put
+$T=S\cup B_d\cup\{5\}$. They are not automatically counted in $s$:
+at a bad prime outside $S$ the integral local condition is retained.
+
+Write $U_n=\pi_1^{\rm un}(X_{d,\overline{\mathbb Q}},b)/\gamma_{n+1}$,
+over $\mathbb Q_5$, and $V=T_5E_d\otimes\mathbb Q_5$. Thus $U_1=V$.
+Write $M_n$ for the corresponding class-$n$ quotient of the free metabelian
+quotient $U/[U',U']$. Both towers have $L_1=V$, $L_2=\mathbb Q_5(1)$.
+For $U$ the higher central layers are $L_n=\operatorname{Lie}_n(V)$;
+for $M$ write $L_n^{\rm met}$.
+For each finite reduction type $\Sigma$, impose at $\ell\ne5$ the
+Zariski closure of the local Kummer image of the indicated integral
+component, or of the indicated punctured component at $\ell\in S$.
+At $5$ impose crystallinity. Denote the resulting finite union of
+refined Selmer schemes by $\operatorname{Sel}_{S,n}$, or
+$\operatorname{Sel}^{\rm met}_{S,n}$. Its dimension means the maximum
+dimension of its nonempty components. This convention permits the cuspidal
+local component at every prime in $S$, even when it has no global integral
+point. These schemes still contain the Kummer images of all
+$\mathcal X_d(\mathbb Z[1/S])$.
+
+\begin{statement}{F.6}{Proved}{The examples have ranks zero and one, and the usual Selmer ranks agree}
+The curves $E_1$ and $E_6$ have Mordell--Weil ranks $0$ and $1$, respectively.
+They both have good ordinary reduction at $5$, with $a_5=-2$.
+Their Tate--Shafarevich groups are finite; consequently
+\[
+ \dim H_f^1(\mathbb Q,V)=r,\qquad r=0\ \hbox{or}\ 1,
+ \qquad \dim H_f^1(\mathbb Q_5,V)=1.
+\]
+Here $H_f^1$ uses the Bloch--Kato local conditions at every place.
+\end{statement}
+\begin{proof}
+The pure $2$-Selmer rank of a squarefree congruent-number curve is the
+nullity of its Monsky matrix. In the additive Legendre-symbol convention,
+for $d=2^\epsilon P_1\cdots P_t$ the even matrix is
+\[
+ M_e=\begin{pmatrix}D_2&A+D_2\\ A^{\mathsf T}+D_2&D_{-1}\end{pmatrix},
+ \qquad
+ A_{ij}=\left[\frac{P_j}{P_i}\right]\ (i\ne j),\quad
+ A_{ii}=\sum_{j\ne i}A_{ij},
+ \quad (D_h)_{ii}=\left[\frac h{P_i}\right].
+\]
+The empty odd matrix for $d=1$ has nullity zero. For $d=6$, $t=1$,
+$P_1=3$, $A=0$, $D_2=D_{-1}=(1)$, so
+$M_e=\left(\begin{smallmatrix}1&1\\1&1\end{smallmatrix}\right)$ has
+nullity one. Thus the ranks are at most zero and one. This is the
+explicit descent formula in \citet[\S2, (2.1)--(2.3)]{FE_DasSaikia2024},
+attributed there to Monsky's appendix to Heath--Brown.
+
+For $E_6$, $P=(12,36)$ satisfies
+\[
+ 2P=(25/4,-35/8),\qquad
+ 4P=(1442401/19600,1726556399/2744000),\qquad 8P\ne O.
+\]
+Direct counts give $|E_6(\mathbb F_5)|=|E_6(\mathbb F_7)|=8$.
+The kernel of reduction at a good prime is a pro-prime formal group, so
+reduction is injective on torsion of order prime to that prime. Combining
+the two primes shows that the order of rational torsion divides $8$.
+Thus $P$ is not torsion, and the rank is one. The same counts at $3,5$
+for $E_1$ are $4,8$; its four visible rational $2$-torsion points therefore
+exhaust $E_1(\mathbb Q)$. The counts at $5$ also give $a_5=6-8=-2$ for
+both curves, proving ordinarity.
+
+The $2$-descent alone does not prove finiteness of the $5$-primary
+Tate--Shafarevich group. We use a separate verified input. The primary
+database entries $32.a3$ and $576.c3$ record analytic ranks zero and one
+\citep{FE_LMFDBE1,FE_LMFDBE6}. Their conductors are $32$ and $576$.
+The database's reliability statement specifies that analytic ranks at
+most three at conductor at most $500000$ are rigorous modular-symbol
+computations \citep{FE_LMFDBReliability}. Kolyvagin's own
+\citet[Theorem 1, printed p.~4; also Example 1, p.~11]{FE_Kolyvagin1990}
+states that, for a modular elliptic curve of analytic rank at most one,
+the algebraic rank agrees and the Tate--Shafarevich group is finite.
+The hypotheses hold here. The Kummer exact sequence after tensoring
+with $\mathbb Q_5$ gives the global assertion; the formal logarithm gives
+the one-dimensional local assertion.
+
+The program \texttt{code/f\_elliptic\_dimensions.py} checks both descent
+matrices, all displayed point operations, and all four reduction counts
+by exact rational or finite-field arithmetic. The analytic-rank input is
+identified separately in its output and is not purported to be recomputed.
+\end{proof}
+
+\begin{statement}{F.7}{Proved}{Full and metabelian local dimensions through class eight}
+For either curve the exact local dimensions are
+\[
+ \begin{array}{c|rrrrrrrr}
+ n&1&2&3&4&5&6&7&8\\\hline
+ \dim H_f^1(\mathbb Q_5,U_n)&1&2&4&7&13&22&40&70\\
+ \dim H_f^1(\mathbb Q_5,M_n)&1&2&4&7&11&16&22&29
+ \end{array}
+\]
+The complete linear data used below are
+\[
+ \begin{array}{c|rrrrrrrr}
+ n&1&2&3&4&5&6&7&8\\\hline
+ w_n=\dim L_n&2&1&2&3&6&9&18&30\\
+ \operatorname{tr}(c\mid L_n)&0&-1&0&-1&0&-1&0&-2\\
+ \dim L_n^{c=-1}&1&1&1&2&3&5&9&16\\
+ \dim L_n^{\rm met}&2&1&2&3&4&5&6&7\\
+ \dim (L_n^{\rm met})^{c=-1}&1&1&1&2&2&3&3&4
+ \end{array}.
+\]
+The degree is the lower-central degree, equal here to the negative
+geometric weight. It is not the doubled Tate grading of the tripod.
+\end{statement}
+\begin{proof}
+The topological fundamental group of a once-punctured torus is free on
+two generators. The central graded Lie algebra of its unipotent
+completion is therefore the free Lie algebra on $V$. The Hodge
+filtration on $V$ has one generator in degree $0$ and one in degree
+$-1$. A Lie word of length at least two in just the degree-zero
+generator vanishes. Hence $F^0L_n=0$ for $n\ge2$, whereas
+$\dim F^0V=1$. The de Rham comparison therefore gives
+\[
+ \dim(U_n^{\rm dR}/F^0)=\sum_{m=1}^n w_m-1,
+ \qquad w_m=\frac1m\sum_{e\mid m}\mu(e)2^{m/e}.
+\]
+There are no Frobenius-fixed vectors in the pure negative-weight
+layers. The crystalline torsor classification identifies the displayed
+de Rham quotient with $H_f^1(\mathbb Q_5,U_n)$; alternatively its
+dimension follows by successive central extensions and
+\citet[Corollary 3.1.11]{FE_Betts2023}.
+
+Complex conjugation on $V$ has eigenvalues $1,-1$. The character form
+of the Witt formula is
+\[
+ \operatorname{tr}(c\mid L_m)
+ =\frac1m\sum_{e\mid m}\mu(e)
+       \bigl(\operatorname{tr}(c^e\mid V)\bigr)^{m/e},
+ \qquad
+ \dim L_m^{c=-1}=\frac{w_m-\operatorname{tr}(c\mid L_m)}2.
+\]
+For the free metabelian Lie algebra the elements
+$\operatorname{ad}_x^a\operatorname{ad}_y^b[x,y]$, $a+b=m-2$,
+form a basis in degree $m\ge2$. Thus the dimension is $m-1$ and the
+negative conjugation eigenspace has dimension $\lfloor m/2\rfloor$.
+The Hodge argument is unchanged.
+
+As an independent finite check, the program exhausts all binary words
+of each length $1$ through $8$, selects the Lyndon words, and counts
+them and their signs $(-1)^{\#y}$. It compares these counts with the
+Witt formulas and with the explicit metabelian basis. It also verifies
+every CM bidegree multiplicity. This is exhaustive at the stated word
+lengths, and does not sample Galois cohomology.
+\end{proof}
+
+\begin{statement}{F.8}{Proved}{Exact low-level global dimensions and unconditional finiteness}
+For either curve, and every finite $S$ with $5\notin S$,
+\[
+ \dim\operatorname{Sel}_{S,1}=r,
+ \qquad \dim\operatorname{Sel}_{S,2}=r+s.
+\]
+The same identities hold for the metabelian tower. For $E_1$ the first
+strict global--local dimension inequality is at class one, for all
+$s=0,1,2$. For $E_6$ and $s=0$ it is at class two. These inequalities
+prove finiteness of the corresponding integral sets by the unipotent
+Albanese method. In particular
+$X_1(\mathbb Z[1/S])=\{(-1,0),(0,0),(1,0)\}$ for every $S$.
+\end{statement}
+\begin{proof}
+At every $\ell\ne5$, potential good reduction gives
+$H^1(\mathbb Q_\ell,V)=0$: $H^0$ and $H^2$ vanish by weights and local
+duality, and the local Euler characteristic is zero. The ordinary
+abelian Selmer condition is thus independent of $S$, and F.6 proves
+the first identity.
+
+For class two, the involution $[-1]$ fixes $b$ and commutes with Galois.
+It acts by $-1$ on $V$ and $+1$ on the central line. Its eigenspaces
+therefore give a Galois-equivariant vector-space splitting
+\[
+ \operatorname{Lie}(U_2)=V\oplus\mathbb Q_5(1),
+ \qquad [(v,z),(v',z')]=(0,v\wedge v').
+\]
+In these coordinates a cocycle consists of $(a,b)$ with
+$da=0$ and $db=-\tfrac12a\mathbin{\cup}a$.
+For rank zero only $a=0$ occurs. For rank one take the cocycle of the
+rational point $P=(12,36)$ and scale its coordinates by
+$(a,b)\mapsto(ta,t^2b)$. This supplies an algebraic lift for every
+$t\in\mathbb Q_5$ in the full abelian Selmer line; it remains
+crystalline at $5$, since $P$ is integral there and the scaling is an
+endomorphism of the class-two Galois group object. Consequently the
+global class-two fibres before imposing the remaining local conditions
+are torsors under
+\[
+ H^1(G_{\mathbb Q,T},\mathbb Q_5(1))
+   =\mathbb Z[1/T]^\times\otimes\mathbb Q_5.
+\]
+There is no stabilizer quotient: the relevant twisted $H^0$ groups
+vanish, since their central graded pieces have negative weights.
+
+The valuation map from this unit space to
+$\bigoplus_{\ell\in T}\mathbb Q_5$ is an isomorphism. Crystallinity
+at $5$ fixes the $5$-valuation. At $\ell\in B_d\setminus S$, the
+integral local Kummer images are finite, and fixing a reduction type
+fixes the corresponding central valuation. At a prime in $S$ the
+cuspidal component has Zariski closure the full affine central line:
+the puncture is rational, and its leading commutator is the nonzero
+generator of $\mathbb Q_5(1)$, so its unbounded integral contact orders
+are Zariski dense in that line. Thus the type which is cuspidal at
+every prime in $S$ leaves exactly $s$ unit parameters. Types which
+are noncuspidal at some of them leave fewer parameters. The unit
+valuation isomorphism both satisfies the required constants at bad
+primes and proves that the maximal dimension is exactly $r+s$.
+The finiteness of the non-$5$ integral local images is
+\citet[Theorem 0.1 and Corollary 0.2]{FE_KimTamagawa2008}.
+
+F.7 gives the local dimensions $1,2$ at these levels. A proper
+algebraic closed subset of the local period space is cut out by a
+nonzero regular function. The pullback is a Coleman function; the
+unipotent Albanese map is Zariski dense on each residue disk, so it
+does not vanish identically there. On the compact integral disks a
+nonzero such analytic function has finitely many zeroes. There are
+finitely many disks and finitely many reduction types. This proves
+finiteness. The original density theorem is
+\citet[Theorem 1, p.~93; finiteness deduction in \S3]{FE_Kim2009}.
+His indexing starts with $U_2$ abelian, so his $U_{n+1}$ is our $U_n$.
+The elliptic rank-at-most-one application appears explicitly in
+\citet[Corollary 0.3 and its proof in \S2]{FE_KimTamagawa2008}, whose
+$U_3$ is our class two. The modern refined formulation also follows
+from \citet[Theorem A, Remark 1.4, and Lemma 3.2]{FE_LLM2023}.
+
+For rank one the abelian localization is nonzero: a non-torsion
+rational point has nonzero elliptic $5$-adic logarithm. Thus class one
+does not give a dimension inequality. At $s=0$ class two does. The
+description of $E_1(\mathbb Q)$ in F.6 gives the last assertion.
+\end{proof}
+
+\begin{statement}{F.9}{Proved}{Exact higher elliptic dimensions through class eight}
+For $n\ge3$ define the actual finite-dimensional arithmetic invariants
+\[
+ \delta_n(E)=\dim H_f^1\bigl(\mathbb Q,L_n^*(1)\bigr),\qquad
+ \delta_n^{\rm met}(E)=
+       \dim H_f^1\bigl(\mathbb Q,(L_n^{\rm met})^*(1)\bigr).
+\]
+The exact strict global graded dimensions are
+\[
+ \dim H_f^1(\mathbb Q,L_n)=\dim L_n^{c=-1}+\delta_n(E),
+ \quad
+ \dim H_f^1(\mathbb Q,L_n^{\rm met})
+       =\lfloor n/2\rfloor+\delta_n^{\rm met}(E).
+\]
+Consequently for $n\ge2$ there are the unconditional bounds
+\[
+ \begin{split}
+ \dim\operatorname{Sel}_{S,n}
+   &\le r+s+\sum_{m=3}^n\bigl(\dim L_m^{c=-1}+\delta_m(E)\bigr),\\
+ \dim\operatorname{Sel}^{\rm met}_{S,n}
+   &\le r+s+\sum_{m=3}^n
+           \bigl(\lfloor m/2\rfloor+\delta_m^{\rm met}(E)\bigr).
+ \end{split}
+\]
+If the relevant defects vanish through the displayed level, these
+bounds are equalities. The later calculation F.18 proves
+$\delta_n(E_d)=\delta_n^{\rm met}(E_d)=0$ for both curves and
+$3\le n\le8$. Therefore the exact global dimensions through
+class eight are unconditionally
+\[
+\begin{array}{cc|rrrrrrrr}
+ \multicolumn{2}{c|}{\text{full free tower}}&1&2&3&4&5&6&7&8\\
+ r&s&&&&&&&&\\\hline
+ 0&0&0&0&1&3&6&11&20&36\\
+ 0&1&0&1&2&4&7&12&21&37\\
+ 0&2&0&2&3&5&8&13&22&38\\
+ 1&0&1&1&2&4&7&12&21&37\\
+ 1&1&1&2&3&5&8&13&22&38\\
+ 1&2&1&3&4&6&9&14&23&39
+\end{array}
+\]
+\[
+\begin{array}{cc|rrrrrrrr}
+ \multicolumn{2}{c|}{\text{metabelian tower}}&1&2&3&4&5&6&7&8\\
+ r&s&&&&&&&&\\\hline
+ 0&0&0&0&1&3&5&8&11&15\\
+ 0&1&0&1&2&4&6&9&12&16\\
+ 0&2&0&2&3&5&7&10&13&17\\
+ 1&0&1&1&2&4&6&9&12&16\\
+ 1&1&1&2&3&5&7&10&13&17\\
+ 1&2&1&3&4&6&8&11&14&18
+\end{array}
+\]
+The first strict dimension inequalities for rank one are at classes
+$2,3,4$ for $s=0,1,2$, unconditionally. The class-two conclusion
+is F.8; the later exact calculations F.16 and F.17 prove
+$\delta_3(E_d)=\delta_4(E_d)=0$ for both curves and establish
+the remaining two first thresholds. The full and metabelian groups
+agree through class four. F.18 also evaluates the defects in
+degrees five through eight, so every entry of both tables is exact
+with the refined local conditions specified above.
+\end{statement}
+\begin{proof}[Proof of the structural reductions and exact tables]
+For a geometric representation $W$, Poitou--Tate duality gives
+\[
+ h_f^1(\mathbb Q,W)=h^0(\mathbb Q,W)
+ +h_f^1(\mathbb Q,W^*(1))-h^0(\mathbb Q,W^*(1))
+ +h_f^1(\mathbb Q_5,W)-\dim W^{c=1}.
+\]
+This precise formula is recorded in
+\citet[(5.6)]{FE_LLM2023}. For $W=L_n$, $n\ge3$, both global
+$H^0$ terms vanish by weights, and $h_f^1(\mathbb Q_5,W)=\dim W$
+by F.7. This proves the exact graded formula, including its defect.
+For $L_2=\mathbb Q_5(1)$ the dual invariant term is one and the strict
+global group is zero; it cannot be treated by the $n\ge3$ formula.
+Allowing denominator primes supplies the class-two unit term $s$ of F.8.
+
+Here potential good reduction is useful beyond dimension estimates.
+For $n\ge3$ and $\ell\ne5$,
+\[
+ H^i(\mathbb Q_\ell,L_n)=0\quad(i=0,1,2).
+\]
+Indeed after a finite extension the representations are unramified and
+pure of weight $-n$; the dual twist has weight $n-2$. Neither weight
+is zero. Thus the two invariant groups vanish, and local duality and
+Euler characteristic give the assertion. The same argument works for
+the metabelian layers. At $5$, $F^0L_n=0$ and the dual twist has
+$F^0$ equal to its whole de Rham space, with no invariant vectors.
+It follows that
+\[
+ H^1(\mathbb Q_5,L_n)=H_f^1(\mathbb Q_5,L_n),\qquad
+ H_f^1(\mathbb Q_5,L_n^*(1))=0.
+\]
+Poitou--Tate therefore identifies
+\[
+ H^2(G_{\mathbb Q,T},L_n)^*
+       =H_f^1(\mathbb Q,L_n^*(1)).
+\]
+There is no dependence on the extra finite primes of $T$ in these
+groups: the displayed local groups at such primes vanish.
+
+In a central extension
+$1\to L_n\to U_n\to U_{n-1}\to1$, the obstruction to lifting a
+Galois cocycle lies in this $H^2$, and every nonempty fibre is a
+torsor under $H^1(G_{\mathbb Q,T},L_n)$, since the twisted $H^0$
+stabilizers vanish. This proves the unconditional upper bound by
+induction. If $\delta_n=0$, all lower global classes lift. At a
+non-$5$ place their lift is unique. At $5$ the crystalline condition
+also lifts: the de Rham quotients
+$U_n^{\rm dR}/F^0\to U_{n-1}^{\rm dR}/F^0$ are surjective by
+strictness of the Hodge filtration, and the whole central $H^1$ is
+crystalline. Thus it is the fibre of the local lift.
+Consequently no additional local equation appears in degree $n$.
+The map of refined Selmer schemes is then a torsor, locally on the
+base, under the vector group of dimension $\dim L_n^{c=-1}$.
+Starting with the maximal class-two component of dimension $r+s$
+from F.8 proves equality, rather than merely a conditional upper
+bound. The identical argument proves the metabelian assertion.
+Summing the rows of F.7 gives the two tables.
+
+For completeness the dual Selmer groups have an explicit CM description.
+Over $K=\mathbb Q(i)$ write $V=\psi\oplus\overline\psi$ and
+$\psi\overline\psi=\chi_5$. The multiplicity of
+$\psi^a\overline\psi^b$ in $L_{a+b}$ is
+\[
+ \ell_{a,b}=\frac1{a+b}
+   \sum_{e\mid\gcd(a,b)}\mu(e)
+                  \binom{(a+b)/e}{a/e},\qquad a,b\ge1.
+\]
+It is one in the metabelian layer. The dual-twist characters are
+$\psi^{1-a}\overline\psi^{1-b}$, with these multiplicities;
+restriction to $K$ and the order-two descent involution recover the
+groups over $\mathbb Q$. The program lists every pair $(a,b)$ through
+$a+b=8$. This supplies the finite list of Hecke-character Selmer groups
+evaluated in F.18; Hodge weights alone do not force their vanishing.
+In particular $L_3=V(1)$, so already
+$\delta_3(E)=h_f^1(\mathbb Q,V^*)$ is a distinct problem from
+the Mordell--Weil rank calculation.
+
+There are meaningful alternative theorems, whose additional hypotheses
+are not needed for the direct calculation in F.18.
+\citet[Definition 2.2 and Corollary 2.9]{FE_Bars2007}
+proves the requisite second-cohomology vanishing under geometric
+regularity of $5$ for $E$ and $K(E[5])$; that regularity has not been
+verified here. \citet[Theorem 0.1]{FE_Kim2010CM} proves eventual
+global--local dimension inequality unconditionally for a smaller CM
+quotient $W$; his Theorem 0.2 gives an explicit bound subject to
+specified nonvanishing values of $p$-adic $L$-functions. The quotient
+$W$ kills the Lie bidegrees with both entries at least two and is a
+quotient of the metabelian group. Thus it gives an alternative
+unconditional eventual finiteness argument for both curves, after
+enlarging $S$ to include bad primes if necessary. Its existence theorem
+does not supply a first level at most eight or the full-table defects.
+
+Every strict inequality in the displayed exact tables implies finiteness
+by the same density and analytic argument as F.8; the general effective
+refinement is \citet[Theorem 6.2.1(A),(B), and \S6.3]{FE_Betts2023}.
+For transfer to LM6, the lemma must retain the specified local
+conditions, the rank or finite-$\Sha$ input, the actual Galois action,
+and every needed $\delta_m=0$ hypothesis. Replacing these hypotheses
+by an assertion about a normalizer Lie algebra supplies no such
+arithmetic vanishing theorem.
+\end{proof}

@@ -1,0 +1,464 @@
+\subsection{Nonlinear extensions, descent, and the missing base hypothesis}
+
+The quantifier matters. The proposed theorem begins at \S50.2,
+folio 652 verso, C4 scan 10, and continues at folio 653, scan 11:
+$S$ is assumed quasi-compact and $G/S$ separated and locally of finite
+presentation. Quasi-separatedness of $S$ is not included. The subsequent
+argument restricts to a Noetherian integral base, and the extension lemma
+on scan 12 is expressly left without a proof for general group schemes.
+These exact quantifiers were checked directly on the original images
+\citep[physical PDF pages 10--12, archive footers 9--11]{GrothendieckLM1404Original}.
+We prove descent with the needed compactness, settle further nonlinear
+bases, and give a counterexample to the initial unrestricted quantifier.
+This question is separate from the smooth integral model requested in
+\S52.3, folios 753--757, scans 211--219.
+
+\begin{statement}{D.12}{Proved}{A common dilation gives descent over quasi-compact overlaps}
+Let $S$ be quasi-compact and $G/S$ a separated group scheme locally of
+finite presentation. If $u,v:\mathbb G_{a,S}\to G$ are group
+homomorphisms with $u(1)=v(1)$, there is an integer $d>0$ such that
+$u(dt)=v(dt)$ as scheme morphisms. If $S$ is a $\Q$-scheme, or is flat
+over $\mathbb Z$, the two homomorphisms are already equal.
+
+Suppose $T\to S$ is faithfully flat and quasi-compact and that, for
+some $m>0$, a homomorphism $u_T:\mathbb G_{a,T}\to G_T$ has value
+$g_T^m$ at $1$, where $g\in G(S)$. Then, for some $d>0$, the map
+$u_T(dt)$ descends to a homomorphism over $S$ with value $g^{md}$.
+In particular, on a quasi-compact quasi-separated base, Zariski-local
+existence after positive powers implies global existence after a positive
+power. These assertions impose no affineness or flatness assumption on $G$.
+\end{statement}
+\begin{proof}
+The equalizer $E$ of $u,v$ is a closed subscheme of $\mathbb A^1_S$.
+Its immersion is of finite presentation: the diagonal of a separated
+locally finite-type morphism is of finite presentation
+\citep[Lemma 29.22.12, Tag 0818]{DN_StacksDiagonal}.
+On an affine open $\Spec A\subset S$, let $F_1,\ldots,F_h\in A[t]$
+generate its ideal. Since the homomorphisms agree at $1$, they agree at
+every integer, so every $F_i$ vanishes there and has constant term zero.
+For a polynomial of degree at most $b$, evaluation at $0,\ldots,b$
+followed by multiplication by the adjugate of the Vandermonde matrix
+shows that
+\[
+             D_b=\prod_{j=1}^b j!
+\]
+annihilates every coefficient. Consequently $F_i(D_bt)=0$. A common
+multiple of these finitely many integers, and then of the integers from
+a finite affine cover of $S$, proves $u(dt)=v(dt)$. If $A$ is
+torsion-free, the coefficients were zero already. Over a $\Q$-algebra
+one can equivalently cancel the automorphism $t\mapsto dt$.
+
+The scheme $T$ is quasi-compact, and so is $T\times_S T$, because
+$T\to S$ is quasi-compact. The two pullbacks of $u_T$ to this overlap
+have the same value at $1$. Apply the first assertion on this overlap
+and dilate by its single integer $d$. The two maps now agree exactly.
+Morphisms of schemes satisfy faithfully flat descent
+\citep[Lemma 35.35.11 and Remark 35.35.12, Tag 040L]{DN_StacksDescent};
+thus the map descends, and its group law and value at $1$ descend with it.
+
+For a finite affine open cover of a quasi-compact quasi-separated $S$,
+the disjoint union $T\to S$ is faithfully flat and quasi-compact.
+First take a common multiple $m$ of the local exponents and rescale the
+local maps accordingly. The preceding descent argument applies.
+The assertion concerns an actual quasi-compact covering morphism;
+one cannot omit the overlap compactness by referring only to an
+arbitrary family of local maps.
+\end{proof}
+
+\begin{statement}{D.13}{Proved}{All quasi-compact bases of finite characteristic}
+Let $S$ be quasi-compact with $N\mathcal O_S=0$ for some integer
+$N>0$. Let $G/S$ be separated and locally of finite presentation.
+Every fibrewise quasi-unipotent section $g\in G(S)$ has finite order.
+In particular some positive power is the value of the constant
+homomorphism $\mathbb G_{a,S}\to G$. The base may have positive
+dimension, nilpotents, and non-quasi-compact intersections of affine opens;
+$G$ need not be affine, flat, or quasi-compact.
+\end{statement}
+\begin{proof}
+Every geometric fibre has positive characteristic. In that characteristic
+a value on $\mathbb G_a$ is killed by the characteristic, so the
+quasi-unipotence hypothesis says that $g_{\bar s}$ has finite order.
+For $a>0$ let $Z_a\subset S$ be the equalizer of $g^a$ and the identity.
+It is a finitely presented closed immersion by the diagonal argument
+in D.12. On an affine open of $S$ its underlying closed subset is
+constructible. The subsets $|Z_a|$ cover that affine open. Compactness
+of the constructible topology gives a finite subcover
+\citep[Lemma 5.23.2, Tag 0901]{DN_StacksConstructible}.
+Take the least common multiple of its exponents, and then a common
+multiple for a finite affine cover of $S$. We obtain $a>0$ such that
+$|Z_a|=|S|$.
+
+The ideal $I$ of $Z_a$ is locally finitely generated and consists of
+nilpotents. On each affine of a finite cover its finite set of generators
+generates a nilpotent ideal. Hence $I^r=0$ globally for some $r>0$.
+The section $g^a$ is the identity modulo $I$. For $j\ge1$ the ideal
+$I^j/I^{j+1}$ is square-zero. The kernel of reduction across a
+square-zero ideal embeds in its additive derivation group, as proved
+in D.8. It is therefore killed by $N$. Successively taking $N$th
+powers gives
+\[
+                         g^{aN^{r-1}}=1.
+\]
+This also explains why no uniform nilpotence bound for the entire
+nilradical of $S$ is required: only the finitely generated equalizer
+ideal for this section is used.
+\end{proof}
+
+\begin{statement}{D.14}{Refuted}{Quasi-compactness alone does not give a global parameter}
+There is a one-dimensional quasi-compact scheme $S$, a separated
+smooth finitely presented group scheme $G/S$ with geometrically connected
+fibres, and a fibrewise unipotent section $g\in G(S)$ such that no
+positive power $g^m$ is the value at $1$ of a homomorphism
+$\mathbb G_{a,S}\to G$. The group can be chosen affine over $S$,
+or can be chosen non-affine over $S$. The base is not quasi-separated
+and is not affine. Thus this refutes the quasi-compact-base theorem
+as quantified on scans 10--11; it does not refute every affine-base
+or Noetherian-base version.
+\end{statement}
+\begin{proof}
+For each prime $p\ge5$, put $A_p=\mathbb F_p[\epsilon]/(\epsilon^2)$,
+and set
+\[
+ A=\prod_{p\ge5} A_p,\qquad R=A[z],\qquad X=\Spec R.
+\]
+Let $e_p\in A$ be the idempotent supported on the $p$th factor.
+The open subscheme
+\[
+                 U=\bigcup_{p\ge5}D(e_p)
+                   =\coprod_{p\ge5}\Spec A_p[z]
+\]
+is not quasi-compact. Glue two copies $X_1,X_2$ of $X$ along $U$ by
+the identity to form $S$. It is quasi-compact, being the union of two
+affines. It is not quasi-separated, since their intersection is $U$.
+This is the affine-intersection criterion
+\citep[Lemma 26.21.6]{DN_StacksSeparation}.
+
+For completeness, the dimension is exactly one. The square-zero
+nilradical of $A$ has quotient $A_{\rm red}=\prod_{p\ge5}\mathbb F_p$.
+Every prime of that ring is maximal: for every $a$ its componentwise
+inverse on the nonzero coordinates gives $b$ with $a=a^2b$.
+A chain of primes in $A_{\rm red}[z]$ therefore has a fixed contraction
+and becomes a chain in $k[z]$ for a field $k$, of length at most one.
+The chains $\mathfrak qR\subset\mathfrak qR+(z)$ realize length one.
+Nilpotents do not change the prime spectrum, so $\dim S=1$.
+
+On the $p$th component of $U$ define
+\[
+ \alpha_p(t)=t+\epsilon(t^p-t),\qquad
+ \beta_p(t)=t-\epsilon(t^p-t).
+\]
+These are inverse additive polynomial automorphisms of
+$\mathbb G_{a,A_p[z]}$. Indeed Frobenius is additive, $\epsilon^2=0$,
+and $\epsilon^p=0$, which give both composition identities. Moreover
+$\alpha_p(n)=n$ for every integer $n$, by Fermat's identity in
+$\mathbb F_p$. The disjoint components define an automorphism
+$\alpha$ over $U$; there is no requirement of a uniform polynomial
+degree on this non-quasi-compact open.
+
+Glue $\mathbb G_{a,X_1}$ to $\mathbb G_{a,X_2}$ by $\alpha$, obtaining
+a group scheme $H/S$. The scheme and group laws glue because $\alpha$
+is a group isomorphism. The morphism $H\to S$ is affine, smooth,
+separated, and of finite presentation: each property holds on the
+two base charts, where it is the usual additive group. The constant
+sections $1$ glue to a section $h$. Every geometric fibre of $H$ is
+an additive group, so $h$ is unipotent in the manuscript's precise
+one-parameter sense.
+
+Suppose $f:\mathbb G_{a,S}\to H$ were a group homomorphism with
+$f(1)=h^m$ for some positive integer $m$. Its two chart descriptions
+are additive polynomials $P_1(t),P_2(t)\in R[t]$, each of finite
+degree, with $P_i(1)=m$. Choose a prime
+$p>\max\{3,\deg P_1,\deg P_2\}$ not dividing $m$. After restriction
+to $A_p[z]$, additivity forces both polynomials to be linear:
+for a coefficient $a_jt^j$ with $2\le j<p$, the coefficient of
+$t^{j-1}s$ in $P_i(t+s)-P_i(t)-P_i(s)$ is $ja_j$, and $j$ is a unit.
+Their values at $1$ then force $P_1=P_2=mt$. The gluing equation,
+in one choice of direction, is $P_2=\alpha_p(P_1)$. Its right side is
+\[
+                        mt+\epsilon m(t^p-t),
+\]
+whose $t^p$ coefficient is nonzero. This contradicts $P_2=mt$.
+There is thus no such positive power for $H$.
+
+For a non-affine example, let $E$ be the elliptic scheme over
+$\mathbb Z[1/2]$ with projective equation
+$y^2w=x^3-xw^2$ and origin $[0:1:0]$. Its discriminant is $64$,
+so it is smooth over that base. Since $2$ is a unit in $A$, put
+\[
+                         G=H\times_SE_S,\qquad g=(h,0).
+\]
+It is separated, smooth, and finitely presented, with geometrically
+connected fibres. Each fibre contains the closed elliptic curve
+$\{0\}\times E$, so $G\to S$ is not affine. Its section is fibrewise
+unipotent through the additive factor. Projection to $H$ shows that
+no positive power can lie on a global additive parameter.
+
+This is a failure of a uniform dilation on the non-quasi-compact
+overlap. On any finite set of its components, a dilation divisible
+by those primes kills every discrepancy. No positive integer is
+divisible by every prime in the construction. The exact finite
+polynomial checks in \texttt{d\_nonlinear.py} verify the inverse,
+additivity, integer-value, and dilation identities; the argument
+above, not a finite search, proves the infinite counterexample.
+\end{proof}
+
+\begin{statement}{D.15}{Proved}{Characteristic-zero Dedekind bases and their standard nilpotent thickenings}
+Let $S$ be an integral Noetherian regular scheme of dimension one
+over $\Q$, and let $G/S$ be separated and of finite presentation.
+If $g\in G(S)$ is unipotent at the generic point, there is a unique
+homomorphism $\mathbb G_{a,S}\to G$ with value $g$ at $1$.
+For generically quasi-unipotent $g$, the same conclusion holds after
+a positive power. No affineness, smoothness, or flatness assumption
+on $G$ is required. In particular the nonlinear case over $\Q[z]$
+is settled.
+
+The positive-power conclusion also holds over
+$S_r=\operatorname{Spec}_S(\mathcal O_S[\epsilon]/\epsilon^r)$ for
+every $r\ge1$, for every separated finitely presented group scheme
+over $S_r$ and every fibrewise quasi-unipotent section. Thus it holds
+over $\Q[z,\epsilon]/\epsilon^r$, including nonflat group schemes.
+It also holds over the nonflat finite $\Q[z]$-algebra
+$\Q[z,\epsilon]/(\epsilon^r,z\epsilon)$.
+\end{statement}
+\begin{proof}
+We first prove a local extension lemma. Let $R$ be a discrete valuation
+ring with residue field of characteristic zero, fraction field $K$,
+and $G/R$ separated of finite type. Suppose
+$u_K:\mathbb G_{a,K}\to G_K$ is a homomorphism and $u_K(1)=g_K$
+for a section $g\in G(R)$. By Nagata compactification, embed $G$ as
+an open subscheme of a proper $R$-scheme $\overline G$
+\citep[Theorem 38.33.8, Tag 0F41]{DN_StacksNagata}.
+The local ring of $\mathbb A^1_R$ at the generic point of its special
+fibre is a discrete valuation ring. Properness extends the rational
+map defined by $u_K$ to its spectrum. Finite presentation then spreads
+this map to an open neighbourhood of that point. Glue this extension
+with $u_K$ on the generic fibre, using separatedness of $\overline G$.
+We obtain a morphism $f:W\to\overline G$ on an open $W$ containing
+the entire generic fibre and the generic point of the special fibre.
+
+The complement of $W$ in the special affine line is finite. Since
+the residue characteristic is zero, some integer section $n$ avoids
+that complement. The whole section $\Spec R\xrightarrow{n}\mathbb A^1_R$
+therefore lies in $W$. The maps $f(n)$ and $g^n$ to $\overline G$
+agree generically, so separatedness and integrality of $R$ make them
+equal. Consequently $V=f^{-1}(G)$ is an open containing the generic
+fibre and a nonempty open of the special fibre.
+
+The integer translates $V+n$, $n\in\mathbb Z$, cover
+$\mathbb A^1_R$. On the special fibre this follows because its
+complement is finite while the translates of any geometric point
+by the integers are all distinct. On $V+n$ define
+\[
+                         f_n(t)=f(t-n)g^n.
+\]
+On overlaps these maps agree on the generic fibre by the group law
+of $u_K$. Each overlap is an open of the integral scheme
+$\mathbb A^1_R$, so separatedness of $G$ makes the maps equal.
+They glue to $u_R$. The group law holds on the generic fibre of
+the integral scheme $\mathbb A^2_R$, hence everywhere by the same
+argument; the value at $1$ is $g$. Uniqueness follows from the
+generic fibre, or from D.12. This proves the local lemma.
+
+For the stated $S$, the generic unipotent parameter exists over its
+fraction field. Its existence after algebraic closure is the intrinsic
+definition; uniqueness follows from D.12 in characteristic zero, so
+faithfully flat descent gives it over the fraction field itself.
+At every closed point the local lemma extends it to $\mathcal O_{S,s}$.
+Finite-presentation limit descent spreads that morphism, its group law,
+and its value at $1$ to a neighbourhood of $s$
+\citep[Lemma 32.10.1(2)--(3), Tag 01ZM]{DN_StacksLimits}. These maps agree on
+overlaps because they agree generically, and therefore glue on $S$.
+For quasi-unipotence take a power at the generic point first.
+
+For the nilpotent thickening, form
+$R_G=\operatorname{Res}_{S_r/S}G$. It is a separated finitely presented
+$S$-group scheme: restriction of an affine chart is computed in the
+free basis $1,\epsilon,\ldots,\epsilon^{r-1}$, and these restrictions
+cover and glue because $S_r\to S$ is finite locally free and a
+universal homeomorphism, exactly as in D.11. Over each field $k$
+of a point of $S$, the kernel of reduction
+$(R_G)_k\to G_k$ has a filtration by the powers of $\epsilon$ whose
+successive quotients are closed subgroups of additive vector groups.
+This follows from the square-zero derivation description; the algebraic
+images and quotients are smooth in characteristic zero. The kernel is
+therefore unipotent. The inverse image of the unipotent cyclic closure
+of a power of $g_k$ is an extension of unipotent groups, hence
+unipotent; if reduction is not surjective, use its algebraic image
+inside that cyclic closure, as in D.11. The relevant extension and
+exponential facts are \citet[Corollary 14.7 and Proposition 14.32]{D_Milne2022}.
+Thus the section of $R_G$ is fibrewise quasi-unipotent.
+Apply the first part to $R_G/S$ and use the restriction-of-scalars
+adjunction. This gives the asserted homomorphism on $S_r$.
+
+Finally, set $k=\Q$, $R=k[z]$, and $B=k[\epsilon]/\epsilon^r$.
+The nonflat algebra in the statement is the fibre product
+\[
+       A=R\times_k B=k[z,\epsilon]/(\epsilon^r,z\epsilon),
+\]
+where $R\to k$ is evaluation at zero and $B\to k$ is reduction.
+Over $R$ we have proved the assertion. Over $B$ the same
+restriction-of-scalars and unipotent-kernel argument, now over the
+field $k$, is the higher-order version of D.11 and proves it too.
+Take a common multiple of the two powers and rescale the maps.
+Their restrictions to $k$ agree by characteristic-zero uniqueness
+in D.12.
+
+These maps glue to a map over $A$. Here is an elementary form of
+the required closed-patching assertion. Polynomial extension is
+flat, so
+\[
+ A[t]=R[t]\times_{k[t]}B[t],\qquad
+ \mathcal O_{\mathbb A^1_A}
+ =\mathcal O_{\mathbb A^1_R}
+   \times_{\mathcal O_{\mathbb A^1_k}}
+    \mathcal O_{\mathbb A^1_B},
+\]
+with the latter equality interpreted after the closed immersions.
+The nilpotent immersion $\mathbb A^1_R\hookrightarrow\mathbb A^1_A$
+is a homeomorphism. For any affine open of $G$, its inverse-image
+opens on the two pieces therefore come from one common open of
+$\mathbb A^1_A$: their agreement on $\mathbb A^1_k$ determines the
+open on $\mathbb A^1_B$, whose reduction is $\mathbb A^1_k$.
+On these opens the displayed fibre product of structure sheaves
+glues the algebra maps into that affine target. The resulting
+morphisms agree on overlaps and hence glue. The same assertion on
+$\mathbb A^2_A$ verifies the group law, and the value at $1$ is the
+prescribed common power. This proves the nonflat-base assertion.
+\end{proof}
+
+\begin{statement}{D.16}{Proved}{Integer localization, all Dedekind bases, and arithmetic curves}
+Let $S$ be an integral Noetherian scheme and let $G/S$ be separated
+and of finite presentation. Assume either that the generic
+characteristic is positive, or that
+$S_{\Q}=S\times_{\Spec\mathbb Z}\Spec\Q$ is regular of
+dimension at most one. Every section that is quasi-unipotent
+at the generic point has a positive power of the form $u(1)$
+for a homomorphism $u:\mathbb G_{a,S}\to G$.
+
+This covers every discrete valuation ring, every integral Noetherian
+regular one-dimensional base, $\Spec\mathbb Z[z]$, and
+$\Spec(\mathbb Z[z]_{(2,z)})$. No affineness, flatness, or
+smoothness of $G$ is assumed. For any such $S$, the same
+positive-power conclusion holds over $S[\epsilon]/\epsilon^r$
+for every fibrewise quasi-unipotent section of a separated finitely
+presented group.
+\end{statement}
+\begin{proof}
+We prove a local integer-localization lemma. Let $R$ be a
+Noetherian local domain of characteristic zero, and let $n>0$
+be an integer that is not a unit in $R$. Put $A=R[1/n]$.
+Suppose $u_A:\mathbb G_{a,A}\to G_A$ is a homomorphism and
+$u_A(1)=g_A^m$ for $g\in G(R)$ and $m>0$. Choose an affine open
+$V=\Spec B\subset G$ containing the special identity point.
+It contains the whole identity section: the inverse-image open
+in $\Spec R$ contains its closed point. Since $R$ is Noetherian
+and $G/R$ is of finite type, $B$ is a finite-type $R$-algebra.
+
+The open $u_A^{-1}(V_A)$ contains the entire zero section.
+If its complement is $V(I)\subset\Spec A[t]$, evaluation at
+zero sends $I$ onto the unit ideal of $A$. Thus one can choose
+$f\in I$ with $f(0)=1$, and $D(f)\subset u_A^{-1}(V_A)$.
+For finitely
+many algebra generators $h_i$ of $B$, write the pullbacks as
+\[
+             u_A^*(h_i)=a_i(t)/f(t)^{k_i},\qquad
+             a_i\in A[t],\qquad a_i(0)=e^*(h_i)\in R.
+\]
+There is an integer $N\ge0$ such that
+\[
+ F(t)=f(n^Nt)\in R[t],\quad F\equiv1\pmod{nR[t]},
+ \qquad A_i(t)=a_i(n^Nt)\in R[t]\quad\hbox{for all }i.
+\]
+Indeed the constant terms already have the required property;
+the finitely many remaining coefficients have denominators that
+are powers of $n$, and substitution clears them, with one extra
+factor of $n$ for the positive-degree coefficients of $f$.
+The assignments
+$h_i\mapsto A_i/F^{k_i}$ define a homomorphism
+$B\to R[t,1/F]$. Every relation holds after extending scalars
+to $A$, and $R[t,1/F]\hookrightarrow A[t,1/F]$ is injective,
+so every relation holds over $R$ too.
+
+We have a morphism $D(F)\to V\subset G$. Its restriction
+over $A$ is $u_A(n^Nt)$. Since $F\equiv1$ modulo $n$,
+\[
+                      D(F)\ \cup\ \mathbb A^1_A
+                         =\mathbb A^1_R.
+\]
+Glue with $u_A(n^Nt)$ over $A$. The resulting map
+$u_R:\mathbb A^1_R\to G$ is a group homomorphism: its group
+law holds on a dense open of the integral scheme
+$\mathbb A^2_R$, and separatedness makes the two maps equal
+everywhere. Likewise $u_R(1)=g^{mn^N}$ because those two
+sections agree over $A$. This proves the local lemma.
+
+The lemma globalizes on an integral Noetherian scheme. Given a
+parameter over $S[1/n]$, apply it to the local rings at points
+of $V(n)$; at the other points it is already defined. By
+finite-presentation limit descent, each resulting local map,
+its group law, and its prescribed value at $1$ spread to an open
+neighbourhood \citep[Lemma 32.10.1(2)--(3)]{DN_StacksLimits}.
+Choose a finite cover and a common exponent $N$ by increasing
+the local powers of $n$. The maps all agree over the dense
+open $S[1/n]$ and therefore agree on overlaps by separatedness.
+They glue globally.
+
+If $S$ has positive generic characteristic $p$, generic
+quasi-unipotence gives $g_K^{mp}=1$ for some $m>0$, since a
+value on $\mathbb G_a$ in characteristic $p$ is killed by $p$.
+Separatedness over the integral base then gives $g^{mp}=1$
+globally. Otherwise apply D.15 to the regular one-dimensional
+$S_{\Q}$, or the field case if its dimension is zero. This
+supplies a parameter for a power of $g$ over $S_{\Q}$.
+Since
+\[
+                   S_{\Q}=\varprojlim_{n\mid n'}S[1/n],
+\]
+finite-presentation limit descent descends the map, its group
+law, and its value at $1$ to $S[1/n]$ for one positive integer
+$n$. The transition morphisms are affine and these Noetherian
+schemes are quasi-compact and quasi-separated, exactly the
+hypotheses of the cited lemma. The preceding globalization
+extends a further $n$-power parameter over $S$. This proves
+the first assertion and the listed examples. In particular,
+the mixed-characteristic DVR case takes $n=p$, for which
+$R[1/p]$ is the fraction field.
+
+Finally form the restriction of scalars from
+$S[\epsilon]/\epsilon^r$ to $S$, as in D.15. Over a
+characteristic-zero generic field its reduction kernel is
+unipotent by the successive vector-group filtration, so its
+section is generically quasi-unipotent. Over a positive-characteristic
+generic field the same square-zero filtration has kernels
+killed by that characteristic, so a lift of a finite-order
+section again has finite order. Apply the first assertion
+to this separated finitely presented restriction of scalars
+and use adjunction. This proves the final assertion.
+\end{proof}
+
+\paragraph{From the curve cases to the quasi-separated theorem.}
+D.14 settles the unrestricted quasi-compact-base assertion negatively.
+D.12 shows that on a quasi-compact quasi-separated base there is no
+additional gluing obstruction once local positive-power parameters
+exist. D.13 treats every base killed by one nonzero integer.
+D.15 and D.16 supply the regular-curve and mixed-characteristic
+localization arguments. The following subsection goes further:
+D.17--D.21 prove the positive-power assertion over every quasi-compact
+quasi-separated base for separated finitely presented groups,
+without an affine, flat, or smooth hypothesis on the group.
+In particular both $\Spec(\Q[z,w]_{(z,w)})$ and
+$\Spec(\mathbb Z[z,w]_{(2,z,w)})$ are settled, as are all
+their Noetherian reducible and nilpotent analogues.
+Non-Noetherian affine bases are also covered. The final scope
+is stated after D.23.
+
+The smooth-model question on scan 213 is distinct and is answered
+in D.22 for the preceding adelic factorization and character
+conditions (45)--(49). The stronger $\mathbb Z$-point recap
+and bare uniqueness are corrected in D.23. Smooth peripheral
+closures, primitive factorization (55), Lie generation (56),
+constant components (58), and the open-image conditions
+(62)--(64) are subsequently introduced as extra hypotheses.
+The definition using them does not assert a universal existence
+theorem. D.4 and D.10 refute two proposed automatic consequences
+even in elementary integral examples.

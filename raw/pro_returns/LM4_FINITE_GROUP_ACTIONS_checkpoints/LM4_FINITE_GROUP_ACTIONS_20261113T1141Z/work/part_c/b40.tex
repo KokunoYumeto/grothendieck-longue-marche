@@ -1,0 +1,251 @@
+\begin{claim}{B.40}{Proved}{Complete annulus and M\"obius-band quotients in genus three}
+There are exactly $57$ mixed finite genus-three action classes whose
+full quotient is an annulus or a M\"obius band with its cone and mirror
+corner structure.  There are $39$ annulus classes and $18$ M\"obius-band
+classes.  Their positive quotient is a torus.  Every group, generating
+vector, quotient signature and complete section poset is given in
+\path{type_3_0_torus_mirrors_catalogue.csv},
+\path{type_3_0_torus_mirrors_certificates.json}, and
+\path{type_3_0_torus_mirrors_sections.json}.
+\end{claim}
+\begin{proof}
+An involution reversing the orientation of a torus has annulus,
+M\"obius-band or Klein-bottle quotient.  Indeed its fixed set consists
+of disjoint circles, and its quotient has Euler characteristic zero;
+the orientation double is the torus.  The classification of compact
+surfaces leaves the orientable annulus, the nonorientable M\"obius
+band, and the closed nonorientable Klein bottle.  Their orientation
+doubles give respectively two, one, and zero fixed circles.  Cone
+points on a fixed circle become mirror corners, and other cone points
+are paired to interior cones.  The Klein-bottle cases are B.41.
+
+The complete positive input of B.33 leaves the following seven
+signature/group pairs.  In each row $r$ is the number of positive
+quotient cone points, all of order $m$; the last two columns are the
+executed numbers of full annulus and M\"obius-band classes.
+\[
+\begin{array}{c|c|r|r|r|r}
+ \text{positive row}&H&m&r&\text{annulus}&\text{M\"obius}\\\hline
+ \mathrm O3.3&C_2&2&4&10&3\\
+ \mathrm O3.5&C_3&3&2&5&4\\
+ \mathrm O3.7&C_4&2&2&8&4\\
+ \mathrm O3.8&C_2^2&2&2&9&4\\
+ \mathrm O3.12&S_3&3&1&3&1\\
+ \mathrm O3.17&D_8&2&1&3&1\\
+ \mathrm O3.18&Q_8&2&1&1&1
+\end{array}                                             \tag{B.40.1}
+\]
+Here $D_8$ has order eight.  For $l$ interior cones, the total number
+of corners is $r-2l$.  On an annulus distribute them as
+$k_1\le k_2$ with $k_1+k_2=r-2l$; on a M\"obius band place all
+$k=r-2l$ on its single boundary.  All their orders are $m$, so these
+integer choices already classify the colored quotient signatures.
+
+We first give an exhaustive construction of the possible oriented
+finite groups, rather than assuming a small-group name list.
+Choose a negative coset representative $t$ in an index-two extension
+of $H$.  Let $\alpha(h)=t h t^{-1}$ and $A=t^2$.  Its complete
+extension data satisfy
+\[
+              \alpha^2=\operatorname{Inn}(A),\qquad
+                          \alpha(A)=A.                 \tag{B.40.2}
+\]
+Conversely the product of (B.39.4), with these data, defines that
+extension:
+\[
+ (h,\epsilon)(k,\delta)=
+       (h\alpha^\epsilon(k)A^{\epsilon\delta},
+                                  \epsilon+\delta\bmod2).
+                                                        \tag{B.40.3}
+\]
+Every oriented group isomorphism restricts to some $\beta\in
+\operatorname{Aut}(H)$ and sends $t$ to some $k t'$ in the negative
+coset.  Therefore the entire isomorphism action on (B.40.2) is generated
+by transport by $\beta$ and by
+\[
+       (\alpha,A)\longmapsto
+       \bigl(\operatorname{Inn}(k)\alpha,\ k\alpha(k)A\bigr).
+                                                        \tag{B.40.4}
+\]
+The converse follows by sending the displayed generators accordingly
+in (B.40.3), so this is an exact fusion test.  The program enumerates
+$\operatorname{Aut}(H)$ by assigning images to a generating set and
+propagating on its complete Cayley graph, enumerates every pair
+(B.40.2), and takes precisely the finite orbits (B.40.4).
+For the seven $H$'s in (B.40.1), it obtains respectively
+$2,2,4,3,1,4,4$ oriented extension classes.
+
+Here are the full source presentations and enumeration conditions.
+For an annulus, put $X=x_1\cdots x_l$ and use positive generators
+$x_i,e_1,e_2$ with
+\[
+                x_i^m=1,\qquad X e_1e_2=1.             \tag{B.40.5}
+\]
+On its $j$th boundary there are reflections
+$c_{j,0},\ldots,c_{j,k_j}$ satisfying
+\[
+ c_{j,s}^2=1,\quad(c_{j,s-1}c_{j,s})^m=1,\qquad
+               c_{j,k_j}=e_j c_{j,0}e_j^{-1}.          \tag{B.40.6}
+\]
+For $k_j=0$, there is one reflection commuting with $e_j$.
+For a M\"obius band there is one negative crosscap generator $d$,
+one boundary with (B.40.6), and the relation
+\[
+                X e d^2=1,
+                   \qquad e=X^{-1}d^{-2}.              \tag{B.40.7}
+\]
+In each finite extension the program assigns every possible positive
+order-$m$ element to every $x_i$, every positive element to $e_1$
+in the annulus, and every negative element to $d$ in the M\"obius
+band.  It then assigns every sequence of negative involutions to
+the mirrors, requiring exact order $m$ for each adjacent product
+and the stated closing relation.  It retains precisely the vectors
+generating the whole finite group.  Two involutions whose product
+has exact order $m$ generate a dihedral group of order $2m$; thus
+all local groups inject.  The orientation character takes the
+specified signs on every generator, so the kernel is oriented and
+contains no reflection.  The signature equation gives
+$|K|\chi^{\rm orb}(Q)=-4$; its torsion-free surface kernel therefore
+has genus three.  Conversely every action with this quotient yields
+one of these enumerated epimorphisms.
+
+Target automorphisms are removed by the exact rooted colored Cayley
+graph test of B.37, now applied to the full NEC generating vector.
+Its prescribed generator signs force any resulting isomorphism to
+preserve the orientation character.  For source fusion, the following
+are explicit complete generators.  The interior braids are
+(B.37.7), with all other generators fixed.  A cyclic boundary move
+sends $c_{j,s}$ to $c_{j,s+1}$, extending the reflection sequence
+by (B.40.6), while fixing $x_i$, $e_j$, and the crosscap generator.
+After $k_j$ moves it conjugates that boundary's reflection sequence
+by $e_j$ and fixes the other generators, which supplies the boundary
+Dehn twist where it is needed.
+
+For the annulus, pushing the last interior point once around the
+first boundary, with $a=x_l$ and $e=e_1$, has
+\[
+ \begin{aligned}
+ a&\longmapsto (a e)a(a e)^{-1},\\
+ e_1&\longmapsto a e_1a^{-1},\\
+ c_{1,s}&\longmapsto a c_{1,s}a^{-1}.
+ \end{aligned}                                           \tag{B.40.8}
+\]
+It fixes the other $x_i$, $e_2$ and the second reflection sequence.
+This is the square of the Hurwitz exchange between the puncture
+meridian and the first boundary loop; in particular it preserves
+$a e_1$ exactly.  The interior braids conjugate this to pushes of
+each other interior point.  When $k_1=k_2$, interchange of the two
+boundary components is
+\[
+ \begin{aligned}
+ e_1&\longmapsto e_1e_2e_1^{-1},&
+ e_2&\longmapsto e_1,\\
+ c_{1,s}&\longmapsto e_1c_{2,s}e_1^{-1},&
+ c_{2,s}&\longmapsto c_{1,s},
+ \end{aligned}                                           \tag{B.40.9}
+\]
+fixing the interior generators.  This is their orientation-preserving
+boundary exchange, with the chosen connecting paths.
+
+The remaining annulus generator reverses the orientation of its
+fundamental region.  For the peripheral list
+$(w_1,\ldots,w_{l+2})=(x_1,\ldots,x_l,e_1,e_2)$, write
+$W_i=w_1\cdots w_i$.  It sends
+\[
+             w_i\longmapsto W_{i-1}w_i^{-1}W_{i-1}^{-1}.
+                                                        \tag{B.40.10}
+\]
+For the first boundary its reflection sequence is reversed and
+conjugated by $X$; for the second it is reversed and conjugated by
+$X e_1$.  Reversing a cycle means
+$(c_0,\ldots,c_{k-1})\mapsto(c_k,c_{k-1},\ldots,c_1)$,
+with $c_k=e c_0e^{-1}$; an empty cycle retains its single reflection.
+These substitutions verify (B.40.5)--(B.40.6) directly.
+
+For the M\"obius band, a one-sided slide of the last interior point
+is particularly explicit.  Set
+\[
+          a=x_l,\qquad a'=(a d)a^{-1}(a d)^{-1}.
+\]
+The substitution is
+\[
+ \begin{aligned}
+  x_l&\longmapsto a',& d&\longmapsto a d,\\
+  c_s&\longmapsto a'^{-1}a\,c_s\,a^{-1}a'.
+ \end{aligned}                                           \tag{B.40.11}
+\]
+It fixes the other interior generators and determines $e$ by
+(B.40.7).  To obtain it geometrically, regard the boundary temporarily
+as the last peripheral loop in the projective-plane presentation:
+exchange $(a,e)$ by its Hurwitz move, slide the now-last puncture
+by (B.39.5), and undo that exchange.  This gives exactly
+(B.40.11), including the displayed transport of every boundary
+reflection.  Finally a reversal of the core has
+\[
+ \begin{aligned}
+ (x_1,\ldots,x_l)&\longmapsto(x_l^{-1},\ldots,x_1^{-1}),\\
+ d&\longmapsto d^{-1},\qquad
+ c_s\longmapsto X c_{k-s}X^{-1}.
+ \end{aligned}                                           \tag{B.40.12}
+\]
+Here $e$ goes to $X e^{-1}X^{-1}$, so the closing relation is
+preserved.
+
+We justify that this is the whole source action.  First prescribe
+the cyclic permutations, and possible reversal or interchange, of
+the marked boundary components.  The boundary moves above realize
+exactly these permutations.  Upon forgetting the interior points,
+a remaining annulus map is generated by its core twist, and a
+remaining M\"obius-band map by reversal of its core.  Cutting along
+a spanning arc gives this classification: the annulus permits the
+integer winding of the arc, while cutting the M\"obius band reduces
+a boundary-fixed map to a disc isotopy.  The boundary reversal is
+(B.40.12).  The core twist is already among the full cyclic boundary
+moves when both boundaries are marked; when a boundary is unmarked
+its rotation isotopes it away in the unpunctured quotient.
+The kernel of forgetting interior points consists of their braids.
+An interior point in an annulus minus the other points has fundamental
+group generated by the puncture meridians and the core loop; in a
+M\"obius band the corresponding extra generator is one-sided.
+Forgetting points one at a time, and using isotopy extension, therefore
+shows that their braid groups are generated by the ordinary interior
+braids and respectively (B.40.8) or (B.40.11).  This also includes
+any twist that becomes trivial only after the interior points are
+forgotten.  Thus every geometric source automorphism is included,
+and each included automorphism is realized by the maps just described.
+The kernel-to-cover lifting argument of B.37 proves that the computed
+orbits are exactly the surface conjugacy classes.
+
+Execution gives the $57$ classes in (B.40.1).  There is an independent
+check on the source generators in every one-cone, no-corner case:
+the complete primary automorphism lists in
+\cite[Lemmas 3.7 and 3.8]{C_GromadzkiSzepietowski2016} give exactly the
+same partitions of the entire target-normalized epimorphism sets.
+The file \path{check_torus_mirror_generators_output.json}
+records all six comparisons, comparing full orbit memberships and
+not just their numbers.
+
+The program then computes all section invariants.  Its mirror
+incidence graph has a separate closed cycle for each quotient
+boundary, with endpoint gluing by that boundary's actual element
+$e_j$.  At every corner it uses the full local dihedral group, and
+checks that the fixed subgraph of each reflection has degree two
+at every vertex.  Consequently its connected components are exactly
+the fixed ovals, including all their intersections with other
+reflection fixed sets.  Cone and corner cosets give the isolated
+fixed points.  The procedure of B.26 then supplies every section,
+multiplier, centralizer, extension incidence, maximal section, group
+orbit and stabilizer.  All $57$ presentations, local injections,
+Euler characteristics and complete section calculations passed.
+\end{proof}
+
+The $57$ classes have orders $4,6,8,12,16$ with multiplicities
+$13,9,25,4,6$, respectively.  The full quotient surfaces in this
+claim have boundary, whereas those in B.41 are closed.  A conjugacy
+of actions descends to a homeomorphism of their full quotient
+orbifolds and therefore preserves boundary.  Their positive
+quotients have genus one, whereas those in B.37 and B.39 have genus
+zero and those in B.38 have genus two or three.  The induced
+homeomorphism of positive quotients preserves genus.  These exact
+quotient maps prove that the four portions contribute disjoint
+conjugacy classes.

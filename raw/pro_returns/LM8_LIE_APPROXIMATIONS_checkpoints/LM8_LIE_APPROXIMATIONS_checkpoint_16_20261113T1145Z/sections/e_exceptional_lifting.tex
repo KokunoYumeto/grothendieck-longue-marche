@@ -1,0 +1,151 @@
+% Proof-ready supplement for Part B. The parent may renumber B.14a.
+\begin{statement}{B.14a}{Proved}{An integral group lift of the exceptional-prime witness through class thirteen}
+Let $F=\langle x,y\rangle$ be the discrete free group,
+$N_{13}=F/\gamma_{14}F$, and $z=(xy)^{-1}$.
+There is an element $f\in\gamma_7N_{13}$ whose image in
+$\gamma_7F/\gamma_8F$ is the specific integral vector
+$q_7$ of B.12 and which satisfies the genuine group equations
+\[
+ f(y,x)f(x,y)=1,\qquad
+ f(z,x)f(y,z)f(x,y)=1
+ \quad\hbox{in }N_{13}.
+\]
+The same assertion holds with $q_7$ replaced by any integral
+multiple. Consequently these finite nilpotent jets exist over
+$\mathbb Z_2$ and $\mathbb Z_3$ without scaling $q_7$.
+This is a finite-stage assertion; it does not assert an infinite
+pro-$2$, pro-$3$, or full profinite lift.
+\end{statement}
+\begin{proof}
+We use actual group commutators $[g,h]=ghg^{-1}h^{-1}$.
+For a Lyndon word $w$, let $C_x=x$, $C_y=y$, and
+$C_w=[C_u,C_v]$, where $w=uv$ is the standard Lyndon
+factorization with $v$ the longest proper Lyndon suffix.
+The leading Magnus term of $C_w-1$ is the standard integral
+Lie bracket $b_w$. These leading terms form a basis of each
+$\gamma_nF/\gamma_{n+1}F$. Induction over the lower central
+series therefore gives unique integral coordinates for
+$\gamma_7F/\gamma_{14}F$ in the ordered products of
+$C_w$, $7\leq |w|\leq13$.
+
+Set $x=1+X$, $y=1+Y$ in the truncated noncommutative
+power-series ring over $\mathbb Z$. In particular
+\[
+ z=(1+Y)^{-1}(1+X)^{-1},
+\]
+and this full group series is used in every substitution.
+If $A=g-1$, $B=h-1$, the exact identity
+\[
+ [g,h]-1=(AB-BA)(1+A)^{-1}(1+B)^{-1}
+\]
+constructs every needed Hall series by finite integer arithmetic.
+The product of two terms of degree at least seven has degree at
+least fourteen. Hence through degree thirteen the Magnus expansion
+of $\prod C_w^{a_w}$ is exactly
+$1+\sum a_w(C_w-1)$, and both displayed group equations
+are linear equations in all the Hall exponents.
+
+We fix the seven weight-seven exponents to the coefficients of
+$q_7$ and include \emph{every} exponent in weights eight through
+thirteen as an unknown. The simultaneous systems, retaining all
+earlier free parameters, have the following exact ranks:
+\[
+\begin{array}{c|rrrrrr}
+\text{class}&8&9&10&11&12&13\\\hline
+\text{unknown exponents}&30&86&185&371&706&1336\\
+\text{rank}&20&66&147&302&578&1103\\
+\text{free parameters}&10&20&38&69&128&233.
+\end{array}
+\]
+The computations through class twelve are recorded in
+\texttt{code/e\_exceptional\_jets.py} and its class-twelve JSON
+output. The final class-thirteen calculation uses
+\path{code/e_exceptional_lattice.py} and the exact certificate
+\texttt{e\_exceptional\_lattice\_13.json}.
+The complete sparse matrix, its independent row indices, and the
+right-hand side are also retained in the compressed JSON file
+\texttt{e\_exceptional\_matrix\_13.json.gz}.
+
+Here is the integral certificate extraction, so that existence
+is not inferred from a rational solution. Write the final system
+as $Aa=b$, with $2708$ rows and $1336$ unknowns. Select $1103$
+independent rows, producing $Ma=y$. The rank over $\mathbb Q$
+is checked exactly and agrees with the selected rank. Let $H_0$
+be the nonsingular block of the row Hermite normal form of
+$M^{\mathsf t}$. Its rows are a basis of the integer row lattice,
+so the columns of $H_0^{\mathsf t}$ are a basis of
+$M\mathbb Z^{1336}$. The computation verifies
+\[
+ z=(H_0^{\mathsf t})^{-1}y\in\mathbb Z^{1103},
+ \qquad
+ R=(H_0^{\mathsf t})^{-1}M
+       \in M_{1103,1336}(\mathbb Z).
+\]
+In particular the minimum integral multiplier of the specified
+leading vector is one. The columns of $R$ generate the whole
+lattice $\mathbb Z^{1103}$.
+
+For explicit coordinates, choose full-rank column minors of $R$
+modulo $2$ and modulo $3$. Inverting these minors over $\mathbb Q$
+gives solutions $a_p=U_p/d_p$, $p=2,3$, supported on the chosen
+columns, where $U_p$ is integral and $d_p$ is prime to $p$.
+Every equation of the original system $Aa_p=b$ is checked.
+The two computed denominators are coprime. The JSON certificate
+records the denominators, selected columns and exact B\'ezout
+coefficients $s_2,s_3$ satisfying
+\[
+ s_2d_2+s_3d_3=1.
+\]
+Consequently
+\[
+ a=s_2U_2+s_3U_3\in\mathbb Z^{1336},\qquad Aa=b.
+\]
+The certificate's \texttt{hall\_coordinates} field records this
+integral vector together with the seven fixed coefficients of
+$q_7$, and therefore specifies the group word completely.
+The large integer coefficients are kept in that machine-readable
+certificate.
+
+The final verification reconstructs the Hall commutators and
+checks \emph{every associative-word coefficient} of both group
+defects through degree thirteen, with exact integer arithmetic.
+Both reconstructed defects are zero. Vanishing in the truncated
+Magnus ring implies the asserted identities in $N_{13}$: if a
+group word had a first nonzero lower-central component of degree
+at most thirteen, its nonzero Lyndon Lie polynomial would be its
+first nonzero Magnus term. Conversely, a word in $\gamma_{14}F$
+has no such term.
+
+For completeness, selecting Lyndon-word rows when solving does
+not discard an equation. Each cycle defect is primitive, up to
+the given truncation, for the Magnus Hopf structure
+$\Delta X=X\otimes1+1\otimes X+X\otimes X$.
+Its first nonzero homogeneous part would be an ordinary free
+Lie polynomial. The triangular Lyndon basis detects that part
+on Lyndon words. Induction on degree proves that vanishing of
+all homogeneous Lyndon coefficients is equivalent to vanishing
+of the entire defect. The independent reconstruction of the full
+associative expansions provides a further direct verification
+of the recorded solution.
+
+Finally, in this degree range replacing every Hall exponent by
+its multiple $m$ multiplies both linear defects by $m$ and
+replaces the leading term by $m q_7$. This proves the assertion
+for all integral multiples, including the two multiples singled
+out in the prompt. Passing to the pro-$p$ completion of $N_{13}$
+or any finite $p$-group quotient preserves the verified equations.
+\end{proof}
+
+\paragraph{What remains of the exceptional-prime problem.}
+The calculation evaluates the actual group-equation lifting
+problem through the stated nilpotency class. It does not prove
+that one of these jets extends through every subsequent class.
+Existence at all classes, with integral $p$-adic coordinates,
+would suffice: compactness of the product of the Hall-coordinate
+copies of $\mathbb Z_p$ would give a compatible inverse-limit
+solution. The required nonempty sets have been checked only to
+the finite bound above. In particular the factor $6$ in an
+averaging argument is not a unit for the two primes in question;
+taking norms may multiply the first term at each new stage and
+therefore does not establish an infinite lift of $q_7$, $2q_7$,
+or $3q_7$.
