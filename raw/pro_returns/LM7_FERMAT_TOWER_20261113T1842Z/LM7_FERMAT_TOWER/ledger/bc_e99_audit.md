@@ -1,0 +1,15 @@
+# Focused independent audit of E.99
+
+Status: PASS for the actual arithmetic source, marking transport, and coefficient operators in E99.8–E99.17. This note does not claim a complete independent rerun of the later Smith calculation; root owns that full audit.
+
+The proof was read in research_e99/sections/E_two_three_intrinsic.tex. The checked source comparison is the actual E.55 tame decomposition factor at the prime above two, together with the continuous inertia-bundle comparison used again in E.56 and E.98. The opened Wingberg Theorem 2.4 and its proof identify the inertia kernel, not merely its abelianization. The free-product coset tree gives the inverse map on every actual inertia factor.
+
+For a rational Kummer cocycle with the original complex conjugation c fixing the roots, d=g c g^{-1} has Kummer value 2 kappa(g). Changing roots by exponent kappa(g) makes d fix them. The resulting Frobenius of cyclotomic value four has original Kummer value -3 kappa(g), so conjugation by g^{-1} restores both the original c and zero Frobenius Kummer value. The tame generator is then raised to the unit power chi(g); this gives Kummer value one while preserving the fourth-power tame relation. The same conjugation and root change work simultaneously for two and three.
+
+The lift gamma of the old marked tau is corrected by an actual inertia power to remove its two-Kummer value. Since the based geometric action is unramified at two, this correction leaves that geometric action unchanged. The literal word rho=gamma c gamma^{-1}c is inverted by c and has characters (chi,kappa_2,kappa_3)=(1,0,2). Together with the actual Frobenius sigma it has independent Frattini characters, hence gives the required free basis of the quotient unramified outside three. The precise power comparison is to define rho_1=rho^{1/2}; the map rho_1 to rho_1^2 then has the displayed inverse. No unrelated earlier complement is identified with this root. A has sent this wording clarification to root.
+
+The abelian coefficient representation over K is commutative, so the conjugation does leave its Frobenius matrix unchanged. Its elliptic block is -2, toric block four, and the integral gluing block is -2U. The proper rho block is exactly (I+3Z)(I+3Z^2)^{-1}; its displayed matrix and gluing formula agree. The cusp Kummer value is therefore (F-I)b_d+s_d, because kappa_3(3)(sigma)=0 and kappa_3(zeta)(sigma)=1.
+
+Finally L=Phi_rho J is an actual involution on the class-two group. Averaging the linear Lie lift as one half of ell_0(R)-L ell_0(R) is exact, integral over Z_3, and retains the non-graded handle term. Thus this step does not replace the genuine action by its associated graded action.
+
+Primary source checked with the E.98 audit: Wingberg, Riemann's existence theorem and the K(pi,1)-property of rings of integers, Theorem 2.4, full proof on printed pages 13–15; continuous bundle and Lemma 1.1, printed pages 4–5; remark after Proposition 2.1, printed page 11. Retrieval references turn813view0, turn814view0, turn815view0 are recorded in bc_e98_audit/audit.json.

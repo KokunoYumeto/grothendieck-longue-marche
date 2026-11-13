@@ -1,0 +1,52 @@
+default(parisize,256000000);
+default(parisizemax,2000000000);
+default(realprecision,100);
+rows(M)=vector(matsize(M)[1],i,Vec(M[i,]));
+ratvec(v)=vector(#v,i,[numerator(v[i]),denominator(v[i])]);
+polcoords(z)=ratvec(vector(18,i,polcoef(lift(z),i-1)));
+smrecord(kind,n,H,U,V,D)={
+ print("{\"type\":\"",kind,"\",\"n\":",n,",\"hnf\":",rows(H),",\"left\":",rows(U),",\"right\":",rows(V),",\"left_inverse\":",rows(U^-1),",\"right_inverse\":",rows(V^-1),",\"diagonal\":",vector(matsize(D)[1],i,D[i,i]),"}");
+};
+run()={
+ my(dat=read("research_norm_index/code/cyclotomic_base1_bnf.bin"),B=dat[1],F=B.nf,xi=dat[2],a=dat[3],beta=a*xi,pi=beta+1);
+ my(ps=concat(idealprimedec(F,3),idealprimedec(F,17)),units=concat([xi],B.fu));
+ my(G3=read("research_norm_index/code/cyclotomic_base1_genus.bin"),G9=read("research_norm_index/code/cyclotomic_base1_ninth_genus.bin"));
+ my(T=read("research_norm_index/code/cyclotomic_base1_ninth_transfer.bin"));
+ print("{\"type\":\"field\",\"polynomial_ascending\":",Vecrev(F.pol),",\"xi\":",polcoords(xi),",\"a\":",polcoords(a),",\"discriminant\":",F.disc,",\"class_group\":",B.cyc,",\"class_number\":",B.no,",\"certified\":",bnfcertify(B),",\"root_order\":",B.tu[1],",\"integral_basis\":",vector(18,j,polcoords(F.zk[j])),",\"unit_basis\":",vector(#units,j,polcoords(units[j])),",\"unit_norms\":",vector(#units,j,norm(units[j])),"}");
+ for(j=1,2,
+   my(I=B.gen[j],rel=bnfisprincipal(B,idealpow(F,I,3),1));
+   if(rel[1]!=[0,0]~ || idealhnf(F,rel[2])!=idealpow(F,I,3),error("class generator cube identity"));
+   print("{\"type\":\"class_generator\",\"index\":",j,",\"ideal\":",rows(I),",\"cube_generator_basis\":",Vec(rel[2]),"}");
+ );
+ for(j=1,6,
+   print("{\"type\":\"ramified_prime\",\"index\":",j,",\"rational_prime\":",ps[j].p,",\"e\":",ps[j].e,",\"f\":",ps[j].f,",\"ideal\":",rows(idealhnf(F,ps[j])),",\"class\":",Vec(bnfisprincipal(B,ps[j],0)),"}");
+ );
+ for(nn=1,2,
+   my(n=if(nn==1,3,9),loc=if(nn==1,read("research_norm_index/code/cyclotomic_base1_local_norms.bin"),read("research_norm_index/code/cyclotomic_base1_ninth_norms.bin")),mats=if(nn==1,loc[3],loc[2]),norms=loc[4]);
+   for(j=1,3,
+     my(M=mats[j],H=mathnf(concat(n*matid(7),M)),S=matsnf(H,1),ch=if(nn==1,loc[2][j]~,S[1][1,]));
+     print("{\"type\":\"local_kernel\",\"n\":",n,",\"prime\":",j,",\"power_quotient\":",loc[1][j].cyc,",\"local_generators_basis\":",vector(7,k,Vec(loc[1][j].gen[k])),",\"norm_matrix\":",rows(M),",\"character\":",Vec(ch),",\"norms_basis\":",vector(#norms,k,Vec(norms[k])),"}");
+     smrecord("local_smith",n*10+j,H,S[1],S[2],S[3]);
+   );
+   my(M=if(nn==1,read("research_norm_index/code/cyclotomic_base1_unit_symbols.bin")[1],G9[13]),H=mathnf(concat(n*matid(6),M)),S=matsnf(H,1));
+   print("{\"type\":\"global_unit_characters\",\"n\":",n,",\"matrix\":",rows(M),"}");
+   smrecord("unit_symbol_smith",n,H,S[1],S[2],S[3]);
+   my(G=if(nn==1,G3,G9),H=G[4],U=G[5],V=G[6],D=G[7]);
+   print("{\"type\":\"genus_presentation\",\"n\":",n,",\"ray_cyclic\":",G[1].cyc,",\"presentation\":",rows(G[3]),"}");
+   smrecord("genus_smith",n,H,U,V,D);
+   for(j=1,3,
+     my(fac=G[2],vals=vector(6,i,1));fac[j,2]+=1;vals[j]=pi;
+     my(z=idealchinese(F,fac,vals),I=idealdiv(F,z,ps[j]),cl=-bnrisprincipal(G[1],I,0));
+     print("{\"type\":\"prime_frobenius\",\"n\":",n,",\"prime\":",j,",\"coprime_ideal\":",rows(I),",\"ray_class\":",Vec(cl),",\"smith_coordinates\":",Vec(U*cl),"}");
+   );
+ );
+ smrecord("outer_delta_smith",9,G9[10],G9[11][1],G9[11][2],G9[11][3]);
+ smrecord("relative_delta_smith",9,T[6],T[7][1],T[7][2],T[7][3]);
+ print("{\"type\":\"actual_maps\",\"delta\":",rows(G9[9]),",\"kummer_character\":",T[1],",\"kummer_kernel_basis\":",rows(T[3]),",\"relative_class_presentation\":",rows(T[4]),",\"relative_delta_presentation\":",rows(T[5]),",\"genus_restriction\":",rows(T[8]),",\"ray_basis_change\":",rows(T[10]),",\"ray_basis_inverse\":",rows(T[11]),",\"kummer_prime_records\":",Vec(T[2]),"}");
+ for(j=1,3,
+   print("{\"type\":\"relative_prime\",\"prime\":",j,",\"kernel_coordinates\":",Vec(T[9][j][1]),",\"smith_coordinates\":",Vec(T[9][j][2]),",\"order\":",T[9][j][3],"}");
+ );
+ print("{\"type\":\"completion\",\"status\":\"PASS\"}");
+};
+run();
+quit;
