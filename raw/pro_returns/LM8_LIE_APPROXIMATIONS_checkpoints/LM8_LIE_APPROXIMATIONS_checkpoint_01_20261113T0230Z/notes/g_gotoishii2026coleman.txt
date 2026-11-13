@@ -1,0 +1,1560 @@
+                                           CM ELLIPTIC ANALOGUE OF THE COLEMAN–IHARA FORMULA
+
+                                                                           YUKI GOTO†⋄ AND SHUN ISHII‡
+
+                                                  Abstract. The Soulé characters are Kummer characters constructed from cyclo-
+                                                  tomic units and also arising from the Galois action on the pro-p geometric fundamen-
+                                                  tal group of P1 \ {0, 1, ∞}. The Coleman–Ihara formula describes the restrictions of
+                                                  these characters to the local Galois group at p as products of the Coates–Wiles ho-
+                                                  momorphisms and Kubota–Leopoldt p-adic L-values at positive odd integers. In this
+                                                  paper, we prove an elliptic analogue of this formula for elliptic curves with complex
+arXiv:2610.21052v1 [math.NT] 15 Oct 2026
+
+
+
+
+                                                  multiplication by the ring of integers of an imaginary quadratic field K. We consider
+                                                  certain Kummer characters associated with elliptic units, which we call elliptic Soulé
+                                                  characters. These characters are elliptic counterparts of the classical Soulé characters
+                                                  and also arise from the Galois action on the pro-p geometric fundamental groups of
+                                                  once-punctured elliptic curves. For suitable pairs of positive integers (i, j), we give an
+                                                  explicit description of their restrictions to the relevant local Galois groups as prod-
+                                                  ucts of the two-variable Coates–Wiles homomorphisms introduced by Yager and the
+                                                  two-variable p-adic L-values of K.
+
+
+
+
+                                                                                       Contents
+                                             1. Introduction                                                                                    1
+                                             2. Notation                                                                                        3
+                                             3. Elliptic Soulé characters                                                                      5
+                                             3.1. Fundamental theta function                                                                    6
+                                             3.2. Elliptic units and elliptic Soulé characters                                                 7
+                                             4. Coleman theory in the cyclotomic and CM elliptic settings                                       8
+                                             4.1. Coleman power series in the cyclotomic setting                                                9
+                                             4.2. Coleman power series in the CM elliptic setting                                              12
+                                             5. Coleman-theoretic comparison                                                                   16
+                                             5.1. Congruences for Coleman power series and logarithmic derivatives                             16
+                                             5.2. Proof of the main formula                                                                    18
+                                             References                                                                                        22
+
+
+
+
+                                                                                   1. Introduction
+                                              Let p be an odd prime. For any field F of characteristic zero, write GF := Gal(F /F )
+                                           for its absolute Galois group. For each n ≥ 1, let µpn denote the group of pn -th
+                                           roots of unity, and fix a compatible system {ζpn }n≥1 of primitive pn -th roots of unity.
+                                                                             ∼
+                                           This induces an identification Zp −
+                                                                             → Zp (1) := limn µpn sending 1 to (ζpn )n . The Soulé
+                                                                                          ←−
+                                           characters are Kummer characters arising from cyclotomic units. More precisely, for
+                                           an odd integer m ≥ 3, the m-th Soulé character χm : GQ(µp∞ ) → Zp (m) := Zp (1)⊗m is
+                                                                                              1
+2
+
+defined by the following Kummer property: for σ ∈ GQ(µp∞ ) and n ≥ 1,
+                                                   σ−1
+                                                     m−1 
+                                               a a pn 
+                           χ (σ)
+                                     Y
+                          ζpnm     =
+                                       (1 − ζ p n )           ,
+                                      1≤a<pn
+                                        p∤a
+
+where χm (σ) is regarded as an element of Zp via the identification Zp (m) ∼
+                                                                           = Zp induced
+by the above choice. The character χm originates in Soulé’s work on higher p-adic
+regulators [Sou81] and is obtained by restricting a cohomology class in H 1 (GQ , Zp (m)),
+constructed from cyclotomic units via Kummer theory, to GQ(µp∞ ) . It also admits
+a geometric interpretation through Ihara’s study of the Galois action on the pro-p
+geometric étale fundamental group of P1 \ {0, 1, ∞} [Iha86].
+  The local behavior of the Soulé character χm at p is described by the Coleman–
+Ihara formula. For each n ≥ 1, let Un be the group of principal units of Qp (µpn ), and
+set U∞ := limn Un with respect to the norm maps. Local class field theory gives the
+            ←−
+reciprocity map rec : U∞ → Gab                   CW
+                                Qp (µp∞ ) . Let ϕm : U∞ → Zp (m) be the m-th Coates–
+Wiles homomorphism, and let Lp (s, ω 1−m ) be the Kubota–Leopoldt p-adic L-function
+attached to ω 1−m , where ω denotes the Teichmüller character. Fix an embedding Q ,→
+Qp , and identify the corresponding decomposition subgroup of GQ(µp∞ ) with GQp (µp∞ ) .
+With this convention, the classical Coleman–Ihara formula asserts that
+                    χm (rec(ϵ))
+                       m−1
+                                = Lp (m, ω 1−m )ϕCW
+                                                 m (ϵ)       (ϵ ∈ U∞ ).
+                     p     −1
+Thus, it describes the restriction of the Soulé character χm to the local Galois group at
+p in terms of the Coates–Wiles homomorphism and a Kubota–Leopoldt p-adic L-value.
+   Historically, the Coleman–Ihara formula arose from Ihara’s study of his universal
+power series for Jacobi sums [Iha86]. From the coefficients of the logarithm of this
+power series, Ihara obtained certain characters and local formulae relating them to
+Coates–Wiles homomorphisms and Kubota–Leopoldt p-adic L-values. Combined with
+Coleman’s identification of these characters with the restrictions of Soulé characters,
+these formulae yield the comparison now known as the Coleman–Ihara formula, whose
+proof relies on Coleman’s explicit reciprocity law for Hilbert norm residue symbols
+[Col81, Iha86]. In subsequent work, Anderson, Coleman, and Ihara–Kaneko–Yukinari
+developed explicit global formulae in this setting [And89, Col89, IKY87]. Although
+these global formulae reveal deep connections with Iwasawa theory and the arithmetic
+of cyclotomic fields, the Coleman–Ihara formula itself is essentially local: it describes
+the restriction of a Soulé character to the image of the local reciprocity map. This local
+viewpoint has led to several generalizations. Nakamura, Sakugawa, and Wojtkowiak
+proved polylogarithmic analogues, replacing Soulé characters and Kubota–Leopoldt p-
+adic L-values by p-adic polylogarithmic characters and Coleman p-adic polylogarithms,
+respectively [NSW17a, NSW17b]. Burns and Sano formulated a higher-rank analogue
+using Euler systems and generalized Stark elements, which recovers the classical formula
+over Q and gives a conjectural extension to totally real fields [BS25].
+   In this paper, we prove a two-variable CM elliptic analogue of the Coleman–Ihara
+formula. Let K be an imaginary quadratic field of class number one with ring of inte-
+                               ×
+gers OK , and put wK := #OK      . We fix an elliptic curve E with complex multiplication
+by OK . Let p ≥ 5 be a prime that splits in K as (p) = pp̄. We choose a suitably
+normalized generator π of p, and write π̄ for its complex conjugate. The analogues
+                                                                                                        3
+
+of Soulé characters in this setting are the elliptic Soulé characters χell            (i,j) (cf. Defini-
+tion 3.6), originating in Nakamura’s work on Galois representations associated with
+once-punctured elliptic curves [Nak95]. A Coleman–Ihara-type formula for the charac-
+ters χell(m,m) along the cyclotomic line was previously obtained in [IG26]. In the present
+paper, we generalize this to the two-variable setting, namely to χell        (i,j) for positive integers
+i, j satisfying i ≡ j (mod wK ). The formula below involves the two-variable p-adic L-
+function Lp (s1 , s2 , ω (i,j) ) of K (cf. Definition 4.16), as studied by de Shalit [dS87], where
+ω (i,j) is a certain finite character. We write Uell      ∞ for the group of norm-compatible sys-
+tems of principal units associated with the tower of p-power division fields of E. The
+logarithmic derivatives of the corresponding Coleman power series give rise to the two-
+variable Coates–Wiles homomorphisms ϕCW            (i,j) (cf. Definition 4.12), introduced by Yager
+[Yag82]. We also let Ωp denote a p-adic period associated with E, and write rec∞ for
+the reciprocity map on Uell       ∞ (cf. (6)). The main result of this paper is the following.
+
+Theorem 1.1 (Corollary 5.5). For each pair of positive integers (i, j) ̸= (1, 1) such
+that i ≡ j (mod wK ), the following identity holds:
+           χell
+            (i,j) (rec∞ (β))
+                                                                         
+                                               1               1
+                             = 12wK 1 −                 −
+            1 − π j−1 π̄ i−1            1 − π i−1 π̄ j−1 1 − π j−1 π̄ i−1
+                                      Lp (1 − i, 1 − j, ω (i,j)−1 ) CW
+                                  ·                                ϕ(i,j) (β)   (β ∈ Uell
+                                                                                      ∞ ).
+                                                 Ωj−i
+                                                   p
+
+Here, we regard χell
+                  (i,j) as a character on the product of the local Galois groups at the
+primes above p (cf. (5)).
+   While preparing this manuscript, we learned that Sano and Venjakob had indepen-
+dently obtained the same result [SV26].
+   We prove the theorem by adapting the local method of Nakamura, Sakugawa, and
+Wojtkowiak [NSW17a] to the CM elliptic setting. Namely, we compare two expressions
+for a Hilbert norm residue symbol. The first arises from the Kummer property of ellip-
+tic units and yields the elliptic Soulé character. The second is obtained from Coleman’s
+explicit reciprocity law and is expressed in terms of Coleman power series. To identify
+the resulting expression with the product of the two-variable p-adic L-function and the
+two-variable Coates–Wiles homomorphism, we compare the Coleman power series aris-
+ing on the cyclotomic and elliptic sides via an isomorphism between the multiplicative
+formal group and the formal group of E.
+   The paper is organized as follows. In Section 2, we fix the notation used throughout
+the paper. In Section 3, we introduce the elliptic Soulé characters and review their basic
+properties. Section 4 recalls the Coleman-theoretic ingredients needed for the proof:
+Coleman power series in the cyclotomic and elliptic settings, Coleman’s explicit reci-
+procity law, and the two-variable Coates–Wiles homomorphisms and the two-variable
+p-adic L-function. Finally, in Section 5, we combine these ingredients to prove the main
+theorem and verify its compatibility with the formula obtained in [IG26].
+
+                                              2. Notation
+  In this section, we fix the notation used throughout this paper.
+      • Let K be an imaginary quadratic field of class number one, and let OK denote
+        its ring of integers. Write dK for the absolute value of the discriminant of K
+4
+
+                        ×
+      and wK = #OK         for the number of roots of unity in K. We fix an algebraic
+      closure K of K and an embedding ι∞ : K ,→ C.
+    • Let E be an elliptic curve defined over K with complex multiplication by OK .
+      We fix a Weierstrass equation y 2 = 4x3 − g2 x − g3 with g2 , g3 ∈ K for E and
+      identify C/L with E(C) via the Weierstrass uniformization
+                                 ∼
+                                 → E(C), z 7→ ℘(z; L) : ℘′ (z; L) : 1 ,
+                                                                     
+                ξ( · ; L) : C/L −
+      where ℘(z; L) is the Weierstrass ℘-function associated with the period lattice
+      L. We also fix a period Ω ∈ C× such that L = ΩOK . For an ideal a of OK , we
+      denote by E[a] the a-torsion subgroup of E.
+    • We fix a prime p ≥ 5 that splits in K as (p) = pp̄. We assume that E has
+      good reduction at p. We choose π to be the generator of p characterized by the
+      convention
+                                                                  [
+        (p, K(E[p̄∞ ])/K)(u) = [π]E (u)    for all u ∈ E[p̄∞ ] :=   E[p̄m ],
+                                                                         m≥0
+                         ∞
+      where (p, K(E[p̄ ])/K) denotes the Artin symbol at p. Let π̄ be the complex
+      conjugate of π. Let Kp and Kp̄ denote the completions of K at p and p̄,
+      respectively, and write Op and Op̄ for their rings of integers. Since p splits in
+      K, we have Op ∼   = Op̄ ∼ = Zp .
+    • For each n ≥ 0, the decomposition OK /pn OK ≃ OK /pn ⊕ OK /p̄n induces an
+                              ∼
+      isomorphism E[pn ] −    → E[pn ] ⊕ E[p̄n ]. We fix ωp,n ∈ E[pn ] and ωp̄,n ∈ E[p̄n ] such
+      that the image of ξ(Ω/pn ; L) ∈ E[pn ] under this isomorphism is (−ωp,n , ωp̄,n ).
+      Let µpn denote the group of all pn -th roots of unity, and let ζpn ∈ µpn be the
+      image of (ωp̄,n , ωp,n ) under the Weil pairing E[pn ] × E[pn ] → µpn . We fix an
+      embedding ιp : K ,→ Cp corresponding to a place of K above p, together with
+                                  ∼
+      a field isomorphism C −    → Cp whose composition with ι∞ is ιp . When there is
+      no ambiguity, we identify C with Cp√ via this isomorphism and omit ι∞ and ιp
+      from the notation. Then we have ζpn−dK = exp(−2πi/pn ) (see [dS87, II.6.2]),
+                                                                √
+      where π denotes the usual circle constant and i = −1.
+    • For integers m, n ≥ 0, we define
+             Fm := K(E[p̄m ]),         Km,n := Fm (E[pn ]) = K(E[pn p̄m ]).
+      We note that Fm (µpn ) = Km,n whenever n ≤ m. Set K(E[p∞ ]) := m,n≥0 Km,n
+                                                                          S
+
+      and G := Gal(K(E[p∞ ])/K). For a nonzero integral ideal a S     of OK , let K(a)
+      denote the ray class field of K modulo a. We also let K(p∞ ) := m,n≥0 K(pn p̄m )
+      denote the maximal abelian extension of K unramified outside p, and write
+      G := Gal(K(p∞ )/K).
+    • We define the following characters on G:
+        – Let χcyc : G → Z×  p be the p-adic cyclotomic character, characterized by
+                                           χ   (σ)
+                           σ(ζpn ) = ζpncyc     (n ≥ 1).
+         – Let κ1 : G → Op× ∼
+                            = Z×                  × ∼ ×
+                                p and κ2 : G → Op̄ = Zp be the characters describing
+           the action of G on Tp E and Tp̄ E, characterized respectively by
+           σ(ωp,n ) = [κ1 (σ)]E (ωp,n ),   σ(ωp̄,n ) = [κ2 (σ)]E (ωp̄,n ) (n ≥ 1).
+      By the Galois equivariance of the Weil pairing, we have κ1 κ2 = χcyc . We fix
+      a lift ϕ ∈ G of the Artin symbol (p, K(E[p̄∞ ])/K) such that κ1 (ϕ) = 1. Then
+      κ2 (ϕ) = π.
+                                                                                            5
+
+     • We introduce the formal groups used below.
+         – Let Gb m be the formal multiplicative group over Zp with parameter S. For
+            a ∈ Zp , we define [a]Gb m (S) = (1 + S)a − 1.
+         – Let E b be the formal group of E over Op , with parameter T = −2x/y.
+            Since p splits in K and E has complex multiplication by OK , the formal
+            group E b has height 1 over Op and carries its natural Op -module structure.
+            For a ∈ Op ∼  = Zp , write [a]Eb for the corresponding endomorphism. For
+            each integer n ≥ 0, we let ωn := T (ωp,n ).
+     • For each integer m ≥ 0, we define the following semilocal Kp -algebra:
+                             Fm := Fm ⊗K Kp ∼
+                                                    Y
+                                                 =     Fm,v .
+                                                          v|p
+
+        Here and below, the products are indexed by the places v of Fm above p, and
+        Fm,v denotes the completion of Fm at v. Since the extensions Fm (µpn )/Fm and
+        Km,n /Fm are totally ramified at every such v, the place v extends uniquely to
+        each of these fields; the corresponding completions are denoted by Fm,v (µpn )
+        and Km,n,v , respectively. We define a subring Om of Fm by
+                                           Y
+                                    Om :=     OFm,v ,
+                                             v|p
+
+        Let Ob denote the completion of O∞ := S
+                                                      m≥0 Om . The action of G on O∞
+        extends continuously to O.    b The residue fields of Fm,v (µpn ) and Km,n,v are
+        naturally identifiedQ   with that of Fm,v . Denote this common residue field by
+        km,v and set km := v|p km,v . Then we have decompositions
+
+                  OF×m,v (µpn ) ∼                              ∼
+               Y                                   Y
+                                    ×    cyc           ×          ×    ell
+                                = km  × Um,n ,       OK  m,n,v
+                                                               = km × Um,n ,
+               v|p                                  v|p
+                 cyc       ell
+        where Um,n   and Um,n  are the corresponding groups of principal units. In par-
+                                               ×
+        ticular, kQ
+                  m is independent of n, Qand km is a finite group of order prime to p.
+                         ×                     ×
+        For x ∈ v|p OFm,v (µpn ) or x ∈ v|p OKm,n,v , write ⟨x⟩ for its projection onto
+        the second factor. Taking inverse limits with respect to the norm maps, define
+                          Ucyc
+                           m := ←
+                                     cyc
+                                lim Um,n ,         Uell
+                                                    m := ←
+                                                              ell
+                                                         lim Um,n ,
+                                  −                        −
+                                   n                            n
+        and
+                          Ucyc  lim Ucyc
+                           ∞ := ←        ,         Uell  lim Uell
+                                                    ∞ := ←        .
+                                  − m                      − m
+                                   m                            m
+                                                                          ell        cyc
+        Since Fm (µ ) = Km,n whenever n ≤ m, the identifications Um,n
+                     pn                                                        = Um,n     for
+        n ≤ m are compatible with the norm maps. As the pairs (m, n) satisfying n ≤
+                                                                                   ∼
+        m form a cofinal subsystem, they induce a canonical isomorphism Uell      → Ucyc
+                                                                                ∞ −      ∞ .
+        In particular, if β = (βm,n )m,n ∈ Uell
+                                            ∞   corresponds to ϵ = (ϵ   )
+                                                                     m,n m,n  ∈ U cyc
+                                                                                  ∞   , then
+        βm,n = ϵm,n for n ≤ m. The fixed embedding ιp induces a map from O         b to Cp
+        by projection onto the component corresponding to the chosen place above p.
+        We denote the image of an element under this map by ( · )∗ .
+
+                           3. Elliptic Soulé characters
+  In this section, we review the definition and basic properties of Kummer characters
+associated with elliptic units, which we call elliptic Soulé characters.
+6
+
+3.1. Fundamental theta function. First, we recall some basic properties of the fun-
+damental theta function and elliptic units. We fix an ordered Z-basis (ω1 , ω2 ) of the
+lattice L such that τ := ω1 /ω2 lies in the upper half-plane. The Weierstrass σ-function
+associated with L is defined by
+                                                                 
+                                  Y          z       z 1  z 2
+                    σ(z; L) = z           1−     exp     +          .
+                                              λ        λ 2 λ
+                                 λ∈L\{0}
+
+The discriminant of L is given by
+                                12 Y  ∞
+                             2πi
+                  ∆(L) =            qτ     (1 − qτν )24 ,        qτ = e2πiτ .
+                              ω2       ν=1
+
+We further set
+                                                                 X
+               A(L) := π −1 Area(C/L),        s2 (L) := lim              λ−2 |λ|−2s ,
+                                                         s→0
+                                                               λ∈L\{0}
+
+where the latter series defines a holomorphic function for Re(s) > 0 and admits a
+holomorphic continuation to a neighborhood of s = 0, with the limit taken after this
+continuation. We then define the R-linear function
+                               η(z; L) := A(L)−1 z̄ + s2 (L)z.
+Definition 3.1 ([dS87, II.2.1(7) and II.2.3]). With the above notation, we define the
+following functions.
+     (i) The fundamental theta function associated with L is defined by
+                     θ(z; L) := ∆(L) exp −6zη(z; L) σ(z; L)12 .
+                                                     
+
+    (ii) Let a = (α) be a nontrivial ideal of OK coprime to p. We define
+                       θ(z; L)Na     −12     Na−1
+                                                   Y                       −6
+(1)      θa (z; L) :=       −1
+                                 = α     ∆(L)            ℘(z; L) − ℘(P ; L) .
+                      θ(z; a L)
+                                                   P ∈E[a]\{0}
+
+Remark 3.2. We make some remarks on the functions defined above.
+    • The fundamental theta function can be written as θ(z; L) = ∆(L)k(z, L)12 ,
+                           zη(z;L)
+      where k(z, L) := e− 2 σ(z; L) is the Klein form associated with L, in the
+      notation of Kubert and Lang [KL81, p. 27]. Moreover, θ(z; L) coincides with
+      the twelfth power of the Siegel function in their book.
+    • Since η(z; L) involves z̄, the function θ(z; L) is not holomorphic. Moreover, it is
+      not periodic with respect to L. In the quotient defining θa (z; L), however, the
+      non-holomorphic factors cancel, and (1) shows that θa (z; L) is a meromorphic
+      elliptic function on C/L.
+Lemma 3.3 ([IG26, Lemma 2.3], [dS87, II.2.4]). The following properties hold.
+    (i) Let ω ∈ E[p∞ ] be a nonzero p-primary torsion point, and let ω  e ∈ C be any lift of
+        ω under the uniformization C/L ∼     = E(C). Then θ(e ω ; L) ∈ K(p∞ )× . Moreover,
+                                          ×
+        the image of θ(e          \
+                        ω ; L) in K(p  ∞ ) := lim K(p∞ )× /K(p∞ )×pn is independent of
+                                               ←−n
+        the choice of ω
+                      e.
+   (ii) Let a be a nontrivial ideal of OK prime to p. Let m, n ≥ 1, and let ω ∈ E[pn p̄m ]
+        be primitive (i.e. ω ∈/ E[pn−1 p̄m ] and ω ∈
+                                                   / E[pn p̄m−1 ]). Then θa (ω; L) is a unit
+                                        n m
+        in the ring of integers of K(p p̄ ).
+                                                                                              7
+
+3.2. Elliptic units and elliptic Soulé characters. For each n ≥ 1 and each pair of
+integers 0 ≤ a, b < pn with p ∤ gcd(a, b), choose a lift ω ea,b ∈ C of aωp,n + bωp̄,n ∈ E[pn ].
+                                                                     n
+By Lemma 3.3 (i), the class of θ(e  ωa,b ; L) in K(p ) /K(p∞ )×p is independent of the
+                                                      ∞ ×
+
+choice of ω
+          ea,b . We denote this class simply by θ(aωp,n + bωp̄,n ; L). For positive integers
+i, j and each n ≥ 1, we define
+                                                   i−1 j−1                      n
+                        Y
+(2)         ϵ(i,j),n :=      θ(aωp,n + bωp̄,n ; L)a b ∈ K(p∞ )× /K(p∞ )×p .
+                       0≤a,b<pn
+                       p∤gcd(a,b)
+
+Remark 3.4. The element ϵ(i,j),n is independent of the choice of the period Ω satisfying
+                                                     ×
+L = ΩOK . Indeed, replacing Ω by uΩ with u ∈ OK         replaces ωp,n and ωp̄,n by their
+respective u-multiples. Since uL = L, the scaling relation
+                                 θ(cz; cL) = θ(z; L)       (c ∈ C× )
+gives θ(uz; L) = θ(z; L). Hence every factor in (2) remains unchanged.
+  By the theory of complex multiplication, K(pn ) is generated over K by the values of
+a Weber function at the pn -torsion points (see [Sil94, Chap. II, Theorem 5.6]). Hence
+K(p∞ ) is the fixed field of ∆ := Gal(K(E[p∞ ])/K(p∞ )), where ∆ is the kernel of the
+composite map
+                               (κ1 ,κ2 )
+                           G −−−−→ Op× × Op̄× −→ (Op× × Op̄× )/OK
+                                                                ×
+                                                                  .
+We now assume that i ≡ j (mod wK ). Since the two components of the image of each
+element under the embedding OK   ×
+                                   ,→ Op× × Op̄× are inverses of each other, κi1 κj2 factors
+through the restriction map res : G ↠ G, defining a character
+                                           κi1 κj2 : G → Z×
+                                                          p.
+
+Lemma 3.5 ([IG26, Lemma 1.2]). For every n ≥ 1, the following assertions hold.
+   (i) For every σ ∈ G, one has
+                                                  1−j
+                                          κ1−i
+                                             1 κ2     (σ)
+                             σ ϵ(i,j),n = ϵ(i,j),n        .
+         In particular, ϵ(i,j),n is fixed by Gal(K(p∞ )/K(pn )).
+    (ii) Under the natural projection
+                                              n+1                          n
+                        K(p∞ )× /K(p∞ )×p           → K(p∞ )× /K(p∞ )×p ,
+         the class ϵ(i,j),n+1 maps to ϵ(i,j),n .
+   For each n ≥ 1, we use the same notation κ1 and κ2 for the mod-pn characters
+κ1 , κ2 : Gal(K(E[pn ])/K) → (Z/pn Z)× . In particular, when i ≡ j (mod wK ), the
+character κi1 κj2 factors through Gal(K(pn )/K), and hence defines
+                          κi1 κj2 : Gal(K(pn )/K) → (Z/pn Z)× .
+                                                                            ×
+                                                                      \
+By the above lemma, the family ϵ(i,j),n n≥1 determines an element of K(p  ∞ ) . Using
+
+this Galois equivariance, we define the associated Kummer characters as follows.
+Definition 3.6. Let (i, j) be a pair of positive integers such that i ≡ j (mod wK ).
+     • We define the (i, j)-th elliptic Soulé character
+                                                                  i j
+                             χell      ab
+                              (i,j) : GK(p∞ ) → Zp (i, j) := Zp (κ1 κ2 )
+8
+
+         to be the unique character satisfying the following relation for every n ≥ 1 and
+         σ ∈ Gab
+               K(p∞ ) :
+                                 χell (σ)
+                                             n σ−1
+                                              1/p
+                                ζpn(i,j) = ϵ(i,j),n     .
+      • For a nontrivial ideal a of OK prime to p, we define
+                                       χell        ab
+                                        (i,j),a : GK(p∞ ) → Zp (i, j)
+
+         to be the unique character satisfying the following relation for every n ≥ 1 and
+         σ ∈ Gab
+               K(p∞ ) :
+
+                                                                          j−1      σ−1
+                                                                  κi−1
+                                
+                                                                   1 κ2     (τ )
+                                                                           n
+                χell
+                 (i,j),a
+                         (σ)              Y                 Ω            p
+               ζpn             =                      τ θa    ;L                      .
+                                                            pn
+                                    τ ∈Gal(K(pn )/K)
+
+Remark 3.7. We make some remarks on elliptic Soulé characters.
+    • For integers i, j ≥ 2 satisfying i ≡ j (mod wK ), sufficient conditions for the
+      nontriviality of χell  (i,j) are given in [Ish25].
+    • The elliptic Soulé characters were first introduced by Nakamura [Nak95]. His
+      characters κi,j : GK(E[p∞ ]) → Zp are defined by the same Kummer construction
+      as in Definition 3.6, using the elements given in [Nak95, (3.11.5)]. Nakamura
+      proved [Nak95, Theorem A] that these characters describe the Galois action
+      on the maximal metabelian quotient of the pro-p geometric fundamental group
+      of E \ {O}. His construction applies to arbitrary elliptic curves over number
+      fields, without the CM assumption.
+    • The difference from Nakamura’s formulation lies only in the choice of a basis of
+      the p-adic Tate module Tp E and a generatorof Zp (1). Nakamura uses the basis
+      (ω 1 , ω 2 ) of Tp E, where ω r := ξ(ωr /pn ; L) n for r = 1, 2, and the generator
+                                
+      ξ := exp(2πi/pn ) n of Zp (1), whereas we use ω p := (ωp,n )n , ω p̄ := (ωp̄,n )n ,
+      and ζ := (ζpn )n . By restricting to GK(E[p∞ ]) , we may define χell     (i,j) for arbitrary
+      positive integers i and j by the same Kummer relation. A direct calculation
+      under the corresponding change of basis shows that
+             X                     ⊗j
+                                                    X                       ⊗j
+                   κi,j ω ⊗i
+                          1  ⊗   ω 2  ⊗  ξ  and          χell         ⊗i
+                                                          (i+1,j+1) ω p ⊗ ω p̄ ⊗ ζ
+             i+j=m                                         i+j=m
+                                                                 Gal(K(E[p∞ ])/K)
+         define the same element of H 1 GK(E[p∞ ]) , Symm Tp E(1)                  .
+Proposition 3.8 ([Ish25, Proposition 4.2]). Let a be a nontrivial ideal of OK prime
+to p, and let σa = (a, K(p∞ )/K) ∈ Gal(K(p∞ )/K) be the corresponding Artin symbol.
+Then, for each pair of positive integers (i, j) ̸= (1, 1) such that i ≡ j (mod wK ), the
+following relation holds:
+                                              
+                1               1                  ell           i  1−i 1−j
+                                                                                          ell
+   wK                    +                 − 1   χ (i,j),a = (−1)  κ1  κ2   (σ a ) − N a  χ(i,j) .
+         1 − π i−1 π̄ j−1 1 − π j−1 π̄ i−1
+
+     4. Coleman theory in the cyclotomic and CM elliptic settings
+  In this section, we review the theory of Coleman power series in both the cyclotomic
+and elliptic settings, and introduce the two-variable Coates–Wiles homomorphisms and
+the two-variable p-adic L-function appearing in our formula.
+                                                                                            9
+
+4.1. Coleman power series in the cyclotomic setting. In this subsection, we recall
+Coleman power series in the cyclotomic setting and Coleman’s explicit reciprocity law,
+which expresses Hilbert norm residue symbols in terms of these power series.
+  First, we set
+                            n                                    o
+                       ×1                   ×
+                O[[S]] := f (S) ∈ O[[S]] f (0) ≡ 1 (mod p) .
+                 b                    b
+
+                  ×1
+For f (S) ∈ O[[S]]
+             b       and c ∈ Zp , define
+                     ∞                               
+               c
+                   X     c             r              c     c(c − 1) · · · (c − r + 1)
+          f (S) :=           f (S) − 1 ,                  :=                            .
+                    r=0
+                         r                             r                  r!
+
+Since f (S) − 1 ∈ (p, S)O[[S]],
+                         b        this series converges in the (p, S)-adic topology and
+                             ×1
+defines an element of O[[S]] . For σ ∈ G and f (S) ∈ O[[S]],
+                       b                                         b     let f σ (S) denote the
+power series obtained by applying σ to the coefficients of f (S). We define a left action
+of G on O[[S]]
+         b     by
+                          (σ · f )(S) := f σ [χcyc (σ)]Gb m (S) .
+                                                                
+
+                            ×1                                ×1
+                                                                                    P
+This action preserves O[[S]]
+                      b        . Hence, for f (S) ∈ O[[S]]
+                                                       b          and a finite sum σ cσ σ ∈
+Zp [G], we may define
+                                  P         Y                cσ
+                           f (S) σ cσ σ :=      (σ · f )(S) .
+                                                  σ
+                               ×1             ×         ×1
+For each m ≥ 0, set Om [[S]]        := Om [[S]] ∩ O[[S]]
+                                                  b        .
+Definition 4.1 ([dS87, I.2.2]). Let m ≥ 0 be an integer. For every norm-compatible
+system ϵm = (ϵm,n )n ∈ Ucyc
+                        m , the Coleman power series associated with ϵm is the unique
+power series fϵm (S) ∈ Om [[S]]×1 satisfying
+                                        −n
+                                      fϵϕm (ζpn − 1) = ϵm,n
+for every n ≥ 1.
+   Next, we introduce several operators on the power series ring. The norm operator
+introduced in [Col79] and the reduced trace operator introduced in [Col81, p. 386] can
+be defined in the same way over O.
+                                 b
+
+Definition 4.2 ([Col79], [Col81, p. 386]).
+                                       ×         ×
+    (i) The norm operator N : O[[S]]
+                                 b       → O[[S]]
+                                             b      is the unique multiplicative operator
+        satisfying
+                                              Y
+                     ([p]Gb m ◦ N )(f )(S) =    f (ξ(1 + S) − 1).
+                                                  ξ∈µp
+
+    (ii) The reduced trace operator S : O[[S]]
+                                           b     → O[[S]]
+                                                     b     is the unique additive operator
+         satisfying
+                                             1X
+                      ([p]Gb m ◦ S)(f )(S) =       f (ξ(1 + S) − 1).
+                                             p ξ∈µ
+                                                        p
+
+                                                      ×
+   (iii) We define the integral logarithm L : O[[S]]
+                                               b        → O[[S]]
+                                                           b       by
+                                                   f (S)p
+                                                              
+                                     1
+                        L(f )(S) := log                          .
+                                     p      f ϕ ((1 + S)p − 1)
+10
+
+      (iv) We further define the differential operator D : O[[S]]
+                                                           b      → O[[S]]
+                                                                    b      by
+                                                          d
+                                        D := (1 + S)        .
+                                                         dS
+     A simple computation shows that the integral logarithm restricts to a homomorphism
+                                             × N =ϕ         S=0
+(3)                               L : (O[[S]]
+                                       b      )     → O[[S]]
+                                                      b         .
+For f ∈ O[[S]],
+         b      let µf denote the measure corresponding to f under the Amice trans-
+form, so that
+                                     Z
+(4)                          f (S) =   (1 + S)x dµf (x).
+                                              Zp
+
+Lemma 4.3. The following properties hold:
+    (i) For any σ ∈ G, fσ(ϵm ) (S) = σ · fϵm (S).
+   (ii) N (fϵm )(S) = (fϵϕm )(S).
+                                                                   S=0 ∼ b
+  (iii) The differential operator induces an isomorphism D : O[[S]]
+                                                               b       → O[[S]]S=0 .
+                                                                       −
+                                       S=0
+        Moreover, for each f ∈ O[[S]]
+                                   b       and each k ∈ Z, one has
+                                            Z
+                                  k
+                               D (f )(0) =      xk dµf (x).
+                                                   Z×
+                                                    p
+
+
+Proof. Assertions (i) and (ii) are the semilocal versions of [dS87, II.2.3, Corollary (iv)
+and (ii)], respectively, while (iii) is the semilocal version of [NSW17a, Lemma 3.4]. The
+proofs are the same as in the local setting.                                            □
+     For integers m, n ≥ 0, let
+                        Fm (µpn ) := Fm (µpn ) ⊗K Kp ∼
+                                                                Y
+                                                     =                Fm,v (µpn ).
+                                                                v|p
+
+For each place v of Fm above p, let recm,n,v : Fm,v (µpn )× → Gab
+                                                                Fm,v (µpn ) denote the local
+reciprocity map. Taking the product of these maps, we obtain
+                                   Y
+             recm,n : Fm (µpn )× →   Gab
+                                                                             
+                                       Fm,v (µp )
+                                               n  ,  (av )v →
+                                                            7 recm,n,v (a v )  v
+                                                                                 .
+                                        v|p
+
+By the norm compatibility of local reciprocity, these maps induce a continuous injection
+                                            Y
+                            rec∞ : Ucyc
+                                      ∞ ,→       Gab
+                                                  K(E[p∞ ])v ,
+                                                   v|p
+
+where the product is taken over the places v of K(E[p∞ ]) above p. For each such
+place v, choose an extension of v to K and identify GK(E[p∞ ])v with the corresponding
+decomposition subgroup of GK(E[p∞ ]) . Let λv : Gab             ab
+                                                  K(E[p∞ ])v → GK(E[p∞ ]) denote the homo-
+morphism induced on abelianizations by the inclusion of this decomposition subgroup.
+Since different choices of an extension of v give conjugate embeddings, the homomor-
+phism λv is independent of this choice. Since there are only finitely many places of
+K(E[p∞ ]) above p, we define
+                      Y                                        Y
+(5)              λp :    Gab    ∞
+                           K(E[p ])v → G ab
+                                               ∞
+                                         K(E[p ]) ,  (σv ) v →
+                                                             7    λv (σv ).
+                        v|p                                                v|p
+                                                                                                11
+
+Proposition 4.4. The composition
+                                  λp ◦ rec∞ : Ucyc  ab
+                                               ∞ → GK(E[p∞ ])
+
+is injective.
+Proof. For each m, n ≥ 0, let λm,n : v|p Gab                   ab
+                                         Q
+                                                Fm,v (µpn ) → GFm (µpn ) be the homomorphism
+                                                                                         cyc
+induced by the inclusions of the corresponding decomposition subgroups. Since Um,n           is
+                                                                                        cyc
+a pro-p group, [Gra03, Chap. III, Corollary 4.16.7] implies that λm,n ◦ recm,n : Um,n ,→
+Gab
+  Fm (µpn ) is injective. Passing to the inverse limit, we obtain the desired injectivity. □
+
+  Via the isomorphism Uell ∼ cyc                                        ell
+                       ∞ = U∞ from Section 2, we view rec∞ as a map on U∞ , and
+use the same notation:
+                                           Y
+(6)                         rec∞ : Uell
+                                    ∞   ,→   Gab
+                                              K(E[p∞ ])v .
+                                                    v|p
+
+Definition 4.5. The Hilbert norm residue symbol
+                            (·, ·)m,n : Fm (µpn )× × Fm (µpn )× → µpn
+is defined by
+                                                                            n
+                           Y
+            (a, b)m,n :=    (av , bv )m,n,v ,      (av , bv )m,n,v := (a1/p
+                                                                        v   )recm,n,v (bv )−1
+                           v|p
+
+for a = (av )v and b = (bv )v in Fm (µpn )× .
+   We now state Coleman’s explicit reciprocity law in a semilocal form. For f (S) ∈
+O[[S]], we write fv (S) for the power series obtained by projecting each coefficient onto
+ b
+the component corresponding to  R the Rplace v. Following Coleman [Col81], we introduce
+a continuous linear functional n = ( n,v )v : Om [[S]] → Om by
+                                                                   
+                  Z
+                            1  X                   1  X
+                      f := n        f (ζ − 1) =  n       fv (ζ − 1) .
+                    n       p ζ∈µ n               p ζ∈µ n
+                                     p                           p
+                                                                                  v
+                                                                          N =ϕ
+Theorem 4.6 ([Col81], [Col89]). Let f (S) ∈ (1 + SOm [[S]])  , and let gϵm (S) be the
+                                                      cyc
+Coleman power series associated with ϵm = (ϵm,n )n ∈ Um . Then, for every n ≥ 1,
+                                                TrFm /Kp ( n L(f )·DL(ϕ−n gϵm ))
+                                                          R
+                     (f (ζpn − 1), ϵm,n )m,n = ζpn                               ,
+where TrFm /Kp denotes the trace map
+                               X
+                TrFm /Kp (x) =    TrFm,v /Kp (xv )             (x = (xv )v ∈ Fm ).
+                                     v|p
+                                                   Q
+Proof. For each n ≥ 0, write ϵm,n = (ϵm,n,v )v ∈ v|p UFm,v (µpn ) , and for each v | p, set
+ϵv := (ϵm,n,v )n ∈ limn UFm,v (µpn ) . Applying Coleman’s explicit reciprocity law in the
+                   ←−
+form given in [NSW17a, Theorem 3.7], we obtain
+                                                 TrFm,v /Kp ( n,v L(fv )·DL(ϕ−n gϵv ))
+                                                             R
+                 (fv (ζpn − 1), ϵm,n,v )m,n,v = ζpn                                    .
+Taking the product over all places above p gives the desired equality.                          □
+12
+
+4.2. Coleman power series in the CM elliptic setting. In this subsection, we
+review the Coleman power series attached to E
+                                            b and their basic properties. Using these
+power series, we define the two-variable Coates–Wiles homomorphisms and recall de
+Shalit’s two-variable p-adic L-function.
+Proposition 4.7 ([dS87, II.4.5]). For each norm-compatible system β m = (βm,n )n ∈
+                                                              ×
+Uell
+  m , there exists a unique power series gβ m (T ) ∈ Om [[T ]] satisfying the interpolation
+property:
+                                       −n
+                                    gβϕm (ωn ) = βm,n
+for all n ≥ 1. The following properties hold:
+                         −1
+        (i) βm,0 = gβ1−ϕ
+                       m
+                            (0).
+             ϕ                 Q
+       (ii) gβm ◦ [π]Eb (T ) = ω∈E[p]
+                                 b gβ m (ω +E b T ).
+                                           σ
+      (iii) For any σ ∈ G, gσ(βm ) (T ) = gβm ◦ [κ1 (σ)]Eb (T ).
+     By [dS87, II.4.3], there exists an isomorphism of formal groups
+                            bm −   ∼
+(7)                      η: G  → E,
+                                 b              T = η(S) = Ωp S + · · · ∈ O[[S]],
+                                                                          b
+
+defined over O
+             b and satisfying
+(8)                           [κ1 (σ)]Eb ◦ η = η σ ◦ [χcyc (σ)]Gb m      (σ ∈ G).
+Such an isomorphism η is unique up to right composition with [a]Gb m for some a ∈ Op× .
+Henceforth, we fix η, and hence Ωp , by imposing the normalization (see [dS87, II.4.4])
+                                              −n
+(9)                                    ωn = η ϕ (ζpn − 1)           (n ≥ 1).
+In what follows, we also write Ωp for Ω∗p ∈ Cp .
+Lemma 4.8. Let m ≥ 1 and β m ∈ Uell
+                                m . Then the following hold.
+                    −1
+       (i) [π]Eb ◦ η ϕ = η ◦ [p]Gb m .
+      (ii) N (gβm ◦ η) = (gβm ◦ η)ϕ .
+Proof. The identity (i) follows from the normalization (9) by comparing the values of
+the two homomorphisms at the torsion points ζpn − 1 for n ≥ 1. For (ii), using the
+definition of N and (i), we have
+                                        −1
+                                                Y ϕ−1           −1
+               ([p]Gb m ◦ N )((gβm ◦ η)ϕ )(S) =    gβm ω +Eb η ϕ (S) .
+                                                                     
+
+                                                               ω∈E[p]
+                                                                 b
+
+Applying ϕ−1 to Proposition 4.7 (ii), and using (i) again, we obtain
+                                                          −1
+                              ([p]Gb m ◦ N )((gβm ◦ η)ϕ ) = [p]Gb m (gβm ◦ η).
+Since [p]Gb m is injective on O[[S]],
+                              b       the desired equality follows.                      □
+     For each integer m ≥ 1, set
+                Gm := Gal(Fm (E[p∞ ])/K),                  Hm := Gal(Fm (E[p∞ ])/Fm ).
+Proposition 4.9 ([dS87, II.4.6]). For each m ≥ 1, there exists a unique Gm -equivariant
+homomorphism im : Uell
+                    m → Λ(Gm , O), β m 7→ µβ m such that, for every β m ∈ Um ,
+                                   b                                            ell
+                                       Z
+                    L(gβm ◦ η)(S) =        (1 + S)κ1 (σ) dµβm (σ),
+                                                     Hm
+                                                                                               13
+
+                                                           ∼
+where κ1 restricts to an isomorphism κ1 : Hm −    → Z×p . The Gm -equivariance of im is
+                                −1
+given by µτ (βm ) ( · ) = µβm (τ · ) for any τ ∈ Gm .
+  For integers m′ ≥ m ≥ 1, let resm′ ,m : Gm′ ↠ Gm be the restriction map, and denote
+by (resm′ ,m )∗ : Λ(Gm′ , O)
+                          b → Λ(Gm , O)b the induced push-forward of measures. Also let
+            ell      ell
+Nrm′ ,m : Um′ → Um be the norm map. By the norm compatibility of the Coleman
+power series and the uniqueness argument in Proposition 4.9, we have (resm′ ,m )∗ ◦ im′ =
+im ◦ Nrm′ ,m . Passing to the inverse limit, we obtain a G-equivariant homomorphism
+(10)           i∞ : Uell      b ∼
+                     ∞ → Λ(G, O) = lim Λ(Gm , O),
+                                              b (β m )m 7→ µβ := (µβ )m .
+                                   ←−                               m
+                                          m
+
+With the notation of Section 2, µ∗β        ∈ Λ(G, Cp ) denotes the corresponding Cp -valued
+measure.                                           
+  By Lemma 4.8 (ii) and (3), we have S L(gβm ◦ η) = 0. Therefore, Lemma 4.3 (iii)
+implies that, for every integer k ∈ Z, we may define Dk L(gβm ◦ η)(0). Moreover, for
+each k ≥ 1, we define Kummer’s k-th logarithmic derivative of β m ∈ Uell
+                                                                      m by
+
+                                 δk (β m ) = Dk (log gβm ◦ η)(0).
+                                                                      ×
+We note that δk (β m ) ∈ O
+                         b for every k ≥ 1, since (gβ ◦ η)(S) ∈ O[[S]]
+                                                     m
+                                                                b       implies that
+         ′
+(gβm ◦ η) (S)/(gβm ◦ η)(S) ∈ O[[S]].
+                             b
+
+Lemma 4.10. Let β = (β m )m ∈ Uell   ∞ be a norm-compatible system. For each pair of
+integers (i, j), we have
+        Z                          X
+            κi1 κj2 (σ) dµ∗β (σ) ≡      κ−j      i
+                                         2 (τ ) D L(gτe(β m ) ◦ η)(0)
+                                                                      ∗
+                                                                        (mod pm ),
+           G                     τ ∈Gal(Fm /K)
+
+where τe ∈ G denotes a lift of τ acting trivially on E[p∞ ]. Moreover, when i ≥ 1,
+    Z                                              X
+        κi1 κj2 (σ) dµ∗β (σ) ≡ (1 − π j−1 π̄ i−1 )    κ−j        τ (β m ))∗ (mod pm ).
+                                                       2 (τ )δi (e
+       G                                         τ ∈Gal(Fm /K)
+
+The right-hand sides of both congruences are independent of the choice of the lifts τe.
+Proof. Using the lifts τe ∈ G chosen above, we have the coset decomposition
+                                          G
+                                Gm =            τe−1 Hm .
+                                           τ ∈Gal(Fm /K)
+
+Using this decomposition and the equivariance property in Proposition 4.9, we obtain
+       Z                      X               Z
+           i j        ∗                −j
+          κ1 κ2 (σ) dµβ (σ) ≡         κ2 (τ )    κi1 (σ) dµ∗τe(βm ) (σ) (mod pm ).
+           G                    τ ∈Gal(Fm /K)            Hm
+
+Therefore, the first congruence follows by applying Di to the left-hand side of the
+identity in Proposition 4.9 and then evaluating at S = 0. For the second congruence,
+by the definition of the integral logarithm, we have
+                    Di L(gτe(βm ) ◦ η)(0) = δi (e
+                                                τ (β m )) − pi−1 ϕ(δi (e
+                                                                       τ (β m ))).
+For the second term on the right-hand side, the identities χcyc (ϕ) = κ2 (ϕ) = π, together
+with Proposition 4.7 (iii) and (8), yield ϕ (δi (e τ (β m ))) = π −i δi (ϕe
+                                                                          τ (β m )). Therefore, we
+have             X                                          X
+          π −i           κ−j
+                           2 (τ )δi (ϕe
+                                      τ (β m )) = π j−i
+                                                                     κ−j
+                                                                       2 (τ )δi (e
+                                                                                 τ (β m )).
+               τ ∈Gal(Fm /K)                                   τ ∈Gal(Fm /K)
+14
+
+Hence, the second congruence holds. The independence of the choices of the lifts τe
+follows immediately from the argument above.                                    □
+Lemma 4.11. Let m ≥ 1 and β m ∈ Uell
+                                 m . For each pair of positive integers (i, j), we
+write                        X
+               (m)
+              δi,j (β m ) :=       κ−j                     b m O,
+                                               τ (β m )) ∈ O/p
+                                     2 (τ )δi (e
+                                                               b
+                                   τ ∈Gal(Fm /K)
+
+where τe ∈ G denotes a lift of τ acting trivially on E[p∞ ]. Then the following properties
+hold:
+                            (m)                         (m)
+      (i) For every σ ∈ G, δi,j (σ(β m )) ≡ κi1 κj2 (σ)δi,j (β m ) (mod pm ).
+               (m)      ∗
+    (ii) Ωj−i                   m
+           p δi,j (β m ) ∈ Zp /p Zp .
+
+Proof. (i) Given σ ∈ G, take σ     e ∈ G such that κ2 (σ) = κ2 (e          σ ) and σ
+                                                                                   e acts trivially on
+      ∞
+E[p ]. Since σ(δi (β m )) = σ    e(δi (β m )), Proposition 4.7 (iii) and (8) give δi (σ(β m )) =
+κi1 (σ)δi (e
+           σ (β m )). Therefore, we obtain
+     (m)
+                                X
+                                        κ−j
+                                                                               (m)
+    δi,j (σ(β m )) ≡ κi1 (σ)                        σ τe(β m )) ≡ κi1 κj2 (σ)δi,j (β m ) (mod pm ).
+                                          2 (τ )δi (e
+                           τ ∈Gal(Fm /K)
+
+                                                           (m)                     (m)
+(ii) The same equivariance relation gives σ(δi,j (β m )) = κj−i
+                                                            2 (σ)δi,j (β m ) for every
+                                                −1                    (m)
+σ ∈ G. On the other hand, (8) implies σ(Ωp ) = κ2 (σ)Ωp . Hence, Ωj−i
+                                                                  p δi,j (β m ) is fixed
+by G.                                                                                 □
+Definition 4.12. For each pair of positive integers (i, j), we define the (i, j)-th Coates–
+Wiles homomorphism
+                                ϕCW        ell
+                                  (i,j) : U∞ → Zp (i, j)
+
+by the congruences
+                                           X
+                 ϕCW           j−i
+                  (i,j) (β) ≡ Ωp                     κ−j        τ (β m ))∗
+                                                      2 (τ )δi (e            (mod pm )
+                                     τ ∈Gal(Fm /K)
+
+for every m ≥ 1, where τe ∈ G denotes a lift of τ acting trivially on E[p∞ ].
+Remark 4.13. By Lemma 4.10, the right-hand side of the above congruence is well-
+defined. The homomorphism defined above was originally introduced by Yager in
+[Yag82, (14)]. Although Yager defines the first component using the differential op-
+erator on E,
+           b his formulation coincides with ours after pullback along the isomorphism
+η defined in (7), up to the normalization factor Ωjp incorporated into our definition.
+   We now introduce the two-variable p-adic L-function following de Shalit’s formula-
+tion. Let φ be a Grössencharacter of K of conductor prime to p and of infinity type
+(1, 0). Given a Grössencharacter of the form ε = χφi φ̄j , where χ is a finite-order char-
+acter, write pn for the p-part of the conductor of χ. Regarding χ as a Galois character
+via the Artin reciprocity map, define a generalized Gauss sum [dS87, II.4, (30)] by
+                                          
+                                    φi φ̄j (pn ) X          γ −1
+                                                               
+                          G(ε) :=                    χ(γ) ζp n   ,
+                                        pn       γ∈C        n
+
+
+where               n                                                                o
+               Cn := γ ∈ Gal(K(pn p̄∞ )/K)               γ|K(p̄∞ ) = (pn , K(p̄∞ )/K) .
+                                                                                        15
+
+Theorem 4.14 ([dS87, II.4.14]). There exists a unique measure µdS ∈ Λ(G, O)b satis-
+fying the interpolation formula
+       Z                              √ j               
+                 ∗                      dK            ε(p)
+   j−i                     j−i
+                                                             1 − ε−1 (p̄) L(ε−1 , 0)
+                                                                         
+  Ωp      ε(σ) dµdS (σ) = Ω (i − 1)!        G(ε) 1 −
+        G                              2π              p
+for any Grössencharacter ε with conductor dividing p∞ and infinity type (i, j) satisfying
+0 ≤ −j < i. Here, L(ε−1 , s) denotes the complex Hecke L-function associated with ε−1 .
+Remark 4.15. As noted by Darmon–Lauder–Rotger [DLR15, p. 41, after (46)], a
+minor correction to the power of 2π appearing in de Shalit’s interpolation formula
+[dS87, II.4.14] is required, and the formula stated above incorporates this correction.
+  Under the standard decomposition Z×     ∼                                   ×
+                                        p = µp−1 × (1 + pZp ), each a ∈ Zp can be
+written uniquely as a = ω(a)⟨a⟩, where ω is the Teichmüller character and ⟨·⟩ denotes
+the projection onto 1 + pZp . Since the images of ∆ ∼= Gal(K(E[p∞ ])/K(p∞ )) under
+both κ1 and κ2 are contained in µp−1 , the characters ⟨κ1 ⟩ and ⟨κ2 ⟩ are trivial on ∆.
+They therefore descend to well-defined characters
+                                 ⟨κ1 ⟩, ⟨κ2 ⟩ : G → 1 + pZp .
+Definition 4.16 ([dS87, II.4.17]). Let χ be a finite-order character of G. We define the
+two-variable p-adic L-function by
+                               Z
+            Lp (s1 , s2 , χ) =   χ−1 ⟨κ1 ⟩s1 ⟨κ2 ⟩s2 (σ) dµ∗dS (σ) (s1 , s2 ∈ Zp ).
+                             G
+
+   Let a be a nontrivial ideal of OK prime to p. For integers m, n ≥ 1, Lemma 3.3 (ii)
+allows us to define the principal unit
+(11)                       θm,n (a) := ⟨θa (Ω; pn p̄m L)⟩ ∈ Um,n
+                                                             ell
+                                                                 .
+These units form a norm-compatible system θ(a) = (θm,n (a))m,n ∈ Uell   ∞ . For integers
+i, j satisfying i ≡ j (mod wK ), we also define a finite-order character ω (i,j) : G → Z×
+                                                                                        p
+                     i j
+      (i,j)
+                          
+by ω (σ) = ω κ1 κ2 (σ) . The following proposition compares the p-adic measure
+µθ(a) ∈ Λ(G, O)b with the two-variable p-adic L-function defined above.
+
+Proposition 4.17. For each pair of integers (i, j) satisfying i ≡ j (mod wK ), we have
+           Z
+              κi1 κj2 (σ) dµ∗θ(a) (σ) = 12#∆ κi1 κj2 (σa ) − N a Lp (i, j, ω −(i,j) ),
+                                                                
+              G
+
+where σa = (a, K(p∞ )/K) ∈ G denotes the Artin symbol of a.
+Proof. Let U′∞ := limm,n Um,n
+                            ′                          ′
+                               , where, for m, n ≥ 1, Um,n  denotes the group of principal
+                    ←−
+units of K(pn p̄m ) ⊗K Kp . As in (10), we obtain a homomorphism i′∞ : U′∞ → Λ(G, O).  b
+                                               ell      ′
+The compatibility of the norm map Nr : U∞ → U∞ with the push-forward res∗ :
+Λ(G, O)b → Λ(G, O) b induced by res : G ↠ G gives res∗ ◦i∞ = i′∞ ◦Nr. By Lemma 3.3 (ii),
+            ′
+                                      
+θm,n (a) ∈ Um,n , and hence Nr θ(a) = θ(a)#∆ . Therefore, the proof of [dS87, II.4.14]
+gives
+                                                          
+                            res∗ µθ(a) = 12#∆ σa − N a µdS .
+Since i ≡ j (mod wK ), the character κi1 κj2 descends to G, and the desired equality
+follows from the above identity of measures.                                      □
+16
+
+                           5. Coleman-theoretic comparison
+     In this section, we prove our main formula.
+5.1. Congruences for Coleman power series and logarithmic derivatives. First,
+we investigate the relation between the Coleman power series associated with G
+                                                                             b m and
+those associated with E.
+                       b
+                                                                 m    
+Lemma 5.1. Suppose that f, g ∈ O[[S]]
+                                    b    satisfy f (S) = (1 + S)p − 1 g(S) for some
+integer m ≥ 0. Then, for any continuous function ψ : Zp → O, b one has
+                   Z                  Z
+                                         ψ(x + pm ) − ψ(x) dµg (x),
+                                                           
+                       ψ(x) dµf (x) =
+                      Zp                    Zp
+
+where µf , µg ∈ Λ(Zp , O)
+                       b are the measures corresponding to f and g via (4).
+
+Proof. Let δa be the Dirac measure at a ∈ Zp . By the Amice transform,
+                                     Z
+                            pm
+                     (1 + S) − 1 =      (1 + S)x d(δpm − δ0 )(x).
+                                             Zp
+
+This means that µ((1+S)pm −1) = δpm − δ0 , and hence µf = (δpm − δ0 ) ∗ µg , so that
+             Z                   ZZ
+                  ψ(x) dµf (x) =           ψ(x + y) d(δpm − δ0 )(y) dµg (x)
+               Zp                   Zp ×Zp
+                                 Z
+                               =    (ψ(x + pm ) − ψ(x)) dµg (x).
+                                       Zp
+
+This yields the desired equality.                                                      □
+Proposition 5.2. Let ϵ = (ϵm )m = (ϵm,n )m,n ∈ Ucyc ∞ and β = (β m )m = (βm,n )m,n ∈
+Uell be norm-compatible systems corresponding to each other via the isomorphism Ucyc ∼
+ ∞                                                                               ∞ =
+ ell
+U∞ , so that ϵm,n = βm,n whenever n ≤ m. Then the following assertions hold.
+     (i) For each m ≥ 1,
+                                                                          m
+                         fϵm (S) ≡ (gβm ◦ η)(S)        (mod (1 + S)p − 1).
+            In particular, fϵm (0) = gβm (0).
+       (ii) For every m ≥ 1 and k ∈ Z, we have
+                         Dk L(fϵm )(0) ≡ Dk L(gβm ◦ η)(0)       (mod pm ).
+Proof. (i) Fix m ≥ 1. By the interpolation properties and our assumption, we have
+                    −n                            −n
+                  fϵϕm (ζpn − 1) = (gβm ◦ η)ϕ (ζpn − 1)           (1 ≤ n ≤ m).
+Applying    ϕn yields fϵm (ξn − 1) = (gβm ◦ η)(ξn − 1), where ξn := ϕn (ζpn ). Let F∞ :=
+                                         n
+S
+  m′ ≥0 Fm′ . Since ξn is a primitive p -th root of unity and Gal(F∞ (µpn )/F∞ ) acts
+trivially on O,
+              b taking Galois conjugates of these equalities for 1 ≤ n ≤ m gives
+                                 fϵm (ζ − 1) = (gβm ◦ η)(ζ − 1)
+for every ζ ∈ µpm \ {1}. Weierstrass division [Was97, Proposition 7.2] therefore gives
+                                                                      m
+(12)                fϵm (S) ≡ (gβm ◦ η)(S)        (mod ((1 + S)p − 1)/S).
+Evaluating at S = 0 and using η(0) = 0, we obtain
+                                 fϵm (0) ≡ gβm (0)       (mod pm ).
+                                                                                      17
+
+For m′ ≥ m, let Nrm′ ,m : Om′ → Om denote the norm map. Arguing       as in [Yag82,
+Lemma 2], we have Nrm′ ,m fϵm′ (0) = fϵm (0) and Nrm′ ,m gβm′ (0) = gβm (0). Applying
+the preceding argument at level m′ and then the norm map Nrm′ ,m , which preserves
+                      ′
+congruences modulo pm , we obtain
+                                                            ′
+                              fϵm (0) ≡ gβm (0)    (mod pm )
+for every m′ ≥ m. Since Om is p-adically separated, it follows that fϵm (0) = gβm (0).
+Combining this equality with (12) and using the fact that O
+                                                          b is p-torsion-free, we obtain
+                                                                m
+                     fϵm (S) ≡ (gβm ◦ η)(S)     (mod (1 + S)p − 1).
+                                              ×
+(ii) Let h(S) := (fϵm /(gβm ◦ η))(S) ∈ O[[S]]
+                                         b      . By Lemma 4.3 (ii) and Lemma 4.8
+(ii), we have N (h) = h . Hence, µL(h) is supported on Z×
+                        ϕ
+                                                          p by Lemma 4.3 (iii). Since
+L(h) = L(fϵm ) − L(gβm ◦ η), it suffices to prove D L(h)(0) ≡ 0 (mod pm ). By (i)
+                                                     k
+                                                  m     
+and the fact that L descends to O[[S]]
+                                   b       (1 + S)p − 1 , we may write L(h)(S) =
+          m    
+ (1 + S)p − 1 Q(S) for some Q(S) ∈ O[[S]].
+                                       b       For k ∈ Z, let
+                                       (
+                                        xk if x ∈ Z× p,
+                              ψk (x) =
+                                        0 if x ∈ pZp .
+
+Since µL(h) is supported on Z×p , Lemma 5.1 gives
+                       Z                      Z
+           k
+                                                 ψk (x + pm ) − ψk (x) dµQ (x).
+                                                                      
+         D L(h)(0) =      ψk (x) dµL(h) (x) =
+                        Zp                        Zp
+
+If x ∈ pZp , the integrand is zero, while if x ∈ Z×
+                                                  p , then
+                                                               !
+                                                        m k
+                                                        
+                                                      p
+                  ψk (x + pm ) − ψk (x) = xk     1+         − 1 ∈ pm Zp .
+                                                       x
+
+Since µQ is an O-valued
+               b        measure, it follows that
+                               Dk L(h)(0) ≡ 0      (mod pm ).
+This proves the desired congruence.                                                   □
+  For later use, we give the analogous congruence for the ordinary logarithm.
+Lemma 5.3. Under the same assumptions as in Proposition 5.2, for every m ≥ 1 and
+k ≥ 1, we have
+                    Dk log(fϵm )(0) ≡ δk (β m ) (mod pm ).
+Proof. By Proposition 5.2 (i), we may write
+                                fϵm (S)                 m
+                                          = 1 + (1 + S)p − 1 Q(S)
+                                                            
+                   h(S) :=
+                             (gβm ◦ η)(S)
+
+for some Q(S) ∈ O[[S]].
+                 b      Hence Dr (h − 1)(0) ≡ 0 (mod pm ) for r ≥ 1. Since Dk log h(0)
+is a polynomial with zero constant term in D(h − 1)(0), . . . , Dk (h − 1)(0), we obtain
+                              Dk log h(0) ≡ 0      (mod pm ).
+This proves the desired congruence.                                                   □
+18
+
+5.2. Proof of the main formula. We recall that (·, ·)m,n : Fm (µpn )× × Fm (µpn )× →
+µpn denotes the Hilbert norm residue symbol defined in Definition 4.5.
+Theorem 5.4. Let β = (β m )m = (βm,n )m,n ∈ Uell      ∞ . Then, for each integer m ≥ 1 and
+each pair of positive integers (i, j), the following holds:
+                                                                
+                        Y                        i−1 j−1
+                                   σ (θm,m (a))κ1 κ2 (σ) , βm,m     = ζpAm ,
+                     σ∈Gal(K(E[pm ])/K)
+                                                                                          m,m
+where
+                                                   X
+         A ≡(−1)i−1 (1 − π j−1 π̄ i−1 )                        κj−1
+                                                                2 (τ )D
+                                                                        1−i
+                                                                            L(gτe(θm (a)) ◦ η)∗ (0)
+                                            τ ∈Gal(Fm /K)
+                                                      X
+                                             ·                      κ−j       σ (β m ))∗
+                                                                     2 (σ)δi (e                  (mod pm ).
+                                                 σ∈Gal(Fm /K)
+
+Here, σe, τe ∈ G are lifts of σ and τ , respectively, whose actions on E[p∞ ] are trivial, and
+the right-hand side of the above congruence is independent of the choice of these lifts.
+Proof. First, we rewrite the first entry on the left-hand side of the asserted equation.
+Let Γm , Rm ⊂ G be sets of lifts of Gal(K(µpm )/K) and Gal(Fm /K), respectively, such
+that the elements of Γm act trivially on Fm , while those of Rm act trivially on K(µpm ).
+Then we have a bijection
+                               ∼
+                         → Gal(K(E[pm ])/K), (τ1 , τ2 ) 7→ τ1 τ2 |K(E[pm ]) .
+                Γm × R m −
+For σ ∈ Gal(K(E[pm ])/K), let (τ1 , τ2 ) ∈ Γm × Rm be the unique pair corresponding to
+σ. The relation κ1 κ2 = χcyc then gives
+                   j−1             j−i                j−i
+(13)          κi−1         i−1              i−1
+               1 κ2 (σ) = χcyc (σ)κ2 (σ) ≡ χcyc (τ1 )κ2 (τ2 )                               (mod pm ).
+Let (em (a))m = (em,n (a))m,n ∈ Ucyc  ∞ be the norm-compatible system corresponding
+under the isomorphism Uell    ∼    cyc             ell
+                            ∞ =  U ∞ to θ(a) ∈ U∞ defined by (11), so that em,n (a) =
+θm,n (a) for n ≤ m. By [dS87, II.4.9, Proposition (ii)] and Proposition 4.7 (i), we have
+gθm (a) (0) = 1. Hence, Proposition 5.2 (i) and Lemma 4.3 (ii) give
+(14)                        fem (a) (S) ∈ (1 + SOm [[S]])N =ϕ .
+For each k ≥ 0, we also define ωm (k) := σ∈Γm χkcyc (σ)σ ∈ Zp [G], which is the image
+                                             P
+of the basic element under the “weight accelerator” homomorphism (see the discussion
+preceding [NSW17a, Proposition 4.2]). Then, we have
+      −m ωm (i−1)                  −m                          Y              i−1
+      feϕm (a)      (ζpm − 1) := feϕm (a) (S)ωm (i−1) S=ζ m −1 =   τ (em,m (a))χcyc (τ ) .
+                                                                        p
+                                                                                     τ ∈Γm
+
+Therefore, by this identity and (13), we have
+                                                                                                             !κj−i
+                                                                                                               2 (τ2 )
+                                        j−1
+                                   κi−1                                                         χi−1
+        Y                                              Y               Y
+                                    1 κ2    (σ)                                                  cyc (τ1 )
+                     σ (θm,m (a))                 ≡            τ2              τ1 (em,m (a))
+σ∈Gal(K(E[pm ])/K)                                    τ2 ∈Rm          τ1 ∈Γm
+                                                                                       ωm (i−1)               κj−i
+                                                                                                                   2 (τ )
+                                                          Y                     −m
+                                                  ≡                          feϕm (a)τ               (ζpm − 1)              ,
+                                                      τ ∈Gal(Fm /K)
+                     ×pm
+modulo Fm (µpm )    . Now, we take the norm-compatible system (ϵm )m = (ϵm,n )m,n ∈
+Ucyc
+ ∞   corresponding to β ∈ Uell
+                            ∞ , so that ϵm,n = βm,n for n ≤ m, and let hϵm (S) denote
+                                                                                                                19
+
+the Coleman power series associated with ϵm . By (14), we may apply Theorem 4.6 to
+obtain                                                
+                              ωm (i−1)
+                       ϕ−m τ                                 α(τ )
+                      fem (a)           (ζpm − 1), ϵm,m   = ζpm ,
+                                                                        m,m
+
+where, by [Col89, Lemma (4.6)], the exponent α(τ ) is given by
+                  Z               −m                −m    
+                                    ϕ     τ              ϕ
+ α(τ ) ≡ TrFm /Kp     ωm (i − 1)L fem (a) (S) · DL hϵm (S)
+                    m
+                                 −m                −m  
+       ≡ TrFm /Kp (−1)i−1 D1−i L feϕm (a)τ (0) · Di L hϕϵm (0)
+       ≡ (−1)i−1 TrFm /Kp D1−i L(feτm (a) )(0) · (1 − pi−1 ϕ)Di (log hϵm )(0)                      (mod pm ).
+                                                                             
+
+Here, in the last congruence, we use that ϕ commutes with L and D. From the bilin-
+earity of the pairing, we obtain
+                                                             
+                                            κj−i
+                                                2 (τ )
+                                                                                  κj−i (τ )·α(τ )
+        Y             −m
+                           ωm (i−1)                               P
+                    ϕ    τ
+                  fem (a)           (ζp − 1)
+                                        m              , ϵm,m  = ζpmτ ∈Gal(Fm /K) 2              .
+   τ ∈Gal(Fm /K)
+                                                                         m,m
+
+Thus, the exponent on the right-hand side is precisely the desired quantity A. As in
+the proof of Lemma 4.10, we have
+                                                                                         
+                         X
+A ≡ (−1)i−1 TrFm /Kp            κj−i     1−i
+                                              L feτ (a) (0) · (1 − pi−1 ϕ)Di (log hϵm )(0)
+                                                       
+                                  2 (τ )D                           m
+                           τ ∈Gal(Fm /K)
+                                                                                                                      
+                                                          X
+  ≡ (−1)i−1 (1 − pi−1 κj−i                                          κj−i     1−i
+                                                                                 L feτm (a) (0) · Di (log hϵm )(0)
+                                                                                           
+                       2 (ϕ)) TrFm /Kp                               2 (τ )D
+                                       
+                                                    τ ∈Gal(Fm /K)
+                                       X                                       ∗
+  ≡ (−1)i−1 (1 − π j−1 π̄ i−1 )                     κj−i
+                                                     2 (τ )D
+                                                             1−i
+                                                                 L feστm (a)        (0) · Di (log hσϵm )∗ (0)   (mod pm ).
+                                  σ,τ ∈Gal(Fm /K)
+
+Here, in the last congruence, we use [Neu99, Chap. II, Corollary 8.4]. Making the
+change of variables τ ′ = στ in the double sum, we obtain
+                                                                       
+                                     X                      ′ ∗
+   A ≡ (−1)i−1 (1 − π j−1 π̄ i−1 )          κj−i ′
+                                              2 (τ )D
+                                                      1−i
+                                                          L feτm (a) (0)
+                                        τ ′ ∈Gal(Fm /K)
+                                                                                          
+                                                 X
+                                       ·                   κi−j   i      σ ∗
+                                                             2 (σ)D (log hϵm ) (0)
+                                                                                                (mod pm ).
+                                             σ∈Gal(Fm /K)
+
+For each τ ∈ Gal(Fm /K), take a lift τe ∈ G acting trivially on E[p∞ ]. Then, Lemma 4.3
+(i) and Proposition 5.2 (ii) yield
+             D1−i L(feτm (a) )∗ (0) ≡ κi−1
+                                       2 (τ )D
+                                               1−i
+                                                   L(fτe(em (a)) )∗ (0)
+                                     ≡ κi−1
+                                        2 (τ )D
+                                                1−i
+                                                    L(gτe(θm (a)) ◦ η)∗ (0)            (mod pm ).
+Similarly, by Lemma 5.3, we have
+      Di (log hσϵm )∗ (0) ≡ κ−i    i              ∗       −i
+                                                                   σ (β m ))∗
+                                          e(ϵm ) ) (0) ≡ κ2 (σ)δi (e
+                             2 (σ)D (log hσ                                                    (mod pm ).
+Hence, we obtain the desired congruence.                                                                        □
+20
+
+     By pulling back the elliptic Soul’e character along the composite
+                         Y                 λp
+                              Gab          → Gab
+                                K(E[p∞ ])v −
+                                                             ab
+                                              K(E[p∞ ]) −→ GK(p∞ ) ,
+                          v|p
+
+where λp is the homomorphism in (5), we regard it as a character on v|p Gab
+                                                                    Q
+                                                                             ∞      . Re-
+                                                                  ell
+                                                                       QK(E[pab ])v
+call also that the reciprocity map (6) gives an embedding rec∞ : U∞ ,→ v|p GK(E[p∞ ])v .
+Corollary 5.5 (Theorem 1.1). For each pair of positive integers (i, j) ̸= (1, 1) such
+that i ≡ j (mod wK ), the following identity holds:
+           χell
+            (i,j) (rec∞ (β))
+                                                                         
+                                               1               1
+                             = 12wK 1 −                 −
+            1 − π j−1 π̄ i−1            1 − π i−1 π̄ j−1 1 − π j−1 π̄ i−1
+                                    Lp (1 − i, 1 − j, ω (i,j)−1 ) CW
+                                ·                                ϕ(i,j) (β)   (β ∈ Uell
+                                                                                    ∞ ).
+                                               Ωj−i
+                                                 p
+
+Proof. For each m ≥ 1, by Lemma 4.10 and Definition 4.12, the exponent A in Theo-
+rem 5.4 can be written as follows:
+                                       Z
+               i−1      j−1 i−1    i−j        1−j    ∗
+      A ≡ (−1) (1 − π π̄ )Ωp             κ1−i                CW
+                                          1 κ2 (σ) dµθ(a) · ϕ(i,j) (β) (mod pm ).
+                                               G
+
+On the other hand, by Lemma 3.3 (ii), we have θa (Ω/pm ; L) ∈ K(pm ). Since i ≡ j
+                                                                                  ×
+(mod wK ) and the Hilbert symbol defined in Definition 4.5 is independent of the km -
+components of its entries, Definition 3.6 gives
+                        A ≡ #∆ χell                   (mod pm ).
+                                                    
+                                    (i,j),a rec∞ (β)
+
+Therefore, Proposition 3.8 and Proposition 4.17 yield the desired equality.                □
+Remark 5.6. In [IG26, Corollary 1.10], we obtained a CM elliptic analogue of the
+Coleman–Ihara formula along the cyclotomic line. We now restrict the above corollary
+to the cyclotomic line, i.e., to i = j, and verify that the resulting identity agrees with
+the formula obtained there. To this end, we first compare the choices of generators used
+in the two formulations.
+   Let χell
+        m denote the elliptic Soulé character defined in [IG26]. Recall that√there we
+used (−ωp,n , ωp̄,n ) as a basis of E[pn ] ∼                                       − −d
+                                           = E[pn ] ⊕ E[p̄n ] and exp (2πi/pn ) = ζpn K as a
+generator of µpn . By comparing the Kummer properties characterizing the elliptic Soulé
+characters under these choices with those under the choices made in Definition 3.6, we
+obtain the following identity of characters on GK(p∞ ) :
+                                                    p
+(15)                              χell
+                                    (m,m) = (−1)
+                                                 m
+                                                      −dK χellm.
+
+The same change of generator also affects the normalization of the Coates–Wiles ho-
+momorphisms. In [IG26], we used the one-variable Coates–Wiles homomorphism ϕCW       m
+of [NSW17a], defined on U∞ , the group of norm-compatible systems of principal units
+in the cyclotomic tower. The cyclotomic specialization ϕCW
+                                                        (m,m) defined in Definition 4.12
+                     CW                      ell
+is compatible with ϕm via the norm map U∞ → U∞ . Under this compatibility, the
+change of generator gives
+                                         p
+(16)                          ϕCW                 m CW
+                               (m,m) = (− −dK ) ϕm .
+
+  We next explain a correction to the comparison between the Gauss sum and Katz’s
+local factor underlying Gross’s factorization formula [Gro80, Theorem]. Let χ∞ be a
+                                                                                         21
+
+finite-order complex-valued character of Gal(K(p∞ )/Q) of conductor pn . On p. 88 of
+[Gro80], Gross defines the Gauss sum by
+                                      pn                  
+                                   1 X                2πia
+                         g(χ∞ ) = n      χ∞ (a) exp          .
+                                  p a=1                pn
+When χ∞ is even, Gross claims
+                          √     in [Gro80, §2.5, (3)] that Katz’s local factor Local(χ∞ ) :=
+Local(χ, Σ, δ), with δ = −dK /2, satisfies Local((χK )∞ ) = g(χ−1    ∞ ), where (χ√K )∞ de-
+                                         ∞
+notes the restriction of χ∞ to Gal(K(p )/K). However, for the choice δ = −dK /2,
+the additive character used in the Fourier transform defining Local(χ∞ ) is the one
+determined by ζp−1n . Therefore, the correct relation is
+                                          p
+                            g(χ∞ ) = χ∞ ( −dK ) Local(χ∞ ).
+Thus, writing LKatz
+                p   (s, χ) for Katz’s p-adic L-function defined in [Gro80, (2.4)], we find
+that the left-hand side of the equality in [Gro80, §2.5, (3)],
+                                        1      −1
+                                                    X
+                   LKatz
+                     p   (0, χ K ) = −     g(χ    )    χ(a) logp F + (a)p ,
+                                       3pn          A
+                             √
+should be multiplied by χ( −dK ), so that [Gro80, (3.4)] should read
+                        p
+                     χ( −dK )LKatz p  (0, χK ) = Lp (0, χεω)Lp (1, χ−1 ),
+where ε is the Dirichlet character associated with K. In the notation of [Gro80], let
+d be the generator of the common order-2 inertia subgroup Iℓ in Gal(K(µp∞ )/Q)/⟨c⟩
+for primes ℓ | dK , where c denotes complex conjugation, and let N = χcyc denote the
+cyclotomic character. Then, with this correction, Gross’s factorization formula takes
+the following form:
+                     (
+                      (χ−1 ⟨N ⟩s )(σ√−dK )Lp (s, χεω)Lp (1 − s, χ−1 ),  if χ(d) = 1,
+    LKatz
+      p   (s, χK ) =
+                      (χεω⟨N ⟩1−s )(σ√−dK )Lp (s, χεω)Lp (1 − s, χ−1 ), if χ(d) = −1.
+If s = m is even and χ = ω −m , then χ(d) = 1, and hence
+                p
+               ( −dK )−m LKatz
+                           p    (m, ω −m ) = Lp (m, εω 1−m )Lp (1 − m, ω m ).
+On the other hand, if s = m is odd and χ = εω −m , then χ(d) = −1, and we obtain
+              p
+             ( −dK )m−1 LKatz
+                           p   (m, ω −m ) = Lp (m, ω 1−m )Lp (1 − m, εω m ).
+Replacing Gross’s factorization formula used in the proof of [IG26, Corollary 1.10] with
+the above two formulas, and using (15) and (16), we obtain, for both even and odd m,
+            χell
+             (m,m) (rec∞ (β))                            ϕCW
+                                                          (m,m) (β)
+                                = 3wK LKatz
+                                       p    (m, ω −m )                 (β ∈ Uell
+                                                                             ∞ ).
+               1 − p2m−2                                 pm−1 − 1
+                                                  √
+  Finally, one checks that, for the choice δ = −dK /2, Katz’s p-adic L-function and
+the restriction to the cyclotomic line of the two-variable p-adic L-function defined in
+Definition 4.16 differ by a factor of 4 (see also [BS22, Remarks 4.1 and 6.5]):
+                                  LKatz
+                                   p    (s, χ) = 4Lp (s, s, χ).
+Hence, combining this relation with Katz’s functional equation [Kat78, (5.3.7)],
+(17)                       LKatz
+                            p    (m, ω −m ) = LKatz
+                                               p    (1 − m, ω m−1 ),
+we verify that the corrected formula above agrees with the restriction of Corollary 5.5
+to the cyclotomic line.
+22
+
+Remark 5.7. The functional equation for the p-adic L-function is also stated in [dS87,
+II.6.4], but its proof requires a correction. Indeed, the argument on p. 95 asserts that,
+for a continuous p-adic character ε = εG εH , the p-adic root number W p-adic (ε) depends
+only on the finite component εH . In general, however, W p-adic (ε) also depends on
+εG . After taking this dependence into account, the resulting functional equation for a
+Grössencharacter ε of infinity type (k, j), in the notation of [dS87, II.6.4], is
+                                        k+j+1          ε̌(σ−δ )
+                       Lp (ε) = dK N f 2 W p-adic (ε)            Lp (ε̌),
+                                                         ε(σδ )
+where f denotes the prime-to-p part of the conductor of ε. In particular, when f = (1),
+the product of the factors multiplying Lp (ε̌) on the right-hand side is equal to 1. Hence,
+                                         Lp (ε) = Lp (ε̌),
+which is consistent with Katz’s functional equation (17).
+  Acknowledgements. The first author was supported by The Keio University Doc-
+torate Student Grant-in-Aid Program from Ushioda Memorial Fund (Graduate school
+recommendation). The second author was supported by JSPS KAKENHI Grant Num-
+ber JP23KJ1882 and JP26K24484.
+
+                                         References
+[And89]   Greg W. Anderson, The hyperadelic gamma function, Invent. Math. 95 (1989), no. 1, 63–
+          131.
+[BS22]    Kâzım Büyükboduk and Ryotaro Sakamoto, On the non-critical exceptional zeros of Katz
+          p-adic L-functions for CM fields, Adv. Math. 406 (2022), Paper No. 108478, 54.
+[BS25]    David Burns and Takamichi Sano, On functional equations of Euler systems, Arithmetic of
+          L-functions, EMS Ser. Congr. Rep., EMS Press, Berlin, 2025, pp. 3–41.
+[Col79]   Robert F. Coleman, Division values in local fields, Invent. Math. 53 (1979), no. 2, 91–116.
+[Col81]   Robert Coleman, The dilogarithm and the norm residue symbol, Bull. Soc. Math. France
+          109 (1981), no. 4, 373–402.
+[Col89]           , Anderson-Ihara theory: Gauss sums and circular units, Algebraic number theory,
+          Adv. Stud. Pure Math., vol. 17, Academic Press, Boston, MA, 1989, pp. 55–72.
+[DLR15]   Henri Darmon, Alan Lauder, and Victor Rotger, Stark points and p-adic iterated integrals
+          attached to modular forms of weight one, Forum Math. Pi 3 (2015), e8, 95.
+[dS87]    Ehud de Shalit, Iwasawa theory of elliptic curves with complex multiplication, Perspectives
+          in Mathematics, vol. 3, Academic Press, Inc., Boston, MA, 1987.
+[Gra03]   Georges Gras, Class field theory: From theory to practice, Springer Monographs in Mathe-
+          matics, Springer-Verlag, Berlin, 2003.
+[Gro80]   Benedict H. Gross, On the factorization of p-adic L-series, Invent. Math. 57 (1980), no. 1,
+          83–95.
+[IG26]    Shun Ishii and Yuki Goto, On factorizations of certain Kummer characters associated
+          to once-punctured elliptic curves with complex multiplication, Int. J. Number Theory 22
+          (2026), no. 1, 1–24.
+[Iha86]   Yasutaka Ihara, Profinite braid groups, Galois representations and complex multiplications,
+          Ann. of Math. (2) 123 (1986), no. 1, 43–106.
+[IKY87]   Yasutaka Ihara, Masanobu Kaneko, and Atsushi Yukinari, On some properties of the uni-
+          versal power series for Jacobi sums, Galois representations and arithmetic algebraic geom-
+          etry (Kyoto, 1985/Tokyo, 1986), Adv. Stud. Pure Math., vol. 12, North-Holland, Amster-
+          dam, 1987, pp. 65–86.
+[Ish25]   Shun Ishii, On Kummer characters arising from Galois actions on the pro-p fundamental
+          groups of once-punctured CM elliptic curves, Res. Number Theory 11 (2025), no. 1, Paper
+          No. 38, 30.
+[Kat78]   Nicholas M. Katz, p-adic L-functions for CM fields, Invent. Math. 49 (1978), no. 3, 199–
+          297.
+                                                                                                   23
+
+[KL81]   Daniel S. Kubert and Serge Lang, Modular units, Grundlehren der Mathematischen Wis-
+         senschaften, vol. 244, Springer-Verlag, New York-Berlin, 1981.
+[Nak95]  Hiroaki Nakamura, On exterior Galois representations associated with open elliptic curves,
+         J. Math. Sci. Univ. Tokyo 2 (1995), no. 1, 197–231.
+[Neu99]  Jürgen Neukirch, Algebraic number theory, Grundlehren der mathematischen Wis-
+         senschaften [Fundamental Principles of Mathematical Sciences], vol. 322, Springer-Verlag,
+         Berlin, 1999.
+[NSW17a] Hiroaki Nakamura, Kenji Sakugawa, and Zdzislaw Wojtkowiak, Polylogarithmic analogue
+         of the Coleman-Ihara formula, I, Osaka J. Math. 54 (2017), no. 1, 55–74.
+[NSW17b]         , Polylogarithmic analogue of the Coleman-Ihara formula, II, Algebraic number the-
+         ory and related topics 2014, RIMS Kôkyûroku Bessatsu, vol. B64, Res. Inst. Math. Sci.
+         (RIMS), Kyoto, 2017, pp. 33–54.
+[Sil94]  Joseph H. Silverman, Advanced topics in the arithmetic of elliptic curves, Graduate Texts
+         in Mathematics, vol. 151, Springer-Verlag, New York, 1994.
+[Sou81]  Christophe Soulé, On higher p-adic regulators, Algebraic K-theory, Evanston 1980 (Proc.
+         Conf., Northwestern Univ., Evanston, Ill., 1980), Lecture Notes in Math., vol. 854, Springer,
+         Berlin, 1981, pp. 372–401.
+[SV26]   Takamichi Sano and Otmar Venjakob, On extended interpolation properties of the katz
+         p-adic L-function, Unpublished manuscript, 2026.
+[Was97]  Lawrence C. Washington, Introduction to cyclotomic fields, second ed., Graduate Texts in
+         Mathematics, vol. 83, Springer-Verlag, New York, 1997.
+[Yag82]  Rodney Yager, On two variable p-adic L-functions, Ann. of Math. (2) 115 (1982), no. 2,
+         411–449.
+
+  † Graduate School of Science and Technology, Keio University, 3-14-1 Hiyoshi,
+Kouhoku-ku, Yokohama 223-8522, Japan.
+
+  ⋄ RIKEN Center for Advanced Intelligence Project (AIP), 1-4-1 Nihonbashi, Chuo-
+ku, Tokyo 103-0027, Japan.
+  Email address: [e-mail address removed]
+
+  ‡ Research Institute for Mathematical Sciences (RIMS), Kyoto University, Kyoto
+606-8502, Japan.
+

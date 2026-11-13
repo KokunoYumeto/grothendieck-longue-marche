@@ -1,0 +1,112 @@
+\subsection{A cubic Kummer obstruction at the prime 109}
+
+\begin{statement}{E.28}{Proved}{A nonempty cubic abelian fiber with no class-two lifts}
+In the pro-$3$ version of E.24, consider the toric section class
+\[
+ (\kappa(6),\kappa(109))
+ \in H^1(\mathbb Q,\mathbb Z_3(1)^2).
+ \tag{E28.1}
+\]
+Its fiber of geometrically abelian sections is nonempty and is
+a torsor under
+$\mu_3^3\times\mathcal R_{\mathcal I}(\mathbb Z_3)\times\mathbb Z_3$.
+No point of this fiber lifts to a section of the curve's own
+class-two pro-$3$ quotient. No such lift exists for the intrinsic
+metabelian quotient, the intrinsic marked-depth quotient of E.25,
+or the inherited class-two pro-$3$ quotient either.
+\end{statement}
+\begin{proof}
+Let $F_3$ be the free pro-$3$ group on the base loops $x,y$,
+and put $\mathcal H=F_3/\gamma_3F_3$.
+In its class-two Lie coordinates over $\mathbb Z_3$ write
+$X=\log x$, $Y=\log y$, $C=[X,Y]$.
+The Baker--Campbell--Hausdorff formula has only the denominator
+two, which is a unit in $\mathbb Z_3$.
+The image $H$ of $N_3$ consists exactly of
+\[
+ \exp(3aX+3bY+cC),\qquad a,b,c\in\mathbb Z_3.
+ \tag{E28.2}
+\]
+The exponent-sum condition proves containment, and the elements
+$x^3,y^3,[x,y]\in N_3$ generate the full lattice in (E28.2).
+In coordinates $(a,b,c)$ its multiplication is
+\[
+ (a,b,c)(a',b',c')=
+ \left(a+a',b+b',
+ c+c'+\frac92(ab'-ba')\right).
+ \tag{E28.3}
+\]
+In particular the commutator is $(0,0,9(ab'-ba'))$.
+The coordinates $a,b$ are the two coordinate-unit homology
+coordinates of $U_3$; the covering pushforward to base
+homology is $(3a,3b)$.
+
+The normalized Galois action sends $x$ to $x^\chi$ and
+$y$ to $f_g^{-1}y^\chi f_g$, with $f_g\in F_3'$.
+In $\mathcal H$ this conjugator is central, so the action on
+(E28.2) is exactly
+\[
+ (a,b,c)\longmapsto(\chi(g)a,\chi(g)b,\chi(g)^2c).
+ \tag{E28.4}
+\]
+The unit tangent at $t=0$ lifts to the plus cubic by
+$w=-x/z$, $t=w^3$ and $y/z=-(1-w^3)^{1/3}$.
+Its toric leading coefficients are $(-1,-1)$.
+Thus the base rational tangential section lifts to the cubic
+and the inherited extension is $H\rtimes G_{\mathbb Q}$.
+The pro-$3$ Kummer classes of both these signs, and of the
+sign at the origin used in E.24, are zero. Changing between
+these two tangential origins therefore fixes the toric
+coordinates of every abelian class, so it leaves (E28.1)
+and its entire fiber unchanged.
+
+Reduce all three coordinates in (E28.3) modulo $27$.
+This gives a Galois-stable finite quotient $H_{27}$ of order
+$27^3$, of exponent $27$, whose commutator of lifts of
+$(1,0)$ and $(0,1)$ is $(0,0,9)\ne1$.
+At the local field $\mathbb Q_{109}$ the action (E28.4) on
+$H_{27}$ is trivial: the $3$-adic cyclotomic character is
+unramified there, with Frobenius $109\equiv1\pmod {27}$.
+The integer $6$ has exact order $108$ in
+$\mathbb F_{109}^{\times}$. Consequently its Kummer class
+modulo $27$ is unramified with Frobenius value a generator of
+$\mu_{27}$, while the Kummer class of $109$ has tame-inertia
+value a generator. Choose the common generator of $\mu_{27}$
+so that the Frobenius value for $6$ is $1$; a generator of
+tame inertia can then be chosen with the value for $109$
+also equal to $1$. We may choose Frobenius fixing the selected
+roots of the uniformizer. The two projected values are thus
+$(1,0)$ and $(0,1)$.
+
+A section would therefore give a homomorphism
+$G_{\mathbb Q_{109}}\to H_{27}$ with those two projections.
+Wild inertia is pro-$109$ and maps trivially to this finite
+$3$-group. In the tame quotient, choose Frobenius $\sigma$
+and tame inertia $\tau$ using roots of the uniformizer.
+Frobenius acts on their roots of unity by the $109$th power,
+so
+$\sigma\tau\sigma^{-1}=\tau^{109}$.
+Since $H_{27}$ has exponent $27$, this relation forces the
+two images to commute. Equation (E28.3) gives their commutator
+as $(0,0,9)$, independently of their central coordinates,
+a contradiction.
+The program \texttt{e\_cubic\_class2.py} checks the order of
+$6$ modulo $109$, the exponent and the full multiplication
+formula, and all $27^2$ choices of the two central lifts.
+
+Finally the map $N_3\to H_{27}$ kills $\gamma_3N_3$,
+$N_3''$ and $\gamma_3 I_3$.
+These are the actual factorizations through the quotients in
+the statement. The explicit toric projection is $(a,b)$, so
+every hypothetical lift of any point of the E.24 fiber would
+give the forbidden homomorphism. E.24 proves the asserted
+nonemptiness and size of the abelian fiber independently of
+this obstruction. There is no reduction map from the rational
+group $H_{\mathbb Q_3}$ to $H_{27}$ extending this reduction on
+its integral lattice: every element of $H_{\mathbb Q_3}$ is a
+$27$th power, whereas every $27$th power in $H_{27}$ is one.
+Thus any such homomorphism is trivial.
+The finite obstruction is used only for the indicated integral
+pro-$3$ quotients. The result does not classify the remaining
+cubic class-two sections whose toric pairs pass this local test.
+\end{proof}
