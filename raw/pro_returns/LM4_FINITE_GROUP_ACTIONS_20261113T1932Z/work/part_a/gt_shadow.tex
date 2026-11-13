@@ -1,0 +1,240 @@
+\subsection{A full profinite lifting criterion and nonnilpotent finite tests}
+
+\begin{claim}{D.23}{Proved}{Order-preserving lifting and conjugacy in the full shadow system}
+Let $\mathcal I$ be the cofiltered poset of isolated finite-index normal
+subgroups $N\unlhd B_3$ contained in the pure braid group $PB_3$, and put
+$Q_N=GT(N)$.  The finite groups and their reduction homomorphisms
+$R_{N,H}:Q_N\to Q_H$ for $N\subseteq H$ are those of
+\cite[Proposition 3.14, Theorem 5.2 and Proposition 5.5]{A-DGShadows}.
+We use the continuous isomorphism
+\[
+ \Psi:GT_0\xrightarrow{\ \sim\ }\varprojlim_{N\in\mathcal I}Q_N,
+ \qquad (\lambda,f)\longmapsto
+ \bigl([ (\lambda-1)/2,f]_N\bigr)_N.
+\]
+For a positive integer $d$, write $T_d(Q)=\{q\in Q:q^d=1\}$.
+For each $H\in\mathcal I$, the image of $T_d(GT_0)$ in $Q_H$ is exactly
+\[
+ \bigcap_{\substack{N\in\mathcal I\\N\subseteq H}}
+ R_{N,H}\bigl(T_d(Q_N)\bigr).                         \tag{D.23a}
+\]
+An element of order exactly $d$ in this intersection has a lift of
+order exactly $d$. Every element of order exactly $d$ in $GT_0$ has
+an image of order exactly $d$ at some isolated level.
+For $a,b\in GT_0$, conjugacy in $GT_0$ is equivalent to conjugacy
+of $\Psi(a)_N$ and $\Psi(b)_N$ in every $Q_N$.
+\end{claim}
+\begin{proof}
+The cited theorem identifies the two profinite groups, including their
+topologies. Its Proposition 5.1 makes the coordinates cofinal in the
+finite quotients of $\widehat\Z$ and $\widehat F_2$. The map between
+the normalization in that paper and ours is exactly
+$(\widehat m,\widehat f)\mapsto(2\widehat m+1,\widehat f)$;
+Proposition 5.5 checks the equations and the multiplication under this
+map. Thus its inverse limit concerns the full $GT_0$ of Part E.
+
+Fix $q\in Q_H$ in the right side of (D.23a). For every isolated
+$N\subseteq H$ define the finite nonempty set
+\[
+ S_N=\{v\in Q_N:v^d=1,\ R_{N,H}(v)=q\}.
+\]
+Every reduction $R_{N,M}$ restricts to a function $S_N\to S_M$.
+The inverse limit of these sets is nonempty. To verify the exact
+compactness step, any finite list of coordinates and compatibility
+conditions is dominated by one isolated subgroup
+$L\subseteq H\cap N_1\cap\cdots\cap N_t$; Proposition 3.14 supplies
+an isolated refinement of the intersection. Choose an element of
+$S_L$ and project it to the specified coordinates. This satisfies
+all the finitely many conditions. The closed conditions in the
+compact product $\prod_NS_N$ consequently have the finite
+intersection property. A compatible element maps under
+$\Psi^{-1}$ to $g\in GT_0$ with $g^d=1$ and $g_H=q$.
+The reverse inclusion follows by taking the coordinates of such a
+$g$. The levels below $H$ are cofinal, so the constructed family is
+a full inverse-limit point.
+
+When $q$ has order $d$, the order of $g$ both divides $d$ and is a
+multiple of the order of its image $q$, hence equals $d$.
+Conversely, for $g$ of order $d$, choose, for each prime $p\mid d$,
+a finite coordinate detecting $g^{d/p}\ne1$. A common isolated
+refinement detects all these powers. The order of its image divides
+$d$ and divides none of the proper divisors $d/p$, so it is $d$.
+
+For the conjugacy assertion, the sets
+\[
+ C_N(a,b)=\{v\in Q_N:v\Psi(a)_Nv^{-1}=\Psi(b)_N\}
+\]
+are finite nonempty sets with restriction maps. The same finite
+intersection argument gives a compatible conjugator, which
+$\Psi^{-1}$ sends to a conjugator in $GT_0$. Necessity follows by
+projection. The construction does not assume surjectivity of a
+reduction map or that every element of $Q_N$ comes from $GT_0$.
+\end{proof}
+
+\begin{claim}{D.24}{Proved}{Dihedral tests with an order bound and the full dyadic quotient}
+The program \texttt{code/part\_a/gt\_shadow\_refinement.py} executes
+the finite order-two and order-three tests below. Each entry counts
+nonidentity elements with order dividing $d$ at the lower level,
+and then those admitting a lift with order dividing $d$ at the
+upper level.
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+$n$&$q$&$d$&Lower elements&Elements admitting such a lift\\
+\midrule
+6&18&2&7&7\\
+6&18&3&2&0\\
+18&54&3&8&0\\
+54&162&3&8&0\\
+14&98&3&14&14\\
+4&8&2&3&1\\
+8&16&2&7&2\\
+16&32&2&11&4\\
+32&64&2&19&8\\
+\bottomrule
+\end{tabular}
+\end{center}
+The levels are isolated dihedral shadows $Q_{K^{(n)}}$. Their
+subsystem with $n=2^\alpha$, $\alpha\geq2$, has inverse limit
+\[
+ H_2=\{(k,(-1)^a5^b)\in
+ \Z_2\rtimes\Z_2^\times:
+ a\in\{0,1\},\ b\in\Z_2,\ k\equiv b\pmod2\}.
+                                                               \tag{D.24a}
+\]
+Every finite subgroup of $H_2$ is trivial or cyclic of order two,
+and all its order-two subgroups are conjugate to
+$\langle(0,-1)\rangle$. There is a continuous surjection
+$GT_0\to H_2$. The family of all dihedral levels is not cofinal
+in $\mathcal I$; an explicit $A_5$ quotient below proves this.
+\end{claim}
+\begin{proof}
+Write $D_n=\langle r,s\mid r^n=s^2=1,\ srs^{-1}=r^{-1}\rangle$.
+The homomorphism
+\[
+ \psi_n:PB_3=\langle x,y\rangle\times\langle c\rangle
+       \longrightarrow D_n^3,
+ \quad x\longmapsto(r,s,s),\quad
+ y\longmapsto(rs,r,rs),\quad c\longmapsto1
+\]
+defines $K^{(n)}=\ker\psi_n$. For even $n\geq4$, the explicit
+finite model of \cite[Theorem 4.3 and Proposition 4.5]{A-BDHPShadows}
+is
+\[
+ Q_{K^{(n)}}\simeq
+ \left\{(k,u)\in(\Z/(n/2))\rtimes(\Z/(2n))^\times:
+ \begin{array}{l}
+ k\equiv\nu(u)\pmod2\text{ when }4\mid n
+ \end{array}\right\},                                  \tag{D.24b}
+\]
+where $\nu(u)=(u-1)/4$ for $u\equiv1\pmod4$ and
+$\nu(u)=(u+1)/4$ for $u\equiv3\pmod4$.
+Multiplication is $(k,u)(l,v)=(k+ul,uv)$, with the indicated
+moduli. For $n\mid q$, reduction is
+$(k\bmod(q/2),u\bmod2q)\mapsto(k\bmod(n/2),u\bmod2n)$.
+
+The code constructs the actual subgroup
+$G_n=\langle(r,s,s),(rs,r,rs)\rangle\leq D_n^3$ for
+$n=4,6,8,12,14$. It computes its commutator subgroup and exhausts
+all pairs $(m,f)$ with $0\leq m<n$, $\gcd(2m+1,n)=1$ and
+$f\in G_n'$. It tests the two cycle equations
+\[
+ \theta(f)f=1,\qquad
+ \tau^2(y^mf)\tau(y^mf)y^mf=1,
+\]
+where $\theta(x)=y$, $\theta(y)=x$, $\tau(x)=y$ and
+$\tau(y)=(xy)^{-1}$. It checks descent of these maps, and of
+$x\mapsto x^{2m+1}$, $y\mapsto f^{-1}y^{2m+1}f$, on every
+labelled edge of the finite Cayley graph, and checks that the
+resulting maps are bijective. The accepted pairs are exactly
+those in (D.24b), of respective orders $4,12,16,24,84$.
+This checks the reduction to the quoted finite model on the
+tested groups, with no reliance on floating point arithmetic.
+Projection of $G_6,G_{12},G_{14}$ onto $D_3,D_3,D_7$
+exhibits finite quotients in which the odd-order rotation and
+order-two reflection do not commute; their nilpotence would
+force these coprime Sylow subgroups to commute. These tests
+therefore include nonnilpotent finite quotients of $\widehat F_2$.
+
+For the refinement counts, the code enumerates every element of
+(D.24b), computes its $d$th power using the affine multiplication,
+reduces every upper root, and counts the exact fibres. For example,
+at $n=6$ the group is
+$\operatorname{Aff}(\F_3)\times C_2$, and its two order-three
+elements are the nonzero translations. At $q=18$, an element of
+order dividing three has multiplier $u\equiv1,4,7\pmod9$ and
+translation divisible by $3$. Both its affine coordinates reduce
+to the identity modulo $3$. Thus neither order-three element
+at $n=6$ has an order-dividing-three lift, although the unbounded
+reduction map is surjective. At $n=14$ the multipliers $2,4$
+modulo $7$ have order three. Each lifts to its order-three
+root modulo $49$, and each of the seven lifts of a translation
+coordinate is allowed because $1+u+u^2=0$ there. This gives
+seven order-three lifts of each of the fourteen lower elements,
+as the exhaustive output records. The same program gives the
+remaining rows and the full table in its accompanying CSV.
+
+The compatible affine coordinate reductions identify the dyadic
+inverse limit with (D.24a): the residue of $b$ modulo $2$ is the
+condition in (D.24b), and the inverse limits of the two coordinate
+rings are $\Z_2$ and $\Z_2^\times$. The surjection from $GT_0$
+is \cite[Theorem 5.7 and Proposition 5.8]{A-BDHPShadows}; more
+precisely, that theorem proves surjectivity already after
+restriction along $G_{\Q}\to GT_0$.
+
+The translation kernel $\Z_2$ is torsion-free, so a finite
+subgroup of $H_2$ injects into the finite-order subgroup of
+$\Z_2^\times$. This subgroup is $\{1,-1\}$: the parametrization
+$\Z_2^\times=\{\pm1\}\times5^{\Z_2}$ has torsion-free second
+factor, as follows from
+$v_2(5^{2^j}-1)=j+2$ and passage to the inverse limit.
+Every nonidentity finite-order element of $H_2$ is consequently
+$(k,-1)$ with $k\in2\Z_2$. Put $t=k/2$ and choose
+$v=5^{t\bmod2}$. Then $(t,v)\in H_2$, and direct multiplication
+gives
+\[
+ (t,v)(0,-1)(t,v)^{-1}=(2t,-1)=(k,-1).
+\]
+This proves the full finite-subgroup and conjugacy assertions
+for this infinite quotient, rather than extrapolating the
+finite dyadic counts.
+
+Finally every $G_n$ is metabelian: the commutator subgroup of
+$D_n^3$ lies in its abelian rotation subgroup, and $G_n'$ is
+a subgroup of that rotation subgroup. Define the epimorphism
+$\eta:F_2\to A_5$ by
+$x\mapsto(1\ 2\ 3\ 4\ 5)$ and $y\mapsto(1\ 2\ 3)$.
+The code enumerates its image and derived subgroup; both have
+order $60$, proving directly that this image is a nontrivial
+perfect group. Proposition 5.1 of \cite{A-DGShadows} gives an
+isolated $N$ with $N\cap F_2\subseteq\ker\eta$.
+An inclusion $K^{(n)}\subseteq N$ would give the surjection
+\[
+ G_n=F_2/(K^{(n)}\cap F_2)
+   \longrightarrow F_2/\ker\eta=A_5.
+\]
+Its image would be metabelian, contradicting the computed
+nontrivial perfect derived subgroup. Hence no such inclusion
+exists. This proves the asserted failure of cofinality by an
+explicit quotient and the exact factoring map.
+\end{proof}
+
+These tests give explicit finite obstructions for D.12.
+D.32 proves, by its full fixed-subgroup and finite-cover argument,
+that $GT_0$ has no nonidentity element of odd order and that every
+finite subgroup has order at most two, detected by the dyadic
+multiplier. D.34 further proves that a nonidentity involution
+has the global multiplier $-1$.
+The fourteen order-three shadows at $K^{(14)}$ survive the
+executed test through $K^{(98)}$. Combining D.32 with D.23
+shows that each fails the order-three lifting condition at some
+isolated refinement; a common refinement excludes all fourteen.
+This existence conclusion does not identify that refinement or
+alter the recorded finite counts. D.25 explains why the entire
+dihedral subsystem alone cannot supply the exclusion.
+The remaining full $GT_0$ question is conjugacy of its
+involutions. D.35 gives the exact third-cusp equation and the
+finite conjugator criterion, and D.44 supplies a coboundary
+satisfying its first symmetry. D.42 also proves the global
+multiplier restriction for every finite subgroup of the full
+three-cusp loop-outer group.

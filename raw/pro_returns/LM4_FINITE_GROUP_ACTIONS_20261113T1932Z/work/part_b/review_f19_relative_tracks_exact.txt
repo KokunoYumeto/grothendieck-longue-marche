@@ -1,0 +1,129 @@
+Independent audit: exact F19 relative-track producer
+Result: PASS for the stated exact source-basis, crossing and word certificate.
+
+Audited files:
+  work/part_a/f19_relative_tracks_exact.py
+  work/part_a/code/c5_seven_kernel_exact.py (the imported exact field,
+      complex, free-word and Artin operations)
+  work/part_a/f19_relative_tracks_exact_output.json
+
+Independent rerun:
+  python work/part_a/f19_relative_tracks_exact.py
+  stdout: work/part_b/f19_relative_tracks_exact_audit_stdout.txt
+  summary: work/part_b/f19_relative_tracks_exact_audit_summary.json
+
+The rerun passes all assertions. It certifies eleven source generators,
+112 forward segments, 672 projected-pair checks and 172 crossings, using
+72,380 exact number-field sign calls. Additional output checks confirm
+that all 22 resulting based braids have identity strand permutation and
+that the old/new deleted-fourth-strand automorphisms agree for every source
+generator. In a separate post-run comparison, all 22 integer braid words,
+their erased conjugators and their base automorphisms agree with the former
+exploratory output. That exploratory file is not an input to the producer.
+
+1. Exact field and input geometry
+
+Every input is rational or an element of Q(theta), with
+theta^4-5theta^2+5=0 and 19/10<theta<2. This polynomial is Eisenstein at 5,
+so the four-coefficient field representation has no unrecognized zero.
+The polynomial has opposite signs at the two indicated rational endpoints
+and strictly positive derivative on that interval. Exact bisection and
+interval Horner evaluation therefore give terminating certified signs of
+all nonzero represented elements. Multiplication reduces by the displayed
+minimal polynomial; the rational Gaussian-elimination inverse is checked
+by exact multiplication. The complex arithmetic uses that field for both
+coordinates. No floating-point data or exploratory crossing file is read.
+
+The eleven excluded centers are 0 and the ten points plus/minus zeta^i.
+For each lasso the tail ends at the northeast vertex of its small square.
+Both base-coordinate inequalities put the entire own tail outside the
+square until that vertex. The exact point-to-segment distance to every
+other center exceeds the square's circumradius. The pairwise square
+clearance exceeds the sum of their circumradii. The nonzero cross products
+of distinct tail directions make the straight tails disjoint except at
+their common base. Thus these are genuinely disjoint square meridians
+attached to an embedded common-base star. Their positive orientation is
+the order northeast, northwest, southwest, southeast, northeast. Cutting
+along the star gives the standard geometric free basis of the plane
+minus these eleven labeled centers.
+
+The only possible zeros of the rational configuration denominators are
+s=-1 or s=-zeta. They are among the excluded centers and cannot lie on
+any of the certified tails or square boundaries. The two straight
+reference transports are checked against each of 0,1,B by exact cross
+products, with the collinear case using its exact segment parameter.
+Thus no pole or omitted puncture collision is hidden by clearing
+denominators in the crossing calculation.
+
+2. Exhaustive projected-root certification
+
+For a pair Ni/Di, Nj/Dj the producer takes
+
+  projection * (Ni Dj - Nj Di) * conjugate(Di Dj).
+
+Its real and imaginary parts have exactly the signs of the projected
+coordinate and height difference, because the omitted divisor is the
+strictly positive |Di Dj|^2. The projection multiplier is nonzero and
+orientation preserving as a real linear map.
+
+The power-to-Bernstein change of coordinates on each rational interval
+is exact. The sign variation bound is Descartes' rule after the positive
+fractional-linear substitution of that interval with the positive ray.
+Zero variation excludes all interior roots, and one variation gives
+exactly one interior root counted with multiplicity. Original endpoint
+values are checked nonzero. Every subdividing value is chosen to be a
+nonroot; more distinct candidates than the polynomial degree are tried.
+Subdivision preserves the whole interval with no lost cut-point root.
+When the executed recursion terminates, its zero- and one-variation
+leaves therefore account for every possible projected crossing.
+
+Each root interval is refined exactly. A one-signed Bernstein enclosure
+of the height makes the height nonzero throughout its interior. The
+derivative coefficients are precisely
+n(b_{i+1}-b_i)/(right-left), so their one-signed enclosure certifies a
+simple crossing and its derivative sign. Zero coefficients are harmless:
+all Bernstein basis functions are positive in the open interval, and
+at least one coefficient has the recorded nonzero sign. Later refinements
+are subintervals and retain those certified signs.
+
+The joint event refinement ends only with disjoint rational time
+intervals for every crossing of every pair on a segment. Hence the
+event order is exact and no simultaneous crossing is silently ordered.
+The adjacency check then ensures that each event is an actual adjacent
+strand crossing. Updating the order through all events agrees with the
+independently computed final projected order.
+
+3. The actual word conventions and transports
+
+The strand order is the literal increasing projected-coordinate order
+stored for each segment. The sign is the actual overcrossing convention
+used by the imported Artin substitution. In particular, the first three
+meridian positions must retain the stored order of 0,1,B; the certificate
+does not replace it by an unnamed new basis. Both reference configurations
+put the reference point in the fourth meridian position, as asserted.
+
+Each source word is the reference transport, then the forward tail and
+four square edges, then the inverse tail, then the inverse reference
+transport. Adjacent pieces have the same actual labeled configuration
+at their common endpoint. The Artin substitutions use the displayed
+composition order; the negative elementary substitution is the exact
+inverse of the positive one. Free reductions only delete adjacent inverse
+letters. The independently checked total permutations are all trivial.
+
+The fourth Artin image is reduced by peeling inverse end letters until
+the single fourth meridian remains. Thus the recorded word really is its
+conjugating word. Erasing the fourth letter is the explicit homomorphism
+from the free four-meridian group to the free three-meridian group.
+It also removes the conjugator ambiguity from powers of that fourth
+meridian. The computed old/new base automorphisms coincide exactly.
+
+4. Exact scope of this PASS
+
+This audit verifies the source lassos, actual rational configurations,
+both reference transports, exhaustive crossings, and the produced Artin
+and erased-word data for the named old root and positive new branch.
+The further identification with the retained cross-divisor coset and
+its full completed source morphism belongs to the separately staged
+mathematical argument. No full centralizer identification or finite-test
+completeness assertion is supplied by this executable certificate alone.
+No correction to this producer is required.

@@ -1,0 +1,208 @@
+\begin{claim}{D.47}{Proved}{Conjugator coordinates at the binary refinement}
+Use the specified quotient
+$\widetilde Q=S^{19}\times C_2^2$, $S=\mathrm{SL}_2(\F_5)$,
+of D.45, and its $324\,000\,000$ refined pairs $(t,f)$.
+Every one of these pairs satisfies D.44's finite
+first-symmetry coboundary condition
+\[
+       h^{-1}\alpha(h)=f,\qquad h\theta(h)=1,
+                         \qquad h\in S^{19}.             \tag{D.47a}
+\]
+Exactly $10\,125\,000$ of the pairs satisfy the two
+finite conjugator equations of D.35 at this quotient.
+The count stays the same after requiring both actual
+invertibility of the finite substitution and both
+Harbater--Schneps symmetries for the conjugating pair.
+There are $5\,062\,500$ pairs with admissible unit
+parameters congruent to a square modulo five, and
+$5\,062\,500$ with parameters congruent to a nonsquare.
+These two sets are disjoint.
+
+Thus $313\,875\,000$ refined coordinate pairs lie
+outside the image of the standard full $GT_0$
+involution conjugacy class.  For each of D.38's
+$2\,531\,250$ conjugator-compatible base tuples,
+exactly four of its $64$ refined $f$-coordinates
+pass this test; for each of the other
+$2\,531\,250$ base tuples, none does.
+These are statements about the exact normalized
+coordinates: D.45's $64$ coordinates for a fixed
+$t$ define the same finite automorphism.
+No surviving pair is asserted to have a full
+involution or conjugator lift.
+\end{claim}
+\begin{proof}
+Write $X_i,Y_i,Z_i,\widetilde t_i$ and $\alpha$ for
+the matrices and actual automorphism fixed in D.45.
+Since $S$ has exponent dividing $60$, the power
+parameter in D.35 factors through
+$(\Z/60)^\times$.  For the second Harbater--Schneps
+symmetry we retain the finer, explicit parameter map
+\[
+ a\in(\Z/120)^\times\longmapsto
+       \left(a\bmod60,\ m=(a-1)/2\bmod60\right).
+                                                        \tag{D.47b}
+\]
+It is well-defined, and every such $a$ is the
+reduction of a unit in $\widehat\Z$.
+Changing the representative of $a$ by $120$ changes
+$m$ by $60$, so all subsequent equations are
+independent of the choice of integer representative.
+
+The image of $F'$ is exactly $S^{19}$ by D.45.
+For fixed $(t,f)$ the first conjugator equation
+therefore separates into the nineteen exact equations
+\[
+ h_i^{-1}\widetilde t_i h_i\widetilde t_i^{-1}=f_i,
+                                  \qquad h_i\in S.       \tag{D.47c}
+\]
+Each has exactly four solutions.  The program
+verifies this by enumeration of all $120$ matrices.
+It also follows from the order-four conjugacy class
+in $S$: $\widetilde t_i$ has square $-I$, and the
+norm equation in D.45 gives
+$(f_i\widetilde t_i)^2=\widetilde t_i^2=-I$.
+The thirty matrices with square $-I$ form one
+conjugacy class with centralizer of order four,
+as the same matrix enumeration verifies.
+
+For each parameter $a\bmod60$ and each of these
+four matrices, the second equation of D.35 is
+tested by the exact matrix conjugacy condition
+\[
+      X_i^a h_iY_i^a h_i^{-1}
+                       \sim_S (X_iY_i)^a.               \tag{D.47d}
+\]
+Indeed the $C_2^2$ coordinates of both sides are
+$e_x+e_y$, since $a$ is odd, and that direct factor
+is central.  Conjugacy in $\widetilde Q$ is therefore
+exactly these nineteen independent matrix conjugacies.
+The program computes every conjugacy class in $S$
+by conjugation by all $120$ matrices; (D.47d) is
+tested against those complete classes.
+
+The finite invertibility test is explicit as well.
+Reduce the ordered pair
+$(X_i^a,h_iY_i^a h_i^{-1})$ to $A_5$ and test whether
+it belongs to the $i$th recorded $\Aut(A_5)$ orbit
+of generating pairs in D.38.
+This is sufficient: its unique component
+automorphism lifts to an automorphism $\gamma_i$
+of $S$, and the two central differences from
+$\gamma_i(X_i),\gamma_i(Y_i)$ are corrected by
+characters of $C_2^2$, exactly as in (D.45d)--(D.45e).
+The resulting automorphism of $\widetilde Q$ has
+the prescribed two generator images.
+It is necessary for a finite pure automorphism
+with these images: its reduction preserves the
+three specified power-conjugacy classes, and
+D.38's distinct passports force it to preserve
+each simple factor.  Its pair must therefore be
+in that recorded orbit.  This tests the actual
+finite substitution, with its characteristic
+quotient map retained.
+
+For completeness the program also imposes both
+symmetries on the conjugating pair, not just its
+three peripheral images.
+Put $k=h^{-1}$ and use $m$ from (D.47b).
+The equations tested are
+\[
+       h\theta(h)=1,\qquad
+       \omega^2(k)Z^m\omega(k)Y^m kX^m=1.
+                                                        \tag{D.47e}
+\]
+All $h,k,f$ coordinates lie in the perfect factor
+$S^{19}$; the actions of $\theta,\omega$ there
+are the specified lifted factor maps of D.45.
+The $C_2^2$ coordinate of the second equation is
+$m(e_x+e_y+e_z)=0$.
+Thus these are exact equations at the indicated
+finite quotient, including the half-exponent
+required by relation (II).
+
+The first equation of (D.47e) is exhausted without
+assuming independent choices where factors are
+exchanged.  If
+$\theta(v)_i=G_i v_jG_i^{-1}$, a choice of $h_i$
+forces
+\[
+                       h_j=G_i^{-1}h_i^{-1}G_i.         \tag{D.47f}
+\]
+For a fixed factor it must satisfy the same equation
+with $j=i$.  The program enumerates one of the
+four candidates from (D.47c) for each orbit of
+$\theta$, uses (D.47f), and checks membership in
+the corresponding candidate sets.
+It verifies that (D.47a) is soluble for all the
+refined pairs.  For the full conjugator test it
+then checks (D.47d), finite invertibility, and the
+second equation of (D.47e) for every remaining
+choice and all $32$ units modulo $120$.
+
+Here is the entire factorization of the result.
+Let $U_+$ and $U_-$ denote the subsets of
+$(\Z/120)^\times$ whose residues modulo five are
+respectively squares and nonsquares; each has
+$16$ elements.
+For each of D.45's six joint factor orbits, the
+table gives the number of refined pairs having
+the specified set of admissible parameters.
+\[
+\begin{array}{c|r|r|r|r}
+ \text{factor orbit}&U_+&U_-&U_+\cup U_-&\varnothing\\ \hline
+ \{0,2,10\}&15&15&0&0\\
+ \{1,9,17\}&15&15&0&0\\
+ \{3,5,6,7,11,14\}&30&30&0&60\\
+ \{4,12,18\}&15&15&0&0\\
+ \{8,13,15\}&10&10&0&0\\
+ \{16\}&0&0&5&0.
+\end{array}                                               \tag{D.47g}
+\]
+The admissible global parameter set is the
+intersection of the six local sets, because
+the parameter is common while the factor
+equations have the exact orbit decomposition
+of D.45.
+It is nonempty precisely when the first five
+nonempty choices all select the same one of
+$U_+,U_-$.
+Each choice gives
+$15\cdot15\cdot30\cdot15\cdot10\cdot5
+ =5\,062\,500$ pairs.
+Their sum is $10\,125\,000$, and subtraction
+from D.45's $324\,000\,000$ gives the stated
+$313\,875\,000$ failures.
+The program records the same table when only
+(D.47c)--(D.47d) are imposed, and when finite
+invertibility and the first symmetry are added.
+Thus the asserted equality of these counts is
+itself checked at every factor orbit.
+It also records the counts for each base tuple
+before multiplying over the six orbits.  Their
+Cartesian product gives the exact histogram
+\[
+ \begin{array}{c|r}
+ \text{admissible }f\text{-coordinates per base tuple}
+          &\text{number of base tuples}\\ \hline
+ 0&2\,531\,250\\
+ 4&2\,531\,250.
+ \end{array}                                             \tag{D.47h}
+\]
+
+Every full conjugator in D.35 reduces to solutions
+of (D.47c)--(D.47d), and D.35's equality of the
+$P$ and $GT_0$ conjugator sets also supplies
+(D.47e).
+Consequently failure of the displayed finite
+test excludes that exact coordinate pair from
+the image of the standard full conjugacy class.
+The executed implementation is
+\path{code/part_a/pure_involution_binary_conjugacy.py}.
+Its output retains all unit sets, the six local
+tables, the per-base histogram, and the separate
+first-symmetry counts.  The proof uses only this
+finite refinement and makes no assertion that
+one of its surviving pairs lifts through all
+characteristic refinements of $F$.
+\end{proof}
