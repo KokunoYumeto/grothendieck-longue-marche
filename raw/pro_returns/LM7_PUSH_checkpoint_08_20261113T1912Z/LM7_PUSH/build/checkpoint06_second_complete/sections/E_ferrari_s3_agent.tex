@@ -1,0 +1,126 @@
+\begin{statement}{E.27}{Proved}{The generating-pair \texorpdfstring{$S_3$}{S3} Ferrari quotient and its exact source factor}
+Let $\mathcal P$ be the set of all eighteen ordered generating pairs of
+$S_3$, and let
+\[
+ K=\im\bigl(\langle\xi_1,\xi_2\rangle\longrightarrow S_3^{\mathcal P}\bigr),
+ \qquad \xi_1\longmapsto(g)_{(g,h)},\quad
+ \xi_2\longmapsto(h)_{(g,h)}.
+ \tag{E.27.1}
+\]
+The literal Ferrari Nielsen automorphisms in E.17 permute $\mathcal P$.
+Their image $A\leq\operatorname{Aut}(K)$ has order $162$, and the resulting
+four-strand quotient $T=K\rtimes A$ has order $17\,496$.
+The free image has order $108$ and
+\[
+ [K,K]=\gamma_3(K)\simeq(\mathbb Z/3)^3.
+ \tag{E.27.2}
+\]
+In particular $K$ is nonnilpotent.
+
+For the six pure evaluation pairs of E.17, both entries have order
+three and the two entries commute. Consequently their evaluations
+kill $F'$. Their common induced six-coset source map is exactly a
+faithful representation of
+\[
+ B/(F'F^3),\qquad |B/(F'F^3)|=54,
+ \tag{E.27.3}
+\]
+where $F\triangleleft B=C_2*C_3$ is the free subgroup of index six
+used throughout Part E. Since $K_6=N'N^6\subset F'F^3$, its reduction
+from $G_6$ is the specified quotient homomorphism
+\[
+ B\longrightarrow G_6\longrightarrow B/(F'F^3).
+ \tag{E.27.4}
+\]
+Every $f\in\widehat F'$ has six identity values in $T$. For every
+profinite unit multiplier, the resulting four-strand braid map is
+surjective and preserves the two full twists with that multiplier.
+In particular all twenty-four retained $G_6$ points of E.17, and
+every lift of those points used in E.24, pass this finite test.
+\end{statement}
+
+\begin{proof}
+Write permutations as functions and use their ordinary composition
+for multiplication in $S_3$. Direct breadth-first enumeration gives
+the eighteen generating pairs and the order-$108$ subgroup in
+(E.27.1). The two substitutions on the pair set are
+\[
+ p_a(g,h)=(g,hg),\qquad p_b(g,h)=(gh^{-1},h).
+ \tag{E.27.5}
+\]
+For an evaluation vector $k$, the automorphism corresponding to $a$
+has value $k_{p_a(g,h)}$ at $(g,h)$, and similarly for $b$.
+Thus composition of two such automorphisms is represented by
+$p_{\alpha\beta}=p_\beta\circ p_\alpha$. The program enumerates
+all $162$ permutations in the generated image, checks their
+multiplication and action on every element of $K$, and checks
+faithfulness by their distinct pairs of images of $\xi_1,\xi_2$.
+It then uses the actual semidirect product multiplication, with
+\[
+ a=(1,p_a),\qquad b=(1,p_b),\qquad c=(\xi_1,p_a).
+\]
+The three braid relations and the literal Ferrari words for both
+free generators are verified. Enumerating the subgroup generated
+by $a,b,c$ yields every element of $K\rtimes A$, proving its stated
+order and surjectivity from $B_4$.
+
+The derived subgroup of $K$ is computed from all pairwise
+commutators in the completely enumerated group. It has $27$
+elements, is abelian of exponent three, and taking all its
+commutators with $K$ produces the same subgroup. This proves
+(E.27.2). In particular the quotient (E.27.1) cannot factor through
+any nilpotent quotient of the Ferrari free group: the image of a
+nilpotent group is nilpotent, whereas its displayed nonzero lower
+central subgroup persists at every further step.
+
+The six pairs are formed from the actual pure Artin words, with no
+linearization. For each pair $(X_i,Y_i)$, the program checks
+$X_i^3=Y_i^3=[X_i,Y_i]=1$. Therefore the homomorphism
+$\theta_i:F\to T$ factors through $F/(F'F^3)$.
+Induce their product from $F$ to $B$ using the same six coset
+representatives $b_q$ as E.19:
+\[
+ b\longmapsto
+ \left(\overline b,
+ \bigl(\theta_i(b_qb\,b_{q\overline b}^{-1})\bigr)_{q,i}\right).
+ \tag{E.27.6}
+\]
+Here the base factors are multiplied with the explicit Schreier
+permutation action, so (E.27.6) is an actual homomorphism.
+The subgroup $F'F^3$ is characteristic in $F$, hence normal in $B$,
+and is killed in every induced coordinate. Thus (E.27.6) factors
+through the order-$54$ group $B/(F'F^3)$. A separate enumeration of
+its two generating images has exactly $54$ elements, proving
+faithfulness of this factor. As an independent check of the required
+$G_6$ comparison, all $4656$ commutators of the $97$ prescribed
+$N$ generators and all $97$ sixth powers are evaluated to the
+identity in all thirty-six coordinates. Their complete normal
+generating property proves (E.27.4). The image of $N$ in this
+factor has order three.
+
+Since all six maps kill $F'$, their extension to $\widehat F'$
+also has identity value. The pentagon therefore holds identically.
+The braid generators of $T$ have order six, so a unit multiplier
+has only the residues $1,5$ in this target. Direct complete
+enumeration verifies that $(a^\lambda,b^\lambda,c^\lambda)$
+generates $T$ for both residues; the three braid relations and
+the images of $(ab)^3$ and $(abc)^4$ are checked exactly.
+Both full twists have order three and their images are their
+$\lambda$th powers.
+
+Finally, abelianizing $K$ modulo two and taking the induced linear
+action gives the affine action on $\mathbb F_2^2$. In the ordered
+list $(0,1),(1,1),(1,0),(0,0)$, the images of $a,b,c$ are respectively
+$(12),(23),(34)$. This is the standard permutation map of $B_4$.
+Hence $\ker(B_4\to T)$ is already contained in $PB_4$,
+$|B_4/\ker(B_4\to T)|=17\,496$, and the image of $PB_4$ has order
+$729$.
+
+The certificates are \texttt{de\_ferrari\_s3\_model.py} and
+\texttt{de\_ferrari\_s3\_factor.py}, with their actual outputs,
+full multiplication/action tables, and induced source matrices.
+They also evaluate each retained literal commutator word directly.
+The assertion concerns this actual target and its source factor;
+joint four-strand generation with the other finite targets has
+not been inferred from separate component generation.
+\end{proof}

@@ -1,0 +1,188 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=28mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\pdfextension mapfile{+lm.map}
+\pdfextension mapfile{+cm.map}
+\pdfextension mapfile{+symbols.map}
+\pdfextension mapfile{+rsfs.map}
+\pdfextension mapfile{+euler.map}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{booktabs,longtable,array,microtype,enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{bookmark}
+\setlength{\emergencystretch}{3em}
+\newenvironment{statement}[3]{\par\medskip\noindent\textbf{Statement #1 (#2). #3.}\ \itshape}{\par\medskip}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\F}{\mathbb F}
+\newcommand{\G}{\operatorname{G}}
+\newcommand{\Sec}{\operatorname{Sec}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\coker}{\operatorname{coker}}
+\newcommand{\cts}{\mathrm{cts}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\Rlim}{\mathrm{R}\!\varprojlim}
+\newcommand{\limone}{\varprojlim{}^{1}}
+\newcommand{\Kcal}{\mathcal K}
+\newcommand{\Rcal}{\mathcal R}
+\title{LM7 PUSH: arithmetic sections and profinite images\\\large Research manuscript with an explicit statement register}
+\author{AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode)}
+\date{13 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We compute the intrinsic class-two section obstruction for the Fermat cubic with its nine coordinate cusps removed, including its integral residue complex, path origins, restricted convergence, and lifting fibers. We construct an actual obstruction invisible locally and at every finite coefficient level; refute the two proposed class-two inertia restrictions; and prove the pro-three cyclotomic centralizer criterion. Finite arithmetic field and cocycle constructions give the exact full, metabelian and marked-depth images and all their fibers, with compatibility for arbitrary ramification support. An explicit section at seventeen has the literal local cusp restriction and a global class-three lift, but no class-four lift. We identify the inherited quotient maps and every marked coefficient layer integrally. Over every number field we give the complete arithmetic obstruction test, restriction and descent maps, and the class-two germ classification, including finite algebraic formulas for every point's central coordinates. The three requested full local profinite fixed groups are computed through an explicit valuation and stabilizer comparison. Parts A, B, C and F are complete. The remaining full profinite image questions in Parts D and E are under investigation. We compute the elementary abelian peripheral lifting obstruction, its exact covering restriction, and coupled finite central counterexamples. Every finite $A_5$ chief extension has a positive generating-lift count preserved under the specified peripheral base maps. A split $A_6$ chief extension has an ordinary generating-lift obstruction, with every centralizer choice retained; explicit outer-image conditions give complementary lifting theorems. The joint binary and ternary degree-six braid refinement retains all twenty-four CM candidates and $864$ finite points, all of which pass the full-target periodic-braid conjugacy tests. The $A_5$ and $\operatorname{SL}_2(\F_5)$ Ferrari refinements retain every CM candidate, with the latter retaining all $864$ points. All $432$ multiplier-one points lift through the full two-adic and three-adic Fermat boundary class-two towers, with exact $\mathbb Z_2^{10}$ and $\mathbb Z_3^{10}$ correction fibres, retaining their degree-six pentagons and generating maps. Explicit finite corrections at both primes fail at the next precision, while every CM fibre remains nonempty. The same word gives compatible identity shadows on every full pro-$p$ boundary factor for $p\ge5$. Every prescribed full boundary family also has a simultaneous generating lift with the double-cover Ferrari refinement through the explicit exponent-twenty comparison. An ordinary order-five peripheral shadow has no generating lift across a specified split $A_6^{20}$ chief extension, for any of its four nonidentity powers, with the admitted pro-five comparison retained. The exponent-three class-three boundary quotient imposes four new congruences on the complete three-adic class-two tower and excludes an explicit tower point, while retaining every CM fibre. The complete $A_6$ kernel and outer-coordinate tests retain all $864$ points. A five-point Hurwitz quotient has pure and full image $A_{96}$; its complete source and explicit exponent-ten boundary comparison retain all those points and the order-five rotation conjugacy. Explicit fully invariant finite five-group targets carry all three compatible ordinary weight-five special parameters, including their exact geometric symmetry. The complete integral three-adic class-three boundary fibre is $\mathbb Z_3^{70}$; its exact exponent-three image has $3^{25}$ points per retained source and excludes a specified finite shadow. Every generating peripheral lift in a universal coprime Frattini cover is parameterized, with its full ordinary centralizer union. The five-strand $\operatorname{Sp}_4(\mathbb F_3)$ test retains every candidate through its actual $G_6$ source quotient. This working manuscript is \textbf{INCOMPLETE}; the task register identifies every unresolved item. We claim no priority.
+\end{abstract}
+\tableofcontents
+\section*{Conventions and scope}
+All cohomology of profinite groups with finite discrete coefficients is continuous. For a free finite-rank $\Z_\ell$-module with continuous action, $H^i_{\cts}$ is the cohomology of continuous inhomogeneous cochains. Restriction, inflation, quotient, and comparison maps are identified in each statement. Section sets are taken modulo conjugation by the specified geometric kernel. Arithmetic Frobenius is used in residue complexes.
+\medskip
+We work with
+\[
+ E:\ x^3+y^3+z^3=0,\qquad U=E\setminus D,
+\]
+where $D$ is the set of nine coordinate cusps. Put
+$K_0=\Q(\zeta)$, $\zeta^2+\zeta+1=0$, and $\lambda=1-\zeta$.
+Our cusp labels are
+\[
+\begin{array}{c|ccc}
+ &\text{rational cusp}&\text{first conjugate}&\text{second conjugate}\\\hline
+ x=0&P=[0:-1:1]&A=[0:-\zeta:1]&\bar A=[0:-\zeta^2:1]\\
+ y=0&Q_c=[-1:0:1]&B=[-\zeta:0:1]&\bar B=[-\zeta^2:0:1]\\
+ z=0&O=[1:-1:0]&C=[1:-\zeta:0]&\bar C=[1:-\zeta^2:0].
+\end{array}
+\]
+The geometric group $N$ is the free pro-three group of rank ten
+of $U$, based at the unit tangent $s=z/x$ at $O$.
+Its abelianization and the proper elliptic quotient are
+$V=T_3J_{E,D}$ and $T=T_3E$. The cusp submodule is
+$W=\Z_3(1)[D]/\Z_3(1)\delta$, with
+$\delta=\sum_{d\in D}d$; its inertia vectors are $e_d$.
+Let $I=\ker(N\to T)$ and
+\[
+ N^{\rm cc}=N/[N,I],\qquad
+ \mathcal K=\ker\bigl(\bigwedge^2V\to\bigwedge^2T\bigr).
+\]
+Thus $\mathcal K$ has rank $44$ and is the central kernel
+of $N/\gamma_3N\to N^{\rm cc}$. The marked subgroup
+$I_{\rm mark}$ is the closed normal subgroup generated by
+inertia at $Q_c$. A section class over $L$ is the continuous
+nonabelian $H^1$ of $G_L$ with the displayed geometric quotient.
+The full cyclotomic character, with target $\widehat\Z^\times$,
+is used in the centralizer statements; its three-adic component
+acts on the coefficient lattices.
+
+The inherited group $H$ has underlying set $\Z_3^3$ and law
+\[
+ (u,v,w)(u',v',w')=
+ (u+u',v+v',w+w'+\tfrac92(uv'-vu')),
+\]
+with arithmetic weights $(\chi_3,\chi_3,\chi_3^2)$.
+Its base-origin comparison is made explicitly in B.9.
+The use of the cuspidally central lifting theorem over $\Q$
+is Borne--Emsalem--Stix, Theorem 5.10
+\cite{BES2015}, applied to the nine torsion cusps and followed
+by the displayed pro-three quotient. Its proof uses vanishing
+of relative Brauer groups in all section neighbourhoods.
+The point $O$ gives a retraction on the Brauer group of $E$
+itself; it does not supply those retractions for every such
+neighbourhood. Part C consequently retains the additional
+arithmetic terms over a general number field.
+For the profinite problems, $\widehat F_2$ is the full free
+profinite group on two peripheral generators; the special
+outer group and its $\mathfrak S_3$ centralizer
+$\widehat{\rm GT}_0$ use all finite quotients, with the latter
+defined by the two hexagons. The subgroup $\widehat{\rm GT}$
+also satisfies the pentagon. Parts D and E specify every
+comparison to a pro-$\ell$, graded, or finite quotient.
+
+The background labels ``LM7'', ``CK'', and ``F17'' refer to the
+attached previous returns, and are checked only at the steps
+actually used. The available manuscript source is the supplied
+transcription of \emph{La Longue Marche}, cote 140-4.
+The authoritative scans were not attached. Our manuscript
+citations identify their section, folios, scans, and formulas
+without asserting a fresh comparison to the scans.
+\section{A. The intrinsic class-two problem}
+\InputIfFileExists{sections/A_agent.tex}{}{}
+\InputIfFileExists{sections/A_root.tex}{}{}
+\section{B. Geometric classes and centralizers}
+\InputIfFileExists{sections/B_agent.tex}{}{}
+\section{C. Restriction and germs}
+\InputIfFileExists{sections/C_agent.tex}{}{}
+\InputIfFileExists{sections/C_root.tex}{}{}
+\InputIfFileExists{sections/C_arithmetic_root.tex}{}{}
+\section{D. Profinite leading terms}
+\InputIfFileExists{sections/D_agent.tex}{}{}
+\InputIfFileExists{sections/D_root.tex}{}{}
+\InputIfFileExists{sections/D_peripheral_agent.tex}{}{}
+\InputIfFileExists{sections/D_cycle_agent.tex}{}{}
+\InputIfFileExists{sections/D_covers_root.tex}{}{}
+\InputIfFileExists{sections/D_coupled_agent.tex}{}{}
+\InputIfFileExists{sections/D_wreath_agent.tex}{}{}
+\InputIfFileExists{sections/D_a5_agent.tex}{}{}
+\InputIfFileExists{sections/D_twisted_agent.tex}{}{}
+\InputIfFileExists{sections/D_a6_agent.tex}{}{}
+\InputIfFileExists{sections/D_a6_ordinary_agent.tex}{}{}
+\InputIfFileExists{sections/D_a6_odd_barrier_agent.tex}{}{}
+\InputIfFileExists{sections/D_outer_barriers_agent.tex}{}{}
+\InputIfFileExists{sections/D_order5_agent.tex}{}{}
+\InputIfFileExists{sections/D_weight5_agent.tex}{}{}
+\InputIfFileExists{sections/D_weight5_constraints_agent.tex}{}{}
+\InputIfFileExists{sections/D_frattini_agent.tex}{}{}
+\InputIfFileExists{sections/D_intersection_agent.tex}{}{}
+\InputIfFileExists{sections/D_relative_prop_agent.tex}{}{}
+\InputIfFileExists{sections/D_even_base_agent.tex}{}{}
+\InputIfFileExists{sections/D_inverse_base_agent.tex}{}{}
+\InputIfFileExists{sections/D_modular_coprime_agent.tex}{}{}
+\InputIfFileExists{sections/D_cyclic_outer_agent.tex}{}{}
+\InputIfFileExists{sections/D_return_prime_agent.tex}{}{}
+\InputIfFileExists{sections/D_cyclic_composite_agent.tex}{}{}
+\InputIfFileExists{sections/D_return_tower_agent.tex}{}{}
+\section{E. The complex-multiplication coset}
+\InputIfFileExists{sections/E_agent.tex}{}{}
+\InputIfFileExists{sections/E_root.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_degree4_agent.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_degree5_agent.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_degree6_agent.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_two_agent.tex}{}{}
+\InputIfFileExists{sections/E_geometry_agent.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_s3_agent.tex}{}{}
+\InputIfFileExists{sections/E_boundary_agent.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_a5_agent.tex}{}{}
+\InputIfFileExists{sections/E_torsion_root.tex}{}{}
+\InputIfFileExists{sections/E_odd_boundary_agent.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_torsion_agent.tex}{}{}
+\InputIfFileExists{sections/E_class_two_boundary_agent.tex}{}{}
+\InputIfFileExists{sections/E_torsion_three_root.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_three_torsion_agent.tex}{}{}
+\InputIfFileExists{sections/E_binary_class_two_agent.tex}{}{}
+\InputIfFileExists{sections/E_threeadic_class_two_agent.tex}{}{}
+\InputIfFileExists{sections/E_ferrari_sl2_5_agent.tex}{}{}
+\InputIfFileExists{sections/E_periodic_all_root.tex}{}{}
+\InputIfFileExists{sections/E_periodic_finite_root.tex}{}{}
+\InputIfFileExists{sections/E_twoadic_class_two_agent.tex}{}{}
+\InputIfFileExists{sections/E_allprime_boundary_agent.tex}{}{}
+\InputIfFileExists{sections/E_sl2_boundary_agent.tex}{}{}
+\InputIfFileExists{sections/E_class_three_boundary_agent.tex}{}{}
+\InputIfFileExists{sections/E_a6_kernel_agent.tex}{}{}
+\InputIfFileExists{sections/E_hurwitz_five_root.tex}{}{}
+\InputIfFileExists{sections/E_integral_class_three_agent.tex}{}{}
+\InputIfFileExists{sections/E_a6_full_agent.tex}{}{}
+\InputIfFileExists{sections/E_symplectic_five_root.tex}{}{}
+\InputIfFileExists{sections/E_symplectic_five_p5_agent.tex}{}{}
+\InputIfFileExists{sections/E_symplectic_five_p7_agent.tex}{}{}
+\InputIfFileExists{sections/E_symplectic_integral_root.tex}{}{}
+\InputIfFileExists{sections/E_symplectic_integral_common_root.tex}{}{}
+\section{F. Derived limits and applications}
+\InputIfFileExists{sections/F_root.tex}{}{}
+\InputIfFileExists{sections/F3_action.tex}{}{}
+\InputIfFileExists{sections/F3_root.tex}{}{}
+\InputIfFileExists{sections/F4_agent.tex}{}{}
+\appendix
+\section{Coverage and remaining questions}
+\InputIfFileExists{sections/coverage.tex}{}{}
+\bibliographystyle{alpha}
+\bibliography{LM7_PUSH_references}
+\end{document}

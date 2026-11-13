@@ -1,0 +1,10 @@
+{
+  "reason": "Actual visual footer collision and clipped coverage text on pages 437 and 438.",
+  "old_generator": "for a,b,c,d in TASKS:\n    coverage+=tex_escape(a)+' & '+tex_escape(b)+' & '+tex_text(c+'. '+d)+r' \\\\'+'\\n'\n",
+  "new_generator": "def coverage_chunks(text, limit=900):\n    # Retain every character and only split at whitespace outside inline math.\n    chunks = []\n    start = 0\n    while len(text) - start > limit:\n        math = False\n        candidates = []\n        for pos in range(start, min(len(text), start + limit)):\n            if text[pos] == '$' and (pos == 0 or text[pos-1] != '\\\\'):\n                math = not math\n            if text[pos].isspace() and not math:\n                candidates.append(pos + 1)\n        assert candidates, text[start:start+limit]\n        end = candidates[-1]\n        chunks.append(text[start:end])\n        start = end\n    chunks.append(text[start:])\n    assert ''.join(chunks) == text\n    assert all(chunk.count('$') % 2 == 0 for chunk in chunks)\n    return chunks\n\nfor a,b,c,d in TASKS:\n    for index, chunk in enumerate(coverage_chunks(c+'. '+d)):\n        item = a if index == 0 else a + ' cont.'\n        statements = b if index == 0 else ''\n        coverage+=tex_escape(item)+' & '+tex_escape(statements)+' & '+tex_text(chunk)+r' \\\\'+'\\n'\n",
+  "complete_original_assembler": "research/assemble_register_before_checkpoint08_coverage.py",
+  "assembler_before_sha256": "3f9bc340c655ff041ea337c40f3b3d9843c81ed09d4124f9b679261258f9c516",
+  "assembler_after_sha256": "01f42f66da684bf4a5fceb8bcd431a353e86f003c0c6f332fa9c6fb5d2e4bd28",
+  "mathematical_changes": false,
+  "preservation_check": "Each original task-state string equals the concatenation of its output chunks, character for character."
+}

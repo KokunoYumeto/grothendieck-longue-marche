@@ -1,0 +1,162 @@
+\begin{statement}{E.40}{Proved}{All retained Ferrari points pass full periodic-braid conjugacy}
+For every one of the $864$ actual joint points of E.24,
+with multiplier residue $1$ or $73$ modulo $144$, put
+\[
+ d=abc,\qquad d'=a'b'c',\qquad z_4=d^4
+                    \quad\text{in }T_{23}=T_{2,6}\times T_{3,6}.
+ \tag{E.40.1}
+\]
+There is an element $h\in T_{23}$ with
+\[
+                           d'=hd^\lambda h^{-1}.
+ \tag{E.40.2}
+\]
+All compatible higher lifts of the displayed multiplier
+residue satisfy the same finite comparison.  Together
+with E.35 this verifies both full periodic tests in
+E.39 at every retained point.
+
+In the binary factor, the $96$ branch and line inputs
+give two distinct values of $d'$.  For each of them,
+\[
+       d'z_4^j\sim_{T_{2,6}}d
+           \quad\Longleftrightarrow\quad j=0\text{ or }2
+                  \quad(j\in\mathbb Z/4).
+ \tag{E.40.3}
+\]
+Four literal braid conjugators of lengths from zero
+to $11088$ certify the positive comparisons.
+In the ternary factor the $216$ points give fifteen
+distinct values of $d'$, with
+\[
+       d'z_4^j\sim_{T_{3,6}}d
+           \quad\Longleftrightarrow\quad j=0
+                  \quad(j\in\mathbb Z/9).
+ \tag{E.40.4}
+\]
+The fifteen saved conjugators have lengths from
+six to $131$.  Every input and every positive
+identity has been checked by a separate literal
+word evaluator importing no conjugacy solver.
+\end{statement}
+\begin{proof}
+We keep the complete finite target models and
+the actual source reconstruction maps of E.24.
+The new binary element has a nonidentity image
+in the actual quotient $T_{2,6}\to S_3$.
+Accordingly the conjugacy algorithm uses, for
+each of the six recorded coset representatives $g$,
+the necessary base equality
+\[
+                 \overline{d'}=\overline{g d g^{-1}}.
+ \tag{E.40.5}
+\]
+Only the cosets satisfying this equality proceed
+to the kernel calculation.  Above each such coset,
+the residual difference lies in the actual
+forty-dimensional collected two-group $U$.
+
+The weight-by-weight centralizer method of E.32
+then applies with $d$ in place of $d^2$.
+At weight $r$, every element of the current
+centralizer centralizes the comparison modulo
+weight $r$.  Its commutator with that comparison
+in the next elementary abelian layer is an
+actual homomorphism: conjugation by $U$ acts
+trivially on that layer, so the product
+commutator identity becomes addition there.
+All the kernel basis vectors are retained and
+closed under the actual two-group multiplication.
+The computed subgroup orders verify the index
+of the next centralizer as exactly the image
+order of this homomorphism.  Thus every possible
+conjugator above every matching base coset is
+retained.  An inconsistent system eliminates
+the whole corresponding coset, and all six
+base cosets are checked.
+
+As an exhaustive independent control, use the
+degree-two target, of order $1536$, with the
+same nonidentity-base element $abc$.
+Enumerate all elements and all of its conjugates.
+The conjugacy class has $96$ elements, and all
+$1536$ decisions of the new algorithm agree
+with this complete enumeration.
+
+At degree six, reconstruct each of the $24$
+original binary inputs, both multiplier branches,
+and both parameters in its full correction line.
+This gives all $96$ inputs in the statement.
+Apply the complete algorithm to all four central
+translates of each distinct value.  The outcome
+is exactly \textup{(E.40.3)}.
+The forty collected kernel-basis elements are
+rebuilt from the saved original braid-word
+expressions, including every square and commutator.
+Reducing each successful conjugator in this
+basis and adjoining its actual outer word
+produces the four literal witnesses in the
+statement.  Substitution verifies each identity
+in the original finite group.
+
+In the binary target, $|d|=16$ and $|z_4|=4$.
+For the actual multiplier residues,
+\[
+ d^\lambda=d z_4^{(\lambda-1)/4},\qquad
+ -\frac{\lambda-1}{4}\equiv
+       \begin{cases}0&\lambda=1,\\2&\lambda=73\end{cases}
+                                          \pmod4.
+ \tag{E.40.6}
+\]
+Both required central exponents occur in
+\textup{(E.40.3)}, and the literal evaluator
+checks $d'=h_2d^\lambda h_2^{-1}$ directly
+for each of the $96$ inputs.
+
+For the ternary target use the complete
+class-two exponent-three kernel over the
+$648$-element quotient as in E.35.
+The two successive conjugacy equations retain
+the full homogeneous centralizer spaces,
+now computed for $d=abc$.
+All base conjugators in the $648$-element
+group are enumerated.  The exact logarithm
+is applied only to the already proved
+class-two kernel.
+Reconstruction of all nine parameters in
+each of the $24$ original planes gives
+all $216$ inputs.  The complete calculation
+gives \textup{(E.40.4)} and the fifteen
+literal conjugators.
+Here $|d|=36$ and $|z_4|=9$.
+Both multiplier residues, and all their
+higher lifts modulo $144$, are one modulo
+$36$.  Hence the saved identities give
+$d'=h_3d^\lambda h_3^{-1}$ in this factor.
+
+The separate evaluator imports the two
+group models and source substitution maps,
+but neither conjugacy algorithm.  It
+evaluates all nineteen literal conjugators,
+reconstructs all $96$ binary and $216$
+ternary inputs, and checks the full
+multiplier equality at every point.
+The opposite-prime corrections have
+identity images in the respective target
+factors by E.24's explicit power maps.
+Finally the actual joint target is the
+full direct product proved in E.24.
+Thus $(h_2,h_3)$ is an element of that
+target and gives \textup{(E.40.2)} for
+all $864$ points.
+
+The exact algorithm and exhaustive control
+are \texttt{e\_quarter\_torsion\_root.py},
+executed in its three modes
+\texttt{control}, \texttt{binary}, and
+\texttt{ternary}; the separate evaluator is
+\texttt{e\_quarter\_torsion\_words\_root.py}.
+Their outputs and complete indexed JSON
+certificates are retained.  The finite
+outcomes keep every original CM fibre.
+\end{proof}
