@@ -1,0 +1,502 @@
+\section{D. Quasi-unipotence, integral one-parameter groups, and the presentation request}
+\label{sec:D}
+
+We distinguish a homomorphism on a cyclic group from its germ on finite-index
+subgroups.  This distinction is essential in \S52.3, fols.~752'--753,
+C4 scans 210--211.  We also correct a location error in the development
+prompt: C4 scan 231 is already \S53.3, fol.~763.  The presentations begun
+there are proved on scans 234--237 and concern a central covering of a
+modular group; they are not presentations of a nilpotent Lie quotient.
+We prove them in Part E and explain below why their nilpotent tests have
+limited information.
+
+The predecessor arguments \citep[Part E, E.3, E.6, E.10--E.11]{LM1Return2026}
+have been reopened and checked; the needed proofs are reproduced below.
+An ``Open'' entry means that this package has not resolved the stated
+scope, rather than that the problem is certified open in the literature.
+
+\subsection{What a cyclic germ determines}
+
+\begin{statement}{D.1}{Proved}{The rational one-parameter subgroup of a quasi-unipotent germ}
+Let $G\hookrightarrow\mathrm{GL}_{r,\mathbb Q}$ be a closed algebraic
+subgroup, and let $g\in G(\mathbb Q)$ be quasi-unipotent.  Choose $n>0$
+such that $g^n$ is unipotent.  There is a unique homomorphism of
+$\mathbb Q$-group schemes
+\[
+ u_g:\mathbb G_{a,\mathbb Q}\longrightarrow G,
+ \qquad u_g(t)=\exp\bigl(t\log(g^n)/n\bigr)
+\]
+whose restriction to $n\mathbb Z$ agrees with $k\mapsto g^k$.
+It is independent of the choice of $n$.  It is a monomorphism if it is
+nontrivial.  In general $u_g(1)\ne g$.
+\end{statement}
+\begin{proof}
+Set $N=g^n-I$.  Both logarithm and exponential are finite polynomials
+in the nilpotent matrix $N$.  The identity
+$\exp((s+t)X)=\exp(sX)\exp(tX)$ for $X=\log(g^n)/n$ proves that
+the displayed matrix polynomial is a homomorphism to $\mathrm{GL}_r$.
+For every $k\in\mathbb Z$ its value at $nk$ is $g^{nk}\in G$.
+Every equation defining $G$ therefore vanishes after substitution:
+a rational polynomial vanishing at the infinite set $n\mathbb Z$
+is zero.  This proves factorization through $G$.
+
+For uniqueness, if $P(t)$ is any polynomial matrix homomorphism,
+differentiating $P(t+s)=P(t)P(s)$ at $s=0$ gives
+$P'(t)=P(t)P'(0)$.  Coefficient comparison yields
+$P(t)=\exp(tP'(0))$.  Its value at $n$ fixes its logarithm, hence
+$P'(0)=X$.  Taking a common multiple of two choices proves independence.
+If $X\ne0$, the kernel is a proper algebraic subgroup of
+$\mathbb G_a$ in characteristic zero.  Such a subgroup is trivial:
+its Lie algebra is either $0$ or the full one-dimensional Lie algebra,
+and a finite subgroup has no nonzero element in characteristic zero.
+The differential is injective as well, so the kernel group scheme is
+trivial.  Finally $G=\mathbb G_m$, $g=-1$, gives $u_g=1$ and
+$u_g(1)=1\ne-1$.  Thus scan 211 is correct as a statement about
+the germ, exactly as its phrase ``pas seulement un germe'' requires;
+replacing germ agreement by agreement on the whole original cyclic
+group is false.
+\end{proof}
+
+\begin{statement}{D.2}{Proved}{Integral divided powers and positive powers}
+Let $A$ be a torsion-free $\mathbb Z$-algebra and let
+$G\hookrightarrow\mathrm{GL}_{r,A}$ be a closed subgroup scheme.
+For $g\in G(A)$ with $g-I$ nilpotent, put $X=\log g$ over
+$A\otimes\mathbb Q$.  A homomorphism
+$\mathbb G_{a,A}\to G$ taking $1$ to $g$ exists exactly when
+\[
+ X^j/j!\in M_r(A)\qquad(j\geq0);
+\]
+it is then unique.  More generally, if $A$ is any commutative ring,
+$G$ is a closed finitely presented subgroup of $\mathrm{GL}_{r,A}$,
+and $g$ is fibrewise quasi-unipotent in Grothendieck's sense, then
+some positive power $g^m$ is the value at $1$ of a homomorphism
+$\mathbb G_{a,A}\to G$.
+\end{statement}
+\begin{proof}
+The rational proof in D.1, with $n=1$, applies over any
+$\mathbb Q$-algebra: nilpotence makes the logarithm finite, and
+Vandermonde determinants on finitely many integer evaluations are
+units.  It forces the displayed coefficients.  Since
+$A\hookrightarrow A\otimes\mathbb Q$ is injective, their integrality
+is necessary, and if they are integral the addition identity and
+the defining equations of $G$ descend by this injectivity.  This
+proves the first assertion.
+
+For the second, in every residue field a positive power of $g$ has
+nilpotent difference from $I$.  The constructibly clopen subsets
+defined by the entries of $(g^a-I)^r$, as $a$ varies over positive
+integers, cover $\operatorname{Spec}A$.  Compactness of the
+constructible topology gives a finite subcover.  Take a common
+multiple $a$ of its exponents.  The coefficients of the characteristic
+polynomial of $N=g^a-I$, apart from the leading coefficient, are
+nilpotent.  They generate a nilpotent ideal because there are finitely
+many of them.  Cayley--Hamilton then gives $N^b=0$ for some $b$.
+For $d=(b-1)!$ the polynomials $\binom{dt}{j}$, $j<b$, lie in
+$\mathbb Z[t]$: each nonconstant coefficient of the numerator is
+divisible by $d$, hence by $j!$.  Consequently
+\[
+ P(t)=\sum_{j=0}^{b-1}\binom{dt}{j}N^j
+\]
+defines an additive one-parameter group in $\mathrm{GL}_{r,A}$,
+by the binomial identity in the universal ring
+$\mathbb Z[N]/(N^b)$, and $P(k)=g^{adk}$ at each integer $k$.
+
+It remains to enforce the equations of $G$; integer values alone
+are insufficient over a ring with torsion.  If a polynomial
+$F(t)\in A[t]$ vanishes at all integers, evaluation on
+$0,\ldots,\deg F$ and multiplication by the adjugate of the
+Vandermonde matrix show that some nonzero integer annihilates
+every coefficient.  If also $F(0)=0$, replacing $t$ by $Dt$ for
+that integer makes $F$ identically zero.  Apply this to a finite
+set of defining equations of $G$, and use a common dilation $D$.
+Then $P(Dt)$ factors through $G$ and takes $1$ to $g^{adD}$.
+This proves, with its linearity and finite-presentation hypotheses,
+the envelope argument used in \S52.3, fol.~754, scan 213.
+\end{proof}
+
+\begin{statement}{D.3}{Refuted}{Fibrewise unipotence does not supply an integral parameter}
+The assertion that every fibrewise unipotent integral matrix is the
+value at $1$ of an integral additive one-parameter subgroup is false.
+Let $N\in M_5(\mathbb Z)$ have superdiagonal $(1,2,3,2)$ and zero
+other entries.  Then $g=I+N$ is fibrewise unipotent in the
+manuscript's one-parameter sense, but no homomorphism
+$\mathbb G_{a,\mathbb Z}\to\mathrm{GL}_{5,\mathbb Z}$ takes $1$ to $g$.
+The exact replacement is D.2, not fibrewise unipotence alone.
+\end{statement}
+\begin{proof}
+We have $N^2=0$ modulo $2$, $N^3=0$ modulo $3$, and $N^5=0$.
+In characteristic $p$, a nilpotent matrix $\overline N$ with
+$\overline N^p=0$ has a truncated logarithm and exponential with
+all denominators invertible, giving the required homomorphism.
+This treats $p=2,3$ and every $p\geq5$; characteristic zero is D.1.
+Direct multiplication gives
+\[
+ X=\log(I+N)=
+ \begin{pmatrix}
+ 0&1&-1&2&-3\\0&0&2&-3&4\\0&0&0&3&-3\\
+ 0&0&0&0&2\\0&0&0&0&0
+ \end{pmatrix},\qquad X^4/4!=\tfrac12 E_{15}.
+\]
+D.2 supplies the contradiction.  The exact arithmetic is independently
+recomputed in \texttt{code/d\_checks.py}; its JSON and text outputs
+record the matrices and every divided-power denominator.
+\end{proof}
+
+\begin{statement}{D.4}{Refuted}{Smooth closure and the primitive lattice are distinct conditions}
+Smoothness of the closure of a rational additive subgroup does not
+imply that the map on any positive-index sublattice is a monomorphism,
+nor that the primitive integral parameter comes from the original
+discrete group.  For
+\[
+ \Pi_0=\mathbb Z,\qquad \varphi(k)=2k\in\mathbb G_a(\mathbb Z),
+\]
+the closure is $\mathbb G_{a,\mathbb Z}$, but the map from $n\mathbb Z$
+has coefficient $2n$ and is never a monomorphism over $\mathbb Z$.
+The saturated positive parameter is $t\mapsto t$; it does not
+factor through $\varphi(\Pi_0)$ on integral points.
+\end{statement}
+\begin{proof}
+The rational image is all $\mathbb G_{a,\mathbb Q}$, whose schematic
+closure is $\mathbb G_{a,\mathbb Z}$.  The lattice $n\mathbb Z$
+has generator $n$, so its additive group scheme maps by $t\mapsto2nt$.
+Its fibre at a prime dividing $2n$ is the zero homomorphism, hence
+has nontrivial kernel.  The only automorphisms of
+$\mathbb G_{a,\mathbb Z}$ are $t\mapsto\pm t$; requiring a positive
+rational scaling selects $t\mapsto t$.  Its value at $1$ is odd
+and therefore outside $2\mathbb Z$.  This isolates two assertions
+in scans 214--215, fols.~754'--755: the suggested sufficiency for
+an index $n$ is false as stated, whereas the extra factorization
+hypothesis (55) is genuinely extra.  For a chosen integral copy of
+$\mathbb G_a$, the strongest elementary lattice criterion is that
+the coefficient of the parameter be a unit; at a prime $p$ it must
+be a $p$-adic unit.
+\end{proof}
+
+\begin{statement}{D.5}{Proved}{The Lie-spanning condition has a precise smooth form}
+Let $H/\mathbb Z$ be a smooth affine group scheme of finite presentation
+with geometrically connected fibres.  Suppose finitely many
+$u_i:\mathbb G_a\to H$ have differentials spanning
+$\operatorname{Lie}(H)$ over $\mathbb Z$.  Then their images generate
+$H$ as an etale sheaf of groups.  The assertion also holds after
+adjoining finitely many conjugate additive subgroups.  For a smooth
+group with finite constant component group, one must additionally
+supply sections meeting every component.
+\end{statement}
+\begin{proof}
+The multiplication map from a finite product of the additive groups
+to $H$ has surjective differential at the identity section.  Since
+source and target are smooth, it is smooth on a neighbourhood of
+that section.  Its image contains an open neighbourhood $V$ of the
+identity, and every point of $V$ lifts etale locally to the source:
+a smooth surjection admits sections after etale localization.
+The subgroup sheaf generated by $V$ is represented by an open subgroup;
+one may construct it as the union of the images of finite products
+of $V\cup V^{-1}$.  In every geometric fibre this open subgroup is
+the whole connected group, since its cosets are open and its complement
+is a union of open cosets.  Therefore the subgroup sheaf is all of $H$.
+Apply the same argument to $H^0$ when components are present and
+then use the specified representatives.  This proves the usable
+version of the implication on \S52.3, fols.~755'--756,
+scans 216--217; it does not justify dropping smoothness or the
+condition on components.
+\end{proof}
+
+\subsection{Two specified Malcev quotients and their integral matrices}
+
+For this computation, and only for it, the two levels are
+$F_r/\gamma_2F_r$ and $F_r/\gamma_3F_r$ followed by rational Malcev
+completion.  They are auxiliary choices, not a claim that \S52
+selects a canonical first and second approximation.  For integral
+questions we specify the faithful truncated-Magnus linear model
+\[
+ T_{\leq d,\mathbb Z}
+   =\mathbb Z\langle X_1,\ldots,X_r\rangle/(\text{words of length}>d),
+ \qquad x_i\longmapsto1+X_i.
+\]
+The induced substitution action of a free-group automorphism is an
+integral matrix in the word basis.  Over $\mathbb Q$ its restriction
+to the Malcev subgroup gives the action on the corresponding
+nilpotent quotient.
+
+\begin{statement}{D.6}{Proved}{Torus and four-puncture twists at the two levels}
+On $F_2=\langle x,y\rangle$, set
+\[
+ A(x)=x,\quad A(y)=yx,\qquad
+ B(x)=xy^{-1},\quad B(y)=y,
+ \qquad c=[x,y].
+\]
+Both fix $c$ and satisfy $ABA=BAB$.  On the free class-two rational
+Lie algebra with $X=\log x$, $Y=\log y$, $C=[X,Y]$, the logarithm
+$D_A$ of $A$ is
+\[
+ D_A(X)=0,\qquad D_A(Y)=X-\tfrac12C,\qquad D_A(C)=0.
+\]
+Thus $A^t=\exp(tD_A)$ is the unique rational additive parameter.
+In the specified Magnus lattice it is integral at level one;
+at level two its divided-power denominators are $1,2,2$, so the
+least positive integral power is $A^2$.  At $3$ no dilation is needed.
+
+For a sphere with four labelled punctures use
+$F_3=\langle x_1,x_2,x_3\rangle$, the fourth loop
+$(x_1x_2x_3)^{-1}$, and $p=x_1x_2$.  A separating Dehn twist is
+\[
+ T(x_1)=px_1p^{-1},\quad T(x_2)=px_2p^{-1},\quad T(x_3)=x_3.
+\]
+It is trivial at level one.  At level two its logarithm sends
+$X_1$ to $-[X_1,X_2]$, $X_2$ to $[X_1,X_2]$, and $X_3$ to $0$.
+Its square is zero as a linear operator, so its additive parameter
+is integral in the Magnus lattice at both $2$ and $3$.
+\end{statement}
+\begin{proof}
+Reduction of words gives $[x,yx]=[xy^{-1},y]=c$ and $ABA=BAB$.
+The class-two Baker--Campbell--Hausdorff formula gives
+$\log(yx)=Y+X+[Y,X]/2$, proving the first Lie formula.  In the
+degree-two Magnus algebra the image of $Y$ is $Y+X+YX$.
+If $N=A-I$ on this seven-dimensional word module, then
+$N^3=0$ and $N^2(Y)=X^2$.  Consequently
+\[
+ \log A(Y)=X+YX-\tfrac12X^2,
+ \qquad (\log A)^2(Y)/2=\tfrac12X^2.
+\]
+All remaining entries have denominators dividing $2$, as substitution
+on $1,X,Y,X^2,XY,YX,Y^2$ verifies.  D.2 rules out an integral
+parameter for $A$ and supplies one for $A^2$.  Denominator $2$ is
+invertible over $\mathbb Z_{(3)}$.
+
+For $T$, conjugation by $p$ has degree-two increment
+$[X_1+X_2,X_i]$ on $X_i$, $i=1,2$.  It fixes $X_3$ and the
+degree-two layer; its increment squares to zero.  Thus
+$T^t=I+t(T-I)$, integrally.  The word identity
+$T(x_1x_2)=x_1x_2$ also proves exact preservation of the fourth
+loop.  All matrices, rational logarithms, and denominator tests are
+computed by \texttt{d\_checks.py}; no floating-point rank test is used.
+In the second Magnus representation the reduction of $A$ modulo $2$
+has order $4$, so it is quasi-unipotent, but not itself a value on
+$\mathbb G_a$ in that fibre.  The rank-five fibrewise-unipotent
+counterexample D.3 concerns the stronger, undilated hypothesis.
+The integral conclusion is explicitly about this lattice.  Changing
+to a different group-scheme model requires a lattice comparison.
+\end{proof}
+
+\begin{statement}{D.7}{Proved}{What the requested class-four presentation tests detect}
+The assignments $a\mapsto A$, $b\mapsto B$ define an action of
+$B_3=\langle a,b\mid aba=bab\rangle$ on $F_2$.  The program verifies
+the braid relation, the reflection relations of E.3, and
+\[
+ (AB)^6=\operatorname{Int}(c^{-1})
+\]
+on free nilpotent quotients of every class $1\leq d\leq4$.
+These tests follow from identities of reduced free words, also
+checked by the program.  Conversely, every nilpotent quotient of
+$B_3$ is cyclic; testing the modular-cover presentation solely
+in its own nilpotent quotients cannot establish it.
+\end{statement}
+\begin{proof}
+The first statements are exact substitution identities in a free
+group, so they descend along each characteristic quotient map
+$F_2\to F_2/\gamma_{d+1}F_2$.  The program first reduces the words
+without truncation and then independently verifies their matrices
+of dimensions $3,7,15,31$ in the successive Magnus modules.
+For the final assertion, in the class-two quotient of $B_3$ put
+$k=[a,b]$, which is central.  The braid relation implies that the
+abelianized images of $a,b$ agree; hence $b=a u$ with $u$ in the
+central commutator subgroup, so $[a,b]=1$.  The relation then gives
+$a=b$.  Thus $\gamma_2B_3/\gamma_3B_3=0$ and
+$\gamma_2B_3=\gamma_3B_3$.  Inductively all later terms equal
+$\gamma_2B_3$, proving that every nilpotent quotient factors through
+$B_3^{\mathrm{ab}}=\mathbb Z$.  The full presentation proof is
+therefore the argument in E.2, rather than the finite nilpotent test.
+\end{proof}
+
+\begin{statement}{D.8}{Proved}{The positive-power question over a finite local base}
+Let $A=\mathbb Z/p^e$ and let $G/A$ be any group scheme, with no
+linearity or affineness hypothesis.  If $g\in G(A)$ reduces to a
+finite-order element of $G(\mathbb F_p)$, then $g$ has finite
+order.  In particular, the positive-power conclusion holds for
+all fibrewise quasi-unipotent sections over $\mathbb Z/4$.
+\end{statement}
+\begin{proof}
+For a square-zero ideal $I\subset A$, the kernel of
+$G(A)\to G(A/I)$ at the identity injects into the additive group
+$\operatorname{Hom}(e^*\Omega^1_{G/A},I)$: the difference of two
+ring maps with the same reduction is an $A$-derivation, and the
+group law linearizes to addition.  This argument may be made in
+an affine neighbourhood of the identity, since a section reducing
+to the identity factors through that neighbourhood.  Apply it
+successively to $A/p^j\to A/p^{j-1}$.  Each kernel has exponent
+dividing $p$, so the kernel of $G(A)\to G(\mathbb F_p)$ is killed
+by some $p$-power.  A power of $g$ lies in that kernel, and a
+further power is the identity.  The constant homomorphism from
+$\mathbb G_a$ has that value.  In characteristic $p$, the
+manuscript's definition of quasi-unipotence implies finite order,
+because a value on $\mathbb G_a$ is killed by $p$.  This proves
+the last assertion and removes this particular non-linear
+test case from the unresolved range of LM1 E.11.
+\end{proof}
+
+\begin{statement}{D.9}{Open}{Scope beyond the proved integral and linear statements}
+The full existence of smooth integral models satisfying all the
+additional requirements of scans 211--219 is not established here.
+Nor have we proved the positive-power theorem for arbitrary separated
+locally finitely presented non-affine group schemes over every
+quasi-compact base. The two specific nonlinear test bases in the
+prompt are, however, settled by D.8 and D.11.
+\end{statement}
+\noindent
+The attack has separated the exact divided-power criterion D.2,
+the counterexamples D.3--D.4, the sufficient smooth generation
+hypothesis D.5, and the non-linear finite-local-base theorem D.8.
+The missing general step is a substitute for a faithful finite
+locally free representation compatible with the given integral
+model. D.11 supplies such a substitute over the dual numbers by
+restriction of scalars, so the earlier dual-number blocker has
+been removed. Over a general positive-dimensional integral base,
+restriction to a finite-dimensional group over a field is
+unavailable, and the added smooth-model requirements do not follow
+from the polynomial argument. No assertion about all such bases
+is inferred from the two Artinian tests.
+
+\begin{statement}{D.10}{Refuted}{The discrete relations and integer gluing do not present the integral sheaf}
+The presentation proposed as a question at scan 217, equation (57),
+does not suffice in the category of group sheaves on the big etale
+site.  Even for $H=\mathbb G_a^2$, $\Pi_0=\mathbb Z^2$, and the
+two primitive coordinate one-parameter subgroups, the relations
+of $\Pi_0$ and the two identifications on integer points do not
+force the two additive subgroups to commute.
+\end{statement}
+\begin{proof}
+Fix a prime $p$.  On $\mathbb F_p$-schemes let $U$ be the Heisenberg
+group with coordinates $(a,b,c)$ and law
+\[
+ (a,b,c)(a',b',c')=(a+a',b+b',c+c'+ab').
+\]
+Regard $T\mapsto U(T\times_{\mathbb Z}\mathbb F_p)$ as a group
+sheaf on the big etale site of $\operatorname{Spec}\mathbb Z$.
+There are two homomorphisms from $\mathbb G_a$ to this sheaf,
+\[
+ t\longmapsto(t^p-t,0,0),\qquad
+ s\longmapsto(0,s^p-s,0).
+\]
+The polynomial $t^p-t$ is additive in characteristic $p$.  Both
+maps vanish on every integer section, so together with the zero
+homomorphism from the constant group $\mathbb Z^2$ they satisfy
+all the proposed relations.  Their commutator over
+$\mathbb F_p[t,s]$ is $(0,0,(t^p-t)(s^p-s))\ne1$.
+Consequently they cannot extend to a homomorphism from
+$\mathbb G_a^2$, whose two coordinate subgroups commute.  This
+contradicts the asserted universal property of the proposed
+presentation.  The obstruction survives etale localization,
+because a nonzero section of this represented sheaf cannot
+become zero under a faithfully flat cover.
+\end{proof}
+
+The constant component groups and open adelic images in scans
+217--219, equations (58)--(64), are expressly additional hypotheses,
+not consequences of quasi-unipotence.  The associated right-exact
+component sequences hold for smooth surjections with connected
+identity fibres; they do not create those hypotheses.  The
+finite-index subgroup discussed at scan 220 is not specified by
+the definition.  Scan 221 begins a new construction from a chosen
+representation and density assumption.  These choices, and its
+possible continuation to the adelic group, belong to the category
+of admissible targets in Part B rather than to D.1's uniqueness
+of a single rational parameter.
+
+\begin{statement}{D.11}{Proved}{The nonlinear dual-number case}
+Let $k$ be a field of characteristic zero,
+$A=k[\epsilon]/(\epsilon^2)$, and $G$ a separated
+finite-presentation group scheme over $A$, not assumed
+affine, flat or linear. If $g\in G(A)$ reduces to a
+unipotent element of $G_k(k)$, there is a unique
+$A$-group homomorphism $\mathbb G_{a,A}\to G$ taking $1$ to $g$.
+If its reduction is only quasi-unipotent, the same
+assertion holds for some positive power of $g$.
+Here unipotent has its intrinsic field meaning:
+the element belongs to a unipotent algebraic subgroup.
+In particular this settles the nonlinear
+$\Q[\epsilon]/(\epsilon^2)$ test left in LM1.
+\end{statement}
+\begin{proof}
+We construct a substitute for a linear representation.
+Let $R=\operatorname{Res}_{A/k}G$. It is a separated
+finite-type $k$-group scheme. Indeed restriction of
+scalars of an affine finite-presentation $A$-scheme
+is affine of finite type by writing each coordinate
+as $u+\epsilon v$ and equating the two coefficients
+in each defining equation. For an arbitrary affine
+open $W\subset G$, its restriction is an open
+subfunctor of $R$: its complement is the image of
+the closed complement under the finite projection
+$\Spec A\times T\to T$. These open subfunctors cover,
+because that projection is a universal homeomorphism
+and hence each geometric fibre has only one support
+point, which lies in an affine open of $G$.
+They glue to the asserted finite-type scheme.
+This is also the nilpotent-base special case of
+\citet[Proposition 97.11.5, Tag 05Y8]{D_StacksRestriction}.
+Restriction of scalars preserves products, so the
+group law glues as well.
+
+There is a reduction homomorphism $r:R\to G_k$.
+Its kernel is the vector group
+\[
+ K=\Lie(G_k)\otimes_k(\epsilon k).
+\]
+To verify this even when $G$ is not flat, a point
+of the kernel over a $k$-algebra $B$ is a lift of
+the identity across the square-zero ideal
+$\epsilon B\subset B[\epsilon]/\epsilon^2$.
+Subtracting the given identity section identifies
+such lifts with the derivations from its relative
+cotangent space to $\epsilon B$. Base change of
+relative differentials identifies that cotangent
+space with the cotangent space of $G_k$; the group
+law on these derivations is addition. This proves
+the formula functorially.
+
+We do not assume that $r$ is surjective. Every
+finite-type group scheme over a characteristic-zero
+field is smooth (Cartier's theorem,
+\citealp[Lemma 39.8.2, Tag 047N]{D_StacksCartier}),
+so the usual algebraic-group image theorem applies.
+Let $H$ be the reduced Zariski closure of the
+cyclic subgroup generated by $r(g)$. Since $r(g)$
+is unipotent, $H$ is either the trivial group or
+a copy of $\Ga$, by the finite logarithm in a
+unipotent subgroup. The closed image of $r$
+contains this cyclic subgroup and hence contains
+$H$. Thus
+\[
+ 1\longrightarrow K\longrightarrow r^{-1}(H)
+           \longrightarrow H\longrightarrow1
+\]
+is an fppf exact sequence. The middle group is
+affine: its map to the affine scheme $H$ is a
+vector-group torsor, and such torsors over an
+affine scheme are trivial, since their class is
+in $H^1(H,\mathcal O_H^{\dim K})=0$.
+It is therefore a unipotent group, since both
+kernel and quotient are unipotent
+(\citealp[Corollary 14.7]{D_Milne2022}).
+
+The exponential isomorphism for a characteristic-zero
+unipotent group
+(\citealp[Proposition 14.32]{D_Milne2022}) now gives
+$t\mapsto\exp(t\log g)$ in $r^{-1}(H)\subset R$.
+By the defining adjunction of restriction of scalars
+this is an $A$-group homomorphism $\mathbb G_{a,A}\to G$
+whose value at $1$ is $g$.
+Two such maps correspond to $k$-morphisms
+$\mathbb G_{a,k}\to R$ agreeing at every integer, since both
+take $n$ to $g^n$. The integers are Zariski dense
+in $\mathbb G_{a,k}$, and $R$ is separated; the maps agree.
+For quasi-unipotent reduction first take a power
+whose reduction is unipotent and apply the result.
+
+The nonflat test $G=\Spec A[t]/(\epsilon t)$
+illustrates why the image qualification matters:
+$R\simeq\mathbb G_{a,k}$, its reduction map has zero image,
+and every $g=\epsilon a$ is nevertheless reached
+by $t\mapsto\epsilon at$. Thus flatness has not
+been silently inserted into the argument.
+\end{proof}

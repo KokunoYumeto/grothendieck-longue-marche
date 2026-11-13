@@ -1,0 +1,19 @@
+@book{E_Kbook,
+  author = {Charles A. Weibel},
+  title = {The K-book: An Introduction to Algebraic K-theory},
+  series = {Graduate Studies in Mathematics},
+  volume = {145},
+  publisher = {American Mathematical Society},
+  year = {2013},
+  url = {https://sites.math.rutgers.edu/~weibel/Kbook/Kbook.pdf},
+  note = {verified: opened author PDF; III.5.2.2, III.6.1, III.6.3, III.6.5--III.6.5.1 checked}
+}
+@misc{E_BrinonConrad,
+  author = {Olivier Brinon and Brian Conrad},
+  title = {CMI Summer School Notes on p-adic Hodge Theory},
+  year = {2009},
+  url = {https://math.stanford.edu/~conrad/papers/notes.pdf},
+  note = {verified: opened author PDF; equation (8.2.2), printed page112, tame conjugation and compatible uniformizer roots checked}
+}
+% E_HainMatsumoto is already present in the Part E bibliography. Its
+% Theorem7.2 and TheoremB.1 were independently opened for E.29.

@@ -1,0 +1,242 @@
+\subsection{Isolated shadows and a complete tower of homology refinements}
+
+\begin{statement}{D.26}{Proved}{The CM witnesses survive every abelian-kernel refinement}
+Keep $B,Q,N,F$ and $G_j$ from D.25, and let
+$\widetilde N_j\triangleleft B_3$ be the inverse image of
+$[N,N]N^j$. Every $\widetilde N_j$ is an isolated object of
+the gentle GT-shadow groupoid: every shadow with that target
+induces an automorphism of $G_j$.
+
+Put $C=N^{\rm ab}\simeq\mathbb Z^{97}$, and let $s,r$ act
+on $C$ by conjugation. For $t=sr$ define $c=[t^{12}]\in C$.
+The integral maps
+\[
+ L:C\oplus C\longrightarrow C,\quad
+ L(b,a)=(1-s)b+s(1-r)a,\qquad
+ \widetilde L(b,a,h)=L(b,a)-hc                         \tag{D.26.1}
+\]
+have Smith invariant factors $(1^{96},2)$ and $(1^{97})$,
+respectively. In particular $\operatorname{coker}L=C_2$
+and $\widetilde L$ is onto over $\mathbb Z$.
+
+There is an exact sequence and a specified quotient map
+\[
+ 1\longrightarrow\widehat{\mathbb Z}^{97}
+ \longrightarrow\mathcal G:=\varprojlim_j G_j
+ \longrightarrow Q\longrightarrow1,\qquad
+ \widehat B\twoheadrightarrow\mathcal G
+   =\widehat B/\overline{[\widehat N,\widehat N]} .       \tag{D.26.2}
+\]
+Each of D.25's twenty-four certified automorphisms of $G_6$
+lifts to a continuous automorphism of $\mathcal G$ inducing
+the identity on $Q$ and sending $t$ to $t^\lambda$, for some
+$\lambda\in\widehat{\mathbb Z}^{\times}$ with
+$\lambda\equiv1\pmod{72}$. A single cusp gauge supplies a
+compatible family of GT shadows at all $\widetilde N_j$.
+For each of the twelve extra CM pairs, its member at level six
+can be chosen to be one of D.25's nonarithmetical shadows,
+with $m=(\lambda-1)/2\equiv0\pmod{36}$.
+Thus all twelve extra CM pairs survive the entire family of
+abelian-kernel refinements of $N$.
+
+This family does not exhaust the finite quotients in D.22:
+there is an explicit finite quotient of $B$ below $G_6$ whose
+kernel does not contain $[N,N]$. The existence of a genuine
+full profinite GT$_0$ lift of these shadows remains undecided.
+\end{statement}
+\begin{proof}
+First we verify isolation directly from finite shadow equations.
+Let $(m,f)$ be a shadow at $\widetilde N_j$, put
+$\lambda=2m+1$, and choose a representative $f\in[F,F]$.
+The hexagons give a surjection $\phi:B_3\to G_j$ and send
+the braid center to its $\lambda$th power, which is trivial
+in $G_j$. Hence $\phi$ factors through $B$.
+The cusp $t$ has order $12j$ in $G_j$: its image in $Q$ has
+order twelve, and the cycle $c$ is primitive in $C$.
+The last assertion also follows from the integral cycle
+coordinates in the calculation below, one of which is one
+and all the others are zero. Thus
+$(\widetilde N_j)_{\rm ord}=6j$ and the shadow's multiplier
+is a unit modulo twelve.
+
+Evaluate the same word $f$ in the linear matrices $U^2,W^2$
+of A.17 modulo twelve. Its reduction modulo four is $I$,
+since $U^2,W^2$ generate an abelian four-group modulo four.
+Consequently the linear matrices
+$A=U^\lambda$ and $D=f^{-1}W^\lambda f$ satisfy the braid
+identity with positive sign. Indeed the projective identity
+first gives $ADA=\pm DAD$, and modulo four the choice
+$\lambda\equiv\pm1$ gives the positive identity for
+$U^\lambda,W^\lambda$; an invertible matrix cannot equal
+its negative modulo four. The pair $A,D$ generates all of
+$\mathrm{SL}_2(\mathbb Z/12)$: its generated subgroup
+surjects onto $Q$, and a proper such subgroup would be a
+complement to $\{\pm I\}$. That complement cannot exist,
+because both lifts $\pm S$ of the order-two element $s\in Q$
+have square $-I$.
+
+Write $D=(\begin{smallmatrix}a&b\\c_0&d\end{smallmatrix})$.
+The trace, determinant, braid identity and generation now give
+\[
+ a+d=2,\quad ad-bc_0=1,\quad
+ c_0(1+\lambda c_0)=0,\quad c_0\in(\mathbb Z/12)^\times.
+\]
+Thus $c_0=-\lambda^{-1}$ and the matrix
+$V=(\begin{smallmatrix}\lambda&\lambda(1-a)\\0&1\end{smallmatrix})$
+conjugates $U,W$ to $A,D$, respectively. This repeats the
+elementary matrix argument of A.17 using only the finite
+shadow hypotheses. It proves $q\phi=\operatorname{Int}(V)q$.
+In particular $\phi(N)\subset C/jC$. Since this subgroup
+is abelian of exponent $j$, $\phi$ kills $[N,N]N^j$.
+It therefore induces a surjective endomorphism of the finite
+group $G_j$, hence an automorphism. Its kernel is precisely
+$\widetilde N_j$. This is isolation in
+\cite[Definition3.13]{dDolgushevGuynee2024}.
+
+For the integral assertion use the same oriented graph and
+spanning tree as in D.25. The ninety-seven fundamental cycles
+form a matrix with the identity matrix in the non-tree-edge
+coordinates, so projection to those coordinates is an exact
+integral inverse on $C$. The columns of $L$ are
+$(1-s)C$ and $s(1-r)C$ in this basis. The program
+\texttt{d\_cm\_refine.py} computes their integral Smith form
+as $(1^{96},2)$. Appending the column $-P(t^{12})$ gives
+Smith form $(1^{97})$; an independent Hermite-normal-form
+calculation of this augmented matrix returns $I_{97}$.
+The program retains the complete integer coordinates and
+reproduces the spanning tree. Thus these are integer-image
+computations, not deductions from ranks modulo two and three.
+
+We construct the lift, retaining the multiplier's full
+residue. Fix one of the twenty-four certified matrix pairs
+$A_0,\beta_0$ and choose the fixed integral paths $P_A,P_\beta$
+of D.25. Let $E\in C$ be its integral cusp error, the left
+side of (D.25.5). With cycle corrections $(b,a)$ the exact
+cusp equation for multiplier $\lambda=1+12h$ is
+\[
+       E+L(b,a)-hc=0.                                  \tag{D.26.3}
+\]
+To see the exponent, $P(t^{1+12h})=P(t)+hc$, since
+$q(t)c=c$. This proves (D.26.3) in every finite quotient,
+and by continuity for $h\in\mathbb Z_p$.
+
+At $p=2,3$ begin with D.25's correction modulo $p$ and
+$h=0\pmod p$. Suppose coefficients have been constructed
+modulo $p^k$; their error in (D.26.3) is divisible by $p^k$.
+Surjectivity of $\widetilde L$ supplies a correction
+$(\delta b,\delta a,\delta h)$ modulo $p$ equal to the
+negative error divided by $p^k$. Add $p^k$ times that
+correction. This constructs compatible solutions over
+$\mathbb Z_p$. Their induced matrix on $C\otimes\mathbb Z_p$
+reduces to D.25's invertible matrix modulo $p$, hence is
+invertible. The associated map on the quotient $Q$ is the
+identity, so it is an automorphism of the whole extension.
+The initial values $h=0\pmod2$ and $h=0\pmod3$ are
+preserved. Accordingly the combined multiplier satisfies
+$\lambda\equiv1\pmod{72}$, not just modulo twelve.
+As a check of the power and sign conventions, the program
+carries every one of the twenty-four solutions through
+exponents $2,4,8,16$ and $3,9,27,81$, and directly verifies
+both general-$m$ hexagons in their faithful group models:
+there are384 successful identity checks.
+
+For $p>3$ take the identity automorphism on
+$\mathcal G_p=\varprojlim_k G_{p^k}$, with multiplier one,
+but choose conjugators with the required images
+$A_0,\beta_0$ in $Q$. Such choices exist. For example,
+an arbitrary lift $a_0$ of $A_0\in C_Q(r)$ has
+$a_0ra_0^{-1}r^{-1}=z\in C\otimes\mathbb Z_p$ and
+$(1+r+r^2)z=0$. Multiplication by three is invertible,
+and the identity
+$(1-r)(2+r)=3-(1+r+r^2)$ shows that
+$z=(1-r)((2+r)z/3)$. Adjusting $a_0$ by the negative of
+this cycle gives a lift centralizing $r$. The same argument
+for $s$ uses $(1-s)z=2z$ when $(1+s)z=0$ and division by
+two. These are compatible $p$-adic choices, and both belong
+to the preimage of $H=q(F)$.
+
+The extensions $\mathcal G_p$ have the same quotient $Q$,
+and their fibre product over $Q$ is precisely $\mathcal G$.
+This follows either from the path model or from Chinese
+remainders on $C/jC$. The constructed automorphisms and
+conjugators therefore assemble to $\alpha\in
+\operatorname{Aut}(\mathcal G)$ and $A,\beta\in\overline F$,
+with $\alpha(s)=\beta s\beta^{-1}$,
+$\alpha(r)=ArA^{-1}$ and $\alpha(u)=u^\lambda$.
+Here $\overline F$ denotes the image of $\widehat F$ in
+$\mathcal G$. Its abelianization is
+$\overline F^{\rm ab}=\widehat{\mathbb Z}x\oplus
+\widehat{\mathbb Z}y$, because the kernel
+$\overline{[\widehat N,\widehat N]}$ is contained in
+$\widehat F'$.
+
+Write $\beta^{\rm ab}=ax+by$, set $k=b-a$, and conjugate
+$\alpha$ by $x^k$. With $\beta'=x^k\beta$ and
+$f'=s\beta's(\beta')^{-1}$, the same abelianization
+calculation as in D.25 gives $f'\in\overline F'$.
+The resulting automorphism satisfies
+\[
+ \alpha'(u)=u^\lambda,\qquad
+ \alpha'(v)=(f')^{-1}v^\lambda f',\qquad
+ \alpha'(s)=sf'=(f')^{-1}s.                             \tag{D.26.4}
+\]
+Since $r=uv$, $s=uvu=vuv$, and $m=(\lambda-1)/2$, its
+two hexagons are exactly
+\[
+ u^\lambda(f')^{-1}v^\lambda f'=(f')^{-1}r x^{-m},\qquad
+ (f')^{-1}v^\lambda f'u^\lambda=vu y^{-m}f'.             \tag{D.26.5}
+\]
+Reduction to every $G_j$ gives a GT shadow: the center is
+killed, the unit condition holds, $f'$ has commutator image,
+and the induced map is an automorphism. The single global
+pair makes these reductions compatible.
+
+For precision concerning D.25's finite gauge, choose its
+discrete representative of $\beta$ to agree with the
+constructed profinite $\beta$ both in $G_6$ and in
+$\overline F^{\rm ab}/36$. Such a representative exists
+because $F$ is dense in $\overline F$ and this is a finite
+joint quotient. Then its integer $b-a$ agrees with $k$
+modulo36, the order of $x$ in $G_6$. Thus its D.25 gauge
+is exactly the reduction of (D.26.4), with $m=0\pmod{36}$.
+The gauge preserves $T=A^{-1}V$ and $W=\beta^{-1}V$.
+Consequently all twelve extra CM pairs remain
+nonarithmetical at level six in the compatible tower.
+This specifies the finite gauges that extend; it does not
+make an assertion about an independently chosen gauge.
+
+Finally we locate the remaining finite tests by an actual
+quotient. Choose a free basis of the rank97 group $N$ and
+map its first two generators to $(12),(23)\in S_3$ and
+the others to the identity. Let $J$ be the normal core in
+$B$ of the intersection of this map's kernel with
+$[N,N]N^6$. Then $J\triangleleft B$ has finite index,
+$J\subset[N,N]N^6$, but $[N,N]\not\subset J$, since
+the commutator of the first two basis elements has nontrivial
+image in $S_3$. The quotient map $B\to B/J$ therefore
+cannot factor through any $G_j$: every such factorization
+would kill $[N,N]$. This also proves the kernel in
+(D.26.2) is nontrivial and that the homology tower is not
+cofinal in the system of D.22.
+
+The source search supplies no additional lifting assertion
+for these quotients. In particular isolation gives reduction
+\emph{homomorphisms}, as stated in
+\cite[Remark3.16]{dDolgushevGuynee2024}; the all-finer-quotient
+criterion is its Theorem5.2 and Corollary5.4.
+The abelian sufficient criterion in
+\cite[TheoremB.2]{dDolgushevLeLorenz2024} requires the
+pure quotient to be abelian. Here its image already
+surjects onto
+$H\simeq C_2^2\times\mathrm{SL}_2(\mathbb F_3)$:
+the isomorphism sends the unique lift with modulo-four
+image in $V_4$ to its modulo-four and modulo-three components.
+The latter group's second derived subgroup has order two.
+Similarly the dihedral quotients of
+\cite[Remark3.2]{dBDHP2026} embed their $F$ images into
+products of three dihedral groups and are metabelian.
+No such pure quotient can surject onto this $H$, since
+surjections preserve the derived-series images.
+These explicit maps explain why those sufficient families
+do not supply the remaining lift.
+\end{proof}
