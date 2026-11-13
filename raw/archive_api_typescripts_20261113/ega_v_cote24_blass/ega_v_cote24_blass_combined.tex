@@ -1,0 +1,2867 @@
+\documentclass[11pt]{article}
+% Diplomatic transcription macros (12 Nov 2026). Typed text is plain; the handwritten layer is blue,
+% deletions red, typewriter strike-outs grey, doubtful readings in brackets with a question mark.
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\usepackage{tikz-cd}
+\usepackage{environ}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\title{EGA V, English translation by P. Blass, 1987 (cote 24)\\[4pt]\large Diplomatic transcription from the Montpellier scans}
+\author{AI-transcribed by Claude Opus 5.5}
+\date{12 November 2026}
+\newcommand{\scanpage}[1]{\par\bigskip\noindent{\small\sffamily[scan #1]}\par}
+\newcommand{\mspage}[1]{{\small\sffamily[p.\,#1]}}
+\newcommand{\hand}[1]{\textcolor{blue}{#1}}
+\let\over\relax
+\newcommand{\over}[2]{\textcolor{gray}{#1}\textcolor{blue}{\ensuremath{^{\!\nearrow}}#2}}
+\newcommand{\inserted}[2][]{\textcolor{blue}{$\langle$#2$\rangle$}}
+\newcommand{\margin}[1]{\textcolor{blue}{\{\textsf{marg.:} #1\}}}
+\newcommand{\deleted}[1]{\textcolor{red}{[\textsf{del.:} #1]}}
+\newcommand{\xout}[1]{\textcolor{gray}{[\textsf{x:} #1]}}
+\newcommand{\uline}[1]{\underline{#1}}
+\newcommand{\uuline}[1]{\underline{\underline{#1}}}
+\newcommand{\unsure}[1]{[#1?]}
+\newcommand{\illegible}[1]{[\textsf{illeg.\ #1}]}
+\newcommand{\diagram}[1]{\par{\centering #1\par}}
+\newenvironment{diagramblock}{\par\begin{center}}{\end{center}\par}
+
+\begin{document}
+\maketitle
+
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 1 (PDF page 2).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/1}
+\mspage{1}
+
+EGA$\overline{\underline{V}}$ based on notes of
+Alexandre Grothendieck
+
+Stage 0 - translation
+
+by
+
+Piotr Blass
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 2 (PDF page 3).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/2}
+\mspage{2}
+
+Summary
+
+This formulation gives pêle mêle a detailed summary of the
+set of results that should appear in a final formulation. To
+arrive at the latter we need to reorganize??? thoroughly the
+present stage zero the first step should probably be to make a new
+plan (in which without a doubt the present sections 11, 12, 14, 15
+will come much earlier). I have not even written No 16 which
+should neither in principle cause any difficulty nor does it
+influence in any way the previous Nos since what is involved is a
+simple matter of translation.
+
+You will notice the presence of a proposition 10.3 which
+should appear in a previous paragraph.
+
+I would like to tell you in this connection that I have
+several other results quite diverse but all dealing with
+birational mappings that I would love to include somewhere.
+
+It seems to me that there is not enough to make a paragraph.
+Do you have a suggestion where to put them?
+
+I plan to send them to you soon as well as No. 16 of the
+present notes. [Ask AG if No 16 has ever been written.] \hand{$^{*}$}
+
+In addition the present section 20 will probably blow up into
+two sections, one consisting of results of the type ``elementary
+geometry'' on grassmonians.
+
+If need be, could one include there also (lacking a better
+place) the supplements that I told you about dealing with
+birational transformations?
+
+\margin{$^{*}$ Ask AG.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 3 (PDF page 4).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/3}
+\mspage{3}
+
+\uline{Hyperplane Sections and Conic Projections}
+
+1)\quad Notations.
+
+2)\quad Generic hyperplane section, local properties.
+
+3)\quad Generic hyperplane section geometric irreducibility and
+connectedness.
+
+4)\quad Variable hyperplane section: ``sufficiently general''
+sections.
+
+5)\quad Theorems of Seidenberg type.
+
+6)\quad Connectedness of any hyperplane section.
+
+7)\quad Application to the constructions of special hyperplane
+sections and multisections.
+
+8)\quad Dimension of the set of exceptional hyperplanes.
+
+9)\quad Change of projective immersion.
+
+10)\quad Pencils of hyperplane sections and fibrations of blown up
+varieties.
+
+11)\quad Grassmanians.
+
+12)\quad Generalization of forementioned results to linear sections.
+
+13)\quad Elementary morphisms and a theorem of M. Artin.
+
+14)\quad Conic projections.
+
+15)\quad Axiomatization of some of the previous results.
+
+16)\quad Translation into the language of linear systems.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 4 (PDF page 5).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch pilot (msgbatch_0189Nhf1xB615YWnztubtLfc), 2026-11-12; not yet checked by eye.
+\scanpage{24/4}
+\mspage{4}
+
+\uline{HYPERPLANE SECTIONS AND CONIC PROJECTIONS}
+
+\uline{Section 1: Preliminaries and Notation.}
+
+Let S be a prescheme, let $\underline{E}$ be a locally free module of
+finite type over S let $\underline{E}^{\vee}$ be its dual. We denote by P = $\underline{P}(\underline{E})$ the
+projective fibration defined by $\underline{E}$ and by P$^{\vee}$ the projective
+fibration defined by E$^{\vee}$. We shall call P$^{\vee}$ the \uline{scheme of}
+\uline{hyperplanes} of P. This terminology can be justified as follows.
+Let $\xi$ be a section of P$^{\vee}$ over S which is therefore determined by an
+invertible quotient module L of $\underline{E}^{\vee}$. From it we obtain an
+invertible quotient L$_{P}$ of $(\underline{E}^{\vee})_{\underline{P}} = (\underline{E}_{P})^{\vee}$, on the other hand, we have
+the invertible quotient module O$_{P}$(1) of E$_{P}$. Passing to duals we
+may take $\underline{L}_{P}{-1}$ resp. $\underline{O}_{P}(-1)$ to be invertible submodules (locally
+direct \uline{summands or factors}) of $\underline{E}_{P}$ (resp. of $(\underline{E}_{P})^{\vee}$) and the pairing
+$EP \otimes E^{\vee}_{P} \to \underline{O}_{P}$ defines therefore a natural pairing (*) $\underline{O}_{P}(-1) \otimes \underline{L}_{P}{-1}$
+$\to \underline{O}_{P}$ or also the transpose homomorphism (**) $\underline{O}_{P} \to \underline{O}_{P}(1) \otimes \underline{L}_{P} =$
+$\underline{O}_{P}(1)$ i.e. a section of $\underline{L}_{P}(1)$ canonically defined by $\xi$. The
+``divisor'' of that section i.e. the closed subscheme H$_{\xi}$ of $\underline{P}$ defined
+by the image ideal of (*) is called the hyperplane in $\underline{P}$ defined by
+the element $\xi \in$ P$^{\vee}$(S). We could describe it by noting that locally
+over $\underline{S}$, $\xi$ is given by a section $\phi$ of E such that $\phi$ (s) $\neq 0$ for all
+s ($\phi$ is determined by $\xi$ up to multiplication by an invertible
+section of $\underline{O}_{S}$); since E = p$^{*}$(O$_{P}$(1)) (p: P $\to$ S being the
+projection), $\phi$ can be considered as a section of O$_{P}$(1) the divisor
+of which is nothing else but H$_{\xi}$.
+
+Of course, if we consider L-1 as an invertible submodule of E
+locally a direct factor in E then the correspondence between $\xi$
+% NOTE: a white strip covers the next typed line (only faint traces show through); nothing else is typed below it on the page
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 5 (PDF page 6).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/5}
+\mspage{5}
+
+(i.e. $\underline{L}$ or $\underline{L}$-1 \hand{\unsure{$\subset$|$\in$}} $\underline{E}$) and $\phi$ is obtained by taking for $\phi$ a
+section of $\underline{L}$-1 which does not vanish at any point i.e. by a
+trivialization of $\underline{L}$-1 (which exists in every case locally). Let us
+note that H$\xi$ is nothing else but P($\underline{E}$ / $\underline{L}$-1) (canonical isomorphism)
+that is a third way of describing H$\xi$ (N.B. P($\underline{E}$ / $\underline{L}$-1) is indeed
+canonically embedded in P = P($\underline{E}$) which has the advantage of
+proving in addition that H is a projective fibration over S and is
+a fortiori smooth over S. (Again it would be necessary to say in
+par 17 that a projective fibration is smooth). Without a doubt it
+would be better to begin with that one. [Ask AG par 17 of what?]
+
+\uline{Remarks}
+
+The formation of H$\xi$ from $\xi$ is compatible with base change in
+other words one finds a homomorphism of functors [Ask AG about
+next symbol]
+
+\quad $^{\circ}$
+
+(Sch) /S $\rightarrow$ (Ens), PV $\rightarrow$ \uline{Div}(P/S) where the second term denotes the
+functor of ``relative divisors'' of P/S whose values at S' (an
+arbitrary S prescheme) is the set of closed subschemes of $\underline{P}_{S}$' which
+are complete intersections transversal and of codimension 1
+relative to S' (compare Par. 19).
+
+It is easy to show that this homomorphism of functors is a
+monomorphism, in other words that $\xi$ is determined of H$\xi$. (This
+last fact justifies the terminology ``scheme of hyperplanes'' used
+above.) We shall see that the functor \uline{Div}(P/S) is representable
+by the prescheme (direct) sum of P(Symm$^{k}$(E)) so that $\underline{P}$ can be
+identified to an open and closed subscheme of \uline{Div}(P/S).....
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 6 (PDF page 7).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/6}
+\mspage{6}
+
+(N.B. to tell the truth the determination of the relative divisors
+of P/S could be done with the means available right now, using
+results of Ch. III and could be added as an example to Par. 19..).
+
+Let us now make the base change $S^1 = P^V \to S$ and let us
+consider the diagonal section (or ``generic section'') of $P^V{}_{S1}$ =
+$\underline{P}(E^V{}_{S1})$ over $S^1$ : we find a closed subscheme $\underset{S}{\underline{H}}$ of $P_{S1} = P \times_S P^V$
+which is called the incidence scheme between $\underline{P}$ and $\underline{P}^V$ defined by
+the image ideal of the canonical homomorphism
+$O_{\underline{P}}(-1) \otimes_S O_{\underline{P}^V}(-1) \to O_{\underline{P}\,\underset{S}{\times}\,\underline{P}^V}$
+
+from which one sees that it is a projective fibration over $P^V$, and
+by symmetry it is also a projective fibration over P.  Let us note
+that one recovers the ``special'' hyperplanes $H_\xi$ (for $\xi$ a section of
+$P^V$ over S) by starting out from the ``universal hyperplane'' $\underline{H}$ and by
+taking its inverse image for the base change $S \xrightarrow{\xi} P^V$.
+
+The same remark holds for every point of $P^V$ with values in an
+arbitrary S-prescheme S' which (considered as a section of $\underline{P}_S{}'$ over
+S') allows us to define an $H_\xi$ \hand{$\subset$} $P_S{}'$ ; the latter is nothing else
+but the inverse image of H by the base change $S' \xrightarrow{\xi} \underline{P}^V$.  In what
+follows we assume a prescheme X of finite type over S and an S
+morphism $f{:}X \;\to P$.  One of the main objectives of this paragraph
+(section) is to study for every hyperplane $H_\xi$ of P its inverse
+image $\underline{Y}_\xi = f^{-1}(H_\xi) = X \underset{P}{\times} H_\xi$ and especially to relate
+% NOTE: a white box covers the end of this last typed line, after "to relate"; the rest of the line is hidden.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 7 (PDF page 8).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/7}
+\mspage{7}
+
+the properties of X and of $Y_\xi$.  As usual one also has to consider
+the $P(S^1)$, $S^1$ arbitrary S scheme, in this case $H_\xi$ is a hyperplane
+in $\underline{P}_S{}^1$ and we put again
+\[ Y_\xi = f_S{}'\,{}^{-1}(H_\xi) = x_S{}'\; x_{\underline{P}_{S}}{}' \qquad\qquad H_\xi = X \quad x_P \;\; H_\xi \]
+where the subscript S' denotes as usual the effect of the base
+change S' \qquad\qquad S and where in the last expression we consider
+$H_\xi$ as a P scheme via the combined morphism $H_\xi$ \qquad $\underline{P}_S{}'$ \quad P.  It is
+therefore again convenient to consider the case where $\xi$ is
+``universal'' i.e. where S' = $P^V$ and $\xi$ is the diagonal section so
+that H = $\underline{H}$, in this case one observes (up to better notations to
+be suggested by Dieudonne) that $\underline{Y} = Y_\xi$ in the general case of a $\xi$
+: S' \qquad\qquad $P^V$, one has therefore also $Y_\xi = \underline{Y}\; x_{\underline{P}^{V}} \quad S^1$.  Finally if
+F is a \uline{sheaf of modules}* over $XP^V$ we denote by G its inverse image
+over Y by G its inverse image over $\underline{H}$ so that one also has
+\[ G_\xi = \underline{G} \quad \bigotimes_{O_{\underline{P}}{}^V} \quad O_S{}^1. \]
+
+Let us summarize in a small diagram the essentials of the
+constructions and notations considered.
+
+\begin{diagramblock}
+\begin{tikzcd}
+F & & \underline{G} & G_\xi \\
+X \arrow[d] & X\; x_S\; \underline{P}^V \arrow[l] \arrow[d, dash] & \underline{Y} \arrow[l] \arrow[d] & Y_\xi \arrow[l] \arrow[d] \\
+\underline{P} \arrow[d] & \underline{P}\; x_S\; \underline{P}^V \arrow[l] \arrow[d, dash] & \underline{H} \arrow[l] \arrow[dl] & H_\xi \arrow[l, dash] \arrow[d] \\
+S \arrow[r, dash] & \underline{P}^V & & S' \arrow[ll]
+\end{tikzcd}
+\end{diagramblock}
+
+\margin{* ASK AG if \uline{Module} always means coherent or quasi-coherent sheaf of modules.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 8 (PDF page 9).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/8}
+\mspage{8}
+
+(the squares and diamonds appearing in this diagram are
+Cartesian). In the next section we will study systematically the
+following case: $S^{1}$ is the spectrum of a field K and its image in P
+is generic in the corresponding fiber $P^{V}_{\unsure{S|s}}$. After making the base
+change Spec k(s) $\rightarrow$ S we are reduced to the case where S is the
+spectrum of a field k, which is what we assume in the next
+section. Also the majority of properties studied for X and Y are
+of ``geometric nature'' and therefore invariant under base change,
+which allows us also (without loss of generality) to limit
+ourselves to the case where K is algebraically closed or to the
+case where K = k($\eta$), $\eta$ , being the generic point of $P^{V}$ and . $\xi$ :
+Spec(K) $\rightarrow$ $P^{V}$ is of course the canonical morphism. We also note
+that for geometric questions concerning X, Y we can (after making
+a base change) restrict ourselves to the case of k algebraically
+closed. A terminological reminder. If f is an immersion we
+usually call Y a hyperplane section of X (relative to the
+projective immersion f and the hyperplane H). There is no reason
+not to extend this terminology to the case of an arbitrary f.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 9 (PDF page 10).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/9}
+\mspage{9}
+
+\uline{Section 2}
+
+\uline{20.2}
+
+\uline{Study of a generic hyperplane section : local properties.}
+
+Let us recall that now S=Spec(k), k is a field.  If $\eta$ is a
+point of $\underline{P}V$ and if $\xi$ :Spec k($\eta$) $\rightarrow$ PV is the canonical morphism we
+also \uline{put} $H_{\eta}$, $Y_{\eta}$, $G_{\eta}$ in place of $H_{\xi}$ , $Y_{\xi}$ , $G_{\xi}$ .
+
+In this section (numero) $\eta$ denotes always the generic point
+of PV.
+
+\uline{Proposition 2.1}
+
+Let us assume that X is irreducible.  Then $\underline{Y}_{\eta}$ is irreducible
+or empty and in the first case it dominates X\uline{???} [illegible ask
+AG] $\overline{Y}$ is irreducible.
+
+Indeed since $\underline{H} \rightarrow P$ is a \uline{projective fibration} that is also
+true for $\underline{Y} \rightarrow X$ which implies that $\underline{Y}$ is irreducible if X is
+irreducible.  So the generic fiber Y of $\underline{Y}$ over PV is irreducible or
+empty in the first case its generic point is the generic point of
+$\underline{Y}$ which therefore lies over the generic point of X.  q.e.d
+
+\uline{Proposition 2.2}
+
+Let Z be a subset of P.  Then its inverse image $Z_{\eta}$ in $H_{\eta}$ is
+empty if and only if every point of Z is closed.  In particular if
+Z is constructible then $Z_{\eta} = \phi$ if and only if Z is finite.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 10 (PDF page 11).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/10}
+\mspage{10}
+
+\uline{Outline of proof of proposition 2.2.}*
+
+We may suppose that Z is reduced to a single point z and we
+only have to prove that the image of H in P consists exactly of
+the non-closed points of P.
+
+Denoting by X the closure of z and using 2.1 we only have to
+prove that $Z_{\eta} = \phi$ if and only if X is finite (X being a closed
+subscheme of $\underline{P}$).  Replacing X by $X_{k(\eta)} \to \underline{P}_{k(\eta)}$ the 'only if'
+[French:  'il faut' ``one must''] part results from the following
+fact for which we have to have a reference and which fact deserves
+to be restated here as a lemma:  if Y is \uline{any} hyperplane section of
+X and if $Y_{\eta} = \phi$ then X is finite (indeed X \quad\quad $\underline{P}$ - H is affine and
+projective....).  The 'is sufficient' part one needs is immediate
+for example by noting that $\underline{Y}$ is a projective fibration of relative
+dimension (n - 1) over X (n being the relative dimension of $\underline{P}$ and
+$\underline{P}^{V}$ over S), thus X being finite over k, $\underline{Y}$ is of absolute dimension
+n - 1, , < n = dim $\underline{P}$ > thus the morphism Y $\to$ $\underline{P}^{V}$ cannot be dominant
+thus its generic fiber $Y_{\eta}$ is empty.
+
+\uline{Corollary 2.3}
+
+Let f:X \quad\quad\quad\quad $\underline{P}$ be a morphism of finite type and let Z be
+a constructible subset of X.  In order for its inverse image in $Y_{\eta}$
+to be empty it is necessary and sufficient that the image f(Z)
+should be finite.  In particular in order for $Y_{\eta}$ to be empty it is
+necessary and sufficient that f(X) should be finite.
+
+\margin{* Ask Grothendieck: what is the meaning and role of underlined
+capital letters?}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 11 (PDF page 12).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/11}
+\mspage{11}
+
+\uline{Corollary 2.4}
+
+Let $Z,Z'$ be two closed subsets of $X$ with $Z$ irreducible and let
+$Z_\eta$ and $Z'_\eta$ be their inverse images in $Y_\eta$. In order to have
+$Z_\eta$ \hand{$\subset$} $Z'_\eta$ it is necessary and sufficient that $f(Z)$ should be
+finite or that we have $Z$ \hand{$\subset$} $Z'$.
+
+In order that $Z_\eta = Z'_\eta$ it is necessary and sufficient that
+$f(Z)$ and $f(Z1)$ should be finite or that $Z = Z'$.
+
+This is an immediate consequence of 2.3 because we see that
+$f(Z - Z\cap Z')$ can only be finite if $Z$ \hand{$\subset$} $Z'$ or if $f(Z)$ is finite
+(because if we do not have $Z$ \hand{$\subset$} $Z'$ then $Z - Z\cap Z'$ is dense in $Z$
+thus $f(Z - Z\cap Z')$ is dense in $f(Z)$, and if the former is finite and
+thus closed, being constructible, so is also the latter.
+
+\uline{Corollary 2.5}
+
+To every irreducible component $X_i$ of $X$ such that $\dim \overline{f(X_i)} > 0$
+we make correspond its inverse image $Y_{i\eta}$ in $Y_\eta$. Then $Y_{i\eta}$ is an
+irreducible component of $Y_\eta$ and we obtain in this manner a one to
+one correspondence between the set of irreducible components $X_i$ of
+$X$ such that $\dim \overline{f(X_i)} > 0$ and the set of irreducible components of
+$Y_\eta$.
+
+Indeed it follows from 2.3 that $Y_\eta$ is union of $Y_{i\eta}$ defined
+above and that the latter are closed and non-empty subsets of $\underline{Y}$,
+they are also irreducible because of 2.1. Finally, they are
+mutually without an inclusion relation because of 2.4, hence the
+conclusion.
+
+Let us notice that if $\dim X_i = d_i$ we have $\dim Y_i = d_i - 1$.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 12 (PDF page 13).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/12}
+\mspage{12}
+
+\uline{Proposition 2.6}
+
+Let us suppose that for every irreducible component $X_i$ of X
+we have dim $\overline{f(X_i)} > 0$ i.e. $Y_{i\eta} \neq \emptyset$ or that f is an immersion and
+dim $\overline{f(X)} > 0$ [slightly illegible)(Ask AG)].
+
+Then we have dim $\underline{Y}_\eta$ = dim X - 1.
+
+We are reduced to the case where X is irreducible due to 2.5.
+By the very construction Y is defined starting from $X_{k(\eta)}$ as the
+divisor of a section of an invertible module over $X_{k(\eta)}$ (being the
+inverse image of $O_{\underline{P}}(1)$).  On the other hand $X_{k(\eta)}$ is irreducible
+(because X is such and $k(\eta)$ is a pure transcendental extension of
+k which one should have indicated at the beginning of the N°) and
+$Y_\eta \neq X_{k(\eta)}$ since the image of $Y_\eta$ in X (contrary to that of $X_{k(\eta)}$,
+which is faithfully flat over X) is not equal to X, indeed it does
+not contain the closed points of X because of 2.3.  It follows
+that dim $Y_\eta$ = dim $X_{k(\eta)}$ - 1 = dim X - 1 (reference needed for the
+last equality.) \uline{q.e.d.}
+
+\uline{Proposition 2.7}
+
+Let F be a quasi coherent module over X, hence $G_\eta$ over $Y_\eta$.
+Let $Z_i$ be the associated prime cycles of F such that dim $\overline{f(Z_i)} > 0$.
+Let $Z_{i\eta}$ be the inverse image of $Z_i$ in $Y_\eta$ then the $Z_{i\eta}$ are exactly
+all the prime cycles associated to $G_\eta$ also their relation of
+inclusion are the same or among the $Z_i$.
+
+The last assertion is contained in 2.4.  On the other hand
+since $Y \to X$ is a projective fibration, thus flat with fibers $(S_1)$
+and irreducible it follows from par. 3* that the associated prime
+
+\margin{* Ask Grothendieck about this reference.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 13 (PDF page 14).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/13}
+\mspage{13}
+
+cycles to the inverse image G of F over $\overline{Y}$ are the inverse images
+of the associated prime cycles of F.  Hence they are induced on
+the generic fiber $Y_{\eta}$ of $\underline{Y}$ over $\check{\underline{P}}$, the fact that the associated
+prime cycles to $G_{\eta}$ are the (2) \uline{non-empty} inverse images of the $Z_{i}$
+which proves 2.7 by means of 2.3.
+
+To tell the truth the passage through $\underline{Y}$ is unnecessary
+(useless), we can use directly the fact that $Y_{\eta} \to X$ is flat with
+fibers $(S_{1})$ (and also geometrically regular i.e. the morphism is
+regular) and with irreducible fibers (and even geometrically
+irreducible: it is the localization of projective schemes) remark
+analogous to \uline{illegible} of 2.1.  [illegible ask AG.]
+
+\uline{Proposition 2.8}
+
+Let F be coherent over X and let $y \in \underline{Y}$, x is its image in X.
+Let $\underline{P}$(M) be one of the following properties for a module of finite
+type M over a local noetherian ring A:
+
+(i) \quad coprof $M \leq N$ \qquad (ref)
+
+(ii) \quad M satisfies $(S_{k})$ \qquad (ref)
+
+(iii) \quad M is Cohen-Macaulay
+
+(iv) \quad M is reduced \qquad (ref)
+
+(v) \quad M is integral \qquad (ref)
+
+Then for $H_{\eta}$ to satisfy the property $\underline{P}$ it is necessary and
+sufficient that $F_{x}$ should satisfy it.
+
+This follows immediately from results of paragraph 6* taking
+into account that $Y_{\eta} \to X$ is a regular morphism so that
+$O_{X,x} \to O_{Y_{\eta},y}$ should be regular.  Taking into account 2.3 we obtain
+thus:
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 14 (PDF page 15).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/14}
+\mspage{14}
+
+\uline{Corollary 2.9}
+
+With the notations of 2.8 let $Z$ be the set of $x \in X$ such that
+$\underline{P}(F_x)$ is not satisfied. Then in order for $G_\eta$ to satisfy the
+condition $\underline{P}$ at all the points it is necessary and sufficient that
+$f(Z)$ should be a finite subset of $\underline{P}$, or that $\overline{\mathrm{dim}}\, f(Z) = 0$.
+
+Indeed 2.8 tells us that $h(Z)$ is a $\underline{P}$-singular subset of $G_\eta$ and
+it is empty if and only if $f(Z)$ is finite by 2.3 (N.B. $h$ denotes
+the morphism $Y_\eta \to X$;I have just realized that the letter $\underline{P}$ in 2.8
+has been used doubly).
+
+\uline{Corollary 2.10}
+
+Condition for $Y_\eta$ to be reduced respectively locally integral.
+
+\uline{Corollary 2.11}
+
+Let $y \in \underline{Y}_\eta$, in order that $Y_\eta$ should be regular respectively
+should satisfy the property $R_k$ (reference) at $y$ (respectively
+should be normal at $y$) it is necessary and sufficient that $X$
+should satisfy the same property at $x$. Let $Z$ be the set of those
+points of $X$ where $X$ is not regular resp. $R_k$ (resp. normal); for $Y_\eta$
+to be regular resp. $R_k$ (resp. normal) it is necessary and
+sufficient that $f(Z)$ should be finite i.e. $\dim \overline{f(Z)} = 0$.
+
+The same proof as 2.8 and 2.9. One must give the different
+references assuring that $Z$ is closed (because we already know that
+it is constructible by applying 2.3).
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 15 (PDF page 16).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/15}
+\mspage{15}
+
+Let us note that in 2.10 and 2.11 we do not talk at all about
+the corresponding geometric properties; the results anticipated
+are of 'absolute' nature.  We now examine the properties of
+geometric nature. (One could if one wanted to to take the
+opportunity to change the n$^\circ$)
+
+\uline{Theorem 2.12}
+
+Suppose that $f{:}X \to \underline{P}$ is unramified.  Let $y \in Y_{\eta}$, $x$ its image
+in X.  In order for X to be smooth over k at x it is ncessary and
+sufficient that $Y_{\eta}$ should be smooth over $k(\eta)$ at y.
+
+We may assume that k is algebraically closed.  If $Y_{\eta}$ is smooth
+over $k(\eta)$ at y it is regular, thus since $Y_{\eta}$ is flat over X, X is
+regular at x (reference), therefore it is smooth over k at x since
+k is algebraically closed and thus perfect (reference).
+
+For the converse we can (after replacing X by an open
+neighborhood of x) assume that X is smooth, and (due to the
+jacobian criterion of smoothness) to be defined in an open subset
+U of $\underline{P}$ by $\underline{p}$ equations as $X = V(f_1,\ldots,f_{\underline{p}})$, where the differentials
+$df_1,\ldots,df_{\underline{p}}$ are everywhere linearly independent.  By introducing
+the affine coordinates $S_1,\ldots,S_n$ in $\underline{P}$v and the affine coordinates
+$T_1$, $T_2,\ldots,T_n$ in a neighborhood of x (by choosing a hyperplane $H\infty$
+[at infinity] not containing x) $y \to U_{k(\eta)}$ is then equal to
+$V(f_1,\ldots,f_{\underline{p}}, \Sigma\, S_iT_i - 1)$ and it suffices to verify that the
+differentials (relative to $k(\eta)$) of $f_1,\ldots,f_{\underline{p}}$, $(\Sigma\, S_iT_i) - 1)$ are
+linearly independent.  However these differentials are nothing
+else but the sections of $(\Omega 1_{u/k}) \otimes_k k(\quad)$ [illegible]* as follows:
+$df_1,\ldots,df_{\underline{p}}$, $\Sigma\, S_i dT_i$.  Since the $df_i$ are linearly independent of
+
+\margin{* Ask A.G.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 16 (PDF page 17).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/16}
+\mspage{16}
+
+every point of U and since the $dT_i$ form a basis of $\Omega 1_{u/s}$ at every
+point of U and a fortiori a system of generators we conclude
+immediately the linear independence of the written down quantities
+at every point of $U_{k(\eta)}$ at least when $p \leq n$, i.e.
+if $E = \Omega 1_{u/k} \;/ \sum\limits_{1 \leq i \leq n} O_u df_i \neq 0$ this is a small lemma about a family of
+generators of a non-zero locally free module E, thus $\sum S_i a_i$
+considered as a section of $E \otimes_k k(\eta)$ does not vanish at any point.
+On the other hand the case $p = n$ is trivial because then $Y_\eta = \emptyset$
+% NOTE: a white rectangle covers the rest of this line after "Y_eta = (empty set)", and another white rectangle covers the beginning of the next line; any text under them is hidden.
+
+\uline{Corollary 2.13}
+
+Let Z be the set of points of X where X is not smooth over k.
+In order that Y should be smooth over $K(\eta)$ it is necessary and
+sufficient that Z should be finite. In particular if X is smooth
+the same is true about Y.
+
+Follows from 2.12 and 2.3. More generally we obtain:
+
+\uline{Theorem 2.14}
+
+Let y be a point of $Y_\eta$,x its image in X. Let $\underline{P}(A,K)$ be one of
+the following properties for an algebra A local and noetherian
+over a field K:
+
+(i) A is geometrically regular over K.
+
+(ii) A is geometrically $(R_k)$ over K.
+
+(iii) A is separable over K
+
+(iv) A is geometrically normal over K
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 17 (PDF page 18).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/17}
+\mspage{17}
+
+then $\underline{P}(O_{X,x}, k) \Leftrightarrow \underline{P}(O_{Y_\eta,y}, k(y))$. Indeed taking into account par.
+6* (iii) and (iv) follow from (ii) and 2.8 (ii). On the other
+hand (i) has been proven in 2.12 and it remains to deduce (ii)
+from (i). To do this let Z be the set of points where X is not
+smooth over k, its inverse image $Z_\eta$ in $Y_\eta$ is therefore (by 2.12)
+the set of points of $Y_\eta$ at which $Y_\eta$ is not smooth over $K(\eta)$. But
+the codimension of Z in X at x is equal to that of $Z_\eta$ in $Y_\eta$ at y
+because of flatness (reference par. 6*). Therefore one is $>k$ if
+the other one is such which completes the proof.
+
+\uline{Corollary 2.15}
+
+Let Z be the set of points of X at which X is not smooth over
+k (respectively is not geometrically $R_k$ over k, respectively is not
+separable over k, respectively is not normal over k). In order
+for $Y_\eta$ to be smooth (respectively geometrically $R_k$, respectively
+separable, respectively geometrically normal) over $k(\eta)$ it is
+necessary and sufficient that Z should be finite.
+
+From writing up point of view statements 2.14 and 2.15
+contain 2.12 and 2.13 (which we could thus dispense with stating
+separately) on the other hand the corollary is practically more
+important than the theorem which one could give in a proposition
+or a preliminary lemma so that the corollary would be more
+glorified. We can modify the case of property (iii):
+
+\uline{Corollary 2.16}
+
+(Let us still suppose that f is an immersion and also that F
+is coherent), with the conditions of 2.7, in order that $Z_i$ should
+
+\margin{* Ask Grothendieck}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 18 (PDF page 19).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch pilot (msgbatch_0189Nhf1xB615YWnztubtLfc), 2026-11-12; not yet checked by eye.
+\scanpage{24/18}
+\mspage{18}
+
+not be immersed it is necessary and sufficient that $Z_i$ should be
+such [PB incomprehensible].* If that is so then the radicial
+multiplicity of $F$ at $Z_i$ at $k$ is equal to that of $G_\eta$ at $Z_i$ relative
+to $k(\eta)$.
+
+The first assertion is contained in the last assertion of
+2.7. For the second, since $Y_\eta \rightarrow X$ is flat therefore the functor $F$
+$\rightarrow G_\eta$ is exact, we are reduced by restriction to a neighborhood of
+the general point of $Z_i$ and by a devissage (unscrewing) to the case
+where $F = O_{Z_i}$ and we may assume $Z_i = X$. Also we could start by
+assuming that $X$ is separable over $k$ is reduced to the case of $k$
+algebraically closed [PB: incomprehensible].* Then the assertion
+is contained in 2.15. (iii). Then we conclude as usual:
+
+\uline{Corollary 2.17}
+
+Let $Z$ be the set of points of $X$ where $F$ is not separable over
+$k$ (reference). Then $G_\eta$ is separable over $k(\eta)$ if and only if $Z$ is
+finite. In particular if $F$ is separable over $k$ then $G_\eta$ is
+separable over $k(\eta)$.
+
+\uline{Remark 2.18}
+
+The key result 2.12 (and its consequences 2.13 and 2.17)
+become false if we abandon the assumption that $f$ is an immersion
+as we see for example by taking for $X$ a purely inseparable
+covering of $\underline{P}$. However if $k$ is of characteristic zero 2.12 and
+2.17 are valid without assuming that $f$ is an immersion.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 19 (PDF page 20).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/19}
+\mspage{19}
+
+Indeed it suffices to verify this for 2.12 and this follows
+from 2.11 and from the fact that for an algebraic prescheme in
+characteristic zero $\rightarrow$ smooth $=$ regular.
+
+\uline{Section 3} (or 20.3)*
+\uline{Generic hyperplane section} : \uline{geometric irreducibility and}
+\uline{connectedness.}
+\uline{Theorem 3.1} (Bertini - Zariski)
+
+Let us assume dim $f(X) \geq 2$ and that X is geometrically
+irreducible. Then the generic hyperplane section $\underline{Y}_{\eta}$ has the same
+property.
+
+Let K/k be the function field of X and let n = dim $\underline{P}$;
+introducing the affine coordinates $T_1,\dots,T_n$ in $\underline{P}$ (by choosing a
+hyperplane at infinity H$\infty$ such that f(X) is not contained in it)
+and $S_1,\dots,S_n$ the affine coordinates in $\underline{P}$v, we see that the
+function field L of $Y_{\eta}$ can be identified with the field of
+fractions of the integral domain $K[S_1,\dots,S_n] \,/\, (\Sigma\, t_iS_i - 1)$ where
+the $t_i \in K$ are the images of $T_i$ with the aid of $f{:}X \rightarrow \underline{P}$. Since
+dim $\overline{f(X)} \geq 0$, the $t_i$ are not all algebraic over k, á fortiori they
+are not all zero let us assume for example that $t_n \neq 0$. We realize
+then immediately that we have $L = K(S_1,\dots,S_n)$ (pure transcendental
+extension), $S_n \in L$ being given by the equation $\Sigma\, t_iS_i - 1 = 0$
+[en fonction Fr] as a function of the $S_i$ $(1 \leq i \leq n - 1)$ and the $t_i$
+$(1 \leq\ i \leq n)$. On the other hand $k^1 = k(\eta)$ can be identified with
+$k(S_1,\dots,S_n)$ and the canonical inclusion $k^1 \rightarrow L$ can be obtained by
+sending $S_i$ to $S_i$ [PB: check this!] i.e. $k^1$ as a subextension of L
+
+\margin{* Ask Grothendieck about the numbering system.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 20 (PDF page 21).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/20}
+\mspage{20}
+
+is the subextension generated by the $S_i$ ($1 \leq i \leq n$) or what is
+evidently the same by the $S_i$ ($1 \leq i \leq n - 1$) and by $S_n = a_o + a_i\ S_1$
+$+\ldots+a_{n-1}\ S_{n-1}$, $a_o = t_n{}^{-1}$, $a_i = t_it_n{}^{-1}$ for $1 \leq i \leq n - 1$.
+
+Let us note that the field generated by the $a_i$ and by the $t_i$
+is obviously the same, their common transcendence degree is
+nothing else but the dimension of $f(X)$.
+
+(N.B. It would be appropriate to include this birational
+description at least as a corollary to 2.1).  The proof of 3.1 is
+thus reduced to that of
+
+\uline{Lemma 3.1.1 (ZARISKI)}
+
+Let k be a field, K an extension of finite type over k, m an
+integer $\geq 0$ $a_i$ ($0 \leq i \leq m$) the elements of K such that the
+transcendence degree of $k(a_o,\ldots,a_m)$ over k is $\geq 2$, and $k^1$ the
+subfield $k^1 = k(S_1,\ldots,S_m,\ a_o + \sum_{I}^{M} a_iS_i)$ of L (the $S_i$ being
+indeterminates).  If K is a primary extension of k then L is a
+primary extension of $k^1$.   .
+
+This lemma or lemmata that resemble it like a brother, wander
+almost everywhere in the literature, that is why I leave it up to
+you:  the choice of the place from where you will copy a proof I
+do not feel inspired to find a proof with my own means.
+
+\uline{Corollary 3.2}
+
+Assume that f is unramified or that the characteristic of k
+is zero, and that the dim $\overline{f(X)} \geq 2$. Then if X is geometrically
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 21 (PDF page 22).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/21}
+\mspage{21}
+
+integral the same is true about $Y_\eta$.  Indeed geometrically integral
+$=$ geometrically irreducible $+$ separable.
+
+\uline{Corollary 3.3}
+
+Let us assume that $k$ is algebraically closed and that for
+every irreducible component $X_i$ of $X$ we have $\dim f(X_i) \geq 2$, and
+suppose also that $X$ is $\sigma$-connected where $\sigma$ is the set of closed
+subsets $Z$ of $X$ such that $\dim \overline{f(X)} = 0$ (i.e. for every such $Z$,
+$X - Z$ is connected).  Under such conditions $Y_\eta$ is geometrically
+connected over $K(\eta)$.
+
+Indeed by a lemma that ought to appear in par. 6* with
+Hartshorne's theorem, the hypothesis signifies that we can join
+any two irreducible components $X'$ and $X''$ of $X$ by a chain of
+irreducible components $X_0$ and $X',\ldots,X_n = X''$ such that two
+consecutive ones have an intersection $\notin \sigma$ so that the inverse
+images $X'_\eta$ and $X''_\eta$ are joined by a chain of $X_{i\eta}$ which are
+geometrically connected over $k(\eta)$ by 3.1 and the intersection of
+two consecutive ones being $\neq \emptyset$ by 2.3.
+
+It follows (since $Y_\eta = X_\eta$ is the union of the $X_{i\eta}$, $X_i$ running
+through the set of irreducible components of $X$) that $Y_\eta$ is
+geometrically connected over $k(\eta)$ q.e.d.
+
+\uline{Section 4}\quad \uline{Study of a Variable Hyperplane Section:  ``Sufficiently}
+\uline{General'' Sections}.
+
+We return to the general situation of Section 1, S being an
+arbitrary prescheme.  Also, we suppose that $X$ is of finite
+presentation over $S$.
+
+\margin{* ASK A.G.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 22 (PDF page 23).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/22}
+\mspage{22}
+
+In general let us note that if $\underline{P}(Z,k)$ is a ``constructible''
+property of an algebraic \uline{prescheme} Z over a field k then the set
+of $\xi \in \underline{P}$v such that we have $\underline{P}(Y_\xi, k(\xi))$ is \uline{constructible} as we see
+by noting that $Y_\xi$ is the fiber over $\xi$ of $\underline{Y} \to \underline{P}$v which is a morphism
+of finite presentation and applying \uline{Par. 9}.* We have an analogous
+remark for a property $\underline{P}(Z, M, k)$ where Z and k are as above and M
+is a coherent module over Z: if G is in addition of
+finite presentation over X then the set of $\xi \in \underline{P}$v such that we have
+$\underline{P}(Y_\xi, G_\xi, k(\xi))$ is constructible. On the other hand in the
+following sections we have developed in various cases a criterion
+for the preceding set E to contain the generic point of $\underline{P}$v, S being
+the spectrum of field k; \uline{being constructible} it follows that E
+contains a non-empty open set this is the passage of a conclusion
+from generic hyperplane section to the analogue conclusion for
+``sufficiently general'' hyperplane sections.
+
+Let us note in addition that in the case S = Spec(k) we also
+have a converse: in order that the generic hyperplane section
+should have the property $\underline{P}$ it is necessary and sufficient that the
+$Y_\xi$ for $\xi$ in a suitable neighborhood of $\eta$ should satisfy it and it
+suffices to require for $\xi$ closed in $\underline{P}$v (which for $\xi$ k algebraically
+closed \uline{leads} or \uline{reduces} to considering k-rational points i.e.
+hyperplane sections of X itself (without an extension prior to the
+base field.)
+
+This follows indeed from the constructibility of E and from
+the fact that $\underline{P}$v is a Jacobson scheme.
+
+Let us give as an example some special cases where the
+previous considerations apply:
+
+\margin{* \unsure{Ask} A.G.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 23 (PDF page 24).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/23}
+\mspage{23}
+
+\uline{Proposition 4.2}
+
+Let G be a module of finite presentation over X.
+
+Let $\underline{P}$ be one of the following properties for a module M over
+an algebraic scheme Z over a field K;
+
+(i) coprof (M) $\leq$ n.
+
+(ii) M satisfies ($S_k$).
+
+(iii) M is Cohen Macauley.
+
+(iv) M is without embedded prime cycle components.
+
+(v) M is separable over K.
+
+With these notations if E denotes the set of $\xi \in \underline{P}$ such that $G_\xi$
+satisfies $\underline{P}$ then we have: (a) E is a constructible subset of $\underline{P}$v.
+(b) Let us suppose that S = Spec(k), k a field, and that F is
+satisfied at $\underline{P}$. Let us also suppose that in the case (v) that k
+is of characteristic \unsure{O|0} \uline{or} that $f\colon X \to \underline{P}$ is unramified, then E
+contains an open and dense subset of $\underline{P}$v.
+
+\uline{Proof}
+
+(a) follows from the fact that P is a constructible property
+which we have seen in Par. 9. As to (b) it follows from the
+correspsonding results of the previous two sections.
+
+\uline{Regret}
+
+To (b): suppose more generally that if Z is the set of
+points of X where F does not satisfy $\underline{P}$, we have f(Z) is finite
+i.e. dim $\overline{f(Z)} \leq 0$.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 24 (PDF page 25).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/24}
+\mspage{24}
+
+\uline{Proposition 4.3}
+
+Let $\underline{P}$ be one of the following properties (for an algebraic
+prescheme over a field K):
+
+(i) Z is smooth over K.
+
+(ii) Z satisfies the geometric property (R$_{k}$) over K.
+
+(iii) Z is separable over K.
+
+(iv) Z is geometrically normal over K.
+
+(v) Z is geometrically integral over K.
+
+(vi) Z is geometrically irreducible over K.
+
+Let E be the set of $\xi \in \underline{P}$v such that Y$_{\xi}$ satisfies $\underline{P}$. Then (a) E is
+a constructible subset of $\underline{P}$v. (b) Let us suppose S = Spec k, k a
+field and let us suppose in the cases (i) to (v) that k is of
+characteristic zero and that f:X $\to$ $\underline{P}$ is unramified.
+Finally suppose in the cases (v) and (vi) that dim $\overline{\text{f(X)}}$ $\geq$ 2.
+Assume that X satisfies $\underline{P}$ then E contains a dense open subset of
+$\underline{P}$v.
+
+\uline{Proof}
+
+Proof is identical to that of 4.2. Let us remark that in the
+cases (i) to (v) it suffices to assume \uline{only} (in b)) that f(Z) is
+finite where Z is the set of points of X where $\underline{P}$ fails.
+
+\uline{Corollary 4.4}
+
+Let us consider the property (C$_{m}$) ``$\overline{\text{Z}}$ cannot be disconnected
+by a closed subset of dimension $\leq$ m (where $\overline{\text{Z}}$ is Z x$_{K}$ $\overline{\text{K}}$, $\overline{\text{K}}$ the
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 25 (PDF page 26).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/25}
+\mspage{25}
+
+algebraic closure of K).
+
+Let E be the set of $\xi \in \underline{P}$v such that Y$_{\xi}$ over K($\xi$) satisfies
+C$_{m}$. Then: (a) E is constructible. (b) Let us suppose that S =
+Spec k, k a field, and that for every irreducible component X$_{i}$ of X
+we have dim $\overline{f(X)} \geq 2$. Then if X over k satisfies C$_{m+1}$ then E$_{\xi}$
+contains a dense open subset U of $\underline{P}$.
+
+The constructibility is done by A Q T ?????? (this is a fact
+that one has forgotten in Par. 9,* that perhaps it would still be
+possible to repair x (or fix); the part (b) follows in principle
+from 3.3 except that 3.3 has been announced in an exceedingly
+special manner and consequently should be generalized (the proof
+given being otherwise essentially unchanged). Also there is an
+error in the statement of 4.4. Which is not valid as such if f is
+quasi-finite; in the general case instead of considering the
+dimension of the closed subsets of X respectively of Y$_{\xi}$ it is
+sufficient to consider the dimension of their images in $\underline{P}$.
+respectively in H$_{\xi}$:
+Redactor demerdetur. [Latin]
+
+\uline{Section 5} \uline{Theorems of Seidenberg Type}
+\uline{5.1}
+
+In the present section (or N$^{\circ}$) we give conditions under which
+the set E defined in 4.1 is open. We deal here with properties $\underline{P}$
+of local nature over X respectively Y$_{\xi}$ such that we can define the
+set U of $y \in \underline{Y}$ so that (if $\xi$ denotes the image (PB ???)** of y in
+
+\margin{* What is AQT ? Where is par 9? Ask Grothendieck (referred to
+in Corollary 4.4)}
+\margin{** illegible - ask AG.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 26 (PDF page 27).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/26}
+\mspage{26}
+
+$\underline{P}v$) $Y_{\xi}$ satisfies $\underline{P}$ at the point y (respectively $G_{\xi}$ satisfies
+condition $\underline{P}$ at y).  We give first of all the criteria for U to be
+open by using paragraph 12.  As always we have $E = \underline{P} - h(\underline{Y} - U)$ it
+follows that if U is open and X is proper over S (since h is
+proper and a fortiori closed) then E is also open.
+
+\uline{5.2}
+
+As we have seen in No. 1 $\underline{Y}$ is defined in $X\ x_S\ Pv = X_{Pv}$ as the
+``divisor'' of a section {\o} of $O_X(1) \otimes_S O_P(1)$ which induces for every
+$\xi \in \underline{P}v$ a section ${\o}_{\xi}$ of $O_X(1) \otimes_{k(S)} O_P(1)(\xi)$ (a sheaf by the way
+isomorphic non-canonically to $O_X(1) \otimes_{k(S)} k(\xi) = O_{X_{k(s)}}(1)$ )
+such that $Y_{\xi}$ is nothing else but the ``divisor'' of this section
+(N.B. the divisor of a section {\o} of an invertible module L is
+defined as the closed subscheme defined by the image ideal of
+${\o}^{-1}$: $\underline{L}^{-1} \to O$.  If $\underline{F}$ is a sheaf of modules over X then its inverse
+image over $\underline{Y}$ i.e. the inverse image of $F \otimes_O O_{Pv} = F_{Pv_{S}}$ over
+the subscheme Y of $X_{Pv}$ is nothing else but the cokernel of the
+homomorphism ${\o}^{-1} \otimes \mathrm{id}_{\underline{F}_{P^v}}$ : $F_{Pv}(-1, -1) \to F_{Pv}$ where the
+notation (-1, -1) explains itself as Mike* says.  Also $G_{\xi}$ is the
+cokernel of analogous homomorphism $F_{k(\xi)}\ (-1, -1) \to F_{k(\xi)}$ where $\xi$ is
+a point of P (and also we have a corresponding interpretation if $\xi$,
+instead of being a point of Pv, denotes a point of Pv with values
+in an S' over S).?)
+
+In general if L is an invertible module somewhere, {\o} a
+section defining the subprescheme V({\o}) then for every module F the
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 27 (PDF page 28).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/27}
+\mspage{27}
+
+inverse image of F \uline{in} V($\varnothing$) can be identified, by the usual abuse
+of language to the cokernel of id$_{\mathrm{F}}\otimes$ ? *: F $\otimes$ L-1 $\rightarrow$ F.
+
+We say that $\varnothing$ is F regular if the preceding homomorphism is
+injective.  If we choose an isomorphism of F and O$_{\mathrm{X}}$, which is
+possible locally such that $\varnothing$ is identified to a section of O$_{\mathrm{X}}$ this
+terminology is compatible with the one that was already introduced
+elsewhere.
+
+\uline{Proposition 5.3}
+
+With the previous notations let U be the set of x $\in$ X$_{\mathrm{P}}$ with
+image $\xi$ in Pv such that $\varnothing_{\xi}$ should be F$_{\mathrm{K}(\xi)}$ regular at x.  Then (a)
+If F is of finite presentation and flat relative to S then U is
+open and $\underline{\mathrm{G}}$/U is flat relative to Pv.  (b) For every s $\in$ Pv if $\eta$
+denotes the generic point of P$_{\mathrm{s}}$v then U contains X$_{\mathrm{k}(\eta)}$.
+
+\uline{Proof}
+
+(a) Since F$_{\mathrm{P}}$v is of finite presentation and flat relative to
+Pv the conclusion follows from 11.3 (and also from O$_{\mathrm{III}}$... in the
+case of locally noetherian S).
+
+(b) We may suppose S = Spec k.  The associated cycles \uline{to} F$_{\mathrm{k}(\eta)}$
+are (because of Par. 3)* the inverse images of associated cycles
+Z$_{\mathrm{i}}$ to F.  If f(Z$_{\mathrm{i}}$) is finite then by 2.3 Z$_{\mathrm{ik}(\eta)}$ $\cap$ Y = $\varnothing$ in the
+contrary case by 2.6 for example we also have Z$_{\mathrm{ik}(\eta)}$ $\cap$ $\underline{\mathrm{Y}}$ = Z$_{\mathrm{ik}(\eta)}$
+(by reason of dimension; 2.3 which was already involved in 2.6 and
+is without a doubt a better reason) which proves that $\varnothing$ does not
+vanish over any of the Z$_{\mathrm{ik}(\eta)}$ and therefore proves (b).
+
+\margin{* illegible, ask A.G. or figure out.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 28 (PDF page 29).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/28}
+\mspage{28}
+
+\uline{Corollary 5.4}
+
+Let V be the set of $\xi \in P^{\vee}$ such that $\varnothing_{\xi}$ is $F_{k(\xi)}$ regular. If F
+is of finite presentation then V is constructible and it contains
+the generic points of the fibers of $P^{\vee}$ over S on the other hand if
+also X is proper over S and P is flat over S then the set V is
+open.
+
+\uline{Remark 5.5}
+
+Let $\xi \in P^{\vee}$ over $s \in S$ and let us suppose that $F_{s}$ should be
+without associated embedded cycles. Then we see immediately that $\xi$
+$\in$ V (notation of 5.4) which means also that every irreducible
+component of supp $F_{k(\xi)}$ does not lie over $H_{\xi}$ (and a little less
+evidently in this criterion we replace $k(\xi)$ by an arbitrary
+extension of $k(\xi)$.
+
+Let us note that the hypothesis $(S_{1})$ about $F_{s}$ which we have
+just made is satisfied notably if we suppose $F_{s}$ Cohen-Macauley (a
+fortiori if F is CM over S); also in this case $G_{s}$ is CM (since
+locally it is deduced from $F_{k(s)}$ which is such by dividing by a\hand{$\Phi$}$\cdot$
+$F_{k(s)}$ where $\varnothing$ is $F_{k(s)}$ regular). The same remarks anyway should and
+will have to all be made locally above to characterize the points
+of U (in place of those of V).
+
+Using now 12.1.1* and 12.1.4* we obtain (\uline{locate reference})
+
+\uline{Theorem 5.6}
+
+Let us assume that F is of finite presentation flat relative
+to S. Let P be one of the properties (i) to (viii) of 12.1.1 or
+(if we assume F = $O_{X}$) one of the properties (i) to (iv) of 12.1.4.
+
+\margin{* Ask AG about reference.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 29 (PDF page 30).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/29}
+\mspage{29}
+
+Let $U_{P}$ be the set of $x \in X_{P}$ such that if $\xi$ denotes the image of $x$
+in $P^{\vee}$ the property P should be satisfied by $G_{\xi}$ (resp. $Y_{\xi}$) at the
+point $x$ and such that $\o_{\xi}$ is $F_{K(\xi)}$ regular at $x$.  Then $U_{P}$ is open and
+$G/U_{P}$ is flat relative to S.
+
+Indeed by the very definition we have $U_{P}$ \quad $U$ (notation of 5.3
+(a)) and we apply Par. 12 to $U \to P^{\vee}$ and $F_{\underline{P}^{\vee}}/U$.
+
+\uline{Corollary 5.7}
+
+Let us suppose that F is of finite presentation flat relative
+to S, and supp F proper over S (e.g. X proper over S).  Let $V_{P}$ be
+the set of $\xi \in P^{\vee}$ such that $G_{\xi}$ (resp. Y) satisfies the property P
+and that is $F_{K(\xi)}$ regular.  Under these conditions $V_{P}$ is open, (and
+it is \uline{anyway} constructible in every case i.e. without any
+assumption of flatness or of properness).
+
+It seems to me that from the point of view of presentation we
+cannot leave 5.6 as is with a simple reference to another chapter
+[\uline{fascicule}], but it requires an explicit list (i), (ii),... of
+properties which we have in view.  Also remark (in 5.1 perhaps)
+that the case P = geometrically normal (with S = Spec(k) for sure)
+is due to Seidenberg.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 30 (PDF page 31).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/30}
+\mspage{30}
+
+\uline{Section 6}
+
+\uline{Connectedness of an arbitrary hyperplane section}.
+
+We shall here combine the already known criterion of
+geometric connectedness of the generic hyperplane section (3.3)
+with the connectedness theorem of Zariski in order to obtain a
+connectedness result for an arbitrary hyperplane section:
+
+\uline{Proposition 6.1}
+
+We suppose $S = \mathrm{Spec}(k)$ \ , \ $k$ \ an algebraically closed
+field [x $X$ proper over $k$ suppose]* that for every irreducible
+component $X_i$ of $X$, $f(X_i)$ should be of dimension $\geq 2$, finally that $X$
+cannot be disconnected by a closed subset $Z$ of $X$ such that dim
+$f(Z) \leq 0$ under such conditions for every $\xi \in \mathrm{Pv}$ \quad $\underline{Y}_{\xi}$ is
+geometrically connected.
+
+\uline{Proof}
+
+Since none of the $f(X_i)$ is finite we see that every
+irreducible component \ $Y_i$ of $Y$ dominates Pv; on the other hand,
+$Y \longrightarrow \mathrm{Pv}$ is proper (if $Y$ is proper over $k$, being such over $X$ which
+is proper over $k$). \ On the other hand by (3.3) the generic fiber $Y_{\eta}$
+of $\underline{Y} \longrightarrow \mathrm{Pv}$ is geometrically connected.
+
+Finally Pv is regular and à fortiori geometrically unibranch.
+It now suffices to apply 15.6.3 \ (which is variant of the Zariski
+connectedness theorem) to conclude that \uline{all} the fibers of $\underline{Y} \longrightarrow \mathrm{Pv}$
+are geometrically connected \uline{q. ed.} .
+
+Indeed it is not difficult by a proof of analogous type to
+generalize 6.1 in the same sense as in 4.4. \ If you don't want to
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 31 (PDF page 32).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/31}
+\mspage{31}
+
+trouble yourself with this exercise at least mention it as a
+remark.  To say also that we do not discriminate in 6.1 with
+regard to hyperplane sections that have an excessive (extra)
+dimension.
+(From the planning point of view) it might be clearer to group
+together all the connectedness questions (including 3.3 and 4.4)
+in the same No. (or section).
+
+\uline{Section 7}
+
+\uline{Application to the construction of hyperplane sections and}
+\uline{multisections of specified type.}
+\uline{7.1}
+
+Let us notice that if S = Spec(k) where  k  is an infinite
+field then every non-empty open subset of $P^{v}$ contains a k-rational
+point therefore in the notations of 4.1 if E (defined in terms of
+a constructible property P) contains the generic point $\eta$ , it
+contains a k-rational point therefore there exists a hyperplane
+section of X (defined over k) having the property P. On the other
+hand, S being again arbitrary it is immediate that for every $s\in S$
+and for every point $\xi$ of the fiber $Pv_{s}$ rational over k(s) there
+exists a section $\xi$ of $Pv$ on an open neighborhood U of s which
+passes through $\xi_{0}$.  If now E is again defined as in 4.1 in terms of
+a constructible property P and if we have (for example due to No.
+5) the fact that E is open then if $\xi_{0} \in E$ then the section \S{} is a
+section of E over U at least if we sufficiently shrink or diminish
+U.  Therefore we may construct a hyperplane section $\underline{Y}_{\xi}$ of X over an
+open neighborhood U of s such that for every $t \in U$ its fiber $Y_{\xi(t)}$
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 32 (PDF page 33).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/32}
+\mspage{32}
+
+at t satisfies the property P . If we do not have à priori $\xi_0$ but
+if k(s) is infinite we may combine the two preceding remarks to
+obtain a hyperplane section over an open neighborhod of s having
+the preceding property. Finally using No. 5 we have a criterion
+allowing us to assert that (X resp. F being assumed flat over S
+which allows us to apply loc. cit.) $Y_\xi$ resp. $G_\xi$ is also flat over
+S. We may therefore replacing X by $Y_\xi$ iterate the previous
+construction which allows for example under certain conditions to
+construct closer and closer (by successive approximations ???)* a
+``multisection'' of $S^1$ of X over an open neighbourhood U of the given
+point s, such that $S^1 \to U$ should be finite, flat and with fibers
+satisfying the property $\underline{P}$. If k(s) is finite we may be con
+shouned to do a change of an étale and surjective base change $S^1 \leftrightarrow$
+$\dashrightarrow$ U (U an open neighbourhood of s) before being able to apply
+the preceding constructions; indeed under the conditions from the
+start of 6.1, if k is finite there does not necessarily exist a
+rational point over k in the open non-empty set U, but there
+certainly exists a closed point of U, thus a point with values in
+a finite extension $k^1$ (necessarily separable) of k ; when k =
+k(s), therefore we may, after making a suitable finite étale
+extension $S^1$ over a neighbourhood U of s, corresponding to the
+residual extension $k^1$ i.e. such that $S^1_s \xrightarrow{\sim}$ Spec($k^1$) restrict
+ourselves to the favorable situation of the unique point $s^1 \in S^1$
+over s after a base change $S^1 \to S$. I must however note or point
+out [un remords Fr] to 4.2 and 4.3 which should have been
+announced in a slightly more general form should have been
+enumerated at least as a remark : If we are given an integer m
+
+\margin{* Translator's note.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 33 (PDF page 34).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/33}
+\mspage{33}
+
+and if we denote by E the set of $\xi \in \overset{\vee}{\underline{P}}$ such that $G_\xi$ resp. $\underline{Y}_\xi$
+satisfies $\underline{P}$ except over a closed set of dimension $\leq$ m (i.e. the
+set $\underline{P}$-singular Z is of dimension $\leq$ m).  Then a) E is a
+constructible subset of $\underline{P}\mathrm{v}$ and b) in the case S = Spec(k) if F
+respectively X satisfies $\underline{P}$ except over a set of dimension $\leq$ m + 1
+then E contains a non-empty open set.
+
+\uline{Proposition 7.2}
+
+Let us assume that X is proper over S and that F is of finite
+presentation finite and flat over S.  Let $\underline{P}$ be one of the
+properties (i) to (v) of (4.2) and let m be an integer.  Let s $\in$ S
+and let us suppose that the set $Z_s$ of points of $X_s$ where $F_s$ does
+not satisfy $\underline{P}$ is of dimension $\leq$ m + 1.  Then if also k(s) is
+infinite there exists a neighbourhood U of s in E and a section $\xi$
+of $\underline{P}\mathrm{v}$ over U having the following properties :  For every s$\in$ U the
+set of points of $Y_{\xi,\ s}$ where $G_{\xi(s)}$ does not satisfy $\underline{P}$ is of
+dimension $\leq$ m and $\phi_{\xi(s)}$ is $F_{\xi,s}$ regular.  Under such conditions the
+module $G_\xi$ over $Y_\xi$ is flat relative to U.  Finally if k(s) is not
+supposed infinite we can again make the previous construction
+after an étale extension of the type anticipated in 7.1.
+
+\uline{Proposition 7.3}.  Essentially the same.  There is no longer an F
+and assume that X is flat relative to S we refer to properties (i)
+to (v) of 4.3 in place of those of 4.2 (but being careful to make
+the reservation.")  k(s) of characteristic zero or f: X $\rightarrow$ $\underline{P}$ is an
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 34 (PDF page 35).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/34}
+\mspage{34}
+
+immersion and in the case (v) that for every s $\in$ S [illegible]
+irreducible component Z of X$_s$ we have dim f(Z) $\geq$ 2.
+[Nota Bene:  For (v) [[illegible]] 12.2.1   (x) and (xi) (we can
+then \uline{illegible} in the other case 4.3 or 12.2.1 (x)] (marginal
+remark largely illegible in preceding square brackets).
+
+Text crossed out
+
+\uline{Proposition 7.4}
+
+Let g:   X $\to$ S be a flat proper morphism, let s $\in$ S let us
+put n = dim X$_s$ and let us suppose that the dimension of the set of
+points of X$_s$ where X$_s$ is not separable over k(s) is  $<$ n.  (\uline{for
+example}  X$_s$   separable).  Then there exists an open neighborhood
+U of s and an \'etale finite, surjective morphism S1---> U such that
+X \quad x$_S$ \quad S1 \quad admits a section over S1 .  If k(s) is infinite we
+may take for S$^1$ a closed subscheme of \uline{X\ \ U}.*  Let us assume to
+start with that k(s) is infinite.
+
+We proceed by induction on n, the case n = 0 being trivial.
+Indeed in that case there exists an open neighbourhood U of s such
+that X|U itself is \'etale, finite and surjective above U as we see
+by immediate cross references.  If n $>$ 0, we apply 7.3 for the
+``separable'' property which allows us to replace X by a ``hyperplane
+section'' $\underline{Y}$ having the same properties up to this that n is
+replaced by n-1.  If k(s) is not assumed infinite we begin by
+making an \'etale base change, it works.
+
+\margin{* unclear, ask a.g.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 35 (PDF page 36).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/35}
+\mspage{35}
+
+\uline{Remark 7.5}
+
+In particular if $X$ is projective and separable over $S$ it
+admits locally over $S$ étale multisections.  But we note that we
+can give examples with $X$ proper and smooth (but non-projective) $S$,
+where the same conclusion fails.  Of course, the projective
+assumption cannot be weakened in general to an assumption of
+quasi-projectiveness as we see for example by taking $X$ étale non-%
+finite over $S$ ......
+
+ILLEGIBLE *
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 36 (PDF page 37).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/36}
+\mspage{36}
+
+\uline{Section 8}
+
+\uline{Dimension of the set of exceptional hyperplanes}
+
+\uline{8.1} In the previous sections and notably sections 2 and 3 we have
+given statements asserting that the set of $\xi \in \underline{P}v$ such that the set
+of $\xi \in \underline{P}v$ such that $\underline{Y}$ has a certain property $\underline{P}$ is constructible and
+that it contains the generic point ${}_{\eta}$ or else that the set $Z_{\underline{P}}$ of $\xi \in$
+$\underline{P}v$ ``exceptional for $\underline{P}$'' is constructible and is rare i.e. that its
+closure is of codimension $\geq 1$.  (Nota Bene:  we suppose that $S =$
+$\mathrm{Spec}(k)$).
+
+In certain cases we can make this statement more precise by
+giving a better upper bound for this codimension, which is
+important for certain questions.  For example, if we see that this
+codimension is greater than or equal to two it follows that a
+``sufficiently general'' straight line $D$ of $\underline{P}v$ does not intersect $Z_{\underline{P}}$,
+whence the existence (if $k$ is infinite) of ``linear pencils'' of
+hyperplane sections $Y_{\xi}$ ($\xi$ - a geometric point of $D$) all of which
+have the property $\underline{P}$ (see section number [omitted ask
+Grothendieck]* for examples).
+
+From the \uline{writing up} point of view, since the results of the
+present N0 make more precise some results of the previous sections
+the question arises if it is necessary to do this catching up in a
+separate section (or number) or to give a more precise version
+gradually as we move along.  Redactor decidetur (Latin).
+
+\uline{8.2} Let $Z$ be the set of $\xi \in \underline{P}v$ such that $\dim Y_{\xi} > \dim X - 1$ and
+let us suppose that for every irreducible component irr $X_i$ of $X$ we
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 37 (PDF page 38).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch pilot (msgbatch_0189Nhf1xB615YWnztubtLfc), 2026-11-12; not yet checked by eye.
+\scanpage{24/37}
+\mspage{37}
+
+have dim f($X_{i}$) > [illegible] [is it two ask Grothendieck]* then Z
+is of codimension two in $\underline{P}$v.  This follows from 2.1 and 2.2.
+(which implies that every irreducible component of $\underline{Y}$ dominates $\underline{P}$v)
+and from the dimension theory for the morphism $\underline{Y} \rightarrow \underline{P}$v.  Starting
+from this result we may give as a corollary the case where we
+start from a closed subset Z of X and where we consider the
+dimension of the inverse images $Z_{\xi}$ in the $Y_{\xi}$ ($\xi \in \underline{P}$v) and we may
+even take for Z the set of $\xi \in \underline{P}$v such that there exists an
+irreducible component of $T_{k(\xi)}$ whose trace on $Y_{\xi}$ has the greatest
+dimension (NB we always assume that for every irreducible $Z_{i}$ of Z
+we have dim f($Z_{i}$) > 0).
+
+Finally the most precise statement in this direction and one
+that results easily from the first announcement (for X irreducible) and
+from 2.7 is the following modified statement:  F being coherent
+over X, suppose that for every associated prime cycle T for F we
+have dim f(T) > 0 then the set of $\xi \in \underline{P}$v such that $\phi_{\xi}$ is not $F_{k(\xi)}$ -
+regular is (constructible and) of codimension $\geq$ 2.  (The notation
+for $\phi_{\xi}$ is that from N05).  We can give this as the principal
+assertion, and announce the previous assertions as corollaries,
+the proof being or proceeding via one of the corollaries.
+
+Please note that with the preceding notations if $\xi \in \overset{\mathrm{v}}{\underline{P}}$ - Z,
+then for every y $\in \underline{Y}_{\xi}$ we have coprof$_{y}$ $G_{k(\xi)}$ = coprof$_{y}$ $G_{\xi}$ and
+consequently if coprof F $\leq$ n in particular if F is Cohen-Macauley
+then for $\xi \in \underline{P}$v - Z, $G_{\xi}$ is Cohen-Macauley.  Finally if F is ($S_{k}$)
+[illegible ask Grothendieck]*
+
+$S_{k-1}$ for $\xi \in \underline{P}$v - Z (reference $O_{IV}$).
+
+\margin{* Ask AG.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 38 (PDF page 39).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/38}
+\mspage{38}
+
+\uline{8.3}
+
+We notice that for [illegible ask Grothendieck]* even if
+$k = 1$, $X$ being geometrically integral of dimension two where ($k =$
+2 ???) $X$ being geometrically integral and geometrically normal of
+dim 3).  It is enough to start from a projective integral surface
+\[ X \ C \ \underline{P}v \]
+over $k$ algebraically closed having a point $x$ where $X$ is not Cohen-%
+Macauley, then for every hyperplane pressing through $x$ the
+corresponding hyperplane section $Y_{\xi}$ admits $x$ as an associated
+embedded cycle (respectively we start from a normal (thus $S_2$)
+integral variety $X \ C\underline{P}v$ of dimension three having a point $x \in X$
+where $X$ is not Cohen-Macauley, then the $Y$'s passing through $x$ are
+not CM i.e. they are met ($S_2$) at $x$.)
+
+In these examples the set of ``exceptional'' $\xi$ for the property
+($S_k$) contains the hyperplane of $\underline{P}v$ defined by $x \in \underline{P}$ and it is of
+codimension one (and not of codimension $\geq$ two) compare 8.5 below
+for a general precise result in this direction along these lines?
+
+Footnote(?)  Fairly illegible ask Grothendieck*
+
+If $F$ is ($S_k$) [illegible]
+Illegible Gap  5 lines.
+
+We point out the following result:
+
+\margin{* ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 39 (PDF page 40).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/39}
+\mspage{39}
+
+\uline{Proposition 8.4}
+
+Let T be a closed subset of X and suppose that codim (T, X) $\geq$
+k. Then for every $\xi \in \underline{P}$v we have codim (T$_{\xi}$, $\underline{Y}_{\xi}$) $\geq$ k - 1. Let Z be
+the set of $\xi \in \underline{P}$v such that codim (T$_{\xi}$, $\underline{Y}_{\xi}$) = k - 1 (i.e. codim (T$_{\xi}$,
+$\underline{Y}_{\xi}$) < k) then Z is a constructible, nowhere dense [rare Fr]
+subset of $\overset{\text{v}}{\underline{P}}$, i.e. $\overline{\text{Z}}$ is of codimension $\geq$ \unsure{$|$|1} in $\underline{P}$v.
+
+In order for it to be of codimension $\geq$ 2 it is necessary and
+sufficient that for every irreducible component T$_{\text{i}}$ of X of
+codimension equal to k and such that dim f(T$_{\text{i}}$) = 0 there should
+exist one component \unsure{$|$|1} [illegible is there an insert a footnote ask
+Grothendieck].*
+
+The first assertion follows immediately from the following lemma
+8.4.1 (a) which is a remorseful afterthought to paragraph 5.
+
+\uline{Lemma 8.4.1}
+
+Let X be a locally noetherian prescheme, let L be an
+invertible module over X, $\phi$ a section of L, $\underline{Y}$ = V($\phi$), T a closed
+subset of X. Let us assume that codim ($\underline{Y}$, X) $\geq$ K.
+
+Then
+
+a) Codim (T$\cap$ Y, $\underline{Y}$) $\geq$ k - 1
+
+b) In order to have
+
+codim (T$\cap$ Y, Y) = k - 1
+
+i.e. codim (T$\cap$ Y, Y) < k
+
+it is necessary and sufficient that there should exist an
+irreducible component T$_{\text{i}}$ of T contained in Y, and such that codim
+
+\margin{$*$ Ask Grothendieck}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 40 (PDF page 41).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/40}
+\mspage{40}
+
+$(T_i, X) = k$ and such that for every irreducible component $X_j$ of $X$
+containing $T_i$ and such that
+\[ \dim O_{X_j, T_i} = \dim O_{X, T_i} \]
+i ( = k) we have
+\[ X_j \over{C}{\not\subset} Y. \]
+
+The verification of this lemma is immediate due to the general
+facts in $O_{IV}$ chapter IV about dimension.  With the assumptions of
+8.4, by 8.4.1(b) we see which ones are the exceptional hyperplanes
+$H_\xi$.  If we exclude the set $Z_0$ of $\xi \in \underline{P}\mathrm{v}$ such that there is an
+irreducible component R of T or of X such that dim f(R) > 0 and
+such that $R_\xi$ is of ``dimension too large'' (a set which is of
+codimension two and if what follows it does not count the
+exceptional $H_\xi$ are there for which there exists a $T_i$ with codim
+$(T_i, X) = k$ and dim $f(T) = 0$, $f(T)$ CH and such that for \uline{every}
+irreducible component $X_j \supset T_i$ of X with codim $(T_i, X_j) = k$ we have
+$f(X_j) \not\subset H_\xi$.  For a given $T_i$ with codim $(T_i, X) = k$ if there exists
+an $X_j$ with codim $(T_i, X_j)$ = ? [illegible ask Grothendieck]
+and such that dim $f(X_j) = 0$ then we will have
+\[ f(X_j) = f(T_i)\ \mathrm{C}\ H_\xi \text{ and consequently } \xi \text{ would not be exceptional} \]
+relative to the $T_i$ if and only if $f(T_i)$ C $H_\xi$ ; the set of such $\xi$ is
+(the trace over) of a hyperplane of $\underline{P}\mathrm{v}$.  This proves
+$\qquad\qquad P - Z_0$
+
+8.4, and also proves the more precise result that the exceptional
+set is the union of a set of codimension $\geq 2$ and of a \uline{union of
+hyperplanes} determined in an evident way by the above proof.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 41 (PDF page 42).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/41}
+\mspage{41}
+
+(I am afraid that the write up is quite floppy or perhaps
+sloppy since I have reasoned geometrically all the time without
+saying so, by taking points over an algebraically closed field.
+Of course, the condition announced in 8.4 is indeed geometric so
+that we may suppose k alg-closed and argue for K-rational points)
+using 8.4; 5.7.4 and the end of 8.2 we obtain:
+
+\uline{Corollary 8.5}
+
+Suppose that for all associated prime cycles we have at most
+simply [illegible]* and suppose that F satisfies $(S_k)$.
+
+The (constructible) set of points of $\underline{P}^{\vee}$ such that $\phi_\xi$ is $F_{k(\xi)}$
+regular and $G_\xi$ is $(S_k)$ has a complement of codimension at least two
+if and only if ($\Leftrightarrow$) for every integer $n \geq 0$ we denote by $Z_n$ the set
+of $x \in T = \operatorname{supp} F$ such that the $\operatorname{coprof}_x$ [illegible]*
+
+% NOTE: blank space of several lines left on the page here
+
+we see that for every irreducible component $Z_{ni}$ of $Z_n$ with codim
+$(Z_{ni},\ T) = n + k + 1$ and $\dim f(Z_{ni}) = 0$ there exists an irreducible
+component $T_j$ of $T$ containing $Z_{ni}$ and such that codim $(Z_{ni},\ T_j) = n +$
+$k + 1$ and $\dim f(T_j) = 0$.
+
+When f is given finite then for every closed subset R of
+[illegible ask A.G] we have $\dim f(R) = \dim R$ so that the criterion
+takes the following form: there does not exist an isolated point
+z in any one of the $Z_n$ such that $\dim_z T( = \dim F_z)$ is equal to $n +$
+$k + 1$.
+
+\margin{* Ask A.G}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 42 (PDF page 43).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/42}
+\mspage{42}
+
+When F is equidimensional of dimension d this condition is vacuous
+if $d \leq k$ (and indeed we knew it because in this case the
+[hypothesis] ($S_k$) on F is nothing else but the hypothesis CM), and
+if $d \geq k + 1$ it means that the set $Z_{d-(K + 1)}$ of points of $T$ where
+the co-depth of F is $> d - (k + 1)$ i.e. true depth of $F \geq k + 1$
+(even though, by preference we only have true depth of $F \geq k$ as a
+consequence of the property ($S_k$) and $k \leq d$). If we no longer
+assume that F is equidimensional there remains that we may express
+the desired condition in the following simple way:
+
+\uline{8.6} For every closed point $x \in \operatorname{supp} F$ such that $\dim F_x \geq k + 1$ we
+have $\operatorname{prof} F_x \geq k + 1$
+
+The sufficiency is seen immediately by putting $Z = X$. The
+necessity is seen by noticing that for every $\xi$ such that $\phi_\xi$ is $X_{k(\xi)}$
+- regular and $x \in Y_\xi$ we have $\dim G_\xi$, $x = \dim F_x - 1$, $\operatorname{prof} G_{\xi\; x} =$
+$\operatorname{prof} F_x - 1$ so that x put by default the above condition we have
+$\operatorname{prof} G_\xi\ x \geq k$ but $\dim G_\xi\ x \geq k$ which shows that $G_\xi$ does not satisfy
+condition ($S_k$) at x; but the set of $\xi$ such that $x \in Y_\xi$ is of
+codimension 1 (NB: I implicitly assumed that k is algebraically
+closed the case to which we reduce immediately). The preceding
+general criterion should be evident in the case 8.6. We now study
+the points y of $\underline{Y}$ that are not smooth for $\underline{Y}_\xi$ relative to $k(\xi)$. We
+restrict ourselves to the case where $f\colon X \to f$ is \uline{unramified}
+(practically, it will be an immersion). and where $X \to S$ is
+smooth. We do not necessarily assume that S is the spectrum of a
+field. Since f is unramified the canonical homomorphism $f^*(\Omega^1{}_{\underline{P}/S})$
+$\to \Omega^1{}_{X/S}$ is surjective and its kernel is a locally free module
+
+\margin{* unclear, ask AG.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 43 (PDF page 44).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/43}
+\mspage{43}
+
+over X which we denote $\hand{\unsure{\mathcal{N}}}^{\mathrm{v}}{}_{X/\underline{P}}$; when if f is an immersion this is
+nothing else but the conormal module $J/J^2$ defined by the ideal J
+of X in $\underline{P}$ and we call it in every case the conormal module.
+\[ \text{(a)}\quad 0 \rightarrow \hand{\unsure{\mathcal{N}}}^{\mathrm{v}}{}_{X/\underline{P}} \rightarrow f^*(\Omega^1{}_{\underline{P}/S}) \rightarrow \Omega^1{}_{X/S} \rightarrow 0 \]
+Let us observe that we have also over $\underline{P}$ an exact canonical
+sequence (which should appear as an example in paragraph 16 for
+example)
+\[ \text{(b)}\quad 0 \rightarrow \Omega^1{}_{\underline{P}/S}(1) \rightarrow E_{\underline{P}} \rightarrow O_{\underline{P}}(1) \rightarrow 0 \]
+(i.e. $\Omega^1{}_{\underline{P}/S}$ is canonically isomorphic to the kernel of the
+canonical homomorphism) $E_{\underline{P}}(-1) \rightarrow O_{\underline{P}}$ deduced from
+$E_{\underline{P}} \rightarrow O_{\underline{P}}(1)$, to it we apply $f^*$:
+\[ \text{(b}^1\text{)}\quad 0 \rightarrow f^*(\Omega^1{}_{\underline{P}/\underline{S}}\hand{\unsure{)}}(1) \rightarrow E_X \rightarrow O_X(1) \rightarrow 0 \]
+which gives an explicit description of $f^*(\Omega^1{}_{\underline{P}/\underline{S}}\hand{\unsure{)}}(1)$ over X and
+allows therefore to identify $\hand{\unsure{\mathcal{N}}}^{\mathrm{v}}{}_{X/\underline{P}}(1)$ with a submodule locally a
+direct factor of $E_X$ or again the dual $\hand{\unsure{\mathcal{N}}}{}_{X/\underline{P}}(-1)$ is canonically
+isomorphic to a quotient module of $E^{\mathrm{V}}{}_X$. Consequently $\underline{P}(\hand{\unsure{\mathcal{N}}}{}_{X/\underline{P}}(-1)$
+$= \underline{P}(\hand{\unsure{\mathcal{N}}}{}_{X/\underline{P}})$ can be canonically embedded into $\underline{P}(E^{\mathrm{V}}{}_X) = X\mathrm{x}_S\underline{P}^{\mathrm{v}} = X_{\underline{P}}{}^{\mathrm{V}}$
+as a projective sub-fibration over X therefore as a closed
+subscheme. The latter is necessarily contained in $\underline{Y}$ (from the
+fact that $\Omega_{X/\underline{P}}(1)$ is contained in the kernel of $E_x \rightarrow O_X(1)$ [last
+two symbols illegible ask A G]
+
+The underlying set of this prescheme is nothing else but the
+set of points of $\underline{Y} = V(\emptyset)$ which are \uline{singular zeros} (par. 16) of
+the section $\emptyset$ of $O_X\mathrm{x}_{\underline{P}}\mathrm{v}(1, 1)$ relative to the base $\underline{P}^{\mathrm{v}}$ i.e. its
+points with values in the field k over $\underline{P}^{\mathrm{v}}$ are the points x of
+$Y_k \hand{\subset} X_k$ such that $\emptyset_k$ vanishes to order at least two at x i.e.
+such that $Y_k$ is not smooth of relative dimension r - 1 over k at
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 44 (PDF page 45).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/44}
+\mspage{44}
+
+x.  The announced characterization of singular zeros [illegible
+ask AG] the elements of a smooth subscheme $\underline{P}(\hand{\unsure{\nu}}\ X/\underline{P})$ of $X_{\underline{P}}{}^{v}$ gives
+immediately the following statement which deserves to appear as a
+preliminary proposition if S = Spec k and if H is a hyperplane of
+$\underline{P}$ then $Y = X \ \mathrm{x}_{\underline{P}}\ H$ is smooth over k of relative dimension (d - 1)
+at the point $x \in \underline{Y}(k)$ (i.e. x is a non-singular zero i.e.
+geometrically non-singular of the section {\o} of $O_X(1)$ defined by H)
+if and only if H does not contain the image by {\o} of the tangent
+space to X at x (relative to k) or as we say once more (if
+$f{:}X \to \underline{P}$ is an immersion which allows us to identify X to a
+subscheme of $\underline{P}$) if and only if H is not tangent to X at x.  This
+follows trivially from the Jacobian criterion of smoothness or
+from the definition of a singular zero, once we make precise the
+sense of the statement, that is to say that we make precise how a
+vector subspace of the tangent space to $\underline{P}$ at a point a(= f(x))
+defines a linear subspace of $\underline{P}$ (in such a way that it makes sense
+to say that H does not contain the soul vector** subspace): of
+course this comes from the exact sequence (b) above which allows
+to define a one-to-one correspondence between the set of vector
+subspaces of the tangent space at a and the set of linear
+subspaces to $\underline{P}$ (?)* [illegible ask AG] containing a.  This
+correspondence anyway reduces to associating to a linear
+subvariety passing through a its tangent space at a considered as
+a subspace of the tangent space to $\underline{P}$ at a.
+
+Such ``sorites'' grouped together with various ``sorites'' about
+linear subvarieties and about grossmanians ought to be given in
+one or to preliminary numbers or paragraphs of course announcing
+
+\margin{** Check this Blass}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 45 (PDF page 46).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/45}
+\mspage{45}
+
+them over any base.  In fact we can do better knowing that the
+prescheme $\underline{Y}^{sing}$ of singular zeros of \o{} relative to $\underline{P}^{v}$ defined in
+par. 16 is nothing else but $\underline{P}(\hand{\unsure{\mathcal{J}|\mathcal{N}}}{}^{v}{}_{x/P})$ and (since the latter is
+smooth over S of relative dimension dt(r - d - 1) = r - 1 (r being
+the relative dimension of $\underline{P}^{v}$ over S) we are under the favorable
+conditions studied in N$^\circ$ 16 or paragraph 16.*
+
+In order to verify them, let us notice that by definition
+$\underline{Y}^{sing}$ is nothing else but the sub-prescheme of $\underline{Y}$ of zeros of the
+section $\psi$ = d \o/$\underline{Y}$ of $\Omega^{1}{}_{X_{\underline{P}}{}^{v}/\underline{P}^{v}}\ (1,\ 1) \otimes O_{y} = \Omega^{1}{}_{X/S} \otimes O_{\underline{Y}}(1,\ 1)$
+[illegible]**
+
+We shall give another interpretation of this section from
+which the conclusion follows immediately.  In order to do this let
+us consider the following diagram of exact sequences over $X_{\underline{P}}{}^{v}$ or
+more generally over any prescheme Z over $X_{\underline{P}}{}^{v}$.
+
+% NOTE: the rest of the page is blank (no diagram typed)
+
+\margin{* Ask AG about this reference}
+\margin{** Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 46 (PDF page 47).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/46}
+\mspage{46}
+
+Diagram:
+
+\begin{diagramblock}
+\begin{tikzcd}
+ & & 0 & & \\
+ & 0 & G_{\underline{P}}{}^{v}{}_{/S}\otimes O_Z(0,-1) \arrow[u] & & \\
+ & \Omega^1{}_{X/Y}\otimes O_Z(1,0) \arrow[u] & & & \\
+0 \arrow[r] & \Omega^1{}_{\underline{P}/S}\otimes O_Z(1,0) \arrow[u, dash] \arrow[r] & E\otimes O_Z \arrow[uu] \arrow[r] & O_Z(1,0) \arrow[r] & 0 \\
+ & {}^{v}{}_{x/\underline{P}}\otimes O_Z(1,0) \arrow[u] & O_Z(0,-1) \arrow[u] \arrow[ul, dashed, "B"'] \arrow[ur, dashed, "\partial"] & & \\
+ & 0 \arrow[u] & 0 \arrow[u] & &
+\end{tikzcd}
+\end{diagramblock}
+
+[Note to AG the upper G is really an illegible letter \hand{\unsure{$\mathcal{Y}$|$\mathcal{G}$}} $\underline{P}^{v}/S$
+what is this?]*
+where the first column is deduced from (a) by tensoring with
+$O_Z(1,0)$ the row is deduced from (b) by tensoring with $O_Z$ and the
+column two is deduced from its transpose from the analogous
+sequence ($b^{v}$) relative to $\underline{P}^{v}$ (obtained by replacing E by $E^{v}$) and
+tensoring with $O_Z$.  From the very definition of $\underline{Y}$, Z is over $\underline{Y}$ if
+and only if the composed morphism $\partial$ from the diagram is zero i.e.
+if we can find a factorization B: $O_Z(0,-1) \rightarrow \Omega^1{}_{\underline{P}/S} \otimes O_Z(1,0)$.  If
+this is the case we can consider it composition with $\Omega^1{}_{\underline{P}/S} \otimes$
+$O_Z(1,0) \rightarrow \Omega^1{}_{X/Y} \otimes O_Z(1,1)$.  I say that this is precisely the
+section $\psi$ [Blass: check if this letter is OK]** which we have
+
+\margin{* Ask AG}
+\margin{** Blass check this}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 47 (PDF page 48).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/47}
+\mspage{47}
+
+introduced above (the verification ought to be essentially
+mechanical). It is zero if and only if Z is above lies over $V(\psi)$
+(by the very definition of $V(\psi)$!) but this means also that B can
+be factored by $\hand{\unsure{\mathcal{N}}}^{v}{}_{x/\underline{P}} \otimes O_{Z}(1,0)$ i.e. that the sub-module $O_{Z}(0,-1)$
+of $E \otimes O_{Z}$ is contained in the sub-module $\hand{\unsure{\mathcal{N}}}\;{}_{x/\underline{P}} \otimes O_{Z}(1,0)$ which
+evidently signifies also that Z is over the sub-prescheme $\underline{P}(\hand{\unsure{\mathcal{N}}}$
+${}_{x/\underline{P}}(1))$ of $\underline{P}(E^{v}{}_{X})$, achieving the proof that we have announced just
+before this erudite exercise in syntax for which I have already
+had to sweat quite a bit we could remark that from every set
+theoretic point of view $Y^{sing}$ is of dimension $r - 1$ if $S = \mathrm{Spec}\ k$,
+whereas $\underline{P}^{v}$ is of dimension r so that the image of $\underline{Y}^{sing}$ in $\underline{P}^{v}$ is
+of codimension $\geq 1$ which gives again 2.12 (it is well to note that
+the argument is not essentially distinct from the one used in
+2.12). We note that most often this set is effectively of
+codimension one (compare below).
+
+Consequently we cannot in general find the ``linear pencils''
+of hyperplane sections all of which are smooth. However we shall
+see that we can often manage to find the pencils formed by
+hyperplane sections not having any supersingular point due to the
+fact that in the most common cases the image of $Y^{sup\ sing}$ in $\underline{P}^{v}$ is
+of codimension two.
+
+We shall first of all recall the essential points
+differential in nature of the situation studied here:
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 48 (PDF page 49).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/48}
+\mspage{48}
+
+\uline{Theorem 8.7}
+
+(a) The sub-prescheme $\underline{Y}^{\mathrm{sing}}$ (defined in N$^\circ$ or par. 16) in the
+present situation is nothing else but $\underline{P}(\hand{\unsure{\mathcal{N}}}_{\ x/\underline{P}})$ considered as a
+sub-scheme of $\underline{Y}$ as explained above.
+
+(b) The underlying set of the prescheme $\underline{Y}^{\mathrm{sup\ sing}}$ (cf N$^\circ$ or
+par. 16) is nothing else but the set of ramification points of
+morphism of smooth preschemes over S of relative dimension r - 1
+and r (namely) $\underline{Y}^{\mathrm{sing}} = \underline{P}(\hand{\unsure{\mathcal{N}}}_{\ x/\underline{P}}) \rightarrow \underline{P}^{\mathrm{v}}$ i.e. in order for the latter
+morphism to be unramified at the point y (ref to the definition)
+it is necessary and sufficient that y should be geometrically an
+ordinary singular point for $\text{ø}_{\hand{\xi}}$ ($\hand{\xi}$ being the point of $\underline{P}^{\mathrm{v}}$ that is the
+image of y).
+
+(c) Let us assume S = Spec(k) and that y $\in$ $Y^{\mathrm{sing}} = \underline{P}(\hand{\unsure{\mathcal{N}}})$ is
+a k - rational point, let [illegible]* and $\hand{\xi}$ be its projections in
+X(k) resp $\underline{P}^{\mathrm{v}}$(k) and let us consider the linear subvariety H$^1$ of $\underline{P}^{\mathrm{v}}$
+``image'' of the tangent map of the closure of its [Fr. son image]
+image in $\underline{P}^{\mathrm{v}}$, given the induced reduced structure and let us
+consider the induced morphism g:$\underline{Y}^{\mathrm{sing}} \rightarrow$ T (a dominant morphism of
+integral preschemes). The conditions (i) and (ii) (bis) are
+equivalent:
+
+(i) The morphism g is generically étale (i.e. étale at least
+one point or what is the same is étale = unramified at the generic
+point of $\underline{Y}^{\mathrm{sing}}$)
+
+(i bis) The field extension L/K defined by g is finite and
+separable
+
+(i ter) The morphism g is birational i.e. the extension L/K
+is the trivial extension.
+
+\margin{* Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 49 (PDF page 50).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/49}
+\mspage{49}
+
+[Marginal note illegible ask A.G]\hand{*}
+
+(ii) $Y$sing $\neq$ $\underline{Y}$sup sing (set theoretically speaking let us say
+(ii ter) There exists an $x \in X(K)$ and a tangent hyperplane H to $X_{K}$
+at x which is not osculating at x by which we understand precisely
+that x is not supersingular for the section of $O_{X_{K}}$ (1) that defines
+H...)
+
+These conditions imply that $\underline{Y}$sup sing $\neq \phi$ [Fr illegible ask
+A.G.] dim $\underline{Y}$sup sing $\leq r - 2$ so that the image of Tsup sing in $\underline{P}$v has a
+codimension $\geq 2$, and they imply also (iii) dim $T = r - 1$, i.e. T
+is of codimension one in $\underline{P}$v.
+
+\uline{Proof}
+
+The equivalence of (i) and (i leir) is trivial its
+equivalence with (ii) is a trivial consequence of 8.7 b), finally
+the equivalence of (ii) and of (ii ter) is practically the
+definition of $\underline{Y}$sup sing. Evidently (i ter) $\Rightarrow$ (i) it remains to
+prove that (i) $\Rightarrow$ (i ter). We may evidently suppose that K is
+algebraically closed and we are reduced to prove (taking into
+account the hypothesis (i)) that there exists an open set $U \neq \phi$
+such that $\xi \in U$ (K) implies that there exists exactly one point of
+$\underline{Y}$sing (K) over $\xi$. This will follow from 8.7 c) which implies more
+precisely.
+
+\uline{Corollary 8.9}
+
+Suppose that condition (i) of 8.8 is satisfied and let U be
+the open subset of T of the points where T is smooth over K. Then
+
+\margin{* Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 50 (PDF page 51).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/50}
+\mspage{50}
+
+$U \neq 0$ Ysing / U $\Rightarrow$ U is an open immersion a fortiori $\underline{Y}$sing / U does \margin{?}
+not contain the points of Ysupsing.  If X is proper over K, then
+g : $\underline{Y}$sing $\to$ T is surjective thus $\underline{Y}$sing / U $\Rightarrow$ U is proper over K so
+that g : $\underline{Y}$sing $\to$ T is surjective therefore $\underline{Y}$sing / U $\Rightarrow$ U is an
+isomorphism and U is the biggest open set of T having the latter \margin{?}
+property.
+
+First of all since g is dominating and generically étale it
+is generically étale at least one non empty open subset V of T
+such that $\underline{Y}$sing $|$ V $\Rightarrow$ V is étale and surjective which implies that
+V is smooth over K.  If then $\xi \in$ V(K) and if y is a point of $\underline{Y}$sing
+(K) over $\xi$ then with the notations of 8.7 c) the space H$^1$ is
+nothing else but the tangent space to T and $\xi$, and as we observed
+here this implies that the point x of X(K), the projection of y is
+determined as the orthogonal point to H$^1$ thus it is uniquely
+determined thus since Ysing $\langle$ X x $\underline{P}$v, y is uniquely determined.
+
+This proves already that g is birational (being generically
+étale and generically radicial).  On the other hand the morphism $\psi$
+(whose definition in its form is evident) which associates to
+every $\xi \in$ U(K) the unique point x  $= \psi(\xi) \in \underline{P}$ orthogonal to the
+tangent space to U at $\xi$, coinciding over V with the composition V
+$\to \underline{Y}$sing $|$ V $\to$ X, where the second arrow is the projection;
+therefore setting h = $(\psi$, id):U $\to \underline{P}$ x $\underline{T}$ (illegible)*
+g$_1$ = g $|$ g$^{-1}$(U) : g$^{-1}$(U) $\to$ U the composition hg$_1$ : g$^{-1}$(U) $\to \underline{P}$ x T
+is nothing else but the canonical inclusion, this being so for its
+restriction to g$^{-1}$(V) $\xrightarrow{\sim}$ V.  It follows that h
+factors through the scheme theoretic closure Y$^1$ of $\overline{\text{Y}^1}$ in $\underline{P}$ x T
+
+\margin{* Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 51 (PDF page 52).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/51}
+\mspage{51}
+
+thus that the inverse image of $\underline{Y}^{1}$ (which is open in the above
+closure) by h is an open subset of U, let us call it U1.  Because
+of hg$_{1}$ = inclusion we see immediately that g$^{-1}$(U) $\to$ U is an open
+immersion.  Since X is proper over k i.e. closed in $\underline{P}$, therefore g
+is proper therefore surjective thus g$_{1}$ : g$^{-1}$(U) $\to$ U is
+surjective, thus an isomorphism.  Also if W is an open subset of T
+such that g$^{-1}$(W) $\to$ W is an isomorphism it follows that W is smooth
+since $\underline{Y}^{1}$ is smooth, thus W \hand{$\subset$} U.  This proves 8.9.
+
+The final assertions of 8.8 $\underline{Y}$sup sing = $\emptyset$ or dim $\underline{Y}$sup sing =
+r - 2 and dim T = r - 1 are trivial:  the first one follows the
+fact that $\underline{Y}$sing is irreducible of dim r and from the fact that Ysing
+or Ysup sing [illegible]* is defined by the vanishing of a section D
+of an invertible module.; the second from the fact that L being
+finite over K we have deg tr L/k = deg tr K/k i.e. dim T = dim
+$\underline{Y}$sing = r - 1.
+
+\uline{Remark 8.10}
+
+As we remarked in 8.9 with the notations of the corollary we
+have g$^{-1}$(U) \hand{$\subset$} $\underline{Y}$sing - $\underline{Y}$sup sing but we notice that even if X is
+closed in $\underline{P}$ this inclusion is not necessarily an equality, in
+other words (noting that g$^{-1}$(U) is nothing else but the set of
+points where g is étale, so that $\underline{Y}$sing - $\underline{Y}$sup sing is the set of
+points where g is unramified) it may happen that there are points
+y $\in$ $\underline{Y}$sing where g is unramified but not étale (which implies in
+addition that g(y) is a point that is not geometrically normal and
+even not geometrically unibranch of T).  In geometric terms this
+corresponds to the following phenomenon; we may have a tangent
+
+\margin{* ASK AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 52 (PDF page 53).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/52}
+\mspage{52}
+
+non-osculating hyperplane for X at a point x $\in$ X(k) such that
+there exists another point x$^{1}$ $\in$ X(k) at which the same hyperplane
+is tangent at x [or x$^{1}$ illegible]*. Indeed there are obvious
+examples with $\underline{P}$ of dim two, X a non-singular curve of degree $\geq$ 4,
+in any characteristic. [Note here: the ``double tangents'' of X
+correspond to the double points of the ``dual curve.'']
+
+\uline{Corollary 8.11}
+
+Let us assume that k has characteristic zero. Then (a) The
+image of $\underline{Y}$sup sing in $\underline{P}$v is of codimension $\geq$ 2. (b) the condition
+(iii) of 8.8 is equivalent to other conditions i.e. the negation
+of the other conditions, let us assume that $\underline{Y}$sing = Ysup sing], means
+also that the image of $\underline{Y}$sing [or Ysup sing illegible]* in $\underline{P}$v is of
+codimension $\geq$ 2.
+
+Evidently, the assertion (b) implies (a) taking into account
+8.8. But by dimension theory, (iii) means that L/K is a finite
+extension (we could put it in the form ((iii) bis) in 8.8 and in
+characteristic zero L is always separable over K hence the
+condition (i bis) of 8.8.
+
+\uline{Remark 8.12}
+
+Geometrically the assertion (a) means essentially that for a
+sufficiently general linear pencil of hyperplane sections every
+member of the pencil is smooth or has for s ??? [illegible]* only
+for geometric points singular points ordinary double points (and
+in fact as one sees immediately it can be said in statement (a)
+consequently in a form a little more precise--we have at most \uline{one}
+
+\margin{* ASK AG (or figure out)}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 53 (PDF page 54).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/53}
+\mspage{53}
+
+such singular geometric point).  The assertion (b) means
+essentially that if Ysing = $\underline{\text{Y}}$sup sing (which can be expressed
+analytically by the vanishing of a certain section D of an
+invertible module $W^{\otimes 2}{}_{X/k} \otimes O_{\underline{Y}}{}^{1}$, (1,1) over $\underline{\text{Y}}^{1}$), then for a
+sufficiently general linear pencil of hyperplane sections all the
+members of the pencil are smooth.  This second situation (whether
+or not we are in characteristic zero) should entirely be
+considered as exceptional.  [The variety Linl.... T = L illegible
+handwriting on top of the page]*.  In the classical language it is
+expressed, if there is no error, by saying that X is ruled for the
+projective immersion considered [and if we so please] we have here
+all that we need due to 8.5 and its corollaries to make explicit
+and justify such a terminology in case if you feel inspired to
+make connection with [la taupe Fr].  For example if dim X = 1 this
+implies that X is a straight line [illegible]* x $\in$ X(k) so T
+contains* ???.  (b) If the characteristic is p > \unsure{O|0}, we should
+normally give examples (with dim $\underline{\text{P}}$ = 2, X a non-singular algebraic
+curve) where the conditions of 8.6 are not satisfied i.e. $\underline{\text{Y}}$sing =
+$\underline{\text{Y}}$sup sing and where nevertheless dim T = r - 1 i.e. examples where
+L/K is a finite inseparable extension.  I am too lazy to construct
+the examples but I do not doubt that such examples exist.
+
+In (a) make a footnote to the following N° or paragraph where
+we prove that if the exceptional 'ruled' case arises then by a
+trivial modification of the projective immersion we find ourselves
+again in the ``general'' situation of 8.8.
+
+The part of the present section (or N$^{0}$) from 8.6 to here could
+without a doubt be made into a separate section of a differential
+
+\margin{* illegible}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 54 (PDF page 55).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/54}
+\mspage{54}
+
+character, whereas the beginning of our N$^0$ with the one that
+follows should be merged together into a N$^0$ about the dimension of
+exceptional [hyperplanes ???]*  I only use the fact that $\underline{Y}^{sing}$ has
+dimension (r - 1)\hand{.} \uline{Proposition 8.13}\hand{.} We always assume that \margin{Display}
+% NOTE: "Proposition 8.13" is circled by hand; a handwritten line runs from the circle to the circled marginal word "Display".
+f : X $\to$ $\underline{P}$ is unramified and that X has no isolated points.
+
+Let Z$_k$ be the part of $\underline{P}^\vee$ complement of the set of $\xi \in \underline{P}$ such that
+$\phi_\xi$ should be $X_{k(\xi)}$ - regular and $\underline{Y}_\xi$ satisfies the geometric condition
+R$_k$ then:
+
+a) In order for Z$_{k-1}$ to be of codimension $\geq$ 2 in $\underline{P}^\vee$ it
+suffices that every irreducible component X'$_i$ of X' of dimension $\leq$
+K should be ruled for f.
+
+b) In order to have Z$_k$ of codimension $\geq$ 2 in $\underline{P}^\vee$ it suffices
+that every irreducible component X$_i$ of dimension $\leq$ K-1 (Ask A.G
+illegible) should be made up of smooth points of X and should be
+ruled.
+
+Indeed for every $\xi$ geometrically singular the set of $\underline{Y}_\xi$
+(NB:  We restrict ourselves to $\xi$ such that $\phi_\xi$ is $X_{k(\xi)}$ regular which
+is harmless because of 8.2) and is the union of sing($\underline{Y}'_\xi$) and of
+the inverse image T$_\xi$ of T in $\underline{Y}_\xi$ so that the codimension of this
+singular set in $\underline{Y}_\xi$ is equal to the infimum of the codim (sing(Y'),
+Y'$_\xi$) and of the codim (T$_\xi$, Y$_\xi$).  Let us restrict ourselves to $\xi$ such
+that sing (Y'$_\xi$) is finite (which is harmless, this leads to place
+ourselves in the complement of a set of codimension $\geq$ 2).  The
+singular geometric points of $\underline{Y}'_\xi$ are therefore isolated.  The
+conclusion follows easily from this and from 8.4.
+
+Combining 8.13, 8.5 and 8.6 we find as usual.
+
+\margin{* Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 55 (PDF page 56).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/55}
+\mspage{55}
+
+\uline{Corollary 8.14}
+
+We suppose that $f\colon X \to \underline{P}$ is unramified and that X has no
+isolated points [illegible]* n.
+a) suppose X is separable over k.  In order that the set of $\xi \in \underline{P}^{v}$
+such that $\phi_{\xi}$ is $X_{k(\xi)}$ -regular and $\underline{Y}_{\xi}$ is separable, should have a
+complement of codimension at least two it is necessary and
+sufficient that every irreducible component $X_{i}$ of dimension one of
+X should be formed from smooth points of X and should be ruled
+relative to f and \uline{that} for every closed point x of X such that $\dim_{x}$
+$X \geq 2$ we have prof x $X \geq 2$ $\mathrm{prof}_{x}X$, (conditions that are
+automatically satisfied if X is geometrically normal and if all of
+its irreducible components are of dim $\geq 2$).
+b) let us assume that X is geometrically normal, in order that the
+set of $\xi \in \underline{P}^{v}$ such that $\phi_{\xi}$ is $X_{k(\xi)}$ regular and $\underline{Y}_{\xi}$ is geometrically
+normal should have a complement of codimension at least two it is
+necessary and sufficient that every irreducible component $X_{i}$ of X
+of dimension $\leq 2$ should be formed of smooth points of X and that
+it should be ruled relative to f and that in addition for every
+closed point x of X such that $\dim_{x} X \geq 3$ we have $\mathrm{prof}_{x} X \geq 3$.
+
+\uline{Remark 8.15}
+
+In 8.6, 8.13, 8.14 we make for X the hypothesis $(S_{k})$ (resp
+$(R_{k})$) respectively : separable, respectively normal) that we wish
+to recover as a conclusion for the hyperplane sections except
+perhaps for $\xi$ from an exceptional set of codimension at least two.
+
+This does not restrict the generality to tell the truth it
+would have been better to get rid of this preliminary hypothesis)
+
+\margin{* ASK AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 56 (PDF page 57).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/56}
+\mspage{56}
+
+since we see immediately with the help of results of par. 3.4 and
+5.12 that if X does not satisfy the hypothesis in question, then
+(by par. 5) if there exists a closed point x where the hypothesis
+fails then for every $\xi$ such that $\phi_{\xi}$ is $X_{k(\xi)}$ regular condition that
+only eliminate a set of codimention and such that $x \in Y_{\xi}$ (condition
+that describes a set of exact codimension one), $\underline{Y}_{\xi}$ does not satisfy
+the said hypothesis at x, the exceptional set $Z \langle \underline{P}^{v}$ is of
+codimension one and not two.  (I may have somewhat exaggerated the
+case $R_{k}$ where we still need some condition, $(S_{1})$ and perhaps of
+equidimensionality perhaps.)
+Remorse: In 8.13 and 8.14 it suffices to suppose that f: $X \rightarrow \underline{P}$ is
+unramified at the smooth points of X; for the sufficiency part it
+suffices only that they should be unramified over an open subset $X'$
+of X where complement has codimension $\geq K + 1$.
+\uline{Proposition 8.16}
+
+Let us suppose f: $X \rightarrow \underline{P}$ unramified on an open subset
+complementary to a set of codimension at least two, X
+geometrically normal and of depth at least three at its closed
+points, finally X geometrically integral and proper over k.  Then
+the set of $\xi \in \underline{P}^{v}$ such that $\underline{Y}_{\xi}$ is geometrically normal and
+geometrically integral of dimension equal to dim X-1 (is
+constructible and) has a complement of codimension at least two.
+
+Indeed by 8.14 b) such is the case for the property ``$\underline{Y}_{\xi}$ is
+geometrically normal of dimension dim X-1'' (the dimensional
+property expresses that $\phi_{\xi}$ is $X_{k(\xi)}$ - regular).
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 57 (PDF page 58).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/57}
+\mspage{57}
+
+Therefore, under 6.1 all the $Y_\xi$ are geometrically connected.
+Since $\underline{Y}_\xi$ is geometrically normal it is geometrically integral if
+and only if it is geometrically connected which gives the proof.
+
+\uline{Remarks: 8.17}
+
+a) The hypothesis of 8.16 implies that dim $X \geq 3$. and that
+dim $f(x) \geq 3$ (without the hypothesis of normality and of non-%
+ramification) the set of $\xi$ such that $\underline{Y}_\xi$ is geometrically
+irreducible has a complement of codimension at least two. We can
+prove in every case that it does not contain a hyperplane of below
+b) the conclusion of 8.16 is false if we leave out the assumption
+that $\mathrm{prof}_x X \geq 3$ for $x$ closed, for example it is false for a non-%
+singular quadric $X$ in $\underline{P}^3$ [illegible]*
+the hyperplane sections are reducible (in fact formed by pairs of
+concurrent lines) and they form therefore a two dimensional family
+thus of codimension one in $\underline{P}$ (indeed the dual of the quadric is a
+quadric in the dual space relative to the dual form...)
+
+In the case of a non-singular surface in a projective space
+this situation however should be considered exceptional of the
+following section (or $N^0$). Let us suppose [illegible]* that $X$ is
+smooth of dimension two [illegible]* integral proper over $k$ and $f$
+an immersion. Then it follows from 6.1 and 8.8 and 8.14 that if
+$Y^{\mathrm{sing}} \to \underline{P}^\vee$ is not generically finite and inseparable one of the
+(???) $\xi \in \underline{P}^\vee$ such that $\underline{Y}_\xi$ is separable over $k(\xi)$ with at most two
+irreducible [illegible]* a complement of codim at least two.
+
+\margin{* Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 58 (PDF page 59).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/58}
+\mspage{58}
+
+We shall now examine more precisely the case of surfaces (the
+case of curves does not arise evidently, from the point of view of
+irreducibility of hyperplane sections).
+NB  I noticed with fright that the quadric is not entitled to the
+use [Fr il l'emploi que j'ai fait de mot
+``reglé,'' à être appelée réglée!]*
+This is in disagreement with our fathers and it would be necessary
+to invent a more adequate word for the notion used here.
+
+\uline{Proposition 8.18}
+
+Let us suppose that k is algebraically closed, X is integral
+(respectively integral and normal) of dimension $\geq 2$ and proper
+over k, let T be a closed finite subset of X such that X - T is
+smooth and let f/X - T be unramified.  In order that the set of $\xi$
+$\in P^{\vee}$ such that $Y_{\xi}$ should be geometrically irreducible (respectively
+geometrically integral) of dimension 1 should have a complement of
+codimension $\geq 2$ it is necessary and sufficient that the following
+two conditions should be satisfied:  a) For every $x \in T$ there
+exists a hyperplane section $Y_{\xi}$ ($\xi \in P(k)$ ) passing through x of
+dimension d - 1 and which is irreducible, b) X' = X - T is ``ruled''
+(\uline{sic}) for f \uline{or} there exists a hyperplane section $Y'_{\xi}$ ($\xi \in P^{\vee}(k)$ ) of
+X' which is of dimension d - 1 (\uline{non}??? singular and irreducible.
+[illegible ask AG]
+
+Let us first assume that X is geometrically normal.  We have
+already seen then by 8.14  a) that we can find a closed \uline{subset} $Z^{1}$
+of P of codim $\geq 2$ such that $\xi \in P-Z^{1}$ implies that $Y_{\xi}$ is separable
+over $k(\xi)$ and of dimension d-1 for such a $\xi$, it amounts to the same
+
+\margin{* ASK AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 59 (PDF page 60).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/59}
+\mspage{59}
+
+that $Y_{\xi}$ should be geometrically irreducible or geometrically
+integral, and the two problems [(\uline{respé et non respé}) Fr p 50]
+considered in 8.18 are therefore equivalent. On the other hand,
+by 5.6, the set U of $\xi \in P$ such that $Y_{\xi}$ is geometrically integral
+of dim d-1 (the dimension hypothesis stating that $\phi_{\xi}$ is $X_{k(\xi)}$
+regular) is \uline{open}. We will exhibit a non-empty open \uline{evident} subset
+P-Z contained in U and taking for Z the \uline{union of} $g(\underline{Y}^{1\ \mathrm{sing}}$ and of
+the hyperplanes $H_{x}$ of $P^{v}$ defined by the f(x), $X \in T$. For $\xi \in P^{v}$ -
+Z, $Y_{\xi}$ is smooth of dimension
+(d - 1) and since it is geometrically connected by 6.1 it is
+geometrically integral. We have to, therefore, express (explain)
+(prove) that every irreducible component of codimension one of Z
+meets the open set U. But these irreducible components are the $H_{x}$
+[they are repeated possibly, but it is not essential] and also $g(Y^{1}$
+$^{\mathrm{sing}})$ when the latter are indeed of codimension one i.e. $X^{1}$ ``not
+ruled'' for f (Nota Bene: we use the irreducibility of $Y^{1\mathrm{sing}}$). On
+the other hand, in order that this latter set should meet the open
+set U it is necessary and sufficient that $g(Y^{1\mathrm{sing}})$ which contains
+an open and dense set) should meet U. This proves 8.18 in this
+case. If we do not suppose that X is normal, we apply the
+previous result to the normalization of X the reasoning is
+immediate and I do not give the details here. N.B. In the \uline{case}
+[respé] 8.18 is contained in 8.16 more precisely except in the
+case d = 2. It is for the case \uline{[non-respé] that it may be better}
+\uline{not to require]} d = 2 and not only $d \geq 2$ .....
+
+It remains to explain, (make explicit) the conditions a) and
+b) of 8.18. This leads us to exmaine in a general way the
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 60 (PDF page 61).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/60}
+\mspage{60}
+
+following situation.  We suppose that $X$ is geometrically
+irreducible over $k$ and we (give ourselves) consider a linear
+subvariety $L$ of $P$ (corresponding to the question of studying the
+hyperplane sections of $X$, passing through a given point $x$ or
+tangent to $X$ at a given smooth point), formed therefore, by the
+hyperplane containing a linear subvariety $L$ of $P$ (resp. a point,
+or the image of a tangent space to $X$ at a smooth point in the two
+cases considered) and we ask the question [de ravoi] if for the
+generic point of $L$ (therefore for all the points of a non-empty
+open subset of $L$) $Y$ is geometrically irreducible of dim = dim $X$ -
+1.  This is a variant of Bertini's theorem, which [(devrait
+figurer)51] must appear in No. 3, and is treated by exactly the
+same method, [(ou, si on veut, s'y ramène) Fr 51].  The dimension
+question is simply stated for $f(x)$ C $L^0$ i.e. if $X^1 = f^{-1}(P - L^0)$ is
+a dense open subset of $X$.  Let $Q$ be the projective space of
+hyperplanes passing through $L^0$ (N.B. if $L^0$ is defined by a vector
+subspace $F^0$ of $E$ we have $Q = P(F^0)$ and we consider the canonical
+morphism (deduced from $F^0 \to E$, cf.  Chap. II).
+\[ U : \underline{P} - L^0 \to Q \]
+and we consider
+\[ g = Uf^1 : f^{-1}(P - L) = X^1 \to Q \]
+so that $L \simeq \check{Q}$ and the family of $X^1{}_{\hand{$\xi$}}$ ($\hand{$\xi$} \in L$) is nothing else than
+the family of hyperplane sections relative to the morphism $g$.  On
+the other hand, we see immediately that for every $\hand{$\xi$}\in L$, ``\uline{general}''
+$X^1$ is dense in $X$, so that $X^1$ is geometrically irreducible if and
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 61 (PDF page 62).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/61}
+\mspage{61}
+
+only if X is such.  This assumed, the theorem of Bertini-Zariski
+shows us that we have the wanted conclusion of irreducibility
+provided that dim $g(X^1) \geq 2$.  (To tell the truth one could give a
+reciprocal to 3.1 as follows:  If X is geometrically irreducible Y
+is geometrically irreducible if and only if either dim $f(X) = 2$ \uline{or}
+dim $f(X) = 1$ and $f(X)$ is contained in a straight line D defined
+over k and the generic fiber of $X \to D$ is geometrically
+irreducible).  This also allows us in the present version with L
+to have a necessary and sufficient condition of geometric
+irreducibility of $Y_{\xi}$, $\xi$ generic in L.
+
+From the [(\uline{cunutesque}?) Fr] point of view and in terms of
+field theory we can express the condition in terms of
+transcendence degree in the following fashion.  We choose a
+``hyperplane at infinity'' containing neither $L^{\circ}$ nor X and we place
+ourselves in its complement i.e. over a scheme of affine type
+essentially.  We choose a basis of the space of linear forms
+vanishing on L, let it be $T_1, \ldots, T_p$ (p = codim ($L^{\circ}$, P) and we
+consider their inverse images $t_1,, \ldots., t_p$ in the the field of
+fractions K of X (  X assumed integral).  At least one of the $t_i$,
+let us say $t_1$ is $\neq 0$.  Let us consider therefore, $a_1 = t_2/t_1, \ldots.,$
+$a_{p-1}) = tp/t_1$ then dim $g(X^1)$ is nothing else but the transcendence
+degree of $K(a_1, \ldots\ a_{\,p-1})$ \hand{$\subset$} K over k.  Therefore if the
+transcendence degree is $\geq 2$ we are o.k.  If it is one then we must
+require that over k, $f(X)$ is contained in a linear subvariety of P
+containing $L^{\circ}$ and of dimension at most one and that the \uline{generic}
+fiber of $g{:}X^1 \to g(X^1)$ should be geometrically irreducible.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 62 (PDF page 63).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/62}
+\mspage{62}
+
+Let us suppose that $L^{\circ}$ is of dimension q, so that the fibers
+of $u\colon P - L^{\circ} \to Q$ are of dimension $q + 1$ so that those of g are dim
+$\leq q + 1$, and consequently we have $\dim g(X^{1}) \geq \dim f(X) - (q + 1)$ so
+that the dimension condition for $g(X^{1})$ is verified in view of the
+fact that $\dim f(X) \geq q + 3$. If $q = 0$ we find the fact indicated
+in 8.17 a). Returning to conditions of 8.18 we see that condition
+a) relative to an $x \in T$ is satisfied provided x is not ``conical at
+x relative to f'' in an obvious sense. Maybe it will be better to
+introduce these latest \uline{Bertinisque} developments in the next
+section... change of projective immersion.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 63 (PDF page 64).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/63}
+\mspage{63}
+
+\uline{Section 9}
+
+\uline{Change of Projective Embedding}
+
+\uline{9.1}
+
+For every integer $n > 0$ let $P(n) = P(\mathrm{Sym}^{n}\ (E))$, we have an
+evident immersion $u_{n}\colon P \to P(n)$, since $O\ P(n)$ is generated by its
+sections over every open affine of $S$ and that $P_{*}(O_{p}(n))\ \underline{\mathrm{Sym}}^{n}(\underline{E})^{*}$
+(???) where $p\colon P \to S$ is the projection.  If $f\colon X \to P$ is an
+unramified morphism (resp. an immersion) it is the same with $u_{n}f\colon X$
+$\to P(n)$.  There is sometimes an advantage in the study of $X$ in
+replacing $f$ by $u_{n}f$ in order to avoid a very special behavior and
+sometimes embarrassing f \ \ a certains regards.  (An example of
+such peculiarity is the one indicated (\uline{sic}) in 8.12 b), where $\underline{Y}^{\mathrm{sing}}$
+$\to P^{v}$ has an image of dimension $r - 1$ but gives rise to an
+inseparable extension of fields.  Another one is that given by the
+quadric surfaces in $P^{3}$ to know that all the singular hyperplane
+sections are geometrically reducible.  (in spite of the fact that
+$X$ is geometrically irreducible.)
+
+\uline{Proposition 9.2}
+
+We suppose $S = \mathrm{Spec}(k)$, $X$ smooth over $k$, and $f\colon X \to P$
+unramified.  Let $n \geq 2$ and let us consider $f_{n} = u_{n}f$.  Then $f_{n}\colon X \to$
+$P(n)$ satisfies the equivalent conditions of 8.8, in particular for
+$\xi \in P(n)$ in the complement of a set of codimension $\geq 2$, the
+corresponding hyperplane section $Y_{\xi}$ is smooth \uline{or (admits)} only a
+finite number of non-smooth points which are geometrically
+
+\margin{* illegible}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 64 (PDF page 65).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/64}
+\mspage{64}
+
+ordinary singularities.  If $f$ is an immersion there is at most one
+such singular point and it is rational over $k(\xi)$.
+
+N.B. One would have to announce 8.8 in a manner such as not
+to exclude the case where $f$ is not an immersion.  The verification
+is essentially trivial under the condition (ii bis) of 8.8.
+Without a doubt we should make explicit in 9.1 that the hyperplane
+sections of $X$ relative to $f_n$ are nothing else the sections of $X$
+relative to $f_n$ are nothing else but the ``sections'' of $X$ by
+hypersurfaces of degree $n$ in place of hyperplanes.
+
+\uline{Proposition 9.3}
+
+Suppose that $X$ is geometrically irreducible and $\dim f(X) \geq 2$,
+let $x \in X(k)$ let $n \geq 2$ .
+
+a) Let us consider the linear family of hyperplane sections
+of $X$ relative to $f_n =u_nf$ \uline{which pass through} $x$, its generic element
+defines a $Y_\xi{}^{(n)}$ which is geometrically irreducible.
+
+b) Let $L$ be a linear subvariety of $P$ passing through $f(x)$ and
+not containing $f(X)$.  Let us consider the linear family of
+hyperplane sections of $X$ relative to $f_n$ defined by the hyperplanes
+of $P(n)$ ``tangent to $L$ at $x$'' (i.e. defined by the $n$-forms over $P$
+which over $L$ are zero of order at least two at $x$) , its generic
+member is a $Y_\xi{}^{(n)}$ which is geometrically irreducible.
+
+c) Let us suppose that $X$ is smooth at $x$ and that $n \geq 3$ where
+$f(X)$ is not contained in a plane defined over $k$.  Let us consider
+the family of hyperplane sections $Y^{(n)}$ of $X$ relative to $f_n$ which
+are ``tangent to $X$ at $x$''.  Then the generic member of the latter
+defines a $Y_\xi{}^{n)}$ that is geometrically irreducible.
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 65 (PDF page 66).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/65}
+\mspage{65}
+
+The proof is essentially trivial in terms of the criteria of
+the end of the previous section. Taking an affine model of $P$
+containing $f(X)$ we are reduced a) to finding 3 polynomials in the
+coordinates $T_1$, $T_2$,....., $T_s$ of degree $\leq 2$, let them be $P$, $Q$, and $R$
+such that $Q(t)/P(t)$ and $R(t)/P(t)$ are algebraically independent
+over $k$ in $K$ (where $K$ is the function field of $X$ and $t = (t_1$,....,
+$t_r)$ is the system of elements of $K$ defined by the $T_i$); in b) we
+require also that $P$, $Q$, and $R$ should vanish to order two at least
+on $L$ which we can in addition suppose to be defined by the
+equations $T_1$,...., $T_s = 0$; finally in c) it is the same but $L$ is
+the image of the tangent space to $X$ at $x$ and we allow possibly to
+take $P$, $Q$, and $R$ of degree 3 i.e. move margin, the hypothesis that
+dim $f(X) \geq 2$ signifies that the transcendence degree of $K(t_1$,
+$t_2$,...., $t_r)$ over $k$ is $\geq 2$ i.e. we can find $t_1$, $t_2$ let us say
+algebraically independent. In a) we take therefore $P = T_1$, $Q =$
+$T_1{}^2$, $R = T_1T_2$, in b) we (analogously) do the same noting that, we
+may there choose $t_1$ leading to $T_1$ zero over $L$ due to the fact that
+$f(X)$ C $L$ (which implies that there exists an index $i$ between one
+and $s$ such that $t_s \neq 0$, so that $t_s$ is not a constant (since $t_s$ is
+zero at $x$) therefore $t_s$ is not algebraic over $k$ (\uline{???}) (N.B. we may
+suppose $k$ algebraically closed). The case c) follows from b)
+except in the case where $f(X)$ is contained in the image of $L$ by $f$
+of the tangent space to $X$ at $x$\ \ \ . [If dim $X = 2$ this case is
+effectively exceptional (the trace of a quadric surface tangent to
+a plane on that plane is in general formed by two intersecting
+lines and is therefore not irreducible]. But to treat that case,
+in the forms $P$, $Q$, and $R$ made explicit above we may replace
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 66 (PDF page 67).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/66}
+\mspage{66}
+
+evidently X by L itself, where the solution is trivial.  (If dim L
+= 2 take P = $T_r{}^2$, Q = $T_r{}^3$, R = $T_r{}^2T_{r-1}$ and note that Q/R = $T_r$ and R/P
+= $T_{r-1}$ are linear forms independent over L.  Therefore
+algebraically independent.  If dim L $\geq$ 3 then $T_{r-2}$, $T_{r-1}$, $T_r$
+linearly independent over L and we take
+\[ \underline{P} = {T^2}_r, \ Q = {T^2}_{r-1}, \ R = {T^2}_{r-2} \]
+Conjugating with 8.18 we find a
+
+\uline{Corollary 9.4}
+
+Finally we must combine the latter with 9.2 in order to find
+a recapitulating theorem in the ``excellent case.''
+
+\uline{Theorem 9.5}  (illegible page 52) or 55.*
+
+(If X is smooth and proper and geometrically integral over k and
+f:X $\rightarrow$ P is unramified X of dimension $\geq$ 2.  (Ask Grothendieck).
+
+\uline{Section 10}
+
+\uline{10.0  Pencils of hyperplane sections and fibrations of blown up}
+\uline{varieties.10.1}
+
+Let Z be the P-exceptional set in $P^{v}$ relative to a
+constructible property P such that Z is a constructible part of $P^{v}$.
+Let us suppose S=Spec(k).  We see (cf. No. 12 where we catch up
+with things which should have come in without a doubt in (previous
+No.'s) that in order to have codim (Z, $P^{v}$) $\geq$ 2 it is necessary and
+sufficient that ``every sufficiently general line'' L in P should
+
+\margin{* Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 67 (PDF page 68).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/67}
+\mspage{67}
+
+not meet Z or also again Z and it suffices that there should exist
+one (a single) L in P not meeting k (\uline{Z AG's error P.B.})*. If k is
+infinite it is necessary and sufficient that there should exist a
+single straight line L in P that does not meet Z. We call a
+``linear pencil of hyperplane sections of x'' defined by the
+straight line L in P the L prescheme $Y_L$ (definition valid for any
+S). Then the previous reflections together with results of No's.
+8 and 9 give us criteria for the existence of such pencils having
+the fibers $\underline{Y}_\xi$ ($\xi \in L$) all satisfying the property P first of all in
+the case where S is an infinite base field. Taking into account
+8.2, if for every associated prime cycle on X we have dim f(T) $> 0$
+we can (by taking the property $P^1 = P$ + condition of regularity for
+$\phi_\xi$) require that the pencil $Y_L$ should be flat over L. In the case
+where S is arbitrary we can again often proceeding by the
+procedure of 7.1 construct such a pencil over an open neighborhood
+of a given point s of S in view of the fact that k(s) is infinite
+and we should know that Z is closed (which is assured in diverse
+cases by the results of Par. 5 and the assumption that $X \to S$ is
+proper). To do it right it would be convenient after general
+explanation of this type to give recapitulating statements where
+we effectively apply the preceding results for a certain number of
+properties of this nature (and also comprising module properties).
+As a minimum in this sense we must give here the reformulation of
+9.5 in terms of linear pencils - a fact constantly used in
+geometric applications.
+
+\margin{* Ask A.G.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 68 (PDF page 69).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/68}
+\mspage{68}
+
+\uline{10.2}
+
+By a polarity, to a straight line L in $P^{\vee}$ there corresponds a
+linear subvariety $L^{\circ}$ of codim 2 in P (S arbitrary).  Let us put T =
+$X \times_{P} L^{\circ}$.  Another way to describe T is as follows; L is defined by
+a locally free quotient of rank 2 of $\underline{E}^{\vee}$ or what is the same by a
+submodule, locally a direct factor, $\underline{F}$ of $\underline{E}$ everywhere of rank two.
+Let us consider the composed homomorphism
+\[ F_{X} \to E_{X} \to O_{X}\,(1), \]
+then T is nothing else but the scheme of zeroes of this composed
+homomorphism or what is the same it is defined by the ideal J,
+image of the corresponding homomorphism (obtained by twisting by
+$O_{X}(-1)$)
+\[ : F_{X}(-1) \to O_{X} \;. \]
+
+Let us suppose that this homomorphism is regular which means
+that if we write down locally a totally ordered basis of $F_{X}(-1)$
+then its image in $O_{X}$ forms an $O_{X}$ - regular sequence, a condition
+that does not depend on the basis chosen and that can be announced
+intrinsically also by saying that $F_{X}(-1) \otimes O_{X}/J \to J/J^{2}$ is an
+isomorphism and that $V(J) = T \to X$ is a regular immersion [NB: we
+should somewhere pull out of find out the general situation] with
+a homomorphism $G \to O_{X}$, G locally free over the prescheme X, for
+example in the section about regular immersions] we have then
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 69 (PDF page 70).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/69}
+\mspage{69}
+
+\uline{Theorem 10.2}
+
+With the above hypothesis the linear pencil $Y_L$ with the
+canonical projection $Y_L \rightarrow X$ is X isomorphic in a unique fashion to
+the blow-up of prescheme X with center T.
+
+To understand the meaning of this theorem it is convenient to
+notice at the beginning of the section that if S = Spec(k) then
+for a 'sufficiently general' straight line L in P the condition of
+regularity is verified (cf. \uline{catching up indicated in No. 1}) namely
+by 5.3.  In what follows in the construction of good linear
+pencils.  (\uline{above five lines a mystery}).*
+indicated or anticipated at the beginning of the present N°, namely
+[illegible]* 5.3.  In what follows in the construction of the
+``good'' linear pencils indicated in the beginning of the N°, we
+could require that the described pencil should satisfy the said
+condition (which is a condition of the same type but different
+from the one that consists in requiring that for every $\xi \in L$, $\phi_\xi$
+should be $X_{k(\xi)}$ - regular).  We should include the condition in
+question in the proposed recapitulating statements.
+
+On the other hand, practically 10.2 is used only in the
+situation of 9.5, which makes desirable to announce the
+reformulation of 9.5 in terms of pencils which according to 10.2,
+in order to be able to include in the statement in question also
+the isomorphism of the pencil with a blow up (i.e. to give a
+description of the situation permitting a suitable reference).  We
+obtain thus a way for every projective smooth geometrically
+connected X of dim $\geq 2$ over an infinite field k, to find a closed
+smooth subscheme non-empty of codimension two at every one of its
+
+\margin{* Ask AG}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 70 (PDF page 71).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/70}
+\mspage{70}
+
+points such that the blown up scheme admits a fibration over $\underline{P}^1$,
+with all the fibers are geometrically integral and such that all
+the fibers are smooth except at most a finite number, the latter
+having at most a geometrically singular point and such a point
+being rational over k and geometrically an ordinary singularity.
+
+This explains the importance of a deep study just [58]
+started at the present time) of such fibrations with singular
+fibers, to reduce in a certain measure (to some extent) the study
+of projective smooth varieties of dimension d to those of
+(families depending on one parameter) of projective varieties of
+dimension (d - 1) that may have ordinary singularities.
+
+The statement 10.2 is a more or less immediate consequence of
+the following which is completely independent of the story of
+hyperplane sections and would be without a doubt better in its
+place in a ${}^{\mathrm{V}}$N$^{\circ}$ added ``regular immersions.''*
+Proposition 10.3 is crossed out.  Ask AG if that is his
+intention.*
+
+\uline{Corollary 10.4} (of 10.2)
+
+Let X be a smooth curve geometrically connected in a
+projective space P over an infinite field k and let n $\geq$ 2.  Then
+there exists a linear pencil of n- forms over P defining a
+morphism X $\to$ P$^1$ having the following property:  the morphism is
+generically étale of degree d and for every geometric point s of
+P$^1$, X$_s$ is étale over the algebraically closed field k$'$ = k(s) \uline{or} it
+is k$'$ isomorphic to the sum of d - 2 schemes Spec k$'$ and the scheme
+
+\margin{* Ask Grothendieck}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 71 (PDF page 72).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/71}
+\mspage{71}
+
+$I_k{}' = \mathrm{Spec}\ k'[t]/_{(t^2)}$.  In the language of the forefathers:  there
+is at most one point of ramification and it is ``quadratic.''
+
+\uline{Section 11}
+
+\uline{Grassmanians}
+
+Since we will now use linear subvarieties of P not only of
+relative dimension 0 and n - 1 it is clear that we shall need some
+notions about grassmanians and some ['\uline{sorites}']** (facts) of the
+nature of 'elementary geometry' about the constructions concerning
+linear varieties which should all come at the begining of the
+paragraph.  In addition \uline{one takes in practice sometimes} any linear
+sections and not only hyperplane sections and it is proper to
+review (revisit) in this enlarged spirit all the previous No's.
+
+Let E be a quasi-coherent module over the prescheme (\uline{X or S})
+and let n be an integer > 0.  Let us consider the functor $(\mathrm{Sch})^{\circ}/_S$
+$\rightarrow$ (Ens) defined by $\underline{\mathrm{Grass}}_n\ (E)\ (S^1)$ = set of quotient modules,
+locally free and of rank n of $E_S{}^1$.
+
+This functor is representable and the prescheme over S which
+represents it will also be denoted $\underline{\mathrm{Grass}}_n\ (E)$.  To prove the
+representability consider the natural homorphism of functors
+\[ \underline{\mathrm{Grass}}_n\ (E) \rightarrow \underline{\mathrm{Grass}}_1\ (nE) = P(nE) \]
+defined by associating with every locally free quotient of rank n,
+G of $E_S{}^1$ the locally free module of rank one G considered as a
+quotient of $E_S{}'$.  We prove as in \uline{Seminaire Cartan} that this
+morphism is ``representable by a closed immersion'' (\uline{for closed}
+\uline{immersions}) such that $\underline{\mathrm{Grass}}_n\ (E)$ appears as a closed subscheme of
+P(nE); in particular it is separated over S and quasi-compact over
+
+\margin{** what is best translation of this word?}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 72 (PDF page 73).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/72}
+\mspage{72}
+
+S and if E is of finite type it is projective over S.  If E is of
+finite presentation then that is also the case for $\underline{Grass}_n(E)$.
+Indeed we may suppose that S is affine S = Spec(A) so that E comes
+from a module of finite type over a subring of finite type of A -
+since the formation of $\underline{Grass}_n(E)$ is evidently compatible with base
+change over S.
+
+Since E is locally free therefore $\underline{Grass}_n(E)$ is smooth over S
+with geometrically connected fibers.  This comes from a more
+precise fact:  If E is free of rank r then $\underline{Grass}_n(E)$ may be
+recovered from $\binom{\hand{$r$}}{n}$ open subsets each one of which is S isomorphic
+to affine space of relative dimension n(r-n) over S.  This
+decomposition corresponds to the choice, thanks to the base of E
+to $\binom{\hand{$r$}}{n}$ decompositions of E by exact sequences (s) $0 \to E' \to E \to$
+$E'' \to 0$ with E' locally free of rank n.  Such an exact sequence
+allows us to define a sub-functor.  $\underline{Grass}_n(s)$ of $Grass_n(\underline{E})$ by
+limiting ourselves to quotients $\underline{G}$ of $E_S{}'$ locally free of rank n,
+such that the composed homomorphism $\underline{E}'_S{}' \to \underline{E}_S{}' \to \underline{G}$ should be
+surjective (therefore bijective).  But the inclusion $\underline{Grass}_n(S) \to$
+$\underline{Grass}_n(E)$ is representable by open immersion and on the other hand
+$\underline{Grass}_n(E)$ is representable by open immersion and on the other hand
+$\underline{Grass}_n(S)$ is canonically isomorphic to the fiber bundle $V(\underline{Hom}_{O_S}$
+$(\underline{E}', \underline{E}''))$.
+
+As a result for example of this particular structure we may
+mention that if $s \in S$, then ($\underline{E}$ being locally free of finite rank)
+every point of $\underline{Grass}_n(\underline{E})$ with values in k(s) lifts to a section
+over a neighborhood of s.  On the other hand if S = Spec(k), k an
+infinite field, then every open non-empty subset of $\underline{Grass}_n(E)$
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 73 (PDF page 74).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/73}
+\mspage{73}
+
+contains a k-rational point.  A point of $\underline{\mathrm{Grass}}_{n}(E)$ with values in S
+i.e. a locally free quotient module G of rank n of E canonically
+defines a subscheme of P(E), (i.e., to say) P(G).  Such a
+subscheme (but without \uline{imposing} the rank of G) is called a \uline{linear}
+\uline{subvariety} of P(E) (relative to S if there is a possibility of
+confusion).  It is therefore a projective fibration of relative
+dimension (n-1) if $n \geq 1$, (and empty is $n = 0$).  We immediately
+verify that the section of $\underline{\mathrm{Grass}}_{n}(E)$ i.e. G is known if we know the
+linear subvariety corresponding to P(E).  In this manner the
+grassmanian can be interpreted as representing the functor
+(``linear subvarieties of relative dimension n - 1 of $\underline{P}_{S}{}^{1}$ '') for $S^{1}$
+variable $n \geq 1$.  It is furthermore possible to give an intrinsic
+characterization of the latter functor i.e. of the notion of
+linear subvariety of relative dimension m and that are of
+``projective degree one'' at every $s \in S$; this characterization will
+be given in a later chapter and we shall not need it at all here.
+
+Let us again suppose that E is locally free of rank r, let $E^{\vee}$
+be its dual.  Then by a polarity we find a canonical isomophism
+$\underline{\mathrm{Grass}}_{n}(E) \simeq \underline{\mathrm{Grass}}_{r-n}(E^{\vee})$ that assigns to a quotient $\underline{G}$ of $\underline{E}$ the
+quotient $\underline{E}^{\vee}/\underline{G}^{\vee}$ of $\underline{E}^{\vee}$.  From the point of view of linear varieties
+to a linear variety L of relative dimension m of P there
+corresponds the linear dual variety $L^{\circ}$ of relative dimension (r-1)
+- 1 - m of $P^{\vee}$ i.e. of relative codimension (m+1) in $P^{\vee}$.  (N.B. (r-%
+1) is here the relative common dimension of P and $P^{\vee}$ over S), which
+we may visualize geometrically \uline{as follows}.  Let us first of all
+take $n = r - 1$, we find an isomorphism $\underline{P}(E^{\vee}) \simeq \underline{\mathrm{Grass}}_{r-1}(\underline{E})$ that
+allows us to identify the points of $P^{\vee}$ with values in S (let us
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 74 (PDF page 75).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/74}
+\mspage{74}
+
+say) as linear subvarieties of codim 1 of P.  (called \uline{again}
+\uline{hyperplanes} of P).
+
+This says that $L^0$ consists of hyperplanes which \uline{contain} the
+linear subvariety L of P [by which of course we mean] that the
+points of L with values in $S^1$ are the hyperplanes in $P_S{}^1$ that
+contain $L_S{}^1$).  This follows from the fact that should have occured
+at the same time as the fact that a linear subvariety L of $\underline{P}$
+determines a locally free quotient G or Q [illegible] of E from
+which it results that if G and $G^1$ are two locally free quotients of
+E (not necessarily of the same rank) then $\underline{P}(G^1)$ C $\underline{P}(G)$ in so far as
+the linear subvarieties of $\underline{P}(E)$, $G^1$ is majorized by G (and the
+inclusion $\underline{P}(G^1) \rightarrow \underline{P}(G)$ is nothing else but the deduced morphism G
+$\rightarrow G^1$).
+
+Here is a minimum of the [sorites Fr]* which we must have at
+our disposal.  The complete list cannot in any case be fixed (only
+when) until the sets of other N$^{o1}$s of the present paragraph are
+written up.
+
+It seems to me convenient [commode Fr] to introduce also the
+functor Grass (E) ($S^1$) = set of quotient modules locally free (of
+rank not specified) of $E_S1$ [illegible ask AG]
+then \uline{Grass} (E) is representable by n $\geq$ 0 $\mathrm{Grass}_n$(E).  The linear
+subvarieties of $\underline{P}$(E) are indeed defined by sections of Grass (E)
+over S [NB:  the rank i.e. the relative dimension may vary if S is
+not connected.  [slightly illegible confirm with AG].
+
+\margin{* Ask AG or Deligne about the best word.}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 75 (PDF page 76).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/75}
+% NOTE: this side of the sheet has no typed text of its own. The typed text visible on the scan is show-through, in mirror image, from the reverse of the sheet: a French text ("fondation d'un mouvement international ... ``Survivre'' ...") followed by a list of references ("Espaces Vectoriels Topologiques", ``Topologie et algèbre homologique'', ``Géométrie analytique''). It is not transcribed here.
+% NOTE: the sheet is torn at the top-left corner, along the right edge and at the lower right.
+\hand{\unsure{Idem} cf \unsure{aussi} Groth. pour avoir plusieurs}
+\hand{activités \inserted{\uline{importantes}} à la fois, une mathématique,}
+\hand{une autre non math. mais valable.}
+
+\mspage{\hand{75}}
+
+\clearpage
+% EGA V, English translation by P. Blass, 1987 (cote 24): archive cote 24, site page 76 (PDF page 77).
+% typescript. Draft compared: none.
+% AI-transcribed by Claude Opus 5.5 (claude-opus-5-5, adaptive thinking, effort high), Message Batches API, batch ega24b (msgbatch_01RGJJeHdR96U16ZWFuUjtDx), 2026-11-13; not yet checked by eye.
+\scanpage{24/76}
+\mspage{-3-}
+
+fondation d'un mouvement international et interprofessionnel
+``Survivre'', et à consacrer aux questions liées à la survie une
+part importante de mon énergie. Dans cette optique, la seule va-%
+\margin{(}leur de mon apport comme mathématicien est de me permettre aujourd'
+hui, grâce à l'estime professionnelle et personnelle acquise parmi
+mes collègues, de donner plus de force à mon témoignage et à mon
+action en faveur d'une stricte subordination de toutes nos acti-%
+vités, y compris nos activités de scientifiques, aux impératifs
+\margin{(}de la survie, et à la promotion d'un ordre stable et humain sur
+notre planète, sans lequel la survie de notre espèce ne serait
+ni possible, ni désirable.
+
+A. GROTHENDIECK.
+
+PRINCIPALES PUBLICATIONS
+------------------------
+
+\uline{Espaces Vectoriels Topologiques}
+
+[1] Critères de compacité dans les espaces fonctionnels géné-%
+raux, Amer. J. 74 (1952), p. 168-186.
+
+[2] Sur certains espaces de fonctions holomorphes, J. Crelle
+192 (1953), p. 35-64 et 77-95.
+
+[3] Espaces Vectoriels Topologiques, Notes polyc., Sa\~o Paulo
+(1954), 240 p.
+
+[4] Sur les espaces (F) et (DF), Summa Bras. 3 (1954),
+p. 57-123.
+
+[5] Produits tensoriels topologiques et espaces nucléaires,
+Mem. AMS, n° 16 (1955), 329 p.
+
+[6] Résumé de la théorie métrique des produits tensoriels
+topologiques, Bull. Sa\~o Paulo 8 (1953), p. 1-79.
+
+[7] La théorie de Fredholm, Bull. SMF, 84 (1956), p. 319-384.
+
+\uline{Topologie et algèbre homologique}
+
+[8] Sur quelques points d'algèbre homologique, Tohoku M.J.,
+9 (1957), p. 119-221.
+
+[9] Théorèmes de finitude pour la cohomologie des fasceaux,
+Bull. SMF, 84 (1956), p. 1-7.
+
+\uline{Géométrie analytique}
+
+[10] Sur la classification des fibrés holomorphes sur la
+sphère de Riemann, Amer. J., 79 (1957), p. 121-138.
+
+[11] Techniques de construction en géométrie analytique,
+Sem. H. Cartan, 13 (1960/61), exposés 7 à 17.
+
+...
+
+\margin{76}
+
+\end{document}
