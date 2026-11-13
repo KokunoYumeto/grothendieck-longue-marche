@@ -1,0 +1,332 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm,marginparwidth=20mm,marginparsep=10pt]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{unicode-math}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx,xcolor,tikz,tikz-cd}
+\usetikzlibrary{calc,decorations.pathmorphing,decorations.pathreplacing,arrows.meta,shapes.geometric}
+\newcommand{\scanpage}[1]{\par\medskip\noindent{\footnotesize\textcolor{gray}{[scan #1]}}\par}
+\newcommand{\mspage}[1]{{\footnotesize\textcolor{gray}{[p.~#1]}}\ }
+\newcommand{\unsure}[1]{{\color{blue}#1}}
+\newcommand{\illegible}[1]{\textcolor{red}{[illeg.~#1]}}
+\newcommand{\deleted}[1]{{\color{gray}#1}}
+\newcommand{\inserted}[1]{{\color{teal}#1}}
+\newcommand{\margin}[1]{\ifinner{\footnotesize[#1]}\else\marginpar{\footnotesize #1}\fi}
+\newcommand{\diagram}[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\fi\fi}
+\let\figure\relax\newcommand{\figure}[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\fi\fi}
+
+\setmathfont{Latin Modern Math}
+\usepackage{newunicodechar}
+\newfontfamily\cyrfont{DejaVu Serif}[Scale=MatchLowercase]
+\let\oldGamma\Gamma\renewcommand\Gamma{\ensuremath{\oldGamma}}
+\let\oldsimeq\simeq\renewcommand\simeq{\ensuremath{\oldsimeq}}
+\renewcommand\margin[1]{\parbox{120pt}{\footnotesize #1}}
+\setbox0=\hbox{test}
+\newunicodechar{А}{{\cyrfont\char"0410}}
+\newunicodechar{Б}{{\cyrfont\char"0411}}
+\newunicodechar{В}{{\cyrfont\char"0412}}
+\newunicodechar{Г}{{\cyrfont\char"0413}}
+\newunicodechar{Д}{{\cyrfont\char"0414}}
+\newunicodechar{Е}{{\cyrfont\char"0415}}
+\newunicodechar{Ж}{{\cyrfont\char"0416}}
+\newunicodechar{З}{{\cyrfont\char"0417}}
+\newunicodechar{И}{{\cyrfont\char"0418}}
+\newunicodechar{Й}{{\cyrfont\char"0419}}
+\newunicodechar{К}{{\cyrfont\char"041A}}
+\newunicodechar{Л}{{\cyrfont\char"041B}}
+\newunicodechar{М}{{\cyrfont\char"041C}}
+\newunicodechar{Н}{{\cyrfont\char"041D}}
+\newunicodechar{О}{{\cyrfont\char"041E}}
+\newunicodechar{П}{{\cyrfont\char"041F}}
+\newunicodechar{Р}{{\cyrfont\char"0420}}
+\newunicodechar{С}{{\cyrfont\char"0421}}
+\newunicodechar{Т}{{\cyrfont\char"0422}}
+\newunicodechar{У}{{\cyrfont\char"0423}}
+\newunicodechar{Ф}{{\cyrfont\char"0424}}
+\newunicodechar{Х}{{\cyrfont\char"0425}}
+\newunicodechar{Ц}{{\cyrfont\char"0426}}
+\newunicodechar{Ч}{{\cyrfont\char"0427}}
+\newunicodechar{Ш}{{\cyrfont\char"0428}}
+\newunicodechar{Щ}{{\cyrfont\char"0429}}
+\newunicodechar{Ъ}{{\cyrfont\char"042A}}
+\newunicodechar{Ы}{{\cyrfont\char"042B}}
+\newunicodechar{Ь}{{\cyrfont\char"042C}}
+\newunicodechar{Э}{{\cyrfont\char"042D}}
+\newunicodechar{Ю}{{\cyrfont\char"042E}}
+\newunicodechar{Я}{{\cyrfont\char"042F}}
+\newunicodechar{а}{{\cyrfont\char"0430}}
+\newunicodechar{б}{{\cyrfont\char"0431}}
+\newunicodechar{в}{{\cyrfont\char"0432}}
+\newunicodechar{г}{{\cyrfont\char"0433}}
+\newunicodechar{д}{{\cyrfont\char"0434}}
+\newunicodechar{е}{{\cyrfont\char"0435}}
+\newunicodechar{ж}{{\cyrfont\char"0436}}
+\newunicodechar{з}{{\cyrfont\char"0437}}
+\newunicodechar{и}{{\cyrfont\char"0438}}
+\newunicodechar{й}{{\cyrfont\char"0439}}
+\newunicodechar{к}{{\cyrfont\char"043A}}
+\newunicodechar{л}{{\cyrfont\char"043B}}
+\newunicodechar{м}{{\cyrfont\char"043C}}
+\newunicodechar{н}{{\cyrfont\char"043D}}
+\newunicodechar{о}{{\cyrfont\char"043E}}
+\newunicodechar{п}{{\cyrfont\char"043F}}
+\newunicodechar{р}{{\cyrfont\char"0440}}
+\newunicodechar{с}{{\cyrfont\char"0441}}
+\newunicodechar{т}{{\cyrfont\char"0442}}
+\newunicodechar{у}{{\cyrfont\char"0443}}
+\newunicodechar{ф}{{\cyrfont\char"0444}}
+\newunicodechar{х}{{\cyrfont\char"0445}}
+\newunicodechar{ц}{{\cyrfont\char"0446}}
+\newunicodechar{ч}{{\cyrfont\char"0447}}
+\newunicodechar{ш}{{\cyrfont\char"0448}}
+\newunicodechar{щ}{{\cyrfont\char"0449}}
+\newunicodechar{ъ}{{\cyrfont\char"044A}}
+\newunicodechar{ы}{{\cyrfont\char"044B}}
+\newunicodechar{ь}{{\cyrfont\char"044C}}
+\newunicodechar{э}{{\cyrfont\char"044D}}
+\newunicodechar{ю}{{\cyrfont\char"044E}}
+\newunicodechar{я}{{\cyrfont\char"044F}}
+\begin{document}
+\typeout{LMSTART 1}
+\setbox0=\hbox\bgroup
+\begin{tikzcd}[ampersand replacement=\&,column sep=1.2em,row sep=1.7em,column sep=6pt,row sep=12pt,execute at begin picture={\fontsize{8.5}{10.5}\selectfont}]
+\Pi_{0,3}^{D} \arrow[r] \arrow[ddrr]
+\& \Pi_{0,3}^{D}/\uline{\Pi'_{0,3}} \arrow[r,"\sim"]
+\& \overbrace{\mathbb Z/6\mathbb Z\times_{\mathbb Z/2\mathbb Z}\mathbb D_3}^{18}
+  \arrow[rr,"{\simeq(\mathbb F_3\times\mathbb F_3)\unsure{\rtimes|\cdot}\{1,\sigma\}}"]
+  \arrow[dd]
+\& \& \mathbb Z/6\mathbb Z \arrow[r]
+\& \mathbb Z/2\mathbb Z
+\\
+\mathrm S\ell(2,\mathbb Z) \arrow[u] \arrow[rrr]
+  \arrow[ddrrr]
+\& \begin{gathered}\text{subgroup}\\
+   \text{of index }3\text{ in }\Pi_{0,3}\\
+   \text{obtained by}\\
+   \text{setting }\rho_0=\unsure{\rho_1}(=\rho_\infty)\\
+   \rho_0^3=1\end{gathered}
+\& \& \begin{gathered}\deleted{\unsure{\mathrm S\ell(2,\mathbb Z)/\varepsilon}}\quad\mathcal E^{36}\\
+\simeq\mathrm S\ell(2,\mathbb Z/6\mathbb Z)/\bigl(\text{subgroup of order }2\bigr)\\
+\text{to be determined}\end{gathered}
+\arrow[ul] \arrow[dd] \arrow[r]
+\& \deleted{\unsure{\mathbb Z/2\mathbb Z}}\ \mathbb Z/12\mathbb Z
+  \arrow[u] \arrow[ur] \arrow[r,no head]
+\& \mathbb Z/4\mathbb Z \arrow[u]
+\\
+\& \widetilde{\mathrm S\ell}(2,\mathbb Z) \arrow[ul] \arrow[rrrr]
+\& {}^{6}\mathbb D_3 \arrow[ur,no head]
+\& \& \& \mathbb Z \arrow[ul,bend left=16]
+\\
+\& \& \& \underset{12}{\mathbb D'_3\ \unsure{\sim}}
+  \arrow[ul] \arrow[uurr]
+\& \&
+% five squares carry the word Cart (cartesien) written inside them, not on an arrow
+\arrow[from=2-2,to=1-3,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-4,to=1-5,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-5,to=1-6,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-4,to=3-3,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-2,to=3-3,phantom,"\mathrm{Cart}"{description}]
+\end{tikzcd}
+\egroup
+\typeout{LMWIDTH 1 \the\wd0 HEIGHT \the\ht0 DEPTH \the\dp0}
+\typeout{LMSTART 2}
+\setbox0=\hbox\bgroup
+\begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep=2em,column sep=6pt,row sep=12pt,execute at begin picture={\fontsize{8.5}{10.5}\selectfont}]
+\begin{gathered}
+\Pi_{0,3}^{D}/\Pi'_{0,3}\simeq
+\{\rho,\sigma\mid\rho^3=\sigma^2=(\sigma\rho)^6=1,\
+(\sigma\rho)^2\deleted{\text{central}}\inserted{=(\rho\sigma)^2}\}
+\qquad18
+\end{gathered}
+\arrow[d,"{\substack{\rho\mapsto4\ \mathrm{mod}\ 6\\\sigma\mapsto3\ \mathrm{mod}\ 6}}"]
+\arrow[dr,"{\substack{\rho\mapsto\rho\\\sigma\mapsto\sigma}}"]
+\& \\
+\mathbb Z/6\mathbb Z
+\& \begin{gathered}\mathbb D_3=\{\rho,\sigma\mid\rho^3=\sigma^{2}\deleted{\unsure{2}}=1,\
+\sigma(\rho)=\rho^{-1}\}\!\\
+\inserted{\text{i.e. }(\sigma\rho)^2=1}
+\end{gathered}
+\end{tikzcd}
+\egroup
+\typeout{LMWIDTH 2 \the\wd0 HEIGHT \the\ht0 DEPTH \the\dp0}
+\typeout{LMSTART 12}
+\setbox0=\hbox\bgroup
+\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\inserted{0=\unsure{\prod_i|\prod}\unsure{\Pi_2|\pi_2}(\operatorname{Aut}^+(C_i))}
+\arrow[r] \&
+\unsure{\Pi_1|\pi_1}(SA_{g,\nu}^{\prime0})\arrow[r] \&
+\unsure{\Pi_1|\pi_1}(A_{g,\nu}^{\prime!+})\arrow[r]\arrow[d,equal] \&
+\deleted{\unsure{\Pi_0}}\prod_i\unsure{\Pi_1|\pi_1}(\operatorname{Aut}^+(C_i))\arrow[r]\arrow[d,phantom,"\unsure{\wr}"] \&
+\unsure{\Pi_0|\pi_0}(SA_{g,\nu}^{\prime+})\arrow[r] \&
+\unsure{\Pi_0|\pi_0}(A_{g,\nu}^{\prime!+})\arrow[d,equal]\arrow[dd,bend left=28] \\
+\&\&\unsure{\Pi_1|\pi_1}(A_{g,\nu}^{\prime0})\&\unsure{T^I}\&\overset{\uparrow}{\uline{\text{to be computed}}}\&\Gamma_{g,\nu}'\\
+\&\&\&\&\&1=\prod_i\unsure{\Pi_0|\pi_0}(\operatorname{Aut}^+(C_i))
+\end{tikzcd}
+\egroup
+\typeout{LMWIDTH 12 \the\wd0 HEIGHT \the\ht0 DEPTH \the\dp0}
+\typeout{LMSTART 15}
+\setbox0=\hbox\bgroup
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large,column sep=9pt,row sep=9pt,execute at begin picture={\fontsize{9}{11}\selectfont}]
+\& \&
+\begin{gathered}
+\text{Bases of }(\pi)\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)\\
+\downarrow\\
+[\text{Bases}^{!}(\pi)\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)]
+\end{gathered}
+\arrow[dl,"\mathcal G^{+}_{g,\nu}"']\arrow[dr,"\widehat{\pi}_{g,\nu}"]
+\&\\
+\&
+\begin{gathered}
+\text{discretifications}\ \inserted{\text{oriented}}\ (\pi)\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal G^{+}_{g,\nu}\\
+\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal G^{!+}_{g,\nu}
+\end{gathered}
+\arrow[dl,"\{\pm1\}"']\arrow[dr]
+\&\&
+\begin{gathered}
+\text{Outer bases of }\pi\\
+\simeq\operatorname{Isom}\deleted{\,\mathrm{ext}}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\pi}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)\\
+\downarrow\\
+[\text{Outer bases}^{!}(\pi)\simeq\operatorname{Isom\,ext}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)]
+\end{gathered}
+\arrow[dl,"\mathcal T_{g,\nu}"]\\
+\left[\begin{gathered}\text{Discretifications }(\pi)\\\simeq\end{gathered}\right]
+\arrow[d]
+\&\&
+\begin{gathered}
+\text{prediscretifications}\ \inserted{\text{oriented}}\ \text{strict}\ (\pi)\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\unsure{\widehat{\pi}}_{g,\nu},\pi)/\mathcal G^{+}_{g,\nu}\cdot\widehat{\pi}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal T^{+}_{g,\nu})\\
+\simeq\operatorname{Isom}^{!}(\widehat{\pi}_{g,\nu},\pi)/\mathcal G^{!+}_{g,\nu}\cdot\widehat{\pi}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal T^{!+}_{g,\nu}
+\end{gathered}
+\arrow[dll,"\{\pm1\}"']\arrow[d]
+\&\\
+\left[\begin{gathered}\text{strict prediscretifications}\\\text{of }\pi\\\simeq\end{gathered}\right]
+\&\&
+\begin{gathered}
+\text{prediscretifications}\ \inserted{\text{oriented}}\ (\pi)\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal G}^{+}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal T}^{+}_{g,\nu}\\
+\deleted{\unsure{\simeq}}\quad
+\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal G}^{!+}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal T}^{!+}_{g,\nu}
+\end{gathered}
+\arrow[dll,"\{\pm1\}"']\arrow[dd,"\Gamma_{\Sigma}"',"\Gamma_{g,\nu}"]
+\&\\
+\left[\begin{gathered}\text{prediscretifications of }\pi\\\simeq\end{gathered}\right]
+\arrow[drr]
+\&\&\&\\
+\&\&
+\begin{gathered}
+\text{prearithmetizations of }\pi\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal M_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal N_{g,\nu}\\
+\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal M^{!}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal N^{!}_{g,\nu}
+\end{gathered}
+\&
+\end{tikzcd}
+\egroup
+\typeout{LMWIDTH 15 \the\wd0 HEIGHT \the\ht0 DEPTH \the\dp0}
+\typeout{LMSTART 44}
+\setbox0=\hbox\bgroup
+\begin{tikzcd}[column sep=small,row sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+ & & L_0\times SN_\rho^*\times SN_\sigma^*
+ & & & & L_0 & & & &\\
+ & & & & S_0\Gamma_{\rho,\sigma}
+ & & & & Z_{\rho,\sigma} & &\\
+L_0\times SN_\rho^*\times SN_\sigma^*\times\mathcal G^+
+ & & SN_\rho^*\times SN_\sigma^*
+ & & & & \mathrm{III}^{\unsure{+|'}}
+ & & & &\\
+ & & & S_0\mathcal M_{\rho,\sigma}
+ & \Gamma_{\rho,\sigma} & & N_\rho^*
+ & & & & \{\pm1\}\\
+ & SN_\rho^*\times SN_\sigma^*\times\mathcal G^+
+ & & & & & N_\sigma^*
+ & & \gamma_{\rho,\sigma} & & \widehat{\mathbb Z}^{*}\\
+ & & & & & \mathrm{II}
+ & \deleted{\unsure{\mathcal G^+|N_\sigma^*}}
+ & & & & \{\pm1\}\\
+ & & & \mathcal M_{\rho,\sigma}
+ & & & & & G_{\rho,\sigma} & &\\
+\mathcal G^+ & & & & & & & & & &\\
+ & & \mathcal G & & & & & & & &\\
+ & & \Vert & & & & & & & &\\
+ & & \{1,\tau'\}\mathbin{.}\mathcal G^+
+ & & & & & & & &
+\arrow[from=1-3,to=1-7,"\mathrm{pr}"]
+\arrow[from=1-3,to=2-5,hook]
+\arrow[from=1-3,to=3-3,"\mathrm{pr}"]
+\arrow[from=1-7,to=2-9,hook]
+\arrow[from=2-5,to=2-9,"\theta_Z"]
+\arrow[from=2-5,to=4-5]
+\arrow[from=2-9,to=5-9,"\delta_Z"]
+\arrow[from=3-1,to=1-3,"\mathrm{pr}"]
+\arrow[from=3-1,to=5-2,"\mathrm{pr}"']
+\arrow[from=3-1,to=4-4,hook]
+\arrow[from=3-3,to=4-5,hook]
+\arrow[from=4-4,to=2-5]
+\arrow[from=4-4,to=7-4]
+\arrow[from=4-5,to=4-7,"\theta_\rho"]
+\arrow[from=4-5,to=5-7,"\theta_\sigma"']
+\arrow[from=4-7,to=5-9,"\delta_\rho"]
+\arrow[from=5-7,to=5-9,"\delta_\sigma"]
+\arrow[from=5-2,to=3-3,"\mathrm{pr}"']
+\arrow[from=5-2,to=7-4,hook]
+\arrow[from=5-2,to=6-7,dashed,"\unsure{\mathrm{pr}}"]
+\arrow[from=6-7,to=7-9,dashed,hook]
+\arrow[from=7-4,to=4-5]
+\arrow[from=7-4,to=6-7,dotted]
+\arrow[from=7-4,to=7-9,"\theta_G"]
+\arrow[from=7-9,to=5-9,"\delta_G"']
+\arrow[from=5-9,to=4-11,
+ "{\varepsilon_{\gamma,\rho}=\varepsilon'_\gamma}"]
+\arrow[from=5-9,to=5-11,"\chi_\gamma"]
+\arrow[from=5-9,to=6-11,
+ "{\varepsilon_{\gamma,\sigma}=\varepsilon_\gamma}"']
+\arrow[from=8-1,to=5-2,hook,"\uline{\mathrm{inj}}"]
+\arrow[from=8-1,to=7-4,dashed]
+\arrow[from=8-1,to=9-3,hook]
+\arrow[from=9-3,to=7-4,hook,"i_{\mathcal G,\mathcal M}"]
+\arrow[from=9-3,to=7-9,dashed,hook,"i_{\mathcal G,G}"']
+\arrow[from=1-3,to=2-9,phantom,
+ "{\deleted{\unsure{\mathrm{IV}}}\ \mathrm{V}}" description,pos=.52]
+\arrow[from=4-7,to=5-7,phantom,"\mathrm{I}" description]
+\arrow[from=8-1,to=7-4,phantom,"\mathrm{IV}" description,pos=.5]
+\end{tikzcd}
+\egroup
+\typeout{LMWIDTH 44 \the\wd0 HEIGHT \the\ht0 DEPTH \the\dp0}
+\typeout{LMSTART 80}
+\setbox0=\hbox\bgroup
+\begin{tikzcd}[column sep=small,row sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\mathcal G_0^+&
+\Pi=\Pi[2]\arrow[l,hook',"6"']\arrow[d,equal,"\mathrm{dfn}"]&
+\Pi_0\arrow[l,hook',"2"']\arrow[d,equal]&
+\Pi_{00}\ (\supset[\Pi_0,\Pi_0])\arrow[l,hook',"3"']\arrow[d,equal]\\
+&\begin{array}{c}
+\{u\in\mathcal G_0^+\mid u\equiv1\ (2)\}\\
+\deleted{\Vert}\\
+\deleted{\unsure{\mathfrak{sl}(2,\mathbb F_2)}\simeq
+\{u\in\mathrm M_2(\mathbb F_2)\mid\mathrm{Tr}\,u=0\}}\\
+\unsure{(i)|(1)}
+\end{array}
+&\begin{array}{l}
+\text{Subgroup}\\
+\text{generated}\\
+\text{by the }-\ell_i=\lambda_i
+\end{array}
+&\begin{array}{l}
+\text{Subgroup }\uline{\text{invariant}}\\
+\text{generated by}\\
+\deleted{\text{by the }\lambda_i,}\\
+\deleted{[\lambda_0,\lambda_1]\ \text{and}}\\
+\lambda_1\lambda_0^{-1}=\ell_1\ell_0^{-1}
+\end{array}
+\end{tikzcd}
+\egroup
+\typeout{LMWIDTH 80 \the\wd0 HEIGHT \the\ht0 DEPTH \the\dp0}
+\end{document}

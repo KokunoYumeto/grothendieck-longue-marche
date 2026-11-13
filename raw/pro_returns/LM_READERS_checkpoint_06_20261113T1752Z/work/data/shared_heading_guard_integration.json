@@ -1,0 +1,83 @@
+{
+  "schema": "shared-heading-guard-integration-v1",
+  "status": "INTEGRATED",
+  "generated_at_utc": "2026-11-13T16:55:25.057778+00:00",
+  "source_readings_changed": false,
+  "visual_review_claim": false,
+  "files": [
+    {
+      "path": "work/scripts/book_preamble.tex",
+      "before_sha256": "61e15adb213f936eac59058120ccab41d0f7223afaf36c754936881df1bd0778",
+      "after_sha256": "0c59e10760f5b11eba6fe4bcd64f74a935b678abd7af93b5b295f36bb5234175",
+      "exact_inverse_pass": true,
+      "changes": [
+        {
+          "before": "\\newenvironment{LMapparatus}{\\par\\smallskip\\begingroup\\LMinApp=1\\footnotesize\\noindent\\textcolor{gray}{\\rule{.26\\linewidth}{.35pt}}\\par\\noindent\\textbf{\\LMappheading}\\par\\smallskip}{\\par\\endgroup}",
+          "after": "\\newenvironment{LMapparatus}{\\par\\smallskip\\begingroup\\LMinApp=1\\footnotesize\\Needspace{4\\baselineskip}\\csname @beginparpenalty\\endcsname=10000\\relax\\noindent\\textcolor{gray}{\\rule{.26\\linewidth}{.35pt}}\\par\\nobreak\\noindent\\textbf{\\LMappheading}\\par\\nobreak\\smallskip}{\\par\\endgroup}",
+          "candidate": "work/layout_probes/apparatus_heading_candidate.json",
+          "candidate_sha256": "eb1ae8fd7334a2229b2a003297c734c806b74d788e16bd6f661232b4dac8e7bd",
+          "validation": "work/layout_probes/apparatus_heading_validation.json",
+          "validation_sha256": "e7e497a95882284b42b840e76423252a7cc20d619aae03a51d9677d4756c64b7",
+          "validation_status": "PASS"
+        }
+      ],
+      "unified_diff": "--- work/scripts/book_preamble.tex\n+++ work/scripts/book_preamble.tex\n@@ -125,6 +125,6 @@\n \\AddToHook{env/gather*/after}{\\LMflushnotes\\LMflushpages}\n \\AddToHook{env/center/after}{\\LMflushnotes\\LMflushpages}\n \\makeatother\n-\\newenvironment{LMapparatus}{\\par\\smallskip\\begingroup\\LMinApp=1\\footnotesize\\noindent\\textcolor{gray}{\\rule{.26\\linewidth}{.35pt}}\\par\\noindent\\textbf{\\LMappheading}\\par\\smallskip}{\\par\\endgroup}\n+\\newenvironment{LMapparatus}{\\par\\smallskip\\begingroup\\LMinApp=1\\footnotesize\\Needspace{4\\baselineskip}\\csname @beginparpenalty\\endcsname=10000\\relax\\noindent\\textcolor{gray}{\\rule{.26\\linewidth}{.35pt}}\\par\\nobreak\\noindent\\textbf{\\LMappheading}\\par\\nobreak\\smallskip}{\\par\\endgroup}\n \\newcommand\\LMentry[6]{\\par\\noindent{\\color{gray}\\texttt{#1}}\\enspace\\textit{#2.}\\enspace\\textit{\\LMmanuscriptlabel:}\\enspace #3\\par\\noindent\\textit{\\LMcorrectedlabel:}\\enspace #4\\enspace\\textit{\\LMreasonlabel:}\\enspace #5\\par\\smallskip}\n \\newcommand\\LMcarryover[2]{\\par\\noindent{\\scriptsize\\color{gray}\\texttt{#1}}\\enspace #2\\par}\n"
+    },
+    {
+      "path": "work/scripts/build_readers.py",
+      "before_sha256": "9581573459d08e83e55d86ad183320225cde223a1b9190732b60580a922a68ed",
+      "after_sha256": "3eb1662e0a1d7d089cd9629d55de71d0ce901ea93d5c68d5f6ffb33c24fd1f01",
+      "exact_inverse_pass": true,
+      "changes": [
+        {
+          "before": "r'\\ifnum\\LMform<2\\subsection*{Scans '",
+          "after": "r'\\ifnum\\LMform<2\\Needspace{11\\baselineskip}\\subsection*{Scans '",
+          "candidate": "work/layout_probes/range_heading_candidate.json",
+          "candidate_sha256": "0ba30f32ad51b21e14efe103b07d71242dc81316710701931740ddd8b9437767",
+          "validation": "work/layout_probes/range_heading_validation.json",
+          "validation_sha256": "f331406624c688a1c227f0166201409c38a3ad04726e029144cf51e2b3826e3e",
+          "validation_status": "PASS"
+        },
+        {
+          "before": "reservation=re.search(r'(\\\\Needspace\\{6\\\\baselineskip\\})\\s*$',scan_text)",
+          "after": "reservation=re.search(r'(\\\\Needspace\\{(?:6|18)\\\\baselineskip\\})\\s*$',scan_text)",
+          "candidate": "work/layout_probes/section495_candidate.json",
+          "candidate_sha256": "36f2c3d9229ef2b8ec2bb5f104b36dba0560682ec317145f6db6bc6751d20c77",
+          "validation": "work/layout_probes/section495_validation.json",
+          "validation_sha256": "9e7ef5a786e2239f8fe1d19c875bb013665e73ed805c5cf317413c51bfea658e",
+          "validation_status": "PASS"
+        }
+      ],
+      "unified_diff": "--- work/scripts/build_readers.py\n+++ work/scripts/build_readers.py\n@@ -133,7 +133,7 @@\n   allentries+=entries;provenance.append(prov);metas.append(meta)\n   if cote!=row['cote']:\n    cote=row['cote'];pieces += [r'\\clearpage\\LMcote{'+cote+'}',r'\\section*{Cote '+cote+r'}\\addcontentsline{toc}{section}{Cote '+cote+'}']\n-  pieces += ['% BEGIN PACKAGE '+pkg,r'\\ifnum\\LMform<2\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']\n+  pieces += ['% BEGIN PACKAGE '+pkg,r'\\ifnum\\LMform<2\\Needspace{11\\baselineskip}\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']\n   ms=list(re.finditer(r'\\\\scanpage\\{(\\d+)\\}',ann))\n   if ms and ms[0].start():pieces.append(ann[:ms[0].start()])\n   for i,m in enumerate(ms):\n@@ -143,7 +143,7 @@\n    # This recorded source-local reservation belongs immediately before scan\n    # 495, after any generated apparatus or residual-doubt block for scan494.\n    if pkg=='LM_C3-492-510' and int(m[1])==494 and stage!='baseline':\n-    reservation=re.search(r'(\\\\Needspace\\{6\\\\baselineskip\\})\\s*$',scan_text)\n+    reservation=re.search(r'(\\\\Needspace\\{(?:6|18)\\\\baselineskip\\})\\s*$',scan_text)\n     if reservation:\n      deferred_spacing=reservation.group(1)\n      scan_text=scan_text[:reservation.start()].rstrip()\n"
+    },
+    {
+      "path": "work/scripts/verify_sources.py",
+      "before_sha256": "26c0ba4bcdec6143e1fd2516f3289c6350fd0212ecab6d5c47c742b2c3f1f7c6",
+      "after_sha256": "ad9b613d5dc062ff91d2f2396d50e7d45c41f1293d0a18945c5522b819b964ca",
+      "exact_inverse_pass": true,
+      "changes": [
+        {
+          "before": "r'\\ifnum\\LMform<2\\subsection*{Scans '",
+          "after": "r'\\ifnum\\LMform<2\\Needspace{11\\baselineskip}\\subsection*{Scans '",
+          "candidate": "work/layout_probes/range_heading_candidate.json",
+          "candidate_sha256": "0ba30f32ad51b21e14efe103b07d71242dc81316710701931740ddd8b9437767",
+          "validation": "work/layout_probes/range_heading_validation.json",
+          "validation_sha256": "f331406624c688a1c227f0166201409c38a3ad04726e029144cf51e2b3826e3e",
+          "validation_status": "PASS"
+        },
+        {
+          "before": "reservation=re.search(r'(\\\\Needspace\\{6\\\\baselineskip\\})\\s*$',scan_text)",
+          "after": "reservation=re.search(r'(\\\\Needspace\\{(?:6|18)\\\\baselineskip\\})\\s*$',scan_text)",
+          "candidate": "work/layout_probes/section495_candidate.json",
+          "candidate_sha256": "36f2c3d9229ef2b8ec2bb5f104b36dba0560682ec317145f6db6bc6751d20c77",
+          "validation": "work/layout_probes/section495_validation.json",
+          "validation_sha256": "9e7ef5a786e2239f8fe1d19c875bb013665e73ed805c5cf317413c51bfea658e",
+          "validation_status": "PASS"
+        }
+      ],
+      "unified_diff": "--- work/scripts/verify_sources.py\n+++ work/scripts/verify_sources.py\n@@ -204,7 +204,7 @@\n         package=row['package'];ann,entries,prov=packages[package]\n         if cote!=row['cote']:\n             cote=row['cote'];pieces += [r'\\clearpage\\LMcote{'+cote+'}',r'\\section*{Cote '+cote+r'}\\addcontentsline{toc}{section}{Cote '+cote+'}']\n-        pieces += ['% BEGIN PACKAGE '+package,r'\\ifnum\\LMform<2\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']\n+        pieces += ['% BEGIN PACKAGE '+package,r'\\ifnum\\LMform<2\\Needspace{11\\baselineskip}\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']\n         scans=split_scans(ann)\n         if scans and scans[0][1]:pieces.append(ann[:scans[0][1]])\n         for scan,a,b in scans:\n@@ -212,7 +212,7 @@\n             # The source-local scan495 reservation must follow the generated\n             # apparatus for scan494. This is framing, not a source reading.\n             if package=='LM_C3-492-510' and scan==494 and stage!='baseline':\n-                reservation=re.search(r'(\\\\Needspace\\{6\\\\baselineskip\\})\\s*$',scan_text)\n+                reservation=re.search(r'(\\\\Needspace\\{(?:6|18)\\\\baselineskip\\})\\s*$',scan_text)\n                 if reservation:\n                     deferred_spacing=reservation.group(1)\n                     scan_text=scan_text[:reservation.start()].rstrip()\n"
+    }
+  ],
+  "preserved_root_cancelled_tag": true,
+  "independent_framing_matches_builder": true
+}

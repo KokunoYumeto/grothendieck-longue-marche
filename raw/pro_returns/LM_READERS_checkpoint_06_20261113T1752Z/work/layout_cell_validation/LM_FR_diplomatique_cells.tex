@@ -1,0 +1,986 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm,marginparwidth=20mm,marginparsep=10pt]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{unicode-math}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx,xcolor,tikz,tikz-cd,pdflscape,needspace}
+\usetikzlibrary{calc,decorations.pathmorphing,decorations.pathreplacing,arrows.meta,shapes.geometric}
+\usepackage{newunicodechar,luacode,xurl}
+\usepackage[hidelinks,unicode]{hyperref}
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+\setmathfont{STIX Two Math}[range={"27CB,"27CD}]
+\newfontfamily\cyrfont{STIX Two Text}[Scale=MatchLowercase]
+\newunicodechar{А}{{\cyrfont\char"0410}}
+\newunicodechar{Б}{{\cyrfont\char"0411}}
+\newunicodechar{В}{{\cyrfont\char"0412}}
+\newunicodechar{Г}{{\cyrfont\char"0413}}
+\newunicodechar{Д}{{\cyrfont\char"0414}}
+\newunicodechar{Е}{{\cyrfont\char"0415}}
+\newunicodechar{Ж}{{\cyrfont\char"0416}}
+\newunicodechar{З}{{\cyrfont\char"0417}}
+\newunicodechar{И}{{\cyrfont\char"0418}}
+\newunicodechar{Й}{{\cyrfont\char"0419}}
+\newunicodechar{К}{{\cyrfont\char"041A}}
+\newunicodechar{Л}{{\cyrfont\char"041B}}
+\newunicodechar{М}{{\cyrfont\char"041C}}
+\newunicodechar{Н}{{\cyrfont\char"041D}}
+\newunicodechar{О}{{\cyrfont\char"041E}}
+\newunicodechar{П}{{\cyrfont\char"041F}}
+\newunicodechar{Р}{{\cyrfont\char"0420}}
+\newunicodechar{С}{{\cyrfont\char"0421}}
+\newunicodechar{Т}{{\cyrfont\char"0422}}
+\newunicodechar{У}{{\cyrfont\char"0423}}
+\newunicodechar{Ф}{{\cyrfont\char"0424}}
+\newunicodechar{Х}{{\cyrfont\char"0425}}
+\newunicodechar{Ц}{{\cyrfont\char"0426}}
+\newunicodechar{Ч}{{\cyrfont\char"0427}}
+\newunicodechar{Ш}{{\cyrfont\char"0428}}
+\newunicodechar{Щ}{{\cyrfont\char"0429}}
+\newunicodechar{Ъ}{{\cyrfont\char"042A}}
+\newunicodechar{Ы}{{\cyrfont\char"042B}}
+\newunicodechar{Ь}{{\cyrfont\char"042C}}
+\newunicodechar{Э}{{\cyrfont\char"042D}}
+\newunicodechar{Ю}{{\cyrfont\char"042E}}
+\newunicodechar{Я}{{\cyrfont\char"042F}}
+\newunicodechar{а}{{\cyrfont\char"0430}}
+\newunicodechar{б}{{\cyrfont\char"0431}}
+\newunicodechar{в}{{\cyrfont\char"0432}}
+\newunicodechar{г}{{\cyrfont\char"0433}}
+\newunicodechar{д}{{\cyrfont\char"0434}}
+\newunicodechar{е}{{\cyrfont\char"0435}}
+\newunicodechar{ж}{{\cyrfont\char"0436}}
+\newunicodechar{з}{{\cyrfont\char"0437}}
+\newunicodechar{и}{{\cyrfont\char"0438}}
+\newunicodechar{й}{{\cyrfont\char"0439}}
+\newunicodechar{к}{{\cyrfont\char"043A}}
+\newunicodechar{л}{{\cyrfont\char"043B}}
+\newunicodechar{м}{{\cyrfont\char"043C}}
+\newunicodechar{н}{{\cyrfont\char"043D}}
+\newunicodechar{о}{{\cyrfont\char"043E}}
+\newunicodechar{п}{{\cyrfont\char"043F}}
+\newunicodechar{р}{{\cyrfont\char"0440}}
+\newunicodechar{с}{{\cyrfont\char"0441}}
+\newunicodechar{т}{{\cyrfont\char"0442}}
+\newunicodechar{у}{{\cyrfont\char"0443}}
+\newunicodechar{ф}{{\cyrfont\char"0444}}
+\newunicodechar{х}{{\cyrfont\char"0445}}
+\newunicodechar{ц}{{\cyrfont\char"0446}}
+\newunicodechar{ч}{{\cyrfont\char"0447}}
+\newunicodechar{ш}{{\cyrfont\char"0448}}
+\newunicodechar{щ}{{\cyrfont\char"0449}}
+\newunicodechar{ъ}{{\cyrfont\char"044A}}
+\newunicodechar{ы}{{\cyrfont\char"044B}}
+\newunicodechar{ь}{{\cyrfont\char"044C}}
+\newunicodechar{э}{{\cyrfont\char"044D}}
+\newunicodechar{ю}{{\cyrfont\char"044E}}
+\newunicodechar{я}{{\cyrfont\char"044F}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newattribute\LMattr
+\newcount\LMform
+\newcount\LMinApp
+\LMform=0
+\LMinApp=0
+\newcommand\LMlanguage{fr}
+\newcommand\LMcotename{}
+\newcommand\LMcote[1]{\gdef\LMcotename{#1}}
+\newcommand\LMnotelabel{Note marginale}
+\newcommand\LMappheading{Apparat du scan}
+\newcommand\LMdoubtheading{Doutes conservés dans les passages biffés}
+\newcommand\LMmanuscriptlabel{Manuscrit}
+\newcommand\LMcorrectedlabel{Texte}
+\newcommand\LMreasonlabel{Motif}
+\newcommand\LMomittedlabel{omis}
+\newcommand\LMinsertedlabel{ajout intégré}
+\newcommand\LMlayoutlabel{Diagramme continué sur la page en paysage}
+\newcommand\LMvarref[1]{\ifmmode\else\ifinner\else\textsuperscript{\textcolor{gray}{\LMreftext{#1}}}\fi\fi}
+\newcommand\LMreftext[1]{\directlua{LM.reftext("\luaescapestring{#1}")}}
+\newcommand\var[4]{\ifcase\LMform #1\or #2\ifnum\LMinApp=0\LMvarref{#4}\fi\or #2\fi}
+\newcommand\LMadded[1]{{\color{teal}#1}}
+\newcommand\deleted[1]{{\color{gray}#1}}
+\newcommand\inserted[1]{{\color{teal}#1}}
+\newcommand\LMarchivefooter[3]{#2}
+\newcommand\LMsourceid{}
+\newcommand\LMsourceMark[2]{{\def\LMsourceid{#1}#2}}
+\newcommand\LMmark[1]{\directlua{LM.mark("#1",tex.inputlineno)}}
+\newcommand\unsure[1]{{\color{blue}\LMmark{unsure}#1}}
+\newcommand\illegible[1]{{\LMmark{illegible}\textcolor{red}{[illeg.~#1]}}}
+\newcommand\LMuncertaindeletion[1]{{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}}
+\newcommand\LMdoubtcopy[1]{{\color{blue}\LMmark{residual-unsure}#1}}
+\newcommand\LMdoubtdata[1]{}
+\newcommand\LMcancelledDoubts[1]{\ifnum\LMform=2{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}\fi}
+\newcommand\scanpage[1]{%
+ \par\LMflushnotes\LMflushpages\smallskip\directlua{LM.at("\luaescapestring{\LMcotename}","\luaescapestring{\detokenize{#1}}")}%
+ \ifnum\LMform=2\noindent\marginpar{\footnotesize\raggedright\LMmark{scan}\textcolor{gray}{[scan #1]}}%
+ \else\noindent{\footnotesize\LMmark{scan}\textcolor{gray}{[scan #1]}}\par\nobreak\fi}
+\newcommand\mspage[1]{\ifnum\LMform=2\ifinner\LMqueuepage{#1}\else\marginpar{\footnotesize\raggedright\textcolor{gray}{[p.~#1]}}\fi\else{\footnotesize\textcolor{gray}{[p.~#1]}}\ \fi}
+\newcommand\diagram[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\LMflushnotes\LMflushpages\fi\fi}
+\let\figure\relax\newcommand\figure[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\LMflushnotes\LMflushpages\fi\fi}
+\newcommand\LMmathnotice[1]{\par\noindent{\footnotesize\color{gray}[\ensuremath{\hookrightarrow}\ #1]}\par}
+\newcommand\LMlayoutnotice[1]{\par\noindent{\footnotesize\color{gray}[\LMlayoutlabel; #1]}\par}
+\tolerance=1200
+\emergencystretch=3em
+\tracinglostchars=3
+\hfuzz=0pt
+\vfuzz=0pt
+\raggedbottom
+\setcounter{tocdepth}{1}
+\setlength\parindent{1.3em}
+\setlength\parskip{1.5pt plus 1pt}
+\allowdisplaybreaks[2]
+\begin{luacode*}
+-- Marked passages are linked at shipout, including paragraphs and mathematics.
+-- No node, line, display or font is scaled by this code.
+LM = {measure=false, maxw=0, markers={}, links=0, pages=0, scanmap={}, trial_overfull=0, shortnotes=0, blocknotes=0}
+local F=LM
+local A=luatexbase.registernumber('LMattr')
+local HLIST,VLIST,GLUE,KERN,WHATSIT,GLYPH,PENALTY,MATH = node.id('hlist'),node.id('vlist'),node.id('glue'),node.id('kern'),node.id('whatsit'),node.id('glyph'),node.id('penalty'),node.id('math')
+local STARTLINK,ENDLINK,ACTION=node.subtype('pdf_start_link'),node.subtype('pdf_end_link'),node.subtype('pdf_action')
+local inert={[GLUE]=true,[KERN]=true,[PENALTY]=true,[WHATSIT]=true,[MATH]=true}
+function F.at(cote,scan)
+ F.cote=cote;F.scan=tonumber(string.match(scan,'^%s*(%d+)')) or 0
+end
+F.by_source={}
+function F.mark(kind,line)
+ if F.measure or not F.cote or not F.scan or F.scan==0 then return end
+ local parent=tex.attribute[A]
+ if not parent or parent<1 then parent=0 end
+ local source=token.get_macro('LMsourceid') or ''
+ if source=='' then source='auto:'..kind..':'..F.cote..':'..F.scan..':'..line end
+ local id=F.by_source[source]
+ if not id then
+  id=#F.markers+1;F.by_source[source]=id
+  F.markers[id]={id=id,source=source,kind=kind,cote=F.cote,scan=F.scan,line=line,parent=parent,runs=0,pages={},expansions=0}
+ end
+ local mark=F.markers[id]
+ if parent~=id then mark.parent=parent end
+ mark.expansions=mark.expansions+1
+ tex.attribute[A]=id
+end
+local function url(m)
+ return 'https://grothendieck.umontpellier.fr/web/viewer.html?file=../'..m.cote..'.pdf#page='..m.scan
+end
+local function collect(n,ids)
+ local v=node.has_attribute(n,A)
+ if v and v>0 then ids[v]=true end
+ if (n.id==HLIST or n.id==VLIST) and n.head then for q in node.traverse(n.head) do collect(q,ids) end end
+end
+local function cover(id)
+ local m=F.markers[id]
+ if not m then return end
+ m.runs=m.runs+1;m.pages[F.pages]=true
+ local key=m.cote..':'..m.scan
+ F.scanmap[key]=F.scanmap[key] or {};F.scanmap[key][F.pages]=true
+ if m.parent>0 then cover(m.parent) end
+end
+local link_lists
+local function link_runs(box)
+ local n=box.head
+ while n do
+  local v=node.has_attribute(n,A)
+  if v and v>0 and F.markers[v] and not inert[n.id] then
+   local last,m=n,n.next
+   while m do
+    if inert[m.id] then
+    elseif node.has_attribute(m,A)==v then last=m
+    else break end
+    m=m.next
+   end
+   local ids={};local q=n
+   while q do collect(q,ids);if q==last then break end;q=q.next end
+   local sorted={};for id in pairs(ids) do sorted[#sorted+1]=id;cover(id) end;table.sort(sorted)
+   local w,h,d=node.dimensions(box.glue_set,box.glue_sign,box.glue_order,n,last.next)
+   local s=node.new(WHATSIT,STARTLINK);s.width=w;s.height=h;s.depth=d
+   local a=node.new(WHATSIT,ACTION);a.action_type=3
+   a.data='/Subtype/Link/Border[0 0 0]/NM(LM'..table.concat(sorted,',')..')/A<</Type/Action/S/URI/URI('..url(F.markers[v])..')>>'
+   s.action=a
+   local e=node.new(WHATSIT,ENDLINK)
+   box.head=node.insert_before(box.head,n,s);node.insert_after(box.head,last,e)
+   F.links=F.links+1;n=e.next
+  else
+   if n.id==HLIST then link_runs(n) elseif n.id==VLIST then link_lists(n) end
+   n=n.next
+  end
+ end
+end
+link_lists=function(box)
+ for n in node.traverse(box.head) do
+  if n.id==HLIST then link_runs(n) elseif n.id==VLIST then link_lists(n) end
+ end
+end
+luatexbase.add_to_callback('pre_shipout_filter',function(box)
+ F.pages=F.pages+1
+ if box.id==HLIST then link_runs(box) elseif box.id==VLIST then link_lists(box) end
+ return true
+end,'lm.scanlinks')
+-- Only discarded margin trials are measured; actual pages are never fitted.
+luatexbase.add_to_callback('post_linebreak_filter',function(head)
+ if F.measure then
+  for line in node.traverse_id(HLIST,head) do
+   if line.head then
+    local nw=node.dimensions(line.glue_set,line.glue_sign,line.glue_order,line.head)
+    if nw>F.maxw then F.maxw=nw end
+   end
+  end
+ end
+ return head
+end,'lm.measure.margin')
+-- hpack_quality replaces the engine's reporter; every actual overfull is
+-- reported, with its exact width and input lines. Discarded trials are separate.
+luatexbase.add_to_callback('hpack_quality',function(incident,detail,head,first,last)
+ if incident=='overfull' then
+  if F.measure then F.trial_overfull=F.trial_overfull+1
+  else texio.write_nl('term and log',string.format('Overfull \\hbox (%.5fpt too wide) at lines %d--%d',detail/65536,first,last)) end
+ elseif incident=='underfull' and not F.measure and detail>=1000 then
+  texio.write_nl('log',string.format('Underfull \\hbox (badness %d) at lines %d--%d',detail,first,last))
+ end
+end,'lm.quality.report')
+function F.summary()
+ local f=assert(io.open(tex.jobname..'.lm-links.tsv','w'))
+ f:write('marker\tkind\tcote\tscan\ttex_line\tparent\tlinked_runs\tphysical_pages\tsource_id\texpansions\n')
+ local missing=0
+ for _,m in ipairs(F.markers) do
+  local ps={};for p in pairs(m.pages) do ps[#ps+1]=p end;table.sort(ps)
+  if m.runs==0 then missing=missing+1 end
+  f:write(table.concat({m.id,m.kind,m.cote,m.scan,m.line,m.parent,m.runs,table.concat(ps,','),m.source,m.expansions},'\t'),'\n')
+ end
+ f:close()
+ local g=assert(io.open(tex.jobname..'.lm-scans.tsv','w'));g:write('cote\tscan\tphysical_pages\tsource_id\texpansions\n')
+ local ks={};for k in pairs(F.scanmap) do ks[#ks+1]=k end;table.sort(ks)
+ for _,k in ipairs(ks) do
+  local cote,scan=string.match(k,'(.*):(%d+)');local ps={};for p in pairs(F.scanmap[k]) do ps[#ps+1]=p end;table.sort(ps)
+  g:write(cote,'\t',scan,'\t',table.concat(ps,','),'\n')
+ end;g:close()
+ texio.write_nl('term and log',string.format('LM-AUDIT markers=%d links=%d unlinked=%d scans=%d pages=%d margin_short=%d margin_block=%d discarded_trial_overfull=%d',#F.markers,F.links,missing,#ks,F.pages,F.shortnotes,F.blocknotes,F.trial_overfull))
+end
+
+function LM.reftext(s)
+ local a,b=string.match(s,'([A-Z])0*(%d+)$')
+ tex.sprint(a and (string.lower(a)..b) or '*')
+end
+
+LM.noteids={};LM.nextnote=0;LM.pageids={}
+function LM.noteref(source)
+ if source=='' then source='note:'..tex.inputlineno end
+ local id=LM.noteids[source]
+ local fresh=0
+ if not id then LM.nextnote=LM.nextnote+1;id=LM.nextnote;LM.noteids[source]=id;fresh=1 end
+ tex.sprint('\\def\\LMcurrentnoteref{'..id..'}\\LMnotefresh='..fresh..'\\relax')
+end
+function LM.pagequeue(source)
+ local fresh=0
+ if not LM.pageids[source] then LM.pageids[source]=true;fresh=1 end
+ tex.count.LMnotefresh=fresh
+end
+
+\end{luacode*}
+\makeatletter
+\AtBeginDocument{\let\LMsimeq\simeq\protected\def\simeq{\ifmmode\LMsimeq\else$\LMsimeq$\fi}%
+ \let\LMGamma\Gamma\protected\def\Gamma{\ifmmode\LMGamma\else$\LMGamma$\fi}}
+\output\expandafter{\expandafter\unsetattribute\expandafter\LMattr\the\output}
+\AtEndDocument{\clearpage\directlua{LM.summary()}}
+\newif\ifLMtrial
+\newcount\LMnotefresh
+\newcommand\LMcurrentnoteref{}
+\newcommand\LMgetnoteref{\directlua{LM.noteref("\luaescapestring{\LMsourceid}")}}
+\newsavebox\LMmbox
+\newdimen\LMmw
+\newdimen\LMmh
+\newdimen\LMnotewidth
+\newcommand\LMmarginstyle{\footnotesize\rightskip=0pt plus 2.5em\relax\parfillskip=0pt plus 1fil\relax\hyphenpenalty=50\relax\def\margin##1{{[##1]}}}
+\newcommand\LMtrial[2]{%
+ \LMtrialtrue\directlua{LM.measure=true LM.maxw=0}%
+ \setbox\LMmbox\vbox{\hsize=#1\relax\@parboxrestore\LMmarginstyle #2\par}%
+ \LMtrialfalse\directlua{LM.measure=false tex.setdimen("LMmw",LM.maxw)}%
+ \LMmh=\dimexpr\ht\LMmbox+\dp\LMmbox\relax}
+\newcommand\LMinblock[1]{%
+ \directlua{LM.blocknotes=LM.blocknotes+1}%
+ \par\smallskip\noindent{\color{gray}\rule{.20\linewidth}{.35pt}}\par\nobreak
+ \begingroup\LMmarginstyle\parindent=0pt\noindent\textit{\LMnotelabel.}\enspace #1\par\endgroup\smallskip}
+\newcommand\LMmargin[1]{\begingroup\LMgetnoteref
+ \LMtrial{\marginparwidth}{#1}%
+ \ifdim\LMmw>\marginparwidth\LMnotemark{\LMcurrentnoteref}\LMinblock{\textsuperscript{m\LMcurrentnoteref}\ #1}%
+ \else\ifdim\LMmh>33pt\LMnotemark{\LMcurrentnoteref}\LMinblock{\textsuperscript{m\LMcurrentnoteref}\ #1}%
+ \else\directlua{LM.shortnotes=LM.shortnotes+1}\marginpar{\LMmarginstyle #1}%
+ \fi\fi\endgroup}
+\newcounter{LMnoteref}
+\newcommand\LMpendingnotes{}
+\newcommand\LMpendingpages{}
+\newcommand\LMqueuepage[1]{\ifLMtrial\else\directlua{LM.pagequeue("\luaescapestring{\LMsourceid}")}\ifnum\LMnotefresh=1\g@addto@macro\LMpendingpages{\marginpar{\footnotesize\raggedright\textcolor{gray}{[p.~#1]}}}\fi\fi}
+\newcommand\LMflushpages{\ifinner\else\LMpendingpages\global\let\LMpendingpages\@empty\fi}
+\newcommand\LMnotemark[1]{\ifmmode{}^{\scriptscriptstyle\text{\color{gray}m#1}}\else\textsuperscript{\color{gray}m#1}\fi}
+\newcommand\LMqueuenote[1]{%
+ \LMgetnoteref\LMnotemark{\LMcurrentnoteref}%
+ \ifnum\LMnotefresh=1\begingroup\edef\LMnext{\endgroup\noexpand\g@addto@macro\noexpand\LMpendingnotes{\noexpand\LMqueuednote{\LMcurrentnoteref}{\the\LMattr}{\unexpanded{#1}}}}\LMnext\fi}
+\newcommand\LMqueuednote[3]{\begingroup\LMattr=#2\relax\ifnum#2>0\color{blue}\fi\LMinblock{\textsuperscript{m#1}\ #3}\endgroup}
+\newcommand\LMflushnotes{\ifinner\else\begingroup\let\LMnextnotes\LMpendingnotes\global\let\LMpendingnotes\@empty\LMnextnotes\endgroup\fi}
+\newcommand\margin[1]{\ifmmode\LMqueuenote{\(#1\)}\else\ifinner\LMqueuenote{#1}\else\LMmargin{#1}\fi\fi}
+\AddToHook{env/equation*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/equation/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/align*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/align/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/gather*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/center/after}{\LMflushnotes\LMflushpages}
+\makeatother
+\newenvironment{LMapparatus}{\par\smallskip\begingroup\LMinApp=1\footnotesize\noindent\textcolor{gray}{\rule{.26\linewidth}{.35pt}}\par\noindent\textbf{\LMappheading}\par\smallskip}{\par\endgroup}
+\newcommand\LMentry[6]{\par\noindent{\color{gray}\texttt{#1}}\enspace\textit{#2.}\enspace\textit{\LMmanuscriptlabel:}\enspace #3\par\noindent\textit{\LMcorrectedlabel:}\enspace #4\enspace\textit{\LMreasonlabel:}\enspace #5\par\smallskip}
+\newcommand\LMcarryover[2]{\par\noindent{\scriptsize\color{gray}\texttt{#1}}\enspace #2\par}
+
+\hypersetup{pdftitle={La Longue Marche à travers la théorie de Galois — Édition diplomatique},pdfauthor={Alexander Grothendieck}}
+\begin{document}
+% COMMON MASTER BODY SHA256 a080df1bd1d2dad5cde42a2268e10f681a5198072706ba4c90149cc2370df528
+\clearpage\LMcote{140-2}
+\section*{Cote 140-2}\addcontentsline{toc}{section}{Cote 140-2}
+% BEGIN PACKAGE LM_P051
+\ifnum\LMform<2\subsection*{Scans 501--510}\fi
+\LMsourceMark{M000001}{\scanpage{501}}
+\LMsourceMark{M000002}{\mspage{254}}
+
+donc par $(*)$ on a $u(l_i)\in L_i$ i.e. $u(L_i)\subset L_i$,
+mais on a $\operatorname{Aut}(L_i)\simeq\widehat{\mathbb Z}^{*}$, et un
+\LMsourceMark{M000003}{\unsure{endom.|autom.}} \LMsourceMark{M000004}{\unsure{du|d'un}} \var{\deleted{\LMsourceMark{M000005}{\unsure{$L_i$}}}}{\LMsourceMark{M000006}{\LMcancelledDoubts{\LMsourceMark{M000007}{\unsure{$L_i$}}}}}{deletion}{140-2-s501-D001}
+$\widehat{\mathbb Z}$-\LMsourceMark{M000008}{\unsure{module|modules}} \LMsourceMark{M000009}{\unsure{libre|libres}} de rang $1$
+\var{\inserted{$L_i$}}{\LMadded{$L_i$}}{insertion}{140-2-s501-I001} est connu quand on le connaît
+sur un $nL_i\xleftarrow{\sim}L_i$.
+Donc \var{\inserted{$\forall i$ \LMsourceMark{M000010}{\unsure{on a}}}}{\LMadded{$\forall i$ \LMsourceMark{M000011}{\unsure{on a}}}}{insertion}{140-2-s501-I002} $u(l_i)=l_i$,
+donc $u=\mathrm{id}$, cqfd.
+
+Dans le cas où $\pi$ n'est pas libre,
+prenons une \var{\deleted{syst. de}}{}{deletion}{140-2-s501-D002} base $(x_i,y_i)_{1\leq i\leq g}$
+-- de sorte que $\pi$ soit défini par la relation génératrice
+\[
+\tag{3} \prod_1^g[x_i,y_i]=1,
+\]
+soient $\Lambda_i$, $\Lambda'_i$ les sous-groupes fermés
+engendrés par $x_i,y_i$.
+\var{\deleted{J'admets}}{}{deletion}{140-2-s501-D003} (Ils sont d'ailleurs tous conjugués sous
+$\operatorname{Aut}(\pi)$\ldots) J'admets que ces groupes
+sont $\simeq\widehat{\mathbb Z}$ (i.e que les hom
+\var{\inserted{surjectifs}}{\LMadded{surjectifs}}{insertion}{140-2-s501-I003} $\widehat{\mathbb Z}\longrightarrow\Lambda_i$,
+$\widehat{\mathbb Z}\longrightarrow\Lambda'_i$ envoyant $1$ dans les
+$x_i,y_i$ sont injectifs -- ça \var{\deleted{\LMsourceMark{M000012}{\unsure{doit pas être dur}}}}{\LMsourceMark{M000013}{\LMcancelledDoubts{\LMsourceMark{M000014}{\unsure{doit pas être dur}}}}}{deletion}{140-2-s501-D004}
+\var{\inserted{c'est d'ailleurs trivial}}{\LMadded{c'est d'ailleurs trivial}}{insertion}{140-2-s501-I004} en passant à $\pi_{\mathrm{ab}}$)
+\uline{et} qu'on a, en analogie avec (2), pour
+tout $n\in\LMsourceMark{M000015}{\unsure{\mathbb N^{*}}}$
+\[
+\tag{4}
+\operatorname{Centr}_{\pi}(\Lambda_i^n)=\Lambda_i,\qquad
+\operatorname{Centr}_{\pi}(\Lambda_i'{}^n)=\Lambda'_i,
+\]
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s501-D001}{suppression}{\deleted{\LMsourceMark{M000016}{\unsure{$L_i$}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s501-I001}{insertion}{\inserted{$L_i$}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s501-I002}{insertion}{\inserted{$\forall i$ \LMsourceMark{M000017}{\unsure{on a}}}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s501-D002}{suppression}{\deleted{syst. de}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s501-D003}{suppression}{\deleted{J'admets}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s501-I003}{insertion}{\inserted{surjectifs}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s501-D004}{suppression}{\deleted{\LMsourceMark{M000018}{\unsure{doit pas être dur}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s501-I004}{insertion}{\inserted{c'est d'ailleurs trivial}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s501-D001}{\LMsourceMark{M000019}{\unsure{$L_i$}}
+}
+\LMcarryover{140-2-s501-D004}{\LMsourceMark{M000020}{\unsure{doit pas être dur}}
+}
+\par\endgroup\smallskip
+\fi
+
+\LMsourceMark{M000021}{\scanpage{502}}
+
+et on termine comme ci-dessus.
+
+\uline{Remarque} Le résultat le plus fort de
+fidélité dans la direction du présent
+\S, concernant des actions de $\mathbb{\Gamma}$ et de
+ses sous-groupes ouverts, serait le
+suivant: si $\LMsourceMark{M000022}{\unsure{V}}$ est une courbe
+algébrique anabélienne sur l'extension
+finie $k$ de $\mathbb Q$, avec la clôture alg. $\bar k$,
+alors non seulement l'action extérieure
+de $\mathcal E_k^{\bar k}=\Gamma$ sur
+$\pi_1(\LMsourceMark{M000023}{\unsure{V}}_{\bar k})$ devrait être
+fidèle, i.e.
+\[
+\Gamma\longrightarrow\LMsourceMark{M000024}{\unsure{\widehat{\widehat{\mathcal T}}}}(\pi)
+\]
+\LMsourceMark{M000025}{\margin{cet \LMsourceMark{M000026}{\unsure{hom$^{\mathrm m}$}} \LMsourceMark{M000027}{\unsure{se}} \LMsourceMark{M000028}{\unsure{factorise automatiquement}}
+par le sous-groupe $\mathcal N(\pi)$ qui \LMsourceMark{M000029}{\unsure{nous intéresse \LMsourceMark{M000030}{\illegible{1}}|normalise}}
+$\widehat{\mathcal T}(\pi)$}}
+injective, mais même l'homomorphisme
+composé
+\[
+\Gamma\longrightarrow
+\LMsourceMark{M000031}{\unsure{\mathcal N_4(\pi)|\mathcal N_{\Delta}(\pi)}}
+\longrightarrow\mathcal N(\pi)/\widehat{\mathcal T}^{+}(\pi)
+\simeq\mathbb{\Gamma}_{\pi}
+\]
+devrait être injectif (auquel cas ce sera
+même un isomorphisme, puisqu'il est
+surjectif par construction même de
+$\mathcal N(\pi),\mathbb{\Gamma}_{\pi}$\ldots)
+Des raisonnements heuris-
+
+\LMflushnotes\LMflushpages
+
+\LMsourceMark{M000032}{\scanpage{503}}
+\LMsourceMark{M000033}{\mspage{255}}
+
+tiques faits précédemment (moins convainquants sans doute que ceux du présent
+\S~!) semblent indiquer que ce serait
+le cas au moins lorsque $V$ est un
+revêtement étale de $U=(U_{03})_k$, auquel
+cas en effet l'homomorphisme $\Gamma\longrightarrow\mathbb{\Gamma}_{\pi}$
+s'insère dans un diagramme commutatif
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+\& \Gamma \arrow[dl] \arrow[d] \arrow[dr] \& \\
+\mathbb{\Gamma}_{\pi_0}
+ \arrow[rr,bend right=23]
+ \arrow[rr,bend left=20,phantom,"{\var{\deleted{\LMsourceMark{M000034}{\unsure{\longrightarrow}}}}{\LMsourceMark{M000035}{\LMcancelledDoubts{\(\LMsourceMark{M000036}{\unsure{\longrightarrow}}\)}}}{deletion}{140-2-s503-D001}}" description]
+\& \mathbb{\Gamma}_{\pi} \arrow[r] \& \mathbb{\Gamma}_{\pi'}
+\end{tikzcd}}
+où $\pi_0=\pi(U_{\bar k})$, de sorte que $\pi$ est un sous-groupe ouvert de
+$\pi_0$, et $\LMsourceMark{M000037}{\unsure{\pi''|\pi'}}$ est un
+sous-groupe ouvert convenable, \uline{caractéristique}
+dans $\pi_0$. \uline{\uuline{Si}} on pouvait montrer que
+$\mathbb{\Gamma}_{\pi_0}\longrightarrow\mathbb{\Gamma}_{\pi'}$ est injectif
+(ce qui est $\pm$ une histoire d'algèbre profinie), il en serait
+de $\overline{\mathrm m}$ du composé
+$\Gamma\LMsourceMark{M000038}{\unsure{\hookrightarrow|\subset}}\mathbb{\Gamma}_{\pi_0}
+\longrightarrow\mathbb{\Gamma}_{\pi'}$,
+donc aussi de $\Gamma\longrightarrow\mathbb{\Gamma}_{\pi}$.
+Donc modulo cette hypothèse sur les groupes profinis,
+et utilisant \LMsourceMark{M000039}{\unsure{Белый}}, on trouve que
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s503-D001}{suppression}{\(\deleted{\LMsourceMark{M000040}{\unsure{\longrightarrow}}}\)
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s503-D001}{\(\LMsourceMark{M000041}{\unsure{\longrightarrow}}\)
+}
+\par\endgroup\smallskip
+\fi
+
+\LMsourceMark{M000042}{\scanpage{504}}
+pour toute courbe algébrique $V$ sur $k$,
+$\exists\ V'\subset V$ ouvert non vide, tel que
+\[
+\Gamma\longrightarrow\mathbb{\Gamma}_{\pi'}
+\qquad (\text{où }\pi'=\pi_1(V'_{\bar{k}}))
+\]
+soit injectif. Quant à savoir si
+$\Gamma\longrightarrow\mathbb{\Gamma}_{\pi}$ est lui-$\overline{\mathrm m}$ déjà injectif
+-- ou \var{\deleted{\LMsourceMark{M000043}{\illegible{1}}}}{\LMsourceMark{M000044}{\LMcancelledDoubts{\LMsourceMark{M000045}{\illegible{1}}}}}{deletion}{140-2-s504-D001} ce qui revient au même, si
+$\Gamma\longrightarrow\mathbb{\Gamma}_g$ pour $g\geq 2$, et
+$\Gamma\longrightarrow\mathbb{\Gamma}_{1,1}$ sont injectifs,
+je n'ai pas de raison heuristique plausible pour m'en convaincre à présent
+-- \LMsourceMark{M000046}{\unsure{peut-être|peut être}} est-ce tout à fait faux ? L'argument
+plus ou moins convainquant \LMsourceMark{M000047}{\unsure{rappelé}} précédemment (à supposer qu'on
+\LMsourceMark{M000048}{\unsure{arrive}} à le justifier) \LMsourceMark{M000049}{\unsure{montrerait}} seulement que si
+$\Gamma\longrightarrow\mathbb{\Gamma}_{\pi}$ est injectif pour
+\uline{un} $\pi$ (ce qui ne dépend que de \LMsourceMark{M000050}{\unsure{son}} type $(g,\nu)$)
+alors il l'est pour les $\pi'$ ouverts dans $\pi$.
+\var{\deleted{Mais est \LMsourceMark{M000051}{\unsure{il|-il}} vrai que}}{\LMsourceMark{M000052}{\LMcancelledDoubts{\LMsourceMark{M000053}{\unsure{il|-il}}}}}{deletion}{140-2-s504-D002} \var{\inserted{On le sait à}}{\LMadded{On le sait à}}{insertion}{140-2-s504-I001}
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s504-D001}{suppression}{\deleted{\LMsourceMark{M000054}{\illegible{1}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s504-D002}{suppression}{\deleted{Mais est \LMsourceMark{M000055}{\unsure{il|-il}} vrai que}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s504-I001}{insertion}{\inserted{On le sait à}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s504-D001}{\LMsourceMark{M000056}{\illegible{1}}
+}
+\LMcarryover{140-2-s504-D002}{\LMsourceMark{M000057}{\unsure{il|-il}}
+}
+\par\endgroup\smallskip
+\fi
+
+\LMsourceMark{M000058}{\scanpage{505}}
+\LMsourceMark{M000059}{\mspage{256}}
+présent (modulo peu de chose, tout au moins)
+pour les types $(0,\nu)$ $(\nu\geq 3)$ exactement
+-- ni plus, ni moins -- et on pourrait
+peut-être le déduire pour des types $(g,\nu)$
+qui s'en déduisent par ``\LMsourceMark{M000060}{\unsure{revêtement}} fini''.
+Mais il est clair déjà qu'on n'obtient
+pas les types $(g,0)$ comme cela $(g\geq 2)$,
+ni même aucun $(g,\nu)$ avec $g\geq 1$, $\nu\in\{0,1,2\}$\LMsourceMark{M000061}{\unsure{.|-}}
+C'est dire qu'on est loin du compte\ldots
+Le premier cas bien intéressant serait
+donc le cas $(1\LMsourceMark{M000062}{\unsure{,}}1)$, où
+$\widehat{\mathcal{T}}_{1,1}^{+}\simeq
+\LMsourceMark{M000063}{\unsure{\mathrm{Sl}|\mathrm{SL}}}(2,\mathbb{Z})^{\wedge}$
+\LMsourceMark{M000064}{\margin{tore à un trou !}}
+\LMsourceMark{M000065}{\unsure{Opérant|opérant}} extérieurement sur $\widehat{\Pi}_{1,1}$
+(groupe libre à deux générateurs, encore
+-- comme par hasard) -- l'action
+``arithmétique'' de $\mathbb{\Gamma}_{\mathbb{Q}}$ sur $\widehat{\Pi}_{1,1}$
+(i.e. l'action extérieure \uline{mod}
+\var{\inserted{$\widehat{\mathcal{T}}_{1,1}^{+}\simeq$}}{\LMadded{$\widehat{\mathcal{T}}_{1,1}^{+}\simeq$}}{insertion}{140-2-s505-I001}
+$\LMsourceMark{M000066}{\unsure{\mathrm{Sl}|\mathrm{SL}}}(2,\mathbb{Z})^{\wedge}$)
+est-elle fidèle ?
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s505-I001}{insertion}{\inserted{$\widehat{\mathcal{T}}_{1,1}^{+}\simeq$}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\end{LMapparatus}
+\fi
+
+\LMsourceMark{M000067}{\scanpage{506}}
+\LMsourceMark{M000068}{\mspage{257}}
+\uline{36} L'isomorphisme
+$\mathbb{\Gamma}_{\mathbb{Q}}\xrightarrow{\sim}\mathbb{\Gamma}_{1,1}$,
+et l'injectivité de
+$\mathbb{\Gamma}_{\mathbb{Q}}\longrightarrow
+\mathrm{Aut\,ext}_{\LMsourceMark{M000069}{\unsure{\mathrm{lac}}}}(\widehat{\mathcal{T}}_{11}^{+})
+\simeq\mathrm{Aut\,ext}_{\LMsourceMark{M000070}{\unsure{\mathrm{lac}}}}(\LMsourceMark{M000071}{\unsure{\mathrm{Sl}|\mathrm{SL}}}(2,\mathbb{Z})^{\wedge})$
+\LMsourceMark{M000072}{\margin{Les \LMsourceMark{M000073}{\unsure{réflexions|reflexions}} du présent \S,
+un peu cahin-caha, seront reprises de \LMsourceMark{M000074}{\unsure{façon|facon}}
+moins pesante au \S\ suivant\ldots}}
+
+Soit $\Pi'_{03}$ le groupe quotient de $\Pi_{03}$
+\LMsourceMark{M000075}{\unsure{défini}} par \LMsourceMark{M000076}{\unsure{\uline{les}}} relations
+\[
+(1)\qquad l_1^2=l_\infty^3=1
+\]
+-- c'est donc le groupe ``cartographique
+orienté \var{\inserted{pour structures triangulées}}{\LMadded{pour structures triangulées}}{insertion}{140-2-s506-I001}''\LMsourceMark{M000077}{\unsure{,|;}}
+\var{\deleted{dont les}}{}{deletion}{140-2-s506-D001} les $\Pi'_{0,3}$-ensembles
+finis \var{\deleted{sur lesquels}}{}{deletion}{140-2-s506-D002} \LMsourceMark{M000078}{\unsure{correspondent|correspondant}} aux cartes
+\LMsourceMark{M000079}{\unsure{orientées}} \LMsourceMark{M000080}{\unsure{finies}} (\LMsourceMark{M000081}{\unsure{pouvant}} avoir des
+boucles aplaties) dont les faces sont des
+triangles ou des mono-angles. L'opération
+extérieure de $\mathbb{\Gamma}_{\mathbb{Q}}$
+(mais non celle de $\LMsourceMark{M000082}{\unsure{\mathfrak{S}_3|\mathcal{S}_3}}$ !)
+sur $\widehat{\Pi}_{03}$ passe au quotient en une
+action sur $\widehat{\Pi}'_{0,3}$. On peut améliorer le
+\LMsourceMark{M000083}{\unsure{th.}} 1 du \S\ précédent par \LMsourceMark{M000084}{\unsure{la|le}}
+
+\uline{Proposition} L'action extérieure de $\mathbb{\Gamma}_{\mathbb{Q}}$
+sur $\widehat{\Pi}'_{0,3}$ est fidèle.
+\figure{\begin{tikzpicture}[x=1cm,y=1cm]
+\draw[line width=.45pt] (0,1.25) .. controls (-.015,.82) and (-.025,.40) .. (.015,0);
+\end{tikzpicture}}
+
+Pour le montrer, on va plonger
+$\Pi_{0,3}$ comme sous-groupe d'indice fini
+dans $\Pi'_{0,3}$, d'où un plongement \LMsourceMark{M000085}{\unsure{analogue}}
+\var{\deleted{\LMsourceMark{M000086}{\illegible{1}}}}{\LMsourceMark{M000087}{\LMcancelledDoubts{\LMsourceMark{M000088}{\illegible{1}}}}}{deletion}{140-2-s506-D003}
+\[
+(2)\qquad\widehat{\Pi}_{0,3}\lhook\joinrel\longrightarrow\widehat{\Pi}'_{0,3}
+\]
+qui sera compatible avec l'action ext. de $\Gamma$.
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s506-I001}{insertion}{\inserted{pour structures triangulées}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s506-D001}{suppression}{\deleted{dont les}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s506-D002}{suppression}{\deleted{sur lesquels}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s506-D003}{suppression}{\deleted{\LMsourceMark{M000089}{\illegible{1}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s506-D003}{\LMsourceMark{M000090}{\illegible{1}}
+}
+\par\endgroup\smallskip
+\fi
+
+\LMsourceMark{M000091}{\scanpage{507}}
+
+Considérons pour cela le schéma quotient
+\[
+Y=\underbrace{\mathbb P^1_{\mathbb Q}}_{X}/\LMsourceMark{M000092}{\unsure{\mathfrak S_3}}
+\]
+avec les trois points \var{\inserted{$a_0,a_1,a_\infty$}}{\LMadded{$a_0,a_1,a_\infty$}}{insertion}{140-2-s507-I001} de $Y$, rationnels sur
+$\mathbb Q$, \var{\inserted{$a_0$}}{\LMadded{$a_0$}}{insertion}{140-2-s507-I002} correspondant à la trajectoire
+\var{\deleted{des}}{}{deletion}{140-2-s507-D001} $\{0,1,\infty\}$, $a_1$ à la trajectoire
+$\{-1,\frac12,2\}$, et $a_\infty$ à la trajectoire
+$\{\LMsourceMark{M000093}{\unsure{-j}},\LMsourceMark{M000094}{\unsure{-\overline j}}\}$ de $\LMsourceMark{M000095}{\unsure{\mathfrak S_3}}$
+\LMsourceMark{M000096}{\margin{$j=\exp\frac{2i\pi}{3}$}}
+(ce qui épuise \LMsourceMark{M000097}{\unsure{l'ens}} des trajectoires
+``singulières'' géométriques). On sait que $Y$ est une droite projective
+(sur $\overline{\mathbb Q}$ a priori), \LMsourceMark{M000098}{\unsure{qu'on}} \LMsourceMark{M000099}{\unsure{épingle}} par
+$a_0,a_1,a_\infty$ comme points $0,1,\infty$, \LMsourceMark{M000100}{\unsure{(donc}}
+$Y\simeq\mathbb P^1_{\mathbb Q}$ -- le \var{\deleted{\LMsourceMark{M000101}{\illegible{1}}}}{\LMsourceMark{M000102}{\LMcancelledDoubts{\LMsourceMark{M000103}{\illegible{1}}}}}{deletion}{140-2-s507-D002} morphisme
+$X\longrightarrow Y$ s'identifie donc à un morphisme bien déterminé
+\[
+(3)\qquad
+f:\begin{array}{ccc}
+\mathbb P^1_{\mathbb Q}&\longrightarrow&\mathbb P^1_{\mathbb Q}\\
+\Vert&&\Vert\\
+X&&Y
+\end{array}
+\]
+\var{\deleted{(en fait, $f$ peut se définir comme morphisme
+$\mathbb P^1_{\mathbb Z}\longrightarrow\mathbb P^1_{\mathbb Z}$,
+mais ici peu nous importe)}}{}{deletion}{140-2-s507-D003}
+qui fait de $X$ un \LMsourceMark{M000104}{\unsure{revêtt|revêtement}} galoisien de $Y$, de groupe
+$\LMsourceMark{M000105}{\unsure{\mathfrak S_3}}$, étale \LMsourceMark{M000106}{\unsure{au|en}} dessus de
+$\mathbb P^1_{\mathbb Q}\setminus\{0,1,\infty\}$, avec comme indices de
+ramification en ces points $2,2,3$. Du point de vue de la géométrie des cartes
+(\LMsourceMark{M000107}{\unsure{se plaçant|se plongeant}} sur le corps de base $\mathbb C$), on considère la
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s507-I001}{insertion}{\inserted{$a_0,a_1,a_\infty$}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s507-I002}{insertion}{\inserted{$a_0$}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s507-D001}{suppression}{\deleted{des}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s507-D002}{suppression}{\deleted{\LMsourceMark{M000108}{\illegible{1}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s507-D003}{suppression}{\deleted{(en fait, $f$ peut se définir comme morphisme
+$\mathbb P^1_{\mathbb Z}\longrightarrow\mathbb P^1_{\mathbb Z}$,
+mais ici peu nous importe)}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s507-D002}{\LMsourceMark{M000109}{\illegible{1}}
+}
+\par\endgroup\smallskip
+\fi
+
+\LMsourceMark{M000110}{\scanpage{508}}
+\LMsourceMark{M000111}{\mspage{\LMsourceMark{M000112}{\unsure{258 (259)}}}}
+
+carte déterminée sur $X$ par les triangles sphériques $(0,1,\infty)$
+(sur l'axe réel comme équateur) -- qui est donc la carte triangulaire
+\LMsourceMark{M000113}{\unsure{pondérée}} universelle -- comme image inverse de la carte universelle
+(ayant un seul sommet $0$, une seule arête (repliée) $0\longrightarrow1$,
+une seule face, de centre $\infty$).
+\LMsourceMark{M000114}{\margin{\figure{\begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round]
+\draw[line width=.45pt] (0,2.85)
+ .. controls (-.71,2.83) and (-1.02,2.47) .. (-1,2)
+ .. controls (-1.01,1.48) and (-.57,1.16) .. (0,1.15);
+\draw[line width=.45pt] (0,2.85)
+ .. controls (.76,2.85) and (1.03,2.48) .. (1,2.10);
+\draw[line width=.45pt] (.99,1.98)
+ .. controls (.98,1.62) and (.74,1.36) .. (.54,1.26);
+\draw[line width=.5pt] (-1,2)
+ .. controls (-.91,1.75) and (.83,1.74) .. (1,1.95);
+\draw[densely dotted,line width=.65pt] (-1,2)
+ .. controls (-.61,2.17) and (.63,2.17) .. (1,2.02);
+\fill (0,2.85) circle (1.4pt);
+\node[anchor=south west,inner sep=2pt] at (0,2.88) {$P=\LMsourceMark{M000115}{\unsure{-\bar j|-j}}$};
+\fill (0,1.15) circle (1.4pt);
+\node[anchor=north west,inner sep=2pt] at (-.03,1.12) {$P'=\LMsourceMark{M000116}{\unsure{-j|-\bar j}}$};
+\fill (-.57,1.80) circle (1.4pt);
+\node[below,inner sep=2pt] at (-.57,1.80) {$0$};
+\fill (.78,1.82) circle (1.4pt);
+\node[below,inner sep=2pt] at (.78,1.82) {$1$};
+\fill (0,2.12) circle (1.5pt);
+\node[above,inner sep=2pt] at (0,2.12) {$\infty$};
+\draw[->,line width=.65pt] (-1.40,1.60)
+ .. controls (-1.40,1.22) and (-1.38,.85) .. (-1.37,.58);
+\draw[line width=.45pt] (.02,.48)
+ .. controls (-.55,.48) and (-.86,.17) .. (-.82,-.20)
+ .. controls (-.78,-.70) and (-.46,-1.02) .. (.10,-1.04);
+\draw[line width=.45pt] (.02,.48)
+ .. controls (.65,.46) and (.87,.12) .. (.82,-.29)
+ .. controls (.81,-.58) and (.66,-.79) .. (.53,-.87);
+\fill (.02,.48) circle (1.5pt);
+\node[anchor=west,inner sep=2pt] at (.07,.48) {$\LMsourceMark{M000117}{\unsure{Q}}(=P)$};
+\fill (-.82,-.12) circle (1.5pt);
+\node[left,inner sep=2pt] at (-.82,-.12) {$\infty$};
+\fill (-.08,.10) circle (1.7pt);
+\node[below,inner sep=2pt] at (-.08,.10) {$1$};
+\fill (-.40,-.36) circle (1.7pt);
+\node[below,inner sep=2pt] at (-.40,-.36) {$0$};
+\draw[line width=1.15pt] (-.08,.10)
+ .. controls (.28,.10) and (.71,.02) .. (.82,-.20)
+ .. controls (.66,-.43) and (.03,-.47) .. (-.40,-.36);
+\draw[densely dotted,line width=.65pt] (-.82,-.12)
+ .. controls (-.60,.08) and (-.36,.08) .. (-.08,.10);
+\draw[densely dotted,line width=.65pt] (-.82,-.12)
+ .. controls (-.78,-.32) and (-.59,-.35) .. (-.40,-.36);
+\node[below,inner sep=1pt] at (.22,-.44) {$\LMsourceMark{M000118}{\unsure{\varphi}}$};
+\end{tikzpicture}}}}
+Tout revêtement \var{\deleted{\LMsourceMark{M000119}{\unsure{de}}}}{\LMsourceMark{M000120}{\LMcancelledDoubts{\LMsourceMark{M000121}{\unsure{de}}}}}{deletion}{140-2-s508-D001} \var{\inserted{étale}}{\LMadded{étale}}{insertion}{140-2-s508-I001} topologique de
+$U_{03}(\mathbb C)\subset X$ donne ainsi un rev. étale topologique de
+$U_{0,3}(\mathbb C)\subset Y$, \var{\deleted{ramifié}}{}{deletion}{140-2-s508-D002} ayant au
+\var{\deleted{\LMsourceMark{M000122}{\illegible{1}}}}{\LMsourceMark{M000123}{\LMcancelledDoubts{\LMsourceMark{M000124}{\illegible{1}}}}}{deletion}{140-2-s508-D003} \var{\inserted{dessus de}}{\LMadded{dessus de}}{insertion}{140-2-s508-I002} $1$ la ramification $2$,
+au dessus de $\infty$ la ramification $3$ \LMsourceMark{M000125}{\unsure{exactt|exactement}},
+ce qui correspond au foncteur ``oubli'' \var{\inserted{(de la pondération)}}{\LMadded{(de la pondération)}}{insertion}{140-2-s508-I003},
+où une carte triangulaire \LMsourceMark{M000126}{\unsure{pondérée}} est considérée comme une carte
+tout court. Du point de vue des groupes fondamentaux \LMsourceMark{M000127}{\unsure{on}} trouve
+ainsi une \var{\deleted{\LMsourceMark{M000128}{\unsure{hom.}} de groupes extérieurs}}{\LMsourceMark{M000129}{\LMcancelledDoubts{\LMsourceMark{M000130}{\unsure{hom.}}}}}{deletion}{140-2-s508-D004}
+\var{\inserted{équiv. de catégories}}{\LMadded{équiv. de catégories}}{insertion}{140-2-s508-I004}
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=huge,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont},nodes in empty cells]
+\&
+\var{\deleted{\begin{gathered}
+\Pi_1(\LMsourceMark{M000131}{\unsure{X(\mathbb C)}}\setminus\{0,1,\infty\})\\[-2pt]
+\rotatebox{90}{$=$}\\[-2pt]
+\Pi_{0,3}
+\end{gathered}}}{\LMsourceMark{M000132}{\LMcancelledDoubts{\(\LMsourceMark{M000133}{\unsure{X(\mathbb C)}}\)}}}{deletion}{140-2-s508-D005}
+\arrow[r,phantom,"{\var{\deleted{\longleftarrow}}{}{deletion}{140-2-s508-D006}}" description]
+\&
+\var{\deleted{\begin{gathered}
+\Pi_1\!\left(Y(\mathbb C)\setminus\{0,1,\infty\};
+\underbrace{2\{1\}+3\{\infty\}}_{\substack{\text{signature de}\\\text{ramification}}}\right)\\[-2pt]
+\rotatebox{90}{$=$}\\[-2pt]
+\Pi'_{0,3}
+\end{gathered}}}{}{deletion}{140-2-s508-D007}
+\\
+(\var{\deleted{\LMsourceMark{M000134}{\illegible{1}}}}{\LMsourceMark{M000135}{\LMcancelledDoubts{\(\LMsourceMark{M000136}{\illegible{1}}\)}}}{deletion}{140-2-s508-D008}\var{\inserted{4}}{\LMadded{4}}{insertion}{140-2-s508-I005}) \&
+\left(\text{Rev. étales de }X\setminus\{0,1,\infty\}=U_{0,3}\right)
+\arrow[r,phantom,"\simeq" description]
+\arrow[d,phantom,"{\rotatebox{-90}{$\simeq$}}" description]
+\&
+\begin{gathered}
+\left[\begin{gathered}
+\text{Rev. de }Y\setminus\{0,1,\infty\}=U_{0,3}\\
+\text{avec ramification sub. à}\\
+\text{la signature }2\{1\}+3\{\infty\}
+\end{gathered}\right]\\
+\big/\begin{gathered}
+\text{l'objet }(X\setminus\{0,1,\infty\})\\
+\text{de la dite catégorie}
+\end{gathered}
+\end{gathered}
+\arrow[d,phantom,"{\rotatebox{90}{$\simeq$}}" description]
+\\
+\& \Pi_{0,3}\text{-ensembles} \&
+(\Pi'_{0,3}\text{-Ens})/\var{\deleted{\LMsourceMark{M000137}{\unsure{E}}}}{\LMsourceMark{M000138}{\LMcancelledDoubts{\(\LMsourceMark{M000139}{\unsure{E}}\)}}}{deletion}{140-2-s508-D009}E
+\end{tikzcd}}
+
+où $E$ est le $\Pi'_{0,3}$-ens. correspondant à l'objet
+$X\setminus\{0,1,\infty\}$ de la cat. des rev. étales de
+$\LMsourceMark{M000140}{\unsure{Y\setminus\{0,1,\infty\}}}$ à ramification
+\var{\deleted{\LMsourceMark{M000141}{\unsure{imposée}}}}{\LMsourceMark{M000142}{\LMcancelledDoubts{\LMsourceMark{M000143}{\unsure{imposée}}}}}{deletion}{140-2-s508-D010}\var{\inserted{\LMsourceMark{M000144}{\unsure{subordon-}}}}{\LMadded{\LMsourceMark{M000145}{\unsure{subordon-}}}}{insertion}{140-2-s508-I006}née à
+$2\{1\}+3\{\infty\}$
+
+\var{\deleted{$\LMsourceMark{M000146}{\unsure{\simeq}}\ \LMsourceMark{M000147}{\unsure{\Pi_{0,3}^{\prime\circ}}}\in\mathrm{Ens}$}}{\LMsourceMark{M000148}{\LMcancelledDoubts{\(\LMsourceMark{M000149}{\unsure{\simeq}}\)\quad \(\LMsourceMark{M000150}{\unsure{\Pi_{0,3}^{\prime\circ}}}\)}}}{deletion}{140-2-s508-D011}
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s508-D001}{suppression}{\deleted{\LMsourceMark{M000151}{\unsure{de}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-I001}{insertion}{\inserted{étale}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s508-D002}{suppression}{\deleted{ramifié}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-D003}{suppression}{\deleted{\LMsourceMark{M000152}{\illegible{1}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-I002}{insertion}{\inserted{dessus de}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s508-I003}{insertion}{\inserted{(de la pondération)}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s508-D004}{suppression}{\deleted{\LMsourceMark{M000153}{\unsure{hom.}} de groupes extérieurs}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-I004}{insertion}{\inserted{équiv. de catégories}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s508-D005}{suppression}{\(\deleted{\begin{gathered}
+\Pi_1(\LMsourceMark{M000154}{\unsure{X(\mathbb C)}}\setminus\{0,1,\infty\})\\[-2pt]
+\rotatebox{90}{$=$}\\[-2pt]
+\Pi_{0,3}
+\end{gathered}}\)
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-D006}{suppression}{\(\deleted{\longleftarrow}\)
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-D007}{suppression}{\(\deleted{\begin{gathered}
+\Pi_1\!\left(Y(\mathbb C)\setminus\{0,1,\infty\};
+\underbrace{2\{1\}+3\{\infty\}}_{\substack{\text{signature de}\\\text{ramification}}}\right)\\[-2pt]
+\rotatebox{90}{$=$}\\[-2pt]
+\Pi'_{0,3}
+\end{gathered}}\)
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-D008}{suppression}{\(\deleted{\LMsourceMark{M000155}{\illegible{1}}}\)
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-I005}{insertion}{\(\inserted{4}\)
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s508-D009}{suppression}{\(\deleted{\LMsourceMark{M000156}{\unsure{E}}}\)
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-D010}{suppression}{\deleted{\LMsourceMark{M000157}{\unsure{imposée}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s508-I006}{insertion}{\inserted{\LMsourceMark{M000158}{\unsure{subordon-}}}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s508-D011}{suppression}{\deleted{$\LMsourceMark{M000159}{\unsure{\simeq}}\ \LMsourceMark{M000160}{\unsure{\Pi_{0,3}^{\prime\circ}}}\in\mathrm{Ens}$}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s508-D001}{\LMsourceMark{M000161}{\unsure{de}}
+}
+\LMcarryover{140-2-s508-D003}{\LMsourceMark{M000162}{\illegible{1}}
+}
+\LMcarryover{140-2-s508-D004}{\LMsourceMark{M000163}{\unsure{hom.}}
+}
+\LMcarryover{140-2-s508-D005}{\(\LMsourceMark{M000164}{\unsure{X(\mathbb C)}}\)
+}
+\LMcarryover{140-2-s508-D008}{\(\LMsourceMark{M000165}{\illegible{1}}\)
+}
+\LMcarryover{140-2-s508-D009}{\(\LMsourceMark{M000166}{\unsure{E}}\)
+}
+\LMcarryover{140-2-s508-D010}{\LMsourceMark{M000167}{\unsure{imposée}}
+}
+\LMcarryover{140-2-s508-D011}{\(\LMsourceMark{M000168}{\unsure{\simeq}}\)\quad \(\LMsourceMark{M000169}{\unsure{\Pi_{0,3}^{\prime\circ}}}\)
+}
+\par\endgroup\smallskip
+\fi
+
+\LMsourceMark{M000170}{\scanpage{509}}
+\LMsourceMark{M000171}{\mspage{\LMsourceMark{M000172}{\unsure{260|250}}}}
+
+Ici, \var{\deleted{\LMsourceMark{M000173}{\illegible{3}}}}{\LMsourceMark{M000174}{\LMcancelledDoubts{\LMsourceMark{M000175}{\illegible{3}}}}}{deletion}{140-2-s509-D001} \var{\inserted{\deleted{\LMsourceMark{M000176}{\illegible{1}}} le point base de $Y-\{0,1,\infty\}$ choisi\LMsourceMark{M000177}{\unsure{;|,}} \LMsourceMark{M000178}{\unsure{pour}} décrire les}}{\LMadded{\var{\deleted{\LMsourceMark{M000179}{\illegible{1}}}}{\LMsourceMark{M000180}{\LMcancelledDoubts{\LMsourceMark{M000181}{\illegible{1}}}}}{deletion}{140-2-s509-D002} le point base de $Y-\{0,1,\infty\}$ choisi\LMsourceMark{M000182}{\unsure{;|,}} \LMsourceMark{M000183}{\unsure{pour}} décrire les}}{insertion}{140-2-s509-I001} revêtements \var{\deleted{$E=\LMsourceMark{M000184}{\unsure{f^{-1}}}\LMsourceMark{M000185}{\unsure{(}}$}}{\LMsourceMark{M000186}{\LMcancelledDoubts{\(\LMsourceMark{M000187}{\unsure{f^{-1}}}\)\quad \(\LMsourceMark{M000188}{\unsure{(}}\)}}}{deletion}{140-2-s509-D003} (à ramification \LMsourceMark{M000189}{\unsure{subordonnée}} à \dots) par un groupe fondamental à ramification, étant \LMsourceMark{M000190}{\unsure{encore}} $P=-\bar j$, on aura
+\[
+(5)\qquad E=f_{\LMsourceMark{M000191}{\unsure{\mathbf C|\mathbb C}}}^{-1}(P)
+\]
+et on peut expliciter ainsi la cat. $(\Pi'_{03}\text{-Ens})/E$\LMsourceMark{M000192}{\unsure{;}}
+
+Où $E$ est un espace homogène, \var{\inserted{\LMsourceMark{M000193}{\unsure{isom. au}}}}{\LMadded{\LMsourceMark{M000194}{\unsure{isom. au}}}}{insertion}{140-2-s509-I002} \LMsourceMark{M000195}{\unsure{quot.}} de $\Pi'_{03}$ par le \LMsourceMark{M000196}{\unsure{ss-groupe|s-groupe}} \var{\inserted{$\Pi'^{\circ}_{03}$}}{\LMadded{$\Pi'^{\circ}_{03}$}}{insertion}{140-2-s509-I003} noyau de l'hom. surjectif \var{\inserted{idoine}}{\LMadded{idoine}}{insertion}{140-2-s509-I004}
+\[
+(6)\qquad
+\left\{
+\begin{array}{l}
+\Pi'_{0,3}\longrightarrow\LMsourceMark{M000197}{\unsure{\mathfrak S_3|\mathcal S_3}}\\[2pt]
+\left.
+\begin{array}{lll}
+\ell_0 &\longmapsto& \text{él. d'ordre 2}\\
+\ell_1 &\longmapsto& \text{él. d'ordre 2}\\
+\ell_\infty &\longmapsto& \text{\LMsourceMark{M000198}{\unsure{él.}} d'ordre 3}
+\end{array}
+\right)\quad\text{à calculer !}
+\end{array}
+\right.
+\]
+
+On choisit un $Q_0\in E$ comme ``origine'' de $E$ -- pour pouvoir identifier $E$ comme $\Pi'_{0,3}$-ens à $\Pi'_{03}/\Pi'^{\circ}_{03}\simeq\LMsourceMark{M000199}{\unsure{\mathfrak S_3}}$ -- alors $(\mathrm{Ens}\,\Pi'_{03})/E$ s'identifie, par le foncteur $F\longmapsto F_{Q_0}$, à $\mathrm{Ens}(\Pi'^{\circ}_{03})$.
+
+On trouve donc en résumé une équivalence de catégories (dépendant du choix de $Q_0$)
+\[
+\Pi_{03}\text{-ens}\quad\LMsourceMark{M000200}{\unsure{\simeq}}\quad\Pi'^{\circ}_{03}\text{-ensembles}
+\]
+qui est elle-même décrite par un bitorseur sous $(\Pi'^{\circ}_{0,3},\Pi_{03})$ -- et, à isom \var{\deleted{que}}{}{deletion}{140-2-s509-D004} (non unique !) près, par un isomorphisme
+\[
+\Pi_{03}\simeq\Pi'^{\circ}_{0,3}\quad -
+\]
+les isomorphismes ainsi obtenus (pour des
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s509-D001}{suppression}{\deleted{\LMsourceMark{M000201}{\illegible{3}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s509-I001}{insertion}{\inserted{\deleted{\LMsourceMark{M000202}{\illegible{1}}} le point base de $Y-\{0,1,\infty\}$ choisi\LMsourceMark{M000203}{\unsure{;|,}} \LMsourceMark{M000204}{\unsure{pour}} décrire les}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s509-D002}{suppression}{\deleted{\LMsourceMark{M000205}{\illegible{1}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s509-D003}{suppression}{\deleted{$E=\LMsourceMark{M000206}{\unsure{f^{-1}}}\LMsourceMark{M000207}{\unsure{(}}$}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s509-I002}{insertion}{\inserted{\LMsourceMark{M000208}{\unsure{isom. au}}}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s509-I003}{insertion}{\inserted{$\Pi'^{\circ}_{03}$}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s509-I004}{insertion}{\inserted{idoine}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s509-D004}{suppression}{\deleted{que}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s509-D001}{\LMsourceMark{M000209}{\illegible{3}}
+}
+\LMcarryover{140-2-s509-D002}{\LMsourceMark{M000210}{\illegible{1}}
+}
+\LMcarryover{140-2-s509-D003}{\(\LMsourceMark{M000211}{\unsure{f^{-1}}}\)\quad \(\LMsourceMark{M000212}{\unsure{(}}\)
+}
+\par\endgroup\smallskip
+\fi
+
+\LMsourceMark{M000213}{\scanpage{510}}
+\LMsourceMark{M000214}{\mspage{\LMsourceMark{M000215}{\unsure{249}}}}
+
+origines variables du bitorseur) \LMsourceMark{M000216}{\unsure{forment|formant}} exactement une classe de conjugaison par $\Pi'^{\circ}_{03}$ -- i.e. un \uline{\LMsourceMark{M000217}{\unsure{isom.}}} \uline{extérieur} $\Pi_{03}\simeq\Pi'^{\circ}_{03}$. Quand de plus le choix de $Q_0$ varie, on trouve \var{\deleted{comme}}{}{deletion}{140-2-s510-D001} un \LMsourceMark{M000218}{\unsure{composé|composés}}
+\[
+\Pi_{0,3}\longrightarrow\Pi'^{\circ}_{03}\longrightarrow\Pi'_{03}
+\]
+\var{\deleted{\LMsourceMark{M000219}{\unsure{exactement}}}}{\LMsourceMark{M000220}{\LMcancelledDoubts{\LMsourceMark{M000221}{\unsure{exactement}}}}}{deletion}{140-2-s510-D002} une classe de $\Pi'_{03}$-conj, i.e. un hom extérieur.
+
+J'ai beaucoup \LMsourceMark{M000222}{\unsure{turbiné}} pour pas grand chose -- à défaut d'avoir écrit les \LMsourceMark{M000223}{\unsure{fonctorialités}} \var{\inserted{générales}}{\LMadded{générales}}{insertion}{140-2-s510-I001} \LMsourceMark{M000224}{\unsure{nécessaires|élémentaires}} pour les ``groupes fondamentaux \LMsourceMark{M000225}{\unsure{avec}} ramification''. \LMsourceMark{M000226}{\unsure{P.ex.}} le bifoncteur $I$ mystérieux de tantôt est formé des \LMsourceMark{M000227}{\unsure{classes}} de chemins de $P\in\LMsourceMark{M000228}{\unsure{X(\mathbb C)|X_{\mathbb C}}}\setminus\{0,1,\infty\}$ (point base pour calculer $\Pi_{0,3}$) vers $Q_0$ (jouant le rôle d'un nouveau pt base, ayant le mérite de s'envoyer sur celui \var{\inserted{-- $P$ --}}{\LMadded{-- $P$ --}}{insertion}{140-2-s510-I002} qui sert à calculer $\Pi'_{03}$, groupe fondamental à ramification sur $Y(\mathbb C)\setminus\{0,1,\infty\}$ \dots) Il serait peut-être plus commode de définir \LMsourceMark{M000229}{\unsure{direct\textsuperscript{t}|directement}} un foncteur en sens inverse\LMsourceMark{M000230}{\unsure{:|.}}
+\[
+(7)\qquad
+\begin{array}{c}
+\text{Rev. de }Y(\mathbb C)\var{\inserted{\setminus(0,1,\infty)}}{\LMadded{\setminus(0,1,\infty)}}{insertion}{140-2-s510-I003}\ \text{subordonnés}\\
+\text{à la signature }2\{1\}+3\{\infty\}
+\end{array}
+\longrightarrow
+\begin{array}{c}
+\text{Rev. \LMsourceMark{M000231}{\unsure{ét.les|étales}} de}\\
+X(\mathbb C)\setminus\{0,1,\infty\}
+\end{array}
+\]
+par image inverse, \LMsourceMark{M000232}{\unsure{suivi|suivie}} d'une \uline{normalisation}
+
+\LMflushnotes\LMflushpages
+\ifnum\LMform=1
+\begin{LMapparatus}
+\LMentry{140-2-s510-D001}{suppression}{\deleted{comme}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s510-D002}{suppression}{\deleted{\LMsourceMark{M000233}{\unsure{exactement}}}
+}{\emph{\LMomittedlabel}}{Passage biffé dans le manuscrit : la suppression suit l'état final de l'auteur; les doutes de lecture restent signalés.}{}
+\LMentry{140-2-s510-I001}{insertion}{\inserted{générales}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s510-I002}{insertion}{\inserted{-- $P$ --}
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\LMentry{140-2-s510-I003}{insertion}{\(\inserted{\setminus(0,1,\infty)}\)
+}{\emph{\LMinsertedlabel}}{Ajout explicite de l'auteur : intégré à l'endroit indiqué par la transcription, sans modifier sa lecture.}{}
+\end{LMapparatus}
+\fi
+\ifnum\LMform=2
+\par\smallskip\begingroup\footnotesize\noindent\textcolor{gray}{\rule{.2\linewidth}{.35pt}}\par
+\noindent\textit{\LMdoubtheading.}\par
+\LMcarryover{140-2-s510-D002}{\LMsourceMark{M000234}{\unsure{exactement}}
+}
+\par\endgroup\smallskip
+\fi
+
+% END PACKAGE LM_P051
+\end{document}

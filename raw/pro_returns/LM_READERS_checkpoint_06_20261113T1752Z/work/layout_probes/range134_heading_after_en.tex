@@ -1,0 +1,473 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm,marginparwidth=20mm,marginparsep=10pt]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{unicode-math}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx,xcolor,tikz,tikz-cd,pdflscape,needspace}
+\usetikzlibrary{calc,decorations.pathmorphing,decorations.pathreplacing,arrows.meta,shapes.geometric}
+\usepackage{newunicodechar,luacode,xurl}
+\usepackage[hidelinks,unicode,hypertexnames=false]{hyperref}
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+\setmathfont{STIX Two Math}[range={"27CB,"27CD}]
+% Source boldsymbol calls all request Gamma; restore its actual bold glyph.
+\renewcommand\boldsymbol[1]{\symbf{#1}}
+\newfontfamily\cyrfont{STIX Two Text}[Scale=MatchLowercase]
+\newunicodechar{А}{{\cyrfont\char"0410}}
+\newunicodechar{Б}{{\cyrfont\char"0411}}
+\newunicodechar{В}{{\cyrfont\char"0412}}
+\newunicodechar{Г}{{\cyrfont\char"0413}}
+\newunicodechar{Д}{{\cyrfont\char"0414}}
+\newunicodechar{Е}{{\cyrfont\char"0415}}
+\newunicodechar{Ж}{{\cyrfont\char"0416}}
+\newunicodechar{З}{{\cyrfont\char"0417}}
+\newunicodechar{И}{{\cyrfont\char"0418}}
+\newunicodechar{Й}{{\cyrfont\char"0419}}
+\newunicodechar{К}{{\cyrfont\char"041A}}
+\newunicodechar{Л}{{\cyrfont\char"041B}}
+\newunicodechar{М}{{\cyrfont\char"041C}}
+\newunicodechar{Н}{{\cyrfont\char"041D}}
+\newunicodechar{О}{{\cyrfont\char"041E}}
+\newunicodechar{П}{{\cyrfont\char"041F}}
+\newunicodechar{Р}{{\cyrfont\char"0420}}
+\newunicodechar{С}{{\cyrfont\char"0421}}
+\newunicodechar{Т}{{\cyrfont\char"0422}}
+\newunicodechar{У}{{\cyrfont\char"0423}}
+\newunicodechar{Ф}{{\cyrfont\char"0424}}
+\newunicodechar{Х}{{\cyrfont\char"0425}}
+\newunicodechar{Ц}{{\cyrfont\char"0426}}
+\newunicodechar{Ч}{{\cyrfont\char"0427}}
+\newunicodechar{Ш}{{\cyrfont\char"0428}}
+\newunicodechar{Щ}{{\cyrfont\char"0429}}
+\newunicodechar{Ъ}{{\cyrfont\char"042A}}
+\newunicodechar{Ы}{{\cyrfont\char"042B}}
+\newunicodechar{Ь}{{\cyrfont\char"042C}}
+\newunicodechar{Э}{{\cyrfont\char"042D}}
+\newunicodechar{Ю}{{\cyrfont\char"042E}}
+\newunicodechar{Я}{{\cyrfont\char"042F}}
+\newunicodechar{а}{{\cyrfont\char"0430}}
+\newunicodechar{б}{{\cyrfont\char"0431}}
+\newunicodechar{в}{{\cyrfont\char"0432}}
+\newunicodechar{г}{{\cyrfont\char"0433}}
+\newunicodechar{д}{{\cyrfont\char"0434}}
+\newunicodechar{е}{{\cyrfont\char"0435}}
+\newunicodechar{ж}{{\cyrfont\char"0436}}
+\newunicodechar{з}{{\cyrfont\char"0437}}
+\newunicodechar{и}{{\cyrfont\char"0438}}
+\newunicodechar{й}{{\cyrfont\char"0439}}
+\newunicodechar{к}{{\cyrfont\char"043A}}
+\newunicodechar{л}{{\cyrfont\char"043B}}
+\newunicodechar{м}{{\cyrfont\char"043C}}
+\newunicodechar{н}{{\cyrfont\char"043D}}
+\newunicodechar{о}{{\cyrfont\char"043E}}
+\newunicodechar{п}{{\cyrfont\char"043F}}
+\newunicodechar{р}{{\cyrfont\char"0440}}
+\newunicodechar{с}{{\cyrfont\char"0441}}
+\newunicodechar{т}{{\cyrfont\char"0442}}
+\newunicodechar{у}{{\cyrfont\char"0443}}
+\newunicodechar{ф}{{\cyrfont\char"0444}}
+\newunicodechar{х}{{\cyrfont\char"0445}}
+\newunicodechar{ц}{{\cyrfont\char"0446}}
+\newunicodechar{ч}{{\cyrfont\char"0447}}
+\newunicodechar{ш}{{\cyrfont\char"0448}}
+\newunicodechar{щ}{{\cyrfont\char"0449}}
+\newunicodechar{ъ}{{\cyrfont\char"044A}}
+\newunicodechar{ы}{{\cyrfont\char"044B}}
+\newunicodechar{ь}{{\cyrfont\char"044C}}
+\newunicodechar{э}{{\cyrfont\char"044D}}
+\newunicodechar{ю}{{\cyrfont\char"044E}}
+\newunicodechar{я}{{\cyrfont\char"044F}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newattribute\LMattr
+\newcount\LMform
+\newcount\LMinApp
+\LMform=1
+\LMinApp=0
+\newcommand\LMlanguage{en}
+\newcommand\LMcotename{}
+\newcommand\LMcote[1]{\gdef\LMcotename{#1}}
+\newcommand\LMnotelabel{Marginal note}
+\newcommand\LMappheading{Apparatus for this scan}
+\newcommand\LMdoubtheading{Uncertainty retained from cancelled passages}
+\newcommand\LMmanuscriptlabel{Manuscript}
+\newcommand\LMcorrectedlabel{Text}
+\newcommand\LMreasonlabel{Reason}
+\newcommand\LMomittedlabel{omitted}
+\newcommand\LMinsertedlabel{insertion integrated}
+\newcommand\LMlayoutlabel{Diagram continued on the landscape page}
+\newcommand\LMvarref[1]{\ifmmode\else\ifinner\else\textsuperscript{\textcolor{gray}{\LMreftext{#1}}}\fi\fi}
+\newcommand\LMreftext[1]{\directlua{LM.reftext("\luaescapestring{#1}")}}
+\newcommand\var[4]{\ifcase\LMform #1\or #2\ifnum\LMinApp=0\LMvarref{#4}\fi\or #2\fi}
+\newcommand\LMcancelledtag[1]{\ifnum\LMform=0\tag{#1}\else\tag*{#1}\fi}
+\newcommand\LMadded[1]{{\color{teal}#1}}
+\newcommand\deleted[1]{{\color{gray}#1}}
+\newcommand\inserted[1]{{\color{teal}#1}}
+\newcommand\LMarchivefooter[3]{#2}
+\newcommand\LMsourceid{}
+\newcommand\LMsourceMark[2]{{\def\LMsourceid{#1}#2}}
+\newcommand\LMmark[1]{\directlua{LM.mark("#1",tex.inputlineno)}}
+\newcommand\unsure[1]{{\color{blue}\LMmark{unsure}#1}}
+\newcommand\illegible[1]{{\LMmark{illegible}\textcolor{red}{[illeg.~#1]}}}
+\newcommand\LMuncertaindeletion[1]{{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}}
+\newcommand\LMdoubtcopy[1]{{\color{blue}\LMmark{residual-unsure}#1}}
+\newcommand\LMdoubtdata[1]{}
+\newcommand\LMcancelledDoubts[1]{\ifnum\LMform=2{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}\fi}
+\newcommand\scanpage[1]{%
+ \par\LMflushnotes\LMflushpages\smallskip\directlua{LM.at("\luaescapestring{\LMcotename}","\luaescapestring{\detokenize{#1}}")}%
+ \ifnum\LMform=2\noindent\marginpar{\footnotesize\raggedright\LMmark{scan}\textcolor{gray}{[scan #1]}}%
+ \else\noindent{\footnotesize\LMmark{scan}\textcolor{gray}{[scan #1]}}\par\nobreak\fi}
+\newcommand\mspage[1]{\ifnum\LMform=2\ifinner\LMqueuepage{#1}\else\marginpar{\footnotesize\raggedright\textcolor{gray}{[p.~#1]}}\fi\else{\footnotesize\textcolor{gray}{[p.~#1]}}\ \fi}
+\newcommand\diagram[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\LMflushnotes\LMflushpages\fi\fi}
+\let\figure\relax\newcommand\figure[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\LMflushnotes\LMflushpages\fi\fi}
+\newcommand\LMpagefigure[2]{\ifnum\LMform=2\marginpar{\footnotesize\raggedright\textcolor{gray}{\textcircled{#2}}}\else#1\fi}
+\newcommand\LMmathnotice[1]{\par\noindent{\footnotesize\color{gray}[\ensuremath{\hookrightarrow}\ #1]}\par}
+\newcommand\LMlayoutnotice[1]{\par\noindent{\footnotesize\color{gray}[\LMlayoutlabel; #1]}\par}
+\tolerance=1200
+\emergencystretch=3em
+\tracinglostchars=3
+\hfuzz=0pt
+\vfuzz=0pt
+\raggedbottom
+\setcounter{tocdepth}{1}
+\setlength\parindent{1.3em}
+\setlength\parskip{1.5pt plus 1pt}
+\allowdisplaybreaks[2]
+\begin{luacode*}
+-- Marked passages are linked at shipout, including paragraphs and mathematics.
+-- No node, line, display or font is scaled by this code.
+LM = {measure=false, maxw=0, markers={}, links=0, pages=0, scanmap={}, trial_overfull=0, shortnotes=0, blocknotes=0}
+local F=LM
+local A=luatexbase.registernumber('LMattr')
+local HLIST,VLIST,GLUE,KERN,WHATSIT,GLYPH,PENALTY,MATH = node.id('hlist'),node.id('vlist'),node.id('glue'),node.id('kern'),node.id('whatsit'),node.id('glyph'),node.id('penalty'),node.id('math')
+local STARTLINK,ENDLINK,ACTION=node.subtype('pdf_start_link'),node.subtype('pdf_end_link'),node.subtype('pdf_action')
+local inert={[GLUE]=true,[KERN]=true,[PENALTY]=true,[WHATSIT]=true,[MATH]=true}
+function F.at(cote,scan)
+ F.cote=cote;F.scan=tonumber(string.match(scan,'^%s*(%d+)')) or 0
+end
+F.by_source={}
+function F.mark(kind,line)
+ if F.measure or not F.cote or not F.scan or F.scan==0 then return end
+ local parent=tex.attribute[A]
+ if not parent or parent<1 then parent=0 end
+ local source=token.get_macro('LMsourceid') or ''
+ if source=='' then source='auto:'..kind..':'..F.cote..':'..F.scan..':'..line end
+ local id=F.by_source[source]
+ if not id then
+  id=#F.markers+1;F.by_source[source]=id
+  F.markers[id]={id=id,source=source,kind=kind,cote=F.cote,scan=F.scan,line=line,parent=parent,runs=0,pages={},expansions=0}
+ end
+ local mark=F.markers[id]
+ if parent~=id then mark.parent=parent end
+ mark.expansions=mark.expansions+1
+ tex.attribute[A]=id
+end
+local function url(m)
+ return 'https://grothendieck.umontpellier.fr/web/viewer.html?file=../'..m.cote..'.pdf#page='..m.scan
+end
+local function collect(n,ids)
+ local v=node.has_attribute(n,A)
+ if v and v>0 then ids[v]=true end
+ if (n.id==HLIST or n.id==VLIST) and n.head then for q in node.traverse(n.head) do collect(q,ids) end end
+end
+local function cover(id)
+ local m=F.markers[id]
+ if not m then return end
+ m.runs=m.runs+1;m.pages[F.pages]=true
+ local key=m.cote..':'..m.scan
+ F.scanmap[key]=F.scanmap[key] or {};F.scanmap[key][F.pages]=true
+ if m.parent>0 then cover(m.parent) end
+end
+local link_lists
+local function link_runs(box)
+ local n=box.head
+ while n do
+  local v=node.has_attribute(n,A)
+  if v and v>0 and F.markers[v] and not inert[n.id] then
+   local last,m=n,n.next
+   while m do
+    if inert[m.id] then
+    elseif node.has_attribute(m,A)==v then last=m
+    else break end
+    m=m.next
+   end
+   local ids={};local q=n
+   while q do collect(q,ids);if q==last then break end;q=q.next end
+   local sorted={};for id in pairs(ids) do sorted[#sorted+1]=id;cover(id) end;table.sort(sorted)
+   local w,h,d=node.dimensions(box.glue_set,box.glue_sign,box.glue_order,n,last.next)
+   local s=node.new(WHATSIT,STARTLINK);s.width=w;s.height=h;s.depth=d
+   local a=node.new(WHATSIT,ACTION);a.action_type=3
+   a.data='/Subtype/Link/Border[0 0 0]/NM(LM'..table.concat(sorted,',')..')/A<</Type/Action/S/URI/URI('..url(F.markers[v])..')>>'
+   s.action=a
+   local e=node.new(WHATSIT,ENDLINK)
+   box.head=node.insert_before(box.head,n,s);node.insert_after(box.head,last,e)
+   F.links=F.links+1;n=e.next
+  else
+   if n.id==HLIST then link_runs(n) elseif n.id==VLIST then link_lists(n) end
+   n=n.next
+  end
+ end
+end
+link_lists=function(box)
+ for n in node.traverse(box.head) do
+  if n.id==HLIST then link_runs(n) elseif n.id==VLIST then link_lists(n) end
+ end
+end
+luatexbase.add_to_callback('pre_shipout_filter',function(box)
+ F.pages=F.pages+1
+ if box.id==HLIST then link_runs(box) elseif box.id==VLIST then link_lists(box) end
+ return true
+end,'lm.scanlinks')
+-- Only discarded margin trials are measured; actual pages are never fitted.
+luatexbase.add_to_callback('post_linebreak_filter',function(head)
+ if F.measure then
+  for line in node.traverse_id(HLIST,head) do
+   if line.head then
+    local nw=node.dimensions(line.glue_set,line.glue_sign,line.glue_order,line.head)
+    if nw>F.maxw then F.maxw=nw end
+   end
+  end
+ end
+ return head
+end,'lm.measure.margin')
+-- hpack_quality replaces the engine's reporter; every actual overfull is
+-- reported, with its exact width and input lines. Discarded trials are separate.
+luatexbase.add_to_callback('hpack_quality',function(incident,detail,head,first,last)
+ if incident=='overfull' then
+  if F.measure then F.trial_overfull=F.trial_overfull+1
+  else texio.write_nl('term and log',string.format('Overfull \\hbox (%.5fpt too wide) at lines %d--%d',detail/65536,first,last)) end
+ elseif incident=='underfull' and not F.measure and detail>=1000 then
+  texio.write_nl('log',string.format('Underfull \\hbox (badness %d) at lines %d--%d',detail,first,last))
+ end
+end,'lm.quality.report')
+function F.summary()
+ local f=assert(io.open(tex.jobname..'.lm-links.tsv','w'))
+ f:write('marker\tkind\tcote\tscan\ttex_line\tparent\tlinked_runs\tphysical_pages\tsource_id\texpansions\n')
+ local missing=0
+ for _,m in ipairs(F.markers) do
+  local ps={};for p in pairs(m.pages) do ps[#ps+1]=p end;table.sort(ps)
+  if m.runs==0 then missing=missing+1 end
+  f:write(table.concat({m.id,m.kind,m.cote,m.scan,m.line,m.parent,m.runs,table.concat(ps,','),m.source,m.expansions},'\t'),'\n')
+ end
+ f:close()
+ local g=assert(io.open(tex.jobname..'.lm-scans.tsv','w'));g:write('cote\tscan\tphysical_pages\tsource_id\texpansions\n')
+ local ks={};for k in pairs(F.scanmap) do ks[#ks+1]=k end;table.sort(ks)
+ for _,k in ipairs(ks) do
+  local cote,scan=string.match(k,'(.*):(%d+)');local ps={};for p in pairs(F.scanmap[k]) do ps[#ps+1]=p end;table.sort(ps)
+  g:write(cote,'\t',scan,'\t',table.concat(ps,','),'\n')
+ end;g:close()
+ texio.write_nl('term and log',string.format('LM-AUDIT markers=%d links=%d unlinked=%d scans=%d pages=%d margin_short=%d margin_block=%d discarded_trial_overfull=%d',#F.markers,F.links,missing,#ks,F.pages,F.shortnotes,F.blocknotes,F.trial_overfull))
+end
+
+function LM.reftext(s)
+ local a,b=string.match(s,'([A-Z])0*(%d+)$')
+ tex.sprint(a and (string.lower(a)..b) or '*')
+end
+
+LM.noteids={};LM.nextnote=0;LM.pageids={}
+function LM.noteref(source)
+ if source=='' then source='note:'..tex.inputlineno end
+ local id=LM.noteids[source]
+ local fresh=0
+ if not id then LM.nextnote=LM.nextnote+1;id=LM.nextnote;LM.noteids[source]=id;fresh=1 end
+ tex.sprint('\\def\\LMcurrentnoteref{'..id..'}\\LMnotefresh='..fresh..'\\relax')
+end
+function LM.pagequeue(source)
+ local fresh=0
+ if not LM.pageids[source] then LM.pageids[source]=true;fresh=1 end
+ tex.count.LMnotefresh=fresh
+end
+
+\end{luacode*}
+\makeatletter
+\AtBeginDocument{\let\LMsimeq\simeq\protected\def\simeq{\ifmmode\LMsimeq\else$\LMsimeq$\fi}%
+ \let\LMGamma\Gamma\protected\def\Gamma{\ifmmode\LMGamma\else$\LMGamma$\fi}}
+\output\expandafter{\expandafter\unsetattribute\expandafter\LMattr\the\output}
+\AtEndDocument{\clearpage\directlua{LM.summary()}}
+\newif\ifLMtrial
+\newcount\LMnotefresh
+\newcommand\LMcurrentnoteref{}
+\newcommand\LMgetnoteref{\directlua{LM.noteref("\luaescapestring{\LMsourceid}")}}
+\newsavebox\LMmbox
+\newdimen\LMmw
+\newdimen\LMmh
+\newdimen\LMnotewidth
+\newcommand\LMmarginstyle{\footnotesize\rightskip=0pt plus 2.5em\relax\parfillskip=0pt plus 1fil\relax\hyphenpenalty=50\relax\def\margin##1{{[##1]}}}
+\newcommand\LMtrial[2]{%
+ \LMtrialtrue\directlua{LM.measure=true LM.maxw=0}%
+ \setbox\LMmbox\vbox{\hsize=#1\relax\@parboxrestore\LMmarginstyle #2\par}%
+ \LMtrialfalse\directlua{LM.measure=false tex.setdimen("LMmw",LM.maxw)}%
+ \LMmh=\dimexpr\ht\LMmbox+\dp\LMmbox\relax}
+\newcommand\LMinblock[1]{%
+ \directlua{LM.blocknotes=LM.blocknotes+1}%
+ \par\smallskip\noindent{\color{gray}\rule{.20\linewidth}{.35pt}}\par\nobreak
+ \begingroup\LMmarginstyle\parindent=0pt\@beginparpenalty=10000\relax
+ \noindent\textit{\LMnotelabel.}\enspace #1\par\endgroup\smallskip}
+\newcommand\LMmargin[1]{\begingroup\LMgetnoteref
+ \LMtrial{\marginparwidth}{#1}%
+ \ifdim\LMmw>\marginparwidth\LMnotemark{\LMcurrentnoteref}\LMinblock{\textsuperscript{m\LMcurrentnoteref}\ #1}%
+ \else\ifdim\LMmh>33pt\LMnotemark{\LMcurrentnoteref}\LMinblock{\textsuperscript{m\LMcurrentnoteref}\ #1}%
+ \else\directlua{LM.shortnotes=LM.shortnotes+1}\marginpar{\LMmarginstyle #1}%
+ \fi\fi\endgroup}
+% This source-local wrapper retains both consecutive short notes on separate lines.
+\newcommand\LMpairedmargins[1]{\begingroup
+ \marginpar{\LMmarginstyle
+  \def\margin##1{\LMgetnoteref\directlua{LM.shortnotes=LM.shortnotes+1}\noindent##1\par}#1}%
+ \endgroup}
+\newcounter{LMnoteref}
+\newcommand\LMpendingnotes{}
+\newcommand\LMpendingpages{}
+\newcommand\LMqueuepage[1]{\ifLMtrial\else\directlua{LM.pagequeue("\luaescapestring{\LMsourceid}")}\ifnum\LMnotefresh=1\g@addto@macro\LMpendingpages{\marginpar{\footnotesize\raggedright\textcolor{gray}{[p.~#1]}}}\fi\fi}
+\newcommand\LMflushpages{\ifinner\else\LMpendingpages\global\let\LMpendingpages\@empty\fi}
+\newcommand\LMnotemark[1]{\ifmmode{}^{\scriptscriptstyle\text{\color{gray}m#1}}\else\textsuperscript{\color{gray}m#1}\fi}
+\newcommand\LMqueuenote[1]{%
+ \LMgetnoteref\LMnotemark{\LMcurrentnoteref}%
+ \ifnum\LMnotefresh=1\begingroup\edef\LMnext{\endgroup\noexpand\g@addto@macro\noexpand\LMpendingnotes{\noexpand\LMqueuednote{\LMcurrentnoteref}{\the\LMattr}{\unexpanded{#1}}}}\LMnext\fi}
+\newcommand\LMqueuednote[3]{\begingroup\LMattr=#2\relax\ifnum#2>0\color{blue}\fi\LMinblock{\textsuperscript{m#1}\ #3}\endgroup}
+\newcommand\LMflushnotes{\ifinner\else\begingroup\let\LMnextnotes\LMpendingnotes\global\let\LMpendingnotes\@empty\LMnextnotes\endgroup\fi}
+\newcommand\margin[1]{\ifmmode\LMqueuenote{\(#1\)}\else\ifinner\LMqueuenote{#1}\else\LMmargin{#1}\fi\fi}
+\AddToHook{env/equation*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/equation/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/align*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/align/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/gather*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/center/after}{\LMflushnotes\LMflushpages}
+\makeatother
+\newenvironment{LMapparatus}{\par\smallskip\begingroup\LMinApp=1\footnotesize\Needspace{4\baselineskip}\csname @beginparpenalty\endcsname=10000\relax\noindent\textcolor{gray}{\rule{.26\linewidth}{.35pt}}\par\nobreak\noindent\textbf{\LMappheading}\par\nobreak\smallskip}{\par\endgroup}
+\newcommand\LMentry[6]{\par\noindent{\color{gray}\texttt{#1}}\enspace\textit{#2.}\enspace\textit{\LMmanuscriptlabel:}\enspace #3\par\noindent\textit{\LMcorrectedlabel:}\enspace #4\enspace\textit{\LMreasonlabel:}\enspace #5\par\smallskip}
+\newcommand\LMcarryover[2]{\par\noindent{\scriptsize\color{gray}\texttt{#1}}\enspace #2\par}
+
+\begin{document}\LMcote{140-4}
+\clearpage\LMform=0\noindent Fixture en-0-140.\par
+\vspace*{\dimexpr\textheight-140pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=0\noindent Fixture en-0-400.\par
+\vspace*{\dimexpr\textheight-400pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=0\noindent Fixture en-0-490.\par
+\vspace*{\dimexpr\textheight-490pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=0\noindent Fixture en-0-530.\par
+\vspace*{\dimexpr\textheight-530pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=1\noindent Fixture en-1-140.\par
+\vspace*{\dimexpr\textheight-140pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=1\noindent Fixture en-1-400.\par
+\vspace*{\dimexpr\textheight-400pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=1\noindent Fixture en-1-490.\par
+\vspace*{\dimexpr\textheight-490pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=1\noindent Fixture en-1-530.\par
+\vspace*{\dimexpr\textheight-530pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=2\noindent Fixture en-2-140.\par
+\vspace*{\dimexpr\textheight-140pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=2\noindent Fixture en-2-400.\par
+\vspace*{\dimexpr\textheight-400pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=2\noindent Fixture en-2-490.\par
+\vspace*{\dimexpr\textheight-490pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\clearpage\LMform=2\noindent Fixture en-2-530.\par
+\vspace*{\dimexpr\textheight-530pt-\baselineskip\relax}
+\ifnum\LMform<2\Needspace{\dimexpr123mm+11\baselineskip\relax}\subsection*{Scans 134--152}\fi
+\scanpage{134}
+
+\margin{\figure{\begin{tikzpicture}\draw (0,0) -- (0.43,-12.3);\end{tikzpicture}}}
+
+of $\mathcal M$ satisfying the following conditions
+
+
+\par\noindent Following text.\par
+\end{document}
