@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm,marginparwidth=20mm,marginparsep=10pt]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{unicode-math}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx,xcolor,tikz,tikz-cd,pdflscape,needspace}
+\usetikzlibrary{calc,decorations.pathmorphing,decorations.pathreplacing,arrows.meta,shapes.geometric}
+\usepackage{newunicodechar,luacode,xurl}
+\usepackage[hidelinks,unicode,hypertexnames=false]{hyperref}
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+\setmathfont{STIX Two Math}[range={"27CB,"27CD}]
+% Source boldsymbol calls all request Gamma; restore its actual bold glyph.
+\renewcommand\boldsymbol[1]{\symbf{#1}}
+\newfontfamily\cyrfont{STIX Two Text}[Scale=MatchLowercase]
+% CYRILLIC DEFINITIONS
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newattribute\LMattr
+\newcount\LMform
+\newcount\LMinApp
+\LMform=1
+\LMinApp=0
+\newcommand\LMlanguage{fr}
+\newcommand\LMcotename{}
+\newcommand\LMcote[1]{\gdef\LMcotename{#1}}
+\newcommand\LMnotelabel{Note marginale}
+\newcommand\LMappheading{Apparat du scan}
+\newcommand\LMdoubtheading{Doutes conservés dans les passages biffés}
+\newcommand\LMmanuscriptlabel{Manuscrit}
+\newcommand\LMcorrectedlabel{Texte}
+\newcommand\LMreasonlabel{Motif}
+\newcommand\LMomittedlabel{omis}
+\newcommand\LMinsertedlabel{ajout intégré}
+\newcommand\LMlayoutlabel{Diagramme continué sur la page en paysage}
+\newcommand\LMvarref[1]{\ifmmode\else\ifinner\else\textsuperscript{\textcolor{gray}{\LMreftext{#1}}}\fi\fi}
+\newcommand\LMreftext[1]{\directlua{LM.reftext("\luaescapestring{#1}")}}
+\newcommand\var[4]{\ifcase\LMform #1\or #2\ifnum\LMinApp=0\LMvarref{#4}\fi\or #2\fi}
+\newcommand\LMcancelledtag[1]{\ifnum\LMform=0\tag{#1}\else\tag*{#1}\fi}
+\newcommand\LMadded[1]{{\color{teal}#1}}
+\newcommand\deleted[1]{{\color{gray}#1}}
+\newcommand\inserted[1]{{\color{teal}#1}}
+\newcommand\LMarchivefooter[3]{#2}
+\newcommand\LMsourceid{}
+\newcommand\LMsourceMark[2]{{\def\LMsourceid{#1}#2}}
+\newcommand\LMmark[1]{\directlua{LM.mark("#1",tex.inputlineno)}}
+\newcommand\unsure[1]{{\color{blue}\LMmark{unsure}#1}}
+\newcommand\illegible[1]{{\LMmark{illegible}\textcolor{red}{[illeg.~#1]}}}
+\newcommand\LMuncertaindeletion[1]{{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}}
+\newcommand\LMdoubtcopy[1]{{\color{blue}\LMmark{residual-unsure}#1}}
+\newcommand\LMdoubtdata[1]{}
+\newcommand\LMcancelledDoubts[1]{\ifnum\LMform=2{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}\fi}
+\newcommand\scanpage[1]{%
+ \par\LMflushnotes\LMflushpages\smallskip\directlua{LM.at("\luaescapestring{\LMcotename}","\luaescapestring{\detokenize{#1}}")}%
+ \ifnum\LMform=2\noindent\marginpar{\footnotesize\raggedright\LMmark{scan}\textcolor{gray}{[scan #1]}}%
+ \else\noindent{\footnotesize\LMmark{scan}\textcolor{gray}{[scan #1]}}\par\nobreak\fi}
+\newcommand\mspage[1]{\ifnum\LMform=2\ifinner\LMqueuepage{#1}\else\marginpar{\footnotesize\raggedright\textcolor{gray}{[p.~#1]}}\fi\else{\footnotesize\textcolor{gray}{[p.~#1]}}\ \fi}
+\newcommand\diagram[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\LMflushnotes\LMflushpages\fi\fi}
+\let\figure\relax\newcommand\figure[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\LMflushnotes\LMflushpages\fi\fi}
+\newcommand\LMpagefigure[2]{\ifnum\LMform=2\marginpar{\footnotesize\raggedright\textcolor{gray}{\textcircled{#2}}}\else#1\fi}
+\newcommand\LMmathnotice[1]{\par\noindent{\footnotesize\color{gray}[\ensuremath{\hookrightarrow}\ #1]}\par}
+\newcommand\LMlayoutnotice[1]{\par\noindent{\footnotesize\color{gray}[\LMlayoutlabel; #1]}\par}
+\tolerance=1200
+\emergencystretch=3em
+\tracinglostchars=3
+\hfuzz=0pt
+\vfuzz=0pt
+\raggedbottom
+\setcounter{tocdepth}{1}
+\setlength\parindent{1.3em}
+\setlength\parskip{1.5pt plus 1pt}
+\allowdisplaybreaks[2]
+% LUA CODE
+\makeatletter
+\AtBeginDocument{\let\LMsimeq\simeq\protected\def\simeq{\ifmmode\LMsimeq\else$\LMsimeq$\fi}%
+ \let\LMGamma\Gamma\protected\def\Gamma{\ifmmode\LMGamma\else$\LMGamma$\fi}}
+\output\expandafter{\expandafter\unsetattribute\expandafter\LMattr\the\output}
+\AtEndDocument{\clearpage\directlua{LM.summary()}}
+\newif\ifLMtrial
+\newcount\LMnotefresh
+\newcommand\LMcurrentnoteref{}
+\newcommand\LMgetnoteref{\directlua{LM.noteref("\luaescapestring{\LMsourceid}")}}
+\newsavebox\LMmbox
+\newdimen\LMmw
+\newdimen\LMmh
+\newdimen\LMnotewidth
+\newcommand\LMmarginstyle{\footnotesize\rightskip=0pt plus 2.5em\relax\parfillskip=0pt plus 1fil\relax\hyphenpenalty=50\relax\def\margin##1{{[##1]}}}
+\newcommand\LMtrial[2]{%
+ \LMtrialtrue\directlua{LM.measure=true LM.maxw=0}%
+ \setbox\LMmbox\vbox{\hsize=#1\relax\@parboxrestore\LMmarginstyle #2\par}%
+ \LMtrialfalse\directlua{LM.measure=false tex.setdimen("LMmw",LM.maxw)}%
+ \LMmh=\dimexpr\ht\LMmbox+\dp\LMmbox\relax}
+\newcommand\LMinblock[1]{%
+ \directlua{LM.blocknotes=LM.blocknotes+1}%
+ \par\smallskip\noindent{\color{gray}\rule{.20\linewidth}{.35pt}}\par\nobreak
+ \begingroup\LMmarginstyle\parindent=0pt\@beginparpenalty=10000\relax
+ \noindent\textit{\LMnotelabel.}\enspace #1\par\endgroup\smallskip}
+\newcommand\LMmargin[1]{\begingroup\LMgetnoteref
+ \LMtrial{\marginparwidth}{#1}%
+ \ifdim\LMmw>\marginparwidth\LMnotemark{\LMcurrentnoteref}\LMinblock{\textsuperscript{m\LMcurrentnoteref}\ #1}%
+ \else\ifdim\LMmh>33pt\LMnotemark{\LMcurrentnoteref}\LMinblock{\textsuperscript{m\LMcurrentnoteref}\ #1}%
+ \else\directlua{LM.shortnotes=LM.shortnotes+1}\marginpar{\LMmarginstyle #1}%
+ \fi\fi\endgroup}
+% This source-local wrapper retains both consecutive short notes on separate lines.
+\newcommand\LMpairedmargins[1]{\begingroup
+ \marginpar{\LMmarginstyle
+  \def\margin##1{\LMgetnoteref\directlua{LM.shortnotes=LM.shortnotes+1}\noindent##1\par}#1}%
+ \endgroup}
+\newcounter{LMnoteref}
+\newcommand\LMpendingnotes{}
+\newcommand\LMpendingpages{}
+\newcommand\LMqueuepage[1]{\ifLMtrial\else\directlua{LM.pagequeue("\luaescapestring{\LMsourceid}")}\ifnum\LMnotefresh=1\g@addto@macro\LMpendingpages{\marginpar{\footnotesize\raggedright\textcolor{gray}{[p.~#1]}}}\fi\fi}
+\newcommand\LMflushpages{\ifinner\else\LMpendingpages\global\let\LMpendingpages\@empty\fi}
+\newcommand\LMnotemark[1]{\ifmmode{}^{\scriptscriptstyle\text{\color{gray}m#1}}\else\textsuperscript{\color{gray}m#1}\fi}
+\newcommand\LMqueuenote[1]{%
+ \LMgetnoteref\LMnotemark{\LMcurrentnoteref}%
+ \ifnum\LMnotefresh=1\begingroup\edef\LMnext{\endgroup\noexpand\g@addto@macro\noexpand\LMpendingnotes{\noexpand\LMqueuednote{\LMcurrentnoteref}{\the\LMattr}{\unexpanded{#1}}}}\LMnext\fi}
+\newcommand\LMqueuednote[3]{\begingroup\LMattr=#2\relax\ifnum#2>0\color{blue}\fi\LMinblock{\textsuperscript{m#1}\ #3}\endgroup}
+\newcommand\LMflushnotes{\ifinner\else\begingroup\let\LMnextnotes\LMpendingnotes\global\let\LMpendingnotes\@empty\LMnextnotes\endgroup\fi}
+\newcommand\margin[1]{\ifmmode\LMqueuenote{\(#1\)}\else\ifinner\LMqueuenote{#1}\else\LMmargin{#1}\fi\fi}
+\AddToHook{env/equation*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/equation/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/align*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/align/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/gather*/after}{\LMflushnotes\LMflushpages}
+\AddToHook{env/center/after}{\LMflushnotes\LMflushpages}
+\makeatother
+\newenvironment{LMapparatus}{\par\smallskip\begingroup\LMinApp=1\footnotesize\Needspace{4\baselineskip}\csname @beginparpenalty\endcsname=10000\relax\noindent\textcolor{gray}{\rule{.26\linewidth}{.35pt}}\par\nobreak\noindent\textbf{\LMappheading}\par\nobreak\smallskip}{\par\endgroup}
+\newcommand\LMentry[6]{\par\noindent{\color{gray}\texttt{#1}}\enspace\textit{#2.}\enspace\textit{\LMmanuscriptlabel:}\enspace #3\par\noindent\textit{\LMcorrectedlabel:}\enspace #4\enspace\textit{\LMreasonlabel:}\enspace #5\par\smallskip}
+\newcommand\LMcarryover[2]{\par\noindent{\scriptsize\color{gray}\texttt{#1}}\enspace #2\par}

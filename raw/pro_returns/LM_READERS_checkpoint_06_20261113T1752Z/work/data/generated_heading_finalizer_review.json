@@ -1,0 +1,25 @@
+{
+  "schema": "audit-script-review-v1",
+  "status": "CONCRETE_REVIEW_FINDINGS_RESOLVED",
+  "script": {
+    "path": "work/scripts/verify_generated_heading_final.py",
+    "sha256": "fd9fe97409ea2df4d1b2cab35837623530392a798c67e0df4491533ccc8888e5"
+  },
+  "reviewer": "assistant/editorial",
+  "review_basis": "Independent read-only code review and synthetic localization validation; no publication PDF read and no final preparation run.",
+  "findings": [
+    {
+      "id": "GHGATE-ANCHOR-PAGE",
+      "finding": "A supplied same-page claim could previously pass even when the prepared title was on page 10 and the exact entry anchor was on page 11.",
+      "resolution": "Known title and first-content claims are constrained to their prepared title and exact source-entry anchor hits. Range titles remain source-qualified and require actual content observations.",
+      "verification": "Independent synthetic heading10/anchor11 case is rejected specifically for the anchor mismatch; changing only the prepared anchor to10 passes."
+    },
+    {
+      "id": "GHGATE-IMMUTABLE-SOURCE-FIELDS",
+      "finding": "An unrestricted observation merge could overwrite source metadata after validation.",
+      "resolution": "The merge admits only reviewer, observation, page, image and observation-record reference fields. Source identity and localization remain from the prepared item.",
+      "verification": "Independent review confirmed the whitelist preserves prepared source metadata."
+    }
+  ],
+  "publication_visual_clearance_granted": false
+}

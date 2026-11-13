@@ -1,0 +1,3788 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm,marginparwidth=20mm,marginparsep=10pt]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{unicode-math}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx,xcolor,tikz,tikz-cd,pdflscape,needspace}
+\usetikzlibrary{calc,decorations.pathmorphing,decorations.pathreplacing,arrows.meta,shapes.geometric}
+\usepackage{newunicodechar,luacode,xurl}
+\usepackage[hidelinks,unicode]{hyperref}
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+\setmathfont{STIX Two Math}[range={"27CB,"27CD}]
+\newfontfamily\cyrfont{STIX Two Text}[Scale=MatchLowercase]
+\newunicodechar{А}{{\cyrfont\char"0410}}
+\newunicodechar{Б}{{\cyrfont\char"0411}}
+\newunicodechar{В}{{\cyrfont\char"0412}}
+\newunicodechar{Г}{{\cyrfont\char"0413}}
+\newunicodechar{Д}{{\cyrfont\char"0414}}
+\newunicodechar{Е}{{\cyrfont\char"0415}}
+\newunicodechar{Ж}{{\cyrfont\char"0416}}
+\newunicodechar{З}{{\cyrfont\char"0417}}
+\newunicodechar{И}{{\cyrfont\char"0418}}
+\newunicodechar{Й}{{\cyrfont\char"0419}}
+\newunicodechar{К}{{\cyrfont\char"041A}}
+\newunicodechar{Л}{{\cyrfont\char"041B}}
+\newunicodechar{М}{{\cyrfont\char"041C}}
+\newunicodechar{Н}{{\cyrfont\char"041D}}
+\newunicodechar{О}{{\cyrfont\char"041E}}
+\newunicodechar{П}{{\cyrfont\char"041F}}
+\newunicodechar{Р}{{\cyrfont\char"0420}}
+\newunicodechar{С}{{\cyrfont\char"0421}}
+\newunicodechar{Т}{{\cyrfont\char"0422}}
+\newunicodechar{У}{{\cyrfont\char"0423}}
+\newunicodechar{Ф}{{\cyrfont\char"0424}}
+\newunicodechar{Х}{{\cyrfont\char"0425}}
+\newunicodechar{Ц}{{\cyrfont\char"0426}}
+\newunicodechar{Ч}{{\cyrfont\char"0427}}
+\newunicodechar{Ш}{{\cyrfont\char"0428}}
+\newunicodechar{Щ}{{\cyrfont\char"0429}}
+\newunicodechar{Ъ}{{\cyrfont\char"042A}}
+\newunicodechar{Ы}{{\cyrfont\char"042B}}
+\newunicodechar{Ь}{{\cyrfont\char"042C}}
+\newunicodechar{Э}{{\cyrfont\char"042D}}
+\newunicodechar{Ю}{{\cyrfont\char"042E}}
+\newunicodechar{Я}{{\cyrfont\char"042F}}
+\newunicodechar{а}{{\cyrfont\char"0430}}
+\newunicodechar{б}{{\cyrfont\char"0431}}
+\newunicodechar{в}{{\cyrfont\char"0432}}
+\newunicodechar{г}{{\cyrfont\char"0433}}
+\newunicodechar{д}{{\cyrfont\char"0434}}
+\newunicodechar{е}{{\cyrfont\char"0435}}
+\newunicodechar{ж}{{\cyrfont\char"0436}}
+\newunicodechar{з}{{\cyrfont\char"0437}}
+\newunicodechar{и}{{\cyrfont\char"0438}}
+\newunicodechar{й}{{\cyrfont\char"0439}}
+\newunicodechar{к}{{\cyrfont\char"043A}}
+\newunicodechar{л}{{\cyrfont\char"043B}}
+\newunicodechar{м}{{\cyrfont\char"043C}}
+\newunicodechar{н}{{\cyrfont\char"043D}}
+\newunicodechar{о}{{\cyrfont\char"043E}}
+\newunicodechar{п}{{\cyrfont\char"043F}}
+\newunicodechar{р}{{\cyrfont\char"0440}}
+\newunicodechar{с}{{\cyrfont\char"0441}}
+\newunicodechar{т}{{\cyrfont\char"0442}}
+\newunicodechar{у}{{\cyrfont\char"0443}}
+\newunicodechar{ф}{{\cyrfont\char"0444}}
+\newunicodechar{х}{{\cyrfont\char"0445}}
+\newunicodechar{ц}{{\cyrfont\char"0446}}
+\newunicodechar{ч}{{\cyrfont\char"0447}}
+\newunicodechar{ш}{{\cyrfont\char"0448}}
+\newunicodechar{щ}{{\cyrfont\char"0449}}
+\newunicodechar{ъ}{{\cyrfont\char"044A}}
+\newunicodechar{ы}{{\cyrfont\char"044B}}
+\newunicodechar{ь}{{\cyrfont\char"044C}}
+\newunicodechar{э}{{\cyrfont\char"044D}}
+\newunicodechar{ю}{{\cyrfont\char"044E}}
+\newunicodechar{я}{{\cyrfont\char"044F}}
+\newunicodechar{≃}{\ensuremath{\simeq}}
+\newattribute\LMattr
+\newcount\LMform
+\newcount\LMinApp
+\LMform=1
+\LMinApp=0
+\newcommand\LMlanguage{fr}
+\newcommand\LMcotename{}
+\newcommand\LMcote[1]{\gdef\LMcotename{#1}}
+\newcommand\LMnotelabel{Note marginale}
+\newcommand\LMappheading{Apparat du scan}
+\newcommand\LMdoubtheading{Doutes conservés dans les passages biffés}
+\newcommand\LMmanuscriptlabel{Manuscrit}
+\newcommand\LMcorrectedlabel{Texte}
+\newcommand\LMreasonlabel{Motif}
+\newcommand\LMomittedlabel{omis}
+\newcommand\LMinsertedlabel{ajout intégré}
+\newcommand\LMlayoutlabel{Diagramme continué sur la page en paysage}
+\newcommand\LMvarref[1]{\ifmmode{}^{\scriptscriptstyle\text{\textcolor{gray}{\LMreftext{#1}}}}\else\textsuperscript{\textcolor{gray}{\LMreftext{#1}}}\fi}
+\newcommand\LMreftext[1]{\directlua{LM.reftext("\luaescapestring{#1}")}}
+\newcommand\var[4]{\ifcase\LMform #1\or #2\ifnum\LMinApp=0\LMvarref{#4}\fi\or #2\fi}
+\newcommand\LMadded[1]{{\color{teal}#1}}
+\newcommand\deleted[1]{{\color{gray}#1}}
+\newcommand\inserted[1]{{\color{teal}#1}}
+\newcommand\LMarchivefooter[3]{#2}
+\newcommand\LMmark[1]{\directlua{LM.mark("#1",tex.inputlineno)}}
+\newcommand\unsure[1]{{\color{blue}\LMmark{unsure}#1}}
+\newcommand\illegible[1]{{\LMmark{illegible}\textcolor{red}{[illeg.~#1]}}}
+\newcommand\LMuncertaindeletion[1]{{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}}
+\newcommand\LMdoubtcopy[1]{{\color{blue}\LMmark{residual-unsure}#1}}
+\newcommand\LMdoubtdata[1]{}
+\newcommand\LMcancelledDoubts[1]{\ifnum\LMform=2{\color{blue}\LMmark{cancelled-anchor}\ensuremath{\dagger}}\fi}
+\newcommand\scanpage[1]{%
+ \par\smallskip\directlua{LM.at("\luaescapestring{\LMcotename}","\luaescapestring{\detokenize{#1}}")}%
+ \ifnum\LMform=2\noindent\marginpar{\footnotesize\raggedright\LMmark{scan}\textcolor{gray}{[scan #1]}}%
+ \else\noindent{\footnotesize\LMmark{scan}\textcolor{gray}{[scan #1]}}\par\nobreak\fi}
+\newcommand\mspage[1]{\ifnum\LMform=2\ifmmode\text{\footnotesize\textcolor{gray}{[p.~#1]}}\else\marginpar{\footnotesize\raggedright\textcolor{gray}{[p.~#1]}}\fi\else{\footnotesize\textcolor{gray}{[p.~#1]}}\ \fi}
+\newcommand\diagram[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\fi\fi}
+\let\figure\relax\newcommand\figure[1]{\ifmmode\vcenter{\hbox{#1}}\else\ifinner #1\else\par\begin{center}#1\end{center}\par\fi\fi}
+\newcommand\LMlayoutnotice[1]{\par\noindent{\footnotesize\color{gray}[\LMlayoutlabel; #1]}\par}
+\tolerance=1200
+\emergencystretch=3em
+\tracinglostchars=3
+\hfuzz=0pt
+\vfuzz=0pt
+\raggedbottom
+\setcounter{tocdepth}{1}
+\setlength\parindent{1.3em}
+\setlength\parskip{1.5pt plus 1pt}
+\allowdisplaybreaks[2]
+\begin{luacode*}
+-- Marked passages are linked at shipout, including paragraphs and mathematics.
+-- No node, line, display or font is scaled by this code.
+LM = {measure=false, maxw=0, markers={}, links=0, pages=0, scanmap={}, trial_overfull=0, shortnotes=0, blocknotes=0}
+local F=LM
+local A=luatexbase.registernumber('LMattr')
+local HLIST,VLIST,GLUE,KERN,WHATSIT,GLYPH,PENALTY,MATH = node.id('hlist'),node.id('vlist'),node.id('glue'),node.id('kern'),node.id('whatsit'),node.id('glyph'),node.id('penalty'),node.id('math')
+local STARTLINK,ENDLINK,ACTION=node.subtype('pdf_start_link'),node.subtype('pdf_end_link'),node.subtype('pdf_action')
+local inert={[GLUE]=true,[KERN]=true,[PENALTY]=true,[WHATSIT]=true,[MATH]=true}
+function F.at(cote,scan)
+ F.cote=cote;F.scan=tonumber(string.match(scan,'^%s*(%d+)')) or 0
+end
+function F.mark(kind,line)
+ if F.measure or not F.cote or not F.scan or F.scan==0 then return end
+ local parent=tex.attribute[A]
+ if not parent or parent<1 then parent=0 end
+ local id=#F.markers+1
+ F.markers[id]={id=id,kind=kind,cote=F.cote,scan=F.scan,line=line,parent=parent,runs=0,pages={}}
+ tex.attribute[A]=id
+end
+local function url(m)
+ return 'https://grothendieck.umontpellier.fr/web/viewer.html?file=../'..m.cote..'.pdf#page='..m.scan
+end
+local function collect(n,ids)
+ local v=node.has_attribute(n,A)
+ if v and v>0 then ids[v]=true end
+ if (n.id==HLIST or n.id==VLIST) and n.head then for q in node.traverse(n.head) do collect(q,ids) end end
+end
+local function cover(id)
+ local m=F.markers[id]
+ if not m then return end
+ m.runs=m.runs+1;m.pages[F.pages]=true
+ local key=m.cote..':'..m.scan
+ F.scanmap[key]=F.scanmap[key] or {};F.scanmap[key][F.pages]=true
+ if m.parent>0 then cover(m.parent) end
+end
+local link_lists
+local function link_runs(box)
+ local n=box.head
+ while n do
+  local v=node.has_attribute(n,A)
+  if v and v>0 and F.markers[v] and not inert[n.id] then
+   local last,m=n,n.next
+   while m do
+    if inert[m.id] then
+    elseif node.has_attribute(m,A)==v then last=m
+    else break end
+    m=m.next
+   end
+   local ids={};local q=n
+   while q do collect(q,ids);if q==last then break end;q=q.next end
+   local sorted={};for id in pairs(ids) do sorted[#sorted+1]=id;cover(id) end;table.sort(sorted)
+   local w,h,d=node.dimensions(box.glue_set,box.glue_sign,box.glue_order,n,last.next)
+   local s=node.new(WHATSIT,STARTLINK);s.width=w;s.height=h;s.depth=d
+   local a=node.new(WHATSIT,ACTION);a.action_type=3
+   a.data='/Subtype/Link/Border[0 0 0]/NM(LM'..table.concat(sorted,',')..')/A<</Type/Action/S/URI/URI('..url(F.markers[v])..')>>'
+   s.action=a
+   local e=node.new(WHATSIT,ENDLINK)
+   box.head=node.insert_before(box.head,n,s);node.insert_after(box.head,last,e)
+   F.links=F.links+1;n=e.next
+  else
+   if n.id==HLIST then link_runs(n) elseif n.id==VLIST then link_lists(n) end
+   n=n.next
+  end
+ end
+end
+link_lists=function(box)
+ for n in node.traverse(box.head) do
+  if n.id==HLIST then link_runs(n) elseif n.id==VLIST then link_lists(n) end
+ end
+end
+luatexbase.add_to_callback('pre_shipout_filter',function(box)
+ F.pages=F.pages+1
+ if box.id==HLIST then link_runs(box) elseif box.id==VLIST then link_lists(box) end
+ return true
+end,'lm.scanlinks')
+-- Only discarded margin trials are measured; actual pages are never fitted.
+luatexbase.add_to_callback('post_linebreak_filter',function(head)
+ if F.measure then
+  for line in node.traverse_id(HLIST,head) do
+   if line.head then
+    local nw=node.dimensions(line.glue_set,line.glue_sign,line.glue_order,line.head)
+    if nw>F.maxw then F.maxw=nw end
+   end
+  end
+ end
+ return head
+end,'lm.measure.margin')
+-- hpack_quality replaces the engine's reporter; every actual overfull is
+-- reported, with its exact width and input lines. Discarded trials are separate.
+luatexbase.add_to_callback('hpack_quality',function(incident,detail,head,first,last)
+ if incident=='overfull' then
+  if F.measure then F.trial_overfull=F.trial_overfull+1
+  else texio.write_nl('term and log',string.format('Overfull \\hbox (%.5fpt too wide) at lines %d--%d',detail/65536,first,last)) end
+ elseif incident=='underfull' and not F.measure and detail>=1000 then
+  texio.write_nl('log',string.format('Underfull \\hbox (badness %d) at lines %d--%d',detail,first,last))
+ end
+end,'lm.quality.report')
+function F.summary()
+ local f=assert(io.open(tex.jobname..'.lm-links.tsv','w'))
+ f:write('marker\tkind\tcote\tscan\ttex_line\tparent\tlinked_runs\tphysical_pages\n')
+ local missing=0
+ for _,m in ipairs(F.markers) do
+  local ps={};for p in pairs(m.pages) do ps[#ps+1]=p end;table.sort(ps)
+  if m.runs==0 then missing=missing+1 end
+  f:write(table.concat({m.id,m.kind,m.cote,m.scan,m.line,m.parent,m.runs,table.concat(ps,',')},'\t'),'\n')
+ end
+ f:close()
+ local g=assert(io.open(tex.jobname..'.lm-scans.tsv','w'));g:write('cote\tscan\tphysical_pages\n')
+ local ks={};for k in pairs(F.scanmap) do ks[#ks+1]=k end;table.sort(ks)
+ for _,k in ipairs(ks) do
+  local cote,scan=string.match(k,'(.*):(%d+)');local ps={};for p in pairs(F.scanmap[k]) do ps[#ps+1]=p end;table.sort(ps)
+  g:write(cote,'\t',scan,'\t',table.concat(ps,','),'\n')
+ end;g:close()
+ texio.write_nl('term and log',string.format('LM-AUDIT markers=%d links=%d unlinked=%d scans=%d pages=%d margin_short=%d margin_block=%d discarded_trial_overfull=%d',#F.markers,F.links,missing,#ks,F.pages,F.shortnotes,F.blocknotes,F.trial_overfull))
+end
+
+function LM.reftext(s)
+ local a,b=string.match(s,'([A-Z])0*(%d+)$')
+ tex.sprint(a and (string.lower(a)..b) or '*')
+end
+
+\end{luacode*}
+\makeatletter
+\AtBeginDocument{\let\LMsimeq\simeq\protected\def\simeq{\ifmmode\LMsimeq\else$\LMsimeq$\fi}%
+ \let\LMGamma\Gamma\protected\def\Gamma{\ifmmode\LMGamma\else$\LMGamma$\fi}}
+\output\expandafter{\expandafter\unsetattribute\expandafter\LMattr\the\output}
+\AtEndDocument{\clearpage\directlua{LM.summary()}}
+\newsavebox\LMmbox
+\newdimen\LMmw
+\newdimen\LMmh
+\newdimen\LMnotewidth
+\newcommand\LMmarginstyle{\footnotesize\rightskip=0pt plus 2.5em\relax\parfillskip=0pt plus 1fil\relax\hyphenpenalty=50\relax\def\margin##1{{[##1]}}}
+\newcommand\LMtrial[2]{%
+ \directlua{LM.measure=true LM.maxw=0}%
+ \setbox\LMmbox\vbox{\hsize=#1\relax\@parboxrestore\LMmarginstyle #2\par}%
+ \directlua{LM.measure=false tex.setdimen("LMmw",LM.maxw)}%
+ \LMmh=\dimexpr\ht\LMmbox+\dp\LMmbox\relax}
+\newcommand\LMblock{\nobreak\vskip3pt\moveright\@totalleftmargin\hbox to\linewidth{\hfill{\color{gray}\vrule width.6pt}\hskip5pt\box\LMmbox}\vskip3pt}
+\newcommand\LMinblock[1]{%
+ \directlua{LM.blocknotes=LM.blocknotes+1}%
+ \par\smallskip\noindent{\color{gray}\rule{.20\linewidth}{.35pt}}\par\nobreak
+ \begingroup\LMmarginstyle\parindent=0pt\noindent\textit{\LMnotelabel.}\enspace #1\par\endgroup\smallskip}
+\newcommand\LMmargin[1]{\begingroup
+ \LMtrial{\marginparwidth}{#1}%
+ \ifdim\LMmw>\marginparwidth\LMinblock{#1}%
+ \else\ifdim\LMmh>33pt\LMinblock{#1}%
+ \else\directlua{LM.shortnotes=LM.shortnotes+1}\marginpar{\LMmarginstyle #1}%
+ \fi\fi\endgroup}
+\newcommand\margin[1]{\ifmmode\text{\footnotesize[#1]}\else\ifinner{\footnotesize[#1]}\else\LMmargin{#1}\fi\fi}
+\makeatother
+\newenvironment{LMapparatus}{\par\smallskip\begingroup\LMinApp=1\footnotesize\noindent\textcolor{gray}{\rule{.26\linewidth}{.35pt}}\par\noindent\textbf{\LMappheading}\par\smallskip}{\par\endgroup}
+\newcommand\LMentry[6]{\par\noindent{\color{gray}\texttt{#1}}\enspace\textit{#2.}\enspace\textit{\LMmanuscriptlabel:}\enspace #3\par\noindent\textit{\LMcorrectedlabel:}\enspace #4\enspace\textit{\LMreasonlabel:}\enspace #5\par\smallskip}
+\newcommand\LMcarryover[2]{\par\noindent{\scriptsize\color{gray}\texttt{#1}}\enspace #2\par}
+\providecommand\LMmathnotice[1]{\textsuperscript{\textcolor{gray}{[M1]}}}
+
+\LMform=0
+\begin{document}
+\clearpage
+\LMcote{140-1}
+\typeout{LMLAYOUTSCAN 140-1 10}
+\scanpage{10}
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&,column sep=1.2em,row sep=1.7em,column sep=5pt,row sep=12pt,execute at begin picture={\fontsize{8.2}{10.2}\selectfont}]
+\Pi_{0,3}^{D} \arrow[r] \arrow[ddrr]
+\& \Pi_{0,3}^{D}/\uline{\Pi'_{0,3}} \arrow[r,"\sim"]
+\& \overbrace{\mathbb Z/6\mathbb Z\times_{\mathbb Z/2\mathbb Z}\mathbb D_3}^{18}
+  \arrow[rr,"{\simeq(\mathbb F_3\times\mathbb F_3)\unsure{\rtimes|\cdot}\{1,\sigma\}}"]
+  \arrow[dd]
+\& \& \mathbb Z/6\mathbb Z \arrow[r]
+\& \mathbb Z/2\mathbb Z
+\\
+\mathrm S\ell(2,\mathbb Z) \arrow[u] \arrow[rrr]
+  \arrow[ddrrr]
+\& \begin{gathered}\text{sous-groupe}\\
+   \text{d'indice }3\text{ de }\Pi_{0,3}\\
+   \text{obtenu en}\\
+   \text{faisant }\rho_0=\unsure{\rho_1}(=\rho_\infty)\\
+   \rho_0^3=1\end{gathered}
+\& \& \begin{gathered}\deleted{\unsure{\mathrm S\ell(2,\mathbb Z)/\varepsilon}}\quad\mathcal E^{36}\\
+\simeq\mathrm S\ell(2,\mathbb Z/6\mathbb Z)/\bigl(\text{sous-groupe d'ordre }2\bigr)\\
+\text{à déterminer}\end{gathered}
+\arrow[ul] \arrow[dd] \arrow[r]
+\& \deleted{\unsure{\mathbb Z/2\mathbb Z}}\ \mathbb Z/12\mathbb Z
+  \arrow[u] \arrow[ur] \arrow[r,no head]
+\& \mathbb Z/4\mathbb Z \arrow[u]
+\\
+\& \widetilde{\mathrm S\ell}(2,\mathbb Z) \arrow[ul] \arrow[rrrr]
+\& {}^{6}\mathbb D_3 \arrow[ur,no head]
+\& \& \& \mathbb Z \arrow[ul,bend left=16]
+\\
+\& \& \& \underset{12}{\mathbb D'_3\ \unsure{\sim}}
+  \arrow[ul] \arrow[uurr]
+\& \&
+% five squares carry the word Cart (cartesien) written inside them, not on an arrow
+\arrow[from=2-2,to=1-3,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-4,to=1-5,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-5,to=1-6,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-4,to=3-3,phantom,"\mathrm{Cart}"{description}]
+\arrow[from=2-2,to=3-3,phantom,"\mathrm{Cart}"{description}]
+\end{tikzcd}}
+
+\[
+\Pi_{0,3}^{D}=\{\rho,\sigma\mid\rho^3=\sigma^2=1\}
+\]
+\[
+\mathrm S\ell(2,\mathbb Z)
+=\{\rho,\sigma\mid\underbrace{\rho^3=\sigma^2}_{\omega},\
+\rho^6=1\deleted{\unsure{\omega}}\ (=\sigma^4)\}
+\]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=3em,row sep=2em,column sep=6pt,row sep=12pt,execute at begin picture={\fontsize{8.5}{10.5}\selectfont}]
+\begin{gathered}
+\Pi_{0,3}^{D}/\Pi'_{0,3}\simeq
+\{\rho,\sigma\mid\rho^3=\sigma^2=(\sigma\rho)^6=1,\
+(\sigma\rho)^2\deleted{\text{central}}\inserted{=(\rho\sigma)^2}\}
+\qquad18
+\end{gathered}
+\arrow[d,"{\substack{\rho\mapsto4\ \mathrm{mod}\ 6\\\sigma\mapsto3\ \mathrm{mod}\ 6}}"]
+\arrow[dr,"{\substack{\rho\mapsto\rho\\\sigma\mapsto\sigma}}"]
+\& \\
+\mathbb Z/6\mathbb Z
+\& \begin{gathered}\mathbb D_3=\{\rho,\sigma\mid\rho^3=\sigma^{2}\deleted{\unsure{2}}=1,\
+\sigma(\rho)=\rho^{-1}\}\!\\
+\inserted{\text{i.e. }(\sigma\rho)^2=1}
+\end{gathered}
+\end{tikzcd}}
+
+\[
+\mathcal E=\left\{\rho,\sigma\ \middle|\
+\underbrace{\rho^3=\sigma^2}_{\omega},\ \rho^6=1\ (=\sigma^4),\
+\deleted{\unsure{\rho}}\underbrace{(\sigma\rho)^2\omega}_{\rho_0=\sigma\rho\sigma^{-1}\rho\;\deleted{\unsure{\omega}}}
+\ \deleted{\unsure{\text{est}}}\text{invariant}\
+\unsure{\text{par}}\rho\text{ et d'ordre}\mid3\right\}
+\qquad36
+\]
+\[
+\text{i.e. }(\sigma\rho)^6=\omega,\qquad
+(\sigma\rho)^2=(\rho\sigma)^2
+\]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,row sep=1.5em,column sep=3em]
+{} \arrow[d] \&
+\left\{\begin{array}{rcl}
+\rho&\mapsto&\unsure{10|14}\ \mathrm{mod}\ 12\\
+\sigma&\mapsto&3\ \mathrm{mod}\ 12\\
+\omega&\mapsto&6\ \mathrm{mod}\ 12
+\end{array}\right.
+\\
+\unsure{\leftrightarrows}\ \mathbb Z/12\mathbb Z
+\simeq(\mathrm S\ell(2,\mathbb Z))_{\mathrm{ab}} \&
+\end{tikzcd}}
+\[
+\begin{gathered}
+\sigma\rho=\varepsilon_0\longmapsto1\ \mathrm{mod}\ 12\\
+\deleted{\unsure{(\sigma\rho)^2\omega=\rho_0}}\\
+(\sigma\rho)^2\omega=\rho_0\longmapsto8\ \mathrm{mod}\ 12\\
+\deleted{\unsure{\mathbb Z/3\mathbb Z}}
+\end{gathered}
+\]
+
+\[
+\mathbb D'_3=
+\left\{\rho,\sigma\mid\rho,\sigma\mid
+\underbrace{\rho^3=\sigma^2}_{\omega}\inserted{=(\sigma\rho)^2},\
+\rho^6=1\ (=\sigma^4)\right\}
+\quad\deleted{\unsure{(\sigma\rho)^2\omega}}
+\]
+\[
+\underset{\substack{\Vert\\(\sigma\rho)^2\omega.}}{\rho_0}
+\longmapsto(2\ \mathrm{mod}\ 6,1)
+\]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.7em,row sep=1.5em,
+execute at end picture={\draw ([xshift=0.4em,yshift=2em]current bounding box.south west)--([xshift=5em,yshift=-6em]current bounding box.north west);}]
+\& \& \& \& \& 0 \arrow[dl]
+\\
+\& \& \deleted{\unsure{(\sigma\rho)^2\omega}}
+\& \& \unsure{\mathbb Z/3\mathbb Z}\times_{\mathbb Z/2\mathbb Z}\{0\}
+\arrow[d,no head,"\simeq"] \arrow[ddll]
+\& 0 \arrow[dl]
+\\
+\& \& \& \& \mathbb Z/3\mathbb Z \arrow[ddll] \&
+\\
+\& \begin{array}{|l}\unsure{(\mathbb F_3\times\mathbb F_3)\rtimes\{1,\sigma\}}\simeq\\\sigma\end{array}
+\& \mathbb Z/6\mathbb Z\times_{\mathbb Z/2\mathbb Z}\mathbb D_3
+\arrow[uu] \arrow[rr,"\mathrm{pr}_1"] \arrow[ddl]
+\& \& \mathbb Z/6\mathbb Z \&
+\\
+\& \& \mathcal E \arrow[u] \arrow[rr] \arrow[ddl]
+\& \& \mathbb Z/12\mathbb Z \arrow[u,"\unsure{Can}"'] \&
+\\
+\& \mathbb D_3 \arrow[dl] \& \mathbb Z/2\mathbb Z \arrow[u] \& \& \&
+\\
+0 \& \mathbb D'_3 \arrow[u] \arrow[dl]
+\& 0 \arrow[u] \& \& \&
+\\
+0 \& \& \& \& \&
+\end{tikzcd}}
+\margin{9}
+
+\clearpage
+\LMcote{140-1}
+\typeout{LMLAYOUTSCAN 140-1 12}
+\scanpage{12}
+\mspage{4}
+\margin{
+($n$ impair)
+
+\uline{Prop} Il existe des relèvements $\widetilde\rho,\widetilde\sigma$ de
+$\rho,\sigma$ tels qu'on ait $\widetilde\rho^{n}=\widetilde\sigma^{2}$
+\deleted{\unsure{$\rho$}}, et les deux \unsure{mbres} sont alors de la forme
+$\widetilde\omega^{\nu}$,
+\inserted{\unsure{l'un des}}
+\deleted{\unsure{pour tous}},
+$\nu$ \unsure{\uline{quantité bien définie}|\deleted{quantité bien définie}}
+\unsure{mod} $2n$ (\unsure{indépendamment} des choix des relèvements
+$\widetilde\rho,\widetilde\sigma$)
+et $\nu\equiv\dfrac{\unsure{n^2+1}}{2}$
+\deleted{\unsure{$\mathbb Z$}}, \unsure{ou} :
+\[
+\nu\ \mathrm{mod}\ 2n\ \in
+\left\{\unsure{(}-\frac{n-1}{2},\frac{n+1}{2}\unsure{)}\right\}
+\]
+et $\nu$ est impair.
+Ce qui implique qu'il existe \unsure{un} $\nu_0$ \unsure{unique} dans
+$\left\{-\dfrac{n-1}{2},\dfrac{n+1}{2}\right\}$ qui soit
+$\equiv\nu\ (2n)$.
+Pour $\nu$ fixé, $\widetilde\rho,\widetilde\sigma$ sont \unsure{uniquement} \unsure{déterminés}.
+\unsure{Ainsi trouvons|Ceci fournit} \unsure{présentation}
+\[
+\widetilde\Pi_n^D=
+\left\{\widetilde\rho,\widetilde\sigma,\widetilde\omega\ \middle|\
+\widetilde\omega\text{ central},\
+\widetilde\rho^n=\widetilde\sigma^2=\widetilde\omega^{\unsure{\nu_0|\nu}}\right\}.
+\]
+}
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,row sep=1.5em,column sep=4em,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+1 \arrow[d] \& \& 0 \arrow[d]
+\\
+\mathbb Z\widetilde\omega \arrow[d]
+\& \widetilde\omega=(1,2n)
+\& \mathbb Z \arrow[d,"2n"]
+\\
+\widetilde\Pi_n^D \arrow[d] \arrow[rr] \& \& \mathbb Z \arrow[d]
+\\
+\Pi_n^D=\{\rho,\sigma\mid\rho^n=\sigma^2=1\}
+\arrow[d] \arrow[rr,Rightarrow]
+\& \& (\Pi_n^D)_{\mathrm{ab}}\simeq\mathbb Z/2n\mathbb Z
+\\
+1 \& \&
+\begin{gathered}
+\rho\longmapsto(n+1\ \mathrm{mod}\ 2n)=(1-n\ \mathrm{mod}\ 2n)\\
+\sigma\longmapsto n\ \mathrm{mod}\ 2n
+\end{gathered}
+\end{tikzcd}}
+
+\[
+\begin{aligned}
+\widetilde\rho_0&=(\rho,n+1)\\
+\widetilde\sigma_0&=(\sigma,n)
+\end{aligned}
+\qquad
+\begin{aligned}
+\widetilde\rho_0^n&=(\overbrace{\rho^n}^{1},n(n+1))
+ =\deleted{\unsure{\widetilde\omega^{n+1}}}\\
+\widetilde\sigma_0^2&=(\underbrace{\sigma^2}_{1},2n)
+\end{aligned}
+\]
+\[
+\widetilde\rho_0^n/\widetilde\sigma_0^2
+=(1,n(n-1))=\widetilde\omega^{\alpha}
+\]
+\[
+\alpha=\frac{n-1}{2}\qquad
+(\alpha=1\text{ si }n=3\unsure{!|?})
+\]
+\[
+\bigl(\widetilde\rho_0\widetilde\omega^{\unsure{\beta}}\bigr)^n
+=\bigl(\widetilde\sigma_0\widetilde\omega^{\gamma}\bigr)^2
+\qquad\text{i.e.}\quad
+\widetilde\rho_0^n\widetilde\sigma_0^{-2}
+=\widetilde\omega^{\deleted{\unsure{n\beta-2\gamma}}\inserted{2\gamma-n\beta}}
+\]
+\[
+\alpha+1
+\]
+\[
+\deleted{\unsure{n}}\qquad
+2\gamma-n\beta=\alpha=\frac{n-1}{2}
+\]
+\[
+\deleted{4\gamma-2n\beta=}
+\]
+\[
+\widetilde\rho\overset{\text{déf}}=
+\widetilde\rho_0\widetilde\omega^{\overbrace{\unsure{\beta}}^{\alpha}}
+=\left(\rho,n+1+
+\underbrace{2n\overbrace{\frac{n-1}{2}}^{\beta=\alpha}}_{n(n-1)}\right)
+=(\rho,n^2+1)
+\]
+\[
+\widetilde\sigma\overset{\text{déf}}=
+\widetilde\sigma_0\widetilde\omega^{\gamma}
+=\left(\sigma,
+\underbrace{
+\deleted{\unsure{4}}n+
+\underbrace{2n\underbrace{\gamma}_{\frac{(n-1)(n+1)}{4}=\frac{n^2-1}{4}}}
+_{\frac{n^3-n}{2}}}_{\frac{n^3+n}{2}}
+\right)
+=\left(\sigma,\deleted{\unsure{\frac{n^3-n}{2}}}\inserted{\frac{n^3+n}{2}}\right)
+\]
+\[
+\begin{array}{|l}
+(\alpha+1).2-1.n=1\\
+\underbrace{\alpha(\alpha+1)}_{\gamma}.2-
+\underbrace{\alpha}_{\beta}.n=\alpha
+\end{array}
+\qquad\gamma=
+\]
+\margin{
+\[
+\begin{array}{|l}
+\widetilde\rho=\widetilde\rho_0\widetilde\omega^{2x}\\
+\widetilde\sigma=\widetilde\sigma_0\widetilde\omega^{nx}\\[1em]
+x=
+\end{array}
+\]
+}
+\[
+\begin{aligned}
+\widetilde\rho_0^n&=(1,n^3+n)=
+\widetilde\omega^{\overbrace{\frac{n^2+1}{2}}^{\nu}}\\
+\widetilde\sigma_0^2&=(1,n^3+n)=\widetilde\omega^{\frac{n^2+1}{2}}
+\end{aligned}
+\]
+\margin{11}
+
+\clearpage
+\LMcote{140-1}
+\typeout{LMLAYOUTSCAN 140-1 18}
+\scanpage{18}
+\mspage{6}
+
+$S\mathcal T_{1,1}\simeq$ \unsure{image inverse} de $\mathrm S\ell(2,\mathbb Z)$ dans $\unsure{\deleted{\mathrm G\ell}\mathrm S\ell(2,\mathbb R)^{\sim}|\mathrm G\ell(2,\mathbb R)^{\sim}}$
+\[
+\simeq\{\rho,\sigma\mid\rho^3=\sigma^2\ (=\omega)\}
+\]
+\margin{\unsure{(}\unsure{élém\textsuperscript{t}|él\textsuperscript{mt}} central}
+
+\[
+\mathcal T_{11}=S\mathcal T_{11}/\langle\omega^2\rangle
+\]
+
+\[
+\begin{array}{ll}
+(\mathcal T_{11})_{\mathrm{ab}}\simeq\mathbb Z & (\mathcal T_{11})_{\mathrm{ab}}\simeq\mathbb Z/12\mathbb Z\\[4pt]
+\deleted{(\rho,\sigma)} & \\
+\rho\longmapsto2 & \rho\longmapsto2\bmod12\\
+\sigma\longmapsto3 & \sigma\longmapsto3\bmod12\\
+\omega\longmapsto\unsure{6|8} &
+\end{array}
+\]
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,row sep=large,column sep=small]
+\& 1 \& \& 1 \\
+\& \mathcal T_{11} \arrow[u] \arrow[r] \& \deleted{\unsure{\mathcal T_{\mathrm{ab}}}} \arrow[r] \& \mathbb Z/12\mathbb Z \arrow[u] \\
+\unsure{\widetilde\omega|\bar\omega}=\omega^{2\deleted{\unsure{4}}} \& S\mathcal T_{11} \arrow[u] \arrow[rr] \arrow[ur,phantom,"\deleted{\text{cartésien}}"{description}] \& \& \mathbb Z \arrow[u] \\
+\uline{1} \arrow[u] \& \mathbb Z \arrow[u] \arrow[rr,"\mathrm{id}"] \& \& \mathbb Z \arrow[u,"12"] \\
+\& 1 \arrow[u] \& \& 1 \arrow[u]
+\end{tikzcd}}
+
+\margin{donc $S\mathcal T_{11}$ se déduit de $\mathcal T_{11}$ par image inverse de l'ext. canonique de $\mathbb Z/12\mathbb Z$ par $\mathbb Z$, via $\mathcal T_{11}\to\mathbb Z/12\mathbb Z$.}
+
+\deleted{une normalisation de $(K,\unsure{K_0|N|k_0})$, \unsure{alors} elle est \unsure{spéciale} : la cat. des rev. étales dans $\unsure{K'_fN|K'_{fN}}$ -- \deleted{\illegible{1}} $\Delta$ \unsure{rev.|i.e.} $\Delta$ top. \unsure{a} une unique normalisation pour laquelle la projection \unsure{est|soit} un \unsure{morphisme} de $\Delta$-complexes \unsure{normalisés}. [Mais attention, \unsure{ça ne marche} \uline{\unsure{pas}} pour \unsure{strictes normalisations} \unsure{$\overline{\mathrm m}$|néc.}\ldots]}
+
+\deleted{\unsure{8.|$\beta$.} \unsure{Groupes|Groupe} et groupoïdes \unsure{fondamentaux|fondamental}. On \unsure{montrera|montre} la relation entre construction top. et construction algébrique.}
+
+\margin{17}
+
+\clearpage
+\LMcote{140-1}
+\typeout{LMLAYOUTSCAN 140-1 19}
+\scanpage{19}
+
+% pencil numeral at the top right corner; no other foliation numeral is visible on this sheet
+\margin{8v}
+
+\figure{\scalebox{0.90}{\begin{tikzpicture}[x=.014cm,y=-.014cm,every node/.style={font=\footnotesize,inner sep=0pt},line width=.45pt]
+\node[anchor=west] at (385,80) {$\deleted{\unsure{\mathbb Z|\widetilde\sigma}}$};
+\node[anchor=west] at (585,85) {$\deleted{\unsure{\widetilde\rho|\rho}}$};
+\node[anchor=west] at (376,167) {$\widetilde\rho_0^{\,n}=\widetilde\sigma_0^{\,n}=$};
+\node[anchor=west] at (697,109) {$\widetilde\sigma^2=\widetilde\rho^{\,n}=\bar\omega$};
+\node[anchor=west] at (796,177) {$\deleted{\unsure{\widetilde\rho_0\bar\omega|\bar\omega}}$};
+\node[anchor=west] at (736,241) {$\deleted{\unsure{\widetilde\rho|\widetilde\sigma}}$};
+\node[anchor=west] at (831,242) {$\widetilde\rho\longmapsto\widetilde\rho\,\bar\omega^{-1}=\widetilde\rho_0$};
+\node[anchor=west] at (830,315) {$\widetilde\rho_0^{\,n}\longmapsto\deleted{\unsure{(\omega)|(\rho)}}=\widetilde\rho^{\,n}\bar\omega^{-n}=\bar\omega^{1-n}=\omega^{\frac{1-n}{2}}$};
+\node[anchor=west] at (824,380) {$\widetilde\sigma_0=\widetilde\sigma_{\unsure{0|a}}\bar\omega^s$};
+\node[anchor=west] at (1045,380) {$\widetilde\sigma_0^{\,\unsure{2|n}}=\widetilde\sigma_{\unsure{0|a}}^{\,2}\bar\omega^{2s}=\bar\omega^{1+2s}$};
+\node[anchor=west] at (770,486) {$1+2s=\frac{1-n}{2}$};
+\node[anchor=west] at (1031,478) {OK si $\frac{1-n}{2}$ \uline{impair}};
+
+\draw (328,1085) .. controls (405,726) and (557,346) .. (719,46);
+\draw (797,975) .. controls (925,640) and (1077,335) .. (1119,147);
+
+\draw (370,351) .. controls (284,337) and (224,418) .. (225,510) .. controls (222,592) and (294,633) .. (367,619) .. controls (445,607) and (487,549) .. (477,465) .. controls (469,399) and (433,349) .. (370,351);
+\draw[line width=.25pt] (371,351) .. controls (277,345) and (223,430) .. (229,526) .. controls (232,599) and (300,635) .. (368,629);
+\draw (350,610) .. controls (370,621) and (422,602) .. (451,565);
+\draw (227,499) .. controls (281,468) and (401,455) .. (471,474) .. controls (490,483) and (461,501) .. (435,505) .. controls (367,522) and (271,528) .. (226,512);
+\draw[line width=.8pt,->] (260,514) .. controls (281,518) and (301,521) .. (320,519);
+\draw[line width=.8pt,->] (366,466)--(313,467);
+\draw[->] (438,506) .. controls (454,501) and (470,490) .. (492,488);
+\fill (260,514) circle[radius=3.3];
+\fill (438,503) circle[radius=2.5];
+\fill (364,466) circle[radius=2.3];
+\draw (334,514) .. controls (327,454) and (343,389) .. (370,351);
+\draw[line width=.8pt] (261,514) .. controls (263,455) and (303,388) .. (370,351);
+\draw[line width=.35pt] (250,505) .. controls (274,428) and (288,390) .. (365,350);
+\draw[line width=.8pt,->] (369,353)--(423,312);
+\draw[->] (372,352) .. controls (398,368) and (428,387) .. (449,397);
+\draw (377,351) .. controls (437,351) and (468,403) .. (473,476);
+\node at (330,342) {$\unsure{i|1}$};
+\node[rotate=-35] at (422,375) {$\unsure{i|1}$};
+\node at (443,455) {$\unsure{i|1}$};
+\draw[line width=.8pt] (275,402)--(361,351)--(310,367)--(382,347)--(312,381)--(354,347)--(296,365)--(377,351)--(336,402)--(347,365)--(301,399)--(370,347)--(334,409)--(326,362)--(381,350);
+\draw (266,411)--(352,348)--(300,378)--(376,345)--(327,382)--(353,374)--(338,409);
+
+\node[anchor=west] at (510,582) {$\unsure{R_i|R^i}$};
+\node[anchor=west] at (595,580) {$\widetilde R_{\unsure{i}}=(\unsure{e_j|e_g}-e_{\unsure{k|K}})\unsure{\lambda|h}^{\omega}_{\unsure{jk|gK}}$};
+\node[anchor=west] at (500,653) {$\unsure{t_\omega|\epsilon_\omega},\ \unsure{h_\omega|h_1}$};
+\node[anchor=west] at (278,715) {$V(\unsure{\omega|w})$};
+\node[anchor=west] at (238,838) {$\varphi_\omega(\unsure{\widetilde R|\bar R}_{\unsure{K|k}})$};
+\node[anchor=west] at (721,786) {$P_i$};
+\node[anchor=west] at (586,865) {$\deleted{\unsure{t_\omega|R_\omega}}$};
+\node[anchor=west] at (921,782) {$\deleted{\unsure{H_i|H_2}}$};
+\node[anchor=west] at (1052,746) {$u\unsure{\widetilde\omega^{,i}|\omega^i}$};
+
+\draw (225,916)--(392,883);
+\fill (394,881) circle[radius=2.4];
+\draw (394,882) .. controls (411,727) and (487,710) .. (612,701) .. controls (702,694) and (795,676) .. (844,650) .. controls (864,638) and (849,582) .. (871,572) .. controls (1039,521) and (1205,520) .. (1366,528);
+\draw (394,881) .. controls (422,778) and (581,676) .. (781,608) .. controls (949,549) and (1211,518) .. (1366,528);
+\draw (394,881) .. controls (454,797) and (649,683) .. (854,628) .. controls (1057,574) and (1228,530) .. (1366,528);
+\draw (394,881) .. controls (721,700) and (1056,562) .. (1366,528);
+\draw (872,572) .. controls (1045,505) and (1249,506) .. (1366,528);
+
+\node[anchor=west] at (380,996) {$\rho\quad\sigma$};
+\node[anchor=west,font=\scriptsize] at (530,986) {\unsure{opèrent|opérant}};
+\node[anchor=west] at (668,979) {sur};
+\node[anchor=west] at (790,972) {l'un};
+\node[anchor=west] at (940,971) {des};
+\node[anchor=west] at (1015,970) {\unsure{sentiers|entiers}};
+\node[anchor=west] at (321,1080) {distingués};
+\node[anchor=west] at (285,1195) {$\deleted{\unsure{R_KR|R_\kappa R}}$};
+\end{tikzpicture}}}
+\clearpage
+\LMcote{140-1}
+\typeout{LMLAYOUTSCAN 140-1 20}
+\scanpage{20}
+\figure{\begin{tikzpicture}
+\node[draw,circle,inner sep=3pt] {\mspage{7}};
+\end{tikzpicture}}
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.6em,row sep=2.8em,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\&\&
+\begin{gathered}
+\widetilde\rho=(\rho_0,2)=(\rho,2)\\
+\widetilde\sigma=(\sigma_0,3)=(\sigma,3)
+\end{gathered}
+\arrow[d, bend right=20]
+\&
+\begin{gathered}
+\deleted{\unsure{\Pi_{0,3}^{D}}}\\[-2pt]
+\inserted{\text{\uline{\unsure{identifié à}}}}\\[-2pt]
+\inserted{\unsure{S\mathcal T_{11}\times_{\Pi_{0,3}^{D}}\mathbb Z/12\mathbb Z}}
+\end{gathered}
+\arrow[d]
+\&
+\begin{gathered}
+\rho_0=(\rho,\dot 2)\\[-2pt]
+\unsure{\Pi_{0,3}}\\[-2pt]
+\sigma_0=(\sigma,\dot 3)=(\sigma,-1)
+\end{gathered}
+\arrow[d]
+\&\\
+\unsure{0|1}\arrow[r,dash]\&
+\mathbb Z\arrow[r,dash,"1\unsure{-|\mapsto}\overline\omega=\omega^2"]\arrow[dd,equal]\&
+S\mathcal T_{11}\arrow[r,Rightarrow]\arrow[dd,"\substack{\widetilde\rho\mapsto\deleted{\unsure{4}}2\\\widetilde\sigma\mapsto3}"']
+\arrow[ddr,phantom,"\text{Cart}"]\&
+\mathcal T_{11}\arrow[r,Rightarrow]\arrow[dr,leftrightarrow]\arrow[dd,"\substack{\rho_0\mapsto\dot 2\\\sigma_0\mapsto\dot 3}"']
+\&\Pi_{0,3}^{\prime D}\arrow[dr,"\text{can}"]\arrow[dd,"\substack{\rho\mapsto2\\\sigma\mapsto3}"{pos=.25,xshift=2pt}]
+\arrow[dl,phantom,"\text{cart}" description]\&\\
+\&\&\&{}\&
+|[xshift=-3em]|\mathbb D'_3\arrow[r,"\text{cart}"{pos=.75}]\arrow[dd]
+\&\mathbb D_3\arrow[dd,"\text{can}"]\\
+1\arrow[r,dash]\&\mathbb Z\arrow[r,"12"]\&\mathbb Z\arrow[r,"\text{can}"]\&
+\mathbb Z/12\mathbb Z\arrow[r,"\text{can}"]\arrow[dr,"\text{can}"']
+\&\mathbb Z/6\mathbb Z\arrow[dr,"\text{can}"]
+\arrow[d,phantom,"\text{\uline{Cart}}"'{pos=.25,xshift=-3em}]
+\arrow[dr,phantom,"\text{\uline{cart}}"{description,xshift=-1.5em,yshift=.5em}]\&\\
+\&\&\&\&\mathbb Z/4\mathbb Z\arrow[r,leftrightarrow,"\text{can}"]\&\mathbb Z/2\mathbb Z
+\end{tikzcd}}
+
+\margin{\unsure{pour} $\mathcal T_{11}$ \unsure{identifié à}
+$\Pi_{0,3}^{D}\times_{\mathbb Z/2\mathbb Z}\mathbb Z/4\mathbb Z$}
+
+\unsure{A-t-on} \unsure{bien}\quad
+$\bigm|\quad S\mathcal T_{11}\simeq S\Pi_{0,3}^{D}$ ??
+
+il semblerait plutôt, pourtant
+\[
+\deleted{\unsure{\mathcal T_{11}}}\quad
+PM_{11}\simeq
+\left(\underbrace{T^*U_{0,3}}_{\substack{\text{fibré}\\\text{\uline{tangent}}}},\mathfrak S_3\right)
+\]
+\inserted{(et \uline{non} $\unsure{PU_{0,3}}$ !!)}
+
+\[
+\text{donc}\quad \mathcal T_{11}\simeq\pi_1(T^*U_{0,3},\mathfrak S_3)\ \ldots
+\]
+\margin{19}
+
+\clearpage
+\LMcote{140-1}
+\typeout{LMLAYOUTSCAN 140-1 36}
+\scanpage{36}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+ \&\&\left\{\rho,\sigma\mid\underbrace{\rho^3=\sigma^2}_{\omega'^{-1}=\omega}\right\}\deleted{\unsure{\omega|\infty}}\arrow[d,equal]\&\&\\
+ 1\arrow[r,no head]\&\overset{\omega'=\unsure{\omega^{-1}|\overline\omega'}}{\mathbb Z}\arrow[r]\arrow[d,equal]\&S\Pi_{0,3}^D\arrow[r]\arrow[d]\&\Pi_{0,3}^D\arrow[r,no head]\arrow[d]\&1\\
+ 1\arrow[r,no head]\&\mathbb Z\arrow[r]\&S\Pi_{0,3}^D(4)\arrow[r]\&\Pi_{0,3}^D\times\mathbb Z/4\mathbb Z\arrow[r,no head]\&1\\[4em]
+ 1\arrow[r]\&\underset{\omega^2}{\mathbb Z}\arrow[r]\arrow[u,very thick]\&S\mathcal T_{11}\arrow[r]\arrow[u,very thick,"{\underbrace{\begin{gathered}\rho\mapsto\rho\overline\omega^2\\\sigma\mapsto\sigma\overline\omega^3\\\omega\longrightarrow\overline\omega^2\\\omega^2\longrightarrow\overline\omega^4=\omega'\end{gathered}}}"]\&\mathcal T_{11}\arrow[u,hook,"{\substack{\rho\mapsto(\rho,2)\\\sigma\mapsto(\sigma,3)}}"]\&\omega\longrightarrow(1,2)
+\end{tikzcd}}
+\margin{$S\Pi_{0,3}^D(4)=\left\{\rho,\sigma,\overline\omega\mid\begin{gathered}\rho^3=\sigma^2=\overline\omega^{-4}\\\overline\omega\ \text{central}\end{gathered}\right\}$\\
+NB $\unsure{\dot{\overline\omega}|\overline\omega}^{4}=\unsure{\omega^{-1}}$\\
+$=\omega'\deleted{\unsure{\omega}}$}
+
+% Groupe et flèche au pied du feuillet, écrits tête-bêche.
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+ \overbrace{S\Pi_{0,3}^D(4)}^{\pi_1(U_{0,3},\mathfrak S_3\times\mu_4)}\arrow[r]\&\Pi_{0,3}^D
+\end{tikzcd}}
+\margin{35}
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 302}
+\scanpage{302}
+\mspage{152}
+
+tiellement : déterminer le noyau de
+\[
+S\unsure{A|\mathcal A}_{g,\nu}/(SA_{g,\nu})^0\longrightarrow\Gamma^!_{g,\nu},
+\quad\text{i.e.}\quad
+SA_{g,\nu}\cap A_{g,\nu}^0/(SA_{g,\nu})^0
+\]
+comme $T^I=T^{S_{g,\nu}}$. On peut sans doute se ramener au contexte des surfaces \inserted{compactes} à bord (notons par un $'$ les groupes topologiques correspondants), on a
+\[
+1\longrightarrow SA_{g,\nu}^{\prime+}\longrightarrow
+A_{g,\nu}^{\prime!+}\longrightarrow
+\prod_{i\in S_{g,\nu}}\operatorname{Aut}^+(C_i)\longrightarrow1
+\]
+\margin{homotope au groupe \unsure{circulaire} \deleted{\illegible{1}} standard $\mathbb U$, tordu par $\unsure{T|\Pi}$}
+où le $+$ indique les autom. conservant l'\unsure{orient.}, et les $C_i$ sont les comp. conn. du bord. On en conclut la suite exacte d'homotopie
+\LMlayoutnotice{140-2-302-D1}
+\begin{landscape}
+\begin{center}
+\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\inserted{0=\unsure{\prod_i|\prod}\unsure{\Pi_2|\pi_2}(\operatorname{Aut}^+(C_i))}
+\arrow[r] \&
+\unsure{\Pi_1|\pi_1}(SA_{g,\nu}^{\prime0})\arrow[r] \&
+\unsure{\Pi_1|\pi_1}(A_{g,\nu}^{\prime!+})\arrow[r]\arrow[d,equal] \&
+\deleted{\unsure{\Pi_0}}\prod_i\unsure{\Pi_1|\pi_1}(\operatorname{Aut}^+(C_i))\arrow[r]\arrow[d,phantom,"\unsure{\wr}"] \&
+\unsure{\Pi_0|\pi_0}(SA_{g,\nu}^{\prime+})\arrow[r] \&
+\unsure{\Pi_0|\pi_0}(A_{g,\nu}^{\prime!+})\arrow[d,equal]\arrow[dd,bend left=28] \\
+\&\&\unsure{\Pi_1|\pi_1}(A_{g,\nu}^{\prime0})\&\unsure{T^I}\&\overset{\uparrow}{\uline{\text{à calculer}}}\&\Gamma_{g,\nu}'\\
+\&\&\&\&\&1=\prod_i\unsure{\Pi_0|\pi_0}(\operatorname{Aut}^+(C_i))
+\end{tikzcd}\end{center}
+\end{landscape}
+\[
+\left[\text{et}\quad
+\unsure{\Pi_i|\pi_i}(SA'_{g,\nu})\xrightarrow{\sim}
+\unsure{\Pi_i|\pi_i}(A_{g,\nu}^{\prime\unsure{0}})
+\quad\text{si }i\geq2\right]
+\]
+
+i.e.
+\[
+\left\{\begin{aligned}
+0&\longrightarrow\unsure{\Pi_1|\pi_1}(SA_{g,\nu}^{\prime+})
+\longrightarrow\unsure{\Pi_1|\pi_1}(A_{g,\nu}^{\prime0})
+\longrightarrow T^I\longrightarrow\unsure{\Pi_0|\pi_0}(SA_{g,\nu}^{\prime!+})
+\longrightarrow\Gamma_{g,\nu}^{\prime!+}\longrightarrow1.\\
+&\unsure{\Pi_i|\pi_i}(SA_{g,\nu}^{\prime+})\xrightarrow{\sim}
+\deleted{\illegible{1}}\unsure{\Pi_i|\pi_i}(A_{g,\nu}^{\prime0})
+\quad\text{pour }i\geq2
+\end{aligned}\right.
+\]
+\deleted{Dans le cas \illegible{1}}
+
+On a un hom. évident : (par '\unsure{recollt} des disques')
+$A_{g,\nu}^{\prime\unsure{0}}\longrightarrow A_{g,\nu}$ induisant
+$SA'_{g,\nu}\longrightarrow SA_{g,\nu}$,
+\deleted{qui} et ce sont là sûrement des équiv. d'homotopie, donc
+\deleted{\illegible{1}} la suite exacte précédente
+
+\mspage{301}
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 328}
+\scanpage{328}
+\mspage{\unsure{166|168}}
+
+\[
+\unsure{(\overline{21})|(\overline{21}')}\qquad
+1\longrightarrow\pi\longrightarrow\pi_1(\unsure{U|\mathcal{U}}_{g,\nu\,\overline{Q}})
+\longrightarrow\pi_1(M_{g,\nu\,\overline{Q}})\longrightarrow1
+\]
+\deleted{\(\unsure{(\overline{22})}\qquad 1\longrightarrow\pi\longrightarrow\)}
+
+On a bien sur un \unsure{isom} de groupes à \unsure{lacets|bouts}
+\[
+(23)\qquad \pi\simeq\widehat{\Pi}_{g,\nu}
+\]
+dont on voudrait déterminer l'indétermination de façon précise
+
+Notons $M_{g,\nu\,C}$ le \deleted{\illegible{1}}\inserted{topos} modulaire de Teichmüller complexe, défini à l'aide de la surface \deleted{diff.}\inserted{$C^\infty$} $\unsure{U|\mathcal{U}}_{g,\nu}$, il est muni du rev. universel canonique $\widetilde{M}_{g,\nu\,C}$ (\S~21)
+\margin{$\widetilde{M}_{g,\nu\,C}=E_g/\unsure{A_{g,\nu}^{0}|A_{g,\nu}^{\circ}}$}
+de groupe \unsure{d'autom.} $\mathcal{T}_{g,\nu}^{+}$ justement \unsure{--|...}
+$\unsure{U|\mathcal{U}}_{g,\nu\,C}$ étant lui aussi muni d'un rev. universel \unsure{en dessus} du précédent,
+$\widetilde{\unsure{U|\mathcal{U}}}_{g,\nu\,C}=E_g/\unsure{A_{g,\nu+1}^{0}|A_{g,\nu+1}^{\circ}}$.
+Ceci donne naissance à la suite exacte de groupes discrets (dans le contexte topologie générale)
+\diagram{
+\begin{tikzcd}[column sep=large,row sep=large,ampersand replacement=\&,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+(24) \& 1 \arrow[r] \& \Pi_{g,\nu} \arrow[r] \arrow[dd] \& \unsure{\mathfrak{S}|\mathcal{G}}_{g,\nu}^{+} \arrow[r] \arrow[d,equal] \& \mathcal{T}_{g,\nu}^{+} \arrow[r] \arrow[d,equal] \& 1 \\
+\& \& \& \pi_1(\unsure{U|\mathcal{U}}_{g,\nu\,C}) \arrow[d] \& \pi_1(M_{g,\nu\,C}) \arrow[d] \& \\
+\text{(s'envoyant dans} \& 1 \arrow[r] \& \Pi_{g,\nu} \arrow[r] \& \operatorname{Aut}_{\mathrm{lac}}\deleted{\unsure{\mathrm{ext}}}(\Pi_{g,\nu}) \arrow[r] \arrow[d,equal] \& \operatorname{Aut\,ext}_{\mathrm{lac}}(\Pi_{g,\nu}) \arrow[r] \arrow[d,equal] \& 1 \\
+\& \& \& \unsure{\mathfrak{S}|\mathcal{G}}_{g,\nu} \& \mathcal{T}_{g,\nu} \&
+\end{tikzcd}
+}
+par un \unsure{isom|hom.} de \unsure{structures} d'extensions), qui par passage aux complétés profinis donne la suite exacte analogue pour les
+
+\mspage{327}
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 331}
+\scanpage{331}
+
+est muni canoniquement (non d'une quasi-rigidification discrète \inserted{orientée}, ce qui dépend du choix d'un isom $\overline{\mathbb Q}\simeq\overline{\mathbb Q}_0$ i.e. d'un plongement $\overline{\mathbb Q}\subset\mathbb C$) mais du moins d'un groupe de Teichmüller géométrique strict $\Sigma\subset\widehat{\widehat{\mathcal T}}(\pi)$, à savoir l'image de $\pi_1(M_{g,\nu\overline{\mathbb Q}})$, \inserted{isomorphe à} Ceci posé, On a un hom canonique d'extensions de groupes
+
+\diagram{(26)\quad
+\begin{tikzcd}[ampersand replacement=\&, column sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+1 \arrow[r] \&
+\pi_1(M_{g,\nu\overline{\mathbb Q}}) \arrow[r] \arrow[d, "{\unsure{\wr|2}}"] \&
+\pi_1(M_{g,\nu}) \arrow[r, no head] \arrow[d] \&
+\operatorname{Gal}(\overline{\mathbb Q}/\mathbb Q) \arrow[r] \arrow[d] \&
+1 \\
+1 \arrow[r] \&
+\Sigma \arrow[r] \&
+\unsure{\mathcal N|N}_\Sigma \arrow[r] \arrow[d, equal] \&
+\Gamma_\Sigma \arrow[r] \arrow[dr] \&
+1 \\
+\& \&
+\operatorname{Norm}_{\widehat{\widehat{\mathcal T}}(\pi)}(\Sigma) \&
+\&
+\text{\parbox[t]{105pt}{\footnotesize\rule{28pt}{.3pt}\\\textit{\LMnotelabel.}\enspace \margin{groupe des autom. \deleted{\unsure{``arithmétiques}}\inserted{extérieurs} "arithmétiques" de $\pi$ (muni de $\Sigma$)}}}
+\end{tikzcd}}
+
+Pour le choix d'un isom $\overline{\mathbb Q}\simeq\overline{\mathbb Q}_0$ i.e. d'un plongement $\overline{\mathbb Q}\subset\mathbb C$, l'image de la conjugaison complexe de $\operatorname{Gal}(\overline{\mathbb Q}_0/\mathbb Q)$ n'est autre que \unsure{l'élt} d'ordre $2$ de $\Gamma_\Sigma$ associé au sous-groupe de Teichmüller géométrique, associé à la quasi-discrétification (orientée, mais peu importe) canonique sur $\pi$ (définie par $\overline{\mathbb Q}\unsure{\simeq|\xrightarrow{\sim}}\overline{\mathbb Q}_0$).
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 344}
+\scanpage{344}
+\mspage{174}
+
+\LMlayoutnotice{140-2-344-D1}
+\begin{landscape}
+\begin{center}
+\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large,column sep=9pt,row sep=9pt,execute at begin picture={\fontsize{9}{11}\selectfont}]
+\& \&
+\begin{gathered}
+\text{Bases de }(\pi)\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)\\
+\downarrow\\
+[\text{Bases}^{!}(\pi)\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)]
+\end{gathered}
+\arrow[dl,"\mathcal G^{+}_{g,\nu}"']\arrow[dr,"\widehat{\pi}_{g,\nu}"]
+\&\\
+\&
+\begin{gathered}
+\text{discrétifications}\ \inserted{\text{orientées}}\ (\pi)\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal G^{+}_{g,\nu}\\
+\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal G^{!+}_{g,\nu}
+\end{gathered}
+\arrow[dl,"\{\pm1\}"']\arrow[dr]
+\&\&
+\begin{gathered}
+\text{Bases extérieures de }\pi\\
+\simeq\operatorname{Isom}\deleted{\,\mathrm{ext}}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\pi}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)\\
+\downarrow\\
+[\text{Bases ext}^{!}(\pi)\simeq\operatorname{Isom\,ext}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)]
+\end{gathered}
+\arrow[dl,"\mathcal T_{g,\nu}"]\\
+\left[\begin{gathered}\text{Discrétifications }(\pi)\\\simeq\end{gathered}\right]
+\arrow[d]
+\&\&
+\begin{gathered}
+\text{prédiscrétifications}\ \inserted{\text{orientées}}\ \text{strictes}\ (\pi)\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\unsure{\widehat{\pi}}_{g,\nu},\pi)/\mathcal G^{+}_{g,\nu}\cdot\widehat{\pi}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal T^{+}_{g,\nu})\\
+\simeq\operatorname{Isom}^{!}(\widehat{\pi}_{g,\nu},\pi)/\mathcal G^{!+}_{g,\nu}\cdot\widehat{\pi}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal T^{!+}_{g,\nu}
+\end{gathered}
+\arrow[dll,"\{\pm1\}"']\arrow[d]
+\&\\
+\left[\begin{gathered}\text{prédiscrétifications strictes}\\\text{de }\pi\\\simeq\end{gathered}\right]
+\&\&
+\begin{gathered}
+\text{prédiscrétifications}\ \inserted{\text{orientées}}\ (\pi)\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal G}^{+}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal T}^{+}_{g,\nu}\\
+\deleted{\unsure{\simeq}}\quad
+\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal G}^{!+}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\widehat{\mathcal T}^{!+}_{g,\nu}
+\end{gathered}
+\arrow[dll,"\{\pm1\}"']\arrow[dd,"\Gamma_{\Sigma}"',"\Gamma_{g,\nu}"]
+\&\\
+\left[\begin{gathered}\text{prédiscrétifications de }\pi\\\simeq\end{gathered}\right]
+\arrow[drr]
+\&\&\&\\
+\&\&
+\begin{gathered}
+\text{préarithmétisations de }\pi\\
+\simeq\operatorname{Isom}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal M_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal N_{g,\nu}\\
+\simeq\operatorname{Isom}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal M^{!}_{g,\nu}\\
+\simeq\operatorname{Isom\,ext}^{!}_{\mathrm{lac}}(\widehat{\pi}_{g,\nu},\pi)/\mathcal N^{!}_{g,\nu}
+\end{gathered}
+\&
+\end{tikzcd}\end{center}
+\end{landscape}
+
+\margin{\unsure{pas séparé}}
+\margin{\unsure{pas séparé}}
+\margin{\diagram{\begin{tikzcd}[ampersand replacement=\&]
+\deleted{\left\downarrow\vphantom{\rule{0pt}{2.8cm}}\right.}
+\end{tikzcd}}}
+\margin{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=0.35cm,row sep=1.4cm,cells={nodes={inner sep=0pt,minimum size=0pt}}]
+{} \& {} \arrow[d,bend right=8,line width=0.8pt,
+  "{\widehat{\mathcal T}_{g,\nu}}"{pos=0.95,right}] \\
+{} \& {} \arrow[dl,bend right=8,no head,line width=0.3pt] \\
+{} \& {}
+\end{tikzcd}}}
+\margin{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=0.30cm,row sep=0.40cm,cells={nodes={inner sep=0pt,minimum size=0pt}},arrows={line width=0.65pt,start anchor=center,end anchor=center,shorten <=1.2pt,shorten >=1.2pt}]
+{} \& {} \& {} \arrow[dl] \arrow[dr] \& {} \& {} \arrow[ll] \arrow[dr] \& {} \\
+|[yshift=-0.05cm]| {} \arrow[dr] \& {} \arrow[l] \arrow[dr] \& {} \& {} \arrow[dl] \& {} \& {} \arrow[ll] \\
+{} \& |[yshift=-0.04cm]| {} \arrow[d] \& {} \arrow[l] \arrow[d] \& {} \& {} \& {} \\
+{} \& |[yshift=-0.06cm]| {} \arrow[dr] \& {} \arrow[l] \arrow[dd,line width=1.25pt] \& {} \& {} \& {} \\
+{} \& {} \& |[xshift=-0.12cm,yshift=-0.25cm]| {} \& {} \& {} \& {} \\
+{} \& {} \& |[yshift=-0.45cm]| {} \& {} \& {} \& {}
+\end{tikzcd}}}
+\margin{TSVP}
+\mspage{343}
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 346}
+\scanpage{346}
+\mspage{175}
+
+On constate que, à l'exception des deux espaces homogènes
+(sous $\widehat{\widehat{\mathcal G}}(\pi)$, mais pas \unsure{nécess|néc} sous
+$\widehat{\widehat{\mathcal G}}(\pi,I')$, voire sous
+$\widehat{\widehat{\mathcal G}}^{!}(\pi)$) Bases $(\pi)$ et Bases ext $(\pi)$,
+les quatre autres sont en fait des espaces homogènes sous
+$\widehat{\widehat{\mathcal G}}^{!}$, et s'expriment comme quotients du
+\inserted{$\widehat{\widehat{\mathcal G}}^{!}_{g,\nu}$-}torseur
+$\operatorname{Isom}^{!}(\widehat{\pi}_{g,\nu},\pi)$, par les quatre sous-groupes
+\[
+\mathcal G^{!}_{g,\nu},\quad
+\mathcal G^{!}_{g,\nu}\cdot\widehat{\pi}_{g,\nu},\quad
+\widehat{\mathcal G}^{!}_{g,\nu},\quad
+\mathcal M^{!}_{g,\nu}
+\]
+(le dernier défini comme image inverse de $\mathcal N^{!}_{g,\nu}$ dans
+$\widehat{\widehat{\mathcal G}}_{g,\nu}$, tt comme $\mathcal M_{g,\nu}$ est défini
+comme image inverse de $\mathcal N_{g,\nu}$).
+On trouve d'autre part, \unsure{si|à} $I'=\{i_0,\ldots,i_{\nu'-1}\}$,
+\unsure{un|des} hom.
+\[
+\widehat{\widehat{\mathcal G}}^{!}_{g,\nu}\longrightarrow
+\widehat{\widehat{\mathcal G}}^{!}_{g,\nu'},
+\]
+envoyant $\mathcal G^{!}_{g,\nu}$ dans $\mathcal G^{!}_{g,\nu'}$,
+\deleted{\illegible{1} $\unsure{\widehat{\mathcal G}}_{g,\nu}$ dans
+$\unsure{\widehat{\pi}_{g,\nu}}$}
+en envoyant $\pi_{g,\nu}$ dans $\pi_{g,\nu'}$, donc $\widehat{\pi}_{g,\nu}$
+dans $\widehat{\pi}_{g,\nu'}$,
+$\widehat{\mathcal G}^{!}_{g,\nu}=\Sigma^{!}_{g,\nu}$ dans
+$\widehat{\mathcal G}^{!}_{g,\nu'}=\Sigma^{!}_{g,\nu'}$, et le sous-groupe
+$\mathcal G^{!}_{g,\nu}\cdot\widehat{\pi}_{g,\nu}$ de
+\deleted{\illegible{1}} \inserted{$\widehat{\mathcal G}^{!}_{g,\nu}$}
+dans le sous-groupe $\mathcal G^{!}_{g,\nu'}\cdot\widehat{\pi}_{g,\nu'}$ de
+$\widehat{\mathcal G}^{!}_{g,\nu'}$.
+Enfin, comme $\Sigma^{!}_{g,\nu}$ s'envoie dans $\Sigma^{!}_{g,\nu'}$,
+\deleted{\illegible{1}} $\mathcal N^{!}_{g,\nu}$ s'envoie dans le normalisateur
+de $\Sigma^{!}_{g,\nu'}$ \inserted{(dans $\widehat{\widehat{\mathcal T}}^{!}_{g,\nu'}$)},
+\deleted{qui}\inserted{je dis que ce} n'est autre que $\mathcal N^{!}_{g,\nu'}$.
+Changeant de notation, ceci revient au
+
+\uline{Lemme}\quad Le
+$\mathcal N^{!}_{\Sigma}=\operatorname{Norm}_{\widehat{\widehat{\mathcal T}}^{!}}(\Sigma^{!})$
+\deleted{\illegible{1}}
+$\bigl(=\operatorname{Norm}_{\widehat{\widehat{\mathcal T}}}(\Sigma^{!})\cap
+\widehat{\widehat{\mathcal T}}^{!}\bigr)$.
+
+\margin{pas prouvé\quad
+\deleted{\illegible{4} de
+$\unsure{\operatorname{Norm}_{\widehat{\widehat{\mathcal T}}}(\Sigma^{!})/\Sigma^{!}}$}}
+
+Evidemment on a
+$\mathcal N^{!}_{\Sigma}\subset
+\operatorname{Norm}_{\widehat{\widehat{\mathcal T}}}(\Sigma^{!})\cap
+\widehat{\widehat{\mathcal T}}^{!}$,
+inversement soit $g\in\widehat{\widehat{\mathcal T}}^{!}$ qui normalise
+$\unsure{\Sigma^{!}}$, montrons qu'il normalise $\Sigma$ i.e.
+qu'il \unsure{est} $\in\mathcal N$
+(donc $\in\mathcal N^{!}=\mathcal N\cap\widehat{\widehat{\mathcal T}}^{!}$).
+\mspage{345}
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 348}
+\scanpage{348}
+\mspage{176}
+
+i.e. $\widehat{\widehat{\mathcal G}}(\pi,i)\longrightarrow
+\widehat{\widehat{\mathcal G}}(\pi')$ est trivial sur $\unsure{\widehat{\pi}}$, et
+passe donc en quotient un
+$\widehat{\widehat{\mathcal T}}(\pi,i)\longrightarrow
+\widehat{\widehat{\mathcal G}}(\pi,i)$.
+J'admets, \deleted{que} en analogie avec le cas discret,
+que cet hom. est un \uline{iso}, de sorte qu'on a une suite exacte
+\margin{\figure{\begin{tikzpicture}[x=1cm,y=1cm,line width=.45pt,line cap=round]
+\draw (0,0) .. controls (-.015,-.48) and (.025,-1.54) .. (.065,-1.73);
+\draw (.105,-.095) .. controls (.070,-.48) and (.110,-1.48) .. (.155,-1.56) .. controls (.165,-1.58) and (.185,-1.59) .. (.200,-1.60);
+\end{tikzpicture}}}
+\margin{\unsure{rappelons qu'on suppose} $\pi$ \unsure{anabélien|nonabélien}
+$(2g+\nu\geq3)$}
+\[
+1\longrightarrow\pi'\longrightarrow
+\widehat{\widehat{\mathcal T}}(\pi,i)\longrightarrow
+\unsure{\widehat{\widehat{\mathcal G}}}(\pi',i)\longrightarrow1
+\]
+ou encore
+\[
+1\longrightarrow\widehat{\pi}_{g,\nu-1}\longrightarrow
+\widehat{\widehat{\mathcal T}}_{g,(\nu,\nu-1)}
+\longrightarrow\unsure{\widehat{\widehat{\mathcal G}}}_{g,\nu-1}
+\longrightarrow1
+\]
+qui contient la suite exacte
+\[
+1\longrightarrow\pi_{g,\nu-1}^{\unsure{*|+}}\longrightarrow
+\mathcal T_{g,(\nu,\nu-1)}\longrightarrow
+\unsure{\mathcal G}_{g,\nu-1}\longrightarrow1
+\]
+\unsure{comme|connue} sous\deleted{\unsure{particulière|partie dense}}, \unsure{suite|est} exacte.
+Il est commode de travailler plutôt avec
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=2.1em,row sep=3.0em]
+1 \arrow[r,dash] \&
+\pi_{g,\nu-1} \arrow[r,dash] \arrow[d,hook',no head] \&
+\unsure{\mathcal T}_{g,\nu}^{!+} \arrow[r] \arrow[d,hook',no head] \&
+\mathcal G_{g,\nu-1}^{!+} \arrow[r,dash] \arrow[d,hook',no head] \& 1 \\
+1 \arrow[r,dash] \&
+\widehat{\pi}_{g,\nu-1} \arrow[r] \arrow[d,equal] \&
+\underset{\deleted{\unsure{\illegible{1}}}}{\widehat{\mathcal T}_{g,\nu}^{!+}}
+\arrow[r] \arrow[d,hook',no head] \&
+\widehat{\mathcal G}_{g,\nu-1}^{!+} \arrow[r,dash] \arrow[d,hook'] \& 1 \\
+1 \arrow[r,dash] \&
+\widehat{\pi}_{g,\nu-1} \arrow[r] \&
+\widehat{\widehat{\mathcal T}}_{g,\nu}^{!} \arrow[r] \&
+\widehat{\widehat{\mathcal G}}_{g,\nu-1}^{!} \arrow[r,dash] \& 1
+\end{tikzcd}}
+
+L'application \LMmathnotice{140-2-348-M1}
+\begin{multline*}\unsure{\text{Prédiscrét}|\text{Prédiscrit}}^{+}(\pi)\\\longrightarrow
+\unsure{\text{Prédiscrét}|\text{Prédiscrit}}^{+}(\pi')\end{multline*} s'identifie donc à
+$\widehat{\widehat{\mathcal T}}_{g,\nu}^{!}/\widehat{\mathcal T}_{g,\nu}^{!}$,
+on lit sur le diagramme que c'est
+$\simeq\widehat{\widehat{\mathcal G}}_{g,\nu-1}^{\unsure{!}\deleted{\unsure{+}}}/
+\widehat{\mathcal G}_{g,\nu-1}^{!+}$,
+d'où la bijectivité sur les ens des prédiscrétifications orientées.
+
+Dans le groupe $\widehat{\widehat{\mathcal T}}_{g,\nu}^{!}=\mathcal T$,
+on a un sous-groupe invariant $\widehat{\pi}_{g,\nu-1}=\pi'$,
+et un sous-groupe $\Sigma$ $(\unsure{=|\longleftarrow}\widehat{\mathcal T}_{g,\nu}^{!+})$
+\mspage{347}
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 384}
+\scanpage{384}
+
+propriété en disant qu'il existe une \unsure{discrétification} \inserted{$\pi_0$} de $\pi$, compatible avec $a$, telle que $Z\subset\mathcal T(\pi_0)$\ldots)
+
+\unsure{Considérons} maintenant un sous-groupe fini quelconque $G\subset\widehat{\mathcal T}_a^+$. [N.B. Si on prend \inserted{seulement} $G\subset M_a$, de sorte que l'image de $G$ dans $\mathbb{\Gamma}_a=M_a/\widehat{\mathcal T}_a^+$ est un ss-groupe fini, alors s'il \deleted{$\mathbb{\Gamma}_a$} est vrai que $\mathbb{\Gamma}_a\simeq\unsure{\mathcal G|\mathfrak G}$, \margin{$\operatorname{Gal}(\overline{\mathbb Q}/\mathbb Q)\longrightarrow$} cette image doit être d'ordre $1$ ou $2$, et dans le deuxième cas doit \margin{\unsure{?}} définir un $\tau\in\mathbb{\Gamma}_a$ correspondant à une \uline{\unsure{prédiscrétification}} (pas orientée) bien déterminée de $\pi$. Ce cas devrait être encore réutilisé dans la suite\ldots]. \deleted{Si on} \inserted{Supposons, \unsure{ou}} \unsure{admettons}, que $G$ est contenu dans $\mathcal T^+$, \margin{ce n'est sans doute \uline{pas} automatique (si on \unsure{ne} suppose \unsure{pas|N'} $N_a=\operatorname{Norm}_{\widehat{\widehat{\mathcal T}}}(\unsure{\widehat{\mathcal T}_a|\widehat{\mathcal T}_a^+})$)} pour une discrétification convenable dans la classe $a$, et que l'action extérieure ainsi obtenue de $G$ sur un $\pi_0$ discret de type $(g,\nu)$ \unsure{soit|sont} tjrs \uline{réalisable}. Elle est donc réalisable aussi \unsure{par|pour} une action de $G$
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 411}
+\scanpage{411}
+\mspage{208}
+
+et sauf erreur, il est devenu évident
+que ce foncteur est une \uline{équivalence de
+catégories} (et comme conséquence, il
+\margin{\unsure{pour les} \uline{\unsure{isom}}}
+y a le foncteur en sens inverse :
+forer des trous en des ``pts'' invariants
+sous $\Gamma_{\unsure{a|0}}$ (ou en des pts quelconques
+quitte à passer à un $\Gamma'$ plus petit).
+
+Mais je me rends compte que
+\deleted{\illegible{1}} ce n'est pas du tout évident -- je vais
+essayer d'élucider la situation axiomatiquement.
+On a fixé un genre $g$,
+on suppose donné, pour $\nu$ variable
+(tel que $(g,\nu)$ anabélien) des
+sous-groupes fermés $N_{g,\nu}\subset\widehat{\widehat{\mathcal T}}_{g,\nu}$,
+normalisant $\widehat{\mathcal T}_{g,\nu}$, et satisfaisant la
+condition essentielle que les $\psi_i:\widehat{\widehat{\mathcal T}}_{g,\nu}\longrightarrow\widehat{\widehat{\unsure{\mathcal G|\mathcal S}}}_{g,\nu-1}$
+induisent
+\[
+M_{g,\nu}\xrightarrow{\sim}M_{g,\nu-1}
+\]
+Ce qui permet de définir la notion
+d'arithmétisation d'un $\pi$ profini de
+type $(g,\nu)$ anabélien, et la théorie du
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 419}
+\scanpage{419}
+\mspage{212}
+
+Grâce à ceci, l'équivalence de catégories entre systèmes
+$(\pi,a,i,\Gamma,\unsure{\theta}:\Gamma\mathop{\longrightarrow}\limits_{\unsure{\mathrm{adm}}}\unsure{N_a})$,
+et les systèmes $(\pi',a',\Gamma,\theta':\Gamma\longrightarrow\unsure{N_{a'}},P)$,
+où $P\in\mathrm{Pt}(B_{\pi',\Gamma^{\natural}})^\Gamma$,
+se précise de façon parfaite au niveau des points: les
+Points $\Gamma$-rationnels de $B_{\pi\unsure{,\Gamma^{\natural}|\deleted{,\Gamma^{\natural}}}}$
+s'identifient à \unsure{l'un|l'ens}
+\deleted{des pts $\Gamma$-\unsure{rationnels}} des pts $\Gamma$-rationnels
+de $B_{\pi'}$, distincts de $P$.
+
+Ceci nous permet alors (ce qui n'était pas faisable dans le contexte
+discret!) d'étendre l'équivalence de catégories en une équivalence
+
+\[
+\begin{gathered}(30)\\[3pt]
+\begin{array}{c@{\,}c@{\,}c}
+\parbox[t]{0.44\linewidth}{%
+cat. des systèmes $(\pi,\unsure{a|\alpha},I',\allowbreak\Gamma,\allowbreak\theta:\Gamma\longrightarrow N_a)$
+d'un $\pi$ arithmétisé \inserted{(par \unsure{$\alpha$|$a$})} de type $(g,\nu)$,
+de $I'\subset I(\pi)$, d'une action
+\uline{admissible} ext. de $\Gamma$ sur $\pi$
+telle que $\Gamma$ \deleted{\unsure{op.}} \uline{fixe chaque point} de $I'$
+}
+& \unsure{\cong|\simeq} &
+\parbox[t]{0.44\linewidth}{%
+cat des syst.
+$(\pi',\unsure{a'|\alpha'},I',\allowbreak\unsure{\Gamma^{*}|\Gamma},\allowbreak\theta':\Gamma\longrightarrow N_{a'})$
+d'un $\pi'$ arithmétisé (par \unsure{$a'$|$\alpha'$}) de type
+$(g,\nu')$ $[\nu'=\nu-\mathrm{card}(I')]$
+avec op. \inserted{ext.} admissible de $\Gamma$ dessus, et
+une partie $I'\subset\mathrm{Pt}_{ad}(B_{\pi',\unsure{\Gamma}}\unsure{)}$
+(donc $I'\subset\mathrm{Pt}_{ad}(B_{\pi',\Gamma})^\Gamma$)
+i.e. $I'$ formé de pts \unsure{inv.|fixes} par $\Gamma$, i.e. ``$\Gamma$-rationnels''
+}
+\end{array}
+\end{gathered}\]
+
+\margin{avec $2g+(\underbrace{\nu-\mathrm{card}\,I'}_{\nu'})\geq3$}
+
+On a donc un foncteur quasi-inverse:
+forage de trous en $I'$ !
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 508}
+\scanpage{508}
+\mspage{\unsure{258 (259)}}
+
+carte déterminée sur $X$ par les triangles sphériques $(0,1,\infty)$
+(sur l'axe réel comme équateur) -- qui est donc la carte triangulaire
+\unsure{pondérée} universelle -- comme image inverse de la carte universelle
+(ayant un seul sommet $0$, une seule arête (repliée) $0\longrightarrow1$,
+une seule face, de centre $\infty$).
+\margin{\figure{\begin{tikzpicture}[x=1cm,y=1cm,line cap=round,line join=round]
+\draw[line width=.45pt] (0,2.85)
+ .. controls (-.71,2.83) and (-1.02,2.47) .. (-1,2)
+ .. controls (-1.01,1.48) and (-.57,1.16) .. (0,1.15);
+\draw[line width=.45pt] (0,2.85)
+ .. controls (.76,2.85) and (1.03,2.48) .. (1,2.10);
+\draw[line width=.45pt] (.99,1.98)
+ .. controls (.98,1.62) and (.74,1.36) .. (.54,1.26);
+\draw[line width=.5pt] (-1,2)
+ .. controls (-.91,1.75) and (.83,1.74) .. (1,1.95);
+\draw[densely dotted,line width=.65pt] (-1,2)
+ .. controls (-.61,2.17) and (.63,2.17) .. (1,2.02);
+\fill (0,2.85) circle (1.4pt);
+\node[anchor=south west,inner sep=2pt] at (0,2.88) {$P=\unsure{-\bar j|-j}$};
+\fill (0,1.15) circle (1.4pt);
+\node[anchor=north west,inner sep=2pt] at (-.03,1.12) {$P'=\unsure{-j|-\bar j}$};
+\fill (-.57,1.80) circle (1.4pt);
+\node[below,inner sep=2pt] at (-.57,1.80) {$0$};
+\fill (.78,1.82) circle (1.4pt);
+\node[below,inner sep=2pt] at (.78,1.82) {$1$};
+\fill (0,2.12) circle (1.5pt);
+\node[above,inner sep=2pt] at (0,2.12) {$\infty$};
+\draw[->,line width=.65pt] (-1.40,1.60)
+ .. controls (-1.40,1.22) and (-1.38,.85) .. (-1.37,.58);
+\draw[line width=.45pt] (.02,.48)
+ .. controls (-.55,.48) and (-.86,.17) .. (-.82,-.20)
+ .. controls (-.78,-.70) and (-.46,-1.02) .. (.10,-1.04);
+\draw[line width=.45pt] (.02,.48)
+ .. controls (.65,.46) and (.87,.12) .. (.82,-.29)
+ .. controls (.81,-.58) and (.66,-.79) .. (.53,-.87);
+\fill (.02,.48) circle (1.5pt);
+\node[anchor=west,inner sep=2pt] at (.07,.48) {$\unsure{Q}(=P)$};
+\fill (-.82,-.12) circle (1.5pt);
+\node[left,inner sep=2pt] at (-.82,-.12) {$\infty$};
+\fill (-.08,.10) circle (1.7pt);
+\node[below,inner sep=2pt] at (-.08,.10) {$1$};
+\fill (-.40,-.36) circle (1.7pt);
+\node[below,inner sep=2pt] at (-.40,-.36) {$0$};
+\draw[line width=1.15pt] (-.08,.10)
+ .. controls (.28,.10) and (.71,.02) .. (.82,-.20)
+ .. controls (.66,-.43) and (.03,-.47) .. (-.40,-.36);
+\draw[densely dotted,line width=.65pt] (-.82,-.12)
+ .. controls (-.60,.08) and (-.36,.08) .. (-.08,.10);
+\draw[densely dotted,line width=.65pt] (-.82,-.12)
+ .. controls (-.78,-.32) and (-.59,-.35) .. (-.40,-.36);
+\node[below,inner sep=1pt] at (.22,-.44) {$\unsure{\varphi}$};
+\end{tikzpicture}}}
+Tout revêtement \deleted{\unsure{de}} \inserted{étale} topologique de
+$U_{03}(\mathbb C)\subset X$ donne ainsi un rev. étale topologique de
+$U_{0,3}(\mathbb C)\subset Y$, \deleted{ramifié} ayant au
+\deleted{\illegible{1}} \inserted{dessus de} $1$ la ramification $2$,
+au dessus de $\infty$ la ramification $3$ \unsure{exactt|exactement},
+ce qui correspond au foncteur ``oubli'' \inserted{(de la pondération)},
+où une carte triangulaire \unsure{pondérée} est considérée comme une carte
+tout court. Du point de vue des groupes fondamentaux \unsure{on} trouve
+ainsi une \deleted{\unsure{hom.} de groupes extérieurs}
+\inserted{équiv. de catégories}
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=huge,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\&
+\deleted{\begin{gathered}
+\Pi_1(\unsure{X(\mathbb C)}\setminus\{0,1,\infty\})\\[-2pt]
+\rotatebox{90}{$=$}\\[-2pt]
+\Pi_{0,3}
+\end{gathered}}
+\arrow[r,phantom,"{\deleted{\longleftarrow}}" description]
+\&
+\deleted{\begin{gathered}
+\Pi_1\!\left(Y(\mathbb C)\setminus\{0,1,\infty\};
+\underbrace{2\{1\}+3\{\infty\}}_{\substack{\text{signature de}\\\text{ramification}}}\right)\\[-2pt]
+\rotatebox{90}{$=$}\\[-2pt]
+\Pi'_{0,3}
+\end{gathered}}
+\\
+(\deleted{\illegible{1}}\inserted{4}) \&
+\left(\text{Rev. étales de }X\setminus\{0,1,\infty\}=U_{0,3}\right)
+\arrow[r,phantom,"\simeq" description]
+\arrow[d,phantom,"{\rotatebox{-90}{$\simeq$}}" description]
+\&
+\begin{gathered}
+\left[\begin{gathered}
+\text{Rev. de }Y\setminus\{0,1,\infty\}=U_{0,3}\\
+\text{avec ramification sub. à}\\
+\text{la signature }2\{1\}+3\{\infty\}
+\end{gathered}\right]\\
+\big/\begin{gathered}
+\text{l'objet }(X\setminus\{0,1,\infty\})\\
+\text{de la dite catégorie}
+\end{gathered}
+\end{gathered}
+\arrow[d,phantom,"{\rotatebox{90}{$\simeq$}}" description]
+\\
+\& \Pi_{0,3}\text{-ensembles} \&
+(\Pi'_{0,3}\text{-Ens})/\deleted{\unsure{E}}E
+\end{tikzcd}}
+
+où $E$ est le $\Pi'_{0,3}$-ens. correspondant à l'objet
+$X\setminus\{0,1,\infty\}$ de la cat. des rev. étales de
+$\unsure{Y\setminus\{0,1,\infty\}}$ à ramification
+\deleted{\unsure{imposée}}\inserted{\unsure{subordon-}}née à
+$2\{1\}+3\{\infty\}$
+
+\deleted{$\unsure{\simeq}\ \unsure{\Pi_{0,3}^{\prime\circ}}\in\mathrm{Ens}$}
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 512}
+\scanpage{512}
+
+précédents s'étendent à ce cadre, et fournissent donc un homomorphisme \deleted{extérieur} \inserted{d'extensions}
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+1 \arrow[r] \& \widehat{\Pi}_{03} \arrow[r] \arrow[d] \& \mathcal E_{03} \arrow[r] \arrow[d] \& \Gamma \arrow[r] \arrow[d,equal] \& 1 \\
+1 \arrow[r] \& \widehat{\Pi}'_{03} \arrow[r] \& \mathcal E'_{03} \arrow[r] \& \Gamma \arrow[r] \& 1
+\end{tikzcd}\quad(9)},
+modulo conjugaison par un autom. int. de $\Pi'_{03}$.
+
+\margin{(9 bis) $\widehat{\Pi}_{0,3}\longrightarrow\widehat{\Pi}'_{0,3}$ s'insère dans une suite exacte
+\[
+\boxed{1\longrightarrow\widehat{\Pi}_{0,3}\longrightarrow\widehat{\Pi}'_{0,3}\longrightarrow\unsure{\mathfrak S}_3\longrightarrow1}
+\]
+et itou pour les groupes discrets
+\[
+\boxed{1\longrightarrow\Pi_{0,3}\longrightarrow\Pi'_{0,3}\longrightarrow\unsure{\mathfrak S}_3\longrightarrow1}.
+\]}
+
+Ceci dit, soit $K$ le noyau de l'opération extérieure de $\Gamma$ sur $\Pi'_{03}$. On voit alors que \deleted{$K$ opère} l'opération ext. de $K$ sur le sous-groupe ouvert $\widehat{\Pi}_{03}$ se fait par un groupe fini (en fait, par \inserted{l'intermédiaire de} $\widehat{\Pi}'_{03}/\widehat{\Pi}_{03}\simeq\unsure{\mathfrak S}_3$ \ldots) -- ce qui implique, par le th. 1 du \S\ précédent, que le groupe $K$ lui-$\overline{\mathrm m}$ est fini. Donc par Artin on a $K=1$ ou $K=(1,\tau)$, $\tau$ la conjugaison complexe. Mais comme $\chi(\tau)=-1$ il est évident que l'op. ex. de $\tau$ sur $\Pi'_{03}$ \inserted{(ni $\overline{\mathrm m}$ sur $(\Pi'_{03})_{\unsure{\mathrm{ab}}}^{*}$ \deleted{\illegible{2}})} n'est pas triviale\ldots
+\margin{$*\simeq\unsure{\mathbb Z/2\mathbb Z+\mathbb Z/3\mathbb Z}$}
+\deleted{\unsure{Ce qui}} Cela prouve la proposition.
+
+\clearpage
+\LMcote{140-2}
+\typeout{LMLAYOUTSCAN 140-2 527}
+\scanpage{527}
+\mspage{269}
+
+Il est \unsure{vrai} qu'il est bien \unsure{connu} qu'une classe de cohomologie (37) à coeff de torsion s'efface, en \unsure{passant} à une extension finie du \deleted{\unsure{$\mathbb Q$}} corps de base ($\mathbb Q$ en l'occurrence). En fait, on a une suite spectrale
+\[
+(38)\qquad H^*(U_{0,3},\mathbb Z_{/2})
+\Longleftarrow E_2^{pq}
+=H^p(\deleted{\unsure{\overline U_{0,3}}}\unsure{\mathbb Q},H^q(\overline U_{0,3},\mathbb Z_{/2}\unsure{)|))}
+\]
+et ici $H^q(\overline U_{0,3})=0$ pour $q\geq 2$, donc on trouve une suite exacte
+\[
+\deleted{\unsure{H^1(\mathbb Q)}\longrightarrow
+\unsure{H^1(U_{0,3},\mathbb Z_{/2})}\longrightarrow
+\unsure{H^1(\overline U_{0,3},-)}}
+\]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\cdots \& E_2^{0,1} \arrow[r] \arrow[d,equal]
+\& E_2^{2,0} \arrow[r] \arrow[d,equal]
+\& \deleted{\unsure{E}}H^2(U_{0,3}) \arrow[r]
+\& E_2^{1,1} \arrow[r] \arrow[d,equal]
+\& E_2^{3,0} \arrow[d,equal] \& \cdots \\
+\& H^0(\mathbb Q,H^1(\overline U)
+\& H^2(\mathbb Q,\mathbb Z_{/2})
+\&
+\& H^1(\mathbb Q,\underset{\substack{\wr\\\mathbb F_2^2}}{H^1(\overline U)})
+\& H^3(\mathbb Q,\unsure{\mathbb Z_{/2}|\mathbb F_2}) \&
+\end{tikzcd}}
+
+Je me \unsure{rends} compte enfin que l'existence d'un \deleted{\illegible{1}} relèvement, -- i.e. de la courbe elliptique hypothétique sur $U_{0,3}$ -- est tout à fait triviale, il suffit de \unsure{la|le} définir par l'équation
+\[
+y=\sqrt{\unsure{x|\dot x}(x-1)(x-\lambda)}
+\]
+i.e.
+\[
+y^2-x(x-1)(x-\lambda)=F(x,y;\lambda]=0
+\]
+ce qui définit une courbe plane affine,
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 73}
+\scanpage{73}
+\mspage{325}
+
+\margin{\figure{\begin{tikzpicture}[x=1cm,y=1cm,line cap=round]
+\draw[line width=.30pt] (.04,0) .. controls (.08,-.55) and (.02,-1.02) .. (.04,-1.65)
+ .. controls (.06,-2.18) and (-.03,-2.54) .. (-.02,-3.06);
+\draw[line width=.52pt] (-.02,-3.06) .. controls (-.03,-3.13) and (-.01,-3.19) .. (.01,-3.23);
+\end{tikzpicture}}}
+\[
+(38)\qquad \uline{g\rho(g)\rho^2(g)=1},
+\]
+où $g$ est donné par (40), et où $u$ s'exprime en termes de
+\deleted{$g$} $g$ donc de $g_0,\gamma$ par
+\[
+(36)\qquad
+\left\{\begin{aligned}
+u(\sigma_\infty)&=\sigma_\infty\\
+u(\rho)&=g\rho\qquad
+\left(=\underbrace{\sigma_\infty(g_0)\ell_1^\gamma\rho(g_0)^{-1}}_g\rho\right).
+\end{aligned}\right.
+\]
+
+\deleted{La relation (42)\inserted{\unsure{cf = ci-dessus}}, s'écrit alors,
+comme $L_0$ est engendré par}
+\[
+\deleted{\ell_0=\underbrace{\ell'_0}_{\varepsilon_0}^{2}=(\sigma_\infty\rho)^2\deleted{\unsure{\sigma_\infty}}=\sigma_\infty\rho\sigma_\infty\rho}
+\]
+\[
+\deleted{\underbrace{(u(\sigma_\infty\rho))}_{
+\substack{\sigma_\infty g\rho=g_0\sigma_\infty \ell_1^\gamma\rho g_0^{-1}
+=\operatorname{int}(g_0)(\sigma_\infty \ell_1^\gamma\rho)}}^{\unsure{2|4}}
+\in\operatorname{int}(g_0)(\unsure{L'_0|L_0})\qquad\text{\unsure{or}}}
+\]
+\[
+\deleted{\operatorname{int}(g_0)(\sigma_\infty \ell_1^\gamma\rho)^2\deleted{\unsure{g_0^{-1}}=1}}
+\]
+\deleted{donc (42) s'écrit}
+\[
+\deleted{(\sigma_\infty \ell_1^\gamma\rho)^2\in L_0}
+\]
+\deleted{\unsure{soit}}
+\[
+\deleted{
+\underbrace{\sigma_\infty \ell_1^\gamma\sigma_\infty}_{
+    \underbrace{\sigma_\infty(\ell_1)}_{\ell_0}^{\gamma}}
+  \underbrace{\sigma_\infty\illegible{1}\rho}_{\varepsilon_0}
+}
+\]
+\margin{\deleted{NB $\operatorname{int}(g_0^{-1})u(\ell_0)$}}
+\margin{\deleted{NB on a
+$(\operatorname{int}(g_0^{-1})u)(\ell_0)
+=(\sigma_\infty \ell_1^\gamma\rho)^2=\ell_0^{2\gamma+1}$}}
+\deleted{\unsure{soit}}
+\[
+\deleted{\overset{\varepsilon_0^{2\gamma+1}}{\unsure{\ell_0^\gamma}\ \underbrace{\varepsilon_0}_{\unsure{\varepsilon_0^{2\gamma}}}}\in L_0}
+\]
+\deleted{donc \unsure{\ldots}}
+\[
+\deleted{\unsure{\operatorname{int}(g_0)}\quad u(\ell_0)=}
+\]
+
+La relation (42), ou la relation \unsure{en apparence} plus forte
+\[
+(43)\qquad u(L'_0)\subset\operatorname{int}(g_0)(L'_0)
+\]
+s'écrit
+\[
+\underbrace{\operatorname{int}(g_0^{-1})\,
+\underbrace{u(\underbrace{\sigma_\infty\rho}_{\ell'_0=\varepsilon_0})}_{
+\sigma_\infty g\rho=g_0\sigma_\infty \ell_1^\gamma\rho g_0^{-1}}}_{
+\sigma_\infty \ell_1^\gamma\rho
+=\underbrace{\underbrace{\sigma_\infty \ell_1^\gamma\sigma_\infty}_{
+ \underbrace{\sigma_\infty(\ell_1)^\gamma}_{\ell_0^\gamma=\varepsilon_0^{2\gamma}}}
+\underbrace{\sigma_\infty\rho}_{\deleted{\unsure{\sigma_\infty\rho}}\varepsilon_0}}_{
+\varepsilon_0^{2\gamma+1}}}
+\in L'_0
+\]
+\margin{\uline{NB} on a
+$\operatorname{int}(g_0^{-1})u(\underbrace{\ell'_0}_{\varepsilon_0})
+=\varepsilon_0^{2\gamma+1}$}
+\unsure{est vérifiée} automatiquement, on \unsure{aura}
+$\overline{\mathrm m}$
+\[
+\deleted{(44)\qquad u(\ell'_0)=u(\varepsilon_0)
+=\operatorname{int}(g_0)(\ell'}
+\]
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 85}
+\scanpage{85}
+
+il est engendré par la conjugaison complexe $\tau$
+\[
+(5)\qquad ,\quad \tau(z)=\bar z,
+\]
+les cinq autres éléments de $\mathcal T_{0,3}$ sont
+\[
+\deleted{\unsure{\tau\sigma}}\quad(6)\qquad
+\tau\dot\sigma_0=\dot\tau_0,\quad
+\tau\dot\sigma_1=\dot\tau_1,\quad
+\tau\dot\sigma_\infty=\dot\tau_\infty,\quad
+\tau\rho,\quad\tau\rho^{-1}=(\tau\rho)^{-1},
+\]
+les \unsure{antiinvolutions|anti-involutions} $\tau'_i$ $(i=0,1,\infty)$ sont particulièrement intéressantes, \unsure{données} par
+\[
+(7)\qquad
+\unsure{\dot\tau'_0(z)}=\frac{\bar z}{\bar z-1},\quad
+\unsure{\dot\tau'_1(z)}=\frac1{\bar z},\quad
+\dot\tau'_\infty(z)=1-\bar z.
+\]
+
+Les points fixes \deleted{\unsure{dans $U_{0,3}$}} des \inserted{\illegible{1}} autom. conformes de \deleted{\illegible{2}} $(\mathbb P^{1\mathrm{an}},\{0,1,\infty\})$ sont les suivants
+\[
+\begin{gathered}
+(8)\qquad
+\left\{\begin{array}{l}
+(\mathbb P^1_{\mathbb C})^{\dot\sigma_0}=\{0,2\},\\[3pt]
+(\mathbb P^1_{\mathbb C})^{\dot\sigma_1}=\{1,-1\},\\[3pt]
+(\mathbb P^1_{\mathbb C})^{\dot\sigma_\infty}=\{\infty,\frac12\}\\[3pt]
+\mathbb P_{\mathbb C}^{1\,\dot\rho}=\mathbb P^{1\,\dot\rho^{-1}}=\{-\bar j,-j\}
+\end{array}\right.\\[6pt]
+\begin{array}{l}
+\text{où }j=\exp 2i\pi/3=\dfrac{-1+i\sqrt3}{2}\quad\text{racine primitive}\quad\text{$3^{\unsure{\mathrm{ième}|\mathrm{ème}}}$ de $1$}\\[5pt]
+-\bar j=\exp 2i\pi/6=\dfrac{1+i\sqrt3}{2}\quad\text{racine primitive}\quad\text{$6^{\unsure{\mathrm{ième}|\mathrm{ème}}}$ de $1$}
+\end{array}\end{gathered}
+\]
+
+\margin{NB $\mathbb P_{\mathbb C}^{1\,\dot\rho\tau}=\mathbb P_{\mathbb C}^{1\,\dot\rho^{-1}\tau}=\varnothing$}
+
+\[
+(9)\qquad
+\left\{\begin{array}{l}
+\mathbb P_{\mathbb C}^{1\,\tau}=\mathbb P_{\mathbb R}^{1}\\[3pt]
+\mathbb P_{\mathbb C}^{1\,\dot\tau'_0}=\{x+iy\mid(x-1)^2+y^2=1\}\\[-1pt]
+\quad\inserted{=\{z\mid z+\bar z=z\bar z\}\unsure{=\frac1z|=\frac12}}
+\inserted{\unsure{=\frac12-\mathbb U}},\\[3pt]
+\mathbb P_{\mathbb C}^{1\,\dot\tau'_1}=\{z\mid z\bar z=1\}=\{x+iy\mid x^2+y^2=1\}=\mathbb U\\[3pt]
+\mathbb P_{\mathbb C}^{1\,\dot\tau'_\infty}=\{z\mid z+\bar z=1\}=\{x+iy\mid x=\frac12\}=\frac12+i\mathbb R;
+\end{array}\right.
+\]
+
+L'image la plus suggestive est sans doute celle de la sphère de Riemann, où $\tau,\dot\tau'_0,\dot\tau'_1,\dot\tau'_\infty$ apparaissent comme les \deleted{\unsure{symétries}}\inserted{\uline{réflexions}} p.r. aux \deleted{``équateurs''}\inserted{``\unsure{gr\textsuperscript{ds}|grands} cercles''} correspondants, qui pour $\tau$ est ``l'équateur'' et pour les autres sont les grands cercles \inserted{``méridiens''}, passant par les pôles $-\bar j,-j$, qui réalisent le découpage de l'équateur en six segments circulaires, par les pts de subdivision $0,\frac12,1,2,\infty,-1$.
+
+\figure{\begin{tikzpicture}[x=.022cm,y=-.022cm,line cap=round,line join=round,font=\scriptsize]
+\coordinate (N) at (110,8);
+\coordinate (S) at (113,216);
+\draw[line width=.4pt] (N) .. controls (62,1) and (11,43) .. (5,105)
+ .. controls (-1,158) and (42,208) .. (S)
+ .. controls (168,224) and (214,183) .. (220,114);
+\draw[line width=.35pt] (N) .. controls (175,0) and (209,48) .. (224,101);
+\begin{scope}
+\clip (N) .. controls (62,47) and (32,109) .. (33,151)
+ .. controls (60,160) and (91,164) .. (113,158)
+ .. controls (114,100) and (112,43) .. (N);
+\foreach \a in {-80,-58,-36,-14,8,30,52,74,96,118,140,162}
+  \draw[line width=.3pt] (-15,\a)--(145,{\a+165});
+\end{scope}
+\draw[dash pattern=on 3pt off 2pt,line width=.45pt] (N)
+ .. controls (58,40) and (26,93) .. (33,151)
+ .. controls (38,187) and (77,213) .. (S);
+\draw[dash pattern=on 3pt off 2pt,line width=.45pt] (N)
+ .. controls (101,51) and (99,95) .. (99,145)
+ .. controls (96,180) and (106,206) .. (S);
+\draw[dash pattern=on 3pt off 2pt,line width=.45pt] (N)
+ .. controls (125,41) and (121,113) .. (113,158)
+ .. controls (111,183) and (113,205) .. (S);
+\draw[dash pattern=on 3pt off 2pt,line width=.45pt] (N)
+ .. controls (167,25) and (177,80) .. (180,144)
+ .. controls (179,182) and (153,213) .. (S);
+\draw[dash pattern=on 3pt off 2pt,line width=.35pt] (N)
+ .. controls (53,15) and (10,62) .. (5,105)
+ .. controls (8,161) and (47,207) .. (S);
+\draw[dash pattern=on 3pt off 2pt,line width=.4pt] (5,109)
+ .. controls (46,96) and (92,91) .. (103,96)
+ .. controls (150,91) and (193,91) .. (218,108);
+\draw[line width=.4pt] (5,109) .. controls (-2,133) and (13,144) .. (33,151)
+ .. controls (80,171) and (148,155) .. (180,146)
+ .. controls (204,142) and (224,134) .. (220,114);
+\draw[->,line width=.7pt] (98,96)--(86,98);
+\draw[->,line width=.6pt] (109,18) .. controls (123,28) and (119,45) .. (115,58);
+\draw[->,line width=.6pt] (97,180)--(98,164);
+\draw[->,line width=.6pt] (174,157)--(181,144);
+\draw[line width=.65pt] (27,141)--(32,151)--(37,143);
+\draw[line width=.65pt] (62,158)--(71,159)--(66,154);
+\foreach \p in {(110,8),(113,216),(103,96),(33,151),(113,158),(180,146)}
+  \fill \p circle[radius=2.4];
+\foreach \p in {(5,109),(180,94)}
+  \fill \p circle[radius=1.1];
+\node[inner sep=0pt] at (111,-9) {$-\bar j$};
+\node[inner sep=0pt] at (115,235) {$-j$};
+\node[inner sep=0pt] at (5,96) {$-1$};
+\node[inner sep=0pt] at (87,90) {$\infty$};
+\node[inner sep=0pt] at (187,92) {$2$};
+\node[inner sep=0pt] at (30,166) {$0$};
+\node[inner sep=0pt] at (123,173) {$\frac12$};
+\node[inner sep=0pt] at (185,159) {$1$};
+\node[inner sep=0pt,rotate=16] at (60,66) {$\dot\tau'_0=\dot r_1$};
+\node[inner sep=0pt] at (137,79) {$\dot\tau'_\infty$};
+\node[inner sep=0pt,rotate=-68] at (137,107) {$=\dot r_0$};
+\node[inner sep=0pt,rotate=-12] at (76,176) {$\unsure{\dot\tau}=\unsure{\dot r}_\infty$};
+\end{tikzpicture}}
+
+Notons aussi les formules
+\[
+(10)\qquad
+\left\{\begin{array}{l}
+\dot\rho\dot\tau'_0\dot\rho^{-1}=\dot\tau'_1,\quad
+\dot\rho\dot\tau'_1\dot\rho^{-1}=\dot\tau'_\infty,\quad
+\dot\rho\dot\tau'_\infty\dot\rho^{-1}=\dot\tau'_0\\[3pt]
+\dot\tau'_0\dot\tau'_1=\dot\tau'_1\dot\tau'_\infty=\dot\tau'_\infty\dot\tau'_0=\dot\rho
+\end{array}\right.
+\]
+\margin{84}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 88}
+\scanpage{88}
+\mspage{333}
+
+On a
+\[
+\tag{22}
+\left\{\begin{aligned}
+(\sigma_\infty\rho)^2&=(\rho\sigma_1)^2=\ell_0=\varepsilon_0^2,&
+\varepsilon_0&\overset{\unsure{\text{dfn}|\text{déf}}}{=}\sigma_\infty\rho=\rho\sigma_1\deleted{\unsure{\overset{\mathrm{dfn}}{=}}}
+\\[-1pt]&&&\quad(\mathrm{NB}\ \sigma_\infty=\rho\sigma_1\rho^{-1})\\
+(\sigma_0\rho)^2&=(\rho\sigma_\infty)^2=\ell_1=\varepsilon_1^2,&
+\varepsilon_1&=\unsure{\sigma_0}\rho=\rho\sigma_\infty\\
+(\sigma_1\rho)^2&=(\rho\unsure{\sigma_\infty|\sigma_0})^2=\ell_\infty=\varepsilon_\infty^2,&
+\varepsilon_\infty&=\sigma_1\rho=\rho\sigma_0
+\end{aligned}\right.
+\]
+
+L'élément $\varepsilon_i\in\mathfrak S_{0,3}$
+(en fait $\varepsilon_i\in\mathfrak S_{0,3}^{+}$) est au dessus de $\dot\sigma_i$,
+il est \uline{caractérisé} par la condition
+\[
+\varepsilon_i^2=\ell_i.
+\]
+
+Dans le groupe $\mathcal T_{0,3}$ d'ordre $12$, il y a sept éléments \unsure{involutifs}
+$\dot\sigma_0,\dot\sigma_1,\dot\sigma_\infty,\tau,\dot\tau'_0,\dot\tau'_1,\dot\tau'_\infty$,
+\deleted{et \unsure{quatre}} \inserted{deux} éléments d'ordre $3$
+$\dot\rho,\dot\rho^{-1}$, \inserted{et \uline{deux d'ordre $6$}}
+$\dot\rho\tau,\dot\rho^{-1}\tau$ (en plus de l'unité).
+
+\inserted{Sauf les deux derniers (pour lesquels ce n'est pas possible$^*$)}
+Nous \unsure{avons} \unsure{relevé} chacun de ces éléments en des éléments de $\overline{\mathrm m}$ ordre de
+$\mathfrak S_{0,3}$.
+\margin{$^*$ en effet ${\mathbb P^1}^{\dot\rho\tau}={\mathbb P^1}^{\dot\rho^{-1}\tau}=\varnothing$}
+On sait que les possibilités, mod $\Pi_{0,3}$-conjugaison, \unsure{de|des} tels relèvements,
+correspondent aux composantes connexes des pts fixes \unsure{dans|de} $U=U_{0,3}^{\mathrm{an}}$
+des autom. \unsure{topologiques} correspondants. --- pour
+$\dot\sigma_0,\dot\sigma_1,\dot\sigma_\infty,\dot\tau'_0,\dot\tau'_1,\dot\tau'_\infty$
+il n'y a qu'une possibilité mod conjugaison (on a choisi
+$\sigma_0,\sigma_1,\sigma_\infty,\tau_0,\tau_1,\tau_\infty$
+de la façon qui a semblé le plus commode pour les calculs),
+pour $\tau$ il y en a trois --- ce sont les trois choix $\tau_0,\tau_1,\tau_\infty$
+--- pour $\dot\rho,\dot\rho^{-1}$ il y en a deux,
+\unsure{correspondants|correspondantes} aux deux pôles $-\bar j,-j$ --- nous avons choisi celle qui
+correspond au pôle $-\bar j$.
+Les relèvements correspondants à $-j$ \unsure{peuvent} s'en déduire en \unsure{conjuguant} par un $\tau_i$ :
+
+\margin{87}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 107}
+\scanpage{107}
+
+\[
+(81)\quad
+\left\{\begin{aligned}
+P&=(a+b)(c+d-b)&Q&=-a(c-b)-bc\overset{\inserted{\deleted{\text{si }\det g=+1}}}{=}\deleted{\unsure{1}}\delta-a(c+d-b)\\
+R&=(c+d)^2-d(a+b)&S&=ad-c(c+d)=\underset{\inserted{\text{si }\det g=1}}{\delta}-c(c+d-b)\\
+&\underset{\inserted{\text{si }\det g=+1}}{=}(c+d)(c+d-b)-\delta
+\end{aligned}\right.
+\]
+où on a posé $\delta=ad-bc=\det g$.
+
+Comparant (81) et l'expression (77) de $\rho^2(g^{-1})$, l'équation (79) -- qui s'écrit aussi
+\[
+g\rho(g)=\pm\rho^2(g^{-1})
+\]
+donne les solutions suivantes.
+
+\margin{Quitte à remplacer $g$ par $\unsure{-g}$, \deleted{\illegible{5}} \unsure{on se ramène} à \unsure{déterminer} les solutions de l'équation}
+
+\[
+(82)\qquad \unsure{g|\rho}\rho(g)\rho^2(g)=\unsure{+|\pm}1\qquad\text{i.e.}\quad \unsure{g|\rho}\rho(g)=\unsure{+|\pm}\rho^{-1}(g^{-1})\qquad\text{\uline{dans $\mathrm{Gl}(2,\widehat{\mathbb Z})$}}
+\]
+\deleted{$\unsure{(82)}$ \illegible{2} $\unsure{g\rho(g)=+\rho^{-1}(g^{-1})}$.}
+On distingue les solutions suivant les facteurs du produit
+\[
+\mathrm{Sl}(2,\widehat{\mathbb Z})'\simeq\prod_{\ell\ \mathrm{premier}}\mathrm{Sl}(2,\mathbb Z_\ell)'.
+\]
+\margin{\uline{NB} \unsure{Nous} \unsure{n'utiliserons|n'utilisons} cette étude de l'équation (82) que dans le cas $\det g=1$, i.e. $\delta=1$, \unsure{sauf erreurs}}
+
+La relation
+\[
+\frac1\delta(a+b)=P=(a+b)(c+d-b)\qquad\text{dans }\mathbb Z_\ell
+\]
+donne les deux solutions $a+b=0$ ou $c+d-b=1$ (car $\mathbb Z_\ell$ est intègre).
+
+\deleted{1°) $(a+b)\ne0$ (dans $\mathbb Z_\ell$) d'où $c+d-b=1$
+\[
+(83)\qquad\boxed{c+d-b=\frac1\delta}.
+\]
+Moyennant (83), on vérifie \unsure{aussitôt} que les formules \inserted{$g\rho(g)=\rho^{-1}(g^{-1})$} -- qu'il reste à vérifier
+\[
+\begin{aligned}
+P&=(a+b)/\delta&Q&=(1-a)/\delta\\
+R&=b/\delta&S&=(1-c)/\delta
+\end{aligned}
+\]
+\inserted{\deleted{\illegible{1}} $\unsure{R=}$
+\[
+\begin{aligned}
+Q&=\frac{c+d-\unsure{a}-b}{\delta}\left(=\unsure{\frac1{\delta^2}|\frac1\delta}-\frac a\delta\right),\\
+R&=\frac b\delta,\quad S=\frac{d-b}{\delta}\left(=\frac1{\delta^2}-\frac c\delta\right)
+\end{aligned}
+\]}
+(84) équivalent à \illegible{5} (82) \illegible{1}
+\[
+(84)\qquad\boxed{\delta^3=1}.
+\]
+}
+
+\margin{La nécessité de cette formule (84) était évidente a priori.}
+
+\deleted{2°) $a+b=0$ i.e. $a=-b$, i.e. $g=\begin{pmatrix}-b&b\\c&d\end{pmatrix}$, et
+\[
+-b(c+d)=1
+\]
+\[
+(84)\quad\left\{\begin{aligned}
+\det g&=-b(c+d)=\delta\quad(\text{donc }\delta+b(c+d)=0;\unsure{)}\\[-1pt]&\quad d=-\frac\delta b-c\\
+P&=0,\\ Q&=\delta+b(c+d-b)=-b^2\\
+R&=(c+d)^2=\frac{\delta^2}{b^2},\\ S&=\unsure{ad}\ \illegible{1}\\[-1pt]&{-c(c+d)+ad=1-c(\unsure{c+d-b})}\\
+&\deleted{\illegible{1}c}=\delta+c\left(\frac\delta b+b\right)
+\end{aligned}\right.
+\]
+}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 320}
+\scanpage{320}
+\mspage{460}
+
+de $\alpha$ comme dessus, d'où $\mu=\det\underline u$, d'où
+et il \deleted{suffit} \deleted{$\varepsilon\beta\sigma(\beta)^{-1}=\unsure{\alpha|\eta}$}
+reste à déterminer $\beta$ comme
+$\beta=\underline u\underline b^{-1}$, avec $\underline b\in\Gamma N'_\sigma$
+arbitraire, $\varepsilon$ étant défini alors en termes du choix de $\underline b$
+comme étant $\varepsilon_\sigma(\underline b)$. La condition pour que
+$\unsure{\alpha_0|\alpha}$ fixé puisse se compléter par $(\beta,\mu,\varepsilon)$
+en $(\alpha,\beta,\mu,\varepsilon)\in\Gamma\mathcal G^{\unsure{\alpha|*}}_{\rho,\sigma}$,
+est tjrs la condition que le coeff. $D$ \deleted{de $\zeta=\alpha\unsure{+}$}
+\[
+\tag{33}
+\zeta=\alpha\rho(\alpha)^{-1}=\begin{pmatrix}A&B\\C&D\end{pmatrix}
+\]
+soit inversible, ce qui \inserted{permet de} \unsure{déterminera|déterminer} $\mu$ par
+\[
+\tag{34}
+\mu=1/D.
+\]
+
+Posons
+\[
+\tag{35}
+\alpha=\begin{pmatrix}a&b\\c&d\end{pmatrix}
+\]
+et explicitons $\alpha\rho(\alpha)^{-1}$; avec
+$\rho=\begin{pmatrix}0&1\\v&1\end{pmatrix}$
+
+\margin{$\delta=\det\alpha=ad-bc$}
+\[
+\begin{aligned}
+\alpha\rho(\alpha)^{-1}
+&=\begin{pmatrix}a&b\\c&d\end{pmatrix}
+\begin{pmatrix}0&1\\v&\deleted{\unsure{w}}\inserted{1}\end{pmatrix}
+\frac1\delta\begin{pmatrix}d&-b\\-c&a\end{pmatrix}
+\left(-\frac1v\right)
+\begin{pmatrix}\deleted{\unsure{w}}\inserted{1}&-1\\-v&0\end{pmatrix}\\
+&=-\frac1{\unsure{\delta}v}
+\begin{pmatrix}bv&a+b\deleted{\unsure{w}}\\dv&c+d\deleted{\unsure{w}}\end{pmatrix}
+\begin{pmatrix}d\deleted{\unsure{w}}+bv&-d\\-c\deleted{\unsure{w}}-av&c\end{pmatrix},
+\end{aligned}
+\]
+d'où
+\[
+\deleted{\unsure{=\frac1{\delta v}}}
+\]
+\[
+\tag{36}
+\left\{\begin{aligned}
+(-\delta v)A&=\unsure{v}b(d+\unsure{vb|bv})\unsure{-}(a+b)(c+va)
+&(-\delta v)B&=-vbd+c(a+b)\\
+(-\delta v)C&=vd(d+vb)-(c+d)(c+va)
+&(-\delta v)D&=-vd^2+cd+c^2,
+\end{aligned}\right.
+\]
+la quantité la plus essentielle étant donc
+\[
+\tag{37}
+\left\{\begin{aligned}
+(-\unsure{\delta}v)D&=-vd^2+cd+c^2=\det(d\rho+c),\\
+\text{\deleted{\unsure{et après cela|et après calcul}} où }&\\[3pt]
+&\left\{\begin{aligned}
+\deleted{\unsure{\alpha}}\ \delta&=\det\alpha=ad-bc,\\
+v&\ \text{le \unsure{paramètre|coefficient} qui définit }\\&\rho=\begin{pmatrix}0&1\\v&1\end{pmatrix}
+\end{aligned}\right.
+\end{aligned}\right.
+\]
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 328}
+\scanpage{328}
+
+donc la condition s'écrit $\unsure{v|\nu}=-1$, i.e. c'est la condition $3^\circ$, mais alors l'expression (23) de $\rho^3$ nous montre que $\rho^3=-1$.
+
+\uline{\unsure{Remarques|Remarque}} Les conditions qui précèdent impliquent les formules
+\[
+\begin{aligned}
+(24)\qquad &\varepsilon_0=\sigma\rho\\
+(25)\qquad &\varepsilon_1=\rho\sigma\\
+(26)\qquad &\rho\varepsilon_1=\varepsilon_0^{-1}\\
+(27)\qquad &\rho^2\sigma=\varepsilon_0^{-1}
+\end{aligned}
+\]
+dont chacune \inserted{sauf la dernière (27)} les implique à son tour
+--- p.ex. on a $\varepsilon_0=-\sigma^{-1}\rho$ \inserted{(7)}, donc (24) équivaut à \inserted{$\sigma=-\sigma^{-1}$ i.e.} $\sigma^2=-1$, et (25) équivaut à (24) en appliquant $\operatorname{int}(\rho)$ aux deux \unsure{mbs}.
+
+On a d'ailleurs
+\[
+\rho\varepsilon_1=
+\begin{pmatrix}0&1\\\unsure{v|\nu}&\unsure{w|\omega}\end{pmatrix}
+\begin{pmatrix}1&0\\1&1\end{pmatrix}
+=\begin{pmatrix}1&1\\\unsure{v|\nu}+\unsure{w|\omega}&\unsure{\unsure{w|\omega}^{\prime}|\unsure{w|\omega}}\end{pmatrix},
+\qquad
+\varepsilon_0^{-1}=\begin{pmatrix}1&1\\0&1\end{pmatrix}
+\]
+qui montre que $\rho\varepsilon_1=\varepsilon_0^{-1}$ équivaut à :
+\[
+\unsure{w|\omega}=1,\quad \unsure{v|\nu}+\unsure{w|\omega}=0\qquad\text{i.e.}\quad \unsure{w|\omega}=1,\unsure{v|\nu}=-1\quad\text{i.e.}\quad
+\rho=\begin{pmatrix}0&1\\-1&1\end{pmatrix},
+\]
+OK. Composant (25) \inserted{(sous la forme $\rho\varepsilon_1=\rho^2\sigma$)} et (26) on trouve (27) comme conséquence des conditions $2^\circ)+3^\circ)$ ; \deleted{\unsure{l'}}\inserted{Essayons de prouver} implication inverse \deleted{\unsure{résulte}}\inserted{par} \deleted{d'}un calcul brutal
+\[\begin{gathered}\deleted{\rho^2\sigma=}\rho^2\sigma=
+\begin{pmatrix}
+-\unsure{v|\nu}\unsure{w|\omega}&\unsure{w|\omega}-(\unsure{v|\nu}+\unsure{w|\omega}^2)\\
+-\unsure{v|\nu}(\unsure{v|\nu}+\unsure{w|\omega}^2)&\unsure{\begin{gathered}-\unsure{w|\omega}(\unsure{w|\omega}^2+2\unsure{v|\nu})+\unsure{v|\nu}-\unsure{w|\omega}^2\\[-1pt]|-\unsure{w|\omega}(\unsure{w|\omega}^2+2\unsure{v|\nu})+\unsure{v|\nu}+\unsure{w|\omega}^2\end{gathered}}
+\end{pmatrix},\\[5pt]
+\varepsilon_0^{-1}=\begin{pmatrix}1&\unsure{-1/\unsure{v|\nu}}\\0&1\end{pmatrix}
+\end{gathered}\]
+\deleted{comme $\unsure{v|\nu}$ inversible} on ne peut avoir l'égalité $\rho^2\sigma=\unsure{-\varepsilon_0^{-1}|\varepsilon_0^{-1}}$ que si $-\unsure{v|\nu}(\unsure{v|\nu}+\unsure{w|\omega}^2)=0$, \unsure{cela implique|ce qui implique} ($\unsure{v|\nu}$ inv. !) $\unsure{v|\nu}+\unsure{w|\omega}^2=0$, \deleted{\unsure{d'où}}\inserted{i.e. $\unsure{v|\nu}=-\unsure{w|\omega}^2$},
+
+\mspage{327}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 329}
+\scanpage{329}
+\mspage{465}
+
+\[
+\rho^2\sigma=\begin{pmatrix}\unsure{w|\omega}^3&\unsure{w|\omega}\\0&\deleted{\unsure{-w(1+2w)}}\inserted{\unsure{w|\omega}^3}\end{pmatrix},
+\]
+Cela montre que
+\deleted{$\rho^2\sigma=\varepsilon_0^{-1}$ \unsure{ssi} $\unsure{w|\omega}=1$ OK.}
+\margin{\deleted{\unsure{On a en plus de} \illegible{4}}
+\unsure{$\unsure{v|\nu}=-\unsure{w|\omega}^2$} \deleted{\illegible{2}}
+\unsure{i.e. $\unsure{v|\nu}=-1,\unsure{w|\omega}=1$}}
+\inserted{
+\[
+\begin{gathered}(27\mathrm{bis})\qquad
+\rho^2\sigma=\varepsilon_0^{-1}\Longleftrightarrow
+\left\{\unsure{v|\nu}+\unsure{w|\omega}^2=0,\ \unsure{w|\omega}^3=1\right.
+\\[4pt]
+\left(\Rightarrow \unsure{v|\nu}=-\unsure{w|\omega}^2=-1/\unsure{w|\omega}\ \text{i.e.}\ \unsure{w|\omega}=-1/\unsure{v|\nu},\ \mathrm{OK}\right)
+\end{gathered}\]
+}
+
+Mais (27), en multipliant par $\rho$, équivaut aussi à
+\[\deleted{\unsure{(27)}\,\illegible{1}}\rho^3\sigma=\deleted{\unsure{u}}\rho\varepsilon_0^{-1}
+\]
+or on sait que $\varepsilon_0=\unsure{-\sigma^{-1}\rho}$ \inserted{(7)} i.e. $\varepsilon_0^{-1}=-\deleted{\unsure{\sigma}}\rho^{-1}\unsure{\sigma|\sigma_0}$
+i.e. $\rho\varepsilon_0^{-1}=-\sigma$, donc la relation précédente s'écrit aussi $\rho^3\sigma=-\sigma$ ou encore
+\[
+(28)\qquad \boxed{\rho^3=-1}.
+\]
+On peut voir \deleted{\unsure{cette}} l'équivalence \deleted{directement}\inserted{de (28) avec les conditions (27bis)} en calculant $\rho^3$ en fonction de $\unsure{v|\nu},\unsure{w|\omega}$, on trouve
+\[
+(29)\qquad
+\rho^3=\begin{pmatrix}\unsure{v|\nu}\unsure{w|\omega}&\unsure{v|\nu}+\unsure{w|\omega}^2\\\unsure{v|\nu}(\unsure{v|\nu}+\unsure{w|\omega}^2)&\unsure{w|\omega}(2\unsure{v|\nu}+\unsure{w|\omega}^2)\end{pmatrix}
+\]
+Et on ne peut avoir $\widetilde\rho^3=1$ i.e. $\rho^3$ un scalaire que si \deleted{$\unsure{v|\nu}+\unsure{w|\omega}^2=$}
+\[
+\unsure{v|\nu}+\unsure{w|\omega}^2=0\qquad\text{i.e.}\quad \unsure{v|\nu}=-\unsure{w|\omega}^2
+\]
+ce qui implique
+\[
+\rho^3=\begin{pmatrix}-\unsure{w|\omega}^3&0\\0&-\unsure{w|\omega}^3\end{pmatrix}
+\]
+i.e. on trouve
+
+\uline{Lemme} On a $\widetilde\rho^3=1$ ssi $\unsure{v|\nu}+\unsure{w|\omega}^2=0$ i.e. $\unsure{v|\nu}=-\unsure{w|\omega}^2$ i.e. on a
+\[
+(30)\qquad
+\rho=\begin{pmatrix}0&1\\-\unsure{w|\omega}^2&\unsure{w|\omega}\end{pmatrix},
+\]
+et alors on a
+\[
+(31)\qquad \rho^3=\unsure{-}\unsure{w|\omega}^3\cdot1\ ,
+\]
+donc on a
+\[
+(32)\qquad
+\rho^3=-1\Longleftrightarrow
+\deleted{\unsure{\unsure{v|\nu}=-\unsure{w|\omega}^2}}\quad
+\begin{gathered}
+\unsure{w|\omega}^3=1\ \text{i.e. }\unsure{w|\omega}\in\Gamma\mu_3\\
+\inserted{\uline{et}\quad \unsure{v|\nu}=-\unsure{w|\omega}^2\ (= -1/\unsure{w|\omega})}
+\end{gathered}
+\]
+
+\mspage{328}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 413}
+\scanpage{413}
+\mspage{508}
+
+\uline{$\overline{\mathrm{XI}}$}\quad\uline{Récapitulation sur le groupe} $\mathcal{M}_{\rho,\sigma}$.
+
+\margin{\uline{Préliminaires}}
+
+\textcircled{$1^\circ$} Étant donné, sur un schéma $S$, une forme $G$ de $\mathrm{Gl}(2)$, d'où des formes $SG$, $PG$ de $\mathrm{Sl}(2)$, $\unsure{\mathrm{GP}(1)|\mathrm{PGl}(1)}$, et deux sections $\widetilde\rho,\widetilde\sigma$ de $PG$, et un sous-groupe à \unsure{1-paramètre} \deleted{\unsure{unipotent|multiplicatif}} additif \unsure{bordé|basé}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\widetilde{\uline{\varepsilon}}_0:\ G_a \arrow[r,hook] \& PG
+\end{tikzcd}}
+\inserted{$\unsure{\varepsilon_0|G_a}$}
+(ce qui revient au $\overline{\mathrm m}$, une section \deleted{\unsure{de}} unipotente régulière \unsure{de} $\varepsilon_0$ de $G$, ou une section nilpotente régulière $N_0$ dans la forme $\mathcal M$ de $\mathrm{M}_2(\mathcal O_S)$ associée à $G$) --- satisfaisant les conditions
+\[
+\begin{aligned}
+(1)\quad &\widetilde\sigma^{-1}\widetilde\rho
+  =\widetilde{\uline{\varepsilon}}_0(1),\qquad
+  \widetilde{\uline{\varepsilon}}_0\text{ et }
+  \widetilde{\uline{\varepsilon}}_1
+  =\rho\bigl(\widetilde{\uline{\varepsilon}}_0\bigr)
+  \bigl(=\sigma\bigl(\widetilde{\uline{\varepsilon}}_0\bigr)\bigr)
+  \text{ sont}\\
+ &\hspace{10em}\text{indépendants sur chaque fibre}\\[4pt]
+(2)\quad &\mathrm{Tr}\,\sigma=0\qquad
+ \text{si }\sigma\text{ est un relèvement local de }\widetilde\sigma,
+\end{aligned}
+\]
+
+On définit des relèvements \uline{canoniques} $\rho$, $\sigma$ de $\widetilde\rho,\widetilde\sigma$ à $G$, \deleted{\unsure{satisfais}} par les conditions
+\[
+(3)\quad\deleted{\unsure{\sigma\rho}}
+\left\{\begin{array}{ll}
+ \varepsilon_0=-\sigma^{-1}\rho
+ &\text{i.e. }\varepsilon_1=-\rho\sigma^{-1}\\
+ \mathrm{Tr}(\rho+\sigma)=1
+ &\text{i.e. }\mathrm{Tr}\,\rho=1,
+\end{array}\right.
+\]
+et les constructions qui suivent ont un sens.
+
+On construit un \unsure{épinglage}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\deleted{(\unsure{4})}\ (5)\quad\deleted{\unsure{\tau_{\rho,\sigma}}=}\ \mathrm{Gl}(2)
+ \arrow[r,"\sim"] \& G
+\end{tikzcd}}
+par la condition que $\varepsilon_1$ prenne la forme
+\[
+(6)\qquad\varepsilon_1
+ =\begin{pmatrix}1&0\\1&1\end{pmatrix}
+\]
+d'où
+\[
+(7)\quad\left\{\begin{array}{l}
+\displaystyle\rho=\begin{pmatrix}0&1\\\unsure{v|\upsilon}&1\end{pmatrix},\qquad
+ \sigma=\begin{pmatrix}0&-1\\-\unsure{v|\upsilon}&0\end{pmatrix}
+ \qquad(\unsure{v|\upsilon}\in\Gamma G_m\\[6pt]
+\det\rho=\det\sigma=-\unsure{v|\upsilon}
+\end{array}\right.
+\]
+\[
+(8)\qquad\varepsilon_0
+ =\begin{pmatrix}1&1/\unsure{v|\upsilon}\\0&1\end{pmatrix},
+\]
+
+\margin{412}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 425}
+\scanpage{425}
+\mspage{514}
+
+\[
+\tag{71}
+\mathcal R_{\rho,\sigma}^{\circ}\simeq
+\left\{\left(
+ j_{T_0}(\mu^2),
+ \underset{\substack{\rotatebox{90}{$\in$}\\ \Gamma T_\rho}}{\underline a},
+ \underset{\substack{\rotatebox{90}{$\in$}\\ \Gamma T_\sigma}}{\underline b}
+ \right)\cdot
+ \underbrace{\mu j_G(\mu^{-2})}_{\inserted{\begin{gathered}
+ \text{NB. le}\\[-2pt]
+ \text{det est }1\\[-2pt]
+ \text{car }\det j_G(\mu^{-2})=\mu^{-2}
+ \end{gathered}}}
+ \;\middle|\;
+ \begin{gathered}
+ \unsure{\mu}\in\Gamma \mathbb G_m,\\[-2pt]
+ \det\underline a=\det\underline b\deleted{\unsure{=\lambda^2}}\\[-2pt]
+ \underline a\in\Gamma T_\rho,\qquad=\mu^2\\[-2pt]
+ \underline b\in\Gamma T_\sigma,
+ \end{gathered}\right\}
+\]
+
+où \inserted{$\unsure{j^{+}|j_G}$}
+\[
+\tag{72}
+\left\{\begin{aligned}
+ j(\unsure{\mu})&=\begin{pmatrix}\mu&1\\0&1\end{pmatrix}
+ \in\Gamma SG\qquad(\mu\in\Gamma \mathbb G_m)\\
+ j_{T_0}\deleted{(\unsure{\mu})}&:\mathbb G_m\longrightarrow T_0
+ \quad\text{donné par }j\\
+ j_G&:\mathbb G_m\longrightarrow\unsure{\deleted{S}}G
+ \quad\text{donné par }j\text{ précédent.}
+\end{aligned}\right.
+\]
+
+On trouve ainsi que le composé
+\[
+\tag{73}
+\left\{\begin{gathered}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\mathcal R_{\rho,\sigma}^{\circ}
+ \arrow[r,hook,"{\text{incl}}"'] \&
+\mathcal M_{\rho,\sigma}^{\circ}
+ \arrow[r,"{\text{can.}}"'] \&
+\begin{gathered}
+\mathcal T_{\rho,\sigma}^{\circ}\simeq T_\rho\mathbin{\times}_{\mathbb G_m}T_\sigma\\
+\shortparallel\\[-3pt]
+\mathcal M_{\rho,\sigma}^{\circ}/\widetilde{\mathcal G}_{\rho,\sigma}^{+}
+\end{gathered}
+\end{tikzcd}}\\
+\text{fait de }\mathcal R_{\rho,\sigma}^{\circ}
+ \text{ un revêtement \unsure{algébrique}}\\
+\text{de }\mathcal T_{\rho,\sigma}^{\circ}
+\end{gathered}\right.
+\]
+
+et plus précisément qu'on a un diagramme cartésien
+\[
+\tag{74}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=huge,row sep=large]
+\mathcal R_{\rho,\sigma}^{\circ}
+ \arrow[r,"{(73)}"]
+ \arrow[d,"{\substack{\text{l'hom. can.}\\\text{de }(70)}}"']
+ \arrow[dr,phantom,"{\text{cart}}",description] \&
+T_\rho\mathbin{\times}_{\mathbb G_m}T_\sigma\simeq\mathcal T_{\rho,\sigma}^{\circ}
+ \arrow[d,"{\text{can}}"]\\
+\mathbb G_m \arrow[r,"{\mu\longmapsto\mu^2}"'] \&\mathbb G_m
+\end{tikzcd}}
+\]
+
+\noindent(75)\quad\uline{Proposition} :
+$\mathcal R_{\rho,\sigma}^{\circ}=\uline{Centr}(\mathcal M_{\rho,\sigma}^{\circ})$
+
+Évidemment le centre de $\mathcal M_{\rho,\sigma}^{\circ}$ est contenu
+ dans $\mathcal R_{\rho,\sigma}^{\circ}$, image inverse justement du centre
+
+\par\noindent 424
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 446}
+\scanpage{446}
+
+\deleted{$\uline{\mathcal O}_S$. Désignons par \deleted{$\unsure{\mu'_2}$}
+\[
+\tag{131}
+\begin{gathered}
+\mu'_2\subset ST_\sigma\\[-.5em]
+\rotatebox{90}{$=$}\\[-.5em]
+\deleted{\unsure{\uline{\mathrm{Cent}}}}(ST_\sigma)^{\mu_2}
+\end{gathered}
+\]
+\unsure{ce|un} sous-groupe de}
+
+d'où \unsure{finalt|finalement}, \unsure{savoir|soit}:
+\[
+\tag{128}
+\underset{\unsure{=}}{\uline{\mathrm{Cent}}(\mathcal M_{\rho,\sigma})}
+\simeq S'T_\rho\times\mu_2\times G_m
+\subset R_{\rho,\sigma}\simeq S'T_\rho\times SN'_\sigma\times G_m
+\]
+d'où
+\[
+\tag{129}
+\uline{\mathrm{Cent}}(\mathcal M_{\rho,\sigma})\cap\mathcal M_{\rho,\sigma}^{\circ}
+=ST_\rho\times\mu_2\times G_m
+\subset R_{\rho,\sigma}^{\circ}\simeq ST_\rho\times ST_\sigma\times G_m
+\]
+
+Revenons aux sections entières dans le cas modulaire absolu
+\[
+\tag{130}
+R_{\rho,\sigma}(\mathbb Z)\simeq
+\underbrace{S'T_\rho(\mathbb Z)}_{\unsure{T_\rho}(\mathbb Z)\simeq\mathbb Z/6\mathbb Z}
+\times
+\underbrace{SN'_\sigma(\mathbb Z)}_{T_\sigma(\mathbb Z)=\mathbb Z/4\mathbb Z}
+\times
+\underbrace{G_m(\mathbb Z)}_{\mu_2(\mathbb Z)\simeq\pm1}
+\]
+\[
+\tag{131}
+\begin{aligned}
+\uline{\mathrm{Cent}}(\mathcal M_{\rho,\sigma})\unsure{[\mathbb Z]|(\mathbb Z)}
+&\simeq S'(T_\rho\unsure{[\mathbb Z]|(\mathbb Z)})\times\mu_2(\mathbb Z)\times G_m(\mathbb Z)\\
+&\simeq\mathbb Z/6\mathbb Z\times\{\pm1\}\times\{\pm1\}
+\end{aligned}
+\]
+et pour mémoire (cf (75), p. 514)
+\[
+\tag{132}
+\begin{aligned}
+\underbrace{\uline{\mathrm{Cent}}(\mathcal M_{\rho,\sigma}^{\circ})}_{\substack{R_{\rho,\sigma}^{\circ}\\\simeq ST_\rho\times ST_\sigma\times G_m}}(\mathbb Z)
+&\simeq ST_\rho(\mathbb Z)\times ST_\sigma(\mathbb Z)\times G_m(\mathbb Z)\\
+&\simeq\mathbb Z/6\mathbb Z\times\mathbb Z/4\mathbb Z\times\{\pm1\}.
+\end{aligned}
+\]
+
+En résumé, on a le diagramme d'inclusions \inserted{strictes} de schémas en groupes
+\[
+\tag{133}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=1.5em,row sep=5em,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\text{dim }3 \&
+\begin{gathered}
+\uline{\mathrm{Cent}}(\mathcal M_{\rho,\sigma}^{\circ})=R_{\rho,\sigma}^{\circ}\\
+\simeq ST_\rho\times ST_\sigma\times G_m
+\end{gathered}
+\arrow[rr,hook,"{{{\substack{\text{(quotient}\\\mu_2\times\mu_2\text{)}}}}}"']
+\& \&
+\begin{gathered}
+R_{\rho,\sigma}\\
+\simeq S'T_\rho\times SN'_\sigma\times G_m
+\end{gathered}
+\&\text{dim }3\\
+\text{dim }2\&
+\begin{gathered}
+\uline{\mathrm{Cent}}(\mathcal M_{\rho,\sigma})\cap\mathcal M_{\rho,\sigma}^{\circ}\\
+=ST_\rho\times\mu_2\times G_m
+\end{gathered}
+\arrow[u,hook]\arrow[rr,hook,"{{{\substack{\text{(quotient}\\\mu_2\text{)}}}}}"']
+\&\&
+\begin{gathered}
+\uline{\mathrm{Cent}}(\mathcal M_{\rho,\sigma})\\
+\simeq S'T_\rho\times\deleted{\unsure{SN'_\sigma}}\inserted{\unsure{\mu_2}}\times G_m)
+\end{gathered}
+\arrow[u,hook]
+\&\text{dim }2
+\end{tikzcd}}
+\]
+
+\mspage{445}
+
+\begin{center}
+{\small
+445\\
+\texttt{https://grothendieck.umontpellier.fr}\\
+Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\
+34095 Montpellier cedex 5 - France
+}
+\end{center}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 448}
+\scanpage{448}
+
+\margin{\uline{\unsure{Où on définit}}\quad\uline{$\mathcal{M}_{\rho,\sigma}$}}
+
+\textcircled{$7^\circ$}\quad Faisons une \unsure{liste|petite} \unsure{récapitulation|récapitulative} des principaux homomorphismes de groupes envisagés au cours de la section $6^\circ$, impliquant le groupe $\mathcal{M}_{\rho,\sigma}$
+\[
+(134)\qquad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,row sep=small,column sep=large]
+ \& SG\arrow[dddr,"{j_G}"] \& \& G\arrow[r]\arrow[dr,"{\delta_G=\det_G}"] \& PG\\
+ \& \& \& \& G_m\\
+ \& S'T_\rho\arrow[dr,"{j_\rho}"] \& \& T_\rho\arrow[r,"{\delta_\rho=\det_{T_\rho}}"] \& G_m\\
+\mu_2\arrow[uuur]\arrow[ur]\arrow[dr]\arrow[dddr]
+ \& \& \mathcal{M}_{\rho,\sigma}\arrow[uuur,"{\Theta=\Theta_G}"]\arrow[ur,"{\Theta_\rho}"]\arrow[dr,"{\Theta_\sigma}"]\arrow[dddr,"{\varepsilon_3}"'] \& \& \\
+ \& SN'_\sigma\arrow[ur,"{j_\sigma}"'] \& \& N'_\sigma\arrow[r,"{\delta'_\sigma=\det_{T_\sigma}}"]\arrow[dr,"{\varepsilon_\sigma}"] \& G_m\\
+ \& \& \& \& \mu_2\\
+ \& G_m\arrow[uuur,hook,"{j_\mu}"'] \& \& \mu_2 \&
+\end{tikzcd}}
+\]
+
+Notons que ce diagramme se reconstruit (avec les propriétés essentielles que nous allons \unsure{passer} en \unsure{revue}) à partir des données
+\[
+(135)\quad
+\left\{\begin{gathered}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+G_m\arrow[r,"{i_\rho}"] \& T_\rho\arrow[r,"{\delta_\rho}"] \& G_m \& (\delta_\rho i_\rho(\lambda)=\lambda^2)
+\end{tikzcd}}\\[1em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+G_m\arrow[r,"{i_\sigma}"] \& N'_\sigma\arrow[r,"{\delta_\sigma}"] \& G_m \& (\delta_\sigma i_\sigma(\lambda)=\lambda^2)
+\end{tikzcd}}\\[1em]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+ \& N'_\sigma\arrow[r,"{\varepsilon_\sigma}"] \& \mu_2 \& \varepsilon_\sigma i_\sigma(\lambda)=1
+\end{tikzcd}}\\[1em]
+\diagram{\deleted{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+1\arrow[r] \& G_m\arrow[r]\arrow[dr,phantom,"{\text{cart}}" description] \& G\arrow[r] \& PG\arrow[r] \& 1\\
+1\arrow[r] \& \mu_2\arrow[u,hook]\arrow[r] \& SG\arrow[u,hook]\arrow[r] \& PG\arrow[u,equal]\arrow[r] \& 1
+\end{tikzcd}}}
+\end{gathered}\right.
+\]
+en plus de la \unsure{donnée} \unsure{familière}
+\[
+(136)\qquad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+ \& 1 \& 1 \& \&\\
+ \& G_m\arrow[u]\arrow[r,equal] \& G_m\arrow[u] \& \&\\
+1\arrow[r] \& G_m\arrow[u,"{\lambda\mapsto\lambda^2}"]\arrow[r,hook,"{\unsure{j}}"] \& G\arrow[u,"{\delta_G}"]\arrow[r] \& PG\arrow[r] \& 1\\
+1\arrow[r] \& \mu_2\arrow[u,hook]\arrow[r] \& SG\arrow[u,hook]\arrow[r] \& PG\arrow[u,equal]\arrow[r] \& 1\\
+ \& 1\arrow[u] \& \unsure{0|1}\arrow[u] \& \&
+\end{tikzcd}}
+\]
+
+\mspage{447}
+
+\begin{center}
+{\small
+447\\
+\texttt{https://grothendieck.umontpellier.fr}\\
+Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\
+34095 Montpellier cedex 5 - France
+}
+\end{center}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 548}
+\scanpage{548}
+\mspage{577}
+
+% E548-01
+% E548-02
+C'est finalement cet élément, qui normalise à la fois $L_\rho$ et $L_\sigma$
+\deleted{\unsure{par}} \unsure{via} les formules remarquables
+
+% E548-03
+\[
+(*)\quad \tau'(\rho)=\rho^{-1},\qquad \tau'(\sigma)=\sigma^{-1}
+\]
+
+% E548-04
+qui prend le pas sur $\tau$, qui satisfait à
+
+% E548-05
+\[
+(**)\quad \tau(\varepsilon_0)=\varepsilon_0^{-1},\qquad
+\tau(\varepsilon_1)=\varepsilon_1^{-1}
+\quad\text{et même }\tau(\sigma)=\sigma^{-1}
+\]
+
+% E548-06
+(ce qui est évidemment très \unsure{vertueux} !), \unsure{mais} dont l'action sur $\rho$
+
+% E548-07
+\[
+\tau(\rho)=\sigma(\rho^{-1})
+\]
+
+% E548-08
+\unsure{est} moins commode.
+
+% E548-09
+\margin{Néanmoins $\tau'$ a sur $\tau$ le désavantage sérieux de ne pas être
+\unsure{élément} du groupe
+$\widehat{\Pi}'_{0,3}=\{1,\tau\}.\widehat{\Pi}_{0,3}$, où on a la relation de rigidité
+$\widehat{\Pi}_{0,3}^{\prime\sigma}=\widehat{\Pi}_{0,3}^{\unsure{\prime}\rho}=\{1\}$
+--- alors que dans $\{\unsure{1},\tau'\}.\widehat{\Pi}_{0,3}$, le centralisateur de
+$\sigma$ n'est pas réduit à $1$, mais est égal à $\{1,\tau'\}$
+De plus, $\tau'$ a le désavantage de ne pas être dans
+$\unsure{\mathcal M}_{0,3}^{\unsure{!|\prime}}$ \dots}
+
+% E548-10
+\[\overline{\underline{\mathrm V}}\]
+
+% E548-11
+\margin{\uline{Données}\par\uline{préliminaires}}
+
+% E548-12
+$1^\circ)$ Soit donc $\mathcal G$ un groupe profini, muni d'un hom surjectif
+
+% E548-13
+\[\unsure{=|\to}\]
+
+% E548-14
+\noindent(1)\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\mathcal T_{1,1}^{\unsure{*|+}\wedge}\simeq\mathrm{GL}(2,\mathbb Z)^{\wedge}
+\arrow[r,"\text{épi}"] \& \mathcal G
+\end{tikzcd}},
+
+% E548-15
+ce que nous exprimerons par la donnée des trois générateurs topologiques
+$\rho,\sigma,\tau'\in\mathcal G$, satisfaisant
+
+% E548-16
+\[
+(2)\quad \rho^6=\sigma^4=\tau'^2=1,\quad
+\begin{gathered}\rho^3=\sigma^2\\\text{(noté }-1\text{)}\end{gathered},\quad
+\tau'\rho\tau'^{-1}=\rho^{-1},\quad
+\tau'\sigma\tau'^{-1}=\sigma^{-1}.
+\]
+
+% E548-17
+On désigne par $\mathcal G^+$ le sous-groupe fermé engendré par $\rho,\sigma$,
+qui est donc l'image de
+
+% E548-18
+\[
+\mathcal T_{1,1}^{+\wedge}\simeq\mathrm{SL}(2,\mathbb Z)^{\wedge},
+\]
+
+% E548-19
+\margin{547}
+
+% E548-F01
+\margin{\begin{center}
+547\\
+\texttt{https://grothendieck.umontpellier.fr}\\
+Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\
+34095 Montpellier cedex 5 - France
+\end{center}}
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 555}
+\scanpage{555}
+
+donc $\{1,\tau'\}$ agit sur ces groupes, et on peut considérer
+\[
+\tag{34}
+\left\{\begin{aligned}
+N_\rho&=\{1,\tau'\}\mathbin{.}Z_\rho,\qquad\deleted{\unsure{N}}\\
+N_\sigma&=\{1,\tau'\}\mathbin{.}Z_\sigma
+\end{aligned}\right.
+\qquad(\text{produits }\tfrac12\text{ directs}).
+\]
+
+On a des suites exactes canoniques
+\[
+\tag{35}
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+1\arrow[r]\&\unsure{Z_\rho|L_\rho}\arrow[r]\&N_\rho\arrow[r,"\varepsilon_\rho"]\&\{\pm1\}\arrow[r]\&1\\
+1\arrow[r]\&Z_\sigma\arrow[r]\&N_\sigma\arrow[r,"\varepsilon_\sigma"]\&\{\pm1\}\arrow[r]\&1
+\end{tikzcd}},
+\]
+et un diagramme commutatif d'hom. canoniques
+\[
+\tag{36}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,row sep=small,column sep=large]
+\&\mathbb D_\rho\arrow[r]\&N_\rho\arrow[dr,"i_\rho"]\&\\
+\{1,\tau'\}\times\{\pm1\}\arrow[ur,hook]\arrow[dr,hook]\&\&\&G_{\rho,\sigma}\\
+\&\mathbb D_\sigma\arrow[r]\&N_\sigma\arrow[ur,"\unsure{i_\sigma}"']\&
+\end{tikzcd}}
+\]
+où
+\[
+\tag{37}
+\left\{\begin{aligned}
+\mathbb D_\rho&\simeq\mathbb D_6\subset\operatorname{Gl}(2,\mathbb Z)
+\quad\text{engendré par }\rho,\tau'\\
+\mathbb D_\sigma&\simeq\mathbb D_4\subset\operatorname{Gl}(2,\mathbb Z)
+\quad\text{\rule{2.7cm}{0.35pt}}\ \sigma,\tau'\\
+\{1,\tau'\}\times\{\pm1\}&=\mathbb D_\rho\cap\mathbb D_\sigma
+\quad\text{dans }\operatorname{Gl}(2,\mathbb Z),
+\end{aligned}\right.
+\]
+\deleted{\unsure{d'où} \unsure{les hom} $\mathbb D_\rho\longrightarrow N_\rho$}
+\[
+\tag{38}
+\left\{\begin{aligned}
+\mathbb D_\rho&=\{1,\tau'\}\mathbin{.}L_\rho
+\quad(\text{du moins si }\rho\text{ d'ordre }6\text{ dans }\mathcal G)\\
+\mathbb D_\sigma&=\{1,\tau'\}\mathbin{.}L_\sigma
+\quad(\text{\rule{1.5cm}{0.35pt}}\ \sigma\text{ d'ordre }4\ \text{\rule{1.4cm}{0.35pt}}),
+\end{aligned}\right.
+\]
+et les hom
+\[
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+\mathbb D_\rho\arrow[r]\&N_\rho,
+\end{tikzcd}}
+\qquad
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+\mathbb D_\sigma\arrow[r]\&N_\sigma
+\end{tikzcd}}
+\]
+sont évidents. Les hom $i_\rho,i_\sigma$ aussi, bien sûr.
+
+Rappelons que
+\[
+\tag{39}
+\left\{\begin{aligned}
+\deleted{\unsure{i'_\rho}}i_\rho\text{ injectif}
+&\Longleftrightarrow\tau'\notin Z_\rho
+\Longleftrightarrow\rho^2\ne1
+\Longleftrightarrow\rho\ne-1
+\\&\Longleftrightarrow\mathcal G^+\text{ est }\unsure{\deleted{\text{isom}}|\text{isom}}
+\text{ à un quotient de }\mathbb Z/4\mathbb Z.\\
+i_\sigma\text{ injectif}
+&\Longleftrightarrow\tau'\notin Z_\sigma
+\Longleftrightarrow\sigma^2\ne1\quad
+\deleted{\unsure{\Longleftrightarrow\sigma\ne\pm1}}
+\end{aligned}\right.
+\]
+\mspage{554}
+
+{\small
+\begin{center}
+554\\
+\texttt{https://grothendieck.umontpellier.fr}\\
+Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\
+34095 Montpellier cedex 5 - France
+\end{center}
+}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 557}
+\scanpage{557}
+
+\uline{NB} Les notations $\varepsilon_\gamma,\varepsilon'_\gamma:
+\gamma_{\rho,\sigma}\longrightarrow\{\pm1\}$ peuvent prêter à confusion,
+la première \unsure{référant|afférant} à l'action d'un $u$ sur $L_\sigma$
+(non sur $L_\rho$). \unsure{Une} notation un peu plus lourde,
+mais ne prêtant pas à confusion, serait
+$\varepsilon_{\gamma,\rho},\varepsilon_{\gamma,\sigma}$ --- ou $\overline{\mathrm m}$
+seulement $\varepsilon_\rho,\varepsilon_\sigma$, la confusion avec les hom de ce nom
+$\unsure{N'_\rho|N_\rho^*}\longrightarrow\{\pm1\}$,
+$N_\sigma\longrightarrow\{\pm1\}$ étant anodine lorsque
+$\rho^2\ne1,\sigma^2\ne1$, à cause des compatibilités (41) (43).
+
+On a donc construit, à l'aide \unsure{de|des} (1) i.e. de $\mathcal G$ muni de
+$\rho,\sigma,\tau'$, des groupes \inserted{$\mathcal G^+$,}
+$G_{\rho,\sigma},\gamma_{\rho,\sigma},Z_{\rho,\sigma},N'_\rho,N'_\sigma$,
+s'insérant dans un diagramme commutatif de groupes
+\[
+\tag{45}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\&L_0\simeq SZ_{\rho,\sigma}\arrow[rr]\arrow[ddd,hook]\&\&Z_{\rho,\sigma}
+\arrow[ddd,hook,dashed]\arrow[dddrr,dashed,"\delta_Z"]\&\&\&\\
+\&\&SN_\rho^*\arrow[rr]\arrow[ddl,hook]\& \&N_\rho^*
+\arrow[ddl,hook,dashed]\arrow[ddr,dashed,"\delta_\rho"]\&\&
+\widehat{\mathbb Z}^{*}\times\{\pm1\}\times\{\pm1\}\\
+\&\&SN_\sigma^*\arrow[rr]\arrow[dl,hook,dotted]\arrow[dl]\&\&N_\sigma^*
+\arrow[dl,hook,dotted]\arrow[dl]\arrow[dr,dashed,"\delta_\sigma"]\&\&\\
+1\arrow[r]\&\mathcal G^+\arrow[rr,hook,"i_{\mathcal G^+}"]\arrow[dr,hook]\&\&
+G_{\rho,\sigma}\arrow[rr,"\delta_G"]\&\&\gamma_{\rho,\sigma}\arrow[r]\arrow[uur,"{(\chi_\gamma,\varepsilon_{\gamma,\rho},\varepsilon_{\gamma,\sigma})}"]\&1\\
+\&\&\mathcal G\arrow[ur,hook]\&\&\&\&
+\end{tikzcd}}
+\]
+où on a posé
+\[
+\tag{46}
+\left\{\begin{aligned}
+SZ_{\rho,\sigma}&=i_{L_0,Z}(L_0)
+=\operatorname{Ker}(\delta_Z:Z_{\rho,\sigma}\longrightarrow\gamma_{\rho,\sigma})\\
+SN'_\rho&=\operatorname{Ker}(\delta_\rho:N_\rho^*\longrightarrow\gamma_{\rho,\sigma})
+=\operatorname{Cent}_{\mathcal G^+}(\rho)\\
+SN'_\sigma&=\operatorname{Ker}(\delta_\sigma:N_\sigma^*\longrightarrow\gamma_{\rho,\sigma})
+=\operatorname{Cent}_{\mathcal G^+}(\sigma)
+\end{aligned}\right.
+\]
+\margin{NB On peut donc aussi les noter $SZ_\rho,SZ_\sigma$ au lieu des
+$SN_\rho^*,SN_\sigma^*$.}
+\mspage{556}
+
+{\small
+\begin{center}
+556\\
+\texttt{https://grothendieck.umontpellier.fr}\\
+Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\
+34095 Montpellier cedex 5 - France
+\end{center}
+}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 561}
+\scanpage{561}
+\mspage{584}
+
+\LMlayoutnotice{140-3-561-D1}
+\begin{landscape}
+\begin{center}
+\((62)\qquad\)
+\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+ \& \& L_0\times SN_\rho^*\times SN_\sigma^*
+ \& \& \& \& L_0 \& \& \& \&\\
+ \& \& \& \& S_0\Gamma_{\rho,\sigma}
+ \& \& \& \& Z_{\rho,\sigma} \& \&\\
+L_0\times SN_\rho^*\times SN_\sigma^*\times\mathcal G^+
+ \& \& SN_\rho^*\times SN_\sigma^*
+ \& \& \& \& \mathrm{III}^{\unsure{+|'}}
+ \& \& \& \&\\
+ \& \& \& S_0\mathcal M_{\rho,\sigma}
+ \& \Gamma_{\rho,\sigma} \& \& N_\rho^*
+ \& \& \& \& \{\pm1\}\\
+ \& SN_\rho^*\times SN_\sigma^*\times\mathcal G^+
+ \& \& \& \& \& N_\sigma^*
+ \& \& \gamma_{\rho,\sigma} \& \& \widehat{\mathbb Z}^{*}\\
+ \& \& \& \& \& \mathrm{II}
+ \& \deleted{\unsure{\mathcal G^+|N_\sigma^*}}
+ \& \& \& \& \{\pm1\}\\
+ \& \& \& \mathcal M_{\rho,\sigma}
+ \& \& \& \& \& G_{\rho,\sigma} \& \&\\
+\mathcal G^+ \& \& \& \& \& \& \& \& \& \&\\
+ \& \& \mathcal G \& \& \& \& \& \& \& \&\\
+ \& \& \Vert \& \& \& \& \& \& \& \&\\
+ \& \& \{1,\tau'\}\mathbin{.}\mathcal G^+
+ \& \& \& \& \& \& \& \&
+\arrow[from=1-3,to=1-7,"\mathrm{pr}"]
+\arrow[from=1-3,to=2-5,hook]
+\arrow[from=1-3,to=3-3,"\mathrm{pr}"]
+\arrow[from=1-7,to=2-9,hook]
+\arrow[from=2-5,to=2-9,"\theta_Z"]
+\arrow[from=2-5,to=4-5]
+\arrow[from=2-9,to=5-9,"\delta_Z"]
+\arrow[from=3-1,to=1-3,"\mathrm{pr}"]
+\arrow[from=3-1,to=5-2,"\mathrm{pr}"']
+\arrow[from=3-1,to=4-4,hook]
+\arrow[from=3-3,to=4-5,hook]
+\arrow[from=4-4,to=2-5]
+\arrow[from=4-4,to=7-4]
+\arrow[from=4-5,to=4-7,"\theta_\rho"]
+\arrow[from=4-5,to=5-7,"\theta_\sigma"']
+\arrow[from=4-7,to=5-9,"\delta_\rho"]
+\arrow[from=5-7,to=5-9,"\delta_\sigma"]
+\arrow[from=5-2,to=3-3,"\mathrm{pr}"']
+\arrow[from=5-2,to=7-4,hook]
+\arrow[from=5-2,to=6-7,dashed,"\unsure{\mathrm{pr}}"]
+\arrow[from=6-7,to=7-9,dashed,hook]
+\arrow[from=7-4,to=4-5]
+\arrow[from=7-4,to=6-7,dotted]
+\arrow[from=7-4,to=7-9,"\theta_G"]
+\arrow[from=7-9,to=5-9,"\delta_G"']
+\arrow[from=5-9,to=4-11,
+ "{\varepsilon_{\gamma,\rho}=\varepsilon'_\gamma}"]
+\arrow[from=5-9,to=5-11,"\chi_\gamma"]
+\arrow[from=5-9,to=6-11,
+ "{\varepsilon_{\gamma,\sigma}=\varepsilon_\gamma}"']
+\arrow[from=8-1,to=5-2,hook,"\uline{\mathrm{inj}}"]
+\arrow[from=8-1,to=7-4,dashed]
+\arrow[from=8-1,to=9-3,hook]
+\arrow[from=9-3,to=7-4,hook,"i_{\mathcal G,\mathcal M}"]
+\arrow[from=9-3,to=7-9,dashed,hook,"i_{\mathcal G,G}"']
+\arrow[from=1-3,to=2-9,phantom,
+ "{\deleted{\unsure{\mathrm{IV}}}\ \mathrm{V}}" description,pos=.52]
+\arrow[from=4-7,to=5-7,phantom,"\mathrm{I}" description]
+\arrow[from=8-1,to=7-4,phantom,"\mathrm{IV}" description,pos=.5]
+\end{tikzcd}\end{center}
+\end{landscape}
+
+On a résumé \deleted{\unsure{les prin.}}\inserted{certaines des}
+relations entre les groupes introduits jusqu'à présent dans le diagramme
+commutatif (62), que je commente brièvement.
+
+a) Toutes les flèches sont soit injections \((\hookrightarrow)\)
+soit surjections \((\longrightarrow)\), à l'exception
+\inserted{peut-être} des trois flèches issues de \(\gamma_{\rho,\sigma}\).
+
+b) Les dix carrés (six faces d'un cube, et
+\deleted{quatre}\inserted{\unsure{trois|les}} carrés marqués
+\(\mathrm I,\mathrm{II},\mathrm{III}^{\unsure{+|'}},
+\mathrm{IV},\mathrm V\)) sont cartésiens.
+
+c) Les \inserted{\unsure{cinq}} flèches marquées \(\mathrm{pr}\)
+sont des projections, canoniques de groupes produits sur des produits
+partiels. La flèche marquée \(\mathrm{inj}\)
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+\mathcal G^+\arrow[r] \&
+SN_\rho^*\times SN_\sigma^*\times\mathcal G^+
+\end{tikzcd}
+}
+est l'injection canonique.
+
+d) Pour ne pas détruire la commutativité du diagramme,
+nous avons omis d'y faire figurer les flèches
+\inserted{(d'inclusion, notamment)}
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+Z_{\rho,\sigma}\arrow[r] \& G_{\rho,\sigma},
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[ampersand replacement=\&]
+N_\rho^*\arrow[r] \& G_{\rho,\sigma},
+\end{tikzcd}
+\qquad
+\begin{tikzcd}[ampersand replacement=\&]
+N_\sigma^*\arrow[r] \& G_{\rho,\sigma}
+\end{tikzcd}
+}
+qui figuraient dans (45).
+
+\mspage{560}
+
+{\small
+\begin{center}
+560\\
+\texttt{https://grothendieck.umontpellier.fr}\\
+Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\
+34095 Montpellier cedex 5 - France
+\end{center}
+}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 606}
+\scanpage{606}
+
+\deleted{\unsure{Pour avoir}} \inserted{La relation} (99),
+\deleted{il \unsure{suffit} d'\unsure{avoir}} s'écrit
+\[
+\tag{102}
+\left\{\begin{aligned}
+\deleted{\det}\sigma a&\equiv u\quad
+(\mathrm{SL}(2,\widehat{\mathbb Z}))\quad\text{i.e.}\quad
+\det\sigma a=\det u\quad\text{i.e. (98)}\\
+\sigma a&\equiv u\quad(\deleted{4}2)
+\end{aligned}\right.
+\]
+\deleted{\unsure{i.e.}} et cette dernière congruence s'écrit
+\[
+\tag{103}\begin{gathered}
+c\equiv0\quad(\deleted{4}2)\qquad d\equiv1\quad(\deleted{4}2)
+\\[3pt]
+\left(-d\equiv\mu\quad(\deleted{\unsure{4}}2)\ \text{\unsure{en est une conséquence}}
+\ \text{car }\mu\equiv1\equiv-1\quad(2)\right).
+\end{gathered}\]
+
+NB On ne \unsure{peut avoir les} \deleted{\illegible{3} $\mu\equiv-1\ (4)$, car}
+congruences \uline{mod 4}
+$(\sigma a\equiv u\ (4)$, car on aurait
+$\mu\unsure{\equiv}-d\equiv-1\ (4)$, ce qui est contraire à l'hypothèse
+(95) $\mu\equiv1\ (4)$.
+
+\deleted{Ainsi (102) est \unsure{trop fort}. Néanmoins, il \uline{faut}
+(pour avoir (99)) qu'on ait
+\[
+\tag{102 bis}
+\sigma a\equiv u\quad(2)\qquad\text{i.e.}
+\]
+\[
+\tag{103 bis}
+c\equiv0\quad(2),\qquad d\equiv1\quad(2)
+\]
+(la relation $-d\equiv\mu\ (2)$ en est une conséquence, car
+$\mu\equiv1\equiv-1\ (2)$). \unsure{Ce}}
+
+Revenant à la relation (99), on trouve ceci :
+
+\deleted{\uuline{Proposition}} \inserted{Lemme.} Soient
+$c,d\in\widehat{\mathbb Z}^{\deleted{\unsure{*}}}$ satisfaisant
+\[
+\tag{104}
+\mu\overset{\mathrm{dfn}}{=}-(c^2+cd+d^2)\in\widehat{\mathbb Z}^{*}
+\]
+\margin{\uline{NB} On aura néc.\textsuperscript{t} $\mu\equiv-1\ (3)$}
+\[
+\tag{105}
+\mu\equiv1\quad(4)\qquad
+(\text{i.e. }c^2+cd+d^2\equiv-1\quad(4)).
+\]
+\[
+\tag{106}
+c\equiv0\quad(2),\qquad d\equiv1\quad(2)
+\]
+Soit \deleted{\unsure{a c|a=}} \inserted{\unsure{d}}
+\[
+\tag{107}
+a=\tau'(c\rho+d)=
+\begin{pmatrix}-c&c+d\\d&c\end{pmatrix}
+\in\mathrm{GL}(2,\widehat{\mathbb Z})
+\]
+(matrice de déterminant $\mu$). Alors on a une congruence
+\[
+\tag{108}
+a\tau'(a)^{-1}\equiv\varepsilon\qquad
+\mathrm{mod}\ \widehat{\Pi}_0\subset\mathrm{GL}(2,\widehat{\mathbb Z})
+\]
+\deleted{\unsure{et}} le signe $\varepsilon\in\{\pm1\}$ ne dépend pas des
+choix faits pour $c,d$.
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 609}
+\scanpage{609}
+\mspage{608}
+
+\[
+\tag{110}
+\mathcal E\simeq\{1,x\}\mathbin{.}\mathcal E''
+\qquad\left(\tfrac12\ \text{direct}\right)
+\]
+Notons que si $x$ opérait trivialement sur $\mathcal E''$,
+\deleted{i.e.} si $\mathcal E$ était isomorphe au produit, alors pour un
+élément \inserted{$u$ de $\mathcal E''$} d'ordre 4,
+$x.u$ serait d'ordre \unsure{4|8}, ce qui est absurde (troisième démonstration du fait
+que \inserted{$\mathcal E/\mathcal E''\simeq$} $\mu$ opère non-trivialement
+sur $\mathcal E''$). Or du seul fait que l'op. de $\{1,x\}$ sur
+$\mathcal E''$ est non triv\unsure{.}, elle est connue, et
+\inserted{la structure de} $\mathcal E$ est déterminée -- en fait on a
+\[
+\tag{\unsure{111|110}}
+\mathcal E\simeq\mathbb D_4
+\]
+Il y a un choix privilégié de $x$, en prenant pour $x$ l'élém\unsure{t}
+\[
+\tag{112}
+\left\{\begin{aligned}
+\tau_{\mathcal E}&\overset{\mathrm{dfn}}{=}
+\tau_{\unsure{S_0\Gamma}}\ \mathrm{mod}\ S_0^{\Pi}\Gamma^0,
+\quad\text{où bien sûr}\\
+\tau_{S_0\Gamma}&=(\tau,\tau',\tau),
+\end{aligned}\right.
+\]
+de sorte que l'on a une représentation canonique
+\[
+\tag{113}
+\mathcal E\simeq\{1,\tau_{\mathcal E}\}\mathbin{.}
+\mathcal E''
+\qquad\text{produit }\tfrac12\text{ direct}
+\]
+\margin{$\mathcal E''\simeq\mathbb Z/4\mathbb Z$\quad
+$\tau_{\mathcal E}(u)=u^{-1}$ pour $u\in\mathcal E''$.}
+
+L'hom $\mathcal E\to\mu\times\mu$ se récupère par ses restrictions aux
+deux facteurs
+\[
+\tag{114}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\mu\simeq\{1,\tau_{\mathcal E}\}\arrow[r]\&\mu\times\mu\&
+\tau_{\mathcal E}\arrow[r,mapsto]\&(-1,-1)\quad\text{(hom diagonal)}\\
+\mathcal E''\arrow[r]\&\unsure{\mu\times\{1\}}\arrow[r,hook]\&\mu\times\mu\&
+\end{tikzcd}}
+\]
+l'unique hom non trivial $\mathcal E''\to\mu$ déduit de l'isom
+\[
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+\mathcal E''_2\overset{\mathrm{dfn}}{=}
+\unsure{\mathcal E''/2\mathcal E''|\mathcal E''/{}_{2}\mathcal E''}
+\arrow[r,"\sim"]\&\mu
+\end{tikzcd}}
+\]
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 619}
+\scanpage{619}
+\mspage{613}
+
+Revenons au diagramme (130), je dis que l'hom
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+ \gamma_{\rho,\sigma}\arrow[r]\arrow[d,phantom,"\Vert"] \& N^*_{\rho}/\{\pm1\}\\
+ \Gamma_{\mathbb Q}^{\sim}
+\end{tikzcd}}
+\uline{ne se relève pas} en un hom de $\gamma_{\rho,\sigma}$ dans
+$\underset{\inserted{\widetilde\gamma_{\rho,\sigma}}}{N^*_{\rho}}$
+--- en d'autres termes, que l'extension de $\gamma_{\rho,\sigma}$ par
+$\{\pm1\}=\mu$ qu'elle définit n'est pas triviale. Pour identifier cette
+extension, considérons le diagramme
+\margin{\uline{NB}}
+\[
+(144)\qquad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=huge,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+ \mathcal M^![0]=Z^!_{\rho,\sigma}\arrow[rr,"\text{can}"]
+ \&\&\gamma_{\rho,\sigma}=Z^!_{\rho,\sigma}/L_0^{\Pi}
+       \arrow[r,"\text{hom }(130)"]
+ \&N^*_{\rho}/\{\pm1\}\\
+ S_0\Gamma^!_{\rho,\sigma}
+       \arrow[u,"{\text{can}\quad(u,a,b)\mapsto u}"']
+ \&\inserted{\unsure{S_0}\Gamma_{\rho,\sigma}\quad\text{(sans !)}}
+       \arrow[ur,very thick,"{\substack{\text{can}\\\unsure{\text{(passage au quotient)}}}}"']
+ \&\&\\
+ S_0^{\Pi}\Gamma^!_{\rho,\sigma}\arrow[u,hook,"\text{incl.}"']
+       \arrow[ur,hook,dashed,"\text{incl.}"']\arrow[rrr]
+ \&\&\&N^*_{\rho}\arrow[uu]
+\end{tikzcd}}
+\]
+qui montre que l'on a un diagramme de carrés cartésiens
+\[
+(145)\quad\deleted{\unsure{(146)|(144)}}\qquad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=huge]
+ \mathcal M(0)\arrow[r,hook]\arrow[dr,phantom,"\mathrm I" description]
+ \&\mathcal M^![0]=Z^!_{\rho,\sigma}\arrow[r,"\text{épi}"]
+       \arrow[dr,phantom,"\mathrm {II}" description]
+ \&\gamma_{\rho,\sigma}\arrow[r,hook]
+       \arrow[dr,phantom,"\mathrm {III}" description]
+ \&N^*_{\rho}/\{\pm1\}\\
+ \mathcal M(0)^{\sim}\arrow[u]\arrow[r,hook]
+ \&S_0^{\Pi}\Gamma^!_{\rho,\sigma}\arrow[u,"2"]\arrow[r]
+ \&\widetilde\gamma_{\rho,\sigma}\arrow[u,"2"]\arrow[r,hook]
+ \&N_{\rho}^{\unsure{*|d}}\arrow[u,"2"]
+\end{tikzcd}}
+\]
+où $\mathcal M(0)^{\sim}$ est \unsure{définie|défini} comme l'extension de
+$\mathcal M(0)$ par $\mu$ induite par l'ext.
+$S_0^{\Pi}\Gamma^!_{\rho,\sigma}$ de $\mathcal M^![0]$,
+qui s'identifie donc \unsure{aussi} à l'image \unsure{réc.|réci.} de
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 621}
+\scanpage{621}
+\mspage{614}
+
+Donc on a une suite \unsure{exacte}
+
+\( (149) \)\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=small]
+1 \arrow[r] \& \mu \arrow[r] \& Z_\rho^{*!} \arrow[r] \& \gamma_{\rho,\sigma} \arrow[r] \arrow[d,phantom,"\rotatebox{90}{$\simeq$}"] \& 1 \\
+\& \& (\simeq\widetilde{\gamma}_{\rho,\sigma}) \& \widetilde{\Gamma}_{\mathbb Q} \&
+\end{tikzcd}}
+
+qui fait de $Z_\rho^{*!}$ une $\mu$-ext. de $\gamma_{\rho,\sigma}$,
+d'où un hom can.
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+\gamma_{\rho,\sigma}\simeq Z_\rho^{*!}/\mu \arrow[r] \& N_\rho^*/\mu
+\end{tikzcd}}
+
+qui, bien entendu, n'est autre que le premier hom (130).
+
+$9^\circ)$ \uline{Récapitulation sur le cas universel}.
+
+Finalement, j'ai l'impression que j'ai fait encore des longs détours et
+\unsure{contorsions}, pour finalement me perdre dans les sables, et perdre un
+peu le fil. Je vais donc récapituler ce qui me semble essentiel.
+
+\textcircled{a}
+\[
+\begin{gathered}(1)\qquad Z_{\rho,\sigma}\simeq\mathcal M(0).L_0^{\mathcal G}
+\inserted{=\mathcal M[0]}\ \deleted{\illegible{1}}\\[3pt]\inserted{
+\text{(opérant sur }\widehat{\mathcal G}^{+}\text{ par op. induite par }\unsure{\text{l'adjoint}}\text{)}}
+\end{gathered}\]
+
+on distingue dedans un sous-\unsure{groupe} d'indice $2$
+\[
+(2)\qquad Z_{\rho,\sigma}^{!}\simeq\mathcal M(0).L_0^{\Pi}.
+\]
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 637}
+\scanpage{637}
+\mspage{622}
+
+\[
+\tag{36}
+\left\{
+\begin{aligned}
+\mathcal{M}'''&\simeq \mathcal{M}'''(-\bar j)\mathbin{.}\mathcal{G}^{+\wedge}\\
+\mathcal{N}_{\rho}^{*}&\simeq \mathcal{M}'''(-\bar j)\mathbin{.}L_{\rho}.
+\end{aligned}
+\right.
+\]
+
+Diagramme récapitulatif des sous-groupes de $\mathcal{N}_{\rho}^{*}$
+obtenus jusqu'à présent:
+
+
+\[
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&,column sep=1.05em,row sep=2.8em,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\&\& \mathcal{M}^{0}(-\bar j)
+  \arrow[rr,hook,"2"]
+  \arrow[dl,hook,"2"']
+\&\& \begin{gathered}\mathcal{M}'(-\bar j)\\=Z_{\rho,0}^{!}\end{gathered}
+  \arrow[rr,hook,"2"]
+  \arrow[dl,hook,"2"']
+  \arrow[dr,no head,draw=gray,
+    "{\unsure{\mathcal{M}'(-\bar j)\times\mu}}"{description,pos=.5},
+    "{\unsure{\searrow}}"{pos=.93}]
+\&\& \mathcal{M}'(-\bar j)\times\mu
+  \arrow[rr,hook,"3"]
+  \arrow[dl,hook,"2"']
+\&\& Z_{\rho}\arrow[dl,hook,"2"']\\
+(37)\&\mathcal{M}'''(-\bar j)\arrow[rr,hook,"2"]
+\&\& \mathcal{M}'''(-\bar j)\times\mu\arrow[rr,hook,"2"]
+\&\& \mathcal{N}_{\rho}^{?}\arrow[rr,hook,"3"]
+\&\& \mathcal{N}_{\rho}^{*}
+\&\&\\
+\&\&\&\&1
+  \arrow[uu,hook]
+  \arrow[uull,hook,start anchor=north west,end anchor=south west]
+  \arrow[rr,hook,"2"]
+  \arrow[dl,hook,"2"']
+\&\&\mu\arrow[uu,hook]\arrow[rr,hook,"3"]\arrow[dl,hook,"2"']
+\&\&L_{\rho}\arrow[uu,hook]\arrow[dl,hook,"2"']\\
+\&\&\&\mu_{\tau'}\arrow[uu,hook]\arrow[uull,hook]\arrow[rr,hook,"2"]
+\&\&\mathbb{D}_{\tau'}\arrow[uu,hook]\arrow[rr,hook,"3"]
+\&\&\mathbb{D}_{\rho}\arrow[uu,hook]
+\end{tikzcd}
+}
+\]
+,
+
+où nous sommes ici intéressés \unsure{surtout} à la
+“face supérieure”, \unsure{contenant|concernant} des sous-groupes d'indice fini de
+$\mathcal{N}_{\rho}^{*}$, intermédiaires entre celui-ci et
+$\unsure{\mathcal{M}_{0}(-\bar j)|\mathcal{M}^{0}(-\bar j)}$
+(d'indice $24$ dans $\mathcal{N}_{\rho}^{\unsure{*}}$).
+Je vais examiner la question d'invariance de ces sous-groupes
+les uns dans les Autres, et la structure des groupes quotients.
+
+Je vais refaire un diagramme qui montre \unsure{vraiment|mieux} les
+\deleted{\unsure{groupes|rapports}} relations entre les groupes en question.
+
+\margin{636}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 653}
+\scanpage{653}
+\mspage{629}
+
+$2^\circ)$ \quad $Z_{\rho,\sigma},\ \gamma_{\rho,\sigma}$.
+
+Soit
+\[
+\arraycolsep=3pt (4)\qquad
+\begin{array}{l}
+ Z_{\rho,\sigma}\subset
+ \operatorname{Aut}(\mathcal{G}^{+})\times
+ \widehat{\mathbb{Z}}^{*}\times\mu\times\mu\\
+ \phantom{Z_{\rho,\sigma}}\Vert\,\mathrm{dfn}\\
+ \left\{(u,\mu,\varepsilon_2,\varepsilon_3)\ \left|
+ \begin{array}{ll}
+ \multicolumn{2}{l}{\deleted{\unsure{u\ \text{normalise}\ \mathcal{G}^{\natural}\ 
+ \text{et induit l'identité dans}\ \mathcal{G}^{+}/\mathcal{G}^{\natural}}}}\\
+ a)&\exists\alpha\in\mathcal{G}_{\tau}^{\unsure{\natural|\sharp}},
+ \ \text{avec }\varepsilon_{\mathcal{G}}(\alpha)=\varepsilon_3,
+ \quad u(\rho)=\alpha(\rho)\\
+ b)&\exists\beta\in\mathcal{G}_{\tau}^{\unsure{\natural|\sharp}},
+ \ \text{avec }\varepsilon_{\mathcal{G}}(\beta)=\varepsilon_2,
+ \quad u(\sigma)=\beta(\sigma)\\
+ c)&u(\varepsilon_0)=\varepsilon_0^\mu\\
+ d)&u\ \text{normalise }\mathcal{G}^{\unsure{\natural|\sharp}}
+ \inserted{\ \text{\uline{et} induit l'identité sur }
+ (\mathcal{G}^{+}/\mathcal{G}^{\unsure{\natural|\sharp}})/\operatorname{Im}\Pi}
+ \end{array}\right.\right\}.
+\end{array}
+\]
+\margin{\unsure{cf. page} \unsure{635} \unsure{suite}
+\deleted{\unsure{une condition plus faible}}
+\unsure{cette condition}.}
+\margin{\deleted{La dernière condition \unsure{rajoutée} dans d)
+(\unsure{en principe}), est \unsure{conséquence} de a)b) si
+$\varepsilon_2\varepsilon_3=1$
+(\unsure{auquel cas} $u|(\mathcal{G}^{+}/\mathcal{G}^{\unsure{\natural|\sharp}})$
+\deleted{l'identité} \unsure{induite par} $\varepsilon[\tau]$,
+\unsure{où} $\varepsilon=\varepsilon_2=\varepsilon_3\in\{\pm1\}$)}.}
+
+\uline{Proposition.} \quad $Z_{\rho,\sigma}$ est un \uline{sous-groupe}
+du groupe produit.
+
+\uline{Dém.} Les conditions c), d) définissent \unsure{évidemment}
+\deleted{un} \inserted{chacune} sous-groupe.
+\unsure{Compte tenu que}
+\[
+\tau(\sigma)=-\unsure{\sigma|\varepsilon},
+\]
+la condition b) signifie encore que
+\[
+\unsure{(5^{*})}\qquad
+b')\quad u(\sigma)\ \text{est }\mathcal{G}^{\unsure{\natural|\sharp}}
+\text{-conjugué à : }\
+\deleted{\unsure{\varepsilon_2}}\sigma^{\varepsilon_2}
+\bigl(\deleted{\unsure{\varepsilon_2\sigma}}\inserted{=\varepsilon_2\sigma}\bigr)
+\]
+et sous cette forme il est clair que la condition c')
+définit un sous-groupe. Je ne pense pas que la condition a)
+définisse à elle seule un sous-groupe. Mais si
+$\unsure{\mathfrak{g}_{(b)}|G_{(b)}}$
+\deleted{$\unsure{\mathfrak{g}_{(a,b)}}$}
+désigne le sous-\unsure{grpe} du produit défini par ces conditions
+\deleted{\unsure{a)}}\inserted{b)}, on a \unsure{à montrer} que
+$\unsure{\mathfrak{g}|G}_{\deleted{\unsure{(a,b,c)}}\inserted{(a,b)}}$
+est un sous-groupe du \deleted{produit}
+$\unsure{\mathfrak{g}|G}_{\deleted{\unsure{(a,b)}}\inserted{(b)}}$
+--- ce qui prouvera la prop.
+Soient $\uline{u},\uline{u}'\in\unsure{\mathfrak{g}_{(b)}|G_{(b)}}$,
+correspondant à
+\inserted{$(u,\mu,\varepsilon_2,\varepsilon_3)$ et
+$(u',\mu',\varepsilon'_2,\varepsilon'_3)$, et à}
+$\alpha,\alpha'\in\mathcal{G}^{\unsure{\natural|\sharp}}_\tau$,
+\unsure{de sorte} que l'on a
+
+\mspage{652}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 656}
+\scanpage{656}
+
+\uline{Remarques} \deleted{a) Pour que la condition b) soit
+\unsure{multiplicative}, on n'a pas besoin de la condition a) dans
+\unsure{tte} sa force, il suffit que $u$ dans
+$\mathcal{G}^{+}/\mathcal{G}^{\unsure{\natural|\sharp}}$
+normalise l'image de $L_\sigma$, i.e. qu'on ait
+\[
+u(\sigma)\equiv\pm\sigma
+\quad(\mathcal{G}^{\unsure{\natural|\sharp}}).
+\]}
+
+\deleted{b)} Si $\mathcal{G}$ est “assez gros”, l'hom de projection
+est injectif
+
+(12)\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&, column sep=large]
+Z_{\rho,\sigma}\arrow[r,hook]\&\operatorname{Aut}(\mathcal{G}^{+})
+\end{tikzcd}}
+\quad (cf. p. 578)
+
+\uline{Exemples} dans le cas universel
+
+a) \quad $\mathcal{G}^{\unsure{\natural|\sharp}}=\mathcal{G}^{+}
+=\deleted{\unsure{\mathcal{G}}}\mathrm{Sl}(2,\mathbb{Z})^{\wedge}$.
+\deleted{On a ici la} \unsure{Condition|condition} (4) d) est vide,
+les conditions a), b) équivalent respectivement au fait que
+$u(\rho)$ conjugué à $\rho^{\varepsilon_3}$,
+$u(\sigma)$ conjugué à $\sigma^{\varepsilon_2}$,
+i.e. \unsure{retombe} sur la définition (6) p. 578, qui donne
+\[
+\deleted{Z_{\rho,\sigma}=M(\unsure{\omega|0}).L_0^{\mathcal{G}}
+=M^{\mathcal{G}}[0].}
+\]
+\[
+(13)\qquad
+Z_{\rho,\sigma}=M(0).L_0^{\mathcal{G}}
+=M^{\mathcal{G}}[0]=M[0]
+\]
+
+\margin{\uline{NB} A priori on a plutôt
+$Z_{\rho,\sigma}\subset\unsure{\widetilde{M}_{0,3}|M_{0,3}}$, mais
+\diagram{\begin{tikzcd}[ampersand replacement=\&, column sep=large,row sep=large]
+M[0]\arrow[r,"\sim"]\arrow[d,equal]\&
+\widetilde{M}_{0,3}[0]\arrow[d,equal]\\
+M(\unsure{\omega|0}).L_0^{\mathcal{G}}\arrow[r,"\sim"]\&
+\unsure{M_{0,3}(0)}.
+L_0^{\tikz[baseline=(g.base)]{\node[draw,ellipse,inner sep=1pt]
+(g){$\scriptstyle\unsure{\mathcal{G}_{0,3}}$};}}
+\end{tikzcd}}}
+
+b) \quad
+$\mathcal{G}^{\unsure{\natural|\sharp}}=\Pi=\Pi_0\times\mu$.
+On trouve maintenant
+\[
+(14)\qquad
+Z_{\rho,\sigma}=M(0).L_0^\Pi
+=M^\Pi[0]=\unsure{M^{!}[0]|M^{\prime!}[0]}
+\]
+(noté $Z_{\rho,\sigma}^{!}$ dans $\mathrm{V}$ n$^\circ$ 8).
+
+\margin{Dans ce cas, il est immédiat que $Z_{\rho,\sigma}$
+opère \unsure{trivial\textsuperscript{mt}} même sur
+$\mathcal{G}^{+}/\mathcal{G}^{\unsure{\natural|\sharp}}_\tau$,
+car il en est ainsi du
+\deleted{\unsure{NB} \unsure{tous les sous-groupes}
+\unsure{contenus par} a), b) de (4),
+$\unsure{\mathcal{G}^{\natural}=M(0)_2.L_0^\Pi|
+\mathcal{G}^{\natural}=M(\omega)_2.L_0^\Pi}$}.}
+\margin{$\unsure{M^{!}[0]|M^{\prime!}[0]}=M^\Pi[0]$.}
+\margin{expliciter à nouveau pourquoi
+\unsure{(i.e. pourquoi)} que
+$(\varepsilon_0,1,1,1)\notin Z_{\rho,\sigma}$}
+
+c) \quad $\mathcal{G}^{\unsure{\natural|\sharp}}=\Pi_0$.
+Les conditions a) et b) \inserted{de (4)} n'ont pas changé
+\unsure{p.r.v.|p.r. au}
+\deleted{\unsure{avant}}\inserted{\uline{cas précédent}},
+puisque $\Pi=\Pi_0\times\mu$ et $\mu$ est central, par contre la
+
+\mspage{655}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 658}
+\scanpage{658}
+
+qu'\unsure{en} se \unsure{restreignant} à des, $(u,\mu,\varepsilon_2,\varepsilon_3)$ avec $\varepsilon_3=1$,
+car $\dot{\rho}^{-1}$ n'est pas égal à $\dot{\rho}$ ! Il est vrai \deleted{que}
+(dans le cas universel p. ex.) que $u(\rho)$ est conjugué \uline{dans $\mathcal{G}^{+}$}
+à $\rho^{\varepsilon_3}$, mais en général il ne le sera pas par un élément (disons) de $\Pi$.
+
+On pose
+\[
+\begin{gathered}(18)\qquad
+L_0^{\unsure{\natural|\sharp}}
+=\deleted{\unsure{L_0}\cap\mathcal{G}^{\unsure{\natural|\sharp}}}
+\inserted{\bigl\{l\in L_0^{\mathcal{G}}\mid
+(\operatorname{int}(l),1,1,1)\in Z_{\rho,\sigma}\bigr\}}
+\\[3pt]
+\left(\text{où }L_0^{\mathcal{G}}\subset\mathcal{G}^{+}
+\text{ est l'\unsure{ens} des }\varepsilon_0^n,\ n\in\widehat{\mathbb{Z}}\right)
+\end{gathered}\]
+\margin{\uline{NB} On a
+$L_0^{\unsure{\natural|\sharp}}\supset L_0\cap\mathcal{G}^{\unsure{\natural|\sharp}}$,
+et l'inclusion peut être stricte, cf. exemple c) ci-dessus\ldots
+où \uline{$L_0^{\unsure{\natural|\sharp}}=L_0^\Pi$},
+$L_0\cap\mathcal{G}^{\unsure{\natural|\sharp}}=L_0^{\Pi_0}$.
+\unsure{ce qui} \unsure{surprend}.}
+
+et on a un hom canonique
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+(19)\quad L_0^{\unsure{\natural|\sharp}}
+  \arrow[r,"\unsure{i}"] \& Z_{\rho,\sigma},\\
+l \arrow[r,mapsto] \& (\operatorname{int}_{\mathcal{G}^{+}}(l),1,1,1)
+\end{tikzcd}
+}
+injectif ssi on a
+\[
+(20)\qquad
+L_0^{\unsure{\natural|\sharp}}\cap\operatorname{Centr}(\mathcal{G}^{+})=\{1\}
+\]
+l'image invariante. On pose
+\[
+(21)\qquad
+\gamma_{\rho,\sigma}=Z_{\rho,\sigma}/L_0^{\unsure{\natural|\sharp}},
+\]
+d'où
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+(22)\quad 1 \arrow[r] \&
+L_0^{\unsure{\natural|\sharp}} \arrow[r] \&
+Z_{\rho,\sigma} \arrow[r,"\delta_Z"] \&
+\gamma_{\rho,\sigma} \arrow[r] \& 1,
+\end{tikzcd}
+}
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+ \& \& \mu\\
+(23)\quad Z_{\rho,\sigma} \arrow[r] \&
+\gamma_{\rho,\sigma}
+  \arrow[ur,"\varepsilon_{3\gamma}"]
+  \arrow[r,"\chi_\gamma"]
+  \arrow[dr,"\varepsilon_{2\gamma}"'] \&
+\widehat{\mathbb{Z}}^{*}\\
+ \& \& \mu
+\end{tikzcd}
+}
+\unsure{)} \unsure{déduites} des
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&, row sep=0pt]
+ \& \varepsilon_3\\
+(u,\mu,\varepsilon_2,\varepsilon_3)
+  \arrow[ur,mapsto] \arrow[r,mapsto] \arrow[dr,mapsto]
+  \& \mu\\
+ \& \varepsilon_2.
+\end{tikzcd}
+}
+
+\deleted{
+\uline{Remarques} On \deleted{désigne} pose,
+\[
+\begin{gathered}(24)\qquad
+\left\{
+\begin{array}{lll}
+\gamma'_{\rho,\sigma}=\operatorname{Ker}\varepsilon_{3\gamma},&
+\gamma''_{\rho,\sigma}=\operatorname{Ker}\unsure{\varepsilon_{2,\sigma}|\varepsilon_{2\gamma}},&
+\gamma'''_{\rho,\sigma}=\operatorname{Ker}\varepsilon_{2\gamma}\varepsilon_{3\gamma}\\
+Z'_{\rho,\sigma}=\ldots&
+Z''_{\rho,\sigma}=\ldots&
+Z'''_{\rho,\sigma}=\ldots
+\end{array}
+\right.\\[3pt]
+(\text{images inverses dans }Z_{\rho,\sigma}\unsure{)}
+\end{gathered}\]
+}
+\mspage{657}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 659}
+\scanpage{659}
+\mspage{632}
+
+On pose
+\[
+(24)\qquad
+\left\{
+\begin{array}{l}
+\gamma'_{\rho,\sigma}=\operatorname{Ker}\varepsilon_{3\gamma},\\[2pt]
+\gamma''_{\rho,\sigma}=\operatorname{Ker}\varepsilon_{2\gamma},\\[2pt]
+\gamma'''_{\rho,\sigma}=\operatorname{Ker}\varepsilon_{2\gamma}\varepsilon_{3\gamma},\
+\gamma^\circ_{\rho,\sigma}=\gamma'\cap\gamma''=\gamma''\cap\gamma'''
+=\gamma'''\cap\gamma'\\[4pt]
+Z'_{\rho,\sigma},Z''_{\rho,\sigma},Z'''_{\rho,\sigma},Z^\circ_{\rho,\sigma}
+\text{ sont les images inv. des }\deleted{\unsure{Z_\rho}}
+\gamma'_{\rho,\sigma}\text{ etc}\\
+\hfill\text{dans }Z_{\rho,\sigma}
+\end{array}
+\right.
+\]
+Ce sont donc des sous groupes d'indice $1$, \unsure{ou} $2$ ou quatre de
+$\gamma_{\rho,\sigma}$ \unsure{respt} $Z_{\rho,\sigma}$ --- l'indice $4$ ne pouvant
+se présenter que pour $\gamma^\circ_{\rho,\sigma},Z^\circ_{\rho,\sigma}$.
+
+\uline{Remarques} 1) On a donc
+\[
+(25)\qquad
+Z^\circ_{\rho,\sigma}\simeq
+\left\{
+(u,\mu)\in\operatorname{Aut}(\mathcal{G}^{+})\times\widehat{\mathbb{Z}}^{*}
+\left|
+\begin{array}{ll}
+\mathrm{a})&u(\rho)\text{ est }\mathcal{G}^{\unsure{\natural|\sharp}}\text{-conj. à }\rho\\
+\mathrm{b})&u(\sigma)\quad\uline{\hspace{4em}}\quad\sigma\\
+\mathrm{c})&u(\varepsilon_0)=\varepsilon_0^\mu
+\end{array}
+\right.
+\right\}\unsure{,}
+\]
+\margin{\unsure{Plus} généralement,
+\[
+Z'''_{\rho,\sigma}\simeq
+\left\{
+(u,\mu,\varepsilon)\in\operatorname{Aut}(\mathcal{G}^{+})
+\times\widehat{\mathbb{Z}}^{*}\times\mu
+\left|
+\begin{array}{ll}
+\mathrm{a})&
+u(\rho)\ \deleted{\unsure{\text{est }\varepsilon[\tau](\rho)}}
+\inserted{\mathcal{G}^{\unsure{\natural|\sharp}}\text{-conj.}}
+\text{ à }\varepsilon[\tau](\rho)\\
+\mathrm{b})&
+u(\sigma)\text{ est }\mathcal{G}^{\unsure{\natural|\sharp}}\text{-conj. à }
+\varepsilon[\tau](\sigma)\\
+\mathrm{c})&u(\varepsilon_0)=\varepsilon_0^\mu
+\end{array}
+\right.
+\right\}\unsure{,}
+\]}
+(isomorphisme de \deleted{sous} groupes). La condition d) de (4) ---
+stabilité de $\mathcal{G}^{\unsure{\natural|\sharp}}$ sous $u$ --- est conséquence
+ici de a) b) c), car on \unsure{aura}
+\[
+\begin{array}{ll}
+u(\rho)\equiv\rho&(\mathcal{G}^{\unsure{\natural|\sharp}})\\
+u(\sigma)\equiv\sigma&(\mathcal{G}^{\unsure{\natural|\sharp}})
+\end{array}
+\]
+ce qui implique
+\[
+(25\mathrm{bis})\qquad
+u(x)\equiv x\quad(\mathcal{G}^{\unsure{\natural|\sharp}})
+\qquad \forall x\in\mathcal{G}^{+},
+\]
+i.e. la stabilité de $\mathcal{G}^{\unsure{\natural|\sharp}}$ \uline{et} une action triviale de
+$u$ sur $\mathcal{G}/\mathcal{G}^{\unsure{\natural|\sharp}}$.
+
+2) On a encore l'élément remarquable
+\[
+(26)\qquad
+\tau_Z\in Z_{\rho,\sigma},\qquad \tau_Z=(\tau,-1,-1,-1)
+\]
+\margin{C'est une raison de plus pour ne pas exiger \unsure{ds.} (4) d) que $u$ opère
+trivialement sur $\mathcal{G}^{+}/\mathcal{G}^{\unsure{\natural|\sharp}}$,
+\unsure{ce qui} \unsure{me ferait|on ferait} perdre $\tau$ !}
+
+$3^\circ)$\quad $S_0G_{\rho,\sigma},G_{\rho,\sigma},
+S_0G_{\rho,\sigma}^{\unsure{\natural|\sharp}},G_{\rho,\sigma}^{\unsure{\natural|\sharp}}$.
+
+Procédant comme page 577, on trouve
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+Z_{\rho,\sigma}\arrow[r]\&\operatorname{Aut}(\mathcal{G}^{+})
+\end{tikzcd}
+}
+d'où des produits $1/2$ directs
+\[
+(27)\qquad
+S_0G_{\rho,\sigma}\overset{\mathrm{dfn}}=
+Z_{\rho,\sigma}\mathbin{.}\mathcal{G}^{+},\supset
+S_0G_{\rho,\sigma}^{\unsure{\natural|\sharp}}\overset{\mathrm{dfn}}=
+Z_{\rho,\sigma}\mathbin{.}\mathcal{G}^{\unsure{\natural|\sharp}}
+\]
+et un hom
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+(28)\quad L_0^{\unsure{\natural|\sharp}}
+  \arrow[r,hook,"\unsure{i_{L_0,S_0G}|i_{L_0,G}}"]\&
+S_0G_{\rho,\sigma}^{\unsure{\natural|\sharp}}
+  \arrow[r,phantom,"\subset"]\&S_0G_{\rho,\sigma}\\
+l\arrow[r,mapsto]\&
+\deleted{\unsure{\iota(l)|i(l)}}\,i_{L_0,Z}(l)\mathbin{.}l^{-1}
+\end{tikzcd}
+}
+\mspage{658}
+
+\clearpage
+\LMcote{140-3}
+\typeout{LMLAYOUTSCAN 140-3 662}
+\scanpage{662}
+central de $Z_0^{\unsure{\natural|\sharp}}$.
+Considérons l'application
+\[
+(42)\qquad
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&, column sep=small,row sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+Z_0^{\unsure{\natural|\sharp}}\arrow[rr]\&\&
+S_0G_{\rho,\sigma}^{\unsure{\natural|\sharp}}
+=Z_{\rho,\sigma}\cdot\mathcal G^{\unsure{\natural|\sharp}}
+\&\&\\
+f\arrow[r,mapsto]\&
+f^{-1}\arrow[d,phantom,"\in"{rotate=-90}]\&
+{\cdot\uline{u}(f)}\arrow[d,phantom,"\in"{rotate=-90}]\&
+\inserted{=\uline{u}(f)\cdot f^{-1}}\&
+{\text{où }\uline{u}(f)=(\operatorname{int}(f),1,1,1)
+\in Z_{\rho,\sigma}}\arrow[d,phantom,"\subset"{rotate=-90}]\\
+\&\mathcal G^{\unsure{\natural|\sharp}}\&
+Z_{\rho,\sigma}\&\&G_{\rho,\sigma}^{\unsure{\natural|\sharp}}
+\end{tikzcd}
+}
+\]
+Cette application est un hom de groupes,
+\deleted{\unsure{dont|déf.}}\inserted{elle}
+\deleted{\inserted{image inverse de
+$\unsure{Z_0|L_0}\ \deleted{\unsure{L_0}}$}}
+\deleted{\unsure{induit|injectif} \unsure{par}
+\unsure{proj.|passage} \unsure{au} \unsure{quotient}
+$L_0^{\unsure{\natural|\sharp}}$}
+\deleted{l'image}
+induit sur $L_0^{\unsure{\natural|\sharp}}\subset
+Z_0^{\unsure{\natural|\sharp}}$ l'hom canonique
+$\inserted{\unsure{i_{L_0,SG}|i_{L_0,S_0G}}}$
+(28), et $L_0^{\unsure{\natural|\sharp}}\subset
+Z_0^{\unsure{\natural|\sharp}}$ est l'image inverse de
+\[
+\unsure{i_{L_0,SG}|i_{L_0,S_0G}}
+(L_0^{\unsure{\natural|\sharp}})
+=\operatorname{Ker}
+\bigl(S_0G_{\rho,\sigma}^{\unsure{\natural|\sharp}}
+\longrightarrow G_{\rho,\sigma}^{\unsure{\natural|\sharp}}\bigr).
+\]
+On trouve ainsi un hom injectif
+\[
+(43)\qquad
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&]
+Z_0^{\unsure{\natural|\sharp}}/L_0^{\unsure{\natural|\sharp}}
+\arrow[r,hook]\&G_{\rho,\sigma}^{\unsure{\natural|\sharp}}
+\end{tikzcd}
+}
+\]
+dont l'image est le noyau de (38), i.e on a une suite exacte canonique
+\[
+(44)\qquad
+\diagram{
+\begin{tikzcd}[ampersand replacement=\&, column sep=small,row sep=large]
+1\arrow[r]\&
+L_0^{\unsure{\natural|\sharp}}\arrow[r]\&
+Z_0^{\unsure{\natural|\sharp}}\arrow[r]\&
+G_{\rho,\sigma}^{\unsure{\natural|\sharp}}\arrow[r]\&
+\widetilde G_{\rho,\sigma}^{\unsure{\natural|\sharp}}
+\arrow[r]\arrow[d,phantom,"\subset"{rotate=-90}]\&1\\
+\&\&\&\&
+{\operatorname{Aut}(\mathcal G^+)\times\widehat{\mathbb Z}^{*}\times\mu\times\mu}
+\&
+\end{tikzcd}
+}
+\]
+où $\widetilde G_{\rho,\sigma}^{\unsure{\natural|\sharp}}$
+est formé des $(u,\mu,\varepsilon_2,\varepsilon_3)$ satisfaisant
+les conditions (39).
+
+\uline{Remarque.}\quad Cette proposition fait apparaître
+dans quelle mesure la \deleted{\illegible{1}} construction faite ici de
+$G_{\rho,\sigma}^{\unsure{\natural|\sharp}}$
+est plus fine que celle \unsure{où}
+on le \unsure{définirait|définissait} simplement comme un
+groupe d'autom. de $\mathcal G^+$
+(on $\overline{\mathrm m}$ \unsure{a|en} besoin
+des $\mu,\varepsilon,\varepsilon'$
+pr dessus le \unsure{marché}\ldots).
+\mspage{661}
+\clearpage
+\LMcote{140-4}
+\typeout{LMLAYOUTSCAN 140-4 20}
+\scanpage{20}
+
+à l'aide \unsure{en se donnant} un système
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\text{(35)} \&
+{\begin{gathered}
+\underline{\mathcal G}\supset\underline M\\[-2pt]
+\text{Groupe sur }S_0,\\[-2pt]
+\text{avec }\underline M\text{ comme}\\[-2pt]
+\text{sous-groupe distingué}
+\end{gathered}}
+\& \text{, et }\Phi\colon\mathcal G_{S_0}\arrow[r]
+\& \underline{\mathcal G}
+\end{tikzcd}}
+
+tel que (34) se \unsure{reconstitue} à partir de (35) en prenant
+$\underline M$, $\mathcal G_{S_0}$ dans (35),
+$M_{S_0}$ \deleted{\illegible{1}}$=$ l'image inverse de
+$\underline M\subset\underline{\mathcal G}$ par $\Phi$,
+$\varphi$ induit par $\Phi$, et $\Theta$ l'opération déduite de
+$\Phi$. De plus, $\Phi$ induit un \uline{iso}.
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+\underbrace{\mathcal G_{S_0}/M_{S_0}}_{H_{S_0}}
+\arrow[r,"\sim"] \& \underline{\mathcal G}/\underline M
+\end{tikzcd}}
+
+-- et on a là une description ``axiomatique'' du système (35)
+en termes de (34).
+La suite exacte de \deleted{\unsure{schémas}}\inserted{Groupes sur $\unsure{S|S_0}$}
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=small]
+\text{(36)} \& 1\arrow[r,dash] \& \underline M\arrow[r]
+\& \underline{\mathcal G}\arrow[r]
+\& \underline{\mathcal G}/\underline M\arrow[r,dash]
+\arrow[d,phantom,"\simeq"{description,rotate=90}] \& 1\\
+\&\&\&\& H_{S_0}.
+\end{tikzcd}}
+
+de fait, sur $\forall$ schém. de base affine $S$
+(plus généralement, $S$ tel que $H^1(S,M\otimes_{\mathbb Z}\underline{\mathcal O}_S)=0$)
+\unsure{des} suites exactes
+
+\margin{L'hyp. \unsure{faite} sur des $H^1$ \unsure{nul|nuls}
+est entièrement inutile, car les $\underline M$-torseurs
+\uline{sur} $S_0$ définis par les \unsure{images} \unsure{inverses}
+des $h(\in H)$ sont évidemment triviaux}
+
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\text{(37)} \& 1\arrow[r] \& \underline M(S)\arrow[r]
+\arrow[d,phantom,"\simeq"{description,rotate=90}]
+\& \underline{\mathcal G}\unsure{(A)|(/A)}\arrow[r]
+\& H_{S_0}(S)\arrow[r,dash]
+\arrow[d,phantom,"\simeq"{description,rotate=90}] \& 1\\
+\&\& M\otimes_{\mathbb Z}A \&\& H\text{ si }S\text{ conn.}\\[-3pt]
+\&\&\text{si }S\text{ affine d'anneau }A
+\end{tikzcd}}
+
+\margin{19}
+
+\clearpage
+\LMcote{140-4}
+\typeout{LMLAYOUTSCAN 140-4 44}
+\scanpage{44}
+définir des homomorphismes
+\[
+\tag{40}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\underline M_{S_0}\arrow[r,"u_{\underline M}"] \& \unsure{G^{\sharp}|G^{\natural}}
+\end{tikzcd}}
+,\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\unsure{C_{S_0}|G_{S_0}}\arrow[r,"u_{\unsure{C|G}}"] \& \unsure{G^{\sharp}|G^{\natural}}
+\end{tikzcd}}
+\quad\text{i.e.}\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\unsure{C|G}\arrow[r] \& \unsure{G^{\sharp}(S_0)|G^{\natural}(S_0)}
+\end{tikzcd}}
+\]
+satisfaisant les deux conditions suivantes :
+
+a) Commutativité du diagramme
+\[
+\tag{41}
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,row sep=large]
+M_{S_0}\arrow[r]\arrow[d] \& \unsure{C^+_{S_0}|G^+_{S_0}}\arrow[ddr,"u_{\unsure{C|G}}"] \& \\
+\underline M_{S_0}\arrow[drr,"u_{\underline M}"'] \& \& \\
+\& \& G
+\end{tikzcd}}
+\quad,
+\]
+et b)
+\[
+\tag{42}
+\begin{gathered}
+u_{\underline M}\text{ est compatible avec les actions}\\
+\text{de }\unsure{C^+_{S_0}|G^+_{S_0}}\text{ sur }\underline M_{S_0}
+\text{ (via son action sur }M_{S_0}\text{)}\\
+\text{et sur }G\text{ (via }u_{\unsure{C|G}}\text{).}
+\end{gathered}
+\]
+Dans le cas actuel, on aura $G=\unsure{\underline C|\underline G}$
+\[
+\tag{43}
+u_{\underline M}(\lambda)=\deleted{\unsure{\lambda}}\,i(\mu.\lambda)
+\]
+où
+\[
+i:\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\underline M\arrow[r,hook] \& \unsure{\underline C^+|\underline G^+}
+\end{tikzcd}}
+\]
+est l'inclusion, et
+\[
+\tag{44}
+u_{\unsure{C|G}}:\deleted{\text{défini par}}
+\inserted{\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large]
+\unsure{C^+_{S_0}|G^+_{S_0}}\arrow[r]\&G
+\end{tikzcd}}}
+\qquad\text{défini par (33),}
+\]
+Il faut donc d'abord vérifier que (33), définit bien un hom
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small]\unsure{C_{S_0}|G_{S_0}}\arrow[r]\&G\end{tikzcd}},
+ou ce qui revient au $\overline{\mathrm m}$,
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small]\unsure{C|G}\arrow[r]\&G(S_0)\end{tikzcd}}.
+\margin{43}
+\margin{43\\\texttt{https://grothendieck.umontpellier.fr}\\Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\34095 Montpellier cedex 5 - France}
+
+\clearpage
+\LMcote{140-4}
+\typeout{LMLAYOUTSCAN 140-4 66}
+\scanpage{66}
+
+que \deleted{$\unsure{M_0}$}
+\inserted{le sous-groupe envisagé de $\Pi_0\subset\mathrm{Sl}(2,\mathbb Z)$,
+d'indice $3$ dans $\Pi_0$,}
+est l'image inverse de ce sous-groupe \deleted{dans $M$} précédent de
+$\mathrm{Sl}(2,\mathbb Z/12\mathbb Z)$.
+
+Résumons les résultats obtenus :
+
+\uline{Proposition} Considérons dans $\mathcal G_0^+=\mathrm{Sl}(2,\mathbb Z)$
+la tour de sous-groupes invariants ($\overline{\mathrm m}$ dans $\mathcal G_0$)
+\[
+\begin{gathered}(114)\\[3pt]
+\diagram{$\begin{tikzcd}[ampersand replacement=\&,column sep=small,row sep=small,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\mathcal G_0^+\&
+\Pi=\Pi[2]\arrow[l,hook',"6"']\arrow[d,equal,"\mathrm{dfn}"]\&
+\Pi_0\arrow[l,hook',"2"']\arrow[d,equal]\&
+\Pi_{00}\ (\supset[\Pi_0,\Pi_0])\arrow[l,hook',"3"']\arrow[d,equal]\\
+\&\begin{array}{c}
+\{u\in\mathcal G_0^+\mid u\equiv1\ (2)\}\\
+\deleted{\Vert}\\
+\deleted{\unsure{\mathfrak{sl}(2,\mathbb F_2)}\simeq
+\{u\in\mathrm M_2(\mathbb F_2)\mid\mathrm{Tr}\,u=0\}}\\
+\unsure{(i)|(1)}
+\end{array}
+\&\begin{array}{l}
+\text{Sous-groupe}\\
+\text{engendré}\\
+\text{par les }-\ell_i=\lambda_i
+\end{array}
+\&\begin{array}{l}
+\text{Sous-groupe }\uline{\text{inv.}}\\
+\text{engendré par}\\
+\deleted{\text{par les }\lambda_i,}\\
+\deleted{[\lambda_0,\lambda_1]\ \text{et}}\\
+\lambda_1\lambda_0^{-1}=\ell_1\ell_0^{-1}
+\end{array}
+\end{tikzcd}$}
+\end{gathered}\]
+
+Considérons d'autre part le groupe quotient
+\[
+(115)\qquad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,row sep=small,column sep=small]
+\mathrm{Sl}(2,\mathbb Z/12\mathbb Z)
+\arrow[r,phantom,"\simeq" description]
+\arrow[d,phantom,"\simeq" description]\&
+\mathcal G_0^+/\underbrace{\Pi[12]}_{\simeq\{u\in\mathcal G_0^+\mid u\equiv1\ (12)\}}\\
+\mathrm{Sl}(2,\mathbb Z/4\mathbb Z)\times
+\mathrm{Sl}(\unsure{2},\mathbb Z/\unsure{3}\mathbb Z),\&
+\end{tikzcd}}
+\]
+et la tour de sous-groupes suivants
+\[
+(116)\qquad
+\diagram{$\left\{\begin{array}{rll}
+&H=\mathrm{Sl}(2,\mathbb Z/4\mathbb Z)\times\mathrm{Sl}(2,\mathbb Z/3\mathbb Z)
+&\text{ordre }48\times24\\
+6\ \cup&\hfill\cup\hfill&\\
+&\Pi^\bullet=\mathfrak{sl}(2,\mathbb F_2)\times\mathrm{Sl}(2,\mathbb Z/3\mathbb Z)
+&\text{ordre }8\times24\\
+2\ \cup&\hfill\cup\hfill&\\
+&\Pi_0^\bullet=\mathfrak{sl}(2,\mathbb F_2)'\times\mathrm{Sl}(2,\mathbb Z/3\mathbb Z)
+&\text{ordre }4\times24\\
+3\ \cup&\hfill\cup\hfill&\\
+&\Pi_{00}^\bullet=\mathfrak{sl}(2,\mathbb F_2)'\times
+\underbrace{\mathrm{Syl}_2}_{\simeq\deleted{\illegible{1}}D_4}
+&\text{ordre }4\times8,
+\end{array}\right.$}
+\]
+
+\margin{\uline{NB} $(\mathcal G_0^+)_{\unsure{\mathrm{ab}}}\simeq
+\mathbb Z/12\mathbb Z$ s'identifie à un
+\deleted{$\unsure{(115)|(116)}\ \unsure{\mathrm{Sl}(2)}$}
+quotient de $H/\Pi_{00}^\bullet$ par un ss-groupe (116) d'ordre $3$
+--- soit encore le ss-groupe engendré par l'élément
+$(-\dot\rho,1)$ de
+\[
+\underbrace{\mathrm{Sl}(2,\mathbb Z/4\mathbb Z)/\mathfrak{sl}(2,\mathbb F_2)'}_{\mathcal G_0^+/\Pi_0}
+\times\mathrm{Sl}(2,\mathbb Z/3\mathbb Z)/\mathrm{Syl}_2.
+\]}
+
+Où \deleted{\unsure{on a}}
+\[
+(117)\qquad
+\diagram{$\left\{\begin{array}{ll}
+\text{a)}&\mathfrak{sl}(2,\mathbb F_2)\simeq\\[-1pt]&
+\mathrm{Ker}\bigl(\mathrm{Sl}(2,\mathbb Z/4\mathbb Z)\longrightarrow
+\mathrm{Sl}(2,\mathbb Z/2\mathbb Z)\bigr)\\[.5em]
+\text{b)}&\mathfrak{sl}(2,\mathbb F_2)'\unsure{\subset}\mathfrak{sl}(2,\mathbb F_2),
+\quad\begin{array}{l}
+\text{sous-groupe distingué }\simeq\\
+\deleted{\unsure{\mathbb F_3|\mathbb F_2}}\ \mathbb F_2\times\mathbb F_2\ ;\
+\text{dont les trois él. }\ne0\\
+\text{sont }\dot\lambda_0,\dot\lambda_1,\dot\lambda_\infty\
+\text{ (images}\\
+\text{dans }\mathrm{Sl}(2,\mathbb Z/4\mathbb Z)\text{) --- c'est}\\
+\text{un supplémentaire de sa}\\
+\text{sous-alg. de Lie }\mu\simeq\mathbb F_2\ \text{des matr.}\\
+\text{\unsure{ctes|scal.}}
+\end{array}\\[.5em]
+\text{c)}&\underset{\substack{\Vert\\
+\mathrm{Ker}(\mathrm{Sl}(2,\mathbb Z/3\mathbb Z)\to\mathcal G_3^+)}}{\mathrm{Syl}_2}
+\subset\mathrm{Sl}(2,\mathbb Z/3\mathbb Z),\\[-1pt]&
+\begin{array}{l}
+\text{sous-groupe de Sylow, d'ordre }8\\
+\text{(qui est distingué)}
+\end{array}
+\end{array}\right.$}
+\]
+
+\clearpage
+\LMcote{140-4}
+\typeout{LMLAYOUTSCAN 140-4 113}
+\scanpage{113}
+\mspage{704}
+
+y portant ces valeurs de $x,y$, une relation liant $a_0,a_1,b,\nu$ :
+\[
+\nu(-4a_1+6b-2)=-2\nu a_0\qquad\text{i.e.}
+\]
+\[
+2\nu(a_0-2a_1+3b-1)=0
+\]
+qui est une conséquence de (263)! Ainsi on trouve :
+\deleted{que pour un scindage}
+
+\uuline{Proposition} Pour \unsure{tt} scindage de l'ext.
+$\underline{\mathfrak{S}}^{+}/\mu_{\underline{\mathfrak{S}}}$ de
+$(\underline{\mathfrak{S}}_3)_{\unsure{S_0}}$ par $\underline{M}$
+(sur base quelconque), le commutant
+\inserted{dans $\underline{G}_{\rho,\sigma}/\underline{\mu}_G$}
+du sous-groupe section est \deleted{\unsure{encore|un}} un sous-groupe
+section de \unsure{la} \inserted{\unsure{proj.}} l'extension
+$\underline{G}_{\rho,\sigma}^{\unsure{\natural|\sharp}}$
+de $\mathbb O_{12}^{*}$ par $\underline{M}$.
+[Le relèvement
+\[
+(264)\qquad u_{\rho',\sigma'}:\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&]
+\mathbb O_{12}^{*}
+\arrow[r] \&
+\underline{G}_{\rho,\sigma}^{\unsure{\natural|\sharp}}
+\end{tikzcd}}
+\]
+qui est associé à $\rho',\sigma'$ donnés par (257)
+\[
+\rho'=\zeta\rho,\quad\unsure{\sigma'}=\eta\sigma\qquad
+\begin{array}{l}
+\zeta=a_0\lambda_0+a_1\lambda_1,\quad
+\eta=b\delta=b(\lambda_1-\lambda_0)\\
+a_0,a_1,b\in\Gamma\mathbb{G}_a
+\end{array},
+\]
+est donné par
+\[
+(265)\qquad u_{\rho',\sigma'}(\underline{\mu})
+=\lambda u_{\underline{\mu}}
+\]
+où $u_{\underline{\mu}}$ est défini dans (150,151), et où
+$\lambda=x\lambda_0+y\lambda_1$, avec $x,y\in\Gamma\mathbb{G}_a$
+décrits par 264, \deleted{où} où $\nu=\nu(\underline{\mu})$).
+
+\uline{Corollaire} Le morphisme canonique
+\[
+(266)\quad
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\underline{\operatorname{Scindages}}\left(
+\underline{G}_{\rho,\sigma}/\underline{\mu}_G\,
+\deleted{\unsure{\longrightarrow|\text{sur}}}
+\inserted{\text{au dessus de}}\,
+\mathbb O_{12}^{*}\times\underline{\mathfrak{S}}_3
+\right)\arrow[r]\&
+\underline{\operatorname{Scindages}}\left(
+\underline{\mathfrak{S}}^{+}\text{ au dessus de }\underline{\mathfrak{S}}_3
+\right)
+\end{tikzcd}}
+\]
+
+\margin{112}
+
+\clearpage
+\LMcote{140-4}
+\typeout{LMLAYOUTSCAN 140-4 271}
+\scanpage{271}
+\mspage{783}
+
+images inverses par $u_{\unsure{\mathbb{S}|\mathcal{S}}}$ et par $u_{\unsure{\mathbb{D}|D}^{*}}$ de
+$\unsure{\mathbb{S}|\mathcal{S}}_{x'}^{\sim}$ et de
+$\unsure{\mathbb{D}|D}_{x'}^{*\sim}$,
+\unsure{soient|soit} $\unsure{\mathbb{S}|\mathcal{S}}_x^{\prime\sim}$, $\unsure{\mathbb{D}|D}_x^{*\prime\sim}$,
+sont munis d'une corrélation, que je désigne par $h'_x$.
+Ceci posé, \deleted{\unsure{l'existence} d'un iso
+$F(u)\simeq G(u)$} des iso. de $T_x$-torseurs canoniques
+\[
+\begin{array}{rl}
+(121)&F(u)\simeq\operatorname{Isom}_{\unsure{\mathbb{S}|\mathcal{S}}_x}
+  (\unsure{\mathbb{S}|\mathcal{S}}_x^{\sim},\unsure{\mathbb{S}|\mathcal{S}}_x^{\prime\sim})\\[3pt]
+&G(u)\simeq\operatorname{Isom}_{\unsure{\mathbb{D}|D}_x^{*}}
+  (\unsure{\mathbb{D}|D}_x^{*\sim},\unsure{\mathbb{D}|D}_x^{*\prime\sim})
+\end{array}
+\]
+Or par le diagramme d'équivalences (117) on a bien des iso. de
+$T_x$-torseurs
+\[
+\begin{gathered}(122)\\[3pt]
+\diagram{\begin{tikzcd}[ampersand replacement=\&, column sep=small,row sep=large,column sep=9pt,row sep=14pt,execute at begin picture={\fontsize{10}{12}\selectfont}]
+\& {\begin{gathered}\operatorname{Isom}((\unsure{\mathbb{S}|\mathcal{S}}_x^{\sim},\unsure{\mathbb{D}|D}_x^{*\sim},h_x),\\[-1pt]
+(\unsure{\mathbb{S}|\mathcal{S}}_x^{\prime\sim},\unsure{\mathbb{D}|D}_x^{*\prime\sim},h'_x))\end{gathered}}
+\arrow[dl,"\sim"']\arrow[dr,"\sim"] \& \\
+{\begin{gathered}F(u)=\\[-1pt]\operatorname{Isom}(\unsure{\mathbb{S}|\mathcal{S}}_x^{\sim},\unsure{\mathbb{S}|\mathcal{S}}_x^{\prime\sim}\unsure{]|)}\end{gathered}}
+\&\&{\begin{gathered}G(u)=\\[-1pt]\unsure{\operatorname{Isom}}(\unsure{\mathbb{D}|D}_x^{*\sim},\unsure{\mathbb{D}|D}_x^{*\prime\sim})\end{gathered}}
+\end{tikzcd}}
+\quad ,
+\end{gathered}\]
+d'où la bijection canonique \unsure{cherchée} (120) ---
+\deleted{\unsure{des}} qui donne en particulier (96).
+
+\deleted{\unsure{La}} La bijection canonique (120) a la propriété
+$\pm$ évidente suivante, qui la caractérise :
+\[
+(123)\quad\left\{\vcenter{\hbox{\begin{minipage}{0.82\linewidth}
+\deleted{\unsure{On}} Soient $u_{\unsure{\mathbb{S}|\mathcal{S}}^{\sim}}$ et
+$u_{\unsure{\mathbb{D}|D}^{*\sim}}$ des
+\deleted{\unsure{prolongements}}\inserted{relèvements} de $u$
+\deleted{\unsure{$u_{\mathbb{S}}$}}\deleted{\unsure{associés}}
+$\unsure{\mathbb{S}|\mathcal{S}}_x^{\sim}\simeq\unsure{\mathbb{S}|\mathcal{S}}_{x'}^{\sim}$,
+$\unsure{\mathbb{D}|D}_x^{*\sim}\longrightarrow\unsure{\mathbb{D}|D}_{x'}^{*\sim}$,
+associés par (120), soit $A\in\mathcal{A}_x$,
+$A'\in\mathcal{A}'_x$ son image par
+$u_{\unsure{\mathbb{S}|\mathcal{S}}}$, soit $\alpha$ une section de $\unsure{\mathbb{S}|\mathcal{S}}_x^{\sim}$ sur $A$,
+$\beta$ la section de $\unsure{\mathbb{D}|D}_x^{*\sim}$ sur
+$\unsure{\mathrm{Ep}|E_p}(A)$ \unsure{associée|associé} par la corrélation
+$h_x$, soit $\alpha'$ la section de $\unsure{\mathbb{S}|\mathcal{S}}_{x'}^{\sim}$ sur $A'$
+déduite de $\alpha$ en appliquant $u_{\unsure{\mathbb{S}|\mathcal{S}}^{\sim}}$,
+$\beta'$ la section de $\unsure{\mathbb{D}|D}_{x'}^{*\sim}$ sur
+$\mathrm{Ep}(A')$ déduite de $\beta$ en appliquant
+$u_{\unsure{\mathbb{D}|D}^{*\sim}}$, alors $\alpha'$ et $\beta'$ sont
+\unsure{associés} par la corrélation $h'$.
+\end{minipage}}}\right.
+\]
+\margin{270}
+
+\margin{\begin{tabular}{c}
+270\\
+\texttt{https://grothendieck.umontpellier.fr}\\
+Université de Montpellier, UMR CNRS 5149, Case courrier 051, Place Eugène Bataillon\\
+34095 Montpellier cedex 5 - France
+\end{tabular}}
+
+\end{document}

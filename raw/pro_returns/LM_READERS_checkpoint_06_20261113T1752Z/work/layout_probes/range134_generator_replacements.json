@@ -1,0 +1,47 @@
+{
+  "status": "STAGED_SYNTAX_AND_PREFIX_CHECK_PASS",
+  "candidate": "work/layout_probes/range134_heading_candidate.json",
+  "candidate_sha256": "369a80e880232927a27df12f87060721bd7e73e271b4ece2c48e38916014ba6d",
+  "probe_validation": "work/layout_probes/range134_heading_validation.json",
+  "replacements": [
+    {
+      "path": "work/scripts/build_readers.py",
+      "source_sha256": "3eb1662e0a1d7d089cd9629d55de71d0ce901ea93d5c68d5f6ffb33c24fd1f01",
+      "expected_match_count": 1,
+      "old": "  pieces += ['% BEGIN PACKAGE '+pkg,r'\\ifnum\\LMform<2\\Needspace{11\\baselineskip}\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']",
+      "new": "  range_reservation = r'\\Needspace{\\dimexpr123mm+11\\baselineskip\\relax}' if pkg=='LM_C4-134-152' else r'\\Needspace{11\\baselineskip}'\n  pieces += ['% BEGIN PACKAGE '+pkg,r'\\ifnum\\LMform<2'+range_reservation+r'\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']",
+      "after_sha256": "b2d6a19ee30876468fd9168eed695f2ba89dcc4479bf377d3b9908f8f989b677",
+      "staged_copy": "work/layout_probes/range134_staged/build_readers.py",
+      "syntax_validation": "PASS",
+      "shared_dependency_written": false
+    },
+    {
+      "path": "work/scripts/verify_sources.py",
+      "source_sha256": "ad9b613d5dc062ff91d2f2396d50e7d45c41f1293d0a18945c5522b819b964ca",
+      "expected_match_count": 1,
+      "old": "        pieces += ['% BEGIN PACKAGE '+package,r'\\ifnum\\LMform<2\\Needspace{11\\baselineskip}\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']",
+      "new": "        range_reservation = r'\\Needspace{\\dimexpr123mm+11\\baselineskip\\relax}' if package=='LM_C4-134-152' else r'\\Needspace{11\\baselineskip}'\n        pieces += ['% BEGIN PACKAGE '+package,r'\\ifnum\\LMform<2'+range_reservation+r'\\subsection*{Scans '+row['scans'].replace('-','--')+r'}\\fi']",
+      "after_sha256": "5a0b906f58b7d30f85c8fc1891547d1d89772b724e392cf653bcfa71afc12fe3",
+      "staged_copy": "work/layout_probes/range134_staged/verify_sources.py",
+      "syntax_validation": "PASS",
+      "shared_dependency_written": false
+    },
+    {
+      "path": "work/scripts/record_generated_heading_repairs.py",
+      "source_sha256": "3fa33b9a40f6e3e395b957bb62c3892147674e087ca4ebf4e7d654c8245e3830",
+      "expected_match_count": 1,
+      "old": "        if form < 2:\n            for item in INDEX:\n                package, cote = item['package'], item['cote']\n                span = item['scans'].replace('-', '--')\n                old = ranges['old_template'].replace('#1', span)\n                new = ranges['new_template'].replace('#1', span)\n                assert '% BEGIN PACKAGE ' + package + '\\n' + new in text, (\n                    'Range guard missing from built source', book, package)\n                source_path = ('fr/texts/' + package + '.tex' if lang == 'fr'\n                               else 'en/packages/' + package + '_en.tex')\n                source = (ROOT / 'sources' / source_path).read_text()\n                marker = source.index(r'\\scanpage{')\n                scan = int(source[marker:].split('{', 1)[1].split('}', 1)[0])\n                add(book, lang, package, cote, scan, source_path,\n                    source.count('\\n', 0, marker) + 1, 'GEN-RANGE-' + package,\n                    'scan-range heading guard', old, new, ranges['reason'],\n                    'work/scripts/build_readers.py', lines['range'])\n",
+      "new": "        if form < 2:\n            range134 = read(WORK / 'layout_probes/range134_heading_candidate.json')\n            for item in INDEX:\n                package, cote = item['package'], item['cote']\n                span = item['scans'].replace('-', '--')\n                old = ranges['old_template'].replace('#1', span)\n                new = ranges['new_template'].replace('#1', span)\n                range_reason = ranges['reason']\n                if package == 'LM_C4-134-152':\n                    new = range134['new_generated_prefix']\n                    range_reason += ' ' + range134['reason']\n                assert '% BEGIN PACKAGE ' + package + '\\n' + new in text, (\n                    'Range guard missing from built source', book, package)\n                source_path = ('fr/texts/' + package + '.tex' if lang == 'fr'\n                               else 'en/packages/' + package + '_en.tex')\n                source = (ROOT / 'sources' / source_path).read_text()\n                marker = source.index(r'\\scanpage{')\n                scan = int(source[marker:].split('{', 1)[1].split('}', 1)[0])\n                add(book, lang, package, cote, scan, source_path,\n                    source.count('\\n', 0, marker) + 1, 'GEN-RANGE-' + package,\n                    'scan-range heading guard', old, new, range_reason,\n                    'work/scripts/build_readers.py', lines['range'])\n                if package == 'LM_C4-134-152':\n                    rows[-1]['candidate'] = 'work/layout_probes/range134_heading_candidate.json'\n                    rows[-1]['candidate_sha256'] = digest(WORK / 'layout_probes/range134_heading_candidate.json')\n                    rows[-1]['probe_validation'] = 'work/layout_probes/range134_heading_validation.json'\n",
+      "after_sha256": "60cdefb6ac24f5ea144d975cfbd89a3f1501557d7d32c39995b1c9b4e0b7dffb",
+      "staged_copy": "work/layout_probes/range134_staged/record_generated_heading_repairs.py",
+      "syntax_validation": "PASS",
+      "shared_dependency_written": false
+    }
+  ],
+  "unchanged_other_package_prefixes": 115,
+  "range_occurrences_after_integration": 580,
+  "special_range_occurrences": 5,
+  "duplicate_range_rows_added": 0,
+  "source_text_changed": false,
+  "shared_dependencies_modified": false
+}
