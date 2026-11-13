@@ -1,0 +1,27 @@
+# Completed root audit: D.58
+
+Result: PASS.
+
+- The actual onto U-minus to U-star-minus map has free target, hence saturated kernel L of rank w-640. To realize each L element in the intersection S57, the proof chooses its Rh preimage and removes its small central image using the actual onto R50 to Z-star map.
+
+- Both kernels of Y and its fibre-product presentation are computed from the original source intersections and products. The map from S57 to full U has kernel S57 intersect M-infinity, exactly the defining kernel of Y.
+
+- The D57 action descends to every common Jk/Lk quotient through the invariant image of K3 in X-star and its characteristic abelian exponent2^k quotient. This retains the actual D57 conjugators without requiring a new centralizer lift into an old homology action.
+
+- The initial cusp-correction map has image I_G L. The odd averaging projection annihilates L, so its A and G coinvariants vanish and the correction map is onto.
+
+- The marked edge chain map has invertible vertex maps and restricts to the actual homology map. Its nilpotent Fitting summand is contained in L because the quotient homology map is already invertible. That summand is projective as a direct summand of the regular edge module.
+
+- The explicit path derivation and cyclic norm correction retain the fixed cusp. The norm kernel equals the image of1-t on the projective cyclic restriction. The correction stays in L and changes T to T+e, invertible on both Fitting summands; the full original common action is preserved.
+
+- The higher intersection is proved using actual preimages, then saturation gives Lk intersect2^(k-1)Uk=2^(k-1)Lk. The resulting common quotient is the exact fibre product of the preceding two quotients. Compatible lifted conjugators and augmentation corrections yield automorphisms at every level and in the inverse limit.
+
+- The inclusion of the two class-two source kernels gives X to Y. Its kernel is exactly ker(Z to Z-star), with both inclusions supplied by the same R50 representatives. The retained small action and full homology intertwiner make exterior-square T preserve K, K0 and K1.
+
+- The central moving correction map onto K1 is surjective because its A-coinvariants vanish. The corrected source map factors through the class-two laws and the preserved K0. Its Frattini action is invertible, and its two actual projections yield an automorphism of the exact fibre product X/K0.
+
+- Odd averaging makes the fixed map Z^A to Z-star^(A-star) onto. Subtracting the target dimensions210240,2560,207680 from the full module dimensions gives all three exact kernel dimensions. The positive lower bound366080 and an actual R50 preimage detect a surviving source kernel.
+
+- The complete frozen proof was read, together with the whole D50 edge-map/Fitting/path/cyclic-norm construction at the exact cited dependency. All six frozen-file hashes and all five dependency hashes match. This proof uses the actual full arithmetic G3 and no new finite surrogate or numerical execution.
+
+The actual boundary in (K0)_G and the original full profinite image problem remain active.

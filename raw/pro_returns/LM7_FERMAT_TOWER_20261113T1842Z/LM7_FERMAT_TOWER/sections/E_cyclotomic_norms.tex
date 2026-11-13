@@ -1,0 +1,177 @@
+\subsection{Infinitely many ramified directions from exact polynomial norm systems}
+
+\begin{statement}{E.48}{Proved}{Cyclotomic-polynomial norms and a compact product of independent section classes}
+Use E.46 with a rational $a\ne0$, the first cocycle
+$A=3\kappa_3(a)$, and the actual algebras
+$E_{A,n}=\mathbb Q[X_n]/(X_n^{3^n}-a^3)$.
+For every $m\ge1$ prime to three the rank-three
+algebra norm has the exact identity
+\[
+ N_{E_{A,n+1}/E_{A,n}}\Phi_m(X_{n+1})=\Phi_m(X_n).
+ \tag{E48.1}
+\]
+There is no omitted sign or unit. Whenever
+$\Phi_m(a^3)\ne0$, these elements are units of the
+finite etale algebras and
+\[
+        u_{n,m,z}=\Phi_m(X_n)^{3z},\qquad z\in\mathbb Z_3,
+ \tag{E48.2}
+\]
+is an actual norm system in (E46.4). Its scaled
+toric coordinates are
+$\bigl(\kappa_3(a),z\kappa_3(\Phi_m(a^3))\bigr)$.
+
+In particular fix an integer $a\ge2$, and enumerate
+the primes at least five as $\ell_0,\ell_1,\ldots$.
+Put $B_j=\Phi_{\ell_j}(a^3)$. The formulas
+\[
+ \begin{split}
+ u_{n,\mathbf z}
+     &=\prod_{j\ge0}
+           \Phi_{\ell_j}(X_n)^{\,3^{j+1}z_j},
+       \qquad\mathbf z=(z_j)_j\in\prod_{j\ge0}\mathbb Z_3,\\
+ (\kappa_3(a),\beta_{\mathbf z})
+     &=\left(\kappa_3(a),
+              \sum_{j\ge0}3^jz_j\kappa_3(B_j)\right)
+ \end{split}
+ \tag{E48.3}
+\]
+give a closed topological embedding of the full compact
+product $\prod_{j\ge0}\mathbb Z_3$ into this global
+first-coordinate section fiber of $H$. The series and
+products converge in the multiplication-by-$3^r$
+completions specified in E.46. The image is torsion-free.
+The toric projection itself is injective on this family.
+
+The integers $B_j$ are greater than one, pairwise
+coprime, and prime to $3a$. For each $j$, choose any
+prime $p_j\mid B_j$. Its toric inertia coordinate is
+exactly
+\[
+       v_{p_j}(\beta_{\mathbf z})
+          =3^jz_j\,v_{p_j}(B_j).
+ \tag{E48.4}
+\]
+Thus these are independent ramified directions at
+distinct primes away from $3a$. The choice $z_j=1$
+for all $j$ gives a continuous section with nonzero
+toric inertia at infinitely many primes.
+
+For clarity, the universal rank-three norm for the
+remaining cyclotomic indices is also determined:
+\[
+ N_{Y^3=X}\Phi_m(Y)=
+ \begin{cases}
+     \Phi_m(X),&3\nmid m,\\
+     \Phi_{m/3}(X)^2,&3\mid m,\ 9\nmid m,\\
+     \Phi_{m/3}(X)^3,&9\mid m.
+ \end{cases}
+ \tag{E48.5}
+\]
+The geometric target and its comparison kernels are
+the actual $H$ and (E47.8). All section classes in
+(E48.2)--(E48.3) are obtained through the proved
+norm-to-section isomorphism (E46.4).
+
+\emph{Manuscript: \S51.16, folios733v--736v,
+scans172--178, (371)--(379), Part E(c),(d).
+The program \texttt{e\_cyclotomic\_norms.py} retains
+the exact resultant and convergence certificates.}
+\end{statement}
+\begin{proof}
+Work first over the polynomial ring $\mathbb Q[X]$
+with the free rank-three algebra
+$\mathbb Q[X,Y]/(Y^3-X)$. Over a ring containing
+a primitive cube root of unity, the three embeddings
+send $Y$ to $Y,\omega Y,\omega^2Y$. For every
+root of unity $\xi$ their product is
+\[
+          N(Y-\xi)
+          =(Y-\xi)(\omega Y-\xi)(\omega^2Y-\xi)
+          =X-\xi^3.
+ \tag{E48.6}
+\]
+The leading product $\omega^3$ is one, and the
+constant term is $-\xi^3$, fixing the sign.
+Multiplicativity of the determinant norm gives
+\[
+       N\Phi_m(Y)
+          =\prod_{\operatorname{ord}(\xi)=m}(X-\xi^3).
+ \tag{E48.7}
+\]
+When $3\nmid m$, cubing is a permutation of the
+primitive $m$th roots. For $m=3s$ with $3\nmid s$,
+its image consists of the primitive $s$th roots,
+each with multiplicity two. When $9\mid m$, its
+image is the primitive $(m/3)$th roots, each with
+multiplicity three. This proves every case of
+(E48.5) as an identity over $\mathbb Q[X]$.
+Specialization commutes with the determinant norm,
+including for products of fields, so (E48.1)
+holds in the exact algebras of E.46.
+
+Iteration down to level zero gives the total norm
+$\Phi_m(a^3)$. Its nonvanishing is exactly
+invertibility of $\Phi_m(X_n)$ in the finite
+etale algebra. Taking continuous three-adic
+powers proves norm compatibility in (E48.2).
+The level-zero element is the cube
+$\Phi_m(a^3)^{3z}$; the map (E46.7) divides
+this Kummer coordinate by three, giving the
+asserted toric coordinates.
+
+Let $B=a^3>1$. For distinct primes $\ell,r$,
+a common prime divisor $p$ of $\Phi_\ell(B)$
+and $\Phi_r(B)$ cannot divide $B$. The order
+of $B$ modulo $p$ then divides both $\ell$
+and $r$, so $B\equiv1\pmod p$. But
+$\Phi_\ell(B)\equiv\ell$ and
+$\Phi_r(B)\equiv r\pmod p$, forcing $p$
+to divide both distinct primes. This proves
+pairwise coprimality. Each sum
+$\Phi_\ell(B)=1+B+\cdots+B^{\ell-1}$
+is greater than one and prime to $a$.
+For $\ell\ge5$ prime, its value modulo three
+is $1$, $\ell$, or $1$ as $B$ is respectively
+$0$, $1$, or $-1$ modulo three. It is
+therefore also prime to three.
+
+At coefficient exponent $r$, every factor
+of the product (E48.3) with $j+1\ge r$
+is trivial. Thus the product exists in
+every completed algebra, varies continuously
+with the product topology on $\mathbf z$,
+and is compatible under all norms. Its
+level-zero element is again a cube.
+This proves that it defines actual global
+section classes by E.46, including when
+infinitely many coordinates are nonzero.
+
+The Kummer valuation at $p_j$ receives a
+contribution only from $B_j$, giving (E48.4).
+The positive integer $v_{p_j}(B_j)$ is a
+nonzero element of $\mathbb Z_3$, so equality
+of toric coordinates forces equality of
+every $z_j$. This proves injectivity and
+torsion-freeness. The target cohomology
+quotient is Hausdorff: coboundaries are
+the continuous image of the compact module
+$J_A$ in the Hausdorff uniform cocycle
+space, hence form a closed subgroup.
+A continuous injection from the compact
+product is consequently a homeomorphism
+onto a closed image. This proves the
+topological assertion, as well as the
+claimed infinite ramification.
+
+The program checks (E48.5) by exact
+resultants for $1\le m\le45$, verifies
+108 total norms in the actual radical
+etale algebras, and checks 84 coprimality
+identities with explicit supporting
+prime factorizations. It also records
+the exact coefficient bounds for the
+infinite product. The universal
+determinant identity and the preceding
+convergence proof establish all levels.
+\end{proof}

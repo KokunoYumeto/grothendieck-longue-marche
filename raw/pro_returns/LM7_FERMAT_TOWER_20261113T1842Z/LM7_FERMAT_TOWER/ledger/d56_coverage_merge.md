@@ -1,0 +1,3 @@
+# D.56 coverage addition
+
+Append D.56 to D(e), the full-profinite realization continuation D13/D19, and the joint CM continuation. The actual arithmetic normal span now has an explicitly evaluated C3^4 quotient: the unique f_h image is(2,1,2,1), and h acts on the actual order3888 source as Int(t^6). The retained splice acts there through its identity3 component. The full arithmetic obstruction maps onto a forty-parameter smaller arithmetic correction space through the exact homology and class-two maps. This improves the evaluated arithmetic input; its invariant zero locus and the full profinite realization remain unresolved. Keep the earlier excluded D33–D44 representative separate from the current D46 replacement.

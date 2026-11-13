@@ -1,0 +1,3 @@
+# D.58 coverage update for parent merge
+
+D(e), item 3, and Lead 1 remain incomplete for the requested full profinite image. D.58 proves a further actual source lift: the complete D.57 action extends through the full arithmetic integral homology tower and then through every remaining moving class-two coordinate, retaining the actual 2560-dimensional invariant block solved in D.57. Its exact source is `X/K_0`, where `K_0=ker(Z -> Z_*)^A`; the remaining full class-two boundary is the actual class in `(K_0)_G`. The full profinite realization is not inferred from this extension. D.13/D.19 should record this proved enlargement and the precise residual kernel, without upgrading the overall status.

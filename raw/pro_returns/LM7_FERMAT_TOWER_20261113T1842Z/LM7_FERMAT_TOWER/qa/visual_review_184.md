@@ -1,0 +1,9 @@
+# Visual review of the 184-statement build
+
+PDF SHA-256: 82bf1a43d9ebf7eb81269c1c881ce9f16d79aec35b4a524ad5842290c37edd39
+
+All 475 pages were rendered with Poppler. The root inspected all 30 contact sheets, from contact_001_016.jpg through contact_465_475.jpg. The page layouts, tables, equations, headings, references and pagination showed no clipping, overlapping text, missing glyphs or unintended blank pages.
+
+The root additionally inspected pages 46, 52, 159, 162, 164, 168, 186, 448, 449, 451, 455, 456, 459, 460, 461, 464, 465, 466, 468 and 475 individually at 110 dpi. Their actual Poppler JPEG renders and exact hashes are retained in details184/. These cover the open-statement transitions, D.50's compatible integral source, D.51's exact moving class-two quotient and separate invariant diagnostic, E.90's cusp and unramified fibres, E.91's ordinary class actions and ninth-genus maps, E.92's full global abelian localization with its finite carry, E.93's full central localization and joint quotient maps, and the bibliography. All displayed entries, equation numbers, proof paragraphs and page boundaries are legible and remain within the text area. Pages 455, 456, 459, 460 and 461 were redisplayed and inspected after an earlier tool response was truncated; no inspection claim relies on that truncated response.
+
+The final LuaLaTeX log has no overfull boxes, missing characters, undefined references or undefined citations. The independent structural PDF check confirms all 184 statement headings and checks all page text against the safety border. E.92's long local-decomposition display was split across three lines, and D.51's diagnostic heading was separated from its following paragraph; their exact presentation-only diffs and mathematical identity checks are retained in the checkpoint183 and checkpoint184 source-presentation audits. This record concerns the exact PDF hash above; it does not assert that later builds were visually inspected.
