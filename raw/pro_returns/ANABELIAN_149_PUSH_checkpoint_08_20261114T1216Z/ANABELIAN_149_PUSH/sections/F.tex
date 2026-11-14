@@ -1,0 +1,3552 @@
+\section{Part F. Reconstruction of schemes and the inertia comparison}
+
+\subsection{Two different conditions that the prompt calls pinned}
+
+The manuscript locus is cote 149, manuscript p.~25v, scan~52. The
+transcription says ``1-fid\`ele'' and then asks about full faithfulness
+after universal homeomorphisms have been inverted. The actual scan is
+not in the supplied image selection; we make no palaeographic assertion
+about it. We distinguish a \emph{relative} geometric morphism, which
+includes a specified commutation isomorphism over $B G_k$, from a
+\emph{closed-point-preserving} relative morphism. Carlson--Haine--Wolf
+call the latter \emph{pinned}, in Definition~2.19 of the supplied
+preprint \citep{F_CHW2024}. This is an additional condition. LM5-F.5
+states it correctly; the definition in R27 of the present prompt omits
+it. We use $\operatorname{Hom}^{\mathrm{cp}}_{B G_k}$ for that
+restricted Hom-groupoid below, so that no change of definition is hidden.
+
+\begin{claim}{F.1}{Refuted}
+With the literal definition of ``pinned'' in R27, F1 is false. More
+strongly, there is no characteristic-zero field over which all relative
+geometric morphisms between the small \emph{\'etale} topoi of finite-type
+schemes are induced by scheme morphisms, even after absolute weak
+normalization. This failure already occurs for source $\Spec k$ and
+target $\mathbb P^1_k$.
+\end{claim}
+\begin{proof}
+Choose separable closures compatibly with $k(t)\subset k((t))$.
+In equal characteristic zero the decomposition group $D_0$ of the
+$t$-adic valuation in $G_{k(t)}$ has an exact sequence
+\[
+1\longrightarrow\widehat\Z(1)\longrightarrow D_0
+ \longrightarrow G_k\longrightarrow1.
+\]
+It has a continuous splitting: in a maximal unramified extension act on
+the coefficients, and extend that action by fixing a compatible system
+of roots $t^{1/n}$. Every finite extension over the maximal unramified
+field is tame, and its tame part is obtained by these roots; hence this
+description defines the action on a separable closure, not only on a
+finite list of extensions. Restriction to a separable closure of
+$k(t)$ gives a continuous homomorphism $s:G_k\to G_{k(t)}$ whose
+composite with $G_{k(t)}\to G_k$ is the identity. Equivalently one can
+make this construction in the henselization of $k(t)$ at $0$.
+
+A continuous homomorphism of profinite groups induces the geometric
+morphism of their continuous-action topoi with inverse image the
+restriction functor. The composite
+\[
+B G_k\xrightarrow{B s} B G_{k(t)}
+ =\Spec(k(t))_{\mathrm{et}}
+ \longrightarrow (\mathbb P^1_k)_{\mathrm{et}}
+\]
+is therefore a relative geometric morphism, with its specified
+commutation isomorphism over $B G_k$. Its map on the spaces of points
+sends the sole point to the generic point of $\mathbb P^1_k$.
+Every $k$-morphism $\Spec k\to\mathbb P^1_k$ has closed image.
+Isomorphic geometric morphisms induce the same map on subterminal
+objects and hence on the underlying sober spaces, so the displayed
+morphism is not induced by a scheme morphism. A field is already
+absolutely weakly normal in characteristic zero; universal
+homeomorphisms preserve the topological obstruction. This is precisely
+the example of \citet[Example~2.30]{F_CHW2024}, with the splitting
+construction made explicit. The example is valid for $k=\Q$, for
+$\Q^{\mathrm{ab}}$, and for $\Q^{\mathrm{solv}}$.
+\end{proof}
+
+\begin{claim}{F.2}{Proved}
+There is, over every characteristic-zero field $k$, a relative
+endomorphism of $(\mathbb G_{m,k})_{\mathrm{et}}$ which induces the
+identity on its arithmetic fundamental group and has underlying image
+the generic point. It is not induced by an algebraic morphism and does
+not factor through $B G_k$. It is, however, constant on underlying
+topological points. Consequently it does not settle the
+closed-point-preserving, nonconstant test intended in F2.
+\end{claim}
+\begin{proof}
+Put $X=\mathbb G_{m,k}$ and $E=\pi_1(X)$, retaining the full arithmetic
+quotient. The map $D_0\to E$ induced by the generic point is an
+isomorphism: it is the identity on $G_k$ and the local Kummer inertia
+maps isomorphically onto $\pi_1(X_{\bar k})=\widehat\Z(1)$.
+Finite \emph{\'etale} covers of $X$ give the canonical geometric
+morphism $X_{\mathrm{et}}\to B E$; its inverse image sends a continuous
+$E$-set to the corresponding locally constant sheaf. This functor
+preserves finite limits and all colimits, and has the usual right
+adjoint. Compose it with
+\[
+B E\simeq B D_0\longrightarrow B G_{k(t)}
+ \longrightarrow X_{\mathrm{et}}.
+\]
+On $\pi_1$ the composite is $E\simeq D_0\to G_{k(t)}\to E$, the
+identity. The middle field topos has one underlying point, and the last
+map takes it to the generic point. An algebraic endomorphism of $X$ is
+$t\mapsto c t^m$, $c\in k^*$ and $m\in\Z$; none has this point
+map. Factoring through $B G_k$ would kill the nontrivial geometric
+kernel on $\pi_1$, which the displayed morphism does not do. The last
+sentence of the claim records the distinction between this fact and
+nonconstancy of a point function.
+\end{proof}
+
+\subsection{The repaired cyclotomic statement}
+
+We now audit the intended mathematical content of LM5-F.47 and F.50
+with the missing closed-point condition restored. The following proof
+does not use either AI return as a theorem. It identifies the arithmetic
+inputs and supplies the steps from them to the reconstruction criterion.
+For an abelian group $A$ write $\widehat A=\varprojlim_n A/nA$ and
+$T A=\varprojlim_n A[n]$, using multiplication transition maps in
+the second limit. For a field $L$ put
+$D(L^*)=\bigcap_{n\ge1}(L^*)^n$.
+
+\begin{claim}{F.3}{Known, with derivation}
+Let $k$ be a subfield of a finitely generated extension $M$ of
+$\Q^{\mathrm{ab}}$. For every finite extension $L/k$ in a fixed
+algebraic closure, there is an overfield $E\supset L$ finitely
+generated over $\Q^{\mathrm{ab}}$ such that
+\[
+ E^*/\mu_\infty\text{ is free abelian},\qquad
+ D(E^*)=\mu_\infty,
+ \qquad \bigcap_{n\ge1}n A(L)=0
+\]
+for every abelian variety $A/L$. In particular
+$D(L^*)\subset\mu_\infty$.
+\end{claim}
+\begin{proof}
+We quote exactly the forms of the three arithmetic inputs used here.
+Amoroso--Zannier, Theorem~1.1, states that for a number field $F$, an
+abelian extension $B/F$, and a nonzero algebraic number $a$ which is not
+a root of unity, its logarithmic height has a positive lower bound
+depending only on $F$ and $[B(a):B]$ \citep{F_AZ2000}. In particular
+it is uniformly positive when the latter degree is bounded. Tsujimura,
+Proposition~4.9 of RIMS-1957, states that if $F$ is a number field and
+$f\in F$, then the field $B$ obtained by adjoining all roots of $f$
+has $B^*/B^{*\infty}$ free abelian \citep{F_Tsu2022}. With $f=1$
+this gives the needed statement over $F\Q^{\mathrm{ab}}$.
+Tsujimura, Theorem~3.1, states that for a number field $F$ and an
+abelian variety $A/F$ the natural Kummer map
+\[
+A(F\Q^{\mathrm{ab}})\longrightarrow
+H^1\bigl(G_{F\Q^{\mathrm{ab}}},T A\bigr)
+\]
+is injective \citep{F_Tsu2020}. Its proof factors it as the natural
+map to $\varprojlim_n A(F\Q^{\mathrm{ab}})/n$ followed by an
+injection. Thus its kernel is precisely the intersection of the
+subgroups $nA(F\Q^{\mathrm{ab}})$.
+
+Take $E=ML$, finite over $M$, and let $E_0$ be the algebraic closure
+of $\Q^{\mathrm{ab}}$ in $E$. Since $E$ is finitely generated,
+$E_0/\Q^{\mathrm{ab}}$ is finite, hence
+$E_0=F_0\Q^{\mathrm{ab}}$ for a number field $F_0$. A normal proper
+geometrically integral $E_0$-model $Z$ of $E$ has
+\[
+ E^*/E_0^*\lhook\joinrel\longrightarrow
+ \operatorname{Div}(Z).
+\]
+Indeed, a rational function with zero divisor on a proper normal
+variety is a global unit, and the constant field is $E_0$.
+The divisor group is free abelian, as is each of its subgroups.
+The height theorem shows $D(E_0^*)=\mu_\infty$: arbitrary roots of
+a nontorsion element would have positive heights tending to zero.
+The quoted freeness theorem now makes $E_0^*/\mu_\infty$ free.
+The exact sequence with this group as kernel and $E^*/E_0^*$ as
+quotient splits, because the quotient is free. This proves freeness
+of $E^*/\mu_\infty$. Alternatively, applying the divisor map to an
+infinitely divisible element and to each of its roots shows they all
+lie in $E_0$, proving $D(E^*)=\mu_\infty$ directly.
+
+For the abelian-variety assertion first work over $E$. Spread $A/E$
+and a point $P\in\bigcap_n nA(E)$ to an abelian scheme
+$\mathcal A\to V$ and a section $P_V$, with $V$ a normal integral
+variety over $\Q^{\mathrm{ab}}$. A chosen division $Q_n\in A(E)$
+is a generic section of the finite \emph{\'etale} cover
+$[n]^{-1}(P_V)\to V$. Normality extends this generic section over
+the same $V$: its selected component is finite birational and hence
+isomorphic to $V$. Therefore every division extends without further
+shrinking. At each closed point $v$, the residue field is finite over
+$\Q^{\mathrm{ab}}$, and the abelian variety and point descend to a
+number field enlarged by finitely many coefficients. The quoted
+Kummer theorem gives $P_V(v)=0$. Closed points are dense and
+$\mathcal A$ is separated, so $P_V=0$. Finally embed $A(L)$ into
+$A(E)$ to prove the assertion over $L$. This is also the content of
+Tsujimura, Proposition~1.2(ii), whose specialization proof we have
+just written with the common-domain step explicit.
+\end{proof}
+
+\begin{claim}{F.4}{Proved}
+Let $L$ be a finite extension of a field $k$ as in F.3, let
+$b_1,\ldots,b_r\in L$ be distinct, and put
+$V=\mathbb A^1_L\setminus\{b_1,\ldots,b_r\}$. Suppose
+$\xi\in\varprojlim_n H^1(V,\mu_n)$ has an actual Kummer value in
+$L^*$ at every $L$-point of $V$. Then $\xi$ is the Kummer class of
+a unit in $\mathcal O(V)^*$. No discrete valuation of $L$ is assumed.
+\end{claim}
+\begin{proof}
+Since $\operatorname{Pic}(V)=0$ and
+$\mathcal O(V)^*=L^*\times\prod_j(t-b_j)^\Z$, write
+\[
+ \xi=\gamma+\sum_j\lambda_j[t-b_j],\qquad
+ \gamma\in\widehat{L^*},\quad\lambda_j\in\widehat\Z.
+\]
+We construct $x,y\in V(L)$ such that
+$r_j=(x-b_j)/(y-b_j)$ are multiplicatively independent modulo roots
+of unity. Put $F=\Q(b_1,\ldots,b_r)$. Choose a smooth integral
+finite-type model $A$ of $F$ over $\Z[1/N]$, containing the $b_j$
+and all inverse differences $(b_i-b_j)^{-1}$. This follows by taking
+a smooth affine model over $\Q$, adjoining these functions and
+shrinking, then spreading its finite presentation over
+$\Z[1/N]$ and shrinking the arithmetic base. Its image contains
+all but finitely many rational primes. Choose distinct such primes
+$p_i>r$ and a generic point of a component of the fibre at each
+$p_i$. Regularity and reducedness of that fibre make its local ring
+a discrete valuation ring with uniformizer $p_i$; denote the
+valuation by $v_i$. The residues of the $b_j$ are pairwise distinct.
+Choose $c_i\in\F_{p_i}$ avoiding them. The Chinese remainder
+theorem supplies $x,y\in A$ with
+\[
+x\equiv b_i+p_i\pmod{p_i^2 A},\qquad
+y\equiv c_i\pmod{p_i A}\quad(1\le i\le r).
+\]
+Thus $v_i(r_j)=\delta_{ij}$. In particular $x,y\in V(L)$ and the
+$r_j$ are independent modulo roots of unity. An equality proving
+dependence in an overfield would be an equality between these same
+elements of $F$, and so the independence persists.
+
+Embed $L$ in $E$ as in F.3. The classes of the $r_j$ in the free
+abelian group $E^*/\mu_\infty$ have finite support in a basis and
+are independent. There are therefore integer-valued characters
+$h_i:E^*/\mu_\infty\to\Z$ for which the square matrix
+$N_{ij}=h_i(r_j)$ has nonzero determinant. Let $u_x,u_y\in L^*$
+realize the two given evaluations. Applying completed characters
+to their ratio gives
+\[
+ N(\lambda_j)_j=(h_i(u_x/u_y))_i\in\Z^r.
+\]
+The adjugate matrix shows $(\det N)\lambda_j\in\Z$.
+The diagonal copy of $\Q$ meets $\widehat\Z$ in $\Z$, as is
+checked one prime at a time; hence $\lambda_j\in\Z$. After
+subtracting these integral unit classes, an evaluation at any
+$L$-point identifies $\gamma$ with an actual constant Kummer class.
+This gives the required unit. For $r=0$ the last evaluation alone
+is the proof.
+\end{proof}
+
+\begin{claim}{F.5}{Proved}
+Let $C/L$ be a smooth geometrically connected affine curve, with $L$
+as in F.4. Suppose $\xi\in\varprojlim_n H^1(C,\mu_n)$ has an
+actual multiplicative Kummer value at every point over every finite
+extension of $L$. After a finite extension of $L$, $\xi$ is the
+class of a regular unit of $C$.
+\end{claim}
+\begin{proof}
+Let $\overline C$ be the smooth projective completion and
+$S=\overline C\setminus C$. A finite extension makes $S$ split and
+supplies a point $x_0\in C(L)$. Residues give a vector
+$(\lambda_s)_{s\in S}\in\widehat\Z^S$. For a fixed $s$, choose
+by Riemann--Roch a finite map
+$\pi:\overline C\to\mathbb P^1_L$ with a simple zero at $s$ and
+nonzero values at all other points of $S$. Remove its branch values,
+$0,\infty$ and the images of $S$, and, after another finite constant
+extension, split this finite set. This gives a finite \emph{\'etale}
+map $W\to V$, with $W\subset C$ and $V$ a punctured affine line.
+The norm of $\xi|_W$ is a class on $V$ to which F.4 applies: above
+an $L'$-point its Kummer value is the product of the norms of the
+actual values at the finite residual fields in that fibre.
+
+The valuation of a field norm is the sum of residue degrees times
+the local valuations. Consequently the residue of this norm class
+at $0$ is $\lambda_s$: the only boundary point above $0$ is the
+rational point $s$, and all points inside $C$ have zero residue.
+This proves $\lambda_s\in\Z$; no ramification multiplier occurs
+in the divisor-of-norm formula. Set $D=\sum_s\lambda_s[s]$.
+The localization sequence and the Kummer injection
+$\operatorname{Pic}(\overline C)/n\hookrightarrow
+H^2(\overline C,\mu_n)$ imply
+$[D]\in\bigcap_n n\operatorname{Pic}(\overline C)$. Its degree
+is zero, and every one of its division classes has degree zero.
+The rational point $x_0$ identifies actual degree-zero line bundles
+with $J(L)$, so F.3 gives $[D]=0$. Let $g_0$ have divisor $D$.
+
+The class $\xi-[g_0]$ is residue free. At every finite level its
+extension from $C$ to $\overline C$ is unique, since
+$H^1(\overline C,\mu_n)\to H^1(C,\mu_n)$ is injective; uniqueness
+makes those extensions compatible. Taking limits of the Kummer
+sequences on $\overline C$ gives
+\[
+0\longrightarrow\widehat{L^*}\longrightarrow
+\varprojlim_n H^1(\overline C,\mu_n)
+\longrightarrow T\operatorname{Pic}(\overline C)
+\longrightarrow0.
+\]
+The left system has surjective transition maps, so there is no
+derived-limit obstruction. Each coordinate of the last Tate module
+is an infinitely divisible degree-zero Picard class, and F.3 kills
+it. Thus the remaining class is constant. Evaluation at $x_0$ makes
+it the class of an actual element of $L^*$, completing the proof.
+\end{proof}
+
+\begin{claim}{F.6}{Proved}
+Let $K$ be an algebraic closure of $k$ as in F.3 and let
+$B=\Q^{\mathrm{ab}}\subset K$. Let $C/K$ be a smooth projective
+connected curve. Suppose a function $q$ on a cofinite subset of
+$C(K)$ satisfies, for every $b\in K$,
+\[
+ q(x)-b=e_b(x)r_b(x),\qquad e_b(x)\in B^*,
+ \quad r_b\in K(C)^*,
+\]
+outside a finite set depending on $b$. Then $q$ agrees with one
+rational function on a cofinite subset. If $r_0$ is constant, that
+rational function is constant.
+\end{claim}
+\begin{proof}
+Every finitely generated field $N/B$ inside $K$ has algebraic
+constant field $N_0=N\cap\overline\Q$ finite over $B$. The
+extension $N/N_0$ is regular, so for algebraic numbers $a$,
+$[N(a):N]=[N_0(a):N_0]$. These degrees are unbounded: otherwise
+$\overline\Q/N_0$ would have bounded finite subextension degrees,
+and hence finite degree, contrary to the height lower bound of F.3
+applied to $2^{1/n}$. A fixed finite map of a curve over $N$ to
+$\mathbb P^1_N$ therefore supplies closed points of arbitrarily
+large degree over $N$. They can avoid any fixed finite set of
+$K$-points; the algebraic points in that finite set have bounded
+degrees, and the other points cannot equal a closed $N$-point.
+
+Assume $r_0$ is nonconstant. Write the representations of $q$ and
+$1-q$ as $A(x)r(x)$ and $B(x)s(x)$, with coefficients in $B^*$.
+Descend $C,r,s$ to a finitely generated field $N/B$. A nonzero
+rational function $a r+b s-1$, $a,b\in B^*$, has zero divisor of
+degree bounded independently of $a,b$, by the fixed pole divisor.
+At a point of degree larger than this bound the pointwise equality
+forces the rational identity $a r+b s=1$. Absorb those two constants
+into $r,s$, obtaining $r+s=1$. It follows that
+\[
+ (A(x)-B(x))r(x)=1-B(x),
+\]
+so $q(x)=r(x)$ whenever $r(x)\notin B$, away from finitely many
+exceptions.
+
+Choose $a\in K\setminus B$ and apply the same argument to $q+a$.
+Its rational factor cannot be constant: otherwise the cofinite
+image of the nonconstant $r_0$ would lie in a vector space of
+dimension at most two over $B$, whereas $[K:B]=\infty$. Obtain
+$q(x)=r_a(x)-a$ where $r_a(x)\notin B$. These two outside-$B$ sets
+cover the common cofinite domain, since membership of both rational
+values in $B$ would put both $q(x)$ and $q(x)+a$ in $B$.
+Their intersection is infinite: after adjoining all coefficients
+to $N$, a point of sufficiently large degree cannot belong to a
+fibre over a value in $B$ of either of the fixed finite maps $r,r_a$.
+On the intersection $r=r_a-a$, hence this is a rational identity.
+It proves the assertion on the union.
+
+If $r_0$ is a nonzero constant, rescale $q$ so that its cofinite
+values lie in $B$. For $b\notin B$, the factor $r_b$ is constant,
+because otherwise its cofinite image would lie in $B+Bb$.
+Two different values of $q$ would then force first $r_b\in B$
+and then $b\in B$ by subtracting their two equations. Thus $q$
+is constant. This argument verifies the finite-exception and
+transcendental-coefficient versions explicitly; it does not cite the
+algebraic-extension version of Tsujimura's quasi-rationality
+criterion outside its hypotheses.
+\end{proof}
+
+\begin{claim}{F.7}{Proved}
+With the closed-point condition restored, LM5-F.50 is valid: if $k$
+is any subfield of a finitely generated extension of
+$\Q^{\mathrm{ab}}$, then for all finite-type $k$-schemes $X,Y$
+the natural map
+\[
+\operatorname{Hom}_k(X^{\mathrm{awn}},Y)
+\longrightarrow
+\pi_0\operatorname{Hom}^{\mathrm{cp}}_{B G_k}
+ (X_{\mathrm{et}},Y_{\mathrm{et}})
+\]
+is bijective. In characteristic zero $X^{\mathrm{awn}}$ is the
+seminormalization of $X$. The statement includes the corrected
+LM5-F.47 by taking transcendence degree zero.
+\end{claim}
+\begin{proof}
+We first prove the needed point-function assertion for a smooth
+geometrically connected affine curve $C/L$. A closed-point-preserving
+relative morphism
+$\phi:C_{\mathrm{et}}\to(\mathbb G_m)_{\mathrm{et}}$ gives a
+$G_L$-equivariant function $f:C(\overline L)\to\overline L^*$.
+An $L'$-point maps to an $L'$-point for every finite $L'/L$:
+composition gives a relative morphism of closed-point Galois topoi,
+whose map to $B G_{L'}$ forces the residue field of the selected
+image to embed in $L'$. The specified relative isomorphism also
+identifies the coefficient sheaves $\mu_n$, so pulling back Kummer
+classes and evaluating at points commute.
+
+F.5 applied to the coordinate class gives, after a finite extension,
+a unit $g_0$ such that $f(x)/g_0(x)\in\mu_\infty$ for every
+geometric point. If the generic image of $\phi$ is closed,
+continuity forces its entire point function into that closed point;
+after a finite extension the function is constant. Otherwise, for
+each $b\in\overline L$, the inverse image of
+$\mathbb G_m\setminus\{b\}$ is a dense open $C_b$, with finite
+complement. Applying F.5 to the class of $t-b$ on this open gives
+a rational function $g_b$, a unit on $C_b$, with
+\[
+f(x)-b\in\mu_\infty\, g_b(x) \quad(x\in C_b(\overline L)).
+\]
+F.6 gives a rational $R$ agreeing with $f$ outside a finite set.
+For each $b$, $(R-b)/g_b$ has cofinite image in $\mu_\infty$ if
+it is nonconstant, an impossibility; thus it is a constant root of
+unity. Fix $x$ and choose $b\ne f(x)$. The identity $R-b=c_b g_b$
+first shows that $R$ has no pole at $x$. For every
+$b\notin\{f(x),R(x)\}$ it then gives
+\[
+ \frac{f(x)-b}{R(x)-b}\in\mu_\infty.
+\]
+If $f(x)\ne R(x)$ the left side, as $b$ varies, fills
+$\overline L\setminus\{0,1\}$, contradicting the proper subset
+$\mu_\infty$. Hence $f=R$ everywhere. It follows that $R$ is a
+regular unit. Galois equivariance descends it to $L$.
+
+If $C(L)\ne\varnothing$, its compatible Kummer class equals the
+one pulled back by $\phi$ already over $L$. Over the finite
+extension used in F.5, $R/g_0$ takes only root-of-unity values,
+so it is constant; evaluation at an $L$-point makes its class zero.
+The residual finite-level class over $L$ is geometrically zero,
+and the low-degree Hochschild--Serre sequence makes it a constant
+class. Evaluation at the $L$-point, which splits the constant-class
+inclusion, makes that residual class zero. This proves equality at
+all levels without an unwarranted descent of a chosen Kummer root.
+
+We next pass to arbitrary dimension. Let $X/k$ be connected regular
+affine of finite type, let $x_0\in X(k)$, and let
+$\phi:X_{\mathrm{et}}\to(\mathbb G_m)_{\mathrm{et}}$ be
+closed-point-preserving and relative. Regularity in characteristic
+zero gives smoothness. The algebraic constant field in $k(X)$
+embeds in $k$ by evaluation at $x_0$, so $X$ is geometrically
+integral. Choose a smooth projective compactification $Y$ with
+normal-crossings boundary $D_1,\ldots,D_s$. The strong resolution
+and principalization result of \citet[pp.~1--4, ``The result''
+and ``Idea of proof'']{F_EH2002} gives this by operations supported
+off the given smooth open. Its hypotheses are characteristic zero
+and a finite-type embedded variety, both satisfied here.
+
+Write $h=(h_n)_n$ for the pulled-back coordinate Kummer class.
+For every boundary prime $D_i$ it has a residue
+$r_i\in\widehat\Z$. After a finite extension choose a rational
+smooth point $q$ of a geometric component of $D_i$, away from
+the other components, and a smooth geometrically integral projective
+curve through $q$ and $x_0$, transverse to $D_i$ at $q$. Here is the
+precise Bertini input. Stacks, Lemma~33.47.1 says sufficiently high
+powers of an ample bundle, with prescribed vanishing on a finite
+subscheme, embed its complement; Lemma~33.47.3 makes their general
+divisor smooth on that complement; Lemma~37.32.3 makes it
+geometrically irreducible when the base locus has codimension at
+least two and the linear system has two independent moving
+directions \citep{F_StacksBertini}. Surjectivity of the first-jet
+evaluation for sufficiently high powers allows independent
+differentials at the prescribed points, including transversality.
+Intersect these nonempty opens successively, reducing dimension
+to one. The fields are infinite, so each such open has a rational
+point. This constructs the specified curve and checks the extra
+hypotheses, rather than presuming a curve through fixed points.
+
+The curve calculation makes its restricted Kummer class integral;
+its residue at $q$ is $r_i$. To check the comparison, in the regular
+local ring at $q$ the sole boundary has equation $z=0$.
+At each finite level, after an \emph{\'etale} localization, the
+Kummer class is represented by $u z^j$: this local ring is regular
+and factorial, and the unit factors away from $z$ have zero
+boundary residue. The transverse curve pulls $z$
+back to a uniformizer, and $u$ to a unit, so the residues agree
+modulo every $n$. Finite separable constant extension has
+multiplicity one along the divisor. Thus all $r_i\in\Z$.
+
+The integral divisor $D=\sum_i r_iD_i$ has zero Kummer Chern
+class modulo every $n$, hence $[D]\in\bigcap_n n\operatorname{Pic}(Y)$.
+This intersection vanishes. Indeed the quotient of
+$\operatorname{Pic}(Y)$ by its algebraically trivial subgroup is
+a subgroup of the finitely generated geometric N\'eron--Severi
+group, by \citet[Theorem~7.3]{F_CJLO2021}. That theorem assumes a
+smooth projective scheme over an algebraically closed field, and
+is applied to $Y_{\bar k}$. Kill the finite torsion of the quotient
+by an integer $e$. If $x$ is divisible by all integers in
+$\operatorname{Pic}(Y)$, its quotient is zero, and divisions by
+$em$ yield divisions of $x$ by $m$ in the algebraically trivial
+subgroup. This subgroup injects into the $k$-points of the Picard
+abelian variety; F.3 therefore gives $x=0$. The same argument
+kills $T\operatorname{Pic}(Y)$, since each coordinate of a compatible
+torsion system is infinitely divisible. The possible Brauer
+obstruction only restricts the subgroup of Picard-scheme points
+represented by actual line bundles; it does not spoil this
+injection, which follows from Hilbert 90.
+
+Choose $g\in k(Y)^*$ with divisor $D$. The class $h-[g]$ is
+unramified along every prime of $Y$. A finite-level Kummer torsor
+unramified in codimension one on a regular scheme extends \emph{\'etale}
+over it by purity. The exact form used is Stacks,
+Lemma~58.31.2: a finite \emph{\'etale} cover of a dense open,
+unramified along the missing prime divisors, extends when the
+missing local rings are regular \citep{F_StacksPurity}.
+Its extension is unique by normality and
+generic injectivity. The limit Kummer sequence and
+$T\operatorname{Pic}(Y)=0$ make the remaining class constant.
+Evaluation at $x_0$ supplies an actual $c\in k^*$, so
+$h=[c g]$ and $cg(x_0)=\phi(x_0)$.
+
+For any $a\in X(\bar k)$ choose a finite extension making it
+rational and a curve through $a$ and $x_0$ by the same Bertini
+argument. The curve's actual unit $f_C$ and $cg|_C$ have equal
+Kummer classes. Their ratio is divisible by every integer in the
+unit group. Its divisor on the projective completion is therefore
+zero, so it is constant. Its value at $x_0$ is one. It follows that
+$cg(a)=\phi(a)$ for every $a$. The case $\dim X=1$ is the curve
+argument, and $\dim X=0$ is immediate.
+
+Finally Carlson--Haine--Wolf, Theorem~4.18, for an arbitrary field,
+states the equivalence between full reconstruction and its
+condition (4.18.5): for every affine regular connected finite-type
+source with a rational point, every pinned map to
+$(\mathbb G_m)_{\mathrm{et}}$ has the geometric-point function
+of a morphism to $\mathbb G_m$ \citep{F_CHW2024}. We have proved
+exactly that condition, and for all finite extensions used in its
+descent. Applying the theorem gives the bijection stated above.
+This final use is essential: equality of point functions for one
+map alone would not identify the entire inverse-image functor.
+The theorem's proof uses the same assertion on sliced \emph{\'etale}
+objects, reconstructs affine coordinate maps, and applies $h$-descent
+in the source. Thus neither a fundamental-group isomorphism nor a
+point-function calculation is substituted for the full topos claim.
+\end{proof}
+
+\begin{claim}{F.8}{Known}
+For a characteristic-zero field $k$, the following is an exact
+necessary and sufficient criterion for \emph{closed-point-preserving}
+\emph{\'etale} reconstruction: for every connected smooth affine
+$X/k$ with $X(k)\ne\varnothing$, every closed-point-preserving
+relative morphism $X_{\mathrm{et}}\to(\mathbb G_m)_{\mathrm{et}}$
+has on $\bar k$-points the values of one regular unit of $X$.
+\end{claim}
+\begin{proof}
+This is the equivalence (4.18.1)$\Leftrightarrow$(4.18.5) of the
+opened Carlson--Haine--Wolf theorem, with ``regular'' replaced by
+``smooth'' in characteristic zero and
+$X^{\mathrm{awn}}=X$ for regular $X$. The forward implication is
+restriction to the stated source and target; the reverse implication
+is the reconstructed affine-coordinate and $h$-descent argument
+specified at the end of F.7. This is a topos-theoretic criterion,
+not an intrinsic classification in terms of the field's arithmetic.
+\end{proof}
+
+\paragraph{Literature comparison.}
+The September~2026 version of Carlson--Stix has been opened as
+well. Its Theorem~4.1 proves reconstruction over sub-$p$-adic
+fields; Theorem~6.12 adds a relative result for componentwise
+universally open schemes over geometrically unibranch noetherian
+Nagata bases with sub-$p$-adic function fields
+\citep{F_CS2026}. Proposition~3.17 assumes Kummer-faithfulness
+for its point-theoretic open-image dichotomy. These hypotheses
+do not cover $\Q^{\mathrm{ab}}$ or $\Q^{\mathrm{solv}}$.
+Indeed, the algebraic constant field in a finitely generated
+extension of $\Q_p$ is finite over $\Q_p$, whereas either of
+these fields contains roots of unity of unbounded $p$-power order.
+This also corrects R27's attribution: LM5-F.38 actually cites
+Carlson--Stix~2026, not Carlson--Haine--Wolf~2024.
+No opened source or targeted search located the full statement
+of LM5-F.47 or F.50. This records the search outcome and makes
+no assertion of priority or of absence from the literature.
+
+\begin{claim}{F.9}{Unresolved}
+An intrinsic necessary-and-sufficient arithmetic classification of
+all characteristic-zero fields satisfying closed-point-preserving
+reconstruction for every finite-type scheme remains unresolved here.
+The corrected $\mathbb G_{m,\Q^{\mathrm{solv}}}$ endomorphism
+test is proved in F.23 below. F.31 proves all-scheme
+reconstruction over finite extensions of $\Q^{\mathrm{solv}}$,
+and F.37 enlarges this to every subfield of a finitely generated
+extension of $\Q^{\mathrm{solv}}$. These results give a
+sufficient field class. F.38--F.41 below add intrinsic necessary
+conditions and explicit excluded field families. F.42 proves that
+the absolute Galois group with its full cyclotomic character,
+even together with field cardinality, cannot determine this
+property. No converse to the arithmetic necessary conditions
+is proved, so the field classification remains unresolved.
+\end{claim}
+The earlier F.3--F.7 proof does not extend directly to
+$\Q^{\mathrm{solv}}$. Its difficulty is not lack of a discrete
+valuation: F.4 already removes that assumption. That proof uses the
+freeness of an ambient multiplicative group modulo $\mu_\infty$
+and the absence of divisible abelian-variety points. Over
+$\Q^{\mathrm{solv}}$, the multiplicative group is divisible.
+Indeed, for $a\in(\Q^{\mathrm{solv}})^*$ and $n>0$, choose
+a finite solvable Galois extension $L/\Q$ containing $a$ and
+$\mu_n$. Adjoining $n$-th roots of all the conjugates of $a$
+gives an abelian extension of $L$ and a Galois solvable extension
+of $\Q$. It therefore lies in $\Q^{\mathrm{solv}}$ and supplies
+the desired root. In particular the multiplicative Kummer class
+of $2$ is zero although $2$ is not a root of unity.
+Thus the coefficient-character argument and
+the residual-root-of-unity conclusion cannot be applied. An elliptic
+curve over $\Q$ also has its entire $2$-primary torsion rational
+over $\Q^{\mathrm{solv}}$: the groups
+$\operatorname{GL}_2(\Z/2^n)$ are solvable, since their reductions
+to $\operatorname{GL}_2(\F_2)\simeq S_3$ have $2$-group kernels.
+These points are divisible by every integer in that field and
+invalidate F.3's abelian-variety input. Neither failure constructs
+a nonalgebraic pinned morphism of the full \emph{\'etale} topos.
+A system of finite-cover maps must still account for all open
+subtopoi and their partly ramified charts. F.20--F.23 supply that
+comparison for the specific rational endomorphism test.
+F.24--F.31 then supply a different all-scheme proof by finite
+quotient detection, arithmetic equivariance over a number field,
+and the semiabelian Tate-Hom theorem; they do not use the failed
+abelian-variety input. The generic-valued map
+F.2 has constant underlying image and is not a counterexample
+to that corrected test. Under R27's literal definition the universal-field
+criterion has the empty solution set by F.1, and therefore cannot
+simultaneously contain the incorrectly phrased F.50.
+
+F.16 and F.18--F.19 below give further finite-extension constraints:
+the induced profinite exponent is an integer, and the complete point
+function is an algebraic monomial. F.20--F.23 complete the comparison
+on full topoi by finite-quotient detection and normalization of
+charts. The higher-genus and higher-dimensional extensions
+are proved separately in F.24--F.31. F.17 refutes the literal
+relative-only nonconstant assertion.
+
+\subsection{What cyclotomic normalization does and does not prove}
+
+\begin{claim}{F.10}{Known, with explicit derivation}
+Let $K$ have characteristic zero, let $X/K$ be smooth of finite type,
+let $D$ be a normal-crossings divisor, and put $U=X\setminus D$.
+At a geometric point $\bar x$ with branch set $J$, the strict local
+covering-germ group is $T^J$, $T=\widehat\Z(1)$. A chosen path
+gives a continuous homomorphism
+$j_x:T^J\to\pi_1(U_{\bar K})$, well defined up to geometric
+conjugacy. The local decomposition group acts on $T^J$ by the
+cyclotomic character times the permutation of branches. A compatible
+monomial map
+\[
+ t'_j=u_j\prod_i t_i^{m_{ji}}
+\]
+induces the integer contact matrix $(m_{ji})$ on the two geometric
+local inertia groups. Units change tangential splittings by Kummer
+cocycles but do not change this geometric inertia map.
+
+For a family of smooth hyperbolic curves over a smooth finite-type
+base, a horizontal puncture group injects into the geometric fibre
+and total groups. If $U$ is a hyperbolic polycurve and $X$ is any
+smooth proper normal-crossings compactification, the diagonal
+$T\to T^J\xrightarrow{j_x}\pi_1(U_{\bar K})$ has nonzero
+image. At a rational boundary point every section factoring through
+the punctured henselian neighbourhood therefore has nontrivial
+cyclotomic centralizer. Global injectivity of the \emph{full} group
+$T^J$ is an additional assertion; it does not follow from these facts.
+\end{claim}
+\begin{proof}
+SGA~1, XIII, Proposition~5.2 assumes a regular local scheme and a
+normal-crossings divisor given by part of a regular parameter system;
+it says a finite cover tamely ramified on the divisor becomes
+\emph{\'etale} after adjoining roots of those parameters, with orders
+prime to the residue characteristic. Corollary~5.3 then identifies
+the tame fundamental group of the punctured strict localization with
+$\prod_{\ell\ne p}\Z_\ell(1)^J$ \citep{F_SGA1}. Here $p=0$,
+so every prime occurs. On the cover $z_i^n=t_i$, an inertia tuple
+acts by $z_i\mapsto\zeta_i z_i$. Conjugating by an element of the
+local arithmetic group sends $\zeta_i$ to its cyclotomic power and
+permutes the parameter branches. Units have roots in the strict
+henselian ring, which proves both the contact-matrix formula and
+its independence of those roots on geometric inertia. Paths account
+exactly for the geometric conjugacy ambiguity.
+
+For a punctured surface of type $(g,r)$ with
+$2g-2+r>0$, $r>0$, its fundamental group is free on
+$a_1,b_1,\ldots,a_g,b_g,c_1,\ldots,c_{r-1}$; the last puncture is
+the inverse of $\prod_i[a_i,b_i]\prod_j c_j$. Every puncture word
+is nontrivial. A cyclic subgroup generated by a nontrivial word in
+a free group has its full profinite topology: represent a cyclically
+reduced word by an immersed circle in a rose, complete that finite
+labelled graph to a finite covering without identifying its vertices,
+and use its primitive homology class to map the resulting finite-index
+subgroup to $\Z/n$. Taking the core gives finite quotients in which
+the word has order divisible by every prescribed $n$. Thus its
+completed cyclic subgroup is $\widehat\Z$ and injects.
+SGA~1, XII, Theorem~5.1 identifies finite algebraic and analytic
+\emph{\'etale} covers of a locally finite-type complex scheme;
+Corollary~5.2 identifies its algebraic fundamental group with the
+finite-index completion of its topological group. Descent of the
+finite-type pair to a finitely generated field and characteristic-zero
+geometric base change transport this argument to $\bar K$.
+This proves the horizontal statement, including a single puncture,
+whose inertia can vanish in abelianization while remaining injected
+in the full group. Injection from the geometric fibre to the total
+group is Hoshi, Proposition~2.4(i), valid for a hyperbolic curve
+over a connected noetherian separated normal characteristic-zero
+base \citep{F_Hoshi2014}. The present smooth base satisfies these
+hypotheses.
+
+For diagonal nonvanishing, the further input is Hoshi,
+Lemma~2.8: a point of a relative hyperbolic curve over the fraction
+field of a strictly henselian trait extends over the trait exactly
+when its map to the total fundamental group is trivial. Its base
+has the same noetherian, separated, normal, characteristic-zero
+hypotheses. Induction gives this criterion for a polycurve: first
+extend to the preceding stage, then apply the relative-curve result.
+In completed branch coordinates at $\bar x$, send every boundary
+parameter to $t$ and all other parameters to zero. This defines an
+arc $\Spec\bar K[[t]]\to X_{\bar K}$ with generic point in $U$
+and closed point $\bar x$. The Kummer covers identify its map on
+fundamental groups with $j_x$ composed with the diagonal.
+If that map were zero, the criterion would extend the generic
+point to $U$. Separatedness of $X$ identifies this extension with
+the original arc, contradicting its boundary closed point.
+Finally branch permutations fix the diagonal and the cyclotomic
+kernel acts trivially on it. Equivariance gives the centralizer
+assertion for every locally factoring section, including nonsplit
+branches. This is precisely the extra nonvanishing statement of
+CK-C8; it is weaker than full local injection.
+\end{proof}
+
+\begin{claim}{F.11}{Proved}
+The following precise group-theoretic formulation supplies the
+injection step of LM5-F.39. Suppose
+$1\to F_r\to G\to Q\to1$, $r\ge2$, is an extension of discrete
+groups. Then $\widehat{F_r}\to\widehat G$ is injective and
+\[
+1\longrightarrow\widehat{F_r}\longrightarrow\widehat G
+ \longrightarrow\widehat Q\longrightarrow1
+\]
+is exact. Suppose in addition free abelian local lattices $A,A_B$
+map compatibly to $G,Q$, with contact map $M:A\to A_B$, the map
+$\widehat A_B\to\widehat Q$ injective, and $\ker M$ either zero
+or infinite cyclic whose generator maps to a nontrivial element of
+$F_r$. Then $\widehat A\to\widehat G$ is injective. This applies
+at each stage of a recursively compatible stable pointed curve
+tower with affine hyperbolic fibres and injected base meridian
+lattices: the node kernel is generated by the essential vanishing
+cycle, and the marked kernel by an essential puncture cycle.
+\end{claim}
+\begin{proof}
+First $Z(\widehat{F_r})=1$. For a finite quotient $F_r\to A_0$
+with kernel $L$, choose a prime $\ell\nmid|A_0|$. The cellular
+chains of the finite regular rose covering give
+\[
+0\to H_1(L,\F_\ell)\to\F_\ell[A_0]^r
+\to\F_\ell[A_0]\to\F_\ell\to0.
+\]
+Semisimplicity gives
+$H_1(L,\F_\ell)\simeq\F_\ell\oplus
+\F_\ell[A_0]^{r-1}$, a faithful $A_0$-module. In the finite
+quotient $F_r/[L,L]L^\ell$, the image in $A_0$ of a central
+element of $\widehat{F_r}$ must act trivially on this module, so
+must be one. This for every $A_0$ proves centrelessness.
+
+The automorphism group of a finitely generated profinite group is
+profinite: intersections of its finitely many open subgroups of
+bounded index give a characteristic open basis. Therefore conjugation
+$G\to\operatorname{Aut}(\widehat{F_r})$ extends to
+$\widehat G$. Its composite with
+$\widehat{F_r}\to\widehat G$ is the inner-automorphism map,
+which is injective. The quotient of $\widehat G$ by the closure
+of $F_r$ classifies exactly the finite quotients of $Q$, proving
+the asserted exactness.
+
+Smith normal form shows
+$\ker\widehat M=\widehat{\ker M}$: the image of $M$ is free,
+the sequence onto that image splits, and its inclusion in $A_B$
+stays injective after completion. A kernel element of
+$\widehat A\to\widehat G$ first maps to zero in
+$\widehat A_B$, then lies in $\widehat{\ker M}$. In the cyclic
+case F.10's full-topology argument and the first paragraph of this
+claim make the latter map injective, so the element is zero.
+
+In a stable curve chart $xy=t_1^{a_1}\cdots t_s^{a_s}$ the normal
+lattice has, relative to the base, one kernel direction represented
+by the two opposite branch meridians. On a smooth fibre it is the
+vanishing cycle. A vanishing cycle bounding an unmarked disc would
+cut off an unmarked genus-zero tree attached at one node; summing
+special points over that tree contradicts stability. Thus it is
+essential. At a marking the corresponding kernel is a puncture
+cycle. Compatible root changes restrict these lattices to finite
+index; smooth toroidal subdivisions insert essential annular
+directions and preserve the same kernel calculation. The hypotheses
+that these are the local lattice maps and that the base lattices
+already inject are exactly what is required for the induction;
+an arbitrary blowup of a base boundary is not included.
+
+For the geometric application, the required full exact sequence
+at a smooth tower stage, including its left injection, is also
+given directly by Hoshi, Proposition~2.4(i). The base is smooth,
+connected, separated, noetherian and normal. Apply the identical
+kernel chase to this profinite sequence. Thus the application does
+not presume that a merely right-exact homotopy sequence is left
+exact, or that arbitrary profinite completion preserves kernels.
+
+We record CK-B5's logically separate group assertion as well.
+Every open subgroup $V$ of $\widehat{F_r}$ is the completion of
+the corresponding finite-index discrete free subgroup: cores of
+finite-index subgroups show that the induced topology is full.
+The graph-covering formula gives its rank
+$1+[\widehat{F_r}:V](r-1)\ge2$, so the centre calculation above
+applies to $V$. The group $\widehat{F_r}$ is torsion free:
+if a nonidentity finite-order $z$ survives modulo an open normal
+$N$, put $V=N\langle z\rangle$. Its nonzero cyclic quotient
+$V/N$ factors through the torsion-free abelianization of $V$,
+where the finite-order element $z$ must vanish, a contradiction.
+For an open normal $V$, its centralizer injects into the finite
+group $\widehat{F_r}/V$ and is therefore trivial. Passing to a
+normal subgroup inside an arbitrary open $H$ proves
+$C_{\widehat{F_r}}(H)=1$.
+This property passes to extensions: project a centralizer element
+to the slim quotient, then centralize the open intersection with
+the slim kernel. It passes to surjective inverse limits because
+the image of an open subgroup under each quotient projection is
+open, and all its coordinate centralizers vanish. Rank one is
+excluded, since $\widehat\Z$ centralizes itself. This proves the
+CK-B5 comparison without converting slimness into an inertia
+recognition theorem.
+\end{proof}
+
+\begin{claim}{F.12}{Refuted}
+Cyclotomic normalization alone does not imply global injection of a
+full normal-crossings inertia group, and finite Kummer root changes
+cannot repair a nonzero kernel. A finite root stack also changes
+the group and can enlarge the local inertia kernel.
+\end{claim}
+\begin{proof}
+Let $U=(\mathbb P^1_{\Q}\setminus\{0,1,\infty\})^2$ and
+blow up the point $(0,2)$ of its product compactification. Write
+local coordinates $x=uv$, $y-2=v$ on one blowup chart. The two
+boundary components at $u=v=0$ are the strict transform and the
+exceptional divisor. Their meridians both map to the old $x=0$
+meridian; the loop at $y=2$ is null-homotopic in the second factor.
+Thus, identifying the injected old cusp group with $T$, the local
+map is
+\[
+T^2\longrightarrow T,\qquad(a,b)\longmapsto a+b,
+\]
+with kernel $\{(a,-a):a\in T\}$. Both factors have the stated
+cyclotomic action. The diagonal survives by multiplication by two.
+The discrete matrix and its reductions are checked in
+\texttt{code/F\_checks.py}; the displayed calculation proves the
+whole profinite statement.
+
+If $A\ne0$ is a closed subgroup of $\widehat\Z^r$ and $L$ is a
+finite-index lattice, choose $n$ with $n\widehat\Z^r\subset L$.
+Multiplication by $n$ is injective, so
+$0\ne nA\subset A\cap L$. A finite root \emph{cover} only passes
+to such a lattice and an open global group, so the kernel persists.
+For a finite root \emph{stack} with orders $n_i$, the global group
+is the quotient by the closed normal group generated by the
+$n_i$-th powers of boundary inertia. This follows directly from
+the local charts $[\Spec A[z_i]/(z_i^{n_i}-t_i)/\prod_i\mu_{n_i}]$:
+its \emph{\'etale} covers are exactly the tame covers whose inertia
+orders divide $n_i$. For $(\mathbb A^1,0)$ the original inertia
+map is the identity of $T$, whereas its map to the $n$-th root
+stack has kernel $nT$. Taking all divisible orders recovers the
+original kernel because every finite quotient has finite inertia
+orders. These are the distinct cover and stack statements in
+LM5-F.22, and neither contradicts F.11.
+\end{proof}
+
+\begin{claim}{F.13}{Proved}
+Trait-inertia conditions satisfied by a homomorphism do not, by
+themselves, make it the homomorphism of a rational point. This holds
+both for trivial inertia and for the positive-multiplicity, injective,
+finite-index cusp conditions of F149-C3. Likewise the injection of
+actual tangent vectors into the completed Kummer torsor in F149-C8
+is not surjective, already over $\Q$.
+\end{claim}
+\begin{proof}
+Set $R=\Q[[t]]$, $K=\Q((t))$, and let
+$U/R=\mathbb P^1_R\setminus\{0,1,\infty\}$ be constant. Write
+$E=\pi_1(U_{\Q})$ for the group of the total good model. The
+coefficient splitting identifies
+$G_K=T\rtimes G_{\Q}$, and the tangent vector $1$ at the rational
+cusp $0$ identifies its normalizer $D_0\subset E$ with
+$T\rtimes G_{\Q}$, with cyclotomic action in both products.
+
+For the zero-inertia example compose $G_K\to G_{\Q}$ with this
+cuspidal splitting. It kills inertia. If it came from a $K$-point,
+the local Kummer formula would force its proper extension to avoid
+the boundary; its reduction would be a point of $U(\Q)$. The
+resulting section would then be both a point section and a cuspidal
+section over $\Q$, contrary to Stix, Theorem~14. That theorem
+assumes injectivity for proper hyperbolic curves over every finite
+extension; here it follows from the abelian-variety Kummer
+injectivity established in F.3. Thus all its hypotheses are met.
+
+For the positive-inertia example choose
+$\lambda\in\widehat\Z$ with $\lambda_2=1$ and
+$\lambda_\ell=0$ for all odd primes. It is not an ordinary integer:
+an integer divisible by every odd prime is zero, incompatible with
+its $2$-adic coordinate. Let
+$a=\lambda\kappa_{\Q}(2)\in H^1(G_{\Q},T)$ and choose a
+continuous cocycle representative. For an integer $\mu>0$ define
+\[
+h:G_K\longrightarrow D_0\subset E,
+\qquad (z,g)\longmapsto(\mu z+a(g),g).
+\]
+The cocycle identity proves that $h$ is a continuous homomorphism.
+It is injective, its inertia is $\mu T$, and its image has index
+$\mu$ in $D_0$. Via the good-reduction pullback
+$\pi_1(U_K)=E\times_{G_{\Q}}G_K$, it also determines a section
+of the generic arithmetic extension.
+
+Suppose the map to $E$ were, up to geometric conjugacy, induced
+by a point $x\in U(K)$. Its nontrivial inertia forces its proper
+extension to meet a cusp, and the intersection theorem for cusp
+groups (Stix, Proposition~11 and Corollary~12) makes that cusp
+$0$. Write $x=t^\mu u$, $u\in R^*$. Pulling back all covers
+$z^{1/n}$ shows that its residual cocycle is
+$\kappa_{\Q}(\bar u)$: the group $1+tR$ is uniquely divisible
+in characteristic zero. A conjugation preserving the nonzero open
+subgroup $\mu T$ of the cusp inertia belongs to $D_0$, and its
+geometric part belongs to $T$; it changes only the cocycle
+representative. Applying the completed $2$-adic-place valuation
+$\widehat{\Q^*}\to\widehat\Z$ to the residual class gives the
+ordinary integer $v_2(\bar u)$ on the point side and $\lambda$
+on the constructed side. They cannot agree. This is a
+whole-profinite-group obstruction, not a finite-level experimental
+claim.
+
+The same class $a$ gives a splitting of $D_0\to G_{\Q}$ not
+induced by any actual nonzero tangent vector. Actual vectors form
+a $\Q^*$-torsor; after choosing $1$, their images are precisely
+$\kappa_{\Q}(\Q^*)$. Their $2$-valuations are integers, excluding
+$a$. The finite CRT residues and the semidirect-product law used
+above are checked in \texttt{code/F\_checks.py}.
+\end{proof}
+
+\begin{claim}{F.14}{Known, with derivation}
+For a hyperbolic curve over a characteristic-zero field $k$ which
+distinguishes tori from abelian varieties, a nontrivial closed
+subgroup $A\subset\pi_1(U_{\bar k})$ is contained in a cusp
+inertia group if and only if it is procyclic and essentially
+cyclotomically normalized. A continuous section is cuspidal if
+and only if its image cyclotomically normalizes a nontrivial
+procyclic geometric subgroup. This supplies a recognition theorem
+which the local normalization/injection theorem F.10--F.11 does
+not supply. The hypothesis holds for every $k$ as in F.3, in
+particular every field finitely generated over $\Q$.
+\end{claim}
+\begin{proof}
+Stix, Theorem~20, states the equivalence of containment in inertia,
+procyclic cyclotomic normalization, and procyclic essential
+cyclotomic normalization, under exactly the displayed field and
+hyperbolicity hypotheses. Corollary~21 identifies the maximal
+such subgroups, and Corollary~22 gives the section statement
+\citep{F_Stix2008}. To spell out the last implication, Theorem~20
+places $A$ in $I_c$. If an element of the section image normalizes
+$A$, the two conjugate cusp groups meet nontrivially. Proposition~11
+makes them equal, and Corollary~12 identifies their arithmetic
+normalizer with the cusp decomposition group. The section image
+therefore lies in that group. The reverse direction is the local
+Kummer action. The section surjects onto $G_k$, so the cusp is
+$k$-rational.
+
+To verify the field hypothesis, split a given torus after a finite
+extension $k'/k$. A nonzero equivariant map
+$T S\to T A$ would give, at some prime $\ell$, a nonzero map
+$\Z_\ell(1)\to T_\ell A$. Restriction to
+$k'(\mu_\infty)$ gives nonzero invariant compatible
+$\ell$-power torsion. Every coordinate is divisible by all
+positive integers in $A(k'(\mu_\infty))$, since multiplication by
+integers prime to $\ell$ is invertible on the compatible
+$\ell$-primary tower. This field is again a subfield of a
+finitely generated extension of $\Q^{\mathrm{ab}}$, so F.3
+excludes it. Hence $\operatorname{Hom}_{G_k}(T S,T A)=0$.
+
+No part of this argument identifies every noncuspidal section with
+a rational point. That would require the section-surjectivity
+assertion separately retained in Part D.
+\end{proof}
+
+\begin{claim}{F.15}{Proved: exact scope of the eight-row comparison}
+None of F149-C1--C6, C8, C9 asserts that an arbitrary section
+comes from a rational point solely because of its inertia. C2,
+C3, and C5 do contain converses within the class of homomorphisms
+already known to come from rational geometric sections. Those
+conditional converses are valid and are stronger than the bare
+injection statement of LM5-F.39. They do not turn into an
+arbitrary-section recognition theorem. The same distinction applies
+to C9's tangential specialization data.
+\end{claim}
+\begin{proof}
+Here is the comparison, keeping the quantifiers of the original rows.
+The manuscript references are those of the opened row statements.
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{.12\textwidth}>{\raggedright\arraybackslash}p{.39\textwidth}>{\raggedright\arraybackslash}p{.41\textwidth}@{}}
+\toprule
+Row & Actual assertion and locus & Converse and its disposition\\
+\midrule\endhead
+C1 & Hartogs extension of a rational section of a smooth pair or
+tower; 149, pp.~32, 34--35, 41; scans~65, 70--72, 83.
+& No inertia-recognition assertion. Its input is an actual section
+on a dense open.\\
+C2 & An actual trait point extends iff its map to the total good
+model kills inertia; pp.~36--38, scans~74--78.
+& A genuine conditional converse. Proper extension and the nonzero
+Kummer multiplicity prove it. The arbitrary-section extension is
+false by F.13's zero-inertia example.\\
+C3 & For an actual point meeting a cusp, inertia is multiplication
+by its positive contact order, with the stated index; pp.~37--39,
+44, scans~75--79, 90.
+& Equivalent conditions for that already geometric point. The
+positive-inertia converse for an arbitrary homomorphism is false
+by F.13's $\lambda\kappa(2)$ example.\\
+C4 & Exact homotopy and reconstruction of a centre-free extension
+from its outer action; p.~39, scan~79, also~64, 73.
+& No claim about which sections are geometric. Neither exactness
+nor centrelessness implies section surjectivity.\\
+C5 & An actual rational section extends over a smooth base iff it
+kills divisorial inertia; pp.~32, 34--36, 41--42;
+scans~65, 70--74, 83--84.
+& A genuine conditional converse using C2 and C1. An arbitrary
+unramified section can be cuspidal and need not be an interior
+point section; F.13 refutes that extension.\\
+C6 & Normalizer of a specified cusp group and its Chern-class
+extension; pp.~39--41, scans~79--82.
+& The subgroup is already specified as cusp inertia. A section
+lying in its normalizer is cuspidal by definition. Recognition
+from cyclotomic normalization is the extra theorem F.14.\\
+C8 & Actual normal vectors inject into the completed Kummer
+torsor of splittings; p.~42, scan~85.
+& No surjectivity is asserted. Such surjectivity is false over
+$\Q$, by F.13. Replacing normal vectors by conormal frames
+changes the Kummer sign.\\
+C9 & An actual rational section fails to extend on a divisorial
+locus and has its leading-term tangential specialization;
+pp.~46--47, scans~93--95.
+& The rational section is part of the input. An arbitrary
+contact-order datum need not be geometric, again by F.13.\\
+\bottomrule
+\end{longtable}
+
+For completeness the geometric implications underlying this table
+can be checked directly. Over a trait a point extends uniquely to
+the proper curve. If it meets the boundary with equation
+$z=t^\mu u$, the pullback of $z^{1/n}$ gives inertia
+$\tau\mapsto\mu\tau$ in the injected cusp group. If it avoids
+the boundary the map factors through the trait. These are exactly
+the two directions of C2 and the positive-multiplicity equivalences
+in C3. For a higher-dimensional regular base, killing divisorial
+inertia extends the point at every height-one local ring. Its domain
+then has complement of codimension at least two. The extension
+step C1 is geometric: after resolving the rational map to a proper
+positive-genus curve, exceptional projective-space fibres map
+constantly, since no nonconstant map from $\mathbb P^1$ to that
+curve exists. Descend each blowup using a finite birational graph
+over the normal base. A boundary intersection is an effective
+Cartier divisor, so cannot be supported in codimension two. For
+genus zero with at least two removed points, trivialize one boundary
+section \emph{\'etale}-locally and apply Hartogs to the resulting
+regular function; the other boundary intersections are again
+Cartier divisors. The extensions glue by separatedness. Induction
+on a tower uses its actual Cartesian pullbacks. This proves the
+conditional converse in C5 and explains the divisorial statement
+in C9. Its leading coefficient transforms under $t\mapsto at$
+as $u\mapsto a^{-\mu}u$, giving the stated Kummer change
+$-\mu\kappa(a)$.
+
+The sign in C6 is also consistent with F.10. If $N$ is the normal
+line, choose frames $e_j=g_{ij}e_i$ and scalar coordinates
+$w_i=g_{ij}w_j$. Roots $r_i^n=w_i$ transform by
+$r_i=h_{ij}r_j$, $h_{ij}^n=g_{ij}$. Their triple defect
+$h_{ij}h_{jk}h_{ki}\in\mu_n$ is $+c_1(N)\bmod n$ with the
+positive Kummer convention. The conormal line is $N^\vee$ and has
+the opposite sign. Thus this is extra extension-class information,
+not a recognition of geometric point sections.
+
+LM5-F.21 concerns the local tube and its possible Chern
+transgression; F.22 concerns root stacks and covers; F.23 changes a
+cuspidal model to a stable model; F.35 is the abstract closed-subgroup
+criterion for extension of a covering germ as a sub-germ; F.39 is
+the injection and normalization induction of F.10--F.11. These are
+compatible with the eight rows just listed. CK-B5 is a slimness
+statement, not an inertia-recognition statement: the centralizer
+of an open subgroup vanishes in nonabelian free profinite groups,
+and the property passes through extensions and surjective inverse
+limits. Rank one is excluded. CK-C8 asserts nonzero diagonal
+boundary inertia and a boundary-local centralizer implication;
+it explicitly allows the blowup kernel of F.12. Neither it nor
+LM5-F.48 asserts its arbitrary-section converse. The distinction
+between local injection, cyclotomic recognition in F.14, and point
+section surjectivity in Part D is therefore essential in all three
+returns.
+\end{proof}
+
+\subsection{A finite-extension constraint for the unresolved solvable-field test}
+
+The following additional test uses finite extensions of
+$\Q^{\mathrm{solv}}$. It rules out a proposed source of exotic
+endomorphisms without asserting reconstruction of the full topos.
+
+\begin{claim}{F.16}{Proved}
+Put $k=\Q^{\mathrm{solv}}$. For every finite extension $L/k$,
+\[
+ D(L^*)=k^*.
+\]
+Consequently, if $\phi:X_{\mathrm{et}}\to X_{\mathrm{et}}$ is a
+closed-point-preserving relative geometric morphism for
+$X=\mathbb G_{m,k}$, then its pullback of the canonical compatible
+Kummer class is
+\[
+ \phi^*[t]=m[t]\quad\text{for one }m\in\Z.
+\]
+For every $\alpha\in\overline\Q^*$ its induced point value satisfies
+\[
+ \phi(\alpha)=c_\alpha\alpha^m,
+ \qquad c_\alpha\in k^*.
+\]
+In particular a nonintegral profinite exponent cannot give the
+endomorphism requested in F2. This claim alone does not prove that $c_\alpha$ is independent of
+$\alpha$ or that $m\ne0$ for a nonconstant point map; F.19 below
+settles those two point-function issues. This Kummer calculation
+alone does not identify the full geometric morphism; F.20--F.23
+provide the additional comparison.
+\end{claim}
+\begin{proof}
+We first establish a descent calculation. Enlarge a finite extension
+of $k$ to $L=Mk$, where $M/\Q$ is finite Galois, and put
+$B=M\cap k$. Both $M/B$ and $k/B$ are Galois and their intersection
+is $B$, so restriction identifies
+\[
+ \operatorname{Gal}(L/B)=
+ \operatorname{Gal}(M/B)\times\operatorname{Gal}(k/B).
+\]
+Write $G=\operatorname{Gal}(L/k)$ for the first factor. Given a
+finite list of elements of $L$, choose a number field $S\subset k$
+containing $B$ such that the list lies in the number field $F=MS$.
+Suppose $z^n=a\in F^*$ with $z\in L^*$. For $\sigma\in G$ and
+$\tau\in\operatorname{Gal}(L/F)$ we have
+$\tau z/z\in\mu_n\subset k$. The two factors commute, and
+$\sigma$ fixes these roots of unity. Hence
+\[
+ \tau\left(\frac{\sigma z}{z}\right)
+ =\frac{\sigma(\tau z/z)}{\tau z/z}
+       \frac{\sigma z}{z}
+ =\frac{\sigma z}{z}.
+\]
+It follows that $\sigma z/z\in F$ and
+\begin{equation}\label{eq:F16:radical_descent}
+ \frac{\sigma a}{a}\in(F^*)^n.
+\end{equation}
+The important point is that $F$ can be fixed before the root $z$
+and the integer $n$ are chosen.
+
+A number field satisfies $D(F^*)=\{1\}$. Indeed the valuations of
+an element in this intersection all vanish, and Dirichlet's unit
+theorem then reduces the assertion to a finitely generated abelian
+group, whose intersection of all power subgroups is trivial. If
+$a\in D(L^*)$, choose $F$ containing $a$ and apply
+\eqref{eq:F16:radical_descent} for every $n$. Thus
+$\sigma a/a=1$ for every $\sigma\in G$, so $a\in k^*$.
+Conversely $k^*$ is divisible by the radical argument in F.9.
+This proves $D(L^*)=k^*$ for the enlarged Galois extension, and
+then for every intermediate finite extension as well. In particular
+a proper finite extension of $k$ is not radically closed: any of its
+elements outside $k$ fails some power-divisibility test.
+
+The finite Kummer sequence and $\operatorname{Pic}(X)=0$ give
+\[
+ H^1(X,\mu_n)=\mathcal O(X)^*/\mathcal O(X)^{*n}
+ =\Z/n,
+\]
+because $\mathcal O(X)^*=k^*\times t^\Z$ and $k^*$ is divisible.
+The relative rigidification identifies the pullback of $\mu_n$ with
+$\mu_n$, compatibly in $n$. We may therefore write
+$\phi^*[t]=\lambda[t]$ with $\lambda\in\widehat\Z$.
+For a finite $L/k$ and $\alpha\in L^*$, the composite
+$\Spec(L)_{\mathrm{et}}\to X_{\mathrm{et}}
+ \xrightarrow{\phi}X_{\mathrm{et}}$ is pinned. The elementary
+field-source reconstruction statement of
+\citet[Section~3, proposition on reconstruction for fields]{F_CHW2024}
+identifies it with a unique $\beta\in L^*$: it factors through its
+closed image point, whose residue field is finite separable over
+$k$, and the relative map of field topoi gives its embedding in $L$.
+Functoriality of Kummer theory gives
+\begin{equation}\label{eq:F16:point_kummer}
+ \kappa_L(\beta)=\lambda\kappa_L(\alpha).
+\end{equation}
+
+There exist a finite Galois $M/\Q$, an element
+$\sigma\in\operatorname{Gal}(Mk/k)$, and $\alpha\in M^*$ such
+that $\sigma\alpha/\alpha$ is not a root of unity. Here is a
+concrete existence argument requiring no assumption on finite
+extensions of $k$. The polynomial $T^5-6T+3$ is Eisenstein at $3$.
+Its derivative has two real zeros $\pm(6/5)^{1/4}$, with positive
+and negative polynomial values, respectively. Thus it has exactly
+three real roots, and complex conjugation is a transposition in its
+transitive degree-five Galois group. A transitive group of prime
+degree is primitive; the graph of conjugates of that transposition
+is connected, so those transpositions generate $S_5$. Its splitting
+field $M$ therefore has group $S_5$, and
+$\operatorname{Gal}(Mk/k)=A_5$. Choose $\sigma\in A_5$ moving a
+root $\theta$. Since $M$ contains only finitely many roots of unity,
+all but finitely many integers $N$ have
+$\alpha=\theta+N\ne0$ and $\sigma\alpha/\alpha$ not a root of
+unity: for each root of unity $\zeta\ne1$, the equation
+$\sigma\theta+N=\zeta(\theta+N)$ excludes at most one $N$,
+and $\zeta=1$ excludes none.
+
+For this $L=Mk$ and $\alpha$, let $\beta=\phi(\alpha)$, and
+choose the fixed number field $F=MS$ containing $\alpha$ and
+$\beta$. If $a_n\in\Z$ represents $\lambda$ modulo $n$,
+\eqref{eq:F16:point_kummer} says
+$\beta\alpha^{-a_n}=z_n^n$ for some $z_n\in L^*$. Applying the
+descent calculation gives
+\[
+ \frac{\sigma\beta}{\beta}
+ \left(\frac{\sigma\alpha}{\alpha}\right)^{-a_n}
+       \in(F^*)^n \quad\text{for every }n.
+\]
+The group $F^*/\mu(F)$ is free abelian: its unit subgroup modulo
+torsion is free of finite rank, and its quotient is a subgroup of
+the free group of fractional ideals, so that exact sequence splits.
+Choose a homomorphism $h:F^*/\mu(F)\to\Z$ which is nonzero on
+$\sigma\alpha/\alpha$. The displayed relations imply
+\[
+ h(\sigma\beta/\beta)
+  =\lambda h(\sigma\alpha/\alpha)\quad\text{in }\widehat\Z.
+\]
+Since both character values are integers and the second is nonzero,
+$\lambda\in\Q\cap\widehat\Z=\Z$. Write it as $m$.
+For an arbitrary finite $L/k$ and $\alpha\in L^*$,
+\eqref{eq:F16:point_kummer} now gives
+$\beta\alpha^{-m}\in D(L^*)=k^*$, which proves the stated
+point formula. The remaining distinctions in the last sentence of
+the claim are essential: a scalar calculation in the finite-\emph{\'etale}
+subtopos supplies neither the maps on all open subtopoi nor their
+compatibility.
+\end{proof}
+
+\begin{claim}{F.17}{Refuted}
+With R27's literal relative-only definition of pinned, the
+nonconstant endomorphism assertion in F2 is false over every
+characteristic-zero field. There is a relative geometric endomorphism
+of $(\mathbb G_{m,k})_{\mathrm{et}}$ whose point map sends $1$ to
+$1$ and every other point to the generic point. It is nonconstant
+on points and is not algebraic. It is not closed-point preserving,
+so this does not refute F2 with CHW's actual definition restored.
+\end{claim}
+\begin{proof}
+Let $X=\mathbb G_{m,k}$, $Z=\{1\}$, $U=X\setminus Z$, and
+\[
+ T=\Spec\mathcal O^h_{X,1},\qquad K_h=\operatorname{Frac}
+       (\mathcal O^h_{X,1}),\qquad D=G_{K_h}.
+\]
+Write $j:U\hookrightarrow X$ and $i:Z\hookrightarrow X$.
+If $I\subset D$ is inertia, then $I=\widehat\Z(1)$ and
+$D/I=G_k$. The coordinate $u=t-1$ defines
+$\Spec K_h\to\mathbb G_{m,u}$ and an isomorphism
+\[
+ D\xrightarrow{\sim}\pi_1(\mathbb G_{m,u}).
+\]
+Indeed it induces the identity on $G_k$ and the Kummer
+isomorphism on the geometric kernels; all ramification of the
+strict henselian characteristic-zero trait is tame. Composing the
+map induced by $u:U\to\mathbb G_{m,u}$ with this identification
+gives
+\[
+ q:U_{\mathrm{et}}\longrightarrow BD
+\]
+over $BG_k$. Its restriction to the local decomposition group at
+$1$ is the identity $D\to D$.
+
+For a continuous discrete $D$-set $B$, the nearby-stalk calculation
+therefore gives a natural $G_k$-equivariant isomorphism
+\begin{equation}\label{eq:F17:nearby}
+ i^*j_*q^*B\simeq B^I.
+\end{equation}
+The geometric stalk on the left is obtained by taking sections
+over the punctured strict henselization at $1$, hence by taking
+invariants under its local inertia. The preceding decomposition
+map identifies both that action and the residual $G_k$-action
+with the ones on the right. This calculation applies to every
+continuous $D$-set: such a set is a disjoint union of finite
+$D$-orbits, and the punctured strict henselization is connected.
+Thus $q^*B$ is a union of finite locally constant sheaves; no
+common \emph{\'etale} trivialization of an arbitrary infinite
+union is assumed.
+
+Artin gluing identifies $X_{\mathrm{et}}$ with the category of
+triples
+\[
+ (A,C,v),\qquad A\in BG_k,\quad C\in U_{\mathrm{et}},
+ \quad v:A\longrightarrow i^*j_*C.
+\]
+For $T_{\mathrm{et}}$ the corresponding triples are
+$(A,B,v:A\to B^I)$, with $B\in BD$. These are statements about
+all sheaves of sets; the exact gluing theorem and its
+henselian-trait form are recalled in
+\citet[pp.~1--2]{F_Cornut2024}, citing SGA~4, IV, 9.5.
+Define a functor on these full triple categories by
+\[
+ \Phi^*(A,B,v)=
+ (A,q^*B,\ A\xrightarrow{v}B^I
+                  \xrightarrow{\sim}i^*j_*q^*B).
+\]
+Finite limits and all colimits of the triple categories are
+computed on their two components, with the induced connecting
+map; the gluing functors preserve finite limits. Consequently
+$\Phi^*$ preserves finite limits and colimits. For completeness
+its right adjoint can be given explicitly. For $(A',C,v')$ put
+$B=q_*C$, use the natural map
+\[
+ B^I\simeq i^*j_*q^*q_*C\longrightarrow i^*j_*C,
+\]
+and take $A=A'\times_{i^*j_*C}B^I$, with the projection
+$A\to B^I$. The adjunction follows directly from
+$q^*\dashv q_*$ and the fibre-product condition. Thus $\Phi^*$
+is the inverse image of a geometric morphism
+$\Phi:X_{\mathrm{et}}\to T_{\mathrm{et}}$. On both components
+it commutes with the structural inverse image from $BG_k$;
+\eqref{eq:F17:nearby} respects that commutation. Hence $\Phi$
+is a relative geometric morphism with the required isomorphism.
+
+Compose $\Phi$ with the morphism $T_{\mathrm{et}}\to
+X_{\mathrm{et}}$ induced by the henselization. The generic open
+of $T$ pulls back to $U$, and its closed stratum pulls back to
+$Z$, with identity on $BG_k$. The point map of the composite is
+therefore exactly the one in the claim. Its two values show
+nonconstancy. A morphism of finite-type $k$-schemes sends closed
+points to closed points, whereas the displayed morphism sends
+the rational point $2$ to the generic point. It is consequently
+nonalgebraic. Finally $X$ is smooth, so absolute weak
+normalization does not alter this example.
+\end{proof}
+
+
+\begin{claim}{F.18}{Proved}
+Put $k=\Q^{\mathrm{solv}}$. Finite extensions of $k$ have
+unbounded degrees, even when required to contain a prescribed finite
+extension $L/k$. Let $U\subset\mathbb G_{m,L}$ be a nonempty
+open, and let
+$\xi\in\varprojlim_n H^1(U,\mu_n)$. Suppose that every evaluation
+of $\xi$ at every point over every finite extension $E/L$ is the
+compatible Kummer class of an actual element $b_x\in E^*$.
+Then $\xi$ is the compatible Kummer class of an actual unit
+$h\in\mathcal O(U)^*$, and
+\[
+ b_x/h(x)\in k^*
+\]
+for every such point. The statement applies to arbitrary finite
+$L/k$, although these fields are not in general radically closed.
+\end{claim}
+\begin{proof}
+There is a proper finite extension of $k$, by the $S_5$ polynomial
+in F.16. If $E/k$ is any proper finite extension, choose
+$a\in E\setminus k$. Since $D(E^*)=k^*$, some $n$-th root of
+$a$ does not belong to $E$. Adjoining it gives a proper finite
+extension of $E$. Iterating gives degrees at least doubling.
+The construction can start with any prescribed proper finite $L/k$;
+when $L=k$, first use the displayed proper extension. The primitive
+element theorem then supplies points of arbitrarily large degree
+over $L$. This argument uses F.16's divisibility calculation and
+not an unproved assertion about faithful Kummer lines.
+
+Write $P_0=t$ and let $P_1,\ldots,P_r\in L[t]$ be the distinct
+monic irreducible polynomials for the other removed closed points.
+Since this coordinate ring is a localization of a principal ideal
+domain, its Picard group is zero and
+\[
+ \mathcal O(U)^*=L^*\times\prod_{j=0}^rP_j(t)^\Z.
+\]
+Choose $x_0\in U(L)$, and an actual $b_0\in L^*$ representing
+the evaluation there. The Kummer sequence expresses $\xi$ as
+\begin{equation}\label{eq:F18:normalized_class}
+ \xi=\kappa_L(b_0)+\sum_{j=0}^r\lambda_j
+       \bigl([P_j(t)]-[P_j(x_0)]\bigr),
+ \qquad \lambda_j\in\widehat\Z.
+\end{equation}
+Thus a possibly nontrivial arithmetic constant class over $L$
+has been removed by one actual evaluation, not assumed to vanish.
+
+Take a proper finite extension $L'/L$ as above. Choose a finite
+Galois number field $M/\Q$ containing generators of $L$ and $L'$
+over $k$, all coefficients and roots of the $P_j$, and $x_0,b_0$.
+Then $L'\subset Mk$, and we can choose a nonidentity
+$\sigma\in\operatorname{Gal}(Mk/L)$. Its restriction to $M$ is
+nonidentity; it fixes the coefficients of every $P_j$, but need
+not fix their roots.
+
+There are infinitely many rational primes splitting completely
+in $M$. One elementary justification suffices here. For a primitive
+integral element of the Galois field $M$, infinitely many primes
+divide nonzero values of its minimal polynomial. Indeed, if the
+possible primes were $p_1,\ldots,p_s$, choose $f(a)\ne0$ and
+apply this claim to the nonconstant integer polynomial
+\[
+ \frac{f(a+f(a)p_1\cdots p_s T)}{f(a)},
+\]
+which is congruent to $1$ modulo every $p_i$: an integer value of
+absolute value greater than $1$ has a new prime divisor. Outside
+the finitely many index and discriminant primes, a linear factor
+of the minimal polynomial gives a residue-degree-one prime in
+$M$, which forces complete splitting because $M/\Q$ is Galois.
+Choose distinct completely split primes $p_i$, $0\le i\le r$,
+avoiding coefficient denominators, discriminants and pairwise
+resultants of the $P_j$, and with $p_i>\sum_j\deg P_j$.
+
+Choose a place $v_i$ of $M$ over $p_i$ and a root $r_i\in M$
+of $P_i$. Complete splitting and $\sigma\ne1$ imply
+$v_i\ne\sigma^{-1}v_i$. All these places for different $i$
+lie over distinct rational primes. In the ring of integers of
+$M$ with the finitely many required denominators inverted, the
+Chinese remainder theorem provides $\alpha$ satisfying
+\[
+ \alpha\equiv r_i+p_i\pmod{\mathfrak p_{v_i}^2},
+ \qquad
+ \alpha\equiv c_i\pmod{\mathfrak p_{\sigma^{-1}v_i}},
+\]
+where $c_i\in\F_{p_i}$ avoids all roots of all the $P_j$.
+The residue-size bound ensures such $c_i$ exist. Taylor expansion
+at the simple root and the fixed-coefficient identity give
+\[
+ v_i(P_j(\alpha))=\delta_{ij},\qquad
+ v_i(P_j(\sigma\alpha))
+ =v_{\sigma^{-1}v_i}(P_j(\alpha))=0.
+\]
+In particular $\alpha\in U(Mk)$, and the ratios
+\[
+ R_j=P_j(\sigma\alpha)/P_j(\alpha)
+ \quad\text{satisfy}\quad v_i(R_j)=-\delta_{ij}.
+\]
+The second congruence is imposed at $\sigma^{-1}v_i$ precisely
+because $\sigma$ may permute the roots of $P_j$.
+
+Let $b_\alpha\in Mk$ realize the evaluation of $\xi$. Choose
+one fixed number field $F=MS\subset Mk$ containing $b_\alpha$,
+where $S\subset k$ is finite and contains $M\cap k$.
+For integer representatives $a_{j,n}$ of $\lambda_j$ modulo $n$,
+\eqref{eq:F18:normalized_class} gives $z_n\in Mk$ with
+\[
+ \frac{b_\alpha}{b_0}
+ \prod_j\left(\frac{P_j(\alpha)}{P_j(x_0)}\right)^{-a_{j,n}}
+ =z_n^n.
+\]
+Apply F.16's fixed-number-field descent to $\sigma$. Since
+$\sigma$ fixes $b_0$ and every $P_j(x_0)$, it yields
+\[
+ \frac{\sigma b_\alpha}{b_\alpha}
+       \prod_jR_j^{-a_{j,n}}\in(F^*)^n.
+\]
+The integer-valued characters
+$h_i=v_i\circ N_{F/M}:F^*\to\Z$ satisfy
+$h_i(R_j)=-[F:M]\delta_{ij}$. Consequently
+\[
+ [F:M]\lambda_i=-h_i(\sigma b_\alpha/b_\alpha)\in\Z.
+\]
+As $\Q\cap\widehat\Z=\Z$, every $\lambda_i$ is an integer.
+The normalized expression for $\xi$ is now the Kummer class of
+\[
+ h(t)=b_0\prod_j\left(\frac{P_j(t)}{P_j(x_0)}\right)^{\lambda_j}
+       \in\mathcal O(U)^*.
+\]
+At any finite-extension point, the quotient $b_x/h(x)$ has zero
+compatible Kummer class. F.16 identifies that kernel with $k^*$,
+proving the last assertion.
+\end{proof}
+
+\begin{claim}{F.19}{Proved}
+Let $k=\Q^{\mathrm{solv}}$. Every closed-point-preserving relative
+geometric endomorphism $\phi$ of $(\mathbb G_{m,k})_{\mathrm{et}}$
+has, on all geometric closed points, the form
+\[
+ \phi(\alpha)=c\alpha^m,\qquad
+ c\in k^*,\quad m\in\Z.
+\]
+If $m=0$, the entire geometric morphism is the algebraic constant
+map. Thus a nonconstant pinned endomorphism has $m\ne0$ and
+agrees with an algebraic monomial on all geometric closed points.
+These point-function calculations alone do not identify the
+nonconstant \emph{full-topos morphism}; F.20--F.23 below complete
+that additional step.
+\end{claim}
+\begin{proof}
+Let $f$ denote the induced $\overline\Q$-point function. F.16
+already gives an integer $m$ and
+$f(\alpha)=c_\alpha\alpha^m$ with $c_\alpha\in k^*$.
+Suppose first that $m=0$. Choose $\beta\notin k$ and put
+$L=k(\beta)$. Every geometric closed-point value of $\phi_L$
+lies in $k$, so none is $\beta$. The inverse image of the
+closed point $\beta$ is closed in $\mathbb G_{m,L}$. Any
+nonempty closed subset of this Jacobson scheme contains a closed
+point. Thus this inverse image is empty; the generic point cannot
+be an isolated exception. The morphism $\phi_L$ therefore factors
+through the open complement of $\beta$. Pull back its unit
+$t-\beta$ and apply F.18 on all of $\mathbb G_{m,L}$. The
+resulting unit has the form $a t^r$, $a\in L^*$, $r\in\Z$,
+and
+\[
+ f(\alpha)-\beta=d_\alpha a\alpha^r,
+ \qquad d_\alpha\in k^*.
+\]
+The left-hand side lies in $L$. If $r\ne0$, a point of degree
+$[L(\alpha):L]>|r|$ supplied by F.18 would therefore satisfy
+$\alpha^r\in L$, a contradiction. Hence $r=0$. Comparing with
+$\alpha=1$ gives
+\[
+ \frac{f(\alpha)-\beta}{f(1)-\beta}\in k^*.
+\]
+Since both $f(\alpha)$ and $f(1)$ belong to $k$ while $\beta$
+does not, this equation forces $f(\alpha)=f(1)$. The inverse
+image of that closed rational point is closed and contains all
+closed points of the source, hence is the whole source. By the
+closed-subtopos factorization, $\phi$ factors through that
+$\Spec(k)_{\mathrm{et}}$. Relativity over $BG_k$ identifies this
+factorization with the ordinary algebraic constant morphism.
+
+Now assume $m\ne0$. The point map is nonconstant: otherwise
+$\phi$ would factor through a closed point and its geometric
+Kummer exponent would be zero. For each $b\in k^*$ the inverse
+image of $b$ is a proper closed subset of $\mathbb G_m$, hence
+finite. In particular its complement $U_b$ is a nonempty open.
+Pull back $t-b$ on the target complement of $b$. F.18 provides
+$h_b\in\mathcal O(U_b)^*$ with
+\[
+ f(\alpha)-b=d_{\alpha,b}h_b(\alpha),
+ \qquad d_{\alpha,b}\in k^*,\quad \alpha\in U_b(\overline\Q).
+\]
+For $b=1$ this gives
+\[
+ c_\alpha\alpha^m-d_{\alpha,1}h_1(\alpha)-1=0.
+\]
+After clearing the fixed denominators of $t^m$ and $h_1(t)$,
+the numerator degree is bounded independently of the two scalar
+values. Choose $\alpha$ outside the finite exceptional fibre
+with degree over $k$ greater than this bound. A nonzero polynomial
+of that bounded degree cannot vanish at $\alpha$. We therefore
+obtain an identity of rational functions, and hence
+\[
+ h_1(t)=A t^m+B,\qquad A,B\in k^*.
+\]
+If $\alpha\notin k$, then $\alpha^m\notin k$, since $k$ is
+radically closed and contains every root of unity. Such an
+$\alpha$ cannot satisfy $f(\alpha)=1$ either. Comparing the
+coefficients of $1$ and $\alpha^m$ in the preceding evaluation
+equation gives
+\[
+ c_\alpha=-A/B=:c,\qquad f(\alpha)=c\alpha^m
+       \quad(\alpha\notin k).
+\]
+For any $b\in k^*$, apply the same bounded-degree argument to
+$h_b$ at a point of sufficiently large degree, where this
+monomial formula is already known. It gives
+\[
+ h_b(t)=e_b(c t^m-b),\qquad e_b\in k^*.
+\]
+Every zero of $c t^m-b$ in $\mathbb G_m$ must lie in the removed
+fibre $f^{-1}(b)$, because $h_b$ is a unit on $U_b$. For any
+$x\in k^*$ choose $b=cx^m$. The zero at $x$ then forces
+$f(x)=b$. This proves the monomial formula at every geometric
+closed point, including the rational ones.
+
+The last distinction in the claim is substantive. The proposition
+on reconstruction from points in Section~4 of
+\citet{F_CHW2024} requires algebraic realizations after pullback
+to \emph{every} separated quasicompact \emph{\'etale} target
+chart. Such charts and their pullbacks include covers of punctured
+$\mathbb G_m$ with arbitrary genus. F.18 uses a rational source
+with zero Picard group; it supplies no vanishing theorem for the
+Picard Tate modules of these other curves. Thus this point-function argument alone does not establish equality
+of full-topos morphisms. F.20--F.23 use finite-quotient detection
+and normalization of charts to complete that comparison without
+asserting vanishing of those Picard Tate modules.
+\end{proof}
+
+\subsection{Completion of the corrected solvable-field endomorphism test}
+
+\begin{claim}{F.20}{Proved}
+Put $k=\Q^{\mathrm{solv}}$, and let
+$U\subset\mathbb A^1_k$ be a nonempty open. For every finite
+quotient $\pi_1(U)\twoheadrightarrow G$ and every $n\ge5$, there
+is a closed point $x\in U$ of degree $n$ over $k$ whose
+arithmetic decomposition group maps onto all of $G$:
+\[
+ G_{k(x)}\longrightarrow\pi_1(U)\longrightarrow G
+ \quad\text{is surjective}.
+\]
+This detects arithmetic finite quotients, including their constant
+quotients. It does not assert that $k$ is Hilbertian or that
+$k$-rational points suffice.
+\end{claim}
+\begin{proof}
+Let $Y\to U$ be the connected finite \emph{\'etale} $G$-torsor
+corresponding to the quotient. Descend the equations, the entire
+$G$-action, and the torsor isomorphism to a finite Galois solvable
+number field $F/\Q$ contained in $k$. The descended cover is
+connected, since its base change to $k$ is connected. Retain the
+notation $Y\to U$ for it, and let $M$ be the algebraic closure of
+$F$ in $F(Y)$. There is an exact sequence
+\[
+ 1\longrightarrow N\longrightarrow G\longrightarrow
+ P:=\operatorname{Gal}(M/F)\longrightarrow1,
+\]
+where $N$ is the geometric group. Connectedness after base change
+implies $M\cap k=F$; both extensions of $F$ are Galois.
+
+We have $F^{\mathrm{solv}}=k$. Indeed, the normal closure over
+$\Q$ of a finite solvable Galois extension of $F$ is solvable:
+its group over $F$ embeds into a product of the solvable groups
+of its conjugates, and its quotient over $\Q$ is
+$\operatorname{Gal}(F/\Q)$. Conversely every element of $k$
+lies in a finite solvable Galois extension of $F$. Thus every
+solvable quotient of $P$ is trivial, since its fixed subfield
+would lie in $M\cap k=F$. In particular $P$ is perfect.
+
+Form the ordered $n$-fold fibre product of $Y$ over its common
+constant field $M$, and remove the loci where two of its images
+in $U$ coincide. Call the resulting scheme $T$. The factors are
+geometrically integral over $M$, so $T$ is geometrically integral
+over $M$ and connected over $F$. Over the unordered configuration
+space
+\[
+ B=\operatorname{Sym}^n(U)_{\mathrm{dist}}
+\]
+it is a connected finite \emph{\'etale} Galois cover with group
+\begin{equation}\label{eq:F20:common_constant_wreath}
+ H=\bigl(G\times_P\cdots\times_PG\bigr)\rtimes S_n.
+\end{equation}
+The coordinate automorphisms must induce the same automorphism of
+$M$; this is the fibre-product condition. Permutation of the
+ordered factors supplies the literal subgroup $S_n$. Together
+these actions are free and transitive on the geometric fibres
+over an unordered configuration. The source $T$ has \emph{not}
+been quotiented by $S_n$: that quotient would have smaller degree
+and would not in general be $H$-Galois.
+
+Since $U\subset\mathbb A^1_F$, the coefficients of the monic
+polynomial of a configuration identify $B$ with a nonempty open
+of $\mathbb A^n_F$. Hilbert irreducibility over the number field
+$F$ gives a connected specialization with Galois group $H$, say
+$\Omega/F$. Precisely the needed statements are
+\citet[Proposition~3.3.1 and Theorem~3.4.1, pp.~23, 25]{F_Serre2007}.
+The specialization proposition assumes an irreducible Galois
+cover; it does not require its total space to be geometrically
+irreducible over $F$. Thus the nontrivial constant field $M$
+causes no extra hypothesis here.
+
+Let $H^\infty$ be the stable term of the derived series of $H$.
+Since $k=F^{\mathrm{solv}}$,
+\[
+ \Omega\cap k=\Omega^{H^\infty},\qquad
+ \operatorname{Gal}(\Omega k/k)=H^\infty.
+\]
+We verify that a coordinate stabilizer in $H^\infty$ projects
+onto the whole corresponding copy of $G$. First, the literal
+$A_n$ is perfect and hence is contained in $H^\infty$. The image
+of $H^\infty$ in the permutation group is exactly $A_n$.
+Second, $H^\infty\to P$ is onto, because the image of every
+derived term is the corresponding derived term of the perfect
+group $P$. Multiplication by the inverse literal permutation
+therefore shows that
+\[
+ B_0=H^\infty\cap\ker(H\to S_n)
+\]
+still surjects onto $P$. Finally $[N^n,A_n]\subset B_0$, and
+its projection to any selected coordinate contains all of $N$:
+put $a\in N$ in that coordinate and commute it with an even
+permutation moving the coordinate elsewhere. The chosen
+coordinate of the resulting balanced tuple is $a$ or $a^{-1}$.
+It follows that the projection $B_0\to G$ contains $N$ and
+surjects onto $G/N=P$, hence is surjective.
+
+The permutation image $A_n$ is transitive. The specialized
+configuration consequently gives over $k$ one closed point $x$
+of degree $n$. Its decomposition group inside $\Omega k/k$ is
+the stabilizer of one coordinate. The preceding calculation
+shows that this stabilizer surjects onto the Galois group of the
+corresponding $G$-torsor fibre. Equivalently the original
+$G_{k(x)}\to G$ is onto, as required.
+\end{proof}
+
+\begin{claim}{F.21}{Proved}
+Let $k=\Q^{\mathrm{solv}}$, let $X=Y=\mathbb G_{m,k}$, and
+let $f(t)=ct^m$ with $c\in k^*$ and $m\ne0$. If a pinned
+relative geometric morphism
+$\phi:X_{\mathrm{et}}\to Y_{\mathrm{et}}$ agrees with $f$ on
+all geometric closed points, then their generic finite
+\emph{\'etale} pullback functors are naturally isomorphic over
+$BG_k$.
+\end{claim}
+\begin{proof}
+The generic point maps to the generic point: otherwise its image
+would be closed, and continuity would make the whole point map
+constant. Hence for every nonempty open $V\subset Y$ the
+inverse-image open is
+\[
+ \phi^{-1}(V)=f^{-1}(V)=:U,
+\]
+again an open rational curve. A finite separable algebra over
+$k(Y)$ extends to a finite \emph{\'etale} cover over some $V$.
+Pull it back along $\phi|_U$ and take its generic fibre.
+Shrinking $V$ does not change that fibre, so this defines the
+generic pullback functor. It preserves finite limits, finite
+coproducts and covers, and hence defines a continuous generic
+Galois homomorphism. This construction does not presuppose an
+unproved factorization theorem for arbitrary generic-valued
+topos morphisms.
+
+Choose generic fibre functors compatibly with the specified
+identification on the base field. The two maps are continuous
+homomorphisms over $G_k$,
+\[
+ h_\phi,h_f:G_{k(X)}\longrightarrow G_{k(Y)}.
+\]
+Let $q:G_{k(Y)}\twoheadrightarrow Q$ be any finite quotient.
+Choose $V$ over which its cover is finite \emph{\'etale}; both
+$q h_\phi$ and $q h_f$ factor through $\pi_1(U)$. Form their
+\emph{joint} image
+\[
+ J=\operatorname{im}\bigl((q h_\phi,q h_f):
+                   \pi_1(U)\to Q\times Q\bigr).
+\]
+F.20 supplies a closed point $x\in U$ whose decomposition group
+surjects onto $J$.
+
+The two point-source morphisms from
+$\Spec k(x)_{\mathrm{et}}$ to $Y_{\mathrm{et}}$ are isomorphic
+as relative geometric morphisms. Indeed each factors through its
+closed image. The residue field of that image is finite separable
+over $k$, and its topos is the corresponding slice of $BG_k$.
+Relative morphisms into that slice correspond to actual
+$k$-embeddings of the residue field into $k(x)$; equality of
+geometric point values identifies these embeddings. This is also
+the field-source reconstruction statement in Section~3 of
+\citet{F_CHW2024}.
+
+It follows that the restrictions of the two homomorphisms to the
+entire decomposition group are conjugate by one element. They
+are not merely elementwise conjugate. Choosing the paths to
+$x$ over the same geometric point of $\Spec k$ makes the
+conjugator geometric. Let $a_Q$ be its image in $Q$.
+Surjectivity of the decomposition group onto the joint image $J$
+then gives
+\[
+ q h_\phi=\operatorname{Int}(a_Q)\,q h_f
+\]
+on the whole generic source group.
+
+Put $\Gamma^{\mathrm{geom}}=G_{\bar k(Y)}$ and define
+\[
+ C_Q=\{a\in\Gamma^{\mathrm{geom}}:
+        q h_\phi=\operatorname{Int}(q(a))\,q h_f\}.
+\]
+These are nonempty closed subsets of a compact profinite group.
+The quotient by the intersection of finitely many kernels refines
+all the corresponding quotients; applying the same joint-image
+argument to it gives their finite-intersection property.
+Consequently there is one $a\in\bigcap_Q C_Q$. It conjugates
+the two generic homomorphisms on all finite quotients. Since $a$
+is geometric, the induced natural isomorphism of generic
+pullback functors respects the identification over $BG_k$.
+\end{proof}
+
+\begin{claim}{F.22}{Proved}
+Let $X,Y$ be smooth connected separated finite-type curves over a
+characteristic-zero field, and let $f:X\to Y$ be finite
+\emph{\'etale}. Suppose a geometric morphism
+$\psi:X_{\mathrm{et}}\to Y_{\mathrm{et}}$ takes the generic
+point to the generic point and is equipped with a natural
+isomorphism of its generic finite \emph{\'etale} pullback functor
+with that of $f$. Then $\psi\simeq f_{\mathrm{et}}$ on the full
+small \emph{\'etale} topoi. If the given generic comparison is
+relative to an identified base-field topos, the full comparison
+is relative as well.
+\end{claim}
+\begin{proof}
+We give the step from generic covers to all charts explicitly.
+By \citet[Theorem~A.8 and Corollary~A.9]{F_CHW2024}, the inverse
+image under $\psi$ of a separated quasicompact \emph{\'etale}
+chart is represented by a separated quasicompact \emph{\'etale}
+scheme. The source is topologically noetherian and the target
+is qcqs, exactly as required there. Its proof uses the
+complemented diagonal to obtain a separated \emph{\'etale}
+algebraic space, which is a scheme by quasi-finiteness; no
+additional representability assumption is being made.
+
+A separated \emph{\'etale} chart over a normal connected curve
+is canonically an open in the normalization in its finite generic
+algebra \citep[Expos\'e~I, Proposition~10.1]{F_SGA1}.
+Quasicompactness leaves finitely many generic components, and
+normalization is finite because the curves are excellent. Let
+$A$ be a finite separable $k(Y)$-algebra, let $S\to Y$ be its
+finite normalization, and put $Z=S^{\mathrm{et}}$. The
+\emph{\'etale} base change $f^*S$ is normal, so it is the
+normalization of $X$ in $k(X)\otimes_{k(Y)}A$. Moreover
+\begin{equation}\label{eq:F22:etale_locus}
+ (f^*S)^{\mathrm{et}}=f^*Z,
+\end{equation}
+because being \emph{\'etale} is local for the \emph{\'etale}
+topology on the base. The prescribed generic comparison
+therefore identifies $\psi^*Z$ with an open in $f^*S$.
+Since $\psi^*Z$ is \emph{\'etale} over $X$, it lies in the
+locus in \eqref{eq:F22:etale_locus}, giving a canonical inclusion
+\begin{equation}\label{eq:F22:open_inclusion}
+ \psi^*Z\hookrightarrow f^*Z.
+\end{equation}
+
+First this inclusion forces equality of the underlying point
+maps. Suppose a closed $x\in X$ has
+$\psi(x)=y'\ne y=f(x)$. If $y'$ is closed, choose
+$h\in k(Y)^*$ with $v_y(h)=1$ and $v_{y'}(h)=0$; if it is
+generic, only the first condition is needed. Approximation for
+these discrete valuations gives such $h$. Explicitly, one can
+use a common affine neighbourhood and the Chinese remainder
+theorem, or prescribe a first jet at $y$ and a nonzero value at
+$y'$ by Riemann--Roch on a smooth proper completion. The quadratic
+extension $k(Y)(\sqrt h)$ is totally ramified at $y$, and is
+unramified at $y'$ when the latter is closed, since $h$ is then
+a unit and $2$ is invertible. Its maximal \emph{\'etale} locus
+$Z$ has empty geometric fibre at $y$ and nonempty fibre at
+$y'$ (including the generic case). Inclusion
+\eqref{eq:F22:open_inclusion} makes the fibre of $\psi^*Z$ at
+$x$ empty, whereas the inverse-image stalk formula makes it
+nonempty. This contradiction proves $\psi(x)=f(x)$.
+The generic image is already prescribed, so the point maps agree.
+In particular a closed-point-preservation assumption is not
+needed for this rigidity lemma.
+
+Now take any finite normalization $S$ and its maximal
+\emph{\'etale} locus $Z$. At every geometric closed point
+$\bar x$, equality of the underlying image points gives
+\[
+ |(\psi^*Z)_{\bar x}|=|Z_{\psi(\bar x)}|
+     =|Z_{f(\bar x)}|=|(f^*Z)_{\bar x}|.
+\]
+The fibres are finite, and the inclusion in
+\eqref{eq:F22:open_inclusion} is therefore onto on them.
+Generic fibres already agree. Thus that inclusion is an
+isomorphism, canonically extending the prescribed generic one.
+Use it to form the sliced geometric morphism
+\[
+ \psi_Z:(f^*Z)_{\mathrm{et}}\longrightarrow Z_{\mathrm{et}}.
+\]
+Its generic functor is identified with that of the finite
+\emph{\'etale} algebraic map $f_Z:f^*Z\to Z$.
+Apply the ramification argument just proved to these curves.
+It shows that the underlying point maps of $\psi_Z$ and $f_Z$
+agree. If the curves are disconnected, their finitely many
+clopen components are assigned according to their generic
+supports, and the argument applies on each relevant connected
+component. This uses only the already proved point-map step,
+not the desired full comparison recursively.
+
+Every open subobject $V\subset Z$ consequently has the same
+inverse-image open under $\psi_Z$ and $f_Z$. Every separated
+quasicompact \emph{\'etale} chart $V\to Y$ is such an open in
+the maximal \emph{\'etale} locus of its finite normalization.
+We have therefore obtained $\psi^*V\simeq f^*V$ on every such
+chart, extending the fixed generic comparison. This includes
+partly ramified completions: ramified and unramified points may
+lie over the same base point, and the maximal \emph{\'etale}
+locus followed by its open subobjects selects exactly the latter
+points and any desired subset of them. We have not assumed that
+finite covers of Zariski opens alone generate every chart.
+
+For a morphism between two charts, the two maps induced by these
+identifications agree on generic fibres. Their source is reduced
+with dense generic points and their target is separated over
+$X$. The equalizer is therefore the whole source, so the
+identifications are natural. Separated quasicompact
+\emph{\'etale} charts form a basis for the small
+\emph{\'etale} topology \citep[Lemma~A.4]{F_CHW2024};
+inverse-image functors preserve colimits, so this natural
+isomorphism extends to all sheaves. Finally it agrees with the
+specified base-field comparison on finite constant objects by
+generic uniqueness. Every continuous discrete $G_k$-set is a
+coproduct of finite orbits. Thus the full isomorphism is relative
+when the generic one is.
+\end{proof}
+
+\begin{claim}{F.23}{Proved}
+With the actual closed-point-preserving meaning of pinned, the
+endomorphism test in F2 has an affirmative answer:
+\[
+ \operatorname{End}_{k}(\mathbb G_m)
+ \xrightarrow{\sim}
+ \operatorname{Hom}^{\mathrm{cp}}_{BG_k}
+       ((\mathbb G_m)_{\mathrm{et}},(\mathbb G_m)_{\mathrm{et}}),
+ \qquad k=\Q^{\mathrm{solv}},
+\]
+where the right-hand side denotes isomorphism classes with their
+specified relative structures. Every such endomorphism is
+induced by exactly one $t\mapsto ct^m$, $c\in k^*$,
+$m\in\Z$, and it is nonconstant exactly when $m\ne0$.
+This endomorphism theorem alone does not imply all-scheme
+reconstruction; that property is proved separately in F.31.
+\end{claim}
+\begin{proof}
+F.19 proves the entire constant case and identifies the point
+function in the nonconstant case with $f(t)=ct^m$, $m\ne0$.
+This algebraic map is finite \emph{\'etale} in characteristic
+zero. F.21 gives the relative generic comparison, and F.22
+extends it to a relative isomorphism of the full small
+\emph{\'etale}-topos morphisms. Uniqueness follows from the
+point functions, equivalently from the ordinary description of
+the units of $k[t,t^{-1}]$. Both the rational-source hypothesis
+in F.18--F.19 and the rational configuration space in F.20 have
+been used; a general source has not been substituted without
+proof. The literal relative-only statement remains refuted by
+F.17. Thus the two definitions have different answers even for
+this specific endomorphism test.
+\end{proof}
+
+\subsection{Detection beyond rational sources}
+
+\begin{claim}{F.24}{Proved}
+Let $k=\Q^{\mathrm{solv}}$, let $L/k$ be finite, and let
+$U/L$ be a smooth separated geometrically connected curve. Every finite
+quotient $\pi_1(U)\twoheadrightarrow G$ is detected by a closed
+point: there exists $x\in U$ for which
+\[
+ G_{L(x)}\longrightarrow\pi_1(U)\longrightarrow G
+\]
+is surjective. Such detecting points have unbounded degrees over
+$L$. In particular the rational-source restriction in F.20 is
+not necessary for finite-quotient detection. No Hilbertianity
+assertion about $L$ is made.
+\end{claim}
+\begin{proof}
+Let $Y\to U$ be the connected finite \emph{\'etale}
+$G$-torsor, and let $C$ be the smooth proper completion of $U$.
+Descend $C,U,Y$, the entire $G$-action, and the torsor
+isomorphism to a number field $F\subset L$. Enlarge $F$ inside
+$L$ until $L=Fk$. The extension $L/F$ is Galois and
+prosolvable, since it is a base change of $k/\Q$.
+The model $C/F$ is geometrically connected. The descended $Y$
+is connected because $Y_L$ is connected. If $M$ is the
+algebraic closure of $F$ in $F(Y)$, there is an exact sequence
+\[
+ 1\longrightarrow N\longrightarrow G\longrightarrow
+ P=\operatorname{Gal}(M/F)\longrightarrow1,
+\]
+with $N$ the geometric group. The curve $Y$ is geometrically
+connected over $M$, and connectedness of $Y_L$ gives
+$M\cap L=F$. Here $P$ need not be perfect. Put $B=C\setminus U$.
+Normalization extends the cover to a finite map
+$\bar Y\to C$ of smooth proper curves, ramified only over $B$.
+
+Choose a line bundle $A/F$ on $C$ of degree
+$n\ge\max(5,2g(C)+3)$. A suitable pair of $F$-rational
+sections defines a degree-$n$ morphism
+\[
+ r:C\longrightarrow\mathbb P^1_F
+\]
+with only simple ramification, distinct branch values,
+no ramification at $B$, distinct images of the geometric points of $B$,
+and $r(B)$ disjoint from all branch values.
+For completeness, these generic-pencil assertions follow from
+jet counts. For every length-at-most-four subscheme $Z\subset C$
+we have $H^1(C,A(-Z))=0$, so restriction of sections to those
+jets is onto. A base point imposes two equations with one varying
+point parameter. Ramification order at least three likewise
+imposes two equations on the local ratio jet. Two distinct
+ramification points with the same value impose three equations,
+with two point parameters; their diagonal limit is covered by
+the preceding higher-ramification condition. Ramification at a
+fixed boundary point, or equality of two fixed boundary images,
+imposes one equation. A ramification point sharing the image of
+a fixed boundary point imposes two equations with one varying
+point parameter. The diagonal limit is excluded by
+unramifiedness at that boundary point. Thus every bad incidence
+has smaller dimension than $H^0(C,A)^2$. The complement of
+their closures contains a nonempty open defined over $F$,
+which has $F$-rational points because $F$ is infinite.
+Base-point-freeness gives $r^*\mathcal O(1)=A$ and hence degree
+$n$. Tensor powers of an ample line bundle supply unbounded
+such degrees; a curve's index may restrict the available integers.
+
+Let $V\subset\mathbb P^1_F$ be the complement of the branch
+values and $r(B)$. Let $H$ be the arithmetic Galois group of the
+Galois closure of $F(\bar Y)/F(\mathbb P^1)$. Label the $n$
+blocks over a geometric point of $V$, and choose a point in each
+$G$-torsor fibre inducing the same embedding of $M$. Monodromy
+then embeds
+\begin{equation}\label{eq:F24:wreath_embedding}
+ H\subseteq (G\times_P\cdots\times_PG)\rtimes S_n.
+\end{equation}
+Every coordinate induces the same automorphism of $M$.
+Restriction $H\to P$ is surjective. The full constant field of
+the Galois closure may exceed $M$; no equality is needed.
+The geometric monodromy $H^{\mathrm{geom}}$ lies in
+$N^n\rtimes S_n$ and acts transitively on the $n|N|$ points
+of one geometric $M$-component. That action is faithful:
+monodromy commutes with the global deck action of $G$, whose
+translates exhaust the other components.
+
+Embed $\bar F$ into $\C$ and apply SGA~1, XII, Theorem~5.1
+and Corollary~5.2 \citep{F_SGA1}. Small loops around the
+removed values generate the geometric monodromy. Their actions
+have exactly two possible forms. At a simple branch value of
+$r$, the action is a decorated transposition $r_{ij}(a)$:
+it swaps blocks $i,j$ with mutually inverse labels
+$a,a^{-1}\in N$ and fixes the others. It has order two,
+since $\bar Y\to C$ is unramified over that value.
+At the image of a boundary point the action is a
+single-coordinate element $e_i(b)$, $b\in N$.
+The pencil conditions ensure that all other blocks are
+unramified there. Conjugating local loops to the chosen base
+point preserves these two forms.
+
+The transposition graph on the $n$ blocks is connected, since
+the projection is the transitive monodromy of the geometrically
+connected curve $C$. Choose a spanning tree. Conjugating by
+one element of $N^n$, chosen successively along that tree,
+makes all its edge labels one. Its edge transpositions now
+generate the literal $S_n\subset H^{\mathrm{geom}}$.
+Let $N_0\subset N$ be the subgroup generated by all remaining
+reflection labels and single-coordinate labels. Every generator
+has coordinates in $N_0$, so the orbit of $(1,i)$ lies in
+$N_0\times\{1,\ldots,n\}$. Transitivity on the chosen
+component forces $N_0=N$. Multiplying a remaining reflection
+by its literal transposition gives
+\[
+ d_{ij}(a)=e_i(a)e_j(a^{-1})
+          \in H^{\mathrm{geom}}\cap N^n.
+\]
+Together with the single-coordinate generators, these provide
+base elements of support at most two whose coordinate labels
+generate $N$. We do not assert that the unrestricted group
+$N^n$ lies in geometric monodromy; an Abel--Jacobi constraint
+can prevent that stronger assertion.
+
+Let $H^\infty$ be the stable derived term of $H$. The literal
+$A_n$ is perfect for $n\ge5$, hence lies in $H^\infty$.
+For one of the preceding base elements $u$ and a selected
+coordinate $i$ in its support, choose $\tau\in A_n$ with
+$\tau^{-1}(i)$ outside that support. Then
+\[
+ [u,\tau]\in H^\infty\cap N^n,\qquad
+ [u,\tau]_i=u_i u_{\tau^{-1}(i)}^{-1}=u_i.
+\]
+Normality of $H^\infty$ and conjugation by the literal $S_n$
+move these labels to every coordinate. Consequently
+$H^\infty\cap N^n$ projects onto $N$ at every coordinate.
+This is the balanced-label assertion needed below, even in the
+presence of the Abel--Jacobi constraint.
+
+Hilbert irreducibility over $F$ gives a specialization
+$\Omega/F$ with full group $H$, by
+\citet[Proposition~3.3.1 and Theorem~3.4.1]{F_Serre2007}.
+As in F.20, irreducibility over $F$ suffices; geometric
+irreducibility is not required. Place $\Omega$ in $\bar\Q$
+with its constant copy of $M$ equal to the chosen $M$, and set
+\[
+ J=\operatorname{Gal}(\Omega L/L)
+   =\operatorname{Gal}(\Omega/(\Omega\cap L))\subset H.
+\]
+Since $L/F$ is prosolvable, $H/J$ is solvable, so
+$H^\infty\subset J$. Since $M\cap L=F$, restriction
+$J\to P$ is onto.
+
+Fix a block $i$ and put $J_i=J\cap\operatorname{Stab}(i)$.
+Its coordinate projection to $G$ is a homomorphism and its
+image contains $N$ by the commutator calculation. It also
+surjects onto $P$: for $h\in J$ with a prescribed $P$-image,
+choose a literal $\tau\in A_n$ moving $h(i)$ back to $i$.
+Then $\tau h\in J_i$ has the same $P$-image. Thus $J_i\to G$
+is surjective. This uses only transitivity of $A_n$; it does
+not assume $P$ perfect or require an odd permutation in $J$.
+
+Finally $A_n\subset J$ makes the specialized degree-$n$
+fibre of $C\to\mathbb P^1$ over $L$ transitive, hence one
+closed point $x$ of degree $n$. It lies in $U$ because the
+specialization avoids $r(B)$. The image of $G_{L(x)}$ in $J$
+is precisely $J_i$, and its action on $Y_x$ is the coordinate
+projection $J_i\to G$. The latter is onto, proving the claim.
+\end{proof}
+
+\begin{claim}{F.25}{Proved}
+Let $L/\Q^{\mathrm{solv}}$ be finite, and let $X,Y/L$ be
+smooth separated geometrically connected curves. Suppose a pinned
+relative geometric morphism $\phi:X_{\mathrm{et}}\to
+Y_{\mathrm{et}}$ and a nonconstant algebraic map $f:X\to Y$
+have the same geometric closed-point values. Their generic
+finite \emph{\'etale} pullback functors are naturally isomorphic
+over $BG_L$. If $f$ is finite \emph{\'etale}, then
+$\phi\simeq f_{\mathrm{et}}$ on the full small topoi.
+\end{claim}
+\begin{proof}
+Continuity forces the generic image to be generic. For every
+nonempty target open $V$, the inverse-image open is the same
+$U=f^{-1}(V)$ for both morphisms. The generic functors are
+therefore defined as in F.21. For a finite generic target
+quotient, extend its cover over $V$ and take the joint image
+of the two maps from $\pi_1(U)$. F.24 detects that entire
+finite arithmetic joint image at one closed point. Field-source
+reconstruction supplies a single relative conjugator on its
+whole decomposition group, hence on the joint image. The same
+compactness argument in the geometric kernel as in F.21 gives
+one relative generic comparison. If $f$ is finite
+\emph{\'etale}, F.22 extends it over all charts and sheaves.
+\end{proof}
+
+The remaining obstruction in this $\Q^{\mathrm{solv}}$ approach
+is consequently not a failure of closed-point detection on
+higher-genus curves. F.24 detects
+all finite quotients, and F.25 compares morphisms once an
+algebraic point function is available. The next step, supplied in F.26--F.28 below, is to construct
+that point function for an arbitrary pinned morphism
+$C_{\mathrm{et}}\to(\mathbb G_m)_{\mathrm{et}}$.
+The rational-source Kummer calculation F.18 used
+$\operatorname{Pic}(C)=0$; a general curve can have a nonzero
+Picard Tate module. Finite-quotient detection does not, by
+itself, turn pointwise actual Kummer values into one rational
+unit. F.26--F.28 add arithmetic equivariance, the semiabelian
+Tate-Hom theorem, and norm-residue integrality. No vanishing of
+the whole Picard Tate module or intrinsic field classification
+is asserted.
+
+\subsection{Point-theoretic classes on curves: removal of the Picard obstruction}
+
+\begin{claim}{F.26}{Proved}
+Let $k=\Q^{\mathrm{solv}}$, let $L/k$ be finite, and let
+$U/L$ be a smooth separated geometrically connected curve with
+$x_0\in U(L)$. Suppose
+$\xi\in\varprojlim_n H^1(U,\mu_n)$ has actual multiplicative
+Kummer values at every point over every finite extension of $L$.
+After a finite constant extension splitting the boundary, choose
+a basis $u_1,\ldots,u_s$ of the regular units modulo constants,
+normalized by $u_j(x_0)=1$. Then
+\[
+ \xi=\kappa(b_0)+\sum_{j=1}^s\lambda_j\kappa(u_j),
+ \qquad b_0\in L^*,\quad\lambda_j\in\widehat\Z,
+\]
+where $b_0$ is the given value at $x_0$. Thus the Picard Tate
+component of this particular point-theoretic class vanishes.
+For a proper curve the class is constant. No vanishing of the
+whole Picard Tate module is asserted.
+\end{claim}
+\begin{proof}
+Write $C$ for the smooth proper completion and $D=C\setminus U$.
+After the indicated finite extension, descend $C,D,U,x_0$ to
+a number field $F\subset L$ with $L=Fk$, with all boundary
+points rational over $F$. Let $A=J_D$ be the reduced-modulus
+generalized Jacobian and $j:U\to A$ its Abel--Jacobi map,
+normalized at $x_0$. Its universal property identifies
+\[
+ \operatorname{Hom}(A,\mathbb G_m)
+ \simeq\{u\in\mathcal O(U)^*:u(x_0)=1\}.
+\]
+Its Tate module is the geometric abelian fundamental group.
+These facts are the curve case of
+\citet[Section~3 and Propositions~4.1--4.3]{F_SpiessSzamuely2003}.
+For clarity, the general source has a finite kernel in its
+abelian fundamental-group comparison; that kernel is killed by
+homomorphisms to $\Z_\ell(1)$. For curves the N\'eron--Severi
+quotient in that statement has no torsion: it is $\Z$ in the
+proper case and zero after a geometric boundary point is present.
+Evaluation along $j$ is the usual point Kummer cocycle, as is
+seen directly by pulling back the multiplication-by-$\ell^r$
+covers of $A$.
+
+Fix a prime $\ell$, put $H=G_L$, and set
+\[
+ V=V_\ell A,qquad
+ W=V_H=V/\langle(h-1)v:h\in H,\ v\in V\rangle_{\Q_\ell}.
+\]
+The subspace is closed because $V$ is finite dimensional.
+Since $H$ is normal in $G_F$, $W$ is a $G_F$-representation
+on which $H$ acts trivially. The image $W_0$ of $T_\ell A$
+is a $G_F$-stable full $\Z_\ell$-lattice.
+For a point $x\in U(E)$, $E/L$ finite, project the Kummer
+cocycle of $j(x)$ to obtain
+\[
+ c_x:G_E\longrightarrow W_0.
+\]
+It is a homomorphism independent of division-point choices,
+since $G_E\subset H$ acts trivially on $W$. Its
+$\Q_\ell$-span is unchanged by a finite extension of $E$:
+restricting a homomorphism to a finite-index subgroup changes
+its image by finite index.
+
+The images of all $c_x$ span $W$. Otherwise an annihilating
+nonzero functional, rescaled to be integral on $W_0$, defines
+a nonzero homomorphism $\pi_1(U)\to\Z_\ell$, zero on the
+base-point copy of $G_L$ and on every closed-point decomposition
+group. Here the rational section splits the arithmetic extension,
+and $\mu_\infty\subset L$ makes the coefficient action trivial.
+A nonzero finite quotient of this homomorphism contradicts
+F.24. Therefore finitely many points $x_1,\ldots,x_r$ suffice
+to span $W$.
+
+Subtract $\kappa(b_0)$ from $\xi$. The normalized class has
+geometric functional
+$\lambda:T_\ell A\to\Z_\ell(1)$ and is zero at $x_0$.
+It factors through $W$ rationally. If $b_i$ is the actual value
+at $x_i$, evaluation says
+\[
+ \lambda(c_{x_i}(h))=\kappa_\ell(b_i/b_0)(h).
+\]
+Choose one number field $M\supset F$ containing the coordinates
+of every $x_i$, every $b_i$, and $b_0$, and put $L'=Mk$.
+Restriction to $G_{L'}$ preserves the spanning property.
+Both $W$ and $\Q_\ell(1)$ have trivial $G_{L'}$-action.
+For $g\in G_M$ and $h\in G_{L'}$, the cocycle identity gives
+\[
+ c_{x_i}(ghg^{-1})=g c_{x_i}(h),\qquad
+ \kappa_\ell(b_i/b_0)(ghg^{-1})
+     =\chi_\ell(g)\kappa_\ell(b_i/b_0)(h).
+\]
+The points and actual values are $M$-rational, and $G_{L'}$
+is normal in $G_M$, which are the hypotheses needed here.
+Combining these formulas proves
+$\lambda(gv)=\chi_\ell(g)\lambda(v)$ on each spanning image,
+hence on all of $W$. Thus the original integral functional
+$T_\ell A\to\Z_\ell(1)$ is $G_M$-equivariant.
+
+Now apply the integral Tate-Hom theorem for semiabelian
+varieties over the \emph{number field} $M$:
+\[
+ \operatorname{Hom}_M(A,\mathbb G_m)\otimes\Z_\ell
+ \xrightarrow{\sim}
+ \operatorname{Hom}_{G_M}(T_\ell A,\Z_\ell(1)).
+\]
+This is \citet[Lemma~6.3.2, pp.~81--82]{F_Jossen2009}, whose
+proof and hypotheses have been opened. It is not being applied
+directly over the infinite field $L$.
+In the proper case the Hom-group is zero; equivalently, at a
+good prime away from $\ell$, Frobenius eigenvalues on $T_\ell J$
+have absolute value $q^{1/2}$ and those on $\Q_\ell(1)$ have
+absolute value $q$, as in that source's Proposition~6.3.1.
+
+The normalized unit lattice is independent of $M$ and $\ell$.
+Indeed every geometric unit has divisor supported on the
+$F$-rational boundary. Each Galois conjugate has the same divisor;
+after normalization at $x_0$ it also has the same value there,
+so the quotient is the constant one. Thus every normalized
+geometric unit is already defined over $F$. This lattice is a
+finitely generated free subgroup of the boundary-divisor lattice.
+The integral Tate-Hom theorem places the normalized class in
+its tensor product with $\Z_\ell$ for every $\ell$. Equality
+of arithmetic classes follows from their equal geometric
+functionals and zero values at $x_0$. One fixed basis therefore
+gives the displayed coefficients in $\widehat\Z$.
+
+There is no assumption that the lattice of principal boundary
+divisors is primitive. The integral theorem gives the assertion
+directly. Alternatively, after the rational Tate-Hom theorem,
+the Kummer exact sequence gives saturation: the quotient of
+integral $H^1$ by the completed unit group is
+$T_\ell\operatorname{Pic}(U)$, which is torsion free. An
+integral class in the rational unit span consequently lies in
+the integral completed unit group. This explains why torsion
+boundary classes do not create an unexamined denominator.
+\end{proof}
+
+\begin{claim}{F.27}{Proved}
+Let $L/\Q^{\mathrm{solv}}$ be finite and let $U/L$ be a smooth
+separated geometrically connected curve. Every compatible
+multiplicative Kummer class with actual values at all points over
+finite extensions is, after a finite constant extension, the class
+of a regular unit $h$. At a point over any further finite field
+$E$, its actual value divided by $h(x)$ belongs to
+$(\Q^{\mathrm{solv}})^*$.
+\end{claim}
+\begin{proof}
+Extend $L$ finitely to split the boundary and provide $x_0$.
+Use the unit-lattice expression of F.26. For each boundary
+point $d$, Riemann--Roch supplies a finite map
+$\pi:C\to\mathbb P^1_L$ with a simple zero at $d$ and
+nonzero values at the other boundary points. Delete the branch
+values, $0,\infty$, and all boundary images. We obtain a finite
+\emph{\'etale} map $W\to V$ with $W\subset U$ and $V$
+a punctured rational line. The norm of the restricted class
+has actual values: at a rational point over any finite extension,
+its value is the product of the field norms of the given values
+at the residual points of the fibre. F.18 makes this norm class
+the class of an actual unit on $V$.
+
+The residue at $0$ is the original residue $\lambda_d$.
+The only boundary point over $0$ is the rational point $d$;
+all interior points have residue zero. As in F.5, norms weight
+residues by residue degree, not ramification index. Therefore
+every $\lambda_d$ is an ordinary integer.
+The divisor matrix of the basis units in F.26 is an injective
+integer matrix. An invertible square minor and its adjugate
+show that each profinite unit exponent is rational. Since
+$\Q\cap\widehat\Z=\Z$, all exponents are ordinary integers.
+The resulting unit, multiplied by the actual constant value at
+$x_0$, represents the whole class. F.16 identifies the kernel
+of its evaluations with $D(E^*)=(\Q^{\mathrm{solv}})^*$,
+proving the last assertion.
+\end{proof}
+
+\begin{claim}{F.28}{Proved}
+Let $L/\Q^{\mathrm{solv}}$ be finite and let $U/L$ be a smooth
+separated geometrically connected curve. The geometric point
+function of every pinned relative morphism
+$U_{\mathrm{et}}\to(\mathbb G_{m,L})_{\mathrm{et}}$ is the
+point function of one regular unit of $U$. If that function is
+constant, the entire topos morphism is the algebraic constant
+map.
+\end{claim}
+\begin{proof}
+Put $k=\Q^{\mathrm{solv}}$ and write $q$ for the geometric
+point function. Field-source reconstruction supplies actual
+values. After a finite Galois constant extension, F.27 gives
+$h\in\mathcal O(U)^*$ and
+\[
+ q(x)=c_x h(x),\qquad c_x\in k^*.
+\]
+We first work over this enlarged $L$.
+
+Suppose $h=h_0$ is constant. Choose a nonzero algebraic $\beta$
+with $\beta/h_0\notin k$ and extend constants to contain it.
+The inverse image of $\beta$ is closed and has no closed point,
+so it is empty. Pull back $t-\beta$ on all of $U$ and use
+F.27 to obtain a unit $g$ with
+\[
+ q(x)-\beta=d_xg(x),\qquad d_x\in k^*.
+\]
+All necessary further constant extensions are finite. The left
+side belongs to the current constant field for every geometric
+$x$. If $g$ were nonconstant, a closed point of degree larger
+than $\deg(g:C\to\mathbb P^1)$, available by F.24, would
+have $g(x)$ outside that field, a contradiction. Thus $g$ is
+constant. Comparing with one fixed $x_0$ gives
+\[
+ \frac{h_0c_x-\beta}{h_0c_{x_0}-\beta}\in k,
+\]
+which forces $c_x=c_{x_0}$ because $\beta/h_0\notin k$.
+The point map is constant. Its factorization through that closed
+subtopos and its relative structure give the full algebraic
+constant map.
+
+Now suppose $h$ is nonconstant. The point map cannot be
+constant, by the same high-degree argument. For $b\in k^*$,
+let $U_b$ be the nonempty open complement of $q^{-1}(b)$.
+Apply F.27 to the pullback of $t-b$, obtaining, after a finite
+constant extension if necessary,
+\[
+ q(x)-b=d_{x,b}h_b(x),\qquad
+ d_{x,b}\in k^*,\quad h_b\in\mathcal O(U_b)^*.
+\]
+Each removed fibre is finite, since it is a proper closed
+subset of a curve. For $b=1$, the rational functions
+$c_xh-d_{x,1}h_1-1$ have one fixed bound on the degree of their
+pole divisors. F.24 gives a closed point, outside the finite
+exceptional set and over the current finite constant field,
+whose degree exceeds this bound. Vanishing at that point forces
+a rational identity, hence
+\[
+ h_1=Ah+B,\qquad A,B\in k^*.
+\]
+For any $x$ with $h(x)\notin k$, the relation
+\[
+ (c_x-d_{x,1}A)h(x)=1+d_{x,1}B
+\]
+forces $c_x=-A/B=:c$. Such $x$ cannot lie in the removed
+fibre. Thus $q(x)=ch(x)$ whenever $h(x)\notin k$.
+
+For arbitrary $b\in k^*$, choose a high-degree point also of
+degree greater than $\deg h$, so its $h$-value is outside the
+current constant field and hence outside $k$. The same bounded
+pole-divisor argument yields
+\[
+ h_b=e_b(ch-b),\qquad e_b\in k^*.
+\]
+Because $h_b$ is a unit on $U_b$, every zero of $ch-b$ inside
+$U$ belongs to $q^{-1}(b)$. At any remaining point with
+$h(x)\in k^*$, choose $b=ch(x)$. This forces $q(x)=ch(x)$
+there as well. The identities have coefficients in $k$ even
+when a particular $U_b$ required further constants.
+
+The reconstructed unit is unique because it agrees with the
+point function on all geometric points. Galois equivariance of
+the original point function therefore makes it invariant under
+the initial finite Galois constant extension, so it descends
+to $L$. The reconstructed unit also has the pulled-back Kummer
+class: their difference vanishes at every finite-extension point,
+so F.24 applied to each finite Kummer quotient makes it zero.
+This proves the assertion without replacing pointwise
+agreement by an unsupported full-topos comparison.
+\end{proof}
+
+\subsection{All-scheme reconstruction over the maximal solvable extension}
+
+\begin{claim}{F.29}{Proved}
+Let $L/\Q^{\mathrm{solv}}$ be finite and let $X/L$ be a smooth
+geometrically connected quasi-projective variety. Every finite
+quotient of $\pi_1(X)$ is detected surjectively by a closed-point
+decomposition group.
+\end{claim}
+\begin{proof}
+The zero-dimensional case is $X=\Spec L$, and the curve case
+is F.24. Let $Y\to X$ be the connected finite \emph{\'etale}
+Galois cover of a prescribed quotient, and suppose $\dim X=d\ge2$.
+Embed $X$ locally closed in $\mathbb P^N_L$. Each geometric
+component $Y_i$ of $Y$ is geometrically irreducible, since it
+is smooth and connected, and its composite to $\mathbb P^N$
+is quasi-finite with image $X_{\bar L}$. Its nonempty fibres
+therefore all have dimension zero.
+By \citet[Theorem~1.5]{F_PoonenSlavov2020}, the constructible
+locus of hyperplanes whose pullback to $Y_i$ is not geometrically
+irreducible has dimension at most
+\[
+ \operatorname{codim}(X_{\bar L},\mathbb P^N)+1
+       =N-d+1<N.
+\]
+Remove the closures of these finitely many bad loci and the bad
+smoothness locus for $X$. The remaining nonempty open is
+Galois invariant and defined over $L$. Since $L$ is infinite,
+it has an $L$-rational hyperplane. The section of $X$ is smooth
+and geometrically connected, and every geometric component of
+its pulled-back cover is still irreducible. The Galois group
+continues to permute these components transitively, so the
+pulled-back cover is connected over $L$. Thus arithmetic
+constants, not only geometric monodromy, are retained.
+Iterate to a smooth geometrically connected curve $C\subset X$
+with $Y_C$ connected. F.24 gives a closed point of $C$ whose
+decomposition group surjects onto the chosen Galois group.
+As a point of $X$ it has the same residue field and supplies
+the required detection.
+\end{proof}
+
+\begin{claim}{F.30}{Proved}
+Let $L/\Q^{\mathrm{solv}}$ be finite and let $X/L$ be a smooth
+geometrically connected affine variety with $x_0\in X(L)$.
+Every compatible multiplicative Kummer class having actual
+values at all finite-extension points is, after finite constants,
+the class of an actual regular unit. Consequently the point
+function of every pinned relative morphism
+$X_{\mathrm{et}}\to(\mathbb G_{m,L})_{\mathrm{et}}$ is one
+regular unit of $X$.
+\end{claim}
+\begin{proof}
+The generalized Albanese $A_X$ pointed by $x_0$ has the
+universal property
+\[
+ \operatorname{Hom}(A_X,\mathbb G_m)
+ \simeq\{u\in\mathcal O(X)^*:u(x_0)=1\}
+\]
+\citep[Section~3]{F_SpiessSzamuely2003}. The exact cohomological
+comparison needed here is integral. Over an algebraic closure,
+that source's Proposition~4.1 gives
+\[
+ 0\longrightarrow
+ \operatorname{Hom}(A_X[\ell^r],\mu_{\ell^r})
+ \longrightarrow H^1(X_{\bar L},\mu_{\ell^r})
+ \longrightarrow \operatorname{Tor}(S,\Z/\ell^r)
+ \longrightarrow0,
+\]
+where $S$ is the finite torsion subgroup of the N\'eron--Severi
+quotient by boundary classes. The transition on its torsion
+term is multiplication by $\ell$; its inverse limit is zero.
+The finite left terms satisfy the Mittag--Leffler condition.
+Passing to the limit therefore gives
+\begin{equation}\label{eq:F30:albanese_integral}
+ H^1(X_{\bar L},\Z_\ell(1))
+ \simeq\operatorname{Hom}(T_\ell A_X,\Z_\ell(1)).
+\end{equation}
+Corollary~4.2 states this inverse-limit consequence explicitly.
+Equivalently, Proposition~4.3 gives a finite kernel in
+$\pi_1(X_{\bar L})^{\mathrm{ab}}\to T A_X$, killed by
+homomorphisms to torsion-free $\Z_\ell(1)$.
+All hypotheses hold: characteristic zero supplies a smooth
+projective compactification by resolution, and every prime is
+prime to the characteristic. The comparison is the one induced
+by the pointed Albanese map, so evaluations are the corresponding
+point Kummer cocycles.
+
+Choose a smooth projective normal-crossings compactification
+$\bar X$ preserving $X$, as in F.7. After a finite constant
+extension its geometric boundary components are individually
+defined. Descend $X,\bar X,x_0,A_X$ to a number field
+$F\subset L$ with $L=F\Q^{\mathrm{solv}}$.
+For each $\ell$, use the quotient
+$(V_\ell A_X)_{G_L}$ and its integral image lattice.
+The spanning, finite-number-field, and conjugation arguments
+in F.26 apply verbatim, with F.29 replacing F.24 and
+\eqref{eq:F30:albanese_integral} replacing the curve comparison.
+More explicitly, a missing span would give a nonzero normalized
+finite Kummer quotient invisible at all closed points, contradicting
+F.29. Finitely many spanning points and their actual values
+lie in one number field $M$. Restriction to $G_{M\Q^{\mathrm{solv}}}$
+retains their spans, and conjugation by $G_M$ makes the geometric
+functional arithmetic. Jossen's integral semiabelian Tate-Hom
+theorem then expresses it in the normalized regular-unit lattice
+\citep[Lemma~6.3.2]{F_Jossen2009}.
+
+This is one fixed finitely generated free lattice: a normalized
+geometric unit has divisor on the split boundary, and its Galois
+conjugates have the same divisor and the same value one at $x_0$.
+They are therefore equal. This supplies, for one basis
+$u_1,\ldots,u_s$, an expression
+\[
+ \xi=\kappa(b_0)+\sum_j\lambda_j\kappa(u_j),
+       \qquad \lambda_j\in\widehat\Z,
+\]
+with the actual value $b_0$ at $x_0$. This conclusion concerns
+the class $\xi$, not vanishing of the whole Picard Tate module.
+
+For a boundary component $D_i$, choose a smooth geometric point
+on it away from the other components. After finite constants,
+sufficiently ample complete intersections with specified first
+jets give a smooth geometrically connected curve in $\bar X$
+through that point and transverse to $D_i$. The finite-jet
+Bertini predicates are precisely those checked in F.7, using
+\citet[Lemmas~33.47.1, 33.47.3 and 37.32.3]{F_StacksBertini}.
+Its open part in $X$ carries a point-theoretic restriction of
+$\xi$. F.27 says this restriction is an actual unit class.
+Its residue at the chosen boundary point is exactly the global
+residue on $D_i$, because the intersection multiplicity is one.
+At finite Kummer level this is the local calculation with a
+parameter $z$ and, after \emph{\'etale} localization, a
+representative $u z^a$; a transverse parameter pulls $z$ to a
+unit times a parameter. Thus every global residue is an ordinary
+integer. The injective integer divisor matrix of the $u_j$ and
+$\Q\cap\widehat\Z=\Z$ force every $\lambda_j$ to be an
+ordinary integer. We obtain an actual unit $h$ representing
+$\xi$, normalized by $h(x_0)=b_0$.
+
+Now let $\xi$ be the pullback of the coordinate class under the
+pinned morphism in the statement, and let $q$ be its geometric
+point function. Work first after the finite constant extension
+just used. For any geometric point $x$, extend constants
+finitely to make it rational. If $\dim X\ge2$, sufficiently
+ample complete intersections through $x_0$ and $x$, with
+independent first jets there, give a smooth geometrically
+connected curve $C\subset X$. Smoothness and irreducibility
+off the finite base locus and smoothness at the prescribed
+points are the same finite-jet Bertini assertions used in F.7.
+For $\dim X=1$ take $C=X$; dimension zero is the field-source
+case. F.28 realizes the restricted point function by a regular
+unit $v_C$ and gives
+\[
+ \kappa(v_C)=\xi|_C=\kappa(h|_C).
+\]
+The unit $v_C/h|_C$ has zero compatible Kummer class. Its
+ordinary divisor is divisible by every integer and hence zero,
+so it is constant; F.16 puts that constant in
+$(\Q^{\mathrm{solv}})^*$. Its value at $x_0$ is one, so
+$q(x)=h(x)$. This also works when $h|_C$ is constant.
+Thus the entire point function equals $h$.
+Finally uniqueness on geometric points and Galois equivariance
+descend $h$ through the initial finite constant extension.
+\end{proof}
+
+\begin{claim}{F.31}{Proved}
+Every finite extension $L/\Q^{\mathrm{solv}}$ has
+closed-point-preserving \emph{\'etale} reconstruction. Precisely,
+for all finite-type $L$-schemes $X,Y$, the natural map
+\[
+ \operatorname{Hom}_L(X^{\mathrm{awn}},Y)
+ \xrightarrow{\sim}
+ \pi_0\operatorname{Hom}^{\mathrm{pin}}_{BG_L}
+       (X_{\mathrm{et}},Y_{\mathrm{et}})
+\]
+is bijective, with pinned understood in its actual
+closed-point-preserving sense. This supplies the all-scheme
+property for $\Q^{\mathrm{solv}}$ itself. It does not classify
+all characteristic-zero reconstruction fields intrinsically.
+\end{claim}
+\begin{proof}
+Apply \citet[Theorem~4.18, equivalence of (1) and (5)]{F_CHW2024}.
+Its condition (5) asks that, for every connected regular affine
+finite-type source over $L$ having an $L$-point, every pinned
+relative morphism to $\mathbb G_m$ have the point function of
+one regular unit. In characteristic zero, regular finite-type
+sources over a field are smooth. Connectedness together with
+an $L$-point makes such a smooth source geometrically connected:
+its geometric connected components form a transitive Galois set,
+and the component containing that rational point is fixed.
+F.30 supplies exactly the required unit on exactly these sources.
+The theorem then reconstructs the full small-topos Hom-groupoids
+using its affine-coordinate, \emph{\'etale}-chart, and $h$-descent
+arguments; no full-topos conclusion is inferred merely from
+pointwise agreement. Characteristic-zero absolute weak
+normalization is seminormalization, as specified in F.7.
+The relative-only interpretation of R27 remains refuted by
+F.1 and F.17. The new theorem proves its corrected version
+over this additional field class while leaving F.9's intrinsic
+classification request unresolved.
+\end{proof}
+
+
+\subsection{Algebraic descent and finitely generated extensions of the solvable closure}
+
+\begin{claim}{F.32}{Proved}
+Let $K/k$ be an algebraic extension of characteristic-zero fields.
+If $K$ satisfies closed-point-preserving \emph{\'etale}
+reconstruction, then so does $k$. The extension need not be
+finite or Galois. In particular F.31 also gives reconstruction
+over every subfield of a finite extension of $\Q^{\mathrm{solv}}$.
+\end{claim}
+\begin{proof}
+We first construct the scalar extension of a relative geometric
+morphism $\phi:X_{\mathrm{et}}\to Y_{\mathrm{et}}$, where $X,Y$
+are finite-type $k$-schemes. For each finite subextension
+$E/k$ of $K/k$, the relative structure identifies
+$\phi^*(Y_E)$ with $X_E$. Slicing at this finite \emph{\'etale}
+object gives
+\[
+ \phi_E:(X_E)_{\mathrm{et}}\longrightarrow(Y_E)_{\mathrm{et}}
+ \quad\text{over }BG_E.
+\]
+Successive slices give canonical compatibilities for $E\subset E'$.
+Let $\mathcal C(Z)$ denote the category of quasicompact separated
+\emph{\'etale} $Z$-schemes. By \citet[Lemma~A.4,
+Theorem~A.8 and Corollary~A.9]{F_CHW2024}, this is a basis
+and $\phi_E^*$ maps $\mathcal C(Y_E)$ into $\mathcal C(X_E)$.
+This assertion is stronger than preservation of coherent sheaves.
+The proof of Theorem~A.8 uses the complementary clopen $V'$ to
+the diagonal of a separated chart $V$: the decomposition
+$V\amalg V'\simeq V\times V$ pulls back to
+$W\amalg W'\simeq W\times W$. The representing constructible
+\emph{\'etale} algebraic space $W$ therefore has closed diagonal.
+It is separated and locally quasi-finite, hence a scheme;
+coherence supplies quasicompactness. Thus nonseparated
+constructible objects cause no change to the stated basis.
+
+Finite-presentation descent gives
+\[
+ \mathcal C(X_K)\simeq\mathop{\mathrm{2\!\!\ colim}}_E
+       \mathcal C(X_E),\qquad
+ \mathcal C(Y_K)\simeq\mathop{\mathrm{2\!\!\ colim}}_E
+       \mathcal C(Y_E).
+\]
+The exact affine-site statement is Stacks, Lemma~59.51.2,
+Tag~0EYL; Lemma~32.10.1 descends objects, morphisms and their
+finite relations \citep{F_StacksLimits}. The \emph{\'etale}
+and separated predicates descend after increasing $E$.
+Finite coverings and their surjectivity also descend.
+The same conclusions for the displayed basis follow by finite
+affine covers and their overlap data. Successive-slice
+compatibility gives
+\[
+ \phi_{E'}^*(V\times_E E')\simeq\phi_E^*(V)\times_E E'.
+\]
+Consequently the finite-stage inverse images define a functor
+$\mathcal C(Y_K)\to\mathcal C(X_K)$ preserving finite limits
+and covering families: every such finite diagram is represented
+at one finite stage. Stacks, Proposition~7.14.7, Tag~00X6,
+therefore gives a geometric morphism $\phi_K$ on the full
+small topoi. Its structure over $BG_K$ is inherited on finite
+\emph{\'etale} constant objects, each of which descends to a
+finite stage. This construction commutes with further algebraic
+extension and with the projection to $\phi$. It does not assert
+an arbitrary fibre-product theorem for small \emph{\'etale} topoi.
+
+If $\phi$ is pinned, so is $\phi_K$. A closed $x_K\in X_K$
+projects to a closed $x\in X$, because $\kappa(x)$ is algebraic
+and finitely generated over $k$. The image of $x_K$ under
+$\phi_K$ lies over the closed point $\phi(x)$.
+That fibre is $\Spec(\kappa(\phi(x))\otimes_kK)$, finite over
+$K$, so its points are closed. For an algebraic closure
+$\bar k\supset K$, field-source reconstruction
+\citep[Proposition~3.6]{F_CHW2024} moreover gives
+\[
+ \phi_K(\bar k)(x)=\phi(\bar k)(x)
+ \qquad(x\in X(\bar k)).
+\]
+The retained relative structure is used in this equality.
+
+Now take $X=\Spec A$ regular connected affine with a $k$-point
+and $Y=\mathbb G_m$. The source is smooth and geometrically
+connected, so $X_K$ has the same properties and a $K$-point.
+Reconstruction over $K$ gives a unit
+$h_K\in(A\otimes_kK)^*$ with the point function of $\phi_K$.
+Its image $\bar h\in A\otimes_k\bar k$ has the
+$G_k$-equivariant point function of $\phi$. Thus
+$\sigma\bar h$ and $\bar h$ agree at every $\bar k$-point,
+for each $\sigma\in G_k$. Reducedness gives
+$\sigma\bar h=\bar h$. The invariant ring
+$(A\otimes_k\bar k)^{G_k}=A$: express an element using finitely
+many $k$-linearly independent elements of $A$, and invariance
+fixes each coefficient. The inverse of $\bar h$ is invariant
+as well. Hence $h_K$ descends to a unit of $A$ with precisely
+the original point function. CHW, Theorem~4.18(5), now gives
+full reconstruction over $k$. No descent of a chosen topos
+isomorphism or of a merely pointwise comparison is assumed.
+Even when $K/k$ is not normal, $\sigma\bar h$ is well defined
+over $\bar k$, so the proof is unchanged.
+\end{proof}
+
+\begin{claim}{F.33}{Proved}
+Put $k=\Q^{\mathrm{solv}}$. For every finitely generated
+extension $L/k$,
+\[
+ D(L^*)=\bigcap_{n\ge1}(L^*)^n=k^*.
+\]
+There is a finite Galois number field $N/\Q$ not contained in
+$L$. Any finite list of schemes, maps, points and coefficients
+over $L$ can be descended to a finitely generated field
+$F/\Q$ with $L=Fk$; then $L/F$ is Galois and prosolvable.
+\end{claim}
+\begin{proof}
+The algebraic closure $k'$ of $k$ in $L$ is finite over $k$
+\citep[Lemma~9.26.11]{F_StacksFields}. Choose a normal projective
+model $Z$ of $L/k$. Normalization is finite in this
+characteristic-zero finite-type setting. The global regular
+functions of $Z$ form $k'$: properness makes them algebraic,
+and every element of $k'$ is integral in every normal local ring.
+If $a\in D(L^*)$, its valuation at each prime divisor of $Z$
+is divisible by every positive integer, hence is zero. Normality
+makes $a$ and $a^{-1}$ global regular functions. Any root
+$z\in L$ with $z^n=a$ also has zero divisor, so lies in $k'$.
+Thus $a\in D(k'^*)=k^*$ by F.16. The reverse inclusion follows
+from divisibility of $k^*$. This also proves the assertion over
+every finite extension of $L$.
+
+If $\bar\Q\subset L$, then $\bar\Q\subset k'$, contrary to
+F.18's unbounded degrees of finite extensions of $k$.
+Choose an algebraic number outside $L$ and take its finite
+Galois closure $N/\Q$. To descend the finite data, start with
+finitely many generators of $L/k$ and adjoin all the finitely
+many coefficients and algebraic constants occurring in the data
+and their relations. The resulting $F\subset L$ is finitely
+generated over $\Q$ and satisfies $L=Fk$.
+The extension $Fk/F$ is the scalar extension of the Galois
+prosolvable extension $k/\Q$. Its Galois group injects as a
+closed subgroup of $\operatorname{Gal}(k/\Q)$ by restriction,
+so is prosolvable. In particular every finite Galois subextension
+of $L/F$ is solvable.
+\end{proof}
+
+\begin{claim}{F.34}{Proved}
+Let $L/\Q^{\mathrm{solv}}$ be finitely generated. Every finite
+arithmetic quotient of the fundamental group of a smooth
+separated geometrically connected curve $U/L$ is detected
+surjectively by a closed-point decomposition group. Such points
+can be chosen with unbounded degrees. Every finite quotient
+on a smooth geometrically connected quasiprojective variety over
+$L$ is likewise detected by a closed point.
+\end{claim}
+\begin{proof}
+We specify the arithmetic changes to F.24, whose geometric
+pencil and finite-group calculations apply unchanged.
+Descend the curve, completion, connected finite $G$-torsor,
+its full $G$-action and torsor identity to a finitely generated
+$F/\Q$ with $L=F\Q^{\mathrm{solv}}$. Let $M/F$ be the finite
+Galois constant field of the descended cover, and write
+$1\to N\to G\to P\to1$, with $P=\operatorname{Gal}(M/F)$.
+Connectedness after extension to $L$ implies $M\cap L=F$.
+The length-at-most-four jet argument constructs the same
+simple-branch degree-$n$ pencil over $F$ for unbounded $n$.
+The field $F$ embeds in $\C$, so the SGA~1 comparison and the
+branch-loop calculation give the same group
+\[
+ H\subseteq(G\times_P\cdots\times_PG)\rtimes S_n.
+\]
+In particular $A_n\subset H^\infty$ and
+$H^\infty\cap N^n$ projects onto $N$ at every coordinate.
+These are the proved spanning-tree and support-two-commutator
+calculations of F.24; they neither use that $F$ is a number
+field nor assert that the whole wreath product occurs.
+Possible extra constants in the Galois closure remain harmless.
+
+The field $F$ is Hilbertian. Here is the deduction from the
+opened source. Hilbert's theorem over $\Q$ holds in every
+affine dimension \citep[Theorem~3.4.1]{F_Serre2007}.
+For a finite family of irreducible polynomials over
+$\Q(t_1,\ldots,t_d)(T)$, make them monic in the root variable
+and clear the coefficient denominators. Simultaneous Hilbert
+specialization of $(t_1,\ldots,t_d,T)$ over $\Q$, avoiding
+those denominators, gives irreducible specializations.
+The chosen value of $T$ therefore leaves each polynomial
+irreducible over $\Q(t_1,\ldots,t_d)$: a monic factorization
+over that fraction field has coefficients in the integrally
+closed localized polynomial ring, and would specialize at the
+chosen $t$-value to a factorization of the same positive degrees.
+Thus the rational-function field is Hilbertian. A finitely
+generated $F/\Q$ is finite over such a field, and finite
+extensions preserve Hilbertianity
+\citep[Corollary~3.2.2]{F_Serre2007}.
+
+Proposition~3.3.1 of the same source now specializes the
+Galois closure with its full group $H$ over $F$. For the
+specialized extension $\Omega/F$, set
+$J=\operatorname{Gal}(\Omega L/L)\subset H$.
+F.33 gives $H^\infty\subset J$, and $M\cap L=F$ gives
+$J\twoheadrightarrow P$. The coordinate stabilizer
+$J_i=J\cap\operatorname{Stab}(i)$ projects onto $G$:
+its image contains $N$ by the commutator calculation, and
+literal $A_n$ moves the block image of an element of $J$
+back to $i$ without changing its prescribed $P$-image.
+Transitivity of $A_n$ makes the degree-$n$ fibre one closed
+point, whose arithmetic decomposition group has image $J_i$.
+No perfectness of $P$ or $J$ is assumed.
+
+For a higher-dimensional source use F.29's hyperplane
+construction on every geometric component of the given finite
+connected cover. The Poonen--Slavov theorem applies because
+each composite with the projective embedding is quasi-finite;
+the source dimension is at least two until a curve is reached.
+The simultaneous good opens have rational points over the
+infinite field $L$. Geometric components remain irreducible
+and their arithmetic permutation remains transitive, so the
+curve retains the entire finite quotient. The curve case
+then supplies the detecting point.
+\end{proof}
+
+\begin{claim}{F.35}{Proved}
+Let $k=\Q^{\mathrm{solv}}$, let $L/k$ be finitely generated,
+and let $U\subset\mathbb G_{m,L}$ be nonempty open. Suppose
+$\xi\in\varprojlim_n H^1(U,\mu_n)$ has actual multiplicative
+Kummer values at every point over every finite extension $E/L$.
+Then $\xi=\kappa(h)$ for an actual regular unit
+$h\in\mathcal O(U)^*$, and every prescribed value $b_x$ satisfies
+$b_x/h(x)\in k^*$.
+\end{claim}
+\begin{proof}
+Write $P_0=T$ and let $P_1,\ldots,P_r$ be the other monic
+irreducible puncture polynomials. The coordinate ring is a
+localization of a principal ideal domain. Choose $x_0\in U(L)$
+and an actual value $b_0$ there. The Kummer sequence gives
+\[
+ \xi=\kappa(b_0)+\sum_{j=0}^r\lambda_j
+       \bigl([P_j(T)]-[P_j(x_0)]\bigr),
+       \qquad\lambda_j\in\widehat\Z.
+\]
+Take $F_0/\Q$ finitely generated inside $L$ with $L=F_0k$,
+containing the coefficients, $x_0,b_0$, and fix a transcendence
+basis $t_1,\ldots,t_d$ of $F_0/\Q$.
+Choose a finite Galois number field $N\not\subset L$ by F.33.
+Take a finite Galois extension $M/\Q(t_1,\ldots,t_d)$ containing
+$F_0,N$ and all roots of every $P_j$. The extension $Mk/L$
+is finite Galois and has the nontrivial Galois subextension
+$LN/L$. Choose $\sigma\in\operatorname{Gal}(Mk/L)$ acting
+nontrivially on $N$. Normality of $M/\Q(t_1,\ldots,t_d)$
+makes $M$ stable under $\sigma$. Put $C=M\cap\bar\Q$.
+This is a finite Galois number field: embeddings of $C/\Q$
+extend while fixing the independent $t$-variables, and normality
+preserves $M$. Moreover $\sigma|_C\ne1$, since $N\subset C$.
+The polynomials' coefficients lie in $F_0$ and are fixed by
+$\sigma$; individual roots need not be fixed.
+
+For $d=0$ use F.18's completely split primes. For $d>0$ the
+following construction supplies the required valuations.
+Choose a root $r_i$ of each $P_i$. There is a normal finite
+\emph{\'etale} model $B$ of $M/C(t_1,\ldots,t_d)$ over
+\[
+ A=\mathcal O_C[S^{-1}][t_1,\ldots,t_d,1/f],
+ \qquad0\ne f\in\Z[t_1,\ldots,t_d],
+\]
+where $S$ is a finite set of rational primes. Indeed choose a
+primitive element, clear its polynomial denominators, and invert
+its nonzero discriminant. The resulting monogenic algebra is
+finite \emph{\'etale} and normal. Inverting further norms
+makes all the finitely many required elements integral or units.
+Products of conjugate denominators and enlargement of $S$
+allow $f$ to have integral rational coefficients. Thus $B$ is
+the integral closure of $A$ in $M$ and is $\sigma$-stable.
+Arrange that all coefficients and roots are integral and that
+\[
+ P_i'(r_i),\quad P_j(r_i)\ (j\ne i)
+\]
+are units. These elements are nonzero by separability and
+distinctness of the puncture polynomials.
+
+Take pairwise distinct rational primes $p_i$ splitting
+completely in $C$, outside $S$, with $f\bmod p_i\ne0$.
+F.18 supplies infinitely many such split primes without a
+Chebotarev hypothesis. For a prime $\mathfrak p_i$ of $C$
+over $p_i$, the localization $A_{\mathfrak p_iA}$ is the
+Gauss discrete valuation ring with uniformizer $p_i$ and
+residue field $\F_{p_i}(t_1,\ldots,t_d)$. A height-one prime
+of $B$ above it gives an unramified prolongation $v_i$ to $M$,
+so $v_i(p_i)=1$ and its residue field is infinite.
+Complete splitting and $\sigma|_C\ne1$ imply
+$v_i\ne\sigma^{-1}v_i$, since their restrictions to $C$ are
+different primes. All pairs belonging to different $i$ are
+disjoint because their rational residue characteristics differ.
+
+Localizing $B$ at the complement of these finitely many
+height-one primes gives a normal noetherian one-dimensional
+semilocal ring $R$, whose local rings are the selected discrete
+valuation rings. The Chinese remainder theorem supplies
+$\alpha\in R$ such that
+\[
+ \alpha\equiv r_i+p_i\pmod{\mathfrak p_{v_i}^2},\qquad
+ \alpha\equiv c_i\pmod{\mathfrak p_{\sigma^{-1}v_i}},
+\]
+where $c_i$ avoids every root of every reduced $P_j$.
+The residue fields are infinite for $d>0$; for $d=0$ take
+$p_i>\sum_j\deg P_j$, as in F.18. Taylor expansion and the
+unit conditions give
+\[
+ v_i(P_j(\alpha))=\delta_{ij},\qquad
+ v_i(P_j(\sigma\alpha))
+       =v_{\sigma^{-1}v_i}(P_j(\alpha))=0.
+\]
+Hence $\alpha\in U(Mk)$ and
+$R_j=P_j(\sigma\alpha)/P_j(\alpha)$ has
+$v_i(R_j)=-\delta_{ij}$.
+
+Choose one finite number field $S_0\subset k$ such that
+$F=MS_0$ contains the actual value $b_\alpha\in Mk$.
+This $F$ is fixed for all radical levels and is $\sigma$-stable.
+If $z^n=a\in F^*$ with $z\in Mk$, every
+$\tau\in\operatorname{Gal}(Mk/F)$ satisfies
+$\tau z/z\in\mu_n\subset k$. The automorphisms $\tau$ and
+$\sigma$ commute: check on $M$, which $\tau$ fixes and
+$\sigma$ preserves, and on $k$, which $\sigma$ fixes and
+$\tau$ preserves. Therefore $\sigma z/z$ is fixed by every
+such $\tau$. Since $Mk/F$ is Galois, its fixed field is $F$,
+and
+\[
+ \sigma a/a\in(F^*)^n.
+\]
+This radical descent uses a finitely generated $F/\Q$, not a
+number-field hypothesis.
+
+For integer representatives $a_{j,n}$ of $\lambda_j\bmod n$,
+the evaluation at $\alpha$ and this descent give
+\[
+ \frac{\sigma b_\alpha}{b_\alpha}
+       \prod_jR_j^{-a_{j,n}}\in(F^*)^n.
+\]
+The integer characters $h_i=v_i\circ N_{F/M}$ satisfy
+$h_i(R_j)=-[F:M]\delta_{ij}$, so
+\[
+ [F:M]\lambda_i=-h_i(\sigma b_\alpha/b_\alpha)\in\Z
+ \quad\text{inside }\widehat\Z.
+\]
+Thus $\lambda_i\in\Q\cap\widehat\Z=\Z$. The desired unit is
+\[
+ h(T)=b_0\prod_j
+       \left(\frac{P_j(T)}{P_j(x_0)}\right)^{\lambda_j}.
+\]
+The residual ratio belongs to $D(E^*)=k^*$ by F.33.
+\end{proof}
+
+\begin{claim}{F.36}{Proved}
+Let $L/\Q^{\mathrm{solv}}$ be finitely generated and let $X/L$
+be smooth, geometrically connected and affine with $x_0\in X(L)$.
+A compatible Kummer class on $X$ having actual multiplicative
+values at every finite-extension point is the class of an actual
+regular unit, normalized by its value at $x_0$.
+Every pinned relative geometric morphism
+$X_{\mathrm{et}}\to(\mathbb G_{m,L})_{\mathrm{et}}$ has the
+geometric-point function of a unique regular unit on $X$.
+\end{claim}
+\begin{proof}
+We give the arithmetic replacements in F.26--F.30 explicitly.
+After a finite extension splitting the boundary of a smooth
+compactification, descend $X,x_0$, its generalized Albanese $A$,
+and the needed geometric data to a finitely generated $F/\Q$
+with $L=F\Q^{\mathrm{solv}}$. For curves use the generalized
+Jacobian. Spie\ss--Szamuely's integral comparison used in F.30
+identifies
+\[
+ H^1(X_{\bar L},\Z_\ell(1))
+   \simeq\operatorname{Hom}(T_\ell A,\Z_\ell(1)).
+\]
+Its hypotheses are smooth quasiprojective geometry and a smooth
+projective compactification, available in characteristic zero;
+no number-field hypothesis occurs. The finite kernel in geometric
+abelian $\pi_1$ is killed by the torsion-free target.
+
+Put $H=G_L\triangleleft G_F$ and
+$W=(V_\ell A)_H$, with lattice the image of $T_\ell A$.
+The normalized point Kummer homomorphisms into this lattice
+span $W$. Otherwise an annihilating integral functional would
+produce a nonzero finite quotient of $\pi_1(X)$ trivial on
+every closed-point decomposition group, contradicting F.34.
+Here the rational point splits the arithmetic group and
+$\mu_\infty\subset L$ makes the normalized functional an
+actual arithmetic homomorphism. Choose finitely many point
+images spanning $W$. Their coordinates and actual multiplicative
+values lie in one finite extension $M/F$, after adjoining the
+finitely many constants from $\Q^{\mathrm{solv}}$ occurring
+in their equations. Restriction to
+$G_{M\Q^{\mathrm{solv}}}$ preserves their rational spans,
+because it has finite index in their original point groups and
+the projected Kummer maps are homomorphisms.
+
+The conjugation identities of F.26 now show that the functional
+$\lambda:T_\ell A\to\Z_\ell(1)$ is $G_M$-equivariant.
+Indeed, for each selected point $i$, all
+$g\in G_M$ and $h\in G_{M\Q^{\mathrm{solv}}}$ satisfy
+\[
+ c_i(ghg^{-1})=g c_i(h),\qquad
+ \kappa(\beta_i/b_0)(ghg^{-1})
+       =\chi(g)\kappa(\beta_i/b_0)(h).
+\]
+The equality $\lambda c_i=\kappa(\beta_i/b_0)$ gives the
+required equivariance on their spanning images and hence on
+$W$. Normality of $G_L$ in $G_F$ makes this quotient
+$G_M$-stable. Thus the functional is equivariant over the
+finitely generated field $M$, before any Tate-Hom theorem is used.
+
+The necessary primary theorem over this field is
+\citet[Theorem~4.3(ii), p.~676]{F_Jannsen1995}:
+for 1-motives over a finitely generated field, the natural map
+\[
+ \operatorname{Hom}_M(M_1,M_2)\otimes\Z_\ell
+ \xrightarrow{\sim}
+ \operatorname{Hom}_{G_M}(T_\ell M_1,T_\ell M_2)
+\]
+is an isomorphism. The original proof reduces by extension
+sequences to the abelian Tate theorem and the Mordell--Weil
+injection for the dual abelian variety. The same statement is
+recalled in \citet[\S1.4, p.~6]{F_Jossen2014}; its reference
+to Jannsen's ``Theorem~4.6'' differs from the opened original's
+numbering~4.3(ii). Apply it to $[0\to A]$ and
+$[0\to\mathbb G_m]$.
+After boundary components are split and units are normalized
+at $x_0$, the geometric unit lattice is fixed over $F$:
+its divisors are fixed, and value~1 removes the scalar ambiguity.
+The Albanese universal property therefore gives
+\[
+ \xi=\kappa(b_0)+\sum_j\lambda_j\kappa(u_j),
+       \qquad\lambda_j\in\widehat\Z,
+\]
+in one normalized integral unit basis. This kills the Picard
+Tate component of this point-theoretic class, not the whole
+Picard Tate module.
+
+For a curve, the Riemann--Roch map used in F.27, with a simple
+zero at one rational boundary point and no other boundary zero,
+reduces each residue to the norm of a class on a punctured line.
+Norms preserve actual point values, and F.35 makes the residue
+an ordinary integer. The comparison uses residue degrees,
+not ramification indices, and the chosen boundary point
+contributes degree one. The injective integral divisor matrix
+of the unit basis then forces every $\lambda_j$ to be an
+ordinary integer.
+For higher dimension, choose a smooth transverse complete-
+intersection curve at a smooth point of each geometric boundary
+divisor, away from the other components, using the finite-jet
+Bertini construction in F.7. Its actual-unit class has the same
+boundary residue: at each finite level the local class is
+$u z^a$ after \emph{\'etale} localization, and transversality
+pulls $z$ back to a uniformizer. Thus all global residues are
+integral, and the same divisor matrix gives the actual unit $h$.
+Normalize it by $h(x_0)=b_0$.
+
+The finite extensions used here do not create a descent gap.
+Over a finite Galois extension making the construction, each
+conjugate of $h$ has the same Kummer class. Their quotient has
+zero divisor on a proper completion, hence is constant; its
+value at $x_0$ is~1. Thus $h$ descends to $L$.
+At each finite Kummer level the remaining difference from $\xi$
+is geometrically zero, so is a constant class by the low-degree
+Hochschild--Serre sequence. Evaluation at $x_0$ kills that
+class and splits the constant-class inclusion. Hence
+$\xi=\kappa(h)$ already over $L$.
+
+For a pinned map on a curve, F.33 gives
+$\phi(x)=c_x h(x)$ with $c_x\in(\Q^{\mathrm{solv}})^*$.
+The point-function argument of F.28 now has all its hypotheses:
+F.34 supplies points of unbounded degrees, and F.35 together
+with the curve calculation supplies actual units on every
+punctured source. If $h$ is constant, pass to a finite extension
+containing $\beta$ with $\beta/h\notin\Q^{\mathrm{solv}}$.
+The point values avoid $\beta$, so $T-\beta$ pulls back on
+the whole source. The corresponding unit must be constant,
+since a nonconstant rational function cannot take values in the
+base field at closed points of degrees exceeding its degree.
+Comparison with the value at $x_0$ makes the point function
+constant. If $h$ is nonconstant, the actual unit from $T-1$
+and a point of degree greater than the fixed pole bound give
+$h_1=A h+B$, with $A,B\in(\Q^{\mathrm{solv}})^*$.
+High-degree values fix the scalar $c=-A/B$; applying the same
+argument to $T-b$ for each $b\in(\Q^{\mathrm{solv}})^*$ gives
+$h_b=e_b(ch-b)$. Its zeros force $\phi(x)=ch(x)$ also where
+$h(x)\in\Q^{\mathrm{solv}}$. The needed opens are nonempty
+because the point function is nonconstant. The closed-subtopos
+argument in the constant case and the normalization at $x_0$
+give the unique unit. These arguments are the explicit
+pole-degree and coefficient comparisons proved in F.28;
+only their field predicates have changed. F.34 also shows
+that its Kummer class is the original pulled-back class.
+
+Finally, for any geometric point $x$ on $X$, make it rational
+by a finite extension and take a smooth geometrically connected
+curve through $x$ and $x_0$. The curve's point-function unit
+and $h$ restricted to it have the same Kummer class. Their
+ratio has zero divisor on the proper completion, hence is
+constant, and its value at $x_0$ is~1. This proves
+$\phi(x)=h(x)$ for every $x$. The unique unit descends through
+all the finite extensions; dimension zero is field-source
+reconstruction and dimension one was treated above.
+\end{proof}
+
+\begin{claim}{F.37}{Proved}
+Let $k_0$ be any subfield of a finitely generated extension of
+$\Q^{\mathrm{solv}}$. Then for all finite-type $k_0$-schemes
+$X,Y$, the canonical map
+\[
+ \operatorname{Hom}_{k_0}(X^{\mathrm{awn}},Y)
+ \longrightarrow
+ \pi_0\operatorname{Hom}^{\mathrm{cp}}_{BG_{k_0}}
+       (X_{\mathrm{et}},Y_{\mathrm{et}})
+\]
+is bijective. This sufficient field class contains the corrected
+LM5-F.50 class. It does not supply the intrinsic necessary-and-
+sufficient classification requested in F.9.
+\end{claim}
+\begin{proof}
+First let $L/\Q^{\mathrm{solv}}$ be finitely generated.
+For a connected regular affine finite-type $L$-scheme with an
+$L$-point, characteristic zero gives smoothness, and connectedness
+together with that point gives geometric connectedness.
+F.36 supplies precisely the regular-unit point-function condition
+in \citet[Theorem~4.18(5)]{F_CHW2024}. That theorem supplies
+full \emph{\'etale}-chart reconstruction and $h$-descent,
+hence all-scheme reconstruction over $L$.
+
+Now let $k_0\subset L$ for such an $L$ and put
+$K=k_0\Q^{\mathrm{solv}}\subset L$.
+This intermediate field is finitely generated over
+$\Q^{\mathrm{solv}}$. To see this, choose a finite
+transcendence basis $t$ of $K/\Q^{\mathrm{solv}}$.
+Then $K$ is algebraic over $\Q^{\mathrm{solv}}(t)$ inside the
+finitely generated field extension $L/\Q^{\mathrm{solv}}(t)$.
+The relative algebraic closure is finite by
+\citet[Lemma~9.26.11]{F_StacksFields}, so $K$ is finite over
+$\Q^{\mathrm{solv}}(t)$. The first paragraph gives
+reconstruction over $K$. Since $K/k_0$ is algebraic, F.32
+descends it to $k_0$.
+
+A finitely generated extension of $\Q^{\mathrm{ab}}$ embeds
+in its compositum with $\Q^{\mathrm{solv}}$ in an algebraic
+closure; that compositum is finitely generated over
+$\Q^{\mathrm{solv}}$. Thus the proved class contains F.50.
+All pinning here includes closed-point preservation.
+The literal relative-only definition remains refuted by F.1
+and F.17. No implication characterizing all reconstruction
+fields from the present sufficient class has been proved.
+\end{proof}
+
+
+\subsection{Intrinsic necessary conditions and excluded field families}
+
+\begin{claim}{F.38}{Proved}
+If $E/k$ is a finite extension of characteristic-zero fields,
+then $k$ satisfies closed-point-preserving \emph{\'etale}
+reconstruction if and only if $E$ does.
+\end{claim}
+\begin{proof}
+Descent is F.32. Suppose conversely that $k$ reconstructs.
+Finite-type $E$-schemes $X,Y$ are finite-type $k$-schemes.
+A pinned morphism $\phi:X_{\mathrm{et}}\to Y_{\mathrm{et}}$
+over $BG_E$ is also pinned over $BG_k$. Reconstruction over
+$k$ gives a unique $k$-map $f:X^{\mathrm{awn}}\to Y$ and
+an isomorphism to $\phi$ over $BG_k$.
+The composite with $Y\to\Spec E$ and the given structure
+$X^{\mathrm{awn}}\to\Spec E$ induce isomorphic morphisms
+of topoi over $BG_k$. Faithfulness over $k$ makes these
+algebraic maps equal. Hence $f$ is $E$-linear.
+
+The comparison isomorphism is also over $BG_E$.
+Indeed $BG_E$ is the slice of $BG_k$ at the finite
+\emph{\'etale} object $\Spec E$; the structural maps from
+$X$ and $Y$ are its distinguished sections after pullback.
+Naturality of the $BG_k$-relative isomorphism respects those
+sections. Equivalently, the groupoid of morphisms to this
+finite \emph{\'etale} slice is discrete, so the two structural
+comparisons cannot differ by a further $2$-cell.
+For the latter assertion one can apply
+\citet[Proposition~2.22]{F_CHW2024} to the finite-type target
+$\Spec E$ over $k$; this is its actual stated scope.
+Absolute weak normalization depends on the underlying scheme,
+not on whether its structure is viewed over $k$ or $E$.
+This proves fullness and faithfulness over $E$.
+No ascent through an infinite algebraic extension is claimed.
+\end{proof}
+
+\begin{claim}{F.39}{Proved}
+If a characteristic-zero field $k$ satisfies reconstruction,
+then its absolute Galois group is slim: every open subgroup
+has trivial centre.
+\end{claim}
+\begin{proof}
+Fix $\bar k$ and $z\in Z(G_k)$, and put $X=\mathbb G_{m,k}$.
+For every continuous discrete $G_k$-set $S$, the map
+$s\mapsto zs$ is $G_k$-equivariant and natural because $z$
+is central. It therefore gives a natural automorphism of the
+structural pullback $p^*:BG_k\to X_{\mathrm{et}}$.
+Equip the underlying identity geometric morphism of
+$X_{\mathrm{et}}$ with this new structural $2$-cell, or its
+inverse according to the chosen direction of that cell.
+Call the resulting relative morphism $\theta_z$.
+Its underlying topological map is the identity, so it is pinned.
+
+Choose the inverse convention so that its relative geometric-point
+function is
+\[
+ \theta_z(\bar k):\bar k^*\longrightarrow\bar k^*,
+             \qquad a\longmapsto z(a).
+\]
+Here is the verification with the relative isomorphism classes
+retained. Place $a$ in a finite Galois extension $E/k$.
+The constant object is the $G_k$-set
+$\operatorname{Hom}_k(E,\bar k)$, and the structural twist
+acts on its embeddings by $\iota\mapsto z\circ\iota$.
+Slicing the point morphism at this object changes exactly its
+residue embedding by $z$. By
+\citet[Proposition~3.6]{F_CHW2024}, relative pinned morphisms
+$\Spec(\bar k)_{\mathrm{et}}\to X_{\mathrm{et}}$ are precisely
+$X(\bar k)$, so the changed relative point is $z(a)$.
+In particular the two relative point morphisms are isomorphic
+only if $z(a)=a$.
+
+Every $k$-point is fixed. An algebraic $k$-map $X\to X$
+has the form $T\mapsto cT^m$, $c\in k^*$, $m\in\Z$.
+The fixed values at $1$ and $2$ force $c=1$ and $m=1$.
+Such a map fixes every geometric point. If $z\ne1$, an
+$a\in\bar k^*$ with $z(a)\ne a$ gives a contradiction.
+A global natural automorphism of the identity topos cannot
+absorb the twist in the relative $2$-isomorphism quotient:
+its restriction would identify the distinct relative point
+morphisms just separated by Proposition~3.6. No computation
+of the automorphisms of the entire topos is assumed.
+Thus $Z(G_k)=1$. F.38 applies the same argument to every
+finite extension $E/k$; its $G_E$ is the corresponding open
+subgroup of $G_k$. This is slimness.
+\end{proof}
+
+\begin{claim}{F.40}{Proved}
+For every characteristic-zero reconstruction field $k$ and every
+finite extension $E/k$, the natural map
+\[
+ \operatorname{Aut}(E)\longrightarrow\operatorname{Out}(G_E)
+\]
+is injective. Together with F.39, this is equivalent to the
+following intrinsic necessary condition, for a fixed algebraic
+closure $\bar k$:
+\[
+ C_{\operatorname{Aut}(\bar k)}(G_E)=\{1\}
+             \qquad\text{for every finite }E/k.
+\]
+No sufficiency assertion is made.
+\end{claim}
+\begin{proof}
+It suffices by F.38 to treat $E=k$.
+Extending a field automorphism $\sigma$ to $\bar k$ gives an
+automorphism of $G_k$ by conjugation. Different extensions
+differ by $G_k$, so its outer class is well defined.
+Suppose $\sigma\ne1$ has trivial outer action. Inner-conjugate
+group homomorphisms induce naturally isomorphic geometric
+morphisms on classifying topoi: on continuous Galois sets the
+isomorphism is given by the conjugating group element.
+Thus the automorphism of $BG_k$ induced by $\sigma$ is
+naturally isomorphic to the identity.
+
+Consider the absolute scheme automorphism $f_\sigma$ of
+$\mathbb G_{m,k}$ defined by
+\[
+ f_\sigma^*:k[T,T^{-1}]\longrightarrow k[T,T^{-1}],
+       \qquad c\longmapsto\sigma(c),\quad T\longmapsto T.
+\]
+Its full small-topos morphism, with the preceding structural
+isomorphism composed in, is a relative morphism over $BG_k$.
+It is pinned because the underlying scheme map is an isomorphism.
+Its map on $k$-points is $a\mapsto\sigma^{-1}(a)$, as is
+seen by pulling back the maximal ideal $(T-b)$.
+The point-source relative structure at a rational point is
+unique up to relative isomorphism by
+\citet[Proposition~3.6]{F_CHW2024}, so choosing the inner
+conjugator does not change these rational values.
+An algebraic $k$-map inducing this relative morphism would be
+$cT^m$. Its values at $1$ and $2$ force $c=1$, $m=1$;
+a point moved by $\sigma$ contradicts that conclusion.
+Hence the asserted homomorphism is injective.
+
+If $\tau\in\operatorname{Aut}(\bar k)$ commutes with $G_E$,
+then it preserves their fixed field $E$. Its restriction to
+$E$ acts trivially in $\operatorname{Out}(G_E)$, so injectivity
+makes that restriction the identity. Thus
+$\tau\in G_E\cap C_{\operatorname{Aut}(\bar k)}(G_E)
+=Z(G_E)=1$ by F.39.
+Conversely, the stated centralizer condition kills $Z(G_E)$
+immediately. For an inner-trivial automorphism of $E$, adjust
+an extension to $\bar k$ by the inverse inner conjugator.
+The adjusted extension centralizes $G_E$, hence is the identity,
+so the original field automorphism is the identity.
+This proves the equivalence of the two necessary conditions.
+\end{proof}
+
+\begin{claim}{F.41}{Proved}
+No characteristic-zero field with finite absolute Galois group
+satisfies closed-point-preserving \emph{\'etale} reconstruction.
+In particular algebraically closed and real-closed fields fail.
+Moreover, for every characteristic-zero field $F$, the
+Laurent-series field $F((u))$ fails. In this last case there is
+an explicit nonalgebraic, nonconstant, pinned relative geometric
+endomorphism of $(\mathbb G_{m,F((u))})_{\mathrm{et}}$.
+\end{claim}
+\begin{proof}
+An algebraically closed characteristic-zero field $K$ has a
+nonidentity automorphism. Choose $\bar\Q\subset K$, extend
+the nontrivial automorphism of $\Q(\sqrt2)$ to $\bar\Q$,
+fix a transcendence basis of $K/\bar\Q$, and extend further
+to the algebraic closure $K$ of the resulting rational-function
+field. This is an automorphism of $K$, not merely an embedding,
+because its image is algebraically closed and $K$ is algebraic
+over that image. Since $G_K=1$, F.40 excludes $K$.
+If $G_k$ is finite, its separable closure is a finite algebraically
+closed extension of $k$ in characteristic zero; F.38 would
+force this excluded field to reconstruct. For a real-closed
+field the extension $k(i)$ is algebraically closed of degree two.
+This conclusion includes real-closed fields with trivial field
+automorphism group; it also follows directly from F.39 since
+their absolute Galois group has order two.
+
+Now put $K=F((u))$ and choose $\bar F$ and compatible roots
+of $u$. The exact Puiseux closure is
+\[
+ \Omega=\bigcup_{\substack{F'/F\ \mathrm{finite}\\n\ge1}}
+                   F'((u^{1/n})),\qquad F'\subset\bar F.
+\]
+It is an algebraic closure of $K$ by
+\citet[Proposition, p.~314]{F_vanDenDriesRibenboim1984}.
+The finite coefficient-field restriction is essential;
+arbitrary series with coefficients in $\bar F$ need not be
+algebraic over $K$.
+
+The substitution $\sigma(u)=u+u^2$, fixing $F$, is an
+automorphism of $K$; its inverse is the unique series
+\[
+ v=\frac{-1+\sqrt{1+4u}}2\in u\Q[[u]],\qquad v+v^2=u.
+\]
+Extend it to $\tau\in\operatorname{Aut}(\Omega)$ by fixing
+$\bar F$ and setting
+\[
+ \tau(u^{1/n})=u^{1/n}(1+u)^{1/n}.
+\]
+The second factor is the binomial series with rational
+coefficients and constant term one. On each
+$F'((u^{1/n}))$ this is substitution of a uniformizer with
+leading coefficient one. The formulas and their inverse
+substitutions are compatible when $F'$ grows and when the
+root degree increases: the constant-term-one roots are unique.
+They therefore define the asserted automorphism of $\Omega$.
+
+For $g\in G_K$, write $g(u^{1/n})=\zeta_n u^{1/n}$,
+$\zeta_n\in\bar F$. Since $g$ fixes $u$ and $\tau$ fixes
+$\bar F$,
+\[
+ g\tau(u^{1/n})
+   =\zeta_nu^{1/n}(1+u)^{1/n}
+   =\tau g(u^{1/n}).
+\]
+The two maps also commute on $\bar F$ and on $K$.
+Each field $F'((u^{1/n}))$ equals the finite extension
+$K(F',u^{1/n})$, so checking these field generators proves
+$g\tau=\tau g$ on all of $\Omega$. This avoids any assertion
+that arbitrary field automorphisms preserve infinite series
+sums. Thus $\sigma$ induces the identity outer action on
+$G_K$, although $\sigma(u)\ne u$.
+
+F.40's construction now supplies the full pinned relative
+topos endomorphism. Its underlying scheme map as an absolute
+map is an isomorphism, so its point map is genuinely nonconstant
+and preserves closed points. On $K$-points it is
+$a\mapsto\sigma^{-1}(a)$; the three values $1,2,u$ already
+exclude every algebraic $K$-endomorphism of $\mathbb G_m$.
+These necessary obstructions and negative families do not
+prove a converse to F.37 or classify all fields in F.9.
+\end{proof}
+
+\begin{claim}{F.42}{Proved}
+Let $F$ be any characteristic-zero field, and choose coherent
+roots of an indeterminate $t$. Define
+\[
+ P(F)=\bigcup_{n\ge1}F((t^{1/n})),\qquad
+ A(F)=\{a\in P(F):a\text{ is algebraic over }F(t)\}.
+\]
+Then restriction to the algebraic constants gives topological
+isomorphisms
+\[
+ (G_{P(F)},\chi_{P(F)})\simeq(G_F,\chi_F),\qquad
+ (G_{A(F)},\chi_{A(F)})\simeq(G_F,\chi_F),
+\]
+which preserve the full cyclotomic character. Neither $P(F)$
+nor $A(F)$ satisfies closed-point-preserving reconstruction,
+and neither does any algebraic extension of either field.
+For both fields an explicit nonalgebraic, nonconstant, pinned
+relative endomorphism of the full $\mathbb G_m$ \emph{\'etale}
+topos is induced semilinearly by $t\mapsto t+t^2$.
+Moreover,
+\[
+ |A(F)|=\max(|F|,\aleph_0).
+\]
+Consequently reconstruction is not determined by the topological
+absolute Galois group and cyclotomic character, even if all their
+open-subgroup data and the field's cardinality are also specified:
+$\Q$ and the countable field $A(\Q)$ have these same data,
+whereas $\Q$ reconstructs and $A(\Q)$ does not.
+\end{claim}
+\begin{proof}
+Fix an algebraic closure $\bar F$ and symbols $t^{1/n}$ with
+$(t^{1/mn})^m=t^{1/n}$. Take all the following unions inside
+the resulting formal Puiseux field. Put
+\[
+ \Omega=
+ \bigcup_{\substack{L/F\ \mathrm{finite},\ L\subset\bar F\\n\ge1}}
+                     L((t^{1/n})).
+\]
+Common multiples of denominators and composita of coefficient
+fields make this a directed union. Every one of its elements
+has a bounded denominator for its exponents and all coefficients
+in one finite extension of $F$. The exact proposition of
+\citet[p.~314]{F_vanDenDriesRibenboim1984} says that $\Omega$
+is an algebraic closure of $F((t))$ for arbitrary
+characteristic-zero $F$. In particular,
+\[
+ L((t^{1/n}))=F((t))(L,t^{1/n})
+\]
+is a finite algebraic extension. The proposition's proof then
+uses the henselian valuation, divisible value group $\Q$,
+algebraically closed residue field $\bar F$, and residue
+characteristic zero to establish algebraic closedness.
+It follows that $\Omega$ is also an algebraic closure of
+$P(F)$, which is algebraic over $F((t))$.
+
+Choose an $F$-basis $e_1,\ldots,e_d$ of a finite extension
+$L/F$. Expanding every coefficient in this basis decomposes
+any element of $L((v))$, $v=t^{1/n}$, as
+$\sum_i e_i a_i(v)$ with $a_i(v)\in F((v))$. Hence
+\[
+                         \Omega=P(F)\bar F.                 \tag{F.42.1}
+\]
+The constants satisfy $P(F)\cap\bar F=F$.
+Indeed an element of $F((v))$ algebraic over $F$ has valuation
+zero unless it is zero: a positive valuation would make the
+constant term of its irreducible polynomial the unique term
+of least valuation, and a negative valuation would make its
+leading term the unique such term. Reducing that polynomial
+at the constant residue in $F$ gives an $F$-root, so it has
+degree one. Applying this at a level containing the element
+proves the assertion for the union.
+
+Every $g\in G_F$ acts coefficientwise on $\Omega$, fixing all
+chosen $t^{1/n}$ and all of $P(F)$. Conversely, an automorphism
+over $P(F)$ is determined by its action on $\bar F$ by
+(F.42.1). Thus restriction gives $G_{P(F)}\simeq G_F$.
+This is an isomorphism of profinite groups: restriction is
+continuous, and the coefficientwise action is continuous
+because every element's coefficients lie in one finite
+extension of $F$. All roots of unity are constants, so this
+isomorphism preserves the entire cyclotomic character.
+For each finite extension $E/F$ in $\bar F$ the corresponding
+finite extension is explicitly
+\[
+                       P(F)E=P(E),                          \tag{F.42.2}
+\]
+by the same finite-basis expansion. It follows in particular
+that the open subgroups, their cyclotomic characters, and
+continuous cohomology with corresponding finite modules
+and Tate twists agree under this identification.
+
+F.41 excludes $F((t))$. If $P(F)$ reconstructed, the algebraic
+extension descent of F.32 would imply reconstruction over
+$F((t))$, a contradiction. The same contrapositive excludes
+every algebraic extension of $P(F)$.
+There is also a direct full-topos witness. The compatible
+substitutions
+\[
+ \sigma(t)=t+t^2,\qquad
+ \sigma^{-1}(t)=r(t)=\frac{-1+\sqrt{1+4t}}2\in t\Q[[t]],
+                                                               \tag{F.42.3}
+\]
+fixing $F$ preserve $P(F)$. Their extensions to $\Omega$
+fix $\bar F$ and are specified by
+\[
+       \tau(t^{1/n})=t^{1/n}(1+t)^{1/n},                       \tag{F.42.4}
+\]
+where the second factor is the constant-term-one binomial
+root. The inverse uses the unique constant-term-one root
+of $r(t)/t$. Each formula substitutes a uniformizer with
+leading coefficient one in every finite Puiseux level;
+uniqueness of those roots proves compatibility when the
+root degree or coefficient field grows. The extension
+commutes with the coefficientwise $G_F$ action, since its
+series coefficients are rational and it fixes $\bar F$.
+Thus $\sigma$ is nonidentity on $P(F)$ but has trivial outer
+Galois action. F.40 supplies the claimed pinned relative
+geometric morphism of the full small topos. Its point function
+on $P(F)$-points is $a\mapsto\sigma^{-1}(a)$; values at
+$1,2,t$ exclude every algebraic monomial $cT^m$.
+
+We now prove the smaller, cardinality-preserving example.
+Define
+\[
+ \Omega_0=\{a\in\Omega:a\text{ is algebraic over }F(t)\}.
+\]
+This field is algebraically closed: a root in $\Omega$ of a
+polynomial with coefficients algebraic over $F(t)$ is again
+algebraic over $F(t)$. It is algebraic over $A(F)$, because
+$F(t)\subset A(F)$, so it is an algebraic closure of $A(F)$.
+We claim that
+\[
+                         \Omega_0=A(F)\bar F.                \tag{F.42.5}
+\]
+To prove the nontrivial inclusion, take $a\in\Omega_0$ and
+choose a finite Galois extension $L/F$ and $v=t^{1/n}$ such
+that $a\in L((v))$. Let $e_1,\ldots,e_d$ be an $F$-basis
+of $L$ and $e_1^*,\ldots,e_d^*$ its trace-dual basis. Put
+\[
+ a_i=\operatorname{Tr}_{L((v))/F((v))}(e_i^*a)
+     =\sum_{g\in\operatorname{Gal}(L/F)}g(e_i^*a).
+\]
+Here each $g$ acts coefficientwise and fixes $t$, so every
+summand is algebraic over $F(t)$. Hence $a_i$ is algebraic
+over $F(t)$ and lies in $F((v))\subset P(F)$; that is,
+$a_i\in A(F)$. The trace-dual expansion $a=\sum_i e_i a_i$
+proves the inclusion. The converse follows because both
+$A(F)$ and $\bar F$ lie in $\Omega_0$.
+Also $A(F)\cap\bar F=F$ by the previously proved constant-field
+calculation.
+
+Coefficientwise $G_F$-action preserves $\Omega_0$, fixes
+$A(F)$, and, by (F.42.5), exhausts all automorphisms over
+$A(F)$. Restriction therefore gives
+\[
+                          G_{A(F)}\simeq G_F.                \tag{F.42.6}
+\]
+The same finite-coefficient argument proves continuity of the
+inverse, and roots of unity again verify the full cyclotomic
+compatibility. The corresponding finite extension for $E/F$
+is $A(F)E=A(E)$. To check the last equality directly, apply
+the same trace-dual calculation to $E((v))/F((v))$; after
+embedding the conjugates in a finite Galois extension, every
+trace coefficient remains algebraic over $F(t)$. Thus all
+finite-extension data are retained in the algebraic core too.
+
+The substitutions (F.42.3) preserve $A(F)$ in both directions.
+If $a$ is algebraic over $F(t)$, then $\sigma(a)$ is algebraic
+over $F(t+t^2)\subset F(t)$. Conversely,
+$\sigma^{-1}(a)$ is algebraic over $F(r(t))$, and this field
+is algebraic over $F(t)$ because $r(t)+r(t)^2=t$.
+Both substitutions preserve $P(F)$, so their restrictions
+preserve $A(F)$ and are inverse automorphisms there.
+The same reasoning shows that $\tau$ preserves $\Omega_0$.
+Its restriction commutes with every coefficientwise element
+of $G_F$, hence with every element of $G_{A(F)}$ under
+(F.42.6), and moves $t$. F.40 again produces a nonalgebraic,
+nonconstant, closed-point-preserving relative endomorphism
+of the full $\mathbb G_m$ topos. Its rational point function
+is $\sigma^{-1}$, and the same three values rule out algebraic
+monomials. F.32 then excludes every algebraic extension of
+$A(F)$ as well.
+
+Finally $A(F)$ is algebraic over $F(t)$ and contains $F(t)$,
+so its cardinality is $\max(|F|,\aleph_0)$. Taking $F=\Q$,
+F.37 gives reconstruction for $\Q$, whereas the preceding
+argument excludes the countable field $A(\Q)$. Equations
+(F.42.5)--(F.42.6) identify their topological absolute Galois
+groups, full cyclotomic characters, and all open-subgroup
+structures. This proves the asserted failure of these data
+to determine reconstruction. It does not exclude a criterion
+using further intrinsic arithmetic of the field; the complete
+classification in F.9 remains unresolved.
+\end{proof}
+
+The exact rational-coefficient calculation
+\path{code/F_Puiseux_checks.py}, with output
+\path{audit/F_Puiseux_checks.json}, checks the inverse
+substitutions and compatibility of the chosen binomial
+roots modulo $t^{13}$ for root degrees dividing $12$.
+This is a finite certificate for the displayed formal
+substitutions; the all-degree identities and the Galois
+and topos assertions are proved above.
