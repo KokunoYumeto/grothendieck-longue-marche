@@ -1,0 +1,375 @@
+INDEPENDENT REVIEW: ACTUAL TRANSPORTERS AND ONE UNIT PARAMETER
+=============================================================
+Reviewer: /root/c89_review_and_general_c
+Verdict: PASS. No mathematical or program correction requested.
+
+Reviewed source
+---------------
+work/part_d_attack/actual_transporter_single_parameter_reduction.txt
+391 lines; 19,834 bytes.
+SHA256 7ba862392788a46b4fa92563ae0c5cea293897fd8d39ac9d27a17e2ab6826b49
+
+Canonical producer
+work/part_d_attack/code/actual_transporter_reduction.py
+361 lines; 13,719 bytes.
+SHA256 a0507439a6132be28aca56fb4c4d5d7316fb2fa103c8c181664acbcb970c3c2b
+
+Final author metadata
+work/part_d_attack/actual_transporter_single_parameter_reduction_result.json
+SHA256 cc281bb8abf4e351971891dc881106143449491d81abef5ce33d10cde632d4bf
+
+The producer output and retained stdout each have 32,118 bytes and SHA256
+43f8ceef3d62899e624a99b3699fcc17256c9dae49f8599d6c45a43c5b52b92d.
+Their exact paths and all additional evidence bindings appear in the
+accompanying peer JSON. The preliminary homology-probe program was not
+substituted for the canonical producer.
+
+Review scope and evidence
+-------------------------
+I read the complete 391-line proof and all 361 lines of the program.
+I checked the relevant frozen dependency passages supplying the original
+dihedral normalizers, section labels, full section centralizers, original
+conjugator equation, actual folded homomorphism, full image normalizers,
+and its identity map on full abelianizations. The source passages are
+D.74, D.35, A.7, the labelled four-factor retract note, and the actual
+tau-cusp followup. The latter's centralizer argument is checked below.
+
+I copied the unchanged, self-contained producer to an isolated directory
+and executed that copy. All 24 named checks passed, together with the
+two full-group assertions for each of the 40 retained refined conjugator
+witnesses. All 16 base unit rows and all 32 refined unit rows were computed.
+The generated JSON and stdout are byte-for-byte equal to both frozen
+author outputs; no path transport or other output adjustment was used.
+All five frozen author files and all eight metadata-bound source/evidence
+and dependency entries were checked before and after the replay.
+
+Peer replay record:
+work/part_c/actual_transporter_independent_replay/comparison.json
+SHA256 4d552dc69bf21ef94b4b743570f43f2780b99156d19483e8c635f976c50980a4
+
+This is a mathematical and computational review of the unnumbered note.
+It is not a fresh PDF rendering or a registration of a numbered claim.
+
+1. Original objects, endpoint labels, and full unit topology
+-----------------------------------------------------------
+The source uses the original F=Fhat(x,y), z=(xy)^(-1), the actual
+involution alpha and coboundary h, and Y=h y h^(-1). The equation
+alpha(h)=h f gives alpha(Y)=Y^(-1) directly. Consequently s, xs and
+Ys are precisely the three displayed section representatives.
+
+D.74's whole-group conclusion C_F(t_i)=1 applies to all three actual
+representatives. Its dihedral map (a,epsilon) -> z^a r^epsilon has
+the stated inverse, and retains the original z generator. The labelled
+endpoint dependency explicitly puts r in the t1 class and zr in the
+t2 class. The two global labels remain distinct. An odd E-conjugator
+can be multiplied by the target involution to give an F-conjugator,
+which verifies that the actual u1,u2 belong to F. The quotient of two
+transporters belongs to C_F(t_i), so each transporter is unique.
+
+Multiplication by 2 on the full Zhat is injective and has image 2 Zhat.
+It is a continuous bijection from compact Zhat to that closed Hausdorff
+subgroup, so its inverse is continuous. Every full unit has odd
+2-primary component. This proves the actual maps
+  mu -> (mu-1)/2,       k -> 2k+1
+between Zhat^times and the displayed closed K, with both composites
+equal to the identity. At odd primes multiplication by 2 is already a
+unit operation. No extra divisibility at an odd prime is imposed.
+
+The word D(k)=x^k u1^(-1) z^k u2 Y^(k+1) is continuous in k: each
+finite quotient of F reads each exponent modulo its finite exponent.
+The same observation proves continuity of every fixed-element power
+map used below. The full unit group, T, S, T_tau and S_tau are compact
+Hausdorff subspaces of the stated profinite products; the defining
+equalities are inverse images of the identity in Hausdorff groups.
+
+2. Elimination of the original conjugator: every equality checked
+----------------------------------------------------------------
+Set k=(mu-1)/2, u0=x^k u1^(-1), B=x^mu Y^mu, and R=x^mu s. From
+s x^a s=x^(-a) one gets u0 r u0^(-1)=x^(2k+1)s=R.
+Likewise
+  z^mu r=z^k(zr)z^(-k),
+  Y^(-mu)s=Y^(-k-1)t2Y^(k+1).
+These formulas retain the original order of the products.
+
+For a point (mu,u) in S, direct multiplication gives RBR=B^(-1).
+Since B=u z^(-mu)u^(-1), v=u^(-1)Ru inverts z^mu. The unit power
+generates the whole original <z>, so v is in the full normalizer of
+<z>. Its odd parity gives v=z^a r. The section class of R equals the
+t1 class because R=x^k t1 x^(-k). In the original dihedral group the
+two reflection classes are indexed by a modulo 2. Their distinct
+global t1 and t2 labels therefore force a in 2 Zhat.
+
+Writing b=a/2 and u'=u z^b gives u'^(-1)Ru'=r. Both u' and u0
+conjugate r to R; their ratio centralizes r in F. Conjugation by u1
+identifies that centralizer with C_F(t1)=1. Thus u'=u0 exactly.
+The right rotation preserves the original boundary conjugacy equation.
+Multiplication then gives
+  u0(z^mu r)u0^(-1)=B^(-1)R=Y^(-mu)s.
+Its left transporter of t2 is u0 z^k u2, and its right transporter
+is Y^(-k-1). Triviality of C_F(t2) identifies them. This is D(k)=1.
+
+Conversely D(k)=1 supplies that exact equality of the two t2
+transporters, while the t1 reflection equality always holds.
+Multiplying the two reflection equations in the source's order gives
+  u0 z^mu u0^(-1)
+    =(Y^(-mu)s)(x^mu s)=Y^(-mu)x^(-mu)=B^(-1).
+Taking inverses gives the original boundary equation for u0. Thus
+both directions are proved on the actual original elements.
+
+A.7 applies to the original peripheral subgroup <xy>=<z>.
+Because mu is a full unit, centralizing (xy)^mu is equivalent to
+centralizing <xy>; its full centralizer is <xy>. The complete fiber
+is therefore u0<z>. The power map Zhat -> <z> is injective, detected
+by the original x-character chi_x(z)=-1. The forward and inverse maps
+are exactly
+  Phi(mu,lambda)=(mu,u0(mu)z^lambda),
+  Phi^(-1)(mu,u)=(mu,-chi_x(u0(mu)^(-1)u)).
+For the first composite chi_x(z^lambda)=-lambda. For the second,
+u0^(-1)u=z^lambda by the fiber calculation, giving u back literally.
+Both maps are continuous with the stated subspace and product
+topologies. This proves the asserted homeomorphism, including empty
+spaces, without requiring a choice of a point of T.
+
+3. Reflection, sign, and full abelian-coordinate comparisons
+------------------------------------------------------------
+Every other t1-labelled reflection is r_b=z^b r z^(-b), because the
+exponent a of z^a r is even and b=a/2 is unique. Its endpoint
+transporters are z^b u1 and z^b u2. Substitution in D(k) gives
+u1^(-1) z^(-b) z^k z^b u2, so the word is exactly unchanged.
+The associated u0 is u0 z^(-b); changing lambda to lambda+b makes
+the product u0 z^lambda unchanged. This proves the coordinate
+transport, as well as equality of the parameter spaces.
+
+For v=rs, the two endpoint equations give
+  v=u1 x alpha(u1)^(-1),
+  zv=u2 Y alpha(u2)^(-1).
+Also alpha(z)=v^(-1)z^(-1)v. Solving the first two equations for
+alpha(u1),alpha(u2) and substituting into alpha(D(k)) cancels all
+adjacent v factors and leaves
+  x^(-k-1)u1^(-1)z^(-k-1)u2Y^(-k)=D(-k-1).
+Thus the exact parameter action is mu -> -mu. This statement is
+proved for every k before any membership in T is used.
+
+On the full abelianization alpha is minus the identity and [Y]=[y].
+The two v formulas yield [u2]=[u1]-[y], after cancellation of a
+factor 2 in Zhat^2. Substitution in D(k) gives [D(k)]=0 for all k.
+This is precisely the proved F' membership; it does not supply a
+vanishing statement in F.
+
+For every unit mu, x=(x^mu)^(mu^(-1)) and the same formula holds
+for Y. These explicit inverse power maps prove
+  closure <x^mu,Y^mu> = closure <x,Y>.
+Multiplying the three specified involutions by s proves the stated
+generated semidirect subgroup. D.35 supplies the full-automorphism
+conclusion for every existing parameter in T. No parameter is
+produced by this argument.
+
+4. Actual folded map and its solution-space inverse
+---------------------------------------------------
+I checked the dependency maps q4, i, rho and tau in the frozen
+labelled-retract and tau-cusp notes. In particular q4 i=id_E,
+i(s)=a, rho identifies only the displayed c and a generators,
+and tau=rho i. The restrictions of q4 and rho to the full rank-three
+parity abelianizations both have the matrix (X,U,V)->(x,y,0).
+Consequently (tau|F)_ab is literally the identity in the named bases.
+The images of t0,t1,t2 lie in the three different a,b,d factor classes.
+Their full centralizers in the parity kernel F0 are trivial.
+
+The full image-normalizer dependency is sufficient as stated. Its
+proof begins with an element t of a free profinite group W admitting
+chi:W->Zhat with chi(t)=1. The displayed maps split C_W(t) as
+ker(chi|C_W(t)) times <t>. A nontrivial kernel has a nontrivial
+pro-p Sylow subgroup; a nonidentity element generates Z_p because
+W is torsion-free. Together with the p-factor of <t>, this gives
+a closed Z_p^2 subgroup. The known cd_p(W)=1 bound and its inheritance
+by closed subgroups exclude that subgroup. Thus C_W(t)=<t>.
+A normalizer exponent is then forced to be 1 by chi. An actual
+outside reflection supplies the other coset of the full normalizer.
+For tau(z), the full character -chi_x has value 1. This argument
+concerns the entire tau(z), and proves precisely the needed full
+centralizer and normalizer. The power map is injective by that same
+character. No injectivity of tau on all of F enters it.
+
+The endpoint proof in section 2 therefore applies to the images of
+the actual x,Y,z,u1,u2. All of its hypotheses have these verified
+image maps: inversion, full normalizer, distinct endpoint classes,
+trivial full section centralizers, and an injective full rotation
+parameter. It gives
+  Phi_tau(mu,lambda)
+    =(mu,tau(x)^k tau(u1)^(-1)tau(z)^lambda).
+Its continuous inverse is
+  (mu,w) -> (mu,-chi_x(tau(u0(mu))^(-1)w)),
+using the named x-character on F0. Both composites are checked by
+the identical rotation computation, since chi_x(tau(z))=-1.
+
+Applying tau to Phi gives Phi_tau with the very same mu and lambda.
+Accordingly the actual map S->S_tau is, in these homeomorphisms,
+the inclusion T x Zhat -> T_tau x Zhat. This proves its injectivity
+and its exact topology even though full injectivity of tau|F remains
+open. The extra unit coordinates satisfy exactly
+  T_tau minus T
+    = {mu : D(k(mu)) is a nonidentity element of ker(tau|F)}.
+The equality follows in both directions from D_tau=tau D and the
+definitions of T and T_tau. The existing kernel inclusion is retained
+with its original ell and N_f; no new kernel-vanishing assertion is
+made in the reviewed note.
+
+5. Actual finite arrows and the two compactness arguments
+---------------------------------------------------------
+For an actual open normal N in E contained in F, the modulus 2e_N
+is necessary and is used throughout. Changing a representative of m
+by 2e_N changes (m-1)/2 by e_N, so k_m is well defined. The direct
+endpoint multiplication proving the sufficiency direction needs no
+finite centralizer assertion. It therefore gives the exact same-level
+injection m -> (m,x_N^k_m u1_N^(-1)) from T_N to B_N.
+
+For the reverse comparison I checked both successive refinements.
+The compact set F minus N has no zero of either commutator map
+g -> [g,t_i]. Finite subcovers therefore provide open normal M<=N
+such that an M-trivial commutator forces g in N. Further intersection
+with the kernel of the actual mod-two E abelianization preserves
+this property and retains all three labelled section coordinates.
+
+The exact outside inverter set is <z>r. Its M-thickening is a union
+of finitely many M-cosets, hence both open and closed. The complement
+inside E minus F is compact and contains no exact inverter. A second
+finite-subcover refinement provides N'<=M for which every outside
+inverter modulo N' has image in <z>r modulo M. This is an assertion
+about the actual original error map and actual normal subgroups.
+
+Every finite unit residue m modulo 2e_N' has a full profinite unit
+lift: choose unit lifts at the finitely many relevant primes and a
+unit in every other p-component. A conjugator in H_N' lifts to F.
+For these lifts the boundary equation makes u^(-1)Ru invert z^mu
+modulo N', hence z modulo N' because mu is a unit. The second
+refinement gives u^(-1)Ru=z^a r modulo M. The original mod-two
+characters imply that a is even, so u'=u z^(a/2) makes the
+reflection equation hold modulo M.
+
+The exact element x^(-k)u'u1 centralizes t1 modulo M, and therefore
+lies in N. This yields u'=x^k u1^(-1) modulo N. The boundary
+equation and the reflection equation, still modulo M, make
+Y^(k+1)u'z^k u2 centralize t2 modulo M. The same commutator property
+puts it in N. Substituting the first equality into the second proves
+D_N(k)=1. These are the two distinct uses of the controlled full
+centralizers; neither requires a finite centralizer to be trivial.
+
+The result is exactly the unit-coordinate map B_N' -> T_N. Exponents
+of quotient groups divide those of refinements, so reduction modulo
+2e_N is defined. Its value and k modulo e_N are independent of all
+chosen lifts. The source records no same-level arrow B_N -> T_N.
+
+6. Faithfulness of the actual homology-cover model
+-------------------------------------------------
+The example has f=h=1 and uses the actual standard extension E0=P3,
+with inverse generator maps supplied by D.35. Its endpoint assignments
+r=xs, u1=1, u2=y^(-1) give the literal defect x^k z^k y^k.
+The A5 permutations use the composition (pq)(i)=p(q(i)), exactly as
+implemented. The factor assignments into A5 x C2^3 extend by the
+free coproduct universal property, and the enumerated image is all
+480 elements. The actual parity kernel has 240 elements and exponent
+30; its x,y images generate it.
+
+For the refinement, phi:F->A5 sends x to ba and y to da. The equality
+phi delta=Inn(a) phi makes N_G and its mod-two homology kernel N1
+delta invariant. N_G has index 60 and free profinite rank 61. Thus
+N_G/N1 has dimension 61 over F2 and N1 is open in F and normal in E0.
+
+The chain model has 120 edges, with each edge (g,j) going from g to
+g phi(j). Left multiplication of the g-index commutes with the
+boundary map. The free generators define the actual homomorphism
+F->M semidirect G, x->(e_(1,x),ba), y->(e_(1,y),da).
+Its boundary identity is partial c(w)=e_phi(w)+e_1.
+
+The breadth-first tree has 59 edges and reaches all 60 vertices.
+For every non-tree edge the actual Schreier word has chain
+p_g+e_(g,j)+p_(g phi(j)). These 61 loops form a basis of the cycle
+space: they have their own distinct non-tree edges, and partial has
+rank 59. On N_G the crossed map is additive, kills commutators and
+squares, and surjects onto this 61-dimensional cycle space. Dimension
+comparison with N_G/N1 makes its kernel exactly N1. Each affine fiber
+p_g+ker(partial) is filled by multiplying a path word by such loops.
+This proves the full image and the exact quotient F/N1 in equation
+(21); the ambient semidirect product is not being used as the image.
+
+The involution L sends an x-edge at g to the x-edge at aga(ba)^(-1),
+and similarly for y. This reverses the transformed edge, which over
+F2 has the same chain coefficient. Direct composition gives L^2=1;
+left translation satisfies L(gv)=(aga)L(v). Its generator values
+are the inverses of the actual X and Y chain elements. Thus the
+semidirect involution is precisely the induced original delta.
+
+The two edge-count parities are invariant under left translation and
+unchanged by L. Hence equation (23) is a homomorphism to the actual
+coarse parity kernel and is compatible with the displayed s action.
+Its values on X,Y,s agree with the original quotient values.
+The cycle basis maps onto both parity coordinates, so it is onto.
+This proves N1<=N0 and identifies the entire refinement map, with
+no substitution of an unrelated finite group.
+
+7. Exponent and exhaustive conjugator computation
+-------------------------------------------------
+For an element (v,g) in the affine fiber and r=ord(g), its r-th power
+is a norm of v in the elementary abelian kernel. Consequently its
+order is r or 2r. On a fiber v=p_g+sum a_i z_i this norm is affine
+linear in the 61 independent binary a_i. Evaluating at p_g and at
+p_g+z_i for every basis direction decides whether it ever is nonzero.
+The program performs precisely those evaluations for all 60 g, and
+their least common multiple is 60. The procedure does not require
+enumeration of 60 times 2^61 group elements.
+
+For conjugacy, multiplying (c,g)(v_B,B0)=(v_A,A0)(c,g) yields both
+gB0g^(-1)=A0 and (1+A0)c=v_A+g v_B. Substitution c=p_g+sum a_i z_i
+gives exactly the target and columns in the code. The binary-basis
+routine retains the original coefficient vectors during elimination;
+the solve routine returns such coordinates or certifies inconsistency
+by a missing leading pivot. The source loops over all 60 g and all
+32 unit residues modulo 120. Thus existence and nonexistence are both
+determined on every actual affine fiber. Rank-nullity gives precisely
+2^(61-rank) solutions for each consistent base g. No ambient chain
+outside the required boundary fiber is counted.
+
+Each retained chain is explicitly checked to have boundary e_g+e_1,
+then substituted into the full group multiplication and inverse
+formula for conjugacy. There are 40 retained witnesses: five base
+g values for each of eight successful refined residues. The relevant
+linear rank is 48, so every such base coset has 8192 solutions and
+each successful refined unit fiber has 5*8192=40,960 conjugators.
+
+The complete computed lists agree with the source:
+  coarse B, modulo 60:  1,11,19,29,31,41,49,59;
+  coarse T, modulo 60:  1,19,41,59;
+  refined B, modulo120: 1,19,41,59,61,79,101,119;
+  refined T, modulo120: 1,41,79,119.
+All successful coarse fibers have twenty conjugators. Reduction of
+the refined B list modulo 60 equals exactly the coarse T list.
+The refined B/T difference remains visible in the retained output.
+
+For the concrete coarse residue 11, x,y,xy have orders dividing ten,
+so u=1 satisfies the boundary equation. Its defect at k=5 is the
+nonidentity permutation (13)(24) with zero parity coordinate. The
+computed finite section centralizers each have order 16. The image
+of the original dihedral subgroup has order 20 and ten outside
+reflections, while the finite quotient has twenty outside inverters.
+These exact quotient maps and counts account for the finite behavior
+used by the note. The program also checks all 480 reflection-change
+equalities and the original sign action on every coarse unit row.
+
+8. Final scope and disposition
+------------------------------
+The proof establishes the full original and folded solution-space
+homeomorphisms, their literal coordinate inclusion, the exact defect
+identities, the same-level sufficient finite arrow, and the proved
+cofinal reverse finite arrow. The finite homology-cover calculation
+uses a faithful actual quotient and an exhaustive affine computation.
+
+The nonemptiness of T and T_tau, vanishing of the displayed kernel
+intersection, full generation for the arbitrary original alpha, full
+injectivity/surjectivity of tau, and realization in D.74.40 remain
+unresolved. The example is assigned only to its constructed standard
+extension. No general realization is inferred from its finite lists.
+
+All reviewed frozen source, metadata, code, output and dependency
+hashes remain unchanged. The author metadata's historical pending
+review fields are retained verbatim; this separate peer record supplies
+the independent PASS without editing them. No correction is requested.

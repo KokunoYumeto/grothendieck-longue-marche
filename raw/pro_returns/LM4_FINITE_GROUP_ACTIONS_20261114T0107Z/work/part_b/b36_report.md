@@ -1,0 +1,7 @@
+# B.36: all exceptional types completed with exact realization fibers
+
+**Proved and executed.** The extended mapping class groups are C2,C2,V4,GL2Z; their finite subgroup conjugacy counts are2,2,5,13. All finite actions inducing those subgroups isomorphically give3,2,7,17 action rows,29 total over22 subgroup rows. This corrects the request for unique per-subgroup section data: the affine extension choice matters.
+
+The sphere antipodal row has one algebraic full section and no fixed component. Its local fixed-point multiplier is undefined, with the formal negative-half convention recorded separately. The exact antipodal matrix identities are checked. Annulus affine cocycles are stored and satisfy the cocycle identity on every triple; all full/partial sections and their posets are computed. Closed-torus actions are precisely the17 exact affine normal forms with translation kernel one; no finite group is discarded for failing to fix an origin.
+
+Run python work/part_b/code/catalogue_exceptional.py. It imports the complete torus code and writes exceptional_finite_subgroups_and_lifts.csv, exceptional_sections.json, catalogue_exceptional_output.json, and the retained stdout. The output includes puncture/end stabilizers and all defined multipliers. The proof specifies the source and meaning of every realization map and the distinction between full and partial sections in the nonaspherical sphere case.

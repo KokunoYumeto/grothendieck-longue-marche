@@ -1,0 +1,277 @@
+STAGED RESEARCH AUDIT GUIDE
+Full nine-strand source maps and finite S3/A4 marginal images
+No numbered claim has yet been registered from this package.
+
+Accepted F21 and F22 remain frozen. The material below concerns the
+explicit source-map computation left by F22. The finite tests do not
+prove K+=D+, either marginal fullness, or triviality of the original
+F7 residual. The sign-swapping isomorphism is separately staged in
+source_sign_symmetry_notes.txt with its own exact path certificate.
+
+FILES AND REPRODUCTION
+----------------------
+Primary geometry:
+  code/full_cross_source_geometry_stage.py
+  code/full_cross_source_geometry_stage_stdout.txt
+  code/full_cross_source_stage/source_basis.json
+  code/full_cross_source_stage/reference_transport.json
+  code/full_cross_source_stage/meridian_00.json through meridian_26.json
+  code/full_cross_source_stage/summary.json
+Based chart and endpoint whiskers:
+  code/full_cross_source_basepaths_stage.py
+  code/full_cross_source_basepaths_stage_stdout.txt
+  code/full_cross_source_stage/basepath_comparison.json
+Compact marginal braid data:
+  code/full_cross_marginal_braids_stage.py
+  code/full_cross_marginal_braids_stage_stdout.txt
+  code/full_cross_source_stage/marginal_braids.json
+Exact finite scans:
+  code/marginal_s3_source_stage.py
+  code/marginal_s3_source_stage_stdout.txt
+  code/full_cross_source_stage/marginal_s3_scan.json
+  code/marginal_a4_source_stage.py
+  code/marginal_a4_source_stage_stdout.txt
+  code/full_cross_source_stage/marginal_a4_scan.json
+
+Every path here is relative to work/part_a. Run the four stage producers
+and then the two finite scans from any working directory; all import
+and output paths are relative to their own script locations. The primary
+geometry imports the accepted exact field and Bernstein routines from
+c5_seven_kernel_exact.py and cross_divisor_monodromy_f20.py. It does not
+modify those files. The retained unsuccessful runs and their reasons
+are listed at the end of this guide. No discovery output is read.
+
+1. THE ACTUAL SOURCE BASIS
+--------------------------
+The source is the original Y-dagger of F17, now based at s*=2+2i through
+the original F20 polygon eta. There are twenty-seven finite punctures:
+0, the ten points +/-zeta^j, and the sixteen roots of s^2=A_u or B_u.
+The script lists twenty-seven rational centers with denominator 10^6.
+Each lasso uses the square of half-side 10^-4 about its listed center,
+with the straight tail from 2+2i to its northeast corner; the square
+is traversed counterclockwise and the same tail is returned in reverse.
+
+For the eleven old punctures, exact Q(theta) distance proves the known
+root lies within radius r=1/(2*10^4) of its rational center. For each
+collision square V, its center c satisfies |c|>1/2 and
+|c^2-V|<10^-5 by exact number-field inequalities. On |s-c|=r,
+the linear term 2c(s-c) has norm greater than r, while the remaining
+terms have norm less than r^2+10^-5<r. Rouche's theorem therefore
+gives exactly one quadratic root, counted with multiplicity, in that
+circle. The two disjoint centers for each V account for both roots.
+The circle is strictly inside its square.
+
+All twenty-seven squares are disjoint. Every tail is at squared
+distance greater than 2*(10^-4)^2 from every other center, so it
+misses the entire other square. The tail directions have pairwise
+nonzero exact cross products. The source basepoint is northeast of
+every square, so each tail first meets its own square at its northeast
+corner. These data give an actual embedded common-base star and a
+geometric free basis of pi1(Y-dagger). Filling the sixteen collision
+punctures retains the eleven old lassos as a free basis of pi1(Y).
+
+2. NINE ACTUAL LABELS AND THE PROJECTION DEGENERACY
+-------------------------------------------------
+The nine finite target coordinates, with infinity appended, are
+  (0,1,v_1,v_zeta,v_zeta2,v_zeta3,v_zeta4,a,-a),
+with exactly the rational functions of F17. The projection is
+P=1+371i/1000. The initial unperturbed run encountered an actual
+simultaneous event: 0,a,-a are always collinear, so they have equal
+projection when Re(P*a)=0. That run stopped and did not certify a
+pairwise order.
+
+The revised producer uses the constant offset
+  delta_i = 10^-14 * i^2 / P,  0<=i<=8,
+on the corresponding labelled strand. The straight homotopy from
+z_i(s) to z_i(s)+delta_i is certified collision free on every segment.
+For a pair write its original difference as N/D. The exact polynomial
+  |P*N|^2 - (10^-14*(i^2-j^2))^2 * |D|^2
+is proved strictly positive throughout the segment by Bernstein
+subdivision. The full polynomial and all terminal intervals/signs
+are stored. The original denominators have no zero on the source
+paths, since their poles are old punctures inside the excluded boxes;
+the transport and chart paths have constant denominator one.
+The inequality implies |P*(z_i-z_j)|>|P*(delta_i-delta_j)|, which
+excludes a collision throughout the entire offset parameter interval.
+
+The perturbed paths have only simple pairwise projection events.
+The accepted F20 Bernstein/Descartes procedure certifies every root,
+its nonzero height and derivative, strict order relative to all other
+pair events, adjacent-strand interchange, and endpoint permutation.
+For all source lassos and the reference transport there are 137
+forward segments, 4,932 pair checks, and 1,412 crossings. The primary
+run made 846,769 exact Q(theta) sign calls. The return tails use the
+literal inverse braid words of their certified forward tails.
+
+3. THE ORIGINAL ENDPOINT WHISKERS ARE RETAINED
+---------------------------------------------
+The actual source-base configuration is b=phi-dagger(2+2i). Let r be
+the configuration with the same seven old points, positive point
+Rp=8+3i, and negative point Rn=12+6i. The two-segment actual path T
+from r to b first moves Rp straight to a(s*) with Rn fixed, and then
+moves Rn straight to -a(s*) with the positive point fixed. Both
+segments and their offset homotopies are certified.
+
+Let r_std have old labels at 0,1,3,2,4,5,6 in the original label
+order, and new points Rp,Rn. Thus its projection order is
+0,1,v_zeta,v_1,v_zeta2,v_zeta3,v_zeta4,p,n, exactly the F22 convention
+of three retained old positions, four filled old positions, then the
+positive and negative points. The actual path G from r_std to r
+moves the five old v labels one at a time along their stated straight
+segments, keeping both new points and 0,1 fixed. Its five segments
+have ten certified crossings. This identifies an explicit choice of
+the F22 geometric chart: extend this collision-free finite-point
+isotopy, and the subsequent T isotopy, by local disk isotopies. The
+image of a disk containing all old points and p while excluding n
+is the disk used for the F22 section. Its inverse chart is the
+specified inverse basepoint/coordinate isomorphism.
+
+For any configuration z at an endpoint, write
+  H_z(t)=(z_i+t*delta_i)_(0<=i<=8), 0<=t<=1.
+The basepath producer retains the actual values and offsets for
+H_r_std, H_r, and H_b. It checked the original and offset projection
+orders at all 284 segment endpoints, in 10,224 exact pair comparisons.
+The orders agree throughout every endpoint whisker; these endpoint
+paths have zero projected crossings.
+
+Let gamma be any original source-configuration loop at b and let
+subscript 1 denote its offset path. The certified two-parameter
+homotopies give, in the actual configuration path groupoid,
+  gamma = H_b * gamma_1 * H_b^-1,
+  T * H_b = H_r * T_1,
+  G * H_r = H_r_std * G_1.
+Consequently
+  G*T*gamma*T^-1*G^-1
+   = H_r_std * (G_1*T_1*gamma_1*T_1^-1*G_1^-1) * H_r_std^-1.
+This is the exact conjugating whisker equality used by the braid
+data. The computed word is the word at the offset standard chart;
+H_r_std carries it to the original standard chart, preserving the
+ordered Artin generators because it has no projected crossings.
+
+The first two old coordinates during an offset homotopy are constant
+along each configuration loop, with values 0 and 1+t*delta_1. Apply
+the literal affine normalization
+  z_i(t) -> z_i(t)/(1+t*delta_1).
+The denominator is nonzero by the same pairwise certificate for
+labels 0 and 1. Thus the comparisons also commute with the original
+normalized moduli maps, using the exact C x C* x M0,n coordinate
+isomorphism retained in F20 and F22.
+
+Finally the original F19 source basepoint s0 is retained through the
+actual F20 path eta from s0 to s*. The actual target path
+  Xi=G*T*phi-dagger(eta)^-1
+goes from r_std to phi-dagger(s0). Conjugating the original source
+loop eta*g*eta^-1 by Xi gives exactly G*T*phi-dagger(g)*T^-1*G^-1.
+This proves the original-basepoint comparison without requiring a
+replacement of K+, D+, or the source meridians by unnamed conjugates.
+
+4. THE NEW FREE SOURCE SECTION AND THE ORIGINAL ONE
+-------------------------------------------------
+The new twenty-seven lassos, transported by eta, are actual loops
+in the original Y-dagger. Retaining their eleven old loops gives a
+specific section i_geo of the same original filling q:L-dagger->L.
+The old section i of F19 is retained as its own map. Their images
+satisfy
+  c(l)=Phi-dagger(i_geo(l)*i(l)^-1) in K+,
+  j_geo(l)=c(l)*j(l).
+The exact semidirect coordinate comparison is
+  (d,l) in old coordinates -> (d*c(l)^-1,l) in new coordinates,
+with inverse (e,l)->(e*c(l),l). Both express the same actual element
+of the common pullback group. In particular the image of the full
+source filling kernel is the original K+ in either free source basis.
+
+5. COMPACT BRAID WORDS AND THE TWO MARGINAL MAPS
+----------------------------------------------
+Each source word is first conjugated by the certified chart word G.
+Deleting strand 9 gives its positive marginal braid on eight strands;
+deleting strand 8 gives its negative marginal braid. Deleting both
+gives its seven-old-strand braid. Strand deletion is performed by
+tracking actual strand labels through every crossing.
+
+All sixteen collision words have empty freely reduced old braid and
+empty freely reduced opposite marginal braid. Their remaining eight-
+strand linking vector is supported exactly on the selected old/new
+pair. Its value is -1 in the retained projection-height convention.
+This sign is recorded, not replaced. The F22 basis meridian defined
+by beta_i has linking +1 in that braid convention. The source circles
+therefore retain their measured inverse orientation relative to those
+particular basis generators. The algorithms use the complete recorded
+words, so no sign choice is inferred from the final group images.
+
+Long intermediate Artin free words are avoided by the exact decorated
+recurrence. Start with images x_i and conjugators c_i=1. A positive
+crossing sigma_j replaces
+  (x_j,x_j1,c_j,c_j1)
+by
+  (x_j*x_j1*x_j^-1, x_j, x_j*c_j1, c_j),
+and an inverse crossing replaces them by
+  (x_j1, x_j1^-1*x_j*x_j1, c_j1, x_j1^-1*c_j).
+Induction on the Artin substitutions proves these are the evaluated
+images and pure conjugators. For a pure eight-strand braid, initialize
+x_8=1 and put u=c_8^-1. The seven x_i then evaluate the filled base
+automorphism alpha, and conjugation on the point-pushing coordinate is
+  X_i -> u*alpha(X_i)*u^-1.
+This is the actual u=w^-1 coordinate of F20/F22. The positive geometric
+meridian basis is obtained by the involutive triangular substitution
+tau_7; its action is tau_7 conjugated with the preceding action. The
+negative marginal already uses the Artin coordinate retained by F22.
+These rules evaluate the actual maps in any finite group without
+altering their source or target.
+
+6. THE EXHAUSTIVE S3 AND A4 SCANS
+--------------------------------
+F21 implies that the image of each marginal normally generates the
+image of its R target in every finite quotient. In S3, a proper subgroup
+normally generating S3 is a two-element transposition subgroup; all
+proper subgroups of S3 are nilpotent. A possible failure in a map
+V7->S3 therefore has full V7 and R image S3, all four deleted puncture
+values of order one or two, and marginal image in a fixed C2. Global
+conjugation makes it sufficient to test one C2. There are exactly
+54,720 generating tuples with at least one deleted transposition.
+The producer enumerates all of them.
+
+The eight actual signed collision seeds reduce them to 624 tuples
+per sign whose seed images lie in that C2. The eleven actual old
+source generators act on seven-tuples by the evaluated conjugation
+automorphisms above. A tuple represents a marginal image contained
+in C2 precisely when its entire source orbit keeps every seed in C2.
+The producer computes the largest forward-invariant subset of the
+seed-good finite set: repeatedly discard a tuple whose image under
+some source generator is outside the current set. On a finite set
+forward invariance under these permutations includes their inverses.
+Every one of the 624 tuples is discarded in the first step, for each
+sign. Therefore the staged actual marginal map has equal images with
+its R target under every continuous homomorphism V7->S3.
+
+For A4 the producer enumerates its full subgroup lattice from the
+permutation table. Every proper subgroup is abelian, and the proper
+subgroups normally generating A4 are exactly its four order-three
+subgroups. A possible failure therefore has full V7 and R image A4,
+at least one deleted order-three value, every deleted value of order
+one or three, and marginal image in one fixed C3. Global conjugation
+makes that one C3 sufficient. The complete generating candidate count is
+  12^3*(9^4-1) - 4*3^3*(3^4-1) = 11,327,040.
+The script enumerates them in finite batches. The signed seed tests
+leave 15,552 generating tuples for each sign. The same exact source-
+orbit test discards every one of them in its first step, for each sign.
+Thus the staged actual marginal maps have equal images with their R
+targets under every continuous homomorphism V7->A4 as well.
+
+The finite quotient statements concern these two specified groups and
+these actual homomorphisms. They give no equality of the full marginal
+subgroups and no source-membership statement for the interaction
+commutators in W. The product-image theorem already proved in F22
+combines the two actual marginal images; it does not enlarge them.
+
+RETAINED FAILED OR INTERRUPTED ATTEMPTS
+--------------------------------------
+full_cross_source_geometry_stage_attempt1_error.txt records the real
+triple projection event and why the unperturbed pairwise sorter stopped.
+full_cross_marginal_words_stage.py and its partial stdout record the
+interrupted expanded-free-word route. It stopped after source indices
+0--3; no completed marginal output was produced. The compact decorated
+recurrence above supplies the same exact maps with bounded finite
+group arithmetic instead of that unnecessary expansion.
+full_cross_marginal_braids_stage_orientation_note.txt records the
+initial +1 linking assertion and the exact -1 calibration measured for
+all sixteen source circles. No computed braid word was changed.
