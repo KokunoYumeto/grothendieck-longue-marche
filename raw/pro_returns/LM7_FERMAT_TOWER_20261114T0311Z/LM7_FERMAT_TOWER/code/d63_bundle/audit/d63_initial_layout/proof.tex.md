@@ -1,0 +1,619 @@
+\subsection{Integral orthogonal complements and the actual compact cross boundary}
+
+\begin{statement}{D.63}{Proved}{An integral compact correction lifts fifty-two more arithmetic invariant coordinates}
+Keep the actual sources and maps of D.58--D.62:
+\[
+ X=\widehat B/(R_{50}\cap L_2),\qquad
+ Y=X/\mathcal K,\qquad X_{62}=X/\mathcal J_{62}.
+ \tag{D.63.1}
+\]
+Let \(P=U/\mathcal R\) be integral compact homology,
+with its actual perfect alternating intersection form.
+On each of the four small-character orbits of D.60,
+write its already constructed compact decomposition
+as \(P_a=E_a\oplus M_a\). Here \(E_a\) is the sum
+of the four extra projective summands, of fibre rank
+32 over the unramified quadratic coefficient ring,
+and \(M_a\) has fibre rank 16.
+
+The restriction of the intersection form to every
+\(M_a\) is perfect. There are exact integral
+\(G\)-equivariant graph isomorphisms
+\[
+ \psi_a:E_a\xrightarrow{\ \sim\ }\widetilde E_a=M_a^\perp,
+ \qquad P_a=\widetilde E_a\mathbin{\perp}M_a.
+ \tag{D.63.2}
+\]
+They retain the kernel of each old compact projector.
+They have affine lifts inside the actual kernel
+\(\mathcal L=\ker(U^-\to U_*^-)\), and every old
+central projector kernel used in \(\mathcal J_{62}\)
+is unchanged. The proof supplies the actual graph,
+affine inclusion and retraction maps; it does not
+identify two differently marked embeddings without
+these maps.
+
+Let \(\widetilde e_{a,i}\) be the resulting affine
+projectors onto the four summands of
+\(\widetilde E_a\), and let \(m_a\) be the compatible
+affine projector onto \(M_a\). Both kill all cusp
+homology. With the cross-projector convention of D.60,
+put
+\[
+ \begin{aligned}
+ \Pi_{63}&=e_\Delta\sum_{a=1}^4\sum_{i=1}^4
+                   (\overline{\widetilde e}_{a,i}\boxtimes\bar m_a),\\
+ \mathcal C_{63}&=\Pi_{63}Z,\qquad
+ \mathcal J_{63}=(1-\Pi_{63})\mathcal J_{62}.
+ \end{aligned}
+ \tag{D.63.3}
+\]
+These are actual equivariant central submodules, and
+\[
+ \begin{gathered}
+ \mathcal C_{63}\subset\mathcal J_{62},\qquad
+ \mathcal J_{62}=\mathcal C_{63}\oplus\mathcal J_{63},\\
+ \dim\mathcal C_{63}=40960,\qquad
+ \dim(\mathcal C_{63})_G=52,\\
+ \nu:(\mathcal C_{63})_G\xrightarrow{\ \sim\ }\mathcal C_{63}^G,
+ \qquad \bigwedge^2\pi\text{ is injective on }\mathcal C_{63}.
+ \end{gathered}
+ \tag{D.63.4}
+\]
+The exact orbit contributions are
+\[
+ \begin{array}{c|r|r|c}
+ \ell&\dim\mathcal C_{63,\ell}&\dim(\mathcal C_{63,\ell})_G
+     &\text{four individual norm ranks}\\\hline
+ (0,0,0,1)&8192&12&(4,4,4,0)\\
+ (0,0,1,1)&12288&16&(4,4,4,4)\\
+ (0,0,1,2)&12288&16&(4,4,4,4)\\
+ (0,1,0,0)&8192&8&(2,2,2,2)
+ \end{array}
+ \tag{D.63.5}
+\]
+
+There is an actual continuous peripheral automorphism of
+\[
+                         X_{63}=X/\mathcal J_{63}.
+ \tag{D.63.6}
+\]
+It has multiplier one, fixes the original cusp \(t\),
+is identity on \(G\), and retains the complete D.57
+action with its literal compatible conjugators.
+Its full \(\mathcal W_h\) action, normalized parameter
+and all established metabelian and CM comparisons
+through that map are unchanged.
+
+Here is the exact change of representative on \(Y\).
+Write \(T=T_{61}\) for the integral homology action
+of D.62 and \(e=\sum_{a,i}\widetilde e_{a,i}\).
+The new integral homology action is
+\[
+                    T_{63}=(1-e)T(1-e)+e.
+ \tag{D.63.7}
+\]
+It is an automorphism and is identity on all
+\(\widetilde E_a\). There is a continuous derivation
+\(\eta:Y\to eU\), whose restriction to \(U\) is
+\(e\), with \(\eta(t)=0\) and peripheral coboundaries.
+Define
+\[
+ \begin{aligned}
+ A_0&=-(1-e)T|_{eU}:eU\longrightarrow\mathcal L,\\
+ \beta_Y(g)&=(A_0\eta(g))\alpha_{62,Y}(g).
+ \end{aligned}
+ \tag{D.63.8}
+\]
+The coefficient in the second line is the actual
+element of the abelian kernel \(\mathcal L\subset Y\).
+After the self-block corrections of D.62, the resulting
+\(Y\)-action is
+\[
+                  \operatorname{Int}(b_{t,Y})\beta_Y,
+ \qquad
+ b_t=\prod_j\prod_{k=0}^{35}t^ku_jt^{-k},\quad u_j\in S_{57}.
+ \tag{D.63.9}
+\]
+The vectors of the \(u_j\) are the transported D.62
+correction vectors selected by the actual boundary.
+The element \(b_{t,Y}\) centralizes \(t\), has zero
+image in \(X_*\) and \(\mathcal W_h\), and acts
+trivially on integral homology. Thus the projection
+to \(X_{62}\) is an actual newly constructed action;
+(D.63.8)--(D.63.9) specify its comparison with the
+chosen D.62 representative.
+
+All source kernels are retained explicitly:
+\[
+ \begin{aligned}
+ \ker(X_{63}\to X_{62})&=\mathcal C_{63},\\
+ \ker(X_{63}\to Y)&=(1-e_\Delta)\mathcal K
+       \oplus\mathcal C_{59}\oplus\mathcal C_{60}
+       \oplus\mathcal C_{61}\oplus\mathcal C_{62}\oplus\mathcal C_{63},\\
+ \ker(X\to X_{63})&=\mathcal J_{63},\\
+ \dim\mathcal J_{63}&=48w-2560-5308416\kappa-81920.
+ \end{aligned}
+ \tag{D.63.10}
+\]
+The specified small-character residual has dimension
+284160 and coinvariant dimension 482. Its compact
+norm has rank six and kernel dimension 476. With
+\[
+ S_{63}=\{b\in R_{50}:
+       \operatorname{im}_{\mathcal T_2}(b)\in\mathcal J_{63}\},
+ \qquad S_{63}/(R_{50}\cap L_2)=\mathcal J_{63},
+ \tag{D.63.11}
+\]
+this is a nonzero remaining actual source kernel.
+Its boundary and the full profinite realization
+remain unresolved. The manuscript passages are
+Part D(e), section 51.16, folio 734 verso, scan 174,
+and section 51.15, folios 725--727, scans 156--160.
+\end{statement}
+\begin{proof}
+\emph{The compact markings and the projective types.}
+All maps start from the marked arithmetic quotient
+\(G\to G^\dagger=(\mathbb Z/3)^4\rtimes Q\to G_*\)
+of D.60.2. The same forty unordered characters are
+used, with their original pair-coset representatives.
+On one character fibre, the actual affine module has
+rank 96 over \(\mathbb F_4\), its cusp submodule has
+rank 48, its compact quotient has rank 48, and its
+small compact target has rank four.
+
+The program \path{d_compact_splitting_maps.py} checks
+the actual compact quotient map, the small map and
+their square on every matrix column. For the old
+orbits the retained compact decomposition is exactly
+\([E_0,E_1,P_0]\), with ranks \((16,16,16)\).
+The last block is \(M_a\); the first two split into
+the four rank-eight extra summands. The program
+checks these positions against both recorded actual
+affine embeddings and the compact target map.
+For the new orbits it uses the D.61 rank-32
+projective embedding and its recorded rank-16
+complement, and checks all stabilizer intertwiners.
+
+The full unordered Sylow orders, real dimensions
+and norm ranks are
+\[
+ \begin{array}{c|r|r|r|r|r|r|r}
+ \text{orbit size}&|P_2|&\dim E&\operatorname{rank}N_{P_2}|E
+   &\dim M&\operatorname{rank}N_{P_2}|M
+   &\dim\mathcal R&\operatorname{rank}N_{P_2}|\mathcal R\\\hline
+ 8&8&64&8&32&4&96&12\\
+ 12&16&64&4&32&0&96&6
+ \end{array}
+ \tag{D.63.12}
+\]
+This uses the semilinear exchange element as well as
+the oriented stabilizer. To justify the projectivity
+test, choose vectors with independent norm images.
+They define a map from the corresponding number of
+regular modules. A nonzero kernel would contain a
+nonzero invariant vector, since every nonzero module
+of a finite two-group in characteristic two has one.
+The invariant vectors of a sum of regular modules
+are precisely its independent norm vectors, so that
+kernel is zero. Equality of dimensions makes the
+map an isomorphism. Restriction to a Sylow subgroup
+detects projectivity: induction followed by the
+coset trace splits the original module because the
+index is odd. This proves projectivity of all the
+cusp modules and all extra summands in (D.63.12).
+Induction over the actual pair cosets and odd
+averaging along the character subgroup and
+\(G\to G^\dagger\) give their projective modules
+over the full actual group \(G\).
+
+In the new orbits the norm on the oriented
+Sylow \(D_8\) of the complement is already zero,
+as checked in D.61. A nonzero projective summand
+would restrict to a nonzero free module with
+nonzero norm. Hence these complements have no
+projective direct summand.
+
+In the old orbits both pieces are projective, but
+their indecomposable projective types are disjoint.
+The normal \(V_4\)-coinvariant top is a module for
+the odd complement \(C_3^2\). The extra and cover
+weight supports, in the original two-generator
+marking, are
+\[
+ \begin{array}{c|c|c}
+ \ell&\text{extra support}&\text{cover support}\\\hline
+ (0,0,0,1)&\{(0,1),(0,2),(1,0),(2,0)\}
+                       &\{(1,2),(2,1)\}\\
+ (0,1,0,0)&\{(0,1),(0,2),(1,1),(2,2)\}
+                       &\{(0,0),(1,2),(2,1)\}.
+ \end{array}
+ \tag{D.63.13}
+\]
+The normal \(V_4\) augmentation ideal is nilpotent,
+and its quotient algebra is the split semisimple
+algebra of \(C_3^2\). Thus these are exactly the
+simple types of the projective tops. Their duals
+negate the weights: the \(V_4\) socle is its norm,
+which the odd complement preserves. Each extra
+support is closed under negation and is disjoint
+from its cover support. Consequently the old
+\(E_a^*\) and \(M_a\) have no common projective
+direct summand. The displayed weights and their
+multiplicities are recomputed from all actual
+matrices in the certificate.
+
+\emph{The perfect restricted form and the exact graph.}
+Work first on the actual integral compact lattices.
+The character-orbit summands are mutually orthogonal:
+invariance under the odd character group pairs a
+character only with its inverse. Since each entire
+unordered orbit is retained, the intersection form
+on \(P_a\) is perfect.
+
+Write its isomorphism \(P_a\to P_a^*\) and inverse
+in blocks for \(P_a=E_a\oplus M_a\). If the lower
+diagonal blocks are \(D_a:M_a\to M_a^*\) and
+\(D_a':M_a^*\to M_a\), multiplication gives
+\[
+                     D_a'D_a=1_{M_a}-C_a'B_a.
+ \tag{D.63.14}
+\]
+The last endomorphism factors through \(E_a^*\).
+Modulo two, an invertible Fitting summand of it
+would split off from both \(M_a\) and \(E_a^*\):
+compose the two factor maps with the inverse on
+that summand to obtain the retraction and inclusion.
+For the new orbits this contradicts the absence
+of projective summands in \(M_a\). For the old
+orbits it contradicts (D.63.13), after restriction
+to the oriented stabilizer. The Fitting summand
+is therefore zero, the factor endomorphism is
+nilpotent, and (D.63.14) is invertible modulo two.
+It follows that \(D_a\) is invertible integrally.
+
+Let \(C_a:E_a\to M_a^*\) be the lower off-diagonal
+block of the intersection form. The actual map in
+(D.63.2) is
+\[
+       \psi_a(v)=v-\iota_{M_a}D_a^{-1}C_a(v).
+ \tag{D.63.15}
+\]
+It has the same \(E_a\)-coordinate as \(v\), pairs
+to zero with all \(M_a\), and is an isomorphism
+onto \(M_a^\perp\). In particular the new compact
+projector is \(\psi_a e_{a,c}\), where \(e_{a,c}\)
+is the old compact projector. Its kernel is still
+\(M_a\). Each of the four individual projectors
+is transported by this same graph map.
+
+Let \(\theta_P:P\to P_*\) be the actual compact
+map. The perfect forms define the equivariant
+adjoint \(\theta_P^\dagger:P_*\to P\), by
+\[
+       \langle\theta_Pv,w\rangle_*
+                  =\langle v,\theta_P^\dagger w\rangle.
+ \tag{D.63.16}
+\]
+For each of the four fibres the certificate forms
+every coefficient equation
+\(E_gH=H(P_*)_g\) for the actual oriented generators.
+Their rank is 128 on the 128-dimensional
+\(\mathbb F_4\) space of maps from the rank-four
+target to the rank-32 extra part. Thus
+\(\operatorname{Hom}_G(\bar P_*,\bar E_a)=0\).
+An integral equivariant map reducing to zero is
+twice another such map, since the target lattice
+is free. Iteration and separatedness give
+\(\operatorname{Hom}_G(P_*,E_a)=0\).
+Consequently \(e_{a,c}\theta_P^\dagger=0\), so its
+image in this orbit lies in \(M_a\). Equations
+(D.63.15)--(D.63.16) and perfection on \(P_*\)
+give the exact conclusion
+\[
+                         \theta_P\widetilde E_a=0.
+ \tag{D.63.17}
+\]
+
+\emph{Affine inclusions inside the retained source kernel.}
+The integral cusp map is onto. Indeed the actual
+orders of the marked cusp in \(G\) and \(G_*\)
+are 36 and 12. A source boundary loop
+\(g t^{36}g^{-1}\) maps to the cube of its target
+boundary loop. Every target cusp has a source
+preimage; multiplication by three is a unit over
+\(\mathbb Z_2\), and the single sum relation maps
+to the corresponding sum relation. These literal
+boundary maps prove surjectivity, also after the
+odd character projectors. The finite certificate
+checks its rank four on every target cusp fibre.
+
+The diagram with exact rows
+\(0\to\mathcal R\to U\to P\to0\) and its small
+counterpart therefore gives an onto map
+\[
+ \ker\theta_U\longrightarrow\ker\theta_P.
+ \tag{D.63.18}
+\]
+Its restriction to the active part is the same
+map with source \(\mathcal L\). Projectivity of
+\(\widetilde E_a\), which is integrally isomorphic
+to \(E_a\), lifts its inclusion in (D.63.17)
+through (D.63.18). Denote the resulting inclusion
+by \(j_a:\widetilde E_a\hookrightarrow\mathcal L\).
+Compactification is exactly the prescribed inclusion,
+so this is a split injection of free lattices.
+This proves the affine small-map zero without
+postulating a stronger affine Hom vanishing.
+
+Write \(U_\Sigma,\mathcal R_\Sigma,P_\Sigma\) for
+the sums of these four character components.
+On this specified part the cusp lattice is integrally
+projective. Its projective reduction in (D.63.12)
+lifts to an idempotent projective lattice; projectivity
+lifts an isomorphism modulo two onto the actual
+cusp lattice. The resulting map is an isomorphism
+by its invertible reduction. The dual cusp lattice
+is also projective, since the dual of a regular
+group-ring lattice is regular. Dualizing the affine
+exact sequence therefore splits it, and dualizing
+back supplies a retraction
+\(r:U_\Sigma\to\mathcal R_\Sigma\).
+This argument requires no projectivity of \(P\).
+
+Replace this retraction by
+\[
+                  r'=r-\sum_a rj_a\widetilde e_{a,c}\pi.
+ \tag{D.63.19}
+\]
+It is still identity on \(\mathcal R_\Sigma\) and vanishes
+on all \(j_a\widetilde E_a\). Thus \(1-r'\)
+induces a compact section
+\(j_P:P_\Sigma\to U_\Sigma\) agreeing
+with the chosen \(j_a\) on these summands. Set
+\[
+ \widetilde e_{a,i}=j_a\psi_a e_{a,i,c}\pi,
+ \qquad m_a=j_P(1-\widetilde e_{a,c})\pi
+       \quad\text{on the }a\text{th orbit}.
+ \tag{D.63.20}
+\]
+Extend the projectors by zero on all other character
+components. These are mutually orthogonal equivariant affine
+idempotents; they kill cusps and inject under
+compactification. Their reductions have precisely
+the old module matrices in the transported bases.
+
+There is an explicit comparison with the old affine
+marking. Let \(e^{\rm old}\) be the sum of its
+sixteen old projectors, and use the old compact
+inclusion to interpret \(\psi\pi e^{\rm old}\).
+Then
+\[
+          \Psi=1-e^{\rm old}+j\psi\pi e^{\rm old}:U\to U
+ \tag{D.63.21}
+\]
+is an integral equivariant automorphism, with
+\((\Psi-1)^2=0\), \(\theta_U\Psi=\theta_U\), and
+\(\Psi|_{\mathcal R}=1\). Its new projectors satisfy
+\(\widetilde e_{a,i}=\Psi e_{a,i}^{\rm old}\),
+and the old projectors satisfy
+\(e_{a,i}^{\rm old}\Psi=e_{a,i}^{\rm old}\).
+The exterior map \(\bigwedge^2\Psi\) carries every
+old selected self or cross image to its new image
+and has the same kernel on that projector.
+It also satisfies
+\(\theta_Z\bigwedge^2\bar\Psi=\theta_Z\), so it
+preserves the actual comparison kernel \(\mathcal K\).
+It fixes the other character orbits. In particular
+the literal submodule \(\mathcal J_{62}\) is unchanged.
+
+\emph{The integral homology action and its actual peripheral realization.}
+D.60--D.62 give
+\(e_{a,i}^{\rm old}T=e_{a,i}^{\rm old}\).
+Hence \(eT=e\) for the new total projector.
+The kernel \(\ker e\) is invariant under \(T\),
+and its restriction is an automorphism, since
+\(T\) is an automorphism and induces identity on
+the quotient \(eU\). Relative to
+\(U=eU\oplus\ker e\), its matrix is
+\(\left(\begin{smallmatrix}1&0\\ C&D\end{smallmatrix}\right)\).
+Formula (D.63.7) replaces this by
+\(\left(\begin{smallmatrix}1&0\\0&D\end{smallmatrix}\right)\).
+Thus \(T_{63}\) is invertible, fixes all cusps,
+retains \(\theta_UT_{63}=T_*\theta_U\), and its
+difference from \(T\) is \(A_0e\).
+The image of \(A_0\) is in \(\mathcal L\) because
+\(\theta_U eU=0\) and the old small square commutes.
+
+The projective module \(eU\) has zero positive
+cohomology over the finite group \(G\).
+Inflation--restriction therefore lifts the actual
+equivariant map \(e:U\to eU\) to a continuous
+derivation of \(\widehat B\). Its value on
+\(t^{36}\) is zero, since \(e\) kills cusp homology.
+On the projective cyclic module, the exact norm
+sequence gives
+\(\ker N_{36}(t)=(1-t)eU\); subtract the corresponding
+inner derivation to make its value on \(t\) zero.
+The same projective norm sequence for \(s\) and
+\(r\) gives actual peripheral values
+\[
+ \eta(s)=(1-s)d_s,\qquad
+ \eta(r)=(1-r)d_r,\qquad \eta(t)=0,
+             \qquad d_s,d_r\in eU.
+ \tag{D.63.22}
+\]
+All these assertions hold over \(\mathbb Z_2\):
+the regular-module cyclic identities split, and
+direct summands preserve their exactness.
+The derivation kills the kernel of the full
+homology source \(\mathcal J_\infty\) of D.50,
+so it factors through \(Y\).
+
+Composing with the actual map \(A_0:eU\to\mathcal L\)
+gives a derivation with values in the abelian
+kernel of \(Y\to X_*\). Since \(\alpha_{62,Y}\)
+is identity on \(G\), the multiplication formula
+in (D.63.8) is a homomorphism. Its peripheral
+conjugators change by \(A_0d_s,A_0d_r\), which
+have zero images in \(X_*\) and \(\mathcal W_h\).
+It fixes \(t\) and induces the invertible matrix
+\(T_{63}\). Its maps on the quotient and on the
+kernel in the D.58 fibre product are automorphisms,
+so it is an actual automorphism of \(Y\).
+Each new conjugating element has an actual lift
+in \(S_{57}\) by D.58.2. Choosing these lifts gives
+the literal source conjugators used below.
+
+\emph{The cross-module norms and the actual boundary zero.}
+In a transported fibre, a cross block has coordinates
+\(\operatorname{Mat}_{8\times16}(\mathbb F_4)\),
+of dimension 256 over \(\mathbb F_2\). An oriented
+stabilizer element acts by
+\(H\mapsto E_gH\overline{M_g}^{\,t}\); a character
+exchange applies coefficient conjugation as well.
+The program \path{d_all_compact_cross_norm.py}
+forms every such column, all relations \((g-1)H\),
+and their complete group norm. It verifies that
+the norm kills every relation and that every norm
+column is invariant. The quotient dimension equals
+the norm rank in each of all sixteen blocks,
+with the values in (D.63.5). Induction over the
+actual pair cosets multiplies dimensions by eight
+or twelve and leaves coinvariants and norm ranks
+as displayed. This proves (D.63.4).
+
+The compact action of \(T_{63}\) is block diagonal
+on the actual orthogonal decomposition
+\(\widetilde E_a\perp M_a\), and is identity on
+the first part. The compact orientation bivector
+has zero cross projection there. Its image under
+\(\bigwedge^2\overline T_{63}\) has the same zero
+projection. For a preliminary source lift with
+\(\varphi(t)=zt\), D.55's full, unquotiented
+orientation identity therefore gives
+\[
+             (\bigwedge^2\pi)\nu([\Pi_{63}z])=0.
+ \tag{D.63.23}
+\]
+Both maps on this selected module are injective
+by (D.63.4), so the actual cross boundary class is
+zero. This evaluates the boundary through its
+actual orientation map, rather than transferring
+a conclusion from the separate order-1080 example.
+
+The chosen affine complement can have cusp terms
+under \(T_{63}\). This does not affect descent:
+its projected action satisfies
+\[
+ \widetilde e_{a,i}T_{63}=\widetilde e_{a,i},\qquad
+ m_aT_{63}=D_{a,c}m_a,
+ \tag{D.63.24}
+\]
+where \(D_{a,c}\) is the compact complement action
+expressed on the chosen affine section. The second
+formula follows by compactification; both sides
+kill cusps and all other components. Thus the
+kernel of each cross projector is invariant,
+with invertible induced map on its image.
+
+\emph{Retaining the earlier coordinates and correcting the source.}
+The graph comparison (D.63.21) preserves every old
+central projector kernel. Moreover the sixteen
+new projectors have fixed left rows for \(T_{63}\).
+The D.60 and D.61 selected self and cross norms
+therefore still force zero boundary on their
+injective-norm components. The D.59 selected
+character orbits are unchanged.
+
+For the remaining twenty-six self coordinates,
+transport the exact D.62 maps by \(\Psi\):
+\[
+ [v]\longmapsto[e_\Delta(v\wedge sv)]_G,
+ \qquad
+ [v]\longmapsto[e_\Delta(v\wedge N_{36}(t)v)]_G.
+ \tag{D.63.25}
+\]
+The homology vectors now lie in the actual
+\(\widetilde E_{a,i}\subset\mathcal L\); their
+matrices, induced coset bases and all twenty-six
+independent columns are unchanged through the
+proved module isomorphism. D.58.2 supplies their
+actual preimages \(u_j\in S_{57}\).
+The source involution words
+\(u\widetilde s(u)\) and cusp words
+\(\prod_{k=0}^{35}t^kut^{-k}\) are exactly those
+of D.62, with the new source conjugators.
+In particular the wrap term is still
+\(t^{36}ut^{-36}\), not \(u\).
+Their errors lie in the selected self block plus
+terms with a cusp factor. Hence their projection
+to \(\mathcal C_{63}\) is zero. They cancel the
+whole self norm kernel, change the \(Y\)-action
+by precisely (D.63.9), and retain its homology.
+
+Every now retained central boundary class is zero.
+The exact augmentation map
+\((b,c)\mapsto(1-s)b+s(1-r)c\) realizes its remaining
+representative as actual central changes of the
+two conjugators. These corrections preserve \(Y\)
+and the complete \(X_*\) conjugators. The final
+cusp error lies in \(\mathcal J_{63}\).
+The defining class-two laws and the projector
+kernel identities give descent through that
+submodule. The invertible Frattini map gives an
+automorphism of the finite class-two component;
+its common quotient with the full homology and
+\(\mathcal W_h\) sources remains equivariant.
+Their actual marked fibre product is exactly
+\(X/\mathcal J_{63}\). This proves (D.63.6).
+
+\emph{The actual remaining kernel and the computation record.}
+The image of every cross projector is in
+\(\mathcal J_{62}\): its first factor has zero
+small image, its second is killed by every old
+extra projector, and its character support is
+disjoint from the D.59 support. Thus (D.63.3)
+is a direct sum decomposition inside the literal
+old source kernel. Subtracting its dimensions
+gives
+\[
+            325120-40960=284160,\qquad
+                         534-52=482.
+ \tag{D.63.26}
+\]
+The original compact norm rank in D.60 was 138.
+D.60, D.61 and D.62 removed ranks 28, 50 and 2,
+respectively. The present compact-injective norm
+image removes rank 52, leaving
+\[
+                138-28-50-2-52=6,
+                   \qquad 482-6=476.
+ \tag{D.63.27}
+\]
+The compact projectors make these images direct:
+they kill the complementary residual and are
+identity on their own compact norm images.
+Consequently these are ranks of the actual
+remaining comparison maps, not dimension estimates.
+Taking a nonzero residual vector and its source
+preimage under \(R_{50}\to Z\) gives (D.63.11)
+and proves that the remaining kernel is nonzero.
+
+The complete programs also retain a separate new-orbit
+cross calculation and the cusp/complement module
+calculation, with every original output. Two abandoned
+old-orbit extractions are preserved in the trial record:
+one assumed zero cross coinvariants, and another used
+the wrong position of \(P_0\) in the recorded basis.
+Neither is used in this proof. The final verifier
+checks that position against the actual target and
+affine maps before extracting any action. Its first
+corrected mathematical run had a wall-clock variable
+collision; that complete run is preserved, and the
+fresh timing-corrected run has identical mathematical
+fields. The separate splitting verifier's initial
+missing input-key error is also retained. The final
+four programs and all their complete outputs are
+replayed independently from copied immutable inputs.
+\end{proof}

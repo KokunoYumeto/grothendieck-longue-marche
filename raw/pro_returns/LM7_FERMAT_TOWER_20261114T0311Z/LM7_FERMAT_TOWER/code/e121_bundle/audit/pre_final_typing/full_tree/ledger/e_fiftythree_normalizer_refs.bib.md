@@ -1,0 +1,1 @@
+% verified: E121 reuses E_MilneCFT, E_LemmermeyerAmbiguous and E_PARICertifiedUnits. Exact proof scope and actual norm/transfer derivation are in e_fiftythree_normalizer_source_evidence.json. No duplicate bibliography keys.

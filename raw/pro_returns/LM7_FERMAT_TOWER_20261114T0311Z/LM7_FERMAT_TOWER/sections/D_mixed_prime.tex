@@ -1,0 +1,275 @@
+\subsection{A compatible mixed-prime refinement}
+
+\begin{statement}{D.28}{Proved}{An extra CM action through a mixed two--three kernel}
+Keep $B=C_2*C_3$, $q:B\twoheadrightarrow Q$, $N$, $G_3$,
+$H_2$ and $\mathcal P_3$ from D.25--D.27. Let
+$V=\mathbb F_4$, viewed additively as $\mathbb F_2^2$.
+The $Q$-action on $V$ factors through
+\[
+ Q\longrightarrow \mathrm{SL}_2(\mathbb F_3)/Q_8\simeq C_3;
+ \qquad s|_V=I_2,\qquad
+ r|_V=\begin{pmatrix}0&1\\1&1\end{pmatrix}.              \tag{D.28.1}
+\]
+In the ordered rank 97 graph basis of D.25, define
+$\varphi:N^{\rm ab}/2\twoheadrightarrow V$ by the two
+binary row masks
+\[
+ \texttt{1860e0d6cb6b6efc923133e5a}_{16},\qquad
+ \texttt{1231c145bdbd87ed2d1f1a136}_{16},                 \tag{D.28.2}
+\]
+where bit $i$ is the coefficient of basis vector $i$, starting
+at $i=0$. This is a $Q$-equivariant epimorphism. Its kernel is
+independent of multiplying $\varphi$ by a nonzero scalar in
+$\mathbb F_4$. Put
+\[
+ L=\ker(N\longrightarrow V),\quad H=B/L,\quad
+ J=B/\bigl([L,L]L^3\bigr).                              \tag{D.28.3}
+\]
+These are specified discrete finite quotients, with
+\[
+ |H|=2304,\quad \operatorname{rank}L=385,\qquad
+ 1\longrightarrow\mathbb F_3^{385}\longrightarrow J
+       \longrightarrow H\longrightarrow1.             \tag{D.28.4}
+\]
+The extra matrix pair
+\[
+ A=I,\qquad \beta=\begin{pmatrix}9&8\\4&9\end{pmatrix}\pmod{12}
+                                                               \tag{D.28.5}
+\]
+admits a cusp-preserving automorphism of $J$ with multiplier
+$\lambda=1$. It can be chosen to agree with D.27's alternate
+action on the exact common quotient
+\[
+                    C=H\times_QG_3.                   \tag{D.28.6}
+\]
+Consequently there is one compatible automorphism, with
+specified elliptic conjugators and multiplier one, of
+\[
+ \mathcal R=J\times_C
+          \bigl(H_2\times_Q\mathcal P_3\bigr).          \tag{D.28.7}
+\]
+The canonical continuous map $\widehat B\twoheadrightarrow
+\mathcal R$ is onto. One global cusp gauge gives compatible
+nonarithmetical GT$_0$ shadows on every finite characteristic
+refinement of its $G_6$ quotient within $\mathcal R$.
+
+This refinement retains a mixed-prime action in the kernel:
+\[
+ \ker(J\to Q)\simeq
+        \mathbb F_3^{385}\rtimes C_2^2,\qquad
+ \dim_{\mathbb F_3}(\mathbb F_3^{385})^{C_2^2}=97.       \tag{D.28.8}
+\]
+The semidirect-product identification is noncanonical; the
+kernel, its normal three-subgroup and their action are
+canonical in (D.28.3). In particular $J$ is not a quotient
+of any product over $Q$ of relative pro-prime completions
+whose kernel is a direct product of pro-$p$ groups. The
+maximal quotient of $J$ with nilpotent kernel over $Q$ is
+exactly $C$. The full profinite realization of (D.28.5)
+remains the all-finer-quotient question of D.22.
+\end{statement}
+\begin{proof}
+Write $C_N=H_1(N\backslash\mathcal T,\mathbb F_2)$, where
+$\mathcal T$ is the Bass--Serre tree used in D.25. A group
+of order three acts irreducibly on the two-dimensional
+space in (D.28.1), and
+$\operatorname{End}_Q(V)=\mathbb F_4$. The exact equations
+for a matrix $Z:C_N\to V$ are
+\[
+ ZM(s)=Z,\qquad ZM(r)=
+       \begin{pmatrix}0&1\\1&1\end{pmatrix}Z.           \tag{D.28.9}
+\]
+The program \texttt{a\_mixed\_module\_explore.py} solves
+these equations over $\mathbb F_2$. Their solution space
+has dimension two, and the first basis matrix is (D.28.2).
+Both displayed equations are checked on all 97 columns.
+The matrix has rank two, so it is onto. Every nonzero
+solution is obtained from it by a nonzero scalar in its
+endomorphism field: this gives the stated independence
+of its kernel. It also proves that $L$ is preserved by
+any automorphism of $\widehat B$ inducing the identity on
+$Q$, through the induced $Q$-equivariant action on
+$N^{\rm ab}/2$. Normality of $L$ in $B$ follows directly
+from (D.28.9).
+
+For clarity, the finite extension $H$ is computed with its
+extension class, not replaced by a split extension. Let
+$P(q)$ be the fixed path chain to the representative of
+$q\in Q$ in D.25. For $q,q'\in Q$ the chain
+$P(q)+qP(q')-P(qq')$ is a cycle. Set
+\[
+ c(q,q')=\varphi\bigl(P(q)+qP(q')-P(qq')\bigr)\in V.
+\]
+Then $H$ consists of the 2304 pairs $(q,v)$ with law
+\[
+ (q,v)(q',v')=(qq',v+qv'+c(q,q')).                      \tag{D.28.10}
+\]
+The cocycle identity follows by cancelling the four path
+expressions in the associativity equation. This is the
+actual quotient $B/L$: the path construction sends its
+generators to $(s,0),(r,0)$ and restricts to $\varphi$ on
+$N$. Its kernel is therefore exactly $L$. The code also
+checks that these generators reach all 2304 pairs.
+The $H$-cover of the graph has 2304 edges and
+$2304/2+2304/3=1920$ vertices. Its free fundamental group
+has rank $2304-1920+1=385$, proving (D.28.4) after
+abelianization modulo three.
+
+Here are the complete finite lifting equations. Put
+$C_L=H_1(L\backslash\mathcal T,\mathbb F_3)$ and use the
+oriented graph's spanning-tree basis. Let $a,b\in H$ be
+candidate reductions of $A,\beta$, and put
+\[
+ s'=bsb^{-1},\quad r'=ara^{-1},\quad t=sr.
+\]
+The finite checks first require $s'r'=t$ and that the
+assignment $s\mapsto s'$, $r\mapsto r'$ is an automorphism
+$\alpha_H$ of $H$. They evaluate its map on every one of
+the 2304 elements and verify both generator transitions.
+If $a_1,b_1\in C_L$ are the left correction coordinates
+of the two conjugators, their cusp equation is
+\[
+ (1-s')b_1+s'(1-r')a_1=-d,                              \tag{D.28.11}
+\]
+where the actual path-chain defect is
+\[
+ d=(1-s')P(b)+s'\bigl((1-r')P(a)+aP(r)\bigr)-P(t).
+                                                               \tag{D.28.12}
+\]
+All actions in these formulas are the left permutation
+action on the edges of the $H$-cover. Thus both sides
+are elements of the specified385-dimensional cycle
+space; membership is checked by reconstruction from
+their chord coordinates.
+
+The compatibility conditions determine which finite
+solution we use. In the coordinates (D.28.10), the
+corrected conjugators of D.27 reduce to
+\[
+ a=(1,(1,0)),\qquad b=(q(\beta),(1,1)).                 \tag{D.28.13}
+\]
+To obtain the second coordinate one must include D.27's
+right $s$-centralizer correction. The program evaluates
+(D.28.2) on its full corrected homology mask, and
+obtains the bit values1 and 3 in (D.28.13).
+The desired reductions in $G_3$ are $A_3=1$ and
+\[
+                  P(\beta_3)=P(q(\beta))+2c_{39},     \tag{D.28.14}
+\]
+where $c_{39}$ is the basis cycle numbered39 in D.25.
+These are exactly D.27's retained mod-three conjugators.
+
+The inclusion $L\hookrightarrow N$ induces the map
+$C_L\to N^{\rm ab}/3$ obtained by summing each edge chain
+over the four edges above each edge of the $Q$-cover.
+It has rank 97. Applying this explicit map to the two
+corrected path chains gives194 further linear conditions
+imposing (D.28.14). Together with (D.28.11) the resulting
+system has rank 482 in 770 variables, and hence an affine
+solution space of dimension 288. No arithmetic or
+profinite lifting assumption enters this finite system.
+
+The file \texttt{a\_mixed\_prime\_compatible.json}
+contains its two complete385-coordinate solution vectors.
+The 22nd tested vector in the deterministic enumeration
+has invertible kernel action. The test of invertibility
+uses the actual equivariant graph map: the base edge is
+sent to the path
+\[
+        e_a+P(a)+a_1-P(b)-b_1,                          \tag{D.28.15}
+\]
+and edge $h$ is sent to its translate by $\alpha_H(h)$.
+The induced385 by 385 matrix has rank 385 over
+$\mathbb F_3$. The program additionally reconstructs all
+385 free basis words of $L$, checks that each gives its
+claimed fundamental cycle, and evaluates each basis
+image from the substituted $s,r$ words. All 385 columns
+agree with the matrix from (D.28.15). Finally the
+corrected54658-letter cusp word
+\[
+       \beta s\beta^{-1}ArA^{-1}(sr)^{-1}
+\]
+is evaluated directly: its $H$-coordinate and all 2304
+edge-chain coordinates are zero. These checks certify
+existence independently of the random search method
+used to locate the recorded vectors.
+
+The resulting homomorphism $B\to J$ preserves $L$ because
+its reduction is $\alpha_H$. It kills $[L,L]L^3$, and so
+induces an endomorphism of $J$. Its action on the kernel
+$L/[L,L]L^3$ is the invertible matrix just verified, and
+its action on $H$ is an automorphism. It is therefore
+surjective on $J$, hence an automorphism of the finite
+group. The conjugators lie in the image of
+$F=\ker(B\to S_3)$, since their images in $Q$ do; every
+kernel correction lies in $L\subset F$. The multiplier
+is exactly one.
+
+We prove the common-quotient assertion, which is needed
+to combine the witnesses. Write $M=L^{\rm ab}/3$ and
+$V=N/L$. The kernel of $J\to Q$ is an extension
+$1\to M\to\overline N\to V\to1$. Since $|V|=4$ is
+invertible in $\mathbb F_3$, its extension class vanishes.
+Explicitly, for a normalized additive two-cocycle
+$b(v,w)$, put $h(v)=\frac14\sum_t b(v,t)$. Summing its
+cocycle identity over $t\in V$ gives
+$b(v,w)=vh(w)+h(v)-h(vw)$, so changing the section by
+$-h$ splits the extension. This proves the semidirect
+product in (D.28.8), with its stated ambiguity.
+
+The finite covering map $L\backslash\mathcal T\to
+N\backslash\mathcal T$ supplies a transfer. On homology
+its composite with projection is multiplication by four;
+averaging is an exact projection onto invariants because
+four is invertible. More directly, the cellular chain
+complex of the quotient graph is the coinvariant complex
+of the covering graph. The coinvariant functor is exact
+by averaging, so taking its first homology gives
+\[
+                 M_V\xrightarrow{\sim}N^{\rm ab}/3.
+                                                               \tag{D.28.16}
+\]
+The explicit edge-sum map above is this isomorphism on
+coinvariants. Consequently $\dim M^V=\dim M_V=97$,
+whereas $\dim M=385$; the nontrivial summand has dimension
+288. These dimensions and nontriviality are independently
+checked using the two matrices of $V$ on $C_L$.
+
+In a nilpotent finite quotient, the images of the two-
+and three-Sylow subgroups commute. Thus every quotient
+of $\overline N$ which is nilpotent kills $[V,M]$.
+Conversely
+$\overline N/[V,M]\simeq V\times M_V$ is nilpotent.
+The maps $J\to H$ and $J\to G_3$ are defined because
+$[L,L]L^3\subset L$ and $[L,L]L^3\subset[N,N]N^3$.
+Their joint map is onto $H\times_QG_3$, by coprimality
+of its two kernel orders. Equation (D.28.16) identifies
+its kernel with $[V,M]$, proving (D.28.6) as the maximal
+quotient of $J$ with nilpotent kernel over $Q$.
+
+The kernel over $Q$ of
+$H_2\times_Q\mathcal P_3$ is the direct product of a
+finite two-group and a pro-three group. Every finite
+quotient of that kernel is nilpotent. Its maximal common
+quotient with $J$ is therefore at most $C$. Both factors
+map onto $C$, so it is exactly $C$. Apply the elementary
+subdirect-product description to the closed image of
+$\widehat B$ in their product: its associated common
+quotient is the quotient by the product of their kernels.
+The equality just proved identifies that quotient with
+$C$, and gives the surjection in (D.28.7).
+The matrices and conjugators (D.28.13)--(D.28.14) show
+that the two automorphisms agree on $C$. They consequently
+define an automorphism of the indicated fibre product.
+
+Choose one lift of its combined $\beta$ to $\widehat F$.
+The cusp gauge of D.25, applied once to this lift, gives
+a commutator representative and both hexagons throughout
+the compatible inverse system. The CM pair is unchanged
+under that gauge. Its two actions on the common CM field
+in D.25 disagree, so none of these finite shadows retaining
+that pair is induced by a Galois element. The quotient
+(D.28.7) and its surjection from $\widehat B$ are the
+precise source and target of the construction; no lift
+of this quotient automorphism to $\widehat B$ is inferred.
+\end{proof}

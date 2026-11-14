@@ -1,0 +1,4 @@
+% E.51 reuses E_LemmermeyerAmbiguous, Theorem1 formulas(1),(2),
+% Proposition1 and the full proof, reopened at the original arXiv source.
+% The full arithmetic and inverse-limit comparisons are the ones proved
+% in E.49 using E_MilneADT and E_JannsenContinuous. No duplicate keys.

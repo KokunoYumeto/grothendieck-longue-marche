@@ -1,0 +1,35 @@
+@incollection{E_StixCuspidal,
+ author = {Stix, Jakob},
+ title = {On cuspidal sections of algebraic fundamental groups},
+ booktitle = {Galois--Teichm{\"u}ller Theory and Arithmetic Geometry},
+ series = {Advanced Studies in Pure Mathematics},
+ volume = {63},
+ pages = {519--563},
+ year = {2012},
+ url = {https://www.math.uni-frankfurt.de/~stix/research/preprints/STIXcuspsec20120802homepage.pdf},
+ note = {Verified: author PDF opened; Definition26, Lemma28, Theorem30 and its proof, Corollaries31--32 read, with the characteristic-zero/full-profinite scope on page1 retained. Publication metadata checked on the author's publication page. E.61 proves the required pro-three finite-field variant with its actual cover maps.},
+ keywords = {verified}
+}
+
+@misc{E_MilneAV2008,
+ author = {Milne, James S.},
+ title = {Abelian Varieties},
+ year = {2008},
+ howpublished = {Version 2.00, March 2008},
+ url = {https://www.jmilne.org/math/CourseNotes/AV.pdf},
+ note = {Verified: author PDF opened; II Theorem1.1(b) and complete proofs through Lemmas1.2--1.3, printed pages75--78; III Proposition9.1 and its prime-to-characteristic Kummer proof through Lemmas9.2--9.3 and Corollary9.6, printed pages113--115, read.},
+ keywords = {verified}
+}
+
+@book{E_SGA1,
+ author = {Grothendieck, Alexander and Raynaud, Mich{\`e}le},
+ title = {Rev{\^e}tements {\'{E}}tales et Groupe Fondamental ({SGA}1)},
+ series = {Lecture Notes in Mathematics},
+ volume = {224},
+ publisher = {Springer},
+ year = {1971},
+ doi = {10.1007/BFb0058656},
+ url = {https://arxiv.org/abs/math/0206203},
+ note = {Verified: publisher metadata and the recomposed annotated French edition, arXiv version2, opened. ExposeXIII Corollary2.9, construction2.10, Lemma2.11 and Corollary2.12 with their displayed comparison maps and proofs read, printed pages288--291 of the recomposed edition.},
+ keywords = {verified}
+}

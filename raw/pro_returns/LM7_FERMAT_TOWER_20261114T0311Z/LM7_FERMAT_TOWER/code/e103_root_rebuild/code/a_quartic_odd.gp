@@ -1,0 +1,21 @@
+\\ Exact auxiliary arithmetic for E.103; no numerical L-value is used.
+default(realprecision, 60);
+K=bnfinit(x^4+1,1);
+z=Mod(x,x^4+1);
+eps=1+z-z^3;
+E=ellinit([0,0,0,1,0]);
+Em=ellinit([0,0,0,-4,0]);
+rr=ellrank(E);
+print("field_discriminant\t",K.disc);
+print("field_class_number\t",K.no);
+print("field_bnf_certified\t",bnfcertify(K));
+print("field_roots_of_unity_order\t",K.tu[1]);
+print("epsilon_unit_coordinates\t",Vec(bnfisunit(K,eps)));
+print("epsilon_norm\t",norm(eps));
+print("elliptic_conductor\t",ellglobalred(E)[1]);
+print("elliptic_rank_bounds\t",[rr[1],rr[2]]);
+print("elliptic_torsion_order\t",elltors(E)[1]);
+print("elliptic_minus_conductor\t",ellglobalred(Em)[1]);
+print("elliptic_coefficients\t",ellan(E,128));
+print("elliptic_minus_coefficients\t",ellan(Em,128));
+quit;

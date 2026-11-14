@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "author_source_sha256": "58da841f043502d92120745e525cd5702a6aef28e785183035d908f28aa417ed",
+  "portable_source_sha256": "c720455ed75238c8402a23b075bbe52e91ec7d89cc2e70aa02efa0ce4b51afc4",
+  "only_changes": [
+    "--- \n",
+    "+++ \n",
+    "@@ -5,9 +5,9 @@\n",
+    " import json\n",
+    " import sympy as s\n",
+    " ROOT=Path(__file__).resolve().parents[1]\n",
+    "-layers=json.loads((ROOT/'LM7_FERMAT_TOWER/code/e_wild_layers.json').read_text())['layers']\n",
+    "+layers=json.loads((ROOT/'e_wild_layers.json').read_text())['layers']\n",
+    " T,J=[s.Matrix(layers['1'][k]) for k in ['input_tau','input_c']]\n",
+    "-old=json.loads((ROOT/'research_e87/code/a_abelian_kernel_obstruction.json').read_text())\n",
+    "+old=json.loads((ROOT/'a_abelian_kernel_obstruction.json').read_text())\n",
+    " R=s.Matrix([[s.Rational(x) for x in row] for row in old['first_degree_map']])\n",
+    " def mod(v):return tuple((int(s.Rational(a).p)*pow(int(s.Rational(a).q),-1,3))%3 for a in v)\n",
+    " rows=[]\n"
+  ],
+  "actual_stdout_byte_equal": true,
+  "complete_json_byte_equal": true,
+  "input_hashes": {
+    "e_wild_layers.json": "bb19d4baefed45542d3259b0990101eb719f1d6dc286ec9b48f2240c0ef8f641",
+    "a_abelian_kernel_obstruction.json": "216655fe23929eb81c9979ba35064c1a56b7528a4e6803d5986e744cf57d5a96"
+  }
+}

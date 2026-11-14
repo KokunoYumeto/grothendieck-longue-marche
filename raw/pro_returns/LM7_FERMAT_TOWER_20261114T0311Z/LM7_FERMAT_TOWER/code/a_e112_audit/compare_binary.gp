@@ -1,0 +1,10 @@
+default(parisize,256000000);
+default(parisizemax,2000000000);
+a=read("a_e112_audit/reference/quartic_five_character_fields.bin");
+b=read("a_e112_audit/fresh/code/quartic_five_character_fields.bin");
+if(#a!=12 || #b!=12,error("wrong field count"));
+if(a!=b,error("full PARI objects differ"));
+print("Full twelve-field PARI object equality: PASS");
+for(k=1,12,if(#a[k]!=13,error("wrong record length"));for(j=1,13,if(a[k][j]!=b[k][j],error("component mismatch"))));
+print("All 156 retained PARI components equal: PASS");
+quit(0);

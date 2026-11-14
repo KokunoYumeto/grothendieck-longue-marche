@@ -1,0 +1,57 @@
+{
+  "portable_full_replay": "In a fresh copy: python code/e53_positional_replay.py --gp /absolute/path/to/gp --label fresh_audit",
+  "standalone_no_input": "In an empty directory: /absolute/path/to/gp -q -f /absolute/path/to/code/e53_positional_ideals.gp",
+  "standalone_literal_norm": "In an empty directory: /absolute/path/to/gp -q -f /absolute/path/to/code/e53_positional_verify.gp",
+  "finite_recheck": "python code/e53_positional_maps.py",
+  "independent_literal_ring": "python code/e53_positional_unit.py",
+  "layout": "python code/e53_positional_layout.py",
+  "freeze": "python code/e53_positional_freeze.py",
+  "mathematical_sources": [
+    "e53_positional_unit.py",
+    "e53_positional_verify.gp",
+    "e53_positional_genus_pivots.gp",
+    "e53_positional_presentation.gp",
+    "e53_positional_lower_export.gp",
+    "e53_positional_make_ideals.py",
+    "e53_positional_ideals.gp",
+    "e53_positional_maps.py"
+  ],
+  "required_inputs": [
+    "inputs/e122_literal_unit_witnesses.json",
+    "inputs/e122_literal_unit_ring.json",
+    "inputs/e121_normalizer_module.json",
+    "inputs/e119_positional_genus_transition.bin",
+    "inputs/e122_L2_candidate_bnf.bin"
+  ],
+  "input_scope": {
+    "e119_positional_genus_transition.bin": "Fully certified lower-field unit/ideal data and exact local Artin/Smith maps from frozen E119.",
+    "e122_L2_candidate_bnf.bin": "Uncertified discovery object used only to propose exact principal-ideal witnesses. No mathematical class or unit assertion is read from it. The separate no-input verifier reconstructs and checks every used ideal identity.",
+    "e122_literal_unit_witnesses.json": "Literal coefficients of v20; full cube and relative norm checked independently.",
+    "e121_normalizer_module.json": "Actual finite class maps and proved order81 lower bound."
+  },
+  "expected_text_outputs": [
+    "code/e53_positional_unit.out",
+    "code/e53_positional_verify.out",
+    "code/e53_positional_genus_pivots.out",
+    "code/e53_positional_presentation.out",
+    "code/e53_positional_lower_export.out",
+    "code/e53_positional_make_ideals.out",
+    "code/e53_positional_ideals.out",
+    "code/e53_positional_maps.out"
+  ],
+  "expected_JSON": [
+    "code/e53_positional_unit.json",
+    "code/e53_positional_maps.json"
+  ],
+  "expected_binary": [
+    "code/e53_positional_genus_pivots.bin",
+    "code/e53_positional_presentation.bin"
+  ],
+  "python_dependencies": [
+    "sympy"
+  ],
+  "PARI_version_used": "2.19.0",
+  "serialization": "Exact rational-string matrices with decode equality; integer conversion asserts integrality. Entire decoded PARI objects compared with ===; no component exclusions. The retained append-container amendment proves [B,B] -> B with inverse B -> [B,B].",
+  "replay_precaution": "Use a fresh copy or the replay driver. PARI writebin appends when a producing GP stage is run repeatedly in the same directory; all reference-container history is preserved.",
+  "expensive_search": "No BNF reconstruction or certification is run by the final eight-stage replay."
+}

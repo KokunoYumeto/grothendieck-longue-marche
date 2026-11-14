@@ -1,0 +1,16 @@
+default(parisize,256000000);
+default(parisizemax,2000000000);
+A=read("/workspace/scratch/e34c61ec5a35/research_e81/code/e_prime73_field.bin");B=read("/workspace/scratch/e34c61ec5a35/root_e81_audit/code/e_prime73_field.bin");
+print("e_prime73_field.bin"," WHOLE=",A==B," COMPONENTS=",vector(#A,i,A[i]==B[i]));
+if(A!=B,error("semantic object mismatch"));
+A=read("/workspace/scratch/e34c61ec5a35/research_e81/code/e_prime73_relations.bin");B=read("/workspace/scratch/e34c61ec5a35/root_e81_audit/code/e_prime73_relations.bin");
+print("e_prime73_relations.bin"," WHOLE=",A==B," COMPONENTS=",vector(#A,i,A[i]==B[i]));
+if(A!=B,error("semantic object mismatch"));
+A=read("/workspace/scratch/e34c61ec5a35/research_e81/code/e_prime73_artin.bin");B=read("/workspace/scratch/e34c61ec5a35/root_e81_audit/code/e_prime73_artin.bin");
+print("e_prime73_artin.bin"," WHOLE=",A==B," COMPONENTS=",vector(#A,i,A[i]==B[i]));
+if(A!=B,error("semantic object mismatch"));
+A=read("/workspace/scratch/e34c61ec5a35/research_e81/code/e_prime73_candidates.bin");B=read("/workspace/scratch/e34c61ec5a35/root_e81_audit/code/e_prime73_candidates.bin");
+print("e_prime73_candidates.bin"," WHOLE=",A==B," COMPONENTS=",vector(#A,i,A[i]==B[i]));
+if(A!=B,error("semantic object mismatch"));
+print("ALL FOUR COMPLETE PARI OBJECTS EQUAL");
+quit;

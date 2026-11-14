@@ -1,0 +1,39 @@
+# Independent audit of E.107
+
+**Result: PASS.** I read the complete frozen theorem/proof and the corrected complete program, checked the actual dependency maps, independently reopened the cited primary proofs, and executed a separately written finite rank/phase certificate. The corrected author manifest was verified in full: all 22 recorded hashes agree. This audit does not claim a second execution of the author's program; root owns that fresh full-output replay. The independent program imports none of the author's code or matrix helpers.
+
+The frozen proof hash is `2686dbb24643f5f0c083f6d4e1ba6883b08d3fd37f8ebae12cc29219d5838198`. The corrected program hash is `b86c0a9287659e916f1e4f722aabb119a3cb2842f5ad50f1d3957bece53d95d1`. The manifest hash is `c0591a02aa9f6e17086c31586cb18e7d156e2859457244bdda06b567856a5c8e`.
+
+## Actual all-level transfer
+
+The cyclic-nine square in (E107.15) has the correct typed inclusion: the upper cubic generator is the cube of the specified ninth generator. For an element included from the lower field, its degree-three local norm is its cube. Thus the equality in Z/9 divides through the injection Z/3→Z/9 given by multiplication by three, and yields the same labeled cubic character at the next stage. No equality of unrelated abstract character groups is used.
+
+The E.106 matrix has image exactly the kernel of both triple sums. The actual eta of E101.19 has residue cube ζ² and consequently residue96th-power ζ. The calibration by xi, whose 96th-power is ζ² and whose actual character is one, makes eta's tame character two. The other character is one by global reciprocity. Horizontal ordinary norm surjectivity supplies an actual ordinary B3 unit above eta. Each of the three relevant horizontal completions has degree one, and the horizontal automorphism fixes beta4 and ζ. Hence the sums of the three corresponding local characters are literally (1,2), with no residue-degree multiplier or change of the chosen generator. Subtracting the actual included rank-four image supplies the canonical fifth vector.
+
+The six-prime cyclic ambiguous formula uses the field-norm index, which is now exactly 3^5. Combined with E.91's actual trivial vertical action, it preserves the ordinary class order. Surjectivity of the actual ideal norm follows from the Hilbert class field disjointness and degree-one primes in the compositum. Thus the maps are isomorphisms, not merely equal-order group comparisons. They preserve each named S-prime because the vertical prolongation is unique and has residue degree one. This proves the Q_i orders and their principal product at every level. Horizontal norm then proves the original q_d has order exactly three, and the E.91 type result determines the entire original ordinary group.
+
+Both horizontal class matrices transport through the actual commutative restriction/transfer squares. The relevant horizontal/vertical cubic square is linearly disjoint and its two generators commute. The horizontal extension kernel remains order three. Its Hilbert90 identification, together with the ordinary-unit Herbrand quotient 1/3, proves the actual horizontal unit norm surjection at every subsequent level. The strongly ambiguous subgroup is exactly the S-prime subgroup for B, and exactly <q> for L; the resulting extra ordinary-unit defects have orders three and nine. Included units have cube norms, so the asserted total norm quotients are elementary groups of ranks six and three. The completed norm kernel ranks and C3 torsion agree with the actual field degrees and root-of-unity norm kernels.
+
+## Coherent image and phase
+
+At every finite level the three-unit base norm is exactly lambda^(3Z3). The phase has no hidden root-of-unity coordinate because all these images factor through the literal first-level image lambda^Z3. Compactness is used only for the product of the finitely generated completed three-unit groups. Finite compatibility conditions have a solution at their largest level; the closed finite-intersection argument supplies one coherent tuple with base lambda^3. This proves h=1 and gives the actual e used in (E107.8).
+
+The divisor module is given its restricted multiplication-by-3^m topology. Since the retained class coordinates ell_p are bounded integers, the sum of ell_p t_p converges. Membership in the two-congruence kernel makes its first sum divisible by three, so Theta_* is an actual continuous integral linear map. The difference from the earlier actual phase is divisible by three, and multiplication by the coherent e corrects the phase by exactly that difference. The residual ambiguity is precisely a continuous homomorphism to the kernel U_infinity^0; both directions follow from the specified base norm and valuations.
+
+In the section comparison the raw beta exponent and the scaled toric coefficient must remain distinct. The correct equations are 2b=3B17 and z=B3+sum(ell_p r_p)/3. Thus b=3B17/2, not B17/2. The corrected certificate now checks both the raw and scaled equations. The theorem already had these formulas. The outside exponent is t=3r, and the remaining cube condition is exactly sum(c_p r_p)=0 modulo three. Once the toric pair is fixed, every other coordinate is uniquely determined except the full compact kernel U_infinity^0. The actual Kummer–Shapiro comparison has no additional first-coordinate stabilizer.
+
+## Separate executed certificate
+
+`a_e107_rank_phase.py` is independently written with the Python standard library. It uses elementary elimination over F3 and the different residue model F17[t]/(t²−3), with ζ=(8,2), instead of the author's ζ-polynomial model.
+
+It verifies all 19,683 inputs to the actual D matrix; all 81 possible fifth vectors; all 243 points of the reciprocity hyperplane using a separate explicit basis and inverse; all 288 nonzero residue elements and all 82,944 character-product identities; both directions of the class norm/extension identities on all 243 B and 27 L classes; the exact order-81 S-prime subgroup; and every named Q order and horizontal image.
+
+It constructs a different integral pivot basis for the complete retained 79-prime divisor kernel, with coefficients chosen in {-1,0,1}. It verifies 257 full forward/inverse phase calculations, including changes of the integer representatives of the class coordinates. It exhausts all 59,049 modulo-nine inputs on five actual primes and checks 78,732 literal raw/scaled toric inverse pairs. The full output and JSON are retained. These finite checks support the exact maps; the all-level induction and topological sufficiency are proved by the source and compactness arguments above.
+
+## Primary sources actually reopened
+
+Milne's official CFT PDF was reopened and read at III Theorem3.1 with its restriction/corestriction cup-product proof; VII Proposition3.1 with the entire lattice/Herbrand proof; V Proposition3.3 with the ideal norm/Frobenius proof; VIII Theorem3.1 with the cyclic Hasse norm proof; and VIII Theorem7.4 through its complete proof. The source still marks III Lemma3.2's proof as to be added; the required first square follows from the preceding proved cup-product compatibility, as the theorem correctly states.
+
+Lemmermeyer's original paper was reopened through Theorem1, Proposition1 and the complete invariant-ideal calculation. The previously recorded Am_st/Am typographical slip in Proposition1's surjectivity paragraph is not used as an identification: the orbitwise ideal Hilbert90 construction maps to ambiguous classes and the kernel is strongly ambiguous. Milne's full unit-Herbrand proof supplies the final factor.
+
+One harmless citation-anchor correction was sent to the author and root: the actual eta is constructed in E101.19 and its following residue paragraph; E101.20–24 concern the horizontal matrix/defect. No mathematical correction is requested. The frozen author's text is unchanged in this audit.
