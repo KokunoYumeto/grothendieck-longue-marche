@@ -1,0 +1,131 @@
+\begin{proposition}[E.39 --- Proved: the exact torsion lost by the compact and unit path comparisons]
+\label{E-integral-path-comparison}
+Retain the cubic lattice $V$, the cusp order and the matrix $U$
+of (E18.8)--(E18.9), and put $K=\mathbb Q(\zeta_3)$.
+For each nonorigin cusp $d$, let $f_d=L_d/L_O$ be the
+normalized tangent-line unit of E.36, and let
+$\ell_d:V\to\mathbb Z_3(1)$ be its geometric Kummer map.
+Write $T=T_3E$ for the compact Tate module. Give
+$B=\mathbb Z_3(1)^8$ the Galois action which permutes the
+eight unit coordinates and multiplies by the cyclotomic
+character. There is an actual equivariant injection
+\[
+ j:V\longrightarrow T\oplus B,\qquad
+ v\longmapsto\bigl(p(v),(\ell_d(v))_d\bigr),\qquad
+ j=\begin{pmatrix}I_2&0\\-U&3I_8\end{pmatrix}.
+ \tag{E.39.1}
+\]
+Its cokernel $Q$ is $(\mathbb Z/3)^8$. The action on $Q$
+over $K$ is trivial; over $\mathbb Q$, complex conjugation
+acts by minus the permutation
+\[
+ (A_1\ A_2)(B_1\ B_2)(C_1\ C_2),
+ \tag{E.39.2}
+\]
+with $A_0,B_0$ fixed by the permutation.
+For continuous cohomology of the full absolute Galois
+groups, and also of their quotients unramified away from
+three and infinity, the exact kernels are
+\[
+ \begin{aligned}
+ \ker H^1(G_K,j)&\simeq(\mathbb Z/3)^8,\\
+ \ker H^1(G_{\mathbb Q},j)&\simeq(\mathbb Z/3)^3.
+ \end{aligned}
+ \tag{E.39.3}
+\]
+These isomorphisms are the connecting maps from $Q^{G_K}$
+and $Q^{G_{\mathbb Q}}$, respectively. In particular, a
+nonempty fibre of this cohomological comparison has
+exactly $3^8$ elements over $K$ and $3^3$ over
+$\mathbb Q$. Compact Kummer classes and all eight unit
+cohomology classes therefore do not determine an integral
+abelianized path cohomology class. One unresolved datum
+in the integral version of E.36 is the actual class's
+position in this explicitly specified fibre.
+\end{proposition}
+\begin{proof}
+The divisor of $f_d$ is $3(d-O)$, so its restriction to
+the boundary lattice is the row $3e_d^*$. The compact
+rational splitting of E.18 has columns $\binom{3I_2}{U}$.
+The Kummer map of a geometric unit vanishes on that
+compact summand: equivariance at a good Frobenius compares
+its weight-one compact eigenvalues with the weight-two
+cyclotomic eigenvalue. Thus
+\[
+ \ell_d=(-U_d,3e_d^*),
+\]
+which proves (E.39.1) with its actual unit and compact
+maps. Galois equivariance follows either from these maps
+or directly from the matrices (E18.9). Subtracting the
+lower left block using integral row operations gives
+$\operatorname{diag}(I_2,3I_8)$. The quotient map can be
+written
+\[
+ T\oplus B\longrightarrow Q,\qquad
+ (h,b)\longmapsto b+Uh\pmod3.
+ \tag{E.39.4}
+\]
+Over $K$, the cusp permutation is trivial and
+$\chi_3\equiv1\pmod3$. Applying (E18.9) to (E.39.4)
+therefore gives the trivial action. Over $\mathbb Q$,
+the same matrix identity gives (E.39.2).
+
+The invariant subgroup $(T\oplus B)^G$ is zero for each
+of the four indicated arithmetic groups. For $T$ this
+follows by choosing a good Frobenius whose eigenvalues
+have complex absolute value greater than one. For $B$,
+first pass to $K$, where it is a direct sum of
+$\mathbb Z_3(1)$; the image of the cyclotomic character
+is infinite, so no nonzero vector is fixed. These proofs
+apply to the stated unramified quotients because the
+actual representations factor through them.
+The continuous cohomology sequence of
+\[
+ 0\longrightarrow V\xrightarrow{j}T\oplus B
+       \longrightarrow Q\longrightarrow0
+\]
+then identifies $Q^G$ injectively with the kernel in
+degree one. The finite quotient admits a continuous
+set-theoretic section, so this is the ordinary long exact
+sequence for these continuous coefficient modules.
+The fixed space of minus the permutation (E.39.2) has
+the three basis vectors
+\[
+ e_{A_1}-e_{A_2},\qquad e_{B_1}-e_{B_2},\qquad
+ e_{C_1}-e_{C_2}.
+\]
+The two fixed permutation coordinates contribute no
+fixed vectors in characteristic three. This proves
+(E.39.3) and the fibre cardinalities.
+
+The connecting classes can also be read as explicit
+cocycles. Let $t_d$ be the $d$th boundary basis vector
+of $V$, and lift the $d$th basis vector of $Q$ rationally
+by $t_d/3$. Its connecting cocycle is
+\[
+ b_d(g)=g(t_d/3)-t_d/3.
+ \tag{E.39.5}
+\]
+Over $K$ this is integral and, on the actual free
+arithmetic generators of E.38, has
+$b_d(\tau)=b_d(\tau')=2t_d$. The three displayed
+differences give the invariant classes over
+$\mathbb Q$, with value zero on complex conjugation.
+Their nonzero order three follows from the injective
+connecting map; multiplying (E.39.5) by three gives
+the coboundary of $t_d$.
+
+The program \texttt{integral\_path\_comparison.py}
+checks the exact coefficient maps, both arithmetic
+equivariance identities, all ten Smith factors, the
+three invariant vectors, and these cocycle values.
+In the attempted integral automorphism calculation,
+substituting arbitrary representatives of the compact
+and unit cohomology classes can change the result by
+(E.39.5). No such representative is asserted to be the
+actual tangential path. The remaining comparison must
+retain the correlated choices of compact division
+points and unit roots. The manuscript anchor is
+\S51.16, folios733v--736v, scans172--178, and
+LM7-E.23(i).
+\end{proof}
