@@ -61,7 +61,7 @@ In the draft readers (the English one and the four French ones), every doubtful 
 every `[scan n]` is a link: it opens that scan in the viewer of the Grothendieck archive of the Université de
 Montpellier, so that you can look at the handwriting yourself.
 
-AI-translated by GPT-6.1 Sol (OpenAI, reasoning effort max, API Flex tier) from the AI-transcribed French text (transcription by GPT-6 Astra, ChatGPT Pro mode, checked by Claude Opus 5.5); prompts, checks, fixes and build by Claude (Anthropic).
+AI-translated by GPT-6.1 Sol (OpenAI, reasoning effort max, API Flex tier) from the AI-transcribed French text (transcription by GPT-6 Astra, ChatGPT Pro mode, checked by Claude Opus 5.5 (effort not recorded)); prompts, checks, fixes and build by Claude (Anthropic).
 
 The rights in the original work belong to its author or the author's representatives or heirs. Where we hold rights, in the AI-produced transcription, translation, corrections and typesetting, they are dedicated to the public domain under CC0 1.0. This edition is published for educational, non-profit purposes, and we claim no rights we do not hold. If you hold rights in this work and object to its publication here, please open a GitHub issue and we will take it down.
 
@@ -87,7 +87,7 @@ The transcription, corrections, typesetting and notes are AI-produced.
 - First pass: ChatGPT Pro (OpenAI), one package of scans at a time, from contrast-enhanced images, with no access to
   any other transcription. Package 57 (cote 140-2, scans 561–570) was transcribed through the OpenAI API (GPT-6
   Astra) as a test.
-- Second pass: Claude Opus 5.5 (Anthropic), against the archive images and the earlier transcriptions.
+- Second pass: Claude Opus 5.5 (Anthropic, effort not recorded), against the archive images and the earlier transcriptions.
 
 Details, measured error rates and costs are in [methodology/METHODOLOGY.md](methodology/METHODOLOGY.md).
 
