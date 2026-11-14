@@ -1,0 +1,1153 @@
+\subsection{Restriction, descent, and persistent obstruction germs}
+
+Write $A=N/\gamma_3N$ and
+$\operatorname{Sec}_L=H^1_{\rm cts}(G_L,A)$ for a number field
+$L\subset\overline{\mathbb Q}$.  The action is the restriction of
+the action based at the fixed tangent at $O$.
+Our maps below use that actual action, and all equivalences of
+sections are by conjugation in $A$.
+This is the germ construction requested in CK C9, cote 149,
+\S3, manuscript p.~33, scan 66, applied to the stated class-two
+quotient; the Fermat comparison is \S51.16, folios
+733v--736v, scans 172--178.
+
+\begin{statement}{C.1}{Proved}{No arithmetic centralizer in the class-two geometric group}
+For every number field $L$ and every continuous section
+$s:G_L\to A\rtimes G_L$,
+\[
+                 C_A(s(G_L))=1.                         \tag{C.1}
+\]
+The assertion uses the whole $G_L$, in contrast to the subgroup
+$\ker\chi$ in B.4; the comparison map between the two assertions
+is the inclusion of subgroups, which reverses inclusions of their
+centralizers.
+\end{statement}
+\begin{proof}
+Let $h$ be in the displayed centralizer.  Its image in
+$V=A^{\rm ab}$ is fixed by $G_L$, since inner conjugation is
+trivial on abelianization.  Choose a finite prime $v$ of $L$
+above two, with residue size $q=2^f$.  The eigenvalues of
+arithmetic Frobenius on $W\otimes\mathbb Q_3$ have complex
+absolute value $q$: they are $q$ times roots of unity from the
+finite cusp permutation action.  On $T_3E\otimes\mathbb Q_3$
+the two eigenvalues have absolute value $q^{1/2}$.
+Here the necessary elliptic calculation is explicit:
+$E(\mathbb F_2)$ has three points by
+\texttt{bc\_checks.py}; the Frobenius $F_2$ has determinant
+two by the Weil pairing, and
+$\det(1-F_2)=\deg(1-F_2)=3$ because $1-F_2$ is separable
+with precisely those three kernel points.
+Thus its characteristic polynomial is $X^2+2$.
+On the base change at $v$ the Frobenius is $F_2^f$,
+which proves the asserted absolute values directly.
+The characteristic polynomial of the extension $V$ is the
+product of those on $W$ and $T$, so one is not an eigenvalue.
+Consequently $V^{G_L}=0$, and $h$ lies in the central group
+$\gamma_2N/\gamma_3N=\bigwedge^2V$.
+Inner conjugation acts trivially there.  Its Frobenius
+eigenvalues, as seen from the filtration induced by
+$0\to W\to V\to T\to0$, have absolute values
+$q^2,q^{3/2},q$.  Again none is one.  The lattice is
+torsion-free, so its invariant subgroup is zero.  Hence $h=1$.
+\end{proof}
+
+\begin{statement}{C.2}{Proved}{All restriction maps are injective and finite Galois descent is exact}
+For number fields $L\subset L'$, restriction is the injective
+map of pointed sets
+\[
+ \operatorname{res}_{L'/L}:\operatorname{Sec}_L
+                   \longrightarrow\operatorname{Sec}_{L'},
+ \qquad [z]\longmapsto[z|_{G_{L'}}].                        \tag{C.2}
+\]
+For $L'/L$ finite Galois it identifies its source with precisely
+the $\operatorname{Gal}(L'/L)$-fixed classes in its target.
+Writing $\rho$ for the based action on $A$, the action by
+$g\in G_L$ is represented by
+\[
+       (g\cdot z)(h)=\rho(g)z(g^{-1}hg),\quad h\in G_{L'}.
+                                                               \tag{C.3}
+\]
+Thus the kernel of (C.2), as a pointed-set map, is its base
+point, and its image in the invariant set is the entire set.
+\end{statement}
+\begin{proof}
+Restriction preserves the continuous cocycle equation and
+geometric conjugation, proving that (C.2) is defined.
+For (C.3), conjugate the section graph by $(1,g)$ in
+$A\rtimes G_L$.  This gives exactly the formula and proves
+continuity and the cocycle equation.  When $g\in G_{L'}$,
+the cocycle identity gives
+\[
+ \rho(g)z(g^{-1}hg)=z(g)^{-1}z(h)\rho(h)z(g),
+\]
+so the action is conjugation by $z(g)^{-1}$ and is trivial
+on section classes.  Therefore it factors through the
+specified finite Galois group.
+
+For injectivity, conjugate two sections so that their
+restrictions to $G_{L'}$ agree.  Choose a finite extension
+$M/L$, Galois over $L$, with $M\supset L'$.
+The restrictions agree on the normal subgroup $G_M$.
+For each $g\in G_L$, the element $t(g)s(g)^{-1}\in A$
+centralizes $s(G_M)$: both sections induce, by conjugation,
+the same map $s(h)\mapsto s(ghg^{-1})$ there.
+Statement C.1 gives $t(g)s(g)^{-1}=1$, proving equality
+over $G_L$.
+
+For the image assertion, let $s$ represent a fixed class
+over $L'$.  Consider its normalizer
+\[
+       B=N_{A\rtimes G_L}(s(G_{L'})).
+\]
+It is a closed subgroup of a compact profinite group.
+Invariance of the class under (C.3) says precisely that
+each $g\in G_L$ is the projection of an element of $B$:
+use the conjugator in $A$ comparing $g\cdot s$ with $s$.
+The kernel of $B\to G_L$ equals
+$C_A(s(G_{L'}))$.  Indeed, an element projecting to one
+normalizes the graph only by preserving each of its
+points, since there is exactly one graph point over
+each $h\in G_{L'}$.
+This kernel is one by C.1.  Hence $B\to G_L$ is a
+continuous bijective homomorphism between compact
+Hausdorff groups and has continuous inverse.  That
+inverse is a section extending $s$, because its unique
+element over $h\in G_{L'}$ is $s(h)$.
+Injectivity already proved uniqueness up to geometric
+conjugacy.
+\end{proof}
+
+\begin{statement}{C.3}{Proved}{The action and fields of definition of germs}
+The set
+\[
+          \mathscr G=\varinjlim_{L\subset\overline{\mathbb Q}}
+                                      \operatorname{Sec}_L
+                                                               \tag{C.4}
+\]
+has a well-defined $G_{\mathbb Q}$-action obtained by
+(C.3) together with conjugation of the field of definition.
+Every transition map is injective.  Each germ has an open
+stabilizer and a finite orbit.  For every number field $L$,
+\[
+       \operatorname{Sec}_L\ \xrightarrow{\sim}\
+                                    \mathscr G^{G_L}.          \tag{C.5}
+\]
+In particular the image of $\operatorname{Sec}_{\mathbb Q}$
+is exactly the fixed-germ set.  The fixed field of the
+stabilizer of a germ is its smallest field of definition.
+\end{statement}
+\begin{proof}
+The formula transports a cocycle on $G_L$ to a cocycle on
+$G_{gL}$, and respects restriction and conjugation.
+It therefore defines an action on the colimit.
+Restriction injectivity is C.2.  A representative over
+$L$ is fixed by $G_L$, since the same cocycle calculation
+used after (C.3) makes inner field conjugation trivial
+on its class.  The stabilizer is consequently open.
+
+Take a germ fixed by $G_L$, choose a field where it is
+represented, and enlarge it to a finite Galois extension
+$M/L$.  For $g\in G_L$, the class and its translate are
+both defined over $M$.  Their equality as germs means
+equality after restriction to a further finite field;
+injectivity in C.2 makes them equal already over $M$.
+The invariant class descends by C.2 to $L$.  Uniqueness
+is again injectivity.  This proves (C.5).
+
+An open stabilizer $H\subset G_{\mathbb Q}$ is $G_{L_0}$
+for a number field $L_0$.  Applying the same argument
+over $L_0$ proves definability there.  Every other field
+of definition has its Galois group inside $H$, so it
+contains $L_0$.  This proves the final assertion.
+\end{proof}
+
+\begin{statement}{C.4}{Refuted}{The R2 obstruction does not disappear as a germ}
+Let $c=9\kappa(3)\cup\beta$ be the nonzero R2 class
+specified by LM7 (E.32f), so that in
+$H^2_{\rm cts}(G_{\mathbb Q},\mathbb Z_3(2))=
+\mathcal R/d\mathcal R$ it is represented by
+\[
+ z_{q_j}=q_j-1\quad(j\ge3),\qquad z_q=0
+                       \text{ at the other primes}.          \tag{C.6}
+\]
+For every finite number field $L$,
+$\operatorname{res}_{L/\mathbb Q}(c)\ne0$.
+In fact these restrictions all have infinite additive order.
+Consequently $c$ gives a nonzero element of
+$\varinjlim_L H^2_{\rm cts}(G_L,\mathbb Z_3(2))$.
+The vanishing assertion in the first sentence of Task C.4
+is false.
+\end{statement}
+\begin{proof}
+For a nonzero integer $m$, the unique coordinatewise
+solution of $dy=mz$ has value $m$ at every $q_j$ and zero
+elsewhere, because multiplication by each nonzero
+$q-1$ is injective in $\mathbb Z_3$.
+This family does not tend to zero $3$-adically.  Thus
+$mz\notin d\mathcal R$ and $mc\ne0$ for every nonzero
+integer $m$.
+
+We spell out the transfer used for this continuous
+cohomology.  Set $G=G_{\mathbb Q}$, $H=G_L$ and
+$M=\mathbb Z_3(2)$.  Use homogeneous continuous
+equivariant cochains, with alternating deletion
+differential.  Choose representatives $T$ for the
+finitely many left cosets $H\backslash G$, and write
+$r(g)=gt(g)^{-1}\in H$ for $g\in Ht(g)$.
+For an $H$-cochain $c$ define the $G$-cochain
+\[
+ (\mathcal Tc)(g_0,\ldots,g_n)=
+ \sum_{t\in T}t^{-1}c(r(tg_0),\ldots,r(tg_n)).              \tag{C.7a}
+\]
+The coset permutation $tg=h(t,g)t'$ gives
+$t^{-1}h(t,g)=g(t')^{-1}$, proving equivariance;
+the formula commutes with the differential.
+All maps are continuous because the transversal is
+finite and each coset is open.  Put
+$a_t(g)=t^{-1}r(tg)$.  For a degree-$n$ $G$-cochain $f$,
+the prism operator is
+\[
+ (Pf)(g_0,\ldots,g_{n-1})=
+ \sum_{t\in T}\sum_{i=0}^{n-1}(-1)^i
+ f(a_tg_0,\ldots,a_tg_i,g_i,\ldots,g_{n-1}).              \tag{C.7b}
+\]
+The same coset permutation makes the sum equivariant.
+In $dP+Pd$ the internal mixed faces cancel in pairs;
+the two end faces are $[G:H]f$ and
+$-\mathcal T(\operatorname{res}f)$.
+Thus the formulas prove directly on continuous
+$\mathbb Z_3(2)$ cochains that
+\[
+ \operatorname{cor}_{L/\mathbb Q}
+ \operatorname{res}_{L/\mathbb Q}=[L:\mathbb Q].              \tag{C.7}
+\]
+Equivalently one can apply the same compatible formulas
+to every finite coefficient module; their cochain
+homotopies commute with reduction, so the assertion
+holds on the derived inverse limit as well as on
+finite-coefficient cohomology.  This includes its
+$\varprojlim^1$ subgroup.
+
+A zero restriction would make $[L:\mathbb Q]c=0$,
+contrary to the first paragraph.  A torsion restriction
+would, by the same calculation, make a nonzero integer
+multiple of $c$ zero.  Thus it has infinite order.
+An element maps to zero in a filtered colimit of groups
+exactly when it maps to zero at some later stage;
+no such stage exists here.
+\end{proof}
+
+\begin{statement}{C.5}{Proved}{Restriction is injective on the Tate-twist phantom subgroup}
+For $\mathbb Z_3(2)$ the kernel of the finite-coefficient
+comparison map in R2 is torsion-free, and restriction
+from $\mathbb Q$ to any finite number field is injective
+on this kernel.  This extends C.4 from its particular
+cup-product witness to every nonzero class in that
+kernel.
+\end{statement}
+\begin{proof}
+The kernel is
+\[
+ \frac{\{z\in\mathcal R:z_q\in(q-1)\mathbb Z_3\text{ for all }q\}}
+      {d\mathcal R}.
+\]
+Write $y_q=z_q/(q-1)\in\mathbb Z_3$.  A nonzero integer
+multiple $mz$ lies in $d\mathcal R$ exactly when
+$(my_q)_q$ is restricted.  Multiplication by a fixed
+nonzero integer changes valuations by the fixed
+integer $v_3(m)$, so this condition is equivalent to
+$(y_q)_q$ being restricted.  This proves torsion-freeness.
+Equation (C.7) then proves injectivity of restriction
+on this subgroup.  No closure is taken in the
+denominator in this argument.
+\end{proof}
+
+\begin{statement}{C.7}{Proved}{The intrinsic phantom obstruction also survives every finite extension}
+The nonzero obstruction in $H^2_{\rm cts}(G_{\mathbb Q},\mathcal K)$
+constructed in A.4 remains nonzero over every finite number
+field and in the filtered colimit over all number fields.
+More generally, restriction to every finite number field is
+injective on the phantom subgroup for $\mathcal K$ computed
+in A.2.
+\end{statement}
+\begin{proof}
+In the residue presentation of A.2, every
+$D_q=\operatorname{Frob}_q-1$ on $\mathcal K(-1)$ is
+injective.  A locally zero class has a unique integral
+correction $y_q=D_q^{-1}z_q$ at each prime.
+A nonzero integer multiple of its class vanishes
+precisely when $(my_q)_q$ is restricted, which is
+equivalent to $(y_q)_q$ being restricted.
+Thus this phantom subgroup is torsion-free.
+The cochain transfer and prism formulas (C.7a)--(C.7b)
+apply verbatim with $M=\mathcal K$; they prove
+corestriction after restriction equals multiplication
+by the finite extension degree.  Such multiplication
+is injective on the phantom subgroup.
+This proves the assertion and completes both
+persistence decisions asked for in Task C.4.
+\end{proof}
+
+\begin{statement}{C.10}{Proved}{The nine disjoint cusp germ packets and their Galois action}
+Define the abelian germ parameter group
+\[
+ \mathscr K=\varinjlim_{L\subset\overline{\mathbb Q}}
+       H^1_{\rm cts}(G_L,\mathbb Z_3(1))
+   =\varinjlim_L\varprojlim_n L^\times/L^{\times3^n}.       \tag{C.10.1}
+\]
+All transition maps are restriction.  Choose at each cusp
+$d\in D(\overline{\mathbb Q})$ the unit tangent for the parameter
+$x/z$ when $x=0$, $y/z$ when $y=0$, and $z/x$ when $z=0$.
+These choices are $G_{\mathbb Q}$-equivariant.
+The map
+\[
+ \coprod_{d\in D(\overline{\mathbb Q})}\mathscr K
+       \longrightarrow\mathscr G,
+ \qquad (d,u)\longmapsto[s_{d,1}\text{ twisted by }u]
+                                                               \tag{C.10.2}
+\]
+is injective, and its image is exactly the cuspidal germ set.
+There are nine packets.  The $G_{\mathbb Q}$-action in these
+coordinates is
+\[
+                         g(d,u)=(gd,gu),                     \tag{C.10.3}
+\]
+where $gu$ transports a Kummer class over $L$ to its class over
+$gL$ by the field isomorphism $g:L\to gL$.
+The parameter group has injective restriction maps, is divisible,
+and has torsion subgroup canonically $\mu_{3^\infty}$, with its
+usual Galois action.  In particular, distinct torsion parameters
+and distinct cusp packets do not merge in the germ colimit.
+\end{statement}
+\begin{proof}
+The unit tangent gives a section of the decomposition extension
+at $d$.  Over a number field $L$ containing $d$, this extension
+is the semidirect product $\mathbb Z_3(1)\rtimes G_L$.
+Its continuous sections modulo inertia conjugacy are precisely
+$H^1(G_L,\mathbb Z_3(1))$.  The decomposition homomorphism into
+$N\rtimes G_L$ and the continuous quotient $N\to A$ define
+the map in (C.10.2).  Passing to a larger finite field restricts
+the same section, so the map is defined on (C.10.1).
+The fields containing $d$ form a cofinal subsystem of the fields
+in that definition.  Every cuspidal germ is, by definition, a
+section of one such decomposition extension, proving the image
+assertion once injectivity is checked.
+
+First note that $H^0(G_L,\mathbb Z_3(1))=0$ for every finite
+number field $L$.  If a one-cocycle becomes a coboundary over
+a finite extension, subtract that coboundary and enlarge to a
+finite Galois extension $M/L$ so that the cocycle vanishes on
+$G_M$.  For $g\in G_L$, its value is fixed by $G_M$, by applying
+the cocycle identity to $gG_Mg^{-1}=G_M$.  The displayed
+invariant group is zero.  The cocycle therefore vanishes on
+$G_L$, which proves injectivity of every restriction in
+(C.10.1).
+
+Enlarge a common field of definition to contain all nine cusps.
+The boundary module is
+$W=\mathbb Z_3(1)[D]/\mathbb Z_3(1)\sum_{e\in D}e_e$.
+For a given $d$, the map $e_d:\mathbb Z_3(1)\to W$ is a
+split $G_L$-equivariant inclusion: omit any other cusp from
+the boundary basis.  The map $H^1(G_L,W)\to H^1(G_L,V)$
+is injective because $H^0(G_L,T_3E)=0$, as proved in C.1.
+Thus $e_d:H^1(G_L,\mathbb Z_3(1))\to H^1(G_L,V)$ is
+injective.  The abelian image of the packet is exactly
+\[
+                   \alpha_d+e_d H^1(G_L,\mathbb Z_3(1)),     \tag{C.10.4}
+\]
+where $\alpha_d$ is the Kummer class of the framed tangential
+divisor $d-O$.  This follows from the same division-torsor
+comparison used in B.1, now over $L$.
+Consequently two parameters in one packet cannot become
+equal as abelian germs, and hence cannot become equal in
+$\mathscr G$.
+
+Filling the boundary gives the continuous equivariant quotient
+$V\twoheadrightarrow T_3E$.  It sends (C.10.4) to
+$\kappa_L(d-O)$.  For $d\ne e$, the difference $d-e$ is a
+nonzero point of $E[3]$: the flex tangent relation is
+$3d\sim3O$, and the nine distinct flexes exhaust $E[3]$.
+The integral Kummer class $\kappa_L(d-e)$ remains nonzero
+over every finite extension of $L$.  Indeed the
+Mordell--Weil group of that extension is finitely generated.
+A nonzero three-primary torsion element in such a group is
+not divisible by $3^n$ for all $n$, so has nonzero image in
+its completion and in $H^1(T_3E)$ by the Kummer exact sequence.
+This argument uses the entire integral Kummer class; its
+modulo-three image alone can vanish after adjoining ninth
+division points.  It proves that the nine packets remain
+pairwise disjoint in the colimit.
+
+Our parameters and tangent value one are defined by the
+coordinate functions over $\mathbb Q$.  Field conjugation
+therefore takes the chosen tangent at $d$ to the chosen
+tangent at $gd$.  Transporting the decomposition inclusion
+conjugates its geometric path, and geometric conjugacy is
+exactly the equivalence used in $\mathscr G$.
+Kummer functoriality proves (C.10.3), with no additional
+translation term.
+
+For completeness, a finite-level Kummer class modulo three
+is killed by some finite extension: use the finite image of
+its affine cocycle representation.  The long exact sequence
+of $0\to\mathbb Z_3(1)\xrightarrow{3}\mathbb Z_3(1)
+\to\mu_3\to0$ then shows that the corresponding germ is
+divisible by three.  Multiplication by an integer prime to
+three is already invertible on each completed Kummer group.
+Thus $\mathscr K$ is divisible.
+At a fixed finite field, its completed Kummer group's torsion
+is precisely $\mu_{3^\infty}(L)$.  To see this directly, use
+the divisor sequence from $L^\times$ to its principal
+fractional ideals.  The latter group is free abelian and the
+sequence splits as abelian groups; the unit group is a finite
+roots-of-unity group plus a free abelian group by Dirichlet's
+theorem.  The three-adic completion of a free abelian group
+is a subgroup of a product of copies of $\mathbb Z_3$, hence
+torsion-free.  Only the three-primary roots of unity remain
+as torsion.  Since all restrictions in (C.10.1) are injective,
+passing to the colimit introduces no further torsion and
+retains all roots of unity of three-power order.  This proves
+the final assertions.
+\end{proof}
+
+\begin{statement}{C.11}{Refuted}{The pure-residue computation over the rationals does not extend verbatim to every number field}
+Let
+\[
+       L=\mathbb Q(\zeta_3,\sqrt{10}),\qquad
+       S_L=\{v:v\mid3\}\cup\{v:v\mid\infty\}.
+\]
+For the actual rank-forty-four module $\mathcal K$,
+\[
+                   H^2_{\rm cts}(G_{L,S_L},\mathcal K)\ne0.
+                                                               \tag{C.11.1}
+\]
+Its inflation into $H^2_{\rm cts}(G_L,\mathcal K)$ is
+injective, and every one of its classes has zero
+residue outside $S_L$.
+Consequently the pure-residue isomorphism (A.1.3)
+cannot be transported to this $L$ by replacing the
+rational primes with its finite primes.  The
+finite-$S_L$ complex is a necessary part of Task C.1.
+\end{statement}
+\begin{proof}
+The polynomial $X^2-10$ has two simple roots modulo
+three and hence two roots in $\mathbb Q_3$ by Hensel's
+lemma.  Therefore $L$ has two places above three;
+each completion is $\mathbb Q_3(\zeta_3)$.
+The field has no real places.  The Brauer invariant
+sequence gives
+\[
+ \operatorname{Br}(\mathcal O_L[1/3])[3]
+   =\{(a,-a):a\in\tfrac13\mathbb Z/\mathbb Z\}
+   \simeq\mathbb F_3.                                      \tag{C.11.2}
+\]
+Kummer theory and the arithmetic etale comparison
+surject $H^2(G_{L,S_L},\mu_3)$ onto this group.
+These are the same comparison and invariant maps
+used in A.14: Milne, II.2.9, II.2.1 and
+Remark II.2.2(a) \cite{MilneADT}.  Since $\mu_3\subset L$,
+fixing $1\mapsto\zeta_3$ identifies its coefficient with
+the trivial module $\mathbb F_3$.  Thus
+$H^2(G_{L,S_L},\mathbb F_3)\ne0$.
+
+The image on $\mathcal K/3$ is a finite three-group,
+because $L$ contains $\mathbb Q(\zeta_3)$ and the
+action over that field has this property in A.1.
+A nonzero module for a finite three-group over
+$\mathbb F_3$ has a nonzero trivial quotient: its
+coinvariants are nonzero by nilpotence of the
+augmentation ideal.  Choose a surjection
+$\mathcal K/3\twoheadrightarrow\mathbb F_3$.
+The group $G_{L,S_L}$ has three-cohomological
+dimension at most two.  The long exact sequence
+therefore makes
+\[
+ H^2(G_{L,S_L},\mathcal K/3)
+          \longrightarrow H^2(G_{L,S_L},\mathbb F_3)
+\]
+surjective, so its source is nonzero.
+
+The degree-two finite-coefficient groups are finite.
+Their inverse system is Mittag--Leffler, and the
+finite-coefficient groups in degree three vanish.
+The continuous-cohomology inverse-limit sequence
+then gives $H^3_{\rm cts}(G_{L,S_L},\mathcal K)=0$.
+Reduction modulo three in the long exact coefficient
+sequence yields a surjection
+\[
+ H^2_{\rm cts}(G_{L,S_L},\mathcal K)/3
+          \twoheadrightarrow H^2(G_{L,S_L},\mathcal K/3).
+\]
+This proves (C.11.1).
+
+At every finite $v\nmid3$ the eigenvalues on
+$\mathcal K(-1)$ have absolute values
+$\#k(v)$ or $\sqrt{\#k(v)}$, by the boundary/elliptic
+filtration.  None is one, so
+$D_v=F_v-1$ is injective on this lattice.
+The localization triangle of F.1 over $L$ thus has
+zero degree-zero residue group.  Its long exact
+sequence injects the nonzero finite-$S_L$ degree-two
+group into the global degree-two group, with image
+in the kernel of every displayed residue.
+This proves the precise failure of the proposed
+pure-residue replacement.
+\end{proof}
+
+\begin{statement}{C.12}{Proved}{The exact general number-field criterion with its retained arithmetic term}
+For any number field $L$, put $S_L=\{v\mid3,\infty\}$,
+$A_v=\mathcal K(-1)$ and $D_v=F_v-1$ for $v\notin S_L$.
+Let $\mathcal R_L(A)$ denote the families in these
+integral lattices tending to zero three-adically.
+Then there are exact maps
+\[
+\begin{aligned}
+ 0\longrightarrow H^2_{\rm cts}(G_{L,S_L},\mathcal K)
+ &\xrightarrow{\rm inf}H^2_{\rm cts}(G_L,\mathcal K)\\
+ &\xrightarrow{\rm res}
+       \mathcal R_L(A)/D\mathcal R_L(A)
+       \longrightarrow0.
+\end{aligned}                                              \tag{C.12.1}
+\]
+\[
+ H^1_{\rm cts}(G_{L,S_L},\mathcal K)
+ \xrightarrow{\sim}H^1_{\rm cts}(G_L,\mathcal K).             \tag{C.12.2}
+\]
+The quotient in (C.12.1) uses the actual image of $D$.
+The first term is the inverse limit of the finite
+groups $H^2(G_{L,S_L},\mathcal K/3^n)$.
+
+For a section of $N^{\rm cc}$ over $L$, take its
+actual local path-origin residues $r_v$ by the
+formula (A.8.3), with residue size $\#k(v)$ and the
+restricted $G_L$-action.  Its intrinsic obstruction
+vanishes exactly when both of the following tests hold:
+\[
+ y_v=-D_v^{-1}r_v\in A_v\text{ for every }v\notin S_L,
+        \qquad (y_v)_v\in\mathcal R_L(A);                  \tag{C.12.3}
+\]
+\[
+ \eta(s)=0\quad\text{in }H^2_{\rm cts}(G_{L,S_L},\mathcal K).
+                                                               \tag{C.12.4}
+\]
+Here, once (C.12.3) holds, $\eta(s)$ is the unique
+class whose inflation is the full continuous
+obstruction of $s$.  Every nonempty class-two lift
+fiber is a torsor under
+$H^1_{\rm cts}(G_{L,S_L},\mathcal K)$, with no further
+geometric-stabilizer quotient.
+This statement retains the finite-$S_L$ test; it
+does not claim an evaluation of that test for
+arbitrary $L$.
+\end{statement}
+\begin{proof}
+Apply the finite-coefficient localization triangle
+of F.1 and take its derived inverse limit.
+The residue complex is the actual two-term complex
+$[\mathcal R_L(A)\xrightarrow D\mathcal R_L(A)]$.
+Each $D_v$ is injective by the weight calculation
+at the end of C.11, so its degree-zero cohomology
+is zero.  The finite-$S_L$ degree-one and degree-two
+finite-coefficient groups are finite, and hence
+their inverse systems are Mittag--Leffler.
+Three-cohomological dimension at most two gives
+$H^3_{\rm cts}(G_{L,S_L},\mathcal K)=0$ as in C.11.
+The indicated pieces of the localization long
+exact sequence are therefore precisely (C.12.1)
+and its degree-one isomorphism; the same finite-group
+Mittag--Leffler fact identifies the first term
+with its finite-coefficient inverse limit.
+
+The local section equation used in A.8 is unchanged
+after restricting the arithmetic action to $G_L$:
+the inertia comparison cochains are the restrictions
+of the same based cusp paths, with the cusps now
+permuted by $G_L$.  Applying that derivation over
+each completion $L_v$ gives exactly $r_v$ as the
+residue of the continuous obstruction class.
+Its residue class vanishes precisely under
+(C.12.3), because every $D_v$ is injective and
+the sole integral correction is the displayed one.
+Exactness of (C.12.1) then gives the unique
+$\eta(s)$.  Its vanishing is equivalent to
+vanishing of the original obstruction, proving
+necessity and sufficiency of the two tests.
+
+Once a lift exists, two lifts of a fixed
+representative differ by a continuous
+$\mathcal K$-valued one-cocycle; central
+conjugacy changes it by a coboundary.
+A geometric stabilizer of the underlying
+$N^{\rm cc}$ section has fixed image in $V$,
+which is zero by C.1.  Its remaining image is
+in $\mathbb Z_3(1)$ and is again zero.
+Thus no additional orbit identification occurs,
+and the fiber is the asserted full torsor.
+\end{proof}
+
+\subsection{Algebraic evaluation of the point image}
+
+\begin{statement}{C.16}{Proved}{Finite algebraic formulas for every point's abelian and central coordinates}
+Put $m=3^n$.  Two successive Kummer covers and a quotient
+of their finite deck group construct a based finite cover
+$X_n\to U$ with group
+\[
+ P_n=N/(N^{3^n}\gamma_3N).                                  \tag{C.16.1}
+\]
+Its multiplication, arithmetic action, transition maps,
+and fibers at algebraic points are computed by finite
+algebraic operations.  The tangential base point is the
+specified $s=z/x$, tangent one.
+
+Choose compatible lifts $y_1,\ldots,y_{10}$ of a
+$\mathbb Z_3$-basis of $V$.  For every $A\in U(L)$ the
+construction gives compatible finite cocycles
+\[
+ c_{A,n}(g)=(v_{A,n}(g),z_{A,n}(g))
+ \in(V/3^n)\oplus(\bigwedge\nolimits^2V/3^n).                \tag{C.16.2}
+\]
+They are obtained by evaluating roots of rational
+functions at $A$ and comparing the resulting fibers
+with the Puiseux fiber at $O$.  Their inverse limit
+is a continuous cocycle whose class is the class-two
+point section of $A$.  Thus (C.16.2) evaluates all
+forty-five central coordinates with their tangent origin.
+\end{statement}
+\begin{proof}
+We specify all the covers and comparison maps.
+The geometric constructions are over
+$\overline{\mathbb Q}$, and their finitely many
+coefficients lie in computable number fields.
+
+For a smooth affine curve $Y=C\setminus B$, with $C$
+proper of genus $g$ and $B$ nonempty and finite, put
+\[
+ \mathcal F_m(Y)=
+ \frac{\{f\in\overline{\mathbb Q}(C)^\times:
+       \operatorname{ord}_x(f)\in m\mathbb Z
+                         \text{ for every }x\in Y\}}
+      {\overline{\mathbb Q}(C)^{\times m}}.                 \tag{C.16.3}
+\]
+Valuations give the exact sequence
+\[
+ 0\longrightarrow\operatorname{Jac}(C)[m]
+ \longrightarrow\mathcal F_m(Y)
+ \longrightarrow
+ \ker\bigl((\mathbb Z/m)^B\xrightarrow{\sum}\mathbb Z/m\bigr)
+ \longrightarrow0.                                       \tag{C.16.4}
+\]
+The first map sends $[E]$ to the class of a function
+with divisor $mE$.  An $m$th-power function makes
+$E$ principal, proving injectivity.  If every boundary
+valuation of $f$ is also divisible by $m$, its full
+divisor is $mE$, proving exactness in the middle.
+For surjectivity, lift a boundary vector to a degree-zero
+divisor $D$ on $B$.  Choose $E$ with $m[E]=[D]$ in
+the Jacobian and a function with divisor $D-mE$.
+Multiplication by $m$ on the Jacobian is surjective
+over $\overline{\mathbb Q}$, so these choices exist.
+They give the required boundary valuations.
+
+Choose a basis of $\operatorname{Jac}(C)[m]$ and the
+boundary vectors $b-b_0$.  The preceding construction
+gives $r_Y=2g+|B|-1$ functions $f_i$ forming a
+$\mathbb Z/m$-basis of $\mathcal F_m(Y)$.  Normalize
+$Y$ in
+\[
+ \overline{\mathbb Q}(C)
+       (f_1^{1/m},\ldots,f_{r_Y}^{1/m}).                    \tag{C.16.5}
+\]
+Their independence gives degree $m^{r_Y}$.  At an
+interior point remove the $m$-divisible valuation
+from a Kummer equation; extracting a root of the
+remaining unit is etale in characteristic zero.
+Thus (C.16.5) is etale on $Y$.  Conversely every
+cyclic etale cover of exponent dividing $m$ comes
+from such a function, by function-field Kummer
+theory and this valuation test.  This proves that
+(C.16.5) is exactly the maximal geometric abelian
+cover of exponent $m$.
+
+All these are finite algebraic operations.  Represent
+Jacobian classes by divisors, solve their finite
+$m$-division equations, and compute the principal
+functions by Riemann--Roch.  The latter computation
+is given explicitly by Khuri-Makdisi's
+Theorem/Algorithm 5.5 \cite{BC_KhuriMakdisi2004}.
+Termination can also be certified without choosing
+a Jacobian implementation: enumerate algebraic
+rational functions, test the valuation condition
+and their classes modulo $m$th powers, and retain
+independent functions until their generated subgroup
+has the known order $m^{r_Y}$ from (C.16.4).
+Factoring $T^m-f$ over the algebraic function field
+decides the power tests.  Equation (C.16.4) proves
+that this enumeration reaches the required order.
+
+Apply (C.16.5) to $U$, and denote the result by
+$Y_m\to U$.  Its intrinsic maximal pro-three group
+is $H_m=N^m[N,N]$.  Indeed the normal closure over
+$U$ of a finite three-group cover of $Y_m$ again
+has three-group Galois group: intersect its finitely
+many conjugate subgroups, or use the associated
+three-group wreath product.  This proves the
+comparison with the open subgroup of $N$.
+Apply (C.16.5) to $Y_m$, using its actual smooth
+compactification and full boundary.  The composite
+cover of $U$ has finite geometric group
+\[
+ E_m=N/(H_m^m[H_m,H_m]).                                   \tag{C.16.6}
+\]
+The denominator is characteristic in $N$, so this
+composite is geometrically Galois.  Compute its
+finite deck group and take the fixed field of
+$E_m^m\gamma_3E_m$; this defines $X_n$.
+
+In $N/(N^m\gamma_3N)$, the image of $H_m$ is
+central and of exponent dividing $m$.  Hence
+\[
+ H_m^m[H_m,H_m]\subset N^m\gamma_3N.                        \tag{C.16.7}
+\]
+The preimage of $E_m^m\gamma_3E_m$ is therefore
+exactly $N^m\gamma_3N$.  The quotient maps induced
+by $N$ give inverse isomorphisms
+$E_m/(E_m^m\gamma_3E_m)\simeq N/(N^m\gamma_3N)$.
+This proves the precise map in (C.16.1).
+Finite field automorphisms, fixed fields and the
+maps of their normalizations are computed by
+factoring finite algebraic equations.
+
+Because $m$ is odd, the Hall map
+\[
+ \begin{split}
+ (V/m)\oplus(\bigwedge\nolimits^2V/m)&\longrightarrow P_n,\\
+ (v,z)&\longmapsto
+ \prod_i y_i^{v_i}
+ \prod_{i<j}[y_i,y_j]^{\,z_{ij}-v_iv_j/2}
+ \end{split}                                              \tag{C.16.8}
+\]
+is an explicit isomorphism, with the products in
+increasing order.  Its source has multiplication
+\[
+ (v,z)(v',z')=
+       (v+v',z+z'+\tfrac12v\wedge v').                     \tag{C.16.9}
+\]
+Commuting successive generators verifies the map.
+Conversely this source is generated by the ten
+basis elements, has exponent $m$, and is of class
+two.  The free-group map back is inverse on the
+generators.  This proves both bijectivity and
+$|P_n|=m^{55}$.  Abelian bases are read from the
+Kummer pairing with (C.16.3), and their lifts are
+found in the finite deck group.  They can be
+chosen compatibly because $P_{n+1}\to P_n$ and
+the maps on their abelian kernels are surjective.
+
+Embed the cover fields compatibly in the Puiseux
+field at $O$, using $s=z/x$ and fixed compatible
+symbols $s^{1/3^a}$.  Galois acts on the algebraic
+coefficients and fixes these symbols.
+The characteristic subgroup in (C.16.1) is
+preserved.  Equivalently there is a unique based
+isomorphism $\phi_{g,n}:{}^gX_n\to X_n$ carrying
+the conjugate chosen tangential fiber point to
+the chosen one.  A deck transformation fixing a
+fiber point is the identity.  Thus uniqueness
+gives
+$\phi_{gh,n}=\phi_{g,n}\,{}^g\phi_{h,n}$:
+these are actual arithmetic descent maps.
+They are computed from the finite function-field
+isomorphisms and the Puiseux branch condition.
+Compute coefficients until all finitely many
+branches are distinguished; distinct algebraic
+branches differ after finitely many terms.
+The coefficient action agrees with the
+path--Puiseux comparison of
+\cite[\S1.1, (1.1.1)--(1.1.3)]{BC_HiranoMorishita2019},
+applied here to the actual finite covers of $U$.
+
+For $A\in U(L)$ choose compatible points $p_{A,n}$
+in $X_n(A)$ by the root equations (C.16.5) and
+the finite fixed-field maps.  The functions may
+be chosen with valuation zero at every point
+above $A$: multiply them by $m$th powers with
+the required prescribed valuations, using
+Riemann--Roch approximation.  This leaves their
+classes in (C.16.3) unchanged.  Alternatively,
+at a valuation $mk$, divide by a local parameter
+to the power $mk$ and evaluate the resulting
+unit; its root is trivialized by that parameter
+to the power $k$.  These are explicit
+isomorphisms of the Kummer equations.
+The based inclusions associated to
+$N^{3^{n+1}}\gamma_3N\subset N^{3^n}\gamma_3N$
+supply the transition maps.  Their maps on
+geometric fibers are surjective, allowing
+successive compatible choices.
+
+Let deck transformations act on the right on
+fiber points, by composition with function-field
+automorphisms.  Compute $c_{A,n}(g)$ from
+\[
+ \phi_{g,n}(g p_{A,n})=p_{A,n}\,c_{A,n}(g).                 \tag{C.16.10}
+\]
+All terms are algebraic points and maps already
+constructed.  The descent identity gives
+\[
+ c_{A,n}(gh)=c_{A,n}(g)\rho_n(g)c_{A,n}(h).                 \tag{C.16.11}
+\]
+For fixed $n$, the equations, deck maps,
+distinguishing Puiseux coefficients and fiber
+points lie in a finite Galois extension of $L$.
+Thus (C.16.10)--(C.16.11) are computed as
+functions on a finite Galois group.
+Formula (C.16.8) then extracts their coordinates.
+
+Write the computed arithmetic action as
+\[
+ \rho_n(g)(v,z)=
+       (R_gv,\bigwedge\nolimits^2R_g\,z+\ell_gv).
+                                                               \tag{C.16.12}
+\]
+Here $\ell_g$ is read from the ten images
+$\rho_n(g)y_i$ using (C.16.8).
+It is linear because the class-two addition
+$a+b=ab[a,b]^{-1/2}$ is recovered from the
+group law; automorphisms preserve this
+addition and the bracket.  In particular
+the evaluated central cochain satisfies
+\[
+ \begin{split}
+ z_{A,n}(gh)={}&z_{A,n}(g)
+   +\bigwedge\nolimits^2R_g\,z_{A,n}(h)
+   +\ell_g(v_{A,n}(h))\\
+ &+\tfrac12v_{A,n}(g)\wedge R_gv_{A,n}(h).
+ \end{split}                                              \tag{C.16.13}
+\]
+This retains the off-diagonal arithmetic term
+as well as the tangential displacement.
+
+Every finite quotient of $N/\gamma_3N$ has
+finite three-power exponent, so it factors
+through some $P_n$.  Therefore
+$N/\gamma_3N\to\varprojlim_nP_n$ is an
+isomorphism: compactness proves surjectivity,
+and the kernel is tested in all finite
+quotients.  The compatible finite cocycles
+thus give a continuous cocycle.
+The etale path comparison between the two
+fiber functors on each $X_n$ is precisely
+(C.16.10); cofinality identifies its inverse
+limit with the point section.  A different
+compatible fiber point changes the cocycle
+by the corresponding compatible geometric
+conjugation.  This proves the asserted class.
+\end{proof}
+
+\begin{statement}{C.17}{Proved}{An evaluated nonzero central point coordinate}
+Let $\alpha^3=2$, $\zeta=\zeta_3$, $\eta=\zeta_9$
+with $\eta^3=\zeta$, and $L=\mathbb Q(\zeta,\alpha)$.
+For $A=[1:-\alpha:1]\in U(L)$ an explicit quotient
+of $P_1$ of order $27$ has zero abelian point
+coordinates and central coordinate
+\[
+                  -\kappa_L(\zeta)\in
+                    H^1(G_L,\mathbb F_3)                  \tag{C.17.1}
+\]
+in the prescribed unit-tangent origin at $O$.
+This class is nonzero.
+\end{statement}
+\begin{proof}
+The functions $f=-x/z$ and $1-f=(x+z)/z$
+are units on $U$: the line $x+z=0$ meets $E$
+only at $Q_c$, with multiplicity three.
+Pull back the cover
+\[
+ u^3=f,\qquad v^3=1-f,\qquad
+ w^3=A(u):=(1-\zeta u)(1-\zeta^2u)^2.                      \tag{C.17.2}
+\]
+It is the $l=3,c=1$ Heisenberg cover of
+\cite[\S2.1, (2.1.2), Theorem 2.1.4]
+{BC_HiranoMorishita2019}.  We verify its
+connected pullback and its deck maps.
+The valuations of $f,1-f$ at $P,O$ are
+$(1,0)$ and $(-1,-1)$, of determinant $-1$.
+Their Kummer classes are therefore independent
+and the first two equations have degree nine.
+Since
+\[
+ \frac{A(\zeta u)}{A(u)}
+                 =\frac{(1-u)^3}{1-u^3},                  \tag{C.17.3}
+\]
+the following are automorphisms:
+\[
+ \begin{array}{c|ccc}
+       &u&v&w\\ \hline
+ \tau  &\zeta u&v&(1-u)w/v\\
+ \sigma&u&\zeta v&w\\
+ z     &u&v&\zeta w .
+ \end{array}                                              \tag{C.17.4}
+\]
+The identity $\prod_{j=0}^2(1-\zeta^ju)=1-u^3$
+gives $\tau^3=1$; also $\sigma^3=z^3=1$
+and $[\tau,\sigma]=z$.
+If $A(u)=b^3$ in the degree-nine field, its
+commuting automorphisms would satisfy
+$\tau(b)/b=\zeta^i(1-u)/v$ and
+$\sigma(b)/b=\zeta^j$ for some $i,j$.
+Their two orders of application would then
+differ by $\zeta$, a contradiction.
+Thus the full degree is $27$.
+Every zero and pole of these equations lies
+over a deleted cusp, so the normalization
+is etale on $U$.  Its exponent-three
+class-two deck group is an actual quotient
+of $P_1$.
+
+At $A$ choose
+\[
+                 u=-1,\qquad v=\alpha,\qquad w=-\eta;
+                                                               \tag{C.17.5}
+\]
+indeed $A(-1)=-\zeta$.
+At $O$, put $r=s^{1/3}$.  The branches are
+\[
+ u=-r^{-1},\qquad
+ v=r^{-1}(1+s)^{1/3},\qquad
+ w=\eta^2r^{-1}(1+O(r)).                                   \tag{C.17.6}
+\]
+The last coefficient follows from
+$r^3A(-r^{-1})|_{r=0}=\zeta^2$; the
+remaining unit series has coefficients
+in $\mathbb Q(\zeta)$.
+For $g\in G_L$ with $g\eta=\zeta^e\eta$,
+raw conjugation moves (C.17.5) by $z^e$
+and the tangent branch by $z^{2e}$.
+The based descent removes the latter
+displacement.  Formula (C.16.10) therefore
+gives $z^{e-2e}=z^{-e}$.
+The raw arithmetic action commutes with
+(C.17.4), and its based correction is
+central, so the arithmetic action on the
+finite group over $L$ is trivial.
+Geometric conjugation fixes this central
+cocycle.
+
+Finally $X^3-2$ is Eisenstein at the
+prime over two in $\mathbb Q(\zeta)$.
+The distinct cyclic degree-three extension
+$\mathbb Q(\eta)/\mathbb Q(\zeta)$ is
+unramified there.  Consequently $\eta\notin L$
+and $\kappa_L(\zeta)\ne0$.
+The exact polynomial identities, the
+twenty-seven deck elements and their
+multiplication, both fiber displacements,
+and the discriminants $-108$ and $-3^9$
+are checked in
+\texttt{code/bc\_point\_coordinates.py}
+and its supplied output.
+\end{proof}
+
+\begin{statement}{C.18}{Proved}{The point-image set and its exact central membership criterion}
+The point-image subset of the class-two germ set is
+\[
+ \left\{
+   \left[\left(\varprojlim_n v_{A,n},
+                   \varprojlim_n z_{A,n}\right)\right]:
+                  A\in U(\overline{\mathbb Q})
+ \right\},                                                \tag{C.18.1}
+\]
+where each finite function is algebraically evaluated
+by (C.16.3)--(C.16.13).
+This parametrization is injective, disjoint from the
+nine packets (C.10.2), and equivariant for
+$A\mapsto gA$.  Its stabilizer at $A$ is
+$G_{\mathbb Q(A)}$.
+
+Given a section and an algebraic point $A$, choose
+a common number field $L$ of definition.
+Let $d_n$ be the section cocycle in $P_n$ and
+$c_{A,n}$ the evaluated cocycle above.
+Their germs agree exactly when every finite set
+\[
+ \mathcal T_n=\{h\in P_n:
+ d_n(g)=h^{-1}c_{A,n}(g)\rho_n(g)h
+                         \text{ for all }g\in G_L\}
+                                                               \tag{C.18.2}
+\]
+is nonempty.  Each test is a computation on a finite
+Galois group.  Combined with the injective abelian
+point map C.9, it gives a complete central
+membership criterion for (C.18.1).
+\end{statement}
+\begin{proof}
+C.16 proves (C.18.1), and C.9 proves injectivity,
+disjointness and the stated stabilizer.
+Conjugating the equations, divisors, roots and
+based comparison maps of C.16 carries the
+output at $A$ to the output at $gA$, exactly
+as in (C.3), proving equivariance.
+
+The equations in (C.18.2) factor through a
+finite Galois extension containing the fields
+of both finite cocycles and their actions.
+They are therefore finite tests.
+The inverse images of $\mathcal T_n$ in the
+compact group $N/\gamma_3N$ are closed,
+nonempty and nested.  Their intersection
+provides one conjugator valid at every
+precision, hence in $N/\gamma_3N$.
+Conversely such a conjugator supplies
+every finite solution.
+Equality of germs is equality already over
+$L$ by C.2.  This proves (C.18.2) without
+assuming compatible choices of finite
+conjugators.
+
+We spell out the transport to the other
+central coordinates.  The Kummer pairing
+in (C.16.3) identifies $P_n^{\rm ab}$
+with the actual $V/3^n$.
+For cusp vectors it is the valuation
+pairing; for proper vectors it is the
+torsion-divisor pairing in (C.16.4).
+Use the eight non-$O$ cusp vectors and
+two lifts of an oriented Tate basis.
+Actual cusp generators are obtained by
+their Puiseux monodromy on the finite
+covers.  Thus the basis comparison with
+(E36.4) takes place in the actual deck
+groups.  For two compatible generator
+choices with the same abelian basis,
+write $y_i'=y_i\exp(t_i)$, with
+$t_i\in\bigwedge^2V$.  Substitution into
+(C.16.8) gives the exact map from coordinates
+in the primed generators to coordinates
+in the unprimed generators:
+\[
+              (v,z)\longmapsto
+                    (v,z+\sum_i v_i t_i).                 \tag{C.18.3}
+\]
+An abelian basis change $B$ gives $B$ on
+$v$ and $\bigwedge^2B$ on central brackets,
+followed by the computed linear correction
+(C.18.3).
+
+The based filling map $q_O$ gives
+\[
+ q_O(v,z)=(\pi v,\omega z+\lambda(v)),\qquad
+               \omega=\bigwedge\nolimits^2\pi,            \tag{C.18.4}
+\]
+where $\lambda(v_i)$ is read from the
+actual image $q_O(y_i)$ in the chosen
+basis of $C$.  These images are computed
+by the finite maps of covers.
+One may take the two generators of $C$
+to be $q_O(y_1),q_O(y_2)$ and the other
+eight $y_i$ to be peripheral; then
+$\lambda=0$.  The change to the
+involution-compatible basis of C.13 is
+(C.18.3), obtained by applying that
+actual involution to the generators.
+The orientation is
+$k=[a,b]=-\delta$, as in (E36.5),
+B.3 and A.8.
+
+For the E36 parameter over a fixed
+abelian cocycle $\alpha$, conjugate
+the computed cocycle by an actual
+geometric lift $\widetilde h$ of
+$h\in V$, using
+$c(g)\mapsto\widetilde h^{-1}c(g)
+                       \rho(g)\widetilde h$.
+Its abelian change is
+$v(g)\mapsto v(g)+(R_g-1)h$.
+The vector giving the prescribed
+$\alpha$ is unique because
+$H^0(G_L,V)=0$.
+Write the prescribed $C$-reference as
+$(\beta(g),w_\beta(g))$.
+After this explicit comparison the
+E36 parameter is the class of
+\[
+       \omega z_A(g)+\lambda(v_A(g))-w_\beta(g)
+             \quad\text{in the generator }k.              \tag{C.18.5}
+\]
+The two $C$-cocycles have identical
+abelian coordinate $\beta$; their
+group difference is precisely this
+central difference by (C.16.9).
+Over a prescribed class-two lift of
+the resulting $N^{\rm cc}$-cocycle,
+the remaining fiber parameter is
+likewise the difference of the
+central cochains in
+$\mathcal K=\ker\omega$, after
+actual conjugation makes the
+$N^{\rm cc}$-cocycles equal.
+This proves that the construction
+evaluates both the E36 parameter
+and the forty-four-dimensional
+fiber coordinate with their
+specified reference translations.
+
+C.2--C.3 identify the germs fixed
+by $G_L$ with $\operatorname{Sec}_L$.
+In particular
+$\operatorname{Sec}_{\mathbb Q}$
+is the entire $G_{\mathbb Q}$-fixed
+subset.  Equations (C.10.2) and
+(C.18.1) supply both geometric
+image sets required in Task C.3.
+The criterion ranges over all $n$;
+it does not assert a bounded
+finite stopping rule for equality
+at all precisions.
+\end{proof}
+
+\begin{statement}{C.6}{Proved}{Complete class-two germ classification}
+Task C.1 requests the full explicit residue complex,
+obstruction residues, convergence criterion, and fibers
+over every number field $L$.  C.11 disproves a
+verbatim pure-residue extension of Part A; C.12
+gives the exact replacement, including the
+finite-$S_L$ arithmetic class and the lift torsor.
+C.13 evaluates the preceding cuspidally central
+obstruction by the local quadratic pairings at the
+places above three, with their global sum relation.
+C.14 computes the finite-$S_L$ complexes by finite Galois
+cochain matrices and Artin--Verdier duality, and C.15
+evaluates the retained class by explicit compact-support
+cup traces.  Together with the restricted-family condition
+in C.12, these give the full number-field criterion and
+fibers requested in Task C.1.
+For Task C.2, C.1--C.3 give injective restriction,
+the actual Galois action and exact descent.  Formula
+(C.5) identifies $\operatorname{Sec}_L$ with all
+$G_L$-fixed germs.
+For Task C.3, C.8--C.9 prove injectivity of the point
+map and separation from cusp germs.  C.10 gives the
+nine disjoint cusp parameter spaces with their torsion
+and Galois action.  C.16 evaluates every point's
+abelian and central coordinates by finite algebraic
+operations at each precision; C.17 is an explicit
+nonzero central instance.  C.18 gives the exact
+point-image set, its equivariance and its full
+central membership criterion.  Its coordinate
+maps retain the E36 origin and the lift-fiber
+translation.  Finally C.4--C.5 and C.7 prove
+that both specified phantom classes remain
+nonzero after every finite number-field
+extension and in the germ colimit, settling
+Task C.4.
+\end{statement}
+\begin{proof}
+The cited statements provide the specified maps,
+arithmetic computations and geometric image sets.
+Their compatibility under finite extension is
+the cochain restriction of C.2 and the based
+fiber construction of C.16; hence they give
+one classification over the filtered system
+of number fields, as asserted.
+\end{proof}
+

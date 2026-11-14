@@ -1,0 +1,183 @@
+{
+  "status": "PASS_ISOLATED_E63_LITERAL_REPLAY",
+  "mode": "literal",
+  "manifest_sha256": "5782ee65a5e0d633a5a919a4e31e5aeb8beb4ecd69d1b8b18024073140619554",
+  "protected_original_count": 657,
+  "steps": [
+    {
+      "label": "compile_engine",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "de_a6_schreier.cpp",
+        "-o",
+        "de_a6_schreier_fast"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [],
+      "seconds": 2.629
+    },
+    {
+      "label": "candidate_small",
+      "command": [
+        "python",
+        "a_cm_signed_common_candidate.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "a_cm_signed_common_candidate.json",
+        "a_cm_signed_common_candidate.npz"
+      ],
+      "seconds": 0.537
+    },
+    {
+      "label": "bridge_build",
+      "command": [
+        "python",
+        "de_a6_double_bridge_build.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_bridge_build.json",
+        "de_a6_double_bridge.cpp"
+      ],
+      "seconds": 0.085
+    },
+    {
+      "label": "bridge_independent",
+      "command": [
+        "python",
+        "de_a6_double_bridge_replay.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_bridge_replay.json",
+        "de_a6_double_bridge_replay.npz"
+      ],
+      "seconds": 14.497
+    },
+    {
+      "label": "signed_prepare",
+      "command": [
+        "python",
+        "de_a6_double_signed_prepare.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_signed_prepare.json",
+        "de_a6_double_signed_prepare.npz",
+        "de_a6_double_signed_upper.bin",
+        "de_a6_double_signed_gl_core.hpp",
+        "de_a6_double_signed_lifted.hpp"
+      ],
+      "seconds": 0.603
+    },
+    {
+      "label": "signed_independent",
+      "command": [
+        "python",
+        "de_a6_double_signed_replay.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_signed_replay.json",
+        "de_a6_double_signed_replay.npz"
+      ],
+      "seconds": 11.183
+    },
+    {
+      "label": "candidate_prepare",
+      "command": [
+        "python",
+        "de_a6_double_candidate_prepare.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_candidate_prepare.json",
+        "de_a6_double_candidate_model.bin",
+        "de_a6_double_candidate_lifted.hpp"
+      ],
+      "seconds": 0.263
+    },
+    {
+      "label": "candidate_independent",
+      "command": [
+        "python",
+        "de_a6_double_candidate_replay.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_candidate_replay.json",
+        "de_a6_double_candidate_replay.npz"
+      ],
+      "seconds": 4.277
+    },
+    {
+      "label": "deep_words",
+      "command": [
+        "python",
+        "de_a6_double_deep_words.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_deep_words.json",
+        "de_a6_double_deep_words.npz"
+      ],
+      "seconds": 7.214
+    },
+    {
+      "label": "target_old_maps",
+      "command": [
+        "python",
+        "e_a6_double_target_old_maps_root.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "e_a6_double_target_old_maps_root.json"
+      ],
+      "seconds": 1.054
+    },
+    {
+      "label": "target_independent",
+      "command": [
+        "python",
+        "e_a6_double_target_certificate_root.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "e_a6_double_target_certificate_root.json",
+        "e_a6_double_target_certificate_root.npz"
+      ],
+      "seconds": 1.827
+    },
+    {
+      "label": "target_both_covers",
+      "command": [
+        "python",
+        "e_a6_double_triple_target_root.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "e_a6_double_triple_target_root.json"
+      ],
+      "seconds": 0.044
+    }
+  ],
+  "all_originals_unchanged": true,
+  "seconds": 45.217,
+  "complete_new_relations_repeated": false,
+  "root_previously_replayed_target_chains_used_unchanged": true
+}

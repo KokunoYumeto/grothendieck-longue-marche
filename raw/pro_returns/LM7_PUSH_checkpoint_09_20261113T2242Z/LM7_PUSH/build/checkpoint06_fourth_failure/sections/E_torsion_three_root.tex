@@ -1,0 +1,145 @@
+\begin{statement}{E.34}{Proved}{The four-strand order-three torsion class gives a second finite test}
+Keep the finite quotient $q:B_4\twoheadrightarrow T$ and the
+elements $a,b,c,z,C$ of E.30.  Put
+\[
+ e=a^2bc,\qquad e_F=a_F^2b_Fc_F
+       \quad\text{for }F=(\lambda,f)\in\widehat{\mathrm{GT}}.
+ \tag{E.34.1}
+\]
+Then $e^3=z$, and every full-GT element satisfies
+\[
+                   e_F C\sim_{T/C} e^\lambda C.
+ \tag{E.34.2}
+\]
+Equivalently there exist $h\in T$ and
+$j\in\mathbb Z/|z|$ with
+\[
+                       e_F=h e^\lambda h^{-1}z^j.
+ \tag{E.34.3}
+\]
+Only the residue of $\lambda$ modulo three enters the
+class on the right of \textup{(E.34.2)}.  In particular
+both E.24 multiplier residues $1,73$ give the class
+$eC$ there.  The test uses the actual homomorphism
+$q\circ F$ and the capping map of E.30.
+\end{statement}
+\begin{proof}
+Write
+$\delta=\sigma_1\sigma_2\sigma_3$ and
+$\epsilon=\sigma_1^2\sigma_2\sigma_3$ in $B_4$.
+There is a short proof of the exact braid identity
+$\epsilon^3=\delta^4$.  Using a digit $i$ for
+$\sigma_i$, its successive positive words are
+\[
+\begin{aligned}
+ 112311231123&=112131231123=112131213123\\
+             &=121231213123=121232123123\\
+             &=121323123123=123123123123.
+\end{aligned}
+ \tag{E.34.4}
+\]
+The six changes use respectively distant commutation,
+distant commutation, the $121=212$ relation twice,
+the $232=323$ relation, and distant commutation.
+The program \texttt{e\_periodic\_braid\_root.py}
+independently verifies every location and substitution.
+Applying $q$ proves $e^3=z$.
+
+Let $\bar\epsilon$ be the image in
+$B_4/\langle\delta^4\rangle$, identified with the
+fifth-point stabilizer in $\Gamma_{0,[5]}$ by
+\textup{(E.30.5)}.  Formula \textup{(E.34.4)} and
+its permutation $(234)$ show that its order is
+exactly three, with fixed marked points $1,5$.
+The actual Nakamura--Schneps action comparison
+\textup{(E.30.5a)--(E.30.5c)} makes
+$F(\bar\epsilon)$ another element of order three.
+The action-independent torsion classification in
+Collas's Theorem~3.3 and Corollary~3.2 makes it
+conjugate to $\bar\epsilon$ or $\bar\epsilon^2$.
+The explicit normalizer below conjugates these
+two powers.  Since $\lambda$ is a unit modulo
+three, the resulting conjugacy can be written
+\[
+ F(\bar\epsilon)=u\bar\epsilon^\lambda u^{-1},
+                   \qquad u\in\widehat\Gamma_{0,[5]}.
+ \tag{E.34.5}
+\]
+We must locate this conjugator in the actual
+fifth-point stabilizer before passing to $T/C$.
+
+There is an explicit geometric normalizer reversing
+$\bar\epsilon$ and interchanging its two fixed
+points.  The periodic braid in
+\textup{(E.34.4)} is the order-three representative
+$\epsilon_{n-2}$ for $n=5$ in Collas's
+Corollary~3.2 \cite{ERootCollas2012}.
+Its rotation model has the five marked points
+\[
+                    \{0,\infty,1,\zeta_3,\zeta_3^2\},
+ \qquad R(t)=\zeta_3t.
+ \tag{E.34.6}
+\]
+The order-two Möbius map $w_0(t)=1/t$ preserves
+this set, exchanges $0$ and $\infty$, and satisfies
+$w_0Rw_0^{-1}=R^{-1}$ by literal substitution.
+Transporting this map by the marked-sphere
+identification with the periodic braid gives
+$w\in\Gamma_{0,[5]}$ such that
+\[
+ w\bar\epsilon w^{-1}=\bar\epsilon^{-1},
+                 \qquad w(1)=5,\quad w(5)=1.
+ \tag{E.34.7}
+\]
+This is an actual discrete mapping class and hence
+also gives an element of its profinite completion.
+The two additional equatorial points are exchanged
+and the third is fixed, as recorded by the literal
+permutation check in the program.
+
+The Drinfeld action preserves the permutation of
+$\bar\epsilon$.  Formula \textup{(E.34.5)} therefore
+makes $u$ preserve its fixed-point set $\{1,5\}$.
+If its permutation exchanges these points, then
+$v=uw$ fixes $5$ and \textup{(E.34.7)} gives
+\[
+                    F(\bar\epsilon)
+                       =v\bar\epsilon^{-\lambda}v^{-1}.
+ \tag{E.34.8}
+\]
+Both sides and the conjugator now lie in the
+completed fifth-point stabilizer.
+The abelianization of that group is $\mathbb Z/12$:
+the braid relations identify all three generator
+classes, and the killed full twist has exponent
+sum twelve.  This also computes its profinite
+abelianization, since every finite abelian
+quotient has exactly those relations.
+In this quotient $[\bar\epsilon]=4$, and the
+based GT formulas multiply every braid
+abelianization by $\lambda$.
+Equation \textup{(E.34.8)} would imply
+\[
+                     4\lambda=-4\lambda\pmod{12},
+                     \quad\text{hence }3\mid\lambda.
+ \tag{E.34.9}
+\]
+The latter contradicts
+$\lambda\in\widehat{\mathbb Z}^{\times}$.
+Thus $u$ fixes $5$ itself, proving the conjugacy
+\textup{(E.34.5)} inside
+$\widehat B_4/\overline{\langle\delta^4\rangle}$.
+
+The actual map to $T/C$ factors through this
+central quotient.  Its application to
+\textup{(E.34.5)} proves \textup{(E.34.2)}, and
+lifting the conjugator to $T$ proves
+\textup{(E.34.3)}.  Since $e^3=z$, its class in
+$T/C$ has order dividing three, which proves
+the claimed multiplier scope.  This argument
+requires no invariance of the finite kernel
+of $q$ under the GT action.  The earlier
+order-two test and this order-three test use
+their respective explicit periodic elements
+and the same equivariant capping homomorphism.
+\end{proof}

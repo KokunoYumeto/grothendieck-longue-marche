@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""Isolated complete replay of the E68 actual common-source certificate."""
+from pathlib import Path
+import argparse
+import hashlib
+import json
+import shutil
+import subprocess
+import sys
+import time
+import numpy as np
+
+
+ROOT=Path(__file__).resolve().parent.parent
+
+
+def digest(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def mathematical(value):
+    if isinstance(value,dict):
+        return {k:mathematical(v) for k,v in value.items() if k not in {'seconds','total_seconds'}}
+    if isinstance(value,list):return [mathematical(v) for v in value]
+    return value
+
+
+def main():
+    parser=argparse.ArgumentParser();parser.add_argument('--destination',required=True)
+    args=parser.parse_args();dest=Path(args.destination)
+    if not dest.is_absolute():dest=ROOT/dest
+    dest.mkdir(parents=True,exist_ok=False);work=dest/'code';work.mkdir()
+    manifest=json.loads((ROOT/'research/E68_authoritative_manifest.json').read_text())
+    hashes=manifest['sha256']
+    assert all(digest(ROOT/name)==h for name,h in hashes.items())
+    for name in manifest['minimal_input_files']:
+        target=work/name;target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copy2(ROOT/'code'/name,target)
+    start=time.monotonic()
+    with (dest/'compile.out').open('w') as out,(dest/'compile.err').open('w') as err:
+        subprocess.run(['g++','-std=c++17','-O3','-DNDEBUG','de_a6_schreier.cpp',
+                        '-o','de_a6_schreier_fast'],cwd=work,stdout=out,stderr=err,check=True)
+    stages=[]
+    for stem in ('a_cm_distribution_orbifold','a_cm_distribution_orbifold_witnesses'):
+        tick=time.monotonic()
+        with (work/(stem+'.out')).open('w') as out,(work/(stem+'.err')).open('w') as err:
+            subprocess.run([sys.executable,stem+'.py'],cwd=work,stdout=out,stderr=err,check=True)
+        a=json.loads((ROOT/'code'/(stem+'.json')).read_text())
+        b=json.loads((work/(stem+'.json')).read_text())
+        assert mathematical(a)==mathematical(b),stem
+        aa=np.load(ROOT/'code'/(stem+'.npz'));bb=np.load(work/(stem+'.npz'))
+        assert aa.files==bb.files
+        assert all(np.array_equal(aa[k],bb[k]) for k in aa.files)
+        stages.append({'program':stem+'.py','all_mathematical_JSON_and_NPZ_values_exact':True,
+                       'seconds':round(time.monotonic()-tick,6)})
+    sys.path.insert(0,str(work))
+    from de_a6_schreier_certificate import read_certificate,verify_words
+    certificates=[]
+    for stem in manifest['complete_certificate_stems']:
+        aa=read_certificate(ROOT/'code'/(stem+'.bin'))
+        bb=read_certificate(work/(stem+'.bin'))
+        verify_words(bb);assert aa.keys()==bb.keys()
+        for k in aa:
+            if isinstance(aa[k],np.ndarray):assert np.array_equal(aa[k],bb[k]),(stem,k)
+            else:assert aa[k]==bb[k],(stem,k)
+        certificates.append(stem+'.bin')
+    assert all(digest(ROOT/name)==h for name,h in hashes.items())
+    out={'status':'PASS_ISOLATED_E68_COMMON_SOURCE',
+         'stages':stages,'complete_certificates_exact_and_replayed':certificates,
+         'protected_files_unchanged':len(hashes),'all_1152_actual_common_words_replayed':True,
+         'seconds':round(time.monotonic()-start,6)}
+    (dest/'replay.json').write_text(json.dumps(out,indent=2)+'\n')
+    print(json.dumps(out,indent=2))
+
+
+if __name__=='__main__':main()

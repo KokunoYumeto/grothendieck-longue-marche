@@ -1,0 +1,180 @@
+[
+  {
+    "name": "compile_de_a6_schreier",
+    "argv": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "de_a6_schreier.cpp",
+      "-o",
+      "de_a6_schreier_fast"
+    ],
+    "exit_code": 0,
+    "seconds": 3.53
+  },
+  {
+    "name": "compile_de_a6_triple_affine",
+    "argv": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "de_a6_triple_affine.cpp",
+      "-o",
+      "de_a6_triple_affine"
+    ],
+    "exit_code": 0,
+    "seconds": 3.527
+  },
+  {
+    "name": "compile_de_a6_triple_kernel",
+    "argv": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "de_a6_triple_kernel.cpp",
+      "-o",
+      "de_a6_triple_kernel"
+    ],
+    "exit_code": 0,
+    "seconds": 3.946
+  },
+  {
+    "name": "compile_de_a6_triple_central",
+    "argv": [
+      "g++",
+      "-O3",
+      "-std=c++17",
+      "de_a6_triple_central.cpp",
+      "-o",
+      "de_a6_triple_central"
+    ],
+    "exit_code": 0,
+    "seconds": 4.376
+  },
+  {
+    "name": "de_a6_triple_affine_prepare",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_affine_prepare.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.732
+  },
+  {
+    "name": "de_a6_triple_affine_factor",
+    "argv": [
+      "./de_a6_triple_affine",
+      "de_a6_schreier_full_ordered.bin",
+      "de_a6_triple_affine.input",
+      "de_a6_triple_affine_factor.json"
+    ],
+    "exit_code": 0,
+    "seconds": 96.937
+  },
+  {
+    "name": "de_a6_triple_base_prepare",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_base_prepare.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.259
+  },
+  {
+    "name": "de_a6_triple_base",
+    "argv": [
+      "./de_a6_schreier_fast",
+      "--replay",
+      "de_a6_triple_base.bin"
+    ],
+    "exit_code": 0,
+    "seconds": 99.376
+  },
+  {
+    "name": "de_a6_triple_modular_prepare",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_modular_prepare.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.329
+  },
+  {
+    "name": "de_a6_triple_modular",
+    "argv": [
+      "./de_a6_schreier_fast",
+      "--replay",
+      "de_a6_triple_modular.bin"
+    ],
+    "exit_code": 0,
+    "seconds": 109.697
+  },
+  {
+    "name": "de_a6_triple_kernel_prepare",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_kernel_prepare.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.748
+  },
+  {
+    "name": "de_a6_triple_kernel",
+    "argv": [
+      "./de_a6_triple_kernel",
+      "de_a6_triple_kernel_model.bin",
+      "de_a6_triple_base.bin",
+      "de_a6_triple_kernel.json"
+    ],
+    "exit_code": 0,
+    "seconds": 503.716
+  },
+  {
+    "name": "de_a6_triple_kernel_replay",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_kernel_replay.py"
+    ],
+    "exit_code": 0,
+    "seconds": 21.12
+  },
+  {
+    "name": "de_a6_triple_central_prepare",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_central_prepare.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.714
+  },
+  {
+    "name": "de_a6_triple_central",
+    "argv": [
+      "./de_a6_triple_central",
+      "de_a6_triple_kernel_model.bin",
+      "de_a6_triple_central_model.bin",
+      "de_a6_schreier_residual_derived.bin",
+      "de_a6_triple_central.json"
+    ],
+    "exit_code": 0,
+    "seconds": 486.976
+  },
+  {
+    "name": "de_a6_triple_central_replay",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_central_replay.py"
+    ],
+    "exit_code": 0,
+    "seconds": 12.874
+  },
+  {
+    "name": "de_a6_triple_source_certificate",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+      "de_a6_triple_source_certificate.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.786
+  }
+]

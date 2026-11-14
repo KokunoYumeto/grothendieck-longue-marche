@@ -1,0 +1,241 @@
+\begin{statement}{E.35}{Proved}{All retained joint fibres pass the order-three torsion-class test}
+Let $T_{23}=T_{2,6}\times T_{3,6}$ be the exact joint
+Ferrari target of E.24. Write
+$e=a^2bc$, $z_4=(abc)^4$, and
+$e'=a'^2b'c'$ for the image of the same word under a
+retained braid triple. For every one of the $864$
+points of E.24, and every compatible multiplier lift
+$\lambda\equiv1\pmod{72}$, there is $h\in T_{23}$ with
+\[
+                         e'=he^\lambda h^{-1}.
+ \tag{E.35.1}
+\]
+Thus every retained fibre passes E.34 already in the
+actual joint target. On the ternary factor, all $216$
+parameter points have been evaluated. There are $15$
+distinct values of $e'$; for every such value,
+\[
+ e'z_4^j\sim_{T_{3,6}}e
+              \quad\Longleftrightarrow\quad j\equiv0\pmod3,
+             \qquad j\in\mathbb Z/9.
+ \tag{E.35.2}
+\]
+All $45$ positive comparisons have saved literal
+$B_4$ conjugators. The assertion concerns these exact
+finite fibres and does not assert a full profinite lift.
+\end{statement}
+\begin{proof}
+\paragraph{Complete conjugacy in the ternary target.}
+Use the actual projection from E.23,
+\[
+ 1\longrightarrow J\longrightarrow T_{3,6}
+       \longrightarrow T_{3,2}\longrightarrow1,
+       \qquad |T_{3,2}|=648.
+ \tag{E.35.3}
+\]
+The complete four-strand Schreier image, retained in
+E.23, gives a class-two exponent-three group $J$ with
+\[
+ \dim_{\mathbb F_3}\log J=30,\qquad
+ \dim_{\mathbb F_3}\log[J,J]=18.
+ \tag{E.35.4}
+\]
+The logarithm and exponential here are the exact
+class-two maps on $J$ certified in E.23. We do not
+apply a logarithm to the whole degree-six group.
+On this kernel the BCH identity is
+$u*v=u+v+\frac12[u,v]$, with $\frac12=2$ in
+$\mathbb F_3$.
+
+The new program independently enumerates all $648$
+base elements using actual words in $a,b,c$, and
+reconstructs the whole $30$-dimensional kernel from
+the resulting Schreier relations and their commutators.
+It verifies equality with the saved kernel of E.23
+and records a literal $B_4$ word for every basis
+element. Let $Z=\log[J,J]$, let
+$V=\log J$, and put $A=\operatorname{Ad}(e)$ on $V$.
+All these maps are computed by substitution in the
+original finite group.
+
+For a prescribed target $y$, enumerate every base
+conjugator $q$ satisfying
+$q\bar e q^{-1}=\bar y$ in $T_{3,2}$, and choose its
+recorded lift $g_q$. There are $72$ base conjugates
+of $\bar e$ and nine possible base conjugators for
+each of them. Conjugacy above a given $q$ is equivalent
+to conjugating $e$ to $g_q^{-1}yg_q$ by an element
+of $J$. Its first equation is
+\[
+ (1-A)u\equiv
+   \log\bigl(g_q^{-1}yg_qe^{-1}\bigr)\pmod Z.
+ \tag{E.35.5}
+\]
+This is the exact equation modulo the central subgroup
+$[J,J]$. Its homogeneous solution space is
+\[
+ V_1=\ker\bigl(V\xrightarrow{1-A}V/Z\bigr).
+\]
+The corresponding group $\exp(V_1)$ is the full
+centralizer of $e$ modulo $[J,J]$. For $v\in V_1$,
+$Av-v$ is central, so the exact class-two formula gives
+\[
+                    [\exp(v),e]=\exp((1-A)v).
+ \tag{E.35.6}
+\]
+In particular the second equation, after any solution
+$u$ of (E.35.5), is the linear equation on \emph{all}
+of $V_1$ given by the remaining central discrepancy.
+Multiplying $\exp(u)$ on the right by $\exp(v)$
+corrects that discrepancy. Its full homogeneous fibre
+is $\exp(V_2)$, where
+\[
+ V_2=\ker\bigl((1-A)|_{V_1}\bigr).
+ \tag{E.35.7}
+\]
+The first solution set is an entire coset of
+$\exp(V_1)$; the second is an entire coset of
+$\exp(V_2)$. Thus both kernel spaces retain every
+possible conjugator lift. An inconsistent equation
+excludes that complete coset, and enumeration of all
+base conjugators decides conjugacy in $T_{3,6}$.
+The computed ranks and dimensions are
+\[
+ \begin{array}{c|ccc}
+       &V&V_1&V_2\\\hline
+ \dim&30&22&10
+ \end{array},
+ \qquad
+ \operatorname{rank}\overline{(1-A)}=8,
+ \quad\operatorname{rank}((1-A)|_{V_1})=12.
+ \tag{E.35.8}
+\]
+
+Every ternary input is reconstructed from its retained
+E.23 braid triple and its complete two-dimensional
+homogeneous correction plane. For each of the $24$
+indices, the program evaluates all nine parameters
+and all nine central translates of the resulting
+$e'$. The following exact facts are checked:
+\[
+ e^3=z_4,\quad |z_4|=9,\quad |e|=27,
+ \qquad (e')^3=z_4.
+ \tag{E.35.9}
+\]
+All nine parameters in a given indexed plane have
+the same value of $e'$. Across the $24$ indices
+there are $15$ values, giving $135$ distinct translated
+targets. The complete two-stage algorithm gives
+exactly the three positive translates $j=0,3,6$
+for each value. The other six translates fail after
+the complete base and kernel search. This proves
+(E.35.2).
+
+The resulting $45$ conjugators have literal braid
+words of lengths between $6$ and $912$. They are
+obtained by multiplying the Schreier words for a
+logarithm's basis coordinates and then correcting
+the resulting central BCH term with the recorded
+central commutator words. Every reconstructed word
+is evaluated in the actual group and checked against
+the computed conjugator. A separate program imports
+no conjugacy solver: it evaluates all $45$ words,
+verifies the conjugacy identities, and reconstructs
+all $216$ original parameter inputs independently.
+The identity GT element, whose triple is $(a,b,c)$,
+is retained as a literal control.
+
+For the multiplier scope, the binary CRT corrections
+of E.24 have identity image in the entire ternary
+source, so this test covers both binary parameters
+of each point. Both multiplier branches have the
+same ternary triple; the exact braid-generator orders
+divide nine. Moreover
+\[
+ e^{73}=e z_4^6,
+ \qquad
+ e^\lambda=e z_4^{(\lambda-1)/3}
+          \quad(\lambda\equiv1\pmod{72}).
+ \tag{E.35.10}
+\]
+The exponent $(\lambda-1)/3$ is a multiple of three.
+All its residues modulo nine are among the three
+positive translates in (E.35.2). Hence $e'$ is
+conjugate to $e^\lambda$ in the ternary group itself
+for every compatible higher multiplier lift.
+
+An exhaustive auxiliary control tests the same
+two-stage method on the class-two exponent-three
+group with generators $a,b,c$ and central relation
+$[b,c]=1$, of order $3^5=243$. The order-three
+automorphism fixes $a$, sends $b$ to $b+c$ in
+logarithmic coordinates, and fixes $c$; it sends
+$[a,b]$ to $[a,b]+[a,c]$. All $243$ target values
+are compared with the complete enumeration of all
+$243$ conjugators. All decisions agree; the class
+has nine elements and the two successive ranks are
+one and one.
+
+\paragraph{The binary factor and the actual product.}
+Let $U=\ker(T_{2,6}\to\operatorname{SL}_2(\mathbb F_2))$.
+It is the finite $2$-group of E.24, and its center
+contains $\langle z_4\rangle$ of order four. In
+$T_{2,6}/\langle z_4\rangle$, both $e^\lambda$ and
+$e'$ have order three. Their images in
+$\operatorname{SL}_2(\mathbb F_2)=S_3$ are the same
+specified generator of $C_3$: the three retained
+braid generators have the original degree-two images,
+and, writing $A,B$ for their linear transvections,
+\[
+     \overline e=A^2BA=BA,
+     \qquad\overline {e'}=BA,
+     \qquad(BA)^\lambda=BA.
+ \tag{E.35.11}
+\]
+Here $A^2=1$ and $\lambda\equiv1\pmod3$.
+
+We recall an elementary proof of the needed
+coprime conjugacy fact. Two order-three complements
+to a normal finite $2$-group $P$ are conjugate by
+$P$. Induct on $|P|$ and use the nonzero characteristic
+elementary abelian subgroup $D=\Omega_1Z(P)$.
+The induction hypothesis conjugates the two
+complements to agree modulo $D$. For their generators
+with the same specified image in $C_3$, write the
+remaining difference as $t=vs$, $v\in D$, and let
+$\alpha$ be conjugation by $s$. The equation $t^3=1$
+is
+\[
+             v+\alpha v+\alpha^2v=0.
+\]
+In the $\mathbb F_2$-vector space $D$, take
+$w=\alpha v$. Then
+$(1-\alpha)w=v$, so conjugation by $w$ removes
+the difference. This completes the induction and
+keeps the generator orientation fixed.
+
+Apply this argument to the preimage of the displayed
+$C_3$ in $T_{2,6}/\langle z_4\rangle$, whose normal
+$2$-group is $U/\langle z_4\rangle$. Lifting its
+conjugator gives
+\[
+              e'=h_2e^\lambda h_2^{-1}z_4^j.
+\]
+Both cubes are $z_4^\lambda$: this follows from the
+literal braid identity of E.34 and E.24's full-twist
+calculation. Consequently $3j=0\pmod4$, so $j=0$.
+This proves the binary equality in the group itself.
+
+Finally E.24 proves that the actual joint target is
+the full product $T_{2,6}\times T_{3,6}$. Pairing the
+binary conjugator with the ternary one therefore
+gives an element of that actual target and proves
+(E.35.1), with no further joint-generation assumption.
+The new executed files are
+\texttt{de\_ferrari\_three\_conjugacy.py},
+\texttt{de\_ferrari\_three\_torsion.py}, and
+\texttt{de\_ferrari\_three\_torsion\_words.py},
+with the complete centralizer matrices, translated
+target decisions, indexed parameter map, and literal
+conjugators.
+\end{proof}
