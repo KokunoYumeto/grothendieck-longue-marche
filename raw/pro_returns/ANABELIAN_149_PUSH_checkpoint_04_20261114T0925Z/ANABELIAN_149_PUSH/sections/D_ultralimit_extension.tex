@@ -1,0 +1,347 @@
+% Root's ultralimit construction, independently checked and written by the Part F agent.
+\subsection{A discontinuous action with no cyclotomic fixed pro-point}
+
+\begin{claim}{D.12}{Proved}
+For $U=\mathbb P^1_\Q\setminus\{0,1,\infty\}$, put
+$E=\pi_1(U)$ and $\Pi=\pi_1(U_{\overline\Q})$, and fix a
+decomposition embedding $G_{\Q_3}\hookrightarrow G_\Q$.
+There is an abstract, provably discontinuous section
+\[
+                         s:G_\Q\longrightarrow E
+\]
+whose restriction to $G_{\Q_3}$ is geometrically conjugate
+to the continuous point section at the explicit transcendental
+point
+\[
+                    a=1+\sum_{r=1}^{\infty}3^{r!}
+                       \in U(\Q_3).
+\]
+It induces an abstract semilinear action on the universal
+pro-cover and its completed proper levels, normalizing the
+original geometric deck group $\Pi$.
+\end{claim}
+\begin{proof}
+First verify transcendence, rather than assume a generic local
+point. Put $A_N=1+\sum_{r=1}^N3^{r!}$. Then
+\[
+ v_3(a-A_N)=(N+1)!,\qquad
+                   1<A_N<2\cdot3^{N!}.
+\]
+If a nonzero $P\in\Z[T]$ of degree $d$ vanished at $a$,
+then $3^{(N+1)!}$ would divide $P(A_N)$. The latter integer
+is nonzero for all sufficiently large $N$, since the $A_N$
+are distinct. On the other hand
+$|P(A_N)|_\infty\leq C(2\cdot3^{N!})^d$ for a fixed
+$C$. This contradicts $(N+1)!>dN!+O(1)$. Thus $a$ is
+transcendental over $\Q$. It is a $3$-adic unit, and
+$v_3(a-1)=1$, so it is an interior point of $U$.
+
+Construct positive integers $x_n\geq2$ recursively. Choose a
+prime $q_n\ne3$ which divides none of $x_1,\ldots,x_{n-1}$
+and impose
+\[
+ \begin{split}
+ x_n&\equiv a\pmod{3^n},\\
+ x_n&\equiv q_n\pmod{q_n^2},\\
+ x_n&\equiv1\pmod{q_i}\quad(1\leq i<n).
+ \end{split}
+\]
+The primes $q_n$ are necessarily distinct, and the Chinese
+remainder theorem gives such an integer. One may always choose
+the least permitted prime and the least positive CRT representative.
+That representative is neither zero nor one because of its
+congruence modulo $q_n^2$. The first congruence is effective:
+only terms $3^{r!}$ with $r!<n$ contribute. We have
+\[
+           x_n\longrightarrow a\text{ in }\Q_3,
+          \qquad v_{q_i}(x_j)=\delta_{ij}\quad(i,j\geq1).
+\]
+For $j<i$ the valuation assertion is the choice of $q_i$;
+for $j>i$ it is the third congruence. In particular the
+square classes of the $x_n$ are independent. The exact
+twelve-term CRT and valuation certificate is in
+\texttt{code/F\_D5\_ultralimit\_output.json}; its role is
+only to check this finite arithmetic input, not the
+ultrafilter or the fixed-point argument.
+
+Choose any continuous representatives $s_n$ of the global
+point sections at $x_n$. Fix a nonprincipal ultrafilter
+$\mathfrak u$ on $\mathbb N$ and, for every $g\in G_\Q$,
+define
+\[
+                         s(g)=\lim_{n\to\mathfrak u}s_n(g)
+                              \quad\hbox{in }E.
+\]
+Compact Hausdorffness gives this limit. Continuity of
+multiplication in $E$ proves
+$s(gh)=s(g)s(h)$; continuity of $E\to G_\Q$ gives
+$\operatorname{pr}(s(g))=g$. Thus $s$ is an abstract section.
+This argument does not assert continuity of a limit of
+continuous maps with the pointwise topology.
+
+We prove exactly the local compatibility required below.
+Characteristic-zero geometric base change identifies
+$\pi_1(U_{\Q_3})$ with $E\times_{G_\Q}G_{\Q_3}$,
+so the local point section $s_a$ is viewed as a homomorphism
+$G_{\Q_3}\to E$.
+For a finite arithmetic quotient $\varphi:E\twoheadrightarrow F$,
+let $P=\varphi(\Pi)$. Its finite \emph{\'etale} Galois
+cover $W\to U$ has constant quotient
+$W/P=U\times\Spec K_0$, where $K_0/\Q$ is the finite
+constant extension with group $F/P$. This is the ordinary
+arithmetic fundamental-group covering correspondence
+\citep[Expos\'e~IX, \S6]{E_SGA1}.
+For $b$ sufficiently close to $a$ in $U(\Q_3)$, Hensel's
+lemma gives a Galois-equivariant, $F$-equivariant bijection
+\[
+                         W_b(\overline\Q_3)
+                              \xrightarrow{\sim}
+                         W_a(\overline\Q_3)
+\]
+inducing the identity on the indicated constant quotient.
+Here is the uniformity in that statement. Choose a finite
+Galois extension $L/\Q_3$ splitting the finite fibre $W_a$.
+The \emph{\'etale} inverse-function form of Hensel's lemma
+gives, through every point of that fibre, a unique local
+$L$-analytic sheet over a sufficiently small ball about $a$.
+There are finitely many sheets, deck transformations, and
+elements of $\Gal(L/\Q_3)$, so one common ball works.
+Uniqueness of these sheets makes all their actions compatible.
+The constant coordinates remain their original algebraic
+values. This proves the asserted equivariance and the identity
+on $W/P$.
+
+In torsor coordinates, such a bijection is multiplication by
+an element of $P$, since it is the identity modulo $P$.
+Consequently for all sufficiently large $n$ the restrictions
+$\varphi s_n|_{G_{\Q_3}}$ and
+$\varphi s_a|_{G_{\Q_3}}$ are conjugate by $P$.
+This is geometric conjugacy, not merely conjugacy by an
+arbitrary arithmetic element of $F$. The $P$-conjugacy orbit
+of the latter homomorphism is a finite closed subset of
+$F^{G_{\Q_3}}$. Its ultralimit therefore still belongs to
+that orbit. For each $\varphi$ there is a geometric
+conjugator at this finite level.
+
+The set of elements $\gamma\in\Pi$ satisfying
+\[
+ \varphi\big(\gamma s(g)\gamma^{-1}\big)=\varphi(s_a(g))
+                    \qquad(g\in G_{\Q_3})
+\]
+is nonempty and closed in $\Pi$. Any finitely many such
+conditions have a common refinement given by a finite
+quotient of $E$. Compactness of $\Pi$ supplies one
+$\gamma$ satisfying all of them. Finite quotients separate
+elements of $E$, so
+\[
+               \gamma s|_{G_{\Q_3}}\gamma^{-1}=s_a
+\]
+as actual homomorphisms. In particular the local restriction
+of the abstract section is continuous.
+
+Its global discontinuity is independently visible in one
+finite quotient. The cover $z^2=t$ gives a continuous character
+$\tau:E\to\F_2$ such that
+$\tau s_n=\kappa_2(x_n)$. Independence of the square classes
+gives a continuous surjection
+\[
+ \kappa:G_\Q\twoheadrightarrow\prod_{n\geq1}\F_2,
+                 \qquad g\longmapsto(\kappa_2(x_n)(g))_n.
+\]
+Indeed it is surjective on every finite product by Kummer
+theory, and compactness gives surjectivity onto the product.
+The ultrafilter functional
+\[
+ \epsilon:\prod_n\F_2\longrightarrow\F_2,
+              \qquad (v_n)\longmapsto\lim_{n\to\mathfrak u}v_n
+\]
+is additive. It kills the dense direct sum but sends the
+constant-one vector to one, so it is discontinuous. A
+continuous surjection of compact Hausdorff groups is a
+quotient map; hence $\epsilon\kappa$ is discontinuous.
+By construction $\tau s=\epsilon\kappa$, proving the
+claimed discontinuity without any section-conjecture input.
+
+Realize $E$ as the arithmetic automorphism group of the
+universal pro-cover of $U$. Each $s(g)$ is a semilinear
+automorphism, and the homomorphism law gives the required
+abstract action. It normalizes $\Pi$, which is normal in
+$E$. At every finite covering field the automorphism extends
+uniquely to its proper normalization; compatibility gives
+the action on the completed pro-cover. The stabilizer of the
+function $\sqrt t$ is the nonopen subgroup
+$\ker(\epsilon\kappa)$, so the induced action itself is
+discontinuous. The explicit sequence and all finite
+approximations are effective; choosing a nonprincipal
+ultrafilter is a choice-principle step and does not give an
+algorithm for the abstract section.
+
+In the crossed-cocycle form requested in R22, fix a continuous
+reference section $\rho_0$ at $1/2$ and put
+\[
+ a_g=s(g)\rho_0(g)^{-1}
+     =\lim_{n\to\mathfrak u}s_n(g)\rho_0(g)^{-1}\in\Pi.
+\]
+Then
+\[
+ a_{gh}=a_g\,\rho_0(g)a_h\rho_0(g)^{-1},
+                 \qquad a_g\rho_0(g)=s(g).
+\]
+Thus this explicitly specifies an abstract crossed cocycle
+for the reference action, and its twisted action is exactly
+the action constructed above. D.14 computes its fixed set
+as empty.
+\end{proof}
+
+\begin{claim}{D.13}{Proved}
+Let $L/\Q_p$ be finite, let
+$\chi:G_L\to\widehat\Z^\times$ be the full cyclotomic
+character, and put $H=\ker\chi$. If $b\in L^*$ satisfies
+\[
+            \kappa_p(b)|_H=0
+                    \quad\hbox{in }H^1(H,\Z_p(1)),
+\]
+then $b$ is a root of unity. In particular, if the restrictions
+of the point sections of $\G_m/L$ at $b_1,b_2\in L^*$
+are geometrically conjugate on $H$, then $b_1/b_2$ is a
+root of unity.
+\end{claim}
+\begin{proof}
+Choose compatible $p$-power roots and let
+$c:G_L\to\Z_p(1)$ be the resulting continuous Kummer
+cocycle. Since $H$ acts trivially on the coefficient module,
+every $H$-coboundary is zero. The hypothesis therefore says
+$c|_H=0$ literally. The cocycle descends to a continuous
+cocycle on the compact abelian quotient
+$A=\chi(G_L)$: its values are constant on $H$-cosets,
+and the compact quotient topology gives continuity. This
+proves the needed inflation assertion directly for the
+compact coefficient module.
+
+There is $a_0\in A$ with $\chi_p(a_0)\ne1$, since a finite
+extension of $\Q_p$ does not contain all $p$-power roots
+of unity. The cocycle identity, evaluated on $a_0a=aa_0$,
+gives
+\[
+ (\chi_p(a_0)-1)c(a)=(\chi_p(a)-1)c(a_0)
+                                         \qquad(a\in A).
+\]
+The right side is a coboundary. Thus
+$(\chi_p(a_0)-1)[c]=0$ in $H^1(A,\Z_p(1))$.
+Writing the nonzero scalar as $p^m$ times a $\Z_p$-unit
+shows that $p^m\kappa_p(b)=0$ after inflation to $G_L$.
+This is the elementary cocycle calculation often called
+Sah's lemma; no vanishing assertion for a nonabelian
+quotient is being used.
+
+It follows at every finite Kummer level that
+$b^{p^m}\in (L^*)^{p^n}$ for every $n$. We record the local
+intersection precisely. Write
+\[
+ L^*=\varpi^{\Z}\times\mu_{q-1}(L)\times U^1,
+               \qquad U^1=1+\mathfrak m_L,
+\]
+where $q$ is the residue-field cardinality. Hensel's lemma
+gives the displayed prime-to-$p$ roots of unity. The group
+$U^1$ is pro-$p$, since its quotients modulo
+$1+\mathfrak m_L^r$ have $p$-power order. An element
+divisible by every $p^n$ in $L^*$ has valuation zero;
+after removing its unique $\mu_{q-1}$ part, its image in
+each finite $p$-group quotient of $U^1$ is a $p^n$-th
+power for every $n$, and therefore identity. The filtration
+separates points. Hence
+\[
+                    \bigcap_{n\geq1}(L^*)^{p^n}
+                             =\mu_{q-1}(L).
+\]
+Thus $b^{p^m}$ is a root of unity, and so is $b$.
+
+The final assertion is the Kummer description of
+$\pi_1(\G_m/L)=\widehat\Z(1)\rtimes G_L$ with the
+splitting at $1$. Point-section classes are Kummer classes
+and their difference is the class of $b_1/b_2$
+\citep[\S2.2 and \S8.1--8.3, especially Proposition~26]{F_Stix2008}.
+Restrict to $H$ and apply the result just proved.
+\end{proof}
+
+\begin{claim}{D.14}{Refuted}
+The universal assertion D5, that every abstract semilinear
+$G_\Q$-action on the universal pro-cover has exactly one
+$G_\Q^\circ$-fixed completed geometric closed pro-point,
+is false. The action of D.12 has \emph{no} such fixed
+pro-point, even though it normalizes the original geometric
+deck group.
+\end{claim}
+\begin{proof}
+Here $G_\Q^\circ=\ker\chi=G_{\Q(\mu_\infty)}$.
+The completed pro-points are exactly the compatible systems
+of geometric closed points on the proper finite levels,
+as in D.7; the generic scheme point is not part of this
+set. Suppose that a completed pro-point $\xi$ were fixed
+by $s(G_\Q^\circ)$, and let
+$x\in\mathbb P^1(\overline\Q)$ be its image at the
+base compactification.
+
+Use the fixed embedding $\overline\Q\hookrightarrow
+\overline\Q_3$ underlying the decomposition group in D.12,
+and choose a finite $L/\Q_3$ containing the coordinates
+of $x$. Put
+\[
+                 H=G_L\cap G_\Q^\circ
+                      =\ker(\chi:G_L\to\widehat\Z^\times).
+\]
+Conjugate $s$ by the geometric element supplied by D.12,
+and conjugate $\xi$ with it. Its base point remains $x$,
+and we now have $s|_{G_{\Q_3}}=s_a$.
+Consequently $s_a(H)$ fixes a completed pro-point over $x$.
+
+Choose the following unit of the open tripod:
+\[
+\begin{array}{c|c|c}
+ x&f(t)&f(x)\\\hline
+ x\in U(\overline\Q)&t&x\\
+ 0&1-t&1\\
+ 1&t&1\\
+ \infty&t/(t-1)&1
+\end{array}
+\]
+In every case $f$ is regular and nonzero at $x$.
+The morphism $f:U\to\G_m$ therefore sends the decomposition
+group of the fixed pro-point over $x$ into the point
+decomposition group at $f(x)$. At a cusp its geometric
+inertia is killed, since the order of $f$ there is zero.
+Equivalently, the covers $w^{3^n}=f(t)$ extend
+\emph{\'etale} across $x$ and their fibre at $x$ consists
+of the $3^n$-th roots of $f(x)$. Evaluating the section
+in these covers gives
+\[
+       \kappa_3\bigl(f(a)/f(x)\bigr)|_H=0
+                         \quad\hbox{in }H^1(H,\Z_3(1)).
+\]
+This is the usual functorial evaluation of units on
+sections \citep[Proposition~26 and \S8.3]{F_Stix2008}.
+Changing the selected roots changes only a coboundary;
+on $H$ that coboundary is zero because the cyclotomic
+action is trivial. The argument applies to interior
+points and to each cusp, with no supposition that the
+original abstract global section is continuous.
+
+Both $f(a)$ and $f(x)$ belong to $L^*$, and D.13 gives
+$f(a)/f(x)\in\mu(L)$. The number $f(x)$ is algebraic
+over $\Q$, as is every root of unity. Hence $f(a)$
+would be algebraic over $\Q$. Each chosen $f$ is an
+invertible fractional-linear function over $\Q$, so
+this would make $a$ algebraic, contradicting D.12.
+Thus the fixed set is empty.
+It is the existence part of the asserted unique fixed point
+that fails in this example; no assertion of two distinct
+fixed points is made.
+
+D.11 and this counterexample address the two demands
+of D5 separately: D.11 constructs an action normalizing
+no finite-quotient deck group and having exactly one fixed
+cusp, while the present action disproves the universal
+fixed-point claim. The latter uses discontinuous abstract
+actions and proves no counterexample to the continuous
+section conjecture in D1--D4.
+\end{proof}

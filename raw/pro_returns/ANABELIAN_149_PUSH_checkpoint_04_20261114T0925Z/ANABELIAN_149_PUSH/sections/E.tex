@@ -1,0 +1,445 @@
+\section{Part E. Categories of curves and the arithmetic image}
+
+The manuscript loci are cote 142, manuscript pp.~7--10, scans
+15--21. We have opened the supplied images of scans 17 and 19.
+The phrase ``programme \`a l'horizon'' on scan 17 concerns the
+arithmetic action as well as the category. On scan 19 the proposed
+isotopy relation is explicitly tentative. Neither passage licenses
+identifying an arbitrary path of local homeomorphisms with a
+two-sided orbit. We distinguish full \emph{\'etale} paths in a moduli
+stack, paths tame at its compactification boundary, and its maximal
+prime-to-$p$ quotient. These are three different objects.
+
+\subsection{Two obstructions to the requested positive-characteristic construction}
+
+\begin{claim}{E.1}{Proved; an obstruction with explicit hypotheses}
+Let $k=\overline{\F}_p$ and $k'=\overline{k(t)}$. On
+$U=\mathbb P^1_k\setminus\{0,1,\infty\}$ the connected
+$\Z/p$-torsor
+\[
+                       z^p-z=tx
+\]
+over $U_{k'}$ does not descend to $U$, even after forgetting its
+chosen identification of the deck group with $\Z/p$.
+Consequently the base-extension map of full geometric fundamental
+groups is not an isomorphism. A category having the marking
+groupoids of the full moduli stacks as its isomorphism groupoids
+cannot have base extension as an equivalence in characteristic $p$.
+This remains an obstruction if only the noninvertible covering
+arrows are restricted to prime-to-$p$ Galois closures.
+\end{claim}
+\begin{proof}
+The Artin--Schreier sequence on the affine curve gives
+\[
+H^1(U_{k'},\Z/p)=
+k'[x,x^{-1},(x-1)^{-1}]/\{h^p-h\}.
+\]
+Modulo an Artin--Schreier coboundary, a principal part has a unique
+representative whose pole orders are prime to $p$, after successively
+removing terms of order divisible by $p$. The field is perfect, so
+the necessary $p$-th roots of coefficients exist uniquely. Uniqueness
+follows because a nonconstant $h$ has at every pole a leading term
+of $h^p-h$ of order divisible by $p$. Constants contribute nothing
+over an algebraically closed field. In the displayed class the sole
+pole is at infinity, of order one, with coefficient $t$. A class
+defined over $k$ has reduced principal parts with coefficients in
+$k$. Therefore this class cannot descend. It is nonzero, which makes
+the torsor connected. Relabelling its deck group multiplies its
+class by an element of $\F_p^*$ and does not remove $t$.
+
+Now $\mathcal M_{0,4}$ with ordered marks is this same curve.
+Its full fundamental group is therefore not invariant under this
+base extension. For unordered marks, the ordered moduli scheme is
+a finite \emph{\'etale} cover of the quotient stack, with constant
+permutation group $S_4$. An isomorphism on the fundamental groups
+of the unordered stack, compatible with this cover, would induce
+an isomorphism on the corresponding open kernels, contrary to
+the ordered calculation. Thus either convention has the obstruction.
+
+In the factorization category of (Z.2), an endomorphism of a fixed
+hyperbolic type which factors as a marking followed by a finite
+\emph{\'etale} cover must have covering degree one. Indeed, for
+a degree-$d$ cover of open curves in characteristic $p$, the
+Riemann--Hurwitz formula, including the nonnegative wild different
+at the boundary, gives
+\[
+        2g_X-2+n_X\ \geq\ d(2g_Y-2+n_Y).
+\]
+Equality of the two hyperbolic types forces $d=1$. The isomorphism
+groupoid is consequently precisely the specified marking groupoid,
+when markings are retained faithfully as in (Z.2). Its failure of
+base invariance already contradicts equivalence of categories.
+
+The qualification about faithful markings matters. If an unspecified
+``category'' is allowed to identify arbitrary paths or arbitrary
+covering arrows, the words ``arrows include'' alone do not determine
+its Hom sets. The Artin--Schreier example is not a proof about every
+such artificial quotient category. It proves the obstruction for
+the exact full-path construction requested by the manuscript and
+R26. The coefficient and pole-order calculations for $p=2,3,5$ are
+also checked in \texttt{code/root\_checks.py}; the argument above
+proves it for every $p$.
+\end{proof}
+
+\begin{claim}{E.2}{Refuted}
+There is no type-preserving functor from the entire characteristic-zero
+category $\mathcal T$ to a category whose arrows all factor as a
+type-preserving marking followed by a finite \emph{\'etale} map
+with prime-to-$p$ Galois closure, if the functor is required to
+specialize every finite-cover arrow. This obstruction holds for
+every prime $p$, including $2$ and $3$.
+\end{claim}
+\begin{proof}
+Let $C/\C$ be a smooth proper genus-two curve. The presentation
+\[
+\pi_1(C^{\rm an})=
+\langle a_1,b_1,a_2,b_2\mid[a_1,b_1][a_2,b_2]=1\rangle
+\]
+surjects onto $\Z/p$ by sending $a_1$ to one and the other
+generators to zero. The connected unramified topological cover
+algebraizes by SGA~1 XII, Theorem~5.1 and Corollary~5.2
+\citep{E_SGA1}. Its source $D$ has genus $p+1$, because
+$2g_D-2=p(2g_C-2)=2p$.
+
+A type-preserving functor would give an arrow from type $(p+1,0)$
+to type $(2,0)$. A marking does not change the type. Any subsequent
+finite \emph{\'etale} cover between these proper types in
+characteristic $p$ has degree
+\[
+                  \frac{2(p+1)-2}{2\cdot2-2}=p.
+\]
+The order of its geometric Galois closure is divisible by its degree,
+so cannot be prime to $p$. No such arrow exists. This contradiction
+does not depend on selecting a bad model for $D$: it occurs in the
+types before any model is chosen.
+
+Accordingly the source of a possible specialization functor must
+at least be restricted to arrows whose geometric Galois closures
+have order prime to $p$. Replacing all moduli markings by their
+maximal prime-to-$p$ quotients is not automatically the right further
+repair: a prime-to-$p$ covering group can have an automorphism group
+with $p$-torsion, and transport of such covers can detect that
+torsion. Tameness at the boundary is a different restriction.
+\end{proof}
+
+\begin{claim}{E.3}{Known, with derivation; the fixed-curve replacement}
+Let $(\mathcal C,\mathcal D)$ be a smooth proper curve with finite
+\emph{\'etale} marked divisor over a strictly henselian complete
+discrete valuation ring of mixed characteristic $(0,p)$, with
+algebraically closed residue field. Specialization induces an
+isomorphism on the maximal prime-to-$p$ geometric fundamental
+groups of the two open fibres. Hence connected covers with
+prime-to-$p$ Galois closure correspond, preserving degree, deck
+group, and the type of source. The analogous category of covers
+of a fixed smooth marked curve over an algebraically closed
+characteristic-$p$ field is invariant under extension of that field.
+\end{claim}
+\begin{proof}
+The precise sources are SGA~1 XIII, Corollary~2.12 and
+Proposition~4.3, its Examples~4.4, and the base-change statement
+4.5.3 \citep{E_SGA1}. Their hypotheses are a proper smooth
+relative curve, a relatively normal-crossings boundary finite
+\emph{\'etale} over the base, and orders invertible at the
+specialization. A section exists by lifting a smooth residue point
+over the strictly henselian base. These hypotheses are satisfied here. In this setting
+specialization is surjective on the tame group and is an isomorphism
+on its maximal prime-to-residue-characteristic quotient. A connected
+cover with prime-to-$p$ Galois closure is a transitive set for a
+finite prime-to-$p$ quotient of that group. An isomorphism of
+the groups identifies these finite sets, their equivariant maps,
+their sizes, and their automorphism groups. Boundary inertia
+subgroups correspond by the same Kummer-parameter comparison;
+thus their ramification indices and the number of points above
+each mark are unchanged. Tame Riemann--Hurwitz then gives the same
+genus. For an extension of algebraically closed fields use the
+relative-group base-change statement in XIII, 4.5.3, applied over
+the algebraically closed base field with a chosen point; the same
+finite-set argument gives the asserted equivalence.
+
+This is a theorem about covering categories over a fixed curve.
+It does not prove the missing assertion about paths and composition
+over all moduli stacks. Bertin--Romagny, Theorem~6.9, constructs
+the smooth proper stable Hurwitz stack over $\Z[1/|G|]$;
+Proposition~6.14 gives its proper quasi-finite flat discriminant
+map, \emph{\'etale} over the smooth target locus; and Theorem~6.20
+identifies the non-Galois-cover stack by the quotient recording
+its Galois closure \citep{E_BR2007}. These are the exact additional
+inputs available for that construction. They do not by themselves
+say that the \emph{full} path groupoid of the nonproper moduli
+stack is invariant; E.1 proves that it is not.
+\end{proof}
+
+\subsection{The arithmetic-image route and a theorem that it omits}
+
+\begin{claim}{E.4}{Known, with derivation}
+The conjugacy class of the image of $G_\Q$ in the profinite
+Grothendieck--Teichm\"uller group has a published combinatorial
+characterization. It is the class of maximal closed subgroups
+satisfying the AA-property of Hoshi--Mochizuki--Tsujimura,
+Definition~5.12, with the COF, RGC and ArBC hypotheses required
+there. Determining this conjugacy class is therefore distinct
+from proving the equality $\widehat{\mathrm{GT}}=G_\Q$.
+\end{claim}
+\begin{proof}
+Hoshi--Mochizuki--Tsujimura, Theorem~5.17(ii), states exactly this
+characterization; its input is the abstract profinite group of
+the second configuration space of the tripod
+\citep{E_HMT2025}. Definition~5.12 imposes four conditions on
+the reconstructed Kummer and function-field data; AA includes
+the second-configuration compatibility condition (iv), which
+cannot be dropped. Theorem~5.15 puts every such subgroup inside
+a conjugate of $G_\Q$, and Remark~5.12.1 verifies the conditions
+for $G_\Q$ itself.
+
+Here is the maximality step. In a profinite group $G$, if a closed
+subgroup $H$ satisfies $H\subseteq gHg^{-1}$, then $H=gHg^{-1}$.
+In every finite quotient the two images have equal cardinalities,
+so the inclusion is equality; intersecting the inverse images over
+all finite quotients gives equality of the closed subgroups.
+Thus every AA subgroup is contained in an AA subgroup conjugate
+to $G_\Q$, and no such conjugate is properly contained in another.
+This proves the stated maximal-subgroup characterization from
+the cited theorem, keeping its hypotheses intact.
+
+This use does not assert that every GT element is arithmetic, or
+that testing only its cyclotomic component and the pentagon is
+sufficient. Nor does it yet construct the compatible action on
+every type and every puncture-filling arrow asked for in E2.
+\end{proof}
+
+\subsection{An actual isotopy congruence and its profinite envelope}
+
+We give a precise category before asking for its algebraic comparison.
+Objects are oriented finite-type topological surfaces $S$ with
+$c(S)=2g(S)-2+n(S)>0$. An elementary arrow is an oriented finite
+unramified covering or an oriented puncture filling. A puncture
+filling extends to an orientation-preserving homeomorphism of the
+compact surfaces and fills a specified subset of the finite end set.
+Homeomorphisms are included as degree-one arrows. A word is a
+finite composable string of elementary arrows. It determines a
+local homeomorphism on the open surfaces and a finite branched
+cover on their end compactifications.
+
+We impose the following equivalence, called \emph{diagram isotopy}.
+An elementary isotopy is a continuous one-parameter family of a
+fixed finite diagram of elementary arrows, with fixed endpoint
+surfaces and fixed types at each vertex. We also identify words
+having the same actual composite map. We take the equivalence
+relation generated by these identifications and by their occurrence
+inside a longer composable word. In particular this is explicitly
+a congruence, rather than a relation whose compatibility with
+composition is presumed. Denote the resulting category by
+$\mathcal C_{\rm diag}$.
+
+\begin{claim}{E.5}{Proved}
+Composition is well-defined on $\mathcal C_{\rm diag}$.
+The category of finite-cover isotopy classes embeds faithfully in
+it, and its automorphism group at $S$ is the oriented mapping
+class group $M_S$. It contains puncture fillings and the usual
+forgetting functors on groupoids of surfaces with specified
+labelled punctures. Every Hom set has finitely many right
+$M_S$-orbits. In particular, for every arrow $u:S\to T$, its
+target lifting subgroup
+\[
+ H_u=\{b\in M_T:\text{ there is }a\in M_S
+                          \text{ with }bu=ua\}
+\]
+has finite index in $M_T$.
+\end{claim}
+\begin{proof}
+Concatenation of words is associative, and the stipulated congruence
+makes it independent of representatives. The degree of the compact
+map is a positive integer. It is constant in every elementary
+isotopy and multiplicative under composition; all relations preserve
+it. If a word of degree $d$ joins $S$ to $T$, then
+\[
+                  c(S)=d\,c(T)+\Delta,
+                       \qquad \Delta\in\Z_{\geq0}.
+\]
+For a covering, $\Delta=0$ by Euler characteristic. For a filling
+of $r>0$ punctures the degree is one and $\Delta=r$.
+For composites the formula is
+$\Delta(vu)=\Delta(u)+\deg(u)\Delta(v)$, so every genuine
+filling contributes positively. Equivalently $\Delta$ is the sum
+of the local degrees at extra omitted source points whose images
+are interior target points; this follows by Riemann--Hurwitz on
+the compactifications.
+
+If a word represents a finite covering, its endpoint type and
+degree force $\Delta=0$. Every word equivalent to it also has
+$\Delta=0$, so all its elementary factors are coverings.
+The elementary isotopies then are ordinary covering isotopies,
+and replacing a factorization by its composite makes no additional
+identifications. Thus the embedding is faithful. An invertible
+arrow has an inverse of positive degree, so both degrees are one.
+The two complexity formulas force both defects to vanish; all
+factors are homeomorphisms. Their isotopy classes form $M_S$.
+
+Each noninvertible elementary arrow strictly decreases the positive
+integer $c$. After absorbing adjacent homeomorphisms, the length
+of a word from $S$ to $T$ is at most $c(S)-c(T)$, and its degrees
+are bounded by $c(S)/c(T)$. Only finitely many hyperbolic types
+have complexity at most $c(S)$. For a fixed target and degree
+there are only finitely many connected covering types: a finitely
+generated surface group has only finitely many homomorphisms to
+the finite symmetric group of that degree. Each such covering
+type gives one right source-mapping-class orbit.
+
+For a filling, moving the finitely many extra points by an ambient
+isotopy of the target identifies any two configurations of the same
+cardinality. The isotopy may fix the retained punctures. The
+remaining difference is a source homeomorphism. Thus fillings
+also have finitely many right source orbits; for unlabelled extra
+points there is one. This assertion includes the braid motions
+of the extra points: their lifts act in the source stabilizer,
+rather than producing an omitted family of arrows.
+
+The property of having finitely many right orbits is preserved
+under composition. Choose finite sets of representatives $u_i$
+and $v_j$ for two adjacent Hom sets. Each composite has the
+form $v_j b u_i a$. Left multiplication by $b$ permutes the
+finite set of right orbits of the first Hom set. Therefore
+finitely many further representatives suffice for all composites.
+There are only finitely many possible elementary type-and-degree
+patterns, proving the assertion for all words and hence for their
+quotient. Finally $H_u$ is the stabilizer of the right orbit of
+$u$ under the left action of $M_T$ on this finite set. Its index
+is finite.
+
+For labelled punctures, a homeomorphism preserving all labels
+extends over any specified subset of punctures. Isotopies extend
+in the same way. This defines the forgetting functor on the
+isomorphism groupoids; successive forgettings equal forgetting
+the union. The remaining type must still be hyperbolic. These
+are the topological functors that the moduli-stack maps in R26
+are to realize.
+\end{proof}
+
+\begin{claim}{E.6}{Proved}
+There is a Hausdorff profinite envelope of
+$\mathcal C_{\rm diag}$ with the same objects and
+\[
+\Hom_{\widehat{\mathcal C}_{\rm diag}}(S,T)
+ =\coprod_{uM_S\in\Hom_{\mathcal C_{\rm diag}}(S,T)/M_S}
+          \overline{S_u}\backslash\widehat M_S,
+ \qquad S_u=\{a\in M_S:ua=u\}.
+\]
+Here the closure is in $\widehat M_S$. Each Hom space is compact,
+composition is continuous, the original category has dense image,
+and $\Aut(S)=\widehat M_S$. This proves the topological
+completion part of E3 for the specified congruence.
+\end{claim}
+\begin{proof}
+We verify the construction rather than invoke F149-G6 without
+checking composition. Complete a right orbit $S_u\backslash M_S$
+as the inverse limit of finite sets $S_uN\backslash M_S$ for
+finite-index normal $N\lhd M_S$. Compactness identifies that
+limit with the displayed closed-coset space. A target element
+$b\in H_u$ has a lift $a$ with $bu=ua$. Its class in
+$N_{M_S}(S_u)/S_u$ is well-defined and depends homomorphically
+on $b$. Left multiplication by it acts on every finite set
+$S_uN\backslash M_S$, through a finite quotient of $H_u$.
+Since $H_u$ has finite index, its full profinite completion is
+its closure in $\widehat M_T$: the normal cores in $M_T$ of
+its finite-index subgroups give the required cofinality.
+Thus its action extends continuously. The finitely many cosets
+of $H_u$ extend the action to all of $\widehat M_T$, permuting
+the finitely many right orbits in the double orbit of $u$.
+
+For an original arrow $v:T\to V$, define
+$L_v(u\alpha)=(vu)\alpha$. It is well-defined and continuous
+because $S_u\subset S_{vu}$. For completed arrows set
+\[
+              (v\beta)(u\alpha)=L_v(\beta\cdot u)\alpha.
+\]
+Replacing $\alpha$ by its left $\overline{S_u}$-coset makes
+no change by equivariance. Replacing $\beta$ by its left
+$\overline{S_v}$-coset makes no change because
+$L_v(sh)=L_v(h)$ first for original $s,h$, then for their
+closures by continuity and density. Changes of right-orbit
+representatives are translations of the same formula. On each
+product of right-orbit pieces the formula is the quotient of a
+continuous map of compact profinite groups, so is jointly
+continuous. Associativity follows because the two continuous
+triple-composition maps agree on the dense set of original
+triples and the target is Hausdorff.
+
+The orbit of the identity is $\widehat M_S$ and is open.
+If two completed arrows are inverse, approximate them by original
+arrows within their original orbit pieces and with both composites
+in the open identity orbits. Those original composites are
+automorphisms. Each of the approximating arrows, and hence its
+orbit representative, is an isomorphism. This proves that no
+new invertible orbit appears. It proves the asserted automorphism
+group and conservativity. Compactness follows from the finiteness
+of the right-orbit set in E.5. Any functor to a Hausdorff
+topological category with profinite automorphism groups extends
+uniquely: extend the homomorphisms on $M_S$ to $\widehat M_S$,
+then the continuous orbit maps kill $\overline{S_u}$.
+Compatibility with composition again follows by density. This is
+the Hausdorff universal property required in R25.
+\end{proof}
+
+\begin{claim}{E.7}{Proved; the moving-critical-value test}
+Diagram isotopy identifies the maps $f_0$ and $f_t$ in R26,
+for $0\leq t\leq1/10$, but they are not in one two-sided
+orbit for $t>0$. Thus the congruence of E.5 does not silently
+repeat the false two-sided-orbit assertion.
+\end{claim}
+\begin{proof}
+Use the four-factor diagram
+\[
+X_t\xrightarrow{z^3-3z+t}Y_{1,t}
+ \lhook\joinrel\longrightarrow Y_2
+ \xrightarrow{w^2}Y_3\lhook\joinrel\longrightarrow Y,
+\]
+where
+\begin{align*}
+Y&=\mathbb P^1\setminus\{9,16,\infty\},
+&Y_3&=Y\setminus\{0\},\\
+Y_2&=\mathbb P^1\setminus\{0,3,-3,4,-4,\infty\},
+&Y_{1,t}&=Y_2\setminus\{t-2,t+2\},
+\end{align*}
+and $X_t$ is the inverse image of $Y_{1,t}$ under the cubic.
+The cubic critical values are $t\pm2$, always distinct from
+the fixed omitted values on this interval. The five relevant
+discriminants are $27(4-(t-c)^2)$ for
+$c=0,\pm3,\pm4$, and never vanish. The source has twenty
+distinct punctures throughout. Ambient isotopies identifying
+these moving punctures give a family of the entire fixed diagram,
+so E.5 identifies its endpoints. On compactifications the finite
+critical values of the composite are
+$0,(t-2)^2,(t+2)^2$. Their number is two at zero and three at
+positive $t$, since their difference is $8t$. A two-sided
+homeomorphism preserves that number. The factorization and
+discriminants are verified exactly in \texttt{code/root\_checks.py}.
+\end{proof}
+
+\input{sections/E_extension.tex}
+
+\input{sections/E_tame_extension.tex}
+
+The former obligation E.U1 is superseded by E.10--E.12.
+They prove the repaired construction with boundary-tame paths
+retaining interior $p$-monodromy and the restricted-source
+specialization. The literal full-path and unrestricted-source
+requirements remain subject to E.1--E.2.
+
+\subsection{The exact remaining arithmetic-image obligation}
+
+\begin{claim}{E.U2}{Unresolved}
+We do not identify the image of $G_\Q$ as compatible outer
+automorphisms of all $\widehat M_{g,n}$ with all covering and
+puncture-forgetting operations. E.4 supplies the published
+genus-zero arithmetic subgroup characterization. Extending that
+characterization to the specified entire category, with all
+compatibilities and with the conjugacy ambiguity accounted for,
+is the unproved step here. In particular we do not replace it by
+the stronger and different equality $\widehat{\mathrm{GT}}=G_\Q$.
+\end{claim}
+
+E.8 resolves the earlier comparison obligation for the explicitly
+Hausdorff algebraic presentation. It does not assert that the
+unseparated abstract quotient of finite words in profinite paths
+already has Hausdorff Hom spaces. That additional assertion is
+unneeded for the completion theorem requested in E3.
