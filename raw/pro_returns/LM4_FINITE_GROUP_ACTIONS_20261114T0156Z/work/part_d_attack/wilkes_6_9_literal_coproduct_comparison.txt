@@ -1,0 +1,104 @@
+WILKES 6.9(III): PRINTED WORDING AND THE EXACT COPRODUCT MAP
+=========================================================
+Unnumbered source/morphism audit, 2026-11-13.
+
+Exact source and read evidence
+------------------------------
+Gareth Wilkes, Relative extensions and cohomology of profinite groups,
+arXiv:2209.06492v1, title-page manuscript date 15 September 2022;
+arXiv side stamp 14 September 2022.
+Retained original PDF:
+  sources/wilkes_relative_extensions_2209.06492v1.pdf
+  SHA256 fce99b01e3d838ea112760e8d2a5444fc4b5401eca9e29fc5c99bf8ef557b8ef.
+The original Section 6 was previously read in full. In this follow-up,
+PDF pages 23 and 24 were rendered locally and both images actually
+viewed. They are retained under wilkes_followup_sources/.
+The public primary PDF https://arxiv.org/pdf/2209.06492 was reopened
+on 2026-11-13; web ref turn1244view0 includes its Section 6.7--6.10.
+The versioned URL returned a disabled-fetch error (turn1243view0),
+so it supplies no additional read evidence.
+
+Proposition 6.8, on printed page 23, assumes that G is pro-p, states
+that the resulting decomposition is a "free pro-p product", and
+constructs it using pro-p H_1 surjectivity in both directions.
+Theorem 6.9, printed page 24 (also repeated on page 2), still assumes
+a pro-p group pair, but its part (III) says "free profinite product".
+These exact source words are retained. The frozen pants lift note
+does not import that latter assertion as a full-coproduct theorem.
+
+Explicit comparison of the two coproducts
+----------------------------------------
+Take the actual groups
+  P_all=C2(a)*C2(b) in the full profinite category,
+  P_2=C2(a2)*_pro2 C2(b2) in the pro-2 category.
+There are explicit mutually inverse maps identifying
+  P_all = Zhat(t) semidirect_-1 C2(a), t=ba,
+  P_2   = Z2(t2) semidirect_-1 C2(a2), t2=b2 a2.
+For the first equality, send a to (0,1), b to (1,1), and in the
+reverse direction send (lambda,epsilon) to (ba)^lambda a^epsilon.
+The latter map is a homomorphism because a(ba)a=(ba)^(-1).
+Both composites fix the displayed generators. The same two formulas
+over Z2 give the second equality by the pro-2 coproduct universal
+property. All maps are continuous.
+
+The factor-preserving comparison map is the surjection
+  kappa:P_all -> P_2,
+  kappa(a)=a2, kappa(b)=b2,
+  kappa(lambda,epsilon)=(lambda_2,epsilon).
+Its exact kernel, with the displayed embeddings, is
+  ker(kappa)=(product over odd primes l of Z_l) x {0}.        (W1)
+For example the 3-primary idempotent e_3 in Zhat gives a nonidentity
+kernel element t^e_3.
+
+An executed finite witness is the full continuous quotient
+  P_all -> S3, a->(12), b->(23).
+The product t=ba maps to (132), of order three; the two factor images
+generate all six elements of S3. Hence t^e_3 has that same nonidentity
+image. This quotient does not factor through kappa, since a continuous
+finite image of P_2 is a 2-group. This proves the nontrivial comparison
+kernel by an explicit actual homomorphism as well as by (W1).
+
+The relative projective-pair property holds for this actual P_2
+-----------------------------------------------------------------
+Here is a direct finite lifting argument in Wilkes Definitions 6.1--6.2,
+with no use of his Theorem 6.9. Let pi:B->A be a finite surjection,
+phi:P_2->A a continuous homomorphism, and sigma_i:C2(i)->B the two
+specified local lifts. Replace A by phi(P_2), a 2-group, and B by its
+inverse image. Put K=ker(pi). A 2-Sylow subgroup S of B maps onto A,
+so B=SK. Each sigma_i(C2(i)) is a 2-subgroup of B. Sylow conjugacy
+puts it into S by some element of B; writing that element as s k
+with s in S and k in K shows that a K-conjugation already puts it
+into S. Thus choose k_i in K with
+  sigma'_i=k_i sigma_i k_i^(-1):C2(i)->S.
+The actual pro-2 coproduct universal property gives gamma:P_2->S
+extending these two homomorphisms. Composing with S->B supplies
+  pi gamma=phi,
+  gamma|C2(i)=k_i sigma_i k_i^(-1).
+The first equality holds on both factors, which topologically generate
+P_2. These are the exact relative lifting equalities; the inverse k_i
+are Wilkes's displayed local comparison conjugators. Thus this pair
+satisfies the projective profinite-pair property of his part (II).
+
+Interpreting part (III) literally as a full coproduct, even with an
+additional free pro-2 factor, would give a full continuous quotient
+onto S3: use (12),(23) on the two C2 factors and kill that extra
+factor. The actual P_2 has no such quotient. The comparison (W1)
+and the preceding lifting proof therefore exhibit the precise failure
+of that literal full-coproduct reading. No replacement source wording
+or conjecture about the author's intention is used.
+
+Application scope for the D74 map
+---------------------------------
+Proposition 6.8's actual proof and its pro-p coproduct remain usable in
+their stated pro-p setting. They do not identify the actual full P3
+or P4 in the pants construction with any pro-2 completion. The frozen
+note obtains its full section i using its separately proved Haran
+lifting argument. The remaining full image of rho i is not supplied
+by the phrase in Theorem 6.9(III).
+
+Finite evidence: code/tau_cusp_and_coproduct_comparison.py and
+code/tau_cusp_and_coproduct_comparison_output.json; the complete
+producer has 22 passing assertions. Its S3 portion checks both
+involutions, the order-three product, the inversion relation, and
+surjectivity to S3. The kernel formula (W1) and the full relative
+lifting argument are proved above, not inferred from a finite sample.

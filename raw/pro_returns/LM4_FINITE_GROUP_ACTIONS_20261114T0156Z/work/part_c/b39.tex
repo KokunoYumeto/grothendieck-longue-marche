@@ -1,0 +1,157 @@
+\begin{claim}{B.39}{Proved}{Complete genus-three projective-plane quotient catalogue}
+There are exactly $11$ conjugacy classes of mixed finite genus-three
+actions whose positive quotient is a sphere and whose induced
+involution on that sphere is fixed-point-free.  Their full quotients
+are projective planes with cone points.  Four classes are identified
+with B.34 and seven are additional.  Consequently B.37 and the present
+claim give exactly $156$ mixed classes with spherical positive quotient.
+\end{claim}
+\begin{proof}
+A fixed-point-free sphere involution has projective-plane quotient:
+its quotient is a closed surface of Euler characteristic one, and
+its orientation cover is the given sphere.  Cone points are exchanged
+in pairs.  Thus each multiplicity in the positive cone multiset must
+be even.  Inspection of the complete input in B.33 leaves exactly
+$\mathrm O3.4$, $\mathrm O3.9$, $\mathrm O3.11$, $\mathrm O3.15$,
+$\mathrm O3.21$, $\mathrm O3.22$, and $\mathrm O3.25$.
+Their paired cone orders are respectively
+$(2,2,2,2)$, $(2,2,2)$, $(4,4)$, $(2,6)$, $(2,4)$, $(2,4)$,
+and $(2,3)$.
+
+For a projective plane with cone orders $n_1,\ldots,n_l$ use
+\[
+ \Lambda=\langle x_1,\ldots,x_l,d\mid
+       x_i^{n_i}=1,\quad x_1\cdots x_l d^2=1\rangle .   \tag{B.39.1}
+\]
+Set $X_i=x_i$, $Y_i=d x_i d^{-1}$ and
+$A=d^2=(X_1\cdots X_l)^{-1}$.  Its orientation double has the
+spherical vector
+\[
+        v=(X_1,\ldots,X_l,Y_l^{-1},\ldots,Y_1^{-1}),
+                \qquad\prod_iX_i=\prod_iY_i.            \tag{B.39.2}
+\]
+Conjugation by $d$ is
+\[
+       X_i\longmapsto Y_i,\qquad
+       Y_i\longmapsto A X_iA^{-1}.                     \tag{B.39.3}
+\]
+For every published $\operatorname{Aut}(H)$-normalized vector in
+these seven cases, the program tests that (B.39.3) descends to an
+automorphism $\alpha$ of its finite positive image $H$.  The same
+Cayley-graph propagation as in B.37 gives an exact kernel-invariance
+test.  It also verifies
+$\alpha^2=\operatorname{Inn}(A)$ and $\alpha(A)=A$.
+The full finite image is then the set $H\times\{0,1\}$ with product
+\[
+ (h,\epsilon)(k,\delta)=
+       \bigl(h\alpha^\epsilon(k) A^{\epsilon\delta},
+                    \epsilon+\delta\bmod2\bigr).      \tag{B.39.4}
+\]
+The two identities just verified prove associativity; the element
+$d=(1,1)$ has square $A$ and induces $\alpha$ on $H$.
+Thus (B.39.4) is exactly $\Lambda/\ker\theta$, where
+$\theta$ is the positive epimorphism (B.39.2).
+
+For clarity, the full source fusion is as follows.  The colored
+mapping class group of the punctured projective plane is generated
+by the colored disc braids and by sliding each puncture once around
+a one-sided loop.  One direct proof cuts the projective plane along
+a projective line disjoint from the marked disc: a moving puncture
+crossing the cut is separated off as a one-sided slide, after which
+all the remaining tracks form a braid in the disc.  Equivalently,
+forgetting punctures successively expresses their point-pushing
+loops by peripheral loops and the one-sided generator.  The former
+are the pure disc braids.  The unmarked projective-plane mapping
+class group is trivial: isotope the image of a projective line to
+that line, adjust its parametrization by a projective rotation, and
+apply the disc Alexander isotopy after cutting.  This proves that
+these point motions exhaust all mapping classes.  Color-preserving
+permutations are supplied by the same equal-color braid generators
+used in B.37.
+
+The slide of the last puncture has the exact substitutions
+\[
+ x_i\longmapsto x_i\quad(i<l),\qquad
+ x_l\longmapsto(x_l d)x_l^{-1}(x_l d)^{-1},\qquad
+ d\longmapsto x_l d.                                   \tag{B.39.5}
+\]
+They are obtained by tracking the meridian through a neighborhood
+of that puncture and the one-sided loop.  The two-cone case, including
+its geometric puncture-slide interpretation, is verified independently
+in \cite[Lemma 3.19]{C_GromadzkiSzepietowski2016}.  Other punctures
+outside this neighborhood are fixed, so the same formula applies
+to all $l$ used here.  It respects the product relation directly:
+if $B=x_1\cdots x_{l-1}$ and $x=x_l$, then
+\[
+ B(x d x^{-1}d^{-1}x^{-1})(x d)^2=B x d^2=1.
+\]
+In the finite positive group its effect is
+\[
+ x_l\longmapsto x_l\alpha(x_l)^{-1}x_l^{-1},\qquad
+ \alpha\longmapsto\operatorname{Inn}(x_l)\alpha,
+ \qquad A\longmapsto x_l\alpha(x_l)A.                  \tag{B.39.6}
+\]
+To slide any other puncture, a specified sequence of adjacent braids
+moves it to the last position, applies (B.39.6), and moves it back.
+The full word preserves its color even when the intermediate braids
+exchange different colors.  Equations (B.39.5)--(B.39.6) and the disc
+braids therefore give exactly the source mapping-class action.
+The kernel-to-cover conjugacy argument of B.37 applies without change.
+
+Executing these finite orbits gives respectively $1,3,3,1,2,0,1$
+classes in the seven signature/group pairs above.  For every class,
+\texttt{catalogue\_genus3\_projective\_quotients.py} constructs the
+regular representation of (B.39.4), checks every relation in
+(B.39.1), injectivity of all local cyclic groups, and Euler
+characteristic $-4$.  The finite point-coset calculation gives every
+partial section and its multiplier, centralizer and extensions.
+No negative element has a fixed point, since its image on the
+positive quotient sphere is fixed-point-free.  Thus all nontrivial
+sections in these rows have positive cyclic image and are point
+sections; their surface-group centralizers are trivial.
+
+Finally the four projective-plane groups in B.34 are compared using
+their actual cone generators and conjugation by their crosscap
+element.  After a fixed ordering braid, their doubled vectors are
+identified in the finite kernel orbits by the rooted colored Cayley
+graph isomorphism test.  The resulting exact identifications are
+\[
+ \mathrm{G3H}_{002}\leftrightarrow\mathrm{G3P}_{001},\quad
+ \mathrm{G3H}_{011}\leftrightarrow\mathrm{G3P}_{002},\quad
+ \mathrm{G3H}_{029}\leftrightarrow\mathrm{G3P}_{008},\quad
+ \mathrm{G3H}_{039}\leftrightarrow\mathrm{G3P}_{010}.
+                                                        \tag{B.39.7}
+\]
+All seven applicable section-count columns agree under this
+bijection.  Hence precisely seven classes are additional to B.34.
+The quotient involution on the positive sphere has a fixed circle
+in B.37 and has empty fixed set here; a conjugacy induces a sphere
+conjugacy carrying these fixed sets to each other.  Thus none of
+these eleven rows can be conjugate to a B.37 row, proving the total
+$145+11=156$.
+\end{proof}
+
+Here $p$ counts nontrivial partial section classes, and $m,o$ are
+$|\Phi|$ and $|K\backslash\Phi|$.  The final column $i$ counts negative
+involutions in the displayed finite group; all of them act freely.
+\[
+\begin{array}{c|r|l|r|r|r|r}
+ \text{class}&|K|&\text{cone orders}&p&m&o&i\\\hline
+ 001&4&(2,2,2,2)&8&8&4&2\\
+ 002&8&(2,2,2)&12&12&3&0\\
+ 003&8&(2,2,2)&12&12&3&2\\
+ 004&8&(2,2,2)&12&12&3&4\\
+ 005&8&(4,4)&8&4&2&0\\
+ 006&8&(4,4)&8&4&2&2\\
+ 007&8&(4,4)&8&4&2&4\\
+ 008&12&(2,6)&12&8&2&2\\
+ 009&16&(2,4)&16&12&2&0\\
+ 010&16&(2,4)&16&12&2&0\\
+ 011&24&(2,3)&20&20&2&4
+\end{array}                                             \tag{B.39.8}
+\]
+Every row has zero full splittings, since its full image contains a
+negative element and no such element fixes a point.  The JSON
+\texttt{type\_3\_0\_projective\_quotient\_sections.json} includes all
+finite permutations, local generators, multipliers and section
+incidences behind this table.

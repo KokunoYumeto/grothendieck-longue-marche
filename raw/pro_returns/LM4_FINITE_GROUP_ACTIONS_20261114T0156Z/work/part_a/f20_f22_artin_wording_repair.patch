@@ -1,0 +1,191 @@
+--- /workspace/scratch/64cb59721884/work/part_a/f_cross_divisor_monodromy.tex
++++ /workspace/scratch/64cb59721884/work/part_a/f_cross_divisor_monodromy.tex
+@@ -185,11 +185,24 @@
+ three-strand path $B(g)$.
+ At the common reference configuration the projected
+ order is exactly $(0,B(s_*),1,R)$.
+-The three meridians $x,y,z$ and the fourth meridian $d$
+-are the Artin meridians in this projection chart.
+-They use the same disk basepoint and the standard
+-straightening of four points with distinct projected
+-coordinates.
++Use the same disk basepoint and straighten the four
++points within their projection-order chamber. A generator
++$\sigma_j$ is the literal clockwise exchange of adjacent
++points: the left strand passes above the right strand.
++For example, after translation and positive scaling, the
++two paths
++\[
++ 2t-1+4it(1-t),\qquad -2t+1-4it(1-t)
++       \quad(0\leq t\leq1)
++\]
++have exactly this exchange and the producer's positive
++crossing. Their squared distance from the midpoint is
++$((2t-1)^2-1/2)^2+3/4$, so the pair never collides.
++These geometric generators give the Artin presentation
++of the actual braid group. The symbols $x,y,z,d$ below
++are its ordered free coordinates; the exact identification
++of $x,y,z$ with the actual point-pushing fibre, including
++its inverse based loops, is given by (F.20.8)--(F.20.9).
+ 
+ \emph{The Artin coordinate and the diagonal-coset formula.}
+ Use the faithful Artin substitutions
+@@ -201,12 +214,14 @@
+                                                                \tag{F.20.7}
+ \]
+ in the word-composition convention of \cite{A-Artin1947}.
+-The producer spells out both signs and the composition
+-order. Reversing the convention for chronological path
+-multiplication applies inversion to the two braid
+-images and their resulting action maps; it leaves
+-their generated permutation subgroup and every orbit
+-below unchanged.
++Path products are read from left to right in time, and
++the substitution for a displayed word $b_1\cdots b_r$
++is $\phi_{b_1}\circ\cdots\circ\phi_{b_r}$, as in the
++producer. The displayed substitutions and their inverses
++satisfy the Artin relations, so the named geometric
++generators define this homomorphism into the free-group
++automorphisms. The following fibre-coordinate comparison
++determines its actual point-pushing action.
+ 
+ For a pure four-strand braid $\beta$, write
+ $\phi_\beta(d)=W_\beta dW_\beta^{-1}$ and let $w_\beta$
+@@ -221,23 +236,42 @@
+  u_{\beta\gamma}=u_\beta\alpha_\beta(u_\gamma).
+                                                                \tag{F.20.8}
+ \]
+-This is the actual point-pushing kernel coordinate.
+-Indeed the three standard kernel braids
+-$\sigma_3\cdots\sigma_{j+1}\sigma_j^2
+- \sigma_{j+1}^{-1}\cdots\sigma_3^{-1}$ have respectively
+-the $u$-images
++To identify the actual point-pushing kernel, let
++$\beta_j=\sigma_3\cdots\sigma_{j+1}\sigma_j^2
++ \sigma_{j+1}^{-1}\cdots\sigma_3^{-1}$.
++The first descending word carries the last strand along
++the lower-half-plane whisker, the square makes a clockwise
++lasso about puncture $j$, and the inverse word returns
++that whisker. Deleting the last strand contracts the
++old motion within its projection-order chambers. Thus
++these are the three actual lower-whiskered clockwise
++lassos, a free basis of the punctured-plane fibre.
++Direct substitution gives their $u$-images
+ \[
+         z^{-1}y^{-1}x^{-1}yz,\qquad
+         z^{-1}y^{-1}z,\qquad z^{-1}.
+                                                                \tag{F.20.9}
+ \]
+-This substitution is its own inverse, by free reduction,
+-so it identifies the actual free point-pushing kernel
+-with $F(x,y,z)$ and then its full completion.
++This triangular substitution is its own inverse, by
++free reduction. The inverse map sends $x,y,z$ to the
++same three words with $\beta_1,\beta_2,\beta_3$
++substituted for $x,y,z$. These are specified conjugates
++of the inverse clockwise lassos, so they are actual
++based puncture meridians. Both composites are the
++identity on the named free bases. This gives the actual
++fibre isomorphism and then its full profinite inverse.
+ Adding the last strand gives the standard section on
+ the three-strand braid group, with $u=1$.
++The cocycle (F.20.8) therefore makes conjugation by that
++section exactly the filled Artin substitution, and makes
++conjugation by a general pure braid $b$ the map
++$v\mapsto u_b\alpha_b(v)u_b^{-1}$.
+ Its restriction gives the section of $P_5\to P_4$
+-used in this coordinate.
++used in this coordinate. Filling a puncture kills its
++lower-whiskered lasso; the same triangular formula
++commutes with filling the corresponding variable and
++retaining the order of the others. These are the actual
++based filling maps in the displayed coordinates.
+ 
+ Here the normalized moduli groups have not been replaced
+ by braid groups without a map. The coordinate isomorphism
+--- /workspace/scratch/64cb59721884/work/part_a/f_joint_kernel_presentation.tex
++++ /workspace/scratch/64cb59721884/work/part_a/f_joint_kernel_presentation.tex
+@@ -195,11 +195,12 @@
+ maps, including the basepoints.
+ 
+ Write $X_4=U_1,\ldots,X_7=U_4,X_8=t$.
+-Use the Artin substitutions of F.20.7 on
++Use the literal clockwise exchanges and the Artin
++substitutions calibrated in F.20.7--9 on
+ $\widehat F(X_1,\ldots,X_8)$.
+-For the positive point moving once around old
+-position $i$, the based geometric free generator
+-$g_i$ has the point-pushing braid
++For the positive point moving once clockwise around old
++position $i$ along its lower-half-plane whisker, the
++based geometric free generator $g_i$ has the braid
+ \[
+  \beta_i=\sigma_7\cdots\sigma_{i+1}\sigma_i^2
+                   \sigma_{i+1}^{-1}\cdots\sigma_7^{-1},
+@@ -207,11 +208,16 @@
+  \qquad u_j=g_{j+3}.
+                                                                \tag{F.22.11}
+ \]
+-Deleting its last strand leaves the constant old
+-configuration; the geometric kernel basis consists
+-of these seven loops. The section keeps the negative
+-point $n$ fixed outside $B$, so its conjugation on
+-the negative-point fiber is
++The descending word carries the last strand below
++the intervening points, its square is the clockwise
++lasso, and the inverse word returns the same whisker.
++Deleting that strand gives the trivial old braid by
++contracting the old motion in its projection-order
++chambers. These seven lower-whiskered lassos form the
++actual geometric kernel basis. The section keeps the
++negative point $n$ fixed outside $B$, so the exact
++fibre-coordinate comparison below makes its conjugation
++on the negative-point fiber
+ \[
+  \alpha_{g_i}=\phi_{\beta_i},
+  \qquad
+@@ -220,8 +226,9 @@
+  \quad\phi_{\sigma_k}(X_j)=X_j\ (j\ne k,k+1).
+                                                                \tag{F.22.12}
+ \]
+-The positive braid word is composed in the same order
+-as F.20, and its inverse word gives its inverse map.
++The clockwise braid word is composed in the same
++chronological and substitution order as F.20, and its
++inverse word gives its inverse map.
+ 
+ Here is the precise point-pushing identification
+ underlying that conjugation formula. For a pure
+@@ -231,8 +238,10 @@
+ put $u_b=w_b^{-1}$. Exactly as in F.20.8, substitution
+ gives $u_{bc}=u_b\phi_b(u_c)$ after erasing the ninth
+ strand. The section on the first eight strands has
+-$u=1$. On the eight geometric point-pushing kernel
+-generators the values of $u$ are
++$u=1$. Write $\gamma_i$ for the eight lower-whiskered
++clockwise point-pushing lassos of the ninth point,
++given by the same braid pattern with $\sigma_8$ as
++its first exchange. Their values of $u$ are
+ \[
+        \tau_i=X_8^{-1}\cdots X_{i+1}^{-1}
+                     X_i^{-1}X_{i+1}\cdots X_8,
+@@ -242,11 +251,14 @@
+ This triangular substitution is its own inverse:
+ starting with $i=8$ and substituting downward,
+ each adjacent inverse pair cancels and the image
+-of $\tau_i$ is $X_i$. It therefore gives an actual
+-free-group isomorphism, and then a full profinite
+-isomorphism, between the fiber and the stated
+-Artin coordinates. Its crossed multiplication
+-formula makes conjugation by the section exactly
++of $\tau_i$ is $X_i$. The actual forward coordinate
++map is $\gamma_i\mapsto\tau_i(X)$; its inverse is
++$X_i\mapsto\tau_i(\gamma)$. Both composites are
++the identity on the named free bases. They therefore
++give the actual free-group isomorphism and its full
++profinite inverse between the fiber and these Artin
++coordinates. The crossed multiplication formula now
++makes conjugation by the actual section exactly
+ (F.22.12). Erasing any of the four old labels,
+ or erasing $t$, commutes with (F.22.13); the
+ remaining triangular formula has exactly the

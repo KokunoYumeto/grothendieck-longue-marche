@@ -1,0 +1,171 @@
+Independent mathematical audit of D.78
+=====================================
+Reviewer: /root/part_a_f21
+Date: 2026-11-13 UTC
+Verdict: PASS for the exact stated result, including the retained open
+recognition map. No source edit was made by this reviewer.
+
+Reviewed snapshot
+-----------------
+work/part_c/d78.tex
+  SHA256 4028381274db9b96945871213effbbe35dae0e32624eac70b007f80c4faedb43
+work/part_c/d78_result.json
+  SHA256 2d2245200612ca08ac739f58f679241dca367bb439c8414beec4b4a44a8dd50d
+work/part_c/d78_report.txt
+  SHA256 77931c32f52b351e727166f7ea27de852222e12868de6b466658fc98260fc4e2
+
+Dependency passages reread
+-------------------------
+D.75.7--19: the actual cusp augmentation module, relative dimension shift,
+surface evaluation, equivariant row dualities, transpose transgressions,
+localized exact sequence, Brown restriction, and actual g-coefficient
+transport for the two cusp occurrences.
+  d75.tex SHA256 bf2011893ba7635c5915bbf9461e4dcc68050232052cb84ba1e979345e283174
+D.74.16--29: the positive-column cyclic evaluation pairing, multiplicative
+quotient filtration, d2 derivation identity, finite stable filtrations,
+period-one u maps, and Brown restriction.
+  d74.tex SHA256 b410e08d779b8a14beec0997bc774618b88ef0a89ec505d7e2487a5b4f8d5518
+D.60: both actual quotient maps, normalization chi(g)=1 in the two-section
+case, and the actual section inside C_F(w) obtained from [a]=[g].
+  d60.tex SHA256 c7e90374751821eb3086b06ddb3208ea7c24821af3911a670126d213e79e6aec
+
+1. Coefficients and both shifted filtrations
+------------------------------------------
+The initial finite-coefficient argument uses finite continuous k[E]-modules
+M, as in the expressly retained D.75.10. The relative coefficient module
+H_M=Hom_cont(Delta,M) and the degree shift R^m=H^{m-1}(E,H_M) are the actual
+ones from D.75. They have not been replaced by vector spaces selected only
+by dimension. The surface evaluation gives the quotient-equivariant row
+pairings U_M with U_M^dual and V_M with V_M^dual. The cyclic pairings descend
+through ker(1+sigma)/im(1+sigma), and D.75.14 identifies d' as the transpose
+of d under precisely these pairings. Hence coker(d) pairs perfectly with
+ker(d'), and ker(d) with coker(d').
+
+For absolute total degree n, the surviving row-zero subspace has quotient
+column n and the row-one quotient has column n-1. For relative degree m,
+the shifted complex has total degree m-1: its row-zero subspace has column
+m-1 and its row-one quotient has column m-2. These are exactly the two
+short exact sequences written in D.78. The two mixed products land in
+target row one, column n+m-2. The product of the two subspaces has column
+n+m-1 and is annihilated by the quotient edge onto column n+m-2.
+
+For trivial k, the section v gives a retraction of inflation from C2;
+therefore no transgression can kill a positive-column row-zero class.
+The absolute d2 is zero, and its transpose is zero in the shifted-relative
+sequence. The orientation row H^1(F,H_k)=H^2(F,<c>;k)=k survives. The
+displayed quotient edge H^n(E,D;k) -> k*u^(n-2) is therefore defined, and
+coefficient extraction is compatible with multiplication by the actual u.
+This proves the stated trace on the degree-zero localization.
+
+The trace of a cup product has the two stated perfect mixed associated-
+graded pairings. A nonzero row-one quotient class is detected by the
+opposite row-zero subspace. A nonzero row-zero subspace class is detected
+by a lift of the opposite row-one quotient. The higher-filtration product
+vanishes under the trace, so the detection is independent of the lifts.
+The same test in the reverse order proves full finite-dimensional perfect
+duality. This argument establishes nondegeneracy on the actual filtered
+spaces, without choosing splittings or assuming a general d2 is zero.
+
+2. Brown idempotent and the actual relative lift
+---------------------------------------------
+D.75 supplies C_F(v)=1. The finite-coefficient Brown isomorphism thus has
+the literal S factor and the B x T factor. Both actual cusp occurrences
+are in the S class, with the second transported by the original g and the
+D.75.18 coefficient map. The boundary restriction is exactly (z,t)->(z,z).
+It is zero on the other factor for every retained coefficient module.
+
+The Brown inverse e of (0,1) is an idempotent in the localized k ring.
+Its restriction to the cusp module is zero. The exact localized triangle
+therefore gives j:eR_M -> eA_M as an isomorphism. Its specified inverse
+(lift, then multiply by e) is independent of the lift because differences
+are connecting images and e kills their source. The cup pairing is
+balanced, so e and 1-e are orthogonal and the e-restriction remains perfect.
+Compatibility of j with absolute cup multiplication proves the displayed
+normalizer cup formula and the exact trace tau=tr*j^{-1}.
+
+3. Arbitrary finite E-set coefficients and all open stabilizers
+------------------------------------------------------------
+For M=k[X], the span Q_X=k[X^T] is an actual B x T direct summand. Its
+orthogonal complement consists of the two-element T-orbits and is B-stable
+because B centralizes T. That complement is free over k[T]. Its positive
+T-cohomology is zero, and cd_2(B)<=1 kills all resulting total degrees >=2.
+Thus inclusion Q_X -> M gives the precise localized comparison.
+
+T acts trivially on Q_X. The direct-product resolution gives the actual
+map (q,z)->q*u^n+inf_B(z)*u^(n-1), followed by inclusion, and its inverse by
+the fixed-basis projection and the product cochain decomposition. Literal
+restriction to T is (q,z)->q. Products of two H^1(B,Q_X) summands factor
+through H^2(B,Q_X tensor Q_X)=0. Perfect self-duality therefore gives
+dim H^1(B,Q_X)<=dim H^0(B,Q_X).
+
+For each actual B-orbit, Shapiro gives its open stabilizer B_i. The image
+chi(B_i) is the closed finite-index subgroup d_i*Zhat, since chi(B)=Zhat.
+The composition chi, division by d_i on that image, and reduction mod two
+is a specified nonzero character. Each stabilizer contributes at least
+one dimension, so the preceding bound forces exactly one for each.
+
+Every open B_0 is realized: choose N normal open in E, N<=F and N cap B
+inside B_0, and use U=B_0*T*N. The quotient label u excludes a nontrivial
+T factor from U cap B. The remaining element of N then lies in N cap B,
+so U cap B=B_0. The identity coset in E/U is T-fixed with B-stabilizer B_0.
+This proves the assertion for all actual open subgroups of the full B.
+
+The equal dimensions make both mixed cup pairings perfect. For M=k the
+one-dimensional H^1(B,k) summand is square-zero; a zero degree-one trace
+would put it in the radical. Hence the trace is nonzero and takes the
+nonzero class chi mod two to 1. All coefficient actions are retained.
+
+4. Sylow conclusion and exact full split coordinates
+--------------------------------------------------
+The actual power map t->a^t is a continuous section because chi(a)=1.
+Consequently A_2 is a copy of Z2 mapping isomorphically to the dyadic
+quotient. A Sylow pro-2 subgroup P containing it cannot have two independent
+characters: a finite joint character map factors through P/(P cap N_0)
+and extends to the open group P*N_0 by its actual quotient isomorphism.
+That contradicts the proved dimension one for every open subgroup.
+
+Each finite 2-group quotient of P therefore has a unique maximal subgroup
+and is cyclic. Compatible finite generators give a procyclic P; its
+surjection to Z2 makes it Z2, and this surjection is injective. Since A_2
+already maps onto Z2, P=A_2. Conjugacy of profinite Sylow subgroups and
+conjugacy invariance of chi_2 make chi_2 injective on every Sylow pro-2
+subgroup of B. The kernel O has trivial Sylow pro-2 subgroup, so its finite
+quotients have odd order. K lies in O and is pro-odd as well.
+
+Both coordinate maps (k,t)->k*a^t and b->(b*a^(-chi(b)),chi(b)) are actual
+continuous inverse homomorphisms for the specified conjugation action.
+They establish the stated semidirect product without identifying K with
+the identity subgroup.
+
+5. Inflation, section restriction, and the finite detection witness
+-----------------------------------------------------------------
+Every finite action image of K on a finite 2-primary module has odd order.
+Its averaging idempotent is independent of the chosen finite quotient,
+B-equivariant by normality of K, and makes invariants exact. Equivalently,
+continuous finite-coefficient cocycles factor through finite odd quotients,
+whose higher 2-primary cohomology vanishes. The actual extension spectral
+sequence therefore gives inflation from Zhat with coefficient Q^K.
+Restriction to the named section a^t is induced by the literal inclusion
+Q^K -> Q with the named quotient and section actions. This is the precise
+coefficient comparison claimed in the text and metadata.
+
+For Q_X the K-orbit sums form a basis of Q_X^K. Their lengths are odd, so
+the original basis pairing restricts to the ordinary orbit basis pairing.
+The quotient action on these sums is the actual action of a^t.
+
+For nontrivial k_0 in K, the quotient label u shows k_0 cannot lie in AT:
+membership would place it in A, where chi is injective. AT is compact and
+closed. Some normal open N<=F separates k_0 from ATN. In the actual finite
+E-set X=E/(ATN), the identity-coset basis vector is A-fixed and T-fixed,
+whereas k_0 moves it. It lies in Q_X^A and does not lie in Q_X^B. Conversely
+B=A makes the displayed inclusion equal. Thus the exact all-finite-set
+invariant-surjectivity criterion is proved, with the stated witness for
+every nonidentity kernel element.
+
+Scope and disposition
+---------------------
+The metadata and report match the proof. The original cusp c, transporter
+g, character chi, other section T, and chosen full procyclic section A
+are retained. Triviality of K and the original D.75.5 recognition are not
+deduced. No finite computation is used to establish the universal claims.
+PASS: D.78 may proceed to root assembly at the reviewed snapshot.
