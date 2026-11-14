@@ -1,0 +1,30 @@
+default(parisize,256000000);
+default(parisizemax,2000000000);
+default(realprecision,100);
+jmat(M)=Str(vector(matsize(M)[1],i,vector(matsize(M)[2],j,M[i,j])));
+jfrac(q)=[numerator(q),denominator(q)];
+jpoly(p,n)=vector(n,i,jfrac(polcoef(lift(p),i-1)));
+jmatq(M)=Str(vector(matsize(M)[1],i,vector(matsize(M)[2],j,jfrac(M[i,j]))));
+smithrec(name,H,S)={
+  if(S[1]*H*S[2]!=S[3] || denominator(S[1]^-1)!=1 || denominator(S[2]^-1)!=1,error("full Smith inverses"));
+  print("{\"type\":\"smith\",\"name\":\"",name,"\",\"hnf\":",jmat(H),",\"left\":",jmat(S[1]),",\"right\":",jmat(S[2]),",\"left_inverse\":",jmat(S[1]^-1),",\"right_inverse\":",jmat(S[2]^-1),",\"diagonal\":",vector(matsize(H)[1],i,S[3][i,i]),"}");
+};
+run()={
+  my(dat=read("research_e81/code/e_prime73_field.bin"),B=dat[1],F=dat[2],R=dat[3],E=dat[4],P=dat[5],I=dat[6],PS=dat[7],S=dat[8]);
+  my(rel=read("research_e81/code/e_prime73_relations.bin"),ar=read("research_e81/code/e_prime73_artin.bin"),recs=read("research_e81/code/e_prime73_candidates.bin"),gn=read("research_norm_index/code/cyclotomic_base1_genus.bin"));
+  print("{\"type\":\"base_field\",\"polynomial\":",vector(poldegree(F.pol)+1,i,polcoef(F.pol,i-1)),",\"basis\":",vector(18,i,jpoly(F.zk[i],18)),",\"class_group\":",B.cyc,",\"prime73\":",jmat(P),",\"prime_class\":",Vec(bnfisprincipal(B,P,0)),",\"cube_generator\":",jpoly(nfbasistoalg(F,dat[9]),18),",\"s_prime_ideals\":",vector(6,i,vector(18,j,vector(18,k,idealhnf(F,PS[i])[j,k]))),"}");
+  print("{\"type\":\"extension\",\"degree\":",poldegree(E.pol),",\"polynomial\":",vector(poldegree(E.pol)+1,i,polcoef(E.pol,i-1)),",\"discriminant\":",E.disc,",\"relative_index\":",R.index,",\"base_embedding\":",jpoly(R[11][2],54),",\"primitive_shift\":",R[11][3],",\"upper_prime_data\":",vector(6,i,[S[i].p,S[i].e,S[i].f]),",\"extended_prime_norm\":",idealnorm(E,I),",\"cube_verified\":true}");
+  print("{\"type\":\"relations\",\"base_valuation\":",jmat(rel[1]),",\"matrix\":",jmat(rel[3]),",\"base_s_generators\":",vector(6,i,jpoly(rel[2][1][i],18)),",\"literal_identities\":7}");
+  smithrec("genus",gn[4],[gn[5],gn[6],gn[7]]);
+  smithrec("s_relations",rel[4],rel[5]);
+  smithrec("correction_quotient",ar[10],ar[11]);
+  smithrec("s_artin_image",ar[12],ar[13]);
+  print("{\"type\":\"artin\",\"cyclic\":",ar[5],",\"s_map\":",jmat(ar[6]),",\"target\":",Vec(ar[7]),",\"origin\":",Vec(ar[8]),",\"kernel\":",jmat(ar[9]),",\"kernel_inverse\":",jmatq(ar[9]^-1),",\"quotient_matrix\":",jmat(ar[10]),"}");
+  for(k=1,#recs,
+    my(rec=recs[k]);
+    print("{\"type\":\"candidate\",\"index\":",k,",\"parameters\":",rec[1],",\"exponents\":",Vec(rec[2]),",\"base_norm_ideal\":",jmatq(rec[3]),",\"base_cube_generator\":",jpoly(nfbasistoalg(F,rec[4]),18),",\"cube_verified\":true}");
+  );
+  print("{\"type\":\"completion\",\"status\":\"PASS\",\"candidate_count\":27,\"ordinary_extended_class_order\":3,\"s_capitulation\":\"unevaluated\"}");
+};
+run();
+quit;

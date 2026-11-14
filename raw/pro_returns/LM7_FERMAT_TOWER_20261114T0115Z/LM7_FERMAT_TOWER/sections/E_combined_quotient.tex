@@ -1,0 +1,316 @@
+\subsection{Joining the elliptic comparison to the evaluated Frobenius quotient}
+
+\begin{statement}{E.53}{Proved}{An exact common quotient and a class-three refinement with kernel of rank~329}
+Use the actual based maps of E.50 and E.54 over
+$K=\mathbb Q(\zeta_3)$. To distinguish their targets, put
+\[
+ D=N/\gamma_4N,\qquad
+ B=N/(F_{\rm ell}''\gamma_4N),\qquad
+ C=F_h/\gamma_4F_h .
+ \tag{E53.1}
+\]
+Here $F_{\rm ell}$ is the group of the once-punctured elliptic
+curve reached by $[3]$, and $F_h$ is the free rank-two group
+of the thrice-punctured line reached by $h$.
+The maps $D\twoheadrightarrow B$ and
+$D\twoheadrightarrow C$ have their actual tangential
+origins and arithmetic actions from those two results.
+Let $I=\ker(N\to T_3E)$ be the full peripheral kernel,
+let $K_0=I'\gamma_4N/\gamma_4N$, and let
+$K_h=\ker(D\to C)$.
+
+Write $x,y,c,d,e$ for the Hall generators of $C$ in
+(E54.3). The image of $K_0$ in $C$ is the exact closed
+normal subgroup
+\[
+        P'=\langle c^3,d^3,e\rangle
+              \simeq\mathbb Z_3^3.
+ \tag{E53.2}
+\]
+Consequently the maximal common quotient of $B$ and $C$
+induced by their maps from $D$ is
+\[
+ Q=D/(K_0K_h)
+      =C/\langle c^3,d^3,e\rangle .
+ \tag{E53.3}
+\]
+In particular every element of $Q$ has unique coordinates
+$x^a y^b c^{\bar n}d^{\bar r}$ with
+$a,b\in\mathbb Z_3$ and $\bar n,\bar r\in\mathbb Z/3$.
+These are group coordinates with the quotient of the
+Hall law (E54.18).
+
+There is an exact based arithmetic sequence
+\[
+ 1\longrightarrow J
+ \longrightarrow D
+ \longrightarrow B\times_Q C
+ \longrightarrow1,\qquad
+       J=K_0\cap K_h\simeq\mathbb Z_3^{329}.
+ \tag{E53.4}
+\]
+The fiber product uses the actual two maps to (E53.3);
+the map on the right is surjective.
+All the maps and kernels in (E53.2)--(E53.4) are
+$G_K$-equivariant.
+
+Put $V=N^{\rm ab}$, $T=\ker(V\to T_3E)$, and
+$W=F_h^{\rm ab}=\mathbb Z_3(1)^2$.
+Write $f:V\to W$ for the map induced by $h$.
+Then $f$ is onto and its cusp image is exactly
+\[
+                f(T)=3\mathbb Z_3x+\mathbb Z_3y.
+ \tag{E53.5}
+\]
+The induced lower central filtration on $J$ is given
+by the integral kernels
+\[
+ \begin{aligned}
+ \operatorname{gr}_1J&=0,\\
+ \operatorname{gr}_2J&=
+       \ker\bigl(\Lambda^2T\longrightarrow\Lambda^2W\bigr),\\
+ \operatorname{gr}_3J&=
+       \ker\bigl([T,\operatorname{Lie}_2(V)]
+                         \longrightarrow\operatorname{Lie}_3(W)\bigr).
+ \end{aligned}
+ \tag{E53.6}
+\]
+Their ranks are $0,27,302$. The quotient in (E53.4)
+has torsion-free graded lattices of ranks
+\[
+                    10,\quad18,\quad28.
+ \tag{E53.7}
+\]
+The map on the degree-two part of $K_0$ has image
+$3\mathbb Z_3c$; the map on its degree-three part
+has image $3\mathbb Z_3d+\mathbb Z_3e$. These precise
+integral image lattices are retained in (E53.3).
+In chosen integral coordinates the projection
+$B\times_Q C\to B$ has kernel (E53.2);
+its three coordinates have degrees two, three, three.
+
+The actual based action on the common quotient $Q$
+factors through the cyclotomic character itself.
+Put $r=(\chi-1)/3$ for $\chi\in1+3\mathbb Z_3$.
+The action is
+\[
+ \begin{aligned}
+ x&\longmapsto x^\chi,&
+ y&\longmapsto y^\chi c^r d^{r(r-1)/2},\\
+ c&\longmapsto c d^r,&
+ d&\longmapsto d,
+ \end{aligned}
+ \tag{E53.8}
+\]
+where the exponents of $c,d$ are taken modulo three.
+At the actual Frobenius of E.54, these images are
+$x^4,y^4c,cd,d$, respectively.
+This supplies the literal compatibility map between
+the elliptic quotient and the newly evaluated
+class-three Frobenius quotient.
+
+The integral certificate
+\texttt{a\_combined\_quotient.py} records the actual
+cusp matrix, a unimodular cusp basis change,
+the two graded kernel bases, and integer right
+inverses for the quotient maps of ranks 18 and 28.
+It also verifies the group identities generating
+(E53.2), 375 tensor substitutions, 270 normality
+identities and 72 common-action identities.
+The manuscript passage is \S51.16,
+folios~733v--736v, scans~172--178, equations~(371)--(379).
+\end{statement}
+
+\begin{proof}
+\emph{The cusp lattice and its actual subgroup image.}
+Use the eight positive peripheral classes away from
+$O$, ordered as $A_0,A_1,A_2,B_0,B_1,B_2,C_1,C_2$.
+They are a basis of the primitive cusp lattice $T$.
+The valuation of $h$ gives the first coordinate of
+$f$, and that of $1-h$ gives the second. Thus
+(E31.5) gives the literal matrix
+\[
+ \begin{pmatrix}
+ 0&0&0&0&0&0&0&-3\\
+ 0&0&0&1&1&1&0&-3
+ \end{pmatrix}.
+ \tag{E53.9}
+\]
+For example the new cusp basis
+\[
+ -C_2-3B_0,\ B_0,\ A_0,\ A_1,\ A_2,\
+ B_1-B_0,\ B_2-B_0,\ C_1
+ \tag{E53.10}
+\]
+is unimodular, and its image is $3x,y,0,\ldots,0$.
+This proves (E53.5) with its factor three.
+
+Let $P$ be the image of $I$ in $C$.
+The map $h_*:N\to F_h$ is surjective by E.54,
+so $h_*(N')=F_h'$. As $N'\subset I$, the group
+$P$ contains $\gamma_2C$.
+Its image in $C^{\rm ab}$ is exactly (E53.5).
+It follows that
+\[
+       P=\{w\in C:\ w^{\rm ab}\in
+                    3\mathbb Z_3x+\mathbb Z_3y\}
+         =\langle x^3,y,c,d,e\rangle .
+ \tag{E53.11}
+\]
+This is equality of closed subgroups.
+Derived subgroups commute with a continuous
+surjection of compact groups, so the image
+of $K_0$ is $P'$.
+The Hall law gives the actual identities
+\[
+ [x^3,y]=c^3d^3,\qquad
+ [x^3,c]=d^3,\qquad [y,c]=e.
+ \tag{E53.12}
+\]
+The elements $c^3,d^3,e$ commute and are
+independent in the integral Hall coordinates.
+Their subgroup is normal in $C$:
+conjugation by $x$ changes $c^3$ by $d^3$,
+conjugation by $y$ changes it by $e^3$,
+and $d,e$ are central.
+Equations (E53.12) put this subgroup in $P'$;
+the generators in (E53.11) commute modulo it.
+This proves the exact equality (E53.2), including
+closedness, normality and its underlying free
+three-adic group.
+
+\emph{The common quotient and the integral kernel.}
+The product $K_0K_h$ of the two compact normal
+subgroups is closed. Taking its quotient gives
+(E53.3), with the displayed Hall coordinates.
+The image of $D$ in $B\times C$ lies in the
+fiber product over $Q$.
+Given a compatible pair, lift its $B$ coordinate
+to $D$. The discrepancy in $C$ belongs to the
+image of $K_0$ by (E53.3); lift that discrepancy
+to $K_0$ and correct the chosen element of $D$.
+This proves surjectivity to the actual fiber
+product and the kernel formula in (E53.4).
+Any common quotient obtained from the two
+maps out of $D$ kills both $K_0$ and $K_h$,
+hence factors through their product quotient.
+This proves the stated maximal common quotient.
+
+E.50 proves that $K_0$ is actually abelian
+$\mathbb Z_3^{332}$ and that its induced
+graded pieces are the saturated lattices
+$\Lambda^2T$ and $[T,\operatorname{Lie}_2(V)]$.
+The map $K_0\to P'$ is onto a free group
+$\mathbb Z_3^3$ by (E53.12). Its kernel is
+therefore an actual free abelian group of
+rank~329. The strict filtered assertion
+requires the following additional check.
+The degree-three map has image
+\[
+ [\,3\mathbb Z_3x+\mathbb Z_3y,\,
+                        \operatorname{Lie}_2(W)\,]
+           =3\mathbb Z_3d+\mathbb Z_3e .
+ \tag{E53.13}
+\]
+This is also $P'\cap\gamma_3C$.
+There are actual central preimages:
+choose $a,b\in I$ with images $x^3,y$ and
+$w\in N'$ with image $c$.
+Then $[a,w]$ and $[b,w]$ belong to
+$I'\cap\gamma_3N$ and map to $d^3,e$.
+Such choices exist by (E53.11) and the
+surjectivity on derived subgroups.
+Consequently a degree-two kernel class
+in $K_0$ can be corrected in its degree-three
+coordinates to have zero image in $C$.
+This proves exactness on both graded pieces
+in (E53.6). The respective image ranks are
+one and two, giving 27 and 302.
+Both kernels are saturated in the respective
+free integral lattices: their quotients
+are the free image lattices $3\mathbb Z_3c$
+and $3\mathbb Z_3d+\mathbb Z_3e$.
+Together with the saturation proved in
+E.50, this proves torsion-freeness and
+the ranks in (E53.7).
+
+For completeness, these saturation arguments
+have an explicit integer coordinate certificate.
+Choose a splitting $V=L\oplus T$ and then
+adjust the two handle lifts by elements of
+$T$. Since $f$ is onto and (E53.5) has
+index three in $W$, a unit change of
+handle basis and the adjustments in $T$
+give the following linear map in a
+basis $u,v,t_1,\ldots,t_8$:
+\[
+ f(u)=x,\qquad f(v)=0,\qquad
+ f(t_1)=3x,\qquad f(t_2)=y,\qquad
+ f(t_i)=0\quad(i\ge3).
+ \tag{E53.14}
+\]
+Here one first chooses a handle with unit
+$x$ coefficient, scales it to coefficient
+one, and subtracts its $y$ coefficient
+using $t_2$. Subtracting a multiple of
+this handle from the other kills its
+$x$ coefficient; another $t_2$ adjustment
+kills its $y$ coefficient.
+The resulting handle images under $p$
+still form an integral basis.
+This is a chosen coordinate splitting;
+the maps and kernel in (E53.4) remain
+the previously specified equivariant ones.
+
+For the Hall basis
+$[[v_i,v_j],v_k]$ with $i>j$ and $k\ge j$,
+write $H_i=f(v_i)$ and
+$\Delta_{ij}=\det(H_i,H_j)$.
+The actual induced graded maps are
+\[
+ [v_i,v_j]\longmapsto\Delta_{ij}c,\qquad
+ [[v_i,v_j],v_k]\longmapsto
+       -\Delta_{ij}(H_{k,x}d+H_{k,y}e).
+ \tag{E53.15}
+\]
+On the 28 cusp-cusp rows, division of the
+image coordinate by three leaves a row
+with one entry $-1$ and all other entries
+zero. On the 304 degree-three kernel rows,
+use coordinates relative to $3d,e$.
+The two rows $(i,j,k)=(3,0,2),(3,0,3)$
+map to the two unit vectors.
+Subtracting their multiples from the
+other 302 rows gives an integral kernel
+basis and an integral direct-sum inverse.
+Adding the 17 and 26 retained rows of
+E.50 gives integer quotient maps with
+integer right inverses of ranks 18 and 28.
+The saved certificate checks both products
+of each claimed inverse and all brackets
+of a degree-two kernel vector with a
+weight-one generator. Thus it verifies the
+integral normal subgroup calculation.
+
+\emph{The common based arithmetic action.}
+The equalities of closed subgroups and all
+quotient maps above start with the two
+based arithmetic maps of E.50 and E.54.
+They therefore give exactly the asserted
+$G_K$ actions and equivariance.
+In $Q$, (E53.12) shows that $x^3$ is central.
+The action $\alpha_{\chi,k}$ of E.54
+therefore depends on $k$ only modulo three.
+Its genuine image satisfies
+$k\equiv(\chi-1)/3\pmod3$.
+Substituting this congruence into the
+literal Hall images (E54.5), and using
+$c^3=d^3=e=1$, gives (E53.8).
+Equivalently, the homomorphism
+$\chi\mapsto\alpha_{\chi,(\chi-1)/3}$
+gives this action, since
+$(\chi\mu-1)/3=(\chi-1)/3+
+\chi(\mu-1)/3$.
+This proves the factorization and the
+stated actual Frobenius images.
+\end{proof}

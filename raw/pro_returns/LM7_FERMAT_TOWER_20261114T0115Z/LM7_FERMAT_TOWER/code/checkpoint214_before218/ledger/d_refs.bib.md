@@ -1,0 +1,127 @@
+@incollection{dIKY1987,
+ author={Ihara, Yasutaka and Kaneko, Masanobu and Yukinari, Akira},
+ title={On Some Properties of the Universal Power Series for Jacobi Sums},
+ booktitle={Galois Representations and Arithmetic Algebraic Geometry}, series={Advanced Studies in Pure Mathematics}, volume={12}, pages={65--86}, year={1987},
+ url={https://www2.math.kyushu-u.ac.jp/~mkaneko/papers/02properties_universal.pdf},
+ note={verified: full primary text opened; original pages 5--6 visually inspected for Theorems A2 and B and the Vandiver equivalence}}
+@article{dIchimuraKaneko1989,
+ author={Ichimura, Humio and Kaneko, Masanobu}, title={On the Universal Power Series for Jacobi Sums and the Vandiver Conjecture},
+ journal={Journal of Number Theory}, volume={31}, pages={312--334}, year={1989},
+ url={https://www2.math.kyushu-u.ac.jp/~mkaneko/papers/04universal_power.pdf},
+ note={verified: full primary text opened; pages 313--315 visually inspected; Theorems C, 1, 2 and definitions of the image group checked}}
+@article{dIhara1986,
+ author={Ihara, Yasutaka}, title={Profinite Braid Groups, Galois Representations and Complex Multiplications},
+ journal={Annals of Mathematics}, volume={123}, pages={43--106}, year={1986}, doi={10.2307/1971352},
+ url={https://annals.math.princeton.edu/1986/123-1/p03},
+ note={unverified original proof: publisher metadata opened; Theorem 7 attribution checked in Otsubo2016 Remark 8.2; original full text not obtained}}
+@article{dAnderson1989,
+ author={Anderson, Greg W.}, title={The Hyperadelic Gamma Function}, journal={Inventiones Mathematicae},
+ volume={95}, number={1}, pages={63--131}, year={1989}, doi={10.1007/BF01394145},
+ url={https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0095/LOG_0011.pdf},
+ note={Verified original GDZ scan: Sections1.3--1.4, Proposition5.5.1, Corollary8.6.3, Theorems5--6, Proposition11.6.1, Proposition13.3.2 and Sections13.4--13.7 checked; exact coboundary, even-level twist, Soule normalization and IharaII p125 inversion correction retained.}}
+@incollection{dColeman1989,
+ author={Coleman, Robert F.}, title={Anderson--Ihara Theory: Gauss Sums and Circular Units},
+ booktitle={Algebraic Number Theory: In Honor of K. Iwasawa}, series={Advanced Studies in Pure Mathematics}, volume={17}, pages={55--72}, year={1989},
+ url={https://ndlsearch.ndl.go.jp/books/R100000136-I1573668924039977600},
+ note={unverified original proof: bibliographic record opened; Theorem 7.3 attribution and its statement checked in Ichimura--Kaneko1989 Theorem C; formula checked in IKY1987 Theorem B}}
+@incollection{dIhara1999,
+ author={Ihara, Yasutaka}, title={On Beta and Gamma Functions Associated with the Grothendieck--Teichmuller Group},
+ booktitle={Aspects of Galois Theory}, series={London Mathematical Society Lecture Note Series}, volume={256}, pages={144--179}, year={1999},
+ url={https://www.kurims.kyoto-u.ac.jp/en/emeritus/ihara/papers.html},
+ note={unverified original proof: author bibliography and RIMS 1177 catalogue opened; full text not obtained}}
+@article{dIhara2000,
+ author={Ihara, Yasutaka}, title={On Beta and Gamma Functions Associated with the Grothendieck--Teichmuller Group. II},
+ journal={Journal fur die reine und angewandte Mathematik}, volume={527}, pages={1--11}, year={2000}, doi={10.1515/crll.2000.082},
+ url={https://www.kurims.kyoto-u.ac.jp/preprint/file/RIMS1224.ps.gz},
+ note={verified: original 13-page RIMS1224 February1999 preprint downloaded, decompressed, rendered and read; Theorem1, Propositions1--3, Introduction beta/gamma factorization and Anderson Corollary8.6.3, Supplement corrections to Ihara1986 and Anderson1989 checked}}
+@article{dLozano2022,
+ author={Lozano-Robledo, Alvaro}, title={Galois Representations Attached to Elliptic Curves with Complex Multiplication},
+ journal={Algebra and Number Theory}, volume={16}, number={4}, year={2022},
+ eprint={1809.02584}, archivePrefix={arXiv}, url={https://arxiv.org/pdf/1809.02584},
+ note={verified: full author preprint v3 opened; Theorem 2.3, Definition 2.4, Corollaries 3.4 and 3.7, Theorem 4.1 checked}}
+@misc{dMilne2007,
+ author={Milne, James S.}, title={The Fundamental Theorem of Complex Multiplication}, year={2007},
+ url={https://jmilne.org/math/articles/2007c.pdf},
+ note={verified: full author text opened; Theorems 3.10 and 3.13 and their reciprocity diagrams checked}}
+@misc{dJoshiTate,
+ author={Joshi, Kirti}, title={Elliptic Curves, Serre's Conjecture and Fermat's Last Theorem},
+ url={https://www.bprim.org/sites/default/files/kt.pdf},
+ note={verified: full lecture text opened; Section 11, Theorem 11.17, Example 11.18 and Remark 11.20 for explicit Tate torsion; formal base-change argument supplied in D.18}}
+@article{dFurusho2011,
+ author={Furusho, Hidekazu}, title={Double Shuffle Relation for Associators},
+ journal={Annals of Mathematics}, volume={174}, number={1}, pages={341--360}, year={2011},
+ doi={10.4007/annals.2011.174.1.9},
+ url={https://annals.math.princeton.edu/wp-content/uploads/annals-v174-n1-p09-p.pdf},
+ note={verified: full primary text opened; Theorem0.5, Corollary0.3, Proposition5.1, Lemma5.2 and proof of gamma factorization checked}}
+@misc{dDolgushevGuynee2024,
+ author={Dolgushev, Vasily A. and Guynee, Jacob J.},
+ title={GT-shadows for the Gentle Version of the Grothendieck--Teichmueller Group}, year={2024},
+ eprint={2401.06870}, archivePrefix={arXiv}, url={https://arxiv.org/pdf/2401.06870},
+ note={verified: full primary preprint v2 opened; Definition3.13, Propositions3.14--3.15, Remark3.16, Theorem5.2, Corollary5.4, Proposition5.5 and finite shadow definitions checked}}
+@article{dDolgushevLeLorenz2024,
+ author={Dolgushev, Vasily A. and Le, Khanh Q. and Lorenz, Aidan A.},
+ title={What are {GT}-shadows?},
+ journal={Algebraic and Geometric Topology},
+ volume={24}, number={5}, pages={2721--2777}, year={2024},
+ doi={10.2140/agt.2024.24.2721},
+ eprint={2008.00066}, archivePrefix={arXiv},
+ url={https://arxiv.org/pdf/2008.00066},
+ note={verified: Full author preprint v2 opened; AppendixB, PropositionB.1 and TheoremB.2 state and prove the abelian sufficient criterion; publisher metadata and published AppendixB location independently checked.}}
+@article{dNikolovSegal2007,
+ author = {Nikolov, Nikolay and Segal, Dan},
+ title = {On finitely generated profinite groups, {I}: Strong completeness and uniform bounds},
+ journal = {Annals of Mathematics},
+ volume = {165},
+ number = {1},
+ year = {2007},
+ pages = {171--238},
+ doi = {10.4007/annals.2007.165.171},
+ url = {https://annals.math.princeton.edu/wp-content/uploads/annals-v165-n1-p05.pdf},
+ note = {verified: Theorem 1.4 opened in the original article; abstract commutator subgroups are closed.}
+}
+@misc{dBDHP2026,
+ author = {Bortnovskyi, Ivan and Dolgushev, Vasily A. and Holikov, Borys and Pashkovskyi, Vadym},
+ title = {Accessing non-abelian quotients of the Grothendieck--Teichmueller group via elementary tools},
+ year = {2026},
+ eprint = {2405.11725},
+ archivePrefix = {arXiv},
+ primaryClass = {math.GR},
+ url = {https://arxiv.org/pdf/2405.11725},
+ note = {verified: Version 3, 6 August 2026. Definitions 2.1 and 2.3, Proposition 2.2, and Theorems 5.2, 5.3 and 5.7 opened.}
+}
+@article{dEfrat2023,
+  author={Efrat, Ido},
+  title={The {$p$}-Zassenhaus filtration of a free profinite group and shuffle relations},
+  journal={Journal of the Institute of Mathematics of Jussieu},
+  volume={22},
+  number={2},
+  year={2023},
+  pages={961--983},
+  doi={10.1017/S1474748021000426},
+  eprint={2003.08903},
+  archivePrefix={arXiv},
+  note={verified: official Cambridge full text and original arXiv v2 opened; Proposition4.4 and its proof, Lemma2.2 and Section5 Magnus construction checked; Proposition4.4 original PDF page10 visually inspected}
+}
+
+@article{dIhara1997Kokyuroku,
+ author={Ihara, Yasutaka}, title={The Grothendieck--Teichmuller Group and the Adelic Beta Function},
+ journal={RIMS Kokyuroku}, volume={998}, pages={44--53}, year={1997},
+ url={https://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/0998-4.pdf},
+ note={verified: all ten original handwritten pages rendered and read; Sections2--4, beta definition, main theorem and multiplier-one determinant proof sketch checked}}
+
+@article{dEnriquez2007,
+ author={Enriquez, Benjamin},
+ title={Quasi-reflection algebras and cyclotomic associators},
+ journal={Selecta Mathematica. New Series}, volume={13},
+ year={2007}, pages={391--463}, doi={10.1007/s00029-007-0048-2},
+ eprint={math/0408035}, archivePrefix={arXiv},
+ url={https://arxiv.org/pdf/math/0408035},
+ note={verified: author preprint v2, 17 October2007; entire Section8 read, including Theorem8.1, Lemmas8.2--8.5, complete proof and Remarks8.6--8.7. The theorem concerns the full profinite group; D20 supplies the exact marked-generator and genuine-action comparison.}}
+
+@article{dFurusho2003,
+ author={Furusho, Hidekazu},
+ title={Geometric and Arithmetic Subgroups of the Grothendieck--Teichmuller Group},
+ journal={Mathematical Research Letters}, volume={10},
+ year={2003}, pages={97--108},
+ url={https://www.math.nagoya-u.ac.jp/~furusho/paper/GTA-mrl.pdf},
+ note={verified: all twelve pages of the author-hosted original read, including Theorem3.1 and the complete Section4 proof. The extra relation (IV) remains an explicit hypothesis of that source result; it has not been verified for the present GT0 lifting candidates.}}

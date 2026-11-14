@@ -1,0 +1,1 @@
+Run `python code/e82_local_smith_audit/local_smith.py code/e82_local_smith_audit/e_cusp_family_A0_kernel_input.json` from the archive root. This independently developed exact local Smith routine was checked by the root before incorporation into the complete driver. Its actual standalone source, output, certificate and proof are retained.

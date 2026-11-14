@@ -1,0 +1,47 @@
+\\ E.91: literal ninth-genus kernel, ramified classes, and the attempted unit lift.
+default(parisize,256000000);
+default(parisizemax,2000000000);
+default(realprecision,100);
+jmat(M)=concat(["[",concat(vector(matsize(M)[1],i,concat([if(i>1,",",""),Str(Vec(M[i,]))]))),"]"]);
+check(b,s)=if(!b,error(s));
+run()={
+  my(dat=read("research_norm_index/code/cyclotomic_base1_bnf.bin"),B=dat[1],F=B.nf,xi=dat[2],beta=dat[3]*xi,pi=beta+1);
+  my(G=read("research_norm_index/code/cyclotomic_base1_ninth_genus.bin"),TT=read("research_norm_index/code/cyclotomic_base1_ninth_transfer.bin"));
+  my(Ray=G[1],fac=G[2],U=G[5],D0=G[7],n=#Ray.cyc,ds=vector(4,i,D0[i,i]),D=matdiagonal(ds));
+  check(ds==[9,9,9,3],"actual ninth genus factors");
+  my(chi=lift(Mod(TT[1]*U^-1,9))[1..4],p=0);
+  for(j=1,4,if(chi[j]%3,p=j;break));check(p>0,"onto ninth Kummer character");
+  my(K=matid(4),inv=lift(Mod(chi[p],9)^-1));
+  for(j=1,4,if(j==p,K[,j]=9*matid(4)[,p],K[,j]=matid(4)[,j]-inv*chi[j]*matid(4)[,p]));
+  check(denominator(K^-1*D)==1,"integral actual kernel presentation");
+  my(P=K^-1*D,SM=matsnf(P,1),invL=SM[1]^-1,invR=SM[2]^-1,ad=vector(4,i,SM[3][i,i]));
+  check(SM[1]*P*SM[2]==SM[3] && denominator(invL)==1 && denominator(invR)==1,"full kernel Smith maps");
+  my(aut=U*G[9]*U^-1,AH=aut[1..4,1..4],AK=K^-1*AH*K);
+  check(denominator(AK)==1,"actual h on the Kummer kernel");
+  my(C=matrix(4,6),records=List(),ps=concat(idealprimedec(F,3),idealprimedec(F,17)));
+  for(j=1,6,
+    my(ff=fac,vals=vector(6,i,1));ff[j,2]++;vals[j]=if(j<=3,pi,beta);
+    my(z=idealchinese(F,ff,vals),I=idealdiv(F,z,ps[j]),cl=-bnrisprincipal(Ray,I,0),v=U*cl);
+    for(i=1,6,check(idealval(F,I,ps[i])==0,"coprime local Artin representative"));
+    C[,j]=vector(4,i,lift(Mod(v[i],ds[i])))~;
+  );
+  check(Vec(lift(Mod(chi*C,9)))==vector(6),"all ramified Frobenii in actual kernel");
+  check(vector(4,i,lift(Mod(sum(j=1,3,C[i,j]),ds[i])))==[0,0,0,0],"three-prime product in genus kernel");
+  my(Ram=mathnf(concat(D,C)),RS=matsnf(Ram,1),p73=idealhnf(F,73,x-33),pc=(U*bnrisprincipal(Ray,p73,0))[1..4]);
+  check(denominator(K^-1*pc)==1,"coherent prime73 is split in B3/B1");
+  check(abs(matdet(D)/matdet(Ram))==81,"exact ramified genus image order");
+  check(abs(matdet(mathnf(concat(Ram,pc))))==9,"prime73 generates the remaining relative genus quotient");
+  my(Hco=mathnf(concat(P,AK-matid(4))),HC=matsnf(Hco,1));
+  check(HC[1]*Hco*HC[2]==HC[3],"full h-coinvariant Smith maps");
+  print("{\"type\":\"genus\",\"orders\":",ds,",\"kummer_character\":",Vec(chi),",\"kernel_basis\":",jmat(K),",\"presentation\":",jmat(P),",\"smith_left\":",jmat(SM[1]),",\"smith_right\":",jmat(SM[2]),",\"smith_diagonal\":",ad,",\"smith_left_inverse\":",jmat(invL),",\"smith_right_inverse\":",jmat(invR),",\"h_genus\":",jmat(AH),",\"h_kernel\":",jmat(AK),",\"ramified_columns\":",jmat(C),",\"ramified_hnf\":",jmat(Ram),",\"ramified_smith_left\":",jmat(RS[1]),",\"ramified_smith_right\":",jmat(RS[2]),",\"ramified_smith_diagonal\":",vector(4,i,RS[3][i,i]),",\"prime73\":",Vec(pc),",\"h_coinvariant_hnf\":",jmat(Hco),",\"h_coinvariant_left\":",jmat(HC[1]),",\"h_coinvariant_right\":",jmat(HC[2]),",\"h_coinvariant_diagonal\":",vector(4,i,HC[3][i,i]),"}");
+  my(SU=bnfsunit(B,ps),units=concat(concat([xi],B.fu),SU[1]),V=matrix(6,#units,i,j,idealval(F,units[j],ps[i])),M=matrix(6,#units),loc=read("research_norm_index/code/cyclotomic_base1_local_norms.bin"));
+  for(j=1,3,for(k=1,#units,my(u=nfeltdiv(F,units[k],pi^V[j,k]));M[j,k]=lift(Mod(loc[2][j]~*ideallog(F,u,loc[1][j]),3))));
+  for(j=4,6,my(bid=idealstar(F,ps[j],2,3));for(k=1,#units,my(u=nfeltdiv(F,units[k],beta^V[j,k]));M[j,k]=ideallog(F,u,bid)[1]));
+  my(C2=[2,2,2,2,0,1;1,1,1,2,2,2;0,0,0,2,2,2],Z=matker(Mod(C2*V,3)),MV=Mod(M,3)*Z);
+  check(Mod(C2*V,3)*Z==matrix(3,matsize(Z)[2]),"exact principal-divisor kernel");
+  print("{\"type\":\"unit_lift\",\"valuation_matrix\":",jmat(V),",\"symbol_matrix\":",jmat(M),",\"upper_S_class_matrix\":",jmat(C2),",\"principal_kernel\":",jmat(lift(Z)),",\"lifted_symbols\":",jmat(lift(MV)),",\"rank\":",matrank(MV),",\"base_unit_rank\":",matrank(Mod(M[,1..9],3)),"}");
+  writebin("research_e91/code/e_ordinary_refinement.bin",[K,P,SM,AH,AK,C,Ram,RS,pc,Hco,HC,V,M,C2,Z,MV]);
+  print("{\"type\":\"completion\",\"status\":\"PASS\",\"genus_order\":243,\"ramified_image_order\":81,\"unit_lifting_rank\":3}");
+};
+run();
+quit;

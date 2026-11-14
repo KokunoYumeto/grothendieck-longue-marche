@@ -1,0 +1,14 @@
+default(parisize, 256000000);
+default(realprecision, 80);
+setrand(1);
+P=x^6+2*x^3+4;
+B=bnfinit(P,1);
+print("cert=",bnfcertify(B)," h=",B.no," sign=",B.sign," tu=",B.tu);
+print("units=",B.fu);
+pr=idealprimedec(B,2)[1]; mp=nfmodprinit(B,pr);
+z=Mod(x^3/2,P);
+print("pr2=",pr," root=",nfmodpr(B,z,mp));
+for(i=1,#B.fu, print("res",i,"=",nfmodpr(B,B.fu[i],mp)," log=",fflog(nfmodpr(B,B.fu[i],mp),nfmodpr(B,z,mp))));
+Q=y^2+2*y+4; C=bnfinit(Q,1);
+for(i=1,#B.fu, N=Mod(polresultant(x^3-y,lift(B.fu[i]),x),Q); print("norm",i,"=",N," exponents=",bnfisunit(C,N)));
+quit;

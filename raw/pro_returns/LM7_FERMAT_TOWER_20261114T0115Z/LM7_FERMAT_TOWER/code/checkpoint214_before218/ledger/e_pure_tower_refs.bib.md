@@ -1,0 +1,1 @@
+% verified: E110 reuses E_MilneCFT, E_LemmermeyerAmbiguous and E_KatoUniversalNorms. Exact freshly opened theorem/proof passages and the new use of Kato1.1(1), Section3.2, are recorded in e_pure_tower_source_evidence.json. No duplicate bibliography entries.

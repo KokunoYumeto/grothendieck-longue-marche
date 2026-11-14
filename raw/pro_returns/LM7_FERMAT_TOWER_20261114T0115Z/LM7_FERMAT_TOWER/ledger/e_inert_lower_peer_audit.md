@@ -1,0 +1,17 @@
+# E116 focused independent proof audit
+
+Status: PASS for E116.19–21 and the following class/action deduction, on the current pre-freeze draft. Reviewer: /root/a_structure. The full draft was read; this record does not claim a complete independent arithmetic reconstruction or a fresh GP replay.
+
+All ramified primes of E/M lie in S. Thus on the divisor module outside S, the sigma-fixed subgroup is exactly the image of base divisors under extension. Applying element Hilbert90 to a norm-one S-unit gives the actual capkernel map in E116.19; reversing a principal extended ideal gives its inverse. The lower S-class group is zero, so H1 of the cyclic S-unit module is zero. The local degrees 1,3,3,3 and the denominator 3 give Herbrand quotient 9 and a norm quotient C3^2, since the quotient is killed by three.
+
+For an ambiguous outside-S class D, choose x with (sigma-1)D=div(x). Its norm is a base S-unit. Changing representatives changes Nx only by the norm of an S-unit. If Nx is such a norm, dividing x by the unit preimage and applying element Hilbert90 produces an invariant divisor; that divisor is extended, so its class vanishes. Conversely the divisor of any field preimage of an S-unit with zero local norm characters has zero divisor norm. On a split orbit the coefficient sum is zero and is a sigma-1 difference; on an inert orbit norm zero forces its coefficient to vanish. This constructs the inverse ambiguous class. These are the exact kernel and image statements of E116.20.
+
+The conjugation sign is essential and is correct: (sigma-1)cD = -sigma c(sigma-1)D. Therefore x_c=(sigma c x)^(-1) is the literal element for cD, and N(x_c)=c(Nx)^(-1). This is the stated anti-equivariance of nu, not an unrecorded change of the natural unit action.
+
+The certified presentation quotient and the verified S-prime coordinates imply Cl_S(L)=0 without asserting default-flag-zero certification. On A=Cl_S(E){3}, the actual quadratic maps satisfy jN=1+c. Hence A^c=0. Since two is invertible, the plus/minus projectors show c=-1 on all of A. The actual relation c sigma c=sigma^(-1) now gives sigma=sigma^(-1), and sigma^3=1 gives sigma=1. Its already evaluated invariant subgroup C3 is therefore the entire A.
+
+On the local character image the natural c action is minus the interchange of the two nonzero wild rows, so it fixes the vector (0,1,2,0). The ambiguous class subgroup is c-minus, while its image under the anti-equivariant nu is c-plus. Exactness and the plus/minus projectors give that the entire natural S-unit norm quotient C3^2 is plus. The actual inclusion j and quadratic norm N/2 commute with the cubic norm maps and are mutually inverse on this plus quotient, proving E116.21 and its completion comparison.
+
+The completed field norm direction is justified by choosing actual preimages of finitely many generators of the finite-index S-unit subgroup. The free completed coordinates lift by their three-adic powers and the finite torsion coordinate by an actual representative. The unit norm comparison is a finite-rank integral lattice comparison; all displayed finite quotients are killed by three. No topology of an infinite product is required for this finite bridge.
+
+No mathematical correction was found in the audited scope. The all-level norm-system paragraphs and the literal field/ideal certificates have been read, but their independent execution is not claimed here.

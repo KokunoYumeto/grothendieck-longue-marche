@@ -1,0 +1,14 @@
+@article{rootLochakSchneps1997,
+ author={Lochak, Pierre and Schneps, Leila},
+ title={A Cohomological Interpretation of the Grothendieck--Teichm{\"u}ller Group},
+ journal={Inventiones Mathematicae}, volume={127}, pages={571--600}, year={1997},
+ doi={10.1007/s002220050131},
+ url={https://webusers.imj-prg.fr/~pierre.lochak/textes/inventiones.pdf},
+ note={verified: original author-hosted scan opened; Theorem2, Proposition3, their proof in Section3, and the finite-image discussion on pages573--574 checked.}}
+
+@article{rootDrinfeld1991,
+ author={Drinfeld, V. G.},
+ title={On Quasitriangular Quasi-Hopf Algebras and a Group Closely Connected with {Gal}({\={Q}}/{Q})},
+ journal={Leningrad Mathematical Journal}, volume={2}, number={4}, pages={829--860}, year={1991},
+ url={https://www.lamfa.u-picardie.fr/marin/docs/drinfeld.pdf},
+ note={verified: original English translation opened; Section4 maps between the profinite, pro-l and rational pro-unipotent groups, Propositions5.5--5.9, and the final degree-seven comparison in Section6 checked.}}

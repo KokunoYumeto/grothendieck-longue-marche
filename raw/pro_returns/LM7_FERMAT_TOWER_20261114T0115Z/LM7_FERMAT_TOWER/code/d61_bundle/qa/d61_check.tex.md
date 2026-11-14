@@ -1,0 +1,789 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,mathtools}
+\usepackage{array,booktabs,longtable,tabularx,enumitem,graphicx}
+\usepackage{xcolor,microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+ urlcolor=blue!45!black,pdftitle={LM7: The Fermat tower in the metabelian approximation},
+ pdfauthor={GPT-6 Astra, OpenAI, ChatGPT Pro mode}}
+\urlstyle{same}
+\setlength{\parindent}{1.3em}
+\setlength{\parskip}{.22em}
+\setlength{\emergencystretch}{2em}
+\setlength{\LTpre}{.6em}
+\setlength{\LTpost}{.6em}
+\setlist{nosep}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\allowdisplaybreaks[2]
+\newenvironment{statement}[3]{%
+ \par\addvspace{1.1em}\phantomsection\label{st:#1}%
+ \noindent\textbf{#1. #3}\quad\textsf{\small[#2]}\par\nobreak\smallskip\ignorespaces
+}{\par\smallskip}
+\newcommand{\statementref}[1]{\hyperref[st:#1]{#1}}
+\newcommand{\Sha}{\mathop{\mathrm{Sh}}}
+\makeatletter\@namedef{b@A_HerfortRibes1985}{HR85}\makeatother
+\begin{document}
+\subsection{Further arithmetic invariant coordinates and the surviving self-wedge classes}
+
+\begin{statement}{D.61}{Proved}{A projective row correction lifts fifty more arithmetic invariant coordinates, with explicit self-wedge limitations}
+Retain the actual source \(X\), its central module
+\(\mathcal K=\ker(Z\to Z_*)\), and the D.60
+automorphism of \(X_{60}=X/\mathcal J_{60}\).
+All source maps and arithmetic groups in this
+statement are those of D.56--D.60.
+
+On each of the two character orbits of size twelve,
+with representatives \((0,0,1,1)\) and \((0,0,1,2)\),
+there are four integral equivariant projectors
+\(f_{b,i}:U\to U\), \(b=1,2\), \(1\leq i\leq4\).
+Their images \(F_{b,i}\) are projective
+\(\mathbb Z_2[G]\)-lattices of rank 192. They satisfy
+\[
+ \theta_UF_{b,i}=0,\qquad f_{b,i}\mathcal R=0,
+ \qquad \pi:F_{b,i}\hookrightarrow U/\mathcal R,
+ \qquad e:=\sum_{b,i}f_{b,i},\quad\operatorname{rank}eU=1536.
+ \tag{D.61.1}
+\]
+Their reductions are the literal affine embeddings
+and retractions in the certificate.
+
+Let \(T_{60}\) be the actual integral homology
+action already constructed. The exact replacement
+\[
+                 T_{61}=(1-e)T_{60}+e
+ \tag{D.61.2}
+\]
+is an integral automorphism, is realized by an
+actual continuous peripheral automorphism of
+\(Y=X/\mathcal K\), and retains the complete
+D.57 action and its chosen conjugators on \(X_*\).
+It is unchanged outside the two stated character
+orbits. The precise projector identities are
+\[
+ f_{b,i}T_{61}=f_{b,i},\qquad
+ T_{61}f_{b,i}=f_{b,i}+(1-e)T_{60}f_{b,i}.
+ \tag{D.61.3}
+\]
+In particular it preserves the kernels of these
+projectors. These formulas specify the actual
+comparison without requiring their images to be
+fixed by \(T_{61}\).
+
+Use \(e_{a,i}\) for the eight D.60 projectors
+on the two orbits of size eight, and put
+\(I=\{1,2\}\times\{1,2,3,4\}\setminus\{(1,4)\}\).
+Define
+\[
+ \begin{aligned}
+ \Pi_{61}=e_\Delta\left(
+   \sum_{(a,i)\in I}\bigwedge\nolimits^2\bar e_{a,i}
+    +\sum_{b=1}^{2}\sum_{i<j}
+             \bar f_{b,i}\boxtimes\bar f_{b,j}\right),\\
+ \mathcal C_{61}=\Pi_{61}Z,\qquad
+ \mathcal J_{61}=(1-\Pi_{61})\mathcal J_{60}.
+ \end{aligned}
+ \tag{D.61.4}
+\]
+The cross-projector \(\boxtimes\) is the literal
+map of D.60. The seven self blocks in this
+formula each have dimension 512 and coinvariant
+dimension two, with injective norm. Each of the
+twelve cross blocks has dimension 1536 and
+coinvariant dimension three, again with injective
+norm. Thus
+\[
+ \begin{gathered}
+ \mathcal J_{60}=\mathcal C_{61}\oplus\mathcal J_{61},\qquad
+ \dim\mathcal C_{61}=22016,\qquad
+ \dim(\mathcal C_{61})_G=50,\\
+ \nu:(\mathcal C_{61})_G\longrightarrow\mathcal C_{61}^{G}
+       \text{ is injective},\qquad
+ \bigwedge^2\pi\text{ is injective on }\mathcal C_{61}.
+ \end{gathered}
+ \tag{D.61.5}
+\]
+The actual arithmetic cusp error has zero
+coinvariant class on this module. Consequently
+there is an actual continuous peripheral
+automorphism of
+\[
+                         X_{61}=X/\mathcal J_{61}.
+ \tag{D.61.6}
+\]
+It has multiplier one, fixes \(t\), induces
+identity on \(G\), and retains the complete
+D.57 source and compatible conjugators.
+Its prescribed \(\mathcal W_h\) action,
+literal normalized parameter, and established
+metabelian and CM maps are unchanged.
+It descends to the underlying D.60 quotient
+with the replaced homology action (D.61.2).
+
+The exact comparison kernels are
+\[
+ \begin{aligned}
+ \ker(X_{61}\to X_{60})&=\mathcal C_{61},\\
+ \ker(X_{61}\to Y)&=(1-e_\Delta)\mathcal K
+       \oplus\mathcal C_{59}\oplus\mathcal C_{60}
+       \oplus\mathcal C_{61},\\
+ \ker(X\to X_{61})&=\mathcal J_{61},\\
+ \dim\mathcal J_{61}&=48w-2560-5308416\kappa-34304.
+ \end{aligned}
+ \tag{D.61.7}
+\]
+The specified remaining small-character submodule
+has dimension 331776 and coinvariant dimension
+562. The full-source kernel is precisely
+\[
+ S_{61}=\{b\in R_{50}:
+          \operatorname{im}_{\mathcal T_2}(b)\in\mathcal J_{61}\},
+ \qquad S_{61}/(R_{50}\cap L_2)=\mathcal J_{61}.
+ \tag{D.61.8}
+\]
+
+There is also an explicit tested limitation.
+The excluded old self block has four
+coinvariants and norm rank two. In the
+Hermitian basis of the program its two
+kernel classes are the off-diagonal
+\((0,5)\) coefficients \(1,\zeta_3\),
+with their Hermitian conjugates. Each of
+the eight new self blocks has three
+coinvariants and zero norm. Their bases
+are
+\[
+ \begin{array}{c|c|c}
+ \text{orbit}&\text{one basis in each of its four summands}
+                                      &\text{norm rank}\\\hline
+ (0,0,1,1)&H_{00},\ H_{02}(1),\ H_{05}(1)&0\\
+ (0,0,1,2)&H_{00},\ H_{01}(\zeta_3),\ H_{05}(1)&0.
+ \end{array}
+ \tag{D.61.9}
+\]
+For a pure-\(Q\) involution choose its order-two
+lift \(H_a\subset G\), and let
+\(q_a:E\to E_{H_a}\) be the integral
+coinvariant map on the relevant projective
+self factor. The actual intermediate-cover
+comparison gives the divided norm
+\[
+ D_a([z])=
+       (\bigwedge^2\bar q_a)
+                  \sum_{g\in H_a\backslash G}gz.
+ \tag{D.61.10}
+\]
+It is a well-defined map on the self-block
+coinvariants and vanishes on the actual
+cusp error. The complete calculation for
+all four involution classes of \(Q\),
+with representatives \(1,314,572,573\)
+in the marked state list, shows that
+these maps together with the ordinary
+norm leave all 26 classes just described
+in their joint kernel. Their values on
+the remaining actual arithmetic boundary
+have not been determined. The full
+profinite realization remains unresolved.
+The manuscript passages are Part D(e),
+section 51.16, folio 734 verso, scan 174,
+and section 51.15, folios 725--727,
+scans 156--160.
+\end{statement}
+\begin{proof}
+\emph{The actual nonprojective comparison and its projective part.}
+Every calculation uses the frozen D.60 marked
+order-46656 quotient and its actual map to
+the order-3888 quotient. The odd-kernel map
+(D.60.10) identifies their coefficient blocks
+with the indicated blocks of the full
+arithmetic source. Both remaining unordered
+stabilizers have order 48, with oriented
+stabilizer \(H_0\) of order 24 and central
+semilinear exchange \(\sigma=5I\).
+The literal matrices generate
+\[
+              H_0=V_4\rtimes S_3\simeq S_4,
+              \qquad H=H_0\times\langle\sigma\rangle.
+ \tag{D.61.11}
+\]
+The program \path{d_orbit12_projectivity.py}
+checks an actual Sylow subgroup \(D_8\subset H_0\).
+The norms on the source affine, cusp and
+compact modules have ranks \(10,6,4\), at
+dimensions \(96,48,48\) over \(\mathbb F_4\).
+A projective module of those dimensions
+would have ranks \(12,6,6\), respectively.
+On the target cyclic quotient the compact
+module has dimension four and norm zero.
+Thus the whole compact source and target
+do not satisfy the projectivity used in
+D.60. The following construction retains
+their actual maps.
+
+The normal \(V_4\)-coinvariant top of
+the compact source has dimension twelve.
+Let \(c\) be the order-three state 321
+in \(A_4\), and choose an order-two
+\(\tau\in H_0\setminus A_4\) with
+\(\tau c\tau^{-1}=c^{-1}\).
+The two recorded choices are states 1
+and 68, respectively. The matrices
+\(V_4,c,\tau\) generate \(H_0\).
+The \(\zeta_3\)-eigenspace of \(c\)
+on this top has dimension four.
+The operator \(\tau\sigma\) is a
+semilinear involution on this eigenspace.
+Trace-one descent produces four actual
+fixed generators with independent top
+images. For one such generator \(v\),
+the eight columns
+\[
+        \{gv:g\in H_0/\langle c\rangle\}
+ \tag{D.61.12}
+\]
+give an embedding of
+\(\operatorname{Ind}_{\langle c\rangle}^{H_0}
+\mathbb F_4(\zeta_3)\), with the
+ordered coset representatives retained.
+This module is projective because
+\(|\langle c\rangle|=3\) is invertible.
+Its exchange is the literal rule
+\(\sigma(g\otimes z)=g\tau\otimes\bar z\).
+The relation \(\tau c\tau^{-1}=c^{-1}\)
+makes that rule compatible with the
+induced-module relations, and its square
+is one. The semilinear normal-basis
+descent of D.60 gives projectivity
+over the real unordered stabilizer.
+
+The program
+\path{d_orbit12_projective_kernel.py}
+constructs all four embeddings by this
+formula and verifies that their combined
+compact rank is 32. It lifts their
+generators to the actual affine module
+with the same compact images, then
+applies the \(c\)-character projector
+and trace-one \(\tau\sigma\) correction.
+The map to the small affine module
+kills all these columns: \(c\in A_4\)
+acts trivially there, whereas each
+generator has eigenvalue \(\zeta_3\).
+Every stabilizer action on every column
+is checked.
+
+For completeness the retraction is also
+given as a literal map. Four linear
+\(c\)-eigenfunctionals are solved for
+on the compact source, with their values
+specified on all 32 displayed columns.
+For such a functional \(\lambda\), its
+coinduction is the row family
+\(v\mapsto\lambda(g^{-1}v)\), indexed
+by the same eight cosets. The relation
+\(\lambda(cv)=\zeta_3\lambda(v)\)
+proves its \(H_0\)-equivariance directly
+by reindexing. Its restriction to the
+four induced summands is the identity.
+If this retraction is \(R\), replace
+it by
+\[
+              \zeta_3R+\zeta_3^2\sigma_E R\sigma_P
+                          \quad\text{over }\mathbb F_4.
+ \tag{D.61.13}
+\]
+It remains a retraction, and it commutes
+with the semilinear exchange. The
+program checks these equations and all
+stabilizer matrices. Its kernel has
+dimension sixteen and its complete
+Sylow-\(D_8\) norm matrix is zero.
+It has no nonzero projective direct
+summand: restriction of such a summand
+to \(D_8\) would be free, with a
+nonzero norm. This is the exact
+complement used below.
+
+\emph{Integral inclusions and retractions with the prescribed reductions.}
+The induced module in (D.61.12) is
+defined over \(\mathcal O=\mathbb Z_2[\zeta_3]\),
+with the same exchange rule. It gives
+an integral projective lattice whose
+reduction is the displayed summand.
+Induction over the twelve pair cosets,
+the odd character subgroup, and the
+odd kernel of (D.60.2) gives its
+projective \(\mathbb Z_2[G]\)-lattice.
+Its rank is \(12\cdot2\cdot8=192\).
+
+Projectivity lifts the finite inclusion
+into the actual integral compact lattice.
+The inclusion is injective and has free
+cokernel, since it is injective modulo
+two. The integral retraction can be
+chosen with its specified finite matrix,
+even though that ambient compact lattice
+is not projective. To see this explicitly,
+dualize this sequence over \(\mathbb Z_2\).
+The dual of the included projective
+lattice is projective: the coefficient
+pairing identifies the dual of the
+regular group-ring lattice with the
+regular lattice. Projectivity lifts
+the specified finite dual retraction
+to the dual compact module. Its
+composite on the dual included lattice
+is identity modulo two, hence invertible.
+Correct by that inverse and dualize
+back. This is the required exact
+retraction with its original reduction.
+Doing this for the sum of the four
+summands gives orthogonal integral
+compact projectors.
+
+Every equivariant map from any of these
+integral projective lattices to the
+small affine module is zero. Modulo
+two this follows from the generating
+nontrivial \(c\)-eigenvectors and
+trivial target \(c\)-action. Projectivity
+gives surjectivity of reduction on
+these equivariant Hom modules. A map
+that is zero modulo two is twice
+another equivariant map; repeating
+this and using separatedness proves
+the integral assertion.
+
+Lift the inclusions from compact to
+affine homology by projectivity of
+the included lattices, prescribing
+the recorded finite affine columns.
+For an initial lift the error in
+the compact composite is divisible
+by two; lift half that error and
+subtract twice the lift. This gives
+the exact compact inclusion with
+the same reduction. Its small
+image is zero by the preceding
+Hom calculation. Compose this
+affine inclusion, the compact
+retraction, and compactification
+to obtain \(f_{b,i}\). These are
+the orthogonal integral idempotents
+in (D.61.1). They kill cusp
+homology and their images inject
+under compactification.
+
+\emph{Why the diagonal on the actual complement is invertible.}
+We give the endomorphism argument
+needed for the row correction.
+On one compact component write
+\(P=E\oplus M\) for the just-proved
+integral splitting, with \(E\)
+the sum of the four projective
+summands. The reduction \(\bar M\)
+has no projective direct summand.
+For any endomorphism of \(\bar M\)
+factoring through a projective module,
+its invertible Fitting summand would
+split off from that projective module:
+use the factorization and the inverse
+of its restriction to obtain the
+splitting maps. That summand would
+be projective, so it is zero.
+Thus every such endomorphism is
+nilpotent, and identity minus that
+endomorphism is invertible.
+
+Write the induced compact automorphism
+and its inverse as block matrices on
+\(E\oplus M\). If their lower-right
+blocks are \(D,D'\), multiplication
+gives
+\[
+                         D'D=1_M-C'B,
+ \tag{D.61.14}
+\]
+where \(C'B\) factors through \(E\).
+The right hand side is invertible
+modulo two by the previous paragraph.
+Hence \(D\) is invertible modulo
+two, and therefore integrally.
+This proves the assertion for the
+actual old automorphism, without
+requiring an invariant compact
+complement for that automorphism.
+
+In affine homology the complementary
+summand \(\ker e\) contains the cusp
+module, which the old action fixes
+pointwise. Its quotient by that
+cusp module is exactly \(M\).
+The complementary affine diagonal
+therefore fixes its cusp submodule
+and induces the invertible map \(D\)
+on its compact quotient. It is an
+automorphism. In the affine splitting
+\(eU\oplus\ker e\), the replacement
+(D.61.2) has the matrix
+\[
+                    \begin{pmatrix}1&0\\ C&D\end{pmatrix}.
+ \tag{D.61.15}
+\]
+It is invertible. Its difference from
+the old homology map is
+\(e(1-T_{60})\), has image in the
+projective lattice \(eU\), and kills
+the entire cusp module. Since
+\(\theta_Ue=0\), it retains the
+exact small homology map. Formula
+(D.61.15) also proves both equalities
+in (D.61.3).
+
+\emph{Actual peripheral realization and the new central zero.}
+All characters of \(eU\) are active
+on \(A\), so odd averaging gives
+\(H^j(G,eU)=0\) for every \(j\geq0\).
+Inflation--restriction identifies
+continuous derivations modulo inner
+derivations with
+\(\operatorname{Hom}_G(U,eU)\), as
+in D.59. Apply this to
+\(e(1-T_{60})\). Projectivity of
+the coefficient lattice gives
+coboundaries on the order-two and
+order-three subgroups. On the cusp
+the value on \(t^{36}\) is zero,
+because the prescribed homology
+change kills the cusp class.
+The exact projective cyclic norm
+sequence supplies its correcting
+inner derivation. Thus the resulting
+continuous derivation has literal
+values
+\[
+ \delta(s)=(1-s)b_s,\qquad
+ \delta(r)=(1-r)b_r,\qquad
+ \delta(t)=0,\qquad b_s,b_r\in eU.
+ \tag{D.61.16}
+\]
+These are actual changes to the
+two conjugators. Since
+\(eU\subset\ker(Y\to X_*)\),
+their elements in the full D.57
+source remain unchanged. The
+induced kernel map and quotient
+map in that comparison are
+automorphisms by (D.61.15), so
+the corrected map of \(Y\)
+is an automorphism.
+
+The central norms use D.60's
+Hermitian and cross-matrix coordinates
+and every semilinear stabilizer action.
+The program \path{d_self_wedge_norm.py}
+gives coinvariant dimension two
+and norm rank two in seven of
+the old self blocks. The eighth
+has dimension four and rank two,
+with the two kernel columns
+specified in the statement.
+
+For the twelve new cross blocks,
+\path{d_orbit12_projective_kernel.py}
+gives dimension three and norm
+rank three in every case.
+The four new summands in each
+orbit have the same literal
+induced-module matrices; this
+equality is also verified.
+
+All selected affine projectors
+kill cusp homology, so they
+induce compact projectors and
+the selected exterior components
+inject under compactification.
+The new identity is the left
+identity in (D.61.3). It implies
+\[
+              \Pi_{61}\bigwedge^2\bar T_{61}=\Pi_{61}
+ \tag{D.61.17}
+\]
+and the corresponding compact
+identity. The old seven self
+factors have their unchanged
+D.60 identity action. Applying
+the exact D.55 orientation
+identity to the new cusp error
+and then to \(\Pi_{61}\) gives
+\((\bigwedge^2\pi)\nu([\Pi_{61}z])=0\).
+Both maps are injective on
+these selected components, so
+their actual boundary class
+is zero. The required numbers
+are
+\[
+ \dim\mathcal C_{61}=7\cdot512+12\cdot1536=22016,
+ \qquad \dim(\mathcal C_{61})_G=7\cdot2+12\cdot3=50.
+ \tag{D.61.18}
+\]
+
+Equation (D.61.17) preserves the
+kernel of the projector, which
+is the property required for
+\(\mathcal J_{61}\). The old
+D.59 and D.60 selected blocks
+have disjoint character supports
+from the row correction and
+retain their zero boundary.
+The \(\Delta\)-moving error
+has zero coinvariants. In each
+retained central module, actual
+corrections with image
+\((1-s)M+s(1-r)M=I_GM\)
+kill the remaining representative
+of its zero coinvariant class.
+They preserve the \(Y\) and
+\(X_*\) conjugators. The final
+cusp error is in
+\(\mathcal J_{61}\).
+
+The corrected source map descends
+to \(\mathcal T_2/\mathcal J_{61}\)
+by its defining class-two laws
+and (D.61.17), and is an
+automorphism by its invertible
+Frattini map. Its map to the
+retained full homology source
+and \(\mathcal W_h\) component
+agrees on their original marked
+common quotient. Their fibre
+product is exactly
+\(X/\mathcal J_{61}\).
+This proves the actual full-source
+comparison in (D.61.6)--(D.61.8).
+The direct sum of equivariant
+idempotents subtracts dimensions
+and coinvariants from the
+specified D.60 residual:
+\[
+                     353792-22016=331776,
+               \qquad 612-50=562.
+ \tag{D.61.19}
+\]
+Taking a nonzero vector there
+and its actual source preimage
+under \(R_{50}\to Z\) proves
+that the remaining source
+kernel in (D.61.8) is nonzero.
+
+\emph{The precise intermediate-cover divided norm.}
+This comparison explains the
+additional test without inferring
+anything from an unevaluated
+matrix. Let \(E\) be one of
+the projective self factors,
+with its integral projector
+having \(eT_{61}=e\) and
+annihilating cusps. Choose an
+order-two subgroup \(H_a\)
+of \(G\) mapping to the pure
+\(Q\) involution in \(G^\dagger\).
+Such a subgroup exists: the
+kernel of \(G\to G^\dagger\)
+has odd order, so a Sylow
+two-subgroup of its preimage
+has order two. Its action
+on \(E\) is the recorded
+pure-\(Q\) action.
+
+Lift the two conjugators of the constructed
+\(Y\)-action to \(X\). Their two torsion
+conjugates define an actual homomorphism
+\(\varphi:\widehat B\to X\), and
+\(\varphi(t)=zt\) for an actual \(z\in\mathcal K\).
+This is the source map used in the following
+calculation, before its central error is killed
+on any chosen quotient. Its homology map is
+\(T_{61}\).
+
+Let \(B_a\) be the full preimage
+of \(H_a\) under \(\widehat B\to G\).
+Group transfer and the exact
+projective norm define the
+integral homomorphism
+\[
+ \pi_a:B_a^{\rm ab,(2)}
+   \xrightarrow{\operatorname{Ver}}U^{H_a}
+   \xrightarrow{e}E^{H_a}
+   \xrightarrow{\nu_E^{-1}}E_{H_a}.
+ \tag{D.61.20}
+\]
+Here \(\nu_E:E_{H_a}\to E^{H_a}\)
+is an isomorphism: this holds
+on a regular lattice by the
+orbit coefficient sums, and
+hence on its direct summands.
+Thus no division by two is
+used. On \(K_3\), (D.61.20)
+is the actual map \(q_ae\)
+on homology. Every cusp and
+every torsion class has zero
+image: an appropriate nonzero
+power of a cusp belongs to
+the cusp module in \(K_3\),
+and the target is torsion free.
+
+The map factors through the
+preimage of \(H_a\) in \(Y\): its source
+kernel is contained in \(M_\infty\),
+which is the kernel of the actual map
+\(K_3\to U\). In particular that kernel
+has zero image under \(q_ae\).
+The difference between its
+composite with the constructed
+\(Y\)-action and itself is
+zero on \(K_3\), by
+\(eT_{61}=e\). It factors
+through the finite group
+\(H_a\) with torsion-free
+target, so it is zero.
+
+Use the finite-index Kurosh
+presentation of \(B_a\) as
+a free product of cyclic
+groups of orders two or three
+and a free group. Map each
+finite factor to one and
+lift the prescribed free
+abelian generator images of
+\(\pi_a\) to the free
+class-two exponent-four group
+on \(E_{H_a}/4\). This
+constructs an actual homomorphism
+\(\rho_a\). It kills
+\(L_2\), by the target's
+class-two and exponent-four
+laws, so it factors through
+the corresponding subgroup
+of \(X\). On the original
+central commutator module its
+map is exactly
+\(\bigwedge^2(\bar q_a\bar e)\).
+
+The oriented finite cover
+of the \(s,r\) graph has
+the usual relation consisting
+of its handle commutators,
+torsion cone loops, and
+positive cusp loops. Apply
+\(\rho_a\) and its composite
+with the source map. Their
+handle commutators agree,
+because their free abelian
+coordinates agree. Their
+cone factors are one. Choose source
+preimages of the two actual conjugators.
+The conjugated torsion words belonging
+to \(B_a\) are conjugate in \(B_a\)
+to its finite Kurosh factors. This is
+the finite-factor conjugacy theorem
+for this profinite free product
+\cite[Theorem A$'$]{A_HerfortRibes1985}.
+The map \(\rho_a\) kills every one
+of those factors and its conjugates.
+Each cusp has zero
+abelian coordinate and is
+central in the target.
+For a cusp \(bt^m b^{-1}\)
+its change is precisely the
+image of \(b\sum_{j=0}^{m-1}t^jz\).
+The right-\(t\) cycles partition
+the left cosets \(H_a\backslash G\),
+so their sum gives (D.61.10).
+This proves that exact map
+vanishes on the actual cusp
+error.
+
+Replacing a coset representative
+by an \(H_a\)-multiple does
+not change its exterior
+coinvariant image. Right
+translation reindexes the
+cosets, so (D.61.10) factors
+through the full \(G\)-coinvariants.
+On the \(\Delta\)-invariant
+self module, the odd multiplicity
+\(|\Delta|\) reduces to one,
+and the computation is exactly
+over the indicated \(Q\)-cosets.
+The homology coinvariants use
+the actual induced real module,
+of rank 128 or 192, and not
+only its stabilizer fibre.
+
+\emph{What these tested maps leave.}
+The program
+\path{d_self_wedge_divided_norms.py}
+enumerates all four involution
+classes of \(Q\), of sizes
+\(36,3,3,1\). It constructs
+the full induced module, its
+cyclic coinvariant projection,
+and every relative coset-sum
+column. It checks the invariant
+wedge identification on all
+64 Hermitian columns against
+every stabilizer matrix. For
+real coordinates \(u_i,v_i\)
+corresponding to \(1,\zeta_3\),
+the off-diagonal Hermitian
+coefficients \(1,\zeta_3\)
+are respectively
+\[
+ u_i\wedge v_j+v_i\wedge u_j,
+ \qquad
+ u_i\wedge u_j+v_i\wedge u_j+v_i\wedge v_j.
+ \tag{D.61.21}
+\]
+These are the exact exterior
+maps used in the divided norm.
+
+For the old excluded self
+block, the four divided norms
+have ranks \(2,2,1,2\);
+their joint rank together
+with the ordinary norm is
+still two on its four
+coinvariants. The two columns
+\(\mathtt{0x10000},\mathtt{0x20000}\)
+remain in their joint kernel.
+For the new self blocks all
+four divided norms are zero
+on all three coinvariants.
+The program verifies the
+literal equality of the four
+induced matrices within each
+new orbit, supplying the
+explicit comparison for their
+four copies. Their bases are
+exactly (D.61.9).
+
+Thus these actual additional
+cover maps leave the stated
+\(2+4\cdot3+4\cdot3=26\)
+classes undetected. They belong
+to specified self modules in
+the remaining source kernel.
+Their actual arithmetic boundary
+coordinates, and the rest of
+\((\mathcal J_{61})_G\), have
+not been evaluated by the
+present construction.
+\end{proof}
+
+\end{document}

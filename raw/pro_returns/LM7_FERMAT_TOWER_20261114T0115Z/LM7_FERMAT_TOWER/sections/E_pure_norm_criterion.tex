@@ -1,0 +1,457 @@
+\subsection{Every adjacent norm in the pure seventeen tower}
+
+\begin{statement}{E.65}{Proved}{Pure norm images, an explicit wild character, and the certified first unit norm}
+Let
+\[
+ F_d=\mathbb Q(\alpha_d),\qquad \alpha_0=17,\qquad
+ \alpha_{d+1}^{,3}=\alpha_d,\qquad
+ M_d=F_d(\zeta),\quad \zeta=\zeta_3,
+ \tag{E65.1}
+\]
+where the $\alpha_d$ are positive real roots. Complex conjugation $c$
+fixes $F_d$ and sends $\zeta$ to $\zeta^{-1}$.
+Write $\widehat{F_d^\times}_3=\varprojlim_m
+F_d^\times/(F_d^\times)^{3^m}$, with the multiplication-completion
+topology. The following formulas evaluate the image and every fiber of
+the actual adjacent norm
+\[
+ N_d^{\rm p}:\widehat{F_{d+1}^\times}_3
+                    \longrightarrow\widehat{F_d^\times}_3.
+ \tag{E65.2}
+\]
+
+For a prime $v\nmid3\cdot17$ of $F_d$, let $q_v=\mathrm Nv$.
+When $q_v\equiv1\pmod3$, choose a primitive third root
+$\zeta_v\in\mathbb F_{q_v}$, and define
+\[
+ \overline{\alpha_d}^{\,(q_v-1)/3}
+             =\zeta_v^{\gamma_{d,v}},\qquad
+ \mathcal I_d^{\rm p}=
+ \{v\nmid3\cdot17:q_v\equiv1\pmod3,
+                         \ \gamma_{d,v}\ne0\}.
+ \tag{E65.3}
+\]
+The choice of $\zeta_v$ specifies one of the two primes of $M_d$ over
+$v$. Changing that choice multiplies this one coordinate by $-1$.
+For $v\in\mathcal I_d^{\rm p}$ set
+$\delta_{d,v}(z)=\gamma_{d,v}v(z)\pmod3$.
+
+For $d\ge1$ there is one further, explicitly computable character
+$\delta_{d,3}:F_d^\times\to\mathbb F_3$.
+Its finite matrix definition below uses the completion of $F_d$ at
+its unique prime of ramification index $2\cdot3^{d-1}$ over three.
+There is no such coordinate for $d=0$.
+With that convention there is an exact sequence of topological groups
+\[
+ \widehat{F_{d+1}^\times}_3
+ \xrightarrow{\ N_d^{\rm p}\ }
+ \widehat{F_d^\times}_3
+ \xrightarrow{\ \Theta_d^{\rm p}\ }
+ \begin{cases}
+   \displaystyle\bigoplus_{v\in\mathcal I_0^{\rm p}}\mathbb F_3,
+                                                        &d=0,\\[2mm]
+   \displaystyle\mathbb F_3\oplus
+                \bigoplus_{v\in\mathcal I_d^{\rm p}}\mathbb F_3,
+                                                        &d\ge1,
+ \end{cases}
+ \longrightarrow0,
+ \tag{E65.4}
+\]
+where $\Theta_d^{\rm p}(z)$ consists of $\delta_{d,3}(z)$, when
+present, and the $\delta_{d,v}(z)$. The right-hand side is discrete.
+Every coordinate kills cubes, so the map on the completion is
+evaluated on any actual representative modulo cubes. Its prime
+coordinates have finite support. Thus (E65.4) is a sufficient as well
+as necessary global norm test, and its norm image is open.
+
+Here is the finite definition of the wild character, including all
+arithmetic choices. There is a unique $\rho\in\mathbb Q_3$ with
+$\rho^3=17$; it satisfies $\rho\equiv23\pmod{27}$.
+For $d\ge1$ put
+\[
+ m=3^{d-1},\qquad e=2m,\qquad n=2e+1,
+ \qquad
+ Q_d(Z)=(Z-1)^{2m}+\rho(Z-1)^m+\rho^2.
+ \tag{E65.5}
+\]
+At the specified prime, $\pi=\alpha_d+1$ is a uniformizer,
+$Q_d(\pi)=0$, and its integer ring is $\mathbb Z_3[\pi]$.
+Its quotient modulo $\pi^n$ is exactly the finite ring
+\[
+ R_d=(\mathbb Z/27)[Z]/(Q_d(Z)\bmod27,\ Z^n).
+ \tag{E65.6}
+\]
+Let $g_i=1+\pi^i$, $1\le i<n$. Every unit of $R_d$ has a unique
+expression
+$\epsilon\prod_{i=1}^{n-1}g_i^{a_i}$ with
+$\epsilon\in\{1,-1\}$ and $a_i\in\{0,1,2\}$.
+Write $\mathbf a(u)=(a_1,\ldots,a_{n-1})$.
+In the finite free cubic algebra
+\[
+ R'_d=R_d[\Pi]/(\Pi^3-3\Pi^2+3\Pi-\pi),
+ \tag{E65.7}
+\]
+compute norms as determinants of multiplication in the basis
+$(1,\Pi,\Pi^2)$.
+Form the matrix over $\mathbb F_3$ whose rows are
+\[
+ \mathbf a(g_i^3)\quad(1\le i<n),\qquad
+ \mathbf a\bigl(\det(1+\Pi^j\mid R'_d)\bigr)
+                                  \quad(1\le j<3n).
+ \tag{E65.8}
+\]
+Its nullspace has dimension one. Let $\mathbf w_d$ be its unique
+generator whose first nonzero coordinate is $1$. The specified wild
+character is
+\[
+ \delta_{d,3}(z)=
+    \mathbf w_d\cdot
+     \mathbf a\bigl(z\pi^{-v_3(z)}\bmod\pi^n\bigr)
+       \quad\hbox{in }\mathbb F_3,
+ \tag{E65.9}
+\]
+where $v_3(\pi)=1$ at this one prime.
+The notation $\det(1+\Pi^j\mid R'_d)$ in (E65.8) means the
+determinant of multiplication by that element, not a determinant of
+a scalar matrix. Formulas (E65.5)--(E65.9) give a finite algorithm for
+every $d$, using only binomial coefficients, integral lattice reduction
+and $3$-by-$3$ determinants.
+
+Each nonempty fiber of (E65.2) is a torsor under the group
+\[
+ \mathcal R_3=
+ \left\{(a_i)_{i\ge1}\in\prod_{i\ge1}\mathbb Z_3:
+   \text{for every }r,\ a_i\in3^r\mathbb Z_3
+                    \text{ for all but finitely many }i\right\},
+ \tag{E65.10}
+\]
+with its multiplication-completion topology. Explicitly, choose an
+actual free basis $u_i$ of the ordinary norm-one group and a lift $y_0$
+of the target. The isomorphism is
+$ (a_i)\mapsto y_0\prod_i u_i^{a_i}$.
+In particular the ordinary norm-one group has no torsion and is free
+abelian of countably infinite rank; (E65.10) retains its infinite
+discrete quotients.
+
+The first wild matrix and its certified unit witness are
+\[
+ \mathbf w_1=(1,2,0,0),\qquad
+ \varepsilon=7\alpha_1-18,
+ \qquad\mathbf a(\varepsilon)=(2,0,2,2),
+ \qquad\delta_{1,3}(\varepsilon)=2.
+ \tag{E65.11}
+\]
+Thus $\varepsilon$ is not in
+$N_{F_2/F_1}(F_2^\times)$, nor in the image of its completed norm.
+Both $F_1$ and $F_2$ have class number one.
+The following actual fundamental units of $F_2$, written with
+$x=\alpha_2$, have norm row $(0,3,0,0)$ in the fundamental-unit
+basis $\varepsilon$ of $F_1$:
+\[
+\begin{aligned}
+ u_1={}&(20+18x-5x^2-8x^3+5x^5+2x^6-3x^7-2x^8)/3,\\
+ u_2={}&-18+7x^3,\\
+ u_3={}&-1-4x+6x^2-6x^4+2x^5-2x^7+2x^8,\\
+ u_4={}&\tfrac13\bigl(-235+148x+182x^2-50x^3-97x^4\\
+       &\hspace{3em}{}-5x^5+53x^6+16x^7-25x^8\bigr),\\
+ (Nu_1,Nu_2,Nu_3,Nu_4)={}&(1,\varepsilon^3,-1,1).
+\end{aligned}
+ \tag{E65.12}
+\]
+Consequently the ordinary unit norm image is
+$\langle-1,\varepsilon^3\rangle$, of index three, and its kernel is
+free on $u_1,-u_3,u_4$. This specifies the preimages and signs in
+addition to the index.
+
+Under E.46, the actual positional transition of E.62 is the product
+of (E65.2) and (E64.2):
+\[
+ \widehat{F_{d+1}^\times}_3\times
+       \widehat{L_{d+1}^\times}_3
+  \xrightarrow{\ (N_d^{\rm p},N_d)\ }
+ \widehat{F_d^\times}_3\times\widehat{L_d^\times}_3.
+ \tag{E65.13}
+\]
+Its total norm to $\mathbb Q$ is preserved. Therefore the
+$J=(3,T-1)\mathbb Z_3[[T-1]]$ condition from E.46 is preserved by
+every preimage supplied by these two norm tests.
+The two tests and their fiber coordinates evaluate every adjacent
+positional arrow. The compatible inverse limit of these arrows is
+retained as the further global section problem; an independent
+selection of preimages at each finite level is not asserted to be a
+compatible selection.
+The manuscript anchor is \S51.16, scans172--178,
+folios733v--736v, equations(371)--(379), and Part E(c),(d).
+\end{statement}
+
+\begin{proof}
+\emph{The exact descent map.}
+The polynomial $X^{3^d}-17$ is Eisenstein at seventeen. Hence
+$[F_d:\mathbb Q]=3^d$, $[M_d:F_d]=2$, and
+$M_{d+1}/M_d$ is cyclic of degree three, generated by
+$\sigma(\alpha_{d+1})=\zeta\alpha_{d+1}$.
+The identity $c\sigma c=\sigma^{-1}$ holds on both generators.
+Let $z\in F_d^\times$ and let $b\in M_{d+1}^\times$ satisfy
+$N_{M_{d+1}/M_d}b=z$.
+Then
+\[
+ w=\frac{z}{b\,c(b)}\in F_{d+1}^\times,
+ \qquad N_{F_{d+1}/F_d}w=\frac{z^3}{z^2}=z.
+ \tag{E65.14}
+\]
+Conversely, an actual pure norm remains a norm after adjoining
+$\zeta$. This proves the equivalence of the two norm tests by an
+explicit preimage map.
+
+The same formulas hold in the multiplication completions.
+For clarity, the actual field inclusion gives
+\[
+ (\widehat{M_d^\times}_3)^c=
+        \widehat{F_d^\times}_3,
+ \qquad
+ v\longmapsto N_{M_d/F_d}(v)^{1/2}
+ \tag{E65.15}
+\]
+as inverse on the fixed subgroup.
+Indeed the inclusion followed by norm is squaring, which is an
+automorphism of a pro-$3$ multiplication completion; for a fixed
+$v$, inclusion of its norm is $v^2$.
+This proves injectivity, surjectivity onto the stated fixed subgroup,
+and continuity of both maps. The corresponding assertion for norm
+quotients also holds before completion. Given a $c$-fixed class
+$[a]$ in the cyclic norm quotient, whose exponent divides three,
+the actual element $(a\,c(a))^2\in F_d^\times$ has class
+$4[a]=[a]$. Injectivity follows from (E65.14).
+
+\emph{Conjugation on the local norm coordinates.}
+Identify the cyclic norm quotient with the relative Brauer group by
+the crossed product $a\mapsto(M_{d+1}/M_d,\sigma,a)$.
+The actual conjugation map sends this algebra to
+$(M_{d+1}/M_d,\sigma^{-1},c(a))$, which is the inverse Brauer class
+of $(M_{d+1}/M_d,\sigma,c(a))$.
+Thus, when the generator $\sigma$ is kept fixed, $c$ acts on local
+norm coordinates by negative permutation of the places.
+The cyclic crossed-product identification, the exact relative
+Brauer sequence and the Hasse norm theorem are the opened results
+\cite[IV, Theorem3.14; VIII, \S4, the exact sequence preceding
+Lemma4.1 and its proof; VIII, Theorem3.1]{E_MilneCFT}.
+They identify the global cyclic norm quotient with the direct sum
+of its nontrivial local norm groups, subject to the one sum-of-invariants
+relation.
+
+All these nontrivial groups have order three. On a place fixed by
+$c$, a $c$-fixed tuple satisfies $a=-a$, hence has value zero.
+On a pair of conjugate places its values are $a,-a$; their sum is
+zero. It follows that the fixed quotient is exactly one independent
+$\mathbb F_3$ for every conjugate pair at which the cyclic local
+extension is nontrivial. Every finite assignment to those pairs is
+realized: its sum of invariants is zero, the relative Brauer sequence
+supplies a global cyclic norm class, and the averaging formula after
+(E65.15) supplies an actual representative in $F_d^\times$.
+This proves both the global sufficiency and the cokernel surjectivity
+that will be used in (E65.4).
+
+\emph{Identifying every relevant local pair.}
+Away from three and seventeen, the relative polynomial
+$X^3-\alpha_d$ is etale. If $q_v\equiv2\pmod3$, adjoining $\zeta$
+gives the unramified quadratic completion, fixed by $c$.
+Cubing is a bijection on $\mathbb F_{q_v}^\times$, so
+$\alpha_d$ already has a cube root there. The pure local algebra is
+the product of the base field and an unramified quadratic field.
+Its norm is onto because of the first factor.
+If $q_v\equiv1\pmod3$, the quadratic algebra splits into two
+conjugate copies. On either copy, (E65.3) is the Kummer splitting
+test for the unramified cubic extension. A nonzero symbol gives an
+unramified cubic field, whose unit norm is onto and whose uniformizer
+norm has valuation three. A zero symbol gives three copies of the
+base field. This yields exactly the coordinates
+$\gamma_{d,v}v(z)$ in (E65.4).
+
+At seventeen, $X^{3^d}-17$ is Eisenstein both over $\mathbb Q_{17}$
+and over its unramified quadratic extension $K_{17}$.
+There is one prime in $M_d$ over seventeen, fixed by $c$.
+Directly in the pure fields, the relative extension is tamely and
+totally ramified of degree three, its residue field is
+$\mathbb F_{17}$, and
+$N(\alpha_{d+1})=\alpha_d$.
+Cubing is a bijection on $\mathbb F_{17}^\times$ and on the
+principal-unit pro-seventeen group. Hence all local valuations and
+units are norms; this gives the same absence of a seventeen
+coordinate by an explicit local map.
+Infinite places contribute no $3$-primary norm quotient.
+
+For three, Hensel's lemma applied at $23$ gives a root $\rho$ of
+$X^3-17$ with $\rho\equiv23\pmod{27}$:
+$v_3(23^3-17)=5>2v_3(3\cdot23^2)=2$.
+There is only one such root in $\mathbb Q_3$, because this field has
+no primitive third root of unity.
+For $d\ge1$ one has the exact factorization
+\[
+ X^{3^d}-17=(X^m-\rho)
+                   (X^{2m}+\rho X^m+\rho^2),\quad m=3^{d-1}.
+ \tag{E65.16}
+\]
+After $X=Z-1$, both factors are Eisenstein at three.
+Their reductions are $Z^m$ and $Z^{2m}$; their constant terms
+are $-1-\rho$ and $1-\rho+\rho^2$, each of valuation one.
+Consequently $F_d$ has precisely two primes over three, with
+ramification indices $m$ and $2m$, both with residue field
+$\mathbb F_3$.
+The first completion has odd degree and therefore does not contain
+$K_3$. The second contains it, since
+$\alpha_d^m/\rho$ is a primitive third root of unity.
+After adjoining $\zeta$, the first prime remains a single place
+fixed by $c$, while the second becomes a conjugate pair.
+Choose one of the latter pair by
+$\alpha_d^m=\rho\zeta$.
+At the next level the two degrees in (E65.16) are multiplied by
+three. On the chosen pair, adjoining $\alpha_{d+1}$ is the cyclic
+totally ramified cubic extension given by (E65.7).
+Thus there is exactly one nontrivial conjugate pair over three for
+every $d\ge1$.
+At $d=0$, the local algebra after adjoining $\zeta$ splits completely,
+because $17=\rho^3$ in $\mathbb Q_3$; there is no pair contributing
+a norm condition.
+This proves the list of all coordinates in (E65.4).
+
+\emph{A finite presentation of the wild local norm group.}
+The Eisenstein polynomial $Q_d$ proves that $\pi$ is a uniformizer,
+$v_3(3)=e$, and the integer ring is $\mathbb Z_3[\pi]$.
+For example, the last assertion follows directly by writing an
+element in the basis $1,\pi,\ldots,\pi^{e-1}$: the valuations of
+its nonzero terms are distinct modulo $e$, so integrality forces
+all coefficients to be $3$-adic integers.
+Since $3e\ge2e+1=n$, reduction modulo $\pi^n$ kills $27$.
+It therefore depends only on $\rho\bmod27$ and is exactly (E65.6).
+Each successive unit quotient
+$(1+\pi^i\mathcal O)/(1+\pi^{i+1}\mathcal O)$ is the additive
+$\mathbb F_3$ generated by $1+\pi^i$.
+Successively removing the leading term gives the unique ordered
+unit coordinates used in (E65.8).
+
+The group of principal units modulo $\pi^n$ has a presentation with
+commuting generators $g_i$ and the relations expressing $g_i^3$ in
+the generators of higher index. These relations reduce every word
+to exponents $0,1,2$, so the presented group has at most
+$3^{n-1}$ elements; the actual unit filtration has exactly that many.
+The presentation is therefore exact. An $\mathbb F_3$-valued
+character of the unit group is precisely a vector annihilating the
+first set of rows in (E65.8).
+
+In the actual next completion, $\Pi=\alpha_{d+1}+1$ is a uniformizer
+and its minimal polynomial over the base is the polynomial in
+(E65.7). It is Eisenstein at $\pi$ and has norm $\pi$.
+The target quotient of its integer ring by $\pi^n$ is exactly
+$R'_d$, and $\Pi^{3n}=0$ there.
+Its units are generated by $-1$ and
+$1+\Pi^j$ for $1\le j<3n$.
+Norms on this finite free ring are the displayed determinants.
+Units congruent to one modulo $\pi^n$ in the source have norm
+congruent to one modulo $\pi^n$ in the target, so these rows compute
+the whole unit norm image in the finite quotient.
+
+Finally $1+\pi^n\mathcal O$ is contained in the cube subgroup of
+the base field: for $u$ in this group, Hensel's lemma applied to
+$X^3-u$ at $1$ uses
+$v(1-u)\ge2e+1>2v(3)$.
+A cube in the base is the norm of its base-field cube root, viewed
+in the cubic extension. Thus this deep unit group is already in
+the actual norm image.
+Local reciprocity gives index three for the norm of a cyclic cubic
+local extension, and $N\Pi=\pi$ removes the valuation quotient
+\cite[III, Theorem3.4 and its norm-index proof]{E_MilneCFT}.
+The unit quotient computed by (E65.8) therefore has exactly order
+three. This proves that its character nullspace is one-dimensional,
+and proves necessity and sufficiency of the explicit character
+(E65.9) at the wild prime.
+
+\emph{Completion and all norm fibers.}
+Let $B=F_{d+1}^\times$, let $I=N B\subset F_d^\times$, and let
+$C=\ker(B\to I)$. In additive notation,
+$0\to C\to B\to I\to0$ has $3$-torsion-free quotient $I$,
+because $F_d$ is real and has only the roots of unity $\{1,-1\}$.
+Thus $C\cap3^r B=3^r C$ for every $r$.
+The exact finite-power quotient sequences have surjective transition
+maps on the kernel quotients. Their inverse limit is exact and
+identifies $\widehat C_3$ with the kernel of
+$\widehat B_3\to\widehat I_3$.
+Separately, $3F_d^\times\subset I$, because the norm of an included
+base element is its cube. Hence
+\[
+ I\cap3^{r+1}F_d^\times\subset3^r I
+                  \subset I\cap3^rF_d^\times.
+ \tag{E65.17}
+\]
+These cofinal filtrations embed $\widehat I_3$ as the actual kernel
+of the discrete exponent-three quotient in (E65.4).
+This proves the completed norm test and the claimed kernel without
+using compactness of the infinite multiplicative groups.
+
+The group $C$ has no torsion, since the norm of $-1$ in an odd-degree
+extension is $-1$.
+The quotient $F_{d+1}^\times/\{1,-1\}$ is free abelian of countable
+rank: its unit subgroup is finitely generated free, and its quotient
+is the group of principal divisors, a subgroup of the free abelian
+group on the finite primes. The latter is free, so the exact sequence
+splits as abelian groups. The subgroup $C$ is therefore free abelian
+of at most countable rank.
+Its rank is infinite. Take infinitely many rational primes splitting
+completely in the actual normal closure
+$\mathbb Q(\mu_{3^{d+1}},\alpha_{d+1})/\mathbb Q$, using
+\cite[VIII, Theorem7.4]{E_MilneCFT}.
+This field contains $M_{d+1}=\mathbb Q(\zeta,\alpha_{d+1})$
+under the specified root choices, so those primes split completely
+in $F_{d+1}$ as well.
+For each choose distinct primes $P,Q$ of $F_{d+1}$ above the same
+prime of $F_d$. A class-number multiple of $P-Q$ is the divisor of
+an element $y$. These elements have disjoint prime supports and are
+independent. Their norms are units of $F_d$, a group of finite rank.
+The kernel of the resulting map from a countably infinite free
+abelian group to this finite-rank unit group has infinite rank and
+lies in $C$.
+Choose a free basis $u_i$ of $C$.
+Completing $\bigoplus_i\mathbb Z u_i$ for multiplication by $3^r$
+gives exactly (E65.10), with the displayed product formula.
+This also specifies the topology of each nonempty fiber.
+
+\emph{Exact finite certificates and the positional comparison.}
+The retained local program constructs (E65.6) by integral Hermite
+normal form and checks the index of every ideal $\pi^k$, $0\le k\le n$.
+It computes all determinant norms in (E65.8), and independently
+checks character additivity with the actual ring multiplication.
+For $d=1,2,3$ the nullspace is one-dimensional as proved above;
+the first two normalized vectors are
+\[
+ \mathbf w_1=(1,2,0,0),\qquad
+ \mathbf w_2=(1,2,1,1,2,2,2,2,0,0,0,0).
+ \tag{E65.18}
+\]
+The full degree-eighteen local vector, matrices and relations
+are retained in the output. Substitution of
+$\varepsilon=7\pi-25$ gives (E65.11).
+The official PARI program separately certifies the two number fields
+with \texttt{bnfcertify=1}, records their actual integer rings and
+prime ideals, and computes the relative norms in (E65.12) through
+the embedding $\alpha_1\mapsto\alpha_2^3$.
+The Python verification recomputes the four norm determinants in
+characteristic zero. Thus the unit basis, the sign row, and the
+non-norm witness have independent exact certificates.
+The actual prime contractions away from $3,17$ are also checked
+against (E65.3), including the linear--quadratic local algebras when
+$q_v\equiv2\pmod3$.
+
+Finally E.62 factors the positional algebra as $F_d\times L_d$.
+The root-cubing map acts on these factors by the actual relative
+field norms in E.46. Hence (E65.13) is that same positional arrow,
+with both components now evaluated.
+Norm transitivity gives
+\[
+ N_{F_d/\mathbb Q}(N_d^{\rm p}u)\,
+ N_{L_d/\mathbb Q}(N_d v)
+   =N_{F_{d+1}/\mathbb Q}(u)\,
+      N_{L_{d+1}/\mathbb Q}(v).
+ \tag{E65.19}
+\]
+The congruence modulo cubes defining $J$ is therefore preserved
+literally, as claimed.
+\end{proof}

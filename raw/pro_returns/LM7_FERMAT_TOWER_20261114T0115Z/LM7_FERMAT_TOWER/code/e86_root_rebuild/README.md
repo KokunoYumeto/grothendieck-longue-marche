@@ -1,0 +1,3 @@
+# Independent E86 rebuild
+
+Run `python code/e_stable_sclass_towers.py --gp /absolute/path/to/gp` from this directory. It reconstructs all13 stages in a fresh temporary directory and saves all three binary certificates. SymPy and official PARI/GP2.19.0 were used. All13 stage outputs and the complete JSON match the author run byte for byte. Only wall-clock durations differ in the main stdout. Run `gp -q code/e_stable_binary_compare.gp` to compare every complete retained PARI object with the frozen author values under inputs/author_binary. The first path-error attempt and its actual output are retained and explicitly excluded as evidence.

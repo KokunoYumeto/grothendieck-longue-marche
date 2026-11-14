@@ -1,0 +1,13 @@
+# D48: an actual mixed-prime extension of the retained action
+
+The enlarged base is the exact central double cover E=Bhat/[Nhat,Bhat] of Q, jointly with the entire loop abelianization. The central character is nonzero on M: the certificate supplies an actual88-letter word in M mapping to it, and independently checks the lack of invariant covectors on Lambda/2. All finite Fermat bases have exactly twice their D47 orders.
+
+The two-primary relative source is unchanged because the new closed subgroup has index2 in M. At every odd prime the new pro-prime group maps onto the old one. The simultaneous comparison kernel is the exact product of these odd-prime kernels, and both inclusions in every inverse-limit kernel equality are proved using finite B-normal cores.
+
+The actual arithmetic h fixes the enlarged base pointwise. In a central quotient its deviations on s and r have coprime orders2 and3, and the fixed cusp forces both to vanish. The action (h at2, identity at every odd prime) consequently exists on the actual product. A coprime correction to the two-primary r-conjugator has trivial Q-image; compatible fixed-element lifts make the entire s-conjugator, parameter and action project exactly to D47. The complete retained CM pair, all Fermat homology actions and the nonarithmetical full metabelian outer class are preserved.
+
+The new finite quotient J3 has order1152*3^193. Its central-deck homology eigenspaces have dimensions97 and96. The exact maximal common quotient with D47 is E times_Q G3; its order is1152*3^97. The old full source kernel maps onto precisely C3^96, whereas the new kernel is killed in J3. The new identity action on J3 agrees with the retained action on this entire common quotient. This proves an actual lift across a previously absent mixed kernel.
+
+The remaining source kernel still has exact A7 image in the literal S7 source. The full profinite GT0 realization problem remains unresolved.
+
+Run `python d_cm_central_mixed.py --source-code /absolute/path/LM7_FERMAT_TOWER/code`. Requirements: Python standard library and the owned input d_cm_solvable_even_boundary.json. The author copied the source and input into a fresh directory, reran it, and compared the entire JSON excluding only summary.elapsed_seconds: PASS. Root read the complete final proof and mathematical program, including the compatible conjugator corrections and both mixed source-kernel images. A fresh run from copied source and a hash-checked input passed; every mathematical JSON field agrees, omitting only summary.elapsed_seconds. The final display corrections were rechecked before integration.
