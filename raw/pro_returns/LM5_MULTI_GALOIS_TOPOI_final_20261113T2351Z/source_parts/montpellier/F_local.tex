@@ -1,0 +1,469 @@
+\subsection{F(h): local stratifications, flags, and controlled links}
+
+The topology used in this subsection is essential. A stratum has its
+subspace topology in a global chart; a global leaf of a local
+stratification has the topology obtained by gluing its local plaques.
+A neighbourhood germ remains a pro-object of \emph{full} sheaf topoi.
+Neither taking connected components nor taking covering categories is
+part of that definition.
+
+\paragraph{F.31 (Proved). With a counterexample to the sheaf assertion:
+the presheaf is separated, and its sheafification is the atlas of local
+stratifications.}
+Use conditions a)--d) of MPL~147, fol.~86, scans~181--182: a locally
+finite partition into locally closed, connected, locally connected strata;
+the frontier condition; and, for every stratum $S$ and $x\in\overline S$,
+a fundamental system of neighbourhoods $N$ of $x$ for which $N\cap S$
+is nonempty and connected. Restrictions split strata into connected
+components. These restrictions define a separated presheaf
+$\operatorname{Strat}_{\rm glob}$. It is not a sheaf, even if all the
+charts satisfy e). A section of its associated sheaf is exactly an open
+atlas of such partitions agreeing, after component splitting, on
+overlaps. Its leaves and all its local flag spaces are intrinsic to that
+section, rather than to a chosen atlas.
+
+\begin{proof}
+We first verify the restriction assertion, which is needed before asking
+whether the presheaf is separated. Let $U\subset X$ be open. A component
+$C$ of $S\cap U$ is open in $S\cap U$ because $S$ is locally connected,
+and is therefore locally closed in $U$. For $x\in U$, only finitely many
+original strata meet a sufficiently small neighbourhood. For each such
+stratum whose closure contains $x$, choose $N_S\subset U$ with
+$N_S\cap S$ connected. This set lies in just one component of $S\cap U$.
+Intersect the finitely many $N_S$, and avoid the closures of the remaining
+strata. The resulting neighbourhood meets at most one component of each
+original stratum, proving local finiteness. If $x\in\overline C^{,U}$,
+every sufficiently small connected intersection $N\cap S$, with
+$N\subset U$, meets $C$ and is contained in it. This proves condition d)
+for $C$.
+
+Let $C\subset S\cap U$ and $E\subset R\cap U$ be components and suppose
+$x\in E\cap\overline C^{,U}$. The original frontier condition gives
+$R\subset\overline S$. Choose $N\subset U$ about $x$ with $N\cap S$
+connected, hence contained in $C$. For every $y\in E\cap N$, every
+neighbourhood of $y$ inside $N$ meets $S$, hence $C$. Thus
+$E\cap\overline C^{,U}$ is open in $E$; it is also closed and nonempty.
+Connectedness of $E$ gives $E\subset\overline C^{,U}$. This is the
+frontier condition for the restricted partition. Successive component
+splitting agrees with direct restriction. Condition e), when imposed as
+a condition on local product germs, is preserved by the same restriction.
+
+Suppose global partitions $P,Q$ have the same restriction to each member
+of an open cover. Fix a stratum $S$ of $P$. Its intersections with the
+cover split into connected plaques, open in $S$. Each plaque is also a
+plaque for $Q$. Two overlapping plaques belong to the same stratum of
+$Q$. The graph whose vertices are these plaques and whose edges are
+nonempty intersections is connected: a partition into two graph
+components would partition $S$ into two nonempty disjoint open subsets.
+Consequently $S$ lies in one $Q$-stratum. Interchanging $P,Q$ proves
+equality of the partitions. This proves separatedness, answering the
+margin of scan~182 affirmatively. It also explains why the deleted word
+``separated'' cannot be restored in the preceding sentence.
+
+For failure of gluing, choose distinct $p,q\in S^1$ and put
+$U=S^1\setminus\{q\}$, $V=S^1\setminus\{p\}$. Stratify $U$ by $p$ and
+the two components of $U\setminus\{p\}$, and stratify $V$ by its single
+stratum. Both restrictions to $U\cap V$ are its two connected
+components. Both charts satisfy a)--e). A global partition with these
+restrictions must have strata $\{p\}$ and $S^1\setminus\{p\}$: the
+second follows from its connectedness and the preceding plaque argument.
+The germ of $S^1\setminus\{p\}$ at $p$ has two components, violating d).
+This is also the boundary phenomenon in the marked-disc picture of
+scan~181.
+
+Because the presheaf is separated, its sheafification is its usual
+``plus'' construction: a compatible atlas modulo common refinement.
+To construct the leaves, generate an equivalence relation on $X$ by
+membership in a connected local plaque. A leaf is given the final
+topology for all its plaques. Plaques agree on open subplaques, so they
+are an atlas of locally closed embeddings into $X$. The leaf inclusion
+is a local immersion, and the disjoint union of leaves is the bijective
+local immersion $D_0^*\to X$ of (296)--(297). This construction commutes
+with open restriction. If $X$ is compact Hausdorff, a finite collection
+of charts, each reduced to finitely many plaques, covers $X$; every leaf
+contains one of these plaques. There are therefore finitely many leaves,
+and they are locally compact. The Hausdorff condition is included here
+to justify the local compactness assertion of scan~184.
+\end{proof}
+
+\paragraph{F.32 (Proved). The germ flags form the nerve of an internal
+topological category in every degree.}
+For a chart $V$ with strata $S_i$, order them by
+$S_i\leq S_j\iff\overline S_i^{,V}\subset\overline S_j^{,V}$.
+The flag spaces of (299)--(303), with the literal topology specified
+there, are
+\[
+ D_r|_V=
+ \coprod_{i_0\leq\cdots\leq i_r}\overline S_{i_0}^{,V},
+ \qquad
+ D_r^*|_V=
+ \coprod_{i_0\leq\cdots\leq i_r}S_{i_0}.
+ \tag{F.h.1}
+\]
+These formulas glue canonically for every local stratification of F.31.
+Every projection $D_r\to X$ is a local immersion; $D_r^*\subset D_r$
+is open. Deleting or repeating entries gives continuous face and
+degeneracy maps. For every $r\geq2$ the Segal map is a homeomorphism
+\[
+ D_r\ \xrightarrow{\ \sim\ }\
+ \underbrace{D_1\times_{D_0}\cdots\times_{D_0}D_1}_{r\text{ factors}}.
+ \tag{F.h.2}
+\]
+Thus $D_\bullet$ is exactly the nerve of an internal category in
+topological spaces. Its fibre over $x$ is the nerve of the finite poset
+of incident stratum germs at $x$. The first-vertex map $D_r\to D_0$ is
+a finite covering locally on $D_0$; in particular it has the asserted
+property over $D_0^*$. Under the literal model (F.h.1), this property
+over all of $D_0$ is not special to normal crossings.
+
+\begin{proof}
+Let $W\subset V$ be open and $x\in\overline S_i\cap W$. Condition d)
+selects a unique component $C_i$ of $S_i\cap W$ whose closure contains
+$x$: a small connected $N\cap S_i$ lies in such a component, and any
+other component accumulating at $x$ would meet that same $N$.
+The choice is locally constant as $x$ moves in $\overline S_i\cap W$.
+Indeed $N\cap S_i\subset C_i$ implies
+$N\cap\overline S_i\subset\overline C_i$.
+For a chain $S_{i_0}\leq\cdots\leq S_{i_r}$ these uniquely selected
+components form a chain: near $x$, the lower component is contained in
+the closure of the higher one, and the restricted frontier condition
+proved in F.31 extends this inclusion over the entire connected lower
+component. This gives a canonical homeomorphism between the restriction
+of (F.h.1) and the formula computed after component splitting on $W$.
+The identifications compose exactly, because they select the same germs.
+They therefore glue on an arbitrary atlas and prove independence of
+that atlas. This also gives the precise sense in which the associated
+sheaf is described by local flags: an atlas defines compatible germ
+flags, and the degree-zero strict pieces recover its local plaques.
+One must retain the topology and the maps to $X$; bare incidence posets
+do not determine a local stratification.
+
+Deleting the first entry of a chain uses the inclusion
+$\overline S_{i_0}\hookrightarrow\overline S_{i_1}$; deleting any other
+entry uses the identity on the first closure. Repetition also uses the
+identity. All are continuous and commute with chart changes. The
+simplicial identities are the identities for deleting and repeating
+entries, before any topological quotient is taken.
+
+In the iterated fibre product in (F.h.2), composable arrows have the
+same origin $x$ and the same middle \emph{germ}. Their concatenation
+is a unique chain. On the component indexed by this chain, the fibre
+product is
+\[
+ \overline S_{i_0}
+ \times_{\overline S_{i_1}}\overline S_{i_1}
+ \times_{\overline S_{i_2}}\cdots
+ \times_{\overline S_{i_{r-1}}}\overline S_{i_{r-1}}
+ \cong\overline S_{i_0}
+\]
+with its subspace topology. This proves a homeomorphism, not just a
+bijection, and works for every $r$. Composition is concatenation followed
+by forgetting the intermediate entry; associativity and units follow
+from the same identities. The strict spaces alone do not form this
+category, since deleting the initial stratum need not preserve strictness.
+
+Fix a chart stratum $S_i$. Every stratum above it has closure containing
+any selected point of $S_i$, so local finiteness implies that there are
+only finitely many such strata. Over the copy of $\overline S_i$ in
+$D_0$, the first-vertex map is a disjoint union of a finite number of
+identity maps, one for every chain beginning with $i$. This proves the
+covering assertion, including at boundary points of that copy. Thus the
+aside in scan~189 claiming that extension from $D_0^*$ to all $D_0$ is
+special to normal crossings is not a consequence of the definitions
+as written. The manifolds and the Boolean incident posets of normal
+crossings \emph{are} additional properties. Likewise the phrase about
+degeneracies giving isomorphisms at scan~187 means isomorphisms onto the
+equal-adjacent-entry summands, not $D_r\cong D_{r+1}$: the two-element
+chain already has two vertices and three arrows. Passing to $\pi_0$
+before the fibre products would invalidate this proof; F.25 addresses
+that separate error.
+\end{proof}
+
+\paragraph{F.33 (Refuted). Product germs in e) do not imply a stationary
+link or a conical tube.}
+There is a compact metrizable space with two strata satisfying a)--e)
+whose punctured neighbourhood pro-homology at the closed stratum is not
+constant. Hence e) alone cannot justify replacing its elementary
+neighbourhood pro-topoi by fixed link models. This does not obstruct
+the full pro-topos descent theorem below.
+
+\begin{proof}
+Construct an orientable surface $M$ by starting with a disc and attaching
+successively compact genus-one cobordisms with two boundary circles.
+Choose a compact exhaustion $K_n$ by connected genus-$n$ subsurfaces
+with one boundary circle and $K_n\subset\operatorname{int}K_{n+1}$.
+Then $M$ has one end and infinite genus. Let
+$X=M\cup\{\infty\}$ be its one-point compactification. It is compact
+metrizable and is stratified by $M$ and $\{\infty\}$. Both strata are
+connected and locally connected; the partition is finite and satisfies
+the frontier condition. The sets
+$T_n=M\setminus K_n$ are a connected cofinal system of punctured
+neighbourhoods of $\infty$, proving d). Along $M$, e) is the product
+with a point. Along the point $\infty$, e) is the tautological product
+$\{\infty\}\times(X,\infty)$. Its transverse stratum has connected
+germ. Thus even the asserted transverse connectedness in scan~182 holds.
+
+Choose the two handle generators $a_j,b_j$ in the $j$th cobordism and
+let $c_n$ be its inner boundary class. Cutting off after the $m$th
+handle gives a genus-$(m-n)$ surface with two boundary components,
+whose first homology has basis
+$c_n,a_{n+1},b_{n+1},\ldots,a_m,b_m$. Passing to the union yields
+\[
+ H_1(T_n;\mathbb Z)
+  =\mathbb Z c_n\oplus\bigoplus_{j>n}
+       (\mathbb Z a_j\oplus\mathbb Z b_j).
+\]
+Inclusion $T_m\hookrightarrow T_n$, $m>n$, sends $c_m$ to $c_n$
+and preserves the surviving handle generators. Its image is
+\[
+ \mathbb Z c_n\oplus\bigoplus_{j>m}
+       (\mathbb Z a_j\oplus\mathbb Z b_j),
+ \tag{F.h.3}
+\]
+which strictly decreases with every $m$.
+
+For completeness, an inverse system isomorphic in pro-abelian groups
+to a constant group has eventually stationary images at each fixed
+stage. Write such inverse isomorphisms as
+$f:A_n\to B$ and compatible $g_m:B\to A_m$ after choosing a
+representative of $f$. The equation $gf=1$ says that for sufficiently
+large $k$ the transition $A_k\to A_m$ factors through $g_m$; the
+compatibility $g_m=(A_k\to A_m)g_k$ gives the reverse inclusion of
+images. Hence the eventual image equals $g_m(B)$. Formula (F.h.3)
+contradicts this conclusion. A conical punctured tube
+$L\times(0,\epsilon)$ with compatible shrinkings would have constant
+pro-homology $H_1(L)$, so no such link model exists here. A finite
+truncation of the image calculation is reproduced in the accompanying
+program; the argument above proves strict decrease at every stage.
+\end{proof}
+
+\paragraph{F.34 (Proved). Elementary pro-topoi, their gluing, and the
+precise additional link hypotheses.}
+There are two different assertions.
+First, full sheaf descent holds for neighbourhood \emph{pro-topoi}
+without a conical or asphericity assumption. In an ambient open $Y$
+where a locally closed set $Z$ is closed, define
+\[
+ \mathfrak T_{Z,Y}=(\operatorname{Sh}(N))_{N\supset Z},
+ \qquad
+ \mathfrak L_{Z,Y;W}=(\operatorname{Sh}(N\cap W))_{N\supset Z},
+ \tag{F.h.4}
+\]
+where $W$ is a specified open part of $Y$; in particular
+$W=Y\setminus Z$ gives the punctured tube. Restriction to local
+stratification charts and all their overlaps defines the same objects
+for local plaques. For an incident flag
+$\sigma=(S_0<\cdots<S_r)$, its elementary pro-topoi are the iterated
+neighbourhood objects
+\[
+ \mathfrak E_{\sigma,W}
+   =\bigl(\operatorname{Sh}
+       (W\cap N_0\cap\cdots\cap N_r)\bigr)_{(N_0,\ldots,N_r)},
+ \tag{F.h.5}
+\]
+where $N_j$ ranges over neighbourhoods of the indicated plaque $S_j$
+in the chart, and $W$ is an independently specified locally closed
+union of strata, with its \emph{subspace topology}. It need not be
+open in the ambient chart. The empty flag gives the constant topos
+$\operatorname{Sh}(W)$. One may take $W=S_r$, in which case the last
+neighbourhood condition is redundant, or take a stratum closure, or
+the specified punctured part of such a closure. Ambient open
+restrictions make every closed embedding in this expression legitimate.
+In a Cech or flag diagram $W$ is held fixed. Refining neighbourhoods
+and deleting a neighbourhood condition give the comparison maps;
+a specified inclusion $W\subset W'$ gives a further comparison.
+There is no inclusion from one disjoint stratum into another when a
+terminal vertex is deleted. Conical retractions, when available, are
+separate geometric maps and retain their specified control data.
+Common refinement makes the restriction identities strict. These
+definitions do not assert that
+$\mathfrak E_{\sigma,W}$ is constant.
+
+Second, to model these objects by locally trivial link bundles, it is
+sufficient to assume a locally compact paracompact Hausdorff space of
+finite depth with compatible conical control data: local manifold
+plaques $S$, tubes $T_S$, retractions $\pi_S$, and radius functions
+$\rho_S$ with $\rho_S^{-1}(0)=S$, locally identified over $S$ with
+\[
+ S\times C(L_S),\qquad
+ T_S\setminus S\cong L_S^{\rm bun}\times_S(S\times(0,\epsilon_S)).
+ \tag{F.h.6}
+\]
+Here $L_S$ is compact and recursively locally contractible and
+conically stratified; $L_S^{\rm bun}\to S$ is a locally trivial bundle,
+so monodromy is retained. Changes of charts preserve the strata, cone
+radius, and these control data. For incident plaques $S<T$ require
+$\pi_S\pi_T=\pi_S$ and $\rho_S\pi_T=\rho_S$ wherever defined;
+tubes of incomparable plaques are disjoint after shrinking. The data
+may be given on a locally finite atlas with its full overlap nerve,
+which allows distinct local branches of one global leaf. This is an
+explicit sufficient hypothesis, not a conclusion from e). Whitney
+stratifications in the usual locally compact smooth setting provide
+such controlled tube germs by the control-data and isotopy results of
+Mather (1970, \S7 and Corollaries~10.2--10.6)\cite{Mather1970Local}.
+
+With these data, the full Cech diagram of tubes covering a closed
+union of strata, or its subdivision by all flags, has the required
+two-colimit in pro-Grothendieck topoi. In particular, for a closed
+union $Z\subset Y$,
+\[
+ \operatorname{Sh}(Y)\ \simeq\
+ \operatorname{Sh}(Y\setminus Z)
+       \amalg_{\mathfrak L_{Z,Y;Y\setminus Z}}
+       \mathfrak T_{Z,Y}
+ \quad\text{in pro-Grothendieck topoi}.
+ \tag{F.h.7}
+\]
+At the level of homotopy types these are homotopy colimits of the
+\emph{full} link and iterated-link bundles. No $K(\pi,1)$ assumption
+is required for this gluing. To replace every elementary homotopy type
+by its fundamental groupoid, the exact condition is that every such
+type be a $1$-type. A sufficient geometric condition is that the base
+strata and all the relevant iterated-link fibres be $1$-types; for
+connected components this means $K(\pi,1)$ spaces. The reconstruction
+then uses the homotopy colimit of their classifying \emph{spaces}, not
+an ordinary two-colimit of classifying topoi or groupoids.
+
+\begin{proof}
+At a fixed open-neighbourhood stage, an open cover $N=\bigcup N_a$
+gives the usual sheaf descent equivalence, including morphisms:
+a sheaf on $N$ is a family of sheaves on $N_a$ with isomorphisms on
+$N_a\cap N_b$ satisfying the triple cocycle. For any target topos
+$\mathcal A$, apply this objectwise to inverse-image functors
+$\mathcal A\to\operatorname{Sh}(N_a)$. Their finite-limit and
+colimit preservation can be checked on the conservative open
+restriction family; hence the glued functor is again the inverse image
+of a geometric morphism. Natural transformations glue as well. This
+proves the bicategorical universal property for full topoi, not only
+for local systems.
+
+The two-open case makes passage to pro-objects completely explicit.
+For a fixed target $\mathcal A$, filtered two-colimits of mapping
+\emph{categories} commute with finite pseudolimits in
+$\operatorname{Cat}$. This follows by representing the finitely many
+objects, arrows, invertible comparison arrows, and their coherence
+equalities at one common stage; the same argument handles arbitrary
+morphisms and equality of morphisms. Apply this to
+\[
+ \operatorname{Geom}(\operatorname{Sh}(Y),\mathcal A)
+ \simeq
+ \operatorname{Geom}(\operatorname{Sh}(Y\setminus Z),\mathcal A)
+ \mathbin{\times}^{\rm ps}_{
+   \operatorname{Geom}(\operatorname{Sh}(N\setminus Z),\mathcal A)}
+ \operatorname{Geom}(\operatorname{Sh}(N),\mathcal A).
+\]
+The left side and first factor are constant in $N$. Taking the filtered
+two-colimit gives precisely the mapping-out universal property of
+(F.h.7). For a pro-target $(\mathcal A_j)$, take the additional limit
+over $j$; pseudolimits commute with the displayed finite pseudolimits.
+This proves
+(F.h.7) for arbitrary $Z$ as stated, without appealing to a putative
+inverse limit of punctured full sheaf topoi. The latter can be
+degenerate, as F.12 proves.
+
+We next explain the geometric content of the extra hypothesis. On a
+conical chart, compactness of $L_S$ implies that every neighbourhood of
+the cone vertex contains a full radial ball of some positive radius.
+Over each relatively small open subset of $S$, the same holds with a
+positive local bound. A locally finite partition of unity produces a
+positive continuous minorant of these bounds. Consequently tubes with
+positive continuous radii form a cofinal system of all tube germs.
+The control identities make these choices compatible on incident
+plaques. Choose the radii successively in the finite depth, reducing
+them to satisfy all earlier conditions. Only finitely many conditions
+occur near a given point. Incomparable tubes are disjoint, so a
+nonempty intersection of distinct tubes is indexed by an incident
+flag. It is exactly a stage of (F.h.5). Recursing inside $L_S$ shows
+that its angular part is the corresponding iterated-link bundle;
+the remaining coordinates are positive radial intervals. This is
+proved inductively on depth from (F.h.6): an incident higher plaque
+is $S$ times a stratum in $L_S$ times the radial interval, and the
+next tube condition is its corresponding link-tube condition. There
+is no assertion that the angular bundle is a product of its fibres.
+
+At every simultaneous radius stage, the tubes covering the given
+closed union give an actual open cover of their union, and their full
+intersections give its Cech nerve. Thus the preceding full-topos
+descent applies. Passing from ordered intersections to all incident
+flags is subdivision of the same descent datum: its one-step maps
+are restrictions and its triangles are the cocycle relations. It
+does not discard higher flags. For an infinite locally finite atlas,
+one must also justify synchronization of pro-stages. A datum and its
+isomorphisms are represented on individual charts, double overlaps,
+and triple overlaps. Choose a common refinement on each such finite
+family; at any point only finitely many bounds are imposed. A positive
+continuous minorant gives one global radius assignment satisfying
+all of them. The same argument applies to transformations and equality
+of transformations. This proves essential surjectivity and full
+faithfulness on the mapping categories, and justifies the pro-colimit
+without commuting a filtered colimit with an arbitrary infinite
+product. The same argument applies to the Cech groupoid of the stated
+locally finite Hausdorff chart cover when plaques have branch
+identifications: on compact chart pieces only finitely many overlap
+conditions occur. This is a chart presentation of the given space,
+not a claim about an arbitrary nonproper etale quotient atlas.
+These constructions establish the
+extension of both versions of F.13 to the stated controlled local
+stratifications.
+
+For shapes, apply the open-cover homotopy-colimit statement at every
+stage. It can be proved directly by the thick Cech realization: a
+partition of unity subordinate to a numerable cover provides a section
+up to homotopy, and the simplex of possible partition weights over
+each point is contractible. Refining charts and radii preserves this
+comparison. A conical radial interval is contractible and its shrinkings
+are homotopy equivalences, so the iterated-link bundles give constant
+models for the resulting local \emph{pro-homotopy types}. They do not
+give equivalences of full sheaf topoi: even
+$\operatorname{Sh}((0,\epsilon))$ is not $\operatorname{Set}$.
+The homotopy long exact sequence of each locally trivial link bundle
+shows that an aspherical fibre over an aspherical base has aspherical
+total space, proving the sufficient $1$-type criterion. Conversely a
+space with nonzero homotopy above degree one cannot be replaced by
+the classifying space of its fundamental groupoid. This is precisely
+the information discarded by a level-one replacement.
+
+The categorical cases are STRATA C.3, C.5, and C.6. The relevant
+calculation in C.6 is independently checkable: for a full sieve
+$A\subset C$ and complementary cosieve $B$, restriction identifies a
+presheaf with $(F_A,F_B,F_B\to i^*j_*F_A)$, where
+$(i^*j_*F_A)(b)=\lim_{(A/b)^{\rm op}}F_A$. The inverse sends this
+triple to $j_*F_A\times_{i_*i^*j_*F_A}i_*F_B$, as is verified on
+$A$ and $B$ separately. With spaces one must take the coherent limit
+and pullback. Repeating this argument along a finite filtration gives
+the actual crossing-flag data of C.5; its shape is the homotopy
+pushout of C.3. This verifies the categorical pattern but is not
+substituted for the full-topos geometric descent just proved.
+
+Finally consider the two requested tests. For $(S^2,\{p\})$, take
+$N$ a small open disc and $U=S^2\setminus\{p\}\cong\mathbb R^2$.
+The punctured tube is $S^1\times(0,\epsilon)$, so (F.h.7) has shape
+\[
+ \operatorname{hocolim}(*\leftarrow S^1\longrightarrow *)\simeq S^2.
+\]
+Both open and closed strata are simply connected. The topos of sheaves
+constructible for these two strata is the arrow topos: the local-system
+gluing functor sends a set to that same set, since the link is connected
+and the local system on $U$ is constant. Its classifying shape is
+contractible. Similarly the ordinary groupoid pushout of the displayed
+diagram is trivial. The full diagram with its link retains the missing
+$H_2(S^2;\mathbb Z)=\mathbb Z$. Thus even aspherical elementary
+pieces do not license an ordinary level-one colimit.
+
+The drawing at scan~190 is three half-lines in the \emph{plane}:
+there are seven strata, namely the origin, three open rays, and three
+open sectors. The origin's link is a circle divided into three points
+and three open arcs. The incident poset has seven elements, twelve
+strict comparable pairs, and six strict three-element chains. Removing
+the origin gives the six-vertex, six-edge incidence cycle, with first
+Betti number one. Adjoining the origin cones off that cycle, as the
+disc tube does. The three ray links are two-point spaces and the
+sector links are empty. All these elementary angular pieces are
+$1$-types, but the seven-element incident poset is not Boolean, since
+seven is not a power of two. Treating the picture as only a tripod
+would remove the three sectors and give a three-point link, contradicting
+both the written count and the topology. The program checks the flag
+counts, the Segal bijections through degree six, and the circle and
+sphere homology calculations; the proof of (F.h.2) establishes all
+degrees.
+\end{proof}

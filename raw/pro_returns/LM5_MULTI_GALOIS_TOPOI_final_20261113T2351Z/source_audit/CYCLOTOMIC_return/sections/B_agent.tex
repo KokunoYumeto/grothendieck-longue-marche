@@ -1,0 +1,419 @@
+\subsection{An elementary proof of the arithmetic centralizer assertion}
+
+\paragraph{Statement B1 (Proved: R3).}\label{res:B1}
+Fix an algebraic closure $\overline{\mathbf Q}$, with its profinite absolute
+Galois group $G_{\mathbf Q}$. For every number field
+$k\subset\overline{\mathbf Q}$, put $F=k(\mu_\infty)$. Then
+\[
+ C_{G_{\mathbf Q}}(G_F)=1.
+\]
+Here $G_F=\operatorname{Gal}(\overline{\mathbf Q}/F)$ is a closed subgroup,
+and the centralizer is taken in the full profinite group, without passing to
+an abelian or pro-$\ell$ quotient. This proves the starred assertion in
+cote 149, \S2, manuscript p.~22, scan 45.
+
+\begin{proof}
+Replacing $k$ by its finite Galois closure $k_0/\mathbf Q$ gives the inclusion
+$G_{k_0(\mu_\infty)}\subseteq G_F$, and hence the inclusion of centralizers
+in the opposite direction. It therefore suffices to consider $k/\mathbf Q$
+Galois. Fix $\sigma\in C_{G_{\mathbf Q}}(G_F)$.
+
+For $a\in F$ and $h\in G_F$ we have
+$h(\sigma a)=\sigma(ha)=\sigma a$. Applying the same argument to
+$\sigma^{-1}$ proves $\sigma(F)=F$. For arbitrary
+$x\in\overline{\mathbf Q}$ the identities
+\[
+ h(x)=x\quad\Longleftrightarrow\quad h(\sigma x)=\sigma x
+ \qquad(h\in G_F)
+\]
+identify the two closed stabilizers in $G_F$. By the Galois correspondence,
+\begin{equation}\label{eq:B-stabilizer}
+ F(x)=F(\sigma x).
+\end{equation}
+
+We record explicitly the choice of split prime needed below. A nonconstant
+polynomial $f\in\mathbf Z[T]$ has values divisible by infinitely many
+rational primes. Indeed, after translating $T$ we have $f(0)=c\ne0$.
+For any finite set $P$ of primes, enlarge $P$ to contain the prime divisors
+of $c$ and put $b=\prod_{p\in P}p$. Then
+$f(cbt)/c$ is an integer congruent to $1$ modulo every prime in $P$;
+for some integer $t$ its absolute value exceeds $1$. It has a prime divisor
+outside $P$. Apply this to the minimal polynomial of an integral primitive
+element of a finite Galois number field $k'/\mathbf Q$. Outside the finitely
+many primes dividing its discriminant or the index of its generated order,
+a root modulo $p$ gives a residue-degree-one prime of $k'$. All residue
+degrees are equal in an unramified Galois extension; thus $p$ splits
+completely. This proves the existence of completely split primes outside
+any prescribed finite set, without an appeal to a density theorem.
+
+Suppose that $\sigma$ acts nontrivially on a finite Galois subfield
+$k'\subset F$. Choose a rational prime $p$ which splits completely in $k'$
+and is unramified in $k$. The action of
+$\operatorname{Gal}(k'/\mathbf Q)$ on the primes above $p$ is simply
+transitive, so $\sigma$ moves each such prime. Choose one, $\mathfrak p$.
+The Chinese remainder theorem, applied modulo $\mathfrak p^2$ and the
+other primes above $p$, gives $a\in k'^*$ such that
+\[
+ v_{\mathfrak p}(a)=1,\qquad
+ v_{\mathfrak q}(a)=0\quad(\mathfrak q\mid p,\ \mathfrak q\ne\mathfrak p).
+\]
+The normalization here is $v(p)=1$. Extend $v_{\mathfrak p}$ to $F$.
+Its value group is exactly
+\begin{equation}\label{eq:B-value-group}
+ v(F^*)=\frac1{p-1}\mathbf Z[1/p].
+\end{equation}
+To check the equality, roots of unity of order prime to $p$ belong to the
+maximal unramified extension of $\mathbf Q_p$: they lift the roots in finite
+residue fields by the simple-root form of Hensel's lemma. The extensions
+$\mathbf Q_p(\mu_{p^r})/\mathbf Q_p$ are totally ramified of degree
+$(p-1)p^{r-1}$; this degree and total ramification follow from the
+Eisenstein polynomial $\Phi_{p^r}(1+T)$.
+Since $k/\mathbf Q$ is unramified at $p$, its completions do not add a
+ramification factor. The value groups of the finite composita are therefore
+contained in, and the $p$-power cyclotomic fields already realize, the union
+in \eqref{eq:B-value-group}. In particular this argument requires
+unramifiedness in $k$, not merely complete splitting in $k'$.
+
+Choose a prime $\ell\nmid p(p-1)$. Equation \eqref{eq:B-value-group} gives
+$1\notin\ell v(F^*)$, so $a\notin(F^*)^\ell$. Choose
+$\alpha^\ell=a$. The extension $F(\alpha)/F$ is cyclic of degree $\ell$,
+because $F$ contains $\mu_\ell$. Equation \eqref{eq:B-stabilizer} gives
+$F(\alpha)=F(\sigma\alpha)$. If a generator $\tau$ sends
+$\alpha$ to $\zeta_\ell\alpha$, then
+$\tau(\sigma\alpha)/(\sigma\alpha)\in\mu_\ell$.
+The $\zeta_\ell^j$-eigenspace for $\tau$ in
+$F(\alpha)=\bigoplus_{i=0}^{\ell-1}F\alpha^i$ is $F\alpha^j$.
+Consequently
+\[
+ \sigma\alpha=c\alpha^j,\qquad
+ \sigma(a)=c^\ell a^j,
+ \qquad c\in F^*,\quad 1\le j\le\ell-1.
+\]
+The condition $j\ne0\bmod\ell$ follows from $\sigma\alpha\notin F$.
+At our chosen valuation, $v(\sigma a)=0$ whereas $v(a)=1$. Thus
+$0=\ell v(c)+j$. Since
+$\ell v(F^*)\cap\mathbf Z=\ell\mathbf Z$, this contradicts
+$1\le j\le\ell-1$.
+
+We have proved that $\sigma$ fixes every finite Galois subfield of $F$;
+their union is $F$, since $F/\mathbf Q$ is Galois. Finally, for an arbitrary
+finite Galois number field $k''$ containing $k$, the inclusion
+$G_{k''(\mu_\infty)}\subset G_F$ shows that $\sigma$ centralizes that
+subgroup too. The argument just given, with $k''$ in place of $k$, proves
+that $\sigma$ fixes $k''(\mu_\infty)$ pointwise. These fields exhaust
+$\overline{\mathbf Q}$, so $\sigma=1$.
+\end{proof}
+
+
+
+\paragraph{Audit of the supplied R3 argument.}
+Every implication in its proposed chain is valid after the preceding two
+additions: the prime $p$ is unramified in the original finite coefficient
+field, and the chosen Kummer class is nonzero. In the final passage one may
+use finite Galois number fields $k''$ containing $k$; it is unnecessary to
+assert that an arbitrary finite extension of $F$ is Galois over
+$\mathbf Q$. It is true that every finite $F'/F$ has the form
+$k_1(\mu_\infty)$ for a number field $k_1$: choose finitely many algebraic
+generators of $F'/F$ and put them together with $k$ into $k_1$.
+
+\subsection{A general Hilbertian criterion and the fields in Part B(c)}
+
+\paragraph{Statement B2 (Proved: a stronger arithmetic criterion).}\label{res:B2}
+For a Hilbertian field $k$ and a separable closure $k^{\rm sep}$, every
+nontrivial closed normal subgroup $H\triangleleft G_k$ satisfies
+$C_{G_k}(H)=1$. Consequently, for every algebraic Galois extension
+$M/k$ in $k^{\rm sep}$,
+\[
+ C_{G_k}(G_M)=
+ \begin{cases}
+ 1,&M\ne k^{\rm sep},\\
+ G_k,&M=k^{\rm sep}.
+ \end{cases}
+\]
+The comparison is in the category of profinite groups with continuous
+homomorphisms.
+
+\begin{proof}
+We use two precisely identified inputs from the opened primary texts.
+Jarden \cite[Proposition 2.5]{B_Jarden2011} treats a Hilbertian field $k$
+and an algebraic Galois extension $N/k$ that is not separably closed. Its
+conclusion is that $G_N$ is almost locally free: for each integer $e\ge1$,
+almost every $e$-tuple, with respect to Haar measure, generates a free
+profinite group of rank $e$ (definition (2) in the introduction).
+Haran--Jarden \cite[Corollary 2.5]{B_HaranJarden1991} states that the
+separable closure of a Hilbertian field cannot be the compositum of two
+proper Galois extensions of the field. Their Theorem 2.4 gives the stronger
+input: the compositum of two Galois extensions, neither contained in the
+other, is Hilbertian. These statements include infinite Galois extensions.
+
+There is no nontrivial closed abelian normal subgroup $A$ of $G_k$.
+Otherwise its fixed field is a proper Galois extension of $k$, and Jarden's
+Proposition 2.5 supplies a pair in $A$ generating a free profinite group of
+rank two. Such a group has the nonabelian quotient $S_3$, whereas every
+subgroup and every quotient of the abelian group $A$ is abelian, a
+contradiction.
+
+Now put $C=C_{G_k}(H)$. Centralizers are closed, since each commutation
+condition is closed, and $C$ is normal since $H$ is normal. The subgroup
+$H\cap C=Z(H)$ is closed, abelian, and normal in $G_k$, so it is trivial.
+If $C$ were nontrivial, the fixed fields
+$(k^{\rm sep})^H$ and $(k^{\rm sep})^C$ would both be proper Galois
+extensions of $k$. The identity
+\[
+ G_{(k^{\rm sep})^H(k^{\rm sep})^C}=H\cap C=1
+\]
+would make their compositum $k^{\rm sep}$, contrary to the cited
+Corollary 2.5. Hence $C=1$. The second displayed formula follows by taking
+$H=G_M$; when $H=1$, every element centralizes it.
+\end{proof}
+
+This is a derivation from the two opened theorems, not a claim of priority.
+Our search included the phrases ``absolute Galois centralizer normal
+subgroup'', ``Hilbertian prosolvable normal subgroup'', and ``centralizer
+Galois abelian extension''. We did not find the exact formula of Statement
+B1 stated separately in the opened papers. Statement B2 supplies a
+literature-based proof of it after taking a Galois closure of $k$; Statement
+B1 independently checks the proposed elementary proof.
+
+\paragraph{Statement B3 (Proved: all the named fields).}\label{res:B3}
+For each field in the following table the indicated centralizer is trivial.
+Here $k$ is any number field; for the first two rows a finite Galois closure
+of $k/\mathbf Q$ may be used when $k(\mu_{\ell^\infty})$ or
+$k(\mu_\infty)$ itself is not Galois over $\mathbf Q$.
+\begin{center}
+\begin{tabular}{ll}
+\hline
+$M$ & Centralizer in $G_{\mathbf Q}$ of $G_M$\\\hline
+$k(\mu_{\ell^\infty})$ & $1$\\
+$k(\mu_\infty)$ & $1$\\
+$\mathbf Q^{\rm ab}$ & $1$\\
+the maximal nilpotent extension of $\mathbf Q$ & $1$\\
+the maximal solvable extension of $\mathbf Q$ & $1$\\
+the field $\mathbf Q^{\rm tr}$ of totally real algebraic numbers & $1$\\\hline
+\end{tabular}
+\end{center}
+
+\begin{proof}
+The first row follows directly from
+$G_{k(\mu_\infty)}\subset G_{k(\mu_{\ell^\infty})}$ and Statement B1.
+The second is Statement B1. For all remaining rows we use Statement B2
+with $k=\mathbf Q$, which is Hilbertian by Hilbert's irreducibility theorem
+(opened as \cite[\S4, Theorem 1]{B_Geyer2012}). We must check that each
+Galois extension is proper.
+
+The splitting field of $T^3-2$ has group $S_3$: Eisenstein's criterion at
+$2$ gives irreducibility, and its discriminant $-108$ is not a square.
+It cannot be contained in an abelian extension or in a pro-nilpotent
+extension of $\mathbf Q$. This proves properness for $\mathbf Q^{\rm ab}$
+and the maximal nilpotent extension, without using the Kronecker--Weber
+identification. The splitting field of $T^5-T-1$ has group $S_5$.
+Here is a finite certificate with the inference spelled out. Its reduction
+modulo $3$ is irreducible, so its rational Galois group is transitive of
+degree five. Its squarefree reduction modulo $2$ has irreducible factors
+of degrees two and three, so the group has an element of cycle type
+$(2)(3)$ and hence a transposition. A transitive group of prime degree is
+primitive. The graph whose edges are the conjugates of that transposition
+has connected components forming blocks; it is therefore connected.
+Transpositions along a connected graph generate $S_5$.
+Thus this Galois group is $S_5$, and is not solvable. It cannot be a quotient
+of the prosolvable group of the maximal solvable extension. The field
+$\mathbf Q^{\rm tr}$ is Galois, because being totally real is invariant
+under conjugation, and it omits $i$. It too is proper.
+
+The program \texttt{code/B\_field\_certificates.py} computes the indicated
+factorizations, the discriminants, the derived series orders
+$120,60,60$ of $S_5$, and the three Sylow-$2$ subgroups of $S_3$.
+Its exact output is attached. The factorization-to-cycle inference follows
+by reducing the roots at an unramified prime: the residue Frobenius permutes
+the roots in cycles whose lengths are the irreducible factor degrees.
+\end{proof}
+
+\subsection{Absolute groups of finitely generated fields and inverse limits}
+
+\paragraph{Statement B4 (Proved: the assertion for $E_K$).}\label{res:B4}
+Let $K/\mathbf Q$ be a finitely generated field, fix an algebraic closure
+$\overline K$, and write $E_K=G_K$. For every open subgroup $E'\subset E_K$
+let $E'^\circ$ be the kernel of its action on all roots of unity in
+$\overline K$. Then
+\[
+ C_{E_K}(E'^\circ)=1.
+\]
+This proves the assertion accompanying the starred clause of scan 45 in
+its stated field-theoretic generality.
+
+\begin{proof}
+The field $K$ is Hilbertian: the opened source
+\cite[\S4, Theorem 2(e)]{B_Geyer2012} states this for every infinite field
+finitely generated over its prime field. Choose a finite Galois extension
+$K_1/K$ whose absolute Galois group is contained in $E'$ (the normal core
+of $E'$ provides it). The extension $K_1(\mu_\infty)/K$ is Galois and
+$G_{K_1(\mu_\infty)}\subset E'^\circ$.
+It is a proper subfield of $\overline K$. Indeed $K_1$ is Hilbertian and
+$K_1(\mu_\infty)/K_1$ is abelian; the opened Kuyk statement in
+\cite[\S4, Theorem 2(g)(2)]{B_Geyer2012} says that every algebraic abelian
+extension of a Hilbertian field is Hilbertian. A separably closed field is
+not Hilbertian: $Y^2-T$ is irreducible in its rational function field but
+every nonzero specialization is reducible in characteristic zero.
+Statement B2, applied to the nontrivial normal subgroup
+$G_{K_1(\mu_\infty)}\triangleleft G_K$, now gives the result.
+\end{proof}
+
+\paragraph{Statement B5 (Proved, with the rank-one correction).}\label{res:B5}
+The property
+\[
+ \text{every open subgroup $H\subset G$ has $C_G(H)=1$}
+ \tag{B-slim}
+\]
+is preserved by extensions of profinite groups and by projective limits
+whose transition homomorphisms are surjective. A free profinite group of
+finite rank at least two has this property. The trivial group has it.
+The free profinite group of rank one does not: it is $\widehat{\mathbf Z}$,
+and its centralizer of every subgroup is the whole group. Thus the
+corollary as worded on scan 15 needs the nonabelian-rank qualification on
+every nontrivial free factor.
+
+\begin{proof}
+For a free profinite group $F$ of rank $r\ge2$, every finite-index subgroup
+$V$ is free profinite of rank $1+[F:V](r-1)$. One can see the comparison
+explicitly: the preimage $V_0$ of $V$ in the dense discrete free group
+$F_r$ corresponds to a finite covering of its graph with $r$ loops.
+Choosing a spanning tree gives a free basis with
+$1+[F:V](r-1)$ elements. Its full profinite topology is induced from $F_r$,
+because the core in $F_r$ of any finite-index subgroup of $V_0$ still has
+finite index. Therefore its profinite completion maps isomorphically onto
+$V$, and $V^{\rm ab}\simeq\widehat{\mathbf Z}^{1+[F:V](r-1)}$.
+
+This also proves torsion-freeness without assuming it. A nonidentity
+finite-order $z\in F$ has a nonidentity image in a finite quotient $F/N$.
+Put $V=N\overline{\langle z\rangle}$. The finite-order image of $z$ in
+the torsion-free group $V^{\rm ab}$ is zero, but the map
+$V\twoheadrightarrow V/N$, whose target is the nontrivial cyclic group
+generated by $zN$, factors through $V^{\rm ab}$. This is a contradiction.
+
+The center of every free profinite group of rank at least two is trivial
+by the opened Nakamura \cite[Corollary (1.3.4)]{B_Nakamura1994}; its
+hypotheses are the pro-$\mathcal C$ completion of a finite-rank free group
+of rank $r\ge2$, with $\mathcal C$ a full class of finite groups. We take
+the class of all finite groups. For an open $H\subset F$, choose an open
+normal $V\subset H$. Its rank is at least two, so $Z(V)=1$.
+The homomorphism $C_F(V)\to F/V$ is injective, because its kernel is
+$Z(V)$. Thus $C_F(V)$ is finite; torsion-freeness makes it trivial.
+The inclusion $C_F(H)\subset C_F(V)$ proves (B-slim).
+
+For an exact sequence of profinite groups
+$1\to A\xrightarrow{i}B\xrightarrow{q}D\to1$, where $A,D$ have
+(B-slim), let $H$ be open in $B$ and $z\in C_B(H)$. The quotient map is
+open, so $q(H)$ is open in $D$, and $q(z)$ centralizes it. Hence $q(z)=1$.
+Then $z\in A$ centralizes $H\cap A$, open in $A$, and so $z=1$.
+
+Finally let $G=\varprojlim_iG_i$, with continuous surjective transition
+maps, each $G_i$ satisfying (B-slim). The projections $q_i:G\to G_i$
+are surjective. An open $H\subset G$ contains $\ker q_{i_0}$ for some
+index $i_0$: finitely many inverse-image neighborhoods contain an open
+neighborhood of $1$ in $H$, and directedness combines their indices.
+For each $j\ge i_0$ the subgroup $q_j(H)$ is open in $G_j$, since it is
+the inverse image of $q_{i_0}(H)$ under $G_j\to G_{i_0}$.
+For $z\in C_G(H)$, its coordinate $q_j(z)$ centralizes $q_j(H)$, and is
+therefore $1$. These $j$ are cofinal, so $z=1$ in the inverse limit.
+\end{proof}
+
+Here is the passage relevant to the manuscript, with its maps specified.
+For a regular integral model $Y$ of a function field $L$, and a dense open
+$V\subset Y$, restriction of finite \emph{\'etale} covers gives a
+continuous surjection $\pi_1(V)\twoheadrightarrow\pi_1(Y)$.
+A connected finite \emph{\'etale} cover of the normal integral $Y$ stays
+connected on a dense open: its function field is unchanged. This is the
+connected-cover criterion for surjectivity of the fundamental-group map.
+Every finite separable extension of $L$ is finite \emph{\'etale} on some
+dense open of its normalization, after deleting the branch locus. Thus
+\[
+ G_L\ \xrightarrow{\sim}\ \varprojlim_{V\subset Y}\pi_1(V)
+\]
+is the continuous isomorphism induced by restriction to the corresponding
+maximal extensions unramified on $V$. The same construction after extending
+the constant field gives the geometric inverse limit. Whenever the cofinal
+model groups are the successive nonabelian free extensions constructed in
+\S1 of the manuscript, Statement B5 gives exactly the missing passage
+to the limit; it requires surjectivity of the transition maps, and no
+injectivity assertion.
+
+There is also a direct verification of the needed property of the
+geometric absolute group, independent of that choice of models. Let
+$k$ be the algebraic closure of $\mathbf Q$ in $K$, and put
+$\pi_K=G_{K\overline k}$. For positive transcendence degree,
+$K\overline k$ is a finite extension of a rational function field
+$\overline k(t_1,\ldots,t_d)$, so it is Hilbertian by
+\cite[\S4, Theorem 2(a),(d)]{B_Geyer2012}. Statement B2 applied to the
+normal core of an open subgroup gives (B-slim) for $\pi_K$. In
+transcendence degree zero it is trivial. Projection of an element of
+$C_{G_K}(E'^\circ)$ to $G_k$ centralizes an open cyclotomic kernel, and
+is trivial by B1; the element then lies in $\pi_K$ and centralizes
+$E'\cap\pi_K$. This provides the manuscript's original reduction as well.
+
+The three marginal questions on scans 14--15 concern, respectively,
+the center of the open arithmetic subgroup, the center of a free
+profinite group, and its torsion. In this last proof the first is answered
+by B1; the second is answered, with rank at least two, by Nakamura's cited
+Corollary (1.3.4); and the third is proved above. All three enter the
+manuscript's finite-centralizer argument. The alternative proof B4 uses
+the Hilbertian criterion instead and does not require those three
+auxiliary steps.
+
+\subsection{Arithmetic and geometric fixed groups}
+
+\paragraph{Statement B6 (Proved: the equivalence used at scan 127).}\label{res:B6}
+Let $K/\mathbf Q$ be finitely generated, let
+\[
+ 1\longrightarrow P\longrightarrow E\xrightarrow{p}G_K\longrightarrow1
+\]
+be an exact sequence of profinite groups, and let
+$s:G_{K'}\to E\times_{G_K}G_{K'}$ be a continuous section over a finite
+extension $K'/K$. We regard its image as a subgroup of $E$ through the
+inclusion of the pullback. For every subgroup $\Omega\subset G_{K'}^\circ$
+that is open in $G_{K'}^\circ$,
+\[
+ C_E(s(\Omega))=C_P(s(\Omega)).
+\]
+In particular the corresponding two assertions of triviality are
+equivalent. This equality applies both to the absolute group of a
+function field and to the arithmetic fundamental group of a model.
+
+\begin{proof}
+An open subgroup $\Omega$ of $G_{K'}^\circ$ contains
+$G_{K''}^\circ$ for a finite extension $K''/K'$.
+To construct it, choose an open subgroup $W\subset G_{K'}$ with
+$W\cap G_{K'}^\circ\subset\Omega$, and let $K''$ be its fixed field.
+Then $G_{K''}^\circ=W\cap G_{K'}^\circ$. For
+$z\in C_E(s(\Omega))$, the element $p(z)$ centralizes
+$G_{K''}^\circ$ in $G_K$, and is trivial by B4. Thus $z\in P$.
+The reverse inclusion of the two centralizers is the inclusion $P\to E$.
+Every map used is the displayed continuous quotient or subgroup inclusion;
+no comparison of fixed groups under a quotient is inferred in the reverse
+direction.
+\end{proof}
+
+\paragraph{Statement B12 (Proved: Theorem 1 over cyclotomic fields).}\label{res:B12}
+Let $k$ be a number field, $F=k(\mu_\infty)$, and let $M/F$ be a finitely
+generated field extension. Every open subgroup $H\subset G_M$ has
+$C_{G_M}(H)=1$. Since $\mu_\infty\subset M$, its cyclotomic kernel is
+$G_M$ itself. For positive transcendence degree, the geometric absolute
+group $G_{M\overline F}$ has the same open-subgroup centralizer property;
+in transcendence degree zero it is trivial. This proves Theorem 1 of scan
+13, including the geometric assertion, over $F$ and its finitely generated
+extensions.
+
+\begin{proof}
+The abelian extension $F/k$ is Hilbertian by Kuyk's theorem as opened in
+\cite[\S4, Theorem 2(g)(2)]{B_Geyer2012}. For $M/F$ algebraic and finitely
+generated, $M/F$ is finite and preserves Hilbertianity by that source's
+Theorem 2(d). For positive transcendence degree, a transcendence basis
+expresses $M$ as a finite extension of a rational function field over
+$F$, which is Hilbertian by Theorem 2(a), followed again by (d).
+Choose an open normal subgroup $H_0\subset H$. Its fixed field is finite
+over $M$, hence Hilbertian and not separably closed, so $H_0\ne1$.
+Statement B2 gives $C_{G_M}(H_0)=1$, and hence $C_{G_M}(H)=1$.
+For the geometric group, $M\overline F$ is a finite extension of
+$\overline F(t_1,\ldots,t_d)$ when $d>0$, so the identical proof applies.
+When $d=0$ it is the algebraically closed field $\overline F$, with trivial
+absolute Galois group.
+\end{proof}

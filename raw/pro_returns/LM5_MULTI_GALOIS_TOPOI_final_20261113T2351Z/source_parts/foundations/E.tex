@@ -1,0 +1,320 @@
+\section{Shape, the Postnikov tower, and the precise change of level}
+\label{sec:E}
+
+Write $\mathcal S$ for the infinity-category of spaces, $\mathcal S_{\le n}$ for its $n$-truncated objects, and $\beta_\infty K=\mathcal S/K\simeq\operatorname{Fun}(K,\mathcal S)$. The suffix on $\beta_\infty$ distinguishes it from the ordinary set-valued classifying topos. For an ordinary topos $\mathcal E$, use its associated $1$-localic infinity-topos $\mathcal X$ of sheaves of spaces. When hypercompletion is used it is displayed as $\mathcal X^\wedge$. All finite shape truncations are independent of this choice. In particular, no assertion below silently identifies ordinary sheaves and hypersheaves.
+
+\subsection{The construction and the announced tower}
+
+\paragraph{E.1 (Proved; Part E(a), with no point or connectivity hypothesis).}
+\textit{Manuscript: LM \S2, folio 4, scans 12--13; \S3, folio 6, scan 16.}
+Every Grothendieck infinity-topos $\mathcal X$ has a functorial shape
+\[
+ P=\Pi_\infty\mathcal X\in\operatorname{Pro}(\mathcal S),\qquad
+ \operatorname{Map}_{\operatorname{Pro}(\mathcal S)}(P,K)
+       \simeq\operatorname{Map}_{\mathcal X}(1,\Delta K).
+                                                        \tag{E.1.1}
+\]
+Its fundamental pro-$n$-groupoid is $P_n=\tau_{\le n}P$, with truncation applied stagewise in a pro-presentation. There are canonical maps
+\[
+ P\longrightarrow\cdots\longrightarrow P_n\longrightarrow P_{n-1}
+                 \longrightarrow\cdots\longrightarrow P_1\longrightarrow P_0.
+                                                        \tag{E.1.2}
+\]
+For $n$-truncated $K$, (E.1.1) factors uniquely through $P_n$. Hypercompletion induces $\Pi_n\mathcal X^\wedge\simeq\Pi_n\mathcal X$ for every finite $n$. These are statements about pro-objects, with all coherences retained, rather than pro-objects of an ordinary homotopy category.
+\begin{proof}
+The constant-object inverse image $\Delta:\mathcal S\to\mathcal X$ is accessible and left exact. For each $U\in\mathcal X$ the functor $K\mapsto\operatorname{Map}_{\mathcal X}(U,\Delta K)$ is accessible and preserves finite limits. It is therefore pro-representable: explicitly take its category of elements, consisting of pairs $(K,U\to\Delta K)$. Finite-limit preservation makes that category cofiltered, and accessibility supplies a small cofinal subcategory. The resulting diagram of its $K$'s is a pro-left adjoint $\pi_!U$ to $\Delta$. Set $P=\pi_!1$. This construction gives (E.1.1) and is invariant under a change of site. Pullback of torsors along a geometric inverse image gives functoriality.
+
+For a presentation $(P_i)$, the pro-mapping formula and the ordinary truncation adjunction give
+$\operatorname{colim}_i\operatorname{Map}(P_i,K)
+ =\operatorname{colim}_i\operatorname{Map}(\tau_{\le n}P_i,K)$
+for $K\in\mathcal S_{\le n}$. This proves the universal property of (E.1.2). Hypercompletion fixes every truncated object. The constant object associated to an $n$-type is already $n$-truncated, and its mapping space from $1$ is unchanged. Formula (E.1.1), restricted to $n$-types, proves the asserted invariance. This is the construction of Hoyois (2018, Definition~2.3 and \S2), with its pro-representability and variance made explicit. It applies in particular to both pointless examples A.2 and A.11. \hfill$\square$
+\end{proof}
+
+% Further statements are appended below the initial E.1--E.6 block.
+
+\paragraph{E.2 (Proved; the exact universal property of the stages).}
+\textit{Manuscript: LM \S2, folio 4, scan 13 (the announced stages).}
+If $P_n$ is represented by an actual $n$-type $K_n$, define
+\[
+ \mathcal X_{[n]}=\beta_\infty K_n.
+                                                        \tag{E.2.1}
+\]
+There is a canonical geometric morphism $q_n:\mathcal X\to\mathcal X_{[n]}$, characterized by
+\[
+ \operatorname{Map}_{\mathrm{Top}_\infty}(\mathcal X_{[n]},\beta_\infty L)
+  \xrightarrow{\ \simeq\ }
+ \operatorname{Map}_{\mathrm{Top}_\infty}(\mathcal X,\beta_\infty L)
+                                                        \tag{E.2.2}
+\]
+for every $n$-type $L$. Constancy of $P_n$ is necessary and sufficient for a stage of this form with this universal property. If all finite $P_n$ are constant, (E.2.1) gives the entire tower of scan~13. A sufficient intrinsic hypothesis is that $\Delta:\mathcal S\to\mathcal X$ preserve all small limits, equivalently admit an actual left adjoint $\pi_!:\mathcal X\to\mathcal S$. This is local constant shape, also called local infinity-connectedness. Under that hypothesis $H=\pi_!1$ is an actual space and $K_n=\tau_{\le n}H$.
+\begin{proof}
+The infinity-topos $\beta_\infty L$ classifies $L$-torsors: its geometric morphisms from $\mathcal X$ are sections of $\Delta L$. Explicitly a section $a:1\to\Delta L$ sends an object $Z\to L$ to the pullback $1\times_{\Delta L}\Delta Z$. This functor is left exact and cocontinuous by descent, and conversely applying an inverse image to the universal $L$-torsor recovers $a$. Thus (E.1.1) identifies maps to $\beta_\infty L$ with maps from $P$ to $L$. Apply the same calculation to $\mathcal S/K_n$: its shape is $K_n$, since sections of a constant object are $\operatorname{Map}(K_n,L)$. This proves (E.2.2), including all higher homotopies. Conversely (E.2.2) says exactly that $K_n$ represents $P_n$, by pro-Yoneda.
+
+If $\pi_!$ is actual, its adjunction identifies $P$ with the constant pro-object $H$. The equivalence between existence of this left adjoint and local constant shape is Lurie (2017, Proposition~A.1.8); it also follows immediately by applying representability to $\operatorname{Map}(U,\Delta-)$ for every $U$. Truncation maps $K_n\to K_{n-1}$ give geometric morphisms in precisely the manuscript's direction. Their inverse images are restriction functors in the reverse direction. Their universal properties make all the compositions coherent.
+
+Without constancy, $P_n$ itself is the universally defined pro-stage. One may also form $\beta_\infty P_n=\lim_i\beta_\infty(\tau_{\le n}P_i)$ and its canonical unit, but should not assert that this limit topos retains every arbitrary pro-object: the extension $\beta_\infty:\operatorname{Pro}(\mathcal S)\to\mathrm{Top}_\infty$ is not fully faithful in general (Hoyois, 2018, Remark~2.8). A.15--A.18 give the reconstruction of a Galois topos from its \emph{intrinsic} fundamental pro-groupoid; A.21 shows why even a strict presentation of a limit topos need not be that intrinsic pro-groupoid. This qualification is precisely the distinction between a pro-object and a limit demanded in Part~A(e). \hfill$\square$
+\end{proof}
+
+\paragraph{E.3 (Proved; Part E(b), the level-one identification).}
+\textit{Manuscript: LM \S2, folio 4, scans 12--13 (2.1--2.2).}
+Under the hypotheses of A.9, if $\operatorname{LC}(\mathcal E)=\beta C$, then
+\[
+ \Pi_1\mathcal X\simeq C\quad\hbox{as a constant pro-groupoid},
+ \qquad
+ \mathcal E_{[1]}\simeq(\beta_\infty BC)_{\le0}.
+                                                        \tag{E.3.1}
+\]
+The geometric morphism of Definition~2.2 is the ordinary part of the canonical first stage in E.2. The analogous zeroth stage is $\mathbf{Set}^{\pi_0\mathcal E}$. Thus ``the $1$-truncation'' means the classifying topos of the $1$-truncated \emph{shape}; it does not mean the subcategory of $1$-truncated objects of the original topos.
+\begin{proof}
+A torsor under a discrete groupoid is locally constant. The inclusion $\beta C\hookrightarrow\mathcal E$ preserves finite limits and all colimits, so it preserves and reflects its principal-action equations and covering condition. Therefore for every groupoid $D$,
+\[
+ \operatorname{Tors}_{\mathcal E}(D)
+     \simeq\operatorname{Tors}_{\beta C}(D)
+     \simeq\operatorname{Fun}(C,D).
+\]
+The last equivalence is A.8. This is the representing universal property for the constant pro-groupoid $C$, proving the first assertion. Its action on set-valued representations is exactly the full inclusion of A.9, so the inverse images agree, proving the assertion about geometric morphisms. Zeroth truncation discards all automorphisms and retains components. None of this uses actual points of $\mathcal E$; A.11 is a direct test of that fact. For merely locally connected $\mathcal E$, replace the constant $C$ by A.16's pro-groupoid and retain the distinction between locally constant objects and their generated topos. \hfill$\square$
+\end{proof}
+
+\paragraph{E.4 (Proved; locally contractible spaces and the Postnikov tower).}
+\textit{Manuscript: LM \S2, folio 4, scan 13 (local contractibility).}
+Let $T$ be a topological space with a basis of contractible open subsets. For every finite $n$,
+\[
+ \Pi_n\operatorname{Shv}(T)
+       \simeq\tau_{\le n}\operatorname{Sing}(T),
+ \qquad
+ \mathcal X_{[n]}\simeq
+       \beta_\infty\tau_{\le n}\operatorname{Sing}(T).
+                                                        \tag{E.4.1}
+\]
+Consequently its stages and maps are exactly the Postnikov tower, expressed as classifying infinity-topoi. Its inverse-image functors include $(n-1)$-truncated local systems into those at higher stages. The full shape of the \emph{hypersheaf} infinity-topos is the actual singular homotopy type. For the ordinary sheaf infinity-topos that untruncated conclusion follows, for example, if it is hypercomplete, or if $T$ is locally of singular shape in the sense of Lurie's Definition~A.4.15.
+\begin{proof}
+Here is the hypersheaf comparison underlying the assertion. For a space $K$ define a presheaf
+$R_K(V)=\operatorname{Map}(\operatorname{Sing}V,K)$ on the opens of $T$. An open hypercover has homotopy colimit weakly equivalent to the open it covers (Dugger and Isaksen, 2004, Theorem~1.3; Theorem~1.2 in the arXiv version). Hence $R_K$ satisfies hyperdescent. On a contractible open its value is $K$, naturally via constant maps. The comparison theorem for hypersheaves on a basis therefore identifies $R_K$ with the hypersheaf constant object. Taking its value at $T$ gives
+\[
+ \Gamma\Delta^\wedge K\simeq
+                   \operatorname{Map}(\operatorname{Sing}T,K).
+\]
+The same construction is a right adjoint to the colimit extension of $V\mapsto\operatorname{Sing}V$ from representables. Thus this hypersheaf topos is locally of constant shape, not just of constant global shape. This is precisely Carchedi (2021, Proposition~2.2.7); the argument also states which comparison lemma is being used.
+
+For finite $n$, E.1 permits removal of hypercompletion in the displayed formula when $K$ is an $n$-type. Pro-Yoneda then gives (E.4.1), and E.2 supplies its stagewise universal property. The transition maps induce isomorphisms on $\pi_i$ for $i<n$ and kill $\pi_i$ for $i>n$; their fibres encode the usual Postnikov extension by $K(\pi_nT,n)$. This is the Postnikov tower by its defining truncation universal property, including its $k$-invariants. In the actual-space case $\operatorname{Sing}T\simeq\lim_n\tau_{\le n}\operatorname{Sing}T$, so the whole tower determines the singular weak homotopy type. There is no claim that an arbitrary untruncated pro-shape is recovered from its finite truncations.
+
+The last sufficient hypothesis invokes Lurie (2017, Theorem~A.4.19), which identifies local systems with functors on $\operatorname{Sing}T$ whenever every open has singular shape. Ordinary manifolds and CW spaces satisfy this condition. The use of hypersheaves above covers the requested general locally contractible case without silently importing a finite-dimensional or a paracompactness hypothesis. \hfill$\square$
+\end{proof}
+
+\subsection{Which constructions survive a change of coefficients}
+
+\paragraph{E.5 (Proved; higher recognition and the correction to 1.1).}
+\textit{Manuscript: LM \S1, folio 1, scan 6; \S2, folio 4, scan 12.}
+If $\mathcal X$ is locally of constant shape, the canonical inverse image
+\[
+ q^*:\beta_\infty(\Pi_\infty\mathcal X)\longrightarrow\mathcal X
+\]
+is fully faithful with essential image the locally constant objects. Hence all objects are locally constant if and only if $\mathcal X\simeq\beta_\infty H$ for an actual space $H$. At finite height the correct version uses $n$-localic infinity-topoi, local $(n-1)$-connectedness, generation by locally constant objects, and $(n-1)$-strict pro-$n$-groupoids. At height one this is A.15; dropping local connectedness is already refuted by A.2.
+\begin{proof}
+Put $H=\pi_!1$. The unit $1\to\Delta H$ defines $q^*$ by pullback as in E.2, with left adjoint $q_!U=(\pi_!U\to H)$. The projection formula
+\[
+ \pi_!(\Delta A\times_{\Delta B}U)
+                      \simeq A\times_B\pi_!U
+\]
+is Lurie (2017, Proposition~A.1.9). Applying it to the defining pullback gives $q_!q^*Z\simeq Z$ in $\mathcal S/H$, so $q^*$ is fully faithful. Its image is exactly the locally constant objects by Theorem~A.1.15: its applicability here follows from the actual left adjoint in E.2, with no point hypothesis. An object in the image is visibly locally constant after pulling back the covering family of points of $H$; the converse is the theorem's effective-descent assertion, with the projection formula identifying the gluing maps. If every object is locally constant, full faithfulness plus essential surjectivity gives the equivalence; conversely every object of $\mathcal S/H$ is split by the representable covers $*\to H$.
+
+For finite height, apply Hoyois (2018, Theorem~3.13 and Corollary~3.20) with the stated indices: set-valued objects correspond to $n=1$ topoi but to $0$-truncated coefficients. The theorem's strictness is exactly the connected-fibre condition of A.15, and the completion from split representations to the classifying topos is exactly A.16. This derives the manuscript's cases while retaining the shifted index and the generation condition. The Boolean example A.2 prevents the unconditional level-one recognition and therefore prevents a purported higher theorem with that false specialization. \hfill$\square$
+\end{proof}
+
+\paragraph{E.6 (Proved; slices, points, universal covers, and induction).}
+\textit{Manuscript: LM \S1, folios 1--3, scans 6--11; \S4, folios 6--7, scans 16--18.}
+The slice, point and Hom assertions A.5--A.8 extend to all levels with spaces of morphisms and coherent transformations. For $Z\to H$,
+\[
+ (\mathcal S/H)/(Z\to H)\simeq\mathcal S/Z,
+ \qquad
+ \operatorname{Map}_{\mathrm{Top}_\infty}(\beta_\infty H,\beta_\infty K)
+                         \simeq\operatorname{Map}(H,K).
+                                                        \tag{E.6.1}
+\]
+The space of points of $\beta_\infty H$ is $H$. A pointed universal representable has contractible space of pointed identifications. The faithful-functor criterion of A.13 is specific to \emph{set-valued} slices: a map of groupoids is faithful exactly when its map of classifying spaces has $0$-truncated homotopy fibres. With arbitrary space-valued slices every map $Z\to H$ gives a slice morphism, so there is no faithful-functor restriction at that level.
+\begin{proof}
+The first identity is associativity of slice categories. The second is the torsor calculation of E.2, or the full faithfulness of $H\mapsto\mathcal S/H$. Setting $H=*$ gives the assertion about points. Under straightening the point $h$ is represented by the path-space functor $\operatorname{Map}_H(-,h)$; enriched Yoneda gives its representing property, and the infinity-categorical uniqueness of a representing pair gives a contractible space of pointed identifications. Sums of components are handled by products of these topoi, exactly as in A.1 and A.5.
+
+For $D\to C$ between ordinary groupoids, the homotopy fibre over $c$ is its comma groupoid of lifts. It is $0$-truncated precisely when it is equivalent to a discrete set, equivalently when there is at most one morphism between each two of its objects. This is the faithfulness condition on $D\to C$. The slice then comes from that set-valued local system, recovering A.13 and its thin Hom-groupoids. If the fibre is a higher space, the corresponding slice object is space-valued; its mapping spaces need not be discrete. Replacing these by sets or by isomorphism classes discards information. For example $\beta_\infty S^2$ has ordinary locally constant set category $\mathbf{Set}$ but shape $S^2$, whereas $\beta_\infty *$ has the same set category and shape $*$. Their degree-two cohomology distinguishes them. The supplied CATHOT~C.1--C.4 describes exactly this level-one boundary for functors modulo natural transformations; no new proof of that representability theorem is being substituted here. \hfill$\square$
+\end{proof}
+
+\paragraph{E.7 (Proved; delimited statement: higher van Kampen).}
+\textit{Manuscript: LM \S16, folios 81--84, scans 163--170.}
+Shape sends colimit diagrams of infinity-topoi to colimit diagrams of pro-spaces. Consequently any genuine gluing equivalence of infinity-topoi gives a van Kampen theorem at every truncated level, and after profinite completion. Effective descent for an open cover gives such an equivalence. The ordinary $2$-pushout of C.2 is the correct level-one statement; it cannot be substituted for that higher gluing hypothesis.
+\begin{proof}
+The torsor calculation in E.2 gives the adjunction
+$\Pi_\infty:\mathrm{Top}_\infty\rightleftarrows\operatorname{Pro}(\mathcal S):\beta_\infty$.
+The left adjoint preserves colimits. Truncation to pro-$n$-types and completion to pro-$\pi$-finite types are also left adjoints, so the same conclusion holds after either operation. For an effective epimorphism $U\to1$ in an infinity-topos, descent identifies the original topos with the colimit of its \v Cech diagram of slices in $\mathrm{Top}_\infty$. An open cover is such a diagram. For a two-member cover this gives the familiar homotopy pushout of the two pieces along their intersection. In an algebraic setting one may use an elementary Nisnevich square: Barwick, Glasman, and Haine (2020, Proposition~11.6.3 and Corollary~11.6.6) prove that it is a pushout of étale infinity-topoi and hence of their shapes. This identifies a precise descent hypothesis, rather than assuming that an ordinary topos pushout suffices.
+
+For the failure of that substitution, consider the span of ordinary groupoids
+$*\leftarrow B\mathbb Z\to *$. Its bicategorical pushout is the terminal groupoid, and its classifying ordinary topoi have pushout $\mathbf{Set}$ by C.2. The homotopy pushout of the corresponding spaces is
+\[
+ *\mathop{\sqcup}\limits^{h}_{S^1}*\simeq\Sigma S^1\simeq S^2.
+                                                        \tag{E.7.1}
+\]
+For example its reduced integral cellular chain complex is $\mathbb Z$ in degree two, whereas that of a point is zero. Hence the comparison loses $\pi_2$ and degree-two cohomology. In fact the corresponding pushout of classifying infinity-topoi is $\beta_\infty S^2$: a map from $\mathcal S/K$ into any infinity-topos is a $K$-family of its points, since left exactness and colimit preservation are checked pointwise in $\operatorname{Fun}(K,\mathcal S)$. Thus $K\mapsto\mathcal S/K$ preserves colimits of actual spaces as well as being fully faithful. Its extension to arbitrary pro-spaces need not do so (E.2).
+
+The topology on automorphism groups is a separate issue. The generic profinite pushout in C.3 fails in all ordinary topoi, whereas the surjective hole-filling pushout in C.2 is valid there. Neither assertion repairs (E.7.1): even when the ordinary $2$-pushout has the right universal property in all ordinary topoi, the higher universal property is different. Transitivity of filling, when formulated by actual homotopy pushouts or topos descent, does extend: both iterated orders are the colimit of the same full diagram. This proves the higher form of C.4 without replacing a homotopy colimit by a quotient of groups. \hfill$\square$
+\end{proof}
+
+\paragraph{E.8 (Refuted; exact higher replacement: acyclicity).}
+\textit{Manuscript: LM \S14, folio 63, scan 129; \S16, folio 83, scan 167.}
+The map to the fundamental-groupoid stage preserves locally constant sets and their monodromy. It need not preserve their higher cohomology. Thus the acyclicity of C.5 is not a formal consequence of being a multi-Galois reflection. At all levels its exact replacement is equivalence of the relevant shapes, or the stated coefficient-relative equivalence when only a coefficient class is required. The curve hypotheses and local inertia condition of B.3--B.8 are substantive conditions for that replacement.
+\begin{proof}
+The map $S^2\to *$ induces an equivalence on locally constant sets and an isomorphism on $\pi_1$, but
+$H^2(S^2;\mathbb Z/m)=\mathbb Z/m$ and $H^2(*;\mathbb Z/m)=0$ for $m>1$.
+This is the simplest counterexample. For a local system $A$ of abelian groups, cohomology is represented by sections of its fibrewise Eilenberg--Mac Lane objects. A shape equivalence therefore gives cohomology isomorphisms with every such local system, including twisted ones. Conversely, for a map inducing an equivalence on finite covering groupoids, isomorphisms for every finite abelian local system in every degree imply an equivalence on all $\pi$-finite coefficient spaces. To see this, use induction on the finite Postnikov tower of a target. The first stage is the finite-covering hypothesis; at the next stage lifts of a map are the sections of a twisted Eilenberg--Mac Lane fibration, their obstruction is the indicated cohomology class, and their homotopy groups are the lower cohomology groups with the same local system. Isomorphism of these groups gives equivalence of each lift space. This proves the claimed profinite-shape criterion, not merely a comparison of individual cohomology groups.
+
+It follows that B.7's full torsion comparison, together with B.2's finite-cover comparison, upgrades to a comparison with all finite homotopy coefficients in precisely its valid cases. Its characteristic-zero exceptions $(g,\nu)=(0,0),(0,1)$ remain exceptions, already in degree two. The prime-to-$p$ variant only gives the correspondingly restricted completion; it cannot imply a statement for $p$-torsion, for the reason and example of B.8. The kernel criterion in B.3 is the exact local test before making these global deductions.
+
+Finite homotopy coefficients still do not determine an unrestricted shape. For example $K(\mathbb Q,2)$ has contractible profinite completion but is not contractible. One elementary verification presents it as the mapping telescope of $K(\mathbb Z,2)=\mathbb CP^\infty$ under multiplications $2,3,4,\ldots$. In each positive even degree the induced maps on cohomology with $\mathbb Z/m$ multiply by the corresponding power of those integers, so their inverse system is pro-zero; odd positive cohomology is zero. The telescope's Milnor sequence gives zero reduced finite cohomology, including the $\lim^1$ term. The space is simply connected, and the Postnikov induction just given makes every map into a $\pi$-finite target equivalent to a constant one. Its nonzero $\pi_2=\mathbb Q$ distinguishes it from a point.
+
+For stronger coefficient theories we use the supplied GALOIS results in their verified scope. GALOIS~C.7, C.9--C.10 and F.7 show that equivalence of the \emph{specified restriction functor} on integral derived local systems, or on local spectra, detects a weak equivalence of actual spaces. The proof passes from restriction to the specified map of loop algebras, then to $\pi_1$ and integral homology of universal covers, and finally uses the homology Whitehead theorem. That argument has been checked in the attached return. It is stronger than ordinary acyclicity with constant coefficients, and makes no assertion that a bare abstract ordinary category reconstructs its enhancement. The latter assertion is expressly not proved by GALOIS~F.8 and is not used here. \hfill$\square$
+\end{proof}
+
+\paragraph{E.9 (Proved; the higher content of the mixed gluing and the Remords).}
+\textit{Manuscript: LM \S14, folios 60--63, scans 123--129; cote 147, scans 179--180 (Remords).}
+The open--closed gluing of B.1 has a higher analogue using the full nearby-cycle functor. Its set-valued gluing functor $q_*r^*$ records only degree-zero invariants. Replacing it by homotopy fixed points, or equivalently retaining the full homotopy link, is necessary for a general comparison of shapes. For one closed stratum, the ordinary mixed category has shape
+\[
+ BG\mathop{\sqcup}\limits^{h}_{BK}BQ,
+ \qquad K=\operatorname{im}(H\longrightarrow G\times Q),
+                                                        \tag{E.9.1}
+\]
+in the discrete case. The geometric link model, when the pieces and link have the indicated $K(\pi,1)$ types, has shape
+\[
+ BG\mathop{\sqcup}\limits^{h}_{BH}BQ.
+                                                        \tag{E.9.2}
+\]
+The map $H\to K$, not just the homotopy types of the individual strata, controls their difference.
+\begin{proof}
+Let $\mathcal U,\mathcal Z$ be infinity-topoi with an accessible left exact gluing functor $\Phi:\mathcal U\to\mathcal Z$. Their Artin gluing consists of triples $(M,N,N\to\Phi M)$ with all homotopies retained. Finite limits are computed on the two components; effective descent gives its open and closed embeddings, and reconstructs every object from its two restrictions and its gluing map. Applying this construction to an open--closed decomposition uses $\Phi=i^*j_*$. The right adjoint $j_*$ in sheaves of spaces already computes the homotopy-coherent sections on the punctured neighbourhood, so it retains the higher link data. On abelian coefficients its linear form uses $Ri^*Rj_*$, yielding the fibre sequence for derived sections. This is the recollement construction of Barwick, Glasman, and Haine (2020, \S5.1), and the ordinary truncation is precisely B.1. The resulting corrected infinity-topos need not be $1$-localic: its category of $0$-truncated objects can agree with the ordinary mixed topos while its higher objects differ. Thus the operation is not asserted to be the automatic $1$-localic enhancement of that ordinary topos.
+
+For the ordinary mixed category, crossing arrows from the closed to the open object form the biset $G\times_HQ$. The groupoid of crossing arrows and their source and target isomorphisms is the action groupoid for $G\times Q$ on this biset. Its action is transitive and a stabilizer is $K$ (up to the harmless inverse in the right-action convention); it therefore has classifying space $BK$. A simplex of the mixed category either stays in one stratum or contains exactly one crossing block. Dividing it at that block identifies its realization with the two-sided mapping cylinder of the source and target maps of the crossing groupoid. This proves (E.9.1). The identical argument with the actual homotopy link proves (E.9.2) under the stated local product and descent hypotheses. In the profinite case these are statements about the completed, homotopy-coherent diagrams; finite-stage descent and SGA~4 VI, Corollary~8.7.7, with hypotheses~8.7.1 and Remark~8.7.8, justify the torsion cohomology passage used in B.3.
+
+Applying a stable coefficient theory to the two homotopy pushouts gives the two fibre sequences with common terms $R\Gamma(G,M)\oplus R\Gamma(Q,N)$ and last terms $R\Gamma(K,M)$ or $R\Gamma(H,M)$. The comparison's cofiber is the cofiber of inflation on those last terms, shifted by $-1$. This rederives B.3's obstruction and locates it exactly in the lost homotopy link. If $H\to G\times Q$ is injective, $BH\to BK$ is an equivalence, so this particular loss is absent. If it is not injective, its homotopy fibre is the classifying space of the kernel, and its effect must be tested on the requested coefficients.
+
+For $(\mathbb P^1,\{\infty\})$ over $\mathbb C$, the strata have types $*=B1$ and $*=B1$, while the punctured link is $S^1=B\mathbb Z$. Here $K=1$, so (E.9.1) is a point and (E.9.2) is $S^2$. The mixed ordinary category is $[1]$, as in the manuscript's Remords, and cannot have the cohomology of the sphere. In the full exit infinity-category the crossing mapping space is $S^1$; passing to its homotopy category replaces that space by a singleton. Notice the exact lesson: an ordinary category can have a classifying space of arbitrarily high homotopy dimension. What loses the information here is replacing a non-discrete crossing mapping space by its components, not merely writing down an ordinary category. E.12 gives cases where the crossing spaces really are discrete and the ordinary category retains the full higher shape. \hfill$\square$
+\end{proof}
+
+\paragraph{E.10 (Proved; delimited statement: direct images and coefficient-relative descent).}
+\textit{Manuscript: LM \S2, folio 4, scans 12--13; GALOIS B.3 comparison requested in Part E.}
+For a map $g:H\to K$ of spaces and any presentable coefficient infinity-category $\mathcal C$, restriction on local systems has left and right Kan extension adjoints. Their pointwise formulas use the homotopy fibres of $g$. This is the all-level direct-image statement for the Galois envelopes. A locally connected geometric morphism of ambient topoi need not carry locally constant objects to locally constant objects under its left adjoint, even if its usual base-change maps are isomorphisms.
+\begin{proof}
+For $F:H\to\mathcal C$ and $k\in K$, the comma infinity-groupoid of lifts of $k$ is the homotopy fibre $H_k$. Pointwise Kan extension gives
+\[
+ (g_!F)(k)=\operatorname{colim}_{H_k}F,
+ \qquad (g_*F)(k)=\lim_{H_k}F.
+                                                        \tag{E.10.1}
+\]
+Transport in $K$ makes these expressions local systems and supplies all the coherence maps. These are the coefficient-relative formulas proved in GALOIS; no separate derivator theory is required here. They apply directly to every morphism between the classifying infinity-topoi of E.2.
+
+For the ambient warning let $j:(0,1)\hookrightarrow\mathbb R$ be the open inclusion. Its geometric morphism is essential and locally connected; its left adjoint is extension by the empty sheaf, and that operation commutes with pullback along maps of spaces. Nevertheless $j_!1$ is the open subterminal $(0,1)\subset1$ on $\mathbb R$, which is not locally constant near either endpoint. Thus neither local connectedness nor this base-change property proves the assertion that would be needed to apply (E.10.1) directly to $j_!$.
+
+Here is a useful non-tautological sufficient hypothesis. Let $f:T\to S$ be a locally trivial fibre bundle of spaces with contractible open bases and locally contractible fibre, and take hypersheaves. Over a contractible trivializing open $V\subset S$, E.4 identifies every locally constant object on $V\times F$ with a local system on $F$; the equivalence is natural under smaller contractible opens. The relative left adjoint exists there by the local-constant-shape construction of E.2, and is the constant sheaf with value the homotopy colimit over $F$. These local adjoints glue, since their defining adjunctions and their comparison on overlaps are unique up to contractible choice. Thus $f_!$ preserves locally constant objects and is (E.10.1) on their Galois envelopes. More generally, whenever this preservation has been separately proved, restricting the adjunction identifies the restriction with $g_!$; the corresponding mate is an equivalence. This supplies the exact geometric hypothesis missing from an unrestricted transfer of the fibrewise argument GALOIS~B.3. \hfill$\square$
+\end{proof}
+
+\paragraph{E.11 (Proved; delimited statement: operators, exterior maps, transporters, and rigidity).}
+\textit{Manuscript: LM \S14, folios 64--67, scans 132--137; \S16, folios 85--88, scans 172--178; \S12, folios 50--53, scans 103--109.}
+Actions and quotient compatibility in C.6 and C.8 extend to all levels as homotopy-coherent actions and colimits. The same is true of mixed morphisms once their full gluing transformation is included. Centralizer computations describe the level-one automorphisms of a specified map; higher uniqueness requires the entire space of choices to be contractible. The domain and degree obstructions in C.9 and C.11 remain actual obstructions and are not removed by changing coefficients.
+\begin{proof}
+A coherent action of a discrete group $\Gamma$ is a functor $B\Gamma\to\mathrm{Top}_\infty$. Its colimit is the quotient infinity-topos. Descent along the universal $\Gamma$-torsor identifies such actions with infinity-topoi over $\beta_\infty B\Gamma$ whose pullback along its point is the specified topos. The action, its associativity homotopies and all higher coherences are recovered by the \v Cech nerve of that torsor. Taking a quotient and taking the colimit of an equivariant gluing diagram commute: both are the colimit over the Grothendieck construction of the same diagram. This proves the all-level versions of actions, the equivariant diagram, and passage to the quotient. Continuous profinite actions require continuous torsor data and pro-objects; C.7's distinction from an internal discrete torsor persists unchanged.
+
+A morphism of glued infinity-topoi is specified by the maps on its pieces and a transformation between the two composites with their gluing functors. Composing transformations supplies the mixed morphism construction of B.12 at all levels. Taking an equivariant torsor and a coherent splitting gives its operator form, as in B.13. In a $1$-type the automorphisms of a map $BG\to BH$ are $C_H(\varphi G)$, so triviality of that group makes its component of the choice space contractible. This is exactly A.8 and B.13's rigidity calculation. For higher types, a zero automorphism group at level one only kills $\pi_1$ of the choice space. For example
+$\operatorname{Map}(*,K(A,2))=K(A,2)$ has trivial $\pi_1$ and nontrivial $\pi_2$ when $A\ne0$. Higher uniqueness therefore means a contractible fibre of the relevant mapping-space comparison, not just trivial centralizer.
+
+Exterior homomorphisms are components of mapping spaces. Descent from a representative to its exterior class is unambiguous exactly when the appropriate component is contractible; this recovers C.9's sufficient centralizer condition at level one, but does not make its proposed class of morphisms closed under composition. The explicit compositional counterexample in C.9 already occurs in discrete groups. Transporters in C.10 are homotopy fibres of conjugacy-orbit maps; replacing their ordinary groupoids by those full fibres gives the coherent all-level construction. The equation of scan~107 still forces the scalar degree to be invertible under its stated self-centralizing hypotheses, by C.11's algebraic proof. Keeping coherent higher data cannot turn that equation into the differently directed ramified equation. Once the corrected local maps and their comparison cells are supplied, the operator construction is the equivariant homotopy-fibre construction and gives C.12's extension. \hfill$\square$
+\end{proof}
+
+\paragraph{E.12 (Proved; the finite-homotopy tests $n=4$ and $n=5$).}
+\textit{Manuscript: Part E(c), the LM3b H.8--H.9 tests; cote 147, scan 179.}
+For the boundary stratifications of $\overline{\mathcal M}_{0,4}$ and $\overline{\mathcal M}_{0,5}$ over $\mathbb C$, the full exit infinity-category has $0$-truncated mapping spaces and hence is equivalent to an ordinary EI category. Its profinite completion by finite categorical congruences represents constructible sheaves with values in all $\pi$-finite homotopy types. Thus the comparison left open at $n=5$ in LM3b~H.9 is positive in this case. This statement concerns the full category with its noninvertible generization arrows and their compositions; its groupoidification retains only the fundamental groupoid and does not suffice.
+\begin{proof}
+Here is the geometric test and the additional computation at $n=5$; F.43 supplies the flag construction and the full profinite descent argument. In a conically stratified manifold whose incident strata and homotopy links are $K(\pi,1)$ spaces, the space of exits from a fixed point of a stratum $S$ to a fixed point of an incident stratum $T$ is a homotopy fibre of the link map
+\[
+ L_{S,T}\longrightarrow S\times T.
+                                                        \tag{E.12.1}
+\]
+The long exact homotopy sequence shows that all homotopy groups of this fibre above degree one vanish, and that its fundamental group is
+$\ker[\pi_1L_{S,T}\to\pi_1S\times\pi_1T]$.
+The kernel of projection to $\pi_1S$ is the relevant normal meridian lattice. Hence injectivity of that lattice into $\pi_1T$ makes the entire mapping space $0$-truncated. This includes every component of the mapping space, not just a preferred exit. For $n=4$ the open stratum is a three-punctured sphere, and each peripheral $\mathbb Z$ injects into its free group. Formula (E.12.1) proves the ordinary-category claim and verifies the structural input of LM3b~H.8. Its ordinary category still has a sphere as its classifying space, in agreement with its degree-two calculation.
+
+For $n=5$ use
+\[
+ U=\{(x,y)\in(\mathbb P^1\setminus\{0,1,\infty\})^2:x\ne y\}.
+\]
+Blowing up $(0,0),(1,1),(\infty,\infty)$ in $\mathbb P^1\times\mathbb P^1$ gives the stable compactification. Its ten boundary components are copies of $\overline{\mathcal M}_{0,4}$, their open parts are three-punctured spheres, and there are fifteen crossing points. The map forgetting $y$ is a locally trivial configuration-space fibration with base a three-punctured sphere and fibre a four-punctured sphere. Both are aspherical, and its homotopy exact sequence proves that $U$ is aspherical. Its fundamental group is an extension of a free group of rank three by one of rank two. The abelianization is free on the meridians $a=x_0$, $b=x_1$, $c=y_0$, $d=y_1$, $e=(x=y)$; this also follows from the five affine hyperplane equations defining the arrangement complement.
+
+In this basis the boundary meridians are
+\[
+\begin{array}{c|c@{\qquad}c|c}
+ x_0&a&x_1&b\\
+ x_\infty&-a-b-e&y_0&c\\
+ y_1&d&y_\infty&-c-d-e\\
+ \mathrm{diag}&e&E_0&a+c+e\\
+ E_1&b+d+e&E_\infty&-a-b-c-d-e.
+\end{array}                                             \tag{E.12.2}
+\]
+The compatible pairs are $(x_i,y_j)$ for $i\ne j$ and, for each $i$, the three pairs $(E_i,x_i),(E_i,y_i),(E_i,\mathrm{diag})$. Each corresponding two-column integer matrix has a $2\times2$ minor equal to $\pm1$. For the finite indices this is read off from the coefficients of $a,c,e$ or $b,d,e$; for $E_\infty$ use the rows $(a,c)$ for its pairs with $x_\infty,y_\infty$ and the rows $(a,e)$ for its pair with the diagonal. The six remaining pairs have a unit minor in their two separate coordinate directions. Therefore every incident normal $\mathbb Z^2$ is split injective in $H_1(U,\mathbb Z)$, and every rank-one meridian is primitive. The attached computation checks all fifteen Smith invariants $(1,1)$, while this unit-minor argument proves the injections. The maps into $\pi_1U$ are consequently injective as well. Incidences from a crossing point into a boundary curve use the already verified three-punctured-sphere case. The links are torus bundles over these aspherical strata, hence are aspherical by their homotopy exact sequences. Formula (E.12.1) now proves that every exit mapping space is $0$-truncated. Composition along flags is retained; no third-stratum coherence is discarded.
+
+For clarity, two further steps are required before concluding the finite-homotopy comparison. First, these groups are good for finite coefficients. The only nontrivial new stratum group is the extension $F_3\rtimes F_2$: the extension splits because its quotient is free, and finite-index characteristic subgroups of the finitely generated kernel show that its profinite topology is the full induced one. The completed extension is therefore exact. Free groups are good and have finite cohomology with finite modules; the ordinary and continuous Hochschild--Serre spectral sequences, whose kernel rows are only $0,1$, identify its finite cohomology. The torus bundles are treated by the same argument, or by the triviality of their line bundles over a punctured sphere and the groups $\mathbb Z^r\times F_2$. The split lattice injections in (E.12.2) remain injective after profinite completion. Thus the completed flag pieces are their continuous group classifying types and the profinite version of (E.12.1) again has $0$-truncated fibres.
+
+Second, finite set representations alone would not prove the assertion for higher finite values. For a finite-object category with compact zero-dimensional arrow spaces and continuous composition, every finite collection of clopen arrow partitions is refined by a finite categorical congruence. Define $a\sim b$ when every composable context $u(-)v$ gives the same value in each given partition. Joint continuity and compactness of the spaces of $u,v$ imply that this equivalence has open classes; compactness then makes the quotient finite. Inserting contexts proves compatibility with composition. A diagram with finitely many $\pi$-finite values has a uniform finite truncation bound; a degreewise finite coskeletal model for the full coefficient category on these values reduces its coherent data to finitely many simplicial degrees. The continuous data in those degrees first give finite clopen partitions of compact spaces of composable arrow tuples. Because there are finitely many objects, these spaces are finite unions of products of compact zero-dimensional Hom spaces. Every finite clopen partition of such a product has a finite coordinatewise clopen refinement: cover each clopen cell by basic clopen rectangles and use compactness, then take the finite Boolean refinements in each coordinate. The preceding context-congruence argument now makes all these data factor through a common finite categorical quotient. It applies also with a finite simplex parameter, so it proves the assertion on mapping spaces and all coherences, not just on isomorphism classes of objects. This is the finite congruence realization of the profinite categorical completion used here.
+
+Finally Barwick, Glasman, and Haine (2020, Theorem~10.1.8) identify $\pi$-finite constructible sheaves with continuous representations of the profinite stratified shape. Their stratified Riemann Existence Theorem, Corollary~12.6.6, and its finite-stratification form Corollary~12.6.7, identify the analytic and étale versions; Proposition~12.6.4 is the constructible-sheaf comparison. Applying these theorems to the just-computed exit category gives the asserted comparison over $\mathbb C$. The goodness and congruence steps explain why this application is stronger than simply citing exodromy for finite sets. The counterexample in E.9 fails exactly the meridian-injectivity test and so does not conflict with either case. \hfill$\square$
+\end{proof}
+
+\paragraph{E.13 (Refuted; corrected statement: the Alexandrov and enhancement qualifications).}
+\textit{Manuscript: Part E(c), the STRATA A.1--A.3 qualification; LM \S2, folio 4, scan 13.}
+The level-one equivalence between set-valued sheaves on a poset's Alexandrov space and diagrams on the poset holds for every small poset. Its all-level extension holds for hypersheaves, and without hypercompletion when every principal open is finite. It is false without that qualification for arbitrary posets. Thus a higher model for the tower or the gluing diagram cannot use unrestricted Alexandrov sheaves and presheaves interchangeably.
+\begin{proof}
+Use the upward-open convention. Principal opens have trivial covering topology: any covering family of the principal open at $p$ has a member containing $p$, hence containing that entire open. Restriction to this basis and right Kan extension give
+\[
+ \operatorname{Shv}(P_\uparrow)^{\wedge}
+                  \simeq\operatorname{Fun}(P,\mathcal S).
+                                                        \tag{E.13.1}
+\]
+The set-valued comparison is the ordinary basis theorem; for higher values the relevant basis theorem is the hypercomplete one. A finite principal open has finite homotopy dimension and its sheaf topos is hypercomplete. Hypercompleteness can be tested on this open cover, giving the indicated sufficient condition. These are Aoki (2023, Theorem~A.6 and Examples~A.11--A.12) and Barwick, Glasman, and Haine (2020, Proposition~3.12.11 and Example~3.12.15), and they verify the corresponding statements of STRATA~A.1--A.3.
+
+Here is the actual obstruction from Aoki's Example~A.13. Let
+$Q=\mathbb N\times\{0,1\}$ with $(i,a)<(j,b)$ exactly when $i<j$. Every interval is finite, but its principal upper opens are infinite. Every upper open has at most two minimal elements; finite gluing therefore makes filtered colimits of ordinary sheaves sectionwise, and the terminal sheaf is compact. In $\operatorname{Fun}(Q,\mathcal S)$ let $Q_n$ consist of ranks $0,\ldots,n$ and let $F_n$ be the left Kan extension of its terminal diagram. At ranks greater than $n$ its value is
+\[
+ BQ_n=(S^0)^{*(n+1)}\simeq S^n,
+\]
+whereas $\operatorname{colim}_nF_n=1$ pointwise. If $1$ were compact, its identity would factor through some $F_n$, making $1$ a retract of $F_n$. The essential image of this fully faithful left Kan extension is closed under retracts (apply its counit), so $1$ itself would be the left Kan extension of its restriction to $Q_n$. That contradicts the value $S^n$ at a later rank. The two terminal objects have different compactness properties, proving the categories inequivalent. The finite joins and their homology are included among the program's checks.
+
+There is a related distinction even for locally contractible spaces: Carchedi (2021, Example~2.2.4) exhibits a compact Hausdorff locally contractible space with nonzero Betti numbers in arbitrarily high degrees. Compactness of global sections implies that, if its ordinary sheaf shape were an actual space, that space would be a retract of a finite CW complex. Its unbounded Betti numbers prevent agreement with its singular type. Hypercompletion does give its singular type by Proposition~2.2.7, and every finite truncation agrees by E.1. This is why E.4 states the exact finite-stage result and marks the untruncated hypotheses explicitly. \hfill$\square$
+\end{proof}
+
+\paragraph{E.14 (Proved; decided list for every statement of Parts A--C).}
+\textit{Manuscript: LM \S\S1--4, 12, 14, 16; exact passage references in the indexed statements.}
+The following index gives the change of level for every preceding statement. ``Extends'' always means with spaces of coefficients, morphisms, and coherences; a statement already refuted at level one is not reasserted at higher levels. The proofs and counterexamples are the numbered statements just established, together with the specified calculations in Parts B and C.
+
+\begingroup
+\small
+\begin{longtable}{p{0.16\textwidth}p{0.74\textwidth}}
+\hline
+Statement & Higher conclusion and its proof or obstruction\\
+\hline
+A.1--A.4; 1.1--1.2 & Recognition extends under local constant shape, or under the finite-height local-connectedness and generation hypotheses of E.5. The unconditional implication is already false by A.2. The exactness axioms of A.4 are ordinary axioms; their higher replacement is infinity-topos descent plus the recognition hypothesis, not the same axioms imposed on a homotopy category.\\[2pt]
+A.5--A.8; 1.3--1.12 & Slices, sums, represented points, pointed uniqueness and Hom classification extend by E.6. Connected-projective representability and five equivalent set-theoretic conditions of 1.5 belong to height one; their replacement is enriched representability and contractible fibres, as E.6 proves. Ordinary centres and centralizers are the corresponding first homotopy groups, by E.11.\\[2pt]
+A.9; 2.1--2.2 & The actual locally constant envelope extends under local constant shape, by E.2 and E.5. Local simple connectedness alone only makes the first stage actual: $S^2$ satisfies it but has a nontrivial second stage (E.4, E.6). The general replacement is pro-shape, E.1.\\[2pt]
+A.10--A.12; 2.3 & The failures of faithful restriction of actual points, and of point-defined universal covers, already occur at height one and persist. Intrinsic shape does not need points (E.1--E.3). Higher pointed uniqueness uses a contractible space, E.6; restriction to ordinary point groupoids is insufficient.\\[2pt]
+A.13--A.14; \S4 & Induction extends as the slice identity of E.6. Faithfulness is precisely the additional $0$-truncated-fibre condition, hence is special to set-valued slice objects. The open-stabilizer condition remains necessary in the continuous setting, A.14.\\[2pt]
+A.15--A.19; \S3 and schemes & Strict pro-groupoids and finite Galois envelopes extend to their strict pro-$n$ and finite-homotopy versions, E.1--E.2, E.5. Generation and continuity remain necessary. Full étale topos reconstruction from an untopologized point groupoid remains false, A.17--A.19.\\[2pt]
+A.20--A.22 & The finite-test and inverse-limit counterexamples persist under the embeddings into spaces; adding higher coefficients does not make a non-surjective shift conjugate to the identity. The correct pro-Hom retains coherent mapping spaces, A.21 and E.1. The announced tower is E.2--E.4.\\[2pt]
+B.1--B.2 & Open--closed gluing extends via the full nearby-cycle functor, E.9. The quotient by normal inertia computes only $\pi_1$; full homotopy filling uses E.7's pushout.\\[2pt]
+B.3--B.4 & The comparison defect extends as the fibre sequence of E.9 for stable coefficients. Inertia kernels obstruct it; $\mathbb P^1$ with one marked point disproves an unrestricted all-level comparison as well as the literal scan~129 proposition.\\[2pt]
+B.5--B.8 & Valid curve comparisons extend to the indicated completed finite-homotopy theory by the obstruction-theoretic argument E.8. Their characteristic and coefficient restrictions remain. They do not imply an uncompleted shape equivalence.\\[2pt]
+B.9 & The distinction from the log or Kummer-étale topos persists: retaining the inertia classifying fibre is different from filling the hole. E.9 identifies the lost link data and E.8 specifies which coefficients can see them.\\[2pt]
+B.10--B.11 & Orientation classes and the specified trace are stable-coefficient constructions, so survive via the same cohomological or Verdier-duality operations. They require the dimension, coefficient and degree hypotheses proved there. Degree two is visible at shape level two; it cannot generally be computed from $\pi_1$, by E.8--E.9. No universal sphere-orientation formula is asserted for arbitrary dimensions.\\[2pt]
+B.12--B.13 & Mixed morphisms and operator splittings extend with coherent gluing cells. Rigidity becomes contractibility of the choice space; triviality of its level-one centralizer alone is insufficient, E.11.\\[2pt]
+C.1 & Slice pullback and open--closed complement squares extend to infinity-topoi by the same universal properties; E.6 and E.9 prove them. A pullback square alone is not a shape pullback theorem, since shape preserves colimits, not arbitrary limits.\\[2pt]
+C.2--C.4 & The genuine higher descent pushout and transitivity extend, E.7. The ordinary pushout of even valid discrete or surjective profinite data need not preserve the higher shape, counterexample (E.7.1). The generic profinite failure in C.3 is separate.\\[2pt]
+C.5 & Acyclicity is coefficient-relative and conditional, E.8--E.9. Its unrestricted form fails in degree two on the sphere.\\[2pt]
+C.6--C.8 & Coherent actions, torsor descent, equivariant component factoring and quotient compatibility extend by E.11. The distinction between discrete and continuous operators in C.7 persists.\\[2pt]
+C.9--C.12 & Exterior descent and transporters extend as mapping-space components and homotopy fibres, E.11. The compositional and scalar-degree counterexamples remain; higher contractibility replaces the ordinary unique-isomorphism condition.\\
+\hline
+\end{longtable}
+\endgroup
+
+The finite-homotopy stratified cases $n=4,5$ requested in the returns are separately settled by E.12; E.13 records the model-category qualification needed when posets are used. Every row has either a positive universal-property proof with its hypotheses, or a displayed counterexample with the corrected construction. In particular none infers higher reconstruction merely from a category of set-valued local systems.
