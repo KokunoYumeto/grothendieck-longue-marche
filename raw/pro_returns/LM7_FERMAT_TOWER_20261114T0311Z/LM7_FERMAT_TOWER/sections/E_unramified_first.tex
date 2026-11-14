@@ -1,0 +1,403 @@
+\subsection{Every first coordinate unramified outside three}
+
+\begin{statement}{E.51}{Proved}{All nonzero three-power Kummer first coordinates in the inherited quotient}
+Retain the based arithmetic quotient $H$ of E.46 and the
+positive real root system defining $\kappa=\kappa_3(3)$ in
+E.49. Let $r\in\mathbb Z_3\setminus\{0\}$, and write
+\[
+ r=3^k e,\qquad k=v_3(r),\quad e\in\mathbb Z_3^\times,
+ \qquad M=3^{k+1},\quad h=(M-1)/2.
+ \tag{E51.1}
+\]
+Define a set of rational primes and its restricted
+three-adic product by
+\[
+ \begin{split}
+ \mathscr P_k&=\{p\ne3:
+       v_3(\operatorname{ord}_{\mathbb F_p^\times}(3))
+                                                \le k+1\},\\
+ \mathcal R(\mathscr P_k)&=
+ \{(b_p)\in\prod_{p\in\mathscr P_k}\mathbb Z_3:
+       \text{for every }a,\ b_p\in3^a\mathbb Z_3
+                       \text{ for almost all }p\}.
+ \end{split}                                                   \tag{E51.2}
+\]
+The order at $p=2$ is one. After the choices of
+prime norm lifts specified below, the complete global
+section fiber of $H$ with first class $[3r\kappa]$
+has the following additive topological coordinates:
+\[
+ \boxed{\quad
+ \mathbb Z_3\times\mathcal R(\mathscr P_k)
+                 \times\mathbb Z_3^{h}\times\mathbb Z_3[[Z]].
+ \quad}                                                        \tag{E51.3}
+\]
+Write its coordinates as $(b_3,(b_p),(z_i)_{i=1}^h,f)$.
+The scaled toric map of E.46 is exactly
+\[
+ (b_3,(b_p),(z_i),f)\longmapsto
+ \left(r\kappa,\ b_3\kappa+
+                         \sum_{p\in\mathscr P_k}b_p\kappa_3(p)\right).
+ \tag{E51.4}
+\]
+Thus every toric fiber over an allowed second coordinate
+is explicitly $\mathbb Z_3^h\times\mathbb Z_3[[Z]]$.
+All the displayed groups are three-torsion-free.
+
+Here are actual cocycle coordinates for the unramified
+part. Use the Frobenius basis $\tau,\tau'=c\tau c$
+of E.49, for which $\chi(\tau)=7$ and
+$\kappa(\tau)=1$. Put $T=1+U$,
+$W=(T-T^{-1})/2$, and
+\[
+ \eta_{M,i}=1-\frac{T^{-i}+T^{i-M}}2
+                           \qquad(1\le i\le h).
+ \tag{E51.5}
+\]
+For the normalized first cocycle $A=M\kappa$, every
+second-cocycle class unramified outside three has
+exactly one representative of the form
+\[
+ \begin{split}
+ v(c)&=0,\\
+ v(\tau)&=3b_3+\sum_{i=1}^{h}z_i\eta_{M,i}
+                                +T^M W f(W^2),\\
+ v(\tau')&=-v(\tau)(T^{-1}).
+ \end{split}                                                   \tag{E51.6}
+\]
+For the prescribed cocycle $3r\kappa=eM\kappa$,
+replace every occurrence of $T$ in the module
+coordinate by $T^e$. The exact map accomplishing
+this change is the continuous arithmetic automorphism
+\[
+ \Phi_e:H\xrightarrow{\sim}H,
+       \qquad (a,v(T))\longmapsto(ea,v(T^e)).
+ \tag{E51.7}
+\]
+Its inverse is $\Phi_{e^{-1}}$. It preserves $J=(3,U)$,
+commutes with the based Galois action, and preserves
+the second scaled toric coordinate.
+On every finite root set the corresponding equivariant
+bijection is $i\mapsto ei$. Pullback gives an isomorphism
+from the algebra for $eM\kappa$ to the one for $M\kappa$;
+its inverse transports the chosen norm systems below.
+These isomorphisms commute with every tower map and norm.
+
+For each $p\in\mathscr P_k$, choose the norm system
+$\pi_{k,p}$ constructed in the proof. Its divisor
+is the compatible degree-one prime above $p$, and
+all other valuations, including those at three,
+are zero. Its level-zero norm is $p$. The ramified
+factor in the norm coordinates of E.46 is
+$\prod_p\pi_{k,p}^{\,3b_p}$. Together with the
+Kummer--Shapiro image of (E51.6), this specifies the
+map in (E51.3), including all infinite products.
+
+The first classes unramified outside three are
+exactly $[3r\kappa]$ for $r\in\mathbb Z_3$.
+E.47 supplies the fiber at zero, and (E51.3) supplies
+every nonzero fiber. These are section classes of
+the specified target $H$; the maps from the
+intrinsic groups retain the kernels of E.46--E.47.
+
+The program \texttt{e\_unramified\_first.py} checks
+the exact coordinate maps, finite affine orbits,
+field factors and norm transitions used below.
+
+\emph{Manuscript: \S51.16, folios733v--736v,
+scans172--178, (371)--(379), Part E(c),(d) and
+the fourth exactness follow-up.}
+\end{statement}
+\begin{proof}
+\emph{The change of first cocycle.}
+The multiplication in $H$ is
+$(a,v)(b,w)=(a+b,v+T^a w)$. Substituting $T^e$
+in this identity proves that (E51.7) is a group
+homomorphism. Its inverse follows by substituting
+$T^{e^{-1}}$. The series $T^e-1$ has unit linear
+coefficient, hence the substitution is a continuous
+automorphism of $\mathbb Z_3[[U]]$ carrying $J$ to
+itself. It commutes with $T\mapsto T^{\chi_g}$
+and the scalar factor $\chi_g$. Thus it is an
+arithmetic automorphism, induces a bijection on
+the stated section fibers, and changes their first
+coordinate by $e$. Augmentation is unchanged,
+which proves the assertion about the second toric
+coordinate. It suffices to compute the fiber for
+the actual cocycle $A=M\kappa$.
+
+\emph{Integral computation of the unramified group.}
+The free arithmetic basis and the full-to-pro-three
+cohomology comparison are those proved in E.49.
+They apply to every finite coefficient quotient
+here: over $K=\mathbb Q(\zeta_3)$ its arithmetic
+image is a three-group. Its filtration by trivial
+$\mathbb F_3$ modules gives vanishing of unramified
+$H^2$ and $H^3$; its $H^1$ is finite. These facts
+also justify the inverse-limit comparisons below.
+
+After normalizing $v(c)=0$, write $u=v(\tau)$.
+The other free value is $Cu=-u(T^{-1})$.
+For $\rho=\tau'\tau^{-1}$ the coefficient operators
+are
+\[
+ S u=7T^M u(T^7),\qquad R u=T^{-2M}u,
+             \qquad C u=-u(T^{-1}).
+ \tag{E51.8}
+\]
+They satisfy $CSC=RS$ and $CRC=R^{-1}$, matching
+the actual conjugation relations of $c,\tau,\rho$.
+The remaining coboundaries change $u$ by
+$Dm=(S-1)m$, where $Cm=m$. Such $m$ has
+augmentation zero and belongs to $J$.
+
+Let $n=T^{-2M}-1$. The exact factorization
+\[
+ n=-T^{-2M}(T^M+1)(T^M-1)
+ \tag{E51.9}
+\]
+gives $(n)=(T^M-1)$, since $T^M+1$ has constant
+term two. The quotient is the finite free ring
+$R_M=\mathbb Z_3[C_M]$. Write $\bar u_j$ for
+the coefficient of $T^j$ in the image of $u$,
+where $0\le j<M$. The involution $T\mapsto T^{-1}$
+has a fixed submodule of rank $h+1$, with basis
+given by $1$ and the images of $\eta_{M,i}$.
+Its projection $(1+\iota)/2$ annihilates every
+$\overline{Dm}$: substitution by $T^7$ commutes
+with $\iota$, and $\bar m$ is anti-invariant.
+
+We evaluate the whole quotient by these
+coboundaries. Set
+\[
+ \begin{split}
+ a&=\operatorname{aug}u,\qquad
+ z_i=-(\bar u_i+\bar u_{M-i}),\\
+ u_*&=u-a-\sum_{i=1}^h z_i\eta_{M,i},\\
+ m&=\frac{Cu_*-Ru_*}{n},\qquad
+                  v=u_*-Dm.
+ \end{split}                                                   \tag{E51.10}
+\]
+The image of $u_*$ in $R_M$ is anti-invariant
+under inversion. Thus the numerator defining $m$
+vanishes in $R_M$ and the division is integral.
+The domain $\Lambda=\mathbb Z_3[[U]]$ has no
+$n$-torsion. Applying $C$ to the numerator gives
+$-T^{2M}$ times that numerator, while
+$C(nm)=-T^{2M}nCm$. Therefore $Cm=m$.
+The operator identities in (E51.8) now give
+\[
+ C(Dm)-R(Dm)=nm,\qquad Cv=Rv.
+ \tag{E51.11}
+\]
+Consequently $T^{-M}v$ is anti-invariant under
+inversion. The integral change of variable
+$W=(T-T^{-1})/2$ has inverse
+$T=W+\sqrt{1+W^2}$, with constant term one.
+It identifies $\Lambda$ with $\mathbb Z_3[[W]]$
+and inversion with $W\mapsto-W$. This proves
+$v=T^M Wf(W^2)$ for a unique $f\in\mathbb Z_3[[Z]]$.
+
+The coordinates are unique modulo coboundaries.
+The fixed projection in $R_M$ detects every $a,z_i$.
+For two representatives with the same finite
+coordinates, their difference has zero
+$\rho$-value. A coboundary with this property
+satisfies $nm=0$, hence $m=0$. Their $f$
+coordinates therefore coincide as well.
+All divisions above are continuous on their
+closed principal ideals: multiplication by a
+nonzero series is a continuous bijection from
+the compact ring onto its image. This proves
+the topological normal form. Restricting from
+$\Lambda$ to $J$ imposes exactly
+$a\in3\mathbb Z_3$, yielding (E51.6).
+
+\emph{The exact allowable residues.}
+At $p\ne3$, the twisted module is unramified.
+After removing its Tate twist, an actual
+arithmetic Frobenius acts on the positions by
+$x\mapsto M\kappa(F_p)+px$. Its possible fixed
+point is unique. An integral fixed point is,
+by the root labels in E.46, exactly a compatible
+system of $3^n$th roots of $3^M$ in $\mathbb Q_p$.
+Cubing is an automorphism on the pro-$p$
+principal units; in the finite residue-unit
+group the compatible divisibility criterion
+is
+\[
+ 3\nmid\operatorname{ord}_{\mathbb F_p^\times}(3^M)
+ \quad\Longleftrightarrow\quad
+ v_3(\operatorname{ord}_{\mathbb F_p^\times}(3))\le k+1.
+ \tag{E51.12}
+\]
+This proves the prime set in (E51.2).
+
+The integral fixed-measure argument of E.49
+applies verbatim to this affine map: translate
+an integral fixed point to zero, and use
+multiplication by $p^2$ on every other annulus.
+Each of its nonzero clopen orbits is a free
+$\mathbb Z_3$ orbit. A compatible invariant
+integral measure there has mass divisible
+by arbitrarily high powers of three, so is
+zero. With a nonintegral center, the valuation
+of the displacement is $t+v_3(n)$ on every
+orbit, with $t<v_3(p-1)$, and the same argument
+applies on its finitely many residue balls.
+Intersecting with $J$ therefore gives
+\[
+ (J_A(-1))^{F_p}=
+ \begin{cases}
+ 3\mathbb Z_3\delta_{x_p},&p\in\mathscr P_k,\\
+ 0,&p\notin\mathscr P_k,
+ \end{cases}
+ \tag{E51.13}
+\]
+where $x_p$ denotes the unique fixed point.
+
+The finite-coefficient localization sequence
+used in E.49 is exact with zero right obstruction
+because of the unramified $H^2$ vanishing already
+checked. The finite unramified $H^1$ groups
+satisfy Mittag--Leffler. The continuous
+inverse-limit comparison therefore gives
+the exact sequence
+\[
+ 0\longrightarrow H^1(G_{\mathbb Q,\{3\}},J_A)
+ \longrightarrow H^1(G_{\mathbb Q},J_A)
+ \longrightarrow 3\mathcal R(\mathscr P_k)
+ \longrightarrow0 .                                      \tag{E51.14}
+\]
+Here the residue at $p$ is its coefficient
+of $\delta_{x_p}$. Positional pushforward
+is ideal norm, so its total mass at level
+zero forces precisely the restrictedness
+in (E51.2). Conversely that restrictedness
+is sufficient at every finite coefficient
+and positional level. This is the actual
+inverse limit of the direct sums, without
+replacing an image by its closure.
+
+\emph{Explicit norm lifts of the residues.}
+We give a field construction of the splitting
+of (E51.14). A cofinal range is $n=d+k+1$
+with $d\ge0$. The finite etale algebra of
+E.46 factors as
+\[
+ E_{A,n}=\prod_{j=0}^{k+1} L_{d,j},\qquad
+ L_{d,0}=\mathbb Q(3^{1/3^d}),\quad
+ L_{d,j}=\mathbb Q(3^{1/3^d}\zeta_{3^{d+j}})
+                                  \quad(j\ge1).
+ \tag{E51.15}
+\]
+The degrees are $3^d$ and $3^d\varphi(3^j)$.
+The first polynomial is Eisenstein at three.
+For the others, the element $\rho=\tau'\tau^{-1}$
+in the actual unramified arithmetic group
+has $\chi(\rho)=1$ and $\kappa(\rho)=-2$.
+Its powers fix every three-power root of unity and
+permute all $3^d$ roots above a prescribed
+$3\zeta_{3^j}$. These are actual arithmetic
+actions on the root torsor: its Galois
+action factors through that group, since
+the splitting fields are unramified outside
+three. Moreover the generator in (E51.15)
+contains $\zeta_{3^j}$. This proves the
+asserted degree and irreducibility. Equivalently,
+the polynomial identity is
+\[
+ X^{3^{d+k+1}}-3^{3^{k+1}}
+  =(X^{3^d}-3)
+       \prod_{j=1}^{k+1}
+       3^{\varphi(3^j)}
+               \Phi_{3^j}(X^{3^d}/3).
+ \tag{E51.16}
+\]
+Cubing the chosen generator at $d+1$ gives
+the one at $d$, so these are the actual
+field maps in the norm tower.
+
+For $j\ge1$ each vertical layer is cyclic
+cubic and is unramified away from three.
+At $d=0$ it starts at $\mathbb Q(\zeta_{3^j})$,
+whose three-primary class group is zero
+by E.47. There is a unique prime above three.
+A nontrivial cyclic cubic layer unramified
+also at this prime would be everywhere
+unramified, contradicting that class-group
+calculation. Thus this prime is totally
+ramified, remains unique, and has residue
+degree one. The ambiguous class-number
+formula proves inductively that the next
+class group again has order prime to three:
+its fixed three-primary subgroup is zero,
+while a nonzero finite three-group acted on
+by a group of order three has nonzero fixed
+points. The strongly ambiguous formula
+\cite[Theorem1, formula(2)]{E_LemmermeyerAmbiguous}
+also shows that the ordinary unit norm is
+onto, because its index is a power of three
+dividing the base class number.
+
+For the $j=0$ factor, first adjoin
+$K=\mathbb Q(\zeta_3)$. The resulting vertical
+layers are cyclic cubic; the valuation
+$2/3^d$ of the radical proves their degree
+and their unique totally ramified prime.
+The same argument starts at $K$ and proves
+both claims there. Extension and norm over
+the quadratic map remove the three-primary
+class group downstairs, and the integral
+projector $(1+c)/2$ proves surjectivity of
+the completed ordinary unit norms in the
+pure radical tower. All factors of (E51.15)
+therefore have surjective completed divisor
+maps and surjective completed unit norms.
+
+For $p\in\mathscr P_k$, its fixed position
+gives a unique compatible degree-one prime
+chain in these algebras. At each level,
+take a generator of a prime-to-three power
+of this ideal and raise it to the inverse
+of that power in the three-completion.
+This gives precisely the desired divisor.
+Correct each succeeding norm discrepancy
+by an ordinary unit using the surjective
+unit norm just proved. Induction constructs
+$\pi_{k,p}$ with no other valuation,
+including at three. Its norm to level zero
+is exactly $p$, since the three-completion
+of the ordinary rational units is zero.
+This supplies the claimed explicit choice
+of residue lift.
+
+Every global norm system satisfying the
+cube condition of E.46 has unique residue
+coefficients $3b_p$. Divide by
+$\prod_p\pi_{k,p}^{3b_p}$; the remaining
+class is unramified outside three and
+therefore has the unique coordinates in
+(E51.6). The product converges in every
+power-class and positional quotient
+because $b_p$ tends to zero three-adically.
+The construction and its inverse are
+continuous. This proves (E51.3), its group
+law and topology, and (E51.4). Changing a
+chosen $\pi_{k,p}$ multiplies it by an
+ordinary-unit norm system and changes
+the compact coordinates by the
+corresponding convergent additive sum.
+
+Finally, the completed rational Kummer
+group has the restricted prime-valuation
+coordinates of E.16. Being unramified
+outside three sets every coordinate
+except the one at three to zero. Thus
+its first-coordinate classes are exactly
+the stated $3r\kappa$. The zero fiber
+and the nonzero fibers are all accounted
+for by their explicit maps. No lift
+through the intrinsic geometric kernels
+is asserted by this quotient calculation.
+\end{proof}

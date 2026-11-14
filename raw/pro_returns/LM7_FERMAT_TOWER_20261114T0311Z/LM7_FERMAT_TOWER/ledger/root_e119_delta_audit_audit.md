@@ -1,0 +1,13 @@
+# Root E.119 exact export-amendment audit
+
+**PASS.** The original full root proof/source audit and ten-stage source-only arithmetic replay remain retained unchanged in `root_e119_audit`. The 745-line proof and every GP source, arithmetic stdout and author BIN object remain byte-identical. Root read the entire source amendment: it strengthens the integer-matrix serializer with integrality and decode assertions, adds a rational-string encoder with exact decoding, and uses that encoder for the two ambient Smith forward maps.
+
+The preserved pre-amendment tree contains all 191 original manifested files with their exact byte counts and hashes. The amended manifest contains 415 files; root checked every current entry before and after execution. The proof hash is unchanged.
+
+Root executed the corrected complete Python checker in a fresh copied directory using the ten GP outputs produced by root's original arithmetic reconstruction, together with their unchanged ten GP sources. The actual exit code is zero and stderr is empty. Its entire stdout and JSON are byte-identical to the corrected frozen author outputs, without exclusions. This is a fresh checker execution on root-generated arithmetic data. No additional GP execution or BNF certification is claimed.
+
+Root separately decoded every forward entry through exact rational numerator and denominator values. Multiplication by the actual kernel lattice gives the integral Smith left matrix; both full ambient compositions with the retained inverse are identity. Eight B2 entries and four L2 entries change from the truncated integers to the exact denominator-three values. Each lies in a Smith row of modulus one. The projection of each affected row to its finite Smith factor is therefore zero; all nontrivial finite-coordinate rows, norm and extension maps remain exactly unchanged. Every other complete JSON field agrees with the original root output.
+
+All twelve current author BIN hashes and all twelve original root BIN hashes match the prior full-decoding comparison record. The previously executed equality of every complete decoded PARI object is consequently retained with no component omitted. Raw serializations continue to have their separately recorded unequal byte hashes.
+
+The author additionally supplies its independently executed exact-export verification and fresh checker-only replay. The peer's earlier certificate serialization has its own preserved original record and exact amendment. Their actual scopes are retained separately. This amendment changes saved ambient coordinates; it adds no mathematical claim and assigns no value to the remaining upper class kernels or capitulation subgroups.

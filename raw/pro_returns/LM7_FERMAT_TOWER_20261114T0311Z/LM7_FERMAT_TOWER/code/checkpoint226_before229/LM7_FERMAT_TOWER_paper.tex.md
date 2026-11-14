@@ -1,0 +1,247 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,mathtools}
+\usepackage{array,booktabs,longtable,tabularx,enumitem,graphicx}
+\usepackage{xcolor,microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+ urlcolor=blue!45!black,pdftitle={LM7: The Fermat tower in the metabelian approximation},
+ pdfauthor={GPT-6 Astra, OpenAI, ChatGPT Pro mode}}
+\urlstyle{same}
+\setlength{\parindent}{1.3em}
+\setlength{\parskip}{.22em}
+\setlength{\emergencystretch}{2em}
+\setlength{\LTpre}{.6em}
+\setlength{\LTpost}{.6em}
+\setlist{nosep}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\allowdisplaybreaks[2]
+\newenvironment{statement}[3]{%
+ \par\addvspace{1.1em}\phantomsection\label{st:#1}%
+ \noindent\textbf{#1. #3}\quad\textsf{\small[#2]}\par\nobreak\smallskip\ignorespaces
+}{\par\smallskip}
+\newcommand{\statementref}[1]{\hyperref[st:#1]{#1}}
+\newcommand{\Sha}{\mathop{\mathrm{Sh}}}
+\begin{document}
+\begin{center}
+ {\LARGE\bfseries The Fermat tower in the metabelian approximation}\par
+ \vspace{.6em}
+ {\large Grothendieck, \emph{La Longue Marche}, \S51 and its refinements}\par
+ \vspace{.5em}
+ LM7\_FERMAT\_TOWER\quad ---\quad 13 November 2026\par
+ \vspace{.4em}
+ AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode).\par
+ No priority is claimed.\par
+ \vspace{.6em}
+ \textbf{INCOMPLETE: the exact residual questions are retained in the paper and ledger.}
+\end{center}
+
+\noindent We give proofs and reproducible calculations for the integral schemes,
+the Fermat modules and splitting, the cuspidal motive, the arithmetic
+Kummer images, and the covering comparisons. We preserve the arithmetic
+plus-Fermat model of the manuscript. Full profinite realization questions
+and the remaining cubic section calculation are explicitly unresolved;
+the finite and rational calculations below do not replace those questions.
+
+\medskip
+\noindent\textbf{Notation fixed on this page.} C4 means cote 140-4. A.1
+gives the expanded dictionary, including the changing early and final versions.
+\smallskip
+
+{\small\renewcommand{\arraystretch}{1.18}
+\noindent\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{.19\linewidth}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{.20\linewidth}@{}}
+\toprule
+Our notation & Meaning and manuscript symbol & C4 scan; folio\\
+\midrule
+$\Pi_0,F,M$ & $F\xrightarrow{\sim}\Pi_0$, $x\mapsto\lambda_0$, $y\mapsto\lambda_1$; $M=\Pi_0^{\rm ab}$ & 34--38; 664--666\\
+$\mathfrak S_{\rm d},\mathcal S$ & $\mathrm{SL}_2(\mathbb Z)/\Pi_0'$ and its indicated finite schematic stage; his $\mathfrak S$ and underlined $\mathcal G^+$ & 34--38; 664--666\\
+$\gamma=\mathbb O_{12}^{*}$ & Units of his ring scheme $O_{12}$, with multiplier $\mu$ & 51--58; 673--676v\\
+$N,\Gamma,\mathcal M$ & His corrected $N_{\rho,\sigma}$ and final $\Gamma_{\rho,\sigma},M_{\rho,\sigma}$ & 62, 85--88; 678v, 690--691v\\
+$X_n,U_n$ & $X_n:x_0^n+x_1^n+x_\infty^n=0$; $U_n$ deletes its coordinate cusps & 97--99; 696--697\\
+$\Lambda,c$ & $\widehat{\mathbb Z}[[\widehat{\mathbb Z}^{\,2}]]$; a specified generator of $\widehat F'/\widehat F''$ & comparison with 95--99; 695--697\\
+$G_{\mathbb Q},\chi,\kappa_a$ & Arithmetic $\mathbb I\Gamma_{\mathbb Q}$; cyclotomic multiplier; Kummer cocycle with chosen roots & 156--170; 725v--732v\\
+\bottomrule
+\end{tabularx}}
+
+\newpage
+\tableofcontents
+
+\section{Scope, choices, and verification}
+We use the supplied second-pass transcriptions and inspect the available
+scans at the mathematical decision points recorded in the readings ledger.
+A transcription is evidence for a reading, and a proved identity is evidence
+for the mathematical meaning; the latter does not settle unread handwriting.
+The manuscript passage for each numbered statement is also recorded in
+\texttt{LM7\_FERMAT\_TOWER\_results.csv}. All named groups in an argument
+carry the discrete, profinite, pro-$\ell$, or algebraic interpretation stated
+there. Prime-to-characteristic and fppf assertions are specified separately.
+
+We label a proved calculation \emph{Proved}, a false proposed assertion
+together with its proved replacement \emph{Refuted}, and a reduction to an
+opened theorem \emph{Known}. An \emph{Open} label records an uncompleted step
+of this return, with its proved cases and attempted approaches. Such a label
+does not assert that the literature has no answer. The report has a row for
+each of the three items, three leads, lettered tasks, and follow-ups in the
+request. The bibliography records which original texts were opened; a
+bibliographic identification alone is labelled unverified.
+
+The programs use integer arithmetic, exact rational linear algebra, finite
+permutation groups, and finite-field arithmetic. Their saved standard output
+and machine-readable witnesses accompany the source. Finite verification is
+used with the displayed general proofs, and a Lie-algebra computation is
+transferred to a group only where the requisite comparison is proved.
+The source and complete reproduction instructions are in \texttt{code/}.
+
+\input{sections/A.tex}
+\input{sections/B.tex}
+\input{sections/C.tex}
+\input{sections/D.tex}
+\input{sections/D_lifting.tex}
+\input{sections/D_cm_shadow.tex}
+\input{sections/D_cm_refine.tex}
+\input{sections/D_cm_class2.tex}
+\input{sections/D_mixed_prime.tex}
+\input{sections/D_cm_class2_tower.tex}
+\input{sections/D_rank4.tex}
+\input{sections/D_degree7.tex}
+\input{sections/D_degree8.tex}
+\input{sections/D_degree8_replacement.tex}
+\input{sections/D_rank4_geometry.tex}
+\input{sections/D_odd_deck_lift.tex}
+\input{sections/D_elliptic_pair.tex}
+\input{sections/D_fermat_joint.tex}
+\input{sections/D_fermat_degree8.tex}
+\input{sections/D_fermat_homology.tex}
+\input{sections/D_perfect_completion.tex}
+\input{sections/D_symmetric_completion.tex}
+\input{sections/D_relative_pronilpotent.tex}
+\input{sections/D_simple_even_family.tex}
+\input{sections/D_anabelian_even.tex}
+\input{sections/D_rank2_obstruction.tex}
+\input{sections/D_rank2_transport.tex}
+\input{sections/D_arithmetic_replacement.tex}
+\input{sections/D_fermat_relative_tower.tex}
+\input{sections/D_central_mixed.tex}
+\input{sections/D_fixed_parameter.tex}
+\input{sections/D_projective_homology_lift.tex}
+\input{sections/D_class2_moving_lift.tex}
+\input{sections/D_finite_invariant_repair.tex}
+\input{sections/D_arithmetic_correction_space.tex}
+\input{sections/D_doubled_class2_corrections.tex}
+\input{sections/D_arithmetic_boundary_norm.tex}
+\input{sections/D_arithmetic_detecting_quotient.tex}
+\input{sections/D_arithmetic_class2_repair.tex}
+\input{sections/D_full_homology_repaired_block.tex}
+\input{sections/D_free_character_invariant_lift.tex}
+\input{sections/D_stabilizer_projective_lift.tex}
+\input{sections/D_remaining_projective_rows.tex}
+\input{sections/D_self_wedge_actual_corrections.tex}
+\input{sections/D_compact_orthogonal_cross.tex}
+\input{sections/D_compact_isometry_source.tex}
+\input{sections/D_divided_compact_source.tex}
+\input{sections/E.tex}
+\IfFileExists{sections/E_cubic.tex}{\input{sections/E_cubic.tex}}{}
+\input{sections/E_splitting.tex}
+\input{sections/E_boundary.tex}
+\input{sections/E_cubic_obstruction.tex}
+\IfFileExists{sections/E_rational_pairs.tex}{\input{sections/E_rational_pairs.tex}}{}
+\IfFileExists{sections/E_proconstant.tex}{\input{sections/E_proconstant.tex}}{}
+\IfFileExists{sections/E_intrinsic_obstruction.tex}{\input{sections/E_intrinsic_obstruction.tex}}{}
+
+\IfFileExists{sections/E_completed_pairs.tex}{\input{sections/E_completed_pairs.tex}}{}
+\input{sections/E_arithmetic_kernel.tex}
+\IfFileExists{sections/E_intrinsic_positive.tex}{\input{sections/E_intrinsic_positive.tex}}{}
+\IfFileExists{sections/E_intrinsic_finite.tex}{\input{sections/E_intrinsic_finite.tex}}{}
+\input{sections/E_cuspidally_central.tex}
+\input{sections/E_intrinsic_class2.tex}
+\input{sections/E_next_obstruction.tex}
+\input{sections/E_riemann_coordinates.tex}
+\input{sections/E_higher_fibers.tex}
+\input{sections/E_unramified_sections.tex}
+\input{sections/E_tame_module.tex}
+\input{sections/E_infinite_obstructions.tex}
+\input{sections/E_higher_images.tex}
+\input{sections/E_tame_classes.tex}
+\input{sections/E_norm_sections.tex}
+\input{sections/E_global_zero.tex}
+\input{sections/E_cyclotomic_norms.tex}
+\input{sections/E_first_three.tex}
+\input{sections/E_elliptic_comparison.tex}
+\input{sections/E_unramified_first.tex}
+\input{sections/E_first_two_line.tex}
+\input{sections/E_class3_frobenius.tex}
+\input{sections/E_combined_quotient.tex}
+\input{sections/E_two_prime_first.tex}
+\input{sections/E_split_prime_first.tex}
+\input{sections/E_prime17_norm.tex}
+\input{sections/E_elliptic_frobenius.tex}
+\input{sections/E_frattini_frobenius.tex}
+\input{sections/E_elliptic_local.tex}
+\input{sections/E_full_local_cusps.tex}
+\input{sections/E_second_norm_obstruction.tex}
+\input{sections/E_complex_norm_criterion.tex}
+\input{sections/E_pure_norm_criterion.tex}
+\input{sections/E_full_local_metabelian.tex}
+\input{sections/E_marked_local_cusp.tex}
+\input{sections/E_unramified_local_fibers.tex}
+\input{sections/E_coherent_units.tex}
+\input{sections/E_marked_central_parameter.tex}
+\input{sections/E_complete_marked_local.tex}
+\input{sections/E_norm_divisors.tex}
+\input{sections/E_global_packet_gluing.tex}
+\input{sections/E_wild_local_layers.tex}
+\input{sections/E_wild_relation_module.tex}
+\input{sections/E_cyclotomic_basechange.tex}
+\input{sections/E_wild_nonlinear.tex}
+\input{sections/E_wild_class3.tex}
+\input{sections/E_sclass_norms.tex}
+\input{sections/E_joint_wild.tex}
+\input{sections/E_prime73_capitulation.tex}
+\input{sections/E_cusp_family_obstruction.tex}
+\input{sections/E_joint_intrinsic_image.tex}
+\input{sections/E_ramified_capitulation.tex}
+\input{sections/E_compatible_joint_fibre.tex}
+\input{sections/E_stable_sclass_towers.tex}
+\input{sections/E_abelian_kernel_obstruction.tex}
+\input{sections/E_global_sdivisors.tex}
+\input{sections/E_full_horizontal_obstruction.tex}
+\input{sections/E_relative_multiples.tex}
+\input{sections/E_ordinary_refinement.tex}
+\input{sections/E_global_abelian_localization.tex}
+\input{sections/E_global_central_localization.tex}
+\input{sections/E_mu27_comparison.tex}
+\input{sections/E_toric_wild_obstruction.tex}
+\input{sections/E_zero_free_elliptic_obstruction.tex}
+\input{sections/E_unit_norm_coset.tex}
+\input{sections/E_split7_complete.tex}
+\input{sections/E_two_three_intrinsic.tex}
+\input{sections/E_two_three_full.tex}
+\input{sections/E_first_unit_norms.tex}
+\input{sections/E_kernel_degree4_smith.tex}
+\input{sections/E_quartic_odd_abelian.tex}
+\input{sections/E_two_prime_full_family.tex}
+\input{sections/E_quartic_class_two.tex}
+\input{sections/E_next_ordinary_classes.tex}
+\input{sections/E_stable_ordinary_phase.tex}
+\input{sections/E_quartic_peripheral_slice.tex}
+\input{sections/E_quartic_compact_action.tex}
+\input{sections/E_pure_tower_complete.tex}
+\input{sections/E_nonunit_seventeen.tex}
+\input{sections/E_quartic_five_cohomology.tex}
+\input{sections/E_quartic_compact_cups.tex}
+\input{sections/E_inert_prime_tail.tex}
+\input{sections/E_quartic_mixed_five.tex}
+\input{sections/E_inert_lower_factors.tex}
+\input{sections/E_quartic_three.tex}
+\input{sections/E_lower_fiftythree.tex}
+\input{sections/E_fiftythree_normalizer.tex}
+\input{sections/E_fiftythree_higher_action.tex}
+\input{sections/E_quartic_five_numerical.tex}
+
+\clearpage
+\bibliographystyle{alpha}
+\bibliography{LM7_FERMAT_TOWER_references}
+\end{document}

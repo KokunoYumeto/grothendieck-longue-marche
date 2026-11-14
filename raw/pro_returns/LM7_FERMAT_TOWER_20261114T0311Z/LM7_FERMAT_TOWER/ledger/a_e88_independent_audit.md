@@ -1,0 +1,18 @@
+# Independent E.88 audit — PASS
+
+I read the complete frozen574-line theorem/proof and both owned programs, then copied the Python driver, owned GP source and exact degree-six lower-genus source into a separate audit directory. I ran the full two-stage PARI rebuild using the existing official2.19.0 executable, followed by every independent Python identity. The entire JSON certificate matches byte for byte with no omitted fields. The exact source/reference hashes and all output comparisons are retained in audit.json.
+
+## Exact proof checks
+
+1. The finite-level completed divisor sequence is justified before taking the field norm limit. The principal-divisor subgroup is free, giving an actual abstract split multiplicative sequence. Passing to the preimage of the prime-to-three class subgroup and using the displayed finite-index cofinality proves the completed kernel and image. In particular the completed principal-generator fibres are translates of the finitely generated completed S-unit group and are compact, although the divisor completion itself has infinite discrete quotients.
+2. Each compatible outside-S divisor has zero S-class at every level precisely under the two fixed L1 congruences, because E86 supplies the actual norm-identical coherent class bases. The product of principal-generator fibres has the finite intersection property: choose a generator in the largest level involved in a finite list and take its successive actual norms. This proves a compatible multiplicative lift, without assuming surjective unit norms.
+3. The two pivot columns at7 and73 give the stated index-nine lattice. I checked the literal basis, divided inverse coordinates and their prodiscrete continuity. The uniform3^m restricted-tail condition makes every infinite product finite in each field/power quotient, for arbitrary chosen lifts. This also proves the continuous splitting and its complete ambiguity after removing the common seventeen valuation.
+4. The ordinary L2 class equation uses the exact q3 class(3,0) in C9×C3. It gives3Theta+sum ell_p t_p=0 mod9 and hence the signed divided phase. The finite S-class equation ensures its numerator is divisible by3. Changing an ell representative by9 changes the quotient only by3. The actual genus Artin map computes the same coherent degree-one prime class, since it splits in L2/L1.
+5. The rational base norm is determined by its exact prime valuations; rational unit torsion disappears in the odd power completion. Its being a cube is equivalent to b divisible3, all t_p divisible3, and Theta(t) divisible3. For t=3r, the phase becomes minus sum c_p r_p modulo3. Both directions and the /3 scaled toric map follow, with no use of Theta(r) when r is outside its domain.
+6. The coherent examples beta_d±1 have the displayed exact cubic norms and rational norms273 and307. Their divisor supports and phases agree with the table and the literal resultant checks.
+
+## Source verification
+
+I read the official bundled PARI manual entries bnfcertify, bnfisprincipal and bnrisprincipal in research_e52/vendor/pari-2.19.0/doc/usersch3.tex. The default certification flag proves the full class/unit result. The actual prime ideals are coprime to the ray modulus; class and Artin coordinates use the retained generator basis. The E69/E72/E86 maps used in the proof were checked in the integrated sources. The arithmetic input h and the phase modulo3^h beyond its evaluated modulo3 value remain explicitly unevaluated, exactly as the theorem states.
+
+No mathematical or formatting correction requested. The theorem's maps, topology and scope pass this audit.

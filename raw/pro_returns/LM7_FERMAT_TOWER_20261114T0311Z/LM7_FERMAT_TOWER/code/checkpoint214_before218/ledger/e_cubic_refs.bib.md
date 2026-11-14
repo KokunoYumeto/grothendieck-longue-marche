@@ -1,0 +1,40 @@
+@article{EC_LiLongTu,
+  author = {Li, Wen-Ching Winnie and Long, Ling and Tu, Fang-Ting},
+  title = {Computing Special {$L$}-Values of Certain Modular Forms with Complex Multiplication},
+  journal = {Symmetry, Integrability and Geometry: Methods and Applications},
+  volume = {14},
+  year = {2018},
+  pages = {090, 32 pages},
+  doi = {10.3842/SIGMA.2018.090},
+  url = {https://sigma-journal.com/2018/090/sigma18-090.pdf},
+  keywords = {verified},
+  note = {Verified: original PDF opened; section2.4, printed p.8, and Remark4.2, printed p.18, give the Fermat cubic and X0(27) comparison over Q; formula(1.1) is the Mellin integral}
+}
+
+@article{EC_CoatesWiles,
+  author = {Coates, John and Wiles, Andrew},
+  title = {On the Conjecture of {Birch} and {Swinnerton-Dyer}},
+  journal = {Inventiones Mathematicae},
+  volume = {39},
+  number = {3},
+  year = {1977},
+  pages = {223--251},
+  doi = {10.1007/BF01402975},
+  url = {https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0039/LOG_0018.pdf},
+  keywords = {verified},
+  note = {Verified: original digitized paper opened; Theorem1 on p.223 visually checked; DOI and bibliographic data checked against the publisher landing page}
+}
+
+@article{EC_CiperianiStix,
+  author = {{\c{C}}iperiani, Mirela and Stix, Jakob},
+  title = {Weil--{Ch{\^a}telet} Divisible Elements in {Tate--Shafarevich} Groups {I}: The {Bashmakov} Problem for Elliptic Curves over {$\mathbb Q$}},
+  journal = {Compositio Mathematica},
+  volume = {149},
+  number = {5},
+  year = {2013},
+  pages = {729--753},
+  doi = {10.1112/S0010437X12000747},
+  url = {https://web.ma.utexas.edu/users/mirela/CiperianiStix-BashmakovDivSha.pdf},
+  keywords = {verified},
+  note = {Verified: author PDF opened; Theorem18(2), printed p.18, states maximal Div H1(Q,E)=Q/Z for analytic rank zero; the good-prime and irreducibility restrictions apply to its separate direct-sum assertion. Publication metadata checked against Cambridge}
+}

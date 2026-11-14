@@ -1,0 +1,1 @@
+The initial complete execution exited0 and produced the retained JSON/stdout. Python also emitted a SyntaxWarning for the literal backslash-Q in the mathematical docstring, observed in the tool stderr. The final source changes only the opening docstring to a raw string; no arithmetic code changes. The final program is executed again and retains its actual output.

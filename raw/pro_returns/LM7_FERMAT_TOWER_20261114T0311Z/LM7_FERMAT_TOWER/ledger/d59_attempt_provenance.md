@@ -1,0 +1,7 @@
+# D.59 computation and draft history
+
+The initial complete command was `python D59_EXPERIMENTS/code/d_arithmetic_free_characters.py > D59_EXPERIMENTS/code/d_arithmetic_free_characters.out 2>&1`. Its actual source, stdout and JSON were copied to `code/d59_trials/trial1_free_orbits` before adding the uniform-cusp calculation. That version used the immutable D.53 graph certificate in its original code directory. The saved historical directory is a record; replaying that source requires copying the same graph input alongside it. It completed successfully in4.943 seconds and established signed-free covectors only.
+
+The final program adds the actual48-cusp affine spaces, all575 fixed systems, the complete small-quotient cusp comparison and51 affine-spanning free characters. It reads the two unchanged JSON inputs in code/. The final full source and both inputs were copied and rerun in author_fresh_rebuild; the complete certificate and stdout compare exactly except the explicitly named elapsed_seconds field. The compact final audit record is in audit/d59_author_rebuild.
+
+The isolated TeX check is not a mathematical program. Its first invocation lacked the custom format; the next draft used the hyperref job-name `.out` for stdout, producing an observed filename collision. Both outputs remain in qa/, and the final invocation keeps stdout under a distinct `.txt` name. Display delimiters and one literal arrow command were fixed before source freeze. No main manuscript or master build file was edited.

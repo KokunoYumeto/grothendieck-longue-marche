@@ -1,0 +1,1 @@
+The initial complete successful cusp run is preserved here. Its inherited helper docstring described the earlier involution-only test. The final source changes only that docstring to describe the actual cusp and source-s maps; it is rerun completely. No mathematical code or output field changed.

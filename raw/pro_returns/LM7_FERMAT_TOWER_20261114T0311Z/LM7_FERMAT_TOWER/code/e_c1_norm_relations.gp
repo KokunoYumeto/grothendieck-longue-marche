@@ -1,0 +1,53 @@
+default(parisize,256000000);
+default(parisizemax,2000000000);
+default(realprecision,100);
+setrand(841732);
+run()={
+  my(dat=read("research_e81/code/e_prime73_field.bin"),B=dat[1],F=dat[2],R=dat[3],E=dat[4],xi=dat[10],beta=dat[11],zeta=xi^3,target=xi*(beta+1+3*zeta));
+  my(forms=List(),roots=vector(18,i,(-xi)^i));
+  for(i=-2,2,for(j=-2,2,if(i || j,for(k=0,8,
+    my(c=xi^k*(i+j*xi));
+    listput(forms,[[c,1,0],[1,i,j,k]]);
+    listput(forms,[[c,0,1],[2,i,j,k]]);
+  ))));
+  for(i=1,18,for(j=1,18,
+    listput(forms,[[1,roots[i],roots[j]],[3,i,j]]);
+    listput(forms,[[1+roots[i]*beta,roots[j],0],[4,i,j]]);
+    listput(forms,[[1+roots[i]*beta,0,roots[j]],[5,i,j]]);
+  ));
+  my(records=List(),seen=Map(),plist=List(),pmap=Map(),tested=0);
+  my(tf=idealfactor(F,target));
+  for(j=1,matsize(tf)[1],my(pr=tf[j,1],key=idealhnf(F,pr));if(!mapisdefined(pmap,key),listput(plist,pr);mapput(pmap,key,#plist)));
+  for(k=1,#forms,
+    my(v=forms[k][1],nm=v[1]^3+beta*v[2]^3+beta^2*v[3]^3-3*beta*v[1]*v[2]*v[3]);
+    tested++;
+    if(!nm || mapisdefined(seen,nm),next);mapput(seen,nm,1);
+    my(nn=abs(nfeltnorm(F,nm)),fac=factor(nn));
+    if(matsize(fac)[1] && fac[matsize(fac)[1],1]>331,next);
+    my(fa=idealfactor(F,nm));
+    for(j=1,matsize(fa)[1],my(pr=fa[j,1],key=idealhnf(F,pr));if(!mapisdefined(pmap,key),listput(plist,pr);mapput(pmap,key,#plist)));
+    listput(records,[v,nm,fa,forms[k][2]]);
+  );
+  print("NORM_POOL FORMS ",tested," DISTINCT_NORMS ",#seen," SMOOTH_NORMS ",#records," SUPPORT_PRIMES ",#plist);
+  my(S=Vec(plist),US=bnfunits(B,S),dim=#US[1],M=matrix(dim,#records));
+  for(k=1,#records,my(cl=bnfisunit(B,records[k][2],US));if(#cl!=dim,error("S-unit coordinates"));M[,k]=cl);
+  my(t=bnfisunit(B,target,US));if(#t!=dim,error("target S-unit coordinates"));
+  my(sol=matsolvemod(M,3,t));
+  print("NORM_SPAN DIMENSION ",dim," RANK ",matrank(Mod(M,3))," AUGMENTED_RANK ",matrank(Mod(concat(M,t),3)));
+  writebin("research_e84/code/e_c1_norm_relations.bin",[B,F,R,E,xi,beta,target,Vec(records),S,US,M,t,sol]);
+  if(type(sol)!="t_COL",print("NO_FIELD_NORM_RELATION_IN_THIS_POOL");print("DONE: exact bounded norm-span test; no global non-norm inference.");return(0));
+  sol=apply(x->if(x==2,-1,x),sol);
+  my(corr=(t-M*sol)/3);
+  if(denominator(corr)!=1,error("integral cube-root correction"));
+  my(active=select(i->sol[i]!=0,vector(#records,i,i)),coractive=select(i->corr[i]!=0,vector(dim,i,i)),N=Mod(1,F.pol),root=Mod(1,F.pol));
+  for(j=1,#active,my(i=active[j]);N*=records[i][2]^sol[i]);
+  for(j=1,#coractive,my(i=coractive[j],u=nffactorback(F,US[1][i]));root*=nfbasistoalg(F,u)^corr[i]);
+  if(N*root^3!=target,error("literal norm relation"));
+  print("NORM_RELATION ACTIVE ",active," EXPONENTS ",vector(#active,j,sol[active[j]])," CUBE_CORRECTION ",corr);
+  print("NORM_RELATION ROOT ",lift(root));
+  print("NORM_RELATION FORMS ",vector(#active,j,[records[active[j]][4],records[active[j]][1]]));
+  writebin("research_e84/code/e_c1_field_norm_witness.bin",[Vec(records),S,US,M,t,sol,corr,root,active]);
+  print("DONE: exact field norm preimage as a product of explicit cubic forms and included base correction.");
+};
+run();
+quit;

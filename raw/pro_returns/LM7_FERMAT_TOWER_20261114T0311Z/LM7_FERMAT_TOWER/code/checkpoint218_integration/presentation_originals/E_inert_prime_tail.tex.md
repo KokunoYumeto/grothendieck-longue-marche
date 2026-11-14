@@ -1,0 +1,526 @@
+\subsection{A uniform evaluated tail for every inert first prime}
+
+\begin{statement}{E.114}{Proved}{All S-class and cyclic unit norms in the inert-prime positional tail}
+Let $\ell\ne3$ be a rational prime with $\ell\equiv2\pmod3$,
+and put
+\[
+ \begin{gathered}
+ s=v_3(\ell+1),\qquad t=3^{s-1},\qquad
+ K_j=\mathbb Q(\xi_j),\quad \xi_j=\zeta_{3^j},\\
+ L^{\ell}_{m,j}=K_j(\beta_{m,j}),\qquad
+ \beta_{m,j}=\ell^{1/3^m}\xi_{m+j},\quad j\ge s, m\ge0.
+ \end{gathered}
+ \tag{E114.1}
+\]
+The roots of $\ell$ are positive and compatible, and the
+roots of unity are those already fixed. Let S consist of
+the primes over three and $\ell$. There is one three-prime
+and $t$ primes over $\ell$ in every field in (E114.1).
+All are totally ramified in each vertical cubic step.
+The entire three-primary S-class system is
+\[
+           \operatorname{Cl}_S(L^{\ell}_{m,j})\{3\}=0
+                    \quad(j\ge s, m\ge0),
+ \tag{E114.2}
+\]
+with the actual ideal norm and extension maps between
+these zero groups.
+
+Put $U_{m,j}=\mathcal O_{L^{\ell}_{m,j},S}^{\times}$ and
+$r_{m,j}=3^m\varphi(3^j)/2$. For every $1\le r\le j$,
+the actual extension $L^{\ell}_{m+r,j}/L^{\ell}_{m,j}$
+is cyclic of degree $n=3^r$. Its complete unit-norm
+quotient and completed norm kernel are
+\[
+ \begin{gathered}
+ U_{m,j}/N U_{m+r,j}\xrightarrow{\sim}(\mathbb Z/n)^t,
+ \qquad u\longmapsto
+   \bigl(\log_{\zeta_n}(\beta_{m,j},u)_{v,n}\bigr)_{v\mid\ell},\\
+ \ker(N:\widehat U_{m+r,j,3}\longrightarrow
+                          \widehat U_{m,j,3})
+       \simeq C_n\oplus\mathbb Z_3^{(3^r-1)r_{m,j}}.
+ \end{gathered}
+ \tag{E114.3}
+\]
+The finite kernel column is the literal $\mu_n$.
+The omitted three-place character is the negative sum
+of the displayed $t$ characters. The same quotient map
+is exact after completion. Equations (E114.4)--(E114.6)
+and (E114.15) give its literal finite-field evaluation and inverse
+coordinates, so its zero condition is both necessary
+and sufficient for an S-unit norm.
+Norms at larger distances are the compositions of the
+proved adjacent maps; the cyclic assertion in (E114.3)
+has exactly the stated range $r\le j$.
+
+The uniform cubic inverse has a small algebraic form.
+Let $\Gamma=\operatorname{Gal}(K_s/K_1)=\langle\sigma\rangle$,
+where $\sigma(\xi_s)=\xi_s^4$; its order is $t$.
+Choose a prime $\mathfrak t_0\mid\ell$ of $K_s$ and a
+completed principal generator $\pi_0$ of that prime,
+and put $\pi_g=\sigma^g\pi_0$ and
+$\mathfrak t_g=\sigma^g\mathfrak t_0$, $g\in\mathbb Z/t$.
+The proof constructs these completed generators from
+actual principal ideal powers of order prime to three.
+Let
+\[
+ R_t=\mathbb F_3[\Gamma],\quad I=(\sigma-1)R_t,
+ \qquad c=\frac{\ell^2-1}{3^s}\pmod3\in\mathbb F_3^\times,
+ \qquad
+ a=\sum_{h\in\mathbb Z/t}
+       \log_\zeta(\ell,\pi_0)_{\mathfrak t_h,3}\,\sigma^h.
+ \tag{E114.4}
+\]
+Then $a\in I$, and the actual cubic character matrix
+on the included $\pi_g$ columns is multiplication by
+$c+a$ for $j=s$, and by $c$ for $j>s$. Its full inverse is
+\[
+            (c+a)^{-1}
+             =c^{-1}\sum_{d=0}^{t-1}(-c^{-1}a)^d
+                      \quad\text{in }R_t.
+ \tag{E114.5}
+\]
+The identification of a coefficient vector with a
+product of the corresponding $\pi_g$ specifies the
+section of the quotient (E114.3) at $r=1$.
+No value of an uncomputed class group occurs in this
+inverse.
+
+For the higher characters in (E114.3) choose an actual
+integer $d$ prime to three and $x_0\in K_s^\times$
+with $(x_0)=\mathfrak t_0^d$, and take
+$\pi_0=x_0^{1/d}$ in the multiplication completion.
+Set $x_g=\sigma^g x_0$. At a labeled prime $v_h\mid\ell$
+in $K_j$, let $\xi_{j,h}$ be the residue of $\xi_j$,
+and put $q_j=\ell^{2\cdot3^{j-s}}$.
+The inverse matrix is obtained from the completely
+specified $t$ by $t$ matrix
+\[
+ \begin{split}
+ C_{j,r}(h,g)
+ &=d^{-1}\log_{\xi_{j,h}^{3^{j-r}}}
+    \left(
+      \xi_{j,h}^{d\delta_{hg}}
+       \overline{x_g/\ell^{d\delta_{hg}}}^{\,-1}
+    \right)^{(q_j-1)/3^r}
+                              \quad\text{in }\mathbb Z/3^r,\\
+ (z_h)_h&\longmapsto
+     \prod_g\pi_g^{\,(C_{j,r}^{-1}z)_g}
+                  \quad\text{in }\widehat U_{m,j,3}/N\widehat U_{m+r,j,3}.
+ \end{split}
+ \tag{E114.6}
+\]
+Its reduction modulo three is the invertible matrix
+just proved. Thus its inverse is computed over
+$\mathbb Z/3^r$ by ordinary finite matrix inversion,
+or by lifting (E114.5) through
+$B\mapsto B(2-C_{j,r}B)$.
+For actual, uncompleted unit representatives replace
+$1/d$ in the exponents by its inverse modulo $3^r$.
+
+Let
+$P_j(\ell)=\{p\ne3,\ell:v_3(\operatorname{ord}_{\mathbb F_p^\times}\ell)=j\}$.
+The entire completed norm factor in each tail is
+\[
+ \begin{gathered}
+ \mathcal X_{\ell,j}=\varprojlim_{m,N}
+                       \widehat{(L^{\ell}_{m,j})^\times}_3,
+ \qquad
+ \mathcal U_{\ell,j}=\varprojlim_{m,N}\widehat U_{m,j,3},\\
+ 0\longrightarrow\mathcal U_{\ell,j}
+   \longrightarrow\mathcal X_{\ell,j}
+   \xrightarrow{\operatorname{div}_{\notin S}}
+          \mathcal R(P_j(\ell))\longrightarrow0,
+ \qquad\mathcal U_{\ell,j}\simeq\prod_{i\ge1}\mathbb Z_3.
+ \end{gathered}
+ \tag{E114.7}
+\]
+The sequence splits by choosing coherent completed
+S-principal generators $a_{j,p}$ of the unique surviving
+degree-one prime chains and putting
+$s_j(v)=\prod_pa_{j,p}^{v_p}$.
+Its inverse is $x\mapsto(x/s_j(\operatorname{div}x),\operatorname{div}x)$.
+The compact coordinate inverse is the character-basis
+construction of (E110.7), using the actual S-unit norms
+in (E114.3). All products and quotient topologies are
+those of multiplication completion, with restricted
+prime exponents as in (E110.2).
+
+Here is the exact rational norm retained by these maps.
+For $y\in\mathcal U_{\ell,j}$ read its initial $K_j$
+coordinate and put
+\[
+ \begin{gathered}
+ \nu_3(y)=v_{\mathfrak q_3}(y_0),\qquad
+ \nu_\ell(y)=2\cdot3^{j-s}\sum_{v\mid\ell}v(y_0),\\
+ N(y s_j(v))=
+ 3^{\nu_3(y)+\sum\rho_{j,p}v_p}
+ \ell^{\nu_\ell(y)+\sum\eta_{j,p}v_p}
+                       \prod_{p\in P_j(\ell)}p^{v_p}.
+ \end{gathered}
+ \tag{E114.8}
+\]
+Here $\rho_{j,p},\eta_{j,p}$ are the same initial
+valuation maps applied to the chosen $a_{j,p}$.
+They belong to $\mathbb Z_3$, so all sums converge.
+
+The comparison to global sections has a literal split
+map even when the lower positional factors have not
+been evaluated. Fix $k\ge s-1$ and the first cocycle
+$A=3^{k+1}\kappa_3(\ell)$.
+At its cofinal positional levels the factors with
+$j\ge s$ are exactly (E114.1). Let $\mathcal N_{<s}$
+be the actual norm system formed from its pure factor
+and its factors with $1\le j<s$.
+Then the geometric-conjugacy classes of sections in
+$H$ have the following proved topological product:
+\[
+ \begin{gathered}
+ \mathscr S_{3^k\kappa(\ell)}(H)
+   \simeq
+   \left(\prod_{j=s}^{k+1}\mathcal R(P_j(\ell))\right)
+                                      \times\mathcal K_{\ell,k},\\
+ \mathcal K_{\ell,k}=
+ \left\{(z,(y_j))\in\mathcal N_{<s}\times
+                \prod_{j=s}^{k+1}\mathcal U_{\ell,j}:
+     N(z)\prod_{j=s}^{k+1}3^{\nu_3(y_j)}\ell^{\nu_\ell(y_j)}
+                     \in(\widehat{\mathbb Q^\times}_3)^3\right\}.
+ \end{gathered}
+ \tag{E114.9}
+\]
+The forward map reads $v_j/3$ from the tail divisors
+and removes the actual norm-coherent tuple
+$s_j(v_j)$. The inverse multiplies back those tuples.
+Thus the first product is an explicitly split closed
+subgroup of the complete section fiber, obtained by
+taking all lower components and all $y_j$ equal to one
+and using $s_j(3v_j)$ in each tail.
+Its scaled second toric coordinate is
+\[
+   \left(\sum_{j,p}\rho_{j,p}v_{j,p}\right)\kappa_3(3)
+  +\left(\sum_{j,p}\eta_{j,p}v_{j,p}\right)\kappa_3(\ell)
+  +\sum_{j,p}v_{j,p}\kappa_3(p).
+ \tag{E114.10}
+\]
+These are actual global $H$ sections, through E.46's
+Kummer--Shapiro map. Formula (E114.9) retains the exact
+remaining lower norm system and its norm coupling;
+it does not assign it the zero S-class calculation
+proved only for $j\ge s$. The maps from intrinsic
+metabelian or marked sections to these classes remain
+the actual quotient maps of E.38.
+Every set $P_j(\ell)$ occurring here is infinite.
+For a three-adic unit $u$, the arithmetic automorphism
+$\Phi_u(a,v(T))=(ua,v(T^u))$ transports (E114.9)
+to the first class $3^ku\kappa_3(\ell)$, preserving
+the second toric coordinate and with inverse $\Phi_{u^{-1}}$.
+The manuscript anchor is \S51.16, scans172--178,
+folios733v--736v, equations(371)--(379), and Part E(c),(d).
+\end{statement}
+
+\begin{proof}
+\emph{Fields, local degrees and principal prime columns.}
+For $j\ge s$, the binomial expansion gives
+\[
+ \operatorname{ord}_{3^j}(\ell)=2\cdot3^{j-s},
+ \qquad v_3(\ell^{2\cdot3^a}-1)=s+a.
+ \tag{E114.11}
+\]
+There are consequently $t$ primes over $\ell$ in $K_j$,
+with the residue degrees in (E114.8), and one prime over
+three. At $\ell$ the radicand $\ell\xi_j$ has valuation
+one, so every vertical field is totally ramified there.
+At three, shifting $X^{3^m}-\ell\xi_j$ by $X=Y-1$
+gives constant term $-(\ell+1)-\ell(\xi_j-1)$ of
+$1-\xi_j$ valuation one. All its other nonleading
+coefficients are divisible by three. Thus it is
+Eisenstein there as well. The polynomial discriminant
+shows that no other finite prime ramifies.
+The equality $\xi_j=\beta_{m,j}^{3^m}/\ell$ gives the
+same explicit rational cyclotomic factor as (E111.13),
+with seventeen replaced by $\ell$.
+
+The proved one-prime cyclotomic induction in E.47 or
+E.111 gives $\operatorname{Cl}(K_j)\{3\}=0$.
+In particular the ordinary class of $\mathfrak t_0$
+has an order $d$ prime to three. Choose an actual
+generator $x_0$ of $\mathfrak t_0^d$ and use the
+unique multiplication-by-$d$ inverse in the completed
+group to define $\pi_0$. Its divisor is exactly
+$\mathfrak t_0$. The Galois orbit of these elements
+has the valuation basis prescribed in (E114.4).
+When an actual unit is needed in a finite quotient,
+$x_g^e$ with $ed\equiv1\pmod{3^r}$ is a representative.
+This is the exact passage between actual and completed
+prime generators, including their norm characters.
+
+\emph{The uniform cubic character inverse.}
+The group $\Gamma$ acts regularly on the $t$ primes
+over $\ell$, because $\ell\equiv-1\pmod{3^s}$ and
+the decomposition group in $\operatorname{Gal}(K_s/\mathbb Q)$
+is its order-two subgroup. All elements of $\Gamma$
+fix $\mu_3$. Naturality of the Hilbert pairing gives
+\[
+ \log_\zeta(\ell,\pi_g)_{\mathfrak t_h,3}
+       =\log_\zeta(\ell,\pi_0)_{\mathfrak t_{h-g},3}.
+ \tag{E114.12}
+\]
+Thus the actual matrix is multiplication by $a$ in
+the group-ring basis, with exactly the displayed
+orientation of the indices.
+
+For $s\ge2$, the rational number $\ell$ is a cube in
+$\mathbb Q_3$. One explicit Hensel construction starts
+with $x=-1+3b$, where
+$b\equiv(\ell+1)/9\pmod3$. Then $x^3\equiv\ell\pmod{27}$
+and $v_3(3x^2)=1$, so Hensel's inequality is strict.
+Therefore the three-place symbol $(\ell,u)_3$ is one
+for every local $u$. All symbols of an S-unit at primes
+outside S are also one. Global reciprocity implies
+$\sum_h\log_\zeta(\ell,\pi_0)_{\mathfrak t_h,3}=0$.
+For $s=1$ there is one prime and we take $\pi_0=\ell$.
+The cubic pairing is alternating, so $(\ell,\ell)_3=1$
+at that prime as well. These arguments prove $a\in I$
+in every case in (E114.4).
+
+The other part of the radicand, $\xi_s$, is a residue
+unit. At its $\ell$-adic places, arithmetic tame
+reciprocity on the prime generator is
+\[
+             (\xi_s,\pi_g)_{\mathfrak t_h,3}
+                      =\zeta^{c\delta_{hg}}.
+ \tag{E114.13}
+\]
+Indeed its residue field has order $\ell^2$, and the
+positive valuation convention gives
+$\xi_s^{(\ell^2-1)/3}=\zeta^c$.
+The same exponent holds at every labeled place, since
+$\Gamma$ fixes $\zeta$. Bilinearity now makes the
+matrix for $\ell\xi_s$ equal to $a+c$.
+
+In characteristic three,
+$R_t=\mathbb F_3[\sigma-1]/((\sigma-1)^t)$.
+Since $a\in I$, its $t$th power is zero. Multiplying
+the finite geometric series in (E114.5) by $c+a$
+leaves $1-(-c^{-1}a)^t=1$. This proves both inverse
+maps, not only a determinant assertion. The last
+character, at three, is the negative sum of the tame
+coordinates. Hence the full sum-zero character
+hyperplane has dimension $t$ and is attained by
+these explicit columns.
+
+For example, at $\ell=17$ the actual $\sigma$-orbit
+of E.111's first prime generator is
+$\pi_1,\xi_2^6\pi_3,\pi_2$.
+In this order the retained polynomial/unit calculation
+gives $a=2(1+\sigma+\sigma^2)$ and $c=2$.
+Thus the cubic matrix has diagonal entries one and
+off-diagonal entries two; its inverse has diagonal
+entries zero and off-diagonal entries one. At $j>2$
+the matrix is $2I$. The certificate also evaluates
+the literal ninth and twenty-seventh characters,
+their inverse matrices, and the common-root norm
+comparison, retaining the actual Galois orbit map.
+
+For $j>s$ the actual norm at each labeled completion is
+\[
+ N_{K_j/K_s}(\ell\xi_j)=\ell^{3^{j-s}}\xi_s,
+ \qquad N_{L^{\ell}_{m,j}/K_j}(\beta_{m,j})=\ell\xi_j.
+ \tag{E114.14}
+\]
+There is exactly one prime above each predecessor, so
+these equalities are the local norms too. The common-root
+cup-product projection formula and
+$\operatorname{inv}\operatorname{Cor}=\operatorname{inv}$
+preserve each character of an included prime column,
+as in (E111.20). At cubic coefficients the first
+radicand is $\xi_s$ modulo cubes when $j>s$.
+Consequently its matrix is exactly $c$ rather than
+$a+c$. The second equality preserves these matrices
+through every vertical height. These comparisons use
+the proved identities of Milne III, Sections2--4
+\cite{E_MilneCFT} and retain the common root in each
+coefficient group.
+
+\emph{All ideal and S-unit norms.}
+We apply the actual sequences (E111.21)--(E111.25),
+now with $t+1$ totally ramified finite S-places.
+Their divisor maps and inverses do not change:
+outside S, invariant divisors are extended divisors,
+and the kernel of ideal norm is the image of
+$\sigma-1$. Hilbert90 identifies S-capitulation with
+$H^1(G,U_E)$ and identifies the invariant S-class
+quotient by extended classes with
+$(U_F\cap NE^\times)/NU_E$.
+
+At the initial field $K_j$ the three-class group is
+zero. At an adjacent induction step this makes the
+S-capitulation kernel, which is killed by three,
+zero. The S-unit Herbrand quotient is $3^t$:
+the $t+1$ fixed finite places give that many trivial
+summands, the product formula removes one, and the
+complex places give regular summands. Milne VII
+Proposition3.1 and its complete lattice proof give
+the same value directly \cite{E_MilneCFT}.
+Thus $[U_F:NU_E]=3^t$.
+
+The actual local characters just proved already have
+image of that order. The cyclic Hasse norm theorem
+identifies their kernel with $U_F\cap NE^\times$,
+so this group equals $NU_E$. The exact S-class map
+then gives zero invariant upper three-class group.
+A nonzero finite three-group module for a three-group
+has nonzero fixed points, so the entire upper
+three-class group vanishes. Induction proves (E114.2)
+and the cubic case of (E114.3), with the actual norm
+zero criterion. The source statements used here are
+the opened Hasse norm theorem and the explicit
+ideal/Hilbert90 proof of the ambiguous sequence
+\cite[VIII, Theorem3.1]{E_MilneCFT}
+\cite[Theorem1 and Proposition1]{E_LemmermeyerAmbiguous}.
+
+For $r\le j$, $\mu_{3^r}$ belongs to the lower field,
+so the extension of degree $n=3^r$ is actually cyclic.
+The $\ell$-place character on an arbitrary S-unit is
+computed by using $\beta_{m,j}$ as uniformizer:
+\[
+ \log_{\zeta_n}(\beta_{m,j},u)_{v,n}
+       =-\log_{\overline{\zeta_n}}
+          \left(\overline{u/\beta_{m,j}^{v(u)}}
+                                             \right)^{(q_j-1)/n}.
+ \tag{E114.15}
+\]
+The tame sign disappears because $n$ is odd.
+For the included actual generator $x_g$ its valuation
+is $3^m d\delta_{hg}$, and
+$\beta_{m,j}^{3^m}=\ell\xi_j$.
+Substitution gives exactly (E114.6), independently
+of $m$. Reduction of these characters modulo three
+is the already proved cubic matrix. Its inverse
+therefore lifts over $\mathbb Z/3^r$, as stated.
+The characters have image $(\mathbb Z/n)^t$.
+
+The same ideal Hilbert90 sequence has zero S-class
+defect, since both class groups are now evaluated.
+Alternatively the degree-$n$ Herbrand quotient is
+$n^t$ and the capitulation group is zero. These actual
+maps show that the full character kernel is precisely
+the S-unit norm image. Completion preserves this
+finite quotient of finitely generated groups.
+The free ranks of the source and target S-unit groups
+are $3^r r_{m,j}+t$ and $r_{m,j}+t$.
+There are exactly $\mu_{3^j}$ as three-power roots
+in either field: a larger cyclotomic root would give
+a nontrivial unramified extension at $\ell$, which
+cannot lie in the totally ramified vertical field.
+Norm raises these roots to the $n$th power. This proves
+the exact torsion and free-rank kernel in (E114.3).
+
+\emph{The actual norm factors and their topology.}
+At $p\ne3,\ell$, write the residue of $\ell$ as its
+three-primary part times its prime-to-three part.
+Its three-primary part has order $3^j$ precisely
+for $p\in P_j(\ell)$; the unique surviving embedding
+has $\xi_j$ equal to its inverse. The prime-to-three
+part then has unique compatible cube roots. These
+give the unique degree-one chain in (E114.7).
+
+To verify that no other divisor coordinate survives,
+use the actual affine Frobenius root action of E.46.
+Its sole possible finite orbit is its fixed point.
+The nonfixed pro-three orbit neighborhoods subdivide
+into arbitrarily many equal translates, so invariant
+$\mathbb Z_3$ measures there vanish. The map from
+prime divisors to orbit sums intertwines positional
+pushforward with ideal norm, since the ratio of orbit
+lengths is the residue degree. This is the exact
+comparison proved in E.111, with $\ell$ in place of
+seventeen. It gives the stated restricted support
+and its inverse fixed-prime map.
+
+Since the finite S-class groups have order prime
+to three, every completed outside-S divisor is
+principal. Its fiber is a compact completed S-unit
+torsor. Compatible infinite divisors have preimages
+by the finite intersection argument: solve any
+finite set of equations by choosing a principal
+element at its highest level and taking norms.
+Compactness of the fixed fibers supplies a coherent
+preimage. This proves both directions of (E114.7).
+The product splitting and its exact change when
+$a_{j,p}$ is multiplied by a coherent S-unit are
+identical to (E111.7), and restricted exponents
+give the required uniform convergence.
+
+The compact kernel is metrizable and torsion free:
+all of its torsion coordinates would lie in
+$\mu_{3^j}$, and repeated norm cubing kills every
+fixed coordinate. Its character group is therefore
+countable and divisible. Choosing a basis of the
+characters killed by three and successive divisions
+gives the precise product map (E110.7); the finite
+character equations give its unique continuous
+inverse. The finite representatives are S-unit
+characters under actual transposed norm maps.
+There are infinitely many coordinates: each
+$L^{\ell}_{m,j}$ has one three-prime, so Kato's
+Theorem1.1(2) gives a finite-index projection of the
+full false-Tate coherent three-unit system into
+its three-unit group of rank $r_{m,j}$.
+Restriction to the literal chain (E114.1) is an
+actual norm-system map, and these ranks are
+unbounded \cite{E_KatoUniversalNorms}.
+Finally initial ideal norm weights are one at
+three and $2\cdot3^{j-s}$ at the $\ell$-primes.
+They prove (E114.8), with convergent restricted
+corrections and no uncomputed scalar replacement.
+
+\emph{Comparison with the complete fixed-first section set.}
+The positional factorization for $3^k\kappa_3(\ell)$
+is exactly (E111.13), with seventeen replaced by
+$\ell$. Separate its factors into $j<s$ and $j\ge s$.
+The surviving rational prime sets are disjoint, so
+the total-norm cube condition forces every tail
+divisor to be $3v_j$ for a unique
+$v_j\in\mathcal R(P_j(\ell))$.
+Conversely $s_j(3v_j)=s_j(v_j)^3$, so the tuple
+with these tail components and all other components
+one has cube total norm and is an actual section
+class by E.46. Its divided divisor projection is
+exactly $(v_j)$.
+
+Removing this tuple from any section leaves the
+tail units $y_j$ and the lower tuple $z$.
+Their total rational norm condition is precisely
+the one defining $\mathcal K_{\ell,k}$ in (E114.9),
+by (E114.8). Multiplication supplies the inverse.
+These maps are continuous and mutually inverse.
+The split subgroup is closed: the composite of
+its inclusion and the continuous divided-divisor
+projection is a continuous idempotent on the
+Hausdorff section group, and its fixed set is
+exactly that subgroup. Dividing its rational norm
+by three gives (E114.10), retaining both S-prime
+corrections. This establishes the exact global
+comparison and leaves only the explicitly displayed
+lower norm coupling in that comparison.
+
+Finally, the infinite supply of independent tail
+directions follows by an actual Chebotarev class.
+In $\mathbb Q(\mu_{3^{j+1}},\ell^{1/3^j})$ the
+Kummer extension over the cyclotomic base has degree
+$3^j$, as seen from the valuation one at $\ell$.
+The automorphism that sends $\xi_{j+1}$ to
+$\xi_{j+1}^{1+3^j}$ and sends $\ell^{1/3^j}$ to
+$\xi_j\ell^{1/3^j}$ is therefore defined. Its
+Frobenius conjugacy class forces
+$v_3(p-1)=j$ and makes $\ell$ a noncube modulo $p$;
+hence $v_3(\operatorname{ord}_p\ell)=j$.
+Chebotarev's theorem, with its complete proof in
+Milne VIII, Theorem7.4, gives infinitely many such
+primes \cite{E_MilneCFT}. Their divided divisor
+coordinates separate the section classes in the
+split subgroup. Substituting $T\mapsto T^u$ in
+the actual law (E46.1) proves the stated unit-part
+transport and its inverse.
+\end{proof}

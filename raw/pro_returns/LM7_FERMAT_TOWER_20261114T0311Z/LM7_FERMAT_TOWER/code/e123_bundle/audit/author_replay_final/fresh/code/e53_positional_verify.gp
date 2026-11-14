@@ -1,0 +1,21 @@
+\\ Independent no-input exact polynomial checks for the E123 unit.
+default(parisize,128000000);
+P=x^18+53*x^9+2809;
+Q=x^6+53*x^3+2809;
+c=[233310758403324580,162259190227459392,-156423432977163197,-9428065675753871,68211762953960439,-21268649653402295,-20380195617019636,16321936168597652,127793495257541746/53,-171833670213647073/53,258875036203505843/53,-24413421910513196/53,-98124359892743895/53,46310614165015474/53,23518859163448158/53,-27843439410121373/53,541253187633525/53,600116900089383294/2809];
+v=[520531,197202,2307708/53,721037/53,115428/53,-213180/2809];
+W=sum(i=1,#c,c[i]*x^(i-1));
+V=sum(i=1,#v,v[i]*x^(i-1));
+test(a,b,label)={if(a!=b,error(label));print("PASS ",label,": ",a);};
+test(norm(Mod(W,P)),27/2809,"absolute norm");
+test(lcm(vector(#c,i,denominator(c[i]))),2809,"power basis denominator");
+test(Mod(polresultant(y^3-x,subst(W,x,y),y),Q),Mod(V,Q),"vertical norm polynomial");
+test(norm(Mod(V,Q)),27/2809,"lower absolute norm");
+R=z^2+z+1;
+N=polresultant(x^9-53*z,W,x);
+test(Mod(N,R),Mod((3+6*z)/53,R),"norm to K");
+rr0=Mod(z,Mod(1,53)*(z^2+z+1));
+roots=[rr0,rr0^2];
+for(i=1,2, rr=roots[i];test((10+50*rr)^936,rr^2,Str("positive residue at53 branch",i)));
+print("PASS complete no-input polynomial and residue verification");
+quit;

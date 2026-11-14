@@ -1,0 +1,3 @@
+# D.59 coverage update
+
+D(e), item3 and Lead1 remain incomplete for the requested full profinite realization. D.59 proves an actual extension through further invariant arithmetic class-two blocks, retaining the complete D.57 source and the prescribed W_h action. The new exact source is X/J, with J=(1-Pi)ker(Z -> Z_*)^Delta. Its residual has dimension48w-2560-5308416*kappa and contains a specified366080-dimensional small-character submodule. D.13/D.19 should record this invariant lift and the exact remaining boundary in J_G without upgrading the full-source status. The actual arithmetic group is used throughout; the small finite computation verifies its literal Q-character module.

@@ -1,0 +1,16 @@
+default(parisizemax,2000000000);
+allocatemem(256000000);
+a=read("/workspace/scratch/e34c61ec5a35/research_e122/code/e53_higher_local.bin");
+b=read("/workspace/scratch/e34c61ec5a35/research_e122/audit/author_replay/fresh/code/e53_higher_local.bin");
+if(!(a===b),error("Complete object mismatch code/e53_higher_local.bin"));
+print("PASS complete GEN code/e53_higher_local.bin");
+a=read("/workspace/scratch/e34c61ec5a35/research_e122/code/e53_higher_genus.bin");
+b=read("/workspace/scratch/e34c61ec5a35/research_e122/audit/author_replay/fresh/code/e53_higher_genus.bin");
+if(!(a===b),error("Complete object mismatch code/e53_higher_genus.bin"));
+print("PASS complete GEN code/e53_higher_genus.bin");
+a=read("/workspace/scratch/e34c61ec5a35/research_e122/code/e53_upper_witness_verify.bin");
+b=read("/workspace/scratch/e34c61ec5a35/research_e122/audit/author_replay/fresh/code/e53_upper_witness_verify.bin");
+if(!(a===b),error("Complete object mismatch code/e53_upper_witness_verify.bin"));
+print("PASS complete GEN code/e53_upper_witness_verify.bin");
+print("PASS all complete PARI objects");
+quit(0);

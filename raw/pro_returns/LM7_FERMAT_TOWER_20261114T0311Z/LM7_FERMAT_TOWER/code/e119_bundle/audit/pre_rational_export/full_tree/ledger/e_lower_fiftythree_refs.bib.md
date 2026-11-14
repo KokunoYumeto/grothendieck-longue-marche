@@ -1,0 +1,1 @@
+% verified: E119 reuses E_MilneCFT, E_LemmermeyerAmbiguous and E_PARICertifiedUnits. Exact primary passages, proof scope and certification limits are in e_lower_fiftythree_source_evidence.json. No duplicate bibliography keys.

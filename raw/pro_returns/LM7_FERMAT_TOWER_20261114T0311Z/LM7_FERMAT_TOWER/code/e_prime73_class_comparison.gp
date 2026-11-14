@@ -1,0 +1,22 @@
+default(parisize,256000000);
+default(parisizemax,2000000000);
+default(realprecision,100);
+run()={
+  my(base=read("research_norm_index/code/cyclotomic_base1_bnf.bin"),B=base[1],F=B.nf);
+  my(rd=read("research_e81/code/e_prime73_relative_nf.bin"),R=rd[1],E=rd[2]);
+  my(co=read("research_norm_index/code/cyclotomic_sclass_coordinates.bin"),P=co[2][1][4],Q=idealprimedec(F,3)[1],C=B.gen[2]);
+  if(bnfisprincipal(B,Q,0)!=[1,0]~ || bnfisprincipal(B,C,0)!=[0,1]~,error("actual class coordinates"));
+  my(J=idealdiv(F,P,idealmul(F,idealpow(F,Q,2),C)),ans=bnfisprincipal(B,J,1));
+  if(ans[1]!=[0,0]~ || idealhnf(F,ans[2])!=J,error("literal S-class comparison"));
+  print("CLASS_GENERATOR_NORMS ",apply(I->idealnorm(F,I),B.gen));
+  print("SMALL_GENERATOR_IDEAL ",C);
+  print("SMALL_GENERATOR_TWO_ELEMENTS ",idealtwoelt(F,C));
+  print("PRIME73_COMPARISON P=Q3^2*C*(g), g=",lift(nfbasistoalg(F,ans[2])));
+  my(I=rnfidealup(R,C,1),q=rnfidealup(R,Q,1),g=rnfeltup(R,nfbasistoalg(F,ans[2])));
+  if(idealmul(E,idealmul(E,idealpow(E,q,2),I),g)!=rd[3],error("actual upper comparison"));
+  print("EXTENDED_SMALL_IDEAL_NORM ",idealnorm(E,I));
+  writebin("research_e81/code/e_prime73_small_ideal.bin",[R,E,I,rd[4],g,q,rd[3]]);
+  print("DONE: actual S-class comparison with both inverse ideal maps.");
+};
+run();
+quit;
