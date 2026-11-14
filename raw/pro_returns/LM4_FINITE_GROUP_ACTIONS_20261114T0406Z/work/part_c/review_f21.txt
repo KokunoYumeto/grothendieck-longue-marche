@@ -1,0 +1,69 @@
+Independent audit of F.21
+=========================
+Reviewer: part_c_review525
+Verdict: PASS
+
+Scope
+-----
+Read the entire mathematical staging, final result metadata, report, and exact symbolic producer. Independently reran the producer; all 95 checks passed and its output was byte-identical to the producer's initial result. This audit retains the original labels, the selected source collision and whisker for every divisor, the actual groups, and the full completion maps.
+
+1. Source and basepoints
+-----------------------
+At each selected source collision d in the filled source Y, the old and new selected point coordinates coincide. The exact source transport is g -> omega g omega^{-1}; every target transport is the corresponding forgetting of gamma(omega). The proof therefore takes its common diagonal basepoint at the actual collision, rather than introducing an unspecified conjugation. The new covering basepoint r0=C_u(d) satisfies A(d)=epsilon r0^2 and f_epsilon(r0)=k_u exactly.
+
+For u=zeta^j, j=0,2,3,4, I checked h=3(1+j) modulo 5 and the four pairs (j,h)=(0,3),(2,4),(3,2),(4,0). The fiber in the s coordinate excludes precisely 0,infinity,+/-zeta,+/-u,+/-zeta^h. The original Y has twelve punctures and fills exactly four to this eight-punctured fiber. The proof retains this actual surjective filling map. It does not identify the two punctured sources literally.
+
+2. Fourfold cover and pencil
+----------------------------
+The coverings W -> W_A -> M0,5 are the stated square-root coverings, with all zeros, poles and branch collisions removed. Their connected punctured-plane fibers give connectedness. The pencil (C-A)/(1-AC) has no indeterminate point in W and avoids 0,+1,-1. For finite k outside 0,+1,-1, the inverse C=(A+k)/(1+kA) yields the eight excluded A coordinates 0,infinity,+1,-1,-k,-1/k and the roots of kA^2+2A+k. I checked each root exclusion and the discriminant. Local analytic root choices and disjoint puncture isotopies provide the asserted bundle over B minus infinity.
+
+The filled divisor E is exactly A -> (A,A^{-1}) with six excluded A values 0,infinity,+1,-1,+i,-i. It is connected and smooth. The transverse derivative -A/(A^{-1}-A) is nonzero at every point of E, so its meridian maps to the infinity meridian with exponent one. The loop and null-homotopy transversality arguments prove the precise quotient by the normal closure of those meridians. Quotienting first by the bundle fiber then by this meridian gives J/N = pi1(B), through kappa itself. Thus the old image N is the actual discrete kernel. No exactness statement for completion of this pencil sequence is used.
+
+3. New section and the index-two factorization
+---------------------------------------------
+The section A -> (A,epsilon A) is defined on the full four-punctured A sphere. Its pullback to W is r -> (epsilon r^2,r) on the six-punctured R sphere. The connected double cover identifies its fundamental-group image with M intersect J and makes M -> T/J onto. The exact pencil on it is r/(r^2+epsilon r+1).
+
+I checked both signs of all three branch-value identities. Removing epsilon/3 in the target gives a connected unramified degree-two cover: its six omitted source points are exactly the inverse image of 0,+1,-1,epsilon/3, and the ordinary simple poles lie over the allowed target infinity. The extra branch meridian has odd monodromy. Multiplication of any base loop g by c^{-chi(g)} puts it in the cover kernel without changing its image after filling the extra value. This proves surjectivity onto pi1(B) by the named homomorphisms. The exact group factorizations J=N(M intersect J) and T=NM follow, with the order of the two factors correct.
+
+4. Orbit map and full completion
+--------------------------------
+The right diagonal-coset coordinate is (b_old,b_new)diag -> b_new b_old^{-1}, with inverse v -> (1,v)diag. The source image is precisely n -> (n,m(a(n))) because its new map is the same A loop followed by the displayed section. Therefore the left source action is v -> m(a(n)) v n^{-1}. Factoring v^{-1}=nm and projecting to the A group gives m=m(a(n))^{-1}, so v lies in the orbit of 1. This proves the whole discrete orbit assertion.
+
+I reread F.20's exact selected-divisor comparison: the omitted three old labels and one new label have the connected configuration fibers, and the full divisor image is the inverse image of the diagonal. Its actual configuration section and full induced free-kernel topology give the full coset identification with Fhat_3. Relabeling the chosen old point u and the sign retains these same maps. The compact L orbit contains dense discrete F3 and is closed, proving transitivity in the entire full coset space. This uses the already proved F.19/F.20 completion comparison; it does not complete the discrete pencil-kernel sequence.
+
+5. Meridian centralizer lifts
+-----------------------------
+The regular part of each divisor is obtained by deleting the other divisor intersections. Loop transversality gives its connectedness and the surjection to the full divisor fundamental group. A sufficiently small normal circle bundle lies in the ten-point configuration complement. Its fiber generator is central because the complex normal-line transport has degree +1. Its fundamental group maps onto that of the base. The original simple holomorphic collision identifies that fiber generator with the exact positive primitive source meridian based by the chosen whisker. Thus discrete divisor loops lift to the actual meridian centralizer. Completing that homomorphism gives a compact centralizing image containing the full closed divisor image. Injectivity of the circle-bundle completion is neither needed nor claimed.
+
+6. Normal generation and quotient consequences
+----------------------------------------------
+For every g in G, the source transitivity gives varpi(g)=gamma(l)p. The stated source lift h and centralizer lift c have varpi(h)=gamma(l), varpi(c)=p. Therefore d=g c^{-1}h^{-1} lies in D+ and g=d h c. The conjugate g nu g^{-1} equals d(h nu h^{-1})d^{-1}. The middle conjugate lies in K+ because K+ is normal in H-dagger. F.19's ambient normal generators are thus all in the D+-normal closure of K+, proving that this closure equals D+. No normality of K+ in D+ is assumed.
+
+The abelian quotient consequence follows because the image of compact K+ is closed. The final nilpotent consequence also checks: a maximal subgroup M0 in a finite nilpotent group is normalized by an element in the first upper-central-series term not contained in M0, so maximality makes M0 normal. A proper image of K+ would then have proper normal closure. Its image is therefore full in every finite nilpotent quotient, and compactness gives the exact maximal pronilpotent quotient surjection. The proof retains K+=D+ and the residual source-membership equation as unresolved.
+
+Exposition fixes confirmed
+--------------------------
+The initial F21.26 comma separators were replaced by multiplication spacing, and F21.3 is correctly called a containment. The final split cover and diagonal-coset displays retain the same maps.
+
+Executed certificate
+--------------------
+Producer: work/part_a/code/cross_divisor_geometry_f21.py
+Independent stdout: work/part_c/f21_symbolic_audit_stdout.txt
+Result: PASS, 95 exact rational/cyclotomic and finite puncture-index checks.
+Output SHA256: 777f8e8bb11cc6a619947e84d08f254979e7df371f026d43e67d141ed0b52068
+The producer is supplemental; the bundle, fundamental-group, completion and centralizer arguments above are mathematical proof steps.
+
+Reviewed at UTC: 2026-11-13T19:13:45.693642+00:00
+
+Exact reviewed snapshot hashes
+-----------------------------
+{
+  "work/part_a/f_cross_divisor_transitivity.tex": "b49845a8d356c78192f263fe14263e849803e22cd17b9c7f8351df82ddef415e",
+  "work/part_a/f_cross_divisor_transitivity_results.json": "4d6be3bb03ed93b7ab36dd085adec35f23cbc81534d72a9a5d748438d198ccdd",
+  "work/part_a/f_cross_divisor_transitivity_report.txt": "d70431b95abba72b04a23547dd0cf592ab0c02d5015fe2378886b49b8c6aafb8",
+  "work/part_a/code/cross_divisor_geometry_f21.py": "d65d60a0a47a5aa56875e651705d0e2efd3abf5d9d9169fdeb1cd0ebe9e44a79",
+  "work/part_a/code/cross_divisor_geometry_f21_output.json": "777f8e8bb11cc6a619947e84d08f254979e7df371f026d43e67d141ed0b52068",
+  "work/part_c/f21_symbolic_audit_stdout.txt": "5d487e796de8c909faa5b736ec150247dffa4e98781f74c8eefef04c4ea7c03c"
+}
+
+Metadata precision update: the final result row now states that the centralizer projection contains the divisor subgroup, exactly matching F21.3. No proof or producer change.

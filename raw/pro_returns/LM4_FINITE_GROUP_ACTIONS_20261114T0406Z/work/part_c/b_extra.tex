@@ -1,0 +1,242 @@
+\subsection{The full tube action and the strip subgroups}
+
+\begin{claim}{B.30}{Proved}{Explicit outer words for the antipodally paired tube model}
+For $g\ge2$, put $n=2g$ and label the equatorial holes by $j\in\Z/n$,
+with $j$ glued by a tube to $j+g$. The following presentation and
+substitutions compute the entire exterior action requested on scan 467:
+\[
+ \pi_g=\left\langle x_0,\ldots,x_{g-1},p_0,\ldots,p_{g-1}
+ \ \middle|\ R=1\right\rangle,
+ \qquad
+ R=x_0\cdots x_{g-1}
+   \prod_{j=0}^{g-1}(p_j^{-1}x_j^{-1}p_j).
+\]
+Extend the notation, with all subscripts read modulo $n$, by
+\[
+ \begin{gathered}
+ x_{j+g}=p_j^{-1}x_j^{-1}p_j,\qquad p_{j+g}=p_j^{-1},\\
+ u_j=(x_0\cdots x_j)^{-1},\quad u_{n-1}=1,\qquad
+ q_j=u_j^{-1}p_j u_{j+g-1}.
+ \end{gathered}
+\]
+Let $r=\varepsilon_0\varepsilon_1$ and $s=\varepsilon_1$ as in
+B.20. Representatives of their outer automorphisms, and of $\tau$ and
+$\rho_k$, are specified on the $2g$ displayed generators by
+\[
+\begin{array}{c|cc}
+ &x_j&p_j\\ \hline
+ r&x_{j+1}&p_{j+1}\\
+ s&u_{-j}^{-1}x_{-j}u_{-j}&q_{-j}\\
+ \tau&u_{j+g-1}^{-1}x_{j+g}^{-1}u_{j+g-1}&q_j^{-1}\\
+ \rho_k&x_j&x_j^{\delta_{jk}}p_j.
+\end{array}
+\]
+The map to $\operatorname{Out}(\pi_g)$ defined by these substitutions
+is the geometric action of
+$\Z^g\rtimes(D_{4g}\times C_2)$ of B.20. The finite factor acts by
+\[
+ r\rho_jr^{-1}=\rho_{j+1},\qquad
+ s\rho_js^{-1}=\rho_{-j},\qquad
+ \tau\rho_j\tau^{-1}=\rho_j^{-1},
+\]
+with indices in these three formulas taken modulo $g$.
+\end{claim}
+\begin{proof}
+We specify the base paths so that the formulas can be used as words,
+rather than only as unbased pictures. Let $N,S$ be the north and south
+poles in the sphere with the $n$ discs removed. Draw disjoint meridian
+arcs $d_j:N\to S$ through the gap immediately following hole $j$.
+The loop about that hole, based at $N$, is
+$x_j=d_{j-1}d_j^{-1}$. Collapse the maximal-tree edge $d_{n-1}$ and
+identify $N,S$ by that edge. The remaining arcs become
+$u_j=(x_0\cdots x_j)^{-1}$, because the product telescopes to
+$d_{n-1}d_j^{-1}$. In particular $\prod_{j=0}^{n-1}x_j=1$.
+
+Let $p_j$ run from $N$ to the northern side of hole $j$, through the
+tube to hole $j+g$, and back to $N$ on its northern side. The opposite
+traversal is $p_{j+g}=p_j^{-1}$. Its boundary identification reads
+$x_{j+g}=p_j^{-1}x_j^{-1}p_j$. Van Kampen therefore gives exactly the
+presentation in the claim. The parallel path based at $S$, on the
+southern side of the tube, is
+$q_j=d_j^{-1}p_jd_{j+g-1}$ after inserting the northern paths, which
+becomes the displayed formula on collapsing the tree edge.
+These identities can also be taken as a two-vertex cellular description:
+the sphere faces give the telescoping boundary relation and each tube
+face gives the indicated boundary conjugation.
+
+Rotation about the polar axis sends hole $j$ to $j+1$, preserves $N$,
+and sends $p_j$ to $p_{j+1}$. This proves the $r$ row. The half-turn
+$s$ about the equatorial axis through hole $0$ exchanges $N,S$ and
+sends hole $j$ to $-j$. The southern boundary loop at hole $k$ is
+$d_k^{-1}x_kd_k$, and the southern tube path is $q_k$, giving the
+$s$ row. The antipodal map exchanges $N,S$, sends $j$ to $j+g$,
+and reverses orientation. It therefore inverts the southern boundary
+loop and reverses the corresponding tube path. The boundary-loop
+formula written with $u_{j+g-1}$ equals that written with $u_{j+g}$,
+since $u_{k-1}=x_ku_k$. This proves the $\tau$ row. Finally a positive
+full twist of tube $k$ inserts $x_k$ into the crossing $p_k$ and
+leaves all other chosen paths unchanged. This proves the $\rho_k$ row.
+Each row comes from an actual homeomorphism, so it is an automorphism
+of the stated group and has the prescribed orientation sign.
+
+For $s$ and $\tau$ the chosen path from $N$ to the image of $N$ is
+$d_{n-1}$. We consequently get actual automorphisms only after this
+base-path choice. For example their squares are
+\[
+ s^2=\operatorname{Inn}(x_0),\qquad
+ \tau^2=\operatorname{Inn}(x_0\cdots x_{g-1}),
+\]
+whereas $r^{2g}=1$ as an actual automorphism. These formulas follow
+by concatenating the base path with its image: $s(d_{n-1})=d_0^{-1}$
+and $\tau(d_{n-1})=d_{g-1}^{-1}$. Thus the displayed group relation
+$s^2=\tau^2=1$ holds in the outer group with precisely the stated
+inner ambiguity. The geometric symmetries satisfy $srs=r^{-1}$ and
+commute with the antipodal involution on the surface. They preserve
+and permute the tube collars; a positive symmetry preserves twist
+sign and the antipodal map reverses it. This proves every relation
+of the asserted semidirect product in the outer group. Changing the
+maximal-tree edge conjugates each based comparison by its corresponding
+base-path word and leaves this exterior action unchanged.
+
+The accompanying programs check all relator images for $2\le g\le8$;
+$r,s$ carry $R$ to a conjugate of $R$, and $\tau$ carries it to a
+conjugate of $R^{-1}$. They additionally check all the finite-factor
+and twist-conjugacy relations in the surface group, with the actual
+inner conjugators above. For instance $srsr=1$ and
+$\tau r\tau r^{-1}=\operatorname{Inn}(x_0\cdots x_g)$.
+The word checker uses the symmetrized relator: its largest common
+piece has length one, so the length-$4g$ presentation satisfies
+$C'(1/6)$ for $g\ge2$, and the Dehn reduction is exact. These finite
+certificates supplement the cellular proof for arbitrary $g$.
+\end{proof}
+
+\begin{claim}{B.31}{Proved}{The eight symmetries of one tube}
+The stabilizer of tube $T_0$ in $D_{4g}\times\langle\tau\rangle$ is
+$\langle r^g,s,\tau\rangle\cong C_2^3$. There are coordinates
+$(\theta,t)\in(\R/2\pi\Z)\times[-1,1]$ on that tube in which its
+three generators act as
+\[
+ r^g(\theta,t)=(-\theta,-t),\qquad
+ s(\theta,t)=(\theta+\pi,t),\qquad
+ \tau(\theta,t)=(\theta+\pi,-t).
+\]
+These formulas agree with the outer action in B.30 and with the
+manuscript's free antipodal extension, after the explicit coordinate
+change $\theta_{\rm new}=\theta_{\rm old}+\pi t/2$.
+\end{claim}
+\begin{proof}
+The stabilizer of the unordered pair $\{0,g\}$ under the polygon's
+dihedral group is $\{1,r^g,s,r^gs\}$: a stabilizing rotation is either
+$1$ or $r^g$, and every stabilizing reflection is one of these followed
+by $s$. The independent central antipodal factor doubles it. In a
+symmetric tube, $r^g$ interchanges its ends and reverses its angular
+direction, while $s$ preserves both ends and rotates the cross section
+by $\pi$. The displayed representatives commute, are involutions,
+and have eight distinct combinations; the antipodal representative
+is free. They extend the same boundary maps as the corresponding
+sphere symmetries and hence give the desired tube extension.
+
+The formula of scan 453, retained through scans 461--462, is
+$\tau_{\rm old}(\theta,t)=(\theta+\pi+\pi t,-t)$.
+Conjugating it by the stated change gives exactly
+$(\theta+\pi,-t)$; this also transports both boundary identifications.
+Thus it is an explicit isomorphism of the two actions. The full twist
+is $(\theta,t)\mapsto(\theta+\pi+\pi t,t)$ in either coordinate.
+Conjugation by the two positive generators preserves its class, while
+conjugation by the negative generator inverts its class, agreeing with
+B.30. All eight maps and their products are checked symbolically in
+\texttt{code/verify\_tube\_local.py}.
+\end{proof}
+
+\begin{claim}{B.32}{Proved}{Relations for arbitrary strips and a uniform obstruction to generation}
+Choose for each $c_j$ one simple transversal $d_j$, using a strip in
+the complement of the other tubes, so that
+$i(c_i,d_j)=\delta_{ij}$. Let $W_j$ be a regular neighbourhood of
+$c_j\cup d_j$, a one-holed torus, and put
+$A_j=T_{c_j}=\rho_j$, $B_j=T_{d_j}$. Its supported subgroup is the
+central extension $\langle A_j,B_j\rangle\cong B_3$ of B.21, with
+quotient $SL_2(\Z)$. The exact pairwise relations are
+\[
+ [A_i,A_j]=1,\quad [A_i,B_j]=1\ (i\ne j),\qquad
+ A_jB_jA_j=B_jA_jB_j.
+\]
+For distinct $i,j$, the two supported subgroups commute precisely when
+$i(d_i,d_j)=0$. For intersection one, $B_i,B_j$ obey the braid
+relation and do not commute; for intersection at least two they freely
+generate a free group of rank two. For every such choice of one strip
+per tube and every $g\ge2$, these $g$ supported subgroups, together
+with $H$, generate a proper subgroup of $\mathcal T_g^+$.
+\end{claim}
+\begin{proof}
+Each $W_j$ has genus one and one boundary component because the two
+core curves meet transversely once. The extension-by-identity map and
+its faithful boundary-twist kernel are the explicit maps of B.21.
+The disjointness conditions give the first two commutation relations,
+and the calculation on its two free generators in B.21 proves the
+braid relation. For any two essential simple curves $a,b$, their
+twists commute exactly when they are disjoint: conjugation sends
+$T_b$ to $T_{T_a(b)}$, and
+$i(T_a(b),b)=i(a,b)^2$. Hence intersecting curves cannot commute.
+If $i(a,b)=1$, their regular neighbourhood is a one-holed torus, so
+the same braid calculation applies.
+
+For $k=i(a,b)\ge2$ the freedom assertion has an elementary ping-pong
+proof. On isotopy classes of essential curves set
+\[
+ X_a=\{x:i(x,a)<i(x,b)\},\qquad
+ X_b=\{x:i(x,b)<i(x,a)\}.
+\]
+Both are nonempty and disjoint. Counting crossings in a twist collar
+and cancelling only crossings already present outside it gives
+\[
+ i(T_a^m(x),b)\ge |m|\,i(x,a)k-i(x,b).
+\]
+For $m\ne0$ and $x\in X_b$ this is strictly greater than
+$i(x,a)=i(T_a^m(x),a)$, so $T_a^m(X_b)\subset X_a$.
+The symmetric inclusion holds for powers of $T_b$. The ping-pong
+argument on a reduced alternating word proves that it is nontrivial:
+apply it to the appropriate one of $X_a,X_b$, inserting one further
+nonzero power from the opposite factor when the first and last
+factors agree. Thus $\langle T_a,T_b\rangle\cong\Z*\Z$.
+These statements compute the required pairwise relations for arbitrary
+intersections of the selected strips; no disjoint-strip convention is
+being used to conclude the general generation assertion.
+
+For that assertion work on $V=H_1(X_g;\F_2)$ with its nonsingular
+intersection pairing. The $2g$ classes $[c_j],[d_j]$ form a basis:
+pairing a linear relation first with the $[c_j]$ kills all coefficients
+of the $[d_j]$, and pairing next with the $[d_j]$ kills the rest.
+There is a unique quadratic refinement $q:V\to\F_2$ with
+$q([c_j])=q([d_j])=1$. Explicitly, for this ordered basis $(v_i)$,
+\[
+ q\Bigl(\sum_i a_iv_i\Bigr)
+ =\sum_i a_i+\sum_{i<j}a_ia_j\langle v_i,v_j\rangle.
+\]
+It obeys $q(v+w)=q(v)+q(w)+\langle v,w\rangle$ by expansion.
+A twist about a curve of class $v$ acts by
+$x\mapsto x+\langle x,v\rangle v$; substitution gives
+\[
+ q(T_vx)-q(x)=\langle x,v\rangle\bigl(q(v)+1\bigr).
+\]
+Every generator $A_j,B_j$ therefore preserves $q$, without any
+restriction on the intersections among the $d_j$.
+
+Join $c_1$ and $c_2$ by an embedded arc in their connected complement
+and form a band sum $e$. This is a simple curve of nonzero class
+$[e]=[c_1]+[c_2]$, so it is nonseparating. Since the two cores are
+disjoint, $q([e])=0$. Taking $x=[d_1]$ gives
+$\langle x,[e]\rangle=1$, so $T_e$ fails to preserve $q$.
+Consequently $T_e$ belongs to $\mathcal T_g^+$ and lies outside the
+group generated by the strip subgroups. This proves properness for
+all choices under discussion. The quadratic calculation has been
+exhaustively checked for every possible matrix of transversal
+intersections modulo two in genera two, three and four; the general
+identity is the displayed algebraic proof.
+
+The rank-one comparison is thus the specified central quotient
+$B_3\to SL_2(\Z)$ and its action on the homology of $W_j$, together
+with the above braid and intersection relations. The subgroup they
+generate fixes the explicit quadratic refinement. This supplies the
+precise algebraic maps and the explicit obstruction governing the
+proposed generation in scan 470.
+\end{proof}

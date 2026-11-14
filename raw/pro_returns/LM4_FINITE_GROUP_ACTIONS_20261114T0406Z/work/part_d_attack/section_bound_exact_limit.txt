@@ -1,0 +1,154 @@
+AN EXACT LIMIT OF THE TRANSITIVE-SET SECTION BOUND
+================================================
+Unnumbered finite comparison, 2026-11-13.
+Purpose: test the attempted inference from S<=n+2 for every transitive
+finite set to generation by one representative of each specified class.
+This note disproves that inference by explicit maps. The comparison group
+is also explicitly excluded from the actual D74 quotient family.
+It is not substituted for the actual tau, E, or a peripheral solution.
+
+Finite base group and executed counts
+------------------------------------
+Let G=A5 and let I be its single conjugacy class of 15 involutions.
+The attached checker constructs the multiplication table from the actual
+even permutations on five letters. It enumerates all 59 subgroups by
+successively adjoining each of the 60 elements. The only normal subgroups
+are 1 and G; G is perfect; and every proper subgroup contains at most five
+members of I. The six subgroups of order ten attain that bound.
+
+There are exactly 2,280 ordered generating pairs in G^2 and exactly
+2,280 ordered generating triples in I^3. Conjugation by S5 gives actual
+automorphisms of G and has exactly 19 orbits of size 120 on each of those
+two sets. All tuples and all 120 conjugations are enumerated. Orbit
+representatives are retained in the output. No classification of all
+automorphisms of G is needed: these 120 actual automorphisms suffice.
+
+An elementary subdirect-product fact, with the required maps
+-----------------------------------------------------------
+For a subgroup J of G^r, either some coordinate projection is proper,
+or all coordinate projections are onto. In the latter case, a proper J
+has indices i!=j and an automorphism sigma:G->G with
+  J <= {(g_1,...,g_r): g_j=sigma(g_i)}.                       (1)
+Here is a proof retaining the comparison. Induct on r. A proper
+projection to the first r-1 factors supplies the desired relation by
+induction. Otherwise that projection is onto. Its kernel inside the
+last factor is a normal subgroup of the simple G. A full kernel gives
+J=G^r. A trivial kernel makes J the graph of an onto homomorphism
+theta:G^(r-1)->G. The images of its factors are normal and pairwise
+commute. At least one is G, so every other image lies in Z(G)=1.
+The one nontrivial restriction is an automorphism of G. This gives (1).
+The r=2 case is the same graph argument. Thus all uses below have an
+actual coordinate or graph map.
+
+The comparison group and its three labelled classes
+---------------------------------------------------
+Set
+  A*=G^20 x V, V=C2^3 with basis e0,e1,e2,
+  C_i=I^20 x {e_i}, i=0,1,2,
+  epsilon:A*->C2, epsilon(g,v)=v0+v1+v2.
+Each C_i is one actual conjugacy class of involutions. The V-coordinates
+keep the three labels distinct. Write K*=ker(epsilon)=G^20 x W0,
+where W0 has basis e1+e0,e2+e0.
+
+Every choice of one c_i from each C_i normally generates A*. Indeed,
+the normal closure of c_i intersects each simple coordinate factor G_j
+nontrivially: choose an element of that factor not commuting with the
+noncentral jth coordinate of c_i and take its commutator with c_i.
+This intersection is normal in G_j, hence is G_j. Therefore the normal
+closure of c_i is exactly G^20 x <e_i>. The three normal closures generate
+G^20 x V. These are literal normal-closure and projection maps.
+
+The ordinary generator number of A* is exactly three. For a construction,
+take the fixed generating pair a=(132), b=(354) in G and 20 distinct
+elements r_1,...,r_20 of G. Define three elements
+  A=(a,...,a;e0), B=(b,...,b;e1), R=(r_1,...,r_20;e2).
+Their projection J to G^20 is onto every coordinate. A relation (1)
+would force sigma(a)=a and sigma(b)=b, hence sigma=id because a,b
+generate G. It would then force r_i=r_j, contradicting the choices.
+Thus J=G^20. The commutator subgroup of <A,B,R> projects onto the
+perfect G^20 and has V-coordinate zero, so it contains G^20 x {0}.
+The three basis vectors in V finish the generation proof. The quotient
+A*->V proves that fewer than three ordinary generators do not suffice.
+
+Nevertheless no tuple in C_0 x C_1 x C_2 generates A*. In each coordinate
+of G^20 its projection would have to be a generating involution triple.
+There are only 19 orbits under the displayed S5 automorphisms and there
+are 20 coordinates. Two coordinate triples are conjugate by one of those
+actual automorphisms sigma. Every word in the three proposed generators
+therefore satisfies g_j=sigma(g_i). Their projection is contained in the
+proper graph subgroup (1), so cannot be G^20. This proves failure of
+the precise finite relative generating-triple set.
+
+The bound holds for every transitive A*-set
+------------------------------------------
+Let M<=A*, Omega=A*/M, n=|Omega|. For any t in C_i the exact coset count is
+  |Fix_Omega(t)|/n = |C_i cap M|/|C_i|.                      (2)
+This follows by counting the elements g with g^(-1)t g in M: each
+element of C_i cap M has |C_A*(t)| preimages, and passing to cosets
+divides by |M|.
+
+Let J be the projection of M to G^20. If J is proper, the subdirect
+fact above has two alternatives. A proper coordinate projection
+contains at most five of the fifteen involutions. Consequently
+  |I^20 cap J|/|I^20| <= 5/15=1/3.
+In the graph case (1), for each of the fifteen possible ith involutions
+the jth is uniquely prescribed by sigma; automorphisms preserve I.
+That ratio is at most 1/15. Projection from C_i cap M to I^20 cap J
+is injective, so (2) gives |Fix_Omega(t_i)|<=n/3 for every i.
+In this case their sum is at most n, a stronger bound than n+2.
+
+If J=G^20, the commutator projection argument gives G^20 x {0}<=M.
+Thus M=G^20 x W for an actual subspace W<=V. Put k=number of basis
+vectors e_i lying in W. The quotient action is the translation action
+on V/W, so each C_i fixes every point when e_i lies in W and fixes
+none otherwise. Hence S=n k, with n=8/|W|. For dimensions 0,1,2,3
+the respective bounds on k are 0,1,2,3 and n is 8,4,2,1.
+Each gives S<=n+2; the checker also lists all 16 subspaces individually.
+Together these exact subgroup cases prove
+  sum_i |Fix_Omega(t_i)| <= |Omega|+2
+for EVERY transitive finite A*-set, despite the proved empty relative
+generating-triple set.
+
+Full primary tests and the actual quotient exclusion
+----------------------------------------------------
+Since G^20 is perfect, every homomorphism from it to a finite p-group
+is trivial. Thus the maximal pro-2 quotient of K* is W0, and every
+maximal pro-p quotient for odd p is trivial. For any choices c_i in C_i,
+the two elements c_1 c_0 and c_2 c_0 map to the two displayed basis
+vectors of W0. Their images therefore generate every maximal pro-p
+quotient of the specified parity kernel. This is an explicit quotient
+calculation; it does not make K* two-generated.
+
+In fact K* is not two-generated. Its quotient G^20 is not two-generated:
+there are only 19 S5-automorphism orbits of generating pairs in G, so
+the same coordinate pigeonhole argument forces any proposed two
+generators into a proper graph subgroup. Therefore no surjection from
+the actual F=Fhat(x,y) to K* exists.
+
+More explicitly, an onto q:E->A* sending each original t_i into C_i
+would satisfy epsilon q=u, the original E/F character. This is checked
+on s=t0 and on x=t1 t0, y=h^(-1)t2 t0 h. It would follow that q(F)=K*:
+every element in K* has an E-lift with u=0. The resulting onto map
+Fhat(x,y)->K* contradicts the proved generator obstruction. Hence A*
+with these labels cannot occur among the actual finite quotients in
+the D74 task. No original peripheral map or value of tau is assigned
+to this comparison group.
+
+Disposition and executed evidence
+----------------------------------
+The transitive-set inequality, normal generation of the three labelled
+classes, ordinary three-generation, and the displayed primary tests
+together do not suffice for a relative generating triple: A* has all
+four proved properties and its triple set is empty. The full two-
+generator condition on the actual parity kernel supplies a further
+constraint and excludes A*. Its use, together with the retained actual
+cusps, remains necessary in any continuation of the actual G_N problem.
+No claim that the full actual hypotheses are insufficient is made.
+
+Code: code/section_bound_insufficiency_base.py.
+Output: code/section_bound_insufficiency_base_output.json and identical
+stdout. All 15 assertions passed. The exact base group, all 59 subgroups,
+all 3,600 ordered pairs, all 3,375 involution triples, the 120 S5
+conjugations and all 16 V-subspaces were enumerated. The large product
+itself was not enumerated; every assertion about it is proved above by
+the specified coordinate, graph, normal-closure and quotient maps.

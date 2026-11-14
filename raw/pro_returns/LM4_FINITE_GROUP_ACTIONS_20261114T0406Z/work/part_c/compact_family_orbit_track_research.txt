@@ -1,0 +1,216 @@
+ACTUAL SMALL ORBIT TRACKS AFTER THE INITIAL FIXED REGION
+Unnumbered research continuation, saved before the F32 peer audit.
+This file is not sealed or independently accepted.
+
+Scope
+-----
+The construction below concerns an actual homotopy of the restriction
+to one full Q-orbit, including its original circle limits and the inverse
+of its parameterized embedding. It does not supply an ambient correction
+with a quantitative displacement bound. That ambient estimate is the
+remaining step; no infinite deformation or accumulated estimate is asserted.
+
+Retain the actual endpoint family produced by
+compact_family_initial_fixed_region.tex (source af88a37d...).
+Write h:P->C_Q(x) for that endpoint, with P compact, connected and based,
+h(u0)=identity. The application to based spheres S^n has n>=1.
+It fixes F_X=pi^{-1}X pointwise, where X is the specified compact
+subpolyhedron containing a disk neighborhood of p.
+Its descents b_u have the relative-X component witness IFR.14.
+The fixed-set group Homeo_X(N)_0 is contractible by the fully checked
+Yagasaki Theorem1.1, because X contains a disk. The normalized contraction
+IFR.7 therefore gives an actual ordinary family B_{u,t}, relative to X,
+from identity to b_u and constant at u0. Its unique C92 pointed lift
+W_{u,t}=lambda(B_{u,t}) is jointly continuous on O and commutes with
+every original q. Constant tracks prove it fixes F_X pointwise.
+This W is used only on the interior; no original circle extension of
+the whole W-family is being asserted.
+
+Fix the same original closed-disk coordinate iota as FCE.1, with
+e(z,w)=|iota(z)-iota(w)| and e_Q=sup_q e(qz,qw).
+The actual forward envelope is
+  a^+(pi z)=max_u e_Q(h_u z,z).
+It is continuous and C0 by CFT/FCE. Choose the already constructed
+positive C0 majorant eta=a^++a^-+tau. In particular eta(y)>a^+(y).
+
+1. A literal orbit carrier and its radius
+----------------------------------------
+Fix v in O minus F_X and set
+  A_v={h_u(v):u in P},  K_v=Fill(A_v).
+A_v is compact and connected, since P is compact and connected.
+It contains v because h(u0)=identity. It misses F_X: h_u fixes F_X,
+and h_u(v) in F_X would imply v=h_u^{-1}(h_u(v)) in F_X.
+FCE's exact filling map applies to this specified A_v. It gives compact,
+connected K_v and
+  qK_v=Fill(qA_v)
+for every original q. The boundary of K_v is contained in A_v:
+the boundary of the exterior component of O minus A_v is contained
+in A_v, and filling removes the other complement components.
+
+For each q and u,
+  e(qh_u(v),qv)<=a^+(pi v).
+Thus iota(qA_v) lies in the closed Euclidean ball of that radius
+centered at iota(qv). FCE.4 puts the filled set inside its Euclidean
+convex hull, which remains in that same ball. Consequently the exact
+radius bound is
+  e_Q(z,v)<=a^+(pi v)       for every z in K_v.
+This strengthens the diameter bound to a radius bound at the actual
+original point v. It uses the actual parameter orbit, not a new path
+substituted for h.
+
+2. A small Jordan disk with boundary avoiding every old fixed point
+------------------------------------------------------------------
+Here is a direct neighborhood construction for the filled compact
+connected set K_v in the original Euclidean coordinate.
+For every open neighborhood U of K_v, there is a closed Jordan disk
+D with K_v contained in int D and D contained in U.
+
+To verify this assertion, use that K_v has connected exterior in the
+plane. Choose a large closed round disk B_R containing K_v well inside
+its interior. Every point in B_R minus U has a polygonal path in the
+exterior of K_v to outside B_R. Such paths exist because an open
+connected planar set is polygonally connected: the points reachable
+by finite polygonal paths form a relatively open and closed nonempty
+subset. The compact path avoids K_v by a positive distance. A small
+neighborhood of its initial point can be attached to it with the same
+property. Finitely many of these neighborhoods cover the compact set
+B_R minus U. Hence one positive neighborhood thickness of K_v is
+disjoint from all those paths and initial neighborhoods.
+
+Cover K_v by finitely many open round disks with centers on K_v and
+radius less than that thickness and the distance to the outside of
+B_R. Choose a common radius from a sufficiently small open interval,
+keeping the cover but avoiding the finitely many radii causing pairwise
+tangencies or triple boundary intersections. Their union W0 has
+connected interior: its intersection graph is connected because its
+open disks cover the connected K_v and each center belongs to K_v.
+Its boundary is a finite disjoint union of piecewise circular Jordan
+curves. At a transverse intersection only the two exterior arcs lie
+on the boundary; tangencies and triple vertices have been excluded.
+The outer boundary surrounds all of W0, because its interior is connected.
+Fill the other bounded complement components. This gives the closed
+Jordan disk D, containing K_v in its interior.
+
+The chosen paths from B_R minus U and the region outside B_R remain
+in the exterior of W0. Filling W0 therefore adds no point outside U.
+Thus D is contained in U. This proves the required neighborhood
+construction in the actual original plane.
+
+Now let eps>0. The set of points at e_Q-distance less than eps from
+K_v is open in O by C81's exact metric-topology comparison.
+Since boundary(K_v) is contained in A_v and A_v is compact and
+disjoint from the closed F_X, choose an open V containing that
+boundary and disjoint from F_X. Apply the construction with
+  U={z:dist_{e_Q}(z,K_v)<eps}
+        intersect (int K_v union V).
+This is an open neighborhood of K_v inside O. We obtain D_v with
+  K_v subset int D_v,
+  D_v subset {z:dist_{e_Q}(z,K_v)<eps},
+  boundary(D_v) intersect F_X = empty.
+The last assertion follows because K_v is already inside int D_v,
+so its new boundary lies in U minus K_v, hence in V.
+
+Choose eps=(eta(pi v)-a^+(pi v))/2>0. For z in D_v choose k in K_v
+with e_Q(z,k)<eps. The preceding radius bound gives
+  e_Q(z,v)<a^+(pi v)+eps<eta(pi v).
+All q-translates have the same e_Q diameter, and
+  diam_{e_Q}(D_v)<=2a^+(pi v)+2eps<2eta(pi v).
+The Q-translates of D_v are not asserted disjoint.
+
+3. A specified retraction avoiding the entire old fixed set
+----------------------------------------------------------
+Use the planar Schoenflies homeomorphism for the constructed finite
+piecewise circular Jordan disk: let
+  s:R2->R2,  s(D_v)=closed unit disk,
+with its inverse s^{-1}. Here D_v denotes its iota-coordinate image.
+The particular planar source locator for this standard input remains
+to be recorded before sealing this research note.
+Define the actual retraction in that coordinate by
+  r_v(z)=s^{-1}(s(z)/max(1,|s(z)|)).
+Restrict the input to iota(O), and transport it back by iota^{-1}.
+The formula is continuous, fixes every point of D_v, and sends every
+point outside D_v to boundary(D_v). No metric estimate for s or s^{-1}
+is used: all output points lie in the already controlled original D_v.
+
+It maps O minus F_X into D_v minus F_X. Indeed an input in D_v is
+unchanged, while an input outside D_v goes to its boundary, which
+was chosen disjoint from F_X. This keeps the actual obstacle set,
+including all its Q-translates and all components.
+
+4. A genuinely controlled one-orbit embedding homotopy
+-----------------------------------------------------
+Define
+  w_{u,t}=r_v(W_{u,t}(v)).
+The W-track avoids F_X because W fixes F_X and is a homeomorphism.
+Therefore w_{u,t} lies in D_v minus F_X. At the two ends and basepoint,
+  w_{u,0}=v,  w_{u,1}=h_u(v),  w_{u0,t}=v.
+These equations use that r_v fixes A_v pointwise. Its values obey
+  e_Q(w_{u,t},v)<eta(pi v)
+for all u,t, with the original e_Q and its original operator labels.
+
+On the whole actual orbit put
+  E_{u,t}(qv)=q w_{u,t}.
+This is unambiguous because Q acts freely. Each map is injective:
+q w=r w implies r^{-1}q fixes w, so q=r.
+Properness of Q makes its image a closed discrete orbit in O, and
+its inverse on that image is the exact map q w_{u,t}->qv.
+It misses F_X by Q-invariance. It is Q-equivariant and has exactly
+the original endpoint h_u restricted to Qv. Its original uniform
+displacement is bounded by eta(pi v), since
+  sup_q e(E_{u,t}(qv),qv)=e_Q(w_{u,t},v).
+For two parameter values s,s',
+  sup_q e(E_s(qv),E_{s'}(qv))=e_Q(w_s,w_{s'}).
+Thus the actual parameter continuity is measured by the exact
+original-orbit restriction metric, not merely quotient convergence.
+
+The variable-image inverse is also continuous. More precisely
+  (u,t,qv)->(u,t,qw_{u,t})
+is a homeomorphism onto its image in (P x I) x O. For a compact
+neighborhood of any target point, properness allows only finitely
+many q with qD_v meeting it. Near a specified parameter, continuity
+of w and freeness separate those finitely many orbit points.
+The inverse q-label is therefore locally constant, giving the stated
+inverse continuity.
+
+5. Original circle comparison for this restriction embedding
+-----------------------------------------------------------
+The set T_v=Qv union boundary(Dbar) is closed in Dbar and compact:
+the orbit has no interior accumulation point by properness.
+Extend E_{u,t} to T_v by identity on the original circle.
+C81.8 applies to the compact source {v} and compact target D_v.
+It gives a compact original boundary-fixed centralizer family P_v
+with every qD_v contained in P_v(qv). Consequently qv approaching
+an original circle point forces the whole qD_v to that same point,
+uniformly over u,t. This proves joint circle continuity of the
+extended E, without extending any individual q to the circle.
+
+The total map
+  (P x I) x T_v -> (P x I) x Dbar,
+  (u,t,z)->(u,t,E_{u,t}(z))
+is continuous and injective from a compact space to a Hausdorff
+space. Its inverse on the compact image is continuous. This gives
+both topology directions, including the varying image and the
+original circle. The inverse displacement on that image equals
+the same pointwise e-distance bound eta(pi v).
+
+6. Exact step still missing
+--------------------------
+This construction supplies an actual small embedding homotopy of
+one original orbit after the common fixed region. It uses a
+retraction of the specified ordinary residual tracks into a filled
+carrier built from the given actual family itself.
+
+IFR's local extension products can extend the projected one-point
+embedding homotopy with compact quotient support and with the old
+fixed region retained. Their lifted ambient displacement has not
+been bounded by the radius of D_v. Overlapping translates of D_v
+may form large chains, and the finite extension product can revisit
+such chains. A bound by the diameter of the entire lifted support
+would not give the required original uniform estimate.
+
+The next construction must control the actual ambient factor
+trajectories, then their accumulated displacement while successive
+vertices, edges and cycles are fixed. The present embedding maps
+and inverse topology do not assert that estimate or assume a
+uniform number of disjoint-disk stages. C83's exact infinite-evaluation
+obstruction remains unchanged.

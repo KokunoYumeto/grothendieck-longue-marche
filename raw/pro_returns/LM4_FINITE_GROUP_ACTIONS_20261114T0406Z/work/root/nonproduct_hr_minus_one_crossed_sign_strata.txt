@@ -1,0 +1,162 @@
+EXACT CROSSED SIGN-STRATUM EXCLUSIONS ON hr=-1
+=============================================
+Unnumbered continuation, 2026-11-14 UTC.
+Root proof and exact 52-check original-matrix certificate: PASS.
+Independent peer review is requested separately.
+
+1. Original character, source maps and common-module equation
+-------------------------------------------------------------
+Retain the actual six-dimensional boundary-quotient matrices T_i,
+i=0,...,10, and their exact rank-one factorization
+  T_0-d I=a q, d=r/h,
+for chi=(r,s,t,u,v,w,z), s=h/(r t u v w z).
+The bound source files are named in the accompanying certificate.
+
+The field input is a quadratic finite extension K/L in odd
+characteristic, with involution sigma, and
+  sigma(r)=-r, sigma(h)=-h, r not in L,
+  d,t,u,v,w,z in L*, hr=-1.
+Then r^2=-d is a nonsquare in L. Consider the two exact branches
+  A: (u,w)=(1/d,1),       B: (u,w)=(1,1/d).             (C.1)
+Both have s=1/(t v z). Their d=1 overlap is the already accepted
+u=w=1 stratum. Hereafter d!=1. Also d!=-1, since -d=1 would be
+a square. Thus d,d-1,d+1 are all nonzero, and the deleted character
+is automatically nontrivial on these remaining branches.
+
+For a common simple submodule with nonzero restriction of T_0-dI,
+let phi be the source-action intertwiner. Its rank-one image gives
+  phi(a)=c sigma(a), sigma(q)phi=c q
+with c nonzero. Applying this to W(T)a for every actual source
+word gives the literal scalar equality
+  q W(T) a=sigma(q W(T) a).                            (C.2)
+This is the same exact map used in the accepted u=w=1 proof.
+
+Put O_i=(qT_i a-sigma(qT_i a))/2 and F_i=r O_i.
+Equation(C.2) makes every F_i zero. The following calculation
+excludes that common zero on both branches(C.1).
+
+The coefficient certificate has two independent routes for all
+eleven F_i on each branch. The odd trace route sends an original
+r,h,t,u,v,w,z monomial with er+eh odd through
+  p=(er+eh+1)/2,
+  coefficient -> (-1)^p coefficient,
+  exponent -> (p-eh-uf*eu-wf*ew,et,ev,ez),             (C.3)
+where (uf,wf)=(1,0) or (0,1). These are the d,t,v,z exponents.
+The matrix route uses its own sparse integer arithmetic in
+  Z[d^+-1,t^+-1,v^+-1,z^+-1,r]/(r^2+d),
+substituting s=1/(t v z), u=d^-uf, w=d^-wf into every original
+matrix monomial and into the original q and a. Multiplying qT_i a
+and then taking r times its odd part reproduces(C.3) exactly.
+
+2. Branch A: the first two source equations
+-------------------------------------------
+On A the exact first equation is
+  F_1=-(d-1)(d+1)(t-1)(dt+1)/t.                       (C.4)
+Consequently t=1 or t=-1/d. The two source-2 restrictions are
+  F_2|_(t=1)=-d(d-1)(dv-d-1)/v,
+  F_2|_(t=-1/d)=(d-1)((2d+1)v-d-1)/v.                (C.5)
+In the first case v=(d+1)/d. In the second, 2d+1 is nonzero:
+its vanishing would make(C.5) force d+1=0, already excluded.
+Thus the second case has v=(d+1)/(2d+1). All new denominators
+used below have now been proved nonzero in the original field.
+
+3. Branch A with t=1
+---------------------
+Under t=1,v=(d+1)/d the exact restrictions are
+  F_10=-(z-1)(dz-1)/z^2,
+  F_8|_(z=1)=-d^2/(d+1)^2,
+  F_5|_(z=1/d)=(1-d)(d+2),
+  F_3|_(d=-2)=4.                                      (C.6)
+The first equation forces z=1 or z=1/d. The first choice is
+excluded by the second displayed value. The second choice forces
+d=-2 by the third value, and the fourth value is nonzero in every
+odd characteristic. This completes this case, including
+characteristic 3, where d=-2 already equals the excluded value 1.
+
+4. Branch A with t=-1/d: an integral identity equal to 4
+-------------------------------------------------------
+Substitute t=-1/d and v=(d+1)/(2d+1) in the original F_i.
+Write P_i for the numerator and D_i for the denominator of the
+exact expressions recorded in check_nonproduct_hr_minus_one_crossed_output.json.
+The denominators for i=3,5,7,8,10 are respectively
+  (d+1)^2, d^2 z^2(2d+1), d z(d+1)(2d+1),
+  z(d+1)^2(2d+1), z^2.                               (C.7)
+They are nonzero by the original character and section 2.
+In particular the common zero forces
+  P_3=-6d^4-9d^3+5d^2+11d+4=0,
+  P_10=-2d^3 z^2+d z^2+d z+z-1=0,
+  P_8=P_5=P_7=0.                                     (C.8)
+All five polynomials are printed in the certificate, with every
+integer coefficient; no polynomial is determined only by a hash.
+
+Here is the exact integral elimination, retaining small
+characteristics and every possible leading-coefficient zero.
+For i=8,5,7, let R_i=Res_z(P_10,P_i). The certificate gives
+  R_i=U_i P_10+V_i P_i                              (C.9)
+with U_i,V_i in Z[d,z]. They are the signed first-column cofactors
+of the explicit Sylvester coefficient matrix. Its columns are
+the coefficient vectors of z^j P_10 (0<=j<deg_z P_i), followed
+by z^j P_i (0<=j<deg_z P_10), in ascending z degree. Multiplication
+by its adjugate proves(C.9) over Z[d,z]. Both the determinant
+and full polynomial identity are checked exactly by the program.
+
+The same complete certificate gives X_i,Y_i in Z[d] with
+  X_8 P_3+Y_8 R_8 =       49090713635888 = N_8,
+  X_5 P_3+Y_5 R_5 =    18047687066575360 = N_5,
+  X_7 P_3+Y_7 R_7 =     2692556607316340 = N_7.        (C.10)
+Every coefficient of U_i,V_i,X_i,Y_i is retained in the output,
+and all three expanded identities are verified over the integers.
+Finally the literal integer equation is
+    85542870560925693215792810563 N_8
+   - 232681370571607934253860073 N_5 + N_7 = 4.       (C.11)
+Combining(C.9)--(C.11) expresses 4 in the ideal generated by
+P_3,P_10,P_8,P_5,P_7 in Z[d,z]. Specialization is a ring
+homomorphism into L, and each generator in(C.8) maps to zero.
+It would send 4 to zero, impossible in odd characteristic.
+This proof divides by none of the leading coefficients of those
+polynomials and discards no prime dividing an intermediate N_i.
+
+5. Branch B: three exact factors
+---------------------------------
+On B the first source equation is
+  F_1=(d-1)(d+1)(v-1)(z-1)(dz+1)/(vz).                (C.12)
+It leaves the three cases v=1, z=1, or z=-1/d.
+The last is excluded directly by
+  F_10|_(z=-1/d)=-2d(d+1).                            (C.13)
+
+On z=1 the exact values are
+  F_2=d(dt^2-1)/t,
+  F_5=2(d-1)(d+1)(t-1)(v-1)/(tv).                    (C.14)
+The first gives d=t^-2. Since d!=1, t^2!=1 and t-1!=0.
+Thus the second gives v=1. As -d=-t^-2 is nonsquare,
+-1 is nonsquare in L and t^2+1 cannot vanish. But now
+  F_7=(t-1)^3(t+1)(t^2+1)/t^5                       (C.15)
+is nonzero, a contradiction.
+
+It remains to use v=1 from(C.12), with z=1 already excluded.
+The exact identities
+  F_5|_(v=1)=(z-1)(dz-1)/z^2,
+  F_10|_(z=1/d)=-2(d-1)^2(d+1)                      (C.16)
+force z=1/d and then contradict its nonzero displayed value.
+This exhausts all three factors in(C.12).
+
+6. Certificate and scope
+-------------------------
+The self-contained program check_nonproduct_hr_minus_one_crossed.py
+passes 52 exact checks. They include 22 complete comparisons
+between original-matrix and odd-trace routes, every factor and
+specialization used above, three integral Sylvester identities,
+three integer Bezout identities, their integral coefficient checks,
+and the final integer combination equal to 4.
+
+Together with the separately accepted u=w=1 proof, this establishes
+the two crossed branches in(C.1) for common simple submodules with
+nonzero source-zero rank-one action. The present result does not
+assign a new numbered claim. The u=w=1/d branch, hr different from
+-1, zero-rank-one modules, and the all-character affine result
+remain tasks of the continuing proof.
+
+The bound original matrix and rank-one data are the precise inputs.
+This local certificate verifies their algebra by independent
+coordinate routes. The complete original group-word derivation
+continues to be an explicit obligation of the general source audit.

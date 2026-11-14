@@ -1,0 +1,453 @@
+INDEPENDENT MATHEMATICAL AND EVIDENCE REVIEW OF F.29
+Reviewer: /root/c89_review_and_general_c
+Verdict: PASS. No mathematical or source correction requested.
+
+1. FROZEN ARTIFACTS AND REVIEW SCOPE
+
+The complete 795-line proof was read, including all 33 numbered displays,
+the coefficient and principal maps, every field-comparison case, the
+exceptional nonsplitting argument, the restriction and trace argument,
+the original-source explanation and the positive-sign transport.
+
+work/part_a/f_four_parameter_product_one_images.tex
+  SHA256 8aa897e0df17844ff6fb538be5770aaace072afa25d14a378cfc934e06d557cd
+work/part_a/f_four_parameter_product_one_images_results.json
+  SHA256 04169bf3db2fca17bdbd7177726cc6bf7cacd1b2664b393f062e6c133911b3d2
+work/part_a/f_four_parameter_product_one_images_report.txt
+  SHA256 e181ae7861f84d0d06594e57b349a3f22959cc94ba8b54c6ba9074cc2c4de231
+work/part_a/f_four_parameter_product_one_images_evidence_manifest.json
+  SHA256 aef9ee3a646f1e65e448864f81b3586a9394149d807fcb4004e876d859d62734
+
+Both new independent word-audit programs were read in full: 386 lines of
+affine_four_parameter_extension_independent_audit.py and 140 lines of
+affine_four_parameter_r1_independent_audit.py. All three symbolic producer
+programs were also read in full (101, 80 and 186 lines). The separate
+63-line exceptional original-word checker, its full candidate certificate,
+the candidate-producing verify_forced_lifts.py, the final author metadata
+and report, and the root replay comparison were read. The earlier F28
+integer-Laurent evaluator reused by the exceptional checker has the exact
+frozen binding already reviewed for F28.
+
+All 63 final manifest entries were independently verified by exact path,
+byte count and SHA256 before and after the peer replay. Every binding was
+unchanged. This review does not edit any author proof, code, metadata,
+manifest, earlier F24--F28 source, C91/C92 source, general-C note or PDF.
+
+2. ACTUAL RESULT, SCALAR FIELDS AND EXHAUSTIVE CASE DIVISION
+
+The negative character is exactly
+  (r,s,t,u,1,1,c^-1), c=r*s*t*u.
+For the positive sign the variables are the images of the explicitly
+transported basis Yi=B_+(Xi). The asserted image equality is for the actual
+subgroups K_sign and R_sign and the stated finite affine representations.
+
+The original deleted meridians X4,X5,X6,X7 generate the scalar image of R.
+Their characters give C=<u,c^-1>. The F21/F22 actual normal-generation
+statement, followed by the abelian scalar homomorphism, gives chi(K)=C.
+The ambient scalar image is D=<r,s,t,u>. Consequently
+  k1=F_p(u,c), k0=F_p(r,s,t,u)=k1(r,t),
+with the explicit recovery s=c/(r*t*u). This equality of fields is used
+only through the stated inclusion and recovery formula.
+
+C=1 is precisely u=c=1. In that case the image of R lies in the abelian
+translation group, so its normal closure of the image of K equals that
+image itself; F21/F22 therefore proves the required equality. When C is
+nontrivial and k0=k1, F25 supplies the affine equality and F24 supplies the
+degree-one cohomology assertion. When u=1, substitution into the original
+seven generator characters gives exactly the F28 tuple, with c=r*s*t.
+The coefficient map is u->1, fixing r,s,t, all generator labels and all
+actual words. It sends the X7 pivot 1-c to 1-r*s*t on that chart. The
+remaining strata are exactly the four c=1/c!=1 and r=1/r!=1 cases, with
+u!=1 and k1 a proper subfield of k0. There is no missing boundary case.
+
+For c=1, h=r*s*t=u^-1 is nontrivial and k1=F_p(h). The r=1 strata have
+k0=k1(t). Thus each conjugate t_j is outside k1; in particular t_j^2!=1.
+These implications hold in characteristic two as well, where +/-1 are
+the same element of the prime field.
+
+3. COEFFICIENT MAPS, CONTINUOUS COCYCLES AND ORIGINAL SOURCE ACTIONS
+
+The four-parameter integral Laurent coefficient map sends an original
+exponent vector (a1,...,a7) to
+  r^(a1-a7)*s^(a2-a7)*t^(a3-a7)*u^(a4-a7).
+The c=1 map is defined directly on the original word expressions and sends
+it to r^(a1-a4)*s^(a2-a4)*t^(a3-a4). Its intermediate ring comparison is
+  Z[r^+-1,s^+-1,t^+-1,u^+-1]/(r*s*t*u-1)
+       -> Z[r^+-1,s^+-1,t^+-1], u -> (r*s*t)^-1,
+fixing r,s,t. The inverse sends r,s,t to their classes. Composing either
+way fixes those generators and also fixes u because r*s*t*u=1. The proof
+therefore changes the actual principal pivot before inverting 1-h. It
+does not attempt to evaluate an already inverted zero 1-c at c=1.
+
+For a finite field, any seven translation values together with the given
+seven nonzero scalar values define a homomorphism to a finite affine
+group. The universal property of the profinite free group supplies the
+continuous homomorphism and its continuous cocycle. Conversely generator
+values determine that cocycle. Thus the stated seven-dimensional Z1 space
+is the actual continuous cocycle space. The Laurent computations evaluate
+finite words; no continuity assertion for a representation over an
+infinite coefficient ring is used.
+
+Write delta_i=chi(Xi)-1. The displayed maps are
+  P_p(v)_i=v_i-delta_i*delta_p^-1*v_p (i!=p),
+  S_p inserts zero in coordinate p.
+Their composites are P_p*S_p=I and
+S_p*P_p(v)=v-delta*delta_p^-1*v_p. Thus their induced mutually inverse
+maps identify the six coordinates with the actual quotient by the
+principal line. The pivot is delta7=(1-c)/c on c!=1, and
+delta4=(1-h)/h on c=1. Both denominators are proved nonzero on their
+respective strata before use.
+
+Every old source is the original zero-based index and literal label:
+0=old0; 1,...,5=old_1_0,...,old_1_4;
+6,...,10=old_-1_0,...,old_-1_4. No source permutation is introduced.
+For A_l with rows D(B_l(Xi)), source precomposition is v->A_l*v,
+A_l*delta=delta, and its six-dimensional action is P_p*A_l*S_p.
+The checks establish the exact cleared identity
+  delta_p*(A_l*S_p*J-S_p*J*T_l)
+      =delta*row_p(A_l*S_p*J).
+Since S_p*J*T_l has zero pivot row, this proves that the candidate T_l is
+exactly J^-1*P_p*A_l*S_p*J on the stated field chart.
+
+The literal word evaluator was reviewed directly. Affine multiplication
+is (a,x)(b,y)=(a+b,x+chi(a)y) in exponent/derivative notation; inversion
+is (-a,-chi(-a)x). Positive and negative Artin crossings update the
+adjacent generator pair and its two actual conjugating words. The
+erased eighth meridian and its decoration yield u=c8^-1, and the based
+seven-generator action is conjugation by this u. The evaluator checks
+the pure permutation, erased meridian, each generator character and the
+complete boundary product for every word. Therefore its matrix comparison
+starts with the original source words independently of the symbolic
+candidate matrices. Its sparse arithmetic uses exact integer coefficients
+and admits only signed monomial denominators when parsing matrices.
+
+4. FROBENIUS TRANSPORT AND THE SIMPLE-SUBSPACE COMPARISON METHOD
+
+Let q1=|k1| and m=[k0:k1]. The coefficient map
+  d -> d^(q1^j)
+carries the actual continuous chi-cocycles to the chi_j-cocycles, carries
+the principal b*(chi-1) to b^(q1^j)*(chi_j-1), and commutes with source
+precomposition and restriction. For 0<j<m its inverse is the coefficient
+power q1^(m-j); j=0 uses the identity. The maps are semilinear over k0
+and linear over k1. The characters agree on K because chi(K)=C is in k1.
+
+The pairs (r_j,t_j) are distinct: agreement on that pair and on k1 would
+give agreement on k0=k1(r,t). In either r=1 chart, the t_j alone are
+distinct because k0=k1(t). All r_j are nontrivial in each r!=1 chart.
+
+For a minimal nonzero invariant subspace U of a single factor, an actual
+invariant core W gives the following exact alternatives. If U meets W,
+the intersection is a nonzero invariant subspace, so U is contained in W.
+Otherwise the quotient projection is injective on U. The quotient has
+the displayed diagonal coordinate actions; some coordinate projection
+is nonzero on U. Its kernel is invariant and proper, hence zero, so U
+is one-dimensional and maps isomorphically to that coordinate character.
+This proof remains valid for coincident quotient characters within one
+factor. No equivariant splitting of the extension block is assumed.
+
+A nonzero intertwiner between two such minimal images is invertible.
+Whenever the same source acts by a and b on its two sides, (a-b)F=0
+forces a=b. The reverse ordering of every listed cross-type comparison
+uses F^-1; thus unordered pair lists cover both ordered directions.
+
+5. CHART c!=1, r!=1: THREE-DIMENSIONAL ACTUAL CORE
+
+The six coordinates are original X1,...,X6. With
+b=(1,r,r*s,r*s*t,c,c), the displayed projection, inclusion and coefficient
+section are
+  pi(v)=(b*v,v5,v6),
+  iota(x,y,z)=(-r*x-r*s*y-r*s*t*z,x,y,z,0,0),
+  sigma(zB,z5,z6)=(zB-c*(z5+z6),0,0,0,z5,z6).
+Direct substitution gives pi*sigma=I, ker(pi)=im(iota), and
+iota(v2,v3,v4)+sigma*pi(v)=v. The displayed J has inverse
+(v2,v3,v4,b*v,v5,v6); both composites were checked. Its actual source
+matrices retain the extension block above the diagonal quotient.
+
+The selected source table in columns W,boundary,X5,X6 is
+  0:  r*I3, 1,   r,     r
+  2:  *,    r*t, r*t/u, r*c*t
+  7:  t*I3, 1/t, t/u,   c*t
+  8:  *,    1,   1,     1/t
+  9:  *,    1,   c,     1.
+The integral core annihilators are
+  (G8-I)^2*(G8-(c/u)I)=0,
+  (G9-I)^2*(G9-(t*u)^-1 I)=0.
+The independent verifier checks these as full matrices, not merely their
+characteristic polynomials.
+
+All ten unordered type pairs, including repetitions, are covered:
+  W/W: sources0,7 force equality of (r_j,t_j).
+  boundary/boundary: sources7,2 force first t and then r to agree.
+  X5/X5 and X6/X6: sources0,7 force the same pair, cancelling u or c.
+  boundary/W, boundary/X5, boundary/X6: source0 compares 1 with r_l!=1.
+  X5/X6: source9 compares c with 1.
+  W_j/X5_l: source9 and the second annihilator force
+      c=(t_j*u)^-1, so t_j=(c*u)^-1 is in k1. All conjugate t values
+      then equal that fixed value, and source0 forces r_j=r_l.
+  W_j/X6_l: source8 and the first annihilator force
+      t_l^-1 in {1,c/u}, hence t_l in {1,u/c} inside k1. All t values
+      again coincide, and source0 gives the forbidden r equality.
+Each contradiction is to j!=l and the exact field-generation formula.
+
+6. CHART c!=1, r=1: TWO-DIMENSIONAL CORE AND EXCEPTIONAL LIFTS
+
+Here c=s*t*u and k0=k1(t). Put b=(1,1,s,s*t,c,c). The maps are
+  pi(v)=(b*v,v1,v5,v6),
+  iota(x,y)=(0,-s*x-s*t*y,x,y,0,0),
+  sigma(zB,z1,z5,z6)=(z1,zB-z1-c*(z5+z6),0,0,z5,z6).
+Their two inverse/decomposition identities follow by direct substitution.
+The basis inverse is (v3,v4,b*v,v1,v5,v6). In these actual coordinates
+G2=G7=t*I2, and
+  (G8-I)*(G8-(c/u)I)=0,
+  (G9-I)*(G9-(t*u)^-1 I)=0.
+
+For types W,boundary,X1,X5,X6 the source2/source7 scalar pairs are
+  (t,t), (t,1/t), (1/t,t), (t/u,t/u), (c*t,c*t).
+This gives all fifteen unordered comparisons as follows.
+All five same-type pairs force t_j=t_l. W versus boundary or X1 forces
+a t_l^2=1. Boundary or X1 versus X5 or X6 forces a t_j^2=1. Those
+contradict t_j outside k1. X5 versus X6 is excluded by source9, c versus1.
+W versus X5, using source9, forces a t_j=(c*u)^-1 in k1. W versus X6,
+using source8, forces t_l in {1,u/c} inside k1. The one remaining pair
+is boundary_j versus X1_l.
+
+For that pair source1 gives u^2=1 and source5 gives c^2=1. The already
+separated u=1 case and the present c!=1 leave exactly c=u=-1, odd
+characteristic, s=t^-1 and k1=F_p. Thus t is outside F_p,
+t-t^-1!=0, and 2*t!=0. Those are all the divisions used to force the
+following vectors; no characteristic-two exception is omitted.
+
+In coordinates (core_x,core_y,boundary,X1,X5,X6), source2 has core t*I2
+and quotient (t,t^-1,-t,-t), while source7 has core t*I2 and quotient
+(t^-1,t,-t,-t). For a boundary-character eigenline, source2 forces the
+other quotient coordinates to vanish. If its boundary coordinate were
+also zero, source7 would compare t and t^-1 on the core and force zero.
+The boundary coordinate can therefore be normalized to one, and source7
+has invertible core equation (t-t^-1)I2. It uniquely gives
+  vb=(1-2*t,2,1,0,0,0).
+For an X1-character eigenline, source7 similarly eliminates the other
+quotient coordinates, the X1 coordinate must be nonzero, and source2
+uniquely gives
+  vx=(-t,0,0,1,0,0).
+The two exact source1 residuals are
+  (T1-I)vb=(T1-I)vx=(3*t-1,-2,0,0,0,0).
+The second coordinate is nonzero in the stated stratum, so both actual
+eigenline types are absent. This resolves the cross-factor character
+coincidence through the actual extension maps.
+
+I checked the candidate basis and inverse against the r=1 formula with
+s=t^-1,u=-1. The independent three-word program evaluates the original
+sources1,2,7 before specialization, with exponent map
+  s^a*t^b*u^d -> (-1)^d*t^(b-a).
+Its pivot is delta7=-2, and its cleared identity is exactly
+-2*(A*S*J-S*J*T)=delta*row7(A*S*J). It checks both basis composites,
+both scalar cores, both quotient diagonals, both forced eigenvector
+equations and both source1 residuals. The full independent peer replay
+of this unchanged program passed all 20 explicit assertions and 54
+additional recorded parser/word checks; the output bytes match root's
+frozen exceptional output exactly.
+
+7. CHART c=1, r!=1: ORIGINAL X4 PIVOT
+
+The literal coefficient map gives (r,s,t,h^-1,1,1,1), h=r*s*t!=1.
+The six coordinates are original X1,X2,X3,X5,X6,X7, preserving those
+labels. With b=(1,r,r*s,1,1,1), the maps are
+  pi(v)=(b*v,v4,v5,v6),
+  iota(x,y)=(-r*x-r*s*y,x,y,0,0,0),
+  sigma(zB,z5,z6,z7)=(zB-z5-z6-z7,0,0,z5,z6,z7).
+The exact kernel, section and decomposition identities hold directly.
+The stated basis inverse is (v2,v3,b*v,v4,v5,v6). The selected table is
+  0:  r*I2,1,   r,     r,   r
+  2:  *,   r*t, r*h*t, r*t, r*t
+  7:  t*I2,1/t, h*t,   t,   t
+  8:  I2,  1,   1,     1/t, h
+ 10:  I2,  1,   1/t,   h,   1.
+
+All fifteen unordered type pairs are covered. Each of the five same-type
+pairs determines (r_j,t_j), using sources7,2 for boundary and sources0,7
+for the other types. Boundary against any of the four other types is
+excluded by source0, 1 against r_l!=1. For the six remaining mixed pairs:
+  W/X7: source8 compares 1 with h.
+  W/X6: source10 compares 1 with h.
+  W_j/X5_l: source10 forces t_l=1, so all t conjugates equal1;
+      source7 then compares 1 with h.
+  X5/X7: source8 compares 1 with h.
+  X6/X7: source10 compares h with1.
+  X5_j/X6_l: source8 forces t_l=1, and source10 compares 1 with h.
+Here h is nontrivial and fixed by the k1-Frobenius. The argument allows
+t=1 in this chart and does not divide by t-1 or assume it nonzero.
+
+8. CHART c=1, r=1: ESSENTIAL LINE IN EVERY CHARACTERISTIC
+
+Now h=s*t!=1 and k0=k1(t), k1=F_p(h). Both t and s=h/t are outside
+k1. Therefore s-1,t-1,t+1,h-1 are nonzero in every characteristic.
+The coordinates retain the X4 pivot. With b=(1,1,s,1,1,1), set
+  v0=(0,1,-1/s,0,0,0).
+The basis columns are v0,e2,e5-e2,e4-e2,e1-e2,e6-e2 and its inverse is
+  v -> (-s*v3,b*v,v5,v4,v1,v6).
+The forward map sends (z0,zB,z6,z5,z1,z7) to
+  (z1,z0+zB-z6-z5-z1-z7,-z0/s,z5,z6,z7).
+These formulas verify both composites and the coordinate order exactly.
+
+Every source has the stated first-row extension form and line scalar
+(1,1,t,1,s,1,1,t,1,s,1) in order0,...,10. The seven-dimensional lift
+satisfies A2*v0tilde=t*v0tilde+s*t^2*delta, checked as a full vector.
+The five additive commutators T4*Tj-Tj*T4 for j=1,2,5,7,9 kill the
+line and have image in it. Their rows on the other five coordinates
+are g*H, g=(s-1)(t-1), with exactly the matrix printed in F.29.25.
+
+The determinant was independently derived by expansion, in addition to
+the independent integer-Laurent checker. Expand H along its last column,
+whose only nonzero entry is -t^-2 in row1, and then along the second
+column of the resulting four-by-four minor, whose entry is s/t.
+Put A=(t+1)(s*t-t+1)/(s*t^3) and B=-(s-1)/(s*t^2). The remaining
+three-by-three determinant is
+  A*(s-1)+(t+1)*s*B
+    =-(s-1)*(t-1)*(t+1)/(s*t^3).
+Multiplying by (s/t)*(-t^-2) gives
+  det(H)=(s-1)*(t-1)*(t+1)/t^6,
+and det(g*H)=(s-1)^6*(t-1)^6*(t+1)/t^6. Every factor is nonzero by
+the exact field argument above. No prime is inverted in this determinant
+argument; in characteristic two the two t+/-1 factors remain nonzero.
+
+For a nonzero invariant subspace U, a vector whose other five coordinates
+are nonzero has a nonzero image under at least one of the five commutators
+because their five-by-five row matrix is invertible. That image lies in
+U and spans the first line. A vector already in the first line gives
+the same conclusion immediately. Thus every nonzero invariant subspace
+contains that line, and every minimal one equals it.
+
+The chosen seed is the actual negative index13, cross_0_-1_1. Its word a
+has chi(a)=h^-1 and d0(a)=h-1. The source correction gives
+  d0(B2(a))=t*(h-1)+h*t*(h^-1-1)=0.
+Consequently kappa=B2(a)*a^-1 is an actual member of K, has character1,
+and d0(kappa)=1-h. The row is exactly D(a)*(A2-I), since B2 preserves
+the scalar character. All words kappa_n=B2^n(kappa) remain actual members
+of K and have character1. The principal correction then vanishes on
+each word, giving d0(kappa_n)=t^n*(1-h). Both the initial row and its
+next source image are independently checked from the original seed and
+original source2 word, and the recurrence proves every n.
+
+9. SUMMED H1 RESTRICTION, EXACT INTERTWINERS AND VANDERMONDE INVERSE
+
+All chi_j have the same restriction to K, so the sum of their restrictions
+is a well-defined k0-linear map from the direct sum of their actual H1
+spaces to the one common H1 space on K. Source precomposition preserves
+K and the characters, commutes with restriction, and preserves its
+kernel. The finite-dimensional kernel, if nonzero, has a minimal nonzero
+subspace T invariant under all eleven source operators. For a nonzero
+coordinate projection p_j|T its kernel is invariant and proper, so that
+projection is injective. Its image is a minimal invariant subspace of
+the j-th factor. For two nonzero images, the exact mutually inverse
+intertwiners are
+  p_l composed with (p_j|T)^-1,
+  p_j composed with (p_l|T)^-1.
+
+The complete pair comparisons in the first three charts exclude two
+nonzero projections. The remaining single projection places T entirely
+in one factor, whose restriction is injective by F24, again impossible.
+In the fourth chart every nonzero projection equals the essential line,
+so T lies in the direct sum of those lines.
+
+Character-one evaluation on kappa_0,...,kappa_(m-1) is well-defined on
+cohomology, since principal cocycles vanish on those elements. On the
+line sum the matrix is V_nj=(1-h)*t_j^n. Its determinant is
+  (1-h)^m * product_(j<l)(t_l-t_j),
+which is nonzero because k0=k1(t) gives distinct t_j. More explicitly,
+write
+  product_(l!=j)(X-t_l)/(t_j-t_l)=sum_n h_jn*X^n.
+Then the inverse map is z_j=(1-h)^-1*sum_n h_jn*y_n. Evaluation at
+each t_l proves H*V=I, and polynomial interpolation in degree<m proves
+the opposite composite. This excludes the last kernel T. The argument
+uses evaluations of actual K words and the explicitly stated maps.
+
+10. COCYCLE KERNEL, TRACE REDUCTION AND ORIGINAL POSITIVE SIGN
+
+Vanishing of the exact sum of restricted cocycles implies vanishing in
+the summed H1 map. Injectivity therefore makes each cocycle principal,
+d_j=b_j*(chi_j-1). On K their sum is (sum_j b_j)*(chi|K-1). Since C is
+nontrivial this vanishes exactly when sum_j b_j=0. Conversely that
+parameter condition gives zero restriction directly. Each principal
+parameter map is injective, since chi_j is nontrivial. The kernel has
+dimension m-1 in the 7m-dimensional cocycle space, and rank is 6m+1.
+
+For trace-zero restriction of d, take its Frobenius conjugate cocycle
+tuple. The just-proved kernel theorem makes d principal with parameter
+b; its tuple has parameters b^(q1^j), whose sum is Tr(b). Thus
+Tr(d|K)=0 exactly for d=b*(chi-1) with Tr(b)=0. The reverse implication
+is direct evaluation. F26's explicit scalar-preserving conjugation and
+coefficient homomorphism turn a proper affine marginal image into a
+nonprincipal cocycle in precisely this trace kernel. Those maps retain
+the original scalar character, the present locus and k1,k0. This proves
+the stated image equality for every original finite coefficient field,
+including fields larger than k0. The proof does not assume that every
+translation subgroup is linear over that larger field.
+
+The actual based isomorphism B_+ of F23.13 sends each Xi to Yi, and
+carries K_- to K_+ and R_- to R_+, with the explicit inverse supplied
+there. Given the original positive representation, precomposition with
+B_+ has the negative locus values in the stated basis. The negative
+image equality therefore transports to the original positive image
+equality through those exact subgroup maps. No sign relabelling or
+unproved source permutation is needed.
+
+11. INDEPENDENT REPLAY AND EXACT OUTPUT COMPARISON
+
+Peer runner:
+  work/part_c/code/replay_f29_independent_audits.py
+Replay directory:
+  work/part_c/f29_independent_replay/
+Comparison:
+  work/part_c/f29_independent_replay/comparison.json
+  SHA256 bc051043575d69e97e01f0527824f17909776fcecaa58c0d636972d985bfe86e
+
+The two new verifiers and all ten required input files were copied
+byte-for-byte into the peer directory. No candidate matrix was edited.
+Their exits were zero and stderr was empty. The three-chart verifier
+passed 3246 checks, including 33 old-source and 24 seed word evaluations;
+the r=1 verifier passed 996 checks, including all eleven original
+sources, all four quotient characters and both quadratic annihilators.
+
+The raw JSON outputs record their actual absolute input paths, so their
+raw bytes differ from the author outputs. The comparison records a
+specific bijection on exactly eight path fields for the three-chart
+output and five path fields for the r=1 output. Each source and target
+file in that bijection was verified byte-identical. Applying only those
+listed substitutions produces complete serialized outputs byte-identical
+to the frozen author files, including all numeric data and check counts.
+The inverse bijection is given by exchanging each recorded key and value;
+injectivity and the exact counts were checked. This is the full explicit
+comparison, not a broad removal of provenance fields.
+
+The exceptional checker was copied unchanged into a private mirrored
+root, with its three exact dependencies at their original relative paths.
+Its parents[3] ROOT computation then finds only those copied inputs.
+It passed all 20 explicit assertions plus its recorded 54 internal
+parser/word checks. Since all of its recorded paths are relative to that
+root, its output is byte-identical to the original without any path map.
+
+The three symbolic producer counts are 754,691,956. Their code and frozen
+outputs were reviewed, but they were not rerun in this peer replay. The
+expensive universal F24 certificate was also not rerun. The independent
+word computations directly check the new identities needed for F29, and
+all earlier inputs retain their already audited exact bindings.
+
+The 63-entry evidence manifest was verified both before and after all
+replays. The two validation records are equal and bind every listed file.
+The review JSON additionally records the peer runner, raw and transported
+outputs, stdout/stderr, all mirrored exceptional inputs and this report.
+
+12. CONCLUSION AND PRECISE LIMIT
+
+The complete four-parameter finite-affine image statement, its nontrivial
+scalar summed-H1 injectivity, its exact principal cocycle kernel/rank and
+its positive-sign transport pass independent mathematical review. Every
+remaining chart, all cross-factor type comparisons, the exceptional
+forced lifts, the essential-line argument in every characteristic, the
+actual source/seed membership and the larger coefficient-field reduction
+are accounted for by the displayed exact maps and identities.
+
+This record certifies no extension beyond the specified character locus,
+no full marginal subgroup equality and no resolution of the original
+K+=D+ question. It performs no PDF rendering or final-build review.
+The earlier final600 visual QA remains a separately sealed record.
