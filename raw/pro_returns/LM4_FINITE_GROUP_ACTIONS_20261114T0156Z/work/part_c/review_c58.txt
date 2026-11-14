@@ -1,0 +1,228 @@
+Independent audit of C.58
+Reviewer: part_c_continue
+Verdict: PASS
+
+Files reviewed:
+  work/part_b/c58.tex
+  work/part_b/c58_result.json
+  work/part_b/code/c58_affine_product_word_certificate.py
+  work/part_b/code/c58_affine_product_word_certificate.json
+
+Exact rerun: PASS, captured at work/part_c/c58_audit_stdout.txt.
+It gives 262,504 checks, 1,778 signed cases, and 28,644 pair
+interpolations. The integer bound is 172496624025607.
+
+1. Four signed measures and the seven logarithmic values.
+
+I reopened the primary Grandoni--Ravi--Singh--Zenklusen PDF,
+Theorem 4.7 at PDF page 22 and its full proof in Section 4.3.2,
+PDF pages 25-26. For d=4 its stated conclusion is a union of
+at most three circular intervals with the prescribed fraction
+of all four signed measures.
+
+The supplied halving count repairs the count in the source
+proof. For a proper selected set, the source first rotates the
+circular parameter so that the origin lies in its complement.
+It is then a union of at most three ordinary intervals. Four
+cuts give at most seven pieces, and one of the two equal-mass
+halves uses at most three. For the whole interval, four cuts
+give at most five pieces, so one half uses at most two.
+Complementation preserves the number of circular intervals.
+Compactness and halving therefore supply every fraction.
+
+Returning to the original path parameter, three disjoint
+circular intervals contribute at most six signed endpoint
+values and at most one total endpoint for the wrap. This is
+exactly seven values, including the zero endpoint for padding.
+The path derivatives are legitimate non-atomic signed measures.
+Uniform polygonal approximation with fixed endpoints and
+compactness of the finite sign/timing data passes the same
+identity to every continuous path.
+
+Applying this to the four coordinates of the actual global
+logarithm is valid. Inverse letters are represented by minus
+their entire logarithm, so their translation and scale entries
+are changed together. No additive identity is being used as a
+group multiplication identity.
+
+2. The complete affine product error.
+
+The group law and exponential formula in (C.58.4) give the
+product translation sum e^{P_j} sigma(a_j) u_j and the target
+translation sigma(T) sum u_j. Their difference is a left
+translation, exactly as used in (C.58.5).
+
+The scale relation sum a_j F_j=0 follows from telescoping
+e^{P_j}(e^{a_j}-1). Differentiating at s a gives
+sum a_i partial_j F_i(s a)=-F_j(s a)/s. Subtraction from
+the radial derivative of s F_j(s a) gives the stated
+antisymmetric integral identity. Its zero endpoint vanishes
+by smoothness. Therefore F_j=sum a_i f_ij, and pairing the
+i,j terms gives exactly the sign and bracket in (C.58.8).
+
+For i<j, the derivatives of sigma(T) cancel, while only the
+prefix factor in F_j contributes. This gives the displayed
+integral -int s e^{s P_j} sigma(s a_j) ds. Integration yields
+the stated divided difference of sigma, with the removable
+value -sigma'(P_j) at a_j=0. Thus the explicit and radial
+formulas agree at every scale.
+
+Direct multiplication of the actual commutator gives
+sigma(a_i) sigma(a_j)(a_i u_j-a_j u_i). Dividing by these
+positive sigma factors therefore expresses the complete
+left error through genuine translation commutators.
+The same seven-variable function G_ij is evaluated in both
+affine factors. This is essential and is satisfied by the
+common list of signed logarithmic letters.
+
+3. Uniform analytic bounds and two-node interpolation.
+
+The integral expression e^{P_j} sigma(a_j) has exponent
+P_j+u a_j, whose absolute value is at most R. Every first
+and second partial derivative inserts a coefficient of
+absolute value at most one. The corresponding derivatives
+of sigma(T) have the same bound. This proves the stated
+2 e^R bound for F_j and its first two derivatives.
+
+The radial integral then gives 2 e^R for f_ij and
+(4/3)e^R for each first derivative. Since sigma(x) is
+at least e^{-|x|} and its logarithmic derivative lies in
+[0,1], division gives |G|<=2 e^{2R} and each derivative
+strictly less than 4 e^{2R}. A derivative affects at most
+one denominator factor because i and j are distinct.
+
+The Laurent weight A is at least e^{4R}, and each derivative
+of log A is 4 tanh a_l. Thus |G/A|<=2 and its a_l derivative
+is bounded by 12 e^{-2R}. The inverse tanh-coordinate
+derivative is cosh^2 a_l<=e^{2|a_l|}, giving the uniform
+bound 12 in each of the seven z coordinates.
+
+The segment joining the two nodes stays in the open convex
+cube. Choosing the coordinate of maximal difference bounds
+the divided difference by 12 times seven, independently of
+how close or unequal the original scale vectors are.
+The affine coefficients are bounded by 84 and 86. Equal
+nodes use the common function value directly. Both
+interpolation equations are exact; no nonzero-scale or
+separation assumption is used.
+
+4. Actual Laurent paths and the word count.
+
+The path C_ij(v) uses the actual values k(v s_i) and k(v s_j).
+It starts at the identity, lies in the translation plane,
+and each value or inverse costs four original path letters.
+The conjugators are fixed endpoint words, so conjugating
+this path still gives a continuous based path.
+
+The monomial conjugator has length at most 28. Its action
+on a translation depends only on its two scale coordinates,
+not on its translation entries. It multiplies the two
+coordinates by the respective evaluations of the same
+Laurent monomial. The two polynomials have integer
+coefficients, support exponents between -4 and 4, and
+coefficient norms at most 2^28. In fact the distinguished
+one-variable B factor has norm 6 rather than 16, so the
+common bound is conservative.
+
+Repeating positive and negative conjugated copies realizes
+both Laurent translation paths in at most 60*2^28 letters.
+All these factors commute because they are translations.
+The C.37 planar identity supplies a fraction of either
+path endpoint by three signed values of that actual path.
+Eighty-six and eighty-four repeated fractions then realize
+the two bounded real coefficients, with inversion for
+negative coefficients. Their product has precisely the
+two required correction coordinates.
+
+There are 21 pairs. Multiplying their commuting corrections
+on the left of the seven-letter product gives the desired
+exponential fraction. The integer calculation
+7+21*3*(86+84)*60*2^28=172496624025607 is exact.
+Padding by identity path values covers all shorter words.
+No continuous selection of the interpolation parameters
+or of the seven cuts is required for this membership
+statement or for the subsequent compact-family argument.
+
+5. Arbitrary accumulation with exact source lifts.
+
+C.54 supplies the actual simply connected source A and
+its whole-closure action for each new orbit. C.56 provides
+the old source groups and the preceding closed-region
+contraction. The new finite integer bounds every word
+length at once. Consequently all endpoint fractions
+belong to one compact family of actual global word
+isotopies, with their inverse maps, exactly as in C.50.
+The large numerical size of the finite parameter cube
+does not change its compactness.
+
+Every source group is metabelian. Its word identity
+therefore passes to the entire closure. The C.37 argument
+then gives precisely the intrinsic line translation,
+line affine, and circle rotation images on its nonopen
+orbits. The boundary values are the unique real line
+logarithm or the specified real lift of the circle angle.
+
+For fixed n, the source residual is exactly a fraction
+with parameter n r_i-floor(n r_i), so it has the same
+uniform word bound. Taking parameter subsequences gives
+the same limiting endpoint word, and an integer m_n
+within one of n r. Commutation with the limiting endpoint
+passes on every target-orbit point by translating the
+approximating points with an actual G element.
+On a line the residual logarithms remain bounded, and
+division of the commuting logarithmic equation by n
+forces the prescribed exponential fraction.
+
+On a circle, the concatenated source word loop has
+identity endpoint in the specified simply connected
+source, not merely after projection to its action.
+It is therefore null there. Evaluating it at two points
+in each approximating orbit, chosen to converge to
+distinct points of the limiting circle, gives zero
+difference-direction winding. Uniform convergence
+preserves that integer. C.29 identifies it with the
+integer ambiguity of the lifted angle equation.
+Thus the real equality n A_W-m_n T=C_n holds, with
+the uniform bound |C_n|<=M max|theta|. Division by n
+gives A_W=rT, including a projected identity endpoint
+with a nonzero specified real angle.
+
+At fixed points every limiting word fixes the point.
+These are exactly the dense limits used in C.50's
+diagonal argument, giving joint continuity on X_flat.
+Repeating it for the inverse based loop gives the
+jointly continuous inverse family. Based-edge and
+operator identities extend by density, and equality
+on the old dense union gives equality on X_sharp.
+
+6. The relative finite-representative extension.
+
+An outside open orbit is outside the earlier X_ddagger,
+so C.55's full-local-centralizer evaluation and compact
+fundamental-set argument apply. Its closure intersects
+X_flat only in nonopen orbits. The actual target image
+on those orbits is metabelian by the dense word identity,
+so the C.52 hybrid prescription there is exactly the
+exponential prescription just established. Finite
+closed-set pasting therefore applies to the families
+and their inverses with identical values on overlap.
+
+No claim is added about noncompact residual quotients,
+arbitrarily many unrelated residual representatives,
+or the exterior nonopen locus. The metadata retains
+these unresolved C.12 obligations.
+
+7. Certificate scope.
+
+The producer was read and rerun. Its exact rational
+Laurent arithmetic retains zero scales, canceling
+prefixes and all inverse signs. The seven regimes
+give 254 sign patterns each, and the full two-factor
+correction and every pair interpolation pass. The
+generic symbolic checks confirm the commutator,
+radial coefficient, removable limits, Laurent
+conjugation and integer bounds. The measure theorem,
+analytic bounds and topology are proved in the text;
+the finite certificate is not used to infer them.
+
+No mathematical correction is required.

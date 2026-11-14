@@ -1,0 +1,341 @@
+\begin{claim}{D.26}{Refuted}{Unmarked recognition at index two and the peripheral obstruction}
+The assertion that a torsion-free profinite group with an open
+free profinite subgroup of rank three is free is false, already
+at index two. We give the rank-three instance of
+\cite[Proposition, pp.~350--352]{A-Haran1985} as an explicit
+extension
+\[
+ 1\longrightarrow H=\widehat F(l,a,b)
+   \longrightarrow E\longrightarrow C_2\longrightarrow1.
+                                                               \tag{D.26a}
+\]
+It has no section. Its outer involution preserves no loop
+structure of type $(1,2)$ on $H$. Every preserved type-$(0,4)$
+structure would have a double-transposition cusp permutation,
+multiplier $-\epsilon$, and canonical character
+$\chi(l)=1$, $\chi(a)=\chi(b)=-1$ sending all four cusp
+generators to $-1$. Two explicit type-$(0,4)$ candidates fail,
+with finite $S_3$ and $S_4$ certificates. D.29 supplies a
+different complete type-$(0,4)$ marking, satisfying exactly
+these necessary conditions, and thereby turns this extension
+into a counterexample to the loop-preserving assertion D(d).
+\end{claim}
+\begin{proof}
+Choose $\epsilon,\kappa\in\widehat\Z$ by their prime
+coordinates:
+\[
+ \epsilon_3=-1,\quad\epsilon_p=1\ (p\ne3),\qquad
+ \kappa_2=1,\quad\kappa_p=0\ (p\ne2).
+\]
+Thus $\epsilon$ is a unit, $\epsilon^2=1$ and
+$\epsilon\kappa=\kappa$. Define the continuous endomorphism
+of the free profinite group $H$ by
+\[
+ \alpha(l)=l^\epsilon,\qquad
+ \alpha(a)=b,\qquad
+ \alpha(b)=l^\kappa a l^{-\kappa},\qquad c=l^\kappa.
+                                                               \tag{D.26b}
+\]
+Substitution on the three free generators gives
+$\alpha^2=\operatorname{Inn}(c)$ and $\alpha(c)=c$.
+In particular $\operatorname{Inn}(c^{-1})\alpha$ is an
+inverse, so $\alpha$ is an automorphism.
+
+Define $E$ on the compact space $H\times\{0,1\}$ by
+\[
+ (h,i)(h',j)=
+ \bigl(h\alpha^i(h')c^{\lfloor(i+j)/2\rfloor},
+             i+j\bmod2\bigr).
+                                                               \tag{D.26c}
+\]
+The two identities just checked prove associativity by
+the eight triples of quotient labels. When the first two
+labels are $1$, the required interchange is
+$\alpha^2(h'')c=ch''$; the triple $(1,1,1)$ additionally
+uses $\alpha(c)=c$. The other triples follow directly.
+The identity and inverses follow by the same formulas.
+All operations are continuous, so this is a profinite group.
+Writing $t=(1,1)$ gives $tht^{-1}=\alpha(h)$ and $t^2=c$.
+The projection to the second coordinate gives (D.26a).
+
+The closed subgroup $N=\overline{\langle l,t\rangle}$
+has the explicit isomorphism
+\[
+ N\simeq (\Z_3\rtimes\Z_2)
+          \times\prod_{p\ne2,3}\Z_p,
+\]
+where the parity of the $\Z_2$ coordinate acts by inversion
+on $\Z_3$. Namely, the normal form $l^u t^i$ maps to
+$(u_3,2u_2+i,(u_p)_{p\ne2,3})$.
+This is a continuous bijection preserving the displayed
+relations and multiplication; its inverse reads the parity
+$i$ and then all coordinates of $u$.
+The projection of $N$ to
+$\Z_2\times\prod_{p\ne2,3}\Z_p$ has torsion-free kernel
+$\Z_3$ and torsion-free target, hence $N$ is torsion-free.
+
+There is a continuous retraction $E\to N$ given on the
+generators by $l\mapsto l$, $t\mapsto t$, $a,b\mapsto1$;
+(D.26b) verifies its compatibility with the group law.
+An element of finite order maps trivially under this
+retraction and therefore has trivial image in $C_2$.
+It lies in $H$, which is torsion-free by A.7, so it is
+the identity. Thus $E$ is torsion-free and the extension
+has no section. The induced outer action is faithful:
+its nonidentity element acts nontrivially on $H^{\mathrm{ab}}$.
+
+For comparison with Haran's construction, the homomorphism
+$N\amalg\widehat\Z\to E$ from the free profinite product,
+identity on $N$ and sending the other generator to $a$,
+is onto since $b=tat^{-1}$. In the opposite direction send
+$l,a,b,t$ to $l,a,tat^{-1},t$ in that free product.
+Equations (D.26b) hold there, using the two relations in
+$N$, so (D.26c) gives a continuous homomorphism in the
+opposite direction. The composites fix every generator.
+These are mutually inverse isomorphisms.
+
+To prove that $E$ is not free, form the finite group
+\[
+ Q=(\F_3^2)\rtimes C_2,
+ \qquad (v,i)(w,j)=(v+(-1)^iw,i+j).
+\]
+The formulas $l\mapsto(e_1,0)$, $a\mapsto(e_2,0)$,
+$t\mapsto(0,1)$, and $b\mapsto(-e_2,0)$ give an
+epimorphism $E\to Q$: $\epsilon\equiv-1\pmod3$ and
+$\kappa\equiv0\pmod3$ verify all relations.
+This group requires three generators. Two elements of
+$\F_3^2$ do not generate its $C_2$ quotient. When one
+of two proposed generators lies outside $\F_3^2$, it is
+an involution. Multiplying the other by it when necessary
+puts that other generator in $\F_3^2$. Conjugation then
+only inverts this one vector, so the generated subgroup
+has order at most six. Three generators, as displayed,
+do generate $Q$.
+Were $E$ a free profinite group of rank $r$, its open
+index-two subgroup would have rank $2r-1$ by the finite
+coset Schreier rewriting. Since $H$ has rank three,
+this would give $r=2$, contradicting its quotient $Q$.
+The program \texttt{code/part\_a/haran\_rank3.py}
+checks all $18^3$ associativity instances and all $18^2$
+ordered pairs in $Q$. Their generated subgroup orders
+are $1,2,3,6,9$, with multiplicities $1,27,32,216,48$;
+none is $18$.
+
+We now check the peripheral condition rather than
+discarding it. On the basis $[l],[a],[b]$ of
+$H^{\mathrm{ab}}=\widehat\Z^3$, the outer involution has
+matrix and determinant
+\[
+ M=\begin{pmatrix}\epsilon&0&0\\0&0&1\\0&1&0\end{pmatrix},
+ \qquad\det M=-\epsilon.
+                                                               \tag{D.26d}
+\]
+This determinant has value $+1$ at the prime $3$ and
+$-1$ at every other prime, and is invariant under a
+change of basis. For a preserved type-$(1,2)$ peripheral
+structure, let $W$ be the primitive rank-one cusp
+submodule in $H^{\mathrm{ab}}$. Write $\lambda$ for the
+action on the orientation line and $\delta\in\{1,-1\}$
+for the sign of the permutation of the two punctures.
+The action on $W$ is multiplication by $\lambda\delta$.
+The quotient $H^{\mathrm{ab}}/W$ is the first homology
+of the filled torus. The orientation comparison of A.2
+identifies its determinant with $\lambda$.
+The square of the outer action is the identity, so
+$\lambda^2=1$. Multiplicativity of determinant in the
+exact sequence of these free modules gives
+\[
+ \det M=(\lambda\delta)\lambda=\delta.
+\]
+This contradicts (D.26d). Thus no such type-$(1,2)$
+peripheral structure is preserved.
+
+For type $(0,4)$ this determinant argument permits a
+prime-dependent orientation multiplier. We test the
+specific free basis $l,a,b^\epsilon$, which is a basis
+because the power substitution on $b$ has inverse
+$b\mapsto b^\epsilon$. Set
+\[
+ P=lab^\epsilon,
+ \quad L_1=\overline{\langle l\rangle},\quad
+ L_2=\overline{\langle a\rangle},\quad
+ L_3=\overline{\langle b^\epsilon\rangle},\quad
+ L_4=\overline{\langle P^{-1}\rangle}.
+\]
+This is a full type-$(0,4)$ peripheral system. The first
+three classes transform as required with multiplier
+$\epsilon$ and permutation $(2\ 3)$. The fourth would
+require $\alpha(P)$ to be conjugate to $P^\epsilon$.
+The actual words are
+\[
+ \alpha(P)=l^\epsilon b l^\kappa a^\epsilon l^{-\kappa},
+ \qquad P^\epsilon=(lab^\epsilon)^\epsilon.
+\]
+Map the free group $H$ continuously onto $S_3$ by
+\[
+ l\longmapsto(1\ 2),\qquad
+ a\longmapsto(2\ 3),\qquad
+ b\longmapsto(1\ 2\ 3).
+\]
+At its exponent six, $\epsilon\equiv5$ and
+$\kappa\equiv3$. Direct multiplication gives
+$P\mapsto1$, $\alpha(P)\mapsto(1\ 2\ 3)$,
+and $P^\epsilon\mapsto1$. These images are not conjugate,
+so the fourth loop class fails. The program checks these
+values and all $6^3$ possible assignments, finding
+twenty-four nonconjugacy certificates.
+
+There is a basis-independent restriction on any remaining
+type-$(0,4)$ structure. Write $\sigma\in S_4$ for its cusp
+permutation and $\lambda\in\widehat\Z^\times$ for its
+multiplier. The square of the outer action is the identity,
+so $\sigma^2=1$ and $\lambda^2=1$. Its action on
+$H^{\mathrm{ab}}$ is $\lambda$ times the action of
+$\sigma$ on $\widehat\Z^4/\widehat\Z(1,1,1,1)$.
+Comparing traces with (D.26d) gives
+\[
+ \epsilon=\lambda\bigl(|\operatorname{Fix}(\sigma)|-1\bigr).
+                                                               \tag{D.26e}
+\]
+The identity permutation would give $3\lambda=\epsilon$,
+which is impossible modulo $3$. A single transposition
+forces $\lambda=\epsilon$; a double transposition forces
+$\lambda=-\epsilon$.
+
+For each such peripheral structure there is a canonical
+character $\chi:H\to\{1,-1\}$ which is $-1$ on all
+four cusp generators. The product relation makes it
+well-defined, and a free peripheral basis makes it
+nonzero. It is preserved by $\alpha$, since $\lambda$
+is odd and the cusp classes are permuted. In the basis
+$l,a,b$ the three nonzero invariant characters are exactly
+\[
+ \chi_1=(-1,1,1),\qquad
+ \chi_2=(1,-1,-1),\qquad
+ \chi_3=(-1,-1,-1).                               \tag{D.26f}
+\]
+We compute the action on continuous cohomology with
+coefficients $\Q_p(\chi)$ for an odd prime $p$; equivalently
+one may use the inverse limit of the finite coefficient
+modules and then tensor with $\Q_p$. A crossed
+homomorphism $u$ is determined freely by
+$(L,A,B)=(u(l),u(a),u(b))$. Put
+$\eta=\chi(l)$ and $\zeta=\chi(a)=\chi(b)$, and define
+\[
+ e=\begin{cases}\epsilon_p&\eta=1,\\1&\eta=-1,\end{cases}
+ \qquad
+ k=\begin{cases}0&\eta=1,\\1&\eta=-1.\end{cases}
+\]
+Here $u(l^\epsilon)=eL$ and $u(l^\kappa)=kL$.
+For $\eta=1$ this is multiplication by the $p$-coordinate
+of the exponent; for $\eta=-1$ the geometric sum is
+$(1-(-1)^v)/2=1$ for either odd exponent
+$v=\epsilon,\kappa$. Substitution in (D.26b) gives
+\[
+ \alpha^*u\quad\longleftrightarrow\quad
+ A_{\chi,p}\begin{pmatrix}L\\A\\B\end{pmatrix},
+ \qquad
+ A_{\chi,p}=
+ \begin{pmatrix}
+ e&0&0\\0&0&1\\(1-\zeta)k&\eta&0
+ \end{pmatrix}.                                 \tag{D.26g}
+\]
+The coboundary line is spanned by
+$(\eta-1,\zeta-1,\zeta-1)$, and this nonzero vector
+is fixed by the displayed matrix. Thus
+\[
+ \det\bigl(\alpha^*|H^1(H,\Q_p(\chi_i))\bigr)
+ =\begin{cases}
+ 1&i=1,3,\\-\epsilon_p&i=2.
+ \end{cases}                                    \tag{D.26h}
+\]
+
+We identify the determinant required by the peripheral
+structure through actual restriction and filling maps.
+Let $K=\ker\chi$. Under the specified marking it is the
+completion of the double cover of the four-punctured
+sphere in which every cusp has nontrivial monodromy.
+The cover has four punctures and genus one, since its
+Euler characteristic is $-4$. The deck involution fixes
+each of the four peripheral homology classes. Their
+span is the three-dimensional invariant subspace of
+$H_1(K,\Q_p)$: restriction and averaging identify the
+invariant cohomology with $H^1(H,\Q_p)$, of dimension
+three. Filling the four punctures therefore identifies
+the anti-invariant part with the first homology of the
+filled torus. The restriction of crossed homomorphisms
+induces the precise comparison
+\[
+ H^1(H,\Q_p(\chi))
+   \xrightarrow{\ \sim\ }H^1(K,\Q_p)^-
+   \xleftarrow{\ \sim\ }
+          H^1\bigl(\widehat{\pi_1(T^2)},\Q_p\bigr).
+                                                               \tag{D.26i}
+\]
+The first isomorphism follows by averaging over the
+order-two deck group, which is invertible in $\Q_p$;
+the second is the dual of the filling quotient on
+the anti-invariant part. Both commute with the induced
+action of $\alpha$. Upstairs cusp generators are squares
+of the downstairs generators. A conjugator in $H$ can
+be moved into $K$ by multiplying it by the corresponding
+downstairs cusp generator when necessary; that generator
+centralizes its own square. Thus $\alpha$ has the same
+multiplier $\lambda$ on this covering pair. The transfer
+of the relative orientation class, followed by filling,
+is the comparison of A.2; it identifies the determinant
+on the filled torus with $\lambda_p$. Consequently the
+determinant in (D.26h) must be $\lambda_p$.
+
+At $p=3$ all three determinants in (D.26h) are $1$.
+This excludes the single-transposition case, which by
+(D.26e) would have $\lambda_3=\epsilon_3=-1$.
+For the remaining double transposition,
+$\lambda=-\epsilon$; at $p=5$ its value is $-1$.
+Formula (D.26h) then excludes $\chi_1$ and $\chi_3$,
+leaving exactly $\chi_2$. This proves the necessary
+conditions stated at the beginning for every marking.
+
+One can satisfy the first two cusp conditions in this
+remaining case by the explicit free basis
+\[
+ x=a,\qquad y=b^{-\epsilon},\qquad z=b^\epsilon l,
+ \qquad w=(xyz)^{-1}=(al)^{-1}.                    \tag{D.26j}
+\]
+The inverse substitution is $a=x$, $b=y^{-\epsilon}$,
+$l=yz$, proving that this is a free basis.
+It has canonical character $\chi_2$, and
+$\alpha(x)$ is $y^{-\epsilon}$ while $\alpha(y)$
+is conjugate to $x^{-\epsilon}$. For permutation
+$(x\ y)(z\ w)$ and multiplier $-\epsilon$, the next
+condition would require
+\[
+ \alpha(z)\sim w^{-\epsilon},\quad\hbox{equivalently}\quad
+                 a^\epsilon l^\epsilon\sim(al)^\epsilon.
+                                                               \tag{D.26k}
+\]
+Indeed $\alpha(z)=c a^\epsilon c^{-1}l^\epsilon$
+is conjugate to $a^\epsilon l^\epsilon$ because
+$c=l^\kappa$ commutes with $l$. In $S_4$ take
+$a=(2\ 3\ 4)$, $l=(1\ 2\ 3\ 4)$ and $b=1$.
+Its exponent is twelve, with $\epsilon\equiv5$.
+The left member of (D.26k) is the transposition $(1\ 4)$,
+whereas the right member is the four-cycle
+$(1\ 3\ 2\ 4)$. They cannot be conjugate.
+The supplied program checks all $24^2$ pairs in $S_4$,
+finding $96$ such nonconjugacy witnesses. It also checks
+all six matrices (D.26g) over $\F_3$ and $\F_5$, their
+fixed coboundary lines and the determinants on their
+two-dimensional cohomology quotients.
+
+These calculations reduce the permissible type-$(0,4)$
+markings to double transpositions with the specified
+multiplier and character. The second candidate (D.26j)
+is excluded, but D.29 constructs another marking by
+gluing a genuine three-cusp automorphism to its inverse.
+The exact basis change $b'=\tau(a)$ in that construction
+identifies its extension with (D.26a). Thus an invariant
+marking does exist; the finite failures above concern
+the two displayed candidates and the proved exclusions
+of the other permutation and character types.
+\end{proof}

@@ -1,0 +1,221 @@
+A FINITE PANTS DIAGRAM WITH A TWO-GENERATOR PARITY KERNEL
+========================================================
+Unnumbered exact comparison, 2026-11-13.
+The group and all maps below are constructed and checked. The map from
+the actual D74 extension E is not constructed. In particular the finite
+parameters f*,h* below have not been identified with the images of the
+actual f,h. This note tests the sufficiency of listed finite constraints;
+it does not assert a counterexample to D74.40 or replace the actual tau.
+
+1. Completely enumerated base data
+----------------------------------
+Let G=GL(3,F2), acting on the seven nonzero binary vectors numbered 1--7.
+The checker constructs G from all 512 binary matrices and their actual
+permutations. It proves by finite enumeration:
+  |G|=168; G is nonabelian simple and perfect;
+  its involutions form one class I of size 21;
+  all 179 subgroups are enumerated;
+  every proper subgroup is soluble, of derived length at most three;
+  every proper subgroup contains at most nine involutions.
+There are 19,152 ordered generating pairs, with 57 automorphism orbits,
+and 2,352 generating involution triples, with seven automorphism orbits.
+There are 3,696 generating pairs (x,y) for which x,y,xy each belong to
+I I, and these form eleven automorphism orbits.
+
+The complete automorphism group, of order 336, is computed without a
+classification theorem. Fix one generating pair and a spanning tree in
+its two-generator labelled Cayley graph. For every ordered generating
+target pair, the tree uniquely prescribes a possible map G->G. The
+checker verifies every edge labelled by either generator. Passing that
+test proves the map respects right multiplication by every word, hence
+every group element. Its image contains the target generators, so it
+is onto and therefore an automorphism. Conversely every automorphism
+occurs from its images of the fixed generating pair. Thus the finite
+list is complete. All tuple orbits have size 336, as independently
+verified in the enumeration.
+
+Select the first eight representatives of the eleven three-cusp pair
+orbits in the output. They are pairwise inequivalent under every
+automorphism of G. Write them (x_j,y_j), 0<=j<8, and put
+z_j=(x_j y_j)^(-1). Their rotation orders are, respectively,
+  (4,4,4), (4,3,3), (4,4,4), (4,3,3),
+  (4,4,3), (4,3,4), (3,4,4), (3,4,3).
+All exact permutations and indices are retained in the output.
+
+2. Exact parity-kernel and four-factor maps
+-----------------------------------------
+Let V=C2^3 with basis e0,e1,e2 and set
+  A*=G^8 x V,
+  epsilon:A*->C2, epsilon(g,v)=v0+v1+v2,
+  K*=ker(epsilon)=G^8 x W0,
+  X=((x_j)_j,e1+e0), Y=((y_j)_j,e2+e0).
+Then X,Y generate K*. Here is the exact subgroup argument. A proper
+subdirect subgroup of G^r has a relation g_j=sigma(g_i) for two
+coordinates and an automorphism sigma of G: induct on r, and when the
+first r-1 projection is full, its kernel in the last simple factor is
+either G or trivial. In the trivial case the subgroup is the graph of
+an onto map G^(r-1)->G. The images of the factors commute and are normal;
+only one can be nontrivial, and its map is an automorphism.
+Applied to <(x_j),(y_j)>, such a graph relation would identify two
+selected pair orbits. Hence its projection to G^8 is full. Since G^8
+is perfect, the commutator subgroup of <X,Y> contains G^8 x {0}.
+The two displayed W0 basis coordinates finish the assertion.
+This proves an actual surjection
+  phi0:F=Fhat(x,y)->K*, x->X, y->Y.                         (4)
+The source here may be the original named free F in D74. Its kernel
+has not been proved invariant under the original alpha.
+
+For each j choose a_j,c_j,r_j in I with
+  b_j=x_j a_j in I, d_j=y_j c_j in I, z_j r_j in I.
+Such choices exist from membership in I I and are explicitly listed.
+Choose h_j in G with h_j c_j h_j^(-1)=a_j and set
+  a=((a_j),e0), b=((b_j),e1), c=((c_j),e0), d=((d_j),e2),
+  f*=((c_j a_j),0), h*=((h_j),0), alpha*=Inn(a)|K*.
+The checker verifies every coordinate of
+  b a=X, d c=Y, alpha*(X)=X^(-1),
+  alpha*(Y)=f*^(-1)Y^(-1)f*,
+  f*=h*^(-1)alpha*(h*), alpha*(f*)=f*^(-1).                 (5)
+Both f*,h* lie in [K*,K*]=G^8 x {0}. The four elements a,b,c,d
+are involutions and generate A*: their products give K* and a has
+odd epsilon. Thus the factor assignment is an actual surjection
+  P4=C2(a0)*C2(b0)*C2(c0)*C2(d0)->A*,
+  (a0,b0,c0,d0)->(a,b,c,d).                                (6)
+Also A*=K* semidirect <a>, with the displayed finite involution alpha*.
+
+The three labelled classes are
+  C_0=I^8 x {e0}, C_1=I^8 x {e1}, C_2=I^8 x {e2}.
+Their distinguished representatives in this diagram are
+  a, b=Xa, t2=h*Yh*^(-1)a=h*d h*^(-1).
+They normally generate A*: the normal closure of any member of C_i
+contains every simple coordinate factor, by taking a nontrivial
+commutator with that factor, and hence equals G^8 x <e_i>.
+The group A* has ordinary generator number three: X,Y,a generate it,
+and its quotient V needs three. Its parity kernel is genuinely
+two-generated by (4), not merely generated in its primary quotients.
+
+3. All three finite dihedral cusp maps and endpoint labels
+---------------------------------------------------------
+Put Z=(XY)^(-1) and R=((r_j),e1). Then R and ZR are involutions in
+C_1 and C_2, respectively, and RZR=Z^(-1). There are actual full
+dihedral-domain homomorphisms with the following specified values:
+  domain                 rotation              reflection
+  Zhat semidirect C2        X                        a
+  Zhat semidirect C2        Y                        c=f*a
+  Zhat semidirect C2        Z                        R.
+The rotation maps are the continuous finite power maps; the reflection
+maps have order two and invert the corresponding rotations by (5)
+and the displayed Z identity. They all project through epsilon to
+the same C2 quotient. The boundary equality XYZ=1 holds literally.
+
+The first two endpoint pairs are (a,b) and (c,d); their labels are
+(C_0,C_1) and (C_0,C_2). For the third they are (R,ZR), with labels
+(C_1,C_2). The output gives explicit u1_j,u2_j with
+  R=U1 b U1^(-1), ZR=U2 t2 U2^(-1),
+  U1=((u1_j),0), U2=((u2_j),0).
+Thus all six endpoint occurrences have actual conjugators in K*.
+With Vz=R a, the checker also verifies the literal finite equations
+  Vz alpha*(Vz)=1,
+  f*^(-1)Y f* X=Vz^(-1)(XY)Vz.                             (7)
+These are the finite counterparts of the original z-reflection
+equations, using the original product order, not a new rotation.
+They do not assert values of the original D74 transporters under (4).
+
+4. The transitive-set bound holds for every A*-set
+-------------------------------------------------
+Let M<=A*, Omega=A*/M, n=|Omega| and f_i=|Fix_Omega(t_i)| for t_i in C_i.
+The exact class/coset count is
+  f_i/n=|C_i cap M|/|C_i|.                                 (8)
+It follows by counting g with g^(-1)t_i g in M, then dividing by |M|.
+Consider the eight G-coordinate projections of M.
+
+Two or more proper projections each contain at most nine involutions;
+since C_i has the independent uniform product I^8 in those coordinates,
+(8) is at most (9/21)^2=9/49<1/3. Thus S=sum f_i<n.
+If the projections are all onto but their joint image in G^8 is proper,
+the subdirect graph map above gives f_i/n<=1/21, again S<n.
+
+If exactly one projection is proper, write it H<G. A proper joint
+projection to the other seven full factors again gives a graph bound.
+Otherwise that projection is G^7. The projection of M to H x V is
+a soluble group B. After at most three derived subgroups its B-image
+is trivial, while its G^7-image is still G^7. Therefore M contains
+G^7 x {1} and has the exact form G^7 x B. The coset action, including
+the three classes, is now the action of G x V on (G x V)/B.
+
+This last group has a generating triple from I x {e_i}: the output
+exhibits a generating involution triple of G, and adjoining the three
+V labels still generates by perfectness of G. In any transitive action,
+the three involutions define a connected multigraph on n vertices,
+with one edge for each two-point orbit of each involution. It has
+(3n-S)/2 edges, at least n-1 by connectivity. Hence S<=n+2.
+This proves the bound for the one-proper-coordinate case by the exact
+reduced coset action, with no enumerated list of A*-subgroups assumed.
+
+Finally, a full joint projection to G^8 implies M contains G^8 x {0}
+by the commutator argument. Thus M=G^8 x W with W<=V. The quotient
+action is V/W. With k of the three basis vectors in W, S=n k and
+n=8/|W|. Dimensions 0,1,2,3 give bounds k<=0,1,2,3 and degrees
+8,4,2,1, respectively, all satisfying S<=n+2. These cases prove
+  sum_i |Fix_Omega(t_i)| <= |Omega|+2
+for every transitive finite A*-set.
+
+5. No relative generating triple, and an exact finite unit equation
+-------------------------------------------------------------------
+No choice of one element from each C_i generates A*. Every coordinate
+would have to be one of the generating involution triples of G, but
+there are only seven automorphism orbits and eight coordinates. Two
+coordinate triples are carried to one another by an actual automorphism
+sigma. Their generated subgroup lies in the proper graph g_j=sigma(g_i).
+Thus the whole A*-image is proper. The relative generating-triple set
+for these three classes is empty, despite the properties above.
+
+The concrete h* also has solutions of the finite unit equation
+  X^m h* Y^m h*^(-1)=U(XY)^m U^(-1), U in K*.              (9)
+The exponent of K* is 84. The checker tests every unit residue modulo
+168 and every conjugator in each of the eight coordinate G groups.
+Exactly 24 unit residues work simultaneously; they are the units with
+m=5 or 7 modulo 12. In particular m=5 works. Its eight actual
+conjugators u_j are recorded, and U=((u_j),0) proves (9) in A*.
+This finite unit residue lifts to Zhat^times; the integer 5 itself
+is not being asserted to be a full profinite unit.
+
+For example coordinate j=4 has
+  x_4=(23)(4657), y_4=(14)(2673),
+  h_4=(124)(365), u_4=(147)(365).
+Its named x_4,y_4 generate all 168 elements, while
+x_4^5,h_4 y_4^5 h_4^(-1) generate only 24 elements. The exact
+equation (9) still holds there. In the whole product, the three
+distinguished involutions at every unit m belong to C_0,C_1,C_2,
+so their properness also follows from the preceding graph argument.
+Equation (9) is computed with h*, not with an asserted image of the
+original h; it is therefore not presented as a computation of an
+actual D74 set B_N.
+
+6. The precise unconstructed actual comparison
+---------------------------------------------
+The actual free source map phi0 in (4) and the finite alpha* are fully
+defined. The equality
+  phi0 alpha = alpha* phi0
+for the original D74 alpha has not been proved. On x the displayed
+formulas agree; on y their two expressions are
+  phi0(f)^(-1) Y^(-1) phi0(f),  f*^(-1)Y^(-1)f*.
+Their equality, and the value of phi0(h), are unresolved. The note
+does not assign f* or h* to those original images. In particular
+the P4 quotient (6) has not been factored through the actual q4:P4->E.
+No image of the actual folded map tau is supplied by this construction.
+
+The proved finite example shows that the transitive-set bound, a genuine
+two-generator parity kernel, ordinary three-generation, compatible
+finite dihedral cusp maps with all section labels, and a finite unit
+equation with specified finite parameters do not alone force a relative
+generating triple. The exact original maps and compatibility across
+actual quotients still require proof. No nonemptiness conclusion for
+the actual G_N or B_N and no global recognition conclusion is drawn.
+
+Evidence
+--------
+Producer: code/finite_pants_diagram_gl3_2.py.
+Output: code/finite_pants_diagram_gl3_2_output.json and identical stdout.
+All 88 exact assertions passed. The base group, all subgroups, all
+automorphisms, all tuples and all coordinate peripheral diagrams are
+enumerated; the large-product statements are the explicit proofs above.
