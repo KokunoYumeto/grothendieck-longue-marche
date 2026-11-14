@@ -9,6 +9,10 @@ and the transcription is being checked page by page against the scans.
 
 ## What is here
 
+- **Typeset readers, working draft (14 November 2026)**: five readers and two annotated masters, French and English
+  (diplomatic, corrected with apparatus, reading text), under
+  [Releases](../../releases/tag/lm-readers-working-draft-2026-11-14). The text is settled; the typesetting is still
+  being finished, and a finished edition will replace them.
 - **Draft readers**, one PDF per archive file, under [Releases](../../releases): cote 140-2 (manuscript pages 1–292),
   140-3 (pages 293–650), 140-4 (pages 650bis–787) and 140-1 (a draft). Each part uses the best text available;
   [reader/READER_SOURCES.md](reader/READER_SOURCES.md) says which.

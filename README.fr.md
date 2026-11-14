@@ -11,6 +11,10 @@ Une traduction anglaise de tout le manuscrit (245 unités, 1 588 scans ; traduit
 
 ## Contenu
 
+- **Lecteurs composés, version de travail (14 novembre 2026)** : cinq lecteurs et deux maîtres annotés, en français et
+  en anglais (diplomatique, corrigé avec apparat, texte de lecture), dans les
+  [Releases](../../releases/tag/lm-readers-working-draft-2026-11-14). Le texte est établi ; la composition est en cours
+  d'achèvement, et une édition achevée les remplacera.
 - **Lecteurs provisoires**, un PDF par fichier d'archive, dans les [Releases](../../releases) : cote 140-2 (pages
   1–292 du manuscrit), 140-3 (pages 293–650), 140-4 (pages 650bis–787) et 140-1 (un brouillon). Chaque partie
   utilise le meilleur texte disponible ; [reader/READER_SOURCES.md](reader/READER_SOURCES.md) indique lequel.
