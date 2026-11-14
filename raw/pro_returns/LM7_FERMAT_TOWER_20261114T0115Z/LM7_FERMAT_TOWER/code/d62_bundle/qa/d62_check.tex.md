@@ -1,0 +1,661 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,mathtools}
+\usepackage{array,booktabs,longtable,tabularx,enumitem,graphicx}
+\usepackage{xcolor,microtype}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+ urlcolor=blue!45!black,pdftitle={LM7: The Fermat tower in the metabelian approximation},
+ pdfauthor={GPT-6 Astra, OpenAI, ChatGPT Pro mode}}
+\urlstyle{same}
+\setlength{\parindent}{1.3em}
+\setlength{\parskip}{.22em}
+\setlength{\emergencystretch}{2em}
+\setlength{\LTpre}{.6em}
+\setlength{\LTpost}{.6em}
+\setlist{nosep}
+\setcounter{secnumdepth}{0}
+\setcounter{tocdepth}{1}
+\allowdisplaybreaks[2]
+\newenvironment{statement}[3]{%
+ \par\addvspace{1.1em}\phantomsection\label{st:#1}%
+ \noindent\textbf{#1. #3}\quad\textsf{\small[#2]}\par\nobreak\smallskip\ignorespaces
+}{\par\smallskip}
+\newcommand{\statementref}[1]{\hyperref[st:#1]{#1}}
+\newcommand{\Sha}{\mathop{\mathrm{Sh}}}
+\makeatletter\@namedef{b@A_HerfortRibes1985}{HR85}\makeatother
+\begin{document}
+\subsection{Actual torsion and cusp corrections in the remaining projective self blocks}
+
+\begin{statement}{D.62}{Proved}{Two source-defined correction maps lift all twenty-six surviving projective self-wedge classes}
+Retain the actual sources, integral projectors and
+homology action \(T_{61}\) of D.61. In particular
+\[
+ X=\widehat B/(R_{50}\cap L_2),\qquad
+ Y=X/\mathcal K,\qquad
+ X_{61}=X/\mathcal J_{61}.
+ \tag{D.62.1}
+\]
+The following projector uses the one excluded
+old self block and all eight new self blocks:
+\[
+ \begin{aligned}
+ \Pi_{62}&=e_\Delta\left(
+       \bigwedge\nolimits^2\bar e_{1,4}
+          +\sum_{b=1}^{2}\sum_{i=1}^{4}
+                    \bigwedge\nolimits^2\bar f_{b,i}\right),\\
+ \mathcal C_{62}&=\Pi_{62}Z,\qquad
+ \mathcal J_{62}=(1-\Pi_{62})\mathcal J_{61}.
+ \end{aligned}
+ \tag{D.62.2}
+\]
+These are actual equivariant central submodules,
+and
+\[
+ \begin{gathered}
+ \mathcal J_{61}=\mathcal C_{62}\oplus\mathcal J_{62},
+ \qquad\dim\mathcal C_{62}=6656,\qquad
+ \dim(\mathcal C_{62})_G=28,\\
+ \operatorname{rank}\nu|_{(\mathcal C_{62})_G}=2,
+ \qquad\dim\ker\nu|_{(\mathcal C_{62})_G}=26.
+ \end{gathered}
+ \tag{D.62.3}
+\]
+
+There is an actual continuous peripheral
+automorphism of
+\[
+                         X_{62}=X/\mathcal J_{62}.
+ \tag{D.62.4}
+\]
+It has multiplier one, fixes the original cusp
+\(t\), induces identity on the arithmetic group
+\(G\), and retains the complete D.57 action
+and its literal compatible conjugators.
+Its prescribed \(\mathcal W_h\) action,
+normalized parameter, and all established
+metabelian and CM comparisons through that
+map are unchanged. Its integral homology
+action is exactly \(T_{61}\).
+
+The comparison on the full homology source
+is explicit. For actual source elements
+\(u_j\in S_{57}\), set
+\[
+ b_{t,j}=\prod_{k=0}^{35}t^k u_jt^{-k},
+ \qquad b_t=\prod_j b_{t,j}.
+ \tag{D.62.5}
+\]
+The homology vectors and the finite choice
+of factors are specified in the proof.
+The new \(Y\)-action is
+\[
+                 \operatorname{Int}(b_{t,Y})\alpha_{61,Y}.
+ \tag{D.62.6}
+\]
+Here \(b_{t,Y}\) centralizes \(t\),
+has zero image in \(X_*\) and
+\(\mathcal W_h\), and belongs to the
+abelian kernel of \(Y\to X_*\).
+The other corrections leave the action
+on \(Y\) unchanged. Thus (D.62.6)
+gives the exact change of representative;
+no unchanged extension of the chosen
+D.61 representative is asserted.
+
+The two actual correction maps on a
+projective self factor \(E\) are
+\[
+ \begin{aligned}
+ \eta_s(v)&=[e_\Delta(v\wedge sv)]_G,\\
+ \eta_t(v)&=[e_\Delta(v\wedge N_{36}(t)v)]_G,
+       &N_{36}(t)&=\sum_{k=0}^{35}t^k.
+ \end{aligned}
+ \tag{D.62.7}
+\]
+They are linear maps over \(\mathbb F_2\),
+realized by the source words in the proof.
+Their joint image is precisely the
+twenty-six-dimensional kernel in (D.62.3).
+The ranks on the three self types are
+\[
+ \begin{array}{c|r|r|r|r|r}
+ \text{self type}&\text{copies}&\dim M_G
+   &\operatorname{rank}\nu&\operatorname{rank}\eta_s
+   &\operatorname{rank}\eta_t\\\hline
+ (0,0,0,1),\ i=4&1&4&2&0&2\\
+ (0,0,1,1)&4&3&0&2&1\\
+ (0,0,1,2)&4&3&0&2&1
+ \end{array}
+ \tag{D.62.8}
+\]
+In each row the two correction images
+have the full joint rank
+\(\dim M_G-\operatorname{rank}\nu\).
+
+The cusp map uses the literal affine
+element in the actual order-46656
+quotient:
+\[
+ \begin{aligned}
+ t&=((1,1,0,1),q_4),\\
+ t^{18}&=((0,2,1,0),q_{314}).
+ \end{aligned}
+ \tag{D.62.9}
+\]
+The matrices of \(q_4,q_{314}\)
+are those of the retained marked state
+list. The word \(t^{18}\) in the
+full source is used with its actual
+square \(t^{36}\); it is never
+replaced by an order-two source element.
+
+The exact source kernels are
+\[
+ \begin{aligned}
+ \ker(X_{62}\to X_{61})&=\mathcal C_{62},\\
+ \ker(X_{62}\to Y)&=(1-e_\Delta)\mathcal K
+    \oplus\mathcal C_{59}\oplus\mathcal C_{60}
+    \oplus\mathcal C_{61}\oplus\mathcal C_{62},\\
+ \ker(X\to X_{62})&=\mathcal J_{62},\\
+ \dim\mathcal J_{62}&=48w-2560-5308416\kappa-40960.
+ \end{aligned}
+ \tag{D.62.10}
+\]
+The specified remaining small-character
+submodule has dimension 325120 and
+coinvariant dimension 534. In the full
+source put
+\[
+ S_{62}=\{b\in R_{50}:
+        \operatorname{im}_{\mathcal T_2}(b)\in\mathcal J_{62}\}.
+ \qquad
+ S_{62}/(R_{50}\cap L_2)=\mathcal J_{62}.
+ \tag{D.62.11}
+\]
+This remaining kernel is nonzero.
+Its arithmetic boundary and genuine
+full profinite realization remain
+unresolved. The exponent-eight word
+check below verifies the correction
+identities, without asserting an
+arithmetic lift to that larger quotient.
+The manuscript passages are Part D(e),
+section 51.16, folio 734 verso, scan 174,
+and section 51.15, folios 725--727,
+scans 156--160.
+\end{statement}
+\begin{proof}
+\emph{The actual integral source of every correcting vector.}
+Let \(E\) be one of the nine integral
+projective summands appearing in (D.62.2),
+and let \(e\) be its integral projector.
+D.60 and D.61 prove
+\[
+ eT_{61}=e,\qquad e\mathcal R=0,
+ \qquad\theta_U E=0,\qquad E\subset U^-.
+ \tag{D.62.12}
+\]
+Here \(\mathcal R\) is the full cusp
+homology lattice. D.58 proves the actual
+surjection
+\[
+ S_{57}=\mathfrak R_h\cap M_*\cap L_{*,2}
+       \longrightarrow
+ \mathcal L=\ker(U^-\to U_*^-).
+ \tag{D.62.13}
+\]
+For every vector of \(\bar E=E/2E\),
+choose an integral lift in \(E\)
+and an actual preimage \(u\in S_{57}\)
+under (D.62.13). Thus \(u\) has zero
+image in the complete \(X_*\) and
+\(\mathcal W_h\) sources, with precisely
+the prescribed full homology vector.
+Its image in \(Y\) is the corresponding
+element of the abelian kernel
+\(\mathcal L=\ker(Y\to X_*)\).
+The use of this surjection retains the
+entire arithmetic source, rather than
+choosing only a vector in a finite
+coefficient model.
+
+Lift the two conjugators of the chosen
+\(Y\)-action to \(X\). Their torsion
+conjugates define an actual homomorphism
+\(\varphi:\widehat B\to X\), with
+\[
+ \widetilde s=\varphi(s),\quad
+ \widetilde r=\varphi(r),\quad
+ \widetilde s^2=\widetilde r^3=1,
+ \qquad\varphi(t)=zt,\quad z\in\mathcal K.
+ \tag{D.62.14}
+\]
+This source map induces the given
+\(Y\)-action and its homology
+\(T_{61}\). Its action on the central
+module is \(\bigwedge^2\bar T_{61}\).
+
+We use throughout the convention
+\([a,b]=aba^{-1}b^{-1}\).
+Commutators of the correcting kernel
+elements below lie in the actual
+central module \(Z\). Indeed their
+\(\mathcal W_h\) image is one and
+their full homology image is zero;
+D.54 identifies this kernel in \(X\)
+with \(Z\), faithfully through
+\(\mathcal T_2\). Within that target
+their coordinates are precisely the
+exterior products of their homology
+vectors. This justifies every following
+class-two word identity inside \(X\).
+
+\emph{An actual source-involution correction.}
+For the chosen preimage \(u\), put
+\[
+ b_s=u\,\widetilde s u\widetilde s^{-1}.
+ \tag{D.62.15}
+\]
+One may form this word in the full source:
+choose a source lift \(\gamma\) of the
+conjugator defining \(\widetilde s\) and
+use the actual torsion element
+\(\gamma s\gamma^{-1}\).
+Normality of \(S_{57}\) then places
+the entire correcting word in \(S_{57}\).
+Its image in \(Y\) is \(v+sv\),
+which is fixed by \(s\). Thus it
+centralizes \(\widetilde s_Y\) in
+\(Y\). Replacing \(\widetilde s\)
+by \(b_s\widetilde s b_s^{-1}\)
+leaves the \(Y\)-action unchanged.
+It also retains the literal conjugator
+in \(X_*\) and \(\mathcal W_h\),
+since \(b_s\) has zero image there.
+The exact identity \(\widetilde s^2=1\)
+gives
+\[
+ b_s\widetilde s b_s^{-1}\widetilde s^{-1}
+   =[u,\widetilde s u\widetilde s^{-1}].
+ \tag{D.62.16}
+\]
+Its exterior coordinate is \(v\wedge sv\).
+Consequently this change adds precisely
+\(\eta_s(v)\) to the projected
+coinvariant cusp error.
+
+The map on coinvariants is linear.
+The polar expression is
+\(v\wedge sw+w\wedge sv\).
+Applying \(s\) to its first term
+gives the second in characteristic
+two, so their classes cancel.
+The map factors through \(N_2(s)v\):
+for \(N_2(s)v=0\) one has \(sv=v\),
+so its value is zero. Its full norm
+is zero, since pairing \(g\) and
+\(gs\) in the group sum cancels
+their two exterior terms. These
+statements remain true after the
+equivariant \(\Delta\)-projection.
+
+The first complete test,
+\path{d_self_wedge_torsion_correction.py},
+computes this actual source-\(s\) map
+on all global basis vectors and checks
+every polar equation. Its ranks are
+the \(\eta_s\) column of (D.62.8).
+It also preserves, as a separate
+diagnostic, the maps for the other
+three involution classes of \(Q\).
+The diagnostic class 314 is not
+silently used as another source
+torsion generator. Under the actual
+map \(\widehat B\to Q\), every
+order-two source element is conjugate
+to \(s\), by
+\cite[Theorem A$'$]{A_HerfortRibes1985}.
+The marked enumeration gives class
+sizes 36 for \(s\) and three for
+state 314; they are not conjugate.
+Hence there is no order-two source
+element projecting to that state.
+
+The intermediate calculation
+\path{d_self_wedge_coordinate_blocks.py}
+records invariant coordinate summands
+of each new self module. Their global
+dimensions are \(96,96,288,288\).
+The diagonal 96-dimensional summand
+and the \((0,5)\)-orbit summand of
+dimension 288 have onto source-\(s\)
+correction on their two coinvariants;
+one further 96-dimensional summand
+has zero coinvariants. This proves
+the exact sixteen-dimensional image
+of the first route while preserving
+its then-uncontrolled ten directions.
+The cusp construction supplies these
+directions using a different actual
+source word.
+
+\emph{The actual infinite-cusp correction.}
+Put \(c=t^{36}\), an actual cusp
+loop in \(K_3\), and write
+\(u_j=t^j u t^{-j}\). Define
+\(b_t=u_0u_1\cdots u_{35}\).
+In \(Y\) this is the element
+\(N_{36}(t)v\) of \(\mathcal L\).
+The action of \(t\) on \(U\)
+has order dividing 36. Thus
+\(b_{t,Y}\) centralizes \(t\).
+Postcomposing \(\varphi\) with
+\(\operatorname{Int}(b_t)\)
+changes its \(Y\)-action by exactly
+that inner automorphism, with the
+same full homology matrix. Both
+\(b_t\) and every one of its
+source factors lie in \(S_{57}\),
+so the complete D.57 action,
+its conjugators, and \(\mathcal W_h\)
+are unchanged.
+
+The last cyclic factor is kept
+with its exact source relation:
+\(u_{36}=cuc^{-1}\). If
+\(U_1=u_1\cdots u_{35}\), direct
+multiplication in the class-two
+kernel gives
+\[
+ \begin{aligned}
+ b_t\,t b_t^{-1}t^{-1}
+   &=uU_1(u_1\cdots u_{35}u_{36})^{-1}\\
+   &=[u,U_1]\,[c,u]^{-1}.
+ \end{aligned}
+ \tag{D.62.17}
+\]
+Both factors belong to \(\mathcal K\).
+The second has a cusp homology
+factor, so (D.62.12) kills it under
+every selected self or cross
+projector. The first has projected
+exterior coordinate
+\[
+ e_\Delta\left(v\wedge\sum_{j=1}^{35}t^jv\right)
+       =e_\Delta\left(v\wedge N_{36}(t)v\right).
+ \tag{D.62.18}
+\]
+This proves the second actual
+source map in (D.62.7). It does
+not replace \(c\) by one.
+
+Its polar expression vanishes on
+coinvariants: in the second sum
+\([w\wedge t^jv]=[v\wedge t^{-j}w]\),
+and the index set \(0,\ldots,35\)
+is invariant under negation modulo
+the action period. The two sums
+therefore cancel. The map vanishes
+on \(\ker N_{36}(t)\), and hence
+factors through the cyclic norm.
+Its full group norm is zero as
+well. In the sum over \(G\) and
+\(\langle t\rangle\), ordered pairs
+of distinct vectors occur in both
+orders and diagonal exterior terms
+are zero. This proves that both
+actual correction images lie in
+the asserted norm kernel.
+
+Products of the displayed source
+corrections add their central errors.
+For the \(s\)-corrections, the
+updated involution has the same
+conjugation action on the kernel:
+its difference is central there.
+For the cusp corrections, their
+commutators with \(t\) are central
+in that kernel. Thus any prescribed
+sum of their coinvariant columns
+is realized by a finite product
+of the actual words, with exactly
+the retained-source properties just
+proved.
+
+\emph{The full affine marking and the evaluated image.}
+The final norm calculation uses
+the actual map of D.60.2. If
+\(v_*=(1,1,1,0)\) and \(Q_g\)
+is the retained four-dimensional
+matrix of \(g\in Q\), then
+\[
+ s=(0,S),\qquad r=(v_*,R),\qquad
+ t=(Q_Sv_*,SR).
+ \tag{D.62.19}
+\]
+For the selected character \(\ell\),
+let \(g_j\) be the retained pair
+coset representatives. If
+\(gg_j=g_bh\), the action of
+\((a,g)\) on that summand is
+the recorded semilinear matrix
+of \(h\), followed by the scalar
+\[
+                 \zeta_3^{\ell Q_{g_b^{-1}}a}.
+ \tag{D.62.20}
+\]
+This is the literal induced
+representation of the affine
+semidirect product: its character
+on the output summand is
+\(\ell Q_{g_b^{-1}}\). It proves
+the marking used in (D.62.9).
+
+The program
+\path{d_self_wedge_cusp_correction.py}
+constructs (D.62.20) on every real
+basis vector. It verifies
+\(s^2=r^3=1\), the actual product
+\(t=sr\), all 36 norm powers,
+and the displayed affine value
+of \(t^{18}\). The coefficient
+action has period twelve, but
+the program uses the full source
+norm of length 36. This retains
+the original cyclic source map.
+
+It then checks every polar column
+and both cyclic factorizations.
+In the recorded ordered real basis
+\(v_0,\ldots,v_{n-1}\), independent
+columns are as follows. A column
+number in this table denotes an
+actual basis vector of the
+induced homology module, with the
+coset representatives and finite
+integral reduction fixed in D.61.
+\[
+ \begin{array}{c|c|c|c}
+ \text{self type}&\text{map and vector}
+      &\text{coinvariant image}&\text{basis order}\\\hline
+ (0,0,0,1),i=4&\eta_t(v_0),\eta_t(v_1)
+      &\mathtt{0x4},\mathtt{0xc}&(0,9,16,17)\\
+ (0,0,1,1)&\eta_s(v_{96}),\eta_s(v_{100}),\eta_t(v_1)
+      &\mathtt{0x4},\mathtt{0x1},\mathtt{0x2}&(0,10,16)\\
+ (0,0,1,2)&\eta_s(v_0),\eta_s(v_3),\eta_t(v_0)
+      &\mathtt{0x1},\mathtt{0x4},\mathtt{0x2}&(0,9,16)
+ \end{array}
+ \tag{D.62.21}
+\]
+The last column gives indices in
+the D.61 Hermitian basis. The
+hexadecimal entries are the literal
+binary coordinates on the resulting
+coinvariant basis, and all other
+columns are retained in the
+certificate. The ordinary norm on
+the first row has kernel spanned
+by its last two coordinates.
+Thus its two displayed columns
+are a basis of that kernel.
+In each new row the three columns
+are a basis of the whole
+three-dimensional coinvariant space.
+The four copies in each new
+orbit have identical literal
+matrices, as proved and checked
+in D.61. These columns prove the
+joint image assertion in every
+copy, and give (D.62.8).
+
+This evaluates the correction
+map completely on the relevant
+kernel. For example, an old
+kernel class \(a\mathtt{0x4}
++b\mathtt{0x8}\) is removed by
+\((a+b)\eta_t(v_0)+b\eta_t(v_1)\).
+For a new row, the displayed
+three coordinate basis vectors
+give the three coefficients
+directly. All coefficients lie
+in \(\mathbb F_2\). Taking the
+corresponding source factors with
+coefficient one constructs the
+finite products in (D.62.5) and
+(D.62.15). No unproved search
+or solvability condition remains
+on these twenty-six coordinates.
+
+\emph{The actual boundary and the larger source.}
+Before these corrections, D.55
+applies to (D.62.14). By
+\(eT_{61}=e\), the compact
+orientation image on every
+selected self block is fixed.
+Compactification is injective
+on these blocks. Therefore
+\[
+                   \nu([\Pi_{62}z])=0.
+ \tag{D.62.22}
+\]
+The actual arithmetic boundary
+belongs to exactly the kernel
+spanned in (D.62.21). Choose
+the finite source products with
+the coefficients just described.
+Their errors cancel that class.
+
+They retain the same homology
+matrix. Every previous selected
+invariant block still has its
+zero boundary by the same norm
+and compactification argument.
+More explicitly, the new
+commutator vectors lie in a
+single excluded self factor;
+the additional term in (D.62.17)
+has a cusp factor killed by all
+the selected projectors. The
+\(\Delta\)-moving part has zero
+coinvariants by odd averaging.
+In every retained central
+component, the remaining error
+representative is thus in the
+actual augmentation image
+\[
+                    (1-s)M+s(1-r)M=I_GM.
+ \tag{D.62.23}
+\]
+Choose central conjugator corrections
+with these values. They leave the
+action and conjugators on \(Y\),
+\(X_*\) and \(\mathcal W_h\)
+unchanged. The final cusp error
+lies in \(\mathcal J_{62}\).
+
+The relation
+\(\Pi_{62}\bigwedge^2\bar T_{61}=\Pi_{62}\)
+preserves its kernel, and the old
+projectors retain the same property.
+Thus the source map factors
+through \(\mathcal T_2/\mathcal J_{62}\).
+It is an automorphism, since its
+kernel Frattini action is the
+invertible reduction of \(T_{61}\)
+and its finite base action is
+identity. The retained full
+homology and \(\mathcal W_h\)
+action agree with it on their
+original marked common quotient.
+Their fibre product is exactly
+\(X/\mathcal J_{62}\), by the
+same source-kernel intersection
+as in D.58 and D.61. This proves
+(D.62.4) and the explicit action
+comparison (D.62.6).
+
+The integral homology matrix
+has not changed. The \(Y\)-action
+has changed only by the inner
+element in (D.62.5), and its
+image in \(X_*\) and
+\(\mathcal W_h\) is one.
+This proves preservation of
+the prescribed literal parameter
+and all comparison maps claimed
+in the statement.
+
+The orthogonal projectors in
+(D.62.2) prove all the direct
+sums and exact source kernels.
+The dimension calculations are
+\[
+ \begin{aligned}
+ \dim\mathcal C_{62}&=512+8\cdot768=6656,\\
+ \dim(\mathcal C_{62})_G&=4+8\cdot3=28,\\
+ 331776-6656&=325120,\qquad562-28=534.
+ \end{aligned}
+ \tag{D.62.24}
+\]
+The source image \(R_{50}\to Z\)
+is onto. A nonzero vector in
+the last specified residual and
+one of its actual source preimages
+give a nontrivial element of
+\(S_{62}/(R_{50}\cap L_2)\).
+This proves the stated remaining
+kernel without any cofinality claim.
+
+\emph{The exponent-eight identity check and its exact scope.}
+The independent program
+\path{d_self_wedge_word_identities.py}
+uses the full Hall coordinates of
+the free class-two groups with
+abelian exponent four or eight
+and commutator exponent two or
+four, respectively. It evaluates
+the complete 36-factor cusp word
+with the actual cyclic wrap
+\(u_{36}=cuc^{-1}\), and the
+two-factor source-involution word.
+Both (D.62.16) and (D.62.17) hold
+with their full signed central
+coordinates in both groups.
+In particular the cusp term is
+retained before its projected
+vanishing is used. This checks
+the literal square/commutator
+identity needed in the proof.
+The larger arithmetic
+exponent-eight kernel has not
+been removed by that universal
+word test. The remaining actual
+arithmetic boundary is the one
+on \((\mathcal J_{62})_G\), with
+the exact maps (D.62.10)--(D.62.11).
+\end{proof}
+
+\end{document}

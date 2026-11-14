@@ -1,0 +1,17 @@
+# E.74: wild local central cohomology and fibers
+
+The actual local relative pro-three-by-C2 group surjects onto the previously computed global free arithmetic quotient. The class-number-one argument proves surjectivity. Lifting the specified involution and the two conjugate free generators gives an actual equivariant group section. Its kernel acts trivially on the given based geometric group. Restriction and the formula a(rj(g))=theta(r)+u(g) give the exact integral direct sum for H1.
+
+The full absolute-local comparison is proved directly. Every element of k(3) has a cube root there, by the normal closure of its finite Kummer extension. Brauer restriction along an unramified degree-three step kills the finite three-primary invariant. Direct limits, finite-module devissage, the Hochschild-Serre sequence, exact C2 invariants and the finite inverse-limit comparison give every required inflation isomorphism. This retains the actual absolute source throughout.
+
+Local Tate duality identifies H2 with the actual Tate-twisted coinvariants, so its matrix is [T_r-7I | J_r+I]. Its first three groups are Z3^5, Z3 plus C3^11 plus C9^4, and C3^63 plus C9^23 plus C27^7. Every higher degree has a proved finite Smith precision bound. The local Euler formula gives H1 free rank n+b, and the split Hom factor is torsion-free, so all finite torsion is exactly the previously evaluated E41 torsion. The first H1 free ranks are15,46,330.
+
+Two actual local Kummer unit classes supply normal generators of the arithmetic kernel. Evaluation realizes its equivariant Hom lattice as a saturated closed submodule of A^2. A chosen unimodular coordinate map and its literal inverse specify the extra free factor. Its numerical entries depend on the actual relation submodule, which this statement does not declare evaluated. The first extra free ranks are9,22,164.
+
+Every section-twisted lower stabilizer is trivial, as seen on its first nonzero graded coordinate at the actual lifted tau. Thus central multiplication identifies each nonempty wild lifting fiber with the computed H1, with inverse obtained by the unique lower alignment and central difference. The obstruction map is the actual Hall-lift defect, followed by local duality and the saved Smith maps. Its individual nonlinear values remain part of E23.
+
+The primary sources were searched and opened before this result: Wingberg's author original on free Demushkin quotients and Milne's complete finite local duality and Euler-characteristic proofs. The precise source passages and actual transfers are recorded in the source-evidence ledger. No priority is claimed.
+
+The final program was read and rerun from a fresh copied source by root; every JSON field and all16 NPZ arrays match without exclusions. Independent complete-proof and fresh-execution audit by a_structure also passed. The first unsuccessful integer-Smith attempts are preserved with their actual statuses. The final computation uses proved finite precision; it does not claim those unsuccessful runs produced degree-two data.
+
+The strengthened absolute/pro-three comparison was independently reread and approved; the final theorem hash is recorded in the root and A audits. Root also freshly executed the retained materialized diagonal-only attempt. It again terminated at its explicit20-second alarm with process return code-14 (shell-equivalent142), and emitted no Smith result. Its actual source hash and termination output are retained separately from the original inline termination record.

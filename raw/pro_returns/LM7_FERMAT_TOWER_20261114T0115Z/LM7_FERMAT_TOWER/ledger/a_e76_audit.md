@@ -1,0 +1,13 @@
+# Independent audit of E.76
+
+Status: PASS. The complete frozen theorem and proof, the portable Python verifier, and the actual field/transfer GP sources were read. A copied Python verifier was freshly executed against the retained structured export. Every resulting JSON field equals the reference, without exclusions. This audit does not claim a fresh full GP reconstruction; root is handling that separate pipeline.
+
+The degree-three base change is everywhere unramified and split at 3 and 17 by the actual local roots; its global degree follows from the contradictory splitting at17 if the cyclotomic subfield were contained in L_d. The degree-nine extensions are cyclic and totally ramified at the stated six primes. At the wild places the exact logarithmic cutoffs U10=U4^3 and U16=U4^9 retain the full local unit power quotients. The computed norm-unit subgroup already has the index forced by local reciprocity, proving equality. The global norm indices then follow by the cyclic Hasse norm theorem.
+
+The finite idelic quotient is exactly the largest abelian extension over B unramified above the cyclic field: inertia indices give one direction and local norm functoriality gives the other. Its exact sequence with the ordinary class group and its comparison with the maximal abelian quotient of the Hilbert class field prove both ambiguous orders without an unproved class-number extrapolation. The exponent bound justifies the finite ray-power calculation.
+
+The prime Artin classes use the literal norm Norm(Y+1)=beta1+1 and the sign -[(x)P^-1], so they are actual upper unramified Frobenii. The δ field map preserves beta1, has the stated action on the degree-nine Kummer quotient, and preserves the genus field. In the cyclic quotient extension over L3, the commutator subgroup is precisely (δ-1)A9; hence the indicated A9 coinvariants inject into the abelianization. This proves the exact transfer to the original prime class while retaining the unresolved order3-versus9 choice.
+
+The fresh verifier checks 50 exact norm determinants, six complete local norm kernels, 12 integer Smith transformations with inverses, and 48 actual Kummer prime-factor records, together with every displayed class/quotient/transfer coordinate. Milne's local reciprocity, global idelic map and cyclic norm theorem and the official PARI flag-zero certification documentation were independently reopened. Milne III Lemma3.2 has no printed proof; its needed first square follows from the Res/Cor cup-product compatibility explicitly proved immediately before in III3.1. No mathematical correction is required.
+
+Section hash: `c7cbdd4d39f493689de4b5b917b97ebd59c317f989557132671179f735a425cc`.

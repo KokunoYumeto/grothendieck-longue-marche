@@ -1,0 +1,44 @@
+{
+  "portable_full_rebuild": "python code/e53_higher_maps.py --gp /absolute/path/to/gp",
+  "fresh_copy_comparison": "python code/e53_higher_replay.py --gp /absolute/path/to/gp --destination /new/empty/audit/path",
+  "finite_recheck": "python code/e53_higher_maps.py",
+  "independent_relative_ring": "python code/e53_literal_unit_ring.py",
+  "layout": "python code/e53_higher_layout.py",
+  "freeze": "python code/e53_higher_freeze.py",
+  "required_sources": [
+    "code/e53_higher_maps.py",
+    "code/e53_literal_unit_ring.py",
+    "code/e53_higher_local.gp",
+    "code/e53_higher_genus.gp",
+    "code/e53_upper_witness_verify.gp"
+  ],
+  "required_inputs": [
+    "inputs/e119_e53_genus_transition.bin",
+    "inputs/e119_e53_genus_transition.out",
+    "inputs/e121_normalizer_module.json",
+    "inputs/e122_literal_unit_witnesses.json",
+    "inputs/e122_literal_unit_witnesses.txt"
+  ],
+  "input_provenance": "The lower input-producing sources and complete upstream rebuild are in the frozen E119/E121 bundles. The two new witness files are literal rational coefficients whose complete identities are reverified; they are not asserted as an upper fundamental-unit basis. Discovery sources and actual outputs are all retained.",
+  "upstream_rebuild": "E119: python code/e_lower_fiftythree.py --gp /absolute/path/to/gp; E121: python code/e53_normalizer_module.py --gp /absolute/path/to/gp",
+  "expected_text_outputs": [
+    "code/e53_higher_local.out",
+    "code/e53_higher_genus.out",
+    "code/e53_upper_witness_verify.out",
+    "code/e53_literal_unit_ring.out",
+    "code/e53_literal_unit_ring.json",
+    "code/e53_higher_maps.out",
+    "code/e53_higher_maps.json"
+  ],
+  "expected_complete_binary_outputs": [
+    "code/e53_higher_local.bin",
+    "code/e53_higher_genus.bin",
+    "code/e53_upper_witness_verify.bin"
+  ],
+  "python_dependencies": [
+    "sympy"
+  ],
+  "PARI_version_used": "2.19.0",
+  "serialization": "Integer exports assert integrality. Rational matrices use exact strings and decode equality. Complete PARI GEN objects are compared by ===, with no component exclusions; raw serialization headers may differ.",
+  "optional_discovery_reconstruction": "The candidate/root-search GP programs retain their actual inputs, outputs and checkpoint stream. They are not required for the minimal theorem replay, which checks every literal witness directly."
+}

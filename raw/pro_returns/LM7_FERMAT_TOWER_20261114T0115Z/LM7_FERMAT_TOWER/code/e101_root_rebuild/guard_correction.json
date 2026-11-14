@@ -1,0 +1,11 @@
+{
+  "issue": "The first comparison guard rejected PARI stack-allocation warnings despite all five complete-object equality checks succeeding.",
+  "mathematical_program_or_output_changed": false,
+  "all_five_rebuild_stages_completed_before_guard": true,
+  "before_sha256": "e79124fdcaaed2fbe55c2d828015ef0548a7babbf38ad63896f2a937bc87c8fb",
+  "after_sha256": "0a8fc64b44507504412adab30aa1b1c79955f6d41a0ff6372a806f06df822f45",
+  "retained_failed_driver": "first_guard.py",
+  "retained_failed_stdout": "first_guard.out",
+  "resume_scope": "Revalidate every copied source/input and complete output, rerun the same complete PARI object comparator, then write the audit record.",
+  "unified_diff": "--- first guard\n+++ exact warning-aware guard\n@@ -63,7 +63,10 @@\n     r = subprocess.run([str(GP), '-q', str(gp_source)], cwd=HERE,\n                        stdout=out, stderr=subprocess.STDOUT, check=False)\n text = (HERE / 'compare_bins.out').read_text()\n-assert r.returncode == 0 and '***' not in text and text.count('COMPLETE_OBJECT_EQUAL 1') == 5, text\n+warnings = [line.strip() for line in text.splitlines() if '***' in line]\n+assert warnings == ['***   Warning: new stack size = 256000000 (244.141 Mbytes).',\n+                    '***   Warning: new maximum stack size = 2000003072 (1907.352 Mbytes).'], warnings\n+assert r.returncode == 0 and text.count('COMPLETE_OBJECT_EQUAL 1') == 5, text\n binary = [{'file': p.name, 'source_sha256': sha(SOURCE / 'code' / p.name),\n            'fresh_sha256': sha(p), 'complete_PARI_object_equality': True,\n            'excluded_components': []} for p in bins]\n"
+}

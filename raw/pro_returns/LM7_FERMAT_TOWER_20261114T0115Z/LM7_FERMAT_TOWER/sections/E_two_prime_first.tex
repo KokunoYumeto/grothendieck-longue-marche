@@ -1,0 +1,418 @@
+\subsection{Mixed first coordinates at three and an inert prime}
+
+\begin{statement}{E.55}{Proved}{A free-product arithmetic presentation and every mixed first-coordinate fiber}
+Let $\ell$ be a rational prime congruent to $2$ or $5$ modulo
+$9$, and put $q=\ell^2$. In particular $\ell=2$ is allowed.
+Retain the actual based arithmetic quotient $H$ of E.46.
+For $a\in\mathbb Z_3\setminus\{0\}$ and $b\in\mathbb Z_3$,
+fix the first Kummer class
+\[
+ [A]=[3a\kappa_3(\ell)+3b\kappa_3(3)],\qquad
+ A_0=3a=3^s\epsilon,\quad s=v_3(3a),\quad
+ \epsilon\in\mathbb Z_3^\times,\quad B_0=3b.
+ \tag{E55.1}
+\]
+For a rational prime $p\notin\{\ell,3\}$, set $h_p=v_3(p-1)$.
+Choose integer representatives $a_p,b_p$ of $a,b$ modulo
+$3^{\max(h_p-1,0)}$, and define
+\[
+ \mathscr P_{a,b}^{\ell}=
+ \left\{p\notin\{\ell,3\}:
+ \left(\ell^{3a_p}3^{3b_p}\right)^{(p-1)/3^{h_p}}
+                         \equiv1\pmod p\right\}.
+ \tag{E55.2}
+\]
+This condition is independent of the representatives. Write
+$\mathcal R(\mathscr P)$ for the restricted three-adic product
+defined in (E49.2). After the explicit arithmetic choices below,
+the complete global section fiber of $H$ over $[A]$ has additive
+topological coordinates
+\[
+ \boxed{\quad
+ \mathbb Z_3^2\times\mathcal R(\mathscr P_{a,b}^{\ell})
+                    \times\mathbb Z_3^s\times\mathbb Z_3[[Z]].
+ \quad}                                                     \tag{E55.3}
+\]
+Writing the coordinates as
+$(\beta_\ell,\beta_3,(\beta_p),(z_d)_{d=1}^s,f)$,
+the scaled toric map is exactly
+\[
+ \left(a\kappa_3(\ell)+b\kappa_3(3),\quad
+ \beta_\ell\kappa_3(\ell)+\beta_3\kappa_3(3)
+                +\sum_{p\in\mathscr P_{a,b}^{\ell}}
+                                      \beta_p\kappa_3(p)\right).
+ \tag{E55.4}
+\]
+Every fiber over an allowed second coordinate is therefore
+$\mathbb Z_3^s\times\mathbb Z_3[[Z]]$, with the displayed
+integral coordinate maps. The classes with $a=0$ are those
+computed in E.47 and E.51. Thus these statements together
+compute every first class supported on $\{\ell,3\}$.
+
+The arithmetic input is an actual continuous pro-three
+isomorphism. With $K=\mathbb Q(\zeta_3)$ and
+$S=\{\text{primes of }K\text{ over }\ell,3\}$, there are
+generators $t,\sigma,\rho$ for which
+\[
+ G_{K,S}^{(3)}\simeq
+ \langle t,\sigma\mid\sigma t\sigma^{-1}=t^q\rangle_{\!3}
+                  \mathop{\ast}_{3}\langle\rho\rangle,
+ \qquad \langle\rho\rangle\simeq\mathbb Z_3.                 \tag{E55.5}
+\]
+Here $t$ is actual tame inertia, and $\sigma$ is actual
+arithmetic Frobenius at the unique $K$-prime over $\ell$.
+In the relative pro-three quotient over
+$\operatorname{Gal}(K/\mathbb Q)=\langle c\rangle$ one has
+\[
+ \begin{array}{c|ccc}
+       &t&\sigma&\rho\\\hline
+ \chi_3&1&q&1\\
+ \kappa_3(\ell)&1&0&0\\
+ \kappa_3(3)&0&0&1\\
+ c(\,\cdot\,)c&t^{-1}&\sigma&\rho^{-1}.
+ \end{array}                                                \tag{E55.6}
+\]
+The projection from the full relative arithmetic group onto
+this group has a continuous $c$-equivariant section retaining
+the actual decomposition group at $\ell$.
+
+For the part unramified outside $\{\ell,3\}$, all second
+cocycles have unique representatives with $v(c)=0$ and
+\[
+ \begin{split}
+ u=v(t)&=T^{A_0/2}\left(3\beta_\ell+
+            \sum_{d=1}^s z_d\bigl(Q_d(T)-\varphi(3^d)\bigr)\right),\\
+ Q_d(T)&=\sum_{\substack{-(3^d-1)/2\le j\le(3^d-1)/2\\3\nmid j}}
+                     T^{\epsilon3^{s-d}j},\\
+ v(\sigma)&=
+ \frac{q\,u(T^q)-(1+T^{A_0}+\cdots+T^{(q-1)A_0})u(T)}
+                                      {T^{qA_0}-1},\\
+ v(\rho)&=T^{B_0/2}\bigl(3\beta_3+Vf(V)\bigr),
+                    \qquad V=T+T^{-1}-2.
+ \end{split}                                                \tag{E55.7}
+\]
+The quotient in this formula belongs to $\mathbb Z_3[[T-1]]$,
+is anti-invariant under inversion, and has augmentation zero.
+No division by a nonunit is left unspecified.
+The proof constructs the extra global classes by actual
+homomorphisms on the arithmetic inertia kernel and gives their
+precise toric normalization.
+
+The program \texttt{e\_two\_prime\_first.py} verifies the
+coordinate equations and integral divisions, recovers arbitrary
+tested representatives from cyclic group rings, and checks the
+residue criterion by four independent finite descriptions.
+
+\emph{Manuscript: \S51.16, folios733v--736v, scans172--178,
+(371)--(379), Part E(c),(d) and the fourth exactness follow-up.}
+\end{statement}
+\begin{proof}
+\emph{The actual arithmetic generators.}
+All groups in this paragraph are relative pro-three Galois
+groups over $K$, together with the indicated order-two action.
+The local group at $\ell$ has tame inertia $\mathbb Z_3(1)$
+and unramified quotient $\mathbb Z_3\times C_2$ over
+$\mathbb Q_\ell$. Its injection into the full relative global
+group follows from the inertia injection in E.39 and the
+injective unramified cyclotomic character. Write its Frobenius
+as $F$. The order-two component $d$ of its procyclic unramified
+subgroup acts on inertia by inversion. The element
+$\sigma=F^2$ commutes with $d$ and acts on inertia by $q$.
+Choose the Frobenius complement to fix compatible roots of the
+uniformizer $\ell$. Cubing is an automorphism of
+$\mathbb Z_\ell^\times$: its residue group has order
+$\ell-1$ prime to three, and its principal units are pro-$\ell$.
+Consequently the compatible roots of $3$ are in $\mathbb Q_\ell$.
+With these root choices the two Kummer coordinates vanish on
+$d$ and $\sigma$.
+
+The finite Schur--Zassenhaus conjugacy theorem, followed by
+compact inverse limits, conjugates the image of a complex
+conjugation to $d$. We use this conjugate and denote it by $c$.
+Choose the compatible roots of positive rational primes fixed
+by this $c$. The roots of $\ell$ and $3$ just chosen are such
+roots. This is a permitted change of representatives of the
+same rational Kummer classes. More explicitly, replacing roots
+by $\zeta_{3^n}^{e_i}$ times the old roots changes their Kummer
+cocycles by $(\chi_3-1)e_i$. For (E55.1) the change is
+$(\chi_3-1)3(ae_\ell+be_3)$; conjugation by the element
+$(-3(ae_\ell+be_3),0)\in H$ effects exactly this change of first
+cocycle, using the multiplication law of E.46. Thus the based
+section fibers are transported by an explicit geometric
+conjugation. The coefficient involution after normalization is
+still $C(f)=-f(T^{-1})$.
+
+Put $P=G_{K,\{3\}}^{(3)}$. E.34 and E.37 prove that $P$ is
+free pro-three of rank two. The characters given by the
+cyclotomic character modulo nine and by $\kappa_3(3)$ modulo
+three are independent on its Frattini quotient. Since
+$v_3(q-1)=1$, the image of $\sigma$ is primitive in that
+quotient, has nonzero first coordinate and zero second
+coordinate. Choose an element $\gamma$ of the full group whose
+image has second coordinate a unit. Multiply it by
+$t^{-\kappa_3(\ell)(\gamma)}$ to obtain $\gamma_0$ with
+$\kappa_3(\ell)(\gamma_0)=0$. The exact element
+\[
+ r=\gamma_0c\gamma_0^{-1}c
+ \quad\text{satisfies}\quad
+ crc=r^{-1},\quad\chi_3(r)=1,\quad
+ \kappa_3(\ell)(r)=0,\quad
+ \kappa_3(3)(r)=2\kappa_3(3)(\gamma_0).
+ \tag{E55.8}
+\]
+Raise $r$ to the inverse of the last, unit, coordinate to
+obtain $\rho$. Its image and $\sigma$ are a free basis of $P$:
+their Frattini images form a basis, and the resulting
+surjective endomorphism of a free pro-three group of finite
+rank is an automorphism. This proves all the Kummer and
+involution identities in (E55.6) on actual arithmetic elements.
+
+\emph{The free-product comparison and its section.}
+Apply the opened arithmetic Riemann-existence theorem
+\cite[Theorem2.4]{E_WingbergRiemann} to $\{3\}\subset S$.
+Its hypotheses are exactly those checked in E.39: the base
+has the $K(\pi,1)$ property, and the cyclotomic tower gives
+nontrivial unramified completion at $\ell$. Its kernel is the
+continuous free pro-three product of the inertia groups over
+the coset space $P/\langle\sigma\rangle$.
+The actual decomposition group
+$D=\langle t,\sigma\mid\sigma t\sigma^{-1}=t^q\rangle_3$
+and $\rho$ therefore induce a continuous surjection
+$D\ast_3\langle\rho\rangle\to G_{K,S}^{(3)}$ over $P$.
+
+Its map on kernels is an isomorphism. One can see the kernel
+of the source directly in its pro-three coset tree: the
+vertices are the cosets of $D$ and $\langle\rho\rangle$,
+and the edges are the group itself. Quotienting by that kernel
+gives the coset tree for
+$P=\langle\sigma\rangle\ast_3\langle\rho\rangle$.
+The vertex stabilizers over the first kind of vertex are
+exactly the conjugate copies of $\langle t\rangle$, indexed
+by $P/\langle\sigma\rangle$; the other vertex and edge
+stabilizers are trivial. The tree's universal property
+identifies its kernel with their continuous free product.
+The map in question sends each such factor isomorphically
+to the corresponding actual inertia factor of Wingberg's
+isomorphism. The free-product universal property gives its
+inverse on the kernel, and the map on the quotient $P$ is
+the identity. This proves (E55.5), including injectivity.
+
+We made the choices of $D$ and $\rho$ in the full arithmetic
+group. Its same elements now define a map in the reverse
+direction from (E55.5). Projection back fixes all three
+generators, so this map is a continuous section. Equation
+(E55.6) makes it $c$-equivariant. Applying the same opened
+theorem to $S$ and the set of all primes identifies the kernel
+of this projection with the continuous free inertia product
+over primes outside $S$. The $K(\pi,1)$ property for $S$
+is also a conclusion of that theorem for $\{3\}\subset S$.
+These statements specify the splitting and its exact
+arithmetic domain; they do not discard the correction words
+of E.39 for a different splitting.
+
+\emph{Solving every unramified cocycle equation.}
+For the fixed first cocycle, the coefficient module is
+$J=(3,T-1)\mathbb Z_3[[T-1]]$ with operators
+\[
+ t(f)=T^{A_0}f,\quad
+ \sigma(f)=qf(T^q),\quad
+ \rho(f)=T^{B_0}f,\quad C(f)=-f(T^{-1}).                   \tag{E55.9}
+\]
+Normalize $v(c)=0$ by the order-two averaging argument.
+Writing its other values as $(u,v_0,w)$, the complete
+relations of (E55.5)--(E55.6) give exactly
+\[
+ \begin{split}
+ u(T^{-1})&=T^{-A_0}u(T),\\
+ v_0(T^{-1})&=-v_0(T),\\
+ w(T^{-1})&=T^{-B_0}w(T),\\
+ q u(T^q)&-(1+T^{A_0}+\cdots+T^{(q-1)A_0})u(T)
+                                      =(T^{qA_0}-1)v_0(T).
+ \end{split}                                                \tag{E55.10}
+\]
+The remaining geometric conjugations are precisely
+$m\in J$ with $C(m)=m$, that is, anti-invariant series.
+They send
+\[
+ (u,v_0,w)\longmapsto
+ (u-(T^{A_0}-1)m,\ v_0-(q\psi_q-1)m,
+                         \ w-(T^{B_0}-1)m),
+ \quad\psi_q(f)=f(T^q).                                    \tag{E55.11}
+\]
+The first geometric coordinate must be zero here: preserving
+the normalized first value at $c$ would otherwise change it
+by twice that coordinate. Thus no conjugations have been lost.
+
+Set $M=3^s$. The substitution $T\mapsto T^\epsilon$ is an
+integral automorphism, and
+\[
+ (T^{A_0}-1)=(T^M-1),\qquad
+ (T^{qA_0}-1)=(T^{A_0}-1)                                  \tag{E55.12}
+\]
+as ideals in the completed ring. The first equality follows
+by the unit-exponent substitution, or by factoring its ratio
+as a power series with constant term $\epsilon$ in $T^M-1$;
+the ratio in the second equality has constant term $q$.
+The quotient is $\mathbb Z_3[C_M]$. Reducing (E55.10) in it
+shows that $\bar u$ is invariant under both inversion and
+position multiplication by $q$. Since $v_3(q-1)=1$, the
+closed subgroup generated by $q$ is $1+3\mathbb Z_3$;
+together with $-1$ it acts transitively on positions of
+each fixed three-power order. There are precisely $s+1$
+orbits: zero and the orders $3,\ldots,3^s$.
+
+The augmentation condition on $\bar u$ is exactly that its
+total mass is in $3\mathbb Z_3$. This lattice has the basis
+given by the images of $3$ and
+$Q_d-\varphi(3^d)$ for $1\le d\le s$.
+The factor $T^{A_0/2}$ is one in this quotient, so it
+supplies a symmetric lift about $A_0/2$ without changing
+any of these finite coordinates. This gives precisely
+the first line of (E55.7).
+
+For any such lift the numerator in its $\sigma$-value
+vanishes modulo $T^{A_0}-1$, by these finite invariants.
+Both ideal equalities in (E55.12) prove integral divisibility
+by the displayed denominator. Inversion of its numerator
+multiplies it by $T^{-qA_0}$; inversion of its denominator
+multiplies it by $-T^{-qA_0}$. The quotient is therefore
+anti-invariant, has augmentation zero, and lies in $J$.
+This also proves all of (E55.10) for the proposed values.
+
+Conversely take any solution of (E55.10). Its finite
+coordinates determine a unique proposed $u_0$ with the
+same image in $\mathbb Z_3[C_M]$. There is a unique
+integral series
+$m=(u-u_0)/(T^{A_0}-1)$. Inverting the numerator and
+denominator shows $m(T^{-1})=-m(T)$, so $m\in J$ is an
+allowed conjugation. It sends $u$ to $u_0$. The last
+equation in (E55.10), in a domain, then fixes $v_0$
+uniquely. No further nonzero conjugation fixes $u_0$.
+Finally $T^{-B_0/2}w$ is invariant under inversion.
+The change of coordinate $W=(T-T^{-1})/2$ identifies the
+completed ring with $\mathbb Z_3[[W]]$, with inversion
+$W\mapsto-W$. Its even subring is also
+$\mathbb Z_3[[V]]$, since
+$V=2(\sqrt{1+W^2}-1)$ has unit linear coefficient in $W^2$.
+The augmentation restriction on $w$ gives exactly
+$3\beta_3+Vf(V)$. This proves existence and uniqueness
+of all coordinates in (E55.7).
+The division maps used here are continuous on closed
+principal ideals, by compactness and the domain property.
+All remaining maps are continuous substitutions or finite
+coefficient extractions. Thus this normal form is a
+homeomorphism, including its stated integral topology.
+
+\emph{All other primes and the exact global splitting.}
+Let $L$ be the arithmetic kernel of the split projection
+onto (E55.5). It acts trivially on $J_A$. Restriction to
+$L$ of a second cocycle is therefore an additive continuous
+homomorphism $\lambda:L\to J_A$. The splitting gives the
+explicit reconstruction
+\[
+ v(l\,i(g))=\lambda(l)+v_S(g),\qquad
+ \lambda(i(g)li(g)^{-1})=g\lambda(l),                         \tag{E55.13}
+\]
+where $i$ is the section just proved. This is a bijection
+between actual cocycles, with $c$-equivariance imposed.
+On the abelianized free inertia product, a different
+prolongation of the same prime of $K_S(3)$ only conjugates
+a factor by an element of $L$;
+its image under $\lambda$ is unchanged. Consequently its
+equivariant homomorphisms are exactly the compatible local
+inertia values, with no unevaluated nonabelian correction.
+
+At a rational prime $p\notin\{\ell,3\}$ the Tate-untwisted
+action on positions is the affine map
+$x\mapsto A(F_p)+px$. E.49 and E.51 prove directly that
+its invariant integral measures in $J_A(-1)$ are zero
+without an integral fixed point, and are precisely
+$3\mathbb Z_3\delta_{x_p}$ with one. The fixed-point
+condition is divisibility of the local Kummer class of
+$\ell^{3a}3^{3b}$ by every power of three. Principal units
+at $p$ are uniquely three-divisible; in its residue group
+the condition says that the three-primary component is
+one. Computing that component gives exactly (E55.2).
+The representatives there are sufficient because changing
+an exponent by $3^{h_p-1}$ changes its triple by a multiple
+of $3^{h_p}$. In particular every $p$ with $h_p\le1$ is
+allowed.
+
+Normalize tame inertia at an allowed $p$ by
+$\kappa_3(p)(t_p)=1$. Assign it
+$\lambda_p(t_p)=3\delta_{x_p}$ and assign every other
+base prime zero. Extend to all prolongations by the
+equivariance in (E55.13), and then by the free-product
+universal property. The fixed-point condition proves
+independence of the chosen coset representative. At a
+split rational prime the conjugate factor is prescribed
+by $c$; at an inert prime the local rational Frobenius
+condition already gives that descent. Thus $\lambda_p$
+is an actual rational equivariant homomorphism.
+Continuity of a family of such maps is exactly
+$\beta_p\to0$ three-adically: augmentation forces this
+condition at every finite coefficient exponent, and the
+same condition makes the family uniformly zero at all
+but finitely many primes in every finite quotient of $J$.
+This is the continuous-bundle topology of E.39.
+
+There is a small toric normalization to record. The
+cocycle reconstructed with $v_S=0$ from $\lambda_p$
+has scaled second coordinate
+\[
+             \kappa_3(p)-\kappa_3(p)(\rho)\kappa_3(3).
+ \tag{E55.14}
+\]
+Indeed it has valuation one at $p$, zero at every other
+prime except possibly three, and vanishes on $\rho$.
+At $\ell$ its whole decomposition restriction is zero.
+Also $\kappa_3(p)(\sigma)=0$: the chosen $c$ fixes
+$\sigma$, whereas its Kummer action is negation and its
+value at $c$ is zero. The rational completed Kummer
+coordinates of E.16 now prove (E55.14), including the
+coefficient at three. Add the unramified cocycle (E55.7)
+with $\beta_3=\kappa_3(p)(\rho)$ and every other coordinate
+zero. Denote the result by $v_p$. It has scaled second
+coordinate exactly $\kappa_3(p)$.
+
+Every full global cocycle has unique residues
+$3\beta_p\delta_{x_p}$. Subtract the convergent sum
+$\sum_p\beta_p v_p$; (E55.13) shows that the remainder
+is unramified outside $\{\ell,3\}$, and (E55.7) gives its
+unique remaining coordinates. The terms used to normalize
+$v_p$ have coefficients in $\mathbb Z_3$, so the same
+restrictedness proves convergence of that normalization
+as well. All constructions and their inverses are
+continuous at every finite coefficient and positional
+level. This proves (E55.3) and (E55.4) as actual topological
+group coordinates. It also proves three-torsion-freeness.
+
+Finally a global section of $H$ with the specified first
+class is exactly this twisted additive cocycle modulo
+the conjugations used above, by the multiplication law
+of E.46. Its finite images over $K$ are three-groups,
+so passing to the relative pro-three arithmetic quotient
+preserves all these sections and all their conjugacies.
+The maps from the intrinsic Fermat groups to $H$ retain
+their previously computed kernels. The classification
+here applies to this specified target and first family.
+
+For $\ell=2$ and $b=0$, the comparison with the norm
+coordinates of E.52 is explicit through their common
+section cocycle. Apply the finite Kummer--Shapiro maps
+of E.46 to a norm system, evaluate its cocycle on
+$t,\sigma,\rho,c$, and normalize its value at $c$.
+Its image in $\mathbb Z_3[C_{3^s}]$ supplies the
+coefficients of $3$ and $Q_d-\varphi(3^d)$; division
+by $T^{A_0}-1$ then gives the unique conjugator in
+(E55.11), and the remaining $\rho$-value gives $f$.
+For the inverse, reconstruct that actual cocycle by
+(E55.7) and (E55.13), apply the inverse Shapiro maps,
+and extract the valuations and successive unit
+coordinates by (E52.10)--(E52.13). Both composites
+are the identity because each of those component
+maps was proved bijective. This specifies the
+arithmetic homeomorphism between the two displayed
+parameter groups, including their finite coordinate
+blocks and their norm transitions.
+\end{proof}

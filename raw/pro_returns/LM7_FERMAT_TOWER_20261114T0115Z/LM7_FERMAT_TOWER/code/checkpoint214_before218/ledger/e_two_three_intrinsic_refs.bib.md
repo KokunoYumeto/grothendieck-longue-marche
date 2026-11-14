@@ -1,0 +1,4 @@
+% verified: E99 reuses E_WingbergRiemann from e_riemann_refs.bib.
+% The original author PDF was reopened, including Lemma1.1 and Theorem2.4
+% with their proofs. All remaining inputs are the exact internal results
+% E34, E37, E55, E61, E66, E78 and E95; no duplicate key is introduced.
