@@ -1,0 +1,661 @@
+\section{Fermat: the quotient in the manuscript and the Selmer calculation}
+\label{sec:E}
+We use the homogeneous plus convention
+\[
+ X_n:\ X^n+Y^n+Z^n=0,\qquad U_n=X_n\setminus\{XYZ=0\}.
+\]
+The morphism $[X:Y:Z]\mapsto[X^{n/m}:Y^{n/m}:Z^{n/m}]$
+is a finite étale morphism $U_n\to U_m$ for $m\mid n$.
+Its extension to the compactifications is ramified only above the
+boundary. For odd $n$, $[X:Y:Z]\mapsto[X:Y:-Z]$ is the
+$\mathbb Q$-isomorphism to $X^n+Y^n=Z^n$. For even $n$,
+the same formula has target $X^n+Y^n+Z^n=0$ again; the
+isomorphism to the minus convention requires a scalar
+$\alpha$ with $\alpha^n=-1$ and the map $Z\mapsto\alpha Z$.
+We keep these specified base fields throughout.
+
+\subsection{E(a): extensions (371)--(379)}
+
+\begin{proposition}[E.1 --- Proved: the three comparison maps]
+\label{E-three-maps}
+Put $B=\mathbb P^1_{\mathbb Q}\setminus\{0,1,\infty\}$,
+$F=\pi_1(B_{\overline{\mathbb Q}})$, and
+$N_n=\pi_1(U_{n,\overline{\mathbb Q}})$, with compatible
+geometric base points for the cover
+$t=-X^n/Z^n$. Then
+\[
+ N_n=\ker\bigl(F\longrightarrow(\mathbb Z/n)^2\bigr),
+ \qquad F'=\overline{[F,F]}\subset N_n.
+\]
+The extensions (371), (372), and the top row of (373), in
+\S51.16, folios 733v--735, scans 172--175, are respectively
+\begin{align*}
+ 1&\longrightarrow N_n\longrightarrow\pi_1(U_n)
+                 \longrightarrow G_{\mathbb Q}\longrightarrow1,\\
+ 1&\longrightarrow N_n\longrightarrow\pi_1([U_n/S_3])
+                 \longrightarrow G_{\mathbb Q}\times S_3\longrightarrow1,\\
+ 1&\longrightarrow N_n/F'\longrightarrow\pi_1([U_n/S_3])/F'
+                 \longrightarrow G_{\mathbb Q}\times S_3\longrightarrow1.
+\end{align*}
+Here $S_3$ permutes homogeneous coordinates, and the second
+quotient is the fundamental group of $BS_3\times\operatorname{Spec}\mathbb Q$.
+The geometric kernel in the last row is
+\[
+ N_n/F'\simeq n\widehat{\mathbb Z}(1)^2.
+\]
+The intrinsic geometric abelianization and metabelian quotient
+are connected to this kernel by the continuous epimorphisms
+\[
+ N_n/N_n''\longrightarrow N_n/N_n'\longrightarrow N_n/F'.
+\]
+The middle group has rank $n^2+1$ as a
+$\widehat{\mathbb Z}$-module. Thus the precise quotient in
+(373) is the rank-two toric quotient. This corrects the
+identification of that row in Lead 4.
+\end{proposition}
+\begin{proof}
+Over $\overline{\mathbb Q}$ the cover adjoins $n$th roots of
+$t$ and $1-t$, up to the fixed constants $-1$.
+Its deck group is $(\mathbb Z/n)^2$ and its monodromy is
+the reduction of $F^{\mathrm{ab}}=\widehat{\mathbb Z}(1)^2$.
+This proves the kernel formula and the last kernel calculation.
+Riemann--Hurwitz for a degree $n^2$ cover with three sets of
+$n$ boundary points gives
+\[
+ 2-2g(X_n)-3n=-n^2,\qquad
+ g(X_n)=\frac{(n-1)(n-2)}2.
+\]
+The punctured surface is free of rank
+$2g(X_n)+3n-1=n^2+1$. Finite étale covering theory gives
+the first row. Applying it to the $S_3$-torsor
+$U_n\to[U_n/S_3]$ and then to the structure map to
+$BS_3$ gives the second row; it records the permutation
+as well as the arithmetic action. The subgroup $F'$
+is preserved by both actions, so quotienting gives
+the third row. Finally $N_n''\subset N_n'\subset F'$
+proves the two displayed epimorphisms. They state
+exactly which information is removed, without identifying
+their kernels. This checks LM7 E.13 and E.16 at the
+steps used here.
+\end{proof}
+
+\begin{proposition}[E.2 --- Known, with checked reduction: sections of the minimum quotient]
+\label{E-toric}
+Let $T=\mathbb G_m^3/\mathbb G_m$, with coordinates
+$u=X/Z$, $v=Y/Z$. The pushout of (371) by
+$N_n\to N_n/F'$ is isomorphic, as an extension over
+$G_{\mathbb Q}$, to $\pi_1(T)\to G_{\mathbb Q}$.
+Its section classes form
+\[
+ H^1(\mathbb Q,\widehat{\mathbb Z}(1)^2)
+       =(\widehat{\mathbb Q^\times})^2,
+\]
+where
+\[
+ \widehat{\mathbb Q^\times}
+ =\{\pm1\}\times
+ \left\{(a_p)_p\in\prod_p\widehat{\mathbb Z}:
+ \ \text{for every }m,\ a_p\in m\widehat{\mathbb Z}
+       \text{ for all but finitely many }p\right\}.
+\]
+The map to the base tripod's toric quotient sends a class
+$(a,b)$ to $(-a^n,-b^n)$ in multiplicative Kummer notation.
+For each $n$ the restriction to actual rational points of
+$U_n$ is injective. The image contains formal section classes
+independently of the equation defining $U_n$.
+\end{proposition}
+\begin{proof}
+The inclusion $U_n\hookrightarrow T$ induces on geometric
+groups the epimorphism sending small loops to the valuations
+of $u,v$. After the identification of $N_n/F'$ with
+$n\widehat{\mathbb Z}^2$, division by $n$ identifies this
+map with the identity of $\widehat{\mathbb Z}^2$.
+Consequently its induced morphism of quotient extensions
+is an isomorphism: it is the identity on the arithmetic
+quotient and an isomorphism on kernels. The identity
+of $T(\mathbb Q)$ splits the target extension.
+Kummer theory gives
+$H^1(\mathbb Q,\mu_m)=\mathbb Q^\times/\mathbb Q^{\times m}$;
+the finite groups $H^0(\mathbb Q,\mu_m)$ have the
+Mittag--Leffler property, so the inverse limit has no
+extra $\varprojlim^1$ term. Prime factorization gives the
+displayed restricted product, since every class modulo
+$m$ has finite support in its valuations.
+The coordinate morphism to the base torus is
+$(u,v)\mapsto(-u^n,-v^n)$, which proves the arithmetic
+translation as well as the multiplication on kernels.
+The map $\mathbb Q^\times\to\widehat{\mathbb Q^\times}$
+is injective by valuations and sign; hence the two
+coordinates recover every rational point. This is the
+complete calculation of (377)--(379), scans 176--178.
+It independently checks the proof of LM7 E.16.
+\end{proof}
+
+\begin{proposition}[E.3 --- Proved: equivariant splitting and its ambiguity]
+\label{E-equivariant}
+Write $M=\widehat{\mathbb Z}^{\,3}/\widehat{\mathbb Z}(1,1,1)$,
+with the permutation action of $S_3$. The arithmetic action
+on its Tate twist is scalar $\chi$.
+The extension in (373) has a splitting over
+$G_{\mathbb Q}\times S_3$, and any two such splittings
+are conjugate by a unique element of its kernel.
+Compatible choices identify its level-$n$ kernels with $nM(1)$
+as in (375)--(376).
+\end{proposition}
+\begin{proof}
+We give the cohomological verification implicit in scan 175.
+The torus $T$ has identity fixed by $S_3$. Its identity
+section, together with the action of $S_3$, is a section
+of $\pi_1([T/S_3])\to G_{\mathbb Q}\times S_3$.
+The equivariant inclusion $U_n\to T$ induces an isomorphism
+from the quotient of (372) to this extension, after
+identifying $nM(1)$ with $M(1)$ by division by $n$.
+This proves existence at every level.
+
+For uniqueness, $M^{S_3}=0$ and $H^1(S_3,M)=0$.
+Indeed in
+$0\to\widehat{\mathbb Z}\to\widehat{\mathbb Z}^{\,3}
+\to M\to0$, invariants give the isomorphism between
+the two diagonal copies of $\widehat{\mathbb Z}$;
+$H^1$ of either permutation module is zero; and the
+restriction
+$H^2(S_3,\widehat{\mathbb Z})\to
+ H^2(S_2,\widehat{\mathbb Z})$
+is an isomorphism $\mathbb Z/2\to\mathbb Z/2$.
+The latter assertion follows from
+$H^2(G,\widehat{\mathbb Z})
+=\operatorname{Hom}(G,\mathbb Q/\mathbb Z)$
+for a finite group $G$, with the finite primary
+components understood. The inflation--restriction
+sequence now gives
+$H^1(G_{\mathbb Q}\times S_3,M(1))=0$.
+The invariant module of the product group is zero,
+so the conjugating element is unique.
+The same calculation holds for $nM(1)$.
+For a divisibility tower the unique conjugacies commute
+with transition maps. Equivalently the coordinate maps
+between the tori are $n/m$ power maps and preserve the
+identity. This supplies compatible splittings and
+proves exactly the ambiguity asserted on scan 175.
+\end{proof}
+
+\begin{proposition}[E.4 --- Proved: the implication proposed on scan 173]
+\label{E-fermat-implication}
+For odd $n\geq3$ the rational boundary of $X_n$ consists
+of $[0:1:-1]$, $[1:0:-1]$, and $[1:-1:0]$.
+Their full cuspidal packets are disjoint from all point
+sections. Therefore a proof that all sections of (371)
+belong to these packets proves $U_n(\mathbb Q)=\varnothing$.
+No surjectivity assertion for point sections is needed
+for that implication.
+\end{proposition}
+\begin{proof}
+A rational $n$th root of $-1$ is $-1$ for odd $n$;
+setting one coordinate equal to zero gives exactly
+the three displayed points. A rational point of $U_n$
+always induces a section by functoriality. Stix's
+Theorem 14, with the cusp decomposition embeddings,
+separates this section from every packet; the
+hyperbolicity condition holds already for $n=1$.
+Thus a point would contradict the stated description
+of the full section set. This is a proof of the
+logical implication in \S51.16, folio 734, scan 173,
+not an invocation of the section conjecture.
+\end{proof}
+
+\subsection{E(b): intrinsic quotients and the remaining tower problem}
+
+\begin{proposition}[E.5 --- Known, with checked proof: the even plus curves]
+\label{E-even}
+For every positive even $n$, the intrinsic geometrically
+abelianized extension of $U_n/\mathbb Q$ has no section.
+The same holds for every quotient mapping onto its
+geometric pro-$2$ abelianization, including the full
+metabelian and full profinite extensions. The first
+intrinsic nilpotent obstruction is at class one.
+More precisely, for complex conjugation $c$,
+\[
+ H_1(U_n(\mathbb C),\mathbb Z_2)
+ \simeq\mathbb Z_2\oplus
+       \mathbb Z_2[C_2]^{\,n^2/2}
+ \quad\text{as a }\mathbb Z_2[C_2]\text{-module},
+\]
+and the real extension represents the nonzero element
+of $H^2(C_2,H_1)=\mathbb Z/2$.
+\end{proposition}
+\begin{proof}
+We checked LM7 E.18 and E.25 and retain their actual
+Schreier calculation. Positivity gives $X_n(\mathbb R)=\varnothing$.
+The free antiholomorphic action on the punctured complex
+surface has a nonorientable punctured quotient of Euler
+characteristic $-n^2/2$. Its fundamental group $J$ is
+free of rank $1+n^2/2$. Its orientation kernel $N$
+has index two and rank $n^2+1$. Choose a free basis
+$t,a_1,\dots,a_{n^2/2}$ for which only $t$ maps
+nontrivially to $C_2$. Then
+\[
+ t^2,\quad a_i,\quad t a_i t^{-1}
+\]
+is a Schreier basis of $N$. Conjugation by $t$ fixes
+the first abelian generator and swaps each remaining
+pair. The square of the chosen lift of $c$ is the
+first generator. Replacing $t$ by $bt$ changes this
+square in the abelian kernel by $(1+c)[b]$.
+Its first coordinate is always $1+2b_0$, which cannot
+vanish in $\mathbb Z_2$. On a swapped pair the norm
+surjects onto the invariant diagonal, so only the
+first coordinate contributes to $H^2$.
+Equivariant Riemann existence identifies the completion
+of this finite-index extension with $\pi_1(U_{n,\mathbb R})$.
+Restriction of a rational section to $G_{\mathbb R}$
+and then projection to this module gives the contradiction.
+Our exact program checks the ranks for $n=2,4,6,8,10$;
+the Schreier calculation proves all even $n$.
+
+The toric pushout of Proposition~\ref{E-toric} sends
+this obstruction to zero: $c$ acts by $-1$ on the
+torsion-free toric module, whose invariants are zero.
+This explicitly relates the split extension (373)
+to the obstructed intrinsic abelian extension.
+\end{proof}
+
+\subsection{E(c): the missing exponents in the Selmer theorem}
+
+We call a section Selmer when at \emph{every} completion
+its class is point-induced or cuspidal. At a real
+place the point-induced class means the component
+class. This is Steklov's definition in \S3.3
+of~\cite{Steklov2026}; it includes $2$ and the
+coefficient prime. We first prove the Selmer result,
+which uses no local section conjecture.
+
+\begin{lemma}[E.6 --- Proved: finite support forces a global point or cusp]
+\label{E-finite-support}
+Let $U/\mathbb Q$ be a hyperbolic curve with smooth
+compactification $X$, and let $s$ be a Selmer section.
+Let $Z\subset X$ be a finite reduced subscheme.
+When all finite localizations of $s$ have underlying
+points in $Z(\mathbb Q_v)$, the section belongs to
+a point or cusp above an element of $Z(\mathbb Q)$.
+In particular, a nonconstant morphism
+$f:X\to W$ to a proper curve satisfying
+$W(\mathbb A_{\mathbb Q})_\bullet^{\mathrm{f-cov}}=W(\mathbb Q)$
+makes every Selmer section of $U$ point-induced or cuspidal.
+\end{lemma}
+\begin{proof}
+A neighbourhood of $s$ is a finite étale cover
+$U'\to U$ together with a lift of $s$.
+Every lifted section is Selmer. To see the latter
+directly, a point section in the subgroup corresponding
+to the cover fixes a point of the finite fibre,
+and so lifts to a rational point. For a cusp use the
+intersection of its decomposition group with that
+subgroup; its arithmetic quotient is surjective
+because it contains the local section, so the
+associated lifted cusp is rational.
+Write $X'$ for the smooth compactification. We may
+refine to genus at least one. Such refinements are
+cofinal: take a characteristic geometric cover of
+sufficiently large degree, spread it over a finite
+extension, and take its neighbourhood twist determined
+by the section. Riemann--Hurwitz, with boundary
+inertia indices made arbitrarily large, gives the
+required genus.
+
+The localizations determine an adelic point of $X'$
+surviving finite descent, by Harari--Stix,
+Theorem 2.1. At every finite place its component
+lies in the finite inverse image $Z'\subset X'$.
+Stoll's Theorem 8.2 gives a rational point of $Z'$.
+The system of these finite nonempty sets over all
+neighbourhoods has the finite intersection property:
+a common refinement maps to any finite collection
+of levels. Compactness supplies a compatible
+rational pro-point. Its stabilizer contains the
+section; over an interior point this is the point
+decomposition group, and over a boundary point it
+is the cuspidal decomposition group. This proves
+the first assertion.
+
+For the second, functoriality of finite descent
+sends the adelic localization to one point
+$w\in W(\mathbb Q)$. The finite fibre $f^{-1}(w)$
+is a suitable $Z$.
+We use only finite places in this last argument.
+This is the correction specified in Stoll's erratum
+to Proposition 8.5; replacing a real component by
+a point of the scheme-theoretic fibre would be
+unjustified.
+\end{proof}
+
+\begin{proposition}[E.7 --- Proved: full level two supplies level $4\ell$]
+\label{E-level-four}
+Let $Z_\ell\to B$ be the finite étale cover parametrizing
+a cyclic subgroup $C\subset E_\lambda[\ell]$ of the
+Legendre family, for an odd prime $\ell$. There is
+a nonconstant $\mathbb Q$-morphism
+\[
+ Z_\ell\longrightarrow Y_0(4\ell)
+\]
+whose extension to smooth compactifications is finite.
+Every component on which an arithmetic section lifts
+is geometrically connected over $\mathbb Q$.
+For $\ell\geq5$ its compactification has a
+nonconstant map to a positive-genus modular curve.
+\end{proposition}
+\begin{proof}
+The ordered points $P=(0,0)$ and $Q=(1,0)$ of order
+two are independent on $E=E_\lambda$.
+Let $\phi:E\to E'=E/\langle P\rangle$ be the quotient
+and let $\phi':E'\to E$ be its dual, so
+$\phi'\phi=[2]$ and $\phi\phi'=[2]$.
+Define
+\[
+ H_4=(\phi')^{-1}(\langle Q\rangle)\subset E'.
+\]
+It has order four. For a point $R$ with
+$\phi'(R)=Q$, we have $2R=\phi(Q)\ne0$,
+so $R$ has order four and generates $H_4$.
+Thus $H_4$ is cyclic, defined over the base, and
+$\phi(C)$ has order $\ell$. Their sum is a cyclic
+subgroup of order $4\ell$, giving the asserted
+moduli map. All constructions commute with
+base change; the finite étale subgroup scheme
+$C$ is the tautological one on $Z_\ell$.
+The function $j(E')$ is nonconstant: a fixed elliptic
+curve has only finitely many degree-two isogenous
+curves, whereas $j(E_\lambda)$ is nonconstant.
+Therefore the map of smooth projective curves
+is nonconstant and finite.
+
+For completeness, a connected arithmetic cover
+supporting a section onto $G_{\mathbb Q}$ has
+constant field $\mathbb Q$: otherwise its
+fundamental group's arithmetic image is the
+proper subgroup attached to the constant field.
+For $4\ell$ the modular index is $6(\ell+1)$,
+there are six cusps, and there are no elliptic
+points of orders two or three. Consequently
+\[
+ g(X_0(4\ell))=1+\frac{6(\ell+1)}{12}-\frac62
+             =\frac{\ell-3}{2}.
+\]
+At $\ell=5$ the target is $X_0(20)$ of genus one.
+The exact program checks these indices and genera
+at the first seven odd primes. The displayed
+formula proves the general assertion.
+\end{proof}
+
+\begin{lemma}[E.8 --- Known, with checked steps: the local residual representations]
+\label{E-local-representations}
+Let $\ell\geq5$ be prime and let $s$ be a Selmer
+section of $U_\ell/\mathbb Q$. Let
+$\bar\rho_s:G_{\mathbb Q}\to\mathrm{GL}_2(\mathbb F_\ell)$
+be obtained from the Legendre family.
+It is reducible. There is a quadratic twist whose
+semisimplification is $1\oplus\bar\chi_\ell$.
+The mod-two representation is trivial before
+and after that twist.
+\end{lemma}
+\begin{proof}
+We checked Steklov's Lemmas 5.4, 5.7, 5.11--5.12 and
+Propositions 5.5, 5.9--5.10, 5.13, including their
+uses at $2$ and $\ell$.
+Here are the arithmetic steps needed for the
+extension to $\ell=5$.
+For a local point write
+$a^\ell+b^\ell+1=0$ and $\lambda=-a^\ell$.
+The formula
+\[
+ j=2^8\frac{(\lambda^2-\lambda+1)^3}
+                {\lambda^2(\lambda-1)^2}
+\]
+gives $v_p(j)=8v_p(2)-2\ell|v_p(a)|$ when
+$v_p(a)\ne0$. When $v_p(a)=0$ and $\lambda\equiv1$
+use $1-\lambda=-b^\ell$ instead. At $2$ one of
+these cases has positive absolute valuation;
+$\ell\geq5$ makes $v_2(j)<0$. At odd $p$ there
+is either good reduction or potential multiplicative
+reduction with $\ell\mid v_p(j)$.
+After a local quadratic twist, the latter is a
+Tate curve. At $p\ne\ell$ its residual extension
+class is the Kummer class of $q$, so divisibility
+of $v_p(q)$ by $\ell$ makes it unramified.
+At $p=\ell$, the same divisibility puts $q$
+modulo $\ell$th powers in the unit subgroup.
+The residual representation is finite flat,
+hence has Serre weight two; good reduction has
+the same weight. At $2$ the untwisted Tate
+representation is tame, with conductor exponent
+at most two (the bound four used by Steklov
+also suffices).
+
+For a local cusp, the map to the $j$-line has
+ramification index divisible by $\ell$.
+The Tate parameter class is therefore divisible
+by $\ell$. Its residual representation is a
+quadratic twist of $1\oplus\bar\chi_\ell$.
+In particular the same local conditions hold,
+including at $2$ and $\ell$.
+
+Suppose $\bar\rho_s$ were irreducible.
+Its determinant is $\bar\chi_\ell$, so complex
+conjugation has distinct eigenvalues $1,-1$.
+Any invariant line over $\overline{\mathbb F}_\ell$
+would be one of those two lines, already defined
+over $\mathbb F_\ell$; hence irreducibility is
+absolute. The local quadratic characters on
+inertia patch to a global quadratic character:
+the abelian cyclotomic isomorphism
+$G_{\mathbb Q}^{\mathrm{ab}}\simeq
+ \prod_p\mathbb Z_p^\times$
+allows us to multiply their finitely many
+nontrivial inertia characters. The twisted
+representation has determinant $\bar\chi_\ell$,
+weight two, and level dividing $16$.
+The Khare--Wintenberger theorem then produces
+a weight-two cusp form of level dividing $16$.
+Each such $X_0(N)$ has genus zero, a contradiction.
+
+Thus the representation is reducible.
+At $\ell$, a good supersingular representation
+over $\mathbb Q_\ell$ has irreducible inertial
+action, so this case is excluded. The local
+semisimplifications are quadratic twists of
+$1\oplus\bar\chi_\ell$. Patch again and write
+the two global characters as $\omega$ and
+$\bar\chi_\ell\omega^{-1}$.
+They are unramified away from $\ell$, and one
+of them is unramified at $\ell$. A finite
+extension of $\mathbb Q$ unramified at all
+finite primes is trivial by Minkowski's
+discriminant theorem. Hence one character is
+$1$ and the other $\bar\chi_\ell$.
+Finally the three Legendre points of order
+two are rational, and a quadratic twist acts
+as $[-1]$, which is the identity on $E[2]$.
+\end{proof}
+
+\begin{theorem}[E.9 --- Proved: the Selmer theorem includes exponent five]
+\label{E-selmer-primes}
+For every prime $\ell\geq5$, every Selmer section
+of $U_\ell/\mathbb Q$ is cuspidal.
+\end{theorem}
+\begin{proof}
+The invariant line of Lemma~\ref{E-local-representations}
+lifts the pushed-forward section on $B$ to the
+cover $Z_\ell$ of Proposition~\ref{E-level-four}.
+The lift is Selmer by the finite-fibre argument
+in Lemma~\ref{E-finite-support}.
+Its compactification maps nonconstantly to
+$X_0(4\ell)$, whose positive genus and Stoll's
+Corollary 8.8 give
+\[
+ X_0(4\ell)(\mathbb A_{\mathbb Q})_\bullet^{\mathrm{f-cov}}
+        =X_0(4\ell)(\mathbb Q).
+\]
+Lemma~\ref{E-finite-support} therefore makes the
+lift, and hence the section on $B$, point-induced
+or cuspidal. A point-induced section on $B$
+lifts to a rational point of $U_\ell$ whenever
+its image is contained in the subgroup
+$\pi_1(U_\ell)$: it fixes an element of the
+finite étale fibre. A cuspidal section lifts
+into the intersection with a cusp decomposition
+group and is cuspidal upstairs.
+
+It remains to exclude the point case.
+The associated rational Legendre elliptic
+curve has full rational two-torsion.
+After the quadratic twist of
+Lemma~\ref{E-local-representations}, its
+$\ell$-torsion has a submodule $1$ or
+$\bar\chi_\ell$. In the first case it has a
+rational point of order $\ell$. In the second,
+quotient by the subgroup $\mu_\ell$; the
+dual isogeny's kernel is the constant group
+$\mathbb Z/\ell$, so the quotient elliptic
+curve has a rational point of order $\ell$.
+The odd-degree isogeny is an isomorphism on
+two-torsion. Thus one rational elliptic curve
+has a subgroup
+$\mathbb Z/2\oplus\mathbb Z/(2\ell)$ in its
+rational torsion. Mazur's Theorem (8)
+allows such a subgroup only for $\ell\leq4$.
+This contradiction proves the assertion.
+
+The point-case exclusion also repairs the
+last sentence of Steklov's Theorem 5.14.
+His claim that $Y_1(\ell)(\mathbb Q)$ is empty
+for $\ell\geq7$ is false at seven.
+The necessary extra datum is the full
+two-torsion, retained throughout this proof.
+\end{proof}
+
+\begin{proposition}[E.10 --- Refuted, with repair: the claimed emptiness at seven]
+\label{E-seven-error}
+The claim $Y_1(7)(\mathbb Q)=\varnothing$ used in the
+last sentence of Steklov's Theorem 5.14 is false.
+The elliptic curve
+\[
+ E:\ y^2-xy-4y=x^3-4x^2
+\]
+has discriminant $-1664$ and the point $(0,0)$
+of exact order seven. The simultaneous requirement
+of full rational two-torsion and rational
+seven-torsion is impossible by Mazur's Theorem (8).
+\end{proposition}
+\begin{proof}
+The successive nonzero multiples of $(0,0)$ are
+\[
+ (0,0),\ (4,8),\ (2,2),\ (2,4),\ (4,0),\ (0,4);
+\]
+the seventh multiple is the origin.
+The included exact rational-arithmetic program
+checks the curve equation at every step, the
+addition law, and the nonzero discriminant.
+The last assertion follows from the forbidden
+subgroup $\mathbb Z/2\oplus\mathbb Z/14$.
+This is precisely the replacement used in
+Theorem~\ref{E-selmer-primes}.
+\end{proof}
+
+\begin{theorem}[E.11 --- Proved: exponent three]
+\label{E-selmer-three}
+Every Selmer section of $U_3/\mathbb Q$ is cuspidal.
+\end{theorem}
+\begin{proof}
+On $X_3$ the functions
+\[
+ u=-\frac{3Z}{X+Y},\qquad
+ v=\frac{9(X-Y)/(X+Y)-1}{2}
+\]
+give a birational map to $E:v^2+v=u^3-7$.
+Indeed multiplication by $(X+Y)^3$ turns
+$v^2+v-u^3+7$ into
+$27(X^3+Y^3+Z^3)$, as the exact symbolic
+calculation verifies. The smooth projective
+curves therefore are isomorphic. The map sends
+the three rational boundary points to
+$(3,-5)$, $(3,4)$, and the origin.
+
+The change of variables
+$(x,y)=(4u,8v+4)$ gives $y^2=x^3-432$.
+The identification of this curve with $X_0(27)$
+is explicit in Kriz--Li, \S10.1~\cite{KrizLi2019};
+it is the curve $27a1$. Stoll's Corollary 8.8
+gives its finite-descent equality and rank zero.
+For the rational torsion, good reduction at
+$5$ and $7$ gives respectively $6$ and $9$
+points. Prime-to-residue-characteristic
+torsion injects under reduction. Applying
+the two reductions prime by prime bounds
+the rational torsion by three; the three
+displayed points give equality. Thus
+$X_3(\mathbb Q)$ consists exactly of these
+boundary points. A Selmer section localizes
+to their diagonal image under the
+finite-descent equality. Lemma~\ref{E-finite-support}
+then puts it into a boundary packet.
+\end{proof}
+
+\begin{corollary}[E.12 --- Proved: all exponents and the stipulated local input]
+\label{E-all-exponents}
+For every odd $n\geq3$, all Selmer sections of
+$U_n/\mathbb Q$ are cuspidal. For every even
+$n\geq2$ there are no sections at all.
+Using the local theorem stipulated as Tool (1)
+in the development prompt, every section of
+$U_n/\mathbb Q$ is Selmer. Consequently,
+in the stipulated framework the complete
+section set for odd $n\geq3$ is the disjoint
+union of the three rational cusp packets,
+each a torsor under
+$H^1(\mathbb Q,\widehat{\mathbb Z}(1))$.
+\end{corollary}
+\begin{proof}
+Choose an odd prime $\ell\mid n$. The finite étale
+power map $U_n\to U_\ell$ carries local point
+sections to point sections and local cusp
+sections into cusp packets, so it preserves
+the Selmer property. Its image is cuspidal
+by Theorems~\ref{E-selmer-primes} and
+\ref{E-selmer-three}. Intersecting its
+decomposition group with $\pi_1(U_n)$ gives
+a cusp decomposition group whose image in
+$G_{\mathbb Q}$ is surjective because it
+contains the given section. The cusp is
+therefore rational and the section is
+cuspidal. The even assertion is
+Proposition~\ref{E-even}.
+
+For the final assertion, Tool (1) and the
+neighbourhood reduction in Part B give the
+point-or-cusp description at every finite
+place, with no exclusion of $2$ or $\ell$.
+The real section theorem gives the point
+component at the infinite place.
+These are exactly all the places required
+by Steklov's definition. The three packets
+exist by choosing local parameters; their
+disjointness and their torsor descriptions
+are Stix's Theorem 14 and Proposition 8.
+This proof identifies where the unrefereed
+2026 local input enters. The Selmer theorem
+above is independent of that input.
+\end{proof}
+
+\paragraph{Provenance of the local input.}
+The final passage in Corollary~\ref{E-all-exponents}
+uses the supplied October 2026 manuscript as
+the tool explicitly stipulated in the question.
+Our checking of its named intermediate steps
+is recorded in Part B and the audit.
+We do not report an independent verification
+of every argument in that manuscript.
+The finite-level tower problem in E(b) is
+a further task: the morphism from the full
+section set to a quotient's section set need
+not be surjective. The next subsection keeps
+its image and its obstruction groups explicit.
+
