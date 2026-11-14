@@ -1,0 +1,43 @@
+% QA ONLY. This wrapper is not part of the diplomatic transcription.
+% It checks TeX syntax and diagram construction, not manuscript readings.
+\documentclass[11pt]{article}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs,cancel}
+\usepackage{tikz,tikz-cd,xcolor,geometry}
+\geometry{a4paper,margin=20mm}
+\usetikzlibrary{arrows.meta,calc,decorations.pathmorphing,patterns,positioning,shapes.geometric}
+\IfFileExists{ulem.sty}{%
+  \usepackage[normalem]{ulem}%
+}{%
+  \PackageWarningNoLine{manuscript-qa}{ulem.sty absent. QA ONLY: unbreakable underline fallback active}%
+}
+% Native underline accepts either math or text containing inline math.
+% It cannot reproduce ulem's word wrapping. This fallback is QA-only.
+\providecommand{\uline}[1]{\underline{#1}}
+\providecommand{\uuline}[1]{\underline{\underline{#1}}}
+
+\newcommand{\QACote}{}
+\newcommand{\cotefile}[1]{\renewcommand{\QACote}{#1}}
+\newcommand{\scanpage}[1]{\clearpage\section*{Cote \QACote\quad Scan #1}}
+\newcommand{\mspage}[1]{\par\noindent{\sffamily[MS page: #1]}\par}
+
+% Colour groups deliberately leave mixed text/math, displays and paragraphs
+% unconstrained. They are QA signals, not publication renderings of state.
+\newcommand{\deleted}[1]{{\color{red!65!black}#1}}
+\newcommand{\inserted}[1]{{\color{blue!70!black}#1}}
+\newcommand{\margin}[1]{{\color{gray!80!black}#1}}
+\newcommand{\unsure}[1]{{\color{magenta!75!black}#1}}
+\newcommand{\illegible}[1]{\ifmmode\text{[illegible: #1]}\else[illegible: #1]\fi}
+
+% Rescan the diagram/drawing body so tikz-cd can assign ampersand catcodes
+% after an outer state macro has collected its argument. Arrays also work.
+\long\def\diagram#1{\begingroup\endlinechar=-1\scantokens{#1}\endgroup}
+\long\def\figure#1{\begingroup\endlinechar=-1\scantokens{#1}\endgroup}
+
+\setlength{\emergencystretch}{2em}
+\ifdefined\QAInputFile\else
+  \def\QAInputFile{MPL_152+120_transcription.tex}%
+\fi
+\begin{document}
+\input{\QAInputFile}
+\end{document}

@@ -1,0 +1,43 @@
+## Sources and precise locators
+
+Source scans mean physical PDF pages, including the modern wrapper. For the checked external cotes 120, 136, 149, 150 and 151, the archive footer is one less than the PDF page number. A manuscript number is reported separately. External manuscript checks are targeted research readings; they do not constitute complete diplomatic transcriptions of those cotes.
+
+### Supplied sources and research-status records
+
+| Reference | Source | Use and status |
+|---|---|---|
+| Current121 | `MPL_121_001-048_transcription.tex` and `pages/` | The frozen transcription of all 43 supplied scans; the doubts file records unresolved readings. |
+| Context147 | `MPL_147_138-190_transcription.tex` in the supplied context | First-pass transcription, especially 140–145, 153–180, and 181–190; retained as supplied. |
+| Context149 | `MPL_149_091-136_transcription.tex` in the supplied context | First-pass transcription, especially 128–136; scan 133 was additionally checked against the original for the terminology question. |
+| Context notes | The supplied 147 and 149 notes files | Leads searched and compared, without promotion to established results. |
+| RESULTS_STATE | `notes/RESULTS_STATE.md` in the supplied context | IDs and statuses cited throughout; return claims remain claims unless that register expressly records a review. |
+| Statements | `STATEMENTS_WITH_STATUS.md` in the supplied context | Additional statement and review-status context; no independent certification of the general returned proofs is claimed. |
+
+### Original manuscript sources
+
+- **[Archive]** Université de Montpellier, [Archives Grothendieck catalogue](https://grothendieck.umontpellier.fr/archives-grothendieck/), entries 120–121, 136, 147, 149–151; notes 137–138 and 152–153. Accessed 14 November 2026. Catalogue descriptions supply dossier metadata, with their own qualifications.
+- **[G120]** Alexander Grothendieck, [cote 120](https://grothendieck.umontpellier.fr/120.pdf). PDF scans 002–025 were visually inspected; principal comparison locators: 003–007, 010, 013, 015–025. The full PDF has 25 pages including the wrapper.
+- **[G136]** Alexander Grothendieck, [cote 136, scans 023–026](https://grothendieck.umontpellier.fr/136.pdf#page=23), Corollary 1 and Remarks 1–2; scan 003, heading. The five original images were visually checked and their physical indices verified from the PDF page tree. See `records/research_q1_cote136_source_ledger.json` for source ranges and hashes.
+- **[G147]** Alexander Grothendieck, [cote 147](https://grothendieck.umontpellier.fr/147.pdf#page=138), scans 138–190. The source used for textual comparisons is the supplied first-pass transcription, not a new complete visual audit of this cote.
+- **[G149]** Alexander Grothendieck, [cote 149, scan 133](https://grothendieck.umontpellier.fr/149.pdf#page=133), manuscript page 66, archive footer 132. Targeted visual verification of the inserted word, body occurrence and margin; the surrounding 091–136 text was used through the supplied transcription.
+- **[G150]** Alexander Grothendieck, [cote 150, scans 037–039](https://grothendieck.umontpellier.fr/150.pdf#page=37), archive footers 36–38. Original images checked visually and their indices confirmed against the complete 99-page PDF.
+- **[G151]** Alexander Grothendieck, [cote 151](https://grothendieck.umontpellier.fr/151.pdf). Principal locators: scans 027–028; 039–044, manuscript pages 7–9 verso; 051–052, equation (22). The sequence 027–054 was read visually by the historical researcher, and the principal integrating editor independently checked 041–044 and 052. Complete PDF: 75 pages, 27,695,508 bytes; SHA-256 `ad5a7f5061fb5f9a2ee13f8b938611dc261b717203408c3279b41431d4d0bbd2`.
+
+### Author texts and primary mathematical literature
+
+- **[Esquisse]** Grothendieck, A. (1997), *Esquisse d'un Programme*, in L. Schneps and P. Lochak (eds.), *Geometric Galois Actions*, vol. 1, LMS Lecture Note Series 242, pp. 7–48, Cambridge University Press, [DOI 10.1017/CBO9780511758874.003](https://doi.org/10.1017/CBO9780511758874.003). [French text](https://webusers.imj-prg.fr/~leila.schneps/grothendieckcircle/EsquisseFr.pdf), §5: printed p. 25 / PDF p. 21 for chronology; printed pp. 29–30 / PDF pp. 25–26 for comparison; printed pp. 32–33 / PDF pp. 28–29 for tubular neighbourhoods. The programme circulated in 1984; the listed chapter is the 1997 publication.
+- **[vdDM]** van den Dries, L., and Miller, C. (1996), *Geometric categories and o-minimal structures*, **Duke Mathematical Journal 84**(2), 497–540, [DOI 10.1215/S0012-7094-96-08416-1](https://doi.org/10.1215/S0012-7094-96-08416-1). Checked [author-hosted revision dated 20 February 2001](https://people.math.osu.edu/miller.1987/newg.pdf), §3, §§4.2–4.3 and 4.7, Appendix D.10. The revision flags a separate Whitney-stratification proof issue; the comparisons used here cite the listed decomposition, component, dimension and dictionary passages.
+- **[Sch02]** Schürmann, J. (2002), *On the comparison of different notions of geometric categories*, [arXiv:math/0201283v1](https://arxiv.org/pdf/math/0201283), Theorem 0.1, PDF pp. 6–7; definitions pp. 3–5. Primary author preprint; publication or referee status was not separately established.
+- **[Pillay88]** Pillay, A. (1988), *On groups and fields definable in o-minimal structures*, **Journal of Pure and Applied Algebra 53**, 239–255, Remark 1.10 at printed p. 243 / PDF p. 5; [checked primary article](https://people.maths.ox.ac.uk/bays/ominGruppen/pillay-groups_fields_o_minimal.pdf).
+- **[Shiota14]** Shiota, M. (2014), *O-minimal Hauptvermutung for polyhedra I*, **Inventiones Mathematicae 196**, 163–232, [DOI 10.1007/s00222-013-0467-y](https://doi.org/10.1007/s00222-013-0467-y). Theorem 1.1 as explicitly stated in the [publisher abstract](https://link.springer.com/article/10.1007/s00222-013-0467-y); online publication 3 May 2013, volume year 2014. The paywalled body was not used as though fully inspected.
+- **[Shiota10]** Shiota, M. (2010), *PL and differential topology in o-minimal structure*, [arXiv:1002.1508v3](https://arxiv.org/html/1002.1508v3), Theorem 2.1, its Complement, §3 setup, and Lemma 3.3 with preceding definitions. The numbering here is that preprint's; it has not been transferred to the 2014 journal version.
+- **[Shiota16]** Shiota, M. (2016 version), *O-minimal Hauptvermutung for polyhedra II*, [arXiv:1310.5489v3](https://arxiv.org/html/1310.5489v3), Theorem 2; the comparison setup and Corollary (i) in the introduction, PDF p. 6. Only the same-field identity specialization of the corollary is used in Q4.5.
+- **[Treumann]** Treumann, D. (2009), *Exit paths and constructible stacks*, **Compositio Mathematica 145**, 1504–1532, [DOI 10.1112/S0010437X09004229](https://doi.org/10.1112/S0010437X09004229). Checked [author preprint arXiv:0708.0659v1](https://arxiv.org/pdf/0708.0659), Examples 1.4 and 1.6, PDF pp. 2–4.
+- **[Bing58]** Bing, R. H. (1958), *The Cartesian product of a certain nonmanifold and a line is E4*, **Bulletin of the American Mathematical Society 64**, 82–84. The opening statement on p. 82 was checked in the [primary scan following Milnor's note](https://www.maths.ed.ac.uk/~v1ranick/papers/milnorj.pdf), PDF p. 4; the full proof of the later article was not audited here.
+- **[Bing59]** Bing, R. H. (1959), *The Cartesian product of a certain nonmanifold and a line is E4*, **Annals of Mathematics 70**(3), 399–412, [DOI 10.2307/1970322](https://doi.org/10.2307/1970322). Publication metadata checked; N54 uses the primary opening statement in [Bing58].
+
+### Search and verification limits
+
+All cited external mathematical statements were checked in primary author texts, original manuscript images, or an explicitly identified publisher abstract. Public machine transcriptions supplied candidate manuscript locations for the terminology search; they were never used as reading substitutes for cote 121, and the substantive new 136/149/151 findings were checked visually. The original source images and large source PDFs remain outside this deliverable.
+
+`records/research/context_search_audit.json` records the per-item searches for the 85 current-page notes; `records/research/question_context_search_audit.json` records the searches for the question notes. A search hit is a locator, not a proof of identification: the relationship and status are specified in each note. No exhaustive search of every Montpellier leaf or every possible comparison theorem is claimed, and no assertion of historical priority is based on cote order.
