@@ -1,0 +1,21 @@
+# Opened sources for A.C2.17, A.C2.19 and A.C2.20
+
+The new argument is proved in sections/A_primitive_prym.tex. The research derivation is audit/A_two_prime_prym_candidate.md. Root independently approved it in audit/A_two_prime_prym_root_review.md. No mathematical priority is claimed.
+
+1. **Poonen, Bjorn (2007).** *Gonality of modular curves in characteristic p.* Mathematical Research Letters, 14(4), 691–701. Opened primary author PDF <https://math.mit.edu/~poonen/papers/gonality.pdf>, dated April 16, 2006. Section 2, Proposition 2.1, author p.3, states the Castelnuovo–Severi inequality over a perfect field without a characteristic restriction. Web source turn678view0. Every compositum and degree used in A.C2.17 is stated explicitly. This opening does not claim access to the separate Stichtenoth textbook proof cited by Poonen.
+
+2. **Crew, Richard M. (1984).** *Étale p-covers in characteristic p.* Compositio Mathematica, 52(1), 31–45. Opened primary archival PDF <https://www.numdam.org/item/CM_1984__52_1_31_0.pdf>. Corollary 1.8, printed p.35, gives the ramified Deuring–Shafarevich formula; the complete proof is on p.36. Both pages were inspected as screenshots so the formulas were checked despite imperfect OCR. Web sources turn677view0, turn678view1, turn678view2. The curve and p-group hypotheses match the involution quotient in A.C2.17. The proof also constructs n−1 independent geometric two-torsion classes, so its needed lower bound does not rely only on this formula.
+
+3. **Yang, Yu (2016).** *Formulas for local and global p-ranks of coverings of curves.* RIMS-1863. Opened <https://www.kurims.kyoto-u.ac.jp/preprint/file/RIMS1863.pdf>, Proposition 3.2, author p.12. It corroborates the ramified formula and cites Crew. Web sources turn675view1, turn676view2. This is not a distinct proof input and does not need a duplicate bibliography key.
+
+The theta/Frobenius calculation and finite-cover Kummer implication are the proved A.C2.5, A.C2.8 and A.3. The endomorphism argument, pencil exclusions, integral odd-order Tate decomposition and elementary ramification torsion classes are derived in full.
+
+The exact arithmetic checks are code/BC_two_prime_prym_checks.py and its JSON output: 289 passing checks, including 261 orders supported on two distinct odd primes, 16 mixed three/five prime-power orders and eight exact cyclotomic polynomial identities. These supplement the general proof and do not supply theta-point existence.
+
+## Arbitrary conductors and the all-genus extension
+
+For A.C2.19, the Poonen opening was extended explicitly to Lemma 2.2 and Corollary 2.3 on the same author p.3. Their many-generator controlled-field induction is reproduced with every field index in sections/A_arbitrary_primitive_prym.tex. The full derivation is audit/A_arbitrary_primitive_prym_candidate.md and the independent topos review is audit/A_arbitrary_primitive_prym_topos_review.md. The code/BC_arbitrary_primitive_prym_checks.py certificate and its JSON output give 830 passing checks, including 500 odd orders, the exact controlled-field identity, the uniform product bound, and primitive cyclotomic factors with three or four prime divisors.
+
+A.C2.20 is written in sections/A_general_primitive_prym.tex, with derivation audit/A_general_primitive_prym_candidate.md and independent review audit/A_general_primitive_prym_topos_review.md. It assumes that the actual primitive abelian image has zero p-rank, for an odd cyclic étale cover of degree prime to p. Its new quotient square is derived from commuting cyclic and quadratic actions; the fibre product is smooth because its map to C is an étale base change. Crew's exact ramified formula gives the intermediate two-ranks in characteristic two, and Möbius inversion gives positive primitive rank equal to the branch count times phi(n). In odd characteristic the derived quadratic genus-one quotient is exactly the already proved A.29l class. No new external theorem or unproved extension of Deuring–Shafarevich is used.
+
+The code/BC_general_primitive_prym_checks.py certificate and its JSON output verify the Möbius identity symbolically at 250 odd orders and in 56 numerical rank examples. These identities do not assert existence of the requisite zero-p-rank primitive factor.

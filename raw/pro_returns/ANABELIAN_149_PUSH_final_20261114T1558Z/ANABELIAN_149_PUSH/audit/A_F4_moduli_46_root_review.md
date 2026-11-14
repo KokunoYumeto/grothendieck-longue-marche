@@ -1,0 +1,20 @@
+# Root review of the 46-class ordinary F4 theorem
+
+Reviewed on 14 November 2026. Verdict: PASS for precisely the 46 positive classes; the geometric classes with keys 203 and 302 remain undecided.
+
+We read the complete candidate `audit/A_F4_moduli_46_candidate.md`. The ordinary genus-two Artin–Schreier normal form has three distinct simple poles. The unique hyperelliptic quotient reduces isomorphisms to permutations of those three poles. The generators x↦x+1 and x↦1/x permute the three nonzero coefficients up to an additive constant, and a further Artin–Schreier change cannot alter their simple principal parts. Thus the unordered coefficient triple is the geometric moduli datum. Fourth-power-stable triples are exactly the roots with multiplicity of the 48 monic cubics over F4 with nonzero constant coefficient. The proof only needs this classification for actual F4 curves and makes no unproved descent assertion.
+
+For every positive row, the displayed norm identity and the local nonzero conditions give the full divisor, not merely a congruence of power series. At x=t, the x-map is étale and exactly one of the two factors vanishes. The norm forces multiplicity n there. The nonzero B(0), B(1), and its monic degree (n−3)/2 give poles of orders 1, 1 and n−2 at the three branch points. Dividing by u^((n−1)/2) gives n(R−Btheta) exactly. The resulting theta class is nonzero because a degree-one half-canonical divisor represented by R would make R a branch point. Its exact order need only divide n: surjectivity of the unit-group reduction map transfers the generation by 2 and −1 to that order. The earlier primitive-Prym criterion therefore applies without using any negative scan.
+
+We independently verified the fixed data with `code/A_F4_norm_root_independent.py`. This program imports neither the scan engine nor the author's coefficient-list field arithmetic or jet solver. It uses SymPy multivariate polynomial rings over F2 and reduction modulo the two explicit field polynomials. It checks every coefficient-field modulus for irreducibility, every degree-two or degree-three coordinate polynomial for absence of roots over the coefficient field, every full norm identity, the stated local values, every encoded symmetric-polynomial key, and generation of the finite unit group by 2 and −1. All 46 records pass. The source certificate SHA-256 is `2a2d454caaf1d8f8c5e3bb9dc7fe41c7a2daa3d2333314d5b8de2098faaa71f9`; the result is saved in `code/A_F4_norm_root_independent.json`.
+
+The two degree-49 rows are included in that independent verification over their explicit F4096 coordinate fields. All coefficient arrays are fixed in the delivered witness JSON; no search is necessary to verify them. The direct verification replaces any need to trust the exploratory determinant search for these positive conclusions.
+
+We checked the actual remaining F4 model: for key 203, x=z+w and k^2+k=w transform the normalized coefficients (1,9,14) over F16 to `v^2+v=z+alpha^2(z+1)/(z^2+z+alpha)`. The coefficientwise square gives key 302. Their absence from the positive list is neither a point-section collision nor a boundedness theorem for all possible covers.
+
+All isomorphism and cover data descend after finite extension. Equality of original section classes restricts to that extension, so the geometric contradiction proves the stated scope for finite extensions, finitely generated forms and open subcurves. The positive theorem remains a special case of A1, and universal A1/A2 stay unresolved. No priority is claimed.
+
+
+## Dated forward annotation, 14 November 2026
+
+The two classes described above as undecided at the time of this review are now settled by A.C2.25. Its independently verified cyclic conductor 2,454,499,369 has theta witnesses in every primitive doubling orbit. The complete new proof and root review are in `sections/A_F4_all_48.tex` and `audit/A_F4_all_48_root_review.md`. This historical 46-class verification remains valid and is retained unchanged above; the current total is all 48 ordinary genus-two classes fixed by fourth-power Frobenius. Universal A1 is still unresolved.

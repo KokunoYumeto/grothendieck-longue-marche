@@ -1,0 +1,381 @@
+\subsection{A complete large-conductor packet and all ordinary genus-two classes over \texorpdfstring{$\F_4$}{F4}}
+
+\begin{claim}{A.C2.25}{Proved}
+Let $\alpha^2+\alpha+1=0$. The smooth proper curve
+\[
+ C_0/\F_4:\qquad
+ v^2+v=z+\frac{\alpha^2(z+1)}{z^2+z+\alpha}                 \tag{C2.78}
+\]
+and its coefficientwise-square conjugate satisfy A1.
+Consequently all $48$ geometric ordinary genus-two
+moduli classes fixed by fourth-power Frobenius
+satisfy A1. In particular this holds for every
+ordinary genus-two curve over $\F_4$, over every
+finite extension, for every finitely generated
+form of any of these geometric classes, and
+for every hyperbolic open subcurve.
+
+The additional two classes are certified by a
+connected cyclic \'etale cover of odd degree
+\[
+ M=7\cdot31\cdot2503\cdot4519=2\,454\,499\,369             \tag{C2.79}
+\]
+whose primitive conductor-$M$ Jacobian factor
+has two-rank zero. Universal A1 remains A.30.
+\end{claim}
+\begin{proof}
+\proofparagraph{The curve and the exact theta origin.}
+Set
+\[
+ h=z^2+z+\alpha,\qquad G=z^3+z^2+z+\alpha^2,
+ \qquad Y=hv,
+\]
+so that the polynomial model is
+\[
+                         Y^2+hY=f,\qquad f=hG.             \tag{C2.80}
+\]
+Here $f$ is monic of degree five. At a root
+of $h$, the value $G=\alpha^2(z+1)$ is nonzero;
+thus the affine model is smooth. The original
+Artin--Schreier equation has three simple poles,
+the two roots of $h$ and infinity, and defines
+an ordinary genus-two curve. Write $W_1,W_2$
+for its finite ramification points and $W_\infty$
+for its point at infinity. The different and
+the divisor of $dz$ give
+\[
+ \operatorname{div}(dz)=2(W_1+W_2-W_\infty),\qquad
+ B_\Theta=\mathcal O(W_1+W_2-W_\infty).                     \tag{C2.81}
+\]
+The locally exact differential $dz$ identifies
+this with the Raynaud bundle in A.C2.5. Hence
+\[
+ \Theta=\{[R-B_\Theta]:R\in C_0(\overline{\F}_2)\}.
+\]
+The pair $T=(h,0)$ represents
+$[W_1+W_2-2W_\infty]$. Its double is zero,
+since $\operatorname{div}(h)=2W_1+2W_2-4W_\infty$.
+Consequently
+\[
+                  [R-W_\infty]+T=[R-B_\Theta].             \tag{C2.82}
+\]
+This fixes both the origin and the sign of the
+theta test. The individual finite branch points
+need not be rational over the certificate field;
+their sum and $T$ are rational.
+
+Choose $r$ with $r^2+r=\alpha$ and put $x=z+r$.
+After removing a constant, (C2.78) has the
+normalized coefficient triple
+\[
+                 (1,\alpha^2(r+1),\alpha^2r).
+\]
+Its symmetric functions are $\alpha,0,\alpha^2$,
+so it is key $203$ in A.C2.22. Squaring the
+coefficients gives key $302$. This field
+automorphism transports the theta classes,
+all algebraic identities below, and the
+associated cyclic cover. It therefore suffices
+to prove the assertion for $C_0$.
+
+\proofparagraph{The fixed field and exact torsion generator.}
+All computations take place in
+\[
+ F=\F_2[w]/(w^{18}+w^7+1)=\F_{4^9}.                         \tag{C2.83}
+\]
+An integer between $0$ and $2^{18}-1$ encodes
+the polynomial whose binary digits are its
+coefficients in ascending powers of $w$.
+The binary modulus is $262273$, the primitive
+generator is $2$, and $\alpha$ is $114587$.
+The verifier checks the complete nonzero
+power cycle of length $262143$. An independent
+verifier also checks the polynomial
+irreducibility criterion at exponents $18,9,6$.
+
+The immutable data file
+\path{code/A_F4_large_theta_witness.json}
+contains a theta generator
+\[
+ R=(49,185454),\qquad \eta=[R-B_\Theta],
+\]
+whose reduced Mumford pair on (C2.80) is
+\[
+ U=z^2+124780z+171897,
+ \qquad V=26069z+117672.                                   \tag{C2.84}
+\]
+The coordinates of $R$ are the original $(z,v)$
+coordinates, whereas $V$ is the $Y$ coordinate
+of the reduced divisor. Every displayed
+coefficient is interpreted in (C2.83).
+The exact checks are
+\[
+ [M]\eta=0,\qquad [M/p]\eta\ne0
+       \quad(p=7,31,2503,4519).                             \tag{C2.85}
+\]
+The four factors are verified prime by trial
+division, so $\eta$ has exact order $M$.
+
+For an additional check of the primary module,
+put
+\[
+ R_H=(1,114586),\qquad H=[4M/7]\,[R_H-B_\Theta].
+\]
+Its reduced pair is
+\[
+                   (z^2+z+1,\,114586z).
+\]
+The verifier proves $[7]H=0$ and
+$H\ne[jM/7]\eta$ for $0\le j\le6$.
+Thus it explicitly proves two independent
+seven-torsion classes.
+The actual $\F_4$ Frobenius polynomial from
+A.C2.24 gives
+\[
+ \begin{aligned}
+ P_4(X)&=X^4+2X^3+X^2+8X+16,\\
+ \#J(F)&=68\,725\,982\,332
+      =4\cdot7^2\cdot31\cdot2503\cdot4519,\\
+ \#C_0(F)&=262171.
+ \end{aligned}                                             \tag{C2.86}
+\]
+One verifier uses $\det(\pi^9-I)$ on the
+integral companion matrix; two others use
+integer Newton recurrences. These are the
+curve and Jacobian Frobenius formulas of
+\citet[II, Theorem 1.1; III, Theorem 11.1
+and Corollary 11.4]{A_Milne2008}.
+The group order and the independent
+seven-torsion classes prove
+\[
+ J(F)_{\rm odd}\cong
+ C_7^2\oplus C_{31}\oplus C_{2503}\oplus C_{4519}.
+\]
+Thus $M$ is its exact exponent. The main
+certificate needs only (C2.85) and the
+point-multiple identities below; this
+additional argument justifies the module
+structure used in the discovery search.
+
+\proofparagraph{Divisor meaning of the finite arithmetic.}
+A reduced pair $(U,V)$ means that $U$ is monic,
+$\deg V<\deg U\le2$, and $U\mid V^2+hV+f$.
+It represents $D(U,V)-\deg(U)W_\infty$,
+where $D(U,V)$ is the finite divisor of the
+ideal $(U,Y-V)$. This representation is
+unique; zero is $(1,0)$
+\citep[Theorem 2.2, author p.~5]{A_Lange2005}.
+The checker implements the general
+composition and reduction rules, including
+coincident points and branch fibres.
+
+For two pairs, compute the monic extended gcds
+\[
+ \begin{aligned}
+ d_1&=a_0U_1+b_0U_2=\gcd(U_1,U_2),\\
+ d&=e d_1+c(V_1+V_2+h)
+       =\gcd(d_1,V_1+V_2+h),\qquad a=ea_0,\quad b=eb_0.
+ \end{aligned}
+\]
+Composition is
+\[
+ U=\frac{U_1U_2}{d^2},\qquad
+ V=\frac{aU_1V_2+bU_2V_1+c(V_1V_2+f)}d\pmod U.             \tag{C2.87}
+\]
+While $\deg U>2$, reduction replaces it by
+\[
+ U'=\frac{V^2+hV+f}U,
+ \qquad V'=V+h\pmod {U'},                                  \tag{C2.88}
+\]
+making each new first polynomial monic.
+These are the characteristic-two forms of
+\citet[Algorithms 3.1--3.2, author pp.~5--6]
+{A_Lange2005}, which explicitly allow the
+general $h$ polynomial and even characteristic.
+
+To recall why these are divisor identities,
+the product of the two ideals is generated by
+\[
+ \begin{gathered}
+ U_1U_2,\quad U_1(Y+V_2),\quad U_2(Y+V_1),\\
+ (V_1+V_2+h)Y+(V_1V_2+f).
+ \end{gathered}
+\]
+The Bezout relation produces $d(Y+V)$.
+Locally, $d$ removes exactly the common
+opposite-point pairs, giving
+$I_1I_2=(d)I(U,V)$. A repeated ramification
+point is removed using
+$\operatorname{div}(z-z_0)=2W-2W_\infty$.
+Thus (C2.87) represents the sum of classes.
+For (C2.88), the norm of $Y+V$ is
+$V^2+hV+f=UU'$. Its finite zero divisor is
+$D(U,V)+D(U',V)$, with multiplicities, and
+its only pole is at infinity. The two
+degree-zero divisor classes are negatives.
+Hyperelliptic conjugation changes $V$ to
+$V+h$, proving the reduction rule. Monic
+normalization changes only a nonzero scalar.
+
+Every division is checked to have zero
+remainder, and the defining congruence is
+checked after every operation. Binary
+repeated addition therefore supplies exact
+identities in $\operatorname{Pic}^0(C_0)$,
+not approximate numerical relations.
+For a saved point $(x,y)$, the checker starts
+with $([x,1],[h(x)y])$, then adds $(h,0)$.
+By (C2.82) the resulting class is
+$[R-B_\Theta]$.
+
+\proofparagraph{Complete primitive orbit coverage.}
+The fixed data contain $1296$ records
+$(x_i,y_i,i)$ such that
+\[
+ \gcd(i,M)=1,
+ \qquad [i]\eta=[R_i-B_\Theta]\in\Theta.                    \tag{C2.89}
+\]
+Every record, not a sample, is verified by
+the preceding exact arithmetic. The local
+orders of two at $7,31,2503,4519$ are
+$3,5,1251,753$. Hence
+\[
+ \operatorname{ord}_M(2)=1\,570\,005,
+ \qquad \varphi(M)=2\,034\,726\,480,
+ \qquad \frac{\varphi(M)}{\operatorname{ord}_M(2)}=1296.     \tag{C2.90}
+\]
+It remains to prove that the recorded indices
+belong to distinct doubling orbits.
+
+One verification uses the primitive root
+$3$ at each prime. Integer discrete logarithms
+identify the unit group with
+$\Z/6\oplus\Z/30\oplus\Z/2502\oplus\Z/4518$.
+The lattice generated by these four period
+vectors and the log vector of two has column
+Hermite basis
+\[
+ \begin{pmatrix}
+ 6&0&0&2\\0&6&0&0\\0&0&6&4\\0&0&0&6
+ \end{pmatrix},\qquad \det=1296.                            \tag{C2.91}
+\]
+Reducing from the last column to the first
+gives $1296$ different residues for the
+saved indices. The vector of two reduces
+to zero. This proves exhaustion.
+
+A separate verification avoids discrete-log
+normalization and Hermite normal form.
+Enumerate the local doubling cycles, and
+label each local unit by its smallest cycle
+representative and its time coordinate $t_p$.
+Two global units are in one orbit exactly
+when their local representatives agree and
+the required time differences admit one
+common shift. By the generalized Chinese
+remainder theorem this is equivalent to
+agreement of every pair of shifts modulo
+the gcd of the two local periods. The four
+local representatives and all such relative
+times give $1296$ distinct signatures on
+the data. A third implementation uses
+different primitive roots and the equivalent
+signature with local log residues modulo
+$(2,6,2,6)$ and two relative times modulo
+three; its $144\cdot9$ signatures also exhaust
+the quotient. These are independent exact
+checks of the inference from (C2.89) to
+all primitive doubling orbits.
+
+\proofparagraph{The cover and the section conclusion.}
+Let $L$ represent $\eta$ over an algebraic
+closure and choose $L^M\simeq\mathcal O$.
+The algebra $\bigoplus_{j=0}^{M-1}L^{-j}$
+defines a finite \'etale $\mu_M$-torsor
+$D\to C_0$, since $M$ is odd. It is
+geometrically connected because $L$ has
+exact order $M$. After a finite constant
+extension its deck group is cyclic of
+order $M$, and its genus is $M+1$.
+
+For every nonzero character $i$,
+$H^1(C_0,L^i)$ is one dimensional. The
+exact sequence
+\[
+ 0\longrightarrow L^i\longrightarrow F_*L^{2i}
+ \longrightarrow B_\Theta\otimes L^i\longrightarrow0
+\]
+makes its Frobenius arrow zero exactly
+when $L^i\in\Theta$, as in A.C2.5.
+Every primitive cycle contains a zero arrow
+by (C2.89)--(C2.91). Frobenius is therefore
+nilpotent on the entire primitive
+conductor-$M$ summand, and that Jacobian
+factor has two-rank zero. Lower-conductor
+characters need not vanish.
+
+A.C2.19, or equivalently the all-genus
+criterion A.C2.20, now proves A1 for $C_0$.
+Four distinct prime factors are permitted:
+the primitive operator has support bound
+$2^4=16$, and $M>15^2$, exactly as required
+in that proof. This invokes the proved
+geometric divisor argument there, not an
+inference from the size of the cover.
+
+The property is geometric. For a form over
+a finitely generated field, the isomorphism,
+the torsion class, its trivialization and
+the deck maps are defined after a finite
+extension of the whole base field. The
+geometric formulation in A.C2.19--A.C2.20,
+together with A.3 and the descent in A.8,
+applies. An original collision would persist
+over that extension. Functoriality to the
+compactification handles open subcurves.
+Coefficient conjugation gives key $302$,
+and A.C2.22 supplies the other $46$ classes.
+
+\proofparagraph{Reproducible certificates and exact scope.}
+The fixed witness file has SHA256
+\begin{center}
+\path{edcf6ed3d425eb72837ae72f521f7221ee91c8a53c1b005885a4c1280d530ae6}.
+\end{center}
+The canonical checker
+\path{code/A_F4_large_theta_canonical.py}
+and its adjacent JSON verify all $1296$
+relations and the order statements in
+$60773$ exact divisor operations. It
+imports no C implementation, search code,
+accelerated polynomial engine, or tailored
+coset normalization. Root and the independent
+reviewer each reran it successfully.
+The further independent programs
+\path{code/A_F4_large_theta_root_orbits.py}
+and
+\path{code/A_F4_large_theta_degeneration.py},
+with their JSON outputs, verify the field,
+point equations, group order, reindexing
+and complete orbit signatures by the
+distinct methods described above.
+The full mathematical reviews are
+\path{audit/A_F4_large_theta_degeneration_review.md}
+and
+\path{audit/A_F4_all_48_root_review.md}.
+
+The discovery code and full data are
+retained under
+\path{code/A_F4_large_theta_search.py/.json}.
+Discovery stopped when this positive
+packet was complete; no negative
+enumeration is needed. A.C2.24's exact
+small-primary and mixed-support exclusions
+remain valid, including the entire
+$73$-primary obstruction. They do not
+exclude the different mixed conductor
+(C2.79). The fixed-prime obstruction
+A.C2.14 and the abelian-tower descent
+A.C2.23 are also unchanged. This proves
+the stated finite moduli class theorem;
+universal A1 remains unresolved.
+\end{proof}

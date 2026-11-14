@@ -1,0 +1,13 @@
+# Independent root review of the abelian-total-cover descent criterion
+
+Verdict: PASS for the exact candidate A.C2.23. This review does not supply the missing existence of a suitable primitive factor.
+
+I read the complete candidate and independently checked each step. For a finite abelian group A of order prime to p, the rational geometric p-adic Tate module decomposes over a splitting field into character spaces. The product over primes dividing n acts nontrivially precisely on characters whose restriction to the given cyclic subgroup H is faithful. Its image is the rational Tate module of the image abelian subvariety, so zero p-rank is exactly the stated character-space vanishing. This uses geometric p-power torsion, not the full p-divisible group.
+
+A faithful character of H extends to A by adjoining one cyclic coset at a time and choosing the necessary root in the divisible coefficient group. Its order N is divisible by n. Every primitive power of the extension remains faithful on H. Quotienting W by the kernel produces a connected cyclic étale N-cover of the original curve. Pullback and norm identify its p-adic Tate module with the kernel-invariants: the two compositions are multiplication by the prime-to-p kernel order and the averaging operator. Hence all primitive character spaces of that cyclic quotient vanish. The converse existence implication takes the original cyclic cover itself as the abelian total cover.
+
+The genus and finitely generated field conclusions use A.C2.20 only after the finite geometric cover data have descended. They do not presume that every successive tower of abelian covers has an abelian normal closure. The finite-prime-set consequence is restricted to the same prime support, since the quotient order divides the abelian total group order.
+
+The root reran code/BC_abelian_descent_and_support_checks.py: PASS, with 31,006 finite character checks and 729 Heisenberg multiplication checks. I also read the separate nonabelian support note. Its 28-dimensional coherent module and 22-dimensional stable profile retain every irreducible, so the group-algebra annihilator is zero; the finite calculation gives image dimension27. The note correctly labels this as an abstract semilinear profile and makes no claim of geometric realization or contradiction to Raynaud's stronger family of twists.
+
+No scope expansion is approved from abelian total covers to nonabelian normal closures, from nonordinariness to a zero stable isotypic block, or from the finite computations to a universal existence assertion. The principal A1/A2 obligations remain unresolved.

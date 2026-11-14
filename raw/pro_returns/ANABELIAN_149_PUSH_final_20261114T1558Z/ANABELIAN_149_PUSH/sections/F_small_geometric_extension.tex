@@ -1,0 +1,641 @@
+% Integrated F.49 after root, topos and finite-field review.
+\subsection{Hilbertian normal extensions and small geometric Galois groups}
+
+\begin{claim}{F.49}{Proved}\label{clm:F49}
+Let \(D/\mathbf Q\) be finitely generated of positive transcendence
+degree. Fix an algebraic closure containing \(\overline{\mathbf Q}\),
+and let \(k/D\) be algebraic Galois with
+\(\overline{\mathbf Q}\subset k\).
+If \(k\) is Hilbertian, every finitely generated extension \(L/k\)
+has closed-point-preserving all-scheme étale-topos reconstruction.
+
+A profinite group is \emph{small} if it has finitely many open
+subgroups of each prescribed finite index. If
+\(\operatorname{Gal}(k/D\overline{\mathbf Q})\) is small, then \(k\)
+is Hilbertian, and every subfield \(k_0\subset L\) of positive
+transcendence degree over \(\mathbf Q\), for every finitely generated
+\(L/k\), reconstructs. The positive-transcendence restriction is
+essential to this statement: \(\overline{\mathbf Q}\) itself fails
+by F.41.
+
+This class contains fields outside the entire sufficient class of
+F.46, even after changing the finitely generated algebraic model.
+Two examples, with \(D=\mathbf Q(t)\), are the following:
+\begin{enumerate}
+\item Let \(\Omega_m/D\) be the splitting field of \(P_m(X)-t\), where
+\[
+ P_m(X)=X^{2m+1}-\frac{2(2m+1)}{m+1}X^{m+1}+(2m+1)X,\qquad m\ge2.
+ \tag{F.49.1}
+\]
+Then the compositum
+\[
+ \begin{gathered}
+ k_{\mathrm{alt}}
+   =\overline{\mathbf Q}(t)\prod_{m\ge2}\Omega_m,\\
+ \operatorname{Gal}(k_{\mathrm{alt}}/\overline{\mathbf Q}(t))
+       \simeq\prod_{m\ge2}A_{2m+1}.
+ \end{gathered}
+ \tag{F.49.2}
+\]
+\item Let \(k_{\mathrm{tri}}\) be the maximal extension of
+\(\overline{\mathbf Q}(t)\) unramified over
+\(\mathbf P^1_{\overline{\mathbf Q}}\setminus\{0,1,\infty\}\).
+Then
+\[
+ \operatorname{Gal}(k_{\mathrm{tri}}/\overline{\mathbf Q}(t))
+       \simeq\widehat F_2.
+ \tag{F.49.3}
+\]
+This field is not radically closed: it contains all roots of \(t\)
+and \(1-t\), but contains no square root of \(t-2\).
+\end{enumerate}
+Both fields, all their finitely generated extensions, and the
+positive-transcendence subfields specified above reconstruct.
+No necessity of Hilbertianity or smallness is asserted. In particular,
+this does not assert reconstruction for every normal algebraic
+extension of a positive-transcendence finitely generated field, and
+F.9 remains unresolved.
+\end{claim}
+\begin{proof}
+\proofparagraph{Normal finite-type descent and the divisible kernel}
+For a finitely generated \(L/k\) and any finite list of geometric
+data, choose a finitely generated field \(F/\mathbf Q\), containing
+\(D\), over which the data are defined and such that
+\[
+ L=Fk,\qquad L/F\ \hbox{is algebraic Galois},\qquad
+ B=F\overline{\mathbf Q}\subset L.
+ \tag{F.49.4}
+\]
+Normality follows by base change from \(k/D\).
+The Hilbertian core will specialize over \(L\) itself; it does not
+assume Hilbert irreducibility over this arithmetic descent field \(F\).
+
+For every finite extension \(E/k\), we claim
+\[
+ D(E^\times):=\bigcap_{n\ge1}(E^\times)^n\subset k^\times.
+ \tag{F.49.5}
+\]
+Take \(a\in D(E^\times)\). Descending the finitely many equations
+defining \(E/k\), and taking a normal closure, gives a finite Galois
+extension \(M/D\) such that \(a\in M\) and \(E\subset Mk\).
+For \(\sigma\in\operatorname{Gal}(Mk/k)\), the normality of \(M/D\)
+makes \(M\) stable under \(\sigma\). For each \(n\), choose
+\(z_n\in E\) with \(z_n^n=a\). If
+\(\tau\in\operatorname{Gal}(Mk/M)\), then \(\tau\) preserves \(k\),
+because \(k/D\) is normal. The automorphisms \(\sigma,\tau\) commute
+on \(M\) and on \(k\), hence on \(Mk\). Moreover \(\sigma\) fixes
+all roots of unity. Since \(\tau(z_n)/z_n\in\mu_n\), it follows that
+\(\sigma(z_n)/z_n\) is fixed by every such \(\tau\), and belongs to
+\(M\). Thus
+\[
+                 \sigma(a)/a\in D(M^\times)=\{1\}.
+\]
+The last equality is the divisor and number-field unit argument
+in F.4 and F.33, applied to the finitely generated field \(M/\mathbf Q\).
+Consequently \(a\) is fixed by \(\operatorname{Gal}(Mk/k)\), proving
+(F.49.5). No equality \(D(E^\times)=k^\times\) is needed or claimed.
+
+The same inclusion holds for every finitely generated \(E/k\).
+Let \(k_1\) be the relative algebraic closure of \(k\) in \(E\);
+it is finite over \(k\). On a normal proper model of \(E/k_1\),
+an infinitely divisible element has zero valuation at every prime
+divisor. It therefore lies in \(k_1^\times\). Each of its \(n\)-th
+roots in \(E\) is algebraic over \(k_1\), and hence is also in \(k_1\),
+by relative algebraic closedness. The element belongs to
+\(D(k_1^\times)\), so the finite-extension argument applies.
+This proves the precise scalar-kernel inclusion that will be used
+in point evaluation.
+
+\proofparagraph{Hilbertian finite-quotient detection}
+If \(k\) is Hilbertian, every finitely generated \(L/k\) is Hilbertian.
+Finite extensions preserve Hilbertianity; a finitely generated
+transcendental extension of any field is Hilbertian by
+\citet[Theorem~1.2 and Corollary~3.2]{F_BarySorokerParan2013}.
+The finite-extension and full-degree specialization statements are
+also those used in F.44--F.45
+\citep[Proposition~3.3.1 and Theorem~3.4.1]{F_Serre2007}.
+In particular \(L\) and every finite extension of \(L\) have
+nontrivial finite separable extensions.
+
+Let \(X/L\) be smooth and geometrically connected, and let
+\(Y\to X\) be a connected finite étale Galois cover with group \(G\).
+It represents an arbitrary finite quotient of the arithmetic
+\(\pi_1(X)\). Suppose first that \(X\) is a curve.
+On its smooth compactification, Riemann--Roch gives rational
+functions \(X\to\mathbf P^1\) of arbitrarily large degree \(d\).
+After shrinking, the function and the composite
+\(Y\to\mathbf P^1\) are finite étale. The latter connected cover
+has degree \(d|G|\), including its arithmetic constant extension.
+Hilbert irreducibility gives an \(L\)-rational specialization whose
+entire fibre is one field of that degree. Its \(G\)-quotient is a
+closed point \(x\in X\) of degree \(d\), and the fibre over \(x\)
+is a field of degree \(|G|\) over \(L(x)\). Therefore
+\[
+                      G_{L(x)}\longrightarrow G
+                      \quad\hbox{is surjective}.
+ \tag{F.49.6}
+\]
+Removing a prescribed finite set before specialization and
+increasing \(d\) gives detecting points of unbounded degree in
+every nonempty open. For higher-dimensional \(X\), F.29's
+cover-preserving smooth-curve construction reduces to this curve
+case, retaining the arithmetic connectedness and any prescribed
+open restriction. This proves exactly the finite-quotient
+detection used in F.45--F.46, including the constant quotient.
+
+\proofparagraph{Integral Kummer residues in one fixed norm field}
+Let
+\[
+ U=\operatorname{Spec}L[T,1/(P_1\cdots P_r)]
+\]
+for distinct monic irreducible polynomials \(P_j\), and let
+\(x_0\in U(L)\). The normalized compatible Kummer class has the form
+\[
+ \kappa(b_0)+
+   \sum_j\lambda_j\bigl([P_j(T)]-[P_j(x_0)]\bigr),
+       \qquad\lambda_j\in\widehat{\mathbf Z}.
+ \tag{F.49.7}
+\]
+Assume that its evaluation at every point over every finite extension
+of \(L\) is represented by an actual nonzero field element.
+This is the property supplied by the pinned morphisms in question.
+
+Choose \(F\) in (F.49.4) containing the coefficients and normalizing
+data. Choose a nontrivial finite extension of \(L\), take its
+Galois closure, and descend its defining equations to a sufficiently
+large such \(F\). Take a finite Galois extension
+\(M/\mathbf Q(t_1,\ldots,t_s)\) containing \(F\), all the roots of
+the \(P_j\), and these descended extension data.
+Then \(Mk/L\) is finite Galois and nontrivial.
+Choose a nonidentity
+\(\sigma\in\operatorname{Gal}(Mk/L)\).
+It preserves \(M\), fixes \(k\) and \(\overline{\mathbf Q}\),
+and acts nontrivially on \(M\).
+
+Apply F.45's moved-geometric-divisor construction to \(M\) over
+its algebraic constants \(M\cap\overline{\mathbf Q}\).
+It gives pairwise distinct geometric discrete valuations \(v_i\),
+with disjoint \(\sigma\)-translates, at which all prescribed
+coefficients and distinct-root differences are units.
+Semilocal approximation, in the localization at these
+height-one primes, gives \(\alpha\in U(M)\) such that
+\[
+ v_i(P_j(\alpha))=\delta_{ij},\qquad
+ v_i(P_j(\sigma\alpha))=0.
+ \tag{F.49.8}
+\]
+The valuation-one assertion is the root-plus-uniformizer Taylor
+calculation in F.45; \(\sigma\) fixes every \(P_j\), but may permute
+its roots. Put \(R_j=P_j(\sigma\alpha)/P_j(\alpha)\).
+Thus \(R_j\in M^\times\) and \(v_i(R_j)=-\delta_{ij}\).
+
+Choose an actual value \(b_\alpha\in(Mk)^\times\) of (F.49.7).
+Since \(k/D\) is algebraic, a single finite extension
+\(S_0/D\) inside \(k\) contains the coefficients needed to express
+this element. The field
+\[
+                              F'=MS_0
+\]
+contains \(b_\alpha\), \(\sigma(b_\alpha)\), and every \(R_j\).
+It is fixed once and for all, independently of the Kummer level \(n\).
+It is \(\sigma\)-stable, because \(\sigma\) preserves \(M\) and
+fixes \(S_0\subset k\).
+
+If \(a\in(F')^\times\) and \(z^n=a\) with \(z\in Mk\), then
+\(\sigma(z)/z\in F'\). Indeed, for
+\(\tau\in\operatorname{Gal}(Mk/F')\), the automorphisms
+\(\sigma,\tau\) commute on \(M\) and \(k\); \(\sigma\) fixes
+\(\tau(z)/z\in\mu_n\). Thus every \(\tau\) fixes
+\(\sigma(z)/z\). Consequently
+\[
+                      \sigma(a)/a\in((F')^\times)^n.
+ \tag{F.49.9}
+\]
+Represent \(\lambda_j\bmod n\) by integers \(a_{j,n}\).
+At level \(n\), evaluation of (F.49.7) says that the appropriate
+quotient of \(b_\alpha\) by
+\(b_0\prod_j(P_j(\alpha)/P_j(x_0))^{a_{j,n}}\)
+is an \(n\)-th power in \(Mk\), and belongs to \(F'\).
+Apply (F.49.9). The constants fixed by \(\sigma\) cancel, leaving
+\[
+ \frac{\sigma b_\alpha}{b_\alpha}
+        \prod_j R_j^{-a_{j,n}}\in((F')^\times)^n.
+ \tag{F.49.10}
+\]
+The integer-valued homomorphism \(v_i\circ N_{F'/M}\) gives, at
+every level \(n\),
+\[
+ [F':M]\lambda_i
+      =-(v_i\circ N_{F'/M})(\sigma b_\alpha/b_\alpha)
+                  \in\mathbf Z
+      \quad\hbox{inside }\widehat{\mathbf Z}.
+ \tag{F.49.11}
+\]
+If a nonzero ordinary integer multiple of an element of
+\(\widehat{\mathbf Z}\) is an ordinary integer, that element is
+an ordinary integer: the corresponding rational quotient is
+integral at every prime. Hence every \(\lambda_i\in\mathbf Z\).
+This is the fixed-field norm argument of F.46, using normality,
+roots of unity, and finite actual values. It uses neither a
+pro-formation quotient nor divisibility of \(k^\times\).
+
+\proofparagraph{From residues to actual units}
+Let \(X/L\) be regular, connected and affine, with
+\(x_0\in X(L)\), and let its pinned relative topos morphism to
+\(\mathbb G_m\) have compatible Kummer class \(\xi\).
+These are the source hypotheses of CHW Theorem~4.18(5).
+In characteristic zero \(X\) is smooth; connectedness and a
+rational point imply geometric connectedness, as in F.31.
+Descend the geometry and generalized Albanese \(A\) to \(F\)
+in (F.49.4), after the finite extension splitting the boundary
+used in F.29.
+
+The integral comparison of
+\citet[Proposition~4.1, Corollary~4.2 and Proposition~4.3]{F_SpiessSzamuely2003}
+identifies geometric \(H^1\) with the dual of the full Albanese
+Tate module. Write \(H=G_L\triangleleft G_F\) and
+\(W=(V_\ell A)_H\).
+The projected point-Kummer images span \(W\).
+For if a functional annihilated all of them, scale it to an
+integral functional and choose a finite coefficient level at
+which it is nonzero. It defines the finite arithmetic quotient
+used in F.43--F.46's annihilating-functional argument;
+(F.49.6) supplies a decomposition group surjecting onto that
+quotient, contradicting the assumed vanishing.
+The arithmetic quotient, rather than only its geometric kernel,
+is detected here.
+
+Choose finitely many spanning point images. Their coordinates
+and actual multiplicative values descend to one finitely
+generated field \(M/\mathbf Q\), enlarging \(F\) by finite data.
+Normality of \(G_L\) makes \(W\) stable under \(G_F\).
+Conjugating a point cocycle changes it by a coboundary that is
+zero in \(H\)-coinvariants; its actual multiplicative value has
+the cyclotomic transformation rule. The functional is therefore
+\(G_M\)-equivariant on the chosen spanning images, hence on \(W\).
+Apply \citet[Theorem~4.3(ii), p.~676]{F_Jannsen1995} over the
+finitely generated field \(M\). It places this functional in the
+integral unit lattice, for each coefficient prime, with the
+boundary split and normalization at \(x_0\) as in F.29--F.30.
+There is no appeal to a Tate-Hom theorem over the infinite
+extension \(k\) or over \(L\).
+
+For a curve, norm to a punctured rational line. The norm residue
+is multiplied by the residue-field degree, as proved in F.5,
+and (F.49.11) makes the original residue integral.
+For a higher-dimensional source, take a smooth transverse curve
+through a smooth point of each boundary divisor, after the finite
+étale localization in F.27 and F.30. At a finite Kummer level the
+local expression is \(u z^a\); transversality gives the same
+coefficient on the curve. The punctured-line argument again
+makes it integral. The injective divisor matrix of a unit basis
+then yields an actual global unit \(h\).
+Normalize \(h(x_0)=b_0\), the actual value at \(x_0\).
+Its conjugates have equal divisors and ratio one at \(x_0\),
+so it descends. The residual class is geometrically zero at
+each finite Kummer level. Hochschild--Serre makes it constant,
+and evaluation at \(x_0\) makes that constant zero. Thus
+\[
+                              \xi=\kappa(h).
+ \tag{F.49.12}
+\]
+These are exactly the proved norm, transverse-curve and unit
+descent arguments of F.27 and F.45--F.46, with their integrality
+hypothesis supplied by (F.49.11). Equality (F.49.12) concerns the
+compatible Kummer class; the remaining point comparison is needed
+before the full-topos theorem can be applied.
+
+\proofparagraph{Removing the scalar ambiguity in point values}
+Let \(\varphi\) denote the actual geometric point function.
+For a point over any finite extension, (F.49.5) and (F.49.12) give
+\[
+                         \varphi(x)=c_x h(x),\qquad c_x\in k^\times.
+ \tag{F.49.13}
+\]
+Suppose first that the source is a curve and \(h\) is nonconstant.
+If \(h(x)\in L\), the residue degree \([L(x):L]\) is at most the
+degree of the finite map defined by \(h\). Thus sufficiently
+high-degree points have \(h(x)\notin L\), and in particular
+\(h(x)\notin k\). Their images in (F.49.13) are outside \(L\).
+The point function is nonconstant, and the inverse image of
+\(\mathbb G_m\setminus\{1\}\) is a nonempty open.
+
+Pull back \(T-1\) there. The preceding argument gives a unit \(h_1\)
+and \(d_x\in k^\times\) such that
+\(\varphi(x)-1=d_xh_1(x)\).
+Choose a point in this open of degree exceeding the total pole
+degrees of \(h\) and \(h_1\) on the fixed smooth compactification.
+The function
+\[
+                         c_xh-d_xh_1-1
+\]
+vanishes at that point; a nonzero function with that bounded
+pole divisor cannot do so. It is identically zero.
+Consequently \(h_1=Ah+B\), with \(A,B\in k^\times\).
+At every point where \(h(x)\notin k\), comparison of the two
+values in this identity gives \(c_x=-A/B=:c\).
+
+For each \(b\in k^\times\), repeat on the nonempty inverse image
+of \(\mathbb G_m\setminus\{b\}\). On high-degree points the
+already determined coefficient is \(c\); the same pole-degree
+argument gives a unit
+\[
+                              h_b=e_b(ch-b),
+                       \qquad e_b\in k^\times.
+\]
+At a point with \(h(x)\in k\), choose \(b=ch(x)\).
+If \(\varphi(x)\ne b\), this point belongs to the invertible
+locus of the pullback of \(T-b\), but \(h_b(x)=0\), a contradiction.
+Hence \(\varphi=ch\) at all points. The normalization at \(x_0\)
+forces \(c=1\).
+
+If \(h\) is constant, take a nontrivial finite extension \(L'/L\)
+and choose \(\beta\in L'\setminus L\). Hilbertianity supplies
+such an extension. Then \(\beta/h\notin k\).
+All the preceding arguments remain valid over \(L'\).
+By (F.49.13), every point value of \(\varphi\) is in \(hk\subset L\),
+so no closed point maps to \(\beta\). Its inverse image is closed.
+Any nonempty closed subset of a finite-type \(L'\)-scheme has a
+closed point, so that inverse image is empty.
+The function \(T-\beta\) therefore pulls back to a unit on the
+whole source. Its actual values lie in \(L'\); (F.49.5) shows that
+the corresponding unit also has all its point values in \(L'\).
+If that unit were nonconstant, a point of degree exceeding its
+pole degree would contradict this. It is constant.
+Normalize it at \(x_0\). The resulting identities are
+\[
+          \frac{\varphi(x)-\beta}{h-\beta}\in k,\qquad
+          \frac{\varphi(x)}{h}\in k.
+ \tag{F.49.14}
+\]
+Since \(\beta/h\notin k\), these two scalar relations force
+\(\varphi(x)=h\).
+
+For higher-dimensional \(X\), pass to a finite extension and join
+an arbitrary geometric point to \(x_0\) by a smooth geometrically
+connected curve, as in F.29--F.31. The normalized units on that
+curve have the same Kummer class. Their ratio is infinitely
+divisible, hence constant by the divisor argument, and is one
+at \(x_0\). The curve comparison therefore gives the value of
+the same \(h\) at every geometric point of \(X\).
+
+We have proved precisely condition (5) of
+\citet[Theorem~4.18]{F_CHW2024}, for every finite extension as well.
+Regular characteristic-zero schemes equal their absolute weak
+normalizations. That theorem now gives the complete all-scheme
+closed-point-preserving topos reconstruction over \(L\).
+The conclusion uses equality of point functions followed by
+CHW; it does not identify a full topos with its fundamental group.
+
+\proofparagraph{Small geometric groups supply Hilbertianity}
+Open subgroups and quotients of a small profinite group are small.
+An open subgroup of index \(n\) in an open subgroup \(H\subset G\)
+has index \(n[G:H]\) in \(G\). Open subgroups of a quotient pull
+back injectively to subgroups of the same index. These observations
+prove the assertions; no statement about arbitrary closed subgroups
+is being used.
+
+Suppose \(\operatorname{Gal}(k/K_0)\) is small, where
+\(K_0=D\overline{\mathbf Q}\).
+For \(L=Fk\) and \(B=F\overline{\mathbf Q}\), the field \(B/K_0\)
+is finitely generated. Its relative algebraic closure of \(K_0\)
+is finite \citep[Lemma~9.26.11, Tag~030D]{F_StacksFields}.
+Thus \(k\cap B\) is finite over \(K_0\), and restriction identifies
+\[
+ \operatorname{Gal}(L/B)
+     \simeq\operatorname{Gal}(k/(k\cap B)).
+ \tag{F.49.15}
+\]
+This is an open subgroup of the small geometric group.
+The field \(B/\overline{\mathbf Q}\) is finitely generated of
+positive transcendence degree, hence Hilbertian.
+Small Galois extensions of Hilbertian fields are Hilbertian by
+\citet[Theorem~4.4, author p.~9]{F_BarySoroker2008}.
+The more general Hilbert-property base-change result is
+\citet[Theorem~1.2 and Corollary~4.3, pp.~1, 5]{F_BarySorokerFehmPetersen2023}.
+We give the finite-cover argument here to check its arithmetic
+constant quotient and its required point degrees.
+
+Descend a connected finite Galois cover \(Y\to X\), with \(X/L\)
+a smooth geometrically connected curve, to \(B\), enlarging \(F\)
+by finitely many data as needed. Let \(M/B\) be the finite Galois
+constant field of the descended cover. Its connectedness after
+base change to \(L\) gives \(M\cap L=B\).
+Choose a Riemann--Roch function of degree \(d\) on \(X_B\) and
+put \(D_0=d|G|\).
+There are finitely many subextensions of \(L/B\) of degree at
+most \(D_0\). Let \(S/B\) be the compositum of their normal
+closures inside \(L\). It is finite Galois, and
+\(M\cap S=B\). Hence \(Y_B\times_B S\) is connected.
+Hilbert irreducibility over \(B\), applied to the entire cover of
+\(\mathbf P^1\) of degree \(D_0[S:B]\), gives one residue field
+of that full degree. The \(Y_B\)-residue field \(E\) has degree
+\(D_0\) over \(B\) and is linearly disjoint from \(S\).
+
+The extension \(E\cap L\) has degree at most \(D_0\), so it lies
+in \(S\). Therefore \(E\cap L=B\).
+Since \(L/B\) is Galois, \(E\) and \(L\) are linearly disjoint.
+The point degree \(d\) and the residual cover degree \(|G|\)
+survive base change to \(L\). This gives (F.49.6) and unbounded
+detecting degrees. Taking \(X\) to be an open of \(\mathbf A^1\)
+and the Galois closure of an arbitrary irreducible separable
+polynomial over \(L(T)\) proves Hilbertianity directly.
+Its finitely many coefficients descend after increasing \(F\).
+In particular \(k\) is Hilbertian, so the core theorem applies.
+
+\proofparagraph{Positive-transcendence subfields of the small class}
+Let \(k_0\subset L\) have positive transcendence degree over
+\(\mathbf Q\). Take a finite transcendence basis \(T\) of
+\(k_0/\mathbf Q\), put \(A=\mathbf Q(T)\), and enlarge \(F\)
+in (F.49.4) to contain \(T\).
+Let \(R\) be the relative algebraic closure of \(A\) in \(F\).
+Then \(R/A\) is finite and \(F/R\) is regular.
+Let \(N/R\) be the possibly infinite normal closure of \(Rk_0/R\).
+Regularity identifies its \(R\)-conjugates with the corresponding
+\(F\)-conjugates. Since \(L/F\) is normal, all of them lie in \(L\);
+thus \(N\subset L\).
+Regularity is preserved by extension of constants, giving
+\[
+ N\overline{\mathbf Q}\cap F\overline{\mathbf Q}
+                         =R\overline{\mathbf Q}.
+ \tag{F.49.16}
+\]
+Restriction makes
+\(\operatorname{Gal}(N\overline{\mathbf Q}/R\overline{\mathbf Q})\)
+a quotient of \(\operatorname{Gal}(L/B)\), hence small by
+(F.49.15). The extension \(N\overline{\mathbf Q}/R\) is algebraic
+Galois and contains \(\overline{\mathbf Q}\), while \(R\) is
+finitely generated over \(\mathbf Q\) of positive transcendence
+degree. The small-group case and the core theorem apply to it.
+
+Finally \(N\overline{\mathbf Q}/k_0\) is algebraic:
+\(R/A\) is finite, \(\overline{\mathbf Q}/\mathbf Q\) is algebraic,
+and \(A\subset k_0\).
+F.32 descends reconstruction to \(k_0\).
+This proof uses only open subgroups and quotients of small groups.
+It neither asserts closure under arbitrary closed subgroups nor
+requires closure under finite subdirect products.
+No equivalent intrinsic normal-closure classification is claimed
+for this sufficient embedding class.
+
+\proofparagraph{The alternating-product example}
+Direct differentiation and evaluation give
+\[
+ P'_m(X)=(2m+1)(X^m-1)^2,\qquad
+ P_m(\zeta)=\frac{2m^2}{m+1}\zeta\quad(\zeta^m=1).
+ \tag{F.49.17}
+\]
+The \(m\) finite critical points have distinct critical values,
+with exact ramification index three; infinity has index
+\(n=2m+1\). The degree-\(n\) polynomial cover is geometrically
+connected. Its finite branch inertia generators are three-cycles,
+and these generate its geometric monodromy: quotient by their
+normal closure would give a cover of \(\mathbf P^1\) unramified
+outside infinity, which is trivial by Riemann--Hurwitz in
+characteristic zero. All these cycles are even.
+
+A transitive subgroup generated by three-cycles is the alternating
+group on its letters. Here is the elementary support calculation.
+The supports form a connected hypergraph, because its components
+are group orbits. Begin with one support triple and its \(A_3\).
+Adding a triple meeting the old set in two vertices extends the
+alternating group to the one new vertex: conjugating by the old
+alternating group supplies the required three-cycles.
+If a triple meets the old set in one vertex and adds two, conjugate
+it by an old three-cycle moving that vertex. The resulting pair
+of triples share the two new vertices and generate \(A_4\) on
+those two new and two old vertices. This reduces to successive
+one-new-vertex steps. Induction proves the assertion.
+Therefore the geometric splitting group is \(A_{2m+1}\).
+
+For \(m\ge2\), these nonabelian simple groups are pairwise
+nonisomorphic. Their finite collections of Galois extensions
+over \(K_0=\overline{\mathbf Q}(t)\) are linearly disjoint:
+a nontrivial common quotient of one simple group and a product
+of the previous distinct simple groups would force an isomorphism
+with a previous factor, by the elementary Goursat argument.
+This proves (F.49.2).
+Each \(\Omega_m/D\) and \(D\overline{\mathbf Q}/D\) is Galois,
+so their compositum \(k_{\mathrm{alt}}/D\) is Galois.
+
+The product in (F.49.2) is small. An open subgroup of index \(d\)
+defines a continuous coset representation into \(S_d\).
+A simple factor whose order is greater than \(d!\) has trivial
+image, since any nontrivial homomorphism of a simple group
+is injective. Only finitely many factors remain.
+Continuity kills the entire product of the other factors:
+their finite-support subgroup is dense and has already been killed.
+The resulting finite product has finitely many subgroups.
+Conversely every open subgroup contains all but finitely many
+whole factors, so every open subgroup has alternating quotients
+of unbounded degree.
+
+Suppose this field had an alternative finitely generated
+algebraic model \(F_0\subset k_{\mathrm{alt}}\) whose geometric
+normal-closure group was virtually pro-\(\mathcal C\) for an
+allowed proper formation \(\mathcal C\) of F.46.
+Put \(F_1=F_0\mathbf Q(t)\).
+It is finite over both \(F_0\) and \(\mathbf Q(t)\), since all
+these fields have transcendence degree one and
+\(k_{\mathrm{alt}}\) is algebraic over each.
+Finite base change preserves virtual pro-\(\mathcal C\).
+Normality over \(\mathbf Q(t)\) makes
+\(\operatorname{Gal}(k_{\mathrm{alt}}/F_1\overline{\mathbf Q})\)
+a quotient of that base-changed normal-closure group.
+It would be virtually pro-\(\mathcal C\), but it is an open
+subgroup of (F.49.2). Each of its open subgroups has arbitrarily
+large alternating quotients, whereas F.44's elementary
+proper-formation argument excludes every sufficiently large
+\(A_n\) from \(\mathcal C\). This is a contradiction.
+Thus the example is outside the full F.46 sufficient class,
+including changes of model.
+
+\proofparagraph{The universal-tripod example}
+Let \(U=\mathbf P^1_{\overline{\mathbf Q}}\setminus\{0,1,\infty\}\).
+The connected finite étale cover fields of \(U\) are stable
+under composita and normal closure, so their union
+\(k_{\mathrm{tri}}/\overline{\mathbf Q}(t)\) is Galois.
+Every automorphism over \(\mathbf Q(t)\) preserves the algebraic
+constants and the rational branch set \(\{0,1,\infty\}\).
+It permutes these unramified extensions. Hence
+\(k_{\mathrm{tri}}/\mathbf Q(t)\) is also algebraic Galois.
+
+Riemann existence, \citet[Exposé~XII, Theorem~5.1, p.~333]{F_SGA1},
+and geometric base change,
+\citet[Exposé~XIII, 4.5.3, p.~421]{F_SGA1}, identify the group
+with the profinite completion of the fundamental group of the
+complex tripod. All primes are allowed in characteristic zero.
+The complex tripod retracts onto a wedge of two circles, giving
+(F.49.3). A two-generated profinite group is small: its coset
+representations into \(S_d\) are determined by the images of two
+generators, and there are finitely many point stabilizers for
+each such finite action. The small-group theorem therefore
+applies to \(k_{\mathrm{tri}}\).
+
+Every open subgroup \(V\subset\widehat F_2\) is free profinite of rank
+\[
+                         1+[\widehat F_2:V]\ge2.
+ \tag{F.49.18}
+\]
+For completeness, take the finite cover of the two-petal rose
+corresponding to \(V\cap F_2\). The Euler-characteristic calculation
+gives that free rank, and the finite-index subgroup has the full
+induced profinite topology. Its completion is \(V\).
+This is the same Schreier calculation as F.11.
+For every odd \(n\ge5\), the group \(A_n\) is generated by
+\((1\,2\,\cdots\,n)\) and \((1\,2\,3)\); conjugation gives
+the adjacent three-cycles, which generate \(A_n\).
+Thus every \(V\), and each of its open subgroups, surjects onto
+alternating groups of unbounded degree. It cannot be virtually
+pro-\(\mathcal C\) for any proper formation allowed in F.46.
+
+The obstruction again survives every change of finitely generated
+algebraic model. If \(F_0\subset k_{\mathrm{tri}}\) were such
+a model, let \(N/F_0\overline{\mathbf Q}\) be its geometric
+normal closure and put
+\[
+                         B=F_0\overline{\mathbf Q}\,\mathbf Q(t).
+\]
+This subfield of \(k_{\mathrm{tri}}\) is finite over both
+\(F_0\overline{\mathbf Q}\) and \(\overline{\mathbf Q}(t)\):
+both are finitely generated one-variable fields over
+\(\overline{\mathbf Q}\) inside a common algebraic extension.
+The group \(\operatorname{Gal}(N/B)\) is open in the proposed
+virtually pro-\(\mathcal C\) group. Since
+\(k_{\mathrm{tri}}/\overline{\mathbf Q}(t)\) is Galois,
+restriction surjects onto
+\(\operatorname{Gal}(k_{\mathrm{tri}}/B)\), an open subgroup
+of \(\widehat F_2\). Quotients preserve virtual pro-\(\mathcal C\);
+(F.49.18) and the unbounded alternating quotients contradict it.
+
+Finally, the covers adjoining roots of \(t\) or \(1-t\) ramify
+only at the removed points, so all these roots are in
+\(k_{\mathrm{tri}}\). At the ordinary point \(t=2\), every
+finite subextension is unramified. A coherent prolongation of
+this discrete valuation to the union still has value group
+\(\mathbf Z\) and gives \(v(t-2)=1\). Therefore \(t-2\) is not
+a square in \(k_{\mathrm{tri}}\).
+This explicitly shows why (F.49.5) is an inclusion, and why
+radical closedness must not be added to the hypotheses.
+
+\proofparagraph{Source and scope}
+The exact finite supplement
+\path{code/F_small_geometric_checks.py} and its JSON output
+check eleven displayed polynomial identities, two alternating
+generating-pair examples, and three support-induction examples.
+These checks supplement the all-degree proofs above; they do not
+test infinite field extensions or reconstruction.
+
+The Hilbertianity of small Galois extensions is a known input,
+attributed above with the numbering of the primary versions
+actually opened. The proof retains the arithmetic constant
+field and all point degrees required for reconstruction.
+The generalized Albanese and integral Tate-Hom inputs are used
+only at the previously proved and cited loci.
+Both strict examples are proved directly, not by assuming that
+reconstruction is preserved by filtered unions.
+The focused primary-literature search and version distinctions
+are recorded in \path{audit/F_small_geometric_literature.md}.
+No priority or necessary-and-sufficient field classification is
+claimed; F.9 remains unresolved.
+\end{proof}
