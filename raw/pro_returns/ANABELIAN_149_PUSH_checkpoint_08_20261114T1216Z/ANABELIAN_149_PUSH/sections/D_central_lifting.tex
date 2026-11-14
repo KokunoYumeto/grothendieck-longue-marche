@@ -1,0 +1,279 @@
+\subsection{Central lifting and the remaining compatibility problem}
+
+The local theorem checked in D.19 has a further global consequence.  It
+removes the obstruction to every finite-rank cuspidally central lifting
+problem.  This assertion concerns a fixed base curve; passage through
+its finite étale neighbourhoods requires additional compatibility.
+
+\begin{claim}{D.23}{Proved}\label{clm:D23}
+Let $V/k$ be a smooth geometrically connected hyperbolic curve over a
+number field, and let $s:G_k\to\pi_1(V)$ be a continuous section.  For a
+finite reduced divisor $D\subset V$, put $W=V-D$ and let
+$\pi_1(W)^{\mathrm{cc},V}$ denote the maximal quotient of $\pi_1(W)$
+whose kernel over $\pi_1(V)$ is abelian and has trivial conjugation
+action by $\pi_1(V_{\bar k})$.  Then $s$ lifts continuously to
+$\pi_1(W)^{\mathrm{cc},V}$.
+
+At this fixed $V$, the lifts can be chosen compatibly for all $D$,
+giving a continuous lift to
+\[
+ G_V^{\mathrm{cc}}:=
+ \varprojlim_{D\subset V\text{ finite reduced}}
+          \pi_1(V-D)^{\mathrm{cc},V}.
+\]
+The assertions hold after every finite extension of $k$ and on every
+finite étale neighbourhood of the section.  In particular, on each
+such neighbourhood the section annihilates the arithmetic Chern
+classes of all line bundles.  No compatibility between the choices
+on different finite étale neighbourhoods is asserted here.
+\end{claim}
+\begin{proof}
+Write
+\[
+ T_D=\operatorname{Res}_{D/k}\mathbf G_m
+     =\prod_{d\in|D|}\operatorname{Res}_{k(d)/k}\mathbf G_m,
+ \qquad
+ T(T_D)=\prod_{d\in|D|}
+    \operatorname{Ind}_{G_{k(d)}}^{G_k}\widehat{\mathbf Z}(1).
+\]
+Let $\Delta\subset V\times_k V$ be the diagonal.  The torus torsor
+\[
+ F_D=\operatorname{Res}_{D\times_k V/V}
+   \operatorname{Isom}
+   \bigl(\mathcal O_{V\times V}(\Delta)|_{D\times V},
+         \mathcal O_{D\times V}\bigr)\longrightarrow V
+\]
+is the construction of Borne--Emsalem--Stix
+\cite[Definition 2.1]{D_BorneEmsalemStix2015}.  On $W$ the diagonal
+does not meet $D\times W$, so its defining section gives a canonical
+trivialization and a map $W\to F_D$ over $V$.
+
+A hyperbolic curve in characteristic zero is an étale $K(\pi,1)$;
+in particular $\pi_2^{\mathrm{et}}(V)=0$.  The torsor fibration and
+its geometric action therefore give an exact sequence
+\[
+ 1\longrightarrow T(T_D)\longrightarrow\pi_1(F_D)
+   \longrightarrow\pi_1(V)\longrightarrow1,
+ \tag{D.23.1}
+\]
+where the action on its kernel factors through $G_k$.
+The canonical map from $W$ identifies
+\[
+ \pi_1(W)^{\mathrm{cc},V}\simeq\pi_1(F_D).
+\]
+These are precisely Propositions 3.1, 3.4 and 3.5 of
+\cite{D_BorneEmsalemStix2015}.  Although the later applications in
+that paper specialize to proper curves, these three statements and
+the torsor construction apply to the present $V$.  Proposition 4.4
+identifies the extension class with $c_1(F_D)$.  Thus the obstruction
+to lifting $s$ is
+\[
+ c_D=s^*c_1(F_D)\in H^2\bigl(k,T(T_D)\bigr),
+ \tag{D.23.2}
+\]
+with continuous cohomology of the inverse system of torsion modules;
+its vanishing is equivalent to a continuous lift, as in
+\cite[Lemma 4.5]{D_BorneEmsalemStix2015}.
+
+We first prove that (D.23.2) vanishes at every place of $k$.  At a
+finite place $v$, D.6 and D.19 say that $s_v$ is a point section or a
+cuspidal section.  If it comes from $x_v\in V(k_v)$, the fibre
+$F_{D,x_v}$ is a torsor under the quasi-trivial torus $T_D$.
+Hilbert 90 gives $H^1(k_v,T_D)=0$, so that this fibre has a $k_v$-point.
+That point provides the required local lift.
+
+For a cusp $b\in(\overline V-V)(k_v)$, carry out the same diagonal
+construction over the smooth completion $\overline V$.  It extends
+$F_D$ and has a canonical section over $\overline V-D$, since the
+diagonal is disjoint from $D\times(\overline V-D)$.  Restricting this
+section to the punctured henselian neighbourhood of $b$ lifts its
+whole decomposition group to $\pi_1(F_D)$.  Hence it lifts the given
+cuspidal section, including its actual tangential cocycle.  No
+rationality assumption on that cocycle is used.  At a real place,
+Mochizuki's real section theorem identifies $s_v$ with a component
+of $V(k_v)$, hence with the section of a point in that component
+\cite[Corollary 3.13]{D_Mochizuki2003Real}; the point argument applies.
+At a complex place the Galois group is trivial.  These arguments
+show $c_D|_{k_v}=0$ for all $v$.
+
+Here the local-to-global step has no inverse-limit ambiguity.  For a
+number field $E$ and $n\mid m$, the transition
+\[
+ H^1(E,\mu_m)=E^\times/E^{\times m}
+   \longrightarrow H^1(E,\mu_n)=E^\times/E^{\times n}
+\]
+is the natural surjection.  On the cofinal sequence $n!$ its
+$\varprojlim{}^1$ is zero.  The Kummer sequence and Shapiro's lemma
+therefore give
+\[
+ H^2\bigl(k,T(T_D)\bigr)
+ \simeq \prod_{d\in|D|}\varprojlim_n
+                   \operatorname{Br}(k(d))[n].
+ \tag{D.23.3}
+\]
+Equivalently, this is Proposition 4.2 of
+\cite{D_BorneEmsalemStix2015} for a quasi-trivial torus.
+Under the local Shapiro isomorphisms, localization at all places of
+$k$ includes every completion of every $k(d)$.  Brauer--Hasse--Noether
+injectivity
+\[
+ \operatorname{Br}(E)\hookrightarrow
+          \bigoplus_w\operatorname{Br}(E_w)
+\]
+for each of these number fields
+\cite[Chapter VIII, Theorem 4.2]{D_MilneCFT2020}
+annihilates every finite-level component of $c_D$.  Equation
+(D.23.3) then gives $c_D=0$, proving existence of the lift.
+
+For compatibility at the fixed base curve, choose once and for all
+a geometric generic base point.  For disjoint reduced divisors one
+has canonically
+\[
+ F_{D_1\amalg D_2}=F_{D_1}\times_V F_{D_2}.
+\]
+The exact sequences (D.23.1), applied also to the product torsor,
+show that the natural map
+\[
+ \pi_1(F_{D_1\amalg D_2})
+  \longrightarrow
+ \pi_1(F_{D_1})\times_{\pi_1(V)}\pi_1(F_{D_2})
+\]
+is an isomorphism: it is an isomorphism on both the kernel
+$T(T_{D_1})\times T(T_{D_2})$ and the quotient $\pi_1(V)$.
+Choose a lift of $s$ for each one-point divisor $\{d\}$.  The fibre
+products of these lifts give compatible lifts for every finite $D$.
+Their inverse limit is continuous because each coordinate is
+continuous.  This establishes the second assertion without taking
+an inverse limit of arbitrary infinite sets of choices.
+
+The argument applies unchanged over every finite extension and to
+every finite étale neighbourhood.  Finally, a line bundle on a
+regular curve is represented by an integral combination of closed
+points.  For a point $d$, the norm homomorphism
+$T_d\to\mathbf G_m$ sends the torsor Chern class just considered to
+the Chern class of $\mathcal O_V(d)$, up to the harmless sign from
+the convention for the isomorphism torsor.  Its pullback along $s$
+is zero.  Additivity proves the claimed vanishing for all line
+bundles, uniformly on those neighbourhoods.
+\end{proof}
+
+\begin{claim}{D.24}{Refuted}\label{clm:D24}
+The following compatibility inference is false: a surjective trace
+map between permutation Tate modules induces a surjection on
+$H^1$ over a number field; consequently, after splitting all cusp
+residue fields, arbitrary lower central lifts can be lifted upstairs
+and descended by taking invariants.  The failure already occurs for
+the trace from $\mathbf Q(i)$ to $\mathbf Q$ and the Kummer class
+of $3$, detected modulo $2$.
+\end{claim}
+\begin{proof}
+Let $L=\mathbf Q(i)$ and consider the surjection of $G_{\mathbf Q}$-modules
+\[
+ M_1=\operatorname{Ind}_{G_L}^{G_{\mathbf Q}}
+             \widehat{\mathbf Z}(1)
+   \xrightarrow{\operatorname{tr}}
+ M_2=\widehat{\mathbf Z}(1).
+ \tag{D.24.1}
+\]
+After restriction to $G_L$, this adds the two copies of
+$\widehat{\mathbf Z}(1)$.  Shapiro, Kummer theory and the vanishing
+of $\varprojlim{}^1$ for the finite groups $H^0(L,\mu_n)$ identify
+its map on $H^1$ with
+\[
+ \widehat{L^\times}\xrightarrow{N_{L/\mathbf Q}}
+           \widehat{\mathbf Q^\times},
+ \qquad
+ \widehat{E^\times}:=\varprojlim_n E^\times/E^{\times n}.
+ \tag{D.24.2}
+\]
+This is the usual norm, rather than an inclusion or a choice of
+one coordinate: the trace in (D.24.1) is the corestriction map under
+Shapiro, and the Kummer connecting maps commute with corestriction.
+
+These modules occur in an actual neighbourhood problem.  Take
+\[
+ V=\mathbf P^1_{\mathbf Q}-\{0,1,\infty\},\qquad
+ V'=\mathbf P^1_{\mathbf Q}-\{0,1,-1,\infty\},\qquad
+ t=z^2:V'\longrightarrow V.
+\]
+This is a finite étale cover.  The point section at $t=4$ lifts to
+the point section at $z=2$.  Delete the lower point $d=-1$; its
+inverse image in $V'$ is the degree-two divisor
+$D'=\operatorname{Spec}\mathbf Q(i)$.  The lower and upper
+cuspidally central kernels are respectively $M_2$ and $M_1$.
+The cover is unramified at both geometric points over $d$, so each
+upstairs inertia generator maps identically to the downstairs
+generator; the induced kernel map is (D.24.1).  The actual point
+sections at $4$ and $2$, which avoid these divisors, give compatible
+origins for the two torsors of central lifts.  Twisting the lower
+origin by $\kappa(3)$ cannot be lifted to an upper central lift of
+the specified section at $z=2$, by the following norm obstruction.
+Thus the trace failure is realized by the same finite étale
+neighbourhood construction whose compatibility is at issue.
+
+The class of $3$ is not in the image of (D.24.2).  Indeed, $3$ is
+inert and unramified in $L$, and
+\[
+ v_3\bigl(N_{L/\mathbf Q}(a)\bigr)
+       =2v_{(3)}(a)\qquad(a\in L^\times).
+\]
+Thus every norm has even $3$-adic valuation, even after multiplying
+by a rational square, whereas $v_3(3)=1$.  This proves already that
+\[
+ L^\times/L^{\times2}\longrightarrow
+ \mathbf Q^\times/\mathbf Q^{\times2}
+\]
+misses $[3]$.  Any hypothetical preimage in (D.24.2) would give a
+preimage here, a contradiction.  An elementary certificate uses
+$N(a+bi)=a^2+b^2$: the only solution of
+$a^2+b^2=0$ in $\mathbf F_3^2$ is $(0,0)$, so the valuation of a
+nonzero rational sum of two squares is even.  The complete
+nine-pair check and the two-coset trace are recorded by
+\path{code/D_norm_compatibility_certificate.py} and
+\path{audit/D_norm_compatibility_certificate.json}.
+
+Put $M=\ker(\operatorname{tr})$.  The long exact sequence also
+shows that $H^2(\mathbf Q,M)\to H^2(\mathbf Q,M_1)$ need not be
+injective: the connecting image of $[3]$ is nonzero and maps to
+zero.  This is the precise failure in the older descent argument.
+
+For source accuracy, the split-fibre surjectivity in Sa\"idi's
+2010 preprint, printed p.37, is valid: a sum of copies of the
+identity has an equivariant coordinate section when all fibres
+are rational.  The failure is the subsequent assertion that
+surjectivity survives taking
+$\operatorname{Gal}(k_S/k)$-invariants, on pp.37--38, and the
+alternative claim of surjectivity of
+$H^1(G_k,M_1)\to H^1(G_k,M_2)$ on p.38
+\cite[proof of Theorem 2.6(ii)]{D_Saidi2010}.
+The map in that source sends each upstairs inertia summand
+identically to its downstairs summand, and is exactly a trace of
+permutation modules.  In the present example,
+$H^0(G_L,M_1)=H^0(G_L,M_2)=0$, since a number field has no
+nonzero cyclotomic Tate invariant.  Inflation--restriction thus
+identifies the invariant $H^1$ groups over $L$ with the corresponding
+$H^1$ groups over $\mathbf Q$.  The norm counterexample therefore
+refutes the asserted invariant-surjectivity itself.
+
+There is a separate, explicit finiteness issue in passing through
+all neighbourhoods.  Sa\"idi's later condition $(H_\Sigma)$ requires
+$H^1(G_k,A)$ to be finite for every finite $G_k$-module whose order
+is supported on $\Sigma$; his inverse-limit argument in Lemma 2.3.4
+uses nonempty finite sets of splittings
+\cite[Definition 2.3.3 and Lemma 2.3.4]{D_Saidi2019}.
+No number field satisfies this condition for a nonempty $\Sigma$:
+for $\ell\in\Sigma$, the Kummer group
+$H^1(k,\mu_\ell)=k^\times/k^{\times\ell}$ is infinite, as follows
+by choosing successively elements with independent prime-valuation
+coordinates using weak approximation.  Moreover,
+$\widehat{\mathbf Q^\times}$ with its inverse-limit topology is
+not compact, since its quotient
+$\mathbf Q^\times/\mathbf Q^{\times2}$ is infinite and discrete.
+
+D.23 consequently proves finite-rank and fixed-base central
+lifting, while this argument prevents the specified automatic
+descent or compactness step from supplying compatible lifts through
+all finite étale neighbourhoods.  It does not prove that such a
+compatible system fails to exist, and it does not refute the
+cuspidalisation theorem under additional hypotheses, or D1--D4.
+\end{proof}
