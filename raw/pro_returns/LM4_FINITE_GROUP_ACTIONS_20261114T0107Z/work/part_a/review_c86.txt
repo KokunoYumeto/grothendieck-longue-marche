@@ -1,0 +1,101 @@
+Independent audit of C.86
+========================
+Reviewer: /root/part_a_f21
+Date: 2026-11-13 UTC
+Verdict: PASS. No reviewed source was edited.
+
+Snapshot hashes
+---------------
+work/part_b/c86.tex
+  SHA256 43ad21160489ddedc01f67b71eb1170793c215c7bddb6b77278a7d9aeb8c5f39
+work/part_b/c86_result.json
+  SHA256 f622de578b60f2c632e6e64c097045a6b1261665c2f8c562ade5db0ffb023f26
+work/part_b/code/c86_spiral_topology_certificate.py
+  SHA256 6632630aac2dbe07076866035e691dc77716c8535e2b2ff3e098003f87c02c53
+work/part_b/code/c86_spiral_topology_output.json
+  SHA256 d3220339d05c6ae791e90e4b5ee5c10c8e39284b2d89a851d84a3de6e1af74e8
+
+Independent execution
+---------------------
+The producer was copied unchanged to work/part_a/c86_audit_run and run
+there, preserving the staged producer and output. All 63 exact checks
+passed. The resulting JSON is byte-identical to the staged JSON and has
+the output hash above. The independent stdout is
+work/part_a/c86_audit_run/stdout.txt.
+
+Analytical review
+-----------------
+1. The global spiral estimate uses the actual p and j. For displacement
+M<=(1+r)/2, both logarithm arguments are at least (1+r)/2. The radial
+estimate contributes 2M/(1+r), and the phase estimate contributes at most
+the same amount. For larger M the disk diameter gives the asserted global
+bound. This handles z=0 and does not require an asymptotic estimate.
+
+2. Uniform boundary fixation over a compact family gives (C.86.6): a
+contrary sequence has a convergent subsequence of maps and a convergent
+subsequence of disk inputs approaching one boundary point. Uniform
+convergence and that fixed boundary value contradict the contrary bound.
+No convergent phase of the original plane inputs is assumed in this step.
+
+3. The normalized-output boundedness is proved before taking any nonzero
+output limit. The two integer translates at c=0 and c=1 have exact output
+difference m_i(1)-m_i(0), bounded by |y_i|+1. An unbounded normalized output
+at c=0 therefore makes the two output spiral values approach one another
+by the global estimate. The two input values have a strictly positive
+limiting separation after cancelling the same unit factor. Their phase
+difference is pi/4-(log 2)/2>0. The uniform boundary estimate forces the
+same input/output separation, yielding the required contradiction.
+
+4. Once (U_i,V_i) has a convergent subsequence, every fixed real c with
+c+U+iV nonzero gives the literal S1-valued phase equality. Cancelling the
+common unit factor does not choose a real argument or a winding integer.
+The logarithmic derivative is i(c+U-V)/((c+U)^2+V^2). Its comparison with
+the target derivative gives exactly the displayed polynomial identity.
+The coefficient of c^2 gives U+V=1, and the constant coefficient then gives
+2U^2=0 over the reals, hence U=0 and V=1. The possible V=0 limit omits only
+one real c; differentiation on a remaining open interval proves the same
+polynomial identity and excludes that degenerate limit. This does not
+divide by V or by an output value at its zero.
+
+5. Every subsequential limit of the bounded pair is consequently (0,1).
+This proves the desired sublinearity along every sequence and hence the
+uniform compact-family tail assertion. Applying the argument to the
+compact inverse family retains the original inverse condition.
+
+6. C.84.6 turns that periodic sublinearity into a global ratio tending to
+zero. The global spiral estimate then proves actual identity extension
+of pFp^{-1} at every original boundary point. The extension is a continuous
+bijection of the compact disk, so it is a homeomorphism with the specified
+inverse. Interior conjugation and boundary identity are mutually inverse
+group maps. No boundary extension of p*j^{-1} is used for this conclusion.
+
+7. Forward topology is controlled by the actual C.84.7 constant c_H and
+the original source-height weight: |F(z)-H(z)| <= ||F-H||_* (1+|y|), while
+(1+|y|)/(1+|H(z)|)<=c_H. The spiral estimate gives the stated bound with
+constant 4c_H, and the same calculation for inverses proves map-and-inverse
+continuity. For inverse continuity, a convergent sequence together with
+its limit is compact. The necessity argument gives common weighted tails.
+On each compact period rectangle the disk images lie in one compact
+interior set, so p^{-1} is uniformly continuous there and the conjugates
+converge uniformly. Combining the compact rectangles and the common tails
+proves both weighted convergences. Both spaces are metrizable, so this
+sequential argument proves continuity of the actual inverse topology map.
+
+8. The rotation R(z)=iz carries T_1 to the original T_i, and both j and p
+commute with R. The displayed composite Theta and its inverse therefore
+have the exact operator labels, interior formulas, and identity boundary
+extensions. The two sequences e^(2*pi*k)-1 and e^((2*k+1)*pi)-1 give distinct
+limits i and -i for the interior coordinate at the same source boundary
+point 1. This proves the stated nonextension by actual limiting sequences,
+while the previously established group maps remain continuous.
+
+9. A based sphere family is carried continuously by Theta^{-1}, filled by
+the retained C.85 construction, and returned by Theta. The identity stays
+fixed and both map and inverse topologies are preserved. This gives exactly
+the claimed positive homotopy groups of the whole specified C.72 relative
+centralizer. The claim and metadata retain the general C.12 problem as
+open and make no further global contractibility assertion.
+
+The symbolic checks agree with the analytical proof and have the limited
+scope stated in the metadata. The compact-family and topology assertions
+are established in the proof, not inferred from the finite checks.

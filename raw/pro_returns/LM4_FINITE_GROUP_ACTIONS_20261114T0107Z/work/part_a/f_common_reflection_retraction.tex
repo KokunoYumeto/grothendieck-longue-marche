@@ -1,0 +1,109 @@
+\begin{claim}{F.13}{Proved}{The exact homology kernel and the retraction obstruction}
+Retain the specified injection
+$\widehat\phi$ of F.12.2.  Write $e_0,e_\infty,e_j^+,e_j^-$
+for the twelve positive source cusp classes, with the
+single relation
+\[
+ e_0+e_\infty+\sum_{j=0}^4(e_j^++e_j^-)=0.
+                                                               \tag{F.13.1}
+\]
+For $A=\Z$, $\widehat\Z$, or $\Z_p$ at any prime $p$,
+the actual first-homology map induced by $\phi$ has exact
+kernel
+\[
+ \ker\phi_{*,1}
+   =A\,k,\qquad
+ k=e_0-e_\infty
+   =2e_0+\sum_{j=0}^4(e_j^++e_j^-).
+                                                               \tag{F.13.2}
+\]
+Here the second expression uses the genuine basis
+omitting $e_\infty$.  In particular $k$ is primitive
+over $\Z$ and has nonzero reduction modulo every prime.
+
+The discrete map, its full profinite completion, and its
+maps to maximal pro-$p$ completions have no homomorphic
+left inverse on the stated domains, continuous where
+profinite groups are involved.  The same obstruction
+holds after every further target-forgetting map.
+No assertion about a finite-index target subgroup, the
+injectivity of a forgotten map, or the full equalizer
+F.12.5 is made.
+\end{claim}
+\begin{proof}
+To prove the kernel equality, write an arbitrary class
+in that basis as
+\[
+ z=c e_0+\sum_{j=0}^4(p_j e_j^++m_j e_j^-).
+\]
+The twenty target winding characters are the actual
+integral basis of F.12.14.  Their pullbacks from
+F.12.3 and F.12.15 give
+\[
+ \begin{aligned}
+ L_{j+1}(\phi_*z)&=2(p_j-m_j),\\
+ M_{j+1}(\phi_*z)&=c-2m_j,\\
+ N_{i+1,j+1}(\phi_*z)
+   &=c+p_k+m_k-2m_i-2m_j,
+      &2k&\equiv i+j\pmod5\quad(i\ne j).
+ \end{aligned}                                                \tag{F.13.3}
+\]
+Multiplication by two is injective in each of the
+specified coefficient rings.  Vanishing of the first
+two rows therefore gives $p_j=m_j=t$ for all $j$ and
+$c=2t$.  The third row then vanishes identically.
+This proves (F.13.2), without identifying an actual
+group kernel with its abelian image.
+
+For completeness, at a specified primary coordinate
+$p$, the vector $k$ has ten entries equal to one in
+the displayed $\Z_p$-basis.  It is consequently
+nonzero over $\Z_p$ and modulo $p$.  In the full
+$\widehat\Z$-module, multiplying $k$ by the idempotent
+whose $p$-coordinate is one and whose other primary
+coordinates are zero gives a nonzero kernel vector
+supported exactly at that primary coordinate.
+
+There is no homomorphic left inverse of the discrete
+map $\phi_*:\pi_1(Y)\to P\Gamma_{0,8}$ and no continuous
+homomorphic left inverse of its full profinite map.
+Indeed such a left inverse would induce a left inverse
+on abelianizations, contradicting (F.13.2).
+More precisely, for every prime $p$ there is no
+continuous homomorphism
+\[
+ r_p:\widehat{P\Gamma}_{0,8}
+                  \longrightarrow\pi_1(Y)^{(p)}
+ \quad\hbox{with}\quad
+ r_p\widehat\phi=\pi_p,
+                                                               \tag{F.13.4}
+\]
+where $\pi_p$ is the actual maximal pro-$p$ quotient
+map.  Apply abelianization modulo $p$ to this equality:
+its left side kills $k\bmod p$, whereas its right side
+is the identity on the source's $\F_p$-homology.
+The same argument rules out a left inverse of the
+induced map between maximal pro-$p$ completions.
+
+Every homomorphism obtained by first applying
+$\widehat\phi$ and then forgetting any target labels
+also kills $k$ on first homology, by functoriality.
+Thus none of those composites has a homomorphic
+left inverse.  This does not decide which such
+composites are injective, nor does it decide the
+equalizer F.12.5.  The obstruction is stated for
+these displayed domains; passing to a finite-index
+target subgroup would change its first-homology
+map and is not covered by this argument.
+
+The separate exact certificate
+\path{code/part_a/common_reflection_retraction.py}
+constructs all twenty divisor rows from (F.13.3),
+checks the source puncture-sum relation and the
+primitive kernel vector, computes rank ten over
+$\Q$, and checks the explicit nonzero kernel vector
+in the listed finite primary reductions.  Its
+finite reductions verify the displayed formulas;
+the uniform statement for every prime follows
+from the coefficient-one argument above.
+\end{proof}

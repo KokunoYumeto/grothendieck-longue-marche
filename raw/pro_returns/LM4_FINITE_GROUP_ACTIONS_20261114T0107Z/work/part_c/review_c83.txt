@@ -1,0 +1,69 @@
+Independent audit of C.83
+=========================
+Reviewer: part_c_review525
+Verdict: PASS
+
+Scope
+-----
+Read the complete proof, result metadata, bibliography entry, and exact certificate. Reran the producer successfully: 143 exact checks. Reopened the original arXiv:2602.07362v1 PDF and read Definition 2.6 on printed page5 and equation(2) on printed page6. These specify the vague counting-measure metric and its sum with ordered-coordinate convergence. No asphericity, normalization, inverse-limit, or completeness theorem from that preprint is used in C83 or accepted in this audit.
+
+Actual action and source topology
+---------------------------------
+The maps j(z)=z/(1+norm(z)) and j^{-1}(w)=w/(1-norm(w)) are inverse homeomorphisms between the plane and the open original disk. Integer horizontal translations are free and proper by the compact-set criterion. The evaluation of a convergent sequence of their conjugates at j(0) forces the corresponding integer to remain bounded and then to stabilize, proving closed discreteness in the indicated homeomorphism group.
+
+The radial estimate norm(j(z+v)-j(z)) <= 2 norm(v)/(1+norm(z)) is correct: split the difference using the denominator 1+norm(z), and bound the reciprocal-denominator term by the reverse triangle inequality. For each bounded translation parameter set this estimate tends uniformly to zero at infinity, for both maps and inverses. Thus the literal translations extend to maps fixing every original boundary point and form the actual transitive commuting subgroup required by C81. The proof retains the original uniform map-and-inverse metric D on the closed disk.
+
+Evaluation, grid and configuration topology
+-------------------------------------------
+The enumeration by finite lattice shells is fixed explicitly. The action q on labels is (k,l)->(k+4,l); no orbit label is forgotten. Homeomorphisms carry the grid to locally finite sets because their inverse images of compact sets are compact.
+
+The continuity proof for evaluation uses both components needed by the stated topology. Individual coordinates converge. For a compact support K, uniform inverse convergence places all preimages of j(K) in a single compact interior neighborhood of h^{-1}(j(K)). Only finitely many original vertices lie there. Every test-function evaluation is consequently eventually a fixed finite sum of continuous coordinate evaluations. This proves vague convergence for this exact map.
+
+The width-one-quarter grid with consistent rectangle diagonals is Q-invariant. Every closed star has horizontal width one-half, so its quotient map is injective under the unit deck translation. The common Euclidean diameter bound and the radial estimate force the original-disk diameters of its lifted stars to tend to zero as the grid vertices escape. Only finitely many vertices lie in a fixed planar compact set. Thus the full lifted triangulation has the finite-large-star property asserted in C82.
+
+The explicit target loop
+-------------------------
+The shears F_{n,s}(x,y)=(x+sn b(y-n),y), b(u)=max(0,1-4 abs(u)), have the displayed inverses and commute with every horizontal integer translation. Their displacement is bounded by n for fixed n. The radial estimate proves extension by the identity at the original circle and joint continuity in s for both maps and inverses. At integer row l only l=n moves. The formula for the entire labelled row is exact and preserves the q-label relation.
+
+On I_n=[2^{-n-1},2^{-n}], the amplitude s_n(t) is zero at both endpoints and equals one at t_n=3*2^{-n-2}. Adjacent definitions therefore match. At t=0 every fixed finite label set eventually avoids the moving row, giving the product-metric tail bound uniformly in amplitude. Every fixed compactly supported test function also eventually avoids that entire row and all its images, because the shear leaves y unchanged. Its counting-measure evaluation is then exactly unchanged. These two statements establish continuity of the actual evaluation-image loop at zero; the other parameter points follow from the already proved fixed-n continuity.
+
+The explicit based target contraction
+-------------------------------------
+The final added map C(r,t) replaces each shear amplitude by (1-r)s_n(t). For each parameter rectangle it is continuous. The finite-label tail bound and compact test-support argument remain uniform over r in [0,1], proving joint continuity also along t=0. Its four based faces are exactly C(0,t)=c(t), C(1,t)=ev(1), and C(r,0)=C(r,1)=ev(1). Thus the target loop is explicitly null-homotopic in the actual evaluation image. This strengthening is verified and does not change the producer. The displacement display is now numbered C83.12.
+
+The universal obstruction to lifting
+------------------------------------
+For every proposed lift from identity, the label (0,n) at t_n forces j(0,n) to map to j(n,n). The first coordinate alone gives uniform displacement at least n/(1+sqrt(2)n)>1/3 for every n>=1. Since t_n tends to zero, this contradicts continuity in the original closed-disk metric. The argument applies to every map with the required evaluation, independently of its behavior between vertices, so it rules out all lifts rather than merely the displayed representatives. Path lifting for either a Serre or Hurewicz fibration would supply such a lift with a point as the initial domain; those properties are therefore refuted for this exact evaluation map and target topology.
+
+Scope retained
+--------------
+The constructed loop has the verified explicit based null-homotopy in the stated evaluation-image topology. The proof does not supply a loop in the actual centralizer with a nonzero homotopy class. It also does not refute asphericity of the cited configuration space. General C12 remains open. Every target value is the evaluation of an actual closed-disk Q-commuting boundary-fixed homeomorphism, and the original operator labels remain fixed throughout.
+
+Source verification
+-------------------
+Primary source opened: https://arxiv.org/pdf/2602.07362v1
+Title: Topological fundamental groups of locally finite infinite configuration spaces and infinite braids.
+Author: Jyh-Haur Teh.
+Version/date: arXiv:2602.07362v1, 7 February2026; 43 pages.
+Inspected clauses: Definition2.6, printed page5, and equation(2), printed page6; nearby Lemma2.5 states the countable test-family conventions.
+Retrieval records: turn1139view0 and turn1140view0. Only the definitions named in the bibliography are relied on.
+
+Executed certificate
+--------------------
+Producer: work/part_b/code/c83_evaluation_path_certificate.py
+Independent stdout: work/part_c/c83_evaluation_path_audit_stdout.txt
+Result: PASS, 143 exact checks. The radial inverse, shear inverse and composition, deck labels, row values, interval endpoints and peaks, strict displacement estimate and exact limit are checked symbolically/rationally. The infinite continuity and universal nonlifting assertions are the proof steps audited above.
+No corrections to C83 were required.
+
+Reviewed at UTC: 2026-11-13T19:15:13.625595+00:00
+
+Exact reviewed snapshot hashes
+-----------------------------
+{
+  "work/part_b/c83.tex": "33c766356d2124a148167158c326bdcf70757088ebc2f9a9a913aba09b9550e1",
+  "work/part_b/c83_result.json": "7e2204e4853ceb11213b319b8e67947d1f71a33558a34431a905911451fe041e",
+  "work/part_b/c83_references.bib": "ce7dfa89f8dd7c4910fb60ca1e1f68813c7b7026c1b6174608891a8c61b159e3",
+  "work/part_b/code/c83_evaluation_path_certificate.py": "94c794019674b96282cab6fdde94be155bf22e4aa88062ed7189cd163c3141b0",
+  "work/part_b/code/c83_evaluation_path_output.json": "841216547c215325ff79763562569691fa583d3fac05e1935eda814d94be27c9",
+  "work/part_c/c83_evaluation_path_audit_stdout.txt": "841216547c215325ff79763562569691fa583d3fac05e1935eda814d94be27c9"
+}
