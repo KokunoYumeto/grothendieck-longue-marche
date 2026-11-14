@@ -1,0 +1,236 @@
+\subsubsection*{The smooth-curve step in cyclotomic reconstruction}
+
+Fix an algebraic subfield $k\subset\overline{\mathbb Q}$ for which
+$k\subset F\mathbb Q^{\mathrm{ab}}$ for some number field $F$.
+Every finite extension of $k$ has the same property, after enlarging
+$F$. Write $K=\overline{\mathbb Q}$. We use the rational-source
+integrality lemma proved above, with all multiplicative completions
+taken as $\varprojlim_n A/A^n$.
+
+\emph{Arithmetic input on abelian varieties.}
+For each finite extension $L/k$ and each abelian variety $A/L$,
+\[
+ \bigcap_{n\geq1} nA(L)=0.                                  \tag{F47.1}
+\]
+Indeed, the finite presentation of $A$ and a finite set of generators
+of $L/k$ allow a number field $F_0$ such that
+$L\subset F_0\mathbb Q^{\mathrm{ab}}$ and $A$ is obtained by base
+change from an abelian variety over $F_0$. Tsujimura's
+Theorem~3.1 \cite{Tsujimura2020} says exactly that the Kummer map
+on $A(F_0\mathbb Q^{\mathrm{ab}})$ is injective. Its kernel is the
+intersection of the multiplication-by-$n$ images, so the injection
+$A(L)\hookrightarrow A(F_0\mathbb Q^{\mathrm{ab}})$ proves
+(F47.1). The compatible total Tate module of $A(L)$ is also zero:
+each coordinate of a compatible torsion system is divisible by every
+integer, and (F47.1) kills it. Separately, the height argument in the
+rational-source lemma gives
+\[
+ D(L^*):=\bigcap_n(L^*)^n\subset\mu_\infty.                  \tag{F47.2}
+\]
+Neither assertion requires that $L$ have a discrete valuation.
+
+\emph{A smooth-curve Kummer specialization lemma.}
+Let $C/L$ be a smooth geometrically connected affine curve and let
+\[
+ \xi\in\varprojlim_n H^1_{\mathrm{et}}(C,\mu_n).
+\]
+Assume that for every finite $L'/L$ and every $z\in C(L')$ the
+specialization $z^*\xi$ is the Kummer class of an actual element of
+$(L')^*$. After a finite extension of $L$ there is an actual regular
+unit $g$ on $C$ such that $\xi=[g]$. This extension is only an
+extension of constants used in the proof; no descent of the given
+topos morphism is assumed.
+
+To prove the lemma, let $\overline C$ be the smooth proper completion
+and $S=\overline C\setminus C$. Enlarge $L$ so that the points of
+$S$ and one point $z_0\in C$ are rational. Purity for a smooth curve
+and the Kummer exact sequence give compatible residue maps
+\[
+ H^1(C,\mu_n)\longrightarrow
+       \bigoplus_{s\in S}\mathbb Z/n,
+ \qquad
+ \operatorname{res}(\xi)=(\lambda_s)_{s\in S},
+ \quad\lambda_s\in\widehat{\mathbb Z}.                    \tag{F47.3}
+\]
+We first prove that every $\lambda_s$ is an integer.
+
+Fix $s\in S$. By Riemann--Roch and interpolation of values and a
+first derivative at finitely many points, there is a nonconstant
+rational function
+\[
+ \pi:\overline C\longrightarrow\mathbb P^1_L
+\]
+which has a simple zero at $s$ and takes nonzero values at every
+other point of $S$. For example allow a sufficiently large pole
+divisor at a point different from $S$, prescribe the first-order
+jet of a uniformizer at $s$, and prescribe the value $1$ at the
+other boundary points. The map is finite. Remove from $\mathbb P^1$
+the values $0,\infty$, its branch values, and $\pi(S)$, and enlarge
+$L$ once more to split this finite set if necessary. This gives
+\[
+ W=\pi^{-1}(V)\subset C,\qquad W\longrightarrow V
+ \quad\hbox{finite etale},
+\]
+where $V$ is a punctured affine line. Apply the compatible norm
+maps to obtain
+\[
+ \eta=\operatorname{Cor}_{W/V}(\xi|_W)
+        \in\varprojlim_n H^1(V,\mu_n).
+\]
+The specialization property is preserved. If a fibre above
+$a\in V(L')$ is the disjoint union of $\operatorname{Spec}L_i$,
+etale base change for the norm and the usual Kummer norm identity
+give the Kummer class of
+\[
+        \prod_i N_{L_i/L'}(u_i)\in(L')^*,
+\]
+where $u_i$ realizes the evaluation of $\xi$ at the corresponding
+point of $W$. Thus the rational-source integrality lemma applies to
+$\eta$.
+
+The residue at $0$ of a corestriction is
+$\sum_{z\mid0}[\kappa(z):L]\operatorname{res}_z(\xi)$.
+This is the divisor-of-norm formula, and can also be read directly
+from the norm of a local parameter in the Kummer boundary map.
+Points of $C$ contribute zero because $\xi$ extends over them;
+among the points of $S$ only the rational point $s$ lies over $0$.
+Consequently this residue is exactly $\lambda_s$, with coefficient
+one. The lemma on $V$ makes it integral. The choice of a simple
+zero also makes explicit that no ramification factor has been
+silently inserted.
+
+Put $D=\sum_s\lambda_s[s]$, an integral divisor. The next arrow in
+the localization sequence sends the residue vector to the Kummer
+Chern class of $D$. Therefore
+\[
+ c_1(D)=0\quad\hbox{in }H^2(\overline C,\mu_n)
+       \quad\hbox{for every }n,
+\]
+and the Kummer injection
+$\operatorname{Pic}(\overline C)/n\hookrightarrow
+H^2(\overline C,\mu_n)$ implies
+$[D]\in\bigcap_n n\operatorname{Pic}(\overline C)$.
+Its degree is zero. Any divisor class $E$ with $nE=[D]$ likewise
+has degree zero. The rational point $z_0$ identifies degree-zero
+line bundles with $J(L)$ for the Jacobian $J$ and removes the
+Brauer obstruction to representing a Picard-scheme point by a line
+bundle. Equation (F47.1) therefore gives $[D]=0$.
+Choose $g_0\in L(C)^*$ with $\operatorname{div}(g_0)=D$;
+it is a unit on $C$.
+
+All residues of $\xi-[g_0]$ now vanish. For every $n$ the map
+$H^1(\overline C,\mu_n)\to H^1(C,\mu_n)$ is injective: purity
+identifies its preceding support group with a negative-degree
+cohomology group of $S$. Thus its residue-free lifts are unique,
+and hence compatible as $n$ varies. The Kummer sequences give
+\[
+ 0\longrightarrow\widehat{L^*}\longrightarrow
+  \varprojlim_n H^1(\overline C,\mu_n)
+  \longrightarrow T\operatorname{Pic}(\overline C)
+  \longrightarrow0.
+\]
+Here the left inverse system has surjective transition maps, so
+there is no $\varprojlim^1$ obstruction. The total Tate module on
+the right is zero by (F47.1). Thus $\xi-[g_0]$ is a constant
+completed Kummer class. Evaluate at $z_0$: the hypothesis identifies
+it with the Kummer class of an actual constant $c\in L^*$.
+Then $g=cg_0$ proves the lemma.
+
+\emph{Algebraicity of the point function for a smooth curve.}
+Let
+$\phi:C_{\mathrm{et}}\to(\mathbb G_m)_{\mathrm{et}}$
+be pinned and relative to $B G_L$, and write
+$f:C(K)\to K^*$ for its point function. It is Galois equivariant
+and sends $L'$-points to $L'$-points for every finite extension,
+as checked in F.46. Its pulled-back Kummer class satisfies the
+specialization lemma. After a finite extension choose
+$g_0\in\mathcal O(C)^*$ representing it. Equation (F47.2) gives
+\[
+ f(x)/g_0(x)\in\mu_\infty\qquad(x\in C(K)).                 \tag{F47.4}
+\]
+If the generic image is a closed point, the inverse-image of its
+open complement is empty by continuity and the Jacobson property.
+The morphism factors through that closed subtopos. After splitting
+its residue field it has a constant point function. We may therefore
+assume the generic image is generic.
+
+For each $b\in K$, base change to contain $b$ and pull back the
+open $\mathbb G_m\setminus\{b\}$. It is a dense open
+$C_b\subset C$ whose omitted geometric points are finite, and
+$x\in C_b(K)$ exactly when $f(x)\ne b$. Applying the curve lemma
+to the Kummer classes of $t-b$ gives a rational function $g_b$, a
+unit on $C_b$, with
+\[
+ f(x)-b=d_b(x)g_b(x),\qquad d_b(x)\in\mu_\infty,
+       \quad x\in C_b(K).                                 \tag{F47.5}
+\]
+Use the fixed proper field $M=F\mathbb Q^{\mathrm{ab}}\subset K$.
+In any one argument, a finite extension $N/M$ contains the finitely
+many coefficients needed there; the field $M$ itself stays fixed.
+All the coefficients
+$d_b(x)$ lie in $M^*$. The extension $K/M$ has infinite degree,
+as does $K/N$ for every finite extension $N/M$ in $K$.
+For clarity, the latter assertion can also be seen from the height
+bound: if $K=N$ were finite over $M$, that bound would be uniformly
+positive on its nontorsion elements, whereas $K$ contains all roots
+of the rational number $2$.
+
+The finite-exception quasi-rationality argument in F.46 applies to
+an arbitrary smooth curve, with the following explicit replacement
+for its polynomial-degree step. Descend the curve and the finitely
+many rational functions under consideration to a finite extension
+$N/M$. The poles of any fixed linear combination of two such
+functions lie in one fixed divisor. If the combination is nonzero,
+each zero has residue degree over $N$ bounded by the degree of that
+divisor. Points of arbitrarily large residue degree exist: choose a
+finite map of the proper curve to $\mathbb P^1_N$, choose values of
+arbitrarily large degree over $N$, and take points above them.
+They avoid any prescribed finite exceptional set. Thus a vanishing
+at such a point forces the same rational-function identity as in
+F.46. The two shifted outside-$M$ sets cover the cofinite domain,
+and have infinite intersection by this same degree bound.
+
+If $g_0$ is nonconstant, this proves that $f$ equals a rational
+function $R\in K(C)$ on a cofinite subset. If $g_0$ is constant,
+divide $f$ by one of its values and use (F47.4) to put its values
+in $\mu_\infty\subset M$. Choose $b\notin M$. If $g_b$ were
+nonconstant, (F47.5) would put its cofinite image in the vector
+space $M+Mb$, which cannot contain a cofinite subset of $K$.
+Hence $g_b$ is constant. Two different values of $f$ would, by
+subtracting their equations, force this constant into $M$, and
+then force $b\in M$. Thus $f$ is constant in this case.
+
+We remove the finite exceptional set in the nonconstant case.
+For every $b$, the rational function $(R-b)/g_b$ takes its values
+in $\mu_\infty$ on a cofinite set. A nonconstant rational function
+on a smooth curve has cofinite image in $K$, so this quotient is a
+constant $c_b\in\mu_\infty$. Fix $x\in C(K)$ and choose
+$b\ne f(x)$. Since $g_b$ is a unit at $x$, the identity
+$R-b=c_b g_b$ first excludes a pole of $R$ at $x$. For every
+$b\notin\{f(x),R(x)\}$, it then gives
+\[
+ \frac{f(x)-b}{R(x)-b}\in\mu_\infty.
+\]
+If $f(x)\ne R(x)$ this fractional linear expression takes all
+values of $K\setminus\{0,1\}$ as $b$ varies, a contradiction.
+Therefore $f=R$ on every geometric point. It follows that $R$ is
+a regular unit on $C_K$. Galois equivariance and equality on the
+Zariski-dense geometric points imply that $R$ descends to a regular
+unit on the original curve over $L$. This proves the full
+point-function assertion for every smooth affine curve and every
+finite extension of the base field.
+
+It also gives the equality of compatible Kummer classes that will
+be used below. Over the finite extension $L'/L$ employed in the
+specialization lemma, the rational function $R/g_0$ has values in
+$\mu_\infty$ at every geometric point and is therefore a constant
+$\zeta\in(L')^*$. Evaluation at a rational point of the curve gives
+$\zeta\in D((L')^*)$, so $[R]=[g_0]=\xi$ over $L'$.
+If $C(L)$ is nonempty, equality already holds over $L$. Indeed,
+for every $n$ the residual class in $H^1(C,\mu_n)$ is geometrically
+zero, and hence is a constant class by the low-degree
+Hochschild--Serre sequence. Its evaluation at an $L$-point is zero,
+because $R$ is the actual point function there. The same sequence,
+or the rational-point section, shows that this constant class is
+zero. Without an $L$-point, equality after a finite extension is all
+that is asserted or needed for the geometric residue tests.

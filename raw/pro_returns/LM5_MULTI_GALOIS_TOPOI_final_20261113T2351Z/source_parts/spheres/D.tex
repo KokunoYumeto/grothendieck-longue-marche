@@ -1,0 +1,237 @@
+\section{D. Spheres, their two-type, and the arithmetic quotient}
+\label{sec:spheres}
+
+We use $A=\operatorname{Homeo}(S^2)$ with the compact--open topology, $A^+$ for its identity component, and $M=\operatorname{PGL}_2(\mathbb C)\rtimes C_2$ for the conformal and anticonformal subgroup. These are the manuscript's $A_0$, $A_0^\circ$ and $\widetilde{\mathrm{GP}}(1,\mathbb C)$, respectively (\S20, fols.116v--125v, scans233--250). We write $P_nY=\tau_{\leq n}Y$ and use homotopy fibres and derived mapping spaces throughout. A sphere bundle means a numerable locally trivial bundle with fibre $S^2$ and structure group $A$. On a CW complex every locally trivial sphere bundle is numerable. All cohomology in the topological part is singular cohomology. In the arithmetic part all stacks are on the fppf site; they may be restricted to the etale site when $2$ is invertible.
+
+\subsection{The covering extension and the two-isotopic category}
+
+\paragraph{D.1 (Known). The topological input, with reduction.}
+\emph{Manuscript problem locus: \S20, fols.117 and 118, scans234 and 236, (64)--(66).}
+The inclusions $O(3)\longrightarrow M\longrightarrow A$ are weak homotopy equivalences. Consequently $BA\simeq BO(3)$, $\pi_0A=C_2$, $\pi_1A^+=C_2$, $\pi_2A^+=0$, $\pi_3A^+=\mathbb Z$, and $\pi_4A^+=C_2$.
+
+\emph{Proof.} Dobbins's Theorem~1.1 gives a strong deformation retraction of $A$ onto $O(3)$ \cite{Dobbins2021}. Polar decomposition retracts $\operatorname{SL}_2(\mathbb C)$ onto $SU(2)$, equivariantly for complex conjugation and the central subgroup $\{\pm1\}$. It therefore retracts $M$ onto $PU(2)\rtimes C_2=O(3)$, compatibly with the displayed inclusions. This proves the two asserted weak equivalences by two-out-of-three. Classifying spaces of these well-pointed topological groups preserve weak equivalences: the bar construction is levelwise a product of the given equivalence, and its fat realization preserves these equivalences. Finally $SU(2)=S^3\longrightarrow SO(3)$ is a two-sheeted universal cover. Thus the higher homotopy groups of $A^+$ are those of $S^3$, and the asserted values follow from $\pi_2S^3=0$, $\pi_3S^3=\mathbb Z$, and $\pi_4S^3=C_2$ (Hatcher, Corollary~4J.4 \cite{Hatcher2002}). This is precisely the reduction needed for scans234 and236; no statement about the discrete group $A$ is being made. The local contractibility needed for its covering-space theory follows from Edwards--Kirby, Corollary~1.1 \cite{EdwardsKirby1971}. \hfill$\square$
+
+\paragraph{D.2 (Proved). The extension of (62), including its exact uniqueness.}
+\emph{Manuscript problem locus: \S20, fols.116v--117, scans233--234, (62)--(64).}
+There is a central covering extension
+\[
+1\longrightarrow\mu_2\longrightarrow\widetilde A
+ \longrightarrow A\longrightarrow1
+\]
+whose restriction to $M$ is the specified extension
+$\operatorname{SL}_2(\mathbb C)\rtimes C_2\longrightarrow
+\operatorname{PGL}_2(\mathbb C)\rtimes C_2$, with the generator of $C_2$ acting by complex conjugation. The category of such extensions equipped with this identification on $M$ is contractible. Without that identification, ``unique up to unique isomorphism'' is false: even the chosen extension has a nonidentity automorphism over $A$, and there are two isomorphism classes of central double covers restricting to the universal cover on $A^+$.
+
+\emph{Proof.} Fix the reflection $r$ given by complex conjugation on the Riemann sphere. The orientation character splits $A=A^+\rtimes\langle r\rangle$. Form the universal covering group $\widetilde A^+$ from paths starting at the identity, modulo endpoint-preserving homotopy; multiply paths pointwise. Conjugation by $r$ lifts uniquely to an automorphism $\widetilde r$ of this group fixing its identity, and $\widetilde r^2=1$ by uniqueness. Put $\widetilde A=\widetilde A^+\rtimes C_2$. Its kernel is $\pi_1A^+=\mu_2$ and is central, since $\operatorname{Aut}(C_2)=1$. Restriction to the connected subgroup $\operatorname{PGL}_2(\mathbb C)$ is its universal covering group $\operatorname{SL}_2(\mathbb C)$ by D.1, and the lifted reflection acts by conjugation on matrix entries. This is exactly (63), not an arbitrary central cover.
+
+For uniqueness with the restriction fixed, an isomorphism on the identity components is forced by universal covering theory. Its value on a lift of $r$ is forced by the prescribed identification on $M$, and these two requirements determine it on the whole group. They also verify its multiplicativity. For the unrigidified assertion, every automorphism over $A$ has the form $x\mapsto\epsilon(\bar x)x$ with a continuous character $\epsilon:A\to\mu_2$; the nontrivial orientation character provides a nonidentity automorphism. More generally, after fixing the universal cover of $A^+$, the square of a chosen lift of $r$ is either $+1$ or $-1$. Both choices give groups, with multiplication obtained by adding the central cocycle $\epsilon ef$ on $C_2$. These two groups are not isomorphic over $A$, since that square cannot change when the lift is multiplied by $-1$. Their restrictions to $O(3)$ are the two Pin covers. The manuscript's semilinear restriction chooses the reflection-square-$+1$ cover, namely $\operatorname{Pin}^+(3)$. The finite cocycle calculation is reproduced in \texttt{code/spheres\_checks.py}. \hfill$\square$
+
+\paragraph{D.3 (Proved). The pair $(\omega,\mathcal R)$ and the missing relation.}
+\emph{Manuscript problem locus: \S20, fols.117v--119v, scans235--238; the explicit doubt is on fol.119, scan237.}
+The two-groupoid with spheres as objects, homeomorphisms as one-arrows, and endpoint-preserving homotopy classes of isotopies as two-arrows is equivalent to the two-groupoid of pairs consisting of a $C_2$-torsor $\omega$ and a banded $\mu_2$-gerbe $\mathcal R$. No additional relation between the two entries is required. The equivalence uses the extension fixed in D.2. On bundles its two characteristic classes are $(w_1,w_2)$; changing to the other covering extension replaces the second class by $w_2+w_1^2$.
+
+\emph{Proof.} For a sphere $X$, let $P_X=\operatorname{Homeo}(S^2,X)$, an $A$-torsor. Its associated $C_2$-torsor is the set of its orientations. Let $\mathcal R_X$ be the groupoid of $\widetilde A$-torsors lifting $P_X$, with the identification after extension of structure group included as data. This groupoid is nonempty and connected and has automorphism group $\mu_2$ at every object. Homeomorphisms transport these two objects. An isotopy lifts through the covering in D.2 and gives a natural transformation of lift functors; endpoint-preserving homotopies give the same transformation. Thus we have the stated two-functor.
+
+Its map on classifying two-types is
+\[
+P_2BA\longrightarrow BC_2\times B^2\mu_2.
+\]
+It induces the orientation isomorphism on $\pi_1$ and the covering-boundary isomorphism on $\pi_2$; the latter is also the boundary map $\pi_2BA\to\pi_1B\mu_2$ of the lifting fibration. Both sides are connected two-types, so it is an equivalence. This proves both essential surjectivity and equivalence on every Hom groupoid, not just equality of object counts. Equivalently, the action of $C_2$ on $\mu_2$ is trivial and the Postnikov--Sinh class in $H^3(C_2,\mu_2)$ is zero. The vanishing follows also from the splitting by the reflection. The restriction of the selected cover to $O(3)$ is $\operatorname{Pin}^+$, whose obstruction is $w_2$; the second cover differs by the pullback of the nonzero class in $H^2(BC_2;\mu_2)$, namely $w_1^2$. This last assertion can be checked on the reflection subgroup and on $SO(3)$, which together determine the two extension classes. It answers the explicit worry on scan237. \hfill$\square$
+
+\subsection{Bundles through dimension five}
+
+\paragraph{D.4 (Proved). Classification through dimension three, by both routes.}
+\emph{Manuscript problem locus: \S20, fols.120--122, scans239--243, (67)--(71).}
+For every CW complex $S$ of dimension at most three, the map in (70)--(71) is a bijection
+\[
+[S,BA]\xrightarrow{\ (w_1,w_2)\ }
+ H^1(S;C_2)\times H^2(S;\mu_2).
+\]
+There is no orientability hypothesis.
+
+\emph{Proof by the Gr-stack.} D.3 identifies the classifying space of the fundamental categorical group of $A$ with $Q=BC_2\times B^2\mu_2$. The fibre of $q:BA\to Q$ is three-connected: $q$ is an isomorphism on $\pi_i$ for $i\leq3$, and $\pi_4Q=0$. To lift a map $S\to Q$, one extends a section of its pulled-back fibration over the cells of $S$. The obstruction on an $n$-cell lies in $\pi_{n-1}$ of the fibre, which is zero for $n\leq4$. Uniqueness up to homotopy uses the relative CW complex $(S\times I,S\times\partial I)$, of dimension at most four, and the same vanishing. Thus the lifting map on components is bijective. This supplies the surjectivity argument left unfinished on scans240--241, and also completes the twisting argument: it works over every chosen $\omega$, since the fibre remains three-connected after pullback.
+
+\emph{Direct proof.} The group isomorphism
+$O(3)\cong C_2\times SO(3)$ sends an orthogonal matrix $g$ to $(\det g,(\det g)g)$. Thus a rank-three real bundle $E$ is determined by its determinant line $L$ and the oriented bundle $V=E\otimes L$. The classifying space $BSO(3)$ has, through degree three, the homotopy groups of $K(C_2,2)$. Obstruction theory therefore classifies $V$ over $S$ by $w_2(V)$. The splitting principle gives
+\[
+w_1(E)=a=w_1(L),\qquad w_2(E)=w_2(V)+a^2.
+\]
+Hence every desired pair $(a,b)$ is obtained by choosing $L$ with class $a$ and $V$ with class $b+a^2$, and it determines that pair uniquely. D.1 carries this classification back to topological sphere bundles. \hfill$\square$
+
+\paragraph{D.5 (Proved). The first failure is dimension four.}
+\emph{Manuscript problem locus: \S20, fols.118 and 122, scans236 and 243, (66) and (71).}
+The pair $(\omega,\mathcal R)$ first fails to distinguish bundle isomorphism classes on four-dimensional CW complexes. Over $S^4$, the trivial bundle and the sphere bundle associated to the adjoint of the quaternionic Hopf $SU(2)$-bundle have identical $(w_1,w_2)=(0,0)$ and are not isomorphic. If $c_2$ of the Hopf bundle is $1$, their first Pontryagin classes are respectively $0$ and $-4$.
+
+\emph{Proof.} Both low classes vanish because $H^1(S^4;C_2)=H^2(S^4;C_2)=0$. The clutching map of the Hopf bundle is the identity of $SU(2)=S^3$; its image in $SO(3)$ generates $\pi_3SO(3)=\mathbb Z$, since a covering induces an isomorphism on $\pi_3$. Hence its associated oriented three-plane bundle is nontrivial. With formal Chern roots $x,-x$, the adjoint complexification has roots $2x,0,-2x$, giving $p_1=-4c_2$. The identity is verified symbolically in the attached program. D.4 excludes any lower-dimensional counterexample. \hfill$\square$
+
+\paragraph{D.6 (Proved). The fourth stage, with its necessary homotopy datum.}
+\emph{Manuscript problem locus: \S20, fol.118, scan236, (66); this statement develops its higher-homotopy question.}
+Let $\mathfrak P:H^2(-;C_2)\to H^4(-;\mathbb Z/4)$ be the Pontryagin square and $\beta_4$ the Bockstein for $0\to\mathbb Z\xrightarrow4\mathbb Z\to\mathbb Z/4\to0$. There is an equivalence
+\[
+P_4BSO(3)\simeq P:=
+K(C_2,2)\mathop{\times}^{h}_{K(\mathbb Z/4,4)}K(\mathbb Z,4),
+\]
+where the two maps are $\mathfrak P$ and reduction modulo four. In the convention $p_1=-c_2(E\otimes\mathbb C)$, the next integral Postnikov invariant is $\beta_4\mathfrak P\in H^5(K(C_2,2);\mathbb Z)$, up to the sign chosen for the generator of $\pi_4$. The equivalent characteristic relation is
+$\rho_4p_1=\mathfrak P(w_2)$.
+
+\emph{Proof.} The universal relation holds for an oriented three-plane bundle. One verification uses the universal oriented two-plane subbundle after pullback to $BSO(2)$: there $p_1=c_1^2$ and $w_2=\rho_2c_1$, so the formula is the defining property of the Pontryagin square. In degree four restriction $H^4(BSO(3);\mathbb Z/4)\to H^4(BSO(2);\mathbb Z/4)$ is injective; this follows from the Gysin sequence of the universal sphere bundle $S^2\to BSO(2)\to BSO(3)$, since its possible kernel is the image of $H^1(BSO(3);\mathbb Z/4)=0$. Choose a nullhomotopy of that universal relation and obtain $BSO(3)\to P$. The long exact sequence of the defining homotopy pullback shows that $P$ has $\pi_2=C_2$, $\pi_4=4\mathbb Z\cong\mathbb Z$, and no other positive homotopy groups. The map is the identity on $\pi_2$. Its map on $\pi_4$ is an isomorphism by the calculation $p_1=-4c_2$ in D.5. Hence it is precisely the fourth Postnikov projection. Replacing the pullback by the equivalent fibre of $\beta_4\mathfrak P:K(C_2,2)\to K(\mathbb Z,5)$ gives the invariant. This is the homotopy-fibre calculation used by Antieau--Williams \cite{AntieauWilliams2014}, with the sign of the integral coordinate fixed by the displayed Chern-class convention.
+
+A map into $P$ consists of a map $x:S\to K(C_2,2)$, a map $p:S\to K(\mathbb Z,4)$, and a \emph{chosen homotopy} $\mathfrak P(x)\simeq\rho_4p$, all modulo coherent homotopy. The existence of the homotopy is equivalent to equality in cohomology, but forgetting it can lose bundle classes. In particular, it is not legitimate to replace $[S,P]$ by the set of pairs satisfying the cohomological relation on an arbitrary CW complex. \hfill$\square$
+
+\paragraph{D.7 (Refuted). Characteristic-pair classification, with a complete replacement.}
+\emph{Manuscript problem locus: \S20, fol.118, scan236, (66); the refuted uniqueness assertion is the later one in Antieau--Williams, Definition~2.}
+Let $S=M(\mathbb Z/4,3)=S^3\cup_4 e^4$. There are four oriented three-plane bundles on $S$, all with $w_2=p_1=0$. The correct invariant is the homotopy-pullback datum of D.6. This refutes the unqualified uniqueness assertion for a map $S\to P_4BSO(3)$ from a characteristic pair, including the assertion in Definition~2 of the opened arXiv version of Antieau--Williams.
+
+\emph{Proof.} Cellular cohomology gives $H^1(S;C_2)=H^2(S;C_2)=0$ and $H^4(S;\mathbb Z)=\mathbb Z/4$. Consequently every $SO(3)$-bundle has a spin lift, and its spin lift is unique up to isomorphism: the usual ambiguity is the action of $H^1(S;C_2)$, which is zero. Since $BSU(2)$ is three-connected with $\pi_4=\mathbb Z$, its bundles on a four-complex are classified by $c_2\in H^4(S;\mathbb Z)$. Thus there are four. Their Pontryagin classes are all $-4c_2=0$, and their second Stiefel--Whitney classes vanish by construction. The cellular differential is the one-by-one matrix $(4)$; its cokernel and the multiplication-by-four calculation are reproduced in the attached program. Dold--Whitney explicitly retain the additional ambiguity in their general four-complex theorem \cite{DoldWhitney1959}; the frequently quoted characteristic-class-only version requires a torsion hypothesis. \hfill$\square$
+
+\paragraph{D.8 (Proved). The fifth stage and its degree-six invariant.}
+\emph{Manuscript problem locus: \S20, fol.118, scan236, (66); this is the next Postnikov calculation requested by that question.}
+Put $x\in H^2(P;C_2)$ and $y=\operatorname{Sq}^1x$. The fifth Postnikov stage is
+\[
+P_5BSO(3)\simeq\operatorname{hofib}
+ \bigl(u:P\longrightarrow K(C_2,6)\bigr),
+\]
+where $u\in H^6(P;C_2)$ is specified completely by the following normalization. It restricts on the fibre $K(\mathbb Z,4)$ to $\operatorname{Sq}^2\rho_2\iota_4$; it restricts to zero along the maps induced by the representations
+\[
+SO(2)\hookrightarrow SO(3),\qquad
+C_2\times C_2\hookrightarrow SO(3),
+\]
+the latter being the diagonal representation $L_a\oplus L_b\oplus L_{a+b}$. These requirements determine exactly one class. In particular, this stage is not the product $P\times K(C_2,5)$.
+
+\emph{Proof.} We give the low-degree calculation so that the invariant is more than an unnamed obstruction. In the mod-two Serre spectral sequence of
+$K(\mathbb Z,4)\to P\to K(C_2,2)$, write $v=\rho_2\iota_4$ and $z=\operatorname{Sq}^2\operatorname{Sq}^1x$. Serre's Theorems~2 and~3 in \S2 compute the two Eilenberg--MacLane cohomology algebras used below \cite{Serre1953}. The integral transgression of $\iota_4$ is $\beta_4\mathfrak P(x)$, whose mod-two reduction is $z+xy$. Thus $d_5v=z+xy$. Up to degree six the base has polynomial generators $x,y,z$ of degrees $2,3,5$, while the fibre contributes $v$ in degree four and $\operatorname{Sq}^2v$ in degree six. The potential class $xv$ is killed by $d_5(xv)=x(z+xy)$. The compatibility of transgression with Steenrod squares (Serre, \S2, proof of Theorem~2) and the Adem relation $\operatorname{Sq}^2\operatorname{Sq}^2=\operatorname{Sq}^3\operatorname{Sq}^1$ give
+\[
+\operatorname{Sq}^2(z+xy)=x(z+xy),
+\]
+which is already a $d_5$ boundary. Therefore $\operatorname{Sq}^2v$ survives. There are exactly three independent classes in total degree six: $x^3$, $y^2$, and a class restricting to $\operatorname{Sq}^2v$. This also proves that the kernel of restriction to the fibre has basis $x^3,y^2$. The same three-dimensional calculation appears as Corollary~3 of Antieau--Williams; we have included the differentials needed here.
+
+The abstract fifth-stage invariant must pull back to zero in $H^6(BSO(3);C_2)$, while $x^3,y^2$ pull back to the two independent classes $w_2^3,w_3^2$. Its restriction to the fibre cannot vanish. Indeed, pulling the tower back along $BSU(2)\to BSO(3)$ gives the fifth stage of $BSU(2)$ over $K(\mathbb Z,4)$. If this stage split, its degree-six cohomology would contain the nonzero class $\operatorname{Sq}^2\rho_2\iota_4$. But $BSU(2)\to P_5BSU(2)$ is six-connected, so its map on degree-six cohomology is injective, whereas $H^6(BSU(2);C_2)=0$ by $H^*(BSU(2);C_2)=C_2[c_2]$. Hence the restriction is the unique nonzero fibre class.
+
+Both displayed representation maps factor through $BSO(3)$, so the actual invariant restricts to zero there. Conversely, two classes satisfying the fibre normalization differ by $\lambda x^3+\mu y^2$. Restriction to $BSO(2)=\mathbb CP^\infty$ forces $\lambda=0$, since $x$ becomes the reduction of $c_1$ and $y$ becomes zero. On $B(C_2\times C_2)$ the formulas are
+\[
+x=a^2+ab+b^2,\qquad y=a^2b+ab^2.
+\]
+The polynomial $y^2=a^4b^2+a^2b^4$ is nonzero, so this restriction forces $\mu=0$. Thus the normalization specifies the invariant uniquely without an arbitrary choice of a complement to $\langle x^3,y^2\rangle$. The attached program checks the polynomial identities. The long exact sequence now gives $\pi_5=C_2$ and proves the asserted fifth-stage model. \hfill$\square$
+
+\paragraph{D.9 (Proved). A complete classification on all CW complexes of dimension at most five.}
+\emph{Manuscript problem locus: \S20, fols.118 and 122, scans236 and 243, (66) and (71); this extends the dimension bound under discussion.}
+For such an $S$, sphere bundles are classified by
+\[
+H^1(S;C_2)\times
+\pi_0\operatorname{Map}\bigl(S,\operatorname{hofib}(u)\bigr).
+\]
+This is an explicit obstruction-theoretic classification: choose $a\in H^1(S;C_2)$, a homotopy-pullback datum $f:S\to P$ as in D.6, and a nullhomotopy of $u\circ f$. Coherent homotopies of these data are the equivalence relation. A nullhomotopy always exists in dimension at most five. Over a fixed component $[f]\in[S,P]$, the possible classes form a torsor under
+\[
+H^5(S;C_2)\big/\operatorname{im}(\delta_f),\qquad
+\delta_f:\pi_1\operatorname{Map}(S,P;f)\longrightarrow H^5(S;C_2),
+\]
+where $\delta_f$ sends a loop $F:S\times S^1\to P$ to the slant product $F^*u/[S^1]$. The manuscript's second invariant is $b=x+a^2$.
+
+\emph{Proof.} D.1 and the actual group splitting of $O(3)$ give $BA\simeq BC_2\times BSO(3)$. The map $BSO(3)\to P_5BSO(3)$ has a five-connected fibre. The cell-by-cell lifting argument of D.4, now on $S$ and $S\times I$, gives a bijection on maps from every five-complex. D.8 identifies the target. Since $H^6(S;C_2)=0$, the obstruction to a nullhomotopy vanishes. For a fixed actual map $f$, nullhomotopies form a torsor under $[S,\Omega K(C_2,6)]=H^5(S;C_2)$. Allowing $f$ itself to move around a loop acts by the stated slant product, by concatenation of the pulled-back homotopy on $S\times I$. This proves the quotient formula, including its ambiguity, rather than asserting an unjustified direct product with $H^5$. The formula for $b$ is D.4. The model distinguishes the two bundles over $S^5$, where $[S^5,BSO(3)]=\pi_5BSO(3)=C_2$ although all degree-two and degree-four characteristic classes vanish. \hfill$\square$
+
+\subsection{Fidelity bounds and the two incompatible calculations}
+
+\paragraph{D.10 (Proved). Exact translation of the manuscript's four notions.}
+\emph{Manuscript problem locus: \S20, fols.123v--124v, scans246--248; the four definitions are on scan247.}
+Let $T_S=\operatorname{Map}(S,BA)$ and $Q_S=\operatorname{Map}(S,Q)$, and interpret their fundamental two-groupoids as the two-isotopic categories of bundles and of pairs. The definitions on scans247--248 translate as follows, at every base point and for every relevant pair of components:
+\[
+\begin{array}{c|l}
+0\text{-faithful}&\pi_2(T_S)\to\pi_2(Q_S)\text{ injective},\\
+1\text{-faithful}&\pi_2\text{ bijective and }\pi_1\text{ injective},\\
+2\text{-faithful}&\pi_2,\pi_1\text{ bijective and }\pi_0\text{ injective},\\
+3\text{-faithful}&\pi_2,\pi_1,\pi_0\text{ bijective}.
+\end{array}
+\]
+The maximal uniform dimension bound guaranteeing any one of these four properties is $\dim S\leq1$. All four hold under that bound; all four can fail for $S=S^2$. In contrast, bijectivity only on bundle isomorphism classes holds through dimension three, as in D.4.
+
+\emph{Proof.} Two-arrows between fixed one-arrows form torsors under $\pi_2$ when nonempty. Faithfulness on these sets is injectivity on $\pi_2$. Fullness additionally asks that two image one-arrows which are isomorphic were already isomorphic, which is injectivity on $\pi_1$, as well as surjectivity on the corresponding $\pi_2$ torsors. Essential surjectivity of each Hom functor adds surjectivity on $\pi_1$ and injectivity on $\pi_0$; essential surjectivity on objects adds surjectivity on $\pi_0$. This proves the dictionary with exactly the cumulative conditions stated on scan247.
+
+The map $q:BA\to Q$ has three-connected fibre. Pulling it back over $S\times D^j$ and extending sections relative to $S\times\partial D^j$ proves that $\operatorname{Map}(S,q)$ is $(4-d)$-connected for $d=\dim S$. Indeed all relative cells have dimension at most $d+j$, and the extension obstructions vanish through dimension four. Hence for $d\leq1$ it is an isomorphism on $\pi_0,\pi_1,\pi_2$. For sharpness take the trivial bundle on $S^2$. Evaluation of mapping spaces has a section by constant maps and fibre $\operatorname{Map}_*(S^2,BA)$. The resulting split long exact sequence in degree two contains
+\[
+\pi_4BA=\mathbb Z\ \subset\ \pi_2\operatorname{Map}(S^2,BA),
+\]
+whereas the corresponding group $\pi_4Q$ is zero. Thus $\pi_2$ is not injective, and even $0$-faithfulness fails. This also disproves the proposed bounds $6,5,4,3$ on scans246--247. The later mapping-space calculation on scan248 uses the correct direction of the dimension shift but is still off by one for $0$-faithfulness: it needs $\dim(S\times S^2)\leq3$, not $\leq4$. Also $\pi_i\operatorname{Map}(S,B)$ consists of maps relative to $S\times\{*\}$, not arbitrary unbased classes on $S\times S^i$.
+
+For clarity the cellular argument gives the separate sufficient ranges
+\[
+\begin{array}{c|ccc}
+ &\pi_0&\pi_1&\pi_2\\\hline
+\text{bijection}&d\leq3&d\leq2&d\leq1\\
+\text{surjection}&d\leq4&d\leq3&d\leq2.
+\end{array}
+\]
+These separate assertions must not be conflated with the cumulative four fidelity notions. \hfill$\square$
+
+\subsection{Arithmetic: forms, gerbes, and the information forgotten}
+
+\paragraph{D.11 (Proved). The proposed arithmetic two-category exists.}
+\emph{Manuscript problem locus: \S20, fol.125, scan249, the proposed arithmetic construction.}
+For a scheme $S$, let $\mathcal C(S)$ have as objects $\operatorname{PGL}_2$-torsors, equivalently forms of $\mathbb P^1_S$ or degree-two Azumaya algebras. One-arrows are their ordinary isomorphisms. If $P$ corresponds to $A_P$, put $G_P=\operatorname{PGL}_1(A_P)$ and $\widetilde G_P=\operatorname{SL}_1(A_P)$. A two-arrow $f\Rightarrow g$ is a section $t$ of $\widetilde G_P$ satisfying $\partial(t)=f^{-1}g$, where
+\[
+1\longrightarrow\mu_2\longrightarrow\operatorname{SL}_1(A_P)
+\xrightarrow{\partial}\operatorname{PGL}_1(A_P)\longrightarrow1
+\]
+is exact as fppf sheaves. This defines a two-groupoid. Its lifting-gerbe functor is a two-functor to banded $\mu_2$-gerbes. In characteristic two, fppf sheaves and the group scheme $\mu_2$ are essential; replacing $\mu_2$ by a constant two-element group is incorrect.
+
+\emph{Proof.} The standard action of $\operatorname{PGL}_2$ on $\mathbb P^1$ and on $M_2$ identifies their automorphism sheaves with $\operatorname{PGL}_2$; descent gives the stated equivalences of groupoids. For the field case this is Stacks Project, Lemma~59.61.5; the local matrix argument is identical over a scheme \cite{StacksBrauer}. Conjugation by $G_P$ on $\widetilde G_P$ is well-defined, since scalar representatives act trivially. Together with $\partial$ it satisfies the two crossed-module identities
+\[
+\partial({}^{g}t)=g\partial(t)g^{-1},\qquad
+{}^{\partial(t)}s=tst^{-1}.
+\]
+Vertical composition uses multiplication, and horizontal composition uses this conjugation action; the second identity is precisely the interchange law. Every arrow is invertible. Locally splitting $A_P$ identifies the sequence with $\mu_2\to SL_2\to PGL_2$; an invertible matrix may be rescaled to determinant one after the fppf cover adjoining a square root of its determinant. Thus it is an epimorphism in that topology, including in characteristic two. The lifting gerbe has objects $SL_2$-torsors with an identification of their induced $PGL_2$-torsor with $P$. Transport gives its functor on one-arrows and sections of the central cover give its natural transformations. These formulas glue, proving the two-functor assertion. The cover here is the simply connected cover of a semisimple group scheme, not the universal etale covering space of its underlying scheme. \hfill$\square$
+
+\paragraph{D.12 (Refuted). Bare-gerbe classification, with a complete replacement.}
+\emph{Manuscript problem locus: \S20, fols.125--125v, scans249--250, arithmetic forms and Azumaya algebras.}
+Over a fixed base $S$ there is no independently variable orientation torsor: the algebraic automorphism group $PGL_2$ is connected. Even after removing that entry, the lifting gerbe alone does not classify the objects of $\mathcal C(S)$ in general. On $S=\mathbb P^1_k$, the forms
+\[
+\mathbb P(\mathcal O\oplus\mathcal O),\qquad
+\mathbb P(\mathcal O(1)\oplus\mathcal O(-1))
+\]
+have neutral $\mu_2$-lifting gerbes but are not isomorphic over $S$. The correct object-level replacement is a banded $\mu_2$-gerbe together with a weight-one locally free sheaf of rank two and a trivialization of its determinant, modulo band-preserving equivalence carrying this sheaf and its determinant trivialization to the other such data. The associated two-stack after forgetting that sheaf and imposing two-descent is $B^2\mu_2$; it is not $BPGL_2$.
+
+\emph{Proof.} Both displayed rank-two bundles have trivial determinant, so their frame torsors reduce to $SL_2$ and the lifting gerbes have global objects. Suppose their projectivizations were isomorphic. The exact sequence $\mathbb G_m\to GL_2\to PGL_2$ and descent imply that the two vector bundles differ by tensoring with a line bundle (equivalently, apply Stacks Project, Lemma~59.62.1 \cite{StacksAzumaya}). Every line bundle on $\mathbb P^1$ is $\mathcal O(n)$, so this would give $\mathcal O(1)\oplus\mathcal O(-1)\cong\mathcal O(n)^{\oplus2}$. Determinants force $n=0$, and twisting by $\mathcal O(-1)$ gives a contradiction: the left side has one global section and the right side has none. Thus the two objects are distinct even though their gerbes agree. Adding two-arrows to their ordinary isomorphisms cannot make them equivalent, because an equivalence of objects still requires a one-arrow.
+
+For the replacement, the lifting gerbe of a $PGL_2$-torsor carries its tautological rank-two bundle, obtained from the standard representation of the tautological $SL_2$-torsor. Its central inertia acts with weight one, and its determinant is canonically trivial. Conversely, for such $(\mathcal R,V,\det V\simeq\mathcal O)$, inertia acts trivially on $\operatorname{End}(V)$, so that algebra descends to a degree-two Azumaya algebra on $S$. Its projective frame torsor recovers the form. There is a canonical functor from $\mathcal R$ to the lifting gerbe of that torsor. It preserves the band and is locally an equivalence, hence is an equivalence of gerbes. These constructions are inverse on objects and isomorphisms of the stated data. This proves the corrected classification.
+
+Finally, the crossed module $[SL_2\to PGL_2]$ has sheaf kernel $\mu_2$ and sheaf cokernel zero. Locally it has a single one-arrow up to two-isomorphism, and the two-automorphism sheaf of that arrow is $\mu_2$. Its classifying two-stack is therefore $B^2\mu_2$. Equivalently, the lifting-gerbe two-functor is locally essentially surjective on objects and locally an equivalence on Hom stacks, and hence becomes an equivalence after two-stackification. This operation adds descent data which need not be represented by a degree-two Azumaya algebra. For fixed-base algebraic forms the Tate twist in etale homotopy is fixed by the base; it does not provide the freely selectable $C_2$-torsor of the topological problem. \hfill$\square$
+
+\paragraph{D.13 (Proved). Exact classification and exact loss over a field.}
+\emph{Manuscript problem locus: \S20, fol.125v, scan250, the field case and quotient on isomorphisms.}
+For a field $K$, isomorphism classes of forms of $\mathbb P^1$ identify under the lifting-gerbe map with those classes in $H^2_{\mathrm{fppf}}(K,\mu_2)=\operatorname{Br}(K)[2]$ whose index divides two. For a form with Azumaya algebra $A$, the Hom groupoid from that form to itself has
+\[
+\pi_0=\operatorname{Nrd}(A^\times)/K^{\times2},
+\qquad \pi_1=\mu_2(K).
+\]
+Its map to the automorphism groupoid of its gerbe is the inclusion
+$\operatorname{Nrd}(A^\times)/K^{\times2}\hookrightarrow K^\times/K^{\times2}$ on components and the identity on $\mu_2(K)$. In the split case the ordinary automorphism map loses exactly
+\[
+\operatorname{PSL}_2(K)
+ =\operatorname{im}\bigl(SL_2(K)\to PGL_2(K)\bigr),
+\]
+and its surviving components are $K^\times/K^{\times2}$.
+
+\emph{Proof.} The fppf Kummer sequence and $\operatorname{Pic}(K)=0$ identify $H^2(K,\mu_2)$ with the two-torsion Brauer group. The obstruction gerbe maps to the usual Brauer class of $A$. A central simple algebra of fixed degree is determined, up to isomorphism, by its Brauer class: writing it as a matrix algebra over its division algebra, the degree fixes the matrix size. Thus the map on degree-two forms is injective, and its image is exactly the index-one and index-two classes.
+
+Skolem--Noether identifies $G_A(K)=A^\times/K^\times$. The obstruction to rescaling a representative $v\in A^\times$ to reduced norm one is $\operatorname{Nrd}(v)$ modulo squares. Its kernel is exactly the image of $SL_1(A)(K)$, its image is the reduced-norm subgroup modulo squares, and its two-automorphisms are the kernel $\mu_2(K)$. Equivalences of a banded gerbe with itself are classified by $\mu_2$-torsors, giving the claimed target and the same two-automorphism group. For $A=M_2(K)$, determinants take every value in $K^\times$, proving the final assertion. In particular the unipotent matrix $\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$ gives a nonidentity projective automorphism identified with the identity for every field. Over $\mathbb R$ and the quaternion division algebra, reduced norms are positive, so the source component group is trivial while the gerbe has two automorphism components. Thus even over a field the gerbe functor need not be full. The finite split cases over $\mathbb F_2$ and $\mathbb F_3$ are enumerated in the attached program. \hfill$\square$
+
+\paragraph{D.14 (Proved). The realizability restriction cannot be removed.}
+\emph{Manuscript problem locus: \S20, fol.125v, scan250, realizability by an Azumaya algebra of fixed rank.}
+There exist finitely generated characteristic-zero fields with two-torsion Brauer classes of index four. Such a class is a $\mu_2$-gerbe which is not the lifting gerbe of a form of $\mathbb P^1$.
+
+\emph{Proof.} Take $K=\mathbb Q(t_1,t_2,t_3,t_4)$ and
+\[
+D=(t_1,t_2)_K\otimes_K(t_3,t_4)_K.
+\]
+The tensor product has degree four and Brauer exponent dividing two. Embed $K$ in the iterated Laurent series field $L=\mathbb Q((t_1))((t_2))((t_3))((t_4))$, with its rank-four valuation, ordered lexicographically in the appropriate Laurent order. In $D_L$, write the standard basis as $i_1^{e_1}j_1^{e_2}i_2^{e_3}j_2^{e_4}$, $e_i\in\{0,1\}$, with $i_1^2=t_1$, $j_1^2=t_2$, $i_2^2=t_3$, $j_2^2=t_4$. Give such a monomial value $\frac12(e_1,e_2,e_3,e_4)$ modulo the value group of $L$. The sixteen values lie in distinct cosets. Every nonzero linear combination therefore has a unique term of least value. The least term of a product is the product of the two least terms and has nonzero coefficient, because commutation changes only a sign. Hence $D_L$ has no zero divisors and is a division algebra, being finite-dimensional over a field. Therefore $D$ is itself division: a zero divisor over $K$ would remain one after extension to $L$. It has index four and nonzero exponent two. D.13 excludes its gerbe from the image of degree-two forms. The distinct-coset calculation and the signed monomial multiplication are checked in the attached program. \hfill$\square$
+
+\paragraph{D.15 (Refuted). The literal $0$-faithfulness assertion, with its corrected interpretation.}
+\emph{Manuscript problem locus: \S20, fols.124--125v, scans247--250; compare the definition on scan247 with the claim on scan250.}
+The ordinary functor which sends an algebraic form to the \emph{isomorphism class} of its gerbe-induced automorphism is not faithful: D.13 gives its exact kernel. If the four definitions of scans247--248 are instead imposed literally on the map from the ordinary groupoid, viewed as a two-groupoid with only identity two-arrows, the map is $0$-faithful. Thus the wording of scan250 cannot simultaneously be read in that technical sense.
+
+\emph{Proof.} Ordinary faithfulness fails because the identity and the nonidentity unipotent in D.13 have the same image after passage to two-isomorphism classes. On the other hand the classifying space of a locally discrete groupoid has $\pi_2=0$. Its map to any two-groupoid is automatically injective on $\pi_2$, which is exactly $0$-faithfulness in D.10. The first failure in that hierarchy is generally at $1$-faithfulness (the target can have nonzero $\mu_2(K)$), while failure on the automorphism component group is measured by injectivity on $\pi_1$. This is a terminological correction supported by the two explicit manuscript definitions, not a change to the valid observation that all projective automorphisms coming from $SL_2(K)$ are identified. \hfill$\square$
+
+\paragraph{D.16 (Refuted). Lead4, with the strongest categorical replacement.}
+\emph{Manuscript problem locus: \S20, fols.116v--125v, scans233--250; Lead4 of the supplied research prompt.}
+The topological part of Lead4 is correct in the precise sense of D.1--D.10. The assertion that the arithmetic two-category of degree-two Azumaya algebras is simply a gerbe description of $BPGL_2$ is false without the module data of D.12. $BPGL_2$ classifies the original torsors; the imposed crossed-module homotopies produce a different two-category, and its two-stackification is $B^2\mu_2$. None of these constructions determines the full etale or motivic homotopy type of a conic from the gerbe alone.
+
+\emph{Proof.} The first assertion is D.1 and the explicit equivalences and Postnikov stages in D.3, D.6 and D.8. The scheme counterexample D.12 shows that a bare lifting gerbe does not determine the torsor. The index-four example D.14 shows that not every gerbe is represented by such a torsor. D.13 computes the morphisms lost, and D.12 proves the two-stackification assertion. Together these give the complete corrected statement and refute the proposed identification in all three relevant ways: objects, essential image and Hom groupoids. \hfill$\square$

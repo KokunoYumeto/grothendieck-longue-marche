@@ -1,0 +1,374 @@
+\section{The discrete multi-Galois envelope and its pro-variants}
+\label{sec:A}
+
+Throughout this section a topos is a Grothendieck topos in a fixed universe, and choice is available in the ambient category of sets. We write $\beta C=\operatorname{Fun}(C^{\mathrm{op}},\mathbf{Set})$ for a small groupoid $C$. A locally constant object may have different sets of values on different members of a covering family. In particular, the cardinality need not be the same on different connected components. Points have the variance used in the manuscript: the category of points is opposite to the category of inverse-image fibre functors. All statements about fundamental groupoids below use this convention.
+
+\subsection{The assertion that all objects are locally constant}
+
+\Needspace{5\baselineskip}
+\paragraph{A.1 (Proved; manuscript 1.1, $b\Leftrightarrow b'\Rightarrow a$).}
+\textit{Manuscript: LM \S1, folio 1, scan 6 (1.1 and Definition 1.2).}
+For every small groupoid $C$, a choice of one object in each component gives
+\[
+ \beta C\simeq\prod_{i\in\pi_0C}\mathbf{Set}^{G_i},
+ \qquad G_i=\operatorname{Aut}_C(c_i).
+\]
+Every object of $\beta C$ is locally constant. Conversely, every such product is the presheaf topos of the disjoint union of the one-object groupoids $BG_i$. These assertions include the empty groupoid and the degenerate topos. These, and only these, are the multi-Galois topoi of Definition~1.2.
+\begin{proof}
+Restriction to the chosen objects is an equivalence of groupoids and therefore induces an equivalence of presheaf categories. In $\mathbf{Set}^{G_i}$ the regular $G_i$-set is an epimorphic cover of the terminal object, and its slice topos is $\mathbf{Set}$: an equivariant map $Y\to G_i$ is recovered from its fibre over the identity. The pullback of any $G_i$-set to this slice is constant. Doing this in every component proves local constancy. The converse construction is literal. No finiteness condition on the groups occurs in the manuscript's definition. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.2 (Refuted; manuscript 1.1, $a\Rightarrow b$ without additional hypotheses).}
+\textit{Manuscript: LM \S1, folio 1, scan 6 (1.1(a) and the marginal doubt).}
+Let $B=\operatorname{RO}(\mathbb R)$ be the complete atomless Boolean algebra of regular open subsets of the real line. Every object of $\operatorname{Sh}(B)$ is locally constant, but this nondegenerate topos has no points. It is therefore not $\beta C$ for any groupoid $C$.
+\begin{proof}
+We give the general Boolean-algebra argument, so that the example does not depend on a spatial interpretation of $B$. Every sheaf on a locale is covered by subterminal objects. In a Boolean topos, well-order such a covering family and subtract from the image of each member the union of the preceding images. The resulting disjoint family still covers the object. Consequently every $X\in\operatorname{Sh}(B)$ is a coproduct $\coprod_{i<\kappa} b_i$ of elements $b_i\in B$ for some ordinal $\kappa$.
+
+Here is the elementary Boolean-valued step used to trivialize this coproduct. Regard it as the Boolean-valued subset $A$ of the ground ordinal $\kappa$ whose membership values are $\lVert i\in A\rVert=b_i$. The inherited ordering is a well-order. Its order type is an ordinal at most $\kappa$, so
+\[
+ 1=\bigvee_{\alpha\leq\kappa}
+       \lVert A\text{ is order-isomorphic to }\check\alpha\rVert.
+\]
+This equality is valid in the Boolean-valued interpretation of the usual theorem that a subset of an ordinal has order type at most that ordinal. The bounded quantifier over $\check{\kappa+1}$ is, by definition, the displayed join. Refine that join to a disjoint partition of $1$. On each member, choose a witness to the corresponding isomorphism; the witness exists locally by the definition of the existential Boolean value, and a further disjoint refinement glues its witnesses. In sheaf language this is an isomorphism $X|_b\simeq\Delta\alpha|_b$. Thus the resulting partition trivializes $X$. This argument uses only the usual Boolean-valued interpretation of bounded sets and its mixing rule, not a set-generic ultrafilter. The equivalence of that interpretation with sheaves on $B$ is described in Makkai and Reyes (1977, Theorem~4.2.1 and Proposition~4.3.4).
+
+A point of the locale $B$ would be a frame homomorphism $p:B\to2$. Since $B$ is Boolean, $p$ preserves complements; since it preserves all joins, it therefore preserves all meets. The element
+\[
+ a=\bigwedge\{b\in B:p(b)=1\}
+\]
+satisfies $p(a)=1$ and is an atom: for $0<c\leq a$, the possibility $p(c)=0$ would imply $a\leq\neg c$, a contradiction. The algebra $\operatorname{RO}(\mathbb R)$ is atomless because every nonempty regular open contains two disjoint nonempty regular opens. Hence there is no point. A nonempty groupoid presheaf topos has evaluation points, whereas the empty groupoid gives the degenerate topos. This proves the asserted failure. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.3 (Proved; the weakest of the manuscript's two proposed repairs).}
+\textit{Manuscript: LM \S1, folio 1, scan 6 (1.1 and the proposed extra hypotheses).}
+For a Grothendieck topos $\mathcal E$ all of whose objects are locally constant, the following are equivalent:
+\[
+ \mathcal E\simeq\beta C\text{ for a groupoid }C;
+ \qquad\mathcal E\text{ is locally connected};
+ \qquad\mathcal E\text{ has enough points}.
+\]
+Thus either proposed extra hypothesis suffices separately; their conjunction is unnecessary. Local connectedness is also necessary, so it is an exact repair within the class under discussion.
+\begin{proof}
+A locally constant object has decidable equality, because that property is local and holds for constant sets. If every object is decidable, $\Omega$ is decidable; equality of a truth value with truth is decidable, which is precisely excluded middle. Thus $\mathcal E$ is Boolean.
+
+Suppose first that $\mathcal E$ has enough points. For each $X$, the points of the slice $\mathcal E/X$ separate its subterminal objects. Hence the complete Boolean algebra $\operatorname{Sub}(X)$ has enough frame points. The argument in A.2 shows that every such frame point comes from an atom. Separation now says that every element is a join of atoms. The atoms of $\operatorname{Sub}(X)$ are disjoint, so $X$ is the coproduct of its atomic subobjects. This proves local connectedness.
+
+Suppose next that $\mathcal E$ is locally connected. Since it is Boolean, its nonzero connected objects are atoms. There is only a set of isomorphism classes of atoms: choose a small generating family; every atom is an epimorphic image of one generator, and each generator has only a set of quotients. Choose representatives $A_i$ of all atoms and form $A=\coprod_i A_i$. By hypothesis $A$ is locally constant. Refine a trivializing cover of $A$ into connected objects $U_j$. Each $U_j$ is an atom. In $\mathcal E/U_j$, every $A_i\times U_j$ is a constant object: it is a subobject of the constant object $A\times U_j$, and subobjects of constant sets over an atom are constant subsets. Therefore every $X\times U_j$ is constant, since every $X$ is a coproduct of atoms.
+
+We claim $\mathcal E/U_j\simeq\mathbf{Set}$. For $f:Y\to U_j$, the two objects $Y\times U_j$ and $U_j\times U_j$, viewed over the second factor, are constant. A map between constant objects over the connected object $U_j$ is a single set map. Pull back $f\times U_j$ along the diagonal section of $U_j\times U_j$; its fibre is constant and is precisely $Y\to U_j$. Thus every object of the slice is constant, and the constant functor is fully faithful because $U_j$ is connected.
+
+Each $U_j$ is consequently connected and small projective: $\operatorname{Hom}(U_j,-)$ is the inverse image of the point obtained from the slice, and preserves all colimits. The $U_j$ generate $\mathcal E$: after pullback to the covering family, every object is a coproduct of copies of its member, giving an epimorphic family of maps from the $U_j$. A morphism between two such connected projectives is an isomorphism. Indeed its image is a nonzero subobject of an atom, hence the whole atom, and projectivity splits this epimorphism; its section has nonzero image in an atom, hence is an isomorphism. The small full category $C$ of these generators is therefore a groupoid. The usual density presentation of every object as a colimit of representables identifies $\mathcal E$ with $\beta C$. Equivalently, the explicit nerve functor $X\mapsto\operatorname{Hom}(-,X)|_C$ has a coend left adjoint, and both unit and counit are isomorphisms because the generators are small projective and conservative.
+
+Finally $\beta C$ is locally connected and has enough evaluation points. This proves all implications. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.4 (Proved; explicit exactness condition 1.1(c)).}
+\textit{Manuscript: LM \S1, folio 1, scan 6 (1.1(c)).}
+A locally small category $\mathcal E$ is a discrete multi-Galois topos exactly when it satisfies the following axioms: (i) finite limits and all small colimits exist; (ii) small coproducts are disjoint and stable under pullback; (iii) every arrow factors as an effective epimorphism followed by a monomorphism, these factorizations are stable under pullback, and every internal equivalence relation is the kernel pair of its quotient; (iv) $\mathcal E$ has a small generating family; (v) it has a small generating family of noninitial connected projective atoms. Equivalently, in (v) one may require small projective generators whose full subcategory is a groupoid.
+\begin{proof}
+The first four are Giraud's exactness axioms, in the formulation as an infinitary pretopos with a set of generators (Makkai and Reyes, 1977, Proposition~3.4.8). They make $\mathcal E$ a Grothendieck topos. For an atom $P$, connectedness gives preservation of arbitrary coproducts by $\operatorname{Hom}(P,-)$. Projectivity gives lifting through effective epimorphisms. To see preservation of coequalizers, write a coequalizer as the quotient by the equivalence relation generated by the given parallel pair. An equality after quotient is locally a finite chain of generating identifications. Because $P$ is an atom, an epimorphic family of its subobjects contains the whole $P$; the finite chain and each lifted step may therefore be chosen on all of $P$. This proves that the quotient of the Hom-set is the Hom-set of the quotient. Thus each $P$ is small projective. All maps between such generators are isomorphisms by the splitting argument in A.3, and density gives $\mathcal E\simeq\beta C$. Conversely the representables of a groupoid presheaf category have precisely these properties; limits, coproducts and effective quotients are pointwise. This supplies a genuine exactness formulation without introducing a preferred fibre functor. 
+\end{proof}
+
+\subsection{All the assertions of \S1}
+
+\Needspace{5\baselineskip}
+\paragraph{A.5 (Proved; propositions 1.3 and 1.4).}
+\textit{Manuscript: LM \S1, folio 1, scans 6--7 (1.3--1.4).}
+For $S\in\beta C$, let $\int_C S$ be its category of elements. It is a groupoid and
+\[
+ (\beta C)/S\simeq\beta\!\left(\int_C S\right).
+\]
+Arbitrary sums of multi-Galois topoi, whose underlying categories are products, are multi-Galois. The category of points of $\beta C$ is a groupoid equivalent to $C$, and the canonical evaluation comparison with presheaves on that point groupoid is an equivalence.
+\begin{proof}
+The slice equivalence sends $T\to S$ to its fibres $T(c)_s$; inverses are fibrewise disjoint unions. Every arrow of the category of elements is invertible because arrows of $C$ are. The sum assertion follows by taking a disjoint union of groupoids.
+
+For completeness we classify all fibre functors, rather than only the evident evaluations. A colimit-preserving functor $F:\beta C\to\mathbf{Set}$ is determined by $P(c)=F(yc)$ and the coend formula. Left exactness says precisely that the category of elements of $P$ is filtering in the relevant variance. For a groupoid, filtering says nonempty and that any two objects have a unique comparison after transport; equivalently, $P$ is a torsor in one component of $C$. Choose an element of this torsor. Transport identifies it with the representable torsor at its vertex, hence identifies $F$ with evaluation at that vertex. A transformation between two such functors is, by Yoneda, induced by exactly one arrow of $C$, and is invertible. Evaluation thus identifies the entire point groupoid, not merely a specified collection of points. The final comparison is the Yoneda evaluation equivalence transported along this identification. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.6 (Proved; proposition 1.5, all five conditions and the N.B.).}
+\textit{Manuscript: LM \S1, folios 1--2, scans 7--9 (1.5 and Definition 1.6).}
+For $S\in\beta C$ the following are equivalent: $S$ is nonempty and simply connected in the manuscript's sense; $S$ is connected and projective; $\operatorname{Hom}(S,-)$ is a fibre functor; $(\beta C)/S\simeq\mathbf{Set}$; and $S$ is representable. Definition~1.6 calls an object with these equivalent properties a universal cover. In the third condition it suffices to preserve coproducts and coequalizers, and, because the functor is left exact, it suffices to preserve coproducts and effective quotients.
+\begin{proof}
+Work in one component $\mathbf{Set}^{G}$. A connected object is a transitive $G$-set $G/H$. Its slice is $\mathbf{Set}^{H}$. Every object of that slice is locally constant by A.1, so simple connectedness means that every $H$-set is trivial. The regular $H$-set shows this happens exactly when $H=1$. The epimorphism $G\to G/H$ admits a $G$-equivariant section exactly when $H=1$, so projectivity has the same criterion. For $H=1$, $G$ is the representable object and its Hom-functor is the underlying-set functor, hence a fibre functor; conversely a representable fibre functor preserves epimorphisms and coproducts and therefore makes $S$ projective and connected. The slice statement is the same $H=1$ criterion. Objects meeting more than one component are not connected, and the initial object does not preserve the empty coproduct, so no exceptional case is suppressed.
+
+Every colimit is a coequalizer of a pair between coproducts. In an exact category each coequalizer is the effective quotient of the equivalence relation generated by the pair. The finite-limit preservation of a representable functor and the atom/projectivity argument in A.4 justify the equivalent quotient formulation. This proves the N.B. with ``quotient'' interpreted as an effective quotient, rather than as an arbitrary image operation. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.7 (Proved; propositions 1.7--1.10).}
+\textit{Manuscript: LM \S1, folios 2--3, scans 9--10 (1.7--1.10, including Definition 1.9).}
+The full subcategory of simply connected objects in a multi-Galois topos is equivalent to its point groupoid, by sending $S$ to the fibre functor it represents with the point variance fixed above. For a specified point $p$, the pairs $(S,s)$ with $S$ simply connected and $s\in p^*S$ form a contractible groupoid. These are the pointed universal covers of Definition~1.9. Thus a pointed universal cover is unique up to unique isomorphism; an unpointed universal cover generally has automorphisms.
+\begin{proof}
+A.5 represents every fibre functor, and A.6 identifies its representing objects. Yoneda proves full faithfulness. If $S$ represents $p^*$, the Yoneda element corresponding to $\operatorname{id}_S$ is universal. Any other representing pair is carried to it by a unique representing isomorphism. In $\mathbf{Set}^{G}$ the unpointed cover has automorphism group $G^{\mathrm{op}}$, which explains exactly why the pointing is needed for the uniqueness assertion. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.8 (Proved; propositions 1.11 and the missing 1.12).}
+\textit{Manuscript: LM \S1, folio 3, scan 11 (1.11--1.12).}
+For small groupoids $C,D$, composition on points induces an equivalence
+\[
+ \operatorname{Hom}_{\mathrm{Top}}(\beta C,\beta D)
+ \simeq\operatorname{Fun}(C,D).
+\]
+The right side is a groupoid, with natural isomorphisms as arrows. For connected pointed topoi $\mathbf{Set}^{G}$ and $\mathbf{Set}^{H}$ it is the action groupoid
+\[
+ \bigl[\operatorname{Hom}_{\mathrm{Grp}}(G,H)/H\bigr],
+ \qquad h:\varphi\Rightarrow\psi\iff\psi(g)=h\varphi(g)h^{-1}.
+\]
+Its automorphism group at $\varphi$ is $C_H(\varphi(G))$. Forgetting the chosen comparison of base points therefore produces conjugacy, not equality, of homomorphisms.
+\begin{proof}
+A functor $u:C\to D$ gives restriction $u^*:\beta D\to\beta C$, which preserves all limits and colimits and has right Kan extension as right adjoint. Conversely compose the inverse image of a geometric morphism with every evaluation at $c\in C$. A.5 makes the resulting fibre functors a functor $C\to D$, unique up to natural isomorphism, and pointwise evaluation identifies the original inverse image with restriction. The same argument on transformations gives the asserted Hom-category equivalence. For one-object groupoids, a functor is a homomorphism, and its naturality equation is exactly the displayed conjugacy equation. All homomorphisms are allowed; no injectivity or centralizer hypothesis is involved at this stage. 
+\end{proof}
+
+\subsection{The locally constant envelope without points}
+
+\Needspace{5\baselineskip}
+\paragraph{A.9 (Proved; theorem 2.1 and definition 2.2).}
+\textit{Manuscript: LM \S2, folio 4, scans 12--13 (2.1--2.2).}
+Suppose $\mathcal E$ is locally connected and has a small generating family of nonempty connected objects $U_i$ such that every locally constant object of $\mathcal E/U_i$ is constant. Then $\operatorname{LC}(\mathcal E)\simeq\beta C$ for a small groupoid $C$, and its inclusion in $\mathcal E$ preserves finite limits and all small colimits. No hypothesis on points is needed. The same conclusion holds under the weaker, exact splitting hypothesis that a covering family of connected objects $U_i$ trivializes every locally constant object of $\mathcal E$.
+\begin{proof}
+The generating hypothesis supplies an epimorphic family $U_i\to1$, and the assumed simple connectedness trivializes every locally constant object after pullback to $U_i$. Let $U=\coprod_iU_i$. Form the simplicial set $K_n=\pi_0(U^{n+1})$, where products are over $1$. Let $C$ be the groupoid presented by vertices $K_0$, edges $K_1$, and the identity and triangle relations from $K_2$. Thus $C=\Pi_1|K_\bullet|$.
+
+Effective descent for the cover $U\to1$ identifies objects of $\mathcal E$ with objects on its pieces plus cocycle data. For an object constant on each connected $U_i$, those data are sets $A_i$ and, on each connected component of $U_i\times U_j$, a bijection between the corresponding sets. The cocycle condition on every component of a triple product gives exactly the triangle relation defining $C$. A map of such objects is exactly a natural transformation. This proves an equivalence between the objects split by this cover and $\beta C$. By the splitting hypothesis these are precisely all locally constant objects.
+
+Finite limits are locally finite limits of constant sets. For an arbitrary diagram of locally constant objects, restriction to each $U_i$ is a diagram of constant objects and all its maps are constant set maps because $U_i$ is connected. The constant functor to $\mathcal E/U_i$ preserves colimits, and pullback to $U_i$ does likewise. Hence the colimit in $\mathcal E$ is again split by the cover and agrees with the colimit in $\beta C$. The inclusion is therefore left exact and cocontinuous, and gives the inverse image of the canonical geometric morphism $q:\mathcal E\to\mathcal E_{[1]}$. Existence of its right adjoint follows from the adjoint functor theorem for Grothendieck topoi, or from the small presentation just constructed. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.10 (Proved; the first phenomenon in 2.3).}
+\textit{Manuscript: LM \S2, folio 5, scan 14 (2.3).}
+There is a locally connected, locally simply connected and simply connected topos having two distinct morphisms between the same two points. In particular, restriction of point morphisms to locally constant objects need not be faithful even when there are enough points.
+\begin{proof}
+Let $D$ have objects $0,1,2$, two arrows $a,b:0\to1$, an arrow $c:1\to2$, and one arrow $d:0\to2$, with $ca=cb=d$, and identities. Let $\mathcal E=\mathbf{Set}^{D^{\mathrm{op}}}$. Representables are connected; their slice categories are presheaves on $D/x$, which has a terminal object and therefore contractible nerve. Locally constant presheaves are exactly functors inverting all arrows, hence representations of the groupoid completion. The terminal object $2$ makes this completion the terminal groupoid, so $\mathcal E$ is simply connected. The same argument in each $D/x$ proves local simple connectedness. Evaluation points at $0$ and $1$ have two point morphisms induced by $a,b$; Yoneda distinguishes them. Their restrictions to the locally constant category $\mathbf{Set}$ coincide. The finite category and its localization relations are checked in the attached program \path{code/foundations/foundations_checks.py}. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.11 (Proved; a pointless locally simply connected example).}
+\textit{Manuscript: LM \S2, folio 5, scans 14--15 (2.3).}
+There exists a nondegenerate, locally connected, locally simply connected topos with no points and with locally constant envelope $\mathbf{Set}$. Consequently a universal cover need not be induced by any point, as anticipated in 2.3; the displayed assertion that $\beta$ is always an equivalence is false without a point-existence hypothesis.
+\begin{proof}
+We give an explicit locale. For a closed subset $F\subset\mathbb R^3$, write $P(F)$ for its perfect kernel, supplied by the Cantor--Bendixson theorem. Set
+\[
+ j(V)=\mathbb R^3\setminus P(\mathbb R^3\setminus V)
+ \quad(V\text{ open}),
+ \qquad L=\{V:j(V)=V\}.
+\]
+The operation $j$ is a nucleus. It is increasing, inflationary and idempotent. Moreover $P(F\cup G)=P(F)\cup P(G)$ for closed $F,G$: each difference from its perfect kernel is countable, while a nonempty relatively open subset of a perfect Polish space is uncountable. Hence $j$ preserves binary intersections. The frame $L$, with joins computed by applying $j$ to ordinary unions, is the locale of coperfect opens. Its top and bottom remain distinct. It has no points: a point of $L$ would compose with the frame quotient to a point $x\in\mathbb R^3$, but $j(\mathbb R^3\setminus\{x\})=\mathbb R^3$ contradicts evaluation at $x$.
+
+We verify the local connectivity and covering claims rather than inferring them from the name of this locale. Ordinary open balls are $j$-fixed and form a basis of $L$. If a family of $j$-fixed opens covers a ball $B$ in $L$, its ordinary union is $B\setminus D$, where $D$ is closed in $B$ with empty perfect kernel. The Cantor--Bendixson theorem makes this single omitted set $D$ countable. In dimension at least two, removal of a closed countable subset does not disconnect a connected open set: polygonal paths can be moved off the countably many forbidden points, or joined through a generic intermediate point. A partition in the locale of a connected ordinary open would therefore partition a connected open minus a closed countable set, and must be trivial. The components of a $j$-fixed open are themselves $j$-fixed: an isolated point in a component's complement could not lie in another open component, and outside the original open it would be an isolated point of that open's perfect complement. These are both impossible. Its ordinary component decomposition is consequently also its locale component decomposition. In particular the balls are connected, proving local connectedness.
+
+Let $F$ be locally constant on the slice locale over a ball $B$. Refine a trivializing cover by subterminal opens, and choose their $j$-fixed representatives $V_i$. Their union is $V=B\setminus D$ for one closed countable $D$. A morphism between constant sheaves over any $V_i\cap V_j$ is a family of set maps on its connected components. The preceding component comparison identifies these maps with the ordinary constant-sheaf maps on that intersection. The descent data for $F$ are therefore the descent data of an ordinary covering space of $V$.
+
+The space $B\setminus D$ is simply connected. Indeed a loop has compact image separated from the relatively closed set $D$, and can first be replaced, through loops avoiding $D$, by a polygonal loop. Choose a cone vertex in the convex ball outside the countable union of affine planes determined by one polygonal edge and one point of $D$, also outside $D$. The cone on the polygon then avoids $D$. This contracts the loop. Path connectedness is proved by the same generic-intermediate-point argument. Thus the ordinary covering is constant. Restrict its trivialization to the original $V_i$; the component comparison turns these into locale trivializations compatible on every overlap, and effective descent glues them over the locale cover of $B$. This does not require the ordinary union $V$ itself to be $j$-fixed. Every ball slice is simply connected, and the identical argument with the convex space $\mathbb R^3$ proves global simple connectedness. Hence $\mathcal E=\operatorname{Sh}(L)$ has the required properties. Its terminal object is the universal cover in $\operatorname{LC}(\mathcal E)=\mathbf{Set}$, and no point can define it. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.12 (Proved; exact criteria for $\alpha$ and $\beta$ in 2.3).}
+\textit{Manuscript: \S 2; folio 5; scans 14-15.}
+
+Let $q:\mathcal E\to\beta C$ be the envelope of A.9. Let $C_{\mathrm{pts}}$ have the actual points of $\mathcal E$ as objects and the morphisms between their images in $C$ as arrows. Then $\alpha:\operatorname{Pt}(\mathcal E)\to C_{\mathrm{pts}}$ is always essentially surjective, and $\beta:C_{\mathrm{pts}}\to C$ is always fully faithful. The latter is an equivalence exactly when every connected component of $\mathcal E$ has a point.
+
+There is also a precise neighbourhood criterion for fullness and faithfulness. Write $N_p$ for the category of pointed objects $(V,v)$ with $v\in p^*V$, and let $(S_p,s_p)$ be the universal pointed locally constant cover determined by $p$. In fibre-functor variance,
+\[
+ \operatorname{Nat}(p^*,r^*)
+  \simeq\lim_{(V,v)\in N_p}r^*V
+  \longrightarrow r^*S_p
+  \simeq\operatorname{Nat}(p^*|_{\mathrm{LC}},r^*|_{\mathrm{LC}}).
+\]
+The functor $\alpha$ is faithful exactly when all these displayed maps are injective; it is full exactly when they are surjective. This criterion does not assume a spatial or a Boolean topos.
+\begin{proof}
+The first two assertions follow directly from the definition of $C_{\mathrm{pts}}$. Components of $C$ correspond to components of the terminal object of $\mathcal E$, because constant sets detect exactly their coproduct decomposition. A point in a component maps to its component of $C$; every object of that groupoid component is isomorphic to its image. Conversely an object of $C$ hit up to isomorphism supplies such a point. This proves the criterion for $\beta$. Enough points implies this condition but is stronger than necessary; A.11 shows that it cannot simply be removed.
+
+For the formula, every functor $p^*:\mathcal E\to\mathbf{Set}$ is the colimit, over the opposite of its category of elements, of the represented functors $\operatorname{Hom}(V,-)$. A natural transformation out of this colimit is a compatible family of elements of $r^*V$. This proves the first equivalence (a small cofinal presentation may be used). On locally constant objects, Yoneda at $S_p$ gives the second. The restriction map is evaluation at $(S_p,s_p)$. Injectivity and surjectivity are exactly faithfulness and fullness, with no missing coherence condition because the displayed limit includes every map of pointed objects. For comparison, a Hausdorff interval gives a faithful but nonfull $\alpha$, since distinct spatial points have no specialization arrows while its intrinsic fundamental groupoid is connected; A.10 supplies nonfaithfulness. 
+\end{proof}
+
+\subsection{Faithful groupoids over a base}
+
+\Needspace{5\baselineskip}
+\paragraph{A.13 (Proved; \S4, discrete induction).}
+\textit{Manuscript: LM \S4, folios 6--7, scans 16--18.}
+A geometric morphism $\beta D\to\beta C$ is a slice morphism if and only if its corresponding functor $p:D\to C$ is faithful. The bicategory of faithful groupoids over $C$ has morphisms $(f,\alpha)$ with $\alpha:p_2f\Rightarrow p_1$ and 2-morphisms $\eta:f\Rightarrow g$ satisfying
+\[
+ \alpha=\beta\circ(p_2\eta).
+\]
+Every Hom-category is a thin groupoid. Its quotient by isomorphism of 1-morphisms is equivalent to $\beta C$.
+\begin{proof}
+For a presheaf $S$, the category of elements projects faithfully to $C$, and A.5 identifies its topos with the slice over $S$. Conversely, for faithful $p$ define
+\[
+ S(c)=\pi_0\{(d,\gamma):d\in D,\ \gamma:c\xrightarrow{\sim}p(d)\},
+\]
+where an arrow $(d,\gamma)\to(d',\gamma')$ is $h:d\to d'$ with $p(h)\gamma=\gamma'$. Each such comma groupoid is thin by faithfulness. Precomposition defines a presheaf on $C$. The functor $D\to\int_C S$ taking $d$ to $(p(d),[d,1])$ is fully faithful: equality of the associated classes gives a unique lift of the required arrow, again by faithfulness. It is essentially surjective by the very definition of the comma classes. Thus $p$ is equivalent over $C$ to a category-of-elements projection and gives a slice.
+
+For the asserted 2-category, the compatibility equation determines each component $p_2\eta_d$ uniquely. Faithfulness of $p_2$ makes $\eta_d$ unique when it exists. All its components are invertible, so a Hom-category is an equivalence relation in the categorical sense. The preceding construction sends $(f,\alpha)$ to a natural map of the associated presheaves. Conversely every presheaf map induces a functor between the categories of elements over $C$. The fibrewise construction proves these operations inverse after quotienting by the stated unique 2-isomorphisms. This makes precise the manuscript's marginal request. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.14 (Refuted; corrected statement: the profinite qualification on scan 18).}
+\textit{Manuscript: LM \S4, folio 7, scan 18 (application to fields).}
+For profinite groups, faithful continuous homomorphisms do not suffice to characterize slice morphisms. A continuous injection $H\hookrightarrow G$ gives a connected slice $B_{\mathrm{cont}}H\to B_{\mathrm{cont}}G$ exactly when its image is open. Étale schemes over a field $k$ correspond to discrete continuous $\Gamma_k$-sets, and hence to faithful action groupoids over $\Gamma_k$ with open stabilizers; finite étale schemes correspond to finite such sets.
+\begin{proof}
+An object of $B_{\mathrm{cont}}G$ is a discrete set with continuous action, so a transitive object is $G/H$ with $H$ open. Its slice is $B_{\mathrm{cont}}H$, by taking the fibre of an equivariant map over the identity coset. Conversely any connected slice has precisely this form. The inclusion $1\hookrightarrow\widehat{\mathbb Z}$ is faithful, but the regular coset set $\widehat{\mathbb Z}/1$ is not discrete continuous; the resulting point is not a slice morphism. Equivalently, a slice realizing it would provide a simply connected transitive continuous action, whose stabilizer would have to be trivial and open, impossible in this infinite profinite group.
+
+For a field, a connected étale scheme is the spectrum of a finite separable extension. A general étale scheme is their disjoint union. Sending it to its $k_s$-points gives a discrete continuous Galois set; the inverse sends an orbit $\Gamma_k/H$ to $\operatorname{Spec}(k_s^H)$. Open subgroups have finite index, and this construction is inverse on morphisms by the elementary Galois correspondence. Thus the topology and openness condition are essential to the application, not optional embellishments. 
+\end{proof}
+
+\subsection{The missing \S3: pro-multi-Galois and profinite topoi}
+
+\Needspace{5\baselineskip}
+\paragraph{A.15 (Proved; definitions and recognition).}
+\textit{Manuscript: LM \S3, folio 6, scan 16.}
+Call a topos \emph{pro-multi-Galois} if it is locally connected and generated under colimits by locally constant objects. Call it \emph{componentwise profinite multi-Galois} if it is locally connected and generated by finite locally constant objects, allowing a discrete, possibly infinite set of connected components. These definitions concern topoi, rather than formal pro-objects. A pro-multi-Galois topos is equivalently the classifying topos of a $0$-strict pro-groupoid, that is, of a cofiltered system of groupoids whose transition maps have connected nonempty homotopy fibres. Its componentwise profinite analogue is equivalently a product of continuous-action topoi of profinite groups. These assertions are the corrected pro-analogues of 1.1: ``generated by'' replaces ``all objects are'' locally constant.
+\begin{proof}
+We spell out the passage from covering data to the pro-object. If $U\to1$ is a covering object of a locally connected topos, decompose $U$ into connected components. The argument of A.9 identifies the full subcategory $\operatorname{Split}(U)$ of objects trivialized on these components with $\beta C_U$, using the groupoid of the componentwise \v Cech descent data. The inclusion preserves finite limits and all colimits. A refinement $V\to U$ gives a fully faithful restriction functor $\beta C_U\to\beta C_V$. The corresponding functor $C_V\to C_U$ is bijective on connected components and surjective on the automorphism groups after choosing vertices: for a functor of groupoids these are exactly the conditions that restriction of set-valued functors be fully faithful. Equivalently its homotopy fibres are nonempty and connected. Thus the splitting groupoids give a strict fundamental pro-groupoid. Refinements and their isomorphisms must be kept coherently; a chosen cofiltered presentation of the associated pro-object removes this bookkeeping without discarding it.
+
+There is a small cofinal supply of splitting covers. Fix a small generating set for the original topos. Refine every trivializing cover by its members; since a member has only one map to $1$, repetitions can be removed. Hence the subfamilies of a fixed set of generators suffice. For each such cover the connected objects of $\operatorname{Split}(U)$ form a set of isomorphism classes, being quotients of its representables. Their union over the chosen covers is still a set.
+
+Let $\operatorname{SLC}(\mathcal E)$ be the full subcategory of sums of connected locally constant objects. We verify its exactness without asserting that arbitrary subobjects in $\mathcal E$ are locally constant (that assertion would be false, already for open subsets of a connected space). The needed lemma is that a \emph{locally constant} subobject of a fixed locally constant object $A$ is split by every connected cover splitting $A$. On a connected trivializing member, membership of each element of the constant fibre is a locally constant subterminal. Such a subterminal is complemented and therefore is $0$ or $1$. This proves the lemma; it also proves that arbitrary unions of locally constant subobjects of this fixed $A$ are locally constant. A map between locally constant objects has locally constant image, since a common connected trivializing cover turns it into maps of sets. The same is true of its kernel pair and quotient by a locally constant equivalence relation.
+
+Finite limits of sums of locally constant objects follow by distributing products over sums and applying the preceding observation on connected summands. For a coequalizer of maps between such sums, decompose its target as $\coprod_bY_b$ with each $Y_b$ connected and locally constant. Each connected source summand maps into a pair $Y_b,Y_c$; its image is a locally constant relation in $Y_b\times Y_c$. The equivalence relation generated by all these images is obtained from finite composites and arbitrary unions. Finite composites are locally constant by the image and fibre-product assertions; unions remain locally constant on each $Y_b\times Y_c$ by the lemma. Denote the resulting pieces by $R_{bc}$. If $R_{bc}$ is nonempty, its projections onto $Y_b,Y_c$ are epimorphic: their images are nonempty locally constant subobjects of connected locally constant objects. Thus the images of $Y_b$ and $Y_c$ in the quotient coincide. Choose one $b$ for each component of this relation on the index set. The quotient is the sum of $Y_b/R_{bb}$ over these choices, and each such quotient is locally constant. Hence all colimits and finite limits are computed in $\mathcal E$. The small family already constructed generates this category; the exactness axioms are inherited for its own internal equivalence relations. This proves it is a Grothendieck topos.
+
+Its generating site is the filtered union of the splitting sites, with their canonical topologies. The inverse-limit theorem for topoi identifies it with the bicategorical inverse limit of $\beta C_U$ (Dubuc, 2004, Theorem~1.1.1 and Propositions~5.1.2--5.1.4). It is locally connected and is generated by its locally constant objects. Conversely such a topos equals its $\operatorname{SLC}$ category, giving the claimed recognition. Equivalently this is the $n=1$ case of the strict-pro-groupoid recognition in Hoyois (2018, Corollary~3.20).
+
+For the profinite version, restrict the generating category to finite locally constant objects. Its fibre functors on each component are finite Galois fibre functors. Finite products and the finite permutation action provide cofinal finite Galois objects. Their automorphism groups form a surjective inverse system of finite groups, whose compact inverse limit is a profinite group $G$. The finite Galois correspondence identifies the finite objects with finite continuous $G$-sets. Every continuous $G$-set is a disjoint union of finite orbits, so passing to sums identifies the full topos with $B_{\mathrm{cont}}G$. Products over components finish the unpointed statement. The existence of fibre functors here can also be obtained from the coherent-to-pos point theorem; the choices disappear on passing to the groupoid of all fibre functors. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.16 (Proved; the corrected analogue of 2.1).}
+\textit{Manuscript: LM \S3, folio 6, scan 16; \S2, folio 4, scan 12.}
+For every locally connected Grothendieck topos there is a canonical geometric morphism
+\[
+ q:\mathcal E\longrightarrow\operatorname{SLC}(\mathcal E)
+       \simeq\beta\Pi_1\mathcal E,
+ \qquad q^*\text{ the full inclusion},
+\]
+and, for a strict presentation $\Pi_1\mathcal E=(C_i)$,
+\[
+ \operatorname{LC}(\mathcal E)
+   \simeq\mathop{\mathrm{2\!\!\!-colim}}_i
+       \operatorname{Fun}(C_i^{\mathrm{op}},\mathbf{Set}).
+                                                        \tag{A.16.1}
+\]
+The right side consists of representations split at one stage. The topos $\beta\Pi_1\mathcal E$ consists of their filtered colimits and can be strictly larger. It is the inverse limit of the \emph{topoi} $\beta C_i$, not the category of actions of the abstract inverse-limit group with its topology forgotten. Under A.9's splitting hypothesis the system is essentially constant and A.16 reduces to the manuscript's theorem.
+\begin{proof}
+Every locally constant object is split by a cover and hence lies in one $\operatorname{Split}(U)$. Any two splitting covers have a common refinement, and each inclusion is full. This proves (A.16.1), on both objects and morphisms. Every sum of connected locally constant objects is the filtered union of its finite subsums; a finite sum has a common splitting cover. Conversely a filtered colimit of locally constant objects lies in $\operatorname{SLC}(\mathcal E)$ by A.15. This identifies the two descriptions of the enlargement. Its inclusion is left exact and cocontinuous, and the generator argument supplies its right adjoint, hence $q$.
+
+The construction is intrinsic: a map to a discrete groupoid classifying topos is a torsor, and a torsor is locally constant and therefore lies in a splitting category. The coherent system $(C_i)$ thus pro-represents the functor of groupoid-valued torsors; it is uniquely the fundamental pro-groupoid. This agrees with the $1$-truncation of the shape constructed in E.1. The full-faithfulness and enlargement assertions are also the $n=0$ case of Hoyois (2018, Theorem~3.13). Under a cover splitting all locally constant objects, its own splitting category already contains all the others, so the pro-object is constant. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.17 (Refuted; corrected statement: pro-analogues of 1.4 and 1.7).}
+\textit{Manuscript: LM \S3, folio 6, scan 16; \S1, folios 1--3, scans 7--10.}
+For an infinite profinite group $G$, the ordinary category of points alone does not reconstruct $B_{\mathrm{cont}}G$, and an ordinary universal-cover object need not exist. The correct replacements are the profinite (or, in the prodiscrete case, localic) groupoid of fibre functors, and pro-representing universal covers. In the connected pointed profinite case the canonical fibre functor is pro-represented by
+\[
+ \widetilde 1=(G/N)_{N\triangleleft_oG},\qquad
+ p^*X=\mathop{\mathrm{colim}}_{N\triangleleft_oG}
+                         \operatorname{Hom}_G(G/N,X).
+                                                        \tag{A.17.1}
+\]
+It is represented by an object of $B_{\mathrm{cont}}G$ exactly when $G$ is discrete, hence finite. For a prodiscrete group replace the finite quotients by its discrete quotient system; without spatial hypotheses the inverse limit belongs in locales.
+\begin{proof}
+For every $x$ in a continuous $G$-set its stabilizer is open. In a profinite group it contains an open normal subgroup, so the right side of (A.17.1) is the union of the fixed-point sets $X^N$, namely $X$. Compatibility is the identity on each such element. This proves pro-representability directly. If a representing object existed, it would be connected projective. A transitive continuous action is $G/H$ with $H$ open. If $H\ne1$, choose an open subgroup $K\subset H$ omitting one nontrivial element. The epimorphism $G/K\to G/H$ has no equivariant section; consequently no such $G/H$ is projective. The only remaining possibility is $H=1$, which is allowed exactly when $G$ is discrete.
+
+The natural automorphism group of the fibre functor is $G$: its compatible permutations of the finite regular quotients recover $\lim_NG/N$. Equip it with the topology whose basic subgroups fix specified elements of finite objects. This is exactly the original profinite topology. Natural isomorphisms between two fibre functors form a profinite torsor, and their compositions are continuous. Evaluating objects on this enriched groupoid reconstructs continuous actions, component by component. Forgetting the topology loses the restriction that stabilizers be open. Concretely, the ordinary point groupoids of $B_{\mathrm{cont}}G$ and $B_{\mathrm{disc}}(G_{\mathrm{abstract}})$ are both equivalent to the one-object groupoid of the abstract group $G$, whereas the second admits the regular action and the first does not. The preceding projectivity test distinguishes the topoi categorically.
+
+In a general prodiscrete Galois topos the same construction uses localic spaces of natural isomorphisms. Their inverse-limit descriptions follow by restriction to the discrete splitting categories, and the pointwise evaluation equivalence is Dubuc (2004, Theorems~3.3.5--3.3.6). One must not assert that all ordinary points of a connected prodiscrete Galois topos are isomorphic: Dubuc's Example~3.5.2, referring to SGA~4 IV~7.2.6(d), explicitly records the failure. Nor does the pointless example A.11 contradict existence of points for a Galois topos: its Galois envelope is $\mathbf{Set}$, while the original topos is not generated by its locally constant objects. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.18 (Proved; analogue of 1.11 and its scope).}
+\textit{Manuscript: LM \S3, folio 6, scan 16; \S7, folios 12--13, scans 28--30.}
+For connected profinite Galois topoi, choosing points gives
+\[
+ \operatorname{Hom}_{\mathrm{Top}}(B_{\mathrm{cont}}G,
+                                  B_{\mathrm{cont}}H)
+ \simeq[\operatorname{Hom}_{\mathrm{cont}}(G,H)/H].
+                                                        \tag{A.18.1}
+\]
+For the unpointed and prodiscrete theory the correct version is the groupoid of coherent maps between the \emph{intrinsic fundamental pro-groupoids} of the topoi, or equivalently of continuous localic torsors; an ordinary Hom-set of inverse-limit groups is not a replacement. This is not a full-faithfulness assertion for arbitrary strict pro-presentations of their classifying topoi; A.21 gives a counterexample even with connected transition fibres. The same intrinsic statement is valid componentwise and hence applies to the diamonds of groupoids in \S7.
+\begin{proof}
+A geometric inverse image takes finite locally constant objects to finite locally constant objects. Composing it with the chosen source fibre functor gives a target fibre functor. After choosing an isomorphism with the selected target point, the induced automorphisms define $G\to H$. It is continuous because the stabilizer of every element of every finite $H$-set pulls back to an open subgroup of $G$. Conversely continuous restriction is left exact and cocontinuous on all discrete continuous actions and has a right adjoint; it is a geometric inverse image. These constructions are mutually inverse since all actions are sums of finite orbits. A change of the chosen point isomorphism conjugates the homomorphism, and natural transformations are precisely the elements implementing that conjugacy, proving (A.18.1).
+
+Without choices, pull back the compatible torsors defining the target fundamental pro-groupoid. This gives a coherent morphism into it. Conversely the torsor adjunction of E.1--E.2 gives
+\[
+ \operatorname{Hom}_{\mathrm{Top}}(\mathcal E,\mathcal F)
+ \simeq\operatorname{Map}_{\operatorname{Pro}(\mathbf{Gpd})}
+             (\Pi_1\mathcal E,\Pi_1\mathcal F)
+\]
+for pro-multi-Galois topoi: A.16 identifies $\mathcal F$ with the ordinary classifying topos of its own $\Pi_1\mathcal F$. Equivalently the coherent system defines inverse images on the intrinsic splitting categories and extends to the generated topos. The compatibility transformations also descend, so this is an equivalence of Hom-groupoids, not merely a bijection on isomorphism classes. In localic language these data are principal bibundles; selecting points trivializes the source-side torsor only when the required isomorphism of points exists. This explains the qualification in A.17. In \S7 the objects $\Pi_U,\Pi_D,\Pi_{D^*},\Pi_e$ are therefore retained as profinite groupoids, with the comparison $\alpha:\varphi\rho\simeq\psi\sigma$ of scan~30. No equality of chosen representatives or inverse-limit abstract groups is required. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.19 (Proved; the scheme range, including nonnormal schemes).}
+\textit{Manuscript: \S 3; folio 6; scan 16; \S 7; folios 12-13; scans 28-30.}
+
+For a locally noetherian scheme $X$, its small étale topos is locally connected. Its pro-multi-Galois envelope is A.16's topos generated by all étale locally constant sets. Its componentwise profinite envelope is generated by finite étale covers and is the product of the continuous-action topoi of the usual étale fundamental groups. These two envelopes need not coincide. They do coincide for geometrically unibranch locally noetherian schemes, in particular for smooth curves and fields, which are the cases used in \S7. Even there, the subcategory of locally constant objects need not itself be the whole envelope.
+\begin{proof}
+Every étale object over a locally noetherian scheme is locally noetherian and locally connected. Its connected components give a decomposition of its representable sheaf into connected objects, proving local connectedness of the topos. Finite locally constant sheaves are represented by finite étale schemes; the fibre functor at a geometric point identifies these with finite continuous $\pi_1(X)$-sets (Stacks Project, Theorem~58.6.2, Tag~0BND). Thus A.15 gives the asserted profinite envelope, without assuming that all étale sheaves are locally constant.
+
+For the possible distinction, consider a rational nodal curve over an algebraically closed field. The infinite chain of copies of its normalization, with the second preimage of the node on the $n$th copy glued to the first on the $(n+1)$st, is a connected étale covering with fibre $\mathbb Z$. It trivializes over an étale neighbourhood splitting the two branches and over the smooth complement. Deck translation acts transitively with infinite orbit. Consequently its locally constant sheaf cannot be a continuous action of a profinite group, all of whose orbits on a discrete set are finite. This is the discrete loop part of the nodal example in Bhatt and Scholze (2015, Example~7.4.9). Their Lemma~7.4.5 identifies étale locally constant sets with those pro-étale actions having a common open kernel, and Lemma~7.4.10 proves that for geometrically unibranch schemes every connected geometric covering is finite étale. Applied to an étale locally constant sheaf, the latter says that all its connected components are finite étale. Hence its generated topos is the profinite one, proving the coincidence asserted above.
+
+For the last qualification let $G=\mathbb Z_p$ and
+\[
+ X=\coprod_{n\ge1}G/p^nG\in B_{\mathrm{cont}}G.
+\]
+An action in $B_{\mathrm{cont}}G$ is locally constant exactly when an open subgroup acts trivially on the \emph{whole} set: if it is trivialized over a covering action, pull back to any transitive orbit $G/H$ of that cover, obtaining a trivial restricted $H$-action; conversely $G/H$ supplies the trivializing cover. For the displayed $X$ the kernel is $\bigcap_np^nG=0$, which is not open. Thus $X$ is continuous but not locally constant. This exhibits the precise difference between the two sides of (A.16.1) and the limit topos, already in a connected profinite example. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.20 (Refuted; reconstruction from finite tests).}
+\textit{Manuscript: LM \S1, folio 3, scan 11; \S3, folio 6, scan 16; PATHS E.13 test.}
+An isomorphism of effects on all finite covers, or even isomorphism after precomposition by every finitely generated discrete group, need not identify morphisms of discrete multi-Galois topoi. Let $G=\operatorname{Sym}_{\mathrm{fin}}(\mathbb N)$ and let $s:G\to G$ shift the support by one, fixing $0$. The endomorphisms of $\beta G$ induced by $s$ and $1$ are not isomorphic, have isomorphic restrictions to every finitely generated subgroup, and induce the same endomorphism of the profinite completion $\widehat G=C_2$.
+\begin{proof}
+The shift is not surjective, whereas conjugation is; A.8 therefore separates the two morphisms. Every finite set of permutations is supported on a finite set $F$. Choose a finite permutation $h$ whose restriction to $F$ is the injection $i\mapsto i+1$. Such an extension exists because a bijection between two finite subsets extends to a permutation of their union. Then $hgh^{-1}=s(g)$ for all permutations supported on $F$, in particular for the subgroup generated by the given generators. The choices of $h$ are not globally compatible, which is exactly why the tests do not assemble into a natural isomorphism.
+
+The infinite alternating subgroup $A_{\mathrm{fin}}$ is simple. Indeed let $g\ne1$ belong to a normal subgroup, choose $a$ with $g(a)=b\ne a$, and choose $c,d$ outside its support. For $t=(a\ c\ d)$ one has
+\[
+ [g,t]=(b\ c\ d)(a\ d\ c)=(a\ b\ c).
+\]
+Thus the normal subgroup contains a $3$-cycle. Any two $3$-cycles are conjugate by an even finite permutation: adjust the parity of a chosen conjugator by a transposition on two fresh letters. Since $3$-cycles generate $A_{\mathrm{fin}}$, this proves simplicity. Any map of $A_{\mathrm{fin}}$ to a finite group is therefore trivial, since its kernel cannot be trivial. Thus every finite quotient of $G$ factors through sign; sign itself is a quotient, and $s$ preserves it. This proves the completion assertion. The finite-support conjugation and the displayed commutator are checked in the attached program, while the argument proves them for arbitrary supports. This verifies the PATHS~E.13 inference rather than using it as an axiom. Finite tests are complete for \emph{continuous profinite} morphisms by A.18, where compactness supplies compatible conjugators; they are incomplete for arbitrary discrete groups. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.21 (Proved; pro-object, limit, and the ind cautions).}
+\textit{Manuscript: LM \S3, folio 6, scan 16; pro/ind qualifications in the task.}
+The pro-object used in \S3, its classifying topos, and an inverse-limit group have different universal properties. For diagrams $(G_i)$ and $(H_j)$ the coherent pro-Hom is
+\[
+ \operatorname{Map}_{\operatorname{Pro}(\mathbf{Gpd})}
+             ((G_i),(H_j))
+       =\lim_j\operatorname*{colim}_i
+                         \operatorname{Map}_{\mathbf{Gpd}}(G_i,H_j),
+                                                        \tag{A.21.1}
+\]
+with limits and colimits taken homotopy coherently. The classifying topos is a bicategorical inverse limit of topoi. For profinite groups, the topological inverse limit with its compact topology gives the same continuous-action topos. For unrestricted systems, passing to an abstract inverse limit loses information.
+\begin{proof}
+Formula (A.21.1) is the defining pro-universal property. The topos statement was proved by the filtered-site construction in A.15. For finite groups with surjective transition maps, compactness makes every projection of the inverse limit surjective; an open stabilizer contains the kernel of a projection after passage to a suitable finite stage. Thus every finite orbit descends to a stage, and all continuous actions are sums of these orbits. This proves the claimed agreement while retaining the topology.
+
+For a direct warning take the progroup
+\[
+ \mathbb Z\xleftarrow{\times2}\mathbb Z
+             \xleftarrow{\times2}\mathbb Z\xleftarrow{\times2}\cdots.
+\]
+Its ordinary inverse limit is zero: an integer divisible by every power of two is zero. The pro-object is not zero, since its maps to the constant group $\mathbb Z$ form
+$\operatorname{colim}(\mathbb Z\xrightarrow{\times2}\mathbb Z\to\cdots)
+\cong\mathbb Z[1/2]$, which is nonzero. These transition maps are not $0$-connected, so this example also shows why the strictness qualification in A.15 cannot be suppressed.
+
+Even strictness alone does not make arbitrary pro-presentations intrinsic. Fix a prime $p$ and let
+\[
+ C_n=\coprod_{k\ge1}B(\mathbb Z/p^{\min(n,k)}),
+ \qquad D=\coprod_{k\ge1}B(\mathbb Z/p^k),
+                                                        \tag{A.21.2}
+\]
+with reduction maps $C_{n+1}\to C_n$. Each transition has connected nonempty homotopy fibres. In topoi the inverse limit of the $\beta C_n$ is $\beta D$: all maps are over the fixed discrete component topos, so the connected inverse limit is computed componentwise, and its $k$th component is eventually the constant topos $\beta(\mathbb Z/p^k)$. Nevertheless $(C_n)$ is not the constant pro-groupoid $D$. A pro-map $(C_n)\to D$ must factor through one stage $C_n$. The source vertex groups at that stage have exponent at most $p^n$, while $D$ has groups of unbounded exponent. Its composite with any map $D\to(C_n)$ therefore cannot be an equivalence on all components; a permutation of components cannot fix this bound. In particular the canonical $D\to(C_n)$ is not invertible. This example uses infinitely many components, so it does not contradict the compact finite-groupoid correspondence. It proves that A.15 is an essential-image recognition theorem and that A.18 must use intrinsic fundamental pro-groupoids, not arbitrary strict presentations having the same limit topos.
+
+The ind-results CATHOT~E.4 and PATHS~D.10--D.13 concern another category, formed by quotienting functors by zigzags of natural transformations. Neither that quotient nor an ordinary union enters (A.21.1). No claim about its limits is needed in the present proofs. An actual filtered union of groupoids remains a groupoid, since inverses already occur at finite stages; its classifying space has the filtered homotopy-colimit type by compactness of finite simplicial tests. This elementary valid statement does not authorize replacing a bicategorical pushout by an ordinary one, nor omitting the compatible conjugacies in A.20. 
+\end{proof}
+
+\Needspace{5\baselineskip}
+\paragraph{A.22 (Proved; completion of 2.2 and variance).}
+\textit{Manuscript: LM \S2, folio 4, scan 13 (Definition 2.2 and its tower).}
+The tower requested on scan~13 is constructed and proved in E.1--E.4 below. Its geometric morphisms have direction
+$\mathcal E\to\mathcal E_{[i]}\to\mathcal E_{[i-1]}$;
+the associated inverse-image functors have the opposite direction. For $i\ge2$ its stages must be higher topoi, or formal pro-homotopy types in the absence of the stated local hypotheses. There is no tower of ordinary multi-Galois topoi retaining the higher Postnikov invariants. This is the level-$1$ limitation proved in the supplied CATHOT~C.1--C.4, used here only after checking its groupoid-localization argument.

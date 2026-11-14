@@ -1,0 +1,623 @@
+\paragraph{F.47 (Proved). Pinned reconstruction over cyclotomic algebraic bases.}
+Let $k\subset\overline{\mathbb Q}$ be any subfield contained in
+$F\mathbb Q^{\mathrm{ab}}$ for some number field $F$. For all
+finite-type $k$-schemes $X,Y$, the natural map
+\[
+ \operatorname{Hom}_k(X^{\mathrm{awn}},Y)
+   \longrightarrow
+ \pi_0\operatorname{Hom}^{\mathrm{pin}}_{B G_k}
+                 (X_{\mathrm{et}},Y_{\mathrm{et}})
+\]
+is a bijection, where a relative geometric morphism includes its
+commutation isomorphism over $B G_k$. Equivalently, the etale-topos
+functor is fully faithful on finite-type schemes after inverting
+universal homeomorphisms, with pinned geometric morphisms as the
+target morphisms. In characteristic zero the absolute weak
+normalization is seminormalization. In particular this settles the
+test over $\mathbb Q(\mu_{2^\infty})$ in full, including constants
+and noninvertible morphisms, and applies to $\mathbb Q^{\mathrm{ab}}$
+and all its finite extensions. We give the derivation from the
+verified arithmetic theorems and the reconstruction criterion;
+no priority assertion is intended.
+
+\begin{proof}
+\subsubsection*{An integrality lemma for cyclotomic algebraic bases}
+
+Let $k\subset\overline{\mathbb Q}$ be contained in
+$F\mathbb Q^{\mathrm{ab}}$ for a number field $F$, and let $L/k$ be
+finite. Let $b_1,\ldots,b_r\in L$ be distinct and put
+$V=\mathbb A^1_L\setminus\{b_1,\ldots,b_r\}$.
+Suppose
+\[
+ \xi\in\varprojlim_n H^1_{\mathrm{et}}(V,\mu_n)
+\]
+has the following evaluation property: for every $a\in V(L)$,
+$a^*\xi$ is the Kummer class of an element of $L^*$.
+Then $\xi$ is the Kummer class of an actual unit of $V$.
+This is an integrality assertion for a cohomology class; the individual
+elements realizing its evaluations need not initially form a rational
+function.
+
+
+Since $\operatorname{Pic}(V)=0$ and
+$\mathcal O(V)^*=L^*\times\prod_i(t-b_i)^{\mathbb Z}$, Kummer theory gives
+\[
+ \xi=\gamma+\sum_{i=1}^r\lambda_i[t-b_i],\qquad
+ \gamma\in\widehat{L^*},\quad \lambda_i\in\widehat{\mathbb Z}.
+                                                        \tag{F47.R1}
+\]
+All completions in this argument are $\varprojlim_n A/nA$ (in
+multiplicative notation, $\varprojlim_n A/A^n$). We first prove
+$\lambda_i\in\mathbb Z$ without assuming that $L$ has a discrete
+valuation.
+
+Choose a number field $K_0\subset L$ containing all the $b_i$.
+For each $i$, choose a different prime ideal $\mathfrak p_i$ of
+$\mathcal O_{K_0}$ such that the $b_j$ are integral there, their pairwise
+differences are units there, and the residue field has more than $r$
+elements. Only finitely many primes are excluded. The Chinese remainder
+theorem supplies $x,y\in K_0$ such that
+\[
+ v_{\mathfrak p_i}(x-b_i)=1,\qquad
+ v_{\mathfrak p_i}(x-b_j)=0\ (j\ne i),\qquad
+ v_{\mathfrak p_i}(y-b_j)=0\ (\text{all }j).
+                                                        \tag{F47.R2}
+\]
+For the first condition specify $x$ modulo $\mathfrak p_i^2$; for the
+last choose a residue different from each $b_j$. Thus $x,y\in V(L)$.
+The elements $r_j=(x-b_j)/(y-b_j)$ are multiplicatively independent
+modulo roots of unity: applying the valuations in (F47.R2) to a relation
+$\prod_j r_j^{e_j}\in\mu_\infty$ gives $e_i=0$ for every $i$.
+This independence persists in every algebraic overfield, since the
+relation itself is an equality of the same algebraic numbers.
+
+There is a number field $F_0$ for which $L\subset M=F_0\mathbb
+Q^{\mathrm{ab}}$: take $F_0$ to contain $F$ and finitely many algebraic
+generators of $L/k$. Theorem~1.1 of Amoroso--Zannier \cite{AmorosoZannier2000} implies
+\[
+ \bigcap_{n\ge1}(M^*)^n=\mu_\infty.
+                                                        \tag{F47.R3}
+\]
+Indeed $[\mathbb Q^{\mathrm{ab}}(a):\mathbb Q^{\mathrm{ab}}]
+\le [M:\mathbb Q^{\mathrm{ab}}]$ for $a\in M$, so their height bound
+is uniformly positive on the non-torsion elements of $M$. If
+$z_n^n=z\ne0$ for every $n$, then $h(z_n)=h(z)/n$, forcing $z$ to be
+a root of unity. Conversely every root of unity is divisible in $M$,
+which contains all roots of unity. Tsujimura's Proposition~4.9 \cite{Tsujimura2022}, applied with its parameter $f=1$ and number field
+$F_0$, now says that
+\[
+ A=M^*/\mu_\infty
+\]
+is a free abelian group. This is the exact specialization of that
+theorem used here.
+
+The independent elements $[r_1],\ldots,[r_r]$ of $A$ have finite
+support in a basis of the free abelian group. Their coordinate matrix
+has rank $r$, so we may choose homomorphisms
+$\chi_1,\ldots,\chi_r:A\to\mathbb Z$ such that the integer matrix
+$N=(\chi_i([r_j]))_{i,j}$ has nonzero determinant. Choose actual
+elements $u_x,u_y\in L^*$ realizing the two evaluations of $\xi$.
+Subtracting the two evaluations of (F47.R1), then mapping to
+$\widehat A$ and applying the completed characters, gives
+\[
+ N(\lambda_1,\ldots,\lambda_r)^{\mathrm t}
+   =\bigl(\chi_i([u_x/u_y])\bigr)_i\in\mathbb Z^r.
+                                                        \tag{F47.R4}
+\]
+The adjugate matrix shows that
+$d\lambda_i\in\mathbb Z$, where $d=\det N\ne0$.
+For each prime dividing $d$, membership in $\mathbb Z_p$ forces the
+corresponding divisibility of that integer by the prime power in $d$.
+Consequently $\lambda_i\in\mathbb Z$. Equivalently,
+$\mathbb Q\cap\widehat{\mathbb Z}=\mathbb Z$ inside the finite
+adeles. Put $m_i=\lambda_i$.
+
+Finally choose any $a\in V(L)$ and an element $u_a\in L^*$ realizing
+$a^*\xi$. The constant class in (F47.R1) is then the Kummer class of
+$c=u_a/\prod_i(a-b_i)^{m_i}$. Thus
+$\xi=[c\prod_i(t-b_i)^{m_i}]$, as required. When $r=0$ this last
+evaluation argument proves the result directly. The actual unit is
+unique modulo $\bigcap_n(L^*)^n$, a subgroup of the roots of unity;
+the assertion does not identify different pointwise choices before
+the translated-function argument is applied.
+
+
+\subsubsection*{The smooth-curve step in cyclotomic reconstruction}
+
+Fix an algebraic subfield $k\subset\overline{\mathbb Q}$ for which
+$k\subset F\mathbb Q^{\mathrm{ab}}$ for some number field $F$.
+Every finite extension of $k$ has the same property, after enlarging
+$F$. Write $K=\overline{\mathbb Q}$. We use the rational-source
+integrality lemma proved above, with all multiplicative completions
+taken as $\varprojlim_n A/A^n$.
+
+\emph{Arithmetic input on abelian varieties.}
+For each finite extension $L/k$ and each abelian variety $A/L$,
+\[
+ \bigcap_{n\geq1} nA(L)=0.                                  \tag{F47.1}
+\]
+Indeed, the finite presentation of $A$ and a finite set of generators
+of $L/k$ allow a number field $F_0$ such that
+$L\subset F_0\mathbb Q^{\mathrm{ab}}$ and $A$ is obtained by base
+change from an abelian variety over $F_0$. Tsujimura's
+Theorem~3.1 \cite{Tsujimura2020} says exactly that the Kummer map
+on $A(F_0\mathbb Q^{\mathrm{ab}})$ is injective. Its kernel is the
+intersection of the multiplication-by-$n$ images, so the injection
+$A(L)\hookrightarrow A(F_0\mathbb Q^{\mathrm{ab}})$ proves
+(F47.1). The compatible total Tate module of $A(L)$ is also zero:
+each coordinate of a compatible torsion system is divisible by every
+integer, and (F47.1) kills it. Separately, the height argument in the
+rational-source lemma gives
+\[
+ D(L^*):=\bigcap_n(L^*)^n\subset\mu_\infty.                  \tag{F47.2}
+\]
+Neither assertion requires that $L$ have a discrete valuation.
+
+\emph{A smooth-curve Kummer specialization lemma.}
+Let $C/L$ be a smooth geometrically connected affine curve and let
+\[
+ \xi\in\varprojlim_n H^1_{\mathrm{et}}(C,\mu_n).
+\]
+Assume that for every finite $L'/L$ and every $z\in C(L')$ the
+specialization $z^*\xi$ is the Kummer class of an actual element of
+$(L')^*$. After a finite extension of $L$ there is an actual regular
+unit $g$ on $C$ such that $\xi=[g]$. This extension is only an
+extension of constants used in the proof; no descent of the given
+topos morphism is assumed.
+
+To prove the lemma, let $\overline C$ be the smooth proper completion
+and $S=\overline C\setminus C$. Enlarge $L$ so that the points of
+$S$ and one point $z_0\in C$ are rational. Purity for a smooth curve
+and the Kummer exact sequence give compatible residue maps
+\[
+ H^1(C,\mu_n)\longrightarrow
+       \bigoplus_{s\in S}\mathbb Z/n,
+ \qquad
+ \operatorname{res}(\xi)=(\lambda_s)_{s\in S},
+ \quad\lambda_s\in\widehat{\mathbb Z}.                    \tag{F47.3}
+\]
+We first prove that every $\lambda_s$ is an integer.
+
+Fix $s\in S$. By Riemann--Roch and interpolation of values and a
+first derivative at finitely many points, there is a nonconstant
+rational function
+\[
+ \pi:\overline C\longrightarrow\mathbb P^1_L
+\]
+which has a simple zero at $s$ and takes nonzero values at every
+other point of $S$. For example allow a sufficiently large pole
+divisor at a point different from $S$, prescribe the first-order
+jet of a uniformizer at $s$, and prescribe the value $1$ at the
+other boundary points. The map is finite. Remove from $\mathbb P^1$
+the values $0,\infty$, its branch values, and $\pi(S)$, and enlarge
+$L$ once more to split this finite set if necessary. This gives
+\[
+ W=\pi^{-1}(V)\subset C,\qquad W\longrightarrow V
+ \quad\hbox{finite etale},
+\]
+where $V$ is a punctured affine line. Apply the compatible norm
+maps to obtain
+\[
+ \eta=\operatorname{Cor}_{W/V}(\xi|_W)
+        \in\varprojlim_n H^1(V,\mu_n).
+\]
+The specialization property is preserved. If a fibre above
+$a\in V(L')$ is the disjoint union of $\operatorname{Spec}L_i$,
+etale base change for the norm and the usual Kummer norm identity
+give the Kummer class of
+\[
+        \prod_i N_{L_i/L'}(u_i)\in(L')^*,
+\]
+where $u_i$ realizes the evaluation of $\xi$ at the corresponding
+point of $W$. Thus the rational-source integrality lemma applies to
+$\eta$.
+
+The residue at $0$ of a corestriction is
+$\sum_{z\mid0}[\kappa(z):L]\operatorname{res}_z(\xi)$.
+This is the divisor-of-norm formula, and can also be read directly
+from the norm of a local parameter in the Kummer boundary map.
+Points of $C$ contribute zero because $\xi$ extends over them;
+among the points of $S$ only the rational point $s$ lies over $0$.
+Consequently this residue is exactly $\lambda_s$, with coefficient
+one. The lemma on $V$ makes it integral. The choice of a simple
+zero also makes explicit that no ramification factor has been
+silently inserted.
+
+Put $D=\sum_s\lambda_s[s]$, an integral divisor. The next arrow in
+the localization sequence sends the residue vector to the Kummer
+Chern class of $D$. Therefore
+\[
+ c_1(D)=0\quad\hbox{in }H^2(\overline C,\mu_n)
+       \quad\hbox{for every }n,
+\]
+and the Kummer injection
+$\operatorname{Pic}(\overline C)/n\hookrightarrow
+H^2(\overline C,\mu_n)$ implies
+$[D]\in\bigcap_n n\operatorname{Pic}(\overline C)$.
+Its degree is zero. Any divisor class $E$ with $nE=[D]$ likewise
+has degree zero. The rational point $z_0$ identifies degree-zero
+line bundles with $J(L)$ for the Jacobian $J$ and removes the
+Brauer obstruction to representing a Picard-scheme point by a line
+bundle. Equation (F47.1) therefore gives $[D]=0$.
+Choose $g_0\in L(C)^*$ with $\operatorname{div}(g_0)=D$;
+it is a unit on $C$.
+
+All residues of $\xi-[g_0]$ now vanish. For every $n$ the map
+$H^1(\overline C,\mu_n)\to H^1(C,\mu_n)$ is injective: purity
+identifies its preceding support group with a negative-degree
+cohomology group of $S$. Thus its residue-free lifts are unique,
+and hence compatible as $n$ varies. The Kummer sequences give
+\[
+ 0\longrightarrow\widehat{L^*}\longrightarrow
+  \varprojlim_n H^1(\overline C,\mu_n)
+  \longrightarrow T\operatorname{Pic}(\overline C)
+  \longrightarrow0.
+\]
+Here the left inverse system has surjective transition maps, so
+there is no $\varprojlim^1$ obstruction. The total Tate module on
+the right is zero by (F47.1). Thus $\xi-[g_0]$ is a constant
+completed Kummer class. Evaluate at $z_0$: the hypothesis identifies
+it with the Kummer class of an actual constant $c\in L^*$.
+Then $g=cg_0$ proves the lemma.
+
+\emph{Algebraicity of the point function for a smooth curve.}
+Let
+$\phi:C_{\mathrm{et}}\to(\mathbb G_m)_{\mathrm{et}}$
+be pinned and relative to $B G_L$, and write
+$f:C(K)\to K^*$ for its point function. It is Galois equivariant
+and sends $L'$-points to $L'$-points for every finite extension,
+as checked in F.46. Its pulled-back Kummer class satisfies the
+specialization lemma. After a finite extension choose
+$g_0\in\mathcal O(C)^*$ representing it. Equation (F47.2) gives
+\[
+ f(x)/g_0(x)\in\mu_\infty\qquad(x\in C(K)).                 \tag{F47.4}
+\]
+If the generic image is a closed point, the inverse-image of its
+open complement is empty by continuity and the Jacobson property.
+The morphism factors through that closed subtopos. After splitting
+its residue field it has a constant point function. We may therefore
+assume the generic image is generic.
+
+For each $b\in K$, base change to contain $b$ and pull back the
+open $\mathbb G_m\setminus\{b\}$. It is a dense open
+$C_b\subset C$ whose omitted geometric points are finite, and
+$x\in C_b(K)$ exactly when $f(x)\ne b$. Applying the curve lemma
+to the Kummer classes of $t-b$ gives a rational function $g_b$, a
+unit on $C_b$, with
+\[
+ f(x)-b=d_b(x)g_b(x),\qquad d_b(x)\in\mu_\infty,
+       \quad x\in C_b(K).                                 \tag{F47.5}
+\]
+Use the fixed proper field $M=F\mathbb Q^{\mathrm{ab}}\subset K$.
+In any one argument, a finite extension $N/M$ contains the finitely
+many coefficients needed there; the field $M$ itself stays fixed.
+All the coefficients
+$d_b(x)$ lie in $M^*$. The extension $K/M$ has infinite degree,
+as does $K/N$ for every finite extension $N/M$ in $K$.
+For clarity, the latter assertion can also be seen from the height
+bound: if $K=N$ were finite over $M$, that bound would be uniformly
+positive on its nontorsion elements, whereas $K$ contains all roots
+of the rational number $2$.
+
+The finite-exception quasi-rationality argument in F.46 applies to
+an arbitrary smooth curve, with the following explicit replacement
+for its polynomial-degree step. Descend the curve and the finitely
+many rational functions under consideration to a finite extension
+$N/M$. The poles of any fixed linear combination of two such
+functions lie in one fixed divisor. If the combination is nonzero,
+each zero has residue degree over $N$ bounded by the degree of that
+divisor. Points of arbitrarily large residue degree exist: choose a
+finite map of the proper curve to $\mathbb P^1_N$, choose values of
+arbitrarily large degree over $N$, and take points above them.
+They avoid any prescribed finite exceptional set. Thus a vanishing
+at such a point forces the same rational-function identity as in
+F.46. The two shifted outside-$M$ sets cover the cofinite domain,
+and have infinite intersection by this same degree bound.
+
+If $g_0$ is nonconstant, this proves that $f$ equals a rational
+function $R\in K(C)$ on a cofinite subset. If $g_0$ is constant,
+divide $f$ by one of its values and use (F47.4) to put its values
+in $\mu_\infty\subset M$. Choose $b\notin M$. If $g_b$ were
+nonconstant, (F47.5) would put its cofinite image in the vector
+space $M+Mb$, which cannot contain a cofinite subset of $K$.
+Hence $g_b$ is constant. Two different values of $f$ would, by
+subtracting their equations, force this constant into $M$, and
+then force $b\in M$. Thus $f$ is constant in this case.
+
+We remove the finite exceptional set in the nonconstant case.
+For every $b$, the rational function $(R-b)/g_b$ takes its values
+in $\mu_\infty$ on a cofinite set. A nonconstant rational function
+on a smooth curve has cofinite image in $K$, so this quotient is a
+constant $c_b\in\mu_\infty$. Fix $x\in C(K)$ and choose
+$b\ne f(x)$. Since $g_b$ is a unit at $x$, the identity
+$R-b=c_b g_b$ first excludes a pole of $R$ at $x$. For every
+$b\notin\{f(x),R(x)\}$, it then gives
+\[
+ \frac{f(x)-b}{R(x)-b}\in\mu_\infty.
+\]
+If $f(x)\ne R(x)$ this fractional linear expression takes all
+values of $K\setminus\{0,1\}$ as $b$ varies, a contradiction.
+Therefore $f=R$ on every geometric point. It follows that $R$ is
+a regular unit on $C_K$. Galois equivariance and equality on the
+Zariski-dense geometric points imply that $R$ descends to a regular
+unit on the original curve over $L$. This proves the full
+point-function assertion for every smooth affine curve and every
+finite extension of the base field.
+
+It also gives the equality of compatible Kummer classes that will
+be used below. Over the finite extension $L'/L$ employed in the
+specialization lemma, the rational function $R/g_0$ has values in
+$\mu_\infty$ at every geometric point and is therefore a constant
+$\zeta\in(L')^*$. Evaluation at a rational point of the curve gives
+$\zeta\in D((L')^*)$, so $[R]=[g_0]=\xi$ over $L'$.
+If $C(L)$ is nonempty, equality already holds over $L$. Indeed,
+for every $n$ the residual class in $H^1(C,\mu_n)$ is geometrically
+zero, and hence is a constant class by the low-degree
+Hochschild--Serre sequence. Its evaluation at an $L$-point is zero,
+because $R$ is the actual point function there. The same sequence,
+or the rational-point section, shows that this constant class is
+zero. Without an $L$-point, equality after a finite extension is all
+that is asserted or needed for the geometric residue tests.
+
+\subsubsection*{From the curve calculation to arbitrary dimension}
+
+We give the higher-dimensional step independently, so that the passage
+from point values to a geometric morphism does not rest on a
+fundamental-group calculation. Let $k\subset\overline{\mathbb Q}$ be
+contained in $F\mathbb Q^{\mathrm{ab}}$ for some number field $F$.
+We use the preceding curve calculation in precisely the following
+form: after every finite extension $L/k$, a pinned relative geometric
+morphism $C_{\mathrm{et}}\to(\mathbb G_{m,L})_{\mathrm{et}}$, with
+$C$ a smooth geometrically connected affine curve having an $L$-point,
+has the geometric-point values of a unit of $C$. Its compatible Kummer
+class is the class of that unit. The conclusion below is conditional
+only on that already proved curve calculation and the arithmetic
+inputs explicitly recorded here.
+
+It is enough that the curve calculation initially represents its
+Kummer class after a further finite extension. Indeed, suppose the
+pointwise unit is $f_C\in\mathcal O(C)^*$ and, over a finite
+extension $L'/L$, the Kummer class is $[g_0]$. At every algebraic
+point the value of $f_C/g_0$ is divisible in the multiplicative group
+of a finite extension of $L'$ and hence is a root of unity, by the
+height input used in the curve calculation. A nonconstant rational
+function on a geometrically integral curve has cofinite image in
+$\mathbb G_m(\overline L)$, so this ratio is constant. Evaluation at
+an $L$-point shows that its constant value is itself divisible in
+$L'^*$; hence its Kummer class is zero. Thus the two classes agree
+after $L'$. At each finite Kummer level, their difference on $C$
+lies in the image of $H^1(L,\mu_n)$ by the Hochschild--Serre exact
+sequence, since it is zero geometrically. Evaluation at the $L$-point
+is a retraction onto this image and is zero on the difference.
+Consequently the classes already agree over $L$. This proves exactly
+the curve input used below, without requiring a chosen function to
+descend merely because its Kummer class descends.
+
+\emph{The arithmetic Picard lemma.}
+For every finite extension $L/k$ and every abelian variety $A/L$,
+\[
+                 \bigcap_{n\geq1}nA(L)=0.                 \tag{F47.H1}
+\]
+Indeed, choose a number field $F_0$ over which $A$ is defined and large
+enough that $L\subset M=F_0\mathbb Q^{\mathrm{ab}}$. Theorem~3.1 of
+Tsujimura (2020) states that the Kummer map on $A(M)$ is injective
+\cite{Tsujimura2020}. Its proof explicitly factors this map as
+\[
+ A(M)\longrightarrow\varprojlim_n A(M)/nA(M)
+       \lhook\joinrel\longrightarrow H^1(G_M,T A),
+\]
+so its kernel is exactly $\bigcap_n nA(M)$. Thus (F47.H1) follows by
+inclusion. Equivalently, the finite nonempty division fibres of a point
+in $\bigcap_n nA(M)$ have a compatible inverse-limit point: use the
+factorial levels and the finite intersection property. There is no
+distinction here between unrelated divisions and coherent divisions.
+
+If $Y/L$ is smooth, projective, and geometrically integral, put
+$P=\operatorname{Pic}(Y)$ and let $P^0$ be the subgroup whose geometric
+classes are algebraically trivial. Then
+\[
+                 \bigcap_{n\geq1}nP=0,
+                 \qquad T P=\varprojlim_n P[n]=0.         \tag{F47.H2}
+\]
+Here $P^0$ injects into the group of $L$-points of the abelian variety
+$\operatorname{Pic}^0_{Y/L}$, and
+$N=P/P^0$ is a subgroup of the finitely generated geometric
+Neron--Severi group; for the latter finiteness statement see
+\cite[Theorem~7.3 and Lemma~7.2]{FA_ChengEtAl2021}.
+These assertions do not require the Picard scheme
+to represent every rational Picard class: the possible Brauer
+obstruction only changes the image of $P^0$ inside
+$\operatorname{Pic}^0_{Y/L}(L)$. Injectivity of the passage from actual
+line bundles follows from Hilbert~90.
+
+For completeness, let $x\in\bigcap_n nP$. Its image in $N$ vanishes,
+since $N$ is finitely generated. Let $e$ annihilate the torsion subgroup
+of $N$. For every $m\geq1$, choose $y\in P$ with $em y=x$.
+Then the image of $y$ in $N$ is torsion, so $z=ey$ lies in $P^0$ and
+$mz=x$. Thus $x$ is infinitely divisible in
+$\operatorname{Pic}^0_{Y/L}(L)$, and (F47.H1) gives $x=0$. Finally, each
+coordinate of a compatible torsion system in $T P$ is divisible by
+every positive integer, so the first equality in (F47.H2) implies the
+second. This proves the lemma, including the torsion in $N$.
+
+\emph{Curves with prescribed points and transverse directions.}
+We will use the following elementary consequence of Bertini. In a
+smooth geometrically integral projective variety over an infinite
+characteristic-zero field, a finite set of rational points lies on a
+smooth geometrically integral complete-intersection curve. At any
+specified point one may require its tangent line to be transverse to
+a given smooth divisor. The construction is over the ground field;
+one first makes the chosen points rational by a finite extension when
+necessary. To check the imposed conditions, take sufficiently high
+powers of an ample bundle. Serre vanishing makes evaluation on the
+finite first-order neighbourhoods surjective. The linear systems
+vanishing at the prescribed points embed the complement of those
+points, and a general member is smooth there and geometrically
+irreducible. Smoothness and the required independent differentials at
+the finitely many prescribed points are nonempty open conditions on
+the first jets. Intersect these opens and repeat until dimension one.
+This is the usual prescribed-point version of Bertini; the needed
+linear-system and irreducibility statements are Stacks, Lemmas
+33.47.1, 33.47.3, and 37.32.3 \cite{FA_StacksBertini}.
+
+\emph{Integral boundary residues and the global unit.}
+Let $X/k$ be a connected regular affine scheme of finite type with
+$x_0\in X(k)$, and let
+\[
+       \phi:X_{\mathrm{et}}\longrightarrow
+                        (\mathbb G_{m,k})_{\mathrm{et}}
+\]
+be pinned over $B_k$. Write $\phi(a)$ for its value at a geometric
+point. Over a finite extension $L/k$, a point $a\in X(L)$ has
+$\phi(a)\in L^*$: the relative morphism of closed-point Galois topoi
+forces the residue field of the image to embed in $L$. Base change of
+$\phi$ to $L$ is obtained by slicing by the finite etale constant-field
+object. These observations justify every evaluation used below.
+
+The scheme $X$ is smooth and geometrically integral. In fact, in
+characteristic zero regularity implies smoothness, and the algebraic
+closure of $k$ in $k(X)$ is a finite field extension contained in all
+normal local rings of $X$; evaluation at $x_0$ embeds it in $k$.
+Choose a smooth projective compactification $Y$ of $X$ whose boundary
+is a divisor with normal crossings, by characteristic-zero embedded
+resolution. Concretely, take a projective closure, resolve it while
+preserving the smooth open $X$, and principalize its boundary ideal;
+the blowups are projective and supported outside $X$. The strong
+resolution and monomialization theorem in
+\cite[``The result'' and ``Idea of proof'', pp.~1--3]{FA_EncinasHauser2002}
+supplies these operations. Write the boundary prime components over
+$k$ as $D_1,\ldots,D_s$.
+Only smooth points of individual boundary components will be used.
+
+Pulling back the Kummer torsors of the coordinate $t$ gives
+\[
+       h=(h_n)_n\in\varprojlim_n H^1_{\mathrm{et}}(X,\mu_n).
+                                                               \tag{F47.H3}
+\]
+Let $K=k(Y)$. The map
+$H^1(X,\mu_n)\to K^*/K^{*n}$ is injective: a generically trivial
+finite etale torsor on a normal integral scheme has a section, by
+normalization. For every prime divisor $D_i$, the valuation of the
+generic Kummer representative of $h_n$ defines a residue
+$r_{i,n}\in\mathbb Z/n$. Compatibility gives
+$r_i\in\widehat{\mathbb Z}$.
+
+We claim $r_i\in\mathbb Z$. After a finite extension $L/k$, choose
+an $L$-rational point $q$ on a geometric component above $D_i$, away
+from the other boundary components, and a smooth complete-intersection
+curve $\overline C\subset Y_L$ passing through $q$ transversely to
+that component and through $x_0$. Its open part
+$C=\overline C\cap X_L$ is an affine smooth geometrically integral
+curve with an $L$-point. The curve calculation makes $h|_C$ the Kummer
+class of an actual unit; its residue at $q$ is therefore an integer.
+That residue is exactly $r_i$.
+
+One can check this equality without an inverse-limit purity argument.
+At $q$, the regular local ring $R$ is factorial and the only boundary
+has one prime equation $z$. Hence
+$\operatorname{Pic}(R[1/z])=0$ and
+$R[1/z]^*=R^*z^{\mathbb Z}$. For each $n$, the restricted Kummer
+class has a representative $u z^j$, with $u\in R^*$, and residue
+$j\bmod n$. On the transverse curve $z$ is a local parameter and
+$u$ remains a unit, giving the same residue for every $n$. The base
+change from $D_i$ to a geometric component has multiplicity one in
+characteristic zero. This proves the claim.
+
+Set $D=\sum_i r_iD_i$, now an integral Cartier divisor on $Y$.
+Its class lies in $\bigcap_n n\operatorname{Pic}(Y)$. Indeed, choose
+a rational function $a_n\in K^*$ representing the generic class of
+$h_n$. Its valuations at divisors inside $X$ are multiples of $n$, by
+the Kummer description over a discrete valuation ring; at $D_i$ its
+valuation is $r_i\bmod n$. Consequently
+\[
+                    \operatorname{div}(a_n)=D+nE_n
+                                                               \tag{F47.H4}
+\]
+for an integral divisor $E_n$ on the regular scheme $Y$.
+Thus $[D]=-n[E_n]$. By (F47.H2), $[D]=0$, and there is a rational
+function $g\in k(Y)^*$ with $\operatorname{div}(g)=D$. In
+particular, $g|_X$ is an actual regular unit.
+
+Subtracting $[g]$ from $h$ leaves a compatible class unramified on
+$Y$. Explicitly, the divisor of $a_n/g$ is divisible by $n$, so its
+associated line bundle with an $n$th-power trivialization defines a
+$\mu_n$-torsor on $Y$ extending $h_n-[g]$. Its uniqueness follows
+from injectivity into $K^*/K^{*n}$, so these extensions are compatible
+as $n$ varies. The Kummer exact sequences on $Y$ and (F47.H2) give
+\[
+  \varprojlim_n H^1(Y,\mu_n)=\widehat{k^*}.
+                                                               \tag{F47.H5}
+\]
+To see that no derived-limit term is being suppressed, the maps
+$k^*/k^{*mn}\to k^*/k^{*n}$ are surjective; alternatively, since the
+compatible Picard-torsion class is zero, each class is represented
+uniquely in $k^*/k^{*n}$, and these representatives are automatically
+compatible. Here $\Gamma(Y,\mathcal O_Y)^*=k^*$ by geometric
+integrality and properness.
+
+Evaluation at $x_0$ identifies the constant class in (F47.H5) with the
+actual element $c=\phi(x_0)/g(x_0)\in k^*$. Therefore
+\[
+        f=cg|_X\in\Gamma(X,\mathcal O_X)^*,\qquad
+        h=[f],\qquad f(x_0)=\phi(x_0).                 \tag{F47.H6}
+\]
+
+\emph{Pointwise equality in every dimension.}
+Let $a\in X(\overline k)$. Choose a finite extension $L/k$ making
+$a$ rational and a smooth geometrically integral curve
+$\overline C\subset Y_L$ through both $x_0$ and $a$; put
+$C=\overline C\cap X_L$. In dimension one take $C=X_L$ itself.
+The curve theorem gives a unit $f_C$ whose values equal those of
+$\phi|_C$. Since both $f_C$ and $f|_C$ have Kummer class $h|_C$,
+the unit $u=f_C/(f|_C)$ has zero Kummer class for every $n$. The
+injection
+\[
+  \Gamma(C,\mathcal O_C)^*/\Gamma(C,\mathcal O_C)^{*n}
+       \lhook\joinrel\longrightarrow H^1(C,\mu_n)
+\]
+shows that $u$ has an $n$th root among regular units for every $n$.
+Its divisor on $\overline C$ is therefore divisible by every positive
+integer and is zero. Thus $u\in L^*$ is constant. Evaluation at
+$x_0$ gives $u=1$, and consequently
+\[
+                         \phi(a)=f(a)
+                  \quad\hbox{for all }a\in X(\overline k).
+                                                               \tag{F47.H7}
+\]
+In dimension zero $X=\operatorname{Spec}k$ and the assertion is
+immediate. Notice that this final argument does not infer equality
+from a finite collection of Kummer quotients: it uses the integral
+curve realization and equality in every Kummer degree. It also does
+not require the residual roots of unity to form a chosen compatible
+system.
+
+\emph{Recovery of the entire geometric morphism.}
+The assertion just proved holds for every connected regular affine
+finite-type source with a rational point, and after every finite
+extension of the ground field. It is exactly condition (4.18.5) of
+Carlson--Haine--Wolf, Theorem~4.18 \cite{CHW2024}. Their equivalence
+with (4.18.1) therefore gives the full pinned reconstruction statement
+for this field class, with absolute weak normalization as in their
+definition. This application addresses all etale objects, not just
+the point map of one morphism.
+
+Here is the categorical part of that implication. Two copies of
+$\mathbb G_m$ cover $\mathbb A^1$, so the pointwise units just
+constructed give pointwise algebraic maps to $\mathbb A^1$. Affine
+coordinates and equality on geometric points of a reduced source
+then reconstruct the addition and multiplication relations and hence
+a map to every affine target. Apply this construction also to each
+sliced pinned morphism over a quasicompact separated etale target
+object $V$. Its inverse image is again represented by a
+quasicompact separated etale source scheme, by CHW Corollary~A.9;
+one works on its affine components and, when needed, after a finite
+extension supplying a rational point. Uniqueness on geometric points
+glues these maps and makes them compatible with all morphisms of
+etale objects. Proposition~4.14 then identifies the original inverse
+image functor with the functor of the reconstructed scheme map.
+Finally, the $h$-descent part of Theorem~4.18 handles arbitrary
+finite-type sources. Thus no openness assertion for an unconstructed
+birational Galois homomorphism, and no inference from finite set
+coefficients alone, is needed.
+
+\end{proof}
