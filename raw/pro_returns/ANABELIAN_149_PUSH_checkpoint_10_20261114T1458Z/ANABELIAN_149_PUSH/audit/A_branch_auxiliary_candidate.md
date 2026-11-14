@@ -1,0 +1,172 @@
+# Ramification-divisible auxiliaries and nonsolvable triangle covers
+
+Status: independently reviewed by root and degeneration; approved and integrated as A.29m on 14 November 2026. Root independently recomputed the nine inertia permutations and quotient genera.
+
+This note concerns A1 over finite fields and its established spreading consequence. It does not assert A1 for arbitrary tame covers or arbitrary triangle signatures. The manuscript number is A.29m.
+
+## 1. Auxiliary-cover criterion
+
+Let `k` be a finite field of characteristic `p`. Let `C/k` be smooth, proper and geometrically connected of genus at least two, and suppose that, after a finite constant extension, a map
+
+\[
+f:C\longrightarrow\mathbf P^1
+\]
+
+is Galois with group `G` of order prime to `p`. At every geometric point `b` of the base let `e_C(b)` be its common ramification index, with value one outside the branch set. Suppose there is a smooth proper geometrically connected curve `H` with a finite separable map `h:H→P¹` such that:
+
+1. the geometric Galois closure of `h` has order prime to `p`;
+2. for every geometric `a∈H` over `b`, the index `e_H(a/b)` divides `e_C(b)`;
+3. either `g(H)=1`, or `g(H)≥2` and A1 holds for `H` over every finite extension of its field of definition.
+
+Then A1 holds for `C` over every finite constant extension.
+
+### Proof, including components and normal closures
+
+Work first over an algebraic closure of `k`. Choose any field factor of
+
+\[
+k(C)\otimes_{k(\mathbf P^1)} k(H)
+\]
+
+and let `V` be the smooth proper curve with that function field. Equivalently `V` is a component of the normalization of the fibre product. The maps, the chosen component and their automorphisms descend to a finite constant extension. This does not assume that the entire fibre product is connected.
+
+At a geometric point `b`, the completed tame local extensions of `\bar k((t))` are `\bar k((t^{1/e}))`. Hence the local compositum has ramification index
+
+\[
+\operatorname{lcm}(e_C(b),e_H(a/b))=e_C(b).
+\]
+
+The induced map `V→C` is therefore unramified at every point. It is finite, hence finite étale. Its geometric Galois closure has order prime to `p`: it is contained in the compositum with the geometric Galois closure of `H/P¹`, whose Galois group over `C` is a subgroup of that prime-to-`p` group. More explicitly, the Galois closure of the chosen field factor is a subextension of that compositum, so no prime dividing `p` is introduced by taking a core. The same argument applies to every constant extension after making the data geometrically connected.
+
+Because `C/P¹` is Galois, the compositum extension `k(V)/k(H)` is Galois, with group a subgroup of `G`. The curve `V` has genus at least two, since it is a connected finite étale cover of `C`.
+
+Now let `P,Q` be colliding rational points on `C`, meaning that their geometrically prime-to-`p` point sections are conjugate. Apply A.3 to the chosen geometric cover `V→C`, and enlarge the constants to define a chosen lift of `P`. The collision gives a lift of `Q` on the same component with conjugate point sections. Denote these points by `P_V,Q_V`.
+
+If `g(H)≥2`, functoriality and the assumed A1 for `H` give equal images of `P_V,Q_V` on `H`. If `g(H)=1`, the Galois map `V→H` must ramify: an étale map to a genus-one curve would have genus-one source by Riemann–Hurwitz. Every branch fibre has a uniform nontrivial ramification index dividing `|G|`, hence prime to `p`. A.21 applies and again gives equal images on `H`. Their images on `P¹` are consequently equal. Thus `f(P)=f(Q)`.
+
+The same argument applies over every finite extension. The fibre criterion A.29l for the Galois map `C→P¹` now proves `P=Q`. This is the desired conclusion.
+
+Notice that no injectivity of the pair of coordinate maps on the normalization at ramified fibres is asserted or needed. Only equality on the common base is used, followed by A.29l.
+
+## 2. An explicit family of triangle auxiliaries in every permitted characteristic
+
+Let `r≥7` be a prime and
+
+\[
+G_r=\operatorname{PSL}_2(\mathbf F_r),\qquad
+|G_r|=r(r^2-1)/2.
+\]
+
+Assume `p∤|G_r|`. In `SL₂(F_r)` put
+
+\[
+S=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+T=\begin{pmatrix}1&1\\0&1\end{pmatrix}.
+\]
+
+In the projective quotient the elements
+
+\[
+x=S,\qquad y=ST,\qquad z=T^{-1}
+\]
+
+have exact orders `2,3,r` and satisfy `xyz=1`. Indeed `S²=(ST)³=−I` and `S(ST)=−T`; none of the elements whose asserted order is two or three is scalar. The matrices `S,T` generate `SL₂(F_r)`: powers of `T` give every upper elementary unipotent, conjugation by `S` gives every lower elementary unipotent, and elementary row reduction generates `SL₂` over the field. Therefore `x,y,z` generate `G_r`.
+
+SGA 1, Exposé XIII, Corollary 2.12 is exactly sufficient here. Its hypotheses are a smooth proper connected curve over a separably closed field, with finitely many distinct punctures, and a finite group of order prime to the characteristic generated by elements satisfying the surface relation. Its conclusion realizes the specified elements as images of the specified inertia generators. Apply it to three punctures of `P¹` and the displayed triple. The resulting connected étale `G_r`-cover of the punctured line extends by normalization to a smooth proper cover
+
+\[
+H_r\longrightarrow\mathbf P^1
+\]
+
+with exactly the indices `(2,3,r)` at the chosen three points and no other branch points. This construction works directly in every characteristic `p∤|G_r|`; it does not presume good reduction of an unverified integral Klein or modular model. The cover and action descend from the algebraic closure of a finite field to a finite field. The same presentation works over any algebraically closed field of the permitted characteristic.
+
+Riemann–Hurwitz gives
+
+\[
+g(H_r)=1+\frac{(r^2-1)(r-6)}{24}\ge3.
+\]
+
+For completeness these groups are nonsolvable without invoking a simplicity theorem. Choose `a∈F_r^*` with `a²≠1`. Conjugation by `diag(a,a^{-1})` sends `T^b` to `T^{a²b}`, so every upper elementary unipotent is a commutator. The same holds for the lower unipotents. Since these generate, `G_r` is nontrivial and perfect, hence nonsolvable.
+
+## 3. The natural Borel quotient has small genus for nine primes
+
+Let `B_r` be the stabilizer of infinity in the natural action of `G_r` on `P¹(F_r)`. It is the upper triangular subgroup, of order `r(r−1)/2`, and is solvable: its unipotent normal subgroup is `C_r` and its quotient is cyclic of order `(r−1)/2`.
+
+Write `X_r=H_r/B_r`. The map `X_r→P¹` has degree `r+1`; its inertia permutations are the natural permutations of `x,y,z` above. Let
+
+\[
+f_2=\begin{cases}2&r\equiv1\pmod4,\\0&r\equiv3\pmod4,\end{cases}
+\qquad
+f_3=\begin{cases}2&r\equiv1\pmod3,\\0&r\equiv2\pmod3.\end{cases}
+\]
+
+The involution `x` acts by `u↦−1/u`, so it has `f₂` fixed points and all other cycles have length two. The order-three element `y` acts by `u↦−1/(u+1)`, so it has `f₃` fixed points, the roots of `u²+u+1`, and all other cycles have length three. The element `z` acts by `u↦u−1`; it has one `r`-cycle and the fixed point infinity. Thus their cycle counts are
+
+\[
+c_x=(r+1+f_2)/2,\qquad
+c_y=(r+1+2f_3)/3,\qquad c_z=2.
+\]
+
+The tame Riemann–Hurwitz formula for the non-Galois degree-`r+1` map gives
+
+\[
+\begin{aligned}
+2g(X_r)-2
+ &=-2(r+1)+\sum_{w=x,y,z}((r+1)-c_w)\\
+ &=(r-11-3f_2-4f_3)/6,\\
+g(X_r)&=1+(r-11-3f_2-4f_3)/12.
+\end{aligned}
+\]
+
+The following values are exact:
+
+| `r` | `|G_r|` | `g(H_r)` | `|B_r|` | `g(X_r)` |
+|---:|---:|---:|---:|---:|
+| 7 | 168 | 3 | 21 | 0 |
+| 11 | 660 | 26 | 55 | 1 |
+| 13 | 1092 | 50 | 78 | 0 |
+| 17 | 2448 | 133 | 136 | 1 |
+| 19 | 3420 | 196 | 171 | 1 |
+| 23 | 6072 | 375 | 253 | 2 |
+| 29 | 12180 | 806 | 406 | 2 |
+| 31 | 14880 | 1001 | 465 | 2 |
+| 37 | 25308 | 1768 | 666 | 2 |
+
+For every prime in the table A1 holds for `H_r`, over every finite extension. If `g(X_r)=0`, use the solvable prime-to-`p` genus-zero theorem A.29l for the Galois map `H_r→X_r`. If `g(X_r)=1`, use its genus-one theorem. If `g(X_r)=2`, note that `p` is odd because `|G_r|` is even; every smooth genus-two curve is hyperelliptic and the odd-characteristic theorem A.19 applies to `X_r`. Then the Galois ascent in A.29l applies to `H_r→X_r`.
+
+At `r=7` there is an additional elementary check giving the familiar genus-three auxiliary by a cyclic quotient alone. The subgroup `U=⟨T⟩≅C₇` has normalizer `B₇` of order 21: a normalizer must preserve the unique common fixed point infinity of `U` in the natural action, and all of `B₇` normalizes `U`. In the `(2,3,7)` cover, `U` fixes exactly `|N_G(U)|/7=3` points, all above the third branch value. Therefore
+
+\[
+4=2g(H_7)-2=7(2g(H_7/U)-2)+3\cdot6,
+\]
+
+so `H₇/U` has genus zero. Hence the cyclic-prime-degree theorem A.22 already proves A1 for this genus-three source. No plane-quartic equation or its reduction is required.
+
+## 4. Consequence for arbitrary groups with the indicated branch divisibility
+
+Let `C→P¹` be as in Section 1, with no solvability restriction on its prime-to-`p` Galois group. Suppose there are three distinct geometric branch values `b₂,b₃,b_r` such that
+
+\[
+2\mid e_C(b_2),\qquad 3\mid e_C(b_3),\qquad r\mid e_C(b_r),
+\]
+
+where
+
+\[
+r\in\{7,11,13,17,19,23,29,31,37\},\qquad
+p\nmid r(r^2-1)/2.
+\]
+
+Place the three branch values of `H_r` at these three distinct points by a projective change of coordinate. At every other base point `H_r` is unramified. Its indices thus divide those of `C` everywhere. Section 1 proves A1 for `C`.
+
+The branch points, group action, coordinate change and auxiliary descend after a finite constant extension, which suffices because a collision over the original field remains a collision after extension. The argument works after every further finite extension, as required by A.29l.
+
+For finitely generated fields of characteristic `p`, first make a finite extension of the base field to define the actions, chosen branch points and auxiliary. Spread all finite data and shrink so the curves remain smooth, the marked branch points remain distinct, the tame group actions and quotients remain as specified, and the chosen ramification indices are constant. Apply the finite-field conclusion at the resulting closed fibres and A.8. This uses a finite extension of the entire base field, not merely its constant subfield. The established proper-to-open reduction gives hyperbolic open subcurves as well.
+
+The universal A1 assertion is unchanged. In particular this does not settle arbitrary nonsolvable branch signatures or arbitrary characteristic-two hyperelliptic curves.
+
+## 5. Opened primary source and exact certificate
+
+SGA 1, Exposé XIII, Corollary 2.12, recomposed printed pp.290–291 (original margin pp.392–394), author/source PDF pages 306–307 counted from one. The actual realization statement is on recomposed p.290, PDF zero-based page 305. The supplied full source is `background/literature/SGA1/src_arXiv_math_0206203/smf_doc-math_3_01.tex`, lines 23461–23489; the proof continues thereafter. Opened primary PDF: <https://arxiv.org/pdf/math/0206203>, tool references `turn549view0`, `turn551view0`. The preceding Lemma 2.11 explicitly transports inertia under specialization, but no separate reduction-model assertion is needed in the argument above.
+
+`code/A_branch_auxiliary_certificate.py` performs exact finite-field matrix arithmetic, enumerates each displayed projective group from `S,T`, checks its full order, all three exact inertia orders and their product, counts the Borel stabilizer, computes all inertia cycles, and derives both genera by integer Riemann–Hurwitz. It also checks the order-seven normalizer/fixed-point calculation. Its adjacent JSON records the complete output. The certificate verifies the finite group data; the local, covering and section arguments are proved in this note, rather than inferred from numerical counts.
