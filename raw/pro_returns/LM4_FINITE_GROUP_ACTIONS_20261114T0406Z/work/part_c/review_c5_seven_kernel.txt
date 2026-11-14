@@ -1,0 +1,97 @@
+Independent audit of the exact C5 seven-point braid certificate
+Reviewer: /root/part_c_continue
+Producer: work/part_a/code/c5_seven_kernel_exact.py
+Output: work/part_a/code/c5_seven_kernel_exact_output.json
+Independent rerun: work/part_c/c5_seven_kernel_audit_stdout.txt
+Verdict: PASS. No correction required.
+
+Scope.
+This audit verifies the specified configuration map, its exact source
+meridians, the actual braid identity, and the source class-two detector.
+It does not yet audit a separately written A5-label or full centralizer
+comparison, and it makes no conclusion about the residual A5 centralizer.
+
+1. Exact arithmetic.
+The polynomial theta^4-5 theta^2+5 is Eisenstein at five, so the degree-four
+quotient is a field. The root interval (19/10,2) has opposite endpoint
+signs and positive derivative throughout, selecting one real root.
+Every operation uses Fraction coefficients and the exact polynomial
+reduction. The inverse is an exact rational linear solve and is checked
+by multiplication. Interval Horner evaluation encloses the chosen real
+embedding; further exact bisections resolve each nonzero degree-at-most-
+three polynomial, which cannot vanish at this root by irreducibility.
+The final run used 128 bisections and certified 2,530 signs. The earlier
+2,504 count was printed before the final base-order evaluation; the author
+moved that evaluation before the summary, and an independent rerun passed.
+The crossings, braid words, and exact identities are unchanged.
+The exact checks zeta^5=1, zeta!=1, positive real and imaginary parts
+identify the stated primitive fifth root. Its complex arithmetic is
+explicit over this real embedding, with no floating-point stage.
+
+2. The actual configuration and source.
+The fixed finite labels have exponents {0,2,4}, and the moving labels have
+exponents {0,1,4}. Their pairwise differences give all five exponents
+modulo five. Thus fixed/moving collisions occur exactly at the fifth
+roots; moving/moving collisions occur at zero. The constant infinity label
+adds no finite collision. The stated source sphere with zero, infinity,
+and the five roots removed is therefore the actual domain.
+
+All four source lassos use the same basepoint 2+2i and the same explicitly
+listed positively oriented square of radius 31/1000 about their centre.
+Each other puncture is rigorously outside that square by an exact strict
+coordinate inequality. Every one of the 24 linear segments is checked
+against all finite punctures. Collinear cases are excluded using the
+exact projection parameter outside [0,1]. The returning tail gives the
+inverse of the outgoing tail's braid word, as checked in the producer.
+These facts justify the specified positive meridian labels.
+
+3. Completeness of the crossing list.
+Multiplication by 1+371i/1000 is one fixed orientation-preserving plane
+homeomorphism and an exact projection convention. Each pair of point
+positions depends affinely on the segment parameter. Therefore its real
+difference is a linear function. The nonzero endpoint tests prove that
+equal endpoint signs give no crossing, while opposite signs give exactly
+the single displayed interior root. All 15 pairs on each of 24 segments
+are included, yielding 360 pair/segment checks.
+The imaginary difference is nonzero at every root, excluding actual
+collisions. Exact comparisons prove all crossing times distinct within
+each segment. The two labels are adjacent in the current real ordering
+at every event, and the final order agrees with an independent endpoint
+sort. Thus every signed generator and its position is justified, and no
+unrecorded projection crossing remains. The total is 58 simple crossings.
+
+4. The actual braid identity.
+The program explicitly composes the standard Artin substitutions on the
+six free generators, with inverse substitutions for negative letters.
+It checks equality of the images of A B and B A, where A is the zeta^2
+meridian and B is the product of the zeta, zeta^3, and zero meridians in
+that order. It separately evaluates the freely reduced length-48
+commutator word and obtains each of the six original generators.
+By the faithful Artin representation this is the identity in B6.
+The configuration loop is pure because all actual point labels return,
+so the identity also holds for that pure configuration loop and its
+specified seven-point sphere image. No numerical braid extraction is
+needed in this certificate.
+
+5. Nonzero source class.
+Fill all source punctures except zeta^2, zeta, and infinity.
+The zeta^3 and zero meridians then vanish. The other two meridians have
+the respective winding vectors (1,0) and (0,1) in the free rank-two source.
+In its integral Heisenberg quotient they have coordinates (1,0,s) and
+(0,1,t), for some integers s,t depending on the original tails.
+The displayed multiplication and inverse formulas give their commutator
+(0,0,1) for every s,t. The finite 121-coordinate check illustrates this
+exact polynomial identity; the reason it is independent of s,t is the
+determinant formula for the commutator. Hence the actual source word is
+nontrivial. The same formulas also provide its full profinite detector
+when the coefficient coordinates are replaced by profinite integers.
+
+6. Reproduction and limits.
+The independent invocation exited successfully and reproduced all stated
+counts, exact meridian words, and six identity Artin images.
+The complete coefficient-level certificate remains in the producer's
+JSON, and the shorter rerun output is saved alongside this audit.
+The exact kernel result concerns this configuration map. Any claimed
+factorization through a C5 or D10 centralizer, comparison of other label
+choices, or application to the residual A5 intersection requires its
+own explicit maps and is outside the present code-only audit.

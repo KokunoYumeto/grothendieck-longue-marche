@@ -1,0 +1,166 @@
+INDEPENDENT PEER REVIEW: THE TWO CROSSED hr=-1 SIGN STRATA
+Verdict: PASS on the exact stated scope; no correction requested.
+
+1. Read scope and frozen inputs
+
+I read the complete162-line proof
+work/root/nonproduct_hr_minus_one_crossed_sign_strata.txt,
+the complete151-line program
+work/root/check_nonproduct_hr_minus_one_crossed.py,
+and the certificate's coordinate maps, source polynomials,
+denominators, complete Sylvester/Bezout coefficients and final
+integer combination. All52 asserted identities were executed
+again by an unchanged isolated copy. The proof/code/output
+SHA256 bindings are:
+
+  proof: c59f6e89ccf77ae8c3f97386e1c641ebff6f5a20c535759ea624b38f7696e17a
+  code: 424bf7d123d6553080908a41bf8e90b677c642c0e426913018c72241adde23c3
+  output: 39325de6ea08b8b13d658a06fe147cb59852062a0a296b781355a927b638dd95
+  stdout: 16ba8be0541ea536693d1714e9e0bd308045e6b8f5bb17059e1eec1c94b7d987
+
+The exact computational inputs are the already serialized
+original boundary matrices, source-zero factors and rank-one
+pairings named in the output. This review verifies the
+comparison from those bound matrices. It performs no new
+original braid reconstruction and makes no such claim.
+
+2. Domain and actual intertwiner
+
+The coefficient field is a quadratic finite extension K/L in
+odd characteristic. Its nontrivial automorphism sends r to-r
+and h to-h, with r outside L, d=r/h and t,u,v,w,z in L.
+The equation hr=-1 gives r^2=-d. This is nonsquare in L:
+a square root there would make r one of its two roots in L.
+
+For either crossed branch (u,w)=(1/d,1) or (1,1/d), the
+original equation for s gives s=1/(t*v*z). The d=1 overlap
+uses the separately accepted u=w=1 result. On the remaining
+domain d!=1 and d!=-1; the latter follows from r^2=-d
+being nonsquare. All divisions by d,d-1,d+1 are justified.
+
+A nonzero rank-one restriction a*q on a common simple source
+submodule has image exactly K*a. Its intertwiner phi therefore
+satisfies phi(a)=c*sigma(a) for c!=0. Intertwining a*q gives
+sigma(q)*phi=c*q on the actual submodule. Since every actual
+source word W preserves it, applying both equations to W*a
+gives q*W*a=sigma(q*W*a), after cancelling c. This proves
+the scalar trace equation used for every source, through the
+displayed maps and without assuming a module complement.
+
+3. The two independent coefficient transports
+
+Write (uf,wf)=(1,0) or(0,1). The original matrix transport
+is the homomorphism determined by
+
+  r^2=-d, s=d^(uf+wf-1)/(t*v*z),
+  u=d^-uf, w=d^-wf,
+
+with t,v,z fixed. For an original monomial with exponent
+(er,es,et,eu,ev,ew,ez), write er=2q+e, e in{0,1}.
+Its image is exactly
+
+  (-1)^q*r^e*d^(q+(uf+wf-1)es-uf*eu-wf*ew)
+            *t^(et-es)*v^(ev-es)*z^(ez-es).
+
+This covers every integer exponent, including negative ones.
+The quotient ring has the explicit free basis1,r over the
+Laurent ring in d,t,v,z. The program implements this map
+with its own integer sparse arithmetic and multiplies q*T_i*a.
+
+The second transport starts from the separately recorded
+monomials in r,h,t,u,v,w,z and substitutes h=-1/r.
+For er+eh odd, multiplying the odd part by r gives
+p=(er+eh+1)/2, coefficient(-1)^p and d exponent
+p-eh-uf*eu-wf*ew. This is exactly equation(C.3).
+In the first route, a basis term c*r*d^a contributes
+-c*d^(a+1) after the same multiplication by r. These two
+explicit maps agree for all eleven sources in both branches,
+giving the22 independently checked full scalar comparisons.
+
+4. Complete branch A
+
+The first source forces t=1 or t=-1/d. At t=1, the second
+forces v=(d+1)/d. At t=-1/d, the equation is
+(2d+1)v=d+1, so2d+1 cannot vanish. This proves the required
+second substitution v=(d+1)/(2d+1), including every odd
+characteristic.
+
+For t=1 the source10 equation leaves z=1 or z=1/d.
+Source8 excludes z=1 by -d^2/(d+1)^2. At z=1/d,
+source5 forces d=-2, and source3 then equals4. Thus this
+case is excluded in every odd characteristic; characteristic3
+already makes d=-2 equal the excluded value1.
+
+For t=-1/d I checked every displayed denominator against the
+complete certificate: their only factors are the units d,z
+and the already proved nonzero d+1,2d+1. The resulting five
+integer source numerators therefore vanish at a common zero.
+
+For each i=8,5,7 the code constructs the entire Sylvester
+matrix in ascending powers of z, with columns z^j*P10
+followed by z^j*Pi. Its signed first-column adjugate gives
+the full integral identity Ri=Ui*P10+Vi*Pi. The determinant,
+all coefficients and the polynomial identity are verified.
+This remains an integral identity when a leading coefficient
+vanishes after specialization; no degree-preservation
+assumption or leading-coefficient division is used.
+
+The three integer Bezout identities with P3 produce constants
+
+  49090713635888,
+  18047687066575360,
+  2692556607316340.
+
+The displayed integer coefficients combine them to4.
+The program verifies every integral coefficient and each
+expanded identity, including the final combination. Therefore4
+belongs to the ideal of the five source numerators over
+Z[d,z]. Specialization into L sends all five generators to0
+and would send4 to0, impossible in odd characteristic.
+Every prime dividing an individual intermediate constant
+is retained by this combined identity.
+
+5. Complete branch B
+
+The first source has exactly the three remaining factors
+v-1,z-1,dz+1. The last factor gives z=-1/d, where source10
+is -2d(d+1), a unit on this domain.
+
+At z=1, source2 gives d=t^-2. Hence t^2!=1, and source5
+forces v=1. The nonsquare condition on-d=-t^-2 means-1
+is nonsquare in L. In particular t^2+1 cannot vanish.
+Thus source7=(t-1)^3*(t+1)*(t^2+1)/t^5 is nonzero.
+Every factor has been justified without an omitted field
+characteristic.
+
+The remaining factor v=1, with z=1 excluded, makes source5
+force z=1/d. Source10 then equals
+-2(d-1)^2(d+1), again nonzero. This exhausts the three
+original factors and proves the stated crossed-branch result.
+
+6. Isolated unchanged replay and exact disposition
+
+I copied the unchanged program and its three bound inputs into
+work/part_a/nonproduct_hr_minus_one_crossed_peer_replay,
+preserving the work/root and work/part_a/code layout required
+by the program's actual root-path computation. Every copied
+input has identical complete bytes to its author original.
+
+The isolated program exited0 with all52 checks and empty
+stderr. The complete output is byte-for-byte identical to
+the frozen author output. The complete stdout is separately
+byte-for-byte identical to the author's actual _stdout.json.
+The output transport in both directions is the identity
+on these complete byte strings.
+
+Replay comparison SHA256:
+b92c3d1c07d5eec72985f888d03d2ff2b27c6ab9e5c59cd8e09ded79a810ccbe
+
+PASS: the two specified crossed hr=-1 branches, for actual
+common source submodules with nonzero source-zero rank-one
+action, with the d=1 overlap transported through the accepted
+u=w=1 proof. The exact original-matrix scope, coefficient
+maps and all odd-characteristic exclusions are supported.
+The independent original-word audit for the broader source
+classification is a separate continuation. All frozen author
+and earlier F.33 files were preserved unchanged.

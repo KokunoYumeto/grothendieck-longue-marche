@@ -1,0 +1,256 @@
+PROVED TRACE REDUCTION FOR THE ACTUAL AFFINE MARGINAL PROBLEM
+===========================================================
+
+Status and scope
+----------------
+This is a separate proved research subclaim, retained for root review.
+It leaves the F24/F25 sources and their manifests unchanged. It proves
+an exact reduction and an exact coefficient comparison. It does not
+prove the remaining trace-kernel equality or any new full marginal
+surjectivity assertion.
+
+Throughout, choose either of the actual inclusions
+  K = mathcal K_sign <= R = R_sign <= V = V_sign
+from F19--F25. The exact maps D+ -> R carry K+ onto K. F21 therefore
+gives closed normal generation of R by K. All representations and
+crossed homomorphisms below are continuous; finite fields and finite
+groups have their discrete topologies. In particular the scalar
+images of K and R agree under every character of V.
+
+Proved subclaim: every failure has a full-translation trace realization
+---------------------------------------------------------------------
+Let k be a finite field of characteristic p and rho:V -> Aff_1(k) an
+actual representation with rho(K) properly contained in rho(R). Put
+  H=rho(V), N=rho(R), M=rho(K), D=chi(V), C=chi(R)=chi(K),
+  k0=F_p(D), k1=F_p(C), U=M intersect (k,+).
+Then C is nontrivial: when C=1 the group N is abelian and actual
+normal generation gives M=N. F25 also gives k1 properly contained in
+k0 for every remaining failure, and U cannot be k0-linear.
+
+Choose a generator c of the finite cyclic group C and an actual lift
+m=(b,c) in M. Conjugate the entire representation by the inverse of
+the translation tau_z(w)=w+z, where z=b/(1-c), exactly as in F25.7.
+The conjugated marginal is literally M_z=U semidirect C; the element
+m becomes (0,c). This conjugation fixes every translation, hence
+does not change U. Let A_H and A_N be the additive translation
+subgroups of H_z and N_z.
+
+The group N_z is normal in H_z because R is normal in V. Every scalar
+d in D is the scalar of an actual element of H_z. Its conjugation
+sends a translation a to da, and preserves both A_H and A_N.
+Both are therefore F_p[D]=k0 vector subspaces. The equality of that
+finite ring with the field k0 is the elementary finite-domain
+argument written in F25.
+
+For a in A_H the literal commutator with (0,c) is
+  [(a,1),(0,c)] = ((1-c)a,1).
+It lies in N_z, by its normality, so (1-c)A_H is contained in A_N.
+The nonzero scalar 1-c has inverse in k0, and A_N is k0-linear.
+Thus A_H=A_N; call their common value A.
+
+For every h=(b,d) in H_z, the same exact multiplication gives
+  [h,(0,c)] = ((1-c)b,1) in N_z intersect (k,+)=A.
+Consequently b is in A. Since H_z contains all translations A and
+has scalar image D, it contains (0,d) for every d in D, obtained by
+multiplying an actual lift (b,d) by (-b,1). Therefore
+  H_z=A semidirect D,  N_z=A semidirect C,  M_z=U semidirect C.
+The last two are unequal precisely because U is a proper k1-linear
+subspace of the nonzero k0-vector space A.
+
+Choose a k1-linear functional L:k -> k1 which vanishes on U and is
+nonzero on A. To construct it, choose a in A outside U, extend a
+k1-basis of U by a and then to a basis of k, send a to1, and send
+every other basis vector to0. This is an actual specified linear
+map after the named finite basis choices.
+
+We next prove and apply the exact factorization
+  L = Tr_(k0/k1) composed with ell,
+where ell:k -> k0 is k0-linear.
+
+Write q1=|k1| and m=[k0:k1]. The finite-field trace is the literal
+polynomial
+  Tr(x)=x+x^q1+...+x^(q1^(m-1)).
+Its values lie in k1 since its q1th power is the same sum, using
+x^(q1^m)=x. It is k1-linear. It is not the zero map: its polynomial
+has nonzero leading coefficient and degree q1^(m-1)<|k0|, so cannot
+vanish at every element of k0. Hence it is onto k1. Choose beta in
+k0 with Tr(beta)=1. For every a nonzero in k0,
+  Tr(a*(beta/a))=1.
+Thus the pairing (a,b) -> Tr(ab) is nondegenerate. The resulting
+k1-linear map
+  k0 -> Hom_(k1)(k0,k1),  a -> (b -> Tr(ab))
+is injective and both sides have k1-dimension m, so it is an
+isomorphism. This proves the trace-pairing assertion in every
+characteristic, including when p divides m.
+
+Choose a k0-basis v1,...,vr of k. For each i, the actual functional
+Li:k0 -> k1, t -> L(t*vi), has a unique coefficient ai in k0 with
+Li(t)=Tr(ai*t). Define
+  ell(sum ti*vi)=sum ai*ti.
+This is k0-linear and satisfies L=Tr composed with ell by the
+displayed basis expansion. Since L is nonzero on A, ell(A) is a
+nonzero k0-subspace of k0, hence ell(A)=k0. Also
+  ell(U) is contained in ker Tr,
+and this trace kernel is a proper k1-subspace of k0.
+
+The exact map of affine groups is
+  P_ell:k semidirect D -> k0 semidirect D,
+  (b,d) -> (ell(b),d).
+It is a group homomorphism because ell(d*b)=d*ell(b) for d in D.
+Its targets and sources are finite, so it is continuous. Compose
+the original representation with the stated translation conjugation
+and with P_ell. The resulting actual representation rho' satisfies
+  rho'(V)=k0 semidirect D,
+  rho'(R)=k0 semidirect C,
+  rho'(K)=ell(U) semidirect C <= (ker Tr) semidirect C.
+The last subgroup is proper in rho'(R), because Tr is onto. All
+scalar values are unchanged by these maps, so k0=F_p(chi(V)) and
+k1=F_p(chi(R)) still hold literally.
+
+This proves the asserted reduction to a translation field of scalar
+dimension one, with the marginal translations lying in one explicit
+trace kernel. Every map and every finite-basis choice has been given.
+
+Proved subclaim: the exact remaining trace-cocycle equation
+----------------------------------------------------------
+Fix a finite field k0, a continuous chi:V -> k0^* such that
+k0=F_p(chi(V)), and C=chi(R) nontrivial. Put k1=F_p(C) and
+m=[k0:k1]. These data specify an actual k1-linear map
+  T_chi: Z1_cont(V,k0_chi) -> Z1_cont(K,k1_(chi|K)),
+  d -> Tr_(k0/k1)(d|K).
+The target is exactly as written: on K the character takes values
+in C<=k1, so the k1-linearity of Tr proves the crossed-homomorphism
+equation after composition. Continuity is preserved because all
+coefficient fields are finite and discrete.
+
+The subspace
+  P_chi={d_b:g -> (chi(g)-1)b : b in k0, Tr(b)=0}
+is contained in ker T_chi. Its k1-dimension is m-1, since chi is
+nontrivial and the trace is onto. The rank target for T_chi on the
+7m-dimensional k1-space of derivation values at the seven actual
+free generators is therefore 6m+1.
+
+The universal scalar-affine marginal image equality is equivalent
+to the following exact equation for all the displayed field and
+character data:
+  ker T_chi = P_chi.                                     (TC)
+Here is the complete proof of this equivalence.
+
+A failure of the scalar-affine equality gives rho' from the preceding
+subclaim, with translation cocycle d'. The trace of d' vanishes on K.
+It is not principal: a principal affine representation fixes a point
+of the field, whereas rho'(V) contains every nonzero translation,
+each of which moves every point. Thus d' belongs to ker T_chi outside
+P_chi, and (TC) fails for these exact data.
+
+Conversely take a d in ker T_chi outside P_chi and form the actual
+continuous homomorphism
+  rho_d:V -> k0 semidirect D,  g -> (d(g),chi(g)).
+It has nonzero translations. Indeed its translation subgroup is
+stable under D and therefore is a k0-subspace of k0. If that subgroup
+were zero, its scalar projection would identify rho_d(V) with the
+cyclic group D. A generator lift (b,a), a!=1, fixes b/(1-a); every
+power has that same fixed point, making d principal. The condition
+Tr(d|K)=0 and C!=1 would then force the principal parameter's trace
+to be zero, contrary to d being outside P_chi. The translation
+subgroup is therefore nonzero and equals k0.
+
+The R image is normal and contains an element with nontrivial scalar
+c in C. Commuting this with every translation as above forces it to
+contain all translations k0. Its scalar image is C, so
+  rho_d(R)=k0 semidirect C.
+Since T_chi(d)=0, every element of rho_d(K) lies in
+  (ker Tr) semidirect C,
+which is a proper subgroup. Hence rho_d(K) is properly contained in
+rho_d(R), giving an actual affine marginal failure. This proves
+the equivalence without asserting that either failure set is nonempty.
+
+For m=1, equation(TC) is precisely the already proved F24 injection,
+with P_chi=0. The remaining data have m>=2. Equation(TC) has not been
+proved for those arbitrary field data in this research note.
+
+Proved subclaim: exact Galois coefficient splitting
+--------------------------------------------------
+The m characters chi_j=chi^(q1^j), 0<=j<m, are pairwise distinct:
+an equality for two would make the corresponding nonidentity
+power of q1-Frobenius fix every chi(g), hence the generated field
+k0, which it does not. They all restrict to chi on R and on K.
+
+The exact coefficient-ring isomorphism is
+  S:k0 tensor_(k1) k0 -> product_(j=0)^(m-1) k0,
+  b tensor a -> (a*b^(q1^j))_j.
+To prove this, choose a multiplicative generator gamma of k0^*.
+Its minimal polynomial over k1 has degree m and the distinct roots
+gamma^(q1^j). Identify the tensor ring with k0[X]/f(X), where the
+first gamma maps to X and the second factor supplies coefficients.
+Evaluation at those m roots is S. Its explicit inverse uses the
+Lagrange polynomials
+  e_j(X)=product_(r!=j) (X-gamma^(q1^r)) /
+                            (gamma^(q1^j)-gamma^(q1^r)),
+  (a_j)_j -> sum_j a_j e_j(X) modulo f(X).
+All denominators are nonzero because the roots are distinct.
+
+Giving the first factor the chi action carries that action under S
+to chi_j on factor j. Because V is the actual free profinite group
+on seven generators, continuous cocycles are precisely their seven
+coefficient values: a tuple gives a homomorphism into the finite
+semidirect product, and hence extends uniquely from the discrete
+free group to its full completion. Thus S gives the exact vector
+space comparison
+  Z1_cont(V,k0_chi) tensor_(k1) k0
+       -> direct_sum_j Z1_cont(V,k0_(chi_j)),
+  d tensor a -> (a*d^(q1^j))_j.
+
+On the target, expanding a k0-valued cocycle on K in a fixed k1-basis
+of k0 identifies
+  Z1_cont(K,k1_(chi|K)) tensor_(k1) k0
+       -> Z1_cont(K,k0_(chi|K)).
+Coordinate projections and their inverses preserve both the cocycle
+identity and continuity, since the basis and all fields are finite.
+Under these two isomorphisms, T_chi tensor 1 is exactly
+  (d_0,...,d_(m-1)) -> sum_j d_j|K.                 (S_chi)
+Indeed a simple tensor has image a*sum_j d^(q1^j)|K, which is the
+literal trace formula. Simple tensors span the source.
+
+The base change of P_chi is the subspace
+  {(b_j*(chi_j-1))_j : sum_j b_j=0}.
+This follows by applying S to the exact trace-kernel sequence;
+under S the trace map becomes summation of the m coordinates.
+Extension of scalars by the field k0 is exact and detects a nonzero
+vector space by extending a basis. Therefore equation(TC) is
+equivalent to saying that the kernel of the exact summed-restriction
+map (S_chi) is exactly that principal subspace. Its rank target is
+6m+1 on 7m columns over k0. This coefficient splitting proves the
+comparison, while leaving the asserted kernel description unresolved.
+
+Current computations and their limits
+--------------------------------------
+The complete F9 diagnostic uses the actual source rows and all11
+source matrices. Its7560 character tuples have deleted values in
+F3^*, with one deleted value -1 and a retained value outside F3.
+After two full source-closure rounds every case has rank13; a third
+round verifies stability. This is the finite result recorded in
+affine_f9_translation_obstruction_stage_output.json and
+affine_f9_source_closure_stage_output.json. No unbounded field
+assertion is inferred from it.
+
+The separate deterministic diagnostics in
+affine_trace_prime_base_stage.py also use complete source closure:
+  F27/F3:300 specified character tuples, final rank19 in every case;
+  F25/F5:299 specified character tuples, final rank13 in every case;
+  F49/F7:300 specified character tuples, final rank13 in every case.
+The tuples, field arithmetic, all rank histories, trace-zero principal
+checks, code and outputs are retained. These are finite diagnostics,
+not an exhaustive assertion for those fields or a proof of(TC).
+
+The first exact universal two-character experiment uses the variables
+(t1,...,t7,q1,q2,q3), characters t and
+(t1*q1,t2*q2,t3*q3,t4,...,t7), and the actual64 F24 source rows.
+It localizes t4-1 and q1-1 and gauges out the first cocycle's X4 value
+using the known principal relation. The unit-pivot search reaches
+8 of the13 required pivots, then stops at its325823-monomial size
+guard. The exact remaining rows and operations are retained in
+affine_pair_rows_stage_output.json. This is an unfinished search.
+The finite F9 data show that the64-row set itself needs further
+source conjugates on some character strata; the next universal
+certificate must address those rows and arbitrary family size.

@@ -1,0 +1,228 @@
+\begin{claim}{B.28}{Proved}{Complete executed extended genus-two catalogue}
+The extended mapping class group of the closed orientable genus-two
+surface has exactly $92$ conjugacy classes of finite subgroups.  Of
+these, $57$ contain the hyperelliptic involution and $35$ do not;
+$21$ classes preserve orientation.  The files
+\texttt{type\_2\_0\_extended\_catalogue.csv} and
+\texttt{type\_2\_0\_extended\_sections.json} specify every group by
+an exact finite permutation representation and give every full and
+partial splitting, its multiplier and centralizer, all extension
+incidences, $\Phi$, and its group orbits and stabilizers.
+\end{claim}
+\begin{proof}
+Let $\iota$ be the hyperelliptic mapping class.  The genus-two
+Birman--Hilden homomorphism, with orientation reversal allowed, is
+\[
+ 1\longrightarrow\langle\iota\rangle
+ \longrightarrow\mathcal T_{2,0}
+ \longrightarrow\mathcal T_{0,6}\longrightarrow1.       \tag{B.28.1}
+\]
+We recall its geometric content, to specify every comparison used here.
+The involution is the deck map of the double cover of $S^2$ branched
+at six points.  The covering is determined by the homomorphism from
+the fundamental group of the six-times-punctured sphere to $C_2$
+that sends each peripheral generator to the nonidentity element;
+the product relation is respected because six is even.  Every
+homeomorphism preserving the branch set preserves this homomorphism,
+and hence has exactly two lifts, differing by $\iota$.
+The genus-two hyperelliptic mapping class is central: the usual chain
+of five nonseparating curves is invariant under the involution, their
+Dehn twists generate the oriented genus-two mapping class group,
+and a reflection of the standard branched-cover model commutes with
+$\iota$ and supplies the negative coset.  The Birman--Hilden isotopy
+property identifies the kernel in (B.28.1) with these two deck classes;
+it also makes the lifting map onto.  This is the hyperelliptic
+Birman--Hilden description used in B.25, in genus two instead of the
+four-point pillowcase; see \cite[\S9.4.2, p.~257, with the proof in \S9.4.3]{bFarbMargalit2012}.
+
+For a finite $K\subset\mathcal T_{2,0}$ put
+$E=K\langle\iota\rangle$ and let $H$ be its image in
+$\mathcal T_{0,6}$.  The group $E$ is exactly the full inverse image
+of $H$ in (B.28.1), and has order $2|H|$.  Thus B.26 supplies its
+complete list of $57$ conjugacy classes.  A subgroup $K$ with this
+fixed $E$ either equals $E$, or is a complement to
+$\langle\iota\rangle$.  Every complement is normal in $E$ and is
+uniquely the kernel of a homomorphism
+\[
+             \chi:E\longrightarrow\mathbf F_2,
+             \qquad\chi(\iota)=1.                     \tag{B.28.2}
+\]
+Indeed $E=K\times\langle\iota\rangle$ for a complement, giving
+this homomorphism; conversely the kernel of (B.28.2) has index two
+and maps isomorphically onto $H$.  Because $\iota$ is central in the
+whole mapping class group, conjugate $K$'s have conjugate associated
+$E$'s.  For a fixed $E$, their further fusion is therefore exactly
+the action of its normalizer on the characters (B.28.2).
+
+Here are explicit presentations of all the finite groups $E$.
+They are also used to calculate the sections, so the statement is
+independent of the names assigned to abstract finite groups.  Let
+$Q=S^2/H$ be one of the spherical orbifolds in B.26, with its
+six-branch-point decoration.  Write $z=\iota$, $z^2=1$, and require
+$z$ to commute with all generators.  An interior cone of order $m_j$
+has a generator $x_j$ with
+\[
+                    x_j^{m_j}=z^{d_j},                 \tag{B.28.3}
+\]
+where $d_j=1$ exactly when its orbit is a branch orbit.  Let $a$ be
+the number of regular interior branch orbits.  For a spherical
+underlying quotient the remaining relation is
+\[
+                       \prod_jx_j=z^a.                 \tag{B.28.4}
+\]
+For a projective-plane quotient, with crosscap generator $u$, it is
+$u^2\prod_jx_j=z^a$.
+
+For a mirror disc, expand the cyclic corner list by inserting each
+branch orbit on an open mirror edge as an extra entry $(m,d)=(1,1)$.
+An original corner contributes $(m,d)$ with its original order $m$
+and its branch flag $d$.  The distinction is retained as a color.
+Let the resulting cyclic list be $(m_j,d_j)_{j=0}^{L-1}$.
+There are reflections $R_0,\ldots,R_{L-1}$ and a boundary element
+$e$, with
+\[
+ \begin{split}
+ R_j^2&=1,\\
+ \prod_i x_i\,e&=z^a,\\
+ (R_jR_{j+1})^{m_j}&=z^{d_j},\\
+ R_L&=eR_0e^{-1}.
+ \end{split}
+ \tag{B.28.5}
+\]
+When $L=0$ there is one reflection $R_0$ and the last relation is
+$eR_0e^{-1}=R_0$.  A newly inserted mirror branch entry says exactly
+$R_{j+1}=R_jz$.
+
+These are presentations, rather than only relations satisfied by
+some finite images.  To verify this, use the branched cover described
+above.  Its full group of lifts of $H$ is a group of order $2|H|$.
+A small positive circle about a branch point has deck monodromy $z$;
+about an unbranched point it has trivial deck monodromy.  This gives
+(B.28.3).  The product of the boundary loops gives (B.28.4), or its
+crosscap or disc version.  At a branch point on a mirror, the local
+map is $w\mapsto w^2$: the two reflections on the adjacent lifted
+half-branches differ by $w\mapsto-w$.  This gives precisely the
+inserted entry in (B.28.5).  At a corner the positive local cyclic
+generator has its order doubled exactly when it is branched, giving
+the other entries.  These local monodromies and $z$ generate the full
+lift group.  Conversely quotienting the displayed presentation by
+$z=1$ gives the original spherical orbifold presentation, which is
+$H$ by the local-injectivity and Euler-characteristic certificate in
+B.26.  Since $z$ is central of order at most two, the presented group
+has at most $2|H|$ elements.  Its surjection onto the geometric lift
+group proves equality and the presentation assertion.
+
+We determine the entire normalizer action needed in (B.28.2), not
+just conjugation inside the finite group.  A normalizing mapping
+class descends through (B.28.1) and through the $H$-action to an
+orbifold homeomorphism of $Q$ preserving its branch decoration.
+Conversely any such orbifold homeomorphism lifts to $S^2$, because
+$S^2$ is the universal orbifold cover of $Q$, and then to the double
+branched cover, because the six peripheral mod-two monodromies are
+preserved.  Thus its lifts give the whole normalizer action, with
+inner automorphisms and the deck involution as the harmless lifting
+ambiguities.  Both act trivially on characters to $\mathbf F_2$.
+
+On a sphere, an orbifold homeomorphism sends each local cone
+generator to a conjugate of a local generator with the same original
+order and branch flag, or to its inverse when it reverses
+orientation.  Characters ignore conjugation and inversion.  All
+permutations among cones of the same pair $(m_j,d_j)$ are realized
+by homeomorphisms of the sphere.  Point-pushing and pure braids
+conjugate the local generators and therefore act trivially on these
+characters.  The ordinary branch generators already equal the
+central element $z$.  Consequently the exact action on (B.28.2)
+is the permutation action on these colored cone coordinates.
+The character equations are
+\[
+       m_j\chi(x_j)=d_j,\qquad
+       \sum_j\chi(x_j)=a\pmod2.                       \tag{B.28.6}
+\]
+This includes, for example, the two elliptic complements in a
+four-group lying over a sphere involution with no fixed branch
+points: exchanging the two cone points exchanges those complements.
+They must be fused, and the program does so.
+
+On a mirror disc there is at most one interior cone.  The normalizer
+preserves the cyclic order on its boundary, up to reversal.  It
+therefore induces exactly the rotations and reversals of the
+expanded colored corner list that preserve its colors.  Each such
+symmetry is realized by a disc homeomorphism preserving the interior
+decoration.  To see its action explicitly, extend the reflection
+sequence by $R_{j+L}=eR_je^{-1}$.  A cyclic shift by $s$ sends
+$R_j$ to $R_{j+s}$ and preserves $e$; a reversal sends $R_j$ to
+$R_{s-j}$ and $e$ to $e^{-1}$.  The interior cone generator is sent
+to a conjugate of itself or its inverse.  Modulo two these formulas
+are literal permutations of the reflection coordinates and leave
+the interior coordinate fixed.  They respect every relation in
+(B.28.5).  Every remaining disc mapping class comes from moving the
+interior marked points or from a boundary twist; its effect on local
+generators is conjugation and hence is trivial on the characters.
+The character equations are therefore
+\[
+ \begin{split}
+ m_i\chi(x_i)&=d_i,\\
+ \chi(e)&=a+\sum_i\chi(x_i),\\
+ m_j\bigl(\chi(R_j)+\chi(R_{j+1})\bigr)&=d_j\pmod2.
+ \end{split}
+                                                        \tag{B.28.7}
+\]
+The program enumerates these bit vectors and divides by exactly the
+colored dihedral permutations just proved.  For a projective-plane
+quotient, the six-branch-point equation allows only the three cases
+$P()$ with $a=3$, $P(2)$ with $(d,a)=(1,1)$, and $P(3)$ with
+$(d,a)=(0,1)$.  Their full lifts are respectively $C_4,C_8,C_{12}$,
+with $z$ the involution.  None has a character taking $z$ to one.
+Thus no further complement fusion is needed in these cases.
+
+Executing (B.28.6)--(B.28.7) gives $35$ character orbits, in addition
+to the $57$ full groups.  The following order distribution is a
+compact view of the complete $92$-row table:
+\[
+\begin{array}{c|rrrrrrrr}
+ |K|&1&2&3&4&5&6&8&10\\\hline
+ \#&1&7&1&13&1&11&14&3\\[2pt]
+ |K|&12&16&20&24&32&48&96\\\hline
+ \#&17&8&1&9&1&4&1
+\end{array}                                             \tag{B.28.8}
+\]
+In particular its seven involution classes consist of the hyperelliptic
+class, the elliptic positive class, and the five negative classes
+predicted independently by B.16.
+
+We finish by specifying the verification of all section data.
+For each of the $57$ presentations, the program performs an exact
+Todd--Coxeter enumeration and obtains the regular action on exactly
+$2|H|$ cosets.  It evaluates every relator in these permutations and
+checks that $z$ is nonidentity of order two.  In the quotient orbifold
+for the genus-two action, an originally branched cone of order $m$
+now has order $2m$, a regular branch orbit contributes a cone of
+order two, and a branched corner has its order doubled.  Every
+local cyclic or dihedral group injects into the computed finite
+group.  The orbifold Euler characteristic multiplied by $2|H|$
+is $-2$, and the covering subgroup is the kernel of a
+monodromy homomorphism compatible with orientation.  Its torsion-free
+covering surface is therefore orientable of genus two.
+The program also checks that $z$ has exactly six section classes.
+
+The cone and corner cosets, together with the lifted mirror coset
+graph of B.26, give every fixed point and reflection oval.  Enumerating
+subgroups of these local stabilizers and conjugating them by the
+finite group is enough: every finite subgroup with a nonempty fixed
+set is contained in such a local stabilizer.  The section multiplier
+is read from the power of the corresponding positive local generator;
+conjugating by a negative element reverses that angle.  For each
+complement, retain exactly the section classes whose image subgroup
+lies in its character kernel.  This restriction is exact because
+the lift extension for the complement is the inverse image of that
+subgroup in the full lift extension.  Recompute maximality in the
+retained poset, intersect the section stabilizers with the complement,
+and compute its actual orbits.  Thus no maximality or orbit count is
+inferred merely by restricting the full-group summary.
+All order and power identities for $\mu$ and all unique-maximal-extension
+claims for sections containing a rotation are checked.  Finally the
+$21$ positive rows agree with the independent primary-source
+oriented genus-two catalogue used in B.33 on the complete multiset
+of five invariants: group order, full sections, nontrivial partial
+sections, $|\Phi|$, and $|\Phi/K|$.
+\end{proof}

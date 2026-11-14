@@ -1,0 +1,262 @@
+PRIMARY-SOURCE AUDIT: THE TWO TEH INFINITE-CONFIGURATION PREPRINTS
+Status: proved counterexamples to specified normalization and realization
+assertions; no conclusion that configuration-space asphericity fails.
+This is an unnumbered source-check note. C83 is a separate, self-contained
+actual evaluation-map obstruction and imports no theorem from either text.
+
+PRIMARY FILES AND PRECISE LOCATORS
+
+[T25] Jyh-Haur Teh, The asphericity of locally finite infinite configuration
+spaces and Weierstrass entire coverings, arXiv:2512.21498v1, 25 December 2025:
+https://arxiv.org/pdf/2512.21498v1
+https://arxiv.org/abs/2512.21498
+The original PDF has 49 pages. Definition 3.1 and Definition 3.4 are on
+printed page 7 (PDF extraction lines 473-477 and 510-515). Lemma 5.10 and
+its proof are on printed pages 25-26 (lines 1784-1880). Its use in Lemma
+5.12 is on printed page 27 (lines 1918-1933).
+
+[T26] Jyh-Haur Teh, Topological fundamental groups of locally finite
+infinite configuration spaces and infinite braids, arXiv:2602.07362v1,
+7 February 2026:
+https://arxiv.org/pdf/2602.07362v1
+https://arxiv.org/abs/2602.07362
+The original PDF has 43 pages. Definition 2.6 is on printed page 5,
+and the ordered sum metric equation (2) is on printed page 6
+(lines 309-347). Lemma 6.7 is on printed pages 26-27
+(lines 2168-2283); Lemma 6.8 is on printed pages 28-29
+(lines 2285-2324). Theorem 6.14 is on printed pages 31-32
+(lines 2477-2535 onward). Definition 6.17 and Theorem 6.18
+are on printed pages 32-33 (lines 2557-2605).
+
+All line references above are to the web tool's extraction of these exact
+versioned PDFs, not to a later revision. Printed pages are one greater than
+the zero-based PDF page indices. The observed records identify preprints;
+no refereed-publication status is assumed.
+
+1. EXACT CONFIGURATION SPACE AND TOPOLOGY
+
+Fix a literal enumeration of labels by positive integers. A configuration
+z=(z_i) is an infinite sequence of distinct complex numbers, with only
+finitely many z_i in each compact planar set. Its counting measure is
+mu_z=sum_i delta_(z_i). Write
+
+ d_prod(z,w) = sum_(i>=1) 2^(-i) min(1, |z_i-w_i|).
+
+For a countable compactly supported test family (phi_j) detecting vague
+convergence, put
+
+ d_V(mu,nu) = sum_(j>=1) 2^(-j)
+              |integral phi_j d(mu-nu)| /
+              (1+|integral phi_j d(mu-nu)|),
+ d_Sigma(z,w) = d_prod(z,w)+d_V(mu_z,mu_w).
+
+Thus the topology simultaneously requires coordinate convergence and
+vague counting-measure convergence. These are the definitions at the
+locators above. The point zero is allowed. The positive-integer sequence
+(1,2,3,...) is a chosen base configuration for the fundamental groups,
+not a restriction on every point of the configuration space. Neither
+collar lemma requires that base configuration. The explicit collar
+example below is even nonzero and has a fixed positive-integer tail.
+
+2. COLLAR ASSERTIONS: COMPLETE DATA USED IN THE AUDIT
+
+T25 Lemma 5.10:
+R>0; epsilon>0; R/2+epsilon<R and 2R<3R-epsilon;
+A={R<=|z|<=2R}, B={R/2<=|z|<=3R};
+K compact metric; F:K->unordered configurations vague-continuous.
+Its functions are
+
+ u_in(x)=sup{|z|: z in F(x), R/2-epsilon<=|z|<R/2},
+          with empty value R/2-epsilon;
+ v_out(x)=inf{|z|: z in F(x), 3R<|z|<=3R+epsilon},
+          with empty value 3R+epsilon.
+
+The assertions are USC(u_in), LSC(v_out), and continuous separators
+u_in<r_in<R/2 and 3R<r_out<v_out. The stated radial isotopy starts at
+identity, fixes A and radii <=R/2-epsilon or >=3R+epsilon, is supported
+in the two closed epsilon-collars, and sends radii r_in,r_out to R/2,3R
+at time one, making the resulting configuration avoid boundary(B).
+
+T26 Lemma 6.7:
+K compact metric; F vague-continuous; R,epsilon>0;
+u(x)=sup{|z|:z in F(x), R-epsilon<=|z|<R}, empty value R-epsilon.
+It asserts USC(u). For closed L with F(L) avoiding the closed
+epsilon-collar, it asserts continuous r with u<r<R on K\L and r=R
+on L, and a radial isotopy supported in that collar, stationary on L,
+starting at identity, whose time-one inverse takes radius R to r(x).
+
+COUNTEREXAMPLE AND DIRECT SUPREMUM CALCULATION
+
+Set K=[0,1/8] and
+
+ F(t)={1-t} union {10,11,12,...}.
+
+This is infinite, simple, locally finite, nonzero and labelled by
+(1-t,10,11,...). Every compactly supported test function phi gives
+
+ integral phi d(mu_(F(t))) = phi(1-t)+sum_(m>=10) phi(m),
+
+where the displayed tail sum is fixed and finite. Hence F is
+vague-continuous. Its only varying ordered coordinate is the first,
+so it is also continuous in the exact ordered sum topology.
+
+For T25 take R=2 and epsilon=1/4. The required inequalities are
+1+1/4<2 and 4<6-1/4. The inner collar is [3/4,1) in radius. At t=0
+it is empty; at every 0<t<=1/8 it contains exactly the point 1-t.
+Consequently
+
+ u_in(0)=3/4,
+ u_in(t)=1-t  (0<t<=1/8),
+ limsup_(t downarrow 0) u_in(t)=1>3/4.
+
+For T26 take R=1, epsilon=1/4, and the allowed closed set L empty.
+Its u is exactly the same function.
+
+Moreover, any continuous r with u(t)<r(t)<1 would have r(0)>=1,
+because the positive-t inequalities force liminf_(t downarrow 0)r(t)>=1.
+This contradicts r(0)<1. Thus both semicontinuity and the required
+continuous-separator assertion actually fail on these admissible data.
+
+The printed proofs express {u<c} as a countably infinite intersection
+of open compact-avoidance sets and then declare it open (T25 lines
+1816-1828; T26 lines 2194-2206). Here c=7/8 gives
+{t:u(t)<c}={0} on [0,1/8], which is not open. This computes the
+specific failed openness step rather than merely questioning an
+application of an insertion theorem.
+
+3. TAIL-REPRESENTATIVE ASSERTION AND PAIR-WINDING COUNTEREXAMPLE
+
+T26 Lemma 6.8 asserts:
+for n>=1 and g in V_n=ker(p_n), a representative gamma exists with
+gamma_k(t)=k for k<=n and gamma_m(t) outside K_(n-1) for m>n,
+where K_r is the closed disk of radius r.
+
+Use n=3. At the base configuration (1,2,3,4,5,...), fix all strands
+except strand 4. For strand 4 use the following rational polygonal
+lasso; pairs list (real part, imaginary part):
+
+ tail:
+ (4,0), (4,1), (5/4,1), (5/4,1/4);
+ square:
+ (5/4,1/4), (3/4,1/4), (3/4,-1/4), (5/4,-1/4), (5/4,1/4);
+ reversed tail back to (4,0).
+
+All intermediate points avoid the other positive integers. The square
+is positively oriented and encloses 1 but not 2 or 3. The tail and
+its reverse cancel in every winding calculation. Thus the continuous
+ordered-pair maps
+
+ (z_i)_i |-> z_4-z_1,       (z_i)_i |-> z_4-z_2
+
+to C\{0} give windings 1 and 0. Only one coordinate moves in a fixed
+compact set, so the lasso is continuous in d_Sigma. Its first three
+coordinates are constant and its class g belongs to V_3.
+
+Any representative demanded by Lemma 6.8 would have its first two
+coordinates equal to 1,2 and its fourth coordinate z(t) outside
+the closed radius-two disk. Then
+
+ (s,t) |-> z(t)-(1+s),       0<=s,t<=1,
+
+is a homotopy of loops in C\{0}, since |z(t)|>2 and 1+s lies in
+[1,2]. The two windings would therefore be equal. They are invariant
+under every based configuration homotopy through the two displayed
+continuous maps, contradicting their values 1 and 0. This refutes
+the actual representative assertion with its prescribed finite labels.
+
+The rational polygon is independently checked in
+code/teh_configuration_audit_certificate.py. No numerical winding or
+floating-point approximation enters the proof.
+
+4. AN INDEPENDENT INFINITE REALIZATION AND COMPLETENESS FAILURE
+
+The target assertion is T26 Theorem 6.14:
+g_(n+1) in g_n V_n for all n implies intersection_n(g_n V_n) nonempty.
+Its displayed metric in Definition 6.17 records the largest matching
+finite truncation by d(g,h)=2^(-(N(g,h)+1)) for distinct g,h;
+Theorem 6.18 asserts completeness for that metric.
+
+For every m>=3, let a_m be a based configuration loop moving only
+strand m along the preceding type of lasso once around 1, zero
+around 2, with all other positive-integer strands fixed. The
+same tail construction with (m,0),(m,1) in place of (4,0),(4,1)
+works. Set g_1=g_2=1 and g_n=a_3 a_4 ... a_n for n>=3.
+Then g_(n+1)=g_n a_(n+1) and a_(n+1) lies in V_n. Every g_n is
+an actual class represented by a finite concatenation of continuous
+locally finite configuration loops.
+
+We prove directly the needed restriction on any actual continuous
+configuration loop z(t), 0<=t<=1:
+
+ For each compact planar K, only finitely many labels meet K
+ at any time of the loop.
+
+Otherwise take labels m_i tending to infinity, parameters t_i
+converging to t_*, and z_(m_i)(t_i) converging to a point p of K.
+Local finiteness at t_* allows a nonnegative compactly supported
+function equal to one near p whose support contains at most the
+single limiting configuration point p. If p is absent at t_*,
+its limiting integral is zero but the integrals along t_i are
+at least one. If p is present with label j, coordinate continuity
+and the extra labels m_i give integrals at least two while the
+limiting integral is one. Each conclusion contradicts vague
+continuity. This proves the restriction without importing T26.
+
+Choose a closed disk containing both first-strand and second-strand
+tracks of z, and enlarge it slightly. All sufficiently late
+strands avoid this disk uniformly. For such an m, the formula
+
+ (s,t) |-> z_m(t)-((1-s)z_1(t)+s z_2(t))
+
+is nonzero throughout the square. It proves equality of the two
+pair windings of strand m with strands 1 and 2.
+
+A class in every g_n V_n would instead have winding 1 with strand 1
+and winding 0 with strand 2 for every m>=3, by choosing n>=m.
+This contradicts the restriction just proved. Thus the asserted
+intersection is empty. In the displayed finite-truncation formula,
+(g_n) is Cauchy because g_n^(-1)g_m lies in V_n for m>=n.
+Convergence in that formula would force the impossible common
+finite-truncation data. Consequently its claimed completeness fails.
+This argument does not require injectivity of the map to the
+finite-truncation inverse limit.
+
+The same winding data also appear in T26 Construction 4.6 and
+Proposition 4.9. The direct argument above establishes the conflict
+without relying on either source proof. It does not assert that the
+quotient topology on the topological fundamental group lacks some
+other complete compatible metric.
+
+5. FURTHER PROOF-CHECK BOUNDARY AND USABLE FINITE MAPS
+
+The infinite straightening in T26 Proposition 5.9 was also inspected.
+In its compact-support induction, for a fixed target disk the text
+first controls the supports S_k up to L, obtains an escape index M_R,
+and starts the induction at n_start=max{L,M_R,j+2}+1. The induction
+then assumes S_k avoids the target disk for every L<k<n.
+At n=n_start this already includes the intermediate earlier stages
+L+1,...,n_start-1, whose avoidance has not been established by those
+choices. This is an unproved induction input in the written argument,
+not an explicit refutation of its injectivity conclusion. A single
+globally consistent construction for all target disks would also
+have to be retained.
+
+The finite-truncation local constructions in T26 Section 3 use
+compactly supported finite-point ambient maps and give explicit
+finite-configuration bundle charts. The local formulas were read;
+they do not themselves display a lift continuous in the original
+closed-disk map-and-inverse topology of C81.
+
+C83 addresses that exact next map. Its actual evaluation source,
+operator labels, target subspace topology and explicit nonliftable
+path are all specified and proved independently. The source
+counterexamples above are not used to infer C83.
+
+SCOPE
+
+No theorem of either preprint has been imported into an accepted
+fragment. The explicit failed statements above prevent their
+displayed proof chains from supplying the remaining C12 infinite
+configuration argument. No conclusion here refutes asphericity
+of the configuration spaces themselves, and none identifies the
+general actual centralizer's positive homotopy groups.
