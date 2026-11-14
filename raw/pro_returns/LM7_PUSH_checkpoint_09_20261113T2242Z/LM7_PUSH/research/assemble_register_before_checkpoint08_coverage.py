@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+"""Create the exact statement register and the task coverage table.
+
+This is a packaging script, not a mathematical verification program.
+Statuses are read from the manuscript. Task outcomes are explicit below.
+"""
+from pathlib import Path
+import csv
+import json
+import re
+
+ROOT = Path(__file__).resolve().parent.parent
+TASKS = [
+ ('Lead 1','B.2; B.9','(a) Proved','The exclusion is false; an unramified full-section counterexample lies outside the three inherited cusp lines. The drafter\'s particular inherited toric argument is corrected.'),
+ ('Lead 2','A.5; A.17; B.7','(b) Refuted','A mixed-inertia class-two lift at 2 is explicit. Full and metabelian sections obey the proved cusp-line restriction.'),
+ ('Lead 3','A.6; A.18','(b) Refuted','An infinitely ramified noncuspidal class-two family is constructed with a complete convergence proof; its higher images are excluded.'),
+ ('Lead 4','B.4; B.5','(a) Proved','The full geometric pro-3 cyclotomic centralizer is cusp inertia for cuspidal sections and trivial for every other section.'),
+ ('Lead 5','A.1; A.2; A.13','(a) Proved','The first derived limit for the intrinsic rank-44 coefficient is explicitly nonzero.'),
+ ('A.1','A.1; A.2; A.7; A.13','(a) Proved','The finite-S complex, its integral Smith factors, localization, and the complete Milnor sequence are computed.'),
+ ('A.2','A.8; A.9; A.10','(a) Proved','All residue formulas retain the nine tangential origin cochains, the extra unramified generator, and the E36 central-coordinate sign.'),
+ ('A.3','A.7; A.8','(a) Proved','Integral local corrections must form a restricted family; every nonempty fiber is the computed rank-23 module with its finite torsion.'),
+ ('A.4','A.3; A.4','(a) Proved','An actual pair has a nonzero intrinsic obstruction with every local and finite-coefficient image zero.'),
+ ('A.5','A.11; A.12','(b) Refuted as a total evaluator','Total decision is impossible both for finite-coefficient queries and for the explicit finite-program input family with a known convergence modulus. The exact finite/certified-tail evaluator and all four requested regressions are executed; its input interface is stated explicitly.'),
+ ('A.6','A.14; A.15; A.16; A.17; A.18; A.19; A.20; A.21; A.22; A.23; A.24; A.25; A.26; A.27; A.28; A.29; A.30; A.31; A.32; A.33; A.34; A.35; A.36; A.37; A.38; A.39; A.40; A.41; A.42; A.43; A.44; B.12; B.13; B.14; B.15; B.16; B.17; B.18; B.19; B.20','(a) Proved by finite arithmetic tests','Every metabelian and marked image and fibre is determined by explicitly constructed finite arithmetic cocycle sets and their compatible kernel orbits, including infinite ramification support. Cofinal finite-rank towers, every coefficient layer and its derived limit, and both exact inherited comparison kernels are proved. An explicit integral target at 17 has the literal local cusp restriction and a class-three lift but no class-four or higher lift. The exact criterion has terminating finite stages and an infinite compatibility limit.'),
+ ('B.1','B.1; B.2; B.3; B.9','(a) Proved','All three packets in the abelian, cuspidally central, and inherited class-two coordinates are given with their origins.'),
+ ('B.2','A.5; A.6; A.17; A.18','(b) Refuted both leads','Both requested class-two assertions have complete counterexamples and proved higher-quotient restrictions.'),
+ ('B.3','B.4; B.5','(a) Proved','The centralizer criterion and precisely the cuspidal members of the full unramified family are determined.'),
+ ('B.4','B.6; B.7; B.8; B.10; B.11; B.15; B.16; B.17; B.18; B.19; B.20; A.16; A.22; A.24; A.25; A.26; A.27; A.28; A.29; A.30; A.31; A.33; A.34; A.35; A.36; A.37; A.38; A.39; A.40; A.43','(a) Proved by finite arithmetic tests','The exact image for every one-prime target is given by a terminating finite field and cocycle construction at each precision, with all earlier ramification constraints. The inverse limit of the specified kernel orbits gives every fibre and is equivalent to lifting through all nilpotent quotients. At 17 an explicit integral cocycle has the literal local cusp restriction and a class-three lift but no class-four lift; its nine-term obstruction certificate is independently verified.'),
+ ('C.1','C.11; C.12; C.13; C.14; C.15; F.1; F.2; F.3','(a) Proved with the retained arithmetic term','The residue convergence criterion is combined with finite Galois cocycle matrices and explicit compact-support cup traces over every number field. These compute the arithmetic obstruction and the complete fiber inverse limit; the initial quadratic obstruction is also evaluated.'),
+ ('C.2','C.1; C.2; C.3','(a) Proved','Restriction is injective and finite Galois descent identifies precisely the invariant classes.'),
+ ('C.3','C.3; C.6; C.8; C.9; C.10; C.16; C.17; C.18','(a) Proved','Finite algebraic cover equations evaluate every point section in all 45 central coordinates. Their exact finite conjugacy criterion determines the point image, with the E36 origin and rank-44 fiber translation. The nine cusp packets, Galois action, and rational fixed subset are explicit.'),
+ ('C.4','C.4; C.5; C.7','(b) Refuted','Neither the R2 phantom nor the constructed intrinsic phantom dies after any finite extension.'),
+ ('D.1', 'D.1; D.4; D.6; D.20; D.21; D.22; D.23; D.24; D.25; D.26; D.27; D.28; D.29; D.30; D.31; D.32; D.33; D.34; D.35; D.36; D.37; D.38; D.39; D.40; D.41; D.42; D.43; D.45; D.47; D.49; D.50; D.51', '(a) Proved', 'The complete rational leading image has dimension three for every prime ell at least five. D.50 lifts each complete pronilpotent peripheral automorphism, retaining all three actual conjugators, through every finite source. D.51 gives three literal integral Lie witnesses, their actual pro-ell realizations, the full characteristic projection square, and the matching upper bound. Every earlier chief comparison and finite obstruction is retained with its specified source.'),
+ ('D.2', 'D.2; D.4; D.6; D.7; D.8; D.20; D.22; D.23; D.24; D.25; D.26; D.27; D.28; D.29; D.30; D.31; D.32; D.33; D.34; D.35; D.36; D.38; D.44; D.46; D.48; D.50; D.52', '(a) Proved', 'The complete rational invariant metabelian leading image has dimension two for every prime ell at least five. D.52 constructs an actual full multiplier-one gentle pair with weight-nine pair coefficient X^2Y^2(X+Y)^3 and normalized derivation coefficient its negative. D.50 retains the entire normalized pro-ell pair and every actual modular-source conjugator. The Galois gamma line and this extra direction are independent. The same complete pentagon map excludes the constructed pair. All42 printed integral witness coefficients pass exact replay.'),
+ ('D.3','D.3; D.4; D.7; D.8; D.20','(a) Proved','Compatible finite braid quotients give gentle/pentagon dimensions 37/2 and leading metabelian dimensions 2/1. The integer certificate and actual Galois lower bound derive R9 in weight nine.'),
+ ('E.1','E.1; E.4','(a) Proved','Independent exact programs confirm every count, cusp equation, generation certificate, and both Smith forms.'),
+ ('E.2', 'E.2; E.5; E.7; E.8; E.9; E.10; E.11; E.12; E.13; E.14; E.15; E.16; E.20; E.22; E.23; E.24; E.25; E.26; E.27; E.28; E.29; E.31; E.33; E.36; E.37; E.38; E.41; E.42; E.43; E.44; E.45; E.46; E.47; E.49; E.50; E.51; E.48; E.52; E.53; E.55; E.56; E.54; E.57', 'OPEN: complete CM fibers', 'All 24 CM fibres survive each proved refinement through E.49--E.51. The full three-adic class-three boundary correction-image fibre is $\\mathbf Z_3^{70}$ over every one of the 432 multiplier-one sources. Four rational equations and two integral residue tests give its exact class-two projection. Its complete exponent-three image has $3^{25}$ points per source, with a specified finite nonlift surviving every change of higher class-two digits. The defined binary, prime-supported, $\\mathrm{SL}_2(\\mathbf F_5)$ and Hurwitz common families are retained. Full profinite survival remains. The full five-strand $\\mathrm{Sp}_4(\\mathbf F_3)$ test also retains all 864 points. Its complete source factors through $G_6$, its first $B_4$ target is the actual E.18 group, and three explicit simultaneous conjugators prove full $B_5$ generation for every retained word. The prime-five five-strand test retains all 432 multiplier-one points and every prescribed full boundary fibre. Its actual source of order $9000000$ has common quotient $J=A_{10}\\times_{A_2}Q_{20}$ of order $72000$ with $G_L$, retaining all three signed modular bits. The exact residual correction in the old kernels reaches $(\\mathbf Z/5)^3$, and one word gives generating maps on the full common sources and joint braid targets. The prime-seven source also retains this entire family and the prime-five source. Its exact residual correction is $\\mathrm{SL}_2(\\mathbf F_7)\\times(\\mathbf Z/7)^3$, its maximum common quotient with the full old boundary source is $A_{14}$, and the complete joint four- and five-strand targets are generated by the same corrected word. E.48 now retains all864 old points through the full $A_6$ Ferrari source, including its complete ternary and binary solvable layers, exact positive Kummer label, all centralizer choices and actual joint-source generation. E.52 identifies the full integral symplectic source at every modulus prime to6 and its common inverse-limit lower-central residual; its simultaneous peripheral comparison with the remaining sources is the next step. E.53 determines the exact uniform common source $G_L\\times_{\\mathcal J_5}G_R$, including the central sign and abelian kernel. Its full residual correction retains the old small-prime and level-five/seven values through the specified congruence subgroups. E.55 now retains the complete 432-point multiplier-one family and every prescribed full boundary fibre through all these congruence levels with one profinite word and the same actual Galois value. Its maximum common source quotients and both full word fibres are explicit. E.56 proves the exact integral four- and five-strand targets and their entire products with the preceding targets, including every congruence kernel. E.54 proves the complete joint A6 and signed source, its exact common quotient of order1166400000, perfect common residual and full retained boundary fibres. All864 finite points and all432 multiplier-one full boundary families survive. The joint four-strand target has the same specified solvable quotient of order96. Its eight complete chain and twenty quotient audits pass. E.57 retains every whole E.55 word, for all432 multiplier-one points and every full admitted boundary parameter, through the full A6 source and the entire congruence system. The actual common quotient remains the signed level-five quotient, and the exact residual correction, common source fibres and full target products are proved. All four new certificate steps, including219684 complete target relations, pass isolated replay. Arbitrary finite sources remain unresolved.'),
+ ('E.3', 'E.3; D.5; E.6; E.17; E.18; E.19; E.21; E.22; E.23; E.24; E.25; E.26; E.27; E.28; E.29; E.30; E.31; E.32; E.33; E.34; E.35; E.36; E.37; E.38; E.39; E.40; E.41; E.42; E.43; E.44; E.45; E.46; E.47; E.49; E.50; E.51; E.48; E.52; E.53; E.55; E.56; E.54; E.57', 'OPEN: full GT image', "All 864 degree-six points pass the retained pentagons, braid and twist relations. The actual $\\mathrm{SL}_2(\\mathbf F_5)$ source maps onto the five-point Hurwitz source; the same word retains both through E.47's complete integral class-three families at multiplier one. Their full common four-strand target is $(T_{23}\\times_{S_L}T_L)\\times A_{96}$. The $A_6$ kernel/outer tests also retain all 864 points in their stated common sources. Compatibility through every finite quotient remains. The full five-strand $\\mathrm{Sp}_4(\\mathbf F_3)$ test also retains all 864 points. Its complete source factors through $G_6$, its first $B_4$ target is the actual E.18 group, and three explicit simultaneous conjugators prove full $B_5$ generation for every retained word. The prime-five five-strand test retains all 432 multiplier-one points and every prescribed full boundary fibre. Its actual source of order $9000000$ has common quotient $J=A_{10}\\times_{A_2}Q_{20}$ of order $72000$ with $G_L$, retaining all three signed modular bits. The exact residual correction in the old kernels reaches $(\\mathbf Z/5)^3$, and one word gives generating maps on the full common sources and joint braid targets. The prime-seven source also retains this entire family and the prime-five source. Its exact residual correction is $\\mathrm{SL}_2(\\mathbf F_7)\\times(\\mathbf Z/7)^3$, its maximum common quotient with the full old boundary source is $A_{14}$, and the complete joint four- and five-strand targets are generated by the same corrected word. E.48 now retains all864 old points through the full $A_6$ Ferrari source, including its complete ternary and binary solvable layers, exact positive Kummer label, all centralizer choices and actual joint-source generation. E.52 identifies the full integral symplectic source at every modulus prime to6 and its common inverse-limit lower-central residual; its simultaneous peripheral comparison with the remaining sources is the next step. E.53 determines the exact uniform common source $G_L\\times_{\\mathcal J_5}G_R$, including the central sign and abelian kernel. Its full residual correction retains the old small-prime and level-five/seven values through the specified congruence subgroups. E.55 now retains the complete 432-point multiplier-one family and every prescribed full boundary fibre through all these congruence levels with one profinite word and the same actual Galois value. Its maximum common source quotients and both full word fibres are explicit. E.56 proves the exact integral four- and five-strand targets and their entire products with the preceding targets, including every congruence kernel. E.54 proves the complete joint A6 and signed source, its exact common quotient of order1166400000, perfect common residual and full retained boundary fibres. All864 finite points and all432 multiplier-one full boundary families survive. The joint four-strand target has the same specified solvable quotient of order96. Its eight complete chain and twenty quotient audits pass. E.57 retains every whole E.55 word, for all432 multiplier-one points and every full admitted boundary parameter, through the full A6 source and the entire congruence system. The actual common quotient remains the signed level-five quotient, and the exact residual correction, common source fibres and full target products are proved. All four new certificate steps, including219684 complete target relations, pass isolated replay. Arbitrary finite sources remain unresolved."),
+ ('F.1','F.1; F.2; F.3; F.4','(a), with a corrected order test','The exact global correction and vanishing equivalences are proved over every number field, including 2 and real places. Orders must be taken after quotienting the maximal divisible subgroup.'),
+ ('F.2','F.5; A.22','(a) Proved for the specified finite-rank coefficients','Vanishing is computed for the Tate, cusp, elliptic, intrinsic, exterior-square, and finite-rank higher graded coefficient modules.'),
+ ('F.3','F.9; F.10; F.11; F.12','(a) Proved','The genuine integral action, tame equations including 2, obstruction group, Milnor summands, and section fibers are determined.'),
+ ('F.4','F.20; F.21; F.22; F.23; F.24; F.25; F.26; F.27; F.28; F.29; F.30; F.31; F.32','(a) Proved','The three full profinite fixed groups are the identity, the actual full cusp inertia group, and the identity. The proof applies valuation uniqueness to the actual cyclotomic kernel, identifies its fixed primitive valuation, and recovers the exact geometric stabilizer. All fixed-lift images follow through the specified quotient maps.'),
+]
+
+def arg(text, start):
+    assert text[start] == '{'
+    depth = 1
+    pos = start + 1
+    begin = pos
+    while depth:
+        if text[pos] == '{' and text[pos-1] != '\\': depth += 1
+        elif text[pos] == '}' and text[pos-1] != '\\': depth -= 1
+        pos += 1
+    return text[begin:pos-1], pos
+
+active_sources, pending = set(), [ROOT/'LM7_PUSH_paper.tex']
+while pending:
+    source = pending.pop()
+    if not source.suffix:
+        source = source.with_suffix('.tex')
+    if source in active_sources:
+        continue
+    assert source.exists(), source
+    active_sources.add(source)
+    names = re.findall(r'\\(?:InputIfFileExists|input)\{([^}]+)\}', source.read_text())
+    pending.extend(ROOT/name for name in names)
+
+rows = []
+for file in sorted(p for p in active_sources if p.is_relative_to(ROOT/'sections')):
+    text = file.read_text()
+    positions = [m.start() for m in re.finditer(re.escape(r'\begin{statement}'), text)]
+    for k, start in enumerate(positions):
+        pos = start + len(r'\begin{statement}')
+        ident, pos = arg(text, pos)
+        status, pos = arg(text, pos)
+        title, pos = arg(text, pos)
+        end = text.index(r'\end{statement}', pos)
+        following = positions[k+1] if k+1 < len(positions) else len(text)
+        body = text[pos:end].strip()
+        proof = text[end:following]
+        rows.append({'id':ident, 'statement':title+'. '+body,
+                     'status':status, 'where_proved':str(file.relative_to(ROOT)),
+                     '_proof':proof, '_title':title})
+ids = {r['id'] for r in rows}
+assert len(ids) == len(rows), 'duplicate statement id'
+for row in rows:
+    refs = sorted(set(re.findall(r'\b[A-F]\.\d+\b', row['_proof']+row['statement'])) & ids)
+    refs = [r for r in refs if r != row['id']]
+    citations = re.findall(r'\\cite(?:\[[^]]*\])?\{([^}]+)\}', row['_proof'])
+    row['depends_on'] = '; '.join(refs + citations)
+    row['answers (lead or task)'] = '; '.join(t[0] for t in TASKS if row['id'] in t[1].split('; ')) or 'Supporting result in Part '+row['id'][0]
+    row['notes'] = ('Unresolved statement; no completion certified.' if row['status']=='Open'
+                    else 'Read the statement and proof for its exact scope; task-level completeness is recorded separately.')
+    del row['_proof']; del row['_title']
+rows.sort(key=lambda r:(r['id'].split('.')[0], int(r['id'].split('.')[1])))
+with (ROOT/'LM7_PUSH_results.csv').open('w',newline='') as f:
+    writer=csv.DictWriter(f,fieldnames=['id','statement','status','where_proved','depends_on','answers (lead or task)','notes'])
+    writer.writeheader();writer.writerows(rows)
+
+ledger=[{'task':a,'statements':b,'outcome':c,'state':d} for a,b,c,d in TASKS]
+(ROOT/'research/task_ledger.json').write_text(json.dumps(ledger,indent=2)+'\n')
+table='| Lead or task | Statements | Outcome or state reached |\n|---|---|---|\n'
+for a,b,c,d in TASKS:
+    table+=f'| {a} | {b} | **{c}.** {d} |\n'
+tail=(ROOT/'research/report_body.md').read_text()
+(ROOT/'LM7_PUSH_report.md').write_text('INCOMPLETE\n\n'+table+'\n'+tail)
+
+def tex_escape(s):
+    return (s.replace('&',r'\&').replace('_',r'\_').replace('%',r'\%')
+             .replace('^',r'\textasciicircum{}'))
+
+def tex_text(s):
+    # Task-state strings use paired dollar signs only for explicit mathematics.
+    pieces = re.split(r'(\$[^$]*\$)', s)
+    return ''.join(p if p.startswith('$') else tex_escape(p) for p in pieces)
+coverage='The following table records task-level scope. A proved supporting statement does not certify an unresolved task.\n'
+coverage+=r'\begin{longtable}{@{}p{1.1cm}p{3.0cm}p{10.3cm}@{}}'+'\n'
+coverage+=r'\toprule Item & Statements & State \\ \midrule\endhead'+'\n'
+for a,b,c,d in TASKS:
+    coverage+=tex_escape(a)+' & '+tex_escape(b)+' & '+tex_text(c+'. '+d)+r' \\'+'\n'
+coverage+=r'\bottomrule\end{longtable}'+'\n'
+(ROOT/'sections/coverage.tex').write_text(coverage)
+
+# Merge complete BibTeX entries by key; each fragment is an audited source.
+files=[ROOT/'LM7_PUSH_references.bib',ROOT/'research/BC_references.bib',ROOT/'research/DE_references.bib']
+entries={}
+for file in files:
+    text=file.read_text()
+    for m in re.finditer(r'@\w+\{([^,]+),',text):
+        _,end=arg(text,text.index('{',m.start()))
+        entries[m.group(1)]=text[m.start():end]
+assert all(re.search(r'\b(?:unverified|verified)\b',v) for v in entries.values())
+(ROOT/'LM7_PUSH_references.bib').write_text('\n\n'.join(entries.values())+'\n')
+print(json.dumps({'numbered_statements':len(rows),'coverage_rows':len(TASKS),
+                  'active_tex_source_count':len(active_sources),
+                  'statuses':{s:sum(r['status']==s for r in rows) for s in sorted({r['status'] for r in rows})},
+                  'bibliography_entries':len(entries)},indent=2))

@@ -1,0 +1,1878 @@
+{
+  "status": "PASS_COMPLETE_ISOLATED_E63_REPLAY",
+  "mode": "complete",
+  "manifest_sha256": "2544ec463ef4885ea61d76fa476c43cc60fdf2be367b6d2af4d2fd49d108d7a8",
+  "protected_original_count": 665,
+  "steps": [
+    {
+      "label": "compile_engine",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "de_a6_schreier.cpp",
+        "-o",
+        "de_a6_schreier_fast"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [],
+      "seconds": 2.537
+    },
+    {
+      "label": "candidate_small",
+      "command": [
+        "python",
+        "a_cm_signed_common_candidate.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "a_cm_signed_common_candidate.json",
+        "a_cm_signed_common_candidate.npz"
+      ],
+      "seconds": 0.491
+    },
+    {
+      "label": "candidate_GL",
+      "command": [
+        "python",
+        "a_cm_signed_common_GL.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "a_cm_signed_common_GL.json",
+        "a_cm_signed_common_GL.npz"
+      ],
+      "seconds": 142.13
+    },
+    {
+      "label": "bridge_build",
+      "command": [
+        "python",
+        "de_a6_double_bridge_build.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_bridge_build.json",
+        "de_a6_double_bridge.cpp"
+      ],
+      "seconds": 0.297
+    },
+    {
+      "label": "compile_bridge",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "de_a6_double_bridge.cpp",
+        "-o",
+        "e63_bridge"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [],
+      "seconds": 3.534
+    },
+    {
+      "label": "bridge_complete",
+      "command": [
+        "./e63_bridge",
+        "e_a6_double_kernel_model_root.bin",
+        "e_a6_double_central_model_root.bin",
+        "de_a6_gl_central_model.bin",
+        "de_a6_schreier_residual_derived.bin",
+        "de_a6_double_bridge.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_bridge.json"
+      ],
+      "seconds": 384.557
+    },
+    {
+      "label": "bridge_independent",
+      "command": [
+        "python",
+        "de_a6_double_bridge_replay.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_bridge_replay.json",
+        "de_a6_double_bridge_replay.npz"
+      ],
+      "seconds": 14.196
+    },
+    {
+      "label": "signed_prepare",
+      "command": [
+        "python",
+        "de_a6_double_signed_prepare.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_signed_prepare.json",
+        "de_a6_double_signed_prepare.npz",
+        "de_a6_double_signed_upper.bin",
+        "de_a6_double_signed_gl_core.hpp",
+        "de_a6_double_signed_lifted.hpp"
+      ],
+      "seconds": 0.591
+    },
+    {
+      "label": "compile_signed",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "de_a6_double_signed.cpp",
+        "-o",
+        "e63_signed"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [],
+      "seconds": 3.761
+    },
+    {
+      "label": "signed_complete",
+      "command": [
+        "./e63_signed",
+        "e_a6_double_kernel_model_root.bin",
+        "de_a6_gl_model.bin",
+        "de_a6_double_signed_upper.bin",
+        "de_a6_a5_common_source.bin",
+        "de_a6_double_signed.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_signed.json"
+      ],
+      "seconds": 690.929
+    },
+    {
+      "label": "signed_independent",
+      "command": [
+        "python",
+        "de_a6_double_signed_replay.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_signed_replay.json",
+        "de_a6_double_signed_replay.npz"
+      ],
+      "seconds": 10.591
+    },
+    {
+      "label": "candidate_prepare",
+      "command": [
+        "python",
+        "de_a6_double_candidate_prepare.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_candidate_prepare.json",
+        "de_a6_double_candidate_model.bin",
+        "de_a6_double_candidate_lifted.hpp"
+      ],
+      "seconds": 0.269
+    },
+    {
+      "label": "compile_candidate",
+      "command": [
+        "g++",
+        "-O3",
+        "-std=c++17",
+        "de_a6_double_candidate.cpp",
+        "-o",
+        "e63_candidate"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [],
+      "seconds": 3.454
+    },
+    {
+      "label": "candidate_complete",
+      "command": [
+        "./e63_candidate",
+        "e_a6_double_kernel_model_root.bin",
+        "de_a6_double_candidate_model.bin",
+        "de_a6_schreier_full_ordered.bin",
+        "de_a6_double_candidate.json"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_candidate.json"
+      ],
+      "seconds": 363.348
+    },
+    {
+      "label": "candidate_independent",
+      "command": [
+        "python",
+        "de_a6_double_candidate_replay.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_candidate_replay.json",
+        "de_a6_double_candidate_replay.npz"
+      ],
+      "seconds": 3.701
+    },
+    {
+      "label": "deep_words",
+      "command": [
+        "python",
+        "de_a6_double_deep_words.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "de_a6_double_deep_words.json",
+        "de_a6_double_deep_words.npz"
+      ],
+      "seconds": 5.718
+    },
+    {
+      "label": "target_old_maps",
+      "command": [
+        "python",
+        "e_a6_double_target_old_maps_root.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "e_a6_double_target_old_maps_root.json"
+      ],
+      "seconds": 0.944
+    },
+    {
+      "label": "target_independent",
+      "command": [
+        "python",
+        "e_a6_double_target_certificate_root.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "e_a6_double_target_certificate_root.json",
+        "e_a6_double_target_certificate_root.npz"
+      ],
+      "seconds": 1.644
+    },
+    {
+      "label": "target_both_covers",
+      "command": [
+        "python",
+        "e_a6_double_triple_target_root.py"
+      ],
+      "status": "PASS",
+      "exit_code": 0,
+      "exact_outputs": [
+        "e_a6_double_triple_target_root.json"
+      ],
+      "seconds": 0.028
+    }
+  ],
+  "verified_input_provenance": [
+    {
+      "record": "original:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "original:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a5_model.py",
+      "actual_relative_path": "code/de_ferrari_a5_model.py",
+      "sha256": "2e24b2dc4adf587c239c8f1137b5c3cd571b2aec8c9fb5b51102669e9950bbd8"
+    },
+    {
+      "record": "original:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a6_source_data.py",
+      "actual_relative_path": "code/de_ferrari_a6_source_data.py",
+      "sha256": "91af1a0a6e6c4c617ca9c56a147726d811c15283b5ed577c2c37995a638c1a04"
+    },
+    {
+      "record": "original:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_N.json",
+      "actual_relative_path": "code/de_ferrari_sl2_5_N.json",
+      "sha256": "914a7ff179c5e97407748258c7be4860720b965069cb589bfb14e5c20b3c24b2"
+    },
+    {
+      "record": "original:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_common_quotient.npz",
+      "actual_relative_path": "code/de_a6_gl_common_quotient.npz",
+      "sha256": "85230954da0c1006eb13ba35bfec71b5d8682dc326a597bec468e0bd26b9761c"
+    },
+    {
+      "record": "original:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_common_quotient.json",
+      "actual_relative_path": "code/de_a6_gl_common_quotient.json",
+      "sha256": "6438e3744918cee5e3630145082c90006d99767f8fb9f210457b6cc1d31d7a7c"
+    },
+    {
+      "record": "original:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_schreier.cpp",
+      "actual_relative_path": "code/de_a6_schreier.cpp",
+      "sha256": "1446a8b86d6412544db6b254c2fa3b073b536d8cdadfd49eb86c5382716b9b32"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a5_model.py",
+      "actual_relative_path": "code/de_ferrari_a5_model.py",
+      "sha256": "2e24b2dc4adf587c239c8f1137b5c3cd571b2aec8c9fb5b51102669e9950bbd8"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a6_source_data.py",
+      "actual_relative_path": "code/de_ferrari_a6_source_data.py",
+      "sha256": "91af1a0a6e6c4c617ca9c56a147726d811c15283b5ed577c2c37995a638c1a04"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_N.json",
+      "actual_relative_path": "code/de_ferrari_sl2_5_N.json",
+      "sha256": "914a7ff179c5e97407748258c7be4860720b965069cb589bfb14e5c20b3c24b2"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_common_quotient.npz",
+      "actual_relative_path": "code/de_a6_gl_common_quotient.npz",
+      "sha256": "85230954da0c1006eb13ba35bfec71b5d8682dc326a597bec468e0bd26b9761c"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_common_quotient.json",
+      "actual_relative_path": "code/de_a6_gl_common_quotient.json",
+      "sha256": "6438e3744918cee5e3630145082c90006d99767f8fb9f210457b6cc1d31d7a7c"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_candidate.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_schreier.cpp",
+      "actual_relative_path": "code/de_a6_schreier.cpp",
+      "sha256": "1446a8b86d6412544db6b254c2fa3b073b536d8cdadfd49eb86c5382716b9b32"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.json",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.json",
+      "sha256": "3ecad5c8cd90964e3aaecc34e5c02646439024ef2d4bef9d18c10b70d86229e3"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.npz",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.npz",
+      "sha256": "f42879ad33c1b074f3b5572dd7b85aa6ea655f3391668493888f8a8a5823a0d0"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_source.json",
+      "actual_relative_path": "code/de_ferrari_sl2_5_source.json",
+      "sha256": "0ff478ef7e4bd9d99eb20f29b83c29311b906cd76c3b4a7e323b733d5fc5aa51"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_source.npz",
+      "actual_relative_path": "code/de_ferrari_sl2_5_source.npz",
+      "sha256": "13fb66661b492fc6a83378fd875c91a0890e79a03de72fd84cc6473a823d52aa"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a5_source_compressed.json",
+      "actual_relative_path": "code/de_ferrari_a5_source_compressed.json",
+      "sha256": "f9d6d3cd9959ae342fc3de847e286e331717a0b435c615f63b4ed788317d187c"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a5_source_compressed.npz",
+      "actual_relative_path": "code/de_ferrari_a5_source_compressed.npz",
+      "sha256": "e8c0a75db42b2f6793ae359ca880e4ea366283e1495284bc8991d6bb737845a8"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_A5_factors.json",
+      "actual_relative_path": "code/de_a6_gl_A5_factors.json",
+      "sha256": "de1bfca6b5ff191beabe81bd97a8904a5c51f78c6b5f089aeed4d0336b95d7db"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_lifted_schreier_kernel.py",
+      "actual_relative_path": "code/de_lifted_schreier_kernel.py",
+      "sha256": "3813e214ea06d155a545397d7fffa2675c1d102e4827d309fed0cdc8cf234a5e"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a6_source_data.py",
+      "actual_relative_path": "code/de_ferrari_a6_source_data.py",
+      "sha256": "91af1a0a6e6c4c617ca9c56a147726d811c15283b5ed577c2c37995a638c1a04"
+    },
+    {
+      "record": "original:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.json",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.json",
+      "sha256": "7ae67b9a9f15910d0f00a9dbc873ae97b0ba018945a74b4111543e042b370ae3"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.npz",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.npz",
+      "sha256": "f42879ad33c1b074f3b5572dd7b85aa6ea655f3391668493888f8a8a5823a0d0"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_source.json",
+      "actual_relative_path": "code/de_ferrari_sl2_5_source.json",
+      "sha256": "0ff478ef7e4bd9d99eb20f29b83c29311b906cd76c3b4a7e323b733d5fc5aa51"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_source.npz",
+      "actual_relative_path": "code/de_ferrari_sl2_5_source.npz",
+      "sha256": "13fb66661b492fc6a83378fd875c91a0890e79a03de72fd84cc6473a823d52aa"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a5_source_compressed.json",
+      "actual_relative_path": "code/de_ferrari_a5_source_compressed.json",
+      "sha256": "f9d6d3cd9959ae342fc3de847e286e331717a0b435c615f63b4ed788317d187c"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a5_source_compressed.npz",
+      "actual_relative_path": "code/de_ferrari_a5_source_compressed.npz",
+      "sha256": "e8c0a75db42b2f6793ae359ca880e4ea366283e1495284bc8991d6bb737845a8"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_A5_factors.json",
+      "actual_relative_path": "code/de_a6_gl_A5_factors.json",
+      "sha256": "de1bfca6b5ff191beabe81bd97a8904a5c51f78c6b5f089aeed4d0336b95d7db"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_lifted_schreier_kernel.py",
+      "actual_relative_path": "code/de_lifted_schreier_kernel.py",
+      "sha256": "3813e214ea06d155a545397d7fffa2675c1d102e4827d309fed0cdc8cf234a5e"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_a6_source_data.py",
+      "actual_relative_path": "code/de_ferrari_a6_source_data.py",
+      "sha256": "91af1a0a6e6c4c617ca9c56a147726d811c15283b5ed577c2c37995a638c1a04"
+    },
+    {
+      "record": "regenerated:a_cm_signed_common_GL.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "original:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_root.cpp",
+      "actual_relative_path": "code/e_a6_double_central_root.cpp",
+      "sha256": "50b75d43d1af2d7856402d1f64cfa8bbb132455a3cd88573a0a55877b366a588"
+    },
+    {
+      "record": "original:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_model.bin",
+      "actual_relative_path": "code/de_a6_gl_central_model.bin",
+      "sha256": "9b1e9c4586ce92e5d33c8a193e6a8070fbeb95e8b5b40cdb6e231e6e92194175"
+    },
+    {
+      "record": "original:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_prepare.npz",
+      "actual_relative_path": "code/de_a6_gl_central_prepare.npz",
+      "sha256": "32259e681837466ce1a27c7b3e6f63b5f0583c636777a9cb6c2d59934564f12b"
+    },
+    {
+      "record": "original:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_model_root.bin",
+      "actual_relative_path": "code/e_a6_double_central_model_root.bin",
+      "sha256": "e4cf2e61f54b518f4a33924860b1f1e102e5cac63214cdb628726fae536a3a04"
+    },
+    {
+      "record": "original:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_model_root.bin",
+      "actual_relative_path": "code/e_a6_double_kernel_model_root.bin",
+      "sha256": "f6fb6d18c8f7798c73417b9cd0f3bee2f7a05ab9b7f0947dbae0cd1b17d7ac2c"
+    },
+    {
+      "record": "original:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_schreier_residual_derived.bin",
+      "actual_relative_path": "code/de_a6_schreier_residual_derived.bin",
+      "sha256": "e5b314a28cc03483efd66ac21afb86a6ba8fb521abbe3ceef091b489a9ceb840"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_root.cpp",
+      "actual_relative_path": "code/e_a6_double_central_root.cpp",
+      "sha256": "50b75d43d1af2d7856402d1f64cfa8bbb132455a3cd88573a0a55877b366a588"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_model.bin",
+      "actual_relative_path": "code/de_a6_gl_central_model.bin",
+      "sha256": "9b1e9c4586ce92e5d33c8a193e6a8070fbeb95e8b5b40cdb6e231e6e92194175"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_prepare.npz",
+      "actual_relative_path": "code/de_a6_gl_central_prepare.npz",
+      "sha256": "32259e681837466ce1a27c7b3e6f63b5f0583c636777a9cb6c2d59934564f12b"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_model_root.bin",
+      "actual_relative_path": "code/e_a6_double_central_model_root.bin",
+      "sha256": "e4cf2e61f54b518f4a33924860b1f1e102e5cac63214cdb628726fae536a3a04"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_model_root.bin",
+      "actual_relative_path": "code/e_a6_double_kernel_model_root.bin",
+      "sha256": "f6fb6d18c8f7798c73417b9cd0f3bee2f7a05ab9b7f0947dbae0cd1b17d7ac2c"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_build.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_schreier_residual_derived.bin",
+      "actual_relative_path": "code/de_a6_schreier_residual_derived.bin",
+      "sha256": "e5b314a28cc03483efd66ac21afb86a6ba8fb521abbe3ceef091b489a9ceb840"
+    },
+    {
+      "record": "original:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge.json",
+      "actual_relative_path": "code/de_a6_double_bridge.json",
+      "sha256": "e756ae13d7eda50e948a450ee98d1841b4403584a0c073da7c83ec14ef89bfab"
+    },
+    {
+      "record": "original:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_prepare_root.npz",
+      "actual_relative_path": "code/e_a6_double_central_prepare_root.npz",
+      "sha256": "1f0f9e0906ec8e09f322b2abeb9558612214fb4e9e00939684bc7e89cebd749e"
+    },
+    {
+      "record": "original:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "original:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_central_replay_root.npz",
+      "sha256": "dc85f0ac1b8f2928aa7fae793659e4c67a030ee1dcaa040eaf31cd0766a238f2"
+    },
+    {
+      "record": "original:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_prepare.npz",
+      "actual_relative_path": "code/de_a6_gl_central_prepare.npz",
+      "sha256": "32259e681837466ce1a27c7b3e6f63b5f0583c636777a9cb6c2d59934564f12b"
+    },
+    {
+      "record": "original:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge.cpp",
+      "actual_relative_path": "code/de_a6_double_bridge.cpp",
+      "sha256": "284011e4d294838b91145dc5fbf68dde2e300a4ea09c15a1e65c3389c82b1f6d"
+    },
+    {
+      "record": "original:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge_build.py",
+      "actual_relative_path": "code/de_a6_double_bridge_build.py",
+      "sha256": "a471045aee182315dcf6e6e167b68622bd83e0a1258d1501e827604c58465c16"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge.json",
+      "actual_relative_path": "code/de_a6_double_bridge.json",
+      "sha256": "88a00c07d9c97d1269ba2c44a2d955dfaa9aeb553e4fac4178a7529e93fe9c63"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_prepare_root.npz",
+      "actual_relative_path": "code/e_a6_double_central_prepare_root.npz",
+      "sha256": "1f0f9e0906ec8e09f322b2abeb9558612214fb4e9e00939684bc7e89cebd749e"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_central_replay_root.npz",
+      "sha256": "dc85f0ac1b8f2928aa7fae793659e4c67a030ee1dcaa040eaf31cd0766a238f2"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_prepare.npz",
+      "actual_relative_path": "code/de_a6_gl_central_prepare.npz",
+      "sha256": "32259e681837466ce1a27c7b3e6f63b5f0583c636777a9cb6c2d59934564f12b"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge.cpp",
+      "actual_relative_path": "code/de_a6_double_bridge.cpp",
+      "sha256": "284011e4d294838b91145dc5fbf68dde2e300a4ea09c15a1e65c3389c82b1f6d"
+    },
+    {
+      "record": "regenerated:de_a6_double_bridge_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge_build.py",
+      "actual_relative_path": "code/de_a6_double_bridge_build.py",
+      "sha256": "a471045aee182315dcf6e6e167b68622bd83e0a1258d1501e827604c58465c16"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel_replay.npz",
+      "actual_relative_path": "code/de_a6_gl_kernel_replay.npz",
+      "sha256": "34ed9839b004e690015445f65adaee9e30f01e22db070bc9cf3b97d80141a2df"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_a5_common_source.npz",
+      "actual_relative_path": "code/de_a6_a5_common_source.npz",
+      "sha256": "8dc28770f5fb2029a0d38e9df1ea6545d939b695543f3a5148478920b6bdfa08"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_a5_common_source.json",
+      "actual_relative_path": "code/de_a6_a5_common_source.json",
+      "sha256": "7cefe3d125b1f305fe01df43c82bfe87c65fdfbdbd8fc62a0ba727da2d3e5d2f"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_source_root.npz",
+      "actual_relative_path": "code/e_a6_double_source_root.npz",
+      "sha256": "b813258ab315219555232c7684cf2f6fa79fbbcf28f02cfc4ef6de4bf40d76d4"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel.cpp",
+      "actual_relative_path": "code/de_a6_gl_kernel.cpp",
+      "sha256": "fecfc93b6f293229f5dd1fc681f8cde549586cc22a8667c40fd9e263f8f1a780"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_core_root.hpp",
+      "actual_relative_path": "code/e_a6_double_core_root.hpp",
+      "sha256": "05865e570a5079d398344ea4bc4e0a75116cbdc15f76526ddff8bf81a8b46df9"
+    },
+    {
+      "record": "original:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_schreier.cpp",
+      "actual_relative_path": "code/de_a6_schreier.cpp",
+      "sha256": "1446a8b86d6412544db6b254c2fa3b073b536d8cdadfd49eb86c5382716b9b32"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel_replay.npz",
+      "actual_relative_path": "code/de_a6_gl_kernel_replay.npz",
+      "sha256": "34ed9839b004e690015445f65adaee9e30f01e22db070bc9cf3b97d80141a2df"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_a5_common_source.npz",
+      "actual_relative_path": "code/de_a6_a5_common_source.npz",
+      "sha256": "8dc28770f5fb2029a0d38e9df1ea6545d939b695543f3a5148478920b6bdfa08"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_a5_common_source.json",
+      "actual_relative_path": "code/de_a6_a5_common_source.json",
+      "sha256": "7cefe3d125b1f305fe01df43c82bfe87c65fdfbdbd8fc62a0ba727da2d3e5d2f"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_source_root.npz",
+      "actual_relative_path": "code/e_a6_double_source_root.npz",
+      "sha256": "b813258ab315219555232c7684cf2f6fa79fbbcf28f02cfc4ef6de4bf40d76d4"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel.cpp",
+      "actual_relative_path": "code/de_a6_gl_kernel.cpp",
+      "sha256": "fecfc93b6f293229f5dd1fc681f8cde549586cc22a8667c40fd9e263f8f1a780"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_core_root.hpp",
+      "actual_relative_path": "code/e_a6_double_core_root.hpp",
+      "sha256": "05865e570a5079d398344ea4bc4e0a75116cbdc15f76526ddff8bf81a8b46df9"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_schreier.cpp",
+      "actual_relative_path": "code/de_a6_schreier.cpp",
+      "sha256": "1446a8b86d6412544db6b254c2fa3b073b536d8cdadfd49eb86c5382716b9b32"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed.json",
+      "actual_relative_path": "code/de_a6_double_signed.json",
+      "sha256": "3e9036972d43b26c9b6a6056aa78c53ee679fff4ea8b6b49df9d18ebdfd2c028"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_prepare.npz",
+      "actual_relative_path": "code/de_a6_double_signed_prepare.npz",
+      "sha256": "5b624b4953213bf68bdfef6473496b1fc2fd0de39974f076d6466e798ccf1a12"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel_replay.npz",
+      "actual_relative_path": "code/de_a6_gl_kernel_replay.npz",
+      "sha256": "34ed9839b004e690015445f65adaee9e30f01e22db070bc9cf3b97d80141a2df"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_a5_common_source.npz",
+      "actual_relative_path": "code/de_a6_a5_common_source.npz",
+      "sha256": "8dc28770f5fb2029a0d38e9df1ea6545d939b695543f3a5148478920b6bdfa08"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge_replay.npz",
+      "actual_relative_path": "code/de_a6_double_bridge_replay.npz",
+      "sha256": "9e69eec119f6b3212c53a232377825725cb351b26e594dcc38e902f20c9e05d8"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_central_replay_root.npz",
+      "sha256": "dc85f0ac1b8f2928aa7fae793659e4c67a030ee1dcaa040eaf31cd0766a238f2"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed.cpp",
+      "actual_relative_path": "code/de_a6_double_signed.cpp",
+      "sha256": "149813bf49be9116b36abad4504525f3add221af60deba78cc91e267e4c0476d"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_gl_core.hpp",
+      "actual_relative_path": "code/de_a6_double_signed_gl_core.hpp",
+      "sha256": "ebd354e6f59d9e2ea6d165a0832777f4c1c06ccb34dadbd00ddca381ced44530"
+    },
+    {
+      "record": "original:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_lifted.hpp",
+      "actual_relative_path": "code/de_a6_double_signed_lifted.hpp",
+      "sha256": "ea6de55d51065f6b99f42cbb2e65b32016485dc0f21e546f03d7005ee6892be2"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed.json",
+      "actual_relative_path": "code/de_a6_double_signed.json",
+      "sha256": "ec0cebf791f160856733f94719222251b2016f1661e6df66e5262b954094c1df"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_prepare.npz",
+      "actual_relative_path": "code/de_a6_double_signed_prepare.npz",
+      "sha256": "5b624b4953213bf68bdfef6473496b1fc2fd0de39974f076d6466e798ccf1a12"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel_replay.npz",
+      "actual_relative_path": "code/de_a6_gl_kernel_replay.npz",
+      "sha256": "34ed9839b004e690015445f65adaee9e30f01e22db070bc9cf3b97d80141a2df"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_a5_common_source.npz",
+      "actual_relative_path": "code/de_a6_a5_common_source.npz",
+      "sha256": "8dc28770f5fb2029a0d38e9df1ea6545d939b695543f3a5148478920b6bdfa08"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge_replay.npz",
+      "actual_relative_path": "code/de_a6_double_bridge_replay.npz",
+      "sha256": "9e69eec119f6b3212c53a232377825725cb351b26e594dcc38e902f20c9e05d8"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_central_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_central_replay_root.npz",
+      "sha256": "dc85f0ac1b8f2928aa7fae793659e4c67a030ee1dcaa040eaf31cd0766a238f2"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed.cpp",
+      "actual_relative_path": "code/de_a6_double_signed.cpp",
+      "sha256": "149813bf49be9116b36abad4504525f3add221af60deba78cc91e267e4c0476d"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_gl_core.hpp",
+      "actual_relative_path": "code/de_a6_double_signed_gl_core.hpp",
+      "sha256": "ebd354e6f59d9e2ea6d165a0832777f4c1c06ccb34dadbd00ddca381ced44530"
+    },
+    {
+      "record": "regenerated:de_a6_double_signed_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_lifted.hpp",
+      "actual_relative_path": "code/de_a6_double_signed_lifted.hpp",
+      "sha256": "ea6de55d51065f6b99f42cbb2e65b32016485dc0f21e546f03d7005ee6892be2"
+    },
+    {
+      "record": "original:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.json",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.json",
+      "sha256": "3ecad5c8cd90964e3aaecc34e5c02646439024ef2d4bef9d18c10b70d86229e3"
+    },
+    {
+      "record": "original:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.npz",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.npz",
+      "sha256": "f42879ad33c1b074f3b5572dd7b85aa6ea655f3391668493888f8a8a5823a0d0"
+    },
+    {
+      "record": "original:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_A6_factors.json",
+      "actual_relative_path": "code/de_a6_gl_A6_factors.json",
+      "sha256": "0dfe4cedebcd9a2531b00a58b0b5c0c5de15625b3c1cc37acea932acefc933c8"
+    },
+    {
+      "record": "original:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "original:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_root.cpp",
+      "actual_relative_path": "code/e_a6_double_kernel_root.cpp",
+      "sha256": "ab1aee0156d838a8460a67f5437d639c080d03dfaa7af2e480636feecbd2eaf0"
+    },
+    {
+      "record": "original:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.json",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.json",
+      "sha256": "7ae67b9a9f15910d0f00a9dbc873ae97b0ba018945a74b4111543e042b370ae3"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.npz",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.npz",
+      "sha256": "f42879ad33c1b074f3b5572dd7b85aa6ea655f3391668493888f8a8a5823a0d0"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_A6_factors.json",
+      "actual_relative_path": "code/de_a6_gl_A6_factors.json",
+      "sha256": "0dfe4cedebcd9a2531b00a58b0b5c0c5de15625b3c1cc37acea932acefc933c8"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_root.cpp",
+      "actual_relative_path": "code/e_a6_double_kernel_root.cpp",
+      "sha256": "ab1aee0156d838a8460a67f5437d639c080d03dfaa7af2e480636feecbd2eaf0"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_prepare.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_candidate.json",
+      "actual_relative_path": "code/de_a6_double_candidate.json",
+      "sha256": "391054961711c31a1101cb90b17d6416a7c57ef1d486f6b3c3ccd2dab9a50365"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.npz",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.npz",
+      "sha256": "f42879ad33c1b074f3b5572dd7b85aa6ea655f3391668493888f8a8a5823a0d0"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.json",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.json",
+      "sha256": "3ecad5c8cd90964e3aaecc34e5c02646439024ef2d4bef9d18c10b70d86229e3"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_source_root.npz",
+      "actual_relative_path": "code/e_a6_double_source_root.npz",
+      "sha256": "b813258ab315219555232c7684cf2f6fa79fbbcf28f02cfc4ef6de4bf40d76d4"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_replay.npz",
+      "actual_relative_path": "code/de_a6_double_signed_replay.npz",
+      "sha256": "e2cf90eeb5a69064c856aa8ec1c84072cc7b75e0e48b111458b3aca4395b60ec"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_GL.npz",
+      "actual_relative_path": "code/a_cm_signed_common_GL.npz",
+      "sha256": "252e9651ec5e8814c6990e315557f0e2d1b3c8f83221037474e02fd14ab32db1"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel_replay.npz",
+      "actual_relative_path": "code/de_a6_gl_kernel_replay.npz",
+      "sha256": "34ed9839b004e690015445f65adaee9e30f01e22db070bc9cf3b97d80141a2df"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge_replay.npz",
+      "actual_relative_path": "code/de_a6_double_bridge_replay.npz",
+      "sha256": "9e69eec119f6b3212c53a232377825725cb351b26e594dcc38e902f20c9e05d8"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_candidate.cpp",
+      "actual_relative_path": "code/de_a6_double_candidate.cpp",
+      "sha256": "68b758e1cc7c5c8da0c71196a9e9bdec1e3391585d69980e9300a1f97f9f4e89"
+    },
+    {
+      "record": "original:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_candidate_lifted.hpp",
+      "actual_relative_path": "code/de_a6_double_candidate_lifted.hpp",
+      "sha256": "d452adb31bfc2d8d76c8b73e01904c963fd8ebce6761ed82c46728ab657cb9f9"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_candidate.json",
+      "actual_relative_path": "code/de_a6_double_candidate.json",
+      "sha256": "f4829931dfcd60cbb9cd3ed1e54c5f2c5199032e18905ad8308bed3cede6b189"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.npz",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.npz",
+      "sha256": "f42879ad33c1b074f3b5572dd7b85aa6ea655f3391668493888f8a8a5823a0d0"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_candidate.json",
+      "actual_relative_path": "code/a_cm_signed_common_candidate.json",
+      "sha256": "7ae67b9a9f15910d0f00a9dbc873ae97b0ba018945a74b4111543e042b370ae3"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_kernel_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_kernel_replay_root.npz",
+      "sha256": "58ff06989a38bc9377aa8b8bc6d5e5b15d2f7a2dc73413593763067bb649a5a5"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_source_root.npz",
+      "actual_relative_path": "code/e_a6_double_source_root.npz",
+      "sha256": "b813258ab315219555232c7684cf2f6fa79fbbcf28f02cfc4ef6de4bf40d76d4"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_signed_replay.npz",
+      "actual_relative_path": "code/de_a6_double_signed_replay.npz",
+      "sha256": "e2cf90eeb5a69064c856aa8ec1c84072cc7b75e0e48b111458b3aca4395b60ec"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "a_cm_signed_common_GL.npz",
+      "actual_relative_path": "code/a_cm_signed_common_GL.npz",
+      "sha256": "252e9651ec5e8814c6990e315557f0e2d1b3c8f83221037474e02fd14ab32db1"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_kernel_replay.npz",
+      "actual_relative_path": "code/de_a6_gl_kernel_replay.npz",
+      "sha256": "34ed9839b004e690015445f65adaee9e30f01e22db070bc9cf3b97d80141a2df"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_bridge_replay.npz",
+      "actual_relative_path": "code/de_a6_double_bridge_replay.npz",
+      "sha256": "9e69eec119f6b3212c53a232377825725cb351b26e594dcc38e902f20c9e05d8"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_candidate.cpp",
+      "actual_relative_path": "code/de_a6_double_candidate.cpp",
+      "sha256": "68b758e1cc7c5c8da0c71196a9e9bdec1e3391585d69980e9300a1f97f9f4e89"
+    },
+    {
+      "record": "regenerated:de_a6_double_candidate_replay.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_double_candidate_lifted.hpp",
+      "actual_relative_path": "code/de_a6_double_candidate_lifted.hpp",
+      "sha256": "d452adb31bfc2d8d76c8b73e01904c963fd8ebce6761ed82c46728ab657cb9f9"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_commutator_prepare_root.npz",
+      "actual_relative_path": "code/e_a6_double_commutator_prepare_root.npz",
+      "sha256": "6066e4f18a61b7a4a5222ed0fe661dc6fdb85ce42cea9d90fa3c7a02f899b3c5"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_modular_basis_root.npz",
+      "actual_relative_path": "code/e_a6_double_modular_basis_root.npz",
+      "sha256": "fb54c70d0523a0205ce6b1ba855dd28e076d7706148b1411994d849fe8024010"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_commutator_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_commutator_replay_root.npz",
+      "sha256": "cec4264e8c7422e437594d7161910761772f2e2213a0269ebe9d48b6d87dbafa"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_modular_generators.npz",
+      "actual_relative_path": "code/de_a6_triple_modular_generators.npz",
+      "sha256": "a64fffe3073c21c6a77afbac90b3a4ad3996ccffeeff8e2b5d5ca8354c189a11"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_common_quotient.npz",
+      "actual_relative_path": "code/de_a6_gl_common_quotient.npz",
+      "sha256": "85230954da0c1006eb13ba35bfec71b5d8682dc326a597bec468e0bd26b9761c"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_prepare.npz",
+      "actual_relative_path": "code/de_a6_gl_central_prepare.npz",
+      "sha256": "32259e681837466ce1a27c7b3e6f63b5f0583c636777a9cb6c2d59934564f12b"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_model_root.py",
+      "actual_relative_path": "code/e_a6_double_model_root.py",
+      "sha256": "949db8deaa8285dd852461d3b6f140c086ab5810507ec98fd28b3ba2d57a1790"
+    },
+    {
+      "record": "original:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_commutator_prepare_root.npz",
+      "actual_relative_path": "code/e_a6_double_commutator_prepare_root.npz",
+      "sha256": "6066e4f18a61b7a4a5222ed0fe661dc6fdb85ce42cea9d90fa3c7a02f899b3c5"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_modular_basis_root.npz",
+      "actual_relative_path": "code/e_a6_double_modular_basis_root.npz",
+      "sha256": "fb54c70d0523a0205ce6b1ba855dd28e076d7706148b1411994d849fe8024010"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_commutator_replay_root.npz",
+      "actual_relative_path": "code/e_a6_double_commutator_replay_root.npz",
+      "sha256": "cec4264e8c7422e437594d7161910761772f2e2213a0269ebe9d48b6d87dbafa"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_modular_generators.npz",
+      "actual_relative_path": "code/de_a6_triple_modular_generators.npz",
+      "sha256": "a64fffe3073c21c6a77afbac90b3a4ad3996ccffeeff8e2b5d5ca8354c189a11"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_common_quotient.npz",
+      "actual_relative_path": "code/de_a6_gl_common_quotient.npz",
+      "sha256": "85230954da0c1006eb13ba35bfec71b5d8682dc326a597bec468e0bd26b9761c"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_central_prepare.npz",
+      "actual_relative_path": "code/de_a6_gl_central_prepare.npz",
+      "sha256": "32259e681837466ce1a27c7b3e6f63b5f0583c636777a9cb6c2d59934564f12b"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_model_root.py",
+      "actual_relative_path": "code/e_a6_double_model_root.py",
+      "sha256": "949db8deaa8285dd852461d3b6f140c086ab5810507ec98fd28b3ba2d57a1790"
+    },
+    {
+      "record": "regenerated:de_a6_double_deep_words.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_sl2_5_model.py",
+      "actual_relative_path": "code/de_ferrari_sl2_5_model.py",
+      "sha256": "a0e99a8f1460cd7c43ec6d4d79f91469bf34192c6d65e9f46a9d127e9b277c4f"
+    },
+    {
+      "record": "original:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_degree6_kernel.py",
+      "actual_relative_path": "code/de_ferrari_degree6_kernel.py",
+      "sha256": "9af76771477ce3ab601aa9d24b4395476bd6ac482c92e294d7f05a902a884262"
+    },
+    {
+      "record": "original:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_degree4_lift.py",
+      "actual_relative_path": "code/de_ferrari_degree4_lift.py",
+      "sha256": "55001ea51a2fa59617cbe00aaddf32cd6731669614da5e9839767a3cf945e8d7"
+    },
+    {
+      "record": "original:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_two_model.py",
+      "actual_relative_path": "code/de_ferrari_two_model.py",
+      "sha256": "eac20a32f58f7198a3bc59b0f5bd1a42c954bcf757a24e9aa6ab206844b1ab95"
+    },
+    {
+      "record": "original:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.json",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.json",
+      "sha256": "0255fb420a6238f9ff4fcbe4759625de8d7c38bbd12db87325095e444ca577a3"
+    },
+    {
+      "record": "original:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.npz",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.npz",
+      "sha256": "3fc5b3f3ccf40239fc61fdd6cbdb22ab60141efeec0e396116047c5f4c8d6fad"
+    },
+    {
+      "record": "original:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_model_root.py",
+      "actual_relative_path": "code/e_a6_double_model_root.py",
+      "sha256": "949db8deaa8285dd852461d3b6f140c086ab5810507ec98fd28b3ba2d57a1790"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_degree6_kernel.py",
+      "actual_relative_path": "code/de_ferrari_degree6_kernel.py",
+      "sha256": "9af76771477ce3ab601aa9d24b4395476bd6ac482c92e294d7f05a902a884262"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_degree4_lift.py",
+      "actual_relative_path": "code/de_ferrari_degree4_lift.py",
+      "sha256": "55001ea51a2fa59617cbe00aaddf32cd6731669614da5e9839767a3cf945e8d7"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_ferrari_two_model.py",
+      "actual_relative_path": "code/de_ferrari_two_model.py",
+      "sha256": "eac20a32f58f7198a3bc59b0f5bd1a42c954bcf757a24e9aa6ab206844b1ab95"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.json",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.json",
+      "sha256": "0255fb420a6238f9ff4fcbe4759625de8d7c38bbd12db87325095e444ca577a3"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.npz",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.npz",
+      "sha256": "3fc5b3f3ccf40239fc61fdd6cbdb22ab60141efeec0e396116047c5f4c8d6fad"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_old_maps_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_model_root.py",
+      "actual_relative_path": "code/e_a6_double_model_root.py",
+      "sha256": "949db8deaa8285dd852461d3b6f140c086ab5810507ec98fd28b3ba2d57a1790"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_continue_root.json",
+      "actual_relative_path": "code/e_a6_double_target_continue_root.json",
+      "sha256": "edc3cb087c72de2c560a8660ac835e895b82ae107f8c46d810ab8fe846fac0f7"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_prepare_root.npz",
+      "actual_relative_path": "code/e_a6_double_target_prepare_root.npz",
+      "sha256": "9b251dc09b4ed01cc126a682a6f0afc6be9dd8e79126d1db60cbc916970bc2d6"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.json",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.json",
+      "sha256": "0255fb420a6238f9ff4fcbe4759625de8d7c38bbd12db87325095e444ca577a3"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.npz",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.npz",
+      "sha256": "3fc5b3f3ccf40239fc61fdd6cbdb22ab60141efeec0e396116047c5f4c8d6fad"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_complete_replay_root.json",
+      "actual_relative_path": "code/e_a6_double_target_complete_replay_root.json",
+      "sha256": "89855d8f1caa97fccee736b988d8d224d44b3ffd1c9f0230df1c784c9811cc7b"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_old_maps_root.json",
+      "actual_relative_path": "code/e_a6_double_target_old_maps_root.json",
+      "sha256": "b64c4bb119f3c5cf3605d8369364708a02bbb8b9a2f6e28ea4238bdd77310f39"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_target.out",
+      "actual_relative_path": "code/de_a6_gl_target.out",
+      "sha256": "1f1188b3b5ea19bb4ee099e7725b5c1256a4a81ef6873fcdb9742a35a9d8415e"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_target_certificate.json",
+      "actual_relative_path": "code/de_a6_gl_target_certificate.json",
+      "sha256": "eb100d627840b934d9aae37f42b9c894731388813f875cdab4b303fc2f856c99"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_target_certificate.py",
+      "actual_relative_path": "code/de_a6_triple_target_certificate.py",
+      "sha256": "28a1124674872fa47729dc0313474062a2312eb0dbc81cf8488ca854c904ec7b"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_root.bin",
+      "sha256": "2ba9bca4a84a38309457adb43a0b9f95c4fba9da2390460d08691229e511b3bd"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_root.out",
+      "actual_relative_path": "code/e_a6_double_target_root.out",
+      "sha256": "01a1cc7ce7b7723a0a20bccb52e17319386d60cf29d16e89481e3ab6b4ce3096"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_root_independent.out",
+      "sha256": "85f7b0cc74d86cd26e937c1301fa1e05deac82c761c304a59ecb65805f5d1b97"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived1_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived1_root.bin",
+      "sha256": "b7cc16096f05676c317fe1816e8f73f6bb9581c47a776305712b816a3b4a3bdd"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived1_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived1_root.out",
+      "sha256": "2d78cae4bcaafbe6e3199751026694f7db364270995747f8bf948b8b7be38901"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived1_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived1_root_independent.out",
+      "sha256": "62fa02d579435837ffa3c55acf34ff1b87caf8fa6db09cd94ab480d3cfb94bc2"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root.bin",
+      "sha256": "caad4b8e4e212209576aca52591f4a9ad3cba199742cebfacf2a30a4d2ffa7dc"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root.out",
+      "sha256": "98a89bdf9db7006157ce5914f4edcf9fd80de655325aef2eade792e37dd9a048"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root_independent.out",
+      "sha256": "e045f4afd56aa622d6655a69ddf24c471d51e48df5542b72101ce3b68ad4e806"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root_input.json",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root_input.json",
+      "sha256": "c80aa8e10e729dd430b83bf7e2ddc10ffaf07b562cd325d9487c0c40f6589686"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root_input.npz",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root_input.npz",
+      "sha256": "0d5a95dd62b351cd4ff9d8ac819cd338bc934ed11df75e7ab9c1f6c1720d40a2"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root.bin",
+      "sha256": "513b71f3f0e5459ff84e2cbac9d6f95dceecac5a4887888e56b087bf55abcef4"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root.out",
+      "sha256": "28e623d4d3679d378192f0dab9653df4baa8e8d0c255bf7d308a5fdb40f974ec"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root_independent.out",
+      "sha256": "9ae55b697bd26a504b7021231ce2c032983bb7444031ae3e03e4eaf0d69ae815"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root_input.json",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root_input.json",
+      "sha256": "4cdd42127a6828d34b1b110f766a22d4ff40de03611a8e8e506cdd57bdaaf3d7"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root_input.npz",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root_input.npz",
+      "sha256": "0351304b3d5e2b73fb84bafd637c07a3aee5d5218ab00c60cc1144de05d374f6"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root.bin",
+      "sha256": "16bcbf5ed01ad6560c86ef49503d2032fbbe2f564275c65627d74896dbdd65cc"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root.out",
+      "sha256": "37aee824744f3042b9fa89fd952a382ba5fff1eb999c77020555f80409ea66b0"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root_independent.out",
+      "sha256": "2f63adf8bf5fb79b98547d9b3ceb76c42158b3946a3c80f6f68a6a7e53a765c7"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root_input.json",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root_input.json",
+      "sha256": "10eef025256c0bcb54d0cd363088c68c1c932e15e5a12cccbd6139e8185698b4"
+    },
+    {
+      "record": "original:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root_input.npz",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root_input.npz",
+      "sha256": "6977d5de3efdc52f2a41ef58b31124e3328173c2fc086819cc27c452ccbecf37"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_continue_root.json",
+      "actual_relative_path": "code/e_a6_double_target_continue_root.json",
+      "sha256": "edc3cb087c72de2c560a8660ac835e895b82ae107f8c46d810ab8fe846fac0f7"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_prepare_root.npz",
+      "actual_relative_path": "code/e_a6_double_target_prepare_root.npz",
+      "sha256": "9b251dc09b4ed01cc126a682a6f0afc6be9dd8e79126d1db60cbc916970bc2d6"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.json",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.json",
+      "sha256": "0255fb420a6238f9ff4fcbe4759625de8d7c38bbd12db87325095e444ca577a3"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.npz",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.npz",
+      "sha256": "3fc5b3f3ccf40239fc61fdd6cbdb22ab60141efeec0e396116047c5f4c8d6fad"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_complete_replay_root.json",
+      "actual_relative_path": "code/e_a6_double_target_complete_replay_root.json",
+      "sha256": "89855d8f1caa97fccee736b988d8d224d44b3ffd1c9f0230df1c784c9811cc7b"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_old_maps_root.json",
+      "actual_relative_path": "code/e_a6_double_target_old_maps_root.json",
+      "sha256": "63d699b8b808d9b0ef5087409adec60ee7b4b97915ef9fd1919305c7e71eedc6"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_target.out",
+      "actual_relative_path": "code/de_a6_gl_target.out",
+      "sha256": "1f1188b3b5ea19bb4ee099e7725b5c1256a4a81ef6873fcdb9742a35a9d8415e"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_gl_target_certificate.json",
+      "actual_relative_path": "code/de_a6_gl_target_certificate.json",
+      "sha256": "eb100d627840b934d9aae37f42b9c894731388813f875cdab4b303fc2f856c99"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_target_certificate.py",
+      "actual_relative_path": "code/de_a6_triple_target_certificate.py",
+      "sha256": "28a1124674872fa47729dc0313474062a2312eb0dbc81cf8488ca854c904ec7b"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_root.bin",
+      "sha256": "2ba9bca4a84a38309457adb43a0b9f95c4fba9da2390460d08691229e511b3bd"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_root.out",
+      "actual_relative_path": "code/e_a6_double_target_root.out",
+      "sha256": "01a1cc7ce7b7723a0a20bccb52e17319386d60cf29d16e89481e3ab6b4ce3096"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_root_independent.out",
+      "sha256": "85f7b0cc74d86cd26e937c1301fa1e05deac82c761c304a59ecb65805f5d1b97"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived1_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived1_root.bin",
+      "sha256": "b7cc16096f05676c317fe1816e8f73f6bb9581c47a776305712b816a3b4a3bdd"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived1_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived1_root.out",
+      "sha256": "2d78cae4bcaafbe6e3199751026694f7db364270995747f8bf948b8b7be38901"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived1_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived1_root_independent.out",
+      "sha256": "62fa02d579435837ffa3c55acf34ff1b87caf8fa6db09cd94ab480d3cfb94bc2"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root.bin",
+      "sha256": "caad4b8e4e212209576aca52591f4a9ad3cba199742cebfacf2a30a4d2ffa7dc"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root.out",
+      "sha256": "98a89bdf9db7006157ce5914f4edcf9fd80de655325aef2eade792e37dd9a048"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root_independent.out",
+      "sha256": "e045f4afd56aa622d6655a69ddf24c471d51e48df5542b72101ce3b68ad4e806"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root_input.json",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root_input.json",
+      "sha256": "c80aa8e10e729dd430b83bf7e2ddc10ffaf07b562cd325d9487c0c40f6589686"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived2_root_input.npz",
+      "actual_relative_path": "code/e_a6_double_target_derived2_root_input.npz",
+      "sha256": "0d5a95dd62b351cd4ff9d8ac819cd338bc934ed11df75e7ab9c1f6c1720d40a2"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root.bin",
+      "sha256": "513b71f3f0e5459ff84e2cbac9d6f95dceecac5a4887888e56b087bf55abcef4"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root.out",
+      "sha256": "28e623d4d3679d378192f0dab9653df4baa8e8d0c255bf7d308a5fdb40f974ec"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root_independent.out",
+      "sha256": "9ae55b697bd26a504b7021231ce2c032983bb7444031ae3e03e4eaf0d69ae815"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root_input.json",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root_input.json",
+      "sha256": "4cdd42127a6828d34b1b110f766a22d4ff40de03611a8e8e506cdd57bdaaf3d7"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived3_root_input.npz",
+      "actual_relative_path": "code/e_a6_double_target_derived3_root_input.npz",
+      "sha256": "0351304b3d5e2b73fb84bafd637c07a3aee5d5218ab00c60cc1144de05d374f6"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root.bin",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root.bin",
+      "sha256": "16bcbf5ed01ad6560c86ef49503d2032fbbe2f564275c65627d74896dbdd65cc"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root.out",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root.out",
+      "sha256": "37aee824744f3042b9fa89fd952a382ba5fff1eb999c77020555f80409ea66b0"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root_independent.out",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root_independent.out",
+      "sha256": "2f63adf8bf5fb79b98547d9b3ceb76c42158b3946a3c80f6f68a6a7e53a765c7"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root_input.json",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root_input.json",
+      "sha256": "10eef025256c0bcb54d0cd363088c68c1c932e15e5a12cccbd6139e8185698b4"
+    },
+    {
+      "record": "regenerated:e_a6_double_target_certificate_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_derived4_root_input.npz",
+      "actual_relative_path": "code/e_a6_double_target_derived4_root_input.npz",
+      "sha256": "6977d5de3efdc52f2a41ef58b31124e3328173c2fc086819cc27c452ccbecf37"
+    },
+    {
+      "record": "original:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_certificate_root.json",
+      "actual_relative_path": "code/e_a6_double_target_certificate_root.json",
+      "sha256": "57ffae99fc2daf4c51a34764f1cb868d4f988af3b3dc99da43e43cf9b6440740"
+    },
+    {
+      "record": "original:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_target_certificate.json",
+      "actual_relative_path": "code/de_a6_triple_target_certificate.json",
+      "sha256": "e2bb43dd941c331f832f355a4d37568e603eb2d668b3b05d3cbdac0fe4f1f24b"
+    },
+    {
+      "record": "original:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_target_quotient.json",
+      "actual_relative_path": "code/de_a6_triple_target_quotient.json",
+      "sha256": "0242cc42c1e6e0852ca87cee8f9009db8f35297a7e4656c974d05ed0913aa4be"
+    },
+    {
+      "record": "original:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.json",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.json",
+      "sha256": "0255fb420a6238f9ff4fcbe4759625de8d7c38bbd12db87325095e444ca577a3"
+    },
+    {
+      "record": "regenerated:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_certificate_root.json",
+      "actual_relative_path": "code/e_a6_double_target_certificate_root.json",
+      "sha256": "a7b280c51cb0948d654ed539f317dea26181ce468cfe5410113783f9e61e3e3e"
+    },
+    {
+      "record": "regenerated:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_target_certificate.json",
+      "actual_relative_path": "code/de_a6_triple_target_certificate.json",
+      "sha256": "e2bb43dd941c331f832f355a4d37568e603eb2d668b3b05d3cbdac0fe4f1f24b"
+    },
+    {
+      "record": "regenerated:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "de_a6_triple_target_quotient.json",
+      "actual_relative_path": "code/de_a6_triple_target_quotient.json",
+      "sha256": "0242cc42c1e6e0852ca87cee8f9009db8f35297a7e4656c974d05ed0913aa4be"
+    },
+    {
+      "record": "regenerated:e_a6_double_triple_target_root.json",
+      "json_pointer": "/input_sha256",
+      "input": "e_a6_double_target_quotient_root.json",
+      "actual_relative_path": "code/e_a6_double_target_quotient_root.json",
+      "sha256": "0255fb420a6238f9ff4fcbe4759625de8d7c38bbd12db87325095e444ca577a3"
+    }
+  ],
+  "all_originals_unchanged": true,
+  "seconds": 1633.604,
+  "complete_new_relations_repeated": true,
+  "every_omitted_input_hash_independently_verified": true,
+  "verified_input_hash_count": 226,
+  "root_previously_replayed_target_chains_used_unchanged": true
+}

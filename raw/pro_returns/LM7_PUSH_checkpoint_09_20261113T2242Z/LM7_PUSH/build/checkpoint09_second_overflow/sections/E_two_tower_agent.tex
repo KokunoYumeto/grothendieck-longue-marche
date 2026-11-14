@@ -1,0 +1,498 @@
+\subsection{The exponent-sixteen fibres and the two-adic lifting argument}
+
+\begin{statement}{E.14}{Proved}{Every CM matrix fibre survives the common exponent-sixteen refinement}
+Let $J_{16,3}=(\gamma_3N\,N^{16})\cap(\gamma_3N\,N^3)$.
+Its inverse image in $B_3$ is a finite-index normal subgroup
+contained in $PB_3$. Every one of the 24 admissible CM matrix
+pairs of E.1 occurs as a gentle shadow at this refinement,
+with multiplier one modulo $576$.
+\end{statement}
+\begin{proof}
+The exponent-sixteen collector has coordinates
+$a\in(\Z/16)^{97}$ and $z\in(\Z/8)^{4656}$, with the product
+in (E.13.2). The image of $N'N^6$, retaining $N^{\rm ab}/3$,
+has normal coordinates
+\[
+ k=\prod_i n_i^{6u_i}\prod_{i<j}[n_i,n_j]^{3v_{ij}},
+ \qquad (u,v)\in(\Z/8)^{4753},
+\]
+and exact product
+\[
+ (u,v)(u',v')=(u+u',\,v+v'-12(u_ju'_i)_{i<j}).
+ \tag{E.14.1}
+\]
+The correction group is therefore nonabelian at this level;
+the program retains its full product and inverse.
+
+For each affine homology point of E.11 use the same ungauged
+$S_0=\beta s\beta^{-1}$ and $R_0=S_0t$. With $\lambda=1+72h$,
+the complete equations are
+\[
+ (S_0k)^2=1,\qquad
+ (k^{-1}S_0t^{1+72h})^3=1,\qquad Hu=0\pmod8.
+ \tag{E.14.2}
+\]
+Here $H$ is the two-row integer matrix of E.13.
+The last condition is exact: the common kernel has
+$F$-abelian image $48L_N$, and the correction has image
+$6B_NHu$.
+
+Write $x=(u,v,h)$ and let $\mathcal F(x)$ be the two
+normal-coordinate order errors followed by $Hu$.
+These are integer polynomials of degree at most two.
+Their diagonal quadratic coefficients are divisible by six
+and their mixed quadratic coefficients by twelve.
+Indeed the sixth-power contribution of an automorphism
+with abelian matrix $A$ and generator cochain $\tau$ is
+\[
+ 2u_i\tau_i-(6u_i^2-u_i)A_{ai}A_{bi}
+\]
+in a central coordinate; reordering contributes multiples
+of $12u_i u_j$. Cusp powers have the same divisibility,
+since $12\binom h2=6h^2-6h$. Only linear homology
+expressions are substituted into these formulas.
+Thus $\mathcal F$ modulo four is exactly the affine system
+of E.13.
+
+Its homogeneous solutions are represented by
+\[
+ Vt+2Kw\pmod4,
+ \qquad t\in\F_2^{801},\quad w\in\F_2^{827},
+ \tag{E.14.3}
+\]
+where $K$ is the entire binary kernel and $V$ lifts the
+kernel of the second-layer obstruction. Every column is
+verified modulo four. The projection of $V\bmod2$ to
+the 97 homology coordinates and the multiplier has rank
+15. Select 15 columns spanning that projection and subtract
+their combinations from the other columns. The remaining
+786 columns have even homology and multiplier coordinates.
+Twice a selected column is already represented by $2K$,
+so this change preserves all solutions in (E.14.3).
+
+Every direction with even homology and multiplier coordinates
+changes $\mathcal F$ modulo eight linearly and independently
+of the base point: the stated divisibilities kill its
+quadratic cross terms. Hence all 786 remaining lower
+parameters, all 827 upper parameters, and the arbitrary
+correction $4y$ enter linearly; only the 15 selected bits
+enter quadratically. The program
+\texttt{de\_class2\_sixteen\_fibres.py} retains the full
+linear system and evaluates all $32768$ choices of those
+bits. In each of the 24 cases the linear correction rank
+is 3953, and every constant, linear, and quadratic coefficient
+vanishes modulo its image. All $32768$ choices survive.
+A solution with $h=0$ is retained in every case and
+substituted into both literal order equations and $Hu$.
+
+For these two-primary coordinates and the three-primary
+central correction $k_3$ of E.11, the common actual word is
+\[
+ k=\prod_i n_i^{6u_i}
+       \prod_{i<j}[n_i,n_j]^{3v_{ij}+16(k_3)_{ij}}.
+ \tag{E.14.4}
+\]
+The unimodular two-column calculation of E.11 supplies a
+product $j$ of forty-eighth powers with
+$\operatorname{ab}_F(kj)=0$. It is trivial in both factors.
+Restoring the recorded cusp gauge gives
+$f=sx^gS_0kx^{-g}j\in F'$.
+The program \texttt{de\_fibre\_sixteen\_crt\_verify.py}
+substitutes both full braid hexagons in both faithful
+collectors, with 96 successful component checks.
+Normal-block inversion retains the central term $-a_i a_j$.
+Twelve additional literal conjugation checks include a
+nontrivial change of section. Both Frattini ranks remain
+97 because the corrections preserve the $G_6$ homology
+point. This proves the full shadow and generation conditions.
+
+The separate \texttt{de\_class2\_sixteen.py} finds no
+lift of the 24 particular words retained in E.13. Its
+projection fixes their upper corrections. Calculation
+(E.14.3) permits all corrections over the homology point
+and supplies the replacements above. These exact projection
+maps explain the scopes of the two calculations.
+\end{proof}
+
+\begin{statement}{E.15}{Proved}{Every admissible CM pair survives the entire relative class-two tower}
+For each of the 24 admissible CM matrix pairs there is a
+compatible family of gentle shadows at the inverse images
+in $B_3$ of
+\[
+             J_j=\gamma_3N\,N^j\qquad(6\mid j),
+ \tag{E.15.1}
+\]
+ordered by divisibility, with multiplier $\lambda=1$.
+All twelve extra matrix fibres therefore survive this
+entire tower. The assertion specifies matrix fibres;
+it does not assert extension of the particular normalized
+words retained in E.13 or E.14.
+\end{statement}
+\begin{proof}
+We construct the two-primary component first. Let
+$\mathcal N_2$ be the free class-two pro-two group on
+the 97 basis elements, in the extension of $Q$ obtained
+by completing $N$ in this quotient. Let
+$\mathcal U\subset\mathcal N_2$ have even abelian
+coordinates. Multiplication by three is invertible over
+$\Z_2$, so the elements $n_i^6,[n_i,n_j]^3$ give its
+normal coordinates $(u,v)\in\Z_2^{4753}$, with product
+(E.14.1). The polynomial bijection
+\[
+ Z=(u,z),\qquad z_{ij}=v_{ij}+6u_i u_j
+\]
+puts its operations in the form
+\[
+ Z*Z'=Z+Z'+\tfrac12[Z,Z'],\qquad
+ [Z,Z']=(0,12u\wedge u').
+ \tag{E.15.2}
+\]
+Every coefficient is integral. We use $\exp Z$ and
+$\log$ for this explicit group-coordinate correspondence;
+(E.15.2) justifies that notation at the prime two.
+
+Conjugation by $S_0$ is an integral Lie automorphism $M_S$
+with $M_S^2=1$. The first order equation is equivalent to
+\[
+                       G_S(Z)=(1+M_S)Z=0.
+ \tag{E.15.3}
+\]
+In fact its logarithm is
+$G_S(Z)+\frac12[G_S(Z),Z]$; the map
+$Y\mapsto Y+\frac12[Y,Z]$ is an integral unipotent
+automorphism. The target of $G_S$ is the saturated
+submodule $\operatorname{Fix}(M_S)$.
+
+Put $E=\log(R_0^3)$ and $r_*=\exp(-E/3)R_0$.
+Here $R_0^3\in\mathcal U$, division by three is integral,
+and $R_0$ commutes with its cube; thus $r_*^3=1$.
+Write $M$ for its Lie action and
+$P=(1+M+M^2)/3$ for the integral projection onto
+$\operatorname{Fix}(M)$. For $k=\exp Z$, keep the
+multiplier equal to one and write
+\[
+ R=k^{-1}S_0t=\exp(W)r_*,\qquad C=\log(R^3).
+\]
+The coordinates of $W$ and $C$ are integral polynomials
+of degree at most two in $Z$, by (E.15.2).
+The second order equation is equivalent to
+\[
+                              G_R(Z)=PC=0.
+ \tag{E.15.4}
+\]
+To prove this integrally, the homology of $C$ is the
+norm of the homology of $W$, so it is fixed by $M$ and
+equals that of $PC$. Since $R^3$ commutes with $R$,
+$(M-1)C=-[W,C]$. On $\ker P$ the inverse of $M-1$
+is $-(M+2)/3$. With $Q_0=1-P$ this gives
+\[
+             C=PC+\frac{M+2}{3}Q_0[W,PC].
+ \tag{E.15.5}
+\]
+The bracket uses only homology. Thus $PC=0$ is equivalent
+to $C=0$, and (E.15.5) is an integral linear embedding
+of the error $PC$, with left inverse $P$.
+
+There is only one further independent commutator equation.
+The integral matrix $H$ satisfies
+\[
+ H A_S=\begin{pmatrix}-2&-1\\3&2\end{pmatrix}H,
+ \tag{E.15.6}
+\]
+where $A_S$ acts on $N^{\rm ab}$. Equivalently, apply
+$B_N^{-1}$ to the interchange of the two coordinates
+of $F^{\rm ab}$. The first row of $H(1+A_S)u$ is
+$-(H_1+H_2)u$. Hence (E.15.3) and $H_2u=0$ imply
+both commutator rows, and the converse holds. The exact
+compressed system is the integral polynomial map
+\[
+ G:\Z_2^{4753}\longrightarrow
+ \operatorname{Fix}(M_S)\oplus\operatorname{Fix}(M)\oplus\Z_2,
+ \qquad G=(G_S,G_R,H_2u).
+ \tag{E.15.7}
+\]
+The target lattices are primitively embedded. The
+normal-coordinate changes and (E.15.5)--(E.15.6) recover
+the full error vector from $G$, with primitive linear
+part at a zero. At a point whose errors are divisible
+by eight the same derivative comparison holds modulo
+four, since the additional derivative terms multiply
+those errors.
+
+Here are the exact target and derivative ranks.
+The cycle actions have traces $-7,-5,-5$ for $s,r,r^2$.
+The exterior-square traces are $-24,15,15$, respectively,
+from
+$\operatorname{tr}(\Lambda^2A)=
+((\operatorname{tr}A)^2-\operatorname{tr}(A^2))/2$.
+Central cochains do not change a trace. It follows that
+\[
+ \operatorname{rank}\operatorname{Fix}(M_S)=2361,
+ \quad \operatorname{rank}\operatorname{Fix}(M)=1591,
+ \quad \operatorname{rank}\operatorname{target}(G)=3953.
+ \tag{E.15.8}
+\]
+The program \texttt{de\_two\_hensel\_tangent.py}
+checks these traces and (E.15.6). At each of the 24
+points from E.14 it computes the full integral Jacobian
+modulo four. The program \texttt{de\_two\_hensel\_fixed.py}
+then deletes the multiplier column, recomputes the entire
+binary kernel, and verifies all the ranks below for the
+resulting 4753-variable system. Its binary kernel has
+dimension 826. The divisibilities in the proof of E.14
+give
+\[
+ \mathcal F(x+2e_i)-\mathcal F(x)=2J_i\pmod8
+\]
+and make $J\bmod4$ independent of $x$. The central
+columns are the exterior-square norm matrices. All
+homology columns are retained, with
+five additional complete direction checks per point.
+For the full binary kernel $K$, the exact ranks are
+\[
+ \operatorname{rank}_{\F_2}(J\bmod2)=3927,\qquad
+ \operatorname{rank}_{\F_2}
+ \left(J\bmod2\ \middle|\ \frac{JK}{2}\bmod2\right)=3953.
+ \tag{E.15.9}
+\]
+The primitive comparison with (E.15.7) identifies these
+with the ranks for $dG$. Its target has rank 3953, so
+its elementary divisors consist of 3927 units and 26
+elements of valuation one. Its image contains twice
+the target lattice.
+
+The lifting can now be given explicitly. At the integral
+point $x_0$ retained in E.14, $G(x_0)$ is divisible
+by eight. Choose a right inverse of $dG_{x_0}$ over
+$\Q_2$ carrying the integral target into
+$\frac12\Z_2^{4753}$; the elementary divisors give
+such an inverse. The Newton correction belongs to
+$4\Z_2^{4753}$. The new error is divisible by sixteen,
+because $G$ is integral of degree at most two, and its
+derivative is unchanged modulo four. Repeating, an
+error of valuation $v\geq3$ is replaced by one of
+valuation at least $2v-2$. The corrections converge to
+an exact zero of $G$, with multiplier still equal to one.
+Equations (E.15.3)--(E.15.6) give both exact orders
+and zero $F$-abelianization for the correction $k$.
+The retained cusp gauge commutes with $t$ and makes
+the normalized $f$ have zero abelianization, by the
+formula (E.15.12) below. The reduction on $N^{\rm ab}/2$ has
+rank 97, so the pro-two Frattini argument gives an
+automorphism at every finite level.
+
+We give the gluing before applying the cusp gauge.
+For the same CM matrix pair, take the ungauged
+three-primary action of E.12, and take the identity
+action at every other prime. In each component the
+images of $s,r,t$ in $Q$ are $s,r,t$: the matrix
+representatives $\beta,A$ centralize $s,r$ in $Q$,
+and all their corrections belong to the normal kernel.
+Thus these ungauged actions have the same identity
+action on $Q$. The precise comparison of their target
+groups is
+\[
+ \varprojlim_j B/(\gamma_3N\,N^j)
+ \simeq
+ \prod_{p,Q}\varprojlim_a B/(\gamma_3N\,N^{p^a}),
+ \tag{E.15.10}
+\]
+where the product is the fibre product over $Q$.
+On the normal kernel this is the Sylow decomposition
+of the class-two completion of $N$: every finite
+nilpotent quotient is the product of its Sylow groups.
+For surjectivity at finitely many levels, lift their
+common $Q$ coordinate and adjust independently in
+these normal Sylow groups. Compactness gives (E.15.10).
+
+We now specify one gauge in this common group. Let
+$g_2\in\Z_2$ be the integral gauge retained in E.14.
+For the limiting three-primary conjugator $\beta_3$,
+let $g_3\in\Z_3$ be the difference of its second and
+first $F$-abelian coordinates. The E.12 corrections
+preserve these coordinates modulo three, so the
+reduction of $g_3$ is that of the recorded integral
+gauge. The image of $N$ in $F^{\rm ab}$ has basis matrix
+$B_N=\left(\begin{smallmatrix}6&4\\0&2\end{smallmatrix}\right)$;
+therefore every integral change in this difference is
+even. The two-primary residue of the three-primary
+gauge can accordingly be kept equal to that of $g_2$.
+Choose $g\in\widehat\Z$ with these two primary
+components and with $g_p=0$ for $p\ne2,3$.
+The element $x=t^{-2}$ has order six in $Q$.
+Consequently $x^g$ restricts to the specified cusp
+gauge in the two- and three-primary extensions.
+Apply its inner conjugation to the glued ungauged
+action, obtaining $S',R'$ with $S'R'=t$.
+
+Put $f=sS'$. Its common $Q$ coordinate is
+\[
+             q(f)=s x^{\bar g}s x^{-\bar g},
+             \qquad \bar g=g\bmod6.
+ \tag{E.15.11}
+\]
+In particular $f$ need not lie in the image of $N$.
+The independent matrix program
+\texttt{de\_adelic\_gauge.py} verifies the identity
+ungauged $Q$ action and (E.15.11) for all 24 pairs.
+For $\bar g=0,4,2$, respectively, its canonical matrix
+representatives in $\mathrm{SL}_2(\Z/12)/\{\pm1\}$ are
+\[
+ I,\qquad
+ \begin{pmatrix}1&4\\4&5\end{pmatrix},\qquad
+ \begin{pmatrix}1&8\\8&5\end{pmatrix}.
+\]
+The exact abelianization formula is
+\[
+ \operatorname{ab}_F(sx^g Sx^{-g})
+       =\operatorname{ab}_F(sS)+(-g,g).
+ \tag{E.15.12}
+\]
+At two and three the selected gauges make this zero.
+At every other prime the ungauged action is identity,
+and $g_p=0$, so it is zero there also. In those
+components the final action is inner by $x^g$; its
+image can have nontrivial prime-to-$p$ order dividing
+six, exactly as (E.15.11) requires. Hence $f$ has zero
+full $F$-abelianization. Since $\gamma_3N\subset F'$,
+the kernel of the resulting map to
+$\widehat F^{\rm ab}=\widehat\Z^2$ is the image of
+$\widehat F'$, and $f$ belongs to that image.
+Both order equations hold in every component. The
+exact hexagon equivalence of E.9 now supplies compatible
+gentle shadows. Generation holds on each normal Sylow
+kernel by its Frattini map at two and three and by
+the specified inner maps at the other primes; it also
+holds on $Q$. Each finite map is therefore an
+automorphism. The two- and three-primary reductions
+recover the prescribed CM matrix pair, proving the family.
+
+Every subgroup in (E.15.1) contains $\gamma_3N$.
+The map to $A_5$ in E.5 sends that subgroup onto
+$A_5$, so its common refinement factors through none
+of these quotients. This explicit comparison leaves
+the cofinal lifting problem of E.2 unresolved.
+\end{proof}
+
+\begin{statement}{E.16}{Proved}{Simultaneous extension through every nonabelian simple quotient}
+Let $\Sigma$ be any finite collection of epimorphisms
+$\theta:B\twoheadrightarrow S_\theta$ to nonabelian finite
+simple groups, and put
+\[
+ K_{j,\Sigma}=\gamma_3N\,N^j\cap
+                \bigcap_{\theta\in\Sigma}\ker\theta,
+ \qquad 6\mid j.
+ \tag{E.16.1}
+\]
+Every one of the 24 CM matrix pairs has a compatible family
+of gentle shadows at the inverse images of these subgroups
+in $B_3$, with multiplier one, as $j$ increases by
+divisibility and $\Sigma$ increases by inclusion.
+Thus the class-two families of E.15 extend simultaneously
+through all these nonabelian simple quotients.
+For each fixed epimorphism $B\twoheadrightarrow R$ to
+an arbitrary finite perfect group, they also extend
+compatibly in $j$ through
+$\gamma_3N\,N^j\cap\ker(B\to R)$.
+
+The finite solvable quotient
+$B/(\gamma_4N\,N^5)$ is not a quotient, through the natural
+map from $B$, of any $B/K_{j,\Sigma}$. This gives a precise
+remaining finite comparison outside this enlarged family.
+\end{statement}
+\begin{proof}
+Write $E_j=B/(\gamma_3N\,N^j)$ and let $R_\Sigma$ be the
+image of $B$ in $\prod_{\theta\in\Sigma}S_\theta$.
+The latter is a product of nonabelian simple groups,
+with repeated diagonal factors identified. To prove this,
+adjoin the simple factors one at a time. The kernel of
+projection to the previous factors, viewed in the new
+simple group, is either the whole group or trivial.
+In the first case the new group is a direct product.
+In the second, the new factor is a simple quotient of
+the preceding product and is the graph of an isomorphism
+from one of its simple factors. This proves the claim
+by induction. In particular $R_\Sigma$ is perfect.
+
+The group $Q$ is solvable. Indeed,
+$\mathrm{SL}_2(\Z/12)$ is the product of its reductions
+modulo four and three. The kernel of reduction
+$\mathrm{SL}_2(\Z/4)\to\mathrm{SL}_2(\F_2)$ is an
+elementary abelian group of order eight, and the target
+is $\mathfrak S_3$. The other factor has a normal
+quaternion group of order eight with cyclic quotient
+of order three. Passing to the quotient by $\{\pm I\}$
+preserves solvability. Since the kernel of $E_j\to Q$
+is nilpotent, $E_j$ is solvable as well.
+
+The image of $B$ in $E_j\times R_\Sigma$ projects
+onto both factors. For a subdirect product $H\subset U\times V$,
+put $U_0=\{u:(u,1)\in H\}$ and
+$V_0=\{v:(1,v)\in H\}$. Sending one coordinate of a
+pair in $H$ to the other defines an isomorphism
+$U/U_0\simeq V/V_0$. Here that common quotient is
+both solvable and perfect, hence trivial: the derived
+series of a solvable perfect group is simultaneously
+constant and eventually trivial. Therefore
+\[
+                    B/K_{j,\Sigma}\simeq E_j\times R_\Sigma.
+ \tag{E.16.2}
+\]
+The same argument applies to the image of $F'$.
+First $F$ maps onto $R_\Sigma$, since $B/F\simeq
+\mathfrak S_3$ and a quotient of a perfect group that
+is solvable is trivial. Then $F'$ also maps onto
+$R_\Sigma$, which is perfect. Its image in $E_j$ is
+solvable, so its joint image is the product of its two
+images.
+
+For each E.15 shadow use its automorphism on $E_j$
+and the identity on $R_\Sigma$. Under (E.16.2) the
+conjugator is $(f_j,1)$, which is in the image of
+$F'$ by the preceding paragraph. Both hexagons hold
+coordinatewise with multiplier one, and the product
+map is an automorphism. These constructions commute
+with every transition map. Equivalently, compactness
+applied to the joint images of $\widehat F'$ gives
+one lift of the compatible pair $(\{f_j\},1)$.
+This proves the claimed compatible family.
+For one fixed arbitrary perfect target $R$, the same
+subdirect-product and $F'$ arguments apply directly
+to $E_j\times R$ and give the additional assertion.
+For a collection of such targets the proof above
+uses perfection of their \emph{joint image}; the
+simple-factor induction proves exactly that property
+for the simultaneous family in (E.16.1).
+
+For the final comparison set $L=\gamma_4N\,N^5$.
+It is characteristic in $N$, hence normal in $B$,
+and has finite index because $N$ is finitely generated
+and its class-three exponent-five quotient is finite.
+The quotient $B/L$ is solvable. Every homomorphism
+from (E.16.2) to a solvable group kills $R_\Sigma$,
+since its image is perfect. Therefore a factorization
+of the natural map $B\to B/L$ through (E.16.2)
+would factor through $E_j$ and kill $\gamma_3N$.
+
+Here is an explicit word that it does not kill.
+Send the first two free generators of $N$ to
+\[
+ a=I+E_{12}+E_{34},\qquad b=I+E_{23}
+                    \quad\hbox{in }U_4(\F_5),
+\]
+and send the others to the identity. The target has
+class three and exponent five: commutators add
+superdiagonal degrees, and $(I+A)^5=I$ for a strictly
+upper triangular $4\times4$ matrix $A$ in
+characteristic five. With $[a,b]=aba^{-1}b^{-1}$,
+direct multiplication gives
+$[[a,b],a]=I+2E_{14}\ne I$.
+The program \texttt{de\_solvable\_barrier.py}
+checks these literal matrices. Hence
+$[[n_0,n_1],n_0]\in\gamma_3N\setminus L$,
+contradicting that factorization. This proves the
+claimed finite comparison and the exact scope of
+the enlarged family.
+\end{proof}
+
+\input{sections/E_ferrari_agent}

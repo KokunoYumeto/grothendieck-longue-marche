@@ -1,0 +1,2572 @@
+\subsection{Geometric classes and the cyclotomic centralizer}
+
+We retain the tangent at $O$ with parameter $z/x$ and tangent one.
+All inertia groups in this section are their images in the geometric
+pro-$3$ group $N$.  We write $\kappa$ for continuous pro-$3$ Kummer
+classes.  A cuspidal section means a section contained in the
+decomposition group of a lifted cusp, with geometric conjugacy taken
+in the group actually displayed.  The manuscript comparison is
+\S51.16, folios 733v--736v, scans 172--178, formulas (371)--(379).
+
+\begin{statement}{B.1}{Proved}{The three abelian cusp packets, with their framed origins}
+Put $J=J_{E,D}$ and use the frame coordinates of LM7 (E24.4).
+Let $z_P$ be the framed line bundle $\mathcal O(P-O)$ with frames
+$(x/z)^{-1}$ at $P$, $z/x$ at $O$, and the canonical section at the
+other cusps.  Define $z_Q$ in the same way from $Q_c-O$, using $y/z$
+at $Q_c$.  Put $\alpha_P=\kappa(z_P)$, $\alpha_Q=\kappa(z_Q)$ and
+$\alpha_O=0$.  The three packets in $H^1(G_{\mathbb Q},V)$ are
+\[
+ \mathscr P_d^V=\alpha_d+e_d\,\mathcal R_{\mathbb P}(\mathbb Z_3),
+ \qquad d=O,P,Q_c.                                      \tag{B.1}
+\]
+Here $e_d\,\mathcal R_{\mathbb P}(\mathbb Z_3)$ denotes the image of
+the continuous homomorphism on cohomology induced by the
+$G_{\mathbb Q}$-equivariant inclusion
+$\mathbb Z_3(1)\to V$, $1\mapsto e_d$.
+
+The torus-point relation specifying the second framed origin is
+\[
+ z_P+z_Q=
+ (3^{-1},3^{-1},-\lambda^{-1},-\lambda^{-1},\zeta\lambda^{-2}).
+                                                               \tag{B.2}
+\]
+In the presentation (E24.7), eliminate the first $\lambda$-generator
+and retain $z'$.  Write $g_2,g_3$ for the remaining two
+$\lambda$-generators and $\tau_3$ for $\zeta$ in the third quadratic
+factor.  After pro-$3$ completion the origins have toric coordinates
+zero, divisible-cohomology coordinate zero, and remaining coordinates
+\[
+ \alpha_P=\kappa(z'),\qquad
+ \alpha_Q=\kappa(2z'+g_2+g_3-\tau_3).                   \tag{B.3}
+\]
+The inertia maps in the original frame coordinates are
+\[
+ \begin{split}
+ i_O(u)&=(u^{-1},u^{-1},u^{-1},u^{-1},u^{-1}),\\
+ i_P(u)&=(u,1,1,1,1),\qquad i_Q(u)=(1,u,1,1,1).
+ \end{split}                                               \tag{B.4}
+\]
+Their images under the two coordinate-unit characters are respectively
+$(-\kappa u,-\kappa u)$, $(\kappa u,0)$ and $(0,\kappa u)$.
+The three sets in (B.1) are pairwise disjoint, and each displayed
+parameter map is injective.
+\end{statement}
+\begin{proof}
+The tangential Albanese class at $d$, relative to the tangent at $O$,
+is represented in the generalized Picard group by
+$\mathcal O(d-O)$ with its local parameter frames.  This description
+can be obtained directly from the divisor construction: replace $d$
+and $O$ by points with local parameters $s_d$ and $s_O$, take the
+line bundle of their difference, and divide its local frames by the
+leading powers $s_d^{-1}$ and $s_O$.  The resulting fibers at the
+reduced boundary are the displayed frames.  Applying multiplication
+by $3^n$ identifies the finite abelian path torsor with the torsor of
+$3^n$-division points of this framed line bundle.  The inverse limit
+therefore gives its Kummer class in $T_3J=V$.
+Changing the nonzero tangent at $d$ multiplies its local root system
+by the root system of a scalar $u$ and changes the abelian cocycle by
+$e_d\kappa(u)$.  The same description applies to an arbitrary
+continuous section of the cusp decomposition extension, because that
+extension is $\mathbb Z_3(1)\rtimes G_{\mathbb Q}$ and its section
+classes are $H^1(G_{\mathbb Q},\mathbb Z_3(1))$.
+
+We verify the origin calculation.  The rational function
+\[
+ h=\frac{x+y+z}{x+y}
+\]
+has divisor $P+Q_c-2O$.  Its leading values are $-1$ after division
+by $x/z$ at $P$, $-1$ after division by $y/z$ at $Q_c$, and $-3$
+after multiplication by $(z/x)^2$ at $O$.  On the representatives
+$[0:-\zeta:1]$, $[-\zeta:0:1]$ and $[1:-\zeta:0]$ its values,
+normalized by $-3$, are
+$-\lambda^{-1},-\lambda^{-1},\zeta\lambda^{-2}$.
+These are exactly (B.2).  The expansions follow, for example, from
+$y/z=-(1+(x/z)^3)^{1/3}$ near $P$.  The relation
+$3=-\zeta^2\lambda^2$ verifies the three quadratic values without
+choosing complex approximations.
+
+For comparison, multiplication by
+$(x+z)/(x+y)$ trivializes $\mathcal O(3Q_c-3O)$ and gives
+\[
+ 3z_Q=(3^{-1},-3^{-2},-\lambda^{-2},-\lambda^{-1},
+                                  \zeta\lambda^{-3}).       \tag{B.5}
+\]
+Together with (E24.6), this checks the cube of (B.2) in all five
+coordinates.  The program \texttt{code/bc\_checks.py} verifies all
+these identities over the exact field $\mathbb Q[\zeta]$.
+
+Signs disappear in pro-$3$ Kummer theory: $-1$ has compatible
+rational $3^n$-th roots.  Relation (E24.7) then reads
+$3z'=-g_1-2g_2-3g_3+2\tau_3$.  The quadratic coordinates in (B.2)
+are $-g_1-g_2-2g_3+\tau_3$.  Subtracting $z'$ and eliminating $g_1$
+gives $2z'+g_2+g_3-\tau_3$, proving (B.3).
+The last factor of (E24.1) is zero because these are Kummer classes
+of actual rational generalized-Jacobian points; we use the splitting
+there with its rational-point completion as kernel.
+
+Normalizing the frame at $O$ to one gives (B.4).  Applying (E24.4)
+gives the three asserted toric images; the quadratic norm of a
+rational scalar is its square.  These images prove injectivity of
+each parameter map.  Filling all cusps gives the continuous
+$G_{\mathbb Q}$-equivariant quotient $V\twoheadrightarrow T_3E$.
+It sends the packets to the point classes of $O,P,Q_c$, respectively.
+Their pairwise differences have exact order three.  Reduction at two
+embeds rational odd torsion into $E(\mathbb F_2)$, which has order
+three, as checked by the program.  Consequently none of these
+nonzero differences is three-divisible in $E(\mathbb Q)$, and its
+modulo-three Kummer class is nonzero.  This proves disjointness.
+\end{proof}
+
+\begin{statement}{B.7}{Proved}{Every nontrivial tame inertia in a full section is cuspidal}
+Let $q\ne3$ be a rational prime, put $k=\mathbb Q_q$, and
+use the actual pro-three fundamental group $N$ of the marked
+Fermat cubic with the integral unit tangent at $O$ as origin.
+For a continuous section $s:G_k\to N\rtimes G_k$, its
+restriction to inertia is either trivial or has image in one
+cuspidal inertia subgroup.  In the latter case the whole
+section is contained in that cusp's decomposition group.
+The cusp is $k$-rational and the lifted cusp is unique.
+Moreover, a full section is unramified at $q$ exactly when
+its image in $V$ is unramified there.
+\end{statement}
+\begin{proof}
+The marked curve and the tangent have good reduction at $q$.
+Thus the original based action of inertia on $N$ is trivial,
+by prime-to-$q$ specialization.  Its cocycle restriction is
+a homomorphism.  Wild inertia, being pro-$q$, maps to one;
+the only tame factor which can map to $N$ is $\mathbb Z_3(1)$.
+Let $t=s(\tau_q)$ denote the geometric value on a generator
+of that factor, and assume $t\ne1$.  If
+$F=s(\phi_q)$ is the full Frobenius lift, the section relation
+is the exact group equality
+\[
+                         FtF^{-1}=t^q.                      \tag{B.7.1}
+\]
+
+Take a characteristic open normal subgroup $M$ of $N$ and put
+$H=M\overline{\langle t\rangle}$.  Such $M$ form a cofinal
+family, since $N$ is finitely generated.  Equation (B.7.1)
+and the characteristic property of $M$ show that $H$ is
+stable under $s(G_k)$.  The open arithmetic subgroup
+$H\,s(G_k)$ is therefore the subgroup of the pro-three
+arithmetic fundamental group defining a finite etale cover
+$Y_H\to U_k$.  Its geometric group is $H$, by the exact
+finite-three-group cover comparison proved in B.4.
+
+We justify the reduction property needed for weights.
+The subgroup $H\,s(G_k)$ contains the original arithmetic
+inertia: its geometric cocycle values are powers of $t$,
+which lie in $H$.  Original inertia centralizes $N$, so it
+acts trivially on every coset in $N/H$.
+The cover consequently descends to the smooth marked
+integral model by prime-to-$q$ specialization.  Its
+compactification is smooth and proper over the valuation
+ring.  Locally at a boundary point this last assertion is
+the tame normalization $z^e=x$ after an unramified extension,
+with $e$ prime to $q$; away from the boundary it is etale.
+These charts are exactly the tame-cover specialization
+comparison, also obtained from the logarithmic comparison
+in Stix, Theorem 3.4.6 \cite{BC_Stix2002}.
+
+Let $X_H$ be this compactification.  The boundary sequence
+(B.8), with $\mathbb Z_3$ coefficients, is equivariant for
+the actual arithmetic Frobenius $F$ of this descended cover.
+The image of $t$ in $T_3J_{X_H}$ satisfies $Fv=qv$ by
+(B.7.1).  All Frobenius eigenvalues on this Tate module
+have complex absolute value $\sqrt q$, by Deligne,
+Theorem (1.6) \cite{BC_Deligne1974}, applied in degree one
+to the smooth proper special fiber.  The Tate module of
+its Jacobian has these same eigenvalues for arithmetic
+Frobenius, by the Abel--Jacobi comparison and the dual
+Weil pairing.  Thus $v=0$.
+The image of $t$ in $H^{\rm ab}$ is in the boundary submodule.
+
+The cyclic finite three-group $H/M$ is generated by the image
+of $t$.  Its homomorphism from $H^{\rm ab}$ consequently maps
+the boundary submodule onto all of $H/M$.  At least one
+individual cusp inertia maps onto this cyclic group: otherwise
+every such image would be in its unique maximal subgroup.
+It follows that $t$ fixes a cusp in the boundary set of the
+normal cover associated to $M$.
+The inverse images of these finite fixed-cusp sets in
+$\coprod_d N/I_d$ are nonempty closed subsets with the
+finite-intersection property.  Compactness gives a lifted
+cusp fixed by $t$ at every level, so $t$ belongs to its
+actual inertia group $I_{\widetilde d}$.
+
+Distinct cusp inertia groups have trivial intersection by
+the boundary and cover argument in B.4.  Hence this lifted
+cusp is unique.  Equation (B.7.1) shows that $F$ normalizes
+$I_{\widetilde d}$, because its image has the nontrivial
+element $t^q$ in common with that group.  Its normalizer is
+the cusp decomposition group, again by the explicit
+stabilizer argument in B.4.  The inertia image and $F$
+topologically generate the image of the local section;
+therefore that whole image lies in the decomposition group.
+Its projection is all $G_k$, forcing $d\in D(k)$.
+
+Finally the inclusion $I_{\widetilde d}\to V$ sends its
+generator to the primitive nonzero boundary vector $e_d$.
+It is injective.  Thus $t\ne1$ has nonzero abelian image,
+while a trivial full inertia image certainly has trivial
+abelian image.  This proves the last assertion.
+\end{proof}
+
+\begin{statement}{B.8}{Proved}{The exact local image of ramified full sections in class two}
+With $k=\mathbb Q_q$, $q\ne3$, let $A=N/\gamma_3N$.
+For each $d\in D(k)$ choose the coordinate unit tangent
+used in C.10, its actual section $s_{d,1}$, and a peripheral
+generator $c_d$ based at $O$.  The ramified part of the image
+of full sections in $\operatorname{Sec}_k(A)$ is precisely
+the disjoint union
+\[
+ \coprod_{d\in D(k)}
+ \left\{
+  \left[g\longmapsto
+    c_d^{\kappa_q(u)(g)}s_{d,1}(g)\right]:
+  u\in k^{\times\wedge_3},\ v_q(u)\ne0
+ \right\}.                                                   \tag{B.8.1}
+\]
+Here the expression is multiplication in the arithmetic
+group, followed by its actual class-two quotient.
+Its parameter space is explicitly
+\[
+ k^{\times\wedge_3}
+   =\mathbb Z_3\kappa(q)\oplus\mu_{3^{v_3(q-1)}}(k).
+                                                               \tag{B.8.2}
+\]
+There are nine packets for $q\equiv1\pmod3$ and three for
+$q\equiv2\pmod3$.  In the central cuspidal lattice
+$I/[N,I]=\mathbb Z_3(1)[D]$ the tame vector of a packet is
+$v_q(u)c_d$, with exactly this one cusp coordinate nonzero.
+In particular the mixed-inertia counterexamples in A.5 and
+A.6 cannot lift to full $N$.
+\end{statement}
+\begin{proof}
+The decomposition extension for a rational cusp is
+$\mathbb Z_3(1)\rtimes G_k$ using its unit tangent.
+Its sections modulo inertia conjugacy are the Kummer group
+(B.8.2).  The decomposition inclusion is a continuous
+homomorphism of actual arithmetic groups; after quotienting
+the geometric group it gives exactly (B.8.1).
+The Kummer cocycle equation and
+$s_{d,1}(g)c_ds_{d,1}(g)^{-1}=c_d^{\chi_3(g)}$
+verify directly that the displayed product is a section.
+The unit-tangent section is unramified, and the tame
+Kummer exponent is $v_q(u)$, giving the stated ramification
+condition.  Every displayed class has its full cuspidal
+lift.  Conversely B.7 puts every ramified full section in
+one of these decomposition extensions.
+
+To check that the displayed parametrization remains
+injective in class two, first pass to a finite unramified
+extension splitting all cusps.  The boundary inclusion
+$e_d:\mathbb Z_3(1)\to W$ is then split, and
+$H^1(k,W)\to H^1(k,V)$ is injective because
+$T_3E^{G_k}=0$.  Restriction on the Kummer group is
+injective by the same invariant argument as C.10.
+Thus two parameters at the same cusp cannot coincide.
+Different cusps map in the proper elliptic quotient to
+the Kummer classes of different three-torsion points.
+Reduction at $q\ne3$ injects three-primary torsion into
+the finite group $E(\mathbb F_q)$; its nonzero elements
+are not divisible by every power of three.  The formal
+group is pro-$q$, on which multiplication by three is
+invertible.  Hence a nonzero difference of two cusp
+points has nonzero integral local Kummer class, proving
+disjointness.
+
+The decomposition of $k^\times$ into a uniformizer,
+the roots of unity of order $q-1$, and principal units
+gives (B.8.2), since the principal units are pro-$q$.
+The two possible cusp counts follow from the actual
+field of the six nonrational cusps, $\mathbb Q(\zeta_3)$.
+Projection to $I/[N,I]$ sends the peripheral generator
+to its indicated basis element, proving the tame-vector
+formula.  The vectors in A.5 and A.6 involve
+$c_O+c_P$ and therefore do not have this form.
+\end{proof}
+
+\begin{statement}{B.9}{Proved}{All inherited class-two cusp origins}
+Use exactly the diagonal coordinates of LM7 E.29 for $H$,
+based at the lifted cusp $P$ over $t=0$, and put
+\[
+       f(g)=\frac{\chi_3(g)^2-1}{24}\in\mathbb Z_3(2).
+                                                               \tag{B.9.1}
+\]
+The three rational cusp packets in $\operatorname{Sec}(H)$
+have the following continuous cocycle representatives:
+\[
+ \begin{array}{c|ccc}
+ &u(g)&v(g)&w(g)\\ \hline
+ P&\kappa(a)(g)&0&0\\
+ Q_c&0&\kappa(a)(g)&f(g)\\
+ O&-\kappa(a)(g)&-\kappa(a)(g)&f(g)/2
+ \end{array}
+ \qquad a\in\mathbb Q^{\times\wedge_3}.                    \tag{B.9.2}
+\]
+Each row is injectively parametrized and the rows are
+pairwise disjoint.  Above inherited abelian class $(0,0)$
+the three unit tangents give, respectively, the central
+labels $0,2,1\in\mathbb Z/3$ relative to
+$g\mapsto(\chi_3(g)^2-1)/3$.
+The actual arithmetic map from the intrinsic group based
+at $O$ to this $H$-extension is
+\[
+ (n,g)\longmapsto
+    \bigl(q_O(n)(0,0,f(g)/2),g\bigr),                       \tag{B.9.3}
+\]
+after the geometric path choices in the proof.
+Thus (B.9.2) retains the change of section origin between
+the $O$ and $P$ base points.
+\end{statement}
+\begin{proof}
+Write $t=-u_0^3$, $1-t=-v_0^3$ for the cubic cover of the
+tripod, with $u_0=x/z$, $v_0=y/z$.
+The standard path from the unit tangent at zero to the
+unit tangent at one lifts from $P$ to $Q_c$: along the
+real interval its cube roots are
+$u_0=-t^{1/3}$ and $v_0=-(1-t)^{1/3}$.
+It reaches exactly the displayed rational cusps.
+At either end the lifted local parameter has tangent
+minus one relative to $u_0$ or $v_0$.
+Changing that sign has zero pro-three Kummer class,
+with the explicit compatible rational roots
+$(-1)^{1/3^n}=-1$.  The local decomposition-section
+comparison therefore changes no section class.
+
+Let $X,Y$ be the logarithms of the standard tripod loops
+and $C=[X,Y]$.  The $H$ lattice is
+$\mathbb Z_3(3X)\oplus\mathbb Z_3(3Y)\oplus\mathbb Z_3 C$.
+Wickelgren's evaluation of the standard path cocycle in
+the subsection ``Evaluating the 2-nilpotent quotient of
+$\mathfrak f$'', equation
+$f(\sigma)=(\chi(\sigma)^2-1)/24$
+\cite{BC_Wickelgren2012}, says that the section at $Q_c$
+has central cocycle $fC$ relative to $P$.
+The sign follows from the actual action convention
+$g(y)=\mathfrak f_g^{-1}y^{\chi(g)}\mathfrak f_g$:
+the lift $\mathfrak f_gs_P(g)$ conjugates $y$ to its
+$\chi(g)$-th power.  Thus the $P,Q_c$ origins and their
+peripheral generators are $0,fC$ and $3X,3Y$.
+
+Consider the rational coordinate interchange
+$(x,y,z)\mapsto(y,x,z)$ on the cubic.  It covers
+$t\mapsto1-t$, interchanges $P,Q_c$, and fixes $O$.
+Transporting the fundamental group along the same
+standard path gives an actual automorphism of the
+arithmetic $H$-extension.  Its geometric map swaps the
+two abelian coordinates and negates $C$, and its change
+of arithmetic origin is $fC$.  There are no additional
+linear central terms in its geometric map: because
+$fC$ is central, the geometric map commutes with the
+diagonal $G_{\mathbb Q}$-action; a term from weight one
+to weight two would satisfy $(\chi-\chi^2)c=0$ and
+therefore is zero in the torsion-free lattice.
+Consequently the exact automorphism is
+\[
+ ((u,v,w),g)\longmapsto((v,u,-w+f(g)),g).                   \tag{B.9.4}
+\]
+Its formula also checks directly that it is a continuous
+group homomorphism and that its square is the identity.
+It preserves $H$ because the covering subgroup is the
+kernel of the two abelian coordinates modulo three.
+
+At $O$, use the local parameter $s=z/x$.
+The regularized leading terms of $u_0,v_0$ are $1,-1$;
+thus the inherited abelian class of the unit tangent is
+zero.  Conjugating by an element of $H$ makes its
+abelian cocycle identically zero.  Its remaining class
+is some $h\in H^1(G_{\mathbb Q},\mathbb Z_3(2))$.
+The coordinate interchange takes $s$ to $z/y$, whose
+leading coefficient at $O$ is $-1$.  The rational root
+comparison above makes these two pro-three tangent
+sections conjugate.  Since (B.9.4) acts on central
+classes by $h\mapsto-h+[f]$, we obtain
+$2h=[f]$.  Multiplication by two is invertible on this
+group, so $h=[f/2]$.  A central geometric conjugation
+then chooses the representative $f/2$.
+
+We also check the inertia generator in this gauge.
+Its abelian coordinates are $(-1,-1)$, since both
+$u_0$ and $v_0$ have a simple pole in $s$.
+Write its central coordinate as $w_0$.
+The section just chosen is central, so its cyclotomic
+normalization of the inertia generator and the
+diagonal action give $\chi(g)^2w_0=\chi(g)w_0$ for
+every $g$.  The lattice is torsion-free and the
+character is nontrivial, hence $w_0=0$.
+This determines the actual inertia image and avoids
+an unsupported choice of a conjugate of $(xy)^{-3}$.
+Twisting each of the three sections by its Kummer
+parameter now gives (B.9.2), using the displayed group
+law of E.29.  For each row the two abelian entries are
+proportional, so that its BCH cross term is zero.
+Equation (B.9.3) is the arithmetic map with exactly
+the calculated image of the intrinsic reference
+section; centrality of that image makes its geometric
+part $q_O$ equivariant for the stated diagonal action.
+
+Finally $H^1(G_{\mathbb Q},\mathbb Z_3(2))=\mathbb Z/3$
+with generator $(\chi_3^2-1)/3$ by E.29m.
+The coefficients $1/8$ and $1/16$ reduce to $2$ and
+$1$ modulo three.  The three abelian packet lines
+meet only at zero, and their central classes there
+are distinct.  This proves all injectivity and
+disjointness assertions.  The exact rational-arithmetic
+program \texttt{code/bc\_h\_packets.py} verifies the
+BCH automorphism, the three cocycle identities and
+the three distinct central labels; its output is
+included alongside the code.
+\end{proof}
+
+\begin{statement}{B.10}{Proved}{The full global image at the specified prime seven}
+Let $A=N/\gamma_3N$, and use the normalized pair coordinates
+$(a,b)$ and the $A^c$-action of A.15 for sections supported
+at $\{3,7,\infty\}$.  Such a class has a full $N$-lift
+exactly in the following cases:
+\[
+ b=1,
+ \quad\text{or its restriction to }G_{\mathbb Q_7}
+       \text{ belongs to one of the nine ramified packets (B.8.1).}
+                                                               \tag{B.10.1}
+\]
+Equivalently these are precisely the classes which lift to
+every lower-central quotient.  A full lift can be chosen
+unramified outside $\{3,7,\infty\}$.
+
+Here is an exact packet parametrization in the pair
+coordinates.  Fix the embedding $\zeta_3\equiv2\pmod7$,
+a Frobenius $\phi$ fixing compatible roots of $7$, and the
+actual unit-tangent values $g_d=s_{d,1}(\phi)\in A$.
+Use the same based inertia element $c_d\in A$ in each case.
+The ramified part of the global image is
+\[
+ \left\{
+  \bigl[(c_d^{2j}g_d,c_d^v)\cdot h\bigr]:
+    d\in D(\mathbb Q_7),\quad
+    v\in\mathbb Z_3\setminus\{0\},\quad j\in\{0,1,2\},
+    \quad h\in A/A^c
+ \right\}.                                                   \tag{B.10.2}
+\]
+Here $(a,b)\cdot h=(h^{-1}aF(h),h^{-1}bh)$, so $A/A^c$
+means right cosets, and the displayed parameters are
+injective after these explicit choices.  The symbols
+$g_d$ retain the actual tangential Frobenius origins;
+they are not replaced by arbitrary solutions of a
+graded normalization equation.
+\end{statement}
+\begin{proof}
+The exact isomorphism of arithmetic groups in A.14 and
+the normalized-cocycle construction in A.15 identify
+every global class with the asserted pair.
+If $b=1$, lift $a$ arbitrarily to $\widetilde a\in N$
+and take $\widetilde b=1$.  The full tame equation holds,
+and A.15 extends this pair to the required global section.
+If $b\ne1$ and a full section exists, B.7 forces its
+local restriction to be cuspidal.  Conversely a local
+cuspidal class in (B.8.1) has its actual full local lift.
+Conjugate this lift by a lift in $N$ of the geometric
+element comparing its class-two image to the specified
+pair $(a,b)$.  Its generator values then project to
+that exact pair.  A.15 extends them, with their conjugate
+values on the second local factor, to a full normalized
+global section.  This proves both directions of
+(B.10.1), including the ramification support.
+The nilpotent assertion follows either from A.15's
+compactness proof or from B.11 below.
+
+For (B.10.2), the completed local Kummer group is
+$\mathbb Z_3\kappa(7)\oplus(\mathbb Z/3)\kappa(\zeta_3)$.
+Choose compatible roots of $\zeta_3$.  Its unramified
+cocycle is $(\chi_3-1)/3$, which has value two at
+$\phi$ and value zero on tame inertia.
+The uniformizer cocycle has values zero and one there.
+The full decomposition-group formula of B.8 therefore
+gives exactly the pair $(c_d^{2j}g_d,c_d^v)$.
+Taking $j+3$ instead changes the pair by conjugation
+with $c_d$, so the three chosen representatives cover
+precisely the unit parameter group.
+
+Different $d,v,j$ have different local section classes
+by B.8.  Within each local class the geometric
+centralizer in $A$ is trivial: its abelian image would
+be fixed by Frobenius on $V$, and its remaining central
+image would be fixed on $\bigwedge^2V$; the respective
+eigenvalue absolute values are $\sqrt7,7$ and
+$7,7^{3/2},49$, all greater than one.
+Thus the full $A$-conjugacy orbit of that local pair
+is freely parametrized by $h\in A$.
+The normalized global conjugacies are exactly $A^c$
+by A.15, acting on the right.  This proves the stated
+right-coset parametrization and its injectivity.
+\end{proof}
+
+\begin{statement}{B.11}{Proved}{No new ramification above class two and compactness for a finite set of primes}
+Let $S$ be any finite set of rational places containing
+$3$ and infinity, and let $s_2$ be a class-two section
+unramified outside $S$.  Every lift of $s_2$ to
+$N/\gamma_rN$, $r\ge3$, is unramified outside the same
+set $S$.  Moreover the following assertions are equivalent:
+\[
+ \begin{gathered}
+ s_2\text{ lifts to }N;\\
+ s_2\text{ lifts to }N/\gamma_rN\text{ for every }r\ge3.
+ \end{gathered}                                               \tag{B.11.1}
+\]
+The separately given nilpotent lifts need not be
+compatible.  The conclusion supplies a compatible
+continuous full lift, also unramified outside $S$.
+\end{statement}
+\begin{proof}
+For each $r$, iterated commutators give a continuous
+$G_{\mathbb Q}$-equivariant surjection
+\[
+             V^{\otimes r}\longrightarrow
+                    \gamma_rN/\gamma_{r+1}N.                 \tag{B.11.2}
+\]
+The target is a finite free $\mathbb Z_3$-module.
+This integral assertion follows by Hall collection
+in the free pro-three group: basic commutators of
+weight $r$ span the quotient, and their Magnus
+expansions have the linearly independent leading
+Hall Lie monomials.  Collection at finite exponent
+quotients, followed by compactness, gives the same
+spanning assertion over $\mathbb Z_3$.
+The leading monomials prove independence and exclude
+torsion.  Thus (B.11.2) is the actual integral
+graded comparison being used.
+
+For $q\ne3$, Frobenius eigenvalues on $V$ have weights
+one and two: on the elliptic factor their absolute
+values are $\sqrt q$ and on the boundary factor they
+are $q$.  The eigenvalues on (B.11.2) are therefore
+among products of $r$ such eigenvalues.  For $r\ge3$
+their absolute values are at least $q^{r/2}>q$.
+This eigenvalue conclusion is valid for a quotient
+of the tensor representation and does not assume
+semisimplicity of the extension defining $V$.
+
+Suppose a lift from class $r-1$ to class $r$ acquires
+inertia at a prime outside $S$.  Its geometric
+inertia values lie in the central kernel
+$\gamma_rN/\gamma_{r+1}N$ and, as in B.7, factor
+through the tame three-part.  The exact tame relation
+requires its value $t$ to satisfy $F_qt=qt$;
+conjugation by the section's Frobenius value acts
+trivially on this central kernel.  For $r\ge3$ the
+preceding eigenvalue calculation and torsion-freeness
+give $t=0$.  Induction starting at the fixed class-two
+section proves that every higher nilpotent lift has
+the asserted support.
+
+Let $K_0=\mathbb Q(\zeta_3)$ and let $S'$ be its
+places over $S$.  The relative pro-three quotient
+$\Gamma_S$ of $G_{\mathbb Q,S}$ has kernel
+$G_{K_0,S'}(3)$ and quotient of order two.
+That pro-three kernel is finitely generated: its
+$\mathbb F_3$-characters form the finite Kummer group
+of $S'$-units and the finite three-primary ideal
+class group.  The finite-dimensional Frattini
+quotient generates a pro-three group, by the same
+finite-quotient maximal-subgroup argument used in A.14.
+Thus $\Gamma_S$ is finitely generated.
+The actual geometric action factors through it, as
+proved in A.15 from the three-group action on the
+Frattini quotient of $N$.  Every cocycle under
+consideration also factors through $\Gamma_S$:
+over $K_0$ its graph is a homomorphism to a
+pro-three semidirect product.
+
+Fix generators $g_1,\ldots,g_m$ of $\Gamma_S$ and
+a cocycle representative of $s_2$ on it.
+Consider the compact space of tuples in $N^m$
+whose projections are its fixed generator values.
+Choose a free profinite presentation on these
+generators, with its closed subgroup of relators.
+For each $r\ge3$, impose all those relators on
+the lifted tuples in
+$(N/\gamma_rN)\rtimes\Gamma_S$.
+These are closed conditions: at any finite quotient
+each profinite word is a continuous function of
+the generator values.  A lift at level $r$ makes
+the resulting closed subset nonempty, after
+conjugating its projection to the fixed representative;
+the required geometric conjugator lifts because
+$N/\gamma_rN\to N/\gamma_3N$ is surjective.
+The closed sets are nested.  Compactness supplies
+one tuple satisfying every level of every relator.
+
+The intersection $\bigcap_r\gamma_rN$ is trivial:
+a nontrivial element survives in a finite three-group,
+and that group is nilpotent.  Thus the tuple satisfies
+all relators in $N\rtimes\Gamma_S$ itself and defines
+a continuous section.  Composing with
+$G_{\mathbb Q,S}\to\Gamma_S$ gives the desired full
+cocycle with the prescribed class-two projection.
+This proves the nontrivial implication in (B.11.1);
+the other is induced by the continuous quotient maps.
+\end{proof}
+
+\begin{statement}{B.2}{Refuted}{The inherited class-two image need not be a point or cusp image}
+The exclusion proposed in Lead 1 is false.  There are sections of
+$N\rtimes G_{\mathbb Q}$ whose image in $\operatorname{Sec}(H)$
+has toric coordinates $(\kappa(3),2\kappa(3))$.  Every such image
+lies outside the three rational cusp packets, and $U(\mathbb Q)$
+has no point producing it.  It therefore supplies the asserted
+counterexample already with a full geometric pro-$3$ lift.
+\end{statement}
+\begin{proof}
+We use exactly the onto map in LM7 E.34: the coordinate-unit
+homomorphism on the unramified group
+$H^1(G_{\mathbb Q,\{3,\infty\}},V)$ has image
+$\mathbb Z_3\kappa(3)^2$, and every class in this source lifts to
+the full $N$.  Its projectivity step is checked as follows.
+Over $\mathbb Q(\zeta)$, the maximal pro-$3$ Galois group unramified
+away from three is free on two generators: Kummer theory gives
+the two classes $\zeta,1-\zeta$; the class group of
+$\mathbb Z[\zeta,1/3]$ is zero, and the three-primary Brauer group
+supported at its single omitted finite place is zero by the sum of
+local invariants.  Thus degree-two cohomology with $\mathbb F_3$
+vanishes.  The free-pro-$3$ criterion follows by solving finite
+central embedding problems.  Complex conjugation has order two,
+so averaging gives the same degree-two vanishing for the relative
+semidirect product.  The geometric action and every abelian cocycle
+factor through this relative group: their restrictions over
+$\mathbb Q(\zeta)$ take values in pro-$3$ groups.  Successive finite
+geometric embedding problems therefore have solutions; finite
+generation of the relative group and compactness make them
+compatible.  This is the full-group lifting step used from E.34.
+The direct-summand coordinate-unit map is the explicit algebraic
+section $(a,b)\mapsto(a,b,1,1,1)$ of (E24.4), so its onto property
+requires no further lifting assertion.  These arguments also agree
+with the free-Galois-group mechanism in Hoshi, Theorem 3.5
+\cite{BC_Hoshi2010}; that theorem concerns the specified proper
+Jacobian sections, while the preceding relative-group argument
+is the needed one for all ten coordinates here.
+
+By (B.4), the cusp projections are $(c,0)$, $(0,c)$ and
+$(-c,-c)$, with $c\in H^1(G_{\mathbb Q},\mathbb Z_3(1))$.
+The valuation at three sends the proposed vector to $(1,2)$,
+which lies on none of the three lines, already over $\mathbb F_3$.
+The code verifies this finite separation.  Conjugation in $H$
+does not alter the abelian cohomology class, so no choice of
+central lift can change this conclusion.  LM7's computation
+$E(\mathbb Q)=\{O,P,Q_c\}$ gives $U(\mathbb Q)=\varnothing$.
+
+The drafter's suggested vector
+$\kappa(3)(e_O+e_P)$ does have an intrinsic abelian image outside
+the packets (B.1): its elliptic image is zero and its toric image
+is not diagonal.  Its inherited toric image is
+$(0,-\kappa(3))$, on the $Q_c$ line.  That particular toric
+calculation therefore gives no exclusion in $\operatorname{Sec}(H)$.
+The vector used above supplies the required exclusion there.
+\end{proof}
+
+\begin{statement}{B.3}{Proved}{The cusp packets in the cuspidally central quotient}
+In $N^{\rm cc}=C\times_TV$, let the generator of the central
+$\mathbb Z_3(1)$ of $C$ be the elliptic commutator $[a,b]$.
+Choose the reference $C$-section above the elliptic class zero
+to be the tangent at $O$; above $\kappa(P-O)$ and
+$\kappa(Q_c-O)$ choose the images of the respective unit tangents.
+Use these references for every abelian class in the corresponding
+three elliptic fibers.  With these explicit choices for the
+torsors denoted by $s(\alpha,a)$, the cusp packets are
+\[
+ \begin{array}{c|c|c}
+ d&\alpha&a\\ \hline
+ O&e_O\kappa(u)&-\kappa(u)\\
+ P&\alpha_P+e_P\kappa(u)&0\\
+ Q_c&\alpha_Q+e_{Q_c}\kappa(u)&0
+ \end{array}                                                \tag{B.6}
+\]
+Here $u$ ranges over the full pro-$3$ completion of
+$\mathbb Q^\times$.  This parametrization is injective on each
+row, and the rows have disjoint images.
+\end{statement}
+\begin{proof}
+The morphism $U\hookrightarrow E\setminus\{O\}$ fills the cusps
+$P,Q_c$, so their inertia maps to the identity in $C$.  At $O$,
+the once-punctured elliptic presentation gives
+$c_O=-[a,b]$ in the central lattice of $C$.
+Consequently a cusp twist $\kappa(u)$ changes the $C$-coordinate
+by $-\kappa(u)$ at $O$ and by zero at $P,Q_c$.
+The $V$-coordinate is exactly (B.1).
+The map to $V$ and its already proved packet disjointness and
+parameter injectivity give both remaining assertions.
+\end{proof}
+
+\begin{statement}{B.4}{Proved}{Lead 4 for the full geometric pro-three group}
+For every continuous section
+$s:G_{\mathbb Q}\to N\rtimes G_{\mathbb Q}$ put
+$\Delta=\ker(\chi:G_{\mathbb Q}\to\widehat{\mathbb Z}^{\times})$.
+Then
+\[
+ C_N(s(\Delta))=
+ \begin{cases}
+ I_{\widetilde d},&s\text{ is cuspidal at the lifted cusp }\widetilde d,\\
+ 1,&s\text{ is noncuspidal}.
+ \end{cases}                                                \tag{B.7}
+\]
+In the first case the lifted cusp is unique and its image is one
+of $O,P,Q_c$.  Thus both implications in Lead 4 hold for the
+actual pro-$3$ group, with its genuine section action.
+\end{statement}
+\begin{proof}
+We give the pro-$3$ argument.  No fixed element is lifted from a
+quotient of a full profinite fixed group.
+
+For an open subgroup $H\subset N$, the corresponding finite
+geometric cover has maximal pro-$3$ fundamental group $H$.
+To check this comparison, choose an open normal subgroup
+$M\subset H$ of $N$; $N/M$ is a finite $3$-group and $H/M$ is
+subnormal in it.  Pulling back a subnormal chain expresses the
+cover as a tower of covers of $3$-power degree with normal
+successive groups.  A finite $3$-group quotient of a subgroup
+at one stage becomes a quotient of a finite $3$-group after
+taking the finitely many conjugates and then the extension by
+the stage's $3$-group.  Induction proves that the topology
+induced from the original maximal pro-$3$ quotient is the full
+pro-$3$ topology on the subgroup.  This proves the comparison.
+For its compactification $X_H$ and geometric boundary $D_H$,
+the oriented surface presentation gives the exact sequence
+\[
+ \mathbb Z_3(1)\xrightarrow{\delta}
+ \mathbb Z_3(1)[D_H]\longrightarrow H^{\rm ab}
+ \longrightarrow T_3J_{X_H}\longrightarrow0.                \tag{B.8}
+\]
+Every arrow is a continuous homomorphism, and the last two
+arrows are induced respectively by inertia and by filling the
+cusps.  Its only boundary relation is the diagonal sum.
+
+Each lifted inertia group is $\mathbb Z_3(1)$.  Two distinct
+lifted cusps have inertia groups meeting trivially.  Indeed,
+separate the cusps in a finite normal pro-$3$ cover, refine
+until there are at least three boundary points, and take a
+positive $3$-power of a purported common element so that it
+lies in the cover group.  It remains nonzero in
+$\mathbb Z_3(1)$ and (B.8) puts it on two different boundary
+lines; those lines have zero intersection.  The refinement
+exists because an inertia group has infinite index: an open
+procyclic subgroup would give a hyperbolic cover whose
+abelianization has rank one, contradicting its surface
+presentation.  Normal covers therefore have unboundedly
+many points above a cusp.  The same intersection argument
+shows that the geometric normalizer of nontrivial inertia is
+that inertia group, and its arithmetic normalizer is the
+corresponding cusp decomposition group: a normalizer fixes
+the lifted cusp, and stabilizers are precisely those groups.
+These geometric assertions also agree with Nakamura's
+pro-class statements, Lemmas (2.1.2) and (2.1.4)
+\cite{BC_Nakamura1994}.
+
+Let $z\in C_N(s(\Delta))$.  The action through $s$ on the
+finitely generated pro-$3$ group $N$ has an open stabilizer
+for each open subgroup $H$: a characteristic open subgroup
+inside $H$ reduces the assertion to an action on a finite
+group.  Consequently $H$ is realized by a cover over some
+number field $L$, and $s|_{G_L}$ lifts to that cover when
+$H$ contains $z$.  The image of $z$ in (B.8) is fixed by
+$G_{L(\mu_\infty)}$.
+Ribet's Appendix Theorem 1 \cite{BC_Ribet1981} says that
+an abelian variety over a number field has finite torsion
+over its full cyclotomic extension.  Its consequence here
+is exact: a nonzero invariant vector of $T_3J_{X_H}$ would
+give cyclotomic rational torsion points of unbounded
+$3$-power order.  Thus the image of $z$ in the last term
+of (B.8) is zero.
+
+Apply this to $H=M\langle z\rangle$, for every open normal
+$M\subset N$.  The image of $z$ in $H^{\rm ab}$ belongs
+to the boundary subgroup.  The quotient $H/M$ is cyclic of
+$3$-power order and generated by the image of $z$.
+Its boundary images generate it, and a cyclic $3$-group
+generated by subgroups equals one of those subgroups.
+Thus $z$ fixes a cusp in the cover associated to $M$.
+The finite sets of such fixed cusps are nonempty at every
+normal level.  A common refinement supplies every finite
+set of compatibility requirements; compactness gives a
+lifted cusp $\widetilde d$ fixed by $z$.  Hence
+$z\in I_{\widetilde d}$.
+
+We verify that all nonzero elements of the centralizer
+belong to one inertia group.  More generally let a closed
+subgroup $B\subset N$ consist entirely of inertia elements.
+The set of cusps with $B\cap I_c\ne1$ is $B$-stable.  If
+it were a single orbit while every $B\cap I_c$ were proper,
+$B$ would be a union of conjugates of one proper closed
+subgroup.  A finite quotient in which this subgroup remains
+proper contradicts this: in the finite coset action the
+average number of fixed cosets is one and the identity
+fixes more than one, so some element fixes none.
+We can therefore choose two distinct $B$-orbits of cusps
+unless $B$ is contained in one inertia group.  Compactness
+separates these orbits at a finite normal level $M$; the
+open subgroup $BM$ has two distinct corresponding cusps.
+When it has only two cusps, its compactification has
+positive genus.  Every element of $B$ maps trivially to
+the compactification group.  A degree-three finite
+unramified cover of that compactification consequently
+gives a further open subgroup containing $B$ with six
+cusps.  We have thus arranged at least three cusps while
+keeping the specified two distinct.
+
+Take nonzero $z,z'$ in the two inertia intersections.
+Their boundary images are $ae_1,be_2$, with $a,b\ne0$.
+Both $zz'$ and $z^2z'$ have nonzero boundary image.
+With four or more cusps, neither image can be on a
+single boundary line.  With three cusps, lying on one
+line forces respectively $a=b$ and $2a=b$, a contradiction.
+This contradicts the defining property of $B$ and proves
+the desired single-inertia assertion.
+
+For $C=C_N(s(\Delta))\ne1$, we have proved
+$C\subset I_{\widetilde d}$.  Each $s(\sigma)$,
+$\sigma\in\Delta$, fixes a nonzero element there;
+the inertia-intersection result forces it to fix
+$\widetilde d$.  Its inertia action is $\chi_3(\sigma)=1$,
+so $I_{\widetilde d}\subset C$.  Thus equality holds.
+Normality of $\Delta$ makes $C$ stable under all of
+$s(G_{\mathbb Q})$.  The arithmetic normalizer identity
+puts the entire section in the decomposition group of
+$\widetilde d$.  Its base cusp is rational, and uniqueness
+follows from inertia intersections.  Conversely a
+cuspidal section fixes its inertia over $\Delta$;
+the same argument gives equality in (B.7).
+\end{proof}
+
+\begin{statement}{B.5}{Proved}{The cuspidal members of the full unramified family}
+Let $\mathscr F_S$ be the image of
+$H^1(G_{\mathbb Q,\{3,\infty\}},N)$ in
+$H^1(G_{\mathbb Q},N)$, using the integral tangent at $O$.
+Its cuspidal subset is the disjoint union of the three
+packets obtained by twisting the unit tangents at
+$O,P,Q_c$ by $t\kappa(3)$, $t\in\mathbb Z_3$.
+Every other full section class in $\mathscr F_S$ has
+centralizer $1$ over $\Delta$.  The centralizer of each
+cuspidal member is its complete pro-$3$ inertia group.
+\end{statement}
+\begin{proof}
+The good marked model over $\mathbb Z[1/3]$ and its
+integral nonzero tangents give actions and tangential
+cocycles unramified outside three.  This is the based
+smooth-specialization step used in E.34; the comparison
+is made on covers with their local parameter root
+fiber functors, so it applies to the genuine action.
+For a twist $u\in\mathbb Q^{\times,\wedge_3}$,
+restriction to inertia at $q\ne3$ has abelian value
+$v_q(u)e_d$.  The vector $e_d$ is primitive and nonzero
+in $V$, so a section in $\mathscr F_S$ forces
+$v_q(u)=0$.  Unique factorization in the completed
+Kummer group then gives $u=3^t$, with $t\in\mathbb Z_3$.
+Conversely these twists are unramified outside three.
+Statement B.4 identifies every cuspidal full section
+with exactly one of these packets and computes all
+remaining centralizers.  The abelianized images are
+the three affine lines in B.1 with the parameter
+restricted to $t\kappa(3)$.
+
+This assertion concerns full section classes.
+The surjection from this family to its abelianized
+classes in E.34 need not have one-point fibers.
+An abelian class outside the three displayed lines
+has exclusively noncuspidal full lifts.  We have not
+deduced cuspidality of every lift above a point on one
+of those lines.
+\end{proof}
+
+\begin{statement}{B.12}{Proved}{The marked local classification when the filled-curve projection is unramified}
+Let $k/\mathbb Q_q$ be finite, $q\ne3$, with residue cardinality
+$Q$, and let $d=Q_c$ be the marked cusp. Write
+\[
+ \mathscr Q=N/\gamma_3I_{\rm mark},\qquad
+ B=N/I_{\rm mark},\qquad
+ \mathscr I=I_{\rm mark}/\gamma_3I_{\rm mark},\qquad
+ Z=\gamma_2I_{\rm mark}/\gamma_3I_{\rm mark}.
+ \tag{B.12.1}
+\]
+All groups carry the actual arithmetic action, and the
+quotient $B$ is the full geometric pro-three group of the
+curve obtained by filling $d$.
+Choose tame three-inertia $\tau$, arithmetic Frobenius
+$\phi$, the peripheral generator $c$ at $d$, and the
+unit tangential reference $s_{d,1}$ compatibly.
+Put $F_0=s_{d,1}(\phi)$.
+The induced based action $\Phi$ of $F_0$ on $B$ is
+the action of the point $d$ on the filled curve.
+There are actual equivariant identifications
+\[
+ M:=\mathscr I^{\rm ab}
+     =\mathbb Z_3[[B]](1),\qquad
+ Z=\widehat{\bigwedge}^{\,2}M,\qquad
+ (F_0)_M=Q\Phi,\quad (F_0)_Z=Q^2\widehat{\bigwedge}^{\,2}\Phi.
+ \tag{B.12.2}
+\]
+Here the completed modules are inverse limits over finite
+continuous partitions of the profinite label set $B$;
+the label $1$ is the chosen lift of the marked cusp.
+
+Every local section of $\mathscr Q$ whose projection to $B$
+is unramified and whose tame inertia is nontrivial has,
+up to geometric conjugation, exactly the following form:
+\[
+ s(\tau)=c^a,\qquad s(\phi)=c^r\exp(z)F_0,
+ \quad
+ \begin{cases}
+ a\in\mathbb Z_3\setminus\{0\},\\
+ r\in\mathbb Z_3/(Q-1)\mathbb Z_3,\\
+ [z]\in\mathcal C_{k,d}:=
+ Z/(Q^2\widehat{\bigwedge}^{\,2}\Phi-1)Z .
+ \end{cases}                                                \tag{B.12.3}
+\]
+In particular its $B$-section is the point section at $d$.
+The quotient in (B.12.3) uses the actual image; that image
+is closed because $Z$ is compact.
+Every displayed parameter occurs, and two displayed
+sections are conjugate exactly when all three parameters
+agree.
+
+Under $\mathscr Q\to N/\gamma_3N$, their image is exactly
+the ramified local cusp packet at $d$. For each member of
+that packet the entire local fiber is the group
+$\mathcal C_{k,d}$, acting simply transitively after the
+displayed reference is fixed.
+Finally a local marked section whose abelian tame inertia
+in $V$ is zero is itself unramified.
+\end{statement}
+\begin{proof}
+The filling map gives a geometric free product
+$N=B*_3\langle c\rangle$ after a choice of free lift
+of $B$. Its normal kernel is the free pro-three group on
+the profinite set of lifted marked points, a torsor under
+$B$. The two inverse semidirect-product maps used in
+F.25, now with $b\mapsto bcb^{-1}$, prove this assertion
+for the actual filling kernel. The maximal class-two
+quotient consequently has abelianization
+$\mathbb Z_3[[B]](1)$ and center its completed exterior
+square. Finite partitions and the finite-rank Hall basis
+prove these assertions and their inverse-limit
+compatibility. Galois permutes the labeled inertia
+generators, up to conjugacy and cyclotomic power.
+This proves (B.12.2); at the distinguished label the
+unit tangent also gives the exact equality
+$F_0cF_0^{-1}=c^Q$.
+
+We record the fixed-point and measure facts needed below.
+For any unramified $B$-section, every positive power of
+its Frobenius automorphism has fixed subgroup one in $B$.
+On $B^{\rm ab}$ the eigenvalues have complex absolute
+values $Q$ or $\sqrt Q$; the same assertion for the
+degree-$r$ lower-central quotient follows from its
+equivariant Hall injection into $(B^{\rm ab})^{\otimes r}$.
+Inner twists do not change the action on this graded
+quotient. Thus no such power has eigenvalue one in any
+positive degree. The intersection of the closed lower
+central groups is one, as finite three-group quotients
+are nilpotent. This proves the fixed-subgroup assertion
+for the full $B$.
+It follows that an affine Frobenius action on a $B$-torsor
+has at most one point fixed by any given positive power.
+A finite orbit must therefore be a single fixed point,
+and there is at most one such point in total.
+
+The closure of that affine action is virtually pro-three.
+Indeed the translation subgroup is pro-three and the
+kernel of the action on the Frattini quotient of the
+finitely generated free pro-three group is pro-three.
+An integer power removes the finite prime-to-three part.
+For an invariant $\mathbb Z_3$-measure on such a torsor,
+all mass outside its possible single periodic point is
+zero. The same assertion holds with $\mathbb F_3$
+coefficients. To see this precisely, stabilize a clopen
+set avoiding the periodic point by an open subgroup
+of the pro-three closure. Every orbit there is infinite.
+For any $n$, compactness supplies a finite invariant
+partition on which every orbit has size divisible by
+$3^n$. Pushforward sums make the measure of the
+clopen set divisible by $3^n$; over $\mathbb F_3$
+one step already makes it zero.
+This is the integral measure argument of F.25, applied
+to the actual permutation action.
+
+Now let the projection of $s$ to $B$ be unramified.
+Wild inertia and the tame factors other than three
+map trivially to the geometric pro-three group.
+Write $t=s(\tau)\in\mathscr I$ and $F=s(\phi)$,
+so $FtF^{-1}=t^Q$.
+On $M$ the action of $F$ is $Q\Psi$ for the affine
+Frobenius on the marked-point path torsor. The image
+$m$ of $t$ therefore satisfies $\Psi m=m$.
+The measure argument makes $m=a\delta_x$ for an actual
+fixed label $x$, or makes it zero when there is no such
+label.
+
+When $m=0$, the element $t$ is in $Z$.
+The fixed relation says
+$(Q\widehat{\bigwedge}^{\,2}\Psi-1)t=0$ after dividing
+by the unit $Q$. This operator is injective.
+On every finite label quotient the permutation has
+finite order, so all its eigenvalues are roots of
+unity; none becomes one after multiplication by
+the rational integer $Q>1$. Tensoring with $\mathbb Q_3$
+therefore proves injectivity on that finite free lattice.
+The inverse-limit comparison in (B.12.2) then proves
+injectivity on $Z$. Hence $t=1$.
+
+For nontrivial $t$ we consequently have $a\ne0$.
+The fixed path $x$ is exactly an isomorphism between
+the projected section and the point section at the
+filled point $d$: on inertia both actions are trivial
+by good marked reduction, and on the unramified
+quotient it is the displayed Frobenius fixed-path
+condition. Conjugate by a lift of that path in
+$\mathscr Q$. The label becomes $1$, the $B$-projection
+is the specified point section, and $F=hF_0$ with
+$h\in\mathscr I$.
+
+Use the integral class-two logarithm, with its sole
+denominator two, and set $e=\delta_1$.
+Write
+\[
+                   t=(ae,z),\qquad b=h_{\rm ab}.
+ \]
+The equality $F_0cF_0^{-1}=c^Q$ removes any central
+origin term on the line $\mathbb Z_3e$.
+Class-two collection now gives the exact equation
+\[
+       (Q\widehat{\bigwedge}^{\,2}\Phi-1)z
+                           =a\,e\wedge b.                  \tag{B.12.4}
+\]
+In fact $F_0t=(Qae,Q^2(\bigwedge^2\Phi)z)$ and
+conjugating by $h$ adds $aQ\,b\wedge e$; comparison
+with $t^Q=(Qae,Qz)$ gives (B.12.4).
+
+Augmentation and the fixed label give the equivariant
+splitting $M=\mathbb Z_3e\oplus M^0$.
+Projection of (B.12.4) to
+$\widehat{\bigwedge}^{\,2}M^0$ is zero, by the same
+finite-permutation eigenvalue argument. Thus
+$z=e\wedge v$ for a unique $v\in M^0$, and
+\[
+                     (Q\Phi-1)v=a b^0,
+           \qquad b^0=b-\operatorname{aug}(b)e.             \tag{B.12.5}
+\]
+The operator $Q\Phi-1$ on $M^0$ is injective modulo
+three. If $Q=1\bmod3$, its kernel consists of
+$\Phi$-invariant $\mathbb F_3$-measures; if
+$Q=-1\bmod3$, every element of its kernel is fixed
+by $\Phi^2$. Either way the measure argument supports
+it only at $1$, and augmentation zero removes that
+last possibility. Reduction of the completed module
+commutes with the finite label inverse limits:
+compatible lifts exist by compactness, or by the
+surjective transition maps of the finite free
+modules.
+Writing $a=3^s u$ with $u$ a unit, repeated reduction
+of (B.12.5) now gives $v\in3^sM^0=aM^0$.
+For a lift $h_1$ of $v/a$, the explicit conjugation
+$t\mapsto h_1t h_1^{-1}$ changes $t$ to $c^a$.
+This is an integral divisibility argument; no
+division by a nonunit has been assumed.
+
+An element of $\mathscr Q$ centralizing $c^a$ must
+have trivial $B$-image, because the action of $B$
+on the label torsor is free and
+$a\delta_b=a\delta_1$ forces $b=1$.
+Inside $\mathscr I$, the commutator equation is
+$a e\wedge h_{\rm ab}=0$. Torsion-freeness and the
+augmentation splitting give $h_{\rm ab}\in\mathbb Z_3e$.
+Consequently the exact centralizer is
+\[
+                         C_{\mathscr Q}(c^a)
+                                  =\langle c\rangle Z.     \tag{B.12.6}
+\]
+The relation with $F_0$ puts $F F_0^{-1}$ in this
+centralizer, giving precisely $c^r\exp(z)F_0$.
+Conjugating by $c^u\exp(z')$ changes the two
+Frobenius parameters by
+$(Q-1)u$ and $(Q^2\bigwedge^2\Phi-1)z'$.
+There is no cross term, since $Z$ is central in
+$\mathscr I$ and $c$ commutes with it.
+Abelianization fixes $a$, and (B.12.6) proves that
+these are all possible identifications.
+Conversely every displayed pair satisfies the
+tame relation. Continuous powering gives the
+homomorphism on the procyclic unramified quotient,
+and the tame semidirect-product presentation gives
+an actual continuous local section. This proves
+(B.12.3).
+
+All conjugates of the marked generator have the
+same image $e_d$ in $V$. Their pairwise commutators
+therefore vanish in $\gamma_2N/\gamma_3N$.
+Thus the actual quotient homomorphism sends
+$Z=\gamma_2I_{\rm mark}/\gamma_3I_{\rm mark}$ to one
+in $N/\gamma_3N$. Formula (B.12.3) has exactly the
+stated class-two cusp image.
+Conversely, any marked section above a ramified
+class-two cusp at $d$ has zero abelian inertia in
+the filled group. The full local theorem B.7 for
+that filled curve makes its $B$-projection unramified,
+so the preceding classification includes its entire
+fiber.
+The same argument starts from any marked section
+with zero inertia in $V$: its $B$-projection is
+unramified, while $a e_d=0$ forces $a=0$.
+The already proved zero-$m$ case then makes $t=1$.
+\end{proof}
+
+\begin{statement}{B.13}{Proved}{The central marked local fiber is a countable product of three-adic integers}
+The group $\mathcal C_{k,d}$ in (B.12.3) is a nonzero,
+torsion-free, compact metrizable $\mathbb Z_3$-module.
+After a choice of divisible basis of its discrete dual,
+there is a continuous $\mathbb Z_3$-linear isomorphism
+\[
+                         \mathcal C_{k,d}
+                                  \simeq\prod_{n\ge1}\mathbb Z_3 .
+                                                               \tag{B.13.1}
+\]
+The coordinates in (B.13.1) depend on that stated choice;
+the quotient and the section action in (B.12.3) are
+intrinsic to the displayed reference.
+In particular there are actual local marked sections
+with the same ramified class-two cusp image which
+are not cuspidal and have no full-$N$ lift.
+\end{statement}
+\begin{proof}
+Let $D=Q^2\bigwedge^2\Phi-1$.
+The completed exterior square identifies with the
+antisymmetric direct summand of
+$\mathbb Z_3[[B\times B]]$ by the idempotent
+$(1-\mathrm{swap})/2$.
+Modulo three, $D$ is $\bigwedge^2\Phi-1$.
+The only periodic point of $\Phi$ on $B$ is $1$,
+so the only periodic point on $B\times B$ is
+$(1,1)$. The invariant-measure argument of B.12
+makes every invariant $\mathbb F_3$-measure a
+multiple of $\delta_{(1,1)}$. Its antisymmetric
+part is zero. Thus $D$ is injective modulo three.
+
+If $3z=Dv$, reduction modulo three gives $v=3v_1$,
+and cancellation in the torsion-free module $Z$
+gives $z=Dv_1$. This proves that the cokernel has
+no three-torsion, and hence no torsion at all.
+It is compact and metrizable because $B$ is a
+finitely generated pro-three group, its finite
+characteristic quotients form a countable cofinal
+family, and all the coefficient quotients are
+finite. The image $DZ$ is compact and closed.
+
+We prove infinite rank with actual finite quotient
+maps. Put $V_B=B^{\rm ab}$, of rank nine, and
+$\Omega_n=V_B/3^nV_B$.
+The homomorphism $B\to\Omega_n$ induces a continuous
+surjection
+\[
+ Z/3Z\longrightarrow\bigwedge^2\mathbb F_3[\Omega_n].
+ \]
+It sends $D$ to $\bigwedge^2\Phi_n-1$, and therefore
+induces a surjection from $\mathcal C_{k,d}/3$ onto
+the coinvariants of that finite permutation module.
+If $m$ is the order of $\Phi$ on $V_B/3$, its order
+on $\Omega_n$ divides $m3^{n-1}$: expand the powers
+of the integral matrix $\Phi^m=1+3A$.
+The exterior basis vectors
+$\delta_0\wedge\delta_v$, $v\ne0$, form an invariant
+direct summand. No orbit reverses its orientation,
+because $\Phi_n$ fixes $0$ and does not send a
+nonzero vector to $0$.
+Their coinvariants have one independent vector
+for each orbit, and consequently dimension at least
+\[
+                      \frac{3^{9n}-1}{m3^{n-1}} .
+ \]
+This tends to infinity. A concrete nonzero test
+already at $n=1$ takes a rational unmarked cusp
+vector $v$ and sums the coefficients on
+$\delta_0\wedge\delta_v$ and, when distinct, on
+$\delta_0\wedge\delta_{-v}$.
+Frobenius multiplies that cusp vector by $Q$,
+so the sum kills $D$ modulo three and takes the
+value one on an actual central commutator
+$[c,bcb^{-1}]$ whose label $b$ maps to $v$.
+
+For an explicit description of the isomorphism in
+(B.13.1), let $\mathcal C^\vee$ be the group of
+continuous characters of $\mathcal C_{k,d}$ into
+$\mathbb Q_3/\mathbb Z_3$.
+It is countable and three-primary.
+Injectivity of multiplication by three on
+$\mathcal C_{k,d}$ makes multiplication by three
+surjective on $\mathcal C^\vee$, so the latter
+is divisible. This dual assertion can be checked
+without a continuity assumption left implicit:
+a finite-valued character on the closed subgroup
+$3\mathcal C_{k,d}$ factors through its image in
+a finite quotient of $\mathcal C_{k,d}$, and extends
+there because $\mathbb Q_3/\mathbb Z_3$ is divisible.
+Pulling that finite character back supplies the
+continuous extension.
+Choose a basis of its subgroup killed by three,
+and compatible successive division chains for
+these basis elements. Independence and exhaustion
+follow by induction on the order of a character;
+this gives an isomorphism
+$\mathcal C^\vee\simeq\bigoplus_{n\ge1}
+ \mathbb Q_3/\mathbb Z_3$.
+The index set is countably infinite by the
+unbounded finite dimensions just proved.
+Evaluation on those chosen division chains is
+the continuous homomorphism in (B.13.1).
+Duality, or separation of points by finite
+characters followed by compactness, proves
+that it is an isomorphism.
+
+The cuspidal class with the parameters $a,r$
+has $[z]=0$. By B.12 a nonzero $[z]$ cannot
+be removed by any geometric conjugation, so
+it is not cuspidal. A full local lift would be
+cuspidal by B.7, and would retain that property
+under the actual quotient to $\mathscr Q$.
+Thus these sections have no full lift.
+\end{proof}
+
+\begin{statement}{B.14}{Proved}{The complete local marked image and the unmarked ramified fibers}
+Retain the local data and actual quotients of B.12.
+If the projection of a section of $\mathscr Q$ to $B$
+is ramified, that section is itself cuspidal at a
+unique unmarked cusp $d'\in D(k)\setminus\{d\}$.
+For a fixed ramified $B$-section the lift to
+$\mathscr Q$, up to geometric conjugation, is unique
+and is the image of its actual full cusp section.
+
+Consequently the complete local image of
+$\operatorname{Sec}_k(\mathscr Q)$ in
+$\operatorname{Sec}_k(N/\gamma_3N)$ equals the
+local full image: all unramified classes and the
+disjoint ramified cusp packets of B.8.
+The fiber over a ramified unmarked cusp class is
+a singleton; the fiber over a ramified marked
+cusp class is exactly the group $\mathcal C_{k,d}$
+of B.12--B.13.
+\end{statement}
+\begin{proof}
+By the full local theorem B.7 applied to the
+filled curve, a ramified projected section is
+cuspidal at an unmarked rational cusp $d'$.
+Filling $d$ is an isomorphism on the inertia
+and tangent data at $d'$. Thus this projected
+section has an actual full cusp lift, which we
+choose as reference. It remains to prove that
+every lift to $\mathscr Q$ is conjugate to that
+reference.
+
+Let $X$ be the profinite torsor of paths on the
+filled curve from this reference at $d'$ to the
+filled point $d$. In these coordinates
+$M=\mathbb Z_3[[X]](1)$.
+The geometric inertia image of the reference
+is $J_0=\langle c_{d'}^a\rangle\simeq\mathbb Z_3$,
+with $a\ne0$. It acts freely on $X$ by translation,
+and diagonally on $X\times X$.
+Both are pro-three actions without finite orbits.
+The integral measure lemma therefore gives
+$M^{J_0}=0$ and
+$(\mathbb Z_3[[X\times X]])^{J_0}=0$.
+Taking the antisymmetric direct summand gives
+$Z^{J_0}=0$ as well.
+
+We justify continuous cohomology and orbit
+coinvariants with these compact coefficients.
+For a procyclic three-group generated by $T$
+acting continuously on a compact pro-three
+module $A$, evaluation at $T$ gives
+\[
+              H^1_{\rm cts}(J_0,A)=A/(T-1)A.               \tag{B.14.1}
+\]
+Every value $x\in A$ defines a continuous cocycle:
+its norm sum at $T^{3^n}$ tends to zero in every
+finite coefficient quotient, since on that
+quotient the action has three-power order
+and the repetitions are eventually divisible
+by its exponent. These finite cocycles are
+compatible and give the stated continuous
+cocycle. Coboundaries are exactly $(T-1)A$;
+this image is compact and closed.
+In the permutation module case, pushforward
+of measures gives an actual isomorphism
+\[
+ M/(T-1)M
+               \simeq\mathbb Z_3[[J_0\backslash X]](1).
+                                                               \tag{B.14.2}
+\]
+At each finite continuous invariant partition,
+permutation coinvariants are the free module
+on its orbits. Inverse limits preserve this
+description: the finite systems of correcting
+elements have compact solution sets, so the
+kernel of pushforward is the actual closed
+image $(T-1)M$. Equivalently the universal
+continuous homomorphism from the completed
+free module to an orbit-constant module has
+exactly this kernel.
+The same construction for $X\times X$ commutes
+with the idempotent $(1-\mathrm{swap})/2$,
+and hence computes $Z/(T-1)Z$ as the corresponding
+antisymmetric direct summand of the orbit module.
+
+Let $\Psi$ denote the actual Frobenius permutation
+on $J_0\backslash X$.
+The induced Frobenius action on (B.14.1) contains
+an inverse factor $Q$: conjugation sends
+$T$ to $T^Q$, so the pullback of a cocycle
+evaluated at the generator is multiplied by
+$Q^{-1}$ in coinvariants.
+On $M$ the coefficient action has factor $Q$.
+Thus the action on (B.14.2) is precisely $\Psi$,
+with no remaining Tate factor.
+
+There are no finite $\Psi$-orbits.
+We construct the map proving this assertion.
+Filling all remaining punctures maps the full
+pro-three group of the filled curve onto $T_3E$.
+On path torsors it gives a continuous equivariant
+map from $X$ to the proper path torsor from
+$d'$ to $d$. The group $J_0$ maps to one in
+$T_3E$, because it is peripheral inertia.
+The map consequently descends to
+$J_0\backslash X$.
+A point there periodic under $\Psi^n$ would
+give a fixed point of the proper path torsor
+under Frobenius to the $n$th power.
+Original arithmetic inertia already acts
+trivially on this torsor by good reduction.
+Such a fixed point would make the completed
+Kummer class of $d-d'$ zero over the finite
+unramified degree-$n$ extension of $k$.
+
+That difference is a nonzero three-torsion
+point of $E$. At every finite extension of
+a local field of residue characteristic
+different from three, the reduction kernel
+is pro-residue-characteristic and the
+three-primary completion of $E(k')$ is its
+finite three-primary torsion subgroup.
+In particular its nonzero three-torsion
+point remains nonzero in that completion.
+The inverse-limit Kummer injection then
+makes its class nonzero in $H^1(k',T_3E)$.
+Being divisible once, or several times,
+in a larger finite group would not make
+this completed class zero. This proves
+the required absence of periodic points.
+
+The Frobenius action on the compact quotient
+set is virtually pro-three, as in B.12.
+Its invariant integral measure group is
+therefore zero. Equations (B.14.1)--(B.14.2)
+show
+\[
+             H^1_{\rm cts}(G_k,M)=0.                       \tag{B.14.3}
+\]
+For precision, the unramified quotient causes
+no additional term: its possible first
+cohomology term has coefficient $M^{J_0}=0$.
+One can obtain the same conclusion without
+invoking a spectral sequence. If the inertia
+cocycle is a coboundary, remove it. The tame
+relation then makes the Frobenius value
+$J_0$-invariant, hence zero. Wild and
+non-three tame inertia have no nonzero
+homomorphism to these compact pro-three
+modules.
+
+For $Z$ the inverse-$Q$ factor on (B.14.1)
+removes one of its two coefficient Tate
+factors. Thus Frobenius acts on
+$Z/(T-1)Z$ by $Q$ times the permutation
+of the diagonal-$J_0$ orbit set in
+$X\times X$, restricted to the antisymmetric
+summand. This group has no invariant vector.
+On each finite invariant partition,
+a cycle of length $h$ would force
+$(Q^h-1)v=0$ in a free $\mathbb Z_3$-module,
+which implies $v=0$.
+The inverse-limit orbit-module comparison
+then gives the same vanishing integrally.
+There is no extra orbit reversal: if a
+translation in $J_0$ sends $(x,y)$ to
+$(y,x)$, its square fixes $x$; freeness
+and the absence of order-two elements in
+$J_0$ imply $x=y$.
+Together with $Z^{J_0}=0$, this proves
+\[
+                      H^1_{\rm cts}(G_k,Z)=0.              \tag{B.14.4}
+\]
+
+The difference between two lifts of the
+fixed $B$-section is a continuous
+$\mathscr I$-cocycle, for the reference
+action just used.
+By (B.14.3) its image in $M$ is a
+coboundary. Lift a correcting element
+from $M$ to $\mathscr I$ and conjugate
+the section. Its cocycle now has values
+in the central subgroup $Z$.
+Equation (B.14.4) removes this last
+cocycle by a central conjugation.
+This proves uniqueness of the actual
+cusp lift in the ramified projected case.
+
+If a class-two section is unramified,
+choose any lift of its geometric
+Frobenius value to $\mathscr Q$.
+Continuous powering defines an
+unramified lift on the procyclic
+unramified Galois quotient.
+The ramified cases are exactly B.12
+and the case just proved, giving the
+full image assertion.
+For a ramified unmarked cusp class,
+its projected $B$-section is the unique
+cusp class determined by its class-two
+image: the nonzero inertia line identifies
+the cusp, and the completed local
+Kummer parameter is already injective
+in the abelian cusp packet.
+The uniqueness above therefore gives
+the singleton fiber.
+The marked fiber is precisely B.12--B.13.
+The class-two tame identity, the correcting-conjugation
+sign, and the finite orbit-sum certificates for the
+nonzero marked central fiber are checked in
+\texttt{code/bc\_marked\_checks.py} and its output.
+\end{proof}
+
+\begin{statement}{B.15}{Proved}{An explicit cleaned Heisenberg detector at seven}
+Put $k=\mathbb F_7(\theta)$, $\theta^3=2$, and write
+$[a,b,c]=a+b\theta+c\theta^2$.  On
+$E_k:y^2+y=x^3$, let $\zeta=2$ and
+\[
+ \begin{split}
+ P&=(3,2),\qquad P^-=(3,4),\\
+ Q&=([4,1,1],[2,0,2]),\\
+ S&=([0,6,5],[1,4,3]),\\
+ T_1&=([3,3,3],[6,2,2]),\qquad T_2=-T_1 .
+ \end{split}                                               \tag{B.15.1}
+\]
+The following functions are explicit:
+\[
+ \begin{aligned}
+ a&=\frac{x^2+[1,6,5]x+[0,1,4]+[4,4,4]y}{x-3},&
+ b&=x-3,\\
+ f_1&=\frac{x^2+[2,3,5]x+[6,4,6]+[6,1,6]y}
+                  {x-[3,3,3]},\\
+ f_2&=\frac{x^2+[2,3,5]x+[0,3,0]+[1,6,1]y}
+                  {x-[3,3,3]},\\
+ m&=\frac{x^2+[2,5,2]x+[6,2,2]+[2,4,5]y}
+                  {x-[3,3,3]},&
+ f&=\frac{m}{f_1f_2^2(x-[3,3,3])}.
+ \end{aligned}                                             \tag{B.15.2}
+\]
+Define $p(v)=\sum_{i=0}^5p_iv^i$ and
+$h(v)=\sum_{i=0}^3h_iv^i$ by
+\[
+ \begin{array}{c|rrrrrr}
+ i&0&1&2&3&4&5\\ \hline
+ p_i&[3,0,0]&[0,6,6]&[6,1,5]&[4,0,2]&[4,1,2]&[1,5,4]\\
+ h_i&[6,1,4]&[6,0,1]&[2,0,0]&[1,5,4]&&
+ \end{array}                                               \tag{B.15.3}
+\]
+In $k(E)(v)$ with $v^3=b$, put
+\[
+ u(v)=\frac{p(v)+y}{v h(v)},\qquad
+ r=f\,u(v)u(\zeta v)^2.                                    \tag{B.15.4}
+\]
+Then
+\[
+              v^3=b,\qquad w^3=a,\qquad z^3=r               \tag{B.15.5}
+\]
+defines a connected Galois cover of degree $27$, with
+Heisenberg group of exponent three.  It is finite \'etale
+over $U_k=E_k\setminus E_k[3]$.
+The actual deck generators are
+\[
+ \begin{array}{c|ccc}
+       &v&w&z\\ \hline
+ \sigma&\zeta v&w&u(\zeta^2v)z/w\\
+ \tau&v&\zeta w&z\\
+ \rho&v&w&\zeta z ,
+ \end{array}
+ \qquad [\sigma,\tau]=\rho.                                 \tag{B.15.6}
+\]
+For the Fermat tangent parameter $s$ at $O$, the first
+two radicals retain the leading coefficient $9$, whose
+reduction is $2$.  The cleaned central radical satisfies
+$r\sim s^4$.  Thus the based Puiseux choices are
+\[
+ v\sim\theta s^{-2/3},\qquad
+ w\sim\theta s^{-2/3},\qquad
+ z\sim s^{4/3}.                                            \tag{B.15.7}
+\]
+There is also an explicit Frobenius transport on the
+compositum of the three coefficient-conjugate covers.
+Let a superscript $[j]$ mean raising every coefficient
+to $7^j$, with $j$ read modulo three, and use the same
+choices (B.15.7) for $w_j,z_j$.  The arithmetic
+Frobenius at the framed tangent is
+\[
+ \begin{split}
+ \Phi(v)&=\zeta^2v,\qquad
+ \Phi(w_j)=\zeta^2w_{j+1},\\
+ \Phi(z_j)&=
+       \frac{\zeta w_{j+1}z_{j+1}}
+                    {u^{[j+1]}(\zeta v)},\qquad
+ \Phi^3=1 .
+ \end{split}                                               \tag{B.15.15}
+\]
+\end{statement}
+\begin{proof}
+All coefficients in this proof are computed in the
+displayed finite field.  The group law gives
+$3Q=P$ and $3S=T_2$.  The function $a$ is the normalized
+Miller function
+\[
+                  \operatorname{div}(a)=3(Q)-(P)-2(O).
+                                                               \tag{B.15.8}
+\]
+For example, multiplying the tangent line at $Q$ and the
+line through $2Q,Q$, and dividing by the vertical lines
+at $2Q,P$, gives (B.15.2); the common factor
+$x-x(2Q)$ cancels in both numerator components.
+This is an equality of rational functions with the
+retained tangent leading coefficient, rather than an
+identification of divisor classes.
+
+The full norm identity is
+\[
+                    N_{k(E)(v)/k(E)}u=a.                  \tag{B.15.9}
+\]
+Here is a direct finite calculation of it.  Write
+\[
+ R(B)=[6,1,0]+[0,3,1]B+[0,2,2]B^2+[5,4,0]B^3.
+\]
+Expansion using $y^2+y=x^3$, $v^3=x-3$ gives
+\[
+ N(p(v)+y)=a(x-3)R(x-3),\qquad N(h(v))=R(x-3).
+                                                               \tag{B.15.10}
+\]
+Since $N(v)=x-3$, (B.15.9) follows without a scalar
+ambiguity.  The norm calculation can also be checked by
+the cubic identity
+$N(A+Bv+Cv^2)=A^3+bB^3+b^2C^3-3bABC$.
+
+We next exhibit the removal of every auxiliary
+ramification point.  The cubic $h$ is irreducible over
+$k$.  Let $\alpha$ be its root and let
+\[
+ R_i=(\alpha^3+3,-p(\zeta^i\alpha)),\qquad i=1,2.
+                                                               \tag{B.15.11}
+\]
+These are points of $E(k(\alpha))$; the candidate with
+$i=0$ does not lie on $E$.  Their Frobenius orbits have
+degree three.  Denote the associated closed-point
+divisors by $\mathcal R_1,\mathcal R_2$.
+Exact addition of the three conjugates gives
+$\operatorname{Tr}(R_i)=T_i$.
+The two successive line constructions for
+$R_i+R_i^{343}+R_i^{343^2}=T_i$ give precisely $f_i$:
+\[
+ \operatorname{div}(f_i)=\mathcal R_i-(T_i)-2(O).
+                                                               \tag{B.15.12}
+\]
+The coefficients descend to $k$ after cancellation of
+the intermediate vertical factor; they are the
+coefficients displayed in (B.15.2).
+Likewise $m$ is the normalized Miller function with
+divisor $3(S)-(T_2)-2(O)$.  Since $T_1=-T_2$, the
+vertical function has divisor
+$(T_1)+(T_2)-2(O)$.  Therefore
+\[
+ \operatorname{div}(f)
+       =3(S)+6(O)-\mathcal R_1-2\mathcal R_2.               \tag{B.15.13}
+\]
+
+At $\mathcal R_i$, the valuations modulo three of
+$u(v)u(\zeta v)^2$ are $i$, on all three sheets.
+For example at $v=\alpha$ the denominator contributes
+$-1$, and the numerator contributes $1$, $2$, or $0$
+according to whether its zero occurs at
+$\alpha,\zeta\alpha$, or $\zeta^2\alpha$.
+The two actual points have indices $1,2$, giving
+residues $1,2$.  Formula (B.15.13) cancels them.
+At the three lifts of $Q$ the numerator orders are
+$0,0,3$; the
+central valuations are therefore multiples of three.
+The extra zero $S$ in (B.15.13) also has order three.
+Equations (B.15.8)--(B.15.10) list all other zeros and
+poles: they lie over $P,P^-,O$.  The first two cubic
+extensions are unramified at all interior points, and
+the last radical now has valuation divisible by three
+there.  Since the residue characteristic is seven,
+the normalized cover is \'etale over $U_k$.
+
+For completeness, the field degrees and deck morphisms
+can be verified directly.  The classes of $a,b$ in
+$k(E)^\times/k(E)^{\times3}$ are independent: the
+valuation at $P^-$ first forces the coefficient of $b$
+to vanish, and the valuation at $P$ then forces the
+coefficient of $a$ to vanish.  Hence $[k(E)(v,w):k(E)]=9$.
+Writing $\sigma(v)=\zeta v$, (B.15.9) gives
+\[
+             \frac{\sigma(r)}r
+                   =\frac{u(\zeta^2v)^3}{a}.              \tag{B.15.14}
+\]
+If $r$ became a cube in $k(E)(v,w)$, the Kummer kernel
+would give $r=a^j c^3$ in $k(E)(v)$ for some $j$.
+Applying $\sigma$ and (B.15.14) would make
+$a=(u(\zeta^2v)c/\sigma(c))^3$ in $k(E)(v)$, contradicting
+the independence just proved.  The last degree is
+therefore three.
+Equations (B.15.14) and (B.15.9) prove that (B.15.6)
+preserves all defining equations, that $\sigma^3=1$,
+and that $[\sigma,\tau]=\rho$.  These are actual
+automorphisms of the degree-$27$ field.
+
+Finally use $t=-x/y\sim s/3$ at $O$.
+The functions $a,b,f_1,f_2,m$ and the vertical factor
+all have leading term $9s^{-2}$.  Thus
+$u(v)\sim v$ and $f\sim s^6/3^6$.
+The original central radical has leading term
+$\zeta^2\,9s^{-2}$, so after the twist its coefficient
+is $\zeta^2\,9/3^6=1$ in $k$ and its exponent is four.
+This proves (B.15.7).  In particular no replacement of
+the minimal-model tangent constant by $36$ is made.
+
+To prove the last assertion, embed the fields in the
+Puiseux field using (B.15.7).  Coefficientwise seventh
+power, fixing $s^{1/3}$, acts on $k((s^{1/3}))$ with
+order three, and fixes the Laurent expansions of
+$x,y$.  It sends the chosen leading coefficient
+$\theta$ to $\theta^7=\zeta^2\theta$.
+Moreover (B.15.9) gives the exact identity
+\[
+ \frac{r^{[j]}(\zeta^2v)}{r^{[j]}(v)}
+       =\frac{a^{[j]}}{u^{[j]}(\zeta v)^3}.
+\]
+Thus the proposed image of $z_j$ in (B.15.15) has the
+correct cube.  Its leading coefficient is one, because
+$w_{j+1}/u^{[j+1]}(\zeta v)$ has leading coefficient
+$\zeta^{-1}$.  The uniqueness of the chosen cube root
+with this leading coefficient proves the formula.
+It respects every relation among the conjugate covers,
+since it is the restriction of the actual coefficient
+automorphism of the ambient Puiseux field.  Iterating
+three times gives $w_j^3/N(u^{[j]})=1$ in the multiplier
+of $z_j$, verifying $\Phi^3=1$ directly as well.
+
+The exact polynomial identities, the finite-field
+extensions, the three-conjugate additions, and the
+displayed coefficients are independently replayed by
+\texttt{code/bc\_miller\_norm\_rr.py} and
+\texttt{code/bc\_miller\_heisenberg.py}, with their saved
+JSON and text outputs.  This explicit based cover is a
+detector for the remaining central-action calculation;
+its construction and the conjugate-cover morphism
+(B.15.15) do not by themselves assign its central
+monodromy values on an uncomputed fixed Schreier basis.
+\end{proof}
+
+\begin{statement}{B.16}{Proved}{The integral depth-one map through the cyclic-nine cover}
+Let $F$ be the free pro-three group on the standard
+tripod inertia generators $x,y$, with
+$[x,y]=xyx^{-1}y^{-1}$.
+For $f\in F'$ write its metabelian image as
+$[x,y]^{h(X,Y)}$, where $X=x-1$, $Y=y-1$ act by
+conjugation.  There is an actual continuous
+metabelian quotient in which
+\[
+ \begin{gathered}
+ x\longmapsto(1,0),\qquad y\longmapsto(0,1),\\
+ (m,a)(n,b)=(m+t^a n,a+b),\\
+ m,n\in\mathbb Z_3[[t-1]],\qquad a,b\in\mathbb Z_3.
+ \end{gathered}
+                                                               \tag{B.16.1}
+\]
+In this quotient the image of $f$ is $(m_f,0)$, with
+\[
+                   m_f(t)=(1-t)h(0,t-1).                  \tag{B.16.2}
+\]
+
+Let $H_9=\ker(F\to\mathbb Z/9)$, where $x\mapsto0$,
+$y\mapsto1$.  Its actual cover is
+\[
+ z^9=1-t_{\rm base},\qquad
+ Y_9=\mathbb P^1\setminus\{0,\infty,\mu_9\}.
+                                                               \tag{B.16.3}
+\]
+In $H_9^{\rm ab}/3$, write the image of $f$ as
+$\sum_{j=0}^8c_j\,y^jxy^{-j}$; its $y^9$ coordinate
+is zero.  Then
+\[
+ \begin{pmatrix}h_{0,3}\\h_{0,5}\end{pmatrix}
+ =
+ \begin{pmatrix}
+ 0&0&0&0&2&1&0&1&2\\
+ 0&0&0&0&0&0&2&2&2
+ \end{pmatrix}
+ \begin{pmatrix}c_0\\c_1\\c_2\\c_3\\c_4\\c_5\\c_6\\c_7\\c_8\end{pmatrix}
+ \quad\text{in }\mathbb F_3.                              \tag{B.16.4}
+\]
+
+For the standard path $\beta$ from $\overrightarrow{01}$
+to $\overrightarrow{10}$ and the convention
+$f_g=\beta(g\beta)^{-1}$, these coordinates are explicit
+framed Kummer coordinates on (B.16.3).
+The relevant endpoint-to-start ratios are
+\[
+ r_0=9,\qquad r_j=\frac{-\zeta_9^j}{1-\zeta_9^j}
+       \quad(1\leq j\leq8),\qquad \prod_{j=0}^8r_j=1.
+                                                               \tag{B.16.5}
+\]
+Choose their compatible roots by continuing the units
+$z-\zeta_9^j$ along the lifted path from $z=1$ to $z=0$,
+using the actual start velocity $-1/9$ for $j=0$.
+If
+\[
+ \frac{g(r_{\chi(g)^{-1}j}^{\,1/3^n})}
+      {r_j^{\,1/3^n}}
+     =\zeta_{3^n}^{\,\kappa_j(g)},                          \tag{B.16.6}
+\]
+where the index is taken modulo nine, then
+$c_j=-\kappa_j(g)\pmod3$.
+In particular (B.16.4)--(B.16.6) evaluate the two
+coefficients by finite cyclic-cover Kummer data for
+the full cyclotomic action; no restriction to
+$\ker\chi$ is imposed.
+\end{statement}
+\begin{proof}
+The group in (B.16.1) is a compact pro-three group.
+The universal property of $F$ gives the stated
+continuous homomorphism.  Its target is metabelian,
+and conjugation by $x$ acts trivially on its additive
+normal subgroup, while conjugation by $y$ multiplies
+that subgroup by $t$.  Direct multiplication sends
+$[x,y]$ to $(1-t,0)$.  Therefore the induced
+commutator-module map sends $X$ to zero and $Y$ to
+$t-1$, proving (B.16.2).
+
+The lift of a positive loop about $t_{\rm base}=1$
+in (B.16.3) sends $z$ to $\zeta_9z$.
+Consequently the Schreier generators
+$y^jxy^{-j}$ are the actual positive inertia loops
+at $z=\zeta_9^j$, and $y^9$ is the positive inertia
+loop at $z=0$.  The functions $z-\zeta_9^k$ and $z$
+have valuations respectively $\delta_{jk}$ and zero
+on the first nine generators, and respectively zero
+and one on the last generator.  Their Kummer
+characters thus give the actual dual coordinate
+maps on $H_9^{\rm ab}/3$.
+The Schreier basis has ten members, so these
+coordinate maps are an isomorphism with
+$\mathbb F_3^{10}$.
+Since $f\in F'$, its total $y$ exponent is zero;
+hence its $y^9$ coordinate is zero.
+
+Reducing (B.16.2) modulo three and $t^9-1$ gives
+\[
+       \sum_{j=0}^8c_j(1+Y)^j=-Yh(0,Y)\pmod{Y^9},
+                                                               \tag{B.16.7}
+\]
+because $(1+Y)^9-1=Y^9$ in characteristic three.
+The coefficients of $Y^4,Y^6$ give
+$h_{0,3}=-\sum_j\binom j4c_j$ and
+$h_{0,5}=-\sum_j\binom j6c_j$, which are exactly
+(B.16.4).
+Only these indicated coefficients are recovered:
+the $Y^8$ coefficient of $h$ is lost under
+multiplication by $Y$ modulo $Y^9$.
+
+The path $\beta$ lifts to the real interval from
+$z=1$ to $z=0$.  At the start,
+$z-1=-t_{\rm base}/9+\cdots$, and at the end
+$z-1=-1$.  Their framed ratio is therefore nine.
+For $j\ne0$ both endpoint values are ordinary
+nonzero values, giving (B.16.5).
+The product identity follows from
+$\prod_{j=1}^8(1-\zeta_9^j)=9$ and
+$\prod_{j=1}^8(-\zeta_9^j)=1$.
+The continued roots obey the product identity as
+well: their arguments occur in opposite pairs,
+and the $j=0$ root is the positive real root of nine.
+
+To check the sign in (B.16.6), choose one root of
+the unit at the start and continue it along $\beta$
+to the end.  The path $g\beta$ transports the
+Galois conjugate start root to the Galois conjugate
+end root, with the unit index permuted by $\chi(g)$.
+Following $\beta$ and then $(g\beta)^{-1}$ multiplies
+the start root by the inverse of the
+endpoint-to-start Kummer multiplier.  Thus the
+positive inertia coordinate of $f_g$ is
+$-\kappa_j(g)$, as asserted.
+This argument constructs the maps for every $g$;
+it does not extend a formula stated only on
+$\ker\chi$ by an unspecified normalization.
+
+The program \texttt{code/bc\_depth\_one.py} checks
+the actual Schreier coordinates against the
+$X$ coefficient of the abelianized Fox derivative
+$D_y(f)=Xh(X,Y)$ on explicit commutator words.
+It also verifies the exact cyclotomic-field
+identities (B.16.5), their degree-nine to
+degree-three transition products, the Frobenius-seven
+index permutation, and the two rows in (B.16.4).
+The saved output has status \texttt{PASS}.
+\end{proof}
+
+\begin{statement}{B.17}{Proved}{The actual norm-289 depth-one Frobenius coordinates}
+Let $g_{17}$ be an arithmetic Frobenius of norm $289$
+at the prime above seventeen of $K_0=\mathbb Q(\zeta_3)$,
+viewed through the specified tangential arithmetic action.
+Use the path and commutator conventions of B.16, and write
+the metabelian Ihara word as
+$f_{g_{17}}=[x,y]^{h(X,Y)}$.
+Then
+\[
+ h(0,Y)\equiv-Y^6-Y^7\pmod{(3,Y^8)},
+ \qquad h_{0,3}=h_{0,5}=0\quad\text{in }\mathbb F_3.
+                                                               \tag{B.17.1}
+\]
+An explicit residue-field embedding is
+\[
+ \begin{gathered}
+ k=\mathbb F_{17}[\theta]/(\theta^2-3),\\
+ \overline\zeta_9=7+4\theta,\qquad
+ \overline\zeta_3=\overline\zeta_9^3=8+15\theta.
+ \end{gathered}
+                                                               \tag{B.17.2}
+\]
+For the nine framed ratios of B.16 the actual local
+Kummer coordinates and geometric cusp coordinates are
+\[
+ \begin{aligned}
+ (\kappa_j(g_{17}))_{j=0}^8
+       &=(0,1,2,0,1,2,0,1,2),\\
+ (c_j)_{j=0}^8&=(0,2,1,0,2,1,0,2,1).
+ \end{aligned}
+                                                               \tag{B.17.3}
+\]
+The entries are in $\mathbb F_3$. These values hold for
+each prime of $\mathbb Q(\zeta_9)$ above seventeen,
+with its compatible embedding of $\zeta_3=\zeta_9^3$.
+\end{statement}
+\begin{proof}
+The integer three is a nonsquare modulo seventeen, and
+direct multiplication in (B.17.2) gives
+$\overline\zeta_9^9=1$,
+$\overline\zeta_9^3\ne1$, and
+$\overline\zeta_9^{17}=\overline\zeta_9^{-1}$.
+Choose the embedding of $\mathbb Q(\zeta_9)$ into
+$\overline{\mathbb Q}_{17}$ that reduces to (B.17.2).
+Its completion is the unramified quadratic extension
+of $\mathbb Q_{17}$, which is also the completion of
+$K_0$. Every $r_j$ in (B.16.5) is a unit there.
+The polynomial $Z^3-r_j$ is finite etale on the local
+unit locus: its derivative is a unit at every root.
+Its roots therefore lie in finite unramified extensions.
+
+Let $\rho_j$ be the cube root selected by the actual
+path of B.16. Reduction is injective on $\mu_3$.
+Arithmetic Frobenius acts on its residue as the
+$289$th power, so the exact local comparison is
+\[
+ \overline{\frac{g_{17}(\rho_j)}{\rho_j}}
+    =\overline\rho_j^{288}
+    =\overline r_j^{96}
+    =\overline\zeta_3^{\,\kappa_j(g_{17})}.
+                                                               \tag{B.17.4}
+\]
+Here $g_{17}$ fixes $\mu_9$, so there is no index
+permutation in (B.16.6). It also fixes $\mu_3$;
+changing a cube root by an element of $\mu_3$ does
+not change (B.17.4). Thus this calculation computes
+the prescribed based cocycle itself modulo three.
+Changing the representative by local inertia also
+leaves it unchanged because these unit extensions
+are unramified.
+
+We can evaluate every symbol without choosing any
+radical extension. For $1\leq j\leq8$, the
+seventeen-power Frobenius sends $\overline r_j$ to
+$\overline r_{-j}$, with indices modulo nine, and
+\[
+ \overline r_j\overline r_{-j}\in\mathbb F_{17}^{\times},
+ \qquad
+ \frac{\overline r_j}{\overline r_{-j}}
+     =-\overline\zeta_9^j.
+                                                               \tag{B.17.5}
+\]
+Every element of $\mathbb F_{17}^{\times}$ has
+trivial $96$th power. Since $96\equiv6\pmod9$,
+(B.17.5) gives
+\[
+ \kappa_j+\kappa_{-j}=0,
+ \qquad \kappa_j-\kappa_{-j}=2j
+       \quad\text{in }\mathbb F_3.
+\]
+Thus $\kappa_j=j\pmod3$. The ratio $r_0=9$
+also has trivial symbol, which proves the first
+vector in (B.17.3). The actual sign comparison of
+B.16 gives $c_j=-\kappa_j$ and proves the second.
+The argument uses only primitivity of the chosen
+ninth root and its cube, so it applies to every
+embedding above seventeen.
+
+For completeness, the entire specialization through
+this precision follows from the same nine symbols.
+In $\mathbb F_3[t]/(t^9-1)$,
+\[
+ \sum_{j=0}^8c_jt^j
+   =-t\frac{d}{dt}\left(\sum_{j=0}^8t^j\right)
+   =t(t-1)^7.
+\]
+With $t=1+Y$, equation (B.16.7) becomes
+$-Yh(0,Y)=Y^7+Y^8\pmod{Y^9}$.
+Division by $Y$ at the stated precision proves
+(B.17.1). No coefficient of degree eight or higher
+is assigned by this division.
+
+The standalone program
+\texttt{code/bc\_depth\_one\_frob17.py} executes
+all field operations in (B.17.2), evaluates the nine
+symbols by $96$th powers, verifies (B.17.5),
+reconstructs the cyclic group-ring polynomial and
+the two rows of B.16, and repeats the computation
+for all six primitive ninth roots in $k$.
+The saved JSON and text outputs have status
+\texttt{PASS}.
+\end{proof}
+
+\begin{statement}{B.18}{Proved}{The full finite arithmetic image and the exact Frobenius action at seventeen}
+Use the actual source basis of A.38 and the
+$c$-adapted basis $m,n$ of A.31. Let
+\[
+ \rho:P_3\longrightarrow
+ \operatorname{Aut}\bigl(N/(N^3\gamma_3N)\bigr)
+\]
+be the actual arithmetic action. Its image $G$
+has order $243$, nilpotency class three, and
+exponent nine. In the $10+45$ coordinates of A.38,
+its linear image has order nine, and its
+identity-linear kernel has dimension three over
+$\mathbb F_3$. The exact dimensions are
+\[
+ \begin{array}{c|ccc}
+   &\gamma_2(G)&\gamma_3(G)&\gamma_4(G)\\\hline
+ \dim_{\mathbb F_3}&2&1&0
+ \end{array}
+ \qquad
+ \begin{array}{c|ccc}
+   &D_2(G)&D_3(G)&D_4(G)\\\hline
+ \dim_{\mathbb F_3}&3&2&0.
+ \end{array}
+                                                               \tag{B.18.1}
+\]
+In particular $D_4(P_3)$ acts trivially on this
+specified geometric quotient. Put
+$M=\rho(m)$ and $N_*=\rho(n)$. Then the entire
+actual Frobenius action at seventeen is
+\[
+ \rho(\varphi_{17})
+   =M^6[N_*,[N_*,M]]=M^6\ne1.
+                                                               \tag{B.18.2}
+\]
+It has order three. Its Johnson block has rank two
+and annihilates all nine cusp vectors. The full
+matrix is retained in
+\texttt{bc\_ihara\_finite\_image\_certificate.npz}.
+\end{statement}
+\begin{proof}
+An automorphism in these coordinates has matrix
+\[
+ \begin{pmatrix}A&0\\J&\bigwedge^2 A\end{pmatrix}.
+\]
+Its identity-linear subgroup is the additive group
+$\operatorname{Hom}(\mathbb F_3^{10},
+\bigwedge^2\mathbb F_3^{10})$.
+For such a matrix $X$, conjugation is the exact map
+\[
+                  X\longmapsto
+            (\bigwedge^2 A)XA^{-1}.                       \tag{B.18.3}
+\]
+The script below reconstructs $\rho(u)$ and $\rho(c)$
+from the A.38 word and its literal Schreier map,
+forms $\rho(v)=\rho(c)\rho(u)\rho(c)$, and applies
+the actual square-root source maps defining $m,n$.
+These reconstructed matrices agree with the
+independently saved arithmetic certificate.
+
+The two linear matrices of $M,N_*$ commute, each
+has order three, and their nine products are
+distinct. Define $Z_0,Z_1,Z_2$ to be the additive
+Johnson blocks, respectively, of
+\[
+ M^3,\qquad [M,N_*],\qquad [M,[M,N_*]].
+\]
+Exact substitution gives three linearly independent
+vectors and the conjugation table
+\[
+ \begin{array}{c|ccc}
+       &Z_0&Z_1&Z_2\\\hline
+ \operatorname{Ad}(M)&Z_0&Z_1+Z_2&Z_2\\
+ \operatorname{Ad}(N_*)&Z_0&Z_1&Z_2.
+ \end{array}                                                \tag{B.18.4}
+\]
+It also gives $N_*^3=1$. The subgroup generated
+by the three $Z_i$ is therefore normal, is
+elementary abelian of order $27$, and is contained
+in the actual image. After quotienting by it,
+the images of $M,N_*$ commute and have order
+three. The linear image has order nine, so the
+quotient is exactly $(\mathbb Z/3)^2$. This proves
+$|G|=243$, and shows that the displayed subgroup
+is the whole identity-linear kernel.
+
+The normal closure of $[M,N_*]$ is exactly
+$\langle Z_1,Z_2\rangle$ by (B.18.4). Its next
+commutator is $\langle Z_2\rangle$, which is
+central. Thus the lower-central assertions in
+(B.18.1) follow as actual group statements.
+Every cube lies in the identity-linear kernel,
+and that kernel has exponent three; consequently
+every element has ninth power one. Since $M^3$
+is nontrivial, the exponent is nine. The cubes
+span $\langle Z_0,Z_2\rangle$, as verified on
+the $243$ distinct normal forms. This also proves
+the two asserted Zassenhaus dimensions.
+
+The defining formula for this filtration gives
+\[
+ D_4(P_3)=
+ \overline{\gamma_4(P_3)(\gamma_2P_3)^3P_3^9}.
+\]
+Each factor has trivial image by the preceding
+calculations. Equation (A.31.3), transported by
+the actual automorphism in A.38, therefore gives
+the equality in (B.18.2), not only a leading-term
+comparison. Table (B.18.4) gives
+$[N_*,[N_*,M]]=1$. The matrix $M^6$ has order
+three, and its $45\times10$ Johnson block has
+rank two. Multiplication by the nine actual
+cusp columns of the Schreier certificate gives
+zero in every case.
+
+The standalone
+\texttt{code/bc\_ihara\_finite\_image.py}
+computes the full normal commutator module by
+the exact maps (B.18.3), checks (B.18.4), and
+independently enumerates the subgroup generated
+by $M,N_*$ using literal matrix multiplication.
+Both computations give the same $243$ elements.
+It verifies all ninth powers, the cube span,
+the Frobenius word, its rank and cusp values,
+and saves every indicated basis and matrix.
+Its JSON and text outputs have status
+\texttt{PASS}.
+\end{proof}
+
+\begin{statement}{B.19}{Proved}{A finite precision determining the integral local kernel}
+Let $M_2=\bigwedge^2V$, and let
+\[
+ \mathcal D=M_2^c\oplus
+       \ker(1+\rho(n)c:M_2\longrightarrow M_2)
+\]
+be the rank-$45$ lattice of normalized source cocycles
+used in A.39. Define the actual Frobenius evaluation
+\[
+ E_\varphi:\mathcal D\longrightarrow M_2^c,
+ \qquad E_\varphi(\gamma)=\gamma(\varphi_{17}),
+ \qquad R=\ker E_\varphi.
+\]
+The integral operator
+$B=(F_\varphi-1)|M_2^c$ has three-adic Smith
+exponents
+\[
+ \underbrace{1,\ldots,1}_{6},\quad
+ \underbrace{2,\ldots,2}_{7},\quad
+ \underbrace{3,3}_{2},\quad
+ \underbrace{4,\ldots,4}_{6}.
+                                                               \tag{B.19.1}
+\]
+Identify $R/3R$ with its image in $\mathcal D/3\mathcal D$.
+Then its exact finite-precision description is
+\[
+ \frac{R}{3R}
+ =\operatorname{im}\left(
+ \ker\left(
+ \mathcal D/243\mathcal D
+       \xrightarrow{\ E_\varphi\ }
+ M_2^c/243M_2^c\right)
+ \longrightarrow\mathcal D/3\mathcal D\right).
+                                                               \tag{B.19.2}
+\]
+More explicitly, for every integral $d\in\mathcal D$
+with $E_\varphi(d)\in243M_2^c$, put
+\[
+ h=B^{-1}E_\varphi(d)\in3M_2^c,
+ \qquad \gamma=d-\delta h,
+ \qquad (\delta h)(g)=g(h)-h.
+                                                               \tag{B.19.3}
+\]
+Then $\gamma\in R$ and $\gamma\equiv d\pmod{3\mathcal D}$.
+The matrix $B$ and the bound (B.19.1) are computed
+in the attached certificate. Evaluating the separate
+arithmetic matrix $E_\varphi\bmod243$ remains the
+finite calculation needed to list the resulting
+$24$-dimensional subspace individually.
+\end{statement}
+\begin{proof}
+At seventeen, cubing permutes $\mathbb F_{17}$.
+Consequently the reduction $y^2+y=x^3-7$ has one
+$x$ for each $y$, and its point count, including
+infinity, is eighteen. Its Frobenius polynomial
+is $X^2+17$, so the norm-$289$ Frobenius on $T$
+is exactly $-17$. All cusps are rational over
+$K_0$, and its action on $W$ is multiplication
+by $289$. The actual graph-lattice comparison
+(A.7.4) therefore gives
+\[
+ F_\varphi|V=
+ \begin{pmatrix}
+ 289I_8&102\Psi\\0&-17I_2
+ \end{pmatrix}.
+                                                               \tag{B.19.4}
+\]
+We take its full exterior square and restrict
+to the $c$-fixed lattice. The latter has rank
+$21$. The projection to $\bigwedge^2T$ is zero
+on it, because $c$ acts there by $-1$; hence
+it is also the fixed lattice inside $\mathcal K$.
+
+The program constructs a basis from $21$ independent
+columns modulo three of $1+c$ on $M_2$. This is
+an actual $\mathbb Z_3$ basis of the fixed lattice:
+$\frac12(1+c)$ is an integral idempotent, and
+the selected columns span its reduction modulo
+three, so Nakayama's lemma gives the full lattice.
+An invertible minor of three-adic unit determinant
+gives the coordinate restriction of (B.19.4).
+Both the rectangular matrix in $M_2$ and its
+$21\times21$ coordinate matrix have the exponents
+(B.19.1). An independent elimination modulo
+$3^8$ gives the same list. The determinant check is
+\[
+ \det B=83520^{13}\,4914^8,
+ \qquad v_3(\det B)=50.
+\]
+Indeed the rational fixed subspace has thirteen
+toric wedges, of eigenvalue $289^2$, and eight
+mixed wedges, of eigenvalue $-17\cdot289$.
+The inverse matrix verifies that $81B^{-1}$
+is integral over $\mathbb Z_3$, while
+$27B^{-1}$ is not. This proves the stated bound
+with its actual integral comparison.
+
+For $h\in M_2^c$, the coboundary $\delta h$
+is normalized at $c$ and belongs to $\mathcal D$.
+Its evaluation is exactly
+\[
+                  E_\varphi(\delta h)=Bh.
+\]
+Thus $\operatorname{im}E_\varphi$ contains
+$B(M_2^c)$, which contains $81M_2^c$ by
+(B.19.1). The formula (B.19.3) is therefore
+integral and has $h\in3M_2^c$ whenever
+$E_\varphi(d)$ is divisible by $243$.
+It gives $E_\varphi(\gamma)=0$ and leaves
+the reduction of $d$ modulo three unchanged.
+Conversely every element of $R$ reduces to
+an element of the displayed finite kernel.
+Since the target of $E_\varphi$ is torsion-free,
+$R\cap3\mathcal D=3R$. This proves both the
+claimed identification and (B.19.2).
+
+The exact reconstruction, point count, two Smith
+computations and inverse-denominator check are
+executed in
+\texttt{code/bc\_frobenius17\_precision.py}.
+Its JSON and text outputs have status
+\texttt{PASS}, and include the fixed-lattice
+basis and the full integral matrix $B$.
+\end{proof}
+
+\begin{statement}{B.20}{Proved}{An individually specified class-two target with no class-four lift}
+Use the actual arithmetic basis $m,n,c$ of A.38 and
+A.31. Write the ten integral A.7 basis vectors as
+\[
+ \begin{split}
+ (v_0,\ldots,v_7)
+   &=(e_P,e_{Q_c},e_A,e_{\bar A},e_B,e_{\bar B},e_C,e_{\bar C}),\\
+ v_8&=(\Psi(1,0)/3,(1,0)),\qquad
+ v_9=(\Psi(0,1)/3,(0,1))
+       \quad\text{in }L_\Psi\subset W_{\mathbb Q_3}\oplus T_{\mathbb Q_3}.
+ \end{split}                                                \tag{B.20.1}
+\]
+Let $C_2$ be the actual action of $c$ on
+$M_2=\bigwedge^2V$. Define the integral vectors
+\[
+ b_0=3v_8\wedge v_9+
+       \sum_{i=0}^7
+       \bigl(\Psi_{i,2}v_i\wedge v_8
+             -\Psi_{i,1}v_i\wedge v_9\bigr),
+ \qquad b=(1-C_2)b_0.                                     \tag{B.20.2}
+\]
+Here the columns of $\Psi$ are numbered one and two.
+In the basis $v_i\wedge v_j$, $i<j$, all nonzero
+coordinates of $b$ are the following; every other
+coordinate is zero:
+\[
+ \begin{array}{cr|cr|cr}
+ (i,j)&b_{ij}&(i,j)&b_{ij}&(i,j)&b_{ij}\\\hline
+ (0,8)&-2&(1,8)&2&(2,6)&-1\\
+ (2,7)&1&(2,8)&2&(2,9)&2\\
+ (3,6)&1&(3,7)&-1&(3,9)&-2\\
+ (4,6)&1&(4,7)&-1&(4,8)&-2\\
+ (4,9)&-2&(5,6)&-1&(5,7)&1\\
+ (5,9)&2&(6,8)&2&(6,9)&-2\\
+ (7,8)&-2&(7,9)&2&(8,9)&6.
+ \end{array}                                                \tag{B.20.3}
+\]
+The prescriptions
+\[
+             \gamma(m)=0,\qquad \gamma(n)=b,
+             \qquad \gamma(c)=0                           \tag{B.20.4}
+\]
+define an actual continuous $M_2$-cocycle unramified
+outside three. Let $s_{O,17}$ be the actual $O$-cuspidal
+section with tangent parameter seventeen. In
+$A=N/\gamma_3N$, put
+\[
+                        s_b(g)=\gamma(g)s_{O,17}(g).
+                                                               \tag{B.20.5}
+\]
+This is an actual class-two section, with abelian
+class $\kappa_{17}e_O$. Its restriction at seventeen
+equals the specified local cuspidal section exactly.
+It has a global lift to $N/\gamma_4N$, but no global
+lift to $N/\gamma_5N$. Consequently it has no full,
+metabelian, or marked-depth lift.
+
+The projection of (B.20.4) to $\bigwedge^2T$ has
+the exact generator values $0,6$. If
+$a=\kappa_3(n)\in\mathbb Z_3^\times$ in this actual
+source basis, this cocycle is $(6/a)\kappa_3$.
+Only $a\equiv1\pmod3$ is used; its integral value
+has not been replaced by one.
+\end{statement}
+\begin{proof}
+We first prove the integral local condition. On $V$,
+the actions of $m,n$ are respectively $G_uG_v$ and
+$G_vG_u^{-1}$ from (A.7.4)--(A.7.5). They commute,
+and the first commutes with $c$. Set
+\[
+ L_0=\ker(n-1:M_2\to M_2)\cap\ker(c+1:M_2\to M_2).
+\]
+This is a closed saturated lattice stable under
+$m,n,c$ and their inverses. Direct substitution
+in the exact graph matrices gives
+\[
+ n(b_0)=b_0,\qquad n(b)=b,
+ \qquad c(b)=-b.                                         \tag{B.20.6}
+\]
+For the first equality, the rational comparison
+is also explicit: the vector $3$ times the wedge
+of the two pure proper vectors has the mixed
+coordinates in (B.20.2), proper coefficient three,
+and toric coefficient
+$\frac13\Psi_1\wedge\Psi_2$. Subtracting this
+last toric vector gives exactly $b_0$.
+Both pure proper determinant and toric wedges are
+fixed by $n$, so the equality transfers through
+the actual graph embedding. No reduction of a
+rational splitting modulo three is taken.
+
+The full lattice is
+\[
+           L_0=(\bigwedge^2W)^{c=-1}\oplus\mathbb Z_3b,
+           \qquad \operatorname{rank}L_0=16.             \tag{B.20.7}
+\]
+Here is an integral verification. The toric
+anti-invariant lattice has rank fifteen.
+Choose the lexicographically first independent
+columns modulo three of $1-c$ on its $28$
+wedges. These are an actual integral basis by
+the order-two projector and Nakayama's lemma.
+Adjoining $b$ gives sixteen columns independent
+modulo three. The stacked rational matrices
+$n-1,c+1$ have rank $29$, so these columns span
+their sixteen-dimensional common rational kernel.
+Their unit minor makes their integral span
+primitive in $M_2$, proving (B.20.7).
+The code also computes the exact matrix of $m$
+on this basis and its inverse; both are integral
+over $\mathbb Z_3$. This verifies the stated
+stability on the actual lattice.
+
+Since $m,n$ freely generate $P_3$, their prescribed
+values give a continuous crossed homomorphism.
+The identities $c(m)=m$, $c(n)=n^{-1}$ and
+(B.20.6) prove its exact $c$-equivariance, so
+it extends with value zero at $c$. Every value
+lies in $L_0$. The actual norm-$289$ Frobenius
+$\varphi_{17}$ is fixed by $c$, hence
+\[
+ \gamma(\varphi_{17})=c\gamma(\varphi_{17})
+                    =-\gamma(\varphi_{17})=0.
+                                                               \tag{B.20.8}
+\]
+The final equality uses that two is invertible.
+Thus (B.20.4) lies in the exact integral lattice
+$R$ of A.39, not merely in a finite approximation
+to it. Its inflation has zero tame value at
+seventeen and zero value at the normalized local
+involution as well. These three values prove the
+exact local equality in (B.20.5).
+
+We give a finite functional detecting the ensuing
+gluing obstruction. Let $X_0,\ldots,X_9$ be the
+ordered Schreier generators in (A.38.3), and use
+the integral degree-three basis
+\[
+ H_{\mu,i}=[[X_i,X_{\min\mu}],X_j],
+\]
+where $\mu$ is a nondecreasing multiset of size
+three, $i>\min\mu$ occurs in it, and $j$ is the
+remaining index after removing $i$ and one
+occurrence of $\min\mu$. Write $q_{\mu,i}$ for
+the corresponding coordinate functional.
+Over $\mathbb F_3$, define
+\[
+ \begin{split}
+ \ell=2\bigl(&q_{001,1}+q_{002,2}+q_{003,3}+q_{004,4}\\
+             &+q_{088,8}+q_{188,8}+q_{288,8}
+                       +q_{388,8}+q_{488,8}\bigr).
+ \end{split}                                                \tag{B.20.9}
+\]
+All these indices refer to the Schreier basis,
+not to an unidentified change of proper lifts.
+The program uses the exact unimodular
+$A.7$-to-Schreier matrix $P$ and the actual
+map $\bigwedge^2P$ on $b$. It verifies that this
+map intertwines the full $m,n,c$ actions on
+$M_2$ before evaluating the source cochain.
+
+With the independent Magnus evaluator of
+\texttt{bc\_gluing\_audit.py}, the functional
+has the following exact values. It kills the
+entire global $M_3$ restriction image, all
+twenty-one retained local-conjugator parameters,
+and all sixty-eight unknown-word contributions
+on the cocycle (B.20.4). Its value on the known
+Frobenius contribution is
+\[
+                           \ell(\Delta)=1.
+                                                               \tag{B.20.10}
+\]
+Only three of those unknown maps are nonzero
+on the general source, and all three vanish on
+the whole lattice $L_0$ modulo three. The known
+map vanishes on its fifteen-dimensional toric
+summand and is nonzero on $b$. In the fixed
+$143$-dimensional quotient of the independent
+audit, its vector has $87$ nonzero entries.
+All twenty-seven remaining arithmetic coefficient
+possibilities give exactly this same vector.
+
+These are evaluations of the actual global
+gluing map of A.39. Changing the integral
+class-three lift adds a global $M_3$ correction,
+which (B.20.9) kills. The retained source
+truncation and all local comparison parameters
+are those independently verified there, so
+(B.20.10) applies to the actual arithmetic
+Frobenius. A.33 gives a global class-three lift;
+A.40 proves that this nonzero gluing class
+prevents every class-four lift. The actual
+quotient maps and local cusp comparisons in
+A.39--A.40 give the full, metabelian and marked
+non-lifting conclusions on section classes.
+
+Finally the proper projection of $b$ is six
+by (B.20.3). The positive-root Kummer cocycle
+$\kappa_3$ has value zero at $c$, and hence at
+the $c$-fixed generator $m$. Its value at $n$
+is a unit by (A.31.6). Equality on the actual
+free source generators proves the asserted
+identity with $(6/a)\kappa_3$.
+
+The standalone
+\texttt{code/bc\_explicit17.py} executes the
+integral lattice, saturation, action and basis
+comparisons, then every stated functional and
+gluing evaluation. It saves all $45$ coordinates,
+the exact rank-$16$ basis, the transition matrix,
+the full nonzero vector and the nine-term
+functional. Its JSON, NPZ and text certificates
+have status \texttt{PASS}.
+\end{proof}
+
+\begin{statement}{B.6}{Proved}{The complete global one-prime image and its fibers}
+Fix a rational prime $q\ne3$, put
+$A=N/\gamma_3N$, and let $s$ be a continuous
+class-two section unramified outside
+$S=\{3,q,\infty\}$. Choose its exact cocycle
+representative with $s(c)=1$, and write $\alpha$
+for its projection to $V$. Define
+\[
+ \begin{split}
+ H_0&=N,\qquad H_{n+1}=H_n^3[H_n,H_n],\\
+ P_n&=N/H_n,\qquad A_n=P_n/\gamma_3P_n,\qquad
+ J_n=\gamma_3P_n,\\
+ S_n&=\{3,\infty\}\cup
+ \{q:\alpha|_{I_q}\bmod3^n\ne0\}.
+ \end{split}                                               \tag{B.6.1}
+\]
+All subgroups are closed. The exact finite target
+$s_n$ is the image of $s$ in $A_n$.
+
+Use the explicitly constructed finite based action on
+$P_n$ and its splitting field $F_n$ from A.43.
+Let $K_n$ be the compositum of $F_n$ with the
+field of the target graph $(s_n,\rho_{A_n})$.
+If $s_n$ is ramified outside $S_n$, the test fails.
+Otherwise form the finite Galois field $\Omega_n$
+as the compositum of $\Omega_{n-1}$ and all Galois
+extensions $E/\mathbb Q$ containing $K_n$,
+unramified outside $S_n$, of degree at most
+$|P_n|[F_n:\mathbb Q]$, starting with
+$\Omega_0=\mathbb Q$.
+The discriminant and polynomial bounds in
+(A.43.4)--(A.43.10) give a terminating finite
+enumeration of these fields.
+
+Let $X_n$ be the finite set of functions
+$z:\operatorname{Gal}(\Omega_n/\mathbb Q)\to P_n$
+satisfying the actual cocycle equation,
+$z(c)=1$, and $z\bmod J_n=s_n$ literally.
+For every $k\le n$, require its projection to
+$P_k$ to be trivial on inertia at the primes
+of $S_n\setminus S_k$. These conditions give
+the actual transition maps of A.43. Then
+\[
+ \begin{split}
+ [s]\in\operatorname{im}\bigl(\operatorname{Sec}(N)
+          \longrightarrow\operatorname{Sec}(A)\bigr)
+ &\Longleftrightarrow X_n\ne\varnothing\quad\text{for all }n\\
+ &\Longleftrightarrow
+ [s]\text{ lifts to }N/\gamma_rN
+                    \quad\text{for all }r\ge3.
+ \end{split}                                               \tag{B.6.2}
+\]
+Every such full or nilpotent lift is unramified
+outside $S$. The complete fiber on section classes is
+\[
+                 \varprojlim_n X_n/J_n^c,                  \tag{B.6.3}
+\]
+where $h\in J_n^c$ acts by
+$z(g)\mapsto h^{-1}z(g)g(h)$.
+Thus (B.6.2) is an exact sequence of terminating
+finite arithmetic tests, and (B.6.3) retains all
+compatible conjugacy data. A bounded stopping rule
+for every positive instance is not asserted.
+
+The necessary local condition is precisely the
+unramified class or a member of the actual cusp
+packets (B.8.1). It is sufficient at seven by
+B.10, and on the prime sets $\Sigma$ and $\Xi$
+by A.16 and A.25. It is insufficient at seventeen.
+The integral section of B.20, with abelian class
+$\kappa(17)e_O$ and central generator values
+$\gamma(m)=0$, $\gamma(n)=b$, has exactly the
+local $O$-cuspidal class-two restriction. It has
+a global $N/\gamma_4N$ lift and no
+$N/\gamma_5N$ lift, hence no full, metabelian,
+or marked-depth lift.
+\end{statement}
+\begin{proof}
+For the full group, the three quotient maps in
+(A.43.2) specialize exactly to (B.6.1). The image
+of $H_n$ in $V$ is $3^nV$, by induction on the
+Frattini operation. Hence
+$A_n^{\rm ab}=V/3^nV$, and the finite target table
+determines the displayed set $S_n$.
+The actual quotient map sends $\gamma_3N$ onto
+$\gamma_3P_n$, which proves the asserted kernel
+$J_n$. This identifies every group and action
+in the finite test with its A.43 counterpart.
+
+The inherited ramification conditions ensure that
+projection to $P_k$ factors through $\Omega_k$;
+they are retained even when the prime $q$ first
+enters the sets $S_n$ at a later precision.
+When $\alpha(I_q)=0$, it never enters, so an
+inertia value visible only in the central
+class-two target is rejected as soon as it is
+detected in some $A_n$. This is consistent with
+B.7's detection of full inertia in $V$.
+A.43 now gives the first equivalence in (B.6.2)
+and the exact fiber (B.6.3). Its comparison
+uses the surjections
+$\ker(N\to A)^c\twoheadrightarrow J_n^c$
+and the trivial global geometric centralizer
+of the target in $A$. It therefore identifies
+global section classes, without replacing the
+conjugation kernel by a finite-level centralizer.
+B.11 gives the second equivalence and the common
+ramification bound, including for separately
+chosen nilpotent lifts.
+
+For the obstruction coordinates requested in
+Task B.4, entry into $A$ is the residue,
+tame-relation and convergence criterion of
+Part A. The next central coefficient is the
+actual free lattice
+$M_3=\gamma_3N/\gamma_4N$. Its residue complex
+at $q$ is
+\[
+ [\,M_3(-1)\xrightarrow{F_q-1}M_3(-1)\,],
+ \qquad F_qt=qt
+ \text{ for a tame inertia value }t\in M_3.                \tag{B.6.4}
+\]
+Here $F_q$ in the complex acts on the twisted
+module and the second $F_q$ acts on $M_3$;
+the equations are the same under the chosen
+tame generator. A.33 computes the continuous
+obstruction using this localization map. For
+the fixed finite set $S$, the finite-coefficient
+first-cohomology groups are finite, so their
+first derived limit is zero. Actual local
+cuspidal lifts kill the local degree-two
+obstructions and give a global class-three
+lift. Its remaining obstruction to having
+the prescribed local cuspidal classes is
+exactly the restriction cokernel (A.33.2).
+A.39 evaluates a nonzero family in that
+cokernel; A.40 proves the class-four exclusion;
+B.20 specifies an individual member with all
+integral coordinates and an explicit nine-term
+finite functional. These facts prove the
+stated failure of local sufficiency.
+
+The finite tests (B.6.2) retain every subsequent
+geometric layer and global relation. They thus
+give the full one-prime image at seventeen
+and at every other prime, including the
+classes for which the local condition alone
+does not decide lifting. B.1, B.3 and B.9
+separately give all three global cusp packets
+and their inherited central origins, as
+required in Task B.1.
+\end{proof}
+

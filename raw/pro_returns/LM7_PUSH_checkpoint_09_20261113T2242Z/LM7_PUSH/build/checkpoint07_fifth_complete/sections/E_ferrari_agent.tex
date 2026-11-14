@@ -1,0 +1,272 @@
+\subsection{A four-strand pentagon constraint on the CM fibres}
+
+\begin{statement}{E.17}{Proved}{The complete Ferrari-homology pentagon test and its affine fibres}
+Put $H_3=\F_3^2\rtimes\mathrm{SL}_2(\F_3)$, with the
+standard left action on column vectors. The assignments
+\[
+ \begin{aligned}
+ \rho_4(\sigma_1)&=(0,A),&
+ A&=\begin{pmatrix}1&1\\0&1\end{pmatrix},\\
+ \rho_4(\sigma_2)&=(0,B),&
+ B&=\begin{pmatrix}1&0\\-1&1\end{pmatrix},\\
+ \rho_4(\sigma_3)&=(e_1,A)
+ \end{aligned}
+ \tag{E.17.1}
+\]
+define an epimorphism $B_4\to H_3$.
+Let $L_4=\ker\rho_4\cap PB_4$. Then $L_4$ is normal
+in $B_4$, is contained in $PB_4$, and
+$|B_4/L_4|=5184$.
+
+The complete pentagon in $PB_4/L_4$ is a well-defined
+condition on the $G_6$ conjugator coordinate used in E.1.
+Among the 24 particular $G_6$ representatives retained
+in E.14, exactly nine satisfy it. They have indices
+\[
+             3,4,5,7,8,14,15,17,23;
+ \tag{E.17.2}
+\]
+the extra-coset indices among these are $4,7,15$.
+The other fifteen particular representatives cannot
+be projections of full $\widehat{\mathrm{GT}}$ elements.
+
+Every one of the 24 \emph{whole CM matrix fibres}, however,
+contains a gentle $G_6$ shadow with multiplier one
+whose actual commutator word satisfies this pentagon.
+In the 18-parameter three-primary presentation of E.10,
+before quotienting by cusp conjugations, its equation
+is one nonzero affine linear equation. Its solution
+space has dimension 17 and contains points with full
+generation rank 97 and with vanishing class-two cusp
+obstructions of E.11. This is a finite pentagon test;
+no lift through all four-strand quotients is asserted.
+\end{statement}
+\begin{proof}
+We use the multiplication
+$(u,M)(v,T)=(u+Mv,MT)$ in $H_3$.
+The three assignments in (E.17.1) satisfy both adjacent
+braid relations and the relation between the distant
+generators, by direct multiplication. Their Ferrari
+kernel elements
+\[
+ \xi_1=\sigma_3\sigma_1^{-1},\qquad
+ \xi_2=\sigma_1\sigma_2\sigma_1
+                  \sigma_3^{-1}\sigma_2^{-1}\sigma_1^{-1}
+\]
+map to $(e_1,I),(e_2,I)$, while $A,B$ generate
+$\mathrm{SL}_2(\F_3)$. This proves surjectivity.
+These are the actual free Ferrari generators and their
+homology action: the source comparison is
+\cite[(2.9) and (4.15)]{DE_NakamuraTsunogaiYasuda2010}.
+The program \texttt{de\_ferrari\_pentagon.py} checks the
+literal relations and enumerates the joint image with
+the adjacent transpositions in $\mathfrak S_4$;
+its order is 5184. This is precisely $B_4/L_4$.
+
+Write $a_{ij}$ for the standard pure Artin generators.
+We evaluate the complete group equation
+\[
+ \begin{aligned}
+ &f(a_{12},a_{23}a_{24})f(a_{13}a_{23},a_{34})\\
+ &\qquad=f(a_{23},a_{34})
+       f(a_{12}a_{13},a_{24}a_{34})f(a_{12},a_{23}).
+ \end{aligned}
+ \tag{E.17.3}
+\]
+Each displayed pair defines an actual homomorphism
+$F_2\to PB_4$, followed by $\rho_4$.
+All five factors are pure, so the permutation component
+of (E.17.3) is already the identity. We also retain
+the evaluation at
+$((\sigma_1\sigma_2)^3,\sigma_3^2)$, which is the
+conjugator in the standard Drinfeld image of
+$\sigma_3$.
+
+The simultaneous images of the 97 literal generators
+of $N$ under these six homomorphisms commute and have
+exponent three. The program checks every generator
+cube and all $\binom{97}{2}=4656$ commutators.
+It follows that each homomorphism kills $N'N^6$.
+Thus all six evaluations factor through the actual
+quotient $F_2/(N'N^6)$, which is the pure free factor
+in $G_6$. Corrections by the whole kernel have zero
+image in these targets. Consequently a failure of
+(E.17.3) at the computed representative is a failure
+for every lift of that $G_6$ conjugator.
+The retained E.14 word differs from the base word
+evaluated here by elements of $N'N^6$, so this
+comparison applies to the E.14 representatives
+themselves. Complete multiplication of all five
+factors gives exactly (E.17.2).
+
+Here is the exhaustive affine reduction for whole
+CM matrix fibres. Let $P=\binom{B_0}{A_0}$ be the
+$194\times18$ parameter matrix retained in E.10.
+A parameter $z\in\F_3^{18}$ changes the two
+conjugators by $n(B_0z),n(A_0z)$. For an actual
+integral change $b$ in the first conjugator, put
+\[
+ \ell(b)=\frac{
+       \operatorname{ab}_{F,2}(n(b))-
+       \operatorname{ab}_{F,1}(n(b))}{2}\pmod3.
+\]
+The numerator is even by the matrix $B_N$ of E.9.
+The new gauge is $g+2\ell(b)$ modulo six.
+If $f_\beta=s\beta s\beta^{-1}$ denotes the
+ungauged base conjugator, the actual new word is
+\[
+ f_z=y^{g+2\ell(b)}
+       (s n(b)s) f_\beta n(b)^{-1}
+                  x^{-g-2\ell(b)}.
+ \tag{E.17.4}
+\]
+This identity follows by inserting $s^2=1$ and
+$sxs=y$; it is the precise gauge comparison used
+in the calculation.
+
+Embed each affine group in $3\times3$ matrices.
+On the commuting exponent-three images of $N$,
+the formulas
+\[
+ \log(I+D)=D+D^2,\qquad
+ \exp(L)=I+L+2L^2\quad\text{over }\F_3
+\]
+are inverse and turn products into sums. Their
+nilpotent matrices have cube zero, and every
+commutator is zero. A commuting family of nilpotent
+endomorphisms admits a common complete invariant flag:
+choose a nonzero common kernel vector, pass to its
+quotient, and repeat. In that basis these matrices
+are strictly upper triangular, so every product of
+three is zero. Expanding the two displayed polynomials
+therefore proves $\log(uv)=\log(u)+\log(v)$ for
+these commuting matrices, including characteristic three.
+The joint linear map
+recording the six logarithms of $n(b)$, those of
+$s n(b)s$, and $\ell(b)$ has rank two on the
+18 parameter columns. The program
+\texttt{de\_ferrari\_fibres.py} retains that exact
+matrix, its two-column section, and its
+16-dimensional kernel. It enumerates all nine
+values of the two-dimensional image. Three
+independent literal-word substitutions per fibre
+check (E.17.4) against the logarithmic evaluation.
+
+For every one of the 24 fibres, the pentagon
+residual on those nine values is an affine
+linear map of rank one. Every value is retained
+in the JSON certificate, and direct substitution
+checks its equality with the retained linear
+map. Exactly three values satisfy the pentagon.
+Each also gives an invertible induced action
+on Ferrari homology; its two columns are the
+images of $\xi_1,\xi_2$ under the three
+Drinfeld generator formulas. The program checks
+both intertwining relations and all braid
+relations after this substitution.
+
+Finally, in the remaining 16 parameters the
+program retains an actual point in every fibre
+at which the five class-two cusp equations of
+E.11 vanish and the complete $97\times97$
+generation matrix is invertible. These are
+positive witnesses, not exclusions from a
+failed search. Their three-primary changes
+are represented by four times the corresponding
+integral $N$ words, so their two-primary
+homology component is unchanged. The literal
+cusp relation in $G_6$, both generation ranks,
+the exact integral gauge, zero $F$-abelianization,
+and all five pentagon factors are checked again.
+The resulting commutator words and every
+parameter are retained. This proves nonemptiness
+in all 24 whole matrix fibres and the asserted
+finite scope.
+\end{proof}
+
+\begin{statement}{E.18}{Proved}{The next Ferrari central layer adds no equation on these affine fibres}
+Let $\mathcal H_3$ be the class-two exponent-three free group on two
+generators, in coordinates $(u,v,z)\in\F_3^3$ with multiplication
+\[
+ (u,v,z)(u',v',z')=
+ (u+u',v+v',z+z'+2(uv'-vu')).
+\]
+The standard action of $\mathrm{SL}_2(\F_3)$ on $(u,v)$ fixes $z$.
+Put $\widetilde H_3=\mathcal H_3\rtimes\mathrm{SL}_2(\F_3)$.
+The assignments
+\[
+ \sigma_1\longmapsto((0,0,0),A),\qquad
+ \sigma_2\longmapsto((0,0,0),B),\qquad
+ \sigma_3\longmapsto((1,0,2),A)
+ \tag{E.18.1}
+\]
+define an epimorphism $\widetilde\rho_4:B_4\to\widetilde H_3$,
+where $A,B$ are those in (E.17.1). The normal pure kernel
+$\widetilde L_4=\ker\widetilde\rho_4\cap PB_4$ has index $15552$.
+Reduction of the Heisenberg central coordinate gives the precise
+quotient $\widetilde H_3\to H_3$ of E.17.
+
+All six evaluations used in E.17 still factor through $G_6$.
+On each of the 24 whole affine CM fibres, their joint parameter
+image has dimension two, with exactly the same kernel as in E.17.
+The complete pentagon has exactly the same zero set on this
+image: three of its nine points. Every retained E.17 literal
+witness satisfies the complete pentagon and all three braid
+relations in $\widetilde H_3$, and its three braid images generate
+that group. Thus this additional central layer preserves all
+24 nonempty fibres and introduces no further affine equation.
+\end{statement}
+\begin{proof}
+In the usual Baker--Campbell--Hausdorff coordinates of the free
+class-two group, write $z_0$ for the central coordinate and
+take the free generators to have $z_0=0$. The literal Ferrari
+actions (4.15) of \cite{DE_NakamuraTsunogaiYasuda2010} have
+central linear terms $(0,1)$ for $A$ and $(1,0)$ for $B$.
+The exact change of coordinates
+\[
+                 z=z_0-u-2v
+\]
+removes both terms: for $\ell=(1,2)$, their rows are
+$\ell A-\ell=(0,1)$ and $\ell B-\ell=(1,0)$.
+Consequently the actual Ferrari generators become
+$(e_1,2),(e_2,1)$, and their commutator is $(0,0,1)$.
+This proves that (E.18.1) uses the actual Ferrari quotient.
+Direct multiplication verifies the braid relations and the
+four literal free-generator action formulas. These elements
+generate the Heisenberg kernel and $\mathrm{SL}_2(\F_3)$,
+proving surjectivity and the order $27\cdot24=648$.
+The program \texttt{de\_ferrari\_class2\_model.py} also verifies
+the Heisenberg multiplication and all 24 matrix actions
+exhaustively, then enumerates the joint image with
+$\mathfrak S_4$, of order $15552$.
+
+For each of the six evaluation homomorphisms, the simultaneous
+images of $N$ have order at most nine. The program
+\texttt{de\_ferrari\_class2\_fibres.py} enumerates each such
+subgroup and verifies that it is elementary abelian. In the
+seven displayed coordinates $(a,b,c,d,u,v,z)$, subtracting
+the identity gives additive coordinates on each of these
+subgroups; every pair product is checked. All generator
+cubes and all 4656 generator commutators are therefore
+trivial. This proves the factorization through $G_6$.
+
+Stack these additive coordinates for $n(B_0t)$ and
+$s n(B_0t)s$, together with the gauge row $\ell(B_0t)$
+of E.17. The retained exact matrix has rank two. Stacking
+it with the old E.17 matrix still has rank two, so their
+kernels in $\F_3^{18}$ coincide. Formula (E.17.4) remains
+an exact literal-word identity in the larger group.
+The calculation substitutes all nine values of the
+two-dimensional image in every fibre. Its full
+three-coordinate pentagon residual vanishes precisely
+at the three points where the E.17 two-coordinate
+residual vanishes. Three further literal substitutions
+per fibre check the additive-coordinate evaluation.
+Finally, each of the 24 saved E.17 words is substituted
+directly; all five factors, all braid relations, and
+generation of the order-648 group are checked. The
+JSON retains every one of the $24\cdot9$ residuals,
+and the compressed certificate retains the complete
+parameter matrix, its section, and its kernel.
+\end{proof}
+\input{sections/E_ferrari_mod9_agent.tex}

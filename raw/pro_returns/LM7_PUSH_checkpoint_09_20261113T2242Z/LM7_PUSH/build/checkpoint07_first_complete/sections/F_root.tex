@@ -1,0 +1,176 @@
+\subsection{The residue complex and the derived-limit test}
+
+\begin{statement}{F.1}{Proved}{Localization with its global term retained}
+Let $L$ be a number field, let $\ell$ be a prime, and let $S$ be a finite set of places containing the archimedean places and every place above $\ell$. Put $X=\operatorname{Spec}\mathcal O_{L,S}$. Let $M$ be a free finite-rank $\mathbb Z_\ell$-module with a continuous action of $G_{L,S}$. Put $M_n=M/\ell^nM$. For every finite place $v\notin S$, choose a decomposition group and arithmetic Frobenius, put $A_v=M(-1)$ with that residue-field action, and put $D_v=\operatorname{Frob}_v-1$ on $A_v$.
+There are compatible distinguished triangles in the derived category of abelian groups
+\[
+ R\Gamma(X,M_n)\longrightarrow R\Gamma(G_L,M_n)
+ \longrightarrow
+ \bigoplus_{v\notin S}[A_v/\ell^n\xrightarrow{D_v}A_v/\ell^n][-1]
+ \longrightarrow R\Gamma(X,M_n)[1].
+\]
+The two terms in each displayed bracket have degrees zero and one.
+Define
+\[
+ R_A=\left\{(a_v)\in\prod_{v\notin S} A_v:
+       \text{for every }n,\ a_v\in\ell^n A_v
+       \text{ outside finitely many }v\right\}.
+\]
+Taking the derived inverse limit gives the triangle
+\[
+ R\Gamma_{\mathrm{cts}}(G_{L,S},M)
+ \longrightarrow R\Gamma_{\mathrm{cts}}(G_L,M)
+ \longrightarrow [R_A\xrightarrow{D}R_A][-1]
+ \longrightarrow R\Gamma_{\mathrm{cts}}(G_{L,S},M)[1].
+\]
+Here $D=(D_v)_v$ is the coordinatewise residue differential.
+In particular its degree-two sequence is
+\[
+ \ker D\longrightarrow H^2_{\mathrm{cts}}(G_{L,S},M)
+ \longrightarrow H^2_{\mathrm{cts}}(G_L,M)
+ \longrightarrow R_A/DR_A
+ \longrightarrow H^3_{\mathrm{cts}}(G_{L,S},M).
+\]
+The image $DR_A$ here is the algebraic image. Every arrow is the map induced by restriction or the localization triangle; changing a decomposition-group choice conjugates the corresponding stalk and gives an isomorphic complex.
+\end{statement}
+\begin{proof}
+For a finite set $J$ of places outside $S$, take localization for the open immersion $X-J\hookrightarrow X$. Over the strict henselization at $v$, the sheaf $M_n$ is constant. Wild inertia is pro-$p_v$, so averaging on finite quotients annihilates its positive-degree cohomology with $\ell$-primary coefficients. The relevant tame inertia is $\mathbb Z_\ell(1)$; its cochain complex has cohomology $M_n$ in degree zero and $M_n(-1)$ in degree one. The support complex is consequently $M_n(-1)[-2]$. Descending to the residue field gives the first triangle with $J$ in place of all places.
+
+The locally constant sheaf comparison is Milne, II.2.9; localization and its support maps are II.0.1(f) and II.1.7(b) \cite{MilneADT}. Filtered direct limits over $J$ are exact. Every continuous cochain of a profinite group with finite coefficients factors through a finite quotient, and its number field is ramified at finitely many places. Thus the generic-field term is precisely $R\Gamma(G_L,M_n)$ and the support term is a direct sum.
+
+The residue Galois group is procyclic. Its usual two-term resolution computes cohomology as $[A_v/\ell^n\xrightarrow{D_v}A_v/\ell^n]$. In both degrees the direct-sum reduction maps are surjective. Their derived inverse limits are therefore their ordinary inverse limits, which are exactly $R_A$: reduction modulo $\ell^n$ has finite support for every $n$. The matrices $D_v$ are integral, so they preserve this space.
+
+For completeness, continuous cochains with values in $M$ are the inverse limit of the finite-coefficient cochain complexes. The reduction map on cochains is surjective, since a continuous finite-valued function can be lifted value by value. The resulting Milnor comparison is Jannsen, Proposition 1.6 and Theorem 2.2 \cite{Jannsen1988}. It identifies the derived inverse limit used here with continuous cochain cohomology. Taking the long exact sequence proves the assertion. Real places have not been discarded: their possible $2$-primary contribution remains in the global term and in its degree-three group.
+\end{proof}
+
+\begin{statement}{F.2}{Proved}{The exact global correction to the residue derived limit}
+With the data of F.1, define inverse systems
+\[
+ P_n=\bigoplus_{v\notin S}\ker(D_v:A_v/\ell^n\to A_v/\ell^n),
+ \qquad
+ E_n=\operatorname{im}\bigl(P_n\to H^2(G_{L,S},M_n)\bigr).
+\]
+There is a natural short exact sequence
+\[
+ 0\longrightarrow
+ \operatorname{coker}\bigl(\varprojlim P_n\to\varprojlim E_n\bigr)
+ \longrightarrow \varprojlim{}^1 H^1(G_L,M_n)
+ \longrightarrow \varprojlim{}^1 P_n\longrightarrow0.       \tag{F.2.1}
+\]
+The right-hand group has the explicit presentation
+\[
+ \varprojlim{}^1 P_n
+ =
+ \frac{R_A\cap\prod_{v\notin S}D_vA_v}{DR_A}.                \tag{F.2.2}
+\]
+The embedding of this group into the residue cohomology is the kernel of the map
+\[
+ R_A/DR_A\longrightarrow
+ \varprojlim_n\bigoplus_{v\notin S}
+     A_v/(\ell^n A_v+D_vA_v).
+\]
+Jannsen's exact sequence for the full global group is
+\[
+ 0\longrightarrow\varprojlim{}^1 H^1(G_L,M_n)
+ \longrightarrow H^2_{\mathrm{cts}}(G_L,M)
+ \longrightarrow\varprojlim_n H^2(G_L,M_n)
+ \longrightarrow0.                                      \tag{F.2.3}
+\]
+\end{statement}
+\begin{proof}
+At level $n$ localization gives
+\[
+ H^1(G_{L,S},M_n)\longrightarrow H^1(G_L,M_n)
+ \longrightarrow P_n\longrightarrow H^2(G_{L,S},M_n).
+\]
+The two cohomology groups with finite $S$ are finite by Milne I.4.15. Let $Q_n$ be the kernel of $P_n\to E_n$, and let $F_n$ be the image of the first arrow. The exact sequences
+$0\to F_n\to H^1(G_L,M_n)\to Q_n\to0$ and
+$0\to Q_n\to P_n\to E_n\to0$ give (F.2.1). Indeed all the $F_n$ and $E_n$ are finite, hence their towers are Mittag--Leffler and their first derived limits vanish; second derived limits of towers vanish.
+
+Put $B_n=\bigoplus_v A_v/\ell^n$ and $I_n=DB_n$. Both $B_n$ and $I_n$ have surjective transition maps: a representative of $D_v a$ lifts by lifting $a$. Apply inverse limits to $0\to P_n\to B_n\to I_n\to0$. The result is
+$\varprojlim{}^1P_n=(\varprojlim I_n)/D R_A$.
+An element of $R_A$ belongs to $\varprojlim I_n$ exactly when each of its coordinates belongs to $D_vA_v+\ell^n A_v$ for every $n$. The image of an endomorphism of a finite-rank $\mathbb Z_\ell$-module is closed; its Smith form proves that the intersection is $D_vA_v$. This proves (F.2.2). Applying the same argument to $0\to I_n\to B_n\to B_n/I_n\to0$ gives the asserted kernel and surjectivity onto the displayed limit. Finally (F.2.3) is the continuous-cochain comparison already proved in F.1.
+\end{proof}
+
+\begin{statement}{F.3}{Proved}{A complete vanishing test over number fields}
+For each $v\notin S$, let $e_{v,1},\ldots,e_{v,s_v}$ be the valuations of the nonzero Smith entries of $D_v$ on $A_v$. A unit entry has valuation zero; a zero Smith entry is excluded. The following conditions are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $\varprojlim{}^1 H^1(G_L,M/\ell^n)=0$;
+\item the tower $P_n$ in F.2 is Mittag--Leffler;
+\item the nonnegative integers $e_{v,i}$ are bounded, uniformly over $v$ and $i$;
+\item the finite groups
+\[
+ B_v=
+ \frac{H^0(\mathbb F_v,A_v\otimes\mathbb Q_\ell/\mathbb Z_\ell)}
+      {H^0(\mathbb F_v,A_v\otimes\mathbb Q_\ell/\mathbb Z_\ell)_{\mathrm{div}}}
+\]
+have uniformly bounded orders.
+\end{enumerate}
+The subscript $\mathrm{div}$ denotes the maximal divisible subgroup. No boundedness condition on the orders of $H^2(G_{L,S},M/\ell^n)$ is required. Their contribution to the full group is exactly the left term of (F.2.1).
+\end{statement}
+\begin{proof}
+The Smith form is an isomorphism of source and target $\mathbb Z_\ell$-modules; it is chosen separately at each place and is compatible with reduction. For a nonzero entry $\ell^e$, the image of its kernel at level $m$ in level $n\le m$ is
+\[
+ \ell^{\max(0,m-e)}(\mathbb Z/\ell^n),
+\]
+with the usual interpretation that it is zero when $m-e\ge n$. A zero Smith entry contributes the surjective tower $\mathbb Z/\ell^n$. Thus a bound $e\le b$ makes the images stationary by level $n+b$.
+Conversely, unbounded exponents give, for every $m$, a coordinate whose image at level one is nonzero from level $m$, but becomes zero at a later level. Hence the images at level one never become stationary. This proves (ii)$\Leftrightarrow$(iii).
+
+The same Smith form gives
+\[
+ H^0(\mathbb F_v,A_v\otimes\mathbb Q_\ell/\mathbb Z_\ell)
+ \simeq
+ (\mathbb Q_\ell/\mathbb Z_\ell)^{\operatorname{rank}\ker D_v}
+ \oplus\bigoplus_{i=1}^{s_v}\mathbb Z/\ell^{e_{v,i}}.
+\]
+This is an isomorphism of abelian groups; the quotient by the maximal divisible subgroup is canonical. The ranks $s_v$ are bounded by $\operatorname{rank}M$, proving (iii)$\Leftrightarrow$(iv).
+
+Unbounded exponents give a nonzero element of (F.2.2) directly. Choose distinct $v_j$ and Smith source basis vectors $x_j$ with associated exponents at least $j$. Set $z_{v_j}=D_{v_j}x_j$ and set the other coordinates to zero. The family $z$ is restricted. Every preimage of $z_{v_j}$ differs from $x_j$ by an integral kernel vector, so its reduction modulo $\ell$ in $A_{v_j}/\ker D_{v_j}$ is nonzero. No preimage family is restricted. Thus (F.2.2) is nonzero, and the surjection (F.2.1) proves that (i) implies (iii).
+
+It remains to verify that bounded exponents also annihilate the global correction; finiteness at each level alone does not supply this step. Let
+\[
+ P_n^0=\bigoplus_v(\ker D_v)/\ell^n\ker D_v\ \subseteq P_n.
+\]
+The kernels are saturated submodules, so the inclusion is injective. A uniform bound $b$ implies that the tower $P_n/P_n^0$ is zero after shifting the index by $b$. Put $C=H^2_{\mathrm{cts}}(G_{L,S},M)$. It is a finitely generated $\mathbb Z_\ell$-module. To check this last input, finite-coefficient cohomology is finite and the Milnor term from $H^1(G_{L,S},M_n)$ vanishes. Thus $C=\varprojlim H^2(G_{L,S},M_n)$ is compact. The coefficient exact sequence embeds $C/\ell C$ in the finite group $H^2(G_{L,S},M/\ell)$. Choose lifts $c_1,\ldots,c_d$ of generators of this quotient. Successive division modulo their span expresses every $c\in C$ as $\sum_i a_i c_i$ with $a_i\in\mathbb Z_\ell$: the remainder after $n$ divisions belongs to $\ell^nC$, and these subgroups tend to zero since their images in every fixed finite coefficient group eventually vanish. This proves finite generation directly, and also verifies the input to Jannsen Corollaries 4.9--4.10.
+
+Each integral local invariant has a compatible Gysin image in $C$. Let $J\subseteq C$ be the $\mathbb Z_\ell$-submodule generated by all these images. Since $C$ is noetherian, $J$ is generated by finitely many such images and is closed. The image $E_n^0$ of $P_n^0$ in $H^2(G_{L,S},M_n)$ is exactly the image of $J$. The quotient tower $E_n/E_n^0$ is zero after the same fixed shift, so $\varprojlim E_n=\varprojlim E_n^0$. Compactness of the finitely generated module $J$, together with $C=\varprojlim H^2(G_{L,S},M_n)$, identifies this limit with $J$.
+
+A finite set of local invariant vectors whose images generate $J$ gives a map from a finite direct sum of their $\mathbb Z_\ell$-spans into $\varprojlim P_n$. Its composite onto $J$ is surjective. Consequently the left term of (F.2.1) vanishes. The right term vanishes by the Smith calculation, proving (iii)$\Rightarrow$(i). The proof includes $\ell=2$ and real places, since it uses their finite cohomology through $C$ without assuming cohomological dimension two.
+\end{proof}
+
+\begin{statement}{F.4}{Refuted}{Total orders of residue invariants do not determine vanishing}
+The orders of the unquotiented groups
+$H^0(\mathbb F_q,M(-1)\otimes\mathbb Q_3/\mathbb Z_3)$, even together with all the orders of $H^2(G_{\mathbb Q,S},M/3^n)$, do not determine the vanishing in F.3.
+For $S=\{3,\infty\}$ the two lattices
+\[
+ M^{(0)}=\mathbb Z_3(1)^2,\qquad
+ M^{(1)}=\mathbb Z_3(1)\oplus\mathbb Z_3(2)
+\]
+have the same stated data: every residue invariant group has countably infinite order, and every displayed global $H^2$ group is zero.
+Their derived limits are respectively zero and nonzero. The correct order test is F.3(iv).
+\end{statement}
+\begin{proof}
+For $M^{(0)}(-1)$ every $D_q$ is zero; there is no nonzero Smith entry. For $M^{(1)}(-1)$ the matrix is $\operatorname{diag}(0,q-1)$. Primes congruent to $1$ modulo $3^j$ give unbounded nonzero Smith valuations, so F.3 proves the two answers. The residue invariants are respectively $(\mathbb Q_3/\mathbb Z_3)^2$ and
+$\mathbb Q_3/\mathbb Z_3\oplus(\mathbb Q_3/\mathbb Z_3)[q-1]$; both have countably infinite underlying sets.
+
+For the twist one, Kummer theory on $\mathbb Z[1/3]$ gives the vanishing of $H^2$ because its Picard group is zero and its Brauer group has no $3$-primary part. The latter follows from the invariant-sum sequence: only the place $3$ can contribute a nonzero $3$-primary local invariant, and its sum must be zero. For twist two modulo $3$, the module is the trivial $\mathbb F_3$. Kronecker--Weber gives $H^1(G_{\mathbb Q,S},\mathbb F_3)$ dimension one. The global Euler characteristic (Milne I.5.1) is one; thus $H^2$ is zero. Filtering the higher coefficients by powers of $3$ proves the same vanishing at every level. This independently confirms the precise input from LM7 E.32g used in the example.
+\end{proof}
+
+\begin{statement}{F.5}{Proved}{Coefficient modules already determined}
+Over every number field $L$ the derived limit in F.3 vanishes for $\mathbb Z_3(1)$ and for the restrictions of
+$\mathbb Z_3(1)[D]$ and $W$ from the cubic.
+It is nonzero for the restrictions of $T$, $V$, $\mathcal K$, and $\bigwedge^2V$.
+It is also nonzero for every nonzero torsion-free graded lattice of degree $r\ge3$ obtained as a subquotient of tensor powers $V^{\otimes r}$ and occurring in a lower-central quotient here.
+These statements concern each specified finite-rank lattice; they do not evaluate a section obstruction.
+\end{statement}
+\begin{proof}
+For twist one the residue differential is zero. The cusp permutation action factors through $\operatorname{Gal}(\mathbb Q(\zeta)/\mathbb Q)$ of order two. On every $\mathbb Z_3$-lattice with that action, averaging splits the two eigenspaces integrally. After the twist the nonzero Smith entries of a residue permutation minus one are units, including the quotient by the diagonal defining $W$. F.3 proves vanishing.
+
+For $T(-1)$, the eigenvalues of arithmetic Frobenius at a good place $v$ have complex absolute value $(Nv)^{-1/2}$; consequently $D_v$ is injective. The representation modulo $3^n$ cuts out a finite Galois extension of $L$. Chebotarev supplies infinitely many places splitting in this extension and in the $3^n$-cyclotomic extension. At these places $D_v\equiv0\pmod{3^n}$. Its nonzero Smith valuations are therefore unbounded. For $\mathcal K(-1)$, the two weight pieces have absolute values $Nv$ and $(Nv)^{1/2}$, so the same argument applies.
+
+The generalized Jacobian extension is killed by $3$ in the isogeny category because every cusp difference has order dividing $3$ on the elliptic curve. Thus
+$V\otimes\mathbb Q_3=(W\otimes\mathbb Q_3)\oplus(T\otimes\mathbb Q_3)$.
+To transfer the boundedness test, choose integral lattices on this rational decomposition and a positive integer $b$ such that the original and split lattices contain $3^b$ times one another. Replacing one by the other changes the largest nonzero Smith valuation by at most $2b$; this follows by applying both inclusions to preimages of $D_v$. Hence the unboundedness from $T$ persists in $V$. The same argument for exterior squares retains the $\mathcal K$ summand and proves the assertion for $\bigwedge^2V$.
+
+In degree $r\ge3$, the eigenvalues before twisting have absolute values among $(Nv)^{a/2+b}$ with $a+b=r$ and $a,b\ge0$. After twisting, every such value is at least $(Nv)^{r/2-1}>1$. Subquotients retain a subset of these eigenvalues. Thus $D_v$ is injective, and splitting places for the finite coefficient representation again prove unboundedness. A fixed finite torsion part of a finitely generated coefficient module contributes an eventually constant coefficient system; it creates no additional first derived limit. This last observation does not assert that an unevaluated graded quotient is torsion-free.
+\end{proof}
