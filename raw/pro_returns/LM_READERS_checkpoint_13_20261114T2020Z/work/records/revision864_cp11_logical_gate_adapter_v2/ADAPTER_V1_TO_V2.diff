@@ -1,0 +1,223 @@
+--- retained-v1/checkpoint_gate_adapter.py
++++ post-checkpoint-v2/checkpoint_gate_adapter.py
+@@ -11,6 +11,9 @@
+ 
+ import argparse
+ import ast
++import csv
++import io
++import zipfile
+ import hashlib
+ import importlib.util
+ import inspect
+@@ -28,6 +31,15 @@
+ ARCHIVE_SHA = '1df3f32c9f47dcbadbf4546f10f8866faf7084f6ded8f9c221e98f1e41512f51'
+ CLASSIFICATION_SHA = 'd57ade078fb94fa5cfe7c0b3114da8fd15d5c74f9b314f9572d046f6eec811ed'
+ CLASSIFICATION_BYTES = 808739
++IMAGE_QUALIFICATION_SHA = '6a977622caed0a061c93e49807dc0c146744e63d2e5f914ac3a20c03ffa1cf64'
++IMAGE_QUALIFICATION_BYTES = 5365228
++OLD_IMAGE_SPAN = """        for row in preserved['images']:
++            assert digest(local(row['preserved_path'])) == row['sha256'] == logical[row['preserved_path']]['sha256']
++"""
++NEW_IMAGE_SPAN = """        for image_index, row in enumerate(preserved['images']):
++            assert digest(local(row['preserved_path'])) == row['sha256']
++            _cp11_require_archived_image_identity(container, logical, row, image_index)
++"""
+ OLD_SPAN = """            if expected is not None:
+                 assert logical[name]['sha256'] == expected['sha256'] and int(logical[name]['bytes']) == expected['bytes'], name
+ """
+@@ -109,6 +121,130 @@
+         self.used.add(name)
+ 
+ 
++class ImageLookup:
++    """Only the collector's explicitly qualified proof-image namespace map."""
++    def __init__(self, root, qualification, original_qualification):
++        self.root = root
++        self.qualification = qualification
++        rows = qualification['rows']
++        self.allowed = {row['preserved_path']: row for row in rows}
++        require(len(rows) == len(self.allowed) == 3764 and
++                len({row['snapshot_image_index'] for row in rows}) == 3764,
++                'Image authority must contain exactly3764 unique names/indices')
++        self.used = set(); self.seen = set(); self.blobs = set(); self.recipe_ids = set(); self.direct = 0
++        for label, ref in qualification['inputs'].items():
++            require(digest(root / ref['path']) == ref['sha256'] and
++                    (root / ref['path']).stat().st_size == ref['bytes'], 'Image authority input changed: ' + label)
++        require(qualification['inputs']['archive'] == original_qualification['inputs']['archive'] and
++                qualification['inputs']['snapshot'] == original_qualification['inputs']['snapshot'] and
++                qualification['inputs']['full_recovery'] == original_qualification['inputs']['full_recovery'],
++                'Image authority belongs to different checkpoint/snapshot/recovery')
++        raw_recovery = json.loads((root / qualification['inputs']['raw_recovery']['path']).read_bytes())
++        recovery = json.loads((root / qualification['inputs']['full_recovery']['path']).read_bytes())
++        require(recovery['restore_report_sha256'] == qualification['inputs']['raw_recovery']['sha256'] and
++                raw_recovery['status'] == 'PASS' and raw_recovery['failures'] == [] and
++                raw_recovery['complete_logical_recovery'] is True and raw_recovery['physical_zip_manifest_verified'] is True and
++                raw_recovery['verified_logical_count'] == 75238 and raw_recovery['verified_recipe_count'] == 12146,
++                'Image recipes lack the exact complete restored-byte authority')
++        self.snapshot = json.loads((root / SNAPSHOT).read_bytes())
++        with zipfile.ZipFile(root / ARCHIVE) as container:
++            descriptor = json.loads(container.read('COMPACT_CHECKPOINT.json'))
++            inventories = {}
++            for key in ('logical_manifest', 'alias_inventory', 'png_recipes'):
++                ref = qualification['archive_controls'][key]
++                require(descriptor[key] == ref, 'Image inventory descriptor differs: ' + key)
++                data = container.read(ref['path'])
++                require((sha(data), len(data)) == (ref['sha256'], ref['bytes']), 'Image inventory bytes differ: ' + key)
++                inventories[key] = data
++            logical_rows = list(csv.DictReader(io.StringIO(inventories['logical_manifest'].decode()), delimiter='\t'))
++            logical = {row['path']: row for row in logical_rows}
++            require(len(logical) == len(logical_rows) == 75238, 'Logical inventory scope differs')
++            self.aliases = {row['alias_path']: row for row in csv.DictReader(io.StringIO(inventories['alias_inventory'].decode()), delimiter='\t')}
++            self.recipes = {row['id']: row for row in json.loads(inventories['png_recipes'])['recipes']}
++            require(len(self.recipes) == 12146, 'Recipe inventory coverage differs')
++            # Exhaustively resolve every original gate logical-path expression.
++            require(SNAPSHOT in logical and logical[SNAPSHOT]['sha256'] == SNAPSHOT_SHA, 'Snapshot itself is not archived')
++            require(all(name in logical for name in ('work/records/CHECKPOINT_STATUS.json',
++                    'work/records/checkpoint_archives.jsonl', 'work/records/CHECKPOINT_SAVES.tsv')), 'Missing bookkeeping logical path')
++            require({row['original_path'] for row in self.snapshot['files'] if row['original_path'] not in logical} ==
++                    {row['original_path'] for row in original_qualification['rows']}, 'Absent file-original scope differs')
++            require(all(row['snapshot_path'] in logical and
++                    (logical[row['snapshot_path']]['sha256'], int(logical[row['snapshot_path']]['bytes'])) ==
++                    (row['snapshot_sha256'], row['snapshot_bytes']) for row in self.snapshot['files']),
++                    'A captured-file logical path is missing or changed')
++            require(len(self.snapshot['pdfs']) == 7 and all(row['path'] in logical and
++                    logical[row['path']]['sha256'] == row['sha256'] for row in self.snapshot['pdfs']), 'A PDF logical path is missing or changed')
++            require(len(self.snapshot['images']) == 11891 and
++                    {row['preserved_path'] for row in self.snapshot['images'] if row['preserved_path'] not in logical} == set(self.allowed),
++                    'Absent image scope differs')
++            for index, row in enumerate(self.snapshot['images']):
++                name = row['preserved_path']
++                if name in logical:
++                    require(logical[name]['sha256'] == row['sha256'], 'Present image logical identity differs: ' + name)
++                else:
++                    self.describe(logical, row, index)
++        self.preflight = dict(status='PASS', snapshot_documents=1, bookkeeping_paths=3,
++            file_original_paths=3133, qualified_absent_file_originals=950, captured_file_paths=3133,
++            pdf_paths=7, image_paths=11891, direct_image_paths=8127, qualified_image_paths=3764,
++            unclassified_missing_names=0, png_recipe_executions=0)
++
++    def describe(self, logical, row, index):
++        name = row['preserved_path']
++        require(name in self.allowed and name.startswith('work/visual_repair_proofs/'), 'Unqualified absent image name: ' + name)
++        approved = self.allowed[name]
++        require(index == approved['snapshot_image_index'] and canonical_sha(row) == approved['snapshot_image_record_sha256'],
++                'Snapshot image row/index differs: ' + name)
++        mapped = 'proofs/visual_repairs/' + name[len('work/visual_repair_proofs/'):]
++        require(mapped == approved['archive_logical_path'] and mapped in logical, 'Exact collector image path is absent: ' + name)
++        entry = logical[mapped]
++        require(canonical_sha(entry) == approved['logical_row_sha256'] and
++                (entry['sha256'], int(entry['bytes'])) == (row['sha256'], approved['bytes']), 'Mapped image logical identity differs: ' + name)
++        target = logical[entry['target_path']] if entry['storage_kind'] == 'alias' else entry
++        require(target['path'] == approved['canonical_logical_path'] and canonical_sha(target) == approved['canonical_row_sha256'] and
++                target['storage_kind'] in {'blob', 'png_recipe'} and
++                (target['sha256'], int(target['bytes'])) == (row['sha256'], approved['bytes']), 'Image canonical payload differs: ' + name)
++        if entry['storage_kind'] == 'alias':
++            require(canonical_sha(self.aliases[mapped]) == approved['alias_record_sha256'] and
++                    self.aliases[mapped]['target_path'] == target['path'], 'Image alias authority differs: ' + name)
++        if target['storage_kind'] == 'png_recipe':
++            recipe = self.recipes[target['recipe_id']]
++            require(recipe['id'] == approved['recipe_id'] and canonical_sha(recipe) == approved['recipe_record_sha256'] and
++                    (recipe['expected']['png_sha256'], recipe['expected']['bytes']) == (row['sha256'], approved['bytes']),
++                    'Image recipe identity differs: ' + name)
++        else:
++            require(target['object_path'] == approved['archive_object_path'], 'Image primitive object differs: ' + name)
++        return approved, target
++
++    def __call__(self, container, logical, row, index):
++        name = row['preserved_path']
++        require(index not in self.seen, 'Snapshot image checked twice')
++        self.seen.add(index)
++        if name in logical:
++            require(name not in self.allowed and logical[name]['sha256'] == row['sha256'], 'Present image identity differs: ' + name)
++            require((self.root / name).stat().st_size == int(logical[name]['bytes']), 'Present image byte count differs: ' + name)
++            self.direct += 1
++            return
++        approved, target = self.describe(logical, row, index)
++        require((self.root / name).stat().st_size == approved['bytes'], 'Current mapped image byte count differs: ' + name)
++        if target['storage_kind'] == 'blob':
++            key = (target['object_path'], row['sha256'], approved['bytes'])
++            if key not in self.blobs:
++                info = container.getinfo(target['object_path'])
++                require(info.file_size == approved['bytes'] and not info.flag_bits & 1, 'Image primitive ZIP header differs: ' + name)
++                data = container.read(target['object_path'])
++                require((sha(data), len(data)) == (row['sha256'], approved['bytes']), 'Image primitive bytes differ: ' + name)
++                self.blobs.add(key)
++        else:
++            # The pinned complete75238-file/12146-recipe recovery already
++            # verified these exact output bytes. No rendering is inferred here.
++            self.recipe_ids.add(target['recipe_id'])
++        self.used.add(name)
++
++
++def canonical_sha(value):
++    return sha(json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode())
++
++
+ def load_adapter(root, evidence):
+     root = Path(root).resolve()
+     evidence = Path(evidence).resolve()
+@@ -116,6 +252,10 @@
+     raw = qualification_path.read_bytes()
+     require((sha(raw), len(raw)) == (CLASSIFICATION_SHA, CLASSIFICATION_BYTES), 'Qualification bytes differ')
+     qualification = json.loads(raw)
++    image_qualification_path = evidence / 'IMAGE_QUALIFICATION.json'
++    image_raw = image_qualification_path.read_bytes()
++    require((sha(image_raw), len(image_raw)) == (IMAGE_QUALIFICATION_SHA, IMAGE_QUALIFICATION_BYTES), 'Image qualification bytes differ')
++    image_qualification = json.loads(image_raw)
+     require(qualification['status'] == 'EXACT_BYTES_PASS_GATE_CORRECTION_NOT_EXECUTED', 'Wrong qualification status')
+     fixed = {
+         'original_integrator': (ORIGINAL, ORIGINAL_SHA),
+@@ -146,8 +286,9 @@
+     require(original.ROOT == root, 'Original integrator project root differs')
+     before = inspect.getsource(original.checkpoint_gate)
+     require(before.count(OLD_SPAN) == 1, 'The original gate lookup span differs')
+-    after = before.replace(OLD_SPAN, NEW_SPAN, 1)
+-    require(after.replace(NEW_SPAN, OLD_SPAN, 1) == before, 'Gate substitution is not exactly reversible')
++    require(before.count(OLD_IMAGE_SPAN) == 1, 'The original image-loop span differs')
++    after = before.replace(OLD_SPAN, NEW_SPAN, 1).replace(OLD_IMAGE_SPAN, NEW_IMAGE_SPAN, 1)
++    require(after.replace(NEW_SPAN, OLD_SPAN, 1).replace(NEW_IMAGE_SPAN, OLD_IMAGE_SPAN, 1) == before, 'Gate substitutions are not exactly reversible')
+     # Every other original module AST node/function remains the loaded original.
+     require(len(ast.parse(after).body) == 1 and isinstance(ast.parse(after).body[0], ast.FunctionDef),
+             'Gate substitution unexpectedly introduces another definition')
+@@ -163,22 +304,38 @@
+         # The old gate still verifies all current originals, captured records,
+         # seven-log privacy, receipts/recovery, PDFs, images and direct names.
+         lookup = CapturedLookup(qualification)
++        image_lookup = ImageLookup(root, image_qualification, qualification)
+         original.__dict__['_cp11_require_archived_identity'] = lookup
++        original.__dict__['_cp11_require_archived_image_identity'] = image_lookup
+         result = corrected(stage, proposal, snapshot_path, archive_path)
+         require(lookup.used == set(lookup.allowed), 'Not every qualified absent path was checked')
+         require(len(lookup.objects) == qualification['unique_archived_primitive_payloads_checked'],
+                 'Primitive payload coverage differs')
+         require(digest(root / ARCHIVE) == ARCHIVE_SHA and digest(root / SNAPSHOT) == SNAPSHOT_SHA,
+                 'Checkpoint/snapshot changed during supplemental gate')
++        require(image_lookup.used == set(image_lookup.allowed) and image_lookup.seen == set(range(11891)) and
++                image_lookup.direct == 8127, 'Image gate coverage differs')
++        require(len(image_lookup.blobs) == image_qualification['unique_stored_blob_payloads_checked'] and
++                len(image_lookup.recipe_ids) == image_qualification['unique_validated_recipe_ids'], 'Image payload coverage differs')
+         result['post_checkpoint_logical_path_supplement'] = dict(
+-            schema='revision864-cp11-captured-logical-path-gate-supplement-v1', status='PASS',
++            schema='revision864-cp11-captured-logical-path-gate-supplement-v2', status='PASS',
+             provenance='POST_CHECKPOINT_EXECUTOR_NOT_INCLUDED_IN_CP11',
+             adapter=artifact(Path(__file__), root), qualification=artifact(qualification_path, root),
++            image_qualification=artifact(image_qualification_path, root),
++            superseded_executor=image_qualification['inputs']['v1_adapter'],
++            prior_gate_failure=image_qualification['inputs']['v1_production_failure'],
++            all_logical_access_preflight=image_lookup.preflight,
++            image_mapping=dict(qualified_absent_names=len(image_lookup.used), direct_names_checked=image_lookup.direct,
++                primitive_payloads_crc_size_sha256_checked=len(image_lookup.blobs),
++                recipe_ids_bound_to_existing_full_recovery=len(image_lookup.recipe_ids),
++                complete_recovery=image_qualification['inputs']['full_recovery'],
++                raw_complete_recovery=image_qualification['inputs']['raw_recovery'],
++                new_png_recipe_executions=0, new_visual_observations=False),
+             original_integrator=qualification['inputs']['original_integrator'],
+             original_proposal=qualification['inputs']['proposal'],
+             original_checkpoint_gate_sha256=sha(before.encode()),
+             corrected_checkpoint_gate_sha256=sha(after.encode()),
+-            change='Only the exact original logical-name assertion is delegated to the closed captured-path lookup; all other original gate and installation code remains unchanged.',
++            change='Only two exact original gate spans are substituted: the closed950 captured-file lookup and the closed3764 existing-collector proof-image prefix mapping. Original local-image hashing and all other gate/installation code remain unchanged.',
+             qualified_absent_names=len(lookup.used), direct_original_names_checked=lookup.direct,
+             archived_primitive_payloads_rehashed=len(lookup.objects),
+             original_current_and_captured_validation_retained=True,

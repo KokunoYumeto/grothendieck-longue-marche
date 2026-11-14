@@ -1,0 +1,58 @@
+{
+  "schema": "checkpoint-inheritance-read-cache-recommendation-v1",
+  "status": "READ_ONLY_RECOMMENDATION_NOT_IMPLEMENTED",
+  "measurement": {
+    "path": "measurements/READ_AMPLIFICATION.json",
+    "bytes": 33372,
+    "sha256": "f54955bcb3e2314455d067d67a893ec163a10198e6e1921bfd33786579196e74"
+  },
+  "code_pins": [
+    {
+      "path": "work/scripts/checkpoint_inheritance.py",
+      "bytes": 12748,
+      "sha256": "30e2ee3061ba5bb81f8fcb0282df5e51385b9425c3364f70e8c60f1f081360dc"
+    },
+    {
+      "path": "work/scripts/restore_checkpoint.py",
+      "bytes": 84208,
+      "sha256": "6674831e67ca346c9ec64c1b8b9f62b62de665cab864c0ecac40cfa60e543691"
+    },
+    {
+      "path": "work/scripts/package_release.py",
+      "bytes": 64481,
+      "sha256": "1fd7917dd756929e4a3f228870cfa5ec49b8fdccc0d0904a0a37ff88f928c6fa"
+    }
+  ],
+  "minimum_scope": "After source872 commit and separate authorization, change only checkpoint_inheritance.expand; keep all renderer, restorer, codec, privacy, collection and snapshot semantics unchanged.",
+  "findings": [
+    {
+      "location": "expand.data / add",
+      "finding": "data_cache is populated by add, but full-page PDF/ledger/trace reads and preserve_native_pin blob reads bypass it. A cache miss in data() also does not memoize; globally changing that behavior would retain every initial PNG read in line85 and is not recommended."
+    },
+    {
+      "location": "expand.preserve_native_pin",
+      "finding": "Native/overview PDF and metadata pins are fetched once per occurrence, including four identical PDF pins in a typical overview sheet. Their content-addressed output inputs remain in result/data_cache already, so repeated decompression is unnecessary if exact immutable source association is preserved."
+    },
+    {
+      "location": "expand full-page source_scan_trace",
+      "finding": "The same twelve exact trace documents are decompressed and parsed once per selected full-page recipe. Only parsed.sha256 is used; cache the exact trace bytes/hash and this scalar, not a mutable parsed document."
+    }
+  ],
+  "recommended_change": [
+    "Use a function-local immutable archive-object byte cache, seeded by the existing initial auxiliary copy, or reuse data_cache through a separate exact source-identity index. Bind keys to prior archive identity plus immutable object_path, sha256 and bytes; never to capture/work/build logical path alone.",
+    "Resolve each logical alias and retain existing blob/pdf_delta/primitive-kind and pin-to-source association checks on every call. Cache only after the existing object reader and SHA/size checks succeed. A mismatched repeated pin must still fail; keep all current per-call SHA/size comparisons for the first conservative implementation.",
+    "Use the cached exact bytes for fullpage PDF/ledger/trace and native PDF/metadata/canvas blob consumers. Keep the native_source_png reconstruction branch untouched, including its existing bounded dependency checks and prior.recipe_bytes calls.",
+    "Memoize trace parsing by verified immutable source-object identity. Preserve the per-recipe comparison of the cached parsed PDF SHA to the current recipe source SHA and the existing missing-trace behavior.",
+    "Still execute all add() conflict checks, descriptor construction, pin rewrites and provenance overwrites in the original loop/order. Do not short-circuit an entire preserve_native_pin call on a cache hit: source_recipe_id and insertion/last-write behavior must remain exact.",
+    "Do not cache the general initial current-file/PNG data() reads, do not skip initial current PNG hashing, and do not cache away any later mandatory fresh PNG reconstruction or exact PNG/RGB comparison."
+  ],
+  "expected_safety": "Reusing immutable verified bytes and a derived parsed SHA can preserve exact expanded item bytes, recipe objects and inventory ordering. This is a reasoned code assessment, not an executed patched equivalence test. No code was changed.",
+  "focused_future_acceptance_if_implemented": [
+    "Exact before/after expanded bytes and metadata equality on a bounded fixture containing repeated PDF/metadata/trace pins, aliases, an existing auxiliary path and two recipes that update the same provenance descriptor.",
+    "Wrong same-object hash/size, wrong logical-to-object association, and conflicting current auxiliary path still fail.",
+    "Instrumented fixture confirms one immutable decompression/trace parse per distinct pin while unchanged primitive and final fresh-render calls remain invoked."
+  ],
+  "runtime_limit": "The measurements are exact metadata-based call/byte multiplication, not wall-clock profiling or proof that the active process is currently inside expand. No active process was interrupted or rerun.",
+  "mutation_scope": "Only this recommendation and the referenced report were written, both under /tmp. No project, source, snapshot, stage, helper or running archive input was changed.",
+  "fresh_render_claims": false
+}

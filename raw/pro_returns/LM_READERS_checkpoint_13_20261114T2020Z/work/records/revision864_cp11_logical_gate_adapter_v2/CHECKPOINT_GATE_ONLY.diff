@@ -1,0 +1,20 @@
+--- unchanged-original9bc6751a/checkpoint_gate
++++ explicit-post-CP11-v2/checkpoint_gate
+@@ -233,13 +233,14 @@
+             else:
+                 expected = dict(sha256=row['snapshot_sha256'], bytes=row['snapshot_bytes'])
+             if expected is not None:
+-                assert logical[name]['sha256'] == expected['sha256'] and int(logical[name]['bytes']) == expected['bytes'], name
++                _cp11_require_archived_identity(container, logical, row, expected, index)
+             assert logical[row['snapshot_path']]['sha256'] == row['snapshot_sha256'], name
+             assert int(logical[row['snapshot_path']]['bytes']) == row['snapshot_bytes'], name
+         for row in preserved['pdfs']:
+             assert digest(local(row['path'])) == row['sha256'] == logical[row['path']]['sha256']
+-        for row in preserved['images']:
+-            assert digest(local(row['preserved_path'])) == row['sha256'] == logical[row['preserved_path']]['sha256']
++        for image_index, row in enumerate(preserved['images']):
++            assert digest(local(row['preserved_path'])) == row['sha256']
++            _cp11_require_archived_image_identity(container, logical, row, image_index)
+     return dict(status='PASS', checkpoint=pin(archive), snapshot=snapshot_ref,
+                 save_receipt=pin(local('work/records/checkpoint11_save_receipt.json')),
+                 full_recovery=pin(local('work/data/checkpoint11_restore_validation.json')),

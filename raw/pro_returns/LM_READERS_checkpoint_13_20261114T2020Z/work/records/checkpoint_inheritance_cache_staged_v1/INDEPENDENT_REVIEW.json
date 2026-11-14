@@ -1,0 +1,153 @@
+{
+  "schema": "independent-expand-immutable-cache-review-v1",
+  "status": "CLEAR_TEMPORARY_PROPOSAL_NOT_INSTALLED",
+  "reviewer": "assistant/glossary",
+  "scope": "Focused independent read-only review of the expand-only immutable-input reuse proposal and its bounded synthetic equivalence/count controls. No production collection, archive restoration, image rendering or source edit was performed by this reviewer.",
+  "checked_files": [
+    {
+      "path": "before/checkpoint_inheritance.py",
+      "bytes": 12748,
+      "sha256": "30e2ee3061ba5bb81f8fcb0282df5e51385b9425c3364f70e8c60f1f081360dc"
+    },
+    {
+      "path": "proposed/checkpoint_inheritance.py",
+      "bytes": 14539,
+      "sha256": "e8924d3ff4d4374e9636c97931f472518023f47d3812394d7d0dcae0903349cd"
+    },
+    {
+      "path": "CHANGE.json",
+      "bytes": 7335,
+      "sha256": "8870749e1661915963b97ada35132d3d30279beb733656a77f097fb2d188bf5b"
+    },
+    {
+      "path": "check_controls.py",
+      "bytes": 18644,
+      "sha256": "29d01d9a7957f39f09cb5d4f60568d8860e4f18ce6be2fed6e450ad8bbeea324"
+    },
+    {
+      "path": "prototype_support.py",
+      "bytes": 7840,
+      "sha256": "361ae7d99b38cf37fe9b3b5950152a056f9b4fe637639d7456d7836a0195b0ef"
+    },
+    {
+      "path": "CONTROLS.json",
+      "bytes": 16788,
+      "sha256": "5783f703c3903367610719769c3b2982519c0609865a053946e179b3bd5b42e7"
+    }
+  ],
+  "controls": {
+    "reported_passed": 20,
+    "reported_failed": 0,
+    "implementations_and_results_read": true,
+    "all_checked_code_and_fixture_pins_independently_matched": true,
+    "rerun_by_this_reviewer": false
+  },
+  "active_dependencies_at_review": {
+    "work/scripts/checkpoint_inheritance.py": {
+      "bytes": 12748,
+      "sha256": "30e2ee3061ba5bb81f8fcb0282df5e51385b9425c3364f70e8c60f1f081360dc"
+    },
+    "work/scripts/restore_checkpoint.py": {
+      "bytes": 84208,
+      "sha256": "6674831e67ca346c9ec64c1b8b9f62b62de665cab864c0ecac40cfa60e543691"
+    },
+    "work/scripts/native_checkpoint_recipes.py": {
+      "bytes": 21102,
+      "sha256": "ea9a48496e7a254311449be4782ff3dd3e3405cdf94791d0419fd4e56643e9a8"
+    },
+    "work/scripts/package_release.py": {
+      "bytes": 64481,
+      "sha256": "1fd7917dd756929e4a3f228870cfa5ec49b8fdccc0d0904a0a37ff88f928c6fa"
+    }
+  },
+  "active_inheritance_equals_preserved_before": true,
+  "independently_checked_contracts": [
+    {
+      "contract": "Only expand changes",
+      "result": "PASS",
+      "detail": "Top-level AST comparison shows expand as the sole changed function. General current-file data() and add() are AST-identical; no general current PNG cache miss is retained."
+    },
+    {
+      "contract": "Exact immutable source identity",
+      "result": "PASS",
+      "detail": "Each reuse key includes the prior archive SHA256, object path, expected SHA256 and expected byte count. Logical names, aliases and permitted storage kinds are resolved on every call, rather than memoized by filename."
+    },
+    {
+      "contract": "Repeated pin and delta association checks",
+      "result": "PASS",
+      "detail": "Cache misses use the existing immutable object reader. Cache hits retain length and SHA256 checks; delta hits additionally invoke pdf_object_info for the current association. Existing outer per-source size/hash checks remain in place. The recorded wrong SHA, size, object, logical association, metadata pin and changed delta association controls reject with the same error in both implementations."
+    },
+    {
+      "contract": "Provenance and ordering",
+      "result": "PASS",
+      "detail": "Add/conflict checks, capture paths, source/recipe association, prior-control inventory, returned roles and insertion order remain unchanged. The three fixture comparisons match ordered item identities and serialized unsorted history JSON, including the third-generation lineage."
+    },
+    {
+      "contract": "Trace memoization",
+      "result": "PASS",
+      "detail": "Only the verified trace digest and parsed source-SHA field are reused. The recipe-specific comparison to source[sha256] remains outside the cache and runs each time. The existing missing-name branch and mismatched-trace behavior are preserved; the corresponding recorded controls match before and after."
+    },
+    {
+      "contract": "Primitive reconstruction and fresh image proofs",
+      "result": "PASS",
+      "detail": "Both prior.recipe_bytes reconstruction branches remain intact and are called equally in the compared runs. The augmented case has three primitive calls in each implementation and performs eleven fresh synthetic PNG/RGB reproofs for each version. No later production reproof path or renderer was changed."
+    },
+    {
+      "contract": "No collected-file mutation",
+      "result": "PASS",
+      "detail": "The proposal and this review are external temporary artifacts. All active dependency hashes in the focused control report still match at review time; the active inheritance helper equals the preserved before bytes."
+    }
+  ],
+  "measured_synthetic_expand_case": {
+    "fixture": "augmented_repetitions",
+    "ordered_items": 53,
+    "ordered_item_manifest_sha256": "b84ca836bdc60c5e5f45edb34ac9839e4e95de5b527cfed829b2f49fecacc275",
+    "history_json_sha256": "6a3b507253c7ebd151ceaeae33639241c89b48f31e04de607c280f2b84937d5a",
+    "before": {
+      "nonprimitive_object_accesses": 58,
+      "nonprimitive_physical_zip_reads": 38,
+      "trace_json_parses": 4,
+      "primitive_reconstructions": 3,
+      "delta_association_checks": 29,
+      "fresh_synthetic_png_reproofs": 11
+    },
+    "proposed": {
+      "nonprimitive_object_accesses": 13,
+      "nonprimitive_physical_zip_reads": 20,
+      "trace_json_parses": 1,
+      "primitive_reconstructions": 3,
+      "delta_association_checks": 29,
+      "fresh_synthetic_png_reproofs": 11
+    },
+    "measurement_scope": "Instrumented bounded synthetic expansion. Object-access counts and physical ZIP-read counts are distinct. No production elapsed-time or total-production-read reduction is claimed."
+  },
+  "source_fixture_comparisons": [
+    {
+      "fixture": "existing_synthetic_delta",
+      "ordered_items": 45,
+      "item_manifest_sha256": "8e40b1c0f5acd421e54d80398d81494f2894b2a172798bdd6230f41a2d5f3a53",
+      "history_json_sha256": "385b86966b9cd61a531c0480047f63c0e292dcac9bb917c9d202e29a25c7375b",
+      "fresh_reproof_count": 0
+    },
+    {
+      "fixture": "existing_third_generation",
+      "ordered_items": 61,
+      "item_manifest_sha256": "9e7b7ff3f66e53227009f08a469a38ed9bc2aa11d7ddff34b36d269824c77372",
+      "history_json_sha256": "e48dfb4ddaf98467cbb563d15e822ce0d5c77429c2b7736e2e9d2d6ab36de758",
+      "fresh_reproof_count": 0
+    },
+    {
+      "fixture": "augmented_repetitions",
+      "ordered_items": 53,
+      "item_manifest_sha256": "b84ca836bdc60c5e5f45edb34ac9839e4e95de5b527cfed829b2f49fecacc275",
+      "history_json_sha256": "6a3b507253c7ebd151ceaeae33639241c89b48f31e04de607c280f2b84937d5a",
+      "fresh_reproof_count": 11
+    }
+  ],
+  "unresolved_findings": [],
+  "installation_deferred": "Any installation remains deferred to root review after the current checkpoint11 complete restoration/durable save and source872 integration. This review does not authorize changes during the current collection hold.",
+  "new_tests_by_reviewer": false,
+  "new_visual_review_claims": false,
+  "production_checkpoint_or_release_pass_claimed": false,
+  "collected_project_files_written_by_reviewer": false
+}

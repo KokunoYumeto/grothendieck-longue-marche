@@ -1,0 +1,19 @@
+{
+  "schema": "revision878-report-retained-tag-condition-change-v1",
+  "before": {
+    "path": "work/records/revision878_report_retained_tag_staged_v1/before/write_release_report.py",
+    "bytes": 75038,
+    "sha256": "7eb0826f85e47431397ecd8f13f324a1f96231c125ae0a61effbc9fe408f91da"
+  },
+  "proposed": {
+    "path": "work/records/revision878_report_retained_tag_staged_v1/proposed/write_release_report.py",
+    "bytes": 75134,
+    "sha256": "2913ed518ac7b7c52ddf8f3eb44b84498149d8b6018a2715c3507c40d6f59936"
+  },
+  "old_literal": "            if ob.get('classification')=='RETAINED_TAG_AFTER_FULLY_CANCELLED_DISPLAY':",
+  "new_literal": "            if ob.get('classification') in {'RETAINED_TAG_AFTER_FULLY_CANCELLED_DISPLAY',\n                                             'RETAINED_TAG_BEFORE_FULLY_CANCELLED_DISPLAY'}:",
+  "exact_replacements": 1,
+  "inverse_byte_exact": true,
+  "diff": "--- before/write_release_report.py\n+++ proposed/write_release_report.py\n@@ -127,7 +127,8 @@\n         if ob:\n             if not ob.get('reviewer') or not ob.get('observation') or ob.get('pdf_sha256')!=r.get('pdf_sha256'):\n                 failures.append('Final pagination image observation is incomplete: '+str(r.get('id')))\n-            if ob.get('classification')=='RETAINED_TAG_AFTER_FULLY_CANCELLED_DISPLAY':\n+            if ob.get('classification') in {'RETAINED_TAG_AFTER_FULLY_CANCELLED_DISPLAY',\n+                                             'RETAINED_TAG_BEFORE_FULLY_CANCELLED_DISPLAY'}:\n                 if ob.get('display_pages')!=[] or retained_tag_source_errors(r,ob):\n                     failures.append('Retained empty equation tag lacks exact source justification: '+str(r.get('id')))\n             elif not ob.get('display_pages') or set(ob['display_pages'])!={ob.get('tag_page')}:\n",
+  "scope": "One reporter condition accepts the two exact classifications already handled by the unchanged canonical source guard."
+}

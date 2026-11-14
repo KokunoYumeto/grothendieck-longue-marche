@@ -1,0 +1,70 @@
+{
+  "schema": "temporary-named-book-pdf-delta-target-ceiling-v1",
+  "status": "PROPOSED_NOT_INSTALLED",
+  "changes": [
+    {
+      "active_path": "work/scripts/restore_checkpoint.py",
+      "before": {
+        "path": "before/restore_checkpoint.py",
+        "bytes": 84208,
+        "sha256": "6674831e67ca346c9ec64c1b8b9f62b62de665cab864c0ecac40cfa60e543691"
+      },
+      "proposed": {
+        "path": "proposed/restore_checkpoint.py",
+        "bytes": 84209,
+        "sha256": "504af9c1e788e8a69c4ab1137bee99d4ad870e289ca1f3df7173ed5db71bb203"
+      },
+      "exact_old_literal": "PDF_DELTA_MAX_TARGETS = 9",
+      "exact_new_literal": "PDF_DELTA_MAX_TARGETS = 16",
+      "diff": "--- before/restore_checkpoint.py\n+++ proposed/restore_checkpoint.py\n@@ -712,7 +712,7 @@\n # recovery contracts remain unchanged. Git is not used by this decoder.\n PDF_DELTA_SCHEMA = 'lm-checkpoint-pdf-deltas-v1'\n PDF_DELTA_KIND = 'git-pack-copy-literal-v1'\n-PDF_DELTA_MAX_TARGETS = 9\n+PDF_DELTA_MAX_TARGETS = 16\n PDF_DELTA_MAX_BYTES = 64 * 1024 * 1024\n \n \n"
+    },
+    {
+      "active_path": "work/scripts/checkpoint_pdf_deltas.py",
+      "before": {
+        "path": "before/checkpoint_pdf_deltas.py",
+        "bytes": 9076,
+        "sha256": "ff675aa8ce94d0d865d83d810058e6cbf757bb9768cc0aed64077b13a14a38f8"
+      },
+      "proposed": {
+        "path": "proposed/checkpoint_pdf_deltas.py",
+        "bytes": 9079,
+        "sha256": "cdd54f1fd7b7932e3522faac41757e7ccf0898f233da3d82dde2df560223df8e"
+      },
+      "exact_old_literal": "Only up to nine explicitly pinned retained book-PDF targets are considered.",
+      "exact_new_literal": "Only up to sixteen explicitly pinned retained book-PDF targets are considered.",
+      "diff": "--- before/checkpoint_pdf_deltas.py\n+++ proposed/checkpoint_pdf_deltas.py\n@@ -2,7 +2,7 @@\n \n This builder-only module uses Git to generate a COPY/LITERAL stream, then the\n standalone standard-library decoder proves the original target bytes exactly.\n-Only up to nine explicitly pinned retained book-PDF targets are considered.\n+Only up to sixteen explicitly pinned retained book-PDF targets are considered.\n All bases must already be retained full PDF objects and cannot be targets.\n \"\"\"\n from __future__ import annotations\n"
+    },
+    {
+      "active_path": "work/scripts/package_release.py",
+      "before": {
+        "path": "before/package_release.py",
+        "bytes": 64481,
+        "sha256": "1fd7917dd756929e4a3f228870cfa5ec49b8fdccc0d0904a0a37ff88f928c6fa"
+      },
+      "proposed": {
+        "path": "proposed/package_release.py",
+        "bytes": 64484,
+        "sha256": "cf1534a561147a30da0cb75a47701c4c98d4dce13ee9fa39df20aa328f64b501"
+      },
+      "exact_old_literal": "up to nine named book PDFs",
+      "exact_new_literal": "up to sixteen named book PDFs",
+      "diff": "--- before/package_release.py\n+++ proposed/package_release.py\n@@ -504,7 +504,7 @@\n \n Indexed overview recipes have a distinct kind and do not change the native no-resize contract. They retain the exact pending-review index, immutable discovery snapshot, original source900px PNG/RGB identities, and literal header/background pixels. Only the two original indexed profiles are permitted:900px two-by-two without resizing, or550px four-by-four using the pinned Pillow LANCZOS transform. Both retain exact final PNG bytes and dimensioned RGB. Source pages are inline PDF primitives or direct stored/primitive PNG inputs; composed-sheet dependencies and recreated fonts are forbidden. Historical book PDFs needed for these recipes are explicitly registered whole PDFs, retained with their complete original ordinary-checkpoint MANIFEST and exact member identities. Recovery does not need the source ordinary archives.\n \n-An explicitly supplied PDF-delta plan may additionally store up to nine named book PDFs as exact depth-one COPY/LITERAL streams against already retained full PDF objects. Every target is reconstructed and byte/SHA256 compared before omission. The inline descriptor inventory pins each base, stream and original target; base/target sets are disjoint and chains are forbidden. Recovery uses only Python's standard library for the delta and requires no Git executable or earlier archive. All original PDF logical paths, byte counts and SHA256 values remain exact, and PNG renderer/recipe contracts are unchanged. The recovery helper verifies every delta target before writing any logical destination. Ordinary final publication PDFs remain complete unchanged PDFs.\n+An explicitly supplied PDF-delta plan may additionally store up to sixteen named book PDFs as exact depth-one COPY/LITERAL streams against already retained full PDF objects. Every target is reconstructed and byte/SHA256 compared before omission. The inline descriptor inventory pins each base, stream and original target; base/target sets are disjoint and chains are forbidden. Recovery uses only Python's standard library for the delta and requires no Git executable or earlier archive. All original PDF logical paths, byte counts and SHA256 values remain exact, and PNG renderer/recipe contracts are unchanged. The recovery helper verifies every delta target before writing any logical destination. Ordinary final publication PDFs remain complete unchanged PDFs.\n \n Only this compact checkpoint uses a bounded standard ZIP compression profile: qualified UTF-8 text and the fixed root controls use method14 LZMA when its exact stream is smaller than deflate6. All PDF/PNG objects retain deflate6. The ordinary physical MANIFEST and every logical file hash still describe the original payload bytes. Python's standard ZIP reader supports both methods; the standalone recovery helper requires no separate compression utility.\n ''').encode()\n"
+    }
+  ],
+  "runtime_semantic_change": "PDF_DELTA_MAX_TARGETS from9 to16 only; both existing consumer gates already use this constant.",
+  "documentation_changes_only": [
+    "checkpoint_pdf_deltas module docstring",
+    "package_release compact recovery README phrase"
+  ],
+  "unchanged_invariants": [
+    "maximum_depth1",
+    "64MiB base/target/stream bounds",
+    "all bases physical primitive blobs",
+    "no target/base overlap or chains",
+    "exact named-book authority and original logical byte identity",
+    "all source/PNG/native/overview/metadata/privacy checks"
+  ],
+  "concrete_revision872_plan_created": false,
+  "actual_revision872_storage_saving_claimed": false,
+  "active_files_modified": false
+}

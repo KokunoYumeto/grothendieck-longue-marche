@@ -1,0 +1,11 @@
+--- original-integrator9bc6751a/checkpoint_gate
++++ explicit-post-CP11-captured-lookup/checkpoint_gate
+@@ -233,7 +233,7 @@
+             else:
+                 expected = dict(sha256=row['snapshot_sha256'], bytes=row['snapshot_bytes'])
+             if expected is not None:
+-                assert logical[name]['sha256'] == expected['sha256'] and int(logical[name]['bytes']) == expected['bytes'], name
++                _cp11_require_archived_identity(container, logical, row, expected, index)
+             assert logical[row['snapshot_path']]['sha256'] == row['snapshot_sha256'], name
+             assert int(logical[row['snapshot_path']]['bytes']) == row['snapshot_bytes'], name
+         for row in preserved['pdfs']:

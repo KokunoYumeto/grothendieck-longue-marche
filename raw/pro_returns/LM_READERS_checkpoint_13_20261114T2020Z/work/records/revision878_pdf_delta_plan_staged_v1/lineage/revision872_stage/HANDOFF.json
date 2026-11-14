@@ -1,0 +1,92 @@
+{
+  "schema": "revision872-pdf-delta-plan-staged-handoff-v1",
+  "status": "READY_FOR_ROOT_REVIEW_AWAIT_ACTUAL872_STABLE_BUILD",
+  "script": {
+    "path": "work/records/revision872_pdf_delta_plan_staged_v1/measure_pdf_delta_plans.py",
+    "bytes": 16092,
+    "sha256": "42e45ece4af479387473c01b38222686267054158f57abf17f93cb61ec37329c"
+  },
+  "static_checks": {
+    "path": "work/records/revision872_pdf_delta_plan_staged_v1/STATIC_CHECKS.json",
+    "bytes": 1917,
+    "sha256": "0cd9ac72f35dcdc1ed35c01974bde7c7ca2cd438dc165fee3860020873a03c97"
+  },
+  "required_installed_helpers": [
+    {
+      "path": "work/scripts/restore_checkpoint.py",
+      "bytes": 84209,
+      "sha256": "504af9c1e788e8a69c4ab1137bee99d4ad870e289ca1f3df7173ed5db71bb203"
+    },
+    {
+      "path": "work/scripts/checkpoint_pdf_deltas.py",
+      "bytes": 9079,
+      "sha256": "cdd54f1fd7b7932e3522faac41757e7ccf0898f233da3d82dde2df560223df8e"
+    },
+    {
+      "path": "work/scripts/package_release.py",
+      "bytes": 64484,
+      "sha256": "cf1534a561147a30da0cb75a47701c4c98d4dce13ee9fa39df20aa328f64b501"
+    }
+  ],
+  "source_checkpoint": {
+    "filename": "LM_READERS_checkpoint_11.zip",
+    "bytes": 528116820,
+    "sha256": "1df3f32c9f47dcbadbf4546f10f8866faf7084f6ded8f9c221e98f1e41512f51"
+  },
+  "candidate_definitions": {
+    "A": "Keep the exact nine CP11 target/base pairs with five724 primary full bases, then append all seven actual872 PDFs against the matching724 primary base.",
+    "B": "Use the five actual872 primary full PDFs as bases; target all fourteen724/864 PDFs plus the two actual872 masters."
+  },
+  "measurement_scope": "The common21 distinct named-book PDF objects only, using exact raw deflate6 stream sizes. Physical base objects and unique delta stream objects are counted; generated streams are exactly decoded and byte/SHA compared. No source PDF is rewritten.",
+  "excluded_scope": [
+    "Whole archive capacity and all non-PDF payloads",
+    "Logical/physical manifest, descriptor, alias, helper, plan and provenance growth",
+    "ZIP headers/central directory/ZIP64 overhead",
+    "PNG/native/overview rendering or fresh reproof",
+    "Complete checkpoint restoration and durable saving"
+  ],
+  "invocation": [
+    "python",
+    "-B",
+    "work/records/revision872_pdf_delta_plan_staged_v1/measure_pdf_delta_plans.py",
+    "--stable",
+    "work/data/revision872_final_review/STABLE_BUILD.json",
+    "--stable-sha256",
+    "ACTUAL_CURRENT_STABLE_BUILD_SHA256",
+    "--output-dir",
+    "work/data/revision872_final_review/pdf_delta_plan_measurement_v1"
+  ],
+  "expected_outputs": [
+    "PLAN_A.json",
+    "PLAN_B.json",
+    "SELECTED_PLAN.json",
+    "MEASUREMENT.json"
+  ],
+  "selection": "Greater total compressed PDF-payload saving among candidates with every target profitable under the existing builder. Exact tie selectsA. No eligible complete plan or a generator/pin/guard failure rejects without a successful measurement.",
+  "runtime_preconditions": [
+    "All seven actual872 PDFs/TeX files match the exact supplied STABLE_BUILD hash and source872 completed two-pass frozen build.",
+    "The installed16-target helper pins match; the archive is the exact saved CP11.",
+    "All21 generation/book PDF hashes are distinct; unexpected identical inputs fail closed instead of inventing a different profile.",
+    "The output directory does not exist, and every output is created exclusively."
+  ],
+  "later_builder_command": [
+    "python",
+    "-B",
+    "work/scripts/package_release.py",
+    "checkpoint",
+    "--part",
+    "ACTUAL_COMPLETED_PART",
+    "--finished-reader",
+    "ACTUALLY_COMPLETED_BOOK",
+    "--compact",
+    "--source-checkpoint",
+    "deliverables/LM_READERS_checkpoint_11.zip",
+    "--pdf-delta-plan",
+    "work/data/revision872_final_review/pdf_delta_plan_measurement_v1/SELECTED_PLAN.json"
+  ],
+  "actual872_plan_created": false,
+  "runtime_measurement_performed": false,
+  "actual_savings_or_capacity_claimed": false,
+  "active_or_frozen_artifacts_modified": false,
+  "new_visual_review_claims": false
+}
