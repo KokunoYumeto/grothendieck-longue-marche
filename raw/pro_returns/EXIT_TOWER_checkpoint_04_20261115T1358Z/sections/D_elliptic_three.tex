@@ -1,0 +1,155 @@
+\subsection{Explicit progress on the three-pointed torus}
+
+\begin{result}{D.28}{Proved}{The exact word problem, flag index and four stabilizer families for $(1,3)$}
+Write $a_1,a_2,a_3$ for three mutually disjoint parallel
+nonseparating curves, with one marked point in each intervening
+annulus, and let $b$ meet each once.  Label $p_i$ as the point
+opposite $a_i$ in the standard star picture.  There is the
+explicit presentation
+\[
+ \Gamma_{1,3}=
+ \left\langle a_1,a_2,a_3,b\ \middle|\
+ [a_i,a_j]=1,\ a_i b a_i=b a_i b,\
+ \Delta=(a_1a_2a_3b)^3=1\right\rangle.                       \tag{D.22}
+\]
+The maps send the four letters to exactly these Dehn twists.
+The executed classical Garside algorithm in
+\path{code/d_artin_d4.py} solves its word problem by computing
+in $A(D_4)$ and retaining the proper greedy factors after
+removing the central $\Delta$ exponent.
+
+For $\{i,j,k\}=\{1,2,3\}$, put
+\[
+ d_i=(a_jba_k)^4,\qquad q_i=a_jba_k a_jba_j.
+\]
+Then $d_i$ is the separating twist enclosing $p_j,p_k$,
+and the following are exact stabilizers with literal
+embeddings into (D.22):
+\[
+\begin{split}
+ G_{\{d_i\}}&=B_4(a_j,b,a_k),\\
+ G_{\{a_j,a_k\}}&=
+ \langle a_1,a_2,a_3,q_i\mid [a_r,a_s]=1,
+ q_i a_jq_i^{-1}=a_k,\ q_i a_kq_i^{-1}=a_j,
+ (q_i a_i)^2=a_ja_k\rangle,\\
+ G_{\{a_j,a_k,d_i\}}&=
+ \langle a_j,a_k,q_i\mid[a_j,a_k]=1,
+ q_i a_jq_i^{-1}=a_k,\ q_i a_kq_i^{-1}=a_j\rangle,\\
+ G_{\{a_1,a_2,a_3\}}&=\mathbb Z^3(a_1,a_2,a_3).
+\end{split}                                                       \tag{D.23}
+\]
+In both middle lines $q_i^2=d_i$; in the third line this
+is the separating meridian, not an imposed order-two
+relation.  These four families give ten of the twenty-two
+vertex-orbit stabilizers.
+
+The complete finite flag index has $22$ vertices, $53$ edges
+and $33$ triangles.  Thus the barycentric complex of groups
+has $108$ objects, $304$ face arrows and $198$ coherence
+triangles.  Every orbit and its actual retained-edge subsets
+is listed in \path{code/d_p2_elliptic_three_partial.json}.
+D.29 supplies all the remaining named local maps and
+completes the full dictionary.  This result records the
+exact word algorithm and the four foundational families.
+\end{result}
+\begin{proof}
+Soroko's Proposition~8 and Corollary~9, including their
+complete proofs on pages~3--5, identify the boundary-framed
+three-holed torus with
+\[
+ (A(D_4)\times\mathbb Z^3(z_1,z_2,z_3))
+       /\langle z_1z_2z_3=\Delta\rangle.
+\]
+Successive capping kills exactly the three boundary twists
+and gives (D.22).  The proof eliminates the other Gervais
+generators by the degenerate star relations; in particular
+the pair twist opposite $a_i$ becomes $(a_jba_k)^4$.
+The figure and those identifications were opened and checked
+\cite[Proposition~8 and Corollary~9]{D_Soroko2020}.
+
+Here is the exact algorithm used for subsequent word checks.
+Realize the Coxeter group $W(D_4)$ as the $192$ even signed
+permutations of four coordinates.  Breadth-first enumeration
+supplies the length and a reduced word for each simple element.
+The longest element is $-I$, of length $12$, and its positive
+lift is the central $\Delta$.  For adjacent simple factors
+$x,y$, set
+\[
+ c=\gcd_{\rm left}(x^{-1}\Delta,y),\qquad
+ (x,y)\longmapsto(xc,c^{-1}y).
+\]
+Each product is length-additive, so this is a positive-monoid
+equality.  Repeated transfers terminate: the sequence of
+factor lengths strictly increases lexicographically while
+its total length is fixed.  Remove identity factors and
+central $\Delta$ factors.  The adjacent-gcd criterion is
+exactly Dehornoy--Paris Lemma~8.4, whose proof was read;
+it identifies the remaining sequence with the unique
+greedy normal form \cite[Sections~7--8]{D_DehornoyParis1999}.
+A negative atom is replaced by
+$\Delta^{-1}(x^{-1}\Delta)$.  Centrality permits collecting
+these powers, and cancellativity gives the unique form
+$\Delta^m x_1\cdots x_r$ with proper greedy factors.
+Two such words agree modulo the central subgroup precisely
+when their proper factors agree.
+
+The program computes all $192^2=36864$ left gcds and checks
+their uniqueness.  It executes the six Artin relations, four
+centrality relations and $400$ seeded contextual rewriting
+and normal-form checks.  This supplies a full word algorithm,
+not a test in a finite quotient.
+
+Cutting $d_i$ leaves a torus with one marked point and one
+boundary, and a pair of pants.  The former has the
+four-strand group in (D.23), with boundary twist $d_i$;
+this proves the first line, including its meridian.
+Cutting $a_j,a_k$ gives a pair of pants and a four-holed
+sphere.  The subgroup fixing both curves has kernel
+$\mathbb Z^2(a_j,a_k)$ and quotient the pure four-point
+group.  The actual twists $a_i,d_i$ are its two standard
+intersecting generators.  They commute with the two node
+twists and satisfy no further relation, so this subgroup is
+\[
+             \mathbb Z^2(a_j,a_k)\times F(a_i,d_i).
+\]
+The only additional graph permutation exchanges the two
+node curves.  Its chosen lift is the half twist $q_i$ of
+the four-chain subgroup, satisfying $q_i^2=d_i$ and
+exchanging $a_j,a_k$.  The star relation gives
+\[
+                         (q_i a_i)^2=a_ja_k.
+\]
+The program verifies all these exact words for each of the
+three values of $i$; before imposing $\Delta=1$ the last
+comparison has precisely one central $\Delta$ factor.
+It specifies the conjugation on the remaining free
+generator and hence the full index-two extension, proving
+the second line of (D.23).
+
+Requiring the additional curve $d_i$ replaces the free
+four-point group by its cyclic twist stabilizer.  The
+same $q_i$ preserves it, and $q_i^2=d_i$ gives the third
+line.  Finally the three complementary pants of
+$\{a_1,a_2,a_3\}$ each carry a different fixed label.
+Their dual triangle has no nonidentity automorphism
+preserving these labels; its stabilizer is exactly its
+three independent meridian twists.  This proves the last
+line without adding a spurious edge-permutation factor.
+
+For the flag count, use every stable graph of type $(1,3)$
+with at least one edge.  For each graph enumerate every
+strict chain of nonempty retained-edge subsets, and take
+orbits under its full edge-permutation group, realized
+by vertex permutations preserving genera and all leg
+labels.  Contracting the complementary edges supplies
+the actual graph of every face.  This procedure gives
+$22,53,33$ orbits in dimensions $0,1,2$.
+Each edge has two face arrows; each triangle has six
+proper face arrows and six vertex--edge flags.  Hence
+there are $2\cdot53+6\cdot33=304$ arrows and
+$6\cdot33=198$ coherence triangles.  Parallel-edge
+permutations are retained in the enumeration, and
+loop half-edge reversals act trivially on these subset
+flags.  The saved orbit representatives certify these
+counts individually.
+\end{proof}

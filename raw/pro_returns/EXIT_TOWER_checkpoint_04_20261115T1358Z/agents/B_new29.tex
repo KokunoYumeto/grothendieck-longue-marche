@@ -1,0 +1,221 @@
+
+\subsection{The elliptic covering functors with their full framings}
+
+\begin{result}{B.29}{Proved}{Cubic and quartic sphere models, half turns and the elliptic cut change}
+The two elliptic pieces in B.27 admit explicit finite presentations
+obtained from three- and four-boundary sphere moves, finite
+relabeling quotients, and the central framing maps below.  The
+covering functors are induced by the actual cubic and quartic
+families; they have inverse functors and preserve every specified
+boundary half turn.  Their mixed disk presentations have counts
+\[
+\begin{array}{c|rrrr}
+ &\text{objects}&F\text{ arrows}&B\text{ arrows}&\text{relators}\\\hline
+ B_3&2&1&2&1\\
+ B_4&5&5&6&7.
+\end{array}                                                     \tag{B.88}
+\]
+These presentations, all comparison words, and the identities used
+in the boundary flags are computed in
+\texttt{b\_sphere\_covers.py}.  In particular, the elliptic change
+of cut is the explicit word $s=aba$; its framing relations are
+\[
+ s^2=(ab)^3,\qquad s^4=z\quad\text{in }H_{1,1}.                 \tag{B.89}
+\]
+The central lattice used in this cubic comparison sends the
+elliptic full turn to the \emph{square} of the disk full twist.
+The comparison therefore includes a specified change of framing
+lattice, rather than identifying those two turns.
+\end{result}
+\begin{proof}
+First retain the outer boundary in B.28: remove its single
+outer-capping relator.  The resulting groupoid is the fundamental
+groupoid of the ordered configuration space of $m$ points in a
+disk, for $m=3,4$, with the stated parenthesized markings.  The
+forward and inverse formulas (B.84)--(B.85) remain valid; their
+proof simply omits the last relator.  Permuting the point labels
+acts freely on its objects $(p,T)$ and commutes with both word
+maps.  Its ordinary orbit groupoid has objects the shapes $T$.
+Every orbit arrow has a unique lift after its starting ordering
+is fixed, so the orbit functor is the actual covering functor
+from ordered to unordered configurations.
+
+There are two shapes at $m=3$: one $F$ edge and one cherry
+half turn at each shape.  Contracting the $F$ edge leaves the
+two adjacent braid generators and their one braid relation.
+At $m=4$ there are five shapes, five $F$ edges and six cherry
+half turns.  The seven relations are the pentagon, three
+cut-change naturality relations, and the two braid relations
+and one disjoint-support relation.  Contracting an $F$ tree,
+using the pentagon, and removing the three duplicate half
+turns leaves exactly the three-generator Artin presentation
+of $B_4$.  This proves (B.88) with its inverse maps.  Each
+cherry half turn lies in a three-boundary sphere, each $F$
+change lies in a four-boundary sphere, and each braid relation
+is the three-strand isotopy in a four-boundary sphere.
+The pentagon is the actual identity comparison of five cut
+markings proved in B.14.  The seven relators thus come with
+the specified geometric homotopies, not only word equalities.
+
+Here are the covering functors themselves.  Write $U_m$ for
+unordered configurations of $m$ points in the affine line.
+The cubic family is
+\[
+ E_R:\ y^2=\prod_{r\in R}(x-r),\qquad |R|=3,
+ \qquad p=\infty .                                             \tag{B.90}
+\]
+At infinity use the parameter $t=x/y$.  Translation of $x$
+is contractible and does not change the leading tangent
+coordinate.  After normalizing the cubic to have zero
+quadratic coefficient, (B.90) gives the moduli of an elliptic
+curve with its nonzero tangent vector at $p$.  Conversely,
+the given tangent vector fixes the leading coefficients of
+its Weierstrass functions $x,y$; translating $x$ to remove
+the quadratic coefficient recovers its unordered branch
+configuration.  The two constructions recover one another
+up to the displayed coordinate changes.  Passing from
+nonzero vectors to rays only removes a positive real,
+contractible factor.  This is the cubic inverse construction
+used in B.9, now with its actual framing retained.
+
+Lift an adjacent positive half twist of two branch points
+through the double cover.  In a disk containing exactly
+those points the cover is an annulus.  The lift makes one
+positive Dehn twist about its core; outside that disk it is
+the identity.  Thus the two generators of the first row of
+(B.88) go exactly to $a,b$.  The disk full twist
+\[
+ h=(ab)^3
+\]
+is the simultaneous once-around rotation of the three roots.
+The scaling preserving the monic cubic has
+$x\mapsto\lambda^2x$, $y\mapsto\lambda^3y$ and
+$t\mapsto\lambda^{-1}t$.  A loop of $\lambda$ rotates the
+roots twice and rotates the tangent frame once.  Hence the
+positive elliptic full turn is $z=h^2$, exactly as in B.9.
+This identifies the central lattice map, including its
+factor two.
+
+Let $\tau$ denote the positive half turn of this elliptic
+boundary ray.  The full finite ray groupoid is the translation
+groupoid on $\mathbb Z/2$ associated with
+\[
+ \left\langle B_3,\tau\ \middle|\
+       \tau\text{ central},\ \tau^2=h^2\right\rangle
+       \cong B_3\times C_2.                                   \tag{B.91}
+\]
+For the explicit isomorphism put $\omega=\tau h^{-1}$;
+then $\omega^2=1$, and the inverse sends $\tau$ to $h\omega$.
+The character to $\mathbb Z/2$ kills $a,b$ and sends $\omega$
+to its nonzero element.  The deck involution of (B.90) sends
+the tangent ray to its opposite and has square the identity.
+It is natural in the branch configuration, so it commutes
+with the braid paths.  Its composite with the positive
+half rotation is the central loop whose square is $z=h^2$;
+the positive orientation and the infinite cyclic centre
+of $B_3$ identify that loop with $h$.  It therefore realizes
+exactly $\omega=\tau h^{-1}$.  The positive boundary half turn is
+$\tau=h\omega$, and its square is the required full turn.
+Thus (B.91) supplies the actual half-turn functor and its
+inverse, including their object maps.  Both sign objects
+remain distinct and the sign action is free.
+
+The cut change is equally explicit.  Put $s=aba$.  The
+braid relation gives
+\[
+ sas^{-1}=b,\qquad sbs^{-1}=a,\qquad s^2=h.
+                                                               \tag{B.92}
+\]
+It therefore sends the chosen nonseparating cut to its
+once-intersecting mate.  Eliminating $b=a^{-1}sa^{-1}$ gives
+the complete presentation
+\[
+ H_{1,1}=\langle a,s\mid (sa^{-1})^3=s^2\rangle,
+       \qquad z=s^4.                                          \tag{B.93}
+\]
+The inverse substitutions are $a\mapsto a$ and $s\mapsto aba$.
+Consequently all cut-change relations are checked in this
+presentation; in the ray model one also has
+$\tau=s^2\omega$, $\omega^2=1$, with $\omega$ central.
+This records the genus-one cut change and its boundary
+coherence on the same generators.
+
+For two marked points the corresponding family is
+\[
+ E_R:\ y^2=\prod_{r\in R}(x-r),\qquad |R|=4,
+       \qquad p_+,p_-\text{ over }\infty,                     \tag{B.94}
+\]
+where $y/x^2$ tends respectively to $+1,-1$ at the two
+ordered points.  The inverse construction is the map from
+$|p_++p_-|$: its quotient line, its affine coordinate up to
+affine change, and the ordering of $p_+,p_-$ recover (B.94),
+including the sign of $y$.  This is the inverse analytic-stack
+construction in B.9.  Adjacent branch half twists lift to
+the three-chain twists $a,b,c$.  At both points at infinity
+$u=1/x$ is a local parameter.  The affine dilation loop
+rotates the four roots once and has one tangent weight at
+each point.  Its relation is therefore
+\[
+ H_{1,2}=(B_4\times\mathbb Z^2)
+       /\langle (abc)^4=z_1z_2\rangle.                         \tag{B.95}
+\]
+This is the central induction of the disk full-twist lattice
+along $1\mapsto(1,1)$.  The equivalence and inverse are the
+maps just described in the family and on its coordinates.
+
+The free ray model on $(\mathbb Z/2)^2$ is given without
+suppressing either half turn:
+\[
+ \left\langle B_4,\tau_1,\tau_2\ \middle|\
+ \tau_1,\tau_2\text{ central},\
+       (abc)^4=\tau_1^2\tau_2^2\right\rangle,
+ \quad\chi(\tau_i)=\overline e_i,
+ \quad z_i=\tau_i^2.                                         \tag{B.96}
+\]
+The words of $B_4$ have character zero.  Therefore (B.96)
+acts on its four sign objects as the actual positive half
+rotations, and its isotropy is exactly (B.95).  The cover
+functor carries these rotations to rotations of the two
+coordinates $u$, so it respects composition and both full
+turns.  No sign object is identified by the construction.
+
+For completeness, all the local cut maps used in B.27 are
+covered by this dictionary.  In the cubic case they are
+$a$ and $h=s^2$ from (B.12).  In the quartic case use
+\[
+ \Delta=abcaba,\quad q=(abc)^2,\quad
+ r=s^{-1}\Delta s,\quad h=(ab)^3.
+\]
+The identities
+\[
+ r^2=q^2=(abc)^4=z_1z_2,\qquad
+ qaq^{-1}=c,\qquad h=ac^{-1}r
+                                                               \tag{B.97}
+\]
+are precisely the branch exchanges and flag injections
+of B.10--B.11.  The program checks these, (B.89)--(B.93),
+and all full-twist centralities by the faithful Artin action.
+The two-boundary cut changes $aba$ and $bcb$ satisfy their
+three-strand relations in their displayed $B_3$ subgroups;
+their fourth powers are the separating twists $(ab)^6$ and
+$(bc)^6$.  Every word in these cuts and every incidence map
+has the explicit substitution into $a,b,c,z_1,z_2$; the
+complete presentation (B.95) proves that no additional
+relation has been left unspecified at the groupoid level.
+
+Finally, these are equivariant equivalences usable inside
+B.27.  On a finite marking choose the $F$-tree paths of
+(B.85), retain its sign coordinate, and apply the displayed
+covering map.  The inverse replaces each $a,b,c$ by its
+chosen $F/B$ word, and each half turn by (B.91) or (B.96).
+The tree paths are the inverse natural isomorphism.  All
+relations of that natural isomorphism are the already
+listed naturality, pentagon, braid and central relations.
+For a product of cut components apply the functors factor
+by factor and then the explicit central pushout of B.1.
+The resulting comparison respects the flag maps (B.97).
+Transporting the general incidence maps through these
+functors and their inverse natural isomorphisms gives the
+same pseudofunctor coherence; B.27's strictification makes
+it an ordinary finite diagram again.
+\end{proof}

@@ -1,0 +1,259 @@
+
+\subsection{A finite sphere-only diagram with every map specified}
+
+\begin{result}{B.30}{Proved}{A geometric word-colimit and its exact inverse}
+For every pinned stable graph, its framed fundamental groupoid
+has an ordinary finite-colimit presentation using only finite
+ray models of three- and four-point spheres, after the explicit
+central induction of B.1.  Every arrow of the diagram is one of
+the concrete two-generator path maps below.  The colimit has a
+free action on its sign objects, and its comparison to the
+framed fundamental groupoid has the displayed inverse.
+
+The geometric generators may be chosen from B.27--B.29, so
+this presentation includes the elliptic cut changes and their
+full framing relations.  The low-type diagrams produced by
+\texttt{b\_sphere\_colimit.py} have the following sizes; these
+are diagram blocks, rather than the objects of their colimits:
+\[
+\begin{array}{c|rrrr}
+(g,n)&\text{three-point blocks}&\text{four-point blocks}
+ &\text{multiplication blocks}&\text{input relators}\\\hline
+(0,3)&2&0&0&0\\
+(0,4)&2&2&0&0\\
+(0,5)&2&99&44&6\\
+(1,1)&2&40&18&2\\
+(1,2)&2&63&28&4 .
+\end{array}                                                     \tag{B.98}
+\]
+Multiplication blocks are included among the four-point blocks.
+All generator images, terminal equations and comparison words
+are recorded in the program's JSON output.
+
+There is also an explicit three-object ordered index after
+taking finite coproducts of these blocks.  The comparison with
+the particular uncompleted reduced-tree assignment of the
+original scan~100 remains the precise issue recorded in B.8:
+the construction here specifies its own index and its own path
+maps.  In genus zero, B.27 supplies the separate geometric
+reduced-tree diagram, and the substitutions below compare the
+two resulting groupoids on generators.
+\end{result}
+\begin{proof}
+Write $A=\mathbb Z^r$ for the retained external framing lattice
+and $E=\tfrac12 A$, with sign set $\mu=E/A$.  First specify the
+two elementary blocks, including their geometric maps.  At
+$(0,4)$ normalize the labelled points to $0,1,\infty,\lambda$.
+The coordinate tangent frames $\partial_z$ at the finite
+points and $\partial_{1/z}$ at infinity trivialize all four
+tangent lines over $\lambda\in\mathbb C\setminus\{0,1\}$.
+Its framed group on a full orbit of sign objects is therefore
+the translation groupoid of
+$\tfrac12\mathbb Z^4\times F(u,v)$.  The loops $u,v$ are the
+positive based meridians of $0,1$, based at $\lambda=1/2$.
+Induce the central lattice along the zero map
+$\mathbb Z^4\to A$.  B.1 gives the block
+\[
+ \mathcal P_A=\bigl(E\times F(u,v)\rightrightarrows\mu\bigr).
+                                                               \tag{B.99}
+\]
+The same induction from a three-point sphere gives
+\[
+ \mathcal Z_A=\bigl(E\rightrightarrows\mu\bigr).                \tag{B.100}
+\]
+The notation denotes translation by the character to $E/A$;
+the free generators have character zero.  The object-set
+induction sends a free sign orbit to the free orbit $\mu$.
+Thus (B.99)--(B.100) are the stated elementary sphere models
+with explicitly changed central lattices.
+
+There is a concrete continuous realization of every free-group
+map used below.  Take the circles of radius $1/4$ around $0$
+and $1$ and join them by the real segment from $1/4$ to $3/4$.
+The punctured plane has this two-loop graph as a spine: a
+regular neighborhood is a three-holed sphere, and its three
+complementary annular ends retract into its boundary.  Choose
+the collapse of that neighborhood to its indicated spine.
+A map of the spine that traverses prescribed words on its two
+loops extends, by this retraction, to a continuous map of the
+four-point parameter space.  On the frame torus it is the
+identity.  A central factor means concatenating the indicated
+integer boundary rotations.  This defines the actual
+fundamental-groupoid functor.  In particular the maps
+\[
+ (u,v)\mapsto(t,1),\quad (t,w)\mapsto(u,1),\quad
+ (t,w)\mapsto(v^{\pm1},1),\quad
+ (t,w)\mapsto(uv,1)                                           \tag{B.101}
+\]
+are maps of these specified path models, fixing the central
+half-turn paths and every sign object.
+
+Now take the finite presentation obtained by B.27, replace its
+low-type generators by B.28--B.29, and choose paths from its
+finitely many objects to one reference object.  Its based
+framed group $H$ has a presentation
+\[
+ H=\left\langle A,x_1,\ldots,x_m\ \middle|\
+ A\text{ central},\quad R_j(x)=c_j\ (1\leq j\leq s)
+ \right\rangle,
+ \qquad c_j\in A.                                             \tag{B.102}
+\]
+These are actual geometric generators and relations.  To
+obtain (B.102), retain the central boundary generators of
+B.27 and commute them to the end of each relator.  The
+exponent vector at that end is $c_j$.  Local braid,
+pentagon, cut-change, graph-lift and incidence relations are
+all supplied in B.27--B.29.  This procedure does not require
+an unknown central lift to be inferred from an abstract
+presentation.  Its presentation is exact by B.27's explicit
+word inverse.  Equivalently, the lifting proof of (B.6)
+verifies (B.102) directly.
+
+Here is a finite diagram all of whose blocks are
+(B.99)--(B.100); no large free group is left as an undeclared
+primitive.  Use two copies $C,K$ of $\mathcal Z_A$, with
+$C\to K$ the identity on $E$.  For each generator $x_i$
+use a copy $P_{x_i}$ of $\mathcal P_A$, whose free generators
+are named $t,w$.  Give every such block the idempotent
+endomorphism
+\[
+       \rho:t\mapsto t,\quad w\mapsto1,\quad E\mapsto E.
+                                                               \tag{B.103}
+\]
+It is a genuine idempotent functor, not a formal relation
+on objects.  Its colimit identifies $w$ with $1$.
+Include the central inclusion from $C$ to each block.
+
+Write a nonempty relator as
+$R_j=x_{i_1}^{\epsilon_1}\cdots x_{i_l}^{\epsilon_l}$.
+For each $0\leq k\leq l$ add a variable block $P_{p_{jk}}$
+with the same endomorphism (B.103).  Add maps
+\[
+ P_{p_{j0}}\longrightarrow K:\ t\mapsto1,
+ \qquad
+ P_{p_{jl}}\longrightarrow K:\ t\mapsto c_j,
+                                                               \tag{B.104}
+\]
+which kill $w$ and fix $E$.  For each $1\leq k\leq l$
+add a multiplication block $M_{jk}=\mathcal P_A$ with
+free generators $u,v$ and the three maps
+\[
+\begin{array}{c|c}
+\text{source}&\text{image of its generator }t\\\hline
+P_{p_{j,k-1}}&u\\
+P_{x_{i_k}}&v^{\epsilon_k}\\
+P_{p_{jk}}&uv.
+\end{array}                                                     \tag{B.105}
+\]
+They kill $w$ and fix $E$.  Include $C\to M_{jk}$.
+The index has just these arrows, identities, the idempotents,
+and their forced composites.  Impose $f\rho=f$ for the
+outgoing maps and identify all composites of central
+inclusions with the stated central inclusion.  It is finite:
+its only nonidentity loops are the idempotents, and after
+leaving a variable block every remaining arrow ends at a
+multiplication block or at $K$.  These composition rules
+hold for the actual functors (B.103)--(B.105).
+Empty relators may be omitted: by the injection of $A$ into
+$H$, an empty relator has $c_j=0$.
+
+The colimit can now be computed without an abstract existence
+argument.  Relation (B.103) removes every dummy $w$.
+Equation (B.105) gives, in the colimit,
+\[
+ u=p_{j,k-1},\qquad v=x_{i_k}^{\epsilon_k},\qquad
+ p_{jk}=p_{j,k-1}x_{i_k}^{\epsilon_k}.                          \tag{B.106}
+\]
+The first equation in (B.104) starts this recursion at $1$.
+The second ends it at $c_j$.  Eliminating the $p_{jk},u,v$
+therefore gives exactly $R_j=c_j$, with no other relation
+on the $x_i$ or on $E$.  The colimit is the translation
+groupoid of
+\[
+ H^{1/2}=(H\times E)/\{(a,-a):a\in A\}
+          \quad\text{on }\mu.                                \tag{B.107}
+\]
+All object maps throughout the diagram are the identity of
+$\mu$, so its colimit has exactly these sign objects, and
+the sign action remains free.
+
+Here are the comparison functors and their inverse on every
+block.  Send $t$ in $P_{x_i}$ to the geometric loop $x_i$;
+send $t$ in $P_{p_{jk}}$ to the length-$k$ prefix of $R_j$;
+send $u,v$ in $M_{jk}$ to the preceding prefix and to
+$x_{i_k}^{\epsilon_k}$.  Send all central half turns to the
+actual half turns.  The terminal maps commute because their
+precise equation is $R_j=c_j$, whose geometric homotopy is
+one of the supplied relator homotopies.  This gives a cone
+and hence the forward functor.  In the other direction send
+$x_i$ to $t$ in $P_{x_i}$ and each central element to its
+copy in $C$.  Equations (B.104)--(B.106) prove each relator,
+so this is an actual inverse functor on (B.102).  The two
+composites are the identity on the geometric generators,
+and on every auxiliary generator by (B.103) and (B.106).
+Additional finite basepoints are restored using the chosen
+connecting paths; those paths give the inverse natural
+isomorphism.  This verifies the comparison rather than
+appealing to invariance of arbitrary ordinary colimits
+under equivalence.
+
+The path substitutions in B.28--B.29 also give the promised
+geometric dictionary for (B.102).  A parenthesized sphere
+half turn is inserted by (B.85); an elliptic cut change is
+$aba$; the cubic boundary is $(ab)^6$; and the quartic
+boundary product is $(abc)^4=z_1z_2$.  The flag maps are
+(B.97) and B.27's transporter conjugations.  Reading a
+cell path gives the forward word, and B.27's inverse word
+reading followed by these substitutions gives the inverse.
+All the relator homotopies can be recovered as finite
+products of those listed elementary homotopies.  An
+explicit terminating procedure enumerates products of
+conjugates of the finitely many defining relators until
+the required null word is reached; termination follows
+from the already proved presentation (B.102).  Thus this
+is a construction of the particular maps and homotopies,
+not an unspecified factorization through sphere groups.
+
+For (B.98), use the five-generator six-relator presentation
+B.19 for $(0,5)$, the two-generator braid and boundary
+presentation (B.10) for $(1,1)$, and (B.11) for $(1,2)$.
+Their total relator lengths are respectively $44,18,28$.
+The variable-block counts are $55,22,35$, giving the
+four-point-block totals in the table.  In genus zero the
+normalization $0,1,\infty$ trivializes the tangent lines,
+so the six five-point central vectors are zero.  For
+$(1,1)$ the boundary relator has vector $1$; for $(1,2)$
+the full-twist relator has vector $(1,1)$.  The program
+verifies all substitutions, multiplication maps and
+terminal equations, including these nonzero framing
+vectors, by the faithful braid calculations.
+
+Finally the asserted ordered index is completely explicit.
+For the finite diagram $D:\mathcal I\to\mathrm{Gpd}$ just
+constructed, put
+\[
+ U=\coprod_{\alpha:i\to j}D(i),\qquad
+ V=\coprod_{i\in\mathcal I}D(i).
+\]
+Let $f:U\to V$ be the source inclusion and $g:U\to V$ the
+functor $D(\alpha)$ followed by target inclusion on the
+$\alpha$ summand.  Its colimit is the coequalizer of $f,g$:
+a cocone is precisely a map from $V$ agreeing on those two
+images of every arrow.  This coequalizer is the pushout
+\[
+       U\ \xleftarrow{\mathrm{fold}}\ U\amalg U
+           \ \xrightarrow{\ f\amalg g\ }\ V.                 \tag{B.108}
+\]
+Indeed a pushout cocone requires its map on $U$ to equal
+both composites with $f,g$, which is exactly the same
+universal condition.  Thus (B.108) is the advertised
+three-object poset diagram, with its actual functors.
+Its values are finite coproducts of the elementary sphere
+blocks and its colimit is still (B.107).  This ordered
+index and B.27's reduced-tree index are related by their
+explicit comparison and inverse to (B.107).  An
+identification of their individual values with the
+unstated original tree assignment is not supplied by
+renaming either index; it is the remaining source
+comparison in B.8.
+\end{proof}

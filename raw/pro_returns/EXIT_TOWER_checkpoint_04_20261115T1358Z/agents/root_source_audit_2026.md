@@ -1,0 +1,27 @@
+# Audit of the 2026 Bogomolov–Pop source
+
+Primary source: OpenAI, The Bogomolov–Pop reconstruction theorem, 23 September2026; PDF449982bytes, commit fd4aeeb2ee4fc729c18d98444fed42fd0529eeeb of openai/math. Downloaded directly from the primary repository;26pages. No result from this source is promoted until the remaining inputs are checked.
+
+## Root checks so far
+
+Sections2–3.3 read completely. Lemma2.1 uses the principal-divisor embedding of F*/constants into a free abelian group; its l-adic completion is the restricted coefficient product and its continuous dual is the full product of Z_l. Lemma2.2's closed saturated regular-subfield embedding follows from a split exact sequence of free abelian groups; the finite-extension injection follows from norm and torsion-freeness. Lemma2.3's fibre product modulo the diagonal gives an abelian extension, split by Pontryagin dual injectivity, and the lifted graph really projects isomorphically to both extensions. The finite-coefficient alternating-pair calculation3.1 was checked, including the l=2 diagonal cup and the five-term sequence.
+
+The local character statements in3.2–3.4 were compared against Topaz2019, Fact2.1, Lemma2.5, Theorem2.6, Corollary2.7, Fact3.2 and Theorem3.3. The character-space proof in the 2026 text correctly extends to residue characteristic l: it invokes valuations and multiplicative characters rather than residue-field Galois cohomology at that step. Fact2.1 and Lemma2.5 proofs in Topaz were read, along with the alternating-pair projective-plane argument in Theorem2.6 and all of Theorem3.3.
+
+The rank-one recognition uses the finest common coarsening and independent valuation approximation. The relative-rank equality and minimality force a quasi-prime divisor; intersections with W_F recover the exact saturated integral groups. Iterating only through relative dimension at least2 yields all quasi-prime flags of length at mostd−1.
+
+Sections4–6 and the complete Theorem5.1/6.1/6.3 proofs were read by root. They also have an independent D audit, saved separately. The five-anchor argument first forces v(k(t))=vk using noncyclic finite evaluations, then equal anchor differences; including0,1,l excludes residue characteristic l. Riemann–Hurwitz uses the different inequality, so wild ramification causes no missing term. In6.3 normalizing the base in the finite splitting extension and using the smooth locus extends splitting to the fixed incidence curve without intersecting infinitely many opens. The norm removes the finite field-extension factor using saturation.
+
+Outstanding at12:25UTC: exact Pop2015 Theorem4.2(i)(a), including its topological closure-of-union criterion and point-family conclusion; and the full primary statement/needed proof portion of Pop2012 global reconstruction from Bertini rational quotients. Several primary-host requests returned403; publisher alternatives are being fetched. No hypothesis of these inputs is silently assumed.
+
+## Completion of the older-input audit, approximately12:37 UTC
+
+The primary author texts became readable through the web retrieval service. Pop2015, Section4, the two hypotheses preceding Theorem4.2, the closure-of-union definition, Theorem4.2(i)(a), Lemmas4.3–4.5, and the appended Topaz Lemma5 and Main Theorem proof were read. They match the2026 argument exactly. Topaz's proof supplies the characteristic-ell case: the ordinary point inertia relation comes from the divisor sequence, while a nontrivial constant valuation supplies an independent relation on the disjoint residual-point family. The recognition criterion therefore excludes non-finite-field constant closures without a missing tame assumption.
+
+Pop2012, On the birational anabelian program initiated by Bogomolov I, author version19March2011, Theorem2.1(2) and the preceding rational-quotient definitions were opened. The theorem uses total decomposition graphs and Bertini rational quotient families in relative transcendence degree>1 over arbitrary algebraically closed constants. The finite-field restriction belongs to the earlier group-only TheoremI, not to the precise graph-with-quotients input being invoked here. The exact restriction diagram in the2026 paper gives that compatibility.
+
+Pop2012, Recovering function fields from their decomposition graphs, Main Theorem, Fact/Definition43 and all of Section6's Theorem45 proof through Lemmas46–52 were opened. The scalar adjustment, arithmetic lattice, recovery of projective lines and field multiplication were read. In our isomorphism application both sides are geometric total graphs and all rational quotients are present, giving every Bertini family needed. Characteristic zero removes the final purely inseparable ambiguity. Earlier arithmetic-lattice results are the published inputs to this global theorem; no claim of a complete independent reproof of the whole75-page paper is made.
+
+Primary retrievals: author URLs in the bibliography; web refs turn220view0–2, turn223view0–5, turn224view0–7, turn225view0–6 and turn226view0–2. Direct author PDF downloads remained blocked; these full primary-text retrievals, rather than a local PDF, are the actual access method. Only the2026 andTopaz2019 primary PDFs are locally saved.
+
+Result E.T11 now uses the2026 theorem with a complete reduction to the full absolute Galois group, the normal-scheme topos and both stable surface stacks. No mathematical defect was found in the audited2026 argument. Its preprint status, exact primary commit and independent audit scope are explicit.

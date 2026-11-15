@@ -1,0 +1,500 @@
+\subsection{The named finite complexes on the second level}
+
+\begin{result}{D.22}{Proved}{Complete word data on $P_2$ in the five- and six-point sphere cases}
+The complexes of groups on $P_2/\Gamma_{0,n}$ for $n=5,6$
+have the following complete finite specifications:
+\[
+\begin{array}{c|rrrrrr}
+n&\text{vertices}&\text{arrows}&\text{triangles}&
+ \text{local generators}&\text{generator injections}&
+ \text{tree arrows}\\\hline
+5&26&55&30&91&175&25\\
+6&235&840&630&1110&3570&234.
+\end{array}
+\]
+Every vertex presentation, every image of an edge-group generator,
+every transporter and every triangle twisting element is an exact
+integer word in the certificate
+\path{code/d_p2_genus_zero.json}.  The definitions below give the
+same data without a choice left unspecified.  Their fundamental
+groups are $\Gamma_{0,5}$ and $\Gamma_{0,6}$, respectively.
+
+The maps to the presentations P5c2 and P5c3 are given on every
+listed generator by that certificate.  Their inverses send
+\[
+\begin{array}{c|l}
+5&a,b,x,y,z\longmapsto
+ A_{13},A_{23},A_{14},A_{24},A_{34},\\
+6&p,q,r,s\longmapsto A_{15},A_{25},A_{35},A_{45},
+\end{array}
+\]
+where each $A_{ij}$ on the right is the specified local node
+generator at the divisor with cluster $\{i,j\}$, and the second
+row supplements the first.  Thus the comparison is proved
+generator by generator.  There is no dimension-three stratum
+in $M_{0,5}$.  The unique such stratum for $M_{0,6}$ is its open
+stratum; the certificate gives its $630$ complete-flag twisting
+coherence identities.
+\end{result}
+\begin{proof}
+We specify both the finite index set and all words.  The labelled
+graphs and their indices are those of the exhaustive files
+\path{code/a_graphs_0_5.json} and
+\path{code/a_graphs_0_6.json}.  For five labels keep every tree,
+including the zero-edge tree.  For six labels keep precisely
+the nonempty trees.  There is one arrow $G\to H$ for each
+strict contraction, and one triangle for each strict chain of
+two contractions.  A labelled stable genus-zero tree has no
+nontrivial graph automorphism: an automorphism fixing its leaves
+fixes every internal vertex as the intersection of three leaf
+paths.  Its edges are distinguished by their labelled splits.
+Consequently these trees and chains are exactly the respective
+orbits of vertices, edges and triangles of $P_2$, with no
+unrecorded parallel incidence.
+
+Put $m=n-1$ and root every tree at the vertex incident to the
+last label, denoted $\infty$.  The other labels are
+$1,\ldots,m$.  At each vertex order the children by the least
+label in their descendant leaves.  Reading the leaves in this
+depth-first order gives a permutation $\pi_G$.  Every cluster
+away from the root is an interval in this order.  Let $P_G$
+be the positive permutation braid found by the following fixed
+algorithm: read $\pi_G$ from left to right, and move its next
+entry left to its prescribed position by adjacent positive
+crossings.  In that ordered configuration take round circles
+around all the clusters, and pull them back by $P_G^{-1}$.
+This is the chosen multicurve $\sigma_G$.
+
+The proof and certificate use braid words in traversal order.
+Write
+\[
+ A_{ij}=\sigma_{j-1}\cdots\sigma_{i+1}\sigma_i^2
+          \sigma_{i+1}^{-1}\cdots\sigma_{j-1}^{-1},
+ \qquad Z_q=(\sigma_1\cdots\sigma_{q-1})^q.
+\]
+At a vertex $v$ of $G$, let $q_v$ be its number of children,
+where a marked leaf is one child and a descendant subtree is
+one child.  Thus $q_v=\operatorname{val}(v)-1\geq2$.
+The round-system stabilizer in $PB_m$ is
+\[
+                  \prod_{v\in V(G)}PB_{q_v}.                 \tag{D.1}
+\]
+Here is its actual embedding.  Replace every strand at $v$ by
+the block of its descendant leaves, retaining their fixed
+order.  Cable every crossing with zero rotation of those
+blocks, and extend it by the identity outside the interval of
+the vertex.  If adjacent blocks have sizes $a,b$, their positive
+exchange is the word obtained by moving the $b$ strands of the
+right block, successively from left to right, across all $a$
+strands of the left block.  Its explicit shifted word is
+\[
+ \prod_{j=0}^{b-1}
+       (\sigma_{s+a+j}\sigma_{s+a+j-1}\cdots\sigma_{s+j+1}),
+                                                               \tag{D.2}
+\]
+where $s$ is the number of strands to its left.  The negative
+exchange is the inverse positive exchange with block sizes
+$b,a$.  Update the ordered blocks after each crossing.
+This defines the cable of every signed Artin word.
+
+To justify (D.1), collapse the outermost child disks to points.
+A pure stabilizer gives a pure braid of these points and an
+internal braid in each disk.  The motion of disks with their
+coordinates transported by translation gives a section: choose
+their radii smaller than one third of the minimum separation
+of their centres.  This keeps the coordinates unrotated.
+After removing that motion, the remaining homeomorphisms are
+supported inside the child disks.  They commute with that
+zero-rotation motion up to isotopy, because the coordinates in
+each transported disk identify their supports throughout the
+isotopy.  Thus the group is the direct product of the outer
+pure braid group and its internal stabilizers.  Induction on
+the rooted tree proves (D.1), including injectivity and
+surjectivity of the specified cable map.
+
+The full turn of all $m$ strands is the product of the local
+full turns $Z_{q_v}$.  Indeed the outer full turn winds every
+pair of distinct child disks once around one another and the
+internal full turns supply exactly the turns within the
+children; the disk motions give the asserted braid equality.
+The program independently checks it by the faithful Artin
+action for all $261$ trees.  Passing from the disk braid group
+to the sphere mapping class group quotients by this full turn.
+The actual local group is therefore
+\[
+ H_G=\left(\prod_vPB_{q_v}\right)
+        \big/\left\langle\prod_v Z_{q_v}\right\rangle.        \tag{D.3}
+\]
+Its generator at $v$ is named $(v,i,j)$ and embedded in the
+global group by the word
+$P_G\,\operatorname{cable}_v(A_{ij})\,P_G^{-1}$.
+
+For a complete finite presentation of each factor, use
+$PB_q=F_{q-1}\rtimes PB_{q-1}$ successively.  For each
+$i<j<\ell\leq q$ and each $k<\ell$, impose
+\[
+ A_{ij}A_{k\ell}A_{ij}^{-1}
+       =\operatorname{comb}_{\ell}
+                  (A_{ij}A_{k\ell}A_{ij}^{-1}).               \tag{D.4}
+\]
+On the right use the exact pure-braid combing of B.18; the
+word lies in the free generators $A_{1\ell},\ldots,
+A_{\ell-1,\ell}$.  The punctured-plane fibration and its
+section prove this presentation inductively, by the same
+normal-form argument as B.19.  Adjoin commutators between
+distinct factors, and the single diagonal central relation
+in (D.3).  The certificate expands all these words, so (D.4)
+is an algorithm specifying actual finite relations and not a
+reference to unknown conjugations.
+
+Now take a contraction $G\to H$.  Every $H$-cluster is an
+interval in both $\pi_H$ and $\pi_G$.  Apply the same positive
+permutation algorithm to change the former ordered leaves
+into the latter.  Denote its word by $B_{HG}$.  It transports
+the round $H$-system to the corresponding subsystem of the
+round $G$-system.  To see this directly, any strand outside
+one of the blocks either crosses every strand of that block
+once in the same direction or crosses none; the block can
+therefore be transported as a disk.  The same statement holds
+recursively for its subblocks.  The pure transporter, in the
+fixed traversal convention, is
+\[
+                q_{GH}=P_H B_{HG}P_G^{-1}.                   \tag{D.5}
+\]
+It carries $\sigma_H$ to the retained part of $\sigma_G$.
+Whenever those two multicurves already agree, choose instead
+the empty word.  This last decision is exact: compute their
+boundary words in the free punctured-disk group, cyclically
+reduce them and compare up to inversion.  Free homotopy of
+essential simple curves is isotopy.  The computation checks
+every claimed disk transport on those same boundary words.
+
+The edge injection is $x\mapsto q_{GH}xq_{GH}^{-1}$.
+It remains to express that answer in the named target factors,
+rather than merely in the ambient group.  In the round
+$H$-configuration, delete every strand except the first one
+in each child block.  This reads the outer pure braid exactly.
+Remove its zero-rotation cable, restrict the residual braid to
+each child disk, and repeat.  This is inverse to (D.1), so it
+terminates and gives the target word in its local $(v,i,j)$.
+The certificate gives all $175$ and $3570$ generator images
+obtained this way, and checks each reconstructed braid using
+the faithful Artin action.
+
+For $G\to H\to J$ put
+\[
+       f_{GHJ}=q_{HJ}q_{GH}q_{GJ}^{-1}\in H_J.               \tag{D.6}
+\]
+It fixes the representative $\sigma_J$ because the first two
+transports and the direct transport have the same retained
+multicurve.  Apply the preceding inverse cable algorithm to
+give its exact word in $H_J$.  The local group conjugations
+and (D.6) prove the twisting identity.  For a further
+contraction to $K$ they also give
+\[
+ f_{HJK}f_{GHK}
+       =\psi_{JK}(f_{GHJ})f_{GJK},                           \tag{D.7}
+\]
+by multiplying the actual transport words.
+
+There are respectively $54$ and $789$ arrows whose chosen
+transporter is the identity.  The executed breadth-first
+search proves that these arrows connect the entire finite
+vertex set.  The certificate records a maximal tree using
+only these arrows.  Therefore the standard complex-of-groups
+presentation uses every local presentation above, one letter
+$u_{GH}$ for each arrow, and the explicit relations
+\[
+ u_{GH}x u_{GH}^{-1}=\psi_{GH}(x),\qquad
+ u_{HJ}u_{GH}=f_{GHJ}u_{GJ},\qquad
+ u_{GH}=1\quad\text{on the recorded tree}.                   \tag{D.8}
+\]
+The map to the ambient mapping class group sends local
+generators to their cable words and $u_{GH}$ to $q_{GH}$;
+the tree relations hold literally.  These are the genuine
+stabilizers and transports of the action on $P_2$.
+The Borel fibre sequence and D.5 therefore prove that this
+map on fundamental groups is an isomorphism.
+
+Apply B.18's exact normalization to every ambient braid word
+in (D.8), discard the exponent of the global full turn, and
+use B.19's named generators.  This is the forward dictionary
+recorded for every local generator, arrow and twist.  For
+the inverse, the chosen representative of the pair divisor
+$\{i,j\}$ has node twist exactly $A_{ij}$: its permutation
+braid is $\sigma_{j-1}\cdots\sigma_{i+1}$ on that block,
+and conjugating $\sigma_i^2$ gives the displayed band word.
+The program verifies these five and nine identities and
+records the precise graph and local-generator indices.
+The six and twenty-six relations of B.19 hold on these
+inverse images because the independently proved ambient
+map is injective.  The composites are the identity on every
+named generator, again by that injection.  This proves both
+directions of the required presentation comparison.
+
+Finally, in the six-point case adjoin the empty multicurve,
+the sole dimension-three stratum.  All its transporters are
+the identity.  For every complete flag $G\to H\to J\to0$
+the identity (D.7) is consequently the specified
+tetrahedral coherence among the triangle relations; the
+file lists all $630$ flags and both sides in the compact
+moduli generators.  These are the identities supplied by
+the open stratum in this finite action diagram.  The
+corresponding unquotiented upper link is the curve complex
+$\mathcal C_{0,6}$, a wedge of two-spheres, so its cone
+attaches precisely the dimension-three homotopy data
+described in D.17.
+\end{proof}
+
+\begin{result}{D.23}{Proved}{The complete fifteen-cell second-level diagram for $(1,2)$}
+Let $O,N,T,D,C$ be the empty, nonseparating, separating,
+loop-tail and two-cycle multicurve orbits, respectively.
+The quotient of $P_2$ has five vertex orbits, seven edge
+orbits and three triangle orbits.  Its barycentric face
+complex of groups has exactly the following fifteen cells:
+\[
+\begin{array}{c|l}
+\text{cell group}&\text{cells}\\\hline
+\Gamma_{1,2}&O\\
+N&N,\ NO\\
+T&T,\ TO\\
+D&D,\ DN,\ DT,\ DO,\ DNO,\ DTO\\
+C&C,\ CO\\
+A&CN,\ CNO.
+\end{array}
+\]
+The groups $N,T,D,C$ and their exact generators are those
+displayed in D.17, and
+$A=\langle a,c\mid[a,c]=1\rangle$.
+Every face transporter and every triangle twist is the
+identity.  Every face injection is specified below and
+listed individually in
+\path{code/d_p2_elliptic_two.json}.  There are $32$ face
+arrows and $18$ face triangles.  The resulting fundamental
+group has precisely the presentation
+\[
+ \langle a,b,c\mid [a,c]=1,\ aba=bab,\ bcb=cbc,
+                         (abc)^4=1\rangle.
+\]
+The three generators come from the one-dimensional strata:
+$a,c$ from $N$, and $b$ from $T$.  The open stratum,
+of dimension two, supplies the displayed global relations.
+There is no dimension-three stratum.
+\end{result}
+\begin{proof}
+Use the actual curve representatives
+\[
+ O=\varnothing,\quad N=\{a\},\quad T=\{d\},\quad
+ D=\{a,d\},\quad C=\{a,c\},\qquad d=(ab)^6.
+\]
+Here a curve is named by its positive twist.  B.9--B.11
+prove the geometric stabilizer identifications, their
+presentations and their embeddings into
+$\Gamma_{1,2}=B_4/\langle\Delta_4^2\rangle$.
+Every flag in the displayed list is a literally nested
+flag of these representatives.  Thus all face transports
+can be the identity.  The two possible retained members
+of $C$ give one orbit, interchanged by $q$; its chosen
+flag has stabilizer $A$, a proper subgroup of index two
+in $C$.  In particular $CN\to C$ and $CNO\to CO$ use
+$A\hookrightarrow C$.  This retains both incidences in
+the action diagram.  All other edge and triangle
+stabilizers are the displayed full intersections.
+
+Here are all nonidentity types of subgroup injections;
+maps between cells with the same group are identities.
+The maps $D\to T$ and $D\to N$ are
+\[
+ (a,h)\longmapsto(a,(ab)^3),\qquad
+ (a,h)\longmapsto(a,ac^{-1}r).
+\]
+The maps $A\to N$ and $A\to C$ retain $a,c$.
+All maps to $O$ are given by
+\[
+ a\mapsto a,\quad b\mapsto b,\quad c\mapsto c,
+ \quad h\mapsto(ab)^3,\quad q\mapsto(abc)^2,
+ \quad r\mapsto(aba)^{-1}(abcaba)(aba).
+\]
+Their composites agree: the only additional named equality
+is $(ab)^3=ac^{-1}r$, proved as an exact braid word in
+B.11.  Thus these prescriptions specify all $32$ face
+arrows and all $18$ commuting face triangles.
+The program independently verifies every local relator,
+every generator image and every composite using the
+faithful Artin action, retaining the central full twist
+before quotienting.  Its executed output accompanies the
+complete list.
+
+The empty multicurve is a fixed cone point of $P_2$.
+Adding $O$ to any boundary flag leaves its stabilizer
+unchanged.  In the face diagram, the inclusion to that
+cone flag is consequently an isomorphism on its local
+group, while the other face map is its displayed
+inclusion into $\Gamma_{1,2}$.  Contracting these cone
+pairs gives the one-object groupoid of $\Gamma_{1,2}$.
+This proves the exact fundamental-group comparison and
+its inverse, rather than merely comparing group orders.
+
+For the requested generator assertion, identify the
+open letters $a,c$ with their images from $N$, and
+$b$ with its image from $T$.  Eliminate $h,q,r$ by the
+displayed words.  The cone contraction shows that all
+remaining local and face relations are precisely the
+relations already holding in the open presentation.
+Conversely those four open relations give every local
+and face relation, by the checked embeddings.  The two
+maps are the identity on $a,b,c$, proving the stated
+generator-by-generator equivalence.  The maximum
+modular dimension is two, proving the final assertion.
+\end{proof}
+
+\begin{result}{D.24}{Open}{The remaining compact higher-identity dictionaries in Added task 4}
+D.22 supplies every finite word for $(0,5)$ and $(0,6)$
+and proves their group-presentation comparisons with
+P5c2 and P5c3.  D.23 gives all named word data for
+$(1,2)$, D.27 does so for $(2,0)$, and D.29 completes
+$(1,3)$.  Thus all five requested vertex, edge,
+transport, sewing and triangle-twist dictionaries
+are now supplied, with explicit inverse maps on the
+compact global generators.
+
+D.30 now supplies a defined cellular lift of the
+six-point comparison: all local and sewing relator
+fillings, all $630$ geometric tetrahedral identity
+sequences, their Peiffer reductions and coordinates,
+and an inverse inclusion of the $24$ open prism
+cells.  Its selected degree-three matrix is
+$[0\mid I_{24}]$ in D.25's orientation.  These are
+coordinates for the specified mapping-cylinder
+model, whose entire lower-cell comparison is given.
+
+The remaining compact higher-identity task concerns
+positive genus.  D.27 and D.29 give, respectively, all
+$24$ genus-two and $198$ three-pointed-torus cone
+coherences.  Their expansions in the free crossed
+modules of the corresponding compact global
+presentations remain additional higher-identity
+comparisons.  No missing finite stabilizer or
+sewing-word datum is being left implicit in this
+remaining scope.
+\end{result}
+
+\begin{result}{D.25}{Proved}{The twenty-four compact identity words and their basis map}
+Let $F$ be the free group on the nine generators
+$a,b,x,y,z,p,q,r,s$, and let $\mathcal R$ be the ordered
+list of the six base relators and twenty conjugation
+relators of B.19.  The program
+\path{code/d_p5c3_identities.py} expands all twenty-four
+identities indexed by a base relator $R$ and one of
+$u=p,q,r,s$ as products
+\[
+                  \prod_\nu c_\nu r_\nu^{e_\nu}c_\nu^{-1}=1
+                  \quad\text{in }F,\qquad
+                  r_\nu\in\mathcal R,\ e_\nu=\pm1.
+\]
+Every conjugator, relator index and sign is listed in
+\path{code/d_p5c3_identities.json}.  There are $2218$
+conjugate factors in all, and the largest identity has
+$640$ factors.  Every expanded product was freely reduced
+to the empty word.
+
+Under the standard map from identity sequences modulo
+Peiffer identities to the second homotopy group of the
+presentation complex, these twenty-four sequences form
+a free $\mathbb Z[\Gamma_{0,6}]$-basis.  Their exact
+comparison with the twenty-four sequences of P5c3 is
+inversion, separately for each pair $(R,u)$; on this
+module the comparison is multiplication by $-1$ on
+each named basis vector.
+\end{result}
+\begin{proof}
+Write $\phi_w$ for the actual free-group action in B.19,
+including its computed inverse automorphisms, and put
+\[
+                   D_w(v)=wvw^{-1}\phi_w(v)^{-1}.
+\]
+For positive base and fibre generators $h,u$, this is
+one of the twenty mixed relators.  All other cases
+are expanded by the following exact free-word identities:
+\[
+\begin{split}
+D_{ab}(v)&=aD_b(v)a^{-1}D_a(\phi_b(v)),\\
+D_h(vv')&=D_h(v)\phi_h(v)D_h(v')\phi_h(v)^{-1},\\
+D_h(v^{-1})&=\phi_h(v)^{-1}D_h(v)^{-1}\phi_h(v),\\
+D_{h^{-1}}(v)&=h^{-1}D_h(\phi_h^{-1}(v))^{-1}h.
+\end{split}                                                   \tag{D.9}
+\]
+Each equation follows by cancellation of the displayed
+words; it fixes all conjugators and signs.  The program
+uses the first rule recursively along the base word,
+and the other three rules along the fibre word.
+For each of the six base relators, B.19's checked action
+has $\phi_R(u)=u$ freely.  Hence the identity sequence
+constructed here is
+\[
+              D_R(u)\,(uRu^{-1})\,R^{-1}=1.                  \tag{D.10}
+\]
+It is exactly the inverse sequence to P5c3's
+$R(uR^{-1}u^{-1})D_R(u)^{-1}$, without a change of
+generators, relators or base paths.  The final check
+expands each factor back into the nine free letters;
+it does not use the desired quotient equality to
+certify the identity.
+
+Here is the completeness argument, independently
+checked against the full attached P5c3 proof.  The
+six-relator presentation of $\Gamma_{0,5}$ is the
+two-dimensional graph bundle over the two-petalled
+rose, with fibre a three-petalled rose.  Its universal
+cover is a tree of contractible fibre trees, so its
+presentation complex $K_5$, with cell counts $(1,5,6)$,
+is aspherical.  The exact action on the free group
+$F(p,q,r,s)$ builds a graph bundle up to homotopy over
+$K_5$ with fibre the four-petalled rose $R_4$ and a
+section.  To make this construction explicit, use
+the four-edge graph maps over every base edge; over
+each base two-cell use the free reductions
+$\phi_R(u)=u$ for its four edges.  There is no further
+obstruction or unspecified homotopy class: each
+component of
+\[
+                 \operatorname{Map}_*(R_4,R_4)
+                         \simeq(\Omega R_4)^4
+\]
+is contractible.  It supplies the compatible homotopies
+for these maps.  Equivalently, gluing their mapping
+cylinders over the cells gives the homotopy bundle
+classified by that precise action.
+
+Over a base $q$-cell attach the section cell first.
+The remaining relative cell pair is
+\[
+ (D^q\times R_4,\ S^{q-1}\times R_4\cup D^q\times\{*\}),
+\]
+whose quotient is $S^q\wedge R_4$, a wedge of four
+$(q+1)$-spheres.  Thus the total complex has cell counts
+$(1,9,26,24)$ and no higher cells.  Its two-skeleton
+is exactly B.19's presentation complex.  The boundary
+of the prism over $(R,u)$ is (D.10), with its specified
+orientation.  The homotopy bundle has aspherical base
+and fibre, so its homotopy exact sequence gives
+asphericity and the group $\Gamma_{0,6}$.
+
+Passing to the universal cover of this three-complex
+therefore gives the exact sequence
+\[
+ 0\longrightarrow\mathbb Z[\Gamma_{0,6}]^{24}
+  \xrightarrow{\partial_3}\mathbb Z[\Gamma_{0,6}]^{26}
+  \xrightarrow{\partial_2}\mathbb Z[\Gamma_{0,6}]^9.
+\]
+The universal cover of its two-skeleton is simply
+connected.  Hurewicz identifies its $\pi_2$ with
+$\ker\partial_2$, and $\partial_3$ is an isomorphism
+from the indicated free module onto that kernel.
+Its columns are precisely the twenty-four attaching
+spheres (D.10).  This proves the claimed basis and
+its sign comparison.  D.30 supplies the full two-cell
+comparison and the coordinates of all $630$ geometric
+cone tetrahedra for its specified mapping-cylinder
+model, with the inverse inclusion of these prism cells.
+\end{proof}
