@@ -1,0 +1,35 @@
+% Technical QA wrapper only. This file is not part of the transcription.
+% State macros are colour-coded here so that their contents remain available
+% to TeX's syntax checker, including paragraph-length manuscript additions.
+\documentclass[10pt]{article}
+\usepackage[paperwidth=420mm,paperheight=594mm,margin=20mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\pdfmapfile{+lm.map}
+\pdfmapfile{+symbols.map}
+\pdfmapfile{+latxfont.map}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{graphicx,xcolor}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,decorations.pathreplacing,shapes.geometric,calc}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\pagestyle{plain}
+\newcommand{\cotefile}[1]{\section*{Cote #1}}
+\newcommand{\scanpage}[1]{\clearpage\section*{Scan #1}}
+\newcommand{\mspage}[1]{\par\smallskip\textsf{[Manuscript page #1]}\par}
+\newcommand{\deleted}[1]{{\color{red!65!black}#1}}
+\newcommand{\inserted}[1]{{\color{blue!65!black}#1}}
+\newcommand{\unsure}[1]{{\color{orange!65!black}#1}}
+\newcommand{\illegible}[1]{\textnormal{[illegible: #1]}}
+\newcommand{\uline}[1]{\underline{#1}}
+\newcommand{\uuline}[1]{\underline{\underline{#1}}}
+% Read the body live so tikz-cd can establish its ampersand catcodes. The
+% diagram command opens a replacement group and consumes the supplied opening
+% brace with a local let; its closing brace then triggers the scheduled par.
+% Thus a following ordinary table starts a fresh paragraph after the diagram.
+\newcommand{\diagram}{\par\smallskip\noindent\bgroup\aftergroup\par\let\QAdiscard=}
+\renewcommand{\figure}{\par\smallskip\noindent}
+\newcommand{\margin}{\par\smallskip\noindent}
+\begin{document}
