@@ -7,6 +7,15 @@ and the transcription is being checked page by page against the scans.
 
 [Version française](README.fr.md)
 
+## Which book to read (typeset readers, working draft)
+
+*La Longue Marche* comes here in seven books, all made from one checked French transcription and one checked English translation. **Start with the English reading text** (`LM_EN_reading.pdf`), or the French one (`LM_FR_texte_de_lecture.pdf`) if you read French.
+
+- **Reading texts** (`LM_EN_reading.pdf`, `LM_FR_texte_de_lecture.pdf`): Grothendieck's final text, in English or in French, for reading the mathematics.
+- **French diplomatic** (`LM_FR_diplomatique.pdf`): the manuscript as it is, scan by scan, with his deletions, insertions, doubtful readings and illegible marks shown as they stand, for checking against the archive.
+- **Corrected text with apparatus** (`LM_FR_corrige_apparat.pdf`, `LM_EN_corrected_apparatus.pdf`): his final text with every change he made to it listed at the end of each scan, for anyone who wants to see how the text was revised. An apparatus entry records one change: what stood first and what replaced it.
+- **Annotated masters** (`LM_FR_master_annotated.pdf`, `LM_EN_master_annotated.pdf`): the editors' copies from which each language's books are printed. As PDFs they show the corrected text with the apparatus, so most readers do not need them.
+
 ## What is here
 
 - **Typeset readers, working draft (14 November 2026)**: five readers and two annotated masters, French and English
