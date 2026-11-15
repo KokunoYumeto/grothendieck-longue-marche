@@ -1,0 +1,87 @@
+from save_page import save
+text=r'''\scanpage{124}
+\figure{\begin{tikzpicture}[x=.01cm,y=-.01cm,line cap=round,line join=round]
+\draw[yellow!70!olive,line width=1.3pt] (498,487)..controls(714,475)and(941,484)..(1174,487) (264,575)..controls(384,653)and(524,674)..(644,650);
+\draw[orange!85!brown,line width=2.3pt] (722,419)--(819,554) (735,534)..controls(829,422)and(858,397)..(915,333)..controls(1053,245)and(1159,241)..(1284,271);
+\draw[gray,dashed] (512,503)--(1160,470) (676,578)--(1005,305);
+\draw[gray!65] (865,470)--(892,399) (919,453)--(952,360) (971,460)--(1002,353) (1012,445)--(1053,295);
+\end{tikzpicture}}
+
+\figure{\begin{tikzpicture}[x=.013cm,y=-.013cm,line cap=round,line join=round]
+\draw[black!70] (359,1150)..controls(380,991)and(551,823)..(744,827)..controls(969,829)and(1043,1001)..(1020,1163)..controls(1010,1381)and(830,1484)..(577,1474)..controls(422,1471)and(368,1301)..(359,1150);
+\draw[gray!80] (359,1150)..controls(484,942)and(851,945)..(1020,1163) (359,1150)..controls(484,971)and(847,1041)..(1020,1163) (359,1150)..controls(524,1019)and(853,1093)..(1020,1163) (359,1150)..controls(434,1165)and(562,1073)..(655,1100)..controls(783,1132)and(784,1187)..(1020,1163) (359,1150)..controls(503,1256)and(678,1267)..(1020,1163) (380,1177)..controls(517,1429)and(725,1435)..(1020,1163);
+\draw[orange!85!brown,line width=1.8pt] (359,1150)..controls(380,991)and(551,823)..(744,827)..controls(969,829)and(1043,1001)..(1020,1163)..controls(1010,1381)and(830,1484)..(577,1474)..controls(422,1471)and(368,1301)..(359,1150)
+(438,986)..controls(433,1071)and(497,1081)..(483,1176)--(453,1397)
+(514,922)..controls(531,1046)and(403,1219)..(436,1364)
+(552,891)..controls(540,1054)and(576,1215)..(384,1252)
+(585,872)..controls(605,1044)and(724,1280)..(796,1447)
+(743,830)..controls(733,1004)and(566,1223)..(574,1458)
+(880,851)..controls(875,1051)and(758,1238)..(576,1347)..controls(528,1377)and(508,1407)..(506,1437)
+(917,895)..controls(869,1032)and(942,1074)..(952,1243)--(951,1340)
+(944,920)..controls(922,998)and(879,1057)..(863,1121)..controls(826,1188)and(936,1166)..(998,1288)
+(964,945)..controls(934,1104)and(865,1294)..(841,1420)
+(995,1007)..controls(937,1090)and(871,1266)..(895,1412);
+\fill[yellow!65!olive] (359,1150) circle(14) (1020,1163) circle(14);\fill[black!65] (359,1150) circle(5) (1020,1163) circle(5);
+\end{tikzpicture}}
+
+\figure{\begin{tikzpicture}[x=.015cm,y=-.015cm,line cap=round,line join=round]
+\draw[yellow!65!olive,line width=2pt] (0,243)--(494,243);
+\draw[orange!85!brown,line width=2pt] (0,243)..controls(22,88)and(117,-4)..(245,0)..controls(396,-6)and(485,92)..(494,243)
+(41,240)..controls(62,189)and(94,89)..(95,61)
+(81,240)..controls(162,158)and(203,79)..(284,3)
+(192,239)..controls(211,161)and(261,79)..(308,8)
+(153,34)..controls(272,88)and(419,15)..(470,238)
+(218,3)..controls(242,60)and(294,126)..(307,243)
+(242,0)..controls(323,99)and(365,170)..(429,242);
+\draw[black!80!brown,line width=4pt] (195,230)--(306,230);
+\end{tikzpicture}}
+
+\figure{\begin{tikzpicture}[x=.012cm,y=-.012cm,line cap=round,line join=round]
+\draw[gray!65] (88,1188)..controls(-36,1165)and(-204,1342)..(-211,1473)..controls(-232,1602)and(-112,1749)..(12,1810) (88,1188)..controls(-37,1170)and(-210,1343)..(-217,1477)..controls(-224,1548)and(-197,1617)..(-172,1650) (88,1199)..controls(199,1215)and(279,1258)..(289,1394)..controls(287,1541)and(214,1638)..(137,1724) (88,1199)..controls(26,1286)and(11,1466)..(37,1597) (-196,1408)..controls(-95,1293)and(55,1253)..(174,1293) (-140,1478)..controls(-11,1538)and(119,1568)..(245,1513);
+\end{tikzpicture}}
+
+\figure{\begin{tikzpicture}[x=.011cm,y=-.011cm,line cap=round,line join=round]
+\draw[orange!85!brown,line width=1.5pt] (359,1339)..controls(400,1112)and(594,900)..(832,903)..controls(1081,899)and(1258,1140)..(1247,1384)..controls(1245,1660)and(1029,1814)..(792,1797)..controls(516,1783)and(331,1624)..(359,1339);
+\draw[gray!85] (423,1198)..controls(555,1067)and(907,955)..(1097,1053)
+(401,1253)..controls(484,1151)and(919,1071)..(1090,1080)
+(391,1292)..controls(540,1136)and(1078,1096)..(1129,1122)
+(383,1316)..controls(568,1184)and(1034,1091)..(1153,1175)
+(383,1327)..controls(580,1230)and(916,1109)..(1189,1205)
+(359,1339)..controls(427,1250)and(523,1349)..(610,1299)..controls(684,1175)and(742,1321)..(855,1267)..controls(970,1214)and(1158,1191)..(1213,1233)
+(359,1339)..controls(499,1342)and(602,1406)..(697,1333)..controls(832,1337)and(1113,1190)..(1217,1273)
+(359,1339)..controls(452,1299)and(553,1349)..(611,1336)..controls(699,1319)and(779,1399)..(891,1307)..controls(1028,1221)and(1179,1234)..(1235,1323)
+(359,1339)..controls(535,1376)and(682,1370)..(858,1378)..controls(1041,1388)and(1194,1327)..(1204,1290)--(1215,1319)
+(359,1339)..controls(541,1345)and(585,1375)..(678,1417)..controls(879,1513)and(1168,1320)..(1225,1351)
+(359,1339)..controls(526,1376)and(632,1441)..(735,1456)..controls(944,1506)and(1111,1365)..(1226,1372)
+(359,1339)..controls(526,1422)and(588,1484)..(741,1493)..controls(942,1490)and(1117,1434)..(1247,1384)
+(359,1339)..controls(509,1386)and(557,1543)..(697,1553)..controls(929,1621)and(1135,1526)..(1247,1384)
+(359,1339)..controls(445,1412)and(524,1640)..(762,1618)..controls(963,1635)and(1143,1579)..(1247,1384)
+(359,1339)..controls(446,1492)and(517,1665)..(657,1673)..controls(844,1744)and(1021,1704)..(1247,1384)
+(359,1339)..controls(462,1537)and(499,1700)..(633,1729)..controls(829,1795)and(943,1717)..(954,1698)..controls(988,1607)and(1067,1660)..(1247,1384)
+(359,1339)..controls(460,1571)and(486,1750)..(633,1761)..controls(904,1779)and(957,1785)..(975,1691)..controls(991,1610)and(1097,1607)..(1247,1384);
+\draw[orange!85!brown,line width=2pt] (504,1059)..controls(520,1130)and(488,1236)..(544,1288)..controls(672,1385)and(698,1319)..(787,1458)..controls(840,1519)and(872,1628)..(1034,1630)..controls(1078,1641)and(1107,1644)..(1134,1676)
+(625,970)..controls(702,1098)and(597,1142)..(547,1243)..controls(510,1309)and(523,1351)..(559,1348)..controls(683,1307)and(562,1148)..(453,1124)
+(722,928)..controls(745,1128)and(728,1317)..(638,1425)..controls(565,1537)and(546,1643)..(601,1708)--(625,1768)
+(803,908)..controls(1030,1001)and(964,1175)..(834,1279)..controls(744,1358)and(669,1482)..(746,1565)..controls(812,1626)and(923,1695)..(900,1797)
+(939,920)..controls(731,1039)and(750,1179)..(834,1279)..controls(918,1315)and(979,1470)..(904,1534)..controls(798,1609)and(705,1669)..(674,1776)
+(1018,954)..controls(948,1127)and(1139,1161)..(1142,1318)..controls(1166,1462)and(981,1443)..(901,1437)..controls(803,1397)and(746,1441)..(765,1537)..controls(762,1649)and(791,1683)..(889,1628)..controls(956,1593)and(962,1693)..(884,1718)..controls(784,1759)and(766,1734)..(745,1784)
+(1057,979)..controls(1041,1126)and(1072,1242)..(1045,1343)..controls(1023,1515)and(945,1579)..(865,1645)..controls(808,1695)and(789,1743)..(796,1792)
+(646,1774)..controls(656,1677)and(626,1533)..(751,1560)..controls(861,1521)and(1005,1587)..(1122,1518)..controls(1209,1466)and(1174,1350)..(1045,1343)..controls(923,1317)and(841,1403)..(787,1341)..controls(694,1200)and(660,1272)..(612,1304)..controls(621,1437)and(638,1491)..(763,1491)..controls(959,1492)and(1004,1550)..(1056,1732);
+\draw[black!80!brown,line width=2pt] (625,970)..controls(702,1098)and(597,1142)..(577,1190)..controls(620,1244)and(624,1284)..(612,1304)
+(803,908)..controls(1030,1001)and(964,1175)..(834,1279)..controls(918,1315)and(979,1470)..(904,1534)..controls(798,1609)and(705,1669)..(674,1776)
+(939,920)--(890,949) (722,928)..controls(745,1128)and(728,1317)..(678,1351)
+(612,1304)..controls(653,1273)and(671,1254)..(706,1262) (678,1351)..controls(725,1361)and(756,1395)..(787,1458)
+(901,1437)..controls(952,1440)and(1019,1428)..(1045,1343)
+(763,1491)..controls(734,1507)and(741,1553)..(746,1565)..controls(741,1626)and(711,1679)..(794,1667)
+(900,1797)--(903,1730) (1045,1343)..controls(1174,1350)and(1209,1466)..(1122,1518);
+\fill[yellow!65!olive] (359,1339) circle(8) (1247,1384) circle(7);\fill[black!70] (359,1339) circle(3) (1247,1384) circle(3);
+\end{tikzpicture}} % crop-candidate: scan 124
+
+\figure{\begin{tikzpicture}[x=.013cm,y=-.013cm,line cap=round,line join=round]
+\draw[yellow!70!olive,line width=1.6pt] (680,1907)..controls(908,1882)and(1037,1897)..(1216,1872);
+\draw[orange!85!brown,line width=1.8pt] (937,1692)..controls(977,1755)and(984,1823)..(990,1894) (974,1692)..controls(945,1741)and(916,1824)..(895,1894);
+\end{tikzpicture}}
+\mspage{123}
+'''
+save({'scan':124,'sheet_kind':'text','text':text,'elements':[
+('drawing','upper left','yellow horizontal and separate curved stroke red crossing rising arch dashed parallels hatching'),('drawing','middle left','red oval red transverse curves grey curves between two yellow boundary points'),('drawing','upper middle','red semicircle yellow diameter black interval and red crossing curves'),('drawing','lower middle','faint pencil oval and inner curves'),('drawing','middle right','red oval red and black intertwined curves grey fan yellow boundary points'),('drawing','bottom left','yellow horizontal red crossing inverted V'),('margin note','bottom left','123')]})

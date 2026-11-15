@@ -1,0 +1,81 @@
+# Gluing and relative-position research candidates
+
+Prepared after the transcription freeze from the frozen text only; no manuscript image was accessed by this research agent and no transcription file was edited. All four supplied context files were searched separately for each candidate before its body was written; see `research_gluing_searches.md`. README, the entire RESULTS_STATE register, the entire STATEMENTS_WITH_STATUS register, and Esquisse §§5–6 were read first. Parent owns the final notes, classification, the cube compatibility test, and scan 171 algebra; G07/G08 searches are retained as work records but no duplicate notes are proposed under those numbers.
+
+Throughout, `RESULTS_STATE` means supplied `context/notes/RESULTS_STATE.md`, and `STATEMENTS` means supplied `context/STATEMENTS_WITH_STATUS.md`. The original result CSVs, returned-package notes, and other archive transcriptions named in those registers are not supplied, so the relationships below are to the supplied register entries, not to independently inspected proofs. Their “Proved,” “Known,” and “Refuted” labels remain the runs’ claims.
+
+## G01 — The endpoint construction is a concrete unresolved gluing problem
+
+**Source:** cote 154, scan 151, frozen page file lines 76–82. **Kind:** unpursued implication / self-flagged. **Anchor:** “saisir les deux \inserted{(?)} sommets incidents”; “blocage”. **Context:** STATEMENTS, STRATA C.1 and C.5, return claims “Proved”; RESULTS_STATE, MPL_121_049-073+153+155 R121-08, source 121/050–052 with comparisons147/179–180 and 185–190, first-pass lead; MPL_150_044-084 N18, source 150/077 and 081–084, first-pass lead.
+
+The uncertainty is more specific than the existence of local strata: he says the incident faces and their edge circuits are accessible, but reconstructing the edge’s critical endpoint or endpoints by “blocage” is problematic. This **adds** an explicit geometric instance of missing attachment data to R121-08 and N18, while STRATA C.1/C.5 concern constructions for which the crossing and flag data have already been supplied. No solution of the endpoint problem or realization of those categorical constructions is exhibited on this page.
+
+## G02 — Three arrow conventions should be kept distinct
+
+**Source:** cote 154, scan 151, lines 5–9 and 79–81; scan 176, lines 3–8. **Kind:** reading question / unpursued implication. **Anchor:** “l’arête duale”; “gauche”; “droite”; “spéc”; “gén”. **Context:** RESULTS_STATE, STRATA 0.1, “Proved” return claim, sourcesI ms1–9 and XII ms59–63; STATEMENTS, BISITE D.3, “Refuted” return claim.
+
+Scan151 orients a dual edge between stable relative positions by a local orientation and a left/right choice, whereas scan 176 labels elementary transitions as specialization or generization. These data **differ from** the order convention in STRATA 0.1: orientation of a geometric edge, direction of a specialization relation, and variance of an exit or entrance functor are separate choices that must be related explicitly. The unstable variance warning already recorded as BISITE D.3 is therefore a relevant constraint on a future categorical interpretation, not a consequence proved by these drawings.
+
+## G03 — A finite audit for the claimed cellular surface
+
+**Source:** cote 154, scan 151, lines 2–9 and 76–82. **Kind:** own idea. **Anchor:** “surface cellulaire des positions relatives”; “leur circuit des arêtes”. **Context:** supplied Esquisse 119/50, typescript 48, PDF 51, §8, “surface modulaire” of relative positions; STATEMENTS, STRATA C.5, “Proved” return claim; RESULTS_STATE, R121-08, first-pass lead.
+
+An explicit reconstruction test could record each semistable edge with its two endpoint incidences, both sides, and the cyclic boundary words of its adjacent stable faces, then check whether each assembled vertex link is a circle, or an interval where a boundary is intended. Confidence is **medium**: this is the usual local requirement for a polygonal surface, but the present window does not establish disk closures or rule out repeated incidences and exceptional identifications. It would **add** a finite test case to the flag/gluing programme of STRATA C.5 and to the Esquisse’s announced surface, without treating the existence of a finite incidence list as a proof that the intended moduli object is a surface.
+
+## G04 — Why regularity must precede a face-poset replacement
+
+**Source:** cote 154, scan 151, lines 2 and 77; scan 160, lines 5–12 and 68–74. **Kind:** own idea / unpursued implication. **Anchor:** “surface cellulaire”; “les deux \inserted{(?)} sommets”; “facettes exceptionnelles”. **Context:** RESULTS_STATE, STRATA A.4 and BISITE G.10, “Proved” return claims about the specified minimum-vertex realization; R121-08, first-pass lead.
+
+A finite **regular** cell structure permits a reconstruction by barycentric subdivision of its face poset (Björner, 1984, §3, pp.10–11), but “cellulaire” alone does not justify replacing the manuscript’s space by that poset. For example, the circle with one vertex and one open edge has a two-element face poset whose order complex is an interval, so the bare incidence poset loses the identification of the two endpoints. Confidence is **high** for this elementary comparison, because the two spaces have respectively fundamental groups \(\mathbb Z\) and \(0\); its application here is conditional, since neither nonregularity nor regularity of the intended structure has been proved in these scans. The example **adds** a precise hypothesis to check before applying the finite-poset models of STRATA A.4/BISITE G.10, and is not a counterexample to either register claim.
+
+## G05 — The cancelled exceptional-facet correction retains attachment evidence
+
+**Source:** cote 154, scan 160, lines 1–12 and 68–74, entire draft cancelled. **Kind:** withdrawn in the same text / unpursued implication. **Anchor:** “\(L\cup K_0\)”; “et non \(=L\)!”; “branche principale”; “rive privilégiée”. **Context:** RESULTS_STATE, MPL_150_044-084 N18, source 150/077 and 081–084, first-pass lead; STATEMENTS, STRATA C.1/C.3, “Proved”/“Known” return claims.
+
+Within a draft that is itself cancelled, the proposed inverse image is enlarged from \(L\) to \(L\cup K_0\), and the local description subsequently retains a chosen branch, an exceptional boundary locus, and a preferred bank. This **adds** documentary evidence that the local reconstruction needed more than the names of its pieces, agreeing in scope with N18’s attention to attachment maps. Because the whole draft is cancelled and the global definitions of \(\varphi\) and \(K_0\) are not supplied here, it cannot certify a surviving theorem or an identification with the crossing construction of STRATA C.1/C.3.
+
+## G06 — A bijection of isotopy classes does not yet identify spaces of choices
+
+**Source:** cote 154, scan 153, lines 165–168. **Kind:** unpursued implication. **Anchor:** “corresp. \(1-1\)”; “(classes d’isotopie de)”; “canon.”. **Context:** supplied Esquisse 119/30, typescript 28, PDF 31, on isotopy categories;119/40–41, typescript 38–39, PDF 41–42, on contractible choice spaces; RESULTS_STATE, EXIT_ONE_TYPE P1d1, “Proved” return claim, source 147/179–180.
+
+The asserted canonical correspondence between fuseaux up to isotopy and semistable relative positions is at the level explicitly written on the page. It **restates in a concrete setting** the Esquisse’s use of isotopy categories, while its stronger principle about contractible choice spaces asks for information beyond a bijection of classes. Nothing here identifies the homotopy type of the realization space of a fuseau or its automorphisms, so no passage from ordinary to fully coherent reconstruction in the sense of P1d1 follows from the word “canon.” alone.
+
+## G09 — A modern comparison requires link data and its coherence
+
+**Source:** cote 154, scan 151, lines 4–9 and 76–82. **Kind:** unpursued implication / literature comparison. **Anchor:** “l’étude locale”; “sommets incidents”. **Context:** STATEMENTS, STRATA C.2/C.5, “Known”/“Proved” return claims, source XII ms59–63 for C.2; RESULTS_STATE, EXIT_ONE_TYPE P1a1/P1d1, “Proved” return claims, source 147/177–180; MPL_150_044-084 N37, source 150/077–084, first-pass lead.
+
+The page **adds** a concrete local-incidence problem to those registers, but a modern exit-path interpretation would need the relevant links, their endpoint maps, and compatibility over flags, rather than just a graph of allowable transitions. Ayala, Francis, and Rozenblyum (2019; consulted author version, Lemma 3.3.5, Corollary 3.3.11, Theorem 4.2.5) provide comparisons with links, constructible sheaves, and stratified homotopy in the conically smooth setting; Douteau and Waas (2022, v2, Theorem 6.1) compare simplicial and geometric generalized homotopy links. These supply a precise language for a future comparison, conditional on constructing the manuscript’s space and checking the chosen framework’s hypotheses, rather than establishing that its proposed cellular data already form an exit category.
+
+## G10 — The finite combinatorial base is not the unrestricted topological base
+
+**Source:** cote 154, scan 151, line 2 and 76–82. **Kind:** unpursued implication / register scope. **Anchor:** “surface cellulaire des positions relatives \(X^*=\operatorname{Rel}(\underline\Sigma)\)”. **Context:** RESULTS_STATE, WG2 B15 (§1.2), unchecked planning item; STATEMENTS, BISITE D.2, “Proved” return claim, BISITE D.12 and RESIDUE G.3, “Open” return claims.
+
+If a finite incidence poset is eventually obtained, it provides a concrete candidate base for the finite Alexandrov comparison recorded in BISITE D.2. This **differs from** regarding the geometric surface \(X^*\) itself as a Hausdorff topological base: the register’s unrestricted open-test realization problem already remains open over \(\mathbb R\), and a cell decomposition does not by itself transfer that comparison from the poset to its realization. These scans therefore add a possible finite test object to WG2 B15 without supplying a proof or counterexample for BISITE D.12/RESIDUE G.3.
+
+## G11 — The closing move sequence is a test path, not a localization theorem
+
+**Source:** cote 154, scan 176, lines 3–8, top diagram. **Kind:** own idea / unpursued implication. **Anchor:** “\(1\to2\to3\to4\to5=1\)”; “spéc”; “gén” (some arrow labels remain doubtful). **Context:** RESULTS_STATE, PATHS C.10 and RESIDUE E.6, “Open” return claims, sourcesIX-044/049/052/072 and VII ms65–67; PATHS E.10, “Refuted” return claim.
+
+The displayed return to label1 could be entered as a test loop in a future complex of elementary specialization and generization moves, provided the objects represented by all five labels are first identified. Confidence is **medium**: the closed label sequence is explicit, but neither a homotopy contracting it nor a presentation of all relations among such moves is written here. It **adds at most an example**, not the comparison map, endpoint control, or stabilized pointed refinements required by the open entries PATHS C.10/RESIDUE E.6, and the warning in PATHS E.10 rules out inferring general localization mapping spaces from components alone.
+
+## G12 — A coarse space and a moduli object may retain different information
+
+**Source:** cote 154, scan 151, lines 2–4; scan 153, line 165. **Kind:** own idea. **Anchor:** “\(\underline\Sigma=(X,\Sigma)\)”; “positions relatives”; “classes d’isotopie”. **Context:** supplied Esquisse 119/28, typescript 26, PDF 29, §5, distinction between moduli spaces and “multiplicités” with nontrivial automorphism groups;119/50, typescript 48, PDF 51, §8, relative-position surface; RESULTS_STATE, STRATA B.1, “Proved” return claim.
+
+A comparison should ask whether \(\underline\Sigma\) is fixed pointwise, fixed as a labelled arrangement, or taken modulo its symmetries, because the resulting ordinary cell space and quotient moduli object need not encode the same stabilizers. Confidence is **medium**: the fixed pair is explicit, while the equivalence relation and allowed automorphisms are not defined in this window. This **adds a scope question** connecting the concrete surface to the Esquisse’s moduli distinction and STRATA B.1’s claimed EI-category model, without asserting that a particular nontrivial stabilizer occurs here or that the manuscript already constructs a stack.
+
+## G13 — “Several natural choices” is a place to test canonicity, after existence
+
+**Source:** cote 154, scan 151, lines 81–82. **Kind:** own idea. **Anchor:** “plusieurs choix naturels”; “pas sûr qu’aucun de ces choix ne marche”. **Context:** supplied Esquisse 119/40–41, typescript 38–39, PDF 41–42, §6, principle of contractible choice spaces;119/36, typescript 34, PDF 37, local retractions; RESULTS_STATE, MPL_150_044-084 Q2/N18, source 150/073–084 and 077/081–084, first-pass leads.
+
+A useful refinement would separate existence of an admissible blocking construction from uniqueness up to isotopy, and only then ask about the homotopy type of the space of all admissible constructions. Confidence is **medium**: scan 151 explicitly leaves success of the available choices in doubt, while the Esquisse supplies the later criterion by which a space of choices would count as harmless. This **adds a concrete place to apply** the choice-space programme, but contractibility cannot repair an empty space of valid constructions, and the present wording does not prove either nonemptiness or contractibility.
+
+## External primary sources actually opened
+
+No external source is quoted verbatim in these candidate bodies. The following passages were read as mathematical comparisons; the bibliography labels their consulted versions so theorem numbering is not silently transferred between versions.
+
+- Ayala, D., Francis, J., & Rozenblyum, N. (2019). A stratified homotopy hypothesis. *Journal of the European Mathematical Society, 21*(4), 1071–1178. https://doi.org/10.4171/JEMS/856. Publisher metadata opened at https://ems.press/journals/jems/articles/15935; author-hosted 61-page text opened at https://math.montana.edu/dayala/documents/Striation.pdf. The consulted author text has Lemma 3.3.5 (link description, pp.27–28), Corollary 3.3.11 (constructible sheaves, p.30), Theorem 4.2.5 (fully faithful exit functor, pp.33–34), and an explicit relationship to Esquisse dévissage in its introduction and literature discussion (pp.2,7). The author PDF is not identified here as the final typeset version; cite its numbering as such. Publisher confirms the conically smooth hypothesis and journal metadata.
+- Björner, A. (1984). Posets, regular CW complexes and Bruhat order. *European Journal of Combinatorics, 5*(1), 7–16. https://doi.org/10.1016/S0195-6698(84)80012-8. Original article text accessed via the Elsevier Publisher Connector copy at https://core.ac.uk/download/pdf/82377898.pdf; §3, printed pp.10–11, explicitly distinguishes arbitrary cell structures from regular ones and gives the order-complex homeomorphism in the regular case, followed by Proposition3.1. Initial direct opening returned403; subsequent cached search/find/open retrieved the primary paper’s full text, including the relevant passage. No theorem is inferred from secondary summaries.
+- Douteau, S., & Waas, L. (2022). *From homotopy links to stratified homotopy theories* (arXiv:2112.02394v2) [Preprint]. https://arxiv.org/pdf/2112.02394. The fetched document’s first line states v2, 29 December 2022. Theorem 6.1, printed p.60, compares the simplicial generalized homotopy link with the singular complex of the geometric one; Corollary 6.2 detects weak equivalences via these diagrams. The later publication metadata was separately opened and is Douteau, S., & Waas, L. (2026). *From homotopy links to stratified homotopy theories*. *Mémoires de la Société Mathématique de France, 189*, 1–105. https://doi.org/10.24033/msmf.496, at https://smf.emath.fr/publications/des-liens-homotopiques-aux-theories-homotopiques-stratifiees?language=fr; the full 2026 text was not read, so the cited theorem number belongs only to v2.
+
+The supplied Esquisse transcription is explicitly unverified by eye. Parent independently opened the published French text for the direct historical comparisons; no claim of new archival verification is made by this agent.

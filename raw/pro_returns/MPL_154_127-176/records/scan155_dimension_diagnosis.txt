@@ -1,0 +1,43 @@
+MPL 154 scan 155: mechanical dimension-overflow diagnosis
+Generated: 2026-11-15 00:38:01 UTC
+Source snapshot SHA256: e706001edc2b8e4bf9d1a57e2c7dae33f60dc2d3ab45635817cd0074709b822c
+Current page SHA256:    e706001edc2b8e4bf9d1a57e2c7dae33f60dc2d3ab45635817cd0074709b822c
+Source hash still matches immutable diagnostic snapshot: True
+
+Observed failure: both engines reported Dimension too large at fragment line 171.
+The outer figure argument delays source-line reporting to its closing line.
+The traced numeric path begins at fragment line 55: a two-point smooth plot.
+No labels, source images, context archives, or manuscript meanings were interpreted.
+
+Call chain:
+  \pgf@prepare@start@of@path -> \pgfsetcurvilinearbeziercurve
+  -> \pgfmathveclen@ -> \pgfmathreciprocal@ -> \pgfmathreciprocal@@
+The traced vector components were -0.00002 pt and +0.00002 pt.
+PGF attempted reciprocal(0.00002), approximately 50,000, in fixed-point
+dimension-register arithmetic. This overflows the TeX dimension range.
+The optional globally loaded bending library installed the affected curved-arrow preparation.
+
+Controlled temporary tests, with identical source bytes:
+  Original harness including bending: pdfLaTeX FAIL; XeLaTeX FAIL.
+  Remove only bending from library list: pdfLaTeX PASS; XeLaTeX PASS.
+  Retain bending; use FPU reciprocal arithmetic: pdfLaTeX PASS; XeLaTeX PASS.
+
+Authorized resolution: removed only the optional bending library from the
+compile harness library list and documented the reason. No page source edits.
+An official harness recheck is recorded separately in records/scan155_compile_recheck.txt.
+
+Installed implementation references:
+  pgfmathfunctions.misc.code.tex line 55: vector normalization reciprocal.
+  pgfmathfunctions.basic.code.tex line 237: reciprocal dimension assignment.
+  pgflibrarycurvilinear.code.tex line 67: curvilinear Bezier setup.
+  pgfmodulebending.code.tex: curved-arrow preparation.
+
+Temporary evidence:
+  /tmp/mpl155-arithmetic-trace-u857wafj
+  /tmp/mpl155-no-bending-s9s7z_5l
+  /tmp/mpl155-fpu-reciprocal-4tx98_fb
+
+LIMITATION: These are numeric and syntax tests, not visual or editorial validation.
+
+Official corrected-harness recheck: pdfLaTeX PASS; XeLaTeX PASS.
+The source SHA256 remained identical, and no concurrent page changes were detected.

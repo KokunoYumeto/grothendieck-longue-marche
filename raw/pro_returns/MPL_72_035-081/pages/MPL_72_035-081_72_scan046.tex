@@ -1,0 +1,136 @@
+\scanpage{46}
+\[
+\left\{\begin{aligned}
+f(s_i)&=0\qquad\varphi(s_i,s_i)=0\\
+\varphi(s_i,s_j)&=-(\alpha_0+2)\cdots(\alpha_{i-1}+2)
+\qquad0\leq i<j\leq n+1
+\end{aligned}\right.
+\]
+\deleted{$f(\unsure{a_0})$}\qquad
+\deleted{$f(a_0)=$}\qquad\inserted{$=c_{-2}$}
+\[
+\left\{\begin{aligned}
+f(a_{-1})&=0,\quad
+f(a_i)=(\alpha_0+2)\cdots(\alpha_{i-1}+2)=c_{i-1}
+\qquad0\leq i\leq n\\
+\varphi(a_i,a_j)&=0\qquad
+-1\leq i\deleted{\unsure{\leq}}\inserted{<}j\leq n,
+\quad\deleted{\unsure{i,j\ \text{non consécutifs}}}\\
+\varphi(a_i,a_{i+1})&=-(\alpha_0+2)\cdots(\alpha_i+2)
+=\deleted{\unsure{c_i}}-c_{i\deleted{\unsure{+1}}}
+\qquad-1\leq i\leq n-1
+\end{aligned}\right.
+\]
+\inserted{Attention au \unsure{chgt de notation}}
+\deleted{$\unsure{2c_i}$}
+\margin{$0\leq i\leq n$}
+\[
+\varphi(a_i,a_i)=2f(a_i)=2(\alpha_0+2)\cdots(\alpha_{i-1}+2)
+\qquad0\leq i\leq n
+\]
+$i,j$ non consécutifs.
+
+Matrice de $f$ p.r. à la base $(a_i)_{-1\leq i\leq n}$
+\[
+\deleted{\left(
+\begin{array}{cccccc}
+\unsure{0}&-1&&&&\\
+-1&\unsure{2c_0}&\unsure{-c_0}&&&\\
+&\unsure{2}&c_0&&&\\
+&&c_1&&&\\
+&&&&&\\
+&&&&&c_{n-1}
+\end{array}\right)}
+\qquad
+f=\left(
+\begin{array}{ccccccccc}
+0&-1&&&&&&&\\
+-1&2&-c_0&&&&&&\\
+&-c_0&2c_0&-c_1&&&&&\\
+&&-c_1&2c_1&-c_2&&&&\\
+&&&-c_2&2c_2&-c_3&&&\\
+&&&&-c_3&2c_3&&&\\
+&&&&&&\ddots&&\\
+&&&&&&&2c_{n-2}&-c_{n-1}\\
+&&&&&&&-c_{n-1}&2c_{n-1}
+\end{array}\right)
+\]
+\deleted{$\det\unsure{M_f}$}
+\[
+\begin{aligned}
+\delta(f)&=\det\left(
+\begin{array}{cccccc}
+-1&-c_0&0&0&&\\
+0&2c_0&-c_1&0&&\\
+\big|&\unsure{-}c_1&2c_1&-c_2&&\big|\\
+0&0&\unsure{-}c_2&2c_2&&\big|\\
+\big|&\big|&\big|&-c_3&\diagdown&2c_{n-1}\\
+0&0&0&-& &
+\end{array}\right)\\
+&=-1\det\left(
+\begin{array}{ccccc}
+2c_0&-c_1&&&\\
+-c_1&2c_1&-c_2&&0\\
+&-c_2&\diagdown&\diagdown&\\
+0&\diagdown&&&-c_{n-1}\\
+&&&-c_{n-1}&2c_{n-1}
+\end{array}\right)
++\underbrace{c_0\det\left(
+\begin{array}{ccc}
+0&-&-\\
+0&&\\
+\big|&-&-\\
+0&-&
+\end{array}\right)}_{0}
+\end{aligned}
+\]
+\[
+\det\left(
+\begin{array}{cccccc}
+2c_{-1}&-c_0&0&0&--&0\\
+-c_0&2c_0&-c_1&&&\big|\\
+0&-c_1&2c_1&&&\big|\\
+\big|&&&\diagdown&&0\\
+\big|&&&&\diagdown&-c_{n-1}\\
+0&\text{---}&&0&-c_{n-1}&\underset{\unsure{?}}{2}c_{n-1}
+\end{array}\right)
+=F_{n+1}(\underbrace{c_{-1},\ldots,c_{n-1}}_{n+1\ \text{arguments}})
+\]
+\[
+\begin{aligned}
+-\delta(f)&=\unsure{\mathrel{:}}F_n(c_0,\ldots,c_{n-1})\\
+&=2c_0F_{n-1}(c_1,\ldots,c_{n-1})
++c_1\det\left(
+\begin{array}{cccccc}
+-c_1&-c_2&\unsure{0}&0&&\\
+0&2c_2&-c_3&0&&\\
+\big|&-c_3&2c_3&-c_4&&\\
+\big|&0&-c_4&2c_4&&\\
+\big|&\big|&0&&-c_5&\\
+0&0&\big|&&&\\
+&&0&&\big|&c_{n-1}
+\end{array}\right)\\
+&=2c_0\inserted{F_{n-1}(c_1,\ldots,c_{n-1})}
+\unsure{-}c_1^2F_{n-2}(c_2,\ldots,c_{n-1})
+\end{aligned}
+\]
+\diagram{\begin{tikzcd}[ampersand replacement=\&,column sep=small]
+0\arrow[r]\&1\arrow[r]\&2\arrow[r]\&3\&\cdots\arrow[r]\&n-1\arrow[r]\&0
+\end{tikzcd}}
+permutation \uline{circulaire $u$, $u^{-1}$}
+\[
+F_1(c_0)=2c_0
+\]
+\[
+F_2(c_0,c_1)=4c_0c_1\unsure{-}c_1^2
+=c_1(4c_0-c_1)
+\]
+\[
+\begin{aligned}
+F_3(c_0,c_1,c_2)&=2c_0(4c_1c_2-c_2^2)-2c_1^2c_2\\
+&\deleted{=8c_0c_1c_2}\\
+&=2c_2(4c_0c_1-\deleted{\unsure{2}}c_0c_2-\deleted{\unsure{2}}c_1^2)
+\end{aligned}
+\]
+\mspage{45}
+

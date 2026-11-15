@@ -1,0 +1,41 @@
+% Structural QA definitions only; these do not amend the transcription.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs,bm,graphicx,xparse,array,longtable}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{shapes.geometric,arrows.meta,calc,positioning,decorations.pathmorphing}
+\setlength{\textwidth}{170mm}
+\setlength{\oddsidemargin}{-5mm}
+\setlength{\textheight}{245mm}
+\setlength{\topmargin}{-15mm}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\errorcontextlines=100
+\NewDocumentCommand{\cotefile}{m}{\par\textbf{Cote #1}\par}
+\NewDocumentCommand{\scanpage}{m}{\par\textbf{Scan #1}\par}
+\NewDocumentCommand{\mspage}{m}{\par\textit{MS #1}\par}
+\NewDocumentCommand{\deleted}{+m}{#1}
+\NewDocumentCommand{\inserted}{+m}{#1}
+\NewDocumentCommand{\margin}{+m}{#1}
+\NewDocumentCommand{\uline}{+m}{#1}
+\NewDocumentCommand{\uuline}{+m}{#1}
+\NewDocumentCommand{\unsure}{+m}{#1}
+\NewDocumentCommand{\illegible}{m}{\ifmmode\text{[illegible #1]}\else[illegible #1]\fi}
+\ExplSyntaxOn
+\NewDocumentCommand{\diagram}{+m}
+  {
+    \group_begin:
+    \tl_set:Nn \l_tmpa_tl {#1}
+    \tl_trim_spaces:N \l_tmpa_tl
+    \mode_if_math:TF
+      {\tl_use:N \l_tmpa_tl}
+      {
+        \exp_args:NV \tl_if_head_eq_meaning:nNTF \l_tmpa_tl \[
+          {\tl_use:N \l_tmpa_tl}
+          {\ensuremath{\displaystyle\tl_use:N \l_tmpa_tl}}
+      }
+    \group_end:
+  }
+\ExplSyntaxOff
+\RenewDocumentCommand{\figure}{+m}{#1}

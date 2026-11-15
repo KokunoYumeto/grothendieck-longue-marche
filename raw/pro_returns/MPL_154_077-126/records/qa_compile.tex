@@ -1,0 +1,115 @@
+% Standalone compilation aid only. Never concatenate this preamble into the
+% diplomatic transcription. It reads page fragments without rewriting them.
+% Default engine: XeLaTeX. See run_compile_qa.py for this environment's setup.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{fontspec}
+\setmainfont{lmroman10-regular.otf}[
+  BoldFont=lmroman10-bold.otf,
+  ItalicFont=lmroman10-italic.otf,
+  BoldItalicFont=lmroman10-bolditalic.otf]
+\setsansfont{lmsans10-regular.otf}[
+  BoldFont=lmsans10-bold.otf,
+  ItalicFont=lmsans10-oblique.otf,
+  BoldItalicFont=lmsans10-boldoblique.otf]
+\setmonofont{lmmono10-regular.otf}[ItalicFont=lmmono10-italic.otf]
+% OpenType math avoids reliance on this installation's missing system font maps.
+\usepackage{unicode-math}
+\setmathfont{latinmodern-math.otf}
+\usepackage{xcolor,xparse}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows.meta,calc,positioning,intersections,patterns,
+  decorations.pathmorphing,decorations.pathreplacing,decorations.markings,
+  shapes.geometric,fit,matrix,backgrounds,bending}
+\usepackage{adjustbox}
+\usepackage{fvextra}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{
+  fontsize=\small,breaklines=true,breakanywhere=true}
+
+\definecolor{QADeleted}{RGB}{150,30,40}
+\definecolor{QAInserted}{RGB}{0,70,150}
+\definecolor{QADoubt}{RGB}{145,80,0}
+\definecolor{QAMargin}{RGB}{90,50,120}
+
+% These wrappers deliberately do not box their contents: paragraphs, nested
+% editorial macros, and figures may occur inside deleted or inserted content.
+% Color is a QA annotation, not a proposed rendering of manuscript ink.
+\NewDocumentCommand{\deleted}{+m}{{\color{QADeleted}#1}}
+\NewDocumentCommand{\inserted}{+m}{{\color{QAInserted}#1}}
+\NewDocumentCommand{\unsure}{+m}{{\color{QADoubt}#1}}
+\NewDocumentCommand{\illegible}{m}{%
+  \ifmmode\text{\color{QADoubt}[illegible: #1]}%
+  \else{\color{QADoubt}[illegible: #1]}\fi}
+\NewDocumentCommand{\margin}{+m}{%
+  \ifmmode{\color{QAMargin}#1}%
+  \else\par\smallskip\begingroup\color{QAMargin}%
+    \noindent\textsf{[Margin]}\quad #1\par\endgroup\smallskip\fi}
+
+% ulem is absent in the present TeX installation. If later available, use it.
+% The fallback preserves visible single/double underlining but cannot break an
+% underlined phrase across lines; an overfull-box warning remains useful in QA.
+% Define argument-taking helpers outside IfFileExists: its implementation may
+% store the selected branch in a temporary macro before executing that branch.
+\NewDocumentCommand{\QAUnderlineFallback}{+m}{%
+  \ifmmode\underline{#1}\else\underline{\strut #1}\fi}
+\NewDocumentCommand{\QADoubleUnderlineFallback}{+m}{%
+  \ifmmode\underline{\underline{#1}}%
+  \else\underline{\underline{\strut #1}}\fi}
+\IfFileExists{ulem.sty}{%
+  \usepackage[normalem]{ulem}%
+}{%
+  \let\uline\QAUnderlineFallback
+  \let\uuline\QADoubleUnderlineFallback
+}
+
+\newcommand{\QACote}{154}
+\NewDocumentCommand{\cotefile}{m}{\gdef\QACote{#1}}
+\NewDocumentCommand{\scanpage}{m}{%
+  \clearpage\noindent\textsf{\Large Cote \QACote\quad Scan #1}\par
+  \smallskip\hrule\medskip
+  \typeout{QA_CURRENT_SCAN=#1}%
+  \typeout{QA_SCAN_START=#1;PDF_PAGE=\thepage}}
+\NewDocumentCommand{\mspage}{m}{%
+  \par\noindent\textsf{\small [Manuscript page: #1]}\par\smallskip}
+
+% Preserve normal figure behavior for the LaTeX environment only if needed by
+% an external diagnostic. Page fragments use the required one-argument macro.
+\let\QANativeFigure\figure
+\let\QAEndNativeFigure\endfigure
+\newcommand{\QAScaledDrawing}[1]{%
+  \begin{adjustbox}{max width=\linewidth}#1\end{adjustbox}}
+\RenewDocumentCommand{\figure}{+m}{%
+  \ifmmode\vcenter{\hbox{\QAScaledDrawing{#1}}}%
+  \else\par\medskip\noindent\QAScaledDrawing{#1}\par\medskip\fi}
+\NewDocumentCommand{\diagram}{+m}{%
+  \ifmmode\vcenter{\hbox{\QAScaledDrawing{\ensuremath{#1}}}}%
+  \else\par\medskip\noindent\QAScaledDrawing{\ensuremath{#1}}\par\medskip\fi}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{3em}
+\allowdisplaybreaks
+\overfullrule=3pt
+
+% Override these from the command line to inspect a single scan or a range.
+\providecommand{\QAFirstScan}{77}
+\providecommand{\QALastScan}{126}
+\newcount\QANextScan
+
+\begin{document}
+\QANextScan=\QAFirstScan\relax
+\loop
+  \ifnum\QANextScan=99\relax
+  \else
+    \edef\QAPageFile{pages/MPL_154_077-126_154_scan%
+      \ifnum\QANextScan<100 0\fi\number\QANextScan.tex}%
+    \typeout{QA_INPUT_FILE=\QAPageFile}%
+    \InputIfFileExists{\QAPageFile}{}{%
+      \PackageError{transcription-qa}{Missing page fragment \QAPageFile}{%
+        Run from the package directory and check the selected scan range.}}%
+  \fi
+  \advance\QANextScan by 1
+\ifnum\QANextScan<\numexpr\QALastScan+1\relax
+\repeat
+\end{document}

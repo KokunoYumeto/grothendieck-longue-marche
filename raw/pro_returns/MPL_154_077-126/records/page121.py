@@ -1,0 +1,57 @@
+from pathlib import Path
+import re
+from save_page import save
+banners=re.findall(r'\\begin\{verbatim\}.*?\\end\{verbatim\}',Path('MPL_154_077-126/pages/MPL_154_077-126_154_scan098.tex').read_text(),re.S)[:2]
+text=r'''\scanpage{121}
+\figure{\begin{tikzpicture}[x=.015cm,y=-.015cm,line cap=round,line join=round]
+\draw[black!65!green,line width=2.8pt] (465,383)--(646,372)..controls(680,352)and(682,313)..(703,292)--(1003,260)..controls(1059,261)and(1062,347)..(1105,351)--(1320,346) (488,368)--(646,372)..controls(680,387)and(666,436)..(752,441)--(1018,426)..controls(1094,425)and(1075,371)..(1105,351);
+\draw[black!70!brown,line width=5pt] (752,366)--(1017,346);
+\draw[orange!80!brown,line width=2.3pt] (707,233)--(798,464) (792,227)--(707,490) (958,199)--(1055,440) (1065,197)--(977,461);
+\draw[black!65!green,line width=1.5pt,dashed] (840,432)..controls(882,400)and(864,314)..(916,277);
+\draw[line width=1pt,->] (781,286)..controls(833,296)and(858,328)..(882,367);
+\draw[line width=1pt,->] (951,422)..controls(922,409)and(903,396)..(884,367);
+\draw[gray] (646,372)..controls(694,333)and(735,313)..(752,366)..controls(818,314)and(846,326)..(882,367)..controls(945,298)and(956,228)..(1017,346)..controls(1069,256)and(1107,312)..(1105,351) (646,372)..controls(711,444)and(735,411)..(752,366)..controls(818,419)and(858,422)..(882,367)..controls(939,412)and(1000,397)..(1017,346);
+\node at (755,307) {$\varphi$};\node at (758,422) {$\unsure{q|\varphi}$};\node at (1018,285) {$\unsure{\alpha|\sigma}$};\node at (1022,404) {$\unsure{\beta}$};
+\end{tikzpicture}}
+
+\figure{\begin{tikzpicture}[x=.012cm,y=-.012cm,line cap=round,line join=round]
+\draw[gray!65] (1400,255)..controls(1461,91)and(1570,54)..(1700,81)..controls(1856,87)and(1980,222)..(1932,323)..controls(1860,476)and(1605,523)..(1475,443)..controls(1381,390)and(1370,325)..(1400,255) (1481,120)--(1551,255) (1579,85)--(1515,274) (1685,65)--(1714,235) (1782,80)--(1695,241);
+\draw[line width=1.3pt] (1578,89)..controls(1617,68)and(1641,74)..(1682,73);
+\draw[gray!70] (2068,318)..controls(2328,294)and(2453,323)..(2738,280) (2252,278)--(2316,459) (2371,257)--(2287,479) (2489,255)--(2537,441)--(2605,258);
+\draw[gray!70,line width=1pt,->] (1849,587)..controls(1479,611)and(984,660)..(668,690)..controls(523,707)and(349,740)..(211,764);
+\draw[gray!70] (317,654)--(377,902) (319,928)--(547,571)--(624,844)--(783,539)--(887,781)--(1016,547) (589,914)--(645,806) (852,858)--(917,745) (587,865)..controls(993,743)and(1342,635)..(2119,547) (1176,446)--(1169,931) (1245,473)--(1202,912) (1303,482)--(1252,920) (985,756)..controls(1053,643)and(1074,624)..(1112,657);
+\draw[gray!70] (937,747)..controls(947,722)and(959,706)..(974,699)--(976,726)..controls(989,695)and(998,685)..(1003,692)--(1002,719) (1063,648)--(1067,696)--(1086,705)--(1086,682)--(1100,669)--(1124,682)--(1123,698)--(1146,671)--(1157,697)--(1176,675)--(1173,691)--(1206,659)--(1217,688);
+\foreach \x/\y in {624/844,887/781,788/687,1112/657}\fill[gray!85] (\x,\y) circle(5);
+\draw[gray!70] (1415,540)--(1545,981) (1433,966)--(1731,582) (1335,631)--(2054,431) (1434,563)..controls(1692,617)and(1819,666)..(1888,751) (1566,678)..controls(1780,670)and(1986,681)..(2100,653);
+\draw[gray!75,line width=1.1pt,->] (1851,608)--(1888,751);\draw[gray!75] (1988,600)--(1887,821) (1887,632)--(1906,917) (1830,787)--(1918,831) (1811,998)--(2077,565);
+\end{tikzpicture}}
+
+\figure{\begin{tikzpicture}[x=.023cm,y=-.023cm,line cap=round,line join=round]
+\draw[gray!80] (2213,863)--(2221,696)--(2318,608)--(2573,587)--(2567,773)--(2499,848)--cycle (2318,608)--(2321,784)--(2213,863) (2321,784)--(2567,773) (2221,696)--(2446,690)--(2573,587) (2446,690)--(2499,848) (2446,690)--(2318,608) (2446,690)--(2567,773) (2446,690)--(2321,784) (2446,690)--(2432,775)--(2361,849) (2321,784)--(2499,848) (2213,863)--(2567,773) (2221,696)--(2499,848) (2318,608)--(2262,735)--(2213,863) (2262,735)--(2446,690) (2446,690)--(2452,595);
+\foreach \x/\y in {2318/608,2321/784,2262/735,2432/775,2446/690}\fill[gray!85] (\x,\y) circle(3);
+\draw[gray!60] (2446,690)..controls(2627,659)and(2700,640)..(2886,651) (2174,706)--(2190,1140);
+\end{tikzpicture}}
+
+\[\unsure{\mathrm{St}_6|\mathrm{St}_0}\]
+'''
+rows='\n'.join('****A END JOB 369 CRAY2    ROOM    3.46.39 PM 16 AUG 82 R6.PR1    SYS JES2 JOB 369 END A****' for _ in range(6))
+text+='\\begin{verbatim}\n'+rows+'\n\\end{verbatim}\n'+banners[1]+'\n'
+text+=r'''\figure{\begin{tikzpicture}[x=.016cm,y=-.016cm,line cap=round,line join=round]
+\draw[gray!75] (335,1433)--(778,1195) (331,1345)--(658,1605) (375,1210)--(752,1552) (642,1212)--(846,1520) (512,1625)--(852,1405) (642,1420)..controls(674,1451)and(678,1477)..(702,1497);
+\draw[gray!80,line width=1pt] (390,1395)--(673,1257)--(797,1442)--(608,1564)--cycle;
+\fill[gray!85] (673,1257) circle(5) (608,1564) circle(5) (630,1423) circle(6);
+\draw[->,gray!90] (630,1423)--(549,1354);
+\end{tikzpicture}}
+
+\figure{\begin{tikzpicture}[x=.014cm,y=-.014cm,line cap=round,line join=round]
+\draw[gray!70] (2185,1150)--(2198,1675) (2310,1059)--(2433,1398)--(2333,1629) (2493,1243)--(2413,1442) (2394,1437)--(2501,1604) (2214,1524)--(2674,1377);
+\fill[gray!85] (2433,1398) circle(5);
+\draw[gray!65] (1212,1278)..controls(1343,1370)and(1391,1394)..(1445,1445) (1371,1217)--(1356,1739) (1472,1609)--(1554,1740) (1580,1592)--(1435,1888) (1178,1853)--(1822,1637);
+\fill[gray!85] (1511,1696) circle(5);
+\draw[gray!70] (395,1808)--(447,1684) (521,1675)--(560,1820)--(617,1699) (544,1863)--(578,1798) (716,1749)--(772,1948)--(944,1681) (739,1998)--(869,1793)--(908,1733)--(952,1939)--(1063,1731)--(1118,1933)--(1198,1740) (874,1677)--(977,2015) (1034,1654)--(1143,2000) (1106,1652)--(1022,1831) (949,1939)--(902,2022) (1118,1933)--(1093,2020) (1118,1933)..controls(1218,1859)and(1264,1802)..(1342,1762);
+\fill[gray!85] (952,1939) circle(5) (1118,1933) circle(5);
+\end{tikzpicture}}
+'''
+text+=banners[0]+'\n\\texttt{//* CRAY2 0369 I}\n\\mspage{120}\n'
+save({'scan':121,'sheet_kind':'reused_typed','text':text,'elements':[
+('drawing','upper left','green lens black interval red crossings internal solid/dashed arcs phi q alpha beta'),('drawing','upper centre','pencil oval two crossings and black upper arc'),('drawing','upper right','two pencil crossings and long curved line'),('drawing','middle','pencil crossing chain with points long left arrow upper fan strokes and descending arrow'),('drawing','middle right','pencil two connected quadrilaterals diagonals and points'),('display','middle right inverted','St-six or St-zero'),('text','middle inverted','six END JOB 369 CRAY2 lines'),('text','lower middle inverted','CRAY2 character banner'),('drawing','lower left','pencil quadrilateral crossing lines and arrow from centre point'),('drawing','lower right','pencil crossing with black point and horizontal curve'),('drawing','bottom','pencil crossings and points with oblique connecting lines'),('text','bottom inverted','0000 character banner; //* CRAY2 0369 I'),('margin note','bottom left','120')]})

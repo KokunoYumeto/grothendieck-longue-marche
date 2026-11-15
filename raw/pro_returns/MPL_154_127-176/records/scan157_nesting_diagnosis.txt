@@ -1,0 +1,49 @@
+MPL 154 scan 157: mechanical nesting diagnosis and proposed repair
+Generated: 2026-11-15 00:49:59 UTC
+Status: exact three-insertion repair applied with root authorization at 2026-11-15 00:55:15 UTC.
+Original source SHA256: 275e6e1004a9b02b467d2467f59b398141455bae76ff390643e5a8cdd0d659c5
+Tested variant SHA256: 0c51f80e68cabc1f9f6f70a192d545517e3fa9c892772716d85f233f3987bcfb
+
+Cause: nested TikZ nodes inherit the outer TikZ-CD matrix math-node dollar-sign hooks.
+The nested node bodies already contain paired math delimiters, producing a mode mismatch.
+All command names are standard or authorized. Static source braces are balanced.
+
+Exact proposed insertions, each immediately after the opening bracket of begin{tikzpicture}:
+  Original line 141; original byte offset 10308; one nested node.
+  Original line 151; original byte offset 11347; five nested nodes.
+  Original line 173; original byte offset 13209; one nested node.
+Insert at each location:
+  execute at begin node={\ifmmode$\fi},execute at end node={\ifmmode$\fi},
+
+The draw-only nested picture at line 132 requires no change.
+Three insertions total 216 bytes. Every original byte remains in its original order.
+No labels, paths, coordinates, or node bodies are replaced or rewritten.
+The public hook options act within each nested picture; no custom editorial macro internals are required.
+
+Controlled tests using the ordinary identity figure macro:
+  Extra grouping: failed in both engines.
+  hbox around each nested figure: failed in both engines.
+  pgfinterruptpicture around each nested figure: failed in both engines.
+  Three public node-hook option insertions: passed in both engines; zero missing-glyph warnings.
+
+Tested source: /tmp/mpl157-public-isolation-4cd1jna2/conditional_node_hooks/MPL_154_127-176_154_scan157.tex
+Temporary probe manifest: /tmp/mpl157-public-isolation-4cd1jna2/manifest.json
+
+LIMITATION: This is a mechanical grouping/compilation repair, not a visual or editorial judgment.
+
+AUTHORIZED APPLICATION
+Actual UTC: 2026-11-15 00:55:15 UTC
+Page SHA256 before: 275e6e1004a9b02b467d2467f59b398141455bae76ff390643e5a8cdd0d659c5
+Page SHA256 after:  0c51f80e68cabc1f9f6f70a192d545517e3fa9c892772716d85f233f3987bcfb
+The page now matches the tested variant byte-for-byte; all original bytes remain in order.
+The generator was amended statically at its unique write_text argument. A version/hash-guarded
+helper produces exactly the same approved output and refuses unexpected output bytes.
+Generator amendment UTC: 2026-11-15 00:55:15 UTC
+Generator SHA256 before: 99f14c27ab1e6e6ca0006083ec80bf427765eb8e01589e2679443281dd825159
+Generator SHA256 after:  2f03e176636f2fecc496c0d8b4ab6322068df39cc6f32ddaca879484e981e958
+Generator parsing/syntax compilation passed; the generator was never executed, and inventory was not modified.
+Temporary before/after byte records: /tmp/mpl157-authorized-repair-qrgdmbo2
+Official repaired-source compilation is recorded separately in records/scan157_compile_recheck.txt.
+
+Official repaired-source verification: pdfLaTeX PASS; XeLaTeX PASS.
+The saved source matches the approved variant hash; no concurrent source changes were detected.

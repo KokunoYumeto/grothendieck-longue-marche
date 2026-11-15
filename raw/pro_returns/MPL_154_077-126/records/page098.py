@@ -1,0 +1,69 @@
+from pathlib import Path
+import re
+from save_page import save
+s=Path('MPL_154_077-126/pages/MPL_154_077-126_154_scan096.tex').read_text()
+blocks=re.findall(r'\\begin\{verbatim\}.*?\\end\{verbatim\}',s,re.S)
+f1=r'''\figure{\begin{tikzpicture}[x=.012cm,y=-.012cm,line cap=round,line join=round]
+\draw[orange!80!brown,line width=1.7pt] (2168,788)..controls(2110,665)and(2265,555)..(2375,573)..controls(2515,577)and(2580,674)..(2575,803)..controls(2551,960)and(2380,1016)..(2282,985)..controls(2180,958)and(2145,890)..(2168,788);
+\draw[orange!80!brown,line width=1.7pt] (2168,788)..controls(2271,715)and(2436,724)..(2569,808) (2168,788)--(2569,808) (2168,788)..controls(2277,843)and(2478,845)..(2569,808);
+\draw[orange!80!brown,line width=1.7pt] (2355,570)..controls(2333,675)and(2309,869)..(2202,940) (2293,595)..controls(2346,649)and(2424,653)..(2406,780)..controls(2400,865)and(2388,934)..(2380,985) (2311,582)..controls(2381,631)and(2428,595)..(2431,794)..controls(2383,841)and(2348,872)..(2311,994) (2195,647)..controls(2256,706)and(2380,699)..(2445,693)..controls(2492,702)and(2463,834)..(2475,877)--(2500,932);
+\draw[black!75!brown,line width=4pt] (2168,773)--(2168,805) (2555,788)--(2551,823) (2179,876)..controls(2200,939)and(2292,980)..(2370,975)..controls(2448,966)and(2494,940)..(2535,893);
+\end{tikzpicture}}
+'''
+f2=r'''\figure{\begin{tikzpicture}[x=.009cm,y=-.009cm,line cap=round,line join=round]
+\foreach \x in {630,675,...,915}\draw[gray!65,line width=.25pt] (\x,1642)--++(84,-134);
+\foreach \x in {1385,1430,...,1815}\draw[gray!65,line width=.25pt] (\x,1607)--++(83,-117);
+\draw[yellow!70!olive,line width=2.8pt] (655,1497)..controls(870,1475)and(949,1483)..(1022,1573)..controls(1082,1662)and(1224,1643)..(1332,1620)--(1874,1607);
+\draw[yellow!70!olive,line width=2.8pt,dash pattern=on 9pt off 7pt] (629,1681)..controls(836,1700)and(972,1670)..(1022,1573)..controls(1076,1467)and(1235,1490)..(1353,1483)--(1804,1458);
+\draw[black!75!brown,line width=4pt] (647,1508)..controls(868,1476)and(951,1494)..(1022,1573)..controls(1079,1658)and(1226,1634)..(1332,1620)--(1878,1592);
+\draw[black!75!brown,line width=4pt,dash pattern=on 5pt off 5pt] (655,1668)..controls(848,1683)and(970,1665)..(1022,1573)..controls(1076,1476)and(1226,1500)..(1353,1494)--(1806,1475);
+\draw[orange!80!brown,line width=1.8pt] (711,1581)..controls(1026,1570)and(1426,1531)..(1750,1537) (769,1408)--(773,1801) (925,1408)--(943,1803) (1218,1379)--(1332,1799) (1314,1352)--(1219,1770) (1527,1374)--(1528,1773) (1658,1392)--(1757,1752) (1695,1374)--(1722,1782) (1760,1353)--(1653,1747);
+\draw[line width=1.5pt,densely dotted] (850,1521)--(850,1665) (1377,1503)--(1387,1610);
+\draw (970,1565)--(1047,1574);\node at (985,1587) {$\unsure{0}$};\node at (1001,1552) {$\unsure{1}$};
+\draw[->] (1096,1618)..controls(1130,1572)and(1118,1529)..(1093,1518);
+\draw[->] (1228,1650)..controls(1202,1645)and(1217,1580)..(1251,1567);
+\draw[->] (1312,1613)..controls(1311,1580)and(1303,1561)..(1290,1564);
+\foreach \x in {863,873,...,903}\draw (\x,1516)..controls(\x-8,1460)and(\x+23,1476)..(\x+11,1511);
+\foreach \x in {870,882,...,906}\draw (\x,1669)..controls(\x-7,1639)and(\x+23,1648)..(\x+12,1664);
+\foreach \x in {1283,1295,...,1343}\draw (\x,1502)..controls(\x-8,1465)and(\x+18,1476)..(\x+12,1496);
+\foreach \x in {1300,1312,...,1384}\draw (\x,1635)..controls(\x-7,1598)and(\x+19,1605)..(\x+13,1632);
+\end{tikzpicture}}
+'''
+f3=r'''\figure{\begin{tikzpicture}[x=.01cm,y=-.01cm,line cap=round,line join=round]
+\draw[yellow!70!olive,line width=2.2pt] (2118,1655)..controls(2114,1490)and(2184,1410)..(2350,1405)..controls(2522,1380)and(2653,1539)..(2640,1670)..controls(2643,1829)and(2536,1925)..(2418,1927)..controls(2230,1937)and(2077,1814)..(2118,1655);
+\draw[orange!80!brown,line width=1.8pt] (2110,1717)..controls(2232,1548)and(2538,1538)..(2643,1666) (2136,1793)..controls(2254,1700)and(2330,1605)..(2409,1416) (2336,1407)..controls(2374,1513)and(2475,1717)..(2617,1793) (2357,1406)..controls(2372,1470)and(2296,1456)..(2336,1578)..controls(2350,1714)and(2303,1801)..(2230,1881) (2378,1404)..controls(2317,1475)and(2453,1462)..(2410,1542)..controls(2331,1652)and(2373,1745)..(2418,1927);
+\draw[black!75!brown,line width=4pt] (2110,1717)..controls(2118,1757)and(2121,1772)..(2136,1793) (2643,1666)..controls(2643,1712)and(2630,1773)..(2617,1793) (2182,1842)..controls(2280,1930)and(2432,1970)..(2542,1871);
+\foreach \x/\y in {2172/1834,2180/1842,2190/1850,2200/1858,2210/1868,2220/1872}\draw (\x,\y)--++(8,-20);
+\draw (2121,1803)..controls(2116,1817)and(2132,1824)..(2108,1835)..controls(2125,1835)and(2135,1847)..(2148,1846);
+\draw (2619,1808)..controls(2600,1825)and(2599,1835)..(2609,1838)..controls(2582,1845)and(2585,1862)..(2576,1870);
+\node at (2085,1864) {$\frac12$};\node at (2642,1855) {$\frac12$};
+\end{tikzpicture}}
+'''
+f4=r'''\figure{\begin{tikzpicture}[x=.019cm,y=-.019cm,line cap=round,line join=round]
+\draw[yellow!70!olive,line width=2pt] (1829,2034)..controls(1810,1967)and(1843,1934)..(1895,1935)..controls(1979,1926)and(2015,2036)..(1970,2073)..controls(1910,2142)and(1817,2099)..(1829,2034);
+\draw[orange!80!brown,line width=1.6pt] (1829,2034)..controls(1870,2004)and(1938,2004)..(1970,2041) (1846,2080)..controls(1889,2038)and(1917,1977)..(1910,1940) (1886,1936)..controls(1902,2001)and(1924,2042)..(1960,2088) (1905,1936)..controls(1958,1993)and(1892,1997)..(1893,2092);
+\draw[black!75!brown,line width=3.5pt] (1829,2034)..controls(1828,2055)and(1838,2072)..(1846,2080) (1970,2041)--(1959,2065) (1872,2091)..controls(1895,2101)and(1918,2096)..(1931,2090);
+\end{tikzpicture}}
+'''
+f5=r'''\figure{\begin{tikzpicture}[x=.019cm,y=-.019cm,line cap=round,line join=round]
+\draw[orange!80!brown,line width=1.6pt] (2105,2009)..controls(2138,1947)and(2227,1962)..(2259,2009)..controls(2290,2087)and(2236,2118)..(2175,2135)..controls(2112,2141)and(2083,2058)..(2105,2009);
+\draw[orange!80!brown,line width=1.6pt] (2105,2062)..controls(2137,2032)and(2202,2039)..(2253,2074) (2117,2091)..controls(2147,2042)and(2157,1998)..(2208,1977) (2151,1976)..controls(2201,1999)and(2236,2023)..(2229,2089);
+\draw[black!75!brown,line width=3pt] (2105,2009)--(2103,2016) (2156,1975)--(2196,1975) (2261,2009)--(2266,2015) (2110,2070)--(2117,2089) (2253,2078)--(2236,2098);
+\fill[black!75!brown] (2175,2122) circle (7);
+\draw (2103,2112)..controls(2128,2129)and(2105,2136)..(2136,2142) (2229,2117)..controls(2235,2137)and(2205,2128)..(2214,2145) (2175,2136)..controls(2171,2163)and(2203,2157)..(2224,2161);
+\node at (2107,2157) {$\frac12$};\node at (2250,2140) {$\frac12$};\node at (2239,2167) {$0$};
+\end{tikzpicture}}
+'''
+rows='\n'.join('****A END JOB 424 CRAY2    ROOM    4.26.52 PM 16 AUG 82 R6.PR1    SYS JES2 JOB 424 END A****' for _ in range(6))
+text='\\scanpage{98}\n\\texttt{//* CRAY2 0424 I}\n'+blocks[0]+'\n'+blocks[1]+'\n'+f1+'\n\\begin{verbatim}\n'+rows+'\n\\end{verbatim}\n'+f2+f3+f4+f5+'\\mspage{97}\n'
+save({'scan':98,'sheet_kind':'reused_typed','text':text,'elements':[
+('text','upper left','//* CRAY2 0424 I'),('text','upper left','four large 0 characters made from 0s'),
+('text','middle','CRAY2 letter banner'),
+('drawing','upper right','red oval and intersecting curves, three black arcs'),
+('text','middle lower','six END JOB 424 CRAY2 lines'),
+('drawing','lower left','crossing yellow and black bands, red axis and crossings, hatching and loops, arrows, 0 and 1'),
+('drawing','lower right','yellow circle, red fan curves, black arcs, two half-length braces'),
+('drawing','bottom centre','small yellow circle with red curves and black arcs'),
+('drawing','bottom right','small red circle, crossing curves, black arcs and point, half-length and zero braces'),
+('margin note','bottom left','97')
+]})
