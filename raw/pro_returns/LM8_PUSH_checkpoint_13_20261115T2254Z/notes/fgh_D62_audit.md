@@ -1,0 +1,13 @@
+# Independent audit of D.62
+
+**Verdict: PASS**, 2026-11-15. The complete notes-only draft `de_alexander_all_lim1_draft.tex` was independently read. Included sources were not edited during checkpoint freeze.
+
+The finite localization argument works for each fixed actual finite module, with its own finite ramification set. Splitting both that action and the necessary roots of unity produces residue vectors that reduce nontrivially at level one. Finiteness of the obstruction group gives infinitely many equal obstruction values; differences with one fixed reference prime then lift to global finite-coefficient classes. Their distinct residue coordinates prove linear independence after reduction. This does not claim that those finite classes lift to the integral Alexander module.
+
+D.47 gives a finite image at level one for actual integral classes, uniformly for the chosen twist. The cochain tower is degreewise surjective, and finite invariant groups remove the degree-one derived-limit term, so these actual classes do equal the inverse limit of the finite first cohomology groups. If that latter tower were Mittag--Leffler, its eventual-image subsystem would have surjective transitions and project onto the stabilized level-one image. The infinite image from the first paragraph therefore contradicts the finite actual integral image. This is a valid proof of failure of Mittag--Leffler, rather than an invalid identification of an arbitrary intersection of images with an inverse-limit projection.
+
+Each finite-coefficient global cohomology group is countable. Jannsen's primary PDF was independently reopened, and Lemma 4.15 on printed page229 states exactly that a tower of countable abelian groups has zero first derived limit if and only if it is Mittag--Leffler. Source: https://epub.uni-regensburg.de/26684/1/jannsen12.pdf (opened source turn710view0, exact lemma turn711view0).
+
+The topology argument uses the uniform maximal-ideal topology on continuous cochains. Finite-valued one-cochains lift value by value, so a two-cocycle whose classes vanish at all finite levels is exactly a limit of continuous coboundaries. Conversely an approximation to that precision annihilates the finite-level class. Thus the derived-limit subgroup is exactly the closure of zero in the specified quotient topology. At each local field the finite first cohomology groups form a Mittag--Leffler tower, so the local comparison has zero derived-limit kernel. This proves the asserted local invisibility without assuming a global Hasse principle.
+
+No finite ramification set is held fixed across the full tower, and no claim about the isomorphism type of the resulting nonzero derived-limit group is silently added.

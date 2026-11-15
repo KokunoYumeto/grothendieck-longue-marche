@@ -1,0 +1,11 @@
+# D68 audit ledger
+
+**Root independent full proof and source audit: PASS.** The root read the entire finite-cochain argument, independently opened Hall Theorem5.6 and its corollary (turn825view0), Theorem6.5 and proof and the exact pro-p completion case(iii) (turn824view0/1), and Milne ADT I Corollary4.15 (turn826view0). The approved clarifications are present: the set-section appends zero top Hall coordinates; the residual unit twist explicitly proves H1(Z5(2))=0; and uniform full cochains have precisely the inverse-limit topology on the exact fibres.
+
+**PBC independent full proof and source audit: PASS.** Detailed ledger: notes/pbc_D68_audit.md. It checks actual coboundary membership, the closed finite coefficient submodule, bounded rational primitive coordinates, finite-span preservation including every actual arithmetic coefficient, ALL central Z1 generators, exact/class compactness, individual-stage compatibility, the metabelian model, and uniform finite exclusion outside a cusp neighborhood. Hall's exact completion passage was independently reopened at turn833view0.
+
+The new verified bibliography entry is DE_HallEdmonton. Its primary text is Philip Hall's Edmonton notes, in Mark Pengitore's reproduction https://arxiv.org/pdf/2507.09745. Theorem5.6 and corollary are on reproduced page23; Theorem6.5 and its proof on pages26–27; the binomial-ring construction and p-adic completion case(iii) are on page28. Author openings: turn820view0/2, turn821view1/2.
+
+The proof deliberately uses inverse-limit compactness of integral H1 only to obtain algebraic finite generation. Actual representatives of those generators plus the coefficient coboundaries then prove uniform-cochain compactness directly; no topological comparison is assumed circularly. The coefficient-vector submodule uses actual integral primitives and never closes B2. All first-obstruction bounds remain non-effective.
+
+Registered proof: sections/D_nilpotent_compact.tex. Original draft: notes/de_nilpotent_compact_draft.tex. The D67–D68 draft-mode compilation has zero overfull/undefined/warnings/missing/errors, log notes/de_compile/de_compile_D67_D68.log. No rendered diagnostic PDF was created; the engine's zero-byte placeholder is retained under an .empty suffix, as documented in notes/de_diagnostic_pdf_status.md.
