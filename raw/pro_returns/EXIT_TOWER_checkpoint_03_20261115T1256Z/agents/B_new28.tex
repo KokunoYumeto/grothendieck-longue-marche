@@ -1,0 +1,153 @@
+
+\subsection{An explicit sphere sewing dictionary}
+
+\begin{result}{B.28}{Proved}{Finite pants and chamber presentations compared on every generator}
+After capping the leg framings, the finite chamber groupoids
+of B.18 for $M_{0,4}$ and $M_{0,5}$ have the following
+finite pants presentations and exact inverse dictionaries:
+\[
+\begin{array}{c|r|r|r|r}
+ &\text{objects}&F\text{ arrows}&B\text{ arrows}&\text{relators}\\ \hline
+ M_{0,4}&12&6&12&7\\
+ M_{0,5}&120&120&144&169 .
+\end{array}                                                     \tag{B.83}
+\]
+Here each $B$ is a positive half-turn of a three-boundary
+piece, and each $F$ changes one cut in a four-boundary
+piece.  The $24$ associativity relators in the second
+row are genuine five-point pentagons.  Both comparison
+functors and their inverse natural isomorphism are
+given below.  The program \texttt{b\_parenthesized.py}
+computes every arrow and relation word.
+
+Consequently every based braid word computed in B.21--B.25
+has an explicit word in sphere $F$ and $B$ moves by the
+displayed substitution.  This proves the sewing dictionary
+for those capped based words.  It retains the separate
+questions of the original finite ray transports and the
+elliptic framed $S$-move coherence.
+\end{result}
+\begin{proof}
+Put $m=n-1$.  The objects are pairs $(p,T)$, where
+$p\in\mathfrak S_m$ is an ordering of the finite labelled
+points on the real line and $T$ is a full binary
+parenthesization of their ordered positions.  Use the
+outer boundary as the $n$th leg.  The two shapes for
+$m=3$, and the five for $m=4$, give the object counts.
+
+These are concrete pants markings.  Around each
+consecutive block in $T$ take a small rounded rectangle
+containing its real points; choose the collar width
+strictly decreasing with the depth of the block.
+Parent rectangles contain child rectangles, and sibling
+rectangles are disjoint.  Their boundaries give the
+specified pants cuts.  Moving the widths through these
+strict inequalities gives an isotopy, so no additional
+mapping class is hidden in the choice.
+
+There is a directed $F$ arrow for every occurrence
+\[
+ ((A\,B)\,C)\longrightarrow(A\,(B\,C)).
+\]
+It forgets the first internal cut and inserts the second
+inside the same sphere with four boundary components.
+Its underlying punctured surface map is the identity.
+This is the inverse-removal followed by removal convention
+already compared in B.14.  For every cherry consisting
+of consecutive individual leaves $i,i+1$, include a
+positive $B$ arrow interchanging those two points in
+their pair disc.  It fixes the outside of that disc.
+The endpoint ordering is $ps_i$, and its underlying
+braid is exactly $\sigma_i$.
+
+Define the forward functor $\Phi$ to the chamber model
+by
+\[
+ \Phi(p,T)=p,\qquad
+ \Phi(F)=1_p,\qquad
+ \Phi(B_{p,T,i})=(p,\sigma_i).                    \tag{B.84}
+\]
+To give its inverse, choose the left-associated shape
+$L_m$.  In the finite $F$ graph for each ordering,
+choose the breadth-first tree rooted at $L_m$, with
+the lexicographic shape and arrow order used in the
+program.  Let $q_{p,T}$ be its unique path from
+$(p,L_m)$ to $(p,T)$.  For each $i$, let $T_i$ be the
+first shape in the program's order having the cherry
+$i,i+1$.  The inverse on the chamber generator is
+\[
+ \Psi(p,\sigma_i)=
+ q_{p,T_i}\, B_{p,T_i,i}\,q_{ps_i,T_i}^{-1}
+                                                               \tag{B.85}
+\]
+in traversal order, and $\Psi(p)=(p,L_m)$.
+The image of (B.85) under (B.84) is literally $\sigma_i$,
+including its source and target.
+
+Here is the complete finite relation list, rather than
+an appeal to an unspecified presentation.  First, for
+every non-tree $F$ edge $e:(p,T)\to(p,U)$ impose
+\[
+ q_{p,T}\,e\,q_{p,U}^{-1}=1.
+                                                               \tag{B.86}
+\]
+Second, for every $B$ edge that is not the chosen
+representative at $T_i$, impose
+\[
+ q_{p,T} B_{p,T,i}q_{ps_i,T}^{-1}
+   =q_{p,T_i}B_{p,T_i,i}q_{ps_i,T_i}^{-1}.
+                                                               \tag{B.87}
+\]
+Third, substitute (B.85) into every lifted Artin
+relation of B.18, and into its one positive full-scalar
+relation.  The latter caps the outer boundary as in
+B.18.  All these words and their typed endpoints are
+listed in \texttt{b\_parenthesized.json}.
+
+Relations (B.86) say exactly that every $F$ path is
+its tree path.  When $m=4$, the five-shape $F$ graph
+is a pentagon, so there is one such relator for each
+of the $24$ label orderings.  Its geometric equality
+is B.14's cut-removal pentagon.  Relation (B.87)
+compares two actual realizations of the same pair-disc
+half-turn; both have the same braid $\sigma_i$.
+The remaining Artin relations are the usual disjoint
+support and three-strand isotopies.  The program checks
+every resulting braid equality by the faithful Artin
+action; the last relation maps to the full scalar braid,
+whose capping quotient was proved in B.18.
+
+For completeness, contract the $F$ trees.  Relations
+(B.86) remove every remaining $F$ generator, and
+(B.87) remove all duplicate $B$ generators.  What
+remains is exactly B.18's chamber presentation, on
+its labelled vertices, arrows and relators.  Thus
+$\Psi$ is defined on the presented groupoid.
+The composite $\Phi\Psi$ is the identity on every
+object and generator.  The paths $q_{p,T}$ give
+the natural isomorphism from $\Psi\Phi$ to the
+identity: its naturality for $F$ is (B.86), and
+for $B$ is (B.87).  This proves the claimed
+equivalence with its actual inverse maps.
+
+The finite enumeration gives $6$ $F$ and $12$ $B$
+arrows at $m=3$.  There are no relations (B.86) or
+(B.87); the six lifted braid relations and the
+scalar relation give seven.  At $m=4$ there are
+$120$ $F$ and $144$ $B$ arrows, $24$ relations
+(B.86), $72$ relations (B.87), $72$ lifted Artin
+relations and one scalar relation, totaling $169$.
+These counts and all maps were computed and checked.
+
+Finally, take a computed based word from B.21--B.25.
+Read its successive adjacent braid crossings with
+their changing label order and replace each positive
+crossing by (B.85), each negative crossing by the
+inverse word with its changed source.  Equation
+(B.84) recovers the original word exactly, so this
+is the promised explicit sphere sewing factorization.
+The non-braid tree transports of the original finite
+ray diagrams remain the stated transports of B.25;
+no assertion about an unrecorded framing convention
+is obtained by dropping them.
+\end{proof}

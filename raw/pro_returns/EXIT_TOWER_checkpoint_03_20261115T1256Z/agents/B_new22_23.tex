@@ -1,0 +1,272 @@
+
+\begin{result}{B.22}{Proved}{A geometric extension through the square--triangle families}
+There is a specified realization of the five object families
+\[
+ \mathrm I_{10},\quad\mathrm I_6,\quad\mathrm I_4,
+ \quad\mathrm {II}_2,\quad\mathrm {II}'_2
+\]
+and the six arrow families
+\[
+ f_{B,s},\quad f_{\vec Q,a},\quad\tau_{\pi,s},
+ \quad\gamma_{\pi,s},\quad\gamma''_{\pi,s}
+\]
+(the first row of arrows has two families) with the following
+counts and complete presentation:
+\[
+\begin{array}{c|r}
+ \text{objects}&12+20+30+60+60=182\\
+ \text{arrows}&60+120+60+60+60=360\\
+ \text{free cycles after a spanning tree}&179\\
+ \text{defining relators}&180.
+\end{array}                                                     \tag{B.45}
+\]
+The comparison sends these paths to $\Pi_1M_{0,5}$ and is an
+equivalence after imposing the specified relators.  The
+quarter-turn and the two erasures are furnished by the
+one-node plumbing family below.  We specify $f_{\vec Q,a}$
+as an erasure followed by a core path; this records its
+path convention, in addition to its endpoint incidence.
+All $360$ braid images and all $180$ relators are computed
+in \texttt{b\_first\_tier.json}.
+\end{result}
+\begin{proof}
+Use
+\[
+ V(q)=(\infty,-q,q,-1,1),\qquad
+ q\in\mathbb C\setminus\{0,1,-1\},\qquad
+ \epsilon=1/10.                                      \tag{B.46}
+\]
+At $q=0$ this has a stable limit consisting of the square
+four-point component $(\infty,-1,1,0)$ and a three-point
+tail.  Indeed, on the tail put $w=z/q$, so its marks are
+$-1,1,\infty$, and the node coordinates $z,v=1/w$ satisfy
+$zv=q$.  Thus $q$ is the actual normal plumbing coordinate.
+For $|q|\leq\epsilon$ one may choose disjoint coordinate
+discs of radius $1/2$ at the two branches.  The points
+$V(\epsilon)$ and $V(i\epsilon)$ give smoothing
+representatives of the right and left square--triangle
+objects.  Both have the stabilizer $H$ in (B.33), so each
+has sixty labelled realizations.
+
+The twist is the positive quarter-turn
+$q(t)=\epsilon\exp(\pi it/2)$; in the braid computation it
+is replaced by
+$\epsilon(1-t+it)$.  The radial interpolation between these
+two paths avoids $0,1,-1$, proving the required endpoint
+homotopy before normalization.  The two erasures are the
+positive real and imaginary intervals
+\[
+\begin{split}
+ \gamma_{\pi,s}:&\quad
+  q:\epsilon\longrightarrow\sqrt5-2,\\
+ \gamma''_{\pi,s}:&\quad
+  q:i\epsilon\longrightarrow i/\sqrt3.
+\end{split}                                                     \tag{B.47}
+\]
+They begin in the indicated normal ray, then continue
+in the displayed smooth family.  The imaginary endpoint
+is the bipyramid of B.20.  The real endpoint is pentagonal.
+To check this last assertion, the transformation
+$(z+1)/(z-1)$ sends the fifth roots of unity to $\infty$
+and the four imaginary points of magnitudes
+$\cot(\pi/5)$ and $\cot(2\pi/5)$.  Their ratio is
+\[
+ \frac{\cot(\pi/5)}{\cot(2\pi/5)}=2+\sqrt5.
+\]
+After scaling the larger magnitude to $1$ the smaller
+is $\sqrt5-2$, giving (B.47).  Its cyclic order on the
+real projective line is $(0,3,1,2,4)$, up to reversal,
+and its stabilizer is
+\[
+ H_P=\langle(0\,3\,1\,2\,4),(12)(34)\rangle\simeq D_5.
+
+overall\tag{B.48}
+\]
+Consequently the real erasure has the exact endpoint map
+$\mathfrak S_5/H\to\mathfrak S_5/H_P$, with five incoming
+arrows per pentagon.  The imaginary erasure has
+$\mathfrak S_5/H\to\mathfrak S_5/H_B$, with three incoming
+arrows per bipyramid.  The twist is the identity on the
+common coset parameter $\mathfrak S_5/H$.
+
+For clarity, the $120$ choices denoted $f_{\vec Q,a}$
+are specified as follows.  A left square--triangle object
+is the pair $(B,P)$, with $P$ one of the three equatorial
+marks of its bipyramid after erasure.  Choose one of the
+other two equatorial marks $s$, and use the composite
+\[
+ (B,P)\xrightarrow{\gamma''}B\xrightarrow{f_{B,s}}Q.
+                                                               \tag{B.49}
+\]
+The apex of $Q$ is $s$.  The remaining equatorial pair
+of $B$ is a diagonal of its oriented square.  Starting
+at $P$ and following the cyclic orientation gives a side
+$a$ of $Q$.  Conversely a side $a$ of an oriented square,
+with initial vertex $P$, determines that diagonal, one
+of the two incident bipyramids, and the pair $(B,P)$.
+This is a bijection between (B.49) and the parameters
+$(\vec Q,a)$: two choices per source and four per target.
+It proves the finite endpoint comparison as well as
+specifying the path used.  The source does not give a
+separate parameterization of its direct $f_{\vec Q,a}$
+path; (B.49) is the explicit convention of this realization.
+
+Here is the complete relator prescription, including its
+finite indexing and its computed word data.  Keep the first
+fifty objects and sixty arrows of B.21.  Append the twelve
+pentagons, sixty right square--triangles and sixty left
+square--triangles, in lexicographic coset order.  Append
+the sixty real erasures, sixty twists, sixty imaginary
+erasures, then the $120$ composites (B.49), in that order.
+The latter are ordered by their source index and then by
+the core-edge index.  This numbers every object and arrow
+without a choice.
+
+Retain B.21's forty-nine-edge tree.  In increasing order,
+add a new edge to the tree precisely when it joins two
+previously different components.  The result has $181$
+edges and all $182$ vertices.  Write $t_v$ for its unique
+rooted path.  For each non-tree edge $E$, let
+\[
+ g_E=t_{s(E)}E t_{t(E)}^{-1}
+\]
+in traversal order, and compute its word $W_E(a,b,x,y,z)$
+by the normalized-path and combing algorithms of B.21.
+For the $168$ new non-tree edges impose exactly
+\[
+ g_E= W_E(A,B,X,Y,Z),                                \tag{B.50}
+\]
+where (B.38) gives the words on the right in the original
+eleven core cycles.  Add the twelve core relators
+(B.39)--(B.40).  These are the $180$ relators in (B.45).
+The file \texttt{b\_first\_tier.json} lists every $E$,
+$W_E$, tree path, and both sides of each expanded relation;
+none of the $168$ words in (B.50) is left as an uncomputed
+input.
+
+For the path calculation, the normalized coordinates are
+again (B.41)--(B.42), with $r=-iq$.  The real erasures
+have no projected crossings, since all four finite
+coordinates remain real and distinct.  For each pentagon
+choose its transport through the first incoming real
+erasure and its already specified right-object transport.
+The right and left object transports use B.21's same
+least-integer detour rule.  The sixty twists and sixty
+imaginary erasures have rational coordinate paths;
+all $120$ are homotopic to one chord by the strict
+half-plane tests recorded in the program.  Exact Sturm
+counts, exact crossing signs over $\mathbb Q(\sqrt3)$,
+and Artin combing verify their words.  Pentagon coordinates
+in $\mathbb Q(\sqrt5)$ are checked algebraically for the
+shared endpoints; they introduce no crossings or numerical
+approximations in the braid calculation.  Each composite
+(B.49) is then checked by multiplying its two verified
+words.
+
+Finally, collapse the chosen tree.  The resulting free
+group has $360-182+1=179$ generators: eleven old and
+$168$ new.  Relations (B.50) eliminate all the new
+ones.  The remaining presentation is exactly B.21,
+which is $\Gamma_{0,5}$.  The comparison and its inverse
+on vertex groups are therefore the actual path functor
+and (B.38).  Tree transports extend the inverse to the
+whole groupoid.  This proves both the relator prescription
+and its completeness.
+\end{proof}
+
+\begin{result}{B.23}{Proved}{The realized paths come from an explicit four-point double-cover functor}
+Put
+\[
+ U=\mathbb P^1_q\setminus\{0,1,-1,\infty\},\qquad
+ p:U\longrightarrow M_{0,4},\quad p(q)=q^2,
+\]
+using the coordinate $M_{0,4}=\mathbb P^1_\lambda
+\setminus\{0,1,\infty\}$.  There are exact functors
+\[
+ \Pi_1U\xrightarrow{p_*}\Pi_1M_{0,4},\qquad
+ \Pi_1U\xrightarrow{D_*}\Pi_1M_{0,5},\quad
+ D(q)=(\infty,-q,q,-1,1).                         \tag{B.51}
+\]
+The first is the two-sheeted covering functor.  The second
+is induced by the double cover of the four-marked sphere
+branched at $0,\infty$, retaining the point above $\infty$
+and the four ordered points above $1,\lambda$.
+For every arrow of the realized $360$-arrow model, its
+image is a composite of explicitly relabelled images
+under $D_*$ of lifted four-point paths.  Thus this is a
+proved realization through a family of relative dimension
+one, with the covering and forgetting maps retained.
+It does not identify an unspecified sewing-only convention
+for the other arrows in the margin of scan 33.
+
+For a positive real basepoint $0<q<1$, order the four
+finite points as $-1,-q,q,1$.  If $u_0,u_+,u_-$ are the
+standard meridians at $q=0,1,-1$ specified below, their
+braid images are
+\[
+ u_0\longmapsto\sigma_2^2,\qquad
+ u_+\longmapsto\sigma_1^2\sigma_3^2,\qquad
+ u_-\longmapsto\sigma_2\sigma_1^2\sigma_3^2\sigma_2^{-1}.
+                                                               \tag{B.52}
+\]
+Under the scalar quotient and B.19's generators these are
+\[
+ b,\qquad b^{-1}a^{-1}z^{-1}y^{-1}x^{-1}z,
+ \qquad az^{-1}yz,                                  \tag{B.53}
+\]
+respectively.
+\end{result}
+\begin{proof}
+The map $q\mapsto q^2$ is unramified on the displayed
+open curves and has two points above each $\lambda$.
+The universal four-point sphere is normalized to
+$(0,\infty,1,\lambda)$.  Its double cover $z^2=w$
+has branch points $0,\infty$, and the four chosen lifts
+are $\pm1,\pm q$.  Keep the ramification point $\infty$
+as the fifth mark and omit the other ramification point.
+The square-root choice $q$ and the chosen lift $+1$ give
+the exact labels in (B.51).  This constructs the two
+maps of spaces and therefore their path-groupoid functors.
+
+Let $\ell_0,\ell_1$ be meridians of $0,1$ in the
+$\lambda$-line, based at $q^2$.  Covering monodromy is
+$\ell_0\mapsto1$ and $\ell_1\mapsto0$ in $\mathbb Z/2$.
+The two-vertex lifted graph of the standard two-loop
+spine has the three free generators
+\[
+ u_0=\ell_0^2,\qquad u_+=\ell_1,\qquad
+ u_-=\ell_0\ell_1\ell_0^{-1}.
+\]
+Take the stems to $q=1$ along the positive real interval.
+The stem to $q=-1$ first turns $q$ positively through a
+half-circle around $0$ and then follows the negative
+real interval.  The loop around $q=0$ rotates the inner
+two points once, giving $\sigma_2^2$.  A loop around
+$q=1$ simultaneously turns the two disjoint adjacent
+pairs at $-1$ and $1$, giving
+$\sigma_1^2\sigma_3^2$.  The chosen half-circle stem
+interchanges the inner two points by $\sigma_2$; this
+gives the last word in (B.52).  These observations can
+also be checked directly from the four trajectories
+$-1,-q,q,1$; the disjoint small meridian discs make the
+two simultaneous twists commute.
+
+The middle braid has linking number $1$ on strands
+$1,2$ and the others have linking number zero.  Removing
+that one full scalar braid and applying the exact combing
+algorithm yields (B.53).  The program
+\texttt{b\_cover\_map.py} carries out these three word
+calculations and verifies the braid identities.
+
+For the core arrows the lifted parameter path is
+$q=ir$, $1/\sqrt3\leq r\leq1$, whose projection is
+the real interval $\lambda=-r^2$.
+For the one-node families it is exactly (B.46)--(B.47),
+and for the quarter-turn it is
+$q=\epsilon e^{\pi it/2}$, projecting to
+$\lambda=\epsilon^2e^{\pi it}$.  Formula (B.49)
+supplies the remaining composites.  This gives the
+claimed expression for every arrow in the realized
+subdiagram by actual four-point covering paths,
+with no dimension-only identification.
+\end{proof}
