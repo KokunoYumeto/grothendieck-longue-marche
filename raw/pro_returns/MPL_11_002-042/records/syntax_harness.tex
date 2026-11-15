@@ -1,0 +1,28 @@
+% Syntax-only preamble. Editorial wrappers intentionally pass their arguments.
+% Compile a page by adding a document environment and inputting its unchanged TeX.
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,calc,positioning,decorations.markings}
+\newcommand{\cotefile}[1]{\par\noindent Cote: #1\par}
+\newcommand{\scanpage}[1]{\par\noindent Scan: #1\par}
+\newcommand{\mspage}[1]{\par\noindent Manuscript page: #1\par}
+% Leave each following braced group in the input stream. This passes the body
+% unchanged and permits a nested tikz-cd environment to establish its catcodes.
+\newcommand{\deleted}{}
+\newcommand{\inserted}{}
+\newcommand{\margin}{}
+\newcommand{\uline}{}
+\newcommand{\uuline}{}
+\newcommand{\unsure}{}
+\newcommand{\illegible}[1]{\ifmmode\text{[illegible: #1]}\else[illegible: #1]\fi}
+% Read the braced body as a stream so tikz-cd can set its ampersand category
+% before the matrix body is tokenized. Ordinary array bodies retain their syntax.
+\newcommand{\syntaxenddiagram}{\]}
+\newcommand{\diagram}{\[\bgroup\aftergroup\syntaxenddiagram\let\syntaxdiagrambrace=}
+\renewcommand{\figure}[1]{\begin{center}#1\end{center}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}

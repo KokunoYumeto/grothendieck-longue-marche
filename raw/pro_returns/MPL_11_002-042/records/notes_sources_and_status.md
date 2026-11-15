@@ -1,0 +1,39 @@
+## Results-state uptake and research limits
+
+The ledger was read before the research notes were written. Every item above carries its relevant ID or explicitly reports the lack of a matching result; the following table summarizes the statuses that govern the two central questions and the principal comparisons.
+
+| RS entry or group | Status in the supplied ledger | What the present pages contribute |
+|---|---|---|
+| `WG2 §2.4 #3` | Question or plan item of war game, round 2; unchecked | Correspondence category, explicit action, stable systems, grading and diagonal questions; a precise but partial lettering comparison |
+| `WG2 §6. #9` | Question or plan item of war game, round 2; unchecked | Explicit comparison maps to the cote-16 ring programme and the calculated n=1 image/kernel in O01 |
+| `WG2 §2.3 #2` | Question or plan item of war game, round 2; unchecked | Lefschetz operator/projector data and the draft-C inverse-map comparison |
+| `WG2 §2.2 #4` | Question or plan item of war game, round 2; unchecked | Exact product, hyperplane and selected-morphism scopes retained by CL04 and H08 |
+| `WG2 §2.3 #7`; `MPL_14_087-132 M09` | Unchecked plan item; first-pass semisimplicity lead | Cote-16 semisimple programme located; no theorem about semisimplicity is inferred from the existence of the correspondence category |
+| `MPL_14_087-132 M01`; `MPL_14_002-044 M01`; `MPL_15_195-228+18_002-017 M01` | First-pass research-note leads | Explicit rings, mixed-object morphisms and the action now available for comparison; the original underlying returns remain outside the supplied context |
+| `MPL_14_002-044 A36` | First-pass research-note lead | Transpose, trace, signs and the actual adjoint composite, with the remaining written checks retained |
+| `MPL_14_087-132 M05`; `MPL_15_195-228+18_002-017 M03` | First-pass research-note leads | Degree transport and selected projector data; the reused-sheet parabolic matches remain vocabulary/subject leads only |
+| `MPL_15_195-228+18_002-017 M07`, `P01` | First-pass research-note leads | The written K-class kernel map and Oda's explicit degree-one comparison; no completion of the full motivic programme is assigned to either map |
+| `Hua, findings register, 11-simplicial-bivariant-poincare-equivalence` | Conjecture (unsearched); truncated Lean-card excerpt with no verdict; intake says the package is waiting | The retrieved appendix specifies special objects and an editorial gauge assumption; O03 tests the unrestricted reading, and H19/O02 retain the pending diagonal axioms |
+| `LM7_PUSH D.44` | Reviewed modular-descent entry, with the ledger's specified scope | Its reviewed status is retained at that scope; no motive-construction or lettering conclusion is derived from it |
+
+An exact term search is evidence about the supplied files and its query, not an argument that mathematical subjects have no relationship. All comparisons in this register therefore name the actual shared object, map, relation or explicit example; keyword-only matches on the reused sheets are identified as such. A future review can use the remaining reading questions, the missing standalone draft-B/D definitions, and the diagonal axioms as precise targets without changing the frozen transcription.
+
+### Search and calculation records
+
+The records include `root_context_searches.json` (the 32 H/RQ/O searches), `motivic_bridge_context_searches.json`, `motivic_bridge_current_searches.json`, `conjecture_lettering_research.md`, `reused_typescript_research.md`, and `hua_full_card_check.md`. The matching machine-readable entry files document the text used to assemble this register; `partition_counterexample_review.md` and `gauge_basechange_review.md` record independent checks of the two explicit examples. Context search results include no-match reports where appropriate, with the nearest actually located objects reported separately from a claimed mathematical identification.
+
+### Primary references used for comparison
+
+The provided context transcription, its notes/doubts and RS are cited above by filename, cote and scan. The supplied Oda paper was read as a primary paper, with the relevant page visually inspected; published comparison texts were opened only during research, after the transcription freeze.
+
+| ID | Primary source and precise location | Use and verification scope |
+|---|---|---|
+| B1 / G69 | Alexander Grothendieck, “Standard conjectures on algebraic cycles,” *Algebraic Geometry, Bombay Colloquium 1968* (1969), pp. 193–199, especially 195–196. [Primary PDF](https://webusers.imj-prg.fr/~leila.schneps/grothendieckcircle/StandardConjs.pdf) | Printed lettering; pp. 195–196 visually checked. Quantifiers, polarization and the common-cycle clause remain attached to their statements. |
+| B2 / K68 | Steven L. Kleiman, “Algebraic cycles and the Weil conjectures,” *Dix exposés sur la cohomologie des schémas* (1968), pp. 359–386: p. 367, §§1.4.2–1.4.4; p. 370, Proposition 2.3 and Lemma 2.4; p. 371, Theorem 2.9; p. 380, Corollary 3.9. [Primary scan](https://download.uni-mainz.de/mathematik/Algebraische%20Geometrie/Lehre/WS23.Padische.1966.kleiman.weil.pdf) | Inverse-map criterion, bundled criteria and exact lowering-operator coefficients; p. 367 visually checked, other cited passages inspected in retrieved primary text. The host filename's year is not used as the publication date. |
+| B3 | The Stacks Project, [Correspondences, tag 0FFZ](https://stacks.math.columbia.edu/tag/0FFZ), and [Chow motives, tag 0FG9](https://stacks.math.columbia.edu/tag/0FG9) | Explicit correspondence action/composition and the objects `(X,p,m)` used in MB comparisons; records a specified modern construction, without assigning its completion steps to the current manuscript. |
+| B4 | The Stacks Project, [Proper pushforward, tag 0AZC](https://stacks.math.columbia.edu/tag/0AZC) | The actual degree map used in MB04's point computation. |
+| B5 | Tadao Oda, “The first de Rham cohomology group and Dieudonné modules,” *Annales scientifiques de l'École Normale Supérieure*, series 4, 2(1) (1969), pp. 63–135; Corollaries 5.11–5.12, printed p. 131, supplied PDF page 70. [Numdam record and paper](https://www.numdam.org/item/ASENS_1969_4_2_1_63_0/) | The canonical degree-one map and its Hodge subspace; the next corollary's injection and its image. The cited page was visually checked against the supplied PDF. |
+| B6 | D. Mumford and J. Fogarty, *Geometric Invariant Theory*, second enlarged edition (1982), Chapters 2–3. [Searchable reproduction of the primary book](https://dokumen.pub/geometric-invariant-theory-2nbsped-3540112901-9783540112907.html) | Textual parallels for scans 006, 012 and 035. This reproduction's searchable text was used for comparison after the freeze; it supplied no transcription corrections. |
+| B7 | [Springer publisher record for *Geometric Invariant Theory*, third edition](https://link.springer.com/book/9783540569633) | Bibliographic verification of the published work and edition record; no dating of the physical reused sheets inferred. |
+| B8 | Hua/Grothendieck-project, [appendix `docs/lean/sections/11.tex`](https://github.com/Commutator-IO/grothendieck-project/blob/b59e1c7dd680e01764435b4a917c73f4bb98e3d1/docs/lean/sections/11.tex), especially the section on manuscript pages 37 and 41, lines 76–136; [Lean source `Folder11.lean`](https://github.com/Commutator-IO/grothendieck-project/blob/b59e1c7dd680e01764435b4a917c73f4bb98e3d1/lean/Grothendieck/Folder11.lean), the `Simplicial` section | Commit-pinned statement-scope check: special objects, multiplicative gauges, ungraded commutative setting, and the pending diagonal assertion. No Lean proof was executed or certified in this package; the full findings-register file and its current status field were not recovered. |
+
