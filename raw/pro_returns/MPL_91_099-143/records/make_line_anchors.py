@@ -1,0 +1,46 @@
+"""Visual line bands recorded after the second image audit; these are approximate."""
+from pathlib import Path
+import json
+# LaTeX starting line, approximate visual location. A band continues to the next start.
+A={
+99:[(1,'top formula, line 1'),(9,'heading, line 2'),(11,'short paragraph, lines 3–6'),(16,'lower-left folio'),(17,'lower-right cancelled pencil number')],
+100:[(1,'header'),(5,'opening continuation, lines 1–4'),(7,'Proposition 23, upper half'),(11,'Proposition 24, middle'),(13,'proof of Proposition 24, lines 19–27')],
+101:[(1,'cancelled heading, top line'),(4,'top category arrow, lines 2–3'),(9,'upper-left descent diagram'),(14,'underlined labels below diagram'),(18,'first numbered axioms, lines 6–11'),(31,'right-margin note beside first axioms'),(33,'cancelled item 5, lines 12–13'),(35,'circled diagram'),(43,'dual axioms, lines 14–19'),(60,'right-margin question mark'),(63,'geometric axiom and bottom bracket, lines 20–23')],
+102:[(1,'header'),(5,'opening continuation, upper third'),(10,'left margin beside middle paragraph')],
+104:[(1,'definition, lines 1–5'),(4,'left diagonal cancelled note'),(5,'Proposition 1, lines 6–9'),(9,'conditions (i)–(iii), lines 10–16'),(22,'proof (0), lines 17–18'),(24,'proof (i)–(ii), lines 19–26'),(29,'proof (iii), final lines 27–30')],
+105:[(1,'continuation and lemma, lines 1–5'),(10,'proof (a), lines 6–12'),(16,'left-margin diagram beside proof (a)'),(21,'proof (b), lines 13–19'),(23,'bracketed reduction, lines 20–24'),(25,'right-margin reference near foot'),(27,'layered cancellations/insertions, final lines 25–29'),(31,'bottom-right bracketed note')],
+106:[(1,'opening proof continuation, lines 1–5'),(9,'upper-left margin diagram'),(15,'proof conclusion, line 6'),(17,'Corollary 1 hypothesis and insertion, lines 7–11'),(19,'item (iv) and cancelled continuation, lines 12–15'),(23,'item (v), lines 16–20'),(32,'item (vi), lines 21–23'),(34,'left diagonal N.B.'),(42,'bottom proof, lines 24–30')],
+107:[(1,'Corollary 2 hypothesis, lines 1–4'),(4,'conditions (a)–(b), lines 5–9'),(8,'left diagonal terminology note'),(10,'proof and terminology, lines 10–14'),(14,'middle equivalence diagram, lines 15–19'),(25,'Corollary 3, lines 20–24')],
+108:[(1,'proof continuation, lines 1–6'),(4,'Proposition 2 hypothesis, lines 7–11'),(6,'left diagonal note beside Proposition 2'),(8,'cancelled item (0), lines 12–14'),(10,'items (i)–(ii), lines 15–20'),(14,'left lower margin'),(16,'proof of (i), lines 21–29'),(18,'final proof line')],
+109:[(1,'cancelled upper corollary, lines 1–9'),(4,'bracketed proposition, lines 10–14'),(6,'subspace consequence, lines 15–16'),(8,'first corollary, lines 17–19'),(10,'cancelled left diagonal note'),(12,'second corollary and conditions, lines 20–27'),(20,'lower-left marginal proof and oval note')],
+110:[(1,'Corollary 1 hypothesis, lines 1–5'),(4,'conditions (a)–(b) and cancelled clause, lines 6–10'),(10,'left marginal condition (c) and reference'),(12,'N.B., lines 11–13'),(14,'Corollary 2 hypothesis, lines 14–16'),(16,'conditions (a)–(c), lines 17–23'),(22,'bijective case, line 24'),(24,'Corollary 3, final lines 25–29')],
+111:[(1,'opening paragraph, lines 1–2'),(6,'affine proposition, lines 3–4'),(8,'Corollary 1, lines 5–8'),(10,'Corollary 2/3, lines 9–12'),(14,'item (iii), lines 13–16'),(16,'monomorphism refinement, lines 17–18'),(18,'cancelled N.B. and item (iv), lines 19–21')],
+113:[(1,'definition of geometric/constructible application, lines 1–8'),(4,'example, gluing and global partition, lines 9–18'),(6,'category and associated functor, lines 19–25')],
+114:[(1,'opening formula and cancelled On a, lines 1–3'),(8,'comparison statement, lines 4–7'),(14,'four-object diagram, middle/lower half'),(17,'small annotation above first diagram arrow'),(20,'second diagram object and qualification'),(22,'third diagram object and text below'),(25,'last diagram object')],
+115:[(1,'opening definition/formula, lines 1–3'),(6,'partition description, lines 4–8'),(8,'transition maps and Spec definition, lines 9–11'),(14,'Top limit formula, lines 12–13'),(18,'Ens limit formula, lines 14–15'),(20,'bijection paragraph and cancellations, lines 16–19'),(24,'final paragraph, lines 20–23')],
+116:[(1,'upper-left manuscript number'),(3,'opening cancelled hypothesis, lines 1–3'),(5,'conditions (i)–(ii), lines 4–7'),(9,'constructible-topology paragraph, lines 8–17'),(11,'N.B. and final hypothesis statement, lines 18–26')],
+118:[(1,'outline No 1, upper band'),(4,'outline No 2, upper band'),(8,'outline No 3 and recollage note'),(12,'left marginal morphism list'),(14,'outline No 4 and insertion'),(18,'outline No 5'),(20,'cancelled middle category diagram'),(32,'outline No 6'),(34,'lower category diagram'),(45,'right margin: type-fini qualification'),(47,'right margin: beta-prime definition')],
+119:[(1,'header'),(5,'opening continuation, lines 1–3'),(7,'graded-tensor paragraph, lines 4–9')],
+120:[(1,'top three-object category diagram'),(13,'middle Hom/limit diagram'),(21,'cancelled middle Hom formula'),(26,'inserted replacement Hom formulas'),(33,'bottom category-to-Hom arrow')],
+121:[(1,'header'),(5,'opening continuation'),(15,'Proposition 8 conclusion, approximately lines 17–21')],
+122:[(1,'heading and inserted topologiquement, lines 1–2'),(4,'item (i), cancelled proof, lines 3–7'),(5,'live reformulation, lines 8–10'),(9,'item (ii), layered cancelled proof, lines 11–16'),(13,'affineness argument, lines 17–22'),(15,'item (iii), final lines 23–26')],
+123:[(1,'typed text, read upright')],
+124:[(1,'cover title and folio')],
+126:[(1,'projective-system hypothesis, lines 1–4'),(4,'thick-point definition, lines 5–6'),(6,'condition (Ép), lines 7–10'),(8,'equivalence question, line 11'),(10,'condition (Ép)′, lines 12–15'),(12,'questioned implication, lines 16–17'),(16,'condition (Ép)″, lines 18–20'),(18,'noetherian insertion/equivalence, lines 21–23'),(20,'condition (Ép)‴ and unfinished continuation, lines 24–27')],
+127:[(1,'header'),(5,'single printed paragraph, lines 1–7')],
+128:[(1,'top-left line'),(4,'boxed implication diagram, upper quarter'),(10,'upper-right margin: thick-point arrow'),(12,'formulas below box, upper middle'),(23,'central union formula'),(25,'lower-left script-X diagram'),(30,'closure calculation, middle right'),(39,'lower-right generators calculation'),(48,'bottom local-ring/ideal calculation'),(52,'bottom-right marginal words')],
+129:[(1,'header'),(5,'part (a), lines 1–6'),(7,'part (b) and parenthesized hint, lines 7–20'),(9,'exercise 7 definition, lines 21–25'),(11,'exercise 7(a), lines 26–28'),(13,'exercise 7(b), final lines 29–32')],
+131:[(1,'valuation-ring heading, lines 1–2'),(4,'Greenberg definition/formula, lines 3–5'),(8,'upper-right field-extension note'),(10,'perfect-field paragraph/formula, lines 6–9'),(15,'Y and generic-fibre morphism, lines 10–14'),(24,'construction at a point, lines 15–23'),(30,'residue-field map, lines 24–27'),(36,'left slanted nonproper-target note'),(38,'finite-type hypothesis, lines 28–29'),(40,'Proposition 1, final lines 30–36')],
+132:[(1,'first functoriality corollary, lines 1–5'),(4,'Proposition 2 hypotheses, lines 6–10'),(6,'constructibility/partition conclusion, lines 11–17'),(8,'final corollary, lines 18–21')],
+134:[(1,'functor definition, lines 1–3'),(8,'ind-representation, lines 4–6'),(12,'left margin beside limit formula'),(13,'bounded-series definition, lines 7–14'),(33,'lower G′/Gamma′ limit formula, lines 23–24'),(36,'interval formula, line 25')],
+135:[(1,'opening maps and cancellation, lines 1–3'),(7,'component maps, lines 4–8'),(18,'theorem (i)–(iii), lines 9–20'),(20,'left slanted component note'),(22,'varying-n statement, lines 21–26')],
+136:[(1,'top Pro/Pro′/Pro″ diagram'),(7,'cancelled upper-right hypothesis block'),(9,'replacement upper-right hypothesis block'),(15,'objects and first Hom comparison, middle'),(20,'inserted base-S clause and second Hom comparison'),(26,'final Serre/Néron remark, lines 16–22')],
+138:[(1,'own page number and top coefficient display'),(11,'upper-right determinant condition'),(14,'tuple evaluation arrow, upper middle'),(17,'nilpotence/truncation paragraph, middle lines 4–8'),(20,'boxed polynomial formula'),(23,'bottom-left A→B diagram'),(27,'bottom-right ideal filtration')],
+139:[(1,'header'),(5,'opening orthogonal-Lie-algebra continuation, lines 1–3'),(7,'part (c), symplectic formal group, lines 4–10')],
+140:[(1,'top augmented-automorphism formula'),(5,'Greenberg group notation, lines 1–2'),(8,'coordinate-change formula, lines 3–5'),(12,'action paragraph, lines 6–7'),(18,'first composition attempt, lower middle'),(24,'unfinished bottom calculations')],
+141:[(1,'header and opening formula'),(12,'commutative-case instruction, lines 5–6'),(14,'part (d), formal homomorphisms, lines 7–19')],
+142:[(1,'top tangent-space rows, lines 1–3'),(12,'G_A,n paragraph and formula, lines 4–7'),(20,'G_n paragraph and formula, lines 8–11'),(30,'initial polynomial and cancelled composite, lines 12–13'),(36,'live composite and grouping brackets, line 14'),(50,'boxed coefficients, lines 15–17')],
+143:[(1,'header'),(9,'GL/gl identification, lines 3–5')]
+}
+Path('records/line_anchors.json').write_text(json.dumps(A,ensure_ascii=False,indent=2)+'\n')
+print('Visual location bands:',len(A),'pages')
