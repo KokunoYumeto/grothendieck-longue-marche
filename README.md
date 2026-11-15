@@ -137,6 +137,8 @@ under CC0 1.0. This edition is published for educational, non-profit purposes, a
 If you hold rights in this work and object to its publication here, please open a GitHub issue and we will take it
 down.
 
+**Prompts and method.** The prompts, templates, scripts and working method published here are dedicated to the public domain under CC0 1.0. If you want to do similar work, use them freely; we claim no rights in them.
+
 ---
 
 [Sponsor this work](https://github.com/sponsors/KokunoYumeto)
