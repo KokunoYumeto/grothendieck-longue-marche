@@ -42,6 +42,35 @@ La transcription est diplomatique : le français de Grothendieck, son orthograph
 ses ratures, ajouts et notes marginales tels qu'écrits, avec le doute marqué (`\unsure{a|b}`, `\illegible{n}`). Les
 mathématiques gardent ses lettres, indices et flèches ; les diagrammes sont composés avec tikz-cd.
 
+## Comment cette transcription est faite : les défaillances de l'IA, et ce que nous faisons contre elles
+
+Tout ce qui se trouve ici a été produit par IA. La transcription par IA de mathématiques manuscrites échoue de façons
+connues : elle lit ce que l'argument demande au lieu de ce qui est écrit, laisse tomber de petits signes, fait
+disparaître les mots barrés et les abréviations, confond les lettres qui se ressemblent et lit le même signe de façons
+différentes d'une page à l'autre. La méthode est construite contre ces défaillances, et nous mesurons ce qui reste.
+
+- **Source.** Les scans des cotes 140-1 à 140-4 (1 588 pages), à la résolution des archives, contraste renforcé et
+  bandeau d'en-tête retiré.
+- **Premier passage, à l'aveugle :** GPT-6 Astra (ChatGPT, mode Pro), un lot à la fois, sans accès à aucune autre
+  transcription. Les lectures douteuses sont marquées `\unsure{…}`, les mots barrés `\deleted{…}`, les insertions et
+  les notes marginales comme telles ; les corrections des mathématiques vont dans les notes de recherche, jamais dans le
+  texte. Le prompt a été révisé chaque fois qu'un nouveau type d'erreur est apparu.
+- **Second passage, contre l'encre :** Claude Opus 5.5 (effort max), lot par lot, chaque ligne contre les scans en
+  pleine résolution et contre les transcriptions antérieures comme témoins (Carmona avec Künzer ; l'édition provisoire
+  du Centre d'études grothendieckiennes ; la table des matières de Grothendieck lui-même). Chaque modification est
+  consignée avec sa justification et un degré de confiance, et les endroits qui restent ouverts restent marqués. La
+  section « État » dit où en est ce passage.
+- **Ce que trouve le second passage.** Sur cinq lots mesurés, il a fait 286 modifications sur 4 926 mots, dont 64 de
+  confiance élevée (1,3 pour 100 mots), et dans chaque lot 7 à 10 corrections qui changent les mathématiques (une
+  hypothèse rétablie, Γ lu pour T, « épi » pour « iso »), le plus souvent non marquées au premier passage. C'est
+  pourquoi aucun lot ne s'en passe.
+- **Vérifications par échantillon.** Des vérifications indépendantes, mot à mot, d'échantillons de huit pages contre
+  les scans comptent les erreurs pour 100 mots et fixent des règles pour les lots suivants, par exemple une table de
+  notations commune quand des pages sont lues en flux parallèles.
+- **Anglais :** GPT-6.1 Sol (effort de raisonnement max, API OpenAI, niveau Flex), à partir de notre transcription
+  française.
+- Détails, taux mesurés et coûts : [methodology/METHODOLOGY.md](methodology/METHODOLOGY.md).
+
 ## État (12 novembre 2026)
 
 - Premier jet : les 1 588 scans.
@@ -57,17 +86,6 @@ mathématiques gardent ses lettres, indices et flèches ; les diagrammes sont co
   (en comptant les changements faits avec une confiance haute ou moyenne), et environ la moitié de ces endroits ne
   portaient pas de marque de doute. Il faut s'attendre à des erreurs de ce genre dans les paquets pas encore vérifiés.
   Les endroits que les images ne tranchent pas restent marqués.
-
-## Comment elle a été faite
-
-La transcription, les corrections, la composition et les notes sont produites par IA.
-
-- Premier jet : ChatGPT Pro (OpenAI), un paquet de scans à la fois, à partir d'images contrastées, sans accès à
-  aucune autre transcription. Le paquet 57 (cote 140-2, scans 561–570) a été transcrit par l'API OpenAI (GPT-6
-  Astra), à titre d'essai.
-- Seconde passe : Claude Opus 5.5 (Anthropic), sur les images d'archive et les transcriptions antérieures.
-
-Détails, taux d'erreur mesurés et coûts : [methodology/METHODOLOGY.md](methodology/METHODOLOGY.md) (en anglais).
 
 ## Sources et travaux antérieurs
 

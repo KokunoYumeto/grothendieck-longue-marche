@@ -16,6 +16,32 @@ and the transcription is being checked page by page against the scans.
 - **Corrected text with apparatus** (`LM_FR_corrige_apparat.pdf`, `LM_EN_corrected_apparatus.pdf`): his final text with every change he made to it listed at the end of each scan, for anyone who wants to see how the text was revised. An apparatus entry records one change: what stood first and what replaced it.
 - **Annotated masters** (`LM_FR_master_annotated.pdf`, `LM_EN_master_annotated.pdf`): the editors' copies from which each language's books are printed. As PDFs they show the corrected text with the apparatus, so most readers do not need them.
 
+## How this transcription is made: AI's failure modes, and what we do about them
+
+Everything here was produced by AI. AI transcription of handwritten mathematics fails in known ways: it reads what the
+argument needs instead of what is written, drops small signs, tidies struck text and abbreviations away, misreads
+look-alike letters, and reads the same sign differently on different pages. The method is built against these, and we
+measure what is left.
+
+- **Source.** The archive's scans of cotes 140-1 to 140-4 (1,588 pages) at the archive's own resolution, with the
+  contrast enhanced and the header band removed.
+- **First pass, blind:** GPT-6 Astra (ChatGPT Pro mode), one package at a time, with no access to any other
+  transcription. Doubtful readings are marked `\unsure{…}`, struck text `\deleted{…}`, insertions and margin notes as
+  such; corrections of the mathematics go into the research notes, never into the text. The prompt was revised each
+  time a new kind of error showed up.
+- **Second pass, against the ink:** Claude Opus 5.5 at effort max, package by package, every line against the scans at
+  full resolution and against the earlier transcriptions as witnesses (Carmona with Künzer; the draft edition of the
+  Centre for Grothendieckian Studies; Grothendieck's own table of contents). Every change is logged with its evidence
+  and a confidence, and places that stay open stay marked. The status section says how far this pass has got.
+- **What the second pass finds.** On five measured packages it made 286 changes in 4,926 words, 64 of them with high
+  confidence (1.3 per 100 words), and in each package 7–10 corrections that change the mathematics (a hypothesis
+  restored, Γ read for T, "épi" for "iso"), mostly unmarked in the first pass. That is why no package skips it.
+- **Sample checks.** Independent word-by-word checks of eight-page samples against the scans count the errors per 100
+  words and set rules for later packages, for example one shared notation table when pages are read in parallel
+  streams.
+- **English:** GPT-6.1 Sol at reasoning effort max (OpenAI API, Flex tier), from our French transcription.
+- Details, measured rates and costs: [methodology/METHODOLOGY.md](methodology/METHODOLOGY.md).
+
 ## What is here
 
 - **Typeset readers, working draft (14 November 2026)**: five readers and two annotated masters, French and English
@@ -88,17 +114,6 @@ The rights in the original work belong to its author or the author's representat
 - In the checked packages, the second pass changed the first pass's reading at about 2 places in every 100 words
   (counting the changes made with high or medium confidence), and about half of those places carried no doubt mark.
   Expect errors of that kind in the packages not yet checked. Places that the images do not settle stay marked.
-
-## How it was made
-
-The transcription, corrections, typesetting and notes are AI-produced.
-
-- First pass: ChatGPT Pro (OpenAI), one package of scans at a time, from contrast-enhanced images, with no access to
-  any other transcription. Package 57 (cote 140-2, scans 561–570) was transcribed through the OpenAI API (GPT-6
-  Astra) as a test.
-- Second pass: Claude Opus 5.5 (Anthropic, effort not recorded), against the archive images and the earlier transcriptions.
-
-Details, measured error rates and costs are in [methodology/METHODOLOGY.md](methodology/METHODOLOGY.md).
 
 ## Sources and earlier work
 
