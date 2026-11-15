@@ -1,0 +1,1870 @@
+          A Short Exposition of the Madsen-Weiss Theorem
+                                       Allen Hatcher
+
+
+
+
+    The theorem of Madsen and Weiss [MW] identifies the homology of mapping class
+groups of surfaces, in a stable dimension range, with the homology of a certain infinite
+loopspace. This result is not only intrinsically interesting, showing that two objects that
+appear to be quite different turn out to be homologically equivalent, but it also allows
+explicit calculations of the stable homology, rather easily for rational coefficients as we
+show in Appendix C, and with considerably more work for mod p coefficients as done by
+Galatius in [G2]. Outside the stable dimension range the homology of mapping class groups
+appears to be quite complicated and is still very poorly understood, so it is surprising that
+there is such a simple and appealing description in the stable range.
+     The Madsen-Weiss theorem has a very classical flavor, and in retrospect it seems that
+it could have been proved in the 1970s or 1980s since the main ingredients were available
+then. However, at that time it was regarded as very unlikely that the stable homology
+of mapping class groups could be that of an infinite loopspace. The initial breakthrough
+came in a 1997 paper of Tillmann [T] where this unexpected result was proved. It remained
+then to determine whether the infinite loopspace was a familiar one. A conjecture in this
+direction was made in a 2001 paper of Madsen and Tillmann [MT], with some supporting
+evidence, and this conjecture became the Madsen-Weiss theorem.
+     The original proof of the Madsen-Weiss theorem was rather lengthy, but major simpli-
+fications have been found since then. Our aim here is to present a proof that uses a number
+of these later simplifications, particularly some due to Galatius and Randal-Williams which
+make the proof really quite elementary, apart from the three main classical ingredients:
+
+(1) The fact that the diffeomorphism group of a closed orientable surface has contractible
+    components once the genus of the surface is at least 2 . This is originally a theorem
+    of Earle-Eells [EE] proved by analytic methods, but a purely topological proof was
+    given soon after by Gramain [Gr]. Also needed is the extension of this result to
+    compact orientable surfaces with boundary, originally a result in [ES], but proved in
+    the Gramain paper as well. In fact Gramain’s proof in both cases is quite simple so
+    we present it in Appendix B.
+
+                                             1
+(2) Harer stability [Har], the fact that the ith homology group of the mapping class group
+    of a compact orientable surface is independent of the genus and the number of bound-
+    ary components, once the genus is sufficiently large with respect to i. Subsequent
+    improvements in the stable dimension range were made by Ivanov [I], Boldsen [B], and
+    Randal-Williams [RW], and a significant gap in Harer’s proof was filled by Wahl [W1].
+    For a full exposition of the current state of the art on this theorem see [W2]. As yet no
+    really simple proof has been found, although the exposition in [HV] represents some
+    progress in this direction.
+(3) The Group Completion Theorem from around 1970. A nice exposition of this fun-
+    damental result in algebraic topology was published in [MS], and an illuminating
+    general discussion is given in [A]. The original version seems to be due to Barratt and
+    Priddy [BP]. This theorem has apparently not made its way into textbooks yet, so we
+    give a textbook-style exposition of it in Appendix D following an argument told to us
+    by Galatius. The only ingredients for this are results already available in textbooks.
+
+The strategy we follow for proving the Madsen-Weiss theorem follows the pattern in [GRW],
+and consists of using (3) to prove a theorem that is independent of (1) and (2). This
+theorem can be phrased as saying that the classifying space of the group of compactly
+supported diffeomorphisms of an infinite-genus surface is homologically equivalent to a
+certain infinite loopspace (or more properly, one component of this infinite loopspace).
+Then one can quote (1) and (2) to restate this result in terms of the homology of mapping
+class groups of compact surfaces in the stable range.
+    A large part of the proof works for manifolds of arbitrary dimension, not just surfaces,
+so we present it in that generality. In the case of zero-dimensional manifolds the whole
+proof goes through and in fact is considerably simpler than for surfaces, yielding the
+Barratt-Priddy-Quillen theorem that the infinite symmetric group Σ∞ = ∪n Σn has the
+same homology as one component of Ω∞ S ∞ .
+    Here is a quick outline of the paper. In section 1 we present basic definitions and the
+motivating constructions leading to a precise statement of the Madsen-Weiss theorem. The
+proof of the theorem is contained in section 2, with the two hardest steps postponed to
+sections 3 and 4. In section 5 we give extensions to the cases of nonorientable surfaces and
+surfaces with punctures, along with the Barratt-Priddy-Quillen theorem and its analog for
+braid groups due to F. Cohen. After this there are four appendices: Appendix A giving
+basic information on classifying spaces for diffeomorphism groups, Appendix B proving
+the Earle-Eells theorem following the method of Cerf and Gramain, Appendix C giving
+the calculation of the stable rational homology in both the orientable and nonorientable
+
+                                             2
+cases, and finally Appendix D proving the Group Completion Theorem.
+
+Acknowledgments:        Thanks are due to Tom Church, Søren Galatius, Oscar Randal-
+Williams, and Ulrike Tillmann for their comments on an early version of this exposition.
+
+
+
+1. The Scanning Map
+    The statement of the Madsen-Weiss theorem involves a certain infinite loopspace, so
+we will begin by describing what this space is and how it arises. The root of the idea can
+be traced back a long way, to the Pontryagin-Thom construction around 1950. Another
+version appeared later in the 1970s in papers by Segal [S1, S2] and McDuff [M]. A more
+immediate predecessor is the paper of Madsen-Tillmann [MT] which explicitly conjectures
+the Madsen-Weiss theorem.
+    The homology of the mapping class group of a closed orientable surface S is the
+homology of an Eilenberg-MacLane space K(Γ, 1) , with Γ the mapping class group. We
+are free to choose any K(Γ, 1) we like, and there is a particular choice that works well for
+the Madsen-Weiss theorem. This is the space C(S, R∞ ) of all smooth oriented subsurfaces
+of R∞ diffeomorphic to S . The symbol C is chosen to indicate that C(S, R∞ ) is the
+space of all possible “configurations” of S in R∞ . The space C(S, R∞ ) is the union
+of its subspaces C(S, Rn ) of smooth oriented subsurfaces of Rn diffeomorphic to S , for
+finite values of n , with the direct limit topology. Each C(S, Rn ) is given the usual C ∞
+topology as the orbit space of the space E(S, Rn ) of smooth embeddings S → Rn under the
+action of Diff+ (S) by composition, where Diff+ (S) is the group of orientation-preserving
+diffeomorphisms of S with the C ∞ topology. By definition, in the direct limit topology on
+C(S, R∞ ) a set is open if and only if it intersects each subspace C(S, Rn ) in an open set.
+A key feature of direct limit topologies (for Hausdorff spaces) is that compact subspaces
+lie in finite stages of the direct limit, so the homotopy groups and homology groups of a
+direct limit are the direct limits of the homotopy and homology groups of the finite stages.
+     As we explain in Appendix A, the quotient map E(S, R∞ ) → C(S, R∞ ) is a fiber bun-
+dle with fiber Diff+ (S) , whose total space E(S, R∞ ) is contractible, so the long exact se-
+quence of homotopy groups for the bundle gives isomorphisms π Diff+ (S) ∼
+                                                                 i           = π C(S, R )
+                                                                                i+1
+                                                                                          ∞
+
+for all i. By the Earle-Eells theorem these groups are trivial for i > 0 , at least when the
+genus of S is at least 2 , so we see that C(S, R∞ ) is a K(Γ, 1) for the mapping class group
+in these cases.
+   To place things in their natural setting, consider a smooth closed orientable manifold
+M of arbitrary dimension d ≥ 0 , and let C(M, R∞ ) be the space of all smooth oriented
+
+                                             3
+submanifolds of R∞ diffeomorphic to M , defined analogously to the case d = 2 that
+we have just described. It is natural to ask what information can be extracted from an
+embedded submanifold M ⊂ Rn of dimension d just by looking locally. Imagine taking
+a powerful magnifying lens and moving it all around Rn to see what the submanifold M
+looks like. For most positions of the lens one is not close enough to M to see anything
+of M at all, so one sees just the empty set, but as one moves near M one sees a small
+piece of M that appears to be almost flat. Moving toward M , this piece first appears
+at the edge of the lens, then moves to the center. The space of almost flat d -planes in
+an n -ball has the same homotopy type as the subspace of actually flat d -planes since one
+can canonically deform almost flat planes to their tangent planes at their centers of mass.
+Regarding the n -ball as Rn , we thus have, for each position of the lens where the view
+of M is nonempty, a d -plane in Rn . This plane has an orientation determined by the
+given orientation of M . We will use the notation AGn,d for the affine Grassmannian of
+oriented flat d -planes in Rn , where the word “affine” indicates that the planes need not
+pass through the origin. Taking into account positions of the lens where the view of M is
+empty, we then have a point in the one-point compactification AG+   n,d of AGn,d for each
+position of the lens, with the compactification point corresponding to the empty d -plane.
+     Positions of the lens near infinity in Rn give an empty view of M , hence map to the
+compactification point at infinity in AG+n,d . Thus by letting the position of the lens vary
+throughout all of R we obtain map S = Rn ∪ {∞} → AG+
+                   n                   n
+                                                             n,d taking the basepoint ∞ in
+  n                        +
+S to the basepoint of AGn,d , the compactification point. Such a map is exactly a point
+in the n -fold loopspace Ωn AG+                    n   +
+                              n,d . This point in Ω AGn,d associated to the submanifold
+M ⊂ Rn depends on choosing a sufficiently large power of magnification for the lens, which
+in turn can depend on the embedding of M in Rn . Making the plausible assumption
+that the magnification can be chosen to vary continuously with M , we then obtain a map
+C(M, Rn ) → Ωn AG+                                                     n
+                 n,d . Letting n increase, the natural inclusion C(M, R ) ֒→ C(M, R
+                                                                                   n+1
+                                                                                       )
+corresponds to the inclusion Ωn AG+
+                                  n,d ֒→ Ω
+                                           n+1
+                                               AG+                            n
+                                                  n+1,d obtained by applying Ω to the
+inclusion AG+            +                                   n
+             n,d ֒→ ΩAGn+1,d that translates a d -plane in R from −∞ to +∞ in the
+(n + 1) st coordinate of Rn+1 . Passing to the limit over n , we get a map
+
+                                 C(M, R∞ ) → Ω∞ AG+
+                                                  ∞,d
+
+which we will refer to as the scanning map. (In the case d = 0 when M is a finite set
+of points, the scanning process is described explicitly in [S2], which seems to be the first
+place where the term “scanning” is used in this context.)
+    The affine Grassmannian AGn,d can be described in terms of the usual Grassman-
+nian Gn,d of oriented d -planes through the origin in Rn . The projection AGn,d → Gn,d
+
+                                             4
+translating each d -plane to the parallel plane through the origin is a vector bundle whose
+fiber over a given d -plane P is the vector space of vectors orthogonal to P since there
+is a unique such vector translating P to any given plane parallel to P . The vector bun-
+dle AGn,d is thus the orthogonal complement of the canonical bundle over Gn,d , and the
+one-point compactification AG+ n,d is the Thom space of this complementary vector bundle
+since Gn,d is compact.
+   For the scanning map C(M, R∞ ) → Ω∞ AG+       ∞,d the source space depends on the
+manifold M but the target space does not, so one would hardly expect this map to be any
+sort of equivalence for arbitrary M . One might have a better chance if one could replace
+the source by some sort of amalgam or limit over all choices of M , and this is what the
+Madsen-Weiss theorem does in the case of surfaces, when d = 2 , so that there is just one
+closed orientable surface Sg for each genus g . We can form a limit of this sequence of
+closed surfaces by considering the simplest infinite-genus surface S∞ . This is the union of
+an increasing sequence of compact surfaces Sg,1 of genus g with one boundary component.
+
+
+
+
+Let Diff(Sg,1 ) be the group of diffeomorphisms of Sg,1 that restrict to the identity on
+the boundary circle (and whose derivatives of all orders equal those of the identity diffeo-
+morphism at points in the boundary). The standard embedding Sg,1 ֒→ Sg+1,1 induces a
+natural inclusion Diff(Sg,1 ) ֒→ Diff(Sg+1,1 ) by extending diffeomorphisms by the identity
+on the complement of Sg,1 in Sg+1,1 . Let Cg be the space of subsurfaces of (−∞, g] × R∞
+diffeomorphic to Sg,1 whose boundaries coincide (to infinite order) with the boundary of a
+fixed standard Sg,1 ⊂ (−∞, g] × R∞ with Sg,1 ∩ (g × R∞ ) = ∂Sg,1 . As in the closed case,
+Cg is a K(Γ, 1) for Γ = π0 Diff(Sg,1 ) . There are inclusions Cg ⊂ Cg+1 by adjoining the
+missing part of the standard Sg+1,1 ⊂ (−∞, g + 1] × R∞ , so we can form the direct limit
+C∞ = ∪g Cg . The version of the Madsen-Weiss theorem that we will prove is the following:
+
+The Madsen-Weiss Theorem. There is an isomorphism
+
+                                H∗ (C∞ ) ∼      ∞   +
+                                         = H∗ (Ω0 AG∞,2 )
+           +                                               +
+where Ω∞                                                ∞
+       0 AG∞,2 denotes the basepoint path-component of Ω AG∞,2 .
+
+    The reason for replacing Ω∞ by Ω∞
+                                    0 is that C∞ is path-connected since each Cg is
+path-connected. All the path-components of Ω∞ AG+
+                                                ∞,2 have the same homotopy type
+
+
+                                             5
+since it is an H-space with π0 a group, so it does not matter which path-component we
+choose.
+    This version of the Madsen-Weiss theorem implies the more usual version in terms of
+mapping class groups since
+
+                       Hi (C∞ ) = lim Hi (Cg ) = lim Hi (π0 Diff(Sg,1 ))
+                                      g            g
+
+and by Harer stability these limits are actually achieved at finite stages and agree with the
+homology of mapping class groups of the closed surfaces Sg in the stable dimension range.
+    One might wish to have a scanning map C∞ → Ω∞ AG+
+                                                    ∞,2 that induces the homology
+isomorphism in the theorem, but constructing a scanning map like this involving surfaces
+with fixed boundary would require an additional argument and this is not actually needed
+for the proof of the theorem. Instead the isomorphism in the theorem will be obtained in
+a somewhat less direct fashion by recasting the scanning idea in a slightly different form.
+
+A Convention: We will sometimes say a map is a homotopy equivalence but only prove
+it is a weak homotopy equivalence, inducing isomorphisms on all homotopy groups. This
+will not be a problem since in the end we are only interested in homology groups and weak
+homotopy equivalences induce isomorphisms on homology. Some of the spaces we consider
+are known to have the homotopy type of CW complexes, when the qualifier “weak” can
+be dropped, but this may not be true in all cases.
+
+
+
+2. The Proof, Assuming Two Delooping Propositions
+    Let C(M, R∞ ) be the space of oriented smooth submanifolds of R∞ diffeomorphic to
+a given closed orientable manifold M of dimension d ≥ 0 . By definition, C(M, R∞ ) is the
+union of its subspaces C(M, Rn ) of oriented smooth submanifolds of Rn diffeomorphic to
+M , with the direct limit topology.
+   We enlarge C(M, Rn ) to the space Cn of all smooth oriented d -dimensional sub-
+manifolds of Rn that are not necessarily closed, but are properly embedded, so they are
+closed subspaces of Rn even if they are not closed manifolds. The manifolds in Cn need
+not be connected, and the empty manifold is allowed and will be important, serving as a
+basepoint. The topology on Cn is defined to have as basis the sets C(B, V ) where:
+ (i) B is a closed ball in Rn centered at the origin.
+(ii) V is an open set in the standard C ∞ topology on the space of d -dimensional smooth
+     compact submanifolds of B that are properly embedded (meaning that the intersec-
+
+                                              6
+     tion of the submanifold with ∂B is the boundary of the submanifold, and this is a
+     transverse intersection).
+(iii) C(B, V ) consists of all manifolds M in Cn meeting ∂B transversely such that M ∩B
+     is in V .
+The empty submanifold of B is allowed in (ii), and forms an open set V all by itself. It
+is not hard to check that the sets C(B, V ) , as B and V vary, satisfy the conditions for
+defining a basis for a topology. In this topology a neighborhood basis for a given manifold
+M ∈ Cn consists of the subsets of Cn obtained by choosing a ball B with ∂B transverse
+to M and taking all manifolds M ′ ∈ Cn such that M ′ ∩ B is C ∞ -close to M ∩ B , so in
+particular M ′ is also transverse to ∂B .
+    With this topology, Cn is path-connected when n > d since a given manifold M ⊂ Rn
+can be connected to the empty manifold by the path obtained by larger and larger radial
+expansion of Rn from any point in the complement of M . This path is continuous since
+in any ball B it is eventually constant, the empty manifold. If n = d , Cn consists of two
+points, the empty manifold and Rn itself. This case is not of interest for us, so we will
+assume n > d from now on without further mention.
+     For the proof of the Madsen-Weiss theorem, when we take d = 2 , it would be possible
+to restrict surfaces in Cn to have finite total genus over all components since the construc-
+tions we make will preserve this property, but there is no special advantage to adding this
+restriction.
+     The homotopy type of Cn is easy to determine completely:
+
+Proposition 2.1. Cn has the homotopy type of its subspace AG+
+                                                            n,d consisting of ori-
+ented affine linear d -planes in Rn , together with the empty set which gives the one-point
+compactification of the space of d -planes.
+
+Proof. Consider the operation of rescaling Rn from the origin by a multiplicative factor
+λ ≥ 1 , including the limiting value λ = ∞ . Applied to any manifold M defining a point
+in Cn this rescaling operation defines a path in Cn ending with a d -plane through the
+origin if 0 ∈ M , or with the empty set if 0 ∈
+                                             / M . This path does not depend continuously
+on M , however, since as we perturb a manifold containing 0 to one which does not, the
+endpoint of the path suddenly changes from a plane through the origin to the empty set.
+To correct for this problem we will modify the rescaling operation.
+     Let W be a tubular neighborhood of a given M ∈ Cn , so W is a vector bundle
+p : W → M with fibers orthogonal to M . If 0 ∈
+                                             / W then we do just what we did in the
+previous paragraph, rescaling Rn from the origin by factors ranging from 1 to ∞ . If
+0 ∈ W then we rescale by different factors in the directions of the tangent and normal
+
+                                             7
+planes to M at p(0) . In the tangential direction we again rescale by a factor going from
+1 to ∞ , but in the normal direction we rescale by a factor ranging from 1 to a number
+λ that decreases from ∞ to 1 depending on the position of 0 in the fiber of W , with λ
+being ∞ when 0 is near the frontier of W and 1 when 0 is near the zero-section M in
+W , so there is no normal rescaling at all near M . This gives a continuous deformation
+of Cn into the subspace AG+ n,d consisting of linear planes and the empty set, using the
+fact that the tubular neighborhood W can be chosen to vary continously with M . The
+                                                                                      n
+subspace AG+                                                                  +
+            n,d is taken to itself during the deformation, so the inclusion AGn,d ֒→ C is
+a homotopy equivalence.                                                                 ⊓
+                                                                                        ⊔
+
+    We filter Cn by subspaces Cn,0 ⊂ Cn,1 ⊂ · · · ⊂ Cn,n = Cn where Cn,k is the subspace
+of Cn consisting of manifolds that are properly embedded in Rn but actually lie in the
+subspace Rk × (0, 1)n−k . Thus a manifold M in Cn,k can extend to infinity in only k
+directions, and the projection M → Rk is a proper map, meaning that the inverse image
+of each compact set in Rk is compact in M .
+    There is a natural map Cn,k → ΩCn,k+1 obtained by translating a manifold in Cn,k
+from −∞ to +∞ in the (k + 1) st coordinate, which gives a loop in Cn,k+1 based at the
+empty manifold. Combining these maps and their iterated loopings gives a composition
+
+                         Cn,0 → ΩCn,1 → Ω2 Cn,2 → · · · → Ωn Cn
+This composition takes a closed manifold M in Cn,0 and translates it to infinity in all
+directions. This is essentially the same as scanning M with an infinitely large lens. By
+shrinking the lens to a small size one obtains a homotopy from this map Cn,0 → ΩCn to
+the original scanning map. However, this observation will not play a significant role in the
+proof of the Madsen-Weiss theorem. Instead, the proof will consist of two main steps. The
+first one is easier and is valid for all d ≥ 0 :
+
+(1) The map Cn,k → ΩCn,k+1 is a homotopy equivalence when k > 0 .
+
+This leaves only the map Cn,0 → ΩCn,1 to be considered. This is quite a bit more delicate
+except in the one easy case d = 0 which we discuss in Section 5. A rough statement of the
+second step in the case of the Madsen-Weiss theorem is:
+
+(2) When d = 2 the map Cn,0 → ΩCn,1 becomes a homology equivalence after passing
+    to suitable limits involving letting n and the genus g to go to infinity, so we obtain
+    isomorphisms H∗ (C∞ ) ∼             ∞,1
+                             = H∗ (Ω0 C ) .
+
+    In order to prove the statements (1) and (2) we will not work directly with loopspaces
+but rather with classifying spaces, more specifically with classifying spaces of topologi-
+
+                                             8
+cal monoids. Recall that a topological monoid is a space M with a continuous product
+M × M → M which is associative and has a two-sided identity element, but need not
+have inverses. The space Cn,k is an H-space when k < n , with the product given by
+juxtaposition in the (k + 1) st coordinate, after compressing the interval (0, 1) in this co-
+ordinate to (0, 1/2) as in the definition of composition of loops. The homotopy-identity
+element for the H-space structure is the empty configuration, and the multiplication is
+homotopy-associative. Just as the Moore loopspace provides a monoid version of the usual
+loopspace, with strict associativity and a strict identity, there is a monoid version Mn,k of
+Cn,k . This is the subspace of Cn × [0, ∞) consisting of pairs (M, a) with M a manifold
+in Rk × (0, a) × (0, 1)n−k−1 . The product in Mn,k is again given by juxtaposition in the
+(k + 1) st coordinate, but this time without any compression. It is easy to see that the
+inclusion Cn,k ֒→ Mn,k as pairs (M, 1) is a homotopy equivalence.
+     A topological monoid M has a classifying space B M . Let us recall the construction.
+In the special case that M has the discrete topology, B M is the ∆ -complex having a
+single vertex, an edge for each element of M , and more generally a p-simplex for each
+p-tuple (m1 , · · · , mp ) of elements of M . The faces of such a simplex are the (p − 1) -
+tuples obtained by deleting the first or last mi or by replacing two adjacent mi ’s by their
+                                                   `
+product in M . Thus B M is a quotient space of p ∆p × Mp with certain identifications
+over ∂∆p × Mp for each p. Essentially the same construction can be made when M
+has a nontrivial topology. One gives each ∆p × Mp the product topology and then one
+                    `
+forms a quotient of p ∆p × Mp using the same rules for identifications over the subspaces
+∂∆p × Mp as before. Thus B M is built from p-simplices for all p ≥ 0 , where the set of
+p-simplices for fixed p is not a discrete set but forms a space Mp . In particular there is a
+single 0 -simplex.
+    There is a natural map M → ΩB M obtained by taking p = 1 in the definition of
+B M , so each element m ∈ M gives an edge ∆1 ×m in B M which is a loop at the basepoint
+vertex of B M . In favorable cases this map M → ΩB M is a homotopy equivalence. This
+happens when π0 M = 0 for example, and more generally when π0 M is a group with
+respect to the multiplication coming from the monoid structure. A proof of this classical
+fact is given in Appendix D.
+    In Section 3 we will prove the following result which will complete step (1) of the
+proof:
+
+Proposition 3.1. For k > 0 and d ≥ 0 the monoid π0 Mn,k is a group and B Mn,k ≃
+Cn,k+1
+ 0     , the component of Cn,k+1 containing the empty manifold. Hence Cn,k ≃ ΩCn,k+1
+when k > 0 and d ≥ 0 .
+
+                                             9
+    Here the last statement follows from the first two by the chain of equivalences
+
+                     Cn,k ≃ Mn,k ≃ ΩB Mn,k ≃ ΩCn,k+1
+                                               0     = ΩCn,k+1
+
+where the last equality holds since ΩX only involves the basepoint component of X . The
+proof of Proposition 3.1 will show in fact that the natural map Cn,k → ΩCn,k+1 is a
+homotopy equivalence.
+   In the more delicate case k = 0 the monoid π0 Mn,0 is not a group since all the
+manifolds in each path component of Mn,0 are diffeomorphic and the disjoint union of
+two nonempty manifolds is not empty. For an arbitrary topological monoid M , if the map
+M → ΩB M is a homotopy equivalence then π0 M must be a group since the induced map
+π0 M → π0 ΩB M is a homomorphism and π0 ΩB M = π1 B M is a group. Thus the map
+Cn,0 → ΩCn,1 cannot be a homotopy equivalence.
+    Another issue is that the product operation in Mn,0 is disjoint union whereas what
+one needs in the Madsen-Weiss theorem is a sum operation within the realm of connected
+surfaces. With this in mind we will replace Mn,0 in the case d = 2 by a monoid of
+connected surfaces with nonempty boundary, so that gluing two such surfaces together
+by identifying a boundary circle of one with a boundary circle of the other preserves
+connectedness.
+    In order to define the new monoid, we first consider the cylinder Z = R×C ⊂ R×Rn−1
+where C is a fixed circle in the first two coordinates of Rn−1 centered at the origin and
+of small radius, say radius 1/2 . Then we let Mn be the space of pairs (S, a) where S is
+a compact connected orientable surface in [0, a] × (−1, 1)n−1 such that:
+                                                             
+ (i) ∂S consists of the two circles Z ∩ {0, a} × (−1, 1)n−1 , and S is tangent to Z to
+     infinite order along these two circles. Furthermore, S − ∂S ⊂ (0, a) × (−1, 1)n−1 .
+                                                                          
+(ii) S ∩ [0, a] × (−1, 0] × (−1, 1)n−2 = Z ∩ [0, a] × (−1, 0] × (−1, 1)n−2 .
+
+
+
+
+We also allow the limiting case a = 0 when S degenerates to just a circle. The monoid
+structure in Mn is given by juxtaposition in the first coordinate of Rn . The condition
+of tangency to infinite order in (i) guarantees that the monoid operation stays within the
+realm of smooth surfaces.
+
+                                           10
+    We will only need the case n = ∞ , so we set M∞ = ∪n Mn with the direct limit
+topology as usual. In Section 4 we will prove:
+
+Proposition 4.1. B M∞ ≃ C∞,1 .
+
+      The path-components of M∞ are the subspaces M∞g consisting of surfaces of genus
+           ∞
+g , so π0 M is the monoid Z≥0 of nonnegative integers under addition. We have seen
+that for a monoid M such that π0 M is not a group, the map M → ΩB M cannot be a
+homotopy equivalence since π0 ΩB M is always a group, namely π1 B M . It is not hard to
+see that π1 B M is the group completion of π0 M , which can be defined as the group with a
+presentation consisting of the elements of π0 M as generators and the multiplication table
+of π0 M as relations. For example if π0 M is the monoid Z≥0 of nonnegative integers under
+addition then its group completion is just Z.
+    When π0 M is only a monoid there is a theorem, known as the Group Completion
+Theorem, that describes the homology of ΩB M in terms of the homology of M , under
+certain hypotheses on M . To state this let us assume for simplicity that π0 M is Z≥0 . The
+path-components Mp of M then correspond to integers p ≥ 0 and there is a stabilization
+map Mp → Mp+1 given by taking the product (on the right, say) with any element of
+M1 . In our application this map will be an injection Mp ֒→ Mp+1 so one can form the
+direct limit of the Mp ’s as ∪p Mp , with the direct limit topology. The Group Completion
+Theorem then says that if the multiplication in M is homotopy-commutative, then there
+is an isomorphism
+                                H (Z × ∪ M ) ∼
+                                ∗       p   p   = H (ΩB M)
+                                                   ∗
+
+On the left side we have π0 (Z × ∪p Mp ) = Z since ∪p Mp is path-connected, as each Mp
+is path-connected. Thus passing from M to Z × ∪p Mp has the effect on π0 of converting
+Z≥0 to its group completion Z . It also has the effect of forcing all the path-components
+of Z × ∪p Mp to be homotopy equivalent, just as they are in ΩB M since a loopspace is an
+H-space with π0 a group.
+    We can apply the Group Completion Theorem to M = M∞ since it is easy to see
+that the multiplication in M∞ is homotopy-commutative, using the same sort of idea as
+is used to show that higher homotopy groups are abelian after π1 . Restricting to a single
+path-component, we then obtain isomorphisms H∗ (∪g M∞      ∼             ∞
+                                                       g ) = H∗ (Ω0 B M ) .
+    The isomorphism in the Madsen-Weiss Theorem is now obtained by composing seven
+isomorphisms:
+
+                              H∗ (C∞ ) ∼         ∞
+                                       = H∗ (∪g Mg )                                    (1)
+                                       ∼           ∞
+                                       = H∗ (Ω0 B M )                                   (2)
+
+                                            11
+                                         ∼         ∞,1
+                                         = H∗ (Ω0 C )                                     (3)
+                                         ∼
+                                         = lim H (Ω C )
+                                                       n,1
+                                                                                          (4)
+                                                  ∗   0
+                                            n
+                                         ∼          n n
+                                         = lim H∗ (Ω0 C )                                 (5)
+                                            n
+                                         ∼          n   +
+                                         = lim H∗ (Ω0 AGn,2 )                             (6)
+                                            n
+                                         ∼
+                                         = H∗ (Ω∞   +
+                                                0 AG∞,2 )                                 (7)
+
+The first isomorphism follows from the fact that C∞ = ∪g Cg and Cg ≃ M∞
+                                                                      g (and in fact Cg
+and M∞ g are homeomorphic). The second isomorphism comes from the Group Completion
+Theorem as we have just noted. The third isomorphism follows from Proposition 4.1. The
+fourth isomorphism holds since homology and the loopspace functor commute with direct
+limit for a space that is the union of a sequence of subspaces with the direct limit topology.
+The fifth isomorphism follows by repeated applications of Proposition 3.1. The sixth is
+Proposition 2.1, and the seventh follows in the same way as the fourth.
+
+
+
+
+3. Delooping: the Easy Cases
+    In this section we prove the first of the two missing steps from the proof in Section 2:
+
+Proposition 3.1. For k > 0 and d ≥ 0 the monoid π0 Mn,k is a group and B Mn,k ≃
+Cn,k+1
+ 0     , the component of Cn,k+1 containing the empty manifold. Hence Cn,k ≃ ΩCn,k+1
+when k > 0 and d ≥ 0 .
+
+    First we give a more precise version of the first assertion.
+
+Lemma 3.2. π0 Cn,k = 0 when k > d , while for 0 < k ≤ d π0 Cn,k is isomorphic to the
+group ΩSO
+       d−k,n−k of cobordism classes of closed oriented (d − k) -manifolds in R
+                                                                               n−k
+                                                                                   , where
+cobordisms are embedded in Rn−k × I .
+
+    The sum operation in ΩSO
+                          d−k,n−k is given by disjoint union, after translating the two
+submanifolds of Rn−k to lie on opposite sides of a hyperplane. The inverse of a given
+manifold M ⊂ Rn−k is obtained by reflecting across a hyperplane, where a cobordism
+between the union of M and its reflection is given by a U-shaped embedding of M × I in
+Rn−k × I , with both ends of M × I lying in the same end of Rn−k × I .
+    For the Madsen-Weiss theorem we only need these cobordism groups when d = 2 and
+k = 1, 2 . The actual calculation of these groups will not be needed, but it is not hard to
+see that they are given by ΩSO                 SO
+                             0,n−2 = Z and Ω1,n−1 = 0 .
+
+
+                                             12
+Proof of 3.2. A point in Cn,k is a d -dimensional manifold M in Rn with the projection
+p : M → Rk a proper map. By a small perturbation of M we can arrange that p is
+transverse to 0 ∈ Rk . If k > d this implies that p−1 (0) is empty. Then there is a ball B
+about 0 in Rk disjoint from p(M ) since p(M ) is a closed subset of Rk , the map p being
+proper. Expanding the Rk factor of Rn radially from 0 until B covers all of Rk then
+gives a path in Cn,k from M to the empty manifold, so π0 Cn,k = 0 in the cases k > d .
+                                                                                       
+     When k ≤ d transversality and properness of p imply that p−1 (0) = M ∩ {0}×Rn−k
+is a closed submanifold M0 ⊂ M of dimension d − k . The manifold M0 inherits an
+orientation from the given orientation of M and an orientation of Rk which pulls back to
+an orientation of the normal bundle of M0 in M . Thus M0 gives an element of ΩSO   d−k,n−k .
+By a standard transversality argument, the association M 7→ M0 determines a well-defined
+map ϕ : π0 Cn,k → ΩSOd−k,n−k , and this is a homomorphism since the sum is disjoint union in
+both cases. Moreover, ϕ is surjective since we can choose M = Rk ×M0 for any cobordism
+class [M0 ] ∈ ΩSO
+               d−k,n−k .
+    To show that ϕ is injective, first deform a given M near M0 so that M agrees
+with Rk × M0 in a small neighborhood of M0 . Then by radial expansion of Rk we can
+construct a path in Cn,k connecting M to Rk × M0 , so we may assume M = Rk × M0 .
+If we are given another M ′ ∈ Cn,k with [M0 ] = [M0′ ] in ΩSO
+                                                           d−k,n−k , we may similarly
+assume M ′ = Rk × M0′ . Since [M0 ] = [M0′ ] there is a cobordism V ⊂ I × Rn−k from
+M0 to M0′ , and we can assume this lies in I × (0, 1)n−k ⊂ I × Rn−k . Let W be the
+submanifold Rk−1 × V ⊂ Rn , extended by M in Rk−1 × (−∞, 0] × Rn−k and by M ′ in
+Rk−1 × [1, ∞) × Rn−k . Translating W from +∞ to −∞ in the k th coordinate of Rn
+then gives a path in Cn,k from M to M ′ . This shows ϕ is injective.          ⊓
+                                                                              ⊔
+
+
+
+
+    Now we turn to proving the second assertion of Proposition 3.1, the homotopy equiv-
+alence B Mn,k ≃ Cn,k+1
+                 0     . We will define a map σ : B Mn,k → Cn,k+1
+                                                             0     and show this induces
+                                                      n,k
+isomorphisms on all homotopy groups. A point in B M       is given by a p-tuple of points
+m1 , · · · , mp in Mn,k and a point in ∆p with barycentric cooordinates w0 , · · · , wp . When
+we form the product m1 · · · mp we obtain manifolds M1 , · · · , Mp whose (k + 1) st coordi-
+
+                                             13
+nates lie in intervals [a0 , a1 ], [a1 , a2 ], · · · , [ap−1 , ap ] for 0 = a0 ≤ a1 ≤ · · · ≤ ap . The union
+of the manifolds Mi is a manifold M ∈ Cn,k+1 . However, M does not depend continu-
+ously on the given point of B Mn,k since as the weight w0 or wp goes to 0 , the manifold
+M1 or Mp is suddenly deleted from M . Furthermore, when w0 goes to 0 the remaining
+manifold is suddenly translated a distance a1 to the left in the (k + 1) st coordinate of
+Rn . The latter problem can easily be resolved by dropping the restriction a0 = 0 and
+                                                                   P
+translating in the (k + 1) st coordinate so that the barycenter b = i wi ai is at 0 .
+      To fix the other problem we choose “upper and lower barycenters” b+ and b− by
+                                                                     P
+letting a+                      −
+           i = max{ai , b} and ai = min{ai , b} , then setting b
+                                                                 +
+                                                                   =        +
+                                                                      i wi ai and b
+                                                                                    −
+                                                                                       =
+P        −                      −        +
+   i wi ai . Then we have a0 ≤ b ≤ b ≤ b ≤ ap , with all these inequalities strict unless
+they are all equalities (and hence M is empty). Now we define the map σ : B Mn,k →
+Cn,k+1
+ 0     by taking the part of M in the open slab S(b− , b+ ) = Rk × (b− , b+ ) × Rn−k−1
+and stretching this slab out to Rn by stretching the interval (b− , b+ ) to (−∞, +∞) in
+the (k + 1) st coordinate. More precisely, let L : Rn → Rn be the map that is the identity
+in all coordinates except the (k + 1) st coordinate, where it is the composition of a fixed
+identification of (−∞, +∞) with (−1, +1) followed by the unique affine linear map taking
+[−1, +1] onto [b− , b+ ] . Then σ of the given point in B Mn,k is defined to be L−1 (M ) .
+Note that this definition works even in the degenerate case that b+ = b− = 0 when we
+are just stretching the empty manifold. The map σ is continuous since it is continuous on
+each product ∆p × (Mn,k )p and is consistently defined when weights go to 0 . The image
+of σ lies in the path-component Cn,k+1
+                                 0      of Cn,k+1 containing the empty manifold since
+the image contains the empty manifold and B Mn,k is path-connected.
+    To show that σ∗ : πq (B Mn,k ) → πq (Cn,k+1 ) is surjective, represent an element of the
+target group by a map f : Dq → Cn,k+1 taking ∂Dq to the basepoint of Cn,k+1 , the empty
+manifold. Thus we have manifolds Mt = f (t) ∈ Cn,k+1 for t ∈ Dq . For the moment let
+us fix a value of t and let M = Mt . The projection p : M → Rk+1 is a proper map,
+so its set of regular values is open and dense in Rk+1 . Let x be a regular value and let
+Mx = p−1 (x) , a manifold of dimension d − k − 1 . In the cases d < k + 1 the manifold
+Mx is empty. Then we can choose a closed ball B ⊂ Rk and a closed interval J ⊂ R such
+that B × J is disjoint from p(M ) in Rk+1 . By expanding each ball B × {a} for a ∈ J to
+Rk × {a} , damping this expansion down to zero near ∂J , we obtain a deformation of M
+to a manifold disjoint from the slices S(a) = Rk × {a} × (0, 1)n−k−1 for a in a subinterval
+of J .
+     When d ≥ k + 1 the manifold Mx can be nonempty, and we will achieve the same dis-
+jointness property by using a process somewhat like the one used in the proof of Lemma 3.2.
+First perturb M to make it agree with Rk+1 × Mx over a neighborhood B × J of x .
+
+                                                    14
+Next, do the damped radial expansion in slices S(a) as in the cases d < k + 1 to make M
+agree with Rk+1 × Mx in all slices S(a) for a in a subinterval J ′ of J . Since M is in the
+component Cn,k+1
+             0     of Cn,k+1 , the cobordism class [Mx ] is zero in ΩSO
+                                                                     d−k−1,n−k−1 , so Mx
+bounds a manifold V in I × Rn−k−1 . We place the I factor of this product in the k th
+coordinate of Rk . Then translation in this coordinate as in the proof of Lemma 3.2, but
+now damped down near ∂J ′ , gives a further deformation of M to make it disjoint from
+all slices over a subinterval of J ′ .
+
+
+
+
+     For nearby values of t we can use the same product B × J . Using compactness of
+D we can then choose a cover of Dq by finitely many open sets Vi with corresponding
+ q
+
+products Bi × Ji as above for t ∈ Vi . After shrinking the intervals Ji appropriately,
+we can assume they are all disjoint. Then we can perform the deformations of Mt for
+different products Bi ×Ji independently, damping the deformation for Bi ×Ji down to zero
+outside slightly smaller open sets Ui that still cover Dq . Performing these damped down
+deformations for all the products Bi × Ji produces a new map f : Dq → Cn,k+1 homotopic
+to the old one by a homotopy which is constant for t ∈ ∂Dq since the manifold Mt is
+empty there. We discard the original f and work now with the new family f (t) = Mt .
+     We can choose slices S(ai ) disjoint from Mt over Ui with ai ∈ Ji , and we can
+choose corresponding weights wi via a partition of unity subordinate to the cover {Ui }
+of Dq . Over a neighborhood of ∂Dq we can choose just the slice S(0) with weight 1 .
+By taking the parts of Mt in the slabs between adjacent slices S(ai ) we obtain a map
+g : Dq → B Mn,k taking ∂Dq to the basepoint. The composition σg is homotopic to f by
+                               +
+expanding the intervals (b−
+                          t , bt ) for the family g(t) to (−∞, +∞) , thereby deforming the
+maps Lt to the identity.
+     The argument for showing σ is injective on πq is similar. Here we start with a map
+g : S → B Mn,k and a map f : Dq+1 → Cn,k+1 restricting to σg on S q . We deform the
+     q
+
+family f (t) = Mt by the same procedure as before, expanding in various slices S(a) to
+make Mt disjoint from slices S(ai ) over sets Ui covering Dq+1 , with weights wi coming
+from a partition of unity supported in the cover {Ui } . Over S q this deformation of f
+induces a corresponding deformation of g since slices are preserved during the deformation.
+We use the same notations for the new f and g . The maps Lt that occur in the definition
+
+                                            15
+of σg are initially defined over S q , and we extend them so that they are defined over all of
+Dq+1 by deforming them to the identity as t moves across a collar neighborhood of S q in
+Dq+1 , then taking them to be the identity over the rest of Dq+1 . We then obtain a map
+f ′ : Dq+1 → B Mn,k by taking the parts of Lt (Mt ) between the slices Lt (S(ai )) , with the
+weights wi on these slices. A homotopy from f to f ′ on S q is obtained by letting the
+weights on the slices for f decrease to 0 while the weights on the slices Lt (S(ai )) for f ′
+increase from 0 to their chosen values wi . Thus f is homotopic to a map that extends
+over Dq+1 , which shows that σ is injective on πq .                                         ⊓
+                                                                                            ⊔
+
+
+
+
+4. Delooping: the Harder Case
+    In this section we restrict to the case of surfaces, so d = 2 . We also take C∞,1 to
+consist of surfaces in R × (−1, 1)∞ rather than R × (0, 1)∞ . This does not change the
+homeomorphism type of C∞,1 , and the new C∞,1 fits better with the definition of M∞ ,
+so there is a map σ : B M∞ → C∞,1 defined just like the σ in the preceding section.
+
+Proposition 4.1. The map σ : B M∞ → C∞,1 is a homotopy equivalence.
+
+Proof. We break the argument into two parts by defining a space Cs∞,1 with maps
+                                         ρ          τ
+                                 B M∞ ←− Cs∞,1 −→ C∞,1
+
+such that the composition σρ is homotopic to τ , and then we show that ρ and τ are
+homotopy equivalences. This implies that σ is also a homotopy equivalence.
+     A point in Cs∞,1 consists of an oriented surface S in C∞,1 with numbers a0 ≤ · · · ≤ ap ,
+p ≥ 0 , and corresponding weights wi ≥ 0 summing to 1 , such that:
+                                                               
+ (i) S ∩ R × (−1, 0] × (−1, 1)∞ = Z ∩ R × (−1, 0] × (−1, 1)∞ , a half-cylinder B that we
+     call the base of S . Furthermore, the orientation of S agrees with a fixed orientation
+     of B .
+(ii) S ∩ S(ai ) = Z ∩ S(ai ) for each i and S is tangent to Z to infinite order along these
+      circles.
+(iii) The intersection of S with each slab between adjacent slices S(ai ) and S(ai+1 ) is
+    connected.
+When a weight wi is zero the corresponding ai can be deleted. There is a map ρ : Cs∞,1 →
+B M∞ obtained by restricting to the parts of surfaces between adjacent slices, and there
+is a map τ : Cs∞,1 → C∞,1 forgetting the extra data. The composition σρ is homotopic to
+τ by expanding the intervals [b− , b+ ] in the definition of σ to [−∞, +∞] .
+
+                                             16
+     First we show that ρ induces isomorphisms on all homotopy groups. For this it suffices
+to show that for every map f : Dq → B M∞ with a lift fe: ∂Dq → Cs∞,1 there is a homotopy
+of f and a lifted homotopy of fe to new maps g and ge such that eg extends to a lift of g
+over all of Dq , for arbitrary q > 0 . (Both B M∞ and Cs∞,1 are path-connected so there
+is no need to consider the case q = 0 .)
+
+     As in the definition of σ , we view f as defining a family of surfaces St in R∞ with
+slices S(ai (t)) and weights wi (t) , for t ∈ Dq . The lift fe over ∂Dq gives an enlargement
+of the surfaces St so that they extend to ±∞ in the first coordinate. We can assume
+the barycenters b(t) are always at 0 . The slices S(ai (t)) cut St into pieces, and the first
+step in the deformation of f and fe is to spread these pieces apart by inserting “padding”
+consisting of a piece of the cylinder Z of width εwi (t) at the slice S(ai (t)) for each i. This
+spreads the slices apart, and we take the new S(ai (t)) to be at the center of the inserted
+piece of Z . Again we translate so that the new barycenters are at 0 . Letting ε go from
+0 to 1 gives a deformation of f and fe to new maps f and fe which we use for the next
+step of the argument.
+
+     We replace the construction of the intervals (b− , b+ ) by a different construction of
+intervals (c− (t), c+ (t)) that contain at least one point ai (t) as follows. For fixed t ∈ Dq
+choose slices S(a− (t)) and S(a+ (t)) from among the slices S(ai (t)) with nonzero weights
+wi (t) , such that a− (t) ≤ 0 ≤ a+ (t) . Expand the interval [a− (t), a+(t)] slightly to an
+interval [ϕ− (t), ϕ+ (t)] by including a little of the padding around a− (t) and a+ (t) . The
+same choices of a± (t) and ϕ± (t) work in a small neighborhood U of t -values. Extend the
+functions ϕ± (t) over all of Dq by letting them be 0 outside a slightly larger neighborhood
+V and interpolating continuously in V − U . Since Dq is compact, finitely many such
+neighborhoods U suffice to cover Dq . Call these neighborhoods Uj , with corresponding
+                    +                    +                                         +
+intervals [a−                    −                                          −
+            j (t), aj (t)] and [ϕj (t), ϕj (t)] . Now define the interval [c (t), c (t)] to be
+             +                                        +
+∪j [ϕ−                                        −
+     j (t), ϕj (t)] . The key properties of [c (t), c (t)] are that it is contained in a small
+                                                            +
+neighborhood of [a0 (t), ap (t)] and it contains [a−j (t), aj (t)] for t ∈ Uj .
+
+     Let g(t) be the family obtained from f (t) by replacing the slices S(ai (t)) with the
+                                                                                       q
+slices S(a±                      ±
+          j (t)) , with weights wj (t) given by a partition of unity for the cover of D by
+the neighborhoods Uj . A homotopy from the family f (t) to the family g(t) is obtained
+by letting the weights go linearly from their values for f (t) to their values for g(t) . Over
+∂Dq this lifts to a homotopy of fe(t) to a lift ge(t) of g(t) since we are not changing S .   t
+                                        −      +
+Finally, by expanding the intervals (c (t), c (t)) to (−∞, +∞) we obtain homotopies of
+g(t) and ge(t) to h(t) and e
+                           h(t) such that h(t) lifts to e
+                                                        h(t) over all of Dq . Thus ρ induces
+isomorphisms on all homotopy groups.
+
+                                              17
+     It remains to see that the map τ : Cs∞,1 → C∞,1 is a homotopy equivalence. Its image
+is contained in the subspace Cb∞,1 ⊂ C∞,1 consisting of surfaces satisfying just the ‘base’
+condition (i) above. It is easy to see that the inclusion map i : Cb∞,1 → C∞,1 is a homotopy
+equivalence by constructing a homotopy inverse j : C∞,1 → Cb∞,1 as follows. For S ∈ C∞,1
+let S ′ be the surface obtained from S by compressing the interval of the second coordinate
+x2 from (−1, 1) to (1/2, 1) . Then let j(S) = S ′ ∪Z . A homotopy from ij to the identity is
+obtained by first realizing the x2 -compression via an isotopy, then introducing the cylinder
+Z by an isotopy, namely, take the part of Z with x1 ≥ t and cap off its boundary circle
+with a disk (smoothly), then let t go from +∞ to −∞ to obtain the isotopy. A homotopy
+from the other composition ji to the identity can be constructed as an isotopy from S ′ ∪ Z
+to S for S ∈ Cb∞,1 which ‘zips’ S ′ to Z by the isotopy shown in the figure below, moving
+the ‘zipper’ from +∞ to −∞ and re-expanding (S − B)′ back to S − B .
+
+
+
+
+     To show that the map Cs∞,1 → Cb∞,1 induces an isomorphism on homotopy groups we
+start with f : Dq → C∞,1 and a partial lift fe: ∂Dq → C∞,1 . There will be three steps. As
+                      b                                   s
+notation we let S[a, b] denote the slab between the slices S(a) and S(b) .
+(1) In this easy preliminary step we deform f and fe so that the slices S(ai (t)) in the
+family fe all lie in the slab S[−1, 1] . First we deform fe so that the slices S(a (t)) vary
+                                                                                    i
+continuously not just over the set where the corresponding weights wi (t) are nonzero,
+but over the closure of this set as well. We do this by modifying the weights by stretching
+the interval [0, max{wi (t)}] to [− max{wi (t)}, max{wi (t)}] , discarding slices whose weights
+are then negative, and rescaling so that the new weights sum to 1 . After doing this we
+do translations in the first coordinate of R∞ to move the barycenter of the set of slices
+S(ai (t)) to 0 for all t ∈ ∂Dq . Then we rescale the first coordinate to squeeze all these
+slices into S[−1, 1] , using the fact that the values ai (t) are bounded as t ranges over the
+compact space ∂Dq . These translations and rescalings over ∂Dq can be extended over
+Dq , damping them off as we move into the interior of Dq .
+
+(2) Next we deform the family St so that for each t , the subspace St ∩ S[−1, 1] of St
+is contained in the base component of St , the component containing the half-cylinder B .
+
+                                              18
+Thus, each point of St ∩ S[−1, 1] will be joinable to B by a path in St , although this path
+need not stay in S[−1, 1] . We can achieve this as follows. For fixed t choose a slab S[a, b]
+slightly larger than S[−1, 1] with S(a) and S(b) transverse to St . If a component C of
+St ∩ S[a, b] does not lie in the base component of St , we can create a tube in S[a, b] joining
+C to the base component by the deformation shown in the figure below which takes a pair
+of small
+
+
+
+
+disks in St , one in C and the other near B , and drags these disks to ±∞ in the first
+coordinate of R∞ to create a pair of tubes to ±∞ , then these tubes are brought back
+from ±∞ joined together so that the given orientation of St extends over the new tube.
+We can do this simultaneously for each such component C , and after this is done, all of
+St ∩ S[−1, 1] lies in the base component of St since St ∩ S[a, b] lies in the base component.
+
+     To do this procedure for all t we first use compactness of Dq to choose a finite cover
+of Dq by open sets Ui with slabs S[ai , bi ] containing S[−1, 1] such that the slices S(ai )
+and S(bi ) are transverse to St over the closure U i of Ui . The pairs of disks that we
+use to create tubes making St ∩ S[ai , bi ] connected will be small neighborhoods of pairs
+of points pij and qij , with qij near B . The main concern will be choosing all these
+points to be disjoint for fixed t and varying i and j . This is easy for the points qij
+which lie near the fixed B , so we focus attention on the points pij . We choose the pij by
+induction on i. For the induction step of choosing pij over U i , note first that the surface
+St ∩ S[ai , bi ] varies by isotopy as t ranges over U i , so we can regard St ∩ S[ai , bi ] as being
+independent of t over U i . Inductively we assume we have already chosen points pkl for
+k < i, each point pkl being defined and varying continuously over some closed ball in U k ,
+with all these points pkl being disjoint for each t . To begin the induction step we make
+an initial choice of points pij in the components of St ∩ S[ai , bi ] disjoint from the base.
+To achieve disjointness from the previously chosen pkl we will use a simple “scattering”
+trick to replace each pij by a finite number of nearby points, using the following easy fact
+whose proof we leave as an exercise:
+
+                                                19
+Lemma 4.2. Let K be a closed set in Dp × Dq intersecting each slice Dp × {t} in a finite
+set, with p > 0 . Then there exist finitely many distinct points pr ∈ Dp with corresponding
+open disks Vr covering Dq such that K is disjoint from {pr } × V r for each r .
+
+We apply this once for each point pij , with Dp a neighborhood of pij in St , Dq = U i ,
+and K the union of the previously chosen points pkl for t -values in U i . The result is
+that each pij is replaced by a number of points pijr with the desired disjointness. For
+convenience we relabel these points just as pij , each pij living over a subball U ij of U i .
+This gives the induction step for choosing the points pij .
+    Having chosen all the pairs pij , qij to be disjoint for each t , we can deform the family
+St to create tubes joining these pairs, damping the deformation for the tube from pij to
+qij down to zero near the boundary of U ij , with this damping being done in such a way
+that the full isotopies take place in slightly shrunk versions of Uij that still cover Dq .
+Since the ambient space is R∞ , we can choose all the tubes to be disjoint at all times.
+Over ∂Dq we can choose the tubes to lie outside the slices S(ai ) and the slabs between
+these slices since the points of St in these slices and slabs already lie in the base component
+of St , and we arranged in step (1) that these slices and slabs lie inside S[−1, 1] , so we can
+choose the tubes to go to either +∞ or −∞ so as to miss these slices and slabs. This
+guarantees that the deformation of f that we have constructed induces a corresponding
+deformation of fe over ∂Dq .
+(3) The final step is to make each St intersect at least one slice S(a) in S[−1, 1] trans-
+versely in a connected set, a single circle. The idea will be to insert tubes that lie in a
+neighborhood of S(a) so as to join different circles of St ∩ S(a) together, as shown in the
+figure below. Doing this for parametrized families will require a more refined variant of the
+procedure we used in the preceding step to connect different components of St together.
+
+
+
+
+Suppose St meets a slice S(a) in S[−1, 1] transversely in more than one circle. For each
+circle Cj of St ∩ S(a) that does not intersect the base choose a path αj in St − B from
+a point pj ∈ Cj to a point qj near B . Step (2) guarantees that such a path exists. We
+can assume that αj is an embedded arc. (It will not matter if αj intersects some Ck ’s at
+interior points of αj .) We extend the end of αj near B by an arc to −∞ parallel to B ,
+
+                                              20
+still calling the extended arc αj . We also insert corresponding disjoint arcs βj parallel to
+B and closer to it, extending to +∞ as well as −∞ .
+     If the arcs αj are in general position, they will intersect only in interior points that lie
+in the sections not parallel to the baseline, and then we can eliminate any intersections of
+αj with other αk ’s by pushing these αk ’s off the end of αj at pj by an isotopy St → St
+supported near αj . This does not introduce any intersections among the other αk ’s since
+the isotopy of the αk ’s is the restriction of an isotopy of St . Doing this for each αj in
+turn, we can thus take all the αj ’s (and βj ’s) to be disjoint.
+    We can modify St by a surgery operation that attaches a thin tube Tj joining a point
+xj of αj to the point yj of βj having the same first coordinate as xj . We embed Tj in
+R∞ so that it lies in a small neighborhood of the slice through xj and yj . By letting xj
+move along αj from the end at −∞ to the end at Cj while yj moves simultaneously along
+βj we obtain a deformation of St . Doing this for all the circles Cj at once, we deform St
+to a surface St′ such that St′ ∩ S(a) is connected. (There is no problem with making all
+the tubes Tj disjoint in R∞ .) By an isotopy of St′ supported near S(a) and fixed on B
+we can then make St′ coincide with the cylinder Z near S(a) .
+    For nearby t -values the curves Cj in St ∩ S(a) vary by small isotopies and we can
+take the arcs αj and βj to vary by small isotopies as well, staying disjoint for each t . By
+compactness of Dq we can then choose a cover of Dq by open balls Ui such that over U i
+there is a slice S(ai ) in S[−1, 1] transverse to St , with arcs αij going from −∞ to the
+components Cij of St ∩ S(ai ) disjoint from the baseline, along with corresponding arcs
+βij near the baseline. For fixed i all the arcs αij and βij are disjoint for each t ∈ U i ,
+and our next task will be to make them disjoint as i varies as well.
+    The arcs βij are parallel to B and can easily be chosen to be disjoint by induction on
+i. For the arcs αij we also proceed by induction on i, so we assume inductively that we
+have already made the arcs αkl with k < i disjoint for each t . We will show in the next
+paragraph how we can do a preliminary adjustment so that for each t ∈ U i , no arc αij
+passes through the endpoint pkl of another αkl with k < i. Assuming this has been done,
+any intersections of αij with arcs αkl for k < i will involve only interior points of αkl .
+These intersections can be eliminated by the same sort of procedure as before, pushing the
+arcs αkl off the end of αij at pij by an isotopy St → St supported near αij , damping
+this isotopy down to zero outside Ui .
+     The preliminary adjustment so that arcs αij are disjoint from the endpoints pkl of
+arcs αkl with k < i can be done by a variant of the scattering trick used in step (2) above.
+First thicken the arcs αij to narrow bands of arcs parallel to αij . Then for a fixed t all
+but finitely many of these parallel arcs will be disjoint from the finitely many endpoints
+
+                                               21
+pkl with k < i. Choose one of these arcs disjoint from pkl ’s for each j . These choices
+extend continuously for nearby values of t as well. Thus we can cover U i by finitely
+many neighborhoods Uir with new choices of arcs αijr in each of these neighborhoods,
+such that αijr satisfies the disjointness condition we are trying to achieve. We can choose
+the arcs αijr to be disjoint from each other for each t ∈ U i since we are free to choose
+αijr from an open set of the arcs parallel to αij . We choose corresponding slices S(air )
+near S(ai ) and connect αijr to the corresponding circle
+Cijr of St ∩ S(air ) as in the figure. To complete the
+induction step we then replace Ui , S(ai ) , Cij , and αij
+by the collections Uir , S(air ) , Cijr , and αijr and then
+relabel to eliminate the extra subscripts r .
+     Having all the arcs αij and βij disjoint, we can use these to construct a well-defined
+deformation of the family St to create tubes Tij over Ui making St agree with the cylinder
+near S(ai ) as described earlier, damping this deformation down near the boundary of Ui
+as usual. For the resulting family St′ there is one problem remaining, however. Because
+the deformations for each Ui are damped off near the boundary of Ui , the tubes Tij
+may intersect the slices S(ak ) for other Uk ’s, perhaps destroying the connectedness of the
+intersections St′ ∩ S(ak ) . To avoid this problem we first make sure the tubes Tij are very
+thin while they move to their final destination. Then there will always be plenty of slices
+S(akl ) near S(ak ) that are disjoint from the moving thin tubes, and we use these slices
+S(akl ) instead of the original slices S(ak ) . (This is another instance of the scattering
+idea.)
+     Once we have deformed St to meet certain slices S(ak ) in single circles, the parts of
+St in the slabs between these slices will be connected since inserting the tubes Tij does
+not destroy the property that these parts of St lie in the base component of St , from step
+(2). Thus we have constructed a homotopy of the family f (t) ∈ Cb∞,1 to a family g(t)
+having a lift ge(t) ∈ Cs∞,1 obtained by choosing weights for the slices S(ak ) . Over ∂Dq
+the slices S(ai ) of fe(t) all lie in the slab S[−1, 1] by step (1), so in step (3) there is no
+need to modify St for t ∈ ∂Dq .                                                              ⊓
+                                                                                             ⊔
+
+    The argument in the preceding proof can be applied to manifolds of higher dimension
+d > 2 , but it proves a weaker result, namely that C∞,1 is homotopy equivalent not to
+the classifying space of a monoid, but to the classifying space of a topological category, a
+category whose objects are smooth closed connected oriented manifolds of dimension d − 1
+embedded in R∞ and whose morphisms are connected oriented cobordisms of dimension
+d embedded in slabs [0, a] × R∞ .
+
+
+                                              22
+5. Some Variants
+
+Nonorientable Surfaces
+    The restriction to oriented surfaces can easily be dropped. The statement is then that
+for the standard nonorientable surface N∞ of infinite genus there is an isomorphism
+                                                        +
+                           H∗ (BDiffc (N∞ )) ∼
+                                             = H∗ (Ω∞
+                                                    0 AG∞,2 )
+
+where AG is the version of AG without chosen orientations on the affine planes. Thus
+   +
+AGn,2 is the Thom space of a bundle over the Grassmann manifold of unoriented 2 -planes
+in Rn , namely the bundle of vectors normal to these 2 -planes. In the nonorientable case
+the monoid π0 M∞ is not Z≥0 but something slightly more complicated, corresponding
+to diffeomorphism classes of closed connected surfaces under connected sum. The group
+completion of this monoid is still Z, however. The theorem can be restated in terms of
+mapping class groups of nonorientable surfaces since these satisfy homology stability by
+[W1] and the Earle-Eells theorem applies also to nonorientable surfaces.
+
+Punctured Surfaces
+    Surfaces with punctures can be treated in the same way, provided that one stabilizes
+with respect to both genus and number of punctures. Viewing the punctures as distin-
+guished points on a surface rather than deleted points, let Diffc (S∞ , P ) be the group of
+compactly supported diffeomorphisms of the infinite genus surface S∞ that leave an infi-
+nite discrete closed set P in S∞ invariant, perhaps permuting finitely many of the points
+of P . The space AGn,2 is enlarged to a space A∗ Gn,2 of oriented affine 2 -planes in Rn
+with at most one distinguished point in the 2 -plane, where the case of no distinguished
+point is regarded as the limiting case of a distinguished point that approaches infinity in
+the 2 -plane. The statement of the theorem is that there is an isomorphism
+                          H∗ (BDiffc (S∞ , P )) ∼
+                                                = H∗ (Ω∞  ∗ +
+                                                       0 A G∞,2 )
+
+The space AGn,2 is a retract of A∗ Gn,2 by the map that forgets the distinguished point,
+and this retraction extends to a retraction of one-point compactifications. The quotient
+space A∗ G+       +
+           n,2 /AGn,2 can be identified with the Thom space of the trivial n -dimensional
+vector bundle over Gn,2 by regarding this bundle as the sum of the two canonical bundles
+over Gn,2 consisting of vectors in a given 2 -plane and vectors orthogonal to it; the vector
+in the plane gives a distinguished point in the plane, and the vector orthogonal to it tells
+where to translate the plane. In the stable homotopy category retractions give wedge sum
+splittings, so we have an equivalence
+                          ∗ +          +
+                      Ω∞           ∞          ∞ ∞
+                       0 A G∞,2 ≃ Ω0 AG∞,2 × Ω0 S ((G∞,2 )+ )
+
+
+                                            23
+using the fact that the Thom space of a trivial n -dimensional bundle over X is the n -fold
+suspension S n (X+ ) , the subscript + denoting union with a disjoint basepoint.
+     This theorem gives information about homology of mapping class groups of finite
+surfaces since Diffc (S∞ , P ) has contractible components and homology stability is known
+to hold for mapping class groups not just for stabilization with respect to genus but also
+with respect to the number of punctures [BT], [Han], [HW].
+    More refined results that cover stabilization with respect to genus for a fixed number
+of punctures can be found in [BT].
+
+The Zero-Dimensional Case
+    The parts of the proof of the Madsen-Weiss theorem in Sections 2 and 3 that apply
+to manifolds of arbitrary dimension become somewhat simpler in dimension 0 and, with
+only a small extension, suffice to prove the classical Barratt-Priddy-Quillen theorem. Let
+us describe the steps and the simplifications.
+(1) The space Cn consists of configurations of discrete sets of points in Rn , and Propo-
+sition 2.1 becomes the statement that Cn is homotopy equivalent to S n , the subspace
+consisting of configurations with at most one point. A continuously-varying tubular neigh-
+borhood of such a configuration can be obtained by taking balls centered at the points
+in the configuration, of radius equal to the minimum of 1 and one-third of the minimum
+distance from the point to other points in the configuration. The procedure in the proof
+of Proposition 2.1 then gives a deformation retraction of Cn onto S n .
+(2) Lemma 3.2 becomes the statement that π0 Cn,k = 0 for k > 0 , with a trivial proof
+since a configuration in Cn,k can be pushed to infinity by radial expansion in the Rk factor
+from any point not in the projection of the configuration to Rk .
+(3) Proposition 3.1 becomes the statement that B Mn,k ≃ Cn,k+1 for k > 0 . The proof
+only uses the easier case that d < k + 1 , when the manifold Mx is empty.
+(4) The argument for the cases k > 0 in the proof of Proposition 3.1 works just as well
+for k = 0 to give an equivalence B Mn,0 ≃ Cn,1 . There is no need to replace Mn,0 by a
+monoid Mn , nor is there a need to let n go to infinity. Thus the more intricate arguments
+in Section 4 are completely unnecessary.
+(5) The group completion theorem yields an isomorphism H∗ (∪g Mn,0    ∼            n,0
+                                                                  g ) = H∗ (Ω0 B M     )
+        n,0                       n,0
+where Mg is the component of M        consisting of configurations with g points. This
+holds for any n > 0 including n = ∞ .
+(6) Putting together the previous steps, we get H∗ (∪g Mn,0 ∼      n n
+                                                        g ) = H∗ (Ω0 S ) for 1 ≤ n ≤ ∞ .
+
+
+                                            24
+    The case n = 1 is not interesting since M1,0
+                                             g   is obviously contractible, as is Ω0 S 1 .
+For n = 2 the space M2,0
+                       g   is homotopy equivalent to the space of configurations of g
+unordered points in the plane, a classifying space for the braid group Bg for braids with g
+strands. The other case when Mn,0g   is a K(π, 1) is when n = ∞ and Mg∞,0 is a classifying
+space BΣg for the symmetric group Σg . Thus we have proved the Barratt-Priddy-Quillen
+theorem and a theorem of Fred Cohen:
+
+Theorem. H∗ (∪g Σg ) ∼
+                     = H∗ (Ω0 S ) and H∗ (∪g Bg ) ∼
+                            ∞ ∞                          2 2
+                                                  = H∗ (Ω0 S ) .
+
+    As an easy extension of these results, we can consider configurations in Cn whose
+points are labeled by points in a fixed space X . Such labeled configurations form a space
+Cn (X) topologized to allow the labels to vary continuously over X . There is no difficulty
+in extending the preceding arguments to the context of labeled configurations since the
+only deformations of configurations that were used involved pushing points to infinity, and
+this can be done for labeled points just by keeping the labels unchanged. The space Cn (X)
+has the homotopy type of the subspace of single-point or empty labeled configurations, so
+this is (S n × X)/(∞ × X) which is the same as S n (X+ ) , the n -fold reduced suspension
+of X with a disjoint basepoint adjoined. Assuming for simplicity that π0 X = 0 so that
+the path-components of Mn,0 (X) are the subspaces Mn,0
+                                                     g (X) with g labeled points, we
+conclude that there are isomorphisms
+
+                   H∗ (∪g Mn,0    ∼      n n
+                           g (X)) = H∗ (Ω0 S (X+ )) for 1 ≤ n ≤ ∞
+
+Ignoring labelings gives a fiber bundle X g −→ Mn,0       n,0
+                                                g (X) −→ Mg . For example if we take
+n = ∞ and X = BG for a discrete group G then Mg∞,0 (BG) is a classifying space for
+the wreath product G ≀ Σg and we obtain isomorphisms
+
+                          H∗ (∪g (G ≀ Σg )) ∼      ∞ ∞
+                                            = H∗ (Ω0 S (BG+ ))
+
+The homology of G ≀ Σg is known to stabilize with g , as shown in [HW] for example. One
+could also take n = 2 , replacing symmetric groups by braid groups, to obtain isomorphisms
+
+                           H∗ (∪g (G ≀ Bg )) ∼      2 2
+                                             = H∗ (Ω0 S (BG+ ))
+
+where the homology on the left again stabilizes by [HW].
+
+
+
+
+                                            25
+Appendix A. Classifying Spaces for Diffeomorphism Groups
+
+    The most classical of classifying spaces are the classifying spaces for vector bundles.
+The classifying space for real vector bundles of dimension k is the Grassmannian G∞,k of
+k -dimensional vector subspaces of R∞ , the direct limit of the Grassmann manifolds Gn,k
+of k -dimensional vector subspaces of Rn . (This notation is not quite consistent with the
+notation earlier in the paper, where G∞,k meant the 2 -sheeted cover consisting of oriented
+k -dimensional vector subspaces of R∞ .) There is a canonical vector bundle E∞,k over
+G∞,k consisting of the pairs (v, P ) ∈ R∞ × G∞,k with v ∈ P . This is a universal k -
+dimensional vector bundle in the sense that every vector bundle E → X is induced from
+the universal bundle by some map X → G∞,k which is unique up to homotopy. Some
+mild restrictions on X are needed for this, for example that X is paracompact.
+    If we shift our point of view from vector spaces to automorphisms of vector spaces,
+there is an associated fiber bundle over G∞,k whose fibers are GL(k, R) rather than Rk .
+This bundle is often written as EGL(k, R) → BGL(k, R) where BGL(k, R) is just another
+notation for G∞,k and EGL(k, R) is the space of linear embeddings f : Rk → R∞ , with the
+projection EGL(k.R) → BGL(k, R) sending an embedding f to its image f (Rk ) . Since
+a linear embedding f is determined by where it sends the standard basis of Rk , one could
+also describe EGL(k, R) as the Stiefel manifold of k -tuples of linearly independent vectors
+in R∞ . The condition of linear independence can be strengthened to orthonormality, which
+amounts to requiring the embeddings f to be isometric embeddings, and then GL(k, R) is
+replaced by the orthogonal group O(k) and one has a fiber bundle EO(k) → BO(k) with
+fiber O(k) . This does not affect the homotopy types of the spaces, and in fact BO(k) is
+the same space as BGL(k, R) , namely G∞,k .
+    A key feature of EGL(k, R) and EO(k) is that they are contractible. It is an ele-
+mentary fact (see [H1], Proposition 4.66) that whenever one has a fiber bundle or fibration
+F → E → B with E contractible, then there is a (weak) homotopy equivalence F → ΩB .
+Thus O(k) ≃ ΩBO(k) = ΩG∞,k .
+   Entirely analogous considerations hold for smooth fiber bundles with fiber a smooth
+compact manifold M . A classifying space for such bundles is the space BDiff(M ) =
+C(M, R∞ ) of smooth submanifolds of R∞ diffeomorphic to M . (The notation C(M, R∞ )
+conflicts with that used earlier in the paper since we are ignoring orientations now.) The
+topology on C(M, R∞ ) is the direct limit of its subspaces C(M, Rn ) which are in turn
+given the quotient topology obtained by regarding C(M, Rn ) as the orbit space of the
+space of smooth embeddings M → Rn (with the usual C ∞ topology) under the action of
+Diff(M ) by composition.
+
+                                            26
+    There is a canonical bundle E(M, R∞ ) → C(M, R∞ ) with fiber M , where E(M, R∞ )
+consists of pairs (v, P ) in R∞ × C(M, R∞ ) with v ∈ P . To see that this bundle is locally a
+product, consider a given P ⊂ Rn diffeomorphic to M with an open tubular neighborhood
+N that is identified with the normal bundle to P in Rn . Then the sections of this bundle
+form a neighborhood of P in C(M, Rn ) , and projecting these sections onto the 0 -section
+P gives a local product structure for the projection E(M, Rn ) → C(M, Rn ) , compatibly
+for increasing n , hence also for the direct limit E(M, R∞ ) → C(M, R∞ ) .
+    The bundle E(M, R∞ ) → C(M, R∞ ) is universal for smooth bundles with fiber M
+over paracompact base spaces, by essentially the same argument that shows the vector
+bundle E∞,k → G∞,k is universal; see for example the first chapter of [H2]. Realizing a
+given bundle M → E → B as a pullback of the universal bundle is equivalent to finding
+a map E → R∞ which is a smooth embedding on each fiber. Locally in the base B
+such maps exist by combining a local projection onto the fiber M with a fixed embedding
+M → Rn . These local maps to Rn that are embeddings on fibers can then be combined to
+a global map E → R∞ that is an embedding on fibers via a partition of unity argument
+just as in the vector bundle case. Thus every bundle M → E → B is a pullback of the
+universal bundle via some map B → C(M, R∞ ) . Uniqueness of this map up to homotopy
+follows from the uniqueness of the map E → R∞ up to homotopy, which is shown just as
+for vector bundles by composing with linear embeddings R∞ → R∞ onto the odd or even
+coordinates, using straight-line homotopies.
+     There is also an associated bundle Diff(M ) → EDiff(M ) → BDiff(M ) whose total
+space EDiff(M ) is the space of smooth embeddings M → R∞ . The fiber bundle property
+can be proved using tubular neighborhoods and sections as before. The space EDiff(M ) is
+contractible by pushing each embedding M → R∞ into the odd coordinates by composing
+with a linear isotopy of R∞ into the odd coordinates, then taking a linear isotopy to a
+fixed embedding of M into the even coordinates.
+     Since we have a fiber bundle Diff(M ) → EDiff(M ) → BDiff(M ) with contractible
+total space, it follows that Diff(M ) is weakly equivalent to ΩBDiff(M ) . In particular,
+BDiff(M ) is a K(π, 1) for the mapping class group of M if the components of Diff(M )
+are contractible.
+
+
+
+
+                                             27
+Appendix B. The Earle–Eells Theorem
+    Let S be a compact connected surface, not necessarily orientable and possibly with
+boundary. In this appendix we use the notation Diff(S) for the group of diffeomorphisms
+of S that restrict to the identity on ∂S , with the C ∞ topology as usual.
+
+Theorem B.1. The components of Diff(S) are contractible except when S is the sphere,
+projective plane, torus, or Klein bottle.
+
+     In the exceptional cases the components of Diff(S) are homotopy equivalent to SO(3)
+for the sphere and projective plane, S 1 × S 1 for the torus, and S 1 for the Klein bottle.
+These statements could be proved by mild extensions of the arguments below.
+    The theorem was first proved in [EE] and [ES] for orientable surfaces. We will give
+an exposition of Gramain’s proof in [Gr]. This is based on a proof by Cerf for the case
+S = D2 in [C1], later republished in the appendix of the often-cited volume [C2]. This
+special case already contains the key trick that makes the proof so simple. In the write-up
+below this trick occurs at the very end.
+
+Proof. There will be three main steps.
+(I) Reduction to the case of nonempty boundary.
+Assume ∂S is empty. By evaluating diffeomorphisms S → S at a basepoint x0 ∈ S we
+obtain a fibration
+                                    Diff(S, x0 ) −→ Diff(S) −→ S
+
+whose fiber Diff(S, x0 ) consists of diffeomorphisms fixing x0 . From the long exact sequence
+of homotopy groups for this fibration we obtain isomorphisms π Diff(S) ∼
+                                                                       i      = π Diff(S, x )
+                                                                                     i        0
+                                                                            2   2
+for i > 1 since πi (S) = 0 for i > 1 from the assumption that S 6= S , P . We can also
+deduce that π Diff(S) ∼
+               1       = π Diff(S, x ) by looking at the end of the long exact sequence
+                            1            0
+
+                                                                   ∂
+             0 −→ π1 Diff(S, x0 ) −→ π1 Diff(S) −→ π1 (S, x0 ) −→ π0 Diff(S, x0 )
+
+where it suffices to show that the final map ∂ is injective. To verify injectivity, recall
+from the construction of the long exact sequence that ∂ sends the homotopy class [γ]
+of a loop γ in S at the basepoint x0 to the isotopy class [f ] of the diffeomorphism
+f : (S, x0 ) → (S, x0 ) obtained by dragging x0 around γ and extending this to an isotopy
+of S ending at f . The automorphism of π1 (S, x0 ) induced by f is conjugation by γ , so
+                                ∂
+the composition π1 (S, x0 ) −→ π0 Diff(S, x0 ) −→ Aut(π1 (S, x0 )) is injective since π1 (S, x0 )
+has trivial center for S as in the theorem. Hence ∂ is injective.
+
+                                                28
+     Next we look at another fibration, this one obtained by evaluating diffeomorphisms
+of (S, x0 ) on a closed disk D which is a neighborhood of x0 .
+
+                      Diff(S, D) −→ Diff(S, x0 ) −→ Emb((D, x0 ), (S, x0 ))
+
+The fiber Diff(S, D) consists of diffeomorphisms fixing D and the base is the space of
+smooth embeddings D → S fixing x0 . We have Diff(S, D) ≃ Diff(S0 ) for S0 = S −int(D) .
+There is a projection Emb((D, x0 ), (S, x0 )) → GL(2, R) obtained by taking the derivative
+at x0 , and this is a homotopy equivalence as is true for manifolds of any dimension by a
+very special case of tubular neighborhood theory. Since GL(2, R) ≃ O(2) we deduce that
+π Diff(S, x ) ∼
+ i         0  = π Diff(S, D) for i > 1 , and we can again extend this to the case i = 1 by
+                  i
+examining the exact sequence:
+                                                                           ∂
+     0 −→ π1 Diff(S, D) −→ π1 Diff(S, x0 ) −→ π1 Emb((D, x0 ), (S, x0 )) −→ π0 Diff(S, D)
+
+Here we have π1 Emb((D, x0 ), (S, x0 )) ∼
+                                        = Z generated by a full rotation of D about x0 .
+The map ∂ sends this rotation to the diffeomorphism obtained by extending this rotation
+to a diffeomorphism of S , which we can take to be a Dehn twist about a curve parallel to
+∂D . This twist and all its nonzero powers induce nontrivial inner automorphisms of the
+free group π1 (S0 , y0 ) for a basepoint y0 ∈ ∂S0 , so injectivity of ∂ follows.
+     Thus we have shown that π Diff(S) ∼
+                                   i        = π Diff(S, x ) ∼
+                                                i         0  = π Diff(S ) for all i > 0 , which
+                                                                i      0
+gives the reduction to the case that ∂S is nonempty.
+
+(II) Reduction to contractibility of certain spaces of arcs.
+We assume that ∂S is nonempty from now on. Consider smooth embeddings I → S joining
+two given points p and q in ∂S and whose images are proper arcs in S , intersecting ∂S
+only in their endpoints. Fixing one such embedding α , let A(S, α) be the space of all such
+embeddings I → S isotopic to α fixing the endpoints. In step (III) we will show that
+A(S, α) is contractible, and let us now show that this implies that the path-components
+of Diff(S) are contractible.
+    Since all the path-components are homeomorphic, it suffices to show this for the path-
+component Diff0 (S) of the identity map.
+   Evaluation of diffeomorphisms on α(I) gives a fibration
+
+                             Diff0 (S, α) −→ Diff0 (S) −→ A(S, α)
+
+whose fiber consists of diffeomorphisms in Diff0 (S) restricting to the identity on α(I) .
+Under the assumption that A(S, α) is contractible, we have π0 Diff0 (S, α) ∼= π0 Diff0 (S)
+from the long exact sequence of homotopy groups, so Diff0 (S, α) is the identity component
+of Diff(S, α) , the diffeomorphisms of S fixing ∂S and α(I) . Thus Diff0 (S, α) ≃ Diff0 (S ′ )
+
+                                               29
+where S ′ is obtained from S by cutting along α . From the long exact sequence we conclude
+that Diff0 (S) ≃ Diff0 (S ′ ) .
+     We can reduce S to a disk by a finite sequence of cuts along nonseparating arcs, so
+by induction on −χ(S) the problem is reduced to showing that Diff0 (D2 ) is contractible.
+To show this we consider the fibration
+                               2           2
+                         Diff(D+ ) −→ Emb(D+ , D2 ) −→ A(D2 , α)
+       2
+where D+ is the upper half of D2 and Emb(D+
+                                          2
+                                            , D2 ) is the space of embeddings D+
+                                                                               2
+                                                                                 → D2
+         2
+fixing D+  ∩ ∂D2 and taking the rest of ∂D+ 2
+                                               to the interior of D2 . Restriction to D1 ⊂
+    2
+∂D+   gives the map to A(D2 , α) with α the inclusion D1 → D2 . The space Emb(D+     2
+                                                                                       , D2 )
+is contractible, by the standard argument that shows the space of embeddings of a collar on
+the boundary of a manifold is contractible. So the map to A(D2 , α) does indeed produce
+embeddings isotopic to α . From the long exact sequence we see that contractibility of
+A(D2 , α) implies contractibility of Diff(D+
+                                           2
+                                             ) and hence of Diff(D2 ) . (In particular this
+shows that Diff0 (D2 ) = Diff(D2 ) .)
+
+(III) Contractibility of the arc spaces.
+It remains to show the spaces A(S, α) are contractible. The easier case is that α connects
+two different components of ∂S so we do this case first. Let T be the surface obtained
+from S by filling in the component of ∂S at one end of α with a disk, say the end at q .
+Consider the fibration
+
+                  Emb(I, S) −→ Emb(I ∪ D2 , T ) −→ Emb(D2 , T − ∂T )
+
+where I ∪ D2 is formed by attaching 1 ∈ I to a point in ∂D2 , and Emb(I ∪ D2 , T ) is the
+space of embeddings f : I ∪ D2 → T taking 0 to p and the rest of I ∪ D2 to the interior of
+T . We assume also that f preserves orientation on D2 , where we use f (I) to transport an
+orientation of T at p to an orientation at f (1) . It is not hard to see that Emb(I ∪ D2 , T )
+is contractible. For example, by restricting embeddings f to I we get a fibration over the
+space of embeddings I → T taking 0 to p and the rest of I to the interior of T , obviously
+a contractible space, and the fibers are also evidently contractible.
+     The base space Emb(D2 , T − ∂T ) in the preceding displayed fibration has πi = 0 for
+i > 1 . (One can see this by fibering over T −∂T by evaluating embeddings D2 → T −∂T at
+0 .) From the long exact sequence of homotopy groups we conclude that the fiber Emb(I, S)
+has contractible components. One of these components is A(S, α) , so this takes care of
+the case that p and q lie in different components of ∂S .
+    The harder case is when α joins a component of ∂S to itself. In this case let T
+be obtained from S by attaching a rectangle R by identifying two opposite edges of ∂R
+
+                                             30
+with arcs in ∂S close to p on either side of p. (We can view R as a 1 -handle.) The
+effect of attaching R is that p and q now lie in distinct components of ∂T . Let β be an
+arc in R joining the two nonattaching edges. Cutting T along β produces a surface U
+homeomorphic to S .
+
+
+
+
+It will suffice to show that the maps πi A(T − β, α) → πi A(T, α) are injective for all i since
+the latter groups are trivial by the case already proved.
+    We prove injectivity of πi A(T − β, α) → πi A(T, α) by lifting to a certain covering
+space Te of T . Since T ≃ S ∨ S 1 we have π T ∼
+                                              = π S ∗ Z, and we let Te be the covering
+                                               1       1
+space corresponding to the subgroup π1 S of π1 S ∗ Z. Explicitly, Te is built from U by
+                                            e of U to U along the two copies of β in ∂U .
+attaching two copies of the universal cover U
+
+
+
+
+      All arcs in A(T, α) are isotopic to α so they have unique lifts to Te isotopic to the
+lifted copy of α in U ⊂ Te . These lifts form a subspace A(T,
+                                                         e α) of A(Te, α) homeomorphic
+to A(T, α) and we can identify the inclusion A(T − β, α) ֒→ A(T, α) with the first of the
+two inclusions
+                                          e α) ֒→ A(Te, α)
+                               A(U, α) ֒→ A(T,
+
+It will suffice to show that the composition i : A(U, α) −→ A(Te, α) of the two inclusions
+induces injections on homotopy groups. We will do this by constructing a map in the
+opposite direction r : A(Te, α) −→ A(U, α) such that ri is homotopic to the identity.
+                     e is diffeomorphic to R2 and U
+     The interior of U                                e − ∂ Te is diffeomorphic to R × [0, ∞) .
+Let Te be Te with the part of ∂ Te lying in the two copies of U
+     0
+                                                              e deleted. Via the two products
+R × [0, ∞) in Te0 we can isotope Te0 into U . The final map in this isotopy induces the map
+
+                                              31
+r and the restriction of the isotopy to U gives a homotopy from ri to the identity. This
+finishes the proof.                                                                   ⊓
+                                                                                      ⊔
+
+     In the special case S = D2 this argument shows that the space of smooth proper arcs
+in D2 with fixed endpoints has contractible components, but it does not show this space
+is path-connected, which is equivalent to the Schoenflies theorem in the smooth category.
+
+
+
+Appendix C. Rational Homology
+     The main result we prove here is:
+                       +
+Theorem C.1. H ∗ (Ω∞
+                   0 AG∞,2 ; Q) is a polynomial algebra Q[x2 , x4 , x6 , · · · ] on an infinite
+sequence of even-dimensional generators x2i ∈ H 2i .
+
+    As we will see, the method of proof is fairly general and applies equally well in many
+other similar situations.
+
+Proof. Recall that AG+n,2 is the Thom space of an (n − 2) -dimensional vector bundle over
+the Grassmann manifold Gn,2 of oriented 2 -planes in Rn containing the origin. This is
+an oriented vector bundle, so there are Thom isomorphisms H  e i (AG+ ) ≈ H i−(n−2) (G )
+                                                                         n,2                    n,2
+for all i.
+     The cohomology of Gn,2 is the same as for CP∞ in dimensions up to approximately
+n , as one can see from the fiber bundle S 1 → Vn,2 → Gn,2 involving the Stiefel manifold
+Vn,2 of orthonormal 2 -frames in Rn . Since Vn,2 fibers over S n−1 with fiber S n−2 , it is
+(n − 3) -connected, so from the long exact sequence of homotopy groups for the bundle
+S 1 → Vn,2 → Gn,2 we see that Gn,2 is a K(Z, 2) up to dimension approximately n .
+Thus there is a map Gn,2 → CP∞ inducing an isomorphism on homotopy groups up to
+dimension about n , hence also on homology and cohomology. This map is essentially just
+the inclusion Gn,2 ⊂ G∞,2 since G∞,2 is also a K(Z, 2) via the bundle S 1 → V∞,2 → G∞,2
+with V∞,2 contractible. Generators for the groups H 2i (G∞,2 ) are the powers ei of the
+Euler class of the universal bundle, so the restrictions of these classes 1, e, e2 , · · · to Gn,2
+give an additive basis for H ∗ (Gn,2 ) up to dimension approximately n .
+     Via the Thom isomorphism the classes 1, e, e2 , · · · give generators for He ∗ (AG+ ) up
+                                                                                          n,2
+to dimension around 2n . Since cohomology is represented by maps to Eilenberg-MacLane
+                             e ∗ (AG+ ) correspond to a map
+spaces, these generators for H      n,2
+
+
+                  f : AG+
+                        n,2 −→ K(Z, n − 2) × K(Z, n) × K(Z, n + 2) × · · ·
+
+
+                                               32
+Now we switch to rational coefficients to take advantage of the fact that the rational
+cohomology of Eilenberg-MacLane spaces K(Z, k) is rather simple, namely a polynomial
+algebra Q[x] when k is even and an exterior algebra ΛQ [x] when k is odd, with x lying in
+H k (K(Z, k); Q) in both cases. This standard calculation is done by induction on k using
+the path fibration K(Z, k − 1) → P → K(Z, k) with contractible total space P . For the
+actual calculation one can use either the Serre spectral sequence or the Gysin and Wang
+exact sequences with Q coefficients. From the Künneth formula it follows that the map
+f is an isomorphism on rational cohomology in dimensions up to about 2n since the first
+nontrivial product in the cohomology of the space on the right occurs in dimension 2n − 4 .
+     From the universal coefficient theorem it follows that f is also an isomorphism on
+rational homology in the same range. We wish to deduce from this that f is an isomorphism
+on rational homotopy groups π∗ ⊗Q in this range. The quickest explanation for this fact is
+via Q-localization. The map f induces a map fQ of the Q-localizations of the two spaces,
+and Q-localizations are characterized by the fact that their integer and rational homology
+groups are isomorphic, as are their homotopy groups and rational homotopy groups. Thus
+fQ induces isomorphisms on integer homology up to dimension roughly 2n , so by the
+relative Hurewicz theorem it also induces isomorphisms on homotopy groups in this range,
+so f induces isomorphisms on rational homotopy groups in this range. (Note that the
+spaces involved here are all simply-connected if n is large enough, so Q -localizations exist
+and there are no subtleties with the relative Hurewicz theorem.)
+   Now we apply the loopspace functor repeatedly, using the fact that Ω(X × Y ) =
+ΩX × ΩY . After applying it n − 2 times we have a map
+
+                    Ωn−2 AG+
+                           n,2 −→ K(Z, 0) × K(Z, 2) × K(Z, 4) × · · ·
+
+
+inducing an isomorphism on rational homotopy groups up to dimension roughly n , since
+the range was up to about 2n before. Applying Ω one more time involves only the
+basepoint components of both spaces, so the factor K(Z, 0) will disappear, and we will
+have a map
+                    Ωn−1 AG+
+                           n,2 −→ K(Z, 1) × K(Z, 3) × K(Z, 5) × · · ·
+
+
+so that one final looping will give a map
+
+                     Ωn AG+
+                          n,2 −→ K(Z, 0) × K(Z, 2) × K(Z, 4) × · · ·
+
+
+Restricting to a single component of each space, we then have a map
+
+                     Ωn0 AG+
+                           n,2 −→ K(Z, 2) × K(Z, 4) × K(Z, 6) × · · ·
+
+
+                                             33
+This induces isomorphisms on rational homotopy groups up to dimension roughly n . To
+deduce that this induces isomorphisms on rational homology in this range we can again
+make use of Q-localization. The space on the right is simply-connected, but the one on
+the left might not be. However, it is an H-space so it has π1 abelian with trivial action
+on all higher homotopy groups, which is sufficient for a Q-localization to exist. After
+Q-localization the map is an isomorphism on homotopy groups in a range, so relative
+homotopy groups are trivial in this range, hence also the relative homology groups, so we
+get the desired conclusion that the map displayed above is an isomorphism on rational
+homology up to dimension about n . The same is then true for rational cohomology. Thus
+by the Künneth formula we have shown that H ∗ (Ωn0 AG+         n,2 ; Q) is a polynomial algebra
+Q[x2 , x4 , x6 , · · · ] up through dimension approximately n .
+    It remains to check that the cohomology of Ωn0 AG+      n,2 stabilizes as n increases, that
+is, the maps Ωn0 AG+
+                   n,2 → Ω0
+                           n+1
+                               AG+n+1,2 induce isomorphisms on cohomology in a range of
+dimensions that goes to infinity with n . For this we can use Z coefficients. To start, we
+consider the map AG+        +
+                   n,2 → ΩAGn+1,2 . This factors as a composition
+
+                            AG+          +         +
+                              n,2 −→ ΩΣAGn,2 −→ ΩAGn+1,2
+
+where Σ denotes reduced suspension and the first map is an instance of the canonical map
+X → ΩΣX defined for any space X . The second map is the looping of the map ΣAG+ n,2 →
+AG+                      +         +                        +
+    n+1,2 adjoint to AGn,2 → ΩAGn+1,2 . The Thom space AGn,2 is roughly n -connected
+so the first map is an isomorphism on homotopy groups through dimension approximately
+2n by the Freudenthal suspension theorem, hence also on homology and cohomology in this
+range. The map ΣAG+            +
+                     n,2 → AGn+1,2 is an isomorphism on cohomology through dimension
+about 2n via the Thom isomorphisms for the two spaces (the suspension of a Thom space
+is the Thom space for the sum of the given bundle with a trivial line bundle), using the fact
+that the pair (Gn+1,2 , Gn,2 ) is roughly n -connected via the earlier comparison of these
+spaces with G∞,2 . Since the map ΣAG+              +
+                                         n,2 → AGn+1,2 is an isomorphism on cohomology
+up to dimension about 2n , this is true also for homology (both spaces being finite CW
+complexes) and so also for homotopy groups. Looping the map ΣAG+             +
+                                                                    n,2 → AGn+1,2 loses
+just one degree of connectivity, so the second of the two composed maps displayed above
+is also an isomorphism on homotopy groups up to dimension around 2n .
+      Thus the composed map AG+           +
+                               n,2 → ΩAGn+1,2 is an isomorphism on homotopy groups
+up to dimension approximately 2n , so after applying Ωn0 to this map we obtain iso-
+morphisms on homotopy groups to dimension roughly n , hence also on homology and
+cohomology groups.                                                                            ⊓
+                                                                                              ⊔
+                                                                     e ∗ (AG+ ; Q) corre-
+    As this proof makes clear, the first two additive generators for H      n,2
+
+
+                                              34
+sponding to 1 and e in H ∗ (Gn,2 ) eventually disappear after iterated looping since they
+corresponded to factors K(Z, 0) that were canceled. Furthermore, we can see how the
+remaining additive generators corresponding to the higher powers e2 , e3 , · · · become mul-
+tiplicative generators of the polynomial ring Q[x2 , x4 , · · · ] since under iterated looping,
+more and more of the powers and products of these additive generators fall inside the
+stable range of dimensions.
+     It should be clear how the preceding calculation generalizes to give a calculation of
+          +
+H ∗ (Ω∞                                                                    ∗
+      0 AG∞,d ; Q) for d > 2 . The input is the well-known calculation of H (G∞,d ; Q) as
+a polynomial ring on even-dimensional generators, the first approximately d/2 Pontryagin
+classes plus the Euler class when d is even. An additive basis for H ∗ (G∞,d ; Q) therefore
+consists of the monomials in these classes. After restricting to Gn,d for large finite n ,
+the Thom isomorphism shifts these additive generators up by n − d dimensions. Then
+the n -fold looping process shifts these additive generators back down by n dimensions,
+deleting the generators whose dimensions become negative or 0 . The surviving additive
+generators correspond to monomials in H ∗ (G∞,d ; Q) of dimension greater than d , and
+                                                    +
+these become multiplicative generators of H ∗ (Ω∞
+                                                0 AG∞,d ; Q) which is a polynomial algebra
+on even-dimensional generators when d is even and an exterior algebra on odd-dimensional
+generators when d is odd, since the net shift in dimensions is downward by d .
+
+     To finish this appendix let us extend the rational cohomology calculation to the case
+of nonorientable surfaces where, as we saw in section 5, the space AG∞,2 is replaced by
+its quotient AG∞,2 obtained by ignoring the orientations of affine 2 -planes in R∞ .
+                                +
+Theorem C.2. H ∗ (Ω∞
+                   0 AG∞,2 ; Q) is a polynomial algebra Q[y4 , y8 , y12 , · · · ] on genera-
+tors y4i ∈ H 4i .
+
+Proof. The main obstacle to carrying over the previous proof directly is that we can no
+longer apply the Thom isomorphism to compute H    e ∗ (AG+ ) with Z or even Q coeffi-
+                                                              n,2
+cients since we are now dealing with the Thom space of a nonorientable vector bundle.
+Fortunately there is an easy way around this problem by using the classical transfer ho-
+                                                                                  +
+momorphism for finite-sheeted covering spaces. The projection AG+    n,3 → AGn,2 is not a
+covering space at the compactification point, but this is no longer an issue if we consider
+relative cohomology for the pairs consisting of the unit disk bundles and their boundary
+sphere bundles, since these relative cohomology groups are isomorphic to the reduced ab-
+solute groups for the Thom spaces. The basic properties of transfer homomorphisms work
+equally well for relative cohomology, so we can say that He ∗ (AG+ ; Q) is isomorphic to
+                                                                  n,2
+                  e ∗    +
+the subgroup of H (AG ; Q) consisting of elements invariant under the map induced by
+                          n,2
+the involution of AG+
+                    n,2   that reverses the orientation of each 2 -plane. On Gn,2 this map
+
+                                              35
+sends the Euler class e to its negative, hence ei is sent to (−1)i ei . The Thom class is
+also sent to its negative. Since the Thom isomorphism is given by cup product with the
+Thom class, we conclude that the invariant elements of He ∗ (AG+ ; Q) in the range we are
+                                                                    n,2
+interested in are the ones corresponding to odd powers of e. These occur in dimensions
+n, n + 4, n + 8, · · ·. The class in dimension n corresponding to e itself disappears after
+n -fold looping as before, so we are left with the classes corresponding to e3 , e5 , e7 , · · ·,
+which live in dimensions 4, 8, 12, · · ·.                                                     ⊓
+                                                                                              ⊔
+
+
+
+Appendix D. The Group Completion Theorem
+
+     The goal of this appendix is to prove a version of the Group Completion Theorem
+that suffices for many applications such as the Madsen-Weiss theorem. Some comments
+on more general versions are given at the end.
+     As motivation for the plan of attack, recall an elementary fact about fibrations which
+is Proposition 4.66 of [H1]: If F → E → B is a fibration with E contractible, then there is
+a weak homotopy equivalence F → ΩB . This is proved by noting that a contraction of E
+gives rise to a map from the given fibration to the standard path fibration ΩB → P B → B
+and so by the five lemma the map on fibers F → ΩB is a weak homotopy equivalence.
+One might hope to apply this fact when B is B M for a given topological monoid M . We
+will construct a contractible space E M with a projection E M → B M whose fibers are
+copies of M , but the projection will not generally be a fibration. However, in some cases
+it is something a little weaker than a fibration that works just as well, a quasifibration.
+     The definition of E M is similar to that of B M , except that instead of starting with a
+single vertex, one has a vertex for each element of M . In fact there is a more general con-
+struction that will eventually be needed. Suppose we are given an action of the monoid M
+on a space X , this being a right action, so each m ∈ M gives a map X → X , x 7→ x · m.
+Then we define the space EX to have X as its space of vertices, and with its space of
+p-simplices the product X × Mp , so there is a p-
+simplex for each (p + 1) -tuple (x, m1 , · · · , mp ) ,
+with vertices labeled x, x · m1 , x · m1 m2 , · · · and
+edges labeled m1 , m2 , · · · as in the figure. Thus
+                     `
+EX is a quotient of p ∆p ×X×Mp with identi-
+fications similar to those in B M . In particular,
+when X is a point then EX is just B M . For a
+general X , forgetting the vertex labels gives a projection EX → B M with fibers X .
+
+                                                  36
+     A case of special interest is when X is M
+acting on itself on the right. The space E M
+is then contractible by letting each p-simplex
+flow to the vertex corresponding to the iden-
+tity element e in M by flowing linearly in the
+(p+1) -simplex obtained by coning to the ver-
+tex e.
+
+Lemma D.1. If ·m : X → X is a weak homotopy equivalence for each m ∈ M then the
+projection EX → B M is a quasifibration.
+
+    Recall the definition: a map p : E → B is a quasifibration if for each b ∈ B the
+map p∗ : πi (E, p−1 (b), x0 ) → πi (B, b) is an isomorphism for all i and all x0 ∈ p−1 (b) .
+These isomorphisms immediately yield a long exact sequence of homotopy groups for a
+quasifibration that is formally identical to the long exact sequence for a fibration or fiber
+bundle.
+
+Proof of Lemma D.1. We will use Lemma 4K.3 of [H1] which gives three conditions each
+of which implies that a map p : E → B is a quasifibration. These conditions can be stated
+as follows:
+(a) B is the union of two open sets over each of which p is a quasifibration, and p is also
+a quasifibration over their intersection.
+(b) B is the direct limit of an increasing sequence of subspaces Bn over each of which p
+is a quasifibration.
+(c) E deforms into a subspace E ′ via a deformation Ft : E → E that covers a deformation
+of B into a subspace B ′ such that p restricts to a quasifibration E ′ → B ′ and the map
+F1 : p−1 (b) → p−1 (F1 (b)) is a weak homotopy equivalence for each b ∈ B .
+
+    To apply these, let Bn M be the subspace of B M formed from the products ∆p × Mp
+for p ≤ n , with En X the preimage of Bn M in EX . By (b) it suffices to show that
+p : En X → Bn M is a quasifibration, which we do by induction on n . For the induction
+step we apply (a), decomposing Bn M into the two open sets U and V coming from
+decomposing ∆n as the union of ∆n − ∂∆n and an ε-neighborhood of ∂∆n in ∆n ,
+respectively. Over U and U ∩ V the space En X is a product X × U or X × U ∩ V .
+For V , a deformation retraction of the ε-neighborhood of ∂∆n to ∂∆n gives rise to a
+deformation Ft as in (c), so by induction on n the only thing to check is the condition
+that F1 is a weak homotopy equivalence between fibers, which holds since each such map
+
+                                             37
+F1 is ·m : X → X for some m ∈ M and these maps are weak homotopy equivalences by
+hypothesis.                                                                    ⊓
+                                                                               ⊔
+
+Proposition D.2. If π0 M is a group then the natural map M → ΩB M is a weak
+homotopy equivalence.
+
+Proof. For each m ∈ M the map ·m : M → M is a homotopy equivalence with homotopy
+inverse ·m′ where m′ lies in the path-component of M giving the inverse of the path-
+component of m with respect to the group structure on π0 M , since homotopies from the
+compositions of ·m and ·m′ , in either order, to the identity are given by right multiplication
+by elements along paths from mm′ and m′ m to e. The previous lemma then implies that
+M → E M → B M is a cofibration.
+    The contraction of E M described earlier gives a map from this cofibration to the
+standard path fibration ΩB M → P B M → B M , using the unique vertex of B M as the
+basepoint for the pathspace. Namely, the map E M → P B M sends a point in E M to
+the path in B M which is the image in B M of the path in E M traced out by this point
+during the contraction of E M . In particular, a vertex m ∈ E M is sent to the loop in
+B M defined by the edge in B M labeled m. This means that the restriction of the map
+E M → P B M to the fiber over the basepoint is the canonical map M → ΩB M .
+    This map from the cofibration to the path fibration is the identity on the base spaces
+and is a homotopy equivalence on the total spaces since both of these are contractible.
+Hence by the five lemma the map is a weak homotopy equivalence on the fibers.                ⊓
+                                                                                             ⊔
+
+    The Group Completion Theorem generalizes the preceding proposition to certain cases
+when π0 M is not a group. Initially we will assume π0 M = Z≥0 , so the path components
+Mp of M are indexed by integers p ≥ 0 . Choose an element m0 of the path component
+M1 , so m0 generates π0 M . Then left-multiplication by m0 gives maps m0 · : Mp → Mp+1 ,
+and we are interested in forming a limit object M∞ with respect to these maps. If the
+maps were suffficiently nice inclusion maps we could just take M∞ = ∪p Mp , but to
+deal with the general case we instead let M∞ be the mapping telescope of the sequence
+M0 → M1 → M2 → · · · where each map is m0 · . Recall that the mapping telescope
+is the union of the mapping cylinders of the maps in the sequence, and if the maps are
+cofibrations, the mapping telescope has the same homotopy type as ∪p Mp . Since homology
+commutes with direct limits, we have H∗ (M∞ ) = limp H∗ (Mp ) .
+    It will be convenient also to consider the larger mapping telescope of the sequence
+M → M → M → · · · where each map is m0 · . We denote this telescope by T M . Observe
+that T M ≃ Z × M∞ since T M is the disjoint union of a bi-infinite sequence of mapping
+
+                                              38
+telescopes of maps m0 · : Mp → Mp+1 . These are the telescopes of the diagonal sequences
+of maps in the following diagram:
+
+                                    M0       M0       M0
+                                         ց        ց        ց
+                                    M1       M1       M1
+                                         ց        ց        ց
+                                    M2       M2       M2
+                                         ց        ց        ց
+    The monoid M acts on E M on the left, so we can form the telescope T E M of the
+sequence of maps E M → E M → E M → · · · given by left multiplication by m0 . Since left
+and right multiplication commute, we can also form ET M using the right action of M on
+T M , and we get the same space ET M = T E M . Since each space E M in the telescope
+T E M is contractible, so is the telescope itself, and we can choose a contraction extending
+the earlier contraction of the initial E M in the telescope. Having such a contraction allows
+us to form the following commutative diagram:
+
+                               M     −→
+                                      E M −→ B M
+                               ↓       ↓       k
+                              T M −→ ET M −→ B M
+                               ↓       ↓       k
+                             ΩB M −→ P B M −→ B M
+The top row need not be a quasifibration as it was in the previous proposition since the
+right-action of M on itself may not be by weak homotopy equivalences. (The action takes
+Mp to Mp+1 and these two spaces can have different fundamental groups, as happens for
+example for the M = M∞ in the proof of the Madsen-Weiss theorem.) The middle row
+may not be a quasifibration either for the same sort of reason since the right-action of M
+on T M need not be by weak homotopy equivalences. (The same example illustrates this.)
+However, we will show that the right-action of M on T M is by homology isomorphisms,
+and this will lead to the Group Completion Theorem asserting that the downward arrow
+in the lower left corner of the preceding diagram is a homology isomorphism.
+
+Group Completion Theorem. If π0 M = Z≥0 and M is homotopy commutative, then
+the map T M → ΩB M induces an isomorphism on homology. Restricting to one compo-
+nent, the map M∞ → Ω0 B M is a homology isomorphism.
+
+Proof. First we check that the right action of M on T M is by homology isomorphisms.
+It suffices to show this for the right action by m0 . Since H∗ (T M) = lim H∗ (M) and
+M is assumed to be homotopy commutative, we can instead use the left action of m0
+
+                                              39
+on T M . We claim that this left action is a homotopy equivalence. This is a general
+fact about the action of any map f : X → X on the mapping telescope of the sequence
+X → X → X → · · · where each map is f . Namely, if σ is the map of the telescope shifting
+each mapping cylinder to the next one, then f σ = σf is homotopic to the identity by the
+homotopy that slides points one unit to the right along the line segments of the mapping
+cylinders.
+     Next we have the fact that the suspension of any homology isomorphism f : X → Y is
+a weak homotopy equivalence. This can be seen as follows. The suspension Σf : ΣX → ΣY
+induces an isomorphism on π1 since π1 ΣX is free with basis corresponding to all but
+one of the path-components Xi of X , and similarly for ΣY , and f induces a bijection
+π0 X → π0 Y . For the higher homotopy groups, lifting Σf to the universal covers gives
+a map Σff : ΣX
+             g → ΣY g that induces an isomorphism on homology since ΣX     g consists of
+                                                                                       g
+copies of the suspensions ΣXi glued together in a tree-like pattern, and similarly for ΣY
+with the same tree-like pattern. The relative Hurewicz theorem then implies that Σf    f
+induces isomorphisms on homotopy groups, hence the same is true for Σf itself.
+    Consider now the fiberwise suspension of the projection map ET M → B M . By
+definition, this is the union of two copies of the mapping cylinder of ET M → B M with
+the ends ET M identified. Let us write the fiberwise suspension as Σf ET M . It has a
+projection Σf ET M → B M with fibers the ordinary suspension ΣT M . Since the sus-
+pension of a homology isomorphism is a weak homotopy equivalence, Lemma D.1 implies
+that we have a quasifibration ΣT M → Σf ET M → B M . We also have a quasifibration
+ΣΩB M → Σf P B M → B M in view of the following general fact:
+
+Lemma D.3. The fiberwise suspension of a fibration is a quasifibration.
+
+     Postponing the proof of this temporarily, let us finish the proof of the Group Com-
+pletion Theorem. Since fiberwise suspensions are double mapping cylinders, the map
+ET M → P B M induces a commutative diagram of quasifibrations
+
+                           ΣT M −→       Σf ET M −→ B M
+                            ↓                ↓        k
+                          ΣΩB M −→       Σf P B M −→ B M
+The map between the total spaces is a weak homotopy equivalence since both total spaces
+are homotopy equivalent to B M ∨B M by virtue of the contractibility of the middle spaces
+ET M and P B M in the two double mapping cylinders. The five lemma applied to the
+long exact sequences of homotopy groups for the two quasifibrations then implies that the
+map of fibers ΣT M → ΣΩB M is a weak homotopy equivalence, hence an isomorphism on
+homology, so the map T M → ΩB M is also an isomorphism on homology.              ⊓
+                                                                                 ⊔
+
+                                           40
+Proof of Lemma D.3. Let p : E → B be a fibration with fiberwise suspension Σf E → B .
+Suppose we are given a homotopy ht : X → B with an initial lift e
+                                                                h0 : X → Σf E of h0 . If
+2B ⊂ Σf E is the subspace consisting of the two copies of B at the target ends of the two
+mapping cylinders that make up Σf E , then Σf E − 2B is a product E × (−1, 1) . Part of
+a lifting e
+          ht : X → Σf E can be defined on X − eh−1
+                                                 0 (2B) by taking its first coordinate in
+E to be a lift of ht to E and letting its second coordinate in (−1, 1) be independent of
+t . On the rest of X we could let eht be just ht mapping to the appropriate copy of B in
+2B . However, it is not clear that the resulting e
+                                                 h is continuous on all of X since we have
+                                                  t
+defined it on two subspaces, one of which is open and the other is closed, rather than on
+two subspaces which are both open or both closed.
+     To get around this problem we use the elementary fact that in order to have a quasi-
+fibration it is not necessary to lift the homotopy ht exactly, it suffices just to lift a mod-
+ification of ht obtained by reparametrizing the t interval, namely by first letting ht be
+stationary for t in [0, 1/2] , then letting it do what it did before but twice as fast so
+that it ends with the same h . To construct the lifting e
+                               1                           h of the new h , we first let
+                                                               t               t
+e
+ht = rt e
+        h0 during the t interval [0, 1/2] , where rt : Σf E → Σf E is a homotopy that is
+fixed on 2B and gradually expands the interval [−1/2, 1/2] to [−1, 1] in the second fac-
+tor of E × (−1, 1) . Then for t in [1/2, 1] we take the composition r1 eht using the eht
+constructed in the previous paragraph, with the t interval reparametrized from [0, 1] to
+[1/2, 1] . With these modifications the new e
+                                            ht is continuous since it is continuous on the
+            e                              e
+closed sets h0 (E × [−1/2, 1/2]) and X − h−1
+              −1
+                                             0 (E × (−1/2, 1/2)) .                      ⊓
+                                                                                        ⊔
+
+A Modest Generalization
+     The condition that π0 M is Z≥0 can be weakened to the assumption that π0 M is
+just finitely generated. In this case, let m1 , · · · , mk be a set of generators and let m0
+be the product m1 m2 · · · mk . With this m0 we can again form the telescope T M . As
+before, the right action of m0 on T M is by homology isomorphisms. This implies the
+right action by any of the generators mi is by homology isomorphisms since the fact that
+m1 m2 · · · mk acts as homology isomorphisms implies that m1 acts injectively on homology
+and mk acts surjectively, but by homotopy commutativity this implies all the generators
+act by homology isomorphisms. It follows that the right action by all elements of M on
+T M is by homology isomorphisms.
+    The rest of the proof goes through unchanged to give an isomorphism H∗ (T M) ≈
+H∗ (ΩB M) . One can check that all the path-components of T M are homotopy equivalent.
+Denoting this homotopy type by M∞ (it does not depend on the choice of generators),
+we then obtain an isomorphism H∗ (M∞ ) ≈ H∗ (Ω0 B M) .
+
+                                             41
+    With an appropriate reformulation of the theorem, the finite generation assumption
+on π0 M can in fact be omitted. See [MS].
+
+
+References
+[A] J.F. Adams, Infinite Loop Spaces, Annals of Math. Studies 90, Princeton Univ. Press,
+     1978.
+[BP] M. Barratt and S. Priddy, On the homology of non-connected monoids and their
+    associated groups, Comment. Math. Helv. 47 (1972), 1–14.
+[BT] C.F. Bödigheimer and U. Tillmann, Stripping and splitting decorated mapping class
+    groups, in Cohomological methods in homotopy theory (Bellaterra, 1998), Progr.
+    Math. 196 (2001), 47–57.
+[B] S.K. Boldsen, Improved homological stability for the mapping class group with integral
+    or twisted coefficients, Math. Z. 270 (2012), 297–329.
+[C1] J. Cerf, Théorèmes de fibration des espaces de plongements. Applications. Sém. H.
+    Cartan, v. 15 no. 8 (1962-63), 1-13.
+[C2] J. Cerf, Sur les difféomorphismes de la sphère de dimension trois ( Γ4 = 0 ), Springer
+     Lecture Notes 53 (1968).
+[EE] C. J. Earle and J. Eells, A fibre bundle description of Teichmüller theory, J. Differ-
+    ential Geometry 3 (1969), 19–43.
+[ES] C. J. Earle and A. Schatz, Teichmüller theory for surfaces with boundary, J. Differ-
+    ential Geometry 4 (1970), 169–185.
+[G1] S. Galatius, Stable homology of automorphism groups of free groups, Ann. of Math.
+    173 (2011), 705–768.
+[G2] S. Galatius, Mod p homology of the stable mapping class group, Topology 43 (2004),
+     1105–1132.
+[GMTW] S. Galatius, I. Madsen, U. Tillmann, and M. Weiss, The homotopy type of the
+    cobordism category, Acta Math. 202 (2009), 195–239.
+[GRW] S. Galatius and O. Randal-Williams, Monoids of moduli spaces of manifolds, Geom.
+   Topol. 14 (2010), 1243–1302.
+[Gr] A. Gramain, Le type d’homotopie du groupe des difféomorphismes d’une surface
+     compacte, Ann. Scient. Éc. Norm. Sup. 6 (1973), 53–66.
+[Han] E. Hanbury, Homological stability of non-orientable mapping class groups with
+    marked points, Proc. A.M.S. 137 (2009), 385–392.
+[Har] J.L. Harer, Stability of the homology of the mapping class groups of orientable
+    surfaces, Ann. of Math. 121 (1985), 215–249.
+
+                                             42
+[H1] A. Hatcher, Algebraic Topology, Cambridge Univ. Press 2002.
+[H2] A. Hatcher, Vector Bundles and K-Theory, notes available from the author’s webpage.
+[HV] A. Hatcher and K. Vogtmann, Tethers and homology stability for surfaces, Alg. &
+    Geom. Topology 17 (2017), 1871-1916.
+[HW] A. Hatcher and N. Wahl, Stabilization for mapping class groups of 3-manifolds, Duke
+     Math. J. 155 (2010), 205–269. arXiv:0709.2173
+[I] N.V. Ivanov, Stabilization of the homology of Teichmüller modular groups, Algebra
+    i Analiz 1 (1989), 110–126 (Russian); translation in Leningrad Math. J. 1 (1990),
+    675–691.
+[MT] I. Madsen and U. Tillmann, The stable mapping class group and Q(CP+∞ ) , Invent.
+   Math. 145 (2001), 509–544.
+[MW] I. Madsen and M. Weiss, The stable moduli space of Riemann surfaces: Mumford’s
+    conjecture, Ann. of Math. 165 (2007), 843–941.
+[M] D. McDuff, Configuration spaces of positive and negative particles, Topology 14 (1975),
+    91–107.
+[MS] D. McDuff and G. Segal, Homology fibrations and the “group-completion” theorem,
+   Invent. Math. 31 (1976), 279–284.
+[RW] O. Randal-Williams, Resolutions of moduli spaces and homological stability,
+     arXiv:0909.4278.
+[Sa] N.N. Savelev, Quillenization of classifying spaces of infinite symmetric powers of dis-
+     crete groups, Vestnik Moskov. Univ. Ser. I Mat. Mekh. (1989), no.3, 72–74 (Rus-
+     sian); translation in Moscow Univ. Math. Bull. 44 (1989), no. 3, 74–76.
+[S1] G. Segal, Configuration-spaces and iterated loop-spaces, Invent. Math. 21 (1973),
+     213–221.
+[S2] G. Segal, The topology of spaces of rational functions, Acta Math. 143 (1979), 39–72.
+[T] U. Tillmann, On the homotopy of the stable mapping class group. Invent. Math. 130
+     (1997), 257–275.
+[W1] N. Wahl, Homological stability for the mapping class groups of non-orientable sur-
+    faces, Invent. Math. 171 (2008), 389–424.
+[W2] N. Wahl, Homological stability for mapping class groups of surfaces, Handbook of
+    Moduli, Vol. III, Advanced Lectures in Mathematics 26 (2012), 547–583.
+
+
+
+
+                                            43
+
