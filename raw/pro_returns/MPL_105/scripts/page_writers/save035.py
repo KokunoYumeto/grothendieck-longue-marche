@@ -1,0 +1,35 @@
+import sys
+sys.path.insert(0,'/workspace/scratch/3b3cef4e0bd3/MPL_105_work/scripts')
+from record_page import record_page,build_doubts
+s=r'''\scanpage{35}
+\diagram{\begin{array}{llllllll}
+\mathtt{IMTADE}&\mathtt{IMTAE}&\mathtt{IMTASD}&\mathtt{\unsure{IMTA01|IMTAO1}}&\mathtt{IMTYNO}&\mathtt{IMVISU}&\mathtt{IMVVFR}&\mathtt{IM1BDC}\\
+\mathtt{INICSD}&\mathtt{INITMP}&\mathtt{\unsure{INTAR0|INTARO}}&\mathtt{ISNOF5}&\mathtt{LEAMAT}&\mathtt{LEAMMS}&\mathtt{LEATRI}&\mathtt{LEB}\\
+\mathtt{LEBDCL}&\mathtt{LECOOR}&\mathtt{LEFORC}&\mathtt{LEHYMA}&\mathtt{LEMAIL}&\mathtt{LEMEFI}&\mathtt{LEMILI}&\mathtt{LEMPLR}\\
+\mathtt{LEMUA}&\mathtt{LENOPO}&\mathtt{LETAE}&\mathtt{LETASD}&\mathtt{LETYNO}&\mathtt{LEVISU}&\mathtt{LEVVFR}&\mathtt{LRNDL1}\\
+\mathtt{LSVVFR}&\mathtt{MONOFO}&\mathtt{MONOF5}&\mathtt{MONOF6}&\mathtt{NCMUNS}&\mathtt{NDL}&\mathtt{NIVLIB}&\mathtt{NUPAG}\\
+\mathtt{NUPAGE}&\mathtt{PRINTR}&\mathtt{PRIN1B}&\mathtt{RACRNO}&\mathtt{REAMAT}&\mathtt{REATRI}&\mathtt{REB}&\mathtt{REBDCL}\\
+\mathtt{RECOOR}&\mathtt{REFORC}&\mathtt{REHYMA}&\mathtt{REMAIL}&\mathtt{REMEFI}&\mathtt{REMILI}&\mathtt{REMPLR}&\mathtt{REMUA}\\
+\mathtt{RENOPO}&\mathtt{RESOUR}&\mathtt{RETAE}&\mathtt{RETASD}&\mathtt{RETYNO}&\mathtt{REVISU}&\mathtt{REVVFR}&\mathtt{RSTSDE}\\
+\mathtt{SAUCSD}&\mathtt{SAUSDS}&\mathtt{SAUTP}&\mathtt{SDBMSC}&\mathtt{STAMD}&\mathtt{STAMR}&\mathtt{TRAMAD}&\mathtt{TRAMAR}\\
+\mathtt{TUERSD}&\mathtt{TUTASD}&\mathtt{VERNN}&\mathtt{VERTNN}&&&&\\\hline
+\end{array}}
+\deleted{\diagram{\begin{array}{llllllll}
+\mathtt{IMAMA1}&\mathtt{IMAMA2}&\mathtt{IMATRI}&\mathtt{IMB}&\mathtt{IMBDCL}&\mathtt{IMB1}&\mathtt{IMCOOR}&\mathtt{\unsure{IMC001|IMCOO1}}\\
+\mathtt{IMFORC}&\mathtt{IMHYMA}&\mathtt{IMMAIL}&\mathtt{IMMAI1}&\mathtt{IMMILI}&\mathtt{IMMPLR}&\mathtt{IMMUA}&\mathtt{\unsure{IMNOP0|IMNOPO}}\\
+\mathtt{IMTADE}&\mathtt{IMTAE}&\mathtt{IMTASD}&\mathtt{\unsure{IMTA01|IMTAO1}}&\mathtt{IMTYNO}&\mathtt{IMVISU}&\mathtt{IMVVFR}&\mathtt{IM1BDC}\\
+\mathtt{INICSD}&\mathtt{INITMP}&\mathtt{\unsure{INTAR0|INTARO}}&\mathtt{ISNOF5}&\mathtt{LEAMAT}&\mathtt{LEAMMS}&\mathtt{LEATRI}&\mathtt{LEB}\\
+\mathtt{LEBDCL}&\mathtt{LECOOR}&\mathtt{LEFORC}&\mathtt{LEHYMA}&\mathtt{LEMAIL}&\mathtt{LEMEFI}&\mathtt{LEMILI}&\mathtt{LEMPLR}\\
+\mathtt{LEMUA}&\mathtt{LENOPO}&\mathtt{LETAE}&\mathtt{LETASD}&\mathtt{LETYNO}&\mathtt{LEVISU}&\mathtt{LEVVFR}&\mathtt{LRNDL1}\\
+\mathtt{LSVVFR}&\mathtt{MONOFO}&\mathtt{MONOF5}&\mathtt{MONOF6}&\mathtt{NCMUNS}&\mathtt{NDL}&\mathtt{NIVLIB}&\mathtt{NUPAG}\\
+\mathtt{NUPAGE}&\mathtt{PRINTR}&\mathtt{PRIN1B}&\mathtt{RACRNO}&\mathtt{REAMAT}&\mathtt{REATRI}&\mathtt{REB}&\mathtt{REBDCL}\\
+\mathtt{RECOOR}&\mathtt{REFORC}&\mathtt{REHYMA}&\mathtt{REMAIL}&\mathtt{REMEFI}&\mathtt{REMILI}&\mathtt{REMPLR}&\mathtt{REMUA}\\
+\mathtt{RENOPO}&\mathtt{RESOUR}&\mathtt{RETAE}&\mathtt{RETASD}&\mathtt{RETYNO}&\mathtt{REVISU}&\mathtt{REVVFR}&\mathtt{RSTSDE}\\
+\mathtt{SAUCSD}&\mathtt{SAUSDS}&\mathtt{SAUTP}&\mathtt{SDBMSC}&\mathtt{STAMD}&\mathtt{STAMR}&\mathtt{TRAMAD}&\mathtt{TRAMAR}\\
+\mathtt{TUERSD}&\mathtt{TUTASD}&\mathtt{VERNN}&\mathtt{VERTNN}&&&&
+\end{array}}}
+\mspage{34}
+'''
+e=[('diagram','printed sideways upper table','IMTADE IMTAE IMTASD'),('diagram','printed sideways lower table','IMAMA1 IMAMA2 IMATRI'),('deletion','lower printed table','broad cancellation across table'),('text','bottom left','34')]
+record_page(35,s,e,'reused_typed',notes='Two printed name tables, second cancelled with a broad wavering stroke; no mathematical text. Alphabetic O versus zero remains doubtful in several short identifiers.')
+build_doubts()

@@ -1,0 +1,9 @@
+# A.51 audit ledger
+
+**Independent root and DE full proof/source/code audits: PASS.** DE's full ledger is notes/de_A51_audit.md; independent rerun is code/de_A51_polarization_audit.out. Registered as sections/A_heisenberg_fixed.tex before checkpoint08 source freeze; canonical code/certificates are code/a_heisenberg_polarization.py/.json/.out. Historical notes drafts and certificates remain preserved. Root independently reran the exact computation and reopened Milne Theorems4.4 and7.12.
+
+The exact cellular object is the actual Heisenberg cover: the free rank-two class-two exponent-three quotient has order27, so every generating pair gives the same cover kernel. The quarter rotation is holomorphic square by square and obeys the exact boundary formulas; its order-four lift is deck-conjugate to A.50's lift by coprime complement conjugacy. Thus the rational Fourier projectors select the same surface B, not just an abstract four-dimensional representation.
+
+The ordered-triangle cup sign was independently derived. The exact rational cocycles, their cup matrix, and all action/projector identities are retained, with no floating-point period computation. The Hermitian normalization uses kappa=Z−Z² and h(v,w)=(Psi(v,kappa w)−kappa Psi(v,w))/2, giving diag(-1/6,1/3). The central differential bases verify signature(1,1). The explicit antilinear operator j is then a rational Hodge endomorphism because it commutes with the whole SU(h), which contains the actual Hodge circle; no assertion of equality of Mumford--Tate groups is used.
+
+The quaternion division test is the direct local norm obstruction for2 in Q3(sqrt(-3)). Both reduction arguments use nonzero unital modules, so the identity cannot vanish on the toric or etale part. The toric character space is explicitly tensored with Q3. Finally every individual cusp difference is killed by9, and the final step is the already proved integral A.42 group theorem.

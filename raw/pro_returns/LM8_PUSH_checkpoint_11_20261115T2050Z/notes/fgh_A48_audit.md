@@ -1,0 +1,9 @@
+# A.48 independent audit
+
+**Full parent audit: PASS.** The parent independently read the full draft, reopened every new use of the primary sources, and reran the exact certificate successfully. Registered after checkpoint07 release as sections/A_two_power_normalizers.tex, with its input after A.47 and row in a_results.json. Historical notes drafts and staging certificates remain preserved as superseded.
+
+The audit verified the proper double-cover trace identities and the exact identification of the m=4 induction base with the stable C4 first cover. It checked that equality of global characters forces equality of all labelled Hodge--Tate profiles at every embedding and after finite extension, and that the interval CM-type stabilizer is exactly `{1,m-1}`. No simplicity theorem, CM main theorem, or converse to equality of profiles is assumed.
+
+The component-support obstruction applies to the actual normalized subgroup. Its Galois-stable homology line has an automorphism span of dimension at most two, hence its supporting component has an orbit of at most two. Primitive eigenvalues force exact order `2m/d` on that component; the proof does not assume the automorphism acts faithfully on every component of the stable model. Deuring--Shafarevich gives a unique ramified fixed point, and the primary upper-jump constraints plus Hilbert--Herbrand give the explicit genus bound. Both possible component-orbit sizes exceed the total genus for m at least8.
+
+The parent source audit covered Obus--Pries Theorem1.1(c) and Section2.4; Giulietti--Korchmaros formula6 and Hurwitz; Brinon--Conrad Theorems2.2.3 and2.4.6. Exact staging files are `fgh_A48_certificate.py`, `.json`, `.out`, and `fgh_A48_certificate_root_rerun.out`. Detailed retrieval references and URLs are in `fgh_A48_sources.md`.

@@ -1,0 +1,20 @@
+# Independent audit of D.69
+
+Auditor: `/root/pbc_groups`, 2026-11-15, completed before checkpoint09.
+
+**Verdict: PASS**, relative to the explicitly invoked proved D.24/D.56 and the independently audited local argument of D.67. I read the entire new draft, re-read the precise statement and proof of D.24 at its application, and read D.56's formation scope. This audit does not purport to be a new independent reconstruction of all the lengthy collar and patching arguments underlying D.56.
+
+## New points checked
+
+- The Kummer coefficient module is the power completion of `Q^*`: for odd coefficient primes it is the uniform `c_0` module on rational primes, and at two there is an additional discrete order-two sign summand. Finite-exponent Kummer groups are infinite discrete direct sums, so the draft correctly avoids calling this completion compact. Coordinatewise continuous cochains and exactness of products give the full product over coefficient primes.
+- The displayed sign cocycle `(chi_2-1)/2` is the actual Kummer cocycle of compatible roots `zeta_(2^(n+1))` of `-1`. Its double is a coboundary; it is not asserted to be an additive section of the order-two cohomology factor. Working separately on the two sign components makes all deep perturbations valid and preserves the actual representative.
+- Every local and nonabelian step of D.67 survives the change of coefficient prime, including two. Hoshi's Appendix A applies to `Sigma={ell}` when residue characteristic differs from `ell`; the Magnus argument is over `Q_ell` and works for every nonzero, possibly nonprimitive cusp exponent. Global and local fixed vectors in the torsion-free cyclotomic lattice remain zero at two. The sign class is unramified at odd residue primes and changes no inertia coordinate.
+- Iterated Frattini quotients have exponent dividing `ell^r`, and the finite action and finite ramification set are constant under deep changes in a fixed sign component. The actual integral local-coboundary assertion makes the reduced cocycle itself unramified outside that set. Finite affine images give the required Chebotarev classes; deep fresh-prime perturbations impose open dense tests without changing the finite action or cocycle list.
+- The integral cocycle descends through the compact action quotient after every finite action-kernel test. One nonzero inertia subgroup is normal in that image because all actions preserve `x` up to a unit power. Its fixed subgroup in the derived geometric group is trivial. The actual local coboundary then kills the entire descended cocycle by the stated comparison of its values on `ng=g(g^-1ng)`.
+- Removing the countable collection of finite-support submodules preserves a dense `G_delta`; each such submodule is closed with empty interior in uniform `c_0`. The countable product of the resulting loci is a dense `G_delta` in the stated product topology. At five one may intersect the additional established residual loci.
+- The fixed full cusp section genuinely exists: take the product of the actual component Kummer cocycles, then insert it into the full procyclic cusp inertia. Its class and the arbitrary full section class agree in every geometric pro-prime quotient. D.24 expressly applies to exactly these two actual full sections, with one fixed member of a rational cusp packet, and yields full agreement. No assertion of joint injectivity of geometric pro-prime quotients is used.
+- Rational puncture permutations act on packet parameters by continuous affine bijections, including a possible sign constant at two, and therefore transport the residual loci and the actual fibres correctly.
+
+The result has the stated packet scope. It does not classify arbitrary abelian pairs or all global sections. No remaining mathematical blocker was found in the new argument.
+
+Primary local and Chebotarev source checks are retained in `notes/pbc_D67_audit.md` and `notes/pbc_D66_audit.md`; no new source assumption is introduced by the arbitrary-prime or product step.
