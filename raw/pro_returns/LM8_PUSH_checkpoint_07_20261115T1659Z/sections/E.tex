@@ -1,0 +1,914 @@
+\section*{Part E. Independent certificates and the CM Selmer deductions}
+
+Put \(K=\mathbb Q(i)\), \(p=5\), and
+\(W_{m,d}=\operatorname{Ind}_{G_K}^{G_{\mathbb Q}}\psi_d^{-m}\),
+with the homological convention
+\(\psi_d\overline\psi_d=\chi_5\). Thus \(W_{m,d}\) is the
+cohomological representation of the weight \(m+1\) CM form,
+without an additional Tate twist. The calculation below
+separates the numerical certificates from the Iwasawa input.
+
+\begin{statement}{E.3}{Proved}{The six balanced lines by a class-group calculation}
+For \(t=1,2,3\),
+\[
+ H_f^1(\mathbb Q,\mathbb Q_5(-t))
+ =H_f^1(\mathbb Q,\mathbb Q_5(-t)\epsilon_K)=0.
+\]
+This proof uses neither modular symbols nor Kato's theorem,
+nor a conjectural nonvanishing statement.
+\end{statement}
+\begin{proof}
+Let \(L=\mathbb Q(\zeta_{20})=K(\zeta_5)\).
+We first give a small class-number certificate. The polynomial
+\(f(X)=X^8-X^6+X^4-X^2+1\) has discriminant \(4000000\),
+and
+\[
+ \operatorname{Res}_X(f(X),X^3-X+1)=5.                 \tag{E.3.1}
+\]
+Both equalities are exact integer computations in
+\texttt{code/de\_balanced.py}. Minkowski's bound is
+\[
+ \frac{8!}{8^8}\left(\frac4\pi\right)^4\sqrt{4000000}
+ < 12.6321 <13.
+\]
+For the rational primes \(2,3,7,11\), the least residue degrees
+in \(L\) are respectively \(4,4,4,2\); their prime-ideal norms
+are all greater than twelve. These assertions are also verified
+by factoring \(f\) modulo each of these primes. At five there
+are two primes, both of norm five, since five has ramification
+index four and splits in \(K\). Equation (E.3.1) makes one
+of them principal, and its Galois conjugate is principal as
+well. These are the only prime ideals of norm below thirteen.
+Every ideal class therefore has a principal representative by
+Minkowski, so the class number of \(L\) is one.
+
+Let \(S\) consist of the places above \(2,5\), together with
+the infinite places, and put \(A=\operatorname{Gal}(L/K)\).
+Then \(A\) is cyclic of order four. There is one prime above
+two and there are two above five; each is fixed by \(A\).
+The Brauer invariant-sum sequence and the class-number
+calculation give, equivariantly,
+\[
+ H^2(G_{L,S},\mu_5)
+ =\operatorname{Br}(\mathcal O_{L,S})[5]
+ =\ker(\mathbb F_5^3\xrightarrow{\sum}\mathbb F_5)
+ \simeq\mathbb F_5^2,                                  \tag{E.3.2}
+\]
+with trivial \(A\)-action. The first equality follows from
+the Kummer exact sequence because the ideal class group
+vanishes. The action on local Brauer invariants is trivial;
+no choice of roots of unity alters it.
+
+Let \(\omega:A\to\mathbb F_5^\times\) be the cyclotomic
+character. It is an isomorphism. The action on
+\(H^2(G_{L,S},\mathbb F_5(j))\) is the action in (E.3.2)
+tensored by \(\omega^{j-1}\). For \(j=2,3,4\) this character
+is nontrivial. Since four is invertible modulo five,
+restriction and averaging give
+\[
+ H^2(G_{K,S},\mathbb F_5(j))=0\qquad(j=2,3,4).           \tag{E.3.3}
+\]
+The extensions
+\(0\to\mathbb F_5(j)\to\mathbb Z/5^n(j)
+\to\mathbb Z/5^{n-1}(j)\to0\) prove the same vanishing
+at every finite exponent by induction. Finite-ramification
+cohomology with finite coefficients is finite, so its
+inverse systems are Mittag--Leffler. Jannsen's comparison
+then gives
+\[
+ H^2(G_{K,S},\mathbb Q_5(j))=0\qquad(j=2,3,4).           \tag{E.3.4}
+\]
+The finiteness and comparison inputs are
+\cite[I, Corollary 4.15]{DE_MilneADT} and
+\cite[Proposition 1.6, Theorem 2.2]{DE_Jannsen1988}.
+
+Take \(V=\mathbb Q_5(-t)\) over \(K\). Its local finite
+condition is zero everywhere. At a place above five,
+\(D_{\rm dR}(V)/\operatorname{Fil}^0=0\) and
+\(H^0(K_v,V)=0\); the crystalline Bloch--Kato dimension
+formula \cite[Corollary 3.8.4]{DE_BlochKato1990} therefore gives \(H_f^1(K_v,V)=0\). Away from five,
+the unramified local group is the cokernel of
+\(\operatorname{Frob}_v-1\), which is invertible on \(V\)
+because its eigenvalue is \((\#k_v)^{-t}\ne1\).
+Complex places contribute zero. Poitou--Tate duality makes
+the kernel of global localization in \(H^1(G_{K,S},V)\)
+a quotient of \(H^2(G_{K,S},V^*(1))^*\). That last group
+is zero by (E.3.4), since \(V^*(1)=\mathbb Q_5(t+1)\).
+Thus \(H_f^1(K,V)=0\).
+
+Finally restriction from \(\mathbb Q\) to \(K\) is injective
+on rational cohomology for each of the two characters
+\(\mathbb Q_5(-t)\) and \(\mathbb Q_5(-t)\epsilon_K\):
+corestriction composed with restriction is multiplication
+by two. Restriction preserves the finite local conditions,
+and both restricted characters equal \(V\). This proves
+all six asserted vanishings.
+\end{proof}
+
+\begin{statement}{E.2}{Proved}{Independent verification of all twenty-four CM certificates}
+For \(d=1,6\), \(1\le m\le6\), \(t\ge0\), and
+\(m+2t\le6\), the twenty-four modular-symbol certificates
+of LM8 F.16--F.18 are correct, and each decides nonvanishing
+at the stated precision. Kato's Theorem 17.4(1)--(2) applies
+to the associated ordinary CM form. With its cohomological
+normalization, the resulting conclusion is
+\[
+ H_f^1(\mathbb Q,W_{m,d}(-t))=0.                        \tag{E.2.1}
+\]
+The proof includes the specialization, restriction-kernel,
+and integral-lattice steps. It does not claim the independent
+Rubin computation requested in Task E.1.
+\end{statement}
+\begin{proof}
+We specify both the computation and its arithmetic interpretation.
+Let \(g_m\) be the theta series of the \(m\)th power of the
+Hecke character of \(y^2=x^3-x\). An ideal prime to two has
+a unique Gaussian generator congruent to one modulo
+\((1+i)^3\); this describes that character explicitly.
+Its \(m\)th power has conductor \((1+i)^3\) for odd \(m\),
+\((1+i)^2\) for \(m\equiv2\pmod4\), and conductor one
+for \(m\equiv0\pmod4\). The associated primitive theta
+form has weight \(m+1\), level four times the conductor
+norm, and character \(\epsilon_K^{m+1}\). Its
+cohomological representation restricts to
+\(\psi_1^{-m}\oplus\overline\psi_1^{-m}\), so it is
+\(W_{m,1}\). For odd \(m\), the form for \(d=6\) is
+its twist by the primitive quadratic character \(\chi_{24}\);
+for even \(m\) it is unchanged. In particular five divides
+none of these levels.
+
+The prime-five traces are
+\((-1+2i)^m+(-1-2i)^m\). Thus the complete local input is
+\[
+\begin{array}{c|rrrrrr}
+m&1&2&3&4&5&6\\\hline
+N_m&32&16&32&4&32&16\\
+a_5&-2&-6&22&-14&-82&234\\
+\alpha_m\bmod25&13&19&22&11&18&9
+\end{array}                                                   \tag{E.2.2}
+\]
+Here \(\alpha_m\) is the unique unit root of
+\(X^2-a_5X+5^m\). Since \(\chi_{24}(5)=1\), the roots
+are the same for the two curves. These checks prove good
+ordinarity in every case, including weights six and seven;
+no bound comparing the weight with five is required.
+
+Put \(w=m-1\). We use polynomial Manin generators with
+bottom rows
+\((1,d)\), \(0\le d<N_m\), and \((c,1)\), \(c\) even
+modulo \(N_m\), and the monomials \(X^{w-j}Y^j\).
+For a determinant-one matrix \(h\) the right Manin action
+is \([P,g]h=[P\circ h,gh]\). Scaling the bottom row by
+\(u\) multiplies it by \(\epsilon_K(u)^{m+1}\).
+The relations are \(1+S\) and \(1+R+R^2\), for
+\[
+ S=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+ R=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}.
+\]
+The Hecke cosets are
+\(\left(\begin{smallmatrix}1&a\\0&\ell\end{smallmatrix}\right)\)
+and \(\left(\begin{smallmatrix}\ell&0\\0&1\end{smallmatrix}\right)\),
+using the integral adjugate on polynomial coefficients and
+the nebentypus on the last coset. These are the general
+Manin-symbol conventions of \cite{DE_Stein2007}.
+
+The new program \texttt{code/de\_cm\_audit.py} imports
+no supplied program. It takes only the explicit integer
+columns \(\Phi\) from the six attached certificates, recorded
+in \texttt{de\_cm\_input.json} with their source hashes.
+It verifies all Manin relations and both Hecke equations
+\(T_3\Phi=0\), \(T_5\Phi=a_5\Phi\) exactly over
+\(\mathbb Z\). It independently constructs their complete
+coefficient matrix and computes its rank over \(\mathbb F_5\).
+The outputs are
+\[
+\begin{array}{c|rrrrrr}
+m&1&2&3&4&5&6\\\hline
+D&48&48&144&24&240&144\\
+\operatorname{rank}_{\mathbb F_5}(\text{Manin relations})
+ &39&40&120&20&200&120\\
+\operatorname{rank}_{\mathbb F_5}(\text{all equations})
+ &46&46&142&22&238&142\\
+\operatorname{rank}_{\mathbb F_5}\Phi&2&2&2&2&2&2
+\end{array}                                                   \tag{E.2.3}
+\]
+These checks prove the full integral lattice assertion.
+Indeed an arbitrary integral solution reduces modulo five
+to a combination of the two columns. Subtract that
+combination, divide by five, and repeat. Completeness gives
+a \(\mathbb Z_5\)-combination of \(\Phi\). Conversely the
+columns satisfy every equation. Thus there is no unverified
+five-power index. The CM form supplies its two independent
+period functionals in this kernel; (E.2.3) shows that they
+exhaust it. Only rational period identifications are needed.
+
+For clarity the independent path algorithm is explicit.
+For a reduced fraction \(n/d\), \(d>1\), take
+\(b=n^{-1}\bmod d\), \(0<b<d\), and
+\(a=(nb-1)/d\). Then
+\(\left(\begin{smallmatrix}-a&n\\-b&d\end{smallmatrix}\right)\)
+has determinant one and gives the path from \(n/d\) to
+\(a/b\). Continue from \(a/b\), whose denominator is
+smaller, until an integer is reached. Polynomial
+substitution gives the exact Manin coordinates. This is
+implemented separately from the supplied continued-fraction
+routine, and terminates by the strict denominator decrease.
+
+In these period coordinates define
+\[
+ I_{n,m}(a)=\int_{a/5^n}^{i\infty}
+             g_m(z)(5^nz-a)^w\,dz,
+\qquad
+ \mu_m(a+5^n\mathbb Z_5)
+ =\alpha_m^{-n}I_{n,m}(a)
+  -5^w\alpha_m^{-n-1}I_{n-1,m}(a).                    \tag{E.2.4}
+\]
+A fixed nonzero differential normalization is absorbed in
+the period basis. Stabilizing the form as
+\(g_m-(5^m/\alpha_m)g_m(5z)\) proves the distribution
+relation: the substitution \(u=5z\) contributes the
+factor \(1/5\) in the second term. All integral polynomial
+paths have integral period coordinates; \(\alpha_m\) is
+a unit. Hence (E.2.4) is a bounded integral two-coordinate
+measure. The new program also verifies, over the integers,
+\[
+ \sum_{b=0}^4 I_{2,m}(a+5b)
+ =a_5I_{1,m}(a)-5^w I_{0,m}(a),\qquad a=1,2,3,4.       \tag{E.2.5}
+\]
+For the twist it evaluates the exact polynomial paths
+\[
+ \sum_{v\bmod24}\chi_{24}(v)
+ \int_{a/5^n+v/24}^{i\infty}
+ g_m(z)(24\cdot5^nz-24a-5^nv)^w\,dz.                 \tag{E.2.6}
+\]
+The Gauss-sum identity identifies this with
+\(24^w\tau(\chi_{24})I_{n,m,6}(a)\).
+The factor is a five-adic unit, since
+\(\tau(\chi_{24})^2=24\). Thus this exact twist formula
+introduces no loss of precision or nonvanishing information.
+
+For \(r=m+t\) put
+\(J_{m,d,t}=\int_{\mathbb Z_5^\times}x^{-r}\,d\mu_{m,d}\).
+On a unit residue class \(a+25\mathbb Z_5\),
+\(x^{-r}\equiv a^{-r}\pmod{25}\). Bounded integrality
+therefore proves that replacing the integrand by these
+twenty values has error in \(25\mathbb Z_5^2\).
+The values of \(\alpha_m\) in (E.2.2) decide each mass
+modulo twenty-five exactly. The independently executed
+outputs are
+\[
+\begin{array}{cc|cc}
+m&t&d=1&d=6\\\hline
+1&0&(22,3)&(19,6)\\
+1&1&(0,5)&(0,5)\\
+1&2&(19,6)&(24,1)\\
+2&0&(9,9)&(9,9)\\
+2&1&(6,19)&(6,19)\\
+2&2&(7,7)&(7,7)\\
+3&0&(20,15)&(4,18)\\
+3&1&(16,0)&(7,0)\\
+4&0&(5,0)&(5,0)\\
+4&1&(0,20)&(0,20)\\
+5&0&(6,3)&(12,6)\\
+6&0&(12,12)&(12,12)
+\end{array}                                                   \tag{E.2.7}
+\]
+All are nonzero. A vector divisible by five in this table
+has valuation exactly one, so precision twenty-five is
+essential for those entries. No unit claim is made for them.
+
+The period sign has also been checked independently.
+Reflection \(z\mapsto-\overline z\), including the
+polynomial substitution \(P(X,Y)\mapsto P(-X,Y)\),
+sends \(I_n(a)\) to \((-1)^wI_n(-a)\).
+Its two-coordinate matrices are, in order \(m=1,\ldots,6\),
+\[
+ \begin{pmatrix}-1&2\\0&1\end{pmatrix},\quad
+ \begin{pmatrix}0&-1\\-1&0\end{pmatrix},\quad
+ \begin{pmatrix}1&0\\-6&-1\end{pmatrix},\quad
+ \begin{pmatrix}-1&0\\0&1\end{pmatrix},\quad
+ \frac1{173}\begin{pmatrix}-137&-30\\-372&137\end{pmatrix},\quad
+ \begin{pmatrix}0&-1\\-1&0\end{pmatrix}.
+\]
+The program checks their squares, their action on every
+Manin generator, and the sign \((-1)^{t+1}\) of every
+moment in (E.2.7). Each eigenspace is one-dimensional.
+Consequently each certificate concerns a single period
+line, not a sum of unrelated periods. Coefficient duality
+\((\operatorname{Sym}^wH)^*=
+\operatorname{Sym}^wH\otimes\det(H)^{-w}\)
+changes the homology sign by \((-1)^w\), giving the
+cohomological period sign \((-1)^{m+t}\).
+
+We now identify the specialization. For a primitive
+character \(\eta\) of conductor \(5^n\), Fourier expansion
+and the Gauss identity give
+\[
+ \sum_a\eta(a)^{-1}I_{n,m}(a)
+ =\frac{(m-1)!\,5^{n(m-1)}\tau(\eta^{-1})}
+ {(-2\pi i)^m}L(g_m,\eta,m).                           \tag{E.2.8}
+\]
+The old-level term of (E.2.4) sums to zero. Using
+\(\tau(\eta)\tau(\eta^{-1})=\eta(-1)5^n\),
+(E.2.8) matches the top-critical interpolation
+\cite[Theorem 16.2, with \(r=m\)]{DE_Kato2004} at
+\(\kappa^m\eta^{-1}\), up to a fixed nonzero period
+scalar on each parity component. Rational period duality
+allows these scalars as Kato's choices of periods.
+Both transforms are bounded measures. A bounded power
+series over a finite extension of \(\mathbb Q_5\) which
+vanishes at all finite-order characters on a component
+is zero, by the Weierstrass preparation theorem. Hence
+the interpolation comparison identifies the whole
+transform, and
+\[
+ J_{m,d,t}\ne0
+ \quad\Longrightarrow\quad
+ L_{p,\alpha_m}(g_{m,d})(\kappa^{-t})\ne0.              \tag{E.2.9}
+\]
+This proves the sign and the negative twist in the
+specialization; neither is inferred just from the label
+of a period vector.
+
+Here is the exact part of Kato's theorem used. If \(T\)
+is any stable lattice in the cohomological representation
+of a good ordinary newform, and \(X(T)\) is the dual
+ordinary cyclotomic Selmer module of \S17.3, then
+\(X(T)\) is finitely generated torsion over
+\(\Lambda=\mathbb Z_5[[\mathbb Z_5^\times]]\), and
+\[
+ \operatorname{length}_{\Lambda_{\mathfrak p}}X(T)_{\mathfrak p}
+ \le \operatorname{ord}_{\mathfrak p}L_{p,\alpha}(g)
+ \qquad(\operatorname{ht}\mathfrak p=1,\ 5\notin\mathfrak p).
+                                                               \tag{E.2.10}
+\]
+This is \cite[Theorem 17.4(1)--(2)]{DE_Kato2004}.
+Its assumptions contain no residual large-image condition.
+The text at \S12.8 explicitly includes CM forms, with
+the proof of Theorems 12.4--12.6 in \S15. The large-image
+condition in 17.4(3) is not used. The ordinary filtration
+and the identification of its discrete Selmer kernel are
+17.1--17.2. All the hypotheses of (E.2.10) were checked
+in (E.2.2). The official article metadata and the
+reproduced primary theorem text are identified separately
+in the source record; the inaccessible large PDF has not
+been treated as if read.
+
+Let \(\mathfrak p_t\) be the height-one evaluation prime
+for \(\kappa^{-t}\), on its specified \(C_4\) component.
+The nonzero value (E.2.9) has order zero at this prime;
+this remains true for the entries of valuation one in
+(E.2.7), because \(5\notin\mathfrak p_t\).
+Thus (E.2.10) gives \(X(T)_{\mathfrak p_t}=0\).
+Finite generation implies
+\[
+ \left(X(T)\otimes_{\Lambda,\kappa^{-t}}\mathbb Z_5\right)
+ \otimes\mathbb Q_5=0.
+\]
+The integral tensor is finitely generated over
+\(\mathbb Z_5\), hence finite. By contragredient
+Pontryagin duality it is the dual of
+\(\operatorname{Sel}_\infty(T)(-t)^{\Gamma}\).
+Indeed the dual twist is \(t\), and taking coinvariants
+imposes \(g=\kappa(g)^{-t}\) on \(X(T)\).
+The relevant invariant subgroup therefore has bounded
+exponent. This proves only the required specialization,
+not vanishing of an entire Iwasawa branch.
+
+We finish the descent to rational finite Selmer cohomology.
+Let \(M=W_{m,d}(-t)\), \(T_M=T(-t)\), and \(B=M/T_M\).
+The induced representation \(W_{m,d}\) is irreducible:
+over \(K\) its two characters have distinct Hodge--Tate
+weights, and complex conjugation exchanges them. If its
+invariants under \(\Delta=G_{\mathbb Q(\mu_{5^\infty})}\)
+were nonzero, normality and irreducibility would make the
+whole representation invariant. It would then factor
+through the abelian cyclotomic quotient. Complex
+conjugation, with eigenvalues \(1,-1\), would commute
+with the whole image and provide invariant lines, a
+contradiction. Therefore \(M^\Delta=0\).
+
+This proves finiteness of \(B^\Delta\) without a residual
+irreducibility assumption. Choose finitely many elements
+\(h_1,\ldots,h_a\in\Delta\) such that
+\(M\to M^a\), \(v\mapsto((h_i-1)v)_i\), is injective;
+such a finite choice exists by finite dimension and the
+zero invariant subspace. Its inverse on its image has
+bounded denominators relative to the lattices. Hence
+\((h_i-1)v\in T_M\) for all \(i\) forces
+\(v\in5^{-b}T_M\) for some fixed \(b\).
+This bounds the order of every element of \(B^\Delta\)
+and makes that group finite. Inflation--restriction now
+bounds the exponent of the kernel of
+\(H^1(\mathbb Q,B)\to H^1(\Delta,B)\).
+
+All local finite conditions on \(M\) are zero. At five,
+the de Rham filtration has \(\operatorname{Fil}^0\)
+equal to the whole space, and there are no invariant
+vectors, so \cite[Corollary 3.8.4]{DE_BlochKato1990}
+gives \(H_f^1(\mathbb Q_5,M)=0\). The invariant assertion
+follows either from the two CM characters or from the
+nonunit complex absolute values of their Frobenius
+roots. Away from five the representations have potential
+good reduction and nonzero pure weight; Frobenius on
+inertia invariants has no eigenvalue one. The unramified
+finite local group is therefore zero. The real place
+contributes zero at the odd prime five.
+
+Use the fixed finite ramification set
+\(\Sigma=\{2,3,5,\infty\}\). The group
+\(H^1(G_{\mathbb Q,\Sigma},T_M)\) is finitely generated
+and its image is a lattice in rational cohomology: finite
+coefficient finiteness and compact Nakayama give the
+first assertion, and every rational continuous cochain
+on a compact group has bounded denominator, giving the
+second. If \(H_f^1(\mathbb Q,M)\ne0\), its image under
+reduction to \(B\) contains a nonzero divisible
+five-primary group, namely that vector space modulo
+its intersection with the integral lattice.
+Every such reduced class is locally trivial. After
+restriction to \(\Delta\) it satisfies the ordinary
+kernel condition of Kato 17.2, and being restricted
+from \(\mathbb Q\) it lies in
+\(\operatorname{Sel}_\infty(T)(-t)^{\Gamma}\).
+This target has bounded exponent by the specialization
+argument. A divisible group has zero image in a group
+of bounded exponent. It would therefore lie in the
+bounded-exponent restriction kernel just proved, which
+is impossible for a nonzero divisible group.
+This contradiction proves (E.2.1) in every case.
+\end{proof}
+
+\begin{statement}{E.5}{Proved}{Specialization at a noncritical character without a pseudo-null gap}
+Let \(k\) be imaginary quadratic and let \(p\) split in \(k\).
+Let \(H\) be its Hilbert class field and let \(k_0/k\) be
+abelian, contain \(H\), and satisfy
+\(p\nmid[k_0:k]\#\mu(H)\). Let \(k_\infty/k\) be the
+abelian extension with
+\(\operatorname{Gal}(k_\infty/k_0)\simeq\mathbb Z_p^2\).
+For any continuous one-dimensional character \(\rho\)
+of \(\operatorname{Gal}(k_\infty/k)\), a nonzero Katz value
+at \(\rho\) implies that the corresponding one-prime-ramified
+Iwasawa module has zero rational \(\rho\)-specialization.
+If \(\rho\ne1\) and \(V=\mathbb Q_p(\rho)\) has zero
+finite local condition at every place, then
+\(H_f^1(k,V)=0\).
+\end{statement}
+\begin{proof}
+The original hypotheses are those of
+\cite[\S4, pp.36--37]{DE_Rubin1991}. Theorem 4.1(i) gives
+the split-prime main conjecture, in its elliptic-unit
+form. The identification with the Katz characteristic
+ideal is the Yager comparison, explicitly recorded in
+\cite[Theorem 3.3.1]{DE_BCGKPST}. More than the
+characteristic-ideal equality is needed for the desired
+specialization. The additional precise theorem is
+\cite[Theorem 5.3(v), pp.40--41]{DE_Rubin1991}:
+the one-prime-ramified module \(X_{\mathfrak p}\) has no
+nonzero pseudo-null submodule. In Rubin's notation
+\(X(F)\) is defined on p.36 using extensions unramified
+outside the chosen prime \(\mathfrak p\), not both
+primes above \(p\). Theorem 5.3(iii) gives rank
+\([k_{\mathfrak p}:\mathbb Q_p]-1=0\) in the split case.
+These assertions apply to every finite-character
+component, including the trivial one.
+
+Here is the complete commutative-algebra step. Work in
+one finite-character component of
+\(\Lambda=\mathcal O[[\mathbb Z_p^2]]\), with coefficients
+extended unramifiedly if needed. Let \(\mathfrak q\) be
+the evaluation prime of \(\rho\). It has height two
+and does not contain \(p\). The nonzero Katz value
+makes the characteristic element a unit in
+\(R=\Lambda_{\mathfrak q}\). Hence
+\((X_{\mathfrak p})_{\mathfrak q}\) is zero at every
+height-one prime of \(R\), and is a finite-length
+\(R\)-module. If it were nonzero, the maximal ideal
+of \(R\) would be associated to it. Localization of
+associated primes would then make \(\mathfrak q\)
+an associated prime of \(X_{\mathfrak p}\), giving
+a submodule isomorphic to \(\Lambda/\mathfrak q\).
+That is a nonzero pseudo-null submodule, contrary to
+Rubin's Theorem 5.3(v). Thus
+\((X_{\mathfrak p})_{\mathfrak q}=0\), which proves
+zero rational specialization. Unramified faithfully
+flat extension of coefficients preserves the
+height and support assertions; alternatively the
+argument descends to the characteristic element
+over the finite coefficient ring before evaluation.
+This is the missing justification for passing from
+a nonzero characteristic value to a finite
+specialization. It does not assume a pseudo-nullity
+conjecture for the unramified Iwasawa module.
+
+For the Selmer assertion choose a stable lattice \(T\subset V\)
+and write \(B=V/T\). The rational global cohomology is finite
+dimensional at a fixed finite ramification set, and the image
+of integral cohomology is a full lattice. This follows from
+finite-coefficient finiteness and compact Nakayama; every
+continuous cocycle in \(V\) has bounded image and becomes
+integral after multiplication by a power of \(p\).
+A nonzero finite Selmer space would consequently give a
+nonzero divisible subgroup of \(H^1(k,B)\) consisting of
+locally trivial classes. Restriction to \(k_\infty\), where
+\(B\) is constant, maps this subgroup into
+\[
+ \operatorname{Hom}_{\Delta\times\Gamma}
+       (X_{\mathfrak p},B).
+\]
+The target is finite by the rational-specialization assertion
+and finite generation. The restriction kernel has bounded
+exponent: for an element \(g\) with \(\rho(g)\ne1\), Sah's
+identity for the abelian group \(\Delta\times\Gamma\) kills
+\(H^1(\Delta\times\Gamma,B)\) by \(\rho(g)-1\).
+A nonzero divisible group cannot map into a finite group with
+bounded-exponent kernel. This contradiction proves the
+assertion. Faithfully flat extension of the coefficient ring
+in the first part does not affect this vanishing.
+\end{proof}
+
+\begin{statement}{E.1}{Proved}{A second proof by twenty-four Eisenstein--Kronecker certificates}
+For every \(d\in\{1,6\}\), \(1\le m\le6\), \(t\ge0\),
+\(m+2t\le6\),
+\[
+ H_f^1\bigl(K,\mathbb Q_5(\psi_d^{-m-t}\overline\psi_d^{-t})\bigr)=0.
+                                                               \tag{E.1.1}
+\]
+An independent computation from algebraic theta derivatives,
+with a proved error in \(25\mathcal O\), gives the following
+nonzero residues for the corresponding Katz specializations,
+after multiplication by explicitly specified units:
+\[
+\begin{array}{cc|rr}
+m&t&d=1&d=6\\\hline
+1&0&7&24\\
+1&1&20&15\\
+1&2&6&9\\
+2&0&11&11\\
+2&1&14&14\\
+2&2&12&12\\
+3&0&5&9\\
+3&1&11&16\\
+4&0&10&10\\
+4&1&3&3\\
+5&0&11&22\\
+6&0&23&23
+\end{array}                                                    \tag{E.1.2}
+\]
+The proof uses Rubin's two-variable main conjecture and the
+specialization argument E.5. It uses no modular-symbol
+calculation and no theorem of Kato.
+\end{statement}
+\begin{proof}
+We give the algebraic calculation, its precision, and the
+arithmetic comparison separately. Write \(\varphi_d\) for
+the algebraic Hecke character whose five-adic avatar is
+\(\psi_d\), and put \(\mathfrak P=(1+i)\).
+For a Gaussian integer \(\alpha\) prime to two, let
+\(\varepsilon_1(\alpha)\in\{1,i,-1,-i\}\) be the unique unit
+for which \(\varepsilon_1(\alpha)\alpha\equiv1\pmod{\mathfrak P^3}\).
+Then
+\[
+ \varphi_1((\alpha))=\varepsilon_1(\alpha)\alpha,
+ \qquad
+ \varphi_6((\alpha))=\varepsilon_6(\alpha)\alpha,
+ \quad
+ \varepsilon_6(\alpha)=\varepsilon_1(\alpha)
+                  \chi_{24}(\alpha\overline\alpha).             \tag{E.1.3}
+\]
+The first description follows equally from the CM Frobenius
+formula or from the explicit theta series
+\cite[\S3, pp.15--16]{DE_LiLongTu2018}. The second follows by
+quadratic twisting by \(\sqrt6\).
+Their conductors are \(\mathfrak P^3\) and \((12)\).
+For the latter assertion (E.1.3) factors through
+\((\mathbb Z[i]/12)^\times\). It is nontrivial at
+\(7+6i\equiv1\pmod{\mathfrak P^3(3)}\), and at
+\(1+4i\equiv1\pmod4\); both character values are \(-1\).
+This excludes deletion of either the last two-adic conductor
+step or the prime three. Enumeration gives
+\(\#(\mathbb Z[i]/12)^\times=64\) and
+\(\#\ker\varepsilon_6=16\). The program checks the character
+law on all \(64^2\) pairs, and both conductor witnesses.
+For even \(m\), the two target representations are equal,
+since the quadratic twist occurs to the power \(m+2t\).
+
+Use the invariant differential \(dx/(2y)\) on
+\(y^2=x^3-d^2x\). Its period lattice is square. The reduced
+theta function is its Weierstrass sigma function, because
+\(e_2^*=0\). For a nonzero torsion point \(P\) prime to five,
+put
+\[
+ X=\wp(P),\qquad Y=\wp'(P),\qquad
+ Z=F_1(P)=\zeta(P)-\overline P/A_\Gamma.
+\]
+The algebra of its derivatives is
+\[
+ Y^2=4X^3-4d^2X,\quad
+ DX=Y,\quad DY=6X^2-2d^2,\quad DZ=-X.                    \tag{E.1.4}
+\]
+For \(1\le k\le7\) set
+\[
+ c_1=Z,\qquad
+ c_k=-\frac{D^{k-2}X}{k!}+\frac{G_k}{k}\ (k\ge2),\qquad
+ G_4=d^2/15,
+\]
+with the other \(G_k\)'s in this range zero. Put \(e_0=1\)
+and \(e_n=n^{-1}\sum_{k=1}^n k c_k e_{n-k}\).
+Expansion of
+\(\sigma(P+z+w)/(\sigma(P+z)\sigma(w))
+\exp(-w\overline P/A_\Gamma)\) gives
+\[
+ \partial_z^A\partial_w^B\Theta_{P,0}(0,0)
+       =D^A(B!e_{B+1})\qquad(A>0).                       \tag{E.1.5}
+\]
+Here the derivative means the regular coefficient after the
+pole \(1/w\), whose \(z\)-derivative is zero. Equation
+(E.1.5) is also the Eisenstein--Kronecker generating formula
+\cite[Theorem 1.17]{DE_BannaiKobayashi2007}. Only \(k\le7\)
+is needed below.
+
+For \(d=1\) use
+\[
+ P=(i,1-i),\qquad 2P=(0,0),\qquad
+ (X,Y,Z)=\bigl(i,2-2i,(1+i)/2\bigr).                    \tag{E.1.6}
+\]
+The displayed \(Z\) follows from the zeta duplication formula
+and \(F_1(2P)=0\): \(Z=-(6X^2-2)/(4Y)\).
+Moreover \([1+i]P=(1,0)\), so \(P\) generates
+\(E_1[\mathfrak P^3]\). Its ray-class orbit has one element;
+the sum over all residue units repeats it four times.
+Changing the generator multiplies (E.1.5) by a fourth root
+of unity, which has no effect on nonvanishing.
+
+For the six odd-\(m\) entries with \(d=6\), work in the
+algebra
+\[
+ R_0=(\mathbb Z/25)[r,v]/(r^2-2,\ v^8-6v^4-3).
+                                                               \tag{E.1.7}
+\]
+Put \(s=(v^4-3)/2\), \(u=v^2/s\); then
+\(s^2=3\), \(u^2=1+2s/3\). On \(E_6\) put
+\[
+ Q_3=(6u,12v),\qquad Q_4=(6(1+r),12s(1+r)),
+ \qquad P=Q_3-Q_4.                                      \tag{E.1.8}
+\]
+These identities are initially interpreted in characteristic
+zero and then reduced in (E.1.7). Direct substitution gives
+\(3Q_3=0\), \(2Q_4=(6,0)\), \(3P=Q_4\), and \(4P=Q_3\).
+For example the tangent at \(Q_4\) has slope \(s(2+r)\),
+which gives its displayed double; the tangent at \(Q_3\)
+has square \(18u\), so its double is \(-Q_3\).
+As three is inert in \(K\), \(Q_3\) generates \(E_6[3]\).
+The point \((6,0)\) is not killed by \(1+i\), so \(Q_4\)
+has annihilator \((4)\). Thus \(P\) generates \(E_6[12]\)
+as a \(\mathbb Z[i]\)-module.
+
+CM reciprocity, in its explicit torsion form
+\cite[Theorem 5.15 and Corollary 5.16]{DE_RubinAWS1999},
+identifies the Galois orbit of this generator with
+\(\ker\varepsilon_6\). Indeed multiplication by
+\(\varphi_6((\alpha))=\varepsilon_6(\alpha)\alpha\)
+runs through precisely that kernel, and ray-class
+Chebotarev supplies each residue. Consequently
+\([K(P):K]=16\). Conversely (E.1.8) recovers \(r,s,v\)
+from \(P\), since \(3P=Q_4\), \(4P=Q_3\).
+The rank-sixteen algebra in (E.1.7) is therefore the
+reduction of the field algebra of this orbit. Its defining
+polynomials have discriminants prime to five, so it is
+\'etale at five. The trace is the orbit sum; on the displayed
+basis it is exactly
+\[
+ \operatorname{Tr}\!\left(\sum_{a=0}^1\sum_{b=0}^7
+                 z_{ab}r^av^b\right)=16z_{00}+48z_{04}. \tag{E.1.9}
+\]
+This follows from the Newton sums of \(v^8-6v^4-3\),
+and from \(\operatorname{Tr}(r)=0\).
+If \((X_j,Y_j)=(\wp(jP),\wp'(jP))\), the required
+algebraic value of \(Z\) is
+\[
+ Z=\frac13\left[-\frac{6X_3^2-72}{4Y_3}
+ -\frac{6X^2-72}{2Y}
+ -\frac{Y_2-Y}{2(X_2-X)}\right].                        \tag{E.1.10}
+\]
+Apply duplication to \(3P\), whose double is a half-period,
+and then the addition formula to \(2P+P\); this proves
+(E.1.10). Every denominator used in (E.1.8)--(E.1.10)
+is checked to be a unit in (E.1.7), with its inverse
+verified by multiplication. Thus these formulas lose no
+five-adic precision.
+
+For completeness we identify the analytic moment and the
+error bound. The integral theta model and a formal-group
+isomorphism to \(\widehat{\mathbb G}_m\) give bounded
+\(\mathcal O\)-valued measures \(\mu_{P,0}\), with a period
+\(\Omega_5\in\mathcal O^\times\); this is
+\cite[Corollary 2.17, Definition 3.2]{DE_BannaiKobayashi2007}.
+The good integral model at five and the prime-to-five order
+of \(P\) verify its hypotheses. The Yager ray-class sum
+uses \(\mu_{P,0}(x,N(\mathfrak f)y)\). Its moments are
+therefore the orbit sum of (E.1.5), multiplied by
+\(N(\mathfrak f)^B\Omega_5^{A+B}\), and possibly by the
+residue-unit multiplicity four. All these factors are units.
+The restriction to both unit variables multiplies the orbit
+sum by
+\[
+ \left(1-\frac{\pi^A}{\overline\pi^{B+1}}\right)
+ \left(1-\frac{\pi^B}{\overline\pi^{A+1}}\right),
+ \qquad\pi=-1+2i.                                     \tag{E.1.11}
+\]
+This follows directly by differentiating the four-term
+restriction formula of
+\cite[Proposition 3.5 and the proof of Theorem 3.7]{DE_BannaiKobayashi2007}.
+Equivalently it is the two Euler factors in that theorem
+with \(a=B\), \(b=A+1\). Both curves have
+\(\varphi_d(\mathfrak p)=\pi\), since \(\chi_{24}(5)=1\).
+Choose the embedding \(i\equiv18\pmod{25}\); then
+\(\pi\equiv10\), \(\overline\pi\equiv13\).
+
+The target moment is
+\[
+ \int_{(\mathbb Z_5^\times)^2}x^{-t-1}y^{m+t}
+                                      \,d\mu_{\varphi_d}.
+                                                               \tag{E.1.12}
+\]
+Take \(A=19-t\), \(B=m+t\). These are nonnegative,
+\(A\ge17\), \(B\le6\), and
+\(x^A\equiv x^{-t-1}\pmod{25}\) for every unit \(x\),
+since the exponent of \((\mathbb Z/25)^\times\) is twenty.
+Bounded integrality makes the error in replacing (E.1.12)
+by this polynomial moment belong to \(25\mathcal O\).
+The factors (E.1.11) are \(16\) modulo twenty-five when
+\(B=1\), and one otherwise.
+The exact rational differential algebra (E.1.4)--(E.1.5)
+then gives (E.1.2). The first curve is evaluated in
+\(\mathbb Q(i)\) before reducing, so cancellation of
+factorial denominators is exact. For the second curve all
+final derivative polynomials have integer coefficients;
+this too is checked before reduction. The complete
+executable computation is
+\texttt{code/de\_ek\_certificates.py}, with its two derivative
+modules and JSON outputs. It reads no modular-symbol data.
+Every residue in (E.1.2) is nonzero, so its valuation is
+exactly zero or one. An error in \(25\mathcal O\), or
+multiplication by any of the specified units, cannot
+change this nonvanishing conclusion.
+
+We finally verify which character and which Iwasawa module
+this computation concerns. For \(b>a\ge0\), the Yager
+interpolation formula is proportional to
+\[
+ L_{\mathfrak f}(\overline\varphi_d^{a+b},b)
+ =L_{\mathfrak f}((\varphi_d^b\overline\varphi_d^{-a})^{-1},0).
+                                                               \tag{E.1.13}
+\]
+The proportionality factors are exactly its gamma, period
+and Euler factors. Thus its measure is the Katz measure
+on the character \(\rho=\psi_d^b\overline\psi_d^{-a}\),
+with the shift \(x^{b-1}y^a\); see
+\cite[Theorems 3.7 and 3.11]{DE_BannaiKobayashi2007}.
+The identities on each finite-character branch determine
+the bounded measures: these integer pairs are dense on
+each such branch, and the integrands are continuous.
+Consequently (E.1.12) is its specialization at
+\(\rho=\psi_d^{-t}\overline\psi_d^{-m-t}\).
+Omission of Euler factors at a larger fixed conductor
+only multiplies the primitive Katz function by Euler
+factors, so the nonzero imprimitive value implies a
+nonzero primitive value. Conjugation in \(K/\mathbb Q\)
+interchanges this representation with the one in (E.1.1)
+and preserves its finite Selmer group.
+
+Apply Rubin's two-variable theorem to the ray tower of
+conductor \(\mathfrak f5^\infty\), with
+\(\mathfrak f=\mathfrak P^3\) or \((12)\).
+Here \(K\) has class number one, five splits, five is
+prime to \(6\mathfrak f\), the finite ray extension at
+\(\mathfrak f5\) has degree respectively sixteen or
+256, and its pro-five Galois group has rank two.
+It contains \(\mu_{5^\infty}\), by the norm character.
+The character \(\rho\) factors through it by (E.1.3).
+These check all splitting, conductor, prime-to-five and
+finite-character hypotheses of Rubin's equality between
+the Katz characteristic ideal and that of the one-prime
+ramified module; the precise formulation is also
+\cite[Theorem 3.3.1]{DE_BCGKPST}.
+The equality \cite[Theorem 4.1(i)]{DE_Rubin1991} concerns each finite-character component,
+including the trivial residual character. No big-image
+or weight-less-than-five assumption is involved.
+
+At the two primes above five the exponents of \(\rho\)
+on the two inertia factors are \(-t\) and \(-m-t\).
+At a prime where an exponent is zero, the remaining unramified
+character has Frobenius a nonzero negative power of
+\(\pi\) or \(\overline\pi\), and is not trivial.
+The representation is crystalline with
+\(D_{\rm dR}/\operatorname{Fil}^0=0\) and no local
+invariants. Its finite local condition is zero by
+\cite[Corollary 3.8.4]{DE_BlochKato1990}. Away from five
+it is potentially unramified and pure of negative weight
+\(-m-2t\), so Frobenius on inertia invariants has no
+eigenvalue one; its unramified finite condition is zero.
+There are no real places. Finally \(\rho\ne1\), since
+\(m>0\). E.5 applies to every entry of (E.1.2) and gives
+(E.1.1), with all restriction and lattice steps as proved
+there. This completes the second proof.
+\end{proof}
+
+\begin{statement}{E.4}{Proved}{All vanishing defects and the dependent numerical tables}
+None of the vanishings in Tasks E.1--E.3 fails.
+Consequently all the defects
+\(\delta_n(E_d)\), \(\delta_n^{\rm met}(E_d)\)
+of LM8 F.9 are zero for \(3\le n\le8\).
+The independent numerical recomputation gives,
+for the full tower and \(s=0,1,2\), respectively,
+\[
+\begin{array}{cc|rrrrrrrr}
+r&s&1&2&3&4&5&6&7&8\\\hline
+0&0&0&0&1&3&6&11&20&36\\
+0&1&0&1&2&4&7&12&21&37\\
+0&2&0&2&3&5&8&13&22&38\\
+1&0&1&1&2&4&7&12&21&37\\
+1&1&1&2&3&5&8&13&22&38\\
+1&2&1&3&4&6&9&14&23&39
+\end{array}
+\]
+and for the metabelian tower,
+\[
+\begin{array}{cc|rrrrrrrr}
+r&s&1&2&3&4&5&6&7&8\\\hline
+0&0&0&0&1&3&5&8&11&15\\
+0&1&0&1&2&4&6&9&12&16\\
+0&2&0&2&3&5&7&10&13&17\\
+1&0&1&1&2&4&6&9&12&16\\
+1&1&1&2&3&5&7&10&13&17\\
+1&2&1&3&4&6&8&11&14&18.
+\end{array}
+\]
+The corresponding local dimensions are
+\((1,2,4,7,13,22,40,70)\) and
+\((1,2,4,7,11,16,22,29)\).
+Thus the first strict levels remain one for \(r=0\)
+and \(2,3,4\) for \(r=1\), \(s=0,1,2\).
+This confirms the dependent entries for \(E_1\)
+and \(E_6\) with the refined local conditions of
+LM8 F.8--F.9.
+\end{statement}
+\begin{proof}
+Every degree-\(n\) free-Lie constituent over \(K\)
+has bidegree \((a,b)\) with \(a,b\ge1\), \(a+b=n\).
+Its dual Tate twist is
+\(\psi^{1-a}\overline\psi^{1-b}\).
+For \(a>b\), put \(m=a-b\), \(t=b-1\).
+Then \(m+2t=n-2\le6\), so E.1 applies; the
+conjugate bidegree gives the same induced
+representation. If \(a=b\), the rational
+constituents are \(\mathbb Q_5(1-a)\) and its
+quadratic CM twist, covered by E.3. The
+metabelian layers are quotients of these
+semisimple rational representations. All
+stated defects therefore vanish.
+
+We also verify the dimension calculation itself.
+For the free Lie algebra on a two-dimensional
+space with conjugation eigenvalues \(1,-1\),
+Witt's character formula gives
+\[
+ r_n=\frac1n\sum_{d\mid n}\mu(d)2^{n/d},\qquad
+ t_n=\frac1n\sum_{d\mid n}\mu(d)
+          (\operatorname{Tr}(c^d))^{n/d},\qquad
+ h_n^-=(r_n-t_n)/2,
+\]
+where \(\operatorname{Tr}(c^d)=0\) for odd \(d\)
+and two for even \(d\).
+For \(n=3,\ldots,8\), this gives
+\(h_n^-=(1,2,3,5,9,16)\).
+The metabelian layer is
+\(\det(V)\otimes\operatorname{Sym}^{n-2}V\),
+of dimension \(n-1\) and minus dimension
+\(\lfloor n/2\rfloor\).
+Poitou--Tate, with the now zero dual Selmer
+spaces, gives exactly these global increments.
+The higher central obstructions vanish as
+well, since their rational \(H^2\) is dual
+to those spaces. At non-five primes the
+higher local cohomology vanishes by weights;
+at five the whole higher \(H^1\) equals \(H_f^1\),
+since \(\operatorname{Fil}^0L_n=0\) for
+\(n\ge2\) and the dual invariants vanish
+for \(n\ge3\). Thus the increments impose
+no additional higher local equation.
+The initial refined components have dimensions
+\(r\) and \(r+s\): the class-two central
+\(\mathbb Q_5(1)\) coordinate is the unit
+valuation coordinate, with one free
+parameter for each allowed denominator
+prime. Adding the increments proves the
+two tables. Locally degree one contributes
+one, and every higher degree contributes
+its full rank, giving the two local rows.
+The executable integer calculation
+\texttt{code/de\_tables.py} independently
+computes all ranks, traces, sums and first
+strict levels from these formulas.
+\end{proof}

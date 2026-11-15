@@ -1,0 +1,45 @@
+% Technical compile wrapper only. Not part of the diplomatic transcription.
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{xcolor}
+\usepackage{tikz,tikz-cd}
+% Common reverse-mapsto symbol; stmaryrd is not installed in this runtime.
+\newcommand{\technicalreflectmapsto}[2]{\reflectbox{$#1\mapsto$}}
+\providecommand{\mapsfrom}{\mathrel{\mathpalette\technicalreflectmapsto\relax}}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing,patterns,positioning}
+\setlength{\textwidth}{175mm}
+\setlength{\oddsidemargin}{-8mm}
+\setlength{\evensidemargin}{-8mm}
+\setlength{\textheight}{252mm}
+\setlength{\topmargin}{-16mm}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{5mm}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{3pt}
+\emergencystretch=2em
+\definecolor{readingdoubt}{RGB}{155,90,0}
+\definecolor{deletionink}{RGB}{150,35,35}
+\definecolor{insertionink}{RGB}{15,75,155}
+\DeclareRobustCommand{\cotefile}[1]{\par\noindent\textbf{Cote #1}\par}
+\DeclareRobustCommand{\scanpage}[1]{\clearpage\noindent\textbf{Scan #1}\par\medskip}
+\DeclareRobustCommand{\mspage}[1]{{#1}}
+% Editorial states use colour here so nested mathematics remains fully parsed.
+% These technical representations are not editorial definitions for publication.
+\DeclareRobustCommand{\deleted}[1]{{\color{deletionink}#1}}
+\DeclareRobustCommand{\inserted}[1]{{\color{insertionink}#1}}
+\DeclareRobustCommand{\unsure}[1]{{\color{readingdoubt}#1}}
+\DeclareRobustCommand{\illegible}[1]{\ifmmode\text{[illegible: #1]}\else[illegible: #1]\fi}
+\DeclareRobustCommand{\margin}[1]{\ifmmode{\color{gray}#1}\else\par\noindent{\color{gray}#1}\par\fi}
+\IfFileExists{ulem.sty}{\usepackage[normalem]{ulem}}{%
+  % Fallback underlines parse both modes but do not wrap long text arguments.
+  \DeclareRobustCommand{\uline}[1]{\underline{##1}}%
+  \DeclareRobustCommand{\uuline}[1]{\underline{\underline{##1}}}%
+}
+% Retokenize the argument so TikZ can assign its own ampersand catcode.
+% This supports ordinary & in tikz-cd even though it sits in a macro argument.
+\DeclareRobustCommand{\diagram}[1]{\begingroup\endlinechar=-1\relax\scantokens\expandafter{\detokenize{#1}}\endgroup}
+\let\originalfloatfigure\figure
+\renewcommand{\figure}[1]{\ifmmode\vcenter{\hbox{#1}}\else\par\medskip\noindent#1\par\medskip\fi}
+\pagestyle{plain}
