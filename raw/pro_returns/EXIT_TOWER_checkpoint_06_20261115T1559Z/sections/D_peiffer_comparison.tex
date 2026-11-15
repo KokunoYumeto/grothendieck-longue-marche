@@ -1,0 +1,329 @@
+\subsection{An explicit cellular lift of the six-point comparison}
+
+\begin{result}{D.30}{Proved}{The 630 geometric tetrahedra and the 24 compact prism cells}
+There is a specified CW model of the full six-point
+complex of groups, with its compact open-stratum model
+$K_6$ from D.25, and a cellular homotopy equivalence
+\[
+                       F:\mathcal K\longrightarrow K_6
+\]
+whose restriction to that open-stratum subcomplex is
+literally the identity.  Its two-skeleton uses the exact
+local generators, sewing words and transports of D.22.
+The complete cellular comparison through those cells is
+\path{code/d_p5c3_geometric_comparison.json}.
+
+The source has $236$ vertices, $2194$ oriented one-cells
+and $8371$ two-cell relators.  It is a groupoid
+presentation; its $235$ crossing edges form a tree.
+Collapsing that tree leaves $1959$ one-vertex generators.  Every relator image is supplied as an
+explicit product of conjugates of the fixed $26$ compact
+relators.  Each of the $630$ geometric cone tetrahedra
+has a fully expanded identity sequence in the source
+alphabet.  Its image cancels by adjacent inverse
+Peiffer factors.  Thus its coordinates in D.25's
+$24$-element basis are all zero.  The $24$ open-stratum
+prism cells map identically to that basis.  On these
+$654$ specified three-cells the exact comparison matrix is
+\[
+                     \bigl[\,0_{24\times630}\mid I_{24}\,\bigr].
+                                                               \tag{D.33}
+\]
+The inverse on the compact basis is inclusion of the
+named open prism cells.  In the original P5c3 orientation,
+D.25 changes the second block to $-I_{24}$ and reverses
+those inverse prism orientations.
+
+These coordinates refer to the specified cellular
+model and its recorded coherence fillings.  The theorem
+supplies those choices and their simultaneous
+compatibility; it does not assign a canonical
+Peiffer class to a bare equality of group words.
+\end{result}
+\begin{proof}
+\emph{A relator-valued normalizer.}
+Let $F_9$ be the free group on the nine compact letters,
+and let $R_0,\ldots,R_{25}$ be exactly D.25's relators.
+For a free word $w$, the program
+\path{code/d_p5c3_fill.py} returns its unique semidirect
+normal form $\nu(w)$ and a sequence $N(w)$ such that
+\[
+     \prod_{(c,r,\epsilon)\in N(w)}cR_r^\epsilon c^{-1}
+                            =w\nu(w)^{-1}
+                   \quad\text{freely in }F_9.             \tag{D.34}
+\]
+Here $\nu(w)$ is a word in $a,b$, followed by a word in
+$x,y,z$, followed by a word in $p,q,r,s$.
+The two free-group actions are the actual actions of
+B.19, including their inverse automorphisms.
+
+For completeness, suppose the current normal prefix
+is $uv$, with $v$ in the final free factor, and append
+a letter $h$ from the base.  Put $v'=\phi_{h^{-1}}(v)$.
+The change from $uvh$ to $uhv'$ is certified by
+\[
+       u\,D_h(v')^{-1}u^{-1},\qquad
+       D_h(v')=hv'h^{-1}\phi_h(v')^{-1}.
+\]
+The four expansion rules (D.9) express this as conjugate
+mixed relators.  Normalize $uh$ recursively in the
+five-generator base, using its six relators.  Appending
+a fibre letter needs only free reduction.  Multiplying
+these certificates telescopes to (D.34).
+Uniqueness follows from the two proved free-by-free
+semidirect decompositions.  In particular $w=1$ in
+$\Gamma_{0,6}$ exactly when $\nu(w)$ is empty, and then
+$N(w)$ is a complete van Kampen certificate for $w$.
+All $26$ defining relators, all $52$ signed action-inverse
+checks, and $20$ finite contextual checks were executed.
+The subsequent construction independently checks (D.34)
+for every relator it actually uses.
+
+\emph{The complete source two-skeleton.}
+Adjoin the open object $0$ to D.22's diagram.
+Use the compact presentation at $0$, a separate named
+copy of every local presentation, an arrow letter
+$e_a$ for every boundary arrow $a:i\to j$, and a
+letter $t_i$ for every crossing $i\to0$.
+Write $q_a$ for D.22's compact word of its transporter,
+$\mu_i$ for the compact word map on its local generators,
+and $f_{b,a}$ for its specified local twisting word.
+For a composable pair $a:i\to j$, $b:j\to k$, put
+\[
+\begin{aligned}
+ S_{b,a}&=e_b e_a e_{ba}^{-1}f_{b,a}^{-1},\\
+ O_a&=t_j e_a t_i^{-1}q_a^{-1},\\
+ C_i(x)&=t_i x t_i^{-1}\mu_i(x)^{-1}.
+\end{aligned}                                                     \tag{D.35}
+\]
+Include the local relators, the ordinary sewing
+relators, all $C_i(x)$ for named local generators,
+all $S_{b,a}$, and all $O_a$.
+The counts, each obtained from the actual lists, are
+\[
+\begin{array}{c|r}
+\text{relator family}&\text{number}\\\hline
+\text{open compact}&26\\
+\text{boundary local}&2195\\
+\text{boundary sewing}&3570\\
+\text{local-generator crossing }C_i(x)&1110\\
+\text{boundary triangle }S_{b,a}&630\\
+\text{open triangle }O_a&840
+\end{array}
+\]
+Their sum is $8371$; the $9+1110+840+235=2194$
+letters are the oriented one-cells just specified.
+The $235$ boundary objects and the open object are
+its vertices.  The $t_i$ are a spanning tree, not
+independent generators after passing to a one-vertex
+fundamental-group presentation.
+No local relator or sewing map is omitted from this
+source two-presentation.
+
+Define its map on free letters by
+\[
+  x_i\longmapsto\mu_i(x_i),\qquad
+  e_a\longmapsto q_a,\qquad t_i\longmapsto1,
+\]
+and use the identity on the nine open letters.
+For each relator, use (D.34) as its two-cell filling;
+for an open compact relator use its own single
+relator cell.  These choices agree because the
+normalizer returns that same certificate there.
+The crossing relators $C_i(x)$ and open triangles
+$O_a$ have freely empty images and get empty fillings.
+The full list uses $1027$ distinct certificates with
+$26483$ conjugate-relator factors.  Every expanded
+product was checked against the image of its source
+relator in the free group $F_9$.
+These free-word certificates prove the chain-boundary
+identity in degree two, including all local and
+sewing columns: applying the Fox boundary to either
+side of (D.34) gives exactly the same lifted edge chain.
+
+\emph{The actual tetrahedral identity sequences.}
+For a local word $z$, expand $C_k(z)$ as a sequence
+in the generator crossing relators $C_k(x)$.
+For a positive letter its conjugator is the image
+under $\mu_k$ of the preceding prefix; for a negative
+letter multiply that conjugator by $\mu_k(x)^{-1}$
+and use $C_k(x)^{-1}$.  Free cancellation proves that
+this sequence has boundary
+$t_kzt_k^{-1}\mu_k(z)^{-1}$.
+Thus this notation specifies a finite relator sequence,
+not an extra generator or an unspecified equality.
+
+Fix one of the $630$ flags $i\to j\to k\to0$, and
+write $a:i\to j$, $b:j\to k$, $f=f_{b,a}$,
+$\mu f=\mu_k(f)$.  Let $T_{b,a}$ be the already
+chosen compact certificate for the image of
+$S_{b,a}$.  Its boundary is
+\[
+             w_{b,a}=q_bq_aq_{ba}^{-1}(\mu f)^{-1}.
+\]
+The actual local coherence at the open vertex is
+\[
+             \delta_{b,a}=\mu f\,q_{ba}(q_bq_a)^{-1}
+                          =w_{b,a}^{-1}.
+\]
+Choose its open-stratum van Kampen diagram to be
+$T_{b,a}^{-1}$, with the same $26$ relator cells and
+reversed orientations.  This is a single specified
+rule for all flags.  The complete tetrahedral
+identity sequence in the full source alphabet is
+\[
+\begin{split}
+ &(t_k S_{b,a}t_k^{-1})\ C_k(f)\
+       (\mu f\,O_{ba}(\mu f)^{-1})\ T_{b,a}^{-1}\\
+ &\hspace{25mm}\cdot
+       (q_bO_aq_b^{-1})^{-1}\ O_b^{-1}=1.
+\end{split}\tag{D.36}
+\]
+The notation $T_{b,a}^{-1}$ in this source expression
+means the actual sequence of open compact relators;
+their indices and conjugators are recorded individually.
+
+Here is a direct verification of the attaching word.
+Set $W=t_ke_be_at_i^{-1}$.
+The route through the two open triangles gives
+\[
+ W=O_b\,(q_bO_aq_b^{-1})\,q_bq_a.
+\]
+The route through the boundary triangle gives
+\[
+ W=(t_kS_{b,a}t_k^{-1})\ C_k(f)\
+             (\mu f\,O_{ba}(\mu f)^{-1})\,\mu f\,q_{ba}.
+\]
+Comparing them and inserting the specified diagram
+for $\delta_{b,a}$ yields (D.36) by free cancellation.
+This is precisely the tetrahedral comparison of the
+two boundary routes, including its local open coherence.
+The program expands every factor back into the full
+$2194$-letter source alphabet and obtains the empty
+word for each of the $630$ sequences.
+
+Apply the two-map factor by factor to (D.36).
+The first factor gives $T_{b,a}$ since $t_k$ maps to
+$1$.  Each crossing and open-face factor has an
+empty certificate.  The open coherence gives its
+literal inverse $T_{b,a}^{-1}$.  The resulting
+identity sequence is therefore
+\[
+                         T_{b,a}T_{b,a}^{-1}.             \tag{D.37}
+\]
+Cancel its adjacent inverse conjugate-relator factors
+successively.  These are explicit Peiffer cancellations,
+so its class in $\pi_2(K_6^{(2)})$ is zero, not merely
+its boundary word or its augmentation.
+Only two of the $630$ certificates $T_{b,a}$ are
+nonempty; the eight mapped factors across all
+$630$ sequences were checked individually.
+The source sequences contain $2539$ factors in all.
+This proves the zero block of (D.33) at the level of
+actual identity sequences.
+
+\emph{Simultaneous CW realization and the inverse.}
+There is an explicit mapping-cylinder construction,
+which fixes the choices for all cells at once.
+Let $X=|P_2(0,6)|$ and
+$L=E\Gamma\times_\Gamma X$, where
+$\Gamma=\Gamma_{0,6}$.  Give $L$ the classifying
+complex-of-groups CW model of D.22.  It has $235$
+vertices, $1950$ one-cells and $6395$ two-cells:
+the latter are its $2195$ local, $3570$ sewing and
+$630$ triangle cells.  Higher cells include the
+local classifying-space cells and their prisms.
+Its projection $p:L\to B\Gamma$ is the actual
+classifying map of its universal development.
+There is a direct identification
+\[
+ E\Gamma\times_\Gamma\operatorname{Cone}(X)
+                   \cong M_p.
+\]
+Indeed $[e,(x,t)]$ corresponds to $([e,x],t)$
+away from the cone vertex, and its endpoint is
+$[e]\in B\Gamma$.  Thus the full open-stratum
+cone diagram is the mapping cylinder of this
+specific projection.
+
+Replace $B\Gamma$ by D.25's $K_6$ and choose the
+cellular map $f:L\to K_6$ whose one- and two-cell
+maps are exactly the words and certificates already
+specified.  It extends to all higher cells because
+$K_6$ is aspherical.  Its induced fundamental-group
+map is the one of $p$, so it is homotopic to $p$
+under $B\Gamma\simeq K_6$: lift the comparison to
+their contractible universal targets and extend it
+cell by cell.  Set $\mathcal K=M_f$.
+This is a CW replacement of the actual cone
+classifying diagram, with its boundary and open
+maps specified.  The map
+\[
+ F|_{K_6}=1,\qquad F(z,t)=f(z)\quad(z\in L)
+                                                               \tag{D.38}
+\]
+is its canonical cellular retraction.
+
+Its two-skeleton is precisely (D.35): the vertical
+edges are the $t_i$, the prisms of local generator
+edges are $C_i(x)$, and the prisms of boundary
+arrows are $O_a$.  A prism over a boundary two-cell
+uses its one fixed compact filling as its top
+face.  In particular the prism over $S_{b,a}$
+uses $T_{b,a}^{-1}$ with the opposite orientation.
+Its side annulus expands into the crossing and
+open-face terms of (D.36).  This proves that the
+$630$ coherence disks are the restrictions of
+one mapping-cylinder construction.  They have
+not been varied independently after fixing their
+boundaries.
+
+The program also constructs the standard prism
+identity for every one of the $6395$ boundary
+two-cells.  For a cell relator $R$ based at $i$,
+let $C(R)$ be the word obtained by expanding its
+side annulus in the local-generator and arrow
+crossing relators.  Its free boundary is
+$t_iRt_i^{-1}\mu(R)^{-1}$, with the same
+prefix rule used above.  The prism identity is
+\[
+          (t_iRt_i^{-1})\,N(\mu(R))^{-1}\,C(R)^{-1}=1.
+                                                               \tag{D.39}
+\]
+All $6395$ source identities and their factorwise
+images were freely checked.  Each image is its
+own compact certificate followed by its inverse.
+For a triangle, grouping the side annulus by its
+three faces gives (D.36); moving the compact
+certificate across that annulus is the defining
+Peiffer interchange.  Thus the two expansions
+are the same oriented prism attaching sphere.
+
+Equation (D.38) sends every such three-dimensional
+prism into $K_6^{(2)}$, proving its degree-three
+chain image is zero.  The full source also has
+three-cells of $L$, including local three-cells,
+edge times local two-cells, and triangle times
+local one-cells.  These are not being omitted
+from the model or identified with the selected
+$654$ summands in (D.33).  Their images are those
+of the already extended map $f$.  At chain level
+they are uniquely determined by their boundaries,
+since D.25 proves that $\partial_3$ is injective.
+The computed zero prism block and the identity
+open block therefore belong to an actual full
+chain map; (D.33) specifies those summands only.
+
+The mapping cylinder retracts onto $K_6$, so
+(D.38) is the asserted homotopy equivalence.  Inclusion
+$K_6\hookrightarrow\mathcal K$ is a strict right
+inverse for the specified map on this subcomplex.
+Its $24$ prism attaching sequences are exactly
+D.25's sequences.  The program maps each factor
+of all $24$ sequences identically and verifies
+their freely empty boundaries again.  Hence the
+identity block and its inverse in (D.33) are
+literal.  The final sign comparison with P5c3
+is the already proved individual inversion in
+D.25, completing the stated cellular comparison.
+\end{proof}

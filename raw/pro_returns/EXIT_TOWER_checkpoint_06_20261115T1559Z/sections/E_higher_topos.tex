@@ -1,0 +1,393 @@
+\subsection{Reconstruction in modular dimension at least three}
+
+The following argument uses all finite generic covers of the small
+etale topos.  We give the passage from the smaller Galois quotient
+in the cited reconstruction theorem to the full Galois group, and
+then recover the structure sheaf and the entire site.  Throughout
+this subsection $k=\overline{\Q}$; field isomorphisms may act on $k$.
+
+\begin{result}{E.T8}{Known, with full-group reduction proved}{The precise birational reconstruction used here}
+Let $K$ and $L$ be function fields of transcendence degree at least
+three over $k$.  Write $G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)$
+and similarly for $L$.  The canonical map
+\[
+ \operatorname{Isom}(L,K)\longrightarrow
+ \operatorname{Isom}_{\mathrm{cont}}(G_K,G_L)/\operatorname{Inn}(G_L)
+                                                               \tag{E.T33}
+\]
+is a bijection.  For a field isomorphism $\varphi:L\to K$, its image
+is $g\mapsto\widetilde\varphi^{-1}g\widetilde\varphi$, where
+$\widetilde\varphi:L^{\mathrm{sep}}\to K^{\mathrm{sep}}$ is any
+extension.  The ambiguity in this extension is exactly the indicated
+inner ambiguity.  The construction is compatible with restriction
+to every open subgroup and with its associated finite field extension.
+\end{result}
+\begin{proof}[Derivation, including the full-group comparison]
+Fix a prime $\ell$.  Let $\Pi_K^c\to\Pi_K$ be the maximal pro-$\ell$
+abelian-by-central quotient and its abelianization.  We use
+\cite[Theorem 1.2(4), with Theorem 1.1]{Pop2018Divisorial} in its
+actual form: the isomorphisms $\Pi_K\to\Pi_L$ which lift to
+$\Pi_K^c\to\Pi_L^c$, modulo multiplication by a common
+$\ell$-adic unit, correspond bijectively to field isomorphisms
+$L\to K$.  The Kronecker dimension of $\overline\Q$ is one,
+so its inequality is exactly $\operatorname{trdeg}_kK>2$.
+The algebraically closed constant field is the unique maximal
+algebraically closed subfield of the function field, and is
+therefore preserved by the recovered isomorphism.  No specified
+arithmetic action is added to the input.
+
+Let $\alpha:G_K\to G_L$ be a continuous isomorphism.  The quoted
+theorem first gives a unique $\varphi:L\to K$ from its induced
+abelianized quotient.  For each open normal subgroup $H\triangleleft
+G_K$, set
+\[
+ K_H=(K^{\mathrm{sep}})^H,\qquad
+ L_{\alpha H}=(L^{\mathrm{sep}})^{\alpha H}.
+\]
+Both still have the required transcendence degree.  Applying the
+same reconstruction to $\alpha|_H$ gives a unique
+$\varphi_H:L_{\alpha H}\to K_H$.
+
+We verify the compatibility which is needed to assemble these
+maps.  For $g\in G_K$, conjugation by $g$ on $H$ and conjugation
+by $\alpha(g)$ on $\alpha H$ commute with $\alpha|_H$.
+Scalar multiplication on the abelianized quotients commutes with
+these conjugations.  The uniqueness part of the field
+reconstruction therefore gives
+\[
+ \varphi_H\circ\alpha(g)|_{L_{\alpha H}}
+       =g|_{K_H}\circ\varphi_H.                            \tag{E.T34}
+\]
+Taking fixed fields shows that $\varphi_H$ carries $L$ onto $K$.
+Its restriction to $L$ equals $\varphi$, for the following exact
+reason.  The map $\Pi_{K_H}\to\Pi_K$ induced by $H\hookrightarrow
+G_K$ has image of finite index.  On this image, the abelianized
+map induced by $\varphi_H|_L$ agrees with that of $\alpha$, up to
+the single $\ell$-adic scalar supplied for $\varphi_H$.
+The group $\Pi_L$ is torsion-free: Kummer theory over the field
+containing all roots of unity identifies it with a product of
+copies of $\Z_\ell$, dual to the free abelian group $L^\times/k^\times$.
+Two continuous $\Z_\ell$-linear maps to it agreeing on a subgroup
+of finite index agree everywhere, by multiplying by that index.
+The uniqueness assertion in the quoted theorem now proves
+$\varphi_H|_L=\varphi$.
+
+The identical argument for two nested open normal subgroups
+$H_1\subset H_2$ proves
+$\varphi_{H_1}|_{L_{\alpha H_2}}=\varphi_{H_2}$.
+Their union is consequently a field isomorphism
+\[
+ \widetilde\varphi:L^{\mathrm{sep}}\xrightarrow{\sim}K^{\mathrm{sep}}.
+\]
+Equation (E.T34) on every finite Galois subextension says exactly
+$\widetilde\varphi\alpha(g)=g\widetilde\varphi$ on the whole
+separable closure.  This proves surjectivity in (E.T33).
+Injectivity follows already from the smaller quotient theorem.
+Applying the construction to an arbitrary open subgroup, and then
+passing to its normal core, proves the final compatibility claim.
+
+Here are the checked proof locations and the specialization scope
+of the input.  Its reconstruction proceeds through the total
+decomposition graph (Proposition 2.4), the divisorial lattice
+(2.8), the quasi-arithmetic lattice and its functoriality (2.24),
+the rational projections (2.27), and the recovery of divisorial
+inertia from the group (3.3).  We read these proofs, the
+specialization steps 2.17--2.21, and Jossen's complete appendix.
+For the characteristic-zero fields used here, resolution permits
+smooth projective models and normal-crossings complements; all
+specializations in that application are taken on their common
+good-reduction open.  The prime-to-$\ell$ comparison there is the
+comparison used in 2.15 and 2.19.  The specialization argument
+in 2.24 detects a non-torsion divisor class by reductions whose
+order is divisible by $\ell$, and then restricts to a general
+hyperplane; its residual transcendence degree is at least two.
+This checks the exact dimension bound used in this proof.
+
+The unrestricted reduced-special-fibre assertion in that paper's
+Fact 2.11(1) must be restricted to the good-reduction locus of
+Fact 2.13.  For example, at a valuation of $\overline\Q$ above
+the prime $p$, the primitive projective conic
+$X^2-pYZ=0$ has closure with special fibre $X^2=0$.
+Its generic fibre is smooth, while that special fibre is a
+doubled line.  The primitive-polynomial Gauss valuation shows
+that its closure ideal is exactly $(X^2-pYZ)$, so no implicit
+reduction changes this calculation.  Inverting $p$ removes
+these specializations.  The cited reconstruction proof after
+Fact 2.13 uses precisely the good-reduction open, and the
+characteristic-zero application above uses only that form.
+\end{proof}
+
+% The two-dimensional extension is placed after E.T10 below.
+
+\begin{result}{E.T9}{Proved}{Reconstruction of the full unringed topos in dimension at least three}
+For normal separated varieties $X,Y$ over $k$ of dimension at least
+three, the map
+\[
+ \operatorname{Isom}_{\mathrm{schemes}}(X,Y)
+   \longrightarrow
+ \operatorname{Isom}(X_{\mathrm{et}},Y_{\mathrm{et}})
+                                                               \tag{E.T35}
+\]
+is a bijection, where the right side is taken modulo natural
+isomorphism and the left side allows the induced automorphism
+of $k$.  In particular, every unringed topos equivalence recovers
+the structure sheaf and its action on every etale object.
+\end{result}
+\begin{proof}
+We first reconstruct the map of locally ringed spaces.  Let
+$F:X_{\mathrm{et}}\to Y_{\mathrm{et}}$ be an equivalence.
+Subterminal objects are exactly the Zariski opens: a subsheaf
+of the terminal object is represented by the union of the
+images of its etale sections.  Consequently $F$ gives an
+isomorphism of open-set lattices and a homeomorphism
+$h:|X|\to|Y|$.  These spaces are sober.  Each irreducible
+component, its generic point, and its codimension-one points
+are recovered by this homeomorphism.  We work on one connected
+component; a normal connected variety is integral.
+
+Localizing along all nonempty Zariski opens recovers the generic
+topos, namely the topos of continuous sets for $G_{k(X)}$.
+The induced equivalence gives its continuous outer isomorphism
+to $G_{k(Y)}$.  E.T8 gives a unique field isomorphism
+\[
+                \varphi:k(Y)\xrightarrow{\sim}k(X).          \tag{E.T22}
+\]
+We check that it has the valuations dictated by $h$.
+
+Let $x$ be a codimension-one point of $X$ and $y=h(x)$.
+Choose a geometric point over $x$ and the corresponding point
+over $y$.  Every point of the small etale topos is induced by
+a geometric point, by \cite[Lemma 59.29.12]{StacksEtalePoints};
+its restriction to subterminals identifies its underlying
+Zariski point.  For a finite generic Galois set $E$, the stalk at
+$x$ of its generic direct image is
+\[
+                         E^{I_x}.                          \tag{E.T23}
+\]
+Indeed $\mathcal O_{X,x}$ is a discrete valuation ring.
+The fraction field of its strict henselization is the fixed
+field of the inertia subgroup $I_x\subset G_{k(X)}$ for the
+chosen prolongation.  Sections of the finite generic cover
+over that strict localization are exactly its invariant
+elements.  Both the generic localization and this stalk
+construction are intrinsic to the topos, so $F$ identifies
+(E.T23) with its counterpart at $y$.
+The fixed-point functor is represented, on finite continuous
+sets, by the profinite homogeneous space $G_{k(X)}/I_x$.
+Pro-Yoneda therefore identifies the transported inertia
+subgroup with $I_y$, up to conjugacy.
+
+Distinct divisorial valuations have distinct inertia classes
+in the full generic group.  To see the needed assertion
+directly, pass to the maximal pro-$\ell$ abelian quotient.
+Kummer characters pair its inertia line with a rational
+function $a$ by $v(a)\in\Z_\ell$.  Two distinct discrete
+divisorial valuations admit, by weak approximation, an
+element with valuation zero at one and nonzero at the other.
+Their valuation kernels and hence their inertia lines differ.
+Since the Galois action of (E.T22) is the one supplied by $F$,
+we obtain equality of valuation rings
+\[
+                 \varphi(\mathcal O_{Y,y})=\mathcal O_{X,x}.
+                                                               \tag{E.T24}
+\]
+This argument also shows that the scale of a chosen inertia
+generator is immaterial: its full subgroup recovers the
+valuation ring used in (E.T24).
+
+For every open subset $V\subset Y$, normality gives
+\[
+ \mathcal O_Y(V)=\bigcap_{y\in V^{(1)}}\mathcal O_{Y,y}
+                    \quad\hbox{inside }k(Y).                \tag{E.T25}
+\]
+The corresponding formula holds on $h^{-1}V$.  On an affine
+open it is the normal-domain intersection theorem
+\cite[Lemma 10.157.6]{StacksNormalIntersection}; on any open
+it follows by covering with affine opens and comparing
+inside the same fraction field.  Equations (E.T24)--(E.T25)
+therefore give a sheaf isomorphism
+$\mathcal O_Y\to h_*\mathcal O_X$ whose map at the generic
+point is $\varphi$.  On stalks these are ring isomorphisms
+between local rings and therefore preserve their unique
+maximal ideals.  Thus it defines a scheme isomorphism $f:X\to Y$.
+Its action on $k$ is the restriction of $\varphi$.
+
+We finally prove that this recovers $F$ itself, including its
+possible kernel on generic restriction.  The category of
+quasicompact separated etale $X$-schemes is an intrinsic
+generating subcategory of $X_{\mathrm{et}}$.  Here is the
+precise recognition.  Every sheaf is represented by its
+etale algebraic space: take the disjoint union of all its
+etale sections and quotient by the open equivalence relation
+where the sections agree.  Coherence makes this algebraic
+space quasicompact and quasiseparated.  Its diagonal is
+complemented as a subobject exactly when it is separated.
+A separated quasicompact etale algebraic space over a scheme
+is a scheme, by the quasi-finite separated form of Zariski's
+Main Theorem.  Thus the coherent objects with complemented
+diagonal are precisely this generating subcategory.
+
+For such an object $U\to Y$, the slice equivalence identifies
+$U_{\mathrm{et}}$ with the small etale topos of the
+corresponding object $V\to X$.  Their generic fields are
+finite extensions of $k(Y)$ and $k(X)$, respectively.
+E.T8's open-subgroup compatibility gives the extension of
+$\varphi$ between these fields.  Applying (E.T23)--(E.T25)
+to the slice equivalence supplies a unique scheme
+isomorphism $V\to U$ with that generic map, over $f$.
+It is equivalently an isomorphism $V\simeq U\times_YX$.
+These isomorphisms commute with every morphism in the
+generating site: they agree on the generic fields, and
+maps between separated integral schemes agreeing on a
+dense open agree everywhere.  They also preserve all
+covering families.  Hence they extend to a natural
+isomorphism $F\simeq f_{\mathrm{et}}$ on the whole topos.
+Uniqueness of $\varphi$ and (E.T25) proves injectivity in
+(E.T35), completing the proof.
+\end{proof}
+
+\begin{result}{E.T10}{Proved}{The full unringed modular groups in dimension at least three}
+For every stable type with $d=3g-3+n\geq3$, the canonical
+map from semilinear algebraic stack autoequivalences of
+$\mathcal M_{g,n,\overline\Q}$, modulo $2$-isomorphism, to
+autoequivalences of its full unringed small etale topos,
+modulo natural isomorphism, is an isomorphism.  Consequently
+\[
+ \Aut\bigl((\mathcal M_{g,n,\overline\Q})_{\mathrm{et}}\bigr)
+ \cong
+ \begin{cases}
+ C_2\times G_{\Q},&(g,n)=(2,0),\\
+ S_n\times G_{\Q},&\text{all other stable types with }d\geq3.
+ \end{cases}                                                   \tag{E.T26}
+\]
+The maps from the factors are respectively the quadratic
+twist of E.T4 or relabelling, and base change by an
+automorphism of $\overline\Q$.  Thus this formula specifies
+the comparison maps, as well as the abstract groups.
+\end{result}
+\begin{proof}
+Put $\mathcal X=\mathcal M_{g,n,k}$.  We give the atlas
+recognition and descent argument rather than adding a
+structure sheaf to the topos as extra data.
+
+We first record how stabilizers are seen by the topos.
+For a closed geometric point $x$ of a separated
+Deligne--Mumford stack of finite type over $k$, let $p_x^*$
+be its stalk functor.  There is a canonical isomorphism
+\[
+                   I_x\xrightarrow{\sim}\Aut(p_x^*),         \tag{E.T27}
+\]
+where $I_x$ is the finite automorphism group of the object
+$x$.  Choose a representable etale scheme atlas $W$ and a
+lift $w$ of $x$.  An automorphism of $p_x^*$ acts on its
+set of lifts to $W$.  The open subschemes of $W$ force the
+underlying closed point of $w$ to be fixed: for any other
+closed point there is an open containing $w$ and excluding
+that point.  The lifts with this same underlying point form
+an $I_x$-torsor, because the atlas has trivial stabilizer.
+After composing with the unique element of $I_x$ sending
+the chosen lift to its image, the stalk automorphism fixes
+that lift.  It is then a stalk automorphism of $W_{\rm et}$
+at $w$.  Such an automorphism is the identity: on every
+quasicompact etale $W$-scheme its finite set of lifts over the closed
+$k$-point is separated by open neighbourhoods.  This proves
+surjectivity in (E.T27).  The torsor action proves injectivity.
+The same proof after an etale chart shows that all points of
+the stack topos arise from geometric points, and that the
+closed ones are recognized by their restriction to the
+subterminal open-set lattice.
+
+Choose a finite etale surjective level atlas
+$U\to\mathcal X$ with $U$ a smooth quasiprojective scheme.
+For genus zero we take $U=\mathcal X$; in positive genus
+one may take full symplectic level $3$, with the labels
+retained.  The level structure is a torsor under a finite
+symplectic group.  It kills curve automorphisms: the
+principal level-$3$ subgroup has no nontrivial finite-order
+integral matrix, and a finite-order curve automorphism
+acting trivially on integral first homology is the identity.
+For genus at least two the latter follows from the
+quotient curve and Riemann--Hurwitz, since invariant
+holomorphic differentials would give the quotient the
+same genus; in genus one the marked origin removes
+translations.  The resulting moduli space is the usual
+fine level moduli scheme.  Its finite etale atlas and the
+quasiprojective coarse moduli scheme are the same finite
+level models used in the completion construction of E.2.
+
+Let $F$ be an equivalence of $\mathcal X_{\rm et}$ and
+write $V=F^*U$.  A finite locally constant object on a
+Deligne--Mumford etale site is a representable finite etale
+cover: on an etale scheme atlas it is a finite disjoint
+union of finite etale schemes, and the sheaf descent
+isomorphisms give effective finite etale descent.  Hence
+$V$ is a finite etale Deligne--Mumford stack over
+$\mathcal X$, and the slice topos $V_{\rm et}$ is
+equivalent to $U_{\rm et}$.  Every closed point of the
+latter has trivial stalk automorphism group.  Formula
+(E.T27) gives trivial stabilizers at every closed point
+of $V$.  Its inertia is finite and unramified; a nonempty
+complement of its identity section would have a closed
+point, since $V$ is of finite type over $k$.  Its inertia
+is therefore the identity section, and $V$ is an
+algebraic space.
+
+We verify that this space is a scheme.  Let $M$ be the
+coarse moduli scheme of $\mathcal X$.  The map
+$\mathcal X\to M$ is proper and quasi-finite; its
+geometric fibres are the classifying stacks of the
+finite curve automorphism groups.  It follows that
+$V\to M$ is proper and quasi-finite.  A proper
+quasi-finite algebraic space over a scheme is finite
+and hence a scheme; alternatively the separated
+quasi-finite assertion of
+\cite[Proposition 67.50.2]{StacksSeparatedQuasiFinite}
+first makes it a scheme, followed by the scheme form
+of the same finiteness statement.  Thus $V$ is a smooth
+scheme of pure dimension $d$.
+
+Set $R=U\times_{\mathcal X}U$.  It is a scheme finite
+etale over $U$, because $U\to\mathcal X$ is so.  Its
+image under $F^*$ is
+$R'=V\times_{\mathcal X}V$, again a scheme finite
+etale over $V$.  The slice equivalences and E.T9 give
+unique scheme isomorphisms
+\[
+                    V\longrightarrow U,
+          \qquad R'\longrightarrow R.                       \tag{E.T28}
+\]
+E.T9 applies to each connected component, whose dimension
+is $d\geq3$.  Its construction is natural for etale maps:
+on the generic fields this is E.T8's compatibility with
+finite extensions, and equality on the dense generic
+locus extends over a normal separated scheme.  Thus
+(E.T28) commutes with source, target, identity, inverse,
+and composition.  For composition apply the same
+argument to $R\times_U R$ and its image; its maps are
+etale as well.  All field isomorphisms in the same
+connected component of this groupoid have the same
+restriction to $k$.  The stack $\mathcal X$ is connected,
+so the relations connect the components of the atlas,
+and there is one common automorphism of $k$.
+
+The isomorphism of etale groupoids (E.T28) descends to
+a semilinear stack autoequivalence $f$ of
+$[U/R]=\mathcal X$.  On each atlas slice it induces
+the original topos equivalence by E.T9, and the
+agreement on the overlap slices gives
+$f_{\rm et}\simeq F$ on the full topos by descent.
+Conversely, a natural isomorphism of such topos
+equivalences yields the unique isomorphisms on their
+scheme-atlas groupoids from E.T9, and hence a
+$2$-isomorphism of the stack maps.  This proves the
+claimed bijective comparison, including its kernel.
+
+Restriction to constants gives an exact sequence with
+kernel the $k$-linear algebraic group $A_{g,n}$ of E.T4
+and quotient $G_{\Q}$.  The canonical model of the
+moduli stack over $\Q$ splits it.  Relabellings are
+defined over $\Q$, so this splitting centralizes $S_n$.
+In type $(2,0)$ the kernel is $C_2$, which has trivial
+automorphism group, so the split extension is again
+the direct product.  Substituting E.T4 gives (E.T26).
+\end{proof}

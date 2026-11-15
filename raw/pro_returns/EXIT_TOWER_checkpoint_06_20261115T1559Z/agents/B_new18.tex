@@ -1,0 +1,228 @@
+
+\subsection{A finite chamber model and its exact braid dictionary}
+
+\begin{result}{B.18}{Proved}{Finite chamber arrows reduced to pure moduli generators}
+Let $m\geq3$.  Define a finite groupoid presentation $\mathcal C_m$
+with objects the $m!$ orderings $w$ of $\{1,\ldots,m\}$ and arrows
+$e_{w,i}:w\to ws_i$, $1\leq i<m$, where $s_i$ interchanges the
+entries in positions $i,i+1$.  At each object impose the lifted
+commutation relation for $|i-j|>1$ and the lifted length-three
+braid relation for $j=i+1$.  Also kill at the identity ordering
+the loop
+\[
+ z_m=(\sigma_1\cdots\sigma_{m-1})^m.                 \tag{B.25}
+\]
+Then $\mathcal C_m\simeq\Pi_1M_{0,m+1}$.  The comparison is induced
+by the actual adjacent half-turn paths in the ordered configuration
+space, followed by affine normalization.  Its finite counts are
+\[
+\begin{array}{c|r|r|r|r}
+ \text{space}&\text{objects}&\text{arrows}&
+ \text{rank-two relations}&\text{central relation}\\\hline
+ M_{0,4}&6&12&6&1\\
+ M_{0,5}&24&72&72&1\\
+ M_{0,6}&120&480&720&1.
+\end{array}                                                   \tag{B.26}
+\]
+Every generator has an explicit image in the generators
+\[
+ A_{ij}=\sigma_{j-1}\cdots\sigma_{i+1}\sigma_i^2
+             \sigma_{i+1}^{-1}\cdots\sigma_{j-1}^{-1},
+ \qquad 1\leq i<j\leq m,\quad (i,j)\ne(1,2).       \tag{B.27}
+\]
+The algorithm below and \texttt{b\_genus\_zero.json} specify all
+these words for $m=3,4,5$, and give the inverse on every generator
+by (B.27).  These are the counts of this specified comparison
+model; the $542$ objects of cote 148 retain their count in B.12.
+\end{result}
+\begin{proof}
+Place $m$ distinct labelled points on the real axis.  The positive
+normal half-turn interchanging two adjacent positions gives
+$e_{w,i}$.  The configuration remains labelled: its endpoint has
+the two labels in exchanged positions.  The generic-braid-diagram
+argument of B.16 works with any number of strands.  The only
+codimension-two changes are two independent crossings in either
+order, and the three-strand move.  Consequently the groupoid
+before (B.25) is the fundamental groupoid of
+$\operatorname{Conf}_m(\mathbb C)$ on these $m!$ configurations.
+This is also the two-skeleton of the type $A_{m-1}$ complex in
+\citet[Section 4.1]{B_SalvettiSettepanella}.  There are
+$(m-1)m!$ arrows and $\binom{m-1}{2}m!$ displayed rank-two
+relations.  Some relations can subsequently be eliminated; the
+table counts the given presentation.
+
+The map
+\[
+ (z_1,\ldots,z_m)\longmapsto
+ \left(z_1,z_2-z_1,
+  \left(\frac{z_j-z_1}{z_2-z_1}\right)_{3\leq j\leq m}\right)
+                                                               \tag{B.28}
+\]
+is an isomorphism of complex manifolds
+\[
+ \operatorname{Conf}_m(\mathbb C)
+ \longrightarrow\mathbb C\times\mathbb C^*\times M_{0,m+1},
+\]
+where labels $1,2,m+1$ are normalized to $0,1,\infty$.
+The loop $z_m$ rotates the whole configuration once; it generates
+the fundamental group of the second factor.  Its conjugate at
+any other object is the corresponding scalar turn, so the one
+relation (B.25) kills the entire fibre lattice.  This proves the
+geometric comparison and its exact kernel.
+
+Here is a word algorithm specifying the functor without leaving
+choices of paths implicit.  For an ordering $w$, let $T_w$ be the
+positive permutation braid produced by moving the entry destined
+for position $1$ left to that position, then the entry destined
+for position $2$, and so on.  Thus $T_w$ is a specified path from
+the identity ordering to $w$.  For $e=e_{w,i}$ with target $v$,
+the based loop is
+\[
+ T_v^{-1}\,e\,T_w.                                  \tag{B.29}
+\]
+The program records its braid word in traversal order as
+$T_w,\sigma_i,T_v^{-1}$.  More generally, for a pure braid $b$,
+let $k=\operatorname{lk}_{12}(b)$, the signed crossing count of
+strands $1,2$ divided by two.  Since
+$\operatorname{lk}_{12}(z_m)=1$, replace $b$ by $z_m^{-k}b$.
+This is the exact central correction for affine normalization.
+
+Combing this corrected braid gives a word in (B.27).  To specify
+combing, track the positions of the labelled strands while
+reading the braid word and delete strand $m$.  Discard a crossing
+involving that strand; decrement its index by one when the deleted
+strand is to its left.  This gives a pure braid $b_0$ on $m-1$
+strands.  Embed $b_0$ with a stationary final strand and put
+$u=b_0^{-1}b$.  Then $u$ is in the kernel of deletion.  In the
+Artin action on $F(X_1,\ldots,X_m)$ write
+\[
+ X_m^u=C X_m C^{-1},
+\]
+choosing $C$ by removing the inverse matching prefixes and
+suffixes of the freely reduced word $X_m^u$ until only $X_m$
+remains.  Delete every $X_m^{\pm1}$ from $C$ and freely reduce.
+Replace $X_i^{\pm1}$ in the result by $A_{im}^{\pm1}$.  Recurse
+on $b_0$.  This supplies the promised word in pure-band generators.
+
+For completeness, the reason this algorithm returns the braid,
+rather than just one invariant of it, is as follows.  Forgetting
+the last point is locally trivial: disjoint small discs about
+the preceding points and translations supported in these discs
+give local trivializations.  Its fibre is the plane with $m-1$
+points removed.  Induction, starting with $\mathbb C^*$, shows
+that its base has zero $\pi_2$, so the fibre group injects.
+The kernel is therefore the free group on the point-push loops
+$A_{1m},\ldots,A_{m-1,m}$.  In the displayed Artin formula,
+$A_{im}$ sends $X_m$ to $X_iX_mX_i^{-1}$.  On the kernel,
+deleting $X_m$ from the conjugator is a homomorphism to
+$F(X_1,\ldots,X_{m-1})$, since its action on that quotient free
+group is the identity.  It takes the stated free basis to its
+stated free basis.  It is consequently an isomorphism, which
+proves the fibre step of combing.  Recursion proves the claim.
+The final two-strand exponent is $\operatorname{lk}_{12}$;
+it vanishes after the central correction, explaining the omission
+of $A_{12}$ in (B.27).
+
+This argument also proves directly that two outputs represent
+the same mapping class exactly when their iterated free-group
+normal forms agree.  The program makes an additional check of
+each output in the faithful Artin action.  Faithfulness can be
+seen by choosing disjoint arcs from a fixed boundary basepoint
+to the punctures: an automorphism fixing the peripheral free
+basis preserves the homotopy classes of these arcs, which can
+be isotoped successively to the original arcs.  Cutting along
+them leaves a disc, and the remaining boundary-fixing map is
+isotopic to the identity.  Thus this check concerns the braid
+itself.
+
+Sending each $A_{ij}$ back to its path (B.27) is inverse to the
+collapse functor on vertex groups.  Formula (B.29) and the paths
+$T_w$ supply the natural isomorphism for the other objects.
+Hence the maps specify an equivalence generator by generator.
+All $12+72+480$ arrow outputs, the typed rank-two relations, and
+their central corrections were computed and checked.  The
+algorithm is also an explicit way to pass any additional pure
+braid word, once assigned to a geometric sewing path, into this
+finite presentation.
+\end{proof}
+
+\begin{result}{B.19}{Proved}{Exact comparison with the five- and six-point compact presentations}
+Under (B.27)--(B.29), the five-point vertex group is
+\[
+ \Gamma_{0,5}=F(x,y,z)\rtimes F(a,b),
+ \qquad (a,b,x,y,z)=(A_{13},A_{23},A_{14},A_{24},A_{34}).
+\]
+Put $c(u,v)=v^{-1}u^{-1}vu$.  Its six defining relations are
+\[
+\begin{array}{lll}
+ axa^{-1}=z^{-1}xz,&
+ aya^{-1}=c(x,z)y c(x,z)^{-1},&
+ aza^{-1}=c(x,z)z,\\
+ bxb^{-1}=x,&
+ byb^{-1}=z^{-1}yz,&
+ bzb^{-1}=c(y,z)z.
+\end{array}                                                   \tag{B.30}
+\]
+For six points, adjoin
+$(p,q,r,s)=(A_{15},A_{25},A_{35},A_{45})$.
+Then $\Gamma_{0,6}=F(p,q,r,s)\rtimes\Gamma_{0,5}$, with the six
+relations (B.30) and the twenty equations
+$huh^{-1}=\phi_h(u)$ in the following table:
+\begingroup\small\setlength{\arraycolsep}{3pt}
+\[
+\begin{array}{c|cccc}
+ h&\phi_h(p)&\phi_h(q)&\phi_h(r)&\phi_h(s)\\\hline
+ a&r^{-1}pr&c(p,r)q c(p,r)^{-1}&c(p,r)r&s\\
+ b&p&r^{-1}qr&c(q,r)r&s\\
+ x&s^{-1}ps&c(p,s)q c(p,s)^{-1}&c(p,s)r c(p,s)^{-1}&c(p,s)s\\
+ y&p&s^{-1}qs&c(q,s)r c(q,s)^{-1}&c(q,s)s\\
+ z&p&q&s^{-1}rs&c(r,s)s
+\end{array}                                                   \tag{B.31}
+\]
+\endgroup
+These are exactly the generators and relations in the supplied
+EXIT\_ONE\_TYPE statements P5c2 and P5c3, with the comparison
+specified by the individual band words (B.27).  Completeness
+and the equations are independently proved here.  This comparison
+does not assert that every orbit transporter for the separate
+complex of groups on $P_2$ has already been expressed in these
+words.
+\end{result}
+\begin{proof}
+The normalization (B.28) identifies $M_{0,n}$ with the ordered
+configuration space of $n-3$ points in
+$\mathbb C\setminus\{0,1\}$.  Forget the last moving point.
+The local trivializations just constructed prove the particular
+fibration of \citet[Theorem 1]{B_FadellNeuwirth}.  A continuous
+section places the last point at the positive real number
+$2+\sum |z_i|$, beyond all previous points.  The base and the
+punctured-plane fibre are aspherical by induction.  The exact
+homotopy sequence therefore gives, with these basepoints and
+section, the stated split extensions with free kernels of
+ranks three and four.
+
+The fibre generators are the indicated $A_{ij}$, as in the
+combing proof.  Conjugate each of these band words by the band
+word of a base generator and apply the fibre-conjugator
+calculation of B.18.  It gives precisely (B.30) and (B.31).
+The program checks the six equations in $B_4$ and the twenty new
+equations in $B_5$ by their free-group actions.  It also constructs
+the inverse fibre automorphisms by conjugating with inverse base
+braids, and checks both inverse identities.  For each of the six
+base relators and each of the four new fibre generators it
+verifies that the induced automorphism is the identity as a
+freely reduced word: twenty-four checks, with no abelianization.
+
+Finally, a split extension of a free group by a presented group
+has a presentation consisting of the base presentation and these
+conjugation equations.  Indeed, use them to move base letters to
+one side of any word.  Its image in the base first determines the
+base factor; an element mapping to the identity is then a word
+in the injective free kernel, so it vanishes exactly when that
+free word reduces to the empty word.  This proves completeness
+of the six and twenty-six relations.  The same normal form proves
+that the inverse band-word maps of B.18 agree with these
+presentations on every generator.  It supplies an independently
+verified comparison, rather than relying on the status labels of
+the previous return.
+\end{proof}

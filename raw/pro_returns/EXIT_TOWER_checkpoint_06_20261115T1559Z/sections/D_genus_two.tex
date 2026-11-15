@@ -1,0 +1,299 @@
+\subsection{The complete genus-two second-level word diagram}
+
+\begin{result}{D.27}{Proved}{Nineteen cells and every sewing word for the closed genus-two surface}
+The $P_2(2,0)$ action diagram has six vertex orbits, nine edge
+orbits and four triangle orbits.  Its barycentric complex of
+groups has $19$ named objects, $42$ face homomorphisms and
+$24$ coherence triangles.  All local presentations, all $178$
+generator images and all twisting elements are given by the
+formulas below and the complete certificate
+\path{code/d_p2_genus_two.json}.  Exactly one coherence triangle
+has a nonidentity twisting element.
+
+The resulting fundamental-group presentation is identified,
+on every named generator, with the five-chain presentation (E.27) of
+$\Gamma_{2,0}$, verified in E.14.  The inverse sends each of its five
+chain generators to a specified local generator.  The unique
+dimension-three stratum is the open $\mathcal M_2$; adjoining
+it supplies the $24$ explicit cone-coherence identities recorded
+in the same certificate.  These are identities of the actual
+complex of groups.  Their further expansion as Peiffer
+sequences in a compact global presentation is supplied
+with its actual comparison maps in D.38.
+\end{result}
+\begin{proof}
+Write $\sigma_1,\ldots,\sigma_5$ for the chain twists, and put
+\[
+\begin{gathered}
+ a=\sigma_1,\quad \beta=\sigma_2,\quad b=\sigma_3,
+ \quad\gamma=\sigma_4,\quad c=\sigma_5,\\
+ W=\sigma_1\sigma_2\sigma_3\sigma_4\sigma_5^2
+       \sigma_4\sigma_3\sigma_2\sigma_1,\qquad
+ Q=(\sigma_1\sigma_2\sigma_3\sigma_4\sigma_5)^3,\\
+ h=(a\beta)^3,\qquad h'=(\gamma c)^3,\qquad
+ \delta=h^2=(h')^2,\qquad W=h(h')^{-1}.
+\end{gathered}                                                    \tag{D.11}
+\]
+The global relations make $W$ central of order two and
+$Q^2=1$.  For three consecutive chain letters define
+$\Delta_4(x,y,z)=xyzxyx$, and set
+\[
+\begin{aligned}
+ t&=\Delta_4(a,\beta,b),&
+ e&=a^{-1}cb^{-1}(b\gamma)^3,\\
+ u&=tc^{-1},&v&=\Delta_4(b,\gamma,c)a^{-1},\\
+ T&=(a\beta)^{-1}(\gamma c)Q.
+\end{aligned}                                                       \tag{D.12}
+\]
+All these are literal words in the same five global generators.
+In the machine certificate the local letters $s,d,q$ in the
+separating stabilizer mean respectively $\beta,\gamma,Q$;
+the local letter $d$ in the nonseparating stabilizer means
+$\gamma$.  The separating curve is always denoted $\delta$
+in this proof.
+
+Choose the following multicurves:
+\[
+ N=\{a\},\quad S=\{\delta\},\quad B=\{a,b\},\quad
+ L=\{a,\delta\},\quad
+ \Theta=\{a,b,c\},\quad D=\{a,c,\delta\}.                    \tag{D.13}
+\]
+Cutting a genus-two surface shows these are all the orbits:
+there are two at each positive rank $1,2,3$.  The independent
+stable-graph enumeration gives exactly the counts
+$(1,2,2,2)$ at ranks $0,1,2,3$, as checked in the program.
+
+Here are the six stabilizers, with their embeddings fixed
+by (D.11)--(D.12).  For $N$ one has
+\[
+ G_N=\left(
+ \bigl(B_4(b,\gamma,c)\times\langle a\rangle\bigr)
+ /\langle(b\gamma c)^4=a^2\rangle\right)
+ \times C_2(W).                                                \tag{D.14}
+\]
+To prove this, cutting $a$ gives a torus with two labelled
+boundary circles.  Its boundary-framed group has the
+four-chain relation $(b\gamma c)^4=z_1z_2$; sewing the two
+circles sends $z_1,z_2$ to the same twist $a$.  This is the
+orientation-preserving stabilizer of $a$.  The hyperelliptic
+involution $W$ reverses the orientation of $a$, as is also
+seen from its action $-I$ on first homology.  It is central
+of order two and hence supplies exactly the displayed
+direct factor, with no unspecified lift.
+
+For $S$, its component-preserving subgroup is
+\[
+ G_S^+=
+ (B_3(a,\beta)\times B_3(\gamma,c))
+       /\langle h^2=(h')^2\rangle.
+\]
+The full group is $G_S=G_S^+\rtimes C_2(Q)$, where $Q$
+sends $a\mapsto\gamma$, $\beta\mapsto c$ and exchanges
+the two factors.  Sewing the two one-boundary tori proves
+the quotient and completeness.  The elements $W$ and
+$h(h')^{-1}$ both restrict to $(-I,-I)$ on the two tori;
+their ratio is a power of $\delta$.  Both have order two,
+so the infinite order of $\delta$ makes that power zero.
+This proves their equality in (D.11), including its central
+lift.  The braid-shift identity proves the stated action
+of $Q$, and the global full-twist relation proves $Q^2=1$.
+
+Put
+\[
+ H=\bigl(\mathbb Z^2(a,b)\times
+          (\mathbb Z(c)*C_2(e))\bigr)\times C_2(W).
+\]
+This is the subgroup of $G_B$ preserving each of $a,b$.
+The full group is obtained by adjoining $t$, with
+\[
+\begin{gathered}
+ tat^{-1}=b,\qquad tbt^{-1}=a,\qquad tct^{-1}=c,
+ \qquad tWt^{-1}=W,\\
+ tet^{-1}=Wcec^{-1},\qquad t^2=c^2.                            \tag{D.15}
+\end{gathered}
+\]
+For completeness, apply the irreducible stabilizer calculation
+of B.9--B.11 inside the four-chain group in (D.14).
+Before sewing its branch-switch element
+$r=cb^{-1}(b\gamma)^3$ satisfies $r^2=z_1z_2$.
+After $z_1=z_2=a$, the element $e=a^{-1}r$ has square one.
+This gives precisely $H$, including the independent
+orientation-reversing factor $W$ from (D.14).
+The element $t$ exchanges $a,b$, so $H$ has index two in
+$G_B$.  Relations (D.15), with the specified square and
+conjugation action, determine this extension.  Their
+possibly nontrivial central lifts were checked below.
+
+The remaining three groups are
+\[
+\begin{split}
+ G_L&=\mathbb Z(a)\times B_3(\gamma,c)\times C_2(W),\\
+ G_\Theta&=(\mathbb Z^3(a,b,c)\rtimes\mathfrak S_3(u,v))
+                    \times C_2(W),\\
+ G_D&=(\mathbb Z^3(a,c,h)\times C_2(W))\rtimes C_2(T).
+\end{split}                                                       \tag{D.16}
+\]
+Here $u$ exchanges $a,b$, $v$ exchanges $b,c$, and
+$u^2=v^2=(uv)^3=1$.  The element $T$ exchanges $a,c$
+and sends $h\mapsto Wh$, $W\mapsto W$.
+The meridian lattice in $G_D$ is $\langle a,c,h^2\rangle$.
+For $L$, the left torus stabilizer is
+$\langle a,h\rangle$; substituting $h=Wh'$ in the sewing
+quotient gives its displayed product.  An element exchanging
+the two tori cannot preserve $L$.
+For $\Theta$, cutting gives two pairs of pants, with twist
+kernel $\mathbb Z^3$ and graph group
+$\mathfrak S_3\times C_2$.  The actual words $u,v,W$
+supply its displayed splitting.  For $D$, the component-
+preserving group comes from
+$\langle a,h\rangle\times\langle c,h'\rangle$ with
+$h^2=(h')^2$; it is exactly the abelian group in (D.16).
+The correcting factors in $T$ are essential: the word $Q$
+alone sends $a$ to $\gamma$ and does not preserve (D.13).
+The word $T$ has square one and has the indicated action,
+so it supplies the full component-exchange extension.
+
+Here is a complete cell-group table.  Define
+\[
+\begin{gathered}
+ A_D=\langle a,c,h,W\rangle=\mathbb Z^3\times C_2,
+ \qquad Z_\Theta=\langle a,b,c,W\rangle=\mathbb Z^3\times C_2,\\
+ G_{\Theta B}=\langle a,b,c,u,W\rangle,
+ \qquad G_{\Theta N}=\langle a,b,c,v,W\rangle.
+\end{gathered}
+\]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+Cell & Stabilizer\\
+\midrule
+$N,S,B,L,\Theta,D$ & $G_N,G_S,G_B,G_L,G_\Theta,G_D$\\
+$BN$ & $H$\\
+$LN,LS$ & $G_L$\\
+$\Theta B,\Theta N$ & $G_{\Theta B},G_{\Theta N}$\\
+$DB,DS$ & $G_D$\\
+$DL,DN$ & $A_D$\\
+$\Theta BN$ & $Z_\Theta$\\
+$DBN,DLN,DLS$ & $A_D$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The curve-permutation actions in (D.15)--(D.16) show both
+that these flags exhaust the orbits and that each listed
+subgroup is the exact flag stabilizer.  For example,
+$\Theta B$ allows the transposition of $a,b$, whereas
+$\Theta N$ allows the transposition of $b,c$.  The flag
+$\Theta BN$ allows neither.
+
+All chosen flags are nested on (D.13), except that the
+$B$ face of $D$ is $\{a,c\}$.  The word $v$ carries this
+pair to the chosen $\{a,b\}$ and fixes $a$.  On the
+barycentric face category choose transporters
+\[
+ q_{DB,B}=q_{DBN,BN}=q_{DBN,B}=v,
+ \qquad q_{F,F'}=1\text{ on every other face arrow}.          \tag{D.17}
+\]
+The face homomorphism is, literally,
+$x\mapsto q_{F,F'}xq_{F,F'}^{-1}$ in the named target group.
+All unchanged named generators map to themselves.  The
+nontrivial substitutions needed to specify the other
+images are
+\[
+\begin{array}{ll}
+ BN\to N:& e\mapsto a^{-1}cb^{-1}(b\gamma)^3,\\
+ \Theta B\to B:&u\mapsto c^{-1}t,\\
+ \Theta N\to N:&v\mapsto\Delta_4(b,\gamma,c)a^{-1},\\
+ DB\to B:&a\mapsto a,\ c\mapsto b,\
+ h\mapsto Wabc^{-1}e,\\
+ &T\mapsto ab^{-1}c^{-1}t,\ W\mapsto W,\\
+ DL\to L,\ DN\to N:&h\mapsto W(\gamma c)^3,\\
+ DS\to S:&h\mapsto(a\beta)^3,\
+ T\mapsto(a\beta)^{-1}(\gamma c)Q.
+\end{array}                                                       \tag{D.18}
+\]
+For the higher flag groups use these same substitutions
+on their named generators; the full $42$-arrow list in
+the JSON certificate specifies every such face individually.
+In particular, the factor $ab^{-1}$ in the image of $T$
+under $DB\to B$ is retained.
+
+The coherence convention is
+\[
+ \psi_{F'F''}\psi_{FF'}
+       =\operatorname{Ad}(f_{FF'F''})\psi_{FF''},\qquad
+ f_{FF'F''}=q_{F',F''}q_{F,F'}q_{F,F''}^{-1}.
+\]
+There is exactly one nonidentity value:
+\[
+                  f_{DBN,BN,N}=v\in G_N.                   \tag{D.19}
+\]
+The fact that $v$ fixes the curve $a$ does not make its
+conjugation action on $G_N$ the identity.  Through $BN$
+the image of $A_D$ is $vA_Dv^{-1}$; through $DN$ it is
+$A_D$.  Equation (D.19) is the exact comparison.
+
+We describe the executed verification and its faithfulness.
+The hyperelliptic quotient gives
+$\Gamma_2/\langle W\rangle\simeq\Gamma_{0,[6]}$.
+Its action on the free group of the six-punctured sphere,
+modulo inner automorphisms, is faithful.  The ordinary
+Artin action on six letters computes it after eliminating
+the last peripheral generator by the product-one relation.
+A word with trivial sphere action consequently represents
+either $1$ or $W$ in $\Gamma_2$.
+The symplectic action distinguishes these two elements,
+since $W$ acts by $-I$.
+The programs \path{code/b_genus2_checks.py} and
+\path{code/b_genus2_faces.py} execute these two exact
+checks for all central-lift identities, all $178$ face
+images and all $24$ coherence triangles.
+The additional program \path{code/d_p2_genus_two.py}
+checks all $134$ defining relators in the $11$ local
+presentations and records their full words.  Thus no
+central $W$ discrepancy is discarded by a sphere-only
+calculation.
+
+The face arrows with transporter $1$ contain a connected
+spanning graph.  The executed breadth-first construction
+records a maximal tree of $18$ such edges.  With this
+tree, the global comparison sends every local generator
+to its displayed chain word and every face letter to its
+transporter (D.17).  The inverse on the five compact
+generators is
+\[
+ \sigma_1\mapsto a_N,\quad
+ \sigma_2\mapsto\beta_S,\quad
+ \sigma_3\mapsto b_N,\quad
+ \sigma_4\mapsto\gamma_N,\quad
+ \sigma_5\mapsto c_N.                                       \tag{D.20}
+\]
+These are literal generator words, with no omitted base
+paths.  The action is on the simply connected $P_2(2,0)$
+of D.6, and the groups, face maps and twists above are its
+actual stabilizer data.  The van Kampen presentation for
+this action therefore has the exact comparison
+$\pi_1(\text{displayed complex of groups})\to\Gamma_2$
+with kernel $\pi_1(P_2)=1$.
+It is surjective by (D.20), hence an isomorphism.
+Consequently (D.20) respects every compact defining
+relation and is inverse on every generator, proving the
+claimed full group-presentation dictionary.
+
+Finally adjoin the empty multicurve $O$, representing
+the open dimension-three stratum.  Its stabilizer is
+$\Gamma_2$ and every transporter into it is $1$.
+For each of the $24$ flags $F>F'>F''$ above, the
+resulting tetrahedral coherence is exactly
+\[
+ q_{F',F''}q_{F,F'}
+        =f_{FF'F''}\,q_{F,F''}\quad\text{in }\Gamma_2.       \tag{D.21}
+\]
+The certificate lists both sides as five-chain words;
+all $24$ pairs are freely equal words already before
+using the global defining relations.  The local groups
+and their presentation cells remain part of this action
+diagram.  The additional translation of the resulting
+higher cellular identities into Peiffer sequences for a
+chosen compact presentation is completed, with every
+lower-cell filling and comparison map, in D.38.
+\end{proof}

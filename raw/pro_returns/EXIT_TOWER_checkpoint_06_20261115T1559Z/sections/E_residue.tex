@@ -1,0 +1,99 @@
+\subsection{The residue-characteristic check}
+
+\begin{result}{E.X1}{Refuted; precise comparison proved}{Full completion at residue characteristics two and three}
+For $p=2$ and $p=3$, put
+$U_p=\mathbf P^1_{\overline{\F}_p}-\{0,1,\infty\}$.
+The full geometric etale fundamental group of $U_p$ is
+not isomorphic to the full completion of the topological
+tripod group $F_2$.  More precisely, the explicit covers
+\[
+                  y^p-y=t^m,\qquad m>0,\quad p\nmid m,
+ \tag{E.X1}
+\]
+give infinitely many linearly independent continuous
+$C_p$-characters of $\pi_1^{\mathrm{et}}(U_p)$.
+The exact comparison that survives is
+\[
+ \widehat F_2^{(p')}\xrightarrow{\ \sim\ }
+             \pi_1^{\mathrm{et}}(U_p)^{(p')},
+ \tag{E.X2}
+\]
+where the superscript denotes the maximal pro-prime-to-$p$
+quotient.  It comes from specialization of the relative
+pair $(\mathbf P^1,\{0,1,\infty\})$ over the Witt ring,
+is defined up to inner automorphism after basepoints and
+a specialization path are chosen, and carries each of
+the three inertia groups to its corresponding inertia
+group.  Thus the full-completion statements over
+$\overline\Q$ used in this paper have no unchanged
+specialization to either of these residue characteristics.
+\end{result}
+
+\begin{proof}
+Set $k=\overline{\F}_p$ and
+$R=k[t,t^{-1},(t-1)^{-1}]$.
+The algebra $R[y]/(y^p-y-t^m)$ is finite free of rank
+$p$ and etale, since its derivative with respect to
+$y$ is $-1$.  Translation $y\mapsto y+1$ gives its
+$C_p$ action.  The Artin--Schreier exact sequence
+identifies these torsor classes with $[t^m]$ in
+$R/\{f^p-f:f\in R\}$; this exact sequence and its
+cohomological proof were checked in
+\cite[Tag 0A3J]{StacksArtinSchreier} and the explicit
+polynomial description in
+\cite[XIII, p.~292]{SGA1Revised}.
+
+Consider a nonzero finite $\F_p$-linear combination of
+the indicated monomials and let $M$ be its largest
+exponent.  Its only pole is at infinity and has order
+$M$, which is prime to $p$.  An equality with $f^p-f$
+would first force $f$ to have no poles at zero or one:
+a pole of order $a$ there gives a pole of order $pa$
+in $f^p-f$, with no cancellation of the leading term.
+Thus $f$ is a polynomial.  A nonconstant such polynomial
+gives a pole at infinity of order $p\deg f$, again
+with no cancellation; a constant gives no pole.
+Both contradict the pole of order $M$.  This proves
+the asserted $\F_p$-linear independence in the quotient
+formed over $k$, including all possible $f\in R$.
+In particular each nonzero class defines
+a connected cover.  The rank-two free profinite group
+has exactly a two-dimensional space of continuous
+$C_p$-characters, since a character is determined by
+the two free generators.  An isomorphism with the
+displayed geometric group would induce an isomorphism
+of these character spaces, which the infinite family
+rules out.
+
+For (E.X2) take $W(k)$ and the smooth proper relative
+curve $\mathbf P^1_{W(k)}$ with its three disjoint
+sections.  The hypotheses of SGA~1 XIII, Corollary
+2.9 and the specialization construction 2.10 are
+therefore satisfied for finite groups of order prime
+to $p$.  The proof of Corollary~2.12, read in full,
+identifies the induced specialization on these
+quotients as an isomorphism; Lemma~2.11 identifies
+the images of the three inertia groups.  On the
+geometric characteristic-zero fibre, Riemann existence
+and characteristic-zero base extension give
+$\widehat F_2$.  Equivalently, Corollary~2.12 gives
+three inertia generators with the sole relation
+$c_0c_1c_\infty=1$ in the pro-prime-to-$p$ category.
+Eliminating $c_\infty$ proves exactly (E.X2).
+All choices and the resulting inner ambiguity are
+those in the source's construction 2.10; the full
+Artin--Schreier covers above are outside this
+prime-to-$p$ quotient.
+
+The program \path{code/e_residue_checks.py} performs
+finite-field row reduction on the monomials and the
+images $t^{pi}-t^i$ through degrees $6,12,24,48$,
+separately for $p=2,3$.  Its saved output checks the
+independence and the nonzero etale derivative in
+both requested characteristics.  The pole argument
+proves the unlimited-degree assertion.  The use of
+short Weierstrass forms and of $\mu_2$-band
+calculations in E.T4--E.T7 is over $\overline\Q$;
+the explicit morphism (E.X2) is the residue comparison
+asserted here.
+\end{proof}

@@ -1,0 +1,218 @@
+\subsection{The positive-genus compact crossed-module comparisons}
+
+\begin{result}{D.38}{Proved}{All 24 and 198 compact cone expansions}
+The genus-two and three-pointed-torus diagrams of D.27 and D.29
+have explicit cellular comparisons with their compact global
+presentations.  They supply, respectively, all $24$ and $198$
+open-stratum cone identities as signed conjugate-relator
+sequences in the compact free crossed modules, together with
+their Peiffer reductions.  Every lower local and sewing
+two-cell has its specified compact filling.
+
+The complete artifacts are
+\path{code/d_genus_two_peiffer.json} and
+\path{code/d_elliptic_three_peiffer.json}.
+The counts, obtained from the executed lists, are
+\[
+\begin{array}{l|rr}
+ & (2,0)&(1,3)\\\hline
+\text{objects, including open}&20&109\\
+\text{oriented one-cells}&155&755\\
+\text{open crossing tree edges}&19&108\\
+\text{generators after tree collapse}&136&647\\
+\text{compact relators}&17&7\\
+\text{boundary local relators}&200&370\\
+\text{boundary sewing relators}&178&922\\
+\text{local-generator crossing relators}&89&339\\
+\text{boundary triangle relators}&24&198\\
+\text{open-face relators}&42&304\\
+\text{all source relators}&550&2140\\
+\text{distinct compact certificates}&62&91\\
+\text{factors in these certificates}&24823&86087\\
+\text{selected cone identities}&24&198\\
+\text{boundary two-cell prisms}&402&1490
+\end{array}                                                     \tag{D.79}
+\]
+These are the specified mapping-cylinder cellular comparisons,
+with all coherence fillings recorded, as in D.30.  They retain
+the other cells of the local classifying spaces and their products.
+No assertion that the selected cones exhaust the three-cells,
+or form a basis of the entire positive-genus identity module,
+is included.
+\end{result}
+\begin{proof}
+We first specify the compact relators and their fillings.
+For $(1,3)$ use the three Artin braid relators on
+$a_i,b$, the three commutators $[a_i,a_j]$, and
+$\Delta=(a_1a_2a_3b)^3$.  This is the actual presentation
+of D.28.  The program \path{code/d_artin_d4_fill.py}
+retains the relator factors in its Garside reduction.
+Every change between two positive reduced expressions
+of a Coxeter simple is a path in its finite Matsumoto
+graph; each edge records one of the six actual Artin
+relations, its sign and its preceding prefix.
+For the transfer
+$AB\to AD B'\to A'B'$, with
+$d=\gcd_{\rm left}(\partial a,b)$,
+the certificate is the $B\to DB'$ certificate conjugated
+by $A$, followed by the $AD\to A'$ certificate.
+To replace $x^{-1}$ by $\partial x$, take the inverse
+certificate for $x\partial x=\Delta$, include its
+$\Delta$ cell and conjugate by $x^{-1}$.
+A literal $\Delta$ block is deleted with that same
+seventh relator.  Successive prefix-conjugated changes
+therefore telescope to the actual free-word difference.
+
+For $(2,0)$ use the ten Artin relations of $B_6$,
+the five commutators $[W,\sigma_i]$, $W^2$ and
+$\omega_6$, with the exact $W$ of E.15 and D.27.
+The program \path{code/b_genus2_fill.py} retains each
+signed Artin cell in right and left word reversing.
+Pure braid combing uses the exact star words
+\[
+ W_i=t_iWt_i^{-1}
+     =\prod_{j\ne i}A_{\min(i,j),\max(i,j)},\qquad
+ t_i=\sigma_{i-1}\cdots\sigma_1.
+\]
+Their Artin certificates and the displayed centrality
+relations replace each $A_{i6}$ by $L_i^{-1}W$, where
+$L_i$ is the same ordered star product with $j\leq5$.
+Collecting the remaining $W$ factors uses those five
+fixed commutators, with their actual signs and prefixes.
+The identity $\omega_6=\omega_5W_6$ then gives
+$\omega_5=W^{-1}$ with a recorded certificate.
+The remaining even power of $W$ is filled by $W^2$.
+Each intermediate equality in this description has
+its own freely checked relator sequence in the program.
+
+In both cases a certificate is a list of triples
+$(c,j,\epsilon)$, with zero-based compact relator index
+$j$ and $\epsilon\in\{1,-1\}$.  Every certificate used
+below was checked against the exact equality
+\[
+ \prod_{(c,j,\epsilon)\in N(w)}
+            cR_j^\epsilon c^{-1}=w
+       \quad\text{in the free group on the compact letters}.
+                                                               \tag{D.80}
+\]
+Thus the finite claimed fillings are proved by their
+actual free expansions, independently of any claim
+about termination on inputs outside the executed lists.
+The original normalizers also check their intermediate
+word transformations.
+
+Here are the full comparison maps.  Use a named local
+presentation at every boundary flag object, the stated
+compact presentation at the open object, each actual
+face letter $e_a$, and each crossing $t_i$ to the open
+object.  The one-cell map is
+$x_i\mapsto\mu_i(x_i)$, $e_a\mapsto q_a$, $t_i\mapsto1$,
+and is the identity on the compact letters.
+Here $\mu_i$ and $q_a$ are exactly D.27 or D.29's
+recorded words; every nonidentity target twist is retained.
+The two-cell map sends each local or sewing relator
+to its certificate (D.80), each compact relator to
+its own cell, and each generator-crossing or open-face
+relator to the empty certificate.  The latter images
+are freely empty, so this is an actual map on the
+whole two-skeleton.  Taking the free Fox boundary
+of (D.80) verifies the degree-two chain boundary
+equation for every column.
+
+For $a:i\to j$, $b:j\to k$, $c=ba$ and target twist
+$f=f_{b,a}$, write
+\[
+ S=e_be_ae_c^{-1}f^{-1},\qquad
+ O_a=t_je_at_i^{-1}q_a^{-1},\qquad
+ C_k(z)=t_kzt_k^{-1}\mu_k(z)^{-1}.
+                                                               \tag{D.81}
+\]
+The last expression is expanded in the named
+generator-crossing relators by the signed prefix
+rule of D.30.  Fix the certificate $T=N(\mu(S))$.
+Use its literal inverse as the open coherence disk;
+its boundary is
+$\mu_k(f)q_cq_a^{-1}q_b^{-1}=\mu(S)^{-1}$.
+The complete signed source cone identity is
+\[
+\begin{split}
+ &(t_kSt_k^{-1})\,C_k(f)\,
+   \bigl(\mu_k(f)O_c\mu_k(f)^{-1}\bigr)\,T^{-1}\\
+ &\hspace{20mm}\cdot
+   (q_bO_aq_b^{-1})^{-1}O_b^{-1}=1 .
+\end{split}                                                     \tag{D.82}
+\]
+Its factors are individually indexed in the artifacts.
+Free cancellation verifies its boundary before any
+source relator is imposed.  The two-cell map sends
+its factor list literally to $TT^{-1}$, since all
+crossing and open-face certificates are empty.
+Successively cancelling the middle adjacent inverse
+factors is the recorded Peiffer reduction.  This
+proves zero of the corresponding class in the
+compact presentation's second homotopy group,
+not only zero of its word boundary.
+
+For genus two the $24$ triangle certificates are all
+empty; its source cone sequences have $103$ factors.
+For $(1,3)$ three triangle certificates are nonempty;
+its source cone sequences have $3447$ factors and
+their compact images have $5260$ factors.
+All these counts and all signed factors were executed
+and checked.  The same construction supplies every
+one of the $402$ and $1490$ boundary two-cell prisms:
+for a boundary relator $R$ based at $i$, its identity
+is
+$(t_iRt_i^{-1})N(\mu(R))^{-1}C(R)^{-1}$,
+where $C(R)$ is its fully expanded side annulus.
+Its compact image is again its certificate followed
+by its inverse.  Grouping the side annulus of a
+triangle by its three faces gives (D.82), by the
+same Peiffer interchange as in D.30.
+
+Finally these choices have one simultaneous CW
+realization.  Let $X=P_2(g,n)$ for either type,
+$L=E\Gamma\times_\Gamma X$, and let $p:L\to B\Gamma$
+be the actual Borel projection.  The full diagram
+with its open stratum is its mapping cylinder:
+$[e,(x,t)]$ corresponds to $([e,x],t)$, and the
+cone endpoint is $[e]$.  Choose a classifying-space
+CW model $K$ whose two-skeleton is the specified
+compact presentation.  Such a model is obtained
+by attaching higher cells to kill its higher
+homotopy groups; no finite identity-module basis
+is required.  The displayed one- and two-cell maps
+define $f:L\to K$ through dimension two and extend
+over all higher cells since $K$ is aspherical.
+They induce the actual homomorphism of $p$, so
+the resulting map is homotopic to $p$ by extending
+their comparison in the contractible universal
+target.  This fixes the full classifying-map scope.
+
+Use $M_f$ as the CW replacement of the full cone
+diagram.  Its retraction is the identity on $K$
+and sends $(z,t)$ to $f(z)$.  Its two-skeleton is
+exactly (D.81).  The top face of the prism over
+a boundary two-cell is its one already fixed
+compact certificate, with the reverse orientation;
+thus all open coherence disks are simultaneously
+the prescribed inverses.  Each selected
+three-dimensional prism maps into $K^{(2)}$.
+The other cells of $L$ and its local classifying
+spaces remain and map by the extended $f$.
+Inclusion of $K$ is a strict right inverse for
+this retraction.  These are the claimed cellular
+comparison maps with the exact scope stated.
+
+The separate program
+\path{code/d_positive_genus_peiffer_verify.py}
+imports neither normalizer nor constructor.  Reading
+the serialized artifacts alone, it has checked
+all $550$ and $2140$ relator images against (D.80),
+all $24$ and $198$ source identities, their exact
+mapped factor lists, and all $402$ and $1490$
+prisms.  Every expansion and every adjacent inverse
+Peiffer cancellation passed.  This completes both
+compact expansions and the additional comparison
+previously recorded in D.24.
+\end{proof}

@@ -1,0 +1,329 @@
+\subsection{The complete three-pointed torus word dictionary}
+
+\begin{result}{D.29}{Proved}{All 108 cells and 304 face maps for $(1,3)$}
+The literal $P_2(1,3)$ complex of groups is given by
+\path{code/d_p2_elliptic_three.json}; its complete readable
+version is \path{code/d_p2_elliptic_three_dictionary.md}.
+There are $22$ vertex orbits, $53$ edge orbits and $33$
+triangle orbits.  The barycentric diagram has $108$ objects,
+$304$ face homomorphisms and $198$ coherence triangles.
+Every local group has a named presentation; every generator
+image and every twisting element is a word in its named
+target generators.  In total the executed certificate checks
+$922$ generator images, $126$ defining relators in $28$
+local presentations, and $594$ generator equations for the
+$198$ coherences.  Exactly seven coherence triangles have
+a nonidentity twist.
+
+With the specified $107$-edge maximal tree, its fundamental
+presentation is explicitly isomorphic to (D.22).
+The inverse sends $a_1,a_2,a_3$ to the corresponding node
+generators at the three-curve vertex, and $b$ to the named
+$b$ at the all-three-points separating vertex.
+The open stratum supplies all $198$ cone tetrahedra,
+with the two sides recorded as exact words.  This gives
+the fifth requested group-presentation dictionary.
+The further compact Peiffer comparisons are supplied
+with their complete cellular maps in D.38.
+\end{result}
+\begin{proof}
+We specify the remaining stabilizers, all choices in the
+finite diagram, and its inverse presentation map.
+Throughout the letters are the actual twists of (D.22).
+Put
+\[
+ h=(a_1b)^3,\quad d_0=h^2,\quad
+ \widetilde d_1=d_0d_3^{-1}d_2^{-1},\quad
+ \widetilde d_2=d_2,\quad\widetilde d_3=d_3.
+                                                               \tag{D.24}
+\]
+The regular neighborhood of $a_1\cup b$ is a one-holed
+torus.  Its complementary four-holed sphere contains
+all three marked points.  Soroko's Figure~2 identifies
+$d_2,d_3$ with the two standard intersecting pair curves
+in that sphere; their intersection number is two.
+The boundary-framed lantern relation makes
+$\widetilde d_1$ its third pair twist.  The chosen order
+in (D.24) is certified by the exact identities
+\[
+ q_2d_1q_2^{-1}=\widetilde d_1,\qquad
+ q_3d_1q_3^{-1}=d_0d_2^{-1}d_3^{-1}.                  \tag{D.25}
+\]
+Both were checked independently by
+\path{code/b_d4_tail.py} using D.28's full word algorithm.
+Thus no choice of an unrecorded third pair curve is needed.
+
+Here is the full list of chosen multicurve representatives.
+For each $i$, write $\{j,k\}=\{1,2,3\}\setminus\{i\}$
+with $j<k$.  In the $L_i$ row use instead the distinguished
+ordered pairs
+\[
+             (j_i,k_i)=(3,2),(1,3),(1,2)
+                       \quad(i=1,2,3).
+\]
+\[
+\begin{array}{c|c|c}
+\text{name}&\text{multicurve}&\text{number of orbits}\\\hline
+N&\{a_1\}&1\\
+S_0&\{d_0\}&1\\
+S_i&\{d_i\}&3\\
+L_0&\{a_1,d_0\}&1\\
+L_i&\{a_{j_i},d_i\}&3\\
+C_i&\{a_j,a_k\}&3\\
+T_i&\{d_0,\widetilde d_i\}&3\\
+F_i&\{a_1,d_0,\widetilde d_i\}&3\\
+E_i&\{a_j,a_k,d_i\}&3\\
+\Theta&\{a_1,a_2,a_3\}&1
+\end{array}                                                     \tag{D.26}
+\]
+Their dual graphs, with every puncture label retained, are
+exactly the $22$ nonempty stable graphs of D.28.
+The JSON specifies the ordered edge list for every row,
+including which edge is the loop and which is the pair
+separator.  These orderings determine the masks used below.
+
+\emph{The nonseparating stabilizer.}
+Cut $a_1$ and label the four finite points of the resulting
+sphere as
+\[
+         (1,2,3,4)=(\text{node}_1,\text{node}_2,p_3,p_1),
+                    \qquad\infty=p_2.
+\]
+Let $B_4(\mathfrak S_2)$ be the subgroup of $B_4$ whose
+permutations belong to $\{1,(12)\}$, with standard pure
+generators $A_{ij}$ and the half braid $s=\sigma_1$.
+Its presentation is the pure four-braid presentation,
+$s^2=A_{12}$, and the six actual conjugation formulas
+$sA_{ij}s^{-1}=\sigma_1A_{ij}\sigma_1^{-1}$.
+Those right sides are individually expanded in the
+certificate, by the exact braid combing of B.18.
+Write
+$Z_4=A_{12}A_{13}A_{23}A_{14}A_{24}A_{34}$.
+Then
+\[
+ G_N=\bigl(B_4(\mathfrak S_2)\times\mathbb Z(a_1)\bigr)
+                   /\langle Z_4a_1^2=1\rangle.          \tag{D.27}
+\]
+Its literal generator embedding is
+\[
+\begin{aligned}
+ s&=h a_1^{-1},& A_{12}&=s^2,\\
+ A_{13}&=a_2a_1^{-1},& A_{14}&=a_2^{-1}a_3d_2^{-1},\\
+ A_{34}&=d_2,& A_{23}&=sA_{13}s^{-1},\qquad
+ A_{24}=sA_{14}s^{-1}.
+\end{aligned}                                                     \tag{D.28}
+\]
+To prove this identification, use zero-rotation
+parameterizations of the two node holes.  A pure braid
+is lifted by rigid translation of disjoint sufficiently
+small discs; their radii can be chosen continuously from
+the minimum point separation.  This gives the specified
+zero framing.  Sewing identifies both node-hole boundary
+twists with $a_1$.  Capping the outer boundary gives
+$Z_4(z_1z_2)=1$, hence precisely (D.27).
+The half exchange has image $h a_1^{-1}$; its square is
+$d_0a_1^{-2}$.  A twist enclosing node $1$ and $p_3$ has
+image $a_2a_1^{-1}$, and the pair $p_3,p_1$ has image
+$d_2$.  The three-point cluster $\{1,3,4\}$ has full
+twist $A_{13}A_{14}A_{34}$ and image $a_3a_1^{-1}$;
+solving yields the stated $A_{14}$.  Conjugation by the
+actual half exchange gives the other two generators.
+These generate the entire cut-sphere group, and the
+only sewing kernel is the displayed boundary relation.
+This proves both surjectivity and injectivity of (D.27),
+including the branch-exchanging coset.
+Useful inverse words, also checked exactly, are
+\[
+\begin{aligned}
+ a_2&=A_{13}a_1,&a_3&=a_2A_{14}A_{34},&h&=sa_1,\\
+ d_3&=a_1^2A_{12}A_{13}A_{23},&
+ \widetilde d_1&=a_1^2A_{12}A_{14}A_{24}.&&
+\end{aligned}                                                     \tag{D.29}
+\]
+
+\emph{The remaining vertex groups.}
+The four families $S_i,C_i,E_i,\Theta$ are proved in
+D.28.  The other groups have the following full
+presentations, with literal generator names:
+\[
+\begin{aligned}
+ G_{S_0}&=B_3(a_1,b)\times F(d_2,d_3),\\
+ G_{L_0}&=\mathbb Z^2(a_1,h)\times F(d_2,d_3),\\
+ G_{T_i}&=B_3(a_1,b)\times\mathbb Z(\widetilde d_i),\\
+ G_{F_i}&=\mathbb Z^3(a_1,h,\widetilde d_i),\\
+ G_{L_i}&=\mathbb Z(a_{j_i})\times
+       \langle a_{k_i},r_i\mid[r_i^2,a_{k_i}]=1\rangle,\\
+ r_i&=a_{k_i}a_{j_i}^{-1}(a_{j_i}b)^3,
+                       \qquad r_i^2=d_i.
+\end{aligned}                                                     \tag{D.30}
+\]
+For $S_0$, cut the one-holed torus from the three-puncture
+disc.  The latter's pure braid group has central boundary
+$\mathbb Z(d_0)$ and free complementary factor
+$F(d_2,d_3)$.  Sewing identifies $d_0$ with $h^2$ in
+$B_3$ and eliminates this one central generator; it gives
+exactly the first product.  Stabilizing $a_1$ in its
+$B_3$ factor gives $\mathbb Z^2(a_1,h)$, as in B.10.
+Stabilizing a specified pair curve in the four-holed
+sphere replaces its free group by that curve's cyclic
+stabilizer.  This proves the next two products and the
+$F_i$ row, with the node meridian $h^2$ retained.
+Finally $L_i$ is the boundary-retaining nonseparating
+stabilizer inside $B_4(a_{j_i},b,a_{k_i})$.
+B.10's cutting proof gives
+$h_i=a_{j_i}a_{k_i}^{-1}r_i$ and $r_i^2=d_i$;
+it gives the last presentation without imposing a
+spurious order-two relation on $r_i$.
+The program checks each relation and each displayed
+embedding in the exact group (D.22).
+
+\emph{Flag stabilizers and all transports.}
+The only nontrivial permutations of distinct edges of
+these representatives occur at $C_i,E_i$: $q_i$ exchanges
+the two nonseparating edges.  Their ordered subgroups are
+\[
+ G_{C_i}^{\mathrm{ord}}
+    =\mathbb Z^2(a_j,a_k)\times F(a_i,d_i),\qquad
+ G_{E_i}^{\mathrm{ord}}=\mathbb Z^3(a_j,a_k,d_i).          \tag{D.31}
+\]
+A flag has the full group of its largest multicurve
+unless one of its subsets distinguishes these two edges;
+in that case it has the appropriate ordered subgroup.
+Loop-branch reversals in $N,L_i,L_0,F_i$ remain in their
+already displayed groups; they do not permute distinct
+edges.  Thus (D.27), (D.30), D.28 and (D.31) give all
+$28$ presentations used by the $108$ objects.
+
+Here is the completely deterministic representative
+rule used in the supplied tables.  For each largest
+multicurve, take every decreasing chain of nonempty
+edge masks and choose the lexicographically least one
+in its actual edge-permutation orbit.  This gives the
+$22,53,33$ orbits.  For a face, first take its largest
+retained mask.  Among
+\[
+             1,q_1,q_2,q_3,q_1^{-1},q_2^{-1},q_3^{-1}
+\]
+choose the first word carrying its individual twist
+set to the chosen representative in (D.26).
+Such a word exists for every subset in the executed
+list.  Transport the remaining masks by its actual
+edge bijection.  If they are not the chosen least
+flag, multiply on the left by the target $q_i$ that
+puts them there.  This is possible precisely in the
+$C_i,E_i$ cases.  The resulting word is $u_a$ for the
+face arrow $a$.
+
+These are actual transporters.  The identities are
+checked by conjugating each twist and using D.28's
+full word problem.  Equality of two positive Dehn
+twists identifies their curves: if $T_c=T_d$, applying
+them to $c$ and using
+$i(c,T_d(c))=i(c,d)^2$ first makes the curves disjoint;
+independence of the twists of a multicurve then makes
+them equal.  The ordered masks consequently identify
+the entire face flag, not only its abstract dual graph.
+The face injection is exactly
+$\psi_a(g)=u_a g u_a^{-1}$.
+
+Every such injection is rewritten in the target's
+named generators.  Equations (D.28)--(D.30) provide the
+needed inverse substitutions at $N$ and $L_i$.
+Conjugations of the remaining leaves are obtained from
+\[
+ q_i a_i q_i^{-1}=a_ja_k a_i^{-1}d_i^{-1},\qquad
+ q_i^{-1}a_iq_i=a_ja_k d_i^{-1}a_i^{-1},
+\]
+while $q_i$ exchanges $a_j,a_k$ and fixes $b$.
+Together with (D.25), these formulas cover every
+transport in the list.  Each of the $922$ resulting
+words is independently evaluated in (D.22) and
+checked against $u_a g u_a^{-1}$.  The faithful
+geometric embeddings of the local groups then prove
+that these are homomorphisms into the named target
+presentations, with no kernel introduced by rewriting.
+
+For composable face arrows $a,b$, the twisting word is
+\[
+                    f_{b,a}=u_bu_a u_{ba}^{-1},\qquad
+             \psi_b\psi_a=\operatorname{Ad}(f_{b,a})\psi_{ba}.
+\]
+For clarity the nonidentity
+values can be listed completely.  A row specifies the
+triangle flag and the intermediate edge flag; the
+last column gives its target-group element.  The
+subsets below are the actual curves in
+the largest representative before its recorded face
+transport.
+\[
+\begin{array}{c|c|c|c}
+\text{triangle}&\text{intermediate edge}&\text{target}&f_{b,a}\\\hline
+(F_1,\{a_1,\widetilde d_1\},\widetilde d_1)
+ &(L_1,d_1)&S_1&a_3^{-1}b^{-1}a_3^{-1}a_2ba_3\\
+(E_1,\{a_2,d_1\},a_2)&(L_1,a_3)&N&h d_3^{-1}\\
+(E_1,\{a_2,d_1\},d_1)&(L_1,d_1)&S_1&q_1\\
+(\Theta,C_1,a_3)&(C_1,a_2)&C_1&q_1\\
+(\Theta,C_1,a_3)&(C_1,a_2)&N&h d_2^{-1}\\
+(\Theta,C_2,a_3)&(C_2,a_1)&C_2&q_2\\
+(\Theta,C_3,a_2)&(C_3,a_1)&C_3&q_3
+\end{array}                                                     \tag{D.32}
+\]
+The fourth and fifth rows use the two possible final
+vertices of the same intermediate edge.  The words
+at $N$ are read by (D.29), and $q_1$ at $S_1$ is its
+ordinary four-braid half twist.  Their exact global
+checks are
+\[
+\begin{aligned}
+ q_3q_1q_2^{-1}&=h d_2^{-1},&
+ q_2q_1q_3^{-1}&=h d_3^{-1},\\
+ q_2^{-1}q_3^{-1}&=a_3^{-1}b^{-1}a_3^{-1}a_2ba_3.&&
+\end{aligned}
+\]
+All other $191$ twisting elements are identity.
+The $198$ equations are checked on all $594$ source
+local generators in the certificate.  This establishes
+the entire complex of groups with its actual twists.
+
+\emph{The presentation maps and dimension-three words.}
+Select the first spanning tree in the given arrow order
+using only $u_a=1$ arrows; the executed list has $107$
+edges and connects all $108$ objects.  The resulting
+finite presentation has the object-group generators
+and arrow letters $t_a$, relations
+\[
+ t_a g t_a^{-1}=\psi_a(g),\qquad
+ t_b t_a=f_{b,a}t_{ba},\qquad
+ t_a=1\ \text{on the chosen tree}.
+\]
+The map sends $t_a$ to $u_a$; together with the literal
+local embeddings this defines its map to (D.22).  The diagram is the
+actual action complex of groups on $P_2(1,3)$: its
+cell representatives and stabilizers were identified
+above, including every parallel-edge incidence.
+D.6 proves that this development is simply connected.
+Lifting edge paths and elementary face homotopies
+therefore proves that the displayed fundamental-group
+map is an isomorphism.  Its inverse on the four
+presented global generators is the one stated in the
+result, since their local images are literally
+$a_1,a_2,a_3,b$.  The isomorphism proves that these
+specified inverse words satisfy all six Artin
+relations and the central relation of (D.22).
+
+Finally adjoining the empty multicurve is coning the
+whole development.  Set the transporter from every
+object to this open vertex equal to $1$.  The twist
+on an object--face--open triangle is then precisely
+its already specified $u_a$.  For each of the $198$
+three-step flags the tetrahedral identity becomes
+\[
+                       u_bu_a=f_{b,a}u_{ba}.
+\]
+Both sides agree as freely reduced words, not only as
+elements of the presented group.  These are all the
+cone tetrahedra for the unique dimension-three
+stratum of $M_{1,3}$.  Their further expansion in a
+chosen compact presentation's free crossed module
+is completed with its exact cellular comparison in D.38.
+\end{proof}

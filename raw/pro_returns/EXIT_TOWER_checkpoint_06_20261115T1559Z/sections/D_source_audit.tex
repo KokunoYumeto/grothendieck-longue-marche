@@ -1,0 +1,80 @@
+\subsection{A finite symplectic counterexample in the source chain}
+
+\begin{result}{D.26}{Refuted}{The integral conjugacy assertion in Boggi's Lemma 5.12}
+Lemma~5.12 on page~26 of the retrieved version~5 of
+\emph{On the procongruence completion of the Teichm\"uller modular group}
+asserts that two nonconjugate finite cyclic subgroups of
+$\operatorname{Sp}_{2g}(\mathbb Z)$ remain nonconjugate modulo
+every integer $m\geq3$.  This assertion already fails for
+two order-two subgroups of $\operatorname{Sp}_4(\mathbb Z)$
+at $m=3$.  The exact counterexample below therefore also
+prevents using the printed proof of Lemma~5.10, and its
+subsequent use in Section~5, without an additional repair.
+This statement does not assert a counterexample to the
+separate profinite twist-normalizer conclusions.
+\end{result}
+\begin{proof}
+Put
+\[
+ J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+ \Omega=\operatorname{diag}(J,J),\qquad
+ A=\begin{pmatrix}I_2&0\\0&-I_2\end{pmatrix},\qquad
+ B=\begin{pmatrix}0&I_2\\I_2&0\end{pmatrix}.
+\]
+Both $A$ and $B$ have order two and preserve the integral
+symplectic form $\Omega$.  For an integral involution $T$
+on $L=\mathbb Z^4$, the index
+\[
+       [L:L^+(T)+L^-(T)],\qquad
+       L^\pm(T)=\ker(T\mp I:L\to L),
+\]
+is invariant under integral conjugacy: a conjugating
+integral automorphism carries the two displayed kernels
+onto the corresponding kernels for its conjugate.
+For $A$ the two coordinate planes give index $1$.
+For $B$ the two eigenlattices are
+\[
+ L^+(B)=\{(v,v):v\in\mathbb Z^2\},\qquad
+ L^-(B)=\{(v,-v):v\in\mathbb Z^2\}.
+\]
+Their sum consists of the pairs $(x,y)$ with
+$x\equiv y\pmod2$, and hence has index $4$.
+Thus $A$ and $B$ are not conjugate even in
+$\operatorname{GL}_4(\mathbb Z)$.  Their order-two cyclic
+subgroups are not conjugate either, since their unique
+nonidentity elements would have to be conjugate.
+
+Now take
+\[
+ Q=\begin{pmatrix}
+ 1&0&1&0\\
+ 0&2&0&2\\
+ 1&0&-1&0\\
+ 0&2&0&-2
+ \end{pmatrix}.
+\]
+Direct multiplication gives
+\[
+       BQ=QA,\qquad \det Q=16,\qquad
+       Q^{\mathsf t}\Omega Q=4\Omega.
+\]
+Consequently the reduction $\overline Q$ is symplectic
+and invertible modulo $3$, and
+$\overline Q\,\overline A\,\overline Q^{-1}=\overline B$.
+This is the required conjugacy in
+$\operatorname{Sp}_4(\mathbb F_3)$.
+All matrix products, determinants and eigenlattice
+indices were independently executed and saved in
+\path{code/d_symplectic_involutions.py}, with its JSON
+certificate and text output.
+
+The exact printed lemma and the paragraph immediately
+preceding it were opened and read in the source
+\cite[p.~26]{ET_Boggi2014}.  That paragraph explicitly
+invokes this lemma to finish Lemma~5.10.  The fixed-locus
+argument printed for Lemma~5.12 therefore cannot establish
+its claimed implication; the two matrices above give
+its precise failed conclusion.  The cutting theorem
+used in D.19 and Part~E is Theorem~4.5, whose proof
+precedes this argument and was checked separately.
+\end{proof}
