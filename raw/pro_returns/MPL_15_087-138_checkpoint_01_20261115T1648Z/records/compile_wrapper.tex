@@ -1,0 +1,27 @@
+% Mechanical compile harness, not a publication layout.
+% Run from the package root after rebuilding the combined transcription:
+%   lualatex -interaction=nonstopmode -file-line-error \
+%     -output-directory=/absolute/path/to/temporary-output records/compile_wrapper.tex
+% The output directory must already exist. Editorial wrappers retain their
+% arguments, with minimal presentation, to expose syntax and environment errors.
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=20mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs}
+\usepackage[normalem]{ulem}
+\usepackage{tikz,tikz-cd}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,calc,positioning,shapes.geometric}
+\newcommand{\cotefile}[1]{\par\noindent Cote #1\par}
+\newcommand{\scanpage}[1]{\clearpage\noindent Scan #1\par}
+\newcommand{\mspage}[1]{\par\noindent Manuscript page #1\par}
+\newcommand{\deleted}[1]{{#1}}
+\newcommand{\inserted}[1]{{#1}}
+\newcommand{\margin}[1]{{#1}}
+\newcommand{\unsure}[1]{{#1}}
+\newcommand{\illegible}[1]{\ifmmode\text{[illegible #1]}\else[illegible #1]\fi}
+\newcommand{\diagram}[1]{#1}
+\renewcommand{\figure}[1]{#1}
+\begin{document}
+\input{MPL_15_087-138_transcription.tex}
+\end{document}
