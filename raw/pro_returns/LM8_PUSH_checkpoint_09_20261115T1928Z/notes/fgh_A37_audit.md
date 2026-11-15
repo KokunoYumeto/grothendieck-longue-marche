@@ -1,0 +1,30 @@
+# A.37 author audit and primary-source ledger
+
+Written after checkpoint05 release, 2026-11-15 approximately 15:05 UTC.
+
+Parent full independent audit subsequently passed, including the three new primary inputs, all stable-fibre cases, finite marked quotient, varying positive edge distances, and integral target subtraction. The section uses explicit closed commutator notation.
+
+## Checked dependencies
+
+- A.4 supplies all three C4 models and the exact Jacobian decompositions. The complementary j values 8000, 10976 and 128, and original 1728, all have positive 2-adic valuation. Potential good reduction and reduction j=0 therefore make all factors supersingular at two after finite extension. Good reduction of the Jacobian forces compact type; 2-rank zero passes to every positive-genus component.
+- The cyclic-four quotient is an actual rational map, with inverse v=s+Tw^4 and w^4=(a-2sT)/(T^2-1). Every nonidentity power of mu has exactly the four cusps as fixed points. Thus no generic branch point has been omitted from the marked quotient theorem.
+- The invariant dimensions are H1^mu=0 and dim H1^sigma=2, for sigma=mu^2. They hold on the special fibre through equivariant good-reduction homology comparison. No unjustified faithfulness theorem for stable-model specialization is needed: in the hypothetical smooth genus-three fibre, sigma acts nontrivially on homology, so mu is automatically still order four.
+- The genus-three cyclic-four impossibility uses the actual upper-jump restrictions, not merely Hasse--Arf integrality. In the genus-two case the jumps (1,3) give involution lower jump 5 and quotient genus zero.
+- In the elliptic-chain case mu must exchange the ends. If mu squared were trivial on the swapped pair, mu would have a two-dimensional invariant subspace, impossible. Thus the middle supplies exactly the sigma-invariant space and mu is order two there. Its unique fixed point is smooth because its two nodes are exchanged.
+- In the three-tail star with every tail fixed, there is exactly one sigma-trivial tail. D8 preserves it; the center action embeds into the permutation group on the other two nodes. Its cusp specialization orbit has size at most two.
+- At a node cluster, its stabilizer preserves the two branches and fixes the whole metric edge. Transitivity gives a common retraction. After inserting that bridge the stabilizer fixes two points, so its characteristic-two rational action is trivial. Separation therefore occurs in a genus-free rational branch. Smooth-point clusters are direct marked blowups. This excludes unaccounted positive-genus components on a cusp leaf.
+- The source four-marked stable model meets Bouw--Wewers's exact G-semistable hypotheses. The quotient is semistable and all four branch points are smooth and distinct. A source component carrying all four cusps maps to one quotient component carrying all four branch marks. Stabilization contracts all other genus-zero unmarked branches and preserves that component, contradicting the actual harmonic cross-ratio. No assertion that the wild quotient commutes with reduction is used.
+- With two rational cusp leaves, the first ordinary edge derivation has nonzero coefficients equal to positive distances from the selected leaf to each handle's branching point on the path to the other marked leaf. The boundary sum is always -(p+q). Genus-only edges start in degree two.
+- The based comparison remains the actual cusp-disc comparison proved in A.36; all packet ambiguity is lambda ad(p). No arbitrary ambient inner term is discarded.
+- The two harmonic quadratic maps together separate every pair among four cusps. The corresponding composite indices are 4 or 8, units at every odd prime. Only the identified free Lie algebra on the selected pair is injected, not the entire pro-prime group. Cusp subtraction is an actual integral pro-prime power.
+
+## Primary sources opened
+
+1. Andrew Obus and Rachel Pries, *Wild tame-by-cyclic extensions*, J. Pure Appl. Algebra 214 (2010), 565--573. Author PDF: <https://www.math.colostate.edu/~pries/Preprints/10pries_obus409_JPPA.pdf>. Theorem 1.1(c), manuscript page 2; Section 2.4, pages 4--5. Browser references turn497view0, turn499view2. The theorem includes m=1 and n=2, exactly the cyclic-four local action used here.
+2. Massimo Giulietti and Gabor Korchmaros, *Automorphism groups of algebraic curves with p-rank zero*, arXiv:0801.3423. <https://arxiv.org/pdf/0801.3423>. Lemma 3.2 and Remark 3.1, printed pages 7--8; Deuring--Shafarevich formula (6), printed page 5. Browser references turn497view1, turn499view0, turn499view1. The formula proves the same unique-fixed-point statement for the supersingular elliptic components.
+3. Irene Bouw and Stefan Wewers, *Group actions on curves and the lifting problem*, AWS2012 notes, 5 March 2012. <https://swc-math.github.io/aws/2012/2012BouwWewersNotesPreliminary.pdf>. Definition 3.1(c), Lemma 3.2, printed pages 27--28; Definition 6.1(iii), Remark 6.2, printed pages 61--62. Browser references turn512view0, turn513view0, turn513view1. The marked generic ramification hypothesis is explicit and checked.
+4. Corroboration, not needed as a separate proof input: Qing Liu, *Stable reduction of finite covers of curves*, Compositio Math.142 (2006),101--118, Proposition 3.8 proof and Proposition 3.12, pp111--112. <https://www.math.u-bordeaux.fr/~qliu/articles/Compositio.pdf>. Browser references turn508view0, turn509view1, turn510view0. The proof cites Raynaud1990 Proposition5 for semistable finite-group quotients; the marked version keeps all branch sections smooth.
+
+## Executed exact certificate
+
+`code/a_C4_fixed.py`, with retained `.json` and `.out`, returned PASS. It checks the exact rational parameter identity, all three harmonic normalizations, both ramification lists, all six possible selected cusp-pair detectors and their nonzero determinant, and the small-genus ramification options. The geometry and unbounded Lie proof are mathematical arguments in the section, not conclusions extrapolated from these finite checks.

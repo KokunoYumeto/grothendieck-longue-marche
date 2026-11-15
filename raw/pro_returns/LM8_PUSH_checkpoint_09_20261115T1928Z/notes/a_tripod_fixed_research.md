@@ -1,0 +1,7 @@
+# A.34: tripod comparison and its precise scope
+
+We searched the primary Hain--Matsumoto weighted-completion paper, Ihara's publication list, the original 1989 title, and the Ichimura--Sakaguchi Soulé nonvanishing exposition. The Hain--Matsumoto arXiv v2 and published PDF were opened. Remark8.6 explicitly supplies nonzero actual degree3 at every prime; Proposition8.2 and Theorem8.4 identify the rational outer graded comparisons. The original Ihara1989 chapter was bibliographically located but not opened; it is not separately cited as a verified source. No priority is claimed for the resulting tripod statement.
+
+The root proves the required kernel in all degrees using the unique leading monomial of the first Y. The executed integer script checks every word through degree12; this finite computation is not the proof of the unbounded result. Actual Galois powers and commutators put a nonzero degree3 element in every open subgroup of Delta_k. Every cusp packet either adds a nonzero inner degree1 derivation or retains that degree3 derivation, both with kernel Q_l X. The separated torsion-free integral lower-central graded group then gives the actual fixed subgroup.
+
+The cyclic8 Fermat covering comparison is still separate. Its maximal pro-odd-prime quotient need not embed in the base tripod's maximal pro-odd-prime quotient. A.34 must only be applied after proving the exact injectivity or leading-class detection that a given argument needs.
