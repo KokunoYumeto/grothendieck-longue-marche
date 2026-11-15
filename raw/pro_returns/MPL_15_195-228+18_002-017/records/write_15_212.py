@@ -1,0 +1,40 @@
+from record_page import save
+save(15,212,'reused_typed',r'''
+\mspage{211}
+\hfill Tribu n° 59
+
+SYSTÈMES de RACINES
+
+\uline{Introduction}, (Rédaction Borel).
+
+Ce chapitre est principalement consacré à l'étude de certains ensembles
+finis de vecteurs d'un espace euclidien, appelés systèmes de racines, et des
+groupes de déplacements d'un espace euclidien vectoriel ou affine engendré par
+des réflexions. Son but est de fournir le cadre naturel dans lequel s'expriment
+et se démontrent un grand nombre de propriétés importantes des groupes et algèbres
+de Lie semi-simples sur $\underline{\underline{R}}$ ou sur $\underline{\underline{C}}$ et des groupes algébriques semi-simples
+sur un corps quelconque. Bien que la rédaction ait été dictée par les besoins
+des chapitres suivants de ce Livre, nous avons été amenés en plusieurs endroits
+à élargir de diverses façons les hypothèses faites sur les groupes envisagés,
+de manière à placer certains résultats dans leur domaine naturel de validité,
+qui déborde parfois celui des applications que nous avons en vue. Le lecteur
+uniquement intéressé à ces dernières peut concentrer son attention sur les
+systèmes de racines, (§ 6), et sur leurs groupes de Weyl vectoriels ou affines.
+Il peut se limiter, dans le § 1 aux réflexions d'un espace euclidien ou d'un
+$\underline{\underline{Z}}$-module libre, dans le Théorème 1 du § 7 à l'implication (a) $\Longrightarrow$ (b) lorsque
+$k=\underline{\underline{R}}$ et que $G$ est engendré par des réflexions, et envisager la discussion des
+groupes de Coxeter faite au § 4 avant tout comme un auxiliaire permettant de
+donner une démonstration unifiée des propriétés fondamentales des groupes de
+déplacements linéaires ou affines engendrés par des réflexions $^{*}$.
+
+\figure{\begin{tikzpicture}\draw[dashed] (0,0) -- (14,0);\end{tikzpicture}}
+
+$(^{*})$ Pour rédiger ce paragraphe, nous avons largement utilisé des Notes de
+Séminaire, (non publiées), de Jacques Tits.
+''',[
+('text','top right','Tribu n° 59'),
+('text','upper centre','SYSTÈMES de RACINES; Introduction, (Rédaction Borel).'),
+('text','main body','Ce chapitre est principalement consacré'),
+('drawing','above footnote','dashed horizontal separator'),
+('text','footnote','(*) Pour rédiger ce paragraphe'),
+('text','bottom left','211')])

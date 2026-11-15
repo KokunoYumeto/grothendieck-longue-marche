@@ -1,0 +1,31 @@
+from record_page import save
+save(15,202,'reused_typed',r"""
+\mspage{201}
+
+ALGÈBRES de LIE SEMI-SIMPLES (4) \hfill Tribu n° 59
+
+multiplicité $\geq n$. On donnera le principe de Lefschetz comme lemme. En cor. : si $G$ est connexe, (sur $R$ ou $C$), on a $U=G$.
+
+\uline{n° 2} -- Remplacer ``canonique'' par ``diagonale'' à la l.5, p. 7. Dans la dém. de la prop. 6 remplacer ``la remarque faite ci-dessus'' par ``l'exemple 3)'', et ajouter à la fin ``d'après l'exemple 1)''. Dire que toute sous-algèbre qui contient une Cartan est son propre normalisateur.
+
+Dans la prop. 8, c'est au chap. I, p. 53 qu'il faut référer.
+
+\uline{n° 3} -- Dire, au début, qu'on pose $a_n(x)=1$. Dire que le rang est la multiplicité de la racine 0. Dans l'ex. 1, ajouter que, si $\underline{g}$ est nilpotente, le rang est la dimension, (cf. prop. 1). Vérifier la formule du bas de la p. 9. Les deux lignes du haut de la p. 10 ne sont vraies qu'en caract. $\neq 2$, (en caract. 2, $\underline{\mathrm{sl}}_2$ est nilpotent). L'ex. 3), (haut p. 10), est trop sec.
+
+Dans le th. 1, il est plus simple de raisonner sur $\underline{g}/\underline{h}$, (au lieu de Fitting). Dire ``sous-algèbre de Cartan'' dans le cor. Vider la remarque finale, (fausse en caract. p).
+
+Ajouter la prop. suivante : soient $\underline{h}\subset\underline{g}'\subset\underline{g}$ des alg. Lie ; alors a) si $\underline{h}$ est une Cartan de $\underline{g}$, c'est une Cartan de $\underline{g}'$, et tout élément de $\underline{g}'$ régulier dans $\underline{g}$ est régulier dans $\underline{g}'$ ; b) si $\underline{g}'$ est le nilespace d'un nilpotent, alors tout élément régulier de $\underline{g}'$ est régulier dans $\underline{g}$, et a mêmes nilespaces dans $\underline{g}$ et $\underline{g}'$ ; de plus $\underline{h}$ est une Cartan de $\underline{g}$ et $\underline{g}'$.
+
+\uline{n° actuellement 5} -- L'assertion de la l.6, p. 15, est fausse en caract. p ; remplacer par un petit calcul bébête sur la multiplicité de la valeur propre 0, (cf. remarque 2).
+""",[
+('text','top right upright','201'),
+('text','header left','ALGÈBRES de LIE SEMI-SIMPLES (4)'),
+('text','header right','Tribu n° 59'),
+('text','upper','multiplicité >= n'),
+('text','upper middle','n° 2 – Remplacer canonique'),
+('text','middle','Dans la prop. 8'),
+('text','middle','n° 3 – Dire, au début'),
+('text','lower middle','Dans le th. 1'),
+('text','lower middle','Ajouter la prop. suivante'),
+('text','bottom','n° actuellement 5')
+], 'Whole and both supplied halves inspected and compared; characteristic restrictions and explicit request to verify preserved.')

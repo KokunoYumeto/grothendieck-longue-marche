@@ -1,0 +1,27 @@
+from record_page import save
+save(15,209,'text',r"""
+rôle de \uline{classes de chemins}, ils sont déterminés \inserted{(s'il y en a au moins un)} \unsure{mod} automorphismes des premiers, qui sont les pts d'un groupe algébrique. Mais en général il peut y avoir des pts à valeurs dans un même $h$ non isomorphes. Les groupes de Galois opèrent sur \deleted{les points} l'ens des pts à valeurs dans $h$. Si on a un pt $\xi$ à val dans $h$, tous les autres pts s'en déduisent par des fibrés principaux \unsure{hom.} sous le (pro)groupe algébrique $\underline{\operatorname{Aut}}(\xi)$.
+
+\diagram{\begin{gathered}
+\left\{\begin{array}{ll}
+\text{Pts }l\text{-adiques}&\text{valeurs }\mathbf Z_l\text{ ou }\mathbf Q_l\\[3pt]
+\text{Pts transcendants}&\begin{gathered}\text{valeurs }\mathbf R\ \deleted{\text{ou }\mathbf C\ \unsure{\text{top}}}\text{ voire }\mathbf Z\\
+\text{[structure supplémentaire]}\\
+\text{Il semble que ces pts correspondent}\\
+\text{biunivoquement aux pts de}\\
+X\text{ à valeurs dans }\mathbf C,\\
+\text{mod conjugaison}
+\end{gathered}
+\end{array}\right.\\[6pt]
+\begin{array}{ll}
+\text{Pts Hodge-de Rham}&\text{valeurs }h\text{ quelconque}\\
+\text{pts de Witt}&\text{valeurs }W_p(k)\ \inserted{\text{$k$ parf de car $p$}}
+\end{array}
+\end{gathered}}
+
+\mspage{208}
+""",[
+('text','top to middle','rôle de classes de chemins'),
+('diagram','lower half','Pts l-adiques; Pts transcendants; Pts Hodge-de Rham; pts de Witt, values and brace'),
+('text','bottom left','208')
+], 'Whole and both halves compared; top insertion cropped for reading; classification and its left brace reproduced as an array.')

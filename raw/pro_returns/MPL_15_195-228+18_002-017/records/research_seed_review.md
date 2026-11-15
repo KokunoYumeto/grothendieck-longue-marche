@@ -1,0 +1,33 @@
+# Peer review of the 51 A/R seed observations
+
+Reviewed `records/research_notes_seed.json` against the frozen TeX fragments, supplied context/register, and the primary references identified below. No image was read and no seed or transcription file was edited. The main substantive fixes concern A01, A20, A24–A25 and A38; A09–A10 and A19 are substantially sound as carefully qualified research notes.
+
+## Necessary changes
+
+1. **A01: the scalar extension is already on the page.** At15/195 line15 the comparison is explicitly between `ξ_{y,p}` and `ξ_{x,p}⊗_{Z_p}W(k)`, so saying that it “compares…different coefficient rings” and that an identification of coefficient rings must first be supplied understates what is written. Lead instead with: “The displayed extension to `W(k)` puts the comparison over a common coefficient ring; deciding whether an isomorphism should preserve only the tensor realization or additional semilinear/Frobenius data is essential.” The finite-field qualification remains genuinely uncertain, and Oda's narrower scope caveat is appropriate.
+
+2. **A20: do not rename the displayed discrete motivic group ordinary monodromy.** At15/213 lines35–37 the group acting is explicitly `π₁(X,ξ)`, newly defined as the tensor-automorphism group's integral points, while comparison with the topological group is only raised in lines29–30. Replace “includes both monodromy and Hodge structure” with “includes an action of the manuscript's discrete motivic automorphism group together with the Hodge structure”; a topological-monodromy formulation needs the additional comparison whose status A18 correctly distinguishes.
+
+3. **A24–A25: acknowledge the geometric fixed-part mechanism.** The sentence “Monodromy and one fibre do not by themselves specify a general period map” is defensible for unrestricted analytic period maps, but risks sounding like an objection to the geometric situation in the manuscript. For a proper smooth algebraic family, Deligne's fixed-part theorem says a global flat section of a specified Hodge type at one point has that type everywhere; applied to `Hom` of two geometric variations, this is exactly the relevant one-fibre-plus-monodromy rigidity mechanism. Cite Deligne(1971), Corollary4.1.2 and4.1.3.1, then retain the need for an actual rigidified moduli functor and a passage from isomorphic variations to equality of classifying maps. Verified primary PDF: https://www.numdam.org/item/PMIHES_1971__40__5_0.pdf ; source refs `turn51view0`, `turn51view1`, `turn51view2`.
+
+4. **A38: a family over an open coarse j-line need not be universal.** The lack of a universal elliptic curve on the unrigidified coarse moduli line does not obstruct exhibiting one elliptic family with that j-invariant. For `t∈P¹−{0,1,∞}`, the family
+
+   `y² = x³ − 3t/(t−1) x − 2t/(t−1)`
+
+   has nonzero discriminant and classical `j=1728t`, by direct substitution in `j=1728·4a³/(4a³+27b²)`. Thus the written example is natural with normalized `j/1728`; if its j means the unnormalized classical invariant, the retained point1728 is a real issue, because `j−1728` is locally a unit times `b²` in a smooth Weierstrass family and cannot have a simple zero. Make normalization the main reading question, and reserve fine level structures for a genuinely universal-moduli claim. This calculation can be recorded as an own idea with high confidence from the displayed formula, rather than making the historical symbol definite.
+
+5. **A08: remove or explicitly mark the lack of a direct link to LM6 A.50.** The register's arithmetic procyclic-normalizer result is not evidence for the comparison of real Frobenius on Betti and ℓ-adic realizations. The body already explains the distinction, but the unqualified ledger list can misleadingly imply a substantive dependency; use “LM6 A.50: no direct consequence; different Frobenius/normalizer setting” or omit that ID.
+
+## Sound notes with small precision improvements
+
+- **A09–A10:** The necessary-condition test is mathematically sound: an arbitrary rational subspace lying in a band of Hodge types need not itself be a Hodge substructure, and one must distinguish a naive rational intersection from the largest rational Hodge substructure in that band. Preserve the present restraint: no counterexample to this manuscript's undefined level convention and no exact identification with the corrected generalized Hodge conjecture are established. The main quote on15/205 lines8–13 and its locator are correct.
+- **A19:** The caution is sound, but do not suggest Borel–Harish-Chandra only proves finite covolume; its relevant arithmetic orbit finiteness results could be the author's intended input. The correct unresolved question is which finite-type integral representation/orbit/class-number problem realizes `T_α(Z)` and whether its hypotheses are met. Retain uncertainty in the quoted name: the frozen reading is “Borel” plus inserted `\unsure{Harish}`, not a securely read full “Borel–Harish-Chandra.”
+- **A25:** When reconstructing a map from one value and a fundamental-group homomorphism, base points/identifications and inner-conjugacy conventions matter; A27 already makes this point and can be cross-referenced rather than repeated.
+- **A26:** No necessary change: it correctly separates an inverse characterization of all varieties with a rigidity property from proving rigidity of a known moduli space.
+- **A36:** The distinction between torsor classes and abstract integral-point groups is valid. Its confidence applies to the logical implication being unjustified, not to an exhibited arithmetic counterexample.
+- **R10:** The note is appropriately cautious; if later expanded, note that equality `ψ(U₀(V))=U₀(W)` can imply that `a_{0,0}` is a unit, and diagonal compatibility then forces an idempotent unit to be1. The displayed weaker `a_{0,0}≠0` is therefore not itself evidence of a false proposition over a general ring.
+- **R01–R11:** Checked the cited relevant fragments: the reuse boundary is consistently maintained; Lie-theoretic semisimplicity, Haar unimodularity, formal coalgebras, and NSF bibliography are not being used as motivic evidence.
+
+## General metadata point
+
+Several ledger associations to WG2 §2.4 #3 or WG2 §1.1 #3 are broad project/organizational links rather than findings bearing on the precise mathematical statement. Label them as such, as the R entries mostly already do; do not manufacture a closer result ID when the supplied ledger contains none. A short preface can explain that a context “adds” classification with no exact matching theorem means only that this supplied extract contains new documentary evidence relative to the supplied comparison files.

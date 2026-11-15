@@ -1,0 +1,27 @@
+from record_page import save
+save(15,201,'text',r"""
+$\mathbf C$, i.e. $\overline{k(a)}\simeq\mathbf R$, \inserted{isom uni. can.} alors $\xi_{x,\mathbf Z}$ est encore défini par la valuation archimédienne sur $k(a)$, mais \deleted{\unsure{suivant que}} \inserted{\unsure{indépendant}} des choix possibles dans la clôture algébrique de $k(a)$, le groupe de Galois de $\mathbf C=\overline{\mathbf R}$ sur $\mathbf R$ opère dans $\xi_{x,\mathbf Z}$, \unsure{notons} $\tau$ \uline{cette opération}, qui est involutive. \inserted{on écrit aussi $\xi_{a,\mathbf Z}$ au lieu de $\xi_{x,\mathbf Z}$,} [On ne la confondra pas avec l'endom \uline{$\frac12$ linéaire} de $\xi_{\bar a,\infty}$ correspondant à $\tau$ ; il n'y est pas question par exple d'un réseau stable].
+
+\margin{\unsure{a devient le} \uline{\unsure{plus}} \unsure{défini que pt à val. dans} $\mathbf C$}
+
+Dans ce cas, les invariants sont
+\diagram{\begin{tikzcd}[column sep=large,row sep=small]
+\xi_{a,\infty}\in T_\alpha(\mathbf R)\arrow[dr,no head] & \\
+& \xi_{\bar a,\infty}\in T_\alpha(\mathbf C)\\
+\begin{gathered}\deleted{\xi_{a,\infty}\otimes_{\mathbf R}\mathbf C\simeq}\\\xi_{\bar a,\mathbf Z}\in T_\alpha(\mathbf Z)\end{gathered}\arrow[ur,no head]&
+\end{tikzcd}}
+\[
+\xi_{\bar a,\infty}\overset{\text{\uuline{can}}}{\simeq}\xi_{a,\infty}\otimes_{\mathbf R}\mathbf C\simeq\xi_{\bar a,\mathbf Z}\otimes_{\mathbf Z}\mathbf C
+\]
+
+$\pi_1(X)$ n'opère pas à priori dans $\xi_{a,\mathbf Z}$, les seules opérations sont celles de $\tau$ si $a$ est \uline{réel}. Cependant, sur $\xi_{\bar a,\infty}$, il y a (en plus éventuellement de $\tau$, si $a$ est réel) les opérations de $\operatorname{Aut}_{k(a)}(\unsure{k})$, qui sont $\frac12$ linéaires.
+
+\mspage{200}
+""",[
+('text','top to middle','C, i.e. closure k(a) isomorphic R'),
+('text','middle','Dans ce cas, les invariants sont'),
+('diagram','middle lower','xi_a,infty; xi_bar a,infty; xi_bar a,Z; two plain connecting strokes'),
+('display','lower','xi_bar a,infty can isomorphic xi_a,infty tensor C'),
+('text','bottom','pi_1(X) n\'opère pas à priori'),
+('text','bottom left','200')
+], 'Whole, halves, top insertion and rotated margin crops inspected; diagram reproduced with no arrowheads, as seen.')

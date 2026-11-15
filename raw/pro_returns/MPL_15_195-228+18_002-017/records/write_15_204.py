@@ -1,0 +1,34 @@
+from record_page import save
+save(15,204,'reused_typed',r"""
+\mspage{203}
+
+ALGÈBRES de LIE SEMI-SIMPLES (3) \hfill Tribu n° 59
+
+et $q:S\longrightarrow W$, et si on suppose que $q(s)B(v,v')=B(r(s)v,v')+B(v,r'(s)v')$, (resp. $=B(r(s)v,r'(s)v')$, pour tout $s$ de $S$, alors $B$ applique $V_\lambda\times V'_\mu$ dans $W_{\lambda+\mu}$, (resp. dans $W_{\lambda\mu}$) ; idem pour les indices supérieurs.
+
+Ce n° \unsure{absorde|absorbe} un certain nombre de choses du texte.
+
+\uline{n° 1} -- Vider p. 1, les l.9-7 bas, (c'est faux). La prop. 1, le lemme, la prop. 2, a) et la prop. 3 (a,c) vont au dépotoir, (noter que la prop. 3, c) absorbe le lemme. Ici le b) de la prop. 3 sera un cor. de la prop. 2, (réduite à son b)).
+
+Dans la prop. 2, b), un erratum à Alg. VII permettra de parler des valeurs propres de $x_M$ même si elles ne sont pas dans $k$. Pas besoin de supposer $\underline{h}$ nilpotente à la p. 3, l.4 ; raisonner directement en utilisant Alg. VII. Dans (i), ne pas faire intervenir le quotient simple, (y'en a pas en caract. p). Pour (ii), utiliser le dépotoir : la sous-algèbre engendrée par $x$ opère sur $M$, et sur $\underline{h}$ par représ. adjointe ; on a $\underline{h}\times M\longrightarrow M$.
+
+La ``descente'' du bas de la p. 3 sera faite en Alg. VII ; donc un rappel suffit ici ; prendre une extension galoisienne qqconque au lieu de $\bar k$.
+
+Dans la prop. 4, à la l.13 p. 5, dire : ... est $\underline{g}$-invariante, (identité de Jacobi), donc $\underline{h}$-invariante. Dire ``$\underline{h}$-module trivial'' à la l.15. Dire ``appliqué sur 0 par la forme ci-dessus'' à la l.16. Plus bas la sommation est incorrecte : sommer sur la moitié des $\alpha$. Vider la remarque du bas de la p. 5.
+
+On vide la prop. 5 qui ne sert à rien. Une remarque donnera la nilpotence de $\operatorname{Ad}(x)$ sous les conditions de la prop. 4.
+
+Remonter ici le résultat suivant, (venant du § 5, n° 3) : soient $G$ un groupe analytique, $n$ le rang de son algèbre de Lie ; alors il existe un sous-groupe ouvert $U$ de $G$ tel que, pour tout $x\in U$, $\operatorname{Ad}(x)$ admette 1 comme valeur propre de
+""",[
+('text','top right upright','203'),
+('text','header left','ALGÈBRES de LIE SEMI-SIMPLES (3)'),
+('text','header right','Tribu n° 59'),
+('text','upper','et q : S to W'),
+('text','upper','Ce n° absorde'),
+('text','upper middle','n° 1 – Vider p. 1'),
+('text','middle','Dans la prop. 2, b)'),
+('text','lower middle','La descente du bas de la p. 3'),
+('text','lower middle','Dans la prop. 4'),
+('text','lower','On vide la prop. 5'),
+('text','bottom','Remonter ici le résultat suivant')
+], 'Whole and both supplied halves inspected; qqconque, soient G and the uncertain absorde reading preserved without modernization.')
