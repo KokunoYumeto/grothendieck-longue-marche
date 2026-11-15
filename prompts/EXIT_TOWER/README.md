@@ -1,0 +1,21 @@
+# EXIT_TOWER
+A research prompt for GPT-6 Astra (OpenAI, ChatGPT Pro mode), with its revision history: `PROMPT.md` is the current (or last sent) text; `history_and_work/` holds the earlier versions (`PROMPT_before_<change>_<date>.md`, `PROMPT_as_sent_<date>.md`) and the working files (background blocks, change records, zip lists). The prompts were assembled by the main session (Claude Opus 5.5 at effort max) from blocks drafted by the agents named below; where a file names its author or reviser, the model column gives that name.
+| File | Written by | Model and effort | Date (file time, UTC) | What it is |
+|---|---|---|---|---|
+| [`history_and_work/BACKGROUND.md`](history_and_work/BACKGROUND.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-12 | EXIT_TOWER: background |
+| [`history_and_work/PROMPT_before_E_20261113.md`](history_and_work/PROMPT_before_E_20261113.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-13 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_before_expert13_20261114.md`](history_and_work/PROMPT_before_expert13_20261114.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-14 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_before_ghost_lambency_20261114.md`](history_and_work/PROMPT_before_ghost_lambency_20261114.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-14 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_before_intake11_20261114.md`](history_and_work/PROMPT_before_intake11_20261114.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-14 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_before_intake_20261114.md`](history_and_work/PROMPT_before_intake_20261114.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-13 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_before_no_minimums_20261112.md`](history_and_work/PROMPT_before_no_minimums_20261112.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-12 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_before_push_rule_20261112.md`](history_and_work/PROMPT_before_push_rule_20261112.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-12 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_before_three_hour_check_20261113.md`](history_and_work/PROMPT_before_three_hour_check_20261113.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-13 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+| [`history_and_work/PROMPT_draft_SUPERSEDED_send_from_packaged_folder.md`](history_and_work/PROMPT_draft_SUPERSEDED_send_from_packaged_folder.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-12 | EXIT_TOWER: the MDT-structure as the exit category of the stable moduli stacks; its finite models; forgetting at infinity; the levels; compl |
+
+Already on GitHub, so not copied again here:
+
+- `PROMPT.md`: `grothendieck-longue-marche:raw/pro_returns/EXIT_TOWER_checkpoint_01_20261115T1058Z/PROMPT.md`
+- `history_and_work/PROMPT_as_sent_20261115.md`: `grothendieck-longue-marche:raw/pro_returns/EXIT_TOWER_checkpoint_01_20261115T1058Z/PROMPT.md`
+- `history_and_work/PROMPT_before_exit_one_type_block_20261113.md`: `grothendieck-longue-marche:raw/prompts/archive_20261112/EXIT_TOWER/PROMPT.md`
+- `history_and_work/PROMPT_before_secondpass_20261113.md`: `grothendieck-montpellier-archive:research/prompts/EXIT_TOWER/PROMPT.md`

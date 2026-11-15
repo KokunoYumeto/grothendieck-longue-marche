@@ -1,0 +1,46 @@
+# Brief from the main session (Claude Opus 5.5 at effort max), 14 Nov 2026 ~23:4x UTC, kept verbatim
+
+Kept here by the Fermat participant (Claude Fable 5.2 at effort max) so that it can be reread after a compaction.
+
+---
+
+New job: write the Fermat successor (PUSH_ITEMS_20261114.md Part 1, your item list) as a complete, sendable prompt.
+
+From the main session (Claude Opus 5.5 at effort max), 14 Nov ~23:4x UTC. The user: the agents that designed the prompts have the insight, so they write them.
+
+1. Items: pro_intake_20261114/PUSH_ITEMS_20261114.md Part 1, with your additions 1.18–1.20 and the rest of block 1.B.1.
+2. Decision 4.4 of pro_intake_20261114/debate_20261114/CONSOLIDATED_REGISTER_20261114.md, as recommended there:
+   - FS keeps 1.13 (the line-by-line check of LM6 E.6–E.12, with the sources opened) and 1.14 (x⁴ + y⁴ = z⁴, even exponents), and computes the 1.16 table;
+   - FS 1.20 becomes a pointer to SECTIONS_OVER_Q;
+   - 1.18 and 1.19 stay;
+   - the two blocks are, in order: (1.13, 1.14, 1.16, 1.19), then the tower (1.15, 1.17, 1.7–1.11).
+
+   SECTIONS_OVER_Q is being written at the same time from the same table by a59e5db1.
+3. Folder: longue_marche_pro_pilot_20261104/pro_prompts_draft_20261111/03_FERMAT_SUCCESSOR/, holding PROMPT.md and its zip only. Work files go in pro_prompts_draft_20261111_work/FERMAT_SUCCESSOR/.
+4. Frame:
+   - Take it from 01_LM8_PUSH/PROMPT.md and _COMMON_BLOCK.md in that folder: what is to be settled, what it builds on, WHAT THE OUTCOME MUST BE with the push paragraph and the three-hour check, the parts, what is attached, the rules of proof, "long by design", the typesetting check, and the hourly checkpoint clause (claude_tools/prompts/checkpoint_rule.py, apply()).
+   - Follow ASSEMBLY_NOTES_SUCCESSORS.md in that debate folder: the OpenAI preprints of 5 and 6 October go in as LaTeX, with the check-while-working clause (item 1.13).
+   - The zip carries LaTeX, not PDFs. Every model is named with its effort setting. No escape clauses and no minimums.
+   - Lint: python -I -B C:/Users/user/Documents/claude_tools/push_rule_pro_prompts.py --lint-math <PROMPT.md>, until it passes.
+
+Bound: about 150k tokens. No sub-agents. Read only what writing it needs. Your context is near full: when it starts with a summary, you were compacted, so reread this message and Part 1 of PUSH_ITEMS_20261114.md, then go on. Final message: the folder, the zip (entries, size) and the lint result.
+
+---
+
+## Worklog of the Fermat participant (newest last; update at every step)
+
+- Step 0 (15 Nov, start): brief saved here. Plan: (1) read decision 4.4, ASSEMBLY_NOTES_SUCCESSORS.md, _COMMON_BLOCK.md, the frame parts of 01_LM8_PUSH/PROMPT.md, checkpoint_rule.py usage; (2) write `assemble_prompt_20261115.py` in this folder: frame text + items taken from PUSH_ITEMS_20261114.md Part 1 by markers, in the order of decision 4.4; (3) write `build_zip_20261115.py` (pattern: `..\LM7_PUSH\build_zip_20261113.py`); (4) apply the checkpoint rule, lint with --lint-math until it passes; (5) final message: folder, zip entries and size, lint result.
+- Step 1 (14 Nov 23:38 UTC, clock read): read ASSEMBLY_NOTES_SUCCESSORS.md and decision 4.4. Facts to keep:
+  - Frame files: `pro_prompts_draft_20261111/_COMMON_BLOCK.md` (7 KB) and `01_LM8_PUSH/PROMPT.md` (99 KB; take only its skeleton). Checkpoint clause: `claude_tools/prompts/checkpoint_rule.py`, apply().
+  - OpenAI preprints as LaTeX: `pro_intake_20261114/debate_20261114/background_sources/The-p-adic-section-conjecture-October-6-2026/build/` (main.tex, sections 01-08, references.bib) and `.../Open-Homomorphisms-of-Global-Solvably-Closed-Galois-Groups-October-5-2026/build/`. Source: github.com/openai/math, preprints folder, fetched 14 Nov 2026, commit 4eaee87548. Clause: treat as a professional preprint; use Theorem 1.1 where needed; check the steps used; LM6 D.6 reports a gap in its Section 8: settle it and say which results depend on it.
+  - Decision 4.4: block 1 = 1.13, 1.14, 1.16 (FS computes the table), 1.19; block 2 (the tower) = 1.15, 1.17, 1.7-1.11; 1.18 stays (twists of the cubic); 1.20 becomes a pointer to SECTIONS_OVER_Q; (X4) and Lead 25 are to be copied in (their texts are in POSITION_CROSSRUN.md and LM8_PUSH).
+  - Part 1.A (1.1-1.6, GT items) is part of Part 1 of the item list; keep it as a third block after the two section blocks, unless the main session moves it to the LM7_PUSH successor.
+  - Returns to attach (LaTeX, registers): LM6 final `answers/LM6_POINTS_AS_SECTIONS_final_20261114T1613Z_unzipped/`; ANABELIAN final `answers/ANABELIAN_149_PUSH_final_20261114T1558Z_unzipped/ANABELIAN_149_PUSH/`; Fermat tower newest checkpoint (check `answers/` for LM7_FERMAT_TOWER_*; known: 20261114T0115Z); LM7_PUSH checkpoint 09 (20261113T2242Z); referee reports `pro_intake_20261114/referee/`; my review `pro_reviews_max_20261112/LM7/`; arXiv cache `Free or receipted/free/arxiv-eprints-lm-20261113/`; old build script pattern `..\LM7_PUSH\build_zip_20261113.py`.
+- Step 2 (15 Nov, after a compaction; brief and Part 1 of the item list reread): frame read from 01_LM8_PUSH/PROMPT.md (lines 1-11 header, 110-131 outcome section, 213-241 rules, deliverables, typesetting, checkpoints). Newest Fermat tower checkpoint is `answers/LM7_FERMAT_TOWER_20261114T0311Z_unzipped` (229 rows, open D.13, D.19, E.23), newer than the one named in the item list. (X4) = the icosahedral tests: defined in the item list Part 2 (lines 239-246) and in `research_maps_20261112/PRETOT_3D_MODULARITY/POINCARE_AND_A5_20261114.md` (attached to the zip as notes/). Lead 25 copied from the LM8_PUSH prompt, line 106.
+- Step 3: `build_zip_20261115.py` written (this folder). Six new arXiv sources fetched into `Free or receipted/free/arxiv-eprints-lm-20261113/` and checked by title: math/0606465 (Stoll), 1005.1302 (Harari-Stix), 2602.17746 (Steklov, Fermat's Last Theorem for Selmer sections), math/0508174 (Poonen-Schaefer-Stoll), math/0306037 (Hain-Matsumoto, C - C^-), 2004.06146 (Bisogno-Li-Litt-Srinivasan). Not on arXiv, so not attached: Khare-Wintenberger, Mazur, Rubin, Ross. Shelf entries for the six new folders: NOT yet added to CLAUDE_FREE_SHELF.json.
+- Plan for the prompt text: written by hand as PROMPT.md (Parts A: 1.13, 1.14, 1.16, 1.19, 1.18; B: 1.15, 1.17, 1.7-1.11, pointer for 1.20; C: 1.1-1.6 with the additions, (X4), Lead 25; D: 1.12), every row of the Fermat tower cited as "LM7 X.n"; then checkpoint_rule.apply(), then --lint-math.
+- Step 4 (15 Nov 2026, about 00:1x UTC): `03_FERMAT_SUCCESSOR/PROMPT.md` written (about 51 kB; Parts A 12 tasks, B 9, C 8, D 2; results R1-R20; Leads 1-8), checkpoint rule applied twice (second run adds the hourly sentence), `--lint-math`: failing 0. Zip built: `FERMAT_SUCCESSOR_background.zip`, 8,750,253 bytes, 3,066 entries, no PDF, testzip clean; MANIFEST.tsv in this folder and in the zip. Corrections after rereading against the registers: `fix_prompt_20261115_a.py` (task numbers in the attachment list, R17 quoted from the register, R18, Lead 8 in the source's words, C.3 boundary of the Longue Marche expert, C.5 as the item list has it, Part D) and `fix_prompt_20261115_b.py` (the "two towers" remark moved from the leads to the framing; leads renumbered). Text before the checkpoint rule: `PROMPT_before_checkpoint_rule_20261115.md` (older than the two fix passes).
+- Changes of mathematics against the item list, made in the prompt only: (1) item "Addition to 1.14": the dictionary's "Z[i] or Z[sqrt(-2)]" is given as a point to settle (the three quotients of the quartic are v^2 = u^4 + 1 and twice v^2 = 1 - u^4, all with multiplication by an order of Q(i), by my computation); (2) item 1.16: the positive-rank question in every etale neighbourhood is left to SECTIONS_OVER_Q (decision 4.4), the statement and the table stay; remark added that the Jacobian of aX^3 + bY^3 + cZ^3 = 0 depends on abc only; (3) item 1.20 is a pointer, as decided; (4) item 1.19 (iii): "smallest local hypothesis" is asked as the weakest hypothesis the proof uses, with a proof that each part is used.
+- The two preconditions of the Longue Marche expert (top of the item list) concern Part C only. In the prompt: the literature search is task C.8; the corollary "GT-hat strictly inside GT_0-hat" is asked as a task (C.5), not stated as a result. Whether the gate still holds for sending is the main session's call.
+- Not done: shelf entries for the six new arXiv folders; the maths prompt tally.
+- Step 5 (15 Nov 2026, 00:1x UTC; done): two more passes. `fix_prompt_20261115_c.py`: Lead 8, the inference from R15 in full. `fix_prompt_20261115_d.py`: Part 1 of the item list says "Items A.1-A.4 and A.6 of PUSH_ITEMS_LM7_CONTINUED.md stand"; A.2, A.3, A.4, A.6 of that list (E.23 items on the pro-3 group of the cubic) had no task, so they are now tasks B.10-B.13, with Lead 9 (descent along the cyclotomic tower). Final prompt: Parts A 12 tasks, B 13, C 8, D 2; R1-R20; Leads 1-9; `--lint-math` failing 0. Zip rebuilt (manifest reasons updated): see the last lines of the build output. Shelf: 14 entries for the six new arXiv folders added to `Free or receipted/free/CLAUDE_FREE_SHELF.json` (backup `CLAUDE_FREE_SHELF_before_20261115_FERMAT_SUCCESSOR.json`). Not done: the maths prompt tally (left to the main session).

@@ -1,0 +1,7 @@
+# FERMAT_SUCCESSOR
+A research prompt for GPT-6 Astra (OpenAI, ChatGPT Pro mode), with its revision history: `PROMPT.md` is the current (or last sent) text; `history_and_work/` holds the earlier versions (`PROMPT_before_<change>_<date>.md`, `PROMPT_as_sent_<date>.md`) and the working files (background blocks, change records, zip lists). The prompts were assembled by the main session (Claude Opus 5.5 at effort max) from blocks drafted by the agents named below; where a file names its author or reviser, the model column gives that name.
+| File | Written by | Model and effort | Date (file time, UTC) | What it is |
+|---|---|---|---|---|
+| [`PROMPT.md`](PROMPT.md) | agent abbb9cee | Claude Fable 5.2 at effort max | 2026-11-14 | FERMAT_SUCCESSOR: Fermat for sections (LM6 E.6–E.12) checked line by line and extended to every exponent, to the twists and to its exact loc |
+| [`history_and_work/BRIEF_FROM_MAIN_20261114.md`](history_and_work/BRIEF_FROM_MAIN_20261114.md) | agent abbb9cee | Claude Fable 5.2 at effort max | 2026-11-15 | Brief from the main session (Claude Opus 5.5 at effort max), 14 Nov 2026 ~23:4x UTC, kept verbatim |
+| [`history_and_work/PROMPT_before_checkpoint_rule_20261115.md`](history_and_work/PROMPT_before_checkpoint_rule_20261115.md) | named in the file | Claude Fable 5.2 at effort max | 2026-11-14 | FERMAT_SUCCESSOR: Fermat for sections (LM6 E.6–E.12) checked line by line and extended to every exponent, to the twists and to its exact loc |

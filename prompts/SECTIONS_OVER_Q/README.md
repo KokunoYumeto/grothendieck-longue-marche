@@ -1,0 +1,10 @@
+# SECTIONS_OVER_Q
+A research prompt for GPT-6 Astra (OpenAI, ChatGPT Pro mode), with its revision history: `PROMPT.md` is the current (or last sent) text; `history_and_work/` holds the earlier versions (`PROMPT_before_<change>_<date>.md`, `PROMPT_as_sent_<date>.md`) and the working files (background blocks, change records, zip lists). The prompts were assembled by the main session (Claude Opus 5.5 at effort max) from blocks drafted by the agents named below; where a file names its author or reviser, the model column gives that name.
+| File | Written by | Model and effort | Date (file time, UTC) | What it is |
+|---|---|---|---|---|
+| [`PROMPT.md`](PROMPT.md) | agent a59e5db1 | Claude Fable 5.2 at effort high | 2026-11-14 | SECTIONS_OVER_Q: the sections of the projective line minus three points over the rationals, and birational lifting (Grothendieck's Conjectur |
+| [`history_and_work/BUILD_NOTES_INTAKE_AGENT_20261115.md`](history_and_work/BUILD_NOTES_INTAKE_AGENT_20261115.md) | agent a59e5db1 | Claude Fable 5.2 at effort high | 2026-11-14 | Build notes of the intake agent (Claude Fable 5.2 at effort high) for the two successor prompts |
+| [`history_and_work/ITEMS_DRAFT.md`](history_and_work/ITEMS_DRAFT.md) | named in the file | Claude Fable 5.2 at effort high | 2026-11-14 | SECTIONS_OVER_Q: items draft (mathematics only) |
+| [`history_and_work/ITEMS_DRAFT_before_ghost_lambency_20261114.md`](history_and_work/ITEMS_DRAFT_before_ghost_lambency_20261114.md) | named in the file | Claude Fable 5.2 at effort high | 2026-11-14 | SECTIONS_OVER_Q: items draft (mathematics only) |
+| [`history_and_work/ITEMS_DRAFT_before_intake_consolidation_20261114.md`](history_and_work/ITEMS_DRAFT_before_intake_consolidation_20261114.md) | named in the file | Claude Fable 5.2 at effort high | 2026-11-14 | SECTIONS_OVER_Q: items draft (mathematics only) |
+| [`history_and_work/ITEMS_DRAFT_before_intake_round2_20261114.md`](history_and_work/ITEMS_DRAFT_before_intake_round2_20261114.md) | named in the file | Claude Fable 5.2 at effort high | 2026-11-14 | SECTIONS_OVER_Q: items draft (mathematics only) |
