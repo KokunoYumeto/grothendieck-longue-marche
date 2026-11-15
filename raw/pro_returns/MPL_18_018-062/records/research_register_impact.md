@@ -1,0 +1,22 @@
+## 8. Effect on the supplied results register
+
+The table records new evidence and the status it supports in this return. It does not rewrite `RESULTS_STATE.md`; truncated entries remain truncated.
+
+| Supplied identifier and status | What this package adds | Resulting treatment |
+|---|---|---|
+| WG2 §2.4 #3; §Summary #2 — unchecked questions/plans | Correspondence action at 18/025; real structures at 032–041; lattice/cocycle construction at 047–062; explicit period genericity at 059. | Questions answered to the extent of the witnesses in C05, RH03–20, P01–26, MB01–16; missing historical constructions remain unlocated. |
+| WG2 §2.3 #2 — unchecked operator-image description | MB03 and MB03b give the lowering coefficients, rational matrix units and Casimir interpolation. | The displayed rational operator model is verified directly; no integral identification is inferred. |
+| MPL_14_087-132 M04 — first-pass own-idea lead | The projective-line action is tested with matrices and the unit vector; the Tate-twist relation is written. | Supports this specific action obstruction; the absent cote 14 transcription remains unchecked. |
+| MPL_14_002-044 §107; PN M04–M05 — first-pass leads | CT16/047's singular-hypersurface programme and the two supported A–D matches. | No claim of cote 14 completion; two letter matches remain provisional. |
+| PN A06, A23, P11, P19, M11 — first-pass leads | Integral Tate orientation, the two conjugations, tensor defect, period torsor, the corrected cocycle and its base-field issues. | The new witnesses add the precise formulas; earlier unprovided scans remain mediated by PN. |
+| PN B01–B04 — first-pass bridge leads | Four comparisons with actual abelianization, conjugation, pairing and cyclotomic-character maps. | Domain and convention requirements are stated in the four-row table and detailed items. |
+| PN M06–M10 / S15 — first-pass modern-comparison leads | Checked Kahn, Choudhury–Gallauer, Arapura, Jannsen and their exact maps. | Version-specific sources and scopes verified; the historical category has not been identified with a modern one merely by its name. |
+| Hua, findings register, `18-real-frobenius-trivial-converse` — supplied external claim | RH10–11 and Appendix A realize the sign Artin–Tate line by algebraic projectors and compute its involution and weight. | The stated objection to 18/036,038 is supported by this explicit example; no absent portion of the external argument is certified. |
+| Hua, findings register, `18-archimedean-lattice-cocycle` — supplied conjectural, unsearched and truncated synopsis | P13–P23 verify the lattice/cocycle/torsor chain, diagonal integral ambiguity, inverse convention, transcendental automorphism domain and changes of place. | The synopsis's core is supported with these qualifications; its truncated ending cannot be assessed. |
+| LM1 A.8 — Refuted, return's claim | MB05 and RH11 use the given warning about central/Tate data only as context. | Status retained; the already recorded unrestricted-uniqueness counterexample is not rederived. |
+| LM6 A.22 — Open, return's claim | MB15 and P06/P21 track the extra cyclotomic-character premise and distinguish the manuscript's recorded expectations by explicit maps. | Open status retained; no normalizer solution is supplied. |
+| LM6 A.50 — Proved, return's claim; displayed statement truncated | The available excerpt specifies open arithmetic image but omits the completed character-descent assertion. | Recorded status retained; no absent conclusion is invented. |
+| LM7 E.23 — Open, return's claim | RH20 identifies the action of real sections on abelianization; P12 keeps the full transcendental automorphism domain. | No computation of the requested section-map images and fibres is supplied; open status retained. |
+| FLAGGED_149 B9 — Open, return's claim | No new proof for its prime-to-$p$ point question appears in these pages. | Open status retained. |
+| LM7 C.1 — Known, return's claim | C01/C06 and P08 add concrete Tate-line scalar and integral-product calculations. | Contextual relevance only; the return's status is retained. |
+| WG2 §1.1 #3 — unchecked organization plan | R01–R20 and T01–T04 identify the formal, root-system, Haar and Dedekind source layers, their internal order and the two covers. | New documentary indexing, with authorship and chronology left at the evidence actually supplied. |
