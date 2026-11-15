@@ -96,7 +96,7 @@ In the draft readers (the English one and the four French ones), every doubtful 
 every `[scan n]` is a link: it opens that scan in the viewer of the Grothendieck archive of the Université de
 Montpellier, so that you can look at the handwriting yourself.
 
-AI-translated by GPT-6.1 Sol (OpenAI, reasoning effort max, API Flex tier) from the AI-transcribed French text (transcription by GPT-6 Astra, ChatGPT Pro mode, checked by Claude Opus 5.5 (effort not recorded)); prompts, checks, fixes and build by Claude (Anthropic).
+AI-translated by GPT-6.1 Sol (OpenAI, reasoning effort max, API Flex tier) from the AI-transcribed French text (transcription by GPT-6 Astra, ChatGPT Pro mode, checked by Claude Opus 5.5 at effort max); prompts, checks, fixes and build by Claude (Anthropic).
 
 The rights in the original work belong to its author or the author's representatives or heirs. Our transcription, translation, corrections and typesetting were produced by AI. They have no human author and, in our understanding, are not protected by copyright; where any right of ours exists nonetheless, it is dedicated to the public domain under CC0 1.0. All of this work reproduces or translates Grothendieck's text, whose rights belong to his heirs, so nothing here licenses or authorizes any reproduction, translation or other use of his work. This edition is published for educational, non-profit purposes, and we claim no rights we do not hold. If you hold rights in this work and object to its publication here, please open a GitHub issue and we will take it down.
 
