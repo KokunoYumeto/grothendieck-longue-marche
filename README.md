@@ -137,6 +137,38 @@ down.
 
 **Prompts and method.** The prompts, templates, scripts and working method published here are dedicated to the public domain under CC0 1.0. If you want to do similar work, use them freely; we claim no rights in them.
 
+## Rights considerations
+
+**Grothendieck's texts.** The rights belong to his heirs; his texts are protected until the end of 2084. The University
+of Montpellier publishes the scans of his mathematical papers (https://grothendieck.umontpellier.fr/archives-grothendieck/) with his heirs' agreement. We hold no licence
+from his heirs and claim no rights in his texts.
+
+**Earlier editions and transcriptions.** Others have edited or transcribed parts of these papers before us:
+- *Les Dérivateurs*: the electronic edition by M. Künzer, J. Malgoire and G. Maltsiniotis (https://webusers.imj-prg.fr/~georges.maltsiniotis/groth/Derivateurs.html);
+- *La Longue Marche à travers la théorie de Galois*: tome 1, edited by J. Malgoire (Université Montpellier II, 1995),
+  and the transcriptions by M. Carmona with M. Künzer (https://agrothendieck.github.io/);
+- *Pursuing Stacks*: M. Carmona's transcription (https://arxiv.org/abs/2111.01000), which he dedicated to the public domain under CC0, and
+  G. Maltsiniotis's edition *À la poursuite des champs*, vol. I (SMF, 2022);
+- the transcriptions of the Centre for Grothendieckian Studies (https://csg.igrothendieck.org/), which states that it publishes them with the
+  consent of the rights holders.
+
+Apart from that statement, none of these says it holds a licence from the heirs, and a transcription gives its maker no
+rights in the author's text. We do the same work with AI for the whole archive: to make all of it available as editable
+LaTeX, with translations, and as a second reading beside the existing ones. This is no claim of priority or
+superiority, and no claim to rights we do not hold. If the editors of an earlier edition would rather we took down what
+we based on their work, so that theirs stands alone, we will do so as a courtesy.
+
+**Works with an authorized edition.** Where a work has an edition published with the rights holders' authorization, as
+*Récoltes et Semailles* has (Gallimard, 2022), we do not reproduce or translate it; at most we write our own commentary
+on its mathematics.
+
+**Texts by others.** We transcribe or translate other people's texts only where the rights holders, or the institution
+that holds the texts, have made them publicly available for study. Examples are Daniel Quillen's notebooks, which the
+Clay Mathematics Institute has digitized and made available to the mathematical community (https://www.claymath.org/online-resources/quillen-notebooks/), and the Séminaire
+Bourbaki exposés and Bourbaki drafts that Grothendieck reused or kept among his own notes, which the University
+publishes as part of his papers. This is our good-faith reading, not a claim of rights. If you hold rights in any of
+this and object, please open a GitHub issue and we will take it down.
+
 ---
 
 [Sponsor this work](https://github.com/sponsors/KokunoYumeto)
