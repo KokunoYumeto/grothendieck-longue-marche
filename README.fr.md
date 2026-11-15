@@ -120,6 +120,8 @@ et vous opposez à sa publication ici, ouvrez une issue GitHub et nous la retire
 de 2084. L'Université de Montpellier publie les scans de ses papiers mathématiques (https://grothendieck.umontpellier.fr/archives-grothendieck/) avec l'accord de ses
 ayants droit. Nous ne détenons aucune licence de ses ayants droit et ne revendiquons aucun droit sur ses textes.
 
+**La déclaration de Grothendieck du 3 janvier 2010.** Il y déclarait n'avoir pas l'intention de publier ou de republier ses textes, ni leurs traductions, et tenait pour illicite à ses yeux toute édition faite sans son accord par le passé, ou à l'avenir de son vivant. Depuis sa mort en 2014, la décision appartient à ses ayants droit, qui ont accepté la publication en ligne de ses papiers mathématiques par l'Université de Montpellier. C'est sur cette base que nous publions.
+
 **Éditions et transcriptions antérieures.** D'autres ont édité ou transcrit avant nous des parties de ces papiers :
 - *Les Dérivateurs* : l'édition électronique de M. Künzer, J. Malgoire et G. Maltsiniotis (https://webusers.imj-prg.fr/~georges.maltsiniotis/groth/Derivateurs.html) ;
 - *La Longue Marche à travers la théorie de Galois* : le tome 1, édité par J. Malgoire (Université Montpellier II,

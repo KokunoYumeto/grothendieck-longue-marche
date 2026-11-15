@@ -158,6 +158,8 @@ down.
 of Montpellier publishes the scans of his mathematical papers (https://grothendieck.umontpellier.fr/archives-grothendieck/) with his heirs' agreement. We hold no licence
 from his heirs and claim no rights in his texts.
 
+**Grothendieck's declaration of 3 January 2010.** He declared that he did not intend to publish or republish any of his texts, or translations of them, and that any edition made without his agreement in the past, or in the future during his lifetime, was illicit in his eyes. Since his death in 2014 the decision lies with his heirs, who have agreed to the University of Montpellier's online publication of his mathematical papers. We publish on that basis.
+
 **Earlier editions and transcriptions.** Others have edited or transcribed parts of these papers before us:
 - *Les Dérivateurs*: the electronic edition by M. Künzer, J. Malgoire and G. Maltsiniotis (https://webusers.imj-prg.fr/~georges.maltsiniotis/groth/Derivateurs.html);
 - *La Longue Marche à travers la théorie de Galois*: tome 1, edited by J. Malgoire (Université Montpellier II, 1995),
