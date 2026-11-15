@@ -1,0 +1,40 @@
+\begin{result}{D.7}{Refuted; exact replacement proved}{The corrected Lead 4 also fails, with an explicit retraction}
+For every $g\geq1$, $n\geq2$, put $d=3g-3+n$ and $h=2g-3+n$. Then $P_{d-2}$ is exactly $(h-2)$-connected: its first possible nonzero reduced homology is in degree $h-1$, and that group contains a direct summand
+\[
+ \widetilde H_{h-1}(\mathcal C_{g,n-1};\mathbb Z)
+       \cong\bigoplus_{\mathbb N}\mathbb Z.
+\]
+In particular, at $(g,n,k)=(2,2,3)$ one has $d=5$, $h=3$, and $P_3$ is simply connected with nonzero second homology. This refutes the corrected proposed $(\min(k,h)-1)$ bound. More generally the same counterexample family refutes it for every $g\geq2,n\geq2$ at $k=d-2$. D.5 is the uniform all-genus bound proved here.
+\end{result}
+\begin{proof}
+Label the punctures $p_1,\ldots,p_n$ and forget $p_n$. An essential curve becomes inessential or peripheral precisely when it bounds a disk containing $p_n$ and exactly one other puncture. No two distinct such curves can be disjoint. Indeed, their disks both contain $p_n$; disjoint boundary curves force the disks to be nested. If the other puncture is different, the outer disk contains at least three punctures and is not of the required kind. If it is the same, the annulus between the two boundaries contains no puncture, so the two curves are isotopic. Both alternatives exclude two distinct compatible vertices of this kind.
+
+Every element $\sigma$ of $P_{d-2}$ has at least two curves. Delete any curve just described, fill in $p_n$, and identify any remaining curves which become isotopic. At least one essential curve remains, by the preceding paragraph. This defines a map
+\[
+ r:P_{d-2}(S_{g,n})\longrightarrow
+       \operatorname{Face}^{+}(\mathcal C_{g,n-1}).
+\]
+On a curve which survives it is the actual filling map on its isotopy class, and on a killed curve it is deletion. Images of nested multicurves are nested even when duplicates merge, so $r$ is an order map and induces a continuous map on their order-complex realizations.
+
+Fix a curve $b$ bounding a disk containing exactly $p_1,p_n$, and let $Y$ be its complementary component. Regard the boundary of $Y$ as a puncture; $Y$ has type $(g,n-1)$. Gluing back the disk after filling $p_n$ adds an annular collar terminating at the puncture $p_1$. Its inclusion induces an isomorphism
+\[
+ J:\mathcal C(Y)\xrightarrow{\sim}\mathcal C_{g,n-1},
+\]
+whose inverse restricts a curve after moving it out of that annular collar. This specifies the identification used below. For each nonempty multicurve $\tau$ in $Y$ set
+\[
+ i(\tau)=\tau\cup\{b\}.
+\]
+All its curves are essential and pairwise disjoint on $S_{g,n}$, and it has at least two members, so $i$ is an order map into $P_{d-2}$. The only deleted member of $i(\tau)$ is $b$; filling does not identify distinct curves of $Y$, by the collar identification. Consequently
+\[
+ r\circ i=J
+\]
+as order maps. Composing $r$ with $J^{-1}$ gives a genuine retraction of realizations onto the barycentric curve complex of $Y$. It follows on integral homology that $i_*$ is a split injection. Harer's sphere dimension for $Y$ is
+$2g-3+(n-1)=h-1$, proving the stated nonzero direct summand.
+
+It remains to prove the lower connectivity, so that the result is exact. Pass from the full nonempty barycentric curve complex to $P_{d-2}$ by deleting just the vertices corresponding to one-curve multicurves. The cut surface of a single essential curve has at most one rational component. By D.5 its upper link is a wedge of spheres of dimension either $h$ or $h-1$. Its connectivity is therefore at least $h-2$. The rank-deletion argument, starting with the $(h-1)$-connected full curve complex, proves that the remaining space is $(h-2)$-connected. At $h=1$ the assertion is simply nonemptiness and follows directly from the section $i$. Thus $P_{d-2}$ has exactly that connectivity.
+
+Finally, $d-2-h=g-2$. For $g\geq2$ the proposed lower bound would be $h-1$, one higher than the exact value just proved. At $(2,2)$ the section embeds $\mathcal C_{2,1}\simeq\bigvee_{\mathbb N}S^2$ as a retract of $P_3$, giving the first displayed counterexample with all maps specified.
+\end{proof}
+
+The finite graph-type calculation in \path{code/d_rank_quotients.py} was also run. In particular its $(2,2),k=3$ quotient has zero reduced mod-two homology, while the actual complex just proved has nonzero integral second homology. The explicit quotient therefore does not detect this class. This is a verified instance of why the finite type-poset computation alone cannot settle the rank-selected question.
+

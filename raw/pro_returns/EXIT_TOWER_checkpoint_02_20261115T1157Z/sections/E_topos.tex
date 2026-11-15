@@ -1,0 +1,303 @@
+\subsection{Automorphisms of the geometric modular topos}
+\label{sec:modular-topos}
+
+We make the comparison maps explicit because the unringed topos and the
+algebraic moduli object carry different specified data.  For
+$k=\overline{\Q}$ and the scheme
+$U=\mathcal M_{0,4,k}=\mathbf P^1_k-\{0,1,\infty\}$, there are maps
+\[
+ \Aut_k(U)\longrightarrow\Aut(U_{\mathrm{et}})
+       \longrightarrow\Out(\pi_1^{\mathrm{et}}U).
+ \tag{E.T1}
+\]
+The first forgets the structure sheaf and the specified action of $k$;
+the second restricts to finite locally constant sheaves.  Automorphisms
+of a topos are taken up to natural isomorphism.  The statement below
+computes the middle group using all finite puncture groups, and the
+following statement exhibits an infinite subgroup of the second
+map's kernel.  This supplies actual comparison data for both meanings
+of the manuscript's proposed equality.
+
+\begin{result}{E.T1}{Proved}{An explicit group for the four-point unringed topos}
+Choose a geometric generic point of $\mathbf P^1_k$.  For each finite
+set $B\subset\mathbf P^1(k)$ of size at least three let
+$F_B=\pi_1^{\mathrm{et}}(\mathbf P^1_k-B)$, with the filling maps
+$F_{B'}\twoheadrightarrow F_B$ for $B\subset B'$.  Thus $F_B$ is free
+profinite of rank $|B|-1$, with its specified peripheral procyclic
+subgroups.  Put
+\[
+ G=\varprojlim_B F_B.
+\]
+For each $x\in U(k)$ let $[I_x]$ be the compatible conjugacy class of
+inertia above $x$, a copy of $\widehat\Z(1)$ in $G$.  Then generic
+restriction gives an isomorphism
+\[
+ \Aut(U_{\mathrm{et}})\ \xrightarrow{\ \sim\ }\
+ \bigl\{[\alpha]\in\Out_{\mathrm{cont}}(G):
+   \alpha\text{ permutes }\{[I_x]:x\in U(k)\}\bigr\}.
+ \tag{E.T2}
+\]
+The group on the right is specified by the inverse system of free
+profinite groups and filling maps just given.  Every automorphism in
+it has a unique induced permutation of $U(k)$.  Moreover
+$N_G(I_x)=I_x$, and generic restriction has trivial kernel.
+\end{result}
+
+\begin{proof}
+Let $K=k(t)$.  Every finite separable extension of $K$ has a finite
+branch set on the smooth projective curve $\mathbf P^1_k$.
+Normalization therefore identifies
+$G=\Gal(K^{\mathrm{sep}}/K)$ with the displayed inverse limit.
+The Riemann existence comparison identifies each $F_B$ with the
+completion of the punctured-sphere group
+\[
+ \langle c_b\ (b\in B)\mid\prod_{b\in B}c_b=1\rangle,
+\]
+where the order and paths defining this presentation are chosen for
+each $B$ and the filling maps are the actual maps of punctured curves.
+No choice of independent free bases is used to change those maps.
+The comparison is \cite[Theorem 21.3]{Milne2013}; its proof and the
+characteristic-zero base-extension statement were opened.
+For base extension we also checked the complete curve argument of
+\cite[Proposition 2.10, with Lemmas 2.3, 2.6 and 2.9]{Landesman2024}.
+
+Fix a prolongation of the valuation at $x$.  Its decomposition group
+equals its inertia group because the residue field $k$ is algebraically
+closed.  Characteristic zero gives
+$I_x\simeq\widehat\Z(1)$.  Its image in every $F_B$ with $x\in B$
+is the full peripheral group, and the map on this group is an
+isomorphism.  Such finite sets, with at least three elements, are
+cofinal.  A peripheral generator is primitive in $F_B$.  Its
+centralizer is its own procyclic group by
+\cite[Corollary 2.3]{BuxErshovRapinchuk2011}.  An element normalizing
+that group acts on its generator by a unit power; abelianization in
+$\widehat\Z^{|B|-1}$ makes this power equal to one.  Its normalizer
+is therefore the same procyclic group.  An element of $N_G(I_x)$
+lies in its image in every such quotient.  The image in one fixed
+quotient determines its unique exponent in $I_x$; subtract that
+element of $I_x$ and use all the quotients to obtain the identity.
+This proves $N_G(I_x)=I_x$.  For $x\ne y$ a quotient with
+$x,y\in B$ and $|B|\geq3$ distinguishes their peripheral subgroups
+by the primitive lines in abelianization.  Thus $[I_x]\ne[I_y]$.
+
+Here is the finite-sheaf reconstruction that proves (E.T2).  Choose
+the prolongations once and use them for all the following stalks.
+A finite constructible sheaf is the following data:
+\[
+ \left(E,\ (A_x,\ u_x:A_x\longrightarrow E^{I_x})_{x\in U(k)}\right).
+ \tag{E.T3}
+\]
+Here $E$ is a finite continuous $G$-set, each $A_x$ is a finite set,
+and outside a finite set the inertia action on $E$ is trivial and
+$u_x$ is an isomorphism.  Morphisms are an equivariant map of the
+generic sets and maps of all the $A_x$ commuting with the $u_x$.
+To verify this description, remove a finite set containing the
+ramification of $E$ and the exceptional $u_x$.  On its complement
+$E$ gives a finite locally constant sheaf.  At a removed point $x$
+the stalk of its direct image is $E^{I_x}$: the punctured strict
+henselization has fundamental group $I_x$.  Gluing a closed stalk
+$A_x$ is exactly the map $u_x$.  More explicitly, for the open and
+closed inclusions $j$ and $i$ the glued sheaf is the fibre product
+\[
+             j_*E\times_{i_*i^*j_*E}i_*A.
+\]
+This formula verifies both inverse constructions, including
+morphisms.  Enlarging the finite exceptional set gives the same
+sheaf, because the added $u_x$ is an isomorphism.
+
+The coherent objects of $U_{\mathrm{et}}$ are precisely these finite
+constructible sheaves.  This is the precise coherent-topos statement
+in \cite[Example A.6 and Corollary A.9]{CarlsonHaineWolf2024}; we
+also use its site comparison in Theorem A.8.  The quasicompact
+separated etale objects give generators among them.  Consequently
+an equivalence on these coherent objects preserving finite limits,
+finite coproducts and covers extends uniquely to a topos
+equivalence.  These operations in (E.T3) can equivalently be
+checked by the preceding gluing equivalence.
+
+A topos equivalence permutes its subterminal objects, hence the
+Zariski opens.  The unique generic point of their sober space is
+preserved.  Localizing along all its open neighborhoods reconstructs
+$\operatorname{Spec}(K)_{\mathrm{et}}$, the topos of continuous
+$G$-sets.  The restricted equivalence gives $[\alpha]\in\Out(G)$.
+The closed complement of the open $U-\{x\}$ reconstructs the closed
+point topos, and its gluing functor on finite generic objects is
+$E\mapsto E^{I_x}$.  The latter functor is represented by the
+profinite $G$-set $G/I_x$.  The pro-Yoneda correspondence shows that
+its image under $\alpha$ is the functor for a point $y$ exactly when
+$\alpha(I_x)$ is conjugate to $I_y$.  The distinctness proved above
+makes $y$ unique.  This proves that generic restriction lands in
+the right side of (E.T2).
+
+Conversely, let $[\alpha]$ belong to the explicitly displayed group,
+write its point permutation as $s$, and choose $c_x\in G$ with
+$\alpha(I_x)=c_xI_{s(x)}c_x^{-1}$.  On (E.T3) define
+\[
+ E\longmapsto\alpha^*E,\qquad
+ A_x\longmapsto A_{s(x)},\qquad
+ u_x\longmapsto c_xu_{s(x)}.
+ \tag{E.T4}
+\]
+The fixed-point target of the last map is
+$E^{\alpha(I_x)}=(\alpha^*E)^{I_x}$.  The normalizer calculation
+shows that a different $c_x$ acts identically on the fixed points.
+Changing $\alpha$ by an inner automorphism gives a natural
+isomorphism.  Finite exceptional sets remain finite; the inverse
+construction uses $\alpha^{-1}$.  Thus (E.T4) extends to the required
+topos equivalence.  Finally an equivalence restricting to the
+identity on the generic topos must fix every point and has, at $x$,
+only the possible ambiguity $N_G(I_x)/I_x=1$.  Applying (E.T3)
+shows that it is naturally the identity on every coherent object
+and then on the whole topos.  This proves injectivity and completes
+both directions of (E.T2).
+\end{proof}
+
+\begin{result}{E.T2}{Refuted; replacement proved}{Relabelling and a visible infinite kernel}
+For the unringed small etale topos of
+$\mathcal M_{0,4,\overline\Q}$ the equality
+$G_{0,4}=\operatorname{Im}\mathfrak S_4$ proposed on cote 143,
+scan 31, fails.  The two maps in (E.T1) have the following
+explicit properties:
+\[
+ \Aut_k(U)\simeq S_3,\qquad
+ \mathfrak S_4\twoheadrightarrow S_3
+ \text{ has kernel }V_4,
+\]
+and the second map has a subgroup isomorphic to $\Z$ in its kernel.
+That subgroup also acts trivially on the completed exit category
+for $\mathbf P^1$ with the three boundary points retained.
+Its nonidentity elements move subterminal opens of
+$U_{\mathrm{et}}$.  They are outside the image of all semilinear
+algebraic automorphisms preserving $\{0,1,\infty\}$.
+\end{result}
+
+\begin{proof}
+In the complex coordinate $z=x+iy$, take the diamond with center
+$c=(2,2)$ and vertices
+\[
+ (3,2),\quad(2,3),\quad(1,2),\quad(2,1).
+\]
+Triangulate it by joining $c$ to these vertices.  Fix its boundary,
+send $c$ to $d=(5/2,2)$, and extend affinely on the four triangles
+and by the identity outside the diamond.  Call the resulting map
+$h$.  Its four Jacobian determinants are $1/2,3/2,3/2,1/2$,
+in cyclic order.  The four images are the corresponding triangles
+from the interior point $d$, so they cover the diamond with
+disjoint interiors.  This proves directly that $h$ is a
+homeomorphism.  Its matrices and their inverses have rational
+coefficients.  Hence it maps $\mathbf P^1(\overline\Q)$ bijectively
+to itself: the real and imaginary parts of an algebraic number
+are algebraic, and both affine directions preserve this property.
+The exact matrices, vertex equations, positive determinants and
+twenty-one iterates are checked in \path{code/e_topos_pl.py} and
+its saved output.
+
+For completeness, the algebraization of the induced site functor
+uses more than the comparison for the three fixed punctures.
+For every finite $B\subset\mathbf P^1(k)$, the homeomorphism gives
+an equivalence of finite covers of
+$\mathbf P^1(\C)-B$ and
+$\mathbf P^1(\C)-h^{-1}B$.  Riemann existence and the
+algebraically closed base-extension equivalence descend this to
+finite etale covers over $k$.  These equivalences commute with
+restriction as $B$ grows.  An arbitrary quasicompact separated
+etale object over $U$ is an open subcurve of the normalization
+of $\mathbf P^1$ in its finite generic algebra, component by
+component.  Its finite branch set and the images of all omitted
+points lie in $\mathbf P^1(k)$.  Pull back the finite branched
+cover topologically, algebraize on the branch complement, and
+normalize to restore the missing fibres.  Keep exactly the
+specified unramified sheets and omit exactly the transported
+points.  The resulting curve is etale over $U$.
+The uniqueness of normalization and the fully faithful finite
+cover comparison give the maps on morphisms and their
+composition.  Joint surjectivity of coverings is preserved on
+the geometric fibres.  Applying $h^{-1}$ gives an inverse site
+equivalence.  This constructs the asserted automorphism of the
+whole etale topos; equivalently it is (E.T4) for the action on
+all puncture groups.
+
+Move $c$ along $(2+t/2,2)$ for $0\leq t\leq1$ in the same four
+triangles.  The point remains interior, so this is an isotopy
+from the identity to $h$, fixed on neighborhoods of $0,1,\infty$.
+The induced action on the punctured-sphere fundamental group is
+therefore inner, and its outer class after completion is the
+identity.  The isotopy is also stratified for these three points,
+so it gives a natural isomorphism on the completed exit category.
+On the horizontal segment from $c$ to $(3,2)$ the coordinate
+map is $x\mapsto x/2+3/2$.  Thus
+\[
+             h^m(2+2i)=3-2^{-m}+2i\qquad(m\geq0).
+\]
+These points are distinct.  Pullback sends the subterminal open
+$U-\{a\}$ to $U-\{h^{-1}a\}$; the powers of $h$ consequently
+give distinct topos automorphisms and an injected copy of $\Z$.
+
+Every $k$-automorphism of $U$ extends to its unique smooth
+projective completion $\mathbf P^1_k$, and the extension
+permutes its three missing points.  Conversely every such
+M\"obius transformation restricts to $U$.  There is exactly one
+for each permutation of the three points, proving $\Aut_k(U)=S_3$.
+The six cross-ratio transforms are
+$t,1-t,1/t,1/(1-t),(t-1)/t,t/(t-1)$; the four permutations in
+the Klein group give the identity transform.  This proves the
+stated relabelling map and its kernel.
+
+Finally $h$ fixes $0,1,\infty$ and $i$ but moves $2+2i$.
+A semilinear fractional-linear transformation fixing the first
+three points has fractional-linear part the identity.  Its
+field automorphism fixes $i$ and hence fixes $2+2i$, an immediate
+contradiction.  The same argument applies to every nonzero power,
+using the strictly monotone orbit and its inverse.  It proves
+the asserted failure of surjectivity of the first comparison
+map without discarding the algebraic structure silently.
+\end{proof}
+
+\begin{result}{E.T3}{Open}{The remaining interpretation and all-type determination}
+Cote 143, scans 29--31, defines a modular topos over $\Q$ and
+then asks for the automorphisms of its geometric base change.
+For a small unringed etale topos the maps (E.T1) are literal
+forgetful and restriction maps.  Its structure morphism to
+$\operatorname{Spec}(\overline\Q)_{\mathrm{et}}\simeq\mathbf{Set}$
+does not retain the structure sheaf or a specified
+$\overline\Q$-algebra action.  For the algebraic moduli stack,
+or its associated locally ringed topos with this algebra
+action retained, those data are part of an automorphism.
+At $(0,3)$ both groups of automorphism classes are trivial;
+at $(0,4)$ (E.T2) and $S_3$ respectively give the precise groups
+for these two constructions.  E.T4 below computes the algebraic
+stack automorphism group in every stable type, E.T5 treats
+the three unstable genus-zero types, and E.T6 treats unmarked
+genus one.  E.T7 below computes the unringed topos group
+at $(1,1)$.  The full \emph{unringed} topos groups in the
+remaining stable types and a determination of which specified
+structure the manuscript retains remain unsettled here.
+\end{result}
+
+\noindent\emph{Attack and exact remaining obstruction.}
+The first construction was attacked by restriction to finite
+locally constant sheaves.  E.T2 shows explicitly why that loses
+information: its kernel already contains the displayed infinite
+cyclic subgroup.  Keeping all closed-point inertia restores
+injectivity at the generic point and proves E.T1.  In higher
+dimension, there are positive-dimensional specializations and
+their compatibility maps, so the generic group and the set of
+closed-point inertia alone have not been shown to reconstruct
+the topos.  The smallest higher-dimensional scheme case is
+$\mathcal M_{0,5,\overline\Q}$.  The next concrete step is to
+compute all specialization data for its two successive
+punctured-curve fibrations and determine which automorphisms
+of their generic groups preserve those data.  The
+one-dimensional stack case $\mathcal M_{1,1}$ additionally
+retains its generic order-two isotropy and the special
+isotropy above $j=0,1728$; E.T7 computes these data and their
+gluing, rather than erasing them in the scheme calculation.
+The original scan images for cote 143 were not among the
+supplied images.  All five supplied page transcriptions were
+read, and the uncertainty about the retained structure is
+preserved in the reading register.
+
+The unstable unmarked genus-one descent problem originally
+left here was subsequently computed in E.T6.  Its explicit
+Jacobian comparison, cocycle, and identifications by base
+$2$-automorphisms supersede that part of this open statement.

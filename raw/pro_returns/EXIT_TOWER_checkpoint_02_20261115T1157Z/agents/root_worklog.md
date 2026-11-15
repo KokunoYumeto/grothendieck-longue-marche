@@ -1,0 +1,33 @@
+# Root research record
+
+- 2026-11-15 09:57 UTC: intake of prompt and archive.
+- 10:01 UTC: assigned B, D and E in parallel; root owns A/C and integration.
+- 10:03 UTC: read RESIDUE H.3 normalization proof; checking source-quotient conventions and residual stabilizers independently.
+- Primary reference located: Mikala Ørsnes Jansen, arXiv:2308.09551; source and exact theorem check in progress.
+
+## 10:30–10:50 UTC review and integration
+
+- Reviewed E.8–E.10 extension pullback, mixed-braid quotient, deck descent, and the exact Hoshi–Mochizuki 6.13(ii) centralizer statement. Requested explicit deck descent computation; supplied by E.
+- Read the entire D.8–D.10 projective proof and requested three local clarifications: Cartier pullback supports on a general slice, simultaneous valuation ideals at special triple points, and relative toroidal weak factorization. D supplied them.
+- Added A.13, the genus-three two-component fixed-flag counterexample and ran code/a_flag_components.py. Added A.14 (ordinary criterion derivation) and A.15 (exact domain of normalization/contraction interchange).
+- Opened and read Hatcher Appendix B Theorem B.1 and complete proof; replaced an unverified Earle–Eells citation with this checked proof. Added C.9 nonorientable/real quotient comparison and retained the exceptional groups explicitly.
+- Inspected original cote150 scans39–40 and transcriptions39–42. The variable-extension family needs fixed base Sigma_d; recorded both subscript readings without finalizing handwriting.
+- Built exact statement/readings/bibliography registers and a full coverage table. Corrected metadata-key aliases so every reading row has its complete mathematical assessment.
+- The local TeX installation had executables but no generated formats/font maps. A system apt install could not acquire its lock under the existing user; no escalation was requested. Downloaded and extracted unmodified Debian texlive-luatex 2024.20250309-1 and fonts-texgyre 20180621-6 into an isolated runtime, generated lualatex.fmt and a font map from installed AMS/LM maps. The second compilation produced a61-page LuaLaTeX PDF.
+- First complete text pass found3 overfull boxes >2pt (21.02907,10.02666,66.51782); split the lattice display, displayed the profinite generating tuple separately, and made the code filename breakable. A later build caught an in-progress B display bracket typo, corrected by B before the next pass.
+- Current harder E.4 issue is the node-branch index-two character in A3/Z and the associated Kummer-type conjugacy equation; not treated as automatically solved by E.9.
+
+First hourly checkpoint saved successfully: EXIT_TOWER_checkpoint_01.zip, 326 files, 145671540 bytes. Library identity in checkpoint_receipt_01.json. PDF audited 0 overfull/undefined/missing glyphs, 79 pages. Working source additions after compilation explicitly disclosed in checkpoint report.
+
+11:08 UTC: E.T1–E.T3 added. E.T1 reconstructs every finite constructible sheaf on M0,4 from the generic finite G-set and all point-inertia fixed-point maps and proves the resulting full unringed topos automorphism formula. E.T2 constructs an explicit rational PL diamond map, proves full étale-site algebraization and an infinite kernel on finite local systems, and computes the structured scheme comparison S4→S3. code/e_topos_pl.py was executed with exact Fractions; all four determinants, inverses, fixed boundary vertices and 21 orbit values pass. E.T3 retains the unresolved higher-dimensional and stack cases and the manuscript structure ambiguity. Milne, Landesman and Carlson–Haine–Wolf primary statements and indicated proofs were opened.
+
+11:15 UTC: Root independently reread D.8–D.10 and D.16–D.21. Checked normalized graph finiteness on projection fibres, the Cartier support argument on the transverse surface tree, monomial Rees inequalities at triple crossings, all-point fibres of the graph homotopy-colimit map, both reconstruction filtrations, and the low-genus completion transfer. No further defect found in those exact assertions. D.7 now has the puncture-forgetting retraction counterexample (2,2,3), superseding the unresolved genus-three route in checkpoint01.
+
+### 11:26 UTC — algebraic automorphism computation
+E.T4 computes every stable algebraic stack automorphism group, with actual relabelling maps and the two gerbe-twist exceptions. Independent review by the D contributor confirmed the gerbe descent and supplied the explicit inverse family for M1,2 ≅ [M0,5/S4], now inserted. E.T5 computes the three unstable genus-zero classifying stacks. E.T3 retains the exact unresolved scope of plain unringed topoi and unstable unmarked genus one. Source proof locations and contributor audit are retained.
+
+### Approximately 11:35 UTC — the remaining low-type automorphisms
+E.T6 computes algebraic Aut M1,0=C2 using universal elliptic torsors. Its full descent and finite cohomology calculation were independently checked by D; the finite program was run. E.T7 computes the full unringed etale topos group for M1,1 from explicit local kernels in C2×Gal(Qbar(t)), retaining generic and special isotropy. The algebraic ghost is the square class t−1; the second factor includes the already certified PL infinite cyclic kernel. The earlier unresolved M1,0 paragraph in E.T3 is explicitly superseded.
+
+### 11:45–11:51 UTC — higher-dimensional topos reconstruction attack
+Downloaded and opened Pop, Reconstruction of Function Fields from their pro-l Abelian Divisorial Inertia (arXiv1810.04768), and Silberstein, Anabelian Intersection Theory I (arXiv1211.4608v2), with complete local PDFs and extracted text. Pop Theorems1.1–1.2 give the stated abelian-by-central reconstruction for transcendence degree at least3 over Qbar; the introduction also mentions surfaces with finite projective étale fundamental group, but that extension is not yet independently derived here. Silberstein claims the remaining full-Galois surface reconstruction. Its Proposition20 contains a false universal injection of the punctured normal-disc fundamental group: for a projective line in P2 the normal circle bundle is S3, and the meridian map kills Z. Its p24 claim that every very ample line bundle is normally generated also requires correction. These are defects in intermediate assertions, not counterexamples to its final birational theorem. We have not used that theorem in a proved result. The current task is to inspect whether the needed reconstruction survives these defects and whether the induced generic action determines the entire higher-dimensional étale topos.

@@ -1,0 +1,284 @@
+\section{The MDT structure and its categorical realization}
+
+\subsection{Stable graphs, intervals, and deployed incidences}
+
+\begin{result}{A.1}{Proved}{Boolean intervals: the complete list of stable types}
+Let $\mathcal G_{g,n}$ be the poset of isomorphism classes of connected stable weighted graphs with $n$ labelled legs, ordered by $H\leq G$ when $G$ is a contraction of $H$. Every interval is Boolean precisely for the stable types
+\[
+ (g,n)=(0,n),\quad n\geq3,\qquad\text{and}\qquad(g,n)=(1,1).
+\]
+For $g=0$ the order-reversing map from a graph to its set of internal-edge splits identifies this poset with the face poset of the complex of compatible stable splits, including the empty face.
+This decides Part A(a)(i),(ii) and the first determination requested there; it addresses cote 150, scans 28--30.
+\end{result}
+\begin{proof}
+A genus-zero stable graph is a tree. Deleting an edge gives a bipartition $A\mid A^c$ of the labelled legs with both parts of size at least two. Different edges give different splits: the path between two edges would otherwise have no leg or branching edge, leaving a valence-two rational vertex. A family of splits is realized by a tree precisely when every two splits are compatible, meaning that one of the four intersections of their two parts is empty. To reconstruct the tree, fix a leg as root, orient each split away from it, and take the inclusion hierarchy of the resulting subsets. Attach each leg to the smallest containing subset and add an edge for each subset in the family. Compatibility makes the hierarchy nested or disjoint. Suppressing the root convention recovers the original tree. Thus contraction deletes a specified subset of splits and every interval is the Boolean interval of subsets between two fixed families.
+
+For $(1,1)$ there are exactly two graphs: a smooth genus-one vertex and a rational vertex with one loop and the leg. Their poset has two elements.
+
+For $(1,n)$ with $n\geq2$, take two rational vertices joined by two parallel edges, distributing the legs so that each vertex carries at least one leg. Contracting either edge gives the same one-loop rational graph with all legs; contracting both gives the smooth genus-one graph. This rank-two interval has three elements. For $g\geq2$, take one vertex of weight $g-2$, two loops, and all $n$ legs. Stability is $2g-2+n>0$. The two one-edge contractions are isomorphic, so this interval also has three elements. A Boolean interval of rank two has four elements. These constructions cover every remaining stable type.
+\end{proof}
+
+
+
+
+\begin{result}{A.2}{Proved}{Infima of pairs with a common lower bound}
+Every pair in $\mathcal G_{g,n}$ having a common lower bound has an infimum precisely for
+\[
+ g=0,\ n\geq3;\qquad g=1,\ 1\leq n\leq3;\qquad(g,n)=(2,0).
+\]
+In particular the two divisors $\Delta_{\mathrm{irr}}$ and $\Delta_1$ in type $(2,1)$ have two distinct maximal common lower bounds. The infimum assertion and the Boolean assertion therefore have different lists, related by the explicit graph constructions below.
+\end{result}
+\begin{proof}
+In genus zero the infimum is the tree whose split family is the union of the two split families. A common lower bound makes this union compatible; the reconstruction in A.1 proves both existence and the universal property.
+
+The remaining positive cases are finite and we give an exhaustive certificate, not a sampling argument. Write a graph as $(\mathbf g,\mathbf l,\mathbf e)$: the vertex weights, the vertex supporting each labelled leg, and the unordered endpoint pairs of all edges, with repetitions and loops allowed. Stability gives
+\[
+ \sum_v(2g_v-2+\operatorname{val}(v))=2g-2+n,
+ \qquad |V|\leq 2g-2+n,\qquad |E|\leq3g-3+n.
+\]
+The program \path{code/a_graphs.py} loops over every vertex number in this bound, every multiset of endpoint pairs, every weight composition with $\sum g_v=g-|E|+|V|-1$, and every placement of the labelled legs. It rejects exactly disconnected or unstable graphs and identifies graphs by all vertex permutations. These are precisely the isomorphisms of weighted multigraphs with labelled legs: parallel-edge permutations carry no additional data for isomorphism classes. Contraction uses connected components of the contracted subgraph and adds their cycle ranks to the weights. Hence it lists the complete order relation. For each pair it enumerates its common lower bounds and tests whether their maximal elements form a singleton. The resulting complete counts are
+\[
+\begin{array}{c|rrrr}
+ (g,n)&(1,1)&(1,2)&(1,3)&(2,0)\\\hline
+ \#\mathcal G_{g,n}&2&5&23&7\\
+ \text{pairs with common lower bound but no infimum}&0&0&0&0.
+\end{array}
+\]
+Every graph and every contraction in these four certificates is included in the corresponding \path{code/a_graphs_g_n.json}. Exhaustiveness follows from the displayed bounds and the isomorphism test, so the finite check proves these four cases.
+
+Here are uniform negative cases. For $g\geq2$, let $D$ have a separating edge between weights $1$ and $g-1$, with all legs on the first vertex, and let $I$ have one loop on weight $g-1$. One common refinement has weights $0,g-1$, a loop on the first vertex and a bridge, with all legs on the first vertex. A second has weights $1,g-2$, a loop on the second vertex and a bridge, with all legs on the first vertex. Contracting their loops gives $D$ and contracting their bridges gives $I$. They are nonisomorphic for $g\geq3$, and also for $g=2,n\geq1$, where the leg distribution distinguishes them. Each has two edges. There is no one-edge common refinement of the distinct one-edge graphs $D,I$, so both are maximal common lower bounds. In type $(2,1)$ the enumeration gives exactly these two for the divisor pair.
+
+For $g=1,n\geq4$, partition the legs into nonempty blocks $A_1,A_2,\{3\},\{4\}$, putting all additional legs in $A_1$, and write $A=A_1\sqcup A_2$. Consider the two parallel-edge graphs with vertex leg partitions $(A\sqcup\{3\})\mid\{4\}$ and $(A\sqcup\{4\})\mid\{3\}$. They have the triangular common refinement with vertex blocks $A,\{3\},\{4\}$ and also the quadrilateral whose cyclic order is $A_1,\{3\},A_2,\{4\}$. The triangle is maximal because any further contraction loses one of the required partitions. Contracting a single edge of the quadrilateral joins a block $A_i$ to one of $3,4$, making the other required partition impossible; thus the quadrilateral is maximal too. They are distinct. These cases exhaust the stable types excluded from the displayed list.
+\end{proof}
+
+\begin{result}{A.3}{Proved}{Intersection and the Boolean deployment of a fixed contraction}
+For closed strata $X_G$ one has
+\[
+ X_G\cap X_{G'}=\bigcup_{H\leq G,\ H\leq G'}X_H.
+\]
+For a specified contraction $f:G\to G/C$, its intermediate factorizations, modulo isomorphisms of the intermediate graph commuting with both arrows, form the Boolean poset of subsets of $C$. This assertion holds in every stable type, including those excluded in A.1.
+\end{result}
+\begin{proof}
+A geometric point lies in $X_G$ exactly when its dual graph contracts to $G$; the first equality follows by applying this criterion twice. For the second assertion, an intermediate factorization first contracts a subset $D\subseteq C$ and then contracts $C\setminus D$. Its intermediate graph is $G/D$. Conversely a contraction cannot restore an edge already contracted, so every factorization has this form. Two factorizations with the same $D$ have a unique isomorphism of intermediate graphs compatible with the quotient from $G$: that quotient is surjective on the vertices and surviving half-edges. Inclusion of the subsets describes refinement of factorizations. This is the precise deployment of cote 150, scan 28, axiom c); passing to graph isomorphism classes forgets the specified quotient and can identify different subsets, as in A.1.
+\end{proof}
+
+\subsection{Transporters, arrow groupoids, and the manuscript's extension}
+
+Fix a connected oriented surface $S$ of stable type $(g,n)$ and let $\Gamma=\pi_0\Diff^+(S;\{1,\ldots,n\})$, fixing the marked points individually. Let $\mathcal C(S)$ contain the isotopy classes of all essential multicurves, including the empty multicurve. Put $\Delta_\sigma=\langle T_c:c\in\sigma\rangle$.
+
+\begin{result}{A.4}{Proved}{The category with graph objects and its associative composition}
+Choose a multicurve $\sigma_G$ of each dual-graph type $G$. Define
+\[
+ \Hom_{\mathfrak M(g,n)}(G,H)
+ =\{a\in\Gamma:a\sigma_G\supseteq\sigma_H\}/\Delta_{\sigma_G},
+ \qquad [b]\circ[a]=[ba].
+\]
+This defines an EI category. Different choices of the $\sigma_G$ give equivalent categories by explicitly specified conjugation functors. The category on all multicurves with the same formula is equivalent to this finite-object skeleton.
+\end{result}
+\begin{proof}
+Conjugation sends $T_c$ to $T_{ac}$, so $a\Delta_\sigma a^{-1}=\Delta_{a\sigma}$. If $a\sigma\supseteq\tau$, then $a^{-1}\Delta_\tau a\subseteq\Delta_\sigma$. Replacing representatives $a$ by $ad$ and $b$ by $be$, for $d\in\Delta_\sigma,e\in\Delta_\tau$, changes $ba$ to
+\[
+ be ad=ba(a^{-1}ea)d,
+\]
+which has the same right $\Delta_\sigma$-coset. Group multiplication gives associativity for three arrows and, without further choices, for chains of every length. Identity elements give identity morphisms. An endomorphism satisfies $a\sigma\supseteq\sigma$; equality of cardinalities makes this equality, and $[a^{-1}]$ is its inverse.
+
+For another system $\sigma'_G$, choose $h_G\sigma_G=\sigma'_G$. The functor on arrows is $[a]\mapsto[h_Hah_G^{-1}]$. It has the inverse given by the $h_G^{-1}$. Changing $h_G$ changes this functor by the natural isomorphism whose component is the corresponding stabilizer coset. Finally every multicurve is carried by some mapping class to its representative: cut the surfaces along the curves, identify the labelled and weighted component surfaces, and glue the identifications along boundary circles. This proves essential surjectivity of the skeleton inclusion; its full faithfulness is its definition.
+\end{proof}
+
+\begin{result}{A.5}{Proved}{Pinned strata, asphericity, and injective meridian lattices}
+For a stable graph $G$ with half-edge/leg set $I_v$ at vertex $v$, simultaneous normalization gives an equivalence of analytic stacks
+\[
+ M_G\simeq\prod_{v\in V(G)}\mathcal M_{g_v,I_v}.
+\]
+The unpinned stratum is $[M_G/\Aut G]$. It is aspherical as a stack, and for a multicurve $\sigma$ with graph $G$,
+\[
+ \pi_1([M_G/\Aut G])\cong\Stab_\Gamma(\sigma)/\Delta_\sigma,
+ \qquad \Delta_\sigma\cong\Z^{\sigma}.
+\]
+In particular the meridian lattice injects in the open mapping class group. The extension of cote 147, (103), scan 80, has the asserted initial $1$ for every relative set of nodes. This proves (95), with its stated outer ambiguity.
+\end{result}
+\begin{proof}
+A pinned nodal curve is reconstructed uniquely from its smooth normalization components by identifying the two sections for each edge; normalization recovers these components and sections. These constructions commute with base change and with isomorphisms, proving the stack equivalence. Each stable component has contractible Teichm\"uller space: for $2g_v-2+|I_v|>0$, Fenchel--Nielsen coordinates on a pants decomposition give a cell of real dimension $6g_v-6+2|I_v|$, with the dimension-zero cases interpreted as points. The stack is the quotient by its labelled mapping class group, and hence has the homotopy type of that group's classifying space. A product is aspherical. Dividing by the finite graph-automorphism group still gives an aspherical stack: the homotopy quotient is a fibration over $B\Aut G$ with aspherical fibre, so its higher homotopy groups vanish by the homotopy exact sequence.
+
+Cutting the surface along $\sigma$ gives a homomorphism $\Stab(\sigma)\to\pi_1([M_G/\Aut G])$. A homeomorphism of the pinched surface lifts across the cut annuli. The difference between two lifts is an integer twist on each annulus, because the mapping class group of an annulus relative to its boundary is $\Z$. This proves surjectivity and identifies the kernel as $\Delta_\sigma$; it also proves the claimed extension onto $\Aut G$ without asserting a splitting.
+
+For injectivity of the multitwist coordinates, extend $\sigma$ to a pants decomposition. For each $c\in\sigma$, choose a dual essential curve $d_c$ in the one-holed torus or four-holed sphere adjacent to $c$, intersecting $c$ and disjoint from every other pants curve. The annular winding calculation gives
+\[
+ i(T_c^k(d_c),d_c)=|k|\,i(c,d_c)^2.
+\]
+It follows by cutting the annulus into rectangles: each of the $i(c,d_c)$ crossing arcs meets each translated crossing arc $|k|$ times, and the complementary arcs remove no bigons. Every other twist fixes $d_c$. Thus an identity multitwist has $k=0$ in every coordinate. This proves that the map $\Z^\sigma\to\Gamma$ is injective.
+
+The normal germ for a specified incidence has fibre $(\mathbb C^*)^C$, homotopy equivalent to $(S^1)^C$, over the appropriate pinned or finite-quotient stratum. Its homotopy exact sequence begins $\pi_2(\text{base})\to\Z^C\to\pi_1(\text{germ})$. The base just proved aspherical has $\pi_2=0$. Hence there is an initial $1$, exactly as the marginal argument on scan 80 says. Base points identify the displayed groups; changing paths conjugates these identifications.
+\end{proof}
+
+\begin{result}{A.6}{Proved}{The exact arrow-groupoid comparison and the pinning restriction}
+Let $\sigma\supseteq\tau$, put $S_{\sigma,\tau}=\Stab(\sigma)\cap\Stab(\tau)$, and let $a=[1]:\sigma\to\tau$ be the associated exit arrow. In the groupoid of arrows and invertible endpoint squares, its automorphism group is
+\[
+ \Aut(a)=S_{\sigma,\tau}/\Delta_\tau.
+\]
+The source and target functors induce respectively
+\[
+ S_{\sigma,\tau}/\Delta_\tau\longrightarrow
+ S_{\sigma,\tau}/\Delta_\sigma\subseteq\Stab(\sigma)/\Delta_\sigma,
+ \qquad
+ S_{\sigma,\tau}/\Delta_\tau\hookrightarrow\Stab(\tau)/\Delta_\tau.
+\]
+The first map has kernel $\Delta_\sigma/\Delta_\tau=\Z^{\sigma\setminus\tau}$. These are the maps $\varphi$ and $\gamma$ in (103) for the unpinned incidence. For a target pinned by $G'$, replace $S_{\sigma,\tau}$ everywhere by the inverse image of $\Gamma^!_{G,G'}$, equivalently by the subgroup inducing the identity on the target dual graph. Fully pinning the source imposes the additional identity action on $G$. The corresponding restrictions and inclusions give the comparison with the manuscript's differently pinned versions.
+\end{result}
+\begin{proof}
+An automorphism of $a$ is a pair $(\bar u,\bar v)$ in the source and target automorphism groups satisfying $\bar v\,[1]=[1]\,\bar u$. Choose lifts $u\in\Stab\sigma$, $v\in\Stab\tau$. Equality of the right $\Delta_\sigma$-cosets says $v=u d$ for some $d\in\Delta_\sigma$. Since $\Delta_\sigma$ fixes every submulticurve of $\sigma$, the lift $v$ belongs to both stabilizers. The map $v\mapsto(v\bmod\Delta_\sigma,v\bmod\Delta_\tau)$ is therefore surjective onto the square automorphisms and its kernel is $\Delta_\tau$. This proves all the displayed homomorphisms and their exactness.
+
+For the geometric comparison, the same cut-annulus construction as in A.5 identifies the group of a relative punctured normal germ with diffeomorphisms preserving both curve systems, modulo twists at nodes that remain pinched. Its projection forgets the annular angular coordinates and its generization smooths the specified annuli. These are exactly the quotient and inclusion above. Graph pinning is a finite covering of the corresponding stratum; pulling back this germ to that covering takes the inverse image subgroup under the graph-automorphism homomorphism. Thus the correction for $\Gamma^!$ is an explicitly described subgroup map, not an identification of differently pinned objects.
+\end{proof}
+
+\begin{result}{A.7}{Known, with reduction proved}{The MDT category, full flags, and Jansen's theorem}
+The coherent generization system of (103), with its full flags, reconstructs the category of A.4. This category is equivalent to the exit-path $\infty$-category of the stable-graph stratification of $\overline{\mathcal M}_{g,n}^{\mathrm{an}}$, and its classifying space is the homotopy type of that stack. For a flag $\sigma_0\supseteq\cdots\supseteq\sigma_r$, the automorphism group of the corresponding composable chain is
+\[
+ \left(\bigcap_{i=0}^r\Stab(\sigma_i)\right)/\Delta_{\sigma_r}.
+\]
+The two-cartesian law for composable arrow groupoids gives (105); composition is the map forgetting intermediate objects. Forgetting an intermediate graph need not be an equivalence of mixed groupoids.
+\end{result}
+\begin{proof}
+Let $\mathcal E$ denote the category on all multicurves in A.4. Its core $\mathcal E^{\simeq}$ is the disjoint union, by graph type, of the groupoids in A.5. The core of $\Fun([1],\mathcal E)$ is its arrow groupoid; A.6 identifies each incidence component and both endpoint maps with (103), with the same pinning. A composable pair is a pair of arrows together with an identification of the middle objects. Transporting across that identification gives an equivalence
+\[
+ \Fun([2],\mathcal E)^{\simeq}\simeq
+ \Fun([1],\mathcal E)^{\simeq}
+ \mathop{\times}^{h}_{\mathcal E^{\simeq}}
+ \Fun([1],\mathcal E)^{\simeq}.
+\]
+For three arrows the two parenthesizations both transport the same three endpoint identifications; on representatives both give $cba$. Thus their associators agree, and the equality for four arrows is the equality of fourfold multiplication. This proves the coherence required beyond an isolated square (105). The automorphism formula follows by the endpoint-square calculation of A.6, proceeding from the last endpoint to the first. The common lift belongs to every stabilizer and the final kernel is $\Delta_{\sigma_r}$.
+
+Conversely, take the homotopy fibre of the arrow groupoid over fixed source and target objects in the core. Its points are endpoint-framed crossing arrows, hence the transporter cosets of A.4. The full flag composition just proved descends to their multiplication. This gives the requested reconstruction from the coherent groupoid/bimodule data.
+
+We checked \citet[Construction 3.18 and Lemma 3.19]{Jansen2023}: its group, right-coset convention, and multiplication are precisely A.4. Corollary 6.6 applies to every stable labelled dual graph and identifies that category with the stack's exit category. The proof computes a colimit over the twisted-arrow category of the closure posets of the Harvey bordification; its equivalence of slices with these posets supplies exactly the full flags used here. Corollary 6.9 then identifies the groupoid completion with the underlying stack homotopy type, giving the classifying-space assertion. We use the stability condition $2g-2+n>0$ of Corollary 6.6 and the paper's setup; the reversed signs printed in the final special case of Theorem 6.7 are not used.
+
+For the last assertion, take two disjoint nonseparating curves on a genus-two surface, with rational connected complement, and the flag $\{a,b\}\supset\{a\}\supset\varnothing$. The composite-link stabilizer contains a mapping class interchanging the two handles; the flag stabilizer fixes the selected curve. Their quotient on the two-element set is the index-two inclusion $1\subset S_2$. This exhibits the exact forgetful map and its nontrivial fibre. Pinning the two edges removes this quotient and recovers the pinned extension described on scan 82.
+\end{proof}
+
+\subsection{The margin on local immersions and the second variance}
+
+\begin{result}{A.8}{Proved}{A finite criterion deciding each immersion in (98)}
+For a specified contraction $f:G\to G'$, the proper gluing map
+\[
+ [\widehat M_G/\Aut_{G'}G]\longrightarrow\widehat M_{G'}
+\]
+is a representable finite local closed immersion. For a refinement $h:H\to G'$, form the finite set
+\[
+ B_f(H,h)=\{p:H\to G:f p=h\}/\Aut_{G'}G.
+\]
+Here the graph $H$ and its pinning over $G'$ are fixed; we do not quotient this set by automorphisms of $H$. The gluing map is a closed immersion exactly when $|B_f(H,h)|\leq1$ for every refinement. This is a finite decision criterion for every $(g,n)$ and every $f$. Every such map is a closed immersion for genus zero and for $(1,1)$. In every other stable type some such map is only a local immersion, first in dimension two at $(1,2)$.
+\end{result}
+\begin{proof}
+On a deformation chart of a stable curve with graph $H$, node-smoothing parameters are independent coordinates. Choosing a preimage of the gluing map is choosing which of these nodes are the persistent nodes of the $G$-marking, with its specified marking over $G'$. The choices are exactly $B_f(H,h)$. Each choice cuts out the coordinate subspace on which those smoothing parameters vanish. The graph-automorphism quotient removes precisely the duplicate markings of that same choice. Thus, after an \`etale base change, the map is a finite disjoint union of coordinate closed immersions. It is representable because an automorphism of a pinned component family acting trivially after gluing is already trivial on its normalization. Properness follows from properness of the component moduli stacks, and the finite local description proves finiteness and unramifiedness.
+
+The local branches are globally a single closed immersion precisely when every geometric fibre has at most one point. With that property the local coordinate immersions agree on overlaps and glue to a closed immersion; without it the map cannot be a monomorphism and hence cannot be an immersion. The displayed finite set is its geometric fibre, proving the criterion. The bounds in A.2 make the refinement test finite, with half-edge markings retained in the contraction maps.
+
+In genus zero every persistent node is determined by its labelled split; A.1 makes its selection unique. Type $(1,1)$ has just its single boundary node. For $(1,n)$, $n\geq2$, the two-edge cycle of A.1 has two possible nodes to retain in the normalization of the irreducible boundary. For $g\geq2$ the two-loop graph gives the same two choices. Even when an automorphism of the curve exchanges them, the geometric fibre over a fixed target object still has two points; quotienting the target changes their permutation action, not this representable fibre. The boundary point inclusion in $\overline M_{0,4}=\mathbb P^1$ is a smallest closed-immersion example; the two-edge cycle of $(1,2)$ is the smallest failure by dimension. A.4 and A.7 retain these choices as separate incidence arrows, so the category requires no alteration in the local-immersion case.
+\end{proof}
+
+\begin{result}{A.9}{Proved}{Normalization variance and formula (146)}
+Strict normalization of a pinned stable graph induces an equivalence of its moduli stack; disjoint union induces the product equivalence (133). For a general normalization morphism $G'\to G$, the contravariant map on pinned moduli is, in the product coordinates of A.5, the projection to the selected vertex factors followed by the forgetful maps of their selected marked points. This proves (144), (146), and the reduction to (148), with natural isomorphisms commuting with relabelling.
+\end{result}
+\begin{proof}
+Cutting an edge changes its two half-edges into two labelled sections on the same normalization components. Their moduli and markings have not changed. Gluing those two sections is inverse to this strict normalization; the two composites are identified with the identity by the universal property of normalization and of the nodal gluing. For disjoint graphs the choices of their component families and all their isomorphisms are independent, giving the product stack.
+
+For a general normalization morphism, the injection of vertices selects a subset $V'\subseteq V$, and the injection of half-edge/leg labels specifies $I'_v\subseteq I_v$ on each selected component. In the resulting square the vertical maps are simultaneous normalization, the bottom map is
+\[
+ \prod_{v\in V}\mathcal M_{g_v,I_v}
+ \longrightarrow\prod_{v\in V'}\mathcal M_{g_v,I_v}
+ \longrightarrow\prod_{v\in V'}\mathcal M_{g_v,I'_v}.
+\]
+The square commutes by retaining the identical component family and the indicated sections. Its natural isomorphism is compatible with further selections because deleting two sets of sections leaves the same retained sections. Taking fundamental groupoids gives (146). Target stability is part of the definition of the normalization morphism used here; for compactified families the contraction of any unstable rational component is the stabilization considered in Part C.
+\end{proof}
+
+\begin{result}{A.10}{Proved}{The precise interchange and clutching coherence}
+For disjoint sets of nodes $C,J$, smoothing $C$ and normalizing $J$ commute through the canonical identification of their component families and remaining sections. Forgetting marked points and then stabilizing gives the commuting functor square with every generization constructed in C.1 below. Clutching pairs of labelled sections, both on distinct components and on one component, and relabelling define the modular operations on the exit categories, with their canonical associativity and equivariance isomorphisms. All coherence diagrams commute. For genus-zero boundary inclusions this recovers the replete full cosieve in entrance variance; in higher genus the clutching normalization has exactly the incidence multiplicities of A.8.
+\end{result}
+\begin{proof}
+On a nodal chart the operations on disjoint nodes use different equations $x_e y_e=t_e$. Normalization replaces the equation for $e\in J$ by its two sections, while smoothing changes $t_e$ for $e\in C$. Applying the two operations in either order yields the same equations and sections. Their comparison is the identity on each normalized component and the identity on every retained parameter, so the comparisons compose coherently. A node in $C\cap J$ would instead be both removed from the graph and smoothed; the disjoint-set square just proved specifies precisely the shared-domain interchange, rather than assigning such two incompatible local instructions to a single node.
+
+For clutching, define the operation first on topological stable nodal surfaces and their deformation maps: identify the two named smooth points, and apply each deformation on the quotient. It descends because the named points are preserved. An isotopy descends as well, so this gives a functor on the deformation categories of Jansen, Definition 3.22, and hence on their opposites by Proposition 3.23 and A.7. On several input surfaces the quotient is the disjoint union modulo the equivalence relation generated by all named pairs. Every order of clutching induces the same map from the original disjoint union; the unique comparison between the quotients is therefore canonical. All associativity and symmetry coherence diagrams have this same map on the original disjoint union and commute. These are the modular-operad identities in the categorical form with coherent natural isomorphisms. The chosen finite-object skeleton inherits them through the equivalences of A.4; no equality of arbitrary chosen representatives is asserted.
+
+In genus zero a fixed labelled split singles out its node in every refinement, and every deformation between such refinements preserves that split. Thus the induced functor is fully faithful onto the full subcategory of the closed boundary; in entrance variance that subcategory is a replete cosieve. For higher genus, different persistent-node choices can be identified by target automorphisms, as in A.8. The actual clutching functor retains the choice. This gives the precise comparison map with the full boundary subcategory and explains the additional arrows there.
+\end{proof}
+
+\subsection{Flags, raw boundary faces, and monodromy}
+
+\begin{result}{A.11}{Refuted; replacement proved}{The simultaneous raw-face assertions in Part A(e)}
+The definition of $\Sigma_{G_0\to\cdots\to G_k}$ as the corresponding face of the real oriented blow-up does not satisfy all of Part A(e)(i)--(v). With literal oriented faces, (ii) and (iv) already fail for $(0,4)$. With ordinary strata as the object spaces, a link-to-open map is not the boundary-face immersion asserted in (iii). The correct complete Segal space is
+\[
+ W_r=N\bigl(\Fun([r],\mathcal E_{g,n})^{\simeq}\bigr),
+\]
+with homotopy-cartesian concatenation maps. Its arrow components are the relative link groupoids of A.6, and its homotopy category is $\mathfrak M(g,n)$.
+\end{result}
+\begin{proof}
+At a boundary point of $\overline M_{0,4}=\mathbb P^1$, the real oriented blow-up replaces that point by a circle. If $\Sigma_G$ is this literal boundary face, then the face of the chain from that point to the open stratum is the same circle, and the source face map is its identity. Its fibre is a point, whereas (ii) requires $S^1$. The actual closed stratum has trivial fundamental group; the literal face has $\pi_1=\Z$, with blow-down inducing $\Z\to1$. Consequently the stratum restriction of the proposed realization cannot identify with the exit category in (iv). If instead $\Sigma_G$ means the actual closed stratum, the link circle does have the required fibre, but the target open stratum $\mathbb P^1\setminus\{0,1,\infty\}$ has no boundary face. A choice of radius maps the circle into a collar inside this open surface. This is the explicit link evaluation map, not the boundary-face inclusion. These maps prove the failures without identifying the two object conventions.
+
+For the replacement, a chain of composable arrows is exactly a list of arrows with matching endpoints. Matching endpoints up to isomorphism gives the homotopy fibre product of their core groupoids; transporting the arrows across the matching isomorphisms gives an equivalence to strictly matching chains. This proves the Segal maps. The groupoid of invertible arrows is equivalent to the core object groupoid by source evaluation, with identity arrows as its inverse. This proves completeness after the usual degreewise groupoid nerve fibrant replacement. The resulting mapping spaces are the discrete Hom-sets of $\mathcal E_{g,n}$, and A.7 identifies its homotopy category and geometric meaning.
+
+There is also a direct finite check on (v) as an asserted equality of these levelwise component sets with the boundary symmetric semisimplicial set. For $(0,4)$, $\pi_0W_0$ has four elements, one open and three closed graph types. The degree-zero boundary cell set has three elements, the three one-edge graphs; it excludes the open graph. Thus no degreewise identification can have the asserted form. In genus zero the sets of components of $W_\bullet$ do form the nerve of the graph poset, so a universal assertion that they never form a category is false. The boundary comparison with graph automorphisms and the explicit forgetful realization map is given in Part D.
+\end{proof}
+
+\begin{result}{A.12}{Proved}{Local triviality of the whole deployed family and its lattice monodromy}
+Over each pinned stratum, the entire normal-crossings family of faces is locally trivial as a stratified family in the analytic topology. For the unpinned stratum, the monodromy of the node set and of its integral angular lattice is
+\[
+ \pi_1([M_G/\Aut G])\longrightarrow\Aut G
+ \longrightarrow\operatorname{Perm}(E(G))
+ \longrightarrow\operatorname{GL}(\Z^{E(G)}).
+\]
+It permutes the positive Dehn-twist generators. The normal line at an edge $e=\{h,h'\}$ is $T_h\otimes T_{h'}$, with first Chern class $-\psi_h-\psi_{h'}$ on the pinned product stratum. These classes describe the angular torus extensions; local triviality does not assert a global splitting.
+\end{result}
+\begin{proof}
+Take a sufficiently small contractible analytic chart of the pinned stratum, trivialize its finitely many normal lines, and use node-smoothing coordinates $t_e$. The simultaneous polar expression $t_e=r_e\exp(i\theta_e)$ identifies all faces at once with the coordinate faces indexed by subsets of $E(G)$. Restricting, deleting, or smoothing any subset is an operation in this same product chart, so the trivialization is for the whole stratified family, not separately for individual fibres. Finite isotropy causes no loss: choose the tubular data equivariantly by averaging a metric over the finite chart stabilizer and retain its action in the quotient stack.
+
+An oriented mapping class sends a positive twist about $c$ to the positive twist about its image. On a pinned component it fixes every node label; removing the pinning permits precisely the permutation of half-edges induced by $\Aut G$. This proves the displayed monodromy. In the local equation $xy=t$, changing local coordinates on the two normalization branches multiplies the smoothing tangent by the product of their tangent changes. Thus the normal tangent line is $T_h\otimes T_{h'}$. Its Chern class is the sum of the two tangent-line classes, namely $-\psi_h-\psi_{h'}$. The unit-circle bundles of these lines, with their permutation descent, are the angular bundle and its extension in A.5--A.6. Complex conjugation reverses the angular coordinates and conjugates positive twists to their inverses; this describes the additional sign in the extended, orientation-reversing setting.
+\end{proof}
+
+\begin{result}{A.13}{Refuted; replacement proved}{A fixed unpinned flag need not give the cartesian square}
+For the unpinned incidence components, Part A(e)(i) fails even after
+replacing raw oriented faces by their correct relative link groupoids.
+At type $(3,0)$ a homotopy fibre product of two specified incidence
+components has two connected components, while a specified full flag
+selects one. The homotopy-cartesian formula holds for the disjoint union
+of all matching full flags, as in A.7. It also holds with the matching
+intermediate pinning retained.
+\end{result}
+\begin{proof}
+Let $G_0$ have vertices $u,v$ of genera $0,1$, one loop $a$ at $u$,
+one loop $b$ at $v$, and a bridge $e$ between them. It is stable of
+genus three. Let $f$ contract $e$. Its target $G_1$ has one vertex of
+genus one and two loops $a,b$. Let $g:G_1\to G_2$ contract one loop;
+$G_2$ has one vertex of genus two and one loop.
+
+Write $H=\pi_1([M_{G_1}/\Aut G_1])$. The permutation of its two
+loops gives a surjection $H\to S_2$. The source endpoint of the
+incidence component for $g$ has image $H_g=\ker(H\to S_2)$:
+it retains the chosen loop and otherwise has the full pinned
+component group and both half-edge reversals. The target endpoint
+image $H_f$ of the incidence component for $f$ lies in $H_g$.
+Indeed, an automorphism of $G_0$ preserves its vertices of unequal
+genera and hence cannot exchange $a,b$. In the normalized middle
+surface the same assertion retains the separating curve whose
+rational side carries the two half-edges of $a$.
+
+The connected components of a homotopy fibre product of connected
+groupoids over $BH$ are the double cosets $H_f\backslash H/H_g$.
+Here $H_g$ is normal of index two and $H_f\subset H_g$, so this
+set has exactly two elements. They record whether the second
+contraction smooths the loop on the rational-origin side or on the
+genus-one-origin side. They give nonisomorphic full flags because
+the weights at $u,v$ distinguish these sides. A fixed flag accounts
+for one of them and cannot be equivalent to the whole fibre product.
+The finite quotient certificate, including the two independent
+half-edge reversals and the loop transposition, is computed in
+\texttt{code/a\_flag\_components.py}.
+
+Taking both full-flag components restores the equivalence: the
+transport-of-middle-trivialization construction in A.7 sends each
+double coset to exactly its corresponding flag component and is
+fully faithful on automorphism groups. Keeping a middle pinning
+fixes one such identification and selects its component. These
+are the precise corrected versions of the square.
+\end{proof}
+
+\input{sections/A_supplement}

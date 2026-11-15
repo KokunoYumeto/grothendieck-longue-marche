@@ -1,0 +1,201 @@
+\section{Forgetting at infinity and the filling kernels}
+
+\subsection{Stabilization as a functor on the entire MDT structure}
+
+\begin{result}{C.1}{Proved}{The contact matrix and the functor of generization diagrams}
+For every stable $(g,n)$, forgetting the last marked point induces
+\[
+ Q:\mathcal E_{g,n+1}\longrightarrow\mathcal E_{g,n},
+ \qquad \sigma\longmapsto q\sigma,\qquad[a]\longmapsto[\phi(a)],
+\]
+where $q$ removes peripheral curves and identifies curves becoming isotopic, and $\phi:\Gamma_{g,n+1}\twoheadrightarrow\Gamma_{g,n}$ is the forgetful homomorphism. It acts on graph objects by stabilization, on the pinned component moduli by forgetting and stabilizing, and on the relative and full angular-link groupoids by the induced homomorphisms of stabilizers. On their meridian lattices its only nonidentity blocks are
+\[
+ \begin{aligned}
+ \Z&\longrightarrow0&&\text{(contracted rational tail)},\\
+ \Z^2&\longrightarrow\Z,\quad(u,v)\longmapsto u+v
+ &&\text{(contracted rational bridge)}.
+ \end{aligned}
+\]
+These homomorphisms commute with both arrows of (103), with every flag-composition map, and with relabelling. They give the effect at infinity proposed in the deleted section on cote 147, scan 105.
+\end{result}
+\begin{proof}
+Only the rational component carrying the forgotten point can become unstable. Before forgetting it has three special points. The two remaining special points are either one node and one retained mark, giving a tail, or two node branches, giving a bridge. Contracting it preserves the number of special points on every neighboring component, so stabilization creates no further unstable component. A zero-node component would make the target type unstable and is excluded by the stated range.
+
+On curves this deletes the tail curve, or identifies the two bridge curves. On mapping classes an oriented twist about an essential surviving curve maps to its twist. A curve bounding the forgotten point and a single retained point becomes peripheral and its twist becomes the identity. The two curves bounding the bridge annulus become the same oriented twist. This proves the displayed lattice map. The local plumbing calculation gives the same answer: at a bridge the retained smoothing parameter is $t=u\,t_1t_2$, where $u$ is a nowhere-zero analytic unit. Winding a small transverse circle around either coordinate contributes one positive winding of $t$; the unit contributes zero to these normal meridians. A contracted tail has no corresponding target node parameter.
+
+The maps satisfy $q(a\sigma)=\phi(a)q\sigma$ and $\phi(\Delta_\sigma)=\Delta_{q\sigma}$. Thus the image of an arrow representative has the required incidence, and changing it by a source twist changes its image by a target source twist. This proves that $Q$ is a functor and that it commutes with multiplication of representatives. Surjectivity of $\phi$ follows by representing any mapping class by a diffeomorphism fixing a chosen extra point, using isotopy extension along a path from its image to that point; the target $(0,3)$ case is also immediate.
+
+Restriction of $\phi$ maps $\Stab(\sigma)$ to $\Stab(q\sigma)$ and maps $\Stab(\sigma)\cap\Stab(\tau)$ into $\Stab(q\sigma)\cap\Stab(q\tau)$. It therefore induces every map on the groups in A.6. Both endpoint maps are inclusion or quotient maps of these very groups, so their squares commute. The same assertion for an arbitrary flag follows by taking all the stabilizer intersections. On the product coordinates of A.9, stable components merely lose their selected section, a tail replaces its attaching section by its retained mark, and a bridge glues its two neighboring attaching sections. These operations describe the identical geometric stabilization functor. This proves the agreement with the geometric forgetful exit functor, including its action at infinity.
+\end{proof}
+
+\begin{result}{C.2}{Proved}{Every outgoing lifting category, with its exact group presentation}
+Fix $\sigma$ upstairs and a downstairs exit arrow $\beta:q\sigma\to\eta$. The category of its outgoing lifts has contractible classifying space except when the forgotten point lies on a contracted rational bridge and $\beta$ smooths its image node. In that case it is equivalent to the one-object groupoid $B\Z$. The generator is the difference of the two bridge twists.
+\end{result}
+\begin{proof}
+Lift a representative of $\beta$ through $\phi$ and transport the targets by its inverse. This gives an equivalence of lifting categories with the case $\beta=[1]:\tau\to\eta$, where $\tau=q\sigma$ and $\eta\subseteq\tau$. This is transport by an actual mapping class, with inverse transport as its inverse functor.
+
+A lift has the form $[a]:\sigma\to\rho$ with $q\rho=\eta$ and $\phi(a)\in\Delta_\tau$. C.1 makes $\Delta_\sigma\to\Delta_\tau$ surjective. Multiplication of $a$ by a suitable source twist leaves its coset unchanged and makes $\phi(a)=1$. The vertical isomorphism represented by $a^{-1}$ then identifies the lift with $[1]:\sigma\to s$, for a subset $s\subseteq\sigma$ with $qs=\eta$. Consequently the full subcategory of these representatives is equivalent to the lifting category.
+
+Write
+\[
+ H=\{d\in\Delta_\sigma:\phi(d)\in\Delta_\eta\}.
+\]
+The exact presentation of this full subcategory is
+\[
+ \operatorname{Ob}=\{s\subseteq\sigma:qs=\eta\},\qquad
+ \Hom(s,t)=
+ \begin{cases}H/\Delta_s&s\supseteq t,\\
+ \varnothing&\text{otherwise}.
+ \end{cases}                                                   \tag{C.1}
+\]
+Composition is addition of multitwists. Indeed a triangle between two normalized arrows has representative in $\Delta_\sigma$, since its composite is the identity coset with source $\sigma$. Such twists preserve every subset of $\sigma$. Its being vertical is exactly $\phi(d)\in\Delta_\eta$, and the source equivalence relation divides by $\Delta_s$. This checks morphisms and composition, not only objects.
+
+For a bijection of twist coordinates there is one object and trivial automorphism group. For deletion of a coordinate, the subset containing that deleted curve and all preimages of $\eta$ is an initial object: its twist group is $H$. For a duplicated coordinate that remains in $\eta$, take both preimages; this again gives an initial object. For a duplicated coordinate omitted from $\eta$, there is a unique subset $s$ and
+\[
+ H/\Delta_s\cong\ker(\Z^2\xrightarrow{(u,v)\mapsto u+v}\Z)
+ =\Z(1,-1).
+\]
+These exhaust C.1's three stabilization types. They also show precisely why the deleted tail coordinate, although a kernel coordinate of the lattice map, is removed by an initial object and produces no $B\Z$.
+\end{proof}
+
+\begin{result}{C.3}{Proved}{Properness and the exact failure of smoothness}
+In entrance variance the forgetful functor $Q^{\op}$ is $W_\infty$-proper for every stable target type. It is $W_\infty$-smooth exactly for $(g,n)=(0,3)$, using the lifting-category definitions of RESIDUE H.5.
+\end{result}
+\begin{proof}
+The incoming analogue of the transport in C.2 identifies the lift category for $[1]:\eta\to q\sigma$ with the poset
+\[
+ \mathcal P(\eta;\sigma)=\{\rho\supseteq\sigma:q\rho=\eta\},
+ \qquad\text{ordered by reverse inclusion}.                    \tag{C.2}
+\]
+A triangle between normalized arrows has a representative in $\Delta_\rho$, which is killed by its source quotient. Thus it has exactly one morphism for a containment and none otherwise. This proves the poset identification.
+
+First let $\sigma=\varnothing$ and $\eta\ne\varnothing$. Cutting the downstairs surface along $\eta$ gives a graph of groups with vertex groups the fundamental groups of its complementary surfaces and edge groups the infinite cyclic groups of the cut circles. Each edge injection is injective, since the cut circle is essential. The coset graph with vertices $\pi_1(S)/\pi_1(S_v)$ and edges $\pi_1(S)/\langle c\rangle$ is a tree: a nontrivial reduced circuit would contradict the normal-form theorem for the successive amalgams and HNN extensions obtained from a maximal tree of the finite graph.
+
+Place the additional point in a complementary surface or in a cut annulus. Point-pushing identifies the corresponding lifts of $\eta$ with the vertices or edges of this tree, respectively. An edge case is the duplicated-curve annulus; deleting either duplicate gives its incident vertex. This identification follows directly by transporting the point along a path: paths with the same endpoint component differ by its vertex group, and paths into the annulus differ by its cyclic group. It is the explicit coset identification in \citet[Theorem 7.1 and \S7.2]{KentLeiningerSchleimer2009}, whose hypothesis $3g-3+n\geq1$ holds whenever $\eta$ is nonempty. A curve becoming peripheral encloses the new point and one retained puncture; deleting it attaches one extra leaf to the corresponding vertex of the same tree. Distinct such choices attach additional leaves and no circuits. Hence the order complex of (C.2) is contractible. For $\eta=\varnothing$ the empty multicurve is terminal.
+
+For general $\sigma$, cut along it. Components without the extra point have unique prescribed refinements. In the component containing it, the same coset-tree argument applies, treating its fixed boundary circles as retained punctures; added curves parallel after forgetting to those boundaries give the same leaf attachments. A destabilized component is a pair of pants and has no essential refinement. Thus the poset is one contractible factor and singleton factors. All incoming lift categories of $Q$ are contractible, which is properness in entrance variance.
+
+For $(0,3)$ the target category is terminal, and the outgoing lifts of $Q$ are contractible by C.2. Every other stable type has an essential curve. Insert a rational bridge carrying the extra mark at its node and then smooth that node downstairs. C.2 gives $B\Z$, whose $H_1$ is $\Z$, so smoothness fails. This proves both directions.
+\end{proof}
+
+\begin{result}{C.4}{Proved}{Independent finite verification of the lifting counts}
+For $5\to4$ the normalized stratum/smoothing cases number $47$, with $44$ contractible and $3$ of type $B\Z$. For $6\to5$ they number $766$, with $696$ contractible and $70$ of type $B\Z$.
+\end{result}
+\begin{proof}
+The independent program \path{code/c_stabilization.py} represents a split by the bit mask of its side not containing leg $1$. Compatible masks are disjoint or nested, so a recursive search gives every compatible family exactly once. A.1 proves these are exactly the stable labelled trees. It deletes the highest leg, discards unstable splits, and identifies repeated masks, then enumerates every $\eta\subseteq q\sigma$ and every object in (C.1). The rank of $H$ is $|\sigma|-|q\sigma\setminus\eta|$: the constraints are independent sums on disjoint nonempty blocks of coordinates. Each has coefficient one, so the lattices and their quotients are saturated. The program exhibits an initial object or verifies the unique-object rank-one case. Its output is the asserted table, with the complete presentations in the two JSON files. The upstairs strata counts are $26$ and $236$, by codimension respectively $(1,10,15)$ and $(1,25,105,105)$.
+\end{proof}
+
+\begin{result}{C.5}{Known, with derivation proved}{The smooth/topological surface comparison actually used}
+For a compact oriented surface with finitely many individually fixed points, the inclusion $\Diff^+(S;I)\to\Homeo^+(S;I)$ induces an isomorphism of component groups, compatible with forgetting points, cutting annuli, and the twist generators. For stable types their identity components are weakly contractible. The unstable identity-component homotopy types are $SO(3)$ for $(0,0)$, $S^1$ for $(0,1),(0,2)$, and the torus for $(1,0)$. These give, for tangent-framed punctures in the two spherical marked cases, the respective kernel maps
+\[
+ \Z\twoheadrightarrow0,
+ \qquad \Z^2\twoheadrightarrow\Z^2/\langle(1,-1)\rangle.
+\]
+No stable-graph category of C.1 is assigned to these unstable types.
+\end{result}
+\begin{proof}[The comparison and its scope]
+A finite cut graph through the marked points decomposes the surface into disks. Relative straightening of its arcs and smoothing on the complementary disks make every topological mapping class smooth. More explicitly, \citet[Theorem B and the Handle Smoothing Theorem]{HatcherTorusTrick} supplies an isotopy to a diffeomorphism; its zero-handle isotopy fixes the handle center, so taking the marked points as vertices retains them. Conversely a topological isotopy between smooth representatives makes the corresponding cut arcs homotopic relative endpoints. Innermost-bigon removal followed by isotopy extension moves them onto one another by smooth strip isotopies; the remaining disk maps are smoothly isotopic relative boundary. The relative arc-isotopy theorem is \citet[Theorem 3.1 and Appendix]{Epstein1966}. This construction fixes the marked vertices throughout and leaves the cut annuli available, proving the stated compatibility on component groups.
+
+For identity components we use the complete proof of
+\citet[Appendix B, Theorem B.1]{HatcherMW2018}: closed surfaces of
+genus at least two have contractible smooth identity components;
+the spherical and toral components have the homotopy types $SO(3)$
+and $T^2$, represented by rotations and translations. Evaluation
+at an ordered triple of distinct sphere points induces the equivalence
+$SO(3)\simeq\operatorname{Conf}_3(S^2)$: a unique complex fractional
+linear transformation carries one ordered triple to another, and
+$\operatorname{PSL}_2(\C)$ retracts onto $SO(3)$. The identity
+component fixing three points is therefore weakly contractible.
+Evaluation of torus translations at one point is the identity of
+$T^2$, so its one-point stabilizer also has weakly contractible
+identity component. The corresponding homeomorphism statements are
+\citet[Theorems 1.5.1--1.5.2]{Hamstrom1974}, with its spherical and
+toral calculations. Add further fixed points using the evaluation
+fibration with fibre the next point stabilizer and base the already
+punctured surface. That base is aspherical, so its homotopy exact
+sequence preserves weak contractibility of the identity component.
+This is the precise part of LM8 E.12 needed for C.1--C.3.
+
+In the exceptional cases rotations and translations give the displayed noncontractible identity factors. On a sphere with one fixed point a full axial rotation winds its tangent ray once, so the angular $\Z$ is the image of $\pi_1$ of the identity component. With two points the same rotation has opposite tangent windings in coordinates $z$ and $1/z$, giving $(1,-1)$. Quotienting these images in the homotopy exact sequence gives the displayed framed kernels. The positive component groups in the three unstable spherical cases are trivial, and in type $(1,0)$ the group is $SL_2(\Z)$. Allowing orientation reversal gives $C_2$ in those spherical cases and $GL_2(\Z)$ for the torus. C.1--C.4 concern complex oriented curves; no assertion about nonorientable moduli is used.
+\end{proof}
+
+\subsection{The precise relation with filling automorphisms}
+
+\begin{result}{C.6}{Proved}{Restriction to the open fibre and the automorphism comparison}
+Let $U_r=\mathbb P^1(\mathbb C)\setminus\{r\text{ labelled points}\}$, $r\geq3$, and give $\mathbb P^1$ the stratification by those points and their complement. Its strict completed exit category has one open object with group $\widehat\pi_r=\widehat F_{r-1}$, $r$ closed objects with trivial groups, and crossing sets $\widehat\pi_r/I_i$, where $I_i$ is the peripheral procyclic subgroup. Restriction to the open object induces an isomorphism
+\[
+ \operatorname{Aut}_{\mathrm{eq},I}(\widehat{\Exit}(\mathbb P^1,r))
+ \xrightarrow{\ \sim\ }
+ \Out_I(\widehat\pi_r).                                    \tag{C.3}
+\]
+The left group is autoequivalences modulo natural isomorphism, preserving the labelled closed objects; on both sides we impose the same common multiplier on the chosen positive inertia generators. Allowing permutation of the labels gives the corresponding permuting version. These fibre exit categories occur in the universal stable-curve functors. Formula (C.3) is the map relating LM3b's surface-group automorphisms to the completed categories in this paper.
+\end{result}
+\begin{proof}
+Cutting a punctured disk at each labelled point gives its local group $I_i$ and the crossing set of based paths to the open basepoint, modulo a local turn; thus the set is the right-coset set $\pi_r/I_i$ with its left $\pi_r$ action. There are no arrows between different closed objects. The peripheral lattices are free factors up to a basis change, so their profinite closures are $\widehat\Z$, and the same coset description holds on finite quotients and their inverse limit.
+
+An equivalence restricts to an automorphism $\alpha$ of the open group, modulo a simultaneous inner automorphism from a natural isomorphism. Equivariance of its map on $\widehat\pi_r/I_i$ identifies the image of the stabilizer $I_i$ with a conjugate of $I_i$. Conversely choose conjugators for these peripheral images; the formula on cosets defined by those conjugators is an equivariant bijection and gives the required categorical functor.
+
+There is no further ambiguity from a peripheral normalizer. Indeed each peripheral generator is primitive in the free profinite group, by a change of basis also for the inverse of the product of the other generators. Corollary 2.3 of \citet{BuxErshovRapinchuk2011} gives its centralizer as its own procyclic subgroup. An element normalizing that subgroup acts on its generator by a unit power; abelianization, in which this vector is primitive, forces that unit to be $1$. Hence its normalizer is also $I_i$. Two choices of a conjugator consequently define the same coset map. These observations prove the two inverse constructions in (C.3) and their compatibility with multiplication.
+
+Over a smooth pointed curve in $\mathcal M_{0,r}$, the universal stable curve has underlying fibre $\mathbb P^1$, with the $r$ sections represented by the rational-tail configurations. Its induced stratification is exactly the one used above. Forgetting one such section fills its puncture. On the open fundamental group this is the quotient killing its inertia generator. Thus the comparison is with these specified fibres, and the universal-curve monodromy is the intervening map from the moduli mapping class group into $\Out(\widehat\pi_r)$.
+\end{proof}
+
+\begin{result}{C.7}{Proved}{An explicit full-profinite filling kernel in every spherical size}
+Let $r\geq3$, let $F=\widehat F(x,y_1,\ldots,y_{r-1})$, set $p=xy_1\cdots y_{r-1}$, and put $\bar F=F/\langle\!\langle x\rangle\!\rangle=\widehat F(y_1,\ldots,y_{r-1})$. Let $O_{r+1,x}$ consist of peripheral-preserving outer automorphisms of $F$ fixing the distinguished puncture $x$, with a common unit multiplier, and let $O_r$ be the analogous group on $\bar F$. Filling and normalized filling are continuous surjections
+\[
+ f_x:O_{r+1,x}\twoheadrightarrow O_r,
+ \qquad\theta_x:O_{r+1,x}\twoheadrightarrow\Aut_I(\bar F).
+\]
+Let $K\cong\bar F$ be the point-pushing subgroup. Then
+\[
+ \ker f_x=Q_r\rtimes K,\qquad Q_r\ne1.                      \tag{C.4}
+\]
+The following word model specifies $Q_r$ without a kernel notation. Put $N=\langle\!\langle x\rangle\!\rangle$. Take tuples $(w_1,\ldots,w_{r-1},w_\infty)\in N^r$ satisfying
+\[
+ x\prod_{j=1}^{r-1}w_j^{-1}y_jw_j=w_\infty^{-1}p w_\infty,   \tag{C.5}
+\]
+and the finite test that, in every finite quotient $F\twoheadrightarrow H$,
+the images of the following elements generate $H$:
+\[
+ x,\quad w_1^{-1}y_1w_1,\quad\ldots,\quad
+ w_{r-1}^{-1}y_{r-1}w_{r-1}.
+\]
+Denote the substitution they define by $\alpha_w$. The product is
+\[
+ (w*v)_j=w_j\alpha_w(v_j),\qquad
+ (w*v)_\infty=w_\infty\alpha_w(v_\infty).
+\]
+Quotient by simultaneous right multiplication of all $w_j,w_\infty$ by $x^a$, $a\in\widehat\Z$. With its quotient profinite topology this is $Q_r$. Thus (C.4)--(C.5) give, in particular, the kernels of the fillings $4\to3$ and $5\to4$ as explicit profinite groups.
+\end{result}
+\begin{proof}
+Normalize a representative of an element of $O_{r+1,x}$ to send $x$ to $x^\lambda$. Its remaining ambiguity is conjugation by $C_F(x^\lambda)=\langle x\rangle$, using C.6's centralizer calculation and the fact that $\lambda$ is a unit. This ambiguity disappears on $\bar F$, giving a genuine homomorphism $\theta_x$ whose outer class is $f_x$.
+
+For surjectivity, first take a label-preserving multiplier-one outer automorphism of $\bar F$. Choose a representative fixing $y_1\cdots y_{r-1}$, by removing its product conjugator, and extend it to $F$ by fixing $x$. Its inverse extends in the same way; the extension is an automorphism and preserves all peripheral classes, including $p$. Permutations of the retained punctures lift by geometric mapping classes. A rational configuration of $r+1$ points gives arithmetic outer actions with every multiplier, since the cyclotomic character of $G_{\Q}$ is onto $\widehat\Z^\times$. Removing one such action reduces the general case to multiplier one. This proves surjectivity of $f_x$.
+
+The point-push along $k\in\pi_1(U_r)$ has normalized filled action $\operatorname{Inn}(k)$: move the extra puncture along the loop and use its moving basepoint to identify the other loops. This identity extends continuously to $\bar F$. Its centre is trivial by the centralizer calculation in C.6, so $\theta_x$ restricts to an isomorphism $K\to\operatorname{Inn}(\bar F)$. This proves both that the completed point-pushing map is injective and that it corrects every inner discrepancy, giving surjectivity of $\theta_x$. On $\ker f_x$, its image is exactly $\operatorname{Inn}(\bar F)$ with section $K$. The usual unique factorization into a kernel element and this section gives (C.4), with $Q_r=\ker\theta_x$ at this stage of the proof.
+
+We now prove the word description. In $Q_r$ the multiplier is one: its image on $\bar F^{\mathrm{ab}}$ is the identity and every surviving peripheral vector is primitive. Choose the representative fixing $x$. It sends $y_j$ to $w_j^{-1}y_jw_j$ and $p$ to $w_\infty^{-1}p w_\infty$. Since its filled representative is the identity, $\bar w_j$ centralizes $y_j$ and $\bar w_\infty$ centralizes $\bar p$. Both centralizers are the corresponding primitive procyclic groups. Multiplying the conjugators on the left by the corresponding powers of $y_j$ or $p$ makes every $w$ belong to $N$ without changing the conjugate. This choice is unique: $N$ intersects each of those procyclic groups trivially, as is seen after filling. The product equation is precisely (C.5).
+
+Conversely (C.5) defines a continuous endomorphism fixing $x$, preserving the peripheral classes, and inducing the identity on $\bar F$. The finite test says its closed image surjects to every finite quotient of $F$, hence is all of $F$. A finitely generated profinite group is Hopfian: a surjective endomorphism permutes its finitely many open subgroups of each index, and its kernel is contained in their intersection, which is trivial. Thus this endomorphism is an automorphism. The remaining choice of an $x$-fixing representative is conjugation by $x^a$, which acts on the tuple by the simultaneous right multiplication stated above. Substitution gives the displayed multiplication. All equations and finite generation tests are closed conditions in $N^r$; the tuple space and its quotient are compact, and the two inverse constructions are continuous. This proves the claimed topological group identification.
+
+Finally $Q_r$ is nontrivial, uniformly in $r$. The splitting field of $X^3-2$ has group $S_3$, with commutator subgroup $A_3\ne1$ and maximal abelian subfield $\Q(\zeta_3)$. Thus $\ker\chi$ contains an element acting nontrivially on this field. Faithfulness of the arithmetic tripod action, proved in E.4, supplies a nontrivial multiplier-one peripheral outer automorphism $\beta$ of $\widehat F(x,y_1)$. Normalize it to fix $xy_1$, extend it by fixing every other $y_j$, and call the resulting class $b$. Filling $x$ makes its action on $y_1$ the identity, because the remaining one-generator conjugator commutes with $y_1$; all other generators were fixed. Hence $f_x(b)=1$. Filling the other punctures down to the tripod recovers $\beta\ne1$, whereas every pure geometric mapping class has trivial image in the labelled tripod mapping class group. Consequently $b\notin K$. Its unique correction by $K$ to make $\theta_x$ trivial is a nonidentity element of $Q_r$. The finite group calculation selecting the arithmetic witness is checked in \path{code/c_finite_certificates.py}.
+\end{proof}
+
+\begin{result}{C.8}{Proved}{What the three bridge groups contribute at $5\to4$}
+Under the point-pushing and fibre comparisons of C.6--C.7, the profinite completion of each of the three $B\Z$ vertex groups for $\overline M_{0,5}\to\overline M_{0,4}$ maps injectively into $K=\widehat\pi_1(U_4)$. Its image is the procyclic subgroup generated by pushing around the corresponding two-versus-two separating curve; the original $\Z$ has dense cyclic image in it. Their closed normal closure inside $K$ has quotient $C_2$. Their intersection with $Q_4$ is trivial. Thus their actual contribution to the filling kernel in (C.4) lies entirely in its geometric point-pushing factor. The extra factor $Q_3\ne1$ already occurs for $4\to3$, where C.2 gives no bridge group.
+\end{result}
+\begin{proof}
+The point-push around a simple curve is the bounding-pair map $T_{c_+}T_{c_-}^{-1}$: cut an annular neighborhood of the push loop and trace the two boundaries while moving the extra point once around it. One boundary receives one positive turn and the other one negative turn. This is exactly C.2's kernel generator. The three cases correspond to the three partitions of four retained labels into pairs. Choosing paths from the fibre basepoint changes each generator by conjugation; changing orientation changes it to its inverse. Neither change affects the following normal-closure computation.
+
+Choose meridians $x_1x_2x_3x_4=1$. Representatives of the three simple pair curves can be taken as
+\[
+ a_{12}=x_1x_2,\qquad
+ a_{13}=x_1x_2x_3x_2^{-1},\qquad
+ a_{14}=(x_2x_3)^{-1}.
+\]
+The middle representative is obtained from the first by the adjacent half-twist exchanging labels $2,3$; the last is the inverse boundary of the complementary pair $2,3$. These are therefore the required three curve classes. In the quotient by their normal closure, $a_{12}=1$ gives $x_2=x_1^{-1}$, $a_{14}=1$ gives $x_3=x_1$, and $a_{13}=1$ gives $x_1^2=1$. Sending every puncture meridian to the nonzero element of $C_2$ realizes the surviving nontrivial quotient, so the quotient is exactly $C_2$, discretely and after profinite completion. The exponent vectors form an integral matrix of determinant $2$, independently checked by \path{code/c_stabilization.py}.
+
+Each loop is primitive in the surface free group, or conjugate to a product that is primitive after a basis change, so its procyclic closure injects. The point-push embedding and $\theta_x|_K=\operatorname{Inn}$ from C.7 show $K\cap Q_4=1$. The projection $\ker f_x\to\operatorname{Inn}(\bar F)$ therefore records the nontrivial image of each bridge group exactly. For $4\to3$ every normalized lift is contractible by C.2, while C.7 constructs $Q_3\ne1$ explicitly. This proves both comparisons requested in Lead 3 and Part C(c), through their specified morphisms.
+\end{proof}
+
+\input{sections/C_surfaces}

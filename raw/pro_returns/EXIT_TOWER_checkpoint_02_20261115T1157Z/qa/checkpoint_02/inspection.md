@@ -1,0 +1,9 @@
+## Checkpoint 02 PDF audit and visual inspection
+
+The frozen working source compiles to 129 pages. The final build has zero overfull boxes, zero boxes over 2pt, zero undefined citations or references, and zero missing glyphs. The register audit has 104 numbered statements, 33 reading records and 59 bibliography entries, with no missing or unused result metadata.
+
+The intermediate checkpoint 02 builds exposed the following overflow locations: one 17.3496pt display in B.20, four boxes of 73.72441pt, 93.3286pt, 469.81161pt and 1035.5762pt in the E.23 scope table, and one 42.81967pt display in E.24. The display was split, the table was converted to wrapping paragraph columns, and the final display was divided into two displayed lines. After these corrections the final count is 0. The earlier checkpoint 01 overflow locations were checked again in their current pagination.
+
+All 129 pages were rendered to images. The two contact sheets were visually inspected; together their spread covers pages 1, 2,15,29,34,35,38,40,41,44,45,58,72,76,86,101,108,109,115,118,120,123 and129. Pages 34,35,41,45,46,59,108 and110 were additionally inspected individually at full image size. These include the repaired display/table locations and the earlier lattice, filling-kernel and projective-comparison locations. No text extends into the margins or overlaps in the inspected images. Exact render paths and page locations are in qa/checkpoint_02/render_audit.json.
+
+The final source and PDF both include D.24's explicitly retained six-point Peiffer-identity computation. The source freeze also includes B.22–B.23, D.22–D.24, E.22–E.24, E.T6–E.T7 and E.X1. The subsequent lower-twist reading investigation is retained in the original-image crops and work records; its mathematical continuation will be incorporated after this checkpoint.
