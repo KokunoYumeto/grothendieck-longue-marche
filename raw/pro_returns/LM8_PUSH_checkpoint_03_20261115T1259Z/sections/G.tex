@@ -1,0 +1,264 @@
+\section{The degree-eight arithmetic line: exact coordinates and the missing measurement}
+
+We retain $K=\mathbf Q(i)$, $E:y^2=x^3-x$, and the prime $5$.
+The free graded Lie algebra on the chosen CM homology basis $x,y$
+is embedded in its associative tensor algebra. Derivation degree $m$
+means that $x,y$ are sent to Lie words of length $m+1$.
+All computations in this part are exact rational computations, with
+the integral lattice subsequently localized at $5$.
+
+\begin{statement}{G.1}{Open}{The arithmetic scalar and Lead 15}
+The scalar $\lambda$ in the actual arithmetic line
+\[
+ \frac{d^3\chi^{(4)}_4}{267840}(A_8+\lambda B_8)
+\]
+is not evaluated here. Lead 15, which asserts $\lambda\in\mathbf Q$,
+also remains open. G.4 independently verifies the two ambient vectors
+and their coordinates; G.5 verifies that every $5$-adic scalar is
+compatible with the universal elliptic and finite CM constraints.
+In particular those constraints admit $\lambda=\sqrt6\in\mathbf Q_5$
+and do not imply rationality. This is a counterexample to that proposed
+method of deducing rationality, not a counterexample for the actual
+arithmetic scalar.
+
+The motivic argument in Lead 15 would need a rational subspace in the
+\emph{specified} degree-eight derivation space, together with a
+comparison identifying its scalar extension with the actual Galois
+line. Merely having Betti and de Rham rational structures does not
+give that comparison or identify the two structures in these
+coordinates. No such theorem is supplied or proved in this return.
+\end{statement}
+
+\begin{statement}{G.2}{Open}{The actual integral arithmetic image}
+The values of the second coordinate $\nu$ on an actual element of
+the eighth Johnson subgroup of $\Delta$ are not calculated here.
+Neither is the nonzero ideal which is the image of the first
+coordinate $\alpha$. Consequently the arithmetic lattice and its
+index in the saturation of its rational line remain open. G.6 gives
+the exact index formula in terms of those two missing data and
+distinguishes this finite index from the necessarily infinite index
+of a rank-one lattice in the rank-two ambient plane.
+\end{statement}
+
+\begin{statement}{G.3}{Open}{The repeated-character arithmetic embeddings through degree fourteen}
+No complete arithmetic generator list or integral image lattice in
+all repeated-character spaces of degrees eight through fourteen is
+obtained. The degree-eight measurement still missing in G.1 is
+already part of that requested list. A family of universal
+derivations, a metabelian character, or dimensions of the lower
+bracket images does not determine those generator vectors. The
+calculations below are therefore recorded as ambient certificates,
+with no promotion to a description of the Galois subgroup.
+\end{statement}
+
+\begin{statement}{G.4}{Proved}{An independent exact certificate for the degree-eight plane}
+Let $F(x)=y$, $F(y)=0$, and for even $m\geq2$ put
+\[
+ \epsilon_m(x)=\operatorname{ad}_x^m(y),\qquad
+ \epsilon_m(y)=\sum_{j=0}^{m/2-1}(-1)^j
+ [\operatorname{ad}_x^j(y),\operatorname{ad}_x^{m-1-j}(y)].
+\]
+Set
+\[
+ A_8=\frac{\operatorname{ad}_F^3\epsilon_8}{120},\quad
+ B_8=\frac{[\epsilon_4,\operatorname{ad}_F^2\epsilon_4]}2,
+ \quad C_8=A_8+\frac{31}{20}B_8.
+\]
+These vectors annihilate $[x,y]$, have weight $(4,4)$, and change
+sign under $x\leftrightarrow y$. For the integral word-coordinate
+functionals
+\[
+ \alpha(D)=-[x^5y^4]D(x),\qquad
+ \nu(D)=[x^4yxy^3]D(x)+4[x^5y^4]D(x),
+\]
+one has
+\[
+ \begin{array}{c|rrr}
+ &A_8&B_8&C_8\\\hline
+ \alpha&1&0&1\\
+ \nu&-31/20&1&0
+ \end{array}.
+\]
+Writing $W_8=\mathbf Q_5A_8\oplus\mathbf Q_5B_8$, its saturated
+lattice of integral Lie derivations is
+\[
+ W_8\cap\operatorname{Hom}_{\mathbf Z_5}
+       (\mathbf Z_5x\oplus\mathbf Z_5y,L_9(\mathbf Z_5x\oplus\mathbf Z_5y))
+       =\mathbf Z_5C_8\oplus\mathbf Z_5B_8.
+\]
+In the free metabelian Lie algebra, written
+$\mathbf Qx\oplus\mathbf Qy\oplus\mathbf Q[u,v][x,y]$ with
+$u=\operatorname{ad}_x$, $v=\operatorname{ad}_y$ on the commutator
+module, the values of $A_8$ are
+$u^4v^3[x,y]$ and $u^3v^4[x,y]$, while both values of $B_8$ vanish.
+\end{statement}
+\begin{proof}
+The executable certificate \texttt{code/fgh\_degree8.py} starts from
+these formulas, with its own tensor multiplication, commutator, and
+derivation implementation; it imports no attached calculation.
+It computes all rational associative coefficients, checks the
+special equation and the two symmetries, and decomposes each value
+in the standard Lyndon basis by triangular subtraction. At each
+subtraction the leading word is checked to be Lyndon and its
+standard bracket has leading coefficient $1$. The complete vectors
+are recorded in \texttt{code/fgh\_degree8.json}.
+
+For the two selected words its coefficients are
+\[
+ \begin{array}{c|rrr}
+ &A_8(x)&B_8(x)&C_8(x)\\\hline
+ {[x^5y^4]}&-1&0&-1\\
+ {[x^4yxy^3]}&49/20&1&4
+ \end{array},
+\]
+which gives the displayed matrix. The Lyndon coefficients of $B_8$
+are integers; those of $C_8$ have denominators only $1,2,4$.
+Thus both are integral at $5$. Conversely, an integral vector
+$D\in W_8$ has integral word coefficients, so
+$\alpha(D),\nu(D)\in\mathbf Z_5$. The coordinate matrix gives
+$D=\alpha(D)C_8+\nu(D)B_8$. This proves saturation, without
+identifying any lattice vector as arithmetic.
+
+For an independent check of the metabelian assertion, the program
+evaluates each Lyndon bracket in the explicit metabelian Lie
+algebra above. The bracket of
+$ax+by+p(u,v)[x,y]$ and $cx+dy+q(u,v)[x,y]$ has commutator
+coordinate
+\[
+ ad-bc+(au+bv)q-(cu+dv)p.
+\]
+This elementary formula supplies the stated result and directly
+checks that the second direction is invisible metabelianly.
+\end{proof}
+
+\begin{statement}{G.5}{Proved}{Universal equations do not select a rational direction}
+For every $\lambda\in\mathbf Q_5$, the line
+$\mathbf Q_5(A_8+\lambda B_8)$ exponentiates in the completed
+positive geometric subgroup of Enriquez's graded universal elliptic
+kernel. It has CM character $(4,4)$ and the prescribed interchange
+sign. This remains true for an irrational scalar: the root of
+$T^2-6$ congruent to $1$ modulo $5$ belongs to $\mathbf Q_5$ and
+is not rational. A line in this plane is defined over $\mathbf Q$
+if and only if its normalized scalar $\lambda$ is rational.
+\end{statement}
+\begin{proof}
+Enriquez, Proposition 4.19, equation (48), defines
+$\delta_{2n}=\epsilon_{2n+2}$ and places it in
+$\mathfrak r_{\mathrm{ell}}^{\mathrm{gr}}$.
+The paragraph following equation (49) gives
+\[
+ \exp(\widehat{\mathfrak b}_3^+)\rtimes\mathrm{SL}_2
+       \subset R_{\mathrm{ell}}^{\mathrm{gr}},\qquad
+ \mathfrak b_3=\langle\mathfrak{sl}_2,\delta_{2n}\rangle
+       .
+\]
+The inclusion is the one explicitly stated there \cite{fghEnriquez}.
+The half-sum in (48) pairs into the formula for $\epsilon_m(y)$
+in G.4. The source uses the opposite derivation bracket, which does
+not change the generated Lie subalgebra. Both $A_8$ and $B_8$
+therefore belong to its positive part. Exponentiation of any scalar
+linear combination converges in the degree filtration and gives
+the asserted group elements to all orders. G.4 checks the CM weight
+and interchange sign exactly. The scalar $\sqrt6$ exists by Hensel's
+lemma since $1^2-6\equiv0\pmod5$ and $2$ is a unit, and is
+irrational since $6$ is not a rational square.
+
+Finally $A_8,B_8$ are rational and independent. A rational vector
+spanning the normalized line has a nonzero $A_8$ coefficient and
+therefore a rational ratio of its $B_8$ and $A_8$ coefficients.
+That ratio is $\lambda$. The converse is immediate. No arithmetic
+realization of the irrational candidate is asserted.
+\end{proof}
+
+\begin{statement}{G.6}{Proved}{The exact conditional lattice and index formula}
+Let $L=\mathbf Q_5(A_8+\lambda B_8)$ be any line in this plane,
+put $\delta=\lambda-31/20$, and set
+\[
+ m=\max\{0,-v_5(\delta)\},\qquad v_5(0)=+\infty.
+\]
+Then
+\[
+ L\cap(\mathbf Z_5C_8\oplus\mathbf Z_5B_8)
+     =5^m\mathbf Z_5(C_8+\delta B_8).
+\]
+If $\mathcal A\ne0$ is the compact image of a continuous
+homomorphism from a profinite group to this integral line and
+$\alpha(\mathcal A)=5^a\mathbf Z_5$, then $a\geq m$ and
+\[
+ \mathcal A=5^a\mathbf Z_5(C_8+\delta B_8),\qquad
+ [L\cap\Lambda:\mathcal A]=5^{a-m},
+ \quad\Lambda=\mathbf Z_5C_8\oplus\mathbf Z_5B_8.
+\]
+Thus this formula applies to the character-$(4,4)$ image of an
+eighth Johnson homomorphism whenever its rational line is the
+one specified in the prompt. It leaves $a$ and $\delta$ to be
+measured on that actual homomorphism.
+\end{statement}
+\begin{proof}
+The coordinates of $t(C_8+\delta B_8)$ are $(t,t\delta)$.
+Both are integral exactly when $v_5(t)\geq0$ and
+$v_5(t)+v_5(\delta)\geq0$, giving the first formula.
+A compact additive subgroup of $\mathbf Q_5$ is closed and stable
+under $\mathbf Z_5$, by taking limits of multiplication by integers.
+Its nonzero integral image is consequently an ideal
+$5^a\mathbf Z_5$. Since $\alpha$ is injective on $L$, it determines
+the whole subgroup and the index. The full rank-two quotient
+$\Lambda/\mathcal A$ also has a rank-one part, so its cardinal
+index is infinite; the finite displayed index is taken only inside
+the saturation of $L$.
+\end{proof}
+
+\begin{statement}{G.7}{Proved}{A finite nonmetabelian measurement that would decide the scalar}
+Let $P$ be the free pro-$5$ group on lifts $a,b$ of the integral
+homology basis. An actual automorphism $\sigma$ in its eighth
+Johnson subgroup determines $D_8(\sigma)$ by the leading terms of
+$\sigma(a)a^{-1}$ and $\sigma(b)b^{-1}$. For every $r\geq1$,
+the two coordinates $\alpha,\nu$ modulo $5^r$ can be read from its
+action on the characteristic finite quotient supplied by
+\[
+ (\mathbf Z/5^r)\langle X,Y\rangle/(X,Y)^{10},
+ \qquad a\mapsto1+X,\quad b\mapsto1+Y.
+\]
+On a vector of the arithmetic line with $\alpha\ne0$,
+\[
+       \lambda=\frac{31}{20}+\frac{\nu}{\alpha}.
+\]
+This is an explicit test on a genuine arithmetic action; it does
+not provide such an action or its measured values.
+\end{statement}
+\begin{proof}
+The completed group algebra of a free pro-$5$ group is the completed
+noncommutative power-series algebra under these substitutions.
+Its augmentation ideal and the ideal generated by $5^r$ are
+characteristic. The quotient algebra is finite and its augmentation
+units form a finite $5$-group, as follows from the finite additive
+successive powers of the augmentation ideal. Hence the indicated
+group quotient and automorphism action are defined.
+
+For an eighth Johnson element, all positive terms of lengths less
+than nine in $\sigma(a)a^{-1}-1$ vanish. The degree-nine term is
+the Lie element $D_8(\sigma)(x)$ because leading group commutators
+expand to the corresponding Lie commutators. The two integral
+linear combinations of word coefficients in G.4 therefore compute
+$\alpha,\nu$ modulo $5^r$ without division or a logarithm.
+The ratio formula is the coordinate identity of G.6. In particular
+metabelian data, which kill $B_8$, cannot replace this second
+measurement.
+\end{proof}
+
+\begin{statement}{G.8}{Known}{The realization hypothesis in the proposed motivic shortcut}
+Malkin's \emph{Motivic fundamental groups of CM elliptic curves
+and geometry of Bianchi hyperbolic threefolds}, Theorem 11,
+proves a depth-two symmetry for Hodge correlators; Theorem 16
+constructs the corresponding Bianchi-complex map in that realization.
+The transfer discussed immediately before Lemma 3, on printed
+pages 12--13, invokes hypothetical regulator injectivity and the
+motivic formalism. It therefore supplies no unconditional theorem
+identifying the degree-eight $5$-adic arithmetic line with a rational
+line in the fixed derivation coordinates used here
+\cite{fghMalkin}.
+\end{statement}
+The primary text has been opened at those statements. This is a
+precise limit on what that proposed source proves, not a proof that
+the desired comparison cannot be established by another argument.
+
