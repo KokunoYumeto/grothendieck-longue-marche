@@ -1,0 +1,80 @@
+# Root research contributions
+
+These are post-freeze research notes. `C` means the supplied, not second-passed `context/MPL_16+47+54+44_transcription.tex`; `CN` means its companion notes; `RS` means `context/notes/RESULTS_STATE.md`. Locations use cote 15 and approximate logical lines in the frozen per-page TeX, supplemented by the quoted passage. The page files remain frozen.
+
+## R01 — 15/087, opening theorem paragraph — reading question
+
+The reused typescript says “there is an isomorphism $f:M\longrightarrow N$” before assuming that its localizations are isomorphisms; the actual inverse already gives $(f^{**})^{-1}=(f^{-1})^{**}$, so a comparison witness should check whether the first word was intended to be “homomorphism.” The text and its explicit reference to the unidentified author's thesis, Chapter II, Lemma 0.1, remain as read. A context search for `reflexive`, `double dual`, and `thesis` found no matching statement in C or CN; C 54/004–006 instead supplies neighbouring module-finiteness and flatness material, and RS **WG2 §Summary #2** provides the provenance context without identifying this author.
+
+## R02 — 15/087, Theorem VI.5 and unfinished proof — unproved claim
+
+The assertion “there is a finitely generated reflexive module $N$” reduces on the retained sheet to checking the canonical map $N\to N^{**}$ after the displayed identification $N=\Gamma(Y,\mathcal M)$, but the proof continues beyond the page. This adds a reflexive-extension witness to the module-theoretic material in C 54/004–006, located by `module`, `libre`, and `plat`, without supplying the missing definitions of $P$, $Y$, or the preceding Theorem VI.1. RS **WG2 §Summary #2** concerns the earlier package; no matching established result is present in RS, and the author's identity remains unresolved.
+
+## R03 — 15/089, Remark 3.13 — unpursued implication
+
+The reused sheet's “famille conservative” criterion matches SGA 4, VIII, Remark 3.13; the explicit test is the family of stalk maps $u_{\bar x}:F_{\bar x}\to G_{\bar x}$ indexed by the specified étale-universally dense subset $E$ [SGA4]. It adds a concrete source for comparing the étale fibre functors of scan 137 with the manuscript's tensor fibre functors through representations of the same finite étale covers, while the actual equivalence of those representation categories still needs the objects specified there. Context searches for `foncteur`, `fibre`, and `étale` lead to C 16/052 and the descent discussions in CN R10/R21, and to RS **WG2 §1.1 #3** and **MPL_7_061-072+8_001-078 Scan061 (§66)**; those entries do not already establish the comparison on these pages.
+
+## R04 — 15/091 and 093, §9.4.2–9.4.4 — self-flagged
+
+The proof expressly postpones two inputs: “comme nous verrons ultérieurement” on 091 and “qui sera prouvé dans un exposé ultérieur” on 093. The later SGA 4 witness points from §9.4.2 to XII 5.1(i), and its revised §9.4.4 chooses the indicated algebraic-closure base change and points to XVI 1.4–1.5 [SGA4]; those are precise comparison locations for the original broad base-change sentence, with no change to its transcription. Searches for `descente`, `changement de base`, and `SGA` in C/CN lead to C 16/026 and CN R21, so this adds two identifiable deferred-proof dependencies to the reused-SGA provenance under RS **WG2 §Summary #2**.
+
+## R05 — 15/095, 097, 099 and 109, numbered algebraic-group results — reading question
+
+These reused typescripts match Robert Steinberg, *Regular elements of semi-simple algebraic groups*, §§1–2: 099 corresponds to printed pp. 50–51, 097 to p. 51, 095 to p. 52, and 109 to p. 53 [Steinberg]. Their printed pagination `−4−`, `−5−`, `−7−`, `−10−` therefore supplies a separate witness sequence within the cote. Searches for `Steinberg`, `Kostant`, `regular`, and `racines` found no corresponding attribution in C/CN; the root-system calculations in C 44/005 and RS **WG2 §2.1 #5** are a contextual comparison, while the matching paragraphs identify these statements as Steinberg's text.
+
+## R06 — 15/099 continuing 097, introduction — self-flagged
+
+The typescript poses “the problem of extending the normal form $N$ from regular elements to arbitrary elements,” and the next retained page says there appears to be no simple relation between the cited group results and their Lie-algebra analogues. The displayed map to compare is $N\to\mathbb A^r$, $x\mapsto(\chi_1(x),\ldots,\chi_r(x))$, explicitly named on 099; neither of the retained sheets attempts the proposed extension. C 44/005 concerns root data, but a search for `normal form`, `Kostant`, and `regular` gives no matching solution in C/CN/RS, so this adds a question from the reused source rather than an attributed new conjecture by Grothendieck; provenance is R05 and RS **WG2 §2.1 #5**.
+
+## R07 — 15/097, paragraph before Theorem 1.6 — self-flagged
+
+The source says it “appears from recent results of A. Grothendieck” that perfectness is unnecessary for most of the discussion, while the stated theorems retain the perfect-field setup. A verification would have to align each occurrence of the base field $k$, rational Borel subgroup, and rational conjugacy class in §§1 and 9 of the identified Steinberg witness, rather than deleting the hypothesis from the transcription. A context search for `perfect`, `parfait`, and `Steinberg` found no matching removal in C/CN/RS; this is an additional attribution lead alongside the SGA corrections in C 16/026 and RS **WG2 §Summary #2**.
+
+## R08 — 15/101, chapter heading and first assertion; 105–126, projectivity fragments — reading question
+
+“Some Applications of the Criterion of Projectivity of Abstract Complete Varieties” heads the reused chapter, and the mathematical condition is $D^kW_k>0$ for each irreducible positive-dimensional $W_k$. Moishezon's 1964 article is a strong provenance lead: its original page range is 179–224, and Cartier's 1966 bibliography explicitly records an English mimeographed translation; the handwritten references 210, 213 and 218 in these scans fit that range [Moishezon; Cartier]. Exact identification of this English witness remains provisional because its title page and translator are absent; C 16/033–049 and C 44/008–009 share hyperplane and ampleness language, but searches for the English heading and `Moishezon` found no match in C/CN/RS, so the addition bears on **WG2 §Summary #2** and **WG2 §2.3 #12** without asserting a textual dependency.
+
+## R09 — 15/126, equation (19) and base-point argument — unpursued implication
+
+The reused proof sends a section $\phi$ to $r^*\phi$ on $\mathcal E_\varphi$ and uses surjectivity of $r^*$ to transfer generation of the restricted invertible sheaf to the absence of a common zero along that divisor. The relevant implication can be checked at a point through the commutative evaluation square for $H^0(V,L)\to H^0(\mathcal E_\varphi,L|_{\mathcal E_\varphi})$ and $L\otimes k(P)\to L|_{\mathcal E_\varphi}\otimes k(P)$; the surrounding induction and vanishing hypotheses remain those of the source. The context search `hyperplane`, `section`, `ample`, `polarisation` reaches C 16/033–034 and C 44/009, adding a coherent-sheaf route to a projective embedding alongside those correspondence calculations, under RS **WG2 §2.3 #12** and **WG2 §2.4 #3**.
+
+## R10 — 15/111, 113 and 115, inequalities (21)–(23) — reading question
+
+Scan 111 gives equality (23) between two $H^1$ dimensions, but its following $H^0$ display has $\mathcal O_V[mE']$ in the source and $\mathcal O_{\mathcal E'_\nu}[m'E']$ in the target, so that literal $m/m'$ discrepancy must be recorded. At the common twist $n=m'$ used by the preceding sentence, put $L=\mathcal O_V[m'E']$; the vanishing $H^1(\mathcal E'_\nu,L|_{\mathcal E'_\nu})=0$ supplied on scan 113 makes the long-exact-sequence map $u:H^1(V,L(-\mathcal E'_\nu))\to H^1(V,L)$ surjective. Equality (23) of the finite dimensions then makes $u$ injective, so exactness makes the preceding connecting homomorphism zero and yields surjectivity of $H^0(V,L)\to H^0(\mathcal E'_\nu,L|_{\mathcal E'_\nu})$ at that common twist.
+
+**Context search and register relation:** The vanishing input is on scan 113, inequality (22) on 115, and equality (23) on 111; C 47/007–008 contains an analogous need to identify the actual derived restriction map (CN F6–F8), found by searches for H^1, restriction, and exacte, with RS **WG2 §2.4 #4** the nearest contextual verification programme.
+
+## R11 — 15/103, final adjunction paragraph — reading question
+
+“It can be shown” introduces an adjunction whose right-hand Hom is printed with subscript $\mathcal A'$ even though its source is the $\mathcal A$-module $\mathcal M$. The explicit adjunction on this page is $f:\mathcal A'\otimes_{\psi^{-1}\mathcal A}\psi^{-1}\mathcal M\to\mathcal M'\mapsto(m\mapsto f(1\otimes m))$, with inverse determined by $a'\otimes m\mapsto a'g(m)$; this calculation locates the coefficient-ring question without altering the frozen subscript or missing domain of $\rho_{\mathcal A}$. Searches for `adjoint`, `Hom`, and `injectif` lead to C 16/022 and CN R10, so the sheet adds an elementary adjunction witness to RS **WG2 §Summary #2**, with authorship still unresolved.
+
+## R12 — 15/118, cancelled correction to Remark 7.10 — withdrawn in the same text
+
+The cancelled replacement begins on the same scan with the connected-fibre relaxation and includes “On peut montrer que” for a monomorphism from a group of multiplicative type; the cancellation and the live correction to Page 35 are both retained. SGA 3, VIII, Remark 7.10 keeps the Raynaud examples, while Remarks 7.13(b)–(c) record the multiplicative-type immersion and connected-fibre statements [SGA3], providing an exact later location without inferring why this local replacement was struck out. Context searches for `Corrections`, `SGAD`, and `Raynaud` identify C 16/026 and CN R21, so this adds a specific incorporation map `draft 7.10(a,b,c) → later 7.13(c), 7.10, 7.13(b)` to RS **WG2 §Summary #2**.
+
+## R13 — 15/138, dyadic expansion paragraph — reading question
+
+The frozen source has $\sum_{n=0}^{\infty}\epsilon_n2^{-n}$, whose range on all binary sequences is $[0,2]$, and deletes the nonzero eventually-zero sequences to select one of the two expansions at a dyadic value. The endpoint calculation gives $f(0,0,\ldots)=0$ and $f(1,1,\ldots)=2$, so identification of the source's previously defined $I$ is necessary before treating the exponent or lower index as an error. A search for `lusin`, `dyadi`, `polon`, `distribution`, and `Bourbaki` in C/CN/RS produced no mathematical counterpart to this paragraph; the addition is a reused-errata reading question under RS **WG2 §1.1 #3**, with no inferred new motive-theoretic claim.
+
+## R14 — 15/138, countable projective-limit corollary — unpursued implication
+
+The source justifies its limit statement by realizing the projective limit as a closed subspace of a countable product of separated spaces. Its actual embedding is $(x_n)_n\mapsto(x_n)_n$ with image $\bigcap_{n\to m}\{(x_j):f_{nm}(x_n)=x_m\}$, each equality locus being the inverse image of the closed diagonal in $X_m\times X_m$; this also explains why the two preceding replacements prescribe “séparé.” No matching Lusin-space result occurs in C/CN/RS after searches for `lusin`, `limite projective`, and `séparé`; C 16/052's limit language concerns field extensions, so this adds a different explicit construction within the miscellaneous reused-sheet record **WG2 §1.1 #3**.
+
+## R15 — 15/138, starred paragraph — unproved claim
+
+“On peut montrer” introduces the claim that the strong-topology spaces $D'(\Omega)$ and $E'(\Omega)$ are Lusin spaces, with no proof on this sheet. Verification requires the exact definition of `lusinien` in the referenced chapter and a continuous one-to-one Polish parametrization for the stated strong topologies; neither replacing those topologies by weak ones nor applying the preceding projective-limit corollary without constructing a countable system checks the written assertion. The searches recorded in R13 found no counterpart in C/CN/RS, so this is an additional deferred claim of the reused source under **WG2 §1.1 #3**.
+
+## R16 — 15/135–137, motivic group and fibre-functor terminology — unpursued implication
+
+For a complex embedding $\sigma:k\hookrightarrow\mathbf C$, Ayoub's Theorem 4.4.2 gives an equivalence $G_{\mathrm{mot}}(k,\sigma)\xrightarrow{\sim}\operatorname{Auteq}(\mathrm{LS}_{\sigma\text{-geo}}^\otimes)$ of nonconnective spectral group prestacks [Ayoub-Anabel, p. 234, (4.108)]. Here the target consists of autoequivalences of the symmetric-monoidal presheaf $X\mapsto\mathrm{LS}_{\sigma\text{-geo}}(X;\Lambda)^\otimes$ on $\mathrm{Sm}_k$, with $\Lambda$ varying through commutative ring spectra; Remark 4.4.3, p. 234, (4.109), gives the map by acting on sheaves of geometric origin and restricting to local systems. His equations (11)–(13) take a finitely generated extension $K/k$ with $k$ algebraically closed in $K$, a complex embedding $\Sigma:K\hookrightarrow\mathbf C$ extending $\sigma$, and the pro-system $U$ of open neighbourhoods of the generic point of a smooth model of $K$; they give $\pi_1^{\mathrm{alg}}(U^{an},\Sigma)\twoheadrightarrow\pi_1^{\mathrm{geo}}(U,\Sigma)$ by taking its image in $G_{\mathrm{mot}}(K,\Sigma)$.
+
+**Context search and register relation:** Searches for anab, Galois, and foncteur in C/CN and RS connect this comparison to **WG2 §2.4 #3**, **MPL_14_002-044 §3**, and the README's **S15/B9** questions; the specified arithmetic quotients and section-class image/fibre problems of **LM7 E.23** are not constructed on these pages.
+
+## Root bibliography / verification scope
+
+- **Steinberg:** Robert Steinberg, *Regular elements of semi-simple algebraic groups*, Publications mathématiques de l'IHÉS 25 (1965), 49–80, §§1–2, especially pp. 50–53. https://www.numdam.org/article/PMIHES_1965__25__49_0.pdf . Matching numbered statements and surrounding paragraphs inspected after freeze.
+- **Moishezon:** B. G. Moishezon, *A projectivity criterion of complete algebraic abstract varieties*, Izv. Akad. Nauk SSSR Ser. Mat. 28:1 (1964), 179–224. Primary publication record: https://www.mathnet.ru/eng/im3069 . Bibliographic lead only; the full English witness has not been located.
+- **Cartier:** Pierre Cartier, *Diviseurs amples*, Séminaire Bourbaki, Exposé 301 (February 1966), printed pp. 351–366, bibliography [6] at p. 366. https://www.numdam.org/item/SB_1964-1966__9__351_0.pdf . The bibliography explicitly records an English mimeographed translation of Moishezon; its initial-page number differs from the original journal record, which is preserved as a bibliographic discrepancy rather than harmonized.
+- **SGA4:** Artin–Grothendieck–Verdier, *Théorie des topos et cohomologie étale des schémas*, Exposé VIII, Remark 3.13 and §§9.4.1–9.4.4; checked in Orgogozo's 2015 transcription, PDF pp. 220 and 237 (internal pp. 216 and 233; original margin pages 379 and 412). https://www.cmls.polytechnique.fr/perso/orgogozo/SGA4/tomes/tome2.pdf . The reference is a later comparison witness, not a source for changing the transcription.
+- **SGA3:** Demazure–Grothendieck, *Schémas en groupes*, Exposé VIII, Remarks 7.10 and 7.13(b)–(c), checked in the Gille–Polo version of 8 November 2009, pp. 29–30. https://webusers.imj-prg.fr/~patrick.polo/SGA3/Exp8-8nov09.pdf . Editorial remarks of that edition are not backdated to the manuscript.
+- **Ayoub-Anabel:** Joseph Ayoub, *Anabelian presentation of the motivic Galois group in characteristic zero*, author-hosted 257-page version, introduction equations (11)–(13), pp. 6–7, Theorem 4.4.2 and Remark 4.4.3, printed p. 234, equations (4.108)–(4.109) (web PDF index P233); Definition 4.4.1 begins on printed p. 233. https://user.math.uzh.ch/ayoub/PDF-Files/Anabel.pdf . The publisher lists online publication on 27 October 2026; this note uses the inspected author version and does not equate its derived group with an underived group without the specified truncation.

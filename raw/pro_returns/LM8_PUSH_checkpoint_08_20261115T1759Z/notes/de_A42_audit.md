@@ -1,0 +1,9 @@
+# Independent D/E-agent audit of A42
+
+Status: PASS, communicated to root and FGH after reading the full draft against A31 and A41.
+
+The actual unipotent closure is formed before weight truncation. Its finite quotient has abelian global Galois image and is locally semistable; the checked A31 lemma therefore makes its whole semistable realization crystalline, with monodromy zero. The induced weight-d subobject surjects onto the leading piece W_d. Exactness of D_st lifts any crystalline leading vector to that subobject. The compact-type edge formula has no shifts zero or one, including the tangential inner correction, so the weight d+2 component of its zero monodromy is exactly N2 of the leading vector. This proves the asserted kernel containment without applying monodromy to an individual etale vector.
+
+The category generated globally by proper homology and the Tate line consists of locally crystalline objects. D_cris is thus a faithful exact F0-valued tensor fibre functor on this category. Its group is the inner form of the connected global monodromy group after base change to F0. Each W_d is a genuine subobject, so its crystalline fibre is stable under that group. The all-weight kernel and tensor-intersection calculation of A41 applies over a characteristic-zero extension. The connected diagonal-projector lemma makes the surviving bivectors scalar Tate. That scalar-character identity descends through the tensor comparison torsor, because scalar matrices are unchanged by conjugation and faithful scalar extension detects equality.
+
+Suggested precision edits, both non-substantive: carry out the intersection and connected-orbit argument over an algebraic closure of F0 and descend; replace the literal exponent chi_c^{,n} by chi_c^n. No substantive gap was found in the requested compatibility passage.

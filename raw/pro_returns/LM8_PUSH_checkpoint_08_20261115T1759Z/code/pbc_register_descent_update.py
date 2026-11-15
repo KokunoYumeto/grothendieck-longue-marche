@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""Register the actual full-group separation of the descent fixed subgroup."""
+import json
+from pathlib import Path
+base=Path(__file__).resolve().parents[1]
+p=base/'notes/pbc_results.json'
+rows=json.loads(p.read_text());ids={r['id']:r for r in rows}
+r=dict(id='C.23',statement='An actual full gentle element has Delta1 but descended Delta0; the descent-fixed subgroup is proper',status='Proved',where_proved='sections/C.tex',depends_on='C.1; P.3 central-refinement argument; R24 E.58 relative lifting and E.65 parity; explicit word certificate',answers='Task C.4; Task C.6; Task C.8; Task C.9; Lead 8; Lead 10; Lead 11; Lead 26(a)',notes='U=H intersect the kernels of all six signed q-phi-S3 substitutions. The word [x^4,(xy^2)^4]^2[x^4,y^4]^2 belongs to U and has old q-value[5I]. Coprime centralizer lifting and the relative theorem construct the full element, retaining all frames. Its descended pure frames and normalized intertwiner areI at level12. Eta=Delta+Delta D is nonzero, continuous, trivial on Galois and Cphi. Does not decide whether Delta D itself iszero, or Delta vanishes on Cphi. Executed pbc_descent_ghost_word.py/.out/.json; parent audit requested.')
+if r['id'] in ids:ids[r['id']].update(r)
+else:rows.append(r)
+ids['C.4'].update(status='Proved',statement='The descent-fixed subgroup Cphi is strictly smaller than the full gentle group',where_proved='sections/C.tex, C.4 and C.23',depends_on='C.1; C.23',notes='Actual full e_U has Delta(e_U)=1 and Delta(D(e_U))=0, so is not fixed. Stronger inclusion Cphi subset kerDelta remains open.')
+ids['C.8']['notes']='C23 proves Cphi proper by an actual full element with Delta1 and descended Delta0. Cphi subset kerDelta, equality with kerDelta, and Delta on GT remain open. C19 already proves kerDelta is not contained in GT.'
+ids['C.6']['notes']='Exact full finite images and least Delta detector remain open. C23 gives an explicit finite characteristic-under-geometric-S3 envelope retaining both descent frames and an actual full nonfixed element; its proof does not infer lifts from finite cycles.'
+ids['C.9']['notes']='C21 determines all CM-coordinate characters; C23 supplies eta=Delta+Delta D, nonzero and Galois-trivial, with Cphi in its kernel. Whether Delta D=0 is unresolved, so independence from Delta is not claimed.'
+p.write_text(json.dumps(rows,indent=2,ensure_ascii=False)+'\n')
+notes=base/'notes/pbc.md';s=notes.read_text()
+s=s.replace('C4=C.4,C.19;', 'C4=C.4,C.19,C.23;').replace('C6=C.6,C.14;', 'C6=C.6,C.14,C.23;').replace('C8=C.8,C.16,C.19–C.21;', 'C8=C.8,C.16,C.19–C.21,C.23;').replace('C9=C.9,C.19,C.21;', 'C9=C.9,C.19,C.21,C.23;')
+marker='## Actual separation of the descent fixed subgroup'
+if marker not in s:
+ s+='''\n\n## Actual separation of the descent fixed subgroup\nC.23 proves Cphi is proper, answering Task C4. The construction refines E58 with U=H intersect all six signed q-phi-S3 kernels. The explicit word w=[x^4,(xy^2)^4]^2[x^4,y^4]^2 has old q-value[5I] and vanishes in every one of those kernels. Mod4, each commutator-square is a universal identity because fourth powers reduce to commuting A3 elements and the principal kernel has exponent2. Mod3, the complete seven-column table is (-I,I,I,I,I,I,I). The executed certificate pbc_descent_ghost_word.py independently checks all2304 pairs modulo4 and records every matrix modulo3. Hence [5I] lies in q(U), a2-group. Coprime r-centralizer lifting in Gamma/O2(U), followed by the full relative theorem, gives actual e_U with f in Rnil(U), original frames([5I],1), and Delta1. The descended conjugators v=phi(f_old),u=phi(rho(f_old)f_old) both vanish in Q12, so its actual pure frames beta_D=v,A_D=v u^-1 have value1; centralizer uniqueness fixes the signed representatives. Its normalized intertwiner isI and DeltaD=0. Thus eta=Delta+Delta D is a nonzero continuous Galois-trivial character whose kernel contains Cphi. Whether DeltaD=0 identically, and hence whether eta=Delta, remains open; no second independent character is claimed.\n\nExploratory pbc_descent_parity.py/.json/.out gives48 necessary finite framed rows,24 of each parity; with both f/h images in Rnil(imageH),6 rows,3 of each parity. This explains why the original E58 residual condition alone did not determine the descended parity. These rows are explicitly not asserted liftable. The new full construction uses a smaller U and the word certificate, not that enumeration.\n'''
+notes.write_text(s)
+print('Registered C23 and updated task rows; total',len(rows))
