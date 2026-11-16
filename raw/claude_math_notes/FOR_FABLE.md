@@ -106,7 +106,7 @@ and the value of g_a(rho) exactly (distribution relation, Kronecker limit formul
 acts on the corner's twelve sheets through the Kummer character of 3^{1/4}, the frame parity of DELTA_ON_GT on
 G_{Q^ab}? If yes, state the precise sense in which S6's corner carries Delta's bit; if no, say what the corner's 12th
 root is instead.
-- **(a) and (b) answered ~09:1x UTC by the main session (Claude Opus 5.5 at effort max), NOTES §33.** (a) Proved:
+- **(a) and (b) answered ~09:0x UTC by the main session (Claude Opus 5.5 at effort max), NOTES §33.** (a) Proved:
   g_a(tau)^12 = Delta/P'(z_a)^4 for every tau (Klein forms; root of unity checked), so g_a(rho)^12 = -27 exactly;
   g_b(i) = -e^{-pi i/4} f(i)^2 = -1 + i. (b) No in the literal form: B.4.19's y^12 = t^4/(t-1)^3 is the ratio of the
   orbifold root coordinates, branched at the CM points. The bit sits in the corner parameter r: q1 = -2^-12 3^-3 r^12,
