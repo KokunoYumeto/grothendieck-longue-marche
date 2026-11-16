@@ -1,0 +1,73 @@
+\subsection{The two-prime class quotient persists after every finite enlargement}
+
+\begin{statement}{A.153}{Proved}
+{Persistence with the actual cyclotomic residue-degree maps}
+Keep the fields \(k,F,L_n\) and the integer \(n_0\) of A.151.
+Let \(T\) be any fixed finite set of rational places containing
+\(2,3,11,59,\infty\), and let \(T_n\) be its inverse image in \(L_n\).
+Put
+\[
+ n_T=\max\left(\{n_0\}\cup
+       \{1+v_3(p^2-1):p\in T\setminus\{3,\infty\}\}\right).
+\tag{A.153.1}
+\]
+For \(n\geq n_T\), the same field \(FL_n/L_n\) is a
+nontrivial unramified cyclic cubic extension split at every place of
+\(T_n\).  Consequently its actual Artin characters give surjections
+\[
+ \begin{gathered}
+ \operatorname{Cl}(\mathcal O_{L_n,T_n})\{3\}
+                       \longrightarrow\operatorname{Gal}(F/k)=\Z/3,\\
+ \varprojlim_{n\geq n_T}
+       \operatorname{Cl}(\mathcal O_{L_n,T_n})\{3\}
+                       \longrightarrow\Z/3,
+ \end{gathered}
+\tag{A.153.2}
+\]
+where every transition in the inverse limit is ideal norm.
+Thus no fixed finite enlargement of the allowed support makes the
+three-primary class groups of these Galois layers vanish eventually.
+This does not give a nonzero value of the target norm obstruction.
+\end{statement}
+\begin{proof}
+A.151 already proves the assertion at \(2,3,11,59,\infty\),
+as well as \(F\cap L_n=k\).
+Consider a new rational prime \(p\in T\), and a place \(v\) of
+\(k\) above it.  The extension \(F/k\) is unramified at \(v\);
+its local degree is either one or three.
+For \(p\ne3\), the cyclotomic extension
+\(\Q_p(\mu_{3^n})/\Q_p\) is unramified, of degree
+\(\operatorname{ord}_{3^n}(p)\).
+If \(p\equiv1\pmod3\), this order has three-part
+\(3^{\max(0,n-v_3(p-1))}\).
+If \(p\equiv-1\pmod3\), its order is
+\(2\cdot3^{\max(0,n-v_3(p^2-1))}\).
+These identities follow by applying the binomial expansion successively
+to \(p\), respectively \(p^2\), in \(1+3\Z_3\).
+Since \([k_v:\Q_p]\) is respectively one or two, (A.153.1) makes
+the residue degree of
+\(k_v(\mu_{3^n})/k_v\) divisible by three.
+
+Inside a fixed local algebraic closure, the unramified extension of
+each finite degree is unique.  Hence the unramified cubic local
+extension supplied by \(F\), when nontrivial, lies in
+\(k_v(\mu_{3^n})\), and therefore in every completion of \(L_n\)
+above \(v\).  This is an actual local-field inclusion; it proves that
+\(FL_n/L_n\) splits at every new place of \(T_n\).
+
+The Artin maps therefore kill both principal ideals and all primes
+inverted in \(\mathcal O_{L_n,T_n}\).
+Their restriction to the literal common field \(F\) is unchanged.
+The Frobenius identity (A.151.9), or the norm--Artin diagram of
+\cite[V, Proposition 3.3]{MilneCFT} with the abelian compositum
+specified there, proves their norm compatibility.
+For each fixed element of \(\Z/3\), the corresponding finite class
+fibres are nonempty.  A point at a largest finite height supplies all
+lower points by norm, so compactness of the product of those finite
+fibres proves the second surjection in (A.153.2).
+\end{proof}
+
+The exact residue-order checks are retained in
+\path{code/two_prime_finite_support_persistence_certificate.py}
+and its output.  They certify the finite arithmetic used in
+(A.153.1); the proof supplies the class-field and inverse-limit maps.

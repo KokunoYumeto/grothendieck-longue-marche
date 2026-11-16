@@ -1,0 +1,465 @@
+\subsection*{An exact common-kernel counterexample}
+
+\statement{B.57}{Refuted}{P7: the three resolvent kernels have a strictly larger intersection}
+With the corrected third target of B.53, the proposed equality
+\[
+ \mathcal K=
+ \ker\mathfrak T_+\cap\ker\mathfrak T_-\cap\ker\mathfrak T_2
+                         \quad\hbox{inside }\mathcal H
+\]
+is false. There is a nonempty specified set of full peripheral
+lifts $\mathscr C\subset\mathcal H$ such that every
+$\Phi\in\mathscr C$ satisfies
+\[
+ \mathfrak T_+(\Phi)=\mathfrak T_-(\Phi)
+      =\mathfrak T_2(\Phi)=1,\qquad \Phi\notin\mathcal K.     \tag{B.57.1}
+\]
+Each such element has a nontrivial tripod action, detected by
+the outer automorphism of $A_9$ induced by an odd transposition.
+In particular the common kernel is infinite and contains a
+closed copy of $\mathbb Z_2$. This decides its nontriviality,
+but does not decide whether $\mathcal K$ is trivial.
+
+\begin{proof}
+We use an infinite retained quotient to impose all three
+resolvent identities exactly. A finite alternating-group
+quotient supplies the nongeometric witness. The central
+refinement is constructed explicitly before applying the
+closed-normal lifting criterion of A.3 and A.34.
+
+\paragraph{The retained quotient and the fifteen normal kernels.}
+Use $J=\widehat{\Gamma_T}=C_2\amalg C_3\amalg C_3$ from B.53
+and denote its three filling maps by
+\[
+ \rho_+,\rho_-:J\twoheadrightarrow\widehat B,\qquad
+ \rho_2:J\twoheadrightarrow D_2=C_3\amalg C_3.
+\]
+Let $L_i=\widehat K\cap\ker\rho_i$, for
+$i\in\{+,-,2\}$. These are closed normal subgroups of
+$\widehat K$, invariant under conjugation by $J$.
+Take one representative of each of the five cosets of $J$
+in $\widehat B$ and put
+\[
+ V=\bigcap_{g\in\widehat B/J}\ \bigcap_{i\in\{+,-,2\}}
+                              gL_i g^{-1},\qquad
+ C=\widehat B/V.                                          \tag{B.57.2}
+\]
+Conjugation permutes the fifteen subgroups in this
+intersection. Thus $V$ is closed and normal in $\widehat B$,
+and $V\leq\widehat K$. In particular $C$ still maps onto
+$A_5$. Any automorphism of $\widehat B$ inducing the identity
+on $C$ induces the identity on all three filled groups:
+for $j\in J$, its image differs from $j$ by an element of
+$V\subseteq L_i$. We shall retain this stronger, based
+identity, not just finitely many target tests.
+
+Here are the exact images and cusp distributions for these
+fillings. In the finite quotient $J/\widehat K=A_4$,
+the normal closure of either order-three factor is all
+of $A_4$. Therefore
+\[
+                 \rho_+(\widehat K)=\widehat B
+                      =\rho_-(\widehat K).                \tag{B.57.3}
+\]
+The cover $\widehat K\leq J$ has degree twelve, with twelve
+cusps of width one relative to the unique cusp of $J$.
+In either image (B.57.3), their meridians are consequently
+conjugates of the one target cusp meridian.
+
+The normal closure of the order-two factor in $A_4$ is
+its $V_4$. Hence
+\[
+ \rho_2(\widehat K)=P_2
+   =\ker\bigl(C_3\amalg C_3\longrightarrow C_3,\
+                        a\mapsto1,\ b\mapsto-1\bigr).
+                                                               \tag{B.57.4}
+\]
+This is the full free three-cusp group of rank two.
+The twelve cusps of $\widehat K$ map to its three cusp
+classes in blocks of four, each meridian with exponent
+one. One may see the blocks either from the $V_4$ fibres
+of $A_4\to C_3$, or from the index-three covering of the
+$(3,3,\infty)$ orbifold. Both (B.57.3) and (B.57.4)
+also hold for all five conjugates of the cover.
+
+\paragraph{A specified alternating-group quotient of a tripod.}
+Choose a three-subset $t$ of the twelve vertices consisting
+of an antipodal pair and one further vertex. Its stabilizer
+in $A_5$ is trivial. Indeed a permutation preserving $t$
+must preserve its unique antipodal pair; the normalizer
+$D_5$ of the corresponding $C_5$ acts freely on the other
+ten vertices. The orbit of $t$ therefore has sixty members.
+This also follows directly from the twelve-coset
+permutation certificate described below.
+
+Let $\pi_t:\widehat K\twoheadrightarrow F_t$ kill the
+other nine cusp classes and choose positive meridians
+$x,y,z=(xy)^{-1}$ for the resulting tripod. In the
+natural nine-letter action, with the rightmost permutation
+applied first, put
+\[
+ X=(1\,2\,3\,4\,5\,6\,7),\qquad
+ Y=(1\,2\,5\,4\,3\,8\,9),\qquad Z=(XY)^{-1}.
+                                                               \tag{B.57.5}
+\]
+The exact enumeration in
+\texttt{work\_CE/code/check\_common\_kernel\_alt9.py}
+proves
+\[
+ \langle X,Y\rangle=A_9,\qquad
+        X,Y,Z\hbox{ all have cycle type }(7,1,1).           \tag{B.57.6}
+\]
+Thus the map
+\[
+       q_0:\widehat K\xrightarrow{\pi_t}F_t
+                     \twoheadrightarrow S=A_9,
+                  \qquad x\mapsto X,\quad y\mapsto Y      \tag{B.57.7}
+\]
+is onto. It kills precisely nine of the twelve cusp
+classes, and is nontrivial on each of the three retained
+ones.
+
+Every one of the fifteen normal subgroups in (B.57.2)
+has image $S$ under $q_0$. Since $S$ is simple, a proper
+image would be trivial, so $q_0$ would factor through
+the corresponding filled image. For a filling of an
+order-three factor, (B.57.3) would then identify all
+twelve cusp images up to conjugacy. A killed meridian
+would kill the target cusp $\tau$; since
+$\widehat B/\overline{\langle\!\langle\tau\rangle\!\rangle}=1$,
+the entire factor map would be trivial, contrary to
+(B.57.6). For the order-two filling, every one of the
+three blocks of four in (B.57.4) contains a killed
+meridian: only three meridians are retained in total.
+Factoring would therefore kill all three peripheral
+generators of $P_2$, again a contradiction.
+The argument is unchanged by any of the five
+conjugations.
+
+Write these fifteen normal subgroups as $N_1,\ldots,N_{15}$.
+The iterated closed commutator
+\[
+        [\,\cdots[[N_1,N_2],N_3],\ldots,N_{15}\,]
+\]
+is contained in their intersection $V$ and has image
+$S$ under $q_0$, because $[S,S]=S$ at every step.
+Consequently
+\[
+                              q_0(V)=S.                  \tag{B.57.8}
+\]
+This is a direct commutator argument. It does not use
+an invalid interchange of image and intersection.
+
+\paragraph{The induced quotient has its entire perfect base.}
+Induce (B.57.7) from the normal subgroup $\widehat K$
+of index sixty. The usual coset formula gives a
+continuous homomorphism
+\[
+ q:\widehat B\longrightarrow S^{A_5}\rtimes A_5.
+\]
+For example, with representatives $t_\omega$ mapping
+to $\omega\in A_5$, its base coordinates are
+$q_0(t_\omega b\,t_{\omega\bar b}^{-1})$, and the
+permutation coordinate is $\bar b=q_5(b)$; this formula
+uses the regular right action on the coordinates, and
+we choose $t_1=1$.
+On $\widehat K$, the sixty coordinate kernels are
+distinct. Their nonzero cusp supports are the sixty
+distinct triples in the orbit of $t$.
+
+For clarity, distinct kernels suffice for the complete
+product here. Given one coordinate $j$, each of the
+other coordinate kernels has image $S$ in coordinate
+$j$; otherwise that maximal normal subgroup would
+equal the $j$th kernel. Their iterated commutator is
+contained in all the other kernels and still maps
+onto $S$ in coordinate $j$. Thus the image contains
+the whole $j$th factor alone. Doing this for every
+$j$ proves
+\[
+ q(\widehat K)=M=S^{60},\qquad
+ q(\widehat B)=E=M\rtimes A_5.                             \tag{B.57.9}
+\]
+The latter equality follows because the image contains
+the entire base and surjects onto the permutation group.
+This is the full regular wreath product, not an
+unspecified subdirect subgroup.
+
+By (B.57.8), $q(V)$ projects onto the coordinate
+corresponding to $q_0$ and, by normality and transitivity,
+onto all sixty coordinates. It is normal in $E$ and
+therefore normal in $M$. Normal subgroups of a product
+of nonabelian finite simple groups are products of
+factors. It follows that
+\[
+                               q(V)=M.                   \tag{B.57.10}
+\]
+One can also prove the last conclusion by commuting
+with each individual factor of $M$: a surjective
+projection of the normal subgroup supplies that
+entire factor.
+
+Put $N=V\cap\ker q$. Equation (B.57.10) proves that
+the joint quotient is exactly
+\[
+ G=\widehat B/N
+       =C\times_{A_5}E
+       \cong M\rtimes C,                                  \tag{B.57.11}
+\]
+where $C$ acts through $A_5$ by regular coordinate
+permutations. To check surjectivity directly, lift
+$c\in C$ to $b\in\widehat B$ and correct the difference
+between $q(b)$ and the specified compatible element
+of $E$ by an element of $V$, using (B.57.10).
+The section $C\to G$ in (B.57.11) is
+$c\mapsto(c,(1,\bar c))$.
+
+\paragraph{The finite automorphism and its lifted classes.}
+Let $\eta_0$ be conjugation on $S=A_9$ by the
+transposition $(1\,2)\in S_9$. It is outer: an inner
+realization would make an odd permutation centralize
+$A_9$, whereas that centralizer in $S_9$ is trivial.
+The certificate checks this last assertion already
+on the specified generators $X,Y$.
+Apply $\eta_0$ to every factor of $M$ and the identity
+to $A_5$. This gives an automorphism $\eta$ of $E$,
+and, by (B.57.11), an automorphism
+\[
+                     \alpha=\eta_M\rtimes\operatorname{id}_C
+                                     \quad\hbox{of }G.     \tag{B.57.12}
+\]
+
+The one finite-group input about a universal cover is
+\[
+                H_2(A_9,\mathbb Z)=C_2,\qquad
+                         \widetilde S=2.A_9.
+                                                               \tag{B.57.13}
+\]
+This is the Schur multiplier and double cover recorded
+in the primary ATLAS entry for $A_9$.\cite{CEAtlasA9}
+An automorphism lifts uniquely to the universal central
+cover of a perfect group. Hence $\eta_0$ lifts to
+$\widetilde\eta_0$ on $\widetilde S$ and fixes its central
+$C_2$ pointwise. The universal central cover of $M$ is
+\[
+                       \widetilde M=(2.A_9)^{60}.
+\]
+For a product of perfect groups, preimages of different
+factors commute in every central extension: their
+commutator is central and factors through the
+abelianizations, which vanish. This proves the
+displayed product assertion directly. The diagonal
+lift $\widetilde\eta_M$ consequently fixes the full
+central kernel $C_2^{60}$ pointwise.
+
+Every seven-cycle in $A_9$ is conjugate in $A_9$ to
+its $\eta_0$-image. Indeed it has two fixed letters;
+their transposition is an odd element of its
+$S_9$-centralizer. Multiplying $(1\,2)$ by that
+centralizer element produces an even conjugator.
+Moreover $\widetilde\eta_0$ preserves the conjugacy
+class of \emph{each} element over a seven-cycle.
+Of the two lifts of that cycle, exactly one has
+order seven. Conjugacy of the base elements and
+uniqueness of this odd-order lift give conjugacy
+of the order-seven lifts. Multiplication by the
+fixed central involution gives the same result
+for the other lift. The two elements over the
+identity are central and fixed as well. Thus
+\[
+ \widetilde\eta_0\hbox{ preserves every lift class
+                 over a seven-cycle or the identity}.   \tag{B.57.14}
+\]
+
+\paragraph{A central-extension lemma with no finite-index assumption.}
+Consider the actual central refinement
+\[
+ \mathscr E=\widehat B/[N,\widehat B],\qquad
+ Z_N=N/[N,\widehat B],\qquad
+                   1\to Z_N\to\mathscr E\to G\to1.
+                                                               \tag{B.57.15}
+\]
+All commutator subgroups here are closed.
+Let $\mathscr M$ be the preimage of $M$.
+The universal property of $\widetilde M$ gives a
+canonical homomorphism $\widetilde M\to\mathscr M$;
+let $M^\#$ be its image. It is a finite perfect group
+mapping onto $M$, and
+\[
+                   \mathscr M=M^\# Z_N.
+\]
+These facts do not require $\mathscr E$ or $C$ to
+be finite. For example the universal property follows
+from the free-presentation construction
+$[F,F]/[F,R]\to M$ of the universal central cover:
+lift the free generators into the central extension
+and restrict to the commutator subgroup. Independence
+and uniqueness follow from perfectness.
+
+Let $C^\#$ be the preimage in $\mathscr E$ of the
+specified section $C\leq G$. Then
+\[
+       \mathscr E=M^\# C^\#,\qquad
+       M^\#\cap C^\#\subseteq Z_N.                         \tag{B.57.16}
+\]
+The kernel of $\widetilde M\to M^\#$ is central.
+Since $\widetilde\eta_M$ fixes the entire universal
+central kernel, it descends to an automorphism
+$\eta^\#$ of $M^\#$, fixing $M^\#\cap C^\#$.
+It also commutes with the conjugation action of
+$C^\#$ on $M^\#$. On $M$ that action is a factor
+permutation, with which the diagonal $\eta_M$
+commutes. Its lift to the perfect cover is unique:
+two lifts differ by a homomorphism from a perfect
+group to a central abelian group, hence coincide.
+It follows that
+\[
+              \alpha^\#(mc)=\eta^\#(m)c
+                    \quad(m\in M^\#,\,c\in C^\#)           \tag{B.57.17}
+\]
+is a well-defined continuous automorphism of
+$\mathscr E$ covering (B.57.12). Equation (B.57.16),
+the fixed intersection, and the commuting actions
+verify respectively its definition, its independence
+of the decomposition, and its multiplication law.
+Its inverse is obtained in the same way.
+
+\paragraph{The three actual classes in the central refinement.}
+It remains to verify the precise conjugacy conditions
+in $\mathscr E$, since an automorphism of an abstract
+convenient central cover of $E$ would not suffice.
+
+In the regular wreath product (B.57.9), the image of
+$s$ is conjugate by $M$ to the pure permutation
+$\bar s$, and the image of $r$ is conjugate by $M$
+to the pure permutation $\bar r$. Indeed their
+permutations have respectively only two-cycles and
+three-cycles, and the cycle products in the base
+are all one because $s^2=r^3=1$. Lifting these
+conjugators to $M^\#$ conjugates the corresponding
+elements of $\mathscr E$ into $C^\#$. They are
+then fixed by (B.57.17). Thus $\alpha^\#$ sends
+both actual elements $s,r$ of $\mathscr E$ to
+conjugates by elements of $M^\#$.
+
+Write the actual cusp in $\mathscr E$ as
+$\tau=m^\#c^\#$, with $m^\#\in M^\#$ and
+$c^\#\in C^\#$. Conjugation by $c^\#$ on $M^\#$
+is the lift of the permutation $\bar\tau\in A_5$,
+of order five. Choose a lift $\widetilde m$ of
+$m^\#$ to $\widetilde M$. Twisted conjugacy in a
+permutational wreath product is determined by the
+conjugacy classes of the products around each
+permutation cycle. This follows by solving the
+coordinate conjugator equation successively along
+each cycle; its last equation is exactly conjugacy
+of the cycle product.
+
+The twelve cycles of $\bar\tau$ on the sixty
+coordinates correspond to the twelve cusp classes
+of $\widehat K$. Their base cycle products in $M$
+are the $q_0$-images of conjugates of $\tau^5$.
+By (B.57.7) each is either the identity or a
+seven-cycle. The corresponding products of
+$\widetilde m$ in $\widetilde M$ therefore lie over
+precisely those elements. By (B.57.14), every such
+product is conjugate to its $\widetilde\eta_0$-image.
+The coordinate equations give
+$\widetilde u\in\widetilde M$ such that
+\[
+ \widetilde\eta_M(\widetilde m)
+       =\widetilde u\,\widetilde m\,
+                              \bar\tau(\widetilde u^{-1}).
+\]
+Projecting to $M^\#$, and recalling the action of
+$c^\#$, yields
+\[
+                         \alpha^\#(\tau)=u\tau u^{-1}.
+                                                               \tag{B.57.18}
+\]
+This calculation takes place above the actual source
+element $\tau$. It is still valid if the central
+quotient defining $M^\#$ couples different factors,
+because it was first solved in the full product
+$\widetilde M$ and then projected.
+
+\paragraph{The full lift and its nongeometric tripod.}
+Equations (B.57.17)--(B.57.18) give an automorphism
+of the actual group $\widehat B/[N,\widehat B]$
+preserving the conjugacy classes of $s,r,\tau$,
+with literal conjugators there. The closed-normal
+modular version of the central-quotient criterion
+in A.3 and A.34 therefore gives a continuous
+automorphism $\Phi$ of $\widehat B$ inducing
+$\alpha$ on $\widehat B/N$, with those conjugators
+projected to $\widehat B/N$ and then lifted.
+The criterion does not assert that the full lift
+retains the entire chosen automorphism $\alpha^\#$
+of the central refinement; only its quotient
+automorphism $\alpha$ and the projected conjugators
+are needed here.
+Let $\mathscr C$ be this nonempty set of
+full lifts, regarded in the peripheral outer group.
+By B.6 its elements belong to $\mathcal H$.
+
+Their action on $C=\widehat B/V$ is the identity.
+The observation after (B.57.2) gives the three exact
+identities in (B.57.1), with the target types and
+geometric markings of B.53. The action on $A_5$ is
+also the identity, and the multiplier is one, so
+the individual cusp classes of $\widehat K$ are
+fixed and the tripod quotient $\pi_t$ is preserved.
+On the identity coordinate of (B.57.9),
+\[
+                   q_0\circ\Phi|_{\widehat K}
+                                =\eta_0\circ q_0.         \tag{B.57.19}
+\]
+If the induced outer action on $F_t$ were trivial,
+a representative would be conjugation by an element
+of $F_t$. Applying its quotient map onto $A_9$
+would make $\eta_0$ inner, contradicting its
+construction. Thus this tripod action is nontrivial.
+B.10 says every element of $\mathcal K$ has trivial
+tripod actions, proving $\Phi\notin\mathcal K$.
+
+In particular $\Phi\ne1$. We specify the finite outer
+quotient used in the final assertion. Consider the
+closed subgroup of peripheral outer classes admitting
+a representative which induces the identity on $A_5$
+and preserves $\ker q_0\leq\widehat K$.
+Two such representatives of the same outer class differ
+by conjugation by an element of $\widehat K$: its image
+must centralize $A_5$, which has trivial center.
+This ambiguity induces an inner automorphism of $A_9$.
+There is therefore a well-defined continuous map from
+that closed subgroup to $\operatorname{Out}(A_9)$.
+It takes $\Phi$ to the nontrivial outer transposition,
+and it is defined on the entire closed cyclic subgroup
+$L=\overline{\langle\Phi\rangle}$.
+R1 makes $\mathcal H$ torsion-free, so $L$ is infinite.
+The indicated finite quotient of $L$ has order two.
+A torsion-free procyclic profinite
+group with a quotient of even order has a closed
+factor isomorphic to $\mathbb Z_2$. This factor
+lies in the common kernel, which proves the last
+assertion of the statement. Such a $\Phi$ is also
+outside the Galois image: its multiplier is one,
+so the arithmetic identity in B.53 would make
+$\mathfrak T_+(\Phi)=\Phi$ there, in conflict with
+(B.57.1) and $\Phi\ne1$.
+\end{proof}
+
+The finite certificate enumerates all $181440$ elements
+generated by (B.57.5), checks the three cycle types and
+explicit even conjugators, checks the trivial joint
+centralizer in $S_9$, and verifies the sixty-element
+icosahedral tripod orbit and the finite $A_4$ normal
+closures. The universal multiplier (B.57.13) is the
+separately cited primary finite-group input. The full
+counterexample is the nonempty lift set defined by
+(B.57.2), (B.57.7), (B.57.11), and (B.57.17); no
+limiting compatibility is inferred from a finite
+sample. The strict containment in (B.57.1) leaves
+the original centralizer problem for $\mathcal K$
+undecided, and supplies no pentagon assertion.
+

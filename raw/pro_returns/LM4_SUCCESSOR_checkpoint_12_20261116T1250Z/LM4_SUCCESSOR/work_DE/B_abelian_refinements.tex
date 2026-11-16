@@ -1,0 +1,175 @@
+\subsection*{All abelian refinements of the actual product}
+
+\statement{B.58}{Proved}{Rigid-seven tests detect ambient abelianization integrally}
+Let $P=\Gamma_{0,12}$, and let $\mathscr S_7$ be the twelve
+rigid seven-puncture subsets in B.32 and B.56.
+The combined forgetful homomorphism induces a split injection
+of free abelian groups
+\[
+ H_1(P,\mathbb Z)\cong\mathbb Z^{54}
+ \longrightarrow
+ \prod_{S\in\mathscr S_7}H_1(P\Gamma_{0,S},\mathbb Z)
+ \cong\mathbb Z^{168}.                                      \tag{B.58.1}
+\]
+Tensoring with $\mathbb Z/m$ retains injectivity for every
+$m\geq1$.  The same holds with $\widehat{\mathbb Z}$.
+Consequently the actual residual centralizer satisfies
+\[
+ \mathcal K\subseteq
+ \ker\bigl(\widehat P\longrightarrow
+                    \widehat{P^{\mathrm{ab}}}\bigr)
+ =\overline{[P,P]}.                                         \tag{B.58.2}
+\]
+For any two finite-index subgroups $L_1,L_2\leq P$ with
+$[P,P]\subseteq L_1\cap L_2$, the product
+\[
+       (H_T\cap L_1)(H_5\cap L_2)                           \tag{B.58.3}
+\]
+is closed in the full profinite topology of $P$.
+In particular all one-factor refinements
+$(H_T\cap L)H_5$ with $[P,P]\subseteq L\leq_f P$ are closed.
+This proves a family of finite-index refinements of B.52,
+but does not prove the refinements associated to arbitrary
+nonabelian finite quotients.
+
+\begin{proof}
+\emph{The integral lattice and its forgetful maps.}
+Normalize three labelled points $a,b,c$ to
+$\infty,0,1$.  Then $M_{0,n}$ is the configuration space
+of $n-3$ labelled points of $\mathbb C\setminus\{0,1\}$.
+Its integral first homology is freely detected by the
+winding numbers of each variable point about $0$ and $1$,
+and by each difference of two variable coordinates.
+One direct proof uses the forgetful fibrations: their fibres
+are punctured planes, their pure monodromies act trivially
+on the first homology of the fibre, and they have sections
+obtained by adding a point sufficiently far away.
+Induction gives precisely
+$2(n-3)+\binom{n-3}{2}=n(n-3)/2$ independent coordinates.
+Equivalently these are the pair linkings of the $n-1$
+finite normalized coordinates, omitting the constant pair
+$(b,c)$.  These coordinates describe the pure sphere
+\emph{mapping class} group; no central order-two sphere
+braid factor is retained.
+
+Write $e_{ij}=e_{ji}$ for a formal original pair coordinate.
+For distinct finite normalized labels $i,j$, the corresponding
+linking covector in the original coordinates is
+\[
+ v(a,b,c;i,j)
+   =e_{ca}-e_{cb}+e_{ba}+e_{ij}-e_{ia}-e_{ja}.                \tag{B.58.4}
+\]
+Indeed, if the original coordinates are $x_i$, their
+normalized difference, up to a constant sign, is
+\[
+ z_i-z_j=
+ \frac{(x_c-x_a)(x_b-x_a)(x_i-x_j)}
+      {(x_c-x_b)(x_i-x_a)(x_j-x_a)}.
+\]
+Taking winding numbers proves (B.58.4).
+Cancellation also covers pairs incident to $b$ or $c$.
+The omitted pair $(b,c)$ has covector zero.
+
+For the ambient integral coordinates take $(a,b,c)=(2,4,6)$.
+Let $\mathcal E$ be the $54$ unordered pairs of
+$\{1,\ldots,12\}\setminus\{2\}$ other than $(4,6)$,
+in lexicographic order.  Form the $54\times66$ matrix $A$
+whose rows are $v(2,4,6;i,j)$ for $(i,j)\in\mathcal E$.
+On the columns $\mathcal E$ its restriction is the identity.
+For each $S\in\mathscr S_7$, in lexicographic order, choose
+the three smallest labels as $a,b,c$ and form its fourteen
+rows (B.58.4), also in lexicographic pair order.  This gives
+a completely specified $168\times66$ matrix $R$.
+Every row annihilates the sphere vertex relations.
+If $M$ is the restriction of $R$ to its columns
+$\mathcal E$, then direct integer arithmetic gives
+\[
+                         MA=R.                             \tag{B.58.5}
+\]
+Thus $M$ is the matrix of the actual homomorphism (B.58.1)
+in the specified integral coordinates.
+
+The exact certificate
+\nolinkurl{check_ambient_rigid7_abelian.py}
+constructs these matrices from the twelve subsets already
+certified in \nolinkurl{rigid7_subsets.json}.
+It verifies (B.58.5), computes rank $54$, and gives
+$54$ Smith invariant factors all equal to $1$.
+More concretely, the first $54$ independent rows of $M$
+form a square matrix of determinant $-1$.
+The complete matrix, the selected row indices, and its
+\emph{integer inverse} are supplied in
+\nolinkurl{ambient_rigid7_abelian_certificate.json}.
+
+The supplied integer inverse is checked by ordinary
+integer multiplication.  Composing it with the selected
+coordinate projection gives an integral left inverse to $M$.
+The independent program
+\nolinkurl{code/verify_B58_certificate.py}
+also reconstructs the subsets from the six order-five
+subgroups and verifies both products of the displayed
+inverse matrices; its standard output is retained.
+The first program's actual standard output is
+\nolinkurl{check_ambient_rigid7_abelian.out}.
+The integral left inverse remains a left inverse over
+every coefficient ring asserted in the statement.
+
+\emph{The residual group and the refinements.}
+B.32 shows that every element of $\mathcal K$ is killed
+by each of these twelve rigid forgetful maps.
+Passing to abelianizations and using the
+$\widehat{\mathbb Z}$ version of (B.58.1) proves
+(B.58.2).  The equality of its kernel with
+$\overline{[P,P]}$ follows directly from the universal
+property of the full profinite completion of the quotient
+$P/[P,P]$.
+
+Let $g\in P$ lie in the closure of (B.58.3).
+B.52 first gives its unique discrete factorization
+$g=hj$ with $h\in H_T$ and $j\in H_5$.
+Compactness of the completed factors also gives
+$g=\hat h\hat j$, with
+$\hat h\in\overline{H_T\cap L_1}$ and
+$\hat j\in\overline{H_5\cap L_2}$.
+Then
+\[
+ h^{-1}\hat h=j\hat j^{-1}
+ \in\overline H_T\cap\overline H_5=\mathcal K.
+\]
+By (B.58.2) this element belongs to both
+$\overline L_1$ and $\overline L_2$.
+Hence $h\in P\cap\overline L_1=L_1$ and
+$j\in P\cap\overline L_2=L_2$.
+Therefore $g$ belongs to (B.58.3), which proves its closure.
+
+\emph{Tetrahedral cross-check.}
+The separate certificate
+\nolinkurl{check_full_pair_linking.py} computes the orders
+of all $55$ rational differences of the eleven finite
+normalized orbit points at all thirteen basis meridians
+of $S_T$.  The calculations use the exact number field
+$\mathbb Q(i,\sqrt3)$.
+The restriction to the rigid seven labels agrees with
+all thirteen independently certified braid-linking vectors
+from B.56.  Both the full and restricted matrices have rank
+six; an explicit integer matrix expresses six times the
+full matrix in terms of six rows of the restricted matrix.
+This proves the same abelian vanishing on the completed
+tetrahedral subgroup, including at the primes two and
+three, since multiplication by six on
+$\widehat{\mathbb Z}$ is injective.
+The complete rational differences, valuation matrices and
+reconstruction are in
+\nolinkurl{full_pair_linking_certificate.json} and the
+actual output is \nolinkurl{check_full_pair_linking.out}.
+This second computation is not needed for the stronger
+ambient split-injection argument.
+\end{proof}
+
+In particular, none of the nonzero degree-one fixed classes
+in $\mathbb Z_\ell^2$ from B.20 is the image of an element
+of the actual $\mathcal K$.
+This makes the failure of a degree-one fixed-point lifting
+inference concrete.  It does not show that $\mathcal K$ is
+trivial or perfect, and it does not determine its image
+in every finite nonabelian quotient of $P$.

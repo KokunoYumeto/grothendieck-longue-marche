@@ -1,0 +1,134 @@
+A noncentral obstruction to an unrestricted equivariant central-lifting rule
+16 November 2026. Research note; no source-specific R2 refutation.
+
+1. An elementary family, and its smallest useful member.
+Let p be odd, k=F_(p^2), sigma(a)=a^p, and let epsilon:PGL2(k)->C2
+be the determinant square character. In PGL2(k) semidirect <sigma>, put
+  E={(g,e): epsilon(g)=e},   N=PSL2(k).
+Then 1->N->E->C2->1 is exact. A representative of its outer coset is
+(diag(eta,1),sigma), where eta is a nonsquare in k. For p=3 this is
+M10=A6.2c, of order720, with N=PSL2(9)=A6 of order360.
+
+No element of E\N has order two. Indeed, if (g,sigma)^2=1 projectively,
+then a matrix representative G satisfies G G^sigma=lambda I. Applying
+sigma and comparing with G^-1(G G^sigma)G shows lambda^sigma=lambda,
+so lambda belongs F_p^*. Taking determinants gives
+ Norm_(k/Fp)(det G)=lambda^2.
+The quadratic character of Norm(t) equals the quadratic character of t,
+since Norm(t)^((p-1)/2)=t^((p^2-1)/2). Hence det G is a square, contrary
+to the chosen diagonal-field coset. This is a direct calculation, not
+an inference from a group name or a character-table label.
+
+The independent certificate uses k=F3[i]/(i^2+1), encoded a+3b, and all
+720 projective matrices. Their action on P1(k) is faithful; adjoining
+Frobenius gives1440 distinct permutations. The diagonal-field subgroup
+has720 elements. Its kernel has orders
+  1:1, 2:45, 3:80, 4:90, 5:144;
+the other coset has180 elements of order4 and180 of order8. Perfectness,
+centerlessness, and simplicity of the kernel are verified directly:
+elementary upper/lower unipotents generate360, their commutators generate
+360, and the normal closure of every nonidentity conjugacy-class
+representative is the whole kernel. Thus all45 involutions of E lie in N.
+
+2. What a scalar quotient loses.
+Because N is perfect, [N,E]=N. Every homomorphic image of E in which
+the image of N is central kills N altogether. Thus the maximal such
+quotient is simply E/[N,E]=C2, where the nontrivial element is an
+involution. Nevertheless this involution has no lift to E, even without
+any generation or peripheral conditions.
+
+For the source R=C2 coproduct C2 coproduct C2, send all three named
+reflections to the nontrivial element of C2. This is an epimorphism and
+all pair products map to1. The embedding problem through E has zero
+weak solutions: already one reflection cannot lift. The corresponding
+problem through the maximal central pushout has a solution (indeed,
+exactly one tuple over the prescribed reflection heads). Relative
+perfectness of a finite kernel therefore cannot by itself make an
+equivariant lifting problem central.
+
+This is deliberately NOT a counterexample to A.3 or R2. E is not a
+quotient of R, since all its involutions generate a subgroup of N.
+Nor has this note identified the actual universal central refinement
+of a source quotient R/W: there is no epimorphism R->E to begin with.
+The ordinary finite count in A.3 starts with an ACTUAL source
+quotient and an existing epimorphism; those hypotheses may not be
+removed. Any proposed reflection-source version must preserve that
+hypothesis and must at least impose the lifting of the relevant
+involution classes, in addition to a scalar condition.
+
+3. Negative peripheral classes do not repair the missing involution.
+There is a generating pair x,y in N for which x,y,z=(xy)^-1 all have
+order4. The exact certificate supplies that pair and elements a_i inN
+such that, for beta=conjugation by the chosen diagonal-field h,
+ beta(x_i)=a_i x_i^-1 a_i^-1,  x_i=x,y,z.
+The outer class of beta has order2 because h^2 belongsN. It has no
+involutory representative: every representative is conjugation by
+nh, n inN, and the center of E is trivial; all nh have order4 or8.
+Hence even negative peripheral class compatibility on an actual
+free rank-two finite head does not imply an involutory action.
+This remains finite data; it is not claimed to arise from a full
+GT0 element, a canonical R1 word, or an actual peripheral full lift.
+The actual source central gate can also be audited, and FAILS for this
+particular head. Lift x,y to X,Y in SL2(F9) and put Z=(XY)^-1. Each
+projective order4 lift has nonzero trace in iF3. The semilinear lift of
+beta sends its trace to its negative, while inversion preserves trace.
+Consequently, if a full negative peripheral source map induced beta,
+the ratio between its SL2 evaluation and the semilinear evaluation
+would be a central character taking value -1 on EACH of x,y,z. Their
+product is1, a contradiction. The exact matrices and traces are stored.
+Thus this refinement is the same spin gate as A.28, now in a direct
+SL2(F9) model; it does not create a counterexample to source-specific
+R2. The new point of the broad embedding example remains the explicit
+noncentral extension and failure of involution lifting despite perfect
+kernel, before an actual source epimorphism is imposed.
+
+4. Exact counting gate for a possible source-specific theorem.
+For an actual extension pi:E->Q, a named involution tuple tbar_i inQ,
+and prescribed pair-product classes C_ij inE, the proper lift count is
+ sum over (t0,t1,t2):
+   product_i 1[pi(t_i)=tbar_i and t_i^2=1]
+   * product_(i<j)1[t_i t_j in C_ij]
+   *1[<t0,t1,t2>=E].
+The analogous weak count omits the last indicator. In the example both
+counts are zero because each nontrivial-head set is empty. A prospective
+equivariant analogue of D.50 would need an equality of these real tuple
+counts under the proposed transported central data; the ordinary
+oriented peripheral count alone supplies no such equality. No claim
+is made here about equality once all local reflection classes lift
+and both tuples come from actual source epimorphisms. That is the
+remaining precise source-specific counting problem.
+
+Certificates (self-contained; no imported group tables):
+ check_M10_reflection_obstruction.py/.out
+ M10_reflection_obstruction.json
+ check_M10_peripheral_head.py/.out
+ M10_peripheral_head.json.
+
+Primary-source verification, opened16Nov2026:
+Leemans,D., & Schulte,E. (2009). Polytopes with groups of type PGL2(q).
+ Ars Mathematica Contemporanea,2,163-171. Page170 identifies the
+ diagonal-field extension forq=9 withM10 and explicitly records that
+ it cannot be generated by involutions. Original published PDF:
+ https://www.dlib.si/stream/URN%3ANBN%3ASI%3ADOC-EP8LP7LI/69b91562-2970-4f96-8be9-6ecf1365b284/PDF
+ATLAS of Finite Group Representations, A6/L2(9) page:
+ https://brauer.maths.qmul.ac.uk/Atlas/v3/group/L29/
+ It identifies A6=L2(9)=M10' and M10=A6.2c, and gives the standard
+ generators/presentations. The GAP Character Table Library page
+ https://www.math.rwth-aachen.de/~Thomas.Breuer/ctbllib/ctbltoc/data/A6.2_3.html
+ independently records order720 and MathieuGroup(10). The elementary
+ determinant proof and exact enumeration establish the no-involution
+ assertion without relying on these identification references.
+
+5. Correct transported-head formulation (clarifying the next gate).
+A source-specific count comparison starts with an ORIGINAL epimorphism
+rho:R=C2*C2*C2 ->E and quotient pi:E->Q. Put q_i=pi(rho(t_i)). A NEW
+automorphism alpha ofQ and specified class conjugators transport these
+to the desired heads alpha(q_i). The desired epimorphism toE is NOT
+assumed. Its reflection and pair-product classes must be prescribed
+using the original classes and the selected conjugators, and its proper
+lift count is to be compared with the known positive original count.
+An appropriate central source refinement must carry a lift over alpha;
+asserting only that E/[ker(pi),E] admits a formal involution is weaker.
+The M10 example fails the original-epimorphism hypothesis outright.
+No counterexample to this correctly transported, actual-source count
+comparison has been constructed here.

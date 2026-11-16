@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://calculator.magma-maths.org/execute",
+  "utc": "2026-11-16T11:28:06.985039+00:00",
+  "payload": {
+    "code": "// Search only for explicit units.  All resulting identities will be\n// independently checked; no completeness assertion is used below.\nSetSeed(3);\nQ:=Rationals();R<X>:=PolynomialRing(Q);d:=649;\nK<t>:=NumberField(X^9-3*d^6);O:=MaximalOrder(K);\nG,cl:=ClassGroup(O:Bound:=1000,Proof:=\"Subgroup\");\ntime U,um:=UnitGroup(O);\nprint \"SEARCH UNIT GROUP\",U;\nfor i in [1..Ngens(U)] do\n  u:=K!um(U.i);\n  assert Abs(Norm(u)) eq 1;\n  print \"EXPLICIT UNIT\",i,Eltseq(u);\n  print \"UNIT NORM\",i,Norm(u);\nend for;\n"
+  }
+}
