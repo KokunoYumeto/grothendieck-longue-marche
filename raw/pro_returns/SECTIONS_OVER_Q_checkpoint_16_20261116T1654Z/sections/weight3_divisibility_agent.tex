@@ -1,0 +1,130 @@
+% Insert as A.58.  The ordinary locus is defined explicitly; A.59 constructs it.
+\begin{statement}{A.58}{Proved}{An integral valuation locus in the image of the full class-three section map}
+Let $\mathcal V_3$ be the set of ordinary completed unit-equation
+pairs $(A,B)$ with the following valuation data.  At $2$ and $3$,
+respectively, the two valuations are
+\[
+            (v_2(A),v_2(B))=(0,1),\qquad
+            (v_3(A),v_3(B))=(1,0).
+ \tag{A.58.1}
+\]
+For each prime $q>3$, the two valuations are one of
+\[
+ (0,0),\quad(24e_q(q^2-1),0),\quad(0,24e_q(q^2-1)),\quad
+                  (-24e_q(q^2-1),-24e_q(q^2-1)),
+ \tag{A.58.2}
+\]
+where $e_q$ is a nonnegative integer, and the family $(e_q)_{q>3}$
+converges to zero in $\widehat\Z$: for every positive integer $N$,
+only finitely many $e_q$ are nonzero modulo $N$.
+
+For every pair in $\mathcal V_3$, the distinguished integral
+class-two section $s_*$ of A.40 is in the image of the actual map
+\[
+             \operatorname{Sec}(E_3/G_\Q)
+                   \longrightarrow\operatorname{Sec}(E_2/G_\Q).
+ \tag{A.58.3}
+\]
+It is the only class-two section above this abelian pair in that
+image.  Thus the composite of (A.58.3) with abelianization has
+image containing $\mathcal V_3$, with the intermediate class-two
+class uniquely specified.
+\end{statement}
+\begin{proof}
+A.27 and A.38 give integral class-two lifts of every ordinary
+pair.  A.40 gives $s_*$ by the two cross-prime normalizations,
+and A.43 proves uniqueness of its class among the class-two
+lifts which extend to class three under (A.58.1).
+It remains to prove existence, including the continuous
+derived-limit part of its two obstruction classes.
+
+Fix a coefficient prime $\ell$ and use exactly the strict
+residue coordinates of A.46.  At a prime $q>3$, $q\ne\ell$,
+write $L=e_q$.  In the positive-$A$ pattern set
+$m=24L(q^2-1)$, $n=0$, and $\beta=(q-1)v$.
+The two positive-valuation formulas of A.46 give
+\[
+ \frac{Z_D}{q^2-1}
+       =24L(\gamma-q\alpha v)+\binom m2v,\qquad
+ \frac{Z_F}{q^2-1}=-m\binom{v+1}{2}.
+ \tag{A.58.4}
+\]
+Both expressions belong to $L\Z_\ell$:
+$\binom m2=12L(q^2-1)(m-1)$.
+In the positive-$B$ pattern, put $n=24L(q^2-1)$,
+$m=0$, and $\alpha=(q-1)u$.  Then
+\[
+ \frac{Z_D}{q^2-1}=n\binom{u+1}{2},\qquad
+ \frac{Z_F}{q^2-1}
+       =24L(\gamma+\beta u-e)-\binom n2u,
+       \quad e=\frac{q^2-1}{24}.
+ \tag{A.58.5}
+\]
+Here $e$ is an integer because $q>3$ is prime.  Again both
+expressions lie in $L\Z_\ell$.
+
+For the negative pattern, the ordinary local equality
+$x_q+(1-x_q)=1$ makes $x_q/(1-x_q)$ equal to $-1$ times
+a principal $q$-adic unit.  Its $\ell$-adic Kummer class
+is therefore $\kappa_\ell(-1)$.  With
+$\varepsilon=(\chi-1)/2$ as in A.43, there is a unique
+$u\in\Z_\ell$ such that
+\[
+ \alpha=\beta+(q-1)(u+1/2),\qquad n=m,
+ \qquad t=\binom m2-mu.
+ \tag{A.58.6}
+\]
+The last equality follows from the exact class-two tame
+relation (A.46.13); its binomial form is integral at two.
+Substitution into the full residue formulas, before passing
+to any local cohomology quotient, gives
+\[
+ \begin{split}
+ Z_D&=m\{C+(q^2-1)R_D\},\qquad
+ Z_F=m\{C+(q^2-1)R_F\},\qquad
+ C=\gamma+\beta u-\binom\beta2,\\
+ R_D&=\frac{m^2}{6}-\frac{m(u+1)}2
+                        +\frac{u^2}{2}+u+\frac38,\\
+ R_F&=-\frac{m^2}{6}-\frac{mu}{2}
+                                      +\frac u2+\frac5{24}.
+ \end{split}
+ \tag{A.58.7}
+\]
+In this case $m=-24L(q^2-1)$.  Since
+$C,24R_D,24R_F\in\Z_\ell$, (A.58.7) proves
+\[
+           \frac{Z_D}{q^2-1},\frac{Z_F}{q^2-1}
+                                      \ \in L\Z_\ell.
+ \tag{A.58.8}
+\]
+In the zero pattern $m=n=0$ the tame relation gives $t=0$,
+and both residues vanish identically.
+The identities (A.58.4)--(A.58.8), including their integral
+coefficient bounds, are checked exactly in
+\texttt{valuation\_divisibility\_certificate.py} and its output.
+
+At the two remaining finite primes, the coefficient prime
+equal to the residue characteristic is omitted from the
+residue family.  At $q=2$ the denominator $q^2-1$ is $3$;
+the cross-prime normalization at coefficient prime $3$
+makes the local class-three obstruction zero by A.43,
+so its strict residue is divisible by $3$ in $\Z_3$.
+At every other coefficient prime the denominator is a unit.
+At $q=3$ the only nonunit denominator is $8\in\Z_2$,
+and the other cross-prime normalization gives that
+divisibility.  Both quotient families are therefore integral
+at every coordinate.  By (A.58.8) and the hypothesis on
+$(e_q)$, they converge to zero; the two fixed coordinates
+do not affect that convergence.
+
+They are thus elements of the literal module $R_\ell$ of
+A.46, and the actual residue families are in
+$(q^2-1)R_\ell$.  The isomorphism (A.46.2) makes both full
+continuous obstruction classes zero.  This holds at every
+coefficient prime.  Continuous cochains with values in
+$\widehat\Z(3)^2=\prod_\ell\Z_\ell(3)^2$ are the product
+of the respective continuous cochain complexes, so the
+full central extension class is zero as well.  Choosing its
+continuous primitive in the actual class-three normal form
+of A.43 constructs the section in (A.58.3).
+\end{proof}

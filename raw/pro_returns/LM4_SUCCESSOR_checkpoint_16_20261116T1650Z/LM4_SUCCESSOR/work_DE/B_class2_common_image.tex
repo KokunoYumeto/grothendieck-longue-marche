@@ -1,0 +1,122 @@
+\subsection*{Actual subgroup images do not remove the remaining class-two line}
+
+\statement{B.60}{Proved}{A nonzero common class-two image has explicit geometric lifts}
+Retain $G=P/\gamma_3P$ and the primitive central vector $w$
+from B.59.  The images of the two actual geometric centralizers
+$H_T,H_5$ in $G$ have a common subgroup containing
+$2\mathbb Z w$.  Their completed images in $\widehat G$
+have a common subgroup containing $2\widehat{\mathbb Z}w$.
+Consequently restricting the possible line in B.59 to the
+individual subgroup images at class two cannot eliminate it.
+These are common images in a quotient; no nonzero element
+of $\mathcal K$ is constructed.
+
+\begin{proof}
+Write $e_1,\ldots,e_{13}$ for the exact meridian basis of
+B.56, and let $v_i$ be its ambient degree-one images.
+The integral pair-linking matrix from B.58, followed by
+the bracket formula (B.59.5), gives
+\[
+ [v_1,v_5]-[v_2,v_5]+[v_3,v_5]=2w.
+                                                               \tag{B.60.1}
+\]
+The complete $165\times78$ bracket matrix has rank $13$;
+adjoining $w$ does not increase its rational rank.
+The identity (B.60.1), including the factor two, is verified
+in ordinary exact arithmetic by
+\nolinkurl{next_B59_image/check_bracket_span.py} and recorded
+with the complete matrix in
+\nolinkurl{next_B59_image/bracket_span.json}.
+It supplies the actual finite word
+\[
+                  a=[e_1e_2^{-1}e_3,e_5]\in H_T,
+              \qquad a\bmod\gamma_3P=2w.                    \tag{B.60.2}
+\]
+
+For the cyclic centralizer, the prescribed permutation $D$
+fixes labels $1,3$ and has cycles
+\[
+ (2,6,12,9,4),\qquad(5,7,11,10,8).
+\]
+Put its two fixed poles at $0,\infty$, and write the two
+regular orbits as $\{\zeta^i\}$ and $\{u\zeta^i\}$,
+in the displayed cyclic orders, where $\zeta$ is a primitive
+fifth root of unity.  Here
+$u\in\mathbb P^1\setminus(\{0,\infty\}\cup\mu_5)$.
+Based positive meridians $f_0,f_1,\ldots,f_5$ about
+$0,1,\zeta,\ldots,\zeta^4$ give actual elements of $H_5$.
+Indeed the paths preserve the given cyclic action, and
+isotopy extension on its quotient lifts to an equivariant
+isotopy fixing the two poles.  The resulting endpoint
+mapping classes are pure and commute with $D$.
+The choice of paths to the punctures does not affect their
+degree-one classes or the following degree-two calculation.
+
+The pair-linking vector at $u=0$ has coefficient one
+on every pair of moving orbit points and on each pair
+of a moving point with the zero pole.  At $u=\zeta^r$,
+it has coefficient one on the five pairs
+$(\zeta^{j+r},u\zeta^j)$ and zero elsewhere.
+Apply B.58's integral normalization matrix $A$ to these
+six vectors, obtaining $q_0,\ldots,q_5\in\mathbb Z^{54}$.
+The exact program
+\nolinkurl{next_B59_image/check_cyclic_bracket_span.py}
+checks that these vectors are fixed by $D$ and independent,
+that their fifteen bracket columns are independent, and that
+\begin{align*}
+ w={}&-2[q_0,q_1]-[q_0,q_2]-[q_0,q_3]
+       -[q_0,q_4]-[q_0,q_5]\\
+    &+[q_1,q_2]+[q_1,q_5].                                  \tag{B.60.3}
+\end{align*}
+All entries, labels and coefficients are supplied in
+\nolinkurl{next_B59_image/cyclic_bracket_span.json}.
+The independent root review recomputes both $165$-coordinate
+identities directly from the original degree-one columns,
+without using either stored bracket matrix; its passing
+record is \nolinkurl{records/root_review_B60.txt}.
+Thus the finite word
+\[
+ b_0=[f_0,f_1]^{-2}[f_0,f_2]^{-1}[f_0,f_3]^{-1}
+     [f_0,f_4]^{-1}[f_0,f_5]^{-1}[f_1,f_2][f_1,f_5]
+                                                               \tag{B.60.4}
+\]
+has image $w$ in $G$.  In particular $b=b_0^2\in H_5$
+has the same image $2w$ as $a$.
+
+These calculations concern the specified actual embeddings.
+An identification of the cyclic family with its geometric
+base configuration uses a path of labelled configurations;
+changing this path conjugates the resulting mapping classes
+by a pure mapping class.  Such conjugation is trivial on
+$\gamma_2P/\gamma_3P$, so it does not change (B.60.3).
+The same observation accounts for the meridian base paths.
+No assertion that the two finite words coincide in $P$
+is made.
+
+The profinite assertion uses the full topology from B.59.
+The central lattice of $\widehat G$ is
+$\widehat{\mathbb Z}^{165}$, and $w$ has a coordinate equal
+to $1$.  Therefore the power maps of the images of $a$ and
+$b_0$ have images $2\widehat{\mathbb Z}w$ and
+$\widehat{\mathbb Z}w$, respectively, and are injective
+on $\widehat{\mathbb Z}$.  Equivalently, the finite coordinate
+quotients detect every finite congruence of the corresponding
+infinite cyclic subgroups.  These closed cyclic images
+are contained in the completed images of the actual
+centralizers, proving the assertion with the full profinite
+topology.
+
+Finally, the particular tetrahedral lift $a$ is not in the
+full rigid-seven kernel.  Substitution of its source word
+$(1,-2,3,5,-3,2,-1,-5)$ into the certified thirteen
+six-strand images gives a nonidentity unreduced Burau
+matrix over $\mathbb F_{101}$ at $t=2$: its $(1,1)$ entry
+is $27$.  The defining braid relations and inverses are
+verified in
+\nolinkurl{next_B59_image/check_two_w_rigid.py}; the actual
+output and complete matrix are retained.
+This source word is a commutator, so its braid exponent
+sum is zero.  A central full-twist power would therefore
+be the identity, contrary to that finite matrix witness.
+By B.32, this explicitly rules out $a\in\mathcal K$.
+\end{proof}

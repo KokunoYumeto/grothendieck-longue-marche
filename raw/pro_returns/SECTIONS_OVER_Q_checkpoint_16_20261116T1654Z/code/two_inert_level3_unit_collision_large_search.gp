@@ -1,0 +1,21 @@
+\\ Bounded positive-only unit discovery; no unit/class completeness claim.
+default(parisizemax,1000000000);default(parisize,256000000);
+default(realprecision,400);setrand(184);
+d=649;P=x^27-3^8*d^3;N=nfinit([P,[3,11,59]]);
+unitideal=matid(27);cache=Map();mapput(cache,unitideal,Mod(1,P));
+q11=idealprimedec(N,11);q59=idealprimedec(N,59);
+if(q11[2][4]!=2 || q59[2][4]!=2,error("quadratic prime label"));
+m11=nfmodprinit(N,q11[2],'z);m59=nfmodprinit(N,q59[2],'z);
+aa=Mod(x^18/(243*d^2),P);UU=aa^2-2;
+o11=nfmodpr(N,aa,m11)^40;o59=nfmodpr(N,aa,m59)^1160;
+physical=12583;root27=261;g=znprimroot(physical);zeta9=g^((physical-1)/9);
+alpha=Mod(root27,physical)^18/(243*d^2);unit=alpha^2-2;
+omega27=unit^((physical-1)/27);
+if(omega27^9==1,error("order27"));
+qlog(u,mp,om,p)={my(ch=nfmodpr(N,u,mp)^((p^2-1)/3));for(e=0,2,if(om^e==ch,return(e)));error("q log")};
+normlog(u)={my(z=Mod(1,physical),pol=lift(u),ch);for(j=0,8,z*=subst(pol,x,Mod(root27,physical)*zeta9^j));ch=z^((physical-1)/27);for(e=0,26,if(omega27^e==ch,return(e)));error("norm log")};
+seen=Set([]);collisions=0;nontrivial=0;
+for(trial=1,500,dir=vector(14,j,random(1600)-800);red=idealred(N,[unitideal,1],dir);J=red[1];a=nfbasistoalg(N,red[2]);if(!mapisdefined(cache,J,&old),mapput(cache,J,a);next);collisions++;u=a/old;if(u==1||u==-1,next);key=Vecrev(lift(u));if(setsearch(seen,key),next);seen=setunion(seen,[key]);nontrivial++;if(nfeltnorm(N,u)!=1 && nfeltnorm(N,u)!=-1,error("norm not unit"));c=[qlog(u,m11,o11,11),qlog(u,m59,o59,59)];e=normlog(u);if(e%9,error("norm exponent not9"));diff=lift(Mod(c-[2,2]*(e/9),3));print("UNIT ",nontrivial," TRIAL ",trial," QCHAR ",c," NORMLOG27 ",e," DIFF ",diff," COEFF ",key);if(diff!=[0,0],print("POSITIVE SECONDARY DISCREPANCY; INDEPENDENT CERTIFICATE REQUIRED");quit);if(trial%50==0,print("PROGRESS ",[trial,matsize(Mat(cache))[1],collisions,nontrivial])));
+print("FINITE SEARCH COMPLETE ",[collisions,nontrivial]);
+print("No unit-group completeness or arithmetic vanishing follows from this search.");
+quit;

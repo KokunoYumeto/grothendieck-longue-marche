@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://calculator.magma-maths.org/execute",
+  "utc": "2026-11-16T14:04:01.083762+00:00",
+  "payload": {
+    "code": "// Actual genus-two quotient of the point-3 Fermat-eight cover.\n// No analytic rank, GRH or BSD assumption is supplied.\nSetSeed(1);\nQ := Rationals();\nR<x> := PolynomialRing(Q);\nC := HyperellipticCurve(3*x^5-2*x);\nJ := Jacobian(C);\nP := J![x-1,R!1];\nprint \"CURVE\", C;\nprint \"POINT\", P;\nprint \"DOUBLE\", 2*P;\nfor p in [5,7,11,13,17,19,23,29,31] do\n    Cp := BaseChange(C,GF(p));\n    Jp := Jacobian(Cp);\n    Pp := Jp!P;\n    print \"REDUCTION\", p, #Jp, Order(Pp);\nend for;\ntime lo, hi := RankBounds(J);\nprint \"RANK BOUNDS\", lo, hi;\nT, tm := TorsionSubgroup(J);\nprint \"TORSION\", T;\nprint \"POINT TORSION\", IsFiniteOrder(P);\n"
+  }
+}

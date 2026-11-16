@@ -1,0 +1,28 @@
+% Validation-only wrapper. The diplomatic transcription remains a fragment.
+% Run from the deliverable directory with an output directory outside the ZIP:
+%   lualatex -interaction=nonstopmode -halt-on-error \
+%     -output-directory=/tmp/mpl-tex-check scripts/validation_harness.tex
+% A compiled result checks TeX syntax; it does not check readings or fidelity.
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=22mm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{tikz-cd}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{array}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\newcommand{\cotefile}[1]{\par\section*{Cote #1}}
+\newcommand{\scanpage}[1]{\clearpage\subsection*{Scan #1}}
+\newcommand{\mspage}[1]{\par\textbf{Manuscript page: #1}\par}
+\newcommand{\deleted}[1]{\begingroup\color{gray}#1\endgroup}
+\newcommand{\inserted}[1]{\begingroup\color{blue!60!black}#1\endgroup}
+\newcommand{\margin}[1]{\par\begingroup\footnotesize#1\par\endgroup}
+\newcommand{\diagram}[1]{\par\begingroup\centering#1\par\endgroup}
+\renewcommand{\figure}[1]{\par\begingroup\centering#1\par\endgroup}
+\newcommand{\unsure}[1]{\begingroup\color{orange!65!black}#1\endgroup}
+\newcommand{\illegible}[1]{\textnormal{[illegible: #1 words]}}
+\begin{document}
+\input{MPL_15_139-194_transcription.tex}
+\end{document}

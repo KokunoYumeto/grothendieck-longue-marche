@@ -1,0 +1,9 @@
+# Primary source audit: potential cyclic class towers
+
+Opened on 2026-11-16: Jianing Li, *Stabilization on ideal class groups in potential cyclic towers*, arXiv:2505.15224v1 (21 May 2025), six pages. Primary URLs: https://arxiv.org/html/2505.15224v1 and https://arxiv.org/pdf/2505.15224 .
+
+Theorem 1.1 states class-group and fixed-coefficient quotient stabilization under RamHyp. Theorem 1.2 states an Iwasawa-type eventual order formula. The literal RamHyp asks each ramified inertia group to be conjugate to H semidirect Delta_v and one inertia group to be the whole G. For the fixed pure tower after K1, the radical translation subgroup is 3 Z3, and after K2 it is 9 Z3. At 11 and 59, valuation8 of the old radical is prime to3, so inertia is the full corresponding translation subgroup; cyclotomic ramification there is zero. At3 the full local degree gives total ramification of the closure. Thus these formal inertia hypotheses fit our tower after the first level.
+
+However, the proof passage (2.8) to (2.9) is not yet independently justified. The actual augmentation subgroup for G_n=H^(3^n) semidirect Delta is generated over H^(3^n), while (2.8) replaces the displayed groups by H-submodules independent of n. In a nonnormal potential-cyclic subgroup this enlargement is not a formal module identity. The retained finite exact test takes H=C3 acting regularly on F3[C3] and Delta=C2 by inversion: I_Delta X has dimension1 and its H-span has dimension2. Their quotient sizes are9 and3. This does not give an arithmetic realization or refute the stated theorem. It identifies the exact additional step that would need a proof before importing the formula X/(omega_n C+D) into our class-coordinate calculation.
+
+Certificate: code/potential_cyclic_module_scope_certificate.py, with executed output and data. No theorem or source formula from this preprint has been used in A177/A179 or the established class-order stopping argument, which remain self-contained.

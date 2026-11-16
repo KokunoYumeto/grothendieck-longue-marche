@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://calculator.magma-maths.org/execute",
+  "utc": "2026-11-16T10:54:07.852917+00:00",
+  "payload": {
+    "code": "// Exact local information for the retained Prym factor.\n// This uses Tate's algorithm; no rank or analytic assumption is requested.\nQ := Rationals();\nP<X> := PolynomialRing(Q);\nK<t> := NumberField(X^2-2);\nOK := Integers(K);\nM := 7*13*23*139*1119169;\nb := 1146*(1+t)^2*M^2;\nE := EllipticCurve([K|0,0,0,b,0]);\nP2 := Factorization(2*OK)[1][1];\ninfo, Emin := LocalInformation(E,P2);\nprint \"DYADIC LOCAL INFORMATION\", info;\nprint \"MINIMAL MODEL\", aInvariants(Emin);\nflag, iso := IsIsomorphic(E,Emin);\nassert flag;\nprint \"LITERAL ISOMORPHISM\", iso;\nprint \"MINIMAL DISCRIMINANT VALUATION\", Valuation(Discriminant(Emin),P2);\nprint \"MINIMAL C4 VALUATION\", Valuation(cInvariants(Emin)[1],P2);\nfor p in [5,17,41] do\n    for fac in Factorization(p*OK) do\n        Ered, red := Reduction(E,fac[1]);\n        print \"GOOD REDUCTION\", p, Norm(fac[1]), #Ered;\n    end for;\nend for;\nprint \"DIVISION THREE\", DivisionPolynomial(E,3);\nprint \"THREE DIVISION FACTORS\", Factorization(DivisionPolynomial(E,3));\n"
+  }
+}

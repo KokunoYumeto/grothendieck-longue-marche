@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://calculator.magma-maths.org/execute",
+  "utc": "2026-11-16T10:48:29.154843+00:00",
+  "payload": {
+    "code": "// Exact 2-coverings without the failing minimisation step.\n// Compute their actual Cassels--Tate pairing with default proof settings.\nSetSeed(1);\nQ := Rationals();\nA<X> := PolynomialRing(Q);\nK<t> := NumberField(X^2-2);\nM := 7*13*23*139*1119169;\nb := 1146*(1+t)^2*M^2;\nE := EllipticCurve([K|0,0,0,b,0]);\ntime S, StoA := TwoSelmerGroup(E);\nprint \"TWO SELMER ORDER\", #S;\ntime covers, maps, group_to_cover := TwoDescent(E : MinRed:=false, RemoveTorsion:=true);\nprint \"COVER COUNT\", #covers;\nprint \"COVER GROUP\", Domain(group_to_cover);\nSetVerbose(\"CasselsTate\",2);\ntime ct := CasselsTatePairing(covers[1],covers[2]);\nprint \"CASSELS TATE PAIRING 1,2\", ct;\n"
+  }
+}

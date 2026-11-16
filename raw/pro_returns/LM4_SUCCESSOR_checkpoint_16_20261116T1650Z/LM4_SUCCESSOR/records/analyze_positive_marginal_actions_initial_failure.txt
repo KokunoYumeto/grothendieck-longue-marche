@@ -1,0 +1,17 @@
+The first run incorrectly presumed that every quotient action on the
+retained rank-three fiber was inner. It exited at action0, before any
+stdout, with this genuine assertion output:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/a50d05093ca1/LM4_SUCCESSOR/code/analyze_positive_marginal_actions.py", line 64, in <module>
+    q = inner_word(images)
+  File "/workspace/scratch/a50d05093ca1/LM4_SUCCESSOR/code/analyze_positive_marginal_actions.py", line 54, in inner_word
+    assert core == [4] and all(abs(a) == 2 for a in u), (u, core)
+AssertionError: ([4, 2, 4, 6, -4, -2], [4])
+
+The DE branch identified the geometric reason: the retained finite
+marks are0,1,a(s)^2. The last one moves, so the quotient outer action
+need not be trivial. The corrected program classifies which actual
+quotient actions are inner, without assuming that all are. It saves
+the complete quotient automorphisms and all filled peripheral
+conjugators. No source-image equality was asserted from the failed run.
