@@ -1,0 +1,145 @@
+\statement{B.77}{Proved}{The four transported triple relations do not impose uniform kernel normality}
+The four actual triple-point relations involving the missing retained
+meridian in the ratio pencil, together with the relation at the chosen
+special fiber, do not by themselves make the special-fiber deletion
+kernel normal under that missing meridian. This failure holds for the
+actual subgroup images in both the discrete partial presentation and
+its full profinite completion. It is a statement about the specified
+partial presentation; the finite certificate below does not extend
+across the actual retained base monodromy.
+
+\begin{proof}
+Use the common based marking of
+\path{work_DE/next_marginal_source/pencil_triple_transports.json}.
+Write the generic fiber group in the special basis as
+\[
+ F_{20}=H*\langle b\rangle,\qquad
+ H=F(x_i:1\leq i\leq20,\ i\ne11),\qquad
+ b=x_{11},\quad c=x_{10}.
+ \tag{B.77.1}
+\]
+Thus the original generic generator with index ten is \(cb^{-1}\).
+The deleted peripheral indices are
+\(\mathcal U=\{1,2,6,9,12,15,19,20\}\). Put
+\(N=\langle\!\langle x_i:i\in\mathcal U\rangle\!\rangle_H\).
+The quotient \(H/N\) is free of rank eleven. In the following table,
+a string such as \(789\) denotes the literal word \(x_7x_8x_9\):
+\[
+\begin{array}{c|c|c}
+ i&P_i&Q_i\\\hline
+ 1&(789)^{-1}x_6(789)&x_{10}x_{12}x_{10}^{-1}\\
+ 2&(2345789)^{-1}x_1(2345789)&
+       (10\,12\,14\,15\,16\,17\,18)x_{19}
+       (10\,12\,14\,15\,16\,17\,18)^{-1}\\
+ 3&x_{16}x_{20}x_{16}^{-1}&x_9^{-1}x_2x_9\\
+ 4&x_{15}&x_9
+\end{array}
+ \tag{B.77.2}
+\]
+These eight words and the eleven retained generators form a Nielsen
+basis of \(H\). Indeed, the original deleted generators are solved
+successively in the order
+\(9,15,20,2,6,12,1,19\); at each step the conjugating word uses
+only retained generators and deleted generators already solved.
+The exact substitutions and their two inverse compositions are
+included in the certificate. In particular,
+\[
+ A=\langle c,P_1,Q_1,\ldots,P_4,Q_4\rangle\simeq F_9,
+ \qquad H=A*F_{10},
+ \tag{B.77.3}
+\]
+where the retained generator \(x_3\) belongs to the displayed
+complementary factor.
+
+\emph{The exact partial group.}\par
+Conjugate each actual local triple by its recorded transporter in
+\(H\), and order its meridians by their actual local positions.
+The ordered products become \(P_iQ_i b\) for \(i=1,2,3\),
+and \(bP_4Q_4\) for \(i=4\). For precision, the two remaining
+local meridians, besides \(b\), are respectively
+\[
+\begin{array}{c|c|c}
+1&b^{-1}P_1b&b^{-1}Q_1b\\
+2&b^{-1}Q_2^{-1}P_2Q_2b&b^{-1}Q_2b\\
+3&b^{-1}Q_3b&P_3\\
+4&Q_4&bP_4b^{-1}.
+\end{array}
+ \tag{B.77.4}
+\]
+A local triple relation makes its ordered product commute with
+all three local meridians. Put \(R_i=P_iQ_i\). Commutation with
+\(b\) first gives \([R_i,b]=1\). Using (B.77.4), the other two
+relations are then exactly
+\[
+ bP_ib^{-1}=R_i^{-1}P_iR_i,
+ \qquad bQ_ib^{-1}=R_i^{-1}Q_iR_i.
+ \tag{B.77.5}
+\]
+Conversely (B.77.5) implies all the original local relations,
+including \([R_i,b]=1\). Together with the retained-node
+relation \([c,b]=1\), these are the only relations imposed in
+\(G_{\mathrm{part}}\), by definition.
+
+The map \(\eta:A\to A\) fixing \(c\) and conjugating each
+rank-two free factor \(\langle P_i,Q_i\rangle\) by
+\(R_i^{-1}\) is an automorphism. Consequently the exact partial
+presentation is
+\[
+ G_{\mathrm{part}}
+ =\langle H,b\mid bab^{-1}=\eta(a),\ a\in A\rangle
+ \simeq(A\rtimes_{\eta}\mathbb Z)*F_{10}.
+ \tag{B.77.6}
+\]
+For example, \(k=x_3x_9x_3^{-1}\) lies in \(N\), while
+\(bkb^{-1}\) lies outside \(H\) by the reduced free-product
+normal form in (B.77.6). Thus normalization of each designated
+rank-two peripheral subgroup does not imply normalization of
+its entire normal closure under \(H\).
+
+\emph{A finite separating certificate.}\par
+There is also an explicit finite verification requiring no
+completion theorem for the HNN presentation. In the special basis set
+\[
+ b\longmapsto(34),\qquad x_9\longmapsto(12),\qquad
+ x_3\longmapsto(13),\qquad x_i\longmapsto1
+ \quad(i\notin\{3,9,11\}).
+ \tag{B.77.7}
+\]
+Every relation in (B.77.4)--(B.77.5) and \([c,b]=1\) holds.
+The image of \(H\) is the symmetric group on
+\(\{1,2,3\}\), whereas the full image is \(S_4\). But
+\[
+             k\longmapsto(23),\qquad
+             bkb^{-1}\longmapsto(24).
+ \tag{B.77.8}
+\]
+The latter is outside the source image. The continuous extension
+of this finite quotient separates \(bkb^{-1}\) from the closure
+of \(H\), hence also from the closure of its deletion-kernel
+image, in \(\widehat{G}_{\mathrm{part}}\). This proves the
+stated full profinite version using actual images.
+
+The exact checker is
+\path{work_CE/code/check_four_triple_normality_gap.py}; its genuine
+output and complete certificate are
+\path{work_CE/code/check_four_triple_normality_gap.out} and
+\path{work_CE/four_triple_normality_gap.json}.
+It verifies both Nielsen substitutions, every literal transported
+local word, all partial relations, and the orders \(6\) and
+\(24\), and records hashes of the input data.
+
+Finally the checker applies the two actual retained base
+monodromies to (B.77.7), after converting back to the original
+generic basis. The monodromy named \texttt{base2} fixes the tuple.
+The monodromy named \texttt{base1} changes entries \(3,10,11\),
+and no element of \(S_4\) conjugates the original tuple to the
+resulting tuple. Among the other twenty-five filled lassos, exactly the two named
+\texttt{discriminant\_2\_plus} and
+\texttt{discriminant\_2\_minus} also fail; the other twenty-three
+fix the tuple. These two half twists identify the two branches of
+one retained hyperbola. Thus (B.77.7) is not a representation of the
+actual total pencil. The remaining filled relations and retained
+base actions cannot be discarded in an argument for the actual
+source image. No failure of uniform normality in that full group,
+and no nonidentity element of \(\mathcal K\), follows here.
+\end{proof}

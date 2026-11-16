@@ -1,0 +1,3 @@
+# Retained mechanical verification records
+
+These are the retained JSON results and compiler logs/stdout for the mechanical LaTeX check, plus its auxiliary script. They document syntax checks only, not manuscript accuracy. The definitive explanation and source-hash concordance are in scripts/MECHANICAL_VERIFICATION.md. Historical glyph-warning findings are retained for auditability; the final report explains their resolution before the transcription freeze. Temporary TeX formats, auxiliary files and generated wrappers are reproducible from scripts/verify_latex.py and are not deliverables. Paths inside historical logs record the workspace at execution time.

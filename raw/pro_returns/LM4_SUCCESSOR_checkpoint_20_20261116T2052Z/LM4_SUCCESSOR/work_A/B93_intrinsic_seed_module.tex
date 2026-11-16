@@ -1,0 +1,368 @@
+% Accepted B.93. Root, CE and DE complete-proof reviews passed; checkpoint18 component.
+\statement{B.93}{Proved}{The actual finite seed module with all residual coefficients has free rank 116 and exactly the four certified source classes}
+\label{stmt:B93}
+Retain the discrete actual modules of B.91--B.92, identify the two
+free factors by $F$, and put
+\[
+ \Lambda=\mathbb Z[E],\qquad E=R\times R,\qquad
+ P=I_{\mathbb Z[R]}\otimes_{\mathbb Z}I_{\mathbb Z[R]}.
+\]
+Let $c_0,\ldots,c_{63}\in\overline L\subseteq P$ be the $64$
+actual common-whisker node columns in the corrected paired marking
+specified in the proof. Define the $F$-stable submodule
+\begin{equation}\label{eq:B93-seed-module}
+ L_{\mathrm{seed}}=
+       \sum_{j=0}^{63}\bigl(\Lambda c_j+\Lambda F(c_j)\bigr).
+\end{equation}
+Thus the coefficients range over the full group ring of the actual
+infinite group $E$, not an augmented matrix or a bounded set of words.
+There is an exact sequence of $\Lambda$-modules
+\begin{equation}\label{eq:B93-free-ranks}
+ 0\longrightarrow\Lambda^{12}\longrightarrow\Lambda^{128}
+     \longrightarrow L_{\mathrm{seed}}\longrightarrow0,
+ \qquad L_{\mathrm{seed}}\cong\Lambda^{116}.
+\end{equation}
+The involution on a free image basis has $56$ exchanged pairs and
+four negative fixed summands, after the explicit unit changes below.
+Consequently, for the diagonal left $R$-action,
+\begin{equation}\label{eq:B93-seed-cohomology}
+ \begin{gathered}
+ H^1(C_2,L_{\mathrm{seed}})\cong\mathbb F_2[R]^4,
+ \qquad H^2(C_2,L_{\mathrm{seed}})=0,\\
+ \operatorname{im}\bigl(H^1(C_2,L_{\mathrm{seed}})
+                  \longrightarrow H^1(C_2,P)\bigr)
+   =J_4:=\sum_{i=1}^4\mathbb F_2[R](\rho_i-1)
+   \subseteq J_I.
+ \end{gathered}
+\end{equation}
+Here $\rho_1,\ldots,\rho_4\in I$ are the four actual positive
+first-sheet source meridians specified in B.93.4. In particular,
+every integral anti-invariant chain in this full $\Lambda$-span
+has zero obstruction modulo the actual source ideal $J_I$.
+
+This assertion is intrinsic to $\overline L\subset P$. It admits
+the induced equivariant refinement of B.93.5, which gives honest
+classes in B.92's $H^2(C_2,Z_2)$ without identifying two differently
+marked relation kernels. No exhaustion of the retained-fiber deck
+or old-base translates of the node set is claimed. In particular,
+the result proves neither $\kappa=0$ for the full module nor the
+projected source equality, nonlinear fixed lifting, or a compact
+coefficient comparison.
+
+\begin{proof}
+\emph{B.93.1. The exact actual input and coefficient conventions.}
+Use the actual $18$ nodal lassos in the symmetric product-pencil
+family and their common based transport. Their $64$ commutators
+are rewritten in the paired peripheral marking of B.91, retaining
+each old $F_5$ Schreier head. The resulting data are
+\path{work_CE/next_symmetric_nodes/symmetric_paired_fox_data.json}.
+Its SHA-256 is
+\begin{center}\small\ttfamily
+ca4a4c6b7c919e2a2578209109cdb42befc370bc242e339ef71f28b8b8ff9840.
+\end{center}
+The entries named \texttt{node\_columns} give the $c_j$ in their
+stored zero-based order, together with the actual commutator words,
+the independent edge-boundary checks and the literal negative-swap
+$F$-images. The dictionary \texttt{finite\_used\_common\_R\_basis}
+identifies each used generator $x_j$ of $R$ by its retained $F_5$
+word and paired peripheral slot. These are labels in an actual
+free basis of $R$, not generators of a finite approximation.
+The corrected geometric push and pullback conventions are retained
+in this input. Each node column is therefore an actual element of
+$\overline L$ by B.91; its membership does not depend on an
+identification of common-whisker and equivariant-whisker kernels.
+
+The Cayley-tree basis makes $P$ a free left $\Lambda$-module on
+the ordered peripheral-generator pairs. A coefficient monomial
+$(u,v)\in E$ records the two Cayley vertices. All multiplications
+are reduced free-word multiplications in the two factors. The
+involution on coefficients is $(u,v)\mapsto(v,u)$, and on $P$ it
+also swaps the ordered generator pair and changes its sign.
+
+Let $D$ have the $128$ free $\Lambda$-generators $e_j,f_j$,
+with $F(e_j)=f_j$, $F(f_j)=e_j$ and semilinear coefficient action.
+The equivariant map $D\to P$ sends $e_j$ to $c_j$ and $f_j$ to
+$F(c_j)$. Its image is exactly \eqref{eq:B93-seed-module}.
+As a $\mathbb Z[E\rtimes C_2]$-module, $D$ is induced from
+the free $\Lambda$-module on the $e_j$. Its restriction to $C_2$
+is a direct sum of two-element permutation modules, so
+\begin{equation}\label{eq:B93-domain-acyclic}
+                         H^1(C_2,D)=H^2(C_2,D)=0.
+\end{equation}
+
+\emph{B.93.2. Exact elimination over the noncommutative group ring.}
+The integral certificate
+\path{records/intrinsic_E_span18.json}, produced by
+\path{code/check_intrinsic_E_span18.py}, retains the original
+input hash, every domain basis change and the resulting image
+and kernel vectors. There are $106$ ordered unit pivots. At a
+pivot row whose coefficient is the unit $\epsilon g$, the
+coefficient $a$ of another column is eliminated by subtracting
+\[
+                         a(\epsilon g)^{-1}\,c_{\mathrm{pivot}}
+\]
+on the left. The order of these factors is part of the certificate.
+Each operation replaces one domain basis vector by itself minus
+a left multiple of another; it is invertible over $\Lambda$.
+Every saved expression is also evaluated directly in the original
+$128$ columns.
+
+After these operations there are $12$ zero columns and $10$
+remaining nonzero columns. Each of the latter has a private row
+among those ten, with coefficient $\pm(g-h)$ for distinct
+$g,h\in E$. The following table records the residual column,
+its private generator-pair row, and a nonempty cyclically reduced
+coordinate of $hg^{-1}$. Coordinates $A,B$ refer to the two
+free factors. Full monomials are retained in the certificate.
+\begin{center}
+\begin{tabular}{rccc}
+Column&Private row&Coordinate&Reduced core\\\hline
+$31$&$(1,10)$&$B$&$x_9$\\
+$32$&$(78,82)$&$A$&$x_{62}$\\
+$44$&$(20,92)$&$A$&$x_{21}$\\
+$52$&$(108,8)$&$A$&$x_{24}$\\
+$54$&$(15,11)$&$B$&$x_{12}^{-1}$\\
+$95$&$(9,37)$&$B$&$x_1^{-1}$\\
+$96$&$(82,78)$&$B$&$x_{62}$\\
+$108$&$(92,20)$&$B$&$x_{21}$\\
+$116$&$(8,108)$&$B$&$x_{24}$\\
+$118$&$(11,15)$&$A$&$x_{12}^{-1}$
+\end{tabular}
+\end{center}
+For completeness, right multiplication by any such $g-h$ is
+injective on $\mathbb Z[E]$. Indeed, $a(g-h)=0$ implies
+$a=a\,hg^{-1}$. The indicated nonempty cyclically reduced
+coordinate proves that $hg^{-1}$ has infinite order. A nonzero
+finitely supported group-ring element cannot be invariant under
+right translation by an infinite-order element: the orbit of any
+nonzero coefficient would be infinite. This proves injectivity
+without a general zero-divisor assumption about the group ring.
+
+In a relation between all final nonzero columns, the ordered pivot
+rows successively force the first $106$ coefficients to vanish.
+The private binomial rows then force the remaining ten coefficients
+to vanish. Thus these $116$ image columns are a free basis of their
+image. Reversibility of every domain operation shows at the same
+time that the $12$ zero-column domain vectors are the entire
+kernel, not merely twelve independent relations. This proves
+\eqref{eq:B93-free-ranks} over the full $\Lambda$. All words used
+in the certificate lie in the displayed free basis of $R$, so the
+same private-row argument applies to coefficients supported on
+arbitrary additional words of $R$.
+
+\emph{B.93.3. The literal involution on the free image.}
+Apply $F$ to each saved original-domain expression, exchange
+$e_j,f_j$, and reduce by the same invertible domain changes.
+The resulting $116$ by $116$ semilinear matrix has exactly one
+unit monomial in each column. Direct reconstruction in $P$ checks
+each coordinate equation, and a second application checks $F^2=1$.
+The independent replay
+\path{work_DE/next_marginal_source/check_E_span_independent.py}
+also verifies all $106$ pivots, all ten binomial witnesses and
+the full original-domain $F$ coordinates. The $12$ by $12$ kernel
+matrix is checked as well, although no identification with B.92's
+$Z_2$ is used here.
+
+On the image basis there are $56$ two-element orbits and four
+fixed indices. Each two-element orbit, after using one basis
+element and its literal $F$-image as the two generators, is induced
+as a $C_2$-module and contributes no positive-degree cohomology.
+The four fixed image generators are unchanged original columns:
+\begin{center}
+\begin{tabular}{cccc}
+Raw column&Actual node label&Image-basis index&$F(c_j)$\\\hline
+$1$&$(0,1)$&$81$&$-(\rho_1,\rho_1^{-1})c_1$\\
+$37$&$(8,1)$&$90$&$-(\rho_2,\rho_2^{-1})c_{37}$\\
+$49$&$(12,1)$&$103$&$-c_{49}$\\
+$61$&$(16,1)$&$60$&$-c_{61}$
+\end{tabular}
+\end{center}
+All indices in this table are zero-based. Put
+\begin{equation}\label{eq:B93-four-anti-chains}
+ \begin{aligned}
+ v_1&=(1,\rho_1^{-1})c_1,&
+ v_2&=(1,\rho_2^{-1})c_{37},\\
+ v_3&=c_{49},&v_4&=c_{61}.
+ \end{aligned}
+\end{equation}
+These are unit changes of the four summand generators. For the
+first two, the ordered coefficient identity
+\[
+ F(1,\rho_i^{-1})(\rho_i,\rho_i^{-1})
+       =(\rho_i^{-1},1)(\rho_i,\rho_i^{-1})
+       =(1,\rho_i^{-1})
+\]
+gives $F(v_i)=-v_i$; the last two equations hold literally already.
+Thus on each resulting copy of $\Lambda$, $F$ is negative
+coefficient swap. Its off-diagonal monomial pairs are induced
+signed pairs, while each diagonal monomial $(s,s)$ gives a copy
+of the sign module $\mathbb Z$. For that sign module,
+$H^1(C_2,\mathbb Z_{-})=\mathbb F_2$ and
+$H^2(C_2,\mathbb Z_{-})=0$. These assertions follow directly
+from $(1+F)=0$, $(1-F)=2$ and the absence of nonzero fixed
+integers. Finite support lets the same computation pass to the
+direct sum of monomial orbits. Therefore
+\[
+ H^1(C_2,L_{\mathrm{seed}})\cong\mathbb F_2[R]^4,
+ \qquad H^2(C_2,L_{\mathrm{seed}})=0.
+\]
+The $R$-action here is diagonal left multiplication, not an
+action by only the used finite set of coefficient words.
+
+\emph{B.93.4. Exact source values of the four summands.}
+In the common free basis named in B.93.1, set
+\[
+ \begin{aligned}
+ w_1&=x_1x_8x_9x_{10},&\rho_1&=w_1x_{11}w_1^{-1},\\
+ w_2&=x_1x_8x_9x_{10}x_{12}x_{30},&
+                  \rho_2&=w_2x_{31}w_2^{-1},\\
+ w_3&=x_{33}x_{34}x_{35}x_{36}x_{38},&
+                  \rho_3&=w_3x_{39}w_3^{-1},\\
+ &&\rho_4&=x_{20}.
+ \end{aligned}
+\]
+\begingroup\raggedright
+These are the literal first-coordinate images of the four positive
+first-sheet source peripheral words at critical indices $0,8,12,16$.
+Their actual source expressions, including the common source
+whiskers and the first-family and retained-family projections, are
+stored in
+\path{work_CE/next_symmetric_nodes/symmetric_full_source_data.json}
+and
+\path{work_CE/next_symmetric_nodes/symmetric_source_node_alignment.json}.
+The based comparison uses the selected source point fixed by $F$;
+it is not a comparison of unbased conjugacy classes. In particular,
+each $\rho_i$ belongs to the actual subgroup $I$.\par
+\endgroup
+
+The uniqueness check underlying this source identification is useful
+to state explicitly. In the actual generic $21$-generator fiber,
+the extension by the based involution has the orbifold presentation
+$C_2*C_2*F_{10}$. Let $\tau$ be its selected fixed-point factor.
+For a matched nodal lasso, its computed far-section transport has
+discrepancy $\operatorname{Inn}(k)$ from commuting with $F$.
+The correcting fiber word is obtained by the exact normal-form
+equation
+\[
+                         \tau k=h\tau h^{-1},
+                         \qquad k=F(h)h^{-1}.
+\]
+The centralizer of $\tau$ in this free product is $\langle\tau\rangle$,
+which meets the fiber subgroup trivially. Thus there is at most
+one correcting fiber word $h$. The actual source whisker is
+pointwise fixed and provides such a correction, so the verified
+normal-form solution is that actual word. The far section extends
+over the nodal disk; its lasso becomes trivial on filling, while
+the source lasso is positive around the removed intersection.
+The corrected word therefore is the positive source peripheral,
+not an arbitrary conjugate with the same finite head. The retained
+$F_5$ projection is trivial, and the explicit first-family
+projection gives the displayed $\rho_i$. This is the source
+typing used in the certificate.
+
+For each of the four full integral chains in
+\eqref{eq:B93-four-anti-chains}, the exact negative-swap equation
+and every product-tree coefficient are checked in
+\path{work_CE/next_symmetric_nodes/symmetric_F_cycles_and_fixed_chains.json}.
+The diagonal map of B.91 is computed on the Cayley-edge basis:
+if a diagonal square has coefficient $n$ at the edge
+$u\xrightarrow{x_j}ux_j$, its contribution is
+$n\,u(x_j-1)$ modulo two. Direct summation gives
+\begin{equation}\label{eq:B93-source-diagonal}
+                     \operatorname{diagTate}(v_i)=\rho_i-1
+                     \qquad(1\leq i\leq4).
+\end{equation}
+The source checks can also be made independently by expanding the
+common Schreier words into the actual first-family $F_{13}$ words;
+the saved independent check does so. This certifies membership in
+the full actual source subgroup, rather than membership in a
+formal set of node labels.
+
+By diagonal left equivariance,
+\[
+ \operatorname{diagTate}((s,s)v_i)=s(\rho_i-1).
+\]
+The preceding four-summand decomposition proves both inclusions
+in the image formula of \eqref{eq:B93-seed-cohomology}. Every
+cohomology class has such a representative, and every displayed
+left translate is attained. Since the four $\rho_i$ are actual
+source elements, $J_4\subseteq J_I$. If a right-defect convention
+instead gives $\rho_i^{-1}-1$, it differs by the invertible left
+factor $\rho_i^{-1}$ in characteristic two; the left ideal is
+unchanged. The chain identities here use exactly the convention
+in \eqref{eq:B93-source-diagonal}.
+
+\emph{B.93.5. Intrinsic anti-chains and an equivariant refinement.}
+More generally, an actual finite expression $v\in\overline L$
+with $F(v)=-v$ determines a class of $H^1(C_2,\overline L)$.
+Its image in $H^1(C_2,P)$ belongs intrinsically to $U$, and
+its image modulo $J_I$ belongs to $\operatorname{im}\kappa$.
+This needs no equality between relation kernels from different
+whisker choices. Merely solving the anti-invariance equation
+modulo two would not suffice; $F(v)=-v$ is an integral equation.
+
+Here is an explicit comparison giving a representative in the
+equivariant presentation. Write $d_0:P_0\to\overline L$ for
+B.92's onto node map and $Z_2=\ker d_0$. Let $C$ be a free
+$\Lambda$-module on any finite list of actual common columns
+used in $v$, and set
+\[
+ J(C)=\operatorname{Ind}_{E}^{E\rtimes C_2}C.
+\]
+Map its two copies to the chosen actual columns and their
+$F$-images. With this map $d_C$, put
+\[
+ P_+=P_0\oplus J(C),\qquad
+ d_+(p,q)=d_0(p)+d_C(q),\qquad Z_+=\ker d_+.
+\]
+Since $d_0$ is onto, projection to the second summand gives
+an exact sequence of equivariant modules
+\begin{equation}\label{eq:B93-refinement}
+ 0\longrightarrow Z_2\longrightarrow Z_+
+      \longrightarrow J(C)\longrightarrow0.
+\end{equation}
+The underlying $C_2$-module of $J(C)$ is induced, so
+$H^1(C_2,J(C))=H^2(C_2,J(C))=0$. Equivalently, each fixed
+two-component vector is a norm and each anti-invariant one a
+difference, with no division by two. The exact cohomology
+sequence therefore gives the canonical isomorphism
+\[
+                   H^2(C_2,Z_2)\xrightarrow{\sim}H^2(C_2,Z_+).
+\]
+Also $H^1(C_2,P_+)$ has the same image $J_I$ in $H^1(C_2,P)$
+as $H^1(C_2,P_0)$. The residual map constructed from $P_+$
+therefore agrees with B.92's $\kappa$ under this isomorphism,
+by naturality of the exact sequences.
+
+If $p\in J(C)$ maps to the integral anti-chain $v$, then
+$z=(1+F)p$ is an invariant element of $Z_+$. Its $H^2$ class
+maps to $\operatorname{diagTate}(v)$ modulo $J_I$, and the
+isomorphism just proved supplies the corresponding original
+$Z_2$ class. For $v\in L_{\mathrm{seed}}$, B.93.4 proves
+that this value is zero. It does not prove that the $H^2$ class
+itself is zero. Likewise, a symmetrization $u-F(u)$ is already
+a coboundary and cannot by itself furnish a new diagonal value.
+
+\emph{B.93.6. Verification and remaining scope.}
+The primary certificate retains the entire ordered elimination,
+both semilinear $F$ matrices and their exact squares, all ten
+infinite-order witnesses, and every original-domain expression.
+Its genuine output is \path{code/check_intrinsic_E_span18.out}.
+The independent replay and its genuine output are
+\path{work_DE/next_marginal_source/check_E_span_independent.py}
+and its adjacent \path{.out}; the separate source half-chain
+producer is
+\path{work_CE/code/check_symmetric_F_cycles_and_fixed_chains.py}
+with its adjacent output. These are exact integral group-ring
+and free-word checks, not modular rank estimates. The algebraic
+arguments in B.93.2--B.93.4 explain why their finite certificates
+prove the assertions for every coefficient in $\mathbb Z[E]$.
+
+The actual full $\overline L$ also includes the retained-fiber
+deck and old-base transports of the nodes, with their actual
+based indices. No claim that those transports preserve
+$L_{\mathrm{seed}}$ is made. Consequently this calculation
+removes the obstruction values from one precisely defined
+$E$-submodule while leaving the full map $\kappa$, the projected
+fixed-source gate and the nonlinear and compact questions open.
+\end{proof}

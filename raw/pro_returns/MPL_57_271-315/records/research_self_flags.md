@@ -1,0 +1,117 @@
+# Authorial questions and verification flags — frozen-text research index
+
+Research-only pass over **all 43 supplied scan texts**, after the transcription freeze at **2026-11-16 19:18:43 UTC**. Source throughout: `MPL_57_271-315_transcription.tex`, with scan delimiters `\scanpage{n}` (equivalently `pages/MPL_57_271-315_57_scann.tex`). No images, TEX, per-scan records, or main notes were changed. This is an index of what the frozen text says, not a transcription audit or mathematical validation.
+
+**Status rule.** A question or answer attributed below is a source-text question or answer. “Oui”, “O.K.”, “Non”, and named examples remain source claims. `\unsure{...}` records the transcriber's reading uncertainty; it is not itself an authorial doubt. Where an entire apparent question is inside `\unsure`, its reading is explicitly conditional below. `\deleted` and `\inserted` retain the source's recorded revisions. Ordinary future-tense deductions are inventoried separately instead of being automatically classified as unverified assertions.
+
+## 1. Questions and provisional mathematics before the final question lists
+
+- **57:272, heading and (i), formal/algebraic Picard comparison.** Heading `\uline{Questions.}`. The problematic opening is retained exactly, without reconstruction: `Est-il vrai que \unsure{tte image universelle} de \unsure{--}, $\operatorname{Pic}(X_{\unsure{n}})$ \deleted{\unsure{?}} [\unsure{on a} $=:\ \unsure{\Longleftrightarrow}$ \unsure{élément} dans $\operatorname{Im}(\operatorname{Pic}(\widehat X)\mathbin{\unsure{-|\to}}\operatorname{Pic}(X_{\unsure{n}}))$] est dans $\operatorname{Im}(\operatorname{Pic}(X)\mathbin{\unsure{-|\to}}\operatorname{Pic}(X_{\unsure{n}}))$ ?` Separate stated consequence-question: `En particulier, si $\widehat X/\widehat Y$ est projectif, est-il vrai que $X/Y$ est projectif ?`
+- **57:272, (ii).** Under `\operatorname{supp}R^1f_*(\mathcal O_X)\subset\{y\}`, the question is `Est-il vrai alors que` followed by `\operatorname{Pic}(X)\xrightarrow{\sim}\operatorname{Pic}(\unsure{\widehat Y|\widehat X})\quad ??`. The target alternative is a transcription uncertainty; neither target is selected here.
+- **57:272, (iii) and continuation.** `Supposons que $Y$ soit \unsure{pt} singulier isolé en $y$. Est-il vrai que` precedes `\operatorname{Pic}(Y-\{y\})\xrightarrow{\sim}\operatorname{Pic}(\widehat Y-\{\widehat y\})`. The conditional implication is `[Si (ii) est vrai, et si on peut désingulariser, alors (iii) est vrai\ldots.]`. The further question reads `\unsure{Que se passe-t-il si} $y$ n'est pas isolé en $\operatorname{Sing}(Y)$, dans le cas où $A$ est un \unsure{Alg.} analytique ?`
+- **57:272, English margin.** `What does \unsure{Mumford's} example in ``Publications IHES'' p. 16 give ??` The question is definite in the frozen text; the name is uncertain.
+- **57:276, quotient proposition margin.** `de type fini inutile ?` asks about the finite-type qualification of the quotient/projection formulation.
+- **57:277, final paragraph and margin.** `Il semble que dès que` Picard tau is flat, with inserted closedness, the Néron quotient `doive exister`; the paragraph connects this with `la caractérisation des foncteurs représentés par un objet non ramifié sur $S$\ldots. Au concours !`. It adds `A vrai dire, même l'existence de` the Picard object `ne semble pas indispensable !`, followed by `\margin{?}`. These are provisional claims/questions, not consequences of the preceding displayed corollaries established by this index.
+- **57:279, opening margin.** `semble excessif, par exemple pour l'énoncé du th. de Matsusaka`. This lies beside the deleted attempted definition of strict polarization. The precise attachment is not resolved from the text; do not turn it into a definite objection to one selected hypothesis.
+- **57:287–288, planned pathology cluster.** 287 says `Nous voulons donner des exemples` with positive or negative dimension difference and variation of the two invariant tangent dimensions. 288 continues with nonflat fixed part and absence of a “bon” abelian subscheme, then `Comme conséquence, on aura des exemples où` (1) symmetry fails in either direction, (2) continuity fails for both displayed cohomology groups, (3) Picard tau is not flat, and (4) it has no “bon” abelian subscheme, ending `«la formation de Pic variété n'est pas compatible avec la spécialisation»`. These are announced goals/consequences; the index does not certify that every goal has been constructed elsewhere in the package.
+- **57:294, N.B. below the first-order diagrams.** `mais il est douteux que $\uline{\operatorname{Pic}}^0_{X/k}$ soit pour autant plat sur $S$.` This explicitly questions whether the preceding automatically satisfied pointwise condition suffices for flatness. Keep the source's `X/k` and `S` as written.
+- **57:296, reused typescript, before Proposition 2.** `nous n'avons que des résultats fragmentaires` qualifies the lower derived-limit range. The margin is exactly `\margin{\uline{\unsure{Non filtré ?}}}`: a **possible authorial question whose entire reading is uncertain**, not a verified reading or an established nonfiltered theorem. The preceding Remark 2 asserts that Theorem 2 fails without filteredness or finite generation; it is a scope statement, not itself an open question.
+- **57:299, reused Tribu 43 typescript, middle paragraph.** `Il faut aussi montrer que` algebraic closedness (or quasi-closedness) in an extension is preserved after the specified finite algebraic base change. It offers `une démonstration valable en caract. 0, et qu'on pourrait essayer d'arranger`, followed by an argument ending `C.Q.F.D.`. Distinguish the offered characteristic-zero argument from the proposed adaptation.
+- **57:299, last paragraph.** `La remarque d'équidimensionalité ne semble pas plus qu'un exercice.` This is a tentative editorial assessment, not a clearly expressed mathematical counterclaim. More substantively: `Le fourbi de la p.10 a l'air vrai avec l'hypothèse plus faible que tout élément de S qui est diviseur de 0 dans R l'est dans S`. The weakened hypothesis is explicitly tentative; the referred-to p.10 statement is not reconstructed.
+- **57:300, quotient-by-involution construction.** Margin `\unsure{en réalité ?} \uline{à vérifier}`: the verification flag is definite, although the preceding question is uncertain. Then: `Il faut cependant vérifier que \unsure{tte} \deleted{partie} \inserted{\unsure{trajectoire}} \deleted{\unsure{trajectoire}} de $X_1\amalg_Y X_2$ par $\mathbb Z/2$ est contenue dans un ouvert affine : c'est facile.` A bracketed divisor/open-set sketch follows. Record both the explicit obligation and the source's claim that it is easy; do not silently classify the whole quotient construction as checked.
+- **57:302, last sentence.** `Ici encore, \deleted{\unsure{faisant opérer} $\mathbb Z/2$} on peut faire un passage au quotient plus compliqué,` is an announced extension of the second gluing example, ending there with a comma. There is no explicit question mark or admission of a gap, but neither a quotient construction nor its verification is written out in this sentence; preserve its prospective status without supplying one.
+- **57:303, reused Tribu 43 typescript.** `on ne sait pas bien quelle est la bonne notion de ``différentielle tout court''` is the explicit conceptual uncertainty, in the discussion of Kähler differentials. The nearby finite-basis requirement and correction of interchanged B/A are editorial corrections, separately indexed below.
+
+## 2. Final question lists, including source answers and qualifications
+
+### 57:308–309
+
+**308** is the heading `\uline{Questions \unsure{ouvertes|ouverts}}`. Both reading alternatives retain the question-list status.
+
+- **309(a):** `$X$ est-il somme \inserted{(disjointe)} de préschémas de type fini sur $S$ ?` Margin: `non en général; oui ``géométriquement sur $S$''.` The other marginal `O.K. $\Longleftarrow$` is retained as an annotation without assigning a more precise target.
+- **309(a′):** `Pour tte partie quasi-compacte $U$ de $X$, est-il vrai que $\overline U$ est q. cpt ?` Equivalently in the source: `Pour tt $x\in X$, est-il vrai que $\overline x$ est quasi-compact ?`
+- **309(a″), and proposed implication:** asks whether Picard tau is `un sous-préschéma \uline{fermé} ??`; its openness is asserted. The subsequent `On \unsure{aurait} $a\Rightarrow a'\Rightarrow a''$` contains an uncertain reading of “aurait”. Under the stated normal/proper qualification the source calls a″ affirmative, but adds `mais je ne sais pas pour autant` concerning a′. Do not discard this explicit unresolved part because a″ has an affirmative annotation.
+- **309(b):** `Question: existence du préschéma quotient` followed by the Néron/NS quotient `\uline{\mathrm{Pic}}_{X/S}/\uline{\mathrm{Pic}}^\tau_{X/S}`.
+- **309(c):** Picard tau `est-il universellement ouvert sur $S$ ?`; separate margin `\uline{Plat sur $S$} ?`. The source records an O.K. at points with N.S. torsion prime to residual characteristic.
+- **309(d):** Picard tau `est-il quasi-compact \inserted{donc de type fini} sur $S$ ?`; margin `\uline{Oui, toujours}`. Another margin retains the proof obligation `à démontrer via \unsure{Géom. formelle} (via lemme Zariski); ? ? ?`, involving the uncertain reading `critère d'\unsure{irrégularité|irréductibilité}`. A further O.K. has uncertain fibre condition `\unsure{primaires|prénormales}`. These distinct source statuses should remain visible.
+- **309(e):** Picard tau `est-il séparé sur $S$ ?`; margin `\uline{non} si on ne le suppose pas \unsure{représentable}; l'est-il s'il est représentable ?` The final question remains explicit.
+- **309(b′), label uncertain/revised:** `demi-continuité de (\unsure{Min.|Dim.} Lissité) des fibres ....` This is a topic in the question list without a question mark; do not select between Min./Dim.
+- **309(f), label uncertain:** `Continuité de $\unsure{\ell}$-\unsure{rang} des Picard des fibres`. Margin claims O.K. for normal X, more generally complete connected Picard components, `via groupe fondamental`.
+- **309(g):** product formula for Picard tau. Margin `O.K.` survives, while its conditional supplement is deleted: `\deleted{si $X$ et $Y$ sont à fibres \unsure{géom. intègres|géom. connexes} [condition plus ou moins \unsure{nécessaire} vérifier.]}`. The verification wording belongs to deleted source text, with reading uncertainty, not a new active assertion supplied here.
+- **309(h):** for a hyperplane section, first restriction map labelled `\text{bijectif ? \unsure{Isom?|Sous?}}`; second labelled `\text{\unsure{surjectif}}`. Margin `conditions à préciser....`. Preserve the differing targets and uncertain labels in the frozen TEX; no reconstructed Lefschetz statement is substituted.
+
+### 57:310
+
+- **(1):** Picard tau `\uline{fermé} ds` Picard `? OK si $f$ est \uline{normal}`; a following qualification is deleted/uncertain.
+- **(2):** Picard tau `plat sur $S$ ?`; margin `\uline{Non} [contre-exemple de Mumford...]`. The deleted `\unsure{univ. ouvert sur $S$ ?}` is superseded as layout by the next numbered question, not evidence that openness was disproved.
+- **(3):** Picard tau `\unsure{univ$^t$} ouvert sur $S$ ?`; marginal normality/torsion qualifications include an uncertain `\unsure{?}` and `OK. en car. $0$`.
+- **(4):** multiplication by n in Picard or Picard tau `est-elle \uline{univ. ouverte} ? (Voir N.b) ?`; separate margin `La multiplication par $n$ est-elle de type fini ?`. The source claims yes for n prime to residual characteristics and says a positive answer for all n on Picard tau implies (3). Its N.B. supplies a group-scheme/torsion-prime-to-characteristic argument; this index does not verify it.
+- **(5):** Picard tau `\uline{de type fini sur $S$} $(\Leftrightarrow)$ propre sur $S$`, margin `\uuline{Oui}`. Projectivity is qualified by revised hypothesis `\deleted{\unsure{normal}}\inserted{\unsure{lisse}}`, followed by `j'ignore s'il en est de $\unsure{\overline{=}}$ si $f$ est normal ...`. This explicit ignorance is separate from the marginal “Oui”.
+- **(5′), uncertain label:** affirmative (3) would imply (5) `\uline{si} $f$ \uline{normal}`; next line `OK si les` fibre objects are `“sans torsion”` (source uses straight doubled quotes). Immediately after comes `\margin{Non, exemple}` with a drawing, and then the unresolved margin quoted below. Its attachment cannot be settled from the frozen linear text.
+- **Unresolved margin after (5′):** `\margin{La multiplication par un multiple de $p$ est \unsure{surjective} \illegible{2} \unsure{ouverte} (?) \unsure{comp. irréductibles}}`. Do not turn this into either a theorem or a definite counterexample to the whole of (5).
+- **(6):** Picard tau `n'a-t-il qu'un nb fini de \unsure{$S$-points d'ordre $n$}. \unsure{Non}`. The putative negative answer is entirely inside a reading-uncertainty macro. The following bracketed finite-type/component criterion also contains unresolved alternatives; preserve it as source text, without making it settle (6).
+- **(7):** `$\unsure{\mathrm{rang}}(\mathrm{NS})$ reste-t-il majoré ?`; margin `\uuline{oui}`.
+- **(8):** `Les composantes connexes de` Picard `sont elles de type fini sur $S$ ??`; margin `\uuline{non}`. Further question: Picard `est-il réunion disjointe` of Picard tau `?`. The nearby tentative margin is exactly `$\unsure{\overline M}$ la réponse à 5) ne semble \unsure{pas aussi évidente ici|pas asymptotiquement liée} .... \unsure{d'invariants} \uline{\unsure{stables|étales}}`; its uncertain alternatives are not resolved.
+- **(9):** `Définition de $\uline{\mathrm{Pic}}_{X/k}/\uline{\mathrm{Pic}}^\tau_{X/k}$ ...` is a programme item without a question mark.
+- **Footer, Howard:** `Multiplicité de` Picard tau and `Compatibilité aux spécialisations ???`; marginal `Questions liées à la \unsure{platitude|flèche}` and `Questions d'existence et descente....`. These concern the Picard programme, not the cote 47 Fourier compatibility check.
+
+### 57:311
+
+- Picard tau `univ$^t$ ouvert sur $S$ ?`.
+- Picard zero `plat sur $S$ ?`, with the stated implication to Picard tau flatness.
+- `Existence de` Picard with superscript `\unsure{00|\infty}`, in the Artinian `\unsure{local}` case and `dans le cas $S$ réduit ???`. Do not choose a superscript or treat the proposed object as already defined here.
+- `\uline{Continuité} de \uline{la torsion de} N.S.` is a programme item.
+- Margin `étudier la famille \unsure{modulaire} de la surface de Igusa...` is an explicit task, with “modulaire” uncertain.
+
+### 57:313
+
+- **Separation (i):** `Séparé sur $S$ si $X_s$ sont géom$^t$ loc. intègres ?`
+- **Separation (ii) and following line:** Picard tau `séparé sur $S$ si les $X_s$ séparables ?`, then `${}_n\uline{\mathrm{Pic}}_{X/S}$ \qquad `` \qquad `` \qquad ?`. The ditto marks are not expanded into an inferred full proposition.
+- **N.B. examples:** Mumford's double-fibre elliptic construction is said to show Picard zero can be nonseparated; margin `(mais alors il n'est pas représentable`. A second drawn example is said to show nonseparation even with separable fibres. These are source answers/counterexample claims, not an independently checked resolution of each preceding hypothesis.
+- **Variation:** `Constance de $\dim\uline{\mathrm{Pic}}_{X_s/k(s)}=\alpha_s+\mu_s+\lambda_s$ ?`; next numbered item `$\alpha\leq\alpha'$, $\lambda\geq\lambda'$`, with bracketed `$2\alpha+\mu\leq2\alpha'+\mu'$ connu` and margin `du moins pour fibres séparables`. Only the bracketed inequality is expressly labelled known; retain the other inequalities as part of this question cluster.
+- **Correspondences:** `Le préschéma. $\uline{\mathrm{Corr}}_S(X,Y)$ [classes de correspondances] existe-t-il ? \uuline{Oui}, par Raynaud ...` under the stated proper/geometrically integral hypotheses. Record the affirmative attribution as such, not as an unanswered question or independently verified citation.
+
+### 57:314–315
+
+- **314, projectivity qualification:** margin `projectif est-il nécessaire ?` with deleted `\unsure{plt. suffit}` and `\unsure{en fait}`. Later explicit task: `\uline{Question} Éliminer l'hyp. projective dans la deuxième partie.`
+- **314, proof roadmap:** `À prouver que $U$ est stable par générisation` and the following density condition are followed by claimed arguments: the first from criterion `(viii$'$ b$'$)`, the second `pratiquement triviale`; specialization from `(viii e)`. These are asserted proof steps, **not an explicit admission that the displayed proposition remains unproved**. Its cited criteria are not supplied/reconstructed by this index.
+- **314, final question:** `Prouver, si $X\to S$ est \uline{normal}, que $\uline{\mathrm{Pic}}^0_{X/S}$ est ``fermé'' dans $\uline{\mathrm{Pic}}_{X/S}$ mieux, que $\uline{\mathrm{Pic}}^0_{X/S}$ est \uline{propre sur $S$} ?? Cela signifie`, with separate margin `?`.
+- **315, continuation of 314:** the algebraically trivial generic-fibre line bundle `se prolonge-t-il \inserted{en $\uline{L}$} à $X$ \inserted{et $\uline{L}_s$ est alg. équiv. à $0$} ??` The source says it is true if Picard is representable, and that this holds in the projective case. The further question begins `Peut-être est-ce tjrs le cas` and explicitly proposes representability for proper flat X/S with geometrically normal, `voire seulement intègres...` fibres. Keep the extension question, the claimed conditional answer, and the broader representability conjecture distinct.
+
+## 3. Ordinary futures, editorial tasks, and exclusions
+
+The **seven exact “on aura” occurrences** are all accounted for. They are not seven independent admissions of a gap:
+
+| Scan | Exact marker and local object | Textual status |
+|---|---|---|
+| 284 | `on aura` before the Picard product isomorphism | Conditional deduction under the displayed projective/simple hypotheses. |
+| 286 | `Donc on aura` before the two Picard product formulas | Deduction from the preceding equivariant-Hom argument. |
+| 287 | `Calcul du $\unsure{p_*|f_*}(\uline{\Omega}^1_{X/S})$. On aura` | Calculation announced and written. |
+| 287 | `en vertu de \unsure{$(*)$} on aura` | Cohomological decompositions asserted from an uncertain reference label. |
+| 287 | `donc comparant avec a), on aura` | Difference-of-dimensions formula displayed. |
+| 288 | `Comme conséquence, on aura des exemples où` | **Prospective** pathology programme, indexed above. |
+| 290 | `on aura $F_0=G_0$` | Deduction asserted in the preceding elliptic-curve construction; no question flag added here. |
+
+Additional reused-typescript **editorial proof/presentation tasks**, which should not disappear merely because they lack question marks:
+
+- **299:** `on pourrait donc commencer par celles-ci` concerns exposition order; `il faudra expliciter le cas des idéaux principaux` is an editorial task.
+- **301:** `donner aussi une condition nécessaire et suffisante pour que les $dx_i$ engendrent`; `il faut préciser qu'il s'agit de dérivations dans un corps contenant F`; `Il faudra ajouter le sorite à la Lang sur les dimensions d'espaces de dérivations`. The extensions section is a plan, including `peut être ce qu'on pourra extraire de Klein ou du bouquin de Tchébotarof sur le groupe icosaédrique`, not a definite claim of a completed construction.
+- **303:** `il faut supposer que la base de M est finie`; `Donner aussi la suite exacte analogue de (1) pour les modules de différentielles`; `Il y a des fautes de frappe à la p.20 (B et A ont été plusieurs fois intervertis)`. These are source corrections/tasks, not corrections made to this frozen transcription.
+
+No occurrences of **“sans doute”, “admis”, or “admettre”** were found in these 43 texts. The admitted lemma at cote 47 belongs to earlier context, not this self-flag index. The reused typing at **271, 273, 295, 307, and 312** contains no additional explicit mathematical question located in this pass. In particular, 295's `dont la vérification est immédiate` is a claim of verification, 273's `Nous allons maintenant étudier` is a didactic transition, and 307's `nous allons nous borner` restricts the ensuing proof's scope. They are not self-declared unfinished research checks.
+
+Similarly, **304** gives the pushout `X'=X\amalg_Y S` with `(\text{existe }\ldots)` and qualifies its final exact sequence by `du moins si $f_*\uline{\mathcal O}_X^*)=\uline{\mathcal O}_S^*$`. These are an asserted existence and a stated hypothesis, not authorial question marks; the index does not manufacture a proof or a doubt from the ellipsis. **305** is a topic heading (Picard/Albanese for noncomplete varieties; Chevalley's theorem), with no explicit question.
+
+## 4. Withdrawals, revisions, and limits of cross-scan linkage
+
+- **284 → 286: an explicit hypothesis relaxation, not a retracted conclusion.** 284 inserts the condition that B is an abelian scheme acted on by translations. 286 says `[N.B. \unsure{Il n'était} pas nécessaire` that B have this form, then states different hypotheses and a new argument. Cite **both 57:284 and 57:286** if recording the relaxation; the opening words remain a reading uncertainty. The later Albanese variant on 286 is likewise an asserted extension, not an explicit failed argument.
+- **309(c) → 310(2): a question receives a source negative answer.** The flatness question on 309 has the explicit `Non [contre-exemple de Mumford...]` on 310. This is not the withdrawal of an earlier proved flatness claim: 309 asks a question.
+- **309(d), 310(5), and 310's “Non, exemple”: no secure global retraction.** Both 309(d) and 310(5) contain affirmative annotations. The target of `Non, exemple` on 310 is not explicitly named in the frozen linear text; do **not** cite it as withdrawing either affirmative statement without further authorised source work. The exact surrounding unresolved multiplication-by-p margin is preserved above.
+- **310, same-scan revision:** the projectivity discussion records `\deleted{\unsure{normal}}\inserted{\unsure{lisse}}` and separately says the normal case is unknown. This is a visible source qualification; neither word should be upgraded beyond its frozen reading status.
+- **314, same-scan revision:** projectivity is inserted in the closedness statement/corollary, while the margin deletes `\unsure{plt. suffit}` and explicitly asks whether projectivity is needed. Describe this as a recorded qualification and open question, not an independently established failure of the stronger version.
+- **315, attribution only:** `\deleted{d'après Raynaud}` withdraws an attribution in the sentence about the projective case; it does not delete the remaining representability assertion.
+- No other **unambiguous cross-scan withdrawal of a mathematical conclusion** was identified in this pass. Contradictory-looking formulas or doubtful readings were not reinterpreted to manufacture one.
+
+## Search/coverage record
+
+All scan texts were read in order, including the reused typescripts. Targeted searches used `?`, `vérifi`, `verifi`, `il semble`, `sembl`, `on aura`, `aurait`, `sans doute`, `admis`, `admet`, `question`, `problème`, `conject`, `doive`, `doute`, `air vrai`, `pourrait`, `peut-être`, `peut être`, `sais pas`, `ignore`, `à prouver`, `Prouver`, `à démontrer`, `conditions à préciser`, `voulons`, `étudier`, `essayer`, `il faut`, `il faudra`, `faute`, and `nécessaire`. False lexical hits such as “ensemble”, ordinary conditionals, and uncertainty macros alone were not counted as authorial self-flags.
