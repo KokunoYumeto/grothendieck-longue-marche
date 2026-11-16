@@ -80,8 +80,9 @@ It is the paper of record for these results, so the paper rules hold in full (AG
 1. **Inventory (done tonight, by script).** Next, the script adds a dependency column (which statement uses which)
    and marks superseded statements (a later run proving the same or more).
 2. **Referee the load-bearing claims first.** E.44 and E.49 (the expert's ranked points 1-4), with DELTA_ON_GT A.103
-   against E.49 beside them. Then the claims each part of the companion rests on. Either Claude Opus 5.5 at effort
-   max referees, as on 14 Nov, or a GPT-6 Astra (ChatGPT Pro mode) check prompt; the user decides.
+   against E.49 beside them. Then the claims each part of the companion rests on. No one is appointed referee
+   (the user, 17 Nov 2026): the check goes into the next prompt that uses the result (GT_TOWER_CHECK Part A for
+   E.44 and E.49), and every agent or run that uses a result double-checks it while working with it.
 3. **The outline, with the field expert.** A Claude Fable 5.2 at effort max expert of the Longue Marche field drafts:
    - the parts and their order;
    - which statements go where, and which are superseded or moot (the E.49 file already lists the moot ones);
@@ -121,7 +122,6 @@ plates can go on before then.
 
 ## 5. For the user to decide
 
-- The referees for E.44 and E.49: Claude Opus 5.5 at effort max, or a GPT-6 Astra (ChatGPT Pro mode) check prompt.
 - The expert for the outline: abbb9cee, or a rolled-back copy of the LM expert.
 - Scope: whether the companion takes in EXIT_TOWER, the tower of cotes 143-148, which goes beyond the 1981 manuscript.
   The proposal is yes, as its own part.
