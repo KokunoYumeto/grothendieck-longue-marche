@@ -96,15 +96,16 @@ the sphere's local data (p = ±1 mod 12) to a lens class (p = ±5): a precise fo
   the frames lie in the centralizers C(R0) and C(S) in SL2(F3), not in the centre. Only the parity pair (a, b) and its
   CRT compression u are defined.
 
-## F16 (16 Nov; NOTES §30 (b)) One quartic root: S6's Neron ratio and the frame parities on Galois.
-For aec1e030 or a1bd1599 (whichever has read the CM side). r0 = (3/4)^{1/4} is (i) the ratio N(z1)/N(z2) of S6's Neron
-values at the CM fixed points (3^{1/4} on E_rho, sqrt 2 on E_i), with r0^12 = q1/q2^2 = 27/64; (ii) the generator of
-Q^ab(E3[4]) over Q^ab, so that both frame parities a, b equal its Kummer character on G_{Q^ab} (DELTA_ON_GT A.2-L1).
-Is there a mechanism: Shimura reciprocity for the Siegel functions whose absolute values are the Neron values, with the
-frames on Galois as the two CM reciprocity maps (K3 = Q(omega), K4 = Q(i)) on the common field K3^ab ∩ K4^ab? If so,
-state Delta(Phi) = 1 as "Phi does not respect r0 in K3^ab ∩ K4^ab" precisely, and say whether S6's 12th root of
-q1/q2^2 (the corner's level 12) carries the same Galois information.
-- **Field side settled in the return (NOTES §30 (i)).** DELTA_ON_GT cp01 A.12 proves K4^ab ∩ K3^ab = Q^ab(3^{1/4}), quadratic over Q^ab (the commutator argument), and A.13 the torsion fields. Left for F16: only the S6 side, whether S6's Neron value 3^{1/4} (a real height) is the archimedean shadow of that Kummer class.
+## F16 (16 Nov; NOTES §30 (b), (i), (j); rewritten ~05:1x UTC) S6's corner and the bit 3^{1/4}.
+For aec1e030 or a1bd1599. Settled already: the field side is DELTA_ON_GT A.12 (K4^ab ∩ K3^ab = Q^ab(3^{1/4})); and
+numerically (49 digits, check_siegel_bit.py) the Siegel value at the order-3 fixed point of E_rho is
+g_a(rho) = ± e^{-pi i/12} 3^{1/4} (g^12 = -27) and at E_i[1 - i] it is g_b(i) = -1 + i, so S6's nomes are exactly
+q1 = (w/1728)^2 g_a(rho)^12 = -w^2/48^3 and q2 = (w/1728) g_b(i)^6 = i w/216. Questions: (a) prove g_a(rho)^12 = -27
+and the value of g_a(rho) exactly (distribution relation, Kronecker limit formula at rho); (b) does S6's level-12 corner
+(monodromy I - 12E, component cover y^12 = K) realize the 12th root g_a(rho)/g_b(i) of q1/q2^2, so that a Galois element
+acts on the corner's twelve sheets through the Kummer character of 3^{1/4}, the frame parity of DELTA_ON_GT on
+G_{Q^ab}? If yes, state the precise sense in which S6's corner carries Delta's bit; if no, say what the corner's 12th
+root is instead.
 
 ## F17 (16 Nov; NOTES §30 (g)) Two refuted steps in other people's papers: check before anyone is told.
 EXIT_TOWER cp16 D.72 (Minahan 2025, the adjacent-descending-link bound used on p. 29; the acyclicity theorem itself is not
