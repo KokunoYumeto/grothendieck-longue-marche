@@ -1,0 +1,78 @@
+Full mechanical validation, snapshot captured 2026-11-16 22:36:32 UTC
+
+Scope
+-----
+All 46 saved page files were copied as compiler inputs into an immutable
+snapshot. No scan images or context contents were read, and no page text was
+changed. No checkpoint ZIP was created by this validator.
+
+The combined snapshot is 88,741 bytes, SHA-256:
+1f7292e64bbb838b4948c59ae25455f6aae103050ee6282d2f0bf17a2d066dda
+It exactly matches concatenation of the 46 copied page files. Checkpoint-stage
+structural validation passed with 886 inventory rows, no errors, and no
+warnings. The snapshot manifest retains every copied file's hash.
+
+Actionable source diagnostics from that snapshot
+------------------------------------------------
+Scan 120, local line 25: a literal è is sent to the classic mathematical font
+cmmi10 and is omitted. A temporary math-character tracing definition located
+its expansion at input line 25 without changing the copied page. The root
+transcriber will choose the appropriate explicit TeX accent/text wrapping
+while checking the ink. No reading change is proposed here.
+
+Scan 132, local line 30: two uses of \textcircled occur in math mode. A text
+wrapper, \text{\textcircled{...}}, removes those mode warnings. A separate
+missing PDF font-map configuration initially crashed the local PDF driver;
+explicitly loading the installed lm-math.map in the temporary harness fixed
+that environment problem. With both the text-mode probe wrapper and the font
+map, the unchanged page snapshot compiled successfully.
+
+Scan 135, local line 35: \unsure{a)|\omega)} supplies the mathematical command
+\omega in text mode. Wrapping the existing command as \ensuremath{\omega}
+is the mechanical grouping/mode repair. The child did not edit the page.
+
+Follow-up audit snapshot
+------------------------
+The root requested a check of newly audited scan 100. Its copy was captured at
+2026-11-16 22:40:54 UTC, 2,536 bytes, SHA-256:
+34f7118a5710620a6e1ebf9d31eca685661c14a6127547fd6b8c3fb2976da851
+Its lexical structure check passed, but compilation failed at local line 7:
+\underline\unsure{\sigma|\gamma} makes \underline consume only the command
+\unsure. Grouping the entire argument as
+\underline{\unsure{\sigma|\gamma}}
+repairs that TeX argument structure without selecting a reading.
+
+Harness support verified
+------------------------
+The initial harness rejected the bare array tables within \diagram on scans
+133 (line 15) and 136 (line 44). The declared \diagram macro now supplies math
+mode locally for a bare array, while accepting an already-delimited array.
+Both unchanged page snapshots then compiled successfully. The synthetic
+preflight exercises both forms, TikZ diagrams, a drawing, and textcircled.
+
+The reusable script now treats missing-glyph messages and invalid-mode command
+warnings as failed checks even when XeLaTeX itself returns exit code 0. The
+engine exit code and compiler_completed flag remain separately reported.
+
+Remaining verification
+----------------------
+These are snapshot diagnostics from the first pass and the specific audited
+scan 100. The root is continuing its sequential visual audit. A fresh full
+compile/structural run after its markup repairs remains necessary. Each
+isolated page compilation stops at its first fatal error; later errors within
+a page are exposed by the subsequent run. This work does not certify the
+readings, visual completeness, or a final typographic layout.
+
+Records
+-------
+records/full_snapshot_001.json
+records/structural_check_003_full.json
+records/latex_check_003_full.json and .log
+records/latex_check_003_initial_scanNNN.log for the four initially failed pages
+records/latex_check_003_probes.json and corresponding logs
+records/latex_check_003_glyph120_probe.json and .log
+records/latex_check_003_textcircled_mapped_probe.json and .log
+records/latex_check_003_harness_verification.json and corresponding logs
+records/latex_check_004_audit100.json and .log
+scripts/compile_check.py
+scripts/validate_package.py
