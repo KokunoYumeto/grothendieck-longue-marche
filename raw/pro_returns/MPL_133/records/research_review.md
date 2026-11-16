@@ -1,0 +1,11 @@
+# Research integration and review
+
+All manuscript images were read, transcribed, compared for notation, and visually audited by one primary transcriber before context access. The parallel research assistance began only after the transcription freeze and used the frozen text; it did not supply alternate image readings or write to any frozen TeX file.
+
+The final report contains 76 numbered notes and separate registers for the manuscript's own unverified/withdrawn steps and its title sheets and numbering. The register reconciles the exact supplied IDs and preserves the difference between earlier run claims, reviewed statuses, unchecked planning questions, and the report's independently checked calculations.
+
+Independent mathematical review covered the split-Witt exact-sequence obstruction, affine hyperbolic construction without inverting two, equivariant characteristic-two obstruction, exterior-power descent failure, Chern-class example, dimension-two quadratic splitting, both graded-Azumaya examples, the finite-set and modular-representation counterexamples, closure of the special functors, the two affinization families, and the centre/derived-subgroup proofs. Hypotheses and limitations were retained in the notes and proof supplements; these checks do not assert novelty or prove the unresolved formal-group/algebraization claims.
+
+Primary literature was checked at the versions and locators stated in the report. The important version distinction is Horel's 2024 journal record versus the explicitly versioned 2025 technical preprint; the Dress–Siebeneicher 1988/1989 comparisons use indexed publisher abstracts and the separately read 1986 announcement. The final bibliography and supplements identify these access limits rather than implying that every full paper was available.
+
+All numbered notes have a manuscript source cue, kind, and context comparison or bounded negative; own ideas include confidence and a reason. The executed per-note context searches are retained in `context_searches.jsonl`, with canonical report locations added after integration. Research drafts were consolidated into the main report, while their substantive proofs and source records remain in the supplements.

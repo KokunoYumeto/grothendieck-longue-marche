@@ -1,0 +1,22 @@
+# Research notes — MPL_22+23_002-016
+
+## Scope, source control and results-state linkage
+
+These notes concern all 44 retained sheets: cote 22, scans 002–030, followed by cote 23, scans 002–016. A locator such as **22/024** means archive cote 22, PDF scan 24; manuscript page numerals are reported separately. Quotations retain the source language, and the uncertainty markers in the frozen transcription continue to govern every quoted reading.
+
+The transcription was frozen at **2026-11-16 23:06:31 UTC**, before the context was opened at **23:06:38 UTC**. The principal transcriber personally inspected all 132 supplied images, transcribed the pages in one stream, and conducted the second visual audit; post-freeze assistance concerned research and mechanical checks. Context member names had inadvertently been listed during preparation, as recorded in the progress log, but their contents were first read after the freeze. All subsequent mathematical comparisons belong to these notes and their supporting research records.
+
+The context contains an EGA I plan, two tables of contents, chapter-0 excerpts, a README and `notes/RESULTS_STATE.md`; it does not contain earlier archive-page transcriptions for the other cotes named in the README. Consequently context locations below give the exact filename, section and printed page where available, without inventing an archive scan number. The files under `ega_fr` are predominantly English and contain transcription defects; the specific original-print checks at the end identify what was verified independently.
+
+`RESULTS_STATE.md` reports **zero matching open rows, zero matching settled rows and zero matching intake/implication rows** for these folders. It also supplies ten first-pass returned-package leads, the unchecked planning item **WG2 §2.1 #2**, and three Hua-register claims to check; its reviewed LM results concern other material and provide no certification of the calculations here. Hua's page number n corresponds to archive scan n+1, and all locators here use the archive scans. The following table preserves those recorded statuses while specifying what these pages and this review contribute.
+
+| State-register identifier | Status supplied in `RESULTS_STATE.md` | Evidence and contribution in this package |
+|---|---|---|
+| **WG2 §2.1 #2** | Unchecked war-game planning item | P01–P05 and P09 identify the available plan witnesses, subjects and four actual open questions; P06–P08 give titles, pagination and dates. The missing cotes remain explicit comparison limits. |
+| **Hua, findings register, `22-power-series-discrete-obstruction`** | Conjecture; candidate after its own reference search; intake “new to us” | 22/023, 025; A20 gives the finite-support obstruction with justified truncation and an explicit square-zero lifting interpretation. A22 proves the additional smaller-base conclusion for the same example; no novelty claim is made. |
+| **Hua, findings register, `22-p23-proposition-reconstruction`** | Conjecture, unsearched; Lean card partly proved; intake “new to us” | 22/024–025; A21 records the essential “sur K relativement à k” wording and the finite base enlargement. A22 supplies a detailed residue-fibre/projectivity argument for the manuscript's “à fortiori … sur k” conclusion; the full calculation is in `records/research_power_series_review.md`. |
+| **Hua, findings register, `22-differentials-kernel-counterexample`** | Conjecture, unsearched; Lean card partly proved; intake “new to us” | 22/027, 029; A25–A26 compute the comparison map and its one-dimensional kernel; A28 gives a degree-four realization over characteristic two. These calculations verify the advertised phenomenon without replacing its historical register status. |
+| **MPL_131 10**, **MPL_33_147-181+34_002-017 8.3** | First-pass research leads | Used only as planning/pagination comparison questions in P03, P05–P07; their full notes and source pages are absent here. |
+| Other eight returned-package entries | First-pass leads, predominantly bibliography summaries | Their quoted summaries provide no proof of a statement on these sheets; the particular fundamental-group and SGA 4 pointers are identified in P03-IX and P03-XIII. |
+
+Items marked **own calculation** or **own idea** give explicit examples, morphisms or proofs with their confidence and scope. They make no novelty claim and do not certify a prior project's entire result register. The longer verification records preserve the details that exceed the requested one-to-four-sentence research-note format.

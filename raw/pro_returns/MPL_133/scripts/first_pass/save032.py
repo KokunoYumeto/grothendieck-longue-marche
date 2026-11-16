@@ -1,0 +1,36 @@
+import sys
+sys.path.insert(0,'/workspace/scratch/481c6c017cf8/MPL_133/scripts')
+from record_page import save
+save(32,r"""\scanpage{32}
+Un pion ne peut se placer en position de ``prise'', i.e.
+sur une intersection libre telle qu'il n'ait plus
+\inserted{aucune} \deleted{de} liberté (i.e. que le groupe qui le contient
+n'ait plus de liberté) sauf dans les deux
+cas suivants:
+
+1°) Cas du ``Ko'' cf plus bas
+
+2°) Cas de ``remplissage d'un trou'' : \deleted{disons que}
+$A$ joue, sur une \deleted{\unsure{case}} \inserted{intersection $i$} qui est la seule liberté restante
+d'un ensemble \inserted{$E$ réunion} de groupes de $B$ \inserted{(groupement de $B$)}, de façon que
+toutes les libertés du groupe $G$ de $A$ contenant $i$
+soient prises par des pions de $E$. ($E$ est entouré
+par les pions de $A$ sauf en $i$, et $E$ entoure
+le groupe \inserted{$G$} de $A$ contenant $i$)
+
+\deleted{\unsure{Commençant à}}
+
+\deleted{Chaque} \inserted{Les} joueurs prennent \deleted{\unsure{à tour de}} \inserted{à tour de} rôle, et ils ne
+peuvent sauter leur tour (obligation de jouer).
+L'obligation de jouer tombe dans le seul cas
+suivant:
+
+(fin de partie) Le joueur $A$ n'a plus de case
+libre où il soit légitime de se mettre (\inserted{i.e.} où il
+\unsure{n'en|n'y} soit pas en état de prise, sans \deleted{l'}\inserted{une des} exceptions
+1° et 2° plus haut), sauf des \deleted{cases} \inserted{intersections $c$} du type
+suivant: il y a un groupement $E$ de $A$
+n'ayant plus que deux libertés \deleted{\unsure{intérieures}} \inserted{en $\unsure{i_1,i_2}$}
+\deleted{\unsure{ces deux libertés}}
+\mspage{31}
+""",'text', [('text','upper','Un pion ne peut se placer'),('text','upper-middle','1°) Cas du Ko'),('text','middle','2°) Cas de remplissage'),('text','lower-middle','Les joueurs prennent'),('text','lower','L’obligation de jouer tombe'),('text','bottom','(fin de partie) Le joueur A'),('marginalia','bottom-left','31')], doubts=[('bottom edge','en i_1,i_2','The insertion is at the lower-right edge; the punctuation and indices are not securely separated.','low')], observations='Go rules continue: prohibition of placing a stone in capture, exceptions labelled Ko and filling a hole, obligation to play and end-of-game condition. Several cancellations are ink-heavy; the last condition continues on the following sheet.')
