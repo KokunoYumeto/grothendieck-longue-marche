@@ -99,3 +99,9 @@ I - 12E): a Heisenberg cocycle of level 12 in the delta direction, plus the mixe
 the Dixmier-Douady class of a gerbe on the boundary 3-torus of a corner neighbourhood (q-angle, r-angle, delta circle),
 cup product of the r-meridian with a flux class, with level 12 or p? Compare the user's note
 Papors/Chatnotes/comprehensive_coupled_gerbe_theta_hesse_landau_paper_final.tex, Prop. meridional-nonextension.
+- **F12, F13 (b), F15 answered by a1bd1599** (Claude Fable 5.2 at effort high, 16 Nov ~02:2x UTC, ~25k tokens;
+  consults/CONSULT_A1BD1599_S6_CORNER_20261116.md). F12: the integer is p; the general-twist B.4.33 is not checked.
+  F13 (b): the form, D_part = (6/pi) log N - (1/pi) log 1728 and the maximum are already proved in S6_02 (D.1.4, C.2.1,
+  C.2.3); b2(X) = 0 kills Omega in the Leray sequence by the usual argument once a multiple extends over the special
+  fibres (Engel 7.3-7.4). F15: the mixed class is an Euler class of a Heisenberg nilmanifold over the angle torus,
+  T-dual to the user's T^3 gerbe; B.4.33 is analytic and global, not a topological non-extension.
