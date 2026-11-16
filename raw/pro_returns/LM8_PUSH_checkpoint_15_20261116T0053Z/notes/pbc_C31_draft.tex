@@ -1,0 +1,448 @@
+% Full candidate after original-source replay; not registered pending audits.
+\subsection{A third independent iterated descent character}
+
+\begin{statement}{C.31}{Open}{Candidate: three independent iterated parity characters}
+There is an actual multiplier-one full gentle element $g_2$ such that
+\[
+                 \Delta(D(g_2))=0,\qquad
+                 \Delta(D^2(g_2))=1.
+ \tag{C.31.1}
+\]
+Consequently the continuous map
+\[
+ (\Delta,\Delta D,\Delta D^2):
+       \widehat{\mathrm{GT}}_0\twoheadrightarrow C_2^3
+ \tag{C.31.2}
+\]
+is onto, and is already onto on the multiplier-one subgroup.
+These three characters are linearly independent and vanish
+on the specified full Galois image. The arithmetic-normal quotient
+therefore has an abelian quotient $C_2^3$.
+This does not assert independence of all subsequent iterates, nor
+does it determine the restriction of $\Delta$ to the pentagon group.
+\end{statement}
+
+\begin{proof}
+We first solve one exact finite source-centralization problem, then
+lift it to the full profinite modular group. Two normalizations are
+essential: the first finite pure abelianization has exponent twelve
+but its inertia has order twenty-four, so that normalization cannot
+simply be omitted.
+
+\paragraph{The actual marked finite source.}
+Let $\Gamma=\widehat{C_2*C_3}=\langle s,r\mid s^2=r^3=1\rangle$,
+$\tau=sr$, and $F=\ker(\Gamma\to S_3)$, with the old marking
+$x=(rs)^2$, $y=\tau^2$. Write $G_1$ for the degree-$360$ group of
+C.27, and $(\beta_1,A_1)$ for its actual corrected pure frames,
+retained in \texttt{pbc\_hopf\_joint\_seed.json}. Put
+\[
+                  v_1=\beta_1,\qquad u_1=A_1^{-1}\beta_1.
+ \tag{C.31.3}
+\]
+Retain the six evaluations of $q_1\varphi\sigma:F\to G_1$,
+and also all six signed modulo-three and modulo-four evaluations
+of $\varphi\sigma$, where $\sigma$ runs through the six geometric
+peripheral permutations. Their actual Schreier-induced modular
+representation has degree $2160+432=2592$. Denote its image by
+$G=\Gamma/N$, its pure subgroup by $F_2$, and its generators by
+$s,r$ again. The kernel is normal in $\Gamma$: the six substitutions
+represent the geometric $S_3$ up to inner automorphisms, and the
+induced representation retains exactly their simultaneous kernels.
+
+In the ordered pairs
+\[
+           (s_1,\tau_1),(s_1,r_1^{-1}),
+           (\tau_1,s_1),(\tau_1,r_1^{-1}),
+           (r_1^{-1},s_1),(r_1^{-1},\tau_1),
+\]
+prescribe the six $G_1$ values
+\[
+ (v_1,u_1,v_1^{-1},u_1v_1^{-1},u_1^{-1},v_1u_1^{-1}),
+ \tag{C.31.4}
+\]
+and prescribe identity in every first signed modulo-three and
+modulo-four coordinate. The exact finite calculation places this
+tuple in the derived subgroup of the actual joint word image.
+Thus it is the value of an actual $F'$ word, not just a tuple in a
+product. The word-image comparison with $F_2$ is an isomorphism;
+let $f_2\in F_2'$ be the resulting element. The completed finite
+calculations give
+\[
+\begin{array}{c|l}
+ |G|&2^{146}3^{30}\\
+ |F_2|&2^{145}3^{29}\\
+ F_2^{\rm ab}&C_{12}^2\\
+ \operatorname{ord}(x),\operatorname{ord}(y)&24,24\\
+ G^{\rm ab}&C_6\\
+ \alpha(s),\alpha(r)&s f_2^{-1},\ f_2r.
+\end{array}
+ \tag{C.31.5}
+\]
+Here $\alpha$ is an actual automorphism, fixing $\tau$ and admitting
+pure $s$- and $r$-frames. The degree-$2592$ permutation generators,
+all tuple coordinates, membership checks and marked comparison are
+literal inputs of \texttt{pbc\_iterated\_joint.py} and its GAP
+output. The finite portion of
+\texttt{pbc\_hopf\_iterated\_joint\_sparse.g} completes the
+permutation-to-polycyclic conversion and saves
+\texttt{pbc\_iterated\_joint\_pc.json} before starting any Schur
+calculation. The later memory failure of that old Schur attempt
+does not enter this proof.
+
+The completed triangular basis change
+\texttt{pbc\_native\_adapt.py} retains every old-basis vector and
+every new power and conjugation word. In the resulting $176$
+generators $g_1,\ldots,g_{176}$, the marked elements are
+\[
+               r=g_1,\quad s=g_2,\quad
+               B_s=g_7,\quad B_r=g_5.
+ \tag{C.31.6}
+\]
+The fixed original source is
+\texttt{pbc\_iterated\_shortcut\_v2\_original\_source.json},
+with SHA256
+\[
+\texttt{95fb384593bfaf97d468bbc51f11cd797}
+\quad\texttt{484a08cb3ec3b954961085b520ffc88}.
+\]
+It retains $71$ genuine pure $s$-centralizers and nine genuine pure
+$r$-centralizers. A further finite-only permutation replay checks
+all $176$ power and $15400$ conjugation clauses, before and after
+the basis change, together with every marked frame and all these
+pure centralizers, directly in the degree-$2592$ group. Its source
+and output are \texttt{pbc\_iterated\_source\_permutation\_replay}.
+
+\paragraph{The original integral central obstruction.}
+Let $\mathcal F$ be the free discrete group on the $176$ marked
+generators, $R=\ker(\mathcal F\to G)$, and
+\[
+              H=\mathcal F/[\mathcal F,R],\qquad
+              K=R/[\mathcal F,R].
+ \tag{C.31.7}
+\]
+The actual Hopf exact sequence identifies
+$K\cap H'=H_2(G,\mathbb Z)$ with the torsion subgroup of the
+finitely generated abelian group $K$; its remaining quotient is a
+subgroup of the free abelian group $\mathcal F^{\rm ab}$.
+All assertions obtained here as integral identities also hold on
+profinite completion.
+
+Use the canonical positive words $a,b$ for $\alpha(s),\alpha(r)$.
+Each pair of words in the three differences
+\[
+       (B_s s)-(aB_s),\quad (B_r r)-(bB_r),\quad (ab)-(sr)
+ \tag{C.31.8}
+\]
+has the same image in $G$. Interpreting each difference as the
+central quotient of the two words and adding in $K$, their sum is
+the actual product discrepancy
+\[
+             T=(B_s sB_s^{-1})(B_r rB_r^{-1})\tau^{-1}
+                       \in K\cap H'.
+ \tag{C.31.9}
+\]
+For a retained pure centralizer $c$ of $s$, put
+$j_s(c)=csc^{-1}s^{-1}\in K\cap H'$. This is a homomorphism
+on the finite centralizer: its values are central. It has exponent
+dividing two, since $s^2$ is central in $H$. Likewise the
+$r$-centralizer map $j_r$ has exponent dividing three.
+
+C.42 proves that the three-primary part of the original $T$ is
+zero. More precisely, its literal original-row identity in the
+actual $26$-generator quotient is $T+3j_r(c_{74})=0$ after the
+proved homology isomorphism, and $3j_r(c_{74})=0$ already in the
+original centralization. We must solve the two-primary part with
+the same original target.
+
+\paragraph{A literal original-row identity in the $86$-generator quotient.}
+Let $G_{86}$ be the actual quotient of C.43. C.42's integral
+bound kills the original two-primary multiplier by $2^{14}$;
+C.43's split surjection therefore gives the same bound on
+$H_2(G_{86},\mathbb Z_2)$. For its $86$-generator free source,
+the central relation module has $3741$ canonical power/conjugation
+coordinates. If $K_{86}$ is its actual finitely generated abelian
+central kernel, then
+\[
+ \operatorname{tors}(K_{86})_{(2)}\cap 2^{14}K_{86}=0.
+ \tag{C.31.10}
+\]
+Indeed split $K_{86}$ abstractly into its free part and finite
+torsion. Multiplication by $2^{14}$ kills the two-primary torsion,
+and an element of the free part cannot be torsion. The odd-primary
+part does not intersect the two-primary part.
+
+The fresh calculation first recollects $9000$ consistency identities
+using GAP's original positive-word source collector. The older
+native-collected attempt failed its original-source comparison and
+is not used. The successful fresh reducer gives an exact finite
+DAG. Its complete expansion then replaces every auxiliary coordinate
+or modulus leaf by its explicit Bezout combination of original
+power/consistency rows. A separate literal GAP replay recollects all
+$6446$ original leaves occurring in that expanded certificate.
+The final identity is
+\[
+ T_{86}+\sum_i n_i j_s(c_i) +\sum_\ell m_\ell R_\ell
+                      =2^{14}z\quad\text{in }\mathbb Z^{3741},
+ \tag{C.31.11}
+\]
+where every $R_\ell$ is an actual source identity, every $c_i$ is
+one of the original genuine pure centralizers, and $z$ is an
+explicit integer vector. No independent power-word correction,
+coordinate relation, modulus relation or $r$-frame correction
+occurs in the final witness. The files
+\texttt{pbc\_quotient86\_standard2\_literal\_original\_identity.json}
+and the corresponding \texttt{\_replay.g/.out} retain every integer,
+word and source comparison. The replay completed successfully on
+all $6446$ leaves. The complete DAG and exact decoded-byte replay
+are retained separately as reproducibility evidence.
+
+Since every $j_s(c_i)$ has exponent two, only the parity of $n_i$
+matters. In the original $176$-generator basis the nonzero corrections
+are exactly
+\[
+\begin{split}
+ \mathcal I=\{&6,16,27,35,39,41,43,49,\\
+              &53,55,63,65,72,79,80,85\}.
+\end{split}
+ \tag{C.31.12}
+\]
+Here each $g_i$ for $i\in\mathcal I$ is one of the recorded pure
+$s$-centralizers. The corrected quotient target is two-primary:
+C.42 already kills the original target's three-primary part,
+which remains zero after projection, and every added class is
+two-torsion. Thus (C.31.10)--(C.31.11) prove that
+\[
+                   T+\sum_{i\in\mathcal I}j_s(g_i)
+ \tag{C.31.13}
+\]
+maps to zero in $H_2(G_{86},\mathbb Z_2)$. This deduction uses
+only genuine original identities; completeness of the searched
+row set or of a guessed relation lattice is not assumed.
+
+\paragraph{The two remaining original homology coordinates.}
+C.43 identifies the kernel of
+$H_2(G,\mathbb Z_2)\to H_2(G_{86},\mathbb Z_2)$ with
+$(\bigwedge^2 A)_Q=C_2^2$, where
+\[
+       A=\ker(G\to Q)=C_2^{72},\qquad Q=G_{104},\qquad
+       N_3=\ker(Q\to G_{86})=C_3^{18}.
+\]
+Here $A^{N_3}=A_{N_3}=0$, and the extension $G\to Q$ splits.
+We need two actual central extensions of $G$ evaluating the two
+coordinate forms; their mere existence would not determine the
+value of (C.31.13).
+
+The two invariant alternating forms $B_1,B_2$ of C.43 have ranks
+$72$ and $36$. Their explicitly verified invariant quadratic
+refinements are $q_1,q_2$. For either pair, take the bilinear form
+$c$ with diagonal $q(e_i)$, upper triangular entries $B(e_i,e_j)$
+and lower triangular entries zero. The finite group
+\[
+ E_q=A\times C_2,\qquad
+ (v,z)(w,t)=(v+w,z+t+c(v,w))
+ \tag{C.31.14}
+\]
+is a central extension of $A$. Its automorphisms fixing the
+\emph{chosen} central $C_2$ kernel map onto $O(q)$ with kernel
+$A^*$. For the rank-$36$ form the center is larger; no pointwise
+fixing of that larger center is asserted.
+
+Pull back this automorphism extension along the actual $Q$-action.
+Odd-order averaging gives $(A^*)^{N_3}=0$ and
+$H^2(Q,A^*)=0$, so it splits. Explicitly, for a matrix $M$ preserving
+$q$, let $q_M$ have polar form $c(Mv,Mw)+c(v,w)$ and zero values on
+the basis vectors. Its lifts are
+\[
+              (v,z)\longmapsto(Mv,z+q_M(v)+l(v)),\quad l\in A^*.
+ \tag{C.31.15}
+\]
+The retained code first solves all order-three and commuting
+relations of the $18$ actual $N_3$ generators, then uniquely lifts
+the other quotient generators to normalize that complement.
+There are $12312$ checked scalar equations of rank $1224$ in the
+first step, and $1296$ equations of rank $72$ for each remaining
+generator. All equations are derived from the original source
+words and rechecked after solving them. Two automorphisms above
+the same matrix differ by a linear form, so checking their
+discrepancy on all basis vectors checks the whole identity.
+
+The same normalizer construction gives an actual section of
+$G\to Q$: a complement over $N_3$ has normalizer mapping onto
+$Q$ by coprime complement conjugacy, and the kernel is
+$A^{N_3}=0$. Every power and conjugation relation of this section
+is additionally checked in the original finite $G$. Thus the
+constructed actions give actual central covers $E_q\rtimes Q$ of
+the actual $G$. This argument retains the $Q$ coordinate and does
+not presume that its action on $A$ is faithful.
+
+For clarity about the numerical convention, vectors are columns
+and the right action of $g_i g_j$ is $M_jM_i$. Write a section lift
+of $g_j$ as $g_j a_j$. On multiplying by the original $g_j$ in the
+central cover, the coordinate update is
+\[
+ v'=M_jv+a_j,\qquad
+ z'=z+q_{M_j}(v)+l_j(v)+c(M_jv,a_j).
+ \tag{C.31.16}
+\]
+This evaluates all the positive words in (C.31.8) and every
+centralizer commutator. A separate GAP calculation checks all
+$83$ compared word pairs in the original finite group, not merely
+their $A$-coordinates. The exact results are
+\[
+\begin{array}{c|c|c|c|c}
+ \text{form}&\text{rank}&\text{three terms of }T&T&
+             \text{all }s\text{- and }r\text{-corrections}\\\hline
+ B_1&72&(0,0,0)&0&0\\
+ B_2&36&(1,0,1)&0&0.
+\end{array}
+ \tag{C.31.17}
+\]
+The programs \texttt{pbc\_top\_two\_section},
+\texttt{pbc\_top\_two\_cover\_actions}, and
+\texttt{pbc\_top\_two\_cover\_values}, together with both original
+GAP replays, retain the matrices, linear solutions, word values and
+source hashes. Their independent reruns agree on every mathematical
+field.
+
+Restriction of a central extension of $A$ to $H_2(A,\mathbb Z)$
+is its commutator pairing $B$. A change in quadratic diagonal lies
+in the $\operatorname{Ext}^1$ part and does not affect this pairing.
+The canonical inclusion in C.43 therefore identifies our two
+cover evaluations on the kernel precisely with the two independent
+forms $B_1,B_2$. An extension inflated from $Q$ evaluates zero on
+that kernel by naturality. Consequently (C.31.17) detects every
+remaining kernel element, and (C.31.13) is zero in the original
+two-primary multiplier.
+
+It is also zero at three: C.42 kills $T$ there, and each added
+$s$-centralizer class is two-torsion. There are no other primary
+parts, since $G$ has order a product of powers of two and three.
+We have thus proved the single original integral identity
+\[
+                    T+\sum_{i\in\mathcal I}j_s(g_i)=0
+                         \quad\text{in }K\cap H'.
+ \tag{C.31.18}
+\]
+In particular the literal corrected frames are
+\[
+        \widetilde B_s=g_7\prod_{i\in\mathcal I}^{\rm increasing}g_i,
+        \qquad \widetilde B_r=g_5.
+ \tag{C.31.19}
+\]
+Their conjugates of $s,r$ have product exactly $sr$ in $H$.
+The order of the displayed correction product is specified; the
+centralizer commutator map makes its effect additive.
+
+\paragraph{The modular source centralization and the full lift.}
+Put $L=\langle g_2,g_1\rangle\subset H$. Its image is all of $G$,
+so $H=LK$ and $L'=H'$ because $K$ is central. The images of
+$g_2,g_1$ are independent basis vectors in $H^{\rm ab}=\mathbb Z^{176}$;
+since they generate $L$, this proves $L^{\rm ab}=\mathbb Z^2$.
+The actual free two-generator centralization maps onto $L$ and
+induces the identity on the Hopf multiplier and an isomorphism on
+free abelianizations. It is therefore an isomorphism. Hence
+\[
+              E=L/\langle g_2^2,g_1^3\rangle
+                 =\Gamma/[N,\Gamma]
+ \tag{C.31.20}
+\]
+after completion. The killed elements are central and have
+independent nonzero abelian vectors, so their subgroup meets
+$H'$ trivially. Since $G^{\rm ab}=C_6=\Gamma^{\rm ab}$,
+the central kernel of $E\to G$ is exactly the finite Hopf
+multiplier. This identifies the actual source centralization;
+an arbitrary Schur cover is not being substituted for it.
+
+Although the words in (C.31.19) were written in $H$, each can be
+replaced by an element of $L$ with the same finite image. Their
+difference is central and does not change any conjugation. Their
+finite images are pure, so the chosen elements of $L$ are pure as
+well. Equation (C.31.18) gives a homomorphism $\Gamma\to E$ that
+conjugates $s,r$ by these frames and fixes $sr$ exactly. Its map on
+the quotient is $\alpha$, so it sends $N$ into the central kernel
+and kills $[N,\Gamma]$. It therefore factors through an endomorphism
+of the actual $E$ in (C.31.20). Hopf naturality identifies its map on the
+central kernel with $H_2(\alpha)$; it is consequently an
+automorphism on kernel and quotient, hence on $E$.
+
+Apply the modular central criterion proved by the finite trace and
+refinement argument of P.3 and B.11. That proof uses only normality
+of the retained source kernel, so it applies to this actual $N$.
+It gives a full positive peripheral automorphism $\Phi$ of $\Gamma$
+covering $\alpha$, retaining the two finite pure frames and the
+identity cusp frame. An inner correction from $N$ makes
+$\Phi(\tau)=\tau$ literally and changes none of the finite data.
+The full torsion relations now give the full gentle two- and
+three-cycle relations on restriction to $F$.
+
+\paragraph{The first normalization and the common cusp factor.}
+In the temporary marking $x_{\rm new}=\tau^{-2}$,
+$y_{\rm new}=s x_{\rm new}s$, the conjugator
+$s\Phi(s)$ has abelianization $(a,-a)$. Its finite value is
+$f_2^{-1}\in F_2'$, so (C.31.5) implies
+$a\in12\widehat{\mathbb Z}$. Normalize by the inner power
+$x_{\rm new}^a$. Returning to the old marking replaces the finite
+conjugator by
+\[
+                         f_2\longmapsto y^{-a}f_2x^a.
+ \tag{C.31.21}
+\]
+This produces an actual normalized gentle pair $g_2=(1,f)$.
+All first signed modulo-three and modulo-four values remain identity,
+because all three corresponding peripheral matrices have orders
+dividing twelve. The actual descended-frame formula of C.24
+therefore gives $\Delta(D(g_2))=0$.
+
+The change (C.31.21) need not be identity in $G$, whose inertia
+has order twenty-four. Evaluate it in the next $G_1$ coordinates.
+Since $s_1^a=r_1^a=1$, the first value and cycle-product value become
+\[
+       v'=\tau_1^{-a}\beta_1,\qquad
+       u'=u_1=A_1^{-1}\beta_1.
+ \tag{C.31.22}
+\]
+For the latter equality use the actual cycle $\rho$:
+$\rho(y^{-a}f_2x^a)(y^{-a}f_2x^a)
+=z^{-a}(\rho(f_2)f_2)x^a$, whose outer factors evaluate to one.
+The retained actual pure frames of the first descended modular
+automorphism are consequently
+\[
+              \beta_D=v'=\tau_1^{-a}\beta_1,\qquad
+              A_D=v'(u')^{-1}=\tau_1^{-a}A_1.
+ \tag{C.31.23}
+\]
+They have the \emph{same} left factor, a cusp-centralizing pure
+power since $a$ is divisible by twelve. Remove it by a full inner
+conjugation by $\tau^a$ before normalizing this descended class.
+This does not change $D(g_2)$ as an outer class and restores exactly
+the two C.27 finite frames, not just the same finite automorphism.
+The certificate \texttt{pbc\_iterated\_normalization\_gate.py}
+checks both possible values $a=0,12\pmod{24}$ against all six
+actual permutation coordinates.
+
+\paragraph{The second normalization and the signed character.}
+With these restored frames the unnormalized pure conjugator of
+$D(g_2)$ has the finite value $w$ of C.27 in the old marking.
+It lies in $F_1'$, where $F_1$ is the pure subgroup of $G_1$.
+Here $F_1^{\rm ab}=C_{12}^2$ and both inertia orders are twelve.
+Thus the next abelian normalizing exponent is divisible by twelve,
+and this second normalization is genuinely invisible in $G_1$.
+The normalized actual pair representing $D(g_2)$ therefore retains
+exactly C.27's six modulo-four residues and six projective
+modulo-three identities.
+
+Apply C.27's signed-three calculation to this actual full pair.
+Its two allowed signed patterns have the same equianharmonic bit
+one and Gaussian bit zero after the normalized intertwiner is
+chosen. Equations (C.27.14)--(C.27.16), now applied to $D(g_2)$,
+give $\Delta(D^2(g_2))=1$. This establishes (C.31.1) with both
+normalizations and all retained pure frames accounted for.
+
+Finally C.28 supplies the vector $(1,0,0)$, C.27 supplies a vector
+$(b,1,c)$, and the present element supplies $(d,0,1)$. They span
+$\mathbb F_2^3$, proving (C.31.2). Every character vanishes on
+Galois because $D$ fixes the specified Galois image and $\Delta$
+vanishes there. All stopped and failed calculations remain retained;
+the positive assertion uses only the successful original-row,
+actual-cover and full-lifting comparisons above.
+\end{proof}

@@ -1,0 +1,214 @@
+% Root and DE independent audits passed on 2026-11-15.
+\begin{statement}{C.34}{Proved}{Odd-primary arithmetic-trivial characters at all sufficiently large primes}
+Let $V$ be the two-dimensional standard representation of $S_3$.
+For $g\in S_3$, put
+\[
+ L_n(g)=\frac1n\sum_{d\mid n}\mu(d)
+                   \operatorname{tr}(g^d\mid V)^{n/d}.
+\]
+Write $1,\tau,\rho$ for the identity, a transposition and a
+three-cycle, and define, for $n\geq2$,
+\[
+\begin{split}
+ a_n&=\frac{2L_n(1)-L_{n+1}(1)-2L_n(\rho)
+                 -3L_{n+1}(\tau)-2L_{n+1}(\rho)}6,\\
+ b_n&=\sum_{\substack{i+j=n\\2\leq i<j}}a_i a_j
+              +\begin{cases}\binom{a_{n/2}}2,&2\mid n,\\0,&2\nmid n,\end{cases}\\
+ d_n&=\max(0,a_n-b_n).
+\end{split}                                                     \tag{C34.1}
+\]
+Let $Q$ be the full gentle group modulo the closed normal closure
+of the absolute Galois image.  For every prime $p\geq5$,
+\[
+ \dim_{\mathbb F_p}\operatorname{Hom}_{\mathrm{cts}}(Q,\mathbb F_p)
+                       \geq d_{p-1}.                            \tag{C34.2}
+\]
+Every displayed character can be chosen with its nonzero values
+witnessed on global multiplier one.  In particular,
+\[
+\begin{array}{c|rrrrrr}
+ p&13&17&19&23&29&31\\ \hline
+ d_{p-1}&1&37&143&1805&77519&273536 .
+\end{array}                                                     \tag{C34.3}
+\]
+The lower bound is positive and tends to infinity for every
+sufficiently large prime $p$.  There is a continuous surjection
+\[
+ Q^{\mathrm{ab}}\longrightarrow
+ \left(\prod_{j\geq1}C_2\right)
+       \times\prod_{\substack{p\geq5\\p\ {\rm prime}}}
+                         (\mathbb Z/p\mathbb Z)^{d_{p-1}} .
+                                                               \tag{C34.4}
+\]
+This determines a large quotient, not the full abelianization.
+No assertion is made here that the odd-primary characters
+vanish on the pentagon group.
+\end{statement}
+\begin{proof}
+We give an independent character computation of the dimensions
+used in C.33.  Work first over $\mathbb Q$.
+The free Lie algebra on $V$ has degree-$n$ piece $L_n(V)$.
+A homogeneous tangential derivation is specified by three
+conjugators $q_x,q_y,q_z\in L_n(V)$, with $x+y+z=0$.
+For $n\geq2$ these conjugators have no ambiguity, because
+the homogeneous peripheral centralizer in that degree is zero.
+The special condition is
+\[
+            [x,q_x]+[y,q_y]+[z,q_z]=0 .
+\]
+Inner derivations are the diagonal triples.  The permutation
+representation on the three conjugator positions modulo its
+diagonal is $V$.  Bracketing with $x,y$ is onto $L_{n+1}(V)$
+by Jacobi induction.  There is therefore an exact sequence
+of $S_3$-representations
+\[
+ 0\longrightarrow \mathfrak s_n
+ \longrightarrow V\otimes L_n(V)
+ \longrightarrow L_{n+1}(V)\longrightarrow0,                    \tag{C34.5}
+\]
+where $\mathfrak s_n$ is the space of special outer derivations.
+Its $S_3$ invariants are exactly $S_n(\mathbb Q)$ of (C33.1).
+
+For completeness, the trace formula in the statement follows
+directly from the tensor algebra and its ordered Lie-monomial
+basis.  The trace series of the tensor algebra at $g$ is
+$(1-\operatorname{tr}(g\mid V)t)^{-1}$.
+The Poincare--Birkhoff--Witt decomposition into symmetric
+powers of the $L_n(V)$, followed by logarithms, gives
+\[
+ \operatorname{tr}(g\mid V)^m
+       =\sum_{n\mid m}n\,\operatorname{tr}(g^{m/n}\mid L_n(V)).
+\]
+Mobius inversion gives $L_n(g)=\operatorname{tr}(g\mid L_n(V))$.
+Since the three values of $\operatorname{tr}(g\mid V)$ are
+$2,0,-1$, taking invariants in (C34.5) gives exactly $a_n$.
+Thus $a_n$ is the dimension of the actual degree-$n$
+gentle Lie space.
+There are at most $b_n$ independent degree-$n$ brackets:
+for $i<j$ there are $a_i a_j$ possible pairs, and for $i=j$
+there are $\binom{a_i}{2}$.  Nested brackets are already
+included, since their two outer factors are elements of
+the same graded Lie algebra.  We have not assumed that
+all these pairs are independent.
+
+Fix $p\geq5$ and apply C.33's actual-image argument with
+$13$ replaced by $p$ and top conjugator degree $p-1$.
+The complete integral peripheral correction and coprime
+$S_3$ argument give
+\[
+       \mathcal U_n/\mathcal U_{n+1}=S_n(\mathbb Z_p)
+              \qquad(2\leq n\leq p-1).                          \tag{C34.6}
+\]
+These are free finite-rank $\mathbb Z_p$ modules, of ranks $a_n$.
+The zero degree-two space again gives $\mathcal U=\mathcal U_3$.
+On the Magnus algebra modulo augmentation degree $p+1$,
+the operator $u-1$ raises degree by at least three.
+The resulting actual quotient
+$U=\mathcal U/\mathcal U_p$ has nilpotency class at most
+$\lfloor(p-1)/3\rfloor<p$ and is a finitely generated
+torsion-free pro-$p$ group.  Lazard logarithms, their
+filtration and the leading Ihara bracket are integral.
+This uses the small class of the automorphism group,
+not a class-$p$ correspondence for the underlying free group.
+
+A tame order-$(p-1)$ element in the local Galois image
+has distinct eigencharacters on every possible grade
+$3,\ldots,p-1$.  Its averaging idempotents split the
+actual filtered lattice as in C.33.  The invariant
+eigensummand is precisely the top piece of rank $a_{p-1}$.
+Its intersection with the Lie bracket ideal has rank
+at most $b_{p-1}$.  Hence the lattice of integral
+functionals on that top piece which annihilate brackets
+has rank at least $d_{p-1}$.
+This lattice is saturated in the dual of the top piece:
+if $p\ell$ annihilates every bracket, so does $\ell$,
+because $\mathbb Z_p$ is torsion-free.
+Consequently a basis supplies at least $d_{p-1}$
+linearly independent reductions modulo $p$.
+This saturation argument is what permits reduction
+modulo $p$; rational dimension alone would not suffice.
+
+Extending each functional by zero on the other tame
+eigensummands gives an ordinary homomorphism
+$U\to\mathbb F_p$.  It is invariant under the whole
+local gentle image: conjugation on the abelianization
+factors through the multiplier and acts on the top
+summand by $\lambda_p^{p-1}=1$ modulo $p$.
+The vanishing of
+$H^2_{\mathrm{cts}}(\mathbb Z_p^\times,\mathbb F_p)$
+extends each character to the full local image.
+Its Galois restriction is unramified away $p$.
+Kronecker--Weber makes that restriction a scalar multiple
+of
+\[
+               c_p(\lambda)=
+                    \frac{\lambda_p^{p-1}-1}{p}\pmod p .
+                                                               \tag{C34.7}
+\]
+Subtracting this scalar multiple makes the character
+arithmetic-trivial.  The subtraction vanishes on
+global multiplier one, where (C34.6) and P.4 provide
+actual complete witnesses for the independent values.
+Thus their independence is retained.  This proves
+(C34.2), with no assumption about generation of the
+arithmetic Lie algebra or its integral image.
+
+We prove the assertion about sufficiently large primes.
+Put $l_n=L_n(1)$.  The trace formula gives
+\[
+ l_n=\frac{2^n}{n}+O(2^{n/2}),\qquad
+ a_n=\frac{2^n}{3n(n+1)}+O(2^{n/2})
+          \sim\frac{2^n}{3n^2}.                                \tag{C34.8}
+\]
+For the nonidentity classes the largest exponential
+terms have sizes $2^{n/2}$ and $2^{n/3}$, so they are
+included in the displayed error.
+In particular $r_n=a_n2^{-n}\sim(3n^2)^{-1}$.
+The sum $S=\sum_{n\geq2}r_n$ is finite and small.
+Indeed (C34.5) gives $a_n\leq2l_n-l_{n+1}$, and
+\[
+ \sum_{n=2}^{N}\frac{2l_n-l_{n+1}}{2^n}
+              =\frac12-\frac{l_{N+1}}{2^N}
+                 \longrightarrow\frac12.
+                                                               \tag{C34.9}
+\]
+At $n=5$ this inequality is strict by two dimensions,
+so in fact $S\leq7/16<1/2$.
+
+The elementary convolution estimate for
+$r_n\sim(3n^2)^{-1}$ is
+\[
+ \frac{\sum_i r_i r_{n-i}}{r_n}\longrightarrow2S.                \tag{C34.10}
+\]
+To verify it, first retain only $i\leq M$ and $n-i\leq M$.
+Their ratio tends to $2\sum_{i\leq M}r_i$.
+On the remaining half interval $M<i\leq n/2$,
+$r_{n-i}/r_n$ is uniformly bounded, while
+$\sum_{i>M}r_i=O(1/M)$.  The other half is identical;
+then let $M$ tend to infinity.
+The diagonal correction in $b_n$ is exponentially
+smaller than $a_n$.  Therefore
+\[
+ \frac{b_n}{a_n}\longrightarrow S<\frac12,\qquad
+ d_n\sim(1-S)\frac{2^n}{3n^2}.                                  \tag{C34.11}
+\]
+It follows that $d_{p-1}$ is positive and unbounded
+for every sufficiently large prime.
+The exact formula program
+\texttt{pbc\_gentle\_dimension\_formula.py} verifies
+(C34.3), agrees with all independently computed
+dimensions through degree twelve, and records additional
+counts through degree $300$.  Those finite computations
+illustrate (C34.11); they are not the proof of its
+eventual assertion.
+
+For each prime choose the independent characters just
+constructed.  They jointly surject onto the indicated
+finite elementary abelian $p$-group.  Any finite product
+over distinct primes is still a quotient: a subdirect
+product of finite abelian groups of pairwise coprime
+orders is their product.  The same argument includes
+arbitrary finite subsets of C.30's independent
+quadratic characters.  Compactness now gives
+surjectivity onto the full product in (C34.4).
+\end{proof}
