@@ -1,0 +1,158 @@
+\subsection*{The joint full-rigid and $3$-adic quotient still has a common image}
+
+\statement{B.71}{Proved}{Both actual rigid kernels realize the full common Eichler principal group}
+Let $R_T$ be B.64's subgroup of $H_T$, and let
+\[
+                       R_5=\langle\!\langle w_0\rangle\!\rangle_{H_5}
+                                                               \tag{B.71.1}
+\]
+be the discrete normal closure of B.69's actual kernel word.
+Use closures of these subgroups inside
+$\widehat H_T,\widehat H_5$, respectively, embedded in
+$\widehat P$ by B.28; no completion of the abstract
+infinite-rank groups $R_T,R_5$ is being substituted.
+
+Let $\mathscr R$ be the product of the twelve completed
+pure seven-point target groups, and write
+\[
+ \Psi=(\widehat f_{\mathrm{rig}},q_\infty):\widehat P
+          \longrightarrow\mathscr R\times
+                         \operatorname{PSp}_{10}(\mathbb Z_3).
+                                                               \tag{B.71.2}
+\]
+Here $q_\infty$, its principal identity fibre $\mathcal I$,
+and the Eichler principal group $\mathcal U$ are as in B.64.
+Then
+\[
+ \begin{split}
+ \Psi(\overline{R_T})\cap\Psi(\overline{R_5})
+       \cap(\{1\}\times\mathcal I)
+       &=\{1\}\times\mathcal U,\\
+ \Psi(\overline{H_T})\cap\Psi(\overline{H_5})
+       \cap(\{1\}\times\mathcal I)
+       &=\{1\}\times\mathcal U.
+ \end{split}                                                    \tag{B.71.3}
+\]
+Thus the same nontrivial three-dimensional principal group
+survives in the joint quotient containing all full rigid
+targets and the entire $3$-adic homology action.
+This is an equality in that joint quotient; it does not
+give an equality of the source lifts in $\widehat P$.
+
+\begin{proof}
+By B.56 and the definition in B.64, $R_T$ lies in the
+actual joint rigid kernel on $H_T$.
+By B.69, $R_5$ lies in the actual joint rigid kernel
+on $H_5$.  Both subgroups lie in their source commutator
+subgroups.  Continuity therefore gives
+\[
+ \Psi(\overline{R_T})\subseteq\{1\}\times
+                     \overline{q_\infty(R_T)},\qquad
+ \Psi(\overline{R_5})\subseteq\{1\}\times
+                     \overline{q_\infty(R_5)}.                \tag{B.71.4}
+\]
+The inclusions in (B.71.4) are equalities: each source
+closure is compact, and its image is precisely the
+closure of the corresponding discrete image.
+
+It remains to strengthen B.64's cyclic lower bound
+from $[H_5,H_5]$ to the actual rigid subgroup $R_5$.
+Let $G_5$ be the connected derived algebraic centralizer
+of $D$ on genus-five homology, and set
+\[
+ L_5=\operatorname{Lie}(G_5)\cap
+                         \operatorname{Mat}_{10}(\mathbb Z_3),
+ \qquad U_5=\exp(3L_5).
+                                                               \tag{B.71.5}
+\]
+B.64 proves that $L_5$ is saturated of rank nine,
+that this exponential is exactly the principal
+subgroup of $G_5$, and that successive cubing generates
+it from any basis of its first congruence quotient.
+These assertions use the natural ten-dimensional
+integral lattice and its $3L_5$ filtration.
+
+The new actual words are particularly short to specify.
+For
+\[
+ u\in\{1,f_0,f_1,f_2,f_3,f_5,f_0^2,f_1f_0,f_4f_2\},
+ \qquad n_u=u\,w_0^{20}\,u^{-1},                            \tag{B.71.6}
+\]
+every $n_u$ belongs literally to $R_5\subseteq[H_5,H_5]$.
+The exact program
+\nolinkurl{next_3adic_symplectic/actual_cyclic_rigid_kernel.py}
+recomputes all their homology matrices from the original
+common-base eleven-strand braids.
+It uses the integral branched-cover model of B.62,
+checks its braid relations and symplectic inverses,
+and makes no import from the discovery computation.
+The projective reduction of $w_0$ modulo three has
+order ten.  Squaring its tenth power ensures that
+each $n_u$ has its actual linear lift congruent to $I$
+modulo three, independently of a projective sign.
+The nine matrices give residues
+\[
+                V_u=\frac{\rho(n_u)-I}{3}\pmod3
+                       \in\operatorname{Mat}_{10}(\mathbb F_3)
+                                                               \tag{B.71.7}
+\]
+of rank nine.
+For an explicit rank witness, flatten matrix entries
+row by row, numbered $0,\ldots,99$.
+Rows $0,1,2,3,4,5,6,8,11$ of these nine columns form
+an integer matrix with determinant $-52$, a unit
+modulo three.
+All nine actual source words, matrices, Lie residues
+and the full minor are retained in
+\nolinkurl{actual_cyclic_rigid_kernel_certificate.json},
+with genuine standard output.
+The reduced source word lengths are $200$, $202$ or $204$;
+each has exactly zero integral source abelianization.
+
+Every such commutator word maps into $G_5$, by B.64's
+linear-centralizer and derived-group argument.
+For a matrix in $I+3\operatorname{Mat}_{10}(\mathbb Z_3)$,
+the logarithm divided by three reduces to (B.71.7).
+Saturation identifies the reduction of $L_5$ with
+its image in the ambient matrix lattice modulo three.
+The nine independent residues are consequently a
+basis of $L_5/3L_5$, not merely a basis of a smaller
+unsaturated sublattice.
+
+Apply B.64's explicit successive-cube argument to
+these nine actual elements of $R_5$.
+Their closed generated image contains every successive
+congruence quotient of $U_5$, and hence
+\[
+                  U_5\subseteq\overline{q_\infty(R_5)}.
+                                                               \tag{B.71.8}
+\]
+B.64 already proves the analogous inclusion
+$U_{G_T}\subseteq\overline{q_\infty(R_T)}$.
+The common Eichler principal group $\mathcal U$ is
+contained in both $U_{G_T}$ and $U_5$.
+Equation (B.71.4), with compact surjectivity, therefore
+gives the lower inclusion in the first line of
+(B.71.3), simultaneously in all full rigid coordinates
+and at every $3$-power level.
+
+Conversely, any common image of the two full source
+closures has a matrix component centralizing $T$ and
+$D$, hence their generated group $A_5$.
+In $\mathcal I$ its matrix component belongs to
+$\mathcal U$ by B.64's exact integral centralizer
+calculation.  This gives the upper inclusion for
+both lines of (B.71.3); the first lower inclusion
+also proves the second one.
+
+In particular no identification
+$M_5=\overline{N_5}$ from B.70 is required.
+The smaller explicitly generated subgroup $R_5$
+already supplies the needed compact image, by closure
+inside $\widehat H_5$.
+The comparison is stronger than separate finite-image
+tests because every chosen source lift kills every
+full rigid coordinate exactly.
+It still leaves the actual ambient intersection and
+the residual centralizer $\mathcal K$ open.
+\end{proof}

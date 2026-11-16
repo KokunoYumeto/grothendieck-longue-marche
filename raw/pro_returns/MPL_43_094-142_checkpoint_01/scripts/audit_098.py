@@ -1,0 +1,2 @@
+from audit_work import audit_page
+audit_page(98,[(r'\margin{vérifier}',r'\margin{vérifier\figure{\begin{tikzpicture}\draw(0,0)--(0,1.1);\end{tikzpicture}}}')],notes='Whole sheet checked, including the two acyclicity assumptions, canceled H0_S clause and the overwritten first degree. Added the two marginal vertical emphasis strokes. F/G and F/k variants remain marked; no interpretation used to settle them.',extra_elements=[('drawing','left beside first vérifier','vertical emphasis stroke'),('drawing','left beside second vérifier','vertical emphasis stroke')])

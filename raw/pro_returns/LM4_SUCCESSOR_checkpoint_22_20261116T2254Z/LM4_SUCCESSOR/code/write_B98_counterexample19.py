@@ -1,0 +1,311 @@
+"""Write the exact B98 counterexample words from retained, audited inputs.
+
+This is a document producer with a literal word-identity check, not a
+replacement for the independently retained complete Fox-chain checkers.
+"""
+from pathlib import Path
+import hashlib
+import json
+
+root = Path(__file__).resolve().parents[1]
+action_path = root / 'work_A/old_base_augmented_row_action.json'
+case_path = root / 'work_A/zero_head_diagonal_node_actions.json'
+actions = json.loads(action_path.read_text())
+data = json.loads(case_path.read_text())
+operator = actions['old_generators'][2]
+case = next(c for c in data['cases']
+            if c['old_name'] == 'zeta' and c['node_index'] == [16, 1])
+u = operator['A_conjugators_F21']['5']
+v = operator['B_conjugators_F21']['5']
+
+def reduce_word(word):
+    stack = []
+    for letter in word:
+        if stack and stack[-1] == -letter:
+            stack.pop()
+        else:
+            stack.append(letter)
+    return stack
+
+def inverse(word):
+    return [-x for x in reversed(word)]
+
+a = reduce_word(u + [5] + inverse(u))
+b = reduce_word(v + [15] + inverse(v))
+image = reduce_word(a + b + inverse(a) + inverse(b))
+assert image == case['transformed_relator_F21']
+assert case['original_relator_F21'] == [5, 15, -5, -15]
+assert operator['A_heads']['5'] == operator['B_heads']['5'] == []
+assert operator['phi'] == {str(i): [i] for i in range(1, 6)}
+assert case['original_chain_terms'] == 1
+assert case['transformed_chain_terms'] == 553
+witness = case['exact_decision']['new_row_nonzero_term']
+assert witness['row'] == [2, 2, []] and witness['integer'] == -1
+
+def r_inverse(word):
+    return [[-sign, label, slot] for sign, label, slot in reversed(word)]
+
+def r_a(label):
+    return [[1, label, 2], [1, label, 3],
+            [1, label+[2], 5], [1, label+[2], 6]]
+
+def r_c(label):
+    a = r_a(label)
+    return a + [[-1, label+[2], 7]] + r_inverse(a)
+
+t0 = [-1, -5, -4]
+u0 = [[1, [], 2], [-1, t0, 2]]
+d0 = [[1, [1, -3, -2], 2], [1, [1, -3, -2], 3],
+      [1, [1, -3], 5], [1, [1, -3], 6], [1, [1, -3], 8],
+      [1, [1], 10], [1, [1], 11]]
+v0 = r_c([4]) + r_c([]) + r_inverse(d0)
+assert witness['G_coefficient'] == {'A_word': u0, 'B_word': v0, 'retained_word': t0}
+
+def word_display(name, word):
+    chunks = [word[i:i+20] for i in range(0, len(word), 20)]
+    lines = []
+    for i, chunk in enumerate(chunks):
+        prefix = name + r'&=' if i == 0 else r'&\quad'
+        lines.append(prefix + '[' + ','.join(map(str, chunk)) + ']_p')
+    return '\\\\\n'.join(lines)
+
+template = r'''% B.98 candidate. Complete source review required before integration.
+\statement{B.98}{Refuted}{An unchanged augmented node row does not imply a group-unit relation; the actual matching columns can be independent over the entire coefficient ring}
+\label{stmt:B98}
+Use the actual discrete $\Omega=\mathbb Z[G]$ and its free coefficient
+rows in $P$ from B.94.  The proposed implication
+\[
+ \text{same augmented row and signed retained unit}
+ \quad\Longrightarrow\quad
+ \alpha_w(c_\nu)=\pm g c_\nu\quad(g\in G)
+\]
+is false for the actual old-base operators and actual nodal columns.
+A counterexample is the positive lasso $w=b_2$ about $q=\zeta$,
+where $\zeta=e^{2\pi i/5}$, acting on node $\nu=(16,1)$.
+The original column is the single row
+$c_\nu=\epsilon_{5,5,1}$, whereas its transported column has
+a nonzero coefficient in row $(2,2,1)$.
+
+The following stronger replacement holds.  There is an explicit
+embedding $G\hookrightarrow F_{13}\times F_{13}$; in particular
+$G$ is bi-orderable and $\Omega$ has no zero divisors.  For each
+of the sixteen actual cases in the table below, the original
+and transported columns are independent over all of $\Omega$:
+\begin{equation}\label{eq:B98-pair}
+ \Omega c_\nu+\Omega\alpha_w(c_\nu)
+       =\Omega c_\nu\oplus\Omega\alpha_w(c_\nu)
+       \cong\Omega^2.
+\end{equation}
+The table uses both values $e=0,1$ in each displayed pair of
+critical indices, so each row describes four cases.
+\begin{center}
+\begin{tabular}{ccc}
+Old positive lasso&Actual nodes&Number of cases\\\hline
+$q=\zeta$&$(8,e),(16,e)$&4\\
+$q=\zeta^2$&$(12,e),(16,e)$&4\\
+$q=\zeta^3$&$(0,e),(8,e)$&4\\
+$q=\zeta^4$&$(0,e),(12,e)$&4
+\end{tabular}
+\end{center}
+Each rank-one summand is $F$-stable.  For $e=1$ the cohomology
+of its two-column sum is $H^1\cong\mathbb F_2[R]^2$ and $H^2=0$;
+for $e=0$ all positive-degree cohomology vanishes.  Its Tate image
+is therefore just the sum of the two individual source images.
+This determines the displayed pairs, not the intersections of
+their full $64$-column blocks or of preceding source-orbit sums.
+
+\begin{proof}
+\emph{B.98.1. The actual coefficient embedding.}
+Let $T=F(y_1,\ldots,y_5)$ and let $R$ be free on the
+$x_{g,i}$ of B.94, with retained shift
+$\alpha_t(x_{g,i})=x_{tg,i}$.  The homomorphism
+\[
+ R\rtimes_\alpha T\longrightarrow
+ F(y_1,\ldots,y_5,a_2,a_3,a_5,a_6,a_7,a_8,a_{10},a_{11})
+\]
+defined by $x_{g,i}\mapsto g a_i g^{-1}$ and by the identity on
+$T$ is an isomorphism.  Indeed, the reverse homomorphism sends
+$a_i$ to $x_{1,i}$ and fixes $T$; the two composites fix every
+displayed generator.  The forward map respects the action
+relation because conjugation by $t$ changes $g a_i g^{-1}$ to
+$(tg)a_i(tg)^{-1}$.
+
+Now define
+\begin{equation}\label{eq:B98-embedding}
+ \begin{aligned}
+ j:G&\longrightarrow (R\rtimes T)\times(R\rtimes T),\\
+ (u,v,t)&\longmapsto\bigl((u,t),(v,\beta(t))\bigr).
+ \end{aligned}
+\end{equation}
+This is a homomorphism: the second coordinate multiplies using
+$\alpha_{\beta(t)}$, exactly as in B.94's actual definition of
+$G$, and $\beta(ts)=\beta(t)\beta(s)$.  Its coordinates recover
+$u,v,t$, so it is injective.  Both target factors have the finite
+rank $13$ proved above.  No arbitrary semidirect product or
+untwisted replacement of $\beta$ is being used.
+
+\emph{B.98.2. A complete order and domain argument.}
+For a finite-rank free group on $a_1,\ldots,a_m$, map
+$a_i$ to $1+X_i$ in the noncommutative formal power-series ring
+$\mathbb Z\langle\!\langle X_1,\ldots,X_m\rangle\!\rangle$;
+use the geometric series for each inverse.  This map is faithful.
+To see this directly, write a nontrivial reduced word in maximal
+blocks $a_{i_1}^{n_1}\cdots a_{i_r}^{n_r}$, with adjacent
+$i_j$ distinct and every $n_j\ne0$.  The coefficient of
+$X_{i_1}\cdots X_{i_r}$ is $n_1\cdots n_r\ne0$.
+That monomial has $r$ runs of variable names.  Omitting the
+positive-degree term of any block yields fewer than $r$ runs;
+using every block yields it only by choosing degree one from
+each.  This also covers negative exponents.
+
+Order monomials by degree and then lexicographically, after
+ordering the finitely many variables.  A nonidentity series
+with constant term $1$ is positive when the first nonzero
+coefficient of its difference from $1$ is positive.  Inversion
+negates that first coefficient.  Products of positive series
+are positive: their leading terms either occur at different
+ordered monomials, or add with positive coefficients, while
+the cross product has larger degree.  Conjugation by a series
+with constant term $1$ preserves the lowest nonzero homogeneous
+part.  Thus this positive cone is multiplicatively closed and
+conjugation-invariant and defines a bi-order.  This is the
+Magnus construction; compare the fully opened proof of
+\citet[\S5, Theorems2 and4]{BKimRolfsen2003}.
+
+Lexicographic products and restrictions of bi-orders remain
+bi-orders, so \eqref{eq:B98-embedding} bi-orders the actual $G$.
+For nonzero $A,B\in\mathbb Z[G]$, choose the largest elements
+$g_0,h_0$ of their finite supports.  The product $g_0h_0$ is
+uniquely maximal among all products of support elements: if
+$g<g_0$ and $h\leq h_0$, then
+$gh<g_0h\leq g_0h_0$, and the remaining strict case is similar.
+Its coefficient in $AB$ is the product of two nonzero integers.
+It cannot cancel, proving that $\Omega$ has no zero divisors
+on either side.  This conclusion uses the explicit embedding,
+not a general conjecture for torsion-free group rings.
+
+\emph{B.98.3. A completely specified actual counterexample.}
+Write $p_1,\ldots,p_{21}$ for B.94's paired generic-fiber basis,
+and $[i_1,\ldots,i_k]_p=p_{i_1}\cdots p_{i_k}$, with a negative
+index denoting an inverse.  The original nodal relator is
+$r=[p_5,p_{15}]$.  For the actual positive geometric push
+$A=\alpha_{b_2}$, its two relevant images are
+\[
+ A(p_5)=u p_5u^{-1},\qquad A(p_{15})=v p_{15}v^{-1},
+\]
+where the following products of signed words fix the complete
+based conjugators.  Concatenation across lines means multiplication.
+\begingroup\small
+\[
+\begin{aligned}
+@@U@@
+\end{aligned}
+\]
+\[
+\begin{aligned}
+@@V@@
+\end{aligned}
+\]
+\endgroup
+The retained projection of each conjugator is $1$, and $A$
+acts identically on $T$.  Hence the augmented row and its
+signed retained unit remain those of $c=z_r=\epsilon_{5,5,1}$.
+The full reduced image $A(r)$ has $592$ letters.  Its unique
+integral product-tree chain $d$ has $553$ nonzero $G$ terms.
+
+We specify a nonzero coefficient outside the original row.
+Use $x_{g,i}$ for the common $R$ basis and put
+\begin{align*}
+ t&=y_1^{-1}y_5^{-1}y_4^{-1},&
+ u_0&=x_{1,2}x_{t,2}^{-1},\\
+ a_g&=x_{g,2}x_{g,3}x_{gy_2,5}x_{gy_2,6},&
+ c_g&=a_gx_{gy_2,7}^{-1}a_g^{-1},\\
+ d_0&=x_{y_1y_3^{-1}y_2^{-1},2}
+       x_{y_1y_3^{-1}y_2^{-1},3}
+       x_{y_1y_3^{-1},5}x_{y_1y_3^{-1},6}\\
+    &\qquad\cdot x_{y_1y_3^{-1},8}x_{y_1,10}x_{y_1,11},&
+ v_0&=c_{y_4}c_1d_0^{-1}.
+\end{align*}
+In the complete collected coefficient of row $(2,2,1)$ in $d$,
+the group element $(u_0,v_0,t)\in G$ has integer coefficient
+$-1$.  These are reduced common-label words, so that this
+coefficient is tested after exact collection in $G$, not before
+possible cancellations.  The complete boundary check uses
+$d_2\epsilon_{a,b}=(1-b)e_a+(a-1)e_b$ and agrees with the
+Fox edge chain of $A(r)$; uniqueness follows from the injective
+product-tree boundary in B.91.3.  The independent reconstruction
+uses the other edge family and verifies the same row coefficient.
+Thus $d$ has a nonzero row absent from $c$.  Multiplication by
+any $\pm g$, $g\in G$, preserves the support of coefficient
+rows in the free left $\Omega$-module $P$.  It follows that
+$d\ne\pm gc$ for every $g$, proving the stated refutation.
+
+\emph{B.98.4. All integral coefficients and the sixteen exact pairs.}
+The full checked data give the same kind of private nonzero
+row in every case of the table.  Suppose $a c_\nu+b d_\nu=0$
+with $a,b\in\Omega$.  A row occurring in $d_\nu$ but not in
+$c_\nu$ gives $b(d_\nu)_{\mathrm{row}}=0$.  Its coefficient
+is nonzero, so the domain result forces $b=0$.  Any nonzero
+row of $c_\nu$ then forces $a=0$.  This proves
+\eqref{eq:B98-pair} without restricting coefficients to units.
+
+All listed physical nodes are $F$-fixed.  Their original
+rank-one modules are $F$-stable by B.94's actual mate identities;
+their transported modules are stable by the discrepancy identity
+of B.96.2.  Every listed old lasso belongs to the even source
+subgroup.  Its far operator differs from the returned source
+operator by an inner $G$-unit, which leaves the rank-one image
+submodule unchanged.  The returned operator commutes with $F$.
+Hence the two summands have the same actual coefficient-orbit
+type.  B.94.5 gives the selected cone for $e=1$ and the other
+cone for $e=0$.  The sign-module and induced-pair calculations
+therefore give exactly the cohomology stated above.  Naturality
+from B.96.4 identifies its image with the two individual source
+contributions, each inside $J_I$.
+
+Other columns of either $64$-column block may enter a relation
+with these columns.  Thus pair independence neither determines
+the full-block intersection nor excludes a relation with a
+whole preceding orbit sum.  In particular it gives no nonzero
+value of $\kappa$, no proof of its vanishing, and no decision
+about nonlinear or compact fixed lifting.
+
+\begingroup\raggedright
+The complete sixteen-case certificate, including every actual
+word, collected private-row witness and input hash, is
+\path{work_A/zero_head_diagonal_node_actions.json}; its producer
+is \path{work_A/code/check_zero_head_diagonal_node_actions.py}.
+The independent opposite-contraction review is
+\path{work_DE/next_marginal_source/zero_head_diagnostics_independent_review.json},
+from \path{work_DE/next_marginal_source/check_zero_head_diagnostics_independent.py}.
+The independent second check of the two smallest cases is
+\path{work_CE/code/check_selected_zero_head_pairs.py}.
+Their actual output and error files, including interrupted
+earlier attempts, are retained.  The present literal word display
+is generated and checked by
+\path{code/write_B98_counterexample19.py}; its input-bound record
+is \path{records/B98_displayed_counterexample19.json}.\par
+\endgroup
+\end{proof}
+'''
+text = template.replace('@@U@@', word_display('u', u)).replace('@@V@@', word_display('v', v))
+(root/'sections/b_coefficient_domain_counterexample.tex').write_text(text)
+report = {
+    'input_sha256': {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
+                     for p in (action_path, case_path)},
+    'producer_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    'operator': 'actual positive old-zeta geometric push',
+    'node': [16, 1], 'u_letters': len(u), 'v_letters': len(v),
+    'literal_image_commutator': 'PASS', 'image_letters': len(image),
+    'actual_phi_identity': 'PASS', 'two_actual_retained_heads_trivial': 'PASS',
+    'original_nonzero_G_terms': case['original_chain_terms'],
+    'image_nonzero_G_terms': case['transformed_chain_terms'],
+    'displayed_private_row_witness': witness,
+    'displayed_factorized_witness_matches_collected_certificate': 'PASS',
+    'full_chain_review': 'previously complete, independently retained; not rerun by this document producer'
+}
+(root/'records/B98_displayed_counterexample19.json').write_text(json.dumps(report, indent=2)+'\n')
+print('B98 literal counterexample display: PASS')
+print('Conjugator lengths:', len(u), len(v), '; reduced image:', len(image))
+print('Original/image full G terms:', case['original_chain_terms'], case['transformed_chain_terms'])
+print('Displayed private row:', witness['row'], '; collected integer:', witness['integer'])

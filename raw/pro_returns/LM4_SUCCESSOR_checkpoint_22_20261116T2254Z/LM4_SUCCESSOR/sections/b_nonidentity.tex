@@ -1,0 +1,265 @@
+\subsection*{A full R2 witness for both nonidentity resolvents}
+
+\statement{B.55}{Proved}{Both quintic resolvents differ from the identity on a specified full lift set}
+There is a nonempty, explicitly specified R2 lift set
+$\mathscr L\subset\mathcal H$ such that every $\Phi\in\mathscr L$
+satisfies
+\[
+       \mathfrak T_+(\Phi)\ne\Phi,
+       \qquad \mathfrak T_-(\Phi)\ne\Phi.                  \tag{B.55.1}
+\]
+In particular both homomorphisms of B.53 are nonidentity on
+their domain, already on its multiplier-one subgroup.
+The distinction is detected on the class-four exponent-seven
+quotient of the original level-two free group and of each
+resolvent's level-two free group. In the degree-three outer
+automorphism quotient their values are
+\[
+             0,\qquad 30q_3,\qquad30q_3,
+                     \qquad30q_3\ne0\text{ over }\mathbb F_7,
+                                                               \tag{B.55.2}
+\]
+where $q_3$ is the actual arithmetic insertion class of B.54.
+Thus any member of $\mathscr L$ is a full profinite witness
+for the first assertion of P5. The construction does not
+assert that a member satisfies the pentagon.
+
+\begin{proof}
+We first specify a finite quotient which controls all three
+comparisons. Permutations in the following construction act
+on the left, with the rightmost factor applied first.
+Let $S_3$ act regularly on itself, put
+\[
+ S=(0\,1),\quad R=(0\,1\,2)\quad\text{in }S_3,
+ \qquad
+ \bar s=(0\,1)(2\,3),\quad\bar r=(0\,2\,4)
+                                      \quad\text{in }A_5.
+\]
+The five blocks of the induced permutation set are
+$\{0,1,2,3,4\}\times S_3$. Define permutations of its thirty
+letters by
+\[
+ \begin{split}
+ s_*(i,g)&=(\bar s i,S^{\mathbf1_{i=4}}g),\\
+ r_+(i,g)&=(\bar r i,R^{\mathbf1_{i=1}}g),\\
+ r_-(i,g)&=(\bar r i,R^{\mathbf1_{i=3}}g).
+ \end{split}                                               \tag{B.55.3}
+\]
+They have the required orders two and three. Hence
+$s\mapsto s_*,r\mapsto r_+$ and
+$s\mapsto s_*,r\mapsto r_-$ define two homomorphisms from
+$B=C_2*C_3$. These are the induced representations of the
+two maps
+\[
+       J\xrightarrow{\rho_\pm}B_\pm
+                       \longrightarrow S_3,
+       \qquad J=q_5^{-1}(\operatorname{Stab}(4)).
+                                                               \tag{B.55.4}
+\]
+Here $\rho_\pm$ fills one of the two order-three factors
+and $B_\pm=C_2*C_3$. To see this identification directly,
+the quotient graph of groups for $J$ has five edges,
+three vertices for the $C_2$-orbits and three for the
+$C_3$-orbits, and its underlying graph is a tree.
+The only nontrivial vertex groups are the $C_2$ at the
+fixed letter $4$ and the two $C_3$ groups at fixed letters
+$1,3$. Assigning $S$ to the first and $R,1$ to the latter
+two, or $1,R$ in the other order, is exactly (B.55.4).
+There is no unspecified free graph generator.
+The names $+$ and $-$ may be interchanged when matching
+the two geometric roots in B.53; both are treated identically.
+
+The exact enumerations in
+\path{code/check_resolvent_control.py} and
+\path{code/check_resolvent_colors.py} show that the two
+homomorphisms in (B.55.3) have the same kernel $U$ and that
+\[
+ \begin{gathered}
+ Q=B/U,\qquad |Q|=29160=2^3\cdot3^6\cdot5,\qquad
+ |\bar\tau|=10,\\
+ U\leq F=\ker(B\longrightarrow S_3),\qquad [F:U]=4860.
+ \end{gathered}                                             \tag{B.55.5}
+\]
+The original quotient $B\to S_3$ sends $s,r$ to $S,R$.
+It is tracked from the same words, rather than identified
+with a different quotient of the same order.
+For clarity, the common-kernel assertion is checked without
+assuming an isomorphism between two abstract finite groups:
+breadth-first enumeration of $\langle s_*,r_+\rangle$
+tracks the minus image and the original $S_3$ image of every
+word. Every repeated element has the same two tracked images.
+The two resulting images both have order $29160$, proving
+equality of their kernels.
+
+The kernel $U$ is torsion-free, because each free factor
+of $B$ injects into $Q$. Its cusps are $Q/I$, where
+$I=\langle\bar\tau\rangle$ has order ten. Thus there are
+$2916$ cusps, its free rank is $4861$, and its compactified
+surface has genus $973$. These numbers follow respectively
+from the cusp cosets, $1+[B:U]/6$, and
+$2g-2+2916=[B:U]/6$. In particular B.54 applies at seven.
+
+We also record the exact images under the filled maps.
+The subgroup $J/U$ has order $5832$. Schreier generators
+for the stabilizer of block $4$ give three generators,
+of orders two, three and three. The normal closure in
+$J/U$ of either factor killed in (B.55.4) has order $972$;
+the quotient has order six and is the tracked $S_3$.
+This calculation is independently checked in
+\path{code/check_resolvent_pushforward.py}. Therefore
+\[
+                  \rho_+(U)=F_+,
+                  \qquad\rho_-(U)=F_-,                    \tag{B.55.6}
+\]
+where $F_\pm$ is the full discrete level-two subgroup of
+$B_\pm$. Indeed $B_\pm/\rho_\pm(U)$ is the quotient of
+$J/U$ by that normal closure, and $\rho_\pm(U)$ is already
+contained in the level-two kernel. Equation (B.55.6) is an
+equality of actual images, not only their closures.
+
+\paragraph{The three cusp colourings.}
+Each of the maps in (B.55.5)--(B.55.6) sends the cusps of
+$U$ to the three labelled cusp classes of its target
+level-two group. This gives three colourings of $Q/I$.
+The original colouring is $Q$-equivariant through its
+quotient $S_3$; a positive meridian $g\tau^{10}g^{-1}$
+maps to the fifth power of the corresponding original
+cusp meridian. For a resolvent, write the same cusp
+using a representative in $J$: multiplication of $g$ on
+the right by a power of $\tau$ achieves this because
+$A_5=A_4\langle\bar\tau\rangle$.
+The unique cusp of $J$ has meridian $\tau^5$, which
+$\rho_\pm$ maps to the target cusp generator. Consequently
+$g\tau^{10}g^{-1}$ maps to the first power of a level-two
+target cusp meridian. Each of the three colours occurs
+$972$ times, in each colouring.
+
+Choose the two cusps
+\[
+                         I,\qquad hI,
+                         \qquad h=(rs)^2\in Q.             \tag{B.55.7}
+\]
+They are distinct. In the original colouring both have
+colour zero; in the two resolvent colourings their
+colours are respectively $(0,1)$ and $(0,2)$.
+The complete trace counts are
+\[
+\begin{array}{c|c|c}
+ \text{colouring}&\text{ordered equal-colour counts}
+                         &\text{ordered distinct-colour counts}\\ \hline
+ \text{original}&N_{00}=N_{11}=N_{22}=9720&0\\
+ \text{either resolvent}&0&N_{ij}=4860\quad(i\ne j).
+\end{array}                                                 \tag{B.55.8}
+\]
+Here each $q\in Q$ contributes the ordered pair
+$(qI,qhI)$. The computation uses the permutations
+(B.55.3), checks constancy on each right $I$-coset,
+and enumerates every one of the $29160$ elements.
+The exact data, word and counts are retained in
+\path{data/resolvent_color_certificate.json}.
+These checks are finite proofs of the specified counts;
+no search over a noncofinal family is used.
+
+\paragraph{An actual automorphism realizing the trace.}
+Insert the boundary-fixed arithmetic automorphism of B.54
+in a disc enclosing the two cusps (B.55.7). Fix a
+Schur--Zassenhaus complement $Q$ in
+$E=\widehat B/O^7(\widehat U)$, and let $H$ be the closed
+pro-seven automorphism group generated by its conjugates
+of this insertion, as in (B.54.7).
+Choose an element of $C_H(Q)$ whose image on
+$N_4(U^{(7)})$ is the complete $Q$-trace.
+B.54 proves that this lift set is nonempty.
+Extend it to $E$, use the identity at every other relative
+prime, and apply R2. This defines the nonempty full lift
+set $\mathscr L$ in the statement. Every choice in this
+set has the same finite trace. Thus the choices in the
+higher automorphism coordinates cannot alter the test
+which will prove (B.55.1).
+
+We spell out why the compared actions are actually
+controlled by this one relative level. The maps
+\[
+ U^{(7)}\longrightarrow F^{(7)},\qquad
+ U^{(7)}\longrightarrow F_+^{(7)},\qquad
+ U^{(7)}\longrightarrow F_-^{(7)}                          \tag{B.55.9}
+\]
+are all surjective. The last two are induced by the
+surjections (B.55.6). For the first, $U\trianglelefteq F$
+has index $4860$, prime to seven; its closed image in
+$F^{(7)}$ is normal with finite index both a power of
+seven and a divisor of $4860$, and hence has index one.
+Each map kills $O^7(\widehat U)$ by its defining universal
+property. Full R2 lifts act on the original target
+through restriction to $F$, and on the other two through
+restriction to $J$ followed by $\rho_\pm$. Their action
+on $Q$ is the identity, so no further conjugating coset
+is needed to preserve $J$ or its two named factor
+classes. These comparisons commute as actual quotient
+maps after choosing the indicated representatives, and
+as canonical outer maps independently of those choices.
+In particular (B.55.9) transports the actual trace to
+the actions of $\Phi,\mathfrak T_+(\Phi),\mathfrak T_-(\Phi)$.
+
+All three are the identity through degree three in the
+nilpotent targets. Their first derivations are computed
+in degree four from the boundary classes. Although $U$
+has positive genus, no assertion about handle coordinates
+is omitted: B.54 lifts the entire trace on $U^{(7)}$,
+and the target homology in (B.55.9) is generated by its
+three cusp classes. Evaluating the transported derivation
+on those classes therefore determines it.
+
+\paragraph{The nonzero finite difference.}
+Use $X,Y,Z=-X-Y$ for the target cusp homology classes,
+and the notation $U_4,V_4,W_4$ of B.54. For the original
+colouring, every translated pair in (B.55.8) has equal
+images in homology. Substitution of $5X,5X$, or the
+corresponding other colour, in the insertion derivation
+is zero. Since five is invertible modulo seven, the
+resulting derivation on the original $F^{(7)}$ is zero.
+
+For either resolvent, aggregate the ordered counts into
+unordered distinct-colour counts. Each of the three
+pairs has count $9720$. There are $972$ source cusps of
+each target colour. The same certificate separately
+counts the incident translated pairs at each of the
+$2916$ individual cusps, counting either endpoint.
+For either resolvent every cusp has exactly ten
+incidences with each of the two other colours and
+none with its own. For the original colouring it
+has twenty incidences with its own colour and none
+with another colour. These are verified integer
+counts; no constancy over the integers is inferred
+from a derivation over $\mathbb F_7$ or from the
+averaged counts alone.
+
+Thus the transported derivation on $X,Y$ is
+\[
+       a(-10U_4-20V_4,\ 20V_4+10W_4),
+                       \qquad a\in\mathbb F_7^\times,     \tag{B.55.10}
+\]
+with the same nonzero arithmetic scalar as in B.54.
+Subtract the inner derivation with values
+\[
+                   a(-10U_4+10V_4,\ -10V_4+10W_4).
+\]
+The remainder is $30a(-V_4,V_4)$, namely $30q_3$ in the
+outer quotient. B.54 proves $q_3\ne0$, and $30\equiv2$
+modulo seven. The calculation is checked independently
+in \path{code/check_resolvent_trace.py}.
+It takes place in an actual finite class-four group,
+so a nonzero value proves inequality of the full outer
+automorphisms. Equations (B.55.2) and (B.55.1) follow.
+\end{proof}
+
+These full witnesses are outside the Galois image: their
+multiplier is one, so an arithmetic witness would lie in
+$G_{\mathbb Q(\sqrt{-15})}$, where B.53 makes both
+resolvents the identity. They are also outside
+$\mathcal K$, since the nonzero target action contradicts
+B.53's kernel containment. Neither conclusion determines
+whether a witness satisfies the pentagon. The remaining
+assertion of P5, that every element of $\widehat{GT}$ in
+the domain is fixed, is still Open and is not inferred
+from the arithmetic identity.

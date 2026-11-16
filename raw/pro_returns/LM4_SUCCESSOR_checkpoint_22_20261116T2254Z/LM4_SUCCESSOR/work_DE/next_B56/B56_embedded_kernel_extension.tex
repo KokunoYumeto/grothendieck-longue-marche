@@ -1,0 +1,208 @@
+% Authoring copy of the extension now incorporated literally into B_rigid7.tex.
+% Prepared after checkpoint03; all13 paths and auxiliary finite checks certified.
+\subsection*{Explicit embedded form of the rigid test kernel}
+
+The following specifies the homomorphism defining the kernel in B.56
+on a geometric free basis, and gives an exact membership procedure
+for finite words.  It does not identify the completed kernel with
+the closure of its discrete counterpart.
+
+\paragraph{A certified geometric basis.}
+Retain the base point $u_*=(371+237i)/100$, radius
+$\epsilon=3/250$, and square-meridian paths of B.56.
+Put
+\[
+ A=36603/100000,\qquad B=136603/100000.
+\]
+The thirteen square centers, in their counterclockwise fan order
+as seen from $u_*$, are
+\[
+ \bigl(-B+Bi,\ i,\ B+Bi,\ -A+Ai,\ -1,\ A+Ai,\ 0,
+       -A-Ai,\ -B-Bi,\ A-Ai,\ 1,\ -i,\ B-Bi\bigr).
+ \tag{B.56.5}
+\]
+Let $e_j$ follow the straight stem to the northeast corner of
+the $j$th square, traverse its boundary counterclockwise, and
+return along the same stem.  These are a free basis of
+$\pi_1(S_T,u_*)$.
+
+Here is the exact geometric verification, including the
+otherwise essential basis condition.  The thirteen closed
+squares are disjoint.  Rational segment--rectangle intersection
+tests show that each stem meets its own square only at its
+northeast corner and misses every other square.  The thirteen
+stems have distinct slopes and a common initial point, so their
+interiors are disjoint.  Every square contains precisely its
+named exceptional parameter point.  For the irrational points,
+this follows from
+\[
+ \frac{17320508075688772}{10^{16}}<\sqrt3<
+ \frac{17320508075688773}{10^{16}},
+\]
+checked by squaring, and the definitions of $a,b$ in B.56.
+All these tests are over $\mathbb Q$.  The northeast ray from
+$u_*$ to infinity misses the whole construction.  Cutting along
+this ray and the embedded petal tree gives the usual geometric
+meridian basis of the thirteen-puncture plane.  Its positively
+oriented meridian at infinity is
+$e_{14}=(e_1\cdots e_{13})^{-1}$.
+In particular the previous certified word is literally
+$h=e_6e_{11}e_6^{-1}e_5^{-1}$ in this basis.
+
+\paragraph{All thirteen monodromies.}
+Retain the set $S_0$ of B.56 and send labels $2,4,6$ to
+$\infty,0,1$.  The six finite labeled points define a map
+$S_T\to\operatorname{Conf}_6(\mathbb C)$ and therefore a
+specified homomorphism
+\[
+ \theta:F_{13}\longrightarrow PB_6,\qquad e_j\longmapsto\beta_j.
+ \tag{B.56.6}
+\]
+All thirteen words $\beta_j$ are recorded in
+\texttt{all13\_braid\_words.json} and
+\texttt{all13\_braid\_words.txt}; the sign convention is that
+of B.56.  Their reduced lengths and exponent sums are
+\[
+\begin{array}{c|rrrrrrrrrrrrr}
+j&1&2&3&4&5&6&7&8&9&10&11&12&13\\\hline
+|\beta_j|&60&58&26&54&58&36&58&82&88&44&14&72&30\\
+\operatorname{exp}(\beta_j)&26&-38&26&-4&2&-4&-8&26&-4&26&2&-38&-4
+\end{array}
+\]
+The program \texttt{certify\_all13\_monodromy.py} checks every
+crossing on all $78$ rational path segments by the same exact
+root-isolation procedure as B.56.  It excludes collisions,
+poles and exceptional parameters on every segment, checks all
+endpoint orders, and verifies the identity permutation of
+each word.  The three previous words for indices $5,6,11$
+agree literally with their original certificate.
+The complete polynomial and isolating-interval data are in
+\texttt{all13\_exact\_certificate.json}; actual stdout is
+\texttt{certify\_all13\_monodromy.out}.
+
+\paragraph{The exact preimage and finite-word membership.}
+Let $z=\Delta_6^2=(\sigma_1\cdots\sigma_5)^6$.
+Capping the disk at its boundary gives
+$PB_6/\langle z\rangle=P\Gamma_{0,7}$, with the cap point
+the named puncture $2$; see the capping comparison and center
+calculation in \citet[Sections 2.2 and 4.3]{DE_GonzalezMeneses2011}.
+There is also a useful splitting check.  Forgetting all but the
+fixed strands with labels $4,6$ gives
+$\ell_{4,6}:PB_6\to PB_2\cong\mathbb Z$.
+Those two normalized points are constantly $0,1$, so
+$\ell_{4,6}\theta=0$, whereas $\ell_{4,6}(z)=1$.
+Consequently the discrete intersection requested in B.4(a) is
+the explicitly specified subgroup
+\[
+                 N_{\mathrm{rig}}=\theta^{-1}(\langle z\rangle)=\ker\theta.
+ \tag{B.56.7}
+\]
+This gives a terminating exact membership test for every finite
+word in the thirteen source generators.  Substitute the thirteen
+specified braid words.  In general, centrality is tested by
+rejecting exponent sums not divisible by $30$ and otherwise
+putting $m$ equal to that sum divided by $30$.
+With $v=x_1\cdots x_6$, compare the six freely reduced Artin
+images to
+\[
+                       x_j\longmapsto v^m x_jv^{-m}.
+\]
+Accept precisely if all six agree.  The Artin action is faithful
+and the displayed automorphism is the action of $z^m$, so this
+criterion is both necessary and sufficient.  For our normalized
+source words, $\ell_{4,6}=0$ forces $m=0$, so the implementation
+rejects every nonzero exponent sum and otherwise compares
+the Artin images to the six generators themselves.
+No efficiency bound
+is claimed for this free-word expansion.
+\texttt{membership\_rigid7.py} implements it and checks the
+full-twist convention, the word $h$, and all fourteen peripheral
+meridians.  Its actual output is retained.
+
+Completing (B.56.6), let
+$Z_{\mathrm{tw}}=\overline{\langle z\rangle}\leq\widehat{PB_6}$.
+This central closure is isomorphic to $\widehat{\mathbb Z}$:
+the homomorphism $\ell_{4,6}$ restricts to an isomorphism
+$\langle z\rangle\to\mathbb Z$, so it induces the full
+profinite topology on this cyclic subgroup.  The universal property of completion
+gives
+\[
+ \widehat{PB_6}/Z_{\mathrm{tw}}\cong\widehat{P\Gamma_{0,7}}.
+\]
+Indeed finite quotients of the right-hand discrete group are
+exactly finite quotients of $PB_6$ killing $z$.
+Thus the completed test kernel has the exact embedded description
+\[
+       N_{\mathrm{rig}}^{\mathrm{test}}
+                    =\widehat\theta^{-1}(Z_{\mathrm{tw}})=\ker\widehat\theta.
+ \tag{B.56.8}
+\]
+For the last equality, $\widehat\ell_{4,6}$ is an isomorphism
+on $Z_{\mathrm{tw}}$ and vanishes on the image of
+$\widehat\theta$.  The independent exact program
+\texttt{check\_all13\_pair\_linking.py} checks the initial
+label order and all fifteen pair linkings of all thirteen words.
+It confirms that the $(4,6)$ linking is zero in every case and
+that the full twist has linking one.
+The thirteen finite words specify this continuous map completely.
+The argument uses the central closure, and does not need a
+separate assertion about the full center of $\widehat{PB_6}$.
+It supplies no new induced-topology comparison for
+$\theta(F_{13})$ or its spherical image.
+
+\paragraph{The rigid and four-point kernels are incomparable.}
+There is a short exact test detecting $h$ among the four-point
+maps.  For $q=\{1,2,3,5\}$, the cross-ratio of B.18 is
+\[
+                   \psi_q(u)=\left(\frac{u^2-1}{u^2+1}\right)^2.
+ \tag{B.56.9}
+\]
+It is an unramified degree-four covering
+\[
+ \mathbb P^1\setminus\{0,\infty,\pm1,\pm i\}
+                   \longrightarrow\mathbb P^1\setminus\{0,1,\infty\}.
+\]
+Its zeros and poles are respectively $\pm1,\pm i$, each of
+multiplicity two; the preimages of $1$ are $0,\infty$, also
+of multiplicity two.  These account for all ramification.
+Filling the other eight source punctures kills $e_6$ and
+carries $h$ to the difference of the two distinct meridians
+at $1,-1$, nonzero already in homology.  The covering induces
+an injection on fundamental groups.  Hence
+$\psi_{q*}(h)\ne1$.  Residual finiteness of the target
+free group shows that this same finite word survives the
+completed four-point test.
+
+In the other direction, form the balanced commutator $w$ of
+B.19 using the present fourteen meridians.  Its reduced source
+word has length $384$.  It dies in every four-point test.
+The auxiliary exact program \texttt{check\_all13\_burau.py}
+sends $B_6$ to $\operatorname{GL}_6(\mathbb F_{101})$ by the
+unreduced Burau matrices at $t=2$: the block at positions
+$j,j+1$ is
+$\left(\begin{smallmatrix}-1&2\\1&0\end{smallmatrix}\right)$,
+with identity elsewhere.  The program checks all defining
+braid relations and all inverse matrices.  It obtains
+\[
+ \rho(\theta(w))=
+ \begin{pmatrix}
+ 77&19&64&20&74&50\\
+ 47&60&88&59&42&8\\
+ 55&6&5&12&79&46\\
+ 8&98&44&86&18&50\\
+ 50&0&26&19&92&16\\
+ 5&62&69&96&93&80
+ \end{pmatrix}\ne I.
+\]
+The exponent sum of $\theta(w)$ is zero, so if it were a
+central full-twist power it would be the identity.  This
+matrix proves $w\notin N_{\mathrm{rig}}$.  In fact the matrix
+fails to commute with every displayed braid generator, so
+it also survives the finite braid image modulo the central
+image of $z$.  This directly witnesses nontriviality in a
+finite quotient of the seven-puncture target.
+Thus neither the rigid nor the four-point kernel contains
+the other, discretely or after completion.  Their intersection
+contains the explicit $776$-letter source word $[h,w]$.
+The matrix representation is used only to prove a nonidentity;
+its faithfulness is not assumed.

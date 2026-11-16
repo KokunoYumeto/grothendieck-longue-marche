@@ -1,0 +1,13 @@
+# Independent review of C.40
+
+Result: PASS. I read the complete proposed proof and the complete exact checker and independently reran it; output is C40_independent_rerun.out.
+
+The key typing point is correct. The negative normalized action on a chosen binary pair need not preserve the chosen GL2(F3) kernel. It preserves the projective S4 kernel because the transformed generating pair has the same passport and each of the nine passports is one inner orbit. The two binary inputs can therefore differ from a conjugated original pair by independent central signs. A full commutator word has zero continuous abelian exponents, so both f and u are insensitive to those signs. The conjugation automorphism eta on SL2(F3) thus computes their substituted values exactly, without assuming a binary quotient action.
+
+The six common S3 parameter choices are necessary for the actual canonical words. The two-reflection value uses A44 and the universal dihedral k; the mixed value f(t,a)=t^(2l) follows from the canonical equation and the negative action on the rotation subgroup; duality gives the swapped values. The d residues1 and5 modulo12 follow from d modulo4 equal1 and d modulo3 equal2k+1.
+
+The code enumerates all determinant-one values consistent with these common heads. It checks the local negative peripheral pair, exact binary norm and canonical equation, transported duality, and the negative hexagon. It then checks the known generation condition before testing the projective third cusp. The transport dictionary is unambiguous on word values because each projective generating pair has trivial centralizer. The two component decompositions cover all duality/hexagon edges, and the final matrix enumeration retains all necessary possibilities. There is no finite-table realization assumption and no use of a guessed higher-level action.
+
+The proper-image proof is complete: a proper subgroup with proper S3 projection lies in A4 or D8; a proper subgroup with full S3 projection is a point stabilizer. The D8 argument uses centrality of the commutator and d modulo4; the dihedral reflection argument uses the actual global exponent kappa. All mixed S3 products are reflections, giving the claimed conjugacy.
+
+The joint-head conclusion also has the needed extra justification. It uses the newly proved marked passport, so every S4 kernel is individually preserved by theta_d, not merely that all individual maps remain surjective. The basis-power map is a genuine full free-group automorphism with inverse using d^{-1}, and it permutes the family of S4 kernels. Hence psi also induces an automorphism of the joint finite head. No full or relative third-cusp equality is inferred beyond the finite S4 family.

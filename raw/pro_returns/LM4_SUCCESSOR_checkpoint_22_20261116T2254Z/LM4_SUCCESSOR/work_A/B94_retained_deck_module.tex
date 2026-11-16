@@ -1,0 +1,374 @@
+% Accepted B.94. Root, CE and DE complete-proof reviews passed; checkpoint18 component.
+\statement{B.94}{Proved}{All retained-fiber deck translates form a free rank-64 module with the same four-source Tate image}
+\label{stmt:B94}
+Retain B.91--B.93. Let $T=F(y_1,\ldots,y_5)$ be the actual retained
+generic-fiber group in the corrected paired marking, with involution
+\begin{equation}\label{eq:B94-beta}
+ \beta(y_1)=y_1^{-1},\quad
+ \beta(y_2)=y_4,\quad\beta(y_3)=y_5,\quad
+ \beta(y_4)=y_2,\quad\beta(y_5)=y_3.
+\end{equation}
+The common free peripheral basis of $R$ is indexed by
+$x_{g,i}$, where $g\in T$ is a retained Schreier word and
+$i\in\{2,3,5,6,7,8,10,11\}$ is a deleted paired slot.
+Put $\alpha_t(x_{g,i})=x_{tg,i}$ and define
+\begin{equation}\label{eq:B94-G}
+ \begin{aligned}
+ G&=(R\times R)\rtimes T,\qquad \Omega=\mathbb Z[G],\\
+ (u,v,t)(x,y,s)&=
+       \bigl(u\alpha_t(x),v\alpha_{\beta(t)}(y),ts\bigr),\\
+ F(u,v,t)&=(v,u,\beta(t)).
+ \end{aligned}
+\end{equation}
+This is the actual generic-fiber quotient acting on $P$ after
+abelianizing the mixed commutator kernel. In particular it includes
+all retained-fiber deck translates, without a length bound.
+For the $64$ actual columns of B.93, set
+\[
+                 L_{\mathrm{ret}}=\sum_{j=0}^{63}\Omega c_j\subset P.
+\]
+Then $L_{\mathrm{ret}}$ is $F$-stable and
+\begin{equation}\label{eq:B94-result}
+ \begin{gathered}
+ L_{\mathrm{ret}}\cong\Omega^{64},\qquad
+ H^1(C_2,L_{\mathrm{ret}})\cong\mathbb F_2[R]^4,
+ \qquad H^2(C_2,L_{\mathrm{ret}})=0,\\
+ \operatorname{im}\bigl(H^1(C_2,L_{\mathrm{ret}})
+                  \longrightarrow H^1(C_2,P)\bigr)
+       =J_4=\sum_{i=1}^4\mathbb F_2[R](\rho_i-1)\subseteq J_I.
+ \end{gathered}
+\end{equation}
+The four $\rho_i$ are the same actual first-sheet source elements
+as in B.93. Thus every integral anti-chain in this entire
+retained-deck span has zero $\kappa$ value modulo the actual
+source ideal, interpreted by B.93's intrinsic refinement.
+
+The old product-pencil base operators and their arbitrary iterates
+are not included in this coefficient enlargement. Their additional
+orbit sum in the full transported presentation remains untreated.
+No global $\kappa$ vanishing, projected source equality, nonlinear
+fixed lifting, compact comparison, or invertibility of the selected
+matrix is asserted.
+
+\begin{proof}
+\emph{B.94.1. Actual normal forms and a free coefficient-row module.}
+In the actual generic fiber, kill the retained filling kernel and
+obtain the free group $T$. The peripheral kernel before imposing
+mixed node relations is $R_A*R_B$, with the actual Schreier bases
+of B.91. For an $A$ peripheral, a retained whisker $g$ gives the
+common label $(g,i)$. For a $B$ peripheral, a retained whisker $h$
+gives the common label $(\beta(h),i)$. This makes $F$ exchange
+the two factors with identical common labels. Conjugation by
+$t\in T$ therefore acts by $\alpha_t$ on the first factor and
+by $\alpha_{\beta(t)}$ on the second. After killing their mixed
+commutators, the actual quotient has the unique normal form
+\eqref{eq:B94-G}. Multiplication, inverses and the involution
+follow from these actions and $\beta^2=1$.
+
+A product-tree cell of $P$ has two vertices and two peripheral
+labels, which we write
+\[
+                         (u,v;(g,i),(h,j)).
+\]
+Its unique coefficient-row normal form is
+\begin{equation}\label{eq:B94-row-normal}
+ (u,v;(g,i),(h,j))=(u,v,g)\,\epsilon_{i,j,z},
+                  \qquad z=\beta(g)^{-1}h,
+\end{equation}
+where $\epsilon_{i,j,z}$ has vertices $(1,1)$ and labels
+$(1,i),(z,j)$. Indeed, applying the retained coefficient $g$
+changes the two labels to $(g,i),(\beta(g)z,j)$, and applying
+$(u,v)$ supplies the vertices. Conversely, the first label
+determines $g$, after which the second determines $z$ and the
+vertices determine $u,v$. This proves that $P$ is a free left
+$\Omega$-module on the rows $(i,j,z)$; it is not merely a
+surjection from a proposed free row module.
+
+Write $d_t=(1,1,t)$. Literal negative interchange of the two
+product-tree edges gives
+\begin{equation}\label{eq:B94-row-F}
+ F(\epsilon_{i,j,z})
+       =-d_z\epsilon_{j,i,\beta(z)^{-1}}.
+\end{equation}
+Together with the coefficient action in \eqref{eq:B94-G}, this
+recovers the original $F$ action on every cell. Applying it twice
+returns the original row and coefficient. The exact conversion
+\path{work_CE/code/convert_symmetric_retained_deck_module.py}
+checks \eqref{eq:B94-row-normal} by inverse expansion on all
+$2680$ terms of the $64$ actual columns, and checks the complete
+row involution. There are $282$ distinct used rows. The formulas
+prove the normal form for every row and every retained word;
+the finite check verifies the actual input conversion.
+
+\emph{B.94.2. The actual $64$ monomial involution identities.}
+Let $\nu$ be a physical node and $\mu$ its physical $F$-mate.
+The actual matching calculation retains the full based conjugator,
+its residual words and its retained $T$ head. With the $A$ branch
+ordered first, it gives the complete column equation
+\begin{equation}\label{eq:B94-mate}
+ F(c_\nu)=-\delta_\nu a_\nu c_\mu,
+ \qquad a_\nu\in G,\quad\delta_\nu\in\{1,-1\},
+ \qquad F(a_\nu)a_\mu=1,
+ \quad\delta_\nu\delta_\mu=1.
+\end{equation}
+All $64$ equations are checked as full $G$-linear chains in
+\path{work_CE/next_symmetric_nodes/symmetric_retained_deck_module.json}.
+No nontrivial retained head is discarded or replaced by an
+$E$ coefficient. The equations make $L_{\mathrm{ret}}$ $F$-stable.
+They define a semilinear involution on the free domain on its
+$64$ columns. Proving this domain maps injectively to $P$ is
+a separate step, supplied next.
+
+\emph{B.94.3. A separated integral augmentation filtration.}
+Let $I_E$ be the integral augmentation ideal of $\mathbb Z[E]$
+and put $\mathfrak a=I_E\Omega$. Retained conjugation preserves
+$I_E$, so normal form in the semidirect product gives
+\begin{equation}\label{eq:B94-powers}
+ \mathfrak a^n=I_E^n\Omega
+       =\bigoplus_{t\in T}I_E^n d_t.
+\end{equation}
+We prove directly that these powers have zero intersection. The
+power-series construction is classical
+\citep[\S2, Satz I, pp.~262--263]{Magnus1935}; the characteristic-two
+and finite-quotient separation arguments needed here are proved below.
+
+First, a free group of any rank is residually a finite $2$-group.
+Only finitely many generators occur in a chosen nontrivial word,
+so kill the others. Write its reduced maximal-block expression as
+$x_{i_1}^{a_1}\cdots x_{i_r}^{a_r}$, where $a_j\ne0$ and
+$i_j\ne i_{j+1}$. In the noncommutative formal power series
+algebra over $\mathbb F_2$, send $x_i$ to $1+X_i$.
+If $a=2^v b$ with $b$ odd, the first nonzero positive-degree
+term of $(1+X)^a-1$ has degree $2^v$ and coefficient $1$.
+This holds also for negative $a$, by formal inversion, or by
+$(1+X)^a=(1+X^{2^v})^b$ in characteristic two.
+Put $d_j=2^{v_2(a_j)}$. The monomial
+\[
+                     X_{i_1}^{d_1}\cdots X_{i_r}^{d_r}
+\]
+has exactly $r$ successive runs of variable names. Omitting
+the positive-degree term from any block gives fewer than $r$
+runs; choosing from every block gives this monomial only with
+the displayed degrees. Its coefficient is therefore $1$.
+The image of the word is nontrivial already in a finite
+degree truncation. The group $1+\mathfrak m$ of that truncated
+algebra is a finite $2$-group: its filtration by
+$1+\mathfrak m^j$ has elementary abelian $2$-group quotients.
+This supplies a finite $2$-group quotient detecting the word.
+Products of finitely many such quotients separate any finite
+set of distinct words. Applying this to the two free factors
+shows that $E=R\times R$ has the same finite-support separation
+property.
+
+For a finite $2$-group $V$, the augmentation ideal of
+$\mathbb F_2[V]$ is nilpotent. Here is the elementary induction.
+Choose a central element $z$ of order two. The central ideal
+generated by $z-1$ has square zero, and quotienting by it gives
+$\mathbb F_2[V/\langle z\rangle]$. The quotient augmentation
+ideal is nilpotent by induction on $|V|$, so the original is
+nilpotent as well. If its $N$th power is zero modulo two,
+the augmentation ideal in $(\mathbb Z/2^k)[V]$ has $N$th
+power contained in $2(\mathbb Z/2^k)[V]$, and hence its
+$Nk$th power is zero.
+
+Now let $a\ne0$ have finite support in $\mathbb Z[E]$.
+Choose a finite $2$-group quotient of $E$ separating its
+support, and choose $k$ so that one nonzero integer coefficient
+survives modulo $2^k$. The image of $a$ in
+$(\mathbb Z/2^k)[V]$ is nonzero. Nilpotence of the target
+augmentation ideal proves that $a$ cannot lie in every
+$I_E^n$. Thus
+\begin{equation}\label{eq:B94-separated}
+              \bigcap_{n\geq1}I_E^n=0,
+              \qquad\bigcap_{n\geq1}\mathfrak a^n=0.
+\end{equation}
+The second assertion follows coefficient by coefficient from
+\eqref{eq:B94-powers}. No finite quotient invariant under
+all of $T$ is needed. The coefficient reduction modulo $2^k$
+is essential; nilpotence over the integral group ring of a
+finite group was not asserted.
+
+\emph{B.94.4. Injectivity of the actual column map.}
+Apply the residual augmentation
+$\Omega\to\mathbb Z[T]$ to the normalized matrix. Each
+of the $64$ columns has exactly one nonzero augmented entry,
+a signed retained word, and the $64$ surviving rows are distinct.
+Their ordered physical slot pairs are exactly the $8$ by $8$
+product of the slot set in the statement. These facts are
+verified in
+\path{work_CE/next_symmetric_nodes/symmetric_G_augmentation_pivots.json};
+the producer separately reconstructs the selected $64$ by $64$
+matrix and verifies its diagonal form.
+
+Choose those rows in the corresponding column order. The actual
+matrix is $D+M$, where $D$ has diagonal entries
+$u_i=\pm d_{t_i}\in\Omega^\times$ and every entry of $M$
+belongs to $\mathfrak a$. Suppose
+$\sum_i a_i c_i=0$, with arbitrary $a_i\in\Omega$ acting
+on the left. In the $i$th selected row the equation is
+\[
+                       a_i u_i+\sum_j a_j m_{ji}=0.
+\]
+Modulo $\mathfrak a$, the diagonal units imply $a_i\in
+\mathfrak a$ for every $i$. If all $a_j\in\mathfrak a^n$,
+then the same ordered equation gives
+\[
+                 a_i=-\sum_j a_jm_{ji}u_i^{-1}
+                          \in\mathfrak a^{n+1}.
+\]
+Induction and \eqref{eq:B94-separated} force every $a_i=0$.
+The $64$ actual columns are therefore $\Omega$-independent,
+and by definition they generate $L_{\mathrm{ret}}$. This
+proves the free rank in \eqref{eq:B94-result}. The argument
+proves injectivity only. It neither inverts $D+M$ nor treats
+an element with unit augmentation as a unit of $\Omega$.
+
+\emph{B.94.5. Fixed coefficient points and the two retained cone classes.}
+There are $28$ exchanged pairs of physical nodes and eight
+fixed physical nodes. In each fixed case $\delta_\nu=1$,
+so \eqref{eq:B94-mate} has the form $F(c)=-a c$, where
+$a=(u,v,t)$ and $F(a)a=1$. Its underlying coefficient-basis
+involution is
+\begin{equation}\label{eq:B94-coefficient-orbit}
+                              x\longmapsto F(x)a.
+\end{equation}
+It has a fixed point if and only if some $w\in T$ satisfies
+\begin{equation}\label{eq:B94-retained-half}
+                              \beta(w)t=w.
+\end{equation}
+Necessity follows by projection to $T$. For sufficiency, the
+cocycle identity gives
+$\beta(t)t=1$ and $v\alpha_{\beta(t)}(u)=1$.
+If \eqref{eq:B94-retained-half} holds, direct multiplication
+in \eqref{eq:B94-G} shows that
+\[
+                              x=(\alpha_{\beta(w)}(u),1,w)
+                              \quad\text{satisfies}\quad F(x)a=x.
+\]
+Indeed $\beta(w)=w\beta(t)$, so its second-coordinate equation
+is $\alpha_{\beta(w)}(u)\alpha_w(v)=1$ and its other two
+coordinates agree literally.
+
+There is an explicit free-product presentation
+\begin{equation}\label{eq:B94-retained-orbifold}
+ T\rtimes\langle\tau\rangle
+    =\langle\tau\mid\tau^2=1\rangle*
+      \langle\tau_1\mid\tau_1^2=1\rangle*F(y_2,y_3),
+ \qquad y_1=\tau_1\tau,
+\end{equation}
+where $y_4=\tau y_2\tau$, $y_5=\tau y_3\tau$ and conjugation
+by $\tau$ on $T$ is $\beta$. Substitution in both directions
+verifies the presentation. Equation \eqref{eq:B94-retained-half}
+is equivalent to $\tau t$ being conjugate to $\tau$ by an
+orientation-even element. The two order-two factors have
+distinct conjugacy classes by reduced free-product normal form.
+Also the centralizer of $\tau$ in this free product is
+$\langle\tau\rangle$. Its intersection with $T$ is trivial,
+so
+\begin{equation}\label{eq:B94-fixed-G}
+                    T^\beta=1,
+                    \qquad G^F=\{(r,r,1):r\in R\}.
+\end{equation}
+If $x_0$ is one fixed point of \eqref{eq:B94-coefficient-orbit},
+all its fixed points are exactly the left torsor $G^F x_0$:
+the quotient $x x_0^{-1}$ is fixed by $F$, and the converse
+follows by multiplication. This fixes the side of the resulting
+source ideal.
+
+For completeness, the eight actual retained tests are as follows.
+The table gives $t$ and the single factor remaining after cyclic
+reduction of $\tau t$ in \eqref{eq:B94-retained-orbifold}.
+The full reducing prefixes and residual coefficients are retained
+in the exact converted data.
+\begin{center}
+\begin{tabular}{ccc}
+Node&Retained word $t$&Cone core\\\hline
+$(0,0)$&$y_1$&$\tau_1$\\
+$(0,1)$&$1$&$\tau$\\
+$(8,0)$&$y_2y_3y_1^{-1}y_5^{-1}y_4^{-1}$&$\tau_1$\\
+$(8,1)$&$1$&$\tau$\\
+$(12,0)$&$y_2y_1^{-1}y_4^{-1}$&$\tau_1$\\
+$(12,1)$&$1$&$\tau$\\
+$(16,0)$&$y_1$&$\tau_1$\\
+$(16,1)$&$1$&$\tau$
+\end{tabular}
+\end{center}
+The four other-cone cases have no fixed coefficient point,
+regardless of their residual coordinates. For the four neutral
+cases, the actual coefficient is $(b,b^{-1},1)$, with
+$b=\rho_1,\rho_2,1,1$ respectively. We choose the explicit
+fixed coefficient point
+\[
+                              x_0=(1,b^{-1},1),
+\]
+whose anti-chain is precisely the corresponding $v_i$ of
+B.93.3. Thus the previous actual
+source normalization is retained exactly.
+
+\emph{B.94.6. Cohomology and the actual source image.}
+Independence in B.94.4 makes the monomial relations
+\eqref{eq:B94-mate} the actual action on a free image basis.
+Each exchanged pair is induced as a $C_2$-module. In a fixed
+physical summand with no fixed coefficient point, every
+coefficient-basis orbit has size two, so it too is a direct
+sum of induced signed pairs and has no positive-degree
+cohomology. This is why fixing a physical node alone does
+not produce a Tate class.
+
+For a neutral fixed summand, its fixed coefficient points
+are the left diagonal $R$-torsor in \eqref{eq:B94-fixed-G}.
+Each carries the negative sign, while all other points lie
+in induced pairs. The integral sign-module calculation from
+B.93 therefore gives one copy of $\mathbb F_2[R]$ in
+$H^1$ and zero in $H^2$ for each of the four neutral summands.
+All chains have finite support, so the orbitwise calculation
+applies to their direct sum without an infinite-support
+choice or division by two.
+
+The four distinguished anti-chains are exactly B.93's $v_i$.
+Their Tate values are the actual $\rho_i-1$, and the fixed
+coefficient torsor gives their diagonal left translates
+$s(\rho_i-1)$. Thus the full cohomology image is exactly
+$J_4$, proving all of \eqref{eq:B94-result}. In particular,
+adjoining all retained-deck translates contributes no further
+class modulo $J_I$.
+
+\emph{B.94.7. Exact evidence and the remaining orbit extension.}
+\begingroup\raggedright
+The actual normal-form conversion, all $64$ coefficient
+identities, their ordered double-$F$ checks and all eight
+cone tests are in
+\path{work_CE/next_symmetric_nodes/symmetric_retained_deck_module.json},
+with producer
+\path{work_CE/code/convert_symmetric_retained_deck_module.py}
+and genuine adjacent output. The separate $64$ diagonal
+augmentation units are in
+\path{work_CE/next_symmetric_nodes/symmetric_G_augmentation_pivots.json},
+with producer
+\path{work_CE/code/check_symmetric_G_augmentation_pivots.py}
+and genuine adjacent output. Both certificates bind their
+actual inputs by SHA-256 and retain the complete words and
+coefficients. The separated-filtration proof above is the
+general injectivity argument; the finite computation verifies
+its exact actual-matrix hypothesis.
+The independent replay
+\path{work_DE/next_marginal_source/check_G_span_independent.py}
+reconstructs all $64$ normalized columns, the $2680$ terms,
+all mate and cycle relations, the selected diagonal minor
+and all eight cone classes from the actual inputs; its
+genuine adjacent output records each successful check.\par
+\endgroup
+
+The coefficient group $G$ is the whole generic fiber modulo
+the mixed commutator kernel. That kernel acts trivially on
+its abelianization, so $\Omega$ coefficients already include
+all generic-fiber conjugations of these columns. The further
+node transports in B.91 come from the old product-pencil
+base paths and their action on this fiber data. Their orbit
+sum is not replaced by $L_{\mathrm{ret}}$ here, nor is
+$L_{\mathrm{ret}}$ asserted to be invariant under those
+operators. B.93's induced refinement places every computed
+anti-chain in the exact $\kappa$ framework, but the full
+old-base sum and the subsequent nonlinear and compact gates
+remain open.
+\end{proof}
