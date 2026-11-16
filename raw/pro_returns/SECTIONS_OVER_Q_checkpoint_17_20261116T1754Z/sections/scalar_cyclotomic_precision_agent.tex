@@ -1,0 +1,137 @@
+\subsection{The cyclotomic restriction on a scalar building prime}
+
+\begin{statement}{A.135}{Proved}
+{The actual norm of one scalar Kummer ramification prime}
+Let \(r\ge1\), put \(m=3^r\), and let \(K\) be a
+number field containing \(\mu_m\).
+Let \(q\ne3\) split completely in \(K\), and fix a
+prime \(\mathfrak q\) above it.
+Suppose \(z\in K^\times\) has valuations divisible
+by \(m\) at every finite prime other than
+\(\mathfrak q\), has valuation prime to three at
+\(\mathfrak q\), and satisfies
+\[
+                        z\in(K_v^\times)^m
+                                    \quad\text{for every }v\mid3.
+ \tag{A.135.1}
+\]
+Then
+\[
+                          q\equiv1\pmod{3^{r+1}}.
+ \tag{A.135.2}
+\]
+In particular, every single-prime scalar building
+class in the odd-power construction used for A.130,
+with zero local class above three, has this restriction.
+It holds even when its initial splitting field does
+not contain \(\mu_{3^{r+1}}\).
+
+For a general finite list of distinguished primes
+\(\mathfrak q_i\mid q_i\), where each \(q_i\) splits
+in \(K\), the same argument gives the actual
+necessary condition
+\[
+              \prod_iq_i^{a_i}\in(\Q_3^\times)^m,
+                  \qquad a_i=v_{\mathfrak q_i}(z)\pmod m.
+ \tag{A.135.3}
+\]
+The residues of the exponents determine this class.
+This product condition permits cancellation between
+different building primes.  For example \(61\) and
+\(67\) both split \(\Q(3^{1/3},\mu_3)\), have
+\(v_3(q_i-1)=1\), and their product is a cube in
+\(\Q_3^\times\).
+This numerical comparison asserts the product
+condition, not the existence of an additional
+global Kummer class with specified prime divisors.
+\end{statement}
+
+\begin{proof}
+Choose an integer representative \(a\) of
+\(v_{\mathfrak q}(z)\bmod m\), so \(3\nmid a\).
+For every rational prime \(p\), the actual
+valuation of the field norm is
+\[
+            v_p(N_{K/\Q}z)
+                      =\sum_{v\mid p}f(v/p)v(z).
+ \tag{A.135.4}
+\]
+Since \(q\) splits completely, the residue degree
+of \(\mathfrak q\) is one.  The hypotheses give
+valuation \(a\bmod m\) at \(q\) and zero modulo
+\(m\) at every other rational prime.
+A rational number with those valuations has the
+literal form
+\[
+                       N_{K/\Q}z=q^a w^m,
+                                 \qquad w\in\Q^\times.
+ \tag{A.135.5}
+\]
+The possible negative sign is absorbed in \(w\)
+because \(m\) is odd.
+
+At three the norm is the product of the norms
+from every completion above three.
+Writing \(z=z_v^m\) in each \(K_v\) shows
+\[
+       N_{K/\Q}z
+             =\left(\prod_{v\mid3}N_{K_v/\Q_3}z_v\right)^m
+                                  \quad\text{in }\Q_3^\times.
+ \tag{A.135.6}
+\]
+Equations (A.135.5)--(A.135.6) make \(q^a\) an
+\(m\)th power in \(\Q_3^\times\).
+Choose integers \(A,B\) with \(Aa+Bm=1\).
+Then \(q=(q^a)^A(q^B)^m\) is itself an \(m\)th
+power.  Thus no unproved implication about the
+norm group is needed.
+
+The decomposition
+\(\Z_3^\times=\{1,-1\}\times(1+3\Z_3)\)
+and the three-adic logarithm identify the image
+of the \(3^r\)-power map with
+\(\{1,-1\}(1+3^{r+1}\Z_3)\).
+Equivalently this follows by induction from
+\((1+3^j u)^3\equiv1+3^{j+1}u\bmod3^{j+2}\).
+Hence \(q\equiv1\) or \(-1\bmod3^{r+1}\).
+Since \(K\) contains \(\mu_3\) and \(q\) splits
+in \(K\), its action on \(\mu_3\) is trivial;
+thus \(q\equiv1\bmod3\).
+Only the positive alternative is possible,
+proving (A.135.2).
+
+In the scalar construction the cohomology class
+is a Kummer class in \(K^\times/(K^\times)^m\).
+Being unramified at a prime away from three
+means that its valuation is zero modulo \(m\).
+Its single distinguished inertia coordinate is
+one modulo \(m\), and its local class at every
+place above three is zero.  Thus any representative
+satisfies precisely the hypotheses just used.
+The conclusion concerns those actual building
+classes and does not impose the single-prime
+condition on their final product.
+
+For several distinguished primes the same
+valuation formula gives
+\(N_{K/\Q}z=(\prod_iq_i^{a_i})w^m\);
+(A.135.6) proves (A.135.3).
+For the explicit comparison, both \(61\) and
+\(67\) are one modulo three, and the congruence
+\(X^3=3\) has three roots at each prime.
+They therefore split the displayed cubic
+splitting field.  Their residues modulo nine
+are seven and four, and
+\(61\cdot67\equiv1\bmod9\).
+The unit power calculation above makes their
+product a cube in \(\Q_3^\times\), while neither
+individual prime is a cube there.
+This proves the exact scope of the comparison.
+\end{proof}
+
+The retained certificate
+\path{code/scalar_cyclotomic_precision_certificate.py}
+checks the actual finite unit power maps through
+\(r=6\), the split-prime example, the norm-exponent
+B\'ezout identity and the multiple-prime cancellation.
+Its output is saved alongside it.

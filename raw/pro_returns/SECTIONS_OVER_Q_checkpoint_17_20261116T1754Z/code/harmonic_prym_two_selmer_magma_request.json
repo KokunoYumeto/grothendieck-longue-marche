@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://calculator.magma-maths.org/execute",
+  "utc": "2026-11-16T10:48:01.888340+00:00",
+  "payload": {
+    "code": "// Bypass the V2.30-1 number-field quartic minimisation error.\n// Default proof settings; no conditional class-group bounds are enabled.\nSetSeed(1);\nQ := Rationals();\nA<X> := PolynomialRing(Q);\nK<t> := NumberField(X^2-2);\nM := 7*13*23*139*1119169;\nb := 1146*(1+t)^2*M^2;\nE := EllipticCurve([K|0,0,0,b,0]);\ntime S, StoA := TwoSelmerGroup(E);\nprint \"TWO SELMER\", S;\nprint \"TWO SELMER ORDER\", #S;\nprint \"TWO SELMER REPRESENTATIVES\", [S.i@@StoA : i in [1..Ngens(S)]];\ntime covers, maps, group_to_cover := TwoDescent(E : MinRed:=false, RemoveTorsion:=true);\nprint \"COVER COUNT\", #covers;\nprint \"COVER GROUP\", Domain(group_to_cover);\nprint \"COVER GROUP ORDER\", #Domain(group_to_cover);\nprint \"COVER MAP CODOMAIN\", Codomain(group_to_cover);\n"
+  }
+}

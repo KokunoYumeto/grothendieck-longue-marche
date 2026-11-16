@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://calculator.magma-maths.org/execute",
+  "utc": "2026-11-16T10:52:48.839951+00:00",
+  "payload": {
+    "code": "// Use a smaller literal two-cover for the image of the isogeny class r.\n// The actual map to E is psi_b composed with the standard isogeny cover.\nSetSeed(1);\nQ := Rationals();\nA<X> := PolynomialRing(Q);\nK<t> := NumberField(X^2-2);\nM := 7*13*23*139*1119169;\nb := 1146*(1+t)^2*M^2;\nE := EllipticCurve([K|0,0,0,b,0]);\ntime S, StoA := TwoSelmerGroup(E);\nprint \"TWO SELMER ORDER\", #S;\ntime covers, maps, group_to_cover := TwoDescent(E : MinRed:=false, RemoveTorsion:=true);\nP<Z> := PolynomialRing(K);\nr := K!1119169;\nC := HyperellipticCurve(r-4*b/r*Z^4);\nprint \"SMALL COVER\", C;\nEC, cm := AssociatedEllipticCurve(C : E:=E);\nassert EC eq E;\nprint \"SMALL COVER MAP\", FactoredDefiningPolynomials(cm);\nSetVerbose(\"CasselsTate\",2);\ntime ct := CasselsTatePairing(C,covers[1]);\nprint \"SMALL COVER PAIRING WITH COVER1\", ct;\n"
+  }
+}

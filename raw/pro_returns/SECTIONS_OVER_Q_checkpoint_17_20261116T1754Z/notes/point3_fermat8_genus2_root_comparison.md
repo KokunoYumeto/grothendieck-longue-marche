@@ -1,0 +1,40 @@
+# Root comparison for the six genus-two two-descent calculations
+
+16 November 2026, before checkpoint14. AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode). No priority is claimed. These notes check the maps underlying the retained exploratory arithmetic; they do not promote its numerical output to an audited rank theorem.
+
+For each of the six fixed nonzero coefficients c in the retained exploration, put C: y²=x⁵+cx, K=Q[θ]/(θ⁴+c), and F=Q×K. The five finite branch points give the Galois module F2⁵/<(1,1,1,1,1)> for J[2]. The map u↦u+(sum u)(1,1,1,1,1) identifies it equivariantly with the kernel of the sum map. The Weil pairing, whose exponent in the first model is dot(u,v)+(sum u)(sum v), becomes the dot product on this kernel. The diagonal μ2 splits the norm map on Res(F/Q)μ2 because the total degree is odd. Consequently H1(Q,J[2]) identifies with the norm kernel in F×/F×². Projection to the quartic factor has the literal inverse η↦(N(K/Q)η,η). There is no extra quotient by Q× in this chosen norm-kernel model.
+
+At a place p, a curve point (q,y) with qy nonzero has quartic Kummer coordinate q−θ. Its norm is q⁴+c, whose squareclass is q because y²=q(q⁴+c). The full coordinate is therefore (q,q−θ). The dot-product Weil pairing, Shapiro, corestriction and the projection formula give the pairing of η with this point as the product over P|p of the quadratic Hilbert symbols (η,q(q−θ))_P. The rational branch divisor T0 has full coordinate (c,−θ), so its corresponding test is the product (η,−cθ)_P. These are exactly the inputs retained by the exploratory GP program.
+
+The primary agent read all of `code/point3_fermat8_genus2_local_exploration.gp` and its output. It records the candidate dimensions 5,6,5,4,4,5 and row ranks 3,4,3,2,2,3, using certified class/unit computations and actual local square tests. The compact literal certificate, its complete arithmetic audit and the final statement were still in progress when this note was written. A total-rank claim is therefore not added to the active register by this note.
+
+## Opened primary source
+
+Poonen–Rains, *Random maximal isotropic subspaces and Selmer groups*, author version dated 17 May 2011 with minor correction 6 August 2012, https://math.mit.edu/~poonen/papers/selmer.pdf; publication metadata in that copy: J. Amer. Math. Soc. 25 (2012), 245–269. Search: `Poonen Rains random maximal isotropic subspaces Selmer groups Proposition 4.9 4.11 pdf`.
+
+Read Section4.1 and Remark4.5 (printed pp14–15), Proposition4.6 and Corollary4.7 (printed p16), and Proposition4.9 with its proof and Proposition4.11 with its proof (printed pp17–18). Remark4.5 supplies the symmetric line sheaf for twice the canonical polarization. The associated quadratic form has the signed Weil-cup bilinear form; its restriction to the Kummer image is zero. The local Kummer image is maximal isotropic by Tate local duality. Only isotropy is needed for the displayed necessary Hilbert tests. No heuristic or conjecture in the paper is used.
+
+Poonen–Schaefer, *Explicit descent for Jacobians of cyclic covers of the projective line*, author version dated10 February1997, https://math.mit.edu/~poonen/papers/descent.pdf, was also opened at printed pp1–2. The introduction describes the degree-five norm-kernel map and its Kummer interpretation; it is background context only here. The coefficient-module and pairing comparison above was checked directly. The broader even-degree results were not imported.
+
+
+## Completed saved-source and arithmetic audit, hour15
+
+The complete saved A.186 proof and the literal GP certificate were read. The 29 displayed generators were checked against the row-specific integral bases; the seventeen square witnesses, all local-Hilbert matrices, and all six kernel bases were checked. The final certificate was rerun with the absolute local executable `/tmp/birational-pari-runtime/pari-2.19.1/gp`. Every case passed, including the added explicit class coordinates `[1]` for both primes above 2 and 3 in the c=13824 field. Its only stderr message is PARI's configured maximum-stack-size notice. An initial invocation of `gp` on the default PATH reported command not found before any arithmetic ran; the explicit executable path resolved that command-resolution failure. This was not an arithmetic discrepancy.
+
+The root proof audit checks the actual Galois-module map from branch divisors into the norm kernel and the dot-product Weil pairing. A direct Weil-reciprocity calculation was added to A.186: for div(g)=2D′−D, the square roots beta_i=f_i(D′)/g(D_i) have beta_i²=f_i(D), and their Galois cocycle is the Weil pairing of the finite Kummer cocycle with D_i. The parameter x²/y gives leading coefficient 1 at infinity; the parameter y gives x/y²→1/c at the zero branch point. This fixes the point and branch formulas and their actual coefficient map without an unexamined change of convention.
+
+The full flag-zero `bnfcertify` guarantee, rather than the weaker flag-one guarantee, was checked in the official PARI documentation. The entries `bnfunits`, `bnfisunit`, `bnfsunit`, and `nfhilbert` were read to check the full unit coordinates, localized class group and individual local quadratic norm symbols. URL: https://pari.math.u-bordeaux.fr/dochtml/html-stable/General_number_fields.html . The six calls use `bnfinit(F,1)` and omit the `bnfcertify` flag, so they request complete certification. The resulting squareclass groups have dimensions 5,6,5,4,4,5, and the displayed local row ranks are 3,4,3,2,2,3.
+
+Stoll's original publisher PDF was opened at https://www.impan.pl/shop/publication/transaction/download/product/83397 . Read Lemma4.1 and Proposition4.2 (p250), Lemma4.3 (pp250–251), Lemma4.4 and the proof of Lemma4.5 (pp251–252), the proof of Proposition4.6 (p252), Corollary4.7 (p253), and Lemma4.9 (p254). Lemmas4.1 and4.3 refer to Schaefer for their proofs; the Kummer/function comparison needed here is supplied directly by the added calculation. The outside-support valuation assertion is checked through Stoll's component-group valuation argument and its good-reduction specialization. Bibliographic identity of his reference16 was also read in the publisher bibliography: Schaefer, Computing a Selmer group of a Jacobian using functions on the curve, Math. Ann.310 (1998),447–471. That reference is not separately claimed as opened.
+
+The rational symmetric theta divisor and O(2Theta) identify the isogeny as [2]. The previously read Poonen–Rains Corollary4.7 and Proposition4.9 prove that its actual Kummer image is isotropic for the stated Weil-cup pairing, including at2. The Hilbert test uses projection formula and includes the rational coordinate, so every two-Selmer class lies in the displayed two-dimensional kernel. A.182 supplies rational two-torsion and an infinite-order class on each curve, giving the matching two-dimensional lower bound. The finite Kummer exact sequence therefore proves rank1 and Sha[2]=0, and the elementary order argument proves Sha[2∞]=0. A.185 then gives total rank14 for J(C8). Both principal A1 assertions remain open; no section classification is inferred from the rank inequality.
+
+The Local and Birational peer agents each read the complete saved proof and independently audited the retained arithmetic. Their reports agree with this conclusion. The extra Weil-reciprocity paragraph is also submitted for an independent exact-map check.
+
+Retained `code/point3_fermat8_genus2_rank_certificate.gp`: 3260 bytes; SHA-256 `1e0406531e4a83234d765f5b75b3ff116756cf7b9510da4ee14ec5e9ca960c30`.
+
+Retained `code/point3_fermat8_genus2_rank_root_audit_output.txt`: 8613 bytes; SHA-256 `e7706a6a09f410c4f23eb5cd1ca00ed9a03e1fc50f27fe160010e1ed6c0e5818`.
+
+Retained `code/point3_fermat8_genus2_rank_root_audit_stderr.txt`: 72 bytes; SHA-256 `1c121c0c7ab78dc947fe268c213e7d5aad779a26b90869990e930b50dccebebc`.
+
+The Local peer independently read and passed the added direct Weil-reciprocity paragraph, including the moved rational divisor, the actual permuted cocycle and both local-parameter evaluations.

@@ -1,0 +1,15 @@
+# Exact class-two local comparison and class-three lifting
+
+The root read the complete A.38 quotient/cochain proof, the used parts of A.27, all of A.43's actual Hall/action comparison, A.46's full continuous residue and unramified-cohomology proof, and A.49's punctured-disc normalization and exact cusp-group comparison. A.201 applies those actual maps to the raw Hall defect and proves convergence of its local central primitives. Its symbolic certificate gives the three literal cusp-conjugation correction maps and the uniform bound v_ell(correction) >= v_ell(m) − v_ell(6).
+
+## Primary-source reopening and searches, 16 November 2026
+
+- Searched the primary author K-book site for the n=4 instance of the integral K-theory/cohomology comparison and K4(Z). Opened Charles Weibel, K-book Chapter VI, https://sites.math.rutgers.edu/~weibel/Kbook/Kbook.VI.pdf. Read Theorem8.2 and its proof, printedpp47–48 in this chapter PDF: n=2i gives H2 of OS[1/ell] with twist i+1 for odd ell, and for ell2 over totally imaginary fields. Read the exact K4(Z)=0 record in Section10, including Table10.1.1 and Remark10.1.3. Retrieval references: turn777view0, turn778view2, turn780view0.
+- Searched for the primary Rognes article and opened the existing bibliography URL https://www.mn.uio.no/math/personer/vit/rognes/papers/k4odd.pdf. Theorem0.1, printedp268, is K4(Z)=0. The proof organization and Theorem8.5/8.6 endpoint were reopened. The full result had already been used with its exact scope in A.46. Retrieval references: turn781view0, turn782view2. An earlier mirror fetch returned403 and supplied no additional evidence.
+- Opened SGA1, the updated primary text https://arxiv.org/pdf/math/0206203. Read XIII Corollary2.9 and section2.10, printedpp288–290, for smooth proper pairs with normal-crossings boundary and prime-to-residue-characteristic finite groups. Read XIII Propositions5.1–5.2, printedpp314–315, including their displayed local Kummer maps, regularity, tame ramification, normalization and extension proof. Retrieval references: turn781view1, turn783view0, turn783view1. A.49 supplies the more explicit actual punctured-disc and tangent arithmetic comparison used here.
+
+These readings are used only in the exact coefficient, pair and local-map settings written in A.201. No literature priority claim is made. The theorem supplies a global class-three lift of a locally point-or-cusp-matching class-two section; it does not supply a locally matching choice of the new lift or a full section.
+
+## Peer review requested
+
+Both local-preprint and birational-main checked the raw-defect convergence argument before the source was written, including the cusp extension and small coefficient primes. Local-preprint and legendre-main then read the complete saved proof and independently reran the exact symbolic certificate. Both final audits passed, including the literal raw-defect sign, the full restricted-family denominator, the completed cusp exponents and the full coefficient-product map. Their independent notes are retained. A.201 was integrated only after those final reviews.

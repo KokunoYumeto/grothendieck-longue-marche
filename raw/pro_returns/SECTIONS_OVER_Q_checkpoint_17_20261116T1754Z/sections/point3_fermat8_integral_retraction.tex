@@ -1,0 +1,236 @@
+\subsection{An integral reverse map for the Fermat-eight decomposition}
+
+\begin{statement}{A.188}{Proved}
+{A literal multiplier-sixteen reverse isogeny and a five-level Selmer bound}
+Let \(F:J_8\to\mathcal B\) be exactly the isogeny
+(A.182.3).  Write \(f_i:C_8\to E_i\),
+\(g_j:C_8\to G_j\), and \(h_l:C_8\to D_l\)
+for the three, six, and three curve maps in that proof,
+in its displayed order.  Put
+\(j_l:\mathcal P_l\hookrightarrow\operatorname{Jac}(D_l)\),
+and \((c_1,\ldots,c_6)=(2,2,2,1,1,1)\).
+The following is a homomorphism of abelian varieties over \(\Q\):
+\[
+\begin{aligned}
+ H:\mathcal B&\longrightarrow J_8,\\
+ ((e_i),(z_j),(p_l))&\longmapsto
+    \sum_{i=1}^3 f_i^*e_i
+       +\sum_{j=1}^6 c_jg_j^*z_j
+       +\sum_{l=1}^3 h_l^*j_lp_l.
+\end{aligned}
+\tag{A.188.1}
+\]
+Here every star in (A.188.1) denotes pullback of degree-zero
+divisor classes along the specified curve map.  It satisfies
+the integral identities
+\[
+                HF=[16]_{J_8},\qquad FH=[16]_{\mathcal B}.
+\tag{A.188.2}
+\]
+Consequently \(\ker F\subset J_8[16]\),
+\(\ker H\subset\mathcal B[16]\), and \(\deg F\)
+is a power of two.  In the arithmetic situation already proved
+in A.185--A.187, the explicit consequences are
+\[
+\begin{aligned}
+ 32\Sha(J_8/\Q)[2^\infty]&=0,\\
+ \operatorname{im}\bigl(
+   \operatorname{Sel}^{2^{n+5}}(J_8/\Q)
+       \longrightarrow\operatorname{Sel}^{2^n}(J_8/\Q)\bigr)
+   &=\kappa_{2^n}\bigl(J_8(\Q)/2^nJ_8(\Q)\bigr)
+       \qquad(n\geq1).
+\end{aligned}
+\tag{A.188.3}
+\]
+The transition in the second line is induced by \([32]\)
+on the finite torsion modules.  All these identities concern
+the actual rational homomorphisms and commute with localization.
+\end{statement}
+
+\begin{proof}
+\emph{Exact degrees of all twelve curve maps.}
+We first determine their generic geometric fibers.  All counts
+below take place on the dense open where the displayed
+denominators and root arguments are nonzero.  Roots in
+characteristic zero are distinct there.
+
+For the elliptic maps, first use the quartic coordinates
+\((x,y)\) in (A.182.5).  The fibers of the three maps
+to those quartics are respectively specified by
+\[
+\begin{array}{c|c|c|c}
+\text{row}&\text{first choice}&\text{second choice}
+       &\text{number of choices}\\ \hline
+1&v^4=1/y&u^2=xv^2&4\cdot2=8\\
+2&v^2=x&u^4=y/3&2\cdot4=8\\
+3&u^2=x&v^4=y/2&2\cdot4=8.
+\end{array}
+\tag{A.188.4}
+\]
+The quartic equation verifies \(3u^8-2v^8=1\)
+for every one of the listed choices, and the forward
+coordinates recover exactly \((x,y)\).  The additional
+map \((x,y)\mapsto(ax^2,axy)\) has degree two:
+its inverse consists of \(x^2=X/a\),
+\(y=Y/(ax)\).  Thus \(\deg f_i=16\) for all three.
+
+For the genus-two maps, use the intermediate coordinates
+\((x,y)\) in (A.182.7), before
+\((X,Y)=(x^2,xy)\).  Their fibers are
+\[
+\begin{array}{c|c|c|c}
+j&\text{root choice}&\text{remaining coordinate}
+    &\text{number of choices}\\ \hline
+1&v^4=1/y&u=xv&4\\
+2&u^4=y/3&v=x&4\\
+3&v^4=y/2&u=x&4\\
+4&u^8=(y+1)/6&v=x/u&8\\
+5&v^8=1/(y-1)&u=xv^2&8\\
+6&u^8=2/(3-y)&v=xu^2&8.
+\end{array}
+\tag{A.188.5}
+\]
+Substitution of \(y^2=Ax^8+B\) checks the source
+equation and recovers both forward coordinates in each
+row.  For instance, row four uses
+\(u^8=(y+1)/6\) and \(v^8=(y-1)/4\), since
+\(y^2-1=24x^8\).  In row five,
+\(y-1=1/v^8\); in row six,
+\(3-y=2/u^8\).  The subsequent map has exactly
+two inverse choices, \(x^2=X\), \(y=Y/x\).
+This proves
+\[
+                 (\deg g_j)_{j=1}^6=(8,8,8,16,16,16).
+\tag{A.188.6}
+\]
+
+The three quartic maps in (A.182.8) have fibers
+\[
+\begin{array}{c|c|c|c}
+l&\text{first choice}&\text{remaining choice or coordinate}
+      &\text{number of choices}\\ \hline
+1&u^4=-2z&v^2=w/u&4\cdot2=8\\
+2&v^4=3z&u^2=w/v&4\cdot2=8\\
+3&v^8=z/w^4&u=wv^3&8.
+\end{array}
+\tag{A.188.7}
+\]
+The equation \(w^4=Az^3+Bz\) verifies the source
+equation and all forward coordinates.  Hence every
+\(h_l\) has degree eight.  These are generic-fiber
+counts for the specified morphisms, and so also prove
+their degrees over \(\Q\).
+
+\emph{Divisor pullback, differential trace, and the integral identity.}
+We give the comparison that computes the actual endomorphism
+\(HF\), including the Prym components.  Fix an embedding
+\(\overline\Q\hookrightarrow\C\).  For a finite curve
+map \(q:C\to D\) of degree \(d\), the cotangent map
+of \(q_*:J_C\to J_D\) is the usual pullback
+\(q^*:H^0(D,\Omega^1)\to H^0(C,\Omega^1)\).
+The cotangent map of divisor pullback
+\(q^*:J_D\to J_C\) is the trace
+\(q_!:H^0(C,\Omega^1)\to H^0(D,\Omega^1)\).
+Indeed, on an unramified coordinate neighborhood, a moving
+point of \(D\) pulls back to the sum of its \(d\)
+moving inverse images.  Differentiating their Abel--Jacobi
+integrals gives exactly the sum over the inverse branches,
+which is \(q_!\).  The equality extends across the
+finite branch locus.  The identification of the algebraic
+Jacobian and these integrals is
+\cite[Theorem 2.5 and its proof, pp.7--8]{RootMilneJV2021}.
+
+On regular differentials use the positive Hermitian product
+\[
+       \langle\omega,\eta\rangle_C
+          =\frac{i}{2}\int_{C(\C)}\omega\wedge\overline\eta.
+\]
+Integration over the inverse branches gives
+\(\langle q^*\alpha,\omega\rangle_C
+ =\langle\alpha,q_!\omega\rangle_D\), and
+\(q_!q^*=[d]\).  Therefore the cotangent operator of
+\(q^*q_*\) is \(d\) times the orthogonal projection
+onto \(q^*H^0(D,\Omega^1)\).  This is a statement
+about the specified trace and pullback, with both its
+image and its multiplier determined.
+
+Every automorphism \((u,v)\mapsto(\zeta u,\xi v)\)
+with \(\zeta^8=\xi^8=1\) preserves this integral.
+The forms \(\omega_{a,b}\) in (A.182.12) have
+pairwise distinct characters \(\zeta^a\xi^b\).
+For two distinct indices, choose an automorphism on
+which their character ratio differs from one; invariance
+of the product forces their inner product to be zero.
+Thus these twenty-one character lines are mutually
+orthogonal.
+
+For each elliptic and genus-two factor the pullback
+subspace is exactly its row of (A.182.13).  The operator
+\(f_i^*f_{i*}\) consequently has cotangent eigenvalue
+sixteen on its line and zero on all the other lines.
+The operator \(c_jg_j^*g_{j*}\) has eigenvalue
+\(c_j\deg g_j=16\) on its two lines and zero on
+their orthogonal complement.
+
+For a Prym factor, let
+\(q_l:\operatorname{Jac}(D_l)\to\mathcal P_l\)
+be \(1-\iota_l\) with its image as target, so that
+\(j_lq_l=1-\iota_l\).  Its contribution to \(HF\)
+is literally
+\[
+             h_l^*j_lq_lh_{l*}
+                  =h_l^*(1-\iota_l)h_{l*}.
+\tag{A.188.8}
+\]
+On differentials of \(D_l\), \(1-\iota_l^*\)
+is twice the orthogonal projection onto the two
+anti-invariant forms, since the involution preserves
+the integral and has eigenvalues one and minus one.
+The trace/pullback calculation with \(\deg h_l=8\)
+makes (A.188.8) sixteen times the orthogonal projection
+onto their pullbacks.  Those are precisely its two
+lines in (A.182.13).  This computation uses the
+inclusion into \(\operatorname{Jac}(D_l)\) and
+requires no principal polarization on \(\mathcal P_l\).
+
+The twelve displayed subspaces partition the full
+twenty-one-line basis.  Summing their operators shows
+that \(HF\) and \([16]\) have the same cotangent
+map.  A homomorphism of complex abelian varieties is
+determined by its differential: on the universal
+covering vector spaces it is the induced complex
+linear map.  Hence \(HF=[16]\) over \(\C\),
+and therefore over \(\Q\), since both morphisms
+were defined over \(\Q\).  Composing
+\((FH-[16])F=0\) with the surjective isogeny \(F\)
+proves \(FH=[16]\) as well.  The kernel assertions
+now follow by applying these actual identities.  In
+characteristic zero the degree of an isogeny is the
+order of its finite kernel; \(J_8[16]\) is a
+two-group, proving the degree assertion.
+
+\emph{The explicit arithmetic bound.}
+The maps in (A.188.1)--(A.188.2) induce the same
+identities on continuous cocycles and on their
+localization kernels.  A.187 proves
+\(2\Sha(\mathcal B/\Q)[2^\infty]=0\).
+For \(\xi\in\Sha(J_8/\Q)[2^\infty]\),
+\[
+                       32\xi=H(2F\xi)=0.
+\]
+The finite Kummer exact sequence (A.187.16) now
+shows that the transition through five additional
+levels kills its \(\Sha\)-coordinate.  Every image
+is consequently a Mordell--Weil Kummer class.
+Conversely, each such finite class is the image
+of the same rational point at level \(n+5\).
+This proves (A.188.3) with the asserted map and
+every localization comparison.
+
+The generic inverse equations, their forward
+substitutions, the degrees and the twenty-one
+operator multipliers are checked in
+\path{code/point3_fermat8_retraction_certificate.py}.
+The integration and trace argument above proves
+the endomorphism identity itself.
+\end{proof}

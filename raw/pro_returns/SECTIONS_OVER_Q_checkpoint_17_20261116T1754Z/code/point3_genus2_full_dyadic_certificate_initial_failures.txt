@@ -1,0 +1,19 @@
+Retained historical execution failures before the final passing A192 certificate.
+Both failures were symbolic-expression normalization assertions, not failed
+mathematical identities. The final code combines nested rational expressions.
+
+First execution:
+Traceback (most recent call last):
+  File "work/code/point3_genus2_full_dyadic_certificate.py", line 64, in <module>
+    assert sp.cancel(xr**4).subs(z**8,z8).simplify()==-54*t/(1-t)
+AssertionError
+Correction: test the cancelled difference for zero, instead of structural
+equality of two differently formatted rational expressions.
+
+Second execution:
+Traceback (most recent call last):
+  File "work/code/point3_genus2_full_dyadic_certificate.py", line 69, in <module>
+    assert sp.cancel(-54*x/(1-tf)-x*(x**4-54))==0
+AssertionError
+Correction: use cancel(together(...)). Independent evaluations by factor and
+simplify also return exactly zero. The final complete execution passes.

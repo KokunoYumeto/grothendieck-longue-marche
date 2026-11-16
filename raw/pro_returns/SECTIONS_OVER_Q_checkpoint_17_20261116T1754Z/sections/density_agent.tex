@@ -1,0 +1,623 @@
+\subsection{D1: localization, the density gap, and its exact repair}
+
+\begin{statement}{D.1}{Proved}{The exact finite-descent localization map}
+Let $C/K$ be smooth, proper and geometrically connected, of genus at
+least two, over a number field. There is a bijection
+\[
+ \operatorname{loc}:\Sec(C/K)\xrightarrow{\ \sim\ }
+ C(\mathbb A_K)_\bullet^{\mathrm{f\text{-}cov}}.
+ \tag{D.1.1}
+\]
+Here the right side uses all finite-group-scheme torsors, twists by
+global $H^1$, and connected components at the real places. If $K$
+contains no CM subfield, its image in each individual $C(K_v)$,
+for $v$ finite, is finite. The construction gives no uniform bound
+as $v$ varies.
+\end{statement}
+\begin{proof}
+The stipulated local theorem gives a unique point of $C(K_v)$
+from the restriction of a global section at each finite place.
+The real section theorem gives a unique real connected component;
+at a complex place the Galois group is trivial. We use the
+modified adelic set
+\[
+ C(\mathbb A_K)_\bullet=
+ \prod_{v\nmid\infty}C(K_v)\times
+ \prod_{v\text{ real}}\pi_0(C(K_v)).
+\]
+Properness makes every resulting tuple adelic. The hypotheses of
+the local theorem and the real input are stated in
+\cite[Theorem 1.1 and \S8]{AgentOpenAILocal}.
+
+For a finite $K$-group scheme $G$ and a $G$-torsor $T\to C$,
+survival means that the tuple lifts to $T^\xi$ for one
+$\xi\in H^1(K,G)$. Harari--Stix's Theorem 2.1, with their
+subgroup $U=1$ and omitted set $S=\varnothing$, identifies survival
+of all such torsors with existence of a global section having the
+prescribed local point sections. Their assertion (iii) uses
+conjugacy by the geometric fundamental group. Their unnumbered remark (1) following Theorem 2.1
+identifies this condition with finite-cover descent
+\cite[preprint Theorem 2.1, (i)$\Leftrightarrow$(iii), and
+unnumbered remark (1) following Theorem 2.1]{AgentHarariStix}. Torsor evaluations are constant
+on real connected components, and complex places impose no
+condition. The theorem therefore gives precisely the surjectivity
+in (D.1.1), rather than a different quotient of the local data.
+
+For injectivity, two classes with the same tuple have conjugate
+restrictions at every finite place. Porowski's Theorem 1.1 on
+locally conjugate Galois sections applies to a smooth curve over
+a number field and to a density-one set of finite places. Take
+that set to be all finite places. It gives geometric conjugacy of
+the global sections \cite[Theorem 1.1]{AgentPorowskiConjugacy}.
+This supplies the asserted injectivity independently of a
+positive-density promotion of reduction equality.
+
+Every section just considered is Selmer: its local restrictions
+are point sections at all places, with the real-component
+convention. Betts--Stix's Theorem A gives finiteness of the
+individual localization image when $K$ has no CM subfield
+\cite[Definition 1.1 and Theorem A]{AgentBettsStix}. The theorem
+does not state a place-independent cardinality bound.
+\end{proof}
+
+\paragraph{Attribution of the gap.}
+Section 8 of the supplied local-theorem paper was read in full.
+Its Proposition 8.1 proves the image equality in (D.1.1), and its
+last paragraph explicitly limits the Betts--Stix conclusion to
+finite individual images. It contains no step replacing strongly
+positive density by positive density
+\cite[\S8, Proposition 8.1 and final paragraph]{AgentOpenAILocal}.
+The text actually identified by LM6-D.6 is the unnumbered
+corollary following Corollary 7.10 in Porowski's
+\emph{Families of curves separating points}. The complete 2026
+primary text was unavailable in the retrievals for this return;
+the exact attribution is the one recorded in the supplied
+LM6-D.6, rather than a new direct check of that primary corollary
+\cite[D.5--D.6]{AgentLM6}. The prime-set assertion used there has
+the following complete repair.
+
+\begin{statement}{D.2}{Proved}{The strong-density criterion and the failed intersection}
+Put $\mathcal S=\operatorname{Sel}(C/K)$ and
+$r(v)=\#\operatorname{red}_v\mathcal S$ at the good finite places.
+For $d\geq1$,
+\[
+ \#\mathcal S\leq d
+ \quad\Longleftrightarrow\quad
+ \text{there exists a strongly positive set $\Omega$ with
+ $r(v)\leq d$ for all $v\in\Omega$}.
+ \tag{D.2.1}
+\]
+Strongly positive means positive upper density after pullback to
+every finite extension. A positive-density set can have empty
+intersection with a potentially-density-one set, even over $\Q$.
+\end{statement}
+\begin{proof}
+We use the exact reduction-rigidity statement supplied as
+LM6-D.5: equality of the reductions of two Selmer sections on a
+strongly positive set implies equality of their classes. Its
+argument constructs a potentially-density-one separation set for
+each fixed local partition, and uses the strong positivity to
+meet that set \cite[D.5]{AgentLM6}. No version with an arbitrary
+positive-density set is used here.
+
+The forward implication of (D.2.1) holds with all good finite
+places. For the reverse, take $d+1$ distinct classes. At every
+$v\in\Omega$ some pair of them has equal reduction. Let
+$T_1,\ldots,T_m$ be the finitely many corresponding pair-equality
+sets; their union contains $\Omega$.
+
+If each $T_i$ failed to be strongly positive, choose a finite
+extension $L_i/K$ where its pullback has upper density zero, and
+let $L$ be their compositum. Pullback to a further finite
+extension preserves upper density zero. Here is the precise
+counting reason. Primes of residue degree one over a prime $w$
+have the same norm as $w$ and multiplicity at most the extension
+degree. Primes of residue degree at least two and norm at most
+$X$ lie over primes of norm at most $X^{1/2}$; their number is
+$O(X^{1/2})$, negligible compared with the number of prime
+ideals of norm at most $X$. The same estimates prove the claim
+for upper Dirichlet density by summing $N(w)^{-s}$.
+Thus every pullback $T_{i,L}$ has upper density zero. Their
+finite union cannot contain the positive-upper-density set
+$\Omega_L$. At least one $T_i$ is strongly positive, so reduction
+rigidity identifies its pair, a contradiction.
+
+For the failed intersection take
+\[
+ L=\Q(i),\qquad
+ \Omega=\{p:p\equiv3\pmod4\},\qquad
+ T=\{p:p\equiv1\pmod4\}.
+ \tag{D.2.2}
+\]
+Both rational prime sets have density $1/2$. The pullback of
+$T$ to $L$ has density one: the primes above $\Omega$ have norm
+$p^2$, so their counting function is at most
+$\pi(X^{1/2})$, whereas the finitely many ramified primes have
+zero density. Thus $T$ is potentially density one, but
+$\Omega\cap T=\varnothing$. This disproves exactly the
+intersection inference. It does not construct a curve with more
+than $d$ Selmer classes satisfying the ordinary-positive-density
+bound.
+\end{proof}
+
+\paragraph{What depends on this step.}
+The localization bijection D.1, local finiteness, and the
+strongly positive statement of LM6-D.5 use no intersection with
+an arbitrary positive-density set. LM6-D.6 itself identifies
+the failed inference, and LM6-D.7 constructs an infinite compact
+space with precisely the finite individual images and
+potential-density partition refinements under discussion. The
+local, finite-support and density-one integrality arguments in
+AP-D.19, D.22 and D.25--D.26 likewise do not use that inference
+\cite[D.5--D.7]{AgentLM6}\cite[D.19, D.22, D.25--D.26]{AgentAP}.
+The result affected is the upgrade of the uniform criterion
+from strongly positive to arbitrary positive density. Its
+failure of proof is not a proof that its arithmetic conclusion
+is false. In particular D1, finiteness of every proper
+hyperbolic section set over a number field, remains undecided
+in this return.
+
+\subsection{Arithmetic counterexamples to the density promotion}
+
+\begin{statement}{D.3}{Proved}{Actual Jacobians with equal positive-density traces and different potential toric ranks}
+The genus-two curves
+\[
+ C_4:y^2=x^6+8x^4+16x^2+8,
+ \qquad C_0:y^2=x^6+8
+ \tag{D.3.1}
+\]
+have Jacobians of potential toric ranks $2$ and $0$ at $5$.
+Their Frobenius traces agree at every good prime inert in
+$\Q(\sqrt2)$, a density-$1/2$ set. Hence positive-density trace
+equality does not force potential isogeny even for weight-one
+Jacobian representations distinguished by potential toric rank.
+There are also elliptic curves with full Frobenius-polynomial
+equality on a density-$1/4$ set and no potential isogeny.
+\end{statement}
+\begin{proof}
+For $a\in\Q\setminus\{-1,3\}$ set
+\[
+ \begin{split}
+ E_a &: v^2=u^3+a u^2+a u+1,\\
+ E_a^{(2)} &: 2v^2=u^3+a u^2+a u+1,\\
+ C_a &: y^2=x^6+2a x^4+4a x^2+8.
+ \end{split}
+\]
+The discriminant of the sextic is
+$-2^{21}(a-3)^6(a+1)^2$, so the smooth proper completion has
+genus two. The explicit maps
+\[
+ \pi_1:C_a\longrightarrow E_a^{(2)},\quad
+ (x,y)\longmapsto(x^2/2,y/4),
+ \qquad
+ \pi_2:C_a\longrightarrow E_a,\quad
+ (x,y)\longmapsto(2/x^2,y/x^3)
+ \tag{D.3.2}
+\]
+satisfy the target equations by substitution. They extend to
+the smooth proper curves by properness and have degree two.
+Their invariant differentials pull back to
+\[
+ \pi_1^*(du/v)=4x\,dx/y,
+ \qquad
+ \pi_2^*(du/v)=-4\,dx/y.
+\]
+These are a basis of $H^0(C_a,\Omega^1)$. Consequently the
+homomorphism
+\[
+ \Psi_a=(\pi_{1*},\pi_{2*}):J(C_a)\longrightarrow
+ E_a^{(2)}\times E_a
+ \tag{D.3.3}
+\]
+has invertible differential. Its connected image is a closed
+subgroup of dimension two and its kernel has dimension zero;
+thus it is a $\Q$-isogeny. This is the actual morphism relating
+the Jacobian and the two elliptic factors. A quasi-inverse to
+an isogeny has composites equal to multiplication by a nonzero
+integer. After tensoring Tate modules with $\Q_\ell$, it
+therefore gives an isomorphism of Galois representations.
+
+Over $\Q(\sqrt2)$ the map $(u,v)\mapsto(u,\sqrt2v)$ identifies
+$E_a^{(2)}$ with $E_a$. The nontrivial Galois element changes
+this map by $[-1]$. Hence the induced Tate-module isomorphism
+is
+\[
+ V_\ell(E_a^{(2)})\simeq V_\ell(E_a)\otimes\chi_2,
+ \qquad
+ a_p(J(C_a))=(1+\chi_2(p))a_p(E_a).
+ \tag{D.3.4}
+\]
+Good-reduction Frobenius on the Tate module is the one whose
+polynomial is obtained by point counting
+\cite[V, Propositions 8.1 and 8.3]{AgentMilneEC}.
+For $(2/p)=-1$ the last trace is zero independently of $a$.
+The primes $p\equiv3,5\pmod8$ have density $1/2$.
+
+For the displayed equation of $E_a$, the Weierstrass invariants
+are
+\[
+ c_4=16a(a-3),\qquad
+ \Delta=16(a-3)^3(a+1).
+ \tag{D.3.5}
+\]
+At $5$, $E_4$ has $c_4=64$ and $\Delta=80$. Since $c_4$ is a
+unit this equation is minimal there and its reduction is
+multiplicative. Thus its potential toric rank is one.
+For $E_0$, $\Delta=-432$ is a $5$-adic unit, giving good
+reduction and potential toric rank zero. These reduction tests
+are \cite[II, \S3]{AgentMilneEC}. The displayed twist
+isomorphism makes the potential ranks of the twists equal to
+the ranks of their original curves.
+
+For completeness, the isogeny comparison preserves these
+ranks: after a finite extension giving semistable reduction,
+the logarithm $N$ of unipotent inertia on $V_\ell$, for
+$\ell\ne5$, has rank equal to the toric rank. An isogeny
+conjugates the rational Tate-module representations and their
+operators $N$. Applying (D.3.3) gives
+\[
+ t_5(J(C_4))=1+1=2,\qquad t_5(J(C_0))=0+0=0.
+ \tag{D.3.6}
+\]
+These ranks also persist after further finite extensions, since
+the monodromy logarithm is multiplied by a nonzero ramification
+index. No finite extension can therefore make the Jacobians
+isogenous. Formula (D.3.4) proves the claimed trace equality.
+
+We record precisely the invariant being compared. At an inert
+good prime, writing $b=a_p(E_a)$ gives
+\[
+ P_{J(C_a),p}(T)
+  =(T^2-bT+p)(T^2+bT+p)
+  =T^4+(2p-b^2)T^2+p^2.
+ \tag{D.3.7}
+\]
+At $p=19$ direct counting gives $a_{19}(E_4)=-4$ and
+$a_{19}(E_0)=8$. The polynomials are respectively
+$T^4+22T^2+361$ and $T^4-26T^2+361$.
+Thus this pair proves the trace assertion; it does not prove
+equality of their full characteristic polynomials on the inert
+set.
+
+For full-polynomial equality use
+\[
+ E_i:y^2=x^3-x,
+ \qquad E_3:y^2=x^3+1.
+ \tag{D.3.8}
+\]
+At $p\equiv11\pmod{12}$ both traces are zero. For $E_i$, pair
+$x$ and $-x$ in the quadratic-character sum: $x^3-x$ changes
+sign and $-1$ is a nonsquare. For $E_3$, cubing permutes
+$\mathbf F_p$ when $p\equiv2\pmod3$, so its character sum is
+the sum of the quadratic character over the entire field,
+which is zero. Both characteristic polynomials are therefore
+$T^2+p$. The prime set has density $1/4$.
+
+These elliptic curves cannot become isogenous. At $5$ their
+traces are $-2$ and $0$, with eigenvalue pairs
+\[
+ \{-1+2i,-1-2i\},\qquad
+ \{i\sqrt5,-i\sqrt5\}.
+\]
+The first ratio is $(-3-4i)/5$, which is not a root of unity:
+it belongs to $\Q(i)$ and differs from its four roots of unity.
+The second ratio is $-1$. At a place of residue degree $f$
+over $5$ in a finite extension, good-reduction Frobenius has
+the $f$th powers of these eigenvalues. Equality of the two
+unordered pairs would force the $f$th power of the first
+ratio to be $(-1)^f$, or its inverse; that would make the first
+ratio a root of unity. An isogeny would identify the rational
+Tate modules and force this impossible equality. Finally an
+isogeny over $\bar\Q$ is defined over a finite extension,
+because its rational functions have finitely many algebraic
+coefficients. This proves the last assertion.
+\end{proof}
+
+The all-prime identities in this proof follow from the displayed
+isogenies and character sums. The program
+\path{code/density_jacobian_check.py} checks the symbolic
+substitutions, discriminant and Weierstrass invariants, the
+two counts at $19$, and representative prime traces; its output
+is retained in \path{code/density_jacobian_check_output.txt}.
+These arithmetic certificates exclude promotion of the
+potential-density trace argument to an ordinary-density-one
+separation assertion for arbitrary such Jacobians. They are
+not counterexamples to the Selmer-cardinality corollary in
+D.2 or to finiteness in D1.
+
+The hypotheses of available positive-density comparison theorems
+matter here. Kulkarni--Patankar--Rajan retain a non-CM hypothesis
+in the elliptic conclusion and a connected-monodromy hypothesis
+in the relevant trace statement
+\cite[Theorems 1.1, 1.5 and 1.6]{AgentKPR}.
+Patankar--Rajan's corrected structural theorem retains its
+stated additional monodromy hypotheses
+\cite[Introduction and Example 1.1]{AgentPatankarRajan}.
+The examples above give explicit maps and Frobenius calculations
+showing why those hypotheses cannot simply be omitted in this
+application. They do not preclude a different proof of D1.
+
+\subsection{D2--D3: the closed-fibre test and generic reconstruction}
+
+\begin{statement}{D.4}{Proved}{A Tate tower split at all closed points with no generic section}
+For a finite extension $k/\Q_p$ there is a smooth hyperbolic
+$k$-curve $B$ and a compatible tower of nontrivial connected
+finite \'etale cyclic covers of $B$ split at every closed point.
+Each nontrivial cover has no $k(B)$-point above the generic
+point. More precisely, there is a continuous epimorphism
+\[
+ \theta:\pi_1(B)\longrightarrow\widehat\Z
+ \tag{D.4.1}
+\]
+which is surjective on the geometric group and trivial on every
+closed-point decomposition group. The tower does not construct
+a nonpoint section of a non-isotrivial proper hyperbolic curve.
+\end{statement}
+\begin{proof}
+Choose $q\in k$ with $0<|q|<1$, let $E_q$ be the Tate curve,
+and put $B=E_q\setminus\{O\}$. For every finite extension
+$L/k$ its uniformization is
+\[
+ E_q(L)=L^\times/q^{\Z}.
+ \tag{D.4.2}
+\]
+For $n\ge1$ the identity on $L^\times$ induces the algebraic
+isogeny
+\[
+ f_n:E_{q^n}\longrightarrow E_q,
+ \qquad [a]_{q^{n\Z}}\longmapsto[a]_{q^\Z}.
+ \tag{D.4.3}
+\]
+Its kernel is the constant cyclic group generated by $[q]$,
+of order $n$, and its degree is $n$. These statements follow
+from Tate's uniformization and isogeny theorem: in his notation
+$t_2^m=t_1^n$ and the map is induced by $w\mapsto w^n$;
+take $t_1=q^n,t_2=q,m=n,n=1$
+\cite[Theorem 1 and the isogeny theorem on printed p.\ 16]{AgentTateUniformization}.
+Set
+\[
+ B_n=E_{q^n}\setminus f_n^{-1}(O).
+\]
+Then $B_n\to B$ is connected, geometrically connected,
+finite \'etale and cyclic of degree $n$.
+
+Let $b$ be any closed point of $B$, with residue field
+$L=k(b)$. Choose a representative $a\in L^\times$ for $b$
+in (D.4.2). Its full fibre is
+\[
+ \{[a q^j]_{q^{n\Z}}:0\le j<n\}\subset B_n(L).
+ \tag{D.4.4}
+\]
+All $n$ points are distinct, and none was removed because
+$b\ne O$. Thus every closed fibre is split over its own
+residue field.
+
+For $n>1$, the extension of function fields
+$k(B_n)/k(B)$ has degree $n$. A $k(B)$-point of its generic
+fibre would give a $k(B)$-algebra homomorphism from that
+field into $k(B)$. Such a homomorphism is injective and
+$k(B)$-linear, contradicting the degree. This proves that
+no open subscheme of $B$ admits a section of the cover.
+
+For $n\mid m$, the identity on the uniformizing multiplicative
+group gives compatible maps $B_m\to B_n$, carrying $[q]$
+to $[q]$ on the deck groups. Choose $b_0\in B(k)$ and a
+representative $a_0\in k^\times$. The points $[a_0]$ in all
+levels choose compatible fibre basepoints. The resulting
+quotient maps
+$\theta_n:\pi_1(B)\to\Z/n\Z$ are compatible and yield
+(D.4.1). Their geometric restrictions are surjective because
+$B_{n,\bar k}$ is connected. Compactness shows that the
+inverse-limit map on the geometric group is surjective: its
+closed image surjects onto each finite quotient of
+$\widehat\Z$.
+
+By (D.4.4), the image of every closed-point decomposition
+group in each cyclic deck group is trivial. Hence
+$\theta$ vanishes on all such groups. This is an explicit
+nonzero element of the kernel of
+\[
+ \operatorname{Hom}_{\mathrm{cts}}(\pi_1(B),\widehat\Z)
+ \longrightarrow
+ \prod_{b\in B_{\mathrm{cl}}}
+ \operatorname{Hom}_{\mathrm{cts}}(G_{k(b)},\widehat\Z).
+ \tag{D.4.5}
+\]
+Since the target is abelian, conjugacy choices for the
+decomposition groups do not change this calculation.
+\end{proof}
+
+\paragraph{The reconstruction map that remains missing.}
+For D3, the supplied LM6-B.38--B.40 give, using the local theorem,
+the exact cartesian comparison for a smooth proper hyperbolic
+family $\mathcal X\to B$ over a smooth $p$-adic base:
+\[
+ \pi_1(X_{k(B)})\simeq
+ \pi_1(\mathcal X)\times_{\pi_1(B)}G_{k(B)}.
+ \tag{D.4.6}
+\]
+The generic section has first component killing the
+codimension-one inertia defining $\pi_1(B)$. It consequently
+gives a splitting
+\[
+ \sigma:\pi_1(B)\longrightarrow\pi_1(\mathcal X)
+ \quad\text{of}\quad
+ \pi_1(\mathcal X)\longrightarrow\pi_1(B).
+ \tag{D.4.7}
+\]
+Restriction at a closed point $b$ is the section of a unique
+point of $\mathcal X_b(k(b))$ by the local theorem. These are
+the exact maps proved in R12; they do not supply a morphism
+$B\to\mathcal X$. In the isotrivial case the target comparison
+becomes a map to a fixed hyperbolic curve, and LM6-B.41 applies
+its geometric-image trichotomy and curve-target Hom theorem
+to produce that morphism \cite[B.38--B.42]{AgentLM6}.
+For a non-isotrivial family the constant target used by that
+argument has not been constructed. D.4 verifies explicitly
+that closed-fibre splitting alone cannot replace the missing
+generic argument over a $p$-adic base. Its relative dimension
+is zero, so it is not presented as a counterexample to D3's
+proper hyperbolic relative curve.
+
+For D2, Bresciani calls the corresponding generic reconstruction
+property \emph{coherence}. The published version proves
+coherence for a constant abelian family by first applying
+Faltings's Tate-module Hom theorem and then using finite
+generation of Mordell--Weil groups to recover an integral
+Hom class \cite[Proposition 4.5]{AgentBrescianiFiniteType}.
+His Lemma 4.7 propagates it through a finite morphism using
+Hilbert irreducibility over a Hilbertian field. Corollary 4.8
+then treats a family with a finite morphism into a constant
+abelian scheme. These are the precise morphisms behind the
+constant-abelian-cover cases in Theorem B and the
+hyperelliptic and genus-at-most-two consequences. The
+unrestricted coherence proof in Proposition 4.3 invokes the
+additional weak Bombieri--Lang input in Theorem 4.2; the paper
+does not eliminate that input. D.4 applies over a $p$-adic
+field and does not contradict the Hilbertian hypothesis of
+Lemma 4.7. Neither the unrestricted reconstruction in D2
+nor the non-isotrivial assertion in D3 is decided here.
+
+\subsection*{Audit of the stipulated local theorem}
+
+Theorem 1.1 of \cite{AgentOpenAILocal} is an unrefereed
+preprint input explicitly authorized by the prompt. We checked
+the internal steps used here and the exact hypotheses of the
+principal imported geometric statements. No specific error was
+found in those checked steps. This audit does not certify every
+external theorem or every argument of that preprint. In
+particular the resolution-of-nonsingularities input is the
+authors' revised RIMS preprint, not a statement whose
+publication status has been inferred from its use here.
+
+\paragraph{The analytic point and all inverse branches.}
+In Sections 2--3 the completions of the algebraic fields embed
+isometrically into the fixed completion of the separable
+closure. The resulting $H$-valued analytic point retains its
+residue-field embedding. One cannot replace it merely by its
+underlying point over the smaller constant field. Near a
+horizontal branch point the local equation can be put in the
+form $t=z^e$ after shrinking. For a unit $1+h$, the formula
+\[
+ (1+h)^{1/e}=\exp\bigl(e^{-1}\log(1+h)\bigr)
+\]
+converges whenever the unit is sufficiently close to $1$;
+the bound $v_p(h)>v_p(e)+1/(p-1)$ suffices. This includes
+$p\mid e$. Properness and compactness let one shrink the
+base disk so that its entire inverse image is the union of
+the specified branch disks.
+
+The patching proposition requires a root on \emph{every}
+inverse collar. When $m$ is divisible by each $e$, these
+roots split every factor of $Z^e-t$ on that collar. Distinct
+roots differ by a nonzero constant times an invertible
+analytic function, so the factors are comaximal even when
+$p\mid e$. One glues the pulled-back finite cover on the
+exterior to trivial finite covers on the inner disks. The
+finite analytic algebra then algebraizes by proper analytic
+GAGA. A nonempty connected component of the resulting finite
+\'etale cover surjects onto the connected base. The remaining
+analytic map on the exterior is evaluated at the given
+$H$-point; the proof does not require that exterior map to
+descend to an algebraic map over the smaller field.
+
+\paragraph{Stable edges, the lifting theorem, and the full collar.}
+The Section 4 circuit construction uses a prime $\ell\ne p$.
+At a circuit vertex choose the cyclic residue-curve cover
+ramified exactly at the two circuit marks; divisibility of
+the degree-zero Picard group by $\ell$ gives the required
+rational function with divisor $P-Q$ modulo $\ell$. All
+other marks are unramified and split over the algebraically
+closed residue field. Edge expansion is $\ell$ on the
+circuit and one on its other incident edges, with the
+required copies on the latter. This satisfies the local
+degree sums and the tame Riemann--Hurwitz condition. A
+separating edge is first made nonseparating by connected
+unramified cyclic covers on its two stable sides, joining
+their lifted attachment points. Each side has a cycle or
+a positive-genus vertex: a tree of $N$ rational vertices
+with only its one attaching leg has total valence $2N-1$,
+incompatible with stability. Thus the required nontrivial
+unramified cyclic cover exists on each side. The successive
+fibre products preserve the root on every inverse branch.
+
+The exact imported lifting statement is Amini--Baker--Brugall\'e--Rabinoff
+Theorem 7.7 for a tame cover of metrized complexes over a fixed
+triangulated punctured curve
+\cite[Definition 4.31 and Theorem 7.7]{AgentABBR}.
+Their definition places the branch locus inside the selected
+puncture set. Taking that set empty therefore yields an
+\'etale curve cover, as required here.
+
+For the reduction from arbitrary collars, the precise
+resolution input is Mochizuki--Tsujimura's Theorem A for a
+hyperbolic curve over a finite $p$-adic field with a prime
+set $\Sigma$ containing $p$ and at least one other prime,
+and their Proposition 2.4(iv)
+\cite[Theorem A and Proposition 2.4(iv)]{AgentMochizukiTsujimura}.
+The preprint takes $\Sigma$ to be all primes. After finite
+constant extension, the stable model of a connected
+geometrically pro-$\Sigma$ finite \'etale Galois cover maps
+to the chosen compactified model. The asserted model
+morphism need not be finite; the argument uses its
+compatibility with reduction. On an open-disk tube an
+invertible analytic pullback coordinate has constant
+absolute value in the value group of the completed
+algebraic constants. An irrational logarithmic radius
+therefore avoids all such tubes and the model vertices.
+Its full inverse level lies in node annuli. Compactness
+then places a smaller entire inverse collar in finitely
+many of these annuli, where the stable-edge lemma applies.
+
+\paragraph{Arbitrary roots and horizontal ramification.}
+Section 5 labels the relevant connected components of a
+torus-uniformized inverse image by
+$\Lambda/\Lambda^m$. Adjusted torus lifts glue because the
+lattice $\Lambda$ has no $m$-torsion. This is used to get
+roots over every inverse component. In the auxiliary
+cyclic cover the dual graph has two rational vertices and
+$\ell$ parallel edges; a cycle $e_j-e_{j'}$ gives slope
+one on the selected collar. The middle-collar Laurent
+coefficient bounds put the remaining analytic unit in the
+logarithm/exponential range above. Horizontal ramification
+is measured in characteristic-zero closed-point local
+fields $\bar k((t))$. Their ramification indices in a
+compositum divide the relevant least common multiple;
+normalization after a base change of index $r$ changes an
+index $e$ to $e/\gcd(e,r)$. An \'etale cover on top adds
+no horizontal index. The proof uses precisely these
+characteristic-zero facts, rather than a claim of tame
+ramification at residue characteristic $p$.
+
+\paragraph{The field embedding and final decomposition group.}
+In Section 6 a base-field embedding of a finite Galois
+subextension $M$ into $H$, inside the fixed ambient
+completion, has image $M$: all roots of each minimal
+polynomial already belong to $M$. The embedding constructed
+there therefore proves the required subfield containment.
+In Section 7 restriction of the decomposition groups is
+surjective by transitivity of prolongations and injective
+by the preceding completion result. Its inverse is
+continuous by compactness. The argument excluding two
+independent henselian valuations uses
+\[
+ q_r=d+(1-d)\frac{z^r}{1+z^r}.
+\]
+For sufficiently large $r$, one valuation makes $q_r/d$
+a square and the other makes $q_r$ a square. Their quotient
+would make the chosen nonsquare constant $d$ a square.
+The estimates in that argument include $p=2$.
+
+The remaining rank-two valuation has horizontal
+coarsening $\operatorname{ord}_a$ and residue field $k(a)$.
+Surjectivity of the section onto $G_k$ forces $k(a)=k$.
+The horizontal inertia maps trivially to the \'etale
+fundamental group of the original proper curve, so the
+section obtained is its point section. For injectivity,
+the Jacobian Kummer argument uses all multiplication maps,
+including the $p$-power ones on the compact $p$-adic Lie
+group. Dropping the $p$-power factors would not prove that
+step. These checks justify the specific uses of the local
+theorem in D.1 and (D.4.6)--(D.4.7) at the stated
+preprint level; they do not settle the global finiteness
+or generic-reconstruction questions.

@@ -1,0 +1,9 @@
+# Exact computation to attempt for the next unit comparison
+
+Date: 2026-11-16. This records a proposed calculation, not a result.
+
+The complete A199 cubic residue detector uses 27 maps at primes splitting M, hence each residue field contains the selected image of z=ζ9. The next calculation uses the same maps and ninth-power characters, defined by u^((p−1)/9)=z_res^k. Cubing this equality recovers the existing cubic character with base z_res^3, so the proposed matrix reduces modulo3 to A199's certified invertible matrix. On the actual unit quotient modulo ninth powers, the torsion factor has order9 and the free rank is26.
+
+The intended calculation is: evaluate the 27 chosen actual unit representatives at the same maps, invert the resulting matrix over Z/9, compute the actual h action, and form I+h+h². For the three A211 classes epsilon,u11,u59, use their certified coordinates modulo3 to choose actual M-unit representatives with exponents0,1,2. Their h-norms are cubes of actual E2 units by the A211 principalization description. Express these norms modulo9 in the eight free E2-unit columns plus z, divide the eight free coordinates by3, and apply A203's quotient (x_r3,x_r4−x_r2). The z coordinate must vanish for an E2-unit cube. Every matrix rank, residue character, and divisibility check is to be executed.
+
+The root class is independent of representatives modulo the h-unit norm image: multiplying an M-unit representative by a cube multiplies the root by an h-norm, and the remaining μ3 ambiguity is in that same image through N_h(z)=ζ. The resulting calculation would evaluate this specified map on the three known classes. It does not by itself determine which class is selected by the actual Omega-unit norm equation, and no comparison with eta or psi2 is asserted here.

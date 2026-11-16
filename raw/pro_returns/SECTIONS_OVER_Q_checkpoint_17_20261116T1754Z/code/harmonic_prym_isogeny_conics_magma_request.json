@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://calculator.magma-maths.org/execute",
+  "utc": "2026-11-16T11:10:55.955035+00:00",
+  "payload": {
+    "code": "// Only explicit conic points are requested.  Every output coordinate is\n// substituted back into its equation by the independent certificate.\nSetSeed(1);\nQ:=Rationals(); P<t0>:=PolynomialRing(Q); K<t>:=NumberField(t0^2-2);\nM:=7*13*23*139*1119169; b:=1146*(1+t)^2*M^2;\nds:=[K|3,191,23,139*(99+52*t),7*(1059+34*t),7*(1059-34*t)];\nA<N,Z,V>:=PolynomialRing(K,3);\nfor i in [1..#ds] do\n    d:=ds[i]; C:=Conic([K|1,-d,-b/d]);\n    time ok,pt:=HasRationalPoint(C); assert ok;\n    es:=Eltseq(pt); assert es[1]^2 eq d*es[2]^2+(b/d)*es[3]^2;\n    print \"CONIC\",i;\n    print \"D\",Eltseq(d);\n    print \"POINT\",[Eltseq(x):x in es];\nend for;\n"
+  }
+}

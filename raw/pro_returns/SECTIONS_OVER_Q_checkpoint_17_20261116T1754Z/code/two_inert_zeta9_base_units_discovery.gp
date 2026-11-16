@@ -1,0 +1,27 @@
+\\ Exact field maps and bounded discovery for Q(cuberoot(3),zeta9).
+default(parisizemax,1000000000);
+default(parisize,64000000);
+default(realprecision,120);
+fpComp=polcompositum(x^3-3,polcyclo(9),3);
+fpRed=polredbest(fpComp[1],1);
+fpPol=fpRed[1];
+fpAlpha=subst(lift(fpComp[2]),x,fpRed[2]);
+fpZeta9=subst(lift(fpComp[3]),x,fpRed[2]);
+if(fpAlpha^3!=3 || fpZeta9^6+fpZeta9^3+1!=0,error("field map"));
+print("POLYNOMIAL ",fpPol);
+print("ALPHA ",lift(fpAlpha));
+print("ZETA9 ",lift(fpZeta9));
+fpNf=nfinit([fpPol,[3]]);
+print("DISCRIMINANT ",fpNf.disc);
+print("START BNF ",getwalltime());
+fpBnf=bnfinit(fpNf,1);
+print("BNF CLASS ",fpBnf.clgp);
+print("BNF CERTIFY ",bnfcertify(fpBnf));
+print("TORSION ",fpBnf.tu);
+fpUnits=concat([Mod(fpZeta9,fpPol)],fpBnf.fu);
+for(i=1,#fpUnits,print("UNIT ",i," ",lift(fpUnits[i])));
+fpRows=[];
+for(qi=1,2,fpQ=if(qi==1,11,59);fpPrimes=idealprimedec(fpNf,fpQ);for(j=1,#fpPrimes,fpPr=fpPrimes[j];fpMod=nfmodprinit(fpNf,fpPr,'z);fpOmega=nfmodpr(fpNf,fpZeta9^3,fpMod);fpRow=vector(#fpUnits,i,my(v=nfmodpr(fpNf,fpUnits[i],fpMod)^((fpQ^fpPr.f-1)/3));my(k=0);while(fpOmega^k!=v,k++);if(k>=3,error("residue log"));k);fpRows=concat(fpRows,[fpRow]);print("ROW ",fpQ," ",j," e=",fpPr.e," f=",fpPr.f," ",fpRow)));
+print("RANK ",matrank(Mod(Mat(fpRows~),3)));
+print("END ",getwalltime());
+quit;
