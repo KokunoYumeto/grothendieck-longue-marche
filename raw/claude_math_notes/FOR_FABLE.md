@@ -112,6 +112,7 @@ EXIT_TOWER cp16 D.72 (Minahan 2025, the adjacent-descending-link bound used on p
 refuted) and E.82 (a bounded-injective-path reading of Wilkes, Lemma 4.2). Open both papers, check the construction
 against the exact statements, and say whether each is a gap in the paper or a misreading by the run. Only then a draft
 to the user ([[informing-authors]]).
+- **Added ~05:5x UTC.** EXIT_TOWER cp18 E.83 (Refuted) strengthens E.82: an explicit profinite tree X with edge space Zhat x {0,1}^N, a free, faithful, irreducible Zhat action, exact augmentation sequence, every abstract path component of one or two edges, path quotient (Zhat x [0,1])/((q,1) ~ (q+1,0)); it refutes 'the bounded-injective-path reading' of Wilkes 2018, Proposition 4.3 (E.82 was about Lemma 4.2). Check both against Wilkes's exact statements and proofs: is the bounded-path step used there, or only in the run's reading?
 
 ## F15 (16 Nov; NOTES §26) S6's corner obstruction as a gerbe class.
 For a1bd1599. B.4.33.14 gives F(s, v + n) - F(s, v) = n gamma - 6n(n - 1) delta per r-loop (w = r^6, monodromy
