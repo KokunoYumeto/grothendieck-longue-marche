@@ -1,0 +1,125 @@
+\begin{claim}{AG.35}{Proved: geometric origin alone does not bound unit-root returns}
+Consider the fixed smooth elliptic family over the multiplicative group
+\[
+ \mathcal E\longrightarrow\mathbf G_{m,\mathbf F_4},
+ \qquad E_a:\ y^2+xy=x^3+a.                         \tag{AG.35.1}
+\]
+For every positive odd integer $m$, there is a closed parameter $a$
+of exact degree $m$ over $\mathbf F_4$ such that
+\[
+ \#E_a(\mathbf F_{4^m})=4^m,
+ \qquad E_a(\mathbf F_{4^m})\simeq\mathbf Z/2^{2m}\mathbf Z.
+                                                        \tag{AG.35.2}
+\]
+If $\beta_a\in\mathbf Z_2^\times$ is its unit-root Frobenius
+eigenvalue, then
+\[
+ \beta_a^2-\beta_a+4^m=0,
+ \qquad v_2(\beta_a-1)=2m.                         \tag{AG.35.3}
+\]
+The parameter is a point of odd order in
+$\mathbf G_m(\overline{\mathbf F}_2)$, and its Teichmuller lift
+is prime-to-two torsion. Thus a single fixed geometric family,
+ordinary fibers, integral cohomology of Weil weight one, and
+prime-to-two Frobenius periods do not give a uniform bound for
+the return unit minus one, even at prime-to-two torsion parameters.
+The assertion does not put these parameters in the powers of one
+fixed odd prime, and does not identify this family with the Abel
+tower of AR.20. Those restrictions remain essential unresolved
+inputs to that route.
+\end{claim}
+\begin{proof}
+The discriminant and $j$-invariant of (AG.35.1) are $a$ and $1/a$,
+respectively. Hence the displayed projective Weierstrass model is
+a smooth elliptic scheme over $\mathbf G_m$. Each fiber is ordinary:
+the geometric point $(0,\sqrt a)$ is a nonzero point of order two,
+whereas an elliptic curve has at most one independent geometric
+two-torsion point in characteristic two.
+
+Fix odd $m$ and put $q=4^m$. Waterhouse's classification
+\citep[Theorem~4.1, case~(1), p.~536]{AG_Waterhouse1969}
+asserts that every integer $t$ with $|t|\le2\sqrt q$ and
+$(t,2)=1$ is the Frobenius trace of an ordinary elliptic curve
+over $\mathbf F_q$. Apply it to $t=1$. The resulting elliptic
+curve $E/\mathbf F_q$ has $q$ rational points.
+Since $4\mid q$, Proposition~5.1 of
+\citep[p.~311]{AG_AuerTop2002} identifies $E$ over $\mathbf F_q$
+with a member $E_a$ of (AG.35.1).
+
+For completeness, the normal-form step can be seen directly.
+An ordinary elliptic curve over the perfect field $\mathbf F_q$
+has an equation
+\[
+               y^2+xy=x^3+b x^2+a,\qquad a\ne0.
+\]
+Its unique nonzero geometric two-torsion point is
+$T=(0,\sqrt a)$. As $E(\mathbf F_q)$ is a two-group and
+the geometric two-primary torsion has rank one, it is cyclic;
+since its order is $q\ge4$, the point $T$ has a rational half.
+The duplication formula for a point $R$ with nonzero
+$x$-coordinate is
+\[
+                 x(2R)=x(R)^2+\frac a{x(R)^2}.
+\]
+Thus a half of $T$ must have $x$-coordinate $r=a^{1/4}$.
+Writing its $y$-coordinate as $rz$, the equation becomes
+\[
+                       z^2+z=b+r+r^2.
+\]
+It is solvable over $\mathbf F_q$ precisely when
+$\operatorname{Tr}_{\mathbf F_q/\mathbf F_2}(b)=0$.
+Consequently $b=s^2+s$ for some $s\in\mathbf F_q$, and
+the substitution $y\mapsto y+sx$ removes the $x^2$ term.
+This proves the required isomorphism to $E_a$ and also confirms
+the rational four-torsion step in the cited proposition.
+
+The characteristic polynomial of $E_a$ is $X^2-X+q$.
+Modulo two it has distinct roots zero and one. Its unit root
+$\beta_a$ therefore belongs to $\mathbf Z_2^\times$, and the
+other root is $q/\beta_a$, of valuation $2m$. Evaluating at one
+gives
+\[
+              (1-\beta_a)(1-q/\beta_a)=q.
+\]
+The second factor is a two-adic unit, proving (AG.35.3).
+The geometric two-primary torsion of an ordinary elliptic curve
+is $\mathbf Q_2/\mathbf Z_2$, so its finite rational two-primary
+subgroup is cyclic. Its full rational order here is $q$, which
+proves the group assertion in (AG.35.2).
+
+It remains to prove that the parameter has exact degree $m$;
+the existence of a curve over $\mathbf F_{4^m}$ alone would not
+establish the assertion about periods. Let
+$d=[\mathbf F_4(a):\mathbf F_4]$, so $d\mid m$. The displayed
+model $E_a$ is defined over $\mathbf F_{4^d}$. Write
+$\gamma\in\mathbf Z_2^\times$ for its unit root over that field.
+The unit root over $\mathbf F_{4^m}$ is
+$\gamma^{m/d}$. Because $m/d$ is odd,
+\[
+ v_2(1-\gamma^{m/d})=v_2(1-\gamma);
+\]
+the quotient $(1-\gamma^{m/d})/(1-\gamma)$ is a sum of an
+odd number of odd two-adic integers. The nonunit Frobenius root
+does not contribute to the two-primary part of the rational
+point count, so
+\[
+             v_2\bigl(\#E_a(\mathbf F_{4^d})\bigr)=2m.
+\]
+If $d<m$, Hasse's bound contradicts this divisibility:
+\[
+ 4^m\le\#E_a(\mathbf F_{4^d})
+       \le(2^d+1)^2<4^m.
+\]
+Hence $d=m$. Finally $a\in\mathbf F_{4^m}^\times$ has order
+dividing the odd number $4^m-1$, and its fourth-power Frobenius
+orbit has length exactly $m$. Teichmuller lifting preserves that
+order and that orbit length.
+
+The small exact certificate
+\path{agent_geometric/code/geometric_unitroot_growth.py}
+constructs examples for $m=1,3,5$, records the finite fields,
+the parameter, its order and degree, and the point count, and
+checks the unit-root congruence. This finite check illustrates
+the theorem; its assertion for every odd $m$ follows from the
+classification and the degree argument above.
+\end{proof}

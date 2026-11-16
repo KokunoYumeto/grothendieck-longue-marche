@@ -1,0 +1,164 @@
+\subsection{An individually specified finite counterexample}
+
+\begin{claim}{AG.38}{Refuted, with an explicit finite counterexample: nontrivial primitive-cover existence}
+\label{clm:AGexplicitprimitivecounterexample}
+Let
+\[
+ \begin{split}
+ M(Z)&=Z^{38}+Z^{14}+Z^{10}+Z^9+Z^8+Z^5+Z^2+Z+1,\\
+ k&=\mathbb F_2[Z]/(M(Z)),\qquad t=Z\bmod M(Z),
+ \qquad d=t^3+1.
+ \end{split}                                                    \tag{AG.38.1}
+\]
+The polynomial \(M\) is irreducible. Let \(C/k\) be the smooth
+projective model of the affine equation
+\[
+             y^2+y=\left(\frac{u^2+t^2u+t}{d}\right)^3,
+                                                               \tag{AG.38.2}
+\]
+and let \(P\) be its unique point at infinity. This is a
+supersingular genus-two curve, with \(P\in C(k)\).
+For every connected cyclic etale cover
+\(D\to C_{\bar k}\) of odd degree \(n>1\), and every generator
+\(\sigma\) of its deck group, the abelian subvariety
+\[
+ P_n(D)=\operatorname{im}\left(
+       \prod_{\ell\mid n}(1-\sigma^{n/\ell}):J_D\longrightarrow J_D
+                              \right)
+\]
+has positive two-rank. Thus the nontrivial-cover version of A6 is
+false for this completely specified curve, independently of the
+counting existence argument.
+
+The degree-one qualification is essential: \(J_C\) has two-rank
+zero, so the identity cover satisfies the literal variant that
+permits \(n=1\). The example also satisfies A1 and is not a
+collision or a counterexample to A1.
+\end{claim}
+
+\begin{proof}
+First, the standard-library bit-polynomial program
+\path{primitive_parameter_field_check.py} verifies
+\[
+ Z^{2^{38}}\equiv Z\pmod M,
+ \qquad
+ \gcd(M,Z^{2^2}-Z)=\gcd(M,Z^{2^{19}}-Z)=1.
+                                                               \tag{AG.38.3}
+\]
+Since the prime divisors of \(38\) are \(2\) and \(19\),
+the finite-field irreducibility criterion proves that \(M\) is
+irreducible. Its retained output gives every successive squaring
+residue, using bitwise addition, multiplication, and division in
+\(\mathbb F_2[Z]\). In particular \(t\notin\mathbb F_4\),
+and \(d\ne0\).
+
+Claim~AG.33 applies to (AG.38.2). It supplies the genus,
+supersingularity, unique point at infinity \(P\), which is rational,
+scalar Frobenius
+\([-2^{19}]\), and the pointed degree-two isogeny
+\(\alpha:J_C\to E^2\), where \(E:y^2+y=x^3\). On the
+embedded theta curve \(C-P\), its two coordinates have
+\[
+ A(u)=\frac{u^2+t^2u+t}{d},\qquad
+ B(u)=\frac{tu^2+u+t^2}{d}                              \tag{AG.38.4}
+\]
+as their elliptic \(x\)-coordinates. Both elliptic images of a
+finite point are finite, and \(P\) maps to \((0_E,0_E)\).
+The theta divisor relevant to the primitive two-rank criterion
+is precisely \(C-P\).
+
+By Claims~AG.32, AG.37, and~\ref{clm:ACpacketconductors}, the
+only remaining possible conductors of a primitive-zero cover are
+\(191\) and \(229\). We prove the stronger assertion that
+\(C-P\) has no nonzero point killed by either integer.
+
+Here is a direct characteristic-two verification of the elliptic
+torsion polynomials used in that test. On \(E\), the tangent
+and chord formulas give the rational-function identities
+\[
+ x([2]R)=x(R)^4,
+ \qquad
+ x(R+S)+x(R-S)=\frac{1}{(x(R)+x(S))^2}.
+                                                               \tag{AG.38.5}
+\]
+For the second identity, replacing \(S=(x_S,y_S)\) by
+\(-S=(x_S,y_S+1)\) changes the chord slope by
+\(1/(x_R+x_S)\); the other terms in the two addition formulas
+cancel. The tangent slope is \(x(R)^2\), giving the first
+identity. Hence the rational functions \(r_n(X)=x([n]R)\),
+where \(X=x(R)\), satisfy
+\[
+ r_1=X,\qquad r_{2m}=r_m^4,\qquad
+ r_{2m+1}=X+\frac{1}{(r_m+r_{m+1})^2}.             \tag{AG.38.6}
+\]
+All equalities are rational-function identities, so values where
+the displayed addition formula has a denominator zero are
+handled by the reduced rational function. Its finite poles are
+exactly the \(x\)-coordinates of nonzero points killed by \(n\).
+
+Independently, define polynomials in \(\mathbb F_2[X]\) by
+\[
+ \begin{gathered}
+ \psi_1=\psi_2=\psi_4=1,\qquad \psi_3=X^4+X,\\
+ \psi_{2m}=\psi_m^4,\qquad
+ \psi_{2m+1}=\psi_{m+2}\psi_m^3+
+                       \psi_{m-1}\psi_{m+1}^3\quad(m\ge2).
+ \end{gathered}                                                 \tag{AG.38.7}
+\]
+The program \path{primitive_parameter_rational_check.py}
+constructs (AG.38.6) using reduced numerator--denominator pairs,
+without using (AG.38.7) for that construction. For both required
+integers it verifies that the reduced denominator is exactly
+\(\psi_n^2\). Thus no general division-polynomial formula in
+characteristic different from two is being imported. The checks are
+\[
+\begin{array}{c|r|r|r}
+ n&\deg\psi_n&\deg\operatorname{num}(r_n)&
+                         \deg\operatorname{den}(r_n)\\\hline
+ 191&18240&36481&36480\\
+ 229&26220&52441&52440
+\end{array}
+\]
+and the reduced numerators are coprime to their denominators.
+
+Finally, exact polynomial arithmetic over the explicitly defined
+field \(k\) gives polynomials \(U_n,V_n\in k[u]\) satisfying
+\[
+       U_n(u)\psi_n(A(u))+V_n(u)\psi_n(B(u))=1
+                \qquad(n=191,229).                            \tag{AG.38.8}
+\]
+The producer \path{primitive_parameter_gcd.py} evaluates
+(AG.38.7) directly at the quadratic polynomials (AG.38.4), computes
+the extended gcd, and checks the whole identity (AG.38.8) by
+polynomial multiplication. The degrees of the two evaluated
+polynomials are \(36480\) and \(52440\), respectively; in
+each case both Bezout coefficients have degree four less.
+All four polynomials for each integer are retained as binary
+coefficient arrays. Their encoding, degrees, and SHA-256 hashes
+are specified in \path{primitive_parameter_gcd.json}:
+coefficients are in ascending degree, each represented by an
+unsigned 64-bit little-endian integer whose bit \(i\) is the
+coefficient of \(t^i\). The recorded runtime dependency is
+\texttt{python-flint==0.9.0}. This is a complete exact identity
+certificate, not a numerical approximation or a random-point test.
+An independently written loader, \texttt{A6\_individual\_curve\_verify.py},
+also verifies every coefficient-array hash, degree, and encoding,
+reconstructs both compositions independently, and checks both full
+Bezout identities; its retained run exits successfully.
+
+If a finite \(Q\in C(\bar k)\) had \([Q-P]\ne0\) killed
+by \(n=191\) or \(229\), its image under \(\alpha\) would
+be killed by \(n\) in both elliptic factors. By (AG.38.5)--
+(AG.38.7), the finite value \(u(Q)\) would be a common zero of
+\(\psi_n(A(u))\) and \(\psi_n(B(u))\), contradicting
+(AG.38.8). The remaining point \(P\) represents the origin
+and cannot supply a primitive character. Therefore neither
+remaining conductor occurs, over any finite extension or over
+\(\bar k\), and the claimed assertion follows.
+
+Finally \(J_C[2^\infty](\bar k)=0\). A collision would already
+give a two-primary class \([Q-P']\) on \(C\), for the two
+colliding points \(P',Q\), by R1. This class is zero, and the
+Abel map of a positive-genus curve is injective on geometric
+points. Hence \(Q=P'\), proving the stated A1 assertion.
+\end{proof}

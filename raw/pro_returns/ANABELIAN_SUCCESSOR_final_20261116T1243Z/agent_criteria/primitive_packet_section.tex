@@ -1,0 +1,121 @@
+% AC.44: full Frobenius-packet obstruction for the explicit A6 pencil.
+\subsection{Two remaining conductors after simultaneous packet constraints}
+
+\begin{claim}{AC.44}{Proved by an exact finite certificate}
+\label{clm:ACpacketconductors}
+For any member, with \(t\notin\mathbb F_4\), of the genus-two pencil of
+Claim~\ref{clm:AGprimitivecounterexample} over
+\(\mathbb F_{2^{38}}\), a nontrivial odd conductor of a
+primitive two-rank-zero cyclic cover must belong to
+\[
+                              \{191,229\}.
+\tag{AC.44.1}
+\]
+Consequently the incidence estimate of Claim~AG.34 improves to
+\[
+ \#\{\text{bad parameters}\}
+       \le133086336+229171540=362257876,
+\]
+and at least
+\[
+              274877906944-4-362257876=274515649064
+\tag{AC.44.2}
+\]
+parameters have no nontrivial odd primitive-zero cover.
+These are counts of parameters, not of isomorphism classes.
+The assertion retains the degree-one qualification of the A6
+counterexample and does not exclude rational class-number witnesses.
+\end{claim}
+
+\begin{proof}
+Let \(n\) be a candidate conductor, and write
+\[
+ T=\langle2\rangle,\qquad
+ U=\langle2,-1\rangle,\qquad
+ H=\langle2^{19},-1\rangle
+       \subseteq(\mathbb Z/n)^\times.
+\tag{AC.44.3}
+\]
+The theta curve contains the origin, is symmetric, and is stable
+under the scalar Frobenius \([-2^{19}]\). Therefore a primitive
+theta point \(aQ\), for a chosen generator \(Q\) of the cyclic
+subgroup, forces the entire packet \(aHQ\) to lie on theta.
+Primitive two-rank zero requires a theta point in every
+multiplication-by-two orbit of primitive points. By symmetry it
+thus requires at least one \(H\)-packet in each coset of \(U\).
+This formulation also handles \(n=191\), where \(-1\notin T\)
+and symmetry joins two different doubling orbits.
+
+For any such choice of packets, the set of residues
+\[
+                  S=\{0\}\cup\bigcup_{aU} a_{aU}H
+\tag{AC.44.4}
+\]
+must satisfy
+\[
+ \#\{(x,y)\in S^2:x-y=d\}\le2
+                 \qquad(0\ne d\in\mathbb Z/n).
+\tag{AC.44.5}
+\]
+Indeed these pairs give distinct points of the intersection of
+theta with its translate by \(dQ\). The translation is nontrivial,
+the principal polarization has trivial translation stabilizer,
+and the intersection number is two. Additional theta points cannot
+repair a violation of (AC.44.5), so selecting just one required
+packet per \(U\)-coset gives a necessary test.
+
+The single-packet test of Claim~AG.37 leaves only
+\(191,229,457,1257\). At \(n=1257=3\cdot419\), the groups
+in (AC.44.3) have \(|U|=418\) and \(|H|=22\), while
+\(\varphi(n)=836\). Hence two different packets are required.
+Each packet has eleven elements in each nonzero residue class
+modulo three, since negation exchanges the classes. Thus (AC.44.4)
+has occupancies \((1,22,22)\) modulo three and supplies
+\[
+                   2\cdot22\cdot21=924
+\]
+ordered pairs whose difference is a nonzero multiple of three.
+There are only \(418\) such differences modulo \(1257\).
+Equation (AC.44.5) permits at most \(836\) pairs, a contradiction.
+
+At \(n=457\), one has \(|U|=76\), \(|H|=4\), and six
+\(U\)-cosets. Choose one theta point as the generator \(Q\),
+which normalizes its packet to \(H\) in the identity coset.
+Each other \(U\)-coset contains exactly nineteen possible
+\(H\)-packets. The accompanying standard-library program
+\texttt{primitive\_packet\_sidon.py} enumerates these packets by
+group closure and tests all possible extensions of the normalized
+packet. It first discards any candidate already violating
+(AC.44.5) with \(\{0\}\cup H\); the five remaining candidate
+counts are
+\[
+                            17,19,17,18,18.
+\]
+It then performs an exhaustive depth-first search. At each step
+it adds every ordered difference involving a new packet and
+rejects the branch as soon as a multiplicity exceeds two.
+The numbers of surviving partial sets containing respectively
+one through six packets are exactly
+\[
+                         1,17,226,879,262,0.
+\tag{AC.44.6}
+\]
+There is therefore no possible full required set for \(457\).
+The JSON certificate retains the complete normalization, packet
+indices, rejected first-packet witnesses, and search counts;
+the source performs the complete search without a heuristic cutoff.
+For \(191\) and \(229\) it also retains compatible necessary
+sets, making explicit that this test gives no exclusion there.
+This proves (AC.44.1).
+
+The incidence estimate is now needed only at these two conductors.
+The minimum numbers of primitive theta points are respectively
+\(10\) and \(12\), and the numbers of exact-order points in
+the ambient product of elliptic curves are
+\(J_4(191)=1330863360\) and \(J_4(229)=2750058480\).
+Each ambient nonzero torsion point lies on at most one pencil
+member. Dividing these two incidence bounds by \(10\) and
+\(12\), respectively, gives (AC.44.2). No individually chosen
+parameter is asserted to have been certified by this counting
+argument.
+\end{proof}

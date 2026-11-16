@@ -1,0 +1,87 @@
+\begin{claim}{AG.34}{Proved; nontrivial primitive-cover counterexamples over $\mathbf F_{2^{38}}$}
+For the family $C_t$ of AG.33 over $\mathbf F_{2^{38}}$,
+at least $59927733332$ parameters $t$ define curves having
+no nontrivial connected cyclic \'etale cover of odd degree
+with primitive two-rank zero. This counts parameters,
+without asserting that the corresponding curves are
+pairwise nonisomorphic or selecting one individual parameter.
+The degree-one qualification at the end of AG.33 applies.
+\end{claim}
+\begin{proof}
+There is a useful refinement of the torsion incidence bound.
+For an integer $e\ge1$ let
+\[
+\begin{split}
+ \mathcal S_e={}&\{n:\ 3\le n<10e^3,\ n\text{ odd},\
+       M_e(n)(M_e(n)+1)\le2(n-1)\},\\
+ M_e(n)={}&\frac{\varphi(n)}{\gcd(\operatorname{ord}_n(2),e)},\qquad
+ J_4(n)=n^4\prod_{\ell\mid n}(1-\ell^{-4}).
+\end{split}                                                   \tag{AG.34.1}
+\]
+The integer $J_4(n)$ is the number of points of exact order
+$n$ in $A[n]\simeq(\mathbf Z/n\mathbf Z)^4$.
+For $n\in\mathcal S_e$ define $\mathcal B_{e,n}$ to be
+the parameters $t\in\mathbf F_{4^e}\setminus\mathbf F_4$
+for which the pencil member $D_t$ contains at least
+$M_e(n)$ distinct points of exact order $n$ in $A$.
+Every nonzero point belongs to at most one pencil member.
+Counting incidences therefore gives
+\[
+               \#\mathcal B_{e,n}
+                  \le\left\lfloor\frac{J_4(n)}{M_e(n)}\right\rfloor.
+                                                               \tag{AG.34.2}
+\]
+If $C_t$ admits a nontrivial primitive-zero cover of
+conductor $n$, AG.32 puts $n$ in $\mathcal S_e$ and gives
+at least $M_e(n)$ exact-order-$n$ points of its theta
+divisor. The odd-torsion isomorphism induced by $v_t$
+sends them injectively to points counted in
+$\mathcal B_{e,n}$. Thus the explicitly defined set
+\[
+ \mathbf F_{4^e}\setminus
+       \left(\mathbf F_4\cup
+          \bigcup_{n\in\mathcal S_e}\mathcal B_{e,n}\right)
+                                                               \tag{AG.34.3}
+\]
+consists entirely of parameters with the asserted property,
+and its size is at least
+\[
+       4^e-4-
+       \sum_{n\in\mathcal S_e}
+          \left\lfloor\frac{J_4(n)}{M_e(n)}\right\rfloor.
+                                                               \tag{AG.34.4}
+\]
+The definition of $\mathcal B_{e,n}$ uses the threshold
+$M_e(n)$; the stronger bound (AG.34.2) is not being asserted
+for parameters with only one theta point of order $n$.
+
+For $e=19$, exact enumeration below the proved global
+cutoff $68590$ gives precisely
+\[
+ \mathcal S_{19}=\{191,229,361,419,457,571,573,647,687,
+                         955,1083,1257,1371\}.
+\]
+The certificate records all factorizations, totients,
+multiplicative orders, values of $M_{19}(n)$, exact-order
+point counts, and integer quotients. Its sum is
+\[
+ \sum_{n\in\mathcal S_{19}}
+      \left\lfloor\frac{J_4(n)}{M_{19}(n)}\right\rfloor
+       =214950173608.
+\]
+As $4^{19}=274877906944$, formula (AG.34.4) becomes
+\[
+             274877906944-4-214950173608
+                     =59927733332>0.
+\]
+The root program \path{code/A6_scalar_conductor_bounds.py}
+and its complete JSON output give the global enumeration.
+The independent review
+\path{agent_geometric/code/primitive_counterexample_e19_review.py}
+factors every odd integer below the cutoff by trial division
+and recomputes every relevant multiplicative order without
+using the root program's sieve or cache. Its complete JSON
+agrees on every $e=19$ record. These are exhaustive finite
+arithmetic certificates for the displayed existence theorem,
+not an enumeration of a parameter in (AG.34.3).
+\end{proof}

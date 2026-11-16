@@ -1,0 +1,230 @@
+\begin{claim}{AC.28}{Proved; mixed witnesses and exact prime/field minima}
+For the pointed split curves $(C_c,\infty)$ of AC.25, the least
+odd prime of a constant pointed L1 witness over all finite extensions
+is eleven. A degree-eleven witness is defined over $\mathbf F_{4^{60}}$,
+and sixty is the least extension degree for that prime.
+The least extension degree permitting any constant odd-group witness
+is sixteen, where a degree-$113$ witness exists.
+
+For the following eight $\mathbf F_4$ models, write
+$c\in\{\alpha,\alpha^2\}$ and $\delta\in\{0,\alpha\}$:
+\[
+ y^2+y=x+\frac{c}{x^2+x}+\delta,\qquad
+ y^2+y=x+\frac{c}{x^2+x+\alpha}+\delta.
+\]
+Each original rational point has an eleven witness over
+$\mathbf F_{4^{60}}$ and a $113$ witness over $\mathbf F_{4^{16}}$.
+Whenever the cubic test AC.22 fails, eleven is the least odd prime.
+In particular this holds for every rational point of the split
+models and for infinity on each quadratic-pole model.
+\end{claim}
+\begin{proof}
+We first specify and independently check the positive certificates.
+Use the field
+\[
+ K=\mathbf F_2[t]/(t^{120}+t^4+t^3+t+1)=\mathbf F_{4^{60}},
+\]
+with binary polynomial coefficients encoded by integers, and set
+\[
+ \alpha=931750399618260646238930031330849980.
+\]
+The model is $Y^2+(x^2+x)Y=x^5+x^3+\alpha x^2+\alpha x$.
+The following reduced pair defines the degree-eleven character line:
+\[
+ \begin{aligned}
+ u(x)&=x^2+u_1x+u_0,\qquad v(x)=v_1x+v_0,\\
+ u_0&=1286551050156223861353970523064590862,\\
+ u_1&=855838071379080258553061447214623248,\\
+ v_0&=372422475677710747247258963726964873,\\
+ v_1&=880561393008999941135507307093448287.
+ \end{aligned}
+\]
+The certificate verifies irreducibility of the field polynomial,
+$\alpha^2+\alpha=1$, validity of the reduced pair, and exact order
+eleven of its Jacobian class $a$. Since $q=2^{120}\equiv1\bmod11$,
+the descent condition $\sigma_q(a)=qa$ holds over $K$.
+
+All ten reduced multiples and Cartier coefficients are recorded in
+\path{bielliptic_mixed_ell11_F4pow60.json}.
+The independent verifier \path{verify_mixed_certificates.py} uses
+pure Python carryless field arithmetic, with neither the searcher's
+compiled field helper nor its Cartier-coefficient routine.
+It recomputes every multiple and reconstructs doubling interpolation
+from $(f+hv+v^2)/u$ and $h^{-1}\bmod u$.
+All ten $q$-Frobenius scalars differ from one. Their product
+determinant has the especially compact form
+\[
+          \overline{P_D(T)/P_C(T)}=1+T^4+T^{10}.
+\]
+Equivalently, the first scalar has reciprocal minimal polynomial
+$1+T^2+T^5$ over $\mathbf F_2$, and its five conjugates each occur
+twice. The determinant evaluates to one at $T=1$.
+AC.27 therefore proves the odd relative class number over $K$,
+with the cover pointed at infinity. This certificate determines
+the factors modulo two; their full characteristic-zero coefficients
+are not reconstructed here.
+
+For the smaller field degree, the second certificate uses
+\[
+ E=\mathbf F_2[t]/(t^{224}+t^{21}+t^7+t+1)
+\]
+and its subfield $L=\mathbf F_{2^{32}}=\mathbf F_{4^{16}}$.
+The complete reduced pair and all $112$ multiples are in
+\path{bielliptic_mixed_ell113_F4pow16.json}.
+They have exact order $113$ and satisfy $\sigma_{2^{32}}(a)=16a$,
+where $16\equiv2^{32}\bmod113$.
+Thus the constant pointed cover descends to $L$, although its
+displayed character line uses the splitting field $E$.
+The independent verifier checks all $112$ coefficients, applies
+the actual inverse-$q$ conjugation in AC.27, and obtains an
+$\mathbf F_2$ determinant with $31$ nonzero coefficients, whose
+value at one is one. This proves the claimed witness over $L$.
+Together with AC.26 it proves exact minimality of the field degree
+sixteen.
+
+AC.26 excludes three and five over every extension, and AC.30
+excludes seven. The eleven witness therefore proves exact minimality
+of the prime eleven. To minimize its field, the two elliptic factors
+have modulo-eleven eigenvalue orders five and sixty respectively:
+the first polynomial factors as $(X-3)(X-5)$, and the second has
+both roots of exact order sixty. These facts are verified in
+\path{bielliptic_obstructions.py}.
+An eleven character using only one elliptic factor is excluded by
+AC.24; using both requires an extension degree divisible by sixty.
+Our witness attains it.
+
+We also check transfer to the stated forms and points.
+A quadratic-pole model becomes split after $x=z+s$, with
+$s^2+s=\alpha$, followed by an Artin--Schreier constant change of
+$y$. Both changes are available over $\mathbf F_{4^4}$ and preserve
+infinity. The split quadratic twist is handled by the constant
+change alone. This field embeds in both witness fields, of degrees
+sixty and sixteen, so the transported witnesses retain exactly
+those fields. Coefficientwise squaring transfers the certificates
+from $c=\alpha$ to $c=\alpha^2$; no assertion that these two
+geometric classes are $\mathbf F_4$-linearly isomorphic is needed.
+
+The original Jacobian orders of these eight forms are $32,12,48,8$,
+as given by their two point counts or the root's census. They are
+prime to eleven and $113$. Hence any original point difference
+$[Q-\infty]$ has order prime to the cover degree, also after transport
+to the witness field. Every character of that prime degree kills
+the difference. AC.6 proves that the transported cover is split
+over every original $Q$, with the same relative polynomials.
+
+For minimality, a hypothetical three, five or seven witness on a
+form can be extended to the composite with $\mathbf F_{4^4}$.
+The extra field degree is a power of two, which preserves the
+numerical condition by AC.29. The isomorphism then transfers it
+to the split model. Five and seven are unavailable at all original
+points: their differences from infinity have orders dividing
+$32,12,48$ or $8$, hence are divisible by those primes in every
+relevant rational Jacobian, so their base-point twists are trivial.
+For three we use the exact test AC.22. The split untwisted
+Jacobians have two-power order, while the three points on each
+split quadratic twist are hyperelliptic ramification points;
+their cubic test fails. Infinity has $\kappa=0$ on every form.
+This proves all minimal-prime assertions in the claim.
+\end{proof}
+
+\begin{claim}{AC.29}{Proved; safe extensions of characteristic-power degree}
+Let $B/k$ be an abelian variety over a finite field of characteristic
+$p$, and let $k'/k$ have degree $p^r$. Then
+\[
+ B(k)[p]=0\quad\Longleftrightarrow\quad B(k')[p]=0.
+\]
+In particular a relative-class-number $p$-unit for a fixed finite
+separable cover is preserved by every constant extension of
+$p$-power degree.
+If two pointed curves become isomorphic over a $p$-power extension,
+their existence of prime-degree witnesses over arbitrary extensions,
+and the set of primes furnishing such witnesses, agree.
+\end{claim}
+\begin{proof}
+On the finite-dimensional vector space
+$V=B[p](\overline k)$ let $F$ be arithmetic Frobenius.
+Rational $p$-torsion is its fixed space, and
+\[
+                     F^{p^r}-1=(F-1)^{p^r}.
+\]
+A power of an endomorphism of a finite-dimensional vector space
+is invertible exactly when that endomorphism is invertible.
+Thus the two fixed spaces are simultaneously zero.
+Apply this to the connected new Jacobian factor to get the
+relative-class-number assertion.
+For pointed forms, the composite of any witness field with the
+given $p$-power isomorphism field has $p$-power degree over the
+witness field. The witness survives this extension and transports
+across the pointed isomorphism. Apply the same argument in the
+other direction.
+\end{proof}
+
+\begin{claim}{AC.30}{Proved; global seventh-prime exclusion for the bielliptic classes}
+For $(C_c,\infty)$ of AC.25, no constant pointed degree-seven
+L1 witness exists over any finite extension of $\mathbf F_4$.
+The same holds for its coefficient conjugate and every pointed
+form isomorphic to it at infinity over a power-of-two extension.
+\end{claim}
+\begin{proof}
+Modulo seven the Frobenius polynomial from AC.25 is
+\[
+                  (X-2)^2(X^2-X+4).
+\]
+On the first primary part write $F=2I+N$, $N^2=0$.
+On the second part every nonzero vector has period twenty-four
+and $F^{16}=2I$. Consequently $F^{112}=2I$ on all of $J_C[7]$.
+These polynomial identities and both possible Jordan types are
+verified by \path{bielliptic_obstructions.py}.
+
+The locally exact theta divisor is Frobenius-stable and symmetric:
+if $B^2\simeq\omega_C$, then
+$-[R-B]=[\iota R-B]$. A nonzero theta point $a$ of order seven
+would therefore force all six nonzero multiples of $a$ into theta,
+because $\langle2,-1\rangle=(\mathbf Z/7)^\times$.
+This is impossible by the genus-two difference bound.
+For a fixed nonzero Jacobian class, there are at most two ordered
+representations as $R-S$: equality of two such representations
+gives linearly equivalent effective degree-two divisors; if they
+are distinct, both are the unique hyperelliptic pencil.
+Thus a subset of size $r$ in the intersection of a theta translate
+with a cyclic group of order seven satisfies
+$r(r-1)\le2(7-1)$. It cannot have $r=6$.
+Theta has no nonzero seven-torsion, and the checked locally exact
+differential sequence makes every geometric cyclic seventh-degree
+Prym ordinary, of two-rank six.
+
+For a nonzero quotient functional $v$ on $J_C[7]$, its period $m$
+and a scalar power of Frobenius are exhausted by
+\[
+ \begin{array}{c|c|c}
+ m&d&vF^d/v\\\hline
+ 3&1&2\\
+ 21&7&2\\
+ 24&16&2\\
+ 168&112&2.
+ \end{array}
+\]
+The first two cases are supported on the $(X-2)$ primary part,
+without or with a nonzero Jordan contribution.
+The last two include the quadratic primary part.
+The certificate checks all $2400$ nonzero vectors for each Jordan
+type, as well as the displayed formulas.
+
+The corresponding geometric cover has a pointed model over
+$\mathbf F_{4^d}$ with deck Frobenius equal to two.
+Its new two-torsion is the sum of the two nontrivial irreducible
+$\mathbf F_2[\mathbf Z/7]$-modules, each a one-dimensional
+$\mathbf F_8$-space. On each, this Frobenius is semilinear for
+squaring, and its cube is the norm to $\mathbf F_2^\times$,
+hence the identity. New two-torsion is therefore rational over
+$\mathbf F_{4^{3d}}$.
+Here $3d=m$ or $2m$. The first field with constant deck group is
+$\mathbf F_{4^m}$, and AC.29 shows that rational two-torsion cannot
+first appear only in its quadratic extension.
+Its relative class number is already even over that first field
+and remains even over every extension.
+The uniqueness of the pointed descent identifies every eligible
+form with this base change. AC.29 also proves the final statement
+for power-of-two pointed twists.
+\end{proof}
+

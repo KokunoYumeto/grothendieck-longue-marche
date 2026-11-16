@@ -1,0 +1,197 @@
+% AG.36: independent draft, integrated only after audit.
+\subsection{A geometric unit-root obstruction along a fixed prime-power sequence}
+
+\begin{claim}{AG.36}{Proved}\label{clm:AGfixedthreepower}
+For each \(n\geq1\), choose a primitive \(3^n\)-th root
+\(a_n\in\overline{\mathbb F}_2\), and put
+\[
+ d_n=2\cdot3^{n-1},\qquad k_n=\mathbb F_{2^{d_n}},\qquad
+ E_n:\ y^2+xy=x^3+a_n.
+ \tag{AG.36.1}
+\]
+Let \(\beta_n\in\mathbb Z_2^\times\) be the unit root of
+\(X^2-t_nX+2^{d_n}\), where \(t_n\) is the Frobenius trace
+of \(E_n/k_n\). Then
+\[
+ \lim_{n\to\infty}v_2(\beta_n-1)=+\infty,
+ \qquad
+ \exp E_n(k_n)[2^\infty]=2^{v_2(\beta_n-1)}.
+ \tag{AG.36.2}
+\]
+Every \(E_n\) is a fibre of the single smooth ordinary elliptic
+family \(y^2+xy=x^3+a\) over \(\mathbb G_{m,\mathbb F_2}\).
+The parameter \(a_n\) has exact degree \(3^{n-1}\) over
+\(\mathbb F_4\), an odd degree, and has exact multiplicative
+order \(3^n\). Thus a fixed geometric family, weight-one Weil
+purity, integrality, ordinariness, a fixed prime-power torsion
+sequence, and bounded \(2\)-part of the parameter degrees do
+not imply a uniform bound for the return valuations.
+
+The conclusion asserts divergence, without a quantitative
+comparison between \(2^{v_2(\beta_n-1)}\) and a prescribed
+power of \(3^n\). It neither identifies this family with the
+relative factors of an Abel tower nor disproves the weaker
+polynomial growth bound required by that route.
+\end{claim}
+
+\begin{proof}
+We first prove a finite-cover statement. If \(Y\to
+\mathbb A^1_{\mathbb F_2}\) is a finite etale torsor under a
+finite abelian \(2\)-group and its fibre at \(0\) is split,
+then its fibre at every primitive \(3^n\)-th root is split over
+\(k_n\) for all sufficiently large \(n\).
+It is enough to prove this for a cyclic quotient of order
+\(2^r\), and then take the maximum of finitely many bounds.
+The Artin--Schreier--Witt exact sequence and affine vanishing
+of \(H^1(\mathbb A^1,W_r\mathcal O)\) give
+\[
+ H^1_{\mathrm{\acute et}}(\mathbb A^1_{\mathbb F_2},
+                         \mathbb Z/2^r)
+ =W_r(\mathbb F_2[a])/(F-1)W_r(\mathbb F_2[a]).
+ \tag{AG.36.3}
+\]
+Here \(F\) is Witt Frobenius. These standard exact statements
+are recorded explicitly in \citet[Theorem~1.2 and the following
+cohomology sequence, p.~2]{AG_Sekiguchi2001}; compare the
+field-theoretic treatment and Frobenius trace formula in
+\citet[Theorem~3.2, Section~5.4, p.~29]{AG_KostersWan2016}.
+Affine vanishing also follows directly by induction from the
+filtration of \(W_r\mathcal O\) with additive-group quotients.
+
+Choose a representative \(w(a)\) in (AG.36.3).
+On \(W_r(\mathbb F_2)\), Frobenius is the identity. Since
+splitting at \(0\) says that the specialized cohomology class
+vanishes, it follows that \(w(0)=0\), as an actual Witt vector.
+There is a finite additive expansion
+\[
+                 w(a)=\sum_{i=0}^{r-1}\sum_{j\in J_i}
+                                  V^i[a^j],
+                 \qquad J_i\subset\mathbb Z_{>0}\text{ finite}.
+ \tag{AG.36.4}
+\]
+Repeated terms may be retained in this expression. To obtain
+it, subtract the sum of the Teichmuller monomials of the first
+Witt coordinate. The difference has first coordinate zero,
+so is uniquely \(V\) of a shorter Witt vector with polynomial
+coordinates. This shorter vector still specializes to zero
+at \(a=0\). Induction proves (AG.36.4), with no constant
+monomial and only finitely many exponents. Let \(D\) be the
+largest exponent occurring, taking \(D=0\) if the class is
+zero.
+
+The order of \(2\) modulo \(3^n\) is \(d_n\): the order
+is even and \(v_3(4^m-1)=1+v_3(m)\). Hence the absolute
+Frobenius conjugates of \(a_n\) are precisely all primitive
+\(3^n\)-th roots. In the full Witt ring of \(k_n\), the
+Teichmuller lift \(z=[a_n]\) has exact order \(3^n\), and
+\[
+ \sum_{s=0}^{d_n-1}z^{j2^s}
+ =\sum_{\zeta\text{ primitive of order }3^n}\zeta^j=0
+ \qquad(0<j<3^{n-1}).
+ \tag{AG.36.5}
+\]
+Indeed the last sum is the sum over all \(3^n\)-th roots
+minus the sum over all \(3^{n-1}\)-th roots; both geometric
+sums vanish for the stated exponents. Since \(F\) commutes
+with \(V\), (AG.36.4)--(AG.36.5) show that
+\[
+ \operatorname{Tr}_{W_r(k_n)/W_r(\mathbb F_2)}w(a_n)=0
+                       \qquad\text{if }3^{n-1}>D.
+ \tag{AG.36.6}
+\]
+For \(F(b)-b=w(a_n)\), the action of the degree-\(d_n\)
+Frobenius on \(b\) is translation by this trace, by telescoping
+\(F^{d_n}(b)-b\). Thus (AG.36.6) is exactly the splitting
+condition. This proves the finite-cover statement.
+
+We now apply it to the elliptic family. Its discriminant is
+\(a\); each fibre over \(\mathbb G_m\) is ordinary and
+has geometric etale \(2\)-rank one. For each \(r\geq1\),
+let
+\[
+ Q_r=\ker\bigl(V^r:E^{(2^r)}\longrightarrow E\bigr).
+ \tag{AG.36.7}
+\]
+This is a finite etale group scheme over \(\mathbb G_m\),
+with geometric fibres cyclic of order \(2^r\). Its frame
+torsor has group \((\mathbb Z/2^r)^\times\), a finite
+abelian \(2\)-group. We show directly that this torsor is
+trivial over the local field \(K=\mathbb F_2((a))\).
+This statement concerns the etale group (AG.36.7), and does
+not presume rationality of the non-etale group scheme
+\(E[2^r]\) over the imperfect field \(K\).
+
+In the purely inseparable extension \(K^{1/2}\), the point
+\(R_1=(0,a^{1/2})\) has exact order two. Suppose a point
+\(R=(x,y)\) of order \(2^s\) is defined over
+\(K^{1/2^s}\), and both coordinates have positive valuation
+(the zero coordinate is allowed). The convergent series
+\[
+                  \lambda=\sum_{i\geq0}x^{2^i}
+ \tag{AG.36.8}
+\]
+belongs to the same complete local field, has positive
+valuation, and satisfies \(\lambda^2+\lambda=x\).
+Set
+\[
+ u^2=y+(\lambda+1)x,\qquad v=u(\lambda+u).
+ \tag{AG.36.9}
+\]
+These coordinates belong to \(K^{1/2^{s+1}}\) and have
+positive valuation. The curve equation for \(R\) gives
+\(u^4+xu^2=a\); in particular \(u\ne0\).
+It follows directly that \(v^2+uv=u^3+a\), and the
+elliptic doubling formulas give \(2(u,v)=R\).
+Thus \((u,v)\) has exact order \(2^{s+1}\).
+Induction constructs a generator of the geometric
+\(2^r\)-torsion in \(E(K^{1/2^r})\).
+Applying relative Frobenius \(F^r\) gives a \(K\)-rational
+generator of \(Q_r\). Consequently \(Q_r/K\) is constant.
+
+The frame torsor is therefore unramified at \(a=0\),
+with trivial residue Frobenius there. Its normalization over
+\(\mathbb A^1_{\mathbb F_2}\) is finite etale and has split
+fibre at \(0\). Apply the finite-cover statement to this
+extension. For each fixed \(r\), and all sufficiently large
+\(n\), the group \(Q_r\) at \(a_n\) is constant over
+\(k_n\). Relative Frobenius identifies its geometric points
+Galois-equivariantly with those of \(E_n[2^r]\), so the
+unit root satisfies \(\beta_n\equiv1\pmod{2^r}\).
+This proves the limit in (AG.36.2).
+
+Finally, the rational \(2\)-primary subgroup of an ordinary
+elliptic curve over a finite field is cyclic. The other
+Frobenius root \(2^{d_n}/\beta_n\) is divisible by two,
+and therefore
+\[
+ v_2\#E_n(k_n)
+ =v_2\bigl((1-\beta_n)
+              (1-2^{d_n}/\beta_n)\bigr)
+ =v_2(1-\beta_n).
+\]
+This proves the exponent formula. The exact parameter degree
+over \(\mathbb F_4\) is \(\operatorname{ord}_{3^n}(4)
+=3^{n-1}\), as asserted.
+\end{proof}
+
+\paragraph{Finite certificates and quantitative scope.}
+The independent complete point-count program
+\texttt{agent\_geometric/code/kloosterman\_three\_power\_test.cpp}
+and its JSON output use the irreducible polynomial
+\(\Phi_{3^n}(X)=X^{2\cdot3^{n-1}}+X^{3^{n-1}}+1\)
+for \(n=1,2,3\). They verify, respectively,
+\[
+\begin{array}{c|r|r|r|r}
+ n&\#k_n&\#E_n(k_n)&t_n&v_2(\beta_n-1)\\\hline
+ 1&4&4&1&2\\
+ 2&64&64&1&6\\
+ 3&262144&262912&-767&8
+\end{array}
+\]
+The trace-one pattern of the first two examples already
+fails at the third. The proof of divergence does not use
+these finite data. Its threshold for a fixed torsion level
+is the finite degree bound \(3^{n-1}>D\) in (AG.36.6),
+where \(D\) comes from representatives of that level's
+frame-torsor characters. No bound for the growth of these
+representative degrees with the torsion level is asserted.

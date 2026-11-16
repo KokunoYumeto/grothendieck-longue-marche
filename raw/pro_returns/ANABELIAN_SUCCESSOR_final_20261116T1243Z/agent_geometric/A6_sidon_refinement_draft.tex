@@ -1,0 +1,54 @@
+% Supplement to AG.34: an exact reduction for any individual-parameter test.
+\subsection{Four remaining conductors in the explicit pencil}
+
+\begin{claim}{AG.37}{Proved}\label{clm:AGsidonfour}
+For every member \(C_t\) of the explicit family in
+Claim~AG.33 over
+\(\mathbb F_{2^{38}}\), any nontrivial odd conductor of a
+primitive two-rank-zero cyclic cover belongs to
+\[
+                         \{191,229,457,1257\}.
+                                                        \tag{AG.37.1}
+\]
+More precisely, its theta curve has no point of exact order
+\(361,419,571,573,647,687,955,1083\), or \(1371\).
+This assertion is a necessary-condition reduction; it does not select
+an individual parameter from the nonempty complement in Claim~AG.34.
+\end{claim}
+
+\begin{proof}
+The scalar Frobenius is \([-2^{19}]\), and the theta curve
+\(\Theta=C_t-P\) is symmetric. If \(Q\in\Theta\) has odd
+exact order \(n\), put
+\[
+ H_n=\langle-2^{19},-1\rangle\subseteq(\mathbb Z/n)^\times,
+ \qquad S_n=\{0\}\cup H_n.
+\]
+Every point \(aQ\), \(a\in S_n\), lies on \(\Theta\).
+For each nonzero \(d\in\mathbb Z/n\), the ordered pairs
+\((a,b)\in S_n^2\) with \(a-b=d\) give distinct geometric
+points in \(\Theta\cap(\Theta+dQ)\). The two theta curves
+are distinct: translation stabilizing the divisor of a principal
+polarization belongs to the trivial kernel of that polarization.
+Their intersection number is \(\Theta^2=2\), so there are at
+most two such pairs, even if some intersections are nonreduced.
+
+Apply this test to the thirteen conductors already proved exhaustive
+in Claim~AG.34. The complete finite calculation gives
+\[
+\begin{array}{r|r|r}
+ n&|H_n|&\max_{d\ne0}\#\{(a,b)\in S_n^2:a-b=d\}\\\hline
+ 191&10&2\\229&4&2\\361&18&4\\419&22&6\\457&4&2\\
+ 571&6&4\\573&20&10\\647&34&6\\687&8&4\\955&40&30\\
+ 1083&18&4\\1257&22&2\\1371&8&4
+\end{array}
+\]
+The standard-library program
+\texttt{primitive\_counterexample\_sidon\_review.py}
+constructs each subgroup by closure under its two specified generators
+and enumerates every ordered pair. Its retained JSON output records
+all subgroups and, for each failing difference, every representing
+ordered pair. The nine failures exclude even a single theta point of
+the indicated exact order. A primitive two-rank-zero conductor must
+have such a theta point, by Claim~AG.32. This proves (AG.37.1).
+\end{proof}

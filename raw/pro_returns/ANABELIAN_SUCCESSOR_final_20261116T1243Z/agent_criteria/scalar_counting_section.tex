@@ -1,0 +1,220 @@
+
+\begin{claim}{AC.31}{Proved counterexample to a scalar-Frobenius reduction}
+Let
+\[
+ C/\mathbf F_{16}:\quad y^2+y=x^5,\qquad P=\infty.
+\]
+Arithmetic Frobenius on \(J_C\) is the scalar \([-4]\).
+Nevertheless there is a constant \(P\)-split cyclic cover of degree
+thirteen over \(\mathbf F_{4096}\), its first possible constant-deck
+field, whose new factor is ordinary of two-rank twelve and has odd
+relative class number. More precisely its twisted polynomials are
+\[
+ L_P(\chi^i,T)
+ =1+\frac{139-13\left(\frac{i}{13}\right)\sqrt{13}}2\,T
+       +4096T^2,\qquad 1\le i\le12,
+\]
+after choosing the sign of \(\sqrt{13}\) consistently with the
+quadratic Gauss sum. Consequently
+\[
+ \frac{P_D(T)}{P_C(T)}
+ =\bigl(1+139T+12473T^2+569344T^3+16777216T^4\bigr)^6
+\]
+and
+\[
+ \frac{h_{\mathbf F_{4096}}(D)}{h_{\mathbf F_{4096}}(C)}
+                         =17359173^6.
+\]
+Thus scalar Jacobian Frobenius, even at a rational hyperelliptic
+ramification point, does not reduce the rational criterion to
+vanishing of the geometric new \(p\)-rank.
+\end{claim}
+\begin{proof}
+The exact counts \(\#C(\mathbf F_{16})=33\) and
+\(\#C(\mathbf F_{256})=193\) give Frobenius polynomial
+\((X+4)^4\). Frobenius acts semisimply, so it equals \([-4]\)
+as a Jacobian endomorphism; equivalently apply
+\cite[Theorem~2(d), p.~140]{AC_Tate1966}.
+The following computation is independent of the assertion that all
+thirteenth-degree Pryms of this curve are ordinary: it proves
+ordinariness for the displayed cover itself.
+
+Use binary polynomial notation in
+\[
+ K=\mathbf F_2[t]/(t^{12}+t^3+1),\qquad \#K=4096.
+\]
+The reduced divisor class
+\[
+ a=(u,v),\qquad
+ u=x^2+3377x+483,\qquad v=3144x+2626
+\]
+has exact order thirteen. Its sixteenth-power conjugate is
+\([-4]a\), and its \(4096\)-power conjugate is \(a\).
+These are checked by exact Mumford arithmetic. Since
+\((-4)\bmod13\) has order three and \((-4)^2=16\), all nonzero
+geometric thirteenth-degree quotient characters have first
+constant-deck field \(\mathbf F_{16^3}\). Also
+\(4096\equiv1\bmod13\), so the displayed \(a\) has the constant-deck
+descent required in AC.27.
+
+For an independent direct character count, write \(u^{13}=M\).
+Lift \(v\) to the unique solution of \(w^2+w=x^5\bmod M\) with
+\(w\equiv v\bmod u\). Exact linear algebra gives polynomials
+\(A,B\), of degrees thirteen and ten, with \(A\) monic and
+\[
+ A^2+AB+B^2x^5=u^{13},\qquad A+Bw\equiv0\bmod u^{13}.
+\]
+Their coefficient lists, in increasing degree, are
+\[
+\begin{aligned}
+ A={}&(1334,2010,3185,1642,2095,2911,77,\\
+     &\hspace{12mm}567,182,1378,3843,297,2491,1),\\
+ B={}&(1250,517,799,137,81,3560,2285,3410,2702,2433,1191).
+\end{aligned}
+\]
+Hence \(F=A+By\) has divisor \(13D_a-26P\), where
+\(D_a\) is the effective degree-two divisor representing \(a\).
+The norm identity and the vanishing condition distinguish its
+two zeroes from their hyperelliptic conjugates.
+The cover is the normalization of \(z^{13}=F\).
+It is unramified because every valuation of \(F\) is divisible
+by thirteen. It is connected because \(a\ne0\), and it is
+\(P\)-split because the leading local unit of \(F\) at \(P\)
+is one. Its deck group is constant since \(\mu_{13}\subset K\).
+
+Let the primitive field generator be the binary element \(3\);
+use its associated primitive thirteenth root to label the
+character exponents. At a point where \(F\ne0\), the exponent is
+\(\log_3F\bmod13\). At a zero \(R=(r,y)\), the norm identity
+shows that the local unit has character exponent
+\(-\log_3B(r)\bmod13\): the other factor of \(u^{13}\) contributes
+a thirteenth power. Infinity contributes exponent zero.
+Enumerating all \(4353\) rational points, with these local units
+at the two zeroes, gives
+\[
+ (N_0,\ldots,N_{12})
+  =(399,323,336,323,323,336,336,336,336,323,323,336,323).
+\]
+Thus the nonzero quadratic residues modulo thirteen have count
+\(323\), and the nonresidues have count \(336\).
+The quadratic-period identity
+\(\sum_{r\ {\rm square}}\zeta_{13}^r=(-1+\sqrt{13})/2\)
+gives
+\[
+ \sum_R\chi([R-P])
+ =399+323\frac{-1+\sqrt{13}}2
+       +336\frac{-1-\sqrt{13}}2
+ =\frac{139-13\sqrt{13}}2.
+\]
+AC.4, with \(K_C\sim2P\), now gives every displayed
+character polynomial and their product, including the exact
+relative class number.
+
+As a second check, all twelve Cartier scalars of AC.27 belong to
+\(\{72,73\}\subset K\), with six of each value.
+Both satisfy \(X^2+X+1=0\). Thus none is zero or one, and
+\[
+ \overline{P_D(T)/P_C(T)}
+   =(1+T+T^2)^6=1+T^2+T^6+T^{10}+T^{12}.
+\]
+The degree twelve proves geometric new two-rank twelve, while
+the value one at \(T=1\) proves the rational two-unit condition.
+The program \path{scalar_frobenius_counterexample.py} executes
+both the Cartier test and the direct Kummer-point test and
+requires their complete polynomials modulo two to agree.
+
+The failure of the proposed general reduction is structural.
+On its rank-one \(\mathbf F_{4096}\)-module, the nonconstant
+deck Frobenius over \(\mathbf F_{16}\) is semilinear for
+\(x\mapsto x^{2^8}\), since \(-4\equiv2^8\bmod13\).
+Its cube is a norm to \(\mathbf F_{16}^{\times}\), which need
+not be one. Hyperelliptic reflection further restricts the scalar
+to \(\mathbf F_4^\times\); it still leaves precisely the two
+nontrivial values that occur here. Passing from the witness field
+to its cubic constant extension raises these values to one and
+destroys the rational criterion, giving an explicit instance of
+the unsafe-extension warning in AC.6.
+\end{proof}
+
+\begin{claim}{AC.32}{Proved; a simultaneous genus-two counting criterion}
+Let \(C/k\) have genus two, with \(k\) a finite field of
+characteristic \(p\), and let \(P\in C(k)\).
+Let \(\ell\ne p\) be an odd prime such that \(p\) is a primitive
+root modulo \(\ell\). Set
+\[
+ V=J_C(k)/\ell J_C(k),\qquad H=\ell J_C(k),\qquad N=\#C(k),
+\]
+and assume \(V\ne0\). If either
+\[
+                  |V|>N\qquad\hbox{or}\qquad N\equiv-1\bmod p,
+\]
+and
+\[
+                         (p-1)(N-1)>2(|H|-1),                 \tag{AC.16}
+\]
+then some surjection \(J_C(k)\to\mathbf Z/\ell\) gives a
+\(P\)-split L1 witness over \(k\).
+
+One may replace (AC.16) by the sharper occupancy-dependent
+condition
+\[
+ N_0(N_0-1)+(p-1)(N-N_0)>2(|H|-1),\qquad
+ N_0=\#\{R\in C(k):[R-P]\in H\}.
+\]
+The subgroup \(H\) is the image of multiplication by \(\ell\),
+not the much larger kernel of one chosen cyclic character.
+No universal assertion about the existence of such a prime and
+field is implicit in this conditional criterion.
+\end{claim}
+\begin{proof}
+Suppose every prime cyclic quotient fails the rational criterion.
+For each quotient, the nontrivial character evaluations of
+\(\Theta=[0]+\sum_{R\in C(k)}[[R-P]\bmod H]\) are permuted
+transitively by \(p\)-power Frobenius, because \(p\) is primitive
+modulo \(\ell\). Failure means at least one is zero; hence all
+are zero. Every nontrivial character of \(V\) factors through
+one such quotient, so Fourier inversion in \(\mathbf F_p[V]\)
+gives
+\[
+                 \Theta=c\sum_{b\in V}[b],
+                 \qquad c=(N+1)/|V|\in\mathbf F_p.
+\]
+The denominator is invertible since \(\ell\ne p\).
+If \(|V|>N\), some nonzero coset is empty and forces \(c=0\).
+The alternative congruence \(N\equiv-1\bmod p\) also forces
+\(c=0\) directly. Thus
+\[
+              N_0\equiv-1\bmod p,\qquad
+              N_b\equiv0\bmod p\quad(b\ne0).
+\]
+
+For every nonzero Jacobian class \(\delta\), there are at most
+two ordered pairs of geometric points \((R,S)\) with
+\([R-S]=\delta\).
+Indeed \(R-S=R'-S'\) implies
+\(R+S'\sim R'+S\). If these effective degree-two divisors are
+different, both belong to the unique hyperelliptic pencil;
+the only possible second representation is
+\((R',S')=(\iota S,\iota R)\).
+Consequently the number of ordered distinct pairs in the same
+\(H\)-coset is bounded above by \(2(|H|-1)\).
+The occupancy congruences give the lower bound
+\[
+ \sum_bN_b(N_b-1)
+   \ge N_0(N_0-1)+(p-1)(N-N_0).
+\]
+Since \(P\) lies in the zero coset, \(N_0\ge1\); its congruence
+improves this to \(N_0\ge p-1\). Therefore
+\[
+\begin{aligned}
+ N_0(N_0-1)+(p-1)(N-N_0)
+   &=(p-1)(N-1)+(N_0-1)(N_0-(p-1))\\
+   &\ge(p-1)(N-1).
+\end{aligned}
+\]
+Either stated strict inequality contradicts the upper bound.
+Thus at least one cyclic quotient is a witness.
+The primitive-root hypothesis was used at the first step and
+cannot be dropped by this argument.
+\end{proof}
+

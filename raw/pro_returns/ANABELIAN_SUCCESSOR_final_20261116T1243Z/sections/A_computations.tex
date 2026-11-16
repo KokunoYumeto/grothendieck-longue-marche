@@ -1,0 +1,415 @@
+\subsection{Exact finite-field computations and their scope}
+
+\begin{claim}{AR.4}{Proved by exhaustive exact computation; the genus-two base-field census}
+For $q=4,8,16$, the supplied programs enumerate every
+$\mathbf F_q$-isomorphism class of smooth proper genus-two curves,
+every rational point of each, and every prime-order constant-deck
+pointed cyclic cover over $L=\mathbf F_q$, up to automorphism of its
+cyclic deck group.  The exact twisted $L$-polynomial and its relative
+class number modulo two are recorded for every test.  The totals are
+\[
+\begin{array}{c|r|r|r|r}
+q&\text{curve classes}&\text{pointed pairs}&\text{tests}&
+       \text{pairs with a base-field witness}\\\hline
+4&146&730&968&613\\
+8&1094&9846&14854&8978\\
+16&8470&143990&263765&138769
+\end{array}
+\]
+These are all tests over the displayed base field.  For pairs without
+a proved least-prime result, the output makes no assertion of a least
+prime over arbitrary extensions.  This is the ``list of all tests
+tried'' alternative in A4 for these three genus-two censuses.
+\end{claim}
+\begin{proof}
+We give the completeness argument as well as the reproducible
+calculation.  In characteristic two every genus-two curve has a
+separable hyperelliptic quotient.  A reduced Artin--Schreier equation
+has pole orders $(5)$, $(3,1)$, or $(1,1,1)$, by the different formula
+$2g-2=-4+\sum(m_i+1)$.  The first two pole sets are rational; the
+last set has split, quadratic, or cubic Frobenius type.  We use
+respectively
+\[
+ ax^5+bx^3+cx+d,\quad ax^3+bx+c/x+d,\quad
+ ax+b/x+c/(x+1)+d,
+\]
+and $ax+(bx+c)/(x^2+x+\tau)+d$ or $n(x)/h(x)+d$ in the last
+two cases.  Here $\operatorname{Tr}(\tau)=1$, $h$ is a fixed
+irreducible monic cubic, $d\in\{0,\tau\}$, and all required
+leading residues are nonzero.  The remaining base transformations
+are the full affine group for the first type, scalings for the
+second, the permutation group of three branch points in the split
+case, the order-two stabilizer of the quadratic set, and the
+order-three stabilizer of the cubic set.  A generator change
+$y\mapsto y+v(x)$ removes even poles; after reduction it leaves
+only the constant Artin--Schreier equivalence.  The program takes
+exactly these orbits and does not divide by coefficient Frobenius.
+
+This is the classification in \cite[Propositions~8--16,
+Theorem~17]{AR_CNP2005}; as an independent check, our type counts are
+\[
+\begin{array}{c|rrrrr}
+q&f_2=0&f_2=1&\text{split}&\text{quadratic}&\text{cubic}\\\hline
+4&14&24&14&48&46\\
+8&30&112&140&462&350\\
+16&70&480&1240&3930&2750
+\end{array}
+\]
+Their sums agree with that theorem's formula
+$2q^3+q^2+q-2+8[4\mid\log_2q]$.  The pole calculations also verify
+smoothness of each smooth completion and its genus; no test merely
+for rational singularities is used.
+
+For an odd-degree model $Y^2+hY=f$ with unique infinity, we enumerate
+all reduced Mumford pairs $(U,V)$, with $U$ monic of degree at most
+two, $\deg V<\deg U$, and
+$U\mid V^2+hV+f$.  For a fixed $U$ the last condition is an affine
+linear system over $\mathbf F_2$ in the coefficients of $V$;
+\texttt{finite\_jacobian.py} solves it exactly.  Cantor composition
+and reduction implement addition.  Each group element has a unique
+such representative, so enumeration is exhaustive.
+
+For an ordinary cubic-pole model with a rational point, we move that
+point's image to infinity and translate the Artin--Schreier
+coordinate.  The resulting model has $h$ monic of degree three,
+$\deg f\le5$, and two rational infinities $O_+,O_-$.
+The canonical class is $K=O_++O_-$.  Each nonzero Jacobian class
+has a unique representative $E-K$ with $E$ effective of degree two;
+the zero class is represented by $K$.  We enumerate
+$(U,V,a,b)$ with $\deg U+a+b=2$, allowing infinity multiplicities.
+For addition the usual finite-divisor composition first cancels
+hyperelliptic pairs.  If both remaining infinity multiplicities
+are positive, subtract $K$.  Otherwise the reduction is a
+Riemann--Roch calculation in
+$\langle1,x,x^2,x^3,Y\rangle=L(3K)$: the code solves the vanishing
+conditions on the conjugate finite divisor and the required pole
+bounds at $O_+,O_-$.  Dividing the norm of the resulting function
+by $U$ gives the complementary divisor.  Its Laurent orders give
+the two infinity multiplicities.  This derives the implemented
+group law directly from principal divisors.  The script
+\texttt{check\_even\_jacobian.py} verifies closure, inverses,
+commutativity, and sampled associativity on four independent models.
+Pointless models have no pointed tests and are explicitly retained.
+
+For every odd prime $\ell\mid\#J_C(\mathbf F_q)$, the program
+forms $J/\ell J$, determines a basis, and enumerates every nonzero
+linear functional modulo scalar.  These are exactly all the
+surjective prime-order characters, with duplicate generators
+removed.  If $v$ is its coordinate vector, we evaluate it on
+every $[R-P]$.  AC.4 gives the exact polynomial
+\[
+ 1+\Bigl(\sum_R\zeta_\ell^{\chi(R-P)}\Bigr)T
+       +q\zeta_\ell^{\chi(K-2P)}T^2.
+\]
+Its relative class number is odd precisely when
+$1+\sum_R X^{\chi(R-P)}$ is coprime modulo two to
+$1+X+\cdots+X^{\ell-1}$, by AC.5.  The program computes that gcd
+by binary-polynomial Euclidean division.  Thus every recorded
+mod-two value is exact, including primes where two is not a
+primitive root.  The JSON records include the quotient basis;
+the CSV records give the character coordinates and cyclotomic
+polynomial coefficients.  All arithmetic, not only point counting,
+is reproduced by the supplied source files and outputs.
+\end{proof}
+
+\begin{claim}{AR.5}{Proved by exact computation; degree seven for classes 203 and 302}
+Let $\alpha^2+\alpha+1=0$, and let $C_{203}/\mathbf F_4$ have equation
+\[
+ Y^2+(z^2+z+\alpha)Y
+  =(z^2+z+\alpha)(z^3+z^2+z+\alpha^2).
+\]
+Let $C_{302}$ be its coefficientwise square.  Every original
+$\mathbf F_4$-rational point on either curve has an L1 witness of
+degree seven over $\mathbf F_4$ or $\mathbf F_{64}$.
+Together with the no-degree-three and no-degree-five proof in AC.17,
+the least odd prime for each of these fourteen pointed pairs is seven.
+The witnesses are constant-deck Lang covers with the indicated
+base-point twist, not merely geometric covers.
+\end{claim}
+\begin{proof}
+Both curves have seven rational points and Jacobian order $28$ over
+$\mathbf F_4$.  The tests are reproduced by
+\texttt{A4\_203\_extensions.py}; all character bases and exact
+polynomials are retained in its six JSON outputs.  For $C_{203}$,
+the seven points are infinity and the two points above each of
+$z=1,\alpha,\alpha^2$.  At infinity the unique prime-seven quotient
+has relative class number $9409=97^2$.  At the two points above
+$\alpha$ the value is $4243$.  Both values are odd.  At the four
+points above $1$ and $\alpha^2$ it is $25768$, so that particular
+base-field quotient fails.  Over $\mathbf F_{16}$ the corresponding
+tests still fail for these four points.
+
+Over $\mathbf F_{64}$ the Jacobian order is
+$6076=4\cdot7^2\cdot31$.  In the deterministically computed basis
+of $J/7J$, each of the four remaining points has a successful
+character $(1,3)$; the exact norm of its displayed twisted
+polynomial is $120974743723$, an odd integer.  The program also
+lists the other successful directions and every unsuccessful one.
+The infinity direction $(1,0)$ has norm $129436611529$.
+Coefficientwise squaring identifies the entire calculation for
+$C_{302}$, and the script independently repeats it.
+
+The finite extension comparison here is explicit: each quotient is
+of $J_C(\mathbf F_{64})$, and its Lang pullback is based at the
+image of the \emph{original} $P$.  Thus it is a geometrically
+connected constant cyclic cover in which $P$ splits, and AC.2
+applies over that exact field.  We never infer this rational
+condition from its holding over a different field.  Finally AC.17
+excludes the only smaller odd primes, three and five, over all
+finite extensions.  This establishes the asserted minimum, not
+only a bound obtained from the search.
+\end{proof}
+
+\begin{claim}{AR.6}{Proved by exact computation and Cartier certificates; all F4 pointed pairs}
+Every one of the $730$ pointed pairs in the complete $\mathbf F_4$
+genus-two census has a rational L1 witness over a specified finite
+extension. Starting with the $117$ pairs without a base-field witness,
+the successive tests over $\mathbf F_{16},\mathbf F_{64},\mathbf F_{256}$
+leave $52,26,24$ pairs. For each of these last $24$, the least prime is
+$11$, with a witness over $\mathbf F_{4^{60}}$. An independent
+prime-$113$ witness exists over $\mathbf F_{4^{16}}$.
+The full characteristic-zero twisted $L$-polynomials are supplied for
+the first $706$ pairs. For the last $24$, we give exact mod-two
+Cartier certificates and the relative zeta numerator modulo two;
+the full characteristic-zero polynomials have not been computed.
+This remaining polynomial requirement of A4 is therefore explicit.
+\end{claim}
+\begin{proof}
+The extension scripts use the same exhaustive Jacobian and character
+algorithms as AR.4. They embed $\mathbf F_4$ by the first root of
+$X^2+X+1$ in the specified larger binary field, map every original
+point by that embedding, and base every character at that point.
+The irreducible binary moduli are $19,67,283$ for sizes $16,64,256$.
+Only pairs already supplied with a witness are omitted at the next
+stage. The two final supersingular successes are independently
+certified in AC.21 by a degree-five Fermat cover.
+The remaining model identifiers are
+$42,43,46,47,54,55,56,57$ in the complete F4 JSON census.
+In Artin--Schreier form the first four are
+\[
+ y^2+y=x+c/[x(x+1)]+d,
+ \qquad c\in\{\alpha,\alpha^2\},\quad d\in\{0,\alpha\};
+\]
+the last four are the quadratic-pole forms
+$y^2+y=x+c/(x^2+x+\alpha)+d$ with the same parameters.
+The first four have respectively $7,3,7,3$ remaining points;
+only infinity remains on each of the last four.
+
+All eight forms become one of the two coefficient-conjugate split
+forms over $\mathbf F_{4^4}$. Indeed choose $s^2+s=\alpha$, replace
+$x$ by $z+s$ in the quadratic-pole forms, and remove the resulting
+constant by $y\mapsto y+e$ with $e^2+e=s+d$. These choices exist
+in $\mathbf F_{4^4}$. The split twists need only the latter
+Artin--Schreier constant change. Both witness fields displayed in
+the claim contain this field. The original Jacobian orders
+$32,12,48,8$ are prime to $11$ and $113$. Consequently the difference
+between any two original rational points is divisible by those
+primes already in the original Jacobian, so each corresponding
+Lang character has trivial base-point twist on those points.
+The coefficient-conjugate form is handled by squaring coefficients.
+
+The exact Cartier calculation, its normalization at infinity,
+and the two independent certificates are proved in AC.27--AC.30.
+For degree $11$ the relative zeta numerator reduces to
+$1+T^4+T^{10}$, whose value at $1$ is one in $\mathbf F_2$.
+The degree-$113$ relative numerator is likewise explicitly retained
+and has value one. These are proofs of the required rational
+relative-class-number parity, rather than point-count estimates.
+The no-$3$, no-$5$, and no-$7$ arguments in those statements prove
+the asserted minimum $11$ over all finite extensions.
+
+All original finite-field tests, including failures, are retained
+in \texttt{A4\_F4\_extensions.csv} and
+\texttt{A4\_F4\_F256.csv}. The two large-field certificates retain
+an irreducible field modulus, the torsion Mumford divisor, every
+nonzero multiple, the tangent coefficients and the Frobenius test.
+The independent pure-Python verifier checks these without the
+optional compiled arithmetic helper. The combined witness table
+identifies these certificates separately from full $L$-polynomial
+records; it does not invent the missing characteristic-zero data.
+\end{proof}
+
+\begin{claim}{AR.15}{Proved; complete comparison with the geometric R6 classes}
+The $146$ arithmetic forms in the $\mathbf F_4$ census map to
+exactly $64$ geometric classes: $4$ of two-rank zero, $12$ of
+two-rank one, and $48$ ordinary classes. The file
+\texttt{A4\_R6\_class\_comparison.csv} gives every geometric class,
+every arithmetic model above it, every original rational point's
+witness coverage, and the primitive annihilator reported in R6.
+The distinguished ordinary classes have the following arithmetic
+identifiers:
+\[
+\begin{array}{c|l}
+203&66,67\\
+302&64,65\\
+122&46,47,56,57\\
+133&42,43,54,55.
+\end{array}
+\]
+This verifies the comparison and all original-point rational
+certificates. The earlier primitive certificates themselves are
+not asserted to have been rerun: their auxiliary coefficient files
+were not among the supplied background files.
+\end{claim}
+\begin{proof}
+We compute the geometric invariants, rather than identify arithmetic
+models by a suggestive label. For the ordinary normalized equation
+$y^2+y=ax+b/x+c/(x+1)$, the unordered triple $\{a,b,c\}$ is
+the complete geometric datum. The key $s_1s_2s_3$ records its
+elementary symmetric functions. For a quadratic-pole model
+$ax+(bx+c)/(x^2+x+\alpha)+d$, choose the two roots $r,r+1$.
+Translation gives the triple $(a,br+c,b(r+1)+c)$.
+For a cubic-pole model $n(x)/h(x)$, with distinct roots
+$r_0,r_1,r_\infty$, put
+\[
+ K=\frac{r_1+r_\infty}{r_1+r_0},\qquad
+ \rho_i=\frac{n(r_i)}{h'(r_i)}.
+\]
+The substitution $x=(r_\infty z+Kr_0)/(z+K)$ gives
+\[
+ (a,b,c)=\left(
+ \frac{\rho_\infty}{K(r_0+r_\infty)},\quad
+ \frac{K\rho_0}{r_\infty+r_0},\quad
+ \frac{(1+K)\rho_1}{r_\infty+r_1}\right).
+\]
+These expressions follow by comparing the simple pole residues at
+$z=\infty,0,1$; the remaining term is constant and is removed
+geometrically by an Artin--Schreier change.
+
+For two-rank one, $ax^3+bx+c/x$ has normalized pair
+$(ac^3,bc)$. For two-rank zero, $ax^5+bx^3+cx$ has invariant
+$b^5/a^3$. The completeness of these invariants, including
+geometric rather than arithmetic isomorphism, is precisely
+\cite[Definition~19, Theorems~20 and~22, Corollary~23]{AR_CNP2005}.
+The first two normalizations also follow directly by scaling and
+permuting the branch coordinates as above.
+
+The comparison program evaluates all formulas exactly in a common
+field $\mathbf F_{4096}$, checks that the symmetric invariants lie
+in its specified $\mathbf F_4$ subfield, and obtains the displayed
+partition with $64$ keys. It then joins the arithmetic model
+identifiers to the independently computed witness table; every
+one of the $730$ original points has a successful record.
+The R6 column is a transcription of AP-A.C2.22, AP-A.C2.25 and
+AP-A.C2.26, labelled as such. In particular its annihilator $15$
+for classes $122,133$ is a primitive-factor statement, whereas
+the degree-$11$ certificates here are whole-relative rational
+statements. Neither column is silently substituted for the other.
+\end{proof}
+
+\begin{claim}{AR.16}{Proved; exact cubic classification in all three censuses}
+In characteristic two, the locally exact differential theta divisor
+of a genus-two curve contains a nonzero point of order three
+if and only if the curve is ordinary and its normalized geometric
+coefficients satisfy
+\[
+                         (a+b+c)^3=abc.
+\]
+Consequently the all-extension cubic-existence criterion AC.22
+is decidable from this invariant and the base-field cubic tests.
+In the complete pointed censuses, the numbers are
+\[
+\begin{array}{c|r|r|r}
+q&\text{original pairs}&\text{least prime is }3&
+   \text{no cubic witness over any extension}\\\hline
+4&730&264&466\\
+8&9846&3240&6606\\
+16&143990&40284&103706.
+\end{array}
+\]
+For $q=4$, explicit characters and full twisted polynomials are
+retained for all $264$ positive pairs, over $\mathbf F_4$,
+$\mathbf F_{16}$ or $\mathbf F_{256}$. For the other fields the
+table is an exact existence and minimum classification; it does
+not pretend that every additional character polynomial has been
+computed. Whenever a retained degree-five witness has a negative
+cubic classification, five is its proved all-extension least prime.
+\end{claim}
+\begin{proof}
+In the ordinary normalized model let $W_0,W_1,W_\infty$ be
+the branch points and put $B_\Theta=W_0+W_1-W_\infty$.
+The theta divisor consists of $[R-B_\Theta]$. If such a nonzero
+class has order three, there is a function with divisor
+$3R-3B_\Theta$. Multiplying it by $x(x+1)$ gives a function
+with divisor $3R-W_0-W_1-W_\infty$. Riemann--Roch gives
+\[
+ L(W_0+W_1+W_\infty)=\langle1,y\rangle,
+\]
+since this divisor has degree three and $g=2$.
+Write the function, after scaling, as $y+\beta$, and write
+$t=x(R)$ and $\delta=\beta^2+\beta$. The fibre at $R$ is
+unramified: a branch point would give a two-primary theta
+class, which cannot have order three. Its norm identity is
+\[
+ b+(b+c)x+ax^2+ax^3+\delta(x^2+x)=a(x+t)^3.
+\]
+Comparison of coefficients gives
+\[
+ b=at^3,\qquad c=a(t+1)^3,\qquad \delta=a(t+1).
+\]
+It follows that $(a+b+c)^3=abc$.
+
+Conversely suppose that equality holds. If $b+c\ne0$, put
+$t=(a+c)/(b+c)$; substitution, using the assumed equality,
+gives $b=at^3$ and $c=a(t+1)^3$. If $b=c$, the equality forces
+$a=b=c$, and either root of $t^2+t+1$ has the same property.
+In both cases $t\ne0,1$. Choose $\beta$ with
+$\beta^2+\beta=a(t+1)$ and let $R=(t,\beta)$.
+The displayed norm identity proves
+\[
+ \operatorname{div}\left(\frac{y+\beta}{x(x+1)}\right)
+                      =3(R-B_\Theta).
+\]
+The class is nonzero, since $2B_\Theta$ is canonical, whereas
+$R$ is not a branch point of the hyperelliptic map. It therefore
+has exact order three.
+
+In two-rank zero or one, the locally exact differential line is
+$\mathcal O(W)$ for a branch point $W$: in the single-pole model
+use $\operatorname{div}(dx)=2W_\infty$, and in the $(3,1)$
+model use $\operatorname{div}(dx)=2W_0$.
+Thus theta is $C-W$. A nonzero point of order three on theta
+would give a function with sole pole of exact order three at
+the Weierstrass point $W$. The gap sequence $1,3$, or directly
+the basis $L(3W)=\langle1,x\rangle$ after making $W$ infinity,
+excludes this. This proves the geometric criterion in every stratum.
+
+AC.22 now says that a cubic witness exists precisely when this
+geometric condition holds or a base-field cubic character succeeds.
+The latter are all enumerated in AR.4. The program
+\texttt{A4\_cubic\_classification.py} computes the invariant
+for every arithmetic form and joins that decision to every
+original point. Its exact field operations and its full table
+give the three counts in the claim. For the ordinary quadratic
+model the test is
+\[
+ (a+b)^3=a(\tau b^2+bc+c^2),\qquad h=x^2+x+\tau;
+\]
+for cubic-pole models it uses the residue normalization of AR.15.
+The required splitting fields have sizes at most $q^3$.
+
+For the $59$ positive $\mathbf F_4$ pairs lacking a base-field
+cubic witness, the extra exact character tests supply $49$
+over $\mathbf F_{16}$ and the remaining $10$ over
+$\mathbf F_{256}$. Both successful and unsuccessful tests are
+retained. In particular the latter ten are not assigned the
+incorrect smaller field merely from the geometric theta condition.
+Finally there is no smaller admissible prime than three; after
+three is excluded, a successful degree-five record proves its
+minimum as stated.
+\end{proof}
+
+\begin{claim}{AR.7}{Open; the remaining computational scope of A4}
+The base-field pointed odd-prime tests for smooth plane quartics over
+$\mathbf F_3$ and $\mathbf F_5$ are complete in AG.24 and AG.26,
+including independent exact integer norm audits. The complete
+consolidated table is \path{code/A4_quartic_witnesses.csv}.
+However, least primes over arbitrary finite extensions have not been
+determined for every genus-two or quartic pointed pair outside the
+explicitly proved cases. The full characteristic-zero character
+polynomials for the large-field degree-$11$ and degree-$113$
+genus-two certificates have not been computed; their full mod-two
+certificates and the precise fields are retained in AC.28.
+The exhaustive tables and successful finite tests do not replace
+either missing minimum or missing characteristic-zero polynomial.
+\end{claim}
