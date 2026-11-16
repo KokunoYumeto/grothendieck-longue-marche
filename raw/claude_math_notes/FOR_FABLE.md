@@ -139,3 +139,12 @@ Papors/Chatnotes/comprehensive_coupled_gerbe_theta_hesse_landau_paper_final.tex,
   C.2.3); b2(X) = 0 kills Omega in the Leray sequence by the usual argument once a multiple extends over the special
   fibres (Engel 7.3-7.4). F15: the mixed class is an Euler class of a Heisenberg nilmanifold over the angle torus,
   T-dual to the user's T^3 gerbe; B.4.33 is analytic and global, not a topological non-extension.
+
+## F18 (16 Nov; NOTES §39) ANABELIAN A1 and A.87: check before anyone calls it new or wrong.
+For the Longue Marche expert (with the user's OK). ANABELIAN_SUCCESSOR final A.3 claims injectivity of the geometrically
+prime-to-p point-section map for every proper curve of genus >= 2 over every finite field. That is the emptiness of
+Saidi-Tamagawa's exceptional set E_C (2009, finite; 2017, behaviour under covers) for Sigma = {l != p}, and it answers
+the question of cote 149, scans 35-36 ("Il se pourrait qu'on puisse en deduire P = Q"). A.87 refutes full prime-to-p
+configuration exactness, even for complex curves; the run says the "cuspidalization literature" disputes or uses it.
+Check: (1) literature on E_C after 2017; (2) AG.40-AG.42 (sections in agent_geometric/); (3) which paper asserts full
+prime-to-p exactness and whether a published proof rests on it (as with F17, nobody is told before this is checked).
