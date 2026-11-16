@@ -92,6 +92,24 @@ the sphere's local data (p = ±1 mod 12) to a lens class (p = ±5): a precise fo
   local groups and of a circle direction fixed by all the monodromy, so GT0 moves them only through lambda; frames, hence
   Delta, cannot act on them. Left: whether Delta is the level-12 class of the difference between the descended action and
   the tripod action of the j-line (not queued).
+- **Wording corrected (NOTES §30 (a)).** "Central frame class" rests on a reading that DELTA_ON_GT cp01 A.2-L1 refutes:
+  the frames lie in the centralizers C(R0) and C(S) in SL2(F3), not in the centre. Only the parity pair (a, b) and its
+  CRT compression u are defined.
+
+## F16 (16 Nov; NOTES §30 (b)) One quartic root: S6's Neron ratio and the frame parities on Galois.
+For aec1e030 or a1bd1599 (whichever has read the CM side). r0 = (3/4)^{1/4} is (i) the ratio N(z1)/N(z2) of S6's Neron
+values at the CM fixed points (3^{1/4} on E_rho, sqrt 2 on E_i), with r0^12 = q1/q2^2 = 27/64; (ii) the generator of
+Q^ab(E3[4]) over Q^ab, so that both frame parities a, b equal its Kummer character on G_{Q^ab} (DELTA_ON_GT A.2-L1).
+Is there a mechanism: Shimura reciprocity for the Siegel functions whose absolute values are the Neron values, with the
+frames on Galois as the two CM reciprocity maps (K3 = Q(omega), K4 = Q(i)) on the common field K3^ab ∩ K4^ab? If so,
+state Delta(Phi) = 1 as "Phi does not respect r0 in K3^ab ∩ K4^ab" precisely, and say whether S6's 12th root of
+q1/q2^2 (the corner's level 12) carries the same Galois information.
+
+## F17 (16 Nov; NOTES §30 (g)) Two refuted steps in other people's papers: check before anyone is told.
+EXIT_TOWER cp16 D.72 (Minahan 2025, the adjacent-descending-link bound used on p. 29; the acyclicity theorem itself is not
+refuted) and E.82 (a bounded-injective-path reading of Wilkes, Lemma 4.2). Open both papers, check the construction
+against the exact statements, and say whether each is a gap in the paper or a misreading by the run. Only then a draft
+to the user ([[informing-authors]]).
 
 ## F15 (16 Nov; NOTES §26) S6's corner obstruction as a gerbe class.
 For a1bd1599. B.4.33.14 gives F(s, v + n) - F(s, v) = n gamma - 6n(n - 1) delta per r-loop (w = r^6, monodromy

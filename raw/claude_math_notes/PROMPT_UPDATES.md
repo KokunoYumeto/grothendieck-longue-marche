@@ -53,3 +53,11 @@ a line here.
 - LM 02_SECTIONS_OVER_Q was sent tonight without aec1e030's C1 (the candidate above): C1 moves to its successor.
 - LM 05_DELTA_ON_GT was not sent tonight: R4 (CONSULT_AEC1E030_RAMANUJAN_20261116.md) and the chi_12 reading of NOTES
   §24 can go into item 2 before it is sent. Not implemented yet.
+
+## 16 Nov ~03:3x UTC
+- LM 05_DELTA_ON_GT was sent by the user after 01:40 UTC (first checkpoint filed 03:4x UTC). It went out with the eta
+  line and consult lead C4, without R4 and without the chi_12 reading. Both are moot: the run's first checkpoint
+  (A.2-L1) refutes the literal central-frame reading item 2(a) asked about, and R4 as worded fails anyway (a central
+  element acts by a scalar on the irreducible rank-2 local system of E4^{1/4}). NOTES §30 (a). As-sent copy:
+  longue_marche_pro_pilot_20261104/pro_prompts_draft_20261111_work/DELTA_ON_GT/PROMPT_as_sent_20261116.md (+ sha256);
+  the folder moved to ALREADY_RAN.
