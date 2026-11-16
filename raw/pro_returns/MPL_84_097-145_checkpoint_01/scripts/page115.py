@@ -1,0 +1,52 @@
+from record import draft
+draft(115,r'''
+\scanpage{115}
+\deleted{
+\unsure{Sous réserve} que les $\alpha_i:A_i\mathbin{-}A$ soient bien injectifs, elle montre que chacun des $T_i$ est déterminé par les deux autres, via
+\[
+ \alpha_1T_1(x)=2x+\deleted{\unsure{\alpha_2T_2(x)\alpha_3T_3(x)}}\inserted{T_{A/k}(x)-\alpha_2T_2(x)-\alpha_3T_3(x)}
+\]
+On s'attend à trouver \deleted{des} formules similaires, multiplicatives
+\[
+ \boxed{N_{A/k}(x)x^2=N_1(x)N_2(x)N_3(x)}
+\]
+et
+\[
+ \deleted{\unsure{N}}\boxed{n_1(N_1(x))=n_2(N_2(x))=n_3(N_3(x))}
+\]
+}
+Mais \deleted{toutes} les \deleted{conditions}\inserted{relations sur les normes} \unsure{se prouvent} aisément, comme \uline{conséquences} de celles sur les traces, i.e. la condition $\sigma_1\sigma_2\sigma_3=1$ sur les $\sigma_i$.
+
+En effet, posons
+\[
+ x_0=x,\quad x_1=\unsure{T_1|\sigma_1}(x),\quad x_2=\unsure{T_2|\sigma_2}(x),\quad x_3=\unsure{T_3|\sigma_3}(x)
+\]
+On a alors
+\diagram{\[
+ \begin{array}{c@{\ :\ }ll}
+ \sigma_1&x_0\longleftrightarrow x_1&x_2\longleftrightarrow x_3\\
+ \sigma_2&x_0\longleftrightarrow x_2&x_1\longleftrightarrow x_3\\
+ \sigma_3&x_0\longleftrightarrow x_3,&x_1\longleftarrow x_2
+ \end{array}
+\]}
+d'où
+\deleted{\[
+ \unsure{n_1|N_1}(N_1(x))=N_1(x)\overline{N_1(x)}=\unsure{x\sigma_2(x\sigma_1(x))}
+\]}
+\deleted{\[
+ N_1(x_1)=\unsure{x_1x_2}
+\]}
+\[
+ n_1(N_1(x))\overset{!}{=}\underset{\substack{\text{''}\\x\deleted{\unsure{T}}\sigma_1(x)}}{\underbrace{N_1(x)}}\,\overline{N_1(x)}
+ =(x_0x_1)\underbrace{\sigma_2(x_0x_1)}_{x_2x_3}=x_0x_1x_2x_3
+\]
+et de même pour $n_2(N_2(x)),\ n_3(N_3(x))$. Donc on a l'égalité des $n_i(N_i(x))$ si $k\mathbin{-}A$ est \uline{injectif}. Et on a
+\[
+ \begin{aligned}
+ N_1(x)N_2(x)N_3(x)&=(x_0x_1)(x_0x_2)(x_0x_3)\\
+ &=x_0^2\underbrace{(x_0x_1x_2x_3)}_{N_{A/k}(x_0)}=x^2N_{A/k}(x),
+ \end{aligned}
+\]
+O.K.
+\mspage{114}
+''')

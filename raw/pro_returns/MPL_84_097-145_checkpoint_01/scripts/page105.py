@@ -1,0 +1,43 @@
+from record import draft
+draft(105,r'''
+\scanpage{105}
+\uline{Proposition} Soient $A_1,A_2$ des alg. quadratiques sur $O$, et $A=A_1\wedge A_2$. \deleted{On a alors}.
+
+1) \deleted{On a \unsure{alors}} L'hom canonique
+\[
+ A_1\otimes A_2\xrightarrow{\deleted{\unsure{\tau}}\,\inserted{\operatorname{Tr}_{A_1\otimes A_2/A}}}A
+\]
+(défini par la construction de $A$ comme ext. de $L_1^\vee\otimes L_2^\vee$ par $\underline O$, déduite de l'extension \inserted{$A_1\otimes A_2$} de $L_1^\vee\otimes L_2^\vee$ par $A_1\unsure{\oplus_{\underline O}|\amalg_{\underline O}}A_2\subset A$, \inserted{$A_1\oplus_{\underline O}A_2$} et de l'hom
+\[
+ A_1\oplus_{\underline O}A_2\xrightarrow[\substack{\text{donné par}\\ \operatorname{Tr}_{A_1}\text{ et }\operatorname{Tr}_{A_2}\\\text{sur les deux sommants}}]{\operatorname{Tr}}\underline O,
+\]
+\margin{\uline{NB} On a
+$\operatorname{Tr}\,(\sigma_1\otimes\operatorname{id}_{A_2})(\xi)=\deleted{\unsure{\overline{\operatorname{Tr}(\xi)}}}\operatorname{Tr}\,(\operatorname{id}_{A_1}\otimes\sigma_2)(\xi)
+=\deleted{\unsure{\sigma_A}}\overline{\operatorname{Tr}\xi}$, d'où
+$\operatorname{Tr}(\bar\xi)=\operatorname{Tr}(\xi)$ où $\bar\xi=(\sigma_1\otimes\sigma_2)\unsure{_{A_1\otimes_{\underline O}A_2}}(\xi)$.}
+sera considéré comme \unsure{un hom. trace}.
+Son composé avec l'hom can.
+\[
+ A\longrightarrow A_1\otimes A_2
+\]
+(qui a \unsure{tendance} à être univ. injectif, cf. plus haut) \deleted{\unsure{est}} n'est autre que
+\[
+ \xi\longmapsto\xi+\bar\xi,\qquad\text{i.e.}\quad
+ \boxed{i\bigl(\operatorname{Tr}_{A_1\otimes A_2/A}(\xi)\bigr)=\xi+\bar\xi}
+\]
+\[
+ \bar\xi=\sigma_1\otimes\sigma_2(\xi)
+\]
+\margin{On a aussi $\boxed{\operatorname{Tr}_{A_1\otimes A_2/A}(i(\eta))=2\eta}$ pour $\eta\in\Gamma A$.}
+$\sigma_1,\sigma_2$ les involutions canoniques de $A_1,A_2$
+\[
+ x_1\longmapsto\operatorname{Tr}_{A_1}(x_1)-x_1,\qquad
+ x_2\longmapsto\operatorname{Tr}_{A_2}(x_2)-x_2.
+\]
+
+2) Il existe sur $A_1\otimes A_2$ une application quadratique unique, à val. dans $A$, notée
+\[
+ N=N_{A_1\otimes A_2/A},
+\]
+\mspage{104}
+''')

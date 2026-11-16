@@ -1,0 +1,25 @@
+from record import draft
+draft(118,r'''
+\scanpage{118}
+i.e., en termes de $\mathcal X=\operatorname{Spec}A$, le composé
+\diagram{\begin{tikzcd}[column sep=large]
+\mathcal X\arrow[r,no head]&X_1\times_X X_2\times_X X_3\arrow[r]&X_1\wedge X_2\wedge X_3
+\end{tikzcd}},
+j'ai envie de \unsure{prouver} que \unsure{c'est un hom|l'on a un hom} \uline{constant} i.e. qu'il se factorise par une \uline{section} de $X_1\wedge X_2\wedge X_3$, ce qui signifie aussi que l'hom composé précédent
+\diagram{\begin{tikzcd}
+B\arrow[rr,"f"]\arrow[dr]&&A\\
+&(\bigotimes A_i)^{\unsure{\gamma|\Gamma}}\arrow[ur]&
+\end{tikzcd}}
+est à valeurs dans $k.1_A$. (Du moins, il y a équivalence quand on suppose $k\mathbin{-}A$ injectif --- c'est ce qu'on va supposer maintenant, pour simplifier.)
+
+Mais on a évidemment
+\[
+ f(B)\subset A^{\unsure{\gamma|\Gamma}},
+\]
+et la condition \uline{est vérifiée} si on suppose
+\[
+ \boxed{A^{\unsure{\gamma|\Gamma}}=k.1_A}.
+\]
+(C'est là une condition pas tjrs vérifiée, même dans des cas intéressants, à cause de la car. 2. Mais si $2$ est inversible dans $k$, c'est tjrs vrai compte tenu des conditions précédentes).
+\mspage{117}
+''')

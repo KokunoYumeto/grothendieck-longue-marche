@@ -1,0 +1,55 @@
+from record import draft
+draft(138,r"""
+\scanpage{138}\mspage{137}
+\deleted{\((f_1*f_2)(x_1*x_2)=\)}
+\[
+(f_1*f_2)\big|_{E_1\otimes E_2}:\quad E_1\otimes E_2\longrightarrow L_1\otimes L_2
+\]
+\[
+\boxed{\begin{aligned}
+f_1*f_2\,(x_1*x_2)&=\lambda_1\pi_1(x_1)\otimes f_2(x_2)
++f_1(x_1)\otimes\lambda_2\pi_2(\overset{\deleted{\unsure{\lambda_2+}}}{x_2})
+-\chi f_1(x_1)\otimes f_2(x_2)\\
+\text{i.e. }\quad f_1*f_2\big|_{E_1\otimes\unsure{E_1|E_2}}
+\quad[E_1\otimes E_2\longrightarrow L_1\otimes L_2]
+&\overset{!}{=}\lambda_1\pi_1\otimes f_2+f_1\otimes\lambda_2\pi_2-\chi f_1\otimes f_2
+\end{aligned}}
+\]
+\[
+f_1*f_2\,(u_1\otimes u_2)=\lambda_1\lambda_2(u_1\otimes u_2)
+\]
+\deleted{\unsure{Si on}}
+Vérifions
+\[
+f_1*f_2\,(x_1*u_2)=\lambda_1\lambda_2\pi_1(x_1)\otimes u_2
+\]
+\[
+\lambda_1\pi_1(x_1)\unsure{)}\otimes\lambda_2u_2+
+\deleted{f_1(x_1)\otimes\underbrace{\lambda_2\chi}u_2}
+-\deleted{\underbrace{\chi f_1(x_1)\otimes\lambda_2u_2}}
+\qquad OK
+\]
+\[
+\begin{aligned}
+(\pi_1*\pi_2)(x_1*x_2)&=\chi\{\pi_1(x_1)\otimes\pi_2(x_2),\\
+(\pi_1*\pi_2)(u_1\otimes u_2)&=\chi^2\unsure{u_1}\otimes u_2
+\end{aligned}\quad\Big]
+\qquad\frac1\chi\,\pi_1*\pi_2=\pi
+\]
+\[
+x_1*x_2\simeq\unsure{\Psi_1(x_1)|\psi_1(x_1)}
+\]
+\figure{\begin{tikzpicture}\draw(0,0)--(0,1.8);\end{tikzpicture}}
+\[
+\begin{array}{cc}
+L_i&p_i\\[1em]M_i&q_i
+\end{array}
+\qquad1+\underbrace{p_1q_1},\quad1+\underbrace{p_2q_2}
+\qquad1+(p_1p_2)(q_1q_2)
+\]
+\[
+\deleted{[x,y]=}\qquad
+x\longrightarrow\deleted{\unsure{\psi(x)y|y(x)\psi}}
+\psi(x)\pi-\chi\unsure{x}
+\]
+""")

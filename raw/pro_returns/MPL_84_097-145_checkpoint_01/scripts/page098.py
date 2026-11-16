@@ -1,0 +1,25 @@
+from record import draft
+
+draft(98,r'''
+\scanpage{98}
+et l'isom $E\longrightarrow\mathcal A\otimes L$ respecte les décompositions en somme directe
+\diagram{\begin{tikzcd}
+E={} & \underline L \arrow[d,"-\mathrm{id}_L"'] & \oplus & \underline{\mathcal O}.x_0 \arrow[d,no head,"\mathrm{id}"]\\
+\mathcal A\otimes L\simeq{} & \underline L & \oplus & \underline{\mathcal O}.
+\end{tikzcd}}
+Si donc $Q$ est donné par
+\[
+Q(\underbrace{u}_{\in\Gamma L}+\lambda x_0)=u^2+\lambda\deleted{\unsure{x}}\langle u,\underbrace{b}_{\in\Gamma L}\rangle+\lambda^2\underbrace{c}_{\in\Gamma L^{\otimes2}},
+\]
+le signe $-\mathrm{id}_L$ dans les diagrammes précédents implique que l'on aura
+\[
+N(\underbrace{v}_{\in\Gamma L^\vee}+\lambda1)=\unsure{\lambda^2}\ \deleted{\unsure{+}}\unsure{-}\lambda\langle v,b\rangle+\langle v^2,c\rangle
+\]
+La formule
+\[
+\boxed{Q_N(\varphi_N(x))=-N(x)\delta_N}
+\]
+(\unsure{On donne un sens aux deux symboles pour : l'argument $N$ variable}\ldots) est bien sûr valable dans le contexte général d'un mod. loc. libre $A$ \inserted{de rg $2$} \deleted{et d'} une forme quadratique \deleted{\unsure{inut.}} $N$ dessus, sans autre donnée.
+\figure{\begin{tikzpicture}\draw (0,0) .. controls (.12,-.40) and (.20,-.68) .. (.34,-.86);\end{tikzpicture}}
+\mspage{97}
+''')

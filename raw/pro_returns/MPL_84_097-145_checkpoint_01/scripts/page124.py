@@ -1,0 +1,33 @@
+from record import draft
+draft(124,r'''\scanpage{124}
+\diagram{\begin{tikzcd}[column sep=large,row sep=large]
+0\arrow[r]&L\arrow[r]\arrow[d,"\alpha"']&E\arrow[r,no head]\arrow[l,bend right=45,"\pi"']\arrow[d,no head,"\beta"]&M\arrow[r,no head]\arrow[l,bend right=45,"\unsure{\varpi|\overline\omega}"']\arrow[d,no head,"\gamma"]&0\\
+0\arrow[r,no head]&L'\arrow[r,no head]&E'\arrow[r,no head]\arrow[l,bend left=45,"\pi'"]&M'\arrow[r,no head]\arrow[l,bend left=45,"\unsure{\varpi'|\overline\omega'}"]&0
+\end{tikzcd}}
+\[
+ \alpha\pi(x)\overset{?}{=}\pi'\beta(x)\quad\overset{?}{\Longleftrightarrow}\quad\beta\varpi(y)=\varpi'\gamma(y)\quad ?
+\]
+\[
+ \underbrace{\unsure{\beta|\alpha}\pi(x)=\pi'\beta(x)}_{\beta(\unsure{\operatorname{id}}-\varpi)=(\unsure{\operatorname{id}}-\varpi')\beta}
+ \quad\Longleftrightarrow\quad\beta\varpi(x)\unsure{\equiv|=}
+\]
+\[
+ \deleted{-\beta\varpi=\unsure{-\varpi'}\beta}
+\]
+\diagram{\begin{tikzcd}[column sep=large,row sep=large]
+E_1\arrow[d]&E_2\arrow[d,no head]&\Rightarrow&E_1\wedge E_2\arrow[r]&E'_{\unsure{1}}\\
+E'_1&E'_2&&&
+\end{tikzcd}}
+\diagram{\begin{tikzcd}[column sep=large,row sep=large]
+&E_1\otimes E_2\arrow[r]&E'_1\otimes\unsure{E'_2}\arrow[dr,"\unsure{*}"]&\\
+{E_1\otimes L_2,\ L_1\otimes E_2}\arrow[ur]\arrow[dr]&&&\unsure{E'_1}\wedge E'_2\\
+&L_1\otimes L_2\arrow[r,no head]&L'_1\otimes L'_2\arrow[ur,"\text{inj. can.}"']&
+\end{tikzcd}}
+\diagram{\begin{tikzcd}[column sep=large,row sep=huge]
+\unsure{x_1|u_1}\otimes u_2\arrow[r,mapsto]\arrow[dr,bend right=40]&\beta_1(x_1)\otimes\alpha_2(u_2)\arrow[r,no head]&\begin{gathered}\beta_1(x_1)*\unsure{\varphi'_2(u_2)}\\=\unsure{\pi'_1\beta_1(x_1)\otimes\alpha'_2(\alpha_2(u_2))}\end{gathered}\\
+&\pi_1(x_1)\otimes u_2\arrow[r]&\underbrace{\alpha_1\pi_1(x_1)}_{\pi_1\beta_1(x_1)}\otimes\alpha_2(\unsure{x_2|u_2})
+\end{tikzcd}}
+\[
+ E_1\wedge
+\]
+\mspage{123}''')
