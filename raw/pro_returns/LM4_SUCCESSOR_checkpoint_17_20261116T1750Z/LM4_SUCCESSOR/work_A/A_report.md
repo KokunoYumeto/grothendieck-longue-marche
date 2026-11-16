@@ -1,0 +1,563 @@
+# Part A working outcome table
+
+| Prompt item | Paper statements | State |
+|---|---|---|
+| A.1 literature | A.1 | Sources opened and relevant theorem scopes checked; no exhaustive claim that R1 lacks a later antecedent. |
+| A.2 / Lead 1 | A.2 | Proved from R2, with compactness and descent maps supplied. |
+| A.2 / Lead 2 | A.3 | Proved from the finite central-refinement theorem in the refereed proof of LM7_PUSH D.50. |
+| A.3 specified conjugator | A.4–A.6, A.15 | False, including for an actual Galois-conjugate of c; certificate in a group of order 16807. H1(C2,N) has exactly continuum cardinality. A.15 identifies its entire standard fibre by the quotient centralizer; exhaustion remains open. |
+| A.4 levels | A.9–A.10, A.12, A.17, A.23–A.32 | Odd-prime conjugacy proved. Actual parity-one involutions exist compatibly through all relative principal-congruence levels. This tower is explicitly noncofinal. Complete classification remains open. |
+| A.5 / Lead 3 | A.7–A.8, A.12, A.15–A.17, A.23–A.32 | Both named H1 sets have continuum cardinality. Lead 3 holds at U12 and compatibly through the entire relative principal-congruence tower. Arbitrary smaller characteristic levels and the full norm equation remain open. A finite refinement excludes arithmetic-only continuation. |
+| A.6 parity | A.13, A.24–A.26 | Delta is zero on the full standard family. The actual relative outer image at U12 and a finite actual-action quotient have parity-one involutions. Universal full vanishing and a full counterexample remain undecided. |
+| A.7 generation | A.11 | Reflection-triangle equivalence and detection on all relative levels proved. Ordinary pro-p tests are insufficient; the exact full third-cusp alignment remains necessary. |
+| A.8 decision | A.14 | All three full conjugacy questions remain undecided. Abstract finite subgroup types are exactly 1 and C2 by R1, but this is not conjugacy classification. |
+
+A.18 also refutes a blanket order-preserving version of R2 inside the actual peripheral groups: the pronilpotent automorphism that is c only at p=3 is an involution, but every full lift has mixed multiplier signs and therefore cannot have finite order by R1. This obstruction does not apply to A.17, whose multiplier is globally negative. A.19 gives the exact abelian refinement obstruction in H2(C2,M) and the conditional Z/4-character test for Delta.
+
+## Main new relative-level result
+
+A.25 proves the first assertion of Lead 3: the image G12 of GT0 in Out-sharp(F/R_nil(U12)) contains an actual involution a12 with global multiplier -1 and Delta12(a12)=1. A.24 proves that Delta descends to this actual outer image, not just to accessory framed data. It follows that a12 is not G12-conjugate to complex conjugation.
+
+Choose r0=(3/4)^(1/4)>0 and a Galois element gamma fixing i and sending r0 to i*r0. The cubed cocycle sigma=(gamma*c*gamma^-1*c)^3 is multiplier one, has both normalized CM bits one, and acts identically on Q12. Its actual action at p=2, combined with identity actions at all odd primes, defines an involutive action after multiplication by c on B/R_nil(U12). The key new centralizer calculation A.23 glues literal pure boundary frames: the r-frame can be changed to finite class one using its coprime centralizer at two, while the odd-prime s-centralizers supply the finite class b=(9,4;8,9) required by the dyadic s-frame. R2 gives a full peripheral lift of these data, whose relative action has square one and whose parity is one.
+
+This settles the existence statement at U12. It does not settle the full conjugacy question. For a chosen full lift a, a^2 belongs to L12=ker(GT0→G12). A full involution in this fibre exists exactly if v*(a v a^-1)=a^-2 has a solution v in L12. A.19 identifies each abelian refinement of this obstruction.
+
+A.26 gives an explicit next restriction. On the finite actual-action quotient D6=B/closure(U12-prime U12-sixth-powers), of order 576*6^97, both normalized frame bits are visible without additional frames. The involution a12 descends to an actual involution a6 of parity one. No Galois element of multiplier -1 induces a6. Consequently a continuation to any relative level below this kernel cannot be made from full Galois elements independently at each prime. Nongalois lifts and the full norm equation remain open. This is an obstruction to the arithmetic-only construction, not a proof of nonexistence of a full involution.
+
+## Main concrete correction
+
+Task A.3 is false as written. Choose a Galois element theta=(mu,g) whose multiplier is 2 modulo 7 and set alpha=theta*c*theta^-1. The unique coboundary is h=g^-1. On the free class-three exponent-seven quotient the coefficient of log(g) on [X,Y] equals (mu^2-1)/24=1. A multiplier-one pure peripheral automorphism must have coefficient zero. Thus the exact psi proposed in the prompt fails at the third cusp already in a finite pro-7 quotient. It is not an exotic involution: alpha was deliberately taken from the standard conjugacy orbit. This isolates the error in the proposed normalization, rather than disguising it as a solution of the main question.
+
+The certificate enumerates all 16807 elements of the group, checks exponent seven, computes the complete conjugacy orbit of xy (49 elements), excludes x*g^-1*y*g and includes x^2*g^-1*y^2*g in the orbit of (xy)^2. Code and stdout are retained.
+
+## Correct cohomological distinction
+
+The multiplier-one H1(C2,H) is not the set of full conjugacy classes. It already contains a closed copy of Zhat-units/{1,-1} from Galois conjugates, with Delta zero throughout. Its cardinality is continuum, even if the main full conjugacy question eventually has an affirmative answer. The full classes require quotienting this H1 by the multiplier-unit action, which need not fix its distinguished point. The same issue occurs for the fibre over c in the pronilpotent quotient: full conjugacy divides by the quotient centralizer acting by lifted conjugation. A.15 strengthens this: H1(C2,N) itself has exactly continuum cardinality, with the quotient centralizer modulo {1,c} giving exactly its entire full-standard fibre.
+
+The proof also rechecks LM4 D.49 rather than taking it on authority: C_P(c)={1,c}. It uses LS1997 Prop4(i), the normalized homomorphic section in R1, the Harbater–Schneps S3-centralizer characterization, a finite Heisenberg calculation of the hexagon with f=1, and R1's global sign conclusion.
+
+## Approaches tried and exact obstructions
+
+1. Relative pronilpotent inverse limit: proved detection and surjective transition maps. Detection of already-existing full involutions does not construct compatible involution lifts.
+2. Central obstruction lifting: proved Lead 2. The proof gives automorphisms and literal boundary conjugators but imposes no square-one equation.
+3. R1 normalized h / third cusp: refuted by A.5. A conjugator can require a multiplier different from 1; for the constructed alpha the only full peripheral conjugator multipliers are ±mu by A.6.
+4. Odd-prime local conjugacy: proved using the pro-p principal congruence kernel and Schur–Zassenhaus. This also proves the existence of some local multiplier-one peripheral conjugator for every odd p, despite failure of the particular globally fixed h.
+5. Nonabelian H1: its size and the standard closed family are determined. Delta now separates a nonstandard actual relative outer orbit at U12, but the existence of a full involution above that orbit remains undecided.
+6. Gluing the two frames / Lead 3: a new compatible-complement lemma proves that the local parity-one r-frame can be made anti-invariant. An extension of S3 by a pro-2 group splits compatibly with a prescribed reflection because restriction H^n(S3,M)→H^n(C2,M) is an isomorphism for n≥1 and every finite F2[S3]-module. The exact word h=[x,y]x[x,y]x^-1 gives a reflection lift in the relative joint quotient: q(h)=(9,4;8,9) and q(h*d(h)^-1)=5I, where d=Ad(s)c. This produces an actual local b with b*r=r*b, q(b)=5I and d(b)=b^-1. R2 then lifts the framed data to sigma of Delta=1. Its product a=sigma*c satisfies a^2∈L, where L is the kernel retaining the identity relative action and both frames equal to one. The remaining equation is v*(a v a^-1)=a^-2 for v∈L. No global equivariant section or solution is proved. The finite map C4→C2 remains only a logical control showing that surjectivity alone cannot solve it.
+7. Virtually free structure route: opened Herfort–Zalesskii2008 Theorem1.1 and §5 Lemma5.1. Their decomposition theorem is pro-p; the paper explicitly gives a full-profinite counterexample S3 amalg_C2 S3. That example has odd torsion and does not refute the more specific all-finite-subgroups-C2/rank-two-free-kernel statement needed here. Opened Pál–Quick Quasi-Boolean groups Theorems1.7/1.9/6.8: pro-2 real projectivity implies pro-2 free-product decomposition; full real projectivity only gives an embedding in a real free profinite group. Turning such an embedding into the marked full reflection triangle remains unresolved.
+8. Latest literature: opened the 2026 Lochak–Nakamura–Schneps manuscript on the GT action in genus g with 0 or1 marked points. Its Theorem1.1 is an action theorem, not involution conjugacy. It does not supply the missing order-preserving lifts.
+9. Equivariant count: the unrestricted formulation is false by the actual mixed-sign example A.18. In the globally negative A.17 fibre, the square obstruction at any finite abelian refinement is [a^2] in M^a/(1+a)M. It vanishes for odd-order M; dyadic terms remain. R2's boundary-class epimorphism count does not calculate this square class. The count cannot simply be reused with the additional order-two assertion.
+10. Character refinement: a continuous Z/4 lift of Delta would force Delta to vanish on all involutions. A c-invariant Z/4 lift of delta on the multiplier-one subgroup would suffice as well. Local parity-one framed involutions rule out such a lift on the local framed target. A hypothetical global lift must instead detect a^2 inside L, with value two. Neither its existence nor its impossibility has been proved.
+11. A.20 gives a second intrinsic failure of a proposed lift: the S3 subgroup generated by r and the locally glued reflection exists in the standard relative extension, but has no finite-subgroup lift in the standard full extension. All full S3 subgroups normalize a conjugate of the C3 factor, so are conjugate to the standard S3. In the finite quotient Q semidirect d, the new subgroup is not conjugate to that standard one. The exhaustive 576-element certificate finds a normalizer of order18 and nine d-norm values, disjoint from the three-element coset [5I]<r>. The short proof is the opposite-sign obstruction modulo four and three. This obstruction applies to the standard extension only; it does not exclude a new twisted extension attached to an exotic involution.
+
+## Important typing of the earlier local result
+
+A.17 constructs a framed cocycle; A.25 subsequently supplies the stronger actual relative involution at a different, finer level. Its underlying automorphism before multiplying c is identity on B/R_nil(H0); after multiplying c it is literally c on that quotient. It does not exhibit a nonstandard involution in Out-sharp of any actual relative quotient. Delta does not descend to that unframed level: E58 itself has identity action there and Delta one. The two accessory frames at this quotient are nonunique, which is precisely why they must be retained as separate data.
+
+## Sources opened
+
+- LS1997: https://webusers.imj-prg.fr/~pierre.lochak/textes/inventiones.pdf — Prop4(i)(ii), proof and normalized definitions.
+- Schneps1997: https://webusers.imj-prg.fr/~leila.schneps/SchnepsGT.pdf — §1.4(4).
+- LS2006: https://webusers.imj-prg.fr/~leila.schneps/farb.pdf — Question1.4 including its follow-up finite-order question.
+- HS2000: https://webusers.imj-prg.fr/~leila.schneps/HS.pdf — MainTheorem(a), Props3–4, Theorem2, normalized section.
+- Collas2012 genus0: https://collas.perso.math.cnrs.fr/documents/Collas-Genus0_gt-action.pdf — Theorems3.3/3.10.
+- Collas2012 genus1: https://collas.perso.math.cnrs.fr/documents/Collas-Genus1_gt_action.pdf — Theorems6.3/6.5; acting group GR retained.
+- HZ2008: https://arxiv.org/pdf/0712.4244 and https://mat.unb.br/pz/arquivos/vfreepaper3.pdf — pro-p theorem and full-profinite counterexample.
+- Pál–Quick: https://gereonq.folk.ntnu.no/boolean-group.pdf — Theorems1.7/1.9/6.8.
+- LNS2026: https://webusers.imj-prg.fr/~leila.schneps/GTgenusg.pdf — Theorem1.1 and stated scope.
+- Wykowski2026: https://ems.press/content/serial-article-files/53276 — introduction and Section2.1, especially Theorem2.4 and the distinction between abstract virtual freeness and a profinite tree action; DOI10.4171/GGD/851. No full-profinite realization theorem used.
+- Herfort–Ribes1985: https://www.academia.edu/104225124/Torsion_elements_and_centralizers_in_free_products_of_profinite_groups — full paper text, Theorems A-prime, B-prime, and1 on printed157–160. DOI10.1515/crll.1985.358.155. The attempted EuDML and DigiZeitschriften URLs failed; the text actually read is the author-associated copy.
+
+## Supplied records read
+
+The two LM4 D.32/D.34 referee reports; LM7_PUSH D.50 source and its referee report; LM4 D.35, D.49, D.74, and D.77; source bibliographies. Refereed R1–R3 were used as authorized. No new claim of priority is made.
+
+## Files
+
+The growing paper source is A_involutions.tex. A_references.bib records verification status. A_results.csv is the statement register (38 rows, including the three requested editorial corrections E.50-E.52). check_A3_class3.py and check_A3_class3.out are the independently executed finite third-cusp certificate. check_A17_frame.py and check_A17_frame.out retain the independently executed relative-frame matrix certificate. check_A20_standard_extension.py and check_A20_standard_extension.out retain the full finite normalizer/norm enumeration. check_A25_level.py and check_A25_level.out verify the quotient orders, cusp counts, CM frame matrices, dihedral root action, and finite refinement size used in A.23–A.26. This report is a working record; the root paper must remain marked INCOMPLETE while A.12–A.14 remain open.
+
+## Further recognition and editorial work
+
+A.21 gives an explicit counterexample to full real-projective finite-graph recognition even when the open free subgroup has rank two and index two and every involution is self-centralizing. Put Gamma*=(product over odd p of Zp) semidirect Z2, with parity inversion, and E*=C2 coproduct Gamma*. Open Kurosh gives a rank-two free parity kernel. Its abelianization is C2 times Z2, excluding the only possible finite-graph candidate C2 coproduct Zhat. This example has only one involution class and does not meet R1's three-section hypothesis. A.22 adds the exact constraint on the latter case: the three distinguished reflections normally generate; if they fail to generate, their closed generated subgroup has infinite index. The required marked full generation is still open.
+
+At the parent's request, sections/editorial.tex now contains E.50-E.52. E.50 proves the full-P form of LM4 D.28 independently of R1's final conclusion; E.51 proves the normalized homomorphic section and the integral Magnus torsion lemma directly, removing the D.25-D.32 citation cycle; E.52 supplies precisely Herfort-Ribes Theorem B-prime, with the primitive-boundary limitation retained. Their register rows are in A_results.csv for parent assembly.
+
+Additional primary sources opened: Haran1985 complete three-page PDF https://www.tau.ac.il/~haran/Papers/non-free.pdf; Pal-Quick2025 publisher full text https://link.springer.com/article/10.1007/s00208-025-03145-2, especially Theorem2.1; Kochloukova-Zalesskii2007 complete author manuscript https://mat.unb.br/~pz/arquivos/Claus3.pdf, Theorem2 and Section1.1; Zalesskii2004 https://mat.unb.br/pz/arquivos/virproj.pdf, introduction and main theorem that quotient by the normal closure of torsion of a virtually projective profinite group is projective. The latter theorem does not supply a free-product decomposition and is not used as one. The KZ DOI redirect failed; no claim of reading that publisher page is made.
+
+## Real-reflection count and the next perfect-kernel controls
+
+A.27 supplies the exact real refinement of the finite counting problem. For each subgroup J of a finite target E, use the three involution fibres I_i(J) and the three zero-one adjacency matrices recording whether a pair product belongs to the prescribed cusp set. The trace of their product counts actual reflection triangles. Subgroup-lattice Mobius inversion gives the proper count. This retains the common reflection at adjacent edges, which the ordinary boundary trace sums in R2 do not retain. A5 as a perfect kernel is not itself sufficient: S5→C2 has nonempty involution fibres but no generating triple of those involutions. The exact 1000-triple certificate records every subgroup order.
+
+A.28 pushes this to a finite negative peripheral action. In A6, x=(1234)(56), y=(1246)(35), z=(1263)(45) have product one and generate A6. Ad((24)) is an actual involution preserving their inverse conjugacy classes, and each has its own odd involution reverser. Their common passport (4,4,4) admits no reflection triangle, since an order-four product of odd S6 involutions requires different cycle types, and there are only two types. R1's three section classes would require a triangle already at the level of class labels.
+
+The stronger exact double-cover test explains why this is not an R2 counterexample. The opened ATLAS degree-80 generators yield a group of order1440 mapping centrally to S6, with even preimage of order720. For every cusp lift Q of order8, Ad(T)(Q) is conjugate to epsilon*Q^-1 and not to Q^-1. A hypothetical full multiplier-minus-one lift would differ from Ad(T) after this central cover by a character eta:F→C2. The three cusps all require eta=-1, contradicting xyz=1. Thus the ordinary finite action is blocked already by Lead2's central obstruction. It supplies no full peripheral lift, no relative pronilpotent lift, and no globally negative counterexample to an order-preserving version of R2.
+
+The exploratory search_s6_passports.py enumerates all ordinary generating passports in A6 whose individual cusps are products of odd involutions. Up to ordered cycle types, only (3,33,42) and (42,42,42) occur; there are no proper real reflection passports. This computation is retained as an exploratory record and is not used as an unproved extension of the numbered assertion.
+
+A.29 proves that the U12 parity-one involution nevertheless has exactly three section classes. For a relative pro-2 quotient of C2 coproduct C2 coproduct C2, the open Kurosh decomposition over the finite order-two image shows every involution comes from a factor, with centralizer precisely C2. The three classes remain separated by abelianization. Odd-prime complement conjugacy and centralizer surjectivity then identify the section set of the whole fibre product with that of its dyadic component. Therefore the new relative involution already satisfies this strong R1 test; the computation does not settle peripheral conjugacy or the full lift.
+
+New primary source openings: Herfort–Zalesskii2013, Virtually free pro-p groups, Publications Mathématiques de l’IHÉS118,193–211, DOI10.1007/s10240-013-0051-4, complete PDF https://www.numdam.org/item/10.1007/s10240-013-0051-4.pdf, especially Lemma2.3 and Theorems6.2–6.3. Theorem6.2 is unmarked; it does not retain a peripheral pants marking. ATLAS A6 page https://brauer.maths.qmul.ac.uk/Atlas/v3/alt/A6/ and representation https://brauer.maths.qmul.ac.uk/Atlas/v3/permrep/2S6G1-p80B0, including the literal data https://brauer.maths.qmul.ac.uk/Atlas/alt/A6/mtx/2S6G1-p80B0.m1 and .m2. The failed GAP combined-generator download is not claimed to have been read; the raw MeatAxe data were opened successfully and embedded in the independently executing certificate.
+
+## The accessory-frame square obstruction is also removed
+
+A.30 strengthens the actual U12 construction: its literal relative r- and s-frames can be chosen so that the associated normalizers in the actual relative extension are finite S3 and V4 subgroups. At two, the explicit matrix B has d(B)=B^-1 and d-norm5I; A.16 then constructs a compatible S3 section with the r-frame image corrected to one. At odd primes, coprime complement theory constructs s-normalizing involutions with the required common s-frame image b. These local normalizers and frames glue over the same finite quotient.
+
+After R2 the full element a still has parity one and its relative action still has square one. Now its square has both full relative frames equal to one as well. The remaining norm equation can therefore be posed in L12^fr, the smaller closed kernel retaining the actual relative action and both relative frames. A solution there gives a full involution. Nonsolvability there would only rule out that chosen framed fibre; an unframed lift could use other relative frames and remains governed by the larger L12 norm equation. This is additional exact equivariance of the R2 input, not an asserted involution at a finer characteristic level.
+
+
+## Compatible continuation through every principal-congruence level
+
+A.31 strengthens A.25: one full element a of global multiplier -1 and Delta one has an actual order-two image on every B/R_nil(U_N), for all N divisible by twelve. These images are compatible and lie in the actual outer GT0 images. The same full a supplies their inverse-limit point, but its square is only known to lie in the common kernel of this tower.
+
+The new arithmetic choice uses inertia at three, fixing every dyadic radical of two while rotating (3/4)^(1/4) by i. The cocycle sigma0=gamma*c*gamma^-1*c has zero dyadic Kummer character of two. Its pro-2 part sigma=sigma0^e2 has zero complete Kummer character, retains both nonzero CM bits, and is still a c-cocycle. Marin2008, Section4 printed776, identifies the modular congruence shear with minus eight times that Kummer character. Thus sigma acts identically on every Q_N. At each relative level, its dyadic action and the identity odd-primary actions glue, with finite r-frame one and s-frame equal to the Galois s-frame. R2 supplies nonempty compact sets of full lifts; a common-multiple argument supplies their finite-intersection property and one compatible full lift. No transition surjectivity of centralizers is assumed.
+
+The tower is rigorously noncofinal. Every finite quotient it detects has only cyclic or PSL2(F_p) composition factors, because its kernel over Q_N is pronilpotent. The free group has the explicit A7 quotient generated by (1234567) and (123), which is absent from that list. Its common relative kernel therefore maps onto A7. The exact certificate checks all 2520 permutations and the normal closures of all nonidentity conjugacy classes. This proper quotient of F does not itself imply that the induced GT0 action has nontrivial kernel. The D6 arithmetic obstruction of A.26 is compatible: no principal-congruence U_N is contained in U12-prime U12-sixth-powers, even though D6 is already a quotient of the larger relative group at U12.
+
+A.32 excludes the proposed c-invariant Z/4 character obstruction whenever it is formed only from congruence CM-frame data. The parity-one tower cocycle would give zero norm but character norm two. Actual relative actions determine the finite pure frame values, using the equal-prime centralizers in A.23, and determine the congruence shear. This rules out finite refinements modulo24 or48 and continuous dependence on the entire congruence CM tower. It does not rule out a global Z/4 lift that sees additional noncongruence information.
+
+### Additional primary source actually opened
+
+Marin, I. (2008). Characters of the Grothendieck–Teichmüller group through rigidity of the Burau representation. *Annales de la Faculté des Sciences de Toulouse, Mathématiques*, 17(4), 765–780. https://doi.org/10.5802/afst.1202. Primary published PDF: https://www.numdam.org/item/10.5802/afst.1202.pdf. Section4, printed774–776, was read; the Kummer/shear comparison is on printed776. The arXiv version https://arxiv.org/pdf/0801.2507 was also opened. Only the primary calculation is used, together with the separately refereed extension of congruence covariance to GT0.
+
+
+## Equivariant frames throughout the congruence tower
+
+A.33 extends A.30 to the entire compatible family of A.31. The finite r-frame u_N centralizes R and is identity modulo four. Therefore u_N^-1*d is an involution of determinant -1 and trace zero. At odd primes its two eigenspaces provide a special-linear conjugator to d after correcting the determinant in the centralizer. At two, the cyclic-basis matrix (e1,u_N^-1*d*e1) has determinant one modulo four; an explicit symmetric centralizer matrix corrects its determinant while staying identity modulo two. The resulting conjugator is pure. A.16 now splits the relative S3 extension retaining its reflection; odd-primary s-frame complements are handled by the same argument as A.30. Compact full-lift sets give one a whose square has identity actual action and both relative frames one at every congruence level. The complete proof is independent of the finite matrix controls, which construct and verify all eligible frame conjugators for seven moduli including24 and48. The norm equation in the common framed kernel remains open.
+
+
+## Closed normal relative kernels
+
+A.34 audits the finite count in R2 beyond its open-kernel applications. For any closed normal V in F or B, R=R_nil(V) satisfies [R,V]=R and hence [R,Pi]=R, by finite-image stabilization of the lower central series. Every specified peripheral automorphism of Pi/R, with literal conjugators, therefore lifts to the full source by the same scalar-cover count and compactness. Openness and characteristicity are not needed; the resulting full lift stabilizes R because it induces the specified quotient automorphism. The exact central-quotient criterion of A.3 likewise works for closed normal N with this definition of lift.
+
+The same compact finite-image argument proves R_nil(intersection V_i)=intersection R_nil(V_i) for any descending directed family of closed subgroups. Consequently the entire relative principal-congruence quotient in A.31 is exactly B/R_nil(K_cong), where K_cong is the closed congruence kernel. This identifies the actual infinite quotient without asserting a solution to the order-two norm equation. It also supplies ordinary lifts for any separately constructed infinite common-resolvent quotient data; it does not itself construct those data.
+
+
+## The noncongruence correction kernel has a dyadic subgroup
+
+A.35 applies the independently reviewed B.57 perfect-socle construction while also retaining R=R_nil(K_cong). The specified tripod A9 quotient maps R onto A9: otherwise the entire relative congruence tower would detect A9 as a composition factor, contradicting A.31. Intersecting R with the fifteen filling kernels retains this surjectivity by an iterated commutator. The exact joint image and actual central refinement from B.57 therefore still apply. All three central-refinement conjugators have trivial retained-quotient image, so after cusp normalization the full lift acts identically and has both literal frames one on B/R. It lies in the exact L_cong-fr of A.33 as well as in all three resolvent kernels. Its finite outer A9 value and R1's torsion-freeness give a closed Z2. Thus the remaining correction kernel is not pro-odd; Schur--Zassenhaus cannot finish A.31 merely by a coprimality assertion. No action of the chosen negative lift on this Z2, and no value of its square under a suitable abelian character, is inferred. The full norm equation remains open.
+
+The independent reviews of B.54--B.55 and B.57 are preserved in B54_B55_independent_review.md and B57_independent_review.md. B.55's initial modular-incidence wording was corrected by the parent using exact per-cusp counts; the substantive proper quotient and full-lift arguments passed.
+
+
+## Pentagon descent for an existing peripheral conjugator
+
+A.36 proves that if an involution alpha already belongs to full GT and alpha=g*c*g^-1 with g in P, then g itself belongs to full GT. A.6 first puts g in GT0. Write alpha=(-1,f), g=(mu,h). The normalized intertwining equation gives h=f*alpha(h). In the genuine completed parenthesized braid operad, alpha acts on the associativity arrow A by A*f. Hence the actual arrow theta=A*h is fixed by alpha. Each of its five operadic insertions around the four-strand pentagon is fixed, because alpha is a genuine operad automorphism. Their based discrepancy in full profinite P4 is therefore fixed. C.28, independently reviewed, makes that fixed subgroup trivial. Thus h satisfies the pentagon, so g is in GT. No action of g on the four-strand group has been assumed.
+
+This proves equivalence of conjugacy to c in P, GT0 and GT for an involution already in GT. It does not show that an arbitrary involution of any of the three groups is conjugate, or that a general GT0 involution belongs to GT. The typed proof specifies all parenthesized objects, the source-based associator convention, the five cabling maps, and the well-typed half-braiding parameter.
+
+Primary source verified: Boavida de Brito, P., Horel, G., & Robertson, M. (2019). Operads of genus zero curves and the Grothendieck–Teichmüller group. Geometry & Topology, 23, 299–346. https://doi.org/10.2140/gt.2019.23.299. Publisher PDF https://msp.org/gt/2019/23-1/gt-v23-n1-p07-s.pdf, Definitions6.10–6.11, Lemma7.1, Proposition7.3 and Proposition11.5/Corollary11.6 opened and read. Shared bibliography key CEBHR2019 is maintained by the CE agent. The pure-braid full-twist powering formula was also rechecked in Schneps's survey Section2.1, printed192.
+
+A.37 applies the same honest fixed-arrow argument before any conjugator is known: for an involution alpha in GT, R1 gives a unique k with f=k^-1*alpha(k); u=k^-1 already satisfies the full profinite pentagon. Conjugacy is equivalent to finding a unit multiplier mu for which x^mu and u^-1*y^mu*u generate full F and their product is conjugate to (xy)^mu. These are still unresolved full generation and peripheral conditions. This does not transfer a prounipotent pentagon-to-hexagon result to full profinite groups.
+
+
+## Post-checkpoint03 refinement: automatic generation and the dyadic case
+
+A.37 has been sharpened: its generation condition is redundant once the common-unit third-cusp equation holds. This generation fact and the general one-equation criterion already appear in supplied LM4 D.35; the independent general sphere-cover proof in C.29 repairs the dependency route, rather than claiming a new criterion. If a peripheral endomorphism had proper closed image, an open subgroup containing it would have one width-one boundary over each base puncture, whose homology classes sum to zero. The unique boundary relation forces these to be all its boundaries, and their widths force cover degree one.
+
+A.38 gives an actual dyadic conclusion for involutions initially in full GT. The canonical u from A.37 satisfies the pentagon. Its lower-central coefficient t gives D=1+24t. Furusho2010 Corollary12 provides hexagons whenever D_p has a unit square root mu_p; integrality of the half-parameter lets the prounipotent equality descend to the actual free pro-p group. Frattini makes the substitution an automorphism, and u=f*alpha(u) intertwines it with standard conjugation. At2, D is1mod8, and at3 it is1mod3, so both unit roots always exist. For a prescribed u_p the square-unit condition is also necessary by A.4. This does not settle arbitrary P/GT0 involutions at2 or arbitrary relative pro-p levels.
+
+A.39 audits the general LM4 D.35/D.49 criterion with the independent C.29 proof, fixes the canonical parameter by R1, and adds the full GT descent from A.36. The allowed full unit multipliers form either the empty set or exactly{mu,-mu}; all characteristic finite quotients detect existence by compactness. A tiny exact S4 witness shows why local signs cannot be freely combined: for alpha=c,u=1, choose the dyadic unit-1 and every odd-primary unit+1. Every pro-p equation holds, but modulo12 the unit is7, and x=(234),y=(1234) gives x^7*y^7=(12) while (xy)^7=(1423). The finite certificate checks generation of S4 and the entire target conjugacy class.
+
+The remaining full GT route is precisely bounded by Furusho2010 Question14 plus existence of an integral unit square root of D. No full pentagon-to-hexagon theorem is assumed. The reference's printed555 lower-central coefficient definition has a typographical derived-series formula; the actual image was inspected. All our formulas use the correct quotient [F,F]/[[F,F],F]. The corresponding primary bibliography key Furusho2010 is maintained in the parent sources.
+
+## Noncongruence continuation of the parity-one involution
+
+A.40 moves beyond the principal-congruence tower. Take the finite invariant family of all A9 tripod quotients of the level-five sphere group K whose retained cusp triple consists of an antipodal pair and one further vertex, with all three images seven-cycles. B.57 supplies the nonempty exact example. The family is invariant under GT0, and its A5 coordinate orbits are free. The induced joint quotient has perfect base M=A9^t, and R=R_nil(K_cong) maps onto M because A9 cannot occur in a finite quotient of the retained congruence group C=Pi/R.
+
+The important new step is the **actual** central refinement. For W=R intersect ker(q), the preimage of M in Pi/[W,Pi] is the canonical finite perfect image M# of its universal central cover: R=[R,Pi] eliminates the extra central factor. The actual s/r can be conjugated by M# into the preimage of the pure C-section. They define a homomorphism Pi into that central extension which kills R, again by R=[R,Pi], so the C-section splits. Thus Pi/[W,Pi]=M# semidirect C, with action through A5. If h_C=beta_C*c_C is A.31's positive congruence action, id(M#) semidirect h_C fixes the actual cusp literally and preserves the other two actual peripheral classes. The finite centralizer maps onto the relevant A5 centralizers, so their literal C-frames glue. A.3/A.34 then provide a full positive lift h with identity action on the finite perfect quotient, and a=h*c has actual action (c_Q,beta_C), of order two and parity one, on the entire joint quotient.
+
+A.41 repeats this for every finite collection of nonabelian simple tripod targets except PSL2(F_p). The same simple-product and central-refinement proof applies. The finite universal central cover exists because the bar complex makes H2 finitely generated and transfer annihilates it by the finite group order. The exact full-action and retained-frame solution sets are nonempty closed subsets of H, with the finite-intersection property. Compactness gives one full negative element inducing compatible involutions on the joint congruence-plus-semisimple-tripod tower. The square is **not** proved trivial in the full group. The remaining nonsimple chief layers and the nonabelian norm equation are not controlled.
+
+Both the parent and the CE agent independently reviewed the complete working proof before formal insertion. The historical working file A40_noncongruence_working.md is superseded by formal A.40--A.41. The existing finite certificate of B.57 is reused; no new exhaustive enumeration of the entire finite invariant family is claimed.
+
+New primary source opened and verified: Brown, K. S. (2010). Lectures on the cohomology of groups. In *Cohomology of Groups and Algebraic K-Theory* (Advanced Lectures in Mathematics, Vol. 12, pp. 131--166). International Press. Author PDF https://pi.math.cornell.edu/~kbrown/papers/cohomology_hangzhou.pdf, Section2 (bar resolution) and Corollary3.4 (transfer annihilation). Author publication metadata independently checked at https://pi.math.cornell.edu/~kbrown/publications.html. Shared source identifier ABrown2010 is in A_references.bib.
+
+## Every local prescribed conjugator, and all actual scalar refinements
+
+A.42 incorporates the newly independently reviewed C.32--C.33. The canonical pentagon word of any full GT involution now has a prescribed peripheral conjugator at **every** maximal pro-p quotient. The square D=1+24c2(u) is a square unit in every Z_p, so its roots assemble to a full profinite unit. C.33's decisive calculation is an integral metabelian hexagon identity: the first coefficient with possible p-denominator forces D to be a nonzero square modulo p. C.32 excludes D=0 using the relative braid completion retaining S_p and its torsion-free p-Sylow preimage. The independent A review, including a separately expanded affine calculation, is preserved in C33_independent_review.md. A.38 is retained as the earlier exact criterion with a forward pointer; its local condition is now automatic for the actual canonical word of a full GT involution.
+
+The remaining main full-GT conjugacy condition is therefore **existence of a full root whose full hexagon holds**, with no additional local square-root condition. C.34 distinguishes this from the literal prescribed-root formulation of Furusho2010 Question14: the A.39 mixed-sign unit with f=1 is a full square root but fails the full hexagon in S4, whereas the two standard roots still work. The source wording was independently reopened on printed555; no refutation of the existential question is claimed.
+
+A.43 goes one exact scalar layer further than A.40--A.41. For each finite perfect family with kernel W, it proves [[W,Pi],Pi]=[W,Pi]. In the second actual central refinement, the perfect socle makes the preimage of the old center central inside that socle. Its remaining C-action factors through A5 and is identity on both central subquotients, hence lands in an abelian Hom group; perfectness of A5 kills it. This proves the kernel equality. The negative action on the first actual refinement already squares to one: its square fixes the perfect socle and C and therefore is a central character of C; fixing the actual cusp kills that character because C^ab=C6 is generated by the cusp. The refined positive action is uniquely determined, so the construction remains compatible over all finite families. A.3 and compactness give one full element retaining all those involutory images. Neither a full involution nor a vanishing norm class in a general noncentral elementary-abelian layer follows.
+
+The parent independently reviewed A43_central_refinement_working.md before formal insertion. That file is now historical; formal A.43 is authoritative.
+
+## The first mixed finite-base generation obstruction is excluded
+
+A.44 proves, for **every** full P involution, that its canonical R1 substitution x↦x, y↦u⁻¹yu is onto every finite dihedral reflection quotient. For an odd-prime rotation quotient D2p, a nontrivial induced involution would make the two global third-cusp reflection classes map to the same central involution, contradicting its nontrivial rotation. With trivial induced action, a collapsed generator pair would give a degree-p genus-zero cover with p+2 cusps and a pure negative action. Its section graph is a triangle plus (p−1)/2 digons, contradicting C.28’s single cycle. The proof explicitly retains the third cusp’s frame; it uses uniqueness of that lifted cusp, not a false inference from trivial quotient action to trivial framing.
+
+This removes the k11=1 S3 generation obstruction found by the CE finite pentagon calculation. The argument also gives an actual relative Frattini consequence: for V=ker(F→C2) sending both x,y to−1, the canonical substitution is an automorphism of every F/O^p(V). The invariant plane of H1(V,Fp) is covered by x²,y², and its sign line is detected by the dihedral quotient. The same intertwining identity gives unmarked relative conjugacy. Third-cusp preservation is still not proved. Root independently reviewed the complete working proof before its formal insertion as A.44.
+
+## The full multiplier is now specified
+
+A.45 evaluates the canonical u in the actual universal dihedral quotient Zhat semidirect C2, with x=a,y=at. If u maps to t^k, then d=2k+1 is a full unit by A.44 and is1mod4 at two. The induced involution is the identity on this entire quotient: the odd components follow from A.44, and its dyadic component is forced by f belonging to the commutator subgroup. Any full third-cusp multiplier must be exactly d or its single global negative, because two rotations in this dihedral group are conjugate only by a global sign. Full conjugacy is therefore equivalent to testing one fixed-d equation, without an existential unit search.
+
+For a full GT involution, A.42 supplies local roots of D=1+24c2(u). The dyadic root matches ±d_2 by projection to the pro-two dihedral group, so d_2²=D_2. Equality at every other prime is not proved, and would still not imply the full third-cusp equation. The proposed Heisenberg_p semidirect C2 test with both degree-one directions negative cannot establish that coupling: CE's exact P4 sign-character calculation makes the vector image one-dimensional after conjugation, hence contained in D2p times Cp. Mixed-action Heisenberg targets remain metabelian and yield only linear constraints in commutator-word coefficients; no quadratic compatibility is inferred. Parent and CE independently reviewed A45_dihedral_multiplier_working.md before formal insertion.
+
+## The full elementary abelian two base
+
+A.46 extends A.44 from one parity character to the entire quotient F/F'F²=C2². The covering graph chain complex gives two trivial Frattini directions and one direction for each of the three nontrivial characters. The canonical substitution is the identity on the trivial part. A.44 detects the character negative on both generators; the other two are detected by the dihedral maps sending one generator to a rotation and the other to a reflection, on which generation is automatic. Relative Frattini now gives an automorphism of F/O^p(V4) for every prime. This is another actual mixed-base generation result, still without third-cusp preservation. The parent suggested the extension; its proof is included in full without relying on a representation-theoretic classification.
+
+## A noncentral elementary abelian two layer also passes
+
+A.47 extends the actual parity-one tower beyond its semisimple and scalar central layers. The explicit finite target is2^8:A9, with the even-weight natural F2 module. The three affine lifts of B.57's7-cycles have translation vectors0, e1+e2, e1+e9. They generate the whole group: the module is simple and H1(A9,V)=0 by Shapiro, while an exact256-vector check excludes every common coboundary. The code also verifies all lift orders/products and enumerates the181440-element head. Its stdout explicitly distinguishes the proof of generation from enumeration of the full affine group.
+
+The complete finite invariant quotient family is grouped by simple head. Its joint module kernel is semisimple with no trivial constituents, so each bundle is perfect and centerless. Distinct heads are independent, and their A5 orbits remain regular because of the tripod support. A.40's actual central-refinement argument and A.43's stabilization therefore extend, preserving the literal C-frames. Finite unions allow all irreducible affine targets over excluded simple heads, and compactness retains this new tower together with the previous one. A.47 does not assert cofinality or a full involution. The parent independently reviewed its complete working proof before insertion.
+
+Brown2010 Proposition3.3 (Eckmann--Shapiro), PDF pages19--20, was reopened and verified at https://pi.math.cornell.edu/~kbrown/papers/cohomology_hangzhou.pdf. The existing bibliography entry now records this additional exact use.
+
+## The first nonregular head also passes
+
+A.48 treats simple quotients of Pi itself, whose K-head kernels have A5-orbit length one. The explicit A9 quotient has s=(12)(34)(56)(78), r=(138)(249)(576), and cusp order15; its exact181440-element certificate is attached. All twelve K-cusps have nontrivial images, unlike a tripod-support head.
+
+The regular section construction is unavailable because the actual s/r components in the finite simple group are nontrivial. The actual central refinement is instead a central product M C#, with M perfect and C# centralizing it. A new elementary lemma proves that the finite central kernel A embeds into C#'s abelianization: pull back to Pi, use the central presentation with S²=a,T³=b, and embed A into a finite abelian group containing the required roots. Relative perfectness puts the pulled-back R in the commutator. A full h0 lift of h_C then lifts by conjugating S,T, descends because its difference on R is an invariant central character, and fixes the cusp literally because it fixes abelianization. This supplies the framed A.3 input, not merely an unframed automorphism.
+
+The negative square at the actual refinement is a central C6-character killed by the cusp. Its scalar central refinement also stabilizes. Independence from A.47's three-cusp heads allows finite unions and compactness, so one full negative element retains both enlarged towers. The parent reviewed every step, including central-kernel injectivity and the support-independence passage, before formal insertion. The next genuinely different case has nonperfect residual image: the exploratory2^6:AGL1(F7) quotient below is being examined for that purpose.
+
+## The tetrahedral obstruction is excluded by a binary lift
+
+C.35 was independently reviewed in full; the detailed review is C35_independent_review.md. The canonical word of every GT0 involution inherits full duality from R1 uniqueness. Evaluating duality and the negative hexagon in SL2(F3), followed by the actual canonical coboundary equation, excludes both possible A4 generator collapses. Thus the earlier A4 finite-consistency dead end is resolved at its binary central refinement. The exact scope is every finite A4 generation test for GT0 involutions, without a pentagon hypothesis. No relative-Frattini conclusion over A4 is inferred merely from this finite generation result.
+
+## An actual nonperfect mixed-head obstruction is computed
+
+A.49 treats a new type of layer, outside every preceding perfect-kernel argument. Its finite quotient is2^6:AGL1(F7), generated by the specified order-two/order-three lifts, with cusp order12. There are exactly two quotient kernels, exchanged by c; their joint congruence-kernel image has nilpotent residual V+⊕V-, a noncentral elementary abelian2-group. The retained positive h_C is identity on the paired odd head.
+
+The actual central refinement is identified, not replaced by a convenient cover. The one-dimensional H1(Pi,V) consists of the explicit noncongruence cocycle, so H1(C,V*) vanishes. Finite Pontryagin duality then forces the actual central kernel to be the commutator of the R-preimage. The alternating-square coinvariants have dimension2, bounding that kernel by4. The explicit paired Clifford groups2_+^{1+6} attain the bound, proving that the actual refinement is their finite fiber product with C. Honest permutation actions on seven anticommuting generators provide the finite covers; the attached code verifies all products, generator orders, group orders5376, cusp order24, and invariant-form ranks.
+
+The finite torsion centralizers retain all old literal frames. A second exact calculation proves scalar stabilization: after the same duality argument, the next center is an alternating-square quotient on which the odd normal group C7²:C3 acts trivially. Its coinvariant dimension is already2, so the new kernel is zero. This sequencing matters: A.3 alone would initially lift the specified action only on Pi/W; stabilization is what permits lifting the entire actual central-refinement action. The parent identified that scope issue before formal insertion, and the final proof includes the corrected sequence. The parent independently reviewed the cohomology, actual-center bound, frame gluing, and stabilization; CE independently reviewed the core identification and frame argument.
+
+This mixed solvable layer can be retained with the previous towers by solvable/perfect independence and the earlier exact relative-perfect residual equalities. One full negative element has parity-one involutory images throughout the enlarged tower. Its full square is still unproved, and no general noncentral-module norm theorem or cofinality is asserted.
+
+## A nonzero torsion-frame class is corrected explicitly
+
+After checkpoint05, A.50 treats an odd Heisenberg7:C6 head whose paired characteristic-two Schrödinger modules have a nonzero s-torsion cohomology line. The retained s-frame has the form z^j in the odd center. Its forced linear correction is the inverse scalar pair on the two21-dimensional modules, realized by conjugation by the specified odd-order lift. The cusp is normalized uniquely because its seventh-order central character makes tau−1 invertible. The correction has exact c-norm1 for everyj, so the nonzero torsion class introduces a real constraint but no obstruction in this example.
+
+The actual central cover needs a compensating C12 extension of the finite head: the quadratic square of the s-vector is1 inF8, and the two central contributions cancel. A bare split hyperbolic cover would give the wrong order for s. The complete F8 certificate verifies the module action, Fourier pairing, generator norm equations, cusp normalization, compensated torsion relations, actual c-action and all seven frame-norm formulas. Its42-dimensional F2 exterior-square calculation has rank858 of861 already under the odd subgroup.
+
+Finite Pontryagin duality bounds the actual central kernel by the three-dimensional F2 coinvariant space, and the explicit cover attains it. The next scalar refinement stabilizes by the same odd-subgroup dimension argument. Only after stabilization is A.3 applied to lift the entire specified central action. The initial-base H1 vanishing is proved through the actual residual image and one-dimensional-overF8 Pi cohomology; the enlarged-base passage uses the absence of a common quotient between A49's old six-dimensional modules and the new21-dimensional ones. Parent and CE independently reviewed these steps before formal insertion. All earlier towers and literal frames remain retained, while the full square and cofinality remain Open.
+
+
+## Immediate scalar stabilization fails in an actual quotient
+
+A.51 constructs an actual filiform7:C6 head of order100842 and paired42-dimensional irreducible characteristic-two modules. The odd-subgroup exterior-square coinvariant space is two-dimensional, with the remaining involution swapping its two lines; the full-head coinvariant space is one-dimensional. An explicit two-center hyperbolic cover admits the actual order-two and order-three generators. Its residual image is the whole two-group, so the difference is realized in the actual scalar refinements, not merely in a possible module extension.
+
+Writing W1=[W,Pi] and W2=[W1,Pi], the proof identifies W1/W2=C2 and proves W3=W2. Thus the immediate stabilization used for the previous successful layers is not automatic. The first and second covers are identified by finite Pontryagin duality, and the third step is controlled by odd-subgroup coinvariants even though the old center is no longer a trivial full-head module. At each induction step the new abelianized extra kernel is the image of a globally central kernel, which keeps the duality argument valid. The exact certificate enumerates the finite head, checks all module identities and actual torsion lifts, and gives exterior-square ranks3484 and3485 of3486. Parent and CE independently reviewed and reran the construction.
+
+This is a genuine failed general approach, but it is not a negative norm obstruction. The single chosen head is not asserted to be c-stable. A separate c-pullback pairing is under review, with actual depth-four commutator witnesses distinguishing its two odd central supports. The full parity-one involution and cofinality questions remain Open.
+
+
+## The genuine second layer is compatible with the retained negative images
+
+A.52 pairs the filiform quotient with its literal c-pullback. Two actual depth-four commutator words have head images(T,1) and(1,T), separating all four simple-module supports without assuming a graded recognition theorem. The joint residual is the full product of the two explicit two-groups. Its first and second central kernels have dimensions2 and4, respectively, and the next step stabilizes.
+
+The finite s-generator is pure, so its centralizer surjects onto the common head centralizer; the r-map follows from coprime complement conjugacy. These facts retain the previous literal frames for the positive automorphism identity on the finite quotient and h_C on the base. Its negative companion is actual coordinate interchange paired with the old negative involution, hence has square1 on the actual second refinement. Only after stabilization does A.3 provide a full lift retaining that action. Earlier layers remain compatible by the distinct new42-dimensional module supports, and finite unions/compactness retain them all. Parent and CE independently reviewed this extension. The strict second scalar layer therefore creates additional work but no negative norm obstruction in this family.
+
+
+## General structural result: every finite abelian residual layer has bounded scalar depth
+
+A.53 is the main sixth-hour structural advance. For any closed normal K0 in Pi=C2 amalg C3, put R=R_nil(K0). If W is normal in Pi, contained in R, and V=R/W is any finite abelian group, define W0=W and W_(i+1)=[W_i,Pi]. If the2- and3-primary exponents of V are2^e2 and3^e3 (zero exponent index when absent), then W_(m+1)=W_m for m=max(1,e2+1,2e3+1). Thus an elementary2 layer needs at most two scalar steps, an elementary3 layer at most three, and every elementary layer at a prime≥5 only one. This controls actual central refinements, not just an abstract obstruction module.
+
+The proof first establishes a conditional theorem for any relatively perfect R with H1(C,Vdual)=0. Finite Pontryagin duality keeps every R-preimage abelianization equal to V. Primewise commutator pairings then force every R-preimage to have class at most2 and make its derived center a finite quotient of the integral exterior square of V. The primary action on that center has a filtration with trivial factors, hence is a p-group quotient of Pi. It therefore factors through C2, C3 or1. The exact augmentation identities I2²=−2I2 and I3³=−3I3(1+I3) give the stated bound. A51 is now an explicit sharp dyadic example of the possible second step.
+
+For the initial relative-pronilpotent base the cohomology hypothesis is automatic for every finite abelian residual quotient. The actual normal pronilpotent subgroup N=K0/R splits into Np×N_(p′). Relative perfectness with K0, followed by finite p-group Nakayama, makes the N_(p′)-coinvariants of Vp vanish. Continuous finite averaging on that actual normal pro-p′ subgroup then kills H1(C,Vpdual). This avoids the invalid shortcut of computing cohomology only in a finite head. Parent and CE independently reviewed the full all-prime, arbitrary-exponent proof, including its cofinal finite-quotient argument.
+
+The remaining distinction is exact. This theorem bounds the scalar refinement required for an abelian residual layer. It does not construct a compatible peripheral automorphism with the retained frames, solve its negative norm, or show that the cohomology hypothesis persists after arbitrary nonabelian refinements. Those issues, and the full involution and cofinality questions, remain Open.
+
+
+## The exact obstruction to automatic cohomology on the next base
+
+A.54 makes A53's caveat concrete. If C′ is the base after adjoining a stabilized abelian layer with residual abelianization V, then for every original coefficient module T sensitive to the actual normal pro-p′ factors, continuous Hochschild–Serre and inflation–restriction give H1(C′,T)=Hom_C(V,T). In particular H1(C′,V)=End_C(V) is nonzero when V is nonzero. The initial base has vanishing in every cohomological degree for these coefficients, but the new finite residual kernel contributes precisely the displayed Hom group.
+
+In the filiform example, the original first affine classes consume only one of the seven cohomology dimensions for each42-dimensional simple. A second exact class in the dual module, with s-value0 and r-value ζ²e1, is independent of the retained r=e1 class: the certificate gives ranks21,22,23. It therefore maps the stabilized residual onto the same dual simple. This is a legitimate next elementary residual layer whose required dual-coefficient H1 is nonzero. Returning to the initial base and adjoining both cocycles simultaneously remains covered by A53. The finding refutes an automatic stepwise acyclicity shortcut, not a negative norm equation.
+
+The new source APoonen2017 was checked directly at the author's primary PDF: Theorem6.7.3 and Corollary6.7.4, printed p194, state the continuous profinite spectral and inflation–restriction sequences with closed normal subgroups and finite discrete coefficients. Publication metadata was checked against the author/AMS record.
+
+## Seventh-hour exact center, forced frame, and actual next layer
+
+A.55 sharpens the elementary-two case of A53 from a bound to an exact actual quotient. Its second scalar center is the exterior-square coinvariant module under the odd residual action. The proof constructs the unique invariant quadratic refinement, a strict action on its finite class-two group, and the central C4 carry needed to preserve the actual order-two source generator. The universal commutator upper bound and this attained target identify the center exactly.
+
+A.56 applies that identification to the actual Q6 head and its108-dimensional self-dual simple module over F2. The complete eight-dimensional F8 cocycle space gives residual abelianization V^8 and a center of dimension108 over F2. Unlike the earlier examples, the retained complex-multiplication s-frame forces a nontrivial action on torsion cohomology. The full277-variable homogeneous correction problem has an explicit exact solution. Direct original group operations verify the negative action square and both involutory normalizers on the scalar-stable actual quotient. A full R2 gauge preserves the universal complete-H1 kernel and transports every permissible old literal frame; distinct simple-module types retain the previous finite families. The resulting full lift has an involutory image on this quotient, with the full square still unproved.
+
+A.57 then constructs actual nonsplit next layers, rather than choosing an arbitrary extension. The monomial module lifts to GR(4,3); its global Bockstein on the new base is injective, while its inflation to Pi has rank4 on the eight-dimensional F8 cohomology space. The four-dimensional cusp kernel therefore gives genuine nonzero extension classes killed by the source. Their simultaneous pullback is attained by an actual quotient with kernel V^4. This statement alone neither solves its negative norm nor controls its scalar refinement.
+
+The execution environment was replaced before the seventh-hour archive could be saved. These three reviewed results and their programs have been reconstructed from the visible retained source, and all stated computational outputs have been regenerated. The detailed provenance is `RECOVERY_A_20261116.md`. A restricted cross-section search that fixed the r-frame is explicitly not an obstruction theorem, because legitimate r-frame changes were omitted.
+
+## Ninth-hour advance: actual noncentral cross-cup frames and scalar closure
+
+A64 changes the discretionary affine A56 tuple while retaining the initial C data and older families. The exact old class plus zero-cusp-frame system has rank227 in360 binary variables. Its133-dimensional kernel has zero polar norm form and norm image rank10; an exact solution gives the separately stored A63_zero_t_A56_solution.json. Both old original-law frames pass. The actual six-cup extension then has zero negative square and solvable s/r normalizer norms in every one of its six coordinates. A64's direct read-only witness verifier checks the saved tuple without solving for or modifying it. The original failed affine witness remains preserved.
+
+A65 proves actual scalar closure at every finite integral level, and in their inverse limit. The original-base H1 vanishing first preserves the residual abelianization. Jacobi kills the potential [T,A] scalar third commutator because the other two cross-Frobenius cup brackets vanish; the old center pairs trivially by odd averaging. The remaining derived group is an exterior-square quotient. Its odd-invariant scalar block is an extension of the already exact old center by a trivial kernel, so its head action has2-group image. It is both a quotient of and surjects onto the old exact center, forcing that kernel zero. The closed-kernel lifting criterion therefore gives a full positive realization of all these quotient actions and frames. Full negative square and cofinality remain Open.
+
+Formal source throughA65 and component register68 rows are frozen for checkpoint09. New research is confined to separate notes.
+
+
+## Tenth-hour advance: twenty cubic directions and a genuine scalar layer
+
+A66 constructs an actual class-three source quotient with twenty independent nonsplit directions: four ordered triple-cup coordinates and sixteen ordinary Frobenius-cup coordinates. The earlier affine witness fails a necessary ordinary-cup action-square test, so the construction changes the discretionary affine data again. In the complete W_cusp=0 family, the old central norm has a 27-bit quadratic core; an exact solution and a norm-radical local adjustment give compatible old and ordinary frames. The four remaining triple-cup frame norms are killed by a rank-four shear map from homogeneous ordinary frame corrections. All source relations, canonical c, literal cusp, negative square, s-conjugacy, and s-normalizer norm are checked directly in the original group law.
+
+The r-frame is obtained by an actual lifting argument, not by interpreting a skipped coordinate computation as a failed test. The initial C frames are selected with a pure transporter using the original Galois dyadic construction, odd-prime complement conjugacy, and compactness. A16 is applied in the new pro-two quotient before adjoining older non-two families; the resulting r-frame then pairs with their retained frames through the actual fiber product. The integral construction is explicit: the old residual is the fiber product of its four-cusp integral factor and its full mod-two factor, and the corresponding full source quotients retain the C4 carry in D1. Positive action is identity on the free-cusp factor at every level. Exact full realization remains dependent on the next scalar refinement.
+
+A67 proves that this next scalar gate is nonzero. A direct central cocycle on the 64-element type-A Suzuki two-group produces a 256-element stem cover with central kernel C2^2, attained by third commutators. Four cusp-row covers, summed equivariantly over the 36 weights, yield an actual source quotient of the scalar kernel onto C2^8. This is an actual lower bound, not an abstract possible obstruction. It does not compute the complete scalar kernel or assert that the selected eight-dimensional cover is invariant under the preceding automorphisms. Those further action and norm calculations are ongoing.
+
+Formal Part A now runs through A67; component register has70 rows. The full negative involution, universal conjugacy, and cofinality questions remain Open.
+
+
+## Exact closure of the cubic scalar layer
+
+A68 computes the full actual scalar refinement above the twenty-direction quotient: its kernel is C2^128 at every integral level, with compatible transition maps, and the next scalar refinement is stable. The proof retains the actual source throughout. Original-base cohomology fixes the abelianization; Hall–Witt and physical weight support kill the fourth lower-central subgroup; the old exact exterior-square center excludes additional degree-two scalars. The remaining third commutators involve three free cusp rows in the three Frobenius families. Jacobi bounds their scalar space by128 binary dimensions. An explicit family of64 F8-valued cocycles attains that bound after the correct cyclic-Frobenius192-to128 stem projection. Independent coordinatewise trace quotients lose40 directions and are explicitly rejected. The same bound applied after adjoining the attained128 center forces immediate stability. This exact calculation does not by itself solve the action or normalizer equations; their full original-law verification is prepared separately as A69.
+
+
+## The full cubic scalar frame is compatible with the entire integral tower
+
+A69 closes the actual action and frame gate above A68's128-dimensional scalar refinement. The canonical-c lift retains the old opposite-weight center; an explicit quadratic cochain corrects its ordinary-cup shear on all64 raw scalar cocycles. This is necessary for an actual action and prevents an unjustified descent after forgetting the old center. Source normalization verifies c(s)=s and c(r)=sr^-1s, so the negative quotient action is genuinely involutory. The positive action remains identity on the full free-cusp factor.
+
+The simultaneous lower/scalar frame system retains1119 binary correction directions and has rank234. Its saved solution uses only ordinary Z and lower T corrections at physical weights8 and11. The original twenty-factor law and an independent original128-cover law both verify the exact s-conjugacy and normalizer norm. The r-frame follows from the construction-selected initial transporter and A16 in the new pro-two quotient, before pairing older non-two families. No skipped r-coordinate computation is interpreted as a failed test.
+
+An additional integral gate was checked explicitly. The canonical joint-invariant GR(4,3) frame has forced free-center half (0,2,0,2,0,3,5,0,2,0). The complete old norm-zero center surjects onto the free ten-coordinate center, so that half lifts while preserving all binary/mixed old equations. Its new scalar effect lies in the supported ordinary Z-image and is canceled together with the four lower T equations. Direct original20/128/mod4 laws verify the common projections. Over the unramified cubic extension of Z2, one central half then gives compatible frames at every higher level; its binary reduction is already fixed by the mod4 check. The actual D_n fiber product retains the full source C4 carry, and compactness treats the new r-frames as variables.
+
+A68's stable actual source kernel now permits full positive realization of these quotient actions and frames through the closed lifting criterion. This is an increasingly rich but still noncofinal tower. Neither the full negative square nor the original conjugacy questions have been resolved. Formal Part A now contains69 statements, with72 component-register rows.
+
+
+## Post-checkpoint10 accepted additions: A72–A73
+
+A72 constructs the actual mixed32 ordinary-cup quotient, retaining the old integral/free-cusp cubic data. Its binary6/7 half has zero negative square; its binary4/5 half has a nonzero initial inner square and an explicit regular-C2 norm repair. Both actual s-frame norms solve; new r-frames are selected over the construction-chosen initial C-frame. A73 identifies the exact next scalar kernel as C2^576, with total scalar cubic center C2^704 and immediate subsequent scalar stability. The exact source constructions work at every integral level and with the earlier distinct-type families.
+
+The action, literal cusp, and normalizer equations on the new576-dimensional scalar refinement have not yet been solved. No full negative involution or cofinality claim follows. The present research priority is an honest eight-row model retaining the full old36 center and actual source C4 carry.
+
+
+## A75: the new576 action/frame gate is closed in the constructed tower
+
+The honest full eight-row704 model retains the complete old36 center and actualC4 source carry. The first2343-bit fixed-action frame family fails, with an exact retained annihilator. Adding288 legitimate mixed cusp-inner action directions gives a2631-bit system of rank890 with a verified solution. The original704 law checks literal cusp, negative square, s-conjugacy and normalizer norm; a separate full20 implementation verifies the common projection. Six extra integral offdiagonal constraints preserve A69’s forced halves exactly; remaining free diagonal changes are binary and lift constantly. A73 scalar stability and A3 realize the selected action by a full positive automorphism, with integral and older-family retention. Higher discretionary frames may change; the full negative square and cofinality remain Open.
+
+
+## A76: a global-negative framed order-preserving lifting obstruction
+
+The original A56 finite action/frame gives a concrete counterexample even after the actual finite source-central refinement and both negative normalizer norms pass. Relative perfectness makes that actual refinement a quotient of the original tower. Every proposed full normalized lift preserves the actual finite six-cup quotient and its coefficient action by injective transgression; all44 cochains reduce to cusp-inner changes and the complete s-centralizer norm image. Evaluation at weight23 gives the nonzero invariant5. A full negative involution would force its s-normalizer norm1 by the full free-factor centralizer and S3 projection, a contradiction. This closes a general proposed order-preserving framed R2 route at global multiplier−1. The theorem retains the original finite frame and literal cusp; later repaired frames and the unframed main existence/conjugacy questions remain unaffected.
+
+
+## A77–A78: finite noncentral detection and the exact limit of the fixed-frame obstruction
+
+A77 locates A76's failure in one specified finite quotient, rather than only in the full limit. For any finite modular quotient injecting the order-two and order-three source factors, the first relative mod-two or mod-three abelian quotient has cyclic centralizer image in the original quotient. The combined exponent-six relation module therefore determines both normalized lower frames from its action. Involutivity at that next level forces the lower norms. Applied to the actual six-cup group E, the explicit detector has order |E| 2^(1+|E|/6), with |E|=2^1620*72*7^13. Every full candidate retaining the bad original finite frame has negative square moving s in this same finite group. In contrast, all iterated actual scalar refinements inherit the compatible original involution and both norm-one frames from the original relatively perfect tower. Scalar iteration alone therefore cannot remove this obstruction.
+
+A78 also checks the precise limit of that conclusion. With the old positive action and the actual six-cup action fixed, the right frame correction7(v89+v91) passes both old and six-cup s-normalizer norms. Its old central correction is zero. The independent verifier compares original WE/PSHIFT exactly, checks the same finite H-head, and verifies both original group laws without searching. The841 count refers to locally allowed coordinate quadruples, each with additional affine frame freedom, rather than841 total old frames. This successful reselection prevents an all-frame strengthening of the six-cup obstruction at the present level. It does not establish a full negative involution or compatible frames at every later quotient.
+
+
+## A79: a finite ACTION forces order four independently of every frame
+
+The stored A64 zero-t finite action, before the later W=0 reselection, has a stronger obstruction than the original A76 framed tuple. Its actual ordinary16-cup quotient has kernel (V^(3))^16 and order 2^2700*72*7^13. Every full positive peripheral lift fixing tau literally and inducing that finite action must preserve this quotient: the complete finite/source H1 isomorphism makes transgression injective and forces the coefficient action.
+
+The decisive new fact is centralizer surjectivity. The actual source S has zero free cusp coordinate, so every element g of the old finite centralizer has the literal lift (g,0) centralizing S in the ordinary-cup group. This includes every finite head and residual coordinate. Therefore any two peripheral actions over the fixed old action have cocycle difference with zero s-restriction, without retaining any s-frame. The literal cusp kills the other restriction; all actions differ only by an inner vector in T^tau. The negative coefficient fixes this space, so their squares coincide. The exact original-law value t_00(weight0)=1 gives a nontrivial inner square of order two, forcing every negative image to have exact order four.
+
+The central-refinement comparison is independently supplied by the prior actual A65 quotient with this A64 action. Its relatively perfect kernel lies in every iterated [N_j,Pi]. Transfer proves each of those actual scalar refinements finite; all inherit compatible involutory quotient actions and norm-one frames, simultaneously realized by an ordinary full positive lift. Thus even all compatible scalar tests do not suffice for order-preserving lifting of this normalized finite action.
+
+The fresh action-only verifier is code/verify_fixed_action_ordinary_square.py, with genuine stdout and fixed_action_ordinary_square_verified.json. It checks source/canonical-c identities, ranks44/40/36, all192 binary cusp-inner directions, the nonzero coordinate, and movement of an actual source generator. The complete proof received independent parent and CE reviews. A79 prescribes the finite action and literal tau, not frames. It does not exclude the later W=0 actions, every Delta-one action, or settle the existential involution/conjugacy problems.
+
+Current component register:79 rows (71 Proved,3 Refuted,3 Open,2 Known). Formal A source now includes A79; CE-owned A70/A71/A74 remain included at their numerical positions.
+
+
+## A80: an actual odd relation-module involution and unrestricted-cusp nonrealization
+
+A80 proves a general one-step finite lifting theorem. Above any actual finite modular quotient with literal negative cusp inversion and both norm-one normalizer frames, the first mod-p relation quotient admits the same kind of involution and lifts of both literal lower frames whenever p does not divide twice the head order. The automorphism kernel itself need not be odd, even after fixing the cusp; an explicit order150 source certificate records this distinction. The proof instead constructs an involutory coefficient action.
+
+The actual Bass--Serre relation module is a virtual restriction from the head extended by its negative involution. An elementary index-two induction argument proves that every positive module class in this restriction lattice is the restriction of an actual module. The actual cusp-boundary submodule is extended with negative permutation action before extending its complement. Thus the coefficient involution negates the actual cusp power. The remaining cusp equation is linear, and its odd inner square is removed by an explicit half. The two prescribed lower normalizer frames lift separately by coprime complement conjugacy and the same half-norm correction. No extra common transporter is asserted.
+
+For the A79 head and p=5, the first odd relation quotient also detects every cusp-conjugator head: its centralizer image is exactly the cyclic cusp subgroup. Any full negative involution inducing the constructed finite action could therefore be normalized without changing its old Q-action. Torsion-freeness of the full procyclic cusp centralizer preserves its involutivity under this normalization, contradicting A79. Hence the constructed family has no full negative involutory realization, with no literal full-cusp or frame hypothesis.
+
+The new semisimple coefficient action is not claimed to have an ordinary full positive lift or to pass its actual first central refinement. The theorem consequently does not transport A79's central-refinement compatibility to this new action and does not exclude the surviving W=0 family. Its full four-page proof received independent root and CE review, and the component compiles without overflow or undefined citations. Milne(2025), Theorem7.4 and Proposition7.9, was opened directly for general-field semisimplicity; the induction adjunction and positivity lemma are proved in the text.
+
+Current component register: 80 rows; 72 Proved, 3 Refuted, 3 Open, 2 Known.
+
+
+## A81: actual first-central compatibility and an ordinary full lift still do not preserve negative order
+
+A81 closes the missing ordinary-realization gate in A80 for a constructed family at infinitely many eligible fresh primes. It proves that the compact-surface homology representation has a semilinear anti-symplectic involution over algebraic numbers, including the parity cases for twisted alternating irreducibles. An elementary polynomial argument supplies infinitely many completely split primes outside the finite bad set. Reduction gives actual mod-p source homology, its signed boundary submodule, and the required compact symplectic action. No concrete prime or enormous coefficient matrix is claimed to have been computed.
+
+The actual new p-central kernel is exactly the exterior-square coinvariant module. Its class-two BCH model is attained by source elements of orders two and three with the explicit r-central correction. In the compact quotient the source surface relation reads Omega+|Q|z=0. Anti-symplecticity removes that component of the cusp discrepancy; the remaining boundary component is the image of a0 wedge M^t and is removed by an anti-invariant inner correction. Both chosen G_p frames lift to norm-one frames in this actual central p-cover. Continuous prime-to-p character comparison identifies the remaining central factors with the already controlled old source refinement, so the full first central refinement is the actual fiber product over Q.
+
+The ordinary peripheral lifting criterion now provides a full positive lift retaining the constructed G_p action, with literal full cusp if desired. It does not assert that this full lift induces the entire selected first-central action. Nevertheless, no full negative involution can induce the G_p companion: the odd relation-module cusp detector permits involution-preserving normalization without changing the old Q-action, contradicting A79. Thus the failure persists without any prescribed full cusp normalization or normalizer frame. Only the first new central refinement has been proved compatible; no all-iterate statement is imported, and the later surviving W=0 actions remain outside the obstruction.
+
+The complete five-page proof passed independent mathematical reviews and a clean standalone component build. Milne's primary texts were checked for general-field semisimplicity and the precise Galois prime-factorization step. The elementary infinitude argument is included in full; Chebotarev is a comparison, not a dependency.
+
+Current component register: 81 rows; 73 Proved, 3 Refuted, 3 Open, 2 Known.
+
+
+## A82–A83: actual augmentation projectivity, dyadic freeness, and finite-head twisted duality
+
+A82 closes the actual full-group degree-one module gate. For every finite coefficient action, a sufficiently fine finite head retains the projected centralizers of the actual involutions and separates their classes. Haran's prescribed-class formulation of real projectivity then realizes arbitrary local H1 classes; degree-two restriction is injective. This proves compact projectivity of the actual reflection augmentation module at every prime. The induction counit splits by that projectivity even at two, and finite-level cancellation with a compact compatible-basis argument proves full dyadic freeness. The ranks are two for the pure negative three-class extension and one for the regular one-class extension of C43. The exact two-edge and one-loop incidence maps have cokernel equal to the reduced coset module of the subgroup generated by their selected reflections and edge labels. Freeness of the target therefore does not establish their surjectivity, the required actual generation, a finite tree, or a peripheral conjugator.
+
+A83 uses the actual finite covering pair rather than an arbitrary abstract projective module. Its boundary module is the signed cusp permutation module modulo the one total-sum relation. Compact-surface duality, the finite dihedral polygon sequence, and the actual triangle incidence imply R-dual equals R twisted by orientation in the representation Grothendieck group for every odd prime. At prime-to-order heads, semisimplicity upgrades this to an isomorphism. Each self-dual simple then has twice its regular multiplicity, with the correct division-field dimension over a nonsplitting field. The remaining nonselfdual paired imbalance and the modular isomorphism problem are not removed. No actual imbalance is asserted.
+
+Both complete formal proofs passed independent mathematical reviews. Their combined standalone component is six pages, with no errors, overflow, underflow, or undefined references. The primary Haran definition and proposition, including the finite allowed-class dependency, were opened and checked; the auxiliary finite-cover argument is also reproduced in the proof. Current component register: 83 rows; 75 Proved, 3 Refuted, 3 Open, 2 Known.
+
+
+## A84: full compact orientation-twisted projective duality
+
+A84 upgrades A83's modular composition-factor comparison without inserting an unjustified inverse limit of ordinary duals. The finite group-algebra Cartan map is injective: two projectives with equal composition factors are isomorphic. A finite splitting-field extension and Krull–Schmidt cancellation descend the isomorphism to the actual prime field. The appropriate compact dual is Hom over the completed group ring into that same ring, made a left module by the inversion anti-involution. A finite idempotent description proves its base-change formula; the coefficient-of-identity pairing identifies its finite-field reduction with the ordinary contragredient dual. Projectivity lifts each finite-field isomorphism through every coefficient power. Common-refinement compactness then gives the actual full compact duality R_p^# isomorphic to R_p tensor epsilon.
+
+At every odd finite head, even in modular characteristic, selfdual simple types therefore have exactly twice their regular multiplicity among projective-cover summands. These are not modular composition multiplicities. If every simple is selfdual the actual finite-head module is free of rank two. Nonselfdual paired imbalances remain possible under the proved identities, and no imbalance in the actual module has been constructed. The theorem still does not select a basis consisting of peripheral vertex differences, so the marked incidence/generation gate remains open.
+
+The parent-authored complete proof passed two independent mathematical reviews. The corrected finite-dual notation is retained in A84_root_proposed.tex and A84_accepted.fragment. Its three-page standalone component has no errors, overflow, underflow, or undefined references. Current component register: 84 rows; 76 Proved, 3 Refuted, 3 Open, 2 Known.
+
+
+## B85, checkpoint16: exact selected tangential action and arithmetic closure
+
+The accepted separately input Part B result is `B85_tangential_Galois.tex`.
+The rational chart t=w−1, eta=(vw−1)/(w−1)^2 gives a smooth relative curve
+with complete exceptional section and F(0,eta)=250. Deligne's verified
+relative normal-specialization theorem therefore constructs a genuine
+source-compatible tangential Galois action. The independent actual whisker
+certificate identifies the positive eta-meridian with b^{-1}, giving the
+literal formula rho_sigma(b)=b^{chi(sigma)}, while preserving H, J_c, J_m,
+and I. This selected action is not identified with the original rational
+point's own arithmetic section.
+
+B83's H_* is the kernel of its actual winding character on T. Thus it is
+b-normal, as are all its Galois translates and the translated controlled
+kernel. Their closed arithmetic enlargement and its relative normal closure
+remain b-normal. The H-conjugators in arithmetic inertia transport are kept.
+The six actual windings of v, w, and vw-u for the four nonidentity fifth
+roots give H -> Zhat^6 and vanish on the arithmetic source enlargement, so
+that enlargement is strictly proper. They also vanish on J_c; consequently
+this does not prove or disprove J_ar=J_c or whole marginal equality.
+
+Exact executed certificates are `code/check_tangential_product_one_chart.py`
+and `code/check_tangential_arithmetic_scope.py`, with their genuine stdout;
+the based local-meridian certificate is in DE's next_marginal_source folder.
+Root and CE independently read the entire proof and added scope paragraph.
+The private four-page component builds with no errors, overfull boxes, or
+undefined citations/references; bibliography underfull lines are recorded.
+The accepted B85 file is not input inside A_involutions.tex: root places it
+at the end of Part B. The owned register now has 85 rows: 84 Part A entries
+and B85, with 77 Proved, 3 Refuted, 3 Open, and 2 Known.
+
+
+## B87, checkpoint16: the actual filled fixed subgroup is the source
+
+Accepted separate Part B input: `B87_filled_fixed_subgroup.tex`. On the
+actual both-family filled surface Y_b, the rational involution F fixes the
+actual base point and the source pointwise. The product q=vw projection is
+a six-punctured-sphere bundle with fiber F5 and base F6. Its two fixed
+points form exactly the source's unramified double cover, of group F11.
+The fiber orbifold is C2*C2*F2. Its two cone classes remain distinguished
+in a finite mod-two quotient, forcing every fixed element into the source
+cover subgroup. The fiber centralizer is trivial, so the fixed subgroup
+is exactly the actual source image.
+
+This remains exact after full completion. Characteristic finite fiber
+quotients prove the induced full topology and the semidirect completion;
+the finite cone detector excludes newly completed outside-cover elements,
+and Herfort--Ribes' full profinite centralizer theorem excludes new fiber
+fixed elements. Thus C_hatPi_b(sigma)=bar H_b=hat F11. Filling the eight
+original source punctures is surjective, so the original source has this
+same filled image. No induced-topology assertion is assumed.
+
+Root and CE independently read the complete formal proof and primary
+centralizer theorem. The exact rational/source identities were genuinely
+executed in `code/check_filled_surface_involution.py/.out`. The corrected
+four-page component builds cleanly with no warnings or overfull boxes.
+The pre-filling symmetric fixed-subgroup comparison and fixed-element
+lifting through the intersection of the two deletion kernels are explicitly
+separate Open gates. The owned register now has 86 rows:84 Part A entries,
+B85 andB87, with78 Proved,3 Refuted,3 Open,2 Known. The Part A source itself
+has no B87 input; root places the accepted file in Part B.
+
+
+## B89, checkpoint16: the actual symmetric intersection and its completion
+
+Accepted separate Part B input: `B89_symmetric_intersection.tex`. The actual
+symmetric deletion has filling kernels N_A,N_B. Their intersection equals
+[N_A,N_B], by the actual open-cover crossed-module calculation: Y and F(Y)
+are aspherical bundles, while their union is the aspherical filled X with
+finitely many points removed. Real codimension four preserves pi1 and pi2.
+Brown--Loday Lemma4.1 applies without assuming the symmetric Z aspherical.
+
+The full compact equality is also proved, through an elementary group
+argument rather than an assumed completion/excision theorem. Every finite
+central extension of a finitely generated free-by-free group virtually
+splits: the characteristic subgroup N' N^exp(A) kills all action-lift
+discrepancies. Passing to the centralizer of a finite noncentral kernel
+reduces the general case to that one. Separating the two finite coordinate
+kernels, then a finite-index head quotient, proves that the actual fiber
+product has the full topology induced from its factors. An explicit coset
+argument proves density in the compact fiber product. Consequently the
+actual closed intersection is the closed mutual commutator and is the
+closure of the discrete intersection.
+
+Root, CE, and DE independently read the complete working proof and formal
+source. Both primary Brown sources were directly opened and their exact
+hypotheses/proofs checked. The four-page private component has no errors,
+overfull or underfull boxes, or undefined references; all pages were visually
+inspected. Earlier unavailable pdflatex-format and absolute Lua cache errors
+are preserved separately; the final build uses the restored LuaLaTeX runtime.
+
+This removes the actual completion/intersection gate, but does not neutralize
+the nonabelian C2 cocycles controlling fixed lifting. Neither the projected
+fixed-subgroup equality nor the original source-kernel equality is asserted.
+The owned register now has87 rows:84 Part A entries andB85/B87/B89, with
+79 Proved,3 Refuted,3 Open,2 Known. Root inputs the accepted file in Part B;
+A_involutions.tex has no B89 input.
+
+
+## B90-B91, checkpoint17: first fixed lifting and the full intersection module
+
+Accepted separate Part B inputs are `B90_symmetric_first_fixed_lifting.tex`
+and `B91_symmetric_intersection_module.tex`. The Part A source contains no
+inputs for either; root places them after B89. Root, CE and DE independently
+read the complete mathematical proofs and final sources. Private components
+have3 and4 pages respectively, with clean final logs and every page visually
+inspected after the editorial repairs. No bibliography entry was added.
+
+B90 uses the actual discrete internal normal-generation theorem of supplied
+LM4 F21-F22, transported through the exact source/ambient covers of B78.
+Mayer-Vietoris, Hopf and five-term homology identify M/[M,K_s] with the free
+abelian group on disjoint lifted A/B-component pairs, under negative swap.
+The actual fixed source meets every A lift, so no matched disjoint pair
+occurs. The integral two-orbit cocycle solver proves H^1(C2,C)=0. Actual
+compact fixed lifting follows separately by density of discrete fixed
+targets, using B87 and B89; no arbitrary completed-module cohomology claim
+is made. This removes the first relative-central obstruction, not M itself.
+
+B91 retains all coefficients in M_ab as a module for R_A times R_B. The
+presentation comes from the actual finite22-puncture family and its old-F5
+cover, with local sections and compact-disk exhaustion proving completeness.
+Its node columns are the unique product-tree2-chains of the actual
+transported commutators. Paired orbifold meridians give literal negative
+swap. The unrestricted Tate module is I_F2[R], and the exact RIGHT defect
+is r^-1-1. A fixed target lifts in K_s/[M,M] precisely when this class lies
+in U=image H^1(C2,Lbar). The source left ideal is contained in U; equality
+is not proved. In particular H^2 of the node-relation kernel cannot be
+discarded or replaced by a generator-only computation. The actual compact
+coefficient topology and nonlinear [M,M] comparison remain separate.
+
+The owned register now has89 rows:84 Part A entries andB85/B87/B89/B90/B91,
+with81 Proved,3 Refuted,3 Open,2 Known. Exact future braid/Fox output will
+be a separate explicit calculation; these theorems do not claim that a
+complete transported coefficient matrix has already been executed.
+
+
+## B92, checkpoint17: the exact source ideal and remaining syzygy map
+
+Accepted Part B input: `B92_equivariant_node_syzygy.tex`. Root, CE and DE
+independently passed the complete proof and final source. The exact
+Möbius coordinate z=(v-a)/(v-b), a,b=1±sqrt(1-q), makes F act as-z over
+the universal base. Averaged finite-family isotopies and one common
+critical-value tree retain the actual generic-fiber marking. Fixed nodes
+use the pointwise-fixed source whisker and the nearby(0,epsilon) local
+basepoint; the local source lasso is the product of the two meridians,
+not a killed source section through the deleted node.
+
+The fixed-node Tate columns are precisely the actual source meridian
+classes a-1, because the full commutator chain differs from its pure
+rectangle by an explicit C2 coboundary. These meridians generate I as
+a subgroup, through the punctured chosen source cover. Thus the free
+node-module contribution is exactly J_I. Every extra direction in U/J_I
+is the image of a canonical map from H2(C2,Z2), where Z2 is the actual
+node-column kernel. The right-defect test becomes r^-1 I-I in that image.
+No value or vanishing of this map is claimed. Vanishing would suffice
+for projected source equality, but is not asserted necessary for it.
+
+The final3-page private component uses the combined A4/27mm geometry
+and fonts, has no warnings or box errors, and every page was visually
+inspected. No new bibliography was added. The owned register now has
+90 rows:82 Proved,3 Refuted,3 Open,2 Known. The actual full-coefficient
+compact topology and nonlinear[M,M] gate remain separate.

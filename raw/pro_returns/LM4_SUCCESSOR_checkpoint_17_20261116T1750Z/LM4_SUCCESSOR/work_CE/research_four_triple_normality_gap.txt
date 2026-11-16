@@ -1,0 +1,116 @@
+ACTUAL FOUR-TRIPLE RELATIONS: AN EXACT UNIFORM-NORMALITY LIMIT
+Research note; no conclusion about the complete ratio-pencil group.
+
+1. Input and conventions
+
+Use the common based free group F20 from DE's independently certified
+ratio_pencil_braids.json and pencil_triple_transports.json. Replace the
+old x10 by c=x10_old*x11_old and retain b=x11_old. The special source
+free factor H has basis x_i, i!=11, with x10=c. The eight filled U
+indices are {1,2,6,9,12,15,19,20}. Its deletion kernel is
+K=normal_H(U); the retained quotient is free of rank11.
+
+The actual four b-triples, conjugated by their recorded H transporters,
+have the following H words (word order is literal):
+ P1=(789)^-1 6 (789), Q1=10 12 10^-1;
+ P2=(2345789)^-1 1 (2345789),
+ Q2=(10 12 14 15 16 17 18) 19 (10 12 14 15 16 17 18)^-1;
+ P3=16 20 16^-1, Q3=9^-1 2 9;
+ P4=15, Q4=9.
+Here an integer denotes the corresponding special-basis generator.
+The ordered local central products are P_i Q_i b for i=1,2,3, and
+b P4 Q4 for i=4. This order is obtained by sorting the actual local
+positions, not by treating the displayed label list as an ordered
+local basis. The checker verifies the exact words before using them.
+
+The eight P_i,Q_i and the eleven retained H generators form a Nielsen
+basis of H. A triangular inverse solves original U generators in order
+9,15,20,2,6,12,1,19; each conjugating word uses only previously solved
+U generators and retained generators. Both compositions of the two
+free-group substitutions are checked on all20 names. In particular
+A=<c,P1,Q1,...,P4,Q4> is a rank-nine free factor and
+H=A*F10. The retained original x3 belongs to the displayed F10 factor.
+
+2. Exact partial presentation
+
+Consider ONLY the retained-node relation [c,b]=1 and these four
+transported triple-point relation families, before imposing the other
+filled critical values or the retained base actions. The local family
+says that its ordered three-meridian product commutes with all three
+local meridians. Put R_i=P_i Q_i. Its relation with b first says
+[R_i,b]=1. The other two actual meridians generate, after allowed
+conjugations by b and by Q_i, precisely <P_i,Q_i>. Hence the family is
+equivalent to
+ b P_i b^-1=R_i^-1 P_i R_i,
+ b Q_i b^-1=R_i^-1 Q_i R_i.
+The fourth product bR4 gives the same equations. Conversely these two
+equations imply [R_i,b]=1 and all original local commutators, so no
+extra relation has been inserted.
+
+Define eta on A to fix c and conjugate each free rank-two factor
+<P_i,Q_i> by R_i^-1. This is an actual automorphism of A. The partial
+group is therefore the HNN extension
+ G_partial=<H,b | b a b^-1=eta(a), a in A>
+           =(A semidirect_eta Z)*F10.
+This identifies the quantified gap, rather than merely warning that
+normal generation and subgroup generation differ.
+
+Indeed take u=Q4=x9 and t=x3. Then k=t u t^-1 belongs to K. The word
+b k b^-1=b t u t^-1 b^-1 is outside H by the reduced free-product
+normal form above (equivalently Britton's lemma). Thus b does not
+normalize the image of the ENTIRE H-normal deletion kernel in this
+partial group, although it normalizes each of the four designated
+pair subgroups and those pairs normally generate K under H.
+
+3. Small finite certificate, including profinite scope
+
+There is a single explicit quotient of this partial presentation:
+ b -> (34), Q4=x9 -> (12), t=x3 -> (13),
+ all other original special-basis generators -> identity.
+All four actual triple relation families and [c,b] hold. The source
+H maps onto S3 on {1,2,3}; the partial ambient image is S4. But
+ k=t u t^-1 -> (23),
+ b k b^-1 -> (24),
+and (24) does not belong to the source S3. This finite separation also
+proves failure of b-normality for the corresponding actual source
+images in the full profinite completion of the partial presentation.
+No comparison between abstract and induced completions of an
+infinite-index subgroup is used.
+
+4. Why this does NOT settle the actual marginal
+
+The checker also evaluates the two actual retained base monodromies
+using the original generic basis; its old x10 image must be c b^-1,
+which here equals (34). The base2 monodromy fixes the entire tuple.
+The base1 monodromy changes positions3,10,11, and no element of S4
+conjugates the original tuple to the changed tuple. Thus this S4
+representation cannot be extended to the actual total-pencil group.
+It is a precise counterexample to using the four triples ALONE, not
+an actual marginal counterexample. The remaining filled relations
+and/or the actual retained base actions must be used in any successful
+uniform-normality proof. No finite-group census has been performed.
+
+5. Reproducibility and review context
+
+ code/check_four_triple_normality_gap.py
+ code/check_four_triple_normality_gap.out
+ four_triple_normality_gap.json
+
+The JSON includes hashes of both supplied common-marking inputs,
+explicit Nielsen substitutions/inverses, all normalized local words,
+all S4 generator images and the base-action checks. The program reads
+DE data but writes only within work_CE.
+
+Independent formal review of B.76 (final file
+work_DE/B_relative_special_fiber.tex): PASS. Its exact product chart,
+based source graph, direct node van Kampen calculation pi1(X)=Z^3,
+finite S3xS3 separation, and actual completed-kernel conclusion are
+correct. Its counterexample remains distinct from the partial-group
+obstruction here and from the unresolved actual icosahedral marginal.
+
+POSTSCRIPT: the complete remaining25 filled lassos were subsequently
+computed by DE in remaining_pencil_words.json. The same single S4
+tuple passes23 and fails exactly discriminant_2_plus and
+discriminant_2_minus. Thus the two branch half twists of one retained
+hyperbola already exclude it. This exact additional check is included
+in the updated checker/certificate; no new finite tuples were searched.

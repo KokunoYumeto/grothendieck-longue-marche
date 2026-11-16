@@ -1,0 +1,12 @@
+# Research notes — MPL_36_053-085+39
+
+## Scope and evidential status
+
+These notes concern all 49 retained scan pages: cote 36, scans 053–085, and cote 39, scans 003–008, 010–017, 019–020. The transcription was frozen at **2026-11-16 17:26:43 UTC**; the context file contents were first accessed at **17:26:48 UTC**, after the hashes had been written. An initial archive-directory listing (filenames only) had been inspected before the prompt instructions were read, as recorded at the start of `progress.log`; no context file contents were read then. Both `README.md` and `notes/RESULTS_STATE.md` were read in full after the freeze and before these notes were written. No contextual or bibliographical suggestion has been incorporated into the frozen transcription.
+
+A source reference such as **36/067** means PDF scan 067 of cote 36, not the lower pencil number 66 and not the internal page number of a reused typescript. The notes distinguish Grothendieck’s handwritten assertions and amendments from the unattributed texts on reused sheets. A crossed-out argument is evidence of a draft or withdrawal; it is not a second live proof. Brief French and English quotations retain the frozen readings, including explicit qualifications where the reading itself is uncertain.
+
+The context is preliminary and largely excerpted. Its README initially says that nothing else was supplied, but a later appended section announces the actual `RESULTS_STATE.md`; both files were present. The direct findings from the other project are **claims to check**, and their intake verdict “new to us” is not a mathematical validation. The listed source files behind the excerpts were not available here and were not opened. Full statements must not be reconstructed from the ellipses in those excerpts. The referee-certified rows named in the register’s introductory paragraph are different rows from the open items listed below; certification is not transferred to a neighbouring ID.
+
+Each numbered item has a source, a permitted kind, a short note, a stated relation to the supplied context, and an actual keyword-search record. Own calculations and proposed repairs are labelled as such, with confidence and a reason; none is represented as a new result. Context source filenames and the scan references actually supplied by the register are given in the citation key and the final comparison matrix. Where the register omits or truncates a scan reference, that limitation is stated instead of inventing one.
+
