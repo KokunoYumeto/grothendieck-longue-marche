@@ -110,9 +110,15 @@ root is instead.
   g_a(tau)^12 = Delta/P'(z_a)^4 for every tau (Klein forms; root of unity checked), so g_a(rho)^12 = -27 exactly;
   g_b(i) = -e^{-pi i/4} f(i)^2 = -1 + i. (b) No in the literal form: B.4.19's y^12 = t^4/(t-1)^3 is the ratio of the
   orbifold root coordinates, branched at the CM points. The bit sits in the corner parameter r: q1 = -2^-12 3^-3 r^12,
-  q2 = (i/216) r^6, so q1^(1/12) needs 3^(1/4) over Q^ab and q2^(1/6) does not. What is left for an agent:
-  is B.4.18's rotating r-central twelve-cycle the degeneration of the order-3 Albanese (orbit counts 4 x 3 and 3 x 4
-  under K's monodromy)? Read B.1.1 and B.4.18 against S6_05 C.1.2-C.2.1.
+  q2 = (i/216) r^6, so q1^(1/12) needs 3^(1/4) over Q^ab and q2^(1/6) does not.
+- **Remainder closed ~12:1x UTC by the main session (Claude Opus 5.5 at effort max), NOTES §34.** Yes at the
+  order-3 end. By S6_02_PUSH B.1.2 with S6_02 A.1.2, the twelve-cycle there is the I_12 of E_1 = C/(Z + kappa_1 Z),
+  and S6_02 A.4.1 says Alb(S_1) = E_1; the Albanese map from the cover is [3], labels i -> 3i, image = R11's four
+  components. At the order-4 end it is the I_12 of E_2 = C/(Z + kappa_2 Z), a double cover of Alb(S_2) (I_6). The two
+  ends are Tate curves over Q(i)((r)) with parameters c1 r^12 and c2^2 r^12, ratio 27/64; S6_02's d_* is
+  -1 + (3i/2 pi) log(3/4) exactly. Galois moves no component; G_{Q^ab} acts on the 12-torsion section q1^(1/12) of
+  the order-3 end by the sign of Q^ab(3^(1/4)), and trivially at the order-4 end. Nothing is left for an agent here
+  unless someone wants B.4.19's global overlaps tested for an arithmetic identification of the two ends (§34 (c)).
 
 ## F17 (16 Nov; NOTES §30 (g)) Two refuted steps in other people's papers: check before anyone is told.
 EXIT_TOWER cp16 D.72 (Minahan 2025, the adjacent-descending-link bound used on p. 29; the acyclicity theorem itself is not
