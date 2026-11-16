@@ -32,6 +32,9 @@ Une traduction anglaise de tout le manuscrit (245 unités, 1 588 scans ; traduit
   que Grothendieck laisse ouvertes, avec les numéros de scan (en anglais).
 - `methodology/` : comment la transcription est faite, les prompts utilisés, la liste des paquets et la couverture
   (en anglais).
+- [`visualizations/`](visualizations/cote148_five_point_diagram/README.md) : images et modèle interactif du
+  diagramme à cinq points de Grothendieck (cote 148, scan 31 ; 542 objets, 1 620 flèches, rendus explicites par notre
+  run EXIT_TOWER), disposés à partir de sa propre symétrie, avec les scripts (en anglais).
 - [`raw/`](raw/README.md) : résultats de recherche bruts, non revus pour publication (en anglais) : réponses de
   GPT-6 Astra (ChatGPT, mode Pro) à des prompts de recherche sur *La Longue Marche* (schémas en groupes, équation
   des lacets, tour de Teichmüller), premières passes de

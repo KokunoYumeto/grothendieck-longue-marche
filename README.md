@@ -68,6 +68,9 @@ measure what is left.
   mode) to research prompts on *La Longue Marche* (its group schemes, the equation of loops, the Teichmüller tower),
   first-pass transcriptions of the archive's cotes 146, 147 and
   149, their reviews, the prompts with everything attached, and the scripts.
+- [`visualizations/`](visualizations/cote148_five_point_diagram/README.md): pictures and an interactive model of
+  Grothendieck's five-point diagram (cote 148, scan 31; 542 objects, 1,620 arrows, as made explicit by our run
+  EXIT_TOWER), laid out from its own symmetry, with the scripts.
 - [`raw/planning/montpellier_archive/`](raw/planning/montpellier_archive/README.md): the working plans of the Montpellier archive work (plans, war games, cost and usage records), not results.
 
 The transcription is diplomatic: Grothendieck's French, spelling, abbreviations, numbering, deletions, insertions and

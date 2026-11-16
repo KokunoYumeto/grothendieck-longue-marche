@@ -1,0 +1,562 @@
+<title>Longue Marche Plates</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=STIX+Two+Text:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a sequence of plates, as in the plate section of a treatise; each plate is a wide figure with a narrow
+   caption column beside it (stacked on phones). One dark world, because every render lives on black. */
+:root {
+  --ink: #07080f;        /* page ground, the same black as the renders */
+  --panel: #0e1020;      /* figure wells */
+  --rule: #23283d;       /* hairlines */
+  --text: #e9e7f1;
+  --muted: #a3a8c0;
+  --faint: #6c7290;
+  /* the five labels of K = {0,1,2,3,4}: one colour each, in every picture */
+  --k0: #ff4d6d; --k1: #ffb000; --k2: #06d6a0; --k3: #4895ef; --k4: #c77dff;
+  --display: "Instrument Serif", "Iowan Old Style", "Times New Roman", serif;
+  --body: "STIX Two Text", "Cambria", "Georgia", serif;
+  --mono: "IBM Plex Mono", "Cascadia Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+body { background: var(--ink); color: var(--text); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+.page { max-width: 1240px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 72px; display: grid; gap: 72px; }
+a { color: var(--k3); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--k1); outline-offset: 2px; }
+h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: 0.005em; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(44px, 8vw, 92px); line-height: 0.98; }
+h2 { font-size: clamp(30px, 4.4vw, 46px); line-height: 1.05; }
+p { margin: 0; max-width: 66ch; }
+.kicker, .plate-no, .label, .chip, .note-tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.masthead { display: grid; gap: 18px; border-bottom: 1px solid var(--rule); padding-bottom: 36px; }
+.masthead .lede { font-size: 20px; color: var(--text); max-width: 60ch; }
+.k-key { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.dot { display: inline-block; width: 11px; height: 11px; border-radius: 50%; vertical-align: -1px; margin-right: 6px; }
+.plate { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 340px); gap: 28px 36px; align-items: start; }
+.plate > header { grid-column: 1 / -1; display: grid; gap: 8px; }
+.plate figure { margin: 0; min-width: 0; }
+.well { background: var(--panel); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.well img, .well video { display: block; width: 100%; height: auto; }
+.caption { display: grid; gap: 14px; min-width: 0; color: var(--muted); font-size: 16px; }
+.caption strong { color: var(--text); font-weight: 600; }
+.caption .num { font-family: var(--mono); color: var(--text); font-variant-numeric: tabular-nums; }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.pair .well { aspect-ratio: 1; max-width: 100%; }
+.pair img, .pair video { width: 100%; height: 100%; object-fit: cover; }
+.legend { display: grid; gap: 6px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.legend .row { display: flex; align-items: center; gap: 8px; }
+.swatch { width: 18px; height: 3px; border-radius: 2px; flex: none; }
+table.facts { border-collapse: collapse; width: 100%; font-size: 15px; }
+table.facts th, table.facts td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.facts th { font-family: var(--mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--faint); }
+table.facts td.n { font-family: var(--mono); font-variant-numeric: tabular-nums; color: var(--text); }
+.scroll { overflow-x: auto; }
+.wide { grid-column: 1 / -1; }
+svg text { font-family: var(--mono); }
+/* the viewer */
+.viewer { position: relative; }
+.viewer canvas { display: block; width: 100%; aspect-ratio: 1; max-height: 78vh; touch-action: none; cursor: grab; }
+.viewer canvas:active { cursor: grabbing; }
+.viewer .fallback { padding: 24px; color: var(--muted); }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; padding: 10px; border-top: 1px solid var(--rule); }
+button, .chip { font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em; color: var(--text); background: transparent; border: 1px solid var(--rule); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+button:hover { border-color: var(--muted); }
+button[aria-pressed="true"] { background: var(--text); color: var(--ink); border-color: var(--text); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { display: inline-flex; align-items: center; gap: 6px; text-transform: none; letter-spacing: 0; padding: 4px 10px; }
+.chip[aria-pressed="false"] { opacity: 0.38; }
+.chip .swatch { width: 12px; height: 12px; border-radius: 50%; }
+.info { border: 1px solid var(--rule); border-radius: 6px; padding: 14px; display: grid; gap: 8px; font-size: 15px; min-height: 150px; }
+.info .seq { display: flex; gap: 6px; flex-wrap: wrap; font-family: var(--mono); }
+.info .seq span { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; color: var(--ink); font-weight: 500; }
+.controls-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+input[type="range"] { accent-color: var(--k1); width: 160px; }
+.gt-grid { display: grid; grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr) minmax(0, 1.08fr); gap: 12px; align-items: stretch; }
+.gt-grid .well { display: grid; place-items: center; }
+.gt-grid svg { width: 100%; height: auto; }
+.gt-grid text.m { font-family: var(--body); font-style: italic; }
+@media (max-width: 860px) { .gt-grid { grid-template-columns: minmax(0, 1fr); } }
+.notes { border-top: 1px solid var(--rule); padding-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px 36px; color: var(--muted); font-size: 15px; }
+.notes h3 { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); font-weight: 500; margin: 0 0 8px; }
+@media (max-width: 860px) { .plate { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<div class="page">
+  <header class="masthead">
+    <p class="kicker">Grothendieck, cote 148, scan 31 &middot; our run EXIT_TOWER, checkpoint 28</p>
+    <h1>Longue Marche Plates</h1>
+    <p class="lede">Grothendieck sketched a finite diagram for the fundamental groupoid of the moduli space of five points on the sphere. Our run made it explicit: 542 objects and 1,620 arrows, carried into themselves by all 120 relabellings of the five points. These plates show the whole diagram, its special points, its pattern, and a model you can turn and take apart.</p>
+    <div class="k-key" aria-label="Colour key of the five points">
+      <span>The five points:</span>
+      <span><i class="dot" style="background:var(--k0)"></i>0</span>
+      <span><i class="dot" style="background:var(--k1)"></i>1</span>
+      <span><i class="dot" style="background:var(--k2)"></i>2</span>
+      <span><i class="dot" style="background:var(--k3)"></i>3</span>
+      <span><i class="dot" style="background:var(--k4)"></i>4</span>
+    </div>
+  </header>
+
+  <section class="plate" id="whole">
+    <header><p class="plate-no">Plate I</p><h2>The whole diagram, seen down its five-fold axis</h2></header>
+    <figure>
+      <div class="well"><img src="img/axis.jpg" width="1800" height="1800" alt="The 542 objects and 1,620 arrows of the five-point diagram, glowing on black, arranged as a five-fold rosette of pentagrams."></div>
+      <div class="pair">
+        <div class="well"><img src="img/oblique.jpg" width="1400" height="1400" alt="The same diagram from an oblique angle: a crown with the twelve pentagonal objects standing out in yellow."></div>
+        <div class="well"><video id="loop" src="video/turntable.mp4" poster="img/oblique.jpg" autoplay muted loop playsinline aria-label="The diagram turning by one fifth of a turn, which maps it onto itself, so the loop is seamless."></video></div>
+      </div>
+    </figure>
+    <div class="caption">
+      <p>Every dot is an object of the diagram; every strand is an arrow. <strong>Nothing was placed by hand.</strong> The positions come from the diagram itself: the vibration modes of the graph (eigenvectors of its Laplacian) fall into representations of the relabelling group S<sub>5</sub>, and the first five-dimensional one keeps all nine kinds of object apart.</p>
+      <p>We project it onto the axis and the rotation plane of the five-cycle 0&rarr;1&rarr;2&rarr;3&rarr;4&rarr;0. The picture therefore has exact five-fold rotational symmetry and five mirror lines. The two pentagonal objects that this cycle fixes, the pentagon <span class="num">0 1 2 3 4</span> and the pentagram <span class="num">0 2 4 1 3</span>, sit on the axis at the centre.</p>
+      <p>The loop turns the model by <span class="num">72&deg;</span>, one fifth of a turn. That turn maps the diagram onto itself, so the end of the loop is its beginning.</p>
+      <div class="legend" id="legend-types"></div>
+    </div>
+  </section>
+
+  <section class="plate" id="special">
+    <header><p class="plate-no">Plate II</p><h2>The three most symmetric ways to put five points on a sphere</h2></header>
+    <figure class="wide"><div class="well"><img src="img/fivepoint.jpg" width="2000" height="760" alt="Three glass spheres. Left: five points as a regular pentagon on the equator. Middle: a triangle on the equator with the two poles. Right: a square on the equator with one pole."></div></figure>
+    <div class="caption wide">
+      <p>The 62 large objects of the diagram are the special points of the moduli space of five points on the Riemann sphere: configurations that a rotation of the sphere carries to themselves while permuting the labels. Up to relabelling there are three, and each has a polyhedron for a skeleton.</p>
+      <div class="scroll">
+        <table class="facts">
+          <thead><tr><th>Object</th><th>Shape on the sphere</th><th>Symmetry (stabilizer in S<sub>5</sub>)</th><th>Labellings</th></tr></thead>
+          <tbody>
+            <tr><td>I<sub>10</sub></td><td>regular pentagon on the equator</td><td>D<sub>5</sub>, order 10</td><td class="n">120 / 10 = 12</td></tr>
+            <tr><td>I<sub>6</sub></td><td>triangle on the equator and both poles: a triangular bipyramid</td><td>S<sub>3</sub>, order 6, acting on the two poles by its sign</td><td class="n">120 / 6 = 20</td></tr>
+            <tr><td>I<sub>4</sub></td><td>square on the equator and one pole: a square pyramid</td><td>C<sub>4</sub>, order 4</td><td class="n">120 / 4 = 30</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The labellings shown are the ones the run calls the identity of each type: the pentagon in the order 0&nbsp;1&nbsp;2&nbsp;3&nbsp;4, the triangle 0&nbsp;1&nbsp;2 with the poles 3 and 4, and the square 1&nbsp;3&nbsp;2&nbsp;4 under the pole 0. The yellow line is the symmetry axis.</p>
+    </div>
+  </section>
+
+  <section class="plate" id="pattern">
+    <header><p class="plate-no">Plate III</p><h2>The pattern: nine kinds of object, fourteen kinds of arrow</h2></header>
+    <figure><div class="well scroll"><svg id="quiver" viewBox="0 0 960 600" role="img" aria-label="The nine orbits of objects in three columns and the fourteen arrow families between them, with their counts."></svg></div></figure>
+    <div class="caption">
+      <p>Divide out the relabellings and the 542 objects collapse to nine kinds, the 1,620 arrows to fourteen families. This is the diagram as Grothendieck wrote it on scan 31. Each circle gives the kind, its stabilizer and its number of copies; each arrow its family and its number of copies, drawn thicker for more.</p>
+      <p>The large objects (column I) are the three special configurations of Plate II. Arrows run from column III towards column I. The &tau;-arrows stay inside a column.</p>
+      <p>The run corrected one count. Grothendieck wrote <em>14 orbites</em> next to the arrows, and the scan already strikes out the word: there are fourteen <strong>families</strong> but <span class="num">16</span> orbits, because &gamma;<sub>r</sub><sup>1&prime;</sup> splits into three (B.12).</p>
+    </div>
+  </section>
+
+  <section class="plate" id="model">
+    <header><p class="plate-no">Plate IV</p><h2>Turn it in your hands</h2></header>
+    <figure>
+      <div class="well viewer" id="viewer">
+        <canvas id="viewer-canvas" aria-label="Three-dimensional model of the diagram. Drag to turn it; tap an object to see which five-point structure it is."></canvas>
+        <div class="toolbar">
+          <button id="btn-spin" type="button" aria-pressed="false">Spin by fifths</button>
+          <button id="btn-axis" type="button">Look down the axis</button>
+          <button id="btn-side" type="button">Look from the side</button>
+          <button id="btn-in" type="button" aria-label="Zoom in">+</button>
+          <button id="btn-out" type="button" aria-label="Zoom out">&minus;</button>
+          <button id="btn-all" type="button">Show every family</button>
+        </div>
+      </div>
+    </figure>
+    <div class="caption">
+      <p>Drag to turn the model. Tap an object to see which five-point structure it is and to light up its arrows. The chips switch arrow families and kinds of object on and off.</p>
+      <div class="info" id="info" aria-live="polite"><span class="label">Selected object</span><p>Tap any dot. The large yellow ones are the twelve pentagons.</p></div>
+      <div><p class="label">Arrow families</p><div class="chips" id="chips-fam"></div></div>
+      <div><p class="label">Kinds of object</p><div class="chips" id="chips-type"></div></div>
+    </div>
+  </section>
+
+  <section class="plate" id="hairball">
+    <header><p class="plate-no">Plate V</p><h2>The same diagram, laid out by a general-purpose program</h2></header>
+    <figure><div class="well"><img src="img/hairball.jpg" width="1400" height="1400" alt="The diagram drawn by Graphviz: a dense, roughly round tangle of coloured dots and lines."></div></figure>
+    <div class="caption">
+      <p>Graphviz (sfdp, about one second) knows nothing about relabellings. It draws every object and every arrow, in the same colours, and none of the symmetry survives. Plate I uses the same data. There the layout is computed from the symmetry itself, and the five-fold structure appears.</p>
+    </div>
+  </section>
+
+  <section class="plate" id="staircase">
+    <header><p class="plate-no">Plate VI</p><h2>How connected each level of the tower is</h2></header>
+    <figure><div class="well scroll"><svg id="stairs" viewBox="0 0 760 460" role="img" aria-label="Connectivity of the rank-k pieces of the tower against k, for several genera."></svg></div>
+      <div class="controls-row" style="margin-top:12px">
+        <label for="n-range">Marked points <span class="num" id="n-val">2</span></label>
+        <input id="n-range" type="range" min="0" max="8" step="1" value="2">
+        <span>Genus</span><span class="chips" id="g-chips"></span>
+      </div>
+    </figure>
+    <div class="caption">
+      <p>EXIT_TOWER computes exactly how connected the rank-k piece P<sub>k</sub>(g,n) of the tower is, for every genus g and number of marked points n (D.45). With d = 3g&minus;3+n:</p>
+      <p>In genus 0 and 1 it is the diagonal <span class="num">k&minus;1</span>. From genus 2 on, the line drops to slope two thirds, <span class="num">&lfloor;2k/3&rfloor;</span>, losing one step every three ranks, until rank 3g&minus;4; from rank 3g&minus;3 it climbs at slope one again, as <span class="num">k&minus;g</span>. From rank d on, the piece is a cone, so it is contractible.</p>
+      <p>The dashed line is the bound proposed in our prompt (its Lead 4, <span class="num">min(k, 2g&minus;2+n) &minus; 1</span>). Where it runs above the solid line, it is false. The run refutes it at (g,n,k) = (2,1,3) and everywhere after (D.6).</p>
+    </div>
+  </section>
+
+  <section class="plate" id="gt">
+    <header><p class="plate-no">Plate VII</p><h2>The three relations that define GT, drawn as strings</h2></header>
+    <figure class="wide">
+      <div class="gt-grid">
+        <div class="well"><svg id="gt-one" viewBox="0 0 300 420" role="img" aria-label="Relation one: two bracketings of three strands, joined by the associator and its inverse."></svg></div>
+        <div class="well"><svg id="gt-hex" viewBox="0 0 520 470" role="img" aria-label="Relation two, the hexagon: six bracketings of three coloured strands, joined alternately by associators and crossings."></svg></div>
+        <div class="well"><svg id="gt-pent" viewBox="0 0 560 470" role="img" aria-label="Relation three, the pentagon: the five bracketings of four coloured strands, joined by associators."></svg></div>
+      </div>
+    </figure>
+    <div class="caption wide">
+      <p>An element of the Grothendieck&ndash;Teichm&uuml;ller group GT&#770; is a pair (&lambda;, <em>f</em>): an exponent &lambda; for every crossing of two strands, and a profinite word <em>f</em>(<em>x</em>,<em>y</em>) in two letters for every change of bracketing. Each strand carries one of the labelled points, coloured as everywhere on this page. The pair must make each polygon close up: going once around gives the identity.</p>
+      <div class="scroll"><table class="facts">
+        <tbody>
+          <tr><td>(I)</td><td><em>f</em>(<em>x</em>,<em>y</em>)&thinsp;<em>f</em>(<em>y</em>,<em>x</em>) = 1</td><td>re-bracket and back</td></tr>
+          <tr><td>(II)</td><td><em>f</em>(<em>z</em>,<em>x</em>)&thinsp;<em>z</em><sup><em>m</em></sup>&thinsp;<em>f</em>(<em>y</em>,<em>z</em>)&thinsp;<em>y</em><sup><em>m</em></sup>&thinsp;<em>f</em>(<em>x</em>,<em>y</em>)&thinsp;<em>x</em><sup><em>m</em></sup> = 1, with <em>xyz</em> = 1 and <em>m</em> = (&lambda;&minus;1)/2</td><td>the hexagon: three re-bracketings and three crossings</td></tr>
+          <tr><td>(III)</td><td><em>f</em>(<em>x</em><sub>01</sub>,<em>x</em><sub>12</sub>)&thinsp;<em>f</em>(<em>x</em><sub>23</sub>,<em>x</em><sub>34</sub>)&thinsp;<em>f</em>(<em>x</em><sub>40</sub>,<em>x</em><sub>01</sub>)&thinsp;<em>f</em>(<em>x</em><sub>12</sub>,<em>x</em><sub>23</sub>)&thinsp;<em>f</em>(<em>x</em><sub>34</sub>,<em>x</em><sub>40</sub>) = 1</td><td>the pentagon: five re-bracketings of four strands</td></tr>
+        </tbody>
+      </table></div>
+      <p>A bracketing of four strands is a tree with five coloured ends, the four leaves and the root. It is a sphere with five points pinched as far as it goes, into three pieces. So the pentagon of (III) is the boundary of one of the twelve real pentagons of the moduli space of five points, and at its centre sits the regular-pentagon configuration: an I<sub>10</sub> object of Plate II. EXIT_TOWER E.39 claims that every such pair (&lambda;, <em>f</em>) acts on the whole tower of moduli spaces. E.43 and E.44 claim that genus one adds no new freedom, and E.49 that the character &Delta; vanishes on GT&#770;. All four are the run's claims, not yet refereed.</p>
+    </div>
+  </section>
+
+  <footer class="notes">
+    <div><h3>Where it comes from</h3><p>The diagram, its counts and the connectivity formula are statements B.12, B.25 and D.45 of our research run EXIT_TOWER (GPT-6 Astra, ChatGPT Pro mode), checkpoint 28, on Grothendieck's tower of moduli spaces (cotes 143 and 146&ndash;148). They are the run's own claims and have not been refereed yet.</p></div>
+    <div><h3>What we checked</h3><p>From the run's data file we recovered the action of the 120 relabellings on the 542 objects. It is pinned down uniquely by the arrows: every relabelling maps the 1,620 arrows, family by family, onto themselves. The stabilizers come out as in the run's table: D<sub>5</sub>, S<sub>3</sub>, C<sub>4</sub>, and a double transposition for the four C<sub>2</sub> kinds.</p></div>
+    <div><h3>How the plates were made</h3><p>Computed and drawn by Claude (Claude Opus 5.5 at effort max) on 16&ndash;17 November 2026: layouts in Python (numpy), renders in Blender 4.5 (Cycles on the GPU), Plate V in Graphviz 16.1.1, the model in three.js.</p></div>
+  </footer>
+</div>
+
+<script id="diagram-data" type="application/json">{"pos":[0.0,-0.0,-0.711,0.412,0.269,-0.142,-0.128,0.475,-0.142,-0.383,0.309,0.142,0.492,-0.025,0.142,-0.176,-0.46,-0.142,-0.492,0.025,-0.142,0.128,-0.475,0.142,-0.412,-0.269,0.142,0.0,-0.0,0.711,0.176,0.46,0.142,0.383,-0.309,-0.142,-0.194,-0.127,-0.325,-0.194,-0.127,-0.325,0.217,0.567,0.325,0.217,0.567,0.325,0.06,-0.224,-0.325,0.06,-0.224,-0.325,0.158,-0.586,0.325,0.158,-0.586,0.325,-0.472,0.381,0.325,-0.472,0.381,0.325,0.232,-0.012,-0.325,0.232,-0.012,-0.325,-0.18,0.146,-0.325,-0.18,0.146,-0.325,0.606,-0.031,0.325,0.606,-0.031,0.325,-0.509,-0.332,0.325,-0.509,-0.332,0.325,0.083,0.217,-0.325,0.083,0.217,-0.325,0.025,-0.093,-0.438,0.025,-0.093,-0.438,-0.172,0.639,0.438,-0.172,0.639,0.438,0.147,-0.545,0.0,0.147,-0.545,0.0,-0.473,-0.308,-0.0,-0.473,-0.308,0.0,0.554,0.361,0.438,0.554,0.361,0.438,-0.081,-0.053,-0.438,-0.081,-0.053,-0.438,-0.075,0.061,-0.438,-0.075,0.061,-0.438,0.515,-0.415,0.438,0.515,-0.415,0.438,-0.44,0.355,-0.0,-0.44,0.355,0.0,0.202,0.528,0.0,0.202,0.528,0.0,-0.236,-0.618,0.438,-0.236,-0.618,0.438,0.034,0.09,-0.438,0.034,0.09,-0.438,0.096,-0.005,-0.438,0.096,-0.005,-0.438,-0.661,0.034,0.438,-0.661,0.034,0.438,0.564,-0.029,0.0,0.564,-0.029,-0.0,-0.322,0.13,-0.3,-0.166,-0.447,-0.513,0.243,0.82,0.3,0.302,0.6,0.513,0.123,-0.457,-0.621,0.027,-0.101,-0.195,0.246,-0.912,0.195,0.15,-0.556,0.621,-0.622,0.587,0.3,-0.563,0.367,0.513,0.213,0.274,-0.3,0.368,-0.303,-0.513,-0.088,-0.057,-0.195,-0.397,-0.259,-0.621,0.175,0.649,0.513,0.366,0.773,0.3,-0.174,-0.444,-0.513,0.326,-0.118,-0.3,-0.476,0.02,-0.513,0.024,0.346,-0.3,0.664,-0.102,0.513,0.855,0.022,0.3,-0.482,-0.314,0.621,-0.792,-0.516,0.195,-0.011,-0.347,-0.3,-0.476,0.028,-0.513,0.286,-0.806,0.3,0.108,-0.663,0.513,-0.735,0.593,0.195,-0.448,0.362,0.621,-0.369,0.298,-0.621,-0.082,0.066,-0.195,0.848,-0.109,0.3,0.671,0.034,0.513,0.336,0.084,-0.3,-0.128,0.459,-0.513,0.205,0.538,0.621,0.337,0.883,0.195,0.24,-0.627,0.513,0.159,-0.84,0.3,0.397,0.264,-0.513,0.184,-0.294,-0.3,-0.12,0.461,-0.513,-0.333,-0.096,-0.3,-0.597,-0.308,0.513,-0.678,-0.521,0.3,0.037,0.098,-0.195,0.169,0.443,-0.621,-0.223,-0.266,-0.3,0.374,-0.296,-0.513,-0.705,0.484,0.3,-0.477,0.473,0.513,0.473,-0.024,-0.621,0.105,-0.005,-0.195,0.944,-0.048,0.195,0.575,-0.029,0.621,-0.75,-0.411,0.3,-0.523,-0.422,0.513,-0.195,0.287,-0.3,0.402,0.257,-0.513,-0.176,-0.005,-0.376,-0.106,-0.264,-0.472,0.087,0.74,0.376,0.114,0.641,0.472,0.126,-0.468,-0.348,0.083,-0.308,-0.157,0.202,-0.749,0.157,0.159,-0.589,0.348,-0.448,0.596,0.376,-0.421,0.497,0.472,0.155,0.084,-0.376,0.225,-0.175,-0.472,-0.267,-0.174,-0.157,-0.406,-0.265,-0.348,0.343,0.554,0.472,0.428,0.61,0.376,-0.097,-0.268,-0.472,0.128,-0.121,-0.376,-0.284,0.019,-0.472,-0.06,0.166,-0.376,0.645,0.09,0.472,0.731,0.146,0.376,-0.511,-0.333,0.348,-0.65,-0.424,0.157,-0.076,-0.159,-0.376,-0.285,0.01,-0.472,0.364,-0.65,0.376,0.285,-0.586,0.472,-0.604,0.487,0.157,-0.475,0.383,0.348,-0.377,0.304,-0.348,-0.248,0.2,-0.157,0.713,-0.219,0.376,0.633,-0.155,0.472,0.139,0.108,-0.376,-0.07,0.276,-0.472,0.218,0.57,0.348,0.277,0.725,0.157,0.049,-0.65,0.472,0.012,-0.745,0.376,0.241,0.151,-0.472,0.146,-0.099,-0.376,-0.079,0.274,-0.472,-0.174,0.023,-0.376,-0.469,-0.452,0.472,-0.506,-0.548,0.376,0.114,0.298,-0.157,0.173,0.453,-0.348,-0.049,-0.169,-0.376,0.219,-0.183,-0.472,-0.677,0.312,0.376,-0.575,0.307,0.472,0.484,-0.025,-0.348,0.318,-0.016,-0.157,0.775,-0.039,0.157,0.609,-0.031,0.348,-0.705,-0.242,0.376,-0.603,-0.247,0.472,-0.032,0.173,-0.376,0.236,0.16,-0.472,-0.135,0.038,-0.241,-0.148,-0.197,-0.402,0.14,0.535,0.23,0.2,0.488,0.257,0.03,-0.278,-0.388,0.103,-0.09,-0.201,-0.137,-0.281,-0.257,-0.287,-0.009,-0.23,0.107,-0.609,0.201,0.038,-0.46,0.388,-0.483,0.361,0.241,-0.403,0.238,0.402,0.228,0.408,0.402,0.236,0.555,0.241,0.199,-0.416,0.388,0.214,-0.58,0.201,0.253,0.137,-0.23,0.26,-0.174,-0.257,-0.044,-0.129,-0.201,0.114,-0.255,-0.388,-0.418,0.321,0.257,-0.39,0.392,0.23,0.227,-0.096,-0.402,0.097,0.101,-0.241,-0.137,0.002,-0.201,-0.207,-0.187,-0.388,0.176,0.497,0.257,0.253,0.492,0.23,-0.021,-0.246,-0.402,0.126,-0.061,-0.241,-0.255,-0.114,-0.388,-0.053,-0.126,-0.201,-0.233,0.08,-0.402,-0.005,0.14,-0.241,0.526,-0.039,0.257,0.552,0.033,0.23,0.194,0.571,0.241,0.102,0.457,0.402,-0.097,0.271,-0.23,-0.31,0.043,-0.257,-0.425,-0.178,0.388,-0.546,-0.29,0.201,0.208,-0.198,-0.23,-0.085,-0.301,-0.257,0.601,-0.053,0.241,0.459,-0.091,0.402,-0.486,-0.382,0.201,-0.334,-0.317,0.388,-0.124,-0.259,-0.23,-0.313,-0.012,-0.257,0.135,-0.588,0.241,0.055,-0.465,0.402,-0.514,0.344,0.201,-0.405,0.22,0.388,-0.24,-0.056,-0.402,-0.019,-0.139,-0.241,-0.242,0.139,-0.388,-0.04,0.131,-0.201,0.546,-0.088,0.23,0.527,-0.014,0.257,0.125,-0.512,0.257,0.202,-0.515,0.23,-0.136,0.012,-0.201,-0.187,0.207,-0.388,0.131,0.048,-0.241,0.004,0.246,-0.402,-0.301,0.35,0.388,-0.445,0.43,0.201,0.466,0.044,0.402,0.603,-0.008,0.241,-0.054,0.308,-0.257,0.227,0.176,-0.23,0.24,0.394,0.388,0.271,0.556,0.201,0.186,-0.429,0.402,0.179,-0.576,0.241,0.276,0.147,-0.257,0.238,-0.162,-0.23,0.168,0.595,0.201,0.084,0.453,0.388,-0.108,0.294,-0.257,-0.285,0.038,-0.23,-0.425,-0.196,0.402,-0.517,-0.31,0.241,0.085,-0.546,0.23,0.149,-0.505,0.257,-0.138,-0.025,-0.241,-0.127,0.211,-0.402,0.112,0.079,-0.201,0.058,0.273,-0.388,0.086,-0.11,-0.241,0.236,0.072,-0.402,-0.427,-0.351,0.23,-0.448,-0.277,0.257,0.139,0.242,-0.388,-0.031,0.133,-0.201,-0.078,-0.116,-0.241,0.142,-0.202,-0.402,-0.466,0.298,0.23,-0.402,0.341,0.257,0.273,-0.058,-0.388,0.117,0.071,-0.201,0.225,-0.217,-0.257,-0.08,-0.276,-0.23,0.612,-0.086,0.201,0.449,-0.106,0.388,-0.493,-0.348,0.241,-0.351,-0.31,0.402,-0.318,0.343,0.402,-0.455,0.396,0.241,0.457,0.06,0.388,0.618,0.024,0.201,-0.052,0.283,-0.23,0.246,0.193,-0.257,0.109,-0.082,-0.201,0.278,0.03,-0.388,-0.434,-0.298,0.257,-0.493,-0.249,0.23,0.161,0.186,-0.402,-0.066,0.123,-0.241,-0.333,0.123,-0.332,-0.176,-0.461,-0.548,0.249,0.876,0.332,0.309,0.653,0.548,0.132,-0.491,-0.642,0.035,-0.13,-0.211,0.261,-0.967,0.211,0.163,-0.606,0.642,-0.656,0.632,0.332,-0.596,0.409,0.548,0.226,0.274,-0.332,0.384,-0.31,-0.548,-0.113,-0.074,-0.211,-0.426,-0.278,-0.642,0.205,0.693,0.548,0.398,0.819,0.332,-0.176,-0.461,-0.548,0.33,-0.131,-0.332,-0.493,0.025,-0.548,0.014,0.355,-0.332,0.716,-0.092,0.548,0.91,0.034,0.332,-0.526,-0.343,0.642,-0.839,-0.547,0.211,-0.022,-0.354,-0.332,-0.493,0.025,-0.548,0.313,-0.855,0.332,0.133,-0.71,0.548,-0.779,0.629,0.211,-0.488,0.394,0.642,-0.396,0.319,-0.642,-0.105,0.085,-0.211,0.902,-0.125,0.332,0.722,0.02,0.548,0.342,0.097,-0.332,-0.129,0.476,-0.548,0.224,0.586,0.642,0.357,0.935,0.211,0.242,-0.681,0.548,0.159,-0.896,0.332,0.413,0.27,-0.548,0.197,-0.295,-0.332,-0.128,0.476,-0.548,-0.344,-0.088,-0.332,-0.634,-0.346,0.548,-0.716,-0.562,0.332,0.048,0.126,-0.211,0.181,0.475,-0.642,-0.22,-0.279,-0.332,0.384,-0.31,-0.548,-0.756,0.508,0.332,-0.525,0.496,0.548,0.508,-0.026,-0.642,0.135,-0.007,-0.211,1.0,-0.051,0.211,0.627,-0.032,0.642,-0.803,-0.429,0.332,-0.573,-0.44,0.548,-0.19,0.3,-0.332,0.413,0.269,-0.548,-0.168,0.106,-0.275,-0.124,-0.287,-0.479,0.129,0.652,0.244,0.198,0.536,0.341,0.071,-0.377,-0.461,0.095,-0.101,-0.161,-0.136,-0.373,-0.341,-0.311,0.049,-0.244,0.131,-0.733,0.161,0.042,-0.488,0.461,-0.526,0.456,0.275,-0.44,0.281,0.479,0.239,0.464,0.479,0.225,0.659,0.275,0.209,-0.442,0.461,0.255,-0.7,0.161,0.244,0.198,-0.244,0.305,-0.254,-0.341,-0.032,-0.135,-0.161,0.129,-0.362,-0.461,-0.441,0.363,0.341,-0.439,0.498,0.244,0.251,-0.185,-0.479,0.092,0.176,-0.275,-0.138,-0.012,-0.161,-0.304,-0.234,-0.461,0.209,0.532,0.341,0.338,0.572,0.244,-0.099,-0.296,-0.479,0.196,-0.033,-0.275,-0.337,-0.184,-0.461,-0.067,-0.122,-0.161,-0.311,0.029,-0.479,0.048,0.193,-0.275,0.571,-0.023,0.341,0.66,0.078,0.244,0.272,0.641,0.275,0.131,0.505,0.479,-0.05,0.31,-0.244,-0.396,0.014,-0.341,-0.451,-0.19,0.461,-0.657,-0.351,0.161,0.264,-0.171,-0.244,-0.147,-0.368,-0.341,0.696,-0.01,0.275,0.515,-0.084,0.479,-0.587,-0.459,0.161,-0.356,-0.336,0.461,-0.081,-0.304,-0.244,-0.396,0.026,-0.341,0.205,-0.665,0.275,0.079,-0.516,0.479,-0.618,0.416,0.161,-0.429,0.235,0.461,-0.312,0.002,-0.479,0.029,-0.197,-0.275,-0.317,0.217,-0.461,-0.054,0.128,-0.161,0.648,-0.145,0.244,0.57,-0.035,0.341,0.154,-0.55,0.341,0.278,-0.603,0.244,-0.137,0.026,-0.161,-0.279,0.264,-0.461,0.198,0.013,-0.275,-0.068,0.305,-0.479,-0.32,0.37,0.461,-0.537,0.516,0.161,0.521,0.032,0.479,0.694,-0.06,0.275,-0.109,0.381,-0.341,0.28,0.143,-0.244,0.253,0.419,0.461,0.325,0.67,0.161,0.191,-0.486,0.479,0.157,-0.678,0.275,0.329,0.222,-0.341,0.223,-0.222,-0.244,0.205,0.716,0.161,0.091,0.481,0.461,-0.097,0.385,-0.341,-0.314,-0.017,-0.244,-0.466,-0.235,0.479,-0.569,-0.401,0.275,0.063,-0.661,0.244,0.143,-0.553,0.341,-0.178,-0.088,-0.275,-0.094,0.298,-0.479,0.105,0.091,-0.161,0.108,0.368,-0.461,0.074,-0.184,-0.275,0.269,0.159,-0.479,-0.488,-0.451,0.244,-0.475,-0.317,0.341,0.165,0.347,-0.461,-0.018,0.138,-0.161,-0.152,-0.127,-0.275,0.234,-0.206,-0.479,-0.58,0.324,0.244,-0.448,0.354,0.341,0.381,-0.049,-0.461,0.126,0.059,-0.161,0.313,-0.244,-0.341,-0.142,-0.28,-0.244,0.738,-0.102,0.161,0.477,-0.111,0.461,-0.596,-0.359,0.275,-0.403,-0.332,0.479,-0.367,0.371,0.479,-0.557,0.417,0.275,0.485,0.062,0.461,0.744,0.026,0.161,-0.113,0.293,-0.244,0.336,0.211,-0.341,0.119,-0.072,-0.161,0.384,0.011,-0.461,-0.482,-0.307,0.341,-0.61,-0.264,0.244,0.254,0.181,-0.479,-0.139,0.142,-0.275,-0.251,0.073,-0.356,-0.13,-0.377,-0.523,0.153,0.821,0.356,0.199,0.65,0.523,0.136,-0.503,-0.495,0.061,-0.225,-0.163,0.235,-0.87,0.163,0.16,-0.592,0.495,-0.545,0.633,0.356,-0.499,0.461,0.523,0.18,0.19,-0.356,0.302,-0.26,-0.523,-0.195,-0.127,-0.163,-0.437,-0.285,-0.495,0.285,0.617,0.523,0.434,0.714,0.356,-0.154,-0.367,-0.523,0.236,-0.113,-0.356,-0.398,0.007,-0.523,-0.008,0.261,-0.356,0.679,0.011,0.523,0.828,0.109,0.356,-0.514,-0.335,0.495,-0.755,-0.492,0.163,-0.034,-0.259,-0.356,-0.397,0.033,-0.523,0.359,-0.754,0.356,0.221,-0.643,0.523,-0.701,0.566,0.163,-0.477,0.385,0.495,-0.406,0.327,-0.495,-0.182,0.147,-0.163,0.813,-0.192,0.356,0.675,-0.08,0.523,0.246,0.088,-0.356,-0.117,0.381,-0.523,0.219,0.573,0.495,0.322,0.842,0.163,0.132,-0.666,0.523,0.069,-0.833,0.356,0.326,0.229,-0.523,0.16,-0.207,-0.356,-0.091,0.388,-0.523,-0.257,-0.047,-0.356,-0.543,-0.408,0.523,-0.606,-0.575,0.356,0.083,0.218,-0.163,0.186,0.487,-0.495,-0.147,-0.216,-0.356,0.318,-0.24,-0.523,-0.734,0.399,0.356,-0.556,0.39,0.523,0.521,-0.026,-0.495,0.233,-0.012,-0.163,0.9,-0.046,0.163,0.613,-0.031,0.495,-0.771,-0.323,0.356,-0.593,-0.332,0.523,-0.125,0.23,-0.356,0.341,0.206,-0.523],"type":[0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8],"coset":["01234","01243","01324","01342","01423","01432","02134","02143","02314","02413","03124","03214","01234","01243","01324","01342","01423","01432","02314","02341","02413","02431","03412","03421","12304","12340","12403","12430","13402","13420","23401","23410","01234","01243","01324","01342","01423","01432","10234","10243","10324","10342","10423","10432","20134","20143","20314","20341","20413","20431","30124","30142","30214","30241","30412","30421","40123","40132","40213","40231","40312","40321","01234","01243","01324","01342","01423","01432","02314","02341","02413","02431","03412","03421","10234","10243","10324","10342","10423","10432","12304","12340","12403","12430","13402","13420","20134","20143","20314","20341","20413","20431","21304","21340","21403","21430","23401","23410","30124","30142","30214","30241","30412","30421","31204","31240","31402","31420","32401","32410","40123","40132","40213","40231","40312","40321","41203","41230","41302","41320","42301","42310","01234","01243","01324","01342","01423","01432","02314","02341","02413","02431","03412","03421","10234","10243","10324","10342","10423","10432","12304","12340","12403","12430","13402","13420","20134","20143","20314","20341","20413","20431","21304","21340","21403","21430","23401","23410","30124","30142","30214","30241","30412","30421","31204","31240","31402","31420","32401","32410","40123","40132","40213","40231","40312","40321","41203","41230","41302","41320","42301","42310","01234","01243","01324","01342","01423","01432","02134","02143","02314","02341","02413","02431","03124","03142","03214","03241","03412","03421","04123","04132","04213","04231","04312","04321","10234","10243","10324","10342","10423","10432","12034","12043","12304","12340","12403","12430","13024","13042","13204","13240","13402","13420","14023","14032","14203","14230","14302","14320","20134","20143","20314","20341","20413","20431","21034","21043","21304","21340","21403","21430","23014","23041","23104","23140","23401","23410","24013","24031","24103","24130","24301","24310","30124","30142","30214","30241","30412","30421","31024","31042","31204","31240","31402","31420","32014","32041","32104","32140","32401","32410","34012","34021","34102","34120","34201","34210","40123","40132","40213","40231","40312","40321","41023","41032","41203","41230","41302","41320","42013","42031","42103","42130","42301","42310","43012","43021","43102","43120","43201","43210","01234","01243","01324","01342","01423","01432","02314","02341","02413","02431","03412","03421","10234","10243","10324","10342","10423","10432","12304","12340","12403","12430","13402","13420","20134","20143","20314","20341","20413","20431","21304","21340","21403","21430","23401","23410","30124","30142","30214","30241","30412","30421","31204","31240","31402","31420","32401","32410","40123","40132","40213","40231","40312","40321","41203","41230","41302","41320","42301","42310","01234","01243","01324","01342","01423","01432","02134","02143","02314","02341","02413","02431","03124","03142","03214","03241","03412","03421","04123","04132","04213","04231","04312","04321","10234","10243","10324","10342","10423","10432","12034","12043","12304","12340","12403","12430","13024","13042","13204","13240","13402","13420","14023","14032","14203","14230","14302","14320","20134","20143","20314","20341","20413","20431","21034","21043","21304","21340","21403","21430","23014","23041","23104","23140","23401","23410","24013","24031","24103","24130","24301","24310","30124","30142","30214","30241","30412","30421","31024","31042","31204","31240","31402","31420","32014","32041","32104","32140","32401","32410","34012","34021","34102","34120","34201","34210","40123","40132","40213","40231","40312","40321","41023","41032","41203","41230","41302","41320","42013","42031","42103","42130","42301","42310","43012","43021","43102","43120","43201","43210","01234","01243","01324","01342","01423","01432","02314","02341","02413","02431","03412","03421","10234","10243","10324","10342","10423","10432","12304","12340","12403","12430","13402","13420","20134","20143","20314","20341","20413","20431","21304","21340","21403","21430","23401","23410","30124","30142","30214","30241","30412","30421","31204","31240","31402","31420","32401","32410","40123","40132","40213","40231","40312","40321","41203","41230","41302","41320","42301","42310"],"edges":[0,12,32,0,13,33,0,14,34,0,15,35,0,16,36,0,17,37,0,18,37,0,19,36,0,20,35,0,21,34,0,22,33,0,23,32,0,13,38,0,12,39,0,15,40,0,14,41,0,17,42,0,16,43,0,24,43,0,25,42,0,26,41,0,27,40,0,28,39,0,29,38,0,12,44,0,13,45,0,19,46,0,18,47,0,21,48,0,20,49,0,25,49,0,24,48,0,27,47,0,26,46,0,30,45,0,31,44,0,14,50,0,15,51,0,18,52,0,19,53,0,23,54,0,22,55,0,24,55,0,25,54,0,29,53,0,28,52,0,31,51,0,30,50,0,16,56,0,17,57,0,20,58,0,21,59,0,22,60,0,23,61,0,26,61,0,27,60,0,28,59,0,29,58,0,30,57,0,31,56,1,122,32,1,123,33,1,124,34,1,125,35,1,126,36,1,127,37,1,123,33,1,122,32,1,128,37,1,129,36,1,130,35,1,131,34,1,125,35,1,124,34,1,129,36,1,128,37,1,132,33,1,133,32,1,127,37,1,126,36,1,131,34,1,130,35,1,133,32,1,132,33,1,134,38,1,135,39,1,136,40,1,137,41,1,138,42,1,139,43,1,135,39,1,134,38,1,140,43,1,141,42,1,142,41,1,143,40,1,137,41,1,136,40,1,141,42,1,140,43,1,144,39,1,145,38,1,139,43,1,138,42,1,143,40,1,142,41,1,145,38,1,144,39,1,146,44,1,147,45,1,148,46,1,149,47,1,150,48,1,151,49,1,147,45,1,146,44,1,152,49,1,153,48,1,154,47,1,155,46,1,149,47,1,148,46,1,153,48,1,152,49,1,156,45,1,157,44,1,151,49,1,150,48,1,155,46,1,154,47,1,157,44,1,156,45,1,158,50,1,159,51,1,160,52,1,161,53,1,162,54,1,163,55,1,159,51,1,158,50,1,164,55,1,165,54,1,166,53,1,167,52,1,161,53,1,160,52,1,165,54,1,164,55,1,168,51,1,169,50,1,163,55,1,162,54,1,167,52,1,166,53,1,169,50,1,168,51,1,170,56,1,171,57,1,172,58,1,173,59,1,174,60,1,175,61,1,171,57,1,170,56,1,176,61,1,177,60,1,178,59,1,179,58,1,173,59,1,172,58,1,177,60,1,176,61,1,180,57,1,181,56,1,175,61,1,174,60,1,179,58,1,178,59,1,181,56,1,180,57,2,62,122,2,63,123,2,64,124,2,65,125,2,66,126,2,67,127,2,68,128,2,69,129,2,70,130,2,71,131,2,72,132,2,73,133,2,74,134,2,75,135,2,76,136,2,77,137,2,78,138,2,79,139,2,80,140,2,81,141,2,82,142,2,83,143,2,84,144,2,85,145,2,86,146,2,87,147,2,88,148,2,89,149,2,90,150,2,91,151,2,92,152,2,93,153,2,94,154,2,95,155,2,96,156,2,97,157,2,98,158,2,99,159,2,100,160,2,101,161,2,102,162,2,103,163,2,104,164,2,105,165,2,106,166,2,107,167,2,108,168,2,109,169,2,110,170,2,111,171,2,112,172,2,113,173,2,114,174,2,115,175,2,116,176,2,117,177,2,118,178,2,119,179,2,120,180,2,121,181,3,182,213,3,183,212,3,184,219,3,185,218,3,186,225,3,187,224,3,188,237,3,189,236,3,190,243,3,191,242,3,192,249,3,193,248,3,194,261,3,195,260,3,196,267,3,197,266,3,198,273,3,199,272,3,200,285,3,201,284,3,202,291,3,203,290,3,204,297,3,205,296,3,206,189,3,207,188,3,208,195,3,209,194,3,210,201,3,211,200,3,212,231,3,213,230,3,214,245,3,215,244,3,216,251,3,217,250,3,218,255,3,219,254,3,220,269,3,221,268,3,222,275,3,223,274,3,224,279,3,225,278,3,226,293,3,227,292,3,228,299,3,229,298,3,230,183,3,231,182,3,232,197,3,233,196,3,234,203,3,235,202,3,236,207,3,237,206,3,238,221,3,239,220,3,240,227,3,241,226,3,242,257,3,243,256,3,244,263,3,245,262,3,246,277,3,247,276,3,248,281,3,249,280,3,250,287,3,251,286,3,252,301,3,253,300,3,254,185,3,255,184,3,256,191,3,257,190,3,258,205,3,259,204,3,260,209,3,261,208,3,262,215,3,263,214,3,264,229,3,265,228,3,266,233,3,267,232,3,268,239,3,269,238,3,270,253,3,271,252,3,272,283,3,273,282,3,274,289,3,275,288,3,276,295,3,277,294,3,278,187,3,279,186,3,280,193,3,281,192,3,282,199,3,283,198,3,284,211,3,285,210,3,286,217,3,287,216,3,288,223,3,289,222,3,290,235,3,291,234,3,292,241,3,293,240,3,294,247,3,295,246,3,296,259,3,297,258,3,298,265,3,299,264,3,300,271,3,301,270,4,62,3,4,63,5,4,64,1,4,65,4,4,66,0,4,67,2,4,68,7,4,69,9,4,70,6,4,71,8,4,72,10,4,73,11,4,74,1,4,75,0,4,76,3,4,77,2,4,78,5,4,79,4,4,80,6,4,81,10,4,82,7,4,83,11,4,84,9,4,85,8,4,86,7,4,87,6,4,88,5,4,89,8,4,90,3,4,91,9,4,92,0,4,93,11,4,94,1,4,95,10,4,96,4,4,97,2,4,98,9,4,99,10,4,100,4,4,101,11,4,102,1,4,103,7,4,104,2,4,105,8,4,106,3,4,107,6,4,108,5,4,109,0,4,110,8,4,111,11,4,112,2,4,113,10,4,114,0,4,115,6,4,116,4,4,117,9,4,118,5,4,119,7,4,120,3,4,121,1,5,122,12,5,123,13,5,124,14,5,125,15,5,126,16,5,127,17,5,128,18,5,129,19,5,130,20,5,131,21,5,132,22,5,133,23,5,134,13,5,135,12,5,136,15,5,137,14,5,138,17,5,139,16,5,140,24,5,141,25,5,142,26,5,143,27,5,144,28,5,145,29,5,146,12,5,147,13,5,148,19,5,149,18,5,150,21,5,151,20,5,152,25,5,153,24,5,154,27,5,155,26,5,156,30,5,157,31,5,158,14,5,159,15,5,160,18,5,161,19,5,162,23,5,163,22,5,164,24,5,165,25,5,166,29,5,167,28,5,168,31,5,169,30,5,170,16,5,171,17,5,172,20,5,173,21,5,174,22,5,175,23,5,176,26,5,177,27,5,178,28,5,179,29,5,180,30,5,181,31,6,182,12,6,183,13,6,184,14,6,185,15,6,186,16,6,187,17,6,188,13,6,189,12,6,190,18,6,191,19,6,192,20,6,193,21,6,194,15,6,195,14,6,196,19,6,197,18,6,198,22,6,199,23,6,200,17,6,201,16,6,202,21,6,203,20,6,204,23,6,205,22,6,206,13,6,207,12,6,208,15,6,209,14,6,210,17,6,211,16,6,212,12,6,213,13,6,214,24,6,215,25,6,216,26,6,217,27,6,218,14,6,219,15,6,220,25,6,221,24,6,222,28,6,223,29,6,224,16,6,225,17,6,226,27,6,227,26,6,228,29,6,229,28,6,230,12,6,231,13,6,232,19,6,233,18,6,234,21,6,235,20,6,236,13,6,237,12,6,238,25,6,239,24,6,240,27,6,241,26,6,242,18,6,243,19,6,244,24,6,245,25,6,246,30,6,247,31,6,248,20,6,249,21,6,250,26,6,251,27,6,252,31,6,253,30,6,254,14,6,255,15,6,256,18,6,257,19,6,258,23,6,259,22,6,260,15,6,261,14,6,262,24,6,263,25,6,264,29,6,265,28,6,266,19,6,267,18,6,268,25,6,269,24,6,270,31,6,271,30,6,272,22,6,273,23,6,274,28,6,275,29,6,276,30,6,277,31,6,278,16,6,279,17,6,280,20,6,281,21,6,282,22,6,283,23,6,284,17,6,285,16,6,286,26,6,287,27,6,288,28,6,289,29,6,290,21,6,291,20,6,292,27,6,293,26,6,294,30,6,295,31,6,296,23,6,297,22,6,298,29,6,299,28,6,300,31,6,301,30,7,302,362,7,303,363,7,304,364,7,305,365,7,306,366,7,307,367,7,303,368,7,302,369,7,308,370,7,309,371,7,310,372,7,311,373,7,305,374,7,304,375,7,309,376,7,308,377,7,312,378,7,313,379,7,307,380,7,306,381,7,311,382,7,310,383,7,313,384,7,312,385,7,314,386,7,315,387,7,316,388,7,317,389,7,318,390,7,319,391,7,315,392,7,314,393,7,320,394,7,321,395,7,322,396,7,323,397,7,317,398,7,316,399,7,321,400,7,320,401,7,324,402,7,325,403,7,319,404,7,318,405,7,323,406,7,322,407,7,325,408,7,324,409,7,326,410,7,327,411,7,328,412,7,329,413,7,330,414,7,331,415,7,327,416,7,326,417,7,332,418,7,333,419,7,334,420,7,335,421,7,329,422,7,328,423,7,333,424,7,332,425,7,336,426,7,337,427,7,331,428,7,330,429,7,335,430,7,334,431,7,337,432,7,336,433,7,338,434,7,339,435,7,340,436,7,341,437,7,342,438,7,343,439,7,339,440,7,338,441,7,344,442,7,345,443,7,346,444,7,347,445,7,341,446,7,340,447,7,345,448,7,344,449,7,348,450,7,349,451,7,343,452,7,342,453,7,347,454,7,346,455,7,349,456,7,348,457,7,350,458,7,351,459,7,352,460,7,353,461,7,354,462,7,355,463,7,351,464,7,350,465,7,356,466,7,357,467,7,358,468,7,359,469,7,353,470,7,352,471,7,357,472,7,356,473,7,360,474,7,361,475,7,355,476,7,354,477,7,359,478,7,358,479,7,361,480,7,360,481,8,302,62,8,303,63,8,304,64,8,305,65,8,306,66,8,307,67,8,303,63,8,302,62,8,308,68,8,309,69,8,310,70,8,311,71,8,305,65,8,304,64,8,309,69,8,308,68,8,312,72,8,313,73,8,307,67,8,306,66,8,311,71,8,310,70,8,313,73,8,312,72,8,314,74,8,315,75,8,316,76,8,317,77,8,318,78,8,319,79,8,315,75,8,314,74,8,320,80,8,321,81,8,322,82,8,323,83,8,317,77,8,316,76,8,321,81,8,320,80,8,324,84,8,325,85,8,319,79,8,318,78,8,323,83,8,322,82,8,325,85,8,324,84,8,326,86,8,327,87,8,328,88,8,329,89,8,330,90,8,331,91,8,327,87,8,326,86,8,332,92,8,333,93,8,334,94,8,335,95,8,329,89,8,328,88,8,333,93,8,332,92,8,336,96,8,337,97,8,331,91,8,330,90,8,335,95,8,334,94,8,337,97,8,336,96,8,338,98,8,339,99,8,340,100,8,341,101,8,342,102,8,343,103,8,339,99,8,338,98,8,344,104,8,345,105,8,346,106,8,347,107,8,341,101,8,340,100,8,345,105,8,344,104,8,348,108,8,349,109,8,343,103,8,342,102,8,347,107,8,346,106,8,349,109,8,348,108,8,350,110,8,351,111,8,352,112,8,353,113,8,354,114,8,355,115,8,351,111,8,350,110,8,356,116,8,357,117,8,358,118,8,359,119,8,353,113,8,352,112,8,357,117,8,356,116,8,360,120,8,361,121,8,355,115,8,354,114,8,359,119,8,358,118,8,361,121,8,360,120,9,362,482,9,363,483,9,364,484,9,365,485,9,366,486,9,367,487,9,368,483,9,369,482,9,370,488,9,371,489,9,372,490,9,373,491,9,374,485,9,375,484,9,376,489,9,377,488,9,378,492,9,379,493,9,380,487,9,381,486,9,382,491,9,383,490,9,384,493,9,385,492,9,386,494,9,387,495,9,388,496,9,389,497,9,390,498,9,391,499,9,392,495,9,393,494,9,394,500,9,395,501,9,396,502,9,397,503,9,398,497,9,399,496,9,400,501,9,401,500,9,402,504,9,403,505,9,404,499,9,405,498,9,406,503,9,407,502,9,408,505,9,409,504,9,410,506,9,411,507,9,412,508,9,413,509,9,414,510,9,415,511,9,416,507,9,417,506,9,418,512,9,419,513,9,420,514,9,421,515,9,422,509,9,423,508,9,424,513,9,425,512,9,426,516,9,427,517,9,428,511,9,429,510,9,430,515,9,431,514,9,432,517,9,433,516,9,434,518,9,435,519,9,436,520,9,437,521,9,438,522,9,439,523,9,440,519,9,441,518,9,442,524,9,443,525,9,444,526,9,445,527,9,446,521,9,447,520,9,448,525,9,449,524,9,450,528,9,451,529,9,452,523,9,453,522,9,454,527,9,455,526,9,456,529,9,457,528,9,458,530,9,459,531,9,460,532,9,461,533,9,462,534,9,463,535,9,464,531,9,465,530,9,466,536,9,467,537,9,468,538,9,469,539,9,470,533,9,471,532,9,472,537,9,473,536,9,474,540,9,475,541,9,476,535,9,477,534,9,478,539,9,479,538,9,480,541,9,481,540,10,362,122,10,363,123,10,364,124,10,365,125,10,366,126,10,367,127,10,368,123,10,369,122,10,370,128,10,371,129,10,372,130,10,373,131,10,374,125,10,375,124,10,376,129,10,377,128,10,378,132,10,379,133,10,380,127,10,381,126,10,382,131,10,383,130,10,384,133,10,385,132,10,386,134,10,387,135,10,388,136,10,389,137,10,390,138,10,391,139,10,392,135,10,393,134,10,394,140,10,395,141,10,396,142,10,397,143,10,398,137,10,399,136,10,400,141,10,401,140,10,402,144,10,403,145,10,404,139,10,405,138,10,406,143,10,407,142,10,408,145,10,409,144,10,410,146,10,411,147,10,412,148,10,413,149,10,414,150,10,415,151,10,416,147,10,417,146,10,418,152,10,419,153,10,420,154,10,421,155,10,422,149,10,423,148,10,424,153,10,425,152,10,426,156,10,427,157,10,428,151,10,429,150,10,430,155,10,431,154,10,432,157,10,433,156,10,434,158,10,435,159,10,436,160,10,437,161,10,438,162,10,439,163,10,440,159,10,441,158,10,442,164,10,443,165,10,444,166,10,445,167,10,446,161,10,447,160,10,448,165,10,449,164,10,450,168,10,451,169,10,452,163,10,453,162,10,454,167,10,455,166,10,456,169,10,457,168,10,458,170,10,459,171,10,460,172,10,461,173,10,462,174,10,463,175,10,464,171,10,465,170,10,466,176,10,467,177,10,468,178,10,469,179,10,470,173,10,471,172,10,472,177,10,473,176,10,474,180,10,475,181,10,476,175,10,477,174,10,478,179,10,479,178,10,480,181,10,481,180,11,362,182,11,363,183,11,364,184,11,365,185,11,366,186,11,367,187,11,368,188,11,369,189,11,370,190,11,371,191,11,372,192,11,373,193,11,374,194,11,375,195,11,376,196,11,377,197,11,378,198,11,379,199,11,380,200,11,381,201,11,382,202,11,383,203,11,384,204,11,385,205,11,386,206,11,387,207,11,388,208,11,389,209,11,390,210,11,391,211,11,392,212,11,393,213,11,394,214,11,395,215,11,396,216,11,397,217,11,398,218,11,399,219,11,400,220,11,401,221,11,402,222,11,403,223,11,404,224,11,405,225,11,406,226,11,407,227,11,408,228,11,409,229,11,410,230,11,411,231,11,412,232,11,413,233,11,414,234,11,415,235,11,416,236,11,417,237,11,418,238,11,419,239,11,420,240,11,421,241,11,422,242,11,423,243,11,424,244,11,425,245,11,426,246,11,427,247,11,428,248,11,429,249,11,430,250,11,431,251,11,432,252,11,433,253,11,434,254,11,435,255,11,436,256,11,437,257,11,438,258,11,439,259,11,440,260,11,441,261,11,442,262,11,443,263,11,444,264,11,445,265,11,446,266,11,447,267,11,448,268,11,449,269,11,450,270,11,451,271,11,452,272,11,453,273,11,454,274,11,455,275,11,456,276,11,457,277,11,458,278,11,459,279,11,460,280,11,461,281,11,462,282,11,463,283,11,464,284,11,465,285,11,466,286,11,467,287,11,468,288,11,469,289,11,470,290,11,471,291,11,472,292,11,473,293,11,474,294,11,475,295,11,476,296,11,477,297,11,478,298,11,479,299,11,480,300,11,481,301,11,362,183,11,363,182,11,364,185,11,365,184,11,366,187,11,367,186,11,368,189,11,369,188,11,370,191,11,371,190,11,372,193,11,373,192,11,374,195,11,375,194,11,376,197,11,377,196,11,378,199,11,379,198,11,380,201,11,381,200,11,382,203,11,383,202,11,384,205,11,385,204,11,386,207,11,387,206,11,388,209,11,389,208,11,390,211,11,391,210,11,392,213,11,393,212,11,394,215,11,395,214,11,396,217,11,397,216,11,398,219,11,399,218,11,400,221,11,401,220,11,402,223,11,403,222,11,404,225,11,405,224,11,406,227,11,407,226,11,408,229,11,409,228,11,410,231,11,411,230,11,412,233,11,413,232,11,414,235,11,415,234,11,416,237,11,417,236,11,418,239,11,419,238,11,420,241,11,421,240,11,422,243,11,423,242,11,424,245,11,425,244,11,426,247,11,427,246,11,428,249,11,429,248,11,430,251,11,431,250,11,432,253,11,433,252,11,434,255,11,435,254,11,436,257,11,437,256,11,438,259,11,439,258,11,440,261,11,441,260,11,442,263,11,443,262,11,444,265,11,445,264,11,446,267,11,447,266,11,448,269,11,449,268,11,450,271,11,451,270,11,452,273,11,453,272,11,454,275,11,455,274,11,456,277,11,457,276,11,458,279,11,459,278,11,460,281,11,461,280,11,462,283,11,463,282,11,464,285,11,465,284,11,466,287,11,467,286,11,468,289,11,469,288,11,470,291,11,471,290,11,472,293,11,473,292,11,474,295,11,475,294,11,476,297,11,477,296,11,478,299,11,479,298,11,480,301,11,481,300,11,362,184,11,363,186,11,364,182,11,365,187,11,366,183,11,367,185,11,368,190,11,369,192,11,370,188,11,371,193,11,372,189,11,373,191,11,374,196,11,375,198,11,376,194,11,377,199,11,378,195,11,379,197,11,380,202,11,381,204,11,382,200,11,383,205,11,384,201,11,385,203,11,386,208,11,387,210,11,388,206,11,389,211,11,390,207,11,391,209,11,392,214,11,393,216,11,394,212,11,395,217,11,396,213,11,397,215,11,398,220,11,399,222,11,400,218,11,401,223,11,402,219,11,403,221,11,404,226,11,405,228,11,406,224,11,407,229,11,408,225,11,409,227,11,410,232,11,411,234,11,412,230,11,413,235,11,414,231,11,415,233,11,416,238,11,417,240,11,418,236,11,419,241,11,420,237,11,421,239,11,422,244,11,423,246,11,424,242,11,425,247,11,426,243,11,427,245,11,428,250,11,429,252,11,430,248,11,431,253,11,432,249,11,433,251,11,434,256,11,435,258,11,436,254,11,437,259,11,438,255,11,439,257,11,440,262,11,441,264,11,442,260,11,443,265,11,444,261,11,445,263,11,446,268,11,447,270,11,448,266,11,449,271,11,450,267,11,451,269,11,452,274,11,453,276,11,454,272,11,455,277,11,456,273,11,457,275,11,458,280,11,459,282,11,460,278,11,461,283,11,462,279,11,463,281,11,464,286,11,465,288,11,466,284,11,467,289,11,468,285,11,469,287,11,470,292,11,471,294,11,472,290,11,473,295,11,474,291,11,475,293,11,476,298,11,477,300,11,478,296,11,479,301,11,480,297,11,481,299,12,482,62,12,483,63,12,484,64,12,485,65,12,486,66,12,487,67,12,483,63,12,482,62,12,488,68,12,489,69,12,490,70,12,491,71,12,485,65,12,484,64,12,489,69,12,488,68,12,492,72,12,493,73,12,487,67,12,486,66,12,491,71,12,490,70,12,493,73,12,492,72,12,494,74,12,495,75,12,496,76,12,497,77,12,498,78,12,499,79,12,495,75,12,494,74,12,500,80,12,501,81,12,502,82,12,503,83,12,497,77,12,496,76,12,501,81,12,500,80,12,504,84,12,505,85,12,499,79,12,498,78,12,503,83,12,502,82,12,505,85,12,504,84,12,506,86,12,507,87,12,508,88,12,509,89,12,510,90,12,511,91,12,507,87,12,506,86,12,512,92,12,513,93,12,514,94,12,515,95,12,509,89,12,508,88,12,513,93,12,512,92,12,516,96,12,517,97,12,511,91,12,510,90,12,515,95,12,514,94,12,517,97,12,516,96,12,518,98,12,519,99,12,520,100,12,521,101,12,522,102,12,523,103,12,519,99,12,518,98,12,524,104,12,525,105,12,526,106,12,527,107,12,521,101,12,520,100,12,525,105,12,524,104,12,528,108,12,529,109,12,523,103,12,522,102,12,527,107,12,526,106,12,529,109,12,528,108,12,530,110,12,531,111,12,532,112,12,533,113,12,534,114,12,535,115,12,531,111,12,530,110,12,536,116,12,537,117,12,538,118,12,539,119,12,533,113,12,532,112,12,537,117,12,536,116,12,540,120,12,541,121,12,535,115,12,534,114,12,539,119,12,538,118,12,541,121,12,540,120,13,482,32,13,483,33,13,484,34,13,485,35,13,486,36,13,487,37,13,488,37,13,489,36,13,490,35,13,491,34,13,492,33,13,493,32,13,494,38,13,495,39,13,496,40,13,497,41,13,498,42,13,499,43,13,500,43,13,501,42,13,502,41,13,503,40,13,504,39,13,505,38,13,506,44,13,507,45,13,508,46,13,509,47,13,510,48,13,511,49,13,512,49,13,513,48,13,514,47,13,515,46,13,516,45,13,517,44,13,518,50,13,519,51,13,520,52,13,521,53,13,522,54,13,523,55,13,524,55,13,525,54,13,526,53,13,527,52,13,528,51,13,529,50,13,530,56,13,531,57,13,532,58,13,533,59,13,534,60,13,535,61,13,536,61,13,537,60,13,538,59,13,539,58,13,540,57,13,541,56],"typeColor":["#ffd23f","#ff6b6b","#4ecdc4","#e0aaff","#c77dff","#9d4edd","#caf0f8","#90e0ef","#48cae4"],"famColor":["#ffb000","#ff7a00","#06d6a0","#2ec4b6","#ffd23f","#ff4d6d","#ff8fab","#4cc9f0","#b5179e","#4895ef","#9b5de5","#7209b7","#c77dff","#f15bb5"]}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("diagram-data").textContent);
+  var KCOL = ["#ff4d6d", "#ffb000", "#06d6a0", "#4895ef", "#c77dff"];
+  var TYPES = [
+    { id: "I10", name: "I₁₀", stab: "D₅", n: 12, desc: "a pentagonal order of the five points: the regular pentagon" },
+    { id: "I6", name: "I₆", stab: "S₃ (sign on the poles)", n: 20, desc: "bitetrahedral: a triangle J and the two poles" },
+    { id: "I4", name: "I₄", stab: "C₄", n: 30, desc: "an oriented square, the fifth point at the pole" },
+    { id: "II2", name: "II₂", stab: "C₂", n: 60, desc: "as a set with relabellings: a pentagon with a marked vertex" },
+    { id: "IIp2", name: "II′₂", stab: "C₂", n: 60, desc: "as a set with relabellings: a pentagon with a marked vertex" },
+    { id: "II1", name: "II₁", stab: "trivial", n: 120, desc: "pinned: a triple J, an orientation of J, a pair in J × ε" },
+    { id: "III2", name: "III₂", stab: "C₂", n: 60, desc: "as a set with relabellings: a pentagon with a marked vertex" },
+    { id: "III1", name: "III₁", stab: "trivial", n: 120, desc: "fully pinned" },
+    { id: "IIIp2", name: "III′₂", stab: "C₂", n: 60, desc: "a square with a chosen pair of diagonals" }
+  ];
+  // family: [label, sub, sup, source kind, target kind, arrows, orbits]
+  var FAMS = [
+    ["f", "B,s", "", 1, 2, 60, 1], ["f", "Q,a", "", 4, 2, 120, 1], ["τ", "π,s", "", 3, 4, 60, 1],
+    ["τ", "r", "0", 5, 5, 120, 1], ["γ", "π,s", "", 3, 0, 60, 1], ["γ″", "π,s", "", 4, 1, 60, 1],
+    ["γ", "r", "0", 5, 1, 120, 1], ["τ", "π,ρ", "", 6, 7, 120, 1], ["γ", "π,ρ", "", 6, 3, 120, 1],
+    ["τ", "r", "1", 7, 8, 120, 1], ["γ", "r", "1", 7, 4, 120, 1], ["γ", "r", "1′", 7, 5, 360, 3],
+    ["γ", "r", "2", 8, 3, 120, 1], ["γ", "r", "2′", 8, 2, 60, 1]
+  ];
+  function famHTML(f) { return f[0] + "<sub>" + f[1] + "</sub>" + (f[2] ? "<sup>" + f[2] + "</sup>" : ""); }
+  var NS = "http://www.w3.org/2000/svg";
+  function el(tag, attrs, parent) { var e = document.createElementNS(NS, tag); for (var k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; }
+
+  // ---------- legend under Plate I ----------
+  (function legend() {
+    var box = document.getElementById("legend-types");
+    var h = '<span class="label">Objects (dots)</span>';
+    TYPES.forEach(function (t, i) { h += '<span class="row"><i class="dot" style="background:' + D.typeColor[i] + '"></i>' + t.name + " · " + t.n + "</span>"; });
+    h += '<span class="label" style="margin-top:8px">Arrows (strands)</span>';
+    FAMS.forEach(function (f, i) { h += '<span class="row"><i class="swatch" style="background:' + D.famColor[i] + '"></i>' + famHTML(f) + " · " + f[5] + "</span>"; });
+    box.innerHTML = h;
+  })();
+
+  // ---------- Plate III: the quiver ----------
+  (function quiver() {
+    var svg = document.getElementById("quiver");
+    var P = [[150, 110], [150, 290], [150, 470], [480, 110], [480, 290], [480, 470], [810, 110], [810, 290], [810, 470]];
+    var R = 36;
+    var defs = el("defs", {}, svg);
+    el("text", { x: 150, y: 40, "text-anchor": "middle", fill: "#a3a8c0", "font-size": 13, "letter-spacing": "2" }, svg).textContent = "COLUMN I";
+    el("text", { x: 480, y: 40, "text-anchor": "middle", fill: "#a3a8c0", "font-size": 13, "letter-spacing": "2" }, svg).textContent = "COLUMN II";
+    el("text", { x: 810, y: 40, "text-anchor": "middle", fill: "#a3a8c0", "font-size": 13, "letter-spacing": "2" }, svg).textContent = "COLUMN III";
+    // bends (perpendicular offset of the quadratic control point) and label nudges, per family
+    var bend = [0, 46, 0, 0, 0, 0, 46, 0, 0, 0, 0, -34, 70, 150];
+    var g = el("g", {}, svg);
+    FAMS.forEach(function (f, i) {
+      var a = P[f[3]], b = P[f[4]], col = D.famColor[i], w = f[5] >= 360 ? 5.5 : f[5] >= 120 ? 3.4 : 2.2;
+      if (f[3] === f[4]) { // the loop of tau_r^0 under II_1
+        var x = a[0], y = a[1] + R;
+        el("path", { d: "M" + (x - 16) + " " + (y - 4) + " C " + (x - 70) + " " + (y + 86) + ", " + (x + 70) + " " + (y + 86) + ", " + (x + 16) + " " + (y - 4), fill: "none", stroke: col, "stroke-width": w, "stroke-linecap": "round" }, g);
+        arrowHead(g, [x + 16, y - 4], [x + 52, y + 50], col);
+        label(g, f, i, x, y + 92);
+        return;
+      }
+      var mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy);
+      var cx = mx - dy / L * bend[i], cy = my + dx / L * bend[i];
+      var s = shorten(a, [cx, cy], R + 4), t = shorten(b, [cx, cy], R + 8);
+      el("path", { d: "M" + s[0] + " " + s[1] + " Q " + cx + " " + cy + " " + t[0] + " " + t[1], fill: "none", stroke: col, "stroke-width": w, "stroke-linecap": "round", opacity: 0.95 }, g);
+      arrowHead(g, t, [cx, cy], col);
+      var lx = 0.25 * s[0] + 0.5 * cx + 0.25 * t[0], ly = 0.25 * s[1] + 0.5 * cy + 0.25 * t[1];
+      var hor = Math.abs(dy) < 1, ver = Math.abs(dx) < 1;
+      label(g, f, i, lx + (ver ? 44 : 0), ly + (hor ? -10 : 4));
+    });
+    function shorten(p, q, r) { var dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy); return [p[0] + dx / L * r, p[1] + dy / L * r]; }
+    function arrowHead(parent, tip, from, col) {
+      var dx = tip[0] - from[0], dy = tip[1] - from[1], L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, s = 11;
+      var p1 = [tip[0] - ux * s - uy * s * 0.55, tip[1] - uy * s + ux * s * 0.55], p2 = [tip[0] - ux * s + uy * s * 0.55, tip[1] - uy * s - ux * s * 0.55];
+      el("path", { d: "M" + (tip[0] + ux * 2) + " " + (tip[1] + uy * 2) + " L " + p1[0] + " " + p1[1] + " L " + p2[0] + " " + p2[1] + " Z", fill: col }, parent);
+    }
+    function label(parent, f, i, x, y) {
+      var t = el("text", { x: x, y: y, "text-anchor": "middle", fill: D.famColor[i], "font-size": 14, "paint-order": "stroke", stroke: "#0e1020", "stroke-width": 5, "stroke-linejoin": "round" }, parent);
+      el("tspan", {}, t).textContent = f[0];
+      el("tspan", { "baseline-shift": "sub", "font-size": 10 }, t).textContent = f[1];
+      if (f[2]) el("tspan", { "baseline-shift": "super", "font-size": 10 }, t).textContent = f[2];
+      el("tspan", { fill: "#a3a8c0", dx: 4 }, t).textContent = "· " + f[5];
+    }
+    TYPES.forEach(function (t, i) {
+      var p = P[i], col = D.typeColor[i];
+      el("circle", { cx: p[0], cy: p[1], r: R, fill: "#0e1020", stroke: col, "stroke-width": 2.5 }, svg);
+      el("circle", { cx: p[0], cy: p[1], r: R - 6, fill: col, opacity: 0.16 }, svg);
+      var tx = el("text", { x: p[0], y: p[1] + 6, "text-anchor": "middle", fill: "#e9e7f1", "font-size": 19 }, svg); tx.textContent = t.name;
+      var sub = el("text", { x: p[0], y: p[1] - R - 10, "text-anchor": "middle", fill: "#a3a8c0", "font-size": 12.5 }, svg);
+      sub.textContent = t.stab.replace(" (sign on the poles)", "") + " · " + t.n;
+    });
+  })();
+
+  // ---------- Plate VI: the connectivity staircase ----------
+  (function stairs() {
+    var svg = document.getElementById("stairs"), nIn = document.getElementById("n-range"), nVal = document.getElementById("n-val");
+    var gBox = document.getElementById("g-chips"), sel = 2, GMAX = 5;
+    for (var g = 0; g <= GMAX; g++) (function (g) {
+      var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.textContent = "g = " + g; b.id = "g-chip-" + g;
+      b.setAttribute("aria-pressed", g === sel ? "true" : "false");
+      b.addEventListener("click", function () { sel = g; for (var j = 0; j <= GMAX; j++) document.getElementById("g-chip-" + j).setAttribute("aria-pressed", j === sel ? "true" : "false"); draw(); });
+      gBox.appendChild(b);
+    })(g);
+    function conn(g, n, k) {
+      var d = 3 * g - 3 + n;
+      if (k >= d) return null;
+      if (g <= 1) return k - 1;
+      if (k === 0) return -1;
+      if (k <= 3 * g - 4) return Math.floor(2 * k / 3);
+      return k - g;
+    }
+    function stable(g, n) { return 2 * g - 2 + n > 0 && 3 * g - 3 + n >= 1; }
+    function draw() {
+      var n = +nIn.value; nVal.textContent = n;
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      var W = 760, H = 460, m = { l: 56, r: 24, t: 24, b: 50 };
+      var kmax = 0;
+      for (var g = 0; g <= GMAX; g++) if (stable(g, n)) kmax = Math.max(kmax, 3 * g - 3 + n);
+      kmax = Math.max(kmax, 4);
+      var ymax = kmax - 1, ymin = -1;
+      function X(k) { return m.l + (k / kmax) * (W - m.l - m.r); }
+      function Y(c) { return H - m.b - ((c - ymin) / (ymax - ymin)) * (H - m.t - m.b); }
+      var grid = el("g", {}, svg);
+      for (var k = 0; k <= kmax; k++) {
+        el("line", { x1: X(k), x2: X(k), y1: Y(ymin), y2: Y(ymax), stroke: "#23283d", "stroke-width": 1 }, grid);
+        if (kmax <= 14 || k % 2 === 0) el("text", { x: X(k), y: H - m.b + 18, "text-anchor": "middle", fill: "#a3a8c0", "font-size": 12 }, grid).textContent = k;
+      }
+      var step = ymax - ymin > 12 ? 2 : 1;
+      for (var c = ymin; c <= ymax; c += step) {
+        el("line", { x1: X(0), x2: X(kmax), y1: Y(c), y2: Y(c), stroke: "#23283d", "stroke-width": 1 }, grid);
+        el("text", { x: m.l - 10, y: Y(c) + 4, "text-anchor": "end", fill: "#a3a8c0", "font-size": 12 }, grid).textContent = c;
+      }
+      el("text", { x: (W + m.l) / 2, y: H - 10, "text-anchor": "middle", fill: "#a3a8c0", "font-size": 12 }, svg).textContent = "rank k";
+      el("text", { x: 14, y: (H - m.b + m.t) / 2, "text-anchor": "middle", fill: "#a3a8c0", "font-size": 12, transform: "rotate(-90 14 " + (H - m.b + m.t) / 2 + ")" }, svg).textContent = "connectivity";
+      for (var gg = 0; gg <= GMAX; gg++) {
+        if (!stable(gg, n)) continue;
+        var d = 3 * gg - 3 + n, pts = [];
+        for (var kk = 0; kk < d && kk <= kmax; kk++) pts.push([X(kk), Y(conn(gg, n, kk))]);
+        var on = gg === sel, col = on ? "#ffb000" : "#4a5070";
+        if (pts.length) el("polyline", { points: pts.map(function (p) { return p.join(","); }).join(" "), fill: "none", stroke: col, "stroke-width": on ? 3 : 1.6, "stroke-linejoin": "round" }, svg);
+        pts.forEach(function (p) { el("circle", { cx: p[0], cy: p[1], r: on ? 4 : 2.6, fill: col }, svg); });
+        if (d <= kmax) {
+          var cx = X(d), cy = Y(Math.min(ymax, pts.length ? conn(gg, n, d - 1) + 1 : 0));
+          el("text", { x: cx, y: cy + 5, "text-anchor": "middle", fill: col, "font-size": on ? 18 : 14 }, svg).textContent = "∗";
+        }
+        if (on) {
+          if (gg >= 2) {
+            var lead = [];
+            for (var k2 = 0; k2 < d; k2++) lead.push([X(k2), Y(Math.min(ymax, Math.min(k2, 2 * gg - 2 + n) - 1))]);
+            el("polyline", { points: lead.map(function (p) { return p.join(","); }).join(" "), fill: "none", stroke: "#e9e7f1", "stroke-width": 1.4, "stroke-dasharray": "5 5", opacity: 0.8 }, svg);
+          }
+          var tag = "genus " + gg + ", n = " + n + ", d = " + d + (d <= kmax ? "  ·  ∗ = cone from rank d" : "");
+          el("text", { x: m.l + 8, y: m.t + 14, fill: "#ffb000", "font-size": 13 }, svg).textContent = tag;
+        }
+      }
+      if (!stable(sel, n)) el("text", { x: m.l + 8, y: m.t + 14, fill: "#a3a8c0", "font-size": 13 }, svg).textContent = "genus " + sel + " with n = " + n + " is not a stable type";
+    }
+    nIn.addEventListener("input", draw); draw();
+  })();
+
+  // ---------- Plate IV: the model ----------
+  (function viewer() {
+    var canvas = document.getElementById("viewer-canvas"), info = document.getElementById("info");
+    var famBox = document.getElementById("chips-fam"), typeBox = document.getElementById("chips-type");
+    if (!window.THREE) { document.getElementById("viewer").insertAdjacentHTML("afterbegin", '<p class="fallback">The 3D model needs WebGL and the three.js library, which did not load here. Plates I and III show the same diagram.</p>'); canvas.hidden = true; return; }
+    var THREE = window.THREE, N = D.type.length, P = D.pos;
+    var renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true }); } catch (e) { canvas.hidden = true; return; }
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); renderer.setClearColor(0x07080f, 1);
+    var scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(36, 1, 0.05, 60), root = new THREE.Group();
+    scene.add(root); camera.up.set(0, 0, 1);
+    var tex = (function () { var c = document.createElement("canvas"); c.width = c.height = 64; var g = c.getContext("2d"); var gr = g.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(0.5, "rgba(255,255,255,1)"); gr.addColorStop(0.72, "rgba(255,255,255,0.3)"); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); })();
+    var SIZES = [0.085, 0.072, 0.064, 0.042, 0.042, 0.042, 0.034, 0.034, 0.034];
+    var typeObjs = TYPES.map(function (t, ti) {
+      var idx = []; for (var i = 0; i < N; i++) if (D.type[i] === ti) idx.push(i);
+      var arr = new Float32Array(idx.length * 3); idx.forEach(function (v, j) { arr[3 * j] = P[3 * v]; arr[3 * j + 1] = P[3 * v + 1]; arr[3 * j + 2] = P[3 * v + 2]; });
+      var geo = new THREE.BufferGeometry(); geo.setAttribute("position", new THREE.BufferAttribute(arr, 3));
+      var mat = new THREE.PointsMaterial({ size: SIZES[ti], map: tex, color: new THREE.Color(D.typeColor[ti]), transparent: true, depthWrite: false, sizeAttenuation: true });
+      var pts = new THREE.Points(geo, mat); pts.userData.idx = idx; pts.renderOrder = 2; root.add(pts); return pts;
+    });
+    var famObjs = FAMS.map(function (f, fi) {
+      var segs = []; for (var e = 0; e < D.edges.length; e += 3) if (D.edges[e] === fi) { var s = D.edges[e + 1], t = D.edges[e + 2]; segs.push(P[3 * s], P[3 * s + 1], P[3 * s + 2], P[3 * t], P[3 * t + 1], P[3 * t + 2]); }
+      var geo = new THREE.BufferGeometry(); geo.setAttribute("position", new THREE.Float32BufferAttribute(segs, 3));
+      var mat = new THREE.LineBasicMaterial({ color: new THREE.Color(D.famColor[fi]), transparent: true, opacity: 0.45, blending: THREE.AdditiveBlending, depthWrite: false });
+      var ls = new THREE.LineSegments(geo, mat); root.add(ls); return ls;
+    });
+    var hiGeo = new THREE.BufferGeometry(), hiLines = new THREE.LineSegments(hiGeo, new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.95, depthWrite: false }));
+    hiLines.renderOrder = 3; root.add(hiLines);
+    var ringGeo = new THREE.BufferGeometry(); ringGeo.setAttribute("position", new THREE.Float32BufferAttribute([0, 0, 0], 3));
+    var ring = new THREE.Points(ringGeo, new THREE.PointsMaterial({ size: 0.16, map: tex, color: 0xffffff, transparent: true, opacity: 0.55, depthWrite: false }));
+    ring.visible = false; ring.renderOrder = 4; root.add(ring);
+
+    // chips
+    function chip(box, html, color, id, onToggle) {
+      var b = document.createElement("button"); b.type = "button"; b.className = "chip"; b.id = id; b.setAttribute("aria-pressed", "true");
+      b.innerHTML = '<i class="swatch" style="background:' + color + '"></i>' + html;
+      b.addEventListener("click", function () { var on = b.getAttribute("aria-pressed") !== "true"; b.setAttribute("aria-pressed", on ? "true" : "false"); onToggle(on); request(); });
+      box.appendChild(b); return b;
+    }
+    var famChips = FAMS.map(function (f, i) { return chip(famBox, famHTML(f), D.famColor[i], "fam-" + i, function (on) { famObjs[i].visible = on; }); });
+    TYPES.forEach(function (t, i) { chip(typeBox, t.name, D.typeColor[i], "type-" + i, function (on) { typeObjs[i].visible = on; }); });
+    document.getElementById("btn-all").addEventListener("click", function () { famChips.forEach(function (b, i) { b.setAttribute("aria-pressed", "true"); famObjs[i].visible = true; }); request(); });
+
+    // camera: azimuth and elevation around the five-fold axis z
+    var az = 0.0, el = 0.5, dist = 3.6, spin = false, last = 0;
+    function place() { camera.position.set(dist * Math.cos(el) * Math.sin(az), -dist * Math.cos(el) * Math.cos(az), dist * Math.sin(el)); camera.lookAt(0, 0, 0); }
+    function resize() { var w = canvas.clientWidth, h = canvas.clientHeight; if (!w || !h) return; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); request(); }
+    var pending = false;
+    function request() { if (!pending) { pending = true; requestAnimationFrame(frame); } }
+    function frame(t) {
+      pending = false;
+      if (spin) { var dt = last ? Math.min(t - last, 50) : 16; az += dt * (2 * Math.PI / 5) / 4000; last = t; request(); } else last = 0;
+      place(); renderer.render(scene, camera);
+    }
+    var ptr = new Map(), moved = 0, pinch0 = 0;
+    canvas.addEventListener("pointerdown", function (e) { canvas.setPointerCapture(e.pointerId); ptr.set(e.pointerId, [e.clientX, e.clientY]); moved = 0; if (ptr.size === 2) { var v = Array.from(ptr.values()); pinch0 = Math.hypot(v[0][0] - v[1][0], v[0][1] - v[1][1]); } });
+    canvas.addEventListener("pointermove", function (e) {
+      if (!ptr.has(e.pointerId)) return; var p = ptr.get(e.pointerId), dx = e.clientX - p[0], dy = e.clientY - p[1]; ptr.set(e.pointerId, [e.clientX, e.clientY]);
+      if (ptr.size === 2) { var v = Array.from(ptr.values()), d = Math.hypot(v[0][0] - v[1][0], v[0][1] - v[1][1]); if (pinch0) { dist = Math.min(8, Math.max(1.6, dist * pinch0 / d)); } pinch0 = d; request(); return; }
+      moved += Math.abs(dx) + Math.abs(dy); az -= dx * 0.008; el = Math.max(-1.5, Math.min(1.5, el + dy * 0.008)); request();
+    });
+    function up(e) { if (ptr.has(e.pointerId)) { ptr.delete(e.pointerId); if (moved < 6 && ptr.size === 0) pick(e); } if (ptr.size < 2) pinch0 = 0; }
+    canvas.addEventListener("pointerup", up); canvas.addEventListener("pointercancel", function (e) { ptr.delete(e.pointerId); });
+    var ray = new THREE.Raycaster(); ray.params.Points.threshold = 0.035;
+    function pick(e) {
+      var r = canvas.getBoundingClientRect(), v = new THREE.Vector2(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
+      ray.setFromCamera(v, camera);
+      var hits = ray.intersectObjects(typeObjs.filter(function (o) { return o.visible; }));
+      if (!hits.length) return;
+      hits.sort(function (a, b) { return a.distanceToRay - b.distanceToRay || a.distance - b.distance; });
+      select(hits[0].object.userData.idx[hits[0].index]);
+    }
+    function dots(seq) { return '<span class="seq">' + seq.map(function (k) { return '<span style="background:' + KCOL[k] + '">' + k + "</span>"; }).join("") + "</span>"; }
+    function select(v) {
+      var ti = D.type[v], t = TYPES[ti], c = D.coset[v].split("").map(Number);
+      var segs = [], byFam = {};
+      for (var e = 0; e < D.edges.length; e += 3) {
+        var s = D.edges[e + 1], u = D.edges[e + 2];
+        if (s === v || u === v) { segs.push(P[3 * s], P[3 * s + 1], P[3 * s + 2], P[3 * u], P[3 * u + 1], P[3 * u + 2]); var key = D.edges[e]; byFam[key] = byFam[key] || [0, 0]; byFam[key][s === v ? 0 : 1]++; }
+      }
+      hiGeo.setAttribute("position", new THREE.Float32BufferAttribute(segs, 3)); hiGeo.computeBoundingSphere();
+      ringGeo.setAttribute("position", new THREE.Float32BufferAttribute([P[3 * v], P[3 * v + 1], P[3 * v + 2]], 3)); ring.visible = true;
+      var shape = "";
+      if (t.id === "I10") shape = "<p>Pentagonal order (read around the pentagon):</p>" + dots(c);
+      else if (t.id === "I6") shape = "<p>Triangle J, and the pole on the side of the orientation J reads in, then the other pole:</p>" + dots([c[0], c[1], c[2]]) + dots([c[3], c[4]]);
+      else if (t.id === "I4") shape = "<p>The pole, then the square read around:</p>" + dots([c[0]]) + dots([c[1], c[3], c[2], c[4]]);
+      else shape = "<p>The relabelling that carries the run's base structure of this kind to this object:</p>" + dots(c);
+      var arrows = Object.keys(byFam).map(function (k) { var f = FAMS[k]; return famHTML(f) + ": " + (byFam[k][0] ? byFam[k][0] + " out" : "") + (byFam[k][0] && byFam[k][1] ? ", " : "") + (byFam[k][1] ? byFam[k][1] + " in" : ""); }).join("; ");
+      info.innerHTML = '<span class="label">Object ' + v + " of 542</span><p><strong>" + t.name + "</strong>, " + t.desc + ". Stabilizer " + t.stab + "; " + t.n + " copies.</p>" + shape + "<p>Arrows: " + arrows + ".</p>";
+      request();
+    }
+    function zoom(f) { dist = Math.min(8, Math.max(1.6, dist * f)); request(); }
+    document.getElementById("btn-in").addEventListener("click", function () { zoom(0.85); });
+    document.getElementById("btn-out").addEventListener("click", function () { zoom(1 / 0.85); });
+    document.getElementById("btn-axis").addEventListener("click", function () { el = 1.5; request(); });
+    document.getElementById("btn-side").addEventListener("click", function () { el = 0.0; request(); });
+    var spinBtn = document.getElementById("btn-spin");
+    spinBtn.addEventListener("click", function () { spin = !spin; spinBtn.setAttribute("aria-pressed", spin ? "true" : "false"); request(); });
+    if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas); else window.addEventListener("resize", resize);
+    resize(); select(0);
+  })();
+
+  // ---------- Plate VII: GT's relations as string diagrams ----------
+  (function gtPlates() {
+    var MUTED = "#a3a8c0", STRAND = "#c9cbe0";
+    function flat(b) { return typeof b === "number" ? [b] : flat(b[0]).concat(flat(b[1])); }
+    // a bracketing as a tree: coloured leaves at the bottom, the root strand on top in the root's colour
+    function tree(parent, cx, cy, w, h, br, rootLabel) {
+      var leaves = flat(br), n = leaves.length, dh = (h - 18) / n, bottom = cy + h / 2, g = el("g", {}, parent);
+      function lay(b) {
+        if (typeof b === "number") { var i = leaves.indexOf(b); return { x: cx - w / 2 + w * (i + 0.5) / n, y: bottom, leaf: b, size: 1 }; }
+        var L = lay(b[0]), R = lay(b[1]), size = L.size + R.size;
+        var node = { x: (L.x + R.x) / 2, y: bottom - size * dh, size: size };
+        [L, R].forEach(function (c) {
+          el("line", { x1: node.x, y1: node.y, x2: c.x, y2: c.y, stroke: c.leaf !== undefined ? KCOL[c.leaf] : STRAND, "stroke-width": c.leaf !== undefined ? 3 : 2.2, "stroke-linecap": "round" }, g);
+        });
+        return node;
+      }
+      var root = lay(br);
+      el("line", { x1: root.x, y1: root.y, x2: root.x, y2: cy - h / 2, stroke: KCOL[rootLabel], "stroke-width": 3, "stroke-linecap": "round" }, g);
+      el("circle", { cx: root.x, cy: cy - h / 2, r: 4.5, fill: KCOL[rootLabel] }, g);
+      leaves.forEach(function (lf, i) { el("circle", { cx: cx - w / 2 + w * (i + 0.5) / n, cy: bottom, r: 4.5, fill: KCOL[lf] }, g); });
+      return g;
+    }
+    function edge(parent, a, b, r1, r2, kind, cols, center, flip) {
+      var dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+      var s = [a[0] + ux * r1, a[1] + uy * r1], t = [b[0] - ux * r2, b[1] - uy * r2];
+      el("line", { x1: s[0], y1: s[1], x2: t[0], y2: t[1], stroke: MUTED, "stroke-width": 1.6 }, parent);
+      var hs = 9, p1 = [t[0] - ux * hs - uy * hs * 0.5, t[1] - uy * hs + ux * hs * 0.5], p2 = [t[0] - ux * hs + uy * hs * 0.5, t[1] - uy * hs - ux * hs * 0.5];
+      el("path", { d: "M" + t[0] + " " + t[1] + " L" + p1[0] + " " + p1[1] + " L" + p2[0] + " " + p2[1] + " Z", fill: MUTED }, parent);
+      var mx = (s[0] + t[0]) / 2, my = (s[1] + t[1]) / 2, ox = mx - center[0], oy = my - center[1], oL = Math.hypot(ox, oy) || 1;
+      var lx = mx + ox / oL * 22 * (flip ? -1 : 1), ly = my + oy / oL * 22 * (flip ? -1 : 1);
+      if (kind === "f") { var tx = el("text", { x: lx, y: ly + 6, "text-anchor": "middle", fill: "#e9e7f1", "font-size": 20, class: "m" }, parent); tx.textContent = "f"; }
+      else { // a crossing: the first group passes over the second
+        var g = el("g", { transform: "translate(" + lx + " " + ly + ")" }, parent), k = 9;
+        cols[1].forEach(function (c, i) { var o = (i - (cols[1].length - 1) / 2) * 4; el("line", { x1: k + o, y1: -k, x2: -k + o, y2: k, stroke: KCOL[c], "stroke-width": 2.6, "stroke-linecap": "round" }, g); });
+        cols[0].forEach(function (c, i) { var o = (i - (cols[0].length - 1) / 2) * 4; el("line", { x1: -k + o, y1: -k, x2: k + o, y2: k, stroke: "#0e1020", "stroke-width": 6 }, g); el("line", { x1: -k + o, y1: -k, x2: k + o, y2: k, stroke: KCOL[c], "stroke-width": 2.6, "stroke-linecap": "round" }, g); });
+      }
+    }
+    function title(svg, x, y, txt) { el("text", { x: x, y: y, "text-anchor": "middle", fill: MUTED, "font-size": 13, "letter-spacing": "1.5" }, svg).textContent = txt; }
+    // (I)
+    (function () {
+      var svg = document.getElementById("gt-one"); title(svg, 150, 30, "(I)");
+      var A = [150, 120], B = [150, 320];
+      tree(svg, A[0], A[1], 84, 92, [[0, 1], 2], 3); tree(svg, B[0], B[1], 84, 92, [0, [1, 2]], 3);
+      var l1 = [A[0] - 34, A[1] + 56], l2 = [B[0] - 34, B[1] - 56];
+      el("path", { d: "M" + l1[0] + " " + l1[1] + " Q " + (A[0] - 90) + " 220 " + l2[0] + " " + l2[1], fill: "none", stroke: MUTED, "stroke-width": 1.6 }, svg);
+      el("path", { d: "M" + (B[0] + 34) + " " + (B[1] - 56) + " Q " + (A[0] + 90) + " 220 " + (A[0] + 34) + " " + (A[1] + 56), fill: "none", stroke: MUTED, "stroke-width": 1.6 }, svg);
+      el("path", { d: "M" + l2[0] + " " + l2[1] + " l -8 -10 l 10 2 Z", fill: MUTED }, svg);
+      el("path", { d: "M" + (A[0] + 34) + " " + (A[1] + 56) + " l 8 10 l -10 -2 Z", fill: MUTED }, svg);
+      var t1 = el("text", { x: A[0] - 92, y: 226, "text-anchor": "middle", fill: "#e9e7f1", "font-size": 18, class: "m" }, svg); t1.textContent = "f(x,y)";
+      var t2 = el("text", { x: A[0] + 92, y: 226, "text-anchor": "middle", fill: "#e9e7f1", "font-size": 18, class: "m" }, svg); t2.textContent = "f(y,x)";
+    })();
+    // (II) the hexagon
+    (function () {
+      var svg = document.getElementById("gt-hex"), C = [260, 248], R = 165; title(svg, 260, 28, "(II)");
+      var br = [[[0, 1], 2], [0, [1, 2]], [[1, 2], 0], [1, [2, 0]], [1, [0, 2]], [[1, 0], 2]];
+      var P = br.map(function (b, i) { var a = -Math.PI / 2 + i * Math.PI / 3; return [C[0] + R * Math.cos(a), C[1] + R * Math.sin(a)]; });
+      // H0->H1 f; H1->H2 crossing (A over BC); H2->H3 f; H4->H3 crossing (A over C); H5->H4 f; H0->H5 crossing (A over B)
+      edge(svg, P[0], P[1], 58, 58, "f", null, C); edge(svg, P[1], P[2], 58, 58, "c", [[0], [1, 2]], C); edge(svg, P[2], P[3], 58, 58, "f", null, C);
+      edge(svg, P[4], P[3], 58, 58, "c", [[0], [2]], C); edge(svg, P[5], P[4], 58, 58, "f", null, C); edge(svg, P[0], P[5], 58, 58, "c", [[0], [1]], C);
+      br.forEach(function (b, i) { tree(svg, P[i][0], P[i][1], 70, 78, b, 3); });
+    })();
+    // (III) the pentagon
+    (function () {
+      var svg = document.getElementById("gt-pent"), C = [280, 255], R = 172; title(svg, 280, 28, "(III)");
+      var br = [[[[0, 1], 2], 3], [[0, [1, 2]], 3], [0, [[1, 2], 3]], [0, [1, [2, 3]]], [[0, 1], [2, 3]]];
+      var P = br.map(function (b, i) { var a = -Math.PI / 2 + i * 2 * Math.PI / 5; return [C[0] + R * Math.cos(a), C[1] + R * Math.sin(a)]; });
+      edge(svg, P[0], P[1], 60, 60, "f", null, C); edge(svg, P[1], P[2], 60, 60, "f", null, C); edge(svg, P[2], P[3], 60, 60, "f", null, C);
+      edge(svg, P[0], P[4], 60, 60, "f", null, C); edge(svg, P[4], P[3], 60, 60, "f", null, C);
+      br.forEach(function (b, i) { tree(svg, P[i][0], P[i][1], 84, 84, b, 4); });
+      el("circle", { cx: C[0], cy: C[1], r: 30, fill: "none", stroke: "#ffd23f", "stroke-width": 1.5, "stroke-dasharray": "3 4" }, svg);
+      var k = el("text", { x: C[0], y: C[1] + 5, "text-anchor": "middle", fill: "#ffd23f", "font-size": 14 }, svg); k.textContent = "I₁₀";
+    })();
+  })();
+
+  // respect reduced motion for the loop video
+  try { if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { var vid = document.getElementById("loop"); vid.removeAttribute("autoplay"); vid.pause(); vid.controls = true; } } catch (e) {}
+})();
+</script>
