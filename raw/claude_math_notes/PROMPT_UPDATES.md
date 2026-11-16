@@ -61,3 +61,6 @@ a line here.
   element acts by a scalar on the irreducible rank-2 local system of E4^{1/4}). NOTES §30 (a). As-sent copy:
   longue_marche_pro_pilot_20261104/pro_prompts_draft_20261111_work/DELTA_ON_GT/PROMPT_as_sent_20261116.md (+ sha256);
   the folder moved to ALREADY_RAN.
+- aec1e030's R1-R3 are now FOR_ASTRA A3 (R2, for the next S6 prompt) and A4 (R1 with the open half of R3: HMOZ proved
+  the signature-2 and 3 identities, so only signatures 4 and 6 and the E4/E6/Chowla-Selberg expressions remain). R4 is
+  moot (above). None is placed in a prompt yet: no unsent prompt fits them.
