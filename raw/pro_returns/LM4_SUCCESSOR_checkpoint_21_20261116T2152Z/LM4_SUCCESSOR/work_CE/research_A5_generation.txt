@@ -1,0 +1,108 @@
+Working argument: completion of canonical A5 generation
+=======================================================
+Status: proposed, sent to root and A for independent review during the
+formal source freeze. No formal theorem has yet been inserted.
+
+Let alpha=(-1,f) in full GT0 be an involution, u=f alpha(u) its unique
+full R1 parameter, y'=u^-1 y u. C35 proves u(y,x)=u^-1. Put
+ v=Inn(u^-1) iota, where iota swaps x,y.
+Then v^2=1, v(x)=y', v(y')=x. Moreover alpha v=v alpha:
+ iota alpha=Inn(f) alpha iota and alpha(u)=f^-1 u give
+ alpha v=Inn(alpha(u)^-1 f^-1) iota alpha=Inn(u^-1)iota alpha.
+Thus tau=alpha v is an involution. On H1(F,F2), tau acts by swap.
+It preserves the third cusp up to conjugacy with exponent-1, because
+v is an inner modification of the positive swap and alpha is negative.
+
+Lemma needed (the counting calculation already used in C8):
+If an involution sigma of full Fhat2 acts on H1(F,F2) as the regular
+F2[C2] module, then E=F semidirect_sigma C2 has exactly one F-conjugacy
+class of sections. Indeed the two-row Hochschild--Serre spectral sequence
+has H^n(E,F2)=F2 u^n for n>=2, since the positive cohomology of the regular
+module vanishes. Its degree-zero localized algebra is F2. The exact full
+finite-coefficient restriction theorem of Kochloukova--Zalesskii2007,
+Theorem2, used verbatim in C8 and C28, then gives one section class.
+This count uses neither a torus cusp nor the later relative-duality
+centralizer argument of C8. No assertion about a centralizer is needed.
+
+Consequence: if such sigma inverts a primitive boundary z and acts
+identically on a finite quotient q:F->Q, then q(z)=1. The finite map
+E->Q times C2 sends the chosen section to central(1,c). Every section
+is conjugate to it, hence has that same finite image. A local lift
+inverting z has square in its full procyclic centralizer and fixed by
+inversion; torsion-freeness makes it an involution. It and z times it
+are the two local reflections, whose product is z. Both map to(1,c),
+so q(z)=1. This is the proposed final contradiction below.
+
+The small exact script check_a5_duality_orbits.py classifies the19
+Aut(A5) generating-pair orbits and checks the binary duality possibilities.
+It does not enumerate any full word constraints. The classification is:
+* eight orbits with generator orders3 and5: every conjugated pair still
+  generates, since no proper A5 subgroup contains both orders;
+* six orbits with one generator of order2 and the other of order3 or5;
+* one orbit(3,3,5);
+* four orbits with both generator orders5, of passports(5,5,3) twice,
+  (5,5,5), and(5,5,2).
+The two5/5 orbits with different A5 five-cycle conjugacy classes are
+(5,5,2) and one(5,5,3). The other two have equal classes.
+
+For each of the six one-order2 orbits, the negative peripheral alpha
+preserves the quotient kernel: its inverse-power triple has the same
+passport, which determines the Aut(A5) orbit. The induced automorphism
+is inner, since it preserves a five-cycle conjugacy class and the outer
+automorphism interchanges those two classes. Write it as Inn(h), h^2=1.
+If the canonical substituted pair generates a proper subgroup M, the
+only possibilities are A4, S3, D5. Since alpha inverts the two substituted
+generators it normalizes M. These maximal subgroups are self-normalizing.
+An element of A4 cannot invert a3-cycle, so M cannot be A4. In S3 or D5,
+h must be the order2 substituted generator: it centralizes that reflection
+and inverts the odd rotation, and its reflection centralizer is C2.
+In E=F semidirect_alpha C2 -> A5 semidirect_Inn(h) C2 = A5 times C2,
+the associated full X or Y section therefore has central image(1,c).
+C28's base incidence triangle makes the third cusp's reflections belong
+to X and Y. Their finite product has order at most2, contrary to the
+order3 or5 image of that cusp. Thus all six orbits generate.
+
+For any5/5 orbit, swap preserves its quotient kernel. If the substituted
+pair generates a proper subgroup, it is cyclic C5, say b'=a^r. The induced
+v swaps a,b' and has order2, so r^2=1 mod5. In the two orbits with different
+five-cycle classes, r is2 or3, which is impossible. This settles those two.
+
+It remains to consider (3,3,5), same-class(5,5,3), and(5,5,5). Their
+negative and swap automorphisms preserve the quotient kernel and are
+inner: the relevant passport plus equal five-cycle classes specify the
+orbit, and preserving a five-cycle class excludes the outer automorphism.
+For the3/3 case a proper image A4 is excluded exactly as above; hence the
+proper image is cyclic C3. In the5/5 cases the only proper image is C5.
+Write b'=a^r. Again v^2=1 forces r=+1 or-1 (for3 this is automatic).
+
+The plus case is excluded by full duality in SL2(F5). Let the swapping
+inner automorphism be Inn(t), with t a nontrivial involution of A5. If
+u conjugates b to a then, from v=Inn(u^-1)swap and v centralizing a,
+the induced inner involution v lies in C_A5(a), an odd cyclic group;
+thus v=1 and q(u)=t. Lift the pair to SL2(F5). The swapping automorphism
+is conjugation by a lift T of t, up to central changes of the input
+matrices; such changes do not affect a commutator word. Every lift U of
+q(u)=t is +/-T, and T^2=-1 (SL2(F5) has unique involution-1). Duality
+would give U Ad(T)(U)=1, but its left side is U^2=-1. Contradiction.
+
+In the remaining minus case, both induced alpha and v are inner
+involutions normalizing the same C3 or C5 and inverting its generator.
+They commute, since alpha and v commute in the full group. In an odd
+dihedral normalizer two commuting reflections coincide. Hence induced
+alpha and v agree, and tau=alpha v acts trivially on this A5 quotient.
+Its mod2 action is swap and it inverts the primitive third cusp. The
+one-section lemma therefore forces that cusp image to vanish, contradicting
+its order3 or5. This would complete all19 orbits.
+
+Points for independent audit: exact applicability of the existing full
+restriction theorem to the regular mod2 module (only section count needed);
+inner versus outer class distinctions in the three remaining passports;
+and lifting the swapping automorphism to SL2(F5) up to central signs.
+
+Promotion after checkpoint05
+---------------------------
+Root, A, and DE independently passed the proof. It is now C.37 in C_further.tex, with direct high-degree cohomology replacing the localized-ring wording. C.38 gives the exact full coinvariant kernel and single twisted commutator consequence.
+
+Finite third-cusp/joint-head obstruction
+--------------------------------------
+check_a5_finite_constraints.py/.out enumerates the finite c-norm and binary duality conditions in SL2(F5). At f=1 there is a table with U=(0,2;2,0) at orbit4 and its transported dual (0,3;3,0) at orbit10, and U=1 elsewhere. Every individual A5 image is still generated, but orbit4 maps to7 and10 to13, changing cusp order2 to5 and merging these coordinates with unchanged7,13. Therefore the finite conditions used thus far do not themselves imply joint generation or third-cusp preservation at any unit. Full C_F(c)=1 prohibits this table from being a canonical full c-word. No full involution or full pentagon realization is claimed. Any next positive result must use additional full information, a further finite extension, or a genuine compatibility argument.

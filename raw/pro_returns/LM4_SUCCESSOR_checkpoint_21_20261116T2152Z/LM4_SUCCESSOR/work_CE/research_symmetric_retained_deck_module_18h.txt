@@ -1,0 +1,321 @@
+THE ENTIRE RETAINED-DECK SPAN AS ONE FINITE GROUP-RING MATRIX
+CE research proof, 16 November 2026, checkpoint18 working period.
+
+1. Actual groups and the coefficient enlargement
+
+Use the corrected actual paired F21 basis.  Its retained free factor is
+F5, with generators numbered1,...,5 and involution
+
+  beta(1)=1^(-1), beta(2)=4, beta(3)=5,
+  beta(4)=2, beta(5)=3.
+
+The kernel of the retained filling is R_A*R_B.  Both free groups have the
+common Schreier labels(g,i), where g is a reduced retained F5 word and i
+is one of the eight deleted right-half slots.  A right-half A peripheral
+with retained whisker g has index(g,i).  A B peripheral with retained
+whisker h has common index(beta(h),i).  This convention makes F exchange
+the A and B copies with the SAME common R labels.
+
+For t in F5 let alpha_t(g,i)=(tg,i), extended to an automorphism of R.
+Retained conjugation by t acts on R_A by alpha_t and on R_B by
+alpha_beta(t).  Put
+
+  E=R_A x R_B,
+  G=E semidirect F5.
+
+This is the actual quotient of the generic F21 in which every mixed
+A/B commutator is killed.  Its multiplication, in unique normal form, is
+
+  (u,v,t)(x,y,s)=(u alpha_t(x), v alpha_beta(t)(y), ts),       (1)
+
+and the involution is
+
+  F(u,v,t)=(v,u,beta(t)).                                  (2)
+
+Equations(1),(2) are compatible because beta^2=1.  No finite approximation
+or word-length bound occurs in these definitions.  Multiplication is
+computed by literal free reduction in the two R factors and the retained
+F5 factor.  In particular this enlargement includes ALL retained deck
+translates of the initial columns, rather than a sampled orbit.
+
+The group G is torsion-free.  A finite-order element maps to a finite-order
+element of the free group F5 and hence lies in E; the two free factors of
+E are torsion-free.  This elementary fact suffices for the private-row
+binomial argument: if x!=y in G, multiplication by x-y on finite-support
+elements of Z[G] is injective on either side.  Otherwise the support of
+a nonzero kernel vector would contain a whole orbit of the infinite-order
+translation x^(-1)y (or its right-handed analogue).
+
+2. Unique free G-orbits of product-tree cells
+
+A product-tree cell in the old E notation is
+
+  (u,v; (g,i),(h,j)).
+
+Define z=beta(g)^(-1)h.  Its UNIQUE expression as a coefficient times a
+normalized cell is
+
+  coefficient (u,v,g),   row (i,j,z).                     (3)
+
+Here the normalized row has A-index(1,i), B-index(z,j), and both vertices1.
+Indeed applying the retained coefficient g makes its indices
+(g,i),(beta(g)z,j)=(g,i),(h,j), and applying(u,v) gives the two vertices.
+Conversely the first retained index forces g, after which z and both
+vertices are forced.  Thus the product-tree module is a FREE Z[G]-module
+on the rows(i,j,z).  This is a unique orbit normal form, not merely a
+surjection from a proposed row module.
+
+On normalized rows the actual negative interchange is
+
+  F(row(i,j,z))=-D_z row(j,i,beta(z)^(-1)),                 (4)
+
+where D_z=(1,1,z).  Formula(4), together with(2), reproduces the literal
+negative interchange of every original cell.  Applying it twice gives
+coefficient D_beta(z)D_beta(z)^(-1)=1 and the original row.
+
+The producer convert_symmetric_retained_deck_module.py verifies(3),(4)
+term by term on every one of the2680 terms of the64 actual seed columns.
+It expands each normalized term back into the original product-tree
+cell and checks equality.  The finite matrix has282 distinct G-rows.
+The R dictionary is extended only through the intrinsic pair key
+(retained_word,paired_slot); differing numerical dictionaries are not
+silently identified.
+
+3. All64 involution relations are now coefficient relations
+
+Let C_nu be the raw stored column, mu its physical F-mate, and
+delta_nu=epsilon_nu epsilon_mu the product of A-first orientation signs.
+The full matching conjugator g_nu in the generic F21 maps to the G
+coefficient
+
+  a_nu=(E(n_nu),t_nu).
+
+Consequently every one of the64 matching equations becomes
+
+  F(C_nu)=-delta_nu a_nu C_mu.                            (5)
+
+The producer checks the complete G-linear column equation(5), and the
+ordered coefficient identity
+
+  F(a_nu)a_mu=1.                                        (6)
+
+In the original128-column domain these are64 relations
+f_nu+delta_nu a_nu e_mu.  They have distinct private unit f-coordinates,
+so they can all be eliminated before an independence calculation of the
+64 seeds.  Equation(6) gives a genuine semilinear involution on that
+free64-generator domain.  Independence of the64 seeds is a separate
+matrix statement, assigned to root; this CE producer does not assert it.
+
+4. Exact fixed-coefficient criterion
+
+Suppose a=(u,v,t) is the coefficient of a fixed physical node.  Then
+F(a)a=1.  The negative module generator C with F(C)=-aC gives an involution
+of its coefficient basis
+
+  x |-> F(x)a.                                          (7)
+
+A fixed basis point exists if and only if there is w in F5 satisfying
+
+  beta(w)t=w.                                          (8)
+
+Necessity follows by projecting a fixed point of(7).  For sufficiency,
+write a=(u,v,t).  The cocycle equations give
+
+  beta(t)t=1,    v alpha_beta(t)(u)=1.
+
+If(8) holds, set
+
+  x=(alpha_beta(w)(u),1,w).
+
+Using beta(w)=w t^(-1) and t^(-1)=beta(t), equations(1),(2) give
+F(x)a=x, exactly.  Thus the possible nontrivial E coordinates introduce
+no further obstruction after the retained cone test.  This does NOT
+mean that every retained cocycle is neutral.
+
+There is a literal free-product model
+
+  F5 semidirect <tau> = <tau|tau^2=1> *
+                       <tau1|tau1^2=1> * F(2,3),
+  generator1=tau1 tau,
+  generator4=tau generator2 tau,
+  generator5=tau generator3 tau.
+
+Equation(8) is equivalent to tau t being conjugate to tau by an
+orientation-even element.  Free-product normal form distinguishes the
+tau and tau1 cone classes.  In particular F5^beta=1: an element of F5
+centralizing tau lies in <tau> and hence is1.
+
+Therefore
+
+  G^F={(r,r,1):r in R}.                                 (9)
+
+If x0 is one fixed basis point of(7), ALL fixed basis points are exactly
+the left torsor G^F x0.  Indeed F(x1 x0^(-1))=x1 x0^(-1), and the converse
+is immediate.  This fixes both the side and the coefficient convention.
+
+5. The eight physical fixed nodes
+
+The producer cyclically reduces tau t in the displayed free product,
+retaining every conjugating prefix.  The exact result is
+
+  node                 core       coefficient fixed point
+  (0,0)                tau1       none
+  (0,1)                tau        explicit
+  (8,0)                tau1       none
+  (8,1)                tau        explicit
+  (12,0)               tau1       none
+  (12,1)               tau        explicit
+  (16,0)               tau1       none
+  (16,1)               tau        explicit.
+
+For the four neutral rows the retained coefficient is literally1 and
+a=(b,b^(-1),1).  We retain the already audited fixed basis point
+
+  x0=(1,b^(-1),1),   F(x0)a=x0,                          (10)
+
+because x0 C is precisely the actual source anti-chain whose Tate
+diagonal was computed earlier.  The alternative generic half(b,1,1)
+differs by the diagonal left multiplier(b,b,1); it gives the same
+cohomology summand with the corresponding left-translated Tate class.
+
+For the other four physical fixed nodes no coefficient basis point
+exists, by projection to the distinct tau1 cone class.  A fixed module
+GENERATOR must therefore not be counted as a Tate class merely because
+its physical node label is fixed.
+
+6. Conditional cohomology of the entire retained-deck span
+
+If the64 actual seed columns are independent over Z[G], their image
+decomposes as28 exchanged physical pairs and8 negative fixed-generator
+summands with the coefficient action(7).  The exchanged pairs are
+induced over Z[C2].  In each of the four nonneutral fixed-generator
+summands, (7) has no fixed basis points; all basis orbits have size2,
+so these are induced as well.
+
+For each neutral row, (9),(10) identify the fixed coefficient basis
+points with the diagonal left R torsor.  Every such point carries the
+negative sign, while all other points lie in induced pairs.  Thus this
+summand has H^1=F2[R] and H^2=0.  Consequently the whole retained-deck span
+would have
+
+  H^1=F2[R]^4,   H^2=0,
+
+and its intrinsic image in H^1(C2,P) would be EXACTLY
+
+  sum_(nu=(0,1),(8,1),(12,1),(16,1)) F2[R](rho_nu-1),
+
+the same actual four-source left ideal as for the seed/F E-span.  This
+is conditional only on the separate64-column G-independence proof.
+It still excludes the six old q-base actions and their arbitrary
+translates, which do not act by a simple permutation of these cell rows.
+
+7. Executed evidence
+
+  work_CE/code/convert_symmetric_retained_deck_module.py
+  work_CE/code/convert_symmetric_retained_deck_module.out
+  work_CE/code/convert_symmetric_retained_deck_module.err
+  work_CE/next_symmetric_nodes/symmetric_retained_deck_module.json
+
+The genuine run passed in0.330s, with64 seeds,282 G-rows,2680 terms and
+all64 exact coefficient relations.  It checked inverse normalization,
+the full row involution, all actual coefficient cycles, inverse and
+semidirect compatibility on every actual column coefficient, and all8
+cone classifications.  The general arithmetic and torsion-free arguments
+are the proofs above; the finite tests are implementation checks.
+
+DE independently derived the same unique row normal form, the general
+half formula and G^F criterion.  Its independent execution against this
+new JSON is requested separately.  No new formal statement is added.
+
+8. The independence gate is now closed by separated augmentation
+
+Root supplied an argument that avoids further elimination over Z[G].
+The fresh producer check_symmetric_G_augmentation_pivots.py executes its
+finite gate.  Apply E-augmentation Z[G] -> Z[F5] to each column.  Exactly
+ONE row survives in each column, with coefficient +/- one retained group
+element.  The64 surviving rows are distinct; their physical slot pairs
+are exactly the8x8 ordered product.  The producer separately reconstructs
+the selected64x64 augmented matrix and checks that it is diagonal.
+All pivot rows and their literal signed retained words are saved in
+symmetric_G_augmentation_pivots.json.
+
+Let I_E be the integral augmentation ideal in Z[E] and put
+J=I_E Z[G].  Conjugation by F5 preserves I_E.  Unique retained normal form
+therefore gives, for every n,
+
+  J^n=I_E^n Z[G] = direct_sum_(t in F5) I_E^n t.           (11)
+
+We need the separation statement intersection_n I_E^n=0 over the INTEGERS.
+Here is a complete elementary proof, including the coefficient issue.
+
+Fix a prime p.  A free group on finitely many generators is residually
+finite p by its noncommutative Magnus expansion over Fp.  To see directly
+that the expansion detects a nontrivial reduced syllable word
+
+  x_(i1)^e1 ... x_(ik)^ek,   adjacent i_j different,
+
+write d_j=p^(v_p(e_j)).  In (1+X_i)^e_j, including negative e_j, the
+lowest nonzero positive-degree term over Fp has degree d_j and nonzero
+coefficient.  The monomial
+
+  X_(i1)^d1 ... X_(ik)^dk
+
+has k runs of distinct adjacent variable names.  It can arise in the
+product only by choosing a positive-degree term from EVERY one of the
+k factors; omitting a factor gives fewer than k runs.  Its coefficient
+is therefore the product of the nonzero leading coefficients.  The word
+is nontrivial already after truncation above this total degree.  The
+units1+augmentation in that finite truncated Fp algebra form a finite
+p-group.  This yields a finite p-group separating the word.  A finite
+set of distinct words is separated by the product of finitely many such
+quotients.  The same conclusion holds for an arbitrarily generated free
+group, because a finite set of words uses finitely many generators and
+the other generators may be killed.  It holds for E, the product of two
+free groups, by taking products of the separating p-quotients.
+
+For a finite p-group P, its augmentation ideal over Fp is nilpotent.
+Induct on |P|: a central element z of order p has (z-1)^p=0, and the
+quotient by(z-1) is Fp[P/<z>], whose augmentation ideal is nilpotent by
+induction.  Therefore the original ideal is nilpotent.  Over Z/p^k, if
+its reduction modulo p has m-th power0, its m-th power lies in p times
+the group ring and its mk-th power is0.
+
+Now let c!=0 be an integral finite-support group-ring element in Z[E].
+Choose a finite p-group quotient of E separating every element of its
+support, and choose k so that one nonzero coefficient of c remains
+nonzero modulo p^k.  Its image in (Z/p^k)[P] is nonzero.  Since the target
+augmentation ideal is nilpotent, c cannot lie in every power I_E^n.
+This proves the required separation.  Notice that nilpotence was used
+over Z/p^k, NOT over Z[P].  No invariant finite p-quotient under F5 is
+needed: equation(11) reduces the separation in Z[G] coefficientwise to
+the already separated filtration of Z[E].  Thus intersection_n J^n=0.
+
+Choose the64 pivot rows from the certificate.  Their actual matrix has
+the form D+M, with D diagonal and each diagonal entry a literal unit
++/-D_t, while every entry of M lies in J.  Let a=(a_1,...,a_64) be a
+finite-support left-coefficient relation among the seed columns.  With
+column images written using left coefficients, its i-th selected row is
+
+  a_i u_i + sum_j a_j m_ji=0,
+
+where u_i is the displayed diagonal unit.  Reduction modulo J first
+gives every a_i in J.  If every a_i lies in J^n, the same equality gives
+
+  a_i=-sum_j a_j m_ji u_i^(-1) in J^(n+1).
+
+Induction and separation force every a_i=0.  This proves the64 seed
+columns independent over Z[G].  No inverse for D+M is claimed, no
+completion is substituted for the discrete group ring, and no element
+with augmentation1 is assumed invertible.
+
+Consequently section6 is now unconditional: the ENTIRE retained-F5-deck
+span is free of rank64 over Z[G], has H^1=F2[R]^4 and H^2=0, and has exact
+intrinsic Tate image equal to the actual four-source left ideal J4.
+The old q-base translates and nonlinear fixed-lifting gate remain open.
+
+Additional executed artifacts:
+  work_CE/code/check_symmetric_G_augmentation_pivots.py/.out/.err
+  work_CE/next_symmetric_nodes/symmetric_G_augmentation_pivots.json
+
+The genuine run passed in0.005s.  DE independently agreed with the
+noncommutative filtration induction and is verifying the literal pivots.

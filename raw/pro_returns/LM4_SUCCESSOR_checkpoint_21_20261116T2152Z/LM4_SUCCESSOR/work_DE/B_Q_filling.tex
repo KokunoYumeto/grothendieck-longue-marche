@@ -1,0 +1,178 @@
+% B68 accepted after root independent source, proof, and certificate review.
+\subsection*{The surviving full lift is a filling point push}
+
+\statement{B.68}{Proved}{The intermediate relation lifts to a pseudo-Anosov element of the full rigid target}
+Let $w=[(ae)^{-1}f(ae),c]$ be the actual cyclic-source word
+of B.67, and let $b=\theta_5(w)$.
+After moving label $5$ to the last strand, $b$ belongs to
+the Birman kernel of $PB_6\to PB_5$.
+The corresponding loop in the six-punctured sphere is
+not conjugate into a proper free factor of its free
+fundamental group $F_5$.  It fills that sphere.
+Consequently the image of $b$ in the pure mapping class
+group of the seven-punctured sphere is pseudo-Anosov.
+This describes the full lift of the additional intermediate
+relation; it does not establish injectivity of $\theta_5$
+or any assertion about a profinite centralizer.
+
+\begin{proof}
+We use the actual common-base words of B.61 and the
+strand convention of B.65.  The finite labels in the
+six-strand target are $(4,11,5,1,10,6)$.
+Conjugating the braid by $\tau=\sigma_3\sigma_4\sigma_5$
+in the convention $b\mapsto\tau^{-1}b\tau$ gives the
+order $(4,11,1,10,6,5)$.
+B.67 proves that deleting its last strand gives the
+identity in $PB_5$.  Thus this is a genuine last-strand
+point push, before passage to a central quotient.
+
+Here is an explicit convention check for reading its
+free-fiber word.  Let $x_1,\ldots,x_6$ be the free
+generators used by the faithful Artin action.  Write
+the last Artin image as $q x_6 q^{-1}$ and erase
+$x_6^{\pm1}$ from $q$; after free reduction call the
+result $p\in F(x_1,\ldots,x_5)$.
+For elements of the Birman kernel this extraction is
+an antihomomorphism: the Artin action induces the
+identity after killing $x_6$, so the conjugator formula
+for a product reverses the two extracted factors.
+For the standard free generators
+\[
+ A_{i,6}=(\sigma_5\cdots\sigma_{i+1})\sigma_i^2
+                  (\sigma_5\cdots\sigma_{i+1})^{-1},
+ \qquad 1\leq i\leq5,
+\]
+it gives
+\[
+ p(A_{i,6})=(x_{i+1}\cdots x_5)^{-1}x_i
+                         (x_{i+1}\cdots x_5).                 \tag{B.68.1}
+\]
+These five words are a free basis, by a triangular
+change of basis, starting with $i=5$ and descending.
+Inversion therefore gives an isomorphism from the
+Birman kernel to $F_5$.  The actual based loop is
+represented by $p^{-1}$ in this convention.
+Conjugation and inversion do not affect membership
+in a conjugate proper free factor.
+
+The complete finite certificate is
+\nolinkurl{next_joint_rigid_symplectic/verify_full_Q_word_filling.py},
+its actual output, and
+\nolinkurl{full_Q_word_filling_verification.json}.
+The verifier recomputes the six-strand braid directly
+from the original common-base eleven-strand words;
+it does not take the earlier Whitehead search output
+as the source of that braid.
+It verifies the deletion, the free-fiber word, all five
+formulas (B.68.1), and the antihomomorphism convention.
+The extracted word has length $144$, with cyclically
+reduced length $142$.
+
+For reproducibility, a signed integer $j$ below means
+$x_j$ for $j>0$ and $x_{-j}^{-1}$ for $j<0$.
+For a signed letter $s$ and a set $A$ with
+$s\in A$, $-s\notin A$, use the Whitehead automorphism
+that fixes $x_{|s|}$ and sends each other positive
+generator $x_j$ to
+\[
+       s^{-\epsilon_-}\,x_j\,s^{\epsilon_+},\qquad
+       \epsilon_-=\mathbf1_{-j\in A},\quad
+       \epsilon_+=\mathbf1_{j\in A}.
+                                                               \tag{B.68.2}
+\]
+Here the occurrences of $s$ in (B.68.2) denote the
+corresponding signed group letter.  Its inverse has
+multiplier $-s$ and set $(A\setminus\{s\})\cup\{-s\}$.
+Both inverse compositions are checked on all five
+generators at every step.  Applying the following
+six automorphisms and cyclically reducing gives:
+\[
+\begin{array}{c|c|c}
+s&A&\text{cyclic length}\\ \hline
+3&\{-5,-4,3,4,5\}&98\\
+2&\{-5,-4,2,4,5\}&62\\
+1&\{-4,1\}&48\\
+5&\{-3,-2,2,3,5\}&34\\
+4&\{-3,-2,2,4\}&26\\
+5&\{-2,5\}&24
+\end{array}                                                     \tag{B.68.3}
+\]
+The final cyclic word is
+\[
+\begin{split}
+ &(4,-1,-4,-3,5,-2,4,2,5,-2,-4,2,\\
+ &\hspace{18mm}-5,3,1,-3,-2,5,4,-5,-4,-5,2,3).
+\end{split}                                                     \tag{B.68.4}
+\]
+No minimality assertion about this word is needed.
+
+Form its undirected Whitehead graph on the ten vertices
+$\{\pm1,\ldots,\pm5\}$, with an edge from $-v_i$ to
+$v_{i+1}$ for each cyclic adjacent pair in (B.68.4).
+It has the following fifteen distinct edges:
+\[
+\begin{array}{rrrrr}
+(-5,-4)&(-5,-2)&(-5,4)&(-4,-1)&(-4,1)\\
+(-4,2)&(-4,5)&(-3,-1)&(-3,1)&(-3,4)\\
+(-2,3)&(-2,5)&(2,4)&(2,5)&(3,5).
+\end{array}                                                     \tag{B.68.5}
+\]
+The graph is connected and remains connected after
+deletion of any one of its ten vertices.  The verifier
+checks these eleven connectivity statements and saves
+a spanning tree for each of them.
+Our edge convention is the global sign reversal of
+the convention in Heusener and Weidmann, and hence
+has the same connectivity properties.
+
+The separable-set form of the cut-vertex lemma states
+that a set whose conjugacy classes lie in factors of
+a nontrivial free-product decomposition has disconnected
+Whitehead graph or a cut vertex
+\cite[Corollary~3.5]{DE_HeusenerWeidmann2019}.
+Applied to the singleton (B.68.4), its contrapositive
+shows that this word lies in no conjugate proper free
+factor.  This is the separable-set statement, stronger
+than the criterion for a primitive word.
+The property is invariant under automorphisms,
+conjugation, and inversion, so it also holds for the
+actual fiber loop represented by $p^{-1}$.
+
+It remains to connect this algebraic property to
+filling on the relevant surface.  The base of this
+point push is the sphere with the five finite punctures
+$(4,11,1,10,6)$ and the puncture at infinity, label $2$.
+Suppose that the loop were disjoint up to homotopy
+from an essential simple closed curve $\gamma$.
+Both sides of $\gamma$ contain at least two punctures.
+After a homeomorphism, the side not containing infinity
+encloses the first $k$ finite punctures, with
+$2\leq k\leq4$.
+Its fundamental group is the proper free factor
+$\langle x_1,\ldots,x_k\rangle$ of $F_5$.
+The group of the other side is conjugate to
+\[
+ \langle x_1\cdots x_k,x_{k+1},\ldots,x_5\rangle.
+                                                               \tag{B.68.6}
+\]
+This too is a proper free factor: $x_1\cdots x_k$
+is primitive in $\langle x_1,\ldots,x_k\rangle$,
+and its rank is $6-k<5$.
+A connected representative disjoint from $\gamma$
+lies in one of these two sides.  Its conjugacy class
+would therefore lie in a proper free factor, contrary
+to the certified conclusion above.
+The loop consequently intersects every essential
+simple closed curve, which is the filling condition.
+
+Kra's point-pushing theorem identifies the point push
+of a filling loop on this nonexceptional surface with
+a pseudo-Anosov mapping class
+\cite[Theorem~2$'$ and Theorem~2(b)]{DE_Kra1981}.
+It applies to the six-punctured sphere here and gives
+the stated conclusion in the seven-punctured target.
+All these statements concern the actual discrete
+point push.  They do not identify the kernel of
+$\theta_5$, the kernel of its completion, or a
+centralizer in a completed mapping class group.
+\end{proof}

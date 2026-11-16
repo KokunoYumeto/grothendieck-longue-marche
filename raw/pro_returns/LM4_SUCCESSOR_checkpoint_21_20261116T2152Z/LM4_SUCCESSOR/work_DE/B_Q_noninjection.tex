@@ -1,0 +1,164 @@
+\subsection*{An exact obstruction to the intermediate free-product presentation}
+
+\statement{B.67}{Refuted}{The proposed intermediate braid injection is false}
+In B.65's cyclic source, delete moving label $5$ from the
+seven-point rigid target.  The resulting map to $PB_5$
+kills $f_1$ and factors through
+\[
+ Q=\langle a,t,c,f,e\mid[a,t]=[c,f]=1\rangle
+       \cong\mathbb Z^2*\mathbb Z^2*\mathbb Z,
+                                                               \tag{B.67.1}
+\]
+where
+\[
+ a=f_0,\quad c=f_2,\quad f=f_5,\quad e=f_4,
+ \qquad t=f_5^{-1}f_4^{-1}f_0^{-1}f_2^{-1}f_3^{-1}.
+                                                               \tag{B.67.2}
+\]
+The induced map $Q\to PB_5$ is not injective.
+An explicit nonidentity kernel element is
+\[
+       w=[(ae)^{-1}f(ae),c].
+                                                               \tag{B.67.3}
+\]
+It remains nonidentity in $\widehat Q$ and belongs to
+the kernel of $\widehat Q\to\widehat{PB}_5$.
+The corresponding source word is, however, nonidentity
+under the original six-strand map $\theta_5$.
+Thus (B.67.3) refutes the proposed intermediate image
+presentation; it does not settle the full cyclic
+rigid-kernel comparison.
+
+\begin{proof}
+All maps use B.61's actual common geometric marking
+and its certified eleven-strand words.
+After deleting moving label $5$, the five finite labels
+are $(4,11,1,10,6)$.
+The direct faithful Artin evaluation recorded in
+\nolinkurl{next_joint_rigid_symplectic/reconstruct_Q_birman.py}
+checks that $f_1$, $[f_0,t]$, and $[f_2,f_5]$ have
+identity images in $PB_5$.
+In the free group after filling $f_1$, the five elements
+$(a,t,c,f,e)$ form a Nielsen basis, since the inverse
+formula is
+\[
+                 f_3=t^{-1}f^{-1}e^{-1}a^{-1}c^{-1}.
+                                                               \tag{B.67.4}
+\]
+This proves the factorization through (B.67.1).
+The meridian $t$ is the infinity meridian after filling
+$f_1$; no substitution for the original six-generator
+infinity meridian is made.
+
+For a structural derivation of the additional relation,
+move label $10$ to the final strand.  The finite order
+is then $(4,11,1,6,10)$, and the last-strand Birman
+kernel is a free group on four generators $y_1,\ldots,y_4$.
+Use the free basis
+\[
+ C=y_3^{-1}y_2^{-1}y_1y_2y_3,\quad
+ T=y_3^{-1}y_2y_3,\quad R=y_3,\quad S=y_4.
+                                                               \tag{B.67.5}
+\]
+The inverse change is
+$y_1=RTC T^{-1}R^{-1}$, $y_2=RTR^{-1}$,
+$y_3=R$, $y_4=S$.
+The exact action certificate gives
+\begin{align*}
+ a(C)&=(RT)^{-1}C(RT),& a(S)&=(RT)^{-1}S(RT),\\
+ a(T)&=T,&a(R)&=R,\\
+ f(C)&=C,&f(T)&=STS^{-1},\\
+ f(R)&=[S,T]R[S,T]^{-1},&
+ f(S)&=STS T^{-1}S^{-1},\\
+ e(C)&=S^{-1}CS.&&
+                                                               \tag{B.67.6}
+\end{align*}
+All these are actual conjugation actions in the Birman
+fiber, not actions on an associated graded quotient.
+The same certificate records the remaining images for
+$e$ and checks the action on conjugates of both $c,t$.
+
+Put $V=T^{-1}RT$ and $\beta=ae$.
+The formulas for $f$ show that it fixes $C,V,ST$.
+With the composition convention
+$\alpha_{ae}=\alpha_a\circ\alpha_e$, the two required
+formulas for $a$ and the formula for $e(C)$ give
+\[
+ \beta(C)=pCp^{-1},\qquad
+ p=(RT)^{-1}S^{-1}=V^{-1}(ST)^{-1}.
+                                                               \tag{B.67.7}
+\]
+Therefore $f$ fixes $\beta(C)$ and
+$\beta^{-1}f\beta$ fixes $C$.
+Under the genuine free-fiber homomorphism the source
+element $c$ maps to $C^{-1}$, which is fixed as well.
+This proves that the actual five-strand image of
+(B.67.3) is the identity.
+
+For clarity about conventions, the program that reads
+the last Artin conjugator first produces an
+\emph{antihomomorphism} on the Birman kernel.
+It checks explicitly on two noncommuting canonical
+fiber generators that
+$\operatorname{push}(hk)=\operatorname{push}(k)
+\operatorname{push}(h)$.
+Inverting every output supplies the homomorphism and
+sends $c$ to $C^{-1}$ rather than $C$.
+Conjugation automorphisms commute with inversion, so
+this correction preserves the fixed-word argument.
+The subsequent direct evaluation of the complete
+braid word provides an independent check of the
+identity, without relying only on this convention.
+
+The word is nonidentity in the proposed group $Q$.
+In the free product $A*B*E$, where
+$A=\langle a,t\rangle$, $B=\langle c,f\rangle$,
+$E=\langle e\rangle$, its expansion is
+\[
+ e^{-1}a^{-1}fae\,c\,e^{-1}a^{-1}f^{-1}ae\,c^{-1}.
+                                                               \tag{B.67.8}
+\]
+Its twelve nonidentity syllables lie successively in
+$E,A,B,A,E,B,E,A,B,A,E,B$.
+This is a nonempty reduced free-product normal form.
+There is also a small finite witness: send $a,c,f$
+to $(1\ 2)$, send $e$ to $(2\ 3)$, and send $t$
+to the identity in $S_3$.
+Both relations in (B.67.1) hold, while (B.67.8)
+maps to a nontrivial three-cycle.
+This proves nonidentity in $\widehat Q$ as well.
+
+The complete fresh calculation is
+\nolinkurl{next_joint_rigid_symplectic/refute_Q_injection.py},
+with its actual standard output and
+\nolinkurl{Q_noninjection_certificate.json}.
+With signed index $j$ denoting $f_{j-1}$, the source word is
+\[
+              (-5,-1,6,1,5,3,-5,-1,-6,1,5,-3).
+                                                               \tag{B.67.9}
+\]
+The reduced five-strand substitution has length $98$;
+all five Artin images are the respective single
+generators.  The reduced six-strand substitution has
+length $166$, and its Artin images have lengths
+\[
+                   (15705,9489,9119,6417,30465,15129).
+                                                               \tag{B.67.10}
+\]
+The certificate stores the entire first nonidentity
+image, as well as every source and braid word used.
+The source is a commutator, so its exponent sum is zero.
+B.65's fixed-pair linking argument removes the central
+full-twist ambiguity.  Consequently (B.67.9) is
+nonidentity in the full seven-point sphere target.
+
+In particular the stabilizer of $C$ in the actual base
+free group $L=F(a,f,e)$ contains both $f$ and
+$(ae)^{-1}f(ae)$; these generate a nonabelian free
+subgroup.  Thus the earlier proposed $C$-orbit family
+indexed by $L/\langle f\rangle$ already repeats actual
+elements, and its proposed free independence is false.
+Adding (B.67.3) gives another intermediate quotient,
+but a complete presentation of the image and the
+full $\theta_5$ comparison are not asserted.
+\end{proof}

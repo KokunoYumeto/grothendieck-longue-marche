@@ -1,0 +1,142 @@
+The actual first mixed-neck pair: radial vanishing arcs and a two-relator
+block. CE research checkpoint21. This is NOT the whole shared edge group.
+
+1. Exact marked horizontal paths
+
+Put c_j=cot(j*pi/5), lambda_j=1-cos(2*j*pi/5),
+f_j(Q)=lambda_j*(Q-i*c_j), and
+
+  y0=(c1+c2)/2, delta=(c1-c2)/2>0,
+  Q_*=i*y0, Q(x)=x+i*y0.
+
+This boundary point belongs to the first mixed q arc, between zeta
+and zeta^2, since c2<y0<c1. The selected upper Z punctures are
+B1=1/f1, A2=f2, A3=f3, A4=f4 and the upper retained branch root.
+For every x with ReQ=x and this fixed imaginary part, A2,A3,A4
+have positive imaginary part and B1 also does. Their F partners
+lie below the real axis. The branch roots solve Z+1/Z=2Q; since
+ImQ=y0>0 neither root is real, and exactly one is upper.
+
+The selected collision B1=A2 occurs at x=+x_c in the inner region
+and x=-x_c in the outer region, where
+
+  x_c^2=1/(lambda1*lambda2)-delta^2=(3+sqrt(5))/10>0.
+
+The exact identities lambda1*lambda2=5/4 and
+delta^2=(1-1/sqrt(5))/2 prove the equality. Every other mixed
+collision has imaginary Q coordinate (c_i+c_j)/2, including i=j;
+none equals y0 except the same unordered pair(1,2). Same-sign and
+branch collisions are on the removed boundary ReQ=0. Thus the
+open horizontal segments from Q_* to these two nodes meet no
+other critical value. They are actual based vanishing paths.
+
+2. Actual radial arcs, including the retained branch
+
+Along these paths,
+
+  A2=lambda2*(x+i*delta),
+  B1=(x+i*delta)/(lambda1*(x^2+delta^2)).
+
+For |x|<x_c they are two distinct positive multiples of the same
+vector x+i*delta. The straight radial segment joining them shrinks
+at the node. For j=3,4 the oriented cross product of that vector
+with A_j is lambda_j*x*(c2-c_j), which has the sign of x. Thus
+neither other A puncture crosses this radial segment.
+
+The upper branch root cannot lie anywhere on its positive ray for
+x!=0. If Z=k*(x+i*delta) with k>0, the real and imaginary parts
+of Z+1/Z=2Q would give
+
+  k+1/(k*(x^2+delta^2))=2,
+  k-1/(k*(x^2+delta^2))=2*y0/delta.
+
+Their difference requires a positive number to equal1-y0/delta,
+which is negative. Near x=0 the branch lies on the same side of
+the radial segment as A3,A4. For example its derivative at Q_*
+is 1+y0/sqrt(1+y0^2), while its initial height divided by delta
+is strictly larger. Continuity and the proved ray exclusion keep
+it on that side throughout. The negative-x picture is reflection
+in the imaginary axis, with all initial punctures fixed.
+
+At x=0 the exact ordered upper heights are
+
+  A2, A4, A3, branch_upper, B1.
+
+The independent rational interval construction in
+code/check_first_mixed_neck_arc.py places them respectively in
+(95,96)/100, (153,155)/100, (212,214)/100, (216,217)/100,
+and(275,276)/100. Every radical bound is obtained by rational
+bisection with its squared inequalities checked. The input,
+genuine output/error and exact interval records are retained as
+
+  work_CE/code/check_first_mixed_neck_arc.py/.out/.err
+  work_CE/next_symmetric_nodes/first_mixed_neck_arc.json.
+
+Therefore the positive-x vanishing arc approaches the outer
+right-hand arc joining the lowest and highest punctures, with
+the middle three on its other side. The negative-x arc approaches
+the reflected left-hand arc. No omitted-puncture threading is
+assumed away: the literal upper-half-plane separation and the
+displayed radial arcs supply it. This repairs the invalid generic
+disk-transport inference preserved in mixed_neck_marking_limitations_21h.txt.
+
+3. One simultaneous based planar free basis
+
+Choose a common basepoint just below the upper end puncture b,
+and common short local paths to b and to a point just above the
+lower end puncture a. Let gamma_R and gamma_L run from the first
+point to the second to the right and left of all three intervening
+punctures. Their endpoints avoid a,b. Their closed difference
+gamma_L*gamma_R^-1 is counterclockwise about precisely the middle
+three punctures, excluding both endpoints.
+
+Choose the standard disjoint interior meridian arcs so that its
+positive boundary word is
+
+  w=c1*c2*c3.
+
+Here c1,c2,c3 name the three middle meridians in their boundary
+order, not the cotangents from sections1--2. Put a equal to the
+lower meridian reached along gamma_R, and b equal to the fixed
+upper meridian. These five meridians form a geometric free basis
+of the actual five-puncture disk. The left-path lower meridian is
+
+  a_L=w*a*w^-1.
+
+With the same chosen local commutator convention [x,y]=xyx^-1y^-1,
+the two actual node relations can consequently be oriented as
+
+  r_R=[a,b], r_L=[w*a*w^-1,b].
+
+Conjugating the second defining relation by w^-1 gives the exact
+equivalent pair [a,b], [a,w^-1*b*w]. Reversing a node-cell orientation
+only inverts its relator and does not change its normal closure.
+The branch meridian is one of the three middle factors and is
+retained throughout. This is a new explicitly specified geometric
+free basis; no uncomputed conversion to the old F21 array is claimed.
+An independent planar-cut check has been requested.
+
+4. Exact algebra of this two-relator block only
+
+The product w=c1*c2*c3 is primitive in their rank-three free group:
+(w,c2,c3) is a basis, with inverse c1=w*c3^-1*c2^-1. Thus the
+quotient by precisely these two node relations is
+
+  <a,b,w | [a,b], [a,w^-1*b*w]> * F(c2,c3).
+
+Introducing d=w^-1*b*w identifies the first factor as the genuine
+HNN extension of Z(a) times F(b,d) which identifies <b> with <d>
+by the stable letter w. The cyclic associated subgroups are
+injective. Under the homomorphism to Z sending w to1 and a,b to0,
+the kernel has the Reidemeister--Schreier presentation
+
+  < a_n,b_n (n in Z) | [a_n,b_n], [a_n,b_(n-1)] for all n >,
+  a_n=w^n*a*w^-n, b_n=w^n*b*w^-n.
+
+Its commutation graph is a bi-infinite bipartite path. The two
+extra free generators contribute freely all their w translates.
+This describes the two-relator block, not the quotient by the
+other physical nodes, the other base handles, or the whole normal
+relation family. In particular it does not prove that the actual
+shared edge group has this presentation or that its map into either
+bad regional vertex is injective. Those are the remaining gates.
