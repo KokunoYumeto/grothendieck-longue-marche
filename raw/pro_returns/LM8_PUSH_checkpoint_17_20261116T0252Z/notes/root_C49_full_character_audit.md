@@ -1,0 +1,5 @@
+# Root audit of the full-character consequence of C.49
+
+**PASS.** Read the entire proposed addendum and its exact proposed integration diff. Let xi be a continuous finite-order character of the full gentle group, trivial on the specified Galois image, whose restriction to H=ker(lambda) factors through one of the two actual framed residues already computed. That restriction vanishes on the arithmetic subgroup G_Qab, so the proved C.49 quotient gives xi|H=epsilon Delta|H. The difference is trivial on H and thus factors continuously through the actual compact multiplier quotient. The arithmetic multiplier is onto Zhat units and the difference vanishes on arithmetic, so the descended character is zero. The converse for zero and Delta follows from the existing character and finite evaluations.
+
+This uses only the computed restriction, not a claimed computation of the arbitrary-multiplier framed image. The statement and proof in the proposed diff preserve this condition explicitly. It may be incorporated in C.49 without a new numbered statement. No new numerical certificate is necessary for this elementary quotient argument.

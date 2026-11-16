@@ -1,0 +1,11 @@
+# A.50 primary checks and audit scope
+
+The full draft is notes/fgh_A50_draft.tex and is unregistered pending the parent audit. Exact original identities and two exhaustive quadratic-extension point counts are in notes/fgh_A50_certificate.py, .json, and .out.
+
+- **verified:** Ishii, arXiv2312.04175v2, setup printed p4; Theorem4.5 printed p18 and Corollary4.10 printed p21. URL https://arxiv.org/pdf/2312.04175 . Opened refs turn741view0, turn742view0--1, turn756view1--2. The full CM ring of Q(sqrt(-3)) has class number1, all split coefficient primes are at least7, and (2,2) satisfies the units congruence modulo6. The normalizer derivation argument itself is the already proved A.12, with the exact Nakamura formula cited there.
+- **verified:** Ruppert, Torsion points of abelian varieties in abelian extensions, Section1 Theorem and Corollary1, printed p1. URL https://arxiv.org/pdf/math/9803169 . Opened ref turn756view0. The corollary applies over every finite number field and excludes any rational one-dimensional Galois representation on an abelian variety having no geometric CM factor.
+- **verified:** Giulietti--Korchmaros, Automorphism groups of algebraic curves with p-rank zero, formula6, printed p5. URL https://arxiv.org/pdf/0801.3423 . Reopened ref turn744view1. The independent residue2 argument uses an actual good model and the exact special quotient, with one short orbit.
+
+DE independently challenged and passed the residue2 model/quotient argument. The map to the good elliptic quotient extends by the Neron property; the degree of a pulled-back degree-one line bundle remains4 on the special fibre, excluding degree drop. The faithful order4 action then forces the remaining quotient map to have degree1. Retain the finite constant extension in the tame cyclic3 good-model construction.
+
+The proof does not infer that the H3 span of an arbitrary elliptic quotient is one copy of its irreducible module. It proves this using the exact Fourier intertwiner: its eigenvalues are1,i,-i, and the quotient has F-dimension1. The multiplicity operator therefore has eigenvalues1,-1,-1, so its invariant vector is a pure tensor and the actual q0 translates detect exactly E0^3. This is the key representation check for the full audit.

@@ -1,0 +1,31 @@
+# Independent audit of D.72
+
+**PASS.** I read the complete 443-line `notes/de_class2_compact_draft.tex`, including the fixed actual class-two cocycle, actual integral coboundary module, all-class Hall induction, conjugator quotient, metabelian comparison and named applications. I also read the integrated statements D.70 and D.71 to check their different singleton-fibre scopes. No mathematical correction is required.
+
+## Weights and unrestricted central cocycles
+
+For an affine curve the geometric pro-prime group is free, and the lower-central lattices are the integral free-Lie pieces on its actual abelianization. Proper and boundary Frobenius eigenvalues have absolute values q^(1/2) and q respectively, including the finite permutation roots of unity in the boundary. Tensor degree j therefore has weights between j and 2j. For j at least three, q cannot occur. The inertia restriction of an actual lattice cocycle is a homomorphism; the tame relation yields F b=q b, with the cocycle's Frobenius terms cancelling because inertia acts trivially on the coefficient. Torsion-freeness excludes b. Thus every actual central cocycle is supported in the same finite set S, independently of the higher ramification of the reference section or the fixed class-two cocycle.
+
+The fixed-S finite cohomology groups and the finite H0 systems give integral H1 as their compact inverse limit. Its quotient modulo the coefficient prime injects into finite first cohomology, so compact Nakayama gives finite generation. Adding actual coboundaries of a lattice basis to continuous representatives of H1 generators gives actual Z1 finite generation and uniform compactness. This does not assume H1 torsion vanishes and does not assume an integral splitting of the mixed-weight abelianization. The class-two threshold is essential because degree two may contain the q eigenvalue.
+
+## Actual coboundaries and Hall induction
+
+The key module B in (D.72.12) is valid even if the full space of integral coboundaries is not closed. It is an actual Z_l-submodule of a finite free coefficient module. Noetherianity makes it finite free; its basis map from a finite power of Z_l is continuous with compact image, so B itself is closed. Choose actual continuous integral primitives of that finite basis. A rational left inverse of its full-rank basis matrix produces basis coefficients for every B-valued polynomial vector; those coefficients remain integral on the allowed parameter set. Therefore the chosen primitive family is actual, continuous and rational-polynomial. No closure of the global coboundary image is substituted.
+
+The Hall product, inverse, power and arithmetic-action polynomials have bounded denominators at each fixed class and are integral on actual Hall lattices, including at two. Expanding a family with finitely many fixed cochain coefficients keeps this property. Its defects have finitely many parameter monomials; the actual-B condition cuts out a closed parameter subset. The fixed finite central cocycle module parametrizes every lift. This proves full coverage, not merely a compact collection of selected lifts. Joint continuity on the compact parameter set and the compact Galois group gives continuity into the uniform cochain topology.
+
+## Exact representatives, conjugacy and inverse limits
+
+For any class-two twist, its fixed element first has zero image in the abelianization and then zero image in the central degree-two lattice, because good Frobenius has no eigenvalue one in either. Hence a conjugator between two representatives exactly over alpha has trivial class-two image. Conversely every class above [alpha] can be conjugated exactly above alpha by lifting a class-two conjugator. The fibre is precisely the compact-group quotient in the proof and is compact Hausdorff. This also agrees with the usual subspace topology on the full uniform-cochain quotient: a compact group acts properly on that Hausdorff space.
+
+If a finite-stage class lifts to every higher stage, each lift can be conjugated to an exact lift of the fixed representative. The resulting compact spaces meet every finite compatibility condition by taking its highest stage. Their inverse limit supplies a continuous actual pro-prime cocycle. Finite pro-prime quotients are nilpotent, so the lower-central inverse limit is the actual geometric group. Compact nested conjugator sets remove the remaining class-level ambiguity. The analogous rank-two metabelian comparison uses torsion-free Alexander augmentation quotients and the same actual finite-quotient universal property; it is not an assertion about a rational Malcev completion.
+
+D.71 supplies a singleton full fibre above its specified class-two cusp, whereas D.70 supplies a singleton full fibre above its abelian cusp. Taking the subfibre at the corresponding class-two cusp in the latter case is legitimate. Descending compact images then give finite failure and uniform exclusion outside cusp neighborhoods. Product-prime compactness concerns the actual pronilpotent tower only; the draft expressly avoids identifying it with the full profinite geometric group.
+
+## Independently reopened primary sources
+
+- Milne, *Arithmetic Duality Theorems*, original author PDF <https://www.jmilne.org/math/Books/ADTnot.pdf>, opened as `turn912view0`; Corollary I.4.15 checked at `turn913view0`, printed page62. It gives the finite fixed-S cohomology needed here, including degree one at two and real places.
+- Jannsen, *Continuous étale cohomology*, original primary PDF <https://epub.uni-regensburg.de/26684/1/jannsen12.pdf>, opened as `turn912view1`; Proposition1.6, (2.1) and Theorem2.2 checked at `turn913view1`. The finite H0 systems are Mittag--Leffler, so the claimed first-cohomology inverse-limit identification is valid.
+- Hall's original Edmonton notes in the authorized reproduced text <https://arxiv.org/pdf/2507.09745>, opened as `turn912view2`; Theorem5.6 and its free lower-central corollary checked at `turn913view4`, and Theorem6.5 and its polynomial proof at `turn913view3`. This is the actual Hall-coordinate argument used in the draft, not an integral-logarithm claim in high class.
+
+The proof is structural; no finite rank computation is being offered as verification of its all-class compactness or actual-coboundary assertions.

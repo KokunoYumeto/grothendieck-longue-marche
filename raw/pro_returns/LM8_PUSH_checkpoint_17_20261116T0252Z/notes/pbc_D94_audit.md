@@ -1,0 +1,54 @@
+# Independent D.94 audit
+
+**PASS** — complete written proof, internal source dependencies, actual maps, and full exact certificate.
+
+Draft SHA-256: `7f60ed30c32379878a58d452c4b3d870d3838219fc51bf2fe782c00435239297`.
+
+## Actual point and lattices
+
+The fifth-power arguments give a primitive prime valuation in each of the disjoint supports. Neither support includes five. Thus the away lattice is exactly 5^r Z5 plus Z5. The logarithm has first depth N and second depth zero; the diagonal depth is zero.
+
+## Actual operator and map
+
+Elimination by the unit second local coordinate gives R=Z5[[u]], PR=u^2 q_N R and J=q_r R. Retaining the q_r generator gives the exact source and target actions. Their natural map is multiplication by q_r, verified both algebraically and by the finite intertwiners.
+
+## Integral target
+
+The u^3 map has norm kernel of nontrivial tame weight three. The remaining low jets have weights one and two and vanish in all homology. The fixed basis vector at zero makes H1 of the permutation ring surject onto H1 of its augmentation quotient, so the target coinvariants are torsion-free of rank N.
+
+## Actual torsion kernel
+
+The Fourier-cycle product gives free source rank N-r; on each contributing root-order orbit j>r, q_r is nonzero. Therefore the actual map is injective on the rational free quotient and its kernel is exactly the integral torsion. No corank-only inference occurs.
+
+## Boundary module and blocks
+
+Reread D91.17–D91.25 and its actual compact Shapiro/stabilizer inclusion. Applying the infinite boundary case with m=N gives each nonzero residue block the cyclic factor C_(5^(h+j)), plus the zero-block free part. The precise block labels and natural maps are retained.
+
+## First-homology norm boundary
+
+Ordinary invariance of q_r f forces zero cyclic differences on every nonzero coset modulo5^r. Reduction to R_r then forces f to be supported on multiples of5^r. Three nontrivial tame jets give F=(Q-1)^3 B. Evaluating the exact norm defect gives v5(15 b(1)/5^N)>=2r, so the entire H1-to-C5 map is zero.
+
+## Norm transfer and largest extension
+
+F=q_N/q_r is fixed by substitution and S_chi(t^a)F=chi F. Both module maps commute with u^3 and send Norm_r literally to Norm_N. Each nonzero block has exact right sequence C_(5^j) to C_(5^(h+j)) to C_(5^h), which forces injection and image5^h times a unit. Transferring the D93 relation then proves largest lift order5^(N+1).
+
+## Remaining factors and topology
+
+The finite-rank free quotient splits continuously. Each smaller lift is corrected by the allowed multiple5^(r-j) of the largest lift. These mixed-order triangular changes are invertible and their orders match the total extension order.
+
+## Section/fibre scope
+
+The actual rational point supplies existence. Finite support permits the audited D74 translation-group result. The completed rational Kummer kernel is the sign, so the two-coordinate equality gives only the same positive ordinary point. Disjoint nonempty supports exclude all three cusp lines; no higher-derived assertion is introduced.
+
+## Executed certificate
+
+Imported owner run() read-only and reproduced the entire JSON byte-for-byte. Six exact Smith cases, six norm/natural-map diagrams and thirty arithmetic checks passed. Int64 intermediate bounds are safe at modulus5^10. Rational nullity is separately proved, so zero pivots do not conceal large elementary divisors.
+
+## Files and exact scope
+
+- `notes/de_ordinary_two_parameter_draft.tex`: `7f60ed30c32379878a58d452c4b3d870d3838219fc51bf2fe782c00435239297`.
+- `notes/de_ordinary_two_parameter_certificate.py`: `60d3f30cd24589fed4c82a56081d214b19e695fffbdfc2c4096ece19dbbae132`.
+- `notes/de_ordinary_two_parameter_certificate.json`: `fdc83e8463c8e8304f6e314128b418ac008574a8598147ebb8ea41d1e0edad2d`.
+- `notes/pbc_D94_certificate_rerun.json`: `fdc83e8463c8e8304f6e314128b418ac008574a8598147ebb8ea41d1e0edad2d`.
+
+The independent rerun did not overwrite owner outputs. All canonical sources remained frozen. This audit covers the finite two-parameter theorem, not the separately proposed infinite local-depth endpoint.

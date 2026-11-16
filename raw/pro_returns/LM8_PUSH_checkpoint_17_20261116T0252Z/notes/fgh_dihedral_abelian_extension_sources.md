@@ -1,0 +1,18 @@
+# A71 dihedral times odd-abelian source and scope ledger — registered
+
+Registered as A.71 after full root, DE and PBC proof/source audits PASS. Canonical section sections/A_dihedral_abelian_products.tex; code code/a_dihedral_abelian_products.py/.json/.out. The exact unnumbered candidate remains unchanged. Canonical edits only add the numbered Proved statement, remove conditional/candidate wording after A70 registration, and add the canonical certificate path.
+
+## Historical source ledger (preserved scope)
+
+Status: unnumbered, unregistered, notes only during checkpoint14 freeze. The complete proof is `notes/fgh_dihedral_abelian_extension_draft.tex`. Exact finite support is `notes/fgh_dihedral_abelian_extension_certificate.py/.json/.out`, executed PASS. No canonical section, bibliography or owner register was changed.
+
+The proof uses A70, itself a separately audited notes-only candidate at this time. It does not silently insert A70 into the frozen paper. It reuses the following exact verified primary/proved inputs:
+
+- **verified:** Dupuy–Rabinoff, primary https://arxiv.org/pdf/1705.03034 , Theorem1.1 and Proposition3.2, the compact-type extended Abel map, as already read and proved into A41. With a marked point mapping to O, composing this actual Abel map with the extended Jacobian homomorphism constructs the actual semistable map to the good elliptic model. It is not an unsupported extension claim for a rational map on a singular surface.
+- **verified:** Lehr–Matignon Theorem6.13, published154, readable primary https://arxiv.org/pdf/math/0411059 printed21. The actual total Galois closure is nilpotent, the elliptic base has good reduction after finite extension, and its sole branch closure is the origin section. This theorem supplies potential good Jacobian of the total closure, then the actual norm supplies it for the given intermediate. No inference of compact type from an étale pullback is made.
+- **verified:** The isogeny/good reduction identities previously checked in A40 and A66, with Silverman III.6.1–6.2 and VII.7.2, primary https://www.math.ens.psl.eu/~obenoist/refs/Silverman.pdf . The odd-degree isogeny between the good elliptic models has finite flat kernel of order invertible in residue characteristic2, hence is finite étale. All torsion sections are made rational after finite extension.
+- A44/A69/A70 provide the source rational cusp paths, potential good Jacobian and actual intermediate maps. A41/A42 supply the all-prime fixed-inertia theorem under the exact rational-companion hypothesis; A59 supplies normalizers for the actual nilpotent closure.
+
+New deductions are proved directly: coprime subgroup splitting by integral powers; connectedness of the actual function-field compositum via coprime normal closure degrees; literal lifting of the rational subtree as disjoint copies because it maps constantly to O; and preservation of a distinct companion mark on the selected copy. The proof never claims the pulled-back Jacobian has special two-rank zero. It never substitutes a product of two nonabelian Sylow factors for the odd abelian isogeny.
+
+The exact certificate checks every subgroup of D_(2m) for m4,8,16,32,64 and odd isogeny degrees1,3,5,9,15,27: actual cusp/degree/genus formulas satisfy Euler characteristic and the positive-genus/companion conditions. It also generates every two-generator subgroup of the actual D8×C3 finite product and verifies its split form. These finite checks support the algebra; the connectedness and semistable-model proof is structural and unbounded.

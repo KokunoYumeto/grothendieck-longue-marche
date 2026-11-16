@@ -1,0 +1,281 @@
+% Notes-only C.49 candidate; full root/independent audit required.
+\subsection{The actual framed images at levels twenty-four and sixty}
+
+\begin{statement}{C.49}{Open}{No additional arithmetic-trivial character at the two requested frame levels}
+Let $\mathcal H=\ker\lambda\subset\widehat{\mathrm{GT}}_0$.
+For $g\in\mathcal H$ retain the actual cusp intertwiner and both
+CM coordinates of C.12 and C.20:
+\[
+ V_g=\begin{pmatrix}1&t_g\\0&1\end{pmatrix},\qquad
+ T_g=q(A_g)^{-1}V_g,\qquad W_g=q(\beta_g)^{-1}V_g.
+                                                               \tag{C.49.1}
+\]
+For each coordinate separately fix the unique single global sign
+making it equal to one modulo four. At $N=24,60$, the actual
+image of $g\mapsto(t_g,T_g,W_g)\bmod N$ and the image of the
+arithmetic subgroup $G_{\mathbb Q^{\rm ab}}$ are as follows:
+\[
+\begin{array}{c|c|c|c}
+ N&\text{paired CM image}&\text{framed image on }\mathcal H
+       &\text{arithmetic image}\\\hline
+24&(C_2\times C_6)\times(C_2\times C_4)
+   &C_2\times C_6\times C_2\times C_4&C_2^2\times C_{12}\\
+60&C_6^2\times C_4^2
+   &C_6^2\times C_4^2\times C_5&C_{12}\times C_6\times C_4\times C_5
+\end{array}                                                    \tag{C.49.2}
+\]
+The corresponding framed/arithmetic orders are $96/48$ and
+$2880/1440$. The arithmetic subgroup is exactly $\ker\Delta$
+in each actual framed image. Hence its finite-order characters
+trivial on the arithmetic image are precisely the trivial character
+and $\Delta$, with values identified with $\{0,1/2\}\subset\mathbb Q/\mathbb Z$.
+In particular the requested levels $2m$ with $m=12,30$ produce
+no additional character of this kind from these retained frames.
+
+An exact executable certificate computes the finite images and
+has a residue-evaluation mode for every residue in them. These
+are multiplier-one assertions. No order or presentation of the
+arbitrary-multiplier framed image, no complete character basis
+of the gentle group, and no smallest finite detector is asserted.
+\end{statement}
+
+\begin{proof}
+\paragraph{Genuine signs and the local norm-one lift conditions.}
+Use the signed matrices and quadratic-ring bases
+\[
+ S=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad
+ U=\begin{pmatrix}1&1\\0&1\end{pmatrix},\quad
+ R=SU^{-1}=\begin{pmatrix}0&1\\-1&1\end{pmatrix},\qquad
+ \omega=-R,\quad i=S.                                  \tag{C.49.3}
+\]
+Thus $\omega^2+\omega+1=0$ and $i^2=-1$; a coordinate
+$a+b\omega$ is the matrix $aI-bR$, whereas $a+bi$ is $aI+bS$.
+Their norms are $a^2-ab+b^2$ and $a^2+b^2$.
+C.20 supplies the full actual adelic image
+\[
+ \{u\in\widehat{\mathbb Z[\omega]}^{\times}:u\bar u=1,
+                      u\equiv1\pmod2\}/\{\pm1\}
+ \ \times\
+ \{u\in\widehat{\mathbb Z[i]}^{\times}:u\bar u=1,
+                      u\equiv1\pmod2\}/\{\pm1\}.       \tag{C.49.4}
+\]
+The signs in these two quotients are independent of one another,
+but each is a single sign shared by all coefficient primes.
+
+For either ring, an actual norm-one element congruent to one
+modulo two reduces modulo four to $1$ or $-1$.
+Consequently every projective coordinate has a unique genuine
+representative equal to one modulo four. This sign choice is
+multiplicative. It must not be replaced by independent sign choices
+at the odd primes.
+
+Here are the exact local reductions at two. In the Eisenstein ring,
+write $u=a+b\omega$ with $a$ odd and $b$ even.
+The equation $a^2-ab+b^2\equiv1\pmod8$ forces $b\equiv0\pmod8$,
+and permits every odd $a\pmod8$. All four residues lift to exact
+norm-one units over $\mathbb Z_2$: for the chosen odd representative
+$a\in\{1,3,5,7\}$, seek $u=a+8c\omega$. Its norm is one exactly when
+\[
+                  (a^2-1)/8-ac+8c^2=0.                 \tag{C.49.5}
+\]
+This polynomial has a root modulo two and odd derivative, so Hensel's
+lemma gives an actual integral root. The full reduction modulo eight
+is therefore $\{1,3,5,7\}\cong C_2^2$; modulo four it is
+$\{\pm1\}$. After the global-sign normalization, the modulo-eight
+part is $\{1,5\}\cong C_2$.
+
+In the Gaussian ring, $u=a+bi\equiv1\pmod2$ has $a$ odd and
+$b$ even. The exact norm equation implies $b\equiv0\pmod4$ and,
+by reduction modulo sixteen, $a\equiv\pm1\pmod8$.
+Every resulting residue is attained, using
+\[
+ \pm\frac{1+it}{1-it},\qquad t\in\{0,2\}\subset\mathbb Z_2.
+                                                               \tag{C.49.6}
+\]
+Thus the genuine modulo-eight image is
+$\{1,-1,1+4i,-1+4i\}\cong C_2^2$, and the normalized image is
+$\{1,1+4i\}\cong C_2$.
+The other norm-one residues modulo eight do not lift to genuine
+norm-one units. In particular, simply enumerating the congruence
+$a^2+b^2\equiv1\pmod8$ would overcount the image.
+
+At an odd prime, every residue of norm one lifts to a genuine local
+norm-one unit. Lift the residue arbitrarily with norm $n\equiv1\pmod p$
+and multiply by the scalar square root of $n^{-1}$ in $1+p\mathbb Z_p$.
+This works also at the ramified Eisenstein prime three, since two
+is invertible. At each of three and five the Eisenstein reduction
+is cyclic of order six, generated by $-\omega=R$; the Gaussian
+reduction is cyclic of order four, generated by $i=S$.
+These assertions are also checked by the complete finite ring tables
+in the certificate.
+
+Chinese remaindering now gives, in the normalized genuine signs,
+\[
+ H_{3,24}=C_2\times C_6,\quad H_{4,24}=C_2\times C_4,
+ \qquad H_{3,60}=C_6\times C_6,\quad H_{4,60}=C_4\times C_4.
+                                                               \tag{C.49.7}
+\]
+The full adelic surjectivity in C.20 proves that every such paired
+residue is realized by an actual element of $\mathcal H$.
+This is the full-group existence step; finite ring enumeration
+alone would not prove it.
+
+\paragraph{The actual shear restriction.}
+Write the normalized modulo-three coordinates as
+\[
+                       T_3=R^k,\qquad W_3=S^l,
+                 \quad k\bmod6,\quad l\bmod4.          \tag{C.49.8}
+\]
+The pure cubic frame $A_g$ lies in $F'$ for multiplier one.
+This is the abelianization calculation of C.26: its order-three
+primitive has abelianization zero when $\lambda=1$; changing the
+pure marking and the inner normalization preserves that zero class.
+Equivalently the invariant abelian vector under the order-three
+peripheral permutation is zero, since its determinant-three
+relation is injective over $\widehat{\mathbb Z}$.
+The actual signed lift of $A_g$ reduces to $I$ modulo four,
+since the signed pure congruence image modulo four is abelian.
+The projective equality $[V_g]=[A_g][T_g]$, with the chosen
+$T_g\equiv I\pmod4$, makes $V_g$ scalar modulo four.
+Its lower-right entry one forces that scalar to be $I$.
+This fixes the single global sign, so the following equality is
+an equality of the actual signed matrices, not merely projective:
+\[
+                              A_g=V_g T_g^{-1}          \tag{C.49.9}
+\]
+In particular its residue belongs to the actual finite image of $F'$.
+
+For transparency, the source generators in (C.49.3) are
+$x=U^2$ and $y=SU^2S^{-1}$. Their finite signed images and
+commutator images are computed from those two literal matrices,
+with the following exact results:
+\[
+\begin{array}{c|r|r|c}
+N&|q_N(F)|&|q_N(F')|&q_N(F')\text{ in CRT coordinates}\\\hline
+24&768&16&\{I,5I\}\text{ at }8\ \times Q_8\text{ at }3\\
+60&11520&960&\{I\}\text{ at }4\ \times Q_8\text{ at }3
+                         \times\mathrm{SL}_2(\mathbb F_5)
+\end{array}                                                    \tag{C.49.10}
+\]
+The signed pure image does not contain $-I$ modulo four, so these
+same orders apply in the global projective quotient.
+The certificate computes the commutator image as the subgroup
+generated by the full conjugacy orbit of $[x,y]$; it checks the
+projection orders and equality with the indicated direct products.
+
+At eight the cubic coordinate is scalar, so (C.49.9) forces
+$t_g\equiv0\pmod8$ when $N=24$. At four it forces
+$t_g\equiv0\pmod4$ when $N=60$.
+At three, the abelianization
+$\mathrm{SL}_2(\mathbb F_3)/Q_8=C_3$ sends $S$ to one and
+$R=SU^{-1}$ to the inverse class of $U$.
+Equation (C.49.9) therefore gives $t_g+k\equiv0\pmod3$.
+There is no additional condition at five, where the displayed
+commutator image is the full group. Thus
+\[
+\begin{array}{c|l}
+24&t_g\equiv0\pmod8,\quad t_g\equiv-k\pmod3,\\
+60&t_g\equiv0\pmod4,\quad t_g\equiv-k\pmod3,
+                         \quad t_g\bmod5\text{ unrestricted}.
+\end{array}                                                    \tag{C.49.11}
+\]
+At twenty-four these congruences uniquely determine the shear from
+$T$. Since all paired CM residues are actual, they already determine
+the full framed image there.
+
+\paragraph{The extra five-component is supplied by actual arithmetic.}
+For level sixty, we must prove actual independent realization of the
+last residue in (C.49.11); no finite compatibility claim replaces it.
+The Tate normalization proved in C.20 makes the arithmetic shear
+\[
+                            t_\sigma=-8\kappa_2(\sigma).
+                                                               \tag{C.49.12}
+\]
+Indeed, with Legendre parameter $z$ at the tangential cusp,
+$q=z^2/256\,(1+z\mathbb Q[[z]])$. A compatible $n$-th root has
+constant factor $2^{-8/n}$. The tangential splitting fixes the
+formal $z^{1/n}$ and the formal unit root with constant one.
+Thus Galois acts on the Tate quotient lift by the Kummer factor
+$\zeta_n^{-8\kappa_2(\sigma)}$. The Tate submodule has cyclotomic
+action and the quotient has action one, yielding exactly (C.49.12)
+in the normalized lower-right-one representative. A global quadratic
+twist disappears in the same projective normalization.
+This is the actual Tate calculation of C.20, using
+\cite[III, \S3, equations (23)--(26)]{PBC_MilneEC2021}.
+
+The Kummer character $\kappa_2\bmod5$ maps
+$G_{\mathbb Q^{\rm ab}}$ onto $C_5$.
+For example $X^5-2$ is Eisenstein, its splitting field has group
+$C_5\rtimes C_4$ with faithful action, and its derived subgroup
+is $C_5$. The image of the closed derived subgroup of $G_{\mathbb Q}$
+is that full derived subgroup. By Kronecker--Weber this closed
+subgroup is $G_{\mathbb Q^{\rm ab}}$.
+Since $-8$ is a unit modulo five, (C.49.12) is onto $C_5$ there.
+
+C.20 and C.21 identify the arithmetic paired-CM image as
+$\ker\Delta$. At level sixty it has order $576/2=288$, prime to five.
+If the shear character modulo five vanished on the kernel of this
+paired image, it would factor through a group of order $288$, which
+is impossible for a nonzero character to $C_5$.
+Consequently the arithmetic subgroup already realizes every shear
+modulo five with both level-sixty CM coordinates equal to one.
+Multiplying any actual CM realization by such an arithmetic element
+proves that all residues allowed by (C.49.11) occur.
+It proves at the same time that the arithmetic framed image has
+exactly the extra $C_5$ factor asserted in (C.49.2).
+
+\paragraph{The finite group laws and the arithmetic character.}
+On $\mathcal H$, the three retained coordinates have the literal law
+\[
+ (t,T,W)(t',T',W')=(t+t',TT',WW').                       \tag{C.49.13}
+\]
+For the shear this follows from the unique normalized intertwiner;
+for the two CM coordinates it is C.20's actual frame covariance.
+The genuine sign normalizations modulo four are multiplicative.
+At level sixty the shear kernel is $12\mathbb Z/60\cong C_5$,
+and the choice $t\equiv0\pmod5$ splits it over the CM pair.
+This gives the framed direct-product descriptions in (C.49.2).
+
+The exact signed parity formula of C.47 is
+\[
+                         \Delta=k+l\pmod2.             \tag{C.49.14}
+\]
+It depends only on reduction modulo twelve, which divides both
+levels. Thus reduction of C.20's adelic arithmetic kernel gives
+exactly the finite parity kernel: every finite parity-zero CM pair
+has an adelic lift, and every such lift has parity zero.
+The preceding shear argument gives the same assertion for the full
+framed data at sixty; at twenty-four the shear is already determined.
+Inside $C_6\times C_4$, the subgroup of equal parities is the cyclic
+order-twelve group generated by $(R,S)$. All other cyclic factors
+are unconstrained. This proves the arithmetic direct products and
+orders in (C.49.2).
+The quotient of each actual framed image by its arithmetic image
+is exactly $C_2$, so its finite-order arithmetic-trivial character
+group is exactly the order-two group generated by (C.49.14).
+
+\paragraph{Exact retained programs and limitations.}
+The standalone program \texttt{code/pbc\_cm\_frames\_24\_60.py}
+enumerates the signed pure groups of orders $768$ and $11520$,
+their derived images, all actual local CM reduction classes and all
+allowed shears. It checks the cyclic product generators and the
+parity kernels, and verifies that the raw signed frame pair
+$(A,\beta)$ is injectively recovered from the framed triples.
+It also checks the local lift formulas at finite precision, while
+the all-depth lifting proof is (C.49.5)--(C.49.6) and the odd-prime
+square-root argument above. Its JSON and stdout are retained.
+
+For direct evaluation, pass a level, shear, and the two coefficient
+pairs in the bases of (C.49.3), for example
+\[
+ \texttt{--level 24 --shear 8 --T 9 8 --W 1 0}.
+\]
+The program returns $\Delta=1$. It checks membership in the proved
+actual framed image, including the genuine two-adic lift condition,
+and evaluates every member by (C.49.14). The standalone CLI checks
+include arithmetic, nonarithmetic, bad-shear and nonlifting Gaussian
+residues. Full profinite realization is justified by C.20 and the
+actual arithmetic shear above, not by the finite enumeration itself.
+The uncomputed arbitrary-multiplier image and the least finite
+quotient in Task C.6 remain outside this statement.
+\end{proof}

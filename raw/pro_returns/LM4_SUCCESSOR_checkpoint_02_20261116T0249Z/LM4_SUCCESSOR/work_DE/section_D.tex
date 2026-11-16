@@ -1,0 +1,769 @@
+% Part D. Independent audit and controlled-topology results.
+\section{The actual topology of discrete-operator centralizers}
+\label{sec:D}
+
+We retain the hypotheses of LM4 C.81, not merely its notation.  Let
+$\overline D$ be a closed topological disk, $O=\operatorname{int}\overline D$,
+and let $d$ be a compatible metric on $\overline D$.  Let $Q$ be a closed
+discrete subgroup of $\operatorname{Homeo}(O)$ acting freely and properly.
+The group
+\[
+ C=\{a\in\operatorname{Homeo}(\overline D):
+ a|_{\partial\overline D}=1,\quad aq=qa\text{ on }O\ (q\in Q)\}
+\]
+has the compact-open group topology, equivalently the uniform topology
+on maps and inverses.  We assume that $C$ acts transitively on $O$.
+Write $\pi:O\to N=O/Q$, fix $x\in O$, and put $p=\pi x$ and
+$F=C_x$.  The quotient is a connected, second countable surface without
+boundary.  Its universal cover is the specified $O$; thus it is
+aspherical.  None of the arguments below replaces the given
+compactification by a chosen hyperbolic compactification.
+
+\statement{D.1}{Proved}{The invariant metric and compact-core collapse}
+The function
+\[
+ d_Q(u,v)=\sup_{q\in Q}d(qu,qv)
+\]
+is a bounded $Q$-invariant metric inducing the original topology on $O$.
+If $A,B\subset O$ are compact, $a_j\in A$, and
+$q_ja_j\to z\in\partial\overline D$, then $q_jB\to\{z\}$ uniformly
+in the original metric.
+\begin{proof}
+The group $C$ is a closed subgroup of the Polish group
+$\operatorname{Homeo}(\overline D)$: the boundary conditions and each
+commutator equation are closed under convergence on compact subsets of
+$O$.  Evaluation is a continuous transitive action on the Polish space
+$O$.  The open-orbit-map form of Effros' theorem therefore applies;
+a proof with precisely these hypotheses is available in
+\cite[Theorem 4.1]{DE_Wengenroth2025}.  In particular, if $u_j\to u$ in
+$O$, there are $c_j\to1$ in $C$ such that $c_ju=u_j$.  To obtain this
+last assertion, choose a nested countable neighborhood basis of $1$,
+use openness of its evaluation images, and choose $c_j$ in successively
+smaller neighborhoods.  Commutation gives
+\[
+ d_Q(u_j,u)\leq\sup_{w\in\overline D}d(c_jw,w)\longrightarrow0.
+\]
+The converse follows from $d\leq d_Q$.  Boundedness, the metric axioms,
+and $Q$-invariance follow directly from the definition.
+
+For the collapse assertion, a failure supplies $b_j\in B$ and a
+subsequence with $a_j\to a\in A$, $b_j\to b\in B$ and
+$d(q_jb_j,z)$ bounded away from zero.  Choose $u_j,v_j\to1$ in $C$
+with $u_ja=a_j$, $v_jb=b_j$, and choose $g\in C$ with $ga=b$.
+Then
+\[
+ q_jb_j=v_jg u_j^{-1}(q_ja_j).
+\]
+The maps $v_jg u_j^{-1}$ converge uniformly on the closed disk to $g$,
+and $g(z)=z$.  Hence $q_jb_j\to z$, a contradiction.  This proof
+avoids the compact-selection lemma invoked in LM4 C.88.
+\end{proof}
+
+\statement{D.2}{Proved}{The exact $C_0$ image and compact-parameter criterion}
+For $h\in C_{\operatorname{Homeo}(O)}(Q)$ define
+\[
+ \delta_h(\pi u)=d_Q(hu,u),\qquad
+ V=\{h\in C_{\operatorname{Homeo}(O)}(Q):\delta_h\in C_0(N)\}.
+\]
+Here $C_0(N)$ consists of continuous functions vanishing uniformly
+outside compact subsets.  Restriction $C\to V$ and extension by the
+identity on $\partial\overline D$ are inverse isometric topological
+group isomorphisms, for the sums of the uniform distances of maps and
+inverses.  For a compact metrizable parameter space $P$, an equivariant
+family $h_s$ with continuous evaluation $P\times O\to O$ extends
+jointly to the closed disk if and only if
+\begin{equation}\label{eq:DE-tail}
+ \forall\epsilon>0\ \exists K\Subset N:\quad
+ \sup_{s\in P,\,\pi u\notin K}d_Q(h_su,u)<\epsilon.
+\end{equation}
+Joint continuity of the extended inverse family follows as well.
+This proves LM4 C.88 with its stated hypotheses.
+\begin{proof}
+The function $\delta_h$ is continuous by D.1 and constant on each
+$Q$-orbit.  If $\bar h$ denotes descent, then
+\[
+ \delta_{h^{-1}}=\delta_h\circ\bar h^{-1},\qquad
+ \delta_{hk}\leq\delta_h\circ\bar k+\delta_k.
+\]
+Pullback by a homeomorphism of the locally compact space $N$ preserves
+$C_0(N)$, so $V$ is a group.
+
+A continuous compact family fixing the original boundary moves every
+point outside one compact $A\Subset O$ by less than $\epsilon$,
+uniformly in the parameter.  If $\pi u\notin\pi A$, every $qu$ is
+outside $A$.  Commutation and the supremum defining $d_Q$ prove
+\eqref{eq:DE-tail}.
+
+Conversely suppose \eqref{eq:DE-tail}.  To check continuity at a
+boundary point, let $s_j\to s$ and $u_j\to z\in\partial\overline D$.
+A subsequence witnessing failure has either $\pi u_j$ escaping every
+compact subset of $N$, or all $\pi u_j$ in one compact set $K$.
+In the first case \eqref{eq:DE-tail} gives
+$d(h_{s_j}u_j,u_j)\to0$.  In the second case finitely many local
+covering sections give a compact $A\Subset O$ with $K\subset\pi A$.
+Write $u_j=q_ja_j$, $a_j\in A$.  The set
+$B=\{h_s(a):s\in P,a\in A\}$ is compact.  D.1 now gives
+$h_{s_j}u_j=q_jh_{s_j}a_j\to z$.  These two cases prove continuity.
+The resulting map
+\[
+ P\times\overline D\longrightarrow P\times\overline D,
+ \qquad(s,u)\longmapsto(s,h_su)
+\]
+is a continuous bijection of compact Hausdorff spaces.  Its inverse
+is continuous, so no separate unproved inverse-continuity assumption
+is needed.  Necessity applied to this inverse family proves its
+uniform tail.
+
+Finally commutation gives the exact identity
+\[
+ \sup_{u\in O}d_Q(hu,ku)
+ =\sup_{u\in O,\,q\in Q}d(hqu,kqu)
+ =\sup_{w\in\overline D}d(E(h)w,E(k)w).
+\]
+The same equality holds for the inverses.  Uniform continuity for
+$d_Q$ also follows by applying the modulus of continuity of $E(h)$
+to every pair $(qu,qv)$, and similarly for $h^{-1}$.
+\end{proof}
+
+\statement{D.3}{Proved}{Pointed descent, its image, and its stronger topology}
+Let
+\[
+ I_p=\operatorname{Homeo}(N\mathbin{\mathrm{rel}}p)_0
+\]
+denote the identity path component in the compact-open topology on
+maps and inverses.  Every $a\in F$ descends to $I_p$.  Every $b\in I_p$
+has a unique lift $\lambda(b):O\to O$ fixing $x$, and that lift commutes
+with every element of $Q$.  Define
+\[
+ B_p=\{b\in I_p:\delta_{\lambda(b)}\in C_0(N)\}.
+\]
+Descent gives a group isomorphism $F\to B_p$ and an isometry if $B_p$
+is given the metric
+\begin{align*}
+ d^{\uparrow}(b,c)={}&\sup_{u\in O}d_Q(\lambda(b)u,\lambda(c)u)\\
+ &+\sup_{u\in O}d_Q(\lambda(b)^{-1}u,\lambda(c)^{-1}u).
+\end{align*}
+For compact parameter spaces, continuity in this metric is exactly
+compact-open continuity downstairs together with
+\eqref{eq:DE-tail} for the actual pointed lifts.  This proves LM4
+C.92, including its distinction between the two topologies.
+\begin{proof}
+A lift $a$ fixing $x$ and commuting with each deck transformation
+sends a path from $x$ to $qx$ to another such path.  Therefore its
+descent fixes $p$ and induces the identity on $\pi_1(N,p)$, with no
+inner-automorphism ambiguity.  Since $N$ is an aspherical surface,
+it is based-homotopic to the identity.  One direct construction
+chooses a locally finite triangulation with vertex $p$, constructs
+the homotopy on its one-skeleton from the equality on $\pi_1$, and
+extends across the cell prisms using $\pi_2(N)=0$.  Local finiteness
+makes the result continuous; properness of this intermediate
+homotopy is not required.
+
+A disk homeomorphism fixing the boundary preserves orientation,
+as follows from the boundary map in relative homology
+$H_2(\overline D,\partial\overline D)\to H_1(\partial\overline D)$.
+Consequently its descent preserves local orientation at $p$, also
+when $N$ is nonorientable.  Epstein's based isotopy theorem applies:
+$N$ has no boundary; the plane and open-cylinder orientation
+exceptions are satisfied, and the open-M\"obius-band exception is
+satisfied at $p$.  We use Theorem 6.4(b), its proof on pp.~101--103,
+and Appendix A4 for topological homeomorphisms
+\cite{DE_Epstein1966}.  The proof supplies a level-preserving
+homeomorphism of $N\times[0,1]$, hence continuity of maps and
+inverses in the compact-open group topology.  Thus the descent
+belongs to $I_p$.
+
+Conversely a pointed isotopy of $b$ to the identity implies
+$b_*=1$.  The covering lifting criterion gives a lift fixing $x$;
+uniqueness makes it a homeomorphism and makes $b\mapsto\lambda(b)$
+a homomorphism.  The equality on $\pi_1$ gives
+$\lambda(b)q=q\lambda(b)$ for each actual deck label $q$.
+The lifting operation is continuous in the interior compact-open
+topology.  To see this without selecting isotopies continuously,
+choose a path from $x$ to a given $u$ and lift its $b$-image from $x$.
+Path lifting depends continuously on $b$; near $u$, append short
+paths in one covering chart.  Finitely many such charts prove
+continuity on any compact set, and the same argument applies to
+$b^{-1}$.  D.2 now proves the image description and the metric
+identity.  Its compact-family criterion proves the final assertion.
+\end{proof}
+
+\statement{D.4}{Proved}{Evaluation has a global section in the original topology}
+For every quotient $N$ under consideration, compact or noncompact,
+there is a continuous map $s:O\to C$ with $s(y)x=y$ and $s(x)=1$.
+Consequently
+\[
+ C\xrightarrow{\ \cong\ }O\times F,\qquad
+ a\longmapsto\bigl(ax,s(ax)^{-1}a\bigr)
+\]
+is a homeomorphism, with inverse $(y,f)\mapsto s(y)f$.
+In particular $\pi_j(F,1)\to\pi_j(C,1)$ is an isomorphism for
+all $j\geq1$.
+\begin{proof}
+Choose a smooth structure and a complete Riemannian metric on $N$,
+and lift them to $O$.  A smooth plane coordinate on $O$ gives a
+smooth contraction $\gamma_y(t)$ from $x$ to $y$, constant when
+$y=x$, and depending smoothly on $(t,y)$.  At time $t$ choose on
+$N$ a bump vector field centered at $\pi\gamma_y(t)$ whose value
+there is $D\pi\,\partial_t\gamma_y(t)$.  This can be done
+continuously in $(y,t)$: use the Riemannian exponential map, radial
+parallel transport, and a fixed bump function with radius a positive
+continuous function smaller than a quarter of the injectivity
+radius and smaller than $1$.  The field is smooth in the spatial
+variable.  For each fixed $y$ its time-dependent support is compact,
+so its flow exists for $0\leq t\leq1$.  On a compact set of values
+of $y$, all these supports lie in one compact subset of $N$ by
+completeness.  The lifted field is $Q$-invariant, and its flow takes
+$x$ along the specified path $\gamma_y$.  Outside the inverse image
+of that common compact set, the lifted flow is the identity.
+
+Let $s(y)$ be the time-one lifted flow, extended by the identity on
+the original boundary.  Continuous dependence for flows gives
+joint interior continuity.  The compact-support instance of D.2
+proves continuity for every compact set of parameters $y$ in the
+original closed-disk topology; since $O$ is locally compact this
+proves continuity of $s$.  When $y=x$ the chosen field is zero, so
+$s(x)=1$.  The displayed maps are inverse by direct multiplication;
+their continuity follows from continuity of $s$, evaluation, and
+the group operations.  The last assertion follows by contracting
+the factor $O$.
+\end{proof}
+
+\statement{D.5}{Proved}{The compact quotient case is contractible}
+If $N$ is compact, $C$ admits a continuous contraction to $1$ fixing
+$1$ throughout.  This proves both LM4 C.90 and LM4 C.91, including
+the torus and Klein-bottle quotients.
+\begin{proof}
+For compact $N$, $C_0(N)=C(N)$ and the uniform-tail condition is
+vacuous.  D.3 identifies $F$ with $I_p$ also topologically.  For
+example, continuity of the inverse follows by applying D.2 to a
+convergent sequence and its limit, viewed as a compact parameter
+space.  A compact quotient with universal cover $O$ is neither the
+sphere nor the projective plane.  The pointed compact-surface
+homeomorphism theorem gives contractibility of $I_p$:
+\cite[Lemma 2.1(i), pp.~2--3]{DE_Yagasaki2000}.  Its torus and
+Klein-bottle exceptions have empty fixed set, so do not apply to
+$(N,\{p\})$.
+
+Normalize any contraction $A_t$ by
+$J_t(b)=A_t(b)A_t(1)^{-1}$.  After reversing the parameter if
+necessary it satisfies $J_0(b)=b$, $J_1(b)=1$, and $J_t(1)=1$.
+Transport it to $F$.  If $R_t$ contracts $O$ to $x$ while fixing
+$x$, D.4 supplies the explicit contraction
+\[
+ a\longmapsto s\bigl(R_t(ax)\bigr)
+ J_t\bigl(s(ax)^{-1}a\bigr).
+\]
+All factors lie in the original group $C$, and the formula fixes
+$1$.  Hence every positive based homotopy group vanishes as asserted
+in LM4 C.90, and the stronger global assertion of LM4 C.91 follows.
+\end{proof}
+
+\statement{D.6}{Proved}{Compact-open convergence does not control the lifted tail}
+There are operators satisfying all the hypotheses above, with
+$N=S^1\times\mathbb R$, and $b_R\in B_p$ converging to $1$ in
+$I_p$ while $d^{\uparrow}(b_R,1)>2/5$ for every $R\geq2$.
+\begin{proof}
+Identify $O$ with $\mathbb R^2$ by
+\[
+ j(s,y)=\frac{(s,y)}{1+\sqrt{s^2+y^2}},\qquad
+ Q=\langle jTj^{-1}\rangle,\quad T(s,y)=(s+1,y).
+\]
+Use the Euclidean metric on the closed unit disk and
+$p=([0],0)$.  This is a free proper closed discrete action.  Its
+boundary-fixed centralizer is transitive: a finite sequence of
+point-moving isotopies in small disks downstairs lifts to
+$T$-equivariant maps of uniformly bounded Euclidean displacement,
+which extend by the identity under $j$; choose the projected path
+so that its lift joins any prescribed pair of points upstairs.
+
+Put $\beta(v)=\max(0,1-4|v|)$ and
+\[
+ A_{R,t}(s,y)=(s+tR\beta(y-R),y),\qquad0\leq t\leq1.
+\]
+These are equivariant homeomorphisms, have the displayed inverse
+with $t$ replaced by $-t$, and fix $(0,0)$.  Their displacements
+are bounded in the plane, so their conjugates by $j$ extend by
+the identity to the closed disk.  Their descents are supported
+in $S^1\times[R-1/4,R+1/4]$.  Thus $b_R=\overline A_{R,1}$ and
+$b_R^{-1}$ converge to $1$ uniformly on every compact subset of $N$.
+Their unique pointed lifts satisfy
+\[
+ \bigl|jA_{R,1}(0,R)-j(0,R)\bigr|
+ \geq\frac{R}{1+\sqrt2R}>\frac25.
+\]
+Since $d_Q\geq d$, the same lower bound holds for $d^{\uparrow}$.
+This verifies the example of LM4 C.92 directly.  Each $A_{R,t}$
+is itself an allowed isotopy.  The sequence is therefore not a
+noncontractible loop and does not refute Task D.2.
+\end{proof}
+
+\statement{D.7}{Proved}{Families with one compact quotient support fill}
+Let $a:S^m\to C$ be a based sphere family, $m\geq1$, and suppose
+that one compact set $K\Subset N$ satisfies
+$a_\xi(u)=u$ whenever $\pi u\notin K$.  Then $a$ has a based
+null-homotopy in $C$ with one compact quotient support, and hence
+with a uniform tail.
+\begin{proof}
+If $N$ is compact, D.5 applies directly.  Otherwise choose a
+connected compact subsurface $S\subset N$ with boundary
+and $K\subset\operatorname{int}S$.  The descents restrict to a
+based family in
+$\operatorname{Homeo}(S\mathbin{\mathrm{rel}}\partial S)_0$:
+restriction preserves $S$ because the maps are the identity off
+$K$, and paths from the sphere basepoint remain in this group.
+This group is contractible by
+\cite[Lemma 2.1(ii)]{DE_Yagasaki2000}.  Choose its identity-fixed
+contraction, extend it by the identity to $N$, and lift the
+resulting isotopy starting at the identity.  The lift is the
+identity outside $\pi^{-1}(S)$ and commutes with every deck
+transformation.  At the given sphere it agrees with $a$, since
+both are lifts with the same value at any point outside
+$\pi^{-1}(S)$.  D.2 gives joint extension to the original closed
+disk.  The same construction works for all inverse maps.
+\end{proof}
+
+\statement{D.8}{Proved}{The trivial operator case and the compact-open exception}
+If $Q=1$, the whole group $C$ and every point stabilizer $F$ are
+contractible in their actual topology, even though the identity
+component of $\operatorname{Homeo}(\mathbb R^2\mathbin{\mathrm{rel}}0)$
+in the interior compact-open topology has homotopy type $S^1$.
+\begin{proof}
+In standard disk coordinates the Alexander formula
+\[
+ H_t(a)(z)=
+ \begin{cases}t\,a(z/t),&|z|\leq t,\quad t>0,\\
+ z,&|z|\geq t\text{ or }t=0
+ \end{cases}
+\]
+is continuous for maps and inverses, equals $a$ at $t=1$, and
+equals $1$ at $t=0$.  Its displacement on the radius-$t$ disk
+is at most $2t$, so continuity at $t=0$ is uniform in $a$.
+It fixes $1$ and preserves the stabilizer of the origin.
+Conjugation by a boundary-fixed disk homeomorphism taking a
+specified interior point to the origin handles every $F$.
+The compact-open statement is exactly the pointed-plane exception
+in \cite[Theorem 1.1(i)]{DE_Yagasaki2000}; it is not a statement
+about the stronger topology of D.3.
+\end{proof}
+
+\statement{D.9}{Open}{The arbitrary noncompact quotient uniform-tail deformation}
+Assume the quotient $N$ is noncompact.  Let $P$ be a compact
+metrizable space and $a:P\to F$ a continuous map.
+Does $a$ admit a homotopy to the constant identity that is
+continuous in the metric $d^{\uparrow}$?
+The relative version for a prescribed subset on which $a=1$ is
+also undecided here.  In particular we have not proved or
+refuted $\pi_1(C,1)=0$ in this generality.
+
+The precise missing estimate is \eqref{eq:DE-tail} uniformly in
+$(s,t)\in P\times[0,1]$.  The unqualified compact-open contraction
+of a pointed noncompact surface does not supply it, as D.6 makes
+concrete.  A sufficient constructive route is a deformation of
+every based sphere family to one with common compact quotient
+support, preserving this estimate; D.7 would then finish the
+sphere.  No such cutoff has been constructed for an arbitrary
+$d_Q$.
+
+We checked the later uniform-deformation literature as well.
+Yagasaki's covering-space theorem has a compact base
+\cite[Theorem 1.1]{DE_Yagasaki2014}.  Its end theorem assumes
+specified Euclidean ends.  The later end theorem requires finitely
+many isolated proper product ends with the stated end-deformation
+property \cite[Theorem 1.3]{DE_Yagasaki2018}.  Neither hypothesis
+follows from the present data.  In particular the bounded metric
+$d_Q$ need not be a proper end metric, and no comparison transferring
+the needed deformation to $d^{\uparrow}$ has been proved.  We also
+considered equivariant deformations of a null lifted triangulation.
+Its pointwise skeleton stabilizer contracts.  The family of skeleton
+embeddings still requires a deformation with the same uniform control.
+The escaping sequence in D.6 has not been
+turned into a nontrivial loop; presenting it as one would be an
+error.
+
+\statement{D.10}{Open}{Arbitrary-frontier descent in the exact comparison}
+Let $U$ be a simply connected open orbit in the original surface.
+The prime-end disk need not map continuously onto its closure.
+When the interior identification has such an extension,
+exists, its boundary map may fail to be injective.
+We have not proved that an intrinsic centralizer filling can
+be chosen to extend over every such original frontier, with
+jointly continuous inverses.  An interior conjugacy alone does
+not suffice.  One must retain all original approach limits and
+prescribed frontier values; a boundary equivalence relation
+describes only the cases where a continuous boundary map exists.
+This is the
+arbitrary-frontier descent obligation listed in LM4 C.12.
+
+\statement{D.11}{Open}{Nonfixed-frontier pasting and infinitely many orbit types}
+The remaining LM4 C.12 comparison requires simultaneous fillings
+on all open orbits agreeing with a deforming, possibly nonfixed,
+nonopen locus, including infinitely many operator-inequivalent
+remaining components and accumulation outside the treated closed
+sets.  We have not proved or refuted this assertion.  The missing
+conditions are (i) existence of mutually compatible restrictions
+on every common frontier, (ii) extension of these restrictions over
+the incident open orbits, and (iii) uniform control of both maps
+and inverses across arbitrary accumulating families.  D.2 controls
+one original disk with fixed boundary and does not supply these
+three comparisons.
+
+\statement{D.12}{Open}{The universal admissible level-zero kernel}
+For an admissible punctured surface, with actual homeomorphism
+group $A$, a strict action $u:\Gamma\to A$, and $H=u(\Gamma)$,
+the unresolved comparison of LM4 C.12 is injectivity of
+\[
+ \pi_1(C_A(H),1)\longrightarrow\pi_1(A,1)^\Gamma.
+\]
+For hyperbolic finite-type surfaces the target is zero, so the
+question is whether every based centralizer loop contracts in
+the centralizer.  For the plane, annulus, and torus the respective
+targets are the invariant subgroups of $\mathbb Z$, $\mathbb Z$,
+and $\mathbb Z^2$.  No counterexample inside this admitted
+category and no proof covering D.9--D.11 is obtained here.  The
+unpunctured sphere example mentioned in LM4 C.12 is outside the
+stated category and cannot settle this assertion.
+
+\statement{D.13}{Proved}{Planar filling hulls preserve the invariant diameter bound}
+Choose closed-disk coordinates in which $d$ is Euclidean, and retain
+$d_Q(u,v)=\sup_q|qu-qv|$.  This changes neither the actual group
+topology nor its $C_0$ tail condition.  For a nonempty compact
+$A\subset O$, let $\operatorname{Fill}(A)$ be $A$ together with
+all relatively compact components of $O\setminus A$.  Then
+\[
+ q\operatorname{Fill}(A)=\operatorname{Fill}(qA),\qquad
+ \operatorname{diam}_{d_Q}\operatorname{Fill}(A)
+ =\operatorname{diam}_{d_Q}(A).
+\]
+Moreover, if $A\subset B_{d_Q}(x,r)$ is compact, then
+$\operatorname{Fill}(A)\subset B_{d_Q}(x,r)$.  Every connected
+component of a $d_Q$-ball is a simply connected open planar domain.
+In particular every loop contained in one such ball has a filling
+in that same ball.
+\begin{proof}
+Two compatible metrics on the compact disk have uniform moduli of
+comparison.  Taking their suprema over $Q$ preserves these moduli,
+so the invariant uniform topologies and vanishing-tail conditions
+are identical.
+
+Homeomorphisms of $O$ preserve relatively compact complementary
+components.  This proves the equivariance
+identity.  In Euclidean disk coordinates,
+\[
+ \operatorname{Fill}(qA)\subset\operatorname{conv}(qA)\subset O.
+\]
+The first inclusion holds because a point outside the convex hull
+can be joined to the exterior without meeting $qA$; the second
+uses compactness of $qA$ and convexity of the open disk.  Consequently,
+for $u,v\in\operatorname{Fill}(A)$ and $q\in Q$,
+\[
+ |qu-qv|\leq\operatorname{diam}_{d}(qA)
+ \leq\operatorname{diam}_{d_Q}(A).
+\]
+Taking suprema gives one inequality; $A\subset\operatorname{Fill}(A)$
+gives the reverse.  If $A\subset B_{d_Q}(x,r)$, compactness gives
+$r'<r$ with $d_Q(a,x)\leq r'$ for all $a\in A$.  Every $qA$ lies
+in the Euclidean radius-$r'$ ball about $qx$, so its convex hull
+does too.  Thus $\operatorname{Fill}(A)\subset B_{d_Q}(x,r)$.
+
+Let a loop lie in a connected component $W$ of this open ball.
+Its image is compact and connected.  Its filled hull is connected
+and lies in the ball, hence in $W$.  A compact full connected planar
+set has arbitrarily small simply connected polygonal neighborhoods:
+take a finite union of sufficiently fine grid squares meeting it,
+thicken slightly, and fill the bounded complementary components.
+The hull containment just proved keeps such a neighborhood in
+$W$ if the grid is sufficiently fine.  The loop therefore contracts
+in a polygonal disk contained in $W$.  This proves simple
+connectedness.  Notice the exact limit of the conclusion: it
+controls fillings of point trajectories.  It does not extend an
+entire parameter family to equivariant ambient homeomorphisms,
+which is the additional step required in D.9.
+\end{proof}
+
+\statement{D.14}{Proved}{An inner-diameter metric retaining every based sphere family}
+Inner-diameter metrics also occur in
+\cite[Definition 2.2]{DE_Fabel1998}.  With the invariant metric
+in D.13, put
+\[
+ \rho(u,v)=\inf\{\operatorname{diam}_{d_Q}(\alpha):
+   \alpha\subset O\text{ is an arc joining }u\text{ to }v\}.
+\]
+Then $\rho$ is a bounded $Q$-invariant metric inducing the original
+interior topology, and $d_Q\leq\rho$.  Its open balls are path
+connected.  If $U(u,r)$ is the component of $B_{d_Q}(u,r)$
+containing $u$, then $U(u,r)$ is an open topological disk and
+\[
+ B_\rho(u,r)\subset U(u,r)\subset B_\rho(u,2r).
+\]
+Every map $S^j\to B_\rho(u,r)$, $j\geq1$, is
+null-homotopic in $B_\rho(u,2r)$.
+
+Let $F^\rho\subset F$ consist of maps whose lift displacement for
+$\rho$ belongs to $C_0(N)$, equipped with the uniform $\rho$ topology
+on maps and inverses.  Every based continuous family $P\to F$ from
+a compact, connected, locally path-connected metric space is also
+a continuous family into $F^\rho$, with a uniform $\rho$ tail.
+Consequently inclusion $F^\rho\to F$ induces isomorphisms on every
+positive based homotopy group.  This reduces the sphere-family
+part of D.9 to a metric with connected balls and the displayed
+uniform filling bound; it does not prove the ambient deformation.
+\begin{proof}
+The inequality $d_Q\leq\rho$ and positive definiteness are immediate.
+Concatenating two arcs and extracting an arc from their path image
+proves the triangle inequality, since the two diameters add when
+the sets meet.  Invariance follows by applying $q$ to arcs.
+Boundedness follows from boundedness of $d_Q$ on all of $O$.
+Local path connectedness of the original surface implies that
+two sufficiently nearby points can be joined in an arbitrarily
+small $d_Q$ neighborhood; hence $\rho$ induces the same topology.
+If $\rho(u,v)<r$, choose an arc from $u$ to $v$ with $d_Q$ diameter
+less than $r$.  Every initial subarc has the same bound, so the
+whole arc lies in $B_\rho(u,r)$.  This proves path connectedness.
+The same arc lies in $U(u,r)$, giving the first displayed
+inclusion.  Conversely, an arc in $U(u,r)$ from $u$ to any of
+its points has $d_Q$ diameter strictly less than $2r$ by compactness.
+This gives the second inclusion.  D.13 makes $U(u,r)$ simply
+connected; the classification of open simply connected planar
+domains makes it an open disk (including the case $U(u,r)=O$).
+
+For a sphere map into that ball, add one arc in the ball from
+$u$ to a point of its image.  The union $A$ is compact and connected,
+and lies in $B_{d_Q}(u,r')$ for some $r'<r$.  By D.13 its filled
+hull lies in the same ball.  Choose a simply connected polygonal
+neighborhood $W$ of that hull contained in
+$B_{d_Q}(u,r'')$, where $r'<r''<r$.  Any point of $W$ can be joined
+to $u$ inside $W$, on an arc of $d_Q$ diameter at most $2r''$.
+Thus $W\subset B_\rho(u,2r)$, and contractibility of $W$ fills the
+sphere.  The choice of $W$ is needed only for this individual
+sphere; no continuous selection of neighborhoods is asserted.
+
+Every member of $C$ is uniformly continuous for $\rho$: a modulus
+$\omega$ for its $d_Q$ uniform continuity bounds the diameter of
+the image of every arc by $\omega$ of its diameter.  Taking infima,
+with an arbitrarily small error, proves the same modulus for
+$\rho$.  Apply this also to the inverse.  Thus the indicated
+uniform group topology is well defined.
+
+Let $a:P\to F$ be as in the statement.  A compact locally
+path-connected metric space is uniformly locally path connected:
+for every positive parameter diameter there is a neighborhood
+size such that any sufficiently close pair of points can be
+joined by a path of that diameter.  This follows from a finite
+cover by connected open sets and a Lebesgue number.  Uniform
+continuity of $a$ in the uniform $d_Q$ topology therefore implies
+uniform $\rho$ continuity: along such a short parameter path,
+the trajectory of any $v\in O$ has $d_Q$ diameter less than
+$2\epsilon$, giving $\rho(a_sv,a_tv)<2\epsilon$.  The argument
+applies to the inverse family as well.
+
+Finally, D.2 supplies a common tail on which
+$d_Q(a_sv,v)<\epsilon$ for all $s\in P$.  Join the basepoint of
+$P$, where $a=1$, to any $s$.  The resulting trajectory of $v$
+stays in $B_{d_Q}(v,\epsilon)$, so it has diameter at most
+$2\epsilon$ and $\rho(a_sv,v)\leq2\epsilon$.  This proves the
+uniform $\rho$ tail, including inverses.  Apply the result to
+based spheres and to based homotopies between them.  Surjectivity
+and injectivity on each positive homotopy group follow respectively.
+\end{proof}
+
+\statement{D.15}{Known}{Arbitrary simply connected frontiers with trivial operators}
+Let $U\subset S^2$ be a simply connected open domain whose
+complement $K$ contains at least two points.  Give
+\[
+ H_U=\{h\in\operatorname{Homeo}^+(S^2):h|_K=1_K\}
+\]
+the original uniform topology on maps and inverses.
+Then $H_U$ is homeomorphic to the separable Hilbert space
+$\ell^2$ and has an identity-fixed contraction.
+In particular every compact family in this group contracts
+with joint continuity on the original sphere, even when
+$\partial U$ is not locally connected.
+This settles the trivial-operator case of the arbitrary-frontier
+obligation.  It does not assert an equivariant contraction for
+nontrivial operators.
+\begin{proof}[Exact application of the known theorem]
+Since $U$ is a simply connected spherical domain, its complement
+$K$ is connected.  It is compact, proper, nondegenerate, and
+nonseparating: the complement of $K$ is the connected set $U$.
+These are exactly the hypotheses of
+\cite[Theorem 1.1, p.~201]{DE_Fabel1998}.
+The group there is exactly $H_U$.  Its metric is uniform convergence in the
+original sphere metric (Definition 2.1).  On a compact space,
+inversion is continuous in the homeomorphism group, so adding the
+inverse term gives the same topology.  The theorem therefore
+applies to the required topology, rather than only to the interior
+compact-open topology.
+
+If $A_t$ is a contraction to the identity, replace it by
+$h\mapsto A_t(h)A_t(1)^{-1}$.  The resulting contraction fixes
+the identity.  Composition with any compact family gives the
+asserted joint original-sphere homotopy, relative to every
+parameter at which that family is the identity.
+The nondegeneracy qualification is necessary: for $K$ a single
+point, the group is the orientation-preserving plane
+homeomorphism group and has homotopy type $S^1$.
+
+The proof of Fabel's theorem was also checked at the control step:
+Section 5 uses the inner-diameter metric, Section 6 constructs
+controlled contractions of planar polygonal disks, and
+Theorems 3.2--3.3 compress the domain into nested disks and prove
+compact-family convergence.  These compressions are chosen from
+a conformal map and disk extensions.  They are not asserted to
+commute with an arbitrary interior operator group, so the theorem
+does not discharge D.9 or the nontrivial-operator part of D.10.
+\end{proof}
+
+\statement{D.16}{Proved}{An obstruction to global equivariant compression}
+Suppose a continuous $Q$-equivariant map $e:O\to O$ has
+image contained in $\pi^{-1}(S)$ for some compact connected
+subsurface $S\subset N$.  Then $Q$ is finitely generated.
+In particular, when $Q$ is infinitely generated, there is no
+$Q$-equivariant embedding that compresses all of $O$ over one
+compact quotient core.  This rules out that direct adaptation
+of the compression step of D.15; it does not refute D.9.
+\begin{proof}
+Equivariance gives a continuous descent $\bar e:N\to S$.
+Let $x\in O$ and write $p=\pi x$, $p'=\pi e(x)$.
+Identify both $\pi_1(N,p)$ and $\pi_1(N,p')$ with the
+deck group using the specified lifts $x$ and $e(x)$.
+A loop at $p$ whose lift ends at $qx$ is taken by $e$
+to a path starting at $e(x)$ and ending at $qe(x)$.
+Thus, in these deck identifications, the composite
+\[
+ \pi_1(N,p)\xrightarrow{\bar e_*}\pi_1(S,p')
+ \longrightarrow\pi_1(N,p')
+\]
+is the identity of $Q$.  In particular the second arrow is
+surjective.  A compact surface has finitely generated
+fundamental group, and a quotient of a finitely generated
+group is finitely generated.  This proves the assertion.
+No isotopy of $e$, injectivity of $e$, or boundary extension
+of $e$ was used.
+\end{proof}
+
+\statement{D.17}{Proved}{Joint equivariant map fillings with a uniform quotient tail}
+Let $P$ be a compact connected locally path-connected metric
+space, and let $a:P\to F$ be continuous and based at the identity.
+Put $A=\{s\in P:a_s=1\}$.
+There is a jointly continuous map
+\[
+ E:P\times[0,1]\times\overline D\longrightarrow\overline D
+\]
+such that $E_{s,0}=a_s$, $E_{s,1}=1$, and $E_{s,t}=1$ for
+$s\in A$.  Every $E_{s,t}$ fixes the original boundary and $x$,
+maps $O$ into $O$, and commutes there with $Q$.
+Moreover there is a positive function $\eta\in C_0(N)$ such that
+\[
+ \rho(E_{s,t}(v),v)\leq128\eta(\pi v)
+ \quad(s\in P, t\in[0,1], v\in O).
+\]
+Thus the construction retains the uniform quotient tail and
+joint continuity in the evaluated point.  The construction
+does not preserve injectivity.
+In particular this statement does not give a filling in $F$.
+\begin{proof}
+By D.14 the family is continuous for the uniform $\rho$ topology,
+and
+\[
+ m(y)=\max_{s\in P}\rho(a_sv,v),\qquad \pi v=y,
+\]
+is a well-defined continuous function in $C_0(N)$.
+The equality follows from equivariance and the $Q$ invariance of
+$\rho$; continuity follows from compactness of $P$ and joint
+interior continuity.  Choose a strictly positive continuous
+$r\in C_0(N)$ and put $\eta=m+r$.
+
+Choose a locally finite triangulation of $N$ with $p$ as a
+vertex, sufficiently fine that each closed simplex $\sigma$ is
+evenly covered, each lift $\widetilde\sigma$ satisfies
+\[
+ \operatorname{diam}_\rho(\widetilde\sigma)
+       <\min_{y\in\sigma}\eta(y),
+ \qquad
+ \max_{y\in\sigma}\eta(y)<2\min_{y\in\sigma}\eta(y).
+\]
+Such a triangulation exists: at every point choose an evenly
+covered neighborhood small enough for these two inequalities;
+take a locally finite refinement and subdivide a surface
+triangulation subordinate to it.  The lifted triangulation is
+locally finite, and $Q$ acts freely on its simplices.
+
+Write $Z=P\times[0,1]$ and
+\[
+ Z_0=(P\times\{0,1\})\cup(A\times[0,1]).
+\]
+On $Z_0\times O$ prescribe respectively $a_s(v)$ and $v$;
+these prescriptions agree on the intersections.  We extend them
+over $Z$ times the lifted triangulation, one dimension at a time.
+At every stage we choose one lift of each simplex downstairs,
+make the extension there, and transport it by $Q$.  Agreement
+on the already defined faces makes this prescription unambiguous.
+
+For a lifted vertex $v$, the prescribed image lies in
+$B_\rho(v,\eta(\pi v))$.  D.14 places this ball in an open disk
+$U(v,\eta(\pi v))\subset B_\rho(v,2\eta(\pi v))$.
+The map from the closed set $Z_0$ extends over $Z$ into that
+disk: choose a homeomorphism from the disk to $\mathbb R^2$
+and apply the Tietze extension theorem to both coordinates.
+At the orbit of $x$ choose the constant extension $v$.
+Thus all vertex extensions are continuous and fix the specified
+point orbit.
+
+For an edge with chosen endpoint $v$, put $e=\eta(\pi v)$.
+The image already prescribed on
+\[
+ (Z_0\times\widetilde\sigma)
+       \cup(Z\times\partial\widetilde\sigma)
+\]
+lies in $B_\rho(v,6e)$.  Indeed the original family contributes
+less than $3e$; the other endpoint is less than $e$ from $v$
+and its extension moves it less than $4e$.
+Extend into the open disk
+$U(v,6e)\subset B_\rho(v,12e)$ by the same coordinate argument.
+The displayed domain is closed in the compact metric space
+$Z\times\widetilde\sigma$, so Tietze applies with the full
+relative prescription, including $Z_0$.
+
+For a triangle choose a vertex $v$ and put $e=\eta(\pi v)$.
+An edge extension has image within $12\eta(\pi w)$ of its
+chosen endpoint $w$.  Every such $w$ is within $e$ of $v$ and
+$\eta(\pi w)<2e$.  Consequently the entire prescribed image
+on the boundary, together with $Z_0$ times the triangle, lies
+in $B_\rho(v,26e)$.  Extend it into
+\[
+ U(v,26e)\subset B_\rho(v,52e).
+\]
+Every point of the triangle is less than $e$ from $v$, and
+$e<2\eta(\pi y)$ for a point $y$ in that lift.  Its displacement
+is therefore less than $106\eta(\pi y)$; the stated constant
+$128$ also bounds the edge and vertex stages.  Local finiteness
+now gives joint continuity on $Z\times O$.  All constructions
+are $Q$ equivariant, fix $x$, and preserve the prescribed
+parameter subset $Z_0$.
+
+It remains to check the original boundary, since a homotopy of
+interior maps alone is insufficient.  Let $z_i\in Z$ and
+$v_i\in O$ tend to $z\in Z$ and $\xi\in\partial\overline D$.
+It suffices to show that every subsequence has a further
+subsequence whose images converge to $\xi$.  Pass to a further
+subsequence which either escapes every compact subset of $N$
+under $\pi$, or stays in one compact subset.  In the first case the displacement
+bound and $d\leq d_Q\leq\rho$ give
+$d(E_{z_i}(v_i),v_i)\to0$.
+In the second case write
+$v_i=q_i u_i$ with all $u_i$ in one compact subset of $O$.
+Joint interior continuity and compactness of $Z$ put
+$E_{z_i}(u_i)$ in another compact subset of $O$.
+The compact-core collapse lemma D.1 gives
+\[
+ q_iE_{z_i}(u_i)\longrightarrow\xi.
+\]
+Equivariance identifies the left side with $E_{z_i}(v_i)$.
+These two alternatives prove continuity of the identity
+extension at every boundary point.  Thus $E$ is jointly
+continuous on the original compact disk, as asserted.
+No step of the coordinate extension theorem preserves
+injectivity; that is the remaining obstruction to using this
+construction as a proof of D.9.
+\end{proof}

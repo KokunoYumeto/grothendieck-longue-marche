@@ -1,0 +1,15 @@
+# Notes-only full-multiplier detector route after C.50
+
+This records a proposed structural extension, not a registered theorem. The primary unramified outer-action comparison and the full proof are being checked independently by PBC. The current frozen paper ends at C.50.
+
+Let D be C.50's explicit fully characteristic quotient, involving only primes 2 and 3, and let rho_D:G_Q -> Out(D) be its actual arithmetic outer action. The marked tripod has good reduction away from the prime divisors of D; the needed exact primary input is that its prime-to-residue outer action is unramified there. Thus the finite extension cut out by rho_D should be unramified outside 2 and 3. Its degree is at most |Out(D)| <= |Aut(D)| <= |D|^2, since D is two-generated.
+
+**Correction retained.** Root initially suggested using 2 v_p(|D|) as a bound on the p-valuation of the arithmetic image order. PBC correctly observed that the displayed automorphism bound is a numerical inequality, not a divisibility statement. That proposed exponent bound is discarded. Put a_p=floor(log_p(|D|^2)), or use the corresponding explicit larger bound from C.50's order upper bound. Then v_p of the arithmetic image order is at most a_p. Primitive Dirichlet characters unramified outside 2 and 3 have local conductor exponents at most a_2+2 and a_3+1, respectively. A deliberately much larger integer exponent would also suffice; no sharpness is needed.
+
+Set N=2^(a_2+2) 3^(a_3+1). Kronecker-Weber and those local character bounds put the maximal abelian subfield of the rho_D extension inside Q(mu_N). Consequently lambda(ker rho_D) contains every profinite unit congruent to one modulo N. This assertion concerns the full image, not only arbitrarily close finite approximations: lambda(ker rho_D) is the subgroup corresponding to the intersection of that finite Galois field with Q_ab.
+
+Define D_star as F divided by the intersection of the kernel of F -> D with the kernel of F -> (Z/N)^2. This is finite and fully characteristic, embeds in D times (Z/N)^2, has derived length at most five and has no prime divisors beyond 2 and 3. Its order is at most |D| N^2. The maps to D and to the displayed abelian quotient are actual quotient maps.
+
+If a full gentle element g acts inner on D_star, its multiplier is one modulo N because inner automorphisms act trivially on the abelian quotient. The conductor conclusion then supplies an actual arithmetic sigma in ker rho_D with the same full multiplier as g. The element h=g sigma^{-1} has multiplier one and acts inner on D. C.50 gives Delta(h)=0, and arithmetic vanishing gives Delta(sigma)=0. Thus Delta(g)=0. This would prove a full-group finite outer factorization through the explicit D_star without computing an arbitrary-multiplier frame formula.
+
+This route does not yet give an efficient evaluation algorithm from arbitrary finite outer classes or identify the smallest detector. Those must remain separate. No additional canonical statement is inserted before source/source-proof audits and the end of the checkpoint17 freeze.

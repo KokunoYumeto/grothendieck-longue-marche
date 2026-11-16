@@ -1,0 +1,13 @@
+# D.71 proof, source, and scope ledger
+
+Status: integrated after full independent root and PBC audits, both PASS, on 15 November 2026. The original candidate remains at notes/de_onecusp_class2_baire_draft.tex; the registered proof is sections/D_onecusp_class2_baire.tex. PBC's complete separate ledger is notes/pbc_D71_audit.md. Root records the full audit in its own ledger.
+
+The original Lubotzky article was opened in the author's full-text upload at https://www.researchgate.net/publication/242982224_Combinatorial_group_theory_for_pro-p_groups . Theorem 3.2 and its proof on printed pages 317–318 give the finitely generated closed-subgroup free-factor statement. The proof used here is also reproduced from finite character extensions and the free pro-prime Hopf property. Author source references: turn864view0–2; independent root references: turn877view0–1; independent PBC references: turn878view0 and turn879view0. The verified bibliography entry DE_Lubotzky1982 includes the original journal DOI.
+
+Both auditors checked the nonprimitive peripheral word separately. Its class in gamma2/gamma3 is primitive, so it has no prime root. A centralizing element together with the boundary generates a free pro-prime group of rank at most two; rank two contradicts its actual Magnus commutator coefficient, and rank one gives exactly the boundary subgroup. Hence gamma3 has trivial intersection with every nonzero peripheral centralizer. No free-basis primitivity of the boundary is asserted.
+
+The actual central class-two line is the determinant of the elliptic Tate module, integrally including the prime two. Good-place fixed vectors in both that line and the Tate module vanish. Thus the zero-abelian class-two fibre is exactly the completed Kummer cusp packet, with no hidden conjugator stabilizer. The local Hoshi specialization and class-two comparison place every needed local conjugator in gamma3. The D.70 finite-support, actual finite affine Chebotarev, and compact action-image descent arguments then apply to that exact group. The full-profinite consequence uses the product description of the actual class-two quotient followed by the already proved actual-section comparison D.24/D.56.
+
+The theorem applies directly to the requested once-punctured E:y^2=x^3-x over Q(i). Its conclusion is generic singleton CLASS-TWO fibres. Its abelian fibre contains the entire cusp packet, which is injected at class two. No singleton abelian fibre, explicit first nilpotent obstruction, or general section classification is claimed.
+
+No finite computation is needed for this structural theorem, and no diagnostic PDF was created. The candidate and verified source trail remain available for subsequent combined-paper compilation and QA.

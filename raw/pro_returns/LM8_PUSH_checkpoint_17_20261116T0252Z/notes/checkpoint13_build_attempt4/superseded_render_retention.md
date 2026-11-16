@@ -1,0 +1,1 @@
+This complete pre-correction PDF and its54actuallyreviewedPNGs are retained as superseded work records. The paper had zero overflows but two stale D82 candidate/audit labels. The canonical final PDF supersedes it after those editorial corrections. Every old byte remains available for the exact image comparison; these files are not a second deliverable paper.

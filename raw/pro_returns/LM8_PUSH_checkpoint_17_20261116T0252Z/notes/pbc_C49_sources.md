@@ -1,0 +1,5 @@
+# C49 source and proof scope
+
+The actual adelic CM image, arithmetic parity kernel, pure frame normalization, and finite parity formula are the previously independently audited C12, C20, C21, C26 and C47. The only external geometric formula used in the new shear argument is the Tate expansion/uniformization in James S. Milne, Elliptic Curves, second edition, III section 3, equations (23)–(26), printed pages 102–103: https://www.jmilne.org/math/Books/EC2.pdf . This exact source was previously opened under PBC_MilneEC2021 and freshly reopened by both root and FGH for C49 (FGH refs turn1259view0, turn1260view0, turn1260view1; root references are in notes/root_C49_audit.md/.json).
+
+All local norm-image, finite signed group, shear, arithmetic realization and character deductions are proved in the candidate. No external lifting theorem is substituted for actual C20 adelic realizations or for the arithmetic C5 construction. The certificate is supporting exact finite evidence; the actual-image theorem uses the full proof.

@@ -1,0 +1,22 @@
+--- notes/fgh_A77_certificate_before_exact_gram.py
++++ notes/fgh_A77_certificate.py
+@@ -52,7 +52,9 @@
+                           'quotient_type':'Q8' if involutions==1 else 'D8','kernel':[list(a) for a in sorted(kernel)],
+                           'nonidentity_involutions':involutions,'character':char,
+                           'actual_quotient_images':[list(qmap(a)) for a in G]})
+-    gram=[[sum(a*b for a,b in zip(v,w))//32 for w in chars] for v in chars]
++    gram_numerators=[[sum(a*b for a,b in zip(v,w)) for w in chars] for v in chars]
++    assert gram_numerators==[[32*int(i==j) for j in range(4)] for i in range(4)]
++    gram=[[value//32 for value in row] for row in gram_numerators]
+     assert gram==[[int(i==j) for j in range(4)] for i in range(4)]
+     common=set(G)
+     for k in kernels:common.intersection_update(k)
+@@ -90,7 +92,7 @@
+     return {'status':'PASS','candidate':'A.77, unregistered','group_order':32,'group_elements':[list(a) for a in G],
+             'centre_order':len(centre),'derived_order':2,'exponent':4,'smallest_cyclic_index':8,
+             'full_cover_genus':9,'full_cover_cusps':16,'four_actual_quotients':cases,
+-            'nonlinear_character_gram':gram,'linear_character_count':16,'complete_degree_square_sum':32,
++            'nonlinear_character_gram_numerators':gram_numerators,'nonlinear_character_gram':gram,'linear_character_count':16,'complete_degree_square_sum':32,
+             'joint_quotient_kernel':[list(a) for a in common],'faithful_cyclic_centre_checks':central,
+             'scope':'Exact finite group and actual quotient maps, complete character orthogonality/degree accounting, and cyclic-centre arithmetic. The unbounded representation argument and actual Jacobian surjection are proved in the written candidate.'}
+ 

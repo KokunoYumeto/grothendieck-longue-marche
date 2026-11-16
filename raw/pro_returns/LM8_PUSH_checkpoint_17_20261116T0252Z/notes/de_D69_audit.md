@@ -1,0 +1,7 @@
+# D69 audit ledger
+
+**Root independent full proof/dependency audit: PASS.** The root read the entire draft and checked every-prime Magnus/local specialization, the actual sign cocycle and clopen fixed-sign actions at2, uniform finite support, countable-product Baire topology, and actual full profinite cusp existence. The exact D24/D56 comparison applies only to the two actual full sections and supplies the final equality. No additional general section-conjecture inference is made. The exponent typo in the target square has been repaired.
+
+**PBC independent full proof/dependency audit: PASS.** Detailed ledger: notes/pbc_D69_audit.md. PBC reread D24/D56 at the exact application scope. It confirmed the general-prime D67 argument at2, the fixed-sign representative avoiding a falsely linear cochain section, vanishing of local invariants, the product topology and residual set, and actual full cusp construction. The proof does not infer geometric-element detection by pro-prime quotients.
+
+The registered proof is sections/D_full_cusp_baire.tex. The original candidate is retained at notes/de_full_cusp_baire_draft.tex. D67's specialized five-adic statement remains in place. The result applies to generic completed cusp abelian fibres, with optional infinite ramification in every prime component, not arbitrary abelian pairs or all sections. The prime-five locus can simultaneously satisfy D66–D68. No new numerical certificate or diagnostic PDF is needed for this structural extension; the integrated paper is the typesetting deliverable.

@@ -1,0 +1,246 @@
+--- notes/de_ordinary_unbounded_finite_kernel_draft.tex
++++ sections/D_alexander_ordinary_finite_kernels.tex
+@@ -1,7 +1,7 @@
+-% Notes-only D.93 candidate. Canonical checkpoint16 sources remain frozen.
++% D.93 integrated after full root, FGH and PBC proof/code audits of the original theorem and all-depth Smith addendum.
+ \subsection{Unbounded finite compact kernels on actual ordinary fibres}
+ 
+-\begin{statement}{D.93}{Open}{Candidate: an ordinary-point family with explicit finite compact kernels}
++\begin{statement}{D.93}{Proved}{All finite compact kernels in an ordinary-point family}
+ For every integer \(r\ge1\), let
+ \[
+  t_r=2^{5^r},\qquad
+@@ -23,11 +23,14 @@
+ Then the entire separated compact kernel has the exact finite
+ presentation
+ \[
++ \begin{gathered}
+  \mathcal K_{s_r}\simeq\mathcal S_{s_r}
++ \simeq\operatorname{coker}_{\mathbb Z_5}(M_r-I)
+  \simeq
+- \operatorname{coker}_{\mathbb Z_5}(M_r-I),
+- \qquad
+- \#\mathcal S_{s_r}=5^{\,1+r(r+1)/2}.                  \tag{D.93.3}
++ \left(\bigoplus_{j=1}^{r-1}\mathbb Z/5^j\right)
++       \oplus\mathbb Z/5^{r+1},\\
++ \#\mathcal S_{s_r}=5^{\,1+r(r+1)/2}.
++ \end{gathered}                                      \tag{D.93.3}
+ \]
+ In particular these finite orders are unbounded on actual
+ ordinary rational-point fibres. The first two integral Smith
+@@ -38,8 +41,9 @@
+         \mathbb Z/5\ \oplus\ \mathbb Z/125.             \tag{D.93.4}
+ \]
+ Equation (D.93.2) is a fully explicit finite integral matrix
+-for every \(r\). No general elementary-divisor pattern is
+-extrapolated from the first two cases.
++for every \(r\). The all-depth elementary divisors follow from
++the integral norm-extension proof below; the two small Smith
++calculations are independent checks.
+ 
+ Every indicated metabelian fibre is nonempty and has translation
+ group \(\prod_{\mathbb N}\mathbb Z_5\), with its compact product
+@@ -290,6 +294,203 @@
+ executed in the accompanying certificate and give (D.93.4).
+ Those two executions are not used to prove (D.93.21).
+ 
++\paragraph{An exact extension by one order-five factor.}
++Put \(n=5^r\), \(R=\mathbb Z_5[t]/(t^n-1)\), \(u=t-1\),
++and \(I=uR\). Let \(\sigma_\chi(t)=t^\chi\).
++On the same underlying free module \(R\), distinguish
++\[
++ \mathscr A:\ \chi\sigma_\chi,\qquad
++ \mathscr B:\ \chi S_\chi(t)^3\sigma_\chi,
++       \qquad S_\chi(t)=\frac{t^\chi-1}{t-1}.
++\]
++The module \(\mathscr B_\Gamma\), with
++\(\Gamma=\mathbb Z_5^\times\), is exactly the compact kernel
++in D.93. Write
++\[
++                  \mathcal N=1+t+\cdots+t^{n-1}.
++\]
++Multiplication by \(u^3\) gives the exact equivariant sequence
++\[
++ 0\longrightarrow \mathbb Z_5\mathcal N(\chi^4)
++   \longrightarrow \mathscr B
++   \xrightarrow{u^3} I^3\mathscr A
++   \longrightarrow0.                                \tag{D.93.22}
++\]
++Indeed the equivariance is
++\(u^3 S_\chi(t)^3=\sigma_\chi(u^3)\).
++The kernel of multiplication by \(u^3\) in \(R\) is precisely
++\(\mathbb Z_5\mathcal N\): over a characteristic-zero splitting
++field it is supported only at \(t=1\), hence is killed by \(u\);
++the coefficient equations for \(u f=0\) then say that all
++coefficients of \(f\) are equal. This also proves the integral
++kernel assertion. The action on this generator is \(\chi^4\).
++
++The quotient \(\mathscr A/I^3\mathscr A\) has the three
++successive tame characters \(\chi,\chi^2,\chi^3\), on its
++augmentation filtration. These assertions include any
++five-torsion in its two positive-degree pieces. All three
++characters are nontrivial on the order-four subgroup of
++\(\Gamma\). Exact tame averaging therefore kills every
++\(\Gamma\)-homology group of the quotient. Consequently
++\[
++ (I^3\mathscr A)_\Gamma\simeq\mathscr A_\Gamma,
++ \qquad H_1(\Gamma,I^3\mathscr A)=H_1(\Gamma,\mathscr A)=0.
++                                                               \tag{D.93.23}
++\]
++For the last equality, the completed procyclic resolution
++after tame averaging identifies \(H_1\) with invariants.
++The action of two on \(\mathscr A\) is twice a finite
++permutation, so its fixed module is zero. All modules here
++are finite free compact \(\mathbb Z_5\)-modules before the
++displayed finite quotients; the compact exact resolution is
++being used with its actual topology.
++
++Decompose the basis \(t^a\) of \(\mathscr A\) into its orbits
++under \(a\mapsto2a\) in \(\mathbb Z/n\).
++The zero orbit has weight two and contributes nothing.
++For each \(1\le j\le r\), the orbit of
++\(t^{5^{r-j}}\) has length \(\ell_j=4\cdot5^{j-1}\);
++its weighted-cycle cokernel is
++\(\mathbb Z_5/(2^{\ell_j}-1)\simeq\mathbb Z/5^j\).
++The exact homology sequence of (D.93.22) now gives
++\[
++ 0\longrightarrow\mathbb Z/5\,[\mathcal N]
++ \longrightarrow\mathscr B_\Gamma
++ \longrightarrow\bigoplus_{j=1}^r\mathbb Z/5^j
++ \longrightarrow0.                                  \tag{D.93.24}
++\]
++In particular the norm class has exact order five. It is
++not discarded by a rational calculation.
++
++\paragraph{An explicit lift of the largest orbit generator.}
++Let \(\sigma=\sigma_2\), and write
++\[
++ A=2\sigma,\qquad B=2(1+t)^3\sigma
++\]
++for the actual operators on \(\mathscr A,\mathscr B\).
++The integral-at-five polynomials
++\[
++ G=-1-\frac{u}{3}+\frac{2u^2}{21},
++       \qquad f=\frac4{21}(t+3)
++\]
++satisfy the literal polynomial identity
++\[
++                 u^3 f=t+(A-1)G.                     \tag{D.93.25}
++\]
++Thus \([f]\) maps in (D.93.24) to the largest orbit
++generator \([t]\), up to the stated natural identification.
++
++Put
++\[
++ \ell=4\cdot5^{r-1},\qquad
++ c=2^\ell-1,\qquad
++ Q=\sum_{i=0}^{\ell-1}2^i t^{2^i},\qquad H=Q+cG .
++                                                               \tag{D.93.26}
++\]
++Here \(v_5(c)=r\) and \(c/n\equiv3\pmod5\).
++The weighted orbit sum gives
++\[
++                       (A-1)H=c\,u^3f
++                          \quad\hbox{in }R.           \tag{D.93.27}
++\]
++Indeed \(A^\ell t=2^\ell t^{2^\ell}=(1+c)t\) in
++\(R\), since \(n\mid c\). This argument is in the actual
++finite group ring; it does not set \(t^{2^\ell}=t\)
++in the unrestricted polynomial ring.
++
++We give an integral lift of \(H\) through multiplication
++by \(u^3\). Write \(h_i\) for its coefficient of \(u^i\)
++in the unrestricted polynomial ring. Its constant
++coefficient is zero. For
++\[
++        S_k=\sum_{i=0}^{\ell-1}2^{ki}
++               =\frac{(1+c)^k-1}{2^k-1},
++\]
++its first three coefficients are
++\[
++ \begin{aligned}
++ h_1&=\frac{c+c^2}{3},\\
++ h_2&=-\frac c{42}+\frac{c^2}{21}+\frac{c^3}{14},\\
++ h_3&=\frac{S_4-3S_3+2S_2}{6}.
++ \end{aligned}                                       \tag{D.93.28}
++\]
++The first two lie in \(n\mathbb Z_5\). Therefore
++\[
++ W_0=h_1/n,\qquad
++ W_1=\bigl(h_2-\tbinom n2W_0\bigr)/n
++                       \quad\hbox{belong to }\mathbb Z_5,
++\]
++and there is an actual polynomial \(Z\in\mathbb Z_5[u]\)
++with
++\[
++ H-(t^n-1)(W_0+W_1u)=u^3Z.                            \tag{D.93.29}
++\]
++Since \(v_5(\binom n2)=v_5(\binom n3)=r\), its
++constant coefficient \(z_0=Z|_{u=0}\) satisfies
++\[
++                         z_0\equiv h_3\pmod{5^r}.      \tag{D.93.30}
++\]
++
++\paragraph{The norm extension is nonzero on the largest factor.}
++Equations (D.93.27)--(D.93.29), and the integral kernel
++calculation in (D.93.22), give
++\[
++             c f-(B-1)Z=k\mathcal N
++                   \quad\hbox{in }R,\quad k\in\mathbb Z_5.
++                                                               \tag{D.93.31}
++\]
++Evaluation at \(t=1\) yields the exact equality
++\[
++                 nk=c\,\frac{16}{21}-15z_0.            \tag{D.93.32}
++\]
++We compute \(k\) modulo five. By (D.93.30), replacing
++\(z_0\) by \(h_3\) changes \(15z_0/n\) by a multiple
++of five. The terms \(S_2,S_3\) in (D.93.28) have
++valuation at least \(r\), so they disappear after this
++operation modulo five. The \(S_4\) term gives exactly
++\[
++ \frac{15h_3}{n}
++   \equiv\frac{(1+c)^4-1}{6n}
++   \equiv\frac{2c}{3n}\pmod5.
++\]
++All expressions compared here are integral at five.
++Consequently
++\[
++       k\equiv\frac cn\left(\frac{16}{21}-\frac23\right)
++        =\frac{2c}{21n}\equiv1\pmod5.                 \tag{D.93.33}
++\]
++Thus \(c[f]\) is a nonzero norm class in (D.93.24).
++Since \(v_5(c)=r\), the lift \([f]\) has exact order
++\(5^{r+1}\). This proves the required nonsplitting over
++the largest cyclic quotient.
++
++\paragraph{Splitting every smaller factor.}
++Rescale this lift by a five-adic unit to obtain \(x_r\)
++with \(5^r x_r=[\mathcal N]\). Choose arbitrary lifts
++\(x_j\) of the smaller orbit generators, \(1\le j<r\).
++For some \(a_j\in\mathbb Z/5\), they satisfy
++\(5^jx_j=a_j[\mathcal N]\).
++Choose integral representatives of \(a_j\) and replace
++\[
++                     x_j\ \longmapsto\
++                     x_j-a_j5^{r-j}x_r .
++ \]
++The new lift has order exactly \(5^j\). On the quotient
++in (D.93.24), these replacements are invertible triangular
++basis changes: the \(r\)-th generator is kept, and each
++smaller one is changed only by a permissible multiple of
++that generator. The modified lifts and \(x_r\) generate
++the whole module. Their product of orders equals the
++order supplied by (D.93.24). They therefore give precisely
++the direct-sum decomposition (D.93.3).
++
++This closes the all-depth elementary-divisor calculation.
++The literal symbolic identities and moment checks are retained
++in \path{code/de_ordinary_kernel_smith.py}.
++The small integral matrices are retained in
++\path{code/de_ordinary_finite_kernel.py}.
++The extension argument above supplies the proof for every \(r\).
++
+ \paragraph{The actual section fibres and their ordinary points.}
+ The rational point \(t_r\) supplies a full section, hence an
+ actual metabelian class above \(s_r\). The pair has finite

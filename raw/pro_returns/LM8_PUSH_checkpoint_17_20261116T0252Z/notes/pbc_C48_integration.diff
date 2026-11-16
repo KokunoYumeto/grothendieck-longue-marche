@@ -1,0 +1,289 @@
+--- C.tex_before_C48
++++ C.tex_after_C48
+@@ -217,7 +217,9 @@
+ envelope, and the least finite quotient detecting $\Delta$, remain
+ undetermined. C.47 constructs an explicit finite characteristic detector
+ for the normalized multiplier-one pairs and an exact evaluation program;
+-its least retained-conjugator derived depth is four. This is distinct
++its least retained-conjugator derived depth is four. C.48 proves the
++same sharp depth for the actual outer action of the full gentle group
++and gives a finite characteristic outer detector by compactness. This is distinct
+ from the order-$442368$ characteristic $S_4$-envelope called level four
+ in the question: that envelope does not detect $\Delta$, even at
+ multiplier one. The necessary finite cycle-automorphism locus there is
+@@ -248,8 +250,10 @@
+ That same actual element therefore
+ has the identity normalized residue in the order-$442368$ envelope,
+ while its parity is one. C.47 proves the matching fourth-derived bound
+-for retained normalized conjugators; it does not identify the kernel
+-of the outer action at that derived level.
++for retained normalized conjugators. C.48 identifies the outer-action
++kernel exactly and proves the matching full-group fourth-derived bound.
++Its finite outer detector is obtained by compactness, with no new size
++bound or explicit arbitrary-multiplier evaluation algorithm.
+ \end{proof}
+ 
+ \begin{statement}{C.7}{Open}{The CM image is determined, with descent and manuscript comparisons still open}
+@@ -351,7 +355,9 @@
+ action, including the metabelian beta-defect family. C.47 proves that
+ the exact depth for detecting $\Delta$ by retained normalized
+ conjugators is the fourth derived level and supplies a finite detector
+-on multiplier-one pairs.
++on multiplier-one pairs. C.48 proves that four is also the exact
++derived depth of the full parity character on the actual outer action,
++and supplies existence of a finite characteristic outer detector.
+ A complete explicit basis, the full profinite abelianization of the quotient by the closed normal Galois
+ image, and the finite-order arithmetic-trivial characters of
+ $\widehat{\mathrm{GT}}$ remain undetermined.
+@@ -6341,10 +6347,11 @@
+ $\mathbb F_2$ and $192$ over $\mathbb F_3$, and finite linear
+ systems; it does not enumerate the full affine group.
+ 
+-The assertion concerns the retained normalized conjugator.
+-It does not identify the kernel of the outer action on
+-$F/F^{(4)}$, the smallest possible finite detector, the full
+-set of actual residues, or an explicit detector at all multipliers.
++The construction here concerns the retained normalized conjugator.
++C.48 subsequently identifies the outer-action kernel and proves the
++matching full-group derived-depth statement. The smallest possible
++finite detector, the full set of actual residues, and an explicit
++evaluation algorithm at all multipliers remain undetermined.
+ \end{statement}
+ 
+ \begin{proof}
+@@ -6544,9 +6551,9 @@
+ C.46 supplies an actual full pair in the kernel of reduction
+ modulo $F^{(3)}$ with value one. It lies in the kernels at all
+ smaller derived levels too. This proves (C.47.1).
+-No claim about the outer-action kernel at the fourth derived
+-level follows without an additional centralizer argument forcing
+-its normalized conjugator into $F^{(4)}$.
++This proof alone needs an additional centralizer argument to identify
++the outer-action kernel at the fourth derived level. C.48 supplies
++that argument and forces its normalized conjugator into $F^{(4)}$.
+ 
+ The executed standalone program
+ \path{code/pbc_finite_parity_detector.py}
+@@ -6561,3 +6568,222 @@
+ outputs before that additional test are also retained.
+ \end{proof}
+ 
++
++
++% C.48 integrated after root and DE full proof/source audits.
++\subsection{The outer action has the same exact derived depth}
++
++\begin{statement}{C.48}{Proved}{Peripheral centralizers and the sharp outer-action detector}
++Let $F=\widehat F(x,y)$, put $F^{(0)}=F$, and define
++$F^{(d+1)}=\overline{[F^{(d)},F^{(d)}]}$.
++For every $d\geq2$ the images of the two free generators in
++$S_d=F/F^{(d)}$ have precisely their own procyclic centralizers:
++\[
++ C_{S_d}(x)=\overline{\langle x\rangle},\qquad
++ C_{S_d}(y)=\overline{\langle y\rangle}.                 \tag{C.48.1}
++\]
++For a canonical multiplier-one gentle pair $(1,f)$, the following
++three conditions are equivalent:
++\[
++ f\in F^{(d)},\qquad
++ \alpha_f|_{S_d}=1,\qquad
++ [\alpha_f|_{S_d}]=1\ \hbox{in }\operatorname{Out}(S_d),
++ \quad d\geq2.                                       \tag{C.48.2}
++\]
++For an arbitrary normalized gentle pair $(\lambda,f)$, its outer
++action on $S_d$ is trivial if and only if $\lambda=1$ and
++$f\in F^{(d)}$. Consequently the least derived depth through which
++the full character $\Delta$ factors through the actual outer action
++is exactly four, already sharply on $\mathcal H=\ker\lambda$.
++Its factor is continuous on the actual compact outer image.
++There also exists a finite characteristic quotient of $S_4$
++whose actual outer image detects this full-group character.
++
++This last finite quotient is obtained by compactness, without a
++new size bound or claim that C.47's explicit pair quotient itself
++is already an outer-action detector. No explicit all-multiplier
++finite evaluation algorithm or full outer image is computed.
++\end{statement}
++
++\begin{proof}
++\paragraph{The full compact relation module.}
++For any closed normal subgroup $N\triangleleft F$, write $H=F/N$.
++For each prime $p$ let $\Lambda_p(H)=\mathbb Z_p[[H]]$ and let
++$(N/N')_p$ denote the pro-$p$ factor of the compact abelian group
++$N/N'$, where $N'=\overline{[N,N]}$.
++There is a natural exact sequence of compact $\Lambda_p(H)$-modules
++\[
++ 0\longrightarrow (N/N')_p
++ \longrightarrow \Lambda_p(H)^2
++ \xrightarrow{\partial}\Lambda_p(H)
++ \longrightarrow\mathbb Z_p\longrightarrow0.          \tag{C.48.3}
++\]
++The action on the first term is conjugation, and the embedding is
++$H$-equivariant. The displayed module statement is for a closed
++normal $N$, with no openness or finite-index assumption.
++
++Here is its homological construction. The augmentation ideal of
++$\mathbb Z_p[[F]]$ is a free compact module on the two free
++augmentation generators. The resulting two-term free resolution,
++after completed tensoring with $\mathbb Z_p[[F/N]]$, computes
++$H_1(F,\mathbb Z_p[[F/N]])$ as the kernel of $\partial$.
++Compact-module Shapiro identifies this with $H_1(N,\mathbb Z_p)$,
++which is exactly $(N/N')_p$.
++This is precisely the relation-module sequence (2.1) and the
++preceding Shapiro derivation in
++\cite[\S2.2, displayed (2.1), preprint p.~13]{PBC_GJPPZ2014}.
++The paper begins that derivation with an arbitrary finitely generated
++profinite quotient, not a finite quotient; our quotients have minimal
++number of generators two, because their abelianization is
++$\widehat{\mathbb Z}^2$.
++
++\paragraph{No integral invariant measure in a peripheral direction.}
++Suppose a profinite group $H$ has a continuous homomorphism
++$b:H\to\widehat{\mathbb Z}$ with $b(y)=1$.
++Then left multiplication by $y-1$ is injective on
++$\Lambda_p(H)$ for every $p$.
++To prove this directly, let $\mu\in\Lambda_p(H)$ satisfy
++$y\mu=\mu$. Fix an open normal $U\triangleleft H$ and put
++$D=H/U$. Let $n$ be the finite order of the image of $y$ in $D$.
++For any $k\geq1$, choose the open normal refinement
++\[
++ U_k=U\cap\ker\bigl(H\xrightarrow{b}\widehat{\mathbb Z}
++                   \longrightarrow\mathbb Z/p^{k+v_p(n)}\bigr),
++ \qquad D_k=H/U_k.                                    \tag{C.48.4}
++\]
++The quotient $D_k$ is the image in
++$D\times\mathbb Z/p^{k+v_p(n)}$, so the order of $y$ there is
++exactly $n_k=\operatorname{lcm}(n,p^{k+v_p(n)})=np^k$.
++The coefficient function of $\mu$ in $\mathbb Z_p[D_k]$ is
++constant on every left $\langle y\rangle$-orbit.
++Each such orbit has exactly $n_k$ points, since this is a regular
++left action on a group. Over every point of its projected orbit
++in $D$, it has exactly $n_k/n$ points.
++The coefficient at any fixed point of $D$ in the pushforward is
++therefore a sum of multiples of $n_k/n$, and is divisible by $p^k$.
++This is the actual group-ring transition map, obtained by summing
++coefficients over the fibre. Since it is true for every $k$, every
++coefficient of $\mu$ in $\mathbb Z_p[D]$ is zero.
++Since $U$ was arbitrary, $\mu=0$ in the inverse limit. Thus
++\[
++        \ker(y-1:\Lambda_p(H)^2\to\Lambda_p(H)^2)=0.   \tag{C.48.5}
++\]
++This argument does not use a normalized Haar measure over
++$\mathbb Z_p$, nor any assertion about a rational coefficient ring.
++
++\paragraph{Conjugator rigidity inside the commutator subgroup.}
++For every $d\geq1$ we claim that
++\[
++ f\in F',\quad [f,y]\in F^{(d)}
++                  \quad\Longrightarrow\quad f\in F^{(d)}.
++                                                               \tag{C.48.6}
++\]
++For $d=1$ this is the hypothesis $f\in F'$.
++Suppose it is proved at $d-1$, and assume the hypotheses at $d\geq2$.
++Projection to the preceding derived quotient and induction give
++$f\in N=F^{(d-1)}$. Its class in $N/N'=F^{(d-1)}/F^{(d)}$
++is fixed by conjugation by $y$. The quotient $H=F/N$ still has
++its full abelianization $\widehat{\mathbb Z}^2$, so its second
++coordinate supplies the map $b$ used in (C.48.4).
++By (C.48.3)--(C.48.5) the class of $f$ is zero in each pro-$p$
++factor of $N/N'$. A compact abelian profinite group is the product
++of these factors, so the full class is zero. This proves (C.48.6).
++The identical proof works with $x$ in place of $y$.
++
++\paragraph{The full peripheral centralizer.}
++Let $c\in F$ represent a class centralizing $x$ in $S_d$, $d\geq2$,
++and write its abelianization as $(a,b)\in\widehat{\mathbb Z}^2$.
++For every prime $p$, use the continuous homomorphism to the integral
++Heisenberg pro-$p$ group
++\[
++ x\longmapsto
++ \begin{pmatrix}1&1&0\\0&1&0\\0&0&1\end{pmatrix},\qquad
++ y\longmapsto
++ \begin{pmatrix}1&0&0\\0&1&1\\0&0&1\end{pmatrix}.       \tag{C.48.7}
++\]
++This target is metabelian, so the map kills $F''$, hence also
++$F^{(d)}$. The commutator of the image of $c$ with the image of
++$x$ has upper-right entry $-b_p$ (or its negative under the other
++commutator convention). Therefore $b_p=0$ for every $p$, and $b=0$.
++The element $c x^{-a}$ lies in $F'$ and still centralizes $x$
++modulo $F^{(d)}$. Equation (C.48.6), with $x$ in place of $y$,
++gives $c x^{-a}\in F^{(d)}$.
++Conversely powers of $x$ centralize it. This proves the first
++identity in (C.48.1); exchanging $x$ and $y$ proves the second.
++The procyclic groups here are copies of $\widehat{\mathbb Z}$,
++since their abelianizations retain the corresponding free coordinate.
++
++\paragraph{From a literal to an outer normalized action.}
++The canonical multiplier-one action has
++\[
++              \alpha_f(x)=x,\qquad
++              \alpha_f(y)=f^{-1}yf,
++              \qquad f\in F'.                         \tag{C.48.8}
++\]
++If $f\in F^{(d)}$, its induced literal action is identity.
++Conversely identity makes $f$ centralize $y$ modulo $F^{(d)}$,
++so (C.48.6) gives $f\in F^{(d)}$.
++If only the outer action is identity, choose $c\in S_d$ with
++$\alpha_f=\operatorname{Inn}(c)$ on $S_d$, where
++$\operatorname{Inn}(c)(u)=cuc^{-1}$.
++Since $x$ is fixed, (C.48.1) gives $c=x^a$ for a unique
++$a\in\widehat{\mathbb Z}$.
++The equality $f^{-1}yf=x^a yx^{-a}$ says that $f x^a$
++centralizes $y$. Hence (C.48.1) gives
++\[
++                        f x^a=y^b\quad\hbox{in }S_d.  \tag{C.48.9}
++\]
++Taking the unchanged free abelianization and using $f\in F'$
++forces $(a,0)=(0,b)$, so $a=b=0$ and $f\in F^{(d)}$.
++This proves all equivalences in (C.48.2). For arbitrary multiplier,
++the abelian action on $S_d^{\rm ab}=\widehat{\mathbb Z}^2$
++is the scalar $\lambda$. An inner action is trivial there, so it
++forces $\lambda=1$; the preceding argument then applies unchanged.
++
++\paragraph{Sharp depth and the finite outer detector.}
++For $d=4$, (C.48.2) identifies the outer-action kernel with the
++retained-pair kernel killed by $\Delta$ in C.47. The arbitrary-
++multiplier observation shows the same for the full gentle group.
++Thus the full $\Delta$ factors through its actual outer image
++in $\operatorname{Out}(S_4)$.
++The quotient of the compact gentle group by this closed kernel is
++compact, and its continuous injection into the Hausdorff outer
++automorphism group is a homeomorphism onto its image. Indeed the
++automorphism group of a finitely generated profinite group is
++profinite in its characteristic-quotient topology, and the inner
++automorphism subgroup is the compact image of the group, hence
++closed. The factor
++of $\Delta$ is therefore continuous.
++C.46 supplies an actual full normalized element acting literally
++as identity on $S_3$ but with $\Delta=1$. The same witness acts
++trivially on every smaller derived quotient. Hence four is the
++least outer-action depth.
++
++For completeness, the finite detector assertion concerns an actual
++finite characteristic quotient, not only an abstract finite quotient
++of the outer image. A finitely generated profinite group has a
++cofinal system of characteristic open subgroups: intersect the
++finitely many open subgroups of bounded index. Use this for $S_4$.
++If an automorphism is inner on every such finite quotient, the sets
++of conjugators in $S_4$ realizing it on these quotients are nonempty
++closed sets with the finite intersection property. Compactness gives
++one conjugator for the whole group. Thus
++\[
++ \operatorname{Out}(S_4)\longrightarrow
++       \prod_K\operatorname{Out}(S_4/K)           \tag{C.48.10}
++\]
++is injective, and is a topological embedding on compact subgroups.
++We use a product here: an arbitrary automorphism of one finite
++quotient need not descend to every other quotient. Only the actual
++actions induced from $S_4$ enter the argument.
++If every finite characteristic quotient admitted a gentle element
++with trivial outer residue and $\Delta=1$, their inverse images in
++the full compact gentle group would again be nonempty compact sets with the finite
++intersection property. Their intersection would contradict the
++factorization just proved. Therefore some characteristic open $K$
++has outer-action kernel contained in $\ker\Delta$.
++The full preimage of $K$ in $F$ is characteristic, since $F^{(4)}$
++is characteristic and every automorphism descends. This is the
++promised finite characteristic quotient of $F/F^{(4)}$.
++No minimal size or explicit new finite matrix model is inferred.
++\end{proof}

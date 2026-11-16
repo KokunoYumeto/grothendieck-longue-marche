@@ -1,0 +1,29 @@
+# Independent full audit of C.40
+
+**Result: PASS**, with the project's standard normalization of gentle pairs (the conjugator lies in the pro-prime commutator subgroup, equivalently the faithful pure outer class). I asked the author to state that convention explicitly at the beginning, since the proof first retains outer coordinates and then normalizes them. This is a clarification, not an added mathematical hypothesis relative to the standing gentle-group definition.
+
+Read the complete notes/pbc_joint_local_descent_draft.tex, the finite central-refinement proof P.3, the actual central criterion B.11, and the used modular source/relative-target construction in P.4. Independently reran code/pbc_joint_local_descent.py: PASS, with Q0 of order 108, the actual finite extension of order 648, trivial Q0 centre, the determinant-minus-three basis change, and the symmetric sibling tensor all verified.
+
+## Joint source and the seven factors
+
+The exact source automorphisms swap x,y and cycle x,y,z as stated. Each sibling pair has common quotient S3 because its combined filling relations are x²=y²=z³=1. Goursat gives the full pair fibre product. Restricting to K0 still surjects on the pro-p pair: the possible remaining quotient has order both a power of p and a divisor of the prime-to-p finite source index. The three sibling standard types are distinct under the three C3 coordinates of Q0. Maschke and the whole-pair surjections therefore give the entire six-factor Frattini image and hence the full six-factor pro-p kernel.
+
+That relative six-factor quotient has no pro-p quotient, since its mod-p abelianization is zero. Goursat then adjoins the independent ordinary F^(p) factor. The retained finite group of order 648 is an actual extension by the old S3; no splitting of the original modular source is asserted. Across distinct primes the normal kernels have no common finite quotient, giving the product over a finite set of primes.
+
+## Entire compact homology and centralization
+
+The Künneth calculation has only cross tensors because every individual free pro-p factor has homological dimension one and torsion-free H1. The ordinary block is trivial under Q0 and the three standard isotypic blocks are distinct, so only the three sibling invariant lines survive. The computed invariant tensor B T^t is symmetric. The ACTUAL deck involution rho^(-k) sigma rho^k exchanges the two sibling coordinates without an extra target map. On the homological cross tensor it acts by minus transpose, hence by minus one on that line. It fixes the pair as a set, so no other invariant line contributes to its coefficient. All three coefficients vanish. The determinant-minus-three change of basis is invertible at every retained prime.
+
+At other coefficient primes the normal pro-prime kernel is acyclic by compatible finite averaging. Thus H1 and H2 of Q map isomorphically to those of its finite base at EVERY coefficient prime. The two actual five-term sequences, with H2 of the modular source zero, identify N/[Gamma,N] with K0/[Gamma,K0] componentwise. This proves the actual pullback H=Q×_(Qtilde)H0, including the two/three-primary kernel; no unsupported universal-central-extension identification is made. Pure kernel conjugators lift to pairs (b,1) in this pullback.
+
+I reread P.3's finite scalar construction and its subgroup-by-subgroup counting argument at the used generality. For arbitrary normal N, every auxiliary central source map kills [Gamma,N]. Precomposing its actual factor through H by the constructed peripheral automorphism supplies precisely the new epimorphism and frames used in that count. Joining a finite retained quotient to the finite source quotient preserves all requested data. Compactness and finite-quotient generation therefore give an actual automorphism of the full modular source, not only an endomorphism or a relative lift.
+
+## Arbitrary two local actions and their pure frames
+
+A multiplier-one local gentle class extends to its actual relative modular group. Coprime complement conjugacy allows its representative to fix the chosen finite complement. In the joint source complement, Q0 acts trivially on the ordinary factor by its finite prime-to-p image in an inner pro-p group. On a selected filled factor the stabilizer action factors through the actual target S3 complement. Transport of the chosen descended action to the other five factors is therefore independent of the transporting element and preserves the marked peripheral classes.
+
+The two finite-order modular elements have conjugators in the normal kernel by coprime complement conjugacy. For the infinite third peripheral element, its square has independent pure coordinate conjugators. Once its square is fixed, the remaining discrepancy is a C2 cocycle in the closed centralizer of that square. This centralizer has only retained prime factors, all at least five, so coprime H1 vanishing supplies the remaining pure conjugator. The argument also verifies the pro-p frame of an individual target's infinite orbifold cusp.
+
+The full lift has identity old-S3 action and positive peripheral restriction. Standard normalization produces the unique commutator conjugator, so its ordinary and descended normalized local pairs are exactly the prescribed ones. Finite-prime surjectivity passes to all primes by compactness. A common actual cyclotomic Galois element then supplies arbitrary matching multipliers, using the already proved fact that D fixes the specified arithmetic image.
+
+The conclusion concerns the full gentle group and every retained prime at least five. It does not classify the simultaneous image of the pentagon group, cover primes two or three, or infer a new inclusion in the project’s distinguished subgroup C^phi. No further mathematical correction was found.

@@ -1,0 +1,226 @@
+% Root and DE independent audits passed on 2026-11-15.
+\begin{statement}{C.33}{Proved}{An arithmetic-trivial character of order thirteen}
+There is a continuous surjective homomorphism
+\[
+ \epsilon_{13}:\widehat{\mathrm{GT}}_0\longrightarrow\mathbb F_{13}
+\]
+which vanishes on the absolute Galois image and is nonzero on the
+multiplier-one subgroup.  It does not factor through the actual
+metabelian image of B.7.  Consequently the abelianization of the full
+arithmetic-normal quotient has an odd-order quotient; it is neither
+an elementary abelian two-group nor a pro-two group.
+\end{statement}
+\begin{proof}
+We first justify the actual local image and its integral filtration.
+Let $F_{13}$ be the free pro-$13$ group on $x,y$.  Denote by
+$\mathcal G$ the image of the full gentle group in its normalized
+automorphism group, and by $\mathcal U$ the kernel of the local
+multiplier $\lambda_{13}:\mathcal G\to\mathbb Z_{13}^{\times}$.
+For $n\geq2$, let $\mathcal U_n$ consist of the elements whose
+normalized conjugator belongs to $\gamma_nF_{13}$.
+
+Put $z=-x-y$ in the integral free Lie algebra $L$ on $x,y$.
+For a coefficient ring $R$, let $S_n(R)$ be the degree-$n$ solutions of
+\[
+\begin{split}
+ q(x,y)+q(y,x)&=0,\\
+ [x,q(x,y)]&=[x+y,q(-x-y,y)],\\
+ q(x,y)+q(y,z)+q(z,x)&=0.
+\end{split}                                                    \tag{C33.1}
+\]
+These are exactly the normalized special outer derivations fixed
+by the geometric $S_3$ action.  To check the assertion, write
+$D_q(x)=0$, $D_q(y)=[y,q]$.  The second equation says that
+$D_q(z)=[z,q(x,y)-q(z,y)]$.  The transposition of $x,y$
+changes $D_q$ by $\operatorname{ad}(q)$, and the cycle of $x,y,z$
+does the same precisely when the second equation holds.
+Its third iterate gives the third equation: the sum of the three
+inner conjugators must be central, and the free Lie algebra has
+zero center.  Conversely these computations give both required
+outer invariances.  No degree-$n$ peripheral centralizer ambiguity
+occurs for $n\geq2$.
+
+The following equality concerns the actual completed groups:
+\[
+ \mathcal U_n/\mathcal U_{n+1}\simeq S_n(\mathbb Z_{13}).
+                                                               \tag{C33.2}
+\]
+Necessity follows by taking the first nonzero Magnus terms of the
+peripheral and $S_3$ equations.  For surjectivity, apply the general
+integral argument inside P.2 to any $q$ in (C33.1), not just to its
+particular degree-seven example.  Lift its three peripheral
+conjugators to $F_{13}$.  At each subsequent degree $m$, the error
+in their product relation can be changed by
+$(u,v)\mapsto[u,x]+[v,y]$ in $L_m$; this map is integrally onto
+by Jacobi induction on Lie words.  The corrections converge,
+give an automorphism by the pro-$13$ basis theorem, and do not
+change the original homogeneous derivation.  Coprime complement
+conjugacy for the $S_3$ action then removes all discrepancies in
+strictly higher degree.  Thus this is a complete pro-$13$
+gentle automorphism.  The relative pronilpotent construction of
+P.4 lifts that entire solution to the full gentle group, using
+the identity at all other prime components and retaining the
+cusp conjugator.  It has global multiplier one.  This proves
+(C33.2) for $\mathcal U$ as defined, rather than for a group
+of merely truncated solutions.
+
+The exact integral computation gives the following ranks:
+\[
+\begin{array}{c|rrrrrrrrrrr}
+ n&2&3&4&5&6&7&8&9&10&11&12\\ \hline
+ \operatorname{rank}S_n&0&1&0&1&0&2&1&4&2&9&7\\
+ \operatorname{rank}[S,S]_n&0&0&0&0&0&0&1&0&2&1&6 .
+\end{array}                                                    \tag{C33.3}
+\]
+The two programs \texttt{pbc\_gentle\_even.py} and
+\texttt{pbc\_gentle\_even\_fast.py} independently evaluate the
+substitutions by associative expansion and recursive Lyndon
+brackets.  Their complete mathematical outputs agree.
+For every weight, every displayed integral kernel vector is
+checked against every original equation row.  An independent
+rank lower bound modulo $65521$ equals the complementary
+dimension, proving the rational ranks.  The further certificate
+\texttt{pbc\_gentle\_weight12\_integral.py} checks a unit minor
+modulo $13$ for each kernel basis.  Since the full integral
+kernel is saturated, these are bases over $\mathbb Z_{13}$.
+It also computes the Ihara bracket
+\[
+ \{f,g\}=[f,g]+D_f(g)-D_g(f)
+\]
+and checks every bracket against all the defining rows.
+In the retained seven-element basis of $S_{12}$, the primitive
+integral functional
+\[
+             \ell=(-4,1,8,-4,-17,14,84)                         \tag{C33.4}
+\]
+annihilates every degree-twelve bracket.  Multiplying its reduction
+by $3$ gives $(1,3,11,1,1,3,5)$, so the first basis vector has
+value $1$.  Thus this is an integral witness, with no inference
+from rational bracket membership modulo $13$.
+
+Now put $U=\mathcal U/\mathcal U_{13}$.
+The zero degree-two space in (C33.3) implies
+$\mathcal U=\mathcal U_3$.  The commutator filtration gives
+$[U_a,U_b]\subseteq U_{a+b}$, so $U$ has nilpotency class at most
+four.  It is a finitely generated torsion-free pro-$13$ group:
+its finite filtration has free finite-rank $\mathbb Z_{13}$
+quotients.  Its Lazard Lie lattice
+$\mathfrak u=\log U$ is defined integrally, preserves this
+filtration and its associated graded brackets, and is functorial
+for all automorphisms.
+For a direct denominator check, use the action on the integral
+Magnus algebra modulo augmentation degree $14$.
+For $a\in U$, $a-1$ raises augmentation degree by at least three.
+The operator logarithm and exponential therefore stop after
+four terms; their denominators are units in $\mathbb Z_{13}$.
+The Lazard correspondence applies to the actual closed subgroup
+of these operators, since its class is less than $13$.
+No logarithm of a free-group generator, and no class-thirteen
+Lazard assertion about the free group, is used here.
+See \cite[Theorem 1]{PBC_Garaialde2014} for the precise
+finitely generated pro-prime correspondence, including its
+subgroup and automorphism assertions.
+
+Set $G=\mathcal G/\mathcal U_{13}$, so that
+\[
+       1\longrightarrow U\longrightarrow G
+        \xrightarrow{\lambda_{13}}\mathbb Z_{13}^{\times}
+        \longrightarrow1 .                                    \tag{C33.5}
+\]
+Its multiplier is onto because the Galois multiplier is onto.
+In the local Galois image, the inverse image of the Teichmuller
+group $\mu_{12}$ is an extension of $\mu_{12}$ by a pro-$13$
+group.  The coprime complement theorem and compactness give an
+element $t$ of order $12$ with primitive multiplier
+$\omega\in\mu_{12}$.
+Conjugation by $t$ acts on
+$\operatorname{gr}_n\mathfrak u=S_n(\mathbb Z_{13})$
+as $\omega^n$.  The ten possible weights $3,\ldots,12$
+have distinct residues modulo $12$.  Hence the integral
+idempotents
+\[
+ e_n=\frac1{12}\sum_{j=0}^{11}\omega^{-nj}\operatorname{Ad}(t)^j
+\]
+split the filtered lattice, and
+$e_n\mathfrak u\to\operatorname{gr}_n\mathfrak u$ is an
+isomorphism.  There can be no kernel or cokernel in this map:
+their successive graded pieces would have to carry both
+the eigencharacter $\omega^n$ and a distinct $\omega^m$.
+The Lie bracket respects this splitting.  If $a+b\leq12$,
+the bracket of the $a$ and $b$ summands is exactly the
+degree-$a+b$ Ihara bracket; if $a+b>12$ it is zero.
+This removes the possibility of hidden higher filtered
+commutator relations.
+
+Extend $\ell$ by zero on all eigensummands except weight $12$.
+It annihilates $[\mathfrak u,\mathfrak u]$.  Its reduction,
+normalized as after (C33.4), therefore gives a nonzero
+continuous homomorphism
+\[
+                         \theta:U\longrightarrow\mathbb F_{13}.
+                                                               \tag{C33.6}
+\]
+This character is invariant under the entire $G$.
+Indeed conjugation on
+$\mathfrak u/[\mathfrak u,\mathfrak u]$ factors through
+$G/U=\mathbb Z_{13}^{\times}$ and hence commutes with $t$.
+It preserves the weight-twelve eigensummand.  That summand
+is the top filtered piece, where an element of multiplier
+$a$ acts exactly by $a^{12}$, which is $1$ modulo $13$.
+This proves invariance without assuming that a chosen wild
+multiplier lift commutes with $t$ inside $G$.
+
+There is no extension obstruction:
+\[
+ H^2_{\mathrm{cts}}(\mathbb Z_{13}^{\times},\mathbb F_{13})=0.
+                                                               \tag{C33.7}
+\]
+The prime-to-$13$ factor $\mu_{12}$ has vanishing positive
+cohomology by averaging; the procyclic factor
+$1+13\mathbb Z_{13}\simeq\mathbb Z_{13}$ has
+$13$-cohomological dimension one.  Equivalently, the
+inflation maps in degree two along its finite cyclic
+quotients multiply by $13$, so their direct limit is zero.
+The continuous five-term sequence of (C33.5) now extends
+$\theta$ to a continuous homomorphism
+$\widetilde\theta:G\to\mathbb F_{13}$.
+
+Finally remove its arithmetic restriction integrally.
+The normalized pro-$13$ action on the tripod, with its
+standard tangential basepoint, is unramified away $13$;
+this is stated for the actual pro-prime automorphism
+representation in \cite[\S8.5, immediately before
+Theorem 8.7]{A_HainMatsumoto2003}, taking $N=1$.
+Thus $\widetilde\theta|_{G_{\mathbb Q}}$ factors through
+$G_{\mathbb Q,\{13\}}$.
+By Kronecker--Weber, the maximal abelian extension of
+$\mathbb Q$ unramified away $13$ is
+$\mathbb Q(\mu_{13^\infty})$; see
+\cite[Chapter I, Theorem 4.16 and its proof]{PBC_MilneCFT}.
+Consequently
+$\operatorname{Hom}_{\mathrm{cts}}
+(G_{\mathbb Q,\{13\}},\mathbb F_{13})$ is one-dimensional,
+generated by the nonzero cyclotomic character
+\[
+       c_{13}(\lambda)=\frac{\lambda_{13}^{12}-1}{13}\pmod {13}.
+\]
+This expression is an ordinary additive character on the
+whole multiplier group: multiplication of its two numerators
+has cross term divisible by $13^2$.
+There is therefore $a\in\mathbb F_{13}$ such that
+\[
+ \epsilon_{13}=\widetilde\theta\circ\rho_{13}
+                  -a\,c_{13}\circ\lambda
+                                                               \tag{C33.8}
+\]
+vanishes on $G_{\mathbb Q}$.  The adjustment is zero on
+global multiplier one.  The actual complete lift supplied
+by (C33.2) for the first weight-twelve basis vector still
+has value $1$, so (C33.8) is surjective.
+
+If it factored through the actual metabelian image, it
+would factor through that image's arithmetic-normal
+quotient.  C.32 proves that quotient has exponent two,
+which has no nonzero homomorphism to $\mathbb F_{13}$.
+This contradiction proves the last assertion.
+\end{proof}

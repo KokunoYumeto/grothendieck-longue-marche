@@ -1,0 +1,10 @@
+# A.60 source and dependency audit
+
+Notes-only candidate, not registered. Exact certificate `fgh_A60_certificate.py` has executed PASS; full output and JSON are retained.
+
+- **verified:** Silverman, *The Arithmetic of Elliptic Curves*, second edition, ExerciseIII.3.7, printed pp105–106, especially recurrence and (f) divisor formula. Primary PDF https://www.math.ens.psl.eu/~obenoist/refs/Silverman.pdf opened as `turn920view0`, relevant full text `turn922view0` (PDF pages122–123). This identifies the actual polynomial/ramification support, independent of a representation-theoretic model.
+- **verified:** Liu, *Algebraic Geometry and Arithmetic Curves*, Theorem9.2.2/Remark9.2.6, Theorem9.2.7, Theorem9.3.21, printed pp395–397 and422. Primary https://rexresearch1.com/GeometryLibrary/AlgebraicGeometryArithmeticCurvesLiu.pdf . These exact sources were directly opened for A52/A58 and independently rechecked by root/DE. The draft supplies the actual chart valuations, common-resolution persistence, and degree comparison; it does not use an unramified-cover theorem for this ramified morphism.
+- **verified:** Crew1984 Corollary1.8, printed pp35–36, original https://www.numdam.org/item/CM_1984__52_1_31_0.pdf . Opened and page36 actually viewed for A57 (own `turn902view2`). Gives zero7-rank of each one-branch Artin–Schreier tail. Its genus is derived directly using the displayed uniformizer and different.
+- **verified:** Existing A41–42 rational marked-path criterion; A59 nilpotent normalizer theorem (currently candidate, DE full PASS; root pending). An independent alternate normalizer proof uses A57 away from7 by tame extension of the actual seven-group cover, and A46 at7 using the explicitly proved zero7-rank Jacobian.
+
+Every centre is explicitly accounted for: three finite E[2] points and four points x²=3. The Taylor coefficient of degree7 vanishes at all four non-two-torsion centres; this is a separate necessary check beyond factoring dh. All49 cusps map toO in the supersingular reduction, while the seven tails map to finite points. Their genera1+7·21=148 prove compact type without assuming a CM decomposition.

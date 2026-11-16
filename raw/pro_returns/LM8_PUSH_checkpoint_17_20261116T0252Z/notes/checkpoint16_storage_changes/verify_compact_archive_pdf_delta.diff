@@ -1,0 +1,34 @@
+--- checkpoint15/code/verify_compact_archive.py
++++ code/verify_compact_archive.py
+@@ -35,6 +35,13 @@
+     copies = {e['original_path']: e for e in mapping.get('exact_file_copies', [])}
+ 
+     def exact_entry(name, expected_hash, expected_bytes=None):
++        if name in transformed:
++            transformed_entry = transformed[name]
++            assert transformed_entry['kind'] == 'raw_bytes', name
++            assert transformed_entry['decoded_sha256'] == expected_hash, name
++            if expected_bytes is not None:
++                assert transformed_entry['decoded_bytes'] == expected_bytes, name
++            return
+         if name in copies:
+             copy = copies[name]
+             assert copy['sha256'] == expected_hash
+@@ -62,6 +69,17 @@
+         for arg in entry.get('restore_command', []):
+             if arg.startswith('{archive}/'):
+                 assert arg[len('{archive}/'):] in entries, arg
++        if entry['codec'] == 'ZSTD_PDF_DICT01':
++            recipe = json.loads(archive.read(entry['stored_path']))
++            assert recipe['codec'] == entry['codec']
++            assert recipe['entire_original_byte_comparison']
++            assert recipe['decoded_sha256'] == entry['decoded_sha256']
++            assert recipe['decoded_bytes'] == entry['decoded_bytes']
++            for dependency in ('base', 'payload'):
++                dependency_path = recipe[dependency + '_path']
++                assert dependency_path in entries, ('Nonliteral PDF-delta dependency', dependency_path)
++                assert entries[dependency_path]['sha256'] == recipe[dependency + '_sha256']
++                assert entries[dependency_path]['bytes'] == recipe[dependency + '_bytes']
+         if entry['codec'].startswith('PBC_') and entry['stored_path'].endswith('.json'):
+             recipe = json.loads(archive.read(entry['stored_path']))
+             assert recipe['decoded_sha256'] == entry['decoded_sha256']

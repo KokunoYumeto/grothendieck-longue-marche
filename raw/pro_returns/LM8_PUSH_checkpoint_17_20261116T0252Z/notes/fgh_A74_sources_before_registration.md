@@ -1,0 +1,13 @@
+# A74 source and scope ledger
+
+Status: unregistered notes candidate, awaiting full independent audits. Complete proof notes/fgh_A74_draft.tex. No new numerical computation is used. It explicitly reuses the already executed canonical A71/A72/A73 certificates for their finite algebra support, while proving the unbounded quotient and actual-model comparisons structurally.
+
+- **verified:** Dupuy–Rabinoff Theorem1.1 and Proposition3.2, https://arxiv.org/pdf/1705.03034 . The precise relative compact-type Abel morphism including nodes was freshly independently opened/read for A71 by root and DE (turn1163view0). It constructs the actual source-to-good-elliptic morphism by composing with the extended Jacobian homomorphism.
+- **verified:** Lehr–Matignon Theorem6.13, published154, original https://www.numdam.org/item/RSMUP_2005__113__129_0.pdf and author https://arxiv.org/pdf/math/0411059 printed21. Freshly reopened in A72 as turn1172view0. The actual total closure is nilpotent, basegood after finite extension, branchclosurethe singleétale origin section, genericallytame. This supplies the separate whole-tree assertion; it is not inferred from étale base change.
+- **verified:** Good-isogeny and finite-étale odd-kernel facts are the same exact inputs of A40/A71 (Silverman III.6.1–6.2 and VII.7.2, https://www.math.ens.psl.eu/~obenoist/refs/Silverman.pdf ). They are not strengthened here.
+
+The only new group statement is elementary and fully proved: all nontrivial normal subgroups of a finite2-group meet its centre by conjugacy orbit counting. The centres of quaternion and semidihedral groups areC2, so every proper quotient factors through a dihedral quotient. Dihedral quotients remaindihedral orabelian. Coprime splitting then identifies the actual connected function-field compositum.
+
+The hypotheses imported from registered A70/A72/A73 are stronger than their final fixed-group conclusions: every higher-genus intermediate has a compact-type2-adic model with a rational path, including both endpoints, joining each cusp to a distinct companion. The preservation proof imports that actual geometric property. Its étale odd-isogeny pullback gives literal copies of each constant subtree, and the separate nilpotent theorem ensures there are no global cycles. No property of a second nonabelian Sylow factor is substituted for an isogeny.
+
+The exact supporting programs already retained are code/a_dihedral_abelian_products.py, code/a_quaternion_two_power.py and code/a_semidihedral_two_power.py, with their executed outputs. No extra toy certificate is used to replace the structural proof.

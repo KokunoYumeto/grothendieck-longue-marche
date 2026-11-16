@@ -1,0 +1,198 @@
+% Notes-only C.50 candidate: explicit multiplier-one outer detector.
+\subsection{An explicit finite outer detector from two peripheral coset modules}
+
+\begin{statement}{C.50}{Open}{A finite characteristic outer detector with a literal recovery algorithm}
+Let $\mathcal H=\ker\lambda\subset\widehat{\mathrm{GT}}_0$ and
+use its canonical normalized automorphisms
+\[
+             \alpha_f(x)=x,\qquad \alpha_f(y)=f^{-1}yf,
+                    \qquad f\in F'.                     \tag{C.50.1}
+\]
+Let $L$ be the explicit finite group of C.47, of order
+$M=2^{293}3^{193}$ and closed derived length at most four.
+There is an explicitly specified finite fully characteristic quotient
+$D$ of $F/F^{(5)}$ such that
+\[
+       \Delta|_{\mathcal H}\quad\hbox{factors through}\quad
+              \mathcal H\longrightarrow\operatorname{Out}(D).
+                                                               \tag{C.50.2}
+\]
+The construction below gives a finite algorithm recovering the retained
+C.47 conjugator residue from a representative of any outer class in
+this actual image. The existing C.47 frame algorithm then evaluates
+$\Delta$. No enumeration of the resulting large group is needed for
+the proof, and none is claimed to have been executed.
+
+More precisely, put $m=\exp(L)$, define
+\[
+ C=F\Big/\bigcap_{\psi:F\to L}\ker\psi,
+                    \qquad n=|C|,
+                                                               \tag{C.50.3}
+\]
+and take
+\[
+ G=\bigl(\mathbb F_2[C/\langle x_C\rangle]
+          \oplus\mathbb F_2[C/\langle y_C\rangle]\bigr)\rtimes C,
+ \qquad
+ D=F\Big/\bigcap_{\theta:F\to G}\ker\theta.           \tag{C.50.4}
+\]
+All homomorphisms in these displays are continuous; every choice of
+two target elements gives one. Then
+\[
+ n\le M^{M^2},\qquad |G|=2^{2n/m}n,
+                    \qquad |D|\le |G|^{|G|^2}.        \tag{C.50.5}
+\]
+The exponent $m$ is the exponent of $L$, not its order.
+This is an explicit multiplier-one outer detector. It neither
+improves the sharp depth-four existence theorem C.48 nor computes
+the smallest finite detector or the arbitrary-multiplier outer image.
+\end{statement}
+
+\begin{proof}[Complete candidate proof]
+\paragraph{The actual abelianization of the first envelope.}
+Write $N_L$ for the intersection in (C.50.3).
+There are exactly $M^2$ homomorphisms from $F$ to $L$.
+Thus $C$ is the image of their joint map into $L^{M^2}$, so it is
+finite, has exponent dividing $m$, and has derived length at most
+four. Precomposition with any endomorphism of $F$ permutes or
+repeats maps in the intersection, proving that $N_L$ is fully
+characteristic.
+
+Let $w\in N_L$ and write its abelianization as $(a,b)\in
+\widehat{\mathbb Z}^2$. For every $h\in L$, the homomorphism
+$x\mapsto h,y\mapsto1$ gives $h^a=1$. Therefore
+$\operatorname{ord}(h)$ divides $a$ for every $h$, and hence
+$m$ divides $a$. The separate homomorphisms
+$x\mapsto1,y\mapsto h$ give $m\mid b$.
+Conversely every $m$th power in $F$ belongs to $N_L$, since
+$L$ has exponent $m$. After taking the closed subgroup generated
+by these powers and then multiplying by $F'$, these two containments
+prove exactly
+\[
+                     C^{\rm ab}\simeq (\mathbb Z/m)^2,
+       \qquad \operatorname{ord}(x_C)
+              =\operatorname{ord}(y_C)=m.             \tag{C.50.6}
+\]
+The two generators correspond to the two standard basis vectors.
+No element of $L$ itself is required to have order $m$.
+This argument uses all the cyclic-subgroup homomorphisms separately,
+so it also applies when the exponent is a proper least common multiple
+of the orders of elements.
+
+The quotient $C$ is exactly the universal envelope used in C.47.
+That proof supplies the implication
+\[
+          g=(1,f)\in\mathcal H,\quad f_C=1
+                         \quad\Longrightarrow\quad \Delta(g)=0.
+                                                               \tag{C.50.7}
+\]
+We work in the original canonical marking of (C.50.1).
+The change of free basis used by C.47 preserves $N_L$, since it
+is fully characteristic. Thus its fixed word substitution transports
+the retained residue and its evaluation algorithm to this marking.
+
+\paragraph{A literal centralizer-coordinate equation.}
+For a finite group $C$, an arbitrary element $h\in C$, and
+$H=\langle h\rangle$, put $V=\mathbb F_2[C/H]$ with the
+left permutation action. Let $\delta_H$ be the basis vector of
+its identity coset, and set $X_h=(\delta_H,h)\in V\rtimes C$.
+If $(v,c)$ centralizes $X_h$, the semidirect product law gives
+\[
+      ch=hc,\qquad (1-h)v=\delta_H-c\delta_H.          \tag{C.50.8}
+\]
+The coefficient of the left side at $H$ is zero, because $hH=H$.
+The same coefficient on the right is zero if $cH=H$ and one
+otherwise. These are distinct elements of the actual coefficient
+field $\mathbb F_2$. Hence $c\in H$. Conversely the powers of
+$X_h$ centralize it and project onto $H$. Therefore
+\[
+       \operatorname{im}\bigl(C_{V\rtimes C}(X_h)\to C\bigr)=H.
+                                                               \tag{C.50.9}
+\]
+This proof imposes no condition on the order of $h$ and makes no
+assertion that the affine lift has that same order. Additional
+permutation-module summands do not change the displayed obstruction.
+
+In the actual $G$ of (C.50.4), define
+\[
+ X=(\delta_{\langle x_C\rangle},0,x_C),\qquad
+ Y=(0,\delta_{\langle y_C\rangle},y_C).
+                                                               \tag{C.50.10}
+\]
+The free profinite universal property gives $\pi:F\to G$ with
+$x\mapsto X,y\mapsto Y$. Its composite with $G\to C$ is the
+canonical quotient map. Its two centralizer projections are exactly
+$\langle x_C\rangle$ and $\langle y_C\rangle$ by (C.50.9).
+
+Write $N_G$ for the intersection defining $D$. It is fully
+characteristic by the same precomposition argument as above.
+The homomorphism $F\to G$ obtained from the canonical map to $C$
+and the zero section $C\to G$ has kernel $N_L$. Consequently
+$N_G\subset N_L$, and there is an actual quotient $D\to C$.
+The map $\pi$ also factors through $D$; its composite to $C$ is
+this same quotient. The abelian normal subgroup in $G$ has
+quotient $C$, so $G^{(5)}=1$, and hence $D^{(5)}=1$.
+The two coset modules have dimensions $n/m$ by (C.50.6), proving
+all the bounds in (C.50.5).
+
+\paragraph{Outer triviality forces the retained residue to vanish.}
+Suppose an actual $g=(1,f)\in\mathcal H$ acts trivially in
+$\operatorname{Out}(D)$. There is $c\in D$ such that the
+induced normalized automorphism equals $\operatorname{Inn}(c)$,
+with $\operatorname{Inn}(c)(z)=czc^{-1}$. Its two generator
+identities are
+\[
+             cx_Dc^{-1}=x_D,\qquad
+             c y_Dc^{-1}=f_D^{-1}y_Df_D.             \tag{C.50.11}
+\]
+Apply the actual map $D\to G$. The first identity and the first
+centralizer projection give $a=c_C\in\langle x_C\rangle$.
+The second says that $f_Dc$ centralizes $y_D$, so the second
+centralizer projection gives $f_Ca\in\langle y_C\rangle$.
+Thus for some integers $i,j$ modulo $m$,
+\[
+                     a=x_C^i,\qquad f_Ca=y_C^j.       \tag{C.50.12}
+\]
+Since $f\in F'$, passage to (C.50.6) gives
+$i(1,0)=j(0,1)$, and hence $i=j=0$ modulo $m$.
+The orders in (C.50.6) now give $a=1$ and $f_C=1$ literally.
+Equation (C.50.7) proves $\Delta(g)=0$.
+Because $\Delta$ is a character, this kernel containment proves
+its factorization through the finite actual outer image in
+(C.50.2).
+
+\paragraph{Recovery from a finite outer representative.}
+For completeness, the construction gives a finite recovery procedure,
+not merely an abstract kernel argument. Given
+$A\in\operatorname{Aut}(D)$ representing a class in the actual
+image of $\mathcal H$, enumerate $c\in D$ and $v\in D'$ until
+\[
+ (\operatorname{Inn}(c)\circ A)(x_D)=x_D,\qquad
+ (\operatorname{Inn}(c)\circ A)(y_D)=v^{-1}y_Dv.       \tag{C.50.13}
+\]
+At least one pair exists: the actual canonical representative and its
+actual conjugator residue supply it. The image $v_C$ is independent
+of every choice in this finite search. To prove this, let two choices
+give normalized representatives $\alpha_v,\alpha_w$ with
+$\alpha_w=\operatorname{Inn}(d)\circ\alpha_v$.
+The identities on $x_D,y_D$ say that $d$ centralizes $x_D$
+and that $wdv^{-1}$ centralizes $y_D$. Applying the two literal
+centralizer projections gives
+\[
+                  d_C=x_C^i,\qquad w_Cd_Cv_C^{-1}=y_C^j.
+                                                               \tag{C.50.14}
+\]
+Both $v,w$ belong to $D'$, so their images in $C^{\rm ab}$
+vanish. Equation (C.50.6) again forces $i=j=0$, whence
+$w_C=v_C$. Comparing with the actual canonical representative
+proves that this is its actual retained conjugator residue.
+
+Apply the fixed C.47 marking substitution to this residue, project
+$C$ to the specific affine quotient $L$ used there, and run its
+existing finite coset-module frame solver. It returns the exact
+value of $\Delta$. The procedure is asserted on the actual outer
+image only; it is not an algorithm recognizing which arbitrary
+finite outer classes lift to the full gentle group. Neither this
+construction nor the finite recovery proof asserts an
+arbitrary-multiplier normalization or evaluation.
+\end{proof}

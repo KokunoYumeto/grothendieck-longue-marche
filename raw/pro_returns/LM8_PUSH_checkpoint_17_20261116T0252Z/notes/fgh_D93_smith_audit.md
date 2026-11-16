@@ -1,0 +1,11 @@
+# Full independent D93 Smith-addendum audit — PASS
+
+I read the complete addendum and its complete supporting program. This is a separate audit from the original D93 proof; the all-r elementary divisors are supplied by the extension argument, not inferred from the old small Smith matrices or determinant.
+
+Multiplication by u^3 has precisely the integral norm kernel: rational diagonalization identifies its support at t=1, and the coefficient equations then give a single integral constant coefficient. The norm action is chi^4. The quotient of the chi-twisted permutation module by I^3 has only tame weights chi, chi^2, chi^3, including the torsion graded pieces, so exact order-four averaging kills all its homology. The procyclic H1 of the remaining module vanishes: a nontrivial positive power of two times a finite permutation has no invariant in a torsion-free 5-adic module. The resulting exact extension has a genuine, nonzero order-five norm subgroup.
+
+The literal u^3 f=t+(A-1)G identity and the finite group-ring orbit relation both check. The latter uses t^(2^ell)=t only in R because 5^r divides 2^ell-1. The first two unrestricted Taylor coefficients are divisible by 5^r, so W0 and W1 are integral and remove exactly the low jets. The correction to the third coefficient has valuation at least r. Evaluating c f-(B-1)Z at t=1 gives n k=16c/21-15z0. The third-moment calculation isolates S4 with its denominator15; the S2/S3 terms vanish only after the indicated factor15 and division by n. The final coefficient k is congruent to one modulo five. This proves exact order 5^(r+1) of the largest lift.
+
+For every smaller cyclic factor the replacement x_j-a_j 5^(r-j)x_r kills its norm extension. These replacements are valid triangular automorphisms of the quotient because the added largest-factor element has order dividing 5^j. They still generate the whole module, and their orders multiply to the exact extension order. Thus the direct-sum decomposition for every r is proved integrally.
+
+The independent retained replay code/fgh_D93_smith_certificate_rerun.py executes the owner's read-only run() and compares its entire JSON. The output is byte-identical; notes/fgh_D93_smith_certificate_rerun.json/.out retain the result. The symbolic identities and eight moment rows all pass. No new external theorem is required and no correction is needed.
