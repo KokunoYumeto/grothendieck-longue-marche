@@ -1,0 +1,330 @@
+\subsection{A smaller local input and an exact mixed-prime obstruction}
+
+\begin{statement}{A.46}{Residual conductor control outside a finite explicit set}{Proved}
+Let $\ell\ge5$ be prime and let $s$ be a full section of $U_\ell/\Q$,
+without a Selmer hypothesis. Put
+\[
+ T_\ell=\{2,\ell\}\cup\{q:\ q\text{ prime},\ q\mid\ell^2-1\}.
+\]
+For every $q\notin T_\ell$, the residual Legendre representation
+$\bar\rho_{s,\ell}|_{G_{\Q_q}}$ becomes unramified after a quadratic twist.
+Consequently, to obtain the reducibility and semisimplification conclusion
+of A.6, it suffices that $s$ be point-induced or cuspidal locally at the
+finitely many primes in $T_\ell$. No local geometricity assumption at
+the other finite primes is needed for this residual-modularity step.
+\end{statement}
+\begin{proof}
+The determinant of the Legendre representation is $\bar\chi_\ell$.
+Its geometric image is contained in $\mathrm{SL}_2(\F_\ell)$, of order
+$\ell(\ell^2-1)$. Thus, when $q\notin T_\ell$, its geometric restriction
+factors through the maximal prime-to-$q$ quotient $P_q$ of the geometric
+fundamental group. The resulting arithmetic representation factors
+through the corresponding geometrically prime-to-$q$ extension: the
+kernel defining that extension is killed by the representation and is
+normal in the arithmetic group.
+
+Since $q\ne\ell$, $U_\ell$ has a smooth proper model with disjoint etale
+boundary over $\Z_q$. Choose an integral tangent at an $X=0$ cusp.
+This gives an unramified genuine action on $P_q$. At this tangent the
+Legendre representation is also unramified at $q$: its splitting
+quadratic character is unramified at an odd prime, and the Tate Kummer
+constant $2^{-8}$ is a $q$-adic unit. We may therefore apply A.28 to the
+geometric inertia image of $s$.
+
+If that image is trivial, the residual representation agrees on inertia
+with the unramified reference splitting, and is unramified. Otherwise
+A.28 puts the prime-to-$q$ section in one cusp decomposition group.
+This ramification criterion is also
+\citet[Appendix A, Proposition A.6]{AMHoshi2012}, with the prime set
+equal to all primes other than $q$; its good-reduction hypothesis is
+satisfied here. The calculation A.3 applies at each cusp: after the
+local quadratic splitting twist its extension class is
+\[
+ -8\kappa_\ell(2)+2\ell\kappa_\ell(u)
+ =-8\kappa_\ell(2)\quad\text{modulo }\ell.
+\]
+The Kummer class of a unit is unramified over $\Q_q$ when $q\ne\ell$.
+Hence the twisted residual representation is unramified. The splitting
+twist itself can ramify, in particular at the infinity cusp, so the
+quadratic-twist qualification is retained.
+
+At the primes in $T_\ell$, the assumed point-or-cusp localization gives
+exactly A.5's local conclusions: after quadratic twists, unramifiedness
+away from $2\ell$, finite flatness and weight two at $\ell$, and conductor
+exponent one at two. The residual representation has finite image and
+therefore ramifies at finitely many primes. At the remaining primes the
+quadratic inertia characters just constructed are thus nontrivial at
+only finitely many places. Patch all these characters globally as in
+A.6. The resulting odd representation has the same weight-two,
+level-two irreducibility contradiction and the same reducible
+semisimplification $1\oplus\bar\chi_\ell$. This repeats A.6's argument
+with the reduced local input and proves the last assertion.
+
+For example $T_5=\{2,3,5\}$ and $T_7=\{2,3,7\}$. This statement
+reduces the local input for R3. The descent requirement in A.30 remains
+a separate hypothesis; finite support at density-one places does not
+by itself produce an all-place finite-descent adelic point.
+\end{proof}
+
+
+
+\begin{statement}{A.47}{Complete prime-to-three data can miss wild residual seven inertia}{Proved}
+Let $\Pi=\pi_1(U_7/\Q)$, let $P$ be its geometric maximal prime-to-three
+quotient, and let $\Pi_P$ be the resulting arithmetic extension. Form the
+natural joint quotient of $\Pi$ retaining both $\Pi_P$ and the residual
+Legendre representation modulo seven. It has a global section whose
+projection to $\Pi_P$ is a fixed global cusp section, but whose residual
+Legendre representation has wild inertia of order three at three.
+No quadratic twist removes that inertia.
+
+Thus even the entire prime-to-three section, and hence all of its
+pro-$\lambda$ projections for $\lambda\ne3$, does not determine this
+residual conductor in the natural joint quotient. This is a statement
+about that quotient; it does not assert a lift to the full $\Pi$.
+\end{statement}
+\begin{proof}
+The geometric Legendre monodromy modulo seven is
+$S=\mathrm{SL}_2(\F_7)$. Indeed its cusp monodromies include
+\[
+ U=\begin{pmatrix}1&2\\0&1\end{pmatrix},\qquad
+ L=\begin{pmatrix}1&0\\-2&1\end{pmatrix},
+\]
+which generate all upper and lower elementary matrices, and therefore
+$S$. These are the standard Legendre monodromy matrices; see
+\citet[\S5]{AMStixBirational2014}. Restricting from the tripod to
+$U_7$ preserves this image. The geometric subgroup defining the Fermat
+cover contains the closed commutator subgroup of the tripod group,
+while $S$ is perfect, so the image of that subgroup is still $S$.
+
+We verify both perfectness and the needed prime-to-three assertion
+directly. Set $D=\operatorname{diag}(2,4)\in S$, of order three.
+For the standard elementary matrices $U(a),L(a)$,
+\[
+ [D,U(a)]=U(3a),\qquad [D,L(a)]=L(a)
+ \quad(a\in\F_7).
+\]
+The coefficients $3$ and $1$ are nonzero. Thus the commutator subgroup
+contains all elementary matrices, proving perfectness. In any quotient
+of order prime to three, $D$ is killed; the same identities then kill
+every elementary matrix. Consequently $S$ has no nontrivial
+prime-to-three quotient. The program
+\texttt{a\_main\_local\_matrix.py} independently enumerates the group
+of order 336 and verifies these assertions and the normal-closure
+calculation.
+
+The geometric image in $P\times S$ is the full product. To see this,
+it is a closed subdirect product, so the profinite Goursat argument
+identifies a common quotient of $P$ and $S$. Such a quotient is finite
+of order prime to three, and hence trivial by the previous paragraph.
+The residual arithmetic quotient is
+\[
+ R=\{(M,g)\in\mathrm{GL}_2(\F_7)\times G_\Q:
+                  \det M=\bar\chi_7(g)\}.
+\]
+Surjectivity onto $G_\Q$ and the full geometric image $S$ prove this
+identification. The joint quotient is consequently the entire fibre
+product $\Pi_P\times_{G_\Q}R$.
+
+Let $\theta:G_\Q\to\{1,2,4\}\subset\F_7^\times$ be a nontrivial
+character of the cyclic cubic extension $\Q(\zeta_9)^+/\Q$.
+It has conductor nine: the corresponding order-three character modulo
+nine cannot factor through the order-two group modulo three.
+Define
+\[
+ \rho(g)=
+ \begin{pmatrix}
+ \bar\chi_7(g)\theta(g)&0\\
+ 0&\theta(g)^{-1}
+ \end{pmatrix}.
+\]
+Its determinant is $\bar\chi_7$, so it defines a section of $R$.
+Choose any global cusp section $\sigma$ of $\Pi_P$, for instance the
+image of the integral tangent at an $X=0$ cusp. Then
+\[
+ g\longmapsto\bigl(\sigma(g),(\rho(g),g)\bigr)
+\]
+is a section of the natural joint quotient just identified.
+
+At three the character $\bar\chi_7$ is unramified, whereas $\theta$
+is wildly ramified of order three. Thus a generator of its wild image
+acts by $D=\operatorname{diag}(2,4)$. A quadratic character is trivial
+on the wild pro-three inertia group, so no quadratic twist removes
+this action. In fact each of the two characters has Artin conductor
+exponent two at three, giving residual conductor exponent four.
+One may choose an arithmetic Frobenius with matrix
+$\operatorname{diag}(3,1)$, commuting with $D$ and having determinant
+three. All the finite matrix claims are checked by the supplied program.
+It also checks the cubic polynomial $x^3-3x+1$ of
+$\Q(\zeta_9)^+$: its discriminant is $81$ and the shift
+$x^3-3x^2+3$ is Eisenstein at three.
+
+The prime-to-three projection of this section is exactly $\sigma$,
+not merely its abelianization. Its wild residual behavior therefore
+records a concrete piece of information absent from those projections.
+The kernel discarded in forming the joint quotient can obstruct a
+further lift. No conclusion about such a lift is used here.
+\end{proof}
+
+\begin{statement}{A.48}{Ramification at a bad prime requires its definition}{Proved}
+For a geometrically pro-$\Sigma$ section over a local field of residue
+characteristic $q\notin\Sigma$, the intrinsic condition
+\[
+ s(I_q)\text{ acts trivially on the geometric group}
+\]
+agrees, at good reduction, with trivial geometric inertia in the
+unramified model splitting. At bad reduction these descriptions cannot
+be interchanged. In particular, if $q\mid n$ with $n$ odd, the intrinsic
+inertia action for $U_n/\Q_q$ is already nontrivial on the boundary
+part of geometric abelianization, for every nonempty prime set
+$\Sigma$ excluding $q$, independently of the section.
+\end{statement}
+\begin{proof}
+The intrinsic definition is
+\citet[Appendix A, Definition A.1]{AMHoshi2012}: the composite
+$I_q\to G_{\Q_q}\xrightarrow{s}\Pi^\Sigma\to
+\operatorname{Aut}(\Delta^\Sigma)$ must be trivial.
+His Proposition A.4 identifies this, under good reduction and
+$q\notin\Sigma$, with zero geometric inertia after specialization;
+Proposition A.6 then recognizes nonzero inertia at a cusp. His
+Proposition A.2(ii) says that bad reduction precludes intrinsic
+unramifiedness. For an interior point section, Proposition A.7
+expresses unramifiedness as good reduction of the curve with that
+point also removed. These statements have their indicated hypotheses;
+Proposition A.6 does not remove the good-reduction hypothesis from them.
+
+In the Fermat case the relevant nontrivial outer action can be seen
+without invoking a model classification. Write $D=X_n\setminus U_n$.
+The boundary above $X=0$ contains the $n$ distinct points obtained from
+the $n$th roots of unity, up to a fixed rational sign. If $q\mid n$,
+inertia at $q$ permutes the $q$th roots nontrivially because
+$\Q_q(\mu_q)/\Q_q$ is ramified of degree $q-1>1$.
+For any $\lambda\in\Sigma$, the boundary submodule of geometric
+abelianization is
+\[
+ \left(\bigoplus_{d\in D(\overline\Q_q)}\Z_\lambda(1)\right)
+       \big/\Z_\lambda(1),
+\]
+where the denominator is the diagonal relation. The inertia action on
+$\Z_\lambda(1)$ is trivial since $\lambda\ne q$, but its permutation
+of the boundary basis is not trivial on this quotient: with at least
+three boundary points, a nonidentity permutation does not become the
+identity modulo the single diagonal relation. It is the kernel of the surjection from geometric pro-$\lambda$
+abelianization to $T_\lambda\operatorname{Jac}(X_n)$. Inner conjugation acts
+trivially on abelianization. The nontrivial inertia action is therefore
+independent of which section supplies a representative of the outer
+Galois action.
+
+If instead one fixes a reference section and calls its section cocycle
+``unramified'', changing that reference changes the cocycle. At bad
+reduction the genuine inertia action is also nontrivial, so the cocycle
+on inertia is not a homomorphism into a group with trivial inertia
+action. The procyclic geometric-inertia argument of A.28 cannot be
+applied under that terminology. This is the precise definitional issue
+at the bad primes; it does not assert that any interior point section
+has been separated from all pro-$\lambda$ cusp packets. Such a
+separation would require an additional argument.
+\end{proof}
+
+\begin{statement}{A.49}{Density-one local points do not supply all-place descent}{Proved}
+Let $E/\Q$ be $y^2+y=x^3-7$, with origin $O$. There is a family of
+distinct full sections of $\pi_1(E)\twoheadrightarrow G_\Q$, indexed
+by $\Z_5$, such that the zero member is $s_O$ and every nonzero member
+is point-induced over $\Q_q$ for every $q\ne5$ and over $\R$, but is
+not point-induced over $\Q_5$. At each $q\ne5$ its point can be chosen
+in the finite subgroup $E(\Q_q)[5^\infty]$.
+
+Thus point localization at a cofinite, hence density-one, set of places
+does not imply the all-place local condition needed by the
+Harari--Stix descent step. This is an actual full-section example on
+the proper genus-one curve; it does not assert a lift to its punctured
+hyperbolic curve.
+\end{statement}
+\begin{proof}
+By A.10 and A.14, $E(\Q)\simeq\Z/3$ and $\Sha(E/\Q)$ is finite.
+Put $T=T_5E$, $S=\{3,5,\infty\}$, and
+$G_S=\operatorname{Gal}(\Q_S/\Q)$. The conductor is $27$, so the
+action on $T$ factors through $G_S$.
+
+We first prove that $H^1(G_S,T)$ has positive $\Z_5$-rank. For
+$M_n=E[5^n]$, the global Euler characteristic formula of
+\citet[I, Theorem 5.1, p.67]{AMMilneADT2006} gives
+\[
+ \frac{|H^0(G_S,M_n)|\,|H^2(G_S,M_n)|}
+      {|H^1(G_S,M_n)|}
+ =\frac{|H^0(\R,M_n)|}{|M_n|}=5^{-n}.
+\]
+All its hypotheses hold: $S$ is finite and contains the infinite place
+and five, and $M_n$ is unramified outside $S$.
+Complex conjugation has eigenvalues $1,-1$ on $T$, because its
+determinant is cyclotomic and five is odd. Hence the numerator on the
+right has order $5^n$, while $|M_n|=5^{2n}$.
+Also $H^0(G_S,M_n)=E(\Q)[5^n]=0$ as a group, of order one.
+
+Here is the integral passage, including its finiteness point.
+Finite-coefficient cohomology is finite, and its groups above degree
+two vanish for these odd-primary coefficients
+\citep[I, Theorem 4.10(c), Corollary 4.15]{AMMilneADT2006}.
+Inverse limits have no derived-limit term because the relevant systems
+are finite and satisfy the Mittag--Leffler condition. The groups
+$H^i(G_S,T)$ are compact $\Z_5$-modules. The exact sequences for
+$0\to T\xrightarrow{5^n}T\to M_n\to0$ imply that their quotients
+modulo five are finite; compact Nakayama therefore makes them finitely
+generated. They also give $H^3(G_S,T)=0$ and
+$H^1(G_S,T)[5^n]=0$, the latter because both $H^0(G_S,T)$ and
+$H^0(G_S,M_n)$ vanish. Write $r_i$ for the rank of $H^i(G_S,T)$.
+In
+\[
+ 0\longrightarrow H^i(G_S,T)/5^n
+ \longrightarrow H^i(G_S,M_n)
+ \longrightarrow H^{i+1}(G_S,T)[5^n]
+ \longrightarrow0,
+\]
+the finite torsion terms in degrees one and two cancel in the Euler
+characteristic. The displayed formula consequently yields
+$5^{n(r_2-r_1)}=5^{-n}$, so $r_1=r_2+1\ge1$.
+Choose a nonzero infinite-order class $z\in H^1(G_S,T)$ and inflate
+it to $H^1(\Q,T)$; inflation is injective.
+
+For every finite $q\ne5$, $E(\Q_q)$ is compact with an open pro-$q$
+subgroup. Thus its maximal pro-five quotient is the finite subgroup
+$E(\Q_q)[5^\infty]$. Local Tate duality
+\citep[I, Corollary 3.4, p.43]{AMMilneADT2006} makes
+$H^1(\Q_q,E)[5^\infty]$ finite as well. Taking inverse limits in
+the local Kummer sequences therefore gives
+\[
+ H^1(\Q_q,T)=E(\Q_q)^{\wedge5}
+            =E(\Q_q)[5^\infty],\qquad q\ne5;
+\]
+the possible quotient $T_5H^1(\Q_q,E)$ is zero. This argument applies
+also at the bad prime three. At the real place
+$H^1(\R,T)=0$ because multiplication by two is invertible on $T$.
+
+The all-place compact five-adic Selmer group fits into the inverse
+Kummer exact sequence
+\[
+ 0\longrightarrow E(\Q)^{\wedge5}
+ \longrightarrow \operatorname{Sel}(T)
+ \longrightarrow T_5\Sha(E/\Q)\longrightarrow0.
+\]
+Both outside terms vanish, so $\operatorname{Sel}(T)=0$.
+For every $a\in\Z_5\setminus\{0\}$, the class $az$ is nonzero and
+already satisfies the Kummer condition at every place other than five.
+Its localization at five is therefore not a Kummer class.
+
+Finally the origin splits the full fundamental extension as
+\[
+ \pi_1(E)=\left(\prod_\lambda T_\lambda E\right)\rtimes G_\Q.
+\]
+Insert a continuous cocycle representing $az$ in the five-component
+and put zero in every other component. This defines a genuine full
+section $s_a$. Distinct $a$ give distinct section classes because their
+five-adic cohomology classes are distinct. At $q\ne5$, choose the
+point $P_q\in E(\Q_q)[5^\infty]$ giving the five-component. Its
+Kummer class in $T_\lambda E$ is zero for every $\lambda\ne5$:
+multiplication by every power of $\lambda$ is invertible on the finite
+five-primary group. Thus this single point realizes the \emph{entire}
+full local section, simultaneously in all coefficient components.
+At the real place the section is that of $O$; at five it cannot be
+that of a point, since its five-component is not Kummer.
+This proves every assertion.
+\end{proof}

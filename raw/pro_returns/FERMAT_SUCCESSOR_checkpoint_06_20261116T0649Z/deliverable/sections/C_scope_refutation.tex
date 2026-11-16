@@ -1,0 +1,336 @@
+\begin{statement}{C.25}{Unrestricted cusp conjugation changes the D.45 finite test}{Refuted}
+The assertion that the recorded sphere action of LM7 D.45
+has no peripheral lift from
+\(\mathcal B/D_9(F)\) to \(\mathcal B/D_{10}(F)\)
+is false if ``peripheral'' allows an arbitrary conjugate
+of the cusp. There is an actual automorphism of the latter
+finite group inducing exactly that lower action and sending
+\(s,r,\tau\) to conjugates of themselves.
+
+The strongest exclusion established by that test fixes
+the cusp frame to one: with this normalization, all
+torsion-frame and compatible multiplier changes fail,
+already on the explicit central \(C_2\)-quotient in
+C.12. The finite counterexample does not decide
+existence on the whole relative completion.
+\end{statement}
+\begin{proof}
+Use the literal words \(b,a,v\) and the automorphism
+\(\widetilde\alpha\) of (C.12h)--(C.12i).
+The independently run program
+\path{c_cusp_centralizer_scope.py} verifies the complete
+Magnus equations, the unchanged lower action, and the
+Frattini identity proving surjectivity. The torsion
+images are conjugates by construction, and
+\(\widetilde\alpha(\tau)=v\tau v^{-1}\).
+The lower cusp-centralizer's 23 generators enlarge
+the correction rank from 47 to 56; the saved solution
+is an explicit witness, not only a dimension count.
+C.12 proves the normalized exclusion and constructs
+its central quotient. Both claims therefore concern
+precisely specified, different finite lifting problems.
+\end{proof}
+
+\begin{statement}{C.26}{The folded four-strand pentagon test is identically blind}{Proved}
+For every \(f\in\widehat F_2'\) satisfying the two-cycle
+relation \(f(y,x)f(x,y)=1\), the four-strand pentagon
+holds after the specialization \(\sigma_1=\sigma_3=T\),
+\(\sigma_2=U\) of (C.26a), at every finite congruence
+modulus. In particular this test cannot force
+\(\Delta=0\) on the gentle group.
+\end{statement}
+\begin{proof}
+Take the actual braid homomorphism
+\[
+ B_4\longrightarrow{\rm SL}_2(\mathbb Z),\qquad
+ \sigma_1,\sigma_3\longmapsto T=
+       \begin{pmatrix}1&1\\0&1\end{pmatrix},\qquad
+ \sigma_2\longmapsto U=
+       \begin{pmatrix}1&0\\-1&1\end{pmatrix}.
+ \tag{C.26a}
+\]
+Set \(a=T^2,b=U^2,c=UT^2U^{-1},d=TU^2T^{-1}\),
+the respective images of \(x_{12},x_{23},x_{13},x_{24}\);
+\(x_{34}\) has image \(a\). Exact integral multiplication gives
+\[
+ ac=da=-b^{-1},\qquad bd=cb=-a^{-1}.
+ \tag{C.26b}
+\]
+The five terms of the profinite pentagon
+\citep[Introduction, displayed pentagon]{cDolgushevGuynee2024}
+therefore specialize to
+\[
+ f(b,a),\quad f(-b^{-1},-b^{-1}),\quad f(a,b),\quad
+ f(a,-a^{-1}),\quad f(-a^{-1},a).
+ \tag{C.26c}
+\]
+The three terms with commuting arguments are one because
+\(f\in\widehat F_2'\), and the remaining two cancel by
+the gentle two-cycle relation. Thus this specialization
+is satisfied by \emph{every} gentle pair at every modulus,
+including the E.58 pair with \(\Delta=1\).
+The exact integer certificate \path{c_folded_pentagon.py}
+was run. This proves that the folded two-dimensional
+four-strand test cannot decide the remaining parity
+question; no such conclusion is drawn for other
+four-strand quotients.
+
+\end{proof}
+
+\begin{statement}{C.27}{Exact affine pentagon sieves on common word images}{Proved}
+Consider the distinct-endpoint braid representation into
+\((\mathbb Z/m)^2\rtimes{\rm SL}_2(\mathbb Z/m)\)
+given by
+\[
+ \sigma_1\mapsto(0,T),\qquad
+ \sigma_2\mapsto(0,U),\qquad
+ \sigma_3\mapsto(e_1,T),
+ \tag{C.27a}
+\]
+with \(T,U\) as in (C.26a). Use all five pentagon
+evaluation pairs, and the necessary multiplier-one
+two- and three-cycle identities at their six
+permuted triples. Let \(D_m\) be the actual common
+image of \(\widehat F_2'\), let \(C_m\subseteq D_m\)
+satisfy those necessary gentle identities, and let
+\(P_m\subseteq C_m\) also satisfy the pentagon.
+The following exact counts hold:
+\[
+\begin{array}{c|r|r|r|r}
+ m&|D_m|&|C_m|&|P_m|&
+   |\operatorname{ev}_{(x_{12},x_{23})}(C_m)|\\\hline
+ 3&216&9&3&3\\
+ 4&1&1&1&1\\
+ 5&15000&25&5&5\\
+ 8&2&1&1&1
+\end{array}
+\tag{C.27b}
+\]
+In each row the base-evaluation image of \(P_m\)
+equals that of \(C_m\). These are exhaustive common
+word-image tests, not independently chosen values
+of the five factors. They do not assert that every
+member of \(C_m\) is a full gentle-group image.
+\end{statement}
+\begin{proof}
+Direct semidirect-product multiplication proves both
+adjacent braid relations and the far-commutation relation
+in (C.27a). Put
+\(a=\sigma_1^2,b=\sigma_2^2,e=\sigma_3^2\),
+\(c=\sigma_2a\sigma_2^{-1}\),
+\(d=\sigma_3b\sigma_3^{-1}\).
+The five pairs are
+\[
+ (b,e),\quad(ac,de),\quad(a,b),\quad(a,bd),\quad(cb,e).
+\]
+For each pair \((x,y)\), put \(z=(xy)^{-1}\),
+and include the six pairs
+\[
+ (x,y),\ (y,x),\ (z,x),\ (x,z),\ (y,z),\ (z,y).
+\]
+At each of them the program includes the additional
+evaluations needed to test
+\[
+ f(y,x)f(x,y)=1,
+ \qquad f(z,x)f(y,z)f(x,y)=1.
+\]
+Every genuine multiplier-one gentle pair satisfies
+these equations, so they are necessary conditions
+with their exact scope explicit.
+
+The resulting two diagonal source generators are
+\(X=(x_j)_j\) and \(Y=(y_j)_j\).
+The first program, \path{c_affine_pentagon_probe.py},
+constructs their faithful block permutation action,
+computes \(\langle X,Y\rangle'\), and enumerates
+every element before applying the equations.
+The independent program
+\path{c_affine_pentagon_verify.py} imports no group
+theory package. It enumerates the normal closure of
+\(C=[X,Y]\) using the three maps
+\[
+ h\longmapsto hC,\qquad
+ h\longmapsto XhX^{-1},\qquad
+ h\longmapsto YhY^{-1}.
+\]
+On the finite ambient group these maps are permutations.
+Their forward orbit of one is therefore closed under
+their inverses; it is exactly the normal closure of
+\(C\), hence the whole derived image.
+Every discovered element retains an actual commutator
+word. The program evaluates the literal words for
+every survivor and every excluded necessary-gentle
+candidate, verifies zero abelianization, and recovers
+all counts in (C.27b), including equality of the two
+base-image sets. Complete words and values are saved
+in the corresponding JSON certificates.
+
+The modulus-three representation is the Ferrari
+homology representation already used in
+\emph{LM7\_PUSH E.17}; this calculation independently
+checks the stated finite sieve and does not claim a new
+whole-CM-fibre theorem. In particular the base value
+\(f(a,b)\) alone does not determine the normalized
+CM frames. The finite counts supply no answer to the
+remaining full-GT parity question in C.15.
+\end{proof}
+
+\begin{statement}{C.28}{Perfect common braid images cannot exclude solvable shadows}{Proved}
+Let \(\eta:F_2\twoheadrightarrow S\) be any finite
+solvable quotient, and let \(\theta:F_2\to K\) be a
+finite collection of simultaneous word evaluations.
+If \(D=\theta(F_2')\) is perfect, then
+\[
+ (\eta,\theta)(F_2')=S'\times D.
+ \tag{C.28a}
+\]
+Thus every prescribed \(s\in S'\) has a commutator-word
+representative with \(\theta(f)=1\).
+
+This applies to the five pentagon evaluations and
+their two- and three-cycle substitutions in the
+following actual braid quotient in
+\({\rm PGL}_3(\mathbb F_{11})\):
+\[
+\begin{split}
+ \sigma_1&\longmapsto
+ \begin{pmatrix}-1&2&0\\1&0&0\\0&0&1\end{pmatrix},\qquad
+ \sigma_2\longmapsto
+ \begin{pmatrix}1&0&0\\0&-1&2\\0&1&0\end{pmatrix},\\
+ \sigma_3&\longmapsto
+ \begin{pmatrix}1&0&-1\\0&1&-1\\0&0&-2\end{pmatrix}.
+\end{split}
+\tag{C.28b}
+\]
+Its common derived image is perfect, of order
+\(120\cdot1320^3=275996160000\).
+Consequently this finite pentagon test excludes no
+prescribed conjugator coordinate in any finite solvable
+source, including the pure source inside \(G_6\).
+This is a simultaneous finite-image statement; it
+does not construct a full-GT lift of that coordinate.
+\end{statement}
+\begin{proof}
+The joint image in (C.28a) is a subdirect product.
+To recall the elementary subdirect-product argument,
+for \(J\leq A\times B\) surjecting on both factors,
+the subgroups
+\(A_0=\{a:(a,1)\in J\}\) and
+\(B_0=\{b:(1,b)\in J\}\) are normal, and
+\((a,b)\in J\) identifies \(A/A_0\) with
+\(B/B_0\). Apply this to \(A=S'\), \(B=D\).
+The common quotient is both solvable and perfect,
+so it is trivial. This proves (C.28a), for actual
+finite words as well as for their profinite completion.
+
+Here are the complete small certificates establishing
+the hypothesis for (C.28b). The matrices are obtained
+by quotienting the usual four-dimensional braid
+matrices, with parameter \(t=2\), by their fixed
+vector \((1,1,1,1)\). Direct matrix multiplication
+also independently checks all braid relations and
+the distinction of the two endpoint matrices.
+Use the five pairs from C.27, followed for each
+\((x,y)\) by \((y,x),(z,x),(y,z)\), with
+\(z=(xy)^{-1}\). There are twenty indexed coordinates.
+The executed certificate partitions them as follows:
+\[
+\begin{array}{c|l|r|r}
+ j&\text{zero-based coordinate indices}&|D_j|&|D_j/Z(D_j)|\\\hline
+ 0&0,2,5,6,7,11,12,13&120&60\\
+ 1&1,8,16,18&1320&660\\
+ 2&3,9,17,19&1320&660\\
+ 3&4,10,14,15&1320&660
+\end{array}
+\tag{C.28c}
+\]
+For each block, normal-closure enumeration from the
+single source commutator gives exactly the displayed
+number of elements. Its first coordinate distinguishes
+all of them, so every other coordinate in the block
+is a homomorphic function of that one. The program
+finds generators, enumerates their commutator normal
+closure, and obtains the entire group again.
+It then enumerates the centre, which has order two,
+and the conjugacy classes of the central quotient.
+The class sizes are
+\[
+ (1,12,12,15,20),\qquad
+ (1,55,60,60,110,110,132,132),
+\]
+respectively. For every nonidentity class it
+independently verifies that a representative's normal
+closure is the whole quotient. Thus all four
+\(D_j\) are perfect central extensions of the indicated
+nonabelian simple groups.
+
+It remains to exclude diagonal identifications between
+the three simple quotients of order 660. Write
+\(c=[u,v]\) in the source free group. The literal words
+\[
+ w_u=ucu^{-1}c,\qquad w_v=vcv^{-1}c
+\]
+provide exact order witnesses. On factors \((1,2)\),
+\(w_u\) has quotient orders \((5,11)\); on factors
+\((2,3)\) its orders are \((11,5)\); on factors
+\((1,3)\), \(w_v\) has orders \((5,11)\).
+Therefore none of these pairs is the graph of an
+isomorphism. The order-60 simple quotient cannot be
+identified with an order-660 quotient.
+
+For completeness, a subdirect subgroup of a product
+of nonabelian simple groups whose every two-factor
+projection is the full product is the full product.
+Induct on the number of factors. Applying the same
+subdirect-product argument to the product of the
+first factors and the last simple group, a proper
+subdirect product would give a simple quotient of
+the first product. Any normal subgroup of a product
+of nonabelian simple groups is a product of factors:
+commuting with each factor shows that each nontrivial
+coordinate supplies that entire factor. The simple
+quotient would therefore identify the last factor
+with one earlier factor, contrary to the two-factor
+condition. This proves the claim.
+
+It follows that the actual common derived image
+\(D\leq P=\prod_{j=0}^3D_j\) surjects onto
+\(P/Z(P)\), so \(DZ(P)=P\). Since \(P\) is perfect,
+\[
+ P=P'=(DZ(P))'=D'\leq D\leq P.
+\]
+Hence \(D=P\), proving its order and perfectness.
+The independent program
+\path{c_burau_perfect_certificate.py}
+uses only exact projective matrix arithmetic and
+these four small enumerations; its JSON includes
+all class representatives, centres, generators, and
+the two separating words. The separate permutation
+calculation \path{c_burau_pentagon_probe.py} gives
+the same common derived order and second derived order.
+The option \texttt{--full-orbits} repeats the independent
+certificate after including every one of C.27's six
+substitutions and all their equation coordinates.
+There are then sixty coordinates, partitioned into
+blocks of sizes \(24,12,12,12\); their derived groups
+and the separating words are unchanged. This complete
+repeat was run successfully, so the conclusion also
+holds with all those necessary gentle identities imposed.
+
+Finally, the pure source inside \(G_6\) is solvable.
+Its kernel over the congruence image is a subgroup
+of \(N/N'N^6\), hence abelian, and its congruence
+image is a subgroup of the solvable group
+\(Q_{576}\). For the latter assertion,
+\({\rm SL}_2(\mathbb Z/4)\) is an extension of
+\(S_3\) by an elementary abelian 2-group, and
+\({\rm SL}_2(\mathbb F_3)\) is an extension of
+\(C_3\) by \(Q_8\); quotienting their product by
+the common scalar sign preserves solvability.
+Apply (C.28a) while keeping the entire prescribed
+pure-source value. Setting all sixty braid values
+to one satisfies every tested gentle equation and
+the pentagon. No inference of compatibility at all
+finite levels is made.
+\end{proof}
+

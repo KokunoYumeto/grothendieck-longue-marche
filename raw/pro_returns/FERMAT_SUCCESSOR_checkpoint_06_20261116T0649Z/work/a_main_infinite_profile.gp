@@ -1,0 +1,47 @@
+/* Work-only exact residue tests for a_p=p at every coefficient prime.
+   No finite range is used to infer a global quadratic character. */
+testprofile(limit)={
+ my(rows=0,nsq=0,bound=0,ram=0,vals=List());
+ print("q,b,zeta,orderP,scalar_mod_order,Qx,Qy,valuation_g,quadratic_sign,formal_height");
+ forprime(q=5,limit,
+  if(q%3!=1,next);
+  my(bs=polrootsmod(x^3-3,q),zs=polrootsmod(x^2+x+1,q));
+  if(#bs!=3,next);
+  my(ef=ellinit([0,0,1,0,-1],q),N=ellorder(ef,[1,0]));
+  if(N%q==0,next);
+  my(fa=factor(N),kk=Mod(0,1));
+  for(i=1,matsize(fa)[1],kk=chinese(kk,Mod(fa[i,1],fa[i,1]^fa[i,2])));
+  my(k=lift(kk),Q=ellmul(ef,[1,0],k),ep,Qp,br,zr,ht=0);
+  if(#Q==1,Q=[Mod(0,q),Mod(0,q)]);
+  for(ib=1,3,for(iz=1,2,
+   my(bb=bs[ib],zz=zs[iz],num,den,sg=1,vg=0);
+   if(k==0,
+    num=Mod(1,q);den=Mod(1,q),
+    num=bb^2*zz^2*Q[1]-Q[2]-2;den=bb^2*Q[1]-Q[2]-2
+   );
+   if(num==0||den==0,
+    bound++;
+    if(ht==0,
+     ep=ellinit([0,0,1,0,-1],q+O(q^20));
+     my(Pp=[1+O(q^20),O(q^20)],NR=ellmul(ep,Pp,N));
+     ht=valuation(-NR[1]/NR[2],q);
+     my(uu=q^10*lift(Mod(q^10,N)^(-1)),nn=q+(k-q)*uu);
+     Qp=ellmul(ep,Pp,nn);
+     br=polrootspadic(x^3-3,q,20);zr=polrootspadic(x^2+x+1,q,20)
+    );
+    my(bp,zp);
+    for(j=1,#br,if(lift(Mod(br[j],q))==lift(bb),bp=br[j]));
+    for(j=1,#zr,if(lift(Mod(zr[j],q))==lift(zz),zp=zr[j]));
+    my(gv=(bp^2*zp^2*Qp[1]-Qp[2]-2)/(bp^2*Qp[1]-Qp[2]-2));
+    vg=valuation(gv,q);sg=kronecker(lift(Mod(gv/q^vg,q)),q);
+    if(vg%2,ram++);
+   ,
+    sg=kronecker(lift(num/den),q)
+   );
+   rows++;if(sg==-1,nsq++);
+   if(sg==-1||vg!=0,print(q,",",lift(bb),",",lift(zz),",",N,",",k,",",lift(Q[1]),",",lift(Q[2]),",",vg,",",sg,",",ht));
+  ));
+ );
+ print("SUMMARY rows=",rows," nonsquare_unit_parts=",nsq," boundary_rows=",bound," odd_valuation_rows=",ram);
+};
+testprofile(20000);

@@ -1,0 +1,216 @@
+\subsection*{An exact kernel of the full cyclic rigid family}
+
+\statement{B.69}{Refuted}{Injectivity of the full cyclic rigid map and its completion}
+Use B.65's actual geometric basis
+$H_5=F(f_0,f_1,f_2,f_3,f_4,f_5)$ and its specified map
+$\theta_5:H_5\to PB_6$.
+Put
+\[
+ \begin{split}
+  g&=f_5^{-1}f_0^{-1}f_2^{-1},\\
+  h&=f_5^{-1}f_1f_5,\\
+  k&=h^{-1}g=f_5^{-1}f_1^{-1}f_0^{-1}f_2^{-1},\\
+  w_0&=[k,f_1].
+ \end{split}                                                    \tag{B.69.1}
+\]
+Then $w_0\ne1$ in $H_5$ and in $\widehat H_5$, whereas
+\[
+                    \theta_5(w_0)=1\quad\text{in }PB_6.
+                                                               \tag{B.69.2}
+\]
+Consequently the full joint rigid-seven test family on
+the cyclic centralizer is not faithful, discretely or
+after full completion.  This concerns the actual full
+map of B.65, not only the intermediate quotient of B.67.
+
+\begin{proof}
+With signed index $j$ denoting $f_{j-1}$, the word is
+\[
+                 (-6,-2,-1,-3,2,3,1,2,6,-2).
+                                                               \tag{B.69.3}
+\]
+It is freely reduced of length ten.
+There is also an explicit finite witness: send
+$f_1$ to $(1\ 2)$, $f_5$ to $(2\ 3)$, and all four
+other generators to the identity in $S_3$.
+The word maps to $(1\ 2\ 3)$.
+Thus it is nonidentity in the full free profinite
+completion as well as in the discrete free source.
+
+The standalone verifier
+\nolinkurl{next_joint_rigid_symplectic/refute_full_theta5.py}
+reads the original common-base eleven-strand words of
+B.61, imports no discovery code, and performs its own
+strand deletion and faithful Artin evaluation.
+The retained finite labels are $(4,11,5,1,10,6)$.
+Substitution of (B.69.3) gives a freely reduced braid
+word of length $132$.  Its six Artin images are exactly
+\[
+                         x_i\longmapsto x_i,
+                         \qquad 1\leq i\leq6.                 \tag{B.69.4}
+\]
+Faithfulness proves (B.69.2) before any central quotient.
+The complete six source braids, the substituted braid,
+all six Artin images, and the finite $S_3$ witness are
+retained in
+\nolinkurl{full_theta5_noninjection_certificate.json};
+the accompanying standard output is from the actual
+fresh run.  We independently reread the proof and
+reran this complete certificate successfully.
+
+We also give the structural derivation, which explains
+why this relation occurs.  Move label $5$ to the last
+strand as in B.68, using
+$\tau=\sigma_3\sigma_4\sigma_5$ and
+$b\mapsto\tau^{-1}b\tau$.
+The order becomes $(4,11,1,10,6,5)$, and the last-strand
+Birman kernel has free coordinates $x_1,\ldots,x_5$.
+Set
+\[
+                       B=x_1x_2x_3x_4x_5,
+                       \qquad q=x_3x_5.
+                                                               \tag{B.69.5}
+\]
+The last-conjugator extraction for $f_1$ is
+$qB^{-1}q^{-1}$.  As audited in B.67 and B.68, this
+extraction is antihomomorphic.  Inverting it and
+conjugating the resulting fiber identification by
+$q^{-1}$ therefore sends $f_1$ to $B$ literally.
+
+For a source element $s$, write its last Artin image
+as $\widetilde Q_s x_6\widetilde Q_s^{-1}$, and let
+$Q_s$ be the image of that conjugator after killing $x_6$.
+Let $D_s$ be the induced automorphism
+on the other five generators after killing $x_6$.
+The actual conjugation action on the fiber is
+\[
+ \alpha_s(x)=Q_s^{-1}D_s(x)Q_s.
+\]
+Because the total Artin boundary is fixed,
+$\alpha_s(B)=Q_s^{-1}BQ_s$.
+In the $q$-normalized fiber this becomes
+\[
+ \begin{split}
+  \alpha'_s&=\operatorname{Inn}(q^{-1})\alpha_s
+                                  \operatorname{Inn}(q),\\
+  \alpha'_s(B)&=R_sBR_s^{-1},\\
+  R_s&=q^{-1}\alpha_s(q)Q_s^{-1}.
+ \end{split}                                                    \tag{B.69.6}
+\]
+The exact original-word evaluation gives
+\[
+ R_{f_5^{-1}}=B^{-1}x_1B,
+ \qquad R_g=B^{-1}x_1Bx_1^{-1}B
+                   =R_{f_5^{-1}}BR_{f_5^{-1}}^{-1}.            \tag{B.69.7}
+\]
+Since $f_1$ is $B$, the right-hand side is precisely
+the actual fiber image of $h=f_5^{-1}f_1f_5$.
+Hence conjugation by $h^{-1}g$ fixes $B$, giving
+$[h^{-1}g,f_1]=1$ in the actual braid image.
+The verifier checks this equality of full fiber words,
+in addition to the independent complete Artin test.
+No inference from a quotient relation module is used.
+
+Finally B.65 identifies the kernels of all ten nonconstant
+rigid-seven restrictions on $H_5$ with $\ker\theta_5$;
+the other two restrictions are zero.  The same kernel
+identification holds after full completion.  The word
+(B.69.3) therefore proves the stated nonfaithfulness
+of both joint test families.
+It is not an element of $\mathcal K$: B.28 embeds the
+free source in $P$, whereas B.7 gives $C_P(A_5)=1$.
+Its failure to centralize some element of $A_5$ also
+survives in the full completion by residual finiteness.
+\end{proof}
+
+\statement{B.70}{Proved}{The cyclic joint rigid kernels are free of countably infinite rank}
+Define the actual embedded kernels
+\[
+       N_5=\ker(\theta_5)\leq H_5=F_6,
+       \qquad
+       M_5=\ker(\widehat\theta_5)\leq\widehat H_5.
+                                                               \tag{B.70.1}
+\]
+Then $N_5$ is an abstract free group of countably infinite
+rank, and $M_5$ is a free profinite group of countably
+infinite rank, with the convergent-basis convention.
+These are respectively the joint discrete and completed
+kernels of all twelve rigid-seven tests on $H_5$.
+The assertion $M_5=\overline{N_5}$ remains open;
+$M_5$ is not the full profinite completion of the
+abstract group $N_5$.
+
+\begin{proof}
+B.69 gives a nontrivial finite word in both kernels.
+Both kernels have infinite index.  Indeed the same
+exact original-braid certificate gives
+\[
+       \ell_{4,5}(\theta_5(f_5))=1,
+       \qquad \ell_{4,6}(\theta_5(f_5))=0.
+                                                               \tag{B.70.2}
+\]
+Each pair-linking homomorphism takes the central full
+twist to $1$.  Thus $\ell_{4,5}-\ell_{4,6}$ descends
+to $PB_6/\langle\Delta_6^2\rangle=P\Gamma_{0,7}$,
+and has value $1$ on the image of $f_5$.
+The discrete image is infinite, and its completed image
+has the infinite quotient $\widehat{\mathbb Z}$.
+No assertion about the full center of a completed
+braid group is needed for this argument.
+
+By Nielsen--Schreier, $N_5$ is free.
+A nontrivial normal subgroup of infinite index in
+a finite-rank free group cannot be finitely generated.
+For completeness, a finitely generated subgroup would
+have a finite core in its covering of the finite rose.
+A nonempty cyclically reduced word in the normal
+subgroup labels a reduced closed loop at every vertex
+of that cover, by normality.  Every vertex would
+therefore belong to the finite core, forcing finite
+index.  This contradiction proves infinite rank;
+countability of $F_6$ makes the rank exactly $\aleph_0$.
+
+For the completed kernel use the precise finite-word
+theorem of \citet[Theorem~1.2; Corollary~3.7 in the
+primary preprint]{DE_Shusterman2016}, already applied
+with its full hypotheses in B.56.
+The ambient $\widehat F_6$ is finitely generated and
+free profinite, with the six geometric meridians as
+a profinite basis.
+The subgroup $M_5$ is closed and of infinite index.
+It contains the closed normal closure of the nontrivial
+finite basis word (B.69.3); its nontriviality is
+independently detected by the displayed $S_3$ quotient.
+These are exactly the theorem's hypotheses.
+It follows that $M_5$ is free profinite of rank
+$\aleph_0$.  Closed normality and infinite index alone
+would not suffice: the finite-word hypothesis is
+essential to this application.
+
+B.65 supplies the exact joint-kernel identifications
+in the statement, including removal of the central
+twist by the fixed-pair linking homomorphism.
+The six specified source braid words also give an
+exact discrete membership procedure: substitute a
+finite source word and accept precisely when all
+six faithful Artin images are the respective free
+generators.  Thus (B.70.1) refers to a completely
+specified homomorphism, not just abstract isomorphism
+types of unspecified subgroups.
+
+The equality of the closed completed kernel with
+$\overline{N_5}$ would require a further comparison
+with the induced topology on the actual braid image.
+No such equality has been proved here.
+There is also a strict distinction from
+$\widehat{N_5}$: a countably generated abstract free
+group of infinite rank has uncountably many maps
+to $C_2$, by independent choices on a free basis.
+Its full profinite completion is consequently not
+metrizable.  In contrast, $M_5$ is a closed subgroup
+of the metrizable finitely generated free profinite
+group $\widehat F_6$.
+Neither the kernel descriptions nor their rank
+calculations determine the residual centralizer
+$\mathcal K$.
+\end{proof}

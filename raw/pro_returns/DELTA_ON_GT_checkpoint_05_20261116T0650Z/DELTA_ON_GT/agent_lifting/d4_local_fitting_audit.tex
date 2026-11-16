@@ -1,0 +1,193 @@
+\subsection*{An exact local Fitting audit for the fourth-power cover}
+
+Throughout this audit $D_4=C''(C')^4$ and the full five-dimensional
+Fox chain blocks are retained.  The source free generators are
+$x=X_1=a^2$ and $y=X_2=b^2$.  Write
+\[
+ A_e(u,v)=[[u^e,v^e],[v^e,((uv)^{-1})^e]],\qquad
+ S=A_e(y,z)A_e(x,y)A_e(z,x),\quad z=(xy)^{-1},
+\]
+where $e=e_3$ is the fixed profinite three-primary idempotent.
+This is the same actual word as in RA.3--RA.6.
+
+\paragraph{DF.1 (Proved): the former seed has nonnilpotent normal closure.}
+The exact harmonic peripheral orders in the full fourth-power
+chain representation are $(12,12,24)$, so the evaluated
+$e_3$ exponents are $(4,4,16)$.  The word $S$ has order six.
+Set
+\[
+ u=S^3,\qquad v=(yx)u(yx)^{-1}.
+\]
+Both are involutions and fix every character.  On the character
+\[
+              \chi=(1,0,1,1,0)\in(\mathbb Z/4)^5,
+\]
+their product $uv$ has exact order nine in the full chain block.
+It already has order three in the proper three-dimensional
+quotient.  A finite nilpotent group has a unique Sylow
+two-subgroup, so the product of two involutions in such a
+group has two-power order.  Therefore the normal closure
+of this particular $S$ in the harmonic target is not nilpotent.
+This is stronger than a failure of centrality, but it is
+only an obstruction to this seed, not to every possible
+controlled seed or to the full GT inclusion problem.
+
+The independent certificate
+\texttt{check\_d4\_seed\_independent.py} constructs all
+generator blocks directly from the stored Fox Laurent
+coefficients using table-based $\mathbb F_9$ arithmetic.
+It verifies every defining relation of $L$, every
+character boundary identity, and equality with the
+independently constructed generator and $X_i$ arrays.
+It then evaluates the same literal word $S$ and records
+the two involution matrices and their product at $\chi$.
+No arithmetic or group-operation routines are imported
+from the other construction.
+
+\paragraph{DF.2 (Proved): the relevant proper stabilizer image is simple.}
+The orbit of this character under $\langle x,y\rangle$ is
+\[
+\begin{split}
+\mathcal O=\{&81,86,91,92,386,391,392,397,\\
+             &755,756,761,766,800,805,810,815\},
+\end{split}
+\]
+where index $\sum_j4^{j-1}\chi_j$ uses the fixed cube
+Schreier basis of $C'$.  Each character has chain filtration
+with dimensions $1,3,1$: boundary, proper homology, and
+augmentation quotient.  The four cusp phases at the
+initial character are $(0,1,1,2)$, so exactly one cusp
+contributes to its boundary line.
+
+Let $H$ be the harmonic full-chain pair image and let
+$G$ be the proper three-dimensional image of the
+stabilizer of this character.  Exact Schreier generators
+for $G$ are supplied by the source words
+\[
+              x^{-2}y^{-1}x^2y,
+              \qquad x^{-3}yxy.
+\]
+Their matrices generate a group of order $6048$.
+The proper image of $S$ has a conjugacy orbit of size
+$63$ and normally generates this entire group.
+Its derived subgroup also has order $6048$.
+
+Simplicity is certified directly, rather than inferred
+from the order or an unproved name for the group.
+The enumeration has fourteen conjugacy classes, of sizes
+\[
+ 1,56,63,63,63,378,504,504,504,672,756,756,864,864.
+\]
+For every nonidentity class, its normal closure has
+order $6048$.  Consequently $G$ is nonabelian simple.
+The exact script
+\texttt{check\_d4\_proper\_stabilizer.py} checks these
+claims and records both the source Schreier words and
+all class-normal-closure orders.
+
+\paragraph{DF.3 (Proved): the local obstruction can be removed by a new actual core seed.}
+Let
+\[
+            \mathcal N=\overline{\langle\!\langle S
+                         \rangle\!\rangle}_{\widehat B}
+                         \subseteq\widehat F.
+\]
+This is the closed $B$-normal closure of the one genuine
+profinite word $S$.  It is contained in $F''$, in every
+original full orbifold core, and in every earlier
+$B$-normal seed condition retained in RA.5.  Moreover
+\[
+                     q_{12}(\mathcal N)=\langle[5I]\rangle,
+\]
+because $q_{12}(S)=[5I]$ is central.
+
+This distinction between $G$ and the image of
+$\mathcal N$ is essential.  Each of the six peripheral
+values of $S$ fixes all characters, its boundary line,
+and its augmentation quotient on the whole orbit
+$\mathcal O$.  These statements are explicitly
+verified in the certificate.  Therefore the entire
+image of $\mathcal N$ has these properties: the six
+outer representatives are included, and further
+$F$-conjugation preserves the corresponding kernels.
+In particular the proper block at a fixed character
+is a genuine homomorphism on $\mathcal N$.
+
+For the initial character its image is normal in $G$,
+because $\mathcal N$ is normal in $F$ and all the
+character-stabilizer elements are represented by words
+in $F$.  It contains the nontrivial proper image of $S$;
+by simplicity its image is all of $G$.  Transitivity
+of $H$ on $\mathcal O$ gives the same assertion in
+each of the sixteen transported proper groups.
+Precomposing with any of the six peripheral source
+automorphisms leaves $\mathcal N$ unchanged, so the
+assertion remains valid for every required source core.
+
+Let $P$ be the simultaneous proper image of
+$\mathcal N$ in these sixteen characters and six
+peripheral evaluations.  It is a subdirect product
+of nonabelian simple groups isomorphic to $G$.
+Such a subgroup is itself a product of diagonal
+simple factors, hence is perfect.  One elementary
+proof proceeds inductively by Goursat's lemma:
+adjoining a simple factor either adds it independently
+or identifies it with one existing simple factor.
+A surjection from a product of nonabelian simple
+groups onto a simple group factors through one
+factor, since the other normal images commute.
+
+It follows that the kernel of
+$\mathcal N\to P$ still maps onto
+$\langle[5I]\rangle$.  Otherwise the nontrivial
+map to this cyclic group of order two would factor
+through the perfect group $P$, which is impossible.
+Thus there exists an actual controlled seed
+\[
+ A\in\mathcal N,\qquad P(A)=1,
+ \qquad q_{12}(A)=[5I].
+\]
+This is an actual source-element existence statement.
+For a concrete algebraic construction, express the
+finite value $P(S)$ as a finite product of commutators
+$\prod_i[P(u_i),P(v_i)]$, with $u_i,v_i\in\mathcal N$,
+and set
+\[
+                A=S\left(\prod_i[u_i,v_i]\right)^{-1}.
+\]
+Every factor is an actual element of the normal closure
+of $S$.  Its finite signed value is the claimed one
+because the image of $\mathcal N$ under $q_{12}$ is
+abelian.  No separately prescribed factor values are
+asserted to lift to a gentle element.
+
+The full-chain image of $A$ on this orbit is now
+identity on all three graded pieces.  Hence it lies
+in the normal unipotent three-group of matrices
+\[
+ \begin{pmatrix}
+  1&*&*\\0&I_3&*\\0&0&1
+ \end{pmatrix},
+\]
+with the actual character permutations also trivial.
+Take the $B$-normal core of the inverse image of this
+one common normal three-group, retaining all six
+source representatives.  It contains $A$, so the
+same coprime frame lift and R2 normalization used in
+LI.8 apply.  Compactness retains all earlier RA.5
+conditions because $A\in\mathcal N$ belongs to every
+earlier normal seed condition containing $S$.
+The resulting genuine gentle witness can therefore
+be chosen to have $\Delta=1$ and trivial harmonic
+$f$-evaluation on this entire full-chain orbit and
+its required source cores, while retaining the prior
+actual-source results.
+
+\emph{Scope.}  This proves that the displayed
+fourth-power orbit does not by itself obstruct the
+controlled R2 method.  The orbit is a harmonic-pair
+orbit, not the whole $L$-character space.  The result
+does not assert that the other fourth-power proper
+components have simple images, that one replacement
+seed kills all of them, or that the full fourth-power
+affine pentagon or the full GT pentagon holds.

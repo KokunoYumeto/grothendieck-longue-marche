@@ -1,0 +1,50 @@
+# Independent sixth-interval audit
+
+AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode). No priority is claimed.
+
+## A.69: all finite alterations at the actual joint level-three quotient
+
+The root audit read the entire work proof and exact symbolic certificate, separately from the Part B audit. The joint division-tower translation kernel is a product of its primary closed lattices. Odd-primary translations have no quadratic character. When the coefficient two occurs, its residual order-three CM action makes A-I an integral lattice automorphism, so every quadratic character kills the two-primary translations as well. A quadratic subfield of this tower therefore lies in the CM torsion extension, which is abelian over K. This establishes the required noncontainment of a radical whose quadratic extension is not Galois over K.
+
+The coefficient-two radical is nonsquare at the explicit prime31 and has cubic norm one. For p>=5, Serre (1972), Propositions11--12, printed pp273--275, were reopened and read in the primary author-hosted source: the split ordinary inertia factors and the inert supersingular full Cartan follow with e=1. Both split inertia factors generate the entire Cartan, proving disjointness from the cubic field ramified only at three. The dyadic Frobenius is [-2] on prime-to-two torsion. A local square satisfies the necessary congruence modulo four. The exact half-numerator has pole order23, while its full Cartan orbit has at least24 distinct reductions. All denominators are units away from order-three cusps. Cubic conjugation of the flex-unit values has product one, so its nonzero squareclass cannot be invariant.
+
+The remaining support-three case is A.68. Together with A.68 for nonzero integer baselines this proves the exact exponent classification for every finite alteration of every integer. It does not compute Gamma3 fibres or classify infinite alterations. Fresh root execution of a_main_finite_support.py passed; raw output is work/root_a69_fresh.out.
+
+## B.41: an actual action deformation preserving the Ross extension
+
+The root read the complete typeset proof, including the six-bracket parameter, integral derivation, arithmetic character, local nineteen relation, and forced change of the class-two cusp origin. The central modification is a literal automorphism of the class-three group; it is not claimed to be geometric. The unique rational local correction has valuation minus one, so the given actual cusp input fails for the modified action despite identical Ross-extension data. The anti-invariant origin shift is nontrivial and supplies the exact reason that existence of peripheral packets alone cannot choose the actual action. Fresh root execution of C's independently reconstructed integer certificate passed all54 geometric actions; raw output is work/root_B41_independent_fresh.out.
+
+## B.42: a full-section consequence across inert primes
+
+The root independently checked the exact affine translation kernel L=3Z3(1,2)+27Z3e1, its conjugation invariants, the scalar lift D0, and the integral involution-conjugation argument. These prove divisibility by27 of the free compact class at every inert prime. The local group has order3^v3(q+1), giving the common-colour bound. The threshold-four finite Chebotarev witnesses show sharpness only for compact labels and introduce no local ramification. The direct finite-three-cover proof of ramification implying cuspidality uses an annulus-separated quotient and a forbidden q-eigenvector in the compactified Jacobian; it does not infer a full profinite lift. Fresh root execution of c_inert_affine_colours.py passed the entire mod81 image,118098 elements; raw output is work/root_B42_affine_fresh.out.
+
+## Source correction
+
+The author publication list and 2012 primary manuscript identify Stix's On cuspidal sections of algebraic fundamental groups as Advanced Studies in Pure Mathematics63(2012),519--563. The packet theorem is17 in that manuscript, corresponding to14 in the older supplied arXiv source. The previous draft's journal/year metadata has been corrected. The packet argument and assumptions were checked directly; no mathematical status changes follow from this bibliographic correction.
+
+
+## A.70: the uniform coefficient-three obstruction
+
+The root read the full work proof and independently checked its field and normalization bridge. The flex-ratio divisor and value1 at O descend it to the full three-torsion field; its transport is exactly the E9 function even when the global cubic untwisting parameter lies outside that field. Locally at two, the faithful order-three CM action on E9[3] identifies the torsion field with the tame cubic untwisting field. Further odd torsion is unramified over it. After subtracting the unique torsion lift of the reduction, an odd formal height gives an odd pole valuation. An even height is at least two; in the ramified case the exact parameter z([zeta]P)=zeta z(P) and the cubic norm turn its cube into an element divisible by four in the unramified base. The norm denominator telescopes to one. Factoring the difference of cubes recovers the same modulo-four condition as A69. It cannot hold at all72 reductions of E[9] minus E[3], since the exact polynomial has pole order23. The baseline-zero case uses only those interior torsion points. C independently audited all of these steps and replayed the exact polynomial certificate.
+
+
+## A.71: uniform completion for finite support
+
+Root derived and then audited the twist-independent two-torsion formula in the short model Y^2=X^3−432d^2: with u^3=d and c^3=2, the flex ratio gd=(6u zeta^2 X−Y−36d)/(6u X−Y−36d) takes the same value (zeta^2 c−1)/(c−1) at S2=(6cu^2,0). The residual C3 fails precisely for rational cube classes1,2,4; the existing rigorously certified central L-values give rank zero there, excluding the assumed nontorsion point. For odd support with p>=5, the E9 witness persists under the abelian compositum with K(u), whose relative degree is odd. An extension of the cubic conjugating automorphism need not have order three: its restriction to the original witness field still gives the three-factor norm identity, which suffices to contradict invariant squareclass. The actual normalized flex character transports exactly. Root and C independently audited these fields; the fresh root symbolic replay passed and is preserved at work/root_A71_fresh.out. This completes every finite alteration uniformly, while leaving infinite alterations and quotient fibres explicit.
+
+
+## B.43: actual finite cusp-origin data and a corrected marking
+
+Root checked the radical-cover identities, arithmetic reindexing formula, tangent leading constants zeta/3 and−1/3, the infinity product constant, and the relative Frobenius inversion. The root then identified that the displayed automorphisms are deck maps, rather than sheetwise monodromies. B and C independently completed the right-action calibration: intrinsic c=[y,x] corresponds to deck h^(−1). The relative cusp element h^(−k) is therefore c^k; the intrinsic homogeneous rows +9,+54 correspond to deck rows−9,−54. The proof and table now distinguish these coordinates. Root also supplied the73 Frattini diagnostic: the nonzero central point value is secondary nonabelian data and cannot be identified with a linear missing H1 coordinate. The explicit compatible covers give actual affine target data; the full quadratic pullback/reference subtraction is still required for B5. Fresh root replays are preserved separately.
+
+
+## Work-only companions reviewed before checkpoint 06
+
+A72: the geometric product TE times V4 makes the finite kernel action independent of the compact reference section. The local conjugator ambiguity is exactly H0(Qv,TE), which vanishes because local elliptic torsion is finite. At O, the infinity inertia entry of the actual Gamma3 pullback is one; this is necessary to collapse the cusp packet. Inflation-restriction and Chebotarev reduce the finite-module local-global injection to H1(H,F2^2)=0 for H=1,C2,C3,S3. The C2 transvection calculation and the S3 normal-C3 calculation are correct. This proves a singleton fibre over each integer, not over all still-undecided profinite exponents.
+
+B44: the degree-two quotient has five puncture orbits and three additional interior order-two stabilizers; filling the two named puncture orbits and killing those stabilizers gives the actual tripod map. Coprime complement conjugacy justifies the chosen order-two based lift up to inner target conjugation. The degree-three quotient is an etale cyclic cover of the five-punctured sphere; the positive one-third tangent loop projects to the filled C0 image. The boundary-fixed Nielsen comparison, with matching cubes, pins the based CM representative. In the rank-two target every class-two IA automorphism is inner, so the two chosen peripheral central normalizations are legitimate. The root reran work/b_quadratic_pencil_maps.py successfully, obtaining the two exact rows with denominator two only and all peripheral images. These maps remove the quadratic pullback gap but do not by themselves subtract a compatible arithmetic reference origin or solve arbitrary-input B5.
+
+
+## Correction to a higher-level probe concern
+
+The root initially suggested that the abelian-split Frobenius probes might be blind to every missing linear action class at every precision. That extrapolation was incorrect: the coefficient is the twisted module Z3(2) times the quadratic character, not a constant abelianization module. B supplied the exact countercalculation. With h=tau taubar^{-1} and r=tau h tau^{-1} h^{-7}, one has chi(r)=1 and kappa_lambda(r)=0, but psi(h)=2 and psi(r)=(49-7)*2=84 for the normalized twisted cocycle. Its 3-adic valuation is one. Thus the 9psi probe can be visible modulo81 and the 54psi probe modulo243 even on the Kummer-split locus. The original mod3/Frobenius73 diagnostic remains valid: its raw nonzero Heisenberg coordinate cannot be called a value of the mod3 linear cocycle. No published statement asserted higher-level blindness. The reference-origin subtraction is still required.

@@ -1,0 +1,211 @@
+\subsection{An independent structural recomputation of E.67}
+
+\begin{statement}{E67.R1}{Proved}{The complete common correction image and the full commutator image}
+Let $F=\widehat F(X,Y)$ and let $q_{12}$ send $X$ to
+$U^2$ and $Y$ to $L^2$ in $\mathrm{SL}_2(\mathbb Z/12)$.
+Put $N=\ker q_{12}$ and $K_6=\overline{N'N^6}$.
+Let $V=\mathbb F_3^2$, and form the two affine groups
+\[
+ \begin{array}{c|ccc}
+ &x&y&z\\ \hline
+ M&(0,R)&(e_1,R^3)&(e_1,R^2)\\
+ G&(e_1,S)&(-e_2,S^2)&(0,S)
+ \end{array}
+ \quad
+ R=\begin{pmatrix}0&1\\-1&1\end{pmatrix},\quad
+ S=\begin{pmatrix}0&1\\-1&0\end{pmatrix}.
+\]
+Multiplication is $(v,A)(w,B)=(v+Aw,AB)$. Evaluate one free
+word in the six ordered pairs
+\[
+ (x,y),(y,x),(z,x),(x,z),(y,z),(z,y)
+\]
+first in $M$ and then in $G$, obtaining $\Theta$.
+Then $|q_{12}(F)|=96$, $N$ has a Schreier free basis of length
+$97$, and
+\[
+ \begin{split}
+ \Theta(K_6)=\Theta(N')&=\mathcal M\times\mathcal G,\\
+ \mathcal M&=\{(aw,aw,bw,cw,-cw,-bw):a,b,c\in\mathbb F_3\},\\
+ \mathcal G&=\{(u,v,t,-t,-Sv,-Su):u,v,t\in V\},
+ \qquad w=(1,-1).
+ \end{split}                                                     \tag{ER1}
+\]
+This is a translation space of dimension nine, with projection
+dimensions three and six. The full image $\Theta(F')$ is a
+translation space of dimension fifteen. Its Mordell projection
+$\mathcal F_M$ has dimension nine, its Gaussian projection is
+exactly $\mathcal G$, and
+\[
+                         \Theta(F')=\mathcal F_M\times\mathcal G.
+\]
+The literal pair $(x_M,x_G),(y_M,y_G)$ generates $M\times G$ of
+order $54\cdot36=1944$.
+\end{statement}
+
+\begin{proof}
+The independent program
+\texttt{agent\_literature/code/recompute\_e67\_structure.py}
+represents each affine element by its actual permutation of the
+nine points of $V$. It imports no supplied checker. It constructs
+the $96$-vertex Cayley graph of $U^2,L^2$ using only positive
+letters, with the letter $Y$ explored first. Its prefix-closed
+spanning tree has $95$ edges. Of the $192$ positive directed
+edges, the other $97$ give the nontrivial Schreier words
+$t_g a t_{ga}^{-1}$. Each is freely reduced and re-evaluated to
+the identity modulo twelve. The Schreier theorem therefore gives
+a free basis of $N$; this argument also identifies the full
+profinite kernel, since the subgroup has finite index.
+The signed and projective kernels agree here: every element of
+$q_4(F)$ has diagonal entries one, whereas $-I$ has diagonal
+entries three.
+
+The linear parts of every component of $\Theta(F)$ belong to
+a cyclic group, so every component of $\Theta(F')$ is a
+translation. Consequently the required derived images are
+ordinary vector subspaces over $\mathbb F_3$. The image of
+$N'$ is the normal closure of the pairwise commutators of the
+$97$ Schreier generators. The program evaluates all
+$\binom{97}{2}=4656$ commutators as permutations, extracts their
+translation vectors, and obtains rank nine. It then closes this
+space under conjugation by all $97$ generator images; the rank
+remains nine. This proves that the space is exactly $\Theta(N')$,
+not merely a lower bound obtained from a few commutators.
+Its basis is compared with the nine basis vectors obtained from
+the displayed parametrization in (ER1); their joint rank is nine.
+The two projection ranks are three and six, proving the asserted
+direct product.
+
+For the sixth-power step, every Mordell component of
+$\Theta(N)$ has linear part in $\langle R^2\rangle$, and every
+Gaussian component has linear part in $\langle S^2\rangle$.
+The respective entire affine subgroups have orders $27$ and $18$.
+The program checks exponent dividing six on every element of
+these two groups, not just on the $97$ sampled images.
+Equivalently, $R^2=I+J$ with $J^2=0$ in characteristic three,
+so $I+R^2+R^4=0$, while the second linear part is $I$ or $-I$.
+Thus $\Theta(N^6)=1$, and $\Theta(K_6)=\Theta(N')$ follows.
+
+To determine the full commutator image, the program starts from
+the single actual word $[X,Y]$ and closes its translation vector
+under conjugation by $X,Y,X^{-1},Y^{-1}$. This is exactly the
+normal closure defining $F'$, so it gives the entire image.
+Its stable dimension is fifteen, with projection dimensions
+nine and six. Since their sum equals fifteen and the Gaussian
+projection is the already computed $\mathcal G$, the asserted
+product decomposition follows.
+
+The JSON certificate saves all $97$ Schreier words, nine actual
+words in $N'$ whose images form the correction basis, and fifteen
+actual words in $F'$ whose images form the full-image basis.
+It re-evaluates every saved basis word, so every vector in the
+claimed images has a finite-word preimage. Finally, direct closure
+of the two literal pairs gives all $1944$ elements of $M\times G$.
+The program and its complete textual output are supplied alongside
+the JSON certificate.
+\end{proof}
+
+\begin{statement}{E67.R2}{Proved}{The universal conditional fibre statement is zero or four}
+For an arbitrary origin word $f_0\in F'$, its attainable
+twelve-evaluation vectors in $f_0(K_6\cap F')$ satisfy the following
+exact dichotomy. There are $729$ possible Mordell origin cosets in
+$\mathcal F_M/\mathcal M$. Exactly nine contain a framed
+determinant-one Mordell target, and each of these contains exactly
+one. The other $720$ contain no such target. All four framed
+Gaussian targets are reachable from every Gaussian origin.
+Consequently an origin in one of the nine Mordell target cosets
+has exactly four simultaneous framed targets, whereas every
+other origin has none.
+
+Whenever such a target $t$ exists, an actual correction
+$c_t\in N'$ can be chosen, and its complete word fibre is
+\[
+ f_0c_t\bigl(K_6\cap F'\cap\ker\Theta\bigr).                  \tag{ER2}
+\]
+Each target induces an automorphism of the actual joint group
+$M\times G$, hence gives a generating pair there.
+\end{statement}
+
+\begin{proof}
+The relevant centralizers in $\mathrm{SL}_2(\mathbb F_3)$ have
+orders six and four. In the Mordell case the three positive-sign
+matrices are $I,R^2,R^4$. For each such matrix the translation
+frame of $y$ is unique, because $I-R^3=2I$ is invertible; the
+translation frame of $z$ has three possibilities, because
+$I-R^2$ has rank one. This gives nine framed Mordell targets.
+The cusp condition $(B-I)e_1\in\operatorname{im}(I-R^2)$ forces
+$B$ to act as $+1$ on $\mathbb F_3(1,-1)$; all six centralizer
+matrices are checked, and the three that pass are exactly those
+just listed.
+
+In the Gaussian case the centralizer is $\{I,-I,S,-S\}$.
+The map with linear action $B$ on the translation subgroup and
+fixing $x$ is conjugation in the full affine permutation group by
+$(h,B)$, where
+$(I-S)h=(I-B)e_1$. Both $I-S$ and $I-S^2$ are invertible.
+Hence both frames are unique and there are exactly four targets.
+The first free-word evaluation has translation
+$v=(I-B)e_1$, giving
+\[
+ \begin{array}{c|c|c}
+ B&v&\text{parity}\\\hline
+ I&(0,0)&0\\-I&(2,0)&0\\S&(1,1)&1\\-S&(1,2)&1.
+ \end{array}
+\]
+Thus the parity is $v_2^2$. These factor actions are implemented
+as conjugations of actual nine-point permutations, and the program
+verifies that they carry the full finite group bijectively to itself.
+
+If $h_y,h_z$ are the two translation frames, the two-cycle and
+three-cycle equations give the six translation values
+\[
+ (-h_y,h_y,h_z,-h_z,h_y-h_z,h_z-h_y).                            \tag{ER3}
+\]
+Conversely this tuple satisfies all six ordered two-cycle and
+three-cycle evaluations and gives the indicated conjugates of
+$y,z$. The program verifies every ordered form for each target.
+All nine Mordell target vectors belong to $\mathcal F_M$, and all
+four Gaussian target vectors belong to $\mathcal G$.
+
+The quotient $\mathcal F_M/\mathcal M$ has dimension six.
+Using the actual echelon normal form for the computed correction
+space, the program enumerates its $729$ cosets, verifies that every
+coset has $27$ elements, and computes the target distribution
+\[
+       \#\{\text{cosets with zero targets}\}=720,\qquad
+       \#\{\text{cosets with one target}\}=9.
+\]
+This computation is independent of any list of origin words.
+Since the Gaussian correction space equals the entire Gaussian
+origin space, all four Gaussian targets are reachable from every
+origin. The product decomposition in E67.R1 makes the two
+corrections independent, proving the zero-or-four dichotomy.
+
+Moreover $N'\subseteq K_6\cap F'$ and
+$\Theta(N')=\Theta(K_6)$, so restriction to $K_6\cap F'$ loses
+no correction vector. A linear combination of the nine saved
+word witnesses gives an actual $c_t\in N'$ for every reachable
+target. The ordinary kernel-fibre identity for the homomorphism
+$\Theta$ gives (ER2). Both factor maps are automorphisms and the
+literal pair generates their full direct product, by E67.R1;
+therefore the corresponding joint pair is generating.
+\end{proof}
+
+\begin{statement}{E67.R3}{Open}{The forty-eight original membership tests require their actual words}
+The attached material does not include the literal $24$ E.1
+origin words and the separate $24$ E.17 origin words needed to
+decide their membership in the nine successful Mordell cosets.
+This recomputation therefore does not certify that each of those
+$48$ specific origins has four targets, nor reproduce their
+claimed saved corrections. It proves the complete structural
+criterion E67.R2 and the actual correction image E67.R1.
+For each missing origin, the smallest remaining calculation is
+one twelve-coordinate evaluation in $M$, followed by reduction
+modulo the three-dimensional space $\mathcal M$ and comparison
+with the nine saved target normal forms.
+\end{statement}
+No failure of an original origin is inferred from the $720$ empty
+generic cosets. Conversely, the existence of the nine successful
+cosets does not prove membership for a word that has not been supplied.
+These are finite necessary comparisons; none supplies a full-GT
+lift or a value of $\Delta$ on the pentagon subgroup.

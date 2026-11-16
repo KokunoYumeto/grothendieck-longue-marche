@@ -1,0 +1,427 @@
+\subsection{The full congruence quotient together with abelianization}
+
+\begin{statement}{A.56}{Proved}{Exact abelian image of the full congruence kernel}
+Let $H$ be the full geometric Legendre image in A.17, and put
+\[
+ C=\ker(\Pi\longrightarrow H),\qquad
+ T=\Pi^{\rm ab}=\widehat\Z(1)^2.
+\]
+All derived subgroups in this statement are closed derived
+subgroups.  There is an isomorphism of finite $G_\Q$-modules
+\[
+ H^{\rm ab}\simeq (\Z/8(1))^2\oplus\Z/3(1),
+\tag{A.56.1}
+\]
+under which the map induced by the two Kummer coordinates is
+\[
+ T\longrightarrow H^{\rm ab},\qquad
+          (a,b)\longmapsto(a\bmod8, b\bmod8, a+b\bmod3).
+\tag{A.56.2}
+\]
+In particular, the image of $C$ in $T$ is exactly the open subgroup
+\[
+ K=\{(a,b):a\equiv b\equiv0\pmod8,\quad a+b\equiv0\pmod3\}.
+\tag{A.56.3}
+\]
+
+Set $E_H=E_U/C$, $E_{H^{\rm ab}}=E_H/[H,H]$, and
+$E_1=E_U/\Gamma_2\Pi$.  The natural map is an isomorphism of
+profinite extensions,
+\[
+ E_U/(C\cap\Gamma_2\Pi)
+       \xrightarrow{\ \sim\ }
+       E_H\mathop{\times}_{E_{H^{\rm ab}}}E_1.
+\tag{A.56.4}
+\]
+Fix a rational point $b_0\in U(\Q)$.  Given completed Kummer
+classes $(A,B)$, a section of (A.56.4) with these abelian classes
+and with its $E_H$ image equal to the point section at $b_0$
+exists exactly when
+\[
+ \begin{split}
+ A&\equiv b_0\pmod{(\widehat{\Q^\times})^8},\\
+ B&\equiv1-b_0\pmod{(\widehat{\Q^\times})^8},\\
+ AB&\equiv b_0(1-b_0)\pmod{(\widehat{\Q^\times})^3}.
+ \end{split}
+\tag{A.56.5}
+\]
+These expressions mean equality under the canonical projections
+to $\Q^\times/(\Q^\times)^8$ and
+$\Q^\times/(\Q^\times)^3$, respectively.
+
+The ordinary infinite-support ghosts of A.44 satisfy (A.56.5)
+for $b_0=3$.  They therefore define global sections of this
+quotient with the entire congruence representation of the honest
+point $3$, including its determinant and its integral pairings.
+At every fresh support prime in the construction, these quotient
+sections fail the local Legendre comparison with their prescribed
+ordinary point.  They are therefore not images of Selmer sections
+of $E_U$.  The exact full-section recognition question in A7 is
+not decided by this quotient construction.
+\end{statement}
+\begin{proof}
+We compute the closed derived subgroups of the factors of $H$.
+At the prime two write
+\[
+ H_2=\left\{\begin{pmatrix}a&b\\c&d\end{pmatrix}
+   \in\operatorname{SL}_2(\Z_2):
+       b,c\in2\Z_2,\ a,d\equiv1\pmod4\right\},
+ \qquad x=U(2),\quad y=L(-2).
+\tag{A.56.6}
+\]
+These two matrices topologically generate $H_2$ by A.17.
+Let $D_2=[H_2,H_2]$ and
+$K_n=\ker(\operatorname{SL}_2(\Z_2)\to
+\operatorname{SL}_2(\Z/2^n))$.  The exact integer commutator is
+\[
+                c=[x,y]=\begin{pmatrix}13&8\\8&5\end{pmatrix}.
+\tag{A.56.7}
+\]
+Modulo 16 it is central, has square $9I$, and has order four.
+The group $H_2$ modulo 16 has order 256: its reduction modulo
+four has four elements, and each of the next two reduction
+maps has kernel of order eight.  Therefore its derived subgroup
+is precisely $\langle c\rangle$ of order four, and its
+abelianization has order 64.  Both $x,y$ have order eight
+modulo 16.  They generate that abelianization, so the map
+\[
+         (\Z/8)^2\longrightarrow
+            (H_2\bmod16)/\langle c\rangle,
+                         (a,b)\longmapsto x^a y^b
+\tag{A.56.8}
+\]
+is an isomorphism.
+
+We next prove that no further abelian quotient appears at
+higher powers of two.  The following three elements of $D_2$
+are in $K_4$, with the indicated leading terms modulo 32:
+\[
+ \begin{array}{c|c}
+ \text{element}&(g-I)/16\pmod2\\ \hline
+ c^4&I\\
+ {[x,c]}&I+e_{12}\\
+ {[y,c]}&I+e_{21}.
+ \end{array}
+\tag{A.56.9}
+\]
+For example their exact integer matrices are
+\[
+ \begin{pmatrix}75025&46368\\46368&28657\end{pmatrix},\quad
+ \begin{pmatrix}465&-752\\128&-207\end{pmatrix},\quad
+ \begin{pmatrix}81&-128\\-112&177\end{pmatrix}.
+\]
+The three leading terms span
+$\mathfrak{sl}_2(\mathbf F_2)$, which is
+$K_4/K_5$ under $g\mapsto(g-I)/16$.  If $n\ge4$, then
+\[
+ (I+2^nA)^2\equiv I+2^{n+1}A\pmod{2^{n+2}}.
+\tag{A.56.10}
+\]
+Repeated squares of the three elements consequently show that
+$D_2\cap K_n$ surjects onto $K_n/K_{n+1}$ for every $n\ge4$.
+For any element of $K_4$, choose successively products of
+these elements to match it modulo $2^5,2^6,\ldots$.
+The corrections tend to the identity and the products converge
+in $D_2$, which is closed.  Their limit is the prescribed
+element.  Hence $K_4\subset D_2$.
+Together with (A.56.7)--(A.56.8) this proves
+\[
+ D_2=\{g\in H_2:g\bmod16\in\langle c\rangle\},
+                         \qquad H_2^{\rm ab}=(\Z/8)^2.
+\tag{A.56.11}
+\]
+This proof controls the full inverse limit rather than only
+the first finite reductions.
+
+At three put $G_3=\operatorname{SL}_2(\Z_3)$.
+The commutator formula
+\[
+ [\operatorname{diag}(2,2^{-1}),U(a)]=U(3a)
+\tag{A.56.12}
+\]
+and the corresponding lower-triangular formula show that
+$U(3\Z_3)$ and $L(3\Z_3)$ lie in $[G_3,G_3]$.
+For $d\in1+3\Z_3$, the identity
+\[
+ \operatorname{diag}(d,d^{-1})=
+ U(1)L(d-1)U(-1/d)L(-d(d-1))
+\tag{A.56.13}
+\]
+also has trivial image in the abelianization: the two lower
+factors already do, and the two upper factors have product
+$U(1-1/d)$ there, with $1-1/d\in3\Z_3$.
+Gauss decomposition now puts the entire reduction kernel
+modulo three in the closed derived subgroup.
+
+The derived subgroup of $\operatorname{SL}_2(\mathbf F_3)$
+is the quaternion group of order eight.  Explicitly, the set
+consisting of $\pm I$ and the six trace-zero matrices is a
+normal quaternion subgroup, with quotient of order three.
+The commutator of $U(1)$ and $L(1)$ has order four, and its
+conjugates by these generators generate that quaternion
+subgroup.  Thus
+\[
+                G_3^{\rm ab}=\Z/3.
+\tag{A.56.14}
+\]
+Moreover $U(2)$ and $L(-2)$ have the same nonzero image in
+this quotient, since
+\[
+ S U(2)S^{-1}=L(-2),\qquad
+                      S=\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+\tag{A.56.15}
+\]
+The image is nonzero because either unipotent has order three
+modulo three and is outside the quaternion subgroup.
+
+For every $\ell\ge5$ there is a unit $u\in\Z_\ell^\times$
+with $u^2-1\in\Z_\ell^\times$.  The commutator of
+$\operatorname{diag}(u,u^{-1})$ with $U(a)$ is
+$U((u^2-1)a)$, and similarly for lower matrices.  Thus the
+closed derived subgroup contains all elementary matrices,
+which generate $\operatorname{SL}_2(\Z_\ell)$ by row
+reduction.  All these factors are perfect.
+The closed derived subgroup of a product of these profinite
+groups is the product of their closed derived subgroups:
+the inclusion in one direction follows by projection, and
+in the other direction one first realizes the elements in
+finitely many factors and then takes limits.  This proves
+the group structure in (A.56.1).
+
+We specify its character map, including the sign at three.
+Take positive cusp meridians $\gamma_0,\gamma_1$ whose
+Kummer degrees for $(t,1-t)$ are $(1,0),(0,1)$.
+In the labeled convention compatible with A.16 the ordered
+pair of Picard--Lefschetz matrices can be chosen as
+\[
+                \rho(\gamma_0)=L(-2),\qquad
+                \rho(\gamma_1)=U(2).
+\tag{A.56.16}
+\]
+Equivalently one may simultaneously conjugate by $S$ and
+interchange the two matrix names.  Changes of paths to the
+cusps conjugate the individual meridians and do not change
+their abelian images.  At two use (A.56.8), with its two
+coordinates ordered as $(\gamma_0,\gamma_1)$, to obtain
+$(a\bmod8,b\bmod8)$.  At three (A.56.15) gives $a+b$,
+and not $a-b$.  The same plus sign is independently fixed by
+the actual cubic quotient $v^3=4t(1-t)$ in A.39: both finite
+cusps have valuation one in its defining unit.
+Finally the map $T\to H^{\rm ab}$ is $G_\Q$-equivariant.
+The arithmetic action on $T$ is cyclotomic in both
+coordinates, so its quotient action on the displayed
+factors is precisely that in (A.56.1).  This establishes
+the full module map (A.56.2).
+
+We now prove the assertion about the full congruence kernel.
+The map from the compact group $\Gamma_2\Pi$ to $[H,H]$
+is onto.  Its image is closed, is contained in $[H,H]$,
+and contains every commutator of $H$ by lifting the two
+entries to $\Pi$; it therefore contains their closed
+generated subgroup.  If an element of $\Pi$ has abelian
+image $t\in T$ mapping to zero in $H^{\rm ab}$, its image
+in $H$ lies in $[H,H]$.  Multiply it by a suitable element
+of $\Gamma_2\Pi$ to cancel this image.  The result belongs
+to $C$ and still has abelian image $t$.  Conversely every
+element of $C$ has zero image in $H^{\rm ab}$.
+The image of $C$ in $T$ is therefore exactly (A.56.3).
+
+The same lifting argument proves that
+\[
+                \Pi\longrightarrow H\times_{H^{\rm ab}}T
+\tag{A.56.17}
+\]
+is onto: lift the $H$ coordinate first, and then correct
+its $T$ coordinate by an element of $C$.  The kernel is
+$C\cap\Gamma_2\Pi$.  On each arithmetic fibre over
+$G_\Q$ apply the same argument, first choosing one lift
+in $E_U$ of its specified $E_H$ coordinate.
+This proves surjectivity and the claimed kernel in
+(A.56.4).  All maps are continuous and all groups compact
+Hausdorff, so the resulting bijection is a topological
+isomorphism.  In particular the passage from finite $Q$
+in A.51 to the full $H$ has been proved, rather than
+inferred from separate finite-level splittings.
+
+Use the point $b_0$ to split all these arithmetic
+extensions.  Relative to its abelian splitting, $(A,B)$
+gives a continuous cocycle $z:G_\Q\to T$ representing
+\[
+               (A/\kappa(b_0),\ B/\kappa(1-b_0)).
+\tag{A.56.18}
+\]
+Its image in $H^1(G_\Q,H^{\rm ab})$ is zero exactly when
+(A.56.5) holds, by (A.56.1)--(A.56.2) and the Kummer
+isomorphisms for $\mu_8$ and $\mu_3$.
+Vanishing of this cohomology class means that the image
+cocycle is a coboundary, say $\sigma v-v$ for
+$v\in H^{\rm ab}$.  Lift $v$ through the surjective
+map $T\to H^{\rm ab}$ and conjugate the abelian section
+by this lift, with the sign that cancels that coboundary.
+Its image in $E_{H^{\rm ab}}$ is now literally the point
+section at $b_0$.  Pairing it with the point section in
+$E_H$ and applying (A.56.4) constructs the required
+continuous quotient section.  Conversely a section
+with the prescribed $E_H$ component gives zero image
+of (A.56.18) in this cohomology group, and hence
+(A.56.5).  The conjugation changes no Kummer cohomology
+class, so this proves the assertion for the specified
+$(A,B)$, including its necessity.
+
+In A.44, $A$ and $B$ are obtained from $3$ and $-2$ by
+multiplication by prime powers with exponents
+$n_j=(j+4)!$.  All these exponents are divisible by
+$24$, the exponent of (A.56.1).  Their limits therefore
+satisfy (A.56.5) for $b_0=3$.
+The construction above gives their quotient section
+with the complete $E_H$ image of that point.
+
+We finish by checking exactly why its ordinary local
+data do not have that image.  At a fresh prime $q_j$
+in the support of $A$, A.44 gives
+\[
+                v_{q_j}(x_{q_j})=n_j>0,
+                    v_{q_j}(1-x_{q_j})=0.
+\tag{A.56.19}
+\]
+All these primes are distinct from two and three.
+The Legendre discriminant and invariant are
+\[
+       \Delta(t)=16t^2(1-t)^2,\qquad
+                    c_4(t)=16(t^2-t+1).
+\]
+Thus $E_{x_{q_j}}$ has multiplicative reduction at
+$q_j$ with discriminant valuation $2n_j>0$.
+For every coefficient prime $\ell\ne q_j$, after an
+unramified quadratic splitting extension its inertia
+action on $T_\ell$ is a unipotent whose off-diagonal
+tame character has coefficient $2n_j$.  This is
+nonzero in $\Z_\ell$ even when it is highly divisible
+by $\ell$.
+At a fresh prime $r_j$ in the support of $B$ the
+same calculation applies with $x$ and $1-x$
+interchanged.
+
+By contrast $E_3$ has discriminant $576$ and good
+reduction at every fresh support prime.  Its
+$\ell$-adic inertia action there is trivial for
+$\ell$ different from that prime.  The quotient
+section in (A.56.4) has exactly this representation
+because its $E_H$ image is the point section at $3$.
+Nontrivial unipotent inertia cannot be conjugated
+to trivial inertia.  This proves the claimed local
+failure in the full congruence quotient.
+
+There is no alternative ordinary local point with
+the same abelian coordinates: the Kummer map
+$\Q_q^\times\to\widehat{\Q_q^\times}$ is injective,
+as follows from its decomposition into the valuation
+factor, finite roots of unity, and principal units.
+It fixes that point as $x_q$.  Nor can a cuspidal
+section have these coordinates.  At a fresh
+$q_j$, cusp zero would require
+$\kappa(1-x_{q_j})=1$, impossible by injectivity
+and $x_{q_j}\ne0$; cusp one and infinity are
+excluded by the distinct valuations $(n_j,0)$.
+The analogous argument at $r_j$ exchanges zero
+and one.  Thus the quotient sections are not
+local point or cusp images there, and in particular
+do not lift to Selmer sections of $E_U$.
+This last verification identifies the additional
+local condition required by the full A7 problem.
+\end{proof}
+
+\noindent\emph{Exact cyclic and Fermat comparison.}
+For integers $a,b$ and $n\ge1$, the Kummer character of the
+finite etale cover
+\[
+                         z^n=t^a(1-t)^b
+\]
+factors through $E_H$ if and only if
+\[
+                   n\mid24a,\qquad n\mid24b,
+                                  \qquad n\mid8(a-b).
+\tag{A.56.20}
+\]
+Indeed its restriction to $T$ is $(u,v)\mapsto au+bv\pmod n$,
+and it factors exactly when it kills the image $K$ of $C$.
+The module $K$ in (A.56.3) is generated over $\widehat\Z$ by
+$(24,0),(0,24),(8,-8)$: write an element as $(8u,8v)$;
+then $u+v=3w$, and
+$(8u,8v)=w(0,24)+u(8,-8)$.
+Evaluation on these generators proves (A.56.20).
+The full Fermat cover $x^n=t$, $y^n=1-t$ therefore factors
+through the congruence quotient exactly when $n\mid8$,
+by applying (A.56.20) to its two coordinate characters.
+This supplies the precise map and the exact range needed
+when comparing Fermat covers with congruence covers in L15.
+
+\noindent\emph{The common quotient with a geometric pro-$\ell$ group.}
+Let $N_\ell=\ker(\Pi\to\Pi^{(\ell)})$, with
+$\Pi^{(\ell)}$ the maximal pro-$\ell$ quotient.
+The maximal pro-$\ell$ quotients of $H$ are exactly
+\[
+ H^{(\ell)}=
+ \begin{cases}
+ H_2,&\ell=2,\\
+ \Z/3,&\ell=3,\\
+ 1,&\ell\ge5.
+ \end{cases}
+\tag{A.56.21}
+\]
+To verify this, every factor $\operatorname{SL}_2(\Z_p)$
+for $p\ge5$ is perfect, so it has no nontrivial finite
+$\ell$-group quotient: a nontrivial finite $\ell$-group
+always has nontrivial abelianization.  The factor $H_2$
+is pro-two.  The pro-three quotient of
+$\operatorname{SL}_2(\Z_3)$ has abelianization $\Z/3$
+by (A.56.14), and is therefore generated by one element.
+Indeed, if the closed cyclic subgroup generated by a lift
+of its abelian generator were proper, a finite three-group
+quotient would place it in a maximal subgroup of index
+three, contradicting that choice of generator.
+This quotient is consequently cyclic and equals $\Z/3$.
+The same maximal-subgroup argument excludes every pro-two
+quotient of this factor, since its abelianization has odd
+order.  Its finite quotients have orders divisible only
+by two and three, which excludes all other coefficient
+primes.  These arguments and continuity on the product
+prove (A.56.21).
+
+The image of $N_\ell$ in $H$ is the kernel of
+$H\to H^{(\ell)}$.  One inclusion follows by composing
+with that pro-$\ell$ quotient, and the other follows
+because quotienting $H$ by the image of $N_\ell$ gives
+a pro-$\ell$ quotient of $\Pi$ and hence of $H$.
+Apply the same compact fibre-product proof as in
+(A.56.17) to the two closed normal subgroups
+$C,N_\ell$.  For $\ell\ge5$ it gives the exact
+isomorphism of arithmetic extensions
+\[
+ E_U/(C\cap N_\ell)
+       \xrightarrow{\ \sim\ }
+                  E_H\times_{G_\Q}(E_U/N_\ell).
+\tag{A.56.22}
+\]
+Thus any section of the geometrically pro-$\ell$
+quotient can be paired globally with a prescribed
+point section in the full congruence quotient.
+For $\ell=3$ the fibre product is instead over the
+arithmetic cubic quotient of A.39, whose geometric
+character is $a+b\bmod3$; for $\ell=2$ it is over
+the quotient with geometric group $H_2$.
+These are actual quotient maps.  As in the preceding
+construction, the assertion about the global fibre
+product does not prescribe the joint local point
+images or a section of the full group $E_U$.
+
+\noindent\emph{Retained verification.}
+\texttt{code/legendre\_congruence\_abelian.py} verifies the
+integer matrices and leading terms in (A.56.7)--(A.56.9), the
+unique $x^a y^b c^k$ forms modulo 16, all products in their
+abelian quotient, and the mod-three and mod-nine calculations.
+Its complete output is retained in
+\texttt{code/legendre\_congruence\_abelian\_output.txt}.
+The proof above supplies the passage from these finite
+certificates to the closed derived subgroups and the full
+arithmetic fibre product.

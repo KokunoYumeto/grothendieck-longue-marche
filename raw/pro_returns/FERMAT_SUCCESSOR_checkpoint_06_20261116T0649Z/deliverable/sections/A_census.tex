@@ -1,0 +1,441 @@
+\subsection{A certified census over the primes $2,3,5,7$}
+
+Put $S=\{2,3,5,7\}$. For an even integer $m$, represent an $S$-supported
+class in $\mathbb Q^\times/\mathbb Q^{\times m}$ uniquely as
+$\varepsilon2^{e_2}3^{e_3}5^{e_5}7^{e_7}$, where
+$\varepsilon\in\{1,-1\}$ and $0\leq e_p<m$. For cubic classes the sign
+is a cube, and we take $\varepsilon=1$. The tables below give every
+coefficient class, including the positive-rank classes. A pair of classes
+defines the punctured diagonal curve
+\[
+ U_{\alpha,\beta,m}:
+ \alpha X^m+\beta Y^m=Z^m,\qquad XYZ\ne0,
+ \qquad t=\alpha(X/Z)^m.
+\]
+Every statement about its section set in this subsection concerns full
+profinite Selmer sections. The all-section extension requires A.20.
+
+\begin{statement}{A.37}{A proof certificate for each computed analytic rank}{Proved}
+The coefficient tables accompanying A.38, A.40 and A.41 determine the exact
+analytic rank of every curve in them. Each nonzero derivative is enclosed
+in a real ball that excludes zero, including a proved bound for the
+infinite tail. Each asserted central zero follows from the exact root
+number or an independently checked rational point of infinite order.
+All exact coefficient vectors and the bounds used in the certificates are
+preserved with the programs.
+\end{statement}
+\begin{proof}
+We give the analytic and arithmetic certificates, so that the rank labels
+do not depend on a numerical zero tolerance. PARI/GP supplies an integral
+minimal model, its conductor $N$, root number $w$, and exact coefficients
+$a_n$ of its Hasse--Weil $L$-function. These are the documented
+\texttt{ellminimalmodel}, \texttt{ellglobalred}, \texttt{ellrootno}, and
+\texttt{ellan} operations \citep{AMPARI2026}. The source archive used was
+PARI/GP 2.19.1, with SHA256
+\begin{center}\scriptsize\ttfamily
+419553b11ff8c3ecb8e9031b7d91d7cee003a5d721e685fcb499565c96fe2943.
+\end{center}
+The software record and the complete build log are included. Arb, through
+python-flint 0.9.0, supplies rigorous real balls and rigorous incomplete
+gamma and exponential integral evaluations
+\citep{AMJohansson2017,AMPythonFlint2026}.
+
+Let $c=2\pi/\sqrt N$ and $r=e^{-c}$. Hasse's bound and the Euler-factor
+recurrences give
+\[
+ |a_n|\leq d(n)\sqrt n\leq2n.
+\]
+Here the divisor bound follows by pairing divisors below and above
+$\sqrt n$. Modularity and the functional equation give, by splitting
+the Mellin integral at $1/\sqrt N$,
+\begin{align*}
+ w=1:\quad L(E,1)&=2\sum_{n\geq1}\frac{a_n}{n}r^n,\\
+ w=-1:\quad L(E,1)&=0,\qquad
+ L'(E,1)=2\sum_{n\geq1}\frac{a_n}{n}E_1(cn),
+ \quad E_1(x)=\int_x^\infty e^{-u}\frac{du}{u}.
+\end{align*}
+The absolute tails after $M$ terms are at most, respectively,
+\[
+ T_0=\frac{4r^{M+1}}{1-r},\qquad
+ T_1=\frac{4r^{M+1}}{c(M+1)(1-r)}.
+\]
+The second estimate uses $E_1(x)\leq e^{-x}/x$. We initially take
+$M=8(\lfloor\sqrt N\rfloor+1)$ and 160-bit balls. Adding the symmetric
+ball of radius an upper bound for $T_i$ gives a rigorous enclosure of the
+complete value. A ball excluding zero directly proves nonvanishing;
+no inference from a small floating-point value or an unproved denominator
+bound is made.
+
+If $w=1$ and this interval contains zero, the program obtains a rational
+point $P$ and verifies its equation using exact rational arithmetic. At
+the good inert primes $11,19$, every quartic-coefficient curve has
+$12,20$ points, so its rational torsion has order dividing four. At
+$11,17$, every cubic or sextic-coefficient curve has $12,18$ points, so
+its rational torsion has order dividing six. These reductions are good
+because the discriminants are supported on $S$. The assertion on torsion
+uses injectivity on torsion of order prime to the reduction characteristic
+at each of the two different primes; the two orders exclude torsion at
+the exceptional characteristics as well. We check $4P\ne O$ or $6P\ne O$
+by the exact addition law. Thus $P$ has infinite order.
+For these CM curves, \citet[Corollary C and Remark (3), pp.527--528]{AMRubin1987}
+then implies $L(E,1)=0$: a nonzero central value would imply algebraic
+rank zero. The even functional equation implies order at least two.
+
+For the higher derivative put
+\[
+ \Lambda(s)=c^{-s}\Gamma(s)L(E,s),\qquad h=2^{-45}.
+\]
+The split Mellin integral gives the exact identity
+\[
+ \Lambda(1+h)=\sum_{n\geq1}a_n\left\{
+ \frac{\Gamma(1+h,cn)}{(cn)^{1+h}}+
+ w\frac{\Gamma(1-h,cn)}{(cn)^{1-h}}\right\}.
+\]
+We evaluate through $M=20(\lfloor\sqrt N\rfloor+1)$ at 256 bits. For
+$|h|\leq1$, the absolute tail is at most
+\[
+ T=\frac{4r^{M+1}}{1-r}
+       \left(\frac1c+\frac1{c^2(M+1)}\right),
+\]
+since the two powers in the integrand are bounded by $2t$, for $t\geq1$.
+For every integer $j\geq1$ and $|x|\leq h\leq1$ we also have
+\[
+ |\Lambda^{(j)}(1+x)|\leq B_j,
+ \qquad
+ B_j=\frac{4j^j r}{(1-r)^2}
+       \left(\frac1c+\frac2{c^2}+\frac2{c^3}\right).
+\]
+Indeed $|f(it/\sqrt N)|\leq2e^{-ct}/(1-e^{-ct})^2$,
+$t^{|x|}\leq t$, and $(\log t)^j\leq j^j t$ for $t\geq1$.
+Integrating $t^2e^{-ct}$ proves the displayed bound.
+
+If the known vanishing and parity give order at least $k$, Taylor's
+theorem therefore encloses the first possible derivative by
+\[
+ L^{(k)}(E,1)\ \in\
+ \frac{c k!\Lambda(1+h)}{h^k}
+ +\left[-\frac{cB_{k+2}h^2}{(k+1)(k+2)},
+         \frac{cB_{k+2}h^2}{(k+1)(k+2)}\right].
+\]
+Here the lower derivatives vanish, the derivative of order $k+1$ vanishes
+by the functional equation, and $\Lambda^{(k)}(1)=L^{(k)}(E,1)/c$.
+Every case needing this step has $k=2$ and an interval excluding zero.
+Thus all the analytic ranks in this census are exactly $0,1$, or $2$.
+
+The files retain each minimal model and change of variables, every exact
+$a_n$ used, the torsion calculation, each rational point certificate,
+the ball precision, truncation length, all tail bounds, and the final
+interval. The supplied code rechecks the rational points without using
+PARI's numerical analytic-rank routine. This proves the claimed type of
+certificate for every row.
+\end{proof}
+
+\begin{statement}{A.38}{All 81 cubic coefficient classes}{Proved}
+For $d=2^{e_2}3^{e_3}5^{e_5}7^{e_7}$, $0\leq e_p<3$, let
+$E_d:y^2=x^3-432d^2$. Of the 81 curves, 34 have analytic rank zero,
+41 have analytic rank one, and six have analytic rank two. The rank-two
+values of $d$ are
+\[
+ 30,\quad126,\quad210,\quad420,\quad2100,\quad2205.
+\]
+The following table gives every class. The CSV also gives each exact
+conductor, root number, minimal model, and nonvanishing certificate.
+\end{statement}
+\begin{proof}
+The program \texttt{a\_main\_cubic\_census.py} enumerates the $3^4$
+exponent vectors, and \texttt{a\_main\_cubic\_rank2.py} supplies the six
+second-derivative certificates by A.37. Every other case is certified by
+the central value or first derivative. The exact output is
+\texttt{a\_main\_cubic\_census.csv}; the separate rank-two CSV records
+the completed value, tail, fourth-derivative bound and resulting interval.
+The saved coefficient vectors suffice to repeat every enclosure without
+recomputing any Fourier coefficient.
+\end{proof}
+\input{tables/a_main_cubic_ranks.tex}
+
+\begin{statement}{A.39}{The complete section lists in the cubic rank-zero classes}{Proved}
+Among the $81^2=6561$ ordered pairs $(\alpha,\beta)$, the cubic
+rank-zero criterion applies to 2754 pairs. Exactly 2654 have no Selmer
+sections, 97 have only rational cusp packets, and three have one ordinary
+point section and one cusp packet. The latter pairs, ordinary points and
+tripod values are
+\[
+\begin{array}{c|c|c}
+(\alpha,\beta)&[X:Y:Z]&t\\\hline
+(1,2)&[-1:1:1]&-1\\
+(2,1)&[1:-1:1]&2\\
+(4,4)&[1:1:2]&1/2.
+\end{array}
+\]
+The complete 6561-row CSV gives the criterion, every ordinary point, every
+rational cusp, and the Kummer congruence defining the image of each cusp
+packet on the tripod.
+\end{statement}
+\begin{proof}
+Put $d=[\alpha\beta]_3$, using the normalized cube-free representative.
+By A.27 the Jacobian is $E_d$. The torsion bound in A.37 and the division
+polynomials give
+\[
+ E_d(\mathbb Q)_{\rm tors}=\begin{cases}
+ \mathbb Z/3,&d=1,\\
+ \mathbb Z/2,&d=2,\\
+ 0,&d\ne1,2.
+ \end{cases}
+\]
+For completeness, rational two-torsion requires $x^3=432d^2$, which
+holds exactly when $d=2$. The three-division polynomial is
+$3x(x^3-1728d^2)$. The root $x=0$ has negative right side in the
+curve equation; the other factor has a rational root exactly when $d=1$,
+and then gives rational three-torsion. The reductions already bound the
+whole torsion order by six.
+
+Suppose the rank is zero and $d\ne1,2$. If $P$ is a rational point of
+the diagonal cubic and $H$ its plane hyperplane class, then
+$3[P]-H=0$ in its trivial rational Jacobian. Thus $P$ is a flex. More
+explicitly, the complete degree-three plane linear system contains the
+divisor $3P$, so a line cuts out $3P$. The Hessian of
+$\alpha X^3+\beta Y^3-Z^3$ is
+$-216\alpha\beta XYZ$. Its flexes are exactly the coordinate cusps.
+
+If $d=1$ and $(\alpha,\beta)\ne(1,1)$, at some prime the three
+coefficient valuations are distinct modulo three. In a putative local
+point the three summands then have distinct valuations modulo three;
+the least valuation occurs only once, an impossibility. For $(1,1)$,
+the rational cusp gives an origin and the three torsion points are
+exactly the three cusps. If $d=2$, the same obstruction excludes every
+pair except $(1,2),(2,1),(4,4)$. At primes other than two it forces both
+exponents to vanish; at two the allowed exponent pairs are
+$(0,1),(1,0),(2,2)$. Each remaining curve has the displayed ordinary
+point and a rational cusp, and its rational group has order two. These
+are all its rational points.
+
+At $t=0$ a rational cusp exists precisely when $\beta=1$; at $t=1$
+precisely when $\alpha=1$; at infinity precisely when $\alpha=\beta$.
+They are respectively $[0:1:1]$, $[1:0:1]$, and $[1:-1:0]$.
+The packet images satisfy
+\[
+ [t]_3=[\alpha]_3,\qquad
+ [1-t]_3=[\beta]_3,\qquad
+ [1/t]_3=[\alpha^{-1}]_3,
+\]
+respectively. Each rational cusp upstairs contributes its whole packet
+$H^1(\mathbb Q,\widehat{\mathbb Z}(1))$ after choosing a tangent origin.
+A.24 converts the rational point list into the complete Selmer section
+list. The program \texttt{a\_main\_cubic\_pairs.py} verifies the Hessian,
+torsion equations, local obstruction, and every listed point, then
+enumerates all ordered pairs. Each of the 34 rank-zero values of $d$
+has 81 inverse pairs, giving $34\cdot81=2754$. The stated disjoint
+counts follow from the three cusp conditions and the three exceptional
+ordinary pairs. A blank classification outside these 2754 pairs makes
+no assertion of emptiness.
+\end{proof}
+
+\begin{statement}{A.40}{All 512 quartic coefficient classes}{Proved}
+For $A=\varepsilon2^{e_2}3^{e_3}5^{e_5}7^{e_7}$, $0\leq e_p<4$,
+the curves $y^2=x^3+Ax$ have the following exact analytic-rank counts:
+220 of rank zero, 256 of rank one, and 36 of rank two. Every coefficient
+class is included in the following table and the corresponding CSV.
+\end{statement}
+\begin{proof}
+The enumeration in \texttt{a\_main\_cm\_census.py quartic} has exactly
+$2\cdot4^4=512$ inputs. It applies A.37 to each input, and records a
+nonzero certified derivative of the asserted order. The 36 even-sign
+central zeros have exact non-torsion point certificates and nonzero
+second-derivative intervals. The file
+\texttt{a\_main\_quartic\_census.csv} and its raw data directory preserve
+all these certificates.
+\end{proof}
+\input{tables/a_main_quartic_ranks.tex}
+
+\begin{statement}{A.41}{All 2592 sextic coefficient classes}{Proved}
+For $B=\varepsilon2^{e_2}3^{e_3}5^{e_5}7^{e_7}$, $0\leq e_p<6$,
+the curves $y^2=x^3+B$ have the following exact analytic-rank counts:
+1136 of rank zero, 1296 of rank one, and 160 of rank two. Every
+coefficient class is included in the following table and the corresponding
+CSV. There are no unresolved rank labels in this census.
+\end{statement}
+\begin{proof}
+The run \texttt{a\_main\_cm\_census.py sextic} enumerates all
+$2\cdot6^4=2592$ inputs and applies A.37. The 160 even-sign central
+zeros have exact non-torsion points and certified nonzero second
+derivatives; all other rows have a certified nonzero value or first
+derivative. See \texttt{a\_main\_sextic\_census.csv} and the raw data
+directory. The same exact coefficient curves supply all ten target
+families of A.34 after reduction modulo rational sixth powers.
+\end{proof}
+\input{tables/a_main_sextic_ranks.tex}
+
+\begin{statement}{A.42}{Full quartic and sextic pair tables and their section sets}{Proved}
+The supplied full pair CSVs have 262144 quartic rows and 6718464 sextic
+rows, compressed losslessly by gzip. The disjoint classification counts
+are
+\[
+\begin{array}{l|r|r}
+ &m=4&m=6\\\hline
+\text{all ordered pairs}&262144&6718464\\
+\text{at least one rank-zero target}&213496&6689532\\
+\text{no Selmer sections}&212200&6681792\\
+\text{cusp packets only}&1293&7725\\
+\text{ordinary point sections only}&3&15\\
+\text{ordinary points and cusp packets}&0&0\\
+\text{criterion does not settle the pair}&48648&28932.
+\end{array}
+\]
+Every ordinary point and every cusp packet in a settled row is specified
+exactly by the accompanying dictionaries and the decoding rule below.
+\end{statement}
+\begin{proof}
+The coefficient of each target is the indicated element of
+$\mathbb Q^\times/\mathbb Q^{\times m}$. In the order used by the mask
+bits, the quartic targets of A.25 are
+\[
+ -4\alpha\beta,\qquad
+ 4\alpha/\beta^2,\qquad
+ 4\beta/\alpha^2.
+\]
+The sextic targets of A.34, with bit numbers $0$ through $9$, are
+\[
+\begin{array}{c|l@{\qquad}c|l}
+0&\alpha^2\beta^3&1&\alpha^3\beta^2\\
+2&\alpha^2\beta&3&\alpha\beta^2\\
+4&-\alpha^3\beta&5&-\alpha\beta^3\\
+6&-4\alpha\beta&7&4\alpha/\beta^2\\
+8&4\beta/\alpha^2&9&-432(\alpha\beta)^2.
+\end{array}
+\]
+A bit equals one exactly when that target has analytic rank zero in
+A.40 or A.41. Thus a nonzero mask is exactly the union of the stated
+criteria, with no omitted target or coefficient class.
+
+The class dictionary uses the integer identifier
+\[
+ \operatorname{id}(\varepsilon,e_2,e_3,e_5,e_7)
+ =\frac{1-\varepsilon}{2}m^4+e_2m^3+e_3m^2+e_5m+e_7.
+\]
+The full CSV columns are
+\texttt{alpha\_id,beta\_id,criterion\_mask,point\_ids,cusp\_flags}.
+To recover a target class one adds the coefficient exponent vectors
+modulo $m$ and the sign exponents modulo two. This is a finite exact join
+between the full coefficient-rank tables printed above and the displayed
+target rules. It is also a compact presentation in the paper of every
+one of the millions of CSV rows.
+
+For a nonzero mask, A.35 restricts ordinary tripod values to
+\[
+\begin{split}
+m=4:\quad&\{-1,1/2,2\},\\
+m=6:\quad&\{-8,-3,-1,-1/3,-1/8,1/9,1/4,1/2,3/4,8/9,
+                 9/8,4/3,2,4,9\}.
+\end{split}
+\]
+For each such value $t$, form its class pair
+$([t]_m,[1-t]_m)$. It occurs in precisely that normalized pair of
+classes. If $\alpha,\beta$ are its selected representatives, put
+\[
+ u=(t/\alpha)^{1/m}>0,\qquad
+ v=((1-t)/\beta)^{1/m}>0.
+\]
+Both roots are rational by construction, and the four ordinary points are
+$[\pm u:\pm v:1]$, with independent signs. The point dictionary records
+these exact rational coordinates. The program verifies their equations
+using rational arithmetic. Each of the three, respectively fifteen,
+class pairs satisfies a criterion; no two listed values give the same
+pair. Thus their four point sections are complete for those pairs.
+
+The three bits of \texttt{cusp\_flags} correspond to $0,1,\infty$.
+They equal one precisely for
+\[
+ \beta=1,\qquad \alpha=1,\qquad \beta=-\alpha,
+\]
+respectively. Their two rational cusps are
+$[0:\pm1:1]$, $[\pm1:0:1]$, and $[1:\pm1:0]$.
+Each of these individual cusps has its complete Kummer packet. On the
+tripod, the packet congruences are respectively
+$[t]_m=[\alpha]_m$, $[1-t]_m=[\beta]_m$, and
+$[1/t]_m=[\alpha^{-1}]_m$, as in A.23. The finite table counts curves
+and packet centres, never the infinitely many sections in a packet.
+
+The lossless decoding program is
+\texttt{a\_main\_cm\_pairs.py}; for example, its
+\texttt{sextic --decode a b} option returns the two class representatives,
+all applicable targets, all ordinary coordinates, and all rational cusps
+for identifiers $a,b$. Ordinary-point lists in rows with zero mask are
+unclassified. A rational cusp flagged in such a row remains a known
+cusp, but exhaustiveness is asserted only for nonzero masks. The exact
+mask histograms, class and point dictionaries, and counts accompany
+the full CSVs. A.36 supplies exhaustiveness of the section lists. The
+generator iterates each possible identifier pair exactly once, so the
+displayed counts are reproducible finite enumerations, not a sample.
+\end{proof}
+
+\begin{statement}{A.43}{The least conductor rank-one cubic twist}{Proved}
+Among all cubic twists $E_d:y^2=x^3-432d^2$, with $d$ ranging over
+positive cube-free integers, the least conductor of an analytic-rank-one
+twist is $243$. It is attained by $d=9$, whose integral minimal model is
+\[
+ E_9^{\min}:\quad y^2+y=x^3-1.
+\]
+It has torsion-free Mordell--Weil group of rank one and contains the
+non-torsion point $(1,0)$. Its first derivative has the certified enclosure
+\[
+ L'(E_9,1)\in
+ [1.29019059036986358169134\ \mathbin{\pm}\ 6.10\cdot10^{-24}].
+\]
+This identifies the curve requested in task A.12; it does not determine
+the profinite lifting sets posed there.
+\end{statement}
+\begin{proof}
+Every rational cube class has a unique positive cube-free integral
+representative, so this range is global. The displayed Weierstrass model
+has discriminant
+\[
+ \Delta=-2^{12}3^9d^4,
+\]
+and $j=0$. The discriminant valuation modulo twelve is invariant under
+an isomorphism over a local field. For every $p\mid d$, $p\ne3$, it is
+$4$ or $8$ modulo twelve; for $p=2$ the extra initial twelve does not
+change this conclusion. At $3$ its value is $9,13$, or $17$ modulo
+twelve. Thus all these places have bad reduction.
+
+Since $j$ is integral the curve has potentially good reduction. Choose
+an auxiliary coefficient prime different from the residue
+characteristic. Its inertia image on the rational Tate module is finite,
+and its determinant on inertia is one. A nontrivial finite subgroup of
+$\mathrm{SL}_2$ in characteristic zero has no invariant vector: an
+element fixing a nonzero vector has both eigenvalues one and, being of
+finite order, is the identity. Consequently the tame contribution to the
+Artin conductor is two at each bad potentially good place. In particular,
+\[
+ f_3\geq2,\qquad f_p\geq2\quad(p\mid d,\ p\ne3).
+\]
+If $3\mid d$, wild inertia is nontrivial. Otherwise a finite tamely
+ramified extension of ramification index $e$ prime to three would give
+good reduction, by the inertia criterion. Discriminant scaling would
+then require $12\mid e(9+4v_3(d))$, impossible since
+$v_3(d)=1$ or $2$ and $3\nmid e$. The Swan term is therefore positive,
+and $f_3\geq3$ in this case. This argument uses only the potential-good
+reduction and inertia criteria, rather than a guessed complete
+conductor formula; see the local representation framework of
+\citet{AMSerre1972}.
+
+If $N\leq243$, no prime $p\geq7$ can divide $d$, since then
+$N\geq9p^2>243$. If five divides $d$ together with two, then
+$N\geq9\cdot4\cdot25>243$; if five and three divide $d$, then
+$N\geq27\cdot25>243$. Hence every possible $d$ belongs to the finite
+list supported on two and three, together with $5,25$. Their exact
+conductors and ranks, already certified in A.38, are
+\[
+\begin{array}{c|rrrrrrrrrrr}
+d&1&2&3&4&5&6&9&12&18&25&36\\\hline
+N&27&36&243&108&675&972&243&972&972&225&972\\
+r_{\rm an}&0&0&0&0&0&1&1&1&0&0&0.
+\end{array}
+\]
+Thus the only rank-one member of conductor at most $243$ is $d=9$.
+The exact change of variables from its short model is
+$x=36x'$, $y=216y'+108$, giving the stated minimal model. Its torsion
+is trivial by A.39, so $(1,0)$ is non-torsion. A.37 certifies the first
+derivative enclosure, and Rubin's CM rank-one theorem identifies the
+algebraic rank with the analytic rank. No assertion that $(1,0)$ is a
+chosen primitive generator is needed here.
+\end{proof}

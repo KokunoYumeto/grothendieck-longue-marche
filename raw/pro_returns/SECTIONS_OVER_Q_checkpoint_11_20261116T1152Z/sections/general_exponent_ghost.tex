@@ -1,0 +1,398 @@
+% A.66: arithmetic input for the fixed-depth lifting theorem A.65.
+\begin{statement}{A.66}{Proved}{Ordinary infinite-support pairs with any fixed product of tame denominators}
+Fix integers $d\ge2$ and $C>0$ with $24\mid C$.
+Let $J\ge2d^2$ be at least every prime divisor of $C$, and put
+\[
+ n_j=(j+J)!,\qquad D_j=Cd!n_j^d,\qquad
+ E_j(Q)=Cn_j\prod_{r=2}^{d}(Q^r-1).
+ \tag{A.66.1}
+\]
+There are three sequences of distinct primes $q_j,r_j,s_j$, all
+greater than three and with no repetitions between the sequences,
+for which the completed classes
+\[
+ A=3\prod_{j\ge0}\frac{q_j^{E_j(q_j)}}{s_j^{E_j(s_j)}},
+ \qquad
+ B=-2\prod_{j\ge0}\frac{r_j^{E_j(r_j)}}{s_j^{E_j(s_j)}}
+ \tag{A.66.2}
+\]
+form an infinite-support ordinary completed unit-equation pair.
+At every finite prime $p$ there is $x_p\in\Q_p\setminus\{0,1\}$
+whose two Kummer classes are the restrictions of $A,B$.
+At the real place the point $3$ has these two classes.
+
+The valuation patterns at two and three are $(0,1)$ and $(1,0)$.
+At the three new primes of stage $j$ they are respectively
+\[
+ (E_j(q_j),0),\qquad(0,E_j(r_j)),\qquad
+ (-E_j(s_j),-E_j(s_j));
+ \tag{A.66.3}
+\]
+all other valuations vanish.  In particular the pair comes from
+neither a rational point nor a cusp packet.  There are explicit
+completed classes $A_0,B_0$ with $A=3A_0^C$ and
+$B=-2B_0^C$.  Its image in
+$(\Q^\times/(\Q^\times)^C)^2$ is exactly $(3,-2)$.
+Thus $C$ can impose any prescribed finite abelian congruence to
+the point $3$ while retaining the displayed denominator factors.
+\end{statement}
+\begin{proof}
+\emph{The exact local image at a prime dividing the factorial.}
+Write $n=n_j$ and fix $p\mid n$.  Set
+\[
+ s=v_p(n),\quad a=v_p(d!),\quad b=v_p(d),\quad
+ A_p=Cnd!p^{ds},\quad h=v_p(A_p)=(d+1)s+v_p(Cd!).
+ \tag{A.66.4}
+\]
+On $z=1+p^s w$ consider the convergent function
+\[
+ F(z)=\exp\left(Cn\prod_{r=2}^d(z^r-1)\log z\right).
+ \tag{A.66.5}
+\]
+The inequalities below give $s\ge4$ at two, so both logarithm
+and exponential converge on all the indicated balls.
+Define
+\[
+ P(t)=\prod_{r=2}^d\frac{(1+t)^r-1}{rt},\qquad
+ V(t)=P(t)\frac{\log(1+t)}t.
+ \tag{A.66.6}
+\]
+The polynomial $d!P(t)$ has integral coefficients and
+$P(0)=V(0)=1$.  The coefficient of $t^k$ in $V$ has valuation
+at least $-a-\lfloor\log_p(k+1)\rfloor$: each summand is a
+coefficient of $P$ multiplied by one of
+$1,1/2,\ldots,1/(k+1)$.  Consequently
+\[
+ V(p^sw)\in1+p^\kappa\Z_p\langle w\rangle,
+ \qquad
+ \kappa=
+ \begin{cases}s-a-1,&p\le d,\\s,&p>d.\end{cases}
+ \tag{A.66.7}
+\]
+Here $\Z_p\langle w\rangle$ denotes restricted power series.
+For the first bound use
+$\lfloor\log_p(k+1)\rfloor\le k$ and $s\ge1$.
+For the second, $a=0$, $p\ge3$, and
+$\lfloor\log_p(k+1)\rfloor\le k-1$ for $k\ge1$.
+The actual coefficient bounds tend to infinity with $k$.
+
+For $p\le d$ the explicit factorial choice gives
+\[
+ s\ge v_p(J!)\ge\lfloor J/p\rfloor\ge2d
+           \ge v_p(d!)+v_p(d)+2=a+b+2.
+ \tag{A.66.8}
+\]
+Indeed $a,b\le d-1$.  For $p>d$ we have $a=b=0$ and
+$s\ge1$.  In every case $\kappa\ge b+1$.
+Expanding (A.66.5) gives
+\[
+ F(1+p^s w)=1+A_p f(w),\qquad
+                 f(w)=w^d+p^\kappa R(w),
+            \quad R\in\Z_p\langle w\rangle.
+ \tag{A.66.9}
+\]
+To verify the exponential terms, the coefficient factor of
+exponential degree $u\ge2$, after division by $A_p$, has
+valuation $(u-1)h-v_p(u!)\ge(u-1)(h-1)\ge\kappa$.
+Thus no unexamined logarithmic or exponential denominator
+enters (A.66.9).
+
+Put $z_0=1+p^s$.  On $w=1+p^{b+1}t$ the normalized map is
+\[
+ \frac{f(1+p^{b+1}t)-f(1)}{p^{2b+1}}
+                 =\frac{d}{p^b}t+pG(t),
+                    \qquad G\in\Z_p\langle t\rangle.
+ \tag{A.66.10}
+\]
+For every binomial term of degree $k\ge2$ its coefficient
+valuation after division is at least
+$(b+1)(k-1)-b\ge1$; the error term in (A.66.9) contributes
+at least $\kappa-b\ge1$.
+A restricted series $ut+pG(t)$ with $u\in\Z_p^\times$ is
+bijective on $\Z_p$: for a prescribed value, iteration of
+$t\mapsto u^{-1}(y-pG(t))$ is a strict contraction.
+We therefore have the exact image and derivative formulas
+\[
+ \begin{split}
+ F\bigl(z_0+p^{s+b+1}\Z_p\bigr)
+       &=F(z_0)+p^{h+2b+1}\Z_p,\\
+ v_p(F'(z_0))&=\delta_j(p):=ds+v_p(Cd!)+b.
+ \end{split}
+ \tag{A.66.11}
+\]
+The derivative identity uses $f'(1)=d+p^\kappa R'(1)$
+and $\kappa>b$.  The entire input ball has $v_p(z-1)=s$.
+
+\emph{The all-place invariant.}
+For $p\nmid n_j$ set $\delta_j(p)=0$, and for every prime put
+\[
+ H_j(p)=2\delta_j(p)+j+3,\qquad B(D)=(D+1)^4.
+ \tag{A.66.12}
+\]
+We construct integers
+\[
+ a_j=3u_j^{24}>0,\qquad b_j=-2v_j^{24}<0,
+                    \qquad c_j=w_j^{24}>0,
+ \tag{A.66.13}
+\]
+with pairwise coprime supports and the following properties:
+$a_jX^{D_j}+b_jY^{D_j}=c_jZ^{D_j}$ has a solution
+in $(\Z_p^\times)^3$ at every prime $p$, and
+\[
+ v_p(a_j+b_j-c_j)\ge H_j(p)
+                              \quad(p\le B(D_j)).
+ \tag{A.66.14}
+\]
+Start from $(a_0,b_0,c_0)=(3,-2,1)$.
+At a prime dividing $n_j$, the difference between $H_j(p)$
+and the image depth in (A.66.11) is
+\[
+ H_j(p)-(h+2b+1)
+            =(d-1)s+v_p(Cd!)+j+2>0.
+ \tag{A.66.15}
+\]
+Also $H_j(p)>2v_p(D_j)$; the same latter inequality holds
+at $p\nmid n_j$, since every prime divisor of $Cd!$
+already divides $n_j$.
+
+\emph{The finite triangular system of congruences.}
+At stage $j$ choose an integer $P_0$ at least $B(D_{j+1})$
+and at least every prime dividing $a_jb_jc_j$.  Process
+every prime $p\le P_0$ in increasing order.
+For each of the three future primes $Q$, impose
+\[
+ \begin{cases}
+ v_p(Q-1)=v_p(n_j),&p\mid n_j,\\
+ Q\ne0,\quad Q^r\ne1\pmod p\quad(2\le r\le d),
+                                               &p\nmid n_j.
+ \end{cases}
+ \tag{A.66.16}
+\]
+Choose the modulus $p^{L_p}$ large enough that
+\[
+ L_p\ge H_{j+1}(p),\qquad p^{L_p}>P_0,
+ \qquad L_p\ge v_p(n_j)+v_p(d)+2\quad(p\mid n_j).
+ \tag{A.66.17}
+\]
+The second condition ensures that, before processing $p$,
+the residues modulo every prime-power divisor of $p-1$
+have already been fixed.  Hence the residue
+$e_i=E_j(Q_i)\pmod{p-1}$ is already fixed separately for
+each of the three future primes.
+
+At a prime $\ell\mid n_j$, the elementary lifting-the-exponent
+identity gives
+\[
+ v_\ell\left(\prod_{r=2}^d(Q_i^r-1)\right)
+       =(d-1)v_\ell(n_j)+v_\ell(d!),
+ \qquad v_\ell(E_j(Q_i))=v_\ell(D_j).
+ \tag{A.66.18}
+\]
+At two this uses $Q_i\equiv1\pmod{16}$, which follows
+from (A.66.8).  At every already processed prime
+$\ell\nmid n_j$, the exclusions in (A.66.16) make both
+valuations zero.  Therefore
+\[
+                  \gcd(e_i,p-1)=\gcd(D_j,p-1).
+ \tag{A.66.19}
+\]
+The three exponent maps on $\F_p^\times$ have precisely
+the same image, the subgroup of $D_j$th powers.
+
+\emph{Choosing the local residues and their arbitrary precision.}
+At $p\mid n_j$ use (A.66.11) with the same central input
+$z_0$ in all three coordinates.  At least one of
+$a_j,b_j,c_j$ is a unit.  Varying its input realizes
+every correction in $p^{h+2b+1}\Z_p$, after multiplication
+by that unit coefficient.  Equations (A.66.14)--(A.66.15)
+therefore give three permitted local inputs satisfying
+\[
+                   a_jF(q)+b_jF(r)=c_jF(s).
+ \tag{A.66.20}
+\]
+
+For $p\nmid n_j$, every primitive residue has order
+$p-1>d$, because $p>j+J\ge2d^2$.
+Fix a noncritical residue $\omega_i\in\mu_{p-1}\subset\Z_p$
+for each coordinate.  On its residue ball use the exact map
+\[
+ F_{i,p}(z)=\omega_i^{e_i}
+       \exp\left(Cn_j\prod_{r=2}^d(z^r-1)
+                                      \log(z/\omega_i)\right).
+ \tag{A.66.21}
+\]
+Writing $z=\omega_i(1+pt)$, the logarithm of its principal
+unit part, divided by $p$, is
+\[
+ Cn_j\prod_{r=2}^d(\omega_i^r-1)t+pG_i(t),
+                     \qquad G_i\in\Z_p\langle t\rangle.
+ \tag{A.66.22}
+\]
+The linear coefficient is a unit.  Thus this map is a
+bijection from $\omega_i(1+p\Z_p)$ onto
+$\omega_i^{e_i}(1+p\Z_p)$.
+
+When $p\le B(D_j)$, choose a generator $\lambda$ of the
+common power image in (A.66.19).  Every exponent map has
+a primitive preimage of $\lambda$.  In detail, write
+$N=p-1$, $g=\gcd(e_i,N)$ and $M=N/g$; solve
+$(e_i/g)k=t\pmod M$ for the unit $t$ specifying
+$\lambda$.  The reduction map
+$(\Z/N)^\times\to(\Z/M)^\times$ is onto by the Chinese
+remainder theorem, so choose $k$ a unit modulo $N$.
+For $M=1$ any primitive element suffices.
+The resulting $\omega_i$ are noncritical and
+$F_{i,p}(\omega_i)=\lambda$.  The high error in
+(A.66.14), followed by an adjustment in a unit coefficient
+using (A.66.22), gives the exact equation (A.66.20), with
+$F_{i,p}$ in its three coordinates.
+
+When $p>B(D_j)$, take the existing unit $D_j$-power point
+from the invariant.  There are at most
+$M_d=\sum_{r=2}^d r$ critical nonzero residues for each
+coordinate, and hence at most $M_d$ forbidden target
+values under each exponent map.  A common scaling of
+the three $D_j$-power values avoids all at most $3M_d$
+targets.  Indeed their common image has size at least
+$(p-1)/D_j>3M_d$, because $D_j\ge d$ and
+\[
+ \frac{(D+1)^4-1}{D}=D^3+4D^2+6D+4
+                         >3\sum_{r=2}^d r\quad(D\ge d).
+ \tag{A.66.23}
+\]
+Lift the scaling to an actual unit and scale the existing
+local point.  Each of its three $D_j$-power values now has
+a noncritical preimage under its exponent map; (A.66.22)
+then gives an exact local input for that value.
+This works also at an old coefficient prime: the invariant
+requires the three local variables to be units, and does
+not require the three coefficients to be units.
+
+Approximate these local inputs modulo $p^{L_p}$.
+On their indicated balls all the maps just used are
+$1$-Lipschitz: this follows from their integral restricted
+series, with the factor $A_p/p^s$ integral in (A.66.9).
+The residues retain (A.66.16) and make the updated sum
+error at least $H_{j+1}(p)$.  For an integer prime in
+the final CRT class, (A.66.21) equals its actual integer
+power $Q_i^{E_j(Q_i)}$: its root-of-unity part is fixed
+by the earlier residues modulo $p-1$, and its principal
+unit part is the displayed exponential.
+
+\emph{Realizing the residues by primes.}
+Put $n=n_j$, and use the three old coefficient fields
+\[
+ \begin{split}
+ L_q&=\Q(\mu_n,(b_j/c_j)^{1/n}),\\
+ L_r&=\Q(\mu_n,(a_j/c_j)^{1/n}),\\
+ L_s&=\Q(\mu_n,(-a_j/b_j)^{1/n}).
+ \end{split}
+ \tag{A.66.24}
+\]
+The exact radical-field calculation in A.59 applies:
+the coefficient shapes (A.66.13) give squareclasses
+$-2,3,6$, and their distinguished valuations at two
+or three are $1$ or $-1$.  Each field has maximal
+abelian subfield exactly $\Q(\mu_n)$.  More explicitly,
+its cyclic geometric kernel has order $n/2$; its
+commutator with the cyclotomic group contains the
+squares of that kernel, and the remaining quartic
+field contains the nonabelian splitting field of a
+fourth root of $2,3$, or $6$.  This forces the entire
+kernel to be the commutator subgroup, as proved in A.59.
+
+All three CRT classes are $1$ modulo $n$.
+If $M=\prod_{p\le P_0}p^{L_p}$, it is divisible by $n$,
+and the exact intersection is
+$L_i\cap\Q(\mu_M)=\Q(\mu_n)$.
+Thus the identity on $L_i$ and the desired CRT automorphism
+of $\Q(\mu_M)$ agree on their intersection.  Chebotarev,
+in precisely the compositum form used in A.59, supplies
+infinitely many primes in that CRT class splitting in
+$L_i$.  Choose three distinct such primes $q_j,r_j,s_j$
+greater than $P_0$, and update
+\[
+ a_{j+1}=a_jq_j^{E_j(q_j)},\qquad
+ b_{j+1}=b_jr_j^{E_j(r_j)},\qquad
+ c_{j+1}=c_js_j^{E_j(s_j)}.
+ \tag{A.66.25}
+\]
+The fields and congruences all used the old coefficients;
+no congruence between the three new primes is required.
+
+\emph{Checking every prime at the next stage.}
+At each processed prime the new error is at least
+$H_{j+1}(p)>2v_p(D_{j+1})$.  Vary a coordinate with
+unit coefficient near $(1,1,1)$; the one-variable
+Hensel inequality gives a unit $D_{j+1}$-power point.
+
+For any of the three new primes $Q$, the imposed residues
+give the exact identity
+\[
+                         \gcd(D_{j+1},Q-1)=n_j.
+ \tag{A.66.26}
+\]
+At a prime factor of $n_j$ this follows from its prescribed
+valuation in $Q-1$; every new prime divisor of $n_{j+1}$
+was processed in (A.66.16) and has $Q\ne1$ modulo it.
+Every prime divisor of $Cd!$ already divides $n_j$.
+Consequently the $D_{j+1}$th and $n_j$th power subgroups
+of $\F_Q^\times$ coincide.
+
+At $q_j$, the unit ratio $c_{j+1}/b_{j+1}$ is an
+$n_j$th power modulo $q_j$: this follows from splitting
+in $L_q$ and the divisibility of every update exponent
+by $n_j$.  Equation (A.66.26) makes it a $D_{j+1}$th
+power.  Set $X=Z=1$ and lift a root for $Y$ by Hensel;
+the term $a_{j+1}$ vanishes modulo $q_j$, and the
+derivative is a unit.  At $r_j$ use $c_{j+1}/a_{j+1}$
+and solve for $X$ with $Y=Z=1$.  At $s_j$ use
+$-a_{j+1}/b_{j+1}$ and solve for $Y$ with $X=Z=1$.
+All three primes exceed every prime factor of $D_{j+1}$.
+
+At every remaining prime $p>P_0$ all coefficients are
+units and $p>B(D_{j+1})$.  The finite-field character-sum
+bound proved in A.44 gives a nonzero affine
+$D_{j+1}$-power solution; its unit derivative lifts it
+to $\Q_p$.  This covers every prime and proves the
+invariant (A.66.13)--(A.66.14) at stage $j+1$.
+
+\emph{The completed classes and ordinary local points.}
+Every new exponent is divisible by $n_j$, which tends
+to zero in $\widehat\Z$.  Thus the rational pairs
+$(a_j/c_j,b_j/c_j)$ converge in the completed Kummer
+group to (A.66.2).  At a fixed prime $p$ its valuation
+in each of $a_j,b_j,c_j$ is eventually constant.
+All later factors are units, and their factorial
+exponents eventually annihilate every finite quotient
+of $\Z_p^\times$.  The three products consequently
+converge to nonzero numbers $a_p,b_p,c_p\in\Q_p$.
+Eventually $p\le B(D_j)$, while $H_j(p)\to\infty$,
+so (A.66.14) gives $a_p+b_p=c_p$.
+Set $x_p=a_p/c_p$; then $1-x_p=b_p/c_p$ and both
+are nonzero.  The local Kummer classes of these limits
+are the restrictions of (A.66.2), since every local
+power subgroup is open and the displayed ordinary
+sequences converge in $\Q_p^\times$.
+
+The signs of the global representatives are positive
+and negative, respectively, giving the real classes
+of $(3,-2)$.  Each of the infinitely many new primes
+has exactly the valuation pair in (A.66.3), because
+no later prime repeats it.  A rational point has
+finitely many nonzero valuations.  The zero cusp has
+$B=1$, contrary to $v_2(B)=1$; the one cusp has
+$A=1$, contrary to $v_3(A)=1$; and the infinity cusp
+has equal valuation vectors, contrary to the pair at
+two.  Finally put $e_j(Q)=E_j(Q)/C$.  The products
+\[
+ A_0=\prod_{j\ge0}\frac{q_j^{e_j(q_j)}}{s_j^{e_j(s_j)}},
+ \qquad
+ B_0=\prod_{j\ge0}\frac{r_j^{e_j(r_j)}}{s_j^{e_j(s_j)}}
+ \tag{A.66.27}
+\]
+converge in the completed group because every exponent
+$e_j(Q)$ is still divisible by $n_j$.  They give the
+actual compatible roots $A=3A_0^C$, $B=-2B_0^C$;
+in particular reduction modulo $C$ is exactly $(3,-2)$.
+\end{proof}

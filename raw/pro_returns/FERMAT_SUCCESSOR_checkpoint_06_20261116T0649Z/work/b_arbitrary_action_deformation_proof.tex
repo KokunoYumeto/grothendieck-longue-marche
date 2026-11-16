@@ -1,0 +1,254 @@
+% Work draft for B.41.  Not part of the publication tree until independently audited.
+\subsection{An arithmetic action term not determined by the Ross extension}
+
+\begin{statement}{B.41}{The Ross extension does not determine arbitrary-input lifting}{Proved}
+Keep the actual cubic group, lattice, and $C_0$ tangent of B.24--B.40.
+Write $N_3=N/\gamma_4N$, $N_2=N/\gamma_3N$, and
+$A=\gamma_3N/\gamma_4N=\operatorname{Lie}_3(V)$, without a Tate twist.
+There is a continuous arithmetic action $\rho'$ on the same group
+$N_3$ with the following properties.
+
+It has the same action as the actual action $\rho$ on $N_2$ and on
+$\gamma_2N/\gamma_4N$.  In particular it has the same entire
+extension defining $\eta$, the same rational Ross class, and the
+same integral refinement determined in B.40.  It fixes the chosen
+$C_0$ inertia, preserves every peripheral conjugacy class, and has
+the same compatibility with the outer geometric action of
+$\mathcal A=E[3]\rtimes\mu_6$.
+
+Nevertheless the class-two input obtained from the actual $A_0$
+cusp section by the twist $\kappa_3(19)$ lifts for $\rho$ and does
+not lift for $\rho'$, already locally at nineteen.  The modified
+action is not asserted to be the action of an algebraic curve.
+This is an insufficiency theorem for the data determined in task
+B.4, not a determination of the actual image requested in B.5.
+
+The other rational cusps' class-two origins change under this
+deformation by an explicit central path cocycle.  Thus merely
+requiring the existence of all peripheral packets does not remove
+the deformation.  Fixing an independently known actual $A_0$
+class-two origin and all its Kummer twists would remove it.
+\end{statement}
+
+\paragraph{An explicit integral central derivation.}
+Let $W$ be the boundary lattice with basis
+$(A_0,A_1,A_2,B_0,B_1,B_2,C_1,C_2)$ and with
+$e_O=-\sum_{P\ne O}e_P$, where $O=C_0$.  In the following
+brackets these cusp names mean their boundary vectors.  Put
+\[
+ b=[B_0,A_2-A_1]+[B_1,A_0-A_2]+[B_2,A_1-A_0]
+       \in\Lambda^2W.                                      \tag{B.41.1}
+\]
+This vector is fixed by the stabilizer $\mu_6$ of $O$.
+For $P\in E[3]$, let $T_P$ be the actual translation matrix on
+$V$, and define a rational degree-two derivation by
+\[
+ D(u)=D(v)=0,\qquad D(e_P)=[e_P,T_Pb].                       \tag{B.41.2}
+\]
+Here $(u,v)$ is the primitive compact pair of B.24.  The nine
+values in (B.41.2) sum to zero, so this is well defined on $W$.
+The stabilizer condition makes it $\mathcal A$-equivariant.
+These identities are exact finite identities on the nine-point
+affine plane; the replayable certificate evaluates all 54
+geometric matrices and all nine boundary vectors.
+
+In the integral basis $(f_1,f_2,W)$ of B.24, write $D_W$ for
+the last eight columns of $D$.  Since $(u,v)=(3I_2,U)$,
+\[
+ D=\bigl(-D_WU/3\mid D_W\bigr).
+\]
+Define
+\[
+ \Delta=3D+3\operatorname{ad}_b
+       =\bigl(-D_WU\mid3D_W\bigr)+3\operatorname{ad}_b
+       \in\operatorname{Hom}_{\mathbb Z_3}(V,A).             \tag{B.41.3}
+\]
+Thus $\Delta$ is integral.  It is primitive, fixes $e_O$, and
+at every boundary vector satisfies
+\[
+ \Delta(e_P)=3[e_P,B_P],\qquad B_P=T_Pb-b.                  \tag{B.41.4}
+\]
+For a geometric automorphism $a\in\mathcal A$ one has
+\[
+ \operatorname{Lie}_3(a)\Delta-\Delta a
+    =\operatorname{ad}_{3(ab-b)}\,a.                       \tag{B.41.5}
+\]
+Consequently the outer central derivation commutes with the
+geometric action, with the displayed integral inner correction.
+For elements fixing $O$, the correction is zero.
+
+For clarity, these computations use the original integral
+basis, not the rational direct sum $H\oplus W$.  The first
+parameter vector in \texttt{b\_arbitrary\_action\_analysis}
+has exactly the six coefficients displayed in (B.41.1).
+The program \texttt{b\_arbitrary\_action\_deformation}
+constructs (B.41.3) and checks (B.41.4)--(B.41.5).
+
+\paragraph{Its actual arithmetic coefficient module.}
+Let $\epsilon=\chi_{-3}$.  The arithmetic Frobenius and
+conjugation matrices from B.28 give
+\[
+ \operatorname{Lie}_3(T_V)\Delta=49\Delta T_V,
+ \qquad
+ \operatorname{Lie}_3(C_V)\Delta=-\Delta C_V.               \tag{B.41.6}
+\]
+Hence the line $\Lambda=\mathbb Z_3\Delta$ has the actual
+coefficient action $\mathbb Z_3(2)\epsilon$.  This also
+follows directly from (B.41.1): arithmetic over
+$K=\mathbb Q(\zeta_3)$ scales the boundary by $\chi_3$,
+complex conjugation sends $b$ to $-b$, and the rational
+compact splitting is arithmetic stable.
+
+Use the arithmetic quotient $\Gamma=P\rtimes\langle c\rangle$
+of B.37, where $P$ is free pro-three on the two actual
+Frobenii $\tau,\bar\tau$ above seven and $c$ interchanges
+them.  A $\Lambda$-valued cocycle has a unique representative
+with value zero at $c$: multiplication by two is invertible,
+and $\Lambda^{c=1}=0$.  The values on the free basis are then
+$a\Delta,-a\Delta$, with arbitrary $a\in\mathbb Z_3$.
+No nonzero coboundary preserves the normalization at $c$.
+Therefore
+\[
+ H^1(\Gamma,\Lambda)\simeq\mathbb Z_3.                    \tag{B.41.7}
+\]
+Take the cocycle $\psi(g)=b_g\Delta$ with
+\[
+ b_c=0,\qquad b_\tau=1,\qquad b_{\bar\tau}=-1.             \tag{B.41.8}
+\]
+Freeness gives a continuous cocycle: equivalently, prescribe
+the two images in the pro-three semidirect product
+$\Lambda\rtimes\rho_\Lambda(P)$ and apply the defining
+universal property of the free pro-three group.  The
+conjugation relation in (B.41.8) extends it to $\Gamma$.
+
+Every integral map $\delta:V\to A$ defines a literal central
+automorphism of $N_3$ by $n\mapsto n\,\delta(n^{\rm ab})$.
+Its inverse uses $-\delta$.  It is the identity on $N_2$
+and on $\gamma_2N/\gamma_4N$; this uses only that $A$ is
+central and does not require a class-three exponential map.
+Set
+\[
+ \rho'_g=\mathcal D_{\psi(g)}\circ\rho_g.                 \tag{B.41.9}
+\]
+The cocycle identity is exactly the action identity for
+(B.41.9).  Pulling back along $G_{\mathbb Q}\to\Gamma$
+gives a continuous arithmetic action unramified outside
+three.  Equations (B.41.3)--(B.41.5) give all the preservation
+properties stated above.  In particular the arithmetic
+and geometric actions on the extension used in B.40 are
+unchanged, since central automorphisms of this kind act
+trivially on $\gamma_2N/\gamma_4N$.
+
+\paragraph{The class-two input and its local failure.}
+Choose the actual global $A_0$ cusp section with a rational
+unit tangent, and twist it by $\kappa_3(19)$ in its inertia.
+Its projection is a class-two input for both actions, since
+their $N_2$ actions coincide.  It has a full lift for $\rho$
+by its construction as an actual cuspidal section.
+
+At the prime of $K$ above nineteen for which
+$\zeta_3\equiv7$, put $\lambda=1-\zeta_3$.  The two
+Kummer rows on $\tau,\bar\tau$ are $(2,0),(2,2)$, so
+\[
+ b\bmod3=2\kappa(\zeta_3)+2\kappa(\lambda).
+\]
+Here $\kappa(\zeta_3)(F_{19})=0$ and
+$13^6\equiv11=7^2\pmod {19}$, giving
+\[
+ b_{F_{19}}\equiv1\pmod3.                                 \tag{B.41.10}
+\]
+Let $x$ be the lifted tame inertia generator of the actual
+cuspidal section.  Its abelianization is $e_{A_0}$.  Write
+\[
+ \Delta(e_{A_0})=3z.
+\]
+The vector $z$ is integral, primitive, and lies in the pure
+boundary summand $\operatorname{Lie}_3(W)$.  For example,
+in the original Hall basis its coefficient at $(3,2,5)$
+is one; the complete thirty-term vector is saved in the
+certificate JSON.  The deformation changes the tame
+Frobenius relation by $19b_{F_{19}}\Delta(e_{A_0})$.
+Changing the central Frobenius lift has no effect on this
+relation.  Changing the inertia lift by $a\in A$ changes
+it by $(\Phi_A-19)a$.  Thus the unique rational correction
+that would restore the relation is
+\[
+ a=-\frac{3b_{F_{19}}}{19^2-1}\,z
+   =-\frac{b_{F_{19}}}{120}\,z.                            \tag{B.41.11}
+\]
+Indeed $\Phi_A=19^3$ on the pure boundary summand.
+On all of $A_{\mathbb Q_3}$ the operator
+$\Phi_A-19$ is invertible: every degree-three weight has
+complex absolute value greater than nineteen.
+Equation (B.41.10) and the primitive coefficient of $z$
+show that (B.41.11) has valuation $-1$.  It is not integral,
+so there is no local lift, and hence no global lift for
+$\rho'$.  Conjugating a representative of the class-two
+input cannot alter this conclusion, since any conjugating
+element of $N_2$ lifts to $N_3$.
+
+\paragraph{Exactly which cusp information has changed.}
+If $P$ is a rational cusp, $B_P$ is an arithmetic eigenvector
+of type $\mathbb Z_3(2)\epsilon$.  Consequently
+\[
+ \delta_P(g)=3b_gB_P\in\Lambda^2V                         \tag{B.41.12}
+\]
+is a genuine global one-cocycle.  The class-two origin of
+the peripheral packet for the modified action must differ
+from the actual origin by this cocycle.  To check the sign,
+the added arithmetic action on $e_P$ is
+$3\chi_3(g)b_g[e_P,B_P]$; conjugation by an element with
+degree-two part $3b_gB_P$ adds
+$3\chi_3(g)b_g[B_P,e_P]$ and cancels it.
+The map $\operatorname{ad}_{e_P}:\Lambda^2V\to A$ is
+injective, as is seen after extending the primitive
+$e_P$ to a free basis.  Thus this degree-two change is forced.
+
+The origin at $O$ stays fixed because $B_O=0$.  For $A_0$
+the change is nonzero.  Its cocycle class is nonzero
+rationally as well: after normalizing at $c$, a possible
+coboundary must come from the $c$-fixed subspace, whereas
+$B_{A_0}$ lies in the $c$-anti-invariant pure boundary
+summand and $T_V$ acts there by the scalar $49$.
+The modified class-two peripheral origin has a class-three
+lift over $\Gamma$: its remaining central obstruction is
+in $H^2(\Gamma,A)=0$, because $P$ is free and two is a unit.
+Central corrections do not affect the peripheral relation.
+It therefore provides a formal peripheral packet, whose
+origin is (B.41.12), rather than preserving the old packet
+pointwise.
+
+If the actual $A_0$ class-two origin were independently
+known and held fixed, all its Kummer twists would detect
+any nonzero scalar multiple $a\psi$.  In fact
+$b_{\tau\bar\tau^{-1}}=2$ and this element has cyclotomic
+character one.  Chebotarev supplies primes whose Frobenius
+is arbitrarily close to it in any chosen finite quotient.
+For any nonzero $a$, choose such a prime $p$ with
+$v_3(p-1)>1+v_3(a)$ while
+$v_3(ab_{F_p})=v_3(a)$.  The same local calculation then
+requires
+\[
+ -\frac{3ab_{F_p}}{p^2-1}z\in A,
+\]
+which is impossible.  This explains both the strength and
+the limitation of imposing actual cusp inputs: it needs
+the actual central path origin (B.41.12), not only the
+existence of a packet or its abelianized centre.
+
+\paragraph{The precise remaining datum.}
+This example exhibits one missing cubic arithmetic-action
+component, of type $H^1(\Gamma,\mathbb Z_3(2)\epsilon)$,
+equivalently a component of a class-two cusp-path origin.
+It does not claim that this is the only datum required
+for arbitrary inputs.  The independent rational module
+calculation gives two pure boundary tangential directions
+of this type: the stabilizer-invariant conjugating
+parameters have rank seven; the nine-cusp relation leaves
+rank three, consisting of one inner $\Lambda^2H$ direction
+and two $\Lambda^2W$ directions, with no $H\otimes W$
+direction.  The full actual values of these directions
+have not been computed here.  B.28 still evaluates every
+nonempty fibre, and B.31 and B.36 still determine the
+stated zero-abelian slice.  Neither is an evaluated image
+law for every input in task B.5.
