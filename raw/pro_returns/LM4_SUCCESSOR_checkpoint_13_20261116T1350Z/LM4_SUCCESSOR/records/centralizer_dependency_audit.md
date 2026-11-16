@@ -1,0 +1,34 @@
+# Audit of the finite-centralizer dependencies
+
+AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode), 16 November 2026. This is an audit of the supplied versions and the specified retrieved earlier return, not a blanket certification of every statement in those returns.
+
+## Result
+
+**The list of attached statements marked Proved whose proof requires the disputed equality for a nonsolvable finite subgroup is empty.** The supplied LM4 version already keeps its residual A5 assertion Open. The table below distinguishes a mention of a published assertion from using it as a proved input.
+
+| Passage | Actual input | Scope and audit result |
+|---|---|---|
+| LM4 A.10 | Boggi–Zalesskii (2019), Proposition 3.6 | Normalizers of powers of an algebraically simple procyclic subgroup; independent of the later finite-subgroup assertion. |
+| LM4 D.2 | Bridson–Conder–Reid Fuchsian torsion comparison; Boggi–Zalesskii Theorem6.3 for finite p-subgroups | No nonsolvable mapping-class centralizer equality. |
+| LM4 D.31 | Configuration-group goodness and Boggi–Zalesskii TheoremA for one prime | Prime-subgroup/topology argument only. |
+| LM4 F.1–F.3 | Low-type comparison; solvable subgroup/normalizer induction | The statements expressly retain solvability. F.2 proves the centralizer conclusion from the open kernel of the normalizer action. |
+| LM4 F.6 | Universal arithmetic monodromy and its actual geometric image | An arithmetic quotient construction; not the disputed centralizer identification. |
+| LM4 F.7 | Boggi Proposition2.4/TheoremC(iii); Boggi–Zalesskii Theorem5.1(iii) | **Open**, expressly isolating the nonsolvable closure–intersection gap. Its positive solvable proof, equations F.7.4–F.7.6, uses prime-power topology and a characteristic abelian subgroup induction. |
+| LM4 F.8–F.33 | Cyclic, dihedral, tetrahedral, and involution comparisons; configuration maps; exact finite-image calculations | The residual A5 equality and later source-membership equalities remain Open. Prime comparisons in F.15, F.18, F.19 were inspected explicitly; no completion-intersection equality is smuggled in. |
+| LM6 C.4, C.13–C.19 | One real involution; TheoremA at p=2; specified twist stabilizers and congruence maps | Successor E.1–E.10 reconstruct the relevant arguments. TheoremA is applied to a single C2 subgroup in a verified good finite extension. |
+| LM6 C.12 | Mentions the symmetric congruence theorem | **Open**; the paragraph explains why its orientation-preserving centralizer map does not resolve the orientation-reversing full-completion question. This is not an application proving the unresolved genus3 line. |
+| LM7_PUSH E.64 | Herfort–Ribes TheoremB-prime at cyclic factors; oriented twist-stabilizer exact sequence and genus2 CSP | E.64.7–E.64.8 are factor centralizers. E.64.3 has a separate stabilizer input. Thus “only the element case” describes the finite-torsion dependency, not every ingredient of the proof. |
+| Other attached LM7_PUSH and LM7 tower sections | Their named lifting, CM, and finite-action arguments | The citation inventory contains no invocation of the nonsolvable centralizer equality. |
+| ANABELIAN_149_PUSH A.29l | Boggi–Zalesskii (2019), Lemma3.1 | Retrieved separately from the actual prior paper, pp.115–117. This is the pro-S Fuchsian/orbifold theorem with a torsion-free surface kernel and finite quotient in S. It is independent of the 2025/2026 intersection step. |
+
+The mechanically generated `centralizer_citation_inventory.csv` indexes35 statement blocks containing source keys matching Boggi/BZ/Zalesskii. Many are unrelated Kochloukova–Zalesskii cohomology or Herfort–Zalesskii free-product citations; they are deliberately retained in the inventory so that the search is reproducible. `audit_centralizer_citations.py` regenerates it from the supplied attachments. The wider `attached_centralizer_dependencies.csv` is a register-based dependency index, not a proof checker. The classifications above use the actual paragraphs and their named groups, not keyword counts alone.
+
+## Published proofs inspected
+
+1. Boggi (2026), *A congruence subgroup property for symmetric mapping class groups*, São Paulo Journal of Mathematical Sciences20, article35, DOI10.1007/s40863-026-00558-y. Published full text opened at https://link.springer.com/article/10.1007/s40863-026-00558-y . Proposition2.4 has hypotheses good, residually finite, finite virtual cohomological type and asserts the centralizer equality for every finite H. The last displayed equality interchanges closure and intersection. Section3.2, Lemma3.2, uses it in the ramification-removal argument. The free-action proof in Section3.1 does not use that step. The primary full text agrees with the attached arXiv source at this point.
+2. Boggi and Zalesskii (2025), *Finite subgroups of the profinite completion of good groups*, Bulletin of the London Mathematical Society57(1),236–255, DOI10.1112/blms.13193. TheoremA and its proof were read in the primary text; its high-degree cohomology comparison is for **all discrete Fp-modules**, not only a silently substituted trivial coefficient. The prime-order argument passes to finite p-groups through their centers. Theorem5.1 has the extra goodness/full-topology hypotheses on normalizers of solvable subgroups. Its last paragraph proves torsion-element centralizer equalities and then makes the unsupported intersection step for arbitrary finite H; the solvable normalizer argument is separate.
+3. Boggi and Zalesskii (2019), *A restricted Magnus property for profinite surface groups*, Transactions AMS371(1),729–753, DOI10.1090/tran/7311. Full primary author PDF opened at https://arxiv.org/pdf/1408.5419 ; Lemma3.1 and proof on PDFpp.7–8 read. The pro-S solenoid is mod-p acyclic for p in S. A p-subgroup fixes a unique orbifold point; the proof then treats solvable groups and finally uses cyclicity of Sylow subgroups to reduce every finite subgroup to that case. This supplies the malnormal cyclic decomposition-group result used by A.29l. It is not a proof about arbitrary finite subgroups of a mapping class completion.
+
+## Retrieved earlier-return provenance
+
+The actual `ANABELIAN_149_PUSH_paper.pdf` has365pages and Library file identifier `libfile_fde3_f-bdeffb5679908191967c3c3774d464ef_c6789dc4b4d481919ad633aabe6d84d0`. We read A.29l directly on pp.115–117. Its point-section centralizer first injects into a finite deck group by a distinct Frobenius-weight argument; only then does Lemma3.1 place that finite group inside unique inertia. The arithmetic normalizer step matches the arithmetic image directly. We audited this dependency and its hypotheses; we do not certify all other conclusions of that365page return by this inspection. The supplied background did not include this PDF, and it is not duplicated in the deliverable.

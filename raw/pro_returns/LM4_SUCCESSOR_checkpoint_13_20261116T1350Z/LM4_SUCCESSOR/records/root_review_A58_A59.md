@@ -1,0 +1,7 @@
+# Root proof review of A58 and A59
+
+Read both complete proposed sources after recovery. PASS for their stated actual quotient claims.
+
+A58: the coprime normal subgroup kills Hom invariants. An invariant abelian extension admits a strict coprime action; averaging gives a retraction onto the trivial center, proving Ext invariants vanish. Hochschild–Serre then gives the all-degree vanishing needed for both the unique invariant commutator extension and its strict action. The cyclic source carries use genuinely H-fixed residues and retain the prescribed affine quotient. The actual source is onto the extension, and the two commutator comparison maps compose to the identity, proving equality rather than a bound. The finite-kernel extension over the original relative base has a continuous local section, so the H2-vanishing splitting is applicable.
+
+A59: the actual Bockstein fiber product has derived subgroup exactly the old M, and abelianization V4^4 plus V^4. The opposite-pair stabilizer imposes minus-transpose. Keeping the diagonal2-torsion gives O^6 plus k^30. The three Frobenius orbits are counted only after base change; descent yields C4^18 times C2^90, not three copies of that group. The center action is trivial. The stability argument identifies the actual first scalar kernel k^6 using both inclusions and the already stable U0. No frame conclusion is obtained from this center computation alone.

@@ -1,0 +1,268 @@
+\subsection*{The complete $3$-adic common-image obstruction}
+
+\statement{B.64}{Proved}{An Eichler centralizer is fully realized in the common $3$-adic image}
+Let $q_\infty:\widehat P\to\operatorname{PSp}_{10}(\mathbb Z_3)$
+be the branched-cover homology action.
+Let $N_h$ be the normal closure of B.56's $h$ in $H_T$,
+put $R_T=N_h\cap[H_T,H_T]$, and use closures in this
+$3$-adic matrix target in the following assertion.
+Let $\mathcal I$ be the identity fibre of reduction
+modulo three in $\operatorname{PSp}_{10}(\mathbb Z_3)$.
+Then
+\[
+ \overline{q_\infty(R_T)}\cap
+ \overline{q_\infty([H_5,H_5])}\cap\mathcal I
+       =C_{\operatorname{PSp}_{10}(\mathbb Z_3)}(A_5)
+                      \cap\mathcal I
+       =:\mathcal U.                                      \tag{B.64.1}
+\]
+The group $\mathcal U$ has the explicit description
+\[
+ \mathcal U\cong
+ \left\{
+ \begin{pmatrix}1+3a&3b\\9c&1+3d\end{pmatrix}:
+ a,b,c,d\in\mathbb Z_3,\quad
+ (1+3a)(1+3d)-27bc=1
+ \right\}.                                                \tag{B.64.2}
+\]
+It is a nontrivial three-dimensional $3$-adic group.
+The actual residual group has image contained in
+$\mathcal U$ by B.62, but (B.64.1) does not give a
+nonidentity element of $\mathcal K$.
+It determines a common image in one representation,
+with compatible lifts to its two source completions;
+equality of those lifts in $\widehat P$ remains unproved.
+
+\begin{proof}
+\emph{The actual integral $A_5$ lattice.}
+In the twelve-strand unreduced Burau module at $-1$,
+let $\epsilon=(1,-1,\ldots,1,-1)$ and
+$\mathbf1=(1,\ldots,1)^t$.
+The closed branched-cover homology lattice is
+\[
+              \Lambda=\ker\epsilon/\mathbb Z\mathbf1.
+                                                               \tag{B.64.3}
+\]
+This is the even-strand version of B.62's branched-cover
+chain construction: the disk cover has two boundary
+components, and capping kills its primitive boundary
+class.  Representatives with last coordinate zero
+give the basis with inclusion columns
+$(e_j,-\epsilon_j,0)^t$, for $1\leq j\leq10$.
+The action of a twelve-dimensional matrix $B$ on this
+basis is obtained by subtracting its last output
+coordinate from the first ten.
+All eleven Artin generators preserve the resulting
+integral unimodular symplectic form.
+
+Apply this construction to the actual $\beta_2,\beta_3$
+certified in B.8.  Negate the first resulting matrix.
+The two matrices then satisfy
+$S^2=R^3=(SR^{-1})^5=I$ and generate an actual copy
+of $A_5$, of order sixty, in $\operatorname{Sp}(\Lambda)$.
+Their character on orders $1,2,3,5$ is
+\[
+                         (10,2,-2,0).                       \tag{B.64.4}
+\]
+It is twice the irreducible degree-five character.
+For example that character is the augmentation
+character of the six-point action; its squared norm
+is $(25+15+20)/60=1$.
+Thus over characteristic zero the symplectic
+centralizer of $A_5$ is $\operatorname{SL}_2$.
+This identification is also proved by the explicit
+commuting algebra below, without relying on a modular
+semisimplicity assertion.
+
+The exact certificate
+\nolinkurl{next_3adic_symplectic/icosahedral_integral_centralizer.py}
+solves the commuting equations over $\mathbb Q$, then
+takes their saturated lattice at three.
+The commuting order has rank four and its symplectic
+Lie lattice has rank three.
+The certificate provides a basis $H,E,F$ of the latter
+over $\mathbb Z_3$ satisfying
+\[
+ \begin{gathered}
+ H^2=I,\qquad E^2=F^2=0,\\
+ [H,E]=2E,\qquad [H,F]=-2F,\qquad [E,F]=3H,\\
+ EF=\frac{3(I+H)}2,\qquad FE=\frac{3(I-H)}2.
+ \end{gathered}                                             \tag{B.64.5}
+\]
+All entries and the basis changes are rational numbers
+with denominator prime to three.
+The four matrices $I,H,E,F$ are independent modulo
+three in $\operatorname{Mat}_{10}(\mathbb Z_3)$.
+They therefore span the full saturated commuting
+order, not a suborder of index divisible by three.
+The complete equations, bases, multiplication checks
+and actual output are in the accompanying JSON
+certificate and standard-output file.
+
+Equations (B.64.5) identify this order with
+\[
+ \mathcal O=
+ \begin{pmatrix}\mathbb Z_3&\mathbb Z_3\\
+                 3\mathbb Z_3&\mathbb Z_3\end{pmatrix},
+ \qquad
+ H\longleftrightarrow\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+ \quad E\longleftrightarrow E_{12},
+ \quad F\longleftrightarrow3E_{21}.                         \tag{B.64.6}
+\]
+The symplectic adjoint fixes $I$ and negates $H,E,F$,
+so its norm on this order is the ordinary two-by-two
+determinant.  The integral symplectic centralizer is
+therefore $\mathcal O^1$, its determinant-one group.
+Projective centralization introduces no additional
+elements: any signs in conjugating the chosen linear
+$A_5$ lift would define a homomorphism
+$A_5\to\{\pm1\}$, necessarily trivial.
+
+The natural lattice filtration must be retained.
+Since $I,H,E,F$ form a primitive order basis,
+congruence to $I$ in the ten-dimensional lattice
+means $g-I\in3\mathcal O$.
+Under (B.64.6), the lower-left entry is then divisible
+by nine, not merely by three.
+Thus $\mathcal O^1\cap(1+3\mathcal O)$ is precisely
+(B.64.2).  Ordinary entrywise reduction of the displayed
+two-by-two matrices modulo three is not faithful on
+$\mathcal O/3\mathcal O$ and must not replace this
+filtration.
+For arbitrary $a,b,c\in\mathbb Z_3$, the determinant
+condition uniquely determines
+$1+3d=(1+27bc)/(1+3a)$; hence this group is homeomorphic
+to $\mathbb Z_3^3$.
+
+\emph{The two derived centralizers.}
+Work in the common geometric marking of B.61.
+The unlabelled $A_5$ action used above is conjugate to
+it by B.52; the induced map on integral homology is
+symplectic, so all lattice assertions transport.
+Let $G_T$ and $G_5$ be the connected derived algebraic
+groups of the symplectic centralizers of $T$ and $D$
+over $\mathbb Q_3$.
+The degree-five character restricts to $T\cong A_4$
+as $1'\oplus1''\oplus3$.
+Since homology has two copies, over an algebraic
+closure its symplectic centralizer is
+$\operatorname{GL}_2\times\operatorname{SL}_2$.
+For $D\cong C_5$, the five characters each have
+multiplicity two; its symplectic centralizer is
+$\operatorname{SL}_2\times\operatorname{GL}_2
+                         \times\operatorname{GL}_2$.
+Consequently
+\[
+                    \dim G_T=6,\qquad \dim G_5=9.           \tag{B.64.7}
+\]
+These are dimensions of the derived groups, rather
+than the full centralizers of dimensions seven and eleven.
+The connected $A_5$ centralizer $\operatorname{SL}_2$
+is contained in both derived groups: its image in
+either abelian torus quotient is trivial.
+
+The source lifts of $H_T,H_5$ centralize the respective
+linear finite-group lifts.
+Indeed any possible signs define characters
+$A_4\to C_2$ or $C_5\to C_2$, both trivial.
+One may use the disk braid lifts with zero linking on
+the fixed pair $(4,6)$, as in B.62.
+Thus every source commutator maps into the appropriate
+connected derived algebraic group.
+Every $n_j$ in B.63 is a product of a conjugate of $h$
+and the inverse of another conjugate, so it lies in
+$R_T$; every $c_j$ lies in $[H_5,H_5]$.
+
+\emph{A matrix logarithm argument with the full lattice.}
+For $G=G_T,G_5$, set
+\[
+ L_G=\operatorname{Lie}(G)\cap
+                         \operatorname{Mat}_{10}(\mathbb Z_3),
+ \qquad
+ U_G=G(\mathbb Q_3)\cap
+                         (I+3\operatorname{Mat}_{10}(\mathbb Z_3)).
+                                                               \tag{B.64.8}
+\]
+The lattice $L_G$ is saturated in the matrix lattice
+and has rank $\dim G$.
+Convergent matrix logarithm and exponential give
+\[
+                U_G=\exp(3L_G),\qquad
+                U_G\cap(I+3^r\operatorname{Mat}_{10})
+                         =\exp(3^rL_G)\quad(r\geq1).        \tag{B.64.9}
+\]
+The analytic series and the powerful Lie-lattice
+construction are recorded in
+\citet[Proposition 6.22 and Theorem 9.8]{DE_DixonEtAl1999}.
+Here $3L_G$ is powerful because
+$[3L_G,3L_G]\subseteq9L_G$.
+
+The algebraic-group comparison in (B.64.9) is direct.
+Logarithm and exponential preserve the centralizer
+equations.  They also identify the symplectic group
+condition with its Lie equation.
+Over a splitting field, the derived-group condition
+on each multiplicity factor is determinant one.
+Its logarithm is the trace-zero condition.
+If a matrix is $I+3X$ with $X$ integral, the eigenvalues
+of every restricted block of $X$ are algebraic integers.
+Its determinant character therefore belongs to
+$1+3\mathcal O_K$ in the splitting field, even if the
+eigenspace projector has a denominator divisible by three.
+The scalar logarithm is injective on this subgroup,
+so determinant one and trace zero are equivalent here.
+Saturation then gives exactly $3^rL_G$, including at
+the ramified prime three.
+
+Square the actual words $n_j,c_j$ before using their
+linear matrices.  This removes the possible sign of
+a lift whose projective mod-three image is the identity.
+They belong to $U_{G_T}$ and $U_{G_5}$, respectively.
+By B.63, their logarithms divided by three reduce
+modulo three to the six or nine vectors $2X_j$.
+These vectors are independent in the ambient matrix
+lattice.  By (B.64.7) and saturation they form bases
+of $L_{G_T}/3L_{G_T}$ and $L_{G_5}/3L_{G_5}$.
+
+Here is the generation argument explicitly.
+For any $L=L_G$, put $U_r=\exp(3^rL)$.
+Then $U_r/U_{r+1}\cong L/3L$, and cubing sends
+$\exp(3^rX)$ to $\exp(3^{r+1}X)$.
+If finitely many elements of $U_1$ give a basis of
+$U_1/U_2$, their $3^{r-1}$ powers give a basis of
+$U_r/U_{r+1}$ for every $r$.
+Successively matching an arbitrary element modulo
+$U_2,U_3,\ldots$ produces a convergent product of
+these powers.  Their closed generated subgroup is
+therefore all of $U_1$.
+Applied to the squared actual words, this proves
+\[
+ U_{G_T}\subseteq\overline{q_\infty(R_T)},
+ \qquad
+ U_{G_5}\subseteq\overline{q_\infty([H_5,H_5])},            \tag{B.64.10}
+\]
+using the injective projectivization on the principal
+identity fibre.
+
+The group $\mathcal U$ lies in both groups on the left
+of (B.64.10), since its connected algebraic group is
+contained in both derived centralizers.
+Conversely, an element in the intersection of the
+two source-image closures centralizes $T$ and $D$,
+and therefore centralizes $\langle T,D\rangle=A_5$.
+In the principal identity fibre it belongs to
+$\mathcal U$.  This proves (B.64.1).
+
+Finally, the closure of $R_T$ in $\widehat{H_T}$ maps
+onto its compact $3$-adic image closure, and the same
+holds for $[H_5,H_5]$ in $\widehat{H_5}$.
+Thus the common image is realized compatibly at all
+$3$-power levels in each source separately.
+The tetrahedral source can remain in the closed
+normal rigid-test kernel, and both sources in their
+closed commutator subgroups.
+The map from $\widehat P$ to this matrix group can
+identify distinct elements, so none of these
+statements implies a common nonidentity lift in
+$\widehat P$ or in $\mathcal K$.
+\end{proof}
