@@ -1,0 +1,5 @@
+# Final notation comparison before context
+
+The one-reader second visual pass covered every page in archive order. The final cross-page comparison explicitly revisited low ! and !! in 107/014 against both high ! and low ! in 107/017; prime/double-prime evaluation labels in 107/004–008; left g/d superscripts in 107/012; W, W_e, W_0 and W_Cof and the revised chain conditions in 106; phi/psi and k/h in 107/021–025; coproduct/vee/union shapes; limit directions; quotation marks; and printed identifier ambiguities. The same written sign uses the same mathematical character; the observed differences of position, underline, bar, and arrowhead remain. No correction was made from contextual or published mathematics.
+
+Braces, environment nesting, and math delimiters were structurally checked on all fragments. A full TeX compilation could not run because the executable is installed without its format or package tree; the failed attempt is documented separately. This check therefore does not claim a rendered proof.
