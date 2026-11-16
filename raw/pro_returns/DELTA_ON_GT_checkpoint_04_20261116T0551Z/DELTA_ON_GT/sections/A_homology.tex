@@ -1,0 +1,227 @@
+\subsection{A canonical congruence-cover homology detector}
+
+\begin{statement}{RH.1}{Proved}{The level-twelve relation lattice and its first two cohomology groups}
+Let $q=q_{12}:\widehat B\twoheadrightarrow Q$, where
+$Q=\operatorname{SL}_2(\mathbb Z/12)/\{\pm I\}$ has order $576$,
+and put $N=\ker q$ and $M=N^{\rm ab}$.  We use the genuine
+normalized gentle action, with $\Phi(\tau)=\tau^{\lambda_\Phi}$.
+It preserves $N$ by the integral covariance of AD.1.  Thus it
+gives a continuous linear representation
+\[
+ h_{12}:\widehat{GT}_0\longrightarrow
+          \operatorname{Aut}_{\widehat{\mathbb Z}}(M),
+ \qquad M\simeq\widehat{\mathbb Z}^{97}.
+\]
+For the deck action of $Q$ on this lattice,
+\[
+ H^1(Q,M)=0,\qquad H^2(Q,M)\simeq\mathbb Z/96.
+\]
+Here cohomology is continuous finite-group cohomology with the
+displayed profinite coefficient module. The deck representation
+on $M/576M$ is faithful.
+\end{statement}
+\begin{proof}
+Write $H_2=\langle q(s)\rangle$ and $H_3=\langle q(r)\rangle$.
+The kernel $N$ meets every conjugate of either finite factor
+trivially.  The ordinary Bass--Serre tree of $C_2*C_3$, divided
+by the discrete congruence kernel, is therefore a finite graph
+with edge set $Q$ and vertex sets $Q/H_2$ and $Q/H_3$.
+Its fundamental group is free of rank
+$576-288-192+1=97$.  Completion identifies its homology lattice
+with $M$, and gives the exact sequence of $Q$-modules
+\[
+ 0\longrightarrow M\longrightarrow C_1\longrightarrow C_0
+       \longrightarrow\widehat{\mathbb Z}\longrightarrow0,
+ \quad
+ C_1=\widehat{\mathbb Z}[Q],\quad
+ C_0=\widehat{\mathbb Z}[Q/H_2]\oplus
+                \widehat{\mathbb Z}[Q/H_3].
+ \tag{RH.1.1}
+\]
+All terms and maps are already defined over $\mathbb Z$; their
+profinite completions are exact because the underlying graph
+homology groups are free.  Equivalently one may take the inverse
+limit of their exact finite-coefficient graph complexes.
+
+Put $L=\ker(C_0\to\widehat{\mathbb Z})$.  Invariants of $C_0$
+are pairs of coefficients of the two orbit sums. Their
+augmentation is $(a,b)\mapsto288a+192b$. Consequently
+\[
+ L^Q=\widehat{\mathbb Z}(2,-3).
+\]
+The norm edge sum maps to exactly $(2,-3)$, up to the harmless
+choice of orientation of all edges.  Shapiro's lemma gives
+$H^j(Q,C_1)=0$ for $j>0$.  The long exact sequence of
+$0\to M\to C_1\to L\to0$ therefore gives $H^1(Q,M)=0$.
+Also $H^1(Q,C_0)=0$: by Shapiro it is the sum of the groups
+$\operatorname{Hom}(C_2,\widehat{\mathbb Z})$ and
+$\operatorname{Hom}(C_3,\widehat{\mathbb Z})$, both zero.
+The second short exact sequence in (RH.1.1) now gives
+\[
+ H^2(Q,M)\simeq H^1(Q,L)
+  \simeq\operatorname{coker}
+   \bigl((288,192):\widehat{\mathbb Z}^{,2}
+                     \to\widehat{\mathbb Z}\bigr)
+  \simeq\mathbb Z/96.
+\]
+
+For $g\ne1$ in $Q$, the ordinary integral character of $M$ is
+\[
+ \operatorname{tr}(g\mid M)
+       =1-\#(Q/H_2)^g-\#(Q/H_3)^g.
+ \tag{RH.1.2}
+\]
+A nonidentity element cannot fix a coset of both types, because
+its order would divide both two and three. Hence
+$96\leq97-\operatorname{tr}(g\mid M)\leq384<576$.
+If its matrix were the identity modulo $576$, this strictly
+positive integer would be divisible by $576$, a contradiction.
+This proves the faithful finite deck action.
+
+The program \texttt{check\_congruence\_homology.py} constructs
+the actual graph, a spanning tree, its $97$ integral cycle
+generators and the deck matrices of $s,r$.  It checks their
+orders, the character formula for all $576$ deck transformations,
+and the primitive cusp class used in RH.3.  The cohomology
+conclusions follow from the exact sequences just proved; they
+are not inferred from a numerical rank computation.
+\end{proof}
+
+\begin{statement}{RH.2}{Proved}{The quadratic character is detected by homology modulo 576 at multiplier one}
+On $\mathcal H$ the character $\Delta$ factors through the
+finite linear action
+\[
+ h_{12,576}:\mathcal H\longrightarrow
+        \operatorname{GL}_{97}(\mathbb Z/576).
+ \tag{RH.2.1}
+\]
+This is an explicit canonical homology level. It is not claimed
+to be the smallest detecting quotient or modulus.  In
+particular, the quotient of $\widehat B$ by $N'N^{576}$ has
+order $576^{98}$ and suffices for this action detector; the
+larger all-homomorphisms characteristic core of FP.24 is not
+required here.
+\end{statement}
+\begin{proof}
+Suppose $\Phi\in\mathcal H$ is the identity on $M/576M$.
+Equivariance of its action on $M$ with its induced action
+$\Phi_Q$ on $Q$ gives, modulo $576$,
+$T_{\Phi_Q(g)}=T_g$ for every $g\in Q$.
+Faithfulness in RH.1 implies $\Phi_Q=1$.
+For a positive integer $n$, put
+\[
+ \Gamma_n=\widehat B/(N'N^n),\qquad
+ 1\longrightarrow M/nM\longrightarrow\Gamma_n
+       \longrightarrow Q\longrightarrow1.
+\]
+The induced automorphism of $\Gamma_{576}$ is the identity
+both on its kernel and on its quotient. For a lift $b$ of
+$g\in Q$, the difference $\Phi(b)b^{-1}\in M/576M$
+is therefore independent of the lift and is a one-cocycle.
+Its class belongs to $H^1(Q,M/576M)$.
+
+The exact sequence $0\to M\xrightarrow{n}M\to M/nM\to0$
+and RH.1 identify
+\[
+ H^1(Q,M/nM)\simeq H^2(Q,M)[n].
+\]
+Under these identifications reduction from modulus $576$ to
+modulus $6$ is multiplication by $576/6=96$ on $H^2(Q,M)$.
+This follows by the diagram of the two exact coefficient
+sequences, whose left vertical map is multiplication by $96$
+and middle vertical map is the identity.  RH.1 shows that this
+reduction of the cocycle class is zero. Thus the induced
+automorphism of $\Gamma_6$ is conjugation by an element of
+$M/6M$.
+
+We now use the single finite representation from FP.23, rather
+than its all-homomorphisms core.  Its target is the actual image
+$E_0$ of $\widehat B$ in
+\[
+ \bigl(\mathbb F_2[Q/H_2]\oplus
+             \mathbb F_3[Q/H_3]\bigr)\rtimes Q.
+\]
+Its restriction to $N$ has abelian image of exponent dividing
+six. Hence this representation factors through $\Gamma_6$.
+Let $u$ denote the image in $E_0$ of the conjugating element;
+its projection to $Q$ is one.  From
+$\Phi(s)=\beta s\beta^{-1}$ and $\Phi(r)=ArA^{-1}$,
+we find that $\beta^{-1}u$ centralizes the image of $s$ and
+$A^{-1}u$ centralizes the image of $r$.
+The two proven centralizer-projection statements of FP.23 give
+$q(\beta)\in H_2$ and $q(A)\in H_3$.
+Both frames are pure, and neither $H_2$ nor $H_3$ meets $q(F)$
+nontrivially. Consequently
+\[
+ q(\beta)=q(A)=1.
+\]
+The pure frame abelianization, or the explicit R3 formula,
+then gives $\rho\equiv0\pmod3$. The signed normalization
+is the one equal to $I$ modulo four, so the R4 shear is also
+$I$ modulo twelve. We obtain $T=W=I$, and therefore
+$\Delta(\Phi)=0$.
+This proves containment of the kernel of (RH.2.1) in
+$\ker\Delta$, which is exactly the asserted factorization.
+The extension $\Gamma_{576}$ has kernel
+$(\mathbb Z/576)^{97}$ and quotient of order $576$, proving
+the displayed order.  Its invariance under the actual gentle
+action is sufficient; no claim of characteristicity under
+all automorphisms of $\widehat B$ is used.
+\end{proof}
+
+\begin{statement}{RH.3}{Proved}{Full-multiplier homology factorization and its exact scope}
+The full character $\Delta:\widehat{GT}_0\to\mathbb F_2$
+factors continuously through the genuine representation
+$h_{12}$ of RH.1, and hence through $h_{12,n}$ for some positive
+integer $n$.  The value $n=576$ has been proved sufficient on
+$\mathcal H$ only.  This construction provides a sign line in
+a finite permutation module obtained from this homology action;
+it does not assert that the sign line occurs in $M$ itself.
+\end{statement}
+\begin{proof}
+The element $\tau^{12}$ lies in $N$. Its homology class is a
+primitive nonzero vector: in the finite graph of RH.1 its
+cusp cycle is an embedded cycle with coefficients $1$ and
+$-1$. An edge outside any spanning tree on that cycle has
+coefficient $1$ or $-1$ in its fundamental-cycle coordinates.
+The program also checks this assertion in the displayed basis.
+The normalized action sends this class to its multiple by
+$\lambda_\Phi$. Thus $h_{12}(\Phi)=1$ forces
+$\lambda_\Phi=1$; primitivity in the torsion-free profinite
+lattice is essential here. RH.2 now gives $\Delta(\Phi)=0$.
+
+The continuous map from the compact group $\widehat{GT}_0$
+onto its closed image $K\subseteq\operatorname{GL}_{97}
+(\widehat{\mathbb Z})$ is a quotient map. The kernel
+containment just proved therefore descends $\Delta$ to a
+continuous character of $K$. Its kernel is open, so it
+contains $K\cap\ker(\operatorname{GL}_{97}
+(\widehat{\mathbb Z})\to\operatorname{GL}_{97}
+(\mathbb Z/n))$ for some $n$.
+This paragraph gives a topological existence argument.
+LH.1 below supplies the explicit full-multiplier bound
+$n_*=2^{51942}3^{14136}$ by genuine tangential specialization
+and a cyclotomic conductor estimate. Neither argument computes
+the smallest modulus or a full arithmetic normalization table.
+
+For completeness the promised module is explicit once such an
+$n$ is fixed. Let $K_n$ be the actual image on $M/nM$ and let
+$\mathcal O_n$ be the orbit of a chosen ordered basis of
+$(\mathbb Z/n)^{97}$.  The action of $K_n$ on this orbit is
+free, so the permutation module $k[\mathcal O_n]$ over any
+field of characteristic different from two contains the
+nonzero vector
+\[
+ v_\Delta=\sum_{g\in K_n}(-1)^{\Delta(g)}
+                   e_{g\cdot\mathbf b}.
+\]
+Every group element acts on its span by $(-1)^\Delta$.
+At multiplier one one may take $n=576$ throughout.
+This module consists of functions on finite ordered homology
+bases of the congruence cover; its construction uses the
+specified tower action.  Determining the occurrence of this
+character in the raw homology lattice, rather than in this
+permutation functor of its finite reduction, remains a distinct
+question.  LI.8 proves its absence from the canonical Alexander
+module of $F$ and from the homologies of its finite abelian covers.
+\end{proof}

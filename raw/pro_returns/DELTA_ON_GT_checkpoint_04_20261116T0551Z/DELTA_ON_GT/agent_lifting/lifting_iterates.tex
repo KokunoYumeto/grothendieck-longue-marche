@@ -1,0 +1,655 @@
+% New actual consequences of the stipulated relative lifting theorem R2.
+\subsection{A kernel of descent detected by the quadratic character}
+
+\paragraph{LI.1 (Refuted): the proposed nilpotent-residual exclusion at four.}
+Let $U_0=F'F^3$, and evaluate $F$ in
+$\mathrm{SL}_2(\mathbb Z/4)$ by $x\mapsto S$, $y\mapsto U^{-1}$.
+The image of $U_0$ is the whole group of order $48$, and its
+nilpotent residual is its derived subgroup of order $12$.
+In particular it contains $-U^2$. There is even an explicit
+actual profinite word $w\in R_{\rm nil}(U_0)$ with this value.
+Thus membership $f\in R_{\rm nil}(U_0)$ alone cannot force
+the first descent character to vanish.
+
+\emph{Proof.}
+The finite group has abelianization $C_4$, so commutators together
+with cubes generate it. Its lower central series has successive
+orders $48,12,12$, as the complete finite calculation verifies.
+For an explicit source word let $e_p\in\widehat{\mathbb Z}$ be
+the idempotent with $p$-adic component one and every other prime
+component zero. Put
+\[
+ A=(x^6y^6)^{e_2},\qquad B=(x^3y^{-3})^{e_3},\qquad
+ w=[BAB^{-1},B].
+\]
+Both $A,B$ lie in $U_0$. The first is a pro-two element and the
+second is pro-three. Their indicated commutator maps to one in
+every finite nilpotent quotient of $U_0$, whose different Sylow
+subgroups commute. Hence $w\in R_{\rm nil}(U_0)$.
+At the displayed modulo-four evaluation, $A=-U^2$ and $B=R_0$,
+with respective orders two and three, and
+\[
+ [R_0(-U^2)R_0^{-1},R_0]=-U^2.
+\]
+This is an actual source counterexample to the residual exclusion.
+It is not claimed to be a gentle parameter. The finite computations
+are in \texttt{check\_iterated\_lifting.py}.
+
+\paragraph{LI.2 (Proved): a simultaneous full-kernel word with nontrivial frame residue.}
+Let $\varphi:F\to\widehat B$ be the current map of LC.1, and let
+\[
+ K=\operatorname{core}_{\widehat B}(\ker\varphi)
+   =\bigcap_{b\in\widehat B} b(\ker\varphi)b^{-1}
+       \quad\text{as a closed subgroup of }F.
+\]
+Then the explicit word
+\[
+                   A_0=[[x^4,y^4],z^4]^2
+\]
+belongs to $F'\cap K$ and has $q_{12}(A_0)=[5I]$.
+
+\emph{Proof.}
+The kernel of $\varphi$ is normal in $F$, so the displayed core
+requires only representatives for the six cosets $\widehat B/F$.
+Their conjugations permute the three peripheral classes of $F$.
+Under each resulting evaluation into $\widehat B$, one of the
+three entries $x,y,z$ is conjugate to $s$ and has order two.
+Its fourth power is therefore one. The iterated commutator
+$[[x^4,y^4],z^4]$ vanishes if any of its three entries is one.
+Thus $A_0$ lies in all six kernels in the full profinite target,
+not just at a congruence level. It is a commutator word, so belongs
+to $F'$ as well. For the original inclusion use
+$x=U^2$, $y=L^2$. Direct multiplication modulo twelve gives
+$q_{12}(A_0)=[5I]$; the accompanying program gives all seven
+matrix values, the six other values being $I$.
+
+\paragraph{LI.3 (Proved, using R2): the quadratic character is nontrivial on the kernel of descent.}
+There exists an actual $k\in\mathcal H$ such that
+\[
+ \boxed{\ D(k)=1,\qquad\Delta(k)=1.\ }
+\]
+It can simultaneously be chosen with
+\[
+ f_k\in R_{\rm nil}(U_0),\qquad
+ q_{12}(A_k)=[5I],\quad q_{12}(\beta_k)=1,\quad \rho_k=0,
+ \qquad U_0=F'F^3.
+\]
+In particular it is invisible on every absolute pro-prime pure action.
+This is a full profinite existence theorem, not a finite survival result.
+
+\emph{Proof.}
+Let $J\triangleleft\widehat B$ be any open normal subgroup, and set
+\[
+ N_J=U_0\cap\operatorname{core}_{\widehat B}
+                              \bigl(\varphi^{-1}(J)\bigr).
+\]
+This is open and normal in $\widehat B$, contained in $F$.
+The word $A_0$ of LI.2 belongs to every $N_J$.
+Retain $Q=\mathrm{SL}_2(\mathbb Z/12)/\{\pm I\}$ and
+$q=q_{12}:\widehat B\to Q$. R2's finite calculation gives
+$q(U_0)=V_4\times Q_8$, a two-group. Consequently $q(N_J)$
+is a two-group containing $q(A_0)=[5I]$, and $q$ factors through
+$\Gamma_2=\widehat B/O^2(N_J)$.
+
+Put $D_J=\widehat B/N_J$ and retain the actual joint image
+\[
+ E_J=\operatorname{im}(\widehat B\to Q\times D_J).
+\]
+Its kernel over $D_J$ is exactly $q(N_J)$, and the kernel of
+$\Gamma_2\twoheadrightarrow E_J$ is pro-two. The element
+$([5I],1)$ belongs to $E_J$, because it is the image of $A_0$,
+and it centralizes the image of $r$. The order of that image is
+three, detected by the retained $S_3$ quotient. Coprime
+centralizer lifting therefore produces
+\[
+ c_2\in C_{\Gamma_2}(r),\qquad
+ c_2\longmapsto([5I],1)\in E_J.
+\]
+Here the elementary lifting argument is the one used in R2:
+two complements to a pro-two kernel for the same order-three
+subgroup are conjugate by the kernel, with the same generator
+image; finite complement conjugacy and compactness give the
+profinite assertion.
+
+Use the identity automorphism in every relative pro-$p$ component
+of $\widehat B/R_{\rm nil}(N_J)$. Give $s,\tau$ conjugator one,
+and give $r$ conjugator $c_2$ at two and one at all other primes.
+All these coordinates have the same value one in $D_J$.
+The relative product theorem and R2 lift them to an actual full
+peripheral automorphism. Normalize its cusp by the inverse of
+the lifted cusp conjugator, which lies in $R_{\rm nil}(N_J)$.
+The resulting normalized gentle pair $k_J=(1,f_J)$ has
+\[
+ f_J,\beta_J\in R_{\rm nil}(N_J),\qquad
+ q(A_J)=[5I],\quad q(\beta_J)=1.
+\]
+Since $R_{\rm nil}(N_J)\subseteq N_J'\subseteq F'$, its
+harmonic frame has abelianization zero, hence $\rho_J=0$.
+R4 now gives $\Delta(k_J)=1$. Moreover
+$\varphi(f_J)\in J$.
+
+These are witnesses for a compactness argument on the actual
+compact group $\mathcal H$. Impose the closed conditions
+\[
+ f\in R_{\rm nil}(U_0),\quad\beta\in R_{\rm nil}(U_0),
+ \quad q(A)=[5I],\quad q(\beta)=1,
+ \quad\varphi(f)\in J.
+\]
+Every finite collection is met by the construction for the
+intersection of its open normal subgroups $J$.
+Indeed $N_J\subseteq U_0$ implies
+$R_{\rm nil}(N_J)\subseteq R_{\rm nil}(U_0)$.
+The normalized parameter and the unique pure frames depend
+continuously on the gentle element, so all these sets are closed.
+Compactness gives an actual $k$ satisfying every condition and
+$\varphi(f_k)=1$.
+
+In LC.1 this says $C=1$, $p=q=a=0$, and $\beta_D=1$.
+The normalized descendant fixes both $s$ and $\tau$, hence is
+the identity. Thus $D(k)=1$, while the retained frame values
+give $\Delta(k)=1$. The inclusion
+$R_{\rm nil}(U_0)\subseteq R_{\rm nil}(F)$ proves the final
+absolute pronilpotent invisibility assertion.
+
+\paragraph{LI.4 (Proved): consequences for fixed subgroups and iterated characters.}
+The descent endomorphism $D$ is not injective. Both
+$\operatorname{Fix}(D)$ and the correctly marked
+$\operatorname{Fix}(\operatorname{Ad}_c\circ D)$ are proper
+closed subgroups of $\widehat{\mathrm{GT}}_0$. For every $n\geq1$,
+\[
+ \Delta\circ D^n\ne\Delta,
+\]
+and $\Delta$ does not belong to the finite linear span of these
+positive iterates. More strongly,
+\[
+ (D,\Delta):\widehat{\mathrm{GT}}_0
+       \longrightarrow\operatorname{im}(D)\times\mathbb F_2
+\]
+is onto; the corresponding multiplier-one statement is also true.
+Using the independently proved arithmetic marking comparison
+$D(\sigma)=c\sigma c$ on $G_{\mathbb Q}$, every
+$\chi_n=\Delta\circ D^n$ vanishes on the Galois image.
+Consequently $\chi_1$ is either zero or linearly independent of
+$\Delta$ as a relative quadratic character. Its nonvanishing
+is not established by the present construction.
+Moreover, neither fixed subgroup contains $\ker\Delta$.
+In particular the proposed equality
+$\operatorname{Fix}(\operatorname{Ad}_c\circ D)=\ker\Delta$
+is false even in the corrected original marking. More precisely,
+$\ker D\cap\mathcal H$ contains a closed subgroup
+$Z\simeq\mathbb Z_2$ on which $\Delta$ is reduction modulo two.
+Every nonidentity element of $2Z$ lies in $\ker\Delta$ and in
+neither fixed subgroup. No pentagon assertion about these
+elements is made.
+
+\emph{Proof.}
+Use the actual element $k$ of LI.3. It is nonidentity since
+$\Delta(k)=1$, but both descent endomorphisms send it to one.
+Thus it is in neither fixed subgroup. Every positive iterate
+$D^n(k)$ is one. Evaluating the proposed equality of characters,
+or a finite linear combination of positive iterates, at $k$
+proves the stated distinctions. Finally, for any chosen preimage
+$g$ of a point of $\operatorname{im}(D)$, the elements $g,gk$
+have the same descendant and opposite $\Delta$ values.
+Both stay in $\mathcal H$ when $g\in\mathcal H$.
+For the arithmetic assertion use the simultaneous positive-loop
+comparison proved in A4.M3: $D$ preserves the Galois image and
+acts there by conjugation by $c$. R4 therefore makes every
+$\chi_n$ vanish on that image. Since $\chi_1\ne\Delta$,
+the only remaining possibilities in a vector space of quadratic
+characters are $\chi_1=0$ or linear independence.
+
+For the fixed-subgroup comparison, R7 implies $k^2\ne1$,
+because $k\in\mathcal H$ is nonidentity and $\mathcal H$ is
+torsion-free. But $D(k^2)=1$ and $\Delta(k^2)=0$.
+Both $D$ and $\operatorname{Ad}_c\circ D$ send $k^2$ to one,
+so neither fixes it. For the stronger closed-subgroup statement
+put $k_2=k^{e_2}$, using the prime idempotent of LI.1.
+Continuity gives $D(k_2)=1$ and $\Delta(k_2)=1$.
+The closed subgroup $Z=\overline{\langle k_2\rangle}$ is
+procyclic and pro-two, nontrivial by its quadratic value, and
+torsion-free by R7. Hence $Z\simeq\mathbb Z_2$.
+Its nonzero homomorphism to $\mathbb F_2$ is reduction modulo
+two, with kernel $2Z$. The two descent endomorphisms are
+trivial on $Z$, proving all remaining assertions.
+
+\paragraph{LI.5 (Proved, using R2): an actual independent affine-pentagon obstruction.}
+Let $p,t$ generate $S_3$ with $p^3=t^2=(pt)^2=1$, and define
+$a_f\in\mathbb F_3$ by $f(p,t)=p^{a_f}$.
+There exists an actual multiplier-one gentle pair with
+\[
+                  a_f=0,\qquad \rho=-1\pmod3.
+\]
+It is identity on every absolute pro-prime pure action. Combined
+with the independently verified five-point affine pentagon formula
+$(a_f-\rho)e_1$, this is an actual profinite counterexample to the
+pentagon, detected by that genuine five-point quotient.
+
+\emph{Proof.}
+Let $N$ be the $\widehat B$-normal core of the kernel of
+$F\to S_3$, $x\mapsto p$, $y\mapsto t$. Every geometric
+permutation of the boundary triple gives a generating $S_3$
+triple with orders $3,2,2$. The two explicit words
+\[
+ b_x=x^2yx^2y^{-1},\qquad b_y=y^2xy^2x^{-1}
+\]
+vanish under every such evaluation. For $b_x$, either the image
+of $x$ has order two, or it has order three and the image of $y$
+is an involution inverting it. These are exactly the two cases
+and both give one. The proof for $b_y$ is identical. Their
+abelianizations are $(4,0)$ and $(0,4)$, so $N$ maps onto
+$F/F'F^3=\mathbb F_3^2$, and $b_0=b_xb_y$ has image $(1,1)$.
+
+Use the actual finite quotient $Q_3=\widehat B/(F'F^3)$ of
+order $54$. Its pure kernel is $\mathbb F_3^2$, and $s$
+interchanges the two coordinates. The image of $N$ is this
+three-group, and the image of $b_0$ is the nonzero diagonal
+translation, which centralizes $s$.
+In the actual joint quotient of $Q_3$ and $\widehat B/N$,
+the element $((1,1),1)$ therefore lifts to a centralizer of $s$
+in $\widehat B/O^3(N)$, because $s$ has order two and the
+kernel is pro-three.
+
+Choose the identity relative automorphism, this conjugator
+for $s$ at three, and conjugator one for $s$ at every other
+prime and for $r,\tau$ at every prime. R2 and cusp normalization
+give an actual full gentle pair with
+\[
+ f\in R_{\rm nil}(N)\subseteq N,\qquad
+ \beta^{\rm ab}\equiv(1,1)\pmod3.
+\]
+The correction at the cusp lies in $R_{\rm nil}(N)$ and thus
+has zero abelianization, so the retained frame congruence is
+literal. It gives $\rho=-1\pmod3$, whereas $f\in N$ gives
+$f(p,t)=1$ and $a_f=0$. Finally
+$R_{\rm nil}(N)\subseteq R_{\rm nil}(F)$ proves the claimed
+absolute pronilpotent invisibility. The finite seed identities
+are checked on all eighteen generating pairs of $S_3$ by the
+accompanying program. Existence of the full pair is supplied
+by the displayed relative lift, not inferred from that enumeration.
+
+\paragraph{LI.6 (Proved): all iterated quadratic tests miss an actual nonpentagonal element.}
+There is an actual pro-three element $h\in\mathcal H$ which is
+identity on every absolute pro-prime pure action, fails the pentagon,
+and satisfies
+\[
+                   \Delta(D^n h)=0\qquad(n\geq0).
+\]
+Its closed procyclic subgroup is isomorphic to $\mathbb Z_3$.
+Thus the intersection of all these quadratic kernels, even together
+with all absolute pronilpotent tests, is strictly larger than its
+intersection with $\widehat{\mathrm{GT}}$.
+
+\emph{Proof.}
+Take the actual element $h_0$ from LI.5 and put
+$h=h_0^{e_3}$, where $e_3$ is the prime idempotent of LI.1.
+The two maps $a_f,\rho\bmod3$ are additive on $\mathcal H$.
+For $a_f$, evaluate the normalized action in the preserved quotient
+$S_3=\langle p,t\rangle$: it fixes $p$ and conjugates $t$
+by a power of $p$, so its action on $\langle p\rangle$ is trivial.
+The pair multiplication law therefore adds the exponent $a_f$.
+Additivity of $\rho$ is R4's frame multiplication law.
+It follows that $(a_f-\rho)(h)=1$, since $e_3\equiv1\pmod3$.
+The affine pentagon detector consequently remains nonzero.
+Absolute pro-prime invisibility is preserved by taking a profinite
+power. The closed subgroup generated by $h$ is pro-three, so every
+continuous homomorphism from it to $\mathbb F_2$ is zero.
+Apply this to each $\Delta\circ D^n$.
+Finally $h\ne1$, and R7 excludes nontrivial finite-order elements
+in $\mathcal H$. A nontrivial torsion-free procyclic pro-three
+group is $\mathbb Z_3$, which proves the last assertion.
+This conclusion only identifies an actual nonpentagonal element
+in the joint zero locus. It assumes no vanishing of any
+$\chi_n$ on all of $\widehat{\mathrm{GT}}$.
+
+\paragraph{LI.7 (Proved): the cubic pentagon character measures a descent discrepancy.}
+On $\mathcal H$ let $\psi(\Phi)=a_f-\rho\pmod3$, with
+$a_f$ as in LI.5. In the prompt's marking the following are
+identities of continuous homomorphisms on $\mathcal H$:
+\[
+ \rho\circ D=-a_f\pmod3,
+ \qquad
+ \boxed{\ \psi=-\rho\circ D-\rho\pmod3.\ }
+\]
+Consequently $\rho\circ D=-\rho\pmod3$ is a necessary
+pentagon equation, and LI.5 gives an actual gentle pair violating
+it. These identities concern $\mathcal H$; they do not assert
+a full-multiplier extension of $\psi$.
+
+\emph{Proof.}
+Use the actual notation of LC.1. Reducing
+$H=\varphi(f(z,x))$ modulo the pure subgroup gives
+$f(r^{-1},s)=r^{-a_f}$ in $S_3$. Here simultaneous conjugation
+shows that the defining exponent $a_f$ is independent of the
+chosen generating pair $(p,t)$ of orders three and two, and
+replacing $p$ by $p^{-1}$ changes the displayed power in the
+specified way. Thus $l=-a_f\pmod3$.
+LC.2 proves $a=l\pmod3$, whereas LC.1 gives
+$a=q-p$, $p+q=0\pmod3$ and $\rho_D=-q$.
+It follows that $a=-q=-a_f\pmod3$, hence
+$\rho_D=-a_f$. Subtracting $\rho$ gives the boxed identity.
+The genuine five-point affine pentagon calculation makes
+$\psi=0$ necessary for the pentagon, and LI.5 proves that this
+necessary equation is not a consequence of the gentle relations.
+
+\paragraph{LI.8 (Proved, using R2): the character survives beyond the third derived action.}
+The element $k$ of LI.3 can be chosen so that, in addition,
+\[
+       f_k,\beta_k\in R_{\rm nil}(F'')\subseteq F''',
+       \qquad A_k\in F'',
+       \qquad D(k)=1,\qquad\Delta(k)=1.
+\]
+Here $F''$ is the closed second derived subgroup of the full
+free profinite group, and $F'''=(F'')'$ is its closed third
+derived subgroup. The genuine normalized action of $k$ is
+identity on $F/F'''$, hence on $F/F''$, on the completed Alexander module
+$F'/F''$, and on $K/K'$ for every open subgroup $K$ containing
+$F''$. In particular the canonical homology of finite abelian
+covers, including the Fermat covers, does not contain a line
+affording $(-1)^\Delta$ over a field of characteristic different
+from two. The same is true of the completed Alexander module
+after extension to such coefficients, and of the homology of
+any finite metabelian cover preserved by the gentle action.
+This assertion concerns these canonical modules; it does not
+assert the analogous statement for arbitrary nonabelian covers
+such as the full level-twelve cover.
+It is also identity on $\widehat B/R_{\rm nil}(F'')$, hence
+on $\widehat B/\widehat B'''$. In particular it is invisible
+in every finite modular-source quotient in which the image
+of $F''$ is nilpotent.
+Consequently no action on any finite solvable quotient of
+$\widehat B$ of derived length at most three can detect
+$\Delta$, even if all such actions are retained jointly.
+Together with the independently proved finite characteristic
+$\widehat B$ detector of derived length four in FP.35, this
+makes four the exact minimum derived length for such a
+finite modular-source action detector. This is a statement
+about quotients of $\widehat B$, not about the derived length
+of arbitrary finite representations of the gentle group.
+
+\emph{Proof.}
+Replace the seed of LI.2 by the word
+\[
+                    A_1=[[x^4,y^4],[y^4,z^4]].
+\]
+Both inner commutators belong to $F'$, so $A_1\in F''$.
+Under every $\widehat B/F$ conjugate of $\varphi$, one of
+$x^4,y^4,z^4$ is one. If it is $x^4$ or $z^4$, the respective
+inner commutator is one; if it is $y^4$, both are one.
+Consequently $A_1\in\operatorname{core}_{\widehat B}\ker\varphi$.
+Direct multiplication in the original signed level-twelve
+representation gives $q_{12}(A_1)=5I$. The complete six
+orbifold values and the original value are checked in
+\texttt{check\_iterated\_lifting.py}.
+
+Let $J\triangleleft\widehat B$ be open normal, and let
+$M\triangleleft\widehat B$ be open normal with $F''\subseteq M$.
+Set
+\[
+ N_{J,M}=U_0\cap M\cap
+       \operatorname{core}_{\widehat B}(\varphi^{-1}J).
+\]
+The seed $A_1$ belongs to every $N_{J,M}$. Hence its level-twelve
+image is a two-group containing $[5I]$, exactly as in LI.3.
+The same coprime lift at $r$, followed by R2 and cusp
+normalization, gives an actual $k_{J,M}\in\mathcal H$ with
+\[
+ \begin{gathered}
+ f_{J,M},\beta_{J,M}\in R_{\rm nil}(N_{J,M}),
+ \qquad A_{J,M}\in N_{J,M},\\
+ q_{12}(A_{J,M})=[5I],\quad q_{12}(\beta_{J,M})=1,
+ \quad\rho_{J,M}=0,\quad\varphi(f_{J,M})\in J.
+ \end{gathered}
+\]
+The additional statement about $A_{J,M}$ follows from its
+prescribed base coordinate one in $\widehat B/N_{J,M}$.
+The cusp correction lies in $R_{\rm nil}(N_{J,M})$ and
+therefore preserves membership of all three entries in
+$N_{J,M}$. It also preserves their retained finite values.
+Thus $f_{J,M},\beta_{J,M},A_{J,M}\in M$.
+
+In fact $R_{\rm nil}(N_{J,M})\subseteq R_{\rm nil}(M)$:
+every finite nilpotent quotient of $M$ restricts to one of
+$N_{J,M}$. Impose the closed conditions of LI.3 together with
+$f,\beta\in R_{\rm nil}(M)$ and $A\in M$, for every such $M$.
+A finite collection is
+met by taking the intersections of its $J$'s and $M$'s.
+The continuity of the normalized parameter and pure frames
+and compactness of $\mathcal H$ give a simultaneous limit.
+For completeness the two exact closed-subgroup identities are
+\[
+ \bigcap_{\substack{M\triangleleft_o\widehat B\\F''\subseteq M}}M=F'',
+ \qquad
+ \bigcap_{\substack{M\triangleleft_o\widehat B\\F''\subseteq M}}
+          R_{\rm nil}(M)=R_{\rm nil}(F'').
+\]
+The first is the separation of the profinite quotient
+$\widehat B/F''$ by its finite quotients. For the second,
+monotonicity gives containment from right to left. Conversely
+let $q:\widehat B\to Q$ be any finite quotient killing
+$R_{\rm nil}(F'')$. The finite group $q(F'')$ is nilpotent,
+since $F''/R_{\rm nil}(F'')$ is pronilpotent.
+Take $M=F''\ker q$, which is open normal and contains $F''$.
+Then $q(M)=q(F'')$ is nilpotent, so $q(R_{\rm nil}(M))=1$.
+All such $q$ separate the quotient by $R_{\rm nil}(F'')$,
+proving the reverse containment. Normality here is legitimate:
+$F''$ is characteristic in the normal subgroup $F$, and its
+nilpotent residual is characteristic in $F''$.
+
+The limit therefore has $f,\beta\in R_{\rm nil}(F'')\subseteq F'''$
+and $A\in F''$, and retains
+$\varphi(f)=1$, the two frame values, and $\rho=0$.
+LC.1 and R4 again give $D(k)=1$ and $\Delta(k)=1$.
+It also retains the absolute pronilpotent invisibility of LI.3.
+
+The normalized genuine automorphism fixes $x$ and sends
+$y$ to $f_k^{-1}yf_k$. Since $f_k\in F'''$, it induces identity
+on $F/F'''$. Its restriction to $F'/F''$ is therefore identity.
+If $K$ is open and contains $F''$, then $F'''\subseteq K'$.
+Moreover $k$ preserves $K$ since it is identity on $F/F'''$.
+For every $w\in K$ the element $k(w)w^{-1}$ lies in
+$F'''\subseteq K'$, so the action on $K/K'$ is identity.
+These are actual actions from the fixed normalized pair, so
+no inner-automorphism ambiguity enters the assertion.
+The normalized modular extension has
+$k(s)=sf_k$, $k(r)=f_k^{-1}r$ and $k(\tau)=\tau$.
+Since $f_k\in R_{\rm nil}(F'')$, it is identity on
+$\widehat B/R_{\rm nil}(F'')$. Any finite quotient whose
+image of $F''$ is nilpotent kills this residual and thus sees
+the identity action. The inclusion
+$R_{\rm nil}(F'')\subseteq F'''\subseteq\widehat B'''$
+gives the asserted identity on $\widehat B/\widehat B'''$.
+Every finite solvable quotient
+of $\widehat B$ of derived length at most three kills
+$\widehat B'''$; hence $k$ preserves each such quotient map
+and acts identically on its target. Its nonzero $\Delta$
+therefore rules out every detector from that joint collection.
+FP.35 supplies the matching upper bound by an actual finite
+characteristic quotient with a faithful enough outer-action
+detector; no statement about the full pentagon is used here.
+When $K$ contains $F'$, it is preserved by the full gentle
+group as well: its image in $F^{\rm ab}$ is an open additive subgroup,
+preserved by multiplication by every unit
+$\lambda\in\widehat{\mathbb Z}^{\times}$.
+For general metabelian covers we impose this stability when
+regarding their individual homology as a module for the full
+group; characteristic covers in particular satisfy it.
+
+Over a field of characteristic different from two, a line
+affording $(-1)^\Delta$ would make this same element $k$
+act by $-1$. Since its action on each indicated module is
+identity, no such line exists. More generally, for any nonzero
+one of these coefficient modules $V$, its twist
+$V\otimes(-1)^\Delta$ is not isomorphic to $V$ as a
+$\widehat{\mathrm{GT}}_0$ module: an intertwiner would satisfy
+$T=-T$ by applying $k$ and hence be zero. Their restrictions
+to $G_{\mathbb Q}$ are canonically identical because R4
+gives $\Delta|_{G_{\mathbb Q}}=0$.
+
+Finally let $V_*$ denote the actual joint image of
+$\widehat{\mathrm{GT}}_0$ in its absolute pro-prime pure
+actions, its normalized full action on $F/F'''$, and the
+canonical homologies of all finite abelian covers and all
+finite metabelian covers preserved by the full group; include
+also the canonical outer action on
+$\widehat B/R_{\rm nil}(F'')$ (and hence on
+$\widehat B/\widehat B'''$).
+The pure and homology actions are the continuous genuine
+actions from normalized pairs, while the last action is
+explicitly an outer action. Cover stability has been
+specified above. The retained closed condition
+$f_k\in R_{\rm nil}(U_0)$ gives the first invisibility,
+and the preceding proof gives all the other ones. Thus
+\[
+ \widehat{\mathrm{GT}}_0\longrightarrow V_*\times\mathbb F_2,
+ \qquad g\longmapsto(\operatorname{image}(g),\Delta(g))
+\]
+is onto: $g$ and $gk$ have identical first coordinate and
+opposite second coordinates. In particular $\Delta$ is not
+a function of this entire joint collection of action and
+homology data. This conclusion does not concern arbitrary
+solvable quotients.
+
+\paragraph{LI.9 (Proved): one actual witness passes the entire adelic primitive-cube-root Burau pentagon family.}
+Let $\mathcal O=\mathbb Z[\omega]/(\omega^2+\omega+1)$,
+and use the three literal Burau matrices $A,B,C$ of FP.36.2.
+For every prime $p$ and $n\geq1$, reduce their projective
+classes modulo $p^n$. This gives a genuine finite quotient
+$\eta_{p^n}$ of $L=B_4/\langle z_4\rangle$, and hence an
+induced genuine five-point quotient as in FP.36.
+There exists one actual $k=(1,f_k)\in\mathcal H$ such that
+\[
+ \Delta(k)=1,\qquad Dk=1,\qquad\rho(k)=0,\qquad
+ f_k,\beta_k\in R_{\rm nil}(F''),\quad A_k\in F'',
+\]
+retaining all the invisibility assertions of LI.8, and
+\[
+ f_k(X_3,X_4)=f_k(X_5,X_1)=f_k(X_2,X_3)
+       =f_k(X_4,X_5)=f_k(X_1,X_2)=1
+       \quad\text{under every }\eta_{p^n}.
+\]
+Thus its pentagon is one in this entire adelic congruence
+family, including every induced five-point quotient, although
+$\Delta(k)=1$. This does not assert the full profinite
+pentagon for $k$.
+
+\emph{The two harmonic pairs.}
+Over $\mathcal O$, the matrices $A,B$ fix the primitive
+column $v=(1,1,1)^{\mathsf T}$ and the row
+$\ell=(1,\omega,\omega^2)$, with $\ell v=0$.
+The basis with columns
+\[
+ v,\qquad(0,1,-\omega^2)^{\mathsf T},\qquad
+                    (0,0,\omega)^{\mathsf T}
+\]
+has determinant $\omega$, a unit. Hence these matrices are
+upper triangular in an integral basis, with diagonal entries
+$(1,-\omega,1)$. The group generated by $X_1=A^2,X_2=B^2$
+therefore has derived subgroup in the upper unitriangular
+group. Over $\mathcal O/p^n$ this is a finite $p$-group.
+In particular its second derived group is nilpotent.
+The reversing half twist identifies the pair $(X_2,X_3)$
+with the first pair, up to interchanging its entries.
+Consequently $f\in R_{\rm nil}(F'')$ kills both harmonic
+pair evaluations at every prime and every level.
+
+\emph{The three remaining pairs and their uniform seed.}
+The following are exact identities over $\mathcal O$:
+\[
+ (X_4-I)^2=(X_5-I)^2=0,
+ \qquad X_i\equiv I\pmod{(1-\omega)}\quad(1\leq i\leq5).
+\]
+For example,
+\[
+ X_5=\begin{pmatrix}
+ 1&\omega-1&-2\omega-1\\0&1&0\\0&0&1
+ \end{pmatrix}.
+\]
+Thus $X_4^{p^n}=X_5^{p^n}=1$ modulo $p^n$.
+At $p=3$, the ring $\mathcal O/3^n$ is local with residue
+field $\mathbb F_3$ and nilpotent maximal ideal generated
+by $1-\omega$. The kernel of its projective linear
+reduction to the residue field is a finite three-group.
+All the $X_i$ lie in this kernel, so every pair image is a
+three-group. Its evaluations are again killed by
+$R_{\rm nil}(F'')$.
+
+Now take any finite list of levels $(p,n)$ with $p\ne3$,
+and choose a positive integer $m$ divisible by two and by
+every listed $p^n$, with $3\nmid m$; their least common
+multiple has these properties. Put
+\[
+             a_m=[[x^m,y^m],[y^m,z^m]]\in F''.
+\]
+For any group triple with product one, this word is one
+if any one of the three displayed $m$th powers is one.
+The triples for $(X_3,X_4),(X_5,X_1),(X_4,X_5)$ each
+contain $X_4$ or $X_5$. Therefore $a_m$ vanishes at these
+three pairs and at all six peripheral permutations, at
+every listed level.
+
+These six tests give the full $B$-normal core condition,
+not merely a selection of substitutions. Indeed conjugation
+by $r$ cyclically permutes $(x,y,z)$, while conjugation
+by $s$ swaps $x,y$ and sends $z$ to $(yx)^{-1}$.
+The latter three ordered pairs are simultaneously conjugate
+to $(y,x),(x,z),(z,y)$, respectively. Thus the six ordered
+peripheral pairs represent the six outer cosets in $B/F$;
+their kernel intersection is exactly the required $B$-core.
+
+The same word belongs to every full orbifold kernel:
+each peripheral permutation of $\varphi$ sends one peripheral
+to an element of order two, and $m$ is even. Moreover
+\[
+                       q_{12}(a_m)=[5I].
+\]
+This follows directly for the four possible classes
+$m\equiv2,4,8,10\pmod{12}$ using
+$x\mapsto U^2$, $y\mapsto L_0^2$ and $z=(xy)^{-1}$.
+The certificate checks all four classes; equivalently the
+modulo-four value is $I$ and the modulo-three value is
+$-I$ in each case.
+
+\emph{Actual lifting and compactness.}
+Let $K$ be the intersection of the $B$-normal cores of the
+three nonharmonic evaluation kernels at the finitely many
+listed levels. For any open $B$-normal $M\supseteq F''$
+and any finite orbifold target with kernel $J$, set
+\[
+ N=U_0\cap M\cap K\cap
+                   \operatorname{core}_B(\varphi^{-1}J).
+\]
+This is open and $B$-normal, contains $a_m$, and has
+two-group $q_{12}$ image containing $[5I]$.
+Apply precisely the coprime $r$-centralizer lift and R2
+normalization of LI.8. It supplies an actual normalized
+gentle element with the prescribed frame values and
+$f,\beta\in R_{\rm nil}(N)$, $A\in N$.
+The cusp correction remains in $R_{\rm nil}(N)$, so
+it preserves membership in every added evaluation kernel.
+
+Take the compact intersection over all finite lists of
+levels, all such $M$, and all $J$. Finite intersections
+are nonempty by the construction just given. The LI.8
+intersection argument still yields
+$f,\beta\in R_{\rm nil}(F'')$, while every nonharmonic
+evaluation is one at every level away from three.
+The flag argument handles the two harmonic pairs at all
+primes, and the residue argument handles every pair at
+three. The retained finite frames give $\Delta(k)=1$,
+and the full orbifold condition gives $Dk=1$.
+The coset representatives used to induce to the full
+five-point group may be taken to be powers of the cyclic
+rotation of the five $X_i$; hence each block again uses
+the same five pairs, all of whose evaluations are one.
+
+For the first odd-field example, an entirely explicit word
+which kills even the two harmonic pair maps is
+\[
+              a_7=\bigl([[x^{28},y^{28}],
+                              [y^{28},z^{28}]]\bigr)^7.
+\]
+It has original value $[5I]$ and all thirty pair/permutation
+values one over $\mathbb F_7$. The general proof uses
+the uniform unipotent and flag identities, rather than an
+enumeration of further finite pentagon assignments.

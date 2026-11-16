@@ -1,0 +1,218 @@
+% Draft for the next numbered statement; publication source is frozen.
+% This proves the actual framed finite-field group and the three possible
+% Kummer comparisons.  It does not choose an arithmetic eta class.
+
+\paragraph{The actual framed point group.}
+Put $k=\mathbb F_4=\mathbb F_2[\zeta]$,
+$E_0:y^2+y=x^3$, and let $D=E_0(k)=E_0[3]$.
+The coordinate change and ordered cusps are those of B.35.
+The inverse change is
+\[
+                  [X:Y:Z]=[y+\zeta:y+\zeta^2:x].
+\]
+Write $O$ for infinity.  For every $P\in D$ let $z_P$
+be the point of the generalized Jacobian represented by
+$\mathcal O(P-O)$ with the prescribed frames
+$s_P^{-1}$ at $P$, $s_O$ at $O$, and one elsewhere;
+put $z_O=0$.
+The split torus is $(k^\times)^D/k^\times$, whose
+coordinates, normalized at $O$, are written as
+$W_0=\mathbb F_3^8$ using $\zeta$.
+For $R\in D$ write $\epsilon_R(a)$ for the torus vector
+having exponent $a$ at $R$ and zero elsewhere, modulo
+the diagonal; in particular
+$\epsilon_O(a)=(-a,\ldots,-a)$.
+Every generalized-Jacobian point has a unique expression
+$z_P+t$, with $P\in D$ and $t\in W_0$.
+Indeed its compact image determines $P$, and the kernel
+is the displayed split torus.  Surjectivity onto $E_0(k)$
+is also explicit from the framed representatives $z_P$.
+
+The point group is obtained without any choice of a
+Tate division.  For $P,Q\ne O$ put $R=P+Q$.
+If $R\ne O$, let
+\[
+ f_{P,Q}=\ell_{P,Q}/(x-x_R),
+\]
+where $\ell_{P,Q}$ is the secant or tangent line with
+coefficient one on $y$.
+If $R=O$, put $f_{P,Q}=x-x_P$; if either argument is
+$O$, put $f_{P,Q}=1$.
+In every case
+\[
+          \operatorname{div}(f_{P,Q})=P+Q-R-O.
+\]
+Multiplication by this function trivializes the
+corresponding principal line bundle.  It sends its
+prescribed frame at a cusp $T$ to the leading value
+of $f_{P,Q}$ in $s_T$.  Therefore
+\[
+ z_P+z_Q-z_R=c(P,Q),\qquad
+ c(P,Q)_T=
+ \log_\zeta\frac{\operatorname{lead}_{s_T}f_{P,Q}}
+                         {\operatorname{lead}_{s_O}f_{P,Q}}.
+                                                               \tag{TP.1}
+\]
+This proves the direction and the sign of the toric
+correction, rather than inferring it from an abstract
+group presentation.
+
+Here are complete finite formulas for these leading
+values.  At a finite cusp $T=(x_T,y_T)$ set
+$\delta=x-x_T$.  The curve equation gives
+\[
+ y-y_T=x_T^2\delta+\delta^3+\delta^6+\cdots.
+                                                               \tag{TP.2}
+\]
+For a nonvertical line of slope $m$, its order and
+leading value are read first from its constant term,
+then from $x_T^2+m$, and finally from its cubic
+coefficient one.  A vertical line has its ordinary
+constant term or leading term $\delta$.
+The actual parameters from the original plane model
+are
+\[
+ s_{A_i}=(y+\zeta)/x,\quad
+ s_{B_i}=(y+\zeta^2)/x,\quad
+ s_{C_i}=x/(y+\zeta).
+\]
+Their derivatives relative to $dx$ are
+\[
+ k_T=\frac{ds_T}{dx}(T)=
+ \begin{cases}
+ x_T,&T=A_i\text{ or }B_i,\\
+ (y_T+\zeta)^{-1},&T=C_1,C_2,\\
+ 1,&T=O.
+ \end{cases}                                                   \tag{TP.3}
+\]
+For the last equality, put $q=x/(y+\zeta)$ and
+substitute $y=x/q+\zeta$ into the cubic equation.
+It gives $x=q^{-2}+q+O(q^7)$, so $dx/dq$ has leading
+coefficient one.  Also $y$ has leading term $q^{-3}$.
+Thus all the functions in (TP.1) have leading coefficient
+one at $O$.
+If their order at $T$ is $r$, multiply their leading
+coefficient in $\delta$ by $k_T^{-r}$ to obtain their
+leading coefficient in the prescribed parameter.
+
+The program \path{c_char2_translation_paths.py} performs
+all these operations in $k$ itself.
+It checks the cocycle identity for $c$ on all $729$
+triples and its symmetry on all $81$ pairs.
+Consequently
+\[
+ (P,a)+(Q,b)=(P+Q,a+b+c(P,Q))                                \tag{TP.4}
+\]
+is the complete framed group law, with $3^{10}$ elements.
+For the compact basis $P_1=A_0$, $P_2=A_2$, it verifies
+\[
+                    3z_P=2U\,\operatorname{coord}(P)
+                         \quad\text{in }W_0.                \tag{TP.5}
+\]
+The two columns of $U$ are independent modulo three.
+Hence $3J_{E,D}(k)$ has rank two over $\mathbb F_3$,
+and (TP.4) has type $C_9^2\oplus C_3^6$.
+
+\paragraph{Automorphisms and their tangent paths.}
+For a geometric automorphism $g$ in the subgroup
+$E_0[3]\rtimes(Q_8\rtimes C_3)$ of order $216$, write
+$g^*dx=c_gdx$.  The pushed local parameter at $gP$
+is $s_P\circ g^{-1}$, whose derivative relative to
+$s_{gP}$ is $k_P/(c_gk_{gP})$.
+Thus the exact pushforward of the framed point is
+\[
+ \begin{split}
+ g(z_P)={}&z_{gP}-z_{gO}
+       +\epsilon_{gP}\left(\log_\zeta
+                              \frac{c_gk_{gP}}{k_P}\right)\\
+       &+\epsilon_{gO}\left(\log_\zeta
+                              \frac1{c_gk_{gO}}\right).
+ \end{split}                                                   \tag{TP.6}
+\]
+On the torus $g$ permutes the nine coordinates before
+renormalizing the $O$ coordinate.
+Formula (TP.6) is verified on all group laws for the
+eight quaternion elements, the order-three generator,
+and the two generating translations: $891$ checks.
+It supplies genuine framed automorphism data, not
+only cusp permutations.
+
+For translation by $d$, $c_g=1$ and the image of the
+original unit tangent has derivative $k_d$ at $d$.
+The path cocycle in abelianization therefore has the
+actual local Kummer class of
+\[
+                         z_d+\epsilon_d(\log_\zeta k_d).
+                                                               \tag{TP.7}
+\]
+For an origin-fixing automorphism this formula becomes
+the toric class of its tangent multiplier.  In particular
+it is zero for $Q_8$ and is
+$\kappa_3(\zeta)e_O$ for $\sigma$, agreeing with
+the independently proved tangent-rescaling identity.
+
+Arithmetic Frobenius two is $(x,y)\mapsto(x^2,y^2+1)$.
+The original plane parameters are defined over
+$\mathbb F_2$, so it sends $z_P$ to $z_{F_2P}$ with
+no additional frame multiplier; on the torus it squares
+the values and permutes the cusps.
+All $81$ corresponding group-law identities are checked.
+
+\paragraph{The remaining three Kummer comparisons.}
+Let $H=V/(F_4-I)V$ in the fixed integral lattice, with
+\[
+           F_4-I=\begin{pmatrix}-3I_2&0\\-2U&3I_8\end{pmatrix}.
+                                                               \tag{TP.8}
+\]
+A pair of integer vectors $(a,b)$ has unique normal form
+\[
+       (a\bmod3,\ b-2U\lfloor a/3\rfloor\bmod3)
+                                                               \tag{TP.9}
+\]
+in this finite group.
+The canonical local Kummer isomorphism
+$J_{E,D}(k)\xrightarrow{\sim}H$ sends a torus value
+$\zeta$ to its corresponding peripheral coordinate.
+On the compact quotient $F_4-I=-3$, so it sends
+$P_i$ to $-f_i$ modulo the boundary; this sign is
+forced by the Kummer equation $FQ-Q=P$.
+
+Every comparison respecting these toric and compact
+maps is therefore determined by
+\[
+                 z_{P_i}\longmapsto-f_i+b_i,
+                         \qquad b_i\in\mathbb F_3^8.
+                                                               \tag{TP.10}
+\]
+Conversely (TP.5) and (TP.8) show that every such pair
+defines a group isomorphism with the required graded
+maps.  Equivariance under each actual automorphism
+and Frobenius two imposes linear equations on the
+sixteen entries of $b_1,b_2$.
+The script constructs these equations from
+(TP.4)--(TP.10), using the compatible quaternion,
+CM, and Frobenius matrices of B.35.
+It retains an integral $-1$ in every boundary column
+which maps a cusp to $O$ before dividing the cross
+block by three; replacing it early by the residue
+$2$ would change the equation.
+
+Exact elimination over $\mathbb F_3$ gives rank fifteen,
+with particular solution
+\[
+ b^{(0)}=(1,2,2,2,1,2,1,1;\ 0,2,0,0,2,2,2,0)
+\]
+and kernel generator
+\[
+ b^{(1)}=(0,1,2,0,2,1,2,1;\ 1,2,0,2,1,0,2,1).
+                                                               \tag{TP.11}
+\]
+Thus the actual comparison is one of precisely
+$b^{(0)}+a b^{(1)}$, $a\in\mathbb F_3$.
+For each of them (TP.7) gives an explicit actual-path
+candidate in the fixed coefficient module.
+The assertion is an exhaustive set of three possible
+comparisons, not a claim that one arbitrarily selected
+solution is the canonical Kummer map.
+Any ensuing affine test of $\eta$ must retain all three,
+unless an additional division normalization selects one.

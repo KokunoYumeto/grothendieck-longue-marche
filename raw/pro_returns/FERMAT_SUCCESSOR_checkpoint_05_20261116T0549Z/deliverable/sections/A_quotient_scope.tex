@@ -1,0 +1,416 @@
+\subsection{The exact exceptional set for the prime-to-residue-characteristic method}
+
+\begin{statement}{A.56}{All exceptional primes give complete independence in the natural joint quotient}{Proved}
+Let $\ell\ge5$ be prime, $\Pi=\pi_1(U_\ell/\Q)$, and let $P_q$ be
+the maximal prime-to-$q$ quotient of its geometric fundamental group.
+Write $\Pi_{P_q}$ for the corresponding arithmetic extension and retain
+also the residual Legendre representation modulo $\ell$. If
+\[
+ q\mid\ell(\ell^2-1),
+\]
+the resulting natural joint quotient is the entire fibre product
+\[
+ \Pi_{P_q}\mathbin{\times}_{G_\Q} R_\ell,
+ \qquad
+ R_\ell=\{(M,g):\det M=\bar\chi_\ell(g)\}
+       \subset\mathrm{GL}_2(\F_\ell)\times G_\Q.
+ \tag{A56.1}
+\]
+Consequently a fixed global cusp section of $\Pi_{P_q}$ can be paired
+with any continuous global representation
+$\rho:G_\Q\to\mathrm{GL}_2(\F_\ell)$ of determinant $\bar\chi_\ell$
+to give a global section of this natural quotient. If instead
+$q\nmid\ell(\ell^2-1)$, the residual representation already factors
+through $\Pi_{P_q}$.
+
+Thus the set $T_\ell$ of A.46 is the exact exceptional set for this
+factorization and independence argument. This assertion concerns the
+specified quotient; it does not assert that its sections lift to $\Pi$.
+\end{statement}
+\begin{proof}
+Put $S=\mathrm{SL}_2(\F_\ell)$ and
+\[
+ U(t)=\begin{pmatrix}1&t\\0&1\end{pmatrix},\qquad
+ L(t)=\begin{pmatrix}1&0\\t&1\end{pmatrix},\qquad
+ W=\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+\]
+The upper and lower elementary matrices generate $S$. It is perfect:
+with $D=\operatorname{diag}(2,2^{-1})$, commutation with $D$ gives
+$U(3t)$ and $L((2^{-2}-1)t)$ respectively. Both coefficients are
+nonzero for $\ell\ge5$, so every elementary matrix is a commutator.
+The Legendre geometric monodromies $U(2)$ and $L(-2)$ generate $S$.
+The Fermat subgroup contains the commutator subgroup of the geometric
+tripod group, since its quotient is abelian. Its image therefore still
+contains $[S,S]=S$. This verifies the full geometric residual image
+on $U_\ell$, as in A.47.
+
+We prove directly that $S$ has no nontrivial finite quotient of order
+prime to $q$ for any $q\mid|S|=\ell(\ell^2-1)$. Let $\varphi$ be
+a homomorphism to such a finite group.
+For $q=\ell$, $\varphi$ kills $U(1)$ and hence every $U(t)$;
+conjugation then kills all $L(t)$, so it is trivial.
+For $q=2$, it kills $W$, which has order four. The identity
+$WU(t)W^{-1}=L(-t)$ then identifies the images of the upper and lower
+elementary subgroups. The image is abelian, and perfectness makes it
+trivial.
+
+Suppose $q$ is odd and divides $\ell-1$. Choose $a\in\F_\ell^\times$
+of order $q$. The matrix $\operatorname{diag}(a,a^{-1})$ is killed;
+its commutators with upper and lower elementary matrices, whose
+coefficients $a^2-1$ and $a^{-2}-1$ are nonzero, kill all generators.
+Finally suppose $q$ is odd and divides $\ell+1$. A norm-one element
+of order $q$ in $\F_{\ell^2}^\times$ gives a nonsplit matrix of
+determinant one. In a cyclic basis it has the form
+\[
+ C=\begin{pmatrix}0&-1\\1&t\end{pmatrix}=WU(t).
+\]
+Changing basis in $\mathrm{GL}_2(\F_\ell)$ is an automorphism of $S$,
+so we may use this form. The matrix $C$ is killed. Thus
+$\varphi(W)=\varphi(U(-t))$, which commutes with every
+$\varphi(U(a))$. The same identity with $W$ gives
+$\varphi(L(-a))=\varphi(U(a))$. Again the image is abelian and hence
+trivial. These cases exhaust the prime divisors of $|S|$.
+
+The geometric joint image is a closed subdirect product of $P_q$ and
+$S$. By the profinite Goursat argument its possible failure to be the
+full product is measured by a common quotient. This quotient is finite
+because it is a quotient of $S$, and of order prime to $q$ because it
+is a quotient of $P_q$. It is therefore trivial. The geometric image
+is $P_q\times S$. The determinant formula and surjectivity to $G_\Q$
+identify the residual arithmetic quotient with $R_\ell$; over each
+$g\in G_\Q$ its matrices form the complete determinant coset of $S$.
+The same coset argument using the full geometric product proves
+(A56.1).
+
+For a cusp section $\sigma$ of $\Pi_{P_q}$ and any $\rho$ as stated,
+the formula
+\[
+ g\longmapsto\bigl(\sigma(g),(\rho(g),g)\bigr)
+\]
+is the asserted section. When $q\nmid|S|$, the finite geometric
+residual representation has order prime to $q$, so it kills the kernel
+of geometric prime-to-$q$ completion and factors through $\Pi_{P_q}$.
+Conversely the full geometric product just proved precludes such a
+factorization at every exceptional prime. The executed program
+\texttt{a\_main\_exceptional\_groups.py} independently enumerates
+$S$ for $\ell=5,7,11,13$ and checks that the normal closures of the
+indicated $q$-power-order elements are all of $S$. The displayed
+argument, rather than these finite checks, proves the uniform result.
+\end{proof}
+
+\begin{statement}{A.57}{Explicit failures of every required exceptional-prime condition}{Proved}
+For every prime $\ell\ge5$ and every $q\in T_\ell$, there is a
+global section of the natural joint quotient in A.56 whose entire
+prime-to-$q$ projection is a fixed global cusp section, but for which
+no quadratic twist of its residual representation has the following
+local property:
+\[
+ \begin{array}{c|c}
+ q&\text{property that fails}\\\hline
+ q\ne2,\ell&\text{unramifiedness at }q\\
+ q=\ell&\text{finite flatness over }\Z_\ell\\
+ q=2&\text{Artin conductor exponent at most four at }2.
+ \end{array}
+\]
+The residual representations used here are actual $\ell$-torsion
+representations of explicitly given elliptic curves over $\Q$.
+These examples show the insufficiency of the retained quotient data;
+they make no claim of a lift to a full global fundamental-group section.
+Each named residual condition can also fail with every other condition
+in A.58 imposed simultaneously. For this stronger independence claim
+we use the explicit global Kummer representations described below.
+\end{statement}
+\begin{proof}
+For odd $q$ put
+\[
+ E_q:y^2=x(x-1)(x-q),\qquad \rho=\rho_{E_q,\ell}.
+\]
+Its invariants are
+\[
+ c_4=16(q^2-q+1),\qquad \Delta=16q^2(q-1)^2.
+\]
+Thus at $q$ the equation is minimal with multiplicative reduction of
+type $I_2$. After an unramified quadratic extension it is a Tate curve
+whose parameter has valuation two. If $q\ne\ell$, the residual
+inertia image is a nontrivial unipotent group of order $\ell$, since
+$2\not\equiv0\pmod\ell$. Restriction to a subgroup of index at most
+two still surjects onto this group. The kernel of any quadratic twist
+therefore retains nontrivial inertia, proving the first case.
+
+If $q=\ell$, the Tate extension class has nonzero valuation modulo
+$\ell$. It is the very ramified Kummer case of
+\citet[\S2.4, especially (2.4.7)]{AMSerre1987}. Its Serre weight is
+$\ell+1$, so it is not finite flat, by that paper's Propositions 3--4
+in \S2.8. An unramified quadratic twist does not change this inertia
+calculation. A ramified quadratic character has restriction
+$\omega^{(\ell-1)/2}$ to inertia, where
+$\omega=\bar\chi_\ell|_{I_\ell}$. The twisted semisimplification is
+\[
+ \omega^{(\ell-1)/2}\oplus\omega^{(\ell+1)/2}.
+\]
+For $\ell\ge5$ these are not the characters $1,\omega$ permitted in
+the reducible finite-flat case. They also cannot be the fundamental
+level-two pair of the irreducible finite-flat case, because both are
+$\F_\ell$-valued. Propositions 3--4 therefore exclude every ramified
+quadratic twist as well.
+
+For $q=2$ use $E:y^2=x^3-x$. The eight classes
+\[
+ d\in\{1,-1,2,-2,5,-5,10,-10\}
+\]
+exhaust $\Q_2^\times/\Q_2^{\times2}$: they represent both valuation
+parities and all four odd-unit classes modulo eight. The twist has
+equation $E^{(d)}:y^2=x^3-d^2x$, with $c_4=48d^2$ and
+$\Delta=64d^6$. The exact Tate algorithm gives
+\[
+ \begin{array}{c|c|c|c}
+ d&v_2(\Delta_{\min})&\text{Kodaira symbol}&f_2(E^{(d)})\\\hline
+ 1,-1,5,-5&6&\mathrm{III}&5\\
+ 2,-2,10,-10&12&I_2^*&6.
+ \end{array}
+ \tag{A57.1}
+\]
+The supplied \texttt{a\_main\_exceptional\_twists.gp} runs
+\texttt{elllocalred} \citep{AMPARI2026} on all eight exact integral equations and records
+the full numerical output in its accompanying \texttt{.out} file;
+it also checks their invariants and conductor exponents. The integers
+are Tate-algorithm results, with no numerical rank computation.
+
+To transfer (A57.1) to residual representations, both tame and wild
+invariants must be preserved. Every twist has integral $j=1728$ and
+acquires good reduction over a finite extension of ramification degree
+dividing twenty-four; see \citet[\S7.1, before Lemma 7.1.3]{AMCDT1999}.
+Thus the action on $T_\ell E^{(d)}$ of the inertia group, including
+its tame part, factors through a finite group $H$ of order dividing
+twenty-four. For $\ell\ge5$ every subgroup $H_i$ of $H$ has invertible
+order in $\Z_\ell$. Its averaging idempotent
+\[
+ |H_i|^{-1}\sum_{h\in H_i}h
+\]
+shows that taking $H_i$-invariants commutes with reduction modulo
+$\ell$. The invariant dimensions for inertia and for every positive
+ramification group are unchanged. The tame codimension and the Swan
+conductor are therefore unchanged, so
+$f_2(E^{(d)}[\ell])=f_2(E^{(d)})\in\{5,6\}$. This proves the
+last case for every quadratic twist.
+
+Each chosen representation has determinant $\bar\chi_\ell$, by the
+Weil pairing. A.56 pairs it with the same fixed global prime-to-$q$
+cusp section. The resulting global quotient section is consequently
+an explicit witness to the stated information loss. Full globality of
+this quotient section has been built into the construction; the
+additional obstruction to lifting through its discarded kernel has
+not been solved or assumed away.
+
+For every exceptional prime the other residual hypotheses can all be
+imposed at once. At $q=2$, the curve $y^2=x^3-x$ is already
+good at every odd prime, so its representation is finite flat at
+$\ell$ and unramified outside $2\ell$. At $q=\ell$, use instead the
+global Kummer extension
+\[
+ \rho(g)=\begin{pmatrix}\bar\chi_\ell(g)&c(g)\\0&1\end{pmatrix},
+ \qquad [c]=\kappa_\ell(\ell)\in H^1(\Q,\mu_\ell).
+\]
+It is unramified at every prime other than $\ell$, but its Tate-form
+extension class has valuation one at $\ell$, so the same finite-flat
+exclusion for all quadratic twists applies. For every odd
+$q\ne\ell$, including the primes dividing $\ell+1$, take
+\[
+ \rho_q(g)=\begin{pmatrix}\bar\chi_\ell(g)&c_q(g)\\0&1\end{pmatrix},
+ \qquad[c_q]=\kappa_\ell(q)\in H^1(\Q,\mu_\ell).
+\]
+It is unramified outside $q\ell$ and has nonzero unipotent inertia
+of order $\ell$ at $q$, because $v_q(q)=1$. Every subgroup of index
+at most two still maps onto that inertia image, so no quadratic
+twist makes it unramified there. It is finite flat at $\ell$ by the
+following direct model. Over $\Z_\ell$, form the disjoint union
+\[
+ \mathcal G_q=\coprod_{i=0}^{\ell-1}
+       \operatorname{Spec}\Z_\ell[X]/(X^\ell-q^i)
+\]
+and use the group law
+\[
+ (i,x)(j,y)=
+ \left(i+j\bmod\ell,\frac{xy}{q^{\lfloor(i+j)/\ell\rfloor}}\right).
+\]
+All the displayed denominators are units. This is a finite flat
+commutative group scheme, in an exact sequence
+$0\to\mu_\ell\to\mathcal G_q\to\Z/\ell\to0$.
+Choosing $q^{1/\ell}$ in the generic fibre identifies its Galois
+representation with $\rho_q$. Thus finite flatness is verified
+directly, not inferred merely from the shape of inertia characters.
+At two it is unramified. Therefore the named $q$-condition fails
+while every other residual condition in A.58 holds. A.56 realizes
+these Kummer representations in the same natural global quotient,
+with fixed entire prime-to-$q$ cusp projection. The assertion of
+actual elliptic origin above concerns the first set of witnesses;
+this stronger independence construction needs only the explicitly
+given two-dimensional global representations.
+\end{proof}
+
+\begin{statement}{A.58}{An explicit sufficient conjunction for the modular Fermat proof}{Proved}
+Let $\ell\ge5$ be prime and $s$ a full section of $U_\ell/\Q$.
+The following two conditions suffice to make $s$ globally cuspidal.
+
+\textup{(R)} Its residual Legendre representation has a quadratic twist
+$\rho_0$ that is unramified outside $2\ell$, finite flat over
+$\Z_\ell$, and has Artin conductor \emph{exponent}
+$a_2(\rho_0)\le4$ at two.
+
+\textup{(D)} After choosing an invariant line supplied by \textup{(R)},
+let $\sigma$ be the induced section on the corresponding connected
+component of $Z_\ell$. There is a cofinal family of finite etale
+section neighbourhoods $V_i\to Z_\ell$ of $\sigma$ such that each
+smooth compactification $C_i$ satisfies
+\[
+ C_i(\mathbb A_\Q)_\bullet^{\mathrm{f\text{-}ab}}
+       \ne\varnothing.
+ \tag{A58.1}
+\]
+No compatible choice of adelic points in (A58.1) is required. Finite
+abelian descent is sufficient here; survival of all finite torsors
+is a stronger hypothesis. Local point-or-cusp geometricity at the
+finite set $T_\ell$ suffices for \textup{(R)}, by A.46.
+These are explicit sufficient inputs, not an assertion of logical
+minimality among all possible local hypotheses.
+The numerical bound four is sharp for the residual reducibility
+implication under only these residual hypotheses: replacing it by
+five admits absolutely irreducible examples for every $\ell\ge5$.
+\end{statement}
+\begin{proof}
+We first justify the weaker bound in \textup{(R)} independently of the
+stronger level-two calculation in A.6. The determinant of $\rho_0$
+is $\bar\chi_\ell$, and hence it is odd. If it were irreducible,
+complex conjugation with distinct eigenvalues $1,-1$ would make it
+absolutely irreducible, by the argument of A.6. Finite flatness gives
+Serre weight two \citep[Proposition 4]{AMSerre1987}. The precise Serre
+modularity theorem used in A.6 therefore produces a weight-two cusp
+form of level dividing $16$; the prime-to-$\ell$ conductor is a power
+of two of exponent at most four. Here we use
+\citet[Theorem 9.1]{AMKhareWintenbergerI2009} with the missing
+hypothesis supplied by \citet[Corollary (0.2)]{AMKisin2009}.
+The nebentypus is trivial: its reduction is
+$\det(\rho_0)\bar\chi_\ell^{-1}=1$, while a character of
+$(\Z/16)^\times$ has power-of-two order, whose reduction in
+characteristic $\ell\ge5$ is injective. But the modular curve
+$X_0(16)$ has index $24$, six cusps, and no elliptic points, giving
+\[
+ g(X_0(16))=1+24/12-6/2=0.
+\]
+Pullback embeds the weight-two cusp forms of every divisor level
+into those of level sixteen. The required form cannot exist.
+Thus $\rho_0$ is reducible over $\F_\ell$.
+
+Write its semisimplification as
+$\alpha\oplus\bar\chi_\ell\alpha^{-1}$.
+The finite-flat inertia classification in Serre's Propositions 3--4
+implies that $\alpha|_{I_\ell}$ is either $1$ or
+$\bar\chi_\ell|_{I_\ell}$: the fundamental level-two case has no
+$\F_\ell$-rational invariant line. Both characters are unramified
+outside $2\ell$. At two the cyclotomic character is unramified, so
+the two character conductors are equal. Moreover
+\[
+ 2a_2(\alpha)
+   =a_2(\rho_0^{\mathrm{ss}})
+   \le a_2(\rho_0)\le4.
+ \tag{A58.2}
+\]
+For clarity, the inequality does not assume exactness of full inertia
+invariants in characteristic $\ell$: the invariant dimension can
+only increase under semisimplification. Wild inertia is a pro-two
+group, so its finite-image invariants are exact when $\ell\ge5$;
+the Swan term is additive. These two facts give (A58.2).
+
+Local reciprocity now makes $\alpha|_{I_2}$ a character of
+$\Z_2^\times/(1+4\Z_2)$, which has order two. It is either trivial
+or the inertia character of $\Q_2(i)/\Q_2$. Accordingly let
+$\varepsilon$ be either the trivial global character or the global
+quadratic character of $\Q(i)/\Q$. It is unramified at every odd
+prime and kills $\alpha|_{I_2}$. One of
+$\varepsilon\alpha$ and
+$\varepsilon\alpha\bar\chi_\ell^{-1}$ is now unramified at every
+finite prime, including $\ell$. A finite character of $G_\Q$
+unramified at every finite prime is trivial by Minkowski's discriminant
+theorem. Hence
+\[
+ (\varepsilon\rho_0)^{\mathrm{ss}}
+       \simeq1\oplus\bar\chi_\ell.
+ \tag{A58.3}
+\]
+The extra quadratic twist at two is necessary in this proof with the
+bound four; it must not be silently imported from the stronger local
+point calculation. Quadratic twists are scalar, so they preserve the
+same invariant line and the resulting section $\sigma$ of $Z_\ell$.
+
+Here is the asserted sharpness of that residual cutoff. Take
+$E:y^2=x^3-x$. By A.57 its representation $E[\ell]$ has conductor
+exponent five at two; it is finite flat at $\ell$ and unramified at
+all other primes. If it were reducible, the preceding character
+argument would still work, since $2a_2(\alpha)\le5$ again gives
+$a_2(\alpha)\le2$. A quadratic twist would have semisimplification
+$1\oplus\bar\chi_\ell$. Its full rational two-torsion, together
+with the invariant line and, if necessary, the dual $\ell$-isogeny,
+would then contradict Mazur's torsion theorem exactly as in A.8.
+Hence $E[\ell]$ is irreducible, and its oddness makes it absolutely
+irreducible. This is a statement about the residual implication;
+no full fundamental-group section with this representation is asserted.
+
+We next isolate precisely what is used from descent. Put
+$W=X_0(4\ell)$ and let $\overline Z_\ell\to W$ be the finite map
+from A.7 on the chosen component. The curve $W$ has positive genus,
+and \citet[Corollary 8.8]{AMStoll2007} gives
+\[
+ W(\mathbb A_\Q)_\bullet^{\mathrm{f\text{-}ab}}=W(\Q).
+\]
+In addition, $W(\Q)$ is finite. This follows directly from the
+proof of that corollary and its Theorem 8.6: it constructs a nonconstant
+map from $W$ to an abelian variety $A/\Q$ with finite $A(\Q)$.
+Every fibre of this nonconstant curve map is finite, so the inverse
+image of $A(\Q)$ is finite. In particular no unjustified inference
+from compactness of a countable space is being made here.
+
+For each $i$, let $f_i:C_i\to W$ be the composite finite map and put
+\[
+ Z_i=\bigl(f_i^{-1}(W(\Q))\bigr)_{\mathrm{red}}.
+\]
+This is a finite reduced $\Q$-subscheme of $C_i$.
+Choose any point in the nonempty set (A58.1). Functoriality of finite
+abelian descent sends it to one diagonal point $w_i\in W(\Q)$.
+At every finite place its coordinate therefore belongs to
+$Z_i(\Q_p)$. Since $C_i$ maps nontrivially to the positive-genus curve
+$W$, it has genus at least one. The density-one formulation of
+\citet[Theorem 8.2]{AMStoll2007} gives $Z_i(\Q)\ne\varnothing$.
+Only finite places were used for this support condition, so the
+real-component correction in \citet[\S3]{AMStollErrata2017} is respected.
+
+The transition maps between section neighbourhoods take $Z_i(\Q)$
+into the corresponding earlier finite sets. Any finite collection
+has a common refinement in the chosen cofinal family. A point at
+that refinement gives a compatible tuple on the collection. Compactness
+of the product of the finite sets therefore gives a compatible
+rational pro-point. The stabilizer argument in the proof of A.2 now
+applies without a Selmer assumption: the geometric tower is cofinal,
+the pro-point is fixed by $\sigma(G_\Q)$, and its stabilizer is the
+point decomposition group or the cusp decomposition group above its
+rational centre. Thus $\sigma$ is point-induced or cuspidal.
+The same conclusion holds for its tripod image and then for $s$,
+by the finite-cover fixed-coset argument of A.8.
+
+The point alternative is impossible. Its Legendre curve, after the
+quadratic twist in (A58.3), has full rational two-torsion and a stable
+line of character $1$ or $\bar\chi_\ell$. In the latter case pass to
+the dual $\ell$-isogeny, as in A.8. Either case supplies an elliptic
+curve over $\Q$ with torsion containing
+$\Z/2\oplus\Z/(2\ell)$, contrary to
+\citet[Theorem (8)]{AMMazur1977}. Hence $s$ is cuspidal.
+
+For a Selmer section, A.1 supplies (A58.1), and does so with the
+stronger all-finite-descent condition. The present argument shows
+exactly where that input can be weakened. It does not produce
+(A58.1) from geometry at merely finitely many or density-one places.
+A.49 proves that such a replacement fails in general for full
+sections of a proper genus-one curve; it is not a claimed counterexample
+to the unresolved hyperbolic full-section replacement. A.56--A.57
+independently delimit what the retained prime-to-$q$ quotient data can
+force at each exceptional prime.
+\end{proof}

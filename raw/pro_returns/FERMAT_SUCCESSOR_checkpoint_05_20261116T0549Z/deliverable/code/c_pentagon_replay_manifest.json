@@ -1,0 +1,142 @@
+{
+  "working_directory": "repository root",
+  "dependencies": {
+    "python": "Python 3",
+    "group_package": "SymPy, used only by *_probe.py; independent verifiers use standard library"
+  },
+  "order": "Run commands in listed order; .out files save standard output.",
+  "computations": [
+    {
+      "statement": "C.26",
+      "command": [
+        "python",
+        "deliverable/code/c_folded_pentagon.py"
+      ],
+      "outputs": [
+        "c_folded_pentagon.json"
+      ],
+      "scope": "Integral identities; all finite congruence moduli."
+    },
+    {
+      "statement": "C.27",
+      "commands": [
+        [
+          "python",
+          "deliverable/code/c_affine_pentagon_probe.py",
+          "--modulus",
+          "3",
+          "--relations",
+          "all",
+          "--complete-orbits"
+        ],
+        [
+          "python",
+          "deliverable/code/c_affine_pentagon_probe.py",
+          "--modulus",
+          "4",
+          "--relations",
+          "all",
+          "--complete-orbits"
+        ],
+        [
+          "python",
+          "deliverable/code/c_affine_pentagon_probe.py",
+          "--modulus",
+          "5",
+          "--relations",
+          "all",
+          "--complete-orbits"
+        ],
+        [
+          "python",
+          "deliverable/code/c_affine_pentagon_probe.py",
+          "--modulus",
+          "8",
+          "--relations",
+          "all",
+          "--complete-orbits"
+        ]
+      ],
+      "outputs": [
+        "c_affine_pentagon_3_all_orbits.json",
+        "c_affine_pentagon_4_all_orbits.json",
+        "c_affine_pentagon_5_all_orbits.json",
+        "c_affine_pentagon_8_all_orbits.json"
+      ],
+      "scope": "Exhaustive actual common derived images and necessary finite gentle/pentagon equations."
+    },
+    {
+      "statement": "C.27",
+      "command": [
+        "python",
+        "deliverable/code/c_affine_pentagon_verify.py"
+      ],
+      "outputs": [
+        "c_affine_pentagon_verify.json",
+        "c_affine_pentagon_3_words.json",
+        "c_affine_pentagon_4_words.json",
+        "c_affine_pentagon_5_words.json",
+        "c_affine_pentagon_8_words.json"
+      ],
+      "scope": "Independent arithmetic normal-closure enumeration and literal source words; no group package."
+    },
+    {
+      "statement": "C.28",
+      "command": [
+        "python",
+        "deliverable/code/c_burau_pentagon_probe.py",
+        "--prime",
+        "11",
+        "--parameter",
+        "2",
+        "--common"
+      ],
+      "outputs": [
+        "c_burau_11_2.json"
+      ],
+      "scope": "Permutation source/derived/second-derived orders, twenty coordinates; not exhaustive enumeration of huge derived group."
+    },
+    {
+      "statement": "C.28",
+      "command": [
+        "python",
+        "deliverable/code/c_burau_perfect_certificate.py"
+      ],
+      "outputs": [
+        "c_burau_perfect_certificate.json"
+      ],
+      "scope": "Independent perfectness/product proof by exact small-factor enumerations and separating words."
+    },
+    {
+      "statement": "C.28",
+      "command": [
+        "python",
+        "deliverable/code/c_burau_pentagon_probe.py",
+        "--prime",
+        "11",
+        "--parameter",
+        "2",
+        "--common",
+        "--complete-orbits",
+        "--output-suffix",
+        "_orbits"
+      ],
+      "outputs": [
+        "c_burau_11_2_orbits.json"
+      ],
+      "scope": "The sixty-coordinate extension, retaining all six substitutions."
+    },
+    {
+      "statement": "C.28",
+      "command": [
+        "python",
+        "deliverable/code/c_burau_perfect_certificate.py",
+        "--full-orbits"
+      ],
+      "outputs": [
+        "c_burau_perfect_certificate_orbits.json"
+      ],
+      "scope": "Independent sixty-coordinate perfectness/product proof; coordinate partition is merely a proposal and every block property is recomputed."
+    }
+  ]
+}

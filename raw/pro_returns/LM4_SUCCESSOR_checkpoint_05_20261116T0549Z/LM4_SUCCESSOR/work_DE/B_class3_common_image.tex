@@ -1,0 +1,249 @@
+\subsection*{A compatible class-three lift, including the rigid tests}
+
+\statement{B.61}{Proved}{The common-image obstruction survives through class three}
+Let $G_3=P/\gamma_4P$, let $w$ be B.59's primitive
+degree-two vector, and put $D=2545920$.
+There are explicitly specified finite words
+$A\in H_T$ and $B\in H_5$ whose images in $G_3$ are equal
+to a nonidentity element $g$, and such that
+\[
+ g\bmod\gamma_3P=5091840\,w,
+ \qquad
+ g\longmapsto1\quad\hbox{in every }
+ P\Gamma_{0,S}/\gamma_4(P\Gamma_{0,S}),\quad S\in\mathscr S_7.
+                                                               \tag{B.61.1}
+\]
+The element $g$ also centralizes the image of $A_5$ in
+$\Gamma_{0,[12]}/\gamma_4P$.
+Their common image therefore generates an infinite cyclic
+subgroup in the discrete quotient and an injective copy of
+$\widehat{\mathbb Z}$ in $\widehat{G_3}$, contained in both
+completed subgroup images and in all twelve class-three
+rigid-test kernels.
+The two words are distinct in $P$; no nonidentity element
+of the actual $\mathcal K$ is obtained.
+
+\begin{proof}
+\emph{One common geometric marking.}
+Higher-degree calculations must compare the two centralizers
+at the same marked configuration.
+Let $\varphi=(1+\sqrt5)/2$ and set
+\[
+ u_0=i\bigl(\varphi+\sqrt{\varphi+2}\bigr),\qquad
+ \zeta=\frac{\sqrt5-1}{4}+
+                  \frac{i\sqrt{\varphi+2}}2,
+ \qquad v_0=-\varphi^2.                                    \tag{B.61.2}
+\]
+Substitute $u_0$ into the twelve tetrahedral functions of
+B.56.  In the cyclic description, put labels $1,3$ at
+$0,\infty$, put the first displayed cycle of B.60 at
+$1,\zeta,\ldots,\zeta^4$, and the second at
+$v_0,v_0\zeta,\ldots,v_0\zeta^4$.
+After normalizing labels $2,4,6$ to $\infty,0,1$,
+these two labelled configurations agree exactly.
+The cyclic normalization is
+\[
+ z(q)=\frac{q-\zeta^4}{q-1}
+             \frac{\zeta-1}{\zeta-\zeta^4},                \tag{B.61.3}
+\]
+with the usual value at $q=\infty$.
+All eleven equalities are checked in the degree-eight field
+\[
+                  \mathbb Q(i,\sqrt5,\sqrt{\varphi+2}).
+\]
+The same check verifies $\zeta^5=1$ and the prescribed
+two five-cycles.  Together with the given tetrahedral
+action, this is the actual marked $A_5$ configuration.
+
+The program \nolinkurl{next_B59_image/certify_full11_monodromy.py}
+extends the thirteen exact meridian paths of B.56 to all
+eleven finite normalized points.  Exact Sturm isolation
+certifies all crossings on their $78$ rational segments.
+Each resulting braid word projects \emph{literally} to
+the corresponding earlier six-strand word, and all $55$
+pair linkings agree with B.58's independently calculated
+rational-divisor matrix.
+The complete polynomial and interval data are in
+\nolinkurl{next_B59_image/full11_exact_certificate.json}.
+
+For the cyclic family, rational approximations to the five
+roots, each with error less than $10^{-7}$, permit the
+same exact rational Sturm computation.
+This approximation is accompanied by a homotopy certificate.
+Along every chosen meridian and transport segment, the
+parameter has absolute value less than seven and its
+squared distance from every rational puncture centre is
+at least $10^{-4}$.
+Thus the error in any moving--fixed point difference is
+less than $8\cdot10^{-7}$, strictly below the separation
+from an actual collision.  Moving--moving differences
+and the three normalizing points remain separated as well.
+Consequently the perturbed family and the actual cyclic
+family have the same braid monodromy after their specified
+base transport.
+
+Rational interval arithmetic, with radical bounds verified
+by squaring, also proves that the algebraic-to-rational
+base paths lie in a single crossing-free cell for the
+projection multiplied by $1+317i/1000$.
+The common left-to-right ordering of the finite labels is
+\[
+                   (4,11,7,9,3,5,1,12,8,10,6).
+                                                               \tag{B.61.4}
+\]
+The transport from the old tetrahedral base has $16$
+crossings; the cyclic base transport has $39$.
+The complete checks, six cyclic meridian words and both
+transports are recorded in
+\nolinkurl{next_B59_image/certify_cyclic_and_transport.py},
+its actual output, and its exact JSON certificate.
+The resulting common-base words are in
+\nolinkurl{next_B59_image/common_base_braid_words.json}.
+This establishes the actual embeddings used in the
+calculation, including their relative marking.
+
+\emph{The exact nilpotent calculation.}
+The Artin action uses
+$x_i\mapsto x_ix_{i+1}x_i^{-1}$ and
+$x_{i+1}\mapsto x_i$ for a positive braid generator.
+Integer Magnus expansions through degree four compute
+the first three homogeneous terms of its logarithm,
+recorded without denominators as $D_1,2D_2,24D_3$.
+The programs \nolinkurl{next_B59_image/nilpotent_derivations.py}
+and \nolinkurl{next_B59_image/magnus4.py} derive and check
+the truncated conjugation and Baker--Campbell--Hausdorff
+formulae.  Their checks include braid relations, inverses,
+agreement of successive truncations, products, and the
+sign of a weight-three group commutator.
+The degree-one terms of all nineteen geometric generators
+are independently checked against their pair linkings.
+
+The integral infinitesimal braid presentation gives a
+degree-three basis by the standard length-three Lyndon
+brackets in
+$A_{1k},\ldots,A_{k-1,k}$, for each last strand
+$k=2,\ldots,11$.
+Its rank is
+\[
+                 \sum_{r=1}^{10}\frac{r^3-r}{3}=990.
+                                                               \tag{B.61.5}
+\]
+This is the degree-three part of the usual free-group
+forgetful filtration; the presentation is also recorded
+in \citet[Section 3]{DE_KaabiVershinin2012}.
+For completeness, the certificate checks coordinates
+through the graded Artin derivations themselves.
+For a last strand $k$, the coefficients in its image
+of words containing that strand exactly once, at the end,
+recover the corresponding free-Lie polynomial on the
+preceding strands.  Standard Lyndon leading coefficients
+are one.  Subtraction therefore extracts its coordinates,
+and reconstruction verifies the \emph{entire} derivation.
+This proves the injectivity needed in degrees one through
+three, rather than assuming faithfulness of a finite
+matrix approximation.
+The central full twist affects degree one alone; all
+geometric words have zero linking on the fixed pair
+$(4,6)$, so the calculation represents $P$ itself.
+
+Let $a,b_0$ be B.60's words.  Their degree-two images are
+$2w,w$, respectively, and
+\[
+                 \delta=ab_0^{-2}\bmod\gamma_4P
+                  \in\gamma_3P/\gamma_4P.                  \tag{B.61.6}
+\]
+The actual correction spaces are the images in this
+central layer of $H_T\cap\gamma_3P$ and
+$H_5\cap\gamma_3P$.
+The cyclic degree-one and degree-two maps are injective,
+so $H_5\cap\gamma_3P=\gamma_3H_5$; its $70$ standard
+ternary brackets give its correction space.
+For $H_T$, the search retains all thirteen generator
+logarithms, all $78$ binary brackets, and all ternary
+brackets.  Its lower-layer matrix has rank $19$ and
+nullity $72$.  Its kernel supplies candidate corrections
+while retaining the seven source-abelian directions and
+the bracket relations.  The existence assertion below
+rests on the explicit integral words and their direct
+verification; it does not require a comparison of a
+rational correction space with an integral subgroup lattice.
+In particular, $H_T\cap\gamma_3P$ is not replaced by
+$\gamma_3H_T$.
+
+The required linear equations ask for a tetrahedral
+correction $u$ and cyclic correction $v$ with
+$u+v=\delta$, and also require the rigid-seven projection
+of $u$ to equal that of $a$ in degree three.
+For the target containing labels $2,4,6$, this last map
+is a literal projection onto $70$ of the chosen Hall
+coordinates.  The exact rational solution is checked
+against all $990+70$ equations.
+The mod-$101$ calculation only selects a convenient
+pivot block; it is not used to infer rational membership.
+All matrices, pivot inverses and the actual rational
+identity are retained in the two
+\nolinkurl{degree3_actual_correction_certificate.json} and
+\nolinkurl{degree3_rigid_obstruction_certificate.json}
+files under \nolinkurl{next_B59_image/}.
+
+\emph{Actual integral words, not merely rational membership.}
+The file
+\nolinkurl{next_B59_image/class3_common_lift_words.json}
+specifies two correction words completely, by integer
+powers in a fixed order.
+The tetrahedral word $U$ has $13$ generator powers,
+$78$ commutator powers and $728$ standard Lyndon
+weight-three powers.  The cyclic word $V$ has $39$
+weight-three powers.
+The program
+\nolinkurl{next_B59_image/collect_integral_class3_lift.py}
+constructs them using $D=2545920$ and verifies their
+collection in the \emph{free} nilpotent group of class
+three by the exact BCH formula.  Every displayed power
+is an integer; rational roots of group elements are
+not used.
+Their images satisfy
+\[
+ U\in H_T\cap\gamma_3P,\qquad V\in\gamma_3H_5,
+ \qquad [U]+[V]=D\delta,                                  \tag{B.61.7}
+\]
+and the rigid degree-three image of $U$ is $D$ times
+that of $a$.
+
+Define the promised finite words by
+\[
+                       A=a^D U^{-1},\qquad
+                       B=b_0^{2D}V.                      \tag{B.61.8}
+\]
+The program
+\nolinkurl{next_B59_image/verify_integral_class3_lift.py}
+reads the \emph{collected integer word exponents} and
+evaluates them again in the actual Artin logarithms.
+It checks every tetrahedral generator and commutator
+power, all $728$ tetrahedral triple powers, and all
+$39$ cyclic triple powers, with full graded reconstruction.
+It obtains equality of (B.61.8) through class three and
+zero rigid image, independently of the rational-span
+calculation.  The actual standard output is retained.
+The independent root review reran this word evaluation;
+its passing record is \nolinkurl{records/root_review_B61.md}.
+Equations (B.61.7)--(B.61.8) prove (B.61.1) for one
+rigid-seven set.  Because $A$ is an actual word in
+$H_T$, conjugacy by $T$ proves it for all twelve sets,
+as in B.56.
+The common image centralizes both $T$ and $D$, and hence
+the group $\langle T,D\rangle=A_5$.
+
+The common class-two image $2Dw$ is nonzero, so $g$ has
+infinite order.  Its profinite power map is injective
+because its projection to B.59's completed central lattice
+is multiplication by the nonzero integer $2D$ on a
+primitive $\widehat{\mathbb Z}$ coordinate.
+Continuity gives the asserted common procyclic image
+and the twelve completed rigid-test vanishing statements.
+Finally $H_T\cap H_5=1$ in $P$.  Equality $A=B$ there
+would force their nonzero class-two image to vanish.
+Hence they are distinct, with $AB^{-1}\in\gamma_4P$,
+and the result makes no assertion about a lift to
+$\mathcal K$.
+\end{proof}
