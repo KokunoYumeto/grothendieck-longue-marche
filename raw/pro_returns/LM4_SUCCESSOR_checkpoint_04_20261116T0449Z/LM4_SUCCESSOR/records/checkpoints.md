@@ -1,0 +1,7 @@
+# Immutable checkpoint record
+
+Checkpoint01 saved2026-11-16 approximately01:49:30UTC. File LM4_SUCCESSOR_checkpoint_01.zip; SHA2560a61367214c199870d0d9a18af84ce9394e7a1697b34b9aff47c41d726ebcc77;44,814,828bytes;223files. Library id libfile_fde3_f-cb07af79390c81919a03037592a5d023_c6789dc4b4d481919ad633aabe6d84d0. Metadata writeback succeeded. Never overwrite, rename or delete this checkpoint. Next checkpoint due02:49:30UTC.
+
+Checkpoint02 snapshot created2026-11-16 02:49:30UTC; upload completed approximately02:51UTC. File LM4_SUCCESSOR_checkpoint_02.zip; SHA2561035ad953059016e1bc103f9d1b9fd01fb90f61fbde3d976979eceb7a31e376a;58,136,845bytes;377files. Library id libfile_fde3_f-477f41d6b6508191921363d0407fbcf1_c6789dc4b4d481919ad633aabe6d84d0. Local metadata applied; all376 manifest entries independently verified against ZIP bytes. Never overwrite, rename or delete this checkpoint. Next checkpoint and three-hour progress review due03:49:30UTC.
+
+Checkpoint03 snapshot created2026-11-16 03:49:30UTC; upload verified03:50UTC. File LM4_SUCCESSOR_checkpoint_03.zip; SHA256c853ebc2ba76430b6ac781a262987ed0b7bb64ab1741498f1cac7470ddc2f20d;75,537,887bytes;549files. Library id libfile_fde3_f-51cb98b0572081919039b169956bd6c9_c6789dc4b4d481919ad633aabe6d84d0. Local metadata applied;all548manifest entries independently verified against ZIP bytes. First three-hour review:CONTINUE (progress_review_03h.md). Never overwrite,rename or delete this checkpoint. Next checkpoint and hourly progress review due04:49:30UTC.

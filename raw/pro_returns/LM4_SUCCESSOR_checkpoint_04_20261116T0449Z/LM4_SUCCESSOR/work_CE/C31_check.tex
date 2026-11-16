@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs,booktabs,longtable,array}
+\usepackage[colorlinks]{hyperref}
+\newcommand{\statement}[3]{\subsection*{#1. #3 [#2]}}
+\begin{document}
+\statement{C.31}{Proved}{Every full braid-operad endomorphism has a unit multiplier}
+Let $\Phi$ be an object-fixing continuous endomorphism of the symmetric
+operad $\widehat{\mathrm{PaB}}$ of full profinite parenthesized braids.
+Let $\lambda\in1+2\widehat{\mathbb Z}$ be its exponent on the elementary
+two-strand braiding. Then
+\[
+                         \lambda\in\widehat{\mathbb Z}^{\times}.
+\]
+Consequently the full Grothendieck--Teichm\"uller endomorphism monoid,
+defined by the full duality, hexagon and pentagon equations with an odd
+parameter, is already its group of units.
+
+\begin{proof}
+We first establish the precise full-completion input. Write $B_n$ and
+$P_n$ for the ordinary and pure discrete Artin braid groups. The
+finite-index inclusion $P_n\leq B_n$ induces its full profinite
+topology, by taking cores of finite-index subgroups in $B_n$. Hence
+\[
+ 1\longrightarrow\widehat P_n\longrightarrow\widehat B_n
+       \longrightarrow S_n\longrightarrow1                     \tag{C.31.1}
+\]
+is exact with the full completion in the first term. Likewise the
+split Fadell--Neuwirth sequence
+$1\to F_{n-1}\to P_n\to P_{n-1}\to1$ retains the full topology on
+its kernel. Indeed any finite-index subgroup of the finitely
+generated free kernel contains a characteristic finite-index subgroup
+$W$; the action on $F_{n-1}/W$ factors through a finite quotient of
+$P_{n-1}$ and gives a finite semidirect-product quotient detecting
+that kernel quotient.
+
+Finite-rank free groups are good. Comparison of the discrete and
+continuous Hochschild--Serre spectral sequences therefore gives
+goodness of $P_n$ inductively, and then of $B_n$ using (C.31.1).
+The finite-coefficient cohomology of the kernels in this induction is
+finite, so the comparison applies to every required coefficient
+module. These are also the precise primary-source conclusions of
+\cite[Proposition 5.10 and Corollary 5.11]{CEHorel2017} and
+\cite[\S2.3, Proposition 1]{CEMarin2012}.
+The unordered configuration space of $n$ distinct points in
+$\mathbb C$ is an aspherical smooth manifold of real dimension $2n$:
+asphericity follows from the ordered Fadell--Neuwirth fibrations,
+and passage to the free finite symmetric-group quotient preserves
+the universal cover. Its CW dimension is at most $2n$, so
+$\operatorname{cd}(B_n)\leq2n$. Goodness now implies, for every
+finite continuous $p$-primary module $A$,
+\[
+ H^j_{\mathrm{cts}}(\widehat B_n,A)=0\qquad(j>2n).
+\]
+An arbitrary discrete $p$-primary module is the filtered union of
+its finite invariant submodules, and continuous cochains on compact
+profinite powers have finite image. Thus the same vanishing holds
+for every such module and
+$\operatorname{cd}_p(\widehat B_n)\leq2n$ for every prime $p$.
+A closed $C_p$ is impossible, since cohomological dimension does
+not increase on closed subgroups and
+$H^j(C_p,\mathbb F_p)\ne0$ in every degree. In particular
+\[
+                     \widehat B_n\text{ is torsion-free}.        \tag{C.31.2}
+\]
+This implication is also recorded in
+\cite[Lemma 8.4]{CEMorales2024}. It uses goodness and actual finite
+cohomological dimension, rather than virtual cohomological dimension
+or torsion-freeness of the discrete group alone.
+
+Choose a binary parenthesization $b$ in arity $n$. The full subgroupoid
+on its $S_n$-orbit, quotiented by the free label action of $S_n$, is
+the one-object groupoid with automorphism group $B_n$. After full
+completion its group is $\widehat B_n$, by (C.31.1). Since $\Phi$
+fixes objects and commutes with this symmetric-group action, it
+induces an actual continuous endomorphism
+\[
+                \phi_n:\widehat B_n\longrightarrow\widehat B_n
+\]
+whose map on $S_n$ is the identity. Taking the automorphism group of
+just one labelled object would instead give the pure braid group;
+the orbit quotient is essential here.
+
+We next verify the exact full-twist formula without assuming that
+$\phi_n$ is onto. Let $\vartheta$ be the one-strand ribbon twist.
+The profinite ribbon-extension isomorphism
+\cite[Proposition 8.1]{CEBHR2019} extends $\Phi$ uniquely to an
+object-fixing endomorphism of $\widehat{\mathrm{PaRB}}$, preserving
+the untwisted braids. The two-strand balancing calculation in
+\cite[Proposition 7.7]{CEBHR2019}, valid over
+$\widehat{\mathbb Z}$, gives
+$\Phi(\vartheta)=\vartheta^\lambda$. More explicitly, if its
+twist exponent is $t$, that calculation gives $2t=2\lambda$;
+multiplication by $2$ is injective on $\widehat{\mathbb Z}$.
+Put
+\[
+ z_n=(\sigma_1\cdots\sigma_{n-1})^n\in Z(B_n).
+\]
+The defining ribbon-cabling rule
+\cite[Definition 6.4]{CEBHR2019} says literally
+\[
+ \vartheta\circ_1\operatorname{id}_b=(z_n,[1,\ldots,1]).
+\]
+Applying the ribbon endomorphism to the two sides gives respectively
+$(z_n^\lambda,[\lambda,\ldots,\lambda])$ and
+$(\phi_n(z_n),[\lambda,\ldots,\lambda])$. Consequently
+\[
+                         \phi_n(z_n)=z_n^\lambda.                \tag{C.31.3}
+\]
+This uses the operadic cabling identity; centrality of $z_n$ alone
+would not justify (C.31.3) for an unproved automorphism.
+
+Suppose now that $\lambda\in p\widehat{\mathbb Z}$ for some prime
+$p$, and write $\lambda=p\nu$. In $B_p$ let
+$\delta_p=\sigma_1\cdots\sigma_{p-1}$, so that
+$\delta_p^p=z_p$. Centrality of $z_p$ persists in the full completion.
+By (C.31.3) the element
+\[
+                  a=\phi_p(\delta_p)z_p^{-\nu}
+\]
+satisfies $a^p=1$. Its permutation is the nontrivial $p$-cycle of
+$\delta_p$, since $z_p$ is pure and $\phi_p$ preserves permutations.
+It therefore has exact order $p$, contradicting (C.31.2). Every
+prime has been excluded, so $\lambda$ is a full unit.
+
+Finally the full monoid is precisely the object-fixing operad
+endomorphism monoid by \cite[Proposition 7.3]{CEBHR2019}. Its pairs
+now have unit multiplier; C.30 makes their normalized free-group
+endomorphisms automorphisms, and the closed-submonoid argument there
+supplies inverses satisfying the same full equations.
+\end{proof}
+
+The use of arity $p$ for every prime is substantive. An action known
+only in bounded arities would rule out only the corresponding
+primes. Neither a pro-$p$ braid quotient nor a prounipotent action
+supplies (C.31.1)--(C.31.2). In particular C.31 does not promote the
+bare-pentagon element of A.37 to a full operad endomorphism: the full
+hexagon and an actual profinite parameter still have to be supplied.
+
+\end{document}

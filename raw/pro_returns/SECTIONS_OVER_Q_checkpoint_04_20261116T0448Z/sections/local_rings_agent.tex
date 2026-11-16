@@ -1,0 +1,207 @@
+% Local-ring fragment. Insert in Part D after D.1--D.4.
+\subsection{Faithfulness and the openness test for regular local rings}
+
+Throughout this subsection $A,B$ are regular local $\Q$-algebras
+essentially of finite type.  We use chosen geometric generic points.
+Morphisms and ring homomorphisms are over $\Q$.  Write
+$E_A=\pi_1(A)$, $E_B=\pi_1(B)$ and $p_A,p_B$ for their arithmetic
+maps to $G_\Q$.  To retain the constants when these maps are not
+surjective, a relative outer homomorphism means an equivalence
+class of pairs
+\[
+ (\phi,\gamma),\qquad
+ \phi:E_A\longrightarrow E_B\text{ continuous},\quad
+ \gamma\in G_\Q,\quad
+ p_B\phi=\operatorname{Int}(\gamma)p_A,
+ \tag{D.5.0}
+\]
+where
+\[
+ (\phi,\gamma)\sim
+       (\operatorname{Int}(h)\phi,p_B(h)\gamma),\qquad h\in E_B.
+\]
+This is the explicit base-point transporter in an outer map over
+$\operatorname{Spec}\Q$: a path from the image of the source
+geometric point to the target point induces $\phi$, and its
+arithmetic projection is $\gamma$; changing the path gives exactly
+the displayed equivalence.  We write
+$\operatorname{Hom}^{\rm out}_{/G_\Q}(E_A,E_B)$ for these classes.
+When $p_B$ is surjective, choose $h$ with $p_B(h)=\gamma^{-1}$.
+This reduces the pair to one with $\gamma=1$, and the remaining
+conjugations have $p_B(h)=1$.  Thus this definition recovers
+strict maps over $G_\Q$ modulo target geometric conjugation in
+that case.
+
+The transporter also gives the correct map on algebraic constants
+without a geometric connectedness assumption.  For number fields
+$A=k$, $B=l$ embedded in $\bar\Q$, the condition on the pair is
+$\gamma G_k\gamma^{-1}\subset G_l$, and $\phi$ is its forced
+inclusion.  This condition is equivalent to $\gamma^{-1}l\subset k$.
+The map from its class to $\gamma^{-1}|_l:l\to k$ is a bijection
+onto $\operatorname{Hom}_\Q(l,k)$: its fibers are exactly the
+left $G_l$-cosets used in the equivalence relation.  This checks
+the constants and the direction of the transporter explicitly.
+For a general ring its algebraic constant field gives the
+corresponding open arithmetic image; every geometric kernel below
+is the kernel of the indicated map to $G_\Q$.
+
+\begin{statement}{D.5}{Proved}{Power-separatedness for finitely generated fields}
+For every field $F$ finitely generated over $\Q$,
+\[
+                 \bigcap_{n\ge1}(F^\times)^n=\{1\}.          \tag{D.5.1}
+\]
+\end{statement}
+\begin{proof}
+Let $k$ be the algebraic closure of $\Q$ in $F$, a number field,
+and choose a normal proper $k$-model of $F$.
+Suppose $a=b_n^n$ for some $b_n\in F^\times$ for every $n$.
+Every prime-divisor valuation of $a$ is divisible by every $n$
+and thus zero; the same valuations of $b_n$ are zero.
+Normality and properness imply $a,b_n\in k^\times$: a rational
+function with no codimension-one poles is globally regular, and
+global regular functions on this proper geometrically integral
+model are constants.  The assertion is immediate at this step
+as well when $F=k$.
+
+At every finite prime of $k$, the equality $a=b_n^n$ again forces
+the valuations of $a$ and all $b_n$ to vanish.  Thus these elements
+are algebraic-integer units.  For every embedding $\sigma:k\to\C$,
+\[
+ |\sigma(b_n)|=|\sigma(a)|^{1/n}
+       \le\max\{1,|\sigma(a)|\}.
+\]
+There are only finitely many algebraic integers of bounded degree
+and bounded conjugates: the coefficients of their monic minimal
+polynomials are bounded integers by the elementary symmetric
+formulas.  Some $b_n=b_m$ therefore occurs for distinct $n,m$,
+so this element, and consequently $a$, is a root of unity.
+Let $w$ be the order of the finite group $\mu(k)$ and use
+$a=b_w^w$.  The element $b_w$ is also a root of unity and
+$b_w^w=1$.  Hence $a=1$.
+\end{proof}
+
+\begin{statement}{D.6}{Proved}{The arithmetic fundamental-group functor is faithful on these spectra}
+Two morphisms $\operatorname{Spec}A\to\operatorname{Spec}B$
+inducing the same relative outer homomorphism (D.5.0) are equal.
+No dominance assumption is required for this assertion.
+\end{statement}
+\begin{proof}
+Let the corresponding ring maps be $f,g:B\to A$.  For every
+$n\ge1$, the coefficient module $M=\mu_n$ comes from $G_\Q$.
+For a pair $(\phi,\gamma)$ the exact coefficient transport is
+$M$ with action $p_B\phi\to M$ with action $p_A$,
+$m\mapsto\gamma^{-1}m$.  In additive cocycle notation its
+pullback is therefore
+\[
+                  c\longmapsto
+       \bigl[a\longmapsto\gamma^{-1}c(\phi(a))\bigr].
+ \tag{D.6.1}
+\]
+The equality $p_B\phi=\operatorname{Int}(\gamma)p_A$ verifies
+that this is a cocycle with the required source action.  Replacing
+the pair by $(\operatorname{Int}(h)\phi,p_B(h)\gamma)$ changes
+(D.6.1) by the coboundary of
+$-\gamma^{-1}p_B(h)^{-1}c(h)$, as follows directly from
+$c(huh^{-1})=p_B(h)c(u)+(1-p_B(huh^{-1}))c(h)$.
+Thus the induced cohomology pullback depends only on (D.5.0).
+For an actual scheme morphism this is exactly its pullback of
+the sheaf $\mu_n$: its base-point path acts on that sheaf by
+the same $\gamma$.  Equality of the two relative outer maps
+therefore gives equal pullbacks on $H^1(B,\mu_n)$.
+The degree-one \'etale/fundamental-group
+comparison and the Kummer sequence give, for every $u\in B^\times$,
+\[
+                  f(u)/g(u)\in(A^\times)^n
+                  \qquad\text{for every }n.
+\]
+Apply D.5 to $\operatorname{Frac}(A)$ to obtain $f(u)=g(u)$.
+For arbitrary $b\in B$, choose $c\in\Q$ such that $b-c$ is a
+unit.  Such a $c$ exists because the residue of $b$ excludes at
+most one rational number.  The maps agree on that unit and on
+$c$, so they agree on $b$.  Thus $f=g$.
+\end{proof}
+
+\begin{statement}{D.7}{Proved}{An actual morphism has open image exactly when it is dominant}
+For a morphism $f:\operatorname{Spec}A\to\operatorname{Spec}B$,
+the image of $f_*:\pi_1(A)\to\pi_1(B)$ is open if and only if
+the ring map $B\to A$ is injective.  Consequently there is an
+injective map
+\[
+ \operatorname{Hom}^{\mathrm{dom}}_\Q
+       (\operatorname{Spec}A,\operatorname{Spec}B)
+ \lhook\joinrel\longrightarrow
+ \operatorname{Hom}^{\mathrm{out,open}}_{/G_\Q}
+       (\pi_1(A),\pi_1(B)).                       \tag{D.7.1}
+\]
+\end{statement}
+\begin{proof}
+Suppose first that $B\to A$ is injective, and set
+$F=\operatorname{Frac}B\subset E=\operatorname{Frac}A$.
+The algebraic closure $F'$ of $F$ in $E$ is finite over $F$.
+With compatible separable closures, restriction $G_E\to G_F$
+has image $G_{F'}$: it is closed by compactness and its fixed
+field inside $F^{\mathrm{sep}}$ is $E\cap F^{\mathrm{sep}}=F'$.
+It is therefore open.  Since $A,B$ are normal, the generic-point
+maps $G_E\twoheadrightarrow\pi_1(A)$ and
+$G_F\twoheadrightarrow\pi_1(B)$ are surjective.  The commutative
+square of these four groups identifies the image of $f_*$ with
+the image of $G_{F'}$ under the second surjection.  Surjective
+homomorphisms of profinite groups are open, so $f_*$ has open image.
+
+Conversely take $0\ne b\in\ker(B\to A)$.  Such an element lies
+in the maximal ideal of $B$, since a unit cannot map to zero.
+The element $u=1+b$ is a unit, and its image in $A$ is $1$.
+It is nonconstant over $\Q$: a nonzero element algebraic over
+$\Q$ has inverse given by its minimal polynomial and is a unit
+in every $\Q$-algebra containing it; thus $b$ cannot be algebraic.
+
+Let $k$ be the algebraic closure of $\Q$ in $F=\operatorname{Frac}B$.
+Normality gives $k\subset B$, since elements of $k$ are integral
+over $B$.  The chosen geometric component has field
+$F\bar\Q$, regular over $\bar\Q$.  On a normal proper
+$\bar\Q$-model, the nonconstant rational function $u$ has a
+prime-divisor valuation $d\ne0$.  For every $n$, adjoining
+$u^{1/n}$ has ramification index at least $n/\gcd(n,d)$ there.
+But $u$ is a unit on the geometric local scheme, so this Kummer
+cover is finite \'etale on that scheme.  Choosing compatible roots
+gives a homomorphism
+\[
+ \theta:\Pi_B\longrightarrow\widehat\Z(1),\qquad
+ \Pi_B=\ker(\pi_1(B)\to G_\Q),
+\]
+with infinite image: the orders of its finite Kummer images have
+the displayed unbounded lower bounds.
+
+Write $H=\operatorname{im}f_*$.  The pullback of $u$ is $1$, so
+its Kummer homomorphism vanishes on $f_*(\Pi_A)$.
+Moreover $H\cap\Pi_B=f_*(\Pi_A)$: the arithmetic compatibility
+is $p_Bf_*=\operatorname{Int}(\gamma)p_A$, so any preimage of
+an element with trivial arithmetic projection also has trivial
+arithmetic projection.
+Thus $H\cap\Pi_B\subset\ker\theta$.  If $H$ were open, this
+would be an open subgroup of $\Pi_B$, forcing the image of
+$\theta$ to be finite, a contradiction.  This proves the converse.
+D.6 now gives injectivity of (D.7.1).
+\end{proof}
+
+\begin{statement}{D.8}{Open}{The exact fullness assertion for D5}
+For these regular local rings, it remains to construct a dominant
+morphism from an arbitrary relative outer homomorphism
+$(\phi,\gamma)$ of (D.5.0) whose continuous homomorphism
+$\phi:\pi_1(A)\to\pi_1(B)$ has open image.
+D.5--D.7 prove faithfulness and the exact openness
+test for actual morphisms; they do not prove surjectivity of
+(D.7.1).
+\end{statement}
+
+This scope is the spectra of regular local rings essentially of
+finite type specified in cote 149, scans 49--50.  For comparison,
+a smooth ample hyperplane section of a proper hyperbolic polycurve
+of dimension at least two induces a surjection on fundamental
+groups by Lefschetz, while its inclusion is not dominant.  This
+proper-variety example is given in
+\cite[Example 3.13]{BIR_Carlson2026}.  It does not give a map
+between the local spectra in (D.7.1).  The local-ring calculation
+exhibits the extra finite \'etale covers explicitly: if a local
+ring map kills $b\ne0$, all the covers $z^n=1+b$ become trivial
+after pullback and their geometric images have unbounded order.

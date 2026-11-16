@@ -1,0 +1,169 @@
+% A.39 is reserved by the root for the exact cubic-quotient obstruction.
+\subsection{The cubic quotient recognizes the first two mixed-label cases}
+
+\begin{statement}{A.39}{Proved}{The realizations $\lambda_0=6$ and $7$ are recognized}
+Every noncuspidal Selmer section in A.14 whose labeled integral
+Legendre realization in A.16 has parameter $\lambda_0=6$ or $7$ is
+a rational point section.  Together with A.36--A.37, this recognizes
+every such realization with integral parameter $2\leq\lambda_0\leq9$.
+\end{statement}
+\begin{proof}
+We first construct the exact finite quotient used in the proof.
+For a two-dimensional $\F_3$-vector space $M$, let
+\[
+ \mathcal P(M)=\left\{\text{partitions of the four elements of
+ $\mathbf P(M)$ into two unordered pairs}\right\}.
+\]
+This is a three-element set with its functorial
+$\operatorname{GL}_2(\F_3)$-action.  The map on the four projective
+lines has kernel $\{\pm I\}$ and identifies
+$\operatorname{PGL}_2(\F_3)$ with $S_4$: it is injective, and both
+groups have order 24.  Acting on the three pair-partitions gives
+the explicit quotient $S_4\to S_3$, whose kernel consists of the
+identity and the three double transpositions.  Thus
+$\operatorname{GL}_2(\F_3)\to\operatorname{Sym}(\mathcal P(M))$
+is onto, with kernel of order eight.  In particular, an isomorphism
+of the original Galois modules gives an isomorphism of these
+three-element Galois sets, without a choice of symplectic multiplier.
+
+For $E_t:y^2=x(x-1)(x-t)$ the four projective lines of $E_t[3]$
+are canonically identified with the four roots $r_1,\ldots,r_4$ of
+\[
+            3x^4-4(1+t)x^3+6tx^2-t^2.
+\]
+Indeed, a line has two nonzero points $P,-P$, with the same
+$x$-coordinate; these are exactly the roots of the 3-division
+polynomial.  Send a partition $\{\{i,j\},\{k,l\}\}$ to
+$z=r_ir_j+r_kr_l$.  The elementary symmetric functions of the four
+roots are $4(1+t)/3,2t,0,-t^2/3$.  Substitution in the product of
+the three factors $z-r_ir_j-r_kr_l$ gives
+\[
+ R_t(z)=\left(z-\frac{2t}{3}\right)^3+
+                    \frac{16t^2(1-t)^2}{27}.
+\tag{A.39.1}
+\]
+This polynomial has distinct roots on $U$, so the displayed map
+identifies the three-element sets.  Put $D=4t(1-t)$ and
+$w=3z-2t$.  Equation (A.39.1) becomes $w^3=-D^2$.  Since $D$ and
+$w$ are units on this cover, the actual inverse coordinate changes
+\[
+                 v=-D/w,\qquad w=-v^2
+\tag{A.39.2}
+\]
+identify it with the finite etale cover
+\[
+                         v^3=4t(1-t).
+\tag{A.39.3}
+\]
+The polynomial computation, the order-eight kernel, and the action
+of $U(1),L(1),\operatorname{diag}(-1,1)$ on the three partitions
+are independently checked in \texttt{code/legendre\_checks.py}.
+
+Let $A,B\in\widehat{\Q^\times}$ be the pullbacks of $t,1-t$ by the
+section.  Formula (A.16.3) and its labeled integral comparison give
+\[
+     A\equiv\lambda_0,\qquad B\equiv1-\lambda_0
+                      \pmod{(\Q^\times)^2}.
+\tag{A.39.4}
+\]
+The finite Galois set obtained by pulling back (A.39.3) has Kummer
+class $\kappa_3(4)+\kappa_3(A)+\kappa_3(B)$.  The mod-three part
+of A.16, followed by the functor $\mathcal P$, identifies this set
+with the one for $E_{\lambda_0}$, namely the roots of
+\[
+                      v^3=4\lambda_0(1-\lambda_0).
+\tag{A.39.5}
+\]
+We will contradict this identification at one specified inertia
+group if a section with either realization were not a point.
+
+For $\lambda_0=6$, the potentially multiplicative primes are exactly
+$3,5$; for $\lambda_0=7$, they are exactly $3,7$.  This follows
+directly from
+\[
+          j(6)=1906624/225,\qquad j(7)=5088448/441.
+\]
+Both have $2$-adic $j$-valuation six.  By A.37 no other finite prime
+can be a local cusp place.  The same result recognizes every section
+having at most one cusp label.  Hence a section not already
+recognized must be cuspidal at both listed primes, with distinct
+labels.  The local valuations in (A.39.4) force those labels:
+\[
+\begin{array}{c|cc}
+ \lambda_0&\text{cusp at }3&\text{other cusp}\\ \hline
+ 6&0&1\text{ at }5\\
+ 7&1&0\text{ at }7.
+\end{array}
+\tag{A.39.6}
+\]
+For example, at $3$ in the first row the valuation of $A$ is odd
+and that of $B$ is even.  Cusp 1 would make $A=1$ locally, whereas
+cusp infinity would make $A/B=-1$ locally; both violate those
+valuation parities.  The other three entries follow by the same
+valuation check, with $A$ and $B$ interchanged where appropriate.
+
+The section at 2 is an ordinary point $x_2$.  Write
+$a=v_2(x_2)$, $b=v_2(1-x_2)$, honest integers.  In the first row of
+(A.39.6), (A.39.4) says that $a$ is odd and $b$ is even.  If $a<0$
+then $b=a$, a contradiction; hence $a>0$ and $b=0$.  In the second
+row $a$ is even and $b$ is odd, so the identical argument with the
+two coordinates exchanged gives $a=0$, $b>0$.
+
+At every odd prime outside the two indicated bad primes, the
+realized curve has good reduction.  The local integral comparison
+and the Neron--Ogg--Shafarevich criterion give good reduction for
+the local Legendre curve.  At an odd prime a nonzero valuation of
+$x_p$ or $1-x_p$ would give negative $j$-valuation by the displayed
+Legendre formula in A.14.  Thus both valuations there are zero.
+At a cusp 0 the regular unit $1-t$ has value 1, and at a cusp 1
+the regular unit $t$ has value 1.  Combining these facts with the
+calculation at 2 and the signs in (A.39.4) gives the exact global
+completed classes
+\[
+ \begin{array}{c|c}
+   \lambda_0=6&B=-5^\beta\quad(\beta\in\widehat\Z),\\
+   \lambda_0=7&A=7^\alpha\quad(\alpha\in\widehat\Z).
+ \end{array}
+\tag{A.39.7}
+\]
+Here there is no unrecorded unit factor: the homomorphism given by
+the sign and all prime valuations is injective on
+$\widehat{\Q^\times}$, as is seen at each finite power quotient.
+With just one nonzero prime-valuation coordinate it gives exactly
+the stated power of that prime.
+
+At $3$ the class in the relevant row of (A.39.7) is 1 by (A.39.6).
+The cubes of units modulo 9 are precisely $1,8$.  Neither $5$ nor
+$7$ is a cube in $\Q_3$, and $-1$ itself is a cube.  Reduction of
+the completed class modulo cubes therefore gives
+\[
+                \beta\equiv0\pmod3\quad\text{or}\quad
+                \alpha\equiv0\pmod3,
+\tag{A.39.8}
+\]
+respectively.  The relevant class $B$, or $A$, is consequently a
+cube globally in the finite Kummer quotient.
+
+At the other cusp place $q=5$ or $q=7$, the remaining coordinate is
+1 by (A.39.6).  Thus the local class of $4AB$ is the unit class of
+4 modulo cubes.  Since $q\ne3$, the roots of a unit cube equation
+form an unramified Galois set: the algebra
+$\Z_q[v]/(v^3-u)$ is finite etale for $u\in\Z_q^\times$.
+For the realized curve, however, (A.39.5) has right-hand side
+\[
+                 -120\quad\text{at }q=5,\qquad
+                 -168\quad\text{at }q=7.
+\]
+Each has $q$-valuation one.  Its cubic polynomial is Eisenstein,
+so the associated degree-three field is totally ramified, and
+inertia acts nontrivially on its roots.  This contradicts the
+Galois-set identification obtained from the mod-three integral
+comparison.  Both realizations are therefore recognized.
+
+Finally, $\lambda_0=2$ is covered by A.36.  The parameters
+$3,4,5,8,9$ have respectively the single potentially multiplicative
+prime $3,3,5,7,3$, as follows by factoring the denominator of their
+$j$-invariant.  A.37 recognizes them.  This proves the last
+assertion without claiming a classification for the remaining
+rational parameters.
+\end{proof}

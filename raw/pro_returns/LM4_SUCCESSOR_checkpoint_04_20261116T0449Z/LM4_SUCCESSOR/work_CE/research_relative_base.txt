@@ -1,0 +1,74 @@
+RESEARCH LOG: first relative finite base after C33, 2026-11-16 04:28–04:35 UTC
+
+Goal: retain a finite prime-to-p quotient while upgrading the maximal-pro-p pentagon/hexagon conclusion. No full relative theorem or new full pentagon counterexample is asserted.
+
+1. Exact point where ordinary Furusho comparison stops.
+Let H=ker(Fhat2 -> C2), with both x,y sent to the nontrivial element. The relative pro-3 completion is H^(3)-by-C2. H has rank3, while the maximal pro-3 completion of Fhat2 has rank2. The ordinary prounipotent completion forgets the finite C2 character and collapses the sign-isotypic direction; it therefore does not embed this relative completion or its full identity component into the ordinary rank2 prounipotent group. C33 controls the augmentation character of the integral Magnus algebra, not every finite-character component. A new relative pentagon comparison theorem, or an additional geometric argument on this cover, is required.
+
+2. An exact finite S3 computation identifying the missing character.
+Every epimorphism F2 -> S3 is, modulo Aut(S3), represented by one of the three pairs
+ ((12),(123)), ((123),(12)), ((12),(23)).
+For a commutator word f, let its images at these pairs be c^k10,c^k01,c^k11, c=(123). Non-generating pairs commute, so f evaluates to1 there. These three coordinates determine every S3 evaluation of f. They are arbitrary coordinates in C3^3 at this finite free-group quotient: the three distinct simple-module kernels are independent (a direct finite diagonal enumeration could be supplied if needed).
+
+The script check_relative_s3_pentagon.py enumerates all 6^6 assignments to the pure braid generators A12,A13,A23,A14,A24,A34, retaining precisely those satisfying the explicit iterated Artin presentation from Cohen2010 Example1.1. There are1008 homomorphisms P4 -> S3. For every one it evaluates the five pentagon substitutions as a linear constraint on the three coordinates. The only nonzero constraint is
+ k10+k01=0 inF3.
+In particular the k11 coordinate is unrestricted. The duality constraints give the same condition.
+
+For each of the nine surviving coordinate triples, the script then checks the full hexagon for every pair x,y inS3 and for every possible unit residue mu modulo12. It obtains:
+ k11=0: mu mod12 in{1,11};
+ k11=2: mu mod12 in{5,7};
+ k11=1: no unit residue works.
+These are tests at the finite S3 stage, not statements that any such coordinate data lift to a full pentagon word. In particular this is not a counterexample to the existential full pentagon assertion.
+
+The bad k11=1 value has a concrete meaning: for x=(12),y=(23), f=c, the images of x and f^(-1)yf are equal. Thus the normalized endomorphism fails generation already inS3. This is exactly the sign C2 character seen by the relative pro-3 completion above. All maximal-pro-p tests omit this finite quotient.
+
+3. Why the actual involution equation alone does not remove it at this finite stage.
+For an actual negative GT involution alpha, the lambda=-1 hexagon forces alpha to act identically on the S3 quotient of type11. Its f-coordinate there is0. The canonical equation u=f alpha(u) therefore leaves the u-coordinate k11 unrestricted at this stage. Full uniqueness of the R1 solution does not imply uniqueness after passage to this finite quotient. Root and A are examining whether the full section/associator structure excludes the bad value.
+
+4. Cyclotomic/Kummer literature check.
+Enriquez–Furusho, Mixed pentagon, octagon, and Broadhurst duality equations, JPAA216(2012)982–995, DOI10.1016/j.jpaa.2011.10.009; primary arXiv1103.1188v2 (5Sep2011) opened in full. Theorem0.2/3.1 proves a Lie-algebra mixed-pentagon-to-octagon result forN2 with specified low coefficient normalizations. The group-like Theorem0.3/3.4 ALSO assumes the special-action condition. Its precise statement is at manuscriptpp2–3. Consequently the abstract does not justify dropping that condition in our relative pro-3 group. Supplying it here would amount to extra peripheral control and cannot be silently imported.
+
+A promising but unproved next mechanism is to lift the actual full pentagon of u to the N2 Kummer cover of the P4 configuration space. Since u is a commutator, its insertions have trivial finite abelian monodromy. One expects a mixed-pentagon pair consisting of the ordinary pro-3 image and a rank3 cover image. This needs exact subgroup maps and tangential framing. Even after it is constructed, the special-action hypothesis of the group theorem remains unproved. No implication is claimed from the Lie theorem to actual group identities.
+
+5. Other possible finite refinement, not yet executed.
+S4 extendsS3 by the irreducible2-dimensionalF2 moduleV4. For a fixed S3 representation ofP4, its S4 lifts are finite linear cocycle problems. One could impose all S4 pentagons on the commutator-word coordinates over the universal finiteS4 quotient and determine whether the bad S3 coordinate survives. This would test an actual mixed-prime lifting obstruction, but would still not prove existence or nonexistence of a full pentagon lift by itself. It has not been promoted to a result.
+
+2026-11-16 04:46 UTC: Heisenberg-by-C2 coupling test has a structural obstruction.
+--------------------------------------------------------------------------
+Let H_p be the exponent-p Heisenberg group for an odd prime p, written (v,z)
+with v in F_p^2 and product (v,z)(w,t)=(v+w,z+t+det(v,w)/2). Let a act by
+(v,z)->(-v,z), and G=H_p semidirect <a>. The proposed purpose was to couple
+the canonical word's dihedral value q(u)=t^k to its ordinary c2 coefficient.
+
+An exact Artin-presentation computation is in code/check_heisenberg_parity.py
+and its output. For each of the 64 characters chi:P4->C2, the vector coordinate
+of a representation P4->G must satisfy a scalar linear system M_chi on the six
+pure braid generators. The integer Smith normal forms are:
+  trivial character: rank0, once;
+  rank4, diagonal(2,2,2,2): fifteen characters;
+  rank5, diagonal(2,2,2,2,2): forty-eight characters.
+These are exact integer calculations and therefore apply in every odd
+characteristic, not merely the separately checked primes3,5,7,11,13.
+
+For nontrivial chi the solution space has dimension at most2 and contains the
+nonzero coboundary vector 1-chi. The two vector-coordinate solutions can thus
+be written r_i V+(1-chi_i)W for fixed V,W in F_p^2. Conjugating by the
+Heisenberg vector W removes the second term (with the harmless sign chosen
+appropriately). All six generator vectors then lie on the single line F_p V.
+The image is contained in (F_p V plus central F_p) semidirect C2, isomorphic
+to D_(2p) times C_p. Central coordinates of the generators do not affect the
+conjugation equations, and do not affect a commutator word's evaluation.
+Consequently every nontrivial-character pentagon test in this group reduces
+to its dihedral test and cannot couple c2(u) to k.
+
+For the trivial character the image lies in H_p, and u(v,w)=c2(u)[v,w].
+The pentagon defect at class2 is -c2(u)([A12,A34]+[A13,A24]), which vanishes
+by the degree2 pure braid relations. Thus these tests impose no c2 condition.
+This rejects this particular proposed finite target; it is not a proof that
+no larger relative finite-base comparison can couple the coordinates.
+
+Possible next target: permit two independent sign characters, acting on the
+two Heisenberg vector directions separately, or increase nilpotency. The
+first option introduces nontrivial determinant action on the center and must
+be computed with the complete finite-base word-evaluation data; no unproved
+cyclotomic associator comparison is being used.
