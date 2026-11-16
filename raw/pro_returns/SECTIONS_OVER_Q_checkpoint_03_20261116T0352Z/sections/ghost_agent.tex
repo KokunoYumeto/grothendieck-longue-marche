@@ -1,0 +1,514 @@
+\subsection{Rational approximation and an infinitely supported unit equation}
+
+\begin{statement}{A.42}{Proved}{The rational unit-equation graph is closed and discrete}
+Give $\widehat{\Q^\times}$ the inverse-limit topology of A.10,
+and put
+\[
+ \mathcal R=
+ \{(\kappa(t),\kappa(1-t)):t\in\Q\setminus\{0,1\}\}
+       \subset\widehat{\Q^\times}^{\,2}.
+\]
+This subset is closed and discrete. Every Cauchy net in
+$\mathcal R$ is eventually constant. For a pair
+$(A,B)\notin\mathcal R$, there is a positive integer $N$
+such that no rational $t\ne0,1$ has both
+$[t]_N=A_N$ and $[1-t]_N=B_N$ in
+$\Q^\times/(\Q^\times)^N$.
+\end{statement}
+\begin{proof}
+Fix classes $\alpha,\beta\in\Q^\times/(\Q^\times)^4$
+and rational representatives $a,b\ne0$. The smooth projective
+plane curve
+\[
+ C_{a,b}:aX^4+bY^4=Z^4
+ \tag{A.42.1}
+\]
+has genus three: its three partial derivatives cannot vanish
+simultaneously at a projective point, and the smooth
+plane-quartic genus formula gives $(4-1)(4-2)/2=3$.
+On $C_{a,b}^{\circ}=C_{a,b}\cap\{XYZ\ne0\}$ the morphism
+\[
+ C_{a,b}^{\circ}\longrightarrow U,
+ \qquad [X:Y:Z]\longmapsto a(X/Z)^4
+ \tag{A.42.2}
+\]
+has $1-t=b(Y/Z)^4$. Conversely, a rational $t$ with
+$[t]_4=\alpha$ and $[1-t]_4=\beta$ gives nonzero rational
+$x,y$ satisfying $t=ax^4$, $1-t=by^4$, hence the rational
+point $[x:y:1]$ of (A.42.1). Faltings's theorem
+\cite[Satz 7, printed p.~365]{AgentFaltings1983} makes
+$C_{a,b}(\Q)$ finite. Thus each fibre of
+\[
+ \rho_4:\widehat{\Q^\times}^{\,2}
+       \longrightarrow
+       \bigl(\Q^\times/(\Q^\times)^4\bigr)^2
+\]
+meets $\mathcal R$ in a finite set.
+
+The target of $\rho_4$ is discrete, so each such fibre is
+open and closed. The ambient inverse limit is Hausdorff.
+For a point outside $\mathcal R$, remove the finite
+intersection with $\mathcal R$ from its $\rho_4$-fibre;
+this gives an open neighbourhood disjoint from $\mathcal R$.
+For a point in $\mathcal R$, remove the other points of
+that finite intersection. This proves closedness and
+discreteness, with the actual neighbourhood maps specified.
+
+A Cauchy net is eventually in a single $\rho_4$-fibre,
+and thus eventually in a finite subset of $\mathcal R$.
+For each two distinct members, some power quotient separates
+them; taking a common multiple of these finitely many
+moduli gives a single quotient injective on the finite set.
+The Cauchy condition in that quotient makes the net
+eventually constant. Finally, the complement of
+$\mathcal R$ is open, and the basic open neighbourhoods
+are fibres of the simultaneous power-quotient maps $\rho_N$.
+This proves the final assertion.
+\end{proof}
+
+In particular, a construction from rational solutions
+$t_j+(1-t_j)=1$ cannot produce a new pair by making their
+two global power classes Cauchy. The construction below
+uses rational coefficients of locally soluble diagonal
+curves; those coefficients need not themselves sum to one
+in $\Q$. Their sums tend to one in each $\Q_p$, and we
+prove separately that both multiplicative sequences
+converge in the topology of A.10.
+
+\input{sections/class3_agent.tex}
+
+\begin{statement}{A.44}{Proved}{Infinitely supported ordinary-local solutions of the completed unit equation}
+There are recursively specified pairwise distinct primes
+$q_j,r_j>3$, for $j\ge0$, such that, with $n_j=(j+4)!$,
+the completed products
+\[
+ A=3\prod_{j\ge0}q_j^{n_j},
+ \qquad B=-2\prod_{j\ge0}r_j^{n_j}
+       \quad\text{in }\widehat{\Q^\times}
+ \tag{A.44.1}
+\]
+have the following properties. At every finite prime $p$
+their localizations are the Kummer classes of ordinary
+nonzero numbers $x_p,y_p\in\Z_p$ with $x_p+y_p=1$.
+Thus $(A,B)\in\mathcal G$. Their valuation vectors are
+\[
+ \begin{array}{c|cc}
+ p&v_p(A)&v_p(B)\\\hline
+ 3&1&0\\
+ 2&0&1\\
+ q_j&n_j&0\\
+ r_j&0&n_j\\
+ \text{all other primes}&0&0.
+ \end{array}
+ \tag{A.44.2}
+\]
+Both coordinates have infinite support, so neither is the
+Kummer class of a rational number. The construction uses
+no local section theorem.
+\end{statement}
+\begin{proof}
+We prove the field-intersection calculation which permits
+the recursive prime choices, give an elementary finite-field
+bound, and then construct the products with explicit
+precision estimates.
+
+\emph{The radical fields and their abelian subfields.}
+Let $24\mid h$ and let
+\[
+ c=3w^8\quad\text{or}\quad c=-2w^8,
+ \qquad w\in\Z_{>0},\quad\gcd(w,6)=1.
+ \tag{A.44.3}
+\]
+Put $K=\Q(\mu_h)$, choose $\gamma^h=c$, and set
+$L=K(\gamma)$. This is the splitting field of $T^h-c$
+over $\Q$. We claim that
+\[
+                L^{\mathrm{ab}}=K,
+ \tag{A.44.4}
+\]
+where $L^{\mathrm{ab}}$ denotes the fixed field of the
+commutator subgroup of $\operatorname{Gal}(L/\Q)$.
+
+First, $c$ is a square in $K$: the field $\Q(\mu_{24})$
+contains $\sqrt3$ and $\sqrt{-2}$. It is not an $e$th
+power in $K$ for any odd prime $e\mid h$. Indeed, the polynomial
+$T^e-c$ is Eisenstein at $3$ in the first case and at $2$
+in the second. Its real root generates a degree-$e$
+subfield of $\R$ which has nonreal conjugates, so this
+subfield is not Galois over $\Q$. If an $e$th root of $c$
+lay in $K$, with $e\mid h$, multiplication by an element
+of $\mu_e\subset K$ would put the real root in $K$.
+Every subfield of the abelian extension $K/\Q$ is Galois
+over $\Q$, a contradiction. Likewise $c$ is not a fourth
+power in $K$: after division by $w^2$, and also by
+$\zeta_8$ in the negative case, a fourth root of $c$
+would put $3^{1/4}$ or $2^{1/4}$ in $K$. Each of these
+positive real radicals has an Eisenstein degree-four
+polynomial and nonreal conjugates.
+
+The Kummer class of $c$ in $K^\times/(K^\times)^h$
+therefore has order exactly $h/2$. To check the last
+assertion explicitly, its order divides $h/2$ because
+$c$ is a square. If it divided $h/(2e)$ for a prime
+$e\mid h/2$, an equation $c^{h/(2e)}=z^h$ would give
+$c=z^{2e}\eta$ with $\eta\in\mu_{h/(2e)}$.
+Since $\mu_h\subset K$, the factor $\eta$ has a
+$2e$th root in $K$. This would make $c$ an $e$th power
+for odd $e$, or a fourth power for $e=2$, both excluded.
+Consequently
+\[
+ N:=\operatorname{Gal}(L/K)=\langle\tau\rangle
+      \simeq\Z/(h/2),\qquad
+ \tau(\gamma)=\zeta_h^2\gamma.
+\]
+For $G=\operatorname{Gal}(L/\Q)$ and
+$\sigma|_K(\zeta_h)=\zeta_h^u$, conjugation gives
+$\sigma\tau\sigma^{-1}=\tau^u$. All
+$u\in(\Z/h)^\times$ occur. The greatest common divisor
+of $h/2$ and these integers $u-1$ is $2$: all are even;
+one can take $u\equiv3\pmod4$, and, for every odd prime
+$e\mid h$, choose a unit $u\not\equiv1\pmod e$ by
+the Chinese remainder theorem. Hence
+\[
+                 [N,G]=N^2.
+\]
+Since $G/N$ is abelian, $N^2\subset[G,G]\subset N$.
+The intermediate field fixed by $N^2$ is
+$K(c^{1/4})$. It contains $\Q(3^{1/4},i)$ or
+$\Q(2^{1/4},i)$, according to (A.44.3), because
+$\zeta_8\in K$. This subfield has a nonabelian Galois
+group: on the fourth roots, the rotation
+$\alpha\mapsto i\alpha$ and complex conjugation do
+not commute. Thus $K(c^{1/4})/\Q$ is not abelian.
+As $N/N^2$ has order two, it follows that $[G,G]=N$.
+This proves (A.44.4).
+
+Here is the exact prime-selection consequence. Let $M$
+be any positive multiple of $h$, and let
+$u\in(\Z/M)^\times$ satisfy $u\equiv1\pmod h$.
+Then there are infinitely many primes $s$ which split
+completely in $L$ and satisfy $s\equiv u\pmod M$.
+Indeed, the intersection $L\cap\Q(\mu_M)$ is an
+abelian subextension of $L/\Q$, and (A.44.4) makes it
+exactly $K$. The restriction map is an isomorphism
+\[
+ \operatorname{Gal}(L\Q(\mu_M)/\Q)
+ \xrightarrow{\ \sim\ }
+ \operatorname{Gal}(L/\Q)
+ \mathop{\times}_{\operatorname{Gal}(K/\Q)}
+ \operatorname{Gal}(\Q(\mu_M)/\Q).
+ \tag{A.44.5}
+\]
+The pair $(1,u)$ belongs to this fibre product because
+both restrictions to $K$ are the identity. Chebotarev's
+theorem \cite[Theorem 8.31]{AgentMilneANT} supplies
+infinitely many primes with this Frobenius. Any finite
+set of primes can be excluded. This proves the needed
+compatibility of the splitting and congruence conditions.
+
+\emph{An elementary bound for the remaining primes.}
+Let $p$ be prime, let $p\nmid m a b$, and put
+$d=\gcd(m,p-1)$. The number $N_p$ of pairs
+$(X,Y)\in(\mathbf F_p^\times)^2$ with
+$aX^m+bY^m=1$ satisfies
+\[
+ N_p\ge p-2-3(d-1)-(d-1)(d-2)\sqrt p.
+ \tag{A.44.6}
+\]
+For completeness, let $\mathcal X_d$ be the $d$
+multiplicative characters of $\mathbf F_p^\times$
+whose orders divide $d$, all extended by zero at zero,
+including the trivial character. Orthogonality gives
+\[
+ N_p=\sum_{\chi,\psi\in\mathcal X_d}
+   \chi(a^{-1})\psi(b^{-1})J(\chi,\psi),
+ \qquad
+ J(\chi,\psi)=\sum_{t\in\mathbf F_p}
+                      \chi(t)\psi(1-t).
+\]
+The term with both characters trivial is $p-2$.
+There are $3(d-1)$ terms of absolute value one:
+one character trivial and the other nontrivial, or
+both nontrivial with product trivial. Their values
+follow from summing a nontrivial character and from
+the substitution $t\mapsto t/(1-t)$.
+The remaining $(d-1)(d-2)$ terms have absolute value
+$\sqrt p$. To see this directly, for nontrivial $\chi$
+put $G(\chi)=\sum_{t\ne0}\chi(t)e^{2\pi it/p}$.
+Changing variables $t=uv$ in $|G(\chi)|^2$ gives
+$|G(\chi)|^2=p$: the inner sum over $v\ne0$ is
+$p-1$ for $u=1$ and $-1$ otherwise. When
+$\chi\psi$ is nontrivial, changing variables
+$(x,y)=(zt,z(1-t))$ gives
+$G(\chi)G(\psi)=J(\chi,\psi)G(\chi\psi)$.
+These identities prove (A.44.6).
+
+Set $B(m)=(m+1)^4$. If $p>B(m)$, replace $d$ by
+$m$ in the lower bound and put $T=\sqrt p$.
+The polynomial
+$T^2-(m-1)(m-2)T-3m+1$ is increasing for
+$T\ge(m+1)^2$, and its value at $(m+1)^2$ is
+$m^2(5m+9)>0$. Thus $N_p>0$.
+At any such point the derivative in at least one
+coordinate is nonzero modulo $p$, so Hensel lifting
+gives a point in $(\Z_p^\times)^2$.
+
+We will also use the following precise Hensel estimate.
+For $f\in\Z_p[T]$, if
+$v_p(f(1))>2v_p(f'(1))=2e$, there is a root $z$
+with
+\[
+                 v_p(z-1)\ge v_p(f(1))-e.
+ \tag{A.44.7}
+\]
+Newton iteration proves the stated bound: its first
+increment has valuation $v_p(f(1))-e>e$; the Taylor
+remainder has at least twice that valuation; the
+derivative keeps valuation $e$ and the successive
+increments have increasing valuation. They converge
+to the required root and retain the first-increment
+bound. The simple-root and Newton forms are also
+\cite[Proposition 7.31 and Theorem 7.32]{AgentMilneANT}.
+
+\emph{The induction and its invariant.}
+For $j\ge0$ put
+\[
+ n_j=(j+4)!,\qquad
+ H_j(p)=2v_p(n_{j+1})+j+3.
+ \tag{A.44.8}
+\]
+We construct nonzero integers $a_j,b_j$ satisfying
+the following three requirements:
+\[
+ \begin{gathered}
+ a_j=3u_j^8,\quad b_j=-2v_j^8,\quad u_j,v_j>0,\\
+ \gcd(u_jv_j,6)=1,\qquad \gcd(a_j,b_j)=1;
+ \end{gathered}
+ \tag{A.44.9}
+\]
+\[
+ a_jX^{n_j}+b_jY^{n_j}=1
+ \quad\text{has a point in }(\Z_p^\times)^2
+       \text{ for every finite }p;
+ \tag{A.44.10}
+\]
+\[
+ v_p(a_j+b_j-1)\ge H_j(p)
+       \quad\text{for every }p\le B(n_j).
+ \tag{A.44.11}
+\]
+Initially take $a_0=3$, $b_0=-2$ and
+$u_0=v_0=1$. The point $(1,1)$ and the equality
+$a_0+b_0=1$ verify all three requirements.
+
+Suppose the construction has reached $j$. Write
+\[
+ n=n_j,\quad m=n_{j+1},\quad a=a_j,\quad b=b_j,
+ \qquad
+ S=\{p:p\le B(m)\}\cup\{p:p\mid ab\}.
+ \tag{A.44.12}
+\]
+This is a finite set containing every prime dividing
+$m$. For $p\in S$, put
+\[
+ L_p=H_{j+1}(p)=2v_p(n_{j+2})+j+4.
+ \tag{A.44.13}
+\]
+In particular $L_p>2v_p(m)$ and
+$L_p\ge v_p(m)$.
+
+Choose a unit-coordinate solution $(\xi_p,\eta_p)$
+of the old equation $aX^n+bY^n=1$ in $\Q_p$.
+At primes dividing $m$ we make a specified additional
+choice:
+\[
+        \xi_p\equiv\eta_p\equiv1\pmod {p^{v_p(m)}}.
+ \tag{A.44.14}
+\]
+Here is why this is available. Every prime divisor of
+$m=(j+5)!$ is at most $j+5$, hence at most $B(n)$.
+Thus (A.44.11) applies. At least one of $a,b$ is a
+$p$-adic unit by (A.44.9). Keep the variable of the
+other coefficient equal to one and apply (A.44.7) to
+the remaining polynomial at one. With
+$e=v_p(n)$ and $d=v_p(m)$, its error has valuation
+at least $H_j(p)=2d+j+3>2e$. The chosen root differs
+from one by an element of valuation at least
+$H_j(p)-e\ge d$. This proves (A.44.14), including
+$p=2$. At other primes of $S$, (A.44.10) supplies
+the required unit solution.
+
+Set
+\[
+                  M=\prod_{p\in S}p^{L_p}.
+\]
+This modulus is divisible by $m$. The Chinese remainder
+theorem specifies a unit class $Q_0\pmod M$ by
+$Q_0\equiv\xi_p\pmod {p^{L_p}}$ for all $p\in S$.
+Equation (A.44.14) gives $Q_0\equiv1\pmod m$.
+Apply (A.44.5), first with $h=n$, $c=b$, and this
+modulus $M$. We obtain a prime $q$ outside $S$, larger
+than every prime in $S$ and than $n_{j+2}$, with
+\[
+ q\equiv\xi_p\pmod {p^{L_p}}\quad(p\in S),
+ \qquad q\text{ splits completely in }
+                    \Q(\mu_n,b^{1/n}).
+ \tag{A.44.15}
+\]
+At $q$, the number $b$ is an $n$th-power unit. Since
+$q\nmid n$, Hensel lifting gives a unit $z_q\in\Z_q$
+with
+\[
+                   b z_q^n=1-aq^n.
+ \tag{A.44.16}
+\]
+We only need its residue modulo $q$ in the next step.
+
+The new positive coefficient $a q^n$ still has the
+form $3w^8$ with $\gcd(w,6)=1$, since $8\mid n$
+and $q\ne2,3$. The Chinese remainder theorem specifies
+a unit class $R_0\pmod {Mq}$ by
+\[
+ R_0\equiv\eta_p\pmod {p^{L_p}}\quad(p\in S),
+ \qquad R_0\equiv z_q\pmod q.
+\]
+It satisfies $R_0\equiv1\pmod m$. Applying (A.44.5)
+with $h=m$, $c=a q^n$, and modulus $Mq$, choose a
+prime $r>q$, outside $S\cup\{q\}$, satisfying
+\[
+ r\equiv R_0\pmod {Mq},
+ \qquad r\text{ splits completely in }
+               \Q(\mu_m,(a q^n)^{1/m}).
+ \tag{A.44.17}
+\]
+Define
+\[
+ q_j=q,\quad r_j=r,\qquad
+ a_{j+1}=a q^n,\quad b_{j+1}=b r^n.
+ \tag{A.44.18}
+\]
+Their disjoint prime supports and their eighth-power
+forms give (A.44.9) at the next stage. In particular
+$v_3(a_{j+1})=v_2(b_{j+1})=1$ remains exact.
+
+We verify every finite prime in (A.44.10), with new
+exponent $m$. For $p\in S$, both coefficients are
+integral and (A.44.15)--(A.44.17) imply
+\[
+ a q^n+b r^n-1\equiv
+       a\xi_p^n+b\eta_p^n-1=0\pmod {p^{L_p}}.
+ \tag{A.44.19}
+\]
+One coefficient is a unit. Apply (A.44.7) at
+$(X,Y)=(1,1)$, fixing the other variable, with
+derivative valuation $v_p(m)$. The inequality
+$L_p>2v_p(m)$ gives a unit-coordinate point of the
+new equation. Since every $p\le B(m)$ belongs to
+$S$, (A.44.19) also proves (A.44.11) at stage $j+1$.
+
+At $p=q$, equations (A.44.16)--(A.44.17) make the
+new equation hold at $(1,1)$ modulo $q$; the
+derivative in $Y$ is a unit because $q\nmid mbr$.
+It therefore has a unit-coordinate lift. At $p=r$,
+set $Y=1$. Complete splitting in (A.44.17) makes
+$a q^n$ an $m$th power modulo $r$. The equation
+\[
+                  X^m=\frac{1-b r^n}{a q^n}
+\]
+has a nonzero residue root, and $r\nmid m$ gives a
+unit root in $\Z_r$. Finally, at a prime outside
+$S\cup\{q,r\}$ both new coefficients are units,
+and the prime is larger than $B(m)$. The finite-field
+bound (A.44.6) and simple-root lifting supply the
+required unit-coordinate point. These cases exhaust
+the finite primes and complete the induction.
+
+\emph{The completed products and their ordinary local values.}
+The choices of $q,r$ exclude all previous prime factors,
+so all $q_j,r_j$ are pairwise distinct. For each positive
+integer $N$, the factorial $n_j$ is divisible by $N$
+for all sufficiently large $j$. Equations (A.44.18)
+therefore make both $(a_j)$ and $(b_j)$ Cauchy in
+$\widehat{\Q^\times}$: their images are eventually
+constant in each simultaneous quotient by $N$th
+powers. Their limits are exactly (A.44.1), and the
+coordinate calculation gives (A.44.2). In particular,
+the valuation vectors have finite support modulo every
+$N$, as required in A.10.
+
+Fix a finite prime $p$. Its valuation in each sequence
+is eventually constant, and every later ratio
+$a_{j+1}/a_j$ or $b_{j+1}/b_j$ is an $n_j$th power
+of a $p$-adic unit. For each $k$, the finite group
+$\Z_p^\times/(1+p^k\Z_p)$ has finite exponent.
+The factorials $n_j$ eventually annihilate this
+group. Thus the unit parts of both sequences are
+Cauchy in $\Z_p^\times$ and converge to units.
+Their limits $x_p,y_p\in\Q_p^\times$ have the finite
+nonnegative valuations in (A.44.2), so they lie in
+$\Z_p\setminus\{0\}$. Compatibility of the maps
+\[
+ \Q^\times/(\Q^\times)^N
+       \longrightarrow
+ \Q_p^\times/(\Q_p^\times)^N
+\]
+with the two limits gives
+$A_p=\kappa(x_p)$ and $B_p=\kappa(y_p)$.
+Indeed, the local power classes stabilize both by
+the global Cauchy condition and by ordinary local
+convergence: the subgroup of $N$th powers of the
+local unit group is open, by the same Hensel estimate.
+
+Eventually $p\le B(n_j)$, and (A.44.11) then gives
+$v_p(a_j+b_j-1)\ge j+3\longrightarrow\infty$.
+Taking the ordinary $p$-adic limits proves
+$x_p+y_p=1$. Both are nonzero, so $x_p\in U(\Q_p)$.
+This proves $(A,B)\in\mathcal G$ at every finite
+prime, including two and three. At the real place
+their completed Kummer classes are the signs $+,-$,
+represented by the ordinary pair $(3,1-3)$.
+Finally (A.44.2)
+has infinitely many nonzero valuations in each
+coordinate. A rational number has only finitely
+many, proving the final assertion.
+
+\emph{A fully specified recursive choice.}
+The construction can be read as a terminating algorithm
+for every finite stage. At $p\mid m$, use Newton
+iteration from one in the unit-coefficient variable.
+At other $p\in S$, take the least pair of nonzero
+residues solving the old equation modulo $p$, and
+Hensel-lift a variable with unit derivative, keeping
+the other fixed. These are finite calculations modulo
+$p^{L_p}$. Select the least eligible prime $q$ above
+the specified bound. Its splitting condition is the
+finite test
+$b^{(q-1)/n}\equiv1\pmod q$, since
+$q\equiv1\pmod n$. Select the least nonzero root
+of $bZ^n=1$ modulo $q$, form the second CRT class,
+and select the least eligible $r$. Its splitting
+test is
+$(a q^n)^{(r-1)/m}\equiv1\pmod r$.
+Chebotarev, with the exact intersection (A.44.5),
+proves termination of both prime searches at every
+stage. This specifies the two infinite products
+without any unproved simultaneous-primality assertion.
+\end{proof}
+
+Together with A.27 and A.38, this gives infinitely
+supported ordinary-local Kummer pairs whose full
+continuous cup vanishes and which lift to continuous
+sections of the actual full profinite class-two
+quotient of the tripod. Their abelianizations exclude
+rational point sections by (A.44.2). They also exclude
+cuspidal sections: at $0$ one coordinate has zero
+valuation everywhere, at $1$ the other does, and at
+$\infty$ the two valuation vectors agree; none of
+these occurs in (A.44.2). No lift to the full
+fundamental group or to weight three is asserted.
+The finite certificates in
+\texttt{code/ghost\_construction\_certificate.py}
+check the commutator arithmetic, the finite-field
+counting bound, and the precision inequalities.
+They do not purport to execute the extremely large
+first prime search of the displayed recursion.
