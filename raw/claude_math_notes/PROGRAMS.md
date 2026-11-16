@@ -46,7 +46,7 @@ programme.
 - §25 (a) Humbert surfaces: outside. (b) S6's height function and moduli disc: S6. (c) the relations map: S6 and
   Grothendieck (bridge), numerology listed apart. (d) Heegner points, M24: outside. FOR_FABLE F14: bridge S6-LM.
 
-## Added 16 Nov ~03:3x-06:0x UTC
+## Added 16 Nov ~03:3x-05:4x UTC
 - §30 (a), (c), (d), (e), (k): Grothendieck (DELTA_ON_GT, LM8_PUSH, LM4_SUCCESSOR, SECTIONS_OVER_Q). (b), (i), (j): a
   bridge between S6 and the Grothendieck programme (3^{1/4}: S6's Neron/Siegel value at the order-3 CM fixed point and
   the generator of Delta's bit field). (f): Grothendieck (FERMAT_SUCCESSOR). (g), (l): Grothendieck (EXIT_TOWER's
