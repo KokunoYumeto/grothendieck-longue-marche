@@ -104,6 +104,7 @@ Is there a mechanism: Shimura reciprocity for the Siegel functions whose absolut
 frames on Galois as the two CM reciprocity maps (K3 = Q(omega), K4 = Q(i)) on the common field K3^ab ∩ K4^ab? If so,
 state Delta(Phi) = 1 as "Phi does not respect r0 in K3^ab ∩ K4^ab" precisely, and say whether S6's 12th root of
 q1/q2^2 (the corner's level 12) carries the same Galois information.
+- **Field side settled in the return (NOTES §30 (i)).** DELTA_ON_GT cp01 A.12 proves K4^ab ∩ K3^ab = Q^ab(3^{1/4}), quadratic over Q^ab (the commutator argument), and A.13 the torsion fields. Left for F16: only the S6 side, whether S6's Neron value 3^{1/4} (a real height) is the archimedean shadow of that Kummer class.
 
 ## F17 (16 Nov; NOTES §30 (g)) Two refuted steps in other people's papers: check before anyone is told.
 EXIT_TOWER cp16 D.72 (Minahan 2025, the adjacent-descending-link bound used on p. 29; the acyclicity theorem itself is not
