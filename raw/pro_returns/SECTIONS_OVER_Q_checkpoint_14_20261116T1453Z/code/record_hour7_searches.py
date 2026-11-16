@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Record the actually completed searches and their later proved interpretation."""
+from pathlib import Path
+w=Path(__file__).resolve().parents[1]
+heading='## Seventh-hour exact search record'
+text=('The rational-direction search verified1,613 exact elliptic points on703 positive squarefree congruent-number models and selected15 pairs by their exact F2 squareclass data; no Mordell–Weil rank assertion was made. Its local search tested133,158 candidates and found29,985 actual local quartic points, with no nonzero evaluation. The complementary integral-point search tested186,416 candidates and found76,579 actual points, again with no nonzero evaluation. The exact intermediate-cover tests retained nonzero evaluations on the larger square-root cover, together with the valuation obstruction to lifting those points to C4. These finite computations motivated A.108 and A.111–A.112; the all-place vanishing is established by those proofs, not inferred from the absence of search witnesses. All programs, candidate data and actual output files are retained under code/.\n')
+p=w/'SECTIONS_OVER_Q_report.md'
+report=p.read_text()
+if heading not in report:p.write_text(report+'\n'+heading+'\n\n'+text)
+Path(__file__).with_name('record_hour7_searches_output.txt').write_text(text)
+print(text,end='')

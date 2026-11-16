@@ -1,0 +1,98 @@
+\paragraph{An exact three-class consequence of A.159.}
+Let
+\[
+ F=K_1(\zeta_3),\qquad E=K_2(\zeta_3),\qquad
+ \sigma(t)=\zeta_3t,\qquad \tau(t)=t,\quad\tau(\zeta_3)=\zeta_3^{-1}.
+\tag{A.159.C1}
+\]
+Then \(E/F\) is cyclic cubic, \(E^{\langle\tau\rangle}=K_2\), and
+\(\tau\sigma\tau^{-1}=\sigma^{-1}\).
+For \(q=11,59\), the old quadratic place of \(K_1\) splits into two
+places \(P_{q,+},P_{q,-}\) of \(F\), exchanged by \(\tau\).
+Each is totally ramified in \(E/F\); denote its unique extension by
+\(R_{q,+},R_{q,-}\).  The two classes
+\[
+ \Delta_q=\bigl([R_{q,+}]-[R_{q,-}]\bigr)_{(3)}
+                 \in\operatorname{Cl}(E)\{3\},\qquad q=11,59,
+\tag{A.159.C2}
+\]
+generate a subgroup isomorphic to \((\Z/3)^2\).
+In particular this is an unconditional class-group lower bound deduced
+from the explicit unit certificate, without a computed class-group
+presentation.
+
+\begin{proof}
+The residue field of the quadratic place is \(\F_{q^2}\), which contains
+\(\mu_3\); thus adjoining \(\zeta_3\) splits that place.  At either
+resulting place of \(F\), \(v(d^2\alpha)=2\).  Consequently the
+extension \(t^3=d^2\alpha\) is totally ramified of degree three.
+Writing \(j\) for extension of ideal classes from \(F\) to \(E\),
+we have
+\[
+ 3\bigl([R_{q,+}]-[R_{q,-}]\bigr)
+     =j\bigl([P_{q,+}]-[P_{q,-}]\bigr).
+\tag{A.159.C3}
+\]
+First work in the exact quotient \(\operatorname{Cl}(E)/j\operatorname{Cl}(F)\).
+Suppose a combination with coefficients \(a_{11},a_{59}\in\{0,1,2\}\)
+is zero there.  Choose a fractional ideal \(J\) of \(F\) and
+\(v\in E^\times\) so that, as an equality of fractional divisors,
+\[
+ \operatorname{div}(v)=
+ \sum_{q=11,59}a_q(R_{q,+}-R_{q,-})-j\operatorname{div}(J).
+\tag{A.159.C4}
+\]
+Here \(j\operatorname{div}(J)\) denotes its extended ideal divisor,
+including its ramification multiplicities.  The right side is fixed by
+\(\sigma\), so
+\[
+ u=\frac{\sigma v}{v}\in\mathcal O_E^\times,\qquad
+ N_{E/F}u=1,\qquad w=u\tau(u)\in\mathcal O_{K_2}^\times,
+ \qquad N_{K_2/K_1}w=1.
+\tag{A.159.C5}
+\]
+The last norm identity follows by applying the cyclic norm and using
+\(\tau\sigma\tau^{-1}=\sigma^{-1}\); its restriction to \(K_2\)
+is the actual cubic norm to \(K_1\).
+
+At either \(R_{q,\pm}\), a uniformizer is
+\(\pi=t^2/q\), since \(v(t)=2\) and \(v(q)=3\).
+It satisfies \(\sigma(\pi)/\pi=\zeta_3^2\).
+The automorphism \(\sigma\) acts trivially on the residue field.
+For an element of valuation \(k\) we therefore have the exact residue
+identity
+\[
+ \overline{\sigma v/v}=\zeta_3^{2k}.
+\tag{A.159.C6}
+\]
+Equation A.159.C4 gives valuations congruent to \(a_q,-a_q\)
+modulo three at \(R_{q,+},R_{q,-}\), because every extended ideal
+has valuation divisible by three there.  After transporting the second
+residue by \(\tau\), which inverts \(\zeta_3\), this yields
+\[
+ \overline w\bigm|_{R_{q,+}}
+   =\zeta_3^{2a_q}\,\tau(\zeta_3^{-2a_q})
+   =\zeta_3^{4a_q}=\zeta_3^{a_q}.
+\tag{A.159.C7}
+\]
+The residue field here is also that of the quadratic place of \(K_2\).
+Since \((q^2-1)/3\) is prime to three for both \(q=11,59\), the cubic
+residue character of \(w\) is trivial precisely when \(a_q=0\).
+A.159.8 says that it is trivial for every such relative norm-one unit.
+Thus \(a_{11}=a_{59}=0\), proving independence and exact order three
+in the displayed quotient.
+
+Finally A.138 gives
+\(\operatorname{Cl}(F)\{3\}=0\) for the constant field
+\(F=\Q(\zeta_3,\sqrt[3]{3})\).
+Hence \(j\operatorname{Cl}(F)\) has order prime to three, and the
+quotient map identifies the three-primary parts.  Projecting A.159.C3
+to them proves that the two classes in A.159.C2 are killed by three;
+the independence already proved shows that they span \((\Z/3)^2\).
+\end{proof}
+
+The finite sign and residue checks are retained in
+\path{code/two_inert_class_corollary_certificate.py}
+and its output.  The proof uses the literal divisor relation in A.159.C4;
+it does not identify a relation modulo extended classes with a principal
+relation before inserting the fractional ideal \(J\).

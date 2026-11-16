@@ -1,0 +1,46 @@
+\documentclass[12pt]{article}
+\usepackage[a4paper,margin=20mm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb}
+\usepackage{unicode-math}
+\usepackage{tikz-cd}
+\usepackage{xcolor}
+\usetikzlibrary{arrows.meta,decorations.pathmorphing,positioning,calc,shapes.geometric}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\emergencystretch=3em
+\DeclareRobustCommand{\cotefile}[1]{\par\clearpage\section*{Cote #1}}
+\DeclareRobustCommand{\scanpage}[1]{\par\clearpage\subsection*{Scan #1}}
+\DeclareRobustCommand{\mspage}[1]{\par\noindent\textit{Manuscript page #1}\par}
+\DeclareRobustCommand{\deleted}[1]{{\color{gray}#1}}
+\DeclareRobustCommand{\inserted}[1]{{\color{blue!50!black}#1}}
+\DeclareRobustCommand{\margin}[1]{{\color{green!30!black}#1}}
+\DeclareRobustCommand{\uline}[1]{#1}
+\DeclareRobustCommand{\uuline}[1]{#1}
+\ExplSyntaxOn
+\cs_generate_variant:Nn \tl_if_head_eq_meaning:nNTF { V }
+\DeclareRobustCommand{\diagram}[1]{
+  \group_begin:
+  \tl_set:Nn \l_tmpa_tl {#1}
+  \tl_trim_spaces:N \l_tmpa_tl
+  \tl_if_head_eq_meaning:VNTF \l_tmpa_tl $
+    {\tl_use:N \l_tmpa_tl}
+    {\tl_if_head_eq_meaning:VNTF \l_tmpa_tl \[
+      {\tl_use:N \l_tmpa_tl}
+      {\tl_if_head_eq_meaning:VNTF \l_tmpa_tl \(
+        {\tl_use:N \l_tmpa_tl}
+        {\ensuremath{\tl_use:N \l_tmpa_tl}}}}
+  \group_end:
+}
+\ExplSyntaxOff
+\def\plainampersand{&}
+\begingroup\catcode`\&=13
+\gdef&{\plainampersand}
+\endgroup
+\DeclareRobustCommand{\figure}[1]{#1}
+\DeclareRobustCommand{\unsure}[1]{{\color{red!50!black}#1}}
+\DeclareRobustCommand{\illegible}[1]{\ifmmode\text{[illegible: #1]}\else[illegible: #1]\fi}
+\begin{document}
+\catcode`\&=13
+\input{/workspace/scratch/b04fc32065f5/work/MPL_11_043-058+56/MPL_11_043-058+56_transcription.tex}
+\end{document}

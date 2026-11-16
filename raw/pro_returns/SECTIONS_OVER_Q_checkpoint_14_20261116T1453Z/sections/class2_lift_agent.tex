@@ -1,0 +1,122 @@
+% Insert as A.38 after the coefficient-by-coefficient cup theorem A.27.
+\begin{statement}{A.38}{Proved}{Every ordinary local unit-equation pair lifts to the full profinite class-two quotient}
+Let $\Pi=\pi_1(U_{\bar\Q})$ and let
+$\Gamma_3\Pi=\overline{[\Pi,\overline{[\Pi,\Pi]}]}$ be its third
+closed lower-central subgroup.  Put $E_2=E_U/\Gamma_3\Pi$ and
+$E_{\rm ab}=E_U/\overline{[\Pi,\Pi]}$.
+For every $(A,B)\in\mathcal G$, the continuous abelian section
+of $E_{\rm ab}\to G_\Q$ given by its Kummer classes has a
+continuous lift through
+\[
+                       E_2\twoheadrightarrow E_{\rm ab}.     \tag{A.38.1}
+\]
+This is the full profinite class-two quotient, with its actual
+arithmetic action and all coefficient primes, including two.
+\end{statement}
+\begin{proof}
+Choose the rational tangent $\overrightarrow{01}$ and the standard
+geometric generators $x,y$ around $0,1$.  Let $R=\widehat\Z$ and
+define the profinite group
+\[
+ H(R)=R^3,\qquad
+ (a,b,c)(a',b',c')=(a+a',b+b',c+c'+ab').                         \tag{A.38.2}
+\]
+Set $X=(1,0,0)$, $Y=(0,1,0)$ and $Z=(0,0,1)$.
+Then $[X,Y]=Z$ under the convention $[X,Y]=XYX^{-1}Y^{-1}$,
+the center and commutator subgroup are $0\times0\times R$, and
+\[
+                     X^aY^bZ^d=(a,b,ab+d).                    \tag{A.38.3}
+\]
+We verify that this is the claimed geometric quotient, rather than
+just an abstract group with the same graded modules.  The map
+$x\mapsto X$, $y\mapsto Y$ from the free profinite group $\Pi$
+is onto by (A.38.3), and kills $\Gamma_3\Pi$.
+For any profinite class-two group generated topologically by $u,v$,
+the formula
+\[
+ (a,b,c)\longmapsto u^a v^b[u,v]^{c-ab}                        \tag{A.38.4}
+\]
+is a continuous homomorphism.  Powers with exponents in
+$\widehat\Z$ are defined on the closed procyclic subgroups, and
+the collecting formula follows first for integer exponents and
+then by continuity.  The commutator is central.  Formula (A.38.4)
+applied to the images of $x,y$ in $\Pi/\Gamma_3\Pi$ is an inverse
+to the preceding map.  Hence
+\[
+                         \Pi/\Gamma_3\Pi\simeq H(R).          \tag{A.38.5}
+\]
+This argument also identifies (A.38.5) with
+$\prod_\ell H(\Z_\ell)$ by the coordinate projections of $R$.
+
+The actual action induced by the chosen rational tangent is
+\[
+ g(x)=x^{\chi(g)},\qquad
+ g(y)=f_g^{-1}y^{\chi(g)}f_g,
+                       \quad f_g\in\overline{[\Pi,\Pi]}.
+                                                                    \tag{A.38.6}
+\]
+The base point, formula and membership of $f_g$ in the closed
+commutator subgroup are verified in
+\cite[\S2, equation (2.1) and the following paragraph]{BIR_NakamuraSchneps2000}.
+Modulo $\Gamma_3\Pi$, the image of $f_g$ is central.  Applying
+(A.38.3) shows that (A.38.6) becomes exactly
+\[
+          g(a,b,c)=(\chi(g)a,\chi(g)b,\chi(g)^2c).             \tag{A.38.7}
+\]
+There is no division by two in (A.38.2)--(A.38.7).  Thus the
+rational tangential splitting identifies the actual arithmetic
+quotient with $E_2=H(R)\rtimes G_\Q$ with this action.
+Its abelianization is $R(1)^2\rtimes G_\Q$.  The functions
+$t,1-t$ identify the two geometric abelian coordinates with their
+Kummer characters: their orders at the two corresponding cusps
+are $(1,0)$ and $(0,1)$.  On the tangent
+$\overrightarrow{01}$ both Kummer classes are zero, from their
+leading coefficients $1$.  This fixes the arithmetic calibration
+of the same two coordinates.
+
+Choose continuous one-cocycles $a,b:G_\Q\to R(1)$ representing
+$A,B$.  The associated actual abelian section is
+$g\mapsto(a(g),b(g);g)$.  Its set-theoretic lift
+$g\mapsto(a(g),b(g),0;g)$ to (A.38.2) has central defect
+\[
+                     c(g,h)=a(g)\chi(g)b(h),                  \tag{A.38.8}
+\]
+the usual continuous cup cocycle with values in $R(2)$.
+The coefficient conclusions of A.27 yield zero for its image
+in every $H^2_{\rm cts}(G_\Q,\Z_\ell(2))$.
+To justify the full profinite inference explicitly, continuity
+into a product is coordinatewise, so there is an identity of
+cochain complexes
+\[
+ C^\bullet_{\rm cts}(G_\Q,R(2))
+       =\prod_\ell C^\bullet_{\rm cts}(G_\Q,\Z_\ell(2)).      \tag{A.38.9}
+\]
+Its kernels and images are the respective products.  Equivalently,
+choose a continuous primitive $h_\ell$ of $-c_\ell$ in every
+factor.  Their product $h=(h_\ell)_\ell$ is continuous and
+satisfies $\delta h=-c$.  Therefore
+\[
+                    g\longmapsto(a(g),b(g),h(g);g)            \tag{A.38.10}
+\]
+is a continuous section of $E_2\to G_\Q$ and projects to the
+chosen abelian representative.  Changing the abelian cocycles
+by a coboundary corresponds to conjugation by an element of
+$H(R)$ lifting that geometric abelian element.  This proves
+the assertion on the section classes with their specified
+geometric conjugation as well.
+
+The program \texttt{full\_cup\_class2\_certificate.py} checks
+the collecting and action identities over several finite rings,
+including powers of two, and the original-cup tame residue
+formula used in the coefficient proof.  The existence of the
+continuous primitive in (A.38.10) is furnished by A.27 and the
+cochain identity (A.38.9), not by those finite checks.
+\end{proof}
+
+The remaining lifting map is the actual continuous surjection
+$E_U\twoheadrightarrow E_2$, with kernel $\Gamma_3\Pi$.
+A.38 constructs no section through that kernel.  In particular
+the class-two obstruction in L11 vanishes on $\mathcal G$;
+A.44 supplies nonrational elements of $\mathcal G$. Their possible
+lifts through higher quotients remain undecided, with these precise
+comparison maps and the class-three calculation in A.43.
