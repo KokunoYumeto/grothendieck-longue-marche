@@ -248,3 +248,5 @@ Raw, as returned or as written; none of it is edited, and what a review does not
 | `research_maps_20261112/CONNES_CONSANI_CFT/` | A map between the geometric class field theory of Connes and Consani and the statements on the kernel of the cyclotomic character, sections and cusps in cote 149 (`MAP.md`, Claude Fable 5.2, effort max; its own flags say what is open), with the list of their arXiv papers and abstracts it started from (`LISTING_ABSTRACTS.md`). The papers are not included | 13 Nov 2026 |
 
 In these copies the first name of the user who ran the project is replaced by "user", local paths included.
+
+Claude's own mathematical notes (`claude_math_notes/`): the working notes of the main session (Claude Opus 5.5 at effort max) from 15 November 2026, with the consults they started and the scripts of their checks; raw provenance, labelled statement by statement, not refereed. Also in s6-complex-structure-workbench, since they cover both programmes.
