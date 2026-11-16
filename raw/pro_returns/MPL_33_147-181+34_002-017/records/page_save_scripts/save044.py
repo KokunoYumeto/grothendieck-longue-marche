@@ -1,0 +1,24 @@
+import sys
+sys.path.insert(0,'/workspace/scratch/3b3cef4e0bd3/MPL_105_work/scripts')
+from record_page import record_page,build_doubts
+text=r'''\scanpage{44}
+90
+
+\textit{sexe est partout dans la psyché} (et que celle-ci le nie et ferme les yeux là où il est n'y change rien), et plus que nulle part ailleurs, il est dans son pouvoir de créer. Et d'autre part, \textit{la psyché et l'âme sont partout dans la réalité.}
+
+Il en est ainsi, tout au moins, et de façon évidente, quand il s'agit de la réalité telle qu'elle est perçue ou conçue par la psyché, c'est-à-dire de la représentation qu'elle se fait de \deleted{\unsure{cette}}\inserted{cette} réalité, de sa relation à elle. Car l'image de la réalité que l'âme se construit aux différents niveaux conscient et inconscients est tout autant et plus une création de l'âme, qu'un simple reflet plus ou moins fidèle d'une ``réalité objective'' qui existerait indépendamment d'elle. (Réalité dont il n'est pas question ici de nier l'existence). C'est dire que \textit{l'état de maturité et les dispositions générales de l'âme déterminent autant et plus son image de la réalité, que cette réalité elle-même ne la détermine.}
+\margin{$\cdot$}
+
+Ceci vu, on conçoit qu'un état de peur de l'âme devant elle-même, et de fuite devant la réalité d'elle-même, puisse et doive entraîner une peur et une fuite devant \textit{toute} réalité. Nous pouvons dire aussi que dans notre relation à elle, \textit{toute réalité agit à la façon d'un \textnormal{miroir} dans lequel la psyché voit reflétée une image d'elle-même.} (Et si cette image est rarement perçue au niv\inserted{e}au conscient, elle l'est toujours tout au moins dans l'inconscient profond, y compris dans l'inconscient moyen-profond, où se situe la peur primordiale.) En effet, cette réalité ne peut être distinguée par la psyché de l'image qu'elle s'en fait, c'est-à-dire aussi de sa relation à elle ; et nécessairement et qu'elle le veuille ou non, cette image et cette relation la reflètent.
+\margin{$\cdot$}
+
+Cette image de nous-même que nous renvoie la réalité nous implique d'une façon d'autant plus névralgique, et elle déclenche des réactions de peur et de fuite d'autant plus énergiques ou violentes, que cette réalité nous apparaît comme plus ``proche'' de nous. Le plus souvent, ces réactions sont les plus véhémentes ou les plus implacables quand la réalité concerne notre relation soit à nous-même, soit à un être proche : à un parent, \deleted{\unsure{q}}\inserted{a}u conjoint, à \deleted{\unsure{un}}\inserted{notre} enfant - et ceci d'autant plus que la relation est forte, que l'énergie investie en elle est considérable. Mais c'est surtout \textit{la force de notre relation à telle ou telle réalité, l'intensité d'intérêt et l'énergie que nous y investissons, qui sont ici déterminantes.} Ainsi le plus souvent, des spéculations philosophique de haut vol \figure{\begin{tikzpicture}[baseline=-.3ex]\draw[line width=.7pt] (0,0)--(.15,.3);\end{tikzpicture}} aur\deleted{a}\inserted{o}nt beau concerner les questions les plus cruciales (et brûlantes certes !) que l'esprit humain se soit jamais posé sur lui-même, sur Dieu et sur l'âme, ces nobles envolées ne renverront à l'âme qu'une image d'elle pâle voire imperceptible, qui n'aura vertu ni de l'interpeller ni de l'effrayer. Mais même dans une science aussi abstraite et aussi éloignée en apparence de toute réalité humaine que la mathématique, pour peu que notre relation à la belle dame soit ardente et aussitôt elle devient pour nous névralgique, et l'image qu'elle nous renvoie de nous-même forte et véhémente. Et la réaction de peur devant cette image sera d'autant plus viscérale et forte que
+\margin{$\cdot$}
+\margin{$\cdot$}
+\margin{$\cdot\ \cdot$}
+
+\mspage{43}
+'''
+e=[('text','top','90'),('text','top paragraph','sexe est partout'),('text','upper paragraph','Il en est ainsi'),('deletion','upper paragraph','cette'),('insertion','upper paragraph','cette'),('margin note','left upper','dot'),('text','middle paragraph','Ceci vu'),('insertion','middle paragraph','e in niveau'),('margin note','left middle','dot'),('text','lower paragraph','Cette image'),('deletion','lower paragraph','q'),('insertion','lower paragraph','a'),('deletion','lower paragraph','un'),('insertion','lower paragraph','notre'),('drawing','lower paragraph after vol','slash'),('deletion','lower paragraph','a in aurant'),('insertion','lower paragraph','o'),('margin note','left lower','dot'),('margin note','left lower','dot'),('margin note','left lower','two dots'),('text','bottom','43')]
+record_page(44,text,e,sheet_kind='reused_typed',notes='Printed p.90 with handwritten corrections and folio43; original letters under au/notre and cette obscured. Grammatical forms philosophique, posé, nous-même retained.')
+build_doubts()
