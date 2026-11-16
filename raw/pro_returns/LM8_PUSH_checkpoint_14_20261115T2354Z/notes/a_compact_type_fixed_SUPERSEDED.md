@@ -1,0 +1,1 @@
+The code and executed outputs beside this note were checkpoint-six staging copies. The active versions are code/a_compact_type_fixed.py, code/a_compact_type_fixed.json, and code/a_compact_type_fixed.out. The original notes copies are retained for provenance.

@@ -1,0 +1,239 @@
+# Exact memory-reduced implementation of the finite-input part of Polycyclic
+# 2.18 SchurExtensionEpimorphism.  It evaluates the SAME four consistency
+# families.  Stored pair products are sparse collected words.  Integral
+# coefficient-one relations are eliminated by unimodular substitutions before
+# the unchanged Polycyclic QuotientBySystem performs the remaining Smith step.
+# No modular reduction or rationalization is used.
+
+PBC_SparseAdd:=function(a,b,m)
+ local i,j,out,c;
+ i:=1;j:=1;out:=[];
+ while i<=Length(a) or j<=Length(b) do
+  if j>Length(b) or (i<=Length(a) and a[i]<b[j]) then
+   Add(out,a[i]);Add(out,a[i+1]);i:=i+2;
+  elif i>Length(a) or b[j]<a[i] then
+   c:=m*b[j+1];
+   if c<>0 then Add(out,b[j]);Add(out,c); fi;
+   j:=j+2;
+  else
+   c:=a[i+1]+m*b[j+1];
+   if c<>0 then Add(out,a[i]);Add(out,c); fi;
+   i:=i+2;j:=j+2;
+  fi;
+ od;
+ return out;
+end;;
+
+# Dynamic exact integral Tietze reduction.  Once enough coefficient-one
+# central relations have been obtained, substitute them into every defining
+# word and every retained relation.  Subsequent consistency identities are
+# evaluated in that quotient.  This does not change the subgroup generated
+# by all consistency relations: adding R after quotienting by earlier R0
+# gives exactly the quotient by <R0,R>.  Only unit integral pivots are used.
+PBC_HeapSchur:=function(G)
+ local g,n,r,m,coll,zero,ps,piv,rank,nrank,rows,relcount,
+       totalpiv,basecomm,powers,conjs,k,i,j,e,install,makevec,
+       reduce,insert,compact,relation,a,w1,w2,free,pos,newrows,
+       translate,np,nc,oldrows,oldrank,sys,ext,eg,images,epi,ker,
+       abelStart,baseconjs,exteriorRelation,sparseRelation,pivotorder,profile;
+ profile:=[0,0,0];g:=Igs(G);n:=Length(g);r:=List(g,RelativeOrderPcp);
+ Assert(0,ForAll(r,e->e>0));Assert(0,n>1);
+ m:=n*(n+1)/2;k:=n;powers:=[];conjs:=List([1..n],i->[]);
+ for i in [1..n] do
+  e:=[];
+  a:=ExponentsByIgs(g,g[i]^r[i]);
+  for j in [1..n] do if a[j]<>0 then Append(e,[j,a[j]]);fi;od;
+  k:=k+1;Append(e,[k,1]);powers[i]:=e;
+  for j in [1..i-1] do
+   e:=[];a:=ExponentsByIgs(g,g[i]^g[j]);
+   for k in [1..n] do if a[k]<>0 then Append(e,[k,a[k]]);fi;od;
+   # Stable original tail index: power i comes after all earlier rows.
+   Append(e,[n+i*(i-1)/2+1+j,1]);conjs[i][j]:=e;
+  od;
+  k:=n+i*(i+1)/2;
+ od;
+ install:=function(pp,cc)
+  local ii,jj;
+  coll:=FromTheLeftCollector(n+m);
+  for ii in [1..n] do
+   SetRelativeOrder(coll,ii,r[ii]);SetPower(coll,ii,pp[ii]);
+   for jj in [1..ii-1] do SetConjugate(coll,ii,jj,cc[ii][jj]);od;
+  od;
+  coll![PC_COMMUTE]:=Concatenation(ListWithIdenticalEntries(n,n),[n+1..n+m]);
+  SetFilterObj(coll,IsUpToDatePolycyclicCollector);
+  FromTheLeftCollector_CompletePowers(coll);
+  zero:=ListWithIdenticalEntries(n+m,0);ps:=List([1..n],ii->[]);
+  for ii in [1..n] do
+   ps[ii][ii]:=ShallowCopy(GetPower(coll,ii));
+   for jj in [1..ii-1] do ps[ii][jj]:=Concatenation([jj,1],GetConjugate(coll,ii,jj));od;
+  od;
+ end;
+ baseconjs:=List(conjs,row->List(row,w->Filtered([1,3..Length(w)-1],kk->w[kk]<=n)));
+ baseconjs:=List([1..n],ii->List([1..ii-1],jj->Concatenation(List(baseconjs[ii][jj],kk->conjs[ii][jj]{[kk,kk+1]}))));
+ install(powers,conjs);
+ Print("dynamic_schur_setup ",n," generators ",m," tails runtime ",Runtime(),"\n");
+ piv:=[];rank:=[];pivotorder:=[];nrank:=0;rows:=[];relcount:=0;totalpiv:=0;
+ makevec:=function(word)
+  local v,jj;v:=ShallowCopy(zero);
+  for jj in [1,3..Length(word)-1] do v[word[jj]]:=word[jj+1];od;return v;
+ end;
+ # Chronological elimination is acyclic: a pivot replacement contains
+ # no earlier pivot.  A sorted active-rank queue therefore visits each
+ # active pivot at most once.  Sparse accumulators avoid repeatedly
+ # rescanning and copying the entire relation for every substitution.
+ reduce:=function(v)
+  local acc,touched,active,ii,idx,rr,coef,repl,out;
+  acc:=[];touched:=[];active:=[];
+  for ii in [1,3..Length(v)-1] do
+   idx:=v[ii];acc[idx]:=v[ii+1];Add(touched,idx);
+   if IsBound(rank[idx]) then AddSet(active,rank[idx]);fi;
+  od;
+  while Length(active)>0 do
+   rr:=active[1];Remove(active,1);idx:=pivotorder[rr];coef:=acc[idx];
+   if coef=0 then continue;fi;acc[idx]:=0;repl:=piv[idx];
+   for ii in [1,3..Length(repl)-1] do
+    idx:=repl[ii];
+    if not IsBound(acc[idx]) then acc[idx]:=0;Add(touched,idx);fi;
+    acc[idx]:=acc[idx]+coef*repl[ii+1];
+    if IsBound(rank[idx]) and acc[idx]<>0 then
+     Assert(0,rank[idx]>rr);AddSet(active,rank[idx]);
+    fi;
+   od;
+  od;
+  Sort(touched);out:=[];
+  for idx in touched do if acc[idx]<>0 then Append(out,[idx,acc[idx]]);fi;od;
+  return out;
+ end;
+ insert:=function(v)
+  local ii,chosen,coef,repl;
+  v:=reduce(v);if Length(v)=0 then return;fi;chosen:=fail;
+  for ii in [1,3..Length(v)-1] do if AbsInt(v[ii+1])=1 then chosen:=ii;break;fi;od;
+  if chosen=fail then Add(rows,v);return;fi;
+  coef:=v[chosen+1];repl:=Concatenation(v{[1..chosen-1]},v{[chosen+2..Length(v)]});
+  for ii in [2,4..Length(repl)] do repl[ii]:=-coef*repl[ii];od;
+  piv[v[chosen]]:=repl;nrank:=nrank+1;rank[v[chosen]]:=nrank;Add(pivotorder,v[chosen]);
+ end;
+ compact:=function(force)
+  local ii,jj;
+  if not force and nrank<Maximum(256,QuoInt(m,5)) then return;fi;
+  repeat
+   oldrank:=nrank;oldrows:=rows;rows:=[];
+   for a in oldrows do insert(a);od;
+  until nrank=oldrank;
+  if nrank=0 then rows:=Set(rows);return;fi;
+  free:=Filtered([1..m],ii->not IsBound(piv[ii]));pos:=[];
+  for ii in [1..Length(free)] do pos[free[ii]]:=ii;od;
+  translate:=function(word)
+   local base,tail,kk;
+   base:=[];tail:=[];
+   for kk in [1,3..Length(word)-1] do
+    if word[kk]<=n then Append(base,word{[kk,kk+1]});
+    else tail:=PBC_SparseAdd(tail,[word[kk]-n,word[kk+1]],1);fi;
+   od;
+   tail:=reduce(tail);
+   for kk in [1,3..Length(tail)-1] do Append(base,[n+pos[tail[kk]],tail[kk+1]]);od;
+   return base;
+  end;
+  np:=List([1..n],ii->translate(GetPower(coll,ii)));
+  nc:=List([1..n],ii->List([1..ii-1],jj->translate(GetConjugate(coll,ii,jj))));
+  newrows:=[];
+  for a in rows do
+   e:=[];for ii in [1,3..Length(a)-1] do Append(e,[pos[a[ii]],a[ii+1]]);od;
+   Add(newrows,e);
+  od;
+  totalpiv:=totalpiv+nrank;m:=Length(free);rows:=Set(newrows);piv:=[];rank:=[];pivotorder:=[];nrank:=0;
+  install(np,nc);
+  Print("dynamic_compaction remaining_tails ",m," retained_rows ",Length(rows)," total_unit_pivots ",totalpiv," runtime ",Runtime(),"\n");
+ end;
+ sparseRelation:=function(tail)
+  local tt;
+  if Length(tail)=0 then return;fi;
+  relcount:=relcount+1;tt:=Runtime();insert(tail);profile[1]:=profile[1]+Runtime()-tt;tt:=Runtime();compact(false);profile[2]:=profile[2]+Runtime()-tt;
+  if relcount mod 1000=0 then Print("dynamic_relations ",relcount," tails ",m," pivots ",nrank," rows ",Length(rows)," runtime ",Runtime()," profile ",profile,"\n");fi;
+ end;
+ relation:=function(v,w)
+  local tail,ii,diff;
+  Assert(0,v{[1..n]}=w{[1..n]});if v=w then return;fi;
+  tail:=[];
+  for ii in [n+1..n+m] do diff:=v[ii]-w[ii];if diff<>0 then Append(tail,[ii-n,diff]);fi;od;
+  sparseRelation(tail);
+ end;
+ basecomm:=List([1..n],i->List([1..i-1],j->g[i]^g[j]=g[i]));
+ abelStart:=n;
+ while abelStart>1 and ForAll([abelStart..n],jj->basecomm[jj][abelStart-1]) do abelStart:=abelStart-1;od;
+ Print("abelian_suffix_start ",abelStart," rank ",n+1-abelStart,"\n");
+ # The inverse image of this abelian normal suffix has central commutator
+ # subgroup.  Hence [a,b] is bilinear in the exponent vectors.  For j,k in
+ # the suffix, the triple identity with i is exactly preservation of the
+ # central commutator: [g_k,g_j]=[g_k^g_i,g_j^g_i].  Conjugator-tail terms
+ # are central and drop out.  This computes the same relation without
+ # repeatedly collecting long class-two words.
+ exteriorRelation:=function(ii,jj,kk)
+  local acc,touched,addcomm,aa,bb,wa,wb,coef,tail,pos0,tt;
+  tt:=Runtime();acc:=[];touched:=[];
+  addcomm:=function(ll,mm,cc)
+   local cw,tt,idx;
+   if cc=0 then return;fi;
+   cw:=GetConjugate(coll,ll,mm);
+   for tt in [1,3..Length(cw)-1] do
+    if cw[tt]>n then
+     idx:=cw[tt]-n;
+     if not IsBound(acc[idx]) then acc[idx]:=0;Add(touched,idx);fi;
+     acc[idx]:=acc[idx]+cc*cw[tt+1];
+    fi;
+   od;
+  end;
+  addcomm(kk,jj,1);wa:=baseconjs[kk][ii];wb:=baseconjs[jj][ii];
+  for aa in [1,3..Length(wa)-1] do
+   Assert(0,wa[aa]>=abelStart);
+   for bb in [1,3..Length(wb)-1] do
+    Assert(0,wb[bb]>=abelStart);coef:=wa[aa+1]*wb[bb+1];
+    if wa[aa]>wb[bb] then addcomm(wa[aa],wb[bb],-coef);
+    elif wa[aa]<wb[bb] then addcomm(wb[bb],wa[aa],coef);fi;
+   od;
+  od;
+  Sort(touched);tail:=[];
+  for pos0 in touched do if acc[pos0]<>0 then Append(tail,[pos0,acc[pos0]]);fi;od;
+  profile[3]:=profile[3]+Runtime()-tt;sparseRelation(tail);
+ end;
+ # Four finite-input consistency families, as in Polycyclic2.18.
+ for i in [n,n-1..1] do
+  for j in [n,n-1..i+1] do
+   for k in [n,n-1..j+1] do
+    if basecomm[j][i] and basecomm[k][i] and basecomm[k][j] then continue;fi;
+    if j>=abelStart then exteriorRelation(i,j,k);continue;fi;
+    w1:=ShallowCopy(zero);w1[k]:=1;CollectWordOrFail(coll,w1,ps[j][i]);
+    w2:=makevec(ps[k][j]);CollectWordOrFail(coll,w2,[i,1]);relation(w1,w2);
+   od;
+  od;
+  if i mod 5=0 then Print("dynamic_triples_remaining ",i," tails ",m," pivots ",nrank," rows ",Length(rows)," runtime ",Runtime(),"\n");fi;
+ od;
+ for i in [n,n-1..1] do
+  for j in [n,n-1..i+1] do
+   w1:=ShallowCopy(zero);w1[j]:=r[j]-1;CollectWordOrFail(coll,w1,ps[j][i]);
+   w2:=makevec(ps[j][j]);CollectWordOrFail(coll,w2,[i,1]);relation(w1,w2);
+  od;
+ od;
+ for i in [n,n-1..1] do
+  for k in [n,n-1..i+1] do
+   w1:=ShallowCopy(zero);w1[k]:=1;CollectWordOrFail(coll,w1,ps[i][i]);
+   w2:=makevec(ps[k][i]);CollectWordOrFail(coll,w2,[i,r[i]-1]);relation(w1,w2);
+  od;
+ od;
+ for i in [n,n-1..1] do
+  w1:=makevec(ps[i][i]);CollectWordOrFail(coll,w1,[i,1]);
+  w2:=ShallowCopy(zero);w2[i]:=1;CollectWordOrFail(coll,w2,ps[i][i]);relation(w1,w2);
+ od;
+ compact(true);rows:=Set(rows);
+ Print("dynamic_final_system ",m," variables ",Length(rows)," rows runtime ",Runtime(),"\n");
+ sys:=CRSystem(1,m,0);
+ for a in rows do
+  e:=ListWithIdenticalEntries(m,0);
+  for i in [1,3..Length(a)-1] do e[a[i]]:=a[i+1];od;Add(sys.base,e);
+ od;
+ ext:=QuotientBySystem(coll,sys,n);eg:=Igs(ext);
+ images:=ListWithIdenticalEntries(Length(eg),One(G));images{[1..n]}:=g;
+ epi:=GroupHomomorphismByImagesNC(ext,G,eg,images);SetIsSurjective(epi,true);
+ ker:=Subgroup(ext,eg{[n+1..Length(eg)]});SetKernelOfMultiplicativeGeneralMapping(epi,ker);
+ Print("dynamic_schur_completed ",Length(eg)," extension_generators runtime ",Runtime(),"\n");return epi;
+end;;

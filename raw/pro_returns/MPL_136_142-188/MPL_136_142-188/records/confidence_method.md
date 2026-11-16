@@ -1,0 +1,3 @@
+# Doubt confidence assignment
+
+The single visual reader reviewed the full extracted occurrence list after the second visual audit and cross-page notation comparison. The assignments in confidence_assignments.csv express confidence in the first reading, not mathematical correctness: medium for substantial visible support with a remaining alternative; low for faint/overwritten/cancelled or compressed material. No uncertain occurrence was assigned high confidence. Every top-level pipe in the present extraction was reviewed as an alternatives separator; all original arguments remain available losslessly in the CSV/JSON records.

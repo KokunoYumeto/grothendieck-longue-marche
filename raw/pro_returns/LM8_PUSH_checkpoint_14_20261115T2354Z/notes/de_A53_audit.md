@@ -1,0 +1,15 @@
+# Independent D/E audit of A.53
+
+**PASS.** Read the complete `notes/fgh_A53_draft.tex`, the exact hypotheses of A.41–A.42, and A.11's proper-homology normalizer detection. This review concerns the stated enlargement, not an unasserted finite refinement or descent of fixed elements.
+
+Spreading out a fixed proper curve, its finite map, disjoint cusp sections, and the equality of Cartier divisors excludes only finitely many rational primes. Taking p>d ensures that each individual ramification index e_c is prime to p. The infinitely many primes congruent to3 modulo4 outside that finite set give good supersingular reduction of the actual elliptic target. Further finite extensions preserve the smooth models and tame map.
+
+The completed local equation t=u^(e_c)h(u) follows from the exact pulled-back divisor, with h a unit. Since e_c is invertible, its unit root exists in the strict henselian completion and a coordinate change gives t=u^(e_c). Every one of the p²−1 nonzero p-torsion target points has positive-valuation parameter and exactly e_c distinct roots reducing to this original cusp; the origin contributes one point. Thus each source cluster has1+e_c(p²−1) marks, at least p². The special origin fibre contains no other points. All new marks therefore have companions in their own clusters. Separation on the smooth proper source creates rational marked trees, verifying A.42's pointed hypothesis at every coefficient prime. No condition on the proper Jacobian's p-rank is inserted.
+
+The universal cusp count follows from sum e_c=d and Riemann–Hurwitz 2g−2=d−r. The generic map [p]q is finite of degree p²d and etale after the stated fibre is removed. Geometric connectedness is inherited from the actual compactification in Task A.5.
+
+The normalizer comparison is in the correct direction. A noncuspidal normalized procyclic subgroup after further puncturing has nonzero proper homology by A.11. The actual open-immersion map retains this nonzero image and carries an open arithmetic normalizer to an open arithmetic normalizer. Recognition on the old curve would put the image in cusp inertia and force its proper homology to vanish, a contradiction. This does not require a lift of fixed elements through the resulting fundamental-group surjection, and no such lift is claimed.
+
+Independently executed the full count certificate, preserving the original JSON. All symbolic identities and listed profiles passed; output is `code/de_A53_count_audit.out`. The proof of good models and the universal geometric statement remains in the TeX rather than being attributed to these profile checks.
+
+Primary sources independently reopened: Liu's actual book at <https://rexresearch1.com/GeometryLibrary/AlgebraicGeometryArithmeticCurvesLiu.pdf>, Proposition10.1.21(a), printed462–463 and its proof (`turn798view0`); Silverman's actual second-edition text at <https://www.math.ens.psl.eu/~obenoist/refs/Silverman.pdf>, ExampleV.4.5, printed152 (`turn799view0`, `turn800view0`). The j=1728 supersingularity condition is unchanged by the quartic twist between x³+x and x³−x; equivalently the Hasse coefficient has no x^(p−1) term when p≡3 modulo4.

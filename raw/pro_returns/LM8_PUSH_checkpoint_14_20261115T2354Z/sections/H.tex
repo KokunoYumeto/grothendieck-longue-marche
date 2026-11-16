@@ -1,0 +1,364 @@
+\section{Signed data, integral Fermat stages, and additive-polynomial lifts}
+
+We distinguish three objects: the action of actual profinite signed
+data; the integral group schemes obtained by extending abelian
+lattices in finite extensions to vector groups; and arbitrary
+automorphisms of those group schemes after reduction modulo $2$.
+The last can contain nonlinear additive polynomials which are not
+induced by the first. This distinction is essential for task H.3.
+
+\begin{statement}{H.1}{Open}{Images of the retained normalizer and conjugator data}
+The complete images of $N_\rho^*$, $N_\sigma^*$, $G_D$, and the
+two fibre products on the integral $q_2$ stage and every higher
+relative Fermat stage are not determined. H.4 verifies the finite
+scheme-theoretic image which every compatible $q_2$ lift must
+preserve. H.7 gives typed action formulas and exact tests for a
+\emph{given} retained datum, and H.8 excludes the nonlinear
+infinitesimal polynomial direction from all actual profinite source
+images. These do not identify the requested source images with the
+full ambient lift functor.
+\end{statement}
+
+\begin{statement}{H.2}{Open}{Stagewise source kernels}
+The kernels inside each of the five retained source functors are not
+given by an explicit presentation at every stage. For the underlying
+automorphism action, H.7 proves the exact matrix-and-cocycle kernel
+test and determines its joint kernel on all full profinite abelian
+Fermat stages: it is the kernel of the action on the metabelian
+quotient. Pulling these tests back to a retained-data source is
+valid, but does not by itself compute the fibres of that source's
+map to automorphisms or its individual stagewise kernels.
+\end{statement}
+
+\begin{statement}{H.3}{Open}{Extension of every additive-polynomial lift}
+Every coordinatewise additive-polynomial automorphism fixing $1$
+extends compatibly through all integral \emph{abelian-kernel}
+Fermat stages in characteristic $2$, by H.5. This is an unbounded
+positive result within that category.
+
+Extension through all higher nonabelian relative stages is not
+proved. H.6 gives a sharp obstruction: the particular lift
+$f(T)=T+\epsilon(T^2-T)$ cannot act coordinatewise on the
+abelianization of a Heisenberg quotient with its ordinary
+commutator pairing. To apply this obstruction to the full requested
+tower, one must construct its specified integral nonabelian stage
+and show that it has that compatible quotient. A characteristic-zero
+relative completion does not by itself supply such an integral
+model at $2$, and none is identified here. Thus H.6 is not labelled
+a counterexample to the entire task H.3.
+\end{statement}
+
+\begin{statement}{H.4}{Known}{The integral $q_2$ obstruction rechecked}
+Let $C=\mathrm{SL}_2(\mathbf Z)$, with
+\[
+ \rho=\begin{pmatrix}0&1\\-1&1\end{pmatrix},\qquad
+ \sigma=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\qquad
+ \omega=-I,
+\]
+and let $x=\omega(\sigma\rho)^2$, $y=\omega(\rho\sigma)^2$.
+Then $F=\langle x,y\rangle$ is free of rank two and index twelve,
+and $K=\ker(F\to(\mathbf Z/2)^2)=\Gamma(4)$ has rank five.
+In the Schreier basis
+\[
+ x^2,\quad yxy^{-1}x^{-1},\quad y^2,\quad
+ xyxy^{-1},\quad xy^2x^{-1},
+\]
+the lattice map $K^{\mathrm{ab}}\to F^{\mathrm{ab}}$ is
+\[
+       J=\begin{pmatrix}2&0&0&2&0\\0&0&2&0&2\end{pmatrix}.
+\]
+For the associated integral cocycle group schemes
+$\mathscr C_2\to\mathscr C_0$, reduction modulo $2$ kills the
+entire rank-five vector radical. Its scheme-theoretic image is the
+constant subgroup $H_{48}=C/K$, with equations
+$X^2-X=Y^2-Y=0$ on every component of $\mathscr C_0$.
+
+Consequently the minimal-stage transformation
+$u_{t,e}(\rho)=(t,t+e)\rho$,
+$u_{t,e}(\sigma)=(t,t)\omega^e\sigma$ can lift only if
+$t^2=t$. For $A=\mathbf F_2[\epsilon]/\epsilon^2$,
+$t=\epsilon$, $e=0$ is an actual scheme-theoretic obstruction.
+Conversely the locus $t^2=t$ lifts by the indicated discrete
+conjugation and reversing automorphisms, decomposing the base by
+the idempotents if necessary.
+\end{statement}
+\begin{proof}[Independent checks of the supplied result]
+The modular amalgam $C_6*_{C_2}C_4$ and direct matrix multiplication
+give the quotient of order twelve after killing $x,y$; its two
+finite factors inject. The kernel acts freely on the amalgam tree,
+so is free, and its Euler characteristic gives rank two. Reduction
+modulo four gives $48$ matrices, with the images of $x,y$ a Klein
+four subgroup. Thus the stated index-four kernel in $F$ is
+$\Gamma(4)$, and Schreier's formula gives rank five. Rewriting with
+the four cosets $1,x,y,xy$ gives the displayed basis, whose exponent
+sums give $J$ without a rational rank calculation.
+
+For a lattice extension of a finite group $H$, choose word
+representatives $s_h$, write $A_h$ for conjugation on the lattice,
+and $c(h,k)$ for $s_hs_ks_{hk}^{-1}$ in its abelianization. The
+group scheme is the disjoint union of copies of the vector group,
+with law
+\[
+ (v,h)(w,k)=(v+A_hw+c(h,k),hk).
+\]
+The projection has form $(v,h)\mapsto(Jv+m_h,p(h))$ with integral
+$m_h$. Modulo $2$ the vector term vanishes; the kernel of the
+discrete map $C\to\mathscr C_0(\mathbf F_2)$ is exactly $K$.
+Thus its image is the stated constant $48$-element subgroup, the
+four-point grid in each of twelve components. The projection from
+the $48$ vector components is faithfully flat, so this is also the
+scheme-theoretic image after every base change.
+
+A compatible automorphism must preserve that image. Applying it
+to $\rho$ forces $t^2-t=0$. At $t=\epsilon$ this equation has
+value $\epsilon\ne0$, including over a faithfully flat extension
+of $A$. For idempotent $t$, the lifts are obtained by the
+conjugation by $x$ on the $t=1$ component and the identity on
+the $t=0$ component, together with the reversing involution when
+$e=1$.
+
+The attached stand-alone program was copied with isolated output
+names and executed as \texttt{code/fgh\_q2\_recheck.py}. It checks
+all $48^3=110592$ integral cocycle identities, $48^2=2304$
+projection identities, the six boundary vectors, and the mod-$2$
+linear equations. Over the dual numbers its finite enumeration
+finds $256$ fine parameter points, $8$ minimal automorphisms,
+and $4$ liftable minimal automorphisms, hence $128$ liftable
+parameter points. These numbers concern that explicitly specified
+minimal functor, not the full retained-data sources of H.1.
+\end{proof}
+
+\begin{statement}{H.5}{Proved}{All abelian Fermat stages admit the same nonlinear lift}
+For $n\geq1$ let $K_n=\ker(F\to(\mathbf Z/n)^2)$ and form the
+integral cocycle group scheme $\mathscr C_n$ from
+$C/[K_n,K_n]$. It has finite component group $C/K_n$ and vector
+radical of rank $n^2+1$. For an $\mathbf F_2$-algebra $R$, let
+$f\in\operatorname{Aut}_{R\text{-groups}}(\mathbf G_{a,R})$
+be an additive polynomial with $f(1)=1$. Then
+\[
+       \Phi_{n,f}(v,h)=(f(v_1),\ldots,f(v_{n^2+1}),h)
+\]
+is a group-scheme automorphism. These automorphisms commute with
+every tower projection $\mathscr C_m\to\mathscr C_n$ for $n\mid m$,
+with change of integral Schreier coordinates, and with every
+integral boundary-vector subgroup. They fix every point coming
+from a discrete word of $C$.
+\end{statement}
+\begin{proof}
+All matrices $A_h$, cocycle vectors $c(h,k)$, and affine projection
+coefficients are integers, reducing to $\mathbf F_2$ in $R$.
+Additivity and $f(1)=1$ imply
+\[
+ f(A_hv)=A_hf(v),\qquad f(c(h,k))=c(h,k).
+\]
+Substitution in the cocycle law proves that $\Phi_{n,f}$ is a
+homomorphism. Its inverse is coordinatewise $f^{-1}$, which also
+fixes $1$. A projection is $(v,h)\mapsto(Jv+m_h,p(h))$ with
+integral $J,m_h$; the same identities prove compatibility.
+Changing integral lattice bases and word representatives is another
+such affine transformation, so the construction is independent of
+these choices. A boundary vector $p\in\mathbf Z^{n^2+1}$ satisfies
+$f(tp)=f(t)p$, proving preservation of its vector subgroup. Finally
+all vector coordinates of a discrete word are integers, which
+reduce to $0$ or $1$ and are fixed by $f$.
+
+In particular, over $\mathbf F_2[\epsilon]/\epsilon^2$,
+\[
+             f(T)=T+\epsilon(T^2-T)
+\]
+is additive, fixes $0,1$, and is its own inverse. The term
+$\epsilon T^2$ is nonzero as a polynomial. Although this polynomial
+is invisible on the four points of the dual-number ring itself,
+it is not the identity morphism of group schemes: it is detected
+after adjoining an element of $\mathbf F_4$. The executed
+\texttt{code/fgh\_additive\_lifts.py} verifies all $256$ additive
+identities on $\mathbf F_4[\epsilon]/\epsilon^2$ and its
+compatibility with all $48$ actual $q_2$ action matrices and all
+$2304$ cocycle values. The proof above, rather than a finite-stage
+induction, establishes compatibility for every $n$.
+\end{proof}
+
+\begin{statement}{H.6}{Proved}{A class-two obstruction to nonlinear additive lifts}
+Let $R=\mathbf F_4[\epsilon]/\epsilon^2$, where
+$\omega^2+\omega+1=0$, and let $\mathscr H_R$ be the Heisenberg
+group scheme with multiplication
+\[
+ (a,b,c)(a',b',c')=(a+a',b+b',c+c'+ab').
+\]
+There is no group-scheme automorphism of $\mathscr H_R$ inducing
+$(a,b)\mapsto(f(a),f(b))$ on its abelianization, for
+$f(T)=T+\epsilon(T^2-T)$. More generally, any such coordinatewise
+lift with $f(1)=1$ forces $f$ to be multiplicative as well as
+additive.
+\end{statement}
+\begin{proof}
+The centre and commutator subgroup are the third-coordinate
+$\mathbf G_a$. An automorphism induces some additive automorphism
+$g$ on it. The commutator of $(a,0,0)$ and $(0,b,0)$ is
+$(0,0,ab)$, independent of any chosen central parts of their lifts.
+Compatibility with commutators therefore forces the polynomial
+identity
+\[
+                    g(ab)=f(a)f(b).
+\]
+Setting $b=1$ gives $g=f$, and hence $f(ab)=f(a)f(b)$.
+For $a=b=\omega$, however,
+\[
+ f(\omega^2)=\omega^2+\epsilon,
+ \qquad f(\omega)^2=(\omega+\epsilon)^2=\omega^2.
+\]
+Their difference is the nonzero element $\epsilon$. This is a
+finite ring counterexample, also checked by the executable above.
+
+The same argument applies to a specified class-two quotient whose
+commutator map contains this paired pair of free vector directions.
+It does not identify that quotient with a canonical integral
+relative completion. At the prime $2$, such an identification is
+substantive: changing Hall coordinates in a nilpotent group can
+introduce $\binom{T}{2}$, so a characteristic-zero exponential
+description cannot simply be reduced modulo $2$.
+\end{proof}
+
+\begin{statement}{H.7}{Proved}{Action formulas and the joint full-prime abelian-stage kernel}
+Let $\widehat C$ be the full profinite completion of $C$, and now
+write $F,K_n$ for the closures of the preceding finite-index
+subgroups. An actual continuous automorphism $\varphi$ preserving
+$F,K_n$ acts on the full profinite abelian extension
+$\widehat C/\overline{[K_n,K_n]}$ by
+\[
+ (v,h)\longmapsto(A_{\varphi,n}v+b_{\varphi,n}(h),
+                         \theta_{\varphi,n}(h)),
+\]
+where $A_{\varphi,n}\in\mathrm{GL}_{n^2+1}(\widehat{\mathbf Z})$,
+$b_{\varphi,n}:C/K_n\to\widehat{\mathbf Z}^{,n^2+1}$,
+and $\theta_{\varphi,n}\in\operatorname{Aut}(C/K_n)$.
+Its action is trivial exactly when $\theta=1$, $A=I$, and $b=0$.
+Over the integral $\mathbf Z_\ell$ abelian-kernel model, the same
+test uses the $\ell$-components of $A,b$ and the same finite
+component permutation.
+
+Furthermore
+\[
+ \bigcap_{n\geq1}\overline{[K_n,K_n]}
+       =\overline{[F',F']}=F'',
+\]
+so the joint kernel on all full-prime abelian stages is precisely
+the kernel of
+$\operatorname{Aut}(\widehat C;F,(K_n))
+\to\operatorname{Aut}(\widehat C/F'')$.
+\end{statement}
+\begin{proof}
+The matrix is the continuous linear map on the free profinite
+abelian group $K_n^{\mathrm{ab}}$. With word representatives
+$s_h$, the translation is the abelianized class of
+$\varphi(s_h)s_{\theta(h)}^{-1}$. Applying $\varphi$ to the
+extension law gives the displayed affine formula and its
+compatibilities. Equality with the identity is equivalent to the
+three conditions, by inspecting components, their origins, and
+their vector radicals. Tensoring the lattice with $\mathbf Z_\ell$
+gives the asserted integral model and coefficient test.
+
+Each $K_n$ contains $F'$, so $F''$ lies in the intersection.
+For the reverse inclusion, replace $n$ by the cofinal sequence
+$n!$, for which $\bigcap K_{n!}=F'$. Let $g\in F\setminus F''$.
+There is a finite quotient $Q$ of $F/F''$ in which the image of
+$g$ is nontrivial. By compactness the decreasing images of
+$K_{n!}$ in $Q$ eventually equal the image of $F'$: a point in
+every image has a compatible lift in the nested compact fibres.
+This image is abelian because $Q$ is metabelian. Hence for all
+sufficiently large $n$ the image of
+$\overline{[K_{n!},K_{n!}]}$ is trivial, and it cannot contain
+$g$. This proves the intersection formula. Finally an
+automorphism is trivial at every stage exactly when
+$\varphi(g)g^{-1}$ lies in that intersection for every
+$g\in\widehat C$, which is the claimed joint-kernel equality.
+\end{proof}
+
+\begin{statement}{H.8}{Proved}{The nonlinear kernel direction is not an actual profinite signed action}
+On an integral abelian-kernel stage every action induced by actual
+profinite retained data is affine linear in the vector coordinates,
+with coefficients in $\mathbf Z_\ell$. After base change to an
+$\mathbf F_2$-algebra it remains affine linear. In particular the
+nontrivial automorphism in H.5 is not induced by such data, even
+though it fixes every discrete word point and extends through all
+the abelian stages.
+\end{statement}
+\begin{proof}
+This follows from H.7's formula. On the identity component the
+translation is zero, so the induced vector-group map is linear.
+The polynomial $T+\epsilon(T^2-T)$ has a nonzero quadratic
+coefficient in $R[T]$, and therefore is not linear as a group-scheme
+morphism. Checking only the embedded discrete word points would
+miss this distinction, as H.5 proves. Thus the full ambient
+polynomial lift kernel cannot be substituted for the image of
+the retained profinite normalizer or conjugator source.
+\end{proof}
+
+\begin{statement}{H.9}{Proved}{The naive Hall model already loses the modular action at two}
+Let $\mathscr H_5$ be the class-two group scheme over $\mathbf Z$
+with coordinates $(v,z)\in\mathbf A^5\times\mathbf A^{10}$ and law
+\[
+ (v,z)(w,t)=\left(v+w,
+       \bigl(z_{ij}+t_{ij}+v_iw_j\bigr)_{i<j}\right).
+\]
+Its integer points are a free class-two nilpotent lattice, with the
+five coordinate generators corresponding to the Schreier basis of
+H.4. There is no automorphism of its special fibre over $\mathbf F_2$
+whose action on the designated quotient $\mathbf G_a^5$ is the
+verified modular action of $\rho$ on $K^{\mathrm{ab}}$.
+Thus this naive Hall model cannot be the radical of an integral
+class-two modular extension realizing the specified lattice action.
+\end{statement}
+\begin{proof}
+In characteristic two the square of every lift of $v$ is
+\[
+              (v,z)^2=(0,(v_iv_j)_{i<j}).
+\]
+The actual integral matrix in the q2 certificate is
+\[
+ A_\rho=\begin{pmatrix}
+ 0&-1&-1&1&0\\
+ 0&0&-1&0&0\\
+ 1&0&0&0&-1\\
+ 0&1&0&-1&-1\\
+ 0&0&-1&1&0
+ \end{pmatrix}.
+\]
+It sends $e_2$ modulo two to $e_1+e_4$. The element $(e_2,0)$
+has square one, whereas every point above $e_1+e_4$ has nonzero
+square $e_1\wedge e_4$ in the centre. A homomorphism preserves
+squares, giving a contradiction. The program
+\texttt{code/fgh\_hall\_models.py} verifies the matrix against the
+word representative for $\rho$ and checks all $2^{10}$ possible
+central lifts over $\mathbf F_2$.
+This is an obstruction to this explicitly specified integral model;
+it is not an obstruction to the genuine profinite action, which
+exists on the class-two quotient as a profinite group.
+\end{proof}
+
+\begin{statement}{H.10}{Proved}{The generic fibre and abelian stage do not determine the answer}
+There are two smooth affine class-two group schemes over $\mathbf Z$
+with isomorphic rational fibres and the same specified quotient
+$\mathbf G_a^2$, for which the nonlinear additive automorphism of
+H.5 has opposite extension behaviour after reduction modulo two.
+Consequently an unspecified rational relative completion and its
+integral first abelian stage do not determine H.3 at the prime two.
+\end{statement}
+\begin{proof}
+For an integer $t$, define $\mathscr H_t=\mathbf A^3_{\mathbf Z}$ by
+\[
+ (a,b,c)(a',b',c')=(a+a',b+b',c+c'+t ab').
+\]
+The map $\mathscr H_{2,\mathbf Q}\to\mathscr H_{1,\mathbf Q}$,
+$(a,b,c)\mapsto(a,b,c/2)$, is a group isomorphism compatible with
+the quotients $(a,b,c)\mapsto(a,b)$. In characteristic two the
+first model $\mathscr H_1$ is the Heisenberg group of H.6, so
+$f(T)=T+\epsilon(T^2-T)$ cannot lift its coordinatewise action on
+the quotient. The second model $\mathscr H_2$ becomes the additive
+group $\mathbf G_a^3$, on which coordinatewise $f$ is an
+automorphism. The program checks this latter identity over
+$\mathbf F_4[\epsilon]/\epsilon^2$. Both claims concern the
+specified quotient, without identifying it with the whole
+abelianization of every special fibre.
+\end{proof}
+

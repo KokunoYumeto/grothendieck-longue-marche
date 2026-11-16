@@ -1,0 +1,13 @@
+# A66 source and proof-scope ledger
+
+Status: registered after full root and DE proof/source/executed-certificate audits PASS; original candidate retained. Draft `notes/fgh_A66_draft.tex`; executed certificate `notes/fgh_A66_certificate.py/.json/.out`.
+
+- **verified:** Serre–Tate, *Good reduction of abelian varieties*, Theorem1 and Corollary2, printed493, https://wstein.org/papers/bib/Serre-Tate-Good_Reduction_of_Abelian_Varieties.pdf . Exact primary text was read for A65 at `turn1019search12` and independently reopened by root at `turn1032view2`. This is the good-reduction isogeny input for the actual elliptic fibre product. Extension of the isogeny and its dual uses the good elliptic Néron models; finite étaleness is proved in the draft from their composite [h], with p not dividing h.
+- **verified:** Silverman, *The Arithmetic of Elliptic Curves*, III.6.2, https://www.math.ens.psl.eu/~obenoist/refs/Silverman.pdf . Dual isogenies and their composite multiplication map; exact passage already opened for A62 and used in A65. The ordinary quotient square in A66 is proved by total and separable degrees, rather than by a new CM-specialization assumption.
+- **verified:** Liu, *Algebraic Geometry and Arithmetic Curves*, Proposition9.2.5/Theorem9.2.7, printed396–397, and Lemma7.5.18(b)/Remark10.4.24, https://rexresearch1.com/GeometryLibrary/AlgebraicGeometryArithmeticCurvesLiu.pdf . These are the model and compact-type inputs already established in A65, freshly opened there at `turn1021view2`, `turn1021view1`, `turn1021view0`. A66 does not silently assume wild reduction commutes with a quotient.
+
+The new proof uses the actual coprime function-field compositum and subgroup decomposition. For the noncentral ordinary quotient, the source main map is radicial p, while the quotient and target isogeny are both étale p, forcing the bottom main map to be radicial p. Every other component is constant. A prime-to-p elliptic isogeny base change therefore has one connected main and disjoint copies of every off-main tree. Each selected marked cusp retains a distinct companion on a rational copied path. A42 gives fixedness; A59 gives normalizers separately.
+
+The finite certificate enumerates all subgroups in three actual product groups H3×C2, H3×C2² and H5×C2, checks product decomposition, and checks the degree/genus/cusp identities and rooted-tree count operation. These finite calculations support, and do not replace, the actual semistable-model proof. The statement does not cover two nonabelian Sylow factors or assert cofinality.
+
+Canonical proof: sections/A_heisenberg_abelian_products.tex; canonical certificate: code/a_heisenberg_abelian_products.py. Independent audit ledgers: notes/root_A66_audit.md, notes/de_A66_audit.md.

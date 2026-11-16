@@ -1,0 +1,138 @@
+% C.43 candidate for canonical integration after final root read.
+\begin{statement}{C.43}{Proved}{Exactly two binary classes remain above the smaller finite quotient}
+Use the actual finite source and normal quotients of C.42.  Put
+\[
+ G=G_{176},\qquad Q=G_{104},\qquad
+ A=\ker(G\to Q)\simeq(C_2)^{72}.
+\]
+The actual finite extension $1\to A\to G\to Q\to1$ splits.
+The natural quotient map to $G_{86}$ induces a split exact sequence
+\[
+ 0\longrightarrow(C_2)^2\longrightarrow H_2(G,\mathbb Z_2)
+   \longrightarrow H_2(G_{86},\mathbb Z_2)\longrightarrow0.
+ \tag{C.43.1}
+Its kernel is the actual image of
+$H_0(Q,\Lambda^2A)$ and has exactly the displayed order.
+The splitting depends on a choice of group section; the natural map
+and its kernel do not.
+
+Consequently a verified two-primary lifting calculation in $G_{86}$
+would leave two binary values to determine in the original source.
+Neither value is computed by this statement.  In particular C.42
+and (C.43.1) do not yet produce a full iterated-descent lift.
+\end{statement}
+\begin{proof}
+The original pc generators $g_{105},\ldots,g_{176}$ give the stated
+basis of $A$.  The actual normal subgroup
+\[
+       N=\ker(Q\to G_{86})=\langle g_{87},\ldots,g_{104}\rangle
+                            \simeq(C_3)^{18}
+ \tag{C.43.2}
+has odd order.  These normality and elementary abelian assertions
+are checked from every original relation, as in C.42.
+
+\paragraph{An exact rank certificate on the original module.}
+For every one of the $104$ quotient generators, read its action on
+$A$ directly from the original conjugation words.  The matrices
+are invertible over $\mathbb F_2$.  The stacked rows $M_g-I$ for
+the $18$ generators in (C.43.2) have rank $72$, proving
+\[
+                              A_N=0.
+ \tag{C.43.3}
+The exterior square has dimension $\binom{72}{2}=2556$.
+Stacking the exterior action minus the identity for all $104$
+quotient generators gives $265\,824$ actual rows and rank $2554$.
+Hence
+\[
+                       (\Lambda^2A)_Q\simeq(C_2)^2.
+ \tag{C.43.4}
+
+Both rank inequalities in (C.43.4) have small exact certificates.
+The full program retains $2554$ independent original action rows.
+A separate checker reconstructs them from the original presentation
+and eliminates them with lowest-coordinate pivots, whereas the first
+calculation used highest-coordinate pivots.  This independently
+proves rank at least $2554$.  The checker also reconstructs two
+explicit independent alternating forms on $A$ and verifies their
+invariance under every one of the $104$ original matrices.  They
+give rank at most $2554$.  Thus no unprocessed part of the full
+row system is presumed to vanish.
+
+The full data are in
+\texttt{pbc\_two\_top\_module.json}; the fast independent
+certificate is
+\texttt{pbc\_two\_top\_certificate.py} and its retained output.
+The second checker rederives all action matrices from the source
+hash of C.42, rather than trusting only the first program's rank.
+The independent audit also checks the literal normal suffixes and
+their elementary kernels in the original group.
+
+\paragraph{The actual extension splits.}
+Because $|N|$ is odd, averaging is defined on the exponent-two
+module $A$.  It identifies invariants with coinvariants and makes
+both functors exact.  Equation (C.43.3) therefore gives
+\[
+ A^N=0,\qquad H_i(N,A)=H^i(N,A)=0\quad(i>0).
+\]
+Apply both homology and cohomology Hochschild--Serre to the actual
+normal subgroup $N$ in $Q$.  Every second-page coefficient vanishes,
+including degree zero, so
+\[
+                    H_i(Q,A)=H^i(Q,A)=0\qquad(i\ge0).
+ \tag{C.43.5}
+In particular $H^2(Q,A)=0$.  Classification of extensions by this
+cohomology group gives an actual homomorphism section $Q\to G$
+\cite[II, Example~1.18(b), Remark~1.35(b)]{PBC_MilneCFT}.
+This proves the group-level splitting; no integral Lie-algebra or
+associated-graded splitting is substituted for it.
+
+\paragraph{All possible differentials in degree two.}
+For $A$ normal in $G$, use the homology spectral sequence
+\[
+ E^2_{a,b}=H_a(Q,H_b(A,\mathbb Z_2))
+                              \ \Longrightarrow H_{a+b}(G,\mathbb Z_2).
+ \tag{C.43.6}
+As the groups are finite, these coefficients retain exactly the
+two-primary part of their integral homology.  The integral identity
+$H_2(A,\mathbb Z)=\Lambda^2A$ identifies the left edge in total
+degree two.  By (C.43.4)--(C.43.5),
+\[
+ E^2_{0,2}=(C_2)^2,\qquad E^2_{1,1}=0,\qquad
+                         E^2_{2,0}=H_2(Q,\mathbb Z_2).
+ \tag{C.43.7}
+There are only two possible incoming differentials to $E_{0,2}$.
+The $d_2$ source is $H_2(Q,A)=0$.  The $d_3$ source is in the
+bottom row $E_{3,0}$, and this differential is zero because the
+actual section makes every bottom-row class permanent: projection
+$H_i(G,\mathbb Z_2)\to H_i(Q,\mathbb Z_2)$ is split surjective.
+There are no later incoming differentials and no outgoing
+differentials from the left edge.
+
+The same section protects $E_{2,0}$.  Thus the filtration gives
+\[
+ 0\longrightarrow(C_2)^2\longrightarrow H_2(G,\mathbb Z_2)
+        \longrightarrow H_2(Q,\mathbb Z_2)\longrightarrow0,
+\]
+and the section splits this exact sequence as well.  This proves
+that the kernel is exactly $(C_2)^2$, rather than merely a possible
+quotient of that group.  Finally $Q\to G_{86}$ has the odd-order
+kernel $N$, so its homology spectral sequence gives a natural
+isomorphism on $H_2(-,\mathbb Z_2)$.  Composing proves (C.43.1).
+
+\paragraph{What the finite calculation does not decide.}
+The two explicit invariant alternating forms both vanish on
+$a\wedge s(a)$ for every basis vector $a$ of $A$, where
+$s=g_2$ is the actual involution.  The map
+$a\mapsto B(a,s(a))$ is additive: its cross terms cancel because
+$s$ is an involution preserving $B$.  Thus these values vanish for
+every $a\in A$.  All norms $a+s(a)$ lie in the span of the $36$
+retained top-kernel centralizer generators.  This particular norm
+calculation therefore does not provide the two missing values.
+
+A separate modular search in $G_{86}$ has been retained, including
+its complete proof records.  Its first independent original-source
+replay rejects the raw target normal form.  It supplies no verified
+quotient identity and is not used anywhere in this proof.  Even a
+successful quotient replay would still require the two values in
+(C.43.1) before a conclusion about the original finite obstruction.
+\end{proof}

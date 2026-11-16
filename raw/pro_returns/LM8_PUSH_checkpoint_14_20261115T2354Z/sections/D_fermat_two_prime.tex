@@ -1,0 +1,241 @@
+\begin{statement}{D.59}{Proved}{Every second prime detects the Fermat family}
+
+Let $\ell\in\{3,5\}$, $n=\ell^r$, $k=\mathbb Q_\ell$,
+and use the Fermat curve, cusp and family of D.20/D.57:
+\[
+ X_n:X^n+Y^n+Z^n=0,\quad
+ U_n=X_n\setminus\{XYZ=0\},\quad O=[0:-1:1],\quad
+ s_a\quad(a\in\mathbb Z_\ell^{d_n}).
+\]
+Write $J_n$ for its Jacobian.  The single-prime proper Kummer map
+\[
+ X_n(k)\longrightarrow H^1(k,T_\ell J_n),\qquad
+                   P\longmapsto\kappa_\ell([P-O])       \tag{D.59.1}
+\]
+is injective.  In particular its zero fibre is $\{O\}$.
+
+For every prime $q\ne\ell$, put $\Sigma=\{\ell,q\}$ and
+$N_\Sigma=\pi_1(U_{n,\overline{\mathbb Q}})^\Sigma$.
+The images of the $s_a$ in $N_\Sigma/N_\Sigma''$ remain
+pairwise nonconjugate over $k$.  Every nonzero parameter
+has no local lift to $N_\Sigma$, and hence no global lift.
+For each $a\ne0$ there is a finite $m(a,q)\ge3$ such that
+it already has no local lift to
+$N_\Sigma/N_\Sigma^{(m(a,q))}$.  For each $h\ge1$ the
+stage can be chosen uniformly for
+$a\notin\ell^h\mathbb Z_\ell^{d_n}$.
+Thus $q=2$ suffices in both the three-power and five-power
+towers.  The least obstructing derived length and an
+explicit finite obstruction cocycle remain undetermined.
+
+\end{statement}
+\begin{proof}
+\paragraph{1. All local points lie in three explicitly controlled disks.}
+
+For a unit modulo $\ell^2$, its $n$th power equals its
+$\ell$th power, because
+\[
+ n\equiv\ell\pmod{\ell(\ell-1)}.
+\]
+The possible unit powers are
+\[
+ \begin{array}{c|c|c}
+ \ell&\ell^2&\{u^n\bmod\ell^2:u\in\mathbb Z_\ell^\times\}\\\hline
+ 3&9&\{1,8\}\\
+ 5&25&\{1,7,18,24\}.
+ \end{array}                                          \tag{D.59.2}
+\]
+No three entries in either set, with repetition allowed,
+sum to zero modulo $\ell^2$.  This finite assertion is
+executed exhaustively in \path{code/de_fermat_two_prime.py}:
+there are eight triples for $\ell=3$ and 64 for $\ell=5$.
+The same code checks every primitive triple modulo
+$\ell^2$ satisfying the Fermat equation; all 162 triples
+modulo nine and all 1500 triples modulo 25 have exactly
+one coordinate divisible by $\ell$.
+
+Normalize a point of $X_n(k)$ to primitive integral
+projective coordinates.  Equation (D.59.2) rules out
+three unit coordinates.  Two coordinates divisible by
+$\ell$ would leave the remaining unit term nonzero
+modulo $\ell$, which is also impossible.  Therefore
+exactly one coordinate is divisible by $\ell$.
+
+Suppose that coordinate is $X$.  With $t=X/Z$ and
+$u=Y/Z$ we have $t\in\ell\mathbb Z_\ell$, $u$ a unit,
+and $u^n=-(1+t^n)$.  Reduction modulo $\ell$ gives
+$u\equiv-1\pmod\ell$.  The analytic expression
+\[
+ h(t)=\exp\left(\frac1n\log(1+t^n)\right)              \tag{D.59.3}
+\]
+converges on the geometric open disk
+\[
+ v_\ell(t)>\rho_{\ell,r}:=
+                    \frac{r+1/(\ell-1)}{\ell^r}<1.
+\]
+Indeed $v_\ell(t^n)>r+1/(\ell-1)$, so the logarithm
+has that same valuation, and division by $n$ leaves
+valuation greater than $1/(\ell-1)$, the convergence
+threshold for the exponential.  The strict inequality
+$\rho_{\ell,r}<1$ holds at $r=1$ and then follows by
+induction.  Thus (D.59.3) is analytic on a disk strictly
+larger than the closed disk $|t|\le\ell^{-1}$.
+
+It satisfies $h(t)^n=1+t^n$ and $h(0)=1$.
+The group $1+\ell\mathbb Z_\ell$ is torsion free for
+$\ell=3,5$, as its logarithm injects it into
+$\ell\mathbb Z_\ell$.  Hence $u=-h(t)$ is the unique
+$k$-valued branch reducing to $-1$.  The map
+\[
+ t\longmapsto[t:-h(t):1]
+\]
+is an analytic embedding of that disk in $X_n^{\rm an}$:
+projection to $t$ is its inverse, and the derivative
+$nu^{n-1}$ in the defining equation is nonzero.  It
+contains $O$ and every local point for which $X$ is
+the nonunit coordinate.  Permuting coordinates gives
+the other two disks, centred at
+\[
+                      O_1=[-1:0:1],\qquad
+                      O_\infty=[-1:1:0].
+\]
+Their closed subdisks $|t|\le\ell^{-1}$ cover $X_n(k)$.
+Only these embedded closed disks are needed below.
+
+\paragraph{2. Prime-to-$\ell$ Kummer classes are constant on each disk.}
+
+Fix a prime $b\ne\ell$, an integer $j\ge1$, and one
+of the three disk centres $d$.  Let
+$\iota_d:X_n\to J_n$ be $P\mapsto[P-d]$.  Pull back
+$[b^j]:J_n\to J_n$ along $\iota_d$.  This is a finite
+etale torsor under $J_n[b^j]$, including at the cusp $d$.
+After base change to $\mathbb C_\ell$ it is a Galois
+cover of degree a power of $b$.  Its restriction to
+the embedded closed disk is trivial by Berkovich's
+Theorem 6.3.2 and Corollary 6.3.3, printed pages
+119--121 \cite{DE_Berkovich1993}.  The exact scope is
+prime-to-residue-characteristic geometric etale
+covers; no triviality assertion for $\ell$-power
+covers of a disk is used.
+
+The trivialization gives a canonical identification
+of the fibres over $d$ and over any $P\in X_n(k)$
+in the disk: pair points in the same connected
+component of the covering disk.  This identification
+commutes with the action of $G_k$, since the disk,
+covering and its centre are defined over $k$.
+The rational zero division point in the fibre over
+$d$ belongs to a unique component.  That component
+is $G_k$-stable, so its unique point over $P$ is
+$G_k$-fixed.  This point belongs to the finite
+algebraic fibre over $P$, hence is a $k$-rational
+division point, not merely a point over a completed
+extension.  It follows that
+\[
+                     [P-d]\in b^jJ_n(k)
+                       \quad\text{for every }j.       \tag{D.59.4}
+\]
+This proves the vanishing of its full $b$-adic
+Kummer class with the required rational descent.
+
+The line $Y+Z=0$ cuts the Fermat curve in $nO$.
+Similarly $X+Z=0$ and $X+Y=0$ cut it in $nO_1$
+and $nO_\infty$.  Ratios of these lines therefore
+show
+\[
+                   n[O_1-O]=n[O_\infty-O]=0.
+\]
+These differences are $\ell$-primary torsion and
+are divisible by every power of $b\ne\ell$ inside
+$J_n(k)$.  Combining this with (D.59.4) gives
+\[
+ \kappa_b([P-O])=0\quad
+       \text{for every }P\in X_n(k),\ b\ne\ell.         \tag{D.59.5}
+\]
+
+If two points have the same class in (D.59.1),
+their difference has zero Kummer class at every
+prime, by (D.59.5).  The full local Kummer map of
+$J_n(k)$ is injective by the profinite argument
+in D.57.  Thus their degree-zero divisor classes
+coincide.  The Abel--Jacobi map of $X_n$, whose
+genus is at least one, is injective on points.
+The two points are equal, proving (D.59.1).
+
+\paragraph{3. Projection to any two-prime metabelian group retains the parameters.}
+
+The geometric quotient map
+$N_\Sigma\twoheadrightarrow N^{(\ell)}=P$
+induces maps on abelianization, commutator
+abelianization, and the class-two quotient
+$B=\bigwedge^2P^{\rm ab}$ used in D.57.
+Consequently the projection of the actual D.20
+cocycle still has parameter $a$ in
+$H^1(G_k,B)$.  This parameter is nonzero when
+$a\ne0$, by the actual local surjection to
+$\Gamma_\ell$ and inflation injectivity proved
+in D.57.
+
+Set $A_\Sigma=N_\Sigma^{\rm ab}$.  The proof
+of (D.57.2), restricted to the two coefficient
+primes, gives
+\[
+ H^0(G_k,A_\Sigma)=0,\qquad
+ H^0(G_k,A_\Sigma/I_{O,\Sigma})=0.                    \tag{D.59.6}
+\]
+Here $I_{O,\Sigma}=\prod_{b\in\Sigma}\mathbb Z_b(1)$
+is the primitive cusp line.  Thus a conjugator
+between two projected family sections has zero
+abelian image and lies in the commutator kernel.
+Its projection to $B$ would make their difference
+parameter a coboundary.  The two parameters must
+therefore be equal.  This proves pairwise
+nonconjugacy in the two-prime metabelian quotient.
+
+Every family section has zero abelian cocycle.
+If its local two-prime class were geometric, its
+proper $\ell$-adic Kummer class would be zero.
+By (D.59.1) the underlying compactification point
+would be $O$.  Hence it would be cuspidal at
+$O$.  The second vanishing in (D.59.6) makes
+$H^1(k,I_{O,\Sigma})\to H^1(k,A_\Sigma)$
+injective.  The zero abelian class forces the
+unit cusp parameter, whose metabelian class is
+$s_0$.  Pairwise nonconjugacy excludes this
+for $a\ne0$.
+
+\paragraph{4. A two-prime local lift has to be geometric.}
+
+The class of all finite groups whose orders
+have prime divisors in $\Sigma$ is a full
+formation.  It contains the residue prime
+$\ell$ and the distinct prime $q$.  D.56
+therefore makes every local section of the
+geometrically pro-$\Sigma$ arithmetic group
+point or cusp induced.  Paragraph 3 excludes
+a lift of every nonzero family member to
+that group.  Restriction to $G_k$ excludes
+a global lift as well.
+
+Every finite $\Sigma$-group is solvable by
+Burnside's two-prime theorem.  Therefore
+\[
+ N_\Sigma=\varprojlim_m
+                 N_\Sigma/N_\Sigma^{(m)}.
+\]
+The actual local cocycle spaces for its
+finite derived quotients are compact by
+the finite-solvable-coefficient argument
+of D.57.  If a fixed metabelian class
+lifted at every derived length, conjugator
+lifting makes all fibres exact, and
+compactness gives one compatible lift to
+$N_\Sigma$.  This is impossible for a
+nonzero parameter.  The closed nested
+liftable-parameter subsets and compactness
+of the complement of
+$\ell^h\mathbb Z_\ell^{d_n}$ give the
+uniform finite stage exactly as in
+(D.57.4).  No surjectivity of transition
+maps of section fibres is assumed.
+\end{proof}

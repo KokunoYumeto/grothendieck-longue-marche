@@ -1,0 +1,571 @@
+\section{The degree-eight arithmetic line: primitive image and the missing second coordinate}
+
+We retain $K=\mathbf Q(i)$, $E:y^2=x^3-x$, and the prime $5$.
+The free graded Lie algebra on the chosen CM homology basis $x,y$
+is embedded in its associative tensor algebra. Derivation degree $m$
+means that $x,y$ are sent to Lie words of length $m+1$.
+The tensor calculations are exact over $\mathbf Q$, with their
+lattices localized at $5$. G.9 additionally computes an actual
+arithmetic image by a finite Kummer certificate and integral
+Johnson-filtration operations.
+
+\begin{statement}{G.1}{Open}{The arithmetic scalar and Lead 15}
+The scalar $\lambda$ in the actual arithmetic line
+\[
+ \frac{d^3\chi^{(4)}_4}{267840}(A_8+\lambda B_8)
+\]
+is not evaluated here. Lead 15, which asserts $\lambda\in\mathbf Q$,
+also remains open. G.4 independently verifies the two ambient vectors
+and their coordinates; G.5 verifies that every $5$-adic scalar is
+compatible with the universal elliptic and finite CM constraints.
+In particular those constraints admit
+$\lambda=31/20+\sqrt6\in\mathbf Q_5$
+and do not imply rationality. This is a counterexample to that proposed
+method of deducing rationality, not a counterexample for the actual
+arithmetic scalar.
+G.9 proves the genuine arithmetic constraint
+$\lambda-31/20\in\mathbf Z_5$; in particular
+$v_5(\lambda)=-1$ and $5\lambda\equiv4\pmod5$.
+The same irrational example also satisfies this congruence.
+
+The motivic argument in Lead 15 would need a rational subspace in the
+\emph{specified} degree-eight derivation space, together with a
+comparison identifying its scalar extension with the actual Galois
+line. Merely having Betti and de Rham rational structures does not
+give that comparison or identify the two structures in these
+coordinates. No such theorem is supplied or proved in this return.
+\end{statement}
+
+\begin{statement}{G.2}{Open}{The actual integral arithmetic image}
+The values of the second coordinate $\nu$ on an actual element of
+the eighth Johnson subgroup of $\Delta$ are not calculated here.
+G.9 determines the first-coordinate ideal to be $\mathbf Z_5$ and
+proves that the arithmetic image has index $1$ in the saturation
+of its rational line. More precisely it is
+$\mathbf Z_5(C_8+\delta B_8)$ for the still-unknown
+$\delta=\lambda-31/20\in\mathbf Z_5$. There exists an actual
+eighth-Johnson element with coordinates $(\alpha,\nu)=(1,\delta)$,
+but the second value has not been measured. Thus the requested
+explicit embedded generator remains open. The rank-one image
+has infinite index in the rank-two ambient plane.
+\end{statement}
+
+\begin{statement}{G.3}{Open}{The repeated-character arithmetic embeddings through degree fourteen}
+No complete arithmetic generator list or integral image lattice in
+all repeated-character spaces of degrees eight through fourteen is
+obtained. The degree-eight measurement still missing in G.1 is
+already part of that requested list. A family of universal
+derivations, a metabelian character, or dimensions of the lower
+bracket images does not determine those generator vectors. The
+calculations below are therefore recorded as ambient certificates,
+with no promotion to a description of the Galois subgroup.
+\end{statement}
+
+\begin{statement}{G.4}{Proved}{An independent exact certificate for the degree-eight plane}
+Let $F(x)=y$, $F(y)=0$, and for even $m\geq2$ put
+\[
+ \epsilon_m(x)=\operatorname{ad}_x^m(y),\qquad
+ \epsilon_m(y)=\sum_{j=0}^{m/2-1}(-1)^j
+ [\operatorname{ad}_x^j(y),\operatorname{ad}_x^{m-1-j}(y)].
+\]
+Set
+\[
+ A_8=\frac{\operatorname{ad}_F^3\epsilon_8}{120},\quad
+ B_8=\frac{[\epsilon_4,\operatorname{ad}_F^2\epsilon_4]}2,
+ \quad C_8=A_8+\frac{31}{20}B_8.
+\]
+These vectors annihilate $[x,y]$, have weight $(4,4)$, and change
+sign under $x\leftrightarrow y$. For the integral word-coordinate
+functionals
+\[
+ \alpha(D)=-[x^5y^4]D(x),\qquad
+ \nu(D)=[x^4yxy^3]D(x)+4[x^5y^4]D(x),
+\]
+one has
+\[
+ \begin{array}{c|rrr}
+ &A_8&B_8&C_8\\\hline
+ \alpha&1&0&1\\
+ \nu&-31/20&1&0
+ \end{array}.
+\]
+Writing $W_8=\mathbf Q_5A_8\oplus\mathbf Q_5B_8$, its saturated
+lattice of integral Lie derivations is
+\[
+ W_8\cap\operatorname{Hom}_{\mathbf Z_5}
+       (\mathbf Z_5x\oplus\mathbf Z_5y,L_9(\mathbf Z_5x\oplus\mathbf Z_5y))
+       =\mathbf Z_5C_8\oplus\mathbf Z_5B_8.
+\]
+In the free metabelian Lie algebra, written
+$\mathbf Qx\oplus\mathbf Qy\oplus\mathbf Q[u,v][x,y]$ with
+$u=\operatorname{ad}_x$, $v=\operatorname{ad}_y$ on the commutator
+module, the values of $A_8$ are
+$u^4v^3[x,y]$ and $u^3v^4[x,y]$, while both values of $B_8$ vanish.
+\end{statement}
+\begin{proof}
+The executable certificate \texttt{code/fgh\_degree8.py} starts from
+these formulas, with its own tensor multiplication, commutator, and
+derivation implementation; it imports no attached calculation.
+It computes all rational associative coefficients, checks the
+special equation and the two symmetries, and decomposes each value
+in the standard Lyndon basis by triangular subtraction. At each
+subtraction the leading word is checked to be Lyndon and its
+standard bracket has leading coefficient $1$. The complete vectors
+are recorded in \texttt{code/fgh\_degree8.json}.
+
+For the two selected words its coefficients are
+\[
+ \begin{array}{c|rrr}
+ &A_8(x)&B_8(x)&C_8(x)\\\hline
+ {[x^5y^4]}&-1&0&-1\\
+ {[x^4yxy^3]}&49/20&1&4
+ \end{array},
+\]
+which gives the displayed matrix. The Lyndon coefficients of $B_8$
+are integers; those of $C_8$ have denominators only $1,2,4$.
+Thus both are integral at $5$. Conversely, an integral vector
+$D\in W_8$ has integral word coefficients, so
+$\alpha(D),\nu(D)\in\mathbf Z_5$. The coordinate matrix gives
+$D=\alpha(D)C_8+\nu(D)B_8$. This proves saturation, without
+identifying any lattice vector as arithmetic.
+
+For an independent check of the metabelian assertion, the program
+evaluates each Lyndon bracket in the explicit metabelian Lie
+algebra above. The bracket of
+$ax+by+p(u,v)[x,y]$ and $cx+dy+q(u,v)[x,y]$ has commutator
+coordinate
+\[
+ ad-bc+(au+bv)q-(cu+dv)p.
+\]
+This elementary formula supplies the stated result and directly
+checks that the second direction is invisible metabelianly.
+\end{proof}
+
+\begin{statement}{G.5}{Proved}{Universal equations do not select a rational direction}
+For every $\lambda\in\mathbf Q_5$, the line
+$\mathbf Q_5(A_8+\lambda B_8)$ exponentiates in the completed
+positive geometric subgroup of Enriquez's graded universal elliptic
+kernel. It has CM character $(4,4)$ and the prescribed interchange
+sign. This remains true for an irrational scalar: the root of
+$T^2-6$ congruent to $1$ modulo $5$ belongs to $\mathbf Q_5$ and
+is not rational. A line in this plane is defined over $\mathbf Q$
+if and only if its normalized scalar $\lambda$ is rational.
+\end{statement}
+\begin{proof}
+Enriquez, Proposition 4.19, equation (48), defines
+$\delta_{2n}=\epsilon_{2n+2}$ and places it in
+$\mathfrak r_{\mathrm{ell}}^{\mathrm{gr}}$.
+The paragraph following equation (49) gives
+\[
+ \exp(\widehat{\mathfrak b}_3^+)\rtimes\mathrm{SL}_2
+       \subset R_{\mathrm{ell}}^{\mathrm{gr}},\qquad
+ \mathfrak b_3=\langle\mathfrak{sl}_2,\delta_{2n}\rangle
+       .
+\]
+The inclusion is the one explicitly stated there \cite{fghEnriquez}.
+The half-sum in (48) pairs into the formula for $\epsilon_m(y)$
+in G.4. The source uses the opposite derivation bracket, which does
+not change the generated Lie subalgebra. Both $A_8$ and $B_8$
+therefore belong to its positive part. Exponentiation of any scalar
+linear combination converges in the degree filtration and gives
+the asserted group elements to all orders. G.4 checks the CM weight
+and interchange sign exactly. The scalar $\sqrt6$ exists by Hensel's
+lemma since $1^2-6\equiv0\pmod5$ and $2$ is a unit, and is
+irrational since $6$ is not a rational square.
+
+Finally $A_8,B_8$ are rational and independent. A rational vector
+spanning the normalized line has a nonzero $A_8$ coefficient and
+therefore a rational ratio of its $B_8$ and $A_8$ coefficients.
+That ratio is $\lambda$. The converse is immediate. No arithmetic
+realization of the irrational candidate is asserted.
+\end{proof}
+
+\begin{statement}{G.6}{Proved}{The exact conditional lattice and index formula}
+Let $L=\mathbf Q_5(A_8+\lambda B_8)$ be any line in this plane,
+put $\delta=\lambda-31/20$, and set
+\[
+ m=\max\{0,-v_5(\delta)\},\qquad v_5(0)=+\infty.
+\]
+Then
+\[
+ L\cap(\mathbf Z_5C_8\oplus\mathbf Z_5B_8)
+     =5^m\mathbf Z_5(C_8+\delta B_8).
+\]
+If $\mathcal A\ne0$ is the compact image of a continuous
+homomorphism from a profinite group to this integral line and
+$\alpha(\mathcal A)=5^a\mathbf Z_5$, then $a\geq m$ and
+\[
+ \mathcal A=5^a\mathbf Z_5(C_8+\delta B_8),\qquad
+ [L\cap\Lambda:\mathcal A]=5^{a-m},
+ \quad\Lambda=\mathbf Z_5C_8\oplus\mathbf Z_5B_8.
+\]
+Thus this formula applies to the character-$(4,4)$ image of an
+eighth Johnson homomorphism whenever its rational line is the
+one specified in the prompt. G.9 proves $a=m=0$ for that actual
+homomorphism; the value of $\delta$ still has to be measured.
+\end{statement}
+\begin{proof}
+The coordinates of $t(C_8+\delta B_8)$ are $(t,t\delta)$.
+Both are integral exactly when $v_5(t)\geq0$ and
+$v_5(t)+v_5(\delta)\geq0$, giving the first formula.
+A compact additive subgroup of $\mathbf Q_5$ is closed and stable
+under $\mathbf Z_5$, by taking limits of multiplication by integers.
+Its nonzero integral image is consequently an ideal
+$5^a\mathbf Z_5$. Since $\alpha$ is injective on $L$, it determines
+the whole subgroup and the index. The full rank-two quotient
+$\Lambda/\mathcal A$ also has a rank-one part, so its cardinal
+index is infinite; the finite displayed index is taken only inside
+the saturation of $L$.
+\end{proof}
+
+\begin{statement}{G.7}{Proved}{A finite nonmetabelian measurement that would decide the scalar}
+Let $P$ be the free pro-$5$ group on lifts $a,b$ of the integral
+homology basis. An actual automorphism $\sigma$ in its eighth
+Johnson subgroup determines $D_8(\sigma)$ by the leading terms of
+$\sigma(a)a^{-1}$ and $\sigma(b)b^{-1}$. For every $r\geq1$,
+the two coordinates $\alpha,\nu$ modulo $5^r$ can be read from its
+action on the characteristic finite quotient supplied by
+\[
+ (\mathbf Z/5^r)\langle X,Y\rangle/(X,Y)^{10},
+ \qquad a\mapsto1+X,\quad b\mapsto1+Y.
+\]
+On a vector of the arithmetic line with $\alpha\ne0$,
+\[
+       \lambda=\frac{31}{20}+\frac{\nu}{\alpha}.
+\]
+This is an explicit test on a genuine arithmetic action; it does
+not provide such an action or its measured values.
+\end{statement}
+\begin{proof}
+The completed group algebra of a free pro-$5$ group is the completed
+noncommutative power-series algebra under these substitutions.
+Its augmentation ideal and the ideal generated by $5^r$ are
+characteristic. The quotient algebra is finite and its augmentation
+units form a finite $5$-group, as follows from the finite additive
+successive powers of the augmentation ideal. Hence the indicated
+group quotient and automorphism action are defined.
+
+For an eighth Johnson element, all positive terms of lengths less
+than nine in $\sigma(a)a^{-1}-1$ vanish. The degree-nine term is
+the Lie element $D_8(\sigma)(x)$ because leading group commutators
+expand to the corresponding Lie commutators. The two integral
+linear combinations of word coefficients in G.4 therefore compute
+$\alpha,\nu$ modulo $5^r$ without division or a logarithm.
+The ratio formula is the coordinate identity of G.6. In particular
+metabelian data, which kill $B_8$, cannot replace this second
+measurement.
+\end{proof}
+
+\begin{statement}{G.8}{Known}{The realization hypothesis in the proposed motivic shortcut}
+Malkin's \emph{Motivic fundamental groups of CM elliptic curves
+and geometry of Bianchi hyperbolic threefolds}, Theorem 11,
+proves a depth-two symmetry for Hodge correlators; Theorem 16
+constructs the corresponding Bianchi-complex map in that realization.
+The transfer discussed immediately before Lemma 3, on printed
+pages 12--13, invokes hypothetical regulator injectivity and the
+motivic formalism. It therefore supplies no unconditional theorem
+identifying the degree-eight $5$-adic arithmetic line with a rational
+line in the fixed derivation coordinates used here
+\cite{fghMalkin}.
+\end{statement}
+The primary text has been opened at those statements. This is a
+precise limit on what that proposed source proves, not a proof that
+the desired comparison cannot be established by another argument.
+
+We also checked a more direct mixed-Tate route to Lead 15.
+The subsection \emph{Motivic Sheaves} of
+\cite{fghUniversalMEM} explicitly leaves the motivic
+specialization of its compatible realizations as a question.
+The fully faithful comparison in
+\cite[Proposition 10.3.3]{RootHuberMuellerStach2017} has
+subquotient-closed image; it does not identify an arbitrary
+Tate-filtered Nori extension with a standard mixed Tate
+motive. The equivalence in
+\cite[Theorem 1.5]{RootTubach2025} assumes a motivic
+\(t\)-structure. Finally,
+\cite[Theorem A]{RootKupersRudenkoSierra2026} concerns
+the standard mixed-Tate category over a number field,
+and supplies no elliptic specialization comparison.
+Thus the missing step in this route is an actual
+construction of the balanced elliptic extension in that
+category, with its two coordinate maps. Its one-dimensional
+Tate-weight-four extension space would then control a
+rational slope, but the known one-dimensional
+\(5\)-adic image does not furnish that construction.
+The precise attempted reduction and source checks are
+recorded in \path{notes/root_motivic_rationality.md}.
+
+\begin{statement}{G.9}{Proved}{The actual first-coordinate ideal, saturation index, and scalar congruence}
+Let $J_m$ be the subgroup of $\Delta$ whose actual tangential
+action on $P/\gamma_{m+1}P$ is trivial. In the precise
+conductor-four normalization of Ishii--Goto, one has
+\[
+ \chi^{(4)}_4(\Delta)=\chi^{(4)}_4(J_8)=5\mathbf Z_5,
+ \qquad
+ \alpha\bigl(j_8(J_8)^{(4,4)}\bigr)=\mathbf Z_5.
+\]
+Here the superscript denotes the projection to CM character
+$(4,4)$, and $\alpha$ is the integral coordinate of G.4.
+Consequently the actual arithmetic line of G.1 has image
+\[
+ \mathcal A=\mathbf Z_5(C_8+\delta B_8),\qquad
+ \delta=\lambda-\frac{31}{20}\in\mathbf Z_5,
+ \qquad [L\cap\Lambda:\mathcal A]=1,
+\]
+where $L=\mathbf Q_5(A_8+\lambda B_8)$ and
+$\Lambda=\mathbf Z_5C_8+\mathbf Z_5B_8$. In particular
+\[
+ v_5(\lambda)=-1,\qquad 5\lambda\equiv4\pmod5.
+\]
+An actual element of $J_8$ has $(4,4)$ coordinates $(1,\delta)$.
+This computes its first coordinate and the saturation index,
+but leaves its second coordinate $\delta$ unevaluated.
+\end{statement}
+\begin{proof}
+\emph{The exact Kummer normalization and a primitive value.}
+Write $\chi=\chi_5$ and $k_4=\chi^{(4)}_4$.
+Definition 2.14 and Remark 2.15(2) of
+\citet{fghIshiiGoto} define an integral cocycle class
+in $H^1(G_K,\mathbf Z_5(4))$. On
+$G_{K(\mu_{5^\infty})}$, its reduction modulo $5$ is the
+Kummer character of
+\[
+ u_1=\prod_{a=1}^4(1-i\zeta_5^{\,4a})^{a^3}
+       \quad\text{in }F^\times/F^{\times5},
+ \qquad F=\mathbf Q(i,\zeta_5).
+\]
+Indeed the norm in that definition is the identity for $K=\mathbf
+Q(i)$, $\zeta_{20}=i\zeta_5^4$, and the automorphism indexed by
+$a$ fixes $i$ and sends $\zeta_5$ to $\zeta_5^a$. Thus no
+Euler factor or divided Soul\'e normalization is being inserted.
+
+At the prime of $F$ above $101$ defined by $i\mapsto10$ and
+$\zeta_5\mapsto95$, the four factors before exponentiation are
+$70,40,45,61$. After exponentiation by $1,8,27,64$ they are
+$70,88,96,80$, and hence
+\[
+ u_1\equiv97\pmod{101},\qquad
+ 97^{20}\equiv36\ne1\pmod{101},\qquad95^{20}\equiv1\pmod{101}.
+\]
+The elements involved are units at this prime. The map
+$v\mapsto\overline v^{\,20}$ kills fifth powers and the line
+generated by $\zeta_5$, but not $u_1$. Therefore the Kummer
+class of $u_1$ lies outside that cyclotomic line.
+The extension $K(\mu_{5^\infty})/F$ has group $\mathbf Z_5$
+and unique degree-five subextension $F(\zeta_{25})$,
+whose Kummer line is generated by $\zeta_5$.
+It follows that $k_4$ is nonzero modulo $5$ on
+$G_{K(\mu_{5^\infty})}$. Its compact image is consequently
+$\mathbf Z_5$.
+
+\emph{Restriction to the full commutator subgroup.}
+Modulo $5$, the coefficient action $\chi^4$ is trivial. Any
+integral cocycle representative of $k_4$ therefore reduces
+to an additive homomorphism on $G_K$ and vanishes on
+its closed commutator subgroup $\Delta$. This proves
+$k_4(\Delta)\subset5\mathbf Z_5$.
+Choose $h\in G_{K(\mu_{5^\infty})}$ with $k_4(h)$ a unit.
+Since $K\cap\mathbf Q(\mu_{5^\infty})=\mathbf Q$, choose
+$g\in G_K$ with $\chi(g)=6$. The cocycle identity gives
+\[
+ k_4([g,h])=(6^4-1)k_4(h)=1295\,k_4(h).
+\]
+This value has valuation exactly one and $[g,h]\in\Delta$.
+The restriction of $k_4$ to $\Delta$ is a continuous
+homomorphism with compact image, so that image is
+exactly $5\mathbf Z_5$.
+
+\emph{An integral filter through the lower Johnson degrees.}
+We give group operations, without dividing by a logarithm
+or passing to a rational Zariski closure.
+For $r\in\mathbf Z_5$, let $\widehat r\in\widehat{\mathbf Z}$
+have $5$-component $r$ and every other prime component zero.
+For $u\in\Delta$ its profinite power $u^{\widehat r}$
+exists in the closed procyclic subgroup it generates.
+Both its Johnson coordinates and its $k_4$ value are
+multiplied by $r$.
+
+Choose $k\in G_K$ with $\chi(k)\equiv2\pmod5$, and put
+$T=\operatorname{Ad}(\rho_s(k))$ on each Johnson module.
+For $u\in J_m$ and $r\in\mathbf Z_5$ define
+\[
+ \mathcal F_r(u)=kuk^{-1}u^{-\widehat r}.
+\]
+Normality and the Johnson homomorphism give
+\[
+ j_m(\mathcal F_r(u))=(T-r)j_m(u),\qquad
+ k_4(\mathcal F_r(u))=(\chi(k)^4-r)\,k_4(u).
+\]
+The second identity uses $\chi|_\Delta=1$ and holds
+exactly, even though $\mathcal F_r$ need not be a group
+homomorphism.
+
+The CM lift $J$ of $[i]$ commutes with the actual action:
+on the tangential tower $t_n^{5^n}=t$ it is $t_n\mapsto i t_n$,
+which is defined over $K$ and compatible with the tower.
+Thus the allowed weight $(a,b)$ has $a-b\equiv0\pmod4$.
+In particular odd Johnson images vanish integrally.
+The complete list of allowed special characters below
+degree eight is
+\[
+ \begin{array}{c|c|c}
+  m& (a,b)\text{ and multiplicities}
+        &\psi(k)^a\overline\psi(k)^b\bmod5\\ \hline
+  2&(1,1):1&2\\
+  4&(2,2):1&4\\
+  6&(5,1):1,\ (3,3):2,\ (1,5):1&2,\ 3,\ 2
+ \end{array}.
+\]
+For completeness, this list follows from the exact special
+kernel
+$L_{m+1}^2\to L_{m+2}$, $(u,v)\mapsto[u,y]+[x,v]$.
+Its character multiplicity is
+$\ell(a+1,b)+\ell(a,b+1)-\ell(a+1,b+1)$, where
+$\ell$ is the two-variable Witt rank. Surjectivity follows
+by Jacobi from generation by $x,y$. All character spaces
+are integral direct summands in the CM eigenbasis.
+
+We have $J_1=\Delta$ and $J_1=J_2$ by odd-degree vanishing.
+Apply $\mathcal F_{\chi(k)}$ to kill degree two, then
+$\mathcal F_{\chi(k)^2}$ to kill degree four.
+At degree six, apply in succession the three operators
+with
+\[
+ r=\psi(k)^5\overline\psi(k),\quad
+   \chi(k)^3,\quad
+   \psi(k)\overline\psi(k)^5.
+\]
+Their product annihilates that whole Johnson module, including
+the multiplicity-two middle space, since $T$ acts on each
+character space by its displayed scalar. The intervening
+odd degrees vanish, so the resulting element belongs to
+$J_8$. Every multiplier $\chi(k)^4-r$ is a $5$-adic unit:
+the target residue is $1$ and the five excluded residues
+are $2,4,2,3,2$. Their product is $4$ modulo $5$.
+Thus this finite sequence of actual group operations takes
+the full $k_4$ image $5\mathbf Z_5$ into $k_4(J_8)$
+without changing that ideal. The reverse inclusion was
+already proved, giving $k_4(J_8)=5\mathbf Z_5$.
+
+\emph{Independent comparison with the actual Magnus coordinate.}
+Here are the source normalizations, including the factor
+which cannot be read from the uncorrected 1995 formula.
+Nakamura's (4.8) defines his metabelian power series
+$\beta$ by
+$\sigma(a_i)a_i^{-1}=(T_i\beta)\cdot z$ with
+$z=[a_1,a_2]^{-1}$. Its leading Lie term is therefore
+$-X_i\beta\,[x,y]$. In the notation
+$D(x)=Xh[x,y]$, $D(y)=Yh[x,y]$, this means
+$h=-\beta$. His Theorem A, equivalently Corollary 4.12,
+gives
+\[
+ [X^3Y^3]h
+       =-\frac{\kappa_{33}}{(1-5^6)(3!)^2}
+       \qquad\text{on }J_8.
+\]
+These statements are checked directly in
+\citet[Sections 4.3--4.9 and Corollary 4.12]{Nakamura1995}.
+For an element of $J_8$, the genuine tangential lift
+equals the canonical lift used there: their difference
+is an inner power of the boundary, and its degree-two
+term would be nonzero unless that power were zero.
+
+The published correction to (3.11.4) in
+\citet[p.~492, Errata to N95]{fghNakamura2013}
+makes the raw theta-product Kummer exponent
+$12\kappa_{33}$. The projector eigenbasis has columns
+$(1,-i_5)/2,(1,i_5)/2$ and determinant $d=i_5/2$.
+On replacing its second vector by $d^{-1}$ times that
+vector, reindexing the exponents $a^3b^3$ multiplies
+the raw coefficient by $d^3$. Accordingly
+\[
+ 12\kappa_{33}=d^3\chi^{\rm ell}_{(4,4)}.
+\]
+Theorem 1.7 of \citet{fghIshiiGoto}, with
+$w_K=4$, $B_4=-1/30$ and $p=5$, gives
+\[
+ \chi^{\rm ell}_{(4,4)}
+ =-\frac{6\cdot4\,B_4}{4}
+       \frac{1-5^6}{1-5^3}\,k_4
+ =\frac{126}{5}\,k_4.
+\]
+Thus, using G.4's independently executed metabelian
+extraction $h(A_8)=X^3Y^3$, $h(B_8)=0$, and its
+word-coordinate identity $\alpha(A_8)=1$,
+\[
+ \alpha(j_8(\sigma)^{(4,4)})
+ =-\frac{d^3(126/5)k_4(\sigma)}
+          {12(1-5^6)(3!)^2}
+ =\frac{d^3}{267840}\,k_4(\sigma).
+\]
+This checks the actual coefficient, rather than only
+the normalization of an ambient derivation.
+Since $d$ is a unit and $267840=5\cdot53568$ with
+$53568\in\mathbf Z_5^\times$, the proved $k_4$ image
+gives $\alpha(j_8(J_8)^{(4,4)})=\mathbf Z_5$.
+
+\emph{The rational-line input for the lattice conclusion.}
+The line used here is the proved rational-image assertion
+LM8 G.15 and (G.25), not the still-open evaluation in G.1.
+Its inputs can be checked separately.
+Ishii's Theorem 1.2 and Lemma 1.5 give one outer
+generator in each positive pair $a\equiv b\pmod4$
+other than $(1,1)$, for $(K,p)=(\mathbf Q(i),5)$
+\cite{fghIshiiGraded}. The ray field $K(5)=\mathbf
+Q(\zeta_{20})$ has class number one: its Minkowski
+bound is below $13$, its only primes of norm below
+that bound are the two above $5$, and
+$\operatorname{Norm}(\zeta_{20}^3-\zeta_{20}+1)=5$.
+In $K(25)$ the ray group is
+$(\mathbf Z/25)^{\times\,2}/\mu_4$ of order $100$.
+At $(2+i)$, inertia has order $20$ and the image
+of Frobenius in the order-five quotient is represented
+by $9$, using $i\equiv7$ at the conjugate prime.
+It generates that quotient; hence there are exactly
+two primes above $5$, as required by Lemma 1.5.
+Below degree eight the only outer degree-four
+generator has character $(2,2)$, so its self-bracket
+is zero. Thus the $(4,4)$ image has dimension at
+most one. The nonzero coefficient just proved makes
+its dimension exactly one. Genuine inner special
+derivations contribute only in degree two:
+$[w,[x,y]]=0$ forces $w$ to be a multiple of $[x,y]$.
+
+For its placement in $W_8$, the universal monodromy
+comparison of Hain--Matsumoto, Proposition 20.1,
+Corollary 20.2 and Section 22, has constant generators
+$\mathbf Q(2n+1)$ only, and geometric generators
+the $\epsilon_{2n}$ modules
+\cite{fghUniversalMEM}. In ordinary degree eight
+there is no constant Tate-weight-four generator;
+the degree-two boundary generator is central.
+The geometric contributions are the $\epsilon_8$
+module and the bracket of two degree-four modules.
+Their $(4,4)$ parts are exactly the independently
+checked vectors $A_8,B_8$ of G.4.
+This gives the stated rank-one subspace of $W_8$
+without asserting its unknown ratio is rational.
+It does not transfer a formula at the Tate fibre
+to the CM fibre.
+
+Finally the projection to $(4,4)$ is integral: it
+selects the appropriate multidegrees in the integral
+free Lie algebra on the integral CM basis. Its image
+therefore lies in $\Lambda$. In the actual rational
+line of G.1 it has coordinates $(t,t\delta)$.
+Taking $t=1$ proves $\delta\in\mathbf Z_5$.
+G.6 now gives the exact image and saturation index.
+The value $31/20$ has valuation $-1$, so adding the
+integral $\delta$ gives the claimed valuation and
+congruence of $\lambda$. The index in the full
+rank-two lattice $\Lambda$ remains infinite.
+
+The independent exact program
+\texttt{code/fgh\_primitive\_degree8.py} checks the
+residue certificate, all the lower character
+multiplicities, every possible residual CM pair with
+product $2$, and the numerical normalization.
+Its JSON and stdout are retained. The first residue
+certificate was also executed independently in
+\texttt{code/de\_soule\_conductor4.py}.
+\end{proof}
