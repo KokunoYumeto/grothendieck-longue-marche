@@ -1,0 +1,47 @@
+from record import draft
+draft(141,r"""
+\scanpage{141}\mspage{473}
+tendue entre mes parents que tout allait être pour le mieux tant pour moi à \unsure{Blan|Blan-}\newline
+kenese (près de Hambourg), que pour ma soeur qui depuis quelques mois avait été
+larguée à la fin des fins dans une institution à Berlin pour enfants handicapés
+(où on avait bien voulu d'elle, bien qu'elle n'était pas plus handicapée que moi
+ou nos parents).
+
+En dénouement à six mois étranges, lourds de menace sourde\quad et d'angoisse,
+je me suis retrouvé du jour au lendemain dans un monde totalement différent du
+seul monde que j'avais connu dans ma vie, celui formé par mes parents et par ma
+soeur et moi. Je m'y retrouvais comme un parmi un groupe de pensionnaires, qui
+mangions à part de la famille et faisions figure d'enfants de deuxième catégorie
+pour les enfants de la maison, lesquels formaient un monde à part et nous regar-\newline
+daient de haut. De ma mère je recevais une lettre hâtive et guindée de loin en
+loin, et de mon père jamais une ligne de sa main, pendant les cinq ans que j'y
+suis resté (jusqu'en 1939, à la veille de la guerre, quand j'ai fini par \unsure{rejoind|rejoindre}
+mes parents sous la pression des événements).
+
+Le couple qui m'avait accueilli m'a vite pris en affection. Aussi bien lui
+ancien pasteur qui avait quitté le sacerdoce et vivait d'une maigre pension et
+de leçons particulières de latin, de grec et de mathématiques, que sa femme pé-\newline
+tillante de vie et parfois de malice, étaient des gens peu ordinaires, \unsure{attachant|attachants}
+à bien des égards. Lui était un humaniste de vaste culture qui s'était un peu
+égaré dans la politique, et avait eu maille à partir avec le régime nazi, qui a
+fini par le laisser tranquille. Après la guerre j'ai renoué et je suis resté en
+relations suivies avec eux jusqu'à la mort de l'un et de l'autre (*).
+
+De lui et surtout d'elle, tout comme de mes parents, j'ai reçu du meilleur
+comme aussi du pire. Aujourd'hui, avec un long recul, je leur suis reconnaissant
+(comme je le suis à mes parents) pour ce ``meilleur'', comme aussi pour ce ``pire''.
+C'est ce meilleur et ce pire que j'ai reçu, de mes parents d'abord, d'eux \unsure{ensuit|ensuite}
+qui a formé le plus gros du volumineux ``paquet'' que j'ai reçu en partage dans \unsure{mo|mon}
+enfance (comme chacun reçoit le sien...)\inserted{,}qu'il m'appartenait de déballer et \unsure{d'ex|d'exa-}\newline
+miner. Ils font partie de la substance, de la richesse de mon passé, dont il ne
+tient qu'à moi de nourrir mon présent.
+
+Mon nouveau milieu était tout ce qu'il y a de ``comme il faut'' et de \unsure{confor|confor-}\newline
+miste à beaucoup d'égards, avec en tous cas les attitudes répressives de rigueur
+pour tout ce qui concerne le corps et, plus particulièrement, le sexe. Il a \unsure{fall|fallu}
+
+\figure{\begin{tikzpicture}\draw(0,0)--(3,0);\end{tikzpicture}}
+(*) Elle est morte à l'âge de 99 ans, il y a deux ans, et j'ai encore pu la voir
+morte, en tête à tête avec elle, la veille de l'enterrement.
+\mspage{140}
+""")

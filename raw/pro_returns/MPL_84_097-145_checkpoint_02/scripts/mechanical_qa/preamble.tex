@@ -1,0 +1,26 @@
+\documentclass{article}
+\usepackage[margin=18mm,paperwidth=297mm,paperheight=420mm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{tikz-cd}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing}
+\setlength\parindent{0pt}
+\newcommand{\cotefile}[1]{\par Cote #1\par}
+\newcommand{\scanpage}[1]{\par Scan #1\par}
+\newcommand{\mspage}[1]{\par Manuscript page #1\par}
+\newcommand{\deleted}[1]{#1}
+\newcommand{\inserted}[1]{#1}
+\newcommand{\margin}[1]{#1}
+\newcommand{\unsure}[1]{#1}
+\newcommand{\illegible}[1]{\ifmmode\text{[illegible: #1]}\else[illegible: #1]\fi}
+% Read diagram arguments with active ampersands, as tikz-cd expects.
+% Outside tikz-cd, the active ampersand expands back to an alignment tab.
+\newcommand{\MPLaligntab}{&}
+\begingroup
+\catcode`\&=\active
+\gdef\diagram{\begingroup\catcode`\&=\active\let&\MPLaligntab\MPLdiagram}
+\endgroup
+\long\def\MPLdiagram#1{#1\endgroup}
+\renewcommand{\figure}[1]{#1}
+\begin{document}

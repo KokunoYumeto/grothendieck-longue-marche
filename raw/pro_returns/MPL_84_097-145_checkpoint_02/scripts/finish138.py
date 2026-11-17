@@ -1,0 +1,25 @@
+from record import finish
+finish(138,[
+('deletion','top left','(f1*f2)(x1*x2)='),
+('display','top','restriction of f1*f2 to E1 tensor E2'),
+('display','upper framed first','f1*f2(x1*x2)=lambda1 pi1'),
+('deletion','above pi2 argument','lambda2+'),
+('display','upper framed second','i.e. restriction; equals exclamation'),
+('display','below frame','f1*f2(u1 tensor u2)'),
+('deletion','middle left','Si on'),
+('text','middle','Verifions'),
+('display','middle right','f1*f2(x1*u2)'),
+('display','middle verification','lambda1 pi1(x1) tensor lambda2 u2'),
+('deletion','middle cancelled terms','f1(x1) tensor lambda2 chi u2'),
+('deletion','middle cancelled terms','chi f1(x1) tensor lambda2 u2'),
+('text','middle right','OK'),
+('display','lower left pair','(pi1*pi2)(x1*x2)'),
+('display','lower right','1/chi pi1*pi2=pi'),
+('display','lower left unfinished','x1*x2 isomorphic Psi1(x1)'),
+('drawing','lower center','vertical separator'),
+('display','lower center','Li pi;Mi qi'),
+('display','lower right','1+p1q1;1+p2q2;1+(p1p2)(q1q2)'),
+('deletion','bottom','[x,y]='),
+('display','bottom','x to psi(x)pi-chi x'),
+('deletion','bottom map','psi(x)y')
+],r'''The tensor restriction of f1*f2 is written as lambda1 pi1 tensor f2 + f1 tensor lambda2 pi2 - chi f1 tensor f2, with an exclamation over the equality and an “OK” after testing x1*u2. It also records (1/chi)(pi1*pi2)=pi; whether division is only shorthand or requires a hypothesis is not stated here. The bottom 1+p_i q_i sketches and the assignment x to psi(x)pi-chi x are unfinished. Preserve the possible E1 tensor E1 in the i.e. line as a reading question.''')
