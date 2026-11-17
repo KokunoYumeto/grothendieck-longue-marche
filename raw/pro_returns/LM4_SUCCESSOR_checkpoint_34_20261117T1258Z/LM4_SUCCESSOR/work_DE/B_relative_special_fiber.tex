@@ -1,0 +1,148 @@
+\statement{B.76}{Refuted}{Retained-only special collisions do not guarantee relative deletion-kernel surjectivity}
+The following proposed shortcut to the source condition in B.75 is
+false, both discretely and for the actual images in full profinite
+completions: if a special fiber has only collisions among retained
+punctures, while the punctures to be filled remain distinct and finite,
+then its deletion kernel surjects onto the ambient deletion kernel.
+The failure persists with constant fiber degree and a continuous
+section over the entire base.
+
+\begin{proof}
+\emph{The actual surfaces and based comparison.}\par
+Let \(B=\mathbb C\setminus\{1\}\), and put
+\[
+\begin{aligned}
+ Y&=\{(\lambda,z)\in B\times\mathbb C:
+                       z\notin\{0,\lambda,1\}\},\\
+ X&=\{(\lambda,z)\in B\times\mathbb C:
+                       z\notin\{0,\lambda\}\}.
+\end{aligned}
+ \tag{B.76.1}
+\]
+The inclusion \(j:Y\hookrightarrow X\) fills exactly
+\(U=\{z=1\}\cap X\). The special fibers over \(\lambda=0\)
+are \(L_Y=\mathbb C\setminus\{0,1\}\) and
+\(L_X=\mathbb C\setminus\{0\}\). We use \(z_*=2\) and
+\((\lambda_*,z_*)=(0,2)\) throughout. The four inclusion maps
+form a strictly commuting based square. Its two deletion kernels are
+\[
+\begin{aligned}
+ K_L&=\ker\bigl(\pi_1(L_Y,2)\longrightarrow\pi_1(L_X,2)\bigr),\\
+ K_Y&=\ker\bigl(\pi_1(Y,(0,2))\longrightarrow
+                         \pi_1(X,(0,2))\bigr).
+\end{aligned}
+ \tag{B.76.2}
+\]
+All groups in this display are discrete topological fundamental
+groups. We will exhibit an element of \(K_Y\) outside even the
+profinite closure of the full special-fiber image.
+
+At \(\lambda=0\), only the retained punctures \(0,\lambda\)
+collide. The filled puncture \(1\) remains distinct. The polynomial
+\(z(z-\lambda)(z-1)\) has constant degree three. The continuous
+section \(z=2+|\lambda|\) avoids every deleted point on all of
+\(B\), for both surfaces. Thus all the proposed shortcut's local
+conditions hold.
+
+\emph{The total group and the special source.}\par
+There is an algebraic product chart with its explicit inverse:
+\[
+ (\lambda,z)\longmapsto
+       \left(z,r=\frac{\lambda-z}{1-z}\right),
+ \qquad \lambda=z+r(1-z).
+ \tag{B.76.3}
+\]
+The conditions on \(Y\) become exactly \(z,r\notin\{0,1\}\).
+Consequently
+\[
+       Y\simeq(\mathbb C\setminus\{0,1\})^2,
+       \qquad\pi_1(Y,(0,2))\simeq F\times F,
+       \quad F=F_2.
+ \tag{B.76.4}
+\]
+The basepoint becomes \((2,2)\). In this chart the special
+fiber is the graph of
+\[
+                         f(z)=\frac{z}{z-1}.
+ \tag{B.76.5}
+\]
+This is an involutory M\"obius automorphism of the three-punctured
+sphere fixing \(2\). Hence the actual special-fiber group image is
+the graph of the based isomorphism \(f_*:F\to F\).
+Identifying the second factor by \(f_*^{-1}\), this image is
+\(H=\{(g,g):g\in F\}\). In particular the image of \(K_L\)
+is contained in this precise subgroup \(H\), without taking its
+normal closure.
+
+\emph{The filled group.}\par
+We calculate \(\pi_1(X)\) directly. Project to
+\(\lambda\in\mathbb C\setminus\{1\}\). Away from zero the
+fiber has meridians \(p,q\) about \(0,\lambda\). A loop about
+\(\lambda=0\) gives the two-puncture full twist. Filling this
+base disk kills its section lift and imposes precisely
+\([p,q]=1\): the full twist acts by conjugation by \(pq\),
+and triviality of that action is equivalent to this commutator
+relation. This is the ordinary node form of the based van Kampen
+calculation. A loop about the excluded base value \(1\) has
+trivial braid action, since the moving puncture's corresponding
+loop contracts in \(\mathbb C\setminus\{0\}\). The far section
+adds no basepoint winding. There are no further finite
+degenerations or degree drops. Thus
+\[
+ \pi_1(X)=\langle p,q,t\mid
+       [p,q]=[t,p]=[t,q]=1\rangle\simeq\mathbb Z^3.
+ \tag{B.76.6}
+\]
+This also proves the particular three-line arrangement calculation
+being used: the deleted lines \(\lambda=1,z=0,z=\lambda\)
+have three distinct ordinary nodes.
+
+Choose a free basis \(a,b\) of the first factor in (B.76.4).
+Since (B.76.6) is abelian, the nonidentity element
+\[
+                              w=([a,b],1)
+ \tag{B.76.7}
+\]
+belongs to \(K_Y\). It is outside the graph \(H\), whose
+intersection with the first factor is trivial. Hence the map
+\(K_L\to K_Y\) is not onto.
+
+\emph{A finite certificate and the full completed conclusion.}\par
+Send the identified free basis in each factor to
+\(a\mapsto(12),b\mapsto(23)\). This defines an actual
+epimorphism
+\[
+              \rho:\pi_1(Y)\twoheadrightarrow S_3\times S_3.
+ \tag{B.76.8}
+\]
+The graph \(H\) maps to diagonal \(S_3\), whereas \(w\) maps
+to a nonidentity three-cycle in the first factor and identity
+in the second. The exact chart identities, the order \(36\),
+the diagonal order \(6\), and this nonmembership are verified in
+\path{code/check_special_fiber_relative_counterexample.py}; its
+genuine output and full certificate are
+\path{records/check_special_fiber_relative_counterexample.out} and
+\path{records/special_fiber_relative_counterexample.json}.
+The six cosets of diagonal \(S_3\) give a connected finite-cover
+certificate containing the source image and missing \(w\).
+
+The continuous extension of (B.76.8) separates \(w\) from the
+closure of \(H\) in \(\widehat{\pi_1(Y)}\). Its image in
+\(\widehat{\pi_1(X)}\) is nevertheless one, because its
+discrete image already is one. Therefore it is also outside the
+image of the completed source deletion kernel, while belonging
+to the ambient completed deletion kernel. This argument uses
+the actual maps of completions and a finite separating quotient;
+it does not assume that an infinitely generated kernel has its
+full induced topology.
+
+The omitted base value \(\lambda=1\) carries a triple involving
+\(U\) and retained divisors. Its monodromy survives as a base
+action; it is not a relation imposed by filling a base disk.
+This explains why the retained-only collision at the selected
+fiber cannot justify the proposed conclusion. In the actual
+icosahedral ratio pencil, the corresponding excluded-base actions
+and their common based transport must be retained. The present
+counterexample does not determine that actual source image and
+does not supply a nonidentity element of \(\mathcal K\).
+\end{proof}

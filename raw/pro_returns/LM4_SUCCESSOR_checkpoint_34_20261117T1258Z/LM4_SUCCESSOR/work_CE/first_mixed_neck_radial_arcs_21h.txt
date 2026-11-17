@@ -1,0 +1,206 @@
+The actual first mixed-neck pair: radial vanishing arcs and a two-relator
+block. CE research checkpoint21. This is NOT the whole shared edge group.
+
+1. Exact marked horizontal paths
+
+Put c_j=cot(j*pi/5), lambda_j=1-cos(2*j*pi/5),
+f_j(Q)=lambda_j*(Q-i*c_j), and
+
+  y0=(c1+c2)/2, delta=(c1-c2)/2>0,
+  Q_*=i*y0, Q(x)=x+i*y0.
+
+This boundary point belongs to the first mixed q arc, between zeta
+and zeta^2, since c2<y0<c1. The selected upper Z punctures are
+B1=1/f1, A2=f2, A3=f3, A4=f4 and the upper retained branch root.
+For every x with ReQ=x and this fixed imaginary part, A2,A3,A4
+have positive imaginary part and B1 also does. Their F partners
+lie below the real axis. The branch roots solve Z+1/Z=2Q; since
+ImQ=y0>0 neither root is real, and exactly one is upper.
+
+The selected collision B1=A2 occurs at x=+x_c in the inner region
+and x=-x_c in the outer region, where
+
+  x_c^2=1/(lambda1*lambda2)-delta^2=(3+sqrt(5))/10>0.
+
+The exact identities lambda1*lambda2=5/4 and
+delta^2=(1-1/sqrt(5))/2 prove the equality. Every other mixed
+collision has imaginary Q coordinate (c_i+c_j)/2, including i=j;
+none equals y0 except the same unordered pair(1,2). Same-sign and
+branch collisions are on the removed boundary ReQ=0. Thus the
+open horizontal segments from Q_* to these two nodes meet no
+other critical value. They are actual based vanishing paths.
+
+2. Actual radial arcs, including the retained branch
+
+Along these paths,
+
+  A2=lambda2*(x+i*delta),
+  B1=(x+i*delta)/(lambda1*(x^2+delta^2)).
+
+For |x|<x_c they are two distinct positive multiples of the same
+vector x+i*delta. The straight radial segment joining them shrinks
+at the node. For j=3,4 the oriented cross product of that vector
+with A_j is lambda_j*x*(c2-c_j), which has the sign of x. Thus
+neither other A puncture crosses this radial segment.
+
+The upper branch root cannot lie anywhere on its positive ray for
+x!=0. If Z=k*(x+i*delta) with k>0, the real and imaginary parts
+of Z+1/Z=2Q would give
+
+  k+1/(k*(x^2+delta^2))=2,
+  k-1/(k*(x^2+delta^2))=2*y0/delta.
+
+Their difference requires a positive number to equal1-y0/delta,
+which is negative. Near x=0 the branch lies on the same side of
+the radial segment as A3,A4. For example its derivative at Q_*
+is 1+y0/sqrt(1+y0^2), while its initial height divided by delta
+is strictly larger. Continuity and the proved ray exclusion keep
+it on that side throughout. The negative-x picture is reflection
+in the imaginary axis, with all initial punctures fixed.
+
+At x=0 the exact ordered upper heights are
+
+  A2, A4, A3, branch_upper, B1.
+
+The independent rational interval construction in
+code/check_first_mixed_neck_arc.py places them respectively in
+(95,96)/100, (153,155)/100, (212,214)/100, (216,217)/100,
+and(275,276)/100. Every radical bound is obtained by rational
+bisection with its squared inequalities checked. The input,
+genuine output/error and exact interval records are retained as
+
+  work_CE/code/check_first_mixed_neck_arc.py/.out/.err
+  work_CE/next_symmetric_nodes/first_mixed_neck_arc.json.
+
+Therefore the positive-x vanishing arc approaches the outer
+right-hand arc joining the lowest and highest punctures, with
+the middle three on its other side. The negative-x arc approaches
+the reflected left-hand arc. No omitted-puncture threading is
+assumed away: the literal upper-half-plane separation and the
+displayed radial arcs supply it. This repairs the invalid generic
+disk-transport inference preserved in mixed_neck_marking_limitations_21h.txt.
+
+3. The calibrated simultaneous based planar free basis
+
+DE independently performed the exact rational polygon/cut check.
+Rotate by z=-i*Z, preserving orientation, so the five punctures
+lie on the positive real axis in order A2,A4,A3,branch,B1. Move
+these ordered points to1,2,3,4,5 by an increasing real-axis
+homeomorphism extended to preserve the two half-planes. Use
+basepoint6 and downward cuts. A positive generator x_j crosses
+the j-th cut once from left to right. The common connector is
+
+  6 -> 6+i -> 1/2+i -> p=1/2.
+
+It has empty cut word. All paths stay in the right z half-plane,
+equivalently the selected upper Z half-plane. The outer/left-Z
+arc is the upper z arc, and the inner/right-Z arc is lower.
+
+The common first meridian is a=x1. The upper arc gives
+b_out=x5. The lower arc goes below the first four points, with
+prefix cut word x1*x2*x3*x4, and gives
+
+  b_in=(x1*x2*x3*x4)*x5*(x1*x2*x3*x4)^-1.
+
+With [x,y]=xyx^-1y^-1, the actual defining relations are
+
+  r_out=[x1,x5],
+  r_in=[x1,(x1*x2*x3*x4)*x5*(x1*x2*x3*x4)^-1].
+
+Conjugating the WHOLE second relator by x1^-1 gives
+
+  x1^-1*r_in*x1=[x1,w*x5*w^-1], w=x2*x3*x4.
+
+No individual peripheral conjugation has been discarded. In this
+calibration x2=A4, x3=A3 and x4 is the retained branch meridian.
+The exact output retains every Fraction segment and crossing,
+positive small-loop orientation, both raw meridians and the literal
+free reduction. The authoritative independent files are
+
+  work_DE/next_marginal_source/check_middle_neck_arc_words21.py/.out/.err
+  work_DE/next_marginal_source/middle_neck_arc_words21.json
+  work_DE/next_marginal_source/middle_neck_two_arc_words21.md.
+
+This is an explicitly specified new geometric basis. No uncomputed
+conversion to the old F21 array is claimed. The initial version of
+this note used a different right-adapted basis and is retained as
+first_mixed_neck_radial_arcs_21h_initial_adapted_basis.txt; the
+convention here is the independently calibrated one.
+
+4. Exact algebra of this two-relator block only
+
+Put a=x1 and b=x5. The product w=x2*x3*x4 is primitive in the
+middle rank-three free group: (w,x3,x4) is a basis, with inverse
+x2=w*x4^-1*x3^-1. The quotient by precisely these relations is
+
+  <a,b,w | [a,b], [a,w*b*w^-1]> * F(x3,x4).
+
+Introducing d=w*b*w^-1 identifies the first factor as the genuine
+HNN extension of Z(a) times F(b,d) with relation w*b*w^-1=d.
+The two cyclic associated subgroups inject into that base group.
+Under the homomorphism to Z sending w to1 and a,b to0, its kernel
+has the Reidemeister--Schreier presentation
+
+  < a_n,b_n (n in Z) | [a_n,b_n], [a_n,b_(n+1)] for all n >,
+  a_n=w^n*a*w^-n, b_n=w^n*b*w^-n.
+
+The commutation graph is a bi-infinite bipartite path. The extra
+free generators contribute freely all their w translates. This
+describes only the two-relator block, not the quotient by the
+other physical nodes, the other base handles, or the whole normal
+relation family. In particular it does not prove that the actual
+shared edge group has this presentation or that its map into either
+bad regional vertex is injective. Those are the remaining gates.
+
+For this auxiliary path presentation, the kernel of the map to
+F(a_n:n in Z) times F(b_n:n in Z) is free: its presentation cover
+has the full one-skeleton of the product Cayley trees and exactly
+the unit squares for the displayed adjacent pairs. It is a genuine
+cubical subcomplex, so subcomplex_product_trees_freeness_21h.txt
+applies. This is an exact illustration of the proposed route for
+this block only. The new Cartesian quotient is not identified
+with the actual coefficient quotient of the whole surface.
+
+5. Convention comparison, retained explicitly
+
+The initial right-adapted-basis note has the normal-form pair
+[a',b'], [a',w'^-1*b'*w']. It is preserved as a separate file and
+is not being silently identified with the calibrated downward-cut
+basis. At the two-relator quotient level the convention difference
+is explicit: starting with the calibrated pair
+
+  [a,b], [a,w*b*w^-1],
+
+replace b by the new free generator b'=w*b*w^-1, keeping a and w.
+The two normal-closure relations, in the opposite order, become
+
+  [a,b'], [a,w^-1*b'*w].
+
+Thus both signs describe the same two-relator block after this
+specified free-basis change. The actual calibrated raw words in
+section3, including their extra x1 conjugation, remain authoritative.
+The stable-letter kernel index is n+1 in that calibrated convention;
+it is n-1 in the initial alternate convention.
+
+6. Endpoint-collar and branch-side precisions
+
+First move from the boundary fiber Q_* to Q_*+epsilon through a
+small regular neck, carrying the common arc system. Isotope its
+selected upper-half-plane disk into the upper-right quadrant at
+that endpoint. Continue the actual vanishing path with x>=epsilon.
+Every selected point and the radial vanishing arc stay in that
+quadrant, so the relation belongs to the same K and dies in the
+actual inner bad vertex. On the other side use the upper-left
+quadrant. No disk is required to be inside a bad open side at x=0.
+
+A independently supplied a direct branch-side check. Write the
+selected branch root Z=X+iY and r^2=|Z|^2. Since
+
+  x=X*(1+r^-2)/2, y0=Y*(1-r^-2)/2,
+
+we have r^2>1 and X has the sign of x. Its cross product with
+(x,delta) is X*(Y*(1+r^-2)/2-delta). The bracket is greater than
+y0-delta=c2>0. Therefore the branch lies on the same side as the
+other middle points for every nonzero x, without a derivative
+or limiting inference. This agrees with the earlier ray-exclusion
+argument and completes the explicit retained-branch control.

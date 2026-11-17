@@ -1,0 +1,107 @@
+% Proposed B.149; owned source, no central edits.
+\subsection*{The full ordinary stabilizer and its marked section}
+\statement{B.149}{Proved}{The actual one-family stabilizer is cyclic and its fixed projection has a marked ordinary section}
+\label{stmt:B149}
+In the exact marking of B.148,
+\[
+ H\cap S=\langle m\rangle.
+\]
+Consequently the actual one-family fixed group and its marked lift are
+\begin{equation}\label{eq:B149-section}
+\begin{gathered}
+ J_a=\Gamma_a^\delta
+   =\langle A,m,v\mid[A,m]=1\rangle
+   \cong(\mathbb Z_A\times\mathbb Z_m)*\mathbb Z_v,\\
+ \sigma:J_a\longrightarrow\Gamma_0^\delta,
+ \qquad(A,m,v)\longmapsto(A_{\rm src},m,v),\qquad
+ A_{\rm src}=s_1s_4^{-1}s_1^{-1},\\
+ p_a\sigma=\operatorname{id}_{J_a}.
+\end{gathered}
+\end{equation}
+Here $p_a$ is the actual one-family filling in the one-neck annular
+model; the section is a section of its fixed subgroup restriction.
+If $K_{\rm rem}=\ker p_a$ and $H_{\rm src}$ is the full six-source
+image, then
+\begin{equation}\label{eq:B149-split}
+\begin{aligned}
+ \Gamma_0^\delta&=K_{\rm rem}^\delta\rtimes\sigma(J_a),\\
+ H_{\rm src}&=(H_{\rm src}\cap K_{\rm rem})\rtimes\sigma(J_a).
+\end{aligned}
+\end{equation}
+\begin{proof}
+Retain the actual words $f=w^{-1}\bar r^{-1}$ and $g=CfC=r^{-1}w$.
+The quotient of $T_0$ by the normal closure of
+$r^2,\bar r^2,f^2,g^2$ is exactly
+\begin{equation}\label{eq:B149-pillow}
+ P=\langle z,w,r\mid[z,w],\ r^2=1,\ rzr=z^{-1},\ rwr=w^{-1}\rangle
+   =\mathbb Z^2(z,w)\rtimes C_2(r),\qquad z=\bar r r.
+\end{equation}
+Indeed $g^2=1$ makes $r$ invert $w$, $f^2=1$ makes $\bar r$ invert
+$w$, and $\bar r=zr$ then gives $[z,w]=1$ and $rzr=z^{-1}$.
+Conversely these formulas make all four original squares trivial,
+with inverse substitutions on $r,\bar r,w$. Thus the translation
+lattice in \eqref{eq:B149-pillow} is genuinely free abelian.
+
+In the unique normal form $(n,\varepsilon)=z^{n_1}w^{n_2}r^\varepsilon$,
+the actual source maps are affine:
+\begin{equation}\label{eq:B149-matrices}
+\begin{gathered}
+ (n,\varepsilon)\longmapsto(A_sn+\varepsilon b_s,\varepsilon),\\
+ M=A_m=\begin{pmatrix}1&-1\\0&1\end{pmatrix},\quad b_m=0,
+ \qquad U=A_u=\begin{pmatrix}1&0\\4&1\end{pmatrix},\quad
+ b_u=\binom{0}{-2}.
+\end{gathered}
+\end{equation}
+These are automorphisms, with inverse $(A^{-1},-A^{-1}b)$, so the
+quotient is invariant under both signed source generators. In
+particular $m(w)=wz^{-1}$, while $u(r)=w^{-2}r$ and $u(z)=zw^4$.
+For $q=(1/2,0)^t$ the two generator formulas give
+$b_s=(I-A_s)q$. The affine composition rule
+$b_{st}=A_sb_t+b_s$ proves this identity for every signed source
+word. If $s$ fixes the actual $r$, its quotient correction is zero,
+and therefore $A_s(1,0)^t=(1,0)^t$.
+
+We verify whole-source faithfulness. Conjugating $M,U$ by
+$\operatorname{diag}(2,1)$ gives
+\[
+ A=\begin{pmatrix}1&-2\\0&1\end{pmatrix},\qquad
+ B=\begin{pmatrix}1&0\\2&1\end{pmatrix}.
+\]
+On $\mathbb P^1(\mathbb R)$ put
+$X=\{|x|>1\}\cup\{\infty\}$ and $Y=\{|x|<1\}$.
+For every nonzero integer $n$,
+\[
+ A^n(Y)\subset X,\qquad B^n(X)\subset Y,
+ \quad A^n(x)=x-2n,\quad B^n(x)=\frac{x}{2nx+1}.
+\]
+The second strict inequality follows from
+$|2nx+1|\ge2|n||x|-1>|x|$; the image of infinity is $1/(2n)$.
+A nontrivial reduced word is conjugate to a nonzero pure power or
+a mixed cyclically reduced word. In the mixed case conjugate by a
+power of its last generator chosen not to cancel the last syllable.
+The resulting word starts and ends in that generator, and sends
+$X$ into $Y$ or $Y$ into $X$. It cannot act trivially. Thus the
+representation of $F(m,u)$ is faithful even projectively; no
+nontrivial word maps to $I$ or $-I$.
+
+An integral determinant-one matrix fixing $(1,0)^t$ is
+$\left(\begin{smallmatrix}1&k\\0&1\end{smallmatrix}\right)=M^{-k}$.
+Faithfulness therefore gives $s=m^{-k}$. Conversely $m$ fixes the
+actual $r$, so B.148 proves $H\cap S=\langle m\rangle$.
+
+B.144's entire-stabilizer presentation now gives the first line of
+\eqref{eq:B149-section}, with both inverse presentation maps retained.
+B.130 proves that the actual fixed word $A_{\rm src}$ projects to $A$
+and satisfies $[A_{\rm src},m]=1$. Hence its displayed assignments
+respect every relation and give $p_a\sigma=1$. This proves injectivity
+of the marked section and both decompositions \eqref{eq:B149-split}.
+No equality of the remaining fixed kernel with its source part is
+implied.
+\end{proof}
+The complete actual quotient/inverse and forty-four literal signed
+identities are retained in
+\path{work_CE/code/check_one_family_pillowcase_stabilizer30.py},
+its genuine output, and
+\path{work_CE/next_symmetric_nodes/one_family_pillowcase_stabilizer30.json}.
+The proof is uniform in all source words; no matrix-congruence
+faithfulness or completed-section assertion is used here.
