@@ -1,0 +1,3 @@
+Hartshorne, R. (1967). *Local cohomology: A seminar given by A. Grothendieck, Harvard University, Fall, 1961* (Lecture Notes in Mathematics, Vol. 41). Springer. https://doi.org/10.1007/BFb0073971 . Publisher metadata supports the series/volume/year only; the handwritten 20.3.68 proof annotation is supplied-manuscript evidence.
+
+Oda, T. (1969). The first de Rham cohomology group and Dieudonné modules. *Annales scientifiques de l’École Normale Supérieure, 4e série, 2*(1), 63–135. https://doi.org/10.24033/asens.1175 . Primary record: https://www.numdam.org/item/ASENS_1969_4_2_1_63_0/ . Checked in the supplied article: introduction pp. 63–65 and Corollaries 5.11–5.12, p. 131; the abelian and general proper smooth cases are distinguished.
