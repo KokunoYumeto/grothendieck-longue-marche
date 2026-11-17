@@ -1,0 +1,15 @@
+# Independent complete m-star and actual face review
+
+PASS at the exact stated scope. DE read both complete mathematical notes, both complete producers and their genuine outputs. This review does not claim a duplicate producer execution.
+
+The local action uses the B123 convention alpha_s(w)=s w s^-1. Therefore u=Cf is fixed, alpha_m(C)=u^-1 C u, and k=um gives [k,C]=[m,k]=1 with the listed fixed outsiders. The original ordinary character has C,tau,u odd. The simultaneous Schreier basis z=tau C,p=tau u,q=u tau and both copies of the outsiders is correct. The free change r=zq,s=pq gives alpha_m(r)=r^-1s, all ten others fixed, with square s^-1 r s. Hence the auxiliary even-m tree graph presentation is an actual inverse Tietze transformation, not an inference from an incidence graph.
+
+The complete compiler reads stable original inputs, verifies both eleven-generator inverse substitutions, every signed operator/inverse, all forty complete node words with factors/round trips, the actual cone involution and all ordinary/orbifold diagrams. The earlier inverse typo is expressly preserved. Nothing in those checks asserts a post-node graph product.
+
+The ten minus node words avoid tau. Grouping their entire normal closure under m gives the exact proper amalgam R_minus *_<m> (<m> x C2_tau). The edge injects by actual base winding. The selected cone fixes exactly its cyclic-by-C2 vertex because a torsion-free cyclic edge cannot contain it; the ordinary fixed-subtree argument therefore gives the stated pre-outer centralizer. The relative presentation adding all seven beta equations and all ten plus nodes is the original full presentation regrouped. It retains every signed m/v translate and all fiber conjugates. It does not assume beta descends to the already filled first factor.
+
+The new actual Z3 retract is sound. B130's full four-cross block makes <V,A> commute with its selected-cone image; a=V A^-1 V^-1 consequently commutes with delta(a). Both are literally fixed by m in the complete new basis. The two complete source abelian matrices agree and fix both a and delta(a) exponent characters; all forty nodes and every source translate have zero exponent vectors. Thus the two fiber characters and actual m-base exponent descend to the full actual group, and their composition with the displayed commuting triple is the identity. This proves injection and retraction, rather than relying on an abelianized rank. The selected involution exchanges the first two coordinates, so the fixed face is exactly Z2, reached by the genuine source A_s=a delta(a) and m. The same two inverse continuous maps give the actual Zhat3 closure and its fixed Zhat2. This produces neither an extra fixed element nor a final centralizer theorem.
+
+The stated Gamma0 abelianization Z12 follows from F11 coinvariants: the only relation is s=2r, leaving ten fiber classes plus two source-base classes. The relation is primitive, so no torsion is introduced.
+
+No formal source, register, or producer output was changed.

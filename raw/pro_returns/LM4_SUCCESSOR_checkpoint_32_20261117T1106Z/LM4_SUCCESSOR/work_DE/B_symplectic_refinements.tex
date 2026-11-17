@@ -1,0 +1,244 @@
+\subsection*{An actual nonnilpotent finite quotient of the residual group}
+
+\statement{B.62}{Proved}{The mod-three projective homology quotient kills the residual centralizer}
+Let $P=P\Gamma_{0,12}$, and let
+\[
+ q:\Gamma_{0,[12]}\longrightarrow
+       \operatorname{PSp}_{10}(\mathbb F_3)
+                                                               \tag{B.62.1}
+\]
+be the projective homology action on the genus-five double
+cover of the sphere branched over the twelve named points.
+Its restriction to $P$ is surjective.  In the full profinite
+completion of $P$,
+\[
+                \widehat q(\mathcal K)=1.                    \tag{B.62.2}
+\]
+Consequently, if $L_1,L_2\leq_f P$ both contain
+$N_3=\ker(q|_P)$, then
+\[
+                 (H_T\cap L_1)(H_5\cap L_2)                 \tag{B.62.3}
+\]
+is closed in the full profinite topology of $P$.
+The kernel $N_3$ is invariant under the full sphere
+mapping-class group, including the given $A_5$.
+The quotient controlled here is nonnilpotent; the assertion
+does not identify $\mathcal K$, control all finite quotients,
+or assert vanishing at higher $3$-power levels.
+
+\begin{proof}
+\emph{The geometric representation and its integral model.}
+Send every peripheral loop of the twelve-punctured sphere
+to the nonidentity element of $C_2$.
+Because twelve is even, this defines a connected double
+cover, which extends across the punctures to a branched
+cover $\Sigma_5\to S^2$.
+Every orientation-preserving mapping class permutes the
+peripheral conjugacy classes and thus lifts to this cover.
+The two lifts differ by its hyperelliptic involution, whose
+action on integral first homology is $-I$.
+Lifting isotopies shows that the resulting projective
+symplectic action depends only on the sphere mapping
+class.  This defines (B.62.1) after reduction modulo three.
+
+With label $2$ at infinity, the disk cover has genus five
+and one boundary component.  Capping its boundary preserves
+first homology.  This representation is the nontrivial
+summand of unreduced Burau at $t=-1$.
+The branched-cover chain calculation is given by
+\citet[Sections 2.2--2.3, Proposition 2.1]{DE_GambaudoGhys2005};
+the odd-strand splitting and the action $-I$ of the full
+twist are also explicitly recorded by
+\citet[Introduction, ``Hyperelliptic Torelli vs Burau'']
+{DE_BrendleMargalitPutman2015}.
+
+Here is a fully specified integral convention for the
+calculation.  The unreduced positive generator $\sigma_j$
+has block
+\[
+              \begin{pmatrix}2&-1\\1&0\end{pmatrix}
+\]
+in coordinates $j,j+1$ and is the identity elsewhere.
+It fixes $\mathbf 1=(1,\ldots,1)^t$ and preserves the
+covector $\epsilon=(1,-1,\ldots,1)$.
+Since $\epsilon(\mathbf1)=1$, quotienting by
+$\mathbb Z\mathbf1$ is integrally isomorphic to the
+invariant hyperplane $\ker\epsilon$.
+Using quotient representatives with last coordinate zero,
+the reduced matrix is
+\[
+        R_j=(B_j)_{1\ldots10,1\ldots10}
+                    -\mathbf1_{10}(B_j)_{11,1\ldots10}.
+                                                               \tag{B.62.4}
+\]
+It preserves the unimodular alternating matrix
+\[
+ J_{ij}=(-1)^{j-i+1}\quad(i<j),\qquad
+ J_{ji}=-J_{ij},\qquad J_{ii}=0,
+ \qquad \det J=1.                                           \tag{B.62.5}
+\]
+The program \nolinkurl{next_finite_symplectic/prepare.py}
+checks these assertions over $\mathbb Z$, then the braid
+relations and inverses modulo three.  It also checks
+\[
+       (R_1\cdots R_{10})^{11}=-I\pmod3.
+\]
+Projectivization kills the full twist and descends through
+$PB_{11}/\langle\Delta^2\rangle\cong P$
+as in (B.62.1).  Its pure image is all of
+$\operatorname{PSp}_{10}(\mathbb F_3)$:
+\citet[Theorem 5.1, with $g=5$, $b=1$, $m=6$]
+{DE_Stylianakis2018} gives the surjection
+$PB_{11}\to\operatorname{Sp}_{10}(\mathbb F_3)$,
+and the full twist maps to $-I$.
+
+\emph{The two actual subgroup images.}
+Use the thirteen ordered tetrahedral meridians
+$e_1,\ldots,e_{13}$ of B.56 and the six cyclic meridians
+$f_0,\ldots,f_5$ of B.60, with exactly the common marked
+base transport certified in B.61.
+In particular the algebraic parameters are
+$u_0=i(\varphi+\sqrt{\varphi+2})$ and $v_0=-\varphi^2$,
+where $\varphi=(1+\sqrt5)/2$.
+Both configurations normalize labels $2,4,6$ to
+$\infty,0,1$, and the common finite order is
+$(4,11,7,9,3,5,1,12,8,10,6)$.
+The nineteen actual words, including the tetrahedral
+$16$-crossing and cyclic $39$-crossing transports, are in
+\nolinkurl{next_B59_image/common_base_braid_words.json}.
+Their path and homotopy certificates were proved in B.61;
+the present calculation does not conjugate either subgroup
+independently after choosing this common base.
+
+Put $A=q(H_T)$, $C=q(H_5)$ and $I=A\cap C$.
+Exact finite multiplication gives
+\[
+ |A|=144,\qquad |C|=1440,\qquad I\cong C_3,
+ \qquad |A'|=24,\qquad I\cap A'=1.                           \tag{B.62.6}
+\]
+Moreover $A/A'\cong C_6$.
+Normalize its additive character
+$\chi:A\to\mathbb Z/6$ by
+$\chi(q(e_1e_2^{-1}))=1$.
+The complete source values are
+\[
+ \bigl(\chi(q(e_i))\bigr)_{i=1}^{13}
+       =(3,2,3,3,2,3,2,3,3,3,2,2,3),                       \tag{B.62.7}
+\]
+and $\chi(I)=\{0,2,4\}$.
+In particular its restriction to $I$ is injective.
+
+These are exhaustive matrix calculations, not order
+estimates.  The program
+\nolinkurl{next_finite_symplectic/enumerate.cpp}
+enumerates both generated projective groups by closure
+under their generators, representing every matrix over
+$\mathbb F_3$ by the scalar multiple whose first nonzero
+entry is one.
+The separate program
+\nolinkurl{next_finite_symplectic/analyse.py}
+recomputes all $144^2$ products in $A$, its full derived
+subgroup, the intersection, and the cyclic character.
+The complete matrices, multiplication table and actual
+standard output are retained.
+
+Independently,
+\nolinkurl{code/verify_B62_symplectic.py}
+starts from the original nineteen braid words, works
+instead on $\ker\epsilon$, and verifies (B.62.6), the
+seven source relations below, and the integral change of
+basis matching every discovery matrix.
+Its passing output is
+\nolinkurl{code/verify_B62_symplectic.out}.
+
+\emph{All source-abelian directions and the central twist.}
+Let $M$ be B.58's $55\times13$ integral matrix of all
+pair linkings of the eleven normalized finite points.
+It has rank six, and its integral kernel has the following
+seven basis vectors, displayed as exponent-sum vectors
+of actual free-group words:
+\[
+\begin{array}{lll}
+ r_1=e_1e_2e_3e_4e_5e_6e_7,&
+ r_2=e_3^{-1}e_8,&r_3=e_6^{-1}e_9,\\
+ r_4=e_1^{-1}e_{10},&r_5=e_5^{-1}e_{11},&
+ r_6=e_2^{-1}e_{12},\\
+ r_7=e_4^{-1}e_{13}.&&
+\end{array}                                                 \tag{B.62.8}
+\]
+If $B$ is their $13\times7$ column matrix, then $MB=0$
+and the rows $7,\ldots,13$ of $B$ form the identity matrix.
+The exact rank calculation therefore proves that these
+columns form the full integral kernel, with no finite
+index omitted.  Equation (B.62.7) gives
+$\chi(q(r_j))=0$ for all seven $j$; direct finite-word
+evaluation independently places all seven images in $A'$.
+
+We must compare this matrix with the mapping-class
+abelianization, rather than silently use disk braid
+homology.  Capping gives
+\[
+ P^{\mathrm{ab}}
+     =\mathbb Z^{55}/\mathbb Z\mathbf1_{55}.
+                                                               \tag{B.62.9}
+\]
+Every chosen tetrahedral braid has zero linking on the
+fixed pair $(4,6)$, whose coordinates are constantly
+$0,1$.  Thus the corresponding row of $M$ is identically
+zero.  This is checked in B.58's divisor certificate,
+B.61's actual braid words, and both present matrix
+audits.  If $Mv=\lambda\mathbf1_{55}$ over
+$\widehat{\mathbb Z}$, that row forces $\lambda=0$.
+
+Let $k\in\mathcal K$, and choose a preimage
+$\hat a\in\widehat{H_T}$ under the canonical map onto
+$\overline{H_T}\subseteq\widehat P$.
+Such a preimage exists by compactness and density;
+no comparison between a discrete test kernel and its
+closure is needed here.
+Write $v\in\widehat{\mathbb Z}^{13}$ for its source
+abelianization.  B.58 says that $k$ has zero image in
+$\widehat{P^{\mathrm{ab}}}$.
+Equations (B.62.9) and the fixed row therefore give
+$Mv=0$ in $\widehat{\mathbb Z}^{55}$.
+Flatness of the torsion-free $\mathbb Z$-module
+$\widehat{\mathbb Z}$ gives the exact equality
+\[
+ \ker\bigl(M:\widehat{\mathbb Z}^{13}
+                    \to\widehat{\mathbb Z}^{55}\bigr)
+                       =B\widehat{\mathbb Z}^{7}.            \tag{B.62.10}
+\]
+Equivalently, the displayed identity minor, together
+with a nonzero rank-six minor of $M$, proves this directly
+because multiplication by a nonzero integer is injective
+on $\widehat{\mathbb Z}$.
+The finite character $\chi\circ q$ factors through the
+source abelianization and annihilates all seven columns
+of $B$.  It thus kills $\hat a$.
+Consequently $\widehat q(k)\in A'$.
+But $k\in\overline{H_T}\cap\overline{H_5}$ also implies
+$\widehat q(k)\in I$, so (B.62.6) proves (B.62.2).
+
+\emph{Refinements and scope.}
+Let $g\in P$ lie in the closure of (B.62.3).
+B.52 gives $g=hj$ with $h\in H_T$, $j\in H_5$;
+compactness gives a second factorization
+$g=\hat h\hat j$ through the two completed refinements.
+Then $h^{-1}\hat h=j\hat j^{-1}\in\mathcal K$.
+By (B.62.2) this ambiguity lies in
+$\ker\widehat q=\overline{N_3}\subseteq
+\overline{L_1}\cap\overline{L_2}$.
+Hence $h\in L_1$, $j\in L_2$, proving (B.62.3).
+
+Nonnilpotence can already be checked without identifying
+the whole symplectic image: a nilpotent group of order
+$144=2^4\cdot3^2$ has an abelian Sylow-three subgroup,
+so its derived subgroup has order a power of two.
+The subgroup $A$ has derived order $24$, contradicting
+that condition.  Thus this supplies refinements from
+an actual nonnilpotent quotient, beyond the nilpotent
+families of B.58--B.59.
+The conclusion uses the entire source-abelian kernel in
+(B.62.8); the mere finite intersection $I\ne1$ would not
+have proved it.
+\end{proof}

@@ -1,0 +1,159 @@
+% Accepted A64; mirrored root typesetting corrections.
+\statement{A.64}{Proved}{A changed affine frame passes all six cross-cup norm equations}
+There is a choice of the A.56 affine action and frames for which the
+actual extension E of A.63 admits a positive peripheral automorphism \(h_E\)
+over the A.62 action, with negative companion \(b_E=h_Ec\) satisfying
+\[
+ b_E^2=1,\qquad h_E(\tau)=\tau.
+ \tag{A.64.1}
+\]
+There are frames \(\beta_E,J_E\) above the prescribed initial C-frames
+such that
+\[
+ \begin{aligned}
+ h_E(s)&=\beta_Es\beta_E^{-1},&
+ \beta_E^{-1}b_E(\beta_E^{-1})&=1,\\
+ b_E(r)&=J_Er^{-1}J_E^{-1},&
+ J_E^{-1}b_E(J_E^{-1})&=1.
+ \end{aligned}
+ \tag{A.64.2}
+\]
+The choice retains the initial C-data and the older families of
+A.47--A.52. It changes the discretionary A.56 affine datum; it does
+not retain the original stored A.56 tuple. The construction is on
+the actual quotient E, including its full integral tower. This
+statement alone does not invoke the scalar-refinement lifting criterion.
+
+\begin{proof}
+\emph{The choice at the previous level.}\par
+Use the normalized eight cocycles of A.57, with four cusp rows first
+and four binary s-rows last. Write q for the affine inner term of the
+negative action and p for the affine s-frame. We choose the four free
+cusp components of
+\[
+ t=p-q
+ \tag{A.64.3}
+\]
+to be zero. These are conditions on the actual affine frame, not
+conditions merely on its cohomology class.
+
+The original A.56 affine correction space has 360 binary coordinates.
+The old central conjugacy equations have rank 83. Adding the four
+literal vector equations in (A.64.3) gives rank 227 and leaves an
+affine space of dimension 133. The exact simultaneous linear system
+and its solution are recorded in
+\path{records/A63_zero_cusp_frame_feasibility.json} and checked by
+\path{code/check_A63_zero_cusp_frames.py}; its kernel is recovered by
+exact elimination in the norm certificate below. Substitution into the
+original group law checks the literal cusp, the old s-conjugacy
+equation, the negative action square, and (A.64.3).
+
+On this 133-dimensional affine space, the remaining old central
+normalizer equation has zero polar form. Its linear image has
+dimension ten, and its target belongs to that image. Thus it has
+an exact solution. The calculation uses the original class-two
+group law; it is not an inference from a graded approximation.
+The resulting tuple, with both old frame norms corrected, is
+\path{work_A/A63_zero_t_A56_solution.json}. Its SHA-256 is
+\begin{center}\small\ttfamily
+4135fabf1500006d5ec6bbe5dc0571ea91018abf911e32136cf965729d18d4e9.
+\end{center}
+The producer is \path{work_A/check_A63_zero_t_norm.py}; the
+original A.56 witness is unchanged.
+
+\emph{The actual six-cup action.}\par
+Let \(\rho_2\) be the squared-scalar H-representation on
+\(V^{(2)}\). Every coefficient cocycle used below has the explicit
+form
+\[
+ \eta(g)=\sum_{j=1}^8\lambda_j e_j(g)^{[2]}
+              +(1-\rho_2(g))v,
+ \qquad (\lambda_1,\ldots,\lambda_8,v)\in k^8\oplus k^{36},
+ \tag{A.64.4}
+\]
+where the brackets denote coordinatewise squaring. These are actual
+cocycles on the quotient over C. They are not formal values assigned
+only to source generators. The source-value matrix has rank 44.
+
+Use the group N and its literal multiplication from (A.63.2).
+The finite model for the extension over \(D_1\) consists of
+\((g,z)\), with g in the old model and \(z\in T\), and law
+\[
+ (g,z)(h,w)=
+ \bigl(gh,z+\rho_2(g)w+c(e(g),g e(h))\bigr).
+ \tag{A.64.5}
+\]
+It pulls back over the full profinite C. First lift canonical c by
+its monomial intertwiner and the affine inner term, and then add
+six cocycles of the form (A.64.4). The 44 independent source
+equations make this lift agree literally with
+\(c(s)=s\), \(c(r)=sr^{-1}s\). Next lift the chosen positive
+action by its affine inner term and add another six cocycles of
+the same form. Literal cusp preservation contributes 36 equations
+per coordinate; the s-conjugacy class contributes four. Their
+combined rank is 40. All their constants are taken from (A.64.5).
+
+The stored coefficients in
+\path{work_A/A63_zero_t_cross_cup_square.json}
+solve these equations. The resulting negative action has zero
+literal square defect on both source generators. For the s-frame,
+the coefficient centralizer has dimension 20 over k and its norm
+image has dimension eight. All six obstruction classes in the
+four-dimensional quotient vanish. For the r-frame, the corresponding
+dimensions are twelve and five, and all six norm equations also
+have solutions. The stored frames satisfy (A.64.2) under the
+original multiplication (A.64.5).
+
+The read-only verifier
+\path{work_A/check_A64_cross_cup_witness.py}
+does not solve for or modify the stored new witnesses. Its imported
+old-model initialization reconstructs the coefficient matrices.
+It checks the
+source relations, the literal canonical c-action, cusp preservation,
+both source square equations, both frame projections, both
+conjugacy equations, and both normalizer norms. The six-cup witness
+has SHA-256
+\begin{center}\small\ttfamily
+f5d10fa9f5491651fef0e431edab7a952bf18fa1890073cd9d87c9a8c690de50.
+\end{center}
+Its stdout is \path{work_A/check_A64_cross_cup_witness.out}.
+Each map in this verification is an automorphism: it is a compatible
+old automorphism and monomial or inner N-automorphism, followed
+by a cocycle shear trivial on T. Thus checking the displayed source
+identities proves identities on the actual source quotient.
+
+\emph{Integral and older retained data.}\par
+The changed free positive inner vector is still fixed by the cusp
+and by the negative coefficient involution. It therefore lifts in
+the integral cusp invariant module used in A.60--A.62. The free
+s-frame correction (A.64.3) lifts literally by zero. The all-level
+orientation argument and central-half corrections of A.62 apply
+to these choices. Such corrections change only the old globally
+central \(M_n\)-coordinates; they have no T-coordinate in the
+fiber product (A.63.7). Consequently the stored six-cup corrections
+and frames pull back compatibly through the entire integral tower.
+
+The earlier residual abelianizations have only the simple types
+6, 21, and 42, whereas this residual abelianization has only the
+108-dimensional type and its integral lifts. Any common nontrivial
+finite two-group quotient would have a common simple abelian
+quotient. Equivariant Goursat therefore gives the same actual fiber
+product with every previously retained finite family. The compact
+finite-common-refinement argument of A.62 retains all those families
+and the original literal C-frames. No assertion is made that the
+old stored affine tuple or a later chosen transporter remains fixed.
+
+There is also a useful full-lift consequence without a new scalar
+argument. The actual full lift supplied by A.62 induces an E-action
+with the same old affine action, the literal cusp, and the same
+old s-frame projection. Comparing it with the displayed action gives
+a T-cocycle whose cusp and s cohomology restrictions vanish. The
+rank-eight restriction isomorphism makes this difference inner by
+\(a\in T^\tau\). The coefficient negative action is the identity
+on \(T^\tau\); hence replacing \(b_E\) by \(\operatorname{Inn}(a)b_E\)
+does not change its square. Its square is therefore also one on E.
+This does not by itself identify involutory lifts of the two new
+frames in the full group. The scalar-refinement question is separate.
+\end{proof}
+
+% Actual scalar closure of the cross-cup layer; independent review requested.

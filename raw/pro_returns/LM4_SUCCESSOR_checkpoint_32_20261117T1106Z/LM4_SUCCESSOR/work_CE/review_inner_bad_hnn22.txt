@@ -1,0 +1,85 @@
+Independent CE review of the complete marked regional HNN conversion
+Checkpoint22.  Mathematical proof, complete producer, data and genuine
+output read; separate exact checker executed.  PASS.
+
+Inputs reviewed:
+ code/normalize_inner_bad_relations22.py
+ records/inner_bad_normalized22.json
+ code/verify_inner_bad_hnn22.py
+ records/inner_bad_hnn22.json
+ records/verify_inner_bad_hnn22_final.out/.err
+
+1. No circular use of base relations
+
+The four cone contacts identify their normalized commutators literally
+in C2*F5.  The three other base pair relations beta12,alpha14(first),
+beta34 also equal their target commutators literally after the stored
+whole-relator conjugators.  I first checked this independently because
+checking them only modulo the desired seven relations would not prove
+the reverse presentation implication.  Root strengthened those three
+assertions accordingly.  The other three comparisons may therefore
+use precisely these already established seven relations.
+
+2. Exact stable-letter change and three remaining relations
+
+Use the same-sheet normalized letters a,c,b,d,e,f.  Put
+
+ S=a c a c, T=b a^-1 f^-1 a b^-1 e^-1, w=T S^-1.
+
+The inverse is f=a b^-1 e^-1 S^-1 w^-1 b a^-1.  Both substitutions
+are literally inverse in C2*F5.  The seven established relations are
+
+ [x,cxc] for x=a,b,d,e,
+ [d,cac], [b,cac], [b,cec].
+
+For beta13 the normalized conjugator is c d c a c a T^-1.  The
+relation[a,cac] changes this to c d w^-1.  Conjugate the whole
+commutator by c, use[d,cac] to remove the d conjugation, and then
+conjugate by w; this gives[e,w(cac)w^-1], up to inversion.
+
+For the23 node at the shared14/23 value the conjugator is exactly
+T S^-1 c=w c, giving[e,w(cdc)w^-1].
+
+For beta24 the conjugator is b^-1 c e T a^-1 c a^-1 c.  The a cone
+relation changes its last part to S^-1, giving b^-1 c e w.  Remove
+the initial b by conjugating the whole commutator, conjugate by c,
+and use[e,cbc] (the c-conjugate of[b,cec]) to remove e.  The result
+is[cbc,w d w^-1].  No individual peripheral conjugator is discarded.
+
+The independent checker does not import the root producer and does
+not reuse its piling normal form.  It rewrites each comparison into
+the ordinary graph group and records explicit inverse-letter deletions
+across intervening commuting letters.  Every deletion uses one of the
+seven established relations or its c-conjugate.  All three comparisons
+reduce to the identity, with the complete finite certificates saved.
+
+3. Genuine HNN structure
+
+Adjoin p=w^-1 e w and r=w^-1(cbc)w.  The three remaining relations
+become[p,cac],[p,cdc],[r,d].  Adding[p,r] is redundant, because after
+elimination it is w^-1[e,cbc]w, already an established base relation.
+
+Thus the base is A_Gamma semidirect C2, where A_Gamma has twelve
+ordinary generators x,bar(x), x=a,b,d,e,p,r.  Its eighteen edges
+are the ten edges from the seven original orbifold relations and
+the c-pairs of the four new commutators.  Conjugation by c swaps
+the paired vertices.  The two associated subgroups <p,r> and
+<e,bar(b)> are literal two-vertex cliques.  Coordinate retractions
+of the graph group show each is Z^2 and injective.  Hence the stable
+letter mapping p to e and r to bar(b) gives a genuine HNN extension,
+not just a stable-letter presentation whose base injectivity is unknown.
+The four source/target clique vertex sets and their c-images are
+pairwise disjoint, as checked directly from the exact graph data.
+
+This identifies the full slit bad-vertex group, with every one of the
+ten actual local relations.  It does not claim stability under the
+retained q0 action, an annular group identification with this base,
+or a global all-neck comparison.  Cone centralizers and completed
+groups require their separate arguments.
+
+Independent execution:
+ work_CE/code/review_inner_bad_hnn_independent22.py/.out/.err
+ work_CE/next_symmetric_nodes/inner_bad_hnn_independent22.json
+
+The original regional geometry and actual coefficient transfer are
+separate proved inputs, documented in inner_bad_regional_presentation_22h.txt.

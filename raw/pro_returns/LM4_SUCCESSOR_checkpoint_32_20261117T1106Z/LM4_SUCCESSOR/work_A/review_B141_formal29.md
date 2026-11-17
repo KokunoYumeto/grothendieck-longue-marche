@@ -1,0 +1,7 @@
+# Full formal source review: B141
+
+PASS. I read the entire proposed source after completing both underlying new29 research proofs. The source preserves all link rows, both inverse graph-kernel maps, the distinction between the auxiliary h section and actual f section, and every ordered cocycle correction. The full coordinate E0 subgroup and induced square are derived inside the exact regional kernel only.
+
+The actual d map and simultaneous v0 conjugation retain all ten B134 relations. The retained q head, right-kernel correction c and q-orbit kappa letters are separately typed. Direct multiplication gives precisely the displayed square recurrence, including the cancellation of one kappa2 pair. Both mirror sheets and the entire K orbit remain imposed. Separate factorwise inner corrections are not discarded on mixed words.
+
+The opposite-kernel retraction sends the leaves to one and the square to the nonempty eight-letter free-pair word. The stated completed nonextension uses the actual free pair's separately proved full topology; it does not identify the infinite graph kernel completion with its closure. The source explicitly avoids the invalid conclusion that this regional image word dies under the actual filling. The center-only retraction is equivariant for the full actual K action because every cocycle correction uses centers. No local quotient survival or fixed-source conclusion follows. No correction requested.
