@@ -1,0 +1,28 @@
+import sys,re
+sys.path.insert(0,'MPL_83_178-222/scripts')
+from record_page import record
+tex=r'''\scanpage{210}
+\mspage{452}
+années à vivre -- le temps passe vit\deleted{\unsure{t}}e, et je vois plein de choses passionantes à faire dans ce temps qui me reste. Ça \deleted{\unsure{ne}} doit pas être bien passionant de réunir des pièces à conviction pour convaincre des juges que j'ai quelque chose à voir avec les SGA. Ce n'est pas pour eux, pas plus que pour Monsieur K.F. Springer, que je me suis fatigué à les \unsure{édrire|écrire} ...
+
+Quant à ceux (à part moi-même) pour qui j'ai écrit les SGA, la relation qu'ils entretiennent à ce qui (pour moi en tous cas) reste une part de moi-même, ne m'est nullement indifférente. Elle fait partie de leur relation à ma personne. Chose étrange, je ne connais bien cette relation (ou du moins, tant soit peu) que pour mes cinq élèves cohomologistes: ceux-là même grâce auxquels il est devenu possible aujourd'hui \deleted{\unsure{qu'un Dr. K.F}} à un Dr. K.F. Springer de m'envoyer \unsure{balàder|balader}, comme un \deleted{fanfaron}\inserted{malpropre} qui n'aurait rien à dire sur ce qu'on fait ou ne fait pas avec des\inserted{ }textes portant le sigle SGA, que le quidam en question figure ou non sur\deleted{\unsure{à}} la couverture.
+
+Le lecteur mathématicien qui m'aurait suivi jusqu'ici, et qui aurait un jour hanté les SGA (les vrais, j'entends)\deleted{\unsure{*}}, peut-être qu'il aura idée de me toucher un mot sur ce qu'il en pense lui-même. C'est sûr que ça me ferait plaisir de recevoir un mot de quelqu'un qui trouverait, lui, que l'ouvrage dans lequel j'ai été seul à me mettre tout entier, pendant dix ans de ma vie, et que p\enspace e\enspace r\enspace s\enspace o\enspace n\enspace n\enspace e au monde n'a eu à coeur de continuer une fois l'ouvrier parti -- que cet ouvrage porte bel et bien l'empreinte de celui qui l'a conçu et porté en lui le temps qu'il a \unsure{fallà|fallu}, avant qu'il ne prenne forme sous ses mains et ne devienne une m\enspace a\enspace i\enspace s\enspace o\enspace n\quad p\enspace o\enspace u\enspace r\quad t\enspace o\enspace u\enspace s (*). Et qu'une maison pour tous n'est pas une vespasienne dans un bas quartier, où chacun se sentirait libre de se soulager à sa guise et de griffonner ses obscénités sur des murs délabrés et poisseux ...
+
+Et si celui qui me lit est un de ceux qui furent mes \unsure{élèges|élèves}, ou \deleted{\unsure{qui}} de ceux qui furent mes amis, et qu'il ne se sent incité à m'écrire ou à me parler, à ce sujet-là tout au moins à défaut de tout autre, qu'il sache que son silence aussi est éloquent, et qu'il sera entendu.
+\margin{209}
+'''
+e=[]
+for m in re.finditer(r'\\(deleted|inserted|margin)\{',tex):
+ d=1;i=m.end()
+ while d and i<len(tex):
+  if tex[i]=='{' and tex[i-1]!='\\':d+=1
+  if tex[i]=='}' and tex[i-1]!='\\':d-=1
+  i+=1
+ e.append((m.start(),({'deleted':'deletion','inserted':'insertion','margin':'margin note'}[m.group(1)],'line '+str(tex[:m.start()].count('\n')+1),tex[m.end():i-1] or 'space')))
+for start in ['années','Quant','Le lecteur','Et si']:
+ p=tex.index(start);e.append((p,('text','paragraph',tex[p:p+70])))
+e.append((0,('text','top centre','452')))
+record(210,tex,[v for _,v in sorted(e)],
+[('first paragraph','passionantes;passionant','single n retained from type; not modernized','high'),('first paragraph end','edrire','middle consonant looks d; alternative ecrire','medium'),('second paragraph','qu un Dr. K.F','overstruck deleted draft','low'),('third paragraph','falla','last vowel appears a with accent rather than u','medium'),('final paragraph','eleges','typed v resembles g; not silently corrected','medium')],
+['Typescript page452 continues autobiographical polemic on SGA authorship and repeats house-for-all metaphor. Claims about named people remain authorial statements.'],sheet_kind='reused_typed')
