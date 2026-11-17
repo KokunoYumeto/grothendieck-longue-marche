@@ -1,0 +1,142 @@
+EXACT ROOT-PATH NORMAL FORMS FOR THE COMPLETE PRODUCT-TREE MODULE
+Research, 2026-11-16. No coefficient truncation and no overlap conclusion.
+
+1. A second integral basis of the actual full module.
+
+Let T_A,T_B be the actual Cayley trees of the two free groups R_A,R_B,
+using the audited common-R basis indexed by (retained F5 word,slot).
+The standard product-tree two-cell module is
+
+  P=C1(T_A,Z) tensor_Z C1(T_B,Z).
+
+For every vertex a!=1 of T_A let L(a) be the unique oriented path from
+1 to a. The boundary isomorphism
+
+  C1(T_A,Z) -> ker(Z[R_A]->Z)
+
+sends L(a) to a-1. Hence the L(a), a!=1, form a FREE ABELIAN BASIS of
+C1(T_A). This is not just a spanning circuit system: it is a genuine
+unimodular change of integral basis. Retain the standard positive
+B-edge basis e(v,j), where v is a B vertex and j a positive R generator.
+Then
+
+  L(a) tensor e(v,j),    a!=1,
+
+is a free abelian basis of the ENTIRE product-tree module P. A collected
+finite dictionary of triples(a,v,j) is therefore an exact unique normal
+form. Equality of these dictionaries decides equality of full chains.
+No expanded rectangle enumeration is required.
+
+2. Exact linear-size construction from any literal relation word.
+
+Schreier-rewrite a paired F21 word with zero retained head using the
+actual split: A letters have generator(head,slot), B letters have
+generator(beta(head),slot). Maintain its freely reduced prefix vertices
+a in R_A,b in R_B. At a B letter with sign s, positive generator j and
+positive edge start v (v=b for s=+1; v=b*j^-1 for s=-1), add
+
+  s L(a) tensor e(v,j).
+
+At A letters add no two-chain term. If the word has trivial E image,
+this sum is its COMPLETE two-chain filling in the product tree.
+The path and generator words use persistent freely reduced tries, so
+construction is linear in the literal word, apart from dictionary costs.
+
+The full boundary identity, with H(a,v)=L(a) at B vertex v, is
+
+  boundary(L(a) tensor e(v,j))
+    =H(a,v)-H(a,v*j)+e_B(a,v,j)-e_B(1,v,j).
+
+The H terms telescope against the actual A edges of the input word;
+the projected B edges at A=1 cancel because its B projection is a
+closed path in a tree. The remaining B edges are exactly its actual
+B edges. This verifies the entire boundary without expansion. Since
+the product of the two trees is contractible and has dimension2,
+the two-boundary is injective, proving uniqueness also directly.
+
+3. Complete G coefficients remain available.
+
+For a standard cell inside one root-path rectangle, let its A generator
+be (g,i), B generator (h,j), and vertices be(u,v). The exact normalized
+G coefficient and row are
+
+  coefficient=(u,v,g),    row=(i,j,beta(g)^-1 h).
+
+Thus the root-path normal form retains every actual G coefficient;
+it merely changes the free abelian basis before such expansion.
+
+More usefully, a whole G monomial acts sparsely on the new basis.
+Write g0=(u,v,t) in G=(R_A times R_B) semidirect T. Its action is
+
+ g0 [L(a) tensor e(b,j)]
+   =[L(u*tau_t(a))-L(u)]
+          tensor e(v*tau_beta(t)(b),tau_beta(t)(j)).
+
+This follows because translating a path from1 to a gives the path
+fromu to u*tau_t(a), and a tree path fromu to x is L(x)-L(u).
+The edge assertion is literal in the audited retained splitting:
+x_(g,j)=g*a_j*g^-1, so tau_beta(t)(x_(g,j))=x_(beta(t)g,j).
+Thus a positive B edge maps to one positive B edge. No arbitrary
+old-base or source operator is substituted for this retained action;
+those more general automorphisms may send an edge to a longer path.
+Each monomial sends one normal-form term to at most TWO terms.
+Consequently arbitrary finite Z[G] combinations of full node columns
+can be added and compared exactly in this normal form, with no
+mandatory standard-rectangle expansion. This is a reusable full-module
+calculation, not an augmented-incidence test.
+
+4. The actual geometric stabilizer input.
+
+The complete producer is work_CE/code/factored_product_tree_chain.py,
+with genuine .out/.err and output
+work_CE/next_symmetric_nodes/geometric_stabilizer_factored_chain.json.
+The output retains the complete literal words, input hashes, retained
+and R word DAGs, every normal-form coefficient, and the boundary checks.
+
+Original node(8,0):124 paired letters,42 collected root-path terms.
+It was fully expanded only for calibration and exactly reproduces all
+117 previously independently audited standard two-chain coefficients.
+
+Actual old word(6,2,-6,-2) applied to that relator:119780 paired letters,
+33162 collected root-path terms. The naive integration would generate
+67823551 rectangles before collection. No such expansion was performed;
+the full circuit and full telescoping boundary completed in0.242s.
+Both projected endpoints and the retained endpoint are trivial.
+
+The new basis also resolves the precise monomial question for this word.
+If its full image were plus or minus one G element times the original
+column, its normal form would have at most2*42=84 terms. Its actual
+normal form has33162 nonzero terms. Therefore no such group-monomial
+identity exists. This conclusion uses full chains and exact basis
+uniqueness, not the earlier cyclic word-length diagnostic.
+
+This is NOT a proof that the image is outside the full retained-deck
+span, or that two whole old-base translates intersect trivially.
+General group-ring linear combinations may have arbitrarily many
+monomials. The certificate does not decide a whole-module overlap,
+produce a nonzero kappa class, or settle the marginal. It gives an
+exact representation and usable operations for those further questions.
+
+5. Reusable operations and independent replay.
+
+The generic implementation work_CE/code/root_path_chain_operations.py
+loads the persistent DAGs and performs the exact G action without
+standard-rectangle expansion. It verifies the identity, inverse and
+product action equations on BOTH complete circuits, including all33162
+large-image terms. Genuine output and the certificate
+next_symmetric_nodes/root_path_chain_operations_certificate.json are
+saved; the check took0.323s.
+
+DE's independent producer imports none of the CE producer. It
+reconstructs the complete literal119780-letter image using the four
+actual old actions, checks every retained and R DAG node, replays
+both complete telescoping boundaries and all117 original coefficients,
+and verifies the actual retained edge convention against B94.
+Its files are work_DE/next_marginal_source/
+verify_factored_product_tree_chain_independent.py/.out/.err,
+factored_product_tree_chain_independent_review.json, and
+review_factored_product_tree_chain_19h.md. Runtime0.456s, PASS.
+A independently read the full basis/action proof and passed its exact
+scope. The saved normal forms therefore establish the stated signed
+G-monomial exclusion for this actual geometric commutator, with no
+unperformed coefficient expansion hidden in the conclusion.

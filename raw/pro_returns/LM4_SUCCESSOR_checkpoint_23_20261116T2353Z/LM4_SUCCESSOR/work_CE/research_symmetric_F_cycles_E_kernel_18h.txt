@@ -1,0 +1,233 @@
+ACTUAL NODE INVOLUTION: EXACT CYCLES, TWELVE E-RELATIONS,
+AND THE FOUR SOURCE CONNECTING CLASSES
+CE research record, 16 November 2026, checkpoint18 working period.
+
+1. Inputs and conventions
+
+All statements below refer to the corrected chronological push/back marking
+and the actual paired F21 basis.  The authoritative input files are
+work_CE/next_symmetric_nodes/symmetric_paired_fox_data.json,
+symmetric_F_node_matching.json and symmetric_source_node_alignment.json.
+Every producer records hashes.  The initial convention-failure package is
+preserved separately and is not used here.
+
+Let K be the kernel of the actual retained filling F21 -> F5, and identify
+K=R_A*R_B in the paired Schreier basis.  Put E=R_A x R_B, with the two free
+groups identified with a common free group R.  The involution F exchanges
+the A and B copies.  On the product-tree 2-chain module P it is negative
+interchange of the two factors.  Coefficients in Z[E] act on the left.
+
+For each of the64 common-whisker nodes nu, C_nu is the RAW stored Fox
+column.  Its physical commutator is converted to A-first orientation by
+epsilon_nu in {+1,-1}.  Its physical F-mate is mu.  The exact matching is
+
+  F(r_nu^A)=g_nu (r_mu^A)^(-1) g_nu^(-1).
+
+Write g_nu=n_nu t_nu, with t_nu the retained F5 word and n_nu in K.  If
+a_nu is the image of n_nu in E, the full chain formula is
+
+  F(epsilon_nu C_nu)=-a_nu C_(t_nu mu)^A.
+
+The retained index t_nu mu is an actual new deck index unless t_nu=1.
+Equal columns do not identify their formal attaching-cell indices.
+
+2. Double F is exact in the free group
+
+The producer check_symmetric_F_cycles_and_fixed_chains.py checks, for every
+one of the64 rows,
+
+  F(g_nu) g_mu = 1
+
+by literal reduction in F21.  In particular the retained head
+beta(t_nu)t_mu and both R projections are1.  The output records the entire
+cycle word; all64 recorded words are empty.  Its implemented assertions
+also verify that the word centralizes the exact relator and lies in the
+cross-commutator kernel.  Thus this is stronger than a check after
+abelianization or augmentation.
+
+This finite cycle check does not itself identify the kernel of an infinite
+common-whisker presentation with the kernel of the equivariant-whisker
+presentation used in B92.  The conclusions below concern the explicitly
+specified128-column E-linear map and intrinsic chains in its image.
+
+3. The twelve relations in the original128-column domain
+
+Let Q0 be free over Z[E] on e_nu,f_nu for the64 nodes, with
+
+  d(e_nu)=C_nu,       d(f_nu)=F(C_nu),
+  F(e_nu)=f_nu,       F(f_nu)=e_nu,
+
+and semilinear coefficient action F(u,v)=(v,u).  The domain order in the
+JSON is the64 raw seed columns followed by their64 F images.  No A-first
+sign is silently absorbed into this original domain.
+
+Exactly12 rows have t_nu=1.  Write
+delta_nu=epsilon_nu epsilon_mu.  They give the actual relations
+
+  R_nu=f_nu+delta_nu a_nu e_mu.                         (1)
+
+The producer check_symmetric_twelve_E_relations.py verifies d(R_nu)=0
+using the whole product-tree chain, not its diagonal or augmentation.
+These12 relations are E-linearly independent: each has its own f_nu
+coordinate with coefficient1 and every other relation has coefficient0
+at that coordinate.  Consequently they can also be removed by12 literal
+unit column operations over the noncommutative ring Z[E].
+
+The complete orbit/sign table is:
+
+  fixed node                         delta
+  (0,1)                              +1
+  (8,1)                              +1
+  (12,1)                             +1
+  (16,1)                             +1
+
+  exchanged pair                     delta at both ends
+  (2,2) <-> (2,3)                    +1
+  (7,6) <-> (7,7)                    -1
+  (10,1) <-> (10,3)                  -1
+  (14,1) <-> (14,3)                  -1
+
+The exact coefficient action, including these signs, is
+
+  F(R_nu)=delta_nu F(a_nu) R_mu.                       (2)
+
+It follows directly from the ordered identity F(a_nu)a_mu=1, itself a
+consequence of the checked literal double-F identity.  The program checks
+(2) in the original domain, before applying d.  Distinct columns that
+have equal boundaries remain distinct in this check.
+
+The private unit f-columns, in zero-based numbering, are
+65,70,71,98,99,101,105,107,113,117,119,125.
+
+4. Four fixed generators and their actual source classes
+
+For each of the four fixed rows, a_nu=(b_nu,b_nu^(-1)).  The letter b_nu
+here names a coefficient word in R, not a retained base loop.  In
+particular b_nu=1 for nodes(12,1) and(16,1); it must not be confused with
+the nontrivial actual source word rho_nu below.
+
+Set
+
+  t_nu=(b_nu^(-1),1),
+  e_nu^half=(1,b_nu^(-1)),
+  K_nu=t_nu R_nu,
+  p_nu=e_nu^half e_nu.
+
+The precise ordered equations are
+
+  F(t_nu) F(a_nu)=t_nu,
+  F(K_nu)=K_nu,
+  (1+F)p_nu=K_nu.                                     (3)
+
+Therefore v_nu=d(p_nu) is an intrinsic anti-invariant chain in the actual
+image of d.  Equivalently, its half coefficient satisfies
+
+  F(e_nu^half) a_nu=e_nu^half.
+
+The order of these noncommuting coefficients matters.  It is checked
+literally in both CE and DE independent certificates.
+
+The four full anti-chains have respectively53,125,297,1 nonzero cells.
+For a diagonal cell (u,i;u,i), the Tate map contributes u(x_i-1) modulo2.
+Applying that map to the full chains gives exactly
+
+  diagonal(v_nu)=rho_nu-1,                            (4)
+
+where rho_nu is the actual positive first-sheet source peripheral at
+critical index0,8,12,16, respectively.  The certificate translates the
+common R dictionary by (retained_word,paired_slot), then independently
+expands the word in the actual F13 source marking.  There is no appeal to
+normal generation in (4).  The full source19-generator certificate gives
+each rho_nu as the image of its named source meridian.  Hence (4) lies in
+the actual source left ideal J_I.
+
+5. Conditional full E-span consequence
+
+This paragraph is CONDITIONAL on the separate root elimination proving
+that the twelve relations(1) span ker(d).  CE's twelve-relation program
+proves their independence and involution structure, not that spanning
+assertion.  The conditional conclusion is included so the elimination
+certificate has a precise cohomological target.
+
+If ker(d) is their direct free E-span, then it is the sum of four exchanged
+rank-two E-summands and four fixed rank-one E-summands.  After the unit
+change in(3), F acts on each fixed summand by coefficient interchange.
+Each exchanged summand is induced as a Z[C2]-module, even when its table
+sign is-1: choosing one generator and its F image gives a signed
+permutation basis with free C2-orbits.  Its positive cohomology vanishes.
+
+On a fixed summand Z[E], the E-basis element(u,v) is exchanged with(v,u).
+The only fixed basis elements are the diagonal(u,u).  Thus
+
+  H^2(C2,ker(d)) = F2[R]^4,
+
+with its four summands represented by diagonal translates of K_nu.
+The whole original domain Q0 is induced as a Z[C2]-module, since F
+exchanges e_nu and f_nu.  Hence its H^1 and H^2 vanish.  The exact sequence
+0 -> ker(d) -> Q0 -> L0 -> 0 then identifies H^1(C2,L0) with the displayed
+H^2.  Formula(3) computes the connecting primitive explicitly, and(4)
+computes its image in H^1(C2,P).
+
+Consequently the INTRINSIC Tate image of the entire E-span L0 is exactly
+
+  sum_(nu=(0,1),(8,1),(12,1),(16,1)) F2[R](rho_nu-1),  (5)
+
+and is therefore zero after passage to the quotient by J_I.  This proves
+no additional obstruction from this entire E-span, if the separate
+spanning certificate succeeds.  It does not exhaust the old-base
+translates of the64 node columns, nor prove I=R or nonlinear fixed lifting.
+
+6. Exact artifacts and independent review
+
+CE producers and genuine stdout/stderr:
+  work_CE/code/check_symmetric_F_node_matching.py/.out/.err
+  work_CE/code/check_symmetric_F_cycles_and_fixed_chains.py/.out/.err
+  work_CE/code/check_symmetric_twelve_E_relations.py/.out/.err
+
+CE exact outputs:
+  work_CE/next_symmetric_nodes/symmetric_F_node_matching.json
+  work_CE/next_symmetric_nodes/symmetric_F_cycles_and_fixed_chains.json
+  work_CE/next_symmetric_nodes/symmetric_twelve_E_relations.json
+
+DE independently passed all64 matching words/chains and all64 cycles plus
+the four half equations/source identifications, without importing the CE
+producer.  Its records are
+  work_DE/next_marginal_source/check_symmetric_F_matching_independent.py
+  work_DE/next_marginal_source/symmetric_F_matching_independent_review.json
+  work_DE/next_marginal_source/check_symmetric_F_cycles_independent.py
+  work_DE/next_marginal_source/symmetric_F_cycles_independent_review.json
+
+The twelve-relation and conditional cohomology interpretation have been
+sent for a further independent read.  No formal statement is added here.
+
+7. Subsequent full-span review and the direct image calculation
+
+Root's reversible E-linear elimination has now proved that ker(d) is
+exactly the twelve-relation span above; DE independently replayed the
+full original-domain coefficient changes and passed.  The image is free
+of rank116 over Z[E].  Its involution consists of56 exchanged pairs and
+four negative fixed generators, which are the unchanged raw columns
+61,1,37,49, namely nodes(16,1),(0,1),(8,1),(12,1).  Both original-domain
+and image involution matrices are monomial and square to1.  The exact
+producer paths remain in root's and DE's review records.  This paragraph
+records the independent report; CE does not duplicate their elimination.
+
+The direct cohomology argument gives the same conclusion as section5.
+For a fixed raw generator C_nu, put v_nu=(1,b_nu^(-1))C_nu as in section4.
+Then F(v_nu)=-v_nu.  Its free E-summand therefore has negative coefficient
+interchange.  The basis elements(s,t) with s!=t occur in induced pairs;
+each diagonal(s,s) carries the sign module Z_minus.  Thus this summand
+has H^1=F2[R] and H^2=0.  The56 exchanged pairs have neither H^1 nor H^2.
+It follows that H^1(C2,L0)=F2[R]^4 and H^2(C2,L0)=0.
+
+The Tate diagonal is equivariant for the diagonal subgroup of E by LEFT
+multiplication.  Explicitly
+
+  Tate((s,s)v_nu)=s(rho_nu-1).
+
+Consequently equation(5) is now established for the entire128-column
+E-span.  The four rho_nu are actual positive first-sheet source meridians.
+The previously used right-defect convention rho^(-1)-1 gives the same
+left ideal, since rho^(-1)-1=rho^(-1)(rho-1) in characteristic2; there is
+no unnoticed switch from a left ideal to a right ideal.  The full
+retained-deck and old-base translates remain separate.

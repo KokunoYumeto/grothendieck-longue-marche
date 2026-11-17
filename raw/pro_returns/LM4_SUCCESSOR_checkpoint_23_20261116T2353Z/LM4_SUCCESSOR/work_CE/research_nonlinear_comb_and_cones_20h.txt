@@ -1,0 +1,266 @@
+THE ACTUAL NONLINEAR COMB BASIS AND SELECTED CONE FACTORS
+CE research20; discrete groups only; main lifting unresolved
+
+1. Complete free basis, not just an integral basis
+
+Use the actual paired free group W=F21 and its quotient
+G=(R_A x R_B) semidirect T from B104. Put N_gen=ker(W->G).
+Collapse the retained T forest in its graph cover. The resulting
+graph is the one-skeleton of T_A x T_B and has fundamental group
+N_gen. Choose its spanning tree consisting of the entire B tree
+at A=1 and the entire A tree at every B vertex. It is connected;
+any cycle would project to a cycle in the B tree after contracting
+the A trees, so it is a tree. The path from(1,1) to(a,b) is b*a.
+
+Every positive non-tree edge is uniquely a B edge at(a,b), with
+a!=1 and positive B basis generator x. Closing it using this tree
+gives the exact based word
+
+  c(a,b,x)=b*a*x*a^-1*x^-1*b^-1=b[a,x]b^-1.
+
+The standard graph collapse to a rose therefore proves that these
+c(a,b,x) form a free group basis of N_gen. The basis is infinite,
+and every individual word still has finite support and length.
+
+2. Exact nonlinear rewriting
+
+At every prefix of a literal paired W word, maintain the exact
+factorization
+
+  prefix = n * b * a * t,
+
+where n is a word in the displayed N_gen basis, a in R_A, b in
+R_B, and t in the retained free group. Retained letters update t.
+An A letter at head t becomes the appropriate A Schreier letter
+and updates a. A positive B letter x gives
+
+  b*a*x = c(a,b,x)*(b*x)*a,
+
+so append c(a,b,x). A negative B letter gives
+
+  b*a*x^-1 = c(a,b*x^-1,x)^-1*(b*x^-1)*a.
+
+When a=1 these are tree edges and append no generator. Both
+identities hold literally in the free product R_A*R_B. For a
+negative step the generator is based at the FOLLOWING B vertex.
+Immediate inverse free cancellation is performed in n. At an
+N_gen word the final a,b,t are1, leaving the exact free word n.
+This is a nonlinear identity, not a homological calculation.
+
+After abelianization each c(a,b,x) is the root-path chain
+L_A(a) cross e_B(b,x). Thus the abelianized dictionary is exactly
+B103's unique normal form, including all retained word labels.
+
+3. Exact existing inputs, no orbit search
+
+Producer and genuine output/error:
+  work_CE/code/nonlinear_comb_rewrite.py
+  work_CE/code/nonlinear_comb_rewrite.out
+  work_CE/code/nonlinear_comb_rewrite.err
+Complete coefficient/word certificate:
+  work_CE/next_symmetric_nodes/nonlinear_comb_rewrite.json
+
+All128 already audited two-sheet node words rewrite to4946 total
+nonlinear basis letters. For each of these short words the program
+expands EVERY comb generator and verifies the complete equality
+with its actual Schreier word in R_A*R_B. Each of the128 words has
+a recorded basis letter occurring exactly once. If the word is
+L*x*R, replace x by it and use inverse x->L^-1*x*R^-1. If it is
+L*x^-1*R, the inverse replacement is x->R*x^-1*L. Here L and R
+contain no x. These are128 individual primitive-element proofs.
+They are not a simultaneous basis or free-factor proof.
+
+The existing119780-letter geometric head-stabilizer image rewrites
+to46944 nonabelian basis letters. Its abelianization is exactly the
+previously certified33162-term root-path dictionary. Its huge
+comb-generator expansion is not performed; the universal exact
+prefix identities give the nonlinear rewrite, and the complete
+abelianization is separately compared. The original42-term node
+dictionary is compared as well. Genuine elapsed42.143seconds.
+
+4. The actual quotient retains the whole family
+
+The filled mixed kernel is
+
+  M=N_gen / << all actual (W semidirect S)-translates
+                   of all128 node relators >>_(N_gen).
+
+Equivalently retain every G/source translate, using actual W
+representatives for G coefficients. Two choices of representative
+differ by an inner N_gen conjugation, which is already included
+in the normal closure. The exact six old/eleven source word maps
+are those of B104. No finite block of128 words is substituted for
+this whole normal closure. Even a simultaneous finite-block
+Nielsen simplification, if one were proved, would not imply a
+whole-family free-basis theorem.
+
+5. An elementary selected-cone decomposition
+
+The actual generic orbifold is
+
+  W semidirect <tau> = C2_tau * C2_tau1 * F10.
+
+Let H=N_gen semidirect <tau>. It is the inverse image of the
+selected <tau> under the quotient to G semidirect <tau>. Restrict
+the free-product Bass-Serre tree to H. Edge stabilizers are trivial;
+vertex stabilizers are either trivial or a conjugate C2. The
+quotient graph-of-groups construction, after choosing a maximal
+tree, gives a free product of these vertex factors and a free group.
+
+For a selected-cone vertex, a nontrivial intersection occurs
+precisely when its projected transporter normalizes <tau>. The
+normalizer is its centralizer G^F x <tau>, and G^F=diag(R).
+Double cosets by <tau> on both sides are therefore indexed exactly
+by r in R. The other cone factor contributes none: its image is
+not conjugate to the selected cone already in
+T semidirect C2=C2*C2*F2. Hence, with actual index typing,
+
+  H = (*_(r in R) C2_(tau_r)) * F(J),
+
+where compatible representatives are chosen from ONE maximal-tree
+transversal in the Bass-Serre quotient. They may be written using
+lifts h_r in W of(r,r,1), with tau_r=h_r*tau*h_r^-1. Distinct r
+give distinct H-conjugacy classes. Arbitrary independent choices
+of the h_r preserve those conjugacy classes but need NOT give the
+displayed free-product generating family; no such claim is made.
+This is a discrete subgroup-tree calculation, not a profinite
+recognition assertion.
+
+The free factors F(J) can be chosen orientation even, replacing an
+odd generator x by x*tau when necessary. The orientation kernel
+then has a free basis consisting of
+
+  d_r=tau_r*tau (r!=1), and x_j, tau*x_j*tau (j in J).
+
+The involution inverts each d_r and exchanges each pair. This
+gives the nonlinear source of the actual Tate augmentation module;
+d_r uses the left-defect convention, whose diagonal is r-1.
+The right defect of a lift of r has diagonal r^-1-1 instead.
+
+6. What the actual node quotient asks of these factors
+
+Impose the entire actual normal relation family of section4. The
+quotient of H is M semidirect C2. A diagonal element r has an
+actual fixed lift in the filled group exactly when the images of
+tau_r and tau_1 are conjugate by an element of M. Indeed such a
+conjugator m makes m*h_r commute with tau, and conversely every
+fixed lift differs from h_r by an element of M.
+
+Actual source elements provide these identifications for r in I,
+and more generally give a well-defined map from cosets rI in R/I
+to the resulting cone conjugacy classes. This statement supplies
+neither injectivity nor collapse of that map. The full relation
+family may have interactions invisible in individual primitive
+words or local cone centralizers. In particular the local critical
+annulus maps kill the extending far base lasso, so they cannot be
+treated as injective edge maps of an ordinary Bass-Serre graph of
+groups. No global tree, contractible complex or asphericity is
+asserted for the filled group.
+
+7. Uniform nonlinear coefficient transport, with its section cocycle
+
+The group G has elements g=(u,v,t), with u in R_A, v in R_B and
+t in T, and product
+
+  (u,v,t)(a,b,s)=(u*tau_t(a),v*tau_beta(t)(b),t*s).
+
+Use the literal comb section into W
+
+  q_g=v_B*u_A*t.
+
+It is a set section, NOT a group homomorphism. Write rho_g for
+conjugation by q_g on N_gen. For h=(a,b,s), direct free reduction
+gives
+
+  q_g*q_h=omega(g,h)*q_(gh),
+  omega(g,h)=v*[u,tau_beta(t)(b)]*v^-1 in N_gen,
+  rho_g*rho_h=Inn(omega(g,h))*rho_(gh).
+
+All commutators in this note are [x,y]=x*y*x^-1*y^-1. Associativity
+of the three literal section words gives the full nonabelian
+cocycle identity
+
+  omega(g,h)*omega(gh,k)
+    =rho_g(omega(h,k))*omega(g,hk).
+
+Thus replacing this crossed action by a strict G action on N_gen
+would discard an actual correction. The G action on its
+abelianization is strict because these inner corrections vanish
+there. Different W lifts of the same g also differ by an inner
+N_gen action; this is why the whole normal closure in section4
+is well-defined without a splitting.
+
+Here is a uniform exact formula on every nonlinear comb generator.
+For c(a,b,x)=b*[a,x]*b^-1, put
+
+  a'=tau_t(a), b'=tau_beta(t)(b), x'=tau_beta(t)(x),
+  P_g(b)=v*[u,b']*v^-1.
+
+Then
+
+  rho_g(c(a,b,x))
+   =P_g(b) * c(u*a',v*b',x') * c(u,v*b',x')^-1 * P_g(b)^-1.
+
+Set c(1,b,x)=1. The retained action is the actual literal shift on
+the positive Schreier basis, so x' is again one positive B basis
+letter; no old/source automorphism is substituted for that shift.
+To verify the formula, use
+
+  [u*a',x']*[u,x']^-1=u*[a',x']*u^-1,
+  P_g(b)*(v*b'*u)=v*u*b',
+
+and expand both sides. The correction P_g(b) is itself a finite
+comb word: follow the B-tree path from v to v*b' with fixed A
+coordinate u, appending c(u,current_vertex,x) for a positive edge
+and the inverse at the following vertex for a negative edge.
+The telescoping identity is exactly
+P_g(b)=v*[u,b']*v^-1, so this is a uniform effective formula, not
+only a statement in abelianization. Its abelianization is precisely
+B103's at-most-two-term retained G action.
+
+There is also an exact involution formula. Identify the common R
+labels of A and B as throughout B91--B104, and let C(u;w) be the
+comb word along the B path from1 to w with A coordinate u. The
+prefix identity gives C(u;w)=[u_A,w_B]. Hence
+
+  F(c(a,b,x))=C(b;a)*C(b*x;a)^-1.
+
+Indeed [b,a]*[b*x,a]^-1=b*[a,x]*b^-1, with the factor roles
+interchanged on the right. This is a nonlinear word of at most
+2*length_R(a) before cancellation, not a permutation of comb
+generators. Finally F(g)=(v,u,beta(t)), and the section has defect
+
+  F(q_g)=eta(g)*q_(F(g)),  eta(g)=[v_A,u_B].
+
+Consequently
+
+  F*rho_g*F=Inn(eta(g))*rho_(F(g)),
+  F(eta(g))*eta(F(g))=1.
+
+These identities retain the actual compatibility between the
+coefficient lifts and involution. They provide exact rewriting
+operations for all coefficient words and all comb generators.
+They neither decide a whole normal-closure membership question
+nor prove a simultaneous node basis, a full-column overlap, a
+fixed lift, or a value of kappa.
+
+8. Small universal nonlinear certificate
+
+Producer and genuine output/error:
+  work_CE/code/check_nonlinear_comb_transport.py
+  work_CE/code/check_nonlinear_comb_transport.out
+  work_CE/code/check_nonlinear_comb_transport.err
+Exact free-word records:
+  work_CE/next_symmetric_nodes/nonlinear_comb_transport_identities.json
+
+The checker imposes no mixed commutation. Formal U,A denote first
+factor words and V,B,X second factor words. It verifies seven
+literal identities: positive and negative B-prefix rules; section
+product cocycle; uniform nonlinear coefficient transport;
+involution comb transport; involution section defect; and its
+square. Since these are free-word identities, arbitrary factor
+words and the actual retained shifts can be substituted. The
+three-variable cocycle law follows from associativity of q_g*q_h*q_k
+as proved above; it is not claimed as an additional executed test.
+All seven executed checks PASS; stderr is empty. No giant word
+expansion or further node-orbit search is performed.
