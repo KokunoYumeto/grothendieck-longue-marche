@@ -1,0 +1,42 @@
+--- code/verify_checkpoint39_system_tars_images640.py
++++ code/verify_checkpoint39_system_tars_images640_data512.py
+@@ -44,7 +44,7 @@
+     assert properties[:2] == bytes([9, 4])
+     assert struct.unpack('<H', properties[2:4])[0] == 5
+     data_dictionary_bytes = struct.unpack('<I', properties[5:9])[0]
+-    assert data_dictionary_bytes == 268435456 == packaging['data_lzma_dictionary_bytes']
++    assert data_dictionary_bytes == 536870912 == packaging['data_lzma_dictionary_bytes']
+     image_info = z.getinfo(prefix+'verification_images.tar')
+     with archive.open('rb') as raw:
+         raw.seek(image_info.header_offset)
+@@ -84,6 +84,22 @@
+     assert container_names <= set(direct)
+     direct_logical = set(direct) - container_names - {manifest_name}
+     assert direct_logical <= manifest_paths
++    supplements = packaging['revision_supplement_paths']
++    assert isinstance(supplements, list) and all(isinstance(p, str) for p in supplements)
++    assert len(supplements) == len(set(supplements)), 'Duplicate revision supplement'
++    base_direct = {'RESTORE_CHECKPOINT.txt', 'records/checkpoint_39_packaging.json',
++                   'records/checkpoint39_spool_preflight.json'}
++    forbidden = base_direct | {'records/checkpoint_39_contents_sha256.tsv',
++                              'verification_images.tar', 'historical_documents.tar',
++                              'historical_data.tar'}
++    for supplement in supplements:
++        path = PurePosixPath(supplement)
++        assert supplement and not path.is_absolute() and '..' not in path.parts
++        assert str(path) == supplement and not any(c in supplement for c in '\x00\n\r\t\\')
++        assert supplement not in forbidden and path.suffix.lower() not in {'.png', '.pdf', '.tar'}
++        assert prefix + supplement in manifest_paths, 'Unmanifested revision supplement'
++    assert direct_logical == {prefix + p for p in base_direct | set(supplements)}, \
++        'Actual direct logical entries differ from the explicit revision declaration'
+     image_paths = {prefix + row['path'] for row in specifications[0][3]}
+     document_paths = {prefix + row['path'] for row in specifications[1][3]}
+     assert main_pdf in document_paths, 'Original main-PDF path missing from document partition'
+@@ -99,6 +115,7 @@
+     specifications.append(('data', 'historical_data.tar', 'data', data_rows))
+     report['manifest_partition'] = {
+         'logical_manifest_rows': len(rows), 'direct_logical_rows': len(direct_logical),
++        'revision_supplement_paths': supplements, 'exact_declared_direct_partition': 'PASS',
+         'image_rows': len(image_paths), 'document_rows': len(document_paths),
+         'data_rows': len(data_paths), 'pairwise_disjoint_and_complete': 'PASS',
+         'data_selection': 'Exact complement of actual direct, image and document rows in the immutable manifest.',

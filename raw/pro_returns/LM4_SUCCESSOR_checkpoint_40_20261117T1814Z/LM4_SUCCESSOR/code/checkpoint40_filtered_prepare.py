@@ -1,0 +1,315 @@
+"""Checkpoint40: exact approved derivative omissions from frozen39 inputs.
+
+All historical retention targets and every other original logical byte survive.
+The original independently verified data256 stream is reused. Images640 and
+documents256 are rebuilt only by the approved CSV filter and freshly decoded.
+All40 metadata exists only in the new external stage, with explicit supplements.
+"""
+from pathlib import Path
+import argparse
+import csv
+import hashlib
+import io
+import json
+import os
+import sys
+import tarfile
+import tempfile
+
+import checkpoint39_frozen_spools as stream
+import package_checkpoint39_frozen as oldbase
+import reseal_checkpoint39_data512 as reuse
+import package_checkpoint40_frozen as base
+
+ROOT = base.ROOT
+FIRST_SHA = 'e797d372a8937b48d5b76c209eb4b881710f364cc56979757bfb909451302102'
+SECOND_SHA = '6813d72b14ace12d6c2c15c2739551d65761655fa2b862597beb84869595319b'
+OLD_MANIFEST_SHA = 'fe8628388479d0857740d3d236c544db06117ad6f7d7a9befcda4581af4d8c8e'
+OMISSION_PATH = 'records/checkpoint40_approved_derivative_omissions.csv'
+FAILED_PDF = 'records/pdf_qa/checkpoint39_before_path_wrap/LM4_SUCCESSOR_paper.pdf'
+QA_PREFIX = 'records/pdf_qa/checkpoint39_final/'
+HISTORY = 'records/checkpoint39_prepare2/'
+RETENTION = 'records/checkpoint_version_retention.csv'
+FROZEN_MAP = 'records/checkpoint39_frozen38_entry_map.csv'
+
+
+def authorization(relative):
+    auth = base.authorization(relative)
+    rev = auth['record']['revision']
+    assert rev['kind'] == 'APPROVED_DERIVATIVE_OMISSIONS_40'
+    assert rev['predecessor_plan_sha256'] == FIRST_SHA
+    assert rev['failed_revision_plan_sha256'] == SECOND_SHA
+    assert rev['actual_prior_prepare_exit_code'] == rev['actual_revision_prepare_exit_code'] == 1
+    assert rev['actual_prior_prepare_tool_chunk'] == '7179ef'
+    assert rev['actual_revision_prepare_tool_chunk'] == '5e4aee'
+    assert rev['omissions_csv']['path'] == OMISSION_PATH
+    assert base.validate_binding(rev['omissions_csv']) == auth['checked_bindings'][OMISSION_PATH]
+    assert {RETENTION, FROZEN_MAP} <= set(auth['checked_bindings'])
+    declared = rev['supplements']
+    assert len(declared) == len(set(declared))
+    for path in declared:
+        stream.relative_path(path)
+        assert Path(path).suffix.lower() not in {'.png', '.pdf', '.tar'}
+        assert path not in base.GENERATED | {'RESTORE_CHECKPOINT.txt'}
+        assert path in auth['checked_bindings']
+    return auth
+
+
+def approved_omissions(auth, original):
+    with (ROOT/OMISSION_PATH).open(newline='') as source:
+        rows = list(csv.DictReader(source))
+    assert len(rows) == 59 and len({x['path'] for x in rows}) == 59
+    pngs = [x for x in rows if x['path'].endswith('.png')]
+    pdfs = [x for x in rows if x['path'].endswith('.pdf')]
+    assert len(pngs) == 58 and len(pdfs) == 1 and pdfs[0]['path'] == FAILED_PDF
+    assert sum(int(x['bytes']) for x in pngs) == 15018260
+    assert int(pdfs[0]['bytes']) == 5035739
+    for row in rows:
+        path = row['path']; stream.relative_path(path)
+        assert path in original
+        if path.endswith('.png'):
+            assert Path(path).parent.as_posix() == QA_PREFIX.rstrip('/')
+            assert row['regeneration_recipe'].strip()
+        assert row['reason'].strip() and row['superseded_by'].strip()
+        assert int(row['bytes']) == original[path]['bytes']
+        assert row['sha256'] == original[path]['sha256']
+        actual = stream.identity(ROOT/path)
+        assert actual['bytes'] == int(row['bytes']) and actual['sha256'] == row['sha256']
+    omitted = {row['path'] for row in rows}
+    targets, counts = set(), {}
+    for relative, expected_count in [(RETENTION, 196804), (FROZEN_MAP, 12502)]:
+        with (ROOT/relative).open(newline='') as source:
+            ledger = list(csv.DictReader(source))
+        assert len(ledger) == expected_count
+        for row in ledger:
+            path = row['retained_path']; stream.relative_path(path)
+            assert path and not row.get('omission_reason', '')
+            assert path in original and path not in omitted
+            assert original[path]['bytes'] == int(row['bytes'])
+            assert original[path]['sha256'] == row['sha256']
+            targets.add(path)
+        counts[relative] = len(ledger)
+    assert not targets & omitted
+    return rows, {'result': 'PASS_ZERO_HISTORICAL_TARGET_OMISSIONS',
+                  'ledger_rows': counts, 'distinct_retained_targets': len(targets),
+                  'approved_derivative_omissions': len(rows), 'historical_omissions': 0,
+                  'omission_csv': {'path': OMISSION_PATH, **auth['checked_bindings'][OMISSION_PATH]}}
+
+
+def filter_media(prior, stage, kind, expected_path, omissions_path, report):
+    expected = json.loads(expected_path.read_text())
+    omitted = set(json.loads(omissions_path.read_text()))
+    suffix = '.png' if kind == 'images' else '.pdf'
+    names = {p for p in expected if Path(p).suffix.lower() == suffix}
+    files, seen = [], set()
+    with tarfile.open(prior/(kind+'.tar'), 'r:') as tf:
+        for member in tf.getmembers():
+            assert member.isfile() or member.islnk()
+            assert member.name.startswith(stream.PREFIX)
+            path = member.name[len(stream.PREFIX):]; stream.relative_path(path)
+            assert path in names and path not in seen
+            seen.add(path)
+            with tf.extractfile(member) as source:
+                data = source.read()
+            assert len(data) == expected[path]['bytes']
+            assert hashlib.sha256(data).hexdigest() == expected[path]['sha256']
+            if path not in omitted:
+                files.append((path, data))
+    assert seen == names
+    assert {path for path, _ in files} == names-omitted
+    metrics = stream.write_standard_tar(files, stage/(kind+'.tar'))
+    if kind == 'images':
+        assert metrics['identity']['bytes'] <= stream.DICTIONARIES['images']
+    result = {'result': 'PASS_ORIGINAL_MEDIA_MINUS_EXACT_APPROVED_NAMES', 'kind': kind,
+              'original_raw_identity': stream.identity(prior/(kind+'.tar')),
+              'original_paths': len(names), 'omitted_paths': sorted(names & omitted),
+              'metrics': metrics, 'retained_bytes_changed': 0}
+    stream.json_exclusive(report, result)
+    print(json.dumps(result, sort_keys=True), flush=True)
+
+
+def update_bundle(package, kind, metrics, row):
+    singular = {'images': 'image', 'documents': 'document', 'data': 'data'}[kind]
+    package.update({singular+'_bundle': row['archive_name'],
+                    singular+'_bundle_bytes': metrics['identity']['bytes'],
+                    singular+'_bundle_sha256': metrics['identity']['sha256'],
+                    singular+'_paths': metrics['paths'],
+                    'unique_'+singular+'_contents': metrics['unique_contents'],
+                    'original_'+singular+'_bytes': metrics['original_bytes'],
+                    'unique_'+singular+'_bytes': metrics['unique_bytes'],
+                    singular+'_zip_method': 'ZIP_LZMA',
+                    singular+'_lzma_dictionary_bytes': stream.DICTIONARIES[kind],
+                    singular+'_compressed_bytes': row['payload_identity']['bytes'],
+                    singular+'_compressed_sha256': row['payload_identity']['sha256']})
+    package['standard_tar_hardlinks' if kind == 'images' else 'standard_tar_'+singular+'_hardlinks'] = metrics['standard_tar_hardlinks']
+
+
+def prepare(auth_relative):
+    auth = authorization(auth_relative); rev = auth['record']['revision']
+    prior = oldbase.checked_stage(rev['predecessor_stage'])
+    second = oldbase.checked_stage(rev['failed_revision_stage'])
+    assert stream.identity(prior/'sealed-plan.json')['sha256'] == FIRST_SHA
+    assert stream.identity(second/'sealed-plan.json')['sha256'] == SECOND_SHA
+    first = json.loads((prior/'sealed-plan.json').read_text())
+    failed_revision = json.loads((second/'sealed-plan.json').read_text())
+    for plan, folder, exact in [(first, prior, 547320902), (failed_revision, second, 548237023)]:
+        assert plan['result'] == 'FAIL_EXACT_CAP' and plan['checkpoint'] == 39
+        assert plan['layout']['exact_zip_bytes'] == exact and plan['layout']['delivery_cap_bytes'] == stream.CAP
+        assert stream.identity(folder/'snapshot.json') == plan['snapshot_identity']
+        for path, value in plan['source_bindings'].items():
+            assert stream.identity(ROOT/path) == value
+        for row in plan['entries']:
+            reuse.check_entry(folder, row)
+    assert stream.identity(prior/'direct'/oldbase.CONTENTS)['sha256'] == OLD_MANIFEST_SHA
+    original = reuse.original_manifest(prior)
+    omission_rows, retention_proof = approved_omissions(auth, original)
+    omitted = {row['path'] for row in omission_rows}
+    declared = set(rev['supplements']) | {auth_relative}
+    assert not declared & set(original)
+    current = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*')
+               if p.is_file() and base.exclusion_reason(p) is None}
+    assert current-set(original) == declared, ('Undeclared new inputs', sorted((current-set(original)) ^ declared))
+    assert not (ROOT.parent/'LM4_SUCCESSOR_checkpoint_40.zip').exists()
+    stage = Path(tempfile.mkdtemp(prefix='.checkpoint40_stage_', dir=ROOT.parent))
+    print('Retained checkpoint40 stage:', stage, flush=True)
+    stream.json_exclusive(stage/'original-logical-identities.json', original)
+    stream.json_exclusive(stage/'approved-omitted-paths.json', sorted(omitted))
+    byname = {row['archive_name'][len(stream.PREFIX):]: row for row in first['entries']}
+    assert set(byname) == {'RESTORE_CHECKPOINT.txt', oldbase.CONTENTS, oldbase.PACKAGING, oldbase.PREFLIGHT,
+                           'verification_images.tar', 'historical_documents.tar', 'historical_data.tar'}
+    data = reuse.reuse_entry(prior, stage, byname['historical_data.tar'])
+    assert data['dictionary_bytes'] == 256 << 20
+    entries = [reuse.reuse_entry(prior, stage, byname[p])
+               for p in ['RESTORE_CHECKPOINT.txt', oldbase.CONTENTS, oldbase.PACKAGING, oldbase.PREFLIGHT]]
+    # The second failed attempt's metadata and any stage-only historical copies
+    # are preserved; project-resident supplements are captured once below.
+    external = []
+    for row in failed_revision['entries']:
+        relative = row['archive_name'][len(stream.PREFIX):]
+        if relative.endswith('.tar') or relative == 'RESTORE_CHECKPOINT.txt':
+            continue
+        if relative in oldbase.GENERATED:
+            external.append((second, row, HISTORY+relative))
+        elif relative in declared:
+            assert stream.identity(ROOT/relative) == row['raw_identity']
+        else:
+            assert relative not in original
+            external.append((second, row, relative))
+    for folder, row, relative in external:
+        # Prefixing retained inputs with a separate stage namespace avoids
+        # collisions between the two failed attempts' same-named raw files.
+        item = reuse.reuse_entry(folder, stage/'failed-second', row, stream.PREFIX+relative)
+        for key in ['raw_path', 'payload_path', 'encoder_report_path', 'decoder_report_path']:
+            item[key] = 'failed-second/'+item[key]
+        for key in ['encoder_observed', 'decoder_observed']:
+            for output in ['stdout', 'stderr']:
+                item[key][output+'_path'] = 'failed-second/'+item[key][output+'_path']
+        item['verified_reuse']['prior_plan_sha256'] = SECOND_SHA
+        entries.append(item)
+    direct = [reuse.stage_direct(stage, path, (ROOT/path).read_bytes()) for path in sorted(declared)]
+    direct.append(reuse.stage_direct(stage, HISTORY+'sealed-plan.json', (second/'sealed-plan.json').read_bytes()))
+    # First failed plan is already present among second-attempt history entries.
+    first_plan_name = 'records/checkpoint39_prepare1/sealed-plan.json'
+    assert any(x['archive_name'] == stream.PREFIX+first_plan_name for x in entries)
+    supplemental = sorted(({x['archive_name'][len(stream.PREFIX):] for x in entries}
+                           - {'RESTORE_CHECKPOINT.txt'}) | {x['path'] for x in direct})
+    assert len(supplemental) == len(set(supplemental))
+    bundles, media_records = [], []
+    for kind, tarname in [('images', 'verification_images.tar'), ('documents', 'historical_documents.tar')]:
+        report = stage/(kind+'-filter.json')
+        actual = reuse.observed(stage, kind+'-filter', [sys.executable, str(Path(__file__).resolve()),
+            '_filter', '--prior', str(prior), '--stage', str(stage), '--kind', kind,
+            '--expected', str(stage/'original-logical-identities.json'),
+            '--omissions', str(stage/'approved-omitted-paths.json'), '--report', str(report)])
+        filtered = json.loads(report.read_text())
+        assert filtered['original_raw_identity'] == byname[tarname]['raw_identity']
+        item = stream.prepare_payload(stage, kind, kind+'.tar', filtered['metrics']['identity'], kind, ROOT)
+        item['archive_name'] = stream.PREFIX+tarname
+        bundles.append(item)
+        media_records.append({'filter_observed': actual, 'filter_result': filtered, 'stream': item})
+    bundles.append(data)
+    preflight = {'result': 'PASS_APPROVED_FILTER_AND_VERIFIED_DATA_REUSE', 'checkpoint': 40,
+                 'recorded_at': stream.utc_now(), 'authorization': auth,
+                 'first_failed39_plan_sha256': FIRST_SHA, 'second_failed39_plan_sha256': SECOND_SHA,
+                 'actual_failed39_prepare_exit_codes': [1, 1], 'approved_omissions': omission_rows,
+                 'historical_retention_check': retention_proof, 'fresh_media_streams': media_records,
+                 'verified_original_data256_reuse': data, 'revision_supplement_paths': supplemental,
+                 'creates_zip': False,
+                 'scope': 'Only the exact59 approved derivative PNG/PDF names are absent. Historical targets have zero omissions. Original raw data and verified compressed data stream are unchanged. Complete fresh media worker outputs retained; no archive result is asserted.'}
+    preflight_row = reuse.stage_direct(stage, base.PREFLIGHT, (json.dumps(preflight, indent=2, sort_keys=True)+'\n').encode())
+    package = json.loads((prior/'direct'/oldbase.PACKAGING).read_text())
+    package.update(recorded_at=stream.utc_now(), checkpoint=40,
+        encoding='ordinary ZIP with three standard PAX TAR containers and explicit approved derivative omissions',
+        omissions=59, historical_omissions=0, approved_omissions=omission_rows,
+        approved_omissions_csv={'path': OMISSION_PATH, **auth['checked_bindings'][OMISSION_PATH]},
+        original_frozen39_manifest={'path': oldbase.CONTENTS, **stream.identity(prior/'direct'/oldbase.CONTENTS)},
+        revision_supplement_paths=supplemental,
+        data_storage_policy='original39_verified_data256_unchanged_plus_declared_direct_supplements',
+        data_selection='Original frozen39 data partition unchanged. Approved omissions affect only the image/document containers. All new records are declared direct supplements.',
+        manifest_scope='Original frozen39 logical rows minus exactly59 approved derivatives, union explicit direct supplements and current40 metadata. Historical196804+12502 targets have zero omissions.',
+        spool_preflight_record={'path': base.PREFLIGHT, **preflight_row['identity']},
+        source_bindings=auth['checked_bindings'], historical_retention_check=retention_proof,
+        original_failed39_exit_codes=[1, 1], no_checkpoint39_archive_created=True)
+    for record in media_records:
+        update_bundle(package, record['filter_result']['kind'], record['filter_result']['metrics'], record['stream'])
+    packaging_row = reuse.stage_direct(stage, base.PACKAGING, (json.dumps(package, indent=2, sort_keys=True)+'\n').encode())
+    direct.extend([preflight_row, packaging_row])
+    rows = {p: v for p, v in original.items() if p not in omitted}
+    for item in entries:
+        path = item['archive_name'][len(stream.PREFIX):]
+        if path in rows:
+            assert rows[path]['bytes'] == item['raw_identity']['bytes'] and rows[path]['sha256'] == item['raw_identity']['sha256']
+        else:
+            rows[path] = item['raw_identity']
+    for item in direct:
+        assert item['path'] not in rows
+        rows[item['path']] = item['identity']
+    expected_final = (set(original)-omitted) | set(supplemental) | {base.PREFLIGHT, base.PACKAGING}
+    assert set(rows) == expected_final
+    manifest = ('sha256\tbytes\tpath\n'+''.join(f"{rows[p]['sha256']}\t{rows[p]['bytes']}\t{p}\n" for p in sorted(rows))).encode()
+    direct.append(reuse.stage_direct(stage, base.CONTENTS, manifest))
+    for index, item in enumerate(direct):
+        row = stream.prepare_payload(stage, f'direct40-{index:04d}', item['raw_path'], item['identity'], 'direct_lzma', ROOT)
+        row['archive_name'] = stream.PREFIX+item['path']; entries.append(row)
+    assert {x['archive_name'][len(stream.PREFIX):] for x in entries} == (
+        {'RESTORE_CHECKPOINT.txt', base.CONTENTS, base.PACKAGING, base.PREFLIGHT} | set(supplemental))
+    entries.extend(bundles)
+    assert authorization(auth_relative) == auth
+    snapshot = {'checkpoint': 40, 'authorization': auth, 'predecessor_failed_plans': [FIRST_SHA, SECOND_SHA],
+                'approved_omissions': omission_rows, 'historical_retention_check': retention_proof,
+                'logical_file_count': len(rows)+1, 'revision_supplement_paths': supplemental,
+                'exact_logical_set_equality_checked': True}
+    stream.json_exclusive(stage/'snapshot.json', snapshot)
+    layout = stream.exact_layout(entries)
+    plan = {'result': 'PASS_SEALED_EXACT_SIZE' if layout['exact_zip_bytes'] <= stream.CAP else 'FAIL_EXACT_CAP',
+            'checkpoint': 40, 'sealed_at': stream.utc_now(), 'stage': str(stage),
+            'snapshot_identity': stream.identity(stage/'snapshot.json'), 'authorization': auth,
+            'source_bindings': auth['checked_bindings'], 'runtime': auth['runtime'],
+            'logical_file_count': len(rows)+1, 'entries': entries, 'layout': layout,
+            'zip_metadata': first['zip_metadata'], 'output': str(ROOT.parent/'LM4_SUCCESSOR_checkpoint_40.zip'),
+            'open_not_before': base.OPEN_NOT_BEFORE.isoformat(), 'open_before': base.OPEN_BEFORE.isoformat(),
+            'archive_created': False, 'approved_omissions': omission_rows,
+            'historical_retention_check': retention_proof, 'revision_supplement_paths': supplemental,
+            'external_evidence_disclosure': first['external_evidence_disclosure']}
+    stream.json_exclusive(stage/'sealed-plan.json', plan)
+    for path in stage.rglob('*'):
+        if path.is_file(): path.chmod(0o400)
+    print(json.dumps({'result': plan['result'], 'stage': str(stage), 'plan': str(stage/'sealed-plan.json'),
+                      'plan_identity': stream.identity(stage/'sealed-plan.json'), 'layout': layout,
+                      'logical_file_count': len(rows)+1, 'approved_omissions': 59,
+                      'historical_omissions': 0, 'creates_zip': False}, indent=2), flush=True)
+    assert plan['result'] == 'PASS_SEALED_EXACT_SIZE', 'Exact40 cap fails; no ZIP, all inputs and streams retained'
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('command', choices=['_filter'])
+    for flag in ['prior', 'stage', 'kind', 'expected', 'omissions', 'report']:
+        parser.add_argument('--'+flag, required=True)
+    args = parser.parse_args()
+    assert args.kind in {'images', 'documents'}
+    filter_media(Path(args.prior), Path(args.stage), args.kind, Path(args.expected), Path(args.omissions), Path(args.report))
+
+
+if __name__ == '__main__':
+    main()

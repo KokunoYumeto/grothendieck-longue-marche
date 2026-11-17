@@ -1,0 +1,91 @@
+--- code/verify_checkpoint39_retention.py
++++ code/verify_checkpoint40_retention.py
+@@ -1,6 +1,6 @@
+-"""Verify closed39 archive1--37 ancestry and the distinct frozen38 snapshot.
++"""Verify closed40 archive1--37 ancestry and the distinct frozen38 snapshot.
+ 
+-Uses immutable39 payloads and the actual verified37 ZIP; never opens partial38
++Uses immutable40 payloads and the actual verified37 ZIP; never opens partial38
+ or consults mutable project payloads. Source identities are checked separately.
+ """
+ from pathlib import Path
+@@ -15,17 +15,27 @@
+     sha, metadata_of, manifest_metadata, file_identity, check_frozen_ancestry,
+ )
+ 
++BASELINE_MANIFEST = 'records/checkpoint_39_contents_sha256.tsv'
++BASELINE_MANIFEST_SHA = 'fe8628388479d0857740d3d236c544db06117ad6f7d7a9befcda4581af4d8c8e'
++BASELINE_MANIFEST_BYTES = 1538629
++BASELINE_LOGICAL_COUNT = 12758
++OMISSIONS_CSV = 'records/checkpoint40_approved_derivative_omissions.csv'
++OMISSIONS_CSV_SHA = '947c60823e46447a8eb3d3306d0ab07b9e63e1afd03cb160d71b76f772c4f615'
++OMISSIONS_CSV_BYTES = 26723
++OMISSION_FIELDS = ['path', 'bytes', 'sha256', 'reason', 'superseded_by', 'regeneration_recipe']
++SUPERSEDED_LAYOUT = 'records/pdf_qa/checkpoint39_before_path_wrap/LM4_SUCCESSOR_paper.pdf'
++
+ 
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('--archive', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_39.zip')
++    parser.add_argument('--archive', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_40.zip')
+     parser.add_argument('--parent37', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_37.zip')
+     args = parser.parse_args()
+     require(args.archive.stat().st_size <= 536870912, 'Archive exceeds cap')
+     with CheckpointReader(args.archive) as reader:
+-        manifest_rel = 'records/checkpoint_39_contents_sha256.tsv'
++        manifest_rel = 'records/checkpoint_40_contents_sha256.tsv'
+         current_meta = manifest_metadata(reader.read(PREFIX + manifest_rel), manifest_rel)
+-        require(set(reader.names()) == {PREFIX + p for p in current_meta}, 'Closed39 manifest coverage differs')
++        require(set(reader.names()) == {PREFIX + p for p in current_meta}, 'Closed40 manifest coverage differs')
+         cert = json.loads(reader.read(PREFIX + CERTIFICATE))
+         require(cert['schema'] == 'checkpoint39-archive-and-frozen-retention-v1'
+                 and cert['child_number'] == 39 and cert['snapshot_number'] == 38
+@@ -33,7 +43,7 @@
+                 and cert['archive37_appended_again'] is False, 'Wrong final retention scope')
+         require(sha(reader.read(PREFIX + REPORT)) == REPORT_SHA == cert['recovery_report_sha256']
+                 and sha(reader.read(PREFIX + INVENTORY)) == INVENTORY_SHA == cert['recovery_inventory_sha256'],
+-                'Recovery evidence changed in39')
++                'Recovery evidence changed in40')
+         mapping_raw = reader.read(PREFIX + FROZEN_MAP)
+         require(sha(mapping_raw) == cert['frozen_snapshot_map_sha256'], 'Frozen map certificate mismatch')
+         mapping, frozen_meta = {}, {}
+@@ -43,7 +53,7 @@
+             require(rel not in mapping and row['source_kind'] == 'frozen_capture_snapshot'
+                     and row['source_manifest_sha256'] == FROZEN_MANIFEST_SHA, 'Invalid frozen map row')
+             expected = {'bytes': int(row['bytes']), 'sha256': row['sha256']}
+-            require(current_meta[target] == expected, 'Frozen map target absent or wrong in39')
++            require(current_meta[target] == expected, 'Frozen map target absent or wrong in40')
+             if target not in verified_targets:
+                 data = reader.read(PREFIX + target)
+                 verified_targets[target] = dict(metadata_of(data), crc32=zlib.crc32(data) & 0xffffffff)
+@@ -88,6 +98,18 @@
+                 and summary['frozen_snapshot_entries'] == FROZEN_COUNT
+                 and summary['checkpoint38_verified_archive'] is False and summary['omissions'] == 0,
+                 'Final summary/readme mismatch')
++        omission_raw = reader.read(PREFIX + OMISSIONS_CSV)
++        require(metadata_of(omission_raw) == {'bytes': OMISSIONS_CSV_BYTES,
++                                             'sha256': OMISSIONS_CSV_SHA},
++                'Approved current-derivative omission ledger changed')
++        omission_rows = csv_rows(omission_raw, OMISSION_FIELDS)
++        omitted = {relative(r['path']) for r in omission_rows}
++        require(len(omission_rows) == len(omitted) == 59 and not omitted.intersection(current_meta),
++                'Wrong current-derivative omission count or presence')
++        protected = {r[k] for r in rows + list(mapping.values())
++                     for k in ('original_path', 'retained_path')}
++        require(not omitted.intersection(protected),
++                'Current derivative omission intersects an archived or frozen historical identity')
+         for rel, expected in cert['source_bindings'].items():
+             data = reader.read(PREFIX + relative(rel))
+             require(dict(metadata_of(data), crc32=zlib.crc32(data) & 0xffffffff) == expected
+@@ -99,7 +121,10 @@
+               'archive_identity_tuples_and_order': 'PASS', 'exact_retained_path_composition': 'PASS',
+               'every_frozen_original_path_and_byte': 'PASS', 'forced_old_mutable_versions': 'PASS',
+               'checkpoint38_archive_verified': False, 'checkpoint38_process_exit_inferred': False,
+-              'duplicate37_append': False, 'omissions': 0, 'mutable_workspace_payloads_used': False,
++              'duplicate37_append': False, 'historical_omissions': 0, 'frozen_snapshot_omissions': 0,
++              'approved_current_derivative_omissions': len(omitted),
++              'retention_certificate_preparation_number': 39, 'delivery_archive_number': 40,
++              'verified_archive39_parent_claimed': False, 'mutable_workspace_payloads_used': False,
+               'archives1_to36_reopened': False}
+     print(json.dumps(result, indent=2, sort_keys=True))
+ 

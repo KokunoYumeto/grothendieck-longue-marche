@@ -1,0 +1,316 @@
+--- code/package_checkpoint39_frozen.py
++++ code/package_checkpoint40_frozen.py
+@@ -1,41 +1,29 @@
+-"""Prepare checkpoint39 once; assemble its sole ZIP by sealed bounded replay.
+-
+-prepare: actual snapshot -> three retained TAR spools/full independent decodes
+- -> deferred direct worker evidence -> final manifests/direct spools -> seal.
+-assemble: validate the exact seal -> one deadline-guarded exclusive ZIP.
+-No parent ZIP is opened.  In particular no verified checkpoint38 is assumed.
++"""Separate checkpoint40 authorization and sole exact sealed ZIP assembly.
++
++No39 source or input is modified. Preparation explicitly applies only the
++approved59 derivative omissions and proves zero historical-target omissions.
+ """
+-from datetime import datetime, timezone
+ from pathlib import Path
++from datetime import datetime,timezone
+ import argparse
+-import csv
+-import hashlib
+-import io
+ import json
+ import os
+-import subprocess
+-import sys
+-import tempfile
+ import zipfile
+-
+-from checkpoint39_frozen_spools import (
+-    CAP, DEPENDENCIES, DICTIONARIES, PREFIX, bytes_identity, exact_layout,
+-    identity, json_exclusive, prepare_payload, relative_path, replay_entry,
+-    runtime_contract, utc_now, verify_archived_spans, write_exclusive, write_standard_tar)
+-
+-ROOT = Path(__file__).resolve().parents[1]
+-NUMBER = 39
+-CONTENTS = 'records/checkpoint_39_contents_sha256.tsv'
+-PACKAGING = 'records/checkpoint_39_packaging.json'
+-EXCLUSIONS = 'records/checkpoint_39_exclusions.csv'
+-PREFLIGHT = 'records/checkpoint39_spool_preflight.json'
+-GENERATED = {CONTENTS, PACKAGING, PREFLIGHT}
+-DIRECT_EXCEPTIONS = GENERATED | {'RESTORE_CHECKPOINT.txt'}
+-SOURCES = ['code/package_checkpoint39_frozen.py', 'code/checkpoint39_frozen_spools.py'] + list(DEPENDENCIES)
+-PAUSED_AGENTS = {'/root/involutions', '/root/torus_real', '/root/topology_census'}
+-OPEN_NOT_BEFORE = datetime(2026, 11, 17, 18, 49, 30, tzinfo=timezone.utc)
+-OPEN_BEFORE = datetime(2026, 11, 17, 19, 49, 30, tzinfo=timezone.utc)
+-
++from checkpoint39_frozen_spools import (CAP, DEPENDENCIES, PREFIX, identity,
++    relative_path, runtime_contract, exact_layout, json_exclusive, replay_entry,
++    utc_now, verify_archived_spans)
++ROOT=Path(__file__).resolve().parents[1]
++NUMBER=40
++CONTENTS='records/checkpoint_40_contents_sha256.tsv'
++PACKAGING='records/checkpoint_40_packaging.json'
++PREFLIGHT='records/checkpoint40_spool_preflight.json'
++GENERATED={CONTENTS,PACKAGING,PREFLIGHT}
++SOURCES=['code/package_checkpoint40_frozen.py','code/checkpoint40_filtered_prepare.py',
++         'code/package_checkpoint39_frozen.py','code/reseal_checkpoint39_data512.py',
++         'code/checkpoint39_frozen_spools.py']+list(DEPENDENCIES)
++PAUSED_AGENTS={'/root/involutions','/root/torus_real','/root/topology_census'}
++OPEN_NOT_BEFORE=datetime(2026,11,17,19,49,30,tzinfo=timezone.utc)
++OPEN_BEFORE=datetime(2026,11,17,20,49,30,tzinfo=timezone.utc)
+ 
+ def validate_binding(binding):
+     relative_path(binding['path'])
+@@ -98,197 +86,11 @@
+     return None
+ 
+ 
+-def data_member(relative):
+-    return Path(relative).suffix.lower() not in {'.png', '.pdf', '.tar'} and relative not in DIRECT_EXCEPTIONS
+-
+-
+ def checked_stage(stage):
+     stage = Path(stage).resolve()
+-    assert stage.parent == ROOT.parent.resolve() and stage.name.startswith('.checkpoint39_stage_')
++    assert stage.parent == ROOT.parent.resolve() and stage.name.startswith('.checkpoint40_stage_')
+     assert stage.is_dir() and not stage.is_symlink()
+     return stage
+-
+-
+-def stage_snapshot(stage, authorization_relative):
+-    stage = checked_stage(stage)
+-    assert set(x.name for x in stage.iterdir()) <= {'stage.out', 'stage.err'}
+-    auth = authorization(authorization_relative)
+-    for relative in GENERATED | {EXCLUSIONS}:
+-        assert not (ROOT/relative).exists(), ('Preserve any predecessor before preparing', relative)
+-    excluded, contents = [], []
+-    frozen_at = utc_now()
+-    for f in sorted(ROOT.rglob('*')):
+-        if not f.is_file():
+-            continue
+-        relative = f.relative_to(ROOT).as_posix()
+-        relative_path(relative)
+-        why = exclusion_reason(f)
+-        if why:
+-            excluded.append((relative, why))
+-        else:
+-            assert relative not in GENERATED | {EXCLUSIONS}
+-            contents.append((relative, f.read_bytes()))
+-    table = io.StringIO(newline='')
+-    writer = csv.writer(table)
+-    writer.writerow(['path', 'reason'])
+-    writer.writerows(excluded)
+-    exclusion_bytes = table.getvalue().encode()
+-    write_exclusive(ROOT/EXCLUSIONS, exclusion_bytes)
+-    contents.append((EXCLUSIONS, exclusion_bytes))
+-    contents.sort()
+-    names = [relative for relative, _ in contents]
+-    assert len(names) == len(set(names))
+-    rows = [{'path': relative, **bytes_identity(data)} for relative, data in contents]
+-    frozen_sources = dict(contents)
+-    source_bindings = {relative: bytes_identity(frozen_sources[relative]) for relative in SOURCES}
+-    for relative, expected in source_bindings.items():
+-        assert identity(ROOT/relative) == expected
+-    assert bytes_identity(frozen_sources[authorization_relative]) == auth['identity']
+-    image_files = [(r, d) for r, d in contents if Path(r).suffix.lower() == '.png']
+-    document_files = [(r, d) for r, d in contents if Path(r).suffix.lower() == '.pdf']
+-    data_files = [(r, d) for r, d in contents if data_member(r)]
+-    buckets = {'images': image_files, 'documents': document_files, 'data': data_files}
+-    bucket_paths = [set(r for r, _ in files) for files in buckets.values()]
+-    assert all(not bucket_paths[i] & bucket_paths[j] for i in range(3) for j in range(i+1, 3))
+-    bundled = set().union(*bucket_paths)
+-    bundles = []
+-    archive_names = {'images': 'verification_images.tar', 'documents': 'historical_documents.tar', 'data': 'historical_data.tar'}
+-    for kind, files in buckets.items():
+-        metrics = write_standard_tar(files, stage/(kind+'.tar'))
+-        if kind == 'images':
+-            assert metrics['identity']['bytes'] <= DICTIONARIES['images'], 'Image TAR exceeds640MiB; fail before any encoder'
+-        bundles.append({'kind': kind, 'raw_path': kind+'.tar',
+-                        'archive_name': PREFIX+archive_names[kind], 'metrics': metrics})
+-    direct = []
+-    for relative, data in contents:
+-        if relative in bundled:
+-            continue
+-        write_exclusive(stage/'direct'/relative, data)
+-        direct.append({'path': relative, 'raw_path': 'direct/'+relative, 'identity': bytes_identity(data)})
+-    assert len(direct)+sum(row['metrics']['paths'] for row in bundles) == len(contents)
+-    assert PREFLIGHT not in names and all(not data_member(x) for x in DIRECT_EXCEPTIONS)
+-    assert authorization(authorization_relative)['identity'] == auth['identity']
+-    metadata = {'checkpoint': NUMBER, 'frozen_at': frozen_at, 'authorization': auth,
+-                'source_bindings': source_bindings, 'logical_rows_before_generated': rows,
+-                'direct_before_generated': direct, 'bundles': bundles,
+-                'declared_deferred_direct_paths': [PREFLIGHT],
+-                'generated_final_direct_paths': [PACKAGING, CONTENTS],
+-                'parent_scope': 'No parent ZIP read. The separately authorized retention ledger binds verified archives1-37 and the recovered frozen38 identity map; no verified archive38 is asserted.'}
+-    json_exclusive(stage/'snapshot.json', metadata)
+-    print('Actual frozen39 snapshot staged; no encoder, decoder or ZIP opened.', len(rows), flush=True)
+-
+-
+-def emit_project_and_stage_direct(stage, relative, data):
+-    assert relative in GENERATED
+-    write_exclusive(ROOT/relative, data)
+-    write_exclusive(stage/'direct'/relative, data)
+-    return {'path': relative, 'raw_path': 'direct/'+relative, 'identity': bytes_identity(data)}
+-
+-
+-def package_record(snapshot, bundles, preflight_identity):
+-    result = {'recorded_at': utc_now(), 'checkpoint': NUMBER,
+-              'encoding': 'ordinary ZIP with three standard PAX TAR containers; every original logical path retained',
+-              'omissions': 0, 'data_storage_policy': 'all_text_except_current_manifests_restore_and_declared_spool_preflight',
+-              'data_selection': 'All non-PNG/PDF/TAR logical files except current39 contents/packaging, RESTORE_CHECKPOINT.txt and records/checkpoint39_spool_preflight.json. Every prior manifest remains in the data TAR.',
+-              'current_main_pdf_storage': 'standard_document_tar_at_original_logical_path',
+-              'current_main_pdf': PREFIX+'LM4_SUCCESSOR_paper.pdf',
+-              'spool_preflight_record': {'path': PREFLIGHT, **preflight_identity},
+-              'snapshot_frozen_at': snapshot['frozen_at'], 'source_bindings': snapshot['source_bindings'],
+-              'parent_scope': snapshot['parent_scope'],
+-              'manifest_scope': 'Every original logical path and byte, plus the deferred direct preflight and generated packaging record; contents TSV omits only its own self-hash.',
+-              'external_postseal_evidence': 'Direct-metadata encoding evidence, final exact-size seal/readiness, actual assembly, and postclosure verification are retained outside the frozen snapshot. They cannot be included self-referentially or inserted after sealing.',
+-              'restoration': 'From the ZIP extraction parent: tar -xf LM4_SUCCESSOR/verification_images.tar; tar -xf LM4_SUCCESSOR/historical_documents.tar; tar -xf LM4_SUCCESSOR/historical_data.tar'}
+-    for kind, singular in [('images', 'image'), ('documents', 'document'), ('data', 'data')]:
+-        row = next(x for x in snapshot['bundles'] if x['kind'] == kind)
+-        spool = next(x for x in bundles if x['kind'] == kind)
+-        m = row['metrics']
+-        result.update({singular+'_bundle': row['archive_name'], singular+'_bundle_bytes': m['identity']['bytes'],
+-                       singular+'_bundle_sha256': m['identity']['sha256'], singular+'_paths': m['paths'],
+-                       'unique_'+singular+'_contents': m['unique_contents'],
+-                       'original_'+singular+'_bytes': m['original_bytes'], 'unique_'+singular+'_bytes': m['unique_bytes'],
+-                       singular+'_zip_method': 'ZIP_LZMA', singular+'_lzma_dictionary_bytes': DICTIONARIES[kind],
+-                       singular+'_compressed_bytes': spool['payload_identity']['bytes'],
+-                       singular+'_compressed_sha256': spool['payload_identity']['sha256']})
+-        result['standard_tar_hardlinks' if kind == 'images' else 'standard_tar_'+singular+'_hardlinks'] = m['standard_tar_hardlinks']
+-    return result
+-
+-
+-def prepare(authorization_relative):
+-    authorization(authorization_relative)
+-    out = ROOT.parent/'LM4_SUCCESSOR_checkpoint_39.zip'
+-    assert not out.exists(), 'Never overwrite a checkpoint'
+-    stage = Path(tempfile.mkdtemp(prefix='.checkpoint39_stage_', dir=ROOT.parent))
+-    print('Retained external stage:', stage, flush=True)
+-    started = utc_now()
+-    with (stage/'stage.out').open('xb') as stdout, (stage/'stage.err').open('xb') as stderr:
+-        child = subprocess.run([sys.executable, str(Path(__file__).resolve()), '_stage',
+-                                '--stage', str(stage), '--authorization', authorization_relative],
+-                               stdout=stdout, stderr=stderr, check=False)
+-    stage_observed = {'started_at': started, 'finished_at': utc_now(), 'returncode': child.returncode,
+-                      'stdout_identity': identity(stage/'stage.out'), 'stderr_identity': identity(stage/'stage.err'),
+-                      'stdout_utf8': (stage/'stage.out').read_text(), 'stderr_utf8': (stage/'stage.err').read_text()}
+-    json_exclusive(stage/'stage-observed.json', stage_observed)
+-    assert child.returncode == 0, 'Snapshot failed; retained stage and complete output identify the failure'
+-    snapshot = json.loads((stage/'snapshot.json').read_text())
+-    bundles = []
+-    for row in snapshot['bundles']:
+-        prepared = prepare_payload(stage, row['kind'], row['raw_path'], row['metrics']['identity'], row['kind'], ROOT)
+-        prepared['archive_name'] = row['archive_name']
+-        bundles.append(prepared)
+-    assert authorization(authorization_relative)['identity'] == snapshot['authorization']['identity']
+-    preflight = {'result': 'PASS_THREE_FRESH_TAR_STREAMS_INDEPENDENTLY_DECODED',
+-                 'recorded_at': utc_now(), 'checkpoint': NUMBER, 'snapshot_frozen_at': snapshot['frozen_at'],
+-                 'external_stage': str(stage), 'stage_observed': stage_observed,
+-                 'source_bindings': snapshot['source_bindings'], 'runtime': snapshot['authorization']['runtime'],
+-                 'authorization_binding': {'path': authorization_relative, **snapshot['authorization']['identity']},
+-                 'three_tar_streams': bundles, 'creates_zip': False,
+-                 'scope': 'These are actual successful child returncodes and complete stdout/stderr, not a final archive/readiness claim. All three raw and compressed streams are retained. Direct metadata encoding and the exact final size are subsequent external evidence.'}
+-    direct = list(snapshot['direct_before_generated'])
+-    preflight_bytes = (json.dumps(preflight, indent=2, sort_keys=True)+'\n').encode()
+-    preflight_row = emit_project_and_stage_direct(stage, PREFLIGHT, preflight_bytes)
+-    direct.append(preflight_row)
+-    packaging_bytes = (json.dumps(package_record(snapshot, bundles, preflight_row['identity']), indent=2, sort_keys=True)+'\n').encode()
+-    packaging_row = emit_project_and_stage_direct(stage, PACKAGING, packaging_bytes)
+-    direct.append(packaging_row)
+-    rows = list(snapshot['logical_rows_before_generated']) + [
+-        {'path': x['path'], **x['identity']} for x in [preflight_row, packaging_row]]
+-    assert len(rows) == len({x['path'] for x in rows})
+-    manifest_bytes = ('sha256\tbytes\tpath\n'+''.join(
+-        f"{x['sha256']}\t{x['bytes']}\t{x['path']}\n" for x in sorted(rows, key=lambda x: x['path']))).encode()
+-    direct.append(emit_project_and_stage_direct(stage, CONTENTS, manifest_bytes))
+-    entries = []
+-    for index, row in enumerate(sorted(direct, key=lambda x: x['path'])):
+-        kind = 'direct_deflate' if Path(row['path']).suffix.lower() in {'.pdf', '.jpg', '.jpeg', '.gif', '.zip', '.gz', '.xz', '.tar'} else 'direct_lzma'
+-        prepared = prepare_payload(stage, f'direct-{index:04d}', row['raw_path'], row['identity'], kind, ROOT)
+-        prepared['archive_name'] = PREFIX+row['path']
+-        entries.append(prepared)
+-    entries.extend(bundles)
+-    logical_count = len(rows)+1
+-    assert logical_count == len(direct)+sum(x['metrics']['paths'] for x in snapshot['bundles'])
+-    assert authorization(authorization_relative)['identity'] == snapshot['authorization']['identity']
+-    layout = exact_layout(entries)
+-    frozen = datetime.fromisoformat(snapshot['frozen_at'])
+-    plan = {'result': 'PASS_SEALED_EXACT_SIZE' if layout['exact_zip_bytes'] <= CAP else 'FAIL_EXACT_CAP',
+-            'checkpoint': NUMBER, 'sealed_at': utc_now(), 'stage': str(stage),
+-            'snapshot_identity': identity(stage/'snapshot.json'), 'authorization': snapshot['authorization'],
+-            'source_bindings': snapshot['source_bindings'], 'runtime': snapshot['authorization']['runtime'],
+-            'logical_file_count': logical_count, 'entries': entries, 'layout': layout,
+-            'zip_metadata': {'date_time': list(frozen.timetuple()[:6]), 'entry_extra_hex': '',
+-                             'entry_comment_hex': '', 'archive_comment_hex': '', 'create_system': 3,
+-                             'external_attr': 0o600 << 16, 'seekable': True, 'allow_zip64': False,
+-                             'data_descriptors': False, 'filename_encoding': 'ASCII'},
+-            'output': str(out), 'open_not_before': OPEN_NOT_BEFORE.isoformat(),
+-            'open_before': OPEN_BEFORE.isoformat(), 'archive_created': False,
+-            'external_evidence_disclosure': 'All direct-metadata encoding, exact seal/readiness, assembly and postverification observations remain external; no file can be added to the sealed archive input.'}
+-    json_exclusive(stage/'sealed-plan.json', plan)
+-    plan_identity = identity(stage/'sealed-plan.json')
+-    for f in stage.rglob('*'):
+-        if f.is_file():
+-            f.chmod(0o400)
+-    print(json.dumps({'stage': str(stage), 'plan': str(stage/'sealed-plan.json'),
+-                      'plan_identity': plan_identity, 'result': plan['result'], 'layout': layout,
+-                      'logical_file_count': logical_count, 'creates_zip': False}, indent=2), flush=True)
+-    assert plan['result'] == 'PASS_SEALED_EXACT_SIZE', 'Exact sealed archive exceeds cap; no ZIP opened; all evidence retained'
+ 
+ 
+ def validate_seal(stage, expected_sha):
+@@ -296,7 +98,7 @@
+     assert identity(stage/'sealed-plan.json')['sha256'] == expected_sha
+     plan = json.loads((stage/'sealed-plan.json').read_text())
+     assert plan['result'] == 'PASS_SEALED_EXACT_SIZE' and plan['checkpoint'] == NUMBER
+-    assert plan['stage'] == str(stage) and plan['output'] == str(ROOT.parent/'LM4_SUCCESSOR_checkpoint_39.zip')
++    assert plan['stage'] == str(stage) and plan['output'] == str(ROOT.parent/'LM4_SUCCESSOR_checkpoint_40.zip')
+     assert identity(stage/'snapshot.json') == plan['snapshot_identity']
+     assert authorization(plan['authorization']['path']) == plan['authorization']
+     assert runtime_contract(ROOT) == plan['runtime']
+@@ -347,7 +149,7 @@
+             # The time is checked again immediately before the inherited open.
+             assert OPEN_NOT_BEFORE <= datetime.now(timezone.utc) < OPEN_BEFORE
+             super().__init__(file, mode=mode, **kwargs)
+-    print('All sealed identities validated; entering sole exclusive39 constructor.', utc_now(), flush=True)
++    print('All sealed identities validated; entering sole exclusive40 constructor.', utc_now(), flush=True)
+     try:
+         with ExclusiveDeadlineZipFile(out, 'x', allowZip64=False) as z:
+             assert z._seekable and z.start_dir == 0 and z.comment == b''
+@@ -392,24 +194,16 @@
+ 
+ 
+ def main():
+-    parser = argparse.ArgumentParser()
+-    commands = parser.add_subparsers(dest='command', required=True)
+-    prepare_parser = commands.add_parser('prepare')
+-    prepare_parser.add_argument('--authorization', required=True)
+-    stage_parser = commands.add_parser('_stage')
+-    stage_parser.add_argument('--stage', required=True)
+-    stage_parser.add_argument('--authorization', required=True)
+-    assembly_parser = commands.add_parser('assemble')
+-    assembly_parser.add_argument('--stage', required=True)
+-    assembly_parser.add_argument('--plan-sha256', required=True)
+-    args = parser.parse_args()
+-    if args.command == 'prepare':
++    parser=argparse.ArgumentParser()
++    sub=parser.add_subparsers(dest='command',required=True)
++    p=sub.add_parser('prepare');p.add_argument('--authorization',required=True)
++    p=sub.add_parser('assemble');p.add_argument('--stage',required=True);p.add_argument('--plan-sha256',required=True)
++    args=parser.parse_args()
++    if args.command=='prepare':
++        from checkpoint40_filtered_prepare import prepare
+         prepare(args.authorization)
+-    elif args.command == '_stage':
+-        stage_snapshot(args.stage, args.authorization)
+     else:
+-        assemble(args.stage, args.plan_sha256)
+-
+-
+-if __name__ == '__main__':
++        assemble(args.stage,args.plan_sha256)
++
++if __name__=='__main__':
+     main()

@@ -1,0 +1,385 @@
+--- /dev/null
++++ code/reseal_checkpoint39_data512.py
+@@ -0,0 +1,382 @@
++"""Explicit frozen39 revision: verified reuse, family-ordered data512, doc trial.
++
++No old source, stage, project manifest or ZIP is overwritten.  All new sources
++and receipts must be declared direct supplements.  The ordinary ZIP assembler
++is the already reviewed, unchanged package_checkpoint39_frozen implementation.
++"""
++from pathlib import Path, PurePosixPath
++from datetime import datetime, timezone
++import argparse
++import copy
++import csv
++import hashlib
++import io
++import json
++import os
++import re
++import subprocess
++import sys
++import tarfile
++import tempfile
++import time
++import zipfile
++import zlib
++
++import checkpoint39_frozen_spools as stream
++import package_checkpoint39_frozen as base
++
++ROOT = base.ROOT
++SELF = 'code/reseal_checkpoint39_data512.py'
++CODEC = 'code/checkpoint39_revision_codecs.py'
++PRIOR_SHA = 'e797d372a8937b48d5b76c209eb4b881710f364cc56979757bfb909451302102'
++HISTORY = 'records/checkpoint39_prepare1/'
++
++
++def revision_auth(relative):
++    auth = base.authorization(relative)
++    rev = auth['record']['revision']
++    assert rev['kind'] == 'DATA512_FAMILY_RESEAL'
++    assert rev['predecessor_plan_sha256'] == PRIOR_SHA
++    assert rev['actual_prior_prepare_exit_code'] == 1
++    assert rev['actual_prior_prepare_tool_chunk'] == '7179ef'
++    assert {SELF, CODEC} <= set(auth['checked_bindings'])
++    supplements = rev['supplements']
++    assert len(supplements) == len(set(supplements))
++    for path in supplements:
++        stream.relative_path(path)
++        assert Path(path).suffix.lower() not in {'.png', '.pdf', '.tar'}
++        assert path not in base.GENERATED | {'RESTORE_CHECKPOINT.txt'}
++        assert path in auth['checked_bindings']
++    return auth
++
++
++def observed(stage, name, command):
++    folder = stage/'revision-workers'
++    folder.mkdir(exist_ok=True)
++    out, err = folder/(name+'.out'), folder/(name+'.err')
++    started = stream.utc_now()
++    print('Starting revision worker', name, started, flush=True)
++    with out.open('xb') as stdout, err.open('xb') as stderr:
++        child = subprocess.run(command, stdout=stdout, stderr=stderr, check=False)
++    value = {'label': name, 'command': command, 'started_at': started, 'finished_at': stream.utc_now(),
++             'returncode': child.returncode, 'stdout_path': str(out.relative_to(stage)),
++             'stderr_path': str(err.relative_to(stage)), 'stdout_identity': stream.identity(out),
++             'stderr_identity': stream.identity(err), 'stdout_utf8': out.read_text(), 'stderr_utf8': err.read_text()}
++    assert value['stdout_utf8'].encode() == out.read_bytes() and value['stderr_utf8'].encode() == err.read_bytes()
++    stream.json_exclusive(folder/(name+'.observed.json'), value)
++    print('Finished revision worker', name, 'actual_returncode', child.returncode, flush=True)
++    assert child.returncode == 0, ('Revision worker failed; evidence retained', name)
++    return value
++
++
++def check_entry(stage, row):
++    for field, expected in [('raw_path', 'raw_identity'), ('payload_path', 'payload_identity'),
++                            ('encoder_report_path', 'encoder_report_identity'), ('decoder_report_path', 'decoder_report_identity')]:
++        stream.relative_path(row[field])
++        assert stream.identity(stage/row[field]) == row[expected]
++    encoded = json.loads((stage/row['encoder_report_path']).read_text())
++    decoded = json.loads((stage/row['decoder_report_path']).read_text())
++    assert encoded['input'] == decoded['roundtrip'] == row['raw_identity']
++    assert encoded['payload'] == decoded['payload'] == row['payload_identity']
++    assert decoded['decoder_eof'] is True and decoded['unused_bytes'] == 0
++    for key in ['encoder_observed', 'decoder_observed']:
++        value = row[key]
++        assert value['returncode'] == 0
++        for text in ['stdout', 'stderr']:
++            stream.relative_path(value[text+'_path'])
++            path = stage/value[text+'_path']
++            assert stream.identity(path) == value[text+'_identity']
++            assert path.read_bytes() == value[text+'_utf8'].encode()
++
++
++def link_checked(source, target, expected):
++    target.parent.mkdir(parents=True, exist_ok=True)
++    if target.exists():
++        assert stream.identity(target) == expected
++        return
++    os.link(source, target)
++    assert stream.identity(target) == expected
++
++
++def reuse_entry(prior, stage, row, archive_name=None):
++    reused = copy.deepcopy(row)
++    for field, expected in [('raw_path', 'raw_identity'), ('payload_path', 'payload_identity'),
++                            ('encoder_report_path', 'encoder_report_identity'), ('decoder_report_path', 'decoder_report_identity')]:
++        relative = 'prior/'+row[field]
++        link_checked(prior/row[field], stage/relative, row[expected])
++        reused[field] = relative
++    for key in ['encoder_observed', 'decoder_observed']:
++        for text in ['stdout', 'stderr']:
++            old = row[key][text+'_path']
++            relative = 'prior/'+old
++            link_checked(prior/old, stage/relative, row[key][text+'_identity'])
++            reused[key][text+'_path'] = relative
++    if archive_name is not None:
++        reused['archive_name'] = archive_name
++    reused['verified_reuse'] = {'prior_stage': str(prior), 'prior_plan_sha256': PRIOR_SHA,
++                               'original_archive_name': row['archive_name'],
++                               'new_encoder_run': False, 'original_observed_execution_retained': True}
++    return reused
++
++
++def original_manifest(prior):
++    path = prior/'direct'/base.CONTENTS
++    rows = list(csv.DictReader(io.StringIO(path.read_text()), delimiter='\t'))
++    result = {}
++    for row in rows:
++        stream.relative_path(row['path'])
++        assert row['path'] not in result
++        result[row['path']] = {'bytes': int(row['bytes']), 'sha256': row['sha256']}
++    result[base.CONTENTS] = stream.identity(path)
++    return result
++
++
++def family_key(relative):
++    path = PurePosixPath(relative)
++    versions = re.findall(r'(?:checkpoint|frozen)[_-]*(\d+)', '/'.join(path.parts[:-1]))
++    return (path.name, int(versions[-1]) if versions else 10**12, relative)
++
++
++def reorder_data(prior, stage, report):
++    expected = {p: v for p, v in original_manifest(prior).items() if base.data_member(p)}
++    files = {}
++    with tarfile.open(prior/'data.tar', 'r:') as tf:
++        for member in tf.getmembers():
++            assert member.isfile() or member.islnk()
++            assert member.name.startswith(stream.PREFIX)
++            relative = member.name[len(stream.PREFIX):]
++            stream.relative_path(relative)
++            assert relative in expected and relative not in files
++            with tf.extractfile(member) as source:
++                data = source.read()
++            assert len(data) == expected[relative]['bytes']
++            assert hashlib.sha256(data).hexdigest() == expected[relative]['sha256']
++            files[relative] = data
++    assert set(files) == set(expected)
++    seen, links = {}, 0
++    with (stage/'data-reordered.tar').open('xb') as raw:
++        with tarfile.open(fileobj=raw, mode='w', format=tarfile.PAX_FORMAT) as tf:
++            for relative in sorted(files, key=family_key):
++                data = files[relative]
++                full = stream.PREFIX+relative
++                member = tarfile.TarInfo(full)
++                member.mode, member.mtime = 0o644, 0
++                key = (len(data), hashlib.sha256(data).hexdigest())
++                if key in seen:
++                    name, previous = seen[key]
++                    assert previous == data
++                    member.type, member.linkname, member.size = tarfile.LNKTYPE, name, 0
++                    tf.addfile(member)
++                    links += 1
++                else:
++                    member.size = len(data)
++                    tf.addfile(member, io.BytesIO(data))
++                    seen[key] = (full, data)
++        raw.flush()
++        os.fsync(raw.fileno())
++    mapping = ''.join(f"{p}\t{expected[p]['bytes']}\t{expected[p]['sha256']}\n" for p in sorted(expected)).encode()
++    result = {'result': 'PASS_EXACT_DATA_LOGICAL_BIJECTION', 'paths': len(files),
++              'unique_contents': len(seen), 'standard_tar_hardlinks': links,
++              'original_raw_identity': stream.identity(prior/'data.tar'),
++              'reordered_raw_identity': stream.identity(stage/'data-reordered.tar'),
++              'logical_mapping_sha256': hashlib.sha256(mapping).hexdigest(),
++              'ordering': 'original basename, numeric checkpoint/frozen directory marker (unclassified/current last), full original relative path',
++              'logical_names_changed': 0, 'logical_bytes_changed': 0,
++              'scope': 'Raw TAR bytes/order change; original logical names and bytes are an exact bijection. Hardlinks target an earlier regular member.'}
++    stream.json_exclusive(report, result)
++    print(json.dumps(result, sort_keys=True), flush=True)
++
++
++def encode_revision(source, payload, kind, expected, report, auth_relative):
++    revision_auth(auth_relative)
++    from checkpoint39_revision_codecs import RevisionDataCompressor, RevisionDocumentCompressor
++    dictionary = (512 if kind == 'data512' else 256) << 20
++    assert kind in {'data512', 'document_strong'}
++    compressor = RevisionDataCompressor() if kind == 'data512' else RevisionDocumentCompressor()
++    in_sha, in_crc, in_size = hashlib.sha256(), 0, 0
++    out_sha, out_crc, out_size, header = hashlib.sha256(), 0, 0, bytearray()
++    started, last = time.monotonic(), time.monotonic()
++    with Path(source).open('rb') as src, Path(payload).open('xb') as dst:
++        def emit(block):
++            nonlocal out_crc, out_size
++            if len(header) < 9:
++                header.extend(block[:9-len(header)])
++            dst.write(block); out_sha.update(block)
++            out_crc = zlib.crc32(block, out_crc) & 0xffffffff; out_size += len(block)
++        for part in iter(lambda: src.read(stream.CHUNK), b''):
++            in_sha.update(part); in_crc = zlib.crc32(part, in_crc) & 0xffffffff; in_size += len(part)
++            emit(compressor.compress(part))
++            if time.monotonic()-last >= 25:
++                print(kind, in_size, 'of', expected['bytes'], flush=True); last = time.monotonic()
++        emit(compressor.flush()); dst.flush(); os.fsync(dst.fileno())
++    actual = {'bytes': in_size, 'sha256': in_sha.hexdigest(), 'crc32': in_crc}
++    assert actual == expected and bytes(header) == bytes.fromhex('090405005d')+dictionary.to_bytes(4, 'little')
++    result = {'input': actual, 'payload': {'bytes': out_size, 'sha256': out_sha.hexdigest(), 'crc32': out_crc},
++              'zip_method': zipfile.ZIP_LZMA, 'dictionary_bytes': dictionary, 'method14_header_hex': header.hex(),
++              'elapsed_seconds': time.monotonic()-started, 'encoded_stream_retained': True,
++              'encoder_options': {'search_effort': 'prior default'} if kind == 'data512' else {'mode': 'normal', 'match_finder': 'bt4', 'nice_len': 273, 'depth': 128}}
++    stream.json_exclusive(report, result); print(json.dumps(result, sort_keys=True), flush=True)
++
++
++def fresh_payload(stage, name, raw_relative, expected, kind, auth_relative):
++    folder = stage/'revision-spools'; folder.mkdir(exist_ok=True)
++    exp, payload, enc, dec = [folder/(name+s) for s in ('.expected.json', '.payload', '.encode.json', '.decode.json')]
++    stream.json_exclusive(exp, expected)
++    encoder = observed(stage, name+'-encode', [sys.executable, str(Path(__file__).resolve()), '_encode',
++                       '--authorization', auth_relative, '--source', str(stage/raw_relative), '--payload', str(payload),
++                       '--kind', kind, '--expected', str(exp), '--report', str(enc)])
++    decoder = observed(stage, name+'-decode', [sys.executable, str(Path(stream.__file__).resolve()),
++                       'decode', str(payload), str(exp), str(enc), str(dec)])
++    encoded, decoded = json.loads(enc.read_text()), json.loads(dec.read_text())
++    assert stream.identity(stage/raw_relative) == expected == decoded['roundtrip']
++    assert stream.identity(payload) == encoded['payload'] == decoded['payload']
++    assert decoded['decoder_eof'] and decoded['unused_bytes'] == 0
++    return {'kind': kind, 'raw_path': raw_relative, 'raw_identity': expected,
++            'payload_path': str(payload.relative_to(stage)), 'payload_identity': encoded['payload'],
++            'zip_method': zipfile.ZIP_LZMA, 'dictionary_bytes': encoded['dictionary_bytes'],
++            'method14_header_hex': encoded['method14_header_hex'],
++            'encoder_report_path': str(enc.relative_to(stage)), 'encoder_report_identity': stream.identity(enc),
++            'decoder_report_path': str(dec.relative_to(stage)), 'decoder_report_identity': stream.identity(dec),
++            'encoder_observed': encoder, 'decoder_observed': decoder}
++
++
++def stage_direct(stage, relative, data):
++    stream.relative_path(relative)
++    stream.write_exclusive(stage/'direct'/relative, data)
++    return {'path': relative, 'raw_path': 'direct/'+relative, 'identity': stream.bytes_identity(data)}
++
++
++def prepare(auth_relative):
++    auth = revision_auth(auth_relative); rev = auth['record']['revision']
++    prior = base.checked_stage(rev['predecessor_stage'])
++    assert stream.identity(prior/'sealed-plan.json')['sha256'] == PRIOR_SHA
++    old = json.loads((prior/'sealed-plan.json').read_text())
++    assert old['result'] == 'FAIL_EXACT_CAP' and old['checkpoint'] == 39
++    assert old['layout']['exact_zip_bytes'] == 547320902 and old['layout']['delivery_cap_bytes'] == stream.CAP
++    assert stream.identity(prior/'snapshot.json') == old['snapshot_identity']
++    for relative, expected in old['source_bindings'].items():
++        assert stream.identity(ROOT/relative) == expected
++    for row in old['entries']:
++        check_entry(prior, row)
++    old_rows = original_manifest(prior)
++    declared = set(rev['supplements']) | {auth_relative}
++    assert not declared & set(old_rows), 'Only new declared supplemental paths are accepted'
++    current = {p.relative_to(ROOT).as_posix() for p in ROOT.rglob('*') if p.is_file() and base.exclusion_reason(p) is None}
++    assert current-set(old_rows) == declared, ('Undeclared or missing new inputs', sorted((current-set(old_rows)) ^ declared))
++    stage = Path(tempfile.mkdtemp(prefix='.checkpoint39_stage_revision_', dir=ROOT.parent))
++    print('Retained revision stage:', stage, flush=True)
++    original = {row['archive_name'][len(stream.PREFIX):]: row for row in old['entries']}
++    assert set(original) == {'RESTORE_CHECKPOINT.txt', base.CONTENTS, base.PACKAGING, base.PREFLIGHT,
++                             'verification_images.tar', 'historical_documents.tar', 'historical_data.tar'}
++    image = reuse_entry(prior, stage, original['verification_images.tar'])
++    doc_old = reuse_entry(prior, stage, original['historical_documents.tar'])
++    restore = reuse_entry(prior, stage, original['RESTORE_CHECKPOINT.txt'])
++    assert image['dictionary_bytes'] == 640 << 20 and doc_old['dictionary_bytes'] == 256 << 20
++    history_entries = [reuse_entry(prior, stage, original[p], stream.PREFIX+HISTORY+p)
++                       for p in [base.CONTENTS, base.PACKAGING, base.PREFLIGHT]]
++    supplements = sorted(declared | {HISTORY+p for p in [base.CONTENTS, base.PACKAGING, base.PREFLIGHT]} | {HISTORY+'sealed-plan.json'})
++    direct = [stage_direct(stage, p, (ROOT/p).read_bytes()) for p in sorted(declared)]
++    direct.append(stage_direct(stage, HISTORY+'sealed-plan.json', (prior/'sealed-plan.json').read_bytes()))
++    reorder_report = stage/'data-reorder.json'
++    reorder = observed(stage, 'data-reorder', [sys.executable, str(Path(__file__).resolve()), '_reorder',
++                       '--prior', str(prior), '--stage', str(stage), '--report', str(reorder_report)])
++    mapping = json.loads(reorder_report.read_text())
++    assert mapping['original_raw_identity'] == original['historical_data.tar']['raw_identity']
++    # Sequential workers: the stronger document encoder and decoder both exit
++    # before the512MiB data encoder starts. The original verified doc is retained.
++    doc_trial = fresh_payload(stage, 'document-strong', doc_old['raw_path'], doc_old['raw_identity'], 'document_strong', auth_relative)
++    doc_trial['archive_name'] = doc_old['archive_name']
++    document = doc_trial if doc_trial['payload_identity']['bytes'] < doc_old['payload_identity']['bytes'] else doc_old
++    data = fresh_payload(stage, 'data512', 'data-reordered.tar', mapping['reordered_raw_identity'], 'data512', auth_relative)
++    data['archive_name'] = stream.PREFIX+'historical_data.tar'
++    preflight = {'result': 'PASS_VERIFIED_REUSE_AND_FRESH_REVISION_STREAMS', 'checkpoint': 39, 'recorded_at': stream.utc_now(),
++                 'predecessor_stage': str(prior), 'predecessor_plan_sha256': PRIOR_SHA,
++                 'actual_prior_prepare_exit_code': 1, 'actual_prior_prepare_tool_chunk': '7179ef',
++                 'revision_authorization': {'path': auth_relative, **auth['identity']},
++                 'image_verified_reuse': image, 'original_document_verified': doc_old,
++                 'document_stronger_candidate': doc_trial, 'selected_document_payload_identity': document['payload_identity'],
++                 'document_choice': 'new independently verified smaller candidate' if document is doc_trial else 'original independently verified stream',
++                 'data_reorder_observed': reorder, 'data_logical_bijection': mapping, 'fresh_data512': data,
++                 'revision_supplement_paths': supplements, 'source_bindings': auth['checked_bindings'],
++                 'creates_zip': False, 'scope': 'Image reused; original and candidate doc streams both retained; only the strictly smaller verified doc is selected. Data order and dictionary change, with exact unchanged logical members. Direct metadata/seal/assembly evidence remains external.'}
++    preflight_row = stage_direct(stage, base.PREFLIGHT, (json.dumps(preflight, indent=2, sort_keys=True)+'\n').encode())
++    package = json.loads((prior/'direct'/base.PACKAGING).read_text())
++    package.update(recorded_at=stream.utc_now(), data_lzma_dictionary_bytes=512 << 20,
++                   data_bundle_bytes=data['raw_identity']['bytes'], data_bundle_sha256=data['raw_identity']['sha256'],
++                   data_compressed_bytes=data['payload_identity']['bytes'], data_compressed_sha256=data['payload_identity']['sha256'],
++                   unique_data_contents=mapping['unique_contents'], standard_tar_data_hardlinks=mapping['standard_tar_hardlinks'],
++                   document_compressed_bytes=document['payload_identity']['bytes'], document_compressed_sha256=document['payload_identity']['sha256'],
++                   revision_supplement_paths=supplements, data_storage_policy='frozen_data_exact_bijection_plus_declared_direct_revision_supplements',
++                   data_selection='Exactly the original frozen data logical partition, reordered by family/version. All newly authorized revision sources and records are declared direct supplements at their original paths.',
++                   spool_preflight_record={'path': base.PREFLIGHT, **preflight_row['identity']},
++                   revision_parent={'plan_sha256': PRIOR_SHA, 'actual_prepare_exit_code': 1, 'archive_created': False},
++                   source_bindings=auth['checked_bindings'])
++    packaging_row = stage_direct(stage, base.PACKAGING, (json.dumps(package, indent=2, sort_keys=True)+'\n').encode())
++    direct.extend([preflight_row, packaging_row])
++    rows = {p: v for p, v in old_rows.items() if p not in base.GENERATED}
++    for row in direct:
++        assert row['path'] not in rows
++        rows[row['path']] = row['identity']
++    for row in history_entries:
++        path = row['archive_name'][len(stream.PREFIX):]
++        assert path not in rows; rows[path] = row['raw_identity']
++    manifest = ('sha256\tbytes\tpath\n'+''.join(f"{rows[p]['sha256']}\t{rows[p]['bytes']}\t{p}\n" for p in sorted(rows))).encode()
++    direct.append(stage_direct(stage, base.CONTENTS, manifest))
++    entries = [restore]+history_entries
++    for index, row in enumerate(direct):
++        item = stream.prepare_payload(stage, f'revision-direct-{index:04d}', row['raw_path'], row['identity'], 'direct_lzma', ROOT)
++        item['archive_name'] = stream.PREFIX+row['path']; entries.append(item)
++    entries.extend([image, document, data])
++    assert len({x['archive_name'] for x in entries}) == len(entries)
++    direct_names = {x['archive_name'][len(stream.PREFIX):] for x in entries[:-3]}
++    assert direct_names == {base.CONTENTS, base.PACKAGING, base.PREFLIGHT, 'RESTORE_CHECKPOINT.txt'} | set(supplements)
++    assert revision_auth(auth_relative) == auth
++    snapshot = {'revision': 'DATA512_FAMILY_RESEAL', 'authorization': auth,
++                'original_snapshot_identity': old['snapshot_identity'], 'predecessor_plan_sha256': PRIOR_SHA,
++                'logical_file_count': len(rows)+1, 'data_logical_bijection': mapping, 'revision_supplement_paths': supplements}
++    stream.json_exclusive(stage/'snapshot.json', snapshot)
++    layout = stream.exact_layout(entries)
++    plan = {'result': 'PASS_SEALED_EXACT_SIZE' if layout['exact_zip_bytes'] <= stream.CAP else 'FAIL_EXACT_CAP',
++            'checkpoint': 39, 'sealed_at': stream.utc_now(), 'stage': str(stage),
++            'snapshot_identity': stream.identity(stage/'snapshot.json'), 'authorization': auth,
++            'source_bindings': auth['checked_bindings'], 'runtime': auth['runtime'],
++            'logical_file_count': len(rows)+1, 'entries': entries, 'layout': layout,
++            'zip_metadata': old['zip_metadata'], 'output': str(ROOT.parent/'LM4_SUCCESSOR_checkpoint_39.zip'),
++            'open_not_before': base.OPEN_NOT_BEFORE.isoformat(), 'open_before': base.OPEN_BEFORE.isoformat(),
++            'archive_created': False, 'revision_supplement_paths': supplements,
++            'predecessor_plan_sha256': PRIOR_SHA, 'actual_prior_prepare_exit_code': 1,
++            'external_evidence_disclosure': old['external_evidence_disclosure']}
++    stream.json_exclusive(stage/'sealed-plan.json', plan)
++    for file in stage.rglob('*'):
++        if file.is_file(): file.chmod(0o400)
++    print(json.dumps({'result': plan['result'], 'stage': str(stage), 'plan': str(stage/'sealed-plan.json'),
++                      'plan_identity': stream.identity(stage/'sealed-plan.json'), 'layout': layout,
++                      'logical_file_count': len(rows)+1, 'creates_zip': False}, indent=2), flush=True)
++    assert plan['result'] == 'PASS_SEALED_EXACT_SIZE', 'Revised exact cap fails; every stream and original attempt retained, no ZIP'
++
++
++def assemble(stage, sha):
++    plan = base.validate_seal(stage, sha)
++    assert plan['predecessor_plan_sha256'] == PRIOR_SHA and plan['actual_prior_prepare_exit_code'] == 1
++    data = [x for x in plan['entries'] if x['archive_name'] == stream.PREFIX+'historical_data.tar']
++    assert len(data) == 1 and data[0]['dictionary_bytes'] == 512 << 20
++    assert data[0]['method14_header_hex'] == '090405005d00000020'
++    base.assemble(stage, sha)
++
++
++def main():
++    parser = argparse.ArgumentParser(); sub = parser.add_subparsers(dest='command', required=True)
++    p = sub.add_parser('prepare'); p.add_argument('--authorization', required=True)
++    p = sub.add_parser('assemble'); p.add_argument('--stage', required=True); p.add_argument('--plan-sha256', required=True)
++    p = sub.add_parser('_reorder'); p.add_argument('--prior', required=True); p.add_argument('--stage', required=True); p.add_argument('--report', required=True)
++    p = sub.add_parser('_encode')
++    for flag in ['authorization', 'source', 'payload', 'kind', 'expected', 'report']: p.add_argument('--'+flag, required=True)
++    args = parser.parse_args()
++    if args.command == 'prepare': prepare(args.authorization)
++    elif args.command == 'assemble': assemble(args.stage, args.plan_sha256)
++    elif args.command == '_reorder': reorder_data(Path(args.prior), Path(args.stage), Path(args.report))
++    else: encode_revision(args.source, args.payload, args.kind, json.loads(Path(args.expected).read_text()), args.report, args.authorization)
++
++
++if __name__ == '__main__':
++    main()

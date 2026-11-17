@@ -1,0 +1,27 @@
+--- /dev/null
++++ code/checkpoint39_revision_codecs.py
+@@ -0,0 +1,24 @@
++"""Separate revision codecs; old39/38/37 codec sources remain immutable."""
++import lzma
++import struct
++import zipfile
++
++DATA_DICTIONARY_BYTES = 512 << 20
++DOCUMENT_DICTIONARY_BYTES = 256 << 20
++
++
++class RevisionDataCompressor(zipfile.LZMACompressor):
++    def _init(self):
++        props = lzma._encode_filter_properties({'id': lzma.FILTER_LZMA1, 'dict_size': DATA_DICTIONARY_BYTES})
++        self._comp = lzma.LZMACompressor(lzma.FORMAT_RAW, filters=[
++            lzma._decode_filter_properties(lzma.FILTER_LZMA1, props)])
++        return struct.pack('<BBH', 9, 4, len(props)) + props
++
++
++class RevisionDocumentCompressor(zipfile.LZMACompressor):
++    def _init(self):
++        props = lzma._encode_filter_properties({'id': lzma.FILTER_LZMA1, 'dict_size': DOCUMENT_DICTIONARY_BYTES})
++        options = lzma._decode_filter_properties(lzma.FILTER_LZMA1, props)
++        options.update(mode=lzma.MODE_NORMAL, mf=lzma.MF_BT4, nice_len=273, depth=128)
++        self._comp = lzma.LZMACompressor(lzma.FORMAT_RAW, filters=[options])
++        return struct.pack('<BBH', 9, 4, len(props)) + props

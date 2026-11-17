@@ -1,0 +1,42 @@
+--- code/verify_checkpoint39_snapshot_images640.py
++++ code/verify_checkpoint39_snapshot_images640_data512.py
+@@ -30,10 +30,27 @@
+         metadata = manifest_metadata(manifest_raw, manifest_rel)
+         require(set(names) == {PREFIX + rel for rel in metadata}, 'Manifest coverage is not exact')
+         packaging = json.loads(reader.read(PREFIX + 'records/checkpoint_39_packaging.json'))
++        supplements = packaging['revision_supplement_paths']
++        require(isinstance(supplements, list)
++                and all(isinstance(p, str) for p in supplements),
++                'Revision supplements must be an explicit path list')
++        require(len(supplements) == len(set(supplements)), 'Duplicate revision supplement')
++        base_direct = {'RESTORE_CHECKPOINT.txt', 'records/checkpoint_39_packaging.json',
++                       'records/checkpoint39_spool_preflight.json'}
++        containers = {'verification_images.tar', 'historical_documents.tar', 'historical_data.tar'}
++        for supplement in supplements:
++            require(relative(supplement) == supplement and supplement in metadata,
++                    'Unsafe or unmanifested revision supplement')
++            require(supplement not in base_direct | containers | {manifest_rel}
++                    and not supplement.lower().endswith(('.png', '.pdf', '.tar')),
++                    'Supplement conflicts with an original direct or media/container path')
++        require(set(reader.direct) == {PREFIX + p for p in
++                    base_direct | containers | {manifest_rel} | set(supplements)},
++                'Actual direct ZIP entries differ from the explicit revision declaration')
+         for kind, basename, dictionary, blob, members in (
+             ('image', 'verification_images.tar', 671088640, reader.tar_bytes, reader.members),
+             ('document', 'historical_documents.tar', 268435456, reader.document_tar_bytes, reader.document_members),
+-            ('data', 'historical_data.tar', 268435456, reader.data_tar_bytes, reader.data_members),
++            ('data', 'historical_data.tar', 536870912, reader.data_tar_bytes, reader.data_members),
+         ):
+             info = reader.z.getinfo(PREFIX + basename)
+             require(info.compress_type == zipfile.ZIP_LZMA and blob is not None, 'Wrong/missing TAR codec')
+@@ -85,7 +102,9 @@
+               'current_main_pdf_original_path_in_document_tar': 'PASS',
+               'all_original_png_and_pdf_paths': 'PASS', 'archive_within_536870912_byte_cap': 'PASS',
+               'image_lzma_dictionary_bytes': 671088640, 'document_lzma_dictionary_bytes': 268435456,
+-              'data_lzma_dictionary_bytes': 268435456}
++              'data_lzma_dictionary_bytes': 536870912,
++              'revision_supplement_paths': supplements,
++              'exact_declared_direct_partition': 'PASS'}
+     print(json.dumps(report, indent=2, sort_keys=True))
+ 
+ 
