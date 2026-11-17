@@ -1,0 +1,522 @@
+## II. Testing the integral cochain-algebra statement
+
+### N25 — The displayed Hom is a group of chain maps
+
+**Current:** 136/311:43–69 and 312:48–72; “l'invariant additif universel” and the displayed `Z^0`, with marginal “cycles de degré 0”. **Kind:** unpursued implication. **Context:** H, “L'invariant additif universel,” pp. 310–317 in its labels; B, N44–N48 (127–129), chain construction from simplices. **Relation:** adds a type distinction to those accounts. **R:** `follow-ups @305` [Open]; earlier A §2 and C §2 [first-pass leads].
+
+The isomorphism \(F(X)\simeq\operatorname{Hom}_{\mathrm{Ch}}(C_\bullet X,K_\bullet)\) concerns the abelian group of chain maps, identified on 312 with degree-zero cycles of a total Hom complex. It is neither the whole cochain complex nor its cohomology, so it cannot by itself be quoted as the desired integral cohomology comparison. The manuscript's next concern is precisely the structures this additive representation forgets.
+
+### N26 — The weighted statement remains the specific open target
+
+**Current:** 136/299:21–40, `M⊗h{T}` and the binomial recurrence; 318:25–27, “structures multiplicatives”; 324:4–10, “Cet idéal a-t-il des p.d. ?” **Kind:** reading question. **Context:** A, R030 and R052 (080–083), R054 (077, 094); C, R001–R002 (231, 233); H's finding `136-pd-de-rham-shadows`, as credited in R. **Relation:** restates the existing target and adds local restrictions on its interpretation. **R:** `follow-ups @305` [Open], `follow-ups @304` [Open].
+
+The precise candidate recorded in R is
+\[
+H^j(C^{\bullet,w}_{\mathrm{DRpd}}(X;k))\stackrel{?}{\cong}
+H^j(X;k)\,T^{[w]}\quad(0\leq j\leq w),\qquad
+(aT^{[r]})(bT^{[s]})=
+\binom{r+s}{r}(a\smile b)T^{[r+s]},
+\]
+with the comparison, multiplicativity, and PD descent still to be proved for the historical construction. None of 302–325 supplies that proof, and deleting the weight, coefficient algebra, or comparison range would replace the question by a stronger assertion. Hua's project's earlier finite-tail and shadow findings retain their attribution and do not settle those additional clauses.
+
+### N27 — The earlier integral obstruction is not a new result of this packet
+
+**Current:** 136/311:71–74, 312:3–13, “n'est pas reconstructible”; 318:25–27, the multiplicative warning. **Kind:** unpursued implication. **Context:** B, O01 (111–117, 131–135), and A, R054 (077, 094), as summarized explicitly in R. **Relation:** adds the author's own structural diagnosis to an existing obstruction test. **R:** `MPL_136_095-141 O01` [first-pass obstruction lead]; `follow-ups @305` [Open].
+
+B's existing \(\mathbf{CP}^2\) test rules out the ordinary unweighted interpretation when every positive even cocycle has a divided square satisfying \(z^2=2\gamma_2(z)\) and \(d\gamma_2(z)=z\,dz\), while the product comparison identifies the resulting cohomology ring with integral cup products. The primitive square of the degree-two generator would then have to be twice an integral degree-four class; this uses a single cocycle and does not assume that PD operations already descend to cohomology. The present packet adds 311–312 and 318's explicit warnings, while the weighted construction or a restricted PD domain must be assessed under its own hypotheses.
+
+### N28 — The ordinary Dold–Kan tensor mismatch has a precise qualification
+
+**Current:** 136/318:25, “ne se correspondent pas par DP et ND.” **Kind:** unpursued implication. **Context:** H, “L'invariant additif universel,” footnote at lines 2136–2139; D, N40 (273); C, R006 (225–231). **Relation:** adds precision to H's phrase “n'est pas monoïdale.” **R:** `gap g1048` [Open], `follow-ups @305` [Open].
+
+Normalization has a symmetric lax monoidal shuffle map, although the ordinary tensor structures are not carried across by a strong monoidal equivalence; the Alexander–Whitney comparison is not symmetric (Schwede & Shipley, 2003, §1). Their associative-algebra comparison must therefore not be promoted into an unrestricted equivalence of commutative algebra categories. This is a precise modern qualification of the manuscript's warning, not an identification of its PD model.
+
+### N29 — A degree-one test makes the tensor mismatch visible
+
+**Current:** 136/318:25–27, “par transport de structure via DP !” **Kind:** own idea. **Confidence:** high for the elementary diagnostic, because both degree-one groups can be computed directly; no claim about the historical model follows. **Context:** H, the same footnote; D, N40 (273). **Relation:** adds an explicit test. **R:** `gap g1048` [Open].
+
+Let \(K\) be \(\mathbf Z\) concentrated in homological degree \(1\), and write \(D\) for Dold–Kan denormalization, so that \(D(K)_0=0\) and \(D(K)_1=\mathbf Z\). Then \(N(DK\otimes_{\mathrm{level}}DK)_1=\mathbf Z\), whereas \((K\otimes K)_1=0\), so the two ordinary tensor constructions cannot be isomorphic as complexes. This leaves the shuffle quasi-isomorphism and the transported tensor entirely intact.
+
+### N30 — Transported multiplication is a genuine alternative
+
+**Current:** 136/318:27, “sauf de les définir par transport de structure via DP !” **Kind:** unpursued implication. **Context:** B, L11 (111–135, especially 135); H, “L'invariant additif universel,” lines 2127–2139. **Relation:** adds a precise literature comparison. **R:** `follow-ups @305` [Open].
+
+Richter (2009, Theorem 7.1 and Corollary 7.2) transports the simplicial tensor to nonnegative chain complexes and obtains divided powers on the homology of its commutative monoids. This closely matches the option named on 318, while using a specified tensor and homological grading. It supplies a comparison problem, not a theorem about the manuscript's weighted cochains.
+
+### N31 — PD descent requires a separate boundary check
+
+**Current:** 136/320:1–70, the product/composition diagrams; 324:8–10, “satisfont-ils”; 325:20–32, unfinished conditions. **Kind:** unpursued implication. **Context:** A, R054 (077, 094); H, “Gribouillis : coalgèbres et puissances divisées,” pp. 319–324 in its labels. **Relation:** adds a specific missing verification. **R:** `follow-ups @305` [Open, PD-descent clause].
+
+Richter's definition explicitly requires PD operations to preserve boundaries, besides satisfying the differential identity (2009, Definition 7.4, p. 249). The present diagrams do not verify that condition for the historical construction. An additive cohomology comparison alone cannot discharge it.
+
+### N32 — A functorial commutativity obstruction has explicit hypotheses
+
+**Current:** 136/306:17–34, “ce ne sont pas des invariants”; 318:25–27, multiplicative reservation. **Kind:** unpursued implication. **Context:** B, L14 (literature comparison for the 095–141 theory). **Relation:** restates that benchmark with newly checked primary sourcing. **R:** `follow-ups @305` [Open].
+
+Cenkl's commutative cochain problem assumes naturality, unit-compatible commutative multiplication, acyclicity on models, and a natural comparison inducing cohomology isomorphisms for every simplicial set in every degree (1989, §5). Theorem 2 forces every coefficient square to be divisible by two, excluding \(\mathbf Z\). Applying it to the weighted theory requires checking all those hypotheses, especially the all-degree comparison.
+
+### N33 — A diagram-valued commutative model avoids a blanket prohibition
+
+**Current:** 136/318:25–27, “structures multiplicatives” and transported operations. **Kind:** unpursued implication. **Context:** B, L11 (111–135, especially 135); H, Dold–Kan footnote. **Relation:** adds a distinction between target categories. **R:** `follow-ups @305` [Open].
+
+Richter and Sagave (2020, Theorems 1.1–1.2) construct commutative diagrams of chain complexes, indexed by finite sets and injections, whose homotopy colimit recovers \(E_\infty\) cochains and classifies finite-type nilpotent spaces over \(\mathbf Z\). Their commutativity uses the diagram tensor. No equivalence with the historical PD construction is proved here, and the result does not identify historical “demi-simplicial” objects with that indexing category.
+
+### N34 — The integral homotopy benchmark retains its coherent structure
+
+**Current:** 136/306:17–34, “catégories de fractions”; 312:11–13, “structures supplémentaires convenables.” **Kind:** unpursued implication. **Context:** B, L06 (109, 111–121, 135); H, programme preceding “L'invariant additif universel.” **Relation:** restates the benchmark and adds the manuscript's own qualification. **R:** `follow-ups @305` [Open]; `WG H6` [unchecked hunch].
+
+Mandell (2006) classifies finite-type nilpotent spaces by integral cochains as \(E_\infty\) algebras; the corresponding homotopy-category functor is faithful but not full. Recovering cohomology groups, their ring, or unspecified PD operations does not identify that coherent algebra. The manuscript's programme is compatible with this benchmark but does not prove it.
+
+### N35 — Binomial reconstruction is a different comparison target
+
+**Current:** 136/299:37–40, binomial coefficients; 318:25–27, nonlinear operations. **Kind:** unpursued implication. **Context:** A, R052 (080–083); B, L10; PS VI §119, pp. 501–502. **Relation:** adds a precise contemporary target while preserving the existing open comparison. **R:** `follow-ups @304` [Open], `follow-ups @305` [Open].
+
+Horel (2024, Theorems 5.4 and 6.1) reconstructs connected nilpotent finite-type spaces using cosimplicial binomial rings and obtains integral Bousfield–Kan completion more generally for connected finite-type spaces. Forgetting binomial structure loses derived full faithfulness (Remark 3.11). A differential-compatible, filtered comparison with the manuscript's weighted PD objects is still missing.
+
+### N36 — The S11 verification programme now has identifiable separate steps
+
+**Current:** 136/305:15–46, “Proposition 1”; 311:43–74, additive formula; 318:25–27, multiplicative warning; 324:4–10, explicit questions. **Kind:** own idea. **Confidence:** high as a separation of proof obligations, because each step concerns a different object or operation; medium as a proposed route to a successful comparison. **Context:** A, R054 (077, 094); B, N29–N36 (119–121); D, N39–N40 (273). **Relation:** adds a bounded plan rather than rederiving reported results. **R:** `follow-ups @305`, `gap g1048`, `gap g1004` [all Open].
+
+A reconstruction should specify, separately, the weighted simplicial coefficient object and differential, the admissible comparison range, product compatibility after weight extraction, PD operations on cycles and boundaries, and the coherent structure retained after localization. The current packet directly motivates the separation but proves no composite comparison theorem. Testing these steps on \(\mathbf{CP}^2\), torsion examples already recorded in R, and the local convolution counterexample below would expose a mistaken change of target category early.
+
+## III. Calculations and proof obligations suggested by the graded and coalgebra sheets
+
+### N37 — The negative-degree tail functor can be computed from the boxed recurrence
+
+**Current:** 136/299:21–40, `(φ_0 M_{S_h})_{−d}` and `c_{i,ℓ}ξ_{i+ℓ}=c_{i−d,ℓ}ξ_i`. **Kind:** own idea. **Confidence:** high under the ordinary all-\(\mathbf Z\)-graded interpretation, because the presentation and prime-local proof are explicit and were independently checked. **Context:** D, N21–N22 (252, 275), N44–N45 (277–279); H, “Modules gradués : la mise au propre,” its p. 298. **Relation:** adds the full negative-degree functor to the earlier nonnegative finite-tail and rational-Laurent observations. **R:** `gap g1048` [Open; prior g1031 finite-tail finding credited to Hua's project].
+
+For \(S=\Gamma_h(T)\), every \(d>0\) gives
+\[
+\bigl(\varphi_0(M\otimes_hS)\bigr)_{-d}
+\cong\operatorname{Hom}_{\mathbf Z}(\mathbf Q,M).
+\]
+Indeed the abelian group on generators \(e_i\), \(i\ge d\), with relations \(\binom ji e_j=\binom{j-d}{i-d}e_i\), is \(\mathbf Q\) under \(e_i\mapsto\binom id^{-1}\), as proved in `records/algebra_checks.md`, §A. This calculation uses the clear boxed relation, requires no flatness hypothesis on \(h\) or \(M\), and does not settle multiplication or the uncertain intermediate exponents.
+
+### N38 — Rational Hom must not be replaced by rational tensor or a subgroup
+
+**Current:** 136/299:25–40, the negative component and coefficient relations. **Kind:** own idea. **Confidence:** high, by the explicit examples below and N37's presentation. **Context:** D, N22 (252, 275), rational Laurent warning; H, its p. 298 calculation. **Relation:** adds coefficient-level consequences. **R:** `gap g1048` [Open].
+
+The functor in N37 is \(\operatorname{Hom}_{\mathbf Z}(\mathbf Q,M)\), not \(M\otimes\mathbf Q\): it vanishes for \(M=\mathbf Z\) and for bounded-exponent torsion groups, but equals \(M\) for rational vector spaces. Evaluation at \(1\) need not be injective, because the nonzero quotient homomorphism \(\mathbf Q\to\mathbf Q/\mathbf Z\) has value zero at \(1\). Thus neither a simple rationalization nor the image of evaluation describes the entire negative tail.
+
+### N39 — Finite cutoff is not strong monoidal on all graded modules
+
+**Current:** 136/287:25–30, cutoff subcategories; 293:6, “sous-cat M^{N−1}”; 318:25, multiplicative warning. **Kind:** own idea. **Confidence:** high for this finite-cutoff test, by direct computation; no conclusion is asserted about the repaired infinite quotient. **Context:** D, N23–N26 (254–257), N39–N40 (273). **Relation:** adds a separate tensor constraint. **R:** `gap g1048` [Open].
+
+Already for \(S=k\) concentrated in degree zero, let \(K\) be \(k\) concentrated in degree \(-1\) and let \(L\) be \(k\) placed in degree \(1\). Then \(\tau_0K=0\), but \(\tau_0(K\otimes L)=k\) in degree zero, so the cutoff kernel is not a tensor ideal on the all-graded category. This does not refute the different restricted or repaired quotient whose linear derived reconstruction is reported under g1080 in R.
+
+### N40 — Flatness alone does not justify the infinite intersection on 283
+
+**Current:** 136/283:60 and 74–75, `P_∞=⋂P_i` and `⋂_i(P_i⊗s)=P_∞⊗s`. **Kind:** own idea. **Confidence:** high for the general counterexample, because both intersections are explicit; medium for application to the manuscript, whose particular sequence may satisfy extra properties. **Context:** D, N45–N49 (279–281); H, “Le produit cotensoriel,” pp. 278–284 in its labels. **Relation:** adds a precise caution beyond preservation of a single kernel. **R:** no matching settled entry; `WG H6` remains an unchecked broader comparison.
+
+Take the flat counital cocommutative coalgebra \(s=\mathbf Z\,1\oplus\mathbf Q\), with every element of \(\mathbf Q\) primitive, and \(P_n=2^n\mathbf Z\subset\mathbf Z\). Then \((\bigcap_nP_n)\otimes s=0\), but the intersection of the embedded \(P_n\otimes s=2^n\mathbf Z\oplus\mathbf Q\) inside \(s\) is \(0\oplus\mathbf Q\). Therefore the displayed passage requires a stronger intersection-preservation condition or a special argument for its actual \(P_i\), even when the coalgebra is flat.
+
+### N41 — Yoneda reduces an operation to a universal element, not to an existence theorem
+
+**Current:** 136/323:4–14, “équivaut à la donnée d'un élt” and “il suffit de voir le cas universel”; 320:48–70, `X=A`, `f=id_A`. **Kind:** unpursued implication. **Context:** C, R006 (204, 215, 225–226); D, N49 (281); H, “Gribouillis : coalgèbres et puissances divisées.” **Relation:** adds the explicit formal reduction. **R:** `claims #243` [Open; only a methodological connection], `follow-ups @305` [Open].
+
+For \(F_A(M)=\operatorname{Hom}_h(A,M)\), Yoneda identifies a natural transformation of the underlying set-valued functors \(F_A\to F_A\Gamma^p\) with a map \(u_p:A\to\Gamma^pA\), whose value at \(f\) is \(\Gamma^p(f)u_p\). The diagrams then impose independent product, coproduct, unit, and composition identities on these maps. Representability itself neither constructs compatible \(u_p\)'s nor proves their uniqueness, and it does not complete the parameter classification in claims #243.
+
+### N42 — The finite-projective convolution case has a standard positive argument
+
+**Current:** 136/324:4, “Si A est libre de type fini” and `Ǎ⊗B`, `Ǎ⊗J`. **Kind:** unpursued implication. **Context:** D, N41–N49 (275–281), finite duality and Hom qualifications; H, the same “Gribouillis” subsection. **Relation:** adds the explicit hypothesis and proof mechanism. **R:** `claims #243` [Open]; no matching settled convolution theorem.
+
+If \(A\) is a counital cocommutative \(h\)-coalgebra that is finite projective as an \(h\)-module, convolution identifies \(\operatorname{Hom}_h(A,B)\) with \(A^\vee\otimes_h B\), and its ideal \(\operatorname{Hom}_h(A,J)\) with \(A^\vee\otimes_hJ\). This is a flat base change of the PD ideal \(J\), so its divided powers extend uniquely with the prescribed compatibility (The Stacks Project Authors, n.d., Lemma 23.4.2, Tag 07H1). That uniqueness is relative to the given base PD structure and must not be confused with all the additional composition and universal-operation uniqueness questions on the same scan.
+
+### N43 — The unrestricted convolution-PD assertion fails for a nonflat coalgebra
+
+**Current:** 136/324:4, “Cet idéal a-t-il des p.d. ?” **Kind:** own idea. **Confidence:** high under the counital cocommutative-coalgebra reading, because all ring, coalgebra, and PD axioms and the contradiction are checked in `records/algebra_checks.md`, §B; no novelty is claimed. **Context:** H, the same subsection; D, N45–N49 (279–281), categorical/flatness qualifications. **Relation:** adds an explicit counterexample to the unrestricted interpretation. **R:** no existing entry settles this local question; `follow-ups @305` and `claims #243` remain Open.
+
+Over \(\mathbf Z\), take \(A=\mathbf Z1\oplus(\mathbf Z/2)e\) with \(\Delta e=e\otimes1+1\otimes e+e\otimes e\), and \(B=\mathbf Z\oplus(\mathbf Z/2)t\oplus(\mathbf Z/4)u\), with \(t^2=2u\), \(tu=u^2=0\), and the PD ideal \(J=(t,u)\) defined by \(\gamma_2(at+bu)=a^2u\), \(\gamma_n=0\) for \(n\ge3\). For \(f(1)=0\), \(f(e)=t\), convolution gives \(f^2(e)=2u\ne0\), whereas \(2v(e)=0\) for every additive map \(v:A\to B\), making the necessary identity \(f^2=2\gamma_2(f)\) impossible. This excludes **every** PD structure on that convolution ideal; if the manuscript's standing coalgebra convention required flatness or freeness, the example lies outside it and does not refute its intended special case.
+
+### N44 — The final tensor claim needs its natural transformation distinguished from an isomorphism
+
+**Current:** 136/322:54–59, `⊗-anneau` and “F commute à ⊗.” **Kind:** own idea / reading question. **Confidence:** high for the rank test, by dimensions; medium for interpreting the manuscript's word “commute.” **Context:** H, “Gribouillis, suite,” pp. 328–334 in its labels, repeats tensor commutation; D, N41–N49 (275–281), representability and completed-dual distinctions. **Relation:** differs from an unrestricted strong-tensor interpretation. **R:** `follow-ups @305` [Open]; no settled entry supplies an isomorphism here.
+
+A coalgebra gives a natural convolution pairing \(\operatorname{Hom}(A,X)\otimes\operatorname{Hom}(A,Y)\to\operatorname{Hom}(A,X\otimes Y)\), which need not be invertible. For a finite free coalgebra of rank two over a field and \(X=Y=k\), the source has dimension four and the target dimension two, so even finite freeness does not make that map an isomorphism. The intended “commute” may describe this compatible pairing, and the cancelled or overwritten notation must be read before treating it as a strong monoidal assertion.
+
+### N45 — Products and kernels construct the ordinary graded right adjoint
+
+**Current:** 136/295:19–38, “Construire adjoint à droite,” the question-marked adjunction, and “C ou C^o … cat. de Groth”. **Kind:** own idea. **Confidence:** high for ordinary graded actions, because a complete coordinate construction and inverse adjunction maps are given in `records/cochain_research.md`, “C19: explicit construction without a tensor product in C”; the doubtful “diffs.” remains unresolved. **Context:** D, N41–N42 (275); H, “Modules gradués : la mise au propre,” its p. 294. **Relation:** adds a direct proof under explicit assumptions. **R:** no matching settled entry; `GALOIS E.11` [Open] is only a broader coefficient-formalism comparison.
+
+Let \(\mathcal A_S\) be the small preadditive category with objects \(i\in\mathbf Z\) and \(\mathcal A_S(i,j)=S_{j-i}\), and let \(B\) be its full subcategory on \(j\ge N\). In an abelian category \(C\) with small products, the right adjoint to restriction exists as \((\varphi_NQ)_i=\int_{j\in B}[S_{j-i},Q_j]\), because additive cotensors and the end are built from products and kernels, without a tensor product in \(C\). Both Grothendieck alternatives in the source provide those products (The Stacks Project Authors, n.d., Tag 07D8), but this proves no differential-graded or derived statement and does not turn arbitrary limit-preserving functors into representables without hypotheses.
+
+## IV. The geometric leaves, credited comparison with Hua, and a conditional obstruction
+
+### N46 — The projective-curve topic deserves its own research entry
+
+**Current:** 136/326:10–15 and 45–79, group diagrams/principal parts; 327:2–5 and 91–99, “torseur canonique” and “Trouver une connexion intégrable”. **Kind:** unpursued implication. **Context:** H, “Un feuillet étranger : la structure projective d'une courbe,” pp. 325–327 in its labels, lines 2174–2196; C, R061–R064 (230, 234), a different Raynaud-uniformization strand. **Relation:** supports Hua's topic identification and adds a separate distinction from the reused abelian-scheme material. **R:** no corresponding projective-connection result was identified in the supplied digest.
+
+Hua's project identifies a projective-structure investigation, and the current live 327 supports that identification through a genus-\(g\ge2\) curve, universal covering, a flat projective torsor, and the boxed algebraic-connection task. This is a separate Hua-credited subject, not an application inferred from the repeated word “uniformization” in the donor typescript. Its presence does not establish a link to the PD functor, Fourier transforms, or claims #243.
+
+### N47 — The pointed torsor uses a stabilizer, as the manuscript itself corrects
+
+**Current:** 136/327:11–14, deleted `GP(1)_R ≃ G'_C`, replaced by `S_R`. **Kind:** withdrawn in the same text / own idea. **Confidence:** high for the group distinction, since automorphisms of the disc fixing its centre are rotations by Schwarz's lemma; the exact handwritten group names retain their doubts. **Context:** H, the same geometry subsection, lines 2179–2182. **Relation:** contradicts its identification of the pointed-isomorphism torsor with the full real projective group. **R:** no matching entry.
+
+The frozen source explicitly replaces the larger group by a point stabilizer before extending structure group. In the disc model, the automorphisms fixing the distinguished point form the rotation group, so that extension is mathematically substantive. Hua's compressed account loses this correction and should not be used to overwrite it.
+
+### N48 — A topological splitting does not identify the holomorphic bundle
+
+**Current:** 136/327:18–20, deleted “analytique,” inserted “top.”; 327:85–99, the split expression `Ω^{-1}⊕Ω`. **Kind:** own idea. **Confidence:** high as a distinction of categories, because a topological splitting need not be holomorphic; medium as an explanation of the intended construction. **Context:** H, the geometry subsection, lines 2182–2188. **Relation:** adds a qualification to its flat-torsor interpretation. **R:** no matching entry.
+
+The author calls the indicated flat principal bundle topological after explicitly withdrawing “analytique.” Consequently its monodromy description does not identify the holomorphic projective bundle with the later split holomorphic direct sum. Establishing that identification, or finding that the displayed splitting is intended only smoothly or topologically, is necessary before solving the boxed algebraic problem.
+
+### N49 — The literal split holomorphic bundle has a nonzero-degree obstruction
+
+**Current:** 136/327:91–99, “Trouver une connexion intégrable / (alg) canonique sur” `P(Ω^{-1}+Ω)` and the following direct sum. **Kind:** own idea. **Confidence:** high under the explicit assumptions that \(\Omega\) is a holomorphic line bundle of nonzero degree and the connection respects the displayed holomorphic bundle; the identification of \(\Omega\) is unresolved. **Context:** H, the geometry subsection, lines 2187–2188. **Relation:** adds a conditional obstruction, not a historical emendation. **R:** no matching entry.
+
+Put \(L=\Omega\) and \(E=L^{-1}\oplus L\); a holomorphic principal \(\mathrm{PGL}_2\)-connection on \(\mathbf P(E)\) induces one on \(\operatorname{End}_0(E)=\mathcal O_X\oplus L^2\oplus L^{-2}\). Inclusion, covariant differentiation, and projection therefore give a holomorphic connection on the direct summand \(L^2\), whose degree must be zero by Atiyah (1957, Proposition 18(i), p. 202; Theorem 10, p. 203), contradicting \(\deg L\ne0\). Thus the literal split-bundle interpretation cannot have the requested regular algebraic connection, although neither the flat uniformization torsor nor an interpretation involving a nonsplit extension is excluded.
+
+### N50 — A nonsplit jet bundle supplies a precise comparison candidate
+
+**Current:** 136/326:45–47 and 62–79, `P^n_{X/h}` and differential-operator sketches; 327:74, 81, 98–99, `E→E⊗Ω`. **Kind:** own idea. **Confidence:** high for the cited jet-bundle facts, medium for their relevance to the handwritten sketches because the identification is not stated. **Context:** H, the geometry subsection, its “structure projective (ou oper)” interpretation. **Relation:** adds a specific candidate and its limitation. **R:** no matching entry.
+
+For \(L^2=K_X\), the standard comparison is the nonsplit sequence \(0\to L\to J^1(L^{-1})\to L^{-1}\to0\), with a connection supplied by a projective structure (Biswas et al., 2021, Lemma 2.2, Proposition 2.4, Corollary 2.6). Its associated graded is split, but its holomorphic bundle is not. If the manuscript instead means \(\Omega=K_X\), the graded pieces also differ, so merely replacing the plus sign by an extension would not resolve the notation.
+
+### N51 — Hua's classifying-space calculation exceeds the verified current coverage
+
+**Current:** 136/326:8–15, `c_1`, doubtful `c_2`, and half-class notation; 327:91–99, boxed connection task; 325:2–32, still the PD list. **Kind:** reading question. **Context:** H, geometry subsection, lines 2189–2195, reporting Euler/lift-obstruction and classifying-space calculations. **Relation:** differs in coverage and pagination; only part of its summary is supported. **R:** no matching entry; `MPL_133 B10` remains an unresolved cross-cote lead.
+
+The frozen packet supports group diagrams and half-class notation but does not contain H's explicit \(H^4(B_{\mathrm{SL}_2},\mathbf Z)\) calculation or the expression \(2g-2\sim g-1\). Its “pages 325 à 327” cannot therefore be substituted for this packet's scan numbers, and no adjacent omitted source has been verified here. The extra calculations remain credited leads from Hua's project, not current-page findings or evidence of a Fourier-transform example.
+
+### N52 — The normalized-cover uniqueness statement needs its pointing convention
+
+**Current:** 136/327:22–25, “une et une seule,” “l'image est un disque,” and tangent map “l'identité”. **Kind:** own idea / reading question. **Confidence:** high for the elementary translation test, medium that a convention is actually missing rather than implicit in the pointed source notation. **Context:** H, geometry subsection, lines 2185–2186. **Relation:** adds an explicit qualification to the reported theorem. **R:** no matching entry.
+
+If only the two written conditions are imposed literally, replacing a map \(f\) by \(f+c\) preserves its derivative and gives another disc image. A precise standard normalization requires the marked point to map to the origin and the image disc to be centred there; pointing alone need not suffice, and both conventions may be intended implicitly. This is a question about the statement's conventions, not a correction of the frozen line.
+
+### N53 — Real projective-group conventions need a component check
+
+**Current:** 136/326:10–15, real/complex `SL(2)` and `GP(1)` rows; 327:13–20, stabilizer and monodromy groups. **Kind:** own idea / reading question. **Confidence:** high for the determinant-sign argument; medium for its application because the author's `GP` convention is not fixed here. **Context:** H, geometry subsection, footnote identifying `GP(1)` with `PGL_2`. **Relation:** adds a qualification to that modernization. **R:** no matching entry.
+
+The image of \(\mathrm{SL}_2(\mathbf R)\) in \(\mathrm{PGL}_2(\mathbf R)\) has positive determinant sign, since multiplying a representative by a real scalar changes its determinant by a square. Thus it is the identity-component group \(\mathrm{PSL}_2(\mathbf R)\), not all real points of algebraic \(\mathrm{PGL}_2\). The real row must specify whether the latter's identity component is intended before an exact-sequence interpretation is asserted.
+
+## V. Links to the supplied Pursuing Stacks chapters and earlier work
+
+### N54 — Later derived abelianization is a further construction
+
+**Current:** 136/305:15–46, “Proposition 1”; 313:43–58 and 314:68–72, universal abelianization. **Kind:** unpursued implication. **Context:** PS VII §134, pp. 557–559, equations (1)–(8), and §136, pp. 565–566; D, N13 (235, 248–252, 275). **Relation:** adds a later derived comparison to the ordinary universal property. **R:** `follow-ups @305` [Open]; `GALOIS E.11` and `GALOIS G.6` [Open return claims, only a formal parallel].
+
+PS VII replaces ordinary abelianization by \(\mathrm Lp_!^{\mathrm{ab}}\), explicitly distinguishes its weak-equivalence localization from quasi-isomorphisms of presheaf complexes, and warns that the displayed chain-level functor still needs normalization. That later passage shows why the ordinary cocompletion and additive equivalences on 305 and 311–314 should not be read as a derived homotopy theorem. It supplies no proof of the present restricted-operation construction or of the unrelated abstract derivator questions in R.
+
+### N55 — The later divided-power warning requires resolutions
+
+**Current:** 136/318:25–27, operations “par transport de structure”; 320:1–70, iterated \(\Gamma\) diagrams. **Kind:** unpursued implication. **Context:** PS VI §111, pp. 455–456, especially (y′); D, N50–N52 concern distinct later comparisons in §§119, 124, and 127. **Relation:** adds a later explicit correction about derived nonlinear operations. **R:** `follow-ups @305` [Open], `follow-ups @304` [Open].
+
+PS VI says that applying \(\Gamma_k\) degreewise does not compute its derived functor on arbitrary coefficients and inserts appropriate projective resolutions, with flatness discussed conjecturally in that passage. This sharpens the reason for keeping ordinary normalization, transported operations, and derived constructions separate in the present packet. The nonflat coalgebra in N43 is a different obstruction, and neither argument by itself refutes the intended free or flat PD de Rham model.
+
+### N56 — The binomial retreat concerns a different comparison theorem
+
+**Current:** 136/299:37–40, binomial recurrence; 318:25–27, multiplication and nonlinear operations. **Kind:** unpursued implication. **Context:** PS VI §119, pp. 501–502, the \(W_2\) example and subsequent binomial proposal; A, R052 (080–083); D, N50 and N60. **Relation:** restates the later distinction and connects it to the current operational warning. **R:** `follow-ups @304` [Open].
+
+The later \(W_2\) calculation disproves the proposed equality between discrete and polynomial schematic linearization, then proposes binomial functions as a replacement; the text separately names de Rham linearization with divided powers. It is therefore not a retrospective blanket disproof of the earlier weighted cochain theory. R already records the associated-graded identity for integer-valued polynomials as the starting observation, so the additional task remains the filtered, differential, simplicial, and derived comparison, not rederiving that identity.
+
+### N57 — Analyzers provide a conceptual continuation of the operations programme
+
+**Current:** 136/312:8–13, “structures supplémentaires” and “contenu essentiel”; 315:48–75, operations represented by \(L\); 318:27, \(\Lambda,\Gamma,\mathrm{Sym}\). **Kind:** unpursued implication. **Context:** PS VI §120, pp. 506–507, the Lazare “analyzers” digression; H, “L'invariant additif universel.” **Relation:** adds an unmade conceptual link. **R:** `follow-ups @304` and `follow-ups @305` [Open].
+
+The later analyzer discussion puts PD, lambda, and binomial operations into a common algebraic theory with composition, offering a conceptual continuation of the present universal-operation programme. Its composition axioms are themselves not completely written in that passage. The link suggests what data a comparison must retain but supplies no such comparison or uniquely determined operation category.
+
+### N58 — A diagonal can retain more than the additive invariant
+
+**Current:** 136/311:71–74 and 312:3–13, multiplicative non-reconstructibility; 283:23–27, the tentative coaction. **Kind:** unpursued implication. **Context:** PS VII §139, pp. 590–591, the additive envelope with its “natural diagonal map” and the question about Steenrod operations; D, N40 (273). **Relation:** adds a later explicit analogue of the present warning. **R:** `gap g1048` and `follow-ups @305` [Open].
+
+PS VII singles out the additive envelope equipped with its diagonal, then asks how far the cohomological formalism and subtler operations survive that linearization. This supports reading 311–312 as a demand for retained extra structure rather than a claim that the bare chain complex suffices. Both texts leave higher compatibility questions open, so the analogy cannot close g1048's multiplication clause.
+
+### N59 — The later universal abelian torsor is not the projective torsor
+
+**Current:** 136/314:68–72, “abélianisation”; 327:3–5, “torseur canonique”. **Kind:** reading question. **Context:** PS VI §122, pp. 511–513, equations (1)–(3) and the nonemptiness qualification, the augmentation-one object of the free abelian object; H, geometry subsection. **Relation:** adds a distinction between two universal problems. **R:** no matching settled entry.
+
+For locally inhabited \(X\) (nonempty \(X\) in the simplicial-set case), PS VI's augmentation-one construction gives an additive universal torsor; the empty object is excluded. It is naturally compared with 313–314's free abelianization, but it neither constructs the \(\mathrm{PGL}_2\) torsor on 327 nor supplies its algebraic connection. The common word “torsor” alone does not identify the two constructions.
+
+### N60 — Cartan and later integral-form models remain qualified literature leads
+
+**Current:** 136/299:21–40, `h{T}`; 318:25–27, multiplicative reservation. **Kind:** reading question. **Context:** B, L01–L03, L09, and L11; D, N54 and §86, discussing the theory of 047–141 and 189–281. **Relation:** restates prior access qualifications and adds the new local structural evidence. **R:** `follow-ups @305` and `follow-ups @304` [Open].
+
+The earlier packages report Cartan's weighted comparison with binomial multiplication, while distinguishing it from Miller-type ranges, tame coefficient/connectivity restrictions, and Toën's affine-stack formulation. Those original theorem pages were not all re-retrieved here, and the earlier source qualifications remain in force. The present range strengthens the need for an explicit identification of models and comparison maps; it does not license transferring any of those theorems wholesale to the frozen formulas.
+
+## VI. Reused sheets: mathematical claims and documentary limits
+
+### N61 — Exposé IX is a separate, discontinuously ordered source
+
+**Current:** 136/282:5, 284:2, 286:2, 288:2, 290:2, 296:2, 298:3, 300:3; “IX” and printed pages 35, 32, 103, 102, 101, 100, 34, 160. **Kind:** reading question. **Context:** A, R057 (055–073, 090, 092); B, §1.5; C, R008; D, N16 (236, 242, 262, 272, 280). **Relation:** restates the donor-text distinction with additional current leaves. **R:** no matching lecture-example result.
+
+The headings, theorem numbers, and monodromy material strongly identify the donor strand with “Modèles de Néron et monodromie” in SGA 7 I; the publisher confirms that chapter's attribution and published pagination (Grothendieck & Raynaud, 1972). That bibliographical identification has not been established by a fresh external line-by-line collation of the entire donor text. The current order is visibly discontinuous and partly reversed, so it cannot be used as the order of the PD lecture or as evidence that its examples include abelian schemes.
+
+### N62 — The semistable-reduction criterion retains an internal inclusion tension
+
+**Current:** 136/284:6–26, condition (ii) `V⊂V^⊥`, its proof ending with the opposite inclusion, and a marginal doubtful question/inclusion sign. **Kind:** reading question. **Context:** A, R057 and B's reused-typescript sections; no earlier note resolving this exact current printed line was found. **Relation:** adds an internal donor-text discrepancy. **R:** no matching entry.
+
+The stated condition and the proof's final inclusion point in opposite directions in the frozen reading. The discrepancy is retained, together with the marginal signs, rather than repaired from the expected monodromy criterion. A published-text collation could distinguish a typescript slip from a difficult symbol, but would remain an editorial note rather than a change to this frozen transcription.
+
+### N63 — The blended-extension notation changes the roles of P and Q
+
+**Current:** 136/286:14–41, “Extensions panachées,” the filtration quotients, and (9.3.2). **Kind:** reading question. **Context:** the donor-text distinction in A, R057; B, reused-type sections; H's adjacent cotensor discussion is a different live strand. **Relation:** adds a separate internal inconsistency; no prior resolution found. **R:** no matching entry.
+
+The filtration assigns \(P\) to the top quotient and \(Q\) to the bottom, whereas the two displayed short exact sequences use the opposite roles. The word “panachées” does not justify identifying this classification problem with the handwritten coalgebra diagrams on 283–285. The retained passage needs a donor-text collation before any extension-theoretic reconstruction chooses one convention.
+
+### N64 — The monodromy pairing carries a stated restriction at ℓ=p
+
+**Current:** 136/296:15, “sous réserve, lorsque ℓ=p, de disposer du théorème de Tate” and “pour l'instant … inégales caractéristiques”; 290:6, “Cas ℓ≠p”. **Kind:** self-flagged. **Context:** A, R057 and D, N16, earlier donor leaves; the current quotation supplies the precise reservation. **Relation:** adds an explicit hypothesis to the continuing donor material. **R:** no matching PD-theory entry.
+
+The typescript conditions its \(\ell=p\) treatment on the cited Tate theorem and the stated mixed-characteristic setting. This is a local qualification of the donor monodromy construction, not an unverified step in the handwritten PD lecture. The current packet alone does not determine what later published version replaced that historical restriction.
+
+### N65 — Picard-scheme representability is expressly admitted in the reused text
+
+**Current:** 136/300:15, “nous allons admettre,” “résultat inédit de MUMFORD,” and the alternative “espace algébrique” from Artin. **Kind:** self-flagged / unproved claim. **Context:** A, R057 and B's donor-source inventory; no earlier note establishing this exact current representability claim was found. **Relation:** adds an admitted step in the donor source. **R:** no matching entry.
+
+The author explicitly admits scheme representability of the displayed connected Picard functor, citing unpublished Mumford/Raynaud results and offering an algebraic-space route instead. “Aucune démonstration … n'a été publiée” reports the source's historical state, not the present literature. The assumption belongs in the standing unverified-step list even though the face is reused paper.
+
+### N66 — The analysis exercises are not an additional lecture chapter
+
+**Current:** 136/294:2–8, “Problème MP 2,” “I,” and 292:2–34, continuation through parts d)–g). **Kind:** reading question. **Context:** A–D donor-source inventories and their bounded title surveys; no matching account of this exact exercise pair was found. **Relation:** adds another source layer. **R:** no matching entry.
+
+The convergence, periodicity, and complex-series prompts are typed exercises, with several mathematical signs absent from the supplied images. Their requests to “Montrer” or “Prouver” are exercise instructions, not evidence that the PD theory has those unresolved conjectures. The transcription preserves the visible blanks and corrections, so a reconstructed textbook problem must be kept separate from this diplomatic text.
+
+### N67 — The cancelled draft remains evidence of an attempted construction
+
+**Current:** 136/321:9–61, the large deleted block containing `Γ^n Hom_1(A,X)`, question-marked comparison maps, and coalgebra axioms. **Kind:** withdrawn in the same text. **Context:** H, “Gribouillis : coalgèbres et puissances divisées”; D, N49 (281), distinct universal problems. **Relation:** adds a visibly cancelled attempt; it does not contradict the retained questions. **R:** `claims #243` and `follow-ups @305` [Open].
+
+The cancellation prevents treating the lower draft's natural-transformation and coalgebra equivalences as retained theorems. Its content still supplies a useful record of the attempted universal-property reduction, but it must be compared with 320 and 322–325 without splicing the draft into their argument. No reason for the cancellation is explicitly established by these pages.
+
+## VII. Standing question: steps explicitly marked unverified, deferred, or withdrawn
+
+The following is a compact source ledger, not a second set of claims that every listed step is false or still open. Quoted question marks are authorial marks; editorial `\unsure` marks are a different kind of uncertainty. The source type remains explicit, and each row is one item.
+
+| ID / kind | Current source and words | Assessment; context relationship; relevant R status |
+|---|---|---|
+| U01 — self-flagged | 136/283:23–27: `?` on `P→P⊗s`, and `αi=βi ?= (i⊗id_s)Δ_P`. | Coaction factorization is questioned, not supplied by the equalizer alone; adds to D, N45–N49 (279–281) and H, “Le produit cotensoriel”; no matching settled R entry. |
+| U02 — self-flagged | 136/285:9: “V(C) structure d'… algèbre sur V(s) ?” | The question is retained with the uncertain word; adds a structural problem to the same D/H comparison, without establishing an algebra object. |
+| U03 — deferred, then developed locally | 136/287:53: doubtful “On va voir … se déterminent mutuellement”; 289–293: adjoint proposition and corollary. | The following pages supply the finite-cutoff argument, so this announcement is not left as an unanswered conjecture; restates D, N17–N23 (244–256), distinct from `gap g1048` [Open]. |
+| U04 — self-flagged | 136/295:19–26: “Construire adjoint à droite” and `Hom(...)=Hom(...) ?`. | The representability sketch needs stated categorical hypotheses; N45 gives a direct ordinary-graded construction, adding to D, N41–N42 (275), without a derived conclusion. |
+| U05 — self-flagged / reading question | 136/295:37: the doubtful annotation `quid pro` over an equality. | H, “Modules gradués,” reads “justifier” at the corresponding step; this is a reading disagreement and the equality is not silently regularized; no matching R entry. |
+| U06 — unproved claim described as known | 136/305:41: “pas seulement pour Δ, et bien connu.” | The free-cocompletion assertion is stated as standard with a construction, not as a self-confessed conjecture; adds the framework to B, N44–N48 (127–129), without resolving `gap g1004` [Open]. |
+| U07 — deferred convention | 136/309:33–34: “Il y aurait lieu de fixer une convention de degrés”; 310:4: “Je n'ai pas encore besoin urgent”. | The convention is deliberately deferred; 310 still requires a sign in the total differential; adds to B, N55–N66 (137–141), no convention inferred from it. |
+| U08 — self-flagged | 136/313:80: question mark over an equivalence of Hom categories. | The next page sketches the abelianization proof, so the mark is not a proof of failure; adds to B, N44–N48 (127–129), `follow-ups @305` [Open] remains stronger. |
+| U09 — self-flagged / proof sketch | 136/314:33, 62–65: “premier s'écrit ?”, “doit être représentable”, “on a pratiquement terminé”. | The author indicates a representability/adjunction argument without a full final exposition; H, “L'invariant additif universel,” agrees; no new general representability theorem is inferred. |
+| U10 — unproved expectation | 136/314:72: “doit se maintenir pour un topos quelconque.” | The expectation concerns abelianization; differs from A, R039–R040 (091), the de Rham condition, and does not settle the unchecked `WG H6` hunch. |
+| U11 — self-flagged | 136/315:75: “à préciser la signification de ces formules”. | This directly qualifies the tensor/operation formulas; adds to D, N41–N42 (275), with no completed multiplication comparison under `gap g1048` [Open]. |
+| U12 — unproved claim | 136/316:38–40: “il doit résulter des principes généraux (que je n'ai pas détaillés)”. | The restricted-operation universal property remains a proposal; H's corresponding subsection supports that reading; `gap g1004` [Open] is a distinct uniqueness problem. |
+| U13 — not an admitted theorem | 136/316:21: “l'on a admis” followed by the broad choice of target categories. | Here “admis” means the allowed hypotheses/operations, not an assertion accepted without proof; this qualifies H's summary and avoids a false extra gap. |
+| U14 — withdrawn in the same text | 136/317:25: “attention … confusion”, with `Ab` replacing the inappropriate opposite-category interpretation. | The margin expressly corrects variance in the discussion of 313–317; adds to A, R009 (058–064), B, O12 (127–129), and D, N42 (275), all earlier reading leads. |
+| U15 — self-flagged proviso | 136/318:18–20: a marginal `?`, then “Sous réserve … faire des projecteurs !” | The projector condition qualifies the restricted-shape category; adds a proviso absent from H's compressed summary, without proving its universal property. |
+| U16 — cancelled questions | 136/321:7, 22, 27: a live top `?` at 7, then comparison questions inside the deleted block beginning at 9. | The lower questions are in a withdrawn attempt, while the top question remains live; adds to H's “Gribouillis” reading and D, N49 (281), not a retained PD theorem. |
+| U17 — self-flagged | 136/324:2–4: “Deux questions de p.d. (la … première connue)” and “Cet idéal a-t-il des p.d. ?” | The parenthesis does not supply the arbitrary-coalgebra hypotheses; N42–N43 distinguish the positive finite-projective case and the nonflat obstruction; no R-wide classification is settled. |
+| U18 — self-flagged | 136/324:6–10: “satisfont-ils” the iterated relation, and “Sont ils … les seuls”. | Composition and uniqueness are separate questions; adds to H's corresponding subsection and bears diagnostically on `claims #243` [Open]. |
+| U19 — unfinished conditions | 136/325:3–32: trailing “et —”, item 4 ending “et telle que”, and schematic item 6. | No missing condition is supplied editorially; adds explicit incompleteness to H's “Gribouillis” account and `follow-ups @305` [Open]. |
+| U20 — task, not solution | 136/327:91–95: “Trouver une connexion intégrable / (alg) canonique sur”. | The requested connection is not constructed on this leaf; N49 is only a conditional obstruction, adding to H's geometric interpretation; no matching R entry. |
+| U21 — explicit donor restriction | 136/296:15: “sous réserve, lorsque ℓ=p” and the cited Tate theorem. | A qualification of reused Exposé IX, restating its source-layer distinction in A/B/D; not a gap in the handwritten PD programme. |
+| U22 — explicitly admitted donor step | 136/300:15: “nous allons admettre” scheme representability and the unpublished-result statement. | This is an actual admitted step in the reused source; adds to the donor inventory in A/B, with the Artin algebraic-space alternative retained. |
+| U23 — source question, uncertain target | 136/284:26: marginal doubtful `?` and inclusion sign beside the semistable criterion. | The mark may concern the opposed inclusions in the same typescript, but its precise attachment is not secure; adds a reading question to the A/B donor comparison. |
+| U24 — deferred donor construction | 136/286:12: “Pour définir (9.1.2) dans le cas général” and “les deux sections suivantes”. | The typescript postpones the general monodromy construction while beginning blended extensions; the retained leaves are not continuous enough to supply both promised sections here; adds to the A/B/D donor-source inventory, with no PD-register conclusion. |
+
+## VIII. Standing question: title sheets, manuscript page counts, and local exposition map
+
+### T01 — The actual cover in this packet
+
+**Current:** 136/301:3–5, `Notations|Notions ½ simpliciales` and “Constructions universelles”. **Kind:** reading question. **Context:** A–D title surveys; H, “Notations simpliciales. Constructions universelles,” its p. 300. **Relation:** adds an authored cover to the earlier bounded ranges. **R:** `WG2 §Week #3` [unchecked plan].
+
+This is the packet's one inventoried cover, with the first word still explicitly doubtful. It carries no written total such as “17 pages” or “Pages 1–67,” and its marginal number is not a page count.
+
+### T02 — Seventeen consecutive author-page labels
+
+**Current:** 136/302–318, `\mspage{1}` through `\mspage{17}`; 302:3, `1975 … 1976`. **Kind:** unpursued implication. **Context:** H, the two universal-construction subsections, its pp. 300–317; earlier A–D title surveys. **Relation:** adds a securely bounded local sequence. **R:** no result establishes the full lecture's length or delivery order.
+
+These seventeen consecutive labels establish the length of the retained numbered unit, not the entire cote or the 1976 lecture. The date annotation on its first page is separate evidence from the catalogue's dating, with its connective still doubtful.
+
+### T03 — The reused printed pagination
+
+**Current:** 136/282, 284, 286, 288, 290, 296, 298, 300, each near the top: `IX` and printed page numbers. **Kind:** reading question. **Context:** A–D donor inventories, especially D, N16; Grothendieck and Raynaud (1972), publisher chapter record. **Relation:** adds the printed-page mapping below. **R:** no matching entry.
+
+The mapping is scan 282→35, 284→32, 286→103, 288→102, 290→101, 296→100, 298→34, and 300→160. These are local donor pagination, not counts of the PD lecture, and the source lacks a continuous run here.
+
+### T04 — The exercise title and the absence of a printed total
+
+**Current:** 136/294:2–8, “Problème MP 2” and “I”; 292, its continuation. **Kind:** reading question. **Context:** A–D source inventories; no same-exercise report found. **Relation:** adds a different typed title. **R:** no matching entry.
+
+The exercise heading identifies another reused text and supplies no overall page total. Its part number must not be merged with the author-page sequence 1–17 on 302–318.
+
+### T05 — “Gribouillis vrac” is reported only by the context here
+
+**Current:** 136/318:2, manuscript page 17, followed in the supplied set by 320; scan 319 is absent by the input manifest. **Kind:** reading question. **Context:** H, “Gribouillis : coalgèbres et puissances divisées,” reporting a blue cover on its p. 318. **Relation:** differs in coverage and page labels. **R:** no matching entry.
+
+The present images do not verify H's reported “Gribouillis vrac” / “Au fil des jours…” cover, and no missing page or cover has been manufactured from that report. Its page-label discrepancy is recorded for the next source check, without reinterpreting the input's excluded scan 319.
+
+### T06 — Inventory counts are editorial, not manuscript page claims
+
+**Current:** all 45 current scans and `MPL_136_282-327_inventory.csv`. **Kind:** unpursued implication. **Context:** A–D distinguish reused faces and live material; the current inventory adds a complete count. **Relation:** adds documentary accounting. **R:** no matching entry.
+
+The inventory classifies **33 text faces, 10 reused typed faces, one cover, and one cancelled-draft face**, for 45 supplied scans. Those editorial sheet-kind counts do not assert the size of any original folder or lecture, and the cancelled face still includes the complete visible material, including live remnants.
+
+### Local exposition map
+
+| Scans | Source layer / local labels | Content and limit of inference |
+|---|---|---|
+| 283, 285 | Live working sheets | Coalgebra/coaction, cotensor, and equivariance problems; no numbered lecture section established. |
+| 287, 289, 291, 293 | Live exposition; Proposition 1 | Graded modules, translation, finite cutoffs, four adjoints, localization. |
+| 295, 297, 299 | Live extension/calculation | Abstract coefficient categories, dual adjoints, negative tail and binomial recurrence. |
+| 301 | Cover | Doubtful first title word; clear “Constructions universelles.” |
+| 302–305 | Author pages 1–4 | Simplex notation, universal simplex, free-cocompletion Proposition 1. |
+| 306–310 | Author pages 5–9 | Homotopy-localization programme, Dold–Puppe, mixed indices, totalization conventions. |
+| 311–314 | Author pages 10–13 | Propositions 2–3, universal additive invariant, multiplication warning, abelianization. |
+| 315–318 | Author pages 14–17 | Universal operations, restricted shapes, variance correction, projectors, tensor warning. |
+| 320–325 | PD working sheets; 321 cancelled | Natural operations and universal elements, convolution, composition/uniqueness questions; no finished conclusion. |
+| 326–327 | Live geometric sheets | Group diagrams, class-like notation, principal parts, uniformization and the requested connection. |
+| 282, 284, 286, 288, 290, 296, 298, 300 | Reused Exposé IX | Arithmetic geometry, monodromy, blended extensions, Picard representability. |
+| 292, 294 | Reused exercises | “Problème MP 2,” convergence and periodic sequences. |
+
+## IX. Reading questions arising from context or mathematical comparison
+
+**No entry in this section has changed the frozen transcription.** Inline doubts remain the primary indication of uncertain ink; the following questions record conflicts suggested only after the freeze or by comparing the already frozen formulas.
+
+### Q01 — The target category on 302 is literally Ens
+
+**Current:** 136/302:9–20, the definitions of `A_*` and `A^*` with target `Ens`. **Kind:** reading question. **Context:** H, “Notations simpliciales. Constructions universelles,” lines 1996–2007, explicitly replaces this target by \(\mathcal A\) in its modernized formula. **Relation:** differs. **R:** no matching entry.
+
+The frozen text retains `Ens`, while H explicitly explains why the intended general-category definition would use \(\mathcal A\). That is a plausible authorial slip or reading question, not permission to alter the current ink-based transcription. The two levels of evidence remain separate.
+
+### Q02 — Set maps, ordered maps, and the two simplex indices
+
+**Current:** 136/303:34–54, `Hom_Ens`, later `Hom_Δ` and `Hom_ord`, with a reversed order of indices in the final display. **Kind:** reading question. **Context:** H, the same notation subsection, the universal cosimplicial simplex formula; C, R009 (194, 227, 229, 231); D, N74 (235). **Relation:** differs in literal notation while adding evidence for the full simplex category. **R:** `PRETOT A.12` and `TOTASPH C.10` concern a different injective-simplex setting.
+
+The later ordered-map notation and Dold–Puppe equivalence constrain the intended interpretation, but the two displayed index orders and the `Ens` subscript have not been normalized. A reconstruction should distinguish the represented simplex, the degree variable, and the variance before deciding which line contains a slip. This does not reclassify the manuscript's objects as modern semisimplicial sets without degeneracies.
+
+### Q03 — The adjoint equality annotation has two supplied readings
+
+**Current:** 136/295:37, frozen `\unsure{\text{quid pro}}`. **Kind:** reading question. **Context:** H, “Modules gradués : la mise au propre,” footnote to its p. 294: “justifier”. **Relation:** differs. **R:** no matching entry.
+
+H suggests “justifier” where the frozen reading gives the doubtful phrase “quid pro.” Both indicate a reservation near an internal-Hom equality, but that mathematical agreement does not decide the letters. The alternative is recorded here only.
+
+### Q04 — Opposite categories require an explicit grading reversal
+
+**Current:** 136/297:13–24, the displayed opposite-category and cutoff equivalences. **Kind:** reading question. **Context:** H, “Modules gradués : la mise au propre,” its dual formula with cutoff \(-N\); D, N41–N42 (275). **Relation:** differs in the normalized index convention. **R:** `gap g1048` [Open], only as an ambient-category warning.
+
+Passing to the opposite category reverses action arrows, and a comparison retaining a nonnegative graded ring normally needs a corresponding reindexing. H builds that reversal into its \(-N\) formula, whereas the frozen lower-cutoff notation remains uncertain. The handwritten expression is retained rather than silently made consistent with H's reconstruction.
+
+### Q05 — The unboxed exponents on 299 remain unresolved
+
+**Current:** 136/299:5–20 and 28–34, exponents/signs in the Hom diagrams and unboxed coefficient formulas, compared with 299:21–40, the boxed recurrence. **Kind:** reading question. **Context:** H, “Modules gradués : la mise au propre,” its p. 298 summary; D, N44–N45 (277–279). **Relation:** H restates the recurrence but does not resolve every current exponent. **R:** `gap g1048` [Open].
+
+The clear recurrence supports N37's conditional calculation, but it does not retrospectively settle the doubtful signs in the preceding diagram. H's concise normalized account omits the disputed details. Those details stay marked in the frozen text and must be checked from the source if the full chain of equalities is needed.
+
+### Q06 — Normalization and denormalization names disagree in one operation formula
+
+**Current:** 136/315:61–74, `K^*=ND^*(K^·)`; compare 306–308's displayed ND/DP directions. **Kind:** reading question. **Context:** H, the notation and additive-invariant subsections, consistently treats ND as normalization and DP as its inverse. **Relation:** differs from the literal local formula. **R:** `follow-ups @305` [Open].
+
+The local formula uses ND in the direction ordinarily assigned to DP by the surrounding definitions. H's normalized explanation suggests the expected inverse, but the discrepancy could be an authorial slip rather than misread ink. No substitution has been made.
+
+### Q07 — The nonlinear-operation list on 318 differs from Hua's
+
+**Current:** 136/318:27, frozen `Λ^i`, `Γ^i`, `Sym^i`. **Kind:** reading question. **Context:** H, “L'invariant additif universel,” line 2135, `Λ^i`, `⊗^i`, `Sym^i`. **Relation:** differs. **R:** `gap g1048` and `follow-ups @305` [Open].
+
+The middle operation is \(\Gamma^i\) in this packet and \(\otimes^i\) in H's modernized list. Both are mathematically plausible in the surrounding discussion, which is precisely why plausibility cannot choose the reading. The frozen reading and its uncertainty policy remain unchanged.
+
+### Q08 — The universal pair and first-operation identity need separate checks
+
+**Current:** 136/323:11–25, `f^(1)=0`, `u_1=id`, and the universal pair into `A×A`; compare 320's `u_1=id` and 325's `f^(1)=f`. **Kind:** reading question. **Context:** H, “Gribouillis : coalgèbres et puissances divisées,” gives normalized unit identities and describes the universal pair as projections. **Relation:** differs in both the unit line and the variance of that description. **R:** `claims #243` [Open; formal-method connection only].
+
+The first-operation line conflicts with the nearby identity language, and the universal covariant pair needs maps \(A\to A\oplus A\), namely the inclusions under the finite product/direct-sum identification. H's projection wording does not resolve that variance issue. Neither the zero nor the arrows are corrected from the expected PD axioms.
+
+### Q09 — Two Hom targets in the PD questions should not be silently repaired
+
+**Current:** 136/324:4, `Hom_h(A,M)` in the ring sentence; 325:20–25, `Hom(A,Γ^+M)⊂Hom(A,M)`. **Kind:** reading question. **Context:** H, “Gribouillis : coalgèbres et puissances divisées,” uses the algebra \(B\) and the full \(\Gamma^*M\) in its normalized account. **Relation:** differs. **R:** `follow-ups @305` [Open].
+
+The evident typed reconstruction would use \(B\) in the first place and the full divided-power algebra in the second, but those are mathematical repairs, not diplomatic readings. N42–N43 explicitly state the coherent convolution interpretation being tested, rather than claiming that the literal formulas are already well typed. The source remains as frozen.
+
+### Q10 — The second scalar formula on 326 omits the earlier factor i
+
+**Current:** 136/326, near the \(a,b,\lambda,\mu\) calculation: `b=(λ−μ)/(2i)=½(λ−λ^{-1})`. **Kind:** reading question. **Context:** H's geometry subsection treats the group-diagram subject but does not resolve this scalar formula; no exact prior same-cote correction found. **Relation:** adds a local consistency question to that geometric lead. **R:** no matching entry.
+
+The second expression lacks the factor \(i\) visible in the preceding denominator. Substituting \(\mu=\lambda^{-1}\) suggests a possible slip, but the visible second factor has been retained as \(1/2\). The group or real-form convention should be checked before assigning any intended correction.
+
+## X. Reconciliation with RESULTS_STATE and source-search record
+
+No existing register status is silently upgraded by this package. The complete digest was read, including its later open-item entries: its introductory orientation does not override the explicit relevance of the five rows below.
+
+| Exact R identifier | Supplied status / prior credit | What these pages add | What remains open |
+|---|---|---|---|
+| `follow-ups @305` | Open; `136-pd-de-rham-shadows` credited to Michel Hua's project | 306's localization programme, 311–312's multiplication warning, 318's tensor distinction, 324–325's algebraic questions; N43 adds a nonflat convolution obstruction under stated hypotheses. | The historical weightwise comparison, product compatibility, PD descent, and connected nilpotent finite-type homotopy recovery. |
+| `gap g1048` | Open multiplication clause; R reports g1031, g1041, g1034–g1035, g1080 as settled in the stated or repaired settings; g1031 credited to Hua's project | Explicit finite-cutoff formulas on 289–293; N37 computes the all-graded negative part; N39 separates finite cutoff from monoidal quotient claims; 318 states the tensor warning. | Multiplicative reconstruction in the precise repaired localization; no earlier reported linear result is re-proved or withdrawn here. |
+| `follow-ups @304` | Open | The operation-category and tensor reservations, PS VI §119–120 comparison, and the precise Horel target. | A filtered comparison compatible with differentials, simplicial operators, and derived realization; the associated-graded observation is already recorded. |
+| `gap g1004` | Open | Ordinary universal properties and an explicit localization programme, with qualifications on restricted operations. | Connectedness/simple connectedness and the calculus-of-fractions/equalization claims for admissible theories on earlier 111–121. |
+| `claims #243` | Open; correction must include the multiplication identities from 184; related finding credited to Hua's project | Yoneda/universal-element method and additional product/composition distinctions on 320–325; N43 supplies a diagnostic against unrestricted hypotheses. | The corrected automorphism-group scheme, determinant criterion, and pro-unipotent-kernel theorem; no direct identification with the geometric projective group. |
+| `MPL_136_095-141 O01`; `MPL_136_095-141 L06`; `MPL_136_047-094 §2`; `MPL_136_189-234 §2`; `MPL_136_235-281 §1`; `MPL_136_235-281 §86` | First-pass observations or literature leads | Current explicit warnings give source support for distinctions already made there. | Earlier source and theorem checks retain their original qualifications. |
+| `MPL_121_001-048 Q1`; `MPL_152+120 Q1-06` | Terminology question; recorded module-shadow definition with comparison unresolved | 299's \(M\otimes h\{T\}\) is a concrete comparison object. | Identification of “ombre” and “tubulure,” including underlying source not supplied here. |
+| `MPL_133 B10`; `WG2 §2.4 #5`; `WG2 §Week #3`; `WG H6` | Reading lead / unchecked plans or hunch | Actual local cover/programme and separate geometric leaves; no cote-137 reference. | Cross-cote application and the broader schematic/localizer conjectures. |
+| `PRETOT A.12`; `TOTASPH C.10` | Their reported Proved/Refuted statuses concern \(\Delta_{\mathrm{inj}}\) | 302–308 constrain the present full simplex convention. | No automatic transfer of those results from the word “semi-simplicial.” |
+| `GALOIS E.11`, `GALOIS G.6` | Open return claims | Only a formal analogy about missing coefficient/monoidal enhancement. | The independent derivator questions; no solution claimed from these pages. |
+
+### What was searched and what was not treated as verified
+
+| Supplied source | Relevant searches and passages | Evidential limit retained |
+|---|---|---|
+| README and R | All text; exact open IDs; topos, cohomology, multiplication, shadows, Chern, Fourier, 137, grading, localization | Planning questions do not certify their proposed answers; R's statuses remain attributed claims. |
+| A | R027–R044, R052, R054, R057–R059; title and programme surveys; scans 080–091 | Earlier scans were not available for a new visual reading; the faisceautisation account is reported evidence. |
+| B | §§1.2–1.5, standing questions, N20–N48, O01, O12, L01–L14; 113–135 | Earlier claims and access restrictions retained; no new proof of generalized-theory uniqueness. |
+| C | R001–R013; R061–R064; examples and title searches | Weighted comparison and Raynaud-uniformization leads are not interchangeable. |
+| D | N13–N26, N29–N49, N50–N60, N74, literature survey | Existing finite-tail, exactness, and repaired quotient claims are credited rather than rediscovered. |
+| H | Entire 2,504-line modernized file read in the research review; current overlap pp. 278–327 and later continuation leads | AI-produced interpretation; later-source claims and its shifting page labels are not substitute scans. |
+| PS VI | §§111, 117, 119–120, 122 and relevant cross-references | No assumption that the failed schematic comparison refutes all PD cochains; no reading of unavailable §94 asserted. |
+| PS VII | §§134, 136, 139, especially pp. 557–559, 565–566, 590–591 | Later derived questions and diagonal/higher-operation questions retain their tentative status. |
+| External primary literature | Sources and theorem locators below; root reopened the cited primary sources after the delegated research | No technical claim relies on Wikipedia, nLab, or a secondary search snippet; unavailable originals are explicitly marked as leads. |
+
+## XI. References
+
+### Manuscript and supplied contextual sources
+
+Grothendieck, A. (n.d.). *Complexe de De Rham à puissance divisée* [Manuscript, Montpellier archive, cote 136, scans 282–327, excluding 319]. Supplied images; frozen diplomatic transcription in this package. The catalogue's circa 1975–1976 dating and the annotation on scan 302 are recorded separately from the dating of individual reused or loose leaves.
+
+Grothendieck, A. (1983). *Pursuing stacks* [Unpublished manuscript; supplied typed-up chapters VI–VII]. Files `ps_chapters_VI_VII/ps6.tex` and `ps7.tex`; section and manuscript-page citations in N54–N59.
+
+Michel Hua's project. (2026). *Modernised reading of cote 136* [AI-produced interpretive text; supplied snapshot downloaded November 14, 2026]. `hua_project/136.modern.tex`; provenance and use qualifications in `hua_project/README.md`.
+
+Supplied research context. (2026). *RESULTS_STATE and research notes for MPL_136_047–094, MPL_136_095–141, MPL_136_189–234, and MPL_136_235–281* [Unpublished project records; earlier notes first pass and unreviewed]. Exact paths and status conventions appear at the start of these notes.
+
+### Primary literature checked for the comparisons used above
+
+Atiyah, M. F. (1957). Complex analytic connections in fibre bundles. *Transactions of the American Mathematical Society, 85*(1), 181–207. https://doi.org/10.1090/S0002-9947-1957-0086359-5  
+Checked Proposition 18(i), p. 202, Proposition 19 and Theorem 10, p. 203, in the [original journal PDF](https://www.ams.org/journals/tran/1957-085-01/S0002-9947-1957-0086359-5/S0002-9947-1957-0086359-5.pdf).
+
+Biswas, I., Hurtubise, J., & Roubtsov, V. (2021). *Vector bundles and connections on Riemann surfaces with projective structure* [Preprint, arXiv:2107.10440v1]. arXiv. https://doi.org/10.48550/arXiv.2107.10440  
+Checked equation (2.6), Lemma 2.2, Proposition 2.4, and Corollary 2.6, pp. 6–8, in the [author preprint](https://arxiv.org/pdf/2107.10440); version 1, July 22, 2021.
+
+Cenkl, B. (1989). Cohomology operations from higher products in the de Rham complex. *Pacific Journal of Mathematics, 140*(1), 21–33. https://msp.org/pjm/1989/140-1/pjm-v140-n1-p02-p.pdf  
+Checked §5 and Theorem 2, pp. 31–33; the hypotheses of the commutative cochain problem are retained in N32.
+
+Grothendieck, A., & Raynaud, M. (1972). Modèles de Néron et monodromie. In *Groupes de monodromie en géométrie algébrique: SGA 7 I* (Lecture Notes in Mathematics, Vol. 288, pp. 313–523). Springer. https://doi.org/10.1007/BFb0068694  
+Publisher chapter/book metadata checked; the current donor images themselves supply the quoted text, and a complete external collation was not performed.
+
+Horel, G. (2024). Binomial rings and homotopy theory. *Journal für die reine und angewandte Mathematik, 2024*(813), 283–305. https://doi.org/10.1515/crelle-2024-0039  
+Checked Remark 3.11 and Theorems 5.4 and 6.1 in the [author PDF](https://geoffroy.horel.org/binomial.pdf); theorem numbers are used because author-version and journal pagination may differ.
+
+Mandell, M. A. (2006). Cochains and homotopy type. *Publications Mathématiques de l'IHÉS, 103*, 213–246. https://doi.org/10.1007/s10240-006-0037-6  
+The classification and faithful-but-not-full assertion were checked in the [primary journal record and abstract](https://www.numdam.org/item/PMIHES_2006__103__213_0/).
+
+Richter, B. (2009). Divided power structures and chain complexes. In C. Ausoni, K. Hess, & J. Scherer (Eds.), *Alpine perspectives on algebraic topology* (Contemporary Mathematics, Vol. 504, pp. 237–254). American Mathematical Society. https://doi.org/10.1090/conm/504/09882  
+Checked §7, especially Theorem 7.1, Corollary 7.2, Definition 7.4, and Theorem 7.5, pp. 248–250, in the [publisher PDF hosted at MIT](https://math.mit.edu/~hrm/palestine/richter-divided-power.pdf).
+
+Richter, B., & Sagave, S. (2020). A strictly commutative model for the cochain algebra of a space. *Compositio Mathematica, 156*(8), 1718–1743. https://doi.org/10.1112/S0010437X20007319  
+Checked Theorems 1.1–1.2 in the [author version](https://arxiv.org/pdf/1801.01060) and publication metadata in the publisher record.
+
+Schwede, S., & Shipley, B. (2003). Equivalences of monoidal model categories. *Algebraic & Geometric Topology, 3*, 287–334. https://doi.org/10.2140/agt.2003.3.287  
+Checked §1 and its explicit commutativity qualification in the [author PDF](https://homepages.math.uic.edu/~bshipley/monoidalequi.final.pdf).
+
+The Stacks Project Authors. (n.d.). *The Stacks Project*. Retrieved November 17, 2026, from https://stacks.math.columbia.edu  
+Exact checked entries: [Dold–Kan, Tag 019G](https://stacks.math.columbia.edu/tag/019G); [products in a Grothendieck category, Tag 07D8](https://stacks.math.columbia.edu/tag/07D8); [PD definition, Tag 07GL](https://stacks.math.columbia.edu/tag/07GL); [flat extension of divided powers, Tag 07H1](https://stacks.math.columbia.edu/tag/07H1); and [divided-power polynomial algebras, Tag 07H4](https://stacks.math.columbia.edu/tag/07H4). Tags 07GK and 07GZ identify the containing sections rather than the individual definition and lemma.
+
+### Earlier-package bibliographic leads, not newly verified theorem identifications
+
+Cartan, H. (1976). Théories cohomologiques. *Inventiones mathematicae, 35*, 261–271. https://doi.org/10.1007/BF01390140  
+The supplied B, L01, and D, N54 / §86 report inspection of §7; that access history is retained, and the original theorem pages were not newly read for this packet.
+
+Miller, E. Y. (1978). Derham cohomology with arbitrary coefficients. *Topology, 17*(2), 193–203. https://doi.org/10.1016/S0040-9383(78)90025-3  
+Bibliographical lead retained from the supplied earlier notes; no newly inspected theorem is attributed to it here.
+
+Scheerer, H., & Tanré, D. (1991). Exploring W. G. Dwyer's tame homotopy theory. *Publicacions Matemàtiques, 35*, 375–402. https://doi.org/10.5565/publmat_35291_05  
+Earlier-package inspection of the coefficient/connectivity restrictions is reported rather than independently certified here.
+
+Toën, B. (2020). Le problème de la schématisation de Grothendieck revisité. *Épijournal de Géométrie Algébrique, 4*, Article 14. https://doi.org/10.46298/epiga.2020.volume4.6060  
+Retained with B, L09's affine-stack and finite-type qualifications; primary retrieval in this research pass was unsuccessful, so it is not used as a newly verified theorem about the manuscript.
+
+
+
+
