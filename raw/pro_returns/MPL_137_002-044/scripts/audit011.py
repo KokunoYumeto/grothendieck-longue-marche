@@ -1,0 +1,2 @@
+from audit_support import revise
+revise(11,replacements=[(r'\bullet','*')],notation=[('Second object on scan 011',"L'_*","Simple prime in the direct-summand argument, distinct from L^! for a chain complex; retained as written.")],note='Second visual comparison of every line, the two binomial-polynomial annotations and all inserted/cancelled portions of the exterior-power argument. Confirmed that L-prime here is a second object, not the exclamation-mark complex.')

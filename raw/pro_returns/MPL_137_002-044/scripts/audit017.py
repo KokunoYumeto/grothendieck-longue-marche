@@ -1,0 +1,2 @@
+from audit_support import revise
+revise(17,replacements=[(r'\bullet','*'),(r'B_{i-1}\arrow[r,hook]',r'B_{i-1}\arrow[r,phantom,"\subset"]')],doubts=[('bottom identification','B_{i-1} ⊂ Z_{i-1}','No arrowhead is visible on the lower inclusion; represented as a subset sign, distinct from the hooked arrow above.','high')],note='Second visual audit of all classification coefficients, overwritten rank terms, proof and bottom diagram. Corrected the lower diagram relation from a hooked arrow to the visible subset sign; retained the cancellations in the rank formula.')

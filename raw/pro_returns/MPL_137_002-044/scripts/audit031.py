@@ -1,0 +1,2 @@
+from audit_support import revise
+revise(31,replacements=[('Transformant par dualité les énoncés.',r'\unsure{Transformant|Transformons} par dualité les énoncés.')],doubts=[('line 6','Transformant','Transformons','medium')],note='Second visual audit of whole scan and enlarged bands. Checked A-seul insertion, right-module designation, variance, hats/opposite-circle placement, and limit arrows; verb ending at start of duality paragraph is marked uncertain.')

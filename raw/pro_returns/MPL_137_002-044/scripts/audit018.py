@@ -1,0 +1,2 @@
+from audit_support import revise
+revise(18,replacements=[('il leur corresponde',r'il leur \unsure{correspond|corresponde}')],doubts=[('last paragraph','correspond','corresponde; final stroke is faint.','medium')],note='Second visual audit of saturation, both chain displays and the elementary-divisor paragraph. Retained the differing N_i[-i] label and N_{i-1} term as written, and rechecked the possible missing bar in Q_i’s decomposition.')

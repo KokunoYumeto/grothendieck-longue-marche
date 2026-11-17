@@ -1,0 +1,2 @@
+from audit_support import revise
+revise(8,replacements=[(r'\bullet','*')],notation=[('Normalized complex','L^!_*','Scan 008 has a separate dot under the raised stroke; this controls the matching sign on scan 007, not every prime elsewhere.')],note='Second visual audit of all lines, products, degree annotations, corrections of the condition labels and final proof; compared every raised exclamation mark with the simple primes and standardized the starred simplicial subscript from the ink.')

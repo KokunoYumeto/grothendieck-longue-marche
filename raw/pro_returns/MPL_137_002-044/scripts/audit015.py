@@ -1,0 +1,2 @@
+from audit_support import revise
+revise(15,replacements=[(r'\bullet','*'),(r'\uline{homo-}'+'\n'+r'\uline{pie}',r'\uline{\unsure{isom.}}'+'\n'+r'\uline{près}')],doubts=[('final paragraph','à isom. près','The enlarged two-line phrase reads isom./près, not a divided homotopie; first abbreviation remains slightly faint.','medium')],note='Second visual audit of the entire sheet, including the characteristic-rank paragraph and the NB. A further enlargement corrected the final underlined phrase to isom. près. All cramped marginal text remains represented with local uncertainty.')
