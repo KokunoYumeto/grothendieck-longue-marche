@@ -1,0 +1,39 @@
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,graphicx,xcolor,tikz-cd}
+\usetikzlibrary{arrows.meta,decorations.pathreplacing,positioning,calc,shapes.geometric}
+\IfFileExists{ulem.sty}{\usepackage[normalem]{ulem}}{}
+% ulem is unavailable here. These identity definitions deliberately check
+% content syntax only; they do not claim typographic validation of underlines.
+\providecommand{\uline}{}
+\providecommand{\uuline}{}
+\setlength{\textwidth}{17cm}
+\setlength{\oddsidemargin}{-0.5cm}
+\setlength{\textheight}{24cm}
+\setlength{\topmargin}{-1.5cm}
+\setlength{\emergencystretch}{3em}
+\DeclareRobustCommand{\cotefile}[1]{\par\bigskip\noindent\textbf{Cote #1}\par}
+\DeclareRobustCommand{\scanpage}[1]{\clearpage\noindent\textbf{Scan #1}\par}
+\DeclareRobustCommand{\mspage}[1]{\par\noindent\textbf{MS #1}\par}
+% Zero-argument identity wrappers preserve the following source group without
+% pre-tokenizing active ampersands inside TikZ-cd matrices. Braced macro arguments
+% are checked separately by scan_tex_syntax.py.
+\DeclareRobustCommand{\deleted}{}
+\DeclareRobustCommand{\inserted}{}
+\DeclareRobustCommand{\margin}{}
+\renewcommand{\figure}{}
+\DeclareRobustCommand{\unsure}{}
+% Diagram bodies may be arrays or TikZ-cd. Enter math mode without collecting the
+% body as a macro argument; close it after its original source group has ended.
+\makeatletter
+\def\diagram{\ifmmode\let\diagram@next\relax\else\let\diagram@next\diagram@open\fi\diagram@next}
+\def\diagram@open{\afterassignment\diagram@math\let\diagram@brace=}
+\def\diagram@math{$\bgroup\aftergroup$}
+\makeatother
+\DeclareRobustCommand{\illegible}[1]{[\textit{illegible: #1}]}
+\DeclareUnicodeCharacter{2009}{\,}
+\DeclareUnicodeCharacter{202F}{\,}
+\DeclareUnicodeCharacter{2026}{\ldots}
+\DeclareUnicodeCharacter{2011}{-}
+\DeclareUnicodeCharacter{2212}{-}

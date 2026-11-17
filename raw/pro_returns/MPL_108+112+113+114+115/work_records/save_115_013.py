@@ -1,0 +1,42 @@
+from record import save_page
+lines=[
+'STMT NO. MESSAGE',
+'4 IEF653I SUBSTITUTION JCL - PGM=CRBATCH,REGION=100K,PARM=',
+'$HASP373 STARTED - INIT 10 - CLASS Q - SYS E333',
+'IEF236I ALLOC. FOR PREDONTA CSSBATCH',
+'IEF237I 381 ALLOCATED TO STEPLIB',
+'IEF237I 2C9 ALLOCATED TO SYS00206',
+'IEF237I VIO ALLOCATED TO SYSUT1',
+'IEF237I JES2 ALLOCATED TO SYSPRINT',
+'IEF237I SHR ALLOCATED TO CRJIF',
+'IEF237I JES2 ALLOCATED TO SYSTA',
+'IEF237I 59F ALLOCATED TO SYS00002',
+'IEF237I 59F ALLOCATED TO SYS00001',
+'IEF285I CRAY1.PREDONTA.CS.D82153.T111736.R43 CATALOGED',
+'IEF285I VOL SER NOS= CRAY11.',
+'CSS2060 - JOB QUEUED FOR TRANSFER',
+'IEF142I PREDONTA CSSBATCH - STEP WAS EXECUTED - COND CODE 0000',
+'IEF285I CIS1.PROD.CSSBATCH.V1.AY81 KEPT',
+'IEF285I VOL SER NOS= MVS104.',
+'IEF285I SYSCTLG.VSAC015 KEPT',
+'IEF285I VOL SER NOS= SAC015.',
+'IEF285I SYS82153.T111736.RA008.PREDONTA.SYSUT1 DELETED',
+'IEF285I JES2.JOB00653.S000102 SYSOUT',
+'IEF285I SYS1.CR.JIF KEPT',
+'IEF285I VOL SER NOS= CRAY11.',
+'IEF285I JES2.JOB00653.ST0101 SYSIN',
+'IEF285I SYSCTLG.VCRAY11 KEPT',
+'IEF285I VOL SER NOS= CRAY11.',
+'IEF373I STEP /CSSBATCH/ START 82153.1117',
+'IEF374I STEP /CSSBATCH/ STOP 82153.1117 CPU 0MIN 00.20SEC SRB 0MIN 00.02SEC VIRT 84K SYS 248K',
+'IEF375I JOB /PREDONTA/ START 82153.1117',
+'IEF376I JOB /PREDONTA/ STOP 82153.1117 CPU 0MIN 00.20SEC SRB 0MIN 00.02SEC'
+]
+tex='\\scanpage{13}\n% archive foliation: 12\n\n'
+for i,line in enumerate(lines,1):
+ line=line.replace('$',r'\$')
+ if i==17:line=line.replace('AY81',r'\unsure{AY81}')
+ if i==21:line=line.replace('T111736',r'\unsure{T111736}')
+ if i==25:line=line.replace('ST0101',r'\unsure{ST0101|SI0101}')
+ tex+=r'\texttt{'+line+'}\n\n'
+save_page(115,13,tex,[('text',f'printed line {n}',s) for n,s in enumerate(lines,1)],'reused_typed',doubts=[('printed line 17','CIS1.PROD.CSSBATCH.V1.AY81','last code segment faint','medium'),('printed line 21','T111736','final digit faint','medium'),('printed line 25','ST0101','SI0101','medium')],notes='Printed-only job log: 31 lines including header, allocation messages, dataset statuses and CPU summary. No mathematical handwriting. Archive foliation 12 excluded from manuscript pagination.')
