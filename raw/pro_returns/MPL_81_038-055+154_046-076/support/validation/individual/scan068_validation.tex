@@ -1,0 +1,59 @@
+% External compilation wrapper; not part of the diplomatic transcription.
+% Editorial states are color-coded for validation, including whole blocks.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=18mm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath,amssymb,mathrsfs,bm,array,longtable,mathtools}
+\usepackage{tikz-cd}
+\usepackage[normalem]{ulem}
+\usetikzlibrary{arrows.meta,patterns,calc,decorations.markings,
+  decorations.pathreplacing,decorations.pathmorphing,shapes.geometric,
+  positioning,intersections,bending,fit,matrix}
+\definecolor{ValidationDoubt}{RGB}{155,84,0}
+\definecolor{ValidationDeletion}{RGB}{160,25,45}
+\definecolor{ValidationInsertion}{RGB}{0,85,150}
+\definecolor{ValidationMargin}{RGB}{105,45,135}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{3em}
+\newcommand{\ValidationCote}{?}
+\NewDocumentCommand{\cotefile}{m}{\gdef\ValidationCote{#1}}
+\NewDocumentCommand{\scanpage}{m}{%
+  \clearpage
+  \typeout{VALIDATION COTE \ValidationCote\space SCAN #1}%
+  {\large\bfseries Cote \ValidationCote, scan #1\par}%
+  {\scriptsize Compilation validation.\quad
+   {\color{ValidationDoubt}Doubt}\quad
+   {\color{ValidationDeletion}Deletion}\quad
+   {\color{ValidationInsertion}Insertion}\quad
+   {\color{ValidationMargin}Margin note}\par}\medskip}
+\NewDocumentCommand{\mspage}{m}{%
+  \ifmmode\text{[MS page #1]}\else
+  \par{\footnotesize\itshape MS page #1\par}\fi}
+% Unboxed, long groups allow paragraphs, displays, and drawings to pass through.
+\NewDocumentCommand{\unsure}{+m}{\begingroup\color{ValidationDoubt}#1\endgroup}
+\NewDocumentCommand{\deleted}{+m}{\begingroup\color{ValidationDeletion}#1\endgroup}
+\NewDocumentCommand{\inserted}{+m}{\begingroup\color{ValidationInsertion}#1\endgroup}
+\NewDocumentCommand{\margin}{+m}{\begingroup\color{ValidationMargin}#1\endgroup}
+\NewDocumentCommand{\illegible}{m}{%
+  \ifmmode\text{\color{ValidationDoubt}[illegible: #1]}\else
+  {\color{ValidationDoubt}\textit{[illegible: #1]}}\fi}
+% Ulem handles text; native math underlining preserves the surrounding math style.
+\let\ValidationTextUline\uline
+\let\ValidationTextUuline\uuline
+\RenewDocumentCommand{\uline}{+m}{%
+  \ifmmode\underline{#1}\else\ValidationTextUline{#1}\fi}
+\RenewDocumentCommand{\uuline}{+m}{%
+  \ifmmode\underline{\underline{#1}}\else\ValidationTextUuline{#1}\fi}
+% Retokenization lets a tikzcd body use ordinary & even inside a macro argument.
+% It also accommodates TikZ matrices and nested figures without rewriting pages.
+\NewDocumentCommand{\ValidationRescan}{+m}{%
+  \begingroup\endlinechar=-1\relax\scantokens{#1\empty}\endgroup}
+\NewDocumentCommand{\diagram}{+m}{\ValidationRescan{#1}}
+\RenewDocumentCommand{\figure}{+m}{\ValidationRescan{#1}}
+\errorcontextlines=100
+\begin{document}
+
+\cotefile{154}
+\input{\detokenize{/workspace/scratch/89f8415d3ab0/deliver/pages/MPL_81_038-055+154_046-076_154_scan068.tex}}
+\end{document}
