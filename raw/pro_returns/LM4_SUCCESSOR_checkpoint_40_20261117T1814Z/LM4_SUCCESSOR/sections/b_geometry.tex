@@ -1,0 +1,333 @@
+\subsection*{The binary cover, periodic braids, and the normalizer test}
+
+\statement{B.8}{Proved}{Explicit periodic braids over the icosahedral action}
+Put \(Z=\Delta_{12}^{2}\), where
+\(\Delta_{12}=(\sigma_1\cdots\sigma_{11})(\sigma_1\cdots\sigma_{10})
+\cdots(\sigma_1\sigma_2)\sigma_1\) is the Garside half twist in the
+discrete Artin braid group \(B_{12}\). There are explicit braids
+\(\beta_2=\Delta_{12}\) and \(\beta_3\) satisfying
+\[
+ \beta_2^2=\beta_3^3=Z.
+\]
+We specify \(\beta_3\) by listing the indices of its positive letters,
+in multiplication order:
+\[
+\begin{gathered}
+1,11,5,7,10,2,9,3,8,4,2;\\
+7,3,6,2,5,4,3,2,7,10,6;\\
+1,7,9,10,8,5,9,7,2,6,10;\\
+5,4,7,3,5,8,4,2,5,7,6.
+\end{gathered}
+\]
+With \(a=\beta_2\beta_3^{-1}\) and
+\[
+ R_{12}=\sigma_{11}\sigma_{10}\cdots\sigma_2\sigma_1^2
+              \sigma_2\cdots\sigma_{10}\sigma_{11},
+\]
+the stronger Artin-group identity is
+\[
+ a^5=Z R_{12}^{-1}.
+\]
+Consequently the images in \(B_{12}(S^2)\), where \(R_{12}=1\),
+satisfy \(a^5=\beta_3^3=(a\beta_3)^2=Z\) and generate the binary
+icosahedral group of order \(120\). Their mapping-class image is
+the icosahedral \(A_5\).
+\begin{proof}
+The words were discovered by following rigid rotations of an icosahedron
+about an edge axis and an adjacent face axis. No numerical approximation
+is used in their certification. The program
+\texttt{check\_icosahedral\_braids.py} uses Artin's faithful action on
+the discrete free group on \(x_1,\ldots,x_{12}\):
+\[
+ \sigma_i(x_i)=x_ix_{i+1}x_i^{-1},\quad
+ \sigma_i(x_{i+1})=x_i,\quad
+ \sigma_i(x_j)=x_j\quad(j\ne i,i+1).
+\]
+Free reduction verifies all three displayed identities, including the
+identity of the discovered 66-letter word with \(\Delta_{12}\).
+The code and its complete output are included. After imposing
+\(x_1\cdots x_{12}=1\), it also verifies directly that \(a^5\)
+is inner, with conjugating word \(x_1\cdots x_{11}\).
+
+The permutations of \(\beta_2,\beta_3,a\) have orders \(2,3,5\),
+and exhaustive permutation multiplication gives a group of order
+sixty. The triangle presentation of B.4 therefore identifies the
+mapping-class image with \(A_5\), not with a proper quotient.
+The standard sphere-braid exact sequence
+\[
+ 1\longrightarrow\langle Z\rangle\cong C_2
+ \longrightarrow B_{12}(S^2)
+ \longrightarrow\Gamma_{0,[12]}\longrightarrow1
+\]
+is recalled and derived geometrically in
+\citet[Sections 1--3]{GoncalvesGuaschi2008}.
+Our subgroup contains its nonidentity kernel element \(\beta_2^2=Z\),
+so its order is \(120\). Independently,
+\texttt{check\_icosahedral\_groups.py} verifies the order of
+\(\langle a,b\mid a^5=b^3=(ab)^2\rangle\) by Todd--Coxeter
+enumeration and realizes it as \(\SL_2(\mathbb F_5)\).
+
+For the geometric identifications, the orbit of the unordered vertex
+set is \(SO(3)/A_5\); its universal cover is \(SU(2)\), with deck
+group the inverse image of \(A_5\), namely the binary icosahedral
+group. It is the Poincar\'e sphere. In the Birman extension with one
+additional distinguished puncture, the inverse image of \(A_5\)
+is the orbifold fundamental group of the quotient of the punctured
+sphere, of signature \((0;2,3;\infty)\). It is \(C_2*C_3\).
+The preimage in the Artin group is its central extension by the
+boundary twist. The two primitive cone lifts obey
+\(\beta_2^2=\beta_3^3=Z\), so its presentation is
+\(\langle\beta_2,\beta_3\mid\beta_2^2=\beta_3^3\rangle\cong B_3\).
+To check that these generators give the entire preimage, first
+work modulo \(Z\). In the orbifold group \(C_2*C_3\), the
+point-pushing meridian \(R_{12}^{-1}\) is conjugate to \(\tau^5\).
+The identity \(a^5=R_{12}^{-1}\), cyclic centralizers of
+parabolics, and unique roots in a parabolic cyclic subgroup make
+\(a\) a conjugate of the primitive cusp generator \(\tau\).
+In the Bass--Serre tree of \(C_2*C_3\), let \(v_2,v_3\) be
+the unique vertices fixed by the two elliptics. Their types differ,
+so the vertices are distinct. Since edge stabilizers are trivial,
+neither elliptic fixes the edge incident to its endpoint on
+\([v_2,v_3]\). Concatenating this segment with its translates
+therefore gives an axis for their product, with translation
+length \(2d(v_2,v_3)\). The primitive cusp \(\tau\) has
+translation length two, and so does its conjugate \(a\).
+Thus \(v_2,v_3\) are adjacent. The ambient group is transitive
+on edges; their stabilizers are consequently a simultaneous
+conjugate of the two factors at the fundamental edge.
+Each elliptic generates its entire vertex stabilizer, so the
+two elliptics generate all of \(C_2*C_3\).
+Since the Artin subgroup also contains \(Z\), it is the entire
+central preimage. Removing the order-five
+Seifert fibre gives the trefoil exterior, the Seifert manifold over
+a disk with cone orders two and three. These descriptions agree
+with \citet[Descriptions 6--8]{KirbyScharlemann1979}.
+\end{proof}
+
+\statement{B.9}{Proved}{The normalizer formulation and its three-coset test}
+Let \(E=\widehat\Gamma_{0,[12],1}\), with the usual completed
+Birman homomorphism \(p:E\to\widehat\Gamma_{0,[12]}\), and identify
+\(\widehat B=p^{-1}(A_5)\). Restriction of conjugation gives
+\[
+ N_E(\widehat B)\longrightarrow\Out(\widehat B).
+\]
+Its image is exactly \(\mathcal K\). For a multiplier-one
+representative normalized by \(\Phi(\tau)=\tau\), with frames
+\(\Phi(s)=\beta_\Phi s\beta_\Phi^{-1}\) and
+\(\Phi(r)=A_\Phi r A_\Phi^{-1}\), membership in \(\mathcal K\)
+is equivalent to
+\[
+ C_E(\tau)\cap\beta_\Phi C_E(s)\cap A_\Phi C_E(r)\ne\varnothing.
+\]
+\begin{proof}
+Genus-zero congruence and the completed point-pushing sequence identify
+the kernel of \(p\) with \(\widehat K\) and identify
+\(p^{-1}(A_5)\) with the completion of the discrete orbifold
+extension. Asada's Theorems 1, 2 and 3A prove the necessary
+faithfulness and the induction under addition of a puncture
+\citep{Asada2001}. A lift of a geometric outer automorphism of
+\(\widehat K\) is therefore an element of \(E\).
+
+If that outer automorphism centralizes \(A_5\), the extension
+comparison B.5 shows that its lift normalizes \(\widehat B\)
+and restricts, modulo inner automorphisms, to the corresponding
+element of \(\mathcal H\). Conversely a normalizing element gives
+a geometric outer automorphism of \(\widehat K\) whose induced
+automorphism of \(A_5\) is inner: its multiplier is one, and B.6
+applies. Thus its restriction is in \(\mathcal K\).
+
+If \(\Phi\) is induced by such conjugation only up to an inner
+automorphism of \(\widehat B\), multiply the normalizing element
+by the inverse inner conjugator. We then seek \(u\in E\) satisfying
+\(u\tau u^{-1}=\tau\),
+\(usu^{-1}=\beta_\Phi s\beta_\Phi^{-1}\), and
+\(uru^{-1}=A_\Phi r A_\Phi^{-1}\).
+These are precisely the three coset conditions. Conversely the
+conditions give agreement on the topological generators \(s,r\),
+so give the required automorphism on all of \(\widehat B\).
+\end{proof}
+
+\statement{B.10}{Proved}{The properly typed tripod tests}
+For \(\Phi\in\mathcal H\) and a fixed three-subset \(t\) of the
+twelve labelled cusps, let \(N_t\trianglelefteq\widehat K\) be
+the closed normal subgroup generated by all other cusp subgroups.
+Then restriction and quotient define a continuous homomorphism
+\[
+ \mathfrak T_t:\mathcal H\longrightarrow
+ \Out_{\partial}(\widehat K/N_t)\cong\mathcal P.
+\]
+The last identification requires an ordered identification of the
+three surviving cusps with \(0,1,\infty\). We have
+\(\mathfrak T_t(\mathcal K)=1\) and
+\(\mathcal K\cap G_{\mathbb Q}=1\), for the specified faithful
+Galois embedding. The same test is defined on any subgroup fixing
+the three-subset setwise; it is not automatically a map for every
+element of the larger group in B.6 and every labelled three-subset.
+\begin{proof}
+Purity in B.7 makes \(N_t\) invariant. A quotient of a free
+profinite punctured-sphere group by the discarded peripheral normal
+closure is the full free profinite group of the retained punctured
+sphere; this follows directly from its presentation. Inner changes
+of representatives descend to inner changes, so the map is well
+defined and continuous. A pure geometric mapping class becomes the
+identity after forgetting down to three punctures. Continuity gives
+the assertion for its completion and hence for \(\mathcal K\).
+
+All twelve cusps of the chosen modular model are rational over
+\(\mathbb Q(\zeta_5)\). For an arithmetic element fixing that
+field, quotienting is the functorial outer Galois action on the
+three-punctured sphere. A fractional linear transformation defined
+over that field identifies the three chosen rational cusps with
+\(0,1,\infty\); thus the test is the usual Galois outer action,
+with the stated coordinate choice. Belyi faithfulness makes its
+kernel trivial. A Galois element in \(\mathcal K\) has multiplier
+one and therefore belongs to \(G_{\mathbb Q(\zeta_5)}\), proving
+the intersection assertion.
+
+For \(\lambda\equiv-1\pmod5\), the equation in B.7 permits the
+nontrivial normalizer action on a five-cycle. It can exchange
+antipodal cusp labels. An arbitrary three-subset then need not be
+preserved, so the unqualified version of P3 has no such quotient
+endomorphism as its target. One instead obtains a map between
+different labelled quotients, or restricts to their stabilizer.
+\end{proof}
+
+\statement{B.11}{Proved}{The topological quintic resolvent and its distinct quotient types}
+The preimage \(\Gamma_T\leq B\) of an \(A_4\leq A_5\) has
+signature \((0;2,3,3;\infty)\) and presentation
+\(C_2*C_3*C_3\). Its degree-five modular map has the model
+\[
+ j=t^3(t^2+5t+40),\qquad
+ j-1728=(t-3)(t^2+4t+24)^2.
+\]
+The two unramified points above \(j=0\), hence the two order-three
+orbifold points, are conjugate over \(\mathbb Q(\sqrt{-15})\).
+Filling either order-three point gives \(C_2*C_3\); filling the
+order-two point gives \(C_3*C_3\), not \(C_2*C_3\).
+\begin{proof}
+The degree-five permutation action on \(A_5/A_4\) gives cycle
+types \(2^2 1\), \(3\,1^2\), and \(5\) at the three base
+points. The orbifold cover consequently has one cone point of
+order two, two of order three, and one cusp. The orbifold Euler
+characteristic, or its standard punctured presentation, gives the
+stated free product. The polynomial identity is verified by
+expansion. The roots of \(t^2+5t+40\) have discriminant
+\(25-160=-135\), hence the specified quadratic field.
+Killing a cone free factor in a free product leaves the other
+factors, both discretely and after profinite completion by its
+universal property. Their types distinguish the three targets.
+\end{proof}
+
+\statement{B.12}{Open}{The proposed identities on the full Grothendieck--Teichm\"uller group}
+B.53 below proves P4's exact quadratic-character domain, both
+quintic homomorphisms, their arithmetic identity, and the kernel
+inclusion for $\mathcal K$. Its third map has the corrected
+weighted-orbifold target $\operatorname{Out}_{\partial}(C_3\amalg C_3)$.
+B.55 constructs a nonempty set of full R2 lifts $\Phi\in\mathcal H$
+for which $\mathfrak T_\pm(\Phi)\ne\Phi$, proving the first
+assertion of P5. B.57 refutes P7's full common-kernel equality
+by a separate full central-extension construction.
+What remains undecided here is the assertion that
+$\mathfrak T_\pm$ fixes every element of $\widehat{GT}\cap D$.
+That assertion does not follow from the arithmetic restriction
+or from a linearized calculation.
+
+The exact source distinction is decisive: Nakamura--Schneps,
+Theorem 1.1 and Definition 1.1, prove their additional relations
+on the Galois image and use them to define the subgroup
+\(I\Gamma\); Theorem 1.2 proves that it is a subgroup containing
+that image \citep{NakamuraSchneps2000}. These statements do not
+assert that all of \(\GT\) satisfies the new relations.
+Hoshi--Mochizuki--Tsujimura, Definition 3.3, retain the additional
+COF and RGC conditions in their BGT framework
+\citep{HoshiMochizukiTsujimura2025}. Replacing those groups by
+\(\GT\) would remove a hypothesis. The unresolved requirement
+is a proof of that replacement, or a concrete element violating
+the claimed identity, together with its typed restriction maps.
+
+\statement{B.13}{Proved}{Rigid cyclic subconfigurations impose genuine necessary equations}
+Let \(Q\) be a subset of the twelve vertices invariant under a
+cyclic subgroup \(H\leq A_5\), such that the quotient of the
+\(Q\)-punctured sphere by \(H\), including its remaining cone
+points, has three distinguished points. Forgetting the other
+punctures maps \(\mathcal K\) to the identity in
+\(\widehat\Gamma_{0,[Q]}\). This includes a pentagon, a pentagon
+with one fixed pole, and a pentagon with both fixed poles.
+\begin{proof}
+Because \(\mathcal K\) is pure, forgetting defines a continuous
+homomorphism on it and on the stabilizer of \(Q\). It is
+\(H\)-equivariant by functoriality, so the image centralizes \(H\).
+The discrete normalizer of this cyclic action modulo deck
+transformations injects into the mapping class group of the
+three-distinguished-point quotient, a finite group. Thus the
+discrete centralizer is finite. The single prime-power case of
+Boggi--Zalesskii, Theorem A, gives its completed centralizer as
+that finite discrete group. Its intersection with the pure
+mapping class group is trivial, since a finite-order mapping
+class of a punctured sphere fixing at least three punctures is
+the identity. Purity descends under forgetting, so the image is
+trivial. No nonsolvable centralizer comparison occurs in this
+argument.
+\end{proof}
+
+\statement{B.14}{Proved}{The presentation complex and the limitation of its arithmetic action}
+The presentation complex of
+\(\langle a,b\mid a^5b^{-3},\ b^3(ab)^{-2}\rangle\)
+is homotopy equivalent to the Poincar\'e homology sphere with
+an open ball removed. In a trefoil presentation
+\(\langle b,d\mid b^3=d^2\rangle\), put
+\(\mu=db^{-1}\) and \(z=b^3=d^2\).
+Then \(\mu\) is a meridian, and the additional two-cell is
+attached along \(\mu^5z^{-1}\).
+\begin{proof}
+The substitution \(d=ab\), \(a=db^{-1}\) is a Nielsen
+change of generators and converts the two relators into
+\(\mu^5z^{-1}\) and \(b^3d^{-2}\), with the usual inversion
+or multiplication of relators giving elementary changes of the
+presentation complex. The one-relator complex for the trefoil is
+homotopy equivalent to a spine of its exterior: decompose it into the two
+solid-torus pieces of the torus knot and retain their annular
+intersection. To identify the peripheral slope, use Wirtinger
+generators \(x,y\) with \(xyx=yxy\), and put
+\(b=xy\), \(d=xyx\). Then \(db^{-1}=bxb^{-1}\), explicitly
+a conjugate of a meridian. The regular boundary fibre has
+torus-framing linking number six, so the preferred longitude is
+\(z\mu^{-6}\). Thus \(\mu^5z^{-1}\) is the negative
+of the meridian-plus-longitude filling slope.
+Attaching its two-handle and omitting the final three-handle
+gives precisely the filled manifold minus a ball. Homotopy
+invariance of attaching a cell gives the asserted equivalence
+with the presentation complex. The trefoil surgery description in
+\citet[Descriptions 6--8]{KirbyScharlemann1979} identifies the
+filling with the Poincar\'e sphere, with orientation depending
+on the handedness conventions. The homotopy assertion is
+orientation independent.
+\end{proof}
+
+\statement{B.15}{Proved}{Triviality on the binary quotient means triviality of an outer action}
+For a multiplier satisfying \(\lambda\equiv\pm1\pmod5\),
+the induced outer automorphism on the binary icosahedral quotient
+is trivial. A chosen representative that acts identically on
+\(A_5\) acts identically on \(\SL_2(\mathbb F_5)\).
+An arbitrary automorphism representative need not be the identity.
+\begin{proof}
+This is the functorial action on the central double cover, not
+a quotient of \(\widehat B\) itself. Every automorphism of
+\(A_5\) lifts: identify \(\Aut(A_5)\) with
+\(\operatorname{PGL}_2(\mathbb F_5)\), and lift by conjugation
+in \(\operatorname{GL}_2(\mathbb F_5)\).
+Its central kernel has order two, and every automorphism fixes
+that kernel pointwise. An automorphism inducing the identity on
+\(A_5\) has the form \(g\mapsto\epsilon(g)g\), where
+\(\epsilon:\SL_2(\mathbb F_5)\to C_2\) is a homomorphism.
+The binary group is perfect: the exponent-sum matrix of the
+displayed presentation is
+\(\left(\begin{smallmatrix}5&-3\\-2&1\end{smallmatrix}\right)\),
+whose determinant is \(-1\). Hence \(\epsilon=1\).
+The action on \(A_5\) is inner by B.6; adjusting by a lift
+of that inner automorphism gives the stated identity representative.
+Without adjustment, nontrivial inner conjugations are explicit
+counterexamples to literal identity on every element. This is
+why the outer/genuine distinction cannot be dropped from B.8
+of the prompt.
+\end{proof}
