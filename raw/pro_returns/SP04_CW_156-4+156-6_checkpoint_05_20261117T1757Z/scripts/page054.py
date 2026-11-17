@@ -1,0 +1,71 @@
+from author import Page
+p=Page('156-4',54)
+p.replace(r'\unsure{\mathcal C|\mathscr C|\mathcal E}',r'\mathcal C')
+p.replace(r'\unsure{\mathcal F|\mathscr F}',r'\mathcal F')
+p.replace(r'F_{\unsure{j|i}}',r'F_j')
+p.replace(r'\unsure{notée|notation}','notée')
+p.replace(r'\unsure{comp.}','comp.')
+p.replace(r'compatibles \deleted{\unsure{: un qui}}',r'compatibles : \deleted{\unsure{un qui|qui}}')
+p.replace(r'\margin{\unsure{?|P}}',r'\margin{P}')
+p.replace(r'\bigvee_i\unsure{f|F}_i',r'\bigvee_i f_i')
+p.replace(r'\deleted{\unsure{F}}\bigcup',r'\deleted{F}\bigcup')
+p.replace(r'$F\cup G$ ou',r'$F\cup G$ \unsure{ou|--}')
+p.replace(r'\overset{\unsure{-}}',r'\overset{-}')
+p.replace(r'\deleted{\unsure{C 2}} Les figures',r'\deleted{\uline{C 2}} Les figures')
+p.replace(r'\unsure{\mathcal M|\mathscr M}',r' M')
+old=r'''\deleted{\unsure{Réun.|Fam.|Réun} \unsure{des|de} figures comp.}
+
+\deleted{\uline{Définition} \uline{figure irréductible} $F$ : telle que si $F=\mathrm{Sup}$}'''
+new=r'''\figure{\begin{tikzpicture}[x=1cm,y=1cm]
+\node[anchor=west] at (1.2,2.2) {\deleted{\unsure{Réun.|Fam.|Réun} \unsure{des|de} figures comp.}};
+\node[anchor=west] at (0,1.15) {\deleted{\uline{Définition} \uline{figure} \uline{irréductible $F$ : telle}}};
+\node[anchor=west] at (0,0) {\deleted{que\qquad si\qquad $F=\mathrm{Sup}$}};
+\draw (1.15,2.6)--(9.2,2.6)--(9.15,1.9) .. controls (9.05,1.7) and (9.0,1.4) .. (8.85,1.1) -- (8.0,1.0) .. controls (7.9,.3) and (7.7,.2) .. (7.2,.2) -- (0,-.35)--(-.15,.85) .. controls (-.15,1.55) and (.55,1.4) .. (1.2,1.6)--cycle;
+\draw (0,-.25)--(1.65,2.65) (2.0,-.25)--(4.1,2.65) (4.5,-.1)--(6.2,2.5) (6.2,0)--(7.65,2.5) (7.6,.1)--(9.1,1.9);
+\end{tikzpicture}}'''
+p.replace(old,new)
+p.replace('\n\n\\uline{Corollaire}',r'\figure{\begin{tikzpicture}\draw (0,0)--(0,2.8);\draw (.12,-.1)--(.12,2.6);\end{tikzpicture}}'+'\n\n\\uline{Corollaire}')
+
+p.change('C1 label',r'\unsure{\mathcal C|\mathscr C|\mathcal E}','C',r'\mathcal C','The label has the looped upper curve and open lower curve of the script C used on the preceding sheet.','axiom',dc=True,dh=False)
+p.change('C1 family alphabet',r'\unsure{\mathcal F|\mathscr F}',r'\mathfrak F',r'\mathcal F','The family letter has a long top stroke and hooked lower foot; its repeated forms are retained in one alphabet.','axiom',dc=True,dh=False)
+p.change('Before b, cancelled label',r'\unsure{C 2}',r'\ill{}',r'\unsure{C 2}','A large rounded C trace and a right-hand curled numeral remain under dense hatching; the numeral is not secure.','old_c2',kind=r'readable ink left as \ill{}',marked='yes',confidence='low')
+p.change('C1 b, supremum index',r'F_{\unsure{j|i}}','F_i','F_j','The index on F has a dot and a curved descending stem. The separate i under Sup has a short upright stem.','sup',dc=True,kind='misread symbol or index',consequential='The written expression is Sup with index i followed by F with index j.')
+p.change('Left of C1','omitted','described double rule','two TikZ vertical rules','Two long nearly parallel vertical strokes run alongside a and b, with staggered endpoints.','axiom',dc=True,kind='drawing or diagram')
+p.change('Corollaire, final part of élément',r'élé\deleted{\unsure{ment|mt}}','élément live',r'élé\deleted{\unsure{ment|mt}}','The élé opening is clear; a heavy horizontal stroke crosses the final compressed letters. Their full or abbreviated form remains unresolved.','cor',kind='deletion state (struck given live or live given struck)',confidence='low')
+p.change('Corollaire, article','le Sup','la Sup','le Sup','The article ends in a low e loop before the large S.','cor',kind='misread word')
+p.change('NB, cancelled label',r'\unsure{C2}',r'\ill{}',r'\unsure{C2}','Two overlapping rounded and angular traces remain between de and C1 b; their cancellation prevents a secure reading.','nb',kind=r'readable ink left as \ill{}',marked='yes',confidence='low')
+p.change('NB, reference emphasis',r'\uline{C 1 b)}','C 1 b)',r'\uline{C 1 b)}','An independent horizontal underline extends from C through the closing parenthesis.','nb',kind='other')
+p.change('Empty figure, élément abbreviation',r'\unsure{élémt|élément}','élément',r'\unsure{élémt|élément}','Between the élé opening and terminal t the pen makes a nearly straight compressed movement; the intervening letters cannot be separated securely.','element',confidence='low')
+p.change('Empty figure, naming word',r'\unsure{notée|notation}','noté','notée','After the tall crossed t and accented e there is another separate low e stroke.','notee',dc=True,kind='misread word')
+p.change('Empty figure, qualifying phrase','par abus de langage, et',r'\ill{}','par abus de langage, et','The p descender and ar are followed by abus, then de langage with its long g descender; et precedes si.','empty',kind=r'readable ink left as \ill{}',marked='yes')
+p.change('Cancelled block, first word',r'\unsure{Réun.|Fam.|Réun}',r'\ill{}',r'\unsure{Réun.|Fam.|Réun}','A large looped initial and low following strokes end in a separated point; the older crossings obscure the first letters.','cancel_head',kind=r'readable ink left as \ill{}',marked='yes',confidence='low')
+p.change('Cancelled block, preposition',r'\unsure{des|de}','des',r'\unsure{des|de}','A looped d and a nearly flat low ending are visible, but the final s is not secure.','cancel_head',confidence='low')
+p.change('Cancelled block, abbreviation',r'\unsure{comp.}','compat.','comp.','The word ends in a p descender and one point, with no following tall t.','cancel_head',dc=True,kind='abbreviation expanded or spelling modernised')
+p.change('Cancelled definition, number','figure irréductible F : telle','figures irréductibles F : telles','figure irréductible F : telle','Each of the three words ends with a low e movement without an additional separate final s.','cancel',kind='misread word',confidence='medium')
+p.change('Cancelled definition, underline extent',r'\uline{figure irréductible} F : telle',r'emphasis on figures irréductibles',r'\uline{figure} \uline{irréductible F : telle}','The second long underline continues beneath the F and the phrase after its colon.','cancel',dc=True,kind='other')
+p.change('Cancelled block, outline and hatching','text deletions only','described frame and oblique lines','TikZ frame and five oblique cancellation strokes','The upper short line and the following definition sit inside an irregular stepped enclosure crossed by five long slanting strokes.','cancel',dc=True,kind='drawing or diagram')
+p.change('Compatible figures, abbreviation','ens','ens.','ens','There is no separate point after the low ens before de figures.','compatible',kind='abbreviation expanded or spelling modernised')
+p.change('Compatible figures, raised cancelled word',r'\deleted{\unsure{compatibles}}','note of a struck word',r'\deleted{\unsure{compatibles}}','The raised word has surviving tall t/l traces, but dense diagonal hatching hides much of its beginning.','cancel_old',kind='omission',confidence='low')
+p.change('Compatible figures, emphasis','second compatibles plain','second compatibles emphasised','second compatibles plain','The second word has no independent underline below it.','compatible',kind='other')
+p.change('Compatible figures, colon and cancelled phrase',r'\deleted{\unsure{: un qui}}',r'\struck{que}',r': \deleted{\unsure{un qui|qui}}','Two clear colon points stand to the left of the heavy cancellation. A q descender and low later strokes survive, with earlier ink covered by the line.','old_qui',dc=True,kind='deletion state (struck given live or live given struck)',confidence='low')
+p.change('Compatible figures, insertion','dans leur ens.','deux à deux','dans leur ens.','The raised phrase begins with a looped d and ans; the tall l is followed by eur, then a separate abbreviated ens with a point.','compatible',kind='misread word',consequential='The inserted qualification reads dans leur ens., not the wording deux à deux given by H.')
+p.change('Compatible figures, parenthesis','configuration','configurations','configuration','The underlined word ends in a low on movement before the closing parenthesis, without a separate s.','compatible',kind='misread word')
+p.change('Left margin',r'\unsure{?|P}','omitted','P','After rotation the mark is a vertical stem with a connected upper right bowl and no separated lower dot.','margin',dc=True,kind='omission')
+p.change('Union, first binary sign',r'F\vee G',r'F\cup G',r'F\vee G','The sign has two oblique arms meeting at an angular low point.','union',kind='misread symbol or index')
+p.change('Union, letter after big vee',r'\unsure{f|F}_i','F_i','f_i','The letter has a curved top and a long descending stem crossed by a middle bar, unlike the two-bar capitals nearby.','union',dc=True,kind='misread symbol or index',confidence='medium')
+p.change('Union, connective before big cup','ou','--',r'\unsure{ou|--}','A small dark point and a separate nearly horizontal stroke appear between the formulas; they may be compressed letters or punctuation.','ou',dc=True,kind='other',confidence='low')
+p.change('Union, cancelled old letter',r'\deleted{\unsure{F}}','omitted',r'\deleted{F}','A straight stem and two short bars remain under the scribbled cancellation before the large union sign.','union',dc=True,kind='omission',confidence='medium')
+p.change('Irreducibility definition, implication decoration',r'\overset{\unsure{-}}{\Longrightarrow}',r'\Longrightarrow',r'\overset{-}{\Longrightarrow}','A short independent horizontal dash is written above the left portion of the double arrow.','irreducible',dc=True,kind='misread symbol or index')
+p.change('Footer, old label',r'\deleted{\unsure{C 2}}','deleted C2 underlined',r'\deleted{\uline{C 2}}','The round C and curled 2 remain under oblique cancellation; a separate underline runs below both.','footer',dc=True,dh=False,confidence='medium')
+p.change('Footer, naming verb','appelées','inserted dites','appelées','The right-hand word has tall looped strokes and the ending lées; it belongs to the main line after sont and overlaps the raised notation insertion.','called',kind='misread word',confidence='medium')
+p.change('Footer insertion, abbreviation',"L'ens","L'ens.","L'ens",'No separate point follows the low ens before des.','footer',kind='abbreviation expanded or spelling modernised')
+p.change('Footer insertion, verb','noté','est noté','noté','The word after multistrates begins directly with the n movement; no separate est appears.','footer',kind='text not on the page')
+p.change('Footer insertion, M alphabet',r'\unsure{\mathcal M|\mathscr M}',r'\mathcal M','M','The letter is formed from two tall humps and a rounded returning foot, as in the running M notation.','called',dc=True,dh=False)
+p.change('Footer, next sentence opening','Les live','les struck','Les live','The large L and following es are visible below the insertion leader; the leader runs above them rather than cancelling their letters.','footer',kind='deletion state (struck given live or live given struck)')
+
+for where,reading,why,crop in [('Before b','C 2','Dense hatching covers the old numeral.','old_c2'),('Corollaire, ending','ment|mt','The last letters are compressed and crossed.','cor'),('NB old label','C2','Overlapping crossed traces hide the label.','nb'),('Empty figure, noun','élémt|élément','The middle of the word is a nearly straight stroke.','element'),('Cancelled heading','Réun.|Fam.|Réun','Older crossings obscure the beginning.','cancel_head'),('Cancelled heading, preposition','des|de','The final low strokes do not separate a secure s.','cancel_head'),('Raised cancelled word','compatibles','Dense hatching covers most of the word.','cancel_old'),('Cancelled phrase after colon','un qui|qui','The q descender is clear but the preceding line covers the earlier letters.','old_qui'),('Union connective','ou|--','Only a small point and a short horizontal stroke remain distinct.','ou')]:p.doubt(where,reading,why,crop,confidence='low')
+p.inventory([('text','opening','D’abord on va dégager'),('text','axiom a','C1 a family F nonempty'),('text','axiom b','Si F in family F with subscript order'),('deletion','before b','old C2'),('display','axiom b conclusion','Sup with i followed by F_j'),('drawing','left axiom margin','double vertical rule'),('text','upper middle','Corollaire family F has least element'),('deletion','Corollaire final noun','ment/mt'),('text','middle note','NB En présence'),('deletion','inside NB','old C2'),('text','middle','Le plus petit élément'),('deletion','cancelled heading','Réun/Fam des/de figures comp.'),('deletion','cancelled definition','Définition figure irréductible F'),('drawing','around cancelled block','stepped enclosure and oblique strikes'),('text','below cancellation','Figures compatibles ens de figures'),('deletion','raised after figures','compatibles'),('deletion','after second compatibles','un qui/qui'),('insertion','above cancellation','dans leur ens.'),('margin note','left lower','P'),('text','lower','Figure engendrée ou réunion'),('display','inline union notation','F vee G; big vee f_i; Sup F_i; unions'),('deletion','before big cup','F'),('text','lower definition','Déf Figure irréductible'),('display','definition condition','F equals Sup F_i implies existence'),('deletion','footer left','C2'),('text','footer','Les figures irréductibles sont appelées'),('insertion','above last line','L’ens des multistrates noté M'),('text','last continuation','Les figures irréductibles')])
+p.notation('marginal capital P','P','Oblique mark becomes a straight stem with one upper bowl on rotation.')
+p.notation('short dash over implication',r'\overset{-}{\Longrightarrow}','A separate horizontal dash is drawn above the double implication arrow.')
+p.r['abbreviations']=[dict(abbreviation='sup. / Sup',expansion='supérieure / supremum',evidence='axiom and corollary'),dict(abbreviation='NB',expansion='nota bene',evidence='middle note'),dict(abbreviation='ens / ens.',expansion='ensemble',evidence='compatible figures and insertion'),dict(abbreviation='comp.',expansion='compatibles',evidence='cancelled heading'),dict(abbreviation='Déf',expansion='définition',evidence='irreducibility'),dict(abbreviation='cf',expansion='confer',evidence='cf plus bas')]
+p.save()

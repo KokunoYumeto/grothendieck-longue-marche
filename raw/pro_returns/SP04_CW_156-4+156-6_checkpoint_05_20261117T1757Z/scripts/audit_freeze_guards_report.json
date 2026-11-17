@@ -1,0 +1,105 @@
+{
+  "scope": "synthetic temporary projects only; real pages/records/logs untouched",
+  "results": [
+    {
+      "case": "freeze_with_119_map_rows",
+      "blocked": true,
+      "reason": "Expected 120 pages, found 119",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_no_done_statuses",
+      "blocked": true,
+      "reason": "Page lacks completion or audit: 156-4 2",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_no_audit_statuses",
+      "blocked": true,
+      "reason": "Page lacks completion or audit: 156-4 2",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "audit_before_all_done",
+      "blocked": true,
+      "reason": "All pages must be done before second reading can be recorded",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "audit_out_of_order",
+      "blocked": true,
+      "reason": "Earlier page has no audit: 156-4 2",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "duplicate_audit",
+      "blocked": true,
+      "reason": "Page already marked audited",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_missing_page_file",
+      "blocked": true,
+      "reason": "Syntax failures: {'SYNTHETIC_156-4_scan002.tex': ['Missing page file']}",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_boolean_statuses",
+      "blocked": true,
+      "reason": "('156-4', 2) status.done: expected an actual UTC timestamp string",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_without_matching_log_events",
+      "blocked": true,
+      "reason": "Missing matching progress.log event: ('156-4', 2, 'done') (240 absent)",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_invalid_calendar_timestamp",
+      "blocked": true,
+      "reason": "('156-4', 2) status.done: invalid UTC timestamp",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_log_record_timestamp_mismatch",
+      "blocked": true,
+      "reason": "progress.log line 2: timestamp does not match page record",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_duplicate_completion_event",
+      "blocked": true,
+      "reason": "progress.log line 242: duplicate completion/audit event",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_out_of_order_completion_events",
+      "blocked": true,
+      "reason": "Completion/audit log events are not one full ordered done pass followed by one full ordered audit pass",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "complete_corroborated_freeze",
+      "accepted": true,
+      "hashed_files": 121,
+      "manifest_and_log_write_order": [
+        "freeze.sha256",
+        "progress.log"
+      ],
+      "manifest_persisted_before_frozen_log_marker": true
+    },
+    {
+      "case": "post_freeze_checks",
+      "audit_mark_locked": true,
+      "initial_hashes_valid": true,
+      "page_mutation_detected": true,
+      "mismatch_count": 1
+    }
+  ],
+  "remaining_limits": [
+    "Timestamps and matching logs record explicit attestations; these structural guards do not establish visual reading.",
+    "The manifest detects later byte changes; ordinary filesystem writes are not prevented.",
+    "Manifest and progress log are separate files: the manifest is persisted first; a failure publishing the final log leaves the manifest as a lock and does not return completed success."
+  ]
+}
