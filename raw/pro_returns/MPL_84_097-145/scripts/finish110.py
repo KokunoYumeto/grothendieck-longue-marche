@@ -1,0 +1,35 @@
+from record import finish
+finish(110,[
+('text','top','Récapitulons le formulaire pour'),
+('diagram','top','k α→A, return arrows t and n'),
+('deletion','diagram above α','α'),
+('margin note','upper right','α hom d’anneaux comm.; τ(x)=αt(x); ν(x)=αn(x)'),
+('text','upper circled 1','t est k-linéaire'),
+('display','upper circled 1 boxed','t(1A)=2'),
+('display','upper circled 2','x↦barx=def τ(x)−x:A→A'),
+('margin note','upper right circled 2','autom. involutif du k-module A, avec bar1A=1A'),
+('text','upper middle','est un automorphisme d’alg.'),
+('display','upper middle boxed','overline(xy)=barx bary'),
+('display','upper middle right','2xy=(τ(xy)−τ(x)τ(y))+τ(y)x+τ(x)y'),
+('display','middle circled 3 boxed braced','n(λx)=λ²n(x); n(x+y)=n(x)+n(y)+t(x bary)'),
+('text','middle','i.e. n est quadratique'),
+('display','middle','φn(x,y)=t(x bary)'),
+('display','middle circled 4 boxed','n(1)=1'),
+('margin note','middle right','NB compte tenu de la formule d’additivité'),
+('deletion','middle right','dans'),
+('display','middle lower circled 5 boxed','α(n(x))=x barx; x∈A'),
+('margin note','middle lower right','qui implique 3°,4° si α injectif'),
+('text','lower circled 6','facultatif, si k loc. libre de rang n'),
+('deletion','lower after facultatif','si'),
+('insertion','lower after facultatif','et'),
+('display','lower boxed','Tr_k/k0(t(x))=Tr_A/k0(x); N_k/k0(n(x))=N_A/k0(x)'),
+('text','bottom','La donnée de α,t,n satisfaisant 1° à 5°'),
+('insertion','bottom above α,t,n','A sur k avec'),
+('text','bottom','sera appelée algèbre quasi-quadratique sur k'),
+('text','bottom','On va maintenant poursuivre l’étude de la situation'),
+('deletion','bottom before quadratique','bi'),
+('insertion','bottom before quadratique','quasi'),
+('text','bottom left','109')
+],r'''- Explicit six-item recap: (1) t k-linear and t(1)=2; (2) barx=αt(x)−x multiplicative; (3) n homogeneous of degree two, n(x+y)=n(x)+n(y)+t(xbary); (4) n(1)=1; (5) αn(x)=xbarx; (6), facultative, trace/norm transitivity for ranks n and 2n over k0. The datum satisfying 1°–5° is called an “algèbre quasi-quadratique”. Total five defining numbered items plus one optional numbered item; the parameter n in item 6 is a rank, not the norm symbol in the same formula.
+- Margin says 5 implies 3,4 if α injective; 4 plus additivity in 3 implies t(1)=2. These logical dependencies should be checked rather than taken as independently established merely because the page recaps them.
+- Own lead, confidence medium: explicit multiplicativity n(xy)=n(x)n(y), present in 108 b, is absent from this five-item recap. Check whether it follows from 1–5 without injective α, whether later pages amend the definition, or whether this is a genuine omission; do not insert the omitted axiom into the transcript.''')

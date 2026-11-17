@@ -1,0 +1,46 @@
+from record import draft
+
+draft(103,r'''
+\scanpage{103}
+elle \unsure{vaut} sur $1,U_1,U_2$ par
+\[
+1\longmapsto2\deleted{\unsure{e}},\qquad U_1\mapsto-b_1,\quad U_2\mapsto-b_2
+\]
+\unsure{chute} en $\Gamma\underline{\mathcal O}\subset\Gamma\mathcal A$, il reste à trouver l'image de $U_1\otimes U_2$, c'est donc un élément de $\mathcal A$ dont l'image dans $(\mathcal A_1\otimes\mathcal A_2)^{\unsure{\natural}}$ est
+\[
+U_1\otimes U_2+\underbrace{\bar U_1\otimes\bar U_2}_{(-b_1\unsure{-|+}U_1)\otimes(-b_2-U_2)}=\underbrace{2U_1U_2+b_1U_2+b_2U_1}_{\text{image de }U}+b_1b_2
+\]
+\deleted{\unsure{donc}} donc il y a lieu de prendre
+\[
+U_1*U_2=U+b_1b_2
+\]
+Mais il faut maintenant définir une application
+\[
+N_{\mathcal A_1\otimes\mathcal A_2/\mathcal A}:\mathcal A_1\otimes\mathcal A_2\longrightarrow\mathcal A
+\]
+application quadratique, dont la valeur en $z$ serait, essentiellement, $z\bar z$, mais ``\unsure{remonté|remontée}'' à $\mathcal A$.
+L'application bil. associée serait
+\[
+(u,v)\longmapsto u\bar v+v\bar u=\operatorname{Tr}_N(u\bar v)
+\]
+déjà connue.
+
+Donc il faut se donner les \unsure{autres} valeurs de $N$, et de $\varphi_N$, sur les éléments de la base $1,U_1,U_2,U_1\otimes U_2$ de $\mathcal A_1\otimes\mathcal A_2$. On devrait avoir
+\[
+\begin{array}{c}
+N_{\mathcal A}(x_1\otimes x_2)=N_1(x_1)N(x_2)\in\Gamma\mathcal O\subset\Gamma\mathcal A\\
+\Vert\\
+(x_1\otimes x_2)(\bar x_1\otimes\bar x_2)\\
+\Vert\\
+(x_1\bar x_1)\otimes(x_2\bar x_2)
+\end{array}
+\]
+On \unsure{peut écrire}
+\[
+N(1)=1,\quad N(U_1)=N_1(U_1)=c_1,\quad N(U_2)=N_2(U_2)=c_2
+\]
+\[
+N(U_1\otimes U_2)=c_1c_2
+\]
+\mspage{102}
+''')

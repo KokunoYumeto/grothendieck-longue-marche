@@ -1,0 +1,45 @@
+from record import draft
+draft(135,r"""
+\scanpage{135}\mspage{470}
+leur fils.
+
+Pour le dire autrement encore: à aucun moment en ces premières cinq années
+de ma vie, je n'ai connu le sentiment de\quad h o n t e\quad d'\quad ê t r e\quad c e\quad q u e\quad
+j e\quad s u i s\quad, que ce soit dans mon corps et ses fonctions, ou dans mes \unsure{pulsion|pulsions}
+mes penchants,\unsure{.}mes actions. A aucun moment je n'ai eu à renier quelque chose en
+moi, pour être accepté par mon entourage et pouvoir vivre en paix avec lui.
+
+Il arrivait bien sûr que je fasse des choses qui ne ``passaient'' pas: comme
+tous les enfants il m'arrivait sûrement d'être pénible, voire insupportable
+quand je m'y \unsure{méttais|mettais} - et il était clair parfois qu'il me fallait rectifier le
+tir. Je ne faisais pas la loi, ni n'étais tenté de vouloir la faire, n'ayant pas
+à compenser quelque mutilation secrète. Et dans l'amour de mes parents pour moi,
+il n'aurait pu y avoir de place pour l'adulation, la complaisance aux caprices -
+pour une approbation \unsure{inconditionnelle}. Mais s'il arrivait forcément que je me
+fasse ``envoyer sur les \unsure{roses|coses}'' par mon père ou par ma mère (tout comme l'inverse
+pouvait parfois se produire), jamais dans ces années-là l'un ni l'autre ne m'ont
+fait honte, d'un acte ou d'un comportement qui n'aurait pas eu l'heur de leur
+plaire.
+
+Sur le fond d'une identification profonde au père, sans \unsure{ambiguité|ambiguïté} aucune,
+ma personne comme enfant m'apparaît aujourd'hui comme empreinte à la fois de vi-\newline
+rilité et de féminité, fortes l'une comme l'autre.
+
+Il me semble qu'en chaque être et en chaque chose, dans ces indissolubles
+et fluctuantes épousailles des qualités yin et yang en lui qui font de lui ce
+qu'il est, et dont le délicat équilibre est la beauté profonde, l'harmonie qui
+vit en cet être ou en cette chose - que dans cette union intime du yin et du
+yang il y a souvent (peut-être toujours) une note de fond, une ``dominante'',
+qui est soit yin, soit yang. Cette note de fond n'est pas toujours aisée à dé-\newline
+celer en une personne, à cause des mécanismes de répression plus ou moins effi-\newline
+caces et complets, qui faussent le jeu en substituant, à une harmonie originelle
+une image d'emprunt. Ainsi mon ``image de marque'' pendant quarante ans a été une
+image presque exclusivement virile - sans d'ailleurs jamais se voir mettre en
+cause ni même être décelée comme telle, par moi-même ni (il me semble) par au-\newline
+trui, jusqu'à ma quarante-huitième année. J'ai tendance à croire pourtant que
+la note de fond présente à la naissance reste présente pendant la vie entière,
+dans des couches profondes tout au moins qui jamais peut-être ne trouveront
+l'occasion de se manifester au grand jour. Dans mon propre cas, chose étrange, \unsure{j|je}
+ne saurais aujourd'hui encore dire quelle est cette note dominante, celle donc
+\mspage{134}
+""")

@@ -1,0 +1,42 @@
+from record import draft
+draft(139,r"""
+\scanpage{139}\mspage{472}
+Je savais bien d'ailleurs que ce genre de sottise un peu étrange n'est
+nullement chose rare, que la seule vue de la nudité peut être cause de scandale!
+Pourtant aussi loin que je pouvais me souvenir, j'avais eu l'occasion de voir ma
+mère, mon père\quad et ma soeur nus, et toute occasion aussi de satisfaire ma légi-\newline
+time curiosité quant à comment chacun d'eux ainsi que moi-même étions faits. Il
+était bien évident qu'il n'y avait nulle cause de scandale dans la conformation
+des hommes ou des femmes, qui me paraissait décidément très bien comme elle
+était - et plus particulièrement (je n'en faisais nullement mystère) celle des
+femmes.
+
+\(({}^{108})\) (5 octobre) C'est en 1933, alors que j'étais dans ma sixième année, que se
+place le premier tournant crucial dans ma vie, qui a été en même temps un tour-\newline
+nant crucial aussi dans la vie de ma mère comme de mon père, dans leur relation
+l'un à l'autre comme dans celle à leur enfants. C'est l'épisode de la \unsure{destructio|destruction}
+violente et définitive de la famille que nous formions tous les quatre, destruc-\newline
+tion dont j'ai été le premier et le seul, quarante-six ans plus tard, à faire le
+constat et à suivre les péripéties, dans la correspondance de mes parents et
+dans un ou deux souvenirs exsangues, énigmatiques et tenaces, patiemment sondés
+et déchiffrés - bien longtemps après la mort de mon père et celle de ma mère (*).
+
+Ce n'est pas mon propos de m'étendre ici sur ce que j'ai appris et compris
+au cours de ce long travail, au sujet de la portée et du sens de cet épisode.
+J'ai déjà fait allusion il y a trois jours à ce tournant (**), comme marquant la
+fin brutale de la première des trois grandes périodes, dans l'histoire des épou-\newline
+sailles du yin et du yang en moi. En décembre 1933, je me trouve largué en toute
+hâte dans une famille étrangère, que moi, ni ma mère qui m'y amenait depuis
+Berlin, n'avions jamais vue. En fait, ces gens inconnus chez qui elle m'amenait
+étaient simplement les premiers venus qui veuillent bien de moi comme ``pension-\newline
+naire'' pour une pension plus que modique, et avec aucune garantie d'aucune sorte
+que celle-ci serait jamais payée, alors que ma mère s'apprêtait à rejoindre au
+plus vite mon père, qui se morfondait à l'attendre à Paris. C'était une chose en-
+
+\figure{\begin{tikzpicture}\draw(0,0)--(3,0);\end{tikzpicture}}
+(*) Mon père est mort à Auschwitz en 1942, ma mère est morte en 1957. Le travail
+dont je parle ici s'est poursuivi entre août 1979 et octobre 1980.
+
+(**) Voir fin de la note ``Yang enterre yin - ou le muscle et la tripe'', n° 106.
+\mspage{138}
+""")

@@ -1,0 +1,27 @@
+from record import finish
+finish(140,[
+('diagram','top left','M1,E1,L1;p1,q1,alpha1'),
+('diagram','top large','tensor pushout square and quotient'),
+('deletion','top diagram','M1 tensor M2'),
+('deletion','top diagram curved arrow','q'),
+('display','below diagram right','x1,x2 maps to m1 tensor m2'),
+('display','below diagram','q(m1 tensor m2)='),
+('display','upper middle','p(x1*x2)=x1*x2-q'),
+('display','middle right','q(m1)=x1-p1(x1)'),
+('display','middle expansion','p(x1*x2)=x1*x2-(x1-p1(x1))*...'),
+('deletion','middle expansion last row','=chi(...)'),
+('display','middle lower','u1*u2=chi u1 tensor u2'),
+('display','middle lower','p(u1*u2)=chi u1 tensor u2'),
+('deletion','left above box','p(x1)'),
+('display','lower boxed','(f1*f2)(x1*x2)'),
+('display','below box annotation','lambda1 pi1(x1)'),
+('deletion','lower left','Si x1,x2 in L'),
+('text','lower left','Si x1=u1 in L1;x2=u2 in L2'),
+('display','lower right calculation','2 lambda1 lambda2 chi'),
+('deletion','lower right calculation','lambda-chi;(2-chi)lambda1lambda2'),
+('display','lower right','2-chi=1'),
+('display','bottom right','(f1*f2)(u1 tensor u2)'),
+('margin note','bottom left','xy-(x-x)(y-y)=xy'),
+('drawing','bottom left','diagonal downward arrow'),
+('deletion','bottom center','f')
+],r'''A pushout/splitting diagram is followed by p(x1*x2)=x1*x2-q(m1 tensor m2) and expansion of the splitting. The lower boxed trial for f1*f2 is tested on u_i in L_i; a cancelled (2-chi) coefficient and a live “2-chi=1” show an unresolved or changing normalization, not a hypothesis to insert elsewhere. The final tensor restriction is stated as f1(u1) tensor f2(u2). Several q subscripts and overwritten coefficients are uncertain, and the side calculation xy-(x-x)(y-y) is retained.''')

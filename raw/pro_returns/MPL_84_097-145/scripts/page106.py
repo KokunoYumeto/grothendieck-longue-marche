@@ -1,0 +1,50 @@
+from record import draft
+draft(106,r'''
+\scanpage{106}
+ayant les propriétés suivantes
+\[
+\text{a)}\quad N(x_1\otimes x_2)=N_{A_1}(x_1)N_{A_2}(x_2)
+\qquad\begin{gathered}x_1\in\Gamma A_1\\x_2\in\Gamma A_2\end{gathered}
+\]
+\[
+\text{b)}\quad \varphi_N(\xi,\eta)=\operatorname{Tr}_{A_1\otimes A_2/A}(\xi\bar\eta)
+\]
+\deleted{On aura de}
+i.e.
+\[
+ \deleted{\unsure{\varphi}}N(\xi+\eta)=N(\xi)+N(\eta)+\operatorname{Tr}(\xi\bar\eta)
+\]
+On \deleted{aura alors}, pour $\forall\xi\in A_1\otimes A_2$
+\[
+ \boxed{i(N(\xi))=\xi\bar\xi}
+\]
+\[
+\left\{\boxed{\begin{gathered}
+ N(\sigma_1\otimes\operatorname{id}_{A_2}(\xi))=N(\operatorname{id}_{\unsure{A_2|A_1}}\otimes\sigma_2(\xi))=\overline{N(\xi)}\\
+ N(\bar\xi)=N(\xi)
+\end{gathered}}\right.
+\]
+\margin{\unsure{Noter} aussi $\boxed{N_{A_1\otimes A_2/A}(i(\eta))=\eta^2}$.}
+De plus, on a
+\[
+ \boxed{N_{A/O}\bigl(N_{A_1\otimes A_2/A}(\xi)\bigr)=N_{A_1\otimes A_2/O}(\xi)}
+\]
+sans compter la formule plus bénigne
+\[
+ \boxed{\operatorname{Tr}_{A/O}\bigl(\operatorname{Tr}_{A_1\otimes A_2/A}(\xi)\bigr)=\operatorname{Tr}_{A_1\otimes A_2/O}(\xi)}
+\]
+Prouvons p.ex. la première des deux dernières. La \deleted{deuxième}
+Posons
+\[
+ \sigma_1=\sigma_{A_1}\otimes\operatorname{id}_{A_2},\qquad
+ \sigma_2=\operatorname{id}_{A_1}\otimes\sigma_2,
+ \qquad\sigma_3=\sigma_1\sigma_2
+\]
+\deleted{\unsure{\xi}}\deleted{Soit} $\xi=\xi_0\in A$, \deleted{on doit vérifier}
+\inserted{$\xi_i=\sigma_i(\xi)$,}
+on \unsure{constate} qu'on \unsure{ait|a}
+\[
+ N_{A_1\otimes A_2/O}(\xi)=\underbracket{\xi_0\overbracket{\xi_1\xi_2}\xi_3}.
+\]
+\mspage{105}
+''')

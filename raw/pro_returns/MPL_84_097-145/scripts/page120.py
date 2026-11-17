@@ -1,0 +1,22 @@
+from record import draft
+draft(120,r'''
+\scanpage{120}
+Inversement, \inserted{dans} une telle situation \unsure{twistée} $A$ est une algèbre étale quadratique sur chacun des $A_i$, donc on a une situation biquadratique\inserted{étale}, et de plus les hypothèses du début (en particulier $A^{\unsure{\gamma|\Gamma}}=k.1_A$) sont satisfaites.
+
+\deleted{Il faut} Seule la première partie, directe, demande un peu de soin. \unsure{OPS} $X_1,X_2,X_3$ rev. triviaux, $I_{1X},I_{2X},I_{3X}$, et \deleted{la section}\inserted{la section construite plus haut de $X_1\wedge X_2\wedge X_3=(I_1\wedge I_2\wedge I_3)_X$} \unsure{constante|constants}. \deleted{on} On aura alors
+\[
+ \mathcal X\subset J_X
+\]
+et tout résulte du lemme suivant
+
+\uline{Lemme} Soit $\unsure{\gamma|\Gamma}$ un groupe, opérant de façon transitive sur un ens. $J$, et considérons un sous-schéma $\mathcal X$ de $X_J$ \inserted{(où $X=\operatorname{Spec}k$)} qui soit tel que
+
+a) $\mathcal X$ est stable sous $\unsure{\gamma|\Gamma}$, et
+
+b) le composé $k\longrightarrow\Gamma(\unsure{X_J},\mathcal O_{\unsure{X_J}})$ $(\simeq k^J)$ est injectif.
+
+Alors $\mathcal X=X_J$, donc $\mathcal X$ est étale sur $X$ (et fini étale si $J$ est fini)
+
+En effet, soit $j_0\in J$, considérons la composante $X_0$ de $X_J$, $X_{\unsure{j|j_0}}\xrightarrow{\sim}X$, et $\mathcal X_{\unsure{j|j_0}}=X\cap\mathcal X$, il correspond à un sous-schéma fermé de $X$ donc à un idéal $\unsure{\mathfrak a}$ de $k$. À cause de l'\unsure{action} de
+\mspage{119}
+''')
