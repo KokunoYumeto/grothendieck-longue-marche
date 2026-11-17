@@ -1,0 +1,130 @@
+--- code/publish_checkpoint34_readiness_before_accounting.py
++++ code/publish_checkpoint34_readiness.py
+@@ -63,10 +63,11 @@
+             'records/pdf_qa/checkpoint34_final/render_manifest.json'}),
+         'final_pdf_audit': ({'tool_chunk': '6fdbad'}, {'records/checkpoint34_final_pdf_audit.json'}),
+         'final_visual_record': ({'tool_chunk': '26a572'}, {'records/checkpoint34_visual_review.json'}),
+-        'final_size_estimate': ({'session_id': 55851}, {
++        'final_size_estimate': ({}, {
+             'records/checkpoint34_size_estimate.json',
+-            'records/checkpoint34_size_estimate_run.out',
+-            'records/checkpoint34_size_estimate_run.err'}),
++            'records/checkpoint34_size_accounting_correction.json',
++            'records/checkpoint34_size_accounting_run.out',
++            'records/checkpoint34_size_accounting_run.err'}),
+     }
+     assert set(by_role) == set(required), 'Require exactly the six final roles.'
+     for role, (identifiers, required_files) in required.items():
+@@ -76,6 +77,7 @@
+         for key, value in identifiers.items():
+             assert row.get(key) == value, (role, key, value)
+         assert required_files <= evidence_list(row['evidence']), role
++    assert by_role['final_size_estimate'].get('session_id') != 55851, 'Failed measurement is not the successful accounting operation.'
+ 
+     failed = observed['prior_failed_build']
+     assert failed['session_id'] == 46912 and failed['exit_code'] == 1
+@@ -83,6 +85,16 @@
+         'records/pdf_qa/checkpoint34_first_layout/records/checkpoint34_build_driver.out',
+         'records/pdf_qa/checkpoint34_first_layout/records/checkpoint34_build_driver.err',
+     } <= evidence_list(failed['evidence'])
++    failed_size = observed['prior_failed_size_measurement']
++    assert failed_size['session_id'] == 55851 and failed_size['exit_code'] == 1
++    assert failed_size['tool_chunk'] == '15fae9'
++    assert {
++        'records/checkpoint34_size_before_reconciliation/checkpoint34_size_estimate.json',
++        'records/checkpoint34_size_before_reconciliation/checkpoint34_size_estimate_run.out',
++        'records/checkpoint34_size_before_reconciliation/checkpoint34_size_estimate_run.err',
++        'records/checkpoint34_size_before_reconciliation/estimate_checkpoint34_size.py',
++        'records/checkpoint34_size_accounting_correction.json',
++    } <= evidence_list(failed_size['evidence'])
+ 
+     agents = observed['agents']
+     expected_agents = {'/root/involutions', '/root/torus_real', '/root/topology_census'}
+@@ -121,7 +133,26 @@
+         assert estimate['prospective_bundles'][kind]['dictionary_bytes'] == size
+         assert estimate['prospective_bundles'][kind]['zip_method'] == 'ZIP_LZMA'
+     assert not (root / 'records/checkpoint34_corrected_build_driver.err').read_bytes()
+-    assert not (root / 'records/checkpoint34_size_estimate_run.err').read_bytes()
++    assert not (root / 'records/checkpoint34_size_accounting_run.err').read_bytes()
++    correction = read('records/checkpoint34_size_accounting_correction.json')
++    old_estimate = read('records/checkpoint34_size_before_reconciliation/checkpoint34_size_estimate.json')
++    assert correction['measurement_session_id'] == 55851
++    assert correction['measurement_actual_exit_code'] == 1
++    assert correction['measurement_exit_observation_chunk'] == '15fae9'
++    assert correction['all_three_compression_streams_completed'] is True
++    assert correction['duplicate_previous_main_pdf_payload_bytes'] == 4177417
++    assert correction['allowance_unchanged'] == 5000000
++    assert correction['baseline_headers_deducted'] == correction['omitted_logical_files'] == 0
++    assert not correction['new_compression_run'] and not correction['new_zip_created']
++    assert old_estimate['estimated_total_with_allowance'] == 537725722
++    assert estimate['estimated_total_with_allowance'] == 533548305
++    assert estimate['estimated_total_with_allowance'] == old_estimate['estimated_total_with_allowance'] - 4177417
++    assert estimate['prospective_bundles'] == old_estimate['prospective_bundles']
++    assert estimate['header_manifest_retention_late_text_allowance_bytes'] == old_estimate['header_manifest_retention_late_text_allowance_bytes'] == 5000000
++    assert estimate['accounting_correction']['path'] == 'records/checkpoint34_size_accounting_correction.json'
++    assert estimate['accounting_correction']['sha256'] == sha(estimate['accounting_correction']['path'])
++    for item in correction['preserved']:
++        evidence(dict(path=item['preserved'], sha256=item['sha256'], bytes=item['bytes']))
+     assert not (root.parent / 'LM4_SUCCESSOR_checkpoint_34.zip').exists()
+ 
+     five_review = read('work_CE/review_checkpoint34_five_helpers.json')
+@@ -136,6 +167,10 @@
+     assert final_review['result'] == 'PASS' and final_review['entire_sources_read']
+     for item in final_review['sources']:
+         evidence(item)
++    accounting_review = read('work_CE/review_checkpoint34_size_reconciliation.json')
++    assert accounting_review['result'] == 'PASS' and accounting_review['entire_source_read']
++    assert accounting_review['source']['path'] == 'code/reconcile_checkpoint34_size_accounting.py'
++    evidence(accounting_review['source'])
+     publisher_review_path = evidence(observed['publisher_review'])
+     publisher_review = read(publisher_review_path)
+     assert publisher_review['result'].startswith('PASS')
+@@ -151,7 +186,8 @@
+         'code/estimate_checkpoint34_size.py', 'code/verify_checkpoint34_system_tars.py',
+         'code/check_checkpoint34_preconditions.py', 'code/capture_checkpoint34.py',
+         'code/render_checkpoint34_pdf.py', 'code/audit_checkpoint34_final_pdf.py',
+-        'code/finalize_checkpoint34_visual_record.py', 'code/publish_checkpoint34_readiness.py',
++        'code/finalize_checkpoint34_visual_record.py', 'code/reconcile_checkpoint34_size_accounting.py',
++        'code/publish_checkpoint34_readiness.py',
+     ]
+     reviews = [
+         'work_CE/review_checkpoint34_five_helpers.txt',
+@@ -160,17 +196,26 @@
+         'work_CE/review_checkpoint34_capture_helpers.json',
+         'work_CE/review_checkpoint34_final_audit_visual_sources.txt',
+         'work_CE/review_checkpoint34_final_audit_visual_sources.json',
++        'work_CE/review_checkpoint34_size_reconciliation.txt',
++        'work_CE/review_checkpoint34_size_reconciliation.json',
+         publisher_review_path,
+     ]
+     binding = dict(status='PASS_REVIEWED_CURRENT_SOURCES',
+         helpers={rel: sha(rel) for rel in helpers},
+         independent_reviews={rel: sha(rel) for rel in reviews},
+         observed_record=dict(path=observation_path, sha256=sha(observation_path)),
+-        actual_executed_estimator=dict(
++        actual_size_measurement=dict(
+             source_sha256=sha('code/estimate_checkpoint34_size.py'),
+-            session_id=55851, tool_chunk=by_role['final_size_estimate']['tool_chunk'], exit_code=0,
+-            output_sha256=sha('records/checkpoint34_size_estimate_run.out'),
+-            record_sha256=sha('records/checkpoint34_size_estimate.json')),
++            session_id=55851, tool_chunk='15fae9', exit_code=1,
++            failure_scope='Only final cap assertion failed after all three real streams and report completed.',
++            output_sha256=sha('records/checkpoint34_size_before_reconciliation/checkpoint34_size_estimate_run.out'),
++            record_sha256=sha('records/checkpoint34_size_before_reconciliation/checkpoint34_size_estimate.json')),
++        actual_size_accounting=dict(
++            source_sha256=sha('code/reconcile_checkpoint34_size_accounting.py'),
++            tool_chunk=by_role['final_size_estimate']['tool_chunk'], exit_code=0,
++            output_sha256=sha('records/checkpoint34_size_accounting_run.out'),
++            record_sha256=sha('records/checkpoint34_size_estimate.json'),
++            correction_sha256=sha('records/checkpoint34_size_accounting_correction.json')),
+         scope='Source reviews and actual completed pre-capture evidence only; no future archive verification is preclaimed.')
+     pause = dict(recorded_at=now.isoformat(), all_writers_paused=True,
+         scope='The three named research writers and all task-owned producers only; no assertion about unrelated system processes.',
+@@ -180,6 +225,7 @@
+     ready = dict(ready=True, recorded_at=now.isoformat(), pdf_sha256=expected_pdf,
+         main_A='Open', main_B='Open', actual_CM_parity='Open',
+         observed_producer_completions=producers, prior_failed_build=failed,
++        prior_failed_size_measurement=failed_size,
+         prior_failure_scope='The first build actually exited1 on the retained provenance overflow; it is not described as a stopped producer.',
+         estimate_bytes_with_allowance=estimate['estimated_total_with_allowance'],
+         formal_statements=362, formal_pages=646, bibliography_entries=116,

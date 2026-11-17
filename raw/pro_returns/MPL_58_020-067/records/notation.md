@@ -1,0 +1,40 @@
+# MPL_58_020–067: notation and doubts
+
+## Package notation table
+
+The primary reader checked the recurring forms below throughout the two visual passes and then compared their LaTeX occurrences before freezing. The table records graphic conventions, not a normalization of the mathematics: a missing condition, inconsistent letter, changed degree, or different authorial spelling stays where it occurs. Unresolved differences remain marked in the fragment and in the register below.
+
+| Sign or practice | LaTeX transcription | Locations / cautions |
+|---|---|---|
+| Ordinary prime | `'`, `''` | Typed algebra sheets 20, 22, 24, 47, 49 and handwritten 23–27, 42–52, 65–67. Upper ticks are distinguished from the lower dot of an exclamation mark; no secure shriek exponent was found in these retained pages. |
+| Asterisk | `^*`, `_*` | Pullback and direct image, units on 66, induced characters on 63. The doubtful exponent in the circled condition on 60 remains `A'_n` versus `A^*_n`. Asterisks have not been converted to primes. |
+| Double quotation marks | two backticks and two apostrophes | Examples 22, 25, 27, 30, 31, 33, 39, 40, 50. No editorial straight double quotes are used for source quotation marks. Double quotes inside TikZ options delimit labels and are code, not source punctuation. |
+| Plain dash between mathematical objects | `\mathbin{-}`; TikZ `dash` | 30, 33, 35, 40–43, 46, 48, 59, 60, 65, 67. A dash is retained when no arrowhead is secure; doubtful dash/arrow distinctions are explicit. |
+| Single arrow, isomorphism arrow, equivalence | `\longrightarrow`, `\overset{\sim}{\longrightarrow}`, `\simeq`, `\Longleftrightarrow` | Directions and heads checked independently of expected exactness. In 67 the cropped comparison is an arrow with a wavy upper stroke, not a nondirectional equivalence. In 50 the final relation is a wavy stroke, with inequality retained only as an alternative. |
+| Double arrows and curved implications | TikZ `Rightarrow`, `Leftarrow`, `Leftrightarrow` | The comparison chart on 37 and chains on 56, 58–60, 62. Three faint labels on the curved arrows of 37 remain uncertain `h`; they are distinct from arrowheads. The lower doubled relation on 65 is `=` versus `\Rightarrow`. |
+| Underlining and double underlining | `\uline{…}`, `\uuline{…}` | Extent and cancellation preserved. Mathematical letter underlines use standard `\underline`; the typed integer symbol on 63 has two visible underlines, rather than a substituted blackboard-bold alphabet. |
+| Structure-sheaf letter | `O`, `\underline O`, doubtful `\mathcal O` | Underlines visible on the notes and reused typescripts are retained. Unadorned occurrences are not silently supplied with underlines; the cancelled script-like glyph before Lambda on 40 remains doubtful. |
+| Underlined prime-ideal letters | `\underline p`, `\underline P` | 22. Visible typed letters plus underlines are retained rather than silently replaced with Gothic ideals. |
+| Formal-module alphabet | `\unsure{\mathfrak F\|\mathcal F}` | 31, 33, 41, 43, 50; the same unresolved Gothic/script distinction is registered consistently. Plain algebraic `F` is not globally changed to this alphabet. The graphs on 57 have separately doubtful script/plain labels. |
+| Formal-scheme alphabet | `\mathfrak X`, `\mathfrak X'` | 42–43, explicitly linked there to `X_{/Y}`. The categorical letter `\mathcal L` on 33 remains script L; the invertible module `L` elsewhere is plain L. |
+| Formal completion | `X_{/Y}`, `F_{/Y}`, `\hat X`, `\hat F` | 30–50 and 56–62. Both of the author's graphic forms are kept; primes, hats, subscripts and slash placement are not made uniform by mathematical inference. The uncertain hat/tilde on 48 is marked locally. |
+| Hat on a cone | `\hat C` | 65, 67. Scan 67 explicitly calls this a projective cone. The hat is therefore not an editorial declaration of formal completion, and the visible `Spec S[z]` of 65 has not been replaced by another construction. |
+| Closure bar | `\bar x`, `\overline{x'}`, `\bar U` | 21–27, 33, 36–38, 46, 50, 52; separated from a completion hat. |
+| Tensor sign and scalar-extension subscript | `\otimes`, `V'_{(K)}` | Typed 20 and later algebra sheets. The handwritten parenthesized `(K)` on 20 is an insertion, not part of a reconstructed uniform subscript convention. |
+| Lowercase dimension bounds and field letters | `h`, `k`; locally `\unsure{k\|h}` | 21, 23, 25, 27, 67. The initial bound on 21 and the final bound on 27 favor k-shaped ink, even where h would harmonize an argument; those differences remain explicit. The last coefficient-field glyph on 67 is also marked. |
+| Capital bound and similar lowercase letters | `K`, `n`, `m` | 27 has `K+1=(n+h)+1` and inserted `K-n`; the initial n/h remains doubtful. Grading variables on 56–62 were checked separately; 61 retains uncertainty in the lower bound m/n. |
+| Looped ell | `\ell` | Hyperplanes on 27 and the prime distinct from p on typed 63. Not replaced by the digit 1. |
+| Xi, zeta and z | `\xi`, `\zeta`, `z` with local alternatives | 33 associated-point annotation has xi/z uncertainty; 65's Picard quotient generator is xi/zeta. The isolated-point statements on 56–62 use the z actually written. |
+| Phi and varphi | `\Phi`, `\varphi` | 46 support family; 48 completion subscript remains capital/lowercase doubtful; 35 comparison map; 63 induced characters; 65 units calculation. These have not been unified merely because the glyphs resemble one another. |
+| Gamma | `\Gamma` | Sections on 46, 48, 56, 67. One cancelled expression on 38 is F(n)/Gamma(X) doubtful and is not used to harmonize the rest. |
+| Lambda and ideal J | `\Lambda`, `J` | 40–41, including negative powers, the inverse ideal, and `J/J^2`; the exponent 2 on 40 remains locally doubtful. |
+| Greek nu versus n | `\nu`, `n_s` | Genus formulas on 66: nu and the subscripted n terms are kept distinct. |
+| Sum, coproduct-shaped sign and direct sum | `\sum`, `\coprod`; locally `\bigoplus` alternative | 56's first large sign remains doubtful. The squared-bottom signs on 57, 58, 60 are encoded as coproduct-shaped glyphs; 61 and 63 visibly have sums. No sign was selected from the algebraic interpretation. |
+| Weak, strict and effective LG language | `(LG)_n`, `LG`, written `faible`, `strict`, `stricte`, `effective`, `effectif` | 33–43. Parentheses and word endings vary in the source and remain. The rewritten definition on 33 has not been supplied with an absent word “stricte”; the later explanation uses it explicitly. |
+| Successor-degree bounds | `i\leq n`, `i=n+1`, `>n+1`, etc. | 33–36 and 56–62. Each inequality and index was re-read; the strange induction inequality on 34 is still marked rather than repaired. The uncertain grading inequalities on 57 and 58 remain different local readings. |
+| Formal condition names | `A_n`, `A'_n`, `C'_i`, `C_n` | 58–62. Circled or braced placement is reproduced; the prime/star doubt on 60 is not settled from the neighboring naming scheme. |
+| Source blanks | visible blank space, empty target, or incomplete sentence | 48's unfinished depth condition; missing relation symbols in typed 57 and 61; blank reference on 51; absent summation sign above lambda in 63 (12); incomplete targets on 65/67; final sentence of 67. A blank is not filled by an expected formula. |
+| Finite-interval brackets | `\unsure{[\![1,n]\!]\|[1,n]}` | Typed 53. Double/single bracket ambiguity remains localized. |
+| Internal page numbers and corner numerals | `\mspage{…}` and `\margin{…}` | Internal folios/printed sheet identifiers are retained on 20, 22, 24, 30, 47, 49, 51, 53, 63. The separate corner sequence equals scan minus one and is transcribed as a margin without an unsupported attribution of its hand. Upside-down corner numerals on 51, 53, 61, 63 are rotated. |
+| Reversed show-through | not a second recto text layer | 52/53, 62/63 and especially 65/66. On 65, the two pale circles, circled slash and two faint bottom curve sketches are mirrored versions of stronger recto drawings on 66; only their actual recto instances are transcribed. The distinct strong arc/loop and K-like strokes on 65 remain. |
+

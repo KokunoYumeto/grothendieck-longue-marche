@@ -1,0 +1,13 @@
+# Independent review: actual filled-section commutator and based marking
+
+The complete revised CE note `work_CE/research_retained_section_stabilizer_node_18h.txt` passes. The geometric conclusion is a relation after the explicit filling X→X0, not a kernel element of the section into X.
+
+In(q,v) coordinates, X0 is the bundle over q∈C\{0,1} with fiber C\{0,1,q,+sqrt(q),-sqrt(q)}. The old retained bundle X is its restriction to q∈C\({0}∪mu5). These fibers are locally trivial over all four additionally filled q values. On the compact actual lasso disks the constant far v-section lies outside every finite puncture and extends across them. Thus π1(X)→π1(X0) is identity on the actual retained free F5 and the free filling F6→F2 on base generators, in that same far-section marking. The four inactive retained automorphisms are indeed literal identities.
+
+The section v=u=zeta² into X is injective on its F6 fundamental group because projection to the old base is its left inverse. Its word[6,2,-6,-2] is nontrivial there. In X0, projection to v has q-fiber punctures0,1,v,v². At v=−1, the boundaries q=1 and q=v² meet transversely: the coordinates(q−1,q−v²) have nonzero Jacobian. Their local complement imposes the commuting-meridian relation. The six-point transport used to mark this relation adds the optional unused holes zeta,zeta³. It is a family mapping to X0, not an assertion that moving q=v,v² replace fixed old-root boundary components inside X.
+
+The exact broken v-path and the static old-q basis conversion are independently certified in the DE files. On the terminal v-square, q=v² stays within the isolated q-disk about1 and winds once positively, while q=v moves in a disjoint disk about−1 with contractible motion. Thus the last-pair commutator is the transported local relation. Its actual old word is[6,2,-6,-2]. The literal B87-to-nodal source bridge and old-q connector both have empty transport, as separately recorded in B87_nodal_base_connector_audit.json.
+
+The algebraic check is also independent: review_structural_section_head_word.py reconstructs all21 far and source images from the authoritative six old operators, all16 peeled peripheral heads, the two-generator returned-source word, and every F-commutation identity. The selected paired slot6 has both heads zero; retained phi is identity. The 2416-letter source correction has zero retained head. This fixes the augmented row(6,6,y1) at node(8,0).
+
+These checks do not assert a full-column unit relation, any whole-block intersection, a κ value, or a completed module identification. The full-column expansion is separately owned and being checked by CE.

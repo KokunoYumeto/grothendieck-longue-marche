@@ -1,0 +1,33 @@
+# Independent final review of B112 and B113
+
+Status: PASS, full mathematical source read. Reviewer: DE. Review date: 2026-11-16, checkpoint23. No assembled files or registers changed.
+
+## B112: actual annular bad-region centralizer
+
+The complete source was read, including every displayed relation and the complete finite-period completion argument.
+
+1. The actual q0-adapted basis is the common back-transport of the original six-meridian marking. The original cone and adapted cone are related by the literal even connector K=x3^{-1}x1, and the inverse table agrees with the already independently verified basis package. The old-cone source is K^{-1}hK. This is not an unbased change of cone.
+2. The retained source lift is h=g0 cfc under g0^{-1}xg0=psi0(x). Its geometric typing is supplied before filling by the Borel strip and uniqueness of the even generic cone conjugator. The variable k=f^{-1}h equals the actual far zero section g0. The new h-height used for unfolding is correctly distinguished from the geometric q-base character.
+3. The simultaneous reduction of all ten actual relations is reversible. The first five establish only the claimed b,d,a diagonals and two cross edges. The two A/X relations jointly give [A,d]=[A,e]=1. The shared23 node gives [d,bar e], and its barred counterpart, before the contact relation yields the e diagonal. The last relation uses the already proved a/bar d commutation. This avoids circularly assuming the target graph.
+4. The extra target graph edges in the finite HNN are explicit h-translates of established relations. Both edge graphs are full induced subgraphs and are interchanged by the stated map. Coordinate retractions include the cone, so the ordinary HNN normal-form step is legitimate. The completion proof does not reuse an unjustified even-edge HNN argument.
+5. Reidemeister--Schreier elimination gives precisely the four infinite graph-edge families. The independent set a_n,bar b_n,d_n,e_n contains no edge, including after every even cyclic identification. The only bar-pairs that commute are the four diagonal pairs at each level; k and bar k never commute. The dependence-word argument therefore generates the exact fixed graph subgroup, and the coordinate detector proves the displayed generators are free.
+6. The source formulas have the correct order. In particular T=delta_b cE delta_b^{-1}, so T^2=delta_b(bar E E)delta_b^{-1}; the already established contact relation changes bar E E to E bar E. Since E=h(de d^{-1})h^{-1}, the d/e cross relations give delta_E=h delta_d delta_e delta_d^{-1}h^{-1}. Thus the physical source order is exactly delta_b, (delta_b h delta_d)delta_e(delta_b h delta_d)^{-1}, delta_d, delta_a, h. These five words have the explicit inverse basis printed in the proof.
+7. The detector is on the complete ordinary presentation, including all ten mapping equations in both directions and twenty node relations. It gives a genuine retraction onto the geometric source, hence full induced topology. Orientation plus finite-index cores supplies the stated product topology with the cone.
+8. The even-period quotients are exact presentation quotients, not depth samples. Any finite target factors through one by choosing m divisible by the image order of h. The actual source maps onto every discrete head centralizer. The finite-graph residual-finiteness, finite classifying-space, goodness and prime-order centralizer inputs are invoked with their full stated hypotheses. Compact-image separation then gives the completed centralizer without asserting anything about completion of the infinite-height graph kernel.
+
+Conclusion: the actual annular bad-region source is exactly the discrete and full completed cone centralizer's ordinary part. The scope excludes the later one-neck pushout and global source.
+
+## B113: whole regions and the selected original outer source
+
+The complete source was read.
+
+1. In E=(C x C2)*_C R, the R vertex is a retract independently of residual finiteness. An odd cone in R fixes no edge of the ordinary amalgam tree, because all edge stabilizers are even. Its centralizer is therefore contained in R.
+2. For each finite-index normal M in R, N=(M intersect ker o) intersect r^{-1}(M intersect ker o) is finite-index normal, lies in M, and satisfies r(N) subset N. The finite-vertex amalgam E_N consequently exists with the actual odd cone and even edge. Its completed cone centralizer is the finite vertex centralizer by the already justified prime-order virtually-free comparison.
+3. Every finite quotient of E factors through some E_N: the restrictions on both vertices agree on C and N kills only elements already killed by the chosen target. The compact membership argument therefore puts every completed centralizing element into the actual compact image of hat R. This direction is exact and does not assume R itself residually finite.
+4. The actual collar edge is the geometric annular boundary section and retracts by q projection. B112 applies to the other cone of the same whole-region amalgam. Source full topology transfers through the retraction and then to the ordinary index-two subgroup.
+5. The mirror J(q,t)=(1/conj q,1/conj t) commutes with F and exchanges the two fixed sections and inner/outer regions. It preserves every deleted family, including the same-u T_u identity. No lift of J to a prescribed involution on the original cover is asserted. Transport of basepoints within a fixed source intertwines the literal based involutions.
+6. The regional ranks are 1,5 / 5,1 because exactly four additional selected fixed-section punctures occur on each bad side.
+7. At q=4, P=(1+i sqrt3,1-i sqrt3) is an actual selected-source point: its coordinates have modulus2, product4, and are distinct and different from1. The four outer alpha values satisfy modulus<3. The q-circle of radius4 avoids every source puncture and has odd winding for 1-q, so the actual source double cover is connected. Its rank is 2(5-1)+1=9, and the ambient restricted double cover is connected as well.
+8. The selected original source group is the actual intersection I intersect Pi' in the based pullback cover. Equivariance identifies the based involutions. The same intersection holds for compact images because Pi' is open and I has its full topology. This establishes the required transfer direction and full induced topology, rather than interchanging arbitrary completion/intersection operations.
+
+Conclusion: PASS without correction. The final scope correctly excludes joining the complete annuli through a neck and excludes the global fixed-source problem.
