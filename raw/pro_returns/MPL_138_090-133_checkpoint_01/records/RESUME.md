@@ -1,0 +1,5 @@
+# Recovery instructions
+
+Use the original attached prompt and scan ZIPs. Do not run first-pass write scripts over audited pages. Root has personally viewed every whole scan and both halves, in order, without OCR; all 43 first-pass page files exist. The progress log identifies the audited prefix. Complete the second visual audit, reconcile the notation/doubts, combine the fragments and freeze their SHA-256 hashes before opening context. The context contents remain sealed unless the progress log explicitly records opening after the freeze. Research leads are provisional, not mathematical checks. CHECK_EVENTS.tsv is the check ledger. The TeX compile attempt failed before page parsing because this environment lacks the format/packages; mechanical validation is distinct from successful compilation.
+
+Checkpoint ZIPs contain all current deliverables and documentation, without supplied scans/context and without earlier checkpoint ZIPs. Upload receipt is recorded in the working progress log after upload and appears in the next/final archive.

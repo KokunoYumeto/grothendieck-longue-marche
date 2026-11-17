@@ -1,0 +1,44 @@
+- 001: Image checked against the complete page fragment; no change.
+- 002: Printed text and both TikZ picture approximations checked. The ink supports zonaèdres as the first reading; uncertainty retained.
+- 003: All printed paragraphs, five address rules, order table and scribble checked. Added math delimiters around the table; no reading changed.
+- 004: Two-line cover title checked; uncertainties retained. No author page count or date visible.
+- 005: Rechecked full image and lower half. The semidirect-product sign in (7) is visibly a dot with 1/2 below, now reproduced that way. Prime and Ch 2 readings retain doubt.
+- 006: Corrected (10) to the visible dot-over-1/2 sign. Last display number now has 12 as first reading; quotient G alphabet marked uncertain rather than silently assigning double-contour G.
+- 007: Kernel in (16) corrected to plain G from the visible single contour; the separate double-contour group elsewhere is not imposed here. Underlined tt and all margin/deletion material checked.
+- 008: Both cancellations, the revised same-image clause, the subscripted image groups and inserted inclusion checked. Base symbol remains xi / kbar in doubt.
+- 009: Both product marks reproduce dot with 1/2. Marked the missing/unclear prime on the third variant in (23), preserving the clearly primed final formula. Margin repair reminder checked.
+- 010: Composition-series bracket diagram, all three quotients, geometric/arithmetic wording, inserted i.e. N and finite quotient label checked; gamma/sigma doubt retained.
+- 011: All insertions and the partial section checked; added doubt on compressed trivialt ending and on the faint arrowhead in the last geometric expression.
+- 012: Rechecked plain E prime in the partial section, constant-group statement, cancellations and centralizer. Compared two-stem tt abbreviation to scan 007; tt now first reading. Added ending doubt s’égaliser / s’égaler.
+- 013: Curled centralizer Z in (29), angular Z in diagrams and lower-case centre z checked separately. Definition abbreviation above equality now explicitly doubtful; final unfinished can- retained.
+- 014: Obstruction H2, indeterminacy H1=Hom and trivial-action clause checked against the four written lines.
+- 015: Added visible underline beneath origine. Field cancellation, K/Q variations, maximal abelian/moderate wording, two semidirect marks, all inserted choices and power maps checked.
+- 016: Full page and lower half checked; the product here has a dot without the half-mark. Retraced symmetric-group glyph and cancelled brace remain marked as doubtful.
+- 017: All prose and both insertions checked; the last abbreviation and the symmetric-group alphabet retain explicit uncertainty.
+- 018: Title, cancelled C-subscript and four manuscript dots checked; no author page count or date appears.
+- 019: Full page checked, including both exact sequences and the underbrace calculation. Removed an editorial duplicate of the first factorization by placing the complete chain once below its brace; source signs and absent z factors retained.
+- 020: Full page and lower half checked; added the visible Q-like alternative to the independence coefficient, retaining the first reading. All question marks and both power arrows are present.
+- 021: Full page and lower half checked, especially the struck denominator, vertical sequence directions and nested underbraces. Uncertain crossed prose and cyclotomic subscript retained.
+- 022: Scratch calculations, cancellations, bars and unfinished brackets checked. The differing coefficient stars in the top cohomology diagram and the Q-bar reading below are retained from the ink.
+- 023: All group extensions, reversal table and contracted-product formulas checked. The final quotient really lacks a second Z, and the S-subscript and Gamma-prime subscript remain doubtful.
+- 025: Full page plus both rotated margins and bottom crop checked. Alpha(i) is the stronger marginal reading; an alternative for the faint bottom verb was added. Uppercase Pi and the weighted-triangle count are retained.
+- 026: Formula numbers, both transition directions, cancelled factor and the left arrow over mu checked; no change. The reversed coordinate arrow is retained as drawn.
+- 027: Inserted action paragraph, overwritten pi definition, cancelled inverse limit and semidirect-product mark checked. Cross-strokes on mu remain distinguished by doubt marks from the plain mu below.
+- 028: Character arrows, inverse-limit decoration and automorphism display checked. The source writes mu rather than pi in (13), and does not add bars or stars there; those readings remain unchanged.
+- 029: Abelianization line, every fibre formula, bars on y/z/lambda, and the multi-line cancellation checked. No mathematical repair of the quotients or coefficient in (15).
+- 030: Both deleted and replacement formulas numbered (18)/(19), the marginal alternative, and the inertia-quotient construction checked. The marginal curve subscript remains uncertain.
+- 031: Both cancelled constructions and marginal complex-coordinate definitions checked. The alpha-star/alpha-two subscript remains marked; no inference from later definitions was used.
+- 032: All set definitions, inequalities, the unfinished marginal note and both altered formulas checked. The printed fragment preserves the source indices 1,2 and the doubtful exponents in (26).
+- 033: Commutative square, arrowheads, source quotient subscripts and clipped bottom label checked. The extra sign in (28) remains doubtful and was not expanded from mathematical expectation.
+- 034: Invariant-line paragraph and all decorations checked; suppressed arrowheads on the first and last strokes of (31), where the ink shows no distinct head. C-bar in (30) retained.
+- 035: Revised beta labels, six-point circle, (33) final index 2, Kummer torsors and bottom exact sequence checked. The doubtful sign inside p2 inverse-image braces remains uncorrected.
+- 036: Full page checked, including the long deletion and both inserted fibre sets. The question mark and surjectivity wording remain explicit; no repair of the repeated Q-bar or ambiguous alpha argument.
+- 037: Full page and a new enlargement of the final paragraph checked. Changed the confident prendre to the stronger ink reading pointer, retaining prendre as an alternative; the deleted pointe and underlined en alpha remain separate.
+- 038: Full page and enlarged overwritten triples and words checked. The opening word now records Rappelons/Rappel uncertainty; each deleted bar and replacement triple is retained, with source denominator 3n unchanged.
+- 039: Formulas and final cartographic glyph checked. Reproduced the circled insertion and its upward pointer in TikZ; replaced mistaken double underlining by the two vertical emphasis strokes actually drawn beside the final note.
+- 040: Affine-action signs, membership stacks, all twelve displayed transport arrows and the final question mark checked. The uncompleted final sentence is preserved.
+- 041: All prose and exponential factors checked. Consolidated the transport diagram so E-prime-infinity appears once, with both lower equalities in their source positions. The source exponents and missing inverse in the last line remain unchanged.
+- 042: All abstract-set formulas and the unlabelled sequence checked. Moved the F3 quotient and vertical equality directly below the corresponding quotient, as in the source; no missing sequence label supplied.
+- 043: Typed notice read line by line, including date, times, names, line-end hyphenations, tissus gras spelling and signature. No change.
+- 044: Full page and three enlarged margin/cancellation crops checked. The clipped final line now ends with its visible doubtful short stroke rather than an unsupported ellipsis; the underlined marginal word remains low-confidence. Both drawings and ramification tables checked.
+- 045: Original orientation and full rotated letter checked line by line; dates, deadlines, names, signature and the complete diagonal cancellation are represented.

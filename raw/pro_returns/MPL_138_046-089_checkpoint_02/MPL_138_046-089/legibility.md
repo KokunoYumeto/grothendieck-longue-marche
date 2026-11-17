@@ -1,0 +1,11 @@
+## Legibility and limits
+
+All 42 whole-page images and both supplied halves of every page were read visually by one reader in scan order, without OCR or parallel transcription. Every page then received a separate visual audit against the saved LaTeX. Additional enlarged crops were used for small labels, cancellations, word endings and the final alphabet comparison. This remains difficult handwriting: an unmarked word is a reading judgment, not a guarantee of certainty.
+
+The least secure material is the heavily cancelled positive-characteristic discussion and dense side note on 068; small overwritten labels and indices on 047, 049, 053, 064 and 077–078; the revised reversal formula on 085; and overwritten definitions and the kernel target on 089. The opening clause on 083, fibre-functor letter on 082, some surface-theoretic word endings on 071–075, and unfinished final phrase on 087 remain particularly uncertain. The cursive group letter on 084–087 is explicitly marked as calligraphic T / Gamma rather than silently identified with upright Gamma elsewhere.
+
+The typed sheets are generally more legible, but faint duplicated type, chemical charges, personal names, handwritten dates and signatures require caution. Printed letterheads, address frames, separators and the Harvard crest were transcribed or drawn. TikZ drawings reproduce topology, relative placement and all visible labels as closely as practicable; they do not claim facsimile precision in pen curvature. The large cancellation on 068 is encoded as deleted material, not omitted content.
+
+`\illegible{n}` is reserved for words whose ink remained unreadable after enlargement, chiefly under cancellation; no formula or diagram symbol is replaced by an illegibility count. The table indexes every uncertainty macro, including repeated occurrences. Alternative readings and unreadable word counts are low confidence; single proposed doubtful readings are ordinarily medium confidence. The counts of unreadable words are estimates.
+
+Unfinished expressions, missing closing punctuation, unexpected letters, inconsistent subscripts, absent hats, headless segments and surprising mathematical assertions remain as written. Archive foliation appears only in comments; no authorial page count is inferred. Blank scans 079 and 088 were not supplied and have no invented page files.

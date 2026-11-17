@@ -1,0 +1,79 @@
+- scan 005: Looped G with a long descender → \mathcal{G}; double-contour capital G → \mathbb{G}; exact font identification remains medium confidence.
+- scan 005: Cross-shaped calligraphic X → \mathcal{X}; plain X retained where straight crossed strokes appear.
+- scan 005: Gamma has a straight vertical and top bar → \Gamma; bar k → \bar k.
+- scan 005: Circled 1.1, 1.2, 1.3 treated as section numbers, not manuscript page numbers.
+- scan 005: Unheaded joining strokes in diagrams → no head; visible arrowheads preserved.
+- scan 006: Tilde over calligraphic X → \widetilde{\mathcal X}; extension letter with two loops → \mathcal E.
+- scan 006: Primes above subgroup letters in (10) retained as primes; do not infer them in unprimed diagrams.
+- scan 006: Autext written as one operator → \operatorname{Autext}.
+- scan 006: rev. = likely revêtement; gén. = likely généralement; ss-groupe = likely sous-groupe; aut. ext. = likely automorphismes extérieurs.
+- scan 007: Subgroup containment stacked below Eprime is a cup-shaped vertical containment mark, reproduced as \cup above pi1.
+- scan 007: NB underlined; tt underlined is written as tt, not a universal-quantifier symbol.
+- scan 007: syst. fond. = likely système fondamental; op. = likely opération; surj = likely surjectif; ens. = likely ensemble.
+- scan 008: Plain open G in (18) differs visibly from large double-contour Gprime and G; render plain G as G and double-contour as \mathbb G. Recheck kernel G in scan007 (16) and overwritten quotient G in scan006 at full audit.
+- scan 008: prés. = likely présentation; inv. = likely invariant; iso. can. = likely isomorphisme canonique.
+- scan 009: The manuscript uses the literal equality sign in prose “au =”; retain it rather than writing “même”.
+- scan 009: d’ext = likely d’extension; ds = likely dans.
+- scan 010: His paired double quotation marks → two backticks and two apostrophes.
+- scan 010: Bracket diagram (24) retains plain G, contoured \mathbb G, and descending \mathcal G as three visibly distinct forms.
+- scan 010: lim. proj. = likely limite projective; quots = likely quotients.
+- scan 011: Small looped g in finite quotient (25) → g; small looped Greek quotient → \gamma_i, larger field Galois group → \Gamma.
+- scan 011: trivialt retained as written abbreviation; likely trivialement.
+- scan 011: ss-ext. = likely sous-extension; aut. int = likely automorphismes intérieurs.
+- scan 012: Curled Z in centralizer definition (28) rendered \mathcal Z with font doubt.
+- scan 012: Ambiguous two-stem abbreviation / symbol (tt or forall) to compare at audit against scan007.
+- scan 012: Non-isomorphes on this sheet is written as separate “non isomorphes”.
+- scan 013: The centralizer is a curled Z in (29), a straight Z in (30) and (31); the lower-case centre z has a curved 3-like form. Cross-check font without changing the object by inference.
+- scan 015: The product sign is a dot with a small explicit 1/2 underneath, exceptionally clear on this page; render as \mathbin{\underset{\scriptscriptstyle 1/2}{.}} and compare earlier provisional ltims readings against their own images.
+- scan 015: Q and overlined Q rendered as \mathbb Q and \overline{\mathbb Q}; initial K and overlined K remain capital as written.
+- scan 015: The definition before the right-margin isomorphism has G_n; the following displayed product has G′_n. Both visible forms retained.
+- scan 016: C uses an S-like outlined glyph for the groups indexed by S and 3; preserve explicit S/G doubt until cross-page visual check.
+- scan 016: Product in the top formula and in C is a plain dot with no visible 1/2 below; retained as a dot.
+- scan 016: D uses lower-case s for the ordered triple, subscript of φ and K.
+- scan 019: j and jbar are explicitly negated in the lists and E± definitions.
+- scan 019: A vertical cup-shaped inclusion is drawn between the two field lines; preserved spatially as bigcup.
+- scan 019: The extension glyph E_n has a rounded epsilon-like shape; rendered with the established calligraphic E.
+- scan 020: The repeated torus glyph in Hom and T_∞ is rendered U; a small n sits left of the uppermost occurrence.
+- scan 020: Upper Hom is underlined in both rows. The source shows n-th power arrows below G_m as well as U.
+- scan 021: The small n is clearly a superscript on 2 in Z/2^nZ.
+- scan 021: The source writes a plus sign between {±1} and the following limit; retained rather than replaced by a direct-sum symbol.
+- scan 021: Exponent P on the final profinite power is retained without supplying a definition absent on this page.
+- scan 022: The top Z¹ has coefficient Zhat* whereas the following H¹ has Zhat without star; both are visible and retained.
+- scan 022: The top decomposition has a left square bracket without a visible closing bracket.
+- scan 022: The radicals at the bottom are separated by literal horizontal dashes, not newly supplied lists of omitted terms.
+- scan 023: The bottom cyclotomic quotient is written (Z/6n)* without a second Z; retained literally.
+- scan 023: E^(+ 6) is written with plus and 6 at upper right and without parentheses; retained in that layout.
+- scan 025: Fermat group rendered \Pi_{n\mathbb Q}; tall horizontal-topped glyph. Compare with the smaller pi on scan 016 during the visual audit.
+- scan 025: Affine coordinates xi, eta, zeta in (3 prime) and (3 double prime); the first projective-line subscript resembles x and is marked uncertain.
+- scan 026: Inverse-system roots of unity carry a left arrow: \overleftarrow{\mu}_\infty. The manuscript writes both this arrow and the limit arrows explicitly.
+- scan 027: The symmetric-group glyph is a large rounded, outlined S/G-like form; consistently kept with an explicit S/G alternative, pending final ink comparison.
+- scan 027: Point-group pi_n is inserted above Pi_n(Qbar); roots-of-unity point notation has a top cross-stroke and is explicitly doubtful as barred/plain mu. The scheme mu_n has a doubled left stem.
+- scan 027: Final semidirect symbol visibly a dot with small 1/2 beneath, confirming the sign seen on scan 015.
+- scan 028: Cyclotomic character chi_n, chi_infinity=chi. Point-limit module T has a centered stem, unlike Gamma.
+- scan 028: Equation (13) visibly uses mu_n and mu_infinity, whereas preceding formulas use pi_n and pi_infinity; retained as a source variation, not made uniform by mathematical expectation.
+- scan 029: The fibre index zeta is a long-tailed 3-like character; E_zeta and varphi_zeta have retraced subscripts, kept as zeta.
+- scan 030: Scan 030 has both cancelled (18),(19) and live (18),(19); numbering is repeated, not renumbered.
+- scan 030: The crossed construction uses a hat on mu_infinity in its definition and a tilde in the following set; both accents are retained.
+- scan 030: Ramification subgroups are written Z_i with a broad angular Z; no calligraphic font silently introduced.
+- scan 031: Coordinates in (23) are zeta and eta; the pair of nonreal points is alpha and alpha-bar. The pair-label subscript is explicitly doubtful as star/2.
+- scan 032: Source varies between tilde and bar on C_n in this affine-cone construction; scan 032 (26) and final sentence visibly have bars.
+- scan 032: The set I is rewritten with initial entries 1,2 in (24); do not replace them by 0,1 from the earlier definition.
+- scan 033: T^3 is used for the limiting triple module; the condition in (28) uses subscripts 3, not exponents.
+- scan 034: omega is the two-element subset of pi_3; in (30) an overbrace identifies it with the displayed C_1 quotient.
+- scan 035: Point labels are revised to alpha-prime(i) above overwritten beta labels. Equation (33) visibly ends alpha-prime(2), retained without changing it to infinity.
+- scan 035: K_n parameter alternates in the visible writing between a zeta_0 in the introduction/right member and a zeta-like argument.
+- scan 036: A is introduced with a small uncertain superscript in (38), then written without it.
+- scan 036: The affine extension is E tilde; semidirect signs again have a small 1/2 under the dot.
+- scan 037: The symmetric group and Gamma act on E through E tilde in (41); semidirect sign remains dot with 1/2 beneath.
+- scan 038: zeta_n=exp(2i pi/3n), zeta_infinity=(zeta_n); chosen complex exponential base phi: Zhat ≃ T.
+- scan 038: alpha_n and alpha_infinity use (conjugate zeta,zeta,1), with heavily canceled earlier triples.
+- scan 039: rho_0, rho_1, rho_infinity are the three coordinate classes; multiplicative relation rho_0 rho_1 rho_infinity=1 retained alongside additive-coordinate presentation.
+- scan 039: Finite-level inserted denominator written Z_n, while numerator has Z/n.
+- scan 040: A ≃ Aff(1,Zhat) acts ax+b on K(2), ax-b on K(1/2).
+- scan 040: theta_infinity=(nth root of 2), theta_n underbrace; no positivity adjective in source.
+- scan 041: tau is complex conjugation; 18 transport arrows mentioned.
+- scan 041: The finite formula uses exp(±pi i/n); the following equality uses the zeta_n symbol from scan 038 without an inserted exponent correction.
+- scan 042: I belongs to Ob Ens_3; Or(I) appears as an orientation object.
+- scan 042: Group symbol E double prime and abstract index set I replace coordinate labels.
+- scan 044: Source writes produit 1/2 direct; group S4 and S3 glyphs remain font doubts.
+- scan 044: monoèdre replaces deleted dièdre; do not silently revert the revision.

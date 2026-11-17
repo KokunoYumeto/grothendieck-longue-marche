@@ -1,0 +1,69 @@
+# Leads observed during transcription
+
+Context remains closed; these entries do not supply readings.
+- scan 001: Institutional cover logo; no manuscript title or authorial pagination.
+- scan 002: Printed communiqué announces Topologie Structurale no. 4 in press. A dating lead to verify only after freeze; do not date manuscript writing from reused paper without evidence.
+- scan 003: Form explicitly offers subscription for 1980 (N°s 4-6), prior numbers published in 1979. This dates the printed form, not automatically the loose mathematical sheets.
+- scan 004: Cover label reads, with doubts, “dictionnaire galoisien / de descente etc…”; no authorial page count or date.
+- scan 005: 1.3 states descent data as a splitting of (3), records effectivity conditions and quasi-projectivity; exact parenthetical reference uncertain.
+- scan 005: No surjectivity is asserted in (3); final arrow with ! appears only in (6) after descent data.
+- scan 006: 2.1 writes a canonical extension 1→pi1→E→calG→1 and explicitly notes continuity of inner action on profinite pi1 in the margin.
+- scan 006: 2.1 deletes proposed broader coverage by a general profinite Galois covering; 2.2 then starts treating such coverings separately.
+- scan 007: 2.2 gives normalizer criterion for surjectivity calGprime→calG; N fixed under outer action on invariant closed subgroups.
+- scan 007: NB uses finite generation of pi1 to obtain a neighborhood basis stable under every continuous automorphism.
+- scan 007: A first beginning of 2.3 is cancelled here; record with the continuation for withdrawal tracking.
+- scan 008: Cancelled descent-splitting passage continues the bottom of scan007; replacement 2.3 defines geometric pair automorphisms.
+- scan 008: Surjectivity onto Gamma is struck in condition b and replaced by same-image condition relative to calG→Gamma.
+- scan 008: NB asserts openness of images for finite-presentation objects and finite coverings; no proof on this page. Reading of first base symbol uncertain.
+- scan 009: 2.4 restates descent of the covering pair as a splitting or partial splitting of calGprime→Gamma.
+- scan 009: Margin says “oubli à réparer ds rédaction au propre!” beside (23): editorial incompleteness flagged by author, distinguish from an unproved mathematical step in notes using the exact words.
+- scan 010: 2.5 explicitly calls the finite geometric extension “nature géométrique” and discusses arithmetic characters of the extension by Gamma. Quote manuscript wording without adding a categorical separation claim.
+- scan 010: 2.5 focuses on finite G and bbG with infinite Gamma, then proposes inverse limits as Xprime varies and intersection N=1.
+- scan 010: “On voit aisément” begins a finite-quotient construction continued next scan; mark as assertion to trace, not isolated gap before reading continuation.
+- scan 011: Continuation of finite-quotient assertion: a finite extension (25) pulled back along Gamma→gamma_i, related to a partial section whose image is normal and commutes with bbGprime.
+- scan 011: Author proceeds to geometric translation as reduction of Xprime–X to k_i; continue next page before assessing proof coverage.
+- scan 012: Explicit caution “Il faut bien noter” that fixed k_i admits multiple non-isomorphic data / partial splittings.
+- scan 012: Uniqueness only after passage to a sufficiently large finite surextension is called “évidente”; centralizer introduced for precise treatment on continuation.
+- scan 012: The target of partial sections in prose is visually Eprime on this sheet, while previous diagram uses calGprime: keep reading question for notes, do not correct from expectations.
+- scan 013: Central extension (31), with centre z of the geometric automorphism group; source claims uniqueness and existence over the indicated finite subextension when z=1. Preserve the claim as source testimony pending research review.
+- scan 014: Short continuation states obstruction in H²(Γ_i,z) and indeterminacy in H¹(Γ_i,z)=Hom(Γ_i,z), with trivial Γ_i action. No date or author page number.
+- scan 015: New start chooses k=Q after cancelling general field headings; studies projective line minus finite S, first Card S≤1 then Card S=2, torseur and Kummer covering t↦t^n. No date visible.
+- scan 015: The handwritten product notation is dot with 1/2 beneath; this is paleographically useful for earlier pages.
+- scan 016: C explicitly singles out Card S=3, a canonical reduction and the Fermat tower, with μ_n^S/μ_n. D begins Card S≥4 and projective coordinates obtained from a triple. This bears on the requested three-puncture discussion; no date present.
+- scan 017: The source asserts independence of the generated field from the triple s, a smallest field for rationalizing marked points, and uniqueness of descent up to unique isomorphism. Preserve as assertions needing scope review; no explicit proof on this sheet.
+- scan 018: Title sheet: Fermat covering tower C_n; abelian covers of octahedron viewed as regular 3-weighted map C_2; abelian covers of P¹∖(0,1,∞), dihedral and paradihedral covers. No author date or page count visible.
+- scan 019: Explicit z↦z^n covering, roots above 0,1,∞,−j,−jbar, field extensions and a Kummer sequence.
+- scan 019: Rational function g(z)=27z²(z−1)²/[4(z²−z+1)³] and gf(z) with ramification-order list 2,2,3. Bottom algebra has apparently missing z factors; transcription intentionally does not repair them.
+- scan 020: Explicit question marks: image de dim n+1 ? beside the affine-action triangle; bottom image d’indice fini ???. These are author questions about Galois images, not settled conclusions.
+- scan 020: The page relates H¹(Q,T_∞(U)), affine actions, homotheties and independence modulo roots of unity; scope and symbols require review after freeze.
+- scan 021: Kummer cocycles, inverse limits, splitting-like diagrams and a boxed Γ→Aff(1,Zhat). A denominator describing invariants is cancelled; keep its status distinct from later displayed formulas.
+- scan 021: Final profinite decomposition and K_c∞ corps cyclotomique are working formulas without an accompanying proof on this sheet.
+- scan 022: Working corrections from Hom to cocycles Z¹, explicit cocycle and coboundary formulas, l-adic variants and radical extensions. Several coefficient glyphs and cancellations remain paleographically doubtful.
+- scan 023: Split extension and choice of ν-th root of 2 are explicitly linked. The inverse-limit tower is accompanied by Γ acting via Zhat* and μ_∞-torsor identities. Cancellations preceding the identities should be preserved in any later mathematical account.
+- scan 025: Fermat curve x^n+y^n+z^n=0, diagonal quotient and coordinate t=-xi; margin counts 2n^2 triangles and n ramification points of each type, degree n. No proof appended to the counts on this sheet.
+- scan 026: Projective Fermat tower and group Pi_infinity; principal cover of C_1*. Coordinate arrow in (4) points left while the scheme arrow above points right, retained as drawn.
+- scan 027: Action of the symmetric group and Gamma on the Fermat tower; “On voit tout de suite” asserts compatibility and the semidirect action. Equation (8) changes a cancelled infinite-limit definition to a finite-level roots-of-unity definition.
+- scan 028: Cyclotomic character controls the Gamma-action on the abelian Fermat tower. Equation (13) claims full automorphism identifications “Bien entendu”; the printed curve symbols have no stars/bars here, and mu is retained where preceding formulas have pi. Section 1.5 begins an abelianized fundamental-group claim continued on 029.
+- scan 029: Abelianized pi_1 identification (14) and explicit arithmetic scope: “l’étude arithmétique des rev. étales abéliens”.
+- scan 029: Three branch fibres identified with roots of -1 and their inverse limits. Compatibility with Gamma is retained; a longer pi_infinity-action formula is cancelled and the author starts a new formulation continuing on 030.
+- scan 030: Intrinsically labels the three marked points by nonzero elements of pi_2; Gamma acts trivially at level 2. Replaces a cancelled disjoint-fibre construction by the multiplication-by-2 sequence and E_i = p^{-1}({i})/Z_i.
+- scan 030: Marginal alternative invokes “trois points rat/Q” on a curve whose subscript is doubtful (infinity-shaped versus 2), and a contracted-product expression. Keep reading question separate from mathematical plausibility.
+- scan 031: Order-three fixed pair alpha=-jbar, alphabar=-j; seeks E-ensemble structure, not merely a pointwise fibre computation.
+- scan 031: Withdraws an inverse-limit/cubing argument and a preliminary affine-cone formulation on the same sheet; new affine-cone approach continues on 032.
+- scan 032: Affine-cone model identifies the order-three fixed pair with six bijections modulo mu_3; gives an action factoring through S_3 × {±1}. Rewritten set equations include doubtful exponents and bar/tilde variations to discuss only after freeze.
+- scan 033: Compatible quotient square (27) and limiting embedding of the two special fibres into pi_infinity. Bottom identification is physically clipped and must remain a reading question.
+- scan 034: The fibre is p_3^{-1}(omega); multiplication by 3 defines the pi_infinity-action. “on sait qu’il doit y avoir une droite invariante — en fait elle est unique” is stated without proof here and identifies omega with its two nonzero points.
+- scan 035: Transposition-fixed fibres at 2,-1,1/2 expressed as products of Kummer torsors K(-1/2); factors into K(-1) and K(2)^(-1). First displayed point indexing changes to (2) in (33); no normalization.
+- scan 036: Universal affine group Aff(T,K(1/2)) and an enlarged E tilde combine the actions on six listed families of fibres.
+- scan 036: Explicit question mark beside the finite-index Galois-image statement; parenthetical “est-on = surjectif” (reading uncertain) asks surjectivity. Defines Gamma prime through all integral roots of 1/2; final sentence continues on 037.
+- scan 037: Explicitly says the developments did not use the embedding of Qbar into C and would extend to prime fields with n prime to the characteristic. Labels the tower the universal tame abelian cover.
+- scan 037: “Il faut l’utiliser, pour faire le lien avec les cartes 3-pondérées finies abéliennes, et le groupe cartographique”; announced transition to cartographic group and pointing at alpha=-jbar.
+- scan 038: Chosen complex exponential roots define a base of T and points above alpha; inspect compatibility with subsequent cartographic generator identifications.
+- scan 039: 49 and final emphasized assertion connect explicit three inertia-like generators with a completed cartographic group; exact subscript remains a visual doubt.
+- scan 040: Author says the preceding identifications explicate E(beta) entirely, then leaves parallel-transport maps to be made explicit; a large question mark accompanies the conjugation passage.
+- scan 041: Claim of reducing 18 equivariant transport maps to two, then explicit marked points; inspect unproved compatibility and different root exponent conventions after freeze.
+- scan 042: Abstract-index reformulation using Or(I) and contracted products; final map to E(I,i) left without a surviving label or explanation.
+- scan 043: Reused printed notice is dated 15 June 1978 and announces 5 July 1978 defence; any dating argument must distinguish the printed administrative event from the undated mathematical handwriting elsewhere.
+- scan 044: Genus list and octahedral identification are explicit calculations; Sauf erreur qualifies the octahedron statement.
+- scan 044: Marginal barycentric subdivision and ramification discussion ends at a physically clipped universal abelian-cover remark.
+- scan 045: Second administrative sheet dated 22 June 1978, inverted and crossed through; deadlines 15 October 1978 and 31 January 1979 are content dates, not dates of the mathematical text.
