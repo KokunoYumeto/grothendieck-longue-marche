@@ -1,0 +1,176 @@
+% Proved input for the uniform binary lifting calculation; no result ID assigned.
+\subsection{The uniform binary canonical kernels and their actual transition maps}
+
+Let $K$ be the actual free modular kernel of rank $97$ and
+$G=B_0/K$, of order $576$. Put
+\[
+ \mathcal W=
+   (\Lambda^2 K^{\mathrm{ab}})_G\otimes\mathbb Z_2,
+ \qquad L_m=K'K^m,\qquad
+ M_m=L_m/[B_0,L_m]\quad(m=2^k).
+                                                        \tag{UCM.1}
+\]
+Here $M_m$ is the full canonical central kernel for the
+actual finite quotient $B_0/L_m$.
+
+\par\medskip\noindent\textbf{Proved input: the binary canonical kernels at every power of two.}\quad
+For the specified modular source there are isomorphisms
+\[
+ \mathcal W\cong\mathbb Z_2^8\oplus C_2^7,
+ \qquad
+ M_{2^k}\cong C_2\oplus\mathcal W/2^k\mathcal W
+             \cong C_2^8\oplus C_{2^k}^8\quad(k\geq1).
+                                                        \tag{UCM.2}
+\]
+They can be chosen using one fixed integral change of the
+$97$ power coordinates, independent of $k$. Under these
+isomorphisms the actual canonical quotient map is
+\[
+ M_{2^k}\longrightarrow M_{2^{k-1}},\qquad
+   (\epsilon,w)\longmapsto(0,\overline w)\quad(k\geq2).
+                                                        \tag{UCM.3}
+\]
+Its kernel is $C_2^9$ and its image has index two.
+The first map $M_2\to M_1=K/[B_0,K]\cong C_2$ is zero.
+
+\begin{proof}
+\par\medskip\noindent\textbf{The exact rational character and binary wedge module.}\quad
+The Bass--Serre graph for $K$ has edges indexed by $G$ and
+vertices indexed by $G/\langle s\rangle$ and
+$G/\langle r\rangle$. Its two vertex sets have sizes $288$
+and $192$. The actual left coset permutations give the
+character of $K^{\mathrm{ab}}\otimes\mathbb Q$:
+\[
+ \chi(g)=1+576\,\mathbf1_{g=1}
+          -\#\operatorname{Fix}_{G/\langle s\rangle}(g)
+          -\#\operatorname{Fix}_{G/\langle r\rangle}(g).
+                                                        \tag{UCM.4}
+\]
+The finite certificate constructs both coset actions from
+the retained actual multiplication table of $G$.
+The character values $97,-7,-5,1$ occur respectively
+$1,36,64,475$ times. It also retains every square $g^2$.
+Consequently
+\[
+ \dim_{\mathbb Q}(\Lambda^2 K^{\mathrm{ab}}\otimes\mathbb Q)_G
+   =\frac1{576}\sum_{g\in G}
+                  \frac{\chi(g)^2-\chi(g^2)}2
+   =\frac{4608}{576}=8.
+                                                        \tag{UCM.5}
+\]
+This is the ordinary character average over a finite group
+in characteristic zero.
+
+The exact coefficient-four wedge calculation in A.4.59
+gives
+$\mathcal W/4\mathcal W=C_4^8\oplus C_2^7$.
+The module $\mathcal W$ is finitely generated over
+$\mathbb Z_2$, since it is a quotient of a free module
+of rank $4656$. Its rational rank is eight by (UCM.5).
+In the structure theorem, those eight free factors already
+supply all eight order-four factors of its reduction.
+Any additional torsion factor of order at least four
+would supply another one. Thus all torsion factors have
+order two, and their number is seven. This proves the
+first isomorphism in (UCM.2), including the absence of
+unseen higher binary torsion.
+
+\par\medskip\noindent\textbf{One integral power-coordinate reduction.}\quad
+Let $S,R$ be the actual integral actions on the $97$
+modular Schreier generators. Their stacked power matrix is
+\[
+             \mathcal P=\begin{pmatrix}S-I\\R-I\end{pmatrix}.
+                                                        \tag{UCM.6}
+\]
+The certificate retains integral unimodular matrices
+$U,V$ with $U\mathcal P V$ in Smith form: it has $96$
+unit entries, one entry equal to two, and $97$ zero rows.
+In particular $K/[B_0,K]\cong C_2$ by these actual
+integral relations.
+
+For $m=2^k$, collection in the free class-two group gives
+\[
+ L_m/[K,L_m]
+    =\mathbb Z^{97}\{P_i=k_i^m\}
+        \oplus (\mathbb Z/m)^{4656}\{C_{ij}=[k_i,k_j]\}.
+                                                        \tag{UCM.7}
+\]
+The wedge relations give $\mathcal W/m\mathcal W$.
+If an action sends $k_i$ to a word with exponent row $a$,
+its remaining power relation is the row of $S-I$ or $R-I$
+on the $P_i$, together with
+\[
+ c_m\sum_{j<l}a_ja_lC_{jl},
+                   \qquad c_m=-\binom m2.
+                                                        \tag{UCM.8}
+\]
+The original commutator coordinate of the word is multiplied
+by $m$ and disappears in the displayed wedge quotient.
+Thus the quadratic class in (UCM.8) is independent of $m$;
+only its scalar coefficient changes.
+
+Apply the fixed integral row and column operations $U,V$
+to these relations. The first $96$ unit rows eliminate
+their power variables. The remaining presentation is
+\[
+ (\mathbb Z P\oplus\mathcal W/m\mathcal W)\big/
+       \langle\,2P+c_m v,\ c_m t_1,\ldots,c_m t_{97}\,\rangle,
+                                                        \tag{UCM.9}
+\]
+for fixed classes $v,t_j\in\mathcal W$. The program
+\path{check_modular_power_smith.py} uses the same $U$ on
+the actual $194$ quadratic rows, projected to the fully
+computed $15$-dimensional module $\mathcal W/2\mathcal W$.
+Every one of its $98$ residual rows is zero. Therefore
+\[
+                       v,t_1,\ldots,t_{97}\in2\mathcal W.
+                                                        \tag{UCM.10}
+\]
+This also follows from the independently proved full
+$M_2=C_2^{16}$: its order forces the inclusion of
+$\mathcal W/2\mathcal W$, and its exponent two forces
+the remaining doubled power class to vanish.
+
+For the specified $m=2^k$, $c_m$ is $m/2$ times an odd integer.
+Equation (UCM.10) makes every residual quadratic relation
+zero in $\mathcal W/m\mathcal W$.
+The sole remaining power relation is $2P=0$, giving
+$M_m=C_2\oplus\mathcal W/m\mathcal W$.
+These are the full finite canonical kernels: the power
+coinvariant quotient has order two and the wedge quotient
+is a binary group, so no other primary part is omitted.
+This proves (UCM.2).
+
+\par\medskip\noindent\textbf{The actual coefficient transitions.}\quad
+For $m=2n$, the quotient map on the collected source sends
+$k_i^m$ to $(k_i^n)^2$ and sends each $C_{ij}$ to the
+same commutator modulo $n$. Thus its power-coordinate map
+is multiplication by two, while its wedge map is reduction.
+The fixed integral column change $V$ preserves this assertion
+for the final power variable $P$.
+The eliminated unit rows are compatible because
+\[
+                          c_{2n}-2c_n=-n^2,
+                                                        \tag{UCM.11}
+\]
+which acts as zero on $\mathcal W/n\mathcal W$.
+The remaining $C_2$ power factor therefore maps to zero,
+and the wedge factor maps by its specified reduction.
+For $n\geq2$ the seven order-two wedge factors map
+identically and the eight free factors contribute one
+binary kernel coordinate each. Together with the killed
+power factor this gives the exact $C_2^9$ kernel and
+index-two image in (UCM.3).
+For $n=1$ the wedge output is zero and the same power
+calculation makes the entire map to $M_1$ zero.
+\end{proof}
+
+The two new independently executed certificates are
+\path{work/ghost_mod4_review/check_modular_wedge_character.py}
+and \path{work/ghost_mod4_review/check_modular_power_smith.py}.
+Their text outputs and numerical archives retain the actual
+group and coset actions, all character values, the integral
+Smith transformations and every residual quadratic row.
+These kernel and transition calculations provide input for
+the subsequent affine lifting problem; they do not assert
+that its prescribed tangent map is surjective.

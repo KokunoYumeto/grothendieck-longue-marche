@@ -1,0 +1,103 @@
+\subsection{A genuinely nonabelian finite obstruction mechanism}
+
+\begin{claim}{B.NA1}{Proved}{A finite norm obstruction with no vanishing normal-step module}
+The equivalence of \statementref{B.AB1} cannot be extended to
+arbitrary finite groups using only the vanishing of relative
+$p$-primary modules at normal quotient steps. There is a
+faithful action of a finite nonabelian simple $7'$-group $G$
+on a nonzero finite $7$-group $M$ such that the set of vectors
+with free norm orbit at every normal quotient is empty,
+although the relative module at every nontrivial normal step
+is nonzero. This is an exact finite representation example,
+not a claimed realization by a Jacobian or a counterexample
+to universal B1.
+\end{claim}
+\begin{proof}
+Let $M=\mathbf F_7^5$, and define $G\le\operatorname{GL}(M)$
+by the three matrices
+\[
+ U=\operatorname{diag}(1,4,1,4,4),\qquad
+ P=\begin{pmatrix}
+ 1&0&0&0&0\\
+ 0&1&0&0&0\\
+ 0&0&0&0&1\\
+ 0&0&1&0&0\\
+ 0&0&0&1&0
+ \end{pmatrix},\qquad
+ Q=\begin{pmatrix}
+ 2&4&4&4&4\\
+ 2&5&4&5&5\\
+ 2&4&5&5&5\\
+ 2&5&5&5&4\\
+ 2&5&5&4&5
+ \end{pmatrix}.                                                \tag{B.NA.1}
+\]
+Here $U^3=P^3=Q^2=1$, and $UP\ne PU$.
+The following finite certificate proves both the order and
+simplicity needed in the argument, without assuming an
+identification with a named finite classical group.
+
+Starting with the identity, close the set of matrices under
+right multiplication by $U,P,Q$. Exact arithmetic modulo
+seven gives
+\[
+                        |G|=25920=2^6\cdot3^4\cdot5.
+\]
+Conjugation by the same generators partitions this complete
+matrix list into twenty classes, with sizes
+\[
+\begin{gathered}
+ 1,40,40,45,240,270,360,360,480,540,720,720,1440,\\
+                   2160,2160,2160,2880,2880,3240,5184.
+\end{gathered}                                                   \tag{B.NA.2}
+\]
+For each nonidentity class representative $a$, impose the
+equivalence relation $1\sim a$ on the matrix list and close
+it under left and right multiplication by $U,P,Q$. This is
+the group congruence whose identity class is the normal
+closure of $a$. In all nineteen cases its identity class
+has all $25920$ elements. Every nontrivial normal subgroup
+contains one of these representatives up to conjugacy, so
+$G$ is simple.
+
+The data are fully reproducible. The generating program saves
+every matrix in
+\path{code/criterion_nonabelian_norm_group.json}. The independent
+checker \path{code/criterion_nonabelian_norm_verify.py} reads
+the three generators and regenerates the complete group using
+a separate general matrix multiplication routine. It checks
+the conjugacy partition and the normal closures just described.
+Congruence closure uses a finite union-find calculation: after
+a new pair is identified, its six images under left and right
+generator multiplication are queued. This computes the least
+invariant equivalence relation and therefore the asserted
+normal closure. The checker also verifies that the common
+fixed space of the three generators has dimension zero and
+that $\sum_{g\in G}g$ is the zero operator on $M$.
+
+The action is faithful by its definition as a matrix group,
+and it is coprime because $7\nmid25920$. Nevertheless
+\[
+                         |M|=7^5=16807<|G|.
+\]
+No orbit in $M$ can therefore have size $|G|$. In particular
+the norm-freeness condition already fails at the identity
+subgroup, where the norm coordinate is the vector itself.
+
+On the other hand, simplicity leaves only the normal
+subgroups $1$ and $G$. The old module at the latter level is
+$M^G=0$, and the relative module for the sole nontrivial
+normal step is the entire nonzero module $M$. Its order is
+$7^5$, not a unit. Thus there is no vanishing relative module
+at any nontrivial normal step, yet the full finite norm-free
+set is empty. The obstruction is the union of nontrivial
+stabilizers, rather than one absent abelian character packet.
+
+For an actual cover in B2, the separate task is to determine
+whether its Frobenius-fixed Jacobian module has such a
+configuration. This example proves that a search for
+nonabelian finite obstructions has a mechanism not captured
+by the relative class-number-unit sufficient criterion. It
+does not supply that geometric realization or settle the
+universal assertion.
+\end{proof}

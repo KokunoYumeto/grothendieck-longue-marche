@@ -1,0 +1,71 @@
+# Configuration audit, working notes
+
+We independently read the entire AG.39--AG.42 chain in `background/AS_return/agent_geometric/geometric_section.tex` (AG.40 is assigned to a separate checker), plus both configuration drafts and `F_external_review_AG39.md`. Date: 2026-11-17. This file is a running audit; a passed subargument is not a claim that all requested items are settled.
+
+## AG.41: detailed check
+
+The definitions are: for discrete groups Lambda = pi_1(C minus x), Gamma = pi_1(Conf_2(C)), Delta = pi_1(C)^(p'), F = Lambda^(p'), E = Gamma^(p'), K_F = ker(F->Delta), K_E = ker(E->Delta x Delta), and F_cr, E_cr the quotients which replace these kernels by their maximal pro-r quotients, r != p. All group homomorphisms between profinite groups below are continuous.
+
+### Step 1, the no-section monodromy lemma: passed
+
+If 1 -> L -> H -> B -> 1 is a discrete group extension, L a finitely generated nonabelian free group, and H acts through an r-group on H_1(L,F_r), then L^(r)->H^(r) is injective. Conjugation gives H->Aut(L^(r)). The congruence kernel Aut(L^(r))->GL(H_1(L,F_r)) is pro-r: in each characteristic finite r-quotient P, its image lies in the kernel of Aut(P)->Aut(P/Phi(P)); the latter is an r-group, because it acts freely on the |Phi(P)|^d ordered lifts of a fixed Frattini basis. Iterated Frattini subgroups of the finitely generated free pro-r group are open, characteristic, and cofinal among its open subgroups. Thus the closure of the H-image is pro-r. The representation extends to H^(r). Its restriction along L^(r)->H^(r) is the inner action, which is injective because a free pro-r group of rank >=2 is centre-free. No splitting of the discrete extension is used. The compact embedding supplies a dominating finite H-quotient for each finite r-quotient of L; equality of its fibre image with the original quotient is neither claimed nor needed.
+
+### Step 2, proper covering and shear monodromy: passed
+
+For a finite Galois proper cover C'->C with group A, take Y=(C' x C') minus the disjoint graphs of all A-deck transformations. Projection onto the second C' is a locally trivial topological fibration. The fibre V'=C' minus the |A| points over x has free group L of rank 2g(C')+|A|-1. The base is aspherical, so L injects into pi_1(Y). On H_1(V',F_r), boundary loops span W and the quotient is H_1(C',F_r). The punctures are individually labelled by A, so action on W is the identity. The compactified family is a product, so action on the quotient is the identity. Hence the monodromy is a subgroup of Hom(H_1(C',F_r),W), an additive r-group. Step 1 applies.
+
+This remains valid for r=2; the relation summing all boundary loops to zero does not affect the shear argument. It also remains valid when |A| is divisible by r. We do not assume any splitting of H_1(V')->H_1(C') is canonical; after choosing one vector-space splitting, the kernel of the two diagonal actions is exactly the shear group.
+
+### Step 3, detecting every relative finite fibre quotient: passed
+
+Given q:F_cr->Q, let R be the image of K_F^(r) and A=Q/R. Then R is an r-group, A a finite p'-quotient of Delta. Choose the corresponding proper A-cover C' above. Write Gamma_0=pi_1(Y) normal in Gamma with quotient A x A, and Lambda_0=Lambda cap Gamma_0. The image of Lambda_0 under q is contained in R. Step 2 gives an r-group quotient of Gamma_0 with kernel J for which J cap Lambda_0 lies in ker(q). Its Gamma-core J*=intersection over Gamma/Gamma_0 of gJg^-1 has Gamma_0/J* an r-group. Hence Gamma/J* is a p'-group, with an r-normal subgroup and quotient A x A. Because J* is contained in Gamma_0, its fibre intersection lies in Lambda_0, and hence in ker(q). Thus the total quotient dominates q on the fibre.
+
+Importantly, the total quotient kills ker(K_E->K_E^(r)): the image of K_E lies in Gamma_0/J*, since the A x A quotient is induced from the proper product. Therefore it is genuinely a quotient of E_cr. Kernel containment after completion follows by considering the joint finite image of the two fibre homomorphisms; density gives the same finite image as the discrete group. There is no covert exactness assumption here.
+
+### Step 4, all three terms: passed
+
+The image of K_F in E_cr is pro-r; hence the fibre map factors through F_cr. Detection of every finite quotient makes it injective. The discrete normal fibre image has closure equal to the image of its compact completion. Right exactness of pro-p' completion follows directly from the universal finite-quotient property: quotienting E by that closed image represents exactly p'-quotients of pi_1(C), and is Delta. The group killed to form E_cr lies in K_E, and therefore in this fibre kernel. Thus the image of F_cr is exactly ker(E_cr->Delta). Projection is onto.
+
+### Step 5, specialization: mathematical argument passes; exact source opening pending
+
+One needs functorial isomorphisms of maximal prime-to-p groups for a smooth proper model with relative normal crossings boundary, applied to (C,{x}) and (C x C,diag C), preserving the transverse fibre inclusion. The cited SGA1 XIII Cor.2.9 and §2.10 must be checked in the actual source. A pointed smooth projective curve lifts in mixed characteristic because H^2(C,T_C(-x))=0, and an ample line bundle algebraizes the formal lift. For an arbitrary algebraically closed characteristic-p field, descend to a finitely generated field and use its countable algebraic closure before the lift; its Witt fraction field has cardinality at most continuum and an algebraic closure embeds into C. Algebraically closed extension invariance is needed for the tame prime-to-p groups of the smooth proper pairs, not arbitrary full affine groups.
+
+### Arithmetic comparison: passed
+
+Let mathcal E be the geometrically p'-quotient of pi_1(Conf_2(C)/k), retaining the entire G_k. The relative cuspidal kernel over Pi_C x_{G_k} Pi_C is geometric. Thus its cuspidally pro-r quotient has geometric subgroup E_cr. For a chosen representative of the point section s_P, the actual arithmetic group of C-P maps to the inverse image of s_P(G_k). On geometric kernels the map is precisely the preceding F_cr-isomorphism; on the quotient it is the identity of G_k. The elementary comparison of short exact sequences proves it is an isomorphism. This does not confuse a section class with a fixed representative.
+
+## AG.42: boundary and transport
+
+The local/root-gerbe construction is sound in outline, but its category-of-tame-covers comparison must cite the actual SGA1 text. Restriction from the root stack sqrt[n](C x C,diag) to its boundary gerbe provides a compatible map of fundamental groups from the inverse boundary tower to the tame configuration group. A cover with trivial stabilizer descends to the diagonal; conversely every diagonal cover pulls back. Consequently the quotient of the boundary group by the image of inertia is pi_1(C). This is right exactness, and does not assume an injection of the finite gerbe stabilizer. After taking the geometrically p' quotient, right exactness again makes the proper quotient exactly Pi_C, rather than a larger group.
+
+In E_cr its boundary image D therefore fits Z_r(1) -> D -> Pi_C ->1. The left map is injective: in the geometric fibre, cusp inertia maps under a free pro-r quotient to the commutator of two Heisenberg generators, an element of infinite r-adic order, and AG.41 injects that fibre into E_cr. Transversality has multiplicity one, so this inertia is exactly the global diagonal inertia. This gives 1 -> Z_r(1) -> D -> Pi_C ->1.
+
+Choose the paths for P through this fixed boundary group. The local transverse map sends the actual cusp decomposition group of C-P into D over s_P(G_k), identically on inertia and base. Therefore its image is exactly D cap pr_2^{-1}(s_P(G_k)). Paths for Q can also be chosen within the same boundary tower. The claim that the same D works does not assume injectivity of the point-section map; it follows from making these choices in the connected diagonal C.
+
+If gamma in Delta conjugates s_P(G_k) to s_Q(G_k), lift gamma geometrically to d in D. Inn(d) maps the two fibre groups and their cusp subgroups, but induces Inn(gamma) on the first proper coordinate. Choose e in the geometric subgroup of the Q-fibre mapping to gamma^-1 on the first proper coordinate (possible by its punctured-to-proper surjection). Then Inn(e)Inn(d) is over the identity of Pi_C and sends the P-cusp to a geometric conjugate of the Q-cusp. This is exactly the input of AG.40. There is no need to choose a conjugator whose first proper coordinate was already 1.
+
+## AG.39: nonexactness
+
+The nonisotrivial branched family and prime-to-p completion comparison have been reread independently. No internal gap found so far. Outside inputs still being opened: Deligne semisimple connected algebraic monodromy, and strong approximation for a Zariski-dense finitely generated subgroup of a simply connected semisimple Q-group. Explicit finite obstruction still being constructed, rather than treating the existence proof as the requested computation.
+
+## Finite positive test under construction
+
+Bellingeri, On presentations of surface braid groups, arXiv math/0110129v2, Theorem 1.2, supplies a verified presentation of B_2(C) for genus 2. A class-two quotient over F_3 gives the pure braid group a quotient of order 3^9: V=F_3^4 x F_3^4, centre F_3, commutator B((v1,v2),(w1,w2))=J(v1+v2,w1+w2), where J is the standard symplectic form. The first fibre embeds as the extraspecial group of order 3^5. The common central kernel is F_3, and the proper quotient is A x A with A=F_3^4. The swap of factors lifts to the full braid generator sigma after multiplying by centre 2; then sigma^2=centre 1. The genus-2 surface relation is satisfied because -2=1 in F_3. We will compute all presentation relations and the fibre injection. Adding a proper C5-character in each coordinate gives p=2, r=3, A=F_3^4 x C5, a genuinely mixed-prime example with total order 492075 and fibre order 1215.
+
+## Completed additions
+
+Standalone detailed proofs are now in `sections/A_configuration.tex` (provisional IDs A.CF1--A.CF10); metadata in `notes/configuration_statements.json`. SGA1 exact statements have been opened locally. Main new result is an elementary classification of full pro-Sigma configuration fibre exactness: empty/singleton/all primes in characteristic zero, empty/singleton among prime-to-characteristic sets. The proof uses Heisenberg covers, point-push lifting on annuli and pair-of-pants boundary homology, plus passage to higher-genus proper covers. It avoids the earlier Deligne/Nori input. The individual geometric steps are spelled out, including the possible degeneracy of the inherited pairing on the sheet-difference subspace in characteristic two.
+
+The finite tests have run successfully. Positive: p=2,r=3,A=(C3)^4 x C5, fibre quotient order1215, total quotient order492075, central cusp kernel3; all11 Bellingeri B2 relations checked. Negative: K kernel of F4 onto Heisenberg(F3), N=[K,K]K^5, quotient order27*5^82; exact integral Schreier calculation finds an invariant rank-two module with C^3=[[1,3],[0,1]], D^3=[[1,0],[-3,1]]. Their product inverts nonzero x-y mod5. Thus no finite odd total quotient can dominate this specified finite fibre quotient. Complete code, output, basis and matrices are retained.
+
+Search record: Bellingeri surface braid presentation primary arXiv math/0110129v2 opened, Theorem1.2 and Section2.1 checked, including the displayed relations by screenshot. A search for pro-Sigma configuration exactness found the all-primes/singleton restriction in Mochizuki--Tamagawa and Hoshi; it did not itself supply a multi-prime classification. The Farb--Margalit point-push identity was located in search, but the primary author PDF download returned403; no unsupported citation to that text is used. Instead the identity and annular lifting are proved directly in A.CF8.
+
+## B7–B9 continuation, 17 November 2026, approximately 02:10 UTC
+
+Parent reassigned configuration auditor to remaining reconstruction items after CF1–CF11 were completed and independently reviewed. Read FF1–8, FF13–20, FF40–43, and relevant later barriers; no wholesale endorsement of all earlier FF proofs. Working with intended weak-normalization/localization and relative morphisms; not treating omitted wording as an artificial counterexample.
+
+**New positive result B.CF1:** ordinary relative pro-reconstruction for every characteristic-zero field of finite transcendence degree. Written in `sections/B_reconstruction.tex`, with ordinary category hRTop and Hom=lim colim, no imposed coherence. Cofinal fields above a model field containing a transcendence basis are finite extensions; pinned limit maps force each finite-stage representative pinned; CHW0.1 then reconstructs over finite-stage common base. Slimness of G_F kills structural 2-cell choices and makes this genuinely an ordinary isomorphism-class pro-category assertion. Criterion auditor checked cofinal and closed-point arguments, explicitly did not certify topos 2-cell details. Root asked to independently inspect those. B.CF2 is only the exact nonpinned-transition obstruction; B.CF3 records infinite-transcendence remainder as open.
+
+Opened/downloaded CHW author PDF, 39 pages: Theorem0.1, formulation0.2, rigidity Prop2.22, point Prop3.6, faithfulnessThm3.9, reductionThm4.18. Opened Hoshi–Tsujimura revised author PDF March2023, Def4.3, Lem4.4, Cor4.5: all fgchar0 fields have slimGaloisgroups, using (1) positive transcendence and (3) numberfield mixed-characteristic DVR. Opened Stacks0CUF, Lem32.4.2. No raw quote longer than25words used.
+
+B7/B8 attacks under way: K_*=Q(t,u)^h, u=sum t^(n!), has valuation-preserving involution t->-t,u->u-2t, but its effect on tame Galois group is the nonzero Kummer class of -1; it does not give a centralizer ghost. The older t->t+t^2 with u fixed fails valuation preservation (order6 expression becomes order2). A triangular-automorphism trick to turn arbitrary pinned maps into automorphisms is not justified because small étale topoi do not preserve general scheme products. B_p maximal metabelian field remains the sharp degree-zero candidate; no proof or counterexample yet.

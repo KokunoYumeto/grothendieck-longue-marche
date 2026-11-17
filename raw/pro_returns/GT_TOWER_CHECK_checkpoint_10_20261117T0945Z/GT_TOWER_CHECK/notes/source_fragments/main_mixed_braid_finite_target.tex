@@ -1,0 +1,85 @@
+% Unnumbered continuation of A.4.26, for insertion in its proof.
+\par\medskip\noindent\textbf{An explicit finite target for the mixed-braid test.}\quad
+The substitution in (ABR.6) can itself be recorded in a finite quotient
+of the full three-strand group.  Write
+$D=q(d)$, $L=q(V)$, and order the three cosets by the representatives
+$(1,w,wu)$, or equivalently by the states $(3,2,1)$ of the distinguished
+strand.  The complete positive Schreier table is
+\[
+\begin{array}{c|cc}
+\text{state}&u& w\\\hline
+3&(3,u)&(2,1)\\
+2&(1,1)&(3,v)\\
+1&(2,u^{-1}vu)&(1,u)
+\end{array}.
+\]
+Each entry records the new state and the subgroup element
+$r_s x r_{s x}^{-1}$.  Before elimination the final two entries
+are $k=w u^2w^{-1}$ and $t=wuwu^{-1}w^{-1}$.
+The three rewritten defining relators are, in order,
+\[
+u t^{-1},\qquad t k u^{-1}v^{-1},\qquad
+k v u v^{-1}k^{-1}t^{-1}.
+\]
+Thus $t=u$, $k=u^{-1}vu$, and conjugating the remaining relator
+by $u$ gives $(vu)^2(uv)^{-2}$, with no further relation.
+The discrete identity
+$(u w^2)^2=(uw)^3$ also fixes the central factor in this marking.
+
+Use the following concrete convention for the wreath product:
+\[
+ (x,\sigma)(y,\tau)
+   =\bigl((x_i y_{\sigma(i)})_{i=1}^3,\tau\circ\sigma\bigr).
+\]
+Then the subgroup homomorphism in (ABR.6), followed by $q$, induces
+the actual homomorphism
+\[
+\begin{aligned}
+ \iota_q:B_3&\longrightarrow Q^3\rtimes\mathfrak S_3,\\
+ u&\longmapsto \bigl((D,1,D^{-1}LD),(2\ 3)\bigr),\\
+ w&\longmapsto \bigl((1,L,D),(1\ 2)\bigr).
+\end{aligned}
+\]
+The Schreier table proves this homomorphism directly: its entries
+are precisely the images of $r_s x r_{s x}^{-1}$, so their products
+telescope along every source word.  In particular the two sides
+of $uwu=wuw$ have the same permutation and the same three
+coordinates, using only $(DL)^2=(LD)^2$.
+The image has order at most $6|Q|^3$.  On the stabilizer of the
+first state, projection to the first coordinate is a homomorphism;
+its composite with $\iota_q|_{\langle u,w^2\rangle}$ is exactly
+$u\mapsto D$, $w^2\mapsto L$.
+
+This also makes the passage through full completions explicit.
+The index-three subgroup has the full induced profinite topology:
+for every finite-index subgroup of it, the intersection of its
+finitely many conjugates in $B_3$ is a finite-index normal subgroup
+of $B_3$ contained in the original subgroup.  Its completion
+therefore embeds as the corresponding open subgroup of
+$\widehat B_3$.  All the words in (TA.2) lie in that open subgroup,
+so its equality can be restricted there and then evaluated by
+the displayed first-coordinate map.  The central word maps as
+\[
+ (uw)^3=(u w^2)^2\longmapsto
+ (DL)^2=q(\omega)q(a)^2.
+\]
+Consequently the image of (TA.2) is exactly (ABR.4), including
+the factors $q(\omega)^{-2c}$ and $q(a)^{-4c}$.
+
+This construction specifies a finite target for the extra test.
+It does not supply a derivation of that test from a finite
+pentagon equation: the proof of (ABR.4) in A.4.26 uses (TA.2),
+whose established proof passes through the ten-point comparison
+of A.1.  A finite pentagon pullback must force this same equality
+in $\operatorname{im}(\iota_q)$, or force its displayed
+first-coordinate consequence.  Neither equality is added to
+the definition of a pentagon shadow here.
+
+The independent program
+\path{work/ghost_code/check_main_mixed_braid.py} reconstructs
+all six coset transitions, all three rewritten relators and
+the Tietze elimination.  It then checks the central identity,
+all braid commutations used above, and the three coordinates of
+the induced braid relation by the faithful Artin action on a
+free group.  The executed text and JSON certificates retain
+the literal words and the two wreath-product generators.

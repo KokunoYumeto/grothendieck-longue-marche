@@ -1,0 +1,9 @@
+# Complete review of the B75 recursive-cover boundary
+
+Status: PASS. Entire source read. Source SHA-256: 9fb690c33df59c67cf344413572b1c59b4706a51f25f93877472a4d3e3a0ac1e.
+
+The exact degree-five intermediate cover gives the faithful five-point D5 monodromy, so the all-iterate wreath inclusion is an actual covering argument. I checked the stated critical portrait: the two double zeros and the two double preimages of four contribute four simple ramification points, the order-five pole contributes four more, and infinity is an unramified preimage of four. The postcritical orbit is zero fixed, and four/infinity exchanged. A backward branch ending at zero encounters at most one critical point: once a critical point maps to zero its following orbit stays at the noncritical zero, and no other critical value is a double-zero location. Thus the cone-square relation over zero remains valid for all iterates. One may equally establish the wreath inclusion before taking that actual orbifold quotient.
+
+The monodromy of each composition is a subgroup of the appropriate iterated permutational wreath product, not asserted equal. Every resulting finite image, subgroup, quotient and finite product has prime divisors only two and five. The literal index-three character on the actual C2*F3 source therefore excludes containment of any recursive-kernel neighborhood in its kernel. This is a uniform all-level index argument, not a depth experiment.
+
+The conclusion is exactly noncofinality of that proposed recursive-head topology. It neither supplies a nontrivial residual element nor excludes characteristic finite targets of the actual B75 Birman kernel. The distinction from the new local B153 faithful corrected-inner action is correct. No producer, target enumeration, or new external theorem was used in this review.

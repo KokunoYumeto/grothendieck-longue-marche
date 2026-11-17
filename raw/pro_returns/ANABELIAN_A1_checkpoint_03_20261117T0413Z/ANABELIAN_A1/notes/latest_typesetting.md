@@ -1,0 +1,3 @@
+# Latest verified typesetting state
+
+Checkpoint03, verified before upload:120 pages. Final log `code/build_checkpoint3_final.out`. Three overfull alignments of0.49013pt each; zero greater than2pt before and after final corrections. No undefined citations or references, missing glyphs, fatal errors, or bookmark-math warnings. The initial bibliography failure caused by raw math underscores was repaired, the bibliography rebuilt, and all final passes succeeded. All24 rendered sample pages were manually reviewed in the contact sheet, with additional full-size inspection of pages35,36,111,112, including the affected comparison tables. No clipping or overlap. Earlier failed draft logs are retained and do not describe the delivered PDF.

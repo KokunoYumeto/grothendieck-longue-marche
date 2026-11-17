@@ -1,0 +1,223 @@
+\subsection{Exact extension-field tests for plane quartics}
+
+\begin{claim}{B.Q1}{Proved}{A least-prime-five quartic witness over \(\mathbf F_{3^8}\)}
+Let $C/\mathbf F_3$ be the smooth plane quartic
+\[
+                W^4=X^3Z-XZ^3,\qquad P=(1:0:0).
+\]
+There is a $P$-split constant cyclic degree-five cover over
+$\mathbf F_{3^8}$ whose relative class number is prime to three.
+Thus five is the least odd prime different from the characteristic
+which gives a witness for this pointed curve over some constant
+extension. Every constant degree-five cover of this curve requires
+a constant degree divisible by eight; the displayed field is
+therefore also the least one for a degree-five witness.
+The certificates give six such covers. For each of them the
+relative class number stays prime to three exactly under further
+constant extensions of odd degree.
+\end{claim}
+\begin{proof}
+The three partial derivatives of the displayed homogeneous
+polynomial have no common projective zero: in characteristic
+three they are $-Z^3,W^3,X^3$, up to nonzero constants.
+The unique point at infinity is $P$. On the affine chart put
+$w=W/Z$ and $x=X/Z$. The degree-two morphism
+\[
+       C\longrightarrow E:\ y^2=x^3-x,
+                    \qquad (x,w)\longmapsto(x,w^2)
+\]
+is branched, in particular at infinity. The elliptic curve has
+four points over $\mathbf F_3$, so its Frobenius satisfies
+$F^2=[-3]$. Consequently $E[5]$ is constant over
+$K=\mathbf F_{3^8}$.
+
+The program \path{code/quartic_cyclic5.py} works in
+\[
+ K=\mathbf F_3[z]/
+       (z^8+2z^5+z^4+2z^2+2z+2).
+\]
+It specifies a basis of $E[5]$ and all six cyclic subgroups.
+For a generator $T=(a,b)$ and $2T=(c,d)$ put
+$h=(x-a)(x-c)$. The normalized isogeny has
+\[
+ r(x)=N(x)/h(x)^2,
+ \qquad r'(x)=g(x)/h(x)^3,\qquad
+       g=N'h-2Nh',
+\]
+where
+\[
+ N=xh^2+
+       \sum_{(u,v)\in\{T,2T\}}
+        \left(\frac{h^2}{x-u}+\frac{v^2h^2}{(x-u)^2}\right).
+\]
+These are polynomials. The addition formula on $E$ proves
+this isogeny formula by summing $x(R+S)-x(S)$ over the four
+nonzero kernel points. The program verifies its defining
+identity
+\[
+ (x^3-x)g^2=N^3+A'Nh^4+B'h^6.
+\]
+It gives $s,r_0\in K$ with $s^4=-A'$ and
+$r_0^3+A'r_0+B'=0$, hence the isogeny to $E$ is
+\[
+       x_E=(N/h^2-r_0)/s^2,
+       y_E=yg/(s^3h^3).
+\]
+All its kernel points are $K$-rational. Pulling back
+$C\to E$ gives the cover whose normalization has equation
+\[
+       v^4=F(x),\qquad
+       F=(x^3-x)g^2h^2/s^6,\qquad
+       (X_C,W_C)=((N/h^2-r_0)/s^2,v/h^2).              \tag{B.Q.1}
+\]
+It is connected: the branched quadratic extension defining
+$C/E$ is disjoint from this degree-five unramified isogeny.
+Base change makes its map to $C$ finite \emph{\'etale}, cyclic
+of degree five, and constant over $K$. Infinity is a rational
+point above $P$, and its deck translates split that fibre.
+Its genus is $1+5(3-1)=11$.
+
+We give the entire finite cohomological test, not a point-count
+guess. Here $\deg F=19$, and $f=x^3-x$, $g$, and $h$ are
+pairwise coprime and squarefree, of degrees three, six, and two.
+A basis of regular differentials on the normalization is
+\[
+ \left\{\frac{x^jdx}{v}:0\le j\le3\right\},\quad
+ \left\{\frac{gh\,dx}{v^2}\right\},\quad
+ \left\{\frac{ghx^jdx}{v^3}:0\le j\le5\right\}.       \tag{B.Q.2}
+\]
+At a root of $f$ the ramification index is four; at a root of
+$gh$ it is two. Checking the orders there proves regularity.
+At infinity, $v_\infty(x)=-4$, $v_\infty(v)=-19$ and
+$v_\infty(dx)=-5$, giving exactly the displayed ranges.
+The eleven forms are independent by their distinct cyclic
+characters and powers of $x$, so the genus calculation makes
+them a basis.
+
+For a differential $H(x)dx/v^a$, choose $b\in\{1,2,3\}$
+with $3b\equiv a\pmod4$. Cartier is computed exactly by
+\[
+ \frac{1}{v^b}\,\mathcal C_{\mathbf P^1}
+       \bigl(H(x)F(x)^{(3b-a)/4}dx\bigr),\qquad
+ \mathcal C_{\mathbf P^1}\left(\sum c_ix^i dx\right)
+       =\sum c_{3j+2}^{1/3}x^jdx.
+\]
+Division by $gh$ in the relevant character spaces is checked
+with zero remainder. If $M$ is its inverse-Frobenius-semilinear
+matrix, eight iterations produce its $K$-linear matrix. Every
+entry of $M$, that eighth power, and the cover polynomials is
+included in \path{code/quartic_cyclic5.json}. For each of the
+six covers the result is
+\[
+     \det(T-\mathcal C^8)=T^3(T+1)^8.                 \tag{B.Q.3}
+\]
+The same calculation on $C$, with basis
+$dx/w^2,dx/w^3,x\,dx/w^3$, gives Cartier zero.
+Serre duality identifies the linear eighth powers of Cartier
+and coherent Frobenius as transposes. The Artin--Schreier
+sequence identifies the Frobenius-stable coherent subspace
+with geometric three-torsion cohomology. Thus the cover's
+new three-primary part has rank eight and Frobenius eigenvalue
+$-1$ only; its relative class number is a unit. Equation
+(B.Q.3) also gives the exact odd-extension condition. This
+conclusion is insensitive to possible Jordan blocks.
+
+For completeness, exact enumeration over $\mathbf F_3$,
+$\mathbf F_9$, and $\mathbf F_{27}$ gives $4,4,28$ points
+on $C$. Newton identities and the reciprocal functional
+equation give its Frobenius polynomial
+\[
+                     (T^2+3)(T^2-3)^2.
+\]
+For an abelian variety over a finite field,
+\citep[Chapter~II, Lemma~1.3 and Remark~1.4]{MilneAV2008}
+prove that the algebra generated by Frobenius is a product
+of fields. Its minimal polynomial is therefore squarefree,
+so $F^4=[9]$ on $J_C$;
+equality on a Tate module implies equality of these
+endomorphisms. On every order-five character this says
+$F^4=-1$ and $F^8=1$. Hence every nonzero character has
+period exactly eight, proving the constant-field minimum.
+Finally three is excluded in characteristic three and five
+is the first admissible odd prime. The independently loaded
+certificates verify the finite arithmetic in this argument.
+\end{proof}
+
+\begin{claim}{B.Q2}{Proved}{A four-cover all-extension negative test over \(\mathbf F_5\)}
+Let $C/\mathbf F_5$ have the same equation and point as in B.Q1.
+Pull its quadratic map to $E:y^2=x^3-x$ back along the duals
+of the four cyclic degree-three isogenies out of $E$, over
+$K=\mathbf F_{5^8}$. These four constant $P$-split covers
+have genus seven. Every one has relative class number divisible
+by five over $K$ and over every further constant extension.
+This assertion concerns these four covers; it does not exclude
+the other order-three characters of $J_C$ or other primes.
+\end{claim}
+\begin{proof}
+The program \path{code/quartic_cyclic3_f5.py} computes the four
+kernel pairs on $E$ from the roots of its three-division
+polynomial $3x^4-6x^2-1$. For a kernel pair generated by
+$(a,b)$, the general odd-characteristic isogeny formula is
+\[
+ h=x-a,\quad N=xh^2+2(3a^2+A)h+4b^2,
+ \quad g=N'h-2Nh',
+\]
+where $E$ has equation $y^2=x^3+Ax+B$. The identity
+$fg^2=N^3+A'Nh^4+B'h^6$ is checked coefficient by
+coefficient. The image of a different three-torsion point
+generates the dual kernel on $E'$. Applying the formula there
+gives an isogeny with target coefficients $3^4A,3^6B$;
+scaling by three identifies that target with the original $E$.
+Thus we have used the dual isogeny, without identifying an
+ordinary isogenous elliptic curve with $E$ without proof.
+
+With $f'=x^3+A'x+B'$ on $E'$, the pullback cover is
+\[
+        v^4=f'g^2h^2/3^6,
+        \qquad (X_C,W_C)=(N/(9h^2),v/h^2).
+\]
+It is a connected constant \emph{\'etale} degree-three
+$P$-split cover by the same disjointness and base-change
+argument as B.Q1. Now $\deg F=11$, and $\deg(gh)=4$.
+The regular basis consists of $x^jdx/v$ for $j=0,1$,
+$gh\,dx/v^2$, and $ghx^jdx/v^3$ for $0\le j\le3$.
+The same valuation calculation proves it is a full basis.
+Cartier extracts the coefficients numbered $5j+4$ from
+$H(x)F(x)^a$ in character $a$, and takes fifth roots.
+
+The exact eighth powers have characteristic polynomials
+$(T-1)^3$ on the old genus-three cohomology and
+$(T-1)^7$ on the genus-seven cover. Polynomial division
+therefore gives $(T-1)^4$ for the new factor, with value
+zero at one. The old factor has been divided as a polynomial;
+we have not divided the two zero values at one.
+The new geometric five-torsion has a Frobenius fixed vector.
+It remains fixed by every power, proving the all-extension
+failure. All four input kernels, both isogenies, the cover
+polynomials, and the matrices are in the accompanying JSON.
+\end{proof}
+
+\begin{claim}{B.Q3}{Open}{The unbounded quartic classification in B6}
+The least witness over arbitrary constant extensions for
+\emph{every} smooth plane quartic over $\mathbf F_3$ and
+$\mathbf F_5$ remains undecided here. B.Q1 is an exact
+least-prime and first-field result for one pointed quartic;
+B.Q2 excludes four actual covers at all later fields.
+The independent program \path{code/pointed_quartic_tests.py}
+also computes the point counts and Weil polynomials of
+$X^4+Y^4+Z^4=0$ over $\mathbf F_3$, at $(1:1:1)$,
+and $X^4+Y^4-Z^4=0$ over $\mathbf F_5$, at $(1:0:1)$.
+Their base-field Jacobian orders are $64$ and $256$,
+respectively, so they have no base-field odd-prime Lang
+quotient. This is not an all-extension exclusion.
+
+The previous return's large base-field census programs were
+not attached and have not been rerun here. We do not treat
+their numerical tables as newly verified certificates.
+B.CL4 reduces each fixed-prime all-extension question to a
+finite calculation, but gives no terminating bound on the
+prime search. It also remains undecided whether some curve
+has a nonabelian witness of the stated type and has no
+class-number witness over any extension. Failure of finitely
+many characters, primes, or fields cannot prove that assertion.
+\end{claim}

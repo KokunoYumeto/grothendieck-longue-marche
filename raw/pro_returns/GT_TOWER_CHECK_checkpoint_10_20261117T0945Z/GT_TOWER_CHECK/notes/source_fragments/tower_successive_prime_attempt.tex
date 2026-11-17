@@ -1,0 +1,122 @@
+\subsection{Executed successive-prime attempts and their exact scope}
+
+The following computation is retained as a failed finite exclusion,
+not as a replacement for Part A.4.  Its quotients and projection
+maps are explicit, and it makes no assertion that a surviving
+finite tuple lifts to a gentle automorphism.
+
+Start with the quotient $R_8$ of the cubic detector obtained by
+taking the eight-dimensional deck span of the detecting functional
+in its odd total-linking character.  Its actual first quotient is
+$Q_{48}=C_2\times\operatorname{SL}_2(\mathbb F_3)$, where the first
+coordinate is the sum of the five pure braid linking parities;
+\[
+ 1\longrightarrow\mathbb F_3^8\longrightarrow R_8
+   \longrightarrow Q_{48}\longrightarrow1,
+ \qquad |R_8|=48\cdot3^8.
+\]
+The script \texttt{build\_coupled\_cubic\_two\_layer.py} gives the
+literal generator transitions and cocycle of this quotient and
+checks every defining five-point relator at every base vertex.
+The eight coordinates are fixed by its saved basis; they are not
+unmarked vector-space identifications.
+
+In those coordinates take the invariant dual subspace with basis
+\[
+ D=\begin{pmatrix}
+ 1&0&0&0&1&1&0&0\\
+ 0&1&0&0&1&1&0&1\\
+ 0&0&1&0&0&0&2&1\\
+ 0&0&0&1&0&1&1&0
+ \end{pmatrix}\quad\text{over }\mathbb F_3.
+\]
+Quotienting the kernel by its annihilator gives the actual quotient
+$R_4$ of order $48\cdot3^4=3888$.  Put
+$K_4=\ker(P\to R_4)$, with $P=\Gamma_{0,5}$.
+The next targets are factors of $P/(K_4'K_4^2)$.
+Over $\mathbb F_4=\mathbb F_2[\omega]/(\omega^2+\omega+1)$, a
+character of the normal $\mathbb F_3^4$ group is represented by its
+literal vector and takes value $\omega^{\langle\alpha,v\rangle}$.
+The two target-character orbits numbered $156$ and $1074$ in the
+saved eight-coordinate ternary enumeration each have size $24$.
+Their Frobenius-stable homology summands descend to actual
+$576$-dimensional $\mathbb F_2$ modules.  Thus each calculated target
+is an actual quotient of order $3888\cdot2^{576}$, with its natural
+projection to $R_4$.
+
+Here are the actual evaluation homomorphisms used in the pentagon
+and gentle equations.  Write
+$(a,b,x,y,z)=(A_{13},A_{23},A_{14},A_{24},A_{34})$,
+$X_{12}=(z y x b a)^{-1}$ and $Z_0=(X_{12}b)^{-1}$.
+The two free source generators are sent to the following eight
+ordered pairs:
+\[
+ (X_{12},by),\quad (ab,z),\quad (b,z),\quad
+ (X_{12}a,yz),\quad (X_{12},b),\quad(b,X_{12}),\quad
+ (Z_0,X_{12}),\quad(b,Z_0).
+\]
+In the first signed level-twelve target the joint source image has
+order $288$, with free kernel $J$ of rank $289$.  In $R_4^8$ the
+joint source image has order $288\cdot3^4=23328$.  Thus its kernel
+is a specified index-$23328$ subgroup of $F_2$, not eight independently
+chosen evaluation variables.  All source homology maps below are
+computed from this single covering graph.
+
+The selected first-level profile is
+$\rho=0$, $T=-I$ at three and $T=I$ at four, and $W=I$.
+It has odd formal parity.  The earlier full source equations leave
+three joint $R_8$ tuples; all three have the same projection to
+$R_4^8$, as verified by annihilating the affine direction with $D$.
+For either of the two characteristic-two factors, the source
+character support has $24$ nontrivial characters, each with
+homology dimension $288$ over $\mathbb F_4$.  The supports are
+closed under the two deck generators and under the literal
+substitutions
+\[
+ \sigma:(X,Y)\mapsto(Y,X),\qquad
+ \rho:(X,Y)\mapsto(Y,Y^{-1}X^{-1}).
+\]
+There are four $\sigma$-fixed characters.  The two supports are
+disjoint.  Frobenius descent, together with the old trivial
+character summand, gives exactly
+$289+24\cdot288=7201$ binary variables in each calculation.
+
+The equations imposed in this same source quotient are the two
+pure frame equations
+$f=\sigma(\beta)\beta^{-1}$ and $f=\rho(A)A^{-1}$,
+with the actual first-level frame residues, $A$ in the commutator
+subgroup and diagonal abelianization for $\beta$.  The three gentle
+identities are imposed in the source; the pentagon and its named
+gentle evaluations are imposed under the eight displayed maps.
+The exact frame cokernels have dimensions $3472$ and $2304$ over
+$\mathbb F_4$.  Every one of the nine allowed harmonic-frame base
+lifts is included.  The resulting executed table is
+\[
+\begin{array}{c|r|r|r|r}
+ \text{target orbit}&\text{binary variables}&\text{equation rank}
+ &\text{consistent harmonic bases}&\text{linear fibre dimension}\\ \hline
+156&7201&6017&9/9&1184\\
+1074&7201&6017&9/9&1184.
+\end{array}
+\]
+The fibre dimension counts the displayed binary source variables;
+it is not a count of genuine gentle images.  The complete
+three-cycle equation adds no further rank on these factors.
+
+The executed files are
+\texttt{test\_coupled\_full\_source.py} and
+\texttt{test\_coupled\_full\_source\_1074.py}, with their text,
+JSON and full linear-space certificates.  Each verifies the
+inverse edge transitions, $\sigma^2=1$ and $\rho^3=1$ on source
+homology, then checks thirty source-action word evaluations and
+eighty literal insertion evaluations independently on cubes and
+commutators of the four actual source deck generators.
+An earlier harmonic-only run initialized some inverse transitions
+prematurely; its output is superseded by these checked runs.
+No incomplete run is used for a mathematical exclusion.
+
+The natural maps above explain exactly what was tested.  The
+remaining Part A.4 requirement is a finite quotient carrying the
+nine-point comparison and excluding every genuine odd gentle
+shadow.  Neither the table nor the existence of these finite
+quotients establishes that requirement.

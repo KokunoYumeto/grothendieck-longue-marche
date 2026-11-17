@@ -1,0 +1,210 @@
+\subsection{The nontrivial primitive-cover counterexample}
+
+\begin{claim}{B.R5}{Refuted}{Universal nontrivial primitive-zero cyclic covers}
+The assertion that every genus-two curve in characteristic two has
+a connected cyclic \emph{\'etale} cover of odd degree $n>1$ whose
+primitive Jacobian part has two-rank zero is false. A completely
+specified counterexample is the smooth proper model over
+$k=\mathbf F_2[t]/(M(t))$ of
+\[
+\begin{split}
+ M(Z)&=Z^{38}+Z^{14}+Z^{10}+Z^9+Z^8+Z^5+Z^2+Z+1,\\
+ d&=t^3+1,\qquad
+ C:\ y^2+y=A(u)^3,\\
+ A(u)&=(u^2+t^2u+t)/d,\qquad
+ B(u)=(tu^2+u+t^2)/d .
+\end{split}
+\]
+The polynomial $M$ is irreducible, and $C$ is supersingular of
+genus two with a unique rational point $P$ above infinity.
+For every such cover over $\bar k$, the primitive part has positive
+two-rank. This independently confirms the particular counterexample
+AS-A.86. It does not refute the version allowing degree one.
+\end{claim}
+\begin{proof}
+We supply the geometry, the finite cutoff, and the exact certificates.
+
+\emph{The curve and its Jacobian.}
+Successive squaring modulo $M$ gives
+$Z^{2^{38}}\equiv Z$ and
+$\gcd(M,Z^{2^2}-Z)=\gcd(M,Z^{2^{19}}-Z)=1$.
+These are precisely the irreducibility tests for degree 38; every
+residue is retained in \path{code/primitive_certificates/manifest.json}.
+In particular $t\notin\mathbf F_4$ and $d\ne0$.
+After Artin--Schreier changes removing even powers, $A(u)^3$ has
+highest odd term $(t^2/d^3)u^5$, with nonzero coefficient.
+The degree-two map to $\mathbf P^1_u$ is ramified only at infinity,
+with different exponent six. Riemann--Hurwitz gives genus two,
+one rational point $P$ at infinity, and canonical divisor $2P$.
+The Artin--Schreier $p$-rank formula, or its elementary one-pole
+Cartier calculation, gives two-rank zero. In this case a basis of
+regular differentials is $du,u\,du$ after the reduced quintic
+equation; Cartier sends $du$ to zero and $u\,du$ to $du$, so its
+stable rank is zero.
+
+On $E:y^2+y=x^3$ there are two morphisms
+\[
+ (x_1,y_1)=(A(u),y),\qquad
+ (x_2,y_2)=(B(u),y+(u^3+1)/d).
+\]
+The polynomial identity
+\[
+ (u^2+t^2u+t)^3+(tu^2+u+t^2)^3
+       =d(u^3+1)^2+d^2(u^3+1)
+\]
+checks the second equation. Both maps send $P$ to the origin.
+The joint map is birational onto its image, since
+$u=x_2+t x_1$ and $y=y_1$. Its image therefore has normalization
+of genus two and cannot lie in an elliptic subvariety or its
+translate. The induced map $J_C\to E^2$ is consequently an isogeny
+defined over $k$. On $E$, the chord-and-tangent formula gives
+$[2](x,y)=(x^4,y^4+1)$; hence its $\mathbf F_4$-Frobenius is $[-2]$.
+The $\mathbf F_{2^{38}}$-Frobenius of $E^2$, and therefore that of
+$J_C$, is $[-2^{19}]$. For the last implication compose
+$F_{J_C}+[2^{19}]$ with the isogeny: its connected image would lie
+in a finite kernel, so it is zero. This proves supersingularity
+and the exact scalar Frobenius, without assuming a torsion-group
+isomorphism from an unspecified isogeny.
+
+\emph{The theta-orbit criterion.}
+A cyclic cover of odd degree $n$ corresponds to a line bundle $L$
+of exact order $n$ with a trivialization of $L^n$. Its coherent
+cohomology decomposes as
+$\bigoplus_{i\in\mathbf Z/n}H^1(C,L^i)$, and absolute Frobenius
+sends the $i$-summand semilinearly to the $2i$-summand. The
+nontrivial summands have dimension one by Riemann--Roch.
+For a multiplication-by-two orbit $O$ of primitive indices, its
+contribution to the two-rank is $|O|$ times the eventual rank of
+the orbit composite. This follows from the Artin--Schreier
+sequence: the Frobenius-stable subspace has dimension equal to
+$\dim_{\mathbf F_2}H^1_{\et}(D,\mathbf F_2)$. The idempotent
+primitive character projector, or the image of
+$\prod_{\ell\mid n}(1-\sigma^{n/\ell})$, selects exactly these
+primitive summands.
+
+Let $\mathcal B$ be the cokernel of
+$\mathcal O_{C^{(1)}}\to F_*\mathcal O_C$. In characteristic two it
+is a line bundle with square the canonical bundle: locally write
+a change of uniformizer as $v=a^2+u b^2$; its class in the
+cokernel changes by $b$, whose square is $dv/du$. The cohomology
+sequence tensored with $L^i$ identifies the kernel of the
+Frobenius arrow with $H^0(\mathcal B\otimes L^i)$.
+There is just one geometric theta characteristic because
+$J_C[2](\bar k)=0$, so $\mathcal B=\mathcal O(P)$.
+The corresponding theta locus is precisely the symmetric Abel
+curve $\Theta=C-P$. Thus zero primitive two-rank requires at
+least one theta point in every multiplication-by-two orbit of
+primitive points of the cyclic subgroup $\langle L\rangle$.
+
+\emph{A complete finite bound.}
+Write $f=\operatorname{ord}_n(2)$,
+$e=\gcd(f,19)$, and $M_n=\varphi(n)/e$.
+Scalar Frobenius and symmetry of $\Theta$ show that one point
+in a required orbit brings its entire multiplication-by-$2^{19}$
+orbit into $\Theta$. Consequently there are at least $M_n$
+primitive theta points, and also zero. For a nonzero Jacobian
+difference, at most two ordered pairs of distinct points of
+$\Theta$ realize it: two representations yield two linearly
+equivalent degree-two divisors, and the unique hyperelliptic
+pencil gives the sole alternative representation. Hence
+\[
+ M_n(M_n+1)\le2(n-1).
+\]
+For odd $n$, prime-power multiplication proves
+$\varphi(n)\ge(2/3)n^{5/6}$. Indeed
+$(\ell-1)^6\ge\ell^5$ for every prime $\ell\ge5$, and the possible
+factor at three is at least $64/243>(2/3)^6$.
+It follows that $n<10\cdot19^3=68590$.
+
+The standard-library program \path{code/primitive_conductors.py}
+exhaustively enumerates all odd integers in that interval and gives
+\[
+191,229,361,419,457,571,573,647,687,955,1083,1257,1371.
+\]
+It then imposes the full difference constraint on the mandatory
+packets $H=\langle 2^{19},-1\rangle\subset(\mathbf Z/n)^\times$.
+Already $\{0\}\cup H$ excludes all but $191,229,457,1257$.
+For $457$, every coset of $U=\langle2,-1\rangle$ must contain an
+$H$-packet. There are six such cosets. Normalize the first packet
+to $H$ by changing a cyclic generator, and enumerate every
+remaining packet. The surviving search depths are
+$1,17,226,879,262,0$, so there is no admissible selection.
+For $1257$, there are two $U$-cosets and each mandatory packet
+has 22 elements, half in each nonzero residue class modulo three.
+With zero, the residue counts are $(1,22,22)$, forcing
+$924$ ordered distinct differences divisible by three. Only
+$2(1257/3-1)=836$ are permitted. Thus only $191,229$ remain.
+The script retains every input, packet, candidate list and count.
+
+\emph{The two full polynomial certificates.}
+For $E$ put $r_n(X)=x([n]R)$ when $X=x(R)$. The addition formula gives
+\[
+ r_1=X,\qquad r_{2m}=r_m^4,\qquad
+ r_{2m+1}=X+(r_m+r_{m+1})^{-2}.
+\]
+Compute these as reduced rational functions over $\mathbf F_2$.
+Independently form
+\[
+ \psi_1=\psi_2=\psi_4=1,\quad\psi_3=X^4+X,\quad
+ \psi_{2m}=\psi_m^4,\quad
+ \psi_{2m+1}=\psi_{m+2}\psi_m^3+\psi_{m-1}\psi_{m+1}^3.
+\]
+For each required $n$ the program verifies that the reduced
+denominator of $r_n$ is exactly $\psi_n^2$, with coprime numerator.
+Thus its zeros are exactly the finite coordinates of nonzero
+$n$-torsion, without importing a division-polynomial formula
+that excludes characteristic two.
+\[
+\begin{array}{c|r|r|r}
+ n&\deg\psi_n&\deg\operatorname{num}r_n&
+                  \deg\operatorname{den}r_n\\ \hline
+191&18240&36481&36480\\
+229&26220&52441&52440
+\end{array}
+\]
+Exact arithmetic in the stated field gives
+\[
+ U_n(u)\psi_n(A(u))+V_n(u)\psi_n(B(u))=1
+                    \quad(n=191,229).
+\]
+The composed polynomial degrees are respectively $36480,52440$;
+both B\'ezout coefficients have degree four less in each case.
+All eight polynomials are supplied as complete binary coefficient
+arrays, with ascending unsigned little-endian 64-bit coefficients;
+bit $i$ represents $t^i$. The manifest gives SHA-256 hashes.
+The producer checks both whole identities. The separately written
+\path{code/primitive_verify.py} loads the arrays, verifies their
+hashes and degrees, independently composes the polynomials over
+$\mathbf F_2$, and verifies the two whole identities again.
+
+If a finite point $Q$ of $C$ gave a nonzero Abel class killed by
+one of these integers, both of its finite elliptic images would
+be killed by the integer. Its coordinate $u$ would therefore be a
+common zero of the two composed polynomials, contradicting the
+B\'ezout identity. The point at infinity is the origin and cannot
+be primitive. Every possible conductor has now been excluded,
+over $\bar k$ itself. This proves the counterexample.
+\end{proof}
+
+\begin{claim}{B.R6}{Open}{The literal degree-one-permitted primitive-cover assertion}
+For every proper curve of genus at least two over
+$\overline{\mathbf F}_p$, does there exist a connected cyclic
+\emph{\'etale} cover of odd degree prime to $p$, allowing degree one,
+whose primitive part has $p$-rank zero, with the convention
+$P_1=J_C$?
+\end{claim}
+The preceding counterexample does not settle this statement.
+The identity cover proves it for every curve of $p$-rank zero,
+including that example. For positive $p$-rank, degree one fails.
+The exact Frobenius-orbit formulation above extends to arbitrary
+genus with character spaces of dimension $g-1$: one needs
+nilpotence of each orbit composite, not just a noninvertible
+arrow. The conductor bound proved here uses scalar Frobenius
+and the one-dimensional genus-two character spaces, so it does
+not bound the positive-$p$-rank cases. We tried transferring the
+scalar obstruction, using a single nonordinary character, and
+using the identity convention; each fails for this stated reason.
+The smallest unresolved scope in this work is positive-two-rank
+genus-two curves in characteristic two. No such curve is claimed
+to be a counterexample.
+

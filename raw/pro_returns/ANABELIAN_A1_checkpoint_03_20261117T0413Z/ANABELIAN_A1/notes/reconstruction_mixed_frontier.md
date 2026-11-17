@@ -1,0 +1,47 @@
+# Mixed-characteristic frontier audit (continued after checkpoint02)
+
+## B.CF11: one exact new negative case
+
+The wording in AS-FF.39, lines 4692--4715, disclaims a conclusion about the lower-central union or a “general solvable closure.” It does not define a unique new base for the latter phrase. For the same precisely specified strict-local field K_p=Frac(Z_(p)^sh), its maximal solvable extension is Qbar. Every finite Galois extension has whole group equal to inertia (henselian valuation and algebraically closed residue), hence an extension of a finite p-group by a cyclic prime-to-p group. Thus every finite quotient is solvable and the intersection of the closed derived series is trivial. This argument applies directly to the strict henselization, not just to Q_p^ur or its completion. The coefficient automorphism of A1_Qbar gives a pinned nonalgebraic topos autoequivalence.
+
+Opened exact primary sources, 17 November 2026: Stacks Tag 09EE, Lemma 15.114.5 (https://stacks.math.columbia.edu/tag/09EE), web ref turn163131277view0; Tag 0BUA, Lemma 58.13.5 (https://stacks.math.columbia.edu/tag/0BUA), web ref turn163131277view1. No raw quotation used. Full proof is B.CF11 in sections/B_reconstruction.tex.
+
+This does **not** identify the lower-central/pronilpotent union with the derived/solvable union, does not settle B_p=Qbar^(I''), and does not assert a theorem about maximal solvable extensions of arbitrary other base fields.
+
+## Exact remaining target
+
+B_p remains a serious separate case. All residue-characteristic-zero finite-transcendence-degree cases have now been refuted by B.CF7 and B.LIT5--6; B9 ordinary pro-reconstruction is not a reconstruction theorem for the single topos over B_p. Current work is checking whether wild p-Kummer classes obstruct the supported-scaling ghost that worked in residue zero.
+
+## B.CF12: actual wild-cover obstruction at B_p
+
+Independently checked and rewrote the full kernel proof from AS-FF.42, including normal local models and both inflation--restriction injections. The exact kernel on every finite E/B_p is W_p={a:a^m in F_p for some m}, and W_p intersect(1-W_p)=F_p minus{0,1}. Let lambda=1+p; choose x outside F_p in B_p of positive valuation, and c in K_p with c,1-c units. Then y=1+c(x-1) is a unit. Supported scaling fixes1,y and movesx tolambda*x. One-puncture Kummer comparisons force A=c(x-1)/(lambda*x-1) and1-A intoW_p, henceA inF_p, which is impossible. This excludes precisely the residue-zero construction here; it is not a reconstruction theorem.
+
+## B.CF13: new exact Kummer theorem for the unbounded lower-central union
+
+Written complete proof in sections/B_mixed_frontier.tex. N=intersection of the closed lower-central series, Q=I/N maximal pronilpotent. Because N lies in wild P, Q=Q_(p) times the full cyclic prime-to-p tame group T. For any element a with all p-power roots in a finite E/K_nil, take a finite normal enlargement E' and the radical tower R of all finitely many local conjugates ofa. Image C_R of N inGal(R/K_p) is finite, while D_R=Gal(R/base with conjugates and all rootsunity) embeds Z_p^m. A lift tau of a central tame element therefore centralizes D_R. Choose cyclotomic tau=primitive(p-1)-root zeta. This gives kappa_M(tau*a)=zeta*kappa_M(a) on a single finite local model: first on I_M intersectkerchi, then onI_M by abelian cocycle cohomology, then onG_M because inertia coefficientinvariants vanish. Valuation gives v(a)=0; logarithms give log(tau*a)=zeta*log(a). Baker--Brumer implies torsion forp>=5. This is stable under every finite extension.
+
+Atp2 the element2 has all2-power roots in nilpotent splitting fields. Atp3 use a=(2+sqrt(-3))/(2-sqrt(-3)); its radical splitting fields have a3-group kernel and an involution which inverts rootsunity and the chosen radical. The involution centralizes the3-group, hence the finite Galois group is nilpotent. The trace a+1/a=2/7 proves nontorsion.
+
+Exact primary: Rousseau, Bernard, 21February1969, Seminaire de theorie des nombres de Bordeaux 1968--1969, expose11, pp1--8; unnumbered THEOREME at printed11-01--11-02. Opened full primary proof at https://www.numdam.org/item/STNB_1968-1969____A11_0.pdf (webturn705997068view0); local PDF+text saved. Brumer's original1967 paper metadata verified by literature agent, original theorem not directly readable, so bibliography cites the opened Rousseau proof. No raw quotation used.
+
+Independent reviews: root read full CF12--13 and approved; literature agent independently checked the complete eigenrelation and two restriction injections, then Baker--Brumer, and found no gap. Criterion review was requested. Temporary globaldisk failure delayed bibliography/metadata only; all substantive new TeX had already saved.
+
+### Exact limits of the new Kummer input
+
+CHW Definition5.15 amenability has two independent conditions. Torus divisibility5.15.1 fails because mu_infinity is contained inK_nil. Condition5.15.2 requires the full prime-to-exponential-characteristic Tate module ofPic(X) to vanish for everyregularfinite-type X; it also fails here. The global multiplicative elliptic curve y^2+xy=x^3-p, after a quadratic splitting extension contained inF_p, has a G_Fp-fixed torus Tate line Z_p(1), since chi(I')=1. Thus A(F_p) contains a compatible Q_p/Z_p torsion subgroup, and T_pPic(A_Knil) is nonzero. Carlson--Stix's Kummer-faithful hypothesis likewise excludes the divisible torus subgroup mu_infinity. The prior explicit positive proof for a fixed nilpotency class also needs an inertia-invariant lift of visible generalized-Albanese functionals; the exact mu kernel is only one input. Pronilpotent does not imply bounded nilpotent Lie image: arbitrary pro-p groups are pronilpotent. Thus no reconstruction theorem is inferred.
+
+## B.CF14--15: rational scalar detection and affine actual point functions
+
+For p>=5, an actual Kummer value kappa_E(b)=alpha*kappa_E(p) over any finite E/K_nil forces alpha rational. Pass finite normalE', N'=G_E'. For g inI, invariance of the restricted class ofp gives kappa(gb/b)=0; CF13 makes all local-conjugate ratios rootsunity. A common finite exponentm gives b^m inK_p. The difference class onI inflates from I/N'; its H1 vanishes because N/N' finite and Q=I/N has centraltameelement withnontrivialchi. One finite unramified local model and valuation give m*alpha integer. Root and literature independently checked this scalar lemma.
+
+For a pinned relative autoequivalence ofA1 overfiniteE/K_nil, normalizepointfunctionf(0)=0,f(1)=1. Each one-puncture p-Kummer line has unit scalaralpha_a. Evaluate the class ratio at a+1,a+p and applyCF14 to makealpha_a rational. For allx,b, the corresponding ratio equality then has rootunityerror after clearingdenominators. Complexabsolute values give |fx-fa|=C_a|x-a|^alpha_a. A negativeexponent wouldmakef(n) tendtofa whiledistances to anothercentre musttend0orinfinity, contradiction. Reversetriangleinequality makesallpositiveexponentsandconstants equal. Normalizationconstant1, triangle0,1,2 andinversebijection implyalpha1. Distancesto0,1,i showf isidentityorcomplexconjugation. Conjugation wouldpreserveE'shenselianrank1valuation (Khassa--KhandujaLemma2.1), hence lieG_Qp byuniqueprolongation; itsorder2cannot surviveunramifiedZhat, tametorsionfreequotient, orwildpro-p(p>=5). Thusnormalizedfidentity.
+
+Root independently approved the full argument; exact point-function/cohomology derivation is written inB.CF15. This strengthens the frontier but remains an actual-point-function theorem for autoequivalences, not equality of whole inverse-image functors and not existence for arbitrarypinnedmaps. The attempted extension is now the active mathematical task.
+
+## B.CF16--17: arbitrary affine-line actual point functions
+
+CF16 isolates a boundary residue of any smoothcurve Kummerclass with actualpointvalues. Riemann--Roch gives g with sole poleq and zeros atallotherboundarypoints; afterdeletingbranchvalues finiteetale corestriction has only0/infinity residues and coefficientminusres_q. Normpointvaluesactual; evaluate t0,p^nt0 andapplyCF14. This proves rationalityofeachresidue, not integrality. Residuecorestriction multipliesresiduefielddegree, notramificationindex.
+
+For arbitrarypinnedA1morphism, genericclosedimagegivesconstantpointfunction. Otherwise allgeometricfibresS_a finite. Pullbackkappa(T-a) onA1 minusS_a has rationalresiduesbyCF16; norming atx0 andCF13gives |f(x)-a|^2=P_a(x)=C_a^2 product|x-r|^(2q_ar). Fromcentres0,1,i, squared-distanceformulasdefine realanalyticF onC minusfiniteS, equaltofonalgebraicpoints. For everyalgebraica, log|F-a|^2 is harmonic awayS_a. Atfixedz, putA=F_z,B=F_barz,C=F_zbarz,w=Fz. HarmonicitygivesRe(C/(w-a)-AB/(w-a)^2)=0foralldensealgebraicaexceptatmostone. Extendingtocomplexa andsubstitutingb=1/(w-a) forcesC=AB=0. AnalyticcontinuationmakesF holomorphicorantiholomorphic. Othercentresa!=f(r) boundF nearremovedr and threecentresidentifyitsremovablevaluewithf(r). PotentialgrowthatinfinitymakesF polynomialorantipolynomial; rationalinputinterpolationputscoefficientsinE. AntipolynomialP(conj x) equivariancewouldgiveP(hz)=P(z) forcommutatorh withconjugation; shiftingz byintegers andcomparingdegree d-1makeshidentity, contradicttheCF15conjugationobstruction. Thusactualpointfunctionpolynomial.
+
+Root independently derived and checked the norm/PDE chain before formalization; full exact proof is now written in CF16--17. No claim that an arbitrarysource or an entire inverse-imagefunctor is reconstructed. These are the exact remaining extensions being investigated.

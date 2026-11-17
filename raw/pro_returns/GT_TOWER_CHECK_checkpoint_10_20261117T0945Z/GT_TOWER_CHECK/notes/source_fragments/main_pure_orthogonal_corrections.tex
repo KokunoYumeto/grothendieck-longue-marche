@@ -1,0 +1,197 @@
+% New post-checkpoint05 contribution.  ID A.4.23 reserved by root.
+\subsection{Pure orthogonal corrections preserving the entire lower comparison}
+
+\begin{result}{A.4.23}{Proved}{Every perfect orthogonal correction has an actual pure lift with trivial lower image}
+\label{prop:pure-orthogonal-corrections}
+Let \(\Pi=\Pi_{1,9}\), with its nine named peripheral conjugacy
+classes and its specified quaternion quotient from A.4.15.
+Let \(\mathcal G\) be the group of actual based,
+orientation-preserving geometric automorphisms of \(\Pi\)
+which fix all nine labels and induce the identity automorphism
+of this \(Q_8\) quotient. Its action on the specified multiplicity
+space is the homomorphism
+\[
+ \rho:\mathcal G\longrightarrow\mathrm{SO}_{18}^-(3).
+ \tag{PC.1}
+\]
+This homomorphism is surjective.
+
+Retain the actual joint finite lower map
+\[
+ \begin{split}
+ \beta:\mathcal G&\longrightarrow\mathcal B,\\
+ g&\longmapsto\bigl([g|_{\Pi/(\gamma_3\Pi\Pi^3)}],\,
+                    g|_{H_1(\Pi,\mathbb Z/9)},\\
+   &\hspace{42mm}g|_{H_1(\overline\Pi,\mathbb Z/12)}\bigr),
+ \end{split}
+ \tag{PC.2}
+\]
+where the first coordinate is an outer automorphism, the second
+is the literal homology action in the marked rank-ten basis,
+the third is the signed ordinary compact-period matrix, and
+\(\mathcal B\) denotes the actual image of this joint map.
+Here \(\overline\Pi\) is the quotient of \(\Pi\) by the normal
+closure of its nine peripheral elements, so the third coordinate
+is induced by this specified compactification map.
+Then
+\[
+                  \rho(\ker\beta)\supseteq\Omega_{18}^-(3).
+ \tag{PC.3}
+\]
+More precisely, for every \(\omega\in\Omega_{18}^-(3)\) there
+is an actual finite word in pure quaternion-kernel mapping
+classes whose multiplicity matrix is \(\omega\) and all three
+coordinates of (PC.2) are the identity. The correcting word
+also fixes all puncture labels and the full specified quaternion
+quotient, by its membership in \(\mathcal G\).
+\end{result}
+\begin{proof}
+We first verify surjectivity on the stated pure domain.
+In the fifteen actual generators of A.4.15, the root matrix
+with zero-based index forty-nine among the quaternion-kernel
+Schreier generators has the literal source word
+\[
+               (3,5,-3)
+       =\mathrm{push}_1\,\sigma_3\,\mathrm{push}_1^{-1}.
+ \tag{PC.4}
+\]
+The point push fixes all labels, and the displayed disk half
+twist interchanges two of them. Thus (PC.4) has a transposition
+as its puncture permutation. It lies in the quaternion kernel
+already, and its square is pure. Its multiplicity image is
+the certified root element \(T_e(v)\), so the image of its
+square is exactly \(T_e(2v)\), by the additive root formula.
+
+Each of the sixteen certified conjugates of this word has
+a transposition as its label permutation. Their squares
+therefore lie in \(\mathcal G\), and their parameters are
+twice the sixteen certified basis parameters of
+\(e^\perp/\langle e\rangle\). They still span that space.
+Consequently \(\rho(\mathcal G)\) contains the entire first
+radical \(R_e\). The pure subgroup is normal in the full
+geometric group, and the quaternion kernel is normal as well.
+Conjugating these pure words by the actual opposite-line
+generator, with zero-based index eleven, therefore gives
+pure words in the same quaternion kernel. Their image is
+the entire opposite radical. A.4.16 now gives
+\(\Omega_{18}^-(3)\subseteq\rho(\mathcal G)\).
+
+There is also a pure word in the other spinor coset.
+The quaternion-kernel Schreier generator with zero-based
+index fifteen is the literal word \((1,1,-13)\).
+Its puncture permutation is a nontrivial translation of
+order three; its certified spinor is the nonsquare class.
+Its cube is therefore pure and has the same nonsquare
+spinor, because \(2^3=2\) in \(\mathbb F_3^\times\).
+It belongs to \(\mathcal G\). Since the target of (PC.1)
+is already contained in \(\mathrm{SO}\), and its kernel
+under spinor is \(\Omega\), this proves surjectivity of
+(PC.1).
+
+All these source assertions are independently checked in
+\texttt{check\_main\_pure\_radicals.py}. It computes the
+nine-label permutations from the original labelled covering,
+expands every conjugating word to the fifteen source generators,
+checks that each of the thirty-two squared/conjugated words
+is pure, and verifies their actual root matrices. The expanded
+words and all label permutations are retained. The additional
+cube is checked against its recorded ordinary-reflection
+factorization.
+
+We record explicitly the perfectness used in the lower-image
+argument. Theorem11.47 of \cite[pp.~161--162]{GhostTaylorClassical}
+asserts that \(\Omega_{18}^-(3)\) is perfect; all its exceptions
+have dimension three or four. In the present coordinates the
+characteristic-three part of its proof is short. For a
+nonzero singular \(e\), choose an opposite \(f\), and represent
+a root parameter \(v\) in the nondegenerate space
+\(W=\langle e,f\rangle^\perp\), of dimension sixteen.
+For \(q(v)\ne0\), the nondegenerate space
+\(W\cap v^\perp\), of dimension fifteen, contains an \(x\)
+with \(q(x)=q(v)\). Indeed diagonalize two of its directions:
+one has this norm, or both have the other nonzero norm, in
+which case their sum has the required norm over \(\mathbb F_3\).
+Let \(h\) be minus the identity on the orthogonal plane
+\(\langle v,x\rangle\), and the identity on its orthogonal
+complement. It is the product of the two reflections in
+\(v,x\); its determinant is one and its spinor is
+\(q(v)q(x)=1\). Thus \(h\in\Omega\), and
+\[
+                  [h,T_e(v)]=T_e(-2v)=T_e(v).
+ \tag{PC.5}
+\]
+Both entries of this commutator lie in \(\Omega\).
+For a singular nonzero parameter \(v\in W\), the space
+\(W\cap v^\perp\) has radical \(\langle v\rangle\)
+and a nondegenerate quotient of dimension fourteen, so
+it contains an anisotropic \(w\). Both \(w\) and \(v-w\)
+are anisotropic, since their norms are equal and nonzero.
+The additive root formula expresses \(T_e(v)\) as the
+product of their two root elements. Thus all root elements
+lie in \([\Omega,\Omega]\), and they generate \(\Omega\).
+This proves perfectness in the exact dimension and field
+used here. It also gives
+\[
+             \mathrm{SO}_{18}^-(3)^{(d)}=\Omega_{18}^-(3)
+                          \qquad(d\ge1),
+ \tag{PC.6}
+\]
+because \(\mathrm{SO}/\Omega\) has order two and \(\Omega\)
+is perfect.
+
+The image \(\mathcal B\) of (PC.2) is solvable, with
+derived length at most five. For the first coordinate,
+A.4.9 gives an elementary abelian kernel of dimension
+ninety-one over the homology image, and A.4.8 identifies
+that homology image as an extension of an elementary
+abelian group of dimension sixteen by
+\(\mathrm{SL}_2(\mathbb F_3)\). The latter has the
+derived series
+\(\mathrm{SL}_2(\mathbb F_3),Q_8,C_2,1\).
+These two abelian extensions give derived length at
+most five. The same bound holds for the second coordinate:
+the rank-ten pure homology matrices modulo nine have
+an abelian lower-left block over
+\(\mathrm{SL}_2(\mathbb Z/9)\), whose kernel modulo
+three is the additive trace-zero matrix space, an abelian
+group. For the third coordinate, reduction modulo four
+has abelian kernel over \(\mathrm{SL}_2(\mathbb F_2)\),
+and reduction modulo three is
+\(\mathrm{SL}_2(\mathbb F_3)\). Thus this signed-period
+group is solvable of derived length at most three.
+A subgroup of the product has derived length at most
+five, proving the assertion for the actual joint image
+\(\mathcal B\).
+
+Now form the actual finite joint image
+\[
+ D=(\rho,\beta)(\mathcal G)
+     \le\ \mathrm{SO}_{18}^-(3)\times\mathcal B.
+ \tag{PC.7}
+\]
+Projection \(\pi:D\to\mathrm{SO}_{18}^-(3)\) is
+surjective by the pure word construction above.
+For a surjective group homomorphism, images of derived
+subgroups satisfy
+\[
+                  \pi(D^{(d)})=\pi(D)^{(d)}.
+ \tag{PC.8}
+\]
+For \(d=1\), every commutator of two image elements
+is the image of the commutator of chosen preimages,
+which proves both containments. Induction proves the
+display for every \(d\).
+Projection of \(D^{(5)}\) to \(\mathcal B\) is trivial,
+whereas (PC.6)--(PC.8) give
+\[
+            \pi(D^{(5)})=\Omega_{18}^-(3).
+ \tag{PC.9}
+\]
+Every element of \(D^{(5)}\) is the image of a product
+of iterated commutators of actual elements of
+\(\mathcal G\). These are finite geometric words,
+and their three lower coordinates are simultaneously
+the identity. This proves (PC.3) with precisely the
+source and lower maps stated, and proves the stronger
+word assertion.
+\end{proof}

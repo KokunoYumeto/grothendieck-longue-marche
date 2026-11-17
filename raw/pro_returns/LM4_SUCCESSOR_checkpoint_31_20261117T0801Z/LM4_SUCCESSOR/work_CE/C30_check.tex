@@ -1,0 +1,104 @@
+\documentclass[11pt]{article}
+\usepackage[margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs,booktabs,longtable,array}
+\usepackage[colorlinks]{hyperref}
+\newcommand{\statement}[3]{\subsection*{#1. #3 [#2]}}
+\begin{document}
+\statement{C.30}{Proved}{Unit hexagon solutions are full automorphisms}
+Let $F=\widehat F(x,y)$, put $z=(xy)^{-1}$, and let
+$\lambda\in\widehat{\mathbb Z}^{\times}$ and $f\in F'$.
+Write $m=(\lambda-1)/2\in\widehat{\mathbb Z}$.
+Suppose the following are identities in the full profinite group:
+\[
+ \begin{split}
+ f(x,y)f(y,x)&=1,\\
+ f(x,y)x^m f(z,x)z^m f(y,z)y^m&=1.
+ \end{split}                                                    \tag{C.30.1}
+\]
+Then the continuous endomorphism
+\[
+             \varphi(x)=x^\lambda,\qquad
+             \varphi(y)=f^{-1}y^\lambda f
+\]
+is an automorphism. In particular no separate invertibility hypothesis
+is needed for a unit pair satisfying these two full equations. If it
+also satisfies the full pentagon, it belongs to the full
+Grothendieck--Teichm\"uller group, including its unit requirement.
+
+\begin{proof}
+This is an algebraic consequence of C.29, but it is essential not to
+assume invertibility while deriving the third-cusp equation.
+Set $A=f(x,y)$, $B=f(y,z)$ and $C=f(z,x)$. The second equation in
+(C.30.1) first gives
+\[
+                C z^m B=x^{-m}A^{-1}y^{-m}.                      \tag{C.30.2}
+\]
+Apply that same identity under the continuous substitution
+$(x,y)\mapsto(x,z)$. Its third argument is
+\[
+                w=(xz)^{-1}=xyx^{-1}=z^{-1}yz.
+\]
+The first equation in (C.30.1), applied under substitutions, and
+conjugation-equivariance of profinite words give
+\[
+ f(x,z)=C^{-1},\qquad
+ f(w,x)=xA^{-1}x^{-1},\qquad
+ f(z,w)=z^{-1}B^{-1}z.
+\]
+Consequently the substituted hexagon becomes
+\[
+ C^{-1}x^{m+1}A^{-1}y^{m+1}B^{-1}z^{m+1}=1,
+\]
+where $x^{-1}z^{-1}=y$ was used. Rearrangement gives the second identity
+\[
+          C z^{-m-1}B=x^{m+1}A^{-1}y^{m+1}.                     \tag{C.30.3}
+\]
+Multiply (C.30.3) by the inverse of (C.30.2). Since $2m+1=\lambda$,
+then conjugate the resulting equality by $x^m$. One obtains
+\[
+ x^\lambda A^{-1}y^\lambda A
+       =(x^mC)(xy)^\lambda(x^mC)^{-1}.                         \tag{C.30.4}
+\]
+All substitutions used here are legitimate continuous homomorphisms
+out of the free profinite group; none has been assumed invertible.
+Equation (C.30.4) is the third peripheral condition, and C.29 makes
+$\varphi$ a full automorphism.
+
+For completeness the pentagon assertion concerns actual units, not
+only endomorphisms. The normalized two-equation pairs are now
+contained in $\operatorname{Aut}(F)$. Their pentagon solutions form
+a closed submonoid there, by the parenthesized-braid presentation
+\cite[Lemma 7.1 and Proposition 7.3]{CEBHR2019}. The automorphism group
+of a finitely generated profinite group is profinite: characteristic
+open subgroups are cofinal, and their finite automorphism groups
+give its topology. Thus any closed submonoid is a group, since
+$\varphi^{n!-1}\to\varphi^{-1}$. This supplies the inverse within
+the same pentagon solution set.
+\end{proof}
+
+\paragraph{Source discrepancy and scope.}
+Lochak and Schneps explicitly asked in 2006 whether a unit normalized
+pair is automatically invertible, and then asked the same question
+with their relations (I), (II), (III) imposed
+\cite[Question 1.1]{A_LS2006}. Fresse's later survey also distinguishes
+the profinite invertibility issue from the Malcev case
+\cite[\S1.1, manuscript p.~14]{CEFresse2019}.
+C.30 answers the constrained version by the displayed full-group
+calculation and C.29's finite-cover proof. It does not use the
+pro-$p$ Frattini criterion, infer invertibility merely from
+abelianization, or claim a literature priority. It also does not
+prove that a bare profinite pentagon has a unit parameter or implies
+the hexagon; those are different requirements in A.37--A.39.
+
+The unconstrained version of that old question has a small finite
+counterexample, which also calibrates this source comparison.
+Take $\lambda=1$, $f=[x,y]^2$ and the quotient onto $A_5$ with
+$x=(123)$ and $y=(345)$, using $[x,y]=xyx^{-1}y^{-1}$ and
+right-to-left permutation products. Then $f$ has image $(134)$,
+and $f^{-1}yf$ has image $(135)$. The original pair generates
+$A_5$, whereas the substituted pair generates the order-twelve
+point stabilizer fixing $4$. Thus this unrestricted normalized
+endomorphism is not surjective. The exact finite calculation is
+recorded in \path{code/check_unconstrained_substitution.py}.
+
+\end{document}

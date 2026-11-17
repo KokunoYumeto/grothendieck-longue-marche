@@ -1,0 +1,171 @@
+\subsection{Literal braid words for the modular CM pullback}
+
+\begin{result}{A.4.4}{Proved}{An explicit modular embedding with its peripheral orientation}
+Write
+\[
+ L=B_4/\langle z_4\rangle,\quad
+ q:L\longrightarrow B_3/\langle z_3^2\rangle,
+ \quad q(a)=q(c)=a,\quad q(b)=b,
+\]
+where $(a,b,c)=(\sigma _1,\sigma _2,\sigma _3)$,
+$z_3=(ab)^3$ and $z_4=(abc)^4$.  Put
+$u=abc$ and $d=a^2bc$.  There is an explicitly marked isomorphism
+\[
+ \rho_+:B=\langle s,r\mid s^2=r^3=1\rangle
+       \xrightarrow{\ \sim\ }q^{-1}(\langle ab\rangle),
+ \qquad s\longmapsto u^2,
+ \quad r\longmapsto d^{-1},
+ \quad \tau=sr\longmapsto abc a^{-1}.             \tag{FCE.1}
+\]
+On the cyclic quotient $C_6=\langle ab\rangle$ it sends $\tau$ to
+$ab$.  Its full profinite completion is the isomorphism onto the
+actual preimage of this finite subgroup in $\widehat L$.
+
+For the Ferrari basis
+\[
+ x=ca^{-1},\qquad y=aba c^{-1}b^{-1}a^{-1}
+\]
+of $K=\ker q$, its restriction to $B'$ is given by
+\[
+ p=s\tau^{-3}\longmapsto xy,
+ \qquad p_1=\tau p\tau^{-1}\longmapsto y^{-1}xy.
+                                                               \tag{FCE.2}
+\]
+Its peripheral orientation and based conjugator are fixed by
+\[
+ \rho_+(\tau)^6=(xy)^{-1}[x,y]^{-1}(xy)
+       \quad\hbox{in }L,\qquad [x,y]=xyx^{-1}y^{-1}.             \tag{FCE.3}
+\]
+\end{result}
+\begin{proof}
+The actual braid identities $u^4=d^3=z_4$ establish the two torsion
+relations in (FCE.1).  Direct cancellation gives
+$u^2d^{-1}=abc a^{-1}$.  Folding sends $u^2$ to $z_3=(ab)^3$
+and $d$ to $a^2ba=(ab)^2$, so the induced map to the order-six
+subgroup is exactly the abelianization $B\twoheadrightarrow C_6$,
+with $\tau\mapsto ab$.
+
+The free-kernel presentation in E.261 gives
+\[
+ \operatorname{Ad}(a):(x,y)\longmapsto(x,yx),\qquad
+ \operatorname{Ad}(b):(x,y)\longmapsto(xy^{-1},y).
+\]
+It follows directly, or by substitution in the literal braid words,
+that
+\[
+ \rho_+(\tau)=y^{-1}(ab),\qquad
+ \rho_+(s)=x^{-1}y^{-1}(ab)^3,
+\]
+and then the two identities in (FCE.2) follow.  Their right sides
+are a free basis of $K$: if they are denoted by $v,w$, the inverse
+substitutions are $y=vw^{-1}$ and $x=vwv^{-1}$.
+
+The index-six subgroup $B'$ is torsion-free and free of rank two,
+as follows from its graph-of-groups cover of $C_2*C_3$ (Euler
+characteristic $6(1/2+1/3-1)=-1$).  Thus the surjection
+$B'\to K$ just obtained is an isomorphism: after arbitrary free-basis
+identifications it is a surjective endomorphism of a finitely
+generated free group, which is Hopfian.  The map in (FCE.1) is now
+an isomorphism on both the kernels and the quotient $C_6$, proving
+its assertion.
+
+For completeness the exact peripheral word can be computed before
+taking the central quotient.  Ferrari combing of
+$\rho_+(\tau)^6z_4^{-1}$ gives $y^{-1}x^{-1}yx$, with trivial
+three-strand factor.  Free reduction identifies that word with the
+right side of (FCE.3).  The program
+\texttt{check\_quartic\_embedding.py} independently verifies every
+braid identity above in the faithful Artin action of $B_4$ on $F_4$;
+it also performs the Ferrari combing and checks the full cyclic
+commutator orientation.
+
+\par\medskip\noindent\textbf{The actual geometric pullback and its homology marking.}\quad
+This also identifies the image of the geometric division-quartic
+map, without using E.260 as an additional assertion.  Put
+$D=4a_0^3+27b_0^2$ (the subscripts distinguish these coefficients
+from the braid letters).  Rigidification of the original elliptic
+involution gives weights $(2,3)$ on $(a_0,b_0)$.  Since $D$ has
+weight six, the slice $D=108$ gives an actual isomorphism of stacks
+\[
+ [\{D\ne0\}/\mathbb G_m{}_{(2,3)}]
+   \simeq[\{D=108\}/\mu_6]
+   \xrightarrow{\ \sim\ }
+ [ (\mathcal E_0\setminus\{O\})/\mu_6],
+ \quad \mathcal E_0:Y^2=Z^3+1,                         \tag{FCE.4}
+\]
+where the second map and its inverse are the literal formulas
+\[
+ (Z,Y)=(-a_0/3,-b_0/2),\qquad (a_0,b_0)=(-3Z,-2Y).
+                                                               \tag{FCE.5}
+\]
+Indeed $D=108(Y^2-Z^3)$, and the residual action is
+$(Z,Y)\mapsto(v^2Z,v^3Y)$ for $v\in\mu_6$.
+The first map is the scalar-slice quotient: the six choices of a
+sixth root normalizing $D$ differ precisely by this displayed
+$\mu_6$ action.  Thus it is a stack isomorphism, not merely a map
+of coarse spaces.  The source is the orbifold affine line with
+an order-three point at $a_0=0$, an order-two point at $b_0=0$,
+and the discriminant cusp removed.  Its orbifold fundamental
+group is the displayed $C_2*C_3$.
+
+The point in (FCE.5) is the ordered second point in the monic
+quartic construction: the positive pole is $O$ and the negative
+pole is $(-a_0/3,-b_0/2)$.  This follows directly from
+$Z=(t+x^2+a_0)/2-a_0/3$ and
+$Y=((t+x^2+a_0)/2)x+b_0/2$ in the mutually inverse quartic formulas.
+Consequently (FCE.4) is the actual pullback of the ordinary
+universal curve $\mathcal M_{1,2}\to\mathcal M_{1,1}$ along
+$B\operatorname{Aut}(\mathcal E_0,O)=B\mu_6$.
+Its fundamental-group map is an isomorphism on the fibre
+$\pi_1(\mathcal E_0\setminus\{O\})=F_2$ and has the indicated
+$\mu_6$ quotient.  The ordinary Birman sequence therefore
+identifies its image with the full inverse image of this very
+CM subgroup in $\Gamma_{1,2}$.
+
+Here is the homology marking of that subgroup.  Set
+$\zeta=e^{2\pi i/3}$ and $v=e^{\pi i/3}=1+\zeta$.
+Use the oriented period basis $(1,\zeta)$ of the hexagonal
+uniformization of $\mathcal E_0$, identified with the oriented
+pointpush basis $(\xi_1,\xi_2)$ of (E.261).  This is an actual
+marking of the torus.  The displayed $v$-action multiplies the
+invariant differential $dZ/Y$ by $v^{-1}$ and hence acts on its
+uniformizing coordinate by $v^{-1}=-\zeta$.  On this basis its
+matrix is
+\[
+ 1\longmapsto-\zeta,\qquad
+ \zeta\longmapsto1+\zeta,\qquad
+ \begin{pmatrix}0&1\\-1&1\end{pmatrix}
+ =UL_0=Q(ab).                                           \tag{FCE.6}
+\]
+The same marking is available in the Teichm\"uller space of the
+once-punctured torus; transport along it identifies ordinary
+forgetting with the folding map $q$.  Thus the CM subgroup is
+literally $\langle ab\rangle$ in
+$B_3/\langle z_3^2\rangle$, not an abstractly isomorphic cyclic
+subgroup.  Formula (FCE.4) and the kernel--quotient comparison
+identify the geometric image with $q^{-1}(\langle ab\rangle)$.
+Any remaining based choice in its fibre is the actual inner
+element retained in A.4.5; no assertion that this element is
+trivial is needed.
+
+Finally the completion of the discrete pullback has kernel
+$\widehat B'\cong\widehat F_2$, since $B'$ has finite index in $B$.
+The full Birman injection identifies this kernel with the actual
+closed kernel $\widehat K$ of $\widehat L\to\widehat{B_3/\langle
+z_3^2\rangle}$.  The cyclic subgroup survives in the latter group,
+for example in its integral homology representation modulo three
+and four.  Therefore the completed map has this same kernel and
+quotient, and is an isomorphism onto the actual pullback.
+\end{proof}
+
+This gives specified finite words for pulling a finite quotient of
+$L$ back to $B$.  In particular the quotient in A.4.3 is invariant
+under $L$, because both its parity map and its signed matrix map
+are equivariant under braid conjugation; its normal kernel therefore
+defines a finite quotient of $L$ of order
+$24\cdot768\cdot3^{114}$, to which (FCE.1) applies literally.
+Comparison with the geometric division-quartic map of E.260 uses
+its actual peripheral orientation and basepoint transport; (FCE.3)
+records those data for $\rho_+$ rather than assigning an unspecified
+isomorphism the same marking.  No finite parity exclusion follows
+merely from the existence of (FCE.1).

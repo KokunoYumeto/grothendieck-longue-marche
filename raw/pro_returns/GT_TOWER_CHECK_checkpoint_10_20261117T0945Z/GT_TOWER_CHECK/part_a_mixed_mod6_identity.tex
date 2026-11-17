@@ -1,0 +1,175 @@
+% New A.4 contribution following the full harmonic odd-refinement result.
+\subsection{The exact identity fibre at the mixed modulus-six five-point level}
+
+Retain the marked groups $B_0,F_0,Q_B,K$ and the
+split fifth insertion $F_0\to\Gamma_{0,5}$ of
+A.4.45.  In particular $|Q_B|=576$, $K$ is free
+of rank $97$, and $K\subset F_0$ has index $96$.
+Let $N$ be the kernel of the signed order-$192$
+five-point quotient, as in (HTS.2).  Put
+\[
+ \Gamma_6=\Gamma_{0,5}/(N'N^6),\qquad
+ B_p=B_0/(K'K^p)\quad(p=2,3).
+ \tag{MIF.1}
+\]
+All these are the named ordinary finite quotients
+and hence also quotients of their profinite
+completions.
+
+\begin{result}{A.4.51}{Proved}{No parity-one element in the actual identity fibre at modulus six}
+For every actual multiplier-one gentle element
+$g=(1,f_g)\in H$, the following implication holds
+through the literal fifth-insertion morphism:
+\[
+ \iota_5(f_g)=1\text{ in }\Gamma_6
+ \quad\Longrightarrow\quad
+ \theta_{12}(\beta_g)=\theta_{12}(A_g)=I,
+ \quad V_g=T_g=W_g=I,
+ \quad \Delta(g)=0.
+ \tag{MIF.2}
+\]
+Thus the identity fibre of the normalized parameter
+at this specific five-point quotient contains no
+actual parity-one gentle element.  The conclusion
+does not enumerate the other source fibres.
+\end{result}
+
+\begin{proof}
+We give the binary centralizer comparison first.
+Write $S=q_B(s)$ and $R=q_B(r)$, and let
+\[
+ \Omega_2=Q_B/\langle S\rangle,\qquad
+ V_2=\mathbb F_2[\Omega_2],\qquad
+ e=e_{\langle S\rangle}.
+ \tag{MIF.3}
+\]
+Use the actual left permutation action of $Q_B$
+on these $288$ cosets and the product law
+$(v,h)(w,k)=(v+h\cdot w,hk)$.
+The generator assignment
+\[
+ \eta_2:B_0\longrightarrow V_2\rtimes Q_B,
+ \qquad s\longmapsto(e,S),\qquad
+ r\longmapsto(0,R)
+ \tag{MIF.4}
+\]
+is a homomorphism: $S$ fixes $e$, so the square
+of its displayed lift is zero in the vector
+coordinate, and the cubic relation for $r$ is
+immediate.  Projection is the specified $q_B$.
+The restriction to $K$ lands in $V_2$ and therefore
+kills $K'K^2$.  It consequently factors through
+the actual $B_2$ in (MIF.1).
+
+The $96$-state pure Cayley graph, with the specified
+$x,y$ edges, has $97$ non-tree edge loops.  These
+are the retained free basis of $K$.  Evaluating
+them by (MIF.4) gives a matrix of rank $97$ in
+$V_2$.  Write its row space as $W_2$.
+Thus the induced $K/(K'K^2)\to V_2$ is injective
+as well as onto $W_2$.  In particular the image
+of (MIF.4) is exactly the marked group $B_2$,
+of order $576\cdot2^{97}$.
+
+For a pure residue $h\in q_B(F_0)$, retain the
+fixed based word $w_h\in F_0$ in the spanning
+tree and write
+$\eta_2(w_h)=(t_h,h)$.
+The actual fibre over $h$ consists of
+$(t_h+w,h)$ with $w\in W_2$.  A lift centralizes
+$\eta_2(s)$ precisely when $hS=Sh$ and
+\[
+ d_h:=t_h+h\cdot e-e-S\cdot t_h
+                         \ \in\ (S-I)W_2.
+ \tag{MIF.5}
+\]
+This is obtained by multiplying the two displayed
+semidirect-product elements in both orders.
+There is no replacement of the source fibre by
+the ambient permutation module.
+
+The executable certificate
+\path{check_binary_modular_centralizer.py} forms
+all these vectors from the actual source words.
+It checks $\dim W_2=97$ and
+$\dim(S-I)W_2=45$.  There are eight pure base
+residues centralizing $S$.  Their exact projective
+matrix representatives, using the fixed choice
+of the smaller of $M,-M$ modulo twelve, give
+\[
+\begin{array}{c|c|c}
+ \text{state}&(a,b,c,d)\text{ for }
+                  \begin{pmatrix}a&b\\c&d\end{pmatrix}
+                       &d_h\in(S-I)W_2\\ \hline
+ 0&(1,0,0,1)&\text{yes}\\
+ 372&(3,10,2,3)&\text{no}\\
+ 376&(3,4,8,3)&\text{no}\\
+ 392&(5,6,6,5)&\text{no}\\
+ 550&(3,2,10,3)&\text{no}\\
+ 555&(3,8,4,3)&\text{no}\\
+ 573&(5,0,0,5)&\text{no}\\
+ 575&(1,6,6,1)&\text{no}
+\end{array}                                            \tag{MIF.6}
+\]
+For each negative entry the numerical archive
+contains an explicit column functional $\ell_h$
+on $V_2$ and verifies both
+$\ell_h((S-I)W_2)=0$ and $\ell_h(d_h)=1$.
+The identity entry has the actual identity lift.
+These exhaustive source-fibre tests prove
+\[
+ \operatorname{im}\bigl(
+ C_{B_2}(s)\cap\operatorname{im}(F_0\to B_2)
+                        \longrightarrow Q_B\bigr)=\{1\}.
+ \tag{MIF.7}
+\]
+
+Now suppose the left side of (MIF.2) holds.
+The exact retraction of A.4.45, with $m=6$,
+is the map
+\[
+ \Gamma_6\longrightarrow F_0/(K'K^6)
+                   \longrightarrow B_p,
+ \qquad \iota_5(w)\longmapsto w\longmapsto w
+                    \quad(p=2,3).
+ \tag{MIF.8}
+\]
+The second arrows exist because $K^6\subset K^p$.
+Thus $f_g$ has identity value in both $B_2$ and
+$B_3$.  The genuine multiplier-one source action
+and its unique pure torsion frames satisfy
+\[
+ \alpha_g(s)=s f_g=\beta_gs\beta_g^{-1},\qquad
+ \alpha_g(r)=f_g^{-1}r=A_grA_g^{-1}.
+ \tag{MIF.9}
+\]
+Consequently the image of $\beta_g$ in $B_2$
+centralizes $s$, while the image of $A_g$ in
+$B_3$ centralizes $r$.  Formula (MIF.7) forces
+$q_B(\beta_g)=1$.  The ternary vertex-module
+centralizer comparison of A.4.45 forces
+$q_B(A_g)=1$.  Since both frames lie in the actual
+pure subgroup $\widehat F_0$, and $q_B|_{F_0}$
+has exactly the signed kernel of $\theta_{12}$,
+these are the literal signed identities
+$\theta_{12}(\beta_g)=\theta_{12}(A_g)=I$.
+
+The signed cubic covariance gives
+$T_g=\theta_{12}(A_g)^{-1}V_g=V_g=U^{8\rho_g}$
+centralizing $R_0$.  As in (HTS.17), checking its
+three possible values modulo three forces
+$\rho_g=0$ modulo three.  It is already identity
+modulo four, so $V_g=I$ modulo twelve.
+Then $T_g=W_g=I$, and the defining character
+formula gives $\Delta(g)=0$.  This proves (MIF.2)
+on the explicitly stated domain $H$.
+\end{proof}
+
+The harmonic frame in (HTS.19) has state $555$
+in (MIF.6), after the specified projective choice
+of sign.  Its exclusion at the binary layer is
+therefore an explicit additional condition beyond
+its full canonical lift at the ternary level in
+A.4.48.  The inclusion
+$N'N^6\subset N'N^3$ gives the actual quotient
+$\Gamma_6\to\Gamma_3$ relating those two tests.

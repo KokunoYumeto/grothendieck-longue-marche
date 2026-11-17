@@ -1,0 +1,163 @@
+% Actual perfect source factor and its canonical-centralizer lift.
+\subsection{An independent perfect source factor in the full descent kernel}
+
+Let $q_R:B\to R$ be any specified finite quotient.  Retain
+the full six-coordinate kernel $K$ of B.2.13 and put
+$K_R=K\cap\ker q_R$.  For a prime $p\geq5$, use the
+actual modular quotient
+\[
+ q_p:B\twoheadrightarrow Q_p=\operatorname{PSL}_2(\mathbb F_p),
+ \qquad s\longmapsto[S],\quad r\longmapsto[R_0],
+ \quad
+ S=\begin{pmatrix}0&-1\\1&0\end{pmatrix},\quad
+ R_0=\begin{pmatrix}0&-1\\1&-1\end{pmatrix}.
+ \tag{B.AB1}
+\]
+For every $p\nmid|R|$ define
+\[
+ U_R=B/K_R,\quad K_{R,p}=K_R\cap\ker q_p,\quad
+ U_{R,p}=B/K_{R,p},\quad
+ U_{R,p}^{\mathrm c}=B/\overline{[B,K_{R,p}]}.
+ \tag{B.AB2}
+\]
+All maps are induced by the named source elements.
+
+\begin{result}{B.2.29}{Proved}{A full positive lift with an independent perfect source frame}
+For every pair $(R,p)$ specified above, the actual joint map is
+\[
+ U_{R,p}\xrightarrow{\ \sim\ }U_R\times Q_p.
+ \tag{B.AB3}
+\]
+The pure element $b=(1,q_p(s))$ in this product has a
+pure lift to $U_{R,p}^{\mathrm c}$ that centralizes the
+named $s$.  There is consequently a full positive
+cusp-fixed automorphism $\Phi$ of $B$ with pure frames
+$\beta,A$ satisfying
+\[
+ \Phi_{U_{R,p}}=1,\qquad
+ \beta_{U_{R,p}}=(1,q_p(s)),\qquad A_{U_{R,p}}=1.
+ \tag{B.AB4}
+\]
+Its commutator normalization gives an actual
+$a_{R,p}\in H\cap\ker D_P$.
+\end{result}
+\begin{proof}
+The Brunnian word $w$ of (B.Z4) lies in the actual
+discrete six-coordinate kernel $K_0$.  Under the integral
+pure matrix representation $x\mapsto U^2$,
+$y\mapsto L^2$, direct multiplication gives
+\[
+ w\longmapsto
+ \begin{pmatrix}-191487&264064\\-721024&994305\end{pmatrix},
+ \qquad
+ \gcd(w-I)=128,\quad\gcd(w+I)=2.
+ \tag{B.AB5}
+\]
+The two gcds mean the gcds of all four displayed
+difference entries.  Thus the projective image of $w$
+is nonidentity at every odd prime.  The integral matrix
+and both gcds are retained in the exact checker
+\path{check_prime_harmonic_cartans.py}.
+
+The group $Q_p$ is nonabelian simple, hence perfect;
+one primary proof is \cite[Theorems 3.3--3.5]{CA_ConradPSL}.
+Surjectivity of (B.AB1) also follows directly because
+the images contain the upper unipotents and their
+$S$ conjugates, which generate $\operatorname{SL}_2(\mathbb F_p)$.
+Consequently the normal subgroup $q_p(K_0)$ is all
+of $Q_p$.  Put $K_{0,R}=K_0\cap\ker(q_R|_{B_0})$.
+Its image under $q_p$ is again normal in $Q_p$.
+A trivial image would make $Q_p$ a quotient of
+$K_0/K_{0,R}$, a subgroup of the finite group $R$.
+That would force $p$ to divide $|R|$, contrary to its
+specified choice.  Thus
+\[
+                         q_p(K_{0,R})=Q_p.
+ \tag{B.AB6}
+\]
+The joint image of $B_0$ in $U_{0,R}\times Q_p$ is
+therefore the entire direct product, where
+$U_{0,R}=B_0/K_{0,R}$.  The same argument with the
+contained discrete subgroup proves (B.AB3) for the
+actual profinite groups.
+
+We prove the centralizer lift in the discrete source
+first.  Set $K_{0,R,p}=K_{0,R}\cap\ker q_p$ and
+$U_{0,R,p}=B_0/K_{0,R,p}=U_{0,R}\times Q_p$.
+Since $K_{0,R}\subseteq B_0'$ and the quotient still
+maps onto $U_0$, its abelianization is exactly $C_6$.
+The direct product has the same abelianization because
+$Q_p$ is perfect.  As $H_2(B_0,\mathbb Z)=0$, the
+five-term homology sequence identifies its canonical
+central kernel with
+\[
+ \begin{aligned}
+ M_{0,R,p}
+   &=K_{0,R,p}/[B_0,K_{0,R,p}]\\
+   &\cong H_2(U_{0,R}\times Q_p,\mathbb Z)\\
+   &\cong H_2(U_{0,R},\mathbb Z)\oplus H_2(Q_p,\mathbb Z).
+ \end{aligned}
+ \tag{B.AB7}
+\]
+The last isomorphism is induced by the two actual
+projections and their coordinate sections.  In the
+integral K\"unneth formula the only possible cross
+term is $H_1(U_{0,R},\mathbb Z)\otimes H_1(Q_p,\mathbb Z)$,
+which is zero.  No calculation of a Schur multiplier
+or of its exponent is being inserted here.
+
+Choose an actual word $v\in K_{0,R}$ with
+$q_p(v)=q_p(s)$, using (B.AB6).  It represents
+$b=(1,q_p(s))$, so $[v,s]$ belongs to the central
+kernel in (B.AB7).  Its image there is trivial.
+To verify this integrally, take any character of that
+abelian kernel to $\mathbb Q/\mathbb Z$ and push out
+the canonical central extension.  The universal-coefficient
+sequence has no Ext term with these divisible
+coefficients, so (B.AB7) says that the resulting
+degree-two class is a sum of the pullbacks of classes
+from the two factors.  In a class pulled back from
+$U_{0,R}$, the element $b$ projects to one, so its
+lift commutes with a lift of $s$.  In a class pulled
+back from $Q_p$, the two elements $b,s$ project to
+the same element $q_p(s)$.  Their lifts differ by a
+central element and therefore commute as well.
+The commutator evaluation is additive under the
+sum of central-extension classes.  Every such
+character thus kills the class of $[v,s]$.
+Characters to $\mathbb Q/\mathbb Z$ separate elements
+of an abelian group: a character detecting a
+nonzero element of its cyclic subgroup extends
+because $\mathbb Q/\mathbb Z$ is injective.
+It follows that
+\[
+                         [v,s]\in[B_0,K_{0,R,p}].
+ \tag{B.AB8}
+\]
+
+This word identity maps directly into
+$\overline{[B,K_{R,p}]}$.  Therefore the image
+$\widetilde b$ of $v$ in the full central cover
+of (B.AB2) is a pure element centralizing $s$.
+Use the identity automorphism of that cover with
+positive $s$-frame $\widetilde b$, positive
+$r$-frame one, and cusp frame one.
+The full central-cover image equality B.2.14,
+including its prescribed frame values, gives
+exactly (B.AB4).
+
+Finally put $\beta^{\rm ab}=(u,v_0)$ and $t=v_0-u$.
+Since $\beta\in K$, the first two target maps into
+$B^{\rm ab}=C_6$ give $3u+v_0=u+3v_0=0$ modulo six.
+Thus $t\in6\widehat{\mathbb Z}$, as in B.2.27.
+The normalized automorphism
+$\Phi_0=\operatorname{Inn}(x^t)\Phi$ gives
+$a_{R,p}\in H$.  Before this normalization the
+descended action is the identity, since
+$\Phi_U=1$.  After normalization it changes by
+$\operatorname{Inn}(\varphi_P(x)^t)
+=\operatorname{Inn}(s^t)=1$.  Hence its literal
+normalized descendant is the identity, proving
+$a_{R,p}\in\ker D_P$.
+\end{proof}
+

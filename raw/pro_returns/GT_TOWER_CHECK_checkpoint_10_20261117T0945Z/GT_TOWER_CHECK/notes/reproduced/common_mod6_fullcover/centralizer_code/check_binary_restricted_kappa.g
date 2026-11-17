@@ -1,0 +1,102 @@
+SMALL_P:=2;;SMALL_FULL:=true;;SMALL_BUILD_ONLY:=true;;
+Read("work/centralizer_code/check_universal_small_homology.g");;
+Read("work/centralizer_code/build_six_pc_source.g");;
+Read("work/centralizer_code/small_homology_replay_2_full.g");;
+targetBase:=GroupHomomorphismByImages(newTarget,gg,[newS,newR],[markedS,markedR]);;
+if targetBase=fail or not IsSurjective(targetBase) then Error("binary target base map");fi;
+targetLayer:=Kernel(targetBase);;
+if Size(targetLayer)<>2^5 or not IsAbelian(targetLayer) or Exponent(targetLayer)<>2 then Error("binary target module");fi;
+coverBase:=GroupHomomorphismByImages(T3cover,gg,[T3coverS,T3coverR],[markedS,markedR]);;
+if coverBase=fail or not IsSurjective(coverBase) or Size(Kernel(coverBase))<>2^3 then Error("binary T3 target cover");fi;
+targetT3:=NormalClosure(T3cover,Group((T3coverS*T3coverR)^3));;
+if Size(CommutatorSubgroup(targetT3,Kernel(coverBase)))<>1 then Error("binary literal T3 module action");fi;
+BuildReplayPC:=function(dat)
+ local n,fg,g,coll,word,i,rel;
+ n:=Length(dat[1]);fg:=FreeGroup(n);g:=GeneratorsOfGroup(fg);
+ coll:=SingleCollector(g,dat[1]);word:=v->Product([1..n],j->g[j]^v[j]);
+ for i in [1..n] do SetPower(coll,i,word(dat[2][i]));od;
+ for rel in dat[3] do SetConjugate(coll,rel[1],rel[2],word(rel[3]));od;
+ return GroupByRws(coll);
+end;;
+gp:=BuildReplayPC(ReplayPC);;pc:=Pcgs(gp);;n:=Length(pc);;
+word:=v->Product([1..n],j->pc[j]^v[j]);;
+sp:=word(ReplayPC[4]);;rp:=word(ReplayPC[5]);;
+if PCData(gp,sp,rp)<>ReplayPC then Error("binary exact replay alignment");fi;
+d:=Length(ReplayCocycles);;
+coc:=Concatenation(List([1..Length(ReplayCocycles[1])],i->List([1..d],j->ReplayCocycles[j][i]*One(GF(2)))));;
+modu:=GModuleByMats(List(pc,g->IdentityMat(d,GF(2))),GF(2));;
+cover:=Extension(gp,modu,coc);;cp:=Pcgs(cover);;
+lift:=g->MappedPcElement(g,pc,cp{[1..n]});;
+cs:=lift(sp);;cr:=lift(rp)^4;;
+if cs^2<>One(cover) or cr^3<>One(cover) or Size(Group(cs,cr))<>Size(cover) then Error("binary marked replay");fi;
+base:=BuildSixPcSource(gg,markedS,markedR);;
+quot:=GroupHomomorphismByImages(gp,base.group,[sp,rp],[base.s,base.r]);;
+if quot=fail or not IsSurjective(quot) then Error("binary exact base quotient");fi;
+aa:=Kernel(quot);;
+if Size(aa)<>2^30 or not IsAbelian(aa) or Exponent(aa)<>2 then Error("binary module kernel");fi;
+xx:=(sp*rp)^-2;;yy:=sp*xx*sp;;pure:=Group(xx,yy);;
+phi:=GroupHomomorphismByImages(pure,newTarget,[xx,yy],[newS,newS*newR]);;
+if phi=fail or not IsSurjective(phi) then Error("binary exact target projection");fi;
+reps:=[One(gp),sp,rp,rp^2,sp*rp,sp*rp^2];;
+phib:=List(reps,b->GroupHomomorphismByImages(pure,newTarget,[xx,yy],[Image(phi,b*xx*b^-1),Image(phi,b*yy*b^-1)]));;
+if not ForAll(phib,z->z<>fail and IsSurjective(z)) then Error("binary six source projections");fi;
+factors:=[];;
+for i in [1..6] do
+ ai:=Intersection(Concatenation([aa],List(Filtered([1..6],j->j<>i),j->Kernel(phib[j]))));;
+ if Size(ai)<>2^5 then Error("binary literal factor order");fi;
+ Add(factors,GeneratorsOfGroup(ai));
+od;
+if Size(Group(Concatenation(factors)))<>Size(aa) then Error("binary factors exhaust module");fi;
+CentralRow:=function(z)
+ local v;
+ v:=ExponentsOfPcElement(cp,z);
+ if not ForAll(v{[1..n]},i->i=0) then Error("binary noncentral restriction");fi;
+ return v{[n+1..n+d]}*One(GF(2));
+end;;
+selfRows:=[];;pairRows:=[];;pairRanks:=[];;
+for i in [1..6] do
+ for j in [1..Length(factors[i])] do
+  Add(selfRows,CentralRow(lift(factors[i][j])^2));
+  for k in [1..j-1] do Add(selfRows,CentralRow(Comm(lift(factors[i][j]),lift(factors[i][k]))));od;
+ od;
+ for j in [1..i-1] do
+  pair:=[];
+  for a in factors[i] do for b in factors[j] do Add(pair,CentralRow(Comm(lift(a),lift(b))));od;od;
+  Append(pairRows,pair);Add(pairRanks,[j,i,RankMat(pair)]);
+ od;
+od;
+Print("BINARY LITERAL PAIRS: source order=",Size(gp),"; module order=",Size(aa),"; central dimension=",d,"; self restriction rank=",RankMat(selfRows),"; cross restriction rank=",RankMat(pairRows),"; total rank=",RankMat(Concatenation(selfRows,pairRows)),"\n");
+Print("BINARY pair ranks: ",pairRanks,"\n");
+stream:=OutputTextFile("work/centralizer_code/check_binary_restricted_kappa_pairs.json",false);;
+SetPrintFormattingStatus(stream,false);
+PrintTo(stream,"{\"source_order\":",Size(gp),",\"module_order\":",Size(aa),",\"self_rank\":",RankMat(selfRows),",\"pair_rank\":",RankMat(pairRows),",\"total_rank\":",RankMat(Concatenation(selfRows,pairRows)),",\"pair_ranks\":",pairRanks,",\"self_rows\":",List(selfRows,v->List(v,IntFFE)),",\"pair_rows\":",List(pairRows,v->List(v,IntFFE)),"}\n");
+CloseStream(stream);
+centS:=Centralizer(pure,sp);;
+kappaRows:=List(GeneratorsOfGroup(centS),g->CentralRow(Comm(lift(g),cs)));;
+sumRows:=Concatenation(kappaRows,selfRows,pairRows);;
+if d<>4 or RankMat(kappaRows)<>3 or RankMat(selfRows)<>1 or RankMat(pairRows)<>1 or RankMat(Concatenation(selfRows,pairRows))<>2 or RankMat(sumRows)<>4 then Error("binary complete rank certificate");fi;
+Print("BINARY KAPPA FILTRATION: kappa rank=",RankMat(kappaRows),"; restriction rank=",RankMat(Concatenation(selfRows,pairRows)),"; combined rank=",RankMat(sumRows),"; central dimension=",d,"\n");
+stream:=OutputTextFile("work/centralizer_code/check_binary_restricted_kappa_original.json",false);;
+SetPrintFormattingStatus(stream,false);
+PrintTo(stream,"{\"source_order\":",Size(gp),",\"central_dimension\":",d,",\"kappa_rank\":",RankMat(kappaRows),",\"restriction_rank\":",RankMat(Concatenation(selfRows,pairRows)),",\"combined_rank\":",RankMat(sumRows),",\"kappa_rows\":",List(kappaRows,v->List(v,IntFFE)),"}\n");
+CloseStream(stream);
+
+
+# Retain the actual source A4 quotient while restricting harmonic corrections.
+qaS:=(1,2)(3,4);;qaR:=(1,2,3);;qa:=Group(qaS,qaR);;
+qaff:=GroupHomomorphismByImages(gp,qa,[sp,rp],[qaS,qaR]);;
+if qaff=fail or not IsSurjective(qaff) then Error("binary source A4 quotient");fi;
+imageS:=Image(qaff,centS);;
+if Size(imageS)<>2 or not qaS in imageS then Error("binary source harmonic image");fi;
+centSeven:=Intersection(centS,Kernel(qaff));;
+restrictedKappaRows:=List(GeneratorsOfGroup(centSeven),g->CentralRow(Comm(lift(g),cs)));;
+BitBool:=function(b) if b then return 1;else return 0;fi;end;;
+augRows:=List(GeneratorsOfGroup(centS),g->Concatenation(CentralRow(Comm(lift(g),cs)),[One(GF(2))*BitBool(Image(qaff,g)=qaS)]));;
+Print("BINARY RESTRICTED KAPPA: source=",Size(gp),"; centralizer=",Size(centS),"; source A4 image=",Elements(imageS),"; restricted centralizer=",Size(centSeven),"; unrestricted kappa rank=",RankMat(kappaRows),"; restricted kappa rank=",RankMat(restrictedKappaRows),"; augmented rank=",RankMat(augRows),"; restriction-plus-restricted-kappa rank=",RankMat(Concatenation(selfRows,pairRows,restrictedKappaRows)),"\n");
+Print("BINARY RESTRICTED KAPPA ROWS: ",List(restrictedKappaRows,v->List(v,IntFFE)),"\n");
+Print("BINARY AUGMENTED KAPPA ROWS: ",List(augRows,v->List(v,IntFFE)),"\n");
+stream:=OutputTextFile("work/centralizer_code/check_binary_restricted_kappa.json",false);;
+SetPrintFormattingStatus(stream,false);;
+PrintTo(stream,"{\"source_order\":",Size(gp),",\"centralizer_order\":",Size(centS),",\"restricted_centralizer_order\":",Size(centSeven),",\"restricted_kappa_rank\":",RankMat(restrictedKappaRows),",\"augmented_rank\":",RankMat(augRows),",\"combined_rank\":",RankMat(Concatenation(selfRows,pairRows,restrictedKappaRows)),",\"restricted_kappa_rows\":",List(restrictedKappaRows,v->List(v,IntFFE)),",\"augmented_rows\":",List(augRows,v->List(v,IntFFE)),"}\n");;
+CloseStream(stream);;
+QUIT_GAP(0);

@@ -1,0 +1,201 @@
+\subsection{A finite centralizer that links the two CM signs}
+
+\begin{result}{A.4.6}{Proved}{An explicit finite centralizer stabilization}
+Put $B=\langle s,r\mid s^2=r^3=1\rangle$ and use the literal
+projective level-twelve homomorphism
+\[
+ q:B\twoheadrightarrow Q=\operatorname{PSL}_2(\mathbb Z/12),
+ \qquad
+ q(s)=\left[\begin{pmatrix}0&1\\-1&0\end{pmatrix}\right],
+ \quad q(r)=\left[\begin{pmatrix}0&-1\\1&-1\end{pmatrix}\right].
+                                                               \tag{FCM.1}
+\]
+Here $\operatorname{PSL}_2(\mathbb Z/12)$ means the displayed
+matrix group modulo its diagonal subgroup $\{I,-I\}$, of order
+$576$.  Let $N=\ker q$ and
+\[
+ R=B/(N'N^3),\qquad |R|=576\cdot3^{97}.
+                                                               \tag{FCM.2}
+\]
+The exact image of $C_R(r)$ in $Q$ is $\langle q(r)\rangle$.
+The kernel of this centralizer map has order $3^{34}$.
+An explicitly specified $Q$-stable quotient of $N/N'N^3$ of
+dimension $96$ gives a further finite quotient $R_{96}$ of order
+$576\cdot3^{96}$ with the same centralizer image.
+
+For the signed modular group $\Gamma=\operatorname{SL}_2(\mathbb Z)$,
+write $\Gamma(12)=\ker(\Gamma\to\operatorname{SL}_2(\mathbb Z/12))$.
+There are the actual signed refinements
+\[
+ \mathscr R=\Gamma/(\Gamma(12)'\Gamma(12)^3),
+ \quad |\mathscr R|=1152\cdot3^{97},
+ \qquad |\mathscr R_{96}|=1152\cdot3^{96}.               \tag{FCM.3}
+\]
+For $R_+=UL_0=\left(\begin{smallmatrix}0&1\\-1&1\end{smallmatrix}\right)$,
+the image of either $C_{\mathscr R}(R_+)$ or
+$C_{\mathscr R_{96}}(R_+)$ under reduction modulo twelve is exactly
+\[
+ \langle R_+\bmod12\rangle\cong C_6.                    \tag{FCM.4}
+\]
+Thus the order-six CM exponent is already a single exponent at
+this finite level; independent choices of its parity at three
+and four are excluded there.
+
+The ordinary folding homomorphism
+$L=B_4/\langle z_4\rangle\to\Gamma$ sends
+$(\sigma_1,\sigma_2,\sigma_3)$ to $(U,L_0,U)$.
+Its restriction to $P=\Gamma_{0,5}$ has image $\Gamma(2)$.
+Consequently (FCM.3) supplies explicitly marked finite quotients
+of the five-point group of orders
+\[
+ 192\cdot3^{97}\quad\hbox{and}\quad192\cdot3^{96}.
+                                                               \tag{FCM.5}
+\]
+This is the finite centralizer assertion needed at the final
+CM gauge.  It does not by itself supply the earlier finite
+nine-point naturality comparison.
+\end{result}
+
+\begin{proof}
+We give the entire finite covering-graph construction and the
+exclusion certificate.  The images of the two factors in (FCM.1)
+have orders two and three.  Thus $N$ acts freely on the
+Bass--Serre tree, and its quotient graph has edge set $Q$ and
+vertex set
+\[
+ Q/\langle q(s)\rangle\ \amalg\ Q/\langle q(r)\rangle.
+\]
+The edge $g$ is directed from $g\langle q(s)\rangle$ to
+$g\langle q(r)\rangle$.  This is a connected graph with $576$
+edges and $288+192=480$ vertices.  Its fundamental group is
+exactly $N$, so $N$ is free of rank $576-480+1=97$.
+This proves the order in (FCM.2).
+
+All matrix and basis orderings in the certificate are deterministic.
+Enumerate $Q$ breadth first, starting at $I$, multiplying on the
+right first by $q(s)$ and then by $q(r)$, and select the
+lexicographically smaller of a matrix and its negative.  Enumerate
+right cosets by their first element in this list.  Starting at
+$\langle q(s)\rangle$, take the breadth-first spanning tree whose
+incident edges are considered in increasing edge order.  List the
+$97$ remaining edges in increasing order.  For such an edge $e$
+from $u$ to $v$, its fundamental cycle is
+\[
+ z_e=\operatorname{path}(u)+e-\operatorname{path}(v).
+\]
+Let $Z$ be the $97\times576$ matrix of these integral cycles, and
+let $J$ be the ordered list of the $97$ remaining edges.  Then
+$Z_{*,J}=I_{97}$.  In particular restriction to the $J$ coordinates
+is the inverse of this cycle-basis parametrization; there is no
+quotient or kernel inferred merely from a dimension count.
+
+Left multiplication by $q(r)$ permutes edges.  Its actual action
+on $H_1(N,\mathbb F_3)$ is consequently
+\[
+ A=Z_{*,\,q(r)^{-1}J}\pmod3,
+ \qquad A^3=I,
+ \qquad \operatorname{rank}(A-I)=63.                    \tag{FCM.6}
+\]
+The graph path associated to a word in $B$ has the exact rules
+\[
+ c(s)=0,\qquad c(r)=e_1-e_{q(r)},\qquad
+ c(r^{-1})=e_1-e_{q(r)^{-1}},\qquad
+ c(uv)=c(u)+q(u)c(v).                                   \tag{FCM.7}
+\]
+They respect both defining relations $s^2=r^3=1$.  On a word in
+$N$, the resulting cycle is its homology class.  These rules are
+also obtained by taking the literal path between the two factor
+vertices in the Bass--Serre tree.
+
+For each of the $18$ elements $h\in C_Q(q(r))$, let $t_h$ be its
+breadth-first word.  The obstruction to a commuting lift is the
+class of
+\[
+ b_h=c(r t_h r^{-1}t_h^{-1})_{J}\pmod3
+ \quad\hbox{in}\quad
+ \mathbb F_3^{97}/\operatorname{im}(A-I).                \tag{FCM.8}
+\]
+Indeed a lift has the form $u t_h$ with $u\in N/N'N^3$; its
+commutator with $r$ has coordinate $u(A-I)+b_h$.
+Thus (FCM.8) vanishes exactly when such a commuting lift exists.
+
+Here is a compact complete exclusion certificate.  In the stated
+$97$-coordinate basis take the column functional $\ell$ supported
+on the following coordinates, with all unlisted entries zero:
+\[
+\begin{array}{c|rrrrrrrrrrrrr}
+ j&4&7&9&11&16&20&21&26&33&38&44&64&85\\ \hline
+ \ell_j&2&1&1&2&2&2&1&1&2&1&2&1&1.
+\end{array}                                                   \tag{FCM.9}
+\]
+Direct multiplication gives $(A-I)\ell=0$.
+The centralizer $C_Q(q(r))$ is the union of the six cosets in the
+following table.  Each entry means the three elements
+$h,hq(r),hq(r)^2$; (FCM.7) gives the same displayed value on all
+three.  Representatives and words are retained literally.
+\[
+\begin{array}{c|c|c|c}
+ h\text{ index}&h\text{ matrix modulo }\{\pm I\}
+ &t_h&b_h\ell\\ \hline
+0&\left(\begin{smallmatrix}1&0\\0&1\end{smallmatrix}\right)
+ &1&0\\
+149&\left(\begin{smallmatrix}4&9\\3&1\end{smallmatrix}\right)
+ &srsrsrrsrsrs&2\\
+211&\left(\begin{smallmatrix}3&4\\8&7\end{smallmatrix}\right)
+ &srrsrsrsrsrrs&2\\
+274&\left(\begin{smallmatrix}5&4\\8&9\end{smallmatrix}\right)
+ &srsrrsrrsrrsrs&2\\
+366&\left(\begin{smallmatrix}1&3\\9&4\end{smallmatrix}\right)
+ &srrsrrsrsrrsrrs&2\\
+529&\left(\begin{smallmatrix}0&5\\7&5\end{smallmatrix}\right)
+ &srsrsrrsrrsrsrsrrs&2.
+\end{array}                                                   \tag{FCM.10}
+\]
+The nonzero values exclude every residue outside $\langle q(r)\rangle$.
+Those three remaining residues have the literal commuting lifts
+$1,r,r^2$.  This proves the complete image assertion.  The fibre
+over identity is $\ker(A-I)$, whose dimension is $97-63=34$.
+
+For the compressed quotient, let $W\subset H_1(N,\mathbb F_3)^*$
+be the span of the $Q$-translates of the explicit functional
+(FCM.9).  Conjugation by the two displayed generators computes
+this span; the certificate gives $\dim W=96$ and verifies its
+invariance under both generators.  Quotienting the homology
+kernel by the annihilator of $W$ is therefore an actual normal
+quotient of $R$.  The functional $\ell$ still annihilates $r-1$
+and still has all values in (FCM.10), so the same centralizer
+exclusion holds in $R_{96}$.
+
+The projection $\Gamma\to B$ restricts to an isomorphism
+$\Gamma(12)\to N$.  Surjectivity follows because a lift of an
+element in $N$ is $I$ or $-I$ modulo twelve and has a unique sign
+making it $I$; injectivity follows because $-I\notin\Gamma(12)$.
+It identifies the homology kernel and its specified $96$-dimensional
+quotient.  This proves (FCM.3), including its signed quotient maps.
+An element centralizing $R_+$ maps to an element centralizing $r$
+in the unsigned quotient.  Its signed matrix modulo twelve
+therefore lies in the inverse image of $\langle q(r)\rangle$,
+which is exactly $\langle R_+\rangle$ of order six.  Every member
+of that cyclic group has its literal commuting lift, proving
+(FCM.4).
+
+Finally the folding map sends a pure braid into $\Gamma(2)$,
+as is seen by reduction modulo two and the quotient
+$\mathfrak S_4\to\mathfrak S_3$.  Conversely its pure image contains
+$U^2,L_0^2$ and $-I$: the first two are images of the standard
+squared braid generators, and $-I$ is the image of
+$(\sigma_1\sigma_2)^3$.  These generate $\Gamma(2)$ by the standard
+three-punctured-sphere free presentation, equivalently by the
+index-six Schreier calculation in $\operatorname{SL}_2(\mathbb Z)$.
+Both kernels in (FCM.3) are contained in $\Gamma(12)\subset\Gamma(2)$.
+The orders in (FCM.5) follow by dividing (FCM.3) by six.
+
+The executed program \texttt{check\_modular\_centralizer\_finite.py}
+constructs this entire graph, the exact cycles, the action matrix,
+and all $18$ obstruction vectors.  Its JSON and NPZ outputs retain
+the complete certificate.  The separate program
+\texttt{reduce\_modular\_centralizer\_finite.py} checks (FCM.9), all
+values in (FCM.10), and the $96$-dimensional invariant dual span.
+No finite-subgroup conjugacy or completed-centralizer theorem is
+used in this finite proof.
+\end{proof}

@@ -1,0 +1,856 @@
+% Configuration audit contribution to Part B. AI-produced by GPT-6 Astra.
+% Provisional statement identifiers B.CF*; parent editor renumbers.
+\subsection{Ordinary pro-reconstruction in finite transcendence degree}
+
+We use an ordinary category here, not a category in which coherence is an
+additional hypothesis. Let \(\mathsf T\) be the category whose objects are
+Grothendieck topoi and whose morphisms are isomorphism classes of geometric
+morphisms. Its ordinary pro-category has
+\[
+ \operatorname{Hom}_{\operatorname{Pro}(\mathsf T)}
+       (\{\mathcal X_i\},\{\mathcal Y_j\})
+   =\varprojlim_j\varinjlim_i
+       \operatorname{Hom}_{\mathsf T}(\mathcal X_i,\mathcal Y_j).
+                                                        \tag{B.CF.1}
+\]
+Fix a field \(k\) of characteristic zero and models of finite-type
+\(k\)-schemes \(X,Y\) over a finitely generated subfield \(F_0\).
+For finitely generated \(F\subset k\) containing \(F_0\), put
+\[
+ \mathcal X=\{X_{F,\mathrm{et}}\}_F,
+ \qquad \mathcal Y=\{Y_{F,\mathrm{et}}\}_F,
+ \qquad \mathcal B=\{\operatorname{Spec}(F)_{\mathrm{et}}\}_F.
+\]
+These are pro-objects of \(\mathsf T\), with structural arrows to
+\(\mathcal B\). A morphism in the slice
+\(\operatorname{Pro}(\mathsf T)_{/\mathcal B}\) induces a map
+\(|X|\to |Y|\): apply the underlying-space functor and take inverse
+limits. The identification with the scheme spaces follows from
+\citep[Lemma~32.4.2, Tag~0CUF]{StacksProject}; its hypotheses are a directed
+inverse system of schemes with affine transition maps, as here.
+We call this pro-morphism \emph{pinned} when that induced map sends
+closed points to closed points. This definition does not impose any
+same-field representatives or coherence data.
+
+\begin{claim}{B.CF1}{Proved}{Ordinary pro-reconstruction for every field of finite transcendence degree}
+Suppose \(\operatorname{trdeg}_{\Q}k<\infty\). For finite-type
+\(k\)-schemes, the functor to the preceding pro-systems is fully faithful
+after universal homeomorphisms are inverted, with pinned morphisms in
+\(\operatorname{Pro}(\mathsf T)_{/\mathcal B}\) as target morphisms.
+Equivalently, for absolutely weakly normal finite-type \(X,Y\), every
+such pinned ordinary pro-morphism is induced by a unique \(k\)-morphism
+\(X\to Y\). This includes all finite-transcendence-degree fields of B8,
+regardless of whether reconstruction from the single topos over \(k\)
+holds.
+\end{claim}
+\begin{proof}
+Enlarge \(F_0\) to contain a transcendence basis of \(k/\Q\).
+Then \(k/F_0\) is algebraic. Every finitely generated subfield of \(k\)
+is contained in one containing this \(F_0\), and every such field is
+finite over \(F_0\). Thus we have made a cofinal change of the indexing
+system, and all its field transitions are finite separable. In
+particular \(X_E\) and \(Y_F\), for \(E\supset F\supset F_0\),
+are finite-type schemes over the same finitely generated field \(F\).
+
+We first verify that forgetting structural 2-cells causes no ambiguity
+at these levels. For every finitely generated characteristic-zero
+field \(F\), its absolute Galois group \(G_F\) is slim, meaning that
+all its open subgroups have trivial centre. Indeed, if
+\(\operatorname{trdeg}_{\Q}F>0\), apply
+\citep[Corollary~4.5(1)]{HoshiTsujimura2023}; for a number field apply
+Corollary~4.5(3) using any of its discrete mixed-characteristic valuation
+rings. The same source, Definition~4.3, states the equivalent condition
+that the centralizer in \(G_F\) of every normal open subgroup is trivial.
+It follows also for every open subgroup, by taking its normal core.
+For each connected component \(Z\) of a nonempty finite-type
+\(F\)-scheme, the image of \(\pi_1(Z)\to G_F\) is open: it is the
+stabilizer of a geometric connected component, of which there are
+finitely many. An automorphism of the structural geometric morphism
+\(Z_{\mathrm{et}}\to BG_F\) is an element of the centralizer of this
+image. This follows by evaluating its action on every finite
+\(G_F\)-set at a geometric base point; naturality and transport require
+and suffice for commutation with the fundamental-group image.
+Consequently that automorphism group is trivial. The same conclusion
+holds component by component. Therefore, whenever the structural
+triangle commutes as isomorphism classes, its commutation 2-cell is
+unique. Moreover, any absolute isomorphism between two geometric
+morphisms over \(BG_F\) automatically respects their structural 2-cells.
+
+Let \(\alpha:\mathcal X\to\mathcal Y\) be a pinned pro-morphism over
+\(\mathcal B\). At a target level \(F\), formula~(B.CF.1) represents
+it by a geometric morphism
+\[
+             a:X_{E,\mathrm{et}}\longrightarrow Y_{F,\mathrm{et}}
+                                                        \tag{B.CF.2}
+\]
+for some \(E\supset F\). The equality of structural pro-morphisms,
+applied at the target level \(BG_F\), means that after enlarging \(E\)
+once more, (B.CF.2) is a morphism over \(BG_F\). This is precisely the
+equality criterion in the filtered colimit in (B.CF.1); it uses no
+uniform choice over all target levels.
+
+The representative (B.CF.2) is pinned. To prove this, let \(x\) be a
+closed point of \(X_E\). The nonzero finite \(k\)-algebra
+\(\kappa(x)\otimes_E k\) has a closed point, so \(x\) lifts to a
+closed point \(\widetilde x\) of \(X\). The point
+\(\widetilde y=|\alpha|(\widetilde x)\) is closed by assumption.
+Its image in \(Y_F\) is closed: its residue field is generated by
+finitely many coordinates over \(F\), is contained in a finite
+extension of \(k\), and is algebraic over \(F\), since \(k/F\) is
+algebraic. It is therefore finite over \(F\). Compatibility of the
+underlying-space pro-morphism identifies that image with \(|a|(x)\).
+This proves pinnedness at the actual finite stage.
+
+We now apply the opened theorem
+\citep[Theorem~0.1 and the equivalent formulation~(0.2)]{CarlsonHaineWolf2024}:
+for a field finitely generated over its prime field, with the additional
+hypothesis of positive transcendence degree only in positive
+characteristic, the functor from finite-type schemes localized at
+universal homeomorphisms to pinned relative geometric morphisms is
+fully faithful. The field here is \(F\), of characteristic zero;
+both schemes in (B.CF.2) are finite type over it. It follows that
+(B.CF.2) comes from a unique localized \(F\)-scheme morphism
+\(g_F:X_E\to Y_F\). Pairing this morphism with the structural map
+to \(\operatorname{Spec}E\) gives a localized \(E\)-scheme morphism
+\(X_E\to Y_E\), and then a localized \(k\)-scheme morphism
+\(f_F:X\to Y\).
+
+Choose this construction first at \(F_0\), and write \(f=f_{F_0}\).
+For another target field \(F\), compatibility of the pro-morphism
+means that \(g_F\) followed by \(Y_F\to Y_{F_0}\), and \(g_{F_0}\),
+induce isomorphic geometric morphisms after a common finite source
+extension \(H\subset k\). They are morphisms of finite-type
+\(F_0\)-schemes. The uniqueness of structural 2-cells just proved
+makes this a relative isomorphism; the faithfulness in Theorem~0.1
+therefore makes the two localized scheme morphisms equal.
+Their lifts to \(Y_F=Y_{F_0}\times_{F_0}F\) agree as well, since they
+also have the same structural morphism to \(\operatorname{Spec}F\).
+It follows that \(f_F=f\), and the pro-morphism induced by \(f\)
+is exactly \(\alpha\), at every target level.
+
+Conversely a localized \(k\)-scheme morphism descends to some finite
+extension of \(F_0\): a representative finite diagram, its equations,
+and its inverse universal homeomorphisms involve only finitely many
+coefficients. Being a universal homeomorphism descends under the
+faithfully flat field extension, and any necessary enlargement is
+still finite over \(F_0\). Thus it defines the required ordinary
+pro-morphism, and its map on limits is pinned. If two such morphisms
+induce the same pro-morphism, compare them at target \(F_0\), refine
+once, and apply the same finite-stage faithfulness and base change.
+They are equal. This proves full faithfulness in the localized
+category. The final formulation uses the equivalence of that
+localization with absolutely weakly normal schemes, as in
+\citep[Theorem~1.13, Lemma~1.32, Proposition~2.28]{CarlsonHaineWolf2024}.
+\end{proof}
+
+\begin{claim}{B.CF2}{Proved}{The remaining ordinary pro-category issue is an infinite-transcendence issue}
+The mechanism in B.CF1 does not extend by the same argument to an
+arbitrary characteristic-zero field: transitions corresponding to
+transcendental field extensions need not preserve closed points.
+Specifically, for \(F\) of characteristic zero and \(u\) transcendental,
+the point \(T=u\) of \(\mathbb A^1_{F(u)}\) is closed, whereas its
+image in \(\mathbb A^1_F\) is generic. Consequently the full model
+system is not in general an object of the ordinary pro-category of
+pinned geometric morphisms. This is an obstruction to that categorical
+formulation, and is not a counterexample to reconstruction for pinned
+morphisms in \(\operatorname{Pro}(\mathsf T)_{/\mathcal B}\).
+\end{claim}
+\begin{proof}
+The contraction of the ideal \((T-u)\) from \(F(u)[T]\) to \(F[T]\)
+is zero, because \(u\) is transcendental. This proves the assertion
+on points. The scheme projection induces the transition geometric
+morphism of the model system and has that same underlying-space map.
+An inverse system in a category must have all its transition arrows
+in that category. Finally, no assertion in this example constructs
+a pinned ordinary pro-morphism failing to come from a scheme map;
+thus it supplies no such counterexample.
+\end{proof}
+
+\begin{claim}{B.CF3}{Proved}{The infinite-transcendence obstacle and its resolution}
+For \(\operatorname{trdeg}_{\Q}k=\infty\), ordinary relative
+pro-reconstruction is proved by B.PRO1--5 below, culminating in
+B.PRO5. The shorter argument of B.CF1 alone does not prove it:
+a representative may have the form
+\(X_{E,\mathrm{et}}\to Y_{F,\mathrm{et}}\) with \(E/F\)
+transcendental. Pinnedness of the map on limits does not, by the
+argument of B.CF1, give pinnedness of a finite-stage representative.
+The coherent same-field result AS-FF.13 supplies neither that
+finite-stage assertion nor an equivalence with this ordinary
+pro-category. The new proof resolves the obstacle by deriving
+coherence from compactness, comparing whole Kummer systems after
+one finitely generated refinement, and reconstructing every étale
+slice over a fixed source field. It does not assert that those
+finite-stage transition morphisms preserve closed points.
+\end{claim}
+
+\subsection{A henselian field with no centralizing coefficient automorphisms}
+
+\begin{claim}{B.CF4}{Proved}{A formal arc with no nontrivial algebraic self-correspondence}
+There exists \(u\in t\Q[[t]]\), transcendental over \(\Q(t)\), with
+the following property. Let \(\Omega\) be any complete rank-one valued extension
+of \(\Q((t))\), with the valuation trivial on \(\Q\), and let
+\(h\in\Omega\) satisfy \(v(h)=v(t)=1\). If both \(h\) and
+\(u(h)\) are algebraic over \(\Q(t,u(t))\), and \(h,u(h)\) are
+algebraically independent over \(\Q\), then
+\[
+                         h=t.                            \tag{B.CF.3}
+\]
+The series \(u\) can be specified by a recursive sequence of rational
+finite jets; the proof gives a finite elimination certificate at every
+stage. The property holds simultaneously in all finite ramified
+extensions and their completions.
+\end{claim}
+\begin{proof}
+Let \(Z\subset\mathbb A^2_{\Q}\times\mathbb A^2_{\Q}\) be an
+irreducible closed subvariety of dimension two, dominant under both
+projections, and different from the diagonal. We first prove that
+in every cylinder of prescribed rational coefficients in \(t\Q[[t]]\)
+there is a smaller cylinder none of whose series has a pair
+\[
+                 (t,u(t),h,u(h))\in Z(\Omega),\qquad v(h)=1.
+                                                        \tag{B.CF.4}
+\]
+Write the prescribed jet as \(J(t)\) modulo \(t^N\), \(N\geq1\).
+Consider the two-parameter family
+\[
+                       P(t)=J(t)+a t^N+b t^{N+1}.
+\]
+A generic member has finite intersection
+\[
+                         Z\cap(\Gamma_P\times\Gamma_P), 
+                                                        \tag{B.CF.5}
+\]
+where \(\Gamma_P=\{(x,P(x))\}\). Here is a dimension proof, including
+the loci where evaluation parameters coincide. On
+\(xx'(x-x')\ne0\), evaluation at \(x,x'\) is a surjective linear
+map from the two parameters \((a,b)\) to two values; the determinant
+is \(x^N(x')^N(x'-x)\). The incidence variety of (B.CF.5) consequently
+has dimension at most two over this locus. When \(x=x'\ne0\), the
+point must lie in \(Z\cap\mathrm{Diag}\), of dimension at most one;
+one independent evaluation condition again leaves total dimension at
+most two. When \(x=0\), \(x'\ne0\), the first point is the fixed
+point \((0,J(0))\). A fibre of the first dominant projection of the
+irreducible surface \(Z\) has dimension at most one, and evaluation
+at \(x'\) imposes one independent parameter condition. The same
+argument applies with the factors exchanged. When both \(x=x'=0\),
+only the single pair of fixed points is possible. Thus the full
+incidence variety has dimension at most the two-dimensional parameter
+space. Generic fibres are zero-dimensional or empty. We may choose
+\(a,b\in\Q\), because rational points are Zariski dense in that
+parameter space, including after passage to an algebraic closure.
+This proves the assertion for the entire affine intersection; no
+localization or denominator is needed.
+
+Choose polynomial generators \(Q_j(x,y,x',y')\) of the ideal of
+\(Z\). Since (B.CF.5) is zero-dimensional, its coordinate algebra is
+finite-dimensional over \(\Q\). Elimination therefore supplies a
+nonzero polynomial \(R(x)\in\Q[x]\) and polynomials
+\(A_j(x,x')\in\Q[x,x']\) with
+\[
+ R(x)=\sum_j A_j(x,x')Q_j\bigl(x,P(x),x',P(x')\bigr).
+                                                        \tag{B.CF.6}
+\]
+If \(u\equiv P\pmod{t^M}\), \(v(h)=1\), and (B.CF.4) holds,
+then each summand on the right after \((x,x')=(t,h)\) has valuation
+at least \(M\). Indeed \(u(t)-P(t)\) and \(u(h)-P(h)\) have
+valuation at least \(M\), all rational coefficients have valuation
+zero, and all remaining arguments have nonnegative valuation.
+Taking \(M>\operatorname{ord}_{t=0}R(t)\), as well as
+\(M>\deg P\), contradicts (B.CF.6). The same finite coefficient
+cylinder is excluded for every valued extension \(\Omega\), not
+just for one choice of Puiseux series field.
+
+There are countably many such rational varieties \(Z\). Each
+forbidden set is nowhere dense by the cylinder argument. The series
+algebraic over \(\Q(t)\) also form a countable union of nowhere dense
+sets: for every nonzero \(A(t,U)\in\Q[t,U]\), a polynomial \(P\)
+with any prescribed jet can be chosen so that \(A(t,P(t))\ne0\),
+and a sufficiently long further jet then preserves its nonzero
+leading coefficient. The complete metric space \(t\Q[[t]]\), with
+the coefficient topology, is a Baire space. Choose \(u\) outside
+all these forbidden sets.
+
+For the claimed pair \(h,u(h)\), take the rational Zariski closure of
+\((t,u(t),h,u(h))\). Algebraicity and the two algebraic-independence
+conditions make this an irreducible surface dominant on both factors.
+If it were different from the diagonal it would be among the excluded
+varieties. It is therefore the diagonal, which gives (B.CF.3).
+
+For a recursive specification, enumerate rational polynomial ideals
+which define the indicated irreducible dominant surfaces, and
+interleave all nonzero polynomials \(A(t,U)\). At each step choose
+the first rational pair \((a,b)\) in a fixed enumeration for which
+(B.CF.5) is zero-dimensional, compute an elimination polynomial in
+(B.CF.6), and extend the fixed jet beyond its order. Increase the
+length strictly at every step. Polynomial ideal dimension,
+irreducibility and elimination over \(\Q\) are finite algorithms;
+the preceding proof guarantees that every search terminates. The
+nested jets define a single series and prove its property. No finite
+initial segment alone is asserted to establish all the infinitely
+many exclusions.
+\end{proof}
+
+\begin{claim}{B.CF5}{Proved}{Trivial centralizers at every finite extension of a transcendence-degree-two henselian field}
+Choose a series \(u\) as in B.CF4, and let
+\[
+             K=\Q(t,u(t))^h\subset\Q((t))               \tag{B.CF.7}
+\]
+be the henselization for the induced \(t\)-adic valuation. Then
+\(K\) is countable, has transcendence degree two over \(\Q\), value
+group \(\Z\), residue field \(\Q\), and completion \(\Q((t))\).
+For every finite extension \(E/K\), in a fixed algebraic closure
+\(\overline K\), one has
+\[
+              C_{\operatorname{Aut}(\overline K)}(G_E)=1.
+                                                        \tag{B.CF.8}
+\]
+Thus the centralizer hypothesis of B7 is attained among the
+residue-characteristic-zero fields with positive transcendence defect
+specified by B8.
+\end{claim}
+\begin{proof}
+The series is transcendental, so the initial field has transcendence
+degree two. It lies in \(\Q((t))\), contains \(\Q(t)\), and has
+residue field \(\Q\) and value group \(\Z\). Henselization is
+algebraic and immediate. These properties, including its universal
+property as a valued-field extension, are given in the opened
+\citep[Proposition~3.3.25 and Corollary~3.3.26]{ADH2017}.
+The polynomial truncations show that \(\Q(t)\) is dense in
+\(\Q((t))\); hence the completion of \(K\) is that same field.
+Countability follows from algebraicity over a countable field.
+
+We record explicitly the group calculation used below. Inside a fixed
+valued algebraic closure, put
+\[
+                  K^\dagger=\bigcup_{n\geq1}
+                         K\overline{\Q}(t^{1/n}),
+                                                        \tag{B.CF.9}
+\]
+with compatible roots. It is henselian, has algebraically closed
+residue field \(\overline\Q\), and has divisible value group
+\(\Q\). By the opened
+\citep[Corollary~3.3.22]{ADH2017}, a valued field of equicharacteristic
+zero is algebraically closed exactly when it is henselian with
+algebraically closed residue field and divisible value group.
+Thus (B.CF.9) is \(\overline K\). The constants \(\Q\) are
+algebraically closed in \(K\), since \(K\subset\Q((t))\).
+Adjoining a number field changes only the residue field, and adjoining
+\(t^{1/n}\) then has degree \(n\), by its distinct valuation classes.
+These facts show that restriction to constants and action on the
+compatible roots give
+\[
+        G_K\simeq\widehat\Z(1)\rtimes G_\Q,             \tag{B.CF.10}
+\]
+where a splitting acts on the constants and fixes the chosen roots
+of \(t\). The action on inertia is cyclotomic.
+
+The centralizer in \(G_K\) of every open subgroup \(H\) is trivial.
+An element of that centralizer projects to the centralizer of an
+open subgroup of \(G_\Q\), which is trivial by
+\citep[Corollary~4.5(3) and Definition~4.3]{HoshiTsujimura2023}.
+It consequently lies in \(\widehat\Z(1)\). In each \(\ell\)-adic
+coordinate, an element fixed by an open subgroup of \(G_\Q\) is
+zero: the \(\ell\)-adic cyclotomic character is nontrivial on the
+absolute Galois group of every number field, because a number field
+contains only finitely many roots of unity, and multiplication by a
+nonzero element of \(\Z_\ell\) is injective on \(\Z_\ell\).
+This proves the asserted centralizer calculation without using the
+conclusion (B.CF.8).
+
+Now let \(E/K\) be finite and let
+\(\sigma\in\operatorname{Aut}(\overline K)\) centralize \(G_E\).
+Its fixed-field action preserves \(E\). The unique prolongation of
+our valuation to \(E\) is henselian and discrete, with residue field
+a number field, so \(E\) is not separably closed. The opened
+\citep[Lemma~2.1]{KhassaKhanduja2010} states that every automorphism
+of a non-separably-closed henselian valued field is continuous for
+its valuation topology; its proof applies the theorem of F.\ K.
+Schmidt to the original and transported valuations. For a discrete
+rank-one valuation, equivalent valuation topologies give the same
+valuation ring. An automorphism of its ordered value group is the
+identity. Hence \(v(\sigma a)=v(a)\) on \(E\), and uniqueness of
+prolongation over a henselian field gives the same equality on
+\(\overline K\).
+
+The field \(\overline\Q\subset\overline K\) is invariant under
+\(\sigma\). The restriction of \(G_E\) to it is the open group
+\(G_{E\cap\overline\Q}\); this follows from the Galois
+correspondence, and the intersection is a number field since
+\(E/K\) is finite and \(K\cap\overline\Q=\Q\). Therefore
+\(\sigma|_{\overline\Q}\in G_\Q\) centralizes an open subgroup
+of \(G_\Q\), and is the identity. In particular all coefficients
+of \(u\) are fixed.
+
+Embed \(\overline K\) as a valued field in an algebraic closure of
+\(\Q((t))\), and work in its completion. Continuity and convergence
+of the rational polynomial truncations give
+\[
+          \sigma u(t)=u(\sigma t),\qquad v(\sigma t)=1.
+                                                        \tag{B.CF.11}
+\]
+Both \(\sigma t\) and \(\sigma u\) are algebraic over
+\(\Q(t,u)\), because \(\overline K\) is algebraic over that
+field; they are algebraically independent over \(\Q\), because
+\(\sigma\) is a field automorphism. B.CF4 applied to
+\(h=\sigma t\) yields \(\sigma t=t\), and (B.CF.11) gives
+\(\sigma u=u\). The uniqueness of a valued embedding of a
+henselization now makes \(\sigma\) the identity on \(K\).
+It lies in \(G_K\) and centralizes its open subgroup \(G_E\).
+The calculation following (B.CF.10) forces \(\sigma=1\), proving
+(B.CF.8) for every finite \(E\).
+\end{proof}
+
+\subsection{A residue-characteristic-zero obstruction beyond coefficient automorphisms}
+
+\begin{claim}{B.CF6}{Proved}{Compatible logarithmic reduction under a supported infinitesimal scaling}
+Let \(R\) be a henselian discrete valuation ring of residue
+characteristic zero, with fraction field \(K\), uniformizer \(t\),
+and the unique extension \(v\) of its valuation to \(\overline K\).
+Put \(\lambda=1+t\), and define
+\[
+ F(a)=
+ \begin{cases}
+   \lambda a,&v(a)>0,\\
+   a,&v(a)\leq0,
+ \end{cases}
+ \qquad F(0)=0,
+ \qquad F(\infty)=\infty.                                \tag{B.CF.12}
+\]
+For every finite \(G_K\)-stable set \(S\subset\mathbb P^1(\overline K)\)
+containing \(0,1,\infty\), the stable marked genus-zero models for
+\(S\) and \(F(S)\), over a finite Galois extension splitting their
+marks, have isomorphic logarithmic special fibres over the same
+standard log point. These isomorphisms preserve the labels and are
+compatible with forgetting marks, finite extensions of the field of
+definition, and the Galois descent data. At a mark \(a\), the induced
+comparison of the arithmetic cusp group preserves its inertia and
+induces the identity on its quotient \(G_{K(a)}\), with
+\(K(F(a))=K(a)\) as actual subfields of \(\overline K\).
+\end{claim}
+\begin{proof}
+The map (B.CF.12) is a \(G_K\)-equivariant bijection, whose inverse
+scales the same open valuation ball by \(\lambda^{-1}\).
+For two distinct finite points,
+\[
+          \frac{F(a)-F(b)}{a-b}\in1+\mathfrak m_{\overline K}.
+                                                        \tag{B.CF.13}
+\]
+When both points belong to the ball this ratio is \(\lambda\), and
+when neither does it is one. In the remaining case, say
+\(v(a)>0\geq v(b)\), the perturbation is \(ta\), which has
+valuation strictly larger than \(v(a-b)=v(b)\). This proves
+(B.CF.13). In particular every difference has the same valuation and
+the same initial form in the associated graded valued field before
+and after applying \(F\). The assertion also holds for differences
+in the reciprocal coordinate near infinity: \(F\) fixes all points
+in that branch.
+
+Choose a finite Galois extension \(L/K\) containing all the marks,
+and write \(\pi\) for a uniformizer of its valuation ring. Distinct
+rational sections of \(\mathbb P^1_{R_L}\) can be separated by
+successive blowups at their common reductions. Each blowup is at a
+smooth point of the special fibre. Its exceptional component has an
+affine coordinate
+\[
+                          z=(x-a)/\pi^m,                 \tag{B.CF.14}
+\]
+for a centre \(a\) in the corresponding cluster of marks, with
+\(m\) the depth of that cluster. Equivalently one may use the
+reciprocal coordinate on the infinity branch. The finite tree of
+components, their depths, and the locations of the marked and nodal
+points on each component are obtained from the valuations and
+normalized initial forms of the differences between the marks.
+Contracting components with fewer than three special points gives
+the stable marked model. This description is also a direct
+construction of it over \(R_L\).
+
+Equation (B.CF.13) identifies the two trees, their depths, and all
+component configurations. In the coordinates (B.CF.14), the
+component isomorphisms have the same reduced coordinates. They are
+unique on stable components because three labelled special points
+fix an automorphism of \(\mathbb P^1\). Equip the models with the
+fs divisorial log structures defined by the special fibre and the
+marked sections. A node on the stable model has a toric chart
+\(uv=\epsilon\pi^d\), with \(d\geq1\) and \(\epsilon\) a
+unit. The logarithmic special fibre retains \(d\) and the residue
+of the smoothing unit, with its two tangent directions. In cluster
+coordinates before contraction one may write
+\(uv=\pi^{n-m}\); after changing normalized coordinates the
+smoothing unit is a product and quotient of initial forms of the
+same differences. Thus (B.CF.13) preserves the smoothing data and
+the component maps lift to log isomorphisms over the fixed log point.
+These toric charts show at the same time that the total marked model
+is log regular; contracting a chain merely replaces thickness one
+by a positive integral thickness.
+
+We give the compatibility calculation, since uniqueness of the
+isomorphisms by itself would not suffice for contractions. If
+\(z=(x-a)/\pi^m\) is a coordinate for a target component and
+\(w=(x-b)/\pi^n\) is one for a source component, the transition is
+\[
+       z=\frac{b-a}{\pi^m}+\pi^{n-m}w.                   \tag{B.CF.15}
+\]
+Extract the smaller valuation of the two coefficients. Its first
+nonzero normalized reduction is a nonzero constant, \(w\), or
+\(c+w\); it depends only on the initial form of \(b-a\) and the
+two depths. The transformed expression has exactly the same
+exponent and the same reduced factor, by (B.CF.13). This checks
+both the characteristic monoid and the unit part of the pullback
+of each logarithmic generator, including a generator which
+vanishes identically on a contracted tail. All node, mark, and
+infinity charts are obtained by products, quotients, and
+reciprocals of these linear expressions. Hence the logarithmic
+isomorphisms commute with every mark-forgetting contraction.
+Equality of the unit factors may be checked on the irreducible
+components, because the special fibre is reduced.
+
+For completeness, the lift of a fixed component isomorphism is
+unique once the characteristic monoids and log base are fixed.
+At a node its possible change multiplies the two generators by
+units \(u_1,u_2\) with \(u_1u_2=1\), \(u_1x=x\), and
+\(u_2y=y\) in the reduced nodal ring. Thus
+\(u_1-1\in(x)\cap(y)=0\). On the smooth locus the vertical
+generator comes from the fixed log base, and a horizontal generator
+maps to a non-zero-divisor. There is no additional freedom there.
+The same coordinate check as in (B.CF.15) works under finite base
+extension: if \(\pi=\epsilon'(\pi')^e\), the same unit
+\(\epsilon'\) occurs on both sides, and initial forms commute
+with the map between the associated graded valued fields.
+This proves base-extension compatibility. Since (B.CF.12) is
+\(G_K\)-equivariant, the uniquely labelled component maps and their
+log lifts commute with \(\operatorname{Gal}(L/K)\).
+
+At a marked section (a), the local horizontal parameter is
+\(x-a\). Its image is \(x-F(a)\); inside the ball their
+comparison is the scaling \(\lambda\), and outside it the
+identity. The vertical log structure and the field \(K(a)\)
+are unchanged, since multiplication by the nonzero element
+\(\lambda\in K\) preserves \(K(a)\). The local Kummer chart
+therefore identifies the horizontal inertia \(\widehat\Z(1)\)
+and its arithmetic quotient \(G_{K(a)}\), with the identity on
+the latter. This is the usual cusp description obtained from the
+punctured strict henselian normal trait, or directly from the
+Kummer chart in SGA~1, XIII, Proposition~5.2. Choices of geometric
+fibre functors change the resulting group maps by the corresponding
+cuspidal conjugacy, not by an unspecified automorphism of the
+residue field.
+\end{proof}
+
+\begin{claim}{B.CF7}{Refuted}{Reconstruction over an equicharacteristic-zero henselian discretely valued field}
+For every field \(K\) admitting a nontrivial henselian discrete
+valuation with residue characteristic zero, closed-point-preserving
+reconstruction of finite-type \(K\)-schemes from their relative
+small étale topoi is false, even with universal homeomorphisms
+inverted. The supported scaling (B.CF.12) is the geometric-point
+function of a pinned autoequivalence
+\[
+          (\mathbb A^1_K)_{\mathrm{et}}
+             \longrightarrow(\mathbb A^1_K)_{\mathrm{et}}
+                  \quad\hbox{over }BG_K                 \tag{B.CF.16}
+\]
+which is not induced by a morphism of \(K\)-schemes.
+\end{claim}
+\begin{proof}
+We first state precisely the opened comparison theorem.
+\citep[Theorem~1.6]{Lepage2013} assumes that \(\mathscr X\) is a
+log-regular fs log scheme and every prime in \(L\) is invertible
+on it. Restriction identifies its finite Kummer-étale covers of
+pro-\(L\) type with the corresponding finite étale covers of its
+log-trivial locus. Theorem~1.8 in the same paper assumes a
+noetherian henselian base \(B\) with closed point \(s\), a
+connected fs log scheme \(\mathscr X\), and properness of its
+underlying scheme over \(B\); restriction identifies finite
+Kummer-étale covers of \(\mathscr X\) with those of its log
+special fibre. These are equivalences of covering categories,
+functorial in the log schemes. For our models all primes are
+invertible: their valuation rings contain \(\Q\). Taking
+\(L\) to be the set of all primes gives, for each marked model,
+\[
+ \operatorname{FEt}(\mathbb P^1_L\setminus S)
+       \simeq\operatorname{KCov}(\mathscr X_S)
+       \simeq\operatorname{KCov}((\mathscr X_S)_s).
+                                                        \tag{B.CF.17}
+\]
+Here \(L/K\) now denotes a finite splitting field for the marks;
+the prime-set letter in the quoted theorem has served its purpose.
+The model is proper over a henselian DVR and log regular by the
+charts in B.CF6. Thus every hypothesis has been checked. This
+application retains all finite covers, with no prime omitted.
+
+Apply (B.CF.17) to the logarithmic special-fibre isomorphisms of
+B.CF6. We obtain compatible inverse-image equivalences
+\[
+ \operatorname{FEt}(\mathbb P^1_L\setminus F(S))
+           \longrightarrow
+ \operatorname{FEt}(\mathbb P^1_L\setminus S).            \tag{B.CF.18}
+\]
+Their compatibility with mark-forgetting, finite constant
+extensions, and Galois descent was checked in (B.CF.15), so
+finite étale descent gives the same system over \(K\).
+These equivalences are over \(\operatorname{FEt}(K)\), rather
+than merely geometric: apply the two quoted theorems also to
+\(\operatorname{Spec}R\) with its vertical log structure.
+They identify covers of the fixed log point with finite étale
+\(K\)-algebras, and every special-fibre isomorphism used above
+lies over that same log point. At each puncture (B.CF.18)
+identifies the full decomposition and inertia pair, and acts as
+the identity on the actual quotient \(G_{K(a)}\), as proved
+at the end of B.CF6.
+
+We now pass from this compatible system of finite covering
+categories to the entire small étale site. This step is necessary;
+an isomorphism at one punctured fundamental group alone would
+not suffice. A quasi-compact separated étale object
+\(V\to\mathbb P^1_K\) is a disjoint union of normal curves.
+Zariski's Main Theorem identifies it with an open subscheme of
+the finite normal compactification \(\overline V\to\mathbb P^1_K\)
+in its generic finite separable algebras. Its complement is a
+finite set of points. Choose a finite set \(S\) containing the
+branch locus, the images of every point of
+\(\overline V\setminus V\), and \(0,1,\infty\).
+Over its complement the compactification is finite étale.
+Use (B.CF.18) to transport this
+finite étale cover, and normalize \(\mathbb P^1_K\) in the
+resulting generic algebra. The full cusp pairs give the
+bijections between the points over the omitted base points:
+ramification is measured by inertia, and the unramified residue
+extension by the quotient decomposition group over the fixed
+\(G_{K(a)}\). Therefore they transport the removed points of
+\(\overline V\setminus V\), preserve the unramified locus, and
+produce a quasi-compact separated étale object again.
+The construction is independent, up to its compatible natural
+isomorphisms, of enlarging \(S\), by the restriction
+compatibility in (B.CF.18).
+
+A morphism between such étale objects is determined by its map
+of generic finite algebras, extended uniquely to their normal
+compactifications, together with the condition that its image
+lies in the chosen open subsets. The covering-category
+comparisons preserve these generic maps and the conditions on
+points. Thus they give an equivalence of these categories of
+étale objects. They preserve covering families: joint
+surjectivity at a geometric generic point is detected by the
+finite covering category; at a geometric closed point it is
+detected by the same local decomposition/inertia comparison.
+These objects form a generating small étale site. We have
+therefore constructed an autoequivalence of
+\((\mathbb P^1_K)_{\mathrm{et}}\), over \(BG_K\), whose
+function on \(\overline K\)-valued points is exactly (B.CF.12). It is pinned,
+since that function is a \(G_K\)-equivariant bijection and
+preserves the finite field \(K(a)\) at every algebraic point.
+It fixes infinity and hence restricts to (B.CF.16).
+
+Every nonzero rational number is a valuation unit and is fixed
+by (B.CF.12), whereas \(t\) is sent to \((1+t)t\ne t\).
+If a \(K\)-scheme morphism \(\mathbb A^1_K\to\mathbb A^1_K\)
+induced (B.CF.16), its polynomial would agree with \(T\) on the
+infinite subset \(\Q^\times\), and would consequently be \(T\)
+identically. Its value at \(t\) gives the contradiction.
+The scheme \(\mathbb A^1_K\) is already absolutely weakly
+normal, so inverting universal homeomorphisms introduces no
+additional morphism which could realize this point function.
+\end{proof}
+
+\begin{claim}{B.CF8}{Refuted}{The centralizer condition in B7 is insufficient}
+There exists a characteristic-zero field \(K\), countable and of
+transcendence degree two over \(\Q\), such that
+\[
+ C_{\operatorname{Aut}(\overline K)}(G_E)=1
+           \quad\hbox{for every finite }E/K,
+\]
+but closed-point-preserving reconstruction of finite-type
+\(K\)-schemes from their relative étale topoi fails. One may take
+exactly the recursively specified field (B.CF.7). The obstruction
+is a compatible nonalgebraic permutation of points and their
+whole covering categories, not a centralizing field automorphism.
+\end{claim}
+\begin{proof}
+B.CF5 proves the displayed condition for this field, with all
+finite extensions included. Its valuation is henselian and
+discrete, with residue field \(\Q\), so B.CF7 supplies the
+pinned nonalgebraic autoequivalence of its affine-line topos.
+These are the same field and the same entire arithmetic base
+\(BG_K\). This is a counterexample to the asserted implication.
+We also verify the surviving necessary direction, rather than
+accepting AS-FF.6 on authority. If a field satisfies reconstruction,
+then every finite extension does: finite étale slicing identifies
+objects and relative morphisms over that extension, and faithfulness
+forces the reconstructed map to preserve the extension's structural
+map. Let \(E/K\) be finite and let \(\sigma\) centralize
+\(G_E\). It preserves \(E\). The coefficient automorphism on
+\(\mathbb G_{m,E}\), together with the identification of its
+base Galois action supplied by \(\sigma G_E\sigma^{-1}=G_E\)
+pointwise, gives a pinned relative topos automorphism whose geometric
+point function is \(a\mapsto\sigma(a)\). This includes the case
+where \(\sigma\) fixes \(E\): then it is the identity absolute
+morphism with its relative structural 2-cell twisted by the central
+element. The point-function description follows directly by pulling
+back to finite separable extension points, as in the opened
+\citep[Proposition~3.6]{CarlsonHaineWolf2024}.
+Reconstruction over \(E\) would make this an \(E\)-automorphism
+of \(\mathbb G_m\), hence \(T\mapsto cT^{\pm1}\).
+Evaluation at one gives \(c=1\); evaluation at two excludes
+inversion. Consequently \(\sigma(a)=a\) for every
+\(a\in\overline K^\times\), so \(\sigma=1\).
+This proves necessity for all finite extensions. B.CF8 shows that
+excluding this particular obstruction is not sufficient.
+A precise valid sufficient-and-necessary replacement is the
+point-function condition of the opened
+\citep[Theorem~4.18(5)]{CarlsonHaineWolf2024}: for every affine
+regular connected finite-type source with a rational point,
+every pinned relative map to \(\mathbb G_m\) must have the
+geometric-point function of a regular unit. The supported
+scaling demonstrates why a condition solely on coefficient
+field automorphisms cannot replace that requirement.
+\end{proof}
+
+\begin{claim}{B.CF9}{Refuted}{The specified transcendence-defect field in AS-FF.18 does not reconstruct}
+Let
+\[
+     u_*(t)=\sum_{n\geq1}t^{n!},\qquad
+     K_* =\Q(t,u_*(t))^h\subset\Q((t)).                  \tag{B.CF.19}
+\]
+This field has transcendence degree two, residue field \(\Q\),
+value group \(\Z\), and positive transcendence defect one.
+It does not satisfy closed-point-preserving étale reconstruction.
+This settles the particular residue-characteristic-zero case
+left undecided in AS-FF.18, without claiming that its centralizers
+have the property proved for the different series in B.CF4.
+\end{claim}
+\begin{proof}
+For a nonzero \(P(t,U)\in\Q[t,U]\), write \(e=\deg_U P\)
+and \(m=\deg_t P\), and put
+\(u_N=\sum_{n=1}^N t^{n!}\). If \(P(t,u_*)=0\), then a
+nonzero \(P(t,u_N)\) has order at least \((N+1)!\) but degree
+at most \(m+eN!\), impossible for sufficiently large \(N\).
+Thus infinitely many distinct \(u_N\) would be roots of the
+nonzero polynomial \(P(t,U)\) over \(\Q(t)\), again impossible.
+The series is transcendental. The field and its henselization
+therefore have the asserted transcendence degree, and
+henselization preserves residue field and value group.
+The defect is \(2-0-1=1\). B.CF7 applies directly to this
+henselian discrete valuation and refutes reconstruction.
+\end{proof}
+
+\begin{claim}{B.CF10}{Open}{Exact remaining scope of the henselian-field question B8}
+The universal quantifier in B8 is not fully settled. B.CF7--9,
+together with B.LIT5--6, refute reconstruction for every field of
+finite transcendence degree admitting a nontrivial henselian
+valuation of residue characteristic zero. This includes all the
+residue-characteristic-zero transcendence-defect cases in AS-FF.18,
+the specified field \(K_*\), and fields with a mixed-characteristic
+valuation admitting such a nontrivial residue-characteristic-zero
+coarsening. The following mixed-characteristic cases remain from
+the original \texttt{agent\_F/F\_section.tex}.
+\begin{enumerate}
+\item General finite-transcendence-degree henselian fields of mixed
+residue characteristic outside the positive and negative classes
+already separated in AS-FF.16, AS-FF.22, and AS-FF.26--39.
+In particular, an unbounded wild ramification index is not by itself
+a negative criterion: the cyclotomic, maximal abelian, and each fixed
+bounded-nilpotency class in AS-FF.35, 37, 39 were already positive
+claims in the return.
+\item For every prime \(p\), the specified maximal metabelian field
+\[
+ K_p=\operatorname{Frac}(\Z_{(p)}^{sh}),\qquad
+ I=G_{K_p},\qquad
+ B_p=\overline\Q^{\,\overline{[I',I']}},\quad
+ I'=\overline{[I,I]},
+\]
+and general finite extensions of it. AS-FF.40 singles out this
+field; AS-FF.18 names \(B_2\) as the remaining degree-zero test.
+Neither its asserted centralizer condition nor the affine and
+selected-cover rigidity assertions AS-FF.44--50 prove reconstruction
+for arbitrary pinned morphisms or arbitrary covers. The negative
+residue-characteristic-zero argument here has no application to its
+mixed-characteristic valuation.
+\item AS-FF.39 explicitly makes no assertion about the union of
+the fixed nilpotency-class fields
+\(\bigcup_c\overline\Q^{\,\gamma_{c+1}(I)}\), or about a general
+solvable closure. The former union remains undecided here. If the
+latter phrase means the maximal solvable extension of this precise
+strict-local field \(K_p\), B.CF11 below identifies it with
+\(\overline\Q\) and refutes reconstruction. It does not identify
+the lower-central union with the derived-series union, and makes no
+assertion about solvable closures of arbitrary other base fields.
+B.CF13 determines the stable rational Kummer kernel at the
+lower-central union for \(p\geq5\), with explicit exceptions
+at \(p=2,3\), but its full reconstruction problem remains open.
+\end{enumerate}
+\end{claim}
+\begin{proof}[Scope verification]
+The original pending list is stated at AS-FF.18 and its subsequent
+updates: AS-FF.27 handles algebraic fields with a discrete
+mixed-characteristic valuation; AS-FF.29--30 handle the specified
+bounded-wild fields; AS-FF.35, 37, 39 handle the cyclotomic, maximal
+abelian, and fixed bounded-nilpotency extensions. AS-FF.40--50 retain
+the full reconstruction problem over \(B_p\), while proving only the
+more restricted assertions indicated above. None of these scope
+statements converts a failed proof mechanism into a counterexample.
+Theorem B.CF7 uses a discrete residue-characteristic-zero valuation
+for its noetherian stable logarithmic models. B.LIT5 removes
+discreteness by the verified valuative-logarithmic approximation
+and covering-category continuity; B.LIT6 removes the rank-one
+restriction in finite transcendence degree by henselian coarsening.
+These additions settle the entire residue-characteristic-zero
+portion. They do not treat positive residue characteristic and
+its wild covers. The full classification demanded by B8 therefore
+remains open in the mixed-characteristic respects listed above.
+\end{proof}
+
+\begin{claim}{B.CF11}{Refuted}{The unbounded solvable closure of the strict-local field}
+Fix an embedding of the strict henselization
+\(A=\Z_{(p)}^{sh}\) in \(\overline\Q\), put
+\(K_p=\operatorname{Frac}(A)\), and write \(I=G_{K_p}\).
+Let \(I^{(0)}=I\) and
+\(I^{(d+1)}=\overline{[I^{(d)},I^{(d)}]}\) be the closed
+derived series. Then
+\[
+ K_p^{\mathrm{sol}}
+   :=\bigcup_{d\geq 0}\overline\Q^{\,I^{(d)}}
+   =\overline\Q.                                      \tag{B.CF.20}
+\]
+Consequently this maximal solvable closure does not satisfy
+closed-point-preserving \(\acute etale\) reconstruction. The statement
+concerns the actual field in AS-FF.39, not a substitution of a
+completed local field. It leaves open the bounded derived-length
+field \(B_p=\overline\Q^{I^{(2)}}\), and the lower-central union
+\(\bigcup_c\overline\Q^{\gamma_{c+1}(I)}\).
+\end{claim}
+\begin{proof}
+The ring \(A\) is a strictly henselian discrete valuation ring
+with residue field \(\overline{\F}_p\). For a finite Galois
+extension \(M/K_p\), henselianity gives a unique extension of
+the valuation. Thus its decomposition group is the whole
+\(\operatorname{Gal}(M/K_p)\). Its residue extension is trivial,
+since it is finite over \(\overline{\F}_p\), so the whole
+Galois group is also its inertia group. The opened
+\citep[Lemma~15.114.5, Tag~09EE]{StacksProject} gives an exact
+sequence with a finite \(p\)-group as kernel and a cyclic
+prime-to-\(p\) group as quotient. Both are solvable, hence every
+finite quotient of \(I\) is solvable. Equivalently one may apply
+the profinite version, Lemma~58.13.5, Tag~0BUA, to this same DVR.
+
+Every nonidentity element of a profinite group survives in some
+finite quotient. If that quotient is solvable of derived length
+\(d\), the image of \(I^{(d)}\) in it is trivial. It follows
+that \(\bigcap_d I^{(d)}=1\). Alternatively, every element of
+\(\overline\Q\) lies in a finite Galois extension of \(K_p\),
+whose finite solvable Galois group has some finite derived length;
+that extension lies in \(\overline\Q^{I^{(d)}}\). This proves
+(B.CF.20), without asserting any uniform bound on derived length.
+
+Choose a nonidentity automorphism \(\sigma\) of
+\(\overline\Q/\Q\), for example complex conjugation after
+choosing a complex embedding. Acting on coefficients induces an
+autoequivalence of \(\mathbb A^1_{\overline\Q,\mathrm{et}}\)
+over \(B G_{\overline\Q}=\mathsf{Sets}\); it preserves closed
+points and acts on their values by \(a\mapsto\sigma(a)\).
+If induced by a morphism of \(\overline\Q\)-schemes, its
+polynomial would fix every rational number, and hence would be
+\(T\). It moves an algebraic number, a contradiction. Inverting
+universal homeomorphisms does not change this conclusion for the
+normal characteristic-zero affine line. This is a genuine
+negative reconstruction result for the exact unbounded derived
+tower, rather than a failure of a proposed proof of reconstruction.
+\end{proof}

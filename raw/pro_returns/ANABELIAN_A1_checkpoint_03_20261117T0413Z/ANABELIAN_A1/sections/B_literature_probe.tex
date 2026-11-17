@@ -1,0 +1,404 @@
+\subsection{A positive-rank primitive-zero cover without a supersingular factor}
+
+\begin{claim}{B.LIT7}{Proved}{An exact cyclic-thirteen distinction between B4 and B5}
+Let $C/\F_2$ be the smooth proper model
+\[
+ C:\quad Y^2+X^2Y=X^5+X,
+ \qquad P=\infty.
+\]
+It has genus two, $2$-rank one, and no nonzero supersingular
+isogeny factor in its geometric Jacobian. Over $k=\F_{64}$
+there is a connected $P$-pointed cyclic \'etale cover
+$D\to C_k$ of degree $13$, with zeta numerator
+\[
+ P_D(T)=
+ (1-T-80T^2-64T^3+4096T^4)
+ (1+12T+64T^2)^{12}.
+ \tag{B.LIT.7}
+\]
+Its primitive degree-$13$ factor has Newton slopes
+$1/3$ and $2/3$, each with multiplicity $12$, and hence
+has $2$-rank zero. Its relative class number is
+\[
+ \frac{|J_D(k)|}{|J_C(k)|}=77^{12}
+       =43439888521963583647921,
+\]
+which is odd. Nevertheless $D$ has no nonconstant map,
+even over $\overline{\F}_2$, to any supersingular curve
+of positive genus. Thus this is a B1 witness and a
+nontrivial positive-$2$-rank case of B4, but this particular
+cover does not supply the correspondence asked for in B5.
+\end{claim}
+
+\begin{proof}
+The substitution $x=X^{-1}$, $y=Y/X^2$ identifies the
+function field with
+\[
+ y^2+y=x^3+x^{-1}.
+\]
+The Artin--Schreier poles have odd orders three and one.
+Their different exponents are four and two, so
+Riemann--Hurwitz gives genus two. In the polynomial model
+the regular differential $dX/X^2$ has divisor $2P$.
+Direct counts give $|C(\F_2)|=4$ and $|C(\F_4)|=4$;
+the genus-two functional equation therefore gives the
+Frobenius characteristic polynomial
+\[
+ H_2(U)=U^4+U^3+2U+4.
+\]
+It is irreducible modulo three and hence over $\Q$.
+Its Newton slopes are $0,1/2,1/2,1$, which also verifies
+the asserted $2$-rank. Taking sixth powers of its roots
+gives
+\[
+ H_{64}(U)=U^4-U^3-80U^2-64U+4096,
+ \qquad |J_C(k)|=H_{64}(1)=3952=16\cdot13\cdot19.
+\]
+
+Here is a complete definition of the cover used in the
+computation. Write $k=\F_2[z]/(z^6+z+1)$ and encode
+elements by the binary coefficients in the basis
+$1,z,\ldots,z^5$. In reduced Mumford coordinates for the
+displayed polynomial model, put
+\[
+ G=\bigl(X^2+25X+14,\;17X+26\bigr)\in J_C(k).
+\]
+The numbers in this formula are binary field encodings,
+not integers embedded in a characteristic-two field.
+The certificate verifies $G\ne0$ and $13G=0$.
+Since the $13$-primary subgroup has order $13$, there is
+a unique surjection
+\[
+ \chi:J_C(k)\longrightarrow\Z/13,
+ \qquad [304]A=\chi(A)G.
+\]
+Pull back the Lang isogeny $F_{64}-1:J_C\to J_C$
+along $R\mapsto[R-P]$ and quotient its deck group
+$J_C(k)$ by $\ker\chi$. This defines $D$. The point
+above $P$ represented by zero makes it pointed. The
+Abel map induces the isomorphism from the abelianized
+geometric fundamental group of $C$ to the fundamental
+group of $J_C$; thus the pullback of this connected
+cyclic isogeny cover is geometrically connected.
+This is the precise Jacobian covering statement of
+Milne, \S9, Proposition~9.1, applied after base change
+to $\overline{k}$: that proposition assumes a separably
+closed field, a smooth proper curve, and a chosen point.
+\citep[\S9, Proposition~9.1]{MilneJac}
+
+For every $R\in C(k)$ the program computes
+$\chi([R-P])$ by exact Cantor arithmetic. Its complete
+table, including every point and every element of
+$\langle G\rangle$, gives
+\[
+ \#\{R:\chi([R-P])=0\}=16,
+ \qquad
+ \#\{R:\chi([R-P])=j\}=4
+ \quad(1\le j\le12).
+\]
+Every polynomial division in the group law is checked
+to be exact, and every output Mumford pair is checked
+against the curve equation. The producer
+\path{code/b5_char2_13_certificate.py} writes these finite
+tables and the entire expanded degree-$28$ numerator to
+\path{code/b5_char2_13_certificate.json}; its textual
+output is also retained.
+
+The independent verifier
+\path{code/c0_cyclic13_verify.py} imports no Cantor
+implementation. It uses fixed-point addition by the
+Chinese remainder theorem and tangent Taylor expansion,
+and independently reproduces all $64$ point projections,
+all $13$ subgroup elements, and $H_{64}$ by a Newton-sum
+recurrence. Its exact output and certificate are retained
+beside the producer.
+
+Let $\zeta$ be a primitive thirteenth root of unity.
+The complete twisted polynomial has degree two. Its
+linear coefficient, for every $i\ne0$, is
+\[
+ \sum_{R\in C(k)}\zeta^{i\chi([R-P])}
+       =16+4\sum_{j=1}^{12}\zeta^{ij}=12.
+\]
+Because the canonical divisor is $2P$, its quadratic
+coefficient is $64$. These are exactly the effective-divisor
+and functional-equation formulas proved in B.CL2, so no
+single evaluation at $T=1$ is substituted for a Frobenius
+polynomial. Multiplying the twelve complete twisted
+polynomials and the numerator of $C_k$ proves (B.LIT.7).
+It also gives the relative class number and
+$g(D)=13(g(C)-1)+1=14$.
+
+The two roots of $U^2+12U+64$ have $2$-adic valuations
+two and four: the point $(1,2)$ lies strictly below the
+segment joining $(0,6)$ and $(2,0)$. Dividing valuations
+by six gives slopes $1/3$ and $2/3$. Thus the primitive
+factor has $2$-rank zero and no supersingular factor.
+For completeness, $J_C$ has no geometric supersingular
+factor either. If a Frobenius root $\alpha$ belonged to
+one after a finite constant extension, then
+$\alpha/\sqrt2$ would be a root of unity. One elementary
+way to see this criterion is that a supersingular Weil
+number divided by the appropriate square root of the
+field size is an algebraic unit at every finite place
+and has absolute value one at every complex place;
+Kronecker's argument then makes it a root of unity.
+The property descends from $\alpha^m$ to $\alpha$.
+Irreducibility of $H_2$ would make all four of its roots
+have this property, contradicting its slope-zero root.
+This also proves geometric simplicity here: a geometric
+elliptic decomposition of a $2$-rank-one surface would
+include one supersingular elliptic factor.
+
+Finally $J_D$ is isogenous to $J_C\times\Pr(D/C)$
+by pullback and norm. A nonconstant map $D\to S$ of
+smooth proper curves induces pullback and norm with
+composition multiplication by its degree on $J_S$.
+Consequently a positive-dimensional supersingular
+$J_S$ would give a supersingular factor of $J_D$,
+which the preceding two paragraphs exclude. This holds
+for inseparable as well as separable maps, since a
+nonzero multiplication map is invertible in the
+isogeny category.
+\end{proof}
+
+\paragraph{The scope of the search.}
+This does not refute the existence of a different odd
+\'etale cover of $C$ with a supersingular factor. The
+independent theta-Taylor elimination in
+\path{code/b5_theta_division.py} excludes torsion orders
+$3,5,7,9,11$ on the Raynaud theta curve of this example;
+the order-$13$ candidate locus is $r^2+r+1=0$.
+The companion probe records complete character sums
+for exponent-one prime quotients over all
+$\F_{2^m}$ with $1\le m\le10$. These bounded searches
+are retained as evidence about the attempted route,
+not as a classification of all odd covers or all
+constant extensions.
+
+\subsection{Two exact limits of the proposed correspondence constructions}
+
+\begin{claim}{B.LIT8}{Proved}{Ordinary cubic Pryms in two small genera}
+Let $C$ be a smooth hyperelliptic curve over an algebraically
+closed field of characteristic two, of genus $g\in\{2,3\}$
+and $2$-rank zero. For every connected cyclic \'etale
+cover $D\to C$ of degree three, the Prym variety is
+ordinary of dimension $2(g-1)$. In particular,
+$f_D=2(g-1)$. In genus three its genus-two reflection
+quotient is ordinary, so this cubic-reflection construction
+does not yield a supersingular target.
+\end{claim}
+
+\begin{proof}
+The hyperelliptic Artin--Schreier map has exactly one
+branch point, since its number of branch points is
+$f_C+1=1$. Put this point at infinity, denote its
+unique preimage by $P$, and use an equation
+$y^2+y=f(x)$ with $\deg f=2g+1$. Then
+\[
+ \operatorname{div}(dx)=(2g-2)P,
+ \qquad B^1\simeq\mathcal O_C((g-1)P),
+\]
+where $B^1$ is Raynaud's line bundle of locally exact
+differentials on the Frobenius twist. We identify that
+twist with its corresponding equation over the perfect
+ground field; all arguments below are unchanged on it.
+
+Suppose a nonzero three-torsion class $L$ satisfies
+$H^0(B^1\otimes L)\ne0$. Removing copies of $P$ and
+hyperelliptic conjugate pairs from an effective divisor
+of degree $g-1$ gives
+\[
+ L\simeq\mathcal O_C(E-dP),\qquad 1\le d\le g-1,
+\]
+with $E$ reduced in the hyperelliptic divisor sense:
+it contains no $P$ and no conjugate pair. There is a
+rational function $h$ with
+$\operatorname{div}(h)=3E-3dP$. For $g=2$ or $3$,
+\[
+ 3d\le3(g-1)\le2g<2g+1.
+\]
+The pole orders of $x,y$ at $P$ are $2,2g+1$.
+Consequently every function whose only pole is at
+$P$ of order at most $2g$ belongs to $k[x]$.
+Every finite zero of such a function occurs together
+with its hyperelliptic conjugate and with the same
+multiplicity; there are no finite branch points.
+This contradicts the form of $E$. Thus neither $L$
+nor $L^2$ lies on the theta divisor of $B^1$.
+
+For clarity, the ordinarity implication uses the exact
+sequence
+\[
+ 0\longrightarrow L\longrightarrow F_*F^*L
+   \longrightarrow B^1\otimes L\longrightarrow0.
+\]
+Since $H^0(L)=H^0(L^2)=0$, the just-proved vanishing
+makes Frobenius an isomorphism between the two
+$g-1$ dimensional twisted $H^1(\mathcal O)$ spaces.
+These are precisely the nontrivial character summands
+of $H^1(D,\mathcal O_D)$, as
+$\pi_*\mathcal O_D=\mathcal O_C\oplus L\oplus L^2$.
+Their stable Frobenius rank is $2(g-1)$, which proves
+the assertion. This is also the rank-one instance of
+Raynaud's ordinarity criterion in \S1.
+\citep[\S1, before Proposition~1]{LA_Raynaud2000}
+
+Here are the details of the reflection assertion in
+characteristic two. Let $\delta$ generate the cyclic
+deck group, and let $\iota$ be the hyperelliptic
+involution on $C$. Since $\iota^*L=L^{-1}$,
+$\iota$ lifts to an automorphism $\tau$ of $D$ with
+$\tau\delta\tau^{-1}=\delta^{-1}$.
+Write $\tau^2=\delta^a$. The element $\tau$ commutes
+with its square and also sends $\delta^a$ to
+$\delta^{-a}$, so $a=-a$ in $\Z/3$ and $a=0$.
+Thus $\tau$ is an involution. It fixes exactly one
+of the three points over $P$, since it acts there
+as a reflection of the three-element deck torsor.
+It has no other fixed points, as $\iota$ has none.
+The \'etale map $D\to C$ identifies the completed
+local rings at that fixed point and at $P$.
+The local different for $D\to H:=D/\langle\tau\rangle$
+therefore has exponent $2g+2$, the same as that of
+$C\to\mathbb P^1$. Consequently
+\[
+ 6g-6=2g_D-2=2(2g_H-2)+(2g+2),
+ \qquad g_H=g-1.
+\]
+
+Let $A,A'$ be the pullback images in $J_D$ of the
+Jacobians of the quotients by $\tau$ and by a distinct
+conjugate reflection. Both lie in the Prym: their
+norm to $J_C$ is fixed by the induced hyperelliptic
+action $[-1]$, hence has finite image and is zero
+on these connected abelian varieties. Their
+intersection is finite. Indeed an element fixed by
+the two reflections is fixed by $\delta$ as well.
+Its norm $z$ to $J_C$ satisfies $2z=0$, while the
+pullback of $z$ equals $3$ times that element; hence
+the intersection is killed by six. Pullback from
+each quotient has finite kernel by its pullback--norm
+identity. Both images thus have dimension $g-1$,
+and their addition gives an isogeny
+\[
+ J_H\times J_H\longrightarrow\Pr(D/C).
+\]
+For $g=3$ the quotient therefore has genus two and
+is ordinary.
+The inequality used above fails for $g\ge4$; no
+assertion in those genera follows from this proof.
+\end{proof}
+
+\begin{claim}{B.LIT9}{Proved}{A fixed simply branched function cannot supply the missing fibres}
+Let $k$ be algebraically closed, let $f:C\to\mathbb P^1_k$
+be finite separable, and assume that for every
+$t\in\mathbb P^1(k)$,
+\[
+ \gcd\{e_P(f):P\in f^{-1}(t)\}=1.
+\]
+Let $C'\to C$ be any finite \'etale cover and
+$h:\mathbb P^1\to\mathbb P^1$ any finite separable map.
+The composite $h\circ f\circ\pi$ cannot have three
+distinct fibres in each of which all ramification
+indices are divisible by three. It cannot have four
+distinct fibres in each of which they are all even.
+More generally, uniform fibre divisibilities $m_i$
+at distinct values require
+\[
+ \sum_i(1-1/m_i)<2.
+\]
+\end{claim}
+
+\begin{proof}
+The \'etale pullback preserves every ramification index
+over the algebraically closed ground field. For a
+fixed $t$ over $u$ the gcd of the indices of the
+composite at points over $t$ is therefore $e_t(h)$.
+Taking the gcd over all $t\in h^{-1}(u)$ shows that
+any uniform divisor $m_i$ of the composite fibre
+already divides every $e_t(h)$ in that fibre of $h$.
+Write $n=\deg h$. There are at most $n/m_i$ geometric
+points in such a fibre. Their contribution to the
+different is at least
+$\sum_{t\mid u_i}(e_t(h)-1)\ge n(1-1/m_i)$,
+also in the presence of wild ramification.
+Riemann--Hurwitz for $h:\mathbb P^1\to\mathbb P^1$
+now gives
+\[
+ n\sum_i(1-1/m_i)\le2n-2<2n.
+\]
+The claimed patterns each give a sum of two and are
+impossible. In particular, the hypothesis holds for
+a simply branched map of degree at least three:
+every branch fibre has an unramified point. Thus
+rational postcomposition and \'etale pullback of that
+fixed function cannot complete the general B5 route;
+a new function on the covering curve would be needed.
+\end{proof}
+
+\begin{claim}{B.LIT10}{Proved}{Three uniformly divisible fibres with a supersingular Fermat quotient}
+Let $C/\overline{\F}_p$ be a smooth proper curve admitting
+a finite separable map to $\mathbb P^1$ with three
+distinct fibres in which every ramification index is
+divisible by the same odd integer $r\ge3$.
+Suppose $r\mid p^a+1$ for some $a\ge1$.
+Then $C$ has a connected cyclic \'etale cover of degree
+dividing $r$ which dominates a supersingular curve of
+genus $(r-1)/2$. Its geometric Galois closure therefore
+has order prime to $p$.
+In characteristic two this applies to every cyclic
+prime-degree cover of $\mathbb P^1$ of genus at least
+two whose degree $\ell$ satisfies that
+$\operatorname{ord}_\ell(2)$ is even.
+\end{claim}
+
+\begin{proof}
+Send the three specified values to $0,1,\infty$.
+The smooth proper model
+\[
+ H_r:\quad y^r=x(x-1)
+\]
+is a cyclic cover of degree $r$, totally ramified
+at those three values and nowhere else. Since $r$
+is odd, its genus is $(r-1)/2$. Normalizing
+$C\times_{\mathbb P^1}H_r$ and taking any connected
+component gives a cyclic cover $D\to C$ of degree
+dividing $r$. At each of the three relevant fibres,
+the tame local ramification index $r$ divides that
+of $C\to\mathbb P^1$, so the normalized pullback is
+unramified. It is unramified elsewhere as well.
+Thus $D\to C$ is \'etale, and $D\to H_r$ is dominant.
+
+Put $q=p^a$. The Fermat curve of degree $r$ maps
+to $H_r$ by
+\[
+ U^r+V^r=1,\qquad x=U^r,\quad y=-UV.
+\]
+It is in turn dominated by the Hermitian Fermat
+curve $U^{q+1}+V^{q+1}=1$, by taking coordinate
+powers $(q+1)/r$. This latter curve has genus
+$q(q-1)/2$ and exactly $q^3+1$ points over
+$\F_{q^2}$. Indeed the norm map to $\F_q$ has
+one preimage of zero and $q+1$ preimages of each
+nonzero value. Counting affine solutions gives
+$2(q+1)+(q-2)(q+1)^2=q^3-q$, and there are
+$q+1$ points at infinity. This attains the upper
+Weil bound, so every Frobenius root equals $-q$.
+The curve is therefore supersingular. Pullback
+and norm inject the Jacobian of every dominated
+curve in the isogeny category; hence $H_r$ is
+supersingular too.
+
+For the last assertion, a cyclic cover of odd prime
+degree $\ell$ has all ramification indices equal
+to $\ell$ at its branch values. Genus at least two
+forces at least three such values. An even order
+of $2$ modulo $\ell$ gives
+$2^{\operatorname{ord}_\ell(2)/2}=-1$ modulo
+$\ell$, so the proved criterion applies. Degrees
+$5,11,13,17,19$ give examples beyond the cubic
+case. Degree $7$ has order three and is outside
+this criterion; no inference for arbitrary
+characteristic-two curves follows.
+\end{proof}

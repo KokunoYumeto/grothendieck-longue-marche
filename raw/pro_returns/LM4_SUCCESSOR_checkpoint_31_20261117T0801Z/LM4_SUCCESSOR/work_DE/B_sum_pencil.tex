@@ -1,0 +1,212 @@
+\statement{B.79}{Proved}{The actual marginal has a source-marked presentation with no retained base loops}
+The same actual marginal group and source of B.78 admit a presentation
+on twenty-three fiber generators with eighty-two local relation normal
+generators. The base of this pencil is \(\mathbb C\), so every monodromy
+relation is included; there is no further retained-base saturation to
+perform. The entire source deletion-kernel equality is equivalent to
+normalization by three specified retained directions after one local
+elimination. These statements hold for actual compact images in full
+completions. The normalization condition itself remains unresolved.
+
+\begin{proof}
+\emph{The complete sum pencil.}\par
+In the normalized ordered surface of B.78 put
+\[
+              T=\frac{v+w}{2},\qquad z=w-1.
+ \tag{B.79.1}
+\]
+The generic fiber has twenty-three finite punctures:
+\[
+\begin{split}
+ &-1,\quad 2T-1,\quad T-1;\\
+ &u-1,\quad 2T-1-u\qquad(u\in\mu _5);\\
+ &z=(T-1)\pm\sqrt{T^2-q}\qquad(q\in\mu _5).
+\end{split}
+ \tag{B.79.2}
+\]
+The eight deleted punctures are the constant and moving terms with
+\(u\ne1\). Every component has finite degree over \(\mathbb C\),
+and no entire fiber is deleted. There are exactly twenty-six
+exceptional values. Their local types and relation counts are:
+\[
+\begin{array}{c|c|c|c|c}
+\text{value}&\text{number}&\text{local braid}&
+\text{exponent}&\text{relations each}\\\hline
+0&1&\Delta_3^2&6&2\\
+u\in\mu _5&5&\Delta_5\Delta_{3,\mathrm{inner}}&13&4\\
+-u,\ u\in\mu _5&5&\Delta_3&3&2\\
+u/2&5&\Delta_2^2\,\Delta_2^2&4&2\\
+(u+v)/2,\ u\ne v&10&\Delta_3^2\,\Delta_3^2&12&4
+\end{array}
+ \tag{B.79.3}
+\]
+Products in the last two rows have disjoint supports. The symbols
+\(\Delta_n\) denote positive half twists on the indicated consecutive
+local strands. The fiber losses in the five rows are respectively
+\(2,4,2,2,4\); their sum is \(82\), giving
+\(\chi(E)=1-23+82=60\).
+
+Here is an exact completeness check, not just a numerical count.
+The thirteen rational punctures give linear pair differences. A
+quadratic evaluated at a rational puncture has degree at most two in
+\(T\), and its own discriminant is \(4(T^2-q)\). Two different
+quadratics have constant nonzero difference \(q-q'\), so their roots
+never collide. For every remaining collision polynomial, the exact
+sum of its orders at the values in (B.79.3) equals its full degree.
+Arithmetic in \(\mathbb Q[\zeta]\) verifies that all twenty-six
+values are distinct. The discriminant exponent is twice the sum of
+the rational-pair and rational/quadratic resultant orders, plus the
+quadratic discriminant orders. This gives the fourth column of
+(B.79.3) independently of the braid extraction. The complete calculation
+is \path{work_DE/next_marginal_source/audit_sum_pencil.py}, with genuine
+output and \path{work_DE/next_marginal_source/sum_pencil_critical_audit.json}.
+
+\emph{One based marking, including the special source.}\par
+Take \(T_*=1+i/100,z_*=100\) and projection \(Pz\) with the same
+\(P=1+371i/1000\) as B.78. Use exactly the original source path and
+root ordering of B.78, then follow \(T=1+iy,z=100\),
+\(0\leq y\leq1/100\), lifting \(s^2=vw\). The source is \(T=1\).
+Along this short path a fixed disk \(\{|Pz|<1/4\}\) isolates its
+five merging retained points. The other eighteen punctures stay outside
+the disk. Based cuts outside it and a common boundary cut therefore
+give the literal source boundary
+\[
+               C=y_{10}y_{11}y_{12}y_{13}y_{14}.
+ \tag{B.79.4}
+\]
+The initial strand-label order, using rational labels zero through
+twelve and quadratic labels thirteen through twenty-two in the order
+of (B.79.2), is
+\[
+ (5,6,18,20,16,4,0,22,7,14,8,2,3,13,12,21,1,9,15,19,17,11,10).
+ \tag{B.79.5}
+\]
+Thus the five cluster positions are exactly \(10,\ldots,14\).
+Replace \(y_{10}\) by \(x_{10}=C\), leaving \(x_i=y_i\) for
+\(i\ne10\). Both substitutions are explicitly checked. The actual
+source is the free factor
+\[
+ H=F(x_i:i\notin\{11,12,13,14\})\cong F_{19},
+ \qquad \mathcal U=\{1,2,6,9,15,18,22,23\}.
+ \tag{B.79.6}
+\]
+Here \(\mathcal U\) is the set of eight deleted source meridians.
+The two finite-cover kernel comparisons in B.78 identify this source
+and its actual kernel image with the original marginal, including in
+full completions.
+
+All twenty-six lassos use disjoint squares of half-side \(1/1000\)
+and straight whiskers from \(T_*\) to their northeast corners. Exact
+distance and determinant checks prove that these are a distinguished
+system. The rational coefficient deformation, Sturm isolation and
+height bounds of B.78 apply to this quadratic family as well. One
+additional projection issue is essential: the diagonal point is the
+midpoint of a quadratic pair, so a pair's vertical crossing forces
+a three-strand vertical alignment for every linear projection.
+
+The new engine certifies distinct imaginary heights for every pair
+in each connected inversion cluster. In a sufficiently small interval
+around its isolated event, the strands remain in disjoint height
+disks. The product of those disks is simply connected. Replacing the
+horizontal projection there by an adjacent-inversion sorting path,
+with the same certified height order, is consequently an isotopy
+relative to endpoints. Every inverted pair crosses once; its sign is
+fixed by its height difference. This resolves the nongeneric projection
+without changing the geometric braid. The initial strict-run failure
+and the successful rerun are both retained.
+
+The full words and all 130 segment certificates are in
+\path{work_DE/next_marginal_source/sum_pencil_braids.json}; the producer
+is \path{work_DE/next_marginal_source/sum_pencil_braid.py}, with genuine
+\texttt{.out} and \texttt{.err} files. The exact source-cluster audit is
+\path{work_DE/next_marginal_source/check_sum_source_cluster.py}.
+In particular, both the actual local and global source lasso have
+Artin action \(\Delta_5\Delta_{3,\mathrm{inner}}\), and their common
+whisker fixes the word \(C\) in (B.79.4).
+
+\emph{The eighty-two actual relation generators.}\par
+Use the pullback convention of B.78. For each lasso the program absorbs
+an explicitly recorded initial local braid prefix into its whisker
+\(W\), obtaining precisely one supported standard form in (B.79.3).
+It checks the equality of the full global Artin action with
+\(W\beta_{\mathrm{standard}}W^{-1}\), as well as both inverse
+whisker actions. Three negative-root cases require a two-letter
+prefix; the other twenty-three cases require none.
+
+For a full twist on local meridians \(m_1,\ldots,m_n\), write
+\(P=m_1\cdots m_n\) and use the \(n-1\) relations
+\([P,m_j]=1\), \(j<n\). For a three-point half twist use
+\(m_3=m_1\) and \([m_1,m_2]=1\). For the five-point form put
+\(R=m_1m_2m_3m_4\) and use
+\[
+       m_5=m_1,\qquad [R,m_2]=[R,m_3]=[R,m_4]=1.
+ \tag{B.79.7}
+\]
+Indeed its Artin action sends \(m_1\) to \(Rm_5R^{-1}\),
+\(m_5\) to \(m_1\), and the three inner meridians to their
+\(R\)-conjugates. Relations (B.79.7) also imply \([R,m_1]=1\),
+so they are equivalent to all its variation relations. These formulas,
+transported by \(\Phi_W\) and rewritten in the source basis, give
+\(2+20+10+10+40=82\) relation normal generators.
+
+The complete list is
+\path{work_DE/next_marginal_source/sum_pencil_presentation.json}, produced
+by \path{work_DE/next_marginal_source/extract_sum_presentation.py} and
+its genuine output. It specifies
+\[
+             G\cong F(x_1,\ldots,x_{23})/
+                         \langle\!\langle\mathscr R_{82}\rangle\!\rangle.
+ \tag{B.79.8}
+\]
+A far-point section exists on all \(\mathbb C\). Ordinary van Kampen
+gluing, or the same generic-fiber theorem checked in B.78, therefore
+imposes all twenty-six variation families and leaves no base generator.
+The eighty-two count refers to locally minimal normal generating
+sets for the displayed variation families. Neither the twenty-three
+ambient generators nor the eighty-two global relations are claimed
+to be globally minimal. Completing (B.79.8) gives the corresponding quotient
+of the free profinite group by the closed normal closure of these
+same relations.
+
+\emph{The whole kernel condition and three retained directions.}\par
+Define \(N=\langle\!\langle x_i:i\in\mathcal U\rangle\!\rangle_H\),
+let \(I\) be its actual image in \(G\), and let \(R_U\) be the
+ambient normal closure of the eight deleted meridians. Their actual
+completed images are \(\mathcal I=\overline I\) and
+\(\mathcal R=\overline{R_U}\), as in B.78. Since \(H\) and its four
+missing retained generators generate \(G\), equality \(I=R_U\)
+is equivalent to invariance of \(I\) under all four of those generators;
+the same equivalence holds for the closed images.
+
+One local elimination reduces this to three directions. In the actual
+source block put \(a=y_{10}, b=y_{11}, d=y_{12}\). Its variation
+relations give
+\[
+ \begin{split}
+ y_{14}&=a,\qquad
+ y_{13}=d^{-1}b^{-1}a^{-1}Ca^{-1},\\
+ [C,a]&=1,\qquad [Ca^{-1},b]=[Ca^{-1},d]=1.
+ \end{split}
+ \tag{B.79.9}
+\]
+Thus the quotient defined by this local family alone is
+\(\mathbb Z(R)\times F_3(a,b,d)\), with
+\(R=Ca^{-1}\) central and \(C=Ra\). The source meridian is \(C\),
+not \(R\). No injection of this local quotient into the full ambient
+group is inferred. The ambient group is generated by the actual source image
+and \(a,b,d\), so the precise remaining condition is
+\[
+ \mathcal I=\mathcal R
+ \quad\Longleftrightarrow\quad
+ a\mathcal I a^{-1}=b\mathcal I b^{-1}
+                       =d\mathcal I d^{-1}=\mathcal I.
+ \tag{B.79.10}
+\]
+The discrete version is identical. For compact images, closedness of
+the normalizer supplies all limits of words in these generators.
+Neither internal normal generation of \(\mathcal R\) by the source
+image nor checks in nilpotent quotients establish (B.79.10). The whole
+normalization condition, rather than just the designated peripheral
+generators or their first few conjugates, remains the main marginal
+source-membership problem.
+\end{proof}

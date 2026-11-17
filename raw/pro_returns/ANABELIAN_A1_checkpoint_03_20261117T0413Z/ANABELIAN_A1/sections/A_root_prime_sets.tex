@@ -1,0 +1,69 @@
+\subsection{A concrete obstruction to the finite-Frattini extension}
+
+\begin{claim}{A.R6}{Proved}{Mixed-prime surface groups have infinite Frattini quotient}
+Let $\Sigma$ contain two distinct primes $r,s$, and let $\Delta$
+be the pro-$\Sigma$ completion of a surface group of genus at least
+two. Its Frattini quotient $\Delta/\Phi(\Delta)$ is infinite,
+where $\Phi$ is the intersection of the maximal open subgroups.
+In particular this applies to the geometric pro-$\Sigma$ group
+of a proper curve in characteristic outside $\Sigma$.
+
+For $\Sigma=\{2,3\}$ there is, moreover, an explicit two-generated
+group $G$ of order $576$, with $\Phi(G)=1$, and an automorphism of
+order seven acting trivially on $G^{\mathrm{ab}}$.
+Neither assertion is a counterexample to mixed-prime point separation.
+They show why the finite-Frattini and abelianization arguments used
+for a single prime do not extend by the same reasoning.
+\end{claim}
+\begin{proof}
+For each positive integer $n$, put $d_n=\operatorname{ord}_{s^n}(r)$.
+Choose an element $\zeta_n$ of exact order $s^n$ in
+$\mathbf F_{r^{d_n}}^\times$, and form
+\[
+ G_n=(\mathbf F_{r^{d_n}},+)\rtimes\langle\zeta_n\rangle,
+ \qquad (a,i)(b,j)=(a+\zeta_n^i b,i+j).
+\]
+The action on the additive normal subgroup is irreducible over
+$\mathbf F_r$, because $\mathbf F_r[\zeta_n]=\mathbf F_{r^{d_n}}$.
+It is faithful. Consequently the complement $H_n=\langle\zeta_n\rangle$
+is a maximal subgroup: a subgroup containing it intersects the
+additive group in an invariant subspace. Its core is trivial,
+since a nonidentity scalar fails to fix some additive element.
+Thus $\Phi(G_n)\subset\bigcap_{g\in G_n}gH_ng^{-1}=1$.
+The elements $(1,0)$ and $(0,1)$ generate $G_n$, since the scalar
+orbit of $1$ spans the whole additive group.
+
+The surface group surjects onto the free group on two generators
+by sending two of its $a$-generators to free generators and every
+$b$-generator, and all remaining $a$-generators, to one. Its
+pro-$\Sigma$ completion therefore surjects onto each $G_n$.
+The image of a Frattini subgroup under a surjection is contained
+in the target Frattini subgroup: pull back every maximal subgroup.
+Hence $\Delta/\Phi(\Delta)$ surjects onto every $G_n$.
+Their orders are unbounded, since they are divisible by $s^n$;
+the quotient is infinite. The characteristic-$p$ interpretation
+uses the geometric specialization isomorphism already checked in
+A.CF3, with all primes of $\Sigma$ invertible.
+
+For the finite example use
+\[
+ \mathbf F_{64}=\mathbf F_2[t]/(t^6+t+1),\quad
+ \zeta=t^7,\quad\lambda=t^9,
+ \qquad G=(\mathbf F_{64},+)\rtimes\langle\zeta\rangle.
+\]
+Here $\zeta$ has order nine and generates the degree-six field;
+$\lambda$ has order seven. Multiplication by $\lambda$ on the
+additive factor commutes with multiplication by $\zeta$, so
+\[
+                    (a,i)\longmapsto(\lambda a,i)
+\]
+is an automorphism of order seven. Since $\zeta-1$ is invertible,
+the commutators with $\zeta$ fill the additive factor. Thus
+$G^{\mathrm{ab}}=\mathbf Z/9$, on which this automorphism is
+the identity. The program \path{code/frattini_two_prime.py}
+checks the field, the root orders, all $576^2$ automorphism
+compatibilities, the two-generator orbit, the commutator image,
+and the trivial complement core. This supplies the exact finite
+counterexample to replacing the Frattini quotient by abelianization
+in the attempted extension of the single-prime argument.
+\end{proof}

@@ -1,0 +1,327 @@
+\subsection{An additional full profinite failure of the pentagon}
+
+\begin{result}{B.2.1}{Proved}{The kernel of the CM character contains elements failing the pentagon}
+There is an element $g\in\GTz$ of multiplier one with
+$\Delta(g)=0$ which fails the full profinite pentagon.
+Its image in the free pro-$11$ group begins in lower-central
+degree nine. Together with A.7, this gives the strict inclusion
+$\GT\subsetneq\ker\Delta$. The assertion checks and supplies
+an independent pentagon certificate for the existence part of
+LM7\_PUSH D.52; it does not use that return's unprovided
+degree-nine kernel computation.
+\end{result}
+\begin{proof}
+We give the integral vector, the actual lifting argument and a
+small exact image of its pentagon. Write $L(x,y)$ for the free
+Lie algebra over $\mathbb Z[1/2]$, and use standard Lyndon
+bracketing: a Lyndon word $w$ is bracketed as
+$[\mathsf L(u),\mathsf L(v)]$, where $v$ is its longest proper
+Lyndon suffix and $w=uv$. Let $2h\in L_9(x,y)$ have the following
+coefficients; every unlisted coefficient is zero.
+\[
+\begin{array}{lr|lr|lr}
+ w&[w](2h)&w&[w](2h)&w&[w](2h)\\ \hline
+ xxxxxxyyy&2&xxxxxyxyy&-18&xxxxxyyxy&-24\\
+ xxxxxyyyy&-6&xxxxyxxyy&18&xxxxyxyxy&-12\\
+ xxxxyxyyy&19&xxxxyyxxy&18&xxxxyyxyy&48\\
+ xxxxyyyxy&49&xxxxyyyyy&6&xxxyxxxyy&-2\\
+ xxxyxxyxy&32&xxxyxxyyy&-1&xxxyxyxxy&20\\
+ xxxyxyxyy&17&xxxyxyyxy&11&xxxyxyyyy&-13\\
+ xxxyyxxyy&-20&xxxyyxyxy&-12&xxxyyxyyy&-43\\
+ xxxyyyxxy&-20&xxxyyyxyy&-105&xxxyyyyxy&-49\\
+ xxxyyyyyy&-2&xxyxxyxyy&-41&xxyxxyyxy&-72\\
+ xxyxxyyyy&-17&xxyxyxxyy&59&xxyxyxyxy&-18\\
+ xxyxyxyyy&-34&xxyxyyxyy&-18&xxyxyyyxy&-68\\
+ xxyxyyyyy&12&xxyyxxyyy&-11&xxyyxyxyy&-51\\
+ xxyyxyyyy&30&xxyyyxyxy&-10&xxyyyxyyy&40\\
+ xxyyyyxyy&60&xxyyyyyxy&24&xyxyxyxyy&6
+\end{array}                                               \tag{B.W1}
+\]
+The notation $[w]$ in the table means the coefficient of
+$\mathsf L(w)$, rather than an associative-word coefficient.
+Put $z=-x-y$ and $k=-h(z,x)$. Expansion in the free associative
+algebra proves
+\[
+\begin{aligned}
+ h(x,y)+h(y,x)&=0,\\
+ [x,h(x,y)]&=[x+y,h(z,y)],\\
+ [h(x,y),y]&=[k,x+y],\\
+ h(x,y)+h(y,z)+h(z,x)&=0.
+\end{aligned}                                             \tag{B.W2}
+\]
+The program \texttt{check\_weight9\_witness.py} computes the
+standard brackets recursively, expands all $412$ nonzero
+associative coefficients of $2h$, and checks every coefficient
+of all four remainders. The saved JSON gives the full source,
+the companion $2k$ and the zero remainders. It also computes
+the right-$y$ Fox abelianization as
+$2X^6Y^2+6X^5Y^3+6X^4Y^4+2X^3Y^5$.
+Consequently the actual quotient by the second derived Lie ideal
+sends $h$ to $X^2Y^2(X+Y)^3[x,y]$.
+
+We next justify the pro-$11$ realization, which was outside the
+parts of D.44 checked by the supplied referee. Let $P$ be the
+free pro-$11$ group on $x,y$ and put $z=(xy)^{-1}$ in the group.
+The integral lower-central graded Lie algebra is the free
+$\mathbb Z_{11}$ Lie algebra. This follows directly from the
+Hall collection model: the free nilpotent quotient has the
+unique ordered basic-commutator coordinates, its pro-$11$
+completion has the same coordinates over $\mathbb Z_{11}$,
+and the commutator's first term is the integral Hall bracket.
+Passing over all nilpotent classes recovers $P$, since every
+finite $11$-group kills a sufficiently deep lower-central term.
+
+The derivation $D_h(x)=0$, $D_h(y)=[h,y]$ is tangential and
+special by the third identity of (B.W2). It has an integral
+special lift. To prove this, start with group conjugators at
+$y,z$ realizing the prescribed degree-nine terms, keeping $x$
+fixed. The product error in $xy'z'$ starts above their
+prescribed special relation. At degree $m$, modifying the
+two conjugators in degree $m-1$ changes that error by
+\[
+          (u,v)\longmapsto[u,y]+[v,-x-y].                 \tag{B.W3}
+\]
+Its image is $[L_{m-1},x]+[L_{m-1},y]=L_m$.
+The last equality is integral: Jacobi moves one generator
+to the outer position in each bracket monomial, by induction
+on the length of its first bracket factor. We can therefore
+cancel each successive error, preserving every lower term.
+The conjugators converge in every finite $11$-quotient.
+The resulting continuous endomorphism fixes all three
+peripheral conjugacy classes and acts identically on the
+Frattini quotient. It is an automorphism.
+
+Let $I^9$ be the degree-nine subgroup of the IA special
+outer automorphism group. It is pro-$11$, as is its closed
+filtration kernel: the IA automorphism group of a finitely
+generated pro-$11$ group is an inverse limit of finite
+$11$-groups, and taking closed subgroups and compact
+quotients preserves this property. Construction (B.W3)
+makes its leading map onto the integral special outer
+derivations. The actual geometric $\mathfrak S_3$ acts
+on $P$ through outer automorphisms and acts on $I^9$
+by conjugation. Equations (B.W2) show, for its two
+generators $s(x,y)=(y,x)$ and $r(x,y)=(y,z)$, that
+\[
+ sD_hs^{-1}-D_h=-\operatorname{ad}(h),\qquad
+ rD_hr^{-1}-D_h=-\operatorname{ad}(h).
+\]
+Thus $-[D_h]$ is fixed in the actual leading outer quotient.
+
+Fixed points lift across this equivariant pro-$11$
+surjection. Indeed, lift a fixed target element to $b$.
+In the semidirect product with $\mathfrak S_3$, the
+two complements obtained from the original copy of
+$\mathfrak S_3$ and its conjugate by $b$ lie over the
+same finite quotient. Coprime complement conjugacy in
+the pro-$11$ kernel supplies a kernel element which
+adjusts $b$ to commute with that copy. The finite
+Schur--Zassenhaus assertion applies at every finite
+kernel quotient; the closed nonempty sets of such
+adjustments have the finite intersection property,
+so compactness gives one adjustment for all quotients.
+We obtain an actual special outer automorphism
+$\beta_{11}$ with leading class $-[D_h]$, centralizing
+the same geometric $\mathfrak S_3$.
+
+For completeness we retain the precise source normalization.
+Put $B_{11}=\widehat B/O^{11}(F)$, where
+$F=\ker(\widehat B\to\mathfrak S_3)$, with
+$x=\tau^{-2},y=sxs$ and $\tau=sr$.
+Its pure kernel is the same $P$. Since $P$ is centerless,
+the extension is canonically the pullback
+\[
+ B_{11}\simeq\operatorname{Aut}(P)
+       \mathbin{\times_{\operatorname{Out}(P)}}\mathfrak S_3,
+ \quad b\longmapsto(\operatorname{Ad}_b,\bar b).           \tag{B.W4}
+\]
+Injectivity follows from $Z(P)=1$; a lift of $\bar b$
+and an inner adjustment prove surjectivity. Centerlessness
+follows from $C_P(x)=\langle x\rangle$ and
+$C_P(y)=\langle y\rangle$, whose intersection is trivial.
+The primitive-generator centralizer follows in every
+nilpotent class by comparing the first nonzero Hall term,
+and then by the inverse limit.
+
+Choose a representative $\psi$ of $\beta_{11}$ fixing
+$x$ literally. Conjugation by $\psi$ on the first
+factor of (B.W4) gives an automorphism $\phi$ over
+$\mathfrak S_3$. Since $\phi(\tau)^2=\tau^2=x^{-1}$
+and both elements centralize $x$, write
+$\phi(\tau)=x^a\tau$; taking squares gives $2a=0$
+in $\mathbb Z_{11}$, hence $\phi(\tau)=\tau$.
+The images of $s,r$ are conjugate to their original
+positive generators by coprime complement conjugacy.
+For $f_1=s\phi(s)$ the abelianization is $(a,-a)$,
+because $\phi(s)^2=1$ and $s$ interchanges $x,y$.
+Adjusting $\phi$ by $\operatorname{Inn}(x^a)$ replaces
+$f_1$ with $y^af_1x^{-a}\in P'$. Denote it by $f_{11}$.
+The literal torsion equations now give both gentle
+cycles, and the restricted pure action is
+\[
+             x\longmapsto x,\qquad
+             y\longmapsto f_{11}^{-1}yf_{11}.             \tag{B.W5}
+\]
+
+The normalization retains the prescribed leading term.
+In $P/\gamma_{10}P$, centralizing $x$ means belonging
+to $\langle x\rangle\gamma_9P/\gamma_{10}P$.
+To verify this, remove its abelian $x$-power and
+consider its first remaining term of degree below nine.
+A homogeneous associative polynomial commuting with $x$
+is a multiple of a pure power of $x$; such a term has
+zero coefficient in a Lie monomial of degree at least two.
+There is therefore no such first term. Apply this to
+an inner representative of (B.W5) modulo $\gamma_{10}$.
+Its equality on $y$ and the zero abelianization of
+$f_{11}$ force both remaining peripheral powers to be
+zero, so $f_{11}\in\gamma_9P$. The leading derivation
+of (B.W5) is $-D_{h_f}$. Equality of its outer class
+with $-[D_h]$, followed by the same free-Lie
+centralizer calculation, gives $h_f=h$.
+
+Use the refereed relative lifting theorem LM7\_PUSH D.50
+on its actual source
+\[
+ \widehat B/R_{\rm nil}(F)
+   \simeq\prod_{p,\mathfrak S_3}\widehat B/O^p(F).
+ \tag{B.W6}
+\]
+Place $\phi$ in the $11$-component and the identity in
+every other component. Their quotient actions on
+$\mathfrak S_3$ agree. At $11$ the positive $s,r$
+conjugators lie in $P$ by the same coprime argument;
+elsewhere they are one, and the cusp conjugator is one
+in every component. These verify the exact peripheral
+hypotheses of D.50, rather than just its graded target.
+It gives an actual full profinite gentle element
+$g_0=(1,f)$ with $f\mapsto f_{11}$.
+
+We now test its pentagon through an actual graded
+comparison. The lower-central Lie algebra of the pure
+four-strand group, tensored with $\mathbb Q_{11}$,
+is $\mathfrak t_4$, with generators $t_{ij}$ and
+relations
+$[t_{ij},t_{kl}]=0$ for disjoint pairs and
+$[t_{ij},t_{ik}+t_{jk}]=0$ for distinct indices.
+The quotient by the full twist is
+$\mathfrak p_5=\mathfrak t_4/\langle\sum_{i<j}t_{ij}\rangle$;
+these are the actual lower-central comparison maps in
+\cite[Section 5.1.1 and Remark 5.1]{EnriquezFurusho2021}.
+One can see compatibility with the pro-$11$ projection
+directly on the successive free kernels of pure-strand
+forgetting: their integral Hall lattices have torsion-free
+graded pieces and complete to those same lattices over
+$\mathbb Z_{11}$. The braid insertion maps send the
+degree-one classes to the named sums of $t_{ij}$.
+As $f_{11}$ begins in degree nine, the first term of
+its group pentagon is exactly
+\[
+\begin{split}
+ \mathcal P(h)={}&h(t_{12},t_{23}+t_{24})
+                 +h(t_{13}+t_{23},t_{34})\\
+ &-h(t_{23},t_{34})
+   -h(t_{12}+t_{13},t_{24}+t_{34})
+   -h(t_{12},t_{23}).                                    
+\end{split}\tag{B.W7}
+\]
+Products become sums at this first degree, and conjugating
+an insertion changes only higher terms.
+
+Here a $24$-dimensional representation suffices. In
+$\mathbb Q_{11}[\mathfrak S_4]$ put
+$C=\sum_{i<j}(ij)$ and send
+$t_{ij}\mapsto(ij)-C/6$. The class sum $C$ is central.
+Disjoint transpositions commute, and multiplication in
+each three-letter symmetric subgroup proves
+$[(ij),(ik)+(jk)]=0$. The sum of all six images is zero.
+This defines a Lie homomorphism out of the very sphere
+quotient $\mathfrak p_5$ just used. Adding central
+elements to the arguments of a homogeneous Lie word
+of degree at least two changes none of its values.
+Exact multiplication in the integral group algebra
+therefore gives
+\[
+          \mathcal P(2h)\longmapsto
+                    29120\bigl((34)-(12)\bigr)\ne0.
+ \tag{B.W8}
+\]
+The program checks every infinitesimal braid relation
+and all $24$ coefficients of this remainder.
+This is a necessary image of the full group pentagon:
+a zero group pentagon would have zero first graded
+term and zero image under this homomorphism. Hence
+$g_0$ fails the full profinite pentagon.
+
+Finally take the square $g=g_0^2$ in the group $\GTz$.
+R1 gives $\Delta(g)=2\Delta(g_0)=0$.
+The multiplier-one composition law in (B.W5) adds
+first degree-nine terms, so the first term of its
+pro-$11$ pair is $2h$; substitutions by the degree-nine
+IA action change that term only in higher degree.
+Its pentagon still has exactly the nonzero image
+(B.W8). Thus $g\in\ker\Delta\setminus\GT$, as asserted.
+\end{proof}
+
+\begin{result}{B.2}{Open}{Finite images and the determined quadratic annihilator}
+The complete finite-image comparison remains unresolved.
+The group
+\[
+ \mathscr X=
+ \{\chi\in\operatorname{Hom}_{\rm cts}(\GTz,\mathbb F_2):
+                     \chi|_{\GT}=0\}
+\]
+has dimension exactly $\aleph_0$, by B.2.24--B.2.25,
+and (B.I11) gives an exact basis isomorphism from the
+countable direct sum of $\mathbb F_2$. Every character
+$\Delta\circ D_P^n$ belongs to this space, and these
+characters are linearly independent even on $H$.
+We have exhibited the
+finite characteristic detector A.4.2, and proved
+$\GT\subsetneq\ker\Delta$ in B.2.1.
+B.2.2 determines the actual images in the free
+exponent-eleven quotients through class ten, with the
+first separation at class eight. B.2.3 supplies the
+smaller integral weight-seven witness. B.2.4 proves
+that the action on all odd-prime free pro-$\ell$
+quotients cannot detect a nonzero element of
+$\mathscr X$.
+B.2.5--B.2.8 compute a full marked central cover and
+use the exact finite-certificate lifting theorem to
+construct a second independent character
+$\Delta\circ D_P$. Thus generation of $\mathscr X$
+by $\Delta$ is refuted. B.2.25 additionally computes
+the full gentle and GT images in every finite prefix
+quotient of the actual binary shift map.  B.2.27 proves
+that this particular descent family does not span
+$\mathscr X$, by an actual full descent-kernel element
+detected by the harmonic character.  B.2.28 gives two
+jointly independent character families and computes
+the full image of every finite prefix of their paired
+shift quotient.  The determination of the abstract
+group and dimension retains the exact full-basis map.
+\end{result}
+
+The same character group is equivalently the continuous
+$\mathbb F_2$ dual of
+\[
+ \GTz\big/
+ \overline{\langle[\GTz,\GTz],\ (\GTz)^2,\ \GT\rangle}.
+ \tag{B.W9}
+\]
+Indeed every quadratic character kills the three displayed
+subgroups, and every continuous linear functional on their
+closed quotient pulls back to a character with the required
+vanishing. B.2.25 proves that this quotient is the
+countable binary product, by evaluation on a full
+chosen basis. Formula (B.W9) is its actual quotient map.
+The tests undertaken here are the signed
+CM action, its congruence-cover homology refinement, and
+the full weight-nine lift above, the exact low-weight
+finite images, and the odd-prime Frattini comparison.
+The remaining finite-image task includes the common
+five-point census of A.4 and explicit images at further
+mixed characteristic quotients. The proved abstract
+classification of the quadratic quotient supplies the
+maps (B.I3) at every finite prefix, while these further
+geometric finite-image comparisons remain to be computed.

@@ -1,0 +1,269 @@
+\subsection{An explicit open elliptic target for the original-factorial examples}
+\label{sec:ghost-elliptic-target}
+
+\begin{proposition}[The pointed Heisenberg cover as an open elliptic curve]
+\label{prop:ghost-elliptic-target}
+Let \(Y\to U\) be the degree-\(27\) finite etale
+cover defined by the class-two exponent-three geometric
+quotient \(H_3\) and the point-three section: its
+arithmetic fundamental group is the inverse image
+of that section in the arithmetic \(H_3\)-quotient.
+Its smooth compactification, pointed by the sheet
+above three, is
+\[
+                 E':\ y^2=x^3+9.
+\]
+The open curve \(Y\) is the complement of the
+twenty-seven geometric points above \(0,1,\infty\).
+The map to \(U\) is the restriction of the explicit
+composite
+\[
+ E'\xrightarrow{\ \phi\ } E
+   \xrightarrow{\ \iota^{-1}\ } C
+   \xrightarrow{\ t=3u^3\ }\mathbb P^1,
+ \quad
+ E:y^2=x^3-243,quad C:3u^3-2v^3=1,
+                                                        \tag{8}
+\]
+where
+\[
+ \phi(x,y)=\left(\frac{x^3+36}{x^2},
+                    \frac{y(x^3-72)}{x^3}\right)
+\]
+and, for \(d=3u(u-1)-2v(v-1)\),
+\[
+ \iota(u,v)=
+ \left(\frac{18(uv-1)}d,
+       -\frac{27[3u(u+1)+2v(v+1)]}d\right).
+                                                        \tag{9}
+\]
+For every pair constructed in
+Theorem~\ref{thm:ghost-original-first-integral-class3},
+its ordinary local point at \(q_0\) has no rational
+lift to \(Y\). There is no continuous section of the
+geometrically pro-three arithmetic fundamental group
+of \(Y\) whose pushforward to \(U\) has that
+abelian pair.
+\end{proposition}
+\begin{proof}
+We first identify the curve and the maps, then specify
+the section constraint that they impose.
+
+\emph{The cubic quotient and its pointed model.}
+Quotienting the pointed \(H_3\)-cover by its center
+gives the two Kummer equations
+\(t=3u^3\), \(1-t=-2v^3\). Their projective
+completion is the smooth diagonal cubic
+\(3U^3-2V^3=W^3\), with the distinguished rational
+point \(P=(1,1)\) in the affine chart. Formula (9)
+satisfies \(y^2=x^3-243\). Here is an explicit
+inverse, also verifying that the map has degree one.
+For a point \((x,y)\) of \(E\), set
+\[
+ \begin{gathered}
+ r=(y-27)/(3x),\qquad s=(y+27)/(3x),\\
+ X=\frac{x^3-972}{9x^2},\qquad
+ Y_1=\frac{y(x^3+1944)}{27x^3},\\
+ k=\frac{Y_1-15}{X-6},\qquad X_1=k^2-X-6,\\
+ u=\frac{X_1s}{6(k-3)},\qquad
+ v=\frac{X_1r}{6(k-2)}.
+ \end{gathered}                                      \tag{10}
+\]
+These formulas give \(3u^3-2v^3=1\), and substituting
+them in (9) returns \((x,y)\). They are identities
+in the function fields, so extend to inverse
+isomorphisms of the smooth projective curves. The
+second coordinate in (9) has a pole at \(P\),
+since its numerator there is nonzero while its
+denominator is zero. Thus \(\iota(P)=O_E\).
+The retained exact calculation
+\path{code/check_elliptic_heisenberg.py}
+verifies these identities by polynomial reduction.
+It also checks that the tangent third point
+\((-1/5,-4/5)\) maps to \((7,-10)\).
+
+For clarity, the elementary degree-three morphism
+from this cubic to \(E'\) is
+\[
+       (u,v)\longmapsto
+        (6uv,\,3(3u^3+2v^3));
+\]
+it sends \(P\) to \((6,15)\), so a translation
+is needed before treating it as a pointed isogeny.
+Formula (10) includes that translation explicitly.
+
+\emph{Identifying the central cover.}
+Each of the three inertia generators of the
+geometric \(H_3\)-cover has order three, including
+the one above infinity. Riemann--Hurwitz gives
+\[
+ 2g(\overline Y)-2=-2\cdot27
+                  +3\cdot27(1-1/3)=0.
+\]
+The point-three sheet gives a rational origin, so
+\(\overline Y\) is an elliptic curve. Its center
+quotient \(\overline Y\to C\) has degree three
+and is unramified: the center meets each cyclic
+inertia group trivially, because the latter has
+nonzero image in \(H_3^{\rm ab}\). Via \(\iota\)
+this is a pointed isogeny
+\(f:\overline Y\to E\).
+Origin-preserving maps are group homomorphisms by
+\cite[II.1.5--1.6]{GhostMilneEC}.
+
+The displayed map \(\phi:E'\to E\) is a
+degree-three isogeny. Its kernel consists of
+\(O,(0,3),(0,-3)\). The reverse isogeny
+\[
+ \psi:E\longrightarrow E',\qquad
+ \psi(x,y)=
+ \left(\frac{x^3-972}{9x^2},
+       \frac{y(x^3+1944)}{27x^3}\right)
+\]
+satisfies \(\phi\psi=[3]_E\); this identity
+is independently checked against the chord-and-tangent
+tripling formula in the same program.
+The curve \(E\) has exactly one subgroup of order
+three defined over \(\mathbb Q\). Indeed, such a
+subgroup is \(\{O,Q,-Q\}\), so its common
+nonzero \(x\)-coordinate must be rational.
+The doubling formula gives its division polynomial
+\(3x(x^3-972)\). Since \(972=2^2 3^5\) is
+not a rational cube, the only rational root is zero.
+
+Here is the exact comparison with the center quotient.
+The kernel of \(f\) is killed by three. The
+factorization property for isogenies
+\cite[II.1.7--1.8]{GhostMilneEC} therefore factors
+\([3]_{\overline Y}\) as
+\(\overline Y\xrightarrow f E\xrightarrow g\overline Y\),
+where \(g\) has degree three. Surjectivity of
+\(f\) gives \(fg=[3]_E\). The kernel of \(g\)
+is the unique rational subgroup of order three on
+\(E\), hence equals \(\ker\psi\). The same
+factorization property gives a degree-one isogeny
+\(j:\overline Y\to E'\) with \(jg=\psi\).
+Then \(\phi jg=[3]_E=fg\); surjectivity of
+\(g\) gives \(\phi j=f\). This proves the
+pointed isomorphism and the exact map (8).
+There are nine geometric points over each of
+\(0,1,\infty\), giving the stated twenty-seven
+punctures.
+
+\emph{Which global mod-three section can reach this cover.}
+For an arbitrary ordinary pair supplied by A.44
+with its original exponents, every integral class-two
+section, after its abelian normalization modulo
+three, has central class
+\[
+                       h_3+k\eta\pmod3,
+                         \qquad k=0,1,2.             \tag{11}
+\]
+This is the unramified-cocycle calculation in
+Theorem~\ref{thm:ghost-original-first-integral-class3};
+it does not use that theorem's extra first-prime
+condition. The coefficient-prime-three local
+abelian classes at two are exactly those of the
+point three. All \(2\)-adic units are uniquely
+three-divisible, and the second valuation is one.
+Their literal integral cocycles can be aligned
+locally by an abelian geometric conjugator divisible
+by three: the differences are zero modulo three,
+and \(\chi(F_2)-1=1\) is a three-adic unit.
+This leaves (11) unchanged modulo three.
+
+At two the central inertia comparison is zero,
+and the Frobenius comparison is
+\(k\eta(F_2)=k/8\). The second third-residue
+formula changes by this value, multiplied by the
+second valuation one. The point-three section has
+zero third obstruction; therefore the classes
+\(k=1,2\) have nonzero local obstruction in
+\(\mathbb Z_3/(2^2-1)=\mathbb Z/3\).
+Only \(k=0\) can be the reduction of an integral
+class-three section.
+
+Consequently every full geometrically pro-three
+section above such a pair projects, up to geometric
+conjugacy, to the point-three section in the
+\(H_3\)-quotient. By the definition of the pointed
+cover this is exactly the condition for its image
+to lie in the open arithmetic subgroup associated
+with \(Y\). Thus it factors through the
+geometrically pro-three arithmetic group of \(Y\).
+This group is the actual inverse-image subgroup in
+the geometrically pro-three arithmetic group of
+\(U\): its geometric index is \(27\), and any
+open normal subgroup of three-power index in that
+geometric subgroup contains its finite intersection
+of conjugates, still of three-power index in the
+ambient geometric group. Thus the induced pro-three
+topology is the full one, and completion identifies
+the subgroup rather than merely giving a map to it.
+For a class-three section the corresponding assertion
+is its factorization through the image of this open
+subgroup in the class-three arithmetic quotient;
+no lift from that quotient to the full group of
+\(Y\) is being inferred. The other two classes
+in (11) would define central twists of the cover,
+but they have already been excluded at two before
+this full-section reduction is made.
+
+\emph{The local fibre exclusion for the prescribed examples.}
+At the selected prime \(q_0\) of
+Theorem~\ref{thm:ghost-original-first-integral-class3},
+the ordinary point \(t_{q_0}\) has valuation
+\(24>0\). Its abelian classes modulo three are
+both zero: they are the local classes of
+\((3,-2)\), and (7) makes both cubic powers.
+The local boundary-conjugacy statement
+Proposition~\ref{prop:ghost-local-boundary}, applied
+to its point section, identifies its full pro-three
+image with the cyclic boundary section of its
+first Kummer class. That image is trivial in
+\(H_3\). The local cyclotomic action modulo
+three is also trivial, since \(q_0\equiv1\pmod3\).
+By contrast the point-three section has nonzero
+central Frobenius in \(H_3\) at \(q_0\), by (7).
+These two local sections are not geometrically
+conjugate in the finite quotient: conjugation fixes
+the center and cannot make its nonzero element zero.
+
+The exact fibre criterion for a pointed regular
+geometric cover says that \(Y_{t_{q_0}}\) has a
+\(\mathbb Q_{q_0}\)-point precisely when these
+two quotient sections are conjugate. Indeed the
+geometric fibre is the \(H_3\)-coset set of the
+point-three subgroup; a rational point is a fixed
+coset under the point section of \(t_{q_0}\).
+For the chosen Frobenius the action on this set
+is translation by a nonzero central element, so
+has no fixed point. This proves the stated local
+nonexistence.
+
+Finally any section of the full geometrically
+pro-three arithmetic group of \(Y\) pushes forward
+continuously to that of \(U\). With the asserted
+abelian pair its restriction at \(q_0\) is
+geometrically conjugate to the ordinary point
+section, by Proposition~\ref{prop:ghost-local-boundary}.
+Its finite \(H_3\)-image would therefore have
+to be trivial, while factorization through \(Y\)
+makes it conjugate to the nontrivial point-three
+image. This contradiction proves the section
+exclusion using the actual cover map.
+\end{proof}
+
+The open elliptic curve is the target in this proof.
+The comparison with its compactification has a
+precise kernel: the map
+\(\pi_1(Y_{\overline{\mathbb Q}})^{(3)}
+ \to T_3(E')\) kills the boundary inertia groups.
+The pushforward to \(\pi_1(U_{\overline{\mathbb Q}})^{(3)}\)
+sends inertia above zero to a conjugate of \(x^3\),
+whose first abelian coordinate is the nonzero element
+\(3\in\mathbb Z_3(1)\). Hence that pushforward
+does not factor through the compact quotient:
+its kernel does not contain the compactification
+kernel. No assertion here transfers the exclusion
+to a section of the compact elliptic curve alone.

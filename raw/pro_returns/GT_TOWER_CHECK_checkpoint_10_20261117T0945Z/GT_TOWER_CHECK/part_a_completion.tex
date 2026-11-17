@@ -1,0 +1,641 @@
+\subsection{Repair of the full-completion inputs to E.42}
+\label{sec:completion-repair}
+
+\begin{result}{A.6}{Proved}{EXIT\_TOWER E.42--E.43, with the missing completion arguments supplied}
+Equation (E.200) is precisely Lochak's compatible-pair equation (5.1).
+The equality of its two parameters follows from the genus-one calculation
+of A.1 and the parameter detection proved in Section~\ref{sec:tower-audit}.
+The completed exit system used in E.42 is the completion by all finite
+categorical congruences, and its endpoint groups are the full profinite
+mapping-class groups, in every genus.  Restriction to its labelled
+genus-zero system and the extension of E.39 are inverse on coherent
+operation-preserving equivalence classes.  The absent proofs of E.29,
+E.32, E.33, E.35 and E.38 are replaced by the arguments below; in
+particular, no congruence-subgroup-property assertion in genus at
+least three is required.
+\end{result}
+
+The missing source files for E.29, E.32, E.33, E.35 and E.38 are an
+omission in the supplied proof archive.  We supply the particular
+completion arguments needed by E.39--E.42 here.  Throughout, completion
+means the inverse limit of all finite categorical congruences on a
+finite orbit skeleton.  All mapping-class groups are completed with
+respect to all their finite quotients.
+
+\subsection{Finite convex extensions and exact fibre products}
+
+Let $\mathcal D$ be a full convex subcategory of a finite-object
+exit-category skeleton $\mathcal C$: every composable path with both
+endpoints in $\mathcal D$ has all its intermediate objects there.
+Every finite quotient of $\mathcal D$ extends to a finite quotient
+of $\mathcal C$.  Keep that quotient on the Hom-sets of $\mathcal D$;
+replace every nonempty Hom-set having an endpoint outside
+$\mathcal D$ by a singleton, and retain the empty Hom-sets.
+Composition inside $\mathcal D$ is its prescribed composition.
+Every other composite has its forced singleton value.  A composite
+with both endpoints inside cannot pass through an outside object,
+by convexity.  Hence no outside composition imposes an additional
+relation inside.  This verifies identities and associativity and
+proves the extension assertion.  The same argument applies to a finite
+union of convex components: a path leaving that union and returning
+would violate its stated convexity.  Completion consequently restricts
+to the actual full completion on a convex subcategory.
+
+We also record the exact fibre-product argument used below.  For a
+surjection of discrete groups $H\to G$ with kernel $N$, and a
+homomorphism $K\to G$, put $P=H\times_G K$.
+In each application here, $N$ has its full induced profinite topology
+in $H$.  Projection $P\to H$ then gives the full induced topology
+on the copy of $N$ in $P$ as well.  Right exactness of profinite
+completion gives exact sequences
+\[
+\begin{split}
+1&\longrightarrow\widehat N\longrightarrow\widehat H
+                      \longrightarrow\widehat G\longrightarrow1,\\
+1&\longrightarrow\widehat N\longrightarrow\widehat P
+                      \longrightarrow\widehat K\longrightarrow1.
+\end{split}                                                     \tag{TC.1}
+\]
+The initial injections follow from the full induced topologies.
+The kernels of the right arrows are the closures of their discrete
+kernels, by right exactness, so no separability assertion has been
+substituted for this argument.  The profinite fibre product
+$\widehat H\times_{\widehat G}\widehat K$ has the second exact
+sequence in (TC.1) too.  The natural homomorphism from $\widehat P$
+induces the identity on its kernel and quotient; it is therefore an
+isomorphism.  For a finite-index image in place of a surjection, replace
+$G$ by that image and $K$ by its inverse image.  The latter is a
+finite-index subgroup, whose completion is the corresponding open
+subgroup.  The same proof then applies, retaining the finite quotient
+of components.  This is the exact form needed in the coarse flag
+calculations of E.40.
+
+\subsection{Crossings and adjacent flags}
+
+Let $\Gamma$ be a mapping-class group and $\sigma$ an actual
+multicurve.  Write $C=\operatorname{Stab}_\Gamma(\sigma)$,
+$\Delta=\langle\tau_c:c\in\sigma\rangle$ and $H=C/\Delta$.
+The discrete crossing to the open object is the transitive left
+$\Gamma$-set $\Gamma/\Delta$.  Every finite categorical congruence
+restricts on this set to a finite equivariant quotient, and its action
+factors through a finite quotient of $\Gamma$.  Conversely, every
+finite quotient $\Gamma/N$ induces a quotient of the whole
+transporter category: replace each representative $g$ by its image
+and each source multitwist group by its image.  This is well-defined
+under composition because
+$g\sigma_i\supseteq\sigma_j$ implies
+$g^{-1}\Delta_{\sigma_j}g\subseteq\Delta_{\sigma_i}$.
+Thus the crossing has exactly the topology of the inverse system
+$\Gamma/(N\Delta)$, and
+\[
+       \widehat{\operatorname{Hom}}(\sigma,\varnothing)
+                  =\widehat\Gamma/\overline\Delta.         \tag{TC.2}
+\]
+Every endpoint group has its full completion: extend any finite quotient
+of that one-object convex subcategory by the preceding construction.
+
+Boggi's Theorem~4.5 \cite{ET_Boggi2014}, specifically the injectivity of the multitwist
+lattice in its second exact sequence, supplies
+$\widehat\Delta\hookrightarrow\check\Gamma$.
+The map factors through $\widehat\Gamma\twoheadrightarrow
+\check\Gamma$, so its injection also proves
+$\widehat\Delta\hookrightarrow\widehat\Gamma$.
+This is the precise direction in which the cited procongruence result
+is used.  In particular $\overline\Delta=\widehat\Delta$ in (TC.2).
+The finite-quotient diagonal argument of the preceding section gives
+\[
+        \widehat C\hookrightarrow\widehat\Gamma\times\widehat H.
+\]
+Lifting the $\widehat H$ coordinate and then the residual
+$\widehat\Delta$ coordinate computes the whole stabilizer of the
+pinned crossing as $\widehat C$.
+
+For an adjacent incidence $\sigma\supset\tau$, normalize at the
+retained curves $\tau$ and keep their branch pinnings.  This cuts the
+target into its actual components.  The incidence is a crossing to
+the open object of one component; the other components contribute
+identity factors.  Its two endpoint groups and incidence group are
+\[
+ G_0=\operatorname{Stab}(\sigma)/\Delta_\sigma,
+ \quad G_1=\operatorname{Stab}(\tau)/\Delta_\tau,
+ \quad K=\operatorname{Stab}(\sigma,\tau)/\Delta_\tau.
+\]
+The map $K\to G_0$ has finite-index image, since it merely retains
+a specified subset of the finite curve set of $\sigma$; its kernel is
+$\Delta_\sigma/\Delta_\tau$.  This kernel is the full multitwist
+lattice in the normalized target components, and has its full induced
+topology there by the same injectivity just used.  The diagonal argument,
+with the finite-index image retained, gives
+\[
+ \widehat K\hookrightarrow\widehat G_1\times\widehat G_0,
+ \qquad
+ \widehat{\operatorname{Hom}}_{\rm incidence}
+     = (\widehat G_1\times\widehat G_0)/\widehat K.          \tag{TC.3}
+\]
+At the level of a two-object adjacent interval, every finite equivariant
+quotient of its crossing biset is a finite categorical quotient;
+there is no composition of two noninvertible arrows in this interval.
+Convex extension therefore proves that (TC.3) has the topology induced
+by the full exit category.
+
+Here is the precise finite-pinning comparison needed to use
+normalization inside that category.  On its finite skeleton let $P(i)$
+be the finite set of retained submulticurves of the specified type,
+with their branch pinnings.  An arrow represented by $g:i\to j$
+pulls a target pin $\rho$ back to $g^{-1}\rho$; source twists have no
+effect on this pullback.  Thus $P$ is a finite contravariant functor.
+An arrow has a unique lift to the category of elements of $P$ for each
+target pin.  For a finite quotient $F$ of this marked category, record
+on a downstairs arrow $g$ its finite map $P(g)$ and the finite array
+$(F(g_\rho))_{\rho\in P(j)}$.  For a composite $hg$, the entries
+are $F(h_\rho)F(g_{P(h)\rho})$.  Equality of these arrays is a finite
+categorical congruence downstairs, and its pullback refines $F$.
+The converse pullback is immediate after retaining $P$.
+This proves cofinality and hence commutation of completion with this
+particular finite marking construction.  Cutting and extending over
+the retained collars are inverse functors on its component diagrams;
+their collar twists are killed on both sides.  An intermediate
+contraction cannot erase a node retained by the final target, so the
+component interval is convex.  All finite quotients of the normalized
+component diagrams are therefore retained in the original completion.
+
+Apply (TC.1) successively to the incidence stabilizers of a specified
+adjacent flag.  Every kernel that occurs is the residual multitwist
+lattice, with the full topology proved above; every image imposing
+an order or pin on a finite curve set has finite index.  The stabilizer
+of the completed flag is consequently the full completion of its
+discrete stabilizer, with precisely the original quotient maps to its
+endpoints and arrows.  There are only finitely many matching incidence
+orbits for a fixed finite object list.  Their completed group orbits
+are compact and closed in the product of Hom-spaces.  Their finite union
+contains the product of the dense discrete Hom-spaces, hence is the
+whole product.  This proves the required flag assertion without
+postulating density in a square equalizer.  It repairs E.32.
+
+\subsection{Pair-tail normalizers in every genus}
+
+We first prove the peripheral fact used in the repair.  For a hyperbolic
+punctured surface $S$, let $P=\widehat{\pi_1(S)}$ and let $I$ be a
+peripheral procyclic subgroup.  Then
+\[
+                         N_P(I)=I.                          \tag{TC.4}
+\]
+Indeed, take an element $h\notin I$ normalizing $I$.  There is an open
+subgroup $U\leq P$ containing $I$ and excluding $h$: separate the
+compact subgroup $I$ from $h$ in a finite quotient and take the inverse
+image of the image of $I$.  The corresponding finite surface cover
+has at least three punctures when the base has genus zero.  In positive
+genus its compactification has positive genus by Riemann--Hurwitz.
+In that case pass further to the kernel of the map to the mod-two
+homology of the compactification.  This is an unramified compact cover
+of degree at least four, contains all cusp inertia, and still excludes
+$h$.  Denote the resulting subgroup by $V$; its surface has at least
+three punctures.
+
+The cosets $V$ and $Vh$ determine distinct unramified cusps over the
+chosen base cusp.  Their inertia groups are conjugate in $V$ to the
+same subgroup $I$.  To interpret a profinite coset as a topological
+cusp, choose a discrete representative $r\in Vh$; writing $r=vh$
+gives $rIr^{-1}=vIv^{-1}$.  On the other hand, in the homology of a
+surface with at least three punctures the peripheral classes have
+exactly their single sum relation.  The procyclic lines generated by
+two distinct peripheral classes are distinct.  Conjugate inertia
+subgroups would give the same line, a contradiction.  This proves
+(TC.4).  It also proves that a primitive generator of a nonabelian
+free profinite group has its own procyclic group as centralizer.
+Two different free basis elements consequently show that such a free
+profinite group has trivial centre.
+
+The closed case also has the required centrelessness.  Let
+$\Pi=\pi_1(\Sigma_g)$ with $g\geq2$, and let $z$ be central in
+$\widehat\Pi$.  For an arbitrary finite quotient $q:\Pi\twoheadrightarrow Q$,
+put $U=\ker q$ and choose a prime $p$ not dividing
+$|Q|(2g-2)$.  The finite covering surface has genus
+$g_U=1+|Q|(g-1)$.  Its $Q$-equivariant cellular complex, obtained by
+lifting the usual one-vertex, $2g$-edge, one-face cell structure, has
+regular chain modules of ranks $1,2g,1$.  Both $H_0$ and $H_2$ are
+trivial $Q$-modules, since the deck transformations preserve orientation.
+Consequently the trace of a nonidentity $h\in Q$ on
+$H_1(U,\mathbb F_p)$ is $2$, whereas the trace of the identity is
+$2+|Q|(2g-2)$; these are different in $\mathbb F_p$.  Thus the deck
+action of $Q$ on this homology is faithful.  Finite-index subgroups
+have their full induced profinite topology.  Since $z$ centralizes
+$\widehat U$, it acts trivially on this finite homology quotient.
+The action factors through $Q$, so $q(z)=1$.  This holds for every
+finite quotient $q$, proving $Z(\widehat\Pi)=1$.
+
+For every stable surface of type $(g,n)$, including $n=0$ and $g\geq2$,
+the discrete Birman sequence for an additional labelled point is
+\[
+1\longrightarrow\pi_{g,n}\longrightarrow\Gamma_{g,n+1}
+                     \longrightarrow\Gamma_{g,n}\longrightarrow1.
+\]
+Its kernel has the full induced topology.  Namely, use the extra point
+as basepoint to obtain
+$\Gamma_{g,n+1}\to\operatorname{Aut}(\widehat\pi_{g,n})$.
+Characteristic finite quotients of the finitely generated surface
+group (free when $n>0$) give continuity from the full profinite completion.  On
+point pushes this is the map to inner automorphisms.  The centre of
+$\widehat\pi_{g,n}$ is trivial by the two preceding arguments, so that
+inner-automorphism map is injective.  Its factorization through
+$\widehat\Gamma_{g,n+1}$ proves the asserted injection.  Right
+exactness now proves the full completed Birman sequence.
+
+Attach one pair-tail at an old labelled puncture $p$, with new point
+$x$, and let $C$ stabilize its separating curve $t$ in
+$\Gamma_{g,n+1}$.  Cutting off that two-punctured disc identifies $C$
+with the group of the core with $p$ blown up to one fixed boundary.
+Forgetting $x$ restricts to the marked-capping surjection
+\[
+             C\longrightarrow\Gamma_{g,n},\qquad
+                    \ker=\mathbb Z\tau_t.
+\]
+The twist is the actual peripheral element of the Birman kernel.
+The full diagonal topology, together with the forgetting map on the
+ambient group, proves $\widehat C\hookrightarrow
+\widehat\Gamma_{g,n+1}$: its second diagonal coordinate is already
+a function of its first.  Moreover
+$\widehat C\cap\widehat\pi_{g,n}=\widehat{\mathbb Z}\tau_t$.
+A normalizer of this twist group can be multiplied by an element of
+$\widehat C$ so that its forgetting image is one.  It then lies in the
+Birman kernel and (TC.4) puts it in the twist group itself.  Since all
+these mapping classes preserve orientation and the two labels, $C$
+centralizes the twist.  Thus
+\[
+ N_{\widehat\Gamma_{g,n+1}}(\widehat{\mathbb Z}\tau_t)
+ =C_{\widehat\Gamma_{g,n+1}}(\widehat{\mathbb Z}\tau_t)
+ =\widehat C.                                                \tag{TC.5}
+\]
+
+Now attach $r$ tails at distinct old punctures, with new points
+$x_1,\ldots,x_r$, curves $t_1,\ldots,t_r$ and twist lattice $\Delta$.
+The joint stabilizer has its full topology, by induction on $r$.
+In fact the single-$t_r$ stabilizer maps by marked capping onto the
+group with $x_r$ forgotten, with kernel $\mathbb Z\tau_{t_r}$.
+The joint stabilizer is the inverse image of the joint stabilizer of
+the other $r-1$ curves.  To check this discrete equality, isotope a
+representative fixing those curves and the retained point $p_r$;
+a small disc at $p_r$ can be chosen disjoint from the curves, so it
+lifts to a boundary-fixing representative.  All lifts differ by the
+boundary twist, which fixes the other curves.  The exact fibre-product
+calculation (TC.1) and the induction injection prove the same
+inverse-image equality after full completion.  This also identifies
+the intersection of the completed single-tail stabilizers with the
+completion of their discrete intersection.
+
+An element normalizing $\widehat\Delta$ acts on it by a matrix in
+$\operatorname{GL}_r(\widehat{\mathbb Z})$.  Forget every $x_j$
+except $x_i$.  The induced map sends $\tau_{t_i}$ to the single-tail
+twist and kills all $\tau_{t_j}$ with $j\ne i$.
+Applying this map to the conjugation equation for $\tau_{t_j}$ forces
+the matrix entry in row $i$, column $j$ to be zero when $i\ne j$.
+Thus the matrix is diagonal and the normalizer preserves every
+individual twist line.  Equation (TC.5) and the intersection statement
+then give
+\[
+ N_{\widehat\Gamma}(\widehat\Delta)
+ =C_{\widehat\Gamma}(\widehat\Delta)
+ =\widehat{\operatorname{Stab}_\Gamma(t_1,\ldots,t_r)}.
+                                                               \tag{TC.6}
+\]
+This proves the full-completion normalizer assertion of E.33.
+
+There is also a direct proof of its Boolean-category assertion.  For
+subsets $I\supseteq J$ of the tail set, every transporter from $t_I$
+to $t_J$ fixes each $t_j$, $j\in J$: its pair of fresh labels singles
+it out among the source curves.  Writing $C_J=\operatorname{Stab}(t_J)$,
+we have, with their actual inclusions,
+\[
+ \operatorname{Hom}(t_I,t_J)=C_J/\Delta_I,
+ \qquad
+ \widehat{\operatorname{Hom}}(t_I,t_J)
+                       =\widehat C_J/\widehat\Delta_I.       \tag{TC.7}
+\]
+For the topology in (TC.7), the target endpoint group acts transitively,
+so every finite categorical quotient factors through a finite quotient
+of it.  Conversely the ambient finite transporter quotients induce
+all the needed finite quotients of $C_J$, because $C_J$ has its full
+topology in $\Gamma$.  This proves equality of the two topologies.
+The map from (TC.7) to $\widehat\Gamma/\widehat\Delta_I$ is injective.
+
+An equivalence with identity open-group action sends the pinned crossing
+from $t_I$ to the open object to a right translate by a unique element
+of $\widehat C_I/\widehat\Delta_I$, by (TC.6).  Use that element as
+the comparison at $t_I$.  All pinned crossings and their endpoint
+actions are then fixed, since the right action is faithful and free.
+Composition into the open crossing is injective by (TC.7), so all
+remaining arrows are fixed.  The uniqueness at each endpoint makes
+these comparisons coherent.  This proves the stated Boolean rigidity,
+including every crossing map, without a general multicurve-normalizer
+assumption.
+
+\subsection{The exact adjacent presentation}
+
+Before passage to an orbit skeleton, use all actual multicurves as
+objects.  Introduce isomorphisms $u_g:\sigma\to g\sigma$ for
+$g\in\Gamma$ and one-curve deletion arrows
+$d_{\sigma,c}:\sigma\to\sigma\setminus\{c\}$.
+Impose the multiplication equations on the $u_g$, their equivariance
+with deletions, $u_\delta=1$ at $\sigma$ for $\delta\in\Delta_\sigma$,
+and the diamond deleting two distinct curves in either order.
+Every word can be moved, by equivariance, into a single $u_g$ followed
+by deletions of precisely the curves in $g\sigma\setminus\tau$.
+Diamonds make the order of these deletions irrelevant.  The resulting
+normal form is exactly
+\[
+       g\Delta_\sigma,
+          \qquad g\sigma\supseteq\tau.                     \tag{TC.8}
+\]
+Changing $g$ by a source twist leaves the word unchanged by the stated
+source relation.  Conversely two equal normal forms differ by such a
+twist.  Multiplication of representatives gives the transporter
+composition, since the twists at a target lift into the source
+twist lattice.  These assignments construct inverse functors between
+the presented category and the actual transporter category.
+
+Choose one representative per finite orbit and choose a transporter
+from each actual multicurve to its representative.  Conjugating the
+above generators by these chosen transports gives the skeletal
+endpoint groups, adjacent incidence bisets and pinned diamonds.
+The inverse includes the representatives and uses those transports
+as its natural isomorphism.  It retains every actual pin and every
+incidence orbit.  A finite assignment of the completed endpoint
+groups and adjacent bisets respecting these equations restricts to
+a functor on the discrete category by (TC.8), and its finite kernel
+is a categorical congruence.  Conversely every such congruence gives
+that assignment.  Taking the inverse limit over finite targets proves
+the universal profinite presentation with the same continuously
+transported diamonds.  This supplies E.38 in precisely the finite
+quotient sense used by E.39.
+
+\subsection{Framed square equalizers and the sewing section}
+
+The repaired ingredients suffice for the square argument in E.40;
+we give the complete reason that no extra completed squares occur.
+Attach distinct pair-tail tags $t$ to a bordered core and write
+$A_i=t\cup\gamma_i$, $B_i=\gamma_i$, with
+$\gamma_0\supseteq\gamma_1$ and fixed vertical tag-smoothing arrows
+$\eta_i:A_i\to B_i$.  Set
+\[
+ C_i=\operatorname{Stab}(t,\gamma_i)/\Delta_{\gamma_i},
+ \qquad S=\operatorname{Stab}(t,\gamma_0,\gamma_1)
+                                      /\Delta_{\gamma_1}.
+\]
+Discretely a commutative square is represented by one element
+$c\in\operatorname{Stab}(t)$ and has horizontal representatives
+$c\Delta_{t\cup\gamma_0}$ and $c\Delta_{\gamma_0}$.
+A tag cannot be exchanged with an interior essential core curve,
+because its pair of new labels distinguishes it.  The two square
+composites agree precisely modulo
+$\Delta_t\Delta_{\gamma_0}$, which proves this description and
+its inverse, the bottom representative.
+
+At the endpoints, (TC.6) gives the full groups
+$\operatorname{Aut}(\eta_i)=\widehat C_i$, with injective target
+projection and surjective source projection of kernel
+$\widehat\Delta_t$.  For the common composite $z_0:A_0\to B_1$,
+normalize at $\gamma_1$ and use the finite-pinning comparison above.
+Its orbit is $E/\widehat S$, where
+$E=\widehat{\operatorname{Aut}(B_1)}\times
+\widehat{\operatorname{Aut}(A_0)}$.
+Each of its two indicated intermediate subsets is intrinsic, because
+tags cannot be exchanged with core curves.  Discretely its specified
+two-step factorization stabilizer projects isomorphically onto $S$;
+the missing intermediate coordinate is the same representative modulo
+the intermediate twist lattice.  Applying (TC.1) with kernel
+$\Delta_{\gamma_0}/\Delta_{\gamma_1}$ on one side and $\Delta_t$
+on the other proves the same assertion after completion.
+
+There are finitely many matching factorization orbits, and their compact
+completed orbits cover the product of composable Hom-spaces by the
+ordinary-product density argument above.  Thus the two factorization
+spaces of this common-composite orbit are exactly
+\[
+ (E\times\widehat{\operatorname{Aut}(B_0)})/
+       \operatorname{Graph}(\widehat S\to
+                          \widehat{\operatorname{Aut}(B_0)}),
+\quad
+ (E\times\widehat{\operatorname{Aut}(A_1)})/
+       \operatorname{Graph}(\widehat S\to
+                          \widehat{\operatorname{Aut}(A_1)}).
+                                                               \tag{TC.9}
+\]
+Composition in both spaces is the projection to $E/\widehat S$.
+Write a common composite as $(g_1,h_0)z_0$ and use middle coordinates
+$x,y$ in these two spaces.  Requiring the vertical arrows to be the
+fixed $\eta_0,\eta_1$ is exactly
+\[
+                 (x,h_0)\in\widehat C_0,
+                  \qquad(g_1,y)\in\widehat C_1.
+\]
+The resulting square space is therefore
+\[
+                 (\widehat C_1\times\widehat C_0)/\widehat S.
+                                                               \tag{TC.10}
+\]
+Its stabilizer has full topology by the diagonal argument, since its
+source map has finite-index image and residual full multitwist kernel.
+The same crossing computation on the bordered core shows that (TC.10)
+is its full framed-transporter completion.  The two horizontal
+projections are the original quotient maps.  Refinements and
+compositions agree on representatives and then, by density in products,
+on the completed Hom-spaces.  This proves E.40's actual equalizer
+comparison, rather than asserting an abstract interchange between
+completion and equalizers.
+
+For the sewing recovery, choose two labelled boundaries $a,b$ of the
+core, attach a tripod to each, clutch one external leg of each tripod,
+and retain their other legs as distinct companion labels.  Let $i,j$
+be the core interfaces and $m$ the middle collar.  The flag is
+\[
+ \{i,m,j\}\cup\gamma\longrightarrow\{m\}\cup\gamma
+                                      \longrightarrow\gamma.
+\]
+A stable trivalent genus-zero vertex cannot be created by contraction:
+for a connected contracted subgraph $H$ the exact identity is
+\[
+3g(v)-3+\operatorname{val}(v)
+ =\sum_{w\in V(H)}(3g(w)-3+\operatorname{val}(w))+|E(H)|.
+\]
+All summands are nonnegative.  Each companion therefore singles out
+its original tripod, and every transporter of these flags preserves
+$i,m,j$ individually.  Cutting the two tripods leaves a framed core
+transporter $p$ and an independent middle twist $n\in\mathbb Z$.
+Each inner tripod twist is identified with its core boundary twist,
+each companion twist is killed by its marked cap, and the two middle
+leg twists are identified.  These relations give, on all arrows,
+\[
+                         L=P\times B\mathbb Z_m.            \tag{TC.11}
+\]
+Here $P$ is the full framed exit category of the core.
+The square calculation (TC.10), including the retained finite pins,
+proves the completed version of (TC.11).  On a single orbit its middle
+coordinate is the difference $n_1-n_0$ of the endpoint coordinates;
+the stabilizer has the diagonal middle coordinate.  Explicitly,
+\[
+ \frac{(\widehat P_1\times\widehat{\mathbb Z})
+                  \times(\widehat P_0\times\widehat{\mathbb Z})}
+      {\widehat S_P\times\operatorname{diag}(\widehat{\mathbb Z})}
+ \longrightarrow
+ \bigl((\widehat P_1\times\widehat P_0)/\widehat S_P\bigr)
+                          \times\widehat{\mathbb Z},
+\quad[(p_1,n_1),(p_0,n_0)]\mapsto([p_1,p_0],n_1-n_0)
+\]
+is an isomorphism with inverse given by $n_0=0,n_1=n$.
+Finite categorical quotients also prove this product completion:
+take a common multiple of the orders of the images of the central
+integer at the finitely many objects, and take the quotient induced
+on $P$.  These product congruences are cofinal.
+
+Both coordinate maps are retained operations.  Normalizing the retained
+middle node gives $q(p,n)=p$.  Ordering the middle smoothing first and
+normalizing the two interfaces selects the four-point middle crossing,
+giving $r(p,n)=n$.  Changing that order uses precisely the pinned
+diamonds of (TC.8).  The simultaneous section is uniquely determined
+on every Hom-set by $qs=1_P$, $rs=0$, hence is $(p,0)$.
+Forgetting the two companions concatenates the three collars; in their
+normal coordinates and winding coordinates the maps are
+\[
+                   q_e=q_iq_mq_j,
+                 \qquad(u_i,u_m,u_j)\mapsto u_i+u_m+u_j.
+\]
+On the simultaneous section the middle winding is zero, so the bottom
+arrow is exactly the smooth sewing of the original framed arrow.
+For several sewings, all middle coordinates are zero; the same
+characterization proves independence of order, associativity and
+self-sewing coherence.  Ordinary caps are recovered by forgetting
+both labels of the corresponding tail and stabilizing.  The cylinder
+uses the single four-point crossing, with its two boundary twists
+identified with that crossing's one positive meridian.  This repairs
+the groupoid sewing extraction E.35 as well as the whole-arrow version
+used in E.42.
+
+\subsection{The whole-arrow kernel and its exact dependencies}
+
+Every adjacent crossing has a local four-holed-sphere or one-holed-torus
+support after normalizing the retained nodes and choosing a pants
+refinement.  Sew the remaining pants and retain the old nodes by nodal
+clutching.  This sends the local pinned crossing to the original
+crossing, with its actual endpoint maps.  The one-holed-torus crossing
+itself comes from the four-holed sphere: take the two sides of its
+node to have boundary labels $\{a,a_0\}$ and $\{b,b_0\}$,
+self-sew $a,b$, and cap $b_0$.  Cutting the original node then leaves
+a pair of pants with boundaries $a_0,c^+,c^-$, proving that it is the
+nonseparating one-holed-torus node.  The plumbing coordinate at that
+node is untouched, so its meridian has no extra winding.
+Thus four-point crossings, the recovered whole-arrow sewing, caps and
+nodal clutching generate every adjacent pinned crossing.
+
+The recovered boundary groupoids are the marked-pants groupoids by
+extension over the fixed tripods and restriction to their cores.
+Their operadic comparison retains parametrizations and relabellings.
+We spell out the strictification, including graph automorphisms.
+The object modular operad is the free one on the
+$\mathfrak S_3$-set $\mathfrak S_3/C_3$ of the two cyclically ordered
+three-boundary corollas.  Concretely, an object is an isomorphism class
+of a connected trivalent graph, with labelled external legs and a
+cyclic ordering of the three flags at every vertex.  This is exactly
+the graph quotient of
+\cite[Definitions~2.24 and 3.1]{ET_BonattoRobertson2026}.
+
+Let $H_P:P\longrightarrow F(P)$ be the component at either corolla
+of the chosen genus-zero operadic comparison.  Its equivariance says
+$H_{\rho P}=\rho H_P$ for $\rho\in\mathfrak S_3$.
+In particular, the three elements of $C_3$ fix $H_P$ when they fix
+$P$.  For a decorated graph $G$, form $H_G$ by applying all its
+gluing and contraction operations simultaneously to the family
+$(H_{P_v})_{v\in V(G)}$, together with the already recovered
+structural comparisons of $F$.  These structural comparisons
+satisfy associativity, interchange and contraction symmetry because
+both sides are the unique section with every middle winding zero.
+
+Here is the precise descent through the graph quotient.  A graph
+isomorphism $\psi:G\longrightarrow G'$ consists of a permutation
+of vertices and, at each vertex, a bijection of its three flags;
+the latter is expressed in local labels by
+$\rho_v\in\mathfrak S_3$.  Its action on the decorating morphisms
+is the permutation of the factors followed by
+$H_{P_v}\mapsto \rho_v H_{P_v}=H_{\rho_vP_v}$.
+Equivariance of gluing identifies their simultaneous composites.
+Changing the representative of a cyclic ordering changes
+$\rho_v$ by $C_3$, which fixes the corresponding decorating
+morphism.  Reversing an internal edge exchanges the two inputs
+of one contraction; contraction symmetry identifies the result.
+Permuting the internal edges changes the order of contractions;
+interchange identifies the result.  These operations exhaust a
+change of labelled graph representative and a change of an
+iterated expression for its simultaneous gluing.  Therefore $H_G$
+descends to the actual object of the free modular operad, even
+when the graph has a nontrivial automorphism group.  It satisfies
+\[
+ H_{G\circ K}=H_G\circ H_K,\qquad
+ H_{\xi_{ij}G}=\xi_{ij}H_G,\qquad
+ H_{\rho G}=\rho H_G,
+                                                               \tag{TC.12}
+\]
+with the structural comparisons understood in these equalities.
+The cylinder comparison is fixed by its one-dimensional crossing.
+
+For $\phi:G\to G'$, define
+\[
+                F'(\phi)=H_{G'}^{-1}F(\phi)H_G.
+                                                               \tag{TC.13}
+\]
+The endpoint maps of $H_G$ make $F'$ the identity on objects.
+Equations (TC.12), with the recovered structural comparisons,
+give strict compatibility of (TC.13) with all operad operations.
+Conjugation by fixed morphisms is continuous; it also gives the
+operadic natural comparison $F'\Rightarrow F$.
+This is the construction of
+\cite[Lemma~6.11]{ET_BonattoRobertson2026}, now with the graph
+quotient made explicit.
+
+One can check its descent without choosing a cyclic flag at any
+vertex.  Replace $\mathfrak S_3/C_3$ by the regular
+$\mathfrak S_3$-set, and keep the same Hom-sets after forgetting
+the extra flag.  The resulting $q:\mathcal S_{\rm cof}\to\mathcal S$
+is fully faithful and surjective on objects.  Two lifts with the
+same image have a unique comparison above that image's identity.
+After placing the lifts on the same graph, that comparison is the
+simultaneous gluing of the local three-boundary comparisons, by
+full faithfulness of $q$.  The genus-zero comparison sends them
+to identities, so (TC.13) descends through $q$.  Naturality makes
+its component equal on any two such lifts.  This verifies both
+existence and independence of descent as in
+\cite[Propositions~6.7 and 6.12]{ET_BonattoRobertson2026}.
+Thus the strict representative required for E.27 has one coherent
+choice of comparisons, including all graph automorphisms.
+
+The kernel calculation E.27 fixes the remaining one-holed-torus generator.
+Its only completion inputs are the explicitly verified genus-one
+normalizers E.26 and the Minamide--Nakamura classification
+\cite[Theorem~4.3(i), Corollary~C]{ET_MN2022}, and the
+last relation is the actual (G2) relation of the marked-pants operad.
+The exact marked-pants relation is
+\cite[Theorem~3.18, relation (G2), and equations (6.3)--(6.5)]
+{ET_BonattoRobertson2026}.  After its inner ambiguity is written
+$F(aba)=a^{-\eta}(aba)a^\eta$, that relation is
+$1=d^{-\eta}a^\eta=(da^{-1})^{-\eta}$ in the free Birman kernel of
+$B_4/\langle\omega_4\rangle$; abelianization forces $\eta=0$.
+Consequently a kernel equivalence has one coherent identity comparison
+on every recovered bordered object.  Normalize an arbitrary nodal
+object, use these comparisons on its components, and clutch with the
+fixed pins.  This defines one comparison depending only on the object.
+Finite relabelling coherence descends it through its graph permutations.
+
+The unique simultaneous section of $q,r$ makes all these comparisons
+compatible with whole-arrow sewing.  In these coordinates the
+four-point crossing is fixed; the preceding support construction fixes
+every adjacent pinned crossing.  Endpoint equivariance fixes all its
+translates.  The exact presentation (TC.8) then fixes every arrow and
+composition.  This proves the injectivity claimed by E.42.
+Existence is E.39 with (TC.3) and (TC.8) now supplied: on each adjacent
+orbit use the common refining-quilt endpoint automorphisms, which
+commute with both maps of its full stabilizer; on a diamond use one
+quilt refining its finest multicurve.  The intermediate transports
+cancel, so both composites coincide.  The same cap and sewing formulas
+supply the operation comparisons.  The group law is the quilt cocycle.
+Continuity follows at each finite categorical quotient and then by
+inverse limit.  This completes the repair of the full-completion
+comparisons needed in E.39--E.42, including genera three and higher;
+no equality of $\widehat\Gamma$ and $\check\Gamma$ is used.

@@ -1,0 +1,48 @@
+UNIVERSAL_CONTINUE:=true;;
+Read("work/centralizer_code/check_universal_six_source.g");;
+Read("work/centralizer_code/build_six_pc_source.g");;
+Read("work/centralizer_code/small_homology_replay_3_reduced.g");;
+BuildReplayPC:=function(dat)
+ local n,fg,g,coll,word,i,rel;
+ n:=Length(dat[1]);fg:=FreeGroup(n);g:=GeneratorsOfGroup(fg);
+ coll:=SingleCollector(g,dat[1]);word:=v->Product([1..n],j->g[j]^v[j]);
+ for i in [1..n] do SetPower(coll,i,word(dat[2][i]));od;
+ for rel in dat[3] do SetConjugate(coll,rel[1],rel[2],word(rel[3]));od;
+ return GroupByRws(coll);
+end;;
+gp:=BuildReplayPC(ReplayPC);;pc:=Pcgs(gp);;n:=Length(pc);;
+word:=v->Product([1..n],j->pc[j]^v[j]);;
+sp:=word(ReplayPC[4]);;rp:=word(ReplayPC[5]);;
+if PCData(gp,sp,rp)<>ReplayPC then Error("exact replay presentation alignment");fi;
+d:=Length(ReplayCocycles);;
+coc:=Concatenation(List([1..Length(ReplayCocycles[1])],i->List([1..d],j->ReplayCocycles[j][i]*One(GF(3)))));;
+modu:=GModuleByMats(List(pc,g->IdentityMat(d,GF(3))),GF(3));;
+cover:=Extension(gp,modu,coc);;cp:=Pcgs(cover);;
+lift:=g->MappedPcElement(g,pc,cp{[1..n]});;
+cs:=lift(sp)^3;;cr:=lift(rp);;
+if cs^2<>One(cover) or cr^3<>One(cover) or Size(Group(cs,cr))<>Size(cover) then Error("ternary replay marked cover");fi;
+base:=BuildSixPcSource(gg,markedS,markedR);;
+b2:=PCore(base.group,2);;bq:=NaturalHomomorphismByNormalSubgroup(base.group,b2);;
+be:=Image(bq);;bs:=Image(bq,base.s);;br:=Image(bq,base.r);;
+quot:=GroupHomomorphismByImages(gp,be,[sp,rp],[bs,br]);;
+if quot=fail or not IsSurjective(quot) then Error("ternary exact base quotient");fi;
+aa:=Kernel(quot);;ag:=GeneratorsOfGroup(aa);;
+if Size(aa)<>3^24 or not IsAbelian(aa) or Exponent(aa)<>3 then Error("ternary module kernel");fi;
+rows:=[];;
+CentralRow:=function(z)
+ local v;
+ v:=ExponentsOfPcElement(cp,z);
+ if not ForAll(v{[1..n]},i->i=0) then Error("restriction value not central");fi;
+ return v{[n+1..n+d]}*One(GF(3));
+end;;
+for i in [1..Length(ag)] do
+ Add(rows,CentralRow(lift(ag[i])^3));
+ for j in [1..i-1] do Add(rows,CentralRow(Comm(lift(ag[i]),lift(ag[j]))));od;
+od;
+Print("TERNARY RESTRICTION: source order=",Size(gp),"; base order=",Size(be),"; base O2 order=",Size(b2),"; module order=",Size(aa),"; generators=",Length(ag),"; marked H2 dimension=",d,"; restriction rank=",RankMat(rows),"\n");
+Print("TERNARY nonzero restriction rows: ",Set(Filtered(List(rows,v->List(v,IntFFE)),v->ForAny(v,i->i<>0))),"\n");
+stream:=OutputTextFile("work/centralizer_code/check_ternary_restriction.json",false);;
+SetPrintFormattingStatus(stream,false);
+PrintTo(stream,"{\"source_order\":",Size(gp),",\"base_order\":",Size(be),",\"module_order\":",Size(aa),",\"restriction_rank\":",RankMat(rows),",\"restriction_rows\":",List(rows,v->List(v,IntFFE)),"}\n");
+CloseStream(stream);
+QUIT_GAP(0);

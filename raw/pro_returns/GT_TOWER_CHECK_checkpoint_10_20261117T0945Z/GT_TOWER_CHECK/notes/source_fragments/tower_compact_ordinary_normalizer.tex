@@ -1,0 +1,204 @@
+\subsection{The compact detector's finite ordinary normalizer comparison}
+
+\begin{result}{A.4.22}{Proved}{Exact compact ordinary reconstruction and the final inner quotient}
+Let $E=\mathcal P_c$ be the order-$32\cdot3^{14}$ target
+of A.4.18.  Retain its characteristic subgroup
+$A\cong C_3^{12}$ and quotient $B=G_2\times H$ from
+(EX.1).  On the faithful quaternion multiplicity space
+let $\mathscr N$ be the finite group of pairs
+\[
+ (\bar g,q),\qquad
+ \bar g= g|_{M/\mathfrak m_H^2M},\quad
+ g\in N_{\operatorname{SO}_{18}^-(3)}(H),\quad
+ q\in\Gamma(2)\bmod12,
+                                                        \tag{NC.1}
+\]
+with the two exact compatibilities
+\[
+ \nu_g=q\bmod3,
+ \qquad \theta(g)=\eta(q),\qquad
+ \eta\!\left(I+2\begin{pmatrix}\alpha&\beta\\
+                         \gamma&\alpha\end{pmatrix}\right)
+       =(-1)^{\alpha+\beta+\gamma}.                     \tag{NC.2}
+\]
+The first equality uses the original downstairs deck
+labels $a^4,b^4$.  In the primitive upstairs handle
+basis $(A=b^3,B=a^3)$ the period matrix is conjugated
+by the retained swap $J$; therefore this equality
+is $\nu_g=Jq_{\rm up}J\pmod3$ in that basis.
+The character $\eta$ is unchanged by this swap.
+The spinor in (NC.2) is well-defined on $\bar g$:
+the kernel of reduction to $M/\mathfrak m_H^2M$
+is a finite three-group, so its spinor norm is one.
+
+There is an actual homomorphism
+\[
+ \mathscr N\longrightarrow\operatorname{Out}(E)
+                                                        \tag{NC.3}
+\]
+obtained from (EX.2)--(EX.5), with exact kernel the
+specified inner $Z(Q_8)\times H$ of order $18$.
+Its image is precisely the image of the ordinary
+$\Gamma(2)\leq\operatorname{SL}_2(\mathbb Z)$ on $E$.
+The exact orders are
+\[
+ |\mathscr N|=384\cdot3^6,
+ \qquad |\operatorname{im}(\Gamma(2)\to
+                   \operatorname{Out}(E))|=192\cdot3^4.
+                                                        \tag{NC.4}
+\]
+After restoring the six ordinary modulo-two classes,
+the whole ordinary modular image on $E$ has order
+$1152\cdot3^4$.  Its previously computed detected
+quotient $J_c$ is therefore an isomorphic image;
+its CM centralizer census in A.4.18 applies to the
+actual ordinary outer surface image itself.
+\end{result}
+
+\begin{proof}
+The independent hermitian normalizer calculation
+in A.4.21 proves that
+$\mathscr N$ has at most $384\cdot3^6$ elements.
+We recall the exact count to specify its inputs.
+The group algebra is $\mathbb F_3[H]$, and its
+augmentation quotient by $\mathfrak m_H^2$ has basis
+$1,X,Y$ with $X^2=XY=Y^2=0$ and involution
+$\bar X=-X$, $\bar Y=-Y$.  The reduced hermitian
+form on the two free module generators is
+anisotropic.  The constant matrix of a special
+orthogonal semilinear normalizer is in
+$\operatorname{SO}_2^-(3)=C_4$.
+For each fixed label map and constant matrix,
+the two first-order coefficients satisfy two
+self-adjoint $2\times2$ matrix conditions and
+therefore have at most $3^{3+3}$ possibilities.
+The spinor condition selects at most two of the
+four constants.  There are $24$ possible label
+maps $q\bmod3$ and eight possible $q\bmod4$.
+This gives the displayed bound, with all its
+period, label and spinor constraints retained.
+
+\textbf{Actual source inclusion and the matching order.}
+The program
+\path{work/tower_code/quaternion_compact_normalizer_joint.py}
+starts from the original four free-surface maps
+$u,l,\operatorname{Ad}(a),\operatorname{Ad}(b)$.
+Their quaternion-automorphism residues generate
+all $24$ elements.  The complete $24\cdot4=96$
+Schreier words of the kernel are retained, together
+with their actual signed period matrices.
+The program restricts them to the twelve-dimensional
+image of $T$, and then to its faithful primitive
+multiplicity factor of dimension six.  A specified
+free basis over $\mathbb F_3[H]/\mathfrak m_H^2$
+identifies the latter with two constant coordinates,
+two $X$ coordinates and two $Y$ coordinates.
+It checks, for every one of the $96$ words, the
+literal conjugation identities
+\[
+ g h_jg^{-1}=h_1^{q_{1j}}h_2^{q_{2j}}\qquad(j=1,2).
+                                                        \tag{NC.5}
+\]
+Thus the direction of the label/period map is
+checked, not inferred from matching orders.
+
+The separate bridge producer
+\path{work/tower_code/quaternion_compact_normalizer_bridge.py}
+rebuilds the same four ordinary surface actions on
+all $73$ free-cover homology generators.  It gives
+an explicit rank-six matrix $P:M_{18}\to M_6$ and
+verifies all $96$ identities
+\[
+                         P g_{18}=g_6P.                \tag{NC.6}
+\]
+The original free words, the $18\times18$ matrices,
+and $P$ are retained.  The independent audit checks
+their special orthogonality and their spinor/period
+identities.  These are ordinary geometric maps,
+so they lie in the specified group (NC.1)--(NC.2).
+
+In these coordinates the semisimple data are the
+constant $2\times2$ matrix and the signed period
+matrix.  The actual generated base has $384$
+elements.  All $384\cdot96=36864$ Cayley-Schreier
+rows are computed in the eight possible first-order
+coordinates.  Their span has dimension six and is
+invariant under all $96$ actual source generators.
+Schreier generation proves that this is the entire
+kernel.  The actual ordinary modular/deck image
+therefore has order $384\cdot3^6$.
+It is a subgroup of $\mathscr N$ of the upper-bound
+order, so it equals $\mathscr N$.
+The independent reproduction rebuilds the source
+words and both parts of this enumeration, and
+checks that all six kernel directions satisfy
+the hermitian self-adjoint equations.
+
+\textbf{The marked extension and its exact inner kernel.}
+The module map represented by $\bar g$ acts on
+$A=U_2\otimes M_6$ as $I\otimes\bar g$.
+It centralizes the specified quaternion action
+and has the $H$-label action in (NC.5).
+Together with the literal base map (EX.5), this
+satisfies (EX.2), so it induces an automorphism
+of $E$ by (EX.3).  Changing the chosen splitting
+changes it only by its specified inner-$A$
+conjugation.  Hence the outer map (NC.3) is
+well-defined and is a homomorphism.
+
+An inner automorphism of $E$ has identity period
+matrix.  In the quaternion-centralizing sector,
+its base element must lie over $Z(Q_8)\times H$:
+in $G_2$, the preimage of $Z(Q_8)$ is exactly
+$Z(G_2)$, as follows by taking commutators in the
+literal fibre product (EX.1).
+The additional central kernel of $G_2\to Q_8$
+acts trivially on $A$.  The remaining actual
+inner action on $A$ is therefore precisely
+$Z(Q_8)\times H$, of order $18$; it is faithful
+since $-1$ acts as $-I$ and the nine translation
+matrices are distinct.  Conversely every one
+of these $18$ actions is induced by an actual
+inner element of the original $\Sigma$ and
+has identity period.  These observations prove
+both inclusions for the kernel of (NC.3).
+
+The quaternion-automorphism kernel of the four
+ordinary generators maps onto $\Gamma(2)$.
+Indeed an ordinary matrix is identity modulo two
+exactly when its induced quaternion automorphism
+is inner; the actual conjugations by $a,b$
+realize all quaternion inner automorphisms and
+remove that residue without changing the
+ordinary outer matrix.  Therefore the image of
+(NC.3), computed from the actual source words,
+is exactly the ordinary $\Gamma(2)$ image.
+Dividing the proved source order by $18$ gives
+(NC.4).
+
+Finally the signed period projection of the full
+ordinary modular image retains its full
+$\operatorname{SL}_2(\mathbb F_2)$ quotient of
+order six.  The image of its kernel is the
+$\Gamma(2)$ image just computed.  The full
+ordinary image consequently has order
+$6\cdot192\cdot3^4=1152\cdot3^4$.
+The surjective detected-image map to $J_c$ has
+the same finite order by A.4.18, so it is an
+isomorphism.  This proves the final assertion
+without assuming a hidden restriction kernel
+vanishes.
+\end{proof}
+
+\paragraph{Scope of the remaining finite fusion.}
+The proposition proves the exact ordinary comparison
+for the finite group defined by (NC.1)--(NC.2).
+In the nine-point application the actual joint
+peripheral quotient must still provide the displayed
+label/period equality, and the actual fusion must
+preserve that lower quotient while putting the
+faithful translation matrices into this specified
+normalizer.  The earlier class-three peripheral
+comparison and the special-orthogonal correction
+are the available source maps for that step;
+neither requirement is discarded in (NC.1).

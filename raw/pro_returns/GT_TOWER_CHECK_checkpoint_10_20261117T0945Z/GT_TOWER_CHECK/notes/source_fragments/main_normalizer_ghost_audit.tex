@@ -1,0 +1,294 @@
+% New independently checked contribution after checkpoint05.
+% Root assigns the final A.4 statement numbers; labels and NJ tags are stable.
+\subsection{The exact first-order normalizer with the signed period retained}
+
+\begin{lemma}[Both determinant and spinor can be corrected inside the centralizer]
+\label{lem:orthogonal-centralizer-spinor}
+For the actual subgroup \(H\simeq C_3^2\) on the eighteen-dimensional
+quaternion multiplicity space \((M,B)\), the map
+\[
+ C_{O(M,B)}(H)\longrightarrow
+ \{1,-1\}\times\mathbb F_3^\times/(\mathbb F_3^\times)^2,
+ \qquad c\longmapsto(\det c,\theta(c))
+ \tag{NJ.1}
+\]
+is surjective. In particular its special orthogonal centralizer contains
+an element of nonsquare spinor norm. Right multiplication by these
+centralizer elements adjusts both invariants of an orthogonal conjugator
+while preserving its exact induced map on \(H\).
+\end{lemma}
+\begin{proof}
+Use the already proved free module \(M=A^2\), where
+\(A=\mathbb F_3[H]\), the involution \(\bar g=g^{-1}\), and the
+Hermitian form
+\[
+ h(x,y)=\sum_{g\in H}B(x,gy)g.
+\]
+Write \(\epsilon:A\to\mathbb F_3\) for augmentation. For a vector
+\(v\) with unit norm \(a=h(v,v)\), the actual Hermitian reflection
+\[
+ R_v(x)=x-2h(x,v)a^{-1}v
+ \tag{NJ.2}
+\]
+centralizes \(H\), preserves \(B\), and is minus one on the
+nine-dimensional nondegenerate summand \(Av\), with identity on its
+orthogonal complement. Thus \(\det R_v=-1\).
+
+In the basis \(\{gv:g\in H\}\) of \(Av\), its bilinear Gram matrix
+is the regular multiplication matrix of the self-adjoint element \(a\).
+Multiplication by \(a\) acts by \(\epsilon(a)\) on every graded piece
+of the augmentation filtration. Their dimensions sum to nine, so
+\[
+ \det(B|_{Av})=\epsilon(a)^9=\epsilon(a).
+\]
+Diagonalizing this nondegenerate form expresses \(R_v\) as the
+product of the nine ordinary orthogonal reflections in an orthogonal
+basis of \(Av\). The quadratic form is \(q(x)=\tfrac12 B(x,x)\).
+The reflection formula for spinor norm, and its multiplicativity,
+therefore give
+\[
+          \theta(R_v)=2^9\det(B|_{Av})=2\epsilon(a).
+ \tag{NJ.3}
+\]
+These are the definition and Theorem11.50 on printed pages163--164
+of \cite{GhostTaylorClassical}; the formula uses this specified
+quadratic form throughout.
+
+The reduced Hermitian form on \(M/\mathfrak mM\) is a nondegenerate
+symmetric binary form. It represents both nonzero elements of
+\(\mathbb F_3\): diagonalize it as \(aX^2+bY^2\); unequal
+coefficients already give both values, and equal coefficients give
+the two values at \((1,0)\) and \((1,1)\).
+Lift vectors of norms one and two to \(M\). Formula (NJ.3) gives
+two centralizer elements whose determinant/spinor pairs are
+\((-1,2)\) and \((-1,1)\). Their product has pair \((1,2)\).
+Together they give all four values of (NJ.1).
+The identity
+\((gc)h(gc)^{-1}=ghg^{-1}\) for \(c\in C_{O(M)}(H)\)
+proves the final assertion with the induced map retained.
+
+The independent program \texttt{check\_main\_spinor\_correction.py}
+constructs these two Hermitian reflections in the actual eighteen
+coordinates and verifies their product again by an ordinary-reflection
+factorization of length twenty-four. Its saved matrices satisfy
+\(c^tBc=B\), \(ch_i=h_ic\), \(\det c=1\), and \(\theta(c)=2\).
+\end{proof}
+
+Let \(s,t\) be the two specified translation generators of \(H\), and put
+\[
+ \begin{gathered}
+ A=\mathbb F_3[X,Y]/(X^3,Y^3),\qquad X=s-1,\quad Y=t-1,\\
+ \mathfrak m=(X,Y),\qquad
+ M_1=M/\mathfrak m^2M,\qquad
+ A_1=A/\mathfrak m^2=\mathbb F_3[X,Y]/(X,Y)^2.
+ \end{gathered}
+ \tag{NJ.4}
+\]
+The actual quotient \(M\to M_1\) is the multiplicity map of
+the compact faithful detector: its kernel is exactly
+\(\mathfrak m^2M\), as proved in the preceding detector result.
+In particular \(\dim M_1=6\). This is an induced map on the
+specified source module.
+
+Write
+\[
+ P=\{q\in\mathrm{SL}_2(\mathbb Z/12):q\equiv I\pmod2\}.
+ \tag{NJ.5}
+\]
+For its mod-four coordinate use
+\[
+ q\equiv I+2\begin{pmatrix}\alpha&\beta\\\gamma&\alpha\end{pmatrix}
+ \pmod4,\qquad
+ \eta(q)=(-1)^{\alpha+\beta+\gamma}.
+ \tag{NJ.6}
+\]
+Multiplication adds the three displayed binary coordinates, so
+\(\eta\) is a character. The mod-three and mod-four coordinates
+are independent by the Chinese remainder theorem, and consequently
+\(|P|=24\cdot8=192\).
+These matrices use the downstairs handle basis \((a,b)\).
+The primitive upstairs handle basis is \((b^3,a^3)\); the exact
+change of basis is the swap \(J=\left(\begin{smallmatrix}0&1\\1&0
+\end{smallmatrix}\right)\), so \(q_{\rm down}=Jq_{\rm up}J\).
+The character (NJ.6) is invariant under this swap.
+
+For \(g\in N_{\mathrm{SO}(M,B)}(H)\), let
+\(\nu_g\in\mathrm{GL}_2(\mathbb F_3)\) be its actual action on
+the labelled generators \((s,t)\), and let \(\bar g\) be its
+induced action on \(M_1\). Define the finite group
+\[
+ \mathcal N_1=
+ \{(\bar g,q):g\in N_{\mathrm{SO}(M,B)}(H),\ q\in P,
+       \ \nu_g=q\bmod3,\ \theta(g)=\eta(q)\}.
+ \tag{NJ.7}
+\]
+The signed period is part of the displayed pair.
+
+\begin{proposition}[The full allowed first-order image is the ordinary image]
+\label{prop:orthogonal-first-order-joint-normalizer}
+The group \(\mathcal N_1\) in (NJ.7) has order
+\[
+                       |\mathcal N_1|=384\cdot3^6=279936.
+ \tag{NJ.8}
+\]
+It is exactly the image on \(M_1\), together with signed period
+modulo twelve, of the kernel of the quaternion automorphism action
+in the group generated by the four actual substitutions
+\[
+ \begin{array}{c|cc}
+       &a&b\\ \hline
+ u&a&ba\\
+ l&ab^{-1}&b\\
+ \operatorname{Inn}(a)&a&aba^{-1}\\
+ \operatorname{Inn}(b)&bab^{-1}&b.
+ \end{array}
+ \tag{NJ.9}
+\]
+Thus every element of (NJ.7) has an ordinary modular/deck word with
+exactly the same action on this six-dimensional quotient and exactly
+the same signed period modulo twelve.
+\end{proposition}
+\begin{proof}
+We first prove the upper bound intrinsically. Let \(H_0\) be the
+augmentation of the Hermitian Gram matrix in a free \(A\)-basis of
+\(M\). In the group basis of \(A\), the coefficient-of-identity
+pairing \((a,b)\mapsto[a\bar b]_1\) is the identity matrix.
+Consequently the determinant of the bilinear form underlying the
+Hermitian Gram matrix is its determinant as an \(\mathbb F_3\)-linear
+operator. On each augmentation-graded piece this operator is
+\(H_0\), repeated according to that piece's dimension. It follows that
+\[
+                       \det B=(\det H_0)^9.
+ \tag{NJ.10}
+\]
+Change of an \(\mathbb F_3\)-basis multiplies this determinant by a
+nonzero square, which is one. The actual \(B\) has determinant one,
+so \(\det H_0=1\). The binary form \(H_0\) is therefore anisotropic:
+an isotropic nondegenerate binary form has determinant minus a square,
+which here is two. In the explicitly checked free basis obtained from
+standard columns one and two, counted from zero,
+\(H_0=\operatorname{diag}(2,2)\).
+
+An \(H\)-normalizer \(g\) is \(\nu_g\)-semilinear over \(A\), and
+the definition of the Hermitian form gives the exact identity
+\[
+                  h(gx,gy)=\nu_g(h(x,y)).
+ \tag{NJ.11}
+\]
+Its constant term \(T_0\) therefore preserves \(H_0\).
+Write \(g\) as an invertible \(A\)-matrix followed by the ring
+permutation induced by \(\nu_g\) on each of the two free summands.
+The latter has square determinant over \(\mathbb F_3\).
+The former, by its augmentation filtration, has determinant
+\((\det T_0)^9\). Thus
+\[
+             \det_{\mathbb F_3}g=(\det T_0)^9,
+ \qquad T_0\in\mathrm{SO}(H_0)\simeq C_4.
+ \tag{NJ.12}
+\]
+The last group can also be read directly from
+\(H_0=\operatorname{diag}(2,2)\): its four matrices are
+\(I,-I,\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)\)
+and the negative of the latter.
+
+For fixed \((\nu_g,T_0)\), differences of two allowed first-order
+actions are \(A_1\)-linear, with the form
+\(I+XD+YE\), where \(D,E\in M_2(\mathbb F_3)\).
+Here \(\bar X=-X\) and \(\bar Y=-Y\) in \(A_1\).
+Keeping all first-degree terms in the exact isometry equation gives
+\[
+                  D^tH_0=H_0D,\qquad E^tH_0=H_0E.
+ \tag{NJ.13}
+\]
+For each coefficient the map \(D\mapsto H_0D\) identifies this
+space with the symmetric binary matrices, of dimension three.
+There are at most \(3^6\) first-order actions for fixed
+\((\nu_g,T_0)\).
+
+The kernel of constant reduction in the \(A\)-linear isometry group
+is contained in \(1+M_2(\mathfrak m)\), a finite group of order a
+power of three. Indeed its filtration by
+\(1+M_2(\mathfrak m^i)\) has elementary abelian successive
+quotients. Spinor norm is therefore trivial on this full kernel.
+Reduction of the special orthogonal centralizer onto \(\mathrm{SO}(H_0)\)
+is surjective: each ordinary reflection of \(H_0\) lifts by (NJ.2),
+and products of two such lifts give its four rotations.
+Lemma~\ref{lem:orthogonal-centralizer-spinor} shows that spinor norm
+induces a nontrivial character on this \(C_4\).
+Every nonempty fibre with a fixed \(\nu_g\) is a coset of this
+centralizer. Hence, for each fixed \(q\in P\), the prescribed
+spinor in (NJ.7) allows exactly two possible constant terms among
+those of that fibre. Each has at most \(3^6\) first-order lifts.
+This proves
+\[
+                       |\mathcal N_1|\le192\cdot2\cdot3^6.
+ \tag{NJ.14}
+\]
+
+For the reverse count we use the complete finite certificate with
+the source maps specified. The substitutions (NJ.9) have quaternion
+automorphism image of order twenty-four. Enumerating its cosets
+and taking every coset-generator edge gives ninety-six actual
+Schreier words. Their action on the rank-seventy-three free cover
+is obtained by substitution followed by literal Schreier rewriting.
+For each word the retained program restricts that matrix to the
+eighteen-dimensional multiplicity space, and directly verifies
+\[
+ \begin{gathered}
+        g^tBg=B,\qquad\det g=1,\qquad
+        gh_i g^{-1}=h_1^{q_{1i}}h_2^{q_{2i}},\\
+        \theta(g)=\eta(q),\qquad
+        \Phi g=\bar g\Phi.
+ \end{gathered}
+ \tag{NJ.15}
+\]
+Here \(\Phi:M\to M_1\) is the actual source-word map of the
+compact detector, of rank six and kernel \(\mathfrak m^2M\).
+The period \(q\) is obtained by multiplying the two ordinary
+period matrices of \(u,l\), with identity for the two inner
+substitutions. These checks give inclusion of the whole generated
+joint image in (NJ.7), with the two coordinates matched word by word.
+
+For completeness the enumeration uses a split linear coordinate
+system, so it does not enumerate an unspecified ambient group.
+Choose two free generators of \(M_1\) over \(A_1\), and order its
+basis as these generators, their \(X\)-multiples, then their
+\(Y\)-multiples. For \(T_0\in\mathrm{GL}_2(\mathbb F_3)\) and
+\(\nu\in\mathrm{GL}_2(\mathbb F_3)\), the split semilinear matrix is
+\[
+ S(T_0,\nu)=\operatorname{diag}(T_0,\nu\otimes T_0).
+ \tag{NJ.16}
+\]
+Every source matrix has a unique expression
+\((I+L_C)S(T_0,q\bmod3)\), where the only nonzero block of
+\(L_C\) is its lower-left \(4\)-by-\(2\) block \(C\).
+Thus the additive kernel is a subspace of \(\mathbb F_3^8\),
+with the exact base action
+\[
+ C\longmapsto(\nu\otimes T_0)C T_0^{-1}.
+ \tag{NJ.17}
+\]
+Breadth-first multiplication of the ninety-six base generators
+\((T_0,q)\) gives exactly \(384\) distinct values. With one actual
+source representative for each, all \(384\cdot96=36864\) Schreier
+edges give vectors in the additive kernel. Row reduction gives
+rank six. The same program checks that this six-dimensional span
+is stable under every generator by (NJ.17). Schreier's rewriting
+identity proves that these vectors generate the entire kernel;
+stability proves closure of the displayed extension. The ordinary
+joint image therefore has order \(384\cdot3^6\).
+Together with (NJ.14) and the inclusion from (NJ.15), this proves
+equality and every assertion of the proposition.
+
+The independent verifier
+\texttt{check\_main\_normalizer\_joint.py} rebuilds the four
+rank-seventy-three maps from the original free words, forms all
+ninety-six words itself, and factors their spinor norms into ordinary
+reflections. It checks all intertwiners against the independent
+source-to-detector map before performing the \(384\)-state and
+\(36864\)-edge calculations. Its actual output, input hashes,
+matrices, reduced binary form and first-order kernel are saved.
+The ninety-six spinor values consist of seventy-two squares and
+twenty-four nonsquares. All six computed kernel directions satisfy
+(NJ.13).
+\end{proof}

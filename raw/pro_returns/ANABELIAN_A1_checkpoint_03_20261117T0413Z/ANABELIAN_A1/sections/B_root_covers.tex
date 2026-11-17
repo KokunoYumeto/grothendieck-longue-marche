@@ -1,0 +1,174 @@
+\subsection{Point-isolating covers and exact constructions}
+
+\begin{claim}{B.R1}{Proved}{A pointed cover isolating one rational point}
+For every $C/k$ as in \statementref{A.R1} and every $P\in C(k)$,
+there is a connected finite \emph{\'etale} cover $D\to C$ with
+geometrically Galois group of order prime to $p$, and a specified
+$P'\in D(k)$ over $P$, such that the image of $D(k)$ in $C(k)$ is
+exactly $\{P\}$. The geometric deck group need not be constant over $k$.
+\end{claim}
+\begin{proof}
+Split $\Pi_C=\Delta_C\rtimes s_P(G_k)$. For $Q\ne P$, the equations
+expressing geometric conjugacy of $s_Q$ and $s_P$ have no solution
+in the compact group $\Delta_C$, by \statementref{A.R1}. If they had
+a solution modulo every open characteristic subgroup $N$, the
+closed solution sets in $\Delta_C$ would have the finite-intersection
+property and yield a solution in $\Delta_C$. Thus some such $N_Q$
+detects the failure. We can take characteristic subgroups cofinally:
+a finitely generated profinite group has only finitely many open
+subgroups of any prescribed index, and their finite intersection
+is characteristic.
+
+Intersect the finitely many $N_Q$, for $Q\in C(k)-\{P\}$, to obtain
+$N$. The subgroup $N\rtimes s_P(G_k)$ defines the desired pointed
+cover. A rational lift of $Q$ would give a fixed coset in its finite
+fibre, equivalently a conjugacy of the two section subgroups modulo
+$N$, contradicting the choice of $N_Q$. Its geometric deck group
+is $\Delta_C/N$, of prime-to-$p$ order. This proof uses precisely
+the relative exactness, boundary transport, and cuspidal criterion
+audited in Part A; it gives no class-number unit assertion.
+\end{proof}
+
+\begin{claim}{B.R2}{Proved}{A constructive two-stage odd Lang criterion}
+Let $C/L$ be proper of genus at least two over a finite field of
+characteristic two, $P\in C(L)$, and let $D\to C$ be a connected
+constant cyclic odd-degree \emph{\'etale} cover with a point
+$P_D\in D(L)$ above $P$. Suppose $h(D)/h(C)$ is odd.
+Let $E\to D$ be the Lang cover associated with the maximal odd
+quotient of $J_D(L)$ and based at $P_D$. Then no point of $C(L)$
+other than $P$ lifts rationally to $E$. Taking the geometric
+Galois closure and its $P$-pointed twist preserves this property
+and gives an odd geometric Galois cover of $C$.
+\end{claim}
+\begin{proof}
+For $G=\operatorname{Gal}(D/C)$ of odd order, the idempotent
+$e=|G|^{-1}\sum_{g\in G}g$ acts on the two-primary rational torsion
+of $J_D$. The invariant part is the image of the pullback from
+$J_C$: pullback and norm are inverse after division by $|G|$.
+The complementary abelian factor has rational point count
+$h(D)/h(C)$, since the rational Frobenius polynomial factors as
+the product of the base and complementary polynomials. Therefore
+the oddness assumption says that all rational two-primary points
+of $J_D$ are fixed by $G$.
+
+If $Q_D\ne P_D$ lies above $Q\ne P$, its difference class cannot be
+fixed by a nonidentity odd deck transformation $a$. Otherwise
+$aQ_D+P_D\sim Q_D+aP_D$. These are different effective degree-two
+divisors, so the curve is hyperelliptic and uniqueness of its
+degree-two pencil gives $aQ_D=\iota P_D$ and $aP_D=\iota Q_D$.
+Every automorphism commutes with the hyperelliptic involution
+$\iota$, whence $a^2$ fixes $Q_D$. A free deck action of odd order
+makes this impossible. Consequently $[Q_D-P_D]$ is not
+two-primary. In a Lang cover the rational lift criterion is
+exactly vanishing of this class in the chosen quotient of
+$J_D(L)$: the Lang endomorphism is $F-1$, with kernel $J_D(L)$.
+Thus $Q_D$ does not lift to $E$.
+
+The two stages have constant odd Galois groups. The geometric
+Galois closure of their composite embeds in
+$\operatorname{Gal}(E/D)^{|G|}\rtimes G$, hence still has odd order.
+The geometric core of the pointed subgroup is stable under the
+action of $s_P(G_L)$, so its pointed twist has an $L$-point over
+$P$ and refines the original cover. A refinement cannot acquire
+a rational lift absent from the original cover.
+\end{proof}
+
+\begin{claim}{B.R3}{Proved by exact computation}{The two requested genus-two classes over $\mathbf F_4$}
+Write $\alpha^2+\alpha+1=0$. The two conjugate curves
+\[
+ C_\alpha:\quad Y^2+(x^2+x+\alpha)Y
+   =x^5+\alpha x^3+x+1
+\]
+are the curves denoted by the pair of class labels $203/302$ in
+the supplied return. Each has seven $\mathbf F_4$-points.
+For every one of these fourteen pointed cases, the file
+\path{code/isolating_lang_covers.json} specifies a connected
+pointed cover over $\mathbf F_4$, with odd geometric Galois group,
+whose rational-point image is just the chosen point.
+The representation is an exact Lang-cover and geometric-core
+construction; it does not expand enormous affine equations.
+\end{claim}
+\begin{proof}
+The program \path{code/isolating_lang_covers.py} works in
+$L=\mathbf F_{64}=\mathbf F_2[t]/(t^6+t+1)$, with elements encoded
+by polynomial bits; the two roots $\alpha$ have codes $58,59$.
+It implements polynomial Euclidean division and the full Mumford
+addition and reduction formulas for this equation, checking the
+defining divisibility after every addition. Direct counts are
+\[
+ \#C(\mathbf F_4)=7,\qquad \#C(\mathbf F_{16})=15,\qquad
+ \#C(\mathbf F_{64})=91.
+\]
+They give the Frobenius polynomial
+$X^4+2X^3+X^2+8X+16$ and
+$\#J_C(L)=6076=4\cdot7^2\cdot31$. The two independent classes
+specified in the JSON generate the full $7$-primary subgroup.
+Its 49-element addition table is checked against
+$\mathbf F_7^2$ and all $49^3$ associativity triples.
+Multiplication by $124$ projects rational point classes onto it.
+
+For every original point $P$, all eight quotient kernels
+$\chi:\mathbf F_7^2\to\mathbf F_7$ are tested. If $N_b$ is the
+computed occupancy of the coset $b$ for the $P$-based Abel map,
+and $c=\chi([P-\infty])$, Riemann--Roch gives exactly
+\[
+ L_P(\chi,T)=1+\left(\sum_{b=0}^6N_b\zeta_7^b\right)T
+                    +64\zeta_7^{-2c}T^2 .
+\]
+The integer resultant of $L_P(\chi,1)$ and
+$\Phi_7$ is the relative class number. The selected relative
+values are
+\[
+ 46713473689,\qquad120974743723,\qquad103441382829,
+\]
+all odd. The full occupancy vectors, character coordinates,
+base-point twists, and every attempted value are retained, not
+just their residues modulo two.
+
+For $\alpha=58$ the selected characters in the recorded basis are
+$(1,0)$ at $\infty,(58,1),(58,58)$ and $(1,1)$ at the other four
+original points. For $\alpha=59$ they are $(1,0)$ at
+$\infty,(59,1),(59,59)$ and $(1,1)$ at the other four points.
+The odd degrees $m$ of the second Lang stage are respectively
+\[
+ 70957766533591,\qquad183760635715237,\qquad157127460517251.
+\]
+The preceding theorem isolates $P$ over $L$.
+
+To specify the descent, use the splitting $s_P$ of the geometric
+fundamental extension over $\mathbf F_4$. Let $N$ be the geometric
+core for the two-stage cover over $L$ and let $F$ be conjugation
+by $s_P(\operatorname{Frob}_4)$. It satisfies $F^3N=N$. Put
+$N_0=N\cap F(N)\cap F^2(N)$ and take the cover corresponding to
+$N_0\rtimes s_P(G_{\mathbf F_4})$. It is an exact construction
+from the computed Lang data, stable under $F$, and still of odd
+geometric Galois order. After extension to $L$ it refines the
+isolating cover, so it isolates $P$ already over $\mathbf F_4$.
+Its degree is at most $(7m^7)^3$; we do not claim equality.
+\end{proof}
+
+\begin{claim}{B.R4}{Proved}{A direct isolating cover for the curve over $\mathbf F_{2^{38}}$}
+For the curve and point $P=\infty$ specified in
+\statementref{B.R5} below, put $m=2^{19}+1=524289$.
+The pullback of $[m]:J_C\to J_C$ by
+$i_P:C\to J_C$, $Q\mapsto[Q-P]$, is a connected
+\emph{\'etale} Galois cover of degree $m^4$ over
+$\mathbf F_{2^{38}}$. Its constant deck group is
+$(\mathbf Z/m)^4$, and its rational-point image in $C$ is
+exactly $\{P\}$.
+\end{claim}
+\begin{proof}
+The explicit elliptic maps in \statementref{B.R5} show that
+Frobenius on $J_C$ is $[-2^{19}]$. Thus
+$J_C(k)=\ker(F-1)=J_C[m](\bar k)$; all $m$-torsion is rational,
+and multiplication by $m$ kills every rational point.
+The Abel map induces a surjection onto the geometric abelian
+fundamental group modulo $m$, so its pullback of the multiplication
+cover is connected. It is \emph{\'etale}, since $m$ is odd.
+A rational point $Q$ lifts precisely when $[Q-P]\in[m]J_C(k)=0$.
+The Abel map is injective on geometric points, so this means $Q=P$.
+The point $(P,0)$ is the specified rational lift. The exact integer
+degree and the field and curve data are recorded in
+\path{code/supersingular_isolating_cover.json}.
+\end{proof}
+

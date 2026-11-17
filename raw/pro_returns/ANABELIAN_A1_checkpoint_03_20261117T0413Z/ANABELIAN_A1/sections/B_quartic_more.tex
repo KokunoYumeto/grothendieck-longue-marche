@@ -1,0 +1,210 @@
+\subsection{A first-extension witness for the pointed Fermat quartic in characteristic five}
+
+\begin{claim}{B.QM1}{Proved}{A constant cyclic thirteen-cover over \(\mathbf F_{125}\)}
+Let
+\[
+ C/\mathbf F_5:\quad W^4=X^3Z-XZ^3,\qquad P=(1:0:0).
+\]
+Over $K=\mathbf F_{125}$ there is a constant cyclic, $P$-split,
+\emph{\'etale} cover $D\to C$ of degree thirteen with
+\[
+  g_D=27,\qquad
+  \frac{\#J_D(K)}{\#J_C(K)}\equiv1\pmod5.
+\]
+Its new Jacobian part is ordinary of dimension twenty-four.
+Under an extension of $K$ of degree $n$, its relative class
+number stays prime to five if and only if $4\nmid n$.
+\end{claim}
+\begin{proof}
+All the following defining polynomials lie in $\mathbf F_5[x]$:
+\[
+\begin{split}
+ h={}&x^6+x^2+4,\\
+ N={}&x^{13}+3x^{11}+x^9+3x^7+2x^5+x,\\
+ g={}&x^{18}+2x^{16}+x^{14}+3x^{12}+3x^{10}+2x^2+4.
+\end{split}                                                    \tag{B.QM.1}
+\]
+Direct polynomial multiplication gives
+\[
+ g=N'h-2Nh',\qquad
+       (x^3-x)g^2=N^3-Nh^4.                                    \tag{B.QM.2}
+\]
+The polynomials $x^3-x,g,h$ are squarefree and pairwise coprime,
+and $N$ is coprime to $h$. Consequently
+\[
+ E:\ y^2=x^3-x\longrightarrow E,\qquad
+       (x,y)\longmapsto
+       \left(\frac{N(x)}{4h(x)^2},\frac{y g(x)}{2h(x)^3}\right)
+                                                                  \tag{B.QM.3}
+\]
+is a separable degree-thirteen isogeny. Indeed (B.QM.2) verifies
+the target equation, the map takes infinity to infinity, and
+the rational function defining its first coordinate has degree
+thirteen. A nonconstant morphism between elliptic curves taking
+the origins to each other is an isogeny; its degree is thirteen
+because the $x$-coordinate maps on source and target both have
+degree two.
+
+The kernel is constant over the displayed cubic field. A fully
+explicit presentation and generator are
+\[
+ K=\mathbf F_5[z]/(z^3+4z^2+3z+1),\qquad
+                    T=(z,z+3)\in E(K).                           \tag{B.QM.4}
+\]
+The cubic has no root in $\mathbf F_5$, so this is a field.
+The elliptic addition law gives $13T=0$, with $T\ne0$.
+The twelve nonzero multiples of $T$ have precisely the six
+distinct roots of $h$ as their $x$-coordinates. These assertions
+are also a short exact arithmetic certificate: its thirteen
+points, including the identity, are listed in
+\path{code/criterion_quartic13_verify.json}, in the basis
+$1,z,z^2$. Thus they constitute the entire kernel of (B.QM.3).
+
+Pull back (B.QM.3) along $C\to E$, $(X,W)\mapsto(X,W^2)$.
+The normalization of the resulting connected curve is
+\[
+ D:\quad w^4=F(x),\qquad
+ F(x)=4(x^3-x)g(x)^2h(x)^2,\qquad
+ (X_C,W_C)=\left(\frac{N(x)}{4h(x)^2},\frac{w}{h(x)^2}\right).
+                                                                  \tag{B.QM.5}
+\]
+One can verify connectedness directly: $F$ has simple zeros
+at the three roots of $x^3-x$, so the fourth-root extension
+has degree four even over an algebraic closure. Alternatively,
+the degree-two extension $C/E$ and the odd-degree isogeny are
+linearly disjoint. The map to $C$ is finite \emph{\'etale} by
+base change of the isogeny; it is a constant cyclic cover over
+$K$ by (B.QM.4). The fibre of $P$ is the rational kernel of
+(B.QM.3), so it splits completely. Riemann--Hurwitz gives
+$g_D=1+13(3-1)=27$.
+
+We give the cohomological calculation explicitly enough to
+reproduce it without an isogeny-search program. Here $\deg F=51$
+and $\deg(gh)=24$. A basis of regular differentials is
+\[
+ \left\{\frac{x^jdx}{w}:0\le j\le11\right\},\qquad
+ \left\{\frac{gh\,dx}{w^2}\right\},\qquad
+ \left\{\frac{ghx^jdx}{w^3}:0\le j\le13\right\}.                \tag{B.QM.6}
+\]
+At a simple zero of $F$ the ramification index is four, while
+at a double zero it is two. The factors $gh$ exactly remove
+the poles in characters two and three at the latter zeros.
+At infinity the orders of $x,w,dx$ are $-4,-51,-5$;
+these give exactly the ranges in (B.QM.6). The forms are
+independent by their characters and their powers of $x$, and
+their number is the genus, proving that this is a full basis.
+
+Put $h_1=1$ and $h_2=h_3=gh$. Since $5\equiv1\pmod4$,
+Cartier in character $s$ is computed by
+\[
+ \mathcal C\!\left(\frac{h_s x^jdx}{w^s}\right)
+   =\frac1{w^s}\,
+      \mathcal C_{\mathbf P^1}(h_sx^jF^s dx),\qquad
+ \mathcal C_{\mathbf P^1}\!\left(\sum a_i x^i dx\right)
+        =\sum a_{5b+4}x^b dx.                                  \tag{B.QM.7}
+\]
+No coefficient roots need to be represented here because
+all coefficients lie in $\mathbf F_5$. Divide the extracted
+polynomial by $h_s$ and expand in the relevant part of
+(B.QM.6); every division has zero remainder. This gives a
+$27\times27$ matrix $M$ over $\mathbf F_5$. Its independently
+computed characteristic polynomials are
+\[
+\begin{split}
+ \det(U-M)
+   &=(U-2)^5(U+2)^6
+       (U^2-2U-1)^4(U^2+2U-1)^4,\\
+ \det(U-M^3)&=(U-2)^{14}(U+2)^{13}.
+\end{split}                                                    \tag{B.QM.8}
+\]
+For the old curve, the basis $dX/W^2,dX/W^3,X\,dX/W^3$ gives
+\[
+ M_C=\begin{pmatrix}3&0&0\\0&0&4\\0&1&0\end{pmatrix},\qquad
+                \det(U-M_C^3)=(U-2)^2(U+2).                    \tag{B.QM.9}
+\]
+The entire matrix, its cube, and all intermediate polynomials
+are in the certificate. The independent checker
+\path{code/criterion_quartic13_verify.py} implements its own
+prime-field polynomial arithmetic, the cubic field, the
+elliptic group law, and (B.QM.7); it then computes the
+characteristic polynomials by integer linear algebra reduced
+modulo five. It imports no search-producer code.
+
+Pullback and norm split old and new five-primary cohomology,
+since thirteen is invertible there. Cartier and coherent
+Frobenius are dual after a full finite-field cycle, and the
+Artin--Schreier sequence identifies the stable part with
+geometric five-torsion cohomology. Polynomial division of
+(B.QM.8) by (B.QM.9) gives the new factor
+\[
+                  (U-2)^{12}(U+2)^{12}.                        \tag{B.QM.10}
+\]
+It has degree twenty-four and no zero root, proving the
+claimed ordinarity. Its value at one is
+$(-1)^{12}3^{12}=1$ in $\mathbf F_5$, so the relative
+class number is a unit, with the asserted residue.
+Both $2$ and $-2$ have multiplicative order four in
+$\mathbf F_5$. The eigenvalues of a further $n$th Frobenius
+power contain one exactly when $4\mid n$; possible Jordan
+blocks do not affect this criterion. This proves the final
+assertion.
+\end{proof}
+
+\begin{claim}{B.QM2}{Proved}{The exact first-field minimum and the pointed Fermat identification}
+For the pointed quartic of \statementref{B.QM1}, the least
+constant extension degree over which an odd-prime constant
+cyclic $P$-split class-number witness exists is exactly three.
+At that first field, thirteen is the least possible prime,
+and \statementref{B.QM1} attains it. The same assertions hold
+for the pointed Fermat quartic
+\[
+       U^4+V^4=R^4\quad\text{over }\mathbf F_5,
+                   \qquad (U:V:R)=(1:0:1).
+\]
+This is a field-first minimum. The least prime when arbitrary
+constant extension degrees are allowed is not determined here.
+\end{claim}
+\begin{proof}
+Direct enumeration gives
+\[
+ \#C(\mathbf F_5)=8,\qquad
+ \#C(\mathbf F_{25})=44,\qquad
+ \#C(\mathbf F_{125})=104.
+\]
+Newton identities and the reciprocal functional equation
+give the full Jacobian Frobenius polynomial
+\[
+          H_C(U)=(U^2+2U+5)^2(U^2-2U+5).                       \tag{B.QM.11}
+\]
+The independent certificate enumerates these points, verifies
+the first three Newton identities, and checks the resulting
+polynomial. Its consequences for the first three fields are
+\[
+\begin{split}
+ \#J_C(\mathbf F_5)&=8^2\cdot4=256,\\
+ \#J_C(\mathbf F_{25})&=32^3=32768,\\
+ \#J_C(\mathbf F_{125})&=104^2\cdot148
+                         =2^8\cdot13^2\cdot37.
+\end{split}                                                    \tag{B.QM.12}
+\]
+A constant cyclic $P$-split cover of odd prime degree
+$\ell\ne5$ gives a quotient $J_C(\mathbf F_{5^m})\twoheadrightarrow
+\mathbf Z/\ell$, by the pointed Abel and Lang construction.
+The first two orders in (B.QM.12) exclude every such odd prime
+over degrees one and two. The third order permits only
+thirteen and thirty-seven. The thirteen-cover already proved
+therefore establishes both claimed minima.
+
+Finally the characteristic-five identity
+\[
+       (X+2Z)^4-(X-2Z)^4=X^3Z-XZ^3
+\]
+shows that the invertible projective linear map
+\[
+       (X:W:Z)\longmapsto(X-2Z:W:X+2Z)
+\]
+carries $C$ to the displayed Fermat curve and $P$ to
+$(1:0:1)$. Thus the result concerns that exact pointed
+Fermat example, not merely another curve with the same
+Jacobian point counts.
+\end{proof}

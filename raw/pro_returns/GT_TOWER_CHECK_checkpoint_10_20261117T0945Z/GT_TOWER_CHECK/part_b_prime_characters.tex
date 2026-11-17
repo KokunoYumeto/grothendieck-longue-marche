@@ -1,0 +1,322 @@
+% Countably many independent coefficient directions for the descent module.
+\subsection{Prime-indexed harmonic defects and infinitely many descent generators}
+
+Use the signed braid representation of R1, E.65.8 and E.65.15.
+For each odd prime $p$, let
+\[
+ \vartheta_p:F\longrightarrow\operatorname{SL}_2(\mathbb F_p),
+ \qquad x\longmapsto
+ \begin{pmatrix}1&2\\0&1\end{pmatrix},\quad
+ y\longmapsto\begin{pmatrix}1&0\\-2&1\end{pmatrix}.
+ \tag{B.AC1}
+\]
+For $h\in H$, let $\mathcal V_{p,h}$ be the reduction of
+the unique upper-unipotent intertwiner in R1 E.65.15, and put
+\[
+ W_{p,h}=\vartheta_p(\beta_h)^{-1}\mathcal V_{p,h},\qquad
+ T_p=C_{\operatorname{SL}_2(\mathbb F_p)}(S).
+ \tag{B.AC2}
+\]
+Write $n_p=p-\left(\frac{-1}{p}\right)$.  The group $T_p$ is
+cyclic of order $n_p$, and its quadratic character is specified by
+\[
+ \varepsilon_p:T_p\longrightarrow\mathbb F_2,\qquad
+             M^{n_p/2}=(-I)^{\varepsilon_p(M)}.
+ \tag{B.AC3}
+\]
+Define on the actual multiplier-one group
+\[
+ w_p(h)=\varepsilon_p(W_{p,h}),\qquad
+                   d_p(h)=w_p(h)+w_p(Dh).
+ \tag{B.AC4}
+\]
+
+\begin{result}{B.2.30}{Proved}{Countably many independent coefficient directions and their full descent shifts}
+For every odd prime $p$, (B.AC4) gives continuous
+characters of $H$, invariant under conjugation by $G$.
+There is a unique full continuous character
+$\overline d_p:G\to\mathbb F_2$ restricting to $d_p$
+and vanishing on $G_{\mathbb Q}$.  It vanishes on
+full $\widehat{GT}$ and on full $C_L$.
+
+Let $p_1<p_2<\cdots$ be the primes at least five which
+are congruent to three or five modulo eight, and set
+\[
+ \kappa_0=\Delta,\qquad
+ \kappa_1=\overline d_2,\qquad
+               \kappa_{i+1}=\overline d_{p_i}\quad(i\geq1).
+ \tag{B.AC5}
+\]
+Here $\overline d_2$ retains its earlier harmonic-defect
+notation from B.2.26; the new subscripts $p_i$ are odd primes.
+The restrictions of all $\kappa_j$ to $\ker D$ are
+linearly independent.  With $t$ acting by $D^*$ on $V$,
+the literal map
+\[
+ \bigoplus_{j\geq0}\mathbb F_2[t]\longrightarrow V,
+               \qquad(P_j)_j\longmapsto
+                         \sum_j P_j(D^*)\kappa_j
+ \tag{B.AC6}
+\]
+is injective.  Moreover
+\[
+ \dim_{\mathbb F_2}(V/D^*V)=\aleph_0,
+ \tag{B.AC7}
+\]
+so no finite family of characters and all of its descent
+iterates can generate $V$.
+
+The specified continuous homomorphism
+\[
+ \Xi_\infty:G\longrightarrow
+             \prod_{(j,n)\in\mathbb N_0^2}\mathbb F_2,\qquad
+ g\longmapsto\bigl(\kappa_j(D^ng)\bigr)_{j,n}
+ \tag{B.AC8}
+\]
+is onto already on $H$ and vanishes on $\widehat{GT}$.
+Its transition under $D$ shifts the second index.
+Every finite set of coordinates has full gentle image
+and trivial GT image.  For every $j\geq1$ and $n\geq0$,
+the coordinate $\kappa_jD^n$ also vanishes on full $C_L$.
+\end{result}
+\begin{proof}
+We first verify all source normalizations in (B.AC2).
+Let $\widetilde s=uvu$ and $z=(uv)^3$ in the actual
+central braid extension used in R1.  The multiplier-one
+automorphism fixes $z$ and preserves braid abelianization.
+Its lift of the source relation
+$\Phi_h(s)=\beta_hs\beta_h^{-1}$ can differ from
+$\beta_h\widetilde s\beta_h^{-1}$ only by $z^a$.
+Abelianization gives $3=3+6a$ in $\widehat{\mathbb Z}$,
+hence $a=0$.  Thus the signed matrix relation holds,
+and the covariance of R1 E.65.15 gives
+$W_{p,h}S=SW_{p,h}$ exactly.  The possible simultaneous
+choice of $S$ or $-S$ has the same centralizer.
+The identical argument for the cubic braid lift uses
+its abelian value two and again gives $6a=0$;
+thus the pure cubic-frame identity is signed as well.
+
+Solving this matrix commutation equation gives
+\[
+ T_p=\{aI+bS:a^2+b^2=1\}.
+ \tag{B.AC9}
+\]
+When $-1$ is a square, the two eigenvalues identify
+this group with $\mathbb F_p^\times$.  Otherwise it
+is the norm-one subgroup of $\mathbb F_{p^2}^\times$.
+This proves its cyclicity and stated order.
+In both cases $4$ divides $n_p$, so
+$\varepsilon_p(-I)=0$ and
+\[
+ \varepsilon_p(S)=n_p/4\bmod2
+ =1\quad\text{for }p\equiv3,5\pmod8.
+ \tag{B.AC10}
+\]
+These elementary matrix assertions and the source
+matrix (B.AB5) are independently replayed in
+\path{check_prime_harmonic_cartans.py}; its exact
+integer and finite-field outputs are archived.
+
+The literal frame composition law of R1 E.65.12
+and the covariance give
+$W_{p,hh'}=W_{p,h}W_{p,h'}$, so $w_p$ is a
+continuous character.  For an arbitrary $g\in G$,
+the full intertwiner of E.65.15 and the same
+frame composition law give
+\[
+ W_{p,ghg^{-1}}
+ \equiv \mathcal W_{p,g}W_{p,h}\mathcal W_{p,g}^{-1}
+                           \pmod{\{\pm I\}}.
+ \tag{B.AC11}
+\]
+The projective matrix $\mathcal W_{p,g}$ centralizes
+the projective source involution.  Any matrix lift
+therefore conjugates $S$ to $S$ or $-S$ and
+normalizes $T_p$.  Conjugation preserves the unique
+index-two subgroup of this cyclic group.
+The sign ambiguity in (B.AC11) has zero character
+by $\varepsilon_p(-I)=0$.  This proves
+$w_p(ghg^{-1})=w_p(h)$.
+Since $D$ is an actual homomorphism, the same
+conjugation invariance holds for $d_p$.
+
+For $h\in H\cap G_{\mathbb Q}$ the actual arithmetic
+comparison gives $Dh=chc$, hence $d_p(h)=0$.
+The compact semidirect-product quotient argument of
+B.2.26 therefore supplies the unique full character
+\[
+ \overline d_p(g)=d_p(g\gamma^{-1}),\qquad
+       \gamma\in G_{\mathbb Q},\quad
+                          \lambda(\gamma)=\lambda(g).
+ \tag{B.AC12}
+\]
+For $h\in H\cap\widehat{GT}$ the same equality
+$Dh=chc$ follows from B.1.8 and gives $d_p(h)=0$.
+Arithmetic correction in (B.AC12) proves full GT
+vanishing.  Also
+$w_p(Dh)=w_p(D_Lh)$ by conjugation invariance.
+Thus $d_p$ is zero on $C_L\cap H$.
+The exact factorization
+$C_L=(C_L\cap H)G_{\mathbb Q}$ in B.2.28 proves
+full $C_L$ vanishing.
+For $p=3$, equation (B.C24) identifies $d_3$ in
+(B.AC4) with the earlier $d_2$ of (B.Y1).
+Uniqueness of the full arithmetic-vanishing extension
+therefore gives $\overline d_3=\overline d_2$.
+
+We construct the independent kernel values.
+The stated set of primes is infinite by an elementary
+argument.  Given any finite set of odd primes, choose
+a positive odd integer $N$ which is three modulo eight
+and one modulo each prime in that set, also imposing
+one modulo three.  The character of
+$(\mathbb Z/8)^\times$ which is negative on three
+and five is multiplicative.  Its value on $N$ is
+negative, so some prime divisor of $N$ is three
+or five modulo eight and occurs to an odd exponent.
+That prime is outside the prescribed set and is
+at least five.  This proves infinitude and makes the
+ordered sequence in the statement unambiguous.
+
+For $i\geq1$ put
+\[
+ m_i=12\prod_{j<i}p_j,\qquad
+ R_i=B/\operatorname{core}_B
+           \ker\!\left(\vartheta_{m_i}:F\to
+                   \operatorname{SL}_2(\mathbb Z/m_i)\right),
+ \tag{B.AC13}
+\]
+where $\vartheta_{m_i}$ has the same two integral
+generator matrices as (B.AC1).
+This is an actual finite source quotient retaining
+the signed pure evaluation modulo $m_i$.
+Induction from the index-six subgroup $F$ embeds
+its image into
+$\operatorname{SL}_2(\mathbb Z/m_i)^6\rtimes S_3$.
+In particular its order divides
+$6|\operatorname{SL}_2(\mathbb Z/m_i)|^6$.
+Counting the first nonzero column and then the
+second column, and lifting through successive
+prime powers, gives
+\[
+ |\operatorname{SL}_2(\mathbb Z/m)|
+       =\prod_{\ell^a\parallel m}\ell^{3a-2}(\ell^2-1).
+ \tag{B.AC14}
+\]
+Every prime divisor of this expression for $m_i$
+is at most the largest of $3,p_1,\ldots,p_{i-1}$.
+Indeed a prime divisor of $\ell-1$ is less than
+$\ell$, and a prime divisor of the even number
+$\ell+1$, for odd $\ell$, is at most
+$(\ell+1)/2\leq\ell$.
+Thus $p_i\nmid|R_i|$, as required by B.2.29.
+
+Apply that result to $(R_i,p_i)$ and let $a_i$
+be its full normalized element in $\ker D$.
+Before normalization its pure frames have
+$\vartheta_{m_i}(\beta)=\vartheta_{m_i}(A)=I$,
+while their new projective values are
+$q_{p_i}(\beta)=[S]$, $q_{p_i}(A)=1$.
+The matrix effect of normalization must be retained,
+because its exponent $t$ need not be divisible by
+$p_i$.  Write $X_p=\vartheta_p(x)$.
+The new frames are
+$\beta_0=x^t\beta$, $A_0=x^tA$.
+At every retained source representation, the
+unnormalized action on the signed braid generators
+is the identity: its two conjugating matrices are
+$I,I$ at the old factors, and $\pm S,\pm I$ at
+the new factor, respectively.  Therefore after
+normalization its covariance is exactly
+$\operatorname{Ad}(X_p^t)$.
+The unique normalized upper-unipotent intertwiner
+is consequently $\mathcal V_{p,a_i}=X_p^t$.
+It follows that
+\[
+ W_{p,a_i}
+  =(X_p^t\vartheta_p(\beta))^{-1}X_p^t
+  =\vartheta_p(\beta)^{-1}.
+ \tag{B.AC15}
+\]
+Both factors left-multiply by the same actual
+matrix; no exponent is discarded.
+
+At each earlier prime this value is $I$.
+At the new prime it is $\pm S^{-1}$, so (B.AC10)
+gives $w_{p_i}(a_i)=1$.
+The same calculation modulo twelve gives both
+original signed frames $T=W=I$: the two raw
+signed pure frame values there were exactly $I$,
+by (B.AC13).  Hence $\Delta(a_i)=0$.
+Since $Da_i=1$, (B.C24) gives
+$\overline d_2(a_i)=\epsilon_2(W_{a_i})=0$.
+For every new odd-prime character, restriction
+to $\ker D$ is simply $d_p=w_p$.
+We have therefore proved the exact triangular
+kernel values
+\[
+ \Delta(a_i)=\overline d_2(a_i)=0,\qquad
+ \overline d_{p_j}(a_i)=0\ (j<i),\qquad
+                         \overline d_{p_i}(a_i)=1.
+ \tag{B.AC16}
+\]
+Together with the two kernel vectors of B.2.27,
+these imply independence of all restrictions
+$\kappa_j|_{\ker D}$: evaluate any finite relation
+at the largest prime-indexed witness occurring,
+and then at the two original kernel vectors.
+
+Surjectivity of $D:G\to G$ makes $D^*$ injective.
+For any finite polynomial relation in (B.AC6),
+evaluation on $\ker D$ makes every constant
+coefficient zero by the just-proved independence.
+The relation is therefore divisible by $t$;
+injectivity of $D^*$ removes that factor.
+Repeating proves every coefficient zero.
+The same argument works on $H$, since $D:H\to H$
+is onto and the kernel witnesses lie in $H$.
+
+There is also the exact image identity
+\[
+ D^*V
+    =\{\eta\in V:\eta|_{\ker D}=0\}.
+ \tag{B.AC17}
+\]
+Indeed a character on the right factors uniquely
+and continuously through the quotient map $D$.
+Its descended character still vanishes on
+$\widehat{GT}$, because $D$ maps that subgroup
+onto itself by its specified inner action.
+The converse follows directly from $D(\ker D)=1$.
+Thus restriction identifies $V/D^*V$ with its
+actual image on $\ker D$.  The independent
+restrictions (B.AC16) make its dimension at least
+$\aleph_0$, and the countability of $V$ in B.2.25
+gives the matching upper bound.  This proves
+(B.AC7).  A finitely generated $\mathbb F_2[t]$
+module has a finite-dimensional quotient by $t$,
+so the asserted failure of finite generation follows.
+
+Finally independence in (B.AC6), already on $H$,
+makes every finite coordinate projection of
+(B.AC8) surjective: a proper image would admit
+a nonzero annihilating linear functional.
+Compactness of $H$ supplies the inverse image
+of every infinite coordinate pattern.  This
+proves its full surjectivity and all finite
+image assertions.  Its shift relation is
+the defining equality
+$\kappa_j(D^nDg)=\kappa_j(D^{n+1}g)$.
+Each coordinate vanishes on GT, since $D$
+preserves that subgroup.  For $g\in C_L$,
+equation (B.AA10) gives $D^ng=c^ngc^n$;
+the full character vanishing already proved
+therefore also holds for every $j\geq1$ and
+all $n$.  This completes the proof.
+\end{proof}
+
+The free submodule in (B.AC6) has a countably infinite
+specified set of generators.  Its identification does
+not assert that it exhausts $V$; (B.AC7) is the exact
+quotient statement about the entire annihilator.
+

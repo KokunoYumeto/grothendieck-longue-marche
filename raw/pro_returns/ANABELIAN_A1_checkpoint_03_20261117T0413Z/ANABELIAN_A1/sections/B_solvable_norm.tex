@@ -1,0 +1,229 @@
+\subsection{Solvable deck groups: a single common-stabilizer obstruction}
+
+\begin{claim}{B.SV1}{Proved}{Simultaneous norm freeness for solvable coprime actions}
+Let $G$ be a finite solvable group of order prime to $p$, acting
+on a finite abelian $p$-group $M$. Let $F$ be an automorphism
+of $M$, and let $\sigma\in\operatorname{Aut}(G)$ satisfy
+$F(gm)=\sigma(g)F(m)$. For $K\triangleleft G$ put
+\[
+                       e_K=|K|^{-1}\sum_{g\in K}g.
+\]
+There exists $a\in M^F$ with
+\[
+                 \operatorname{Stab}_G(e_Ka)=K
+                      \quad(K\triangleleft G)                 \tag{B.SV.1}
+\]
+if and only if
+\[
+        \bigcap_{b\in M^F}\operatorname{Stab}_G(e_Kb)=K
+                      \quad(K\triangleleft G).                \tag{B.SV.2}
+\]
+Neither $M^F$ nor an individual norm image is assumed to be
+$G$-stable. The order of $F$ or of $\sigma$ may be divisible
+by $p$.
+\end{claim}
+\begin{proof}
+The implication from (B.SV.1) to (B.SV.2) is immediate.
+We prove the converse by induction on the derived length
+of $G$. If $G=1$, choose $a=0$. Otherwise let $N$ be the
+last nontrivial derived subgroup of $G$. It is nontrivial,
+abelian, normal, and characteristic, so it is $\sigma$-stable.
+There is a $G$- and $F$-stable direct sum
+\[
+                    M=e_NM\oplus W,\qquad W=(1-e_N)M.          \tag{B.SV.3}
+\]
+The first summand is a module for $G/N$. Its fixed group is
+$e_N(M^F)$, since the idempotent commutes with $F$.
+For every normal subgroup $K\supset N$, its common
+stabilizer after $e_K$ is $K/N$ by (B.SV.2). The induction
+hypothesis supplies $v\in(e_NM)^F$ such that
+\[
+                \operatorname{Stab}_G(e_Kv)=K
+                        \quad(K\triangleleft G,\ N\subset K).
+                                                                  \tag{B.SV.4}
+\]
+
+We need one simultaneous support lemma for the abelian group
+$N$. For each subgroup $L\le N$ with $N/L$ cyclic, let
+$\varepsilon_L^N\in\mathbf Z_p[N]$ be the sum of the
+character idempotents with exact kernel $L$, including the
+trivial character when $L=N$. As in \statementref{B.AB1},
+these are integral orthogonal idempotents summing to one;
+every nonzero element in their $L$-summand has stabilizer
+exactly $L$ in $N$. The reason is that $\chi(n)-1$ is a
+unit for every nontrivial prime-to-$p$ root $\chi(n)$.
+
+All the $e_K$, for $K\triangleleft G$, are central in
+$\mathbf Z_p[G]$, hence commute with each other and with
+these $N$-idempotents. Form their simultaneous orthogonal
+idempotents by taking all products
+\[
+ \varepsilon_L^N
+       \prod_{K\in\mathcal S}e_K
+       \prod_{K\notin\mathcal S}(1-e_K),                       \tag{B.SV.5}
+\]
+where $\mathcal S$ ranges through subsets of the finite set
+of normal subgroups of $G$, and discard zero summands.
+They decompose $W$. On each resulting summand, every $e_K$
+is either zero or the identity, and every nonzero vector has
+one fixed stabilizer $L$ in $N$.
+
+The automorphism $F$ permutes these summands: it carries
+$e_K$ to $e_{\sigma(K)}$ and $\varepsilon_L^N$ to
+$\varepsilon_{\sigma(L)}^N$. Decompose $W$ further into
+the direct sums belonging to these $F$-orbits. In each such
+orbit whose fixed subgroup is nonzero choose one nonzero
+fixed vector. Its projection to every summand in that orbit
+is nonzero, since $F$ cyclically identifies all projections.
+Sum the chosen vectors over the finitely many available
+orbits. The resulting $w\in W^F$ has a nonzero component
+in exactly every joint summand that occurs in any fixed
+vector. Consequently, simultaneously for every normal $K$,
+\[
+ \operatorname{Stab}_N(e_Kw)
+       =\bigcap_{b\in W^F}\operatorname{Stab}_N(e_Kb).           \tag{B.SV.6}
+\]
+Indeed $e_K$ retains a specified collection of the joint
+summands; on each retained nonzero component the stabilizer
+is its exact $N$-character kernel. Thus both sides are the
+intersection of the same kernels. This argument uses no
+averaging over $F$ and works for arbitrary $p$-power torsion.
+
+The summand $e_NM$ is fixed by $N$, so (B.SV.2) and
+(B.SV.3) identify the right side of (B.SV.6) with $N\cap K$.
+Set $a=v+w$. If $g\in G$ fixes $e_Ka$, the $G$-stable
+decomposition (B.SV.3) shows that it fixes $e_Kv$ and
+$e_Kw$ separately. Since
+\[
+                         e_Kv=e_{KN}v,
+\]
+equation (B.SV.4) implies $g\in KN$. Write $g=nk$, with
+$n\in N$ and $k\in K$. The group $K$ fixes every $e_K$
+image. Hence $g$ fixes $e_Kw$ exactly when $n$ does.
+Equation (B.SV.6) gives $n\in N\cap K$, so $g\in K$.
+The reverse inclusion is automatic. This proves (B.SV.1)
+for every normal $K$ and completes the induction.
+\end{proof}
+
+\begin{claim}{B.SV2}{Proved}{Constant solvable covers have exactly the relative-unit obstruction}
+Let $D\to C$ be a constant pointed normal prime-to-$p$
+cover over a finite field $k$, with solvable deck group $G$.
+The finite all-normal-quotient norm-free set $S_D(k)$ is empty
+if and only if there exist normal subgroups
+$K\subsetneq L\triangleleft G$ such that
+\[
+                         p\nmid
+                   \frac{\#J_{D_K}(k)}{\#J_{D_L}(k)}.          \tag{B.SV.7}
+\]
+In particular, for constant solvable deck groups, the relative
+class-number-unit sufficient criterion is also necessary at
+that finite level. The lower curve $D_L$ can differ from $C$,
+and the degree of the step is not required to be prime.
+\end{claim}
+\begin{proof}
+Apply \statementref{B.SV1} with
+$M=J_D(k)[p^\infty]$ and $F=1$; the actual arithmetic
+Frobenius has already been imposed by taking rational points.
+This is a $G$-module because the deck group is constant.
+The common stabilizer $L$ of $e_KM$ is a normal subgroup of
+$G$, since $e_KM$ is $G$-stable, and contains $K$.
+
+Pullback identifies $J_{D_K}(k)[p^\infty]$ with $e_KM$:
+the averaging idempotent is defined over $k$, and pullback
+and norm split because $|K|$ is prime to $p$.
+If $L\supsetneq K$ is its common stabilizer, all of this
+group is invariant under $L/K$. Pullback from $D_L$ is
+therefore all of $J_{D_K}(k)[p^\infty]$, again by averaging.
+The $p$-parts of the two Jacobian orders agree, giving
+(B.SV.7). Conversely that relative unit makes every rational
+$p$-primary class on $D_K$ a pullback from $D_L$, so its
+stabilizer contains the nontrivial group $L/K$. No class can
+satisfy all normal quotient conditions. The equivalence in
+\statementref{B.SV1} proves that these are the only ways the
+finite set can be empty.
+\end{proof}
+
+\begin{claim}{B.SV3}{Proved}{A single-element finite certificate in characteristic two}
+For any proper hyperbolic pointed curve $(C,P)/k$ in
+characteristic two, $M_P^F$ has no all-level free vector if
+and only if there are a pointed $F$-stable normal cover
+$D\to C$, a normal subgroup $K$ of its geometric deck group
+$G$, and an element $g\in G\setminus K$ such that
+\[
+ g\,\operatorname{Nm}_{D/D_K}(a)
+       =\operatorname{Nm}_{D/D_K}(a)
+        \qquad\text{for every }a\in J_D(k)[2^\infty].          \tag{B.SV.8}
+\]
+The quotient $D_K$ need only be defined over its pointed
+finite constant extension. Thus in characteristic two a
+finite obstruction can always be witnessed by one quotient
+and one element fixing every candidate norm coordinate.
+It cannot require only a union of different stabilizers
+covering the candidates.
+
+This reformulation does not prove that such a finite
+certificate exists for every genus-two curve. That universal
+existence assertion in B2 remains open here.
+\end{claim}
+\begin{proof}
+The geometric deck group of a prime-to-two cover has odd
+order. The exact theorem of Feit--Thompson is that every
+finite group of odd order is solvable; these are its only
+hypotheses \citep[Chapter~I, \S1, p.~775, unnumbered main
+theorem]{FeitThompson1963}. Hence \statementref{B.SV1} applies
+to every finite level under consideration.
+
+Choose $2^e$ killing the finite group $J_D(k)[2^\infty]$
+and apply that theorem to
+\[
+                      M=J_D[2^e](\overline k).
+\]
+The geometric deck group acts on $M$; arithmetic Frobenius
+normalizes that action and has fixed group exactly
+$J_D(k)[2^\infty]$. Pullback identifies the stabilizer of
+each norm coordinate with the stabilizer of its averaging
+idempotent, so \statementref{B.SV1} says that $S_D(k)$
+is empty precisely when (B.SV.8) holds for some $K,g$.
+By the compact finite criterion \statementref{B.NM3}, absence
+of an all-level free vector is equivalent to emptiness at
+one stable finite level. This proves the stated equivalence.
+
+The distinction between this statement and
+\statementref{B.SV2} matters. With nonconstant deck group,
+the Frobenius-fixed group need not be $G$-stable, so the
+common stabilizer in (B.SV.8) need not be normal and cannot
+automatically be interpreted as a relative class-number unit
+over $k$. The semilinear common-stabilizer criterion is the
+assertion proved in this generality.
+\end{proof}
+
+\paragraph{Exhaustive finite checks of the induction.}
+The program \path{code/criterion_solvable_norm.py} verifies the
+theorem on a nonabelian solvable group with a Frobenius of order
+divisible by the characteristic. Over $\mathbf F_3$, put
+\[
+ i=\begin{pmatrix}0&1\\2&0\end{pmatrix},\qquad
+ j=\begin{pmatrix}1&1\\1&2\end{pmatrix},\qquad
+ T=\begin{pmatrix}1&1\\0&1\end{pmatrix}.
+\]
+The first two generate $Q_8$, since $i^2=j^2=-1$ and
+$ij=-ji$. The matrix $T$ has order three and normalizes this
+group. Let $V=\mathbf F_3^2$ be the natural module and add
+the three nontrivial one-dimensional characters of
+$Q_8/\{\pm1\}$, giving $M=V\oplus\mathbf F_3^3$.
+Define Frobenius by $T$ on $V$ and by the induced cyclic
+permutation on the three character summands. It satisfies
+the semilinear compatibility in \statementref{B.SV1}.
+
+The program enumerates all six normal subgroups, all $243$
+vectors, and every norm and stabilizer. With $F=1$, exactly
+$64$ vectors satisfy all norm-free conditions. With the
+displayed order-three Frobenius, exactly nine vectors are
+fixed and four satisfy all conditions; every common-stabilizer
+test is exact. On the natural module alone and on the three
+character summands alone, the all-level set is empty, and
+the program identifies a failed common-stabilizer condition
+in each case, both with constant and nonconstant Frobenius.
+These finite representation checks are recorded in
+\path{code/criterion_solvable_norm.json}; no geometric
+realization is asserted by the checks.

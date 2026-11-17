@@ -1,0 +1,498 @@
+% Reconstruction of the missing A.66 arithmetic proof.
+% Keep separate from the fixed-depth lifting audit until independently read.
+\subsection{The variable-exponent arithmetic construction}
+
+\begin{result}{C.2.10}{Proved}{The exact coefficient-prime image}
+\label{lem:ghost-variable-exponent-image}
+Let \(d\ge2\), let \(24\mid C\), and let
+\(n=h!\), where \(h\ge2d^2\) and every prime divisor
+of \(C\) is at most \(h\). Put
+\[
+ E(Z)=Cn\prod_{r=2}^d(Z^r-1),\qquad D=Cd!n^d.
+\]
+For a prime \(p\mid n\), write
+\[
+ v=v_p(n),\quad e=v_p(d),\quad
+ a_p=\begin{cases}1,&p\ne2,\\2,&p=2,\end{cases}
+ \qquad
+ W_p=v_p(C)+(d+1)v+v_p(d!)+a_p+e.
+\]
+The continuous map
+\[
+ F_p(z)=\exp\bigl(E(z)\log z\bigr)
+\]
+is a bijection from
+\(1+p^v+p^{v+a_p}\mathbb Z_p\) onto
+\[
+ F_p(1+p^v)\bigl(1+p^{W_p}\mathbb Z_p\bigr).
+ \tag{VX.1}
+\]
+Every point of this domain satisfies
+\[
+ v_p(z-1)=v,\qquad v_p(E(z))=v_p(D),
+ \qquad W_p\le2v_p(D).
+ \tag{VX.2}
+\]
+The map preserves congruences modulo \(p^L\) between
+points of the domain. For positive integers in the domain
+it is the ordinary power \(z^{E(z)}\).
+\end{result}
+\begin{proof}
+Set \(z=1+p^v u\). We have the exact identity
+\[
+ E(z)\log z=K u^d H(u),\qquad
+ K=Cn\,d!\,p^{dv},
+ \tag{VX.3}
+\]
+where
+\[
+ H(u)=
+ \prod_{r=2}^d
+ \frac{(1+p^v u)^r-1}{r p^v u}
+ \cdot\frac{\log(1+p^v u)}{p^v u}.
+\]
+We prove coefficientwise that
+\[
+ H\in1+p^{e+1}\mathbb Z_p\langle u\rangle.
+ \tag{VX.4}
+\]
+For a polynomial factor the coefficient of
+\(u^{k-1}\), \(k\ge2\), has valuation at least
+\(v(k-1)-v_p(k)\), using
+\(\binom rk/r=\binom{r-1}{k-1}/k\).
+When \(p\le d\), the factorial gives \(v\ge2d\);
+thus this is at least \(e+1\), since
+\(v_p(k)\le\lfloor\log_p d\rfloor\le d-1\).
+When \(p>d\), all these denominators are units,
+\(e=0\), and the bound is at least one.
+For the logarithmic factor the same expression occurs
+for every \(k\ge2\). Its minimum is at least \(v\)
+for odd \(p\), and at least \(v-1\) for \(p=2\).
+Indeed \(v_p(k)\le k-2\) for odd \(p\) and
+\(v_2(k)\le k-1\); the only lower bound needed at
+two uses \(v\ge2d\ge4\). These estimates also
+tend to infinity with \(k\), proving convergence
+in the indicated restricted power-series ring.
+They prove (VX.4).
+
+Write \(u=1+p^{a_p}w\). Expanding (VX.3), (VX.4) gives
+\[
+ u^dH(u)=H(1)+p^{a_p+e}
+                   \bigl(\lambda w+pG(w)\bigr),
+ \quad
+ \lambda\in\mathbb Z_p^\times,
+ \quad G\in\mathbb Z_p\langle w\rangle.
+ \tag{VX.5}
+\]
+To check the nonlinear terms explicitly, use
+\(v_p\binom dk\ge e-v_p(k)\). After division
+by \(p^{a_p+e}\), their valuations are at least
+\(a_p(k-1)-v_p(k)\ge1\) for \(k\ge2\).
+The perturbation \(u^d(H(u)-1)\) contributes
+coefficients divisible by \(p\) after this
+division. The linear coefficient is
+\(d/p^e\) modulo \(p\), hence is a unit.
+For every \(t\in\mathbb Z_p\), the equation
+\(\lambda w+pG(w)=t\) is equivalent to the
+strict contraction
+\(w=\lambda^{-1}(t-pG(w))\). An integral
+restricted power series is one-Lipschitz on
+\(\mathbb Z_p\), so this equation has exactly
+one solution. Thus the logarithmic image is the
+full coset modulo \(p^{W_p}\) claimed in (VX.1).
+The exponential and logarithm are inverse isometries
+on \(p\mathbb Z_p\) for odd \(p\), and on
+\(4\mathbb Z_2\) at two; (VX.3) lies in these domains.
+This proves (VX.1).
+
+For the exact exponent valuation, the same factor
+estimates without the logarithmic factor give
+\(v_p(z^r-1)=v+v_p(r)\) for \(2\le r\le d\).
+Summation gives \(v_p(E(z))=v_p(D)\).
+Furthermore
+\[
+ 2v_p(D)-W_p
+   =v_p(C)+(d-1)v+v_p(d!)-a_p-e\ge0,
+\]
+because \(v_p(d!)\ge e\) and \(v\ge a_p\).
+Finally, for two inputs congruent modulo \(p^L\),
+the polynomial \(E\) and the logarithm both
+preserve that congruence on this domain.
+Their product and the exponential therefore do
+as well. The logarithm identity for integral
+powers proves the last assertion.
+\end{proof}
+
+\begin{result}{C.2.11}{Proved}{Reconstruction of SECTIONS A.66}
+\label{thm:ghost-general-exponent-arithmetic}
+Fix \(d\ge2\), a positive integer \(C\) divisible
+by \(24\), and an integer \(J\ge2d^2\) at least
+every prime divisor of \(C\). Put
+\[
+ n_j=(j+J)!,\qquad D_j=Cd!n_j^d,\qquad
+ E_j(Q)=Cn_j\prod_{r=2}^d(Q^r-1).
+ \tag{VX.6}
+\]
+There are three sequences of distinct primes
+\(q_j,r_j,s_j>3\), disjoint from one another,
+for which
+\[
+ A=3\prod_{j\ge0}\frac{q_j^{E_j(q_j)}}{s_j^{E_j(s_j)}},
+ \qquad
+ B=-2\prod_{j\ge0}\frac{r_j^{E_j(r_j)}}{s_j^{E_j(s_j)}}
+ \tag{VX.7}
+\]
+are an ordinary completed unit-equation pair.
+Their valuations at two and three are respectively
+\((0,1)\), \((1,0)\), and their other nonzero
+valuation pairs are exactly
+\[
+ \begin{array}{c|c}
+ q_j&(E_j(q_j),0)\\
+ r_j&(0,E_j(r_j))\\
+ s_j&(-E_j(s_j),-E_j(s_j)).
+ \end{array}
+ \tag{VX.8}
+\]
+Both coordinates have infinite support. In the global
+power completion, \(A/3\) and \(B/(-2)\) are
+\(C\)-th powers. The construction is a recursion
+by finite CRT conditions and specified Chebotarev
+classes; all its simultaneous field conditions are
+compatible.
+\end{result}
+\begin{proof}
+We give the construction, including the field
+intersection needed for every prime choice.
+Keep pairwise coprime integral coefficients
+\[
+ a_j=3u_j^{24},\quad b_j=-2v_j^{24},\quad
+ c_j=w_j^{24},
+\]
+where \(u_j,v_j,w_j\) are positive and have
+disjoint prime supports away from two and three.
+Set \(B(D)=(D+1)^4\) and
+\(H_j(p)=2v_p(D_j)+j+3\). The two inductive
+requirements are
+\[
+ \begin{gathered}
+ a_jX^{D_j}+b_jY^{D_j}=c_jZ^{D_j}
+ \quad\hbox{has a unit solution over every }\mathbb Z_p,\\
+ v_p(a_j+b_j-c_j)\ge H_j(p)
+ \quad\text{for }p\le B(D_j).
+ \end{gathered}
+ \tag{VX.9}
+\]
+The initial triple \((3,-2,1)\) satisfies both.
+
+\emph{The three radical fields and their abelian intersections.}
+For a current triple \((a,b,c)\), and \(24\mid n\),
+write \(F_n=\mathbb Q(\mu_n)\). Each field
+\[
+ F_n((b/c)^{1/n}),\quad
+ F_n((a/c)^{1/n}),\quad
+ F_n((-a/b)^{1/n})
+ \tag{VX.10}
+\]
+has maximal abelian subfield exactly \(F_n\).
+Indeed the three radicands have squareclasses
+\(-2,3,6\), whose square roots belong to \(F_n\).
+None is an odd-prime power in \(F_n\): its valuation
+at two or three is one, so an odd-prime radical has
+that prime degree by the Eisenstein criterion over
+the corresponding local field. Its real radical
+field is not normal over \(\mathbb Q\), since its
+other roots include nonreal roots. It cannot be a
+subfield of an abelian extension of \(\mathbb Q\).
+None is a fourth power in \(F_n\), because its
+fourth root would give respectively
+\(2^{1/4},3^{1/4},6^{1/4}\) there: the precise
+factors are
+\[
+ (b/c)^{1/4}=(v_j/w_j)^6\zeta_8\,2^{1/4},
+ \quad (a/c)^{1/4}=(u_j/w_j)^6\,3^{1/4},
+\]
+\[
+ (-a/b)^{1/4}=(u_j/v_j)^6\,6^{1/4}/\sqrt2.
+\]
+Those real quartic fields are again nonnormal,
+and irreducibility follows at two or three.
+Consequently the cyclic Kummer kernel \(N\)
+in each field (VX.10) has order exactly \(n/2\).
+To see the degree assertion directly, a kernel
+of order \(m\) would fix the \(m\)-th power
+of the chosen radical, making the radicand an
+\((n/m)\)-th power in \(F_n\); the preceding
+exclusions force \(n/m\le2\), and the existing
+square root gives equality.
+
+Conjugation acts on \(N\) by the cyclotomic
+character. All its multipliers are odd, and
+complex conjugation has multiplier \(-1\), so
+\([N,G]=N^2\). The fixed field of \(N^2\)
+contains the splitting field of the corresponding
+pure quartic, a nonabelian dihedral extension
+of degree eight. Hence \(G/N^2\) is nonabelian.
+Since \(N/N^2\) has order two and \(G/N\)
+is abelian, \([G,G]=N\). This proves the
+maximal-abelian assertion.
+For every modulus \(M\) divisible by \(n\),
+the intersection of any field (VX.10) with
+\(\mathbb Q(\mu_M)\) is therefore exactly
+\(F_n\). A CRT unit class that is one modulo
+\(n\) defines an automorphism of the cyclotomic
+field restricting to the identity on that
+intersection. Pairing it with the identity on
+(VX.10) is an actual element of the compositum's
+fibre-product Galois group. Chebotarev
+\cite[Theorem 8.31]{GhostMilneANT} thus supplies
+infinitely many primes in that CRT class
+splitting completely in the specified field.
+
+\emph{Triangular local choices.}
+At stage \(j\), abbreviate \(n=n_j\),
+\(D=D_j\), \(E=E_j\), and \((a,b,c)=(a_j,b_j,c_j)\).
+Choose \(P\ge B(D_{j+1})\) at least every
+coefficient-support prime. Process all primes
+\(p\le P\) in increasing order. Before the
+process choose precisions \(L_p\) such that
+\[
+ L_p\ge H_{j+1}(p),\quad p^{L_p}>P,
+ \quad L_p\ge v_p(n)+a_p\quad(p\mid n).
+ \tag{VX.11}
+\]
+For each of the three future prime variables,
+we impose
+\[
+ \begin{cases}
+ z\in1+p^{v_p(n)}+p^{v_p(n)+a_p}\mathbb Z_p,
+                                      &p\mid n,\\
+ z\in\mathbb Z_p^\times,\quad
+ z^r\not\equiv1\pmod p\ (2\le r\le d),
+                                      &p\nmid n.
+ \end{cases}
+ \tag{VX.12}
+\]
+When \(p\nmid n\), we have \(p>j+J\ge2d^2\),
+so there are nonzero residues outside the forbidden
+set, whose size is at most \(\sum_{r=2}^d r<d^2\).
+Before processing \(p\), the previous precisions
+fix the three inputs modulo \(p-1\), and therefore
+fix separately the exponent classes
+\(e_i(p)=E(z_i)\bmod(p-1)\), \(i=a,b,c\).
+This is because every prime-power divisor of
+\(p-1\) is smaller than \(P\) and its prime has
+already been processed.
+
+At a prime \(\ell\mid p-1\), (VX.2) and (VX.12)
+give, for every input consistent with the choices,
+\[
+ v_\ell(E(z_i))=v_\ell(D).
+\]
+For \(\ell\nmid n\) both valuations are zero:
+the factors of \(C\) and \(d!\) lie in \(n\),
+and all factors \(z_i^r-1\) are units by (VX.12).
+Thus the three finite-field power maps have
+the same exact image,
+\[
+ \gcd(e_i(p),p-1)=\gcd(D,p-1),\qquad
+ (\mathbb F_p^\times)^{e_i(p)}
+                  =(\mathbb F_p^\times)^D.
+ \tag{VX.13}
+\]
+Every forbidden residue in (VX.12) maps to one
+under each of these maps. Its order divides
+some \(r\le d\), hence divides \(d!\), and
+also divides \(p-1\); (VX.13) therefore makes
+its order divide the relevant exponent.
+
+At \(p\mid n\), the three local maps are
+the common map of Lemma~\ref{lem:ghost-variable-exponent-image}.
+Start all three inputs at \(1+p^{v_p(n)}\).
+Their common output is a unit \(F_0\).
+The sum-error is \((a+b-c)F_0\), of valuation
+at least \(H_j(p)\ge W_p\), by (VX.9), since
+\(p\le B(D)\). At least one of \(a,b,c\)
+is a unit. Vary its output within the full
+coset \(F_0+p^{W_p}\mathbb Z_p\) to cancel
+the error, and use the lemma's inverse to
+obtain the required input. Thus the exact
+equation \(aF(z_a)+bF(z_b)=cF(z_c)\) is solved
+without changing any shell in (VX.12).
+
+At \(p\nmid n\), retain the already fixed
+Teichmuller exponent \(e_i(p)\). On a permitted
+residue class with Teichmuller representative
+\(\omega\), define
+\[
+ F_{i,p}(z)=\omega^{e_i(p)}
+       \exp\bigl(E(z)\log(z/\omega)\bigr).
+ \tag{VX.14}
+\]
+This equals the ordinary power \(z^{E(z)}\)
+at each positive integer satisfying the earlier
+congruences. For \(z=\omega(1+pt)\),
+\[
+ \frac{\log(F_{i,p}(z)/\omega^{e_i(p)})}{p}
+       =E(\omega)t+pG_i(t),
+ \qquad G_i\in\mathbb Z_p\langle t\rangle.
+ \tag{VX.15}
+\]
+The coefficient \(E(\omega)\) is a unit by (VX.12).
+The remaining coefficients are integral and
+divisible by \(p\): those of
+\(\log(1+pt)/p\) in degree \(k\ge2\)
+are \(p^{k-1}/k\), divisible by \(p\) because
+\(p>2d^2\ge8\); the polynomial factor preserves
+this divisibility. The contraction argument
+from (VX.5) proves that (VX.14) is a bijection
+onto \(\omega^{e_i(p)}(1+p\mathbb Z_p)\),
+and that it preserves congruences.
+
+For \(p\le B(D)\), choose a common value
+\(\lambda\in(\mathbb F_p^\times)^D\) and
+permitted preimages under all three power maps.
+When the image has more than one element take
+\(\lambda\ne1\); the forbidden residues all
+map to one. When the image is \(\{1\}\),
+all nonzero residues are preimages and the
+bound on the forbidden set leaves a choice.
+All three output balls in (VX.14) are then
+\(\widetilde\lambda(1+p\mathbb Z_p)\).
+The error at their common Teichmuller value
+is divisible by \(p\), by (VX.9); varying an
+output with unit coefficient cancels it.
+For \(p>B(D)\), use a unit solution of the
+first line of (VX.9). Multiply its three
+coordinates by a common unit so that none
+of their \(D\)-th powers is one modulo \(p\).
+This is possible because
+\((p-1)/\gcd(D,p-1)>3\), whereas there are
+at most three forbidden scaling values.
+The three resulting power values are in the
+image (VX.13), and their preimages avoid every
+forbidden residue. The bijections (VX.14)
+give inputs attaining these exact local
+values. This includes primes dividing a
+coefficient, since (VX.9) supplies unit
+coordinates there as well.
+
+Approximate the three chosen local inputs
+modulo \(p^{L_p}\). Congruence preservation
+in (VX.1) and (VX.14) keeps the sum-error
+divisible by \(p^{H_{j+1}(p)}\).
+Their residues then determine the exponent
+classes at later primes. Thus the triangular
+procedure is compatible at every step.
+
+\emph{Prime selection and the new invariant.}
+Put \(M=\prod_{p\le P}p^{L_p}\). The three
+resulting CRT classes are units and are one
+modulo \(n\), by (VX.12). Apply the exact
+fibre-product construction following (VX.10)
+to choose distinct primes \(q,r,s>P\) in
+these classes, splitting respectively in
+the three fields (VX.10). Set
+\[
+ a'=a q^{E(q)},\qquad b'=b r^{E(r)},\qquad
+ c'=c s^{E(s)}.
+ \tag{VX.16}
+\]
+The support and twenty-fourth-power requirements
+are preserved. At every \(p\le P\), the
+new sum-error has the required precision.
+Vary a variable with unit coefficient at
+\((1,1,1)\); the inequality
+\(H_{j+1}(p)>2v_p(D_{j+1})\) gives a unit
+\(D_{j+1}\)-solution by one-variable Hensel.
+
+At a new coefficient prime \(Q\in\{q,r,s\}\),
+the imposed shells give
+\(v_\ell(Q-1)=v_\ell(n)\) for every
+\(\ell\mid n\). Every prime divisor of
+\(D_{j+1}\) not dividing \(n\) is at most
+\(j+J+1\le P\); its restriction (VX.12)
+excludes \(Q\equiv1\pmod\ell\). Therefore
+\[
+              \gcd(D_{j+1},Q-1)=n.
+ \tag{VX.17}
+\]
+The \(D_{j+1}\)-power and \(n\)-power images
+in \(\mathbb F_Q^\times\) are exactly equal.
+At \(q\), splitting in the first field
+(VX.10) makes \(c/b\) an \(n\)-th power;
+the new \(r\)- and \(s\)-factors are also
+\(n\)-th powers, so \(c'/b'\) is a
+\(D_{j+1}\)-th power modulo \(q\).
+Set \(X=Z=1\) and solve
+\(Y^{D_{j+1}}=(c'-a')/b'\) by simple-root
+Hensel. At \(r\), set \(Y=Z=1\) and use
+the split ratio \(c/a\). At \(s\), use
+the ratio \(-b/a\), the inverse of the
+third radicand. Each root is a unit and
+each derivative is a unit, since the new
+primes exceed \(P\ge B(D_{j+1})\).
+
+Every other prime exceeds \(B(D_{j+1})\)
+and all coefficients are units there.
+For completeness, with \(g=\gcd(D_{j+1},p-1)\),
+the Jacobi-sum count of nonzero solutions of
+\(\alpha X^{D_{j+1}}+\beta Y^{D_{j+1}}=1\)
+is at least
+\[
+ p-2-3(g-1)-(g-1)(g-2)\sqrt p>0.
+ \tag{VX.18}
+\]
+Here the trivial character pair contributes
+\(p-2\), the \(3(g-1)\) pairs with a
+trivial character or trivial product have
+absolute value one, and all remaining
+Jacobi sums have absolute value \(\sqrt p\).
+The inequality follows from
+\(p>(D_{j+1}+1)^4\) and \(g\le D_{j+1}\).
+The character identity follows by expanding
+the two indicators of power images, so it
+counts precisely the desired nonzero pairs: each power-image
+indicator has a factor \(1/g\), and each pair of image
+values has exactly \(g^2\) preimages, so these factors
+cancel.
+The usual Gauss-sum identity
+\(J(\chi,\psi)=G(\chi)G(\psi)/G(\chi\psi)\)
+and \(|G(\chi)|=\sqrt p\) prove the stated
+bound when all three characters are nontrivial;
+orthogonality gives the other terms.
+The point lifts by its unit coordinate
+derivatives. All places in (VX.9) have now
+been checked, completing the induction.
+
+\emph{The actual limits.}
+Every new exponent is divisible by \(Cn_j\).
+The three coefficient products and the
+products after dividing all exponents by
+\(C\) therefore converge in the global
+power completion: modulo any fixed power
+all sufficiently late factors are exactly
+trivial. For each fixed finite prime \(p\),
+its valuation in each coefficient becomes
+constant, and all later factors are units.
+Their exponents, divisible by growing
+factorials, eventually annihilate every
+finite quotient of \(\mathbb Z_p^\times\).
+Consequently the coefficient sequences
+converge in \(\mathbb Q_p^\times\) to
+ordinary nonzero \(a_p,b_p,c_p\).
+The precision in (VX.9) tends to infinity
+and eventually applies to this \(p\),
+so \(a_p+b_p=c_p\). Their ratios give
+the ordinary point \(t_p=a_p/c_p\),
+\(1-t_p=b_p/c_p\), with exactly the
+localized completed classes (VX.7).
+At the real place their signs are \((+,-)\),
+represented by the ordinary pair \((3,-2)\).
+Distinctness of all selected primes proves
+(VX.8) and infinite support. Dividing the
+convergent exponent products by \(C\)
+proves the stated global \(C\)-th power
+assertion. This completes the reconstructed
+arithmetic proof of A.66.
+\end{proof}

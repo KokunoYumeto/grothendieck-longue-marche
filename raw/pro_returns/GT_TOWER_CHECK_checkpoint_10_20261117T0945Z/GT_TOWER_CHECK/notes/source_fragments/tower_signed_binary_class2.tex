@@ -1,0 +1,206 @@
+% Exact new nonabelian target and source; pending result number and root review.
+\subsection{The signed exponent-four class-two target and its exact common source}
+
+Put $\Gamma=\Gamma_{0,5}$ and retain the actual signed period
+map $q:\Gamma\twoheadrightarrow Q_{192}$ on the five positive band
+words $(A_{13},A_{23},A_{14},A_{24},A_{34})$.  Write $N=\ker q$.
+Retain also the marked free groups $F_0\triangleleft B_0=C_2*C_3$,
+$K\triangleleft B_0$, and $J=K\cap(F_0'F_0^6)$ of A.4.60.
+Thus $K$ is free of rank $97$, $J$ is free of rank $289$,
+and $[B_0:J]=1728$.
+
+\begin{result}{A.4.62}{Proved}{The actual signed class-two target and its marked common source}
+The explicitly collected quotient
+\[
+ T_2=\Gamma/(\gamma_3(N)N^4)
+\tag{SBC.1}
+\]
+has order $192\cdot2^{4870}$.  Its normal kernel over $Q_{192}$
+has abelianization $C_4^{100}\times C_2^2$ and commutator subgroup
+$C_2^{4668}$.  Let $\iota_1,\ldots,\iota_8:F_0\to\Gamma$ be the
+same eight insertion maps as in (SVM.1).  Their exact common kernel is
+\[
+ \bigcap_{i=1}^8\ker(F_0\xrightarrow{\iota_i}\Gamma\to T_2)
+       =J\cap\bigl(\gamma_3(K)K^4\bigr).
+\tag{SBC.2}
+\]
+In particular it is normal in $B_0$.  The resulting actual common
+source has the order
+\[
+ \left|B_0/\bigl(J\cap\gamma_3(K)K^4\bigr)\right|
+        =1728\cdot 2^{4850}.
+\tag{SBC.3}
+\]
+Its image of $J$ is identified, by the inclusion $J\hookrightarrow K$
+and the maps in (SBC.2), with the free exponent-four class-two quotient
+$K/(\gamma_3(K)K^4)$, of order $4^{97}2^{4656}$.
+
+\end{result}
+
+\begin{proof}
+We first give the precise collection construction of the target.
+The six defining relations in the specified free-by-free presentation
+of $\Gamma$ lift along the positive-generator spanning tree in
+$Q_{192}$ to $1152$ actual relators in $769$ Schreier generators of $N$.
+The retained abelian map from these generators to
+$C_4^{100}\times C_2^2$ is the exact map of A.4.58, not a newly chosen
+linear quotient.  Its matrix $P$ is recorded with $102$ columns;
+its last two columns are interpreted modulo two.
+
+For clarity, the collecting group before imposing the remaining
+relations is the free exponent-four class-two group on $102$
+generators.  Its normal coordinates are
+\[
+ (v,z)\in(\mathbb Z/4)^{102}\times
+           (\mathbb F_2)^{\binom{102}{2}},\qquad
+ (v,z)(w,t)=(v+w,z+t+C(v,w)),
+\quad C(v,w)_{ij}=v_jw_i\pmod2\ (i<j).
+\tag{SBC.4}
+\]
+The inverse is $(-v,z+C(v,v))$.  The sign in collecting a commutator
+is immaterial modulo two, but the order of the normal factors is
+fixed by (SBC.4).  Every fourth power is one, and every commutator
+has order two.  Conversely, in any class-two exponent-four group,
+$[x,y]^4=1$ and $(xy)^4=x^4y^4[y,x]^6$ imply $[x,y]^2=1$;
+thus these are exactly the universal power relations.
+
+We keep the last two coordinates of $v$ modulo two and move their
+even parts to two explicit central square coordinates.  The resulting
+central list has dimension
+\[
+ 2+\binom{102}{2}=5153.
+\tag{SBC.5}
+\]
+This retains both squares; it does not divide by two in a coefficient
+ring.  The integer $v_j/2$ is used only when the selected even
+representative is $0$ or $2$ in $\mathbb Z/4$.
+
+Every lifted relator is central after the displayed abelian
+projection.  Collect it by (SBC.4), retaining both square entries,
+to obtain the matrix $B$ with $1152$ rows and $5153$ columns.
+Let $R$ be its literal exponent-sum matrix modulo two.  A central
+correction $Z_a$ of the image of a Schreier generator changes the
+relator column by $\sum_aR_{ra}Z_a$.  The exact simultaneous row
+reduction of $(R,B)$ has $667$ pivots in the first block.  Setting
+the corrections of its $102$ free generators to zero determines
+all pivot corrections, and leaves a $485$-row central matrix of
+rank exactly $485$.  Its projection onto the two square coordinates
+has rank two.  Hence the remaining commutator dimension is
+\[
+ 5151-(485-2)=4668,
+\tag{SBC.6}
+\]
+and the group order is $2^{202+4668}=2^{4870}$.
+
+Here is why this construction gives the full quotient in (SBC.1).
+In that quotient the selected $102$ original generators form a basis
+modulo the Frattini subgroup: their retained coefficient matrix is
+invertible modulo two.  They therefore generate the finite two-group.
+Their prescribed normal-coordinate values in (SBC.4) also form a
+Frattini basis and hence define an automorphism of the free group
+in the exponent-four class-two variety.  This changes coordinates
+so that their central corrections are exactly zero.  Every other
+original generator differs from its prescribed abelian word by an
+actual central commutator.  The relator equations for these corrections
+are precisely the simultaneous equations just reduced.  They force
+the displayed pivot corrections and all $485$ residual central
+relations.  Thus the constructed quotient and the universal quotient
+of $N$ map to one another, fixing the selected generators.  These
+maps are inverse.  This proves the target assertion, rather than
+only a lower bound obtained from one representation.
+
+The program \texttt{build\_signed\_binary\_class2.py} saves $P$, $R$,
+$B$, every pivot, the central relation reduction, all $769$ corrected
+generator images, and both square images.  It checks all $1152$
+relators after correction.  Its further multiplication checks use
+(SBC.4); no BCH denominator occurs.
+
+For the common source, let $\tau:J\to T_2^8$ be the eight literal
+insertions and let
+\[
+ \nu:J\hookrightarrow K\twoheadrightarrow
+               K_2:=K/(\gamma_3(K)K^4).
+\tag{SBC.7}
+\]
+Since $[K:J]=3$, the image of $J$ in the finite two-group $K_2$ has index dividing both three and a power of two; hence $\nu$ is onto.  The known abelian comparison gives the same actual map to $C_4^{97}$.
+The program \texttt{build\_binary\_eight\_source.py} evaluates all
+$8\cdot289=2312$ images of the recorded free Schreier generators
+$g_1,\ldots,g_{289}$ of $J$ by (SBC.4).  Their abelian projection
+is rechecked against the earlier matrix entry by entry.
+Choose the recorded $97$ indices $b_1,\ldots,b_{97}$ whose rows form
+a basis over $\mathbb Z/4$, and write $A_{ij}$ for the resulting
+basis coordinates of each $g_i$.  These choices are actual source
+words.  Define the actual central discrepancy
+\[
+ d_i=\tau(g_i)\left(\prod_{j=1}^{97}
+                    \tau(g_{b_j})^{A_{ij}}\right)^{-1},
+\tag{SBC.8}
+\]
+with the product in increasing $j$.
+All $4656$ commutators of the selected generators have independent
+images in the eight target central layers.  Each of the other
+$192$ discrepancies has a unique coordinate vector in these
+commutators.  Thus $\tau(J)$ is the free exponent-four class-two
+group on these $97$ actual images: its order is $4^{97}2^{4656}$,
+with no additional central factor.
+
+It remains to identify the kernel by the actual marked map, not
+merely by this order.  The program
+\texttt{check\_binary\_modular\_factor.py} independently rewrites all
+$289$ source words in the $97$ modular Schreier generators of $K$
+and collects them in $K_2$.  The $97$ selected words give an
+invertible matrix $S$ modulo two, so they generate $K_2$ by the
+finite two-group Frattini criterion.  They are a free basis in the
+same finite variety.  Their commutator coordinates are compared
+using the exact exterior-square transport: for an alternating
+coefficient matrix $D$ in the modular basis, its coordinate matrix
+in the selected basis is
+\[
+                  (S^{-1})^{\mathsf T}DS^{-1}\pmod2.
+\tag{SBC.9}
+\]
+All $289$ resulting discrepancy vectors agree with (SBC.8).
+Consequently the isomorphism $\theta:K_2\to\tau(J)$ sending
+$\nu(g_{b_j})$ to $\tau(g_{b_j})$ satisfies the literal equality
+\[
+                         \theta\circ\nu=\tau
+                    \quad\hbox{on }J.
+\tag{SBC.10}
+\]
+This proves equality of the kernels on $J$.  The joint eight-map
+period quotient of $F_0$ has kernel exactly $J$ and order $288$,
+so (SBC.10) proves (SBC.2) on the full source.  Both $J$ and $K$
+are the already verified normal subgroups of $B_0$;
+$\gamma_3(K)K^4$ is characteristic in $K$.  Hence no further
+normal-core assertion is needed.  Finally $\nu$ is onto by the
+selected Frattini basis, and its order gives (SBC.3).
+\end{proof}
+
+For the standard modular generators, the target map is also explicit.
+The two quotient maps identify $K/\bigl(J\cap\gamma_3(K)K^4\bigr)$
+with $C_3\times K_2$: they are onto and have coprime quotient orders.
+The proved equality $\theta\circ\nu=\tau$ identifies the following
+map with the extension $\theta:K_2\to\tau(J)$; its $i$th coordinate
+has image $\tau_i(J)$.  The inclusion of the two-primary factor gives
+\[
+ K_2\longrightarrow T_2^8,\qquad
+       \overline k\longmapsto
+       \bigl(\iota_i(k^3)^{-1}\bigr)_{i=1}^8.
+\tag{SBC.11}
+\]
+Indeed the original insertion on all of $K$ retains its $K/J$
+period coordinate; it is not itself identified with this new map.
+Cubing kills that $C_3$ coordinate and inversion after cubing is
+the identity on the exponent-four factor.  On $J$ the formula
+agrees with its literal insertion by (SBC.10) and exponent four.  The export
+\texttt{export\_binary\_modular\_actions.py} records this map on
+the $97$ standard modular Schreier words, their actual $s$- and
+$r$-conjugation words, and the resulting linear and central matrices.
+It independently verifies (SBC.11) on all $289$ original $J$ words.
+
+All four executed programs, their outputs, and their complete
+matrix certificates are in \texttt{work/tower\_nonabelian/}.
+Their input hashes and elapsed times are retained in the associated
+JSON files.  The result specifies a nonabelian finite target and its
+exact common source.  It asserts no lift of arbitrary finite frame
+coordinates and no completed genuine-source pentagon census.
