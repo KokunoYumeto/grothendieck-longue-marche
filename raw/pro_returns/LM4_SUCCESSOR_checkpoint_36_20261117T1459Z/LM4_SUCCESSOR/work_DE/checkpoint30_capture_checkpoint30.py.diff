@@ -1,0 +1,226 @@
+--- code/capture_checkpoint29.py
++++ code/capture_checkpoint30.py
+@@ -1,4 +1,8 @@
+-"""Create exactly one immutable checkpoint29 after its scheduled review."""
++"""Create exactly one immutable checkpoint30 after its scheduled review.
++
++Preparation alone must not execute this driver. It writes review records,
++refreshes retention and invokes the sole actual packager only when run.
++"""
+ from datetime import datetime, timezone
+ from pathlib import Path
+ import json
+@@ -6,60 +10,66 @@
+ import sys
+ import time
+ 
+-root = Path(__file__).resolve().parents[1]
+-deadline = datetime(2026, 11, 17, 5, 49, 30, tzinfo=timezone.utc)
+-archive = root.parent / 'LM4_SUCCESSOR_checkpoint_29.zip'
+-assert not archive.exists()
+-remaining = (deadline - datetime.now(timezone.utc)).total_seconds()
+-assert remaining <= 60, 'Start only within one minute of the scheduled review.'
+-while remaining > 0:
+-    time.sleep(min(.5, remaining))
++
++def main():
++    root = Path(__file__).resolve().parents[1]
++    deadline = datetime(2026, 11, 17, 6, 49, 30, tzinfo=timezone.utc)
++    next_review = '2026-11-17 07:49:30 UTC'
++    archive = root.parent / 'LM4_SUCCESSOR_checkpoint_30.zip'
++    assert not archive.exists()
+     remaining = (deadline - datetime.now(timezone.utc)).total_seconds()
+-now = datetime.now(timezone.utc)
+-subprocess.run([sys.executable, str(root / 'code/check_checkpoint29_preconditions.py')], check=True)
+-m = json.loads((root / 'records/checkpoint29_metrics.json').read_text())
+-research = (root / 'records/twenty_ninth_hour_research_report.md').read_text()
+-audit = (root / 'records/checkpoint29_computation_audit_state.md').read_text()
+-late = json.loads((root / 'records/checkpoint29_root_late_reviews.json').read_text())
+-review = f'''# Twenty-ninth-hour progress review
++    assert remaining <= 60, 'Start only within one minute before the scheduled review, or later.'
++    while remaining > 0:
++        time.sleep(min(.5, remaining))
++        remaining = (deadline - datetime.now(timezone.utc)).total_seconds()
++    subprocess.run([sys.executable, str(root / 'code/check_checkpoint30_preconditions.py')], check=True)
++    now = datetime.now(timezone.utc)
++    read = lambda rel: json.loads((root / rel).read_text())
++    m = read('records/checkpoint30_metrics.json')
++    visual = read('records/checkpoint30_visual_review.json')
++    research = (root / 'records/thirtieth_hour_research_report.md').read_text()
++    audit = (root / 'records/checkpoint30_computation_audit_state.md').read_text()
++    late = read('records/checkpoint30_root_late_reviews.json')
++    review = f'''# Thirtieth-hour progress review
+ 
+-Scheduled review:2026-11-17 05:49:30 UTC.
++Scheduled review:2026-11-17 06:49:30 UTC.
+ Actual review record: {now.isoformat()}.
+ Decision: CONTINUE.
+ 
+-Both main decisions remain Open. New substantive work gives the actual
+-full Alexander coefficient test, the canonical congruence modulo8,
+-the full-GT dyadic comparison and its remaining odd-head criterion,
+-and exact obstructions to sections of the actual coarse filling.
+-The unrestricted obstruction retains arbitrary lifts and is detected
+-by eight exact first-order equations, with a genuine finite mod3 route
+-for the full completion. Faithful regional graph kernels, an exact
+-ordinary cyclic retraction, its explicit ambient discontinuity, and the
+-whole cyclic mixed-square recurrence further sharpen the filling gate.
+-These are concrete new comparisons, not formalization alone. Neither
+-local progress nor nonsplitting settles the final fixed-source equality
+-or the actual icosahedral K=1 decision.
++Both main decisions remain Open. The nine frozen formal sources A89--A91
++and B142--B147 retain the actual full-GT and marked covariance hypotheses,
++the unrestricted and virtual coarse-filling nonsplitting proofs, the
++exact one-family fixed-source presentation, and the complete cyclic
++normalization/carrier and prescribed-center nonextension arguments.
++The exact current research and remaining gates are recorded below.
++No carrier properness, quotient comparison or nonsplitting obstruction
++is substituted for actual filling survival or the icosahedral K=1 gate.
+ 
+-The formal paper has551 pages and314 statements:270 Proved,19 Refuted,
+-19 Open and6 Known. All49 task/lead rows and114 bibliography entries are
+-retained; all114 references are printed. The six new frozen formal
+-sources are byte-identical to their fully reviewed inputs. Final PDF
+-SHA-256:{m['pdf_sha256']}.
+-All24 new mathematical pages were individually inspected;30 final pages
+-in total were individually viewed, and five separate contact sheets
+-cover39 rendered pages. Final log and actual stabilized engine stdout
+-have no overfull boxes, actual warnings, undefined references or errors.
+-Their18 pre-existing underfull notices are unchanged by exact multiset.
+-The separate late record binds{len(late['proof_sources'])} complete
+-research proofs without increasing the frozen formal statement count.
++The formal paper has {m['pages']} pages and323 statements:279 Proved,
++19 Refuted,19 Open and6 Known. All49 task/lead rows and114 bibliography
++entries are retained; all114 references are printed. All nine integrated
++formal sources are byte-identical to their fully reviewed inputs.
++Final PDF bytes:{m['pdf_bytes']}; SHA-256:{m['pdf_sha256']}.
++All {len(visual['required_math_pages'])} new mathematical pages were
++individually inspected; {len(visual['individually_inspected_pages'])}
++final pages were individually viewed and
++{visual['contact_sheets_inspected']} separately inspected contact sheets
++cover {len(visual['rendered_pages'])} rendered pages at144dpi.
++Final log and stabilized engine stdout have no overfull boxes, actual
++warnings, undefined references or errors. The18 retained underfull
++notices and one new visually accepted B147 notice total19; this change
++is documented rather than described as unchanged.
++The late record binds {len(late['proof_sources'])} complete research
++proofs without increasing the frozen formal statement count.
+ 
+-All105724 logical entries of the28 previous immutable archives are
+-retained byte-exactly with zero omissions. Every original image and
+-historical or preview PDF path and byte is retained in standard TAR
+-containers using lossless ZIP_LZMA. The current main PDF remains a
+-direct ZIP entry. We create no test ZIP and change no earlier archive.
+-Independent native restoration of both actual new containers follows
+-capture.
++All114462 logical entries of the29 previous immutable archives are
++retained byte-exactly with zero omissions. Original image, historical
++or preview PDF, and selected historical/data paths retain their exact
++bytes in three standard TAR containers using lossless ZIP_LZMA. The data
++container uses a standard64MiB dictionary; the current main PDF remains
++a direct ZIP entry. No test ZIP is created and no prior archive is changed.
++After capture, the actual ZIP data-stream property and independent native
++restoration of all three containers must pass before delivery recording.
+ 
+ {research}
+ 
+@@ -67,53 +77,56 @@
+ 
+ {audit}
+ 
+-Next hourly review/checkpoint:2026-11-17 06:49:30 UTC.
++Next hourly review/checkpoint:{next_review}.
+ Resume substantive research immediately after immutable capture closes.
+ '''
+-(root / 'records/progress_review_29h.md').write_text(review)
+-p = root / 'LM4_SUCCESSOR_report.md'
+-s = p.read_text()
+-assert '## Twenty-ninth-hour progress review\n' not in s
+-s += f'''
+-## Twenty-ninth-hour progress review
++    review_path = root / 'records/progress_review_30h.md'
++    assert not review_path.exists(), 'Preserve any previous driver attempt for review.'
++    report_path = root / 'LM4_SUCCESSOR_report.md'
++    report = report_path.read_text()
++    continuation_path = root / 'records/continuation_state.md'
++    continuation = continuation_path.read_text()
++    assert '## Thirtieth-hour progress review\n' not in report
++    assert '## Actual thirtieth-hour review\n' not in continuation
++    review_path.write_text(review)
++    report_path.write_text(report + f'''
++## Thirtieth-hour progress review
+ 
+-At {now.isoformat()} we recorded CONTINUE. A87/A88 and B138--B141
+-are integrated with complete root and independent proof reviews.
+-Subsequent complete research includes the actual hexagon coefficient
+-identity, full-GT dyadic/odd-head reduction, and unrestricted ordinary
+-and compact nonsplitting of the actual coarse filling, together with
+-the precise center-line and mixed-square comparisons. Exact latest
+-scopes and any further reviewed consequences are in the bound late
+-record and research report. No local, quotient, or nonsplitting result
+-is substituted for the final ambient fixed-source comparison. Both
+-main decisions remain Open. The frozen formal baseline is314 statements,
+-551 pages,114 printed references and49 synchronized task rows.
+-Next review:2026-11-17 06:49:30 UTC.
+-'''
+-p.write_text(s)
+-p = root / 'records/continuation_state.md'
+-p.write_text(p.read_text() + f'''
+-## Actual twenty-ninth-hour review
++At {now.isoformat()} we recorded CONTINUE. The nine sources A89--A91 and
++B142--B147 are integrated with complete root and independent source
++reviews. Exact latest research, failure records and limits are bound in
++the late review and research report. Both main decisions remain Open.
++The frozen formal baseline is323 statements, {m['pages']} pages,
++114 printed references and49 synchronized task rows. The sole new
++archive retains all29 predecessors through three lossless standard TAR
++containers; its actual streams and every restored path will be checked.
++Next review:{next_review}.
++''')
++    continuation_path.write_text(continuation + f'''
++## Actual thirtieth-hour review
+ 
+ CONTINUE recorded at {now.isoformat()}. All writers are paused for this
+ single immutable capture. Release all three immediately when the archive
+-closes, before verification or upload; then verify all entries and both
+-native TAR restorations, save, and deliver in commentary. Both main
+-decisions remain Open. The frozen formal baseline is314 statements,
+-551 pages,114 printed references and49 task rows. Continue the actual
+-odd-head/nonlinear cusp gate under its exact GT hypotheses and the
+-remaining fixed-kernel and complete mixed-filling/source comparisons.
+-The actual coarse extension has no section, so subsequent work must
+-retain its nonsplit extension structure.
+-Next review/checkpoint:2026-11-17 06:49:30 UTC.
++closes, before verification or upload; then verify every logical entry,
++all three native TAR restorations and the actual64MiB data stream, save,
++and deliver in commentary. Both main decisions remain Open. The frozen
++formal baseline is323 statements, {m['pages']} pages,114 printed references
++and49 task rows. Continue the exact odd-head/nonlinear cusp and actual
++ambient filling/fixed-source gates with every conjugator and source orbit.
++Next review/checkpoint:{next_review}.
+ ''')
+-print('Timed twenty-ninth-hour review:', now.isoformat(), 'CONTINUE', flush=True)
+-subprocess.run([sys.executable, str(root / 'code/refresh_computation_inventory.py')], check=True)
+-with (root / 'records/checkpoint_version_retention_run.out').open('w') as stream:
+-    subprocess.run([sys.executable, str(root / 'code/preserve_checkpoint_versions.py')], stdout=stream, check=True)
+-retention = json.loads((root / 'records/checkpoint_version_retention_summary.json').read_text())
+-assert retention['archives'] == 28 and retention['archive_entries'] == 105724
+-assert retention['omissions'] == 0
+-subprocess.run([sys.executable, str(root / 'code/package_checkpoint.py'), '29'], check=True)
+-assert archive.stat().st_size <= 536870912, 'Never mutate an already captured archive.'
+-print('Immutable capture completed:', datetime.now(timezone.utc).isoformat(), flush=True)
++    print('Timed thirtieth-hour review:', now.isoformat(), 'CONTINUE', flush=True)
++    subprocess.run([sys.executable, str(root / 'code/refresh_computation_inventory.py')], check=True)
++    with (root / 'records/checkpoint30_version_retention_run.out').open('x') as stream:
++        subprocess.run([sys.executable, str(root / 'code/preserve_checkpoint_versions.py')],
++                       stdout=stream, check=True)
++    retention = read('records/checkpoint_version_retention_summary.json')
++    assert retention['archives'] == 29 and retention['archive_entries'] == 114462
++    assert retention['omissions'] == 0
++    subprocess.run([sys.executable, str(root / 'code/package_checkpoint.py'), '30'], check=True)
++    assert archive.stat().st_size <= 536870912, 'Never mutate an already captured archive.'
++    print('Immutable capture completed:', datetime.now(timezone.utc).isoformat(), flush=True)
++
++
++if __name__ == '__main__':
++    main()

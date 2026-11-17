@@ -1,0 +1,11 @@
+# Independent entire-source review: exact prospective image256 measurement
+
+Reviewer: /root/involutions. Result: PASS_COMPLETE_SOURCE_REVIEW.
+
+I read the whole final measurement33fe2d1d, the complete proposed256-MiB modulee6019666 and its full128-to-256 diff, then reopened the complete deterministic standard-TAR constructor for the stream comparison. Final hashes and manifest bytes are bound in the companion JSON. The initial pre-tail-check source is preserved and is not the approved final producer.
+
+The source pins the actual35 baseline and current128 estimator, packager and dictionary helpers. It reads the single actual prospective-image record from the live estimator output and reconstructs exactly the same sorted current and predicted historical PNG set. Every changed parent image is checked against the archived size/hash; existing historical collisions must agree. First it emits the entire standard PAX TAR to a counting/hash/CRC sink without compression and requires every metric,606720000 bytes and SHA936dfe5a59bff2c3c93380d033c0c9b70160d20163c502b319423da1267f8b7d, to equal the live reference. Only then is the sole candidate encoder instantiated.
+
+The second deterministic pass checks every source identity and hard-link collision again, feeds one256-MiB ZIP method14 encoder, and immediately feeds its complete output to an independent standard decoder. Input/output byte counts, SHA256, CRC32, decoder EOF, no trailing compressed bytes and the exact256-MiB method14 properties must all agree. The candidate compression size/hash is measured, not inferred. Source pins and baseline identity are checked again. The streaming design does not retain a complete TAR in memory or on disk; it may retain only the changed archived PNG bytes needed for history. The proposed module retains standard framing and restores its temporary compressor replacement in a finally clause.
+
+No128 stream is reencoded, no document/data compressor is substituted, no ZIP/TAR file is created, and no installed helper is modified by this source. Any final accounting must bind the actual completed document/data measurements separately and retain the original128 estimate. This review does not preclaim a successful run, gain or final capture size. No reviewed helper was imported or executed by this reviewer.

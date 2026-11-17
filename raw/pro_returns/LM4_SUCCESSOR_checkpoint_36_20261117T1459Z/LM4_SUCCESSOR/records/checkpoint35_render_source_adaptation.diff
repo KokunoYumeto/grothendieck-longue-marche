@@ -1,0 +1,75 @@
+--- code/render_checkpoint34_pdf.py
++++ code/render_checkpoint35_pdf.py
+@@ -1,6 +1,6 @@
+-"""Render final34 PDF pages selected from actual headings; no visual approval.
++"""Render final35 PDF pages selected from actual headings; no visual approval.
+ 
+-Checkpoint34 source. Run only after the final build and fresh metrics have
++Checkpoint35 source. Run only after the final build and fresh metrics have
+ completed. This helper never builds a PDF or changes the paper/register.
+ """
+ from pathlib import Path
+@@ -46,17 +46,17 @@
+     args = parser.parse_args()
+     root = args.root.resolve()
+     pdf_path = root / 'LM4_SUCCESSOR_paper.pdf'
+-    metrics_path = root / 'records/checkpoint34_metrics.json'
++    metrics_path = root / 'records/checkpoint35_metrics.json'
+     metrics_raw = metrics_path.read_bytes()
+     metrics = json.loads(metrics_raw)
+     pdf_bytes = pdf_path.read_bytes()
+     pdf_sha = sha(pdf_bytes)
+-    require(pdf_sha == metrics['pdf_sha256'], 'Final PDF does not match fresh34 metrics')
++    require(pdf_sha == metrics['pdf_sha256'], 'Final PDF does not match fresh35 metrics')
+ 
+     doc = fitz.open(stream=pdf_bytes, filetype='pdf')
+-    require(len(doc) == metrics['pages'], 'Final page count differs from34 metrics')
++    require(len(doc) == metrics['pages'], 'Final page count differs from35 metrics')
+     texts = [page.get_text() for page in doc]
+-    labels = [f'A.{n}' for n in range(106, 112)] + [f'B.{n}' for n in range(165, 167)]
++    labels = [f'A.{n}' for n in range(112, 120)] + [f'B.{n}' for n in range(167, 169)]
+     headings = {}
+     for label in labels:
+         hits = statement_pages(texts, label)
+@@ -65,15 +65,15 @@
+     require(list(headings.values()) == sorted(headings.values()),
+             'New statement headings are not in their actual paper order')
+ 
+-    a_start = headings['A.106']
++    a_start = headings['A.112']
+     a_end = boundary_page(texts, a_start, 'B', 'B.1')
+-    b_start = headings['B.165']
++    b_start = headings['B.167']
+     b_end = boundary_page(texts, b_start, 'C', 'C.1')
+-    require(a_start <= headings['A.111'] <= a_end < b_start <= headings['B.166'] <= b_end,
++    require(a_start <= headings['A.119'] <= a_end < b_start <= headings['B.168'] <= b_end,
+             'Actual new-section intervals are inconsistent')
+     # Inclusive final boundary pages conservatively retain a shared-page tail.
+-    intervals = {'A106_through_A111': [a_start, a_end],
+-                 'B165_through_B166': [b_start, b_end]}
++    intervals = {'A112_through_A119': [a_start, a_end],
++                 'B167_through_B168': [b_start, b_end]}
+     required = sorted(set(range(a_start, a_end + 1)) | set(range(b_start, b_end + 1)))
+     reference_hits = [i + 1 for i, text in enumerate(texts)
+                       if re.search(r'(?m)^\s*References\s*$', text)]
+@@ -86,9 +86,9 @@
+     pages = sorted({n for n in front + required + boundaries + references + [len(doc)]
+                     if 1 <= n <= len(doc)})
+ 
+-    out = root / 'records/pdf_qa/checkpoint34_final'
++    out = root / 'records/pdf_qa/checkpoint35_final'
+     require(not out.exists() or not any(out.iterdir()),
+-            'Preserve the existing34 render directory before a new final render')
++            'Preserve the existing35 render directory before a new final render')
+     out.mkdir(parents=True, exist_ok=True)
+     for n in pages:
+         doc[n - 1].get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False).save(
+@@ -121,7 +121,7 @@
+         'front_matter_pages': front, 'references_start_page': reference_start,
+         'rendered_pages': pages, 'contact_sheets': len(contact_names),
+         'contact_files': contact_names, 'contact_page_capacity': 9,
+-        'scope': 'Final combined PDF only. Entire actual A106-A111 and B165-B166 intervals, inclusive boundary pages, front1-7, all References pages, and final document page.',
++        'scope': 'Final combined PDF only. Entire actual A112-A119 and B167-B168 intervals, inclusive boundary pages, front1-7, all References pages, and final document page.',
+         'visual_approval': False,
+         'approval_scope': 'Rendering is not visual inspection or approval. Every required page still needs individual review.',
+     }

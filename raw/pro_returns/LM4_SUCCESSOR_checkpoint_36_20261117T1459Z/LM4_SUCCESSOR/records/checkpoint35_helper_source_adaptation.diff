@@ -1,0 +1,533 @@
+--- preserve_checkpoint34_versions_inductive.py
++++ preserve_checkpoint35_versions_inductive.py
+@@ -1,9 +1,9 @@
+-"""Retain parent33 and compose its freshly verified historical map.
+-
+-This separate34 helper adapts the reviewed33 source; that source is unchanged.
+-No archive1-32 is opened. The trust base is the explicit, pinned, previously
+-verified parent33 coverage certificate. Publication requires --commit and
+-all three mutable records still equal their archived parent33 bytes.
++"""Retain parent34 and compose its freshly verified historical map.
++
++This separate35 helper adapts the reviewed34 source; that source is unchanged.
++No archive1-33 is opened. The trust base is the explicit, pinned, previously
++verified parent34 coverage certificate. Publication requires --commit and
++all three mutable records still equal their archived parent34 bytes.
+ """
+ from pathlib import Path, PurePosixPath
+ from datetime import datetime, timezone
+@@ -138,8 +138,8 @@
+     raw = path.read_bytes()
+     anchor = json.loads(raw)
+     require(anchor['schema'] == 'checkpoint-inductive-anchor-v1', 'Wrong anchor schema')
+-    require(anchor['parent_number'] == 33 and anchor['child_number'] == 34,
+-            'This helper is bound specifically to33->34')
++    require(anchor['parent_number'] == 34 and anchor['child_number'] == 35,
++            'This helper is bound specifically to34->35')
+     require(parent.name == anchor['archive'], 'Wrong parent archive name')
+     require(parent.stat().st_size == anchor['archive_bytes'] and
+             file_sha(parent) == anchor['archive_sha256'], 'Parent archive identity failure')
+@@ -169,7 +169,7 @@
+         require(key not in keys, 'Duplicate historical logical key: ' + repr(key))
+         keys.add(key)
+         cp = int(row['checkpoint'])
+-        require(1 <= cp <= 32 and row['archive'] == f'LM4_SUCCESSOR_checkpoint_{cp:02d}.zip',
++        require(1 <= cp <= 33 and row['archive'] == f'LM4_SUCCESSOR_checkpoint_{cp:02d}.zip',
+                 'Incorrect historical archive identity')
+         target = metadata.get(relative(row['retained_path']))
+         require(target == {'bytes': int(row['bytes']), 'sha256': row['sha256']},
+@@ -208,13 +208,13 @@
+     args = parser.parse_args()
+     require(args.commit, 'No publication without explicit --commit')
+     root = args.root.resolve()
+-    parent = args.parent or root.parent / 'LM4_SUCCESSOR_checkpoint_33.zip'
+-    anchor_path = args.anchor or root / 'records/checkpoint34_retention_parent_anchor.json'
++    parent = args.parent or root.parent / 'LM4_SUCCESSOR_checkpoint_34.zip'
++    anchor_path = args.anchor or root / 'records/checkpoint35_retention_parent_anchor.json'
+     anchor, anchor_raw = load_anchor(anchor_path, parent)
+     reader_pin = anchor['pinned_files']['code/checkpoint_archive_io.py']
+     reader_source = Path(__file__).with_name('checkpoint_archive_io.py').read_bytes()
+     require(len(reader_source) == reader_pin['bytes'] and sha(reader_source) == reader_pin['sha256'],
+-            'Archive reader differs from pinned reviewed33 reader')
++            'Archive reader differs from pinned reviewed34 reader')
+     plan, copies = {}, {}
+ 
+     def choose(rel, data, meta):
+@@ -222,7 +222,7 @@
+         if rel not in REWRITTEN and active.is_file() and active.read_bytes() == data:
+             target, mode = rel, 'active-identical'
+         else:
+-            target = f'checkpoint_history/checkpoint_33/{rel}'
++            target = f'checkpoint_history/checkpoint_34/{rel}'
+             path = local(root, target)
+             if path.exists():
+                 require(path.is_file() and path.read_bytes() == data,
+@@ -234,8 +234,8 @@
+         plan[rel] = {'original_path': rel, 'bytes': meta['bytes'],
+                      'sha256': meta['sha256'], 'retained_path': target, 'retention': mode}
+ 
+-    map_path = 'records/checkpoint34_parent_entry_map.csv'
+-    certificate_path = 'records/checkpoint34_inductive_retention.json'
++    map_path = 'records/checkpoint35_parent_entry_map.csv'
++    certificate_path = 'records/checkpoint35_inductive_retention.json'
+     require(not local(root, map_path).exists() and not local(root, certificate_path).exists(),
+             'This capture already has inductive publication records; no blind rerun')
+     with CheckpointReader(parent) as reader:
+@@ -243,22 +243,22 @@
+         # Critical no-loss guard: do not overwrite an unarchived current version.
+         for rel in REWRITTEN:
+             require(local(root, rel).read_bytes() == pinned[rel],
+-                    'Current mutable record differs from archived33; preserve it separately first: ' + rel)
++                    'Current mutable record differs from archived34; preserve it separately first: ' + rel)
+         inherited = []
+         for row in old:
+             new = dict(row)
+             new['retained_path'] = plan[row['retained_path']]['retained_path']
+-            new['retention'] = 'inductive-parent33'
++            new['retention'] = 'inductive-parent34'
+             inherited.append(new)
+         require(identities(inherited) == identities(old), 'Historical identity tuple was altered')
+-        added = [dict(checkpoint='33', archive=parent.name, original_path=rel,
++        added = [dict(checkpoint='34', archive=parent.name, original_path=rel,
+                       bytes=str(meta['bytes']), sha256=meta['sha256'],
+                       retained_path=plan[rel]['retained_path'],
+                       retention=plan[rel]['retention'], omission_reason='')
+                  for rel, meta in sorted(metadata.items())]
+         rows = inherited + added
+-        require(len(rows) == 152653 and len(plan) == 10053,
+-                'Expected exact33->34 coverage cardinality not met')
++        require(len(rows) == 163040 and len(plan) == 10387,
++                'Expected exact34->35 coverage cardinality not met')
+         for target, data in copies.items():
+             atomic_write(local(root, target), data)
+         # Every parent payload is compared byte-for-byte with its future retained target.
+@@ -272,26 +272,26 @@
+         history = root / 'checkpoint_history'
+         historical = [p for p in history.rglob('*') if p.is_file() and p != history / 'README.md']
+         now = datetime.now(timezone.utc).isoformat()
+-        summary = dict(recorded_at=now, archives=33, archive_entries=len(rows), omissions=0,
++        summary = dict(recorded_at=now, archives=34, archive_entries=len(rows), omissions=0,
+                        new_historical_copies=len(copies),
+                        new_historical_bytes=sum(map(len, copies.values())),
+                        total_historical_copies=len(historical),
+                        total_historical_bytes=sum(p.stat().st_size for p in historical),
+-                       audit='Every historical logical key and every parent33 payload is retained.',
+-                       method='Pinned parent33 identity plus exact inherited-map composition.',
++                       audit='Every historical logical key and every parent34 payload is retained.',
++                       method='Pinned parent34 identity plus exact inherited-map composition.',
+                        scope='Durable checkpoints only; no unarchived lost payload is certified.')
+         readme = ("# Exact prior checkpoint versions\n\n"
+                   "The authoritative index is records/checkpoint_version_retention.csv.\n"
+                   "Every historical logical key remains a distinct row, even when equal bytes share storage.\n"
+-                  "Checkpoint34 composes the pinned, previously verified33 historical map with a\n"
+-                  "total byte-checked map on EVERY logical33 entry, including its manifests and maps.\n"
+-                  "The proof record is records/checkpoint34_inductive_retention.json.\n"
++                  "Checkpoint35 composes the pinned, previously verified34 historical map with a\n"
++                  "total byte-checked map on EVERY logical34 entry, including its manifests and maps.\n"
++                  "The proof record is records/checkpoint35_inductive_retention.json.\n"
+                   "Historical sources are not inputs to the current paper or register.\n"
+                   "Unarchived lost versions are not asserted to have been recovered.\n").encode()
+         map_data = csv_bytes([plan[k] for k in sorted(plan)], MAP_FIELDS)
+         index_data = csv_bytes(rows, FIELDS)
+         certificate = dict(schema='checkpoint-inductive-retention-v1', recorded_at=now,
+-                           adapted_from_reviewed_checkpoint33_source=True, parent_number=33, child_number=34,
++                           adapted_from_reviewed_checkpoint34_source=True, parent_number=34, child_number=35,
+                            parent_archive=parent.name, parent_archive_bytes=parent.stat().st_size,
+                            parent_archive_sha256=anchor['archive_sha256'], anchor_sha256=sha(anchor_raw),
+                            inherited_rows=len(old), parent_logical_entries=len(plan),
+@@ -301,7 +301,7 @@
+                            summary_sha256=sha(json_bytes(summary)), readme_sha256=sha(readme),
+                            validation='Pinned parent, complete manifest/bundles, all inherited tuples, and exact target bytes PASS.',
+                            earlier_archives_opened=[],
+-                           limitation='Historical coverage1-32 is the explicitly pinned trusted induction base, not a fresh re-read.')
++                           limitation='Historical coverage1-33 is the explicitly pinned trusted induction base, not a fresh re-read.')
+         atomic_write(local(root, map_path), map_data)
+         atomic_write(local(root, REWRITTEN[0]), index_data, replace=True)
+         atomic_write(local(root, REWRITTEN[1]), json_bytes(summary), replace=True)
+--- verify_checkpoint34_inductive_retention.py
++++ verify_checkpoint35_inductive_retention.py
+@@ -1,7 +1,7 @@
+-"""Independently verify the CLOSED34 induction step.
++"""Independently verify the CLOSED35 induction step.
+ 
+-Reads only immutable parent33 and child34 archives, plus the pinned anchor;
+-never trusts the current mutable retention table. No archive1-32 is opened.
++Reads only immutable parent34 and child35 archives, plus the pinned anchor;
++never trusts the current mutable retention table. No archive1-33 is opened.
+ The shared reader/validation routines have no import-time mutation.
+ """
+ from pathlib import Path
+@@ -9,7 +9,7 @@
+ import json
+ 
+ from checkpoint_archive_io import CheckpointReader, PREFIX
+-from preserve_checkpoint34_versions_inductive import (
++from preserve_checkpoint35_versions_inductive import (
+     ROOT, REWRITTEN, MAP_FIELDS, require, sha, file_sha, relative, csv_rows,
+     identities, tuple_sha, load_anchor, checked_parent, checked_archive,
+ )
+@@ -17,26 +17,26 @@
+ 
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('--archive', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_34.zip')
+-    parser.add_argument('--parent', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_33.zip')
+-    parser.add_argument('--anchor', type=Path, default=ROOT / 'records/checkpoint34_retention_parent_anchor.json')
++    parser.add_argument('--archive', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_35.zip')
++    parser.add_argument('--parent', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_34.zip')
++    parser.add_argument('--anchor', type=Path, default=ROOT / 'records/checkpoint35_retention_parent_anchor.json')
+     args = parser.parse_args()
+     require(args.archive.resolve() != args.parent.resolve(), 'Child is the parent archive')
+     anchor, anchor_raw = load_anchor(args.anchor, args.parent)
+     with CheckpointReader(args.parent) as parent:
+         parent_meta, old, _ = checked_parent(parent, anchor)
+     with CheckpointReader(args.archive) as child:
+-        child_meta = checked_archive(child, 34)
+-        archived_anchor = child.read(PREFIX + 'records/checkpoint34_retention_parent_anchor.json')
++        child_meta = checked_archive(child, 35)
++        archived_anchor = child.read(PREFIX + 'records/checkpoint35_retention_parent_anchor.json')
+         require(archived_anchor == anchor_raw, 'Child does not retain the exact pinned anchor')
+-        cert = json.loads(child.read(PREFIX + 'records/checkpoint34_inductive_retention.json'))
++        cert = json.loads(child.read(PREFIX + 'records/checkpoint35_inductive_retention.json'))
+         require(cert['schema'] == 'checkpoint-inductive-retention-v1' and
+-                cert['parent_number'] == 33 and cert['child_number'] == 34,
++                cert['parent_number'] == 34 and cert['child_number'] == 35,
+                 'Wrong induction certificate')
+         require(cert['parent_archive_sha256'] == anchor['archive_sha256'] and
+                 cert['parent_archive_bytes'] == anchor['archive_bytes'] and
+                 cert['anchor_sha256'] == sha(anchor_raw), 'Certificate parent/anchor differs')
+-        map_data = child.read(PREFIX + 'records/checkpoint34_parent_entry_map.csv')
++        map_data = child.read(PREFIX + 'records/checkpoint35_parent_entry_map.csv')
+         require(sha(map_data) == cert['parent_entry_map_sha256'], 'Map hash mismatch')
+         mapping_rows = csv_rows(map_data)
+         mapping = {}
+@@ -50,13 +50,13 @@
+             require(child_meta.get(target) == parent_meta[rel],
+                     'Child target bytes do not retain the parent payload: ' + rel)
+             mapping[rel] = row
+-        require(set(mapping) == set(parent_meta) and len(mapping) == 10053,
+-                'Parent-entry map is not total on all logical33 entries')
++        require(set(mapping) == set(parent_meta) and len(mapping) == 10387,
++                'Parent-entry map is not total on all logical34 entries')
+         index_data = child.read(PREFIX + REWRITTEN[0])
+         require(sha(index_data) == cert['retention_csv_sha256'], 'Retention index hash mismatch')
+         rows = csv_rows(index_data)
+-        require(len(rows) == 152653 and cert['resulting_rows'] == 152653 and
+-                cert['inherited_rows'] == 142600 and cert['parent_logical_entries'] == 10053 and
++        require(len(rows) == 163040 and cert['resulting_rows'] == 163040 and
++                cert['inherited_rows'] == 152653 and cert['parent_logical_entries'] == 10387 and
+                 cert['omissions'] == 0, 'Wrong induction cardinalities')
+         inherited, added = rows[:len(old)], rows[len(old):]
+         require(identities(inherited) == identities(old) and
+@@ -67,13 +67,13 @@
+                     'Inherited map is not the exact composition')
+         require({r['original_path'] for r in added} == set(parent_meta) and
+                 len({r['original_path'] for r in added}) == len(added),
+-                'New33 rows do not cover exactly the parent entries')
++                'New34 rows do not cover exactly the parent entries')
+         for row in added:
+-            require(row['checkpoint'] == '33' and row['archive'] == args.parent.name,
++            require(row['checkpoint'] == '34' and row['archive'] == args.parent.name,
+                     'Wrong new historical archive key')
+             item = mapping[row['original_path']]
+             require(int(row['bytes']) == int(item['bytes']) and row['sha256'] == item['sha256'] and
+-                    row['retained_path'] == item['retained_path'], 'New33 row differs from parent map')
++                    row['retained_path'] == item['retained_path'], 'New34 row differs from parent map')
+         keys = set()
+         for row in rows:
+             key = (row['checkpoint'], row['archive'], relative(row['original_path']))
+@@ -85,7 +85,7 @@
+         for rel, key in ((REWRITTEN[1], 'summary_sha256'), (REWRITTEN[2], 'readme_sha256')):
+             require(sha(child.read(PREFIX + rel)) == cert[key], 'Published record hash mismatch')
+         summary = json.loads(child.read(PREFIX + REWRITTEN[1]))
+-        require(summary['archives'] == 33 and summary['archive_entries'] == len(rows) and
++        require(summary['archives'] == 34 and summary['archive_entries'] == len(rows) and
+                 summary['omissions'] == 0, 'Closed child summary disagrees')
+     report = dict(schema='checkpoint-inductive-closed-verification-v1',
+                   archive=args.archive.name, bytes=args.archive.stat().st_size,
+--- estimate_checkpoint34_size.py
++++ estimate_checkpoint35_size.py
+@@ -1,9 +1,9 @@
+-"""Conservative actual-byte checkpoint34 estimate; never creates a ZIP.
++"""Conservative actual-byte checkpoint35 estimate; never creates a ZIP.
+ 
+ Run only after root confirms final renders. It snapshots current authored
+-bytes, predicts all changed checkpoint33 logical bytes at historical paths,
++bytes, predicts all changed checkpoint34 logical bytes at historical paths,
+ then builds/compresses the exact three prospective standard-TAR buckets.
+-Old changed direct costs remain in the baseline as a deliberate overcount.
++Old changed direct costs remain conservatively, except the proved direct-to-document migration of the old main PDF.
+ """
+ from pathlib import Path
+ from datetime import datetime, timezone
+@@ -19,7 +19,7 @@
+ from checkpoint_data_tar import is_data_bundle_member, DataLZMACompressor, DATA_DICTIONARY_BYTES
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-ARCHIVE = ROOT.parent / 'LM4_SUCCESSOR_checkpoint_33.zip'
++ARCHIVE = ROOT.parent / 'LM4_SUCCESSOR_checkpoint_34.zip'
+ PREFIX = 'LM4_SUCCESSOR/'
+ CONTAINERS = ('verification_images.tar', 'historical_documents.tar', 'historical_data.tar')
+ ALLOWANCE = 5_000_000
+@@ -81,7 +81,7 @@
+ 
+ def main():
+     started = datetime.now(timezone.utc)
+-    target = ROOT/'records/checkpoint34_size_estimate.json'
++    target = ROOT/'records/checkpoint35_size_estimate.json'
+     assert not target.exists(), 'Preserve any preceding estimate before rerunning'
+     print('Snapshotting current authored bytes after final render completion', flush=True)
+     prospective = {}
+@@ -92,9 +92,10 @@
+     predicted_history = []
+     removed_containers = {}
+     removed_direct_data = []
++    removed_direct_main_pdf = None
+     old = {}
+     with CheckpointReader(ARCHIVE) as prior:
+-        manifest_name = PREFIX+'records/checkpoint_33_contents_sha256.tsv'
++        manifest_name = PREFIX+'records/checkpoint_34_contents_sha256.tsv'
+         manifest_data = prior.read(manifest_name)
+         rows = list(csv.DictReader(io.StringIO(manifest_data.decode()), delimiter='\t'))
+         old = {row['path']: row for row in rows}
+@@ -122,12 +123,23 @@
+                 continue
+             data = prior.read(PREFIX+rel)
+             assert len(data) == int(row['bytes']) and digest(data) == row['sha256']
+-            historical = 'checkpoint_history/checkpoint_33/'+rel
++            historical = 'checkpoint_history/checkpoint_34/'+rel
+             if historical in prospective:
+                 assert prospective[historical] == data, ('Historical path collision', historical)
+             else:
+                 prospective[historical] = data
+                 predicted_history.append({'path': historical, 'bytes': len(data), 'sha256': row['sha256']})
++            if rel == 'LM4_SUCCESSOR_paper.pdf':
++                info = prior.z.getinfo(PREFIX+rel)
++                assert PREFIX+rel in prior.direct and info.compress_type == zipfile.ZIP_DEFLATED
++                assert not unchanged and info.file_size == len(data)
++                assert bucket(historical, len(data)) == 'documents'
++                assert prospective[historical] == data
++                assert not is_data_bundle_member(rel, len(data))
++                removed_direct_main_pdf = {'path': rel, 'historical_path': historical,
++                    'bytes': len(data), 'sha256': digest(data),
++                    'compressed_payload_bytes': info.compress_size,
++                    'headers_removed': 0, 'reason': 'The same exact old direct PDF is measured once in the prospective document TAR.'}
+     print('Prospective logical files', len(prospective), 'predicted historical paths', len(predicted_history), flush=True)
+     groups = {name: [] for name in ('images', 'documents', 'data')}
+     new_direct = []
+@@ -144,22 +156,31 @@
+             continue
+         method = 'deflate' if Path(rel).suffix.lower() in {'.pdf', '.jpg', '.jpeg', '.gif', '.zip', '.gz', '.xz', '.tar'} else 'lzma'
+         new_direct.append((compress_size(data, method), rel))
++    if removed_direct_main_pdf is not None:
++        documents = dict(groups['documents'])
++        old_pdf = documents[removed_direct_main_pdf['historical_path']]
++        assert len(old_pdf) == removed_direct_main_pdf['bytes']
++        assert digest(old_pdf) == removed_direct_main_pdf['sha256']
++        assert any(rel == 'LM4_SUCCESSOR_paper.pdf' for _, rel in new_direct)
++        assert all(rel != 'LM4_SUCCESSOR_paper.pdf' for _, rel in removed_direct_data)
++        del documents, old_pdf
+     del prospective
+     bundle_reports = {}
+     for kind in ('images', 'documents', 'data'):
+         bundle, metrics = build_standard_tar(groups.pop(kind))
+-        method = 'data-lzma' if kind in {'images','data'} else 'lzma'
++        method = 'data-lzma'  # All three checkpoint35+ TARs use native64MiB method14.
+         start = time.monotonic()
+         print('Compressing actual prospective', kind, 'TAR', json.dumps(metrics), flush=True)
+         size = compress_size(bundle, method, progress=kind)
+         bundle_reports[kind] = {'metrics': metrics, 'compressed_bytes': size, 'zip_method': 'ZIP_LZMA',
+-                                'dictionary_bytes': DATA_DICTIONARY_BYTES if kind in {'images','data'} else 8*1024*1024,
++                                'dictionary_bytes': DATA_DICTIONARY_BYTES,
+                                 'elapsed_seconds': time.monotonic()-start}
+         print('Completed', kind, 'compressed_bytes', size, flush=True)
+         del bundle
+     direct_added = sum(size for size, _ in new_direct)
+     migrated_removed = sum(size for size, _ in removed_direct_data)
+-    estimate = ARCHIVE.stat().st_size-sum(removed_containers.values())-migrated_removed+sum(x['compressed_bytes'] for x in bundle_reports.values())+direct_added
++    main_removed = 0 if removed_direct_main_pdf is None else removed_direct_main_pdf['compressed_payload_bytes']
++    estimate = ARCHIVE.stat().st_size-sum(removed_containers.values())-migrated_removed-main_removed+sum(x['compressed_bytes'] for x in bundle_reports.values())+direct_added
+     archive_sha = hashlib.sha256()
+     with ARCHIVE.open('rb') as stream:
+         for part in iter(lambda: stream.read(1 << 20), b''):
+@@ -171,10 +192,13 @@
+         'previous_container_compressed_bytes_removed': removed_containers,
+         'previous_direct_data_entries_migrated': len(removed_direct_data),
+         'previous_direct_data_compressed_bytes_removed': migrated_removed,
++        'previous_direct_main_pdf_migrated': removed_direct_main_pdf,
++        'previous_direct_main_pdf_compressed_payload_removed': main_removed,
++        'previous_direct_main_pdf_headers_removed': 0,
+         'prospective_bundles': bundle_reports,
+         'current_authored_paths_snapshotted': len(original_current_paths),
+-        'predicted_checkpoint33_historical_paths': len(predicted_history),
+-        'predicted_checkpoint33_historical_bytes': sum(x['bytes'] for x in predicted_history),
++        'predicted_checkpoint34_historical_paths': len(predicted_history),
++        'predicted_checkpoint34_historical_bytes': sum(x['bytes'] for x in predicted_history),
+         'predicted_history': predicted_history,
+         'new_or_changed_direct_paths_counted': len(new_direct),
+         'additional_direct_compressed_payload_bytes': direct_added,
+@@ -185,7 +209,7 @@
+         'estimated_total_with_allowance': estimate+ALLOWANCE,
+         'delivery_cap_bytes': CAP, 'estimated_headroom_bytes': CAP-estimate-ALLOWANCE,
+         'creates_zip': False, 'writes_authored_input_files': False,
+-        'scope': 'Actual checkpoint33 baseline; all three old containers and all old direct data payloads now migrated to the new data TAR are removed. Complete current and predicted historical image/document/data TARs are rebuilt from actual bytes with standard hardlinks. Images and data use the actual64MiB ZIP-LZMA compressor; historical documents use the default8MiB compressor. Changed old direct payload costs remain conservatively in the baseline while every new direct payload is added. The previous direct main PDF is also counted in the historical document TAR, deliberately overcounting it. Forced retention-index history and every changed33 logical version are predicted under checkpoint_history/checkpoint_33; actual older identical-version reuse can only reduce those paths. Existing archive headers remain counted. FiveMB covers new headers, manifests, retention-record growth, and late text. Final immutable size remains authoritative.'
++        'scope': 'Actual checkpoint34 baseline; all three old containers and all old direct data payloads now migrated to the new data TAR are removed. Complete current and predicted historical image/document/data TARs are rebuilt from actual bytes with standard hardlinks. All three buckets use the actual64MiB ZIP-LZMA compressor on their complete prospective35 bytes; no gain from the separate closed34 comparison is substituted. Changed old direct payload costs otherwise remain conservatively while every new direct payload is added. The old direct main PDF compressed payload is subtracted exactly once only when its identical size/hash bytes are explicitly present in the measured prospective document TAR and the changed current main PDF is counted separately. Its headers remain counted; it is not part of the removed data payloads. Forced retention-index history and every changed34 logical version are predicted under checkpoint_history/checkpoint_34; actual older identical-version reuse can only reduce those paths. Existing archive headers remain counted. FiveMB covers new headers, manifests, retention-record growth, and late text. Final immutable size remains authoritative.'
+     }
+     target.write_text(json.dumps(report, indent=2)+'\n')
+     print(json.dumps({k:v for k,v in report.items() if k != 'predicted_history'}, indent=2), flush=True)
+--- verify_checkpoint34_system_tars.py
++++ verify_checkpoint35_system_tars.py
+@@ -1,4 +1,4 @@
+-"""Independently restore all three actual checkpoint34 containers with system tar.
++"""Independently restore all three actual checkpoint35 containers with system tar.
+ 
+ No packaging or logical-reader imports. The archived digest manifest is
+ the authority for every original PNG, historical/preview PDF, and selected data path.
+@@ -16,13 +16,13 @@
+ import zipfile
+ 
+ root = Path(__file__).resolve().parents[1]
+-archive = root.parent / 'LM4_SUCCESSOR_checkpoint_34.zip'
++archive = root.parent / 'LM4_SUCCESSOR_checkpoint_35.zip'
+ prefix = 'LM4_SUCCESSOR/'
+-manifest_name = prefix + 'records/checkpoint_34_contents_sha256.tsv'
++manifest_name = prefix + 'records/checkpoint_35_contents_sha256.tsv'
+ report = {'archive': archive.name, 'containers': {}}
+ with zipfile.ZipFile(archive) as z:
+     rows = list(csv.DictReader(io.StringIO(z.read(manifest_name).decode()), delimiter='\t'))
+-    packaging = json.loads(z.read(prefix + 'records/checkpoint_34_packaging.json'))
++    packaging = json.loads(z.read(prefix + 'records/checkpoint_35_packaging.json'))
+     direct = [i.filename for i in z.infolist() if not i.is_dir()]
+     assert len(direct) == len(set(direct))
+     assert prefix + 'LM4_SUCCESSOR_paper.pdf' in direct
+@@ -61,7 +61,7 @@
+         document_properties = raw.read(9)
+     assert document_properties[:4] == bytes([9,4,5,0])
+     document_dictionary_bytes = struct.unpack('<I',document_properties[5:9])[0]
+-    assert document_dictionary_bytes == 8388608 == packaging['document_lzma_dictionary_bytes']
++    assert document_dictionary_bytes == 67108864 == packaging['document_lzma_dictionary_bytes']
+     specifications = [
+         ('images', 'verification_images.tar', 'image',
+          [r for r in rows if r['path'].lower().endswith('.png')]),
+@@ -83,7 +83,7 @@
+         assert hashlib.sha256(bundle).hexdigest() == packaging[field + '_bundle_sha256']
+         assert len(bundle) == packaging[field + '_bundle_bytes']
+         assert len(expected) == packaging[field + '_paths']
+-        with tempfile.TemporaryDirectory(prefix='lm4-checkpoint34-native-' + kind + '-') as directory:
++        with tempfile.TemporaryDirectory(prefix='lm4-checkpoint35-native-' + kind + '-') as directory:
+             temp = Path(directory)
+             tar_path = temp / basename
+             tar_path.write_bytes(bundle)
+--- build_checkpoint34_parent_anchor.py
++++ build_checkpoint35_parent_anchor.py
+@@ -1,4 +1,4 @@
+-"""Pin the closed, actually verified checkpoint33 as the sole parent of34.
++"""Pin the closed, actually verified checkpoint34 as the sole parent of35.
+ 
+ No earlier archive is opened, no archive is created, and no mutable
+ retention table is published. The parent is read as immutable evidence.
+@@ -13,11 +13,11 @@
+ import zipfile
+ 
+ from checkpoint_archive_io import CheckpointReader, PREFIX
+-from preserve_checkpoint34_versions_inductive import tuple_sha
++from preserve_checkpoint35_versions_inductive import tuple_sha
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+-PARENT = ROOT.parent / "LM4_SUCCESSOR_checkpoint_33.zip"
+-EXPECTED_SHA = "5c68edb5a023c97cb400b506f7e1b7303f19e3cac9212947491e47793d77ef96"
++PARENT = ROOT.parent / "LM4_SUCCESSOR_checkpoint_34.zip"
++EXPECTED_SHA = "28dbe8b35a6f9e1c6b7e606aa59ceed041f2ab217959e0cc243ab7e83761d8fb"
+ 
+ 
+ def digest(data):
+@@ -25,62 +25,62 @@
+ 
+ 
+ def main():
+-    assert PARENT.stat().st_size == 508499680
++    assert PARENT.stat().st_size == 529409669
+     h = hashlib.sha256()
+     with PARENT.open("rb") as stream:
+         for part in iter(lambda: stream.read(4 * 1024 * 1024), b""):
+             h.update(part)
+     assert h.hexdigest() == EXPECTED_SHA
+     verifications = {}
+-    for name, session in [("archive", 5195), ("system_tars", 28023), ("inductive", 66162)]:
+-        rel = f"records/checkpoint33_{name}_verification.json"
++    for name, session, chunk in [("archive", 83033, "a92f0e"), ("system_tars", 88075, "0c93d3"), ("inductive", 81129, "25e218")]:
++        rel = f"records/checkpoint34_{name}_verification.json"
+         raw = (ROOT / rel).read_bytes()
+         report = json.loads(raw)
+         assert report.get("sha256", report.get("archive_sha256")) == EXPECTED_SHA
+-        err = ROOT / f"records/checkpoint33_{name}_verification.err"
++        err = ROOT / f"records/checkpoint34_{name}_verification.err"
+         assert err.read_bytes() == b""
+         verifications[name] = {"path": rel, "bytes": len(raw), "sha256": digest(raw),
+-                               "producer_session": session, "actual_exit_code_observed": 0}
++                               "producer_session": session, "producer_tool_chunk": chunk, "actual_exit_code_observed": 0}
+     generic = json.loads((ROOT / verifications["archive"]["path"]).read_text())
+     induction = json.loads((ROOT / verifications["inductive"]["path"]).read_text())
+     native = json.loads((ROOT / verifications["system_tars"]["path"]).read_text())
+-    assert generic["entries"] == 10053 and generic["prior_entries_retained"] == 142600
++    assert generic["entries"] == 10387 and generic["prior_entries_retained"] == 152653
+     assert generic["crc"] == generic["every_manifest_entry"] == generic["every_retained_version"] == "PASS"
+-    assert induction["all_retained_rows"] == 142600 and induction["omissions"] == 0
++    assert induction["all_retained_rows"] == 152653 and induction["omissions"] == 0
+     assert induction["complete_parent_map"] == induction["historical_tuple_composition"] == induction["all_closed_child_targets"] == "PASS"
+     assert native["all_three_system_tar_restores"] == "PASS"
+     pinned = {}
+     with CheckpointReader(PARENT) as parent:
+-        assert len(parent.names()) == 10053
++        assert len(parent.names()) == 10387
+         for rel in ["records/checkpoint_version_retention.csv",
+                     "records/checkpoint_version_retention_summary.json",
+                     "checkpoint_history/README.md",
+-                    "records/checkpoint_33_contents_sha256.tsv",
++                    "records/checkpoint_34_contents_sha256.tsv",
+                     "code/checkpoint_archive_io.py"]:
+             raw = parent.read(PREFIX + rel)
+             pinned[rel] = {"bytes": len(raw), "sha256": digest(raw)}
+             if rel.endswith("checkpoint_version_retention.csv"):
+                 rows = list(csv.DictReader(io.StringIO(raw.decode())))
+-        assert len(rows) == 142600
++        assert len(rows) == 152653
+         assert all(row["omission_reason"] == "" for row in rows)
+     anchor = {
+         "schema": "checkpoint-inductive-anchor-v1",
+         "recorded_at": datetime.now(timezone.utc).isoformat(),
+-        "parent_number": 33, "child_number": 34,
+-        "archive": PARENT.name, "archive_bytes": 508499680,
+-        "archive_sha256": EXPECTED_SHA, "logical_entries": 10053,
+-        "inherited_rows": 142600, "inherited_archives": 32,
++        "parent_number": 34, "child_number": 35,
++        "archive": PARENT.name, "archive_bytes": 529409669,
++        "archive_sha256": EXPECTED_SHA, "logical_entries": 10387,
++        "inherited_rows": 152653, "inherited_archives": 33,
+         "inherited_tuple_sha256": tuple_sha(rows),
+         "inherited_counts": dict(Counter(row["checkpoint"] for row in rows)),
+         "trusted_coverage": {
+-            "status": "Closed checkpoint33 verified in this execution environment; all three producer exits observed as zero.",
+-            "assertion": "All142600 historical logical identities are retained in the closed33 archive. The closed33 verifier established the exact map composition over all9680 parent32 entries. Archives1-31 remain the previously pinned induction base; none is newly reopened here.",
++            "status": "Closed checkpoint34 verified in this execution environment; all three producer exits observed as zero.",
++            "assertion": "All152653 historical logical identities are retained in the closed34 archive. The closed34 verifier established the exact map composition over all10053 parent33 entries. Archives1-32 remain the previously pinned induction base; none is newly reopened here.",
+             "verification_records": verifications,
+-            "capture_record": "records/checkpoint33_capture_completion_observed.json",
++            "capture_record": "records/checkpoint34_capture_completion_observed.json",
+         },
+         "pinned_files": pinned,
+     }
+-    target = ROOT / "records/checkpoint34_retention_parent_anchor.json"
++    target = ROOT / "records/checkpoint35_retention_parent_anchor.json"
+     with target.open("x") as stream:
+         json.dump(anchor, stream, indent=2, sort_keys=True)
+         stream.write("\n")
+@@ -88,7 +88,7 @@
+                 "archive_sha256": EXPECTED_SHA, "verifications": verifications,
+                 "all_actual_exit_codes_observed": True,
+                 "archive_mutated": False, "new_archive_created": False}
+-    with (ROOT / "records/checkpoint33_verification_observed.json").open("x") as stream:
++    with (ROOT / "records/checkpoint34_verification_observed.json").open("x") as stream:
+         json.dump(observed, stream, indent=2, sort_keys=True)
+         stream.write("\n")
+     print(json.dumps(anchor, indent=2, sort_keys=True))

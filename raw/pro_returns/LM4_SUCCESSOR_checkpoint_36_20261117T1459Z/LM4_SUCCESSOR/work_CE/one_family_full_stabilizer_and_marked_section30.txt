@@ -1,0 +1,130 @@
+# The entire actual stabilizer is cyclic, and the one-family fixed projection has a marked ordinary section
+
+Cycle30 late research. Every frozen formal source and PDF is unchanged. The following is a uniform calculation for the actual B139 operators, not a bounded orbit calculation. It uses the fully reviewed normalization in one_family_stabilizer_normalization30.txt (SHA29c57f2e...).
+
+## 1. Actual complete source and fiber
+
+Let S=F(m,u), where u=m^-1 v, and T0=F(r,bar_r,w). The actual ordinary coarse group is T0 semidirect S. The actual signed operators are
+
+    m: r->r, bar_r->bar_r, w->r w^-1 bar_r^-1;
+    u: r->w^-1 r w, bar_r->w bar_r w^-1, w->w.
+
+The inverse formulas are those of the normalization note and are checked from the same complete original input. In the original marking
+
+    r=tau f^-1 C, bar_r=f^-1 C tau, w=tau C,
+    f=w^-1 bar_r^-1, g=C f C=r^-1 w.
+
+The ordered cocycle has h_m=1, h_u=w^-1 r, and h_(st)=alpha_s(h_t)h_s. Its actual graph section is H=<m,fv>=<m,r^-1wu>. The previously proved full centralizer and character argument gives
+
+    L=H intersect S={s in S:alpha_s(r)=r}.                  (1)
+
+For clarity, the equality uses alpha_s(r)=h_s r h_s^-1 for every s, ordinary free centralizers, and the invariant character chi_x(r,bar_r,w)=(1,-1,1), which vanishes on EVERY h_s. Thus a source fixing r has h_s=1, not merely a cyclic correction.
+
+## 2. An actual invariant quotient, with explicit inverse presentation
+
+Factor T0 by the normal closure of
+
+    r^2, bar_r^2, f^2, g^2.                                (2)
+
+All four are actual displayed peripheral words, with the exact original f and g above. Set z=bar_r r. The resulting group is exactly
+
+    P=<z,w,r | [z,w], r^2=1, r z r=z^-1, r w r=w^-1>
+     =Z^2(z,w) semidirect C2(r),                           (3)
+
+where r inverts both translations.
+
+Here are both presentation directions. From r^2=bar_r^2=1 and g^2=(r w)^2=1 obtain r w r=w^-1. From f^2=(w^-1 bar_r)^2=1 obtain bar_r w bar_r=w^-1. With bar_r=z r, the latter gives [z,w]=1, while bar_r^2=1 gives r z r=z^-1. Conversely the formulas bar_r=z r, f=w^-1 bar_r and g=r w in (3) make all four squares (2) equal to one, with inverse maps on r,bar_r,w. In particular the translation subgroup in (3) is the genuine free abelian group Z^2; it is not a further unidentified quotient.
+
+The actual source maps descend to P. This can be seen directly from the following automorphisms of (3), with their displayed inverse matrices and corrections; equivalently substitute all signed actual words into (3). Write every element uniquely as z^a w^b r^epsilon. In column-vector convention, a source acts by
+
+    (n,epsilon) -> (A_s n+epsilon b_s,epsilon),
+
+where the two positive matrices and r-corrections are
+
+    M=A_m=[[1,-1],[0,1]],       b_m=(0,0),
+    U=A_u=[[1,0],[4,1]],        b_u=(0,-2).                 (4)
+
+Indeed m fixes r and bar_r, and sends w to w z^-1, so z is fixed. Also u sends r to w^-2 r and bar_r to w^2 bar_r; hence z goes to z w^4 and w is fixed. Every matrix is integral of determinant one, and (n,epsilon)->(A n+epsilon b,epsilon) is an automorphism of the semidirect presentation (3). The inverse is given by A^-1 and -A^-1 b. Thus (2) is invariant under BOTH signed source generators, and the quotient is genuine for the entire free source S.
+
+## 3. The all-word affine correction is a rational coboundary
+
+Let e1=(1,0)^T and q=e1/2 in Q^2. On both actual generators,
+
+    b_s=(I-A_s)q.                                         (5)
+
+The action composition law is b_(st)=A_s b_t+b_s. Therefore (5) holds for EVERY s in S, including all signed words; no induction bound occurs. The right side is integral for these actual matrices because it equals the actual integer correction.
+
+If alpha_s(r)=r in the actual free fiber, its image in P is also r. Unique normal form in (3) then gives b_s=0. By (5),
+
+    A_s e1=e1.                                           (6)
+
+Every integral determinant-one matrix satisfying (6) has the form [[1,k],[0,1]] with k in Z. This is exactly M^-k. The only remaining point is faithfulness of the actual matrix representation S->SL2(Z); it cannot be replaced by an unproved monodromy assertion.
+
+## 4. Complete faithful ping-pong proof
+
+Conjugate both matrices by D=diag(2,1), viewed over Q. This gives
+
+    A=D M D^-1=[[1,-2],[0,1]],
+    B=D U D^-1=[[1,0],[2,1]].                              (7)
+
+On the real projective line, use disjoint nonempty sets
+
+    X={x real:|x|>1} union {infinity},
+    Y={x real:|x|<1}.
+
+For EVERY nonzero integer n,
+
+    A^n(x)=x-2n,             A^n(Y) subset X;
+    B^n(x)=x/(2n x+1),       B^n(X) subset Y.              (8)
+
+For the first inclusion, |x-2n|>1 when |x|<1. For the second, when |x|>1 the denominator has absolute value at least 2|n||x|-1>|x|; infinity maps to 1/(2n), also in Y. The possible pole -1/(2n) lies in Y, so does not affect B^n(X).
+
+For completeness this proves free-product faithfulness without invoking an external theorem. Any nontrivial reduced word in nonzero powers of A and B is conjugate to either a nonzero power of one generator or a mixed cyclically reduced word with at least two syllables. Nonzero powers are nonidentity from their displayed matrices. For a mixed cyclically reduced word, conjugate once more by a nonzero power of its last generator chosen so that the last syllable does not cancel: the resulting reduced word starts and ends in that generator. If it starts and ends in A it maps Y into X by (8); if it starts and ends in B it maps X into Y. Either contradicts being the identity because the sets are disjoint. Hence every nontrivial reduced word acts nontrivially on the projective line. In particular the representation F(m,u)->SL2(Z) in (4) is injective: a matrix in its kernel would act trivially on the projective line. This also excludes a nontrivial word mapping to -I.
+
+Now (6) implies A_s=M^-k, and injectivity gives s=m^-k. Conversely every power of m fixes the original r. Combining with (1) proves the complete actual equality
+
+    L=H intersect S=<m>.                                  (9)
+
+This argument keeps both operators, all signed source words, and the entire cocycle. The pillowcase quotient is used only as a necessary condition whose faithful source matrices identify the stabilizer; no quotient-fixed element is lifted back by assumption.
+
+## 5. Exact one-family fixed-source group and the actual marked section
+
+B144's entire-L presentation now becomes
+
+    J_a=Gamma_a^delta
+       =<A,m,v | [A,m]=1>
+       =(Z_A x Z_m) * Z_v.                                (10)
+
+This is a proved presentation of the actual discrete one-family fixed group, not merely of a group mapping onto it. It is obtained by substituting the proved equality (9) into B144's two inverse presentation maps.
+
+In the original actual fixed group Gamma_0^delta, B130 provides the based fixed word
+
+    A_src=s1 s4^-1 s1^-1,
+
+which projects to A and satisfies the actual relation [A_src,m]=1. The sources m,v are fixed, and their images are the displayed source generators in (10). Therefore the assignments
+
+    A -> A_src, m -> m, v -> v
+
+respect every defining relation of (10) and define an ACTUAL homomorphism
+
+    sigma:J_a -> Gamma_0^delta,
+    (p_a restricted to Gamma_0^delta) sigma=id_(J_a).        (11)
+
+In particular sigma is injective and its image is the actual three-generator subgroup <A_src,m,v>, with presentation (10). This is the specified ordinary marked fixed-source section, despite the previously proved absence of any whole-group virtual section of Gamma_0->Gamma_a. There is no contradiction: their domains and equations differ, and the first-jet obstruction already restricts to zero on the fixed source.
+
+If K_rem=ker(p_a) and H_src denotes the entire actual source image, B139 and (11) give the ordinary split comparisons
+
+    Gamma_0^delta = K_rem^delta semidirect sigma(J_a),
+    H_src=(H_src intersect K_rem) semidirect sigma(J_a).
+
+The factors are actual subgroups and the maps are the actual restriction of p_a; sigma(J_a) lies in H_src. The original fixed-source equality remains equivalent to
+
+    K_rem^delta = H_src intersect K_rem.                   (12)
+
+The newly proved section does NOT identify this remaining fixed kernel.
+
+## 6. Evidence and category limits
+
+The tiny checker work_CE/code/check_one_family_pillowcase_stabilizer30.py reads the original frozen one_family_face28.json. It independently evaluates the actual old f,C,tau words in P semidirect <tau>, verifies all four peripheral squares, both signed m/u actions on all old generators and on z,w,r, both inverse matrices, and twice the coboundary identity using only integers. Genuine output/error and next_symmetric_nodes/one_family_pillowcase_stabilizer30.json are retained. Matrix faithfulness is proved by (8), not by any tested finite collection of source words.
+
+All new group/intersection/section statements here are DISCRETE. No equality of closure(L) with a compact intersection, no full induced topology of the new three-generator source subgroup, and no continuous section of the actual completed fixed projection is asserted. Those require additional arguments and do not follow from residual finiteness of (10). The frozen formal paper is unchanged; this is complete late-cycle research pending independent review.

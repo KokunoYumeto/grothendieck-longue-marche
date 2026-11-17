@@ -1,0 +1,15 @@
+# Entire relative-perfect residual proof review — checkpoint34
+
+Result: PASS. The entire saved source was read after the earlier full conceptual audit. The complete first-step and tower proofs, complete A3/A34 statements and proofs, and the original LM7_PUSH E65 multiplier-covariance passage were already independently read in this checkpoint. No new computation, private build, or fresh full D50 read is claimed.
+
+The identity R=N1 intersect O=N intersect F' intersect O follows exactly from the A106 coordinate criterion. The map to the FULL free pro-two P and Dodd has precisely this kernel. Its two projections are onto, and Dodd has no two-group quotient, so the actual image is their full product by profinite Goursat. This proves both actual comparison kernels: O/R=Dodd over Bbar and N1/R=M21 over B1.
+
+For odd coefficients, the latter kernel is pro-two and acyclic; for two-primary coefficients, the former kernel has exactly the required H1/H2 vanishings. Thus every primary H2(B/R) vanishes. Continuous cochains into Q/Z have finite image, so the primary comparison gives the stated full coefficient vanishing. Five-term exactness and R<=B' then make every invariant character of R zero, proving R=closure([R,B]) by character separation. This is relative perfectness, not ordinary perfectness.
+
+The canonical H_d lies in R directly by the established full signed and full pro-two word results. Its actual endomorphism is coordinatewise on F/R: the pro-two Frattini criterion proves its first component is an automorphism, and (a,c)->(d a,Ad(H)c) is an automorphism of Dodd with the original C3 compatibility. No mixed-coordinate term is omitted. The cubic is then proved before defining the B-to-quotient map, and the pure automorphism plus identity S3 action makes it an actual B/R automorphism.
+
+The positive/negative r-frame lifts through the actual pro-two M21 kernel by the complete coprime C3 argument. The full s-frame and literal cusp are available. Actual multiplier reduction preserves R using the original signed Galois covariance and characteristicity of F' and O. The A3/A34 central criterion therefore applies to the specified quotient itself because [R,B]=R. The usual inner correction is made on the positive lift (or its gamma-transported R-conjugator after composition), retaining the quotient data and giving the literal delta^d cusp. This proves the existence of the stated full peripheral lift without identifying it with canonical psi.
+
+Finally N1/R is pro-two whereas N1 is not. Hence R is not pro-two and is nontrivial. Its relative perfectness puts it inside every term of the B-central tower, so that tower is definitely noncofinal. The source correctly makes no equality R=L_infinity and no assertion that the actual H_d is one inside R. Both main problems and the original CM value remain open. No correction is needed.
+
+Bound entire source: `work_A/actual_relative_perfect_congruence_residual34.md`, SHA256 `e34097f6bebd644c939c5aa4bef1bc13e854695ccc8430d30a640db6fa787422`.

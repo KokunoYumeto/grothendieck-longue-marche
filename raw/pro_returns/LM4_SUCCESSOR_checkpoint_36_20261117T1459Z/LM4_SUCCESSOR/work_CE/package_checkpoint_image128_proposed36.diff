@@ -1,0 +1,31 @@
+--- code/package_checkpoint.py (unchanged predecessor)
++++ work_CE/package_checkpoint_image128_proposed36.py
+@@ -4,6 +4,7 @@
+ from datetime import datetime, timezone
+ from checkpoint_standard_tar import build_standard_tar
+ from checkpoint_data_tar import DATA_BUNDLE, DATA_DICTIONARY_BYTES, is_data_bundle_member, standard_data_dictionary
++from checkpoint_image_tar import IMAGE_DICTIONARY_BYTES, standard_image_dictionary
+ p=Path(__file__).resolve().parents[1]
+ a=argparse.ArgumentParser();a.add_argument('number',type=int);o=a.parse_args();name=f'LM4_SUCCESSOR_checkpoint_{o.number:02d}.zip';out=p.parent/name
+ assert not out.exists(),'Never overwrite a checkpoint'
+@@ -79,7 +80,7 @@
+                   encoding='ordinary ZIP plus standard TAR of all PNG verification images',
+                   image_bundle='LM4_SUCCESSOR/verification_images.tar',
+                   image_zip_method='ZIP_LZMA' if o.number >= 27 else 'ZIP_DEFLATED',
+-                  image_lzma_dictionary_bytes=DATA_DICTIONARY_BYTES if o.number >= 32 else 8*1024*1024,
++                  image_lzma_dictionary_bytes=IMAGE_DICTIONARY_BYTES if o.number >= 36 else (DATA_DICTIONARY_BYTES if o.number >= 32 else 8*1024*1024),
+                   image_bundle_bytes=len(image_bundle),
+                   image_bundle_sha256=hashlib.sha256(image_bundle).hexdigest(),
+                   image_paths=len(image_files), unique_image_contents=len(seen_images),
+@@ -139,7 +140,10 @@
+    method = zipfile.ZIP_LZMA
+   z.writestr(str(Path('LM4_SUCCESSOR')/rel),data,compress_type=method)
+  if image_bundle is not None:
+-  if o.number >= 32:
++  if o.number >= 36:
++   with standard_image_dictionary():
++    z.writestr('LM4_SUCCESSOR/verification_images.tar',image_bundle,compress_type=zipfile.ZIP_LZMA)
++  elif o.number >= 32:
+    with standard_data_dictionary():
+     z.writestr('LM4_SUCCESSOR/verification_images.tar',image_bundle,compress_type=zipfile.ZIP_LZMA)
+   else:

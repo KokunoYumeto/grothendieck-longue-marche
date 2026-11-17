@@ -1,0 +1,149 @@
+% Actual nonzero scalar lower bound; no selected-cover automorphism assertion.
+\statement{A.67}{Proved}{The next actual scalar refinement has an attained eight-dimensional binary quotient}
+Let W be the source kernel of the quotient in A.66. Its actual scalar
+kernel has a continuous surjection
+\[
+ W/[W,\Pi]\longrightarrow (\mathbb F_2)^8.
+ \tag{A.67.1}
+\]
+The eight coordinates are attained by explicit third commutators.
+Thus immediate scalar stability fails at this next layer. This is a
+lower bound on the actual scalar kernel, not its complete computation.
+No invariance of this selected eight-dimensional quotient under the
+new automorphisms, or obstruction to their norm lifting, is asserted.
+
+\begin{proof}
+\emph{A local scalar cover.}\par
+On \(k\times k\), with \(k=\mathbb F_8\), define
+\[
+ (a,z)(b,w)=(a+b,z+w+a^2b).
+ \tag{A.67.2}
+\]
+This is a group G of order 64 and class two. The change of coordinates
+\((a,z)\mapsto(a^2,z)\) identifies it with the type-A Suzuki
+two-group defined using \(\theta(t)=t^4\) in
+\citet[Section 2, p.~3]{AEaton2024}. Only that explicit definition
+is used here; the following cover is proved directly.
+
+The k-valued function
+\[
+ f((a,z),(b,w))=z b^4+a^2w^4
+ \tag{A.67.3}
+\]
+is a normalized two-cocycle. Indeed, in its coboundary the only
+remaining terms are \(a^2bc^4\) and
+\(a^2(b^2c)^4\), which are equal in k. Consequently
+\[
+ (a,z,u)(b,w,v)=
+ (a+b,z+w+a^2b,u+v+z b^4+a^2w^4)
+ \tag{A.67.4}
+\]
+defines a central extension of G by the additive group k.
+The scalar action \((a,z)\mapsto(\xi a,\xi^3z)\),
+\(\xi\in k^\times\), fixes (A.67.3), since its two
+scalar degrees are seven and fourteen.
+
+Put
+\[
+ q(a,z)=\operatorname{Tr}_{k/\mathbb F_2}(a^4z)+a^7,
+ \tag{A.67.5}
+\]
+where \(a^7\) is regarded as zero or one. Direct expansion gives
+\(\operatorname{Tr}(f)=\delta q\). Hence
+\(\operatorname{Tr}(u)+q(a,z)\) is a homomorphism from
+(A.67.4) to \(\mathbb F_2\).
+
+The base commutators have z-coordinate \(a^2b+ab^2\).
+Their span is nonzero and invariant under multiplication by
+every \(\xi^3\), hence is all k. Third commutators in the central
+coordinate have the form
+\[
+ z a^4+a^2z^4.
+ \tag{A.67.6}
+\]
+For fixed \(a\ne0\), substitute \(z=a^3t\). The result is
+\(t+t^4\), whose image is the trace-zero plane of k.
+The preceding homomorphism shows that no additional central
+derived direction occurs. Since \(\operatorname{Tr}(1)=1\),
+the trace-zero plane maps isomorphically onto \(k/\mathbb F_2\).
+Quotient (A.67.4) by the central line \(\mathbb F_2\cdot1\).
+The resulting group \(\widetilde G\) has order 256, central
+kernel \(k/\mathbb F_2\simeq C_2^2\), and
+\[
+ |\widetilde G'|=32,\qquad
+ \gamma_3(\widetilde G)=C_2^2,\qquad
+ \widetilde G/\Phi(\widetilde G)=k.
+ \tag{A.67.7}
+\]
+In particular both central directions are stem directions,
+attained by third commutators. The scalar-seven action lifts
+strictly and fixes this central kernel.
+
+The complete local identities are independently checked in
+\path{code/check_suzuki_local_scalar_extension.py} and
+\path{work_CE/code/verify_cubic_scalar_cocycles.py}.
+The first certificate checks all \(64^3\) cocycle identities,
+the trace coboundary, all scalar-seven actions, and the lower
+central orders \(256,32,4,1\). Equivalently, for
+\(d=q+q^2\) the scalar cocycles
+\[
+ \operatorname{Tr}\bigl(d a^4w+q a^6b+q^2a^4b^3\bigr)
+ \tag{A.67.8}
+\]
+give the two independent directions as \(q\) ranges modulo
+\(\mathbb F_2\). The case \(q=1\) is the coboundary of
+\(\operatorname{Tr}(a^7)\).
+
+\emph{The head action and the actual source.}\par
+Take one copy of \(\widetilde G\) at each of the 36 physical
+weights. H acts by the actual monomial scalars and permutations;
+on each central \(C_2^2\) it acts trivially before permuting
+the weights. Push out the 36 central factors by their sum map
+onto one \(C_2^2\). This is H-equivariant. The resulting finite
+two-group covers the 36-weight product of G, has Frattini
+quotient V, and still has its two central directions attained
+by third commutators supported at one weight.
+
+For each of the four cusp rows, projection onto the diagonal
+ordinary coordinate \(z_{ii}\) in A.66 is exactly (A.67.2).
+Use the same source map: S is pure and R is conjugate to pure r
+by a lift with abelian coordinate \(r e_i(r)\). It projects
+literally onto the diagonal source already used in A.66.
+Pair all four covers with the actual A.66 quotient. This gives
+an abstract fiber product with central kernel
+\((k/\mathbb F_2)^4\).
+
+This fiber product is an actual source quotient. To see the
+essential point, take triple commutators supported in one cusp
+row and one weight. They attain that row's two new central
+coordinates by (A.67.6). Their old integral and ordinary
+components vanish because those groups have class two. Their
+old UT4 component vanishes because its triples require three
+distinct cusp rows. Their components in the other three new
+row covers also vanish. Thus the whole new central kernel lies
+in the third commutator subgroup of the fiber product.
+
+It follows that this fiber product has the same abelianization
+and the same complete \(V^8\) Frattini quotient as the prior
+residual. The actual R-image surjects onto that quotient by the
+original eight source cocycles. Finite two-group Frattini, or
+its finitely generated pro-two version for the integral limit,
+therefore gives the full fiber product as the actual R-image.
+In particular the source kernel W maps onto all eight central
+coordinates. Since those coordinates are globally central,
+\([W,\Pi]\) maps to zero, proving (A.67.1).
+
+For an older retained finite family, first work over its actual
+base \(C_{\rm old}\). The same distinct residual abelian simple
+types as in A.66 give the full new residual product and the
+required eight-class Frattini surjectivity. Apply the preceding
+argument to that source kernel; its chosen elements have trivial
+older components. This avoids assuming that arbitrary triple
+commutators vanish in the older factors. Compactness handles
+all older families simultaneously.
+The resulting central quotient is nonzero, but its selected
+kernel may move under an automorphism of the previous level.
+The universal actual scalar refinement is invariant; descent
+to this particular eight-dimensional quotient requires an
+additional argument. We make no such descent or norm claim here.
+\end{proof}

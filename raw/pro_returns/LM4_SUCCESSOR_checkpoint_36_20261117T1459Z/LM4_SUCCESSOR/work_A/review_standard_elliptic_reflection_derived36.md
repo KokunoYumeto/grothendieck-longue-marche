@@ -1,0 +1,13 @@
+# Entire independent review: standard mixed elliptic reflection
+
+Reviewer: /root/involutions. Result: PASS_COMPLETE_PROOF_AND_CERTIFICATE_READ.
+
+I read the complete saved9f4adbd7 proof, the entire a81392a6 prescribed D8 producer and its complete genuine JSON output; the error file is empty and the output source binding equals the actual code. I did not rerun the producer. Root's observed exit0/chunk49abf9 is accurately distinguished from this read-only review.
+
+The two actual presentation changes are inverse: v=Xt and Z=tYt give v squared=t squared=1 and [v,Z]=1, while X=vt,Y=tZt recover both original action rows. Thus the discrete semidirect product is C2*(C2 times Z), and the original free group is the actual index-two kernel. Finite-index core topology gives its exact completion. The ordinary Bass–Serre argument has exactly two involution classes and the first factor centralizer C2. The already established prime-order comparison mechanism from A124 applies with the simpler finite-rank free, finite-index subgroup; the stated all-module/finite-type hypotheses are correctly checked. This review does not claim a new whole primary-paper reading.
+
+Full-group conjugacy can indeed be made pure by right multiplying the conjugator by its odd representative. Therefore H1(C2,E;c) has exactly the two classes1 andX, and E^c is trivial. The abelian cocycle calculation has zero Y coordinate and X modulo2; these two classes have different images. Consequently every derived cocycle is an E-coboundary. Its unique cobounding element has X exponent0, and decomposing it as Y^n b, with b derived, gives the exact delta_n family. Equality modulo a derived coboundary forces equal Y exponents by the trivial actual fixed group. The continuous compact-to-Hausdorff argument proves the entire pointed homeomorphism with Zhat; no continuous choice of a cobounding element is assumed.
+
+I checked the prescribed permutations and orders by hand. The rotation X has order4, Y is a reflection, and Ad(XY) gives exactly X inverse and XYX inverse. The complete derived subgroup is {1,X squared}; its action is trivial, so all derived coboundaries are1. The printed delta_one is X squared, a nontrivial derived cocycle. The program checks these exact assertions and all multiplication pairs in this one prescribed group; it neither searches other targets nor evaluates the general actual GT class.
+
+The source correctly limits the result to the standard mixed reflection. Its nontrivial entire derived H1 does not identify the specified general beta2/kappa0 action, choose its original transporter class or imply any CM value. No correction is requested.

@@ -1,0 +1,101 @@
+--- code/verify_checkpoint35_inductive_retention.py
++++ code/verify_checkpoint36_inductive_retention.py
+@@ -1,7 +1,7 @@
+-"""Independently verify the CLOSED35 induction step.
++"""Independently verify the CLOSED36 induction step.
+ 
+-Reads only immutable parent34 and child35 archives, plus the pinned anchor;
+-never trusts the current mutable retention table. No archive1-33 is opened.
++Reads only immutable parent35 and child36 archives, plus the pinned anchor;
++never trusts the current mutable retention table. No archive1-34 is opened.
+ The shared reader/validation routines have no import-time mutation.
+ """
+ from pathlib import Path
+@@ -9,7 +9,7 @@
+ import json
+ 
+ from checkpoint_archive_io import CheckpointReader, PREFIX
+-from preserve_checkpoint35_versions_inductive import (
++from preserve_checkpoint36_versions_inductive import (
+     ROOT, REWRITTEN, MAP_FIELDS, require, sha, file_sha, relative, csv_rows,
+     identities, tuple_sha, load_anchor, checked_parent, checked_archive,
+ )
+@@ -17,26 +17,26 @@
+ 
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument('--archive', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_35.zip')
+-    parser.add_argument('--parent', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_34.zip')
+-    parser.add_argument('--anchor', type=Path, default=ROOT / 'records/checkpoint35_retention_parent_anchor.json')
++    parser.add_argument('--archive', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_36.zip')
++    parser.add_argument('--parent', type=Path, default=ROOT.parent / 'LM4_SUCCESSOR_checkpoint_35.zip')
++    parser.add_argument('--anchor', type=Path, default=ROOT / 'records/checkpoint36_retention_parent_anchor.json')
+     args = parser.parse_args()
+     require(args.archive.resolve() != args.parent.resolve(), 'Child is the parent archive')
+     anchor, anchor_raw = load_anchor(args.anchor, args.parent)
+     with CheckpointReader(args.parent) as parent:
+         parent_meta, old, _ = checked_parent(parent, anchor)
+     with CheckpointReader(args.archive) as child:
+-        child_meta = checked_archive(child, 35)
+-        archived_anchor = child.read(PREFIX + 'records/checkpoint35_retention_parent_anchor.json')
++        child_meta = checked_archive(child, 36)
++        archived_anchor = child.read(PREFIX + 'records/checkpoint36_retention_parent_anchor.json')
+         require(archived_anchor == anchor_raw, 'Child does not retain the exact pinned anchor')
+-        cert = json.loads(child.read(PREFIX + 'records/checkpoint35_inductive_retention.json'))
++        cert = json.loads(child.read(PREFIX + 'records/checkpoint36_inductive_retention.json'))
+         require(cert['schema'] == 'checkpoint-inductive-retention-v1' and
+-                cert['parent_number'] == 34 and cert['child_number'] == 35,
++                cert['parent_number'] == 35 and cert['child_number'] == 36,
+                 'Wrong induction certificate')
+         require(cert['parent_archive_sha256'] == anchor['archive_sha256'] and
+                 cert['parent_archive_bytes'] == anchor['archive_bytes'] and
+                 cert['anchor_sha256'] == sha(anchor_raw), 'Certificate parent/anchor differs')
+-        map_data = child.read(PREFIX + 'records/checkpoint35_parent_entry_map.csv')
++        map_data = child.read(PREFIX + 'records/checkpoint36_parent_entry_map.csv')
+         require(sha(map_data) == cert['parent_entry_map_sha256'], 'Map hash mismatch')
+         mapping_rows = csv_rows(map_data)
+         mapping = {}
+@@ -50,13 +50,13 @@
+             require(child_meta.get(target) == parent_meta[rel],
+                     'Child target bytes do not retain the parent payload: ' + rel)
+             mapping[rel] = row
+-        require(set(mapping) == set(parent_meta) and len(mapping) == 10387,
+-                'Parent-entry map is not total on all logical34 entries')
++        require(set(mapping) == set(parent_meta) and len(mapping) == 10746,
++                'Parent-entry map is not total on all logical35 entries')
+         index_data = child.read(PREFIX + REWRITTEN[0])
+         require(sha(index_data) == cert['retention_csv_sha256'], 'Retention index hash mismatch')
+         rows = csv_rows(index_data)
+-        require(len(rows) == 163040 and cert['resulting_rows'] == 163040 and
+-                cert['inherited_rows'] == 152653 and cert['parent_logical_entries'] == 10387 and
++        require(len(rows) == 173786 and cert['resulting_rows'] == 173786 and
++                cert['inherited_rows'] == 163040 and cert['parent_logical_entries'] == 10746 and
+                 cert['omissions'] == 0, 'Wrong induction cardinalities')
+         inherited, added = rows[:len(old)], rows[len(old):]
+         require(identities(inherited) == identities(old) and
+@@ -67,13 +67,13 @@
+                     'Inherited map is not the exact composition')
+         require({r['original_path'] for r in added} == set(parent_meta) and
+                 len({r['original_path'] for r in added}) == len(added),
+-                'New34 rows do not cover exactly the parent entries')
++                'New35 rows do not cover exactly the parent entries')
+         for row in added:
+-            require(row['checkpoint'] == '34' and row['archive'] == args.parent.name,
++            require(row['checkpoint'] == '35' and row['archive'] == args.parent.name,
+                     'Wrong new historical archive key')
+             item = mapping[row['original_path']]
+             require(int(row['bytes']) == int(item['bytes']) and row['sha256'] == item['sha256'] and
+-                    row['retained_path'] == item['retained_path'], 'New34 row differs from parent map')
++                    row['retained_path'] == item['retained_path'], 'New35 row differs from parent map')
+         keys = set()
+         for row in rows:
+             key = (row['checkpoint'], row['archive'], relative(row['original_path']))
+@@ -85,7 +85,7 @@
+         for rel, key in ((REWRITTEN[1], 'summary_sha256'), (REWRITTEN[2], 'readme_sha256')):
+             require(sha(child.read(PREFIX + rel)) == cert[key], 'Published record hash mismatch')
+         summary = json.loads(child.read(PREFIX + REWRITTEN[1]))
+-        require(summary['archives'] == 34 and summary['archive_entries'] == len(rows) and
++        require(summary['archives'] == 35 and summary['archive_entries'] == len(rows) and
+                 summary['omissions'] == 0, 'Closed child summary disagrees')
+     report = dict(schema='checkpoint-inductive-closed-verification-v1',
+                   archive=args.archive.name, bytes=args.archive.stat().st_size,

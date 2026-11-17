@@ -1,0 +1,11 @@
+--- code/verify_checkpoint36_system_tars.py
++++ work_DE/verify_checkpoint36_system_tars_image256_proposed.py
+@@ -51,7 +51,7 @@
+         image_properties = raw.read(9)
+     assert image_properties[:4] == bytes([9,4,5,0])
+     image_dictionary_bytes = struct.unpack('<I',image_properties[5:9])[0]
+-    assert image_dictionary_bytes == 134217728 == packaging['image_lzma_dictionary_bytes']
++    assert image_dictionary_bytes == 268435456 == packaging['image_lzma_dictionary_bytes']
+     document_info = z.getinfo(prefix+'historical_documents.tar')
+     with archive.open('rb') as raw:
+         raw.seek(document_info.header_offset)

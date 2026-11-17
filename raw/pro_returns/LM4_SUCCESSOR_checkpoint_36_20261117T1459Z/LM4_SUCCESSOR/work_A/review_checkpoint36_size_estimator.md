@@ -1,0 +1,11 @@
+# Complete independent source review: checkpoint36 size estimator
+
+Reviewer: /root/involutions. Result: PASS_COMPLETE_SOURCE_REVIEW.
+
+I read the entire 36 estimator and the entire preserved35-to-36 diff, then compared its file-selection predicates with the actual installed packager and read the complete image-dictionary helper. All bound sources/diff and the preserved predecessor were checked at receipt creation. No estimator, packager or other reviewed helper was imported or executed by this reviewer.
+
+The estimator pins the actual closed35 archive (530938760 bytes, SHA256 33b0925ca3ba12d8944fc47243807a3c61ebb2a4f03ec47f7bb2ce1a5a83f121), all 10746 logical paths including the manifest itself, and 163040 inherited rows. It snapshots current authored files using the packager's exclusions, predicts every changed or forced-retained35 logical version, verifies historical collisions by exact bytes and hashes, and rebuilds all three complete prospective standard TAR buckets. Images use the installed 128-MiB method14 helper; documents/data use the actual64-MiB compressor. It measures all three prospective streams, rather than substituting a gain from a previous sample.
+
+The actual old direct main-PDF compressed payload is removed once only after proving that the same size/hash bytes are explicitly present in the measured prospective document TAR and that the changed current main PDF is separately counted. Old ZIP headers stay counted, the PDF cannot also enter removed data payloads, and other changed direct payloads are conservatively retained. The unchanged five-million-byte allowance covers new headers, manifests, retention growth and late text; it is an allowance, not a formal bound on arbitrary later changes. The final immutable archive size remains authoritative.
+
+Both baseline identity and all loaded helper/source identities are checked again after compression. The source refuses an unpreserved repeated estimate, writes its real report even when the cap assertion subsequently fails, and creates no ZIP. The exact current packager hash matches its pinned proposed image128 source. Source review does not preclaim any compression result or actual exit status.

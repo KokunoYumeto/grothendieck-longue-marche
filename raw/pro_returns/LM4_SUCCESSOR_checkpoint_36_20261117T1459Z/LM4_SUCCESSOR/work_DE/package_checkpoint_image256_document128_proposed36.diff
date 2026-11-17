@@ -1,0 +1,31 @@
+--- code/package_checkpoint.py
++++ work_DE/package_checkpoint_image256_document128_proposed36.py
+@@ -5,6 +5,7 @@
+ from checkpoint_standard_tar import build_standard_tar
+ from checkpoint_data_tar import DATA_BUNDLE, DATA_DICTIONARY_BYTES, is_data_bundle_member, standard_data_dictionary
+ from checkpoint_image_tar import IMAGE_DICTIONARY_BYTES, standard_image_dictionary
++from checkpoint_document_tar import DOCUMENT_DICTIONARY_BYTES, standard_document_dictionary
+ p=Path(__file__).resolve().parents[1]
+ a=argparse.ArgumentParser();a.add_argument('number',type=int);o=a.parse_args();name=f'LM4_SUCCESSOR_checkpoint_{o.number:02d}.zip';out=p.parent/name
+ assert not out.exists(),'Never overwrite a checkpoint'
+@@ -102,7 +103,7 @@
+       original_document_bytes=document_metrics['original_bytes'],
+       unique_document_bytes=document_metrics['unique_bytes'],
+       document_zip_method='ZIP_LZMA',
+-      document_lzma_dictionary_bytes=DATA_DICTIONARY_BYTES if o.number >= 35 else 8*1024*1024,
++      document_lzma_dictionary_bytes=DOCUMENT_DICTIONARY_BYTES if o.number >= 36 else (DATA_DICTIONARY_BYTES if o.number >= 35 else 8*1024*1024),
+       current_main_pdf='LM4_SUCCESSOR/LM4_SUCCESSOR_paper.pdf remains a direct ZIP entry',
+       restoration='From ZIP extraction parent:\ntar -xf LM4_SUCCESSOR/verification_images.tar\ntar -xf LM4_SUCCESSOR/historical_documents.tar',
+       manifest_scope='Every original logical file path and byte; the two storage-only TAR containers are separately hashed here.')
+@@ -149,7 +150,10 @@
+   else:
+    z.writestr('LM4_SUCCESSOR/verification_images.tar',image_bundle,compress_type=zipfile.ZIP_LZMA if o.number >= 27 else zipfile.ZIP_DEFLATED)
+  if document_bundle is not None:
+-  if o.number >= 35:
++  if o.number >= 36:
++   with standard_document_dictionary():
++    z.writestr('LM4_SUCCESSOR/historical_documents.tar',document_bundle,compress_type=zipfile.ZIP_LZMA)
++  elif o.number >= 35:
+    with standard_data_dictionary():
+     z.writestr('LM4_SUCCESSOR/historical_documents.tar',document_bundle,compress_type=zipfile.ZIP_LZMA)
+   else:

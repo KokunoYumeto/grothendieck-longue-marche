@@ -1,0 +1,107 @@
+--- code/render_checkpoint35_pdf.py
++++ code/render_checkpoint36_pdf.py
+@@ -1,6 +1,6 @@
+-"""Render final35 PDF pages selected from actual headings; no visual approval.
++"""Render final36 PDF pages selected from actual headings; no visual approval.
+ 
+-Checkpoint35 source. Run only after the final build and fresh metrics have
++Checkpoint36 source. Run only after the final build and fresh metrics have
+ completed. This helper never builds a PDF or changes the paper/register.
+ """
+ from pathlib import Path
+@@ -46,17 +46,17 @@
+     args = parser.parse_args()
+     root = args.root.resolve()
+     pdf_path = root / 'LM4_SUCCESSOR_paper.pdf'
+-    metrics_path = root / 'records/checkpoint35_metrics.json'
++    metrics_path = root / 'records/checkpoint36_metrics.json'
+     metrics_raw = metrics_path.read_bytes()
+     metrics = json.loads(metrics_raw)
+     pdf_bytes = pdf_path.read_bytes()
+     pdf_sha = sha(pdf_bytes)
+-    require(pdf_sha == metrics['pdf_sha256'], 'Final PDF does not match fresh35 metrics')
++    require(pdf_sha == metrics['pdf_sha256'], 'Final PDF does not match fresh36 metrics')
+ 
+     doc = fitz.open(stream=pdf_bytes, filetype='pdf')
+-    require(len(doc) == metrics['pages'], 'Final page count differs from35 metrics')
++    require(len(doc) == metrics['pages'], 'Final page count differs from36 metrics')
+     texts = [page.get_text() for page in doc]
+-    labels = [f'A.{n}' for n in range(112, 120)] + [f'B.{n}' for n in range(167, 169)]
++    labels = [f'A.{n}' for n in range(120, 126)] + [f'B.{n}' for n in range(169, 174)]
+     headings = {}
+     for label in labels:
+         hits = statement_pages(texts, label)
+@@ -65,30 +65,41 @@
+     require(list(headings.values()) == sorted(headings.values()),
+             'New statement headings are not in their actual paper order')
+ 
+-    a_start = headings['A.112']
++    a_start = headings['A.120']
+     a_end = boundary_page(texts, a_start, 'B', 'B.1')
+-    b_start = headings['B.167']
++    b_start = headings['B.169']
+     b_end = boundary_page(texts, b_start, 'C', 'C.1')
+-    require(a_start <= headings['A.119'] <= a_end < b_start <= headings['B.168'] <= b_end,
++    require(a_start <= headings['A.125'] <= a_end < b_start <= headings['B.173'] <= b_end,
+             'Actual new-section intervals are inconsistent')
+     # Inclusive final boundary pages conservatively retain a shared-page tail.
+-    intervals = {'A112_through_A119': [a_start, a_end],
+-                 'B167_through_B168': [b_start, b_end]}
++    intervals = {'A120_through_A125': [a_start, a_end],
++                 'B169_through_B173': [b_start, b_end]}
+     required = sorted(set(range(a_start, a_end + 1)) | set(range(b_start, b_end + 1)))
+     reference_hits = [i + 1 for i, text in enumerate(texts)
+                       if re.search(r'(?m)^\s*References\s*$', text)]
+     require(bool(reference_hits), 'No actual References heading in final PDF')
+     reference_start = reference_hits[-1]
+     require(reference_start > b_end, 'References start precedes the completed new mathematics')
++    editorial_headings = {}
++    for label in ('A.119', 'E.52'):
++        hits = statement_pages(texts, label)
++        require(len(hits) == 1, 'Expected one corrected legacy heading for ' + label + ': ' + repr(hits))
++        editorial_headings[label] = hits[0]
++    require(editorial_headings['A.119'] <= a_start, 'A119 follows the new A interval')
++    require(b_end < editorial_headings['E.52'] <= reference_start, 'E52 boundary is inconsistent')
++    editorial_intervals = {'A119_citation_spacing': [editorial_headings['A.119'], a_start],
++                          'E52_citation_spacing': [editorial_headings['E.52'], reference_start]}
++    editorial_pages = sorted({n for lo, hi in editorial_intervals.values() for n in range(lo, hi + 1)})
++    required_individual = sorted(set(required) | set(editorial_pages))
+     front = list(range(1, min(7, len(doc)) + 1))
+     boundaries = [a_start - 1, a_end + 1, b_start - 1, b_end + 1]
+     references = list(range(reference_start, len(doc) + 1))
+-    pages = sorted({n for n in front + required + boundaries + references + [len(doc)]
++    pages = sorted({n for n in front + required_individual + boundaries + references + [len(doc)]
+                     if 1 <= n <= len(doc)})
+ 
+-    out = root / 'records/pdf_qa/checkpoint35_final'
++    out = root / 'records/pdf_qa/checkpoint36_final'
+     require(not out.exists() or not any(out.iterdir()),
+-            'Preserve the existing35 render directory before a new final render')
++            'Preserve the existing36 render directory before a new final render')
+     out.mkdir(parents=True, exist_ok=True)
+     for n in pages:
+         doc[n - 1].get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False).save(
+@@ -118,10 +129,14 @@
+         'actual_statement_heading_pages': headings,
+         'required_new_mathematical_intervals_inclusive': intervals,
+         'required_new_mathematical_pages': required,
++        'editorial_statement_heading_pages': editorial_headings,
++        'required_editorial_intervals_inclusive': editorial_intervals,
++        'required_editorial_pages': editorial_pages,
++        'required_individual_pages': required_individual,
+         'front_matter_pages': front, 'references_start_page': reference_start,
+         'rendered_pages': pages, 'contact_sheets': len(contact_names),
+         'contact_files': contact_names, 'contact_page_capacity': 9,
+-        'scope': 'Final combined PDF only. Entire actual A112-A119 and B167-B168 intervals, inclusive boundary pages, front1-7, all References pages, and final document page.',
++        'scope': 'Final combined PDF only. Entire actual A120-A125 and B169-B173 intervals, plus entire heading-located corrected A119 and E52 intervals, inclusive boundary pages, front1-7, all References pages, and final document page.',
+         'visual_approval': False,
+         'approval_scope': 'Rendering is not visual inspection or approval. Every required page still needs individual review.',
+     }
+@@ -129,6 +144,7 @@
+     doc.close()
+     print(json.dumps({'rendered_pages': len(pages), 'required_new_mathematical_pages': len(required),
+                       'contact_sheets': len(contact_names), 'intervals': intervals,
++                      'editorial_intervals': editorial_intervals, 'required_individual_pages': required_individual,
+                       'pdf_sha256': pdf_sha, 'visual_approval': False}, indent=2))
+ 
+ 
