@@ -1,0 +1,58 @@
+from author import Page
+import re
+p=Page('156-4',26)
+p.replace('\\cotefile{156-4}\n','')
+p.replace(r'\unsure{scholie}','scholie')
+p.replace(r'\unsure{definie|définie}','definie')
+p.replace(r'\unsure{\mathcal{F}|\mathscr{F}}',r'\mathcal{F}')
+p.replace(r'\textsuperscript{\unsure{$\times$/}}',r'\textsuperscript{$\times$/}')
+p.replace(r'\unsure{fermées|ferm}','ferm')
+p.replace(r'\unsure{La|la}','La')
+p.replace(r'\unsure{Contenu|Contenue}','Contenu')
+p.replace(r'\unsure{4|5}','5')
+p.replace(r'\unsure{la|le}','le');p.replace(r'\unsure{la|les}','la')
+# Alphabet choices are recorded individually, with medium confidence for manuscript-to-font mapping.
+s=p.text
+for letter,latex in [('L',r'\mathcal{L}'),('P',r'\mathcal{P}')]:
+ matches=list(re.finditer(r'(?<![A-Za-z\\])'+letter+r'(?=[_{^| $)}(])',p.text))
+ for i,m in enumerate(matches,1):
+  t=m.start();cp='top' if t<p.text.index("L'ens.") else 'families' if t<p.text.index(r'\unsure{Là') else 'support' if t<p.text.index(r'\uline{Cont}') else 'bottom'
+  p.change(f'{letter} occurrence {i}',letter,letter if letter=='L' else r'\mathfrak P',latex,'L has a curved rising stem and returning foot in the larger instances, straighter in small parentheses; P has a stem and angular upper bowl. The repeated alphabet is encoded consistently.',cp,dc=True,kind='misread symbol or index',confidence='medium')
+ for m in reversed(matches):p.text=p.text[:m.start()]+latex+p.text[m.end():]
+def r(place,C,H,F,ev,cp,dc=False,dh=True,kind='other',confidence='high',marked='no',consequential=''):
+ p.change(place,C,H,F,ev,cp,dc=dc,dh=dh,kind=kind,confidence=confidence,marked=marked,consequential=consequential)
+r('opening heading','On reprend tout !','placed before H page 25','On reprend tout !','The large heading sits below manuscript number 25 at the top of this scan.','top',kind='insertion or placement')
+r('definition heading',r'\unsure{scholie}','scholie.','scholie','s-c-h-o-l-i-e is visible after the hyphen; no final point appears before Une.','top',True,kind='other')
+r('C placement',r'\inserted C','inline C',r'\inserted C','The C is written above and to the right of contrée, away from the line.','top',kind='insertion or placement')
+r('first definie',r'\unsure{definie|définie}','définie','definie','No accent is present above the first e; dots belong to the later i letters.','top',True,kind='abbreviation expanded or spelling modernised')
+r('appelés','appelés','appelées','appelés','The ending after the tall l shows the accented e and final s without an additional e loop.','top',kind='misread word',confidence='medium')
+r('de la contrée insertion',r'\inserted{(de la contrée)} after figures','(de la contrée) after L; de C after figures',r'\inserted{(de la contrée)} after figures','Small parenthesis is raised directly above the end of figures and has a curved insertion leader.','top',kind='insertion or placement')
+r('family F',r'\unsure{\mathcal F|\mathscr F}',r'\mathfrak F',r'\mathcal F','Sweeping top stroke, crossbar and a returning low loop distinguish this form from the straight figure F.','families',True,kind='misread symbol or index',confidence='medium')
+r('cancelled ensemble location',r'\deleted{ensemble} before partie',r'\struck{ensemble} after figure',r'\deleted{ensemble} before partie','Horizontal line crosses ensemble immediately after une and before partie.','families',kind='insertion or placement')
+r('F in parenthesized membership','F',r'\mathfrak F','F','This F has a simple stem and two bars, without the low loop of the preceding family sign.','families',kind='misread symbol or index',confidence='medium',consequential='The parenthesized membership starts with plain F, preserved separately from the preceding looped family F.')
+r('overwritten F after Si',r'\deleted{\unsure{\mathcal F|F}}F','F',r'\deleted{\unsure{\mathcal F|F}}F','An earlier curved/slanting stem overlaps the dark live F; its full foot is obscured.','families',kind='omission',confidence='medium');p.doubt('overwritten F after Si',r'\mathcal F|F','The overwritten lower stroke does not securely distinguish the earlier alphabet','families')
+r('possessive before éléments','ses','les','ses','The first letter is a low angled s stroke, followed by e/s, without a tall l.','families',kind='misread word')
+r('superscript after éléments',r'\unsure{$\times$/}','omitted',r'$\times$/','Small crossed diagonals are followed by a separate forward slash above the baseline.','families',True,kind='omission')
+r('qui sont des parties parenthesis','main-line parenthesis','inserted parenthesis','main-line parenthesis','Opening parenthesis follows the superscript on the same baseline; the continuation occupies the following main line.','families',kind='insertion or placement')
+r('before réunion',r'\unsure{Là|Lá|La}','La',r'\unsure{Là|Lá|La}','A small upright or slightly oblique mark stands over the open a; its direction and status remain uncertain.','lareunion',kind='abbreviation expanded or spelling modernised',confidence='medium');p.doubt('before réunion','Là|Lá|La','The short mark above a does not settle accent orientation','lareunion')
+r('cancelled ferm',r'\unsure{fermées|ferm}','fermées','ferm','Tall f followed by three low connected humps ends under the strike; no accented é or final es follows.','support',True,kind='abbreviation expanded or spelling modernised',confidence='medium')
+r('support notation insertion',r'\inserted{noté |F|.}','et notée |F|',r'\inserted{noté |F|.}','Small raised noté, two bars around F and a terminal point are attached by a curved leader; no et.','support',kind='insertion or placement')
+r('a initial article',r'\unsure{La|la}','La','La','The tall triangular/looped initial L rises above the a.','bottom',True,False,confidence='medium')
+r('cancelled noun in a',r'\deleted{strate}',r'\struck{Axiome} near heading',r'\deleted{strate} before figure','The crossed word begins with the same tall str- forms as strates elsewhere; it lies on the line before figure.','bottom',kind='misread word')
+r('figure vide quotation','paired double ticks','guillemets','paired double ticks','Two short strokes before figure and paired short strokes after vide.','bottom',kind='other')
+r('oblique note first word',r'\unsure{Contenu|Contenue}',r'\ill{}','Contenu','Rotated word ends in one low u stroke without a further e.','margin',True,kind=r'readable ink left as \ill{}',confidence='medium')
+r('oblique note reference',r'\unsure{4|5}',r'\ill{}','5','Digit has an upper hook and curved lower bowl; no angular 4 crossbar.','margin',True,kind=r'readable ink left as \ill{}')
+r('oblique note other words','dans Cont plus bas',r'\ill{}','dans Cont plus bas','Dans, underlined Cont and plus bas occupy the next two rotated lines.','margin',kind=r'readable ink left as \ill{}')
+r('b cancelled initial article',r'\unsure{la|le}','la','le','A tall looped l is followed by a short open e stroke under the cancellation.','brevision',True,kind='misread word',confidence='medium')
+r('b after figure','ayant',r'\ill{}','ayant','Low a, descending y and ending a-n-t can be followed between figure and the crossed article.','brevision',kind=r'readable ink left as \ill{}')
+r('b cancelled article before strate',r'\unsure{la|les}','les','la','Looped l and a dark a-like oval remain; the following line is a strike, with no distinct s.','brevision',True,kind='misread word',confidence='medium')
+r('b noun before unique','strate','strates','strate','The final t/e curve ends without another s stroke at the right end of the line.','bottom',kind='misread word',confidence='medium')
+r('b underline extent',r'\uline{figure ponctuelle}',r'figure \emph{ponctuelle}',r'\uline{figure ponctuelle}','A distinct underline lies below figure on the first line and below ponctuelle on the next.','bottom',kind='other')
+r('last definie',r'\unsure{definie|définie}','définie','definie','The first e has no accent; separated points appear above the later i letters.','bottom',True,kind='abbreviation expanded or spelling modernised')
+r('last punctuation','no final point','final point','no final point','The last x is followed by blank paper.','bottom',kind='text not on the page')
+r('repeated cote marker',r'\cotefile{156-4}','not applicable','single cote marker at start of cote','No new cote begins on this sheet; the repeated file-level marker is omitted in the consolidated stream.','top',True,False,kind='other')
+p.inventory([('text','top','25; On reprend tout !'),('text','upper','Définition-scholie Une contrée'),('insertion','above definition','C'),('insertion','upper right','(de la contrée)'),('text','upper middle','L’ens. family F des figures'),('deletion','before partie','ensemble'),('deletion','after Si','earlier F'),('insertion','after éléments','superscript ×/'),('text','middle','ses éléments … strates (fermées)'),('text','middle','Là réunion des strates'),('deletion','middle','ferm'),('insertion','above On pose','noté |F|.'),('text','middle lower','On pose des axiomes des contrées'),('text','lower','Cont 1 a) La partie vide'),('deletion','lower a','strate'),('margin note','lower left oblique','Contenu dans Cont 5 plus bas'),('margin note','left beside b','double vertical stroke'),('text','bottom','b) forall x∈L'),('deletion','bottom','le'),('insertion','bottom above figure','il y a une'),('deletion','bottom before strate','la')])
+p.notation('family F versus figure F',r'\mathcal F / F','First family sign has sweeping upper bar and low returning loop; individual figure signs have straight stems')
+p.notation('marker after éléments',r'\textsuperscript{$\times$/}','Small raised cross followed by a forward slash')
+p.r['abbreviations']=[dict(abbreviation='ens.',expansion='ensemble',evidence='definition and family paragraph'),dict(abbreviation='ferm',expansion='fermées',evidence='cancelled after strates'),dict(abbreviation='Cont',expansion='condition / contrainte',evidence='numbered heading and margin reference')]
+p.save()

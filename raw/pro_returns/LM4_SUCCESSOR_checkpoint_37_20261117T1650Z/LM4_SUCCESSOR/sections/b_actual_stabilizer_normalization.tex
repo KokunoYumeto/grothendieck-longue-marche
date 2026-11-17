@@ -1,0 +1,109 @@
+% Proposed B.148; owned source, no central edits.
+\subsection*{The actual stabilizer in a free-three marking}
+\statement{B.148}{Proved}{The complete one-family stabilizer is an exact primitive-word return subgroup}
+\label{stmt:B148}
+All groups in this statement belong to the actual one-neck annular model
+of B.114 and B.139. Put
+\[
+ Q_f=\langle C,\tau,f\mid C^2=\tau^2=1\rangle,
+ \qquad S=F(m,v),\qquad E=Q_f\rtimes S.
+\]
+The actual operators and ordered peripheral cocycle are
+\begin{equation}\label{eq:B148-input}
+\begin{gathered}
+ \alpha_m(f)=f^{-1}CfCf,\quad \alpha_m(C)=f^{-1}Cf,
+ \quad\alpha_m(\tau)=\tau,\\
+ \alpha_v(f)=\tau f\tau,\quad \alpha_v(C)=f^{-1}Cf,
+ \quad\alpha_v(\tau)=\tau,\\
+ h_m=1,\quad h_v=f^{-1},\qquad
+ h_{st}=\alpha_s(h_t)h_s.
+\end{gathered}
+\end{equation}
+Thus the actual graph section is
+$H=\{h_s^{-1}s:s\in S\}=\langle m,fv\rangle$.
+Set $u=m^{-1}v$ and
+\[
+ r=\tau f^{-1}C,\qquad \bar r=\tau r\tau=f^{-1}C\tau,
+ \qquad w=\tau C.
+\]
+Then $T_0=Q_f^0=F(r,\bar r,w)$, $E^0=T_0\rtimes S$, and
+\begin{equation}\label{eq:B148-actions}
+\begin{array}{c|ccc}
+ &r&\bar r&w\\\hline
+ m&r&\bar r&rw^{-1}\bar r^{-1}\\
+ m^{-1}&r&\bar r&\bar r^{-1}w^{-1}r\\
+ u&w^{-1}rw&w\bar r w^{-1}&w\\
+ u^{-1}&wrw^{-1}&w^{-1}\bar r w&w
+\end{array}
+\end{equation}
+For every integer $n$, $h_{u^n}=w^{-n}r^n$. The entire discrete
+centralizers and stabilizer are
+\begin{equation}\label{eq:B148-centralizers}
+\begin{gathered}
+ C_{E^0}(r)=\langle r\rangle\times H,\qquad
+ L:=H\cap S=\{s\in S:\alpha_s(r)=r\},\\
+ C_E(\langle\tau,r\rangle)=L.
+\end{gathered}
+\end{equation}
+Moreover the whole subgroup with the $u$ direction has the two equivalent
+presentations
+\begin{equation}\label{eq:B148-vertex}
+\begin{aligned}
+ T_0\rtimes\langle u\rangle
+ &=\langle u,w,r,\bar r\mid[u,w],[wu,r],[w^{-1}u,\bar r]\rangle\\
+ &=\langle u,k,h,\bar r\mid[u,k],[h,k],[u^2k^{-1},\bar r]\rangle,
+ \quad k=wu,\ h=r^{-1}k.
+\end{aligned}
+\end{equation}
+\begin{proof}
+Put $t=f^{-1}C$. Substitution in \eqref{eq:B148-input} gives
+\[
+ \alpha_m(t)=t,\quad\alpha_m(C)=tCt^{-1},\qquad
+ \alpha_u(C)=C,\quad\alpha_u(\tau)=\tau,\quad
+ \alpha_u(t)=(\tau C)t(\tau C),\quad h_u=Ct.
+\]
+The inverse basis formulas are $C=\tau w$ and
+$f=w^{-1}\bar r^{-1}$, while conjugation by $\tau$ exchanges $r,\bar r$
+and inverts $w$. They give inverse presentations
+$Q_f=F(r,\bar r,w)\rtimes\langle\tau\rangle$, and direct substitution
+gives every signed row in \eqref{eq:B148-actions}.
+In this basis $h_u=w^{-1}r$, $h_{u^{-1}}=wr^{-1}$ and
+$H=\langle m,r^{-1}wu\rangle$. On $F(r,w)$ the $u$ operator is
+$\operatorname{Inn}(w^{-1})$; the ordered cocycle therefore gives
+$h_{u^n}=w^{-n}r^n$ by induction for positive $n$, and the inverse
+cocycle gives the same formula for negative $n$.
+
+Both displayed generators of $H$ centralize $r$, and $H\to S$ is the
+actual section isomorphism. Write an arbitrary element of $E^0$ as
+$n h_s^{-1}s$, with $n\in T_0$. It centralizes $r$ exactly when $n$
+does. Since $r$ is a free basis generator, $C_{T_0}(r)=\langle r\rangle$.
+The two factors commute and intersect trivially under the projection to
+$S$. This proves the first centralizer formula.
+
+The character
+\[
+ \chi_x(r)=1,\quad\chi_x(\bar r)=-1,\quad\chi_x(w)=1
+\]
+is invariant under all four signed rows. It vanishes on the signed
+cocycle generators and hence on every $h_s$. The generator identities
+and the ordered cocycle prove
+$\alpha_s(r)=h_srh_s^{-1}$ for every source word. If $s$ fixes $r$,
+then $h_s=r^n$; applying $\chi_x$ forces $n=0$. This proves the exact
+return description of $L$, with no residual cyclic ambiguity.
+
+Ordinary free-product normal form in $Q_f$ gives
+$C_E(\tau)=\langle\tau\rangle\times S$. An element $\tau s$ in its odd
+coset could centralize $r$ only if $\alpha_s(r)=\bar r$. This is
+impossible: the left side is conjugate to $r$, and $r,\bar r$ have
+distinct free abelianizations. The last centralizer formula follows.
+Finally the first presentation in \eqref{eq:B148-vertex} is exactly
+the $u$ row. Substituting $k=wu$, $h=r^{-1}k$, with inverses
+$w=ku^{-1}$, $r=kh^{-1}$, gives the second presentation in both
+directions. The full $m$ operator on all of $T_0$ remains part of $E^0$.
+\end{proof}
+The literal inverse bases, signed operators and ordered corrections are
+checked from the frozen actual input by
+\path{work_CE/code/check_one_family_stabilizer_normalization30.py},
+with its genuine output and complete certificate retained. The
+centralizer and all-integer assertions are the proofs above, not an
+inference from the forty-five checked identities.

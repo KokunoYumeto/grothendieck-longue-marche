@@ -1,0 +1,11 @@
+# Work state at hourly checkpoint 02
+
+39 pages have completed the first personal visual transcription and inventory: 328–343, 345–346, 348–353, 355, 357–370. Scan 371 whole and both halves have been personally viewed, with further personal crops for its dense small writing. Its transcription is being drafted; it has not been committed. Scans 344, 347, 354, 356 are absent as supplied blanks. Scan 369 has only handwritten page number 370 on otherwise empty staff paper.
+
+No second-pass audits or freeze yet. Context contents remain closed and unextracted; only initial central-directory metadata was listed (logged). No OCR has been used. No page transcription or visual reading has been delegated. Continue the single personal stream through 376, then audit all 45 pages personally, compare notation, concatenate exact page bytes, hash/freeze, and only then log context opened and extract/read README and RESULTS_STATE. Never alter the transcription after opening context. The prompt attachment contains the complete requirements.
+
+The mechanical validator has compiled individual page fragments through 368 in a private local TeX harness. The four initial source syntax failures (328,342,345,357) were repaired by root; targeted recheck passes. Reports and reusable scripts are in records/. Underlining/editorial wrappers in the syntax harness are transparent because ulem is not locally available; compilation certifies syntax, not typography. No combined transcription has been made yet.
+
+Remaining audit attention: 338 possible duplicate C(X) between formula and normalization diagram; 332 stroke vs ellipsis; 348/350/352 severe fading; 355 arc labels; 362 box/question mark; 363 circles; 368 large oval. Printed staff ruling, show-through, and fragments from underlying sheets through punched holes are excluded as stationery artifacts, not manuscript inscriptions. Refer to reading_ledger.jsonl and doubts for all detailed uncertainties.
+
+Checkpoint 01 was saved at the first hourly milestone. Checkpoint 02 due 16:35:35 UTC; checkpoint 03 due 17:35:35 UTC, etc. Save each once and never overwrite. The only final download is MPL_136_328-376.zip containing all outputs and records, excluding supplied scans/context.

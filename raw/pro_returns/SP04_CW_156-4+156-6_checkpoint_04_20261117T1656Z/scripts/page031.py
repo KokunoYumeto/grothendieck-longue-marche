@@ -1,0 +1,76 @@
+from author import Page
+import re
+p=Page('156-4',31)
+p.replace(r'\unsure{remplace}', 'remplace')
+p.replace(r'F,\unsure{G|C}',r'F,\unsure{C|G}')
+p.replace(r'V$ de $G$',r'V$ de $\unsure{C|G}$')
+p.replace(r'\unsure{dist.}', 'dist.')
+p.replace(r'$\unsure{U}$',r'$U$')
+p.replace(r'$\deleted{\unsure{\{x\}\{\}\{|\{x\}\}}-\{x,y\}}$',r'$\deleted{\unsure{\{x\}\{\}\{|\{x\}\}}\unsure{-|=}\{x,y\}}$')
+p.replace(r'\unsure{ensemblistes}','ensemblistes')
+p.replace(r'\unsure{+}',r'$+$')
+p.replace(r'\unsure{consistant}','consistant')
+p.replace(r'\deleted{\unsure{\ne}}\unsure{\in}',r'\deleted{\ne}\in')
+p.replace(r'\deleted{Si $x=y$, \unsure{on dit alors}}',r'\deleted{Si $x\ne y$, \unsure{on dit alors}}')
+p.replace(r'\deleted{\unsure{$\{$}}',r'\deleted{$\{$}')
+p.text=re.sub(r'(?<![A-Za-z\\])L(?![A-Za-z])',lambda m:r'\mathcal L',p.text)
+p.replace(r'P_2(',r'\mathcal P_2(')
+def c(loc,C,H,F,ev,cr,dc=False,dh=True,kind='other',conf='high',mark='no',con=''):
+ p.change(loc,C,H,F,ev,cr,dc,dh,kind,conf,mark,con)
+c('opening parenthesis','exemples non ensemblistes à venir','exemples [visuels?] non ensemblistes, à suivre','exemples non ensemblistes à venir','After exemples the visible non is followed by ensemblistes; final word begins v, then e-n-i-r, without s-u-i-v.','top',kind='misread word',mark='yes')
+c('heading question mark','(?)','omitted','(?)','Large question hook and dot enclosed in two curved brackets at left.','heading',kind='omission')
+c('slanted instruction','[remplace?] Cont 4','omitted','remplace Cont 4','Rotated short note has initial re, m, descending p, and lace; Cont is separately underlined.','margin1',True,kind='omission',conf='medium')
+c('condition heading','Cont with 1 above 4',"Cont′₄",'Cont with 1 above 4','Thick upper digit has angled top and vertical downstroke; separate angular 4 is below. Only Cont carries a horizontal underline. H notes the overlaid digits but its text substitutes a prime.','heading_number',kind='misread symbol or index',mark='yes')
+c('condition opening','Pour que deux figures F,[G|C] soient','Si F,G sont deux figures ... telles que ...','Pour que deux figures F,[C|G] soient','Pour, que, deux, figures and soient are readable in their baseline order; F and open C-shaped letter sit above the gap after figures.','heading',True,kind='misread word',conf='medium')
+c('condition inserted letters','F,[G|C] inserted','F,G in running opening','F,[C|G] inserted','Both letters are raised, with an oblique insertion leader; second letter is open and lacks a distinct inward G return.','heading',True,kind='insertion or placement',conf='medium')
+c('left rule alongside condition','vertical rule','omitted','vertical rule','A straight vertical stroke brackets the condition from compatibles down through the condition lines.','margins_full',kind='omission')
+c('criterion connective',"compatibles, il f. et s. qu'elles le soient",r'... \ill{} ...',"compatibles, il f. et s. qu'elles le soient",'Readable baseline compa-tibles, short il, f., et, s.; overlying diagonal text does not erase these strokes.','heading',kind=r'readable ink left as \ill{}',mark='yes')
+c('cancelled stratum phrase','strates [dist.?]','omitted','deleted strates dist.','Crossing horizontal line runs through strates and abbreviated dist.; d ascender, i dot and final t stroke remain.','condition',True,kind='omission',conf='medium')
+c('first stratum symbol','[U?]','U','U','Two long joined downstrokes form U; thick retracing does not supply a V diagonal.','condition',True,False,conf='medium')
+c('second figure in condition','G','G','[C|G]','The open curved letter has a long low exit, with no separate inward bar; alternate G retained because the exit can serve as its foot.','condition',True,kind='misread symbol or index',conf='medium')
+c('cancelled on ait placement','U≠V, deleted on ait','deleted on ait U≠V','U≠V, deleted on ait','The deleted words occupy the same baseline immediately to the right of U≠V.','condition',kind='insertion or placement')
+c('cancelled preliminary formula',r'deleted [\{x\}\{\}\{|\{x\}\}] then live -\{x,y\}',r'deleted \{x,y\}',r'deleted [\{x\}\{\}\{|\{x\}\}] [-|=]\{x,y\}','One cancellation line runs from the first brace cluster all the way through the final y and right brace. The short sign above that line permits minus or an equals with merged lower stroke; early braces remain overlapped.','cancel_formula',True,kind='deletion state (struck given live or live given struck)',conf='medium',con='The entire preliminary set formula is cancelled, including its final {x,y}.')
+c('compatibility parenthesis ending','compatibles, no closing parenthesis','compatibles).','compatibles, no closing parenthesis','Blank space after the final s; no closing curve or terminal point on this line.','condition',kind='text not on the page')
+c('parenthetical abbreviation','i.e','i.e.','i.e','A dot follows i; none follows the small e before the brace group.','condition',kind='abbreviation expanded or spelling modernised')
+c('first slanted NB',"Les contrées [ensemblistes?] ou contrées de pts ...",'partial editorial description of multistrates X-hat and Y-hat',"NB Les contrées ``ensemblistes'' ou ``contrées de pts'' sont celles qui satisfont Cont′₄, et telles que toute partie de L à 2 él. est une 0-sphère i.e. deux lieux + distincts y sont disjoints.",'Rotated margin reads from NB through contrées, ensemblistes and contrées de pts; then Cont with prime and subscript 4, numeral 2 and 0-sphère; final disjoints is at the far right. No multistrate formula is written in this margin.','margins_full',True,kind='omission',conf='medium',mark='yes',con='Restores the full marginal criterion for contrées de pts.')
+c('first slanted NB plus','[+?]','omitted','+','Separate upright and horizontal strokes occur between lieux and distincts, on the margin baseline.','margin1',True,kind='omission',conf='medium')
+c('H description of interline', 'no such text','toute multistrate X-hat de F est comp. à toute Y-hat ...','no such text','Reading the rotated lines yields the two NB definitions; their crossings with the main text do not form H’s reported multistrate sentence.','margins_full',kind='text not on the page',mark='yes')
+c('main NB definition',r'on note [F|E]_x la figure \{\{x\}\}, [consistant?] en la seule strate \{x\}',r'\ill{} deleted \ill{} inserted \ill{} la seule strate deleted \ill{}',r'on note [F|E]_x la figure \{\{x\}\}, consistant en la seule strate \{x\}','on note, la figure and consistant en are continuous live writing; doubled braces and x are visible, and {x} continues at the left of the next line. The named F/E is overwritten.','middle',True,kind=r'readable ink left as \ill{}',conf='medium',mark='yes')
+c('main NB named figure','[F|E]_x','unread','[F|E]_x','Several superimposed horizontal bars and the left stem prevent a secure F/E decision; subscript x is distinct.','middle',False,kind=r'readable ink left as \ill{}',conf='low',mark='yes')
+c('second slanted NB','Un lieu x ... si si ...','omitted','Un lieu x ... si si ...','Rotated note reads Un lieu x de L est dit ponctuel, then si at right and another si before the quantifier on the next line; all subsequent words through un pt. ! are present.','margins_full',kind='omission',con='Restores the definition of a ponctuel lieu and the marginal characterization of contrées de points.')
+c('second NB changed membership',r'deleted [≠?] [∈?] L','omitted',r'deleted ≠ ∈ L','Two equal-length bars with diagonal form the cancelled inequality; the surviving membership arc and middle stroke are visible at its right.','margin2',True,kind='omission',conf='medium')
+c('second NB subject y','[y?]','omitted','[y?]','A curved descending mark occupies the subject position but is crossed by the main-text stroke; doubt retained.','margins_full',kind='omission',conf='low')
+c('cancelled opening before Si','deleted Dire que les fig','omitted','deleted Dire que les fig','A continuous cancellation line passes through all four abbreviated words; the final g has its long loop.','middle',kind='omission')
+c('compatibility sentence opening','Si x,y∈L dire que','Si x,y∈L, disons que','Si x,y∈L dire que','After Si x,y∈L the next line begins d-i-r-e; no s-o-n-s group.','middle',kind='misread word')
+c('overwritten arguments in pair',r'\{deleted [\{x\},\{y\}?] F_x,F_y\}',r'\{F_x,F_y\}',r'\{deleted [\{x\},\{y\}?] F_x,F_y\}','Small brace and x/y strokes underlie the large replacement Fs and indices; the overprinted group remains uncertain.','middle',kind='omission',conf='low')
+c('cancelled article','deleted une','deleted unread','deleted une','Three shallow joined curves remain below the crossing line.','middle',kind=r'readable ink left as \ill{}',mark='yes')
+c('following assertion',"C'est toujours vrai si x=y.",'(ce qui [toujours?] vrai si x=y).',"C'est toujours vrai si x=y.",'Large C, apostrophe and est lead the independent line; toujours has its descending j; no enclosing parentheses.','disjoint',kind='misread word',mark='yes')
+c('cancelled new case','deleted Si x=y, [on dit alors?]','live Si x≠y, deleted dites','deleted Si x≠y, [on dit alors?]','Si ends the preceding line and the next line is struck across x, inequality, y and words. Two bars and a short diagonal give ≠; dit and final alors are partly merged with the cancellation.','cancel_si',True,kind='deletion state (struck given live or live given struck)',conf='medium',con='The abandoned distinct-point case uses ≠ and is cancelled.')
+c('replacement On dit','inserted On dit','on dit in baseline','inserted On dit','On dit sits above the cancelled clause with a curved insertion leader.','disjoint',kind='insertion or placement')
+c('cancelled opening brace before x,y',r'deleted [\{?]','omitted',r'deleted \{','A tall brace with a pointed waist is crossed at the left of x,y.','disjoint',True,kind='omission',conf='medium')
+c('cancelled i.e. fragment',r'deleted [i.e ssi?] [\{x?]','i.e. unread, live',r'deleted [i.e ssi?] [\{x?]','Long strike passes through the i/e group, short joined strokes and initial brace with x; the middle letters remain compressed.','disjoint',kind='deletion state (struck given live or live given struck)',conf='low',mark='yes')
+c('On dit aussi','On dit aussi','omitted','On dit aussi','Clear On dit followed by low a-u and dotted i before raised alors.','disjoint',kind='omission')
+c('raised alors','inserted alors','alors live inline','inserted alors','The five letters are above the baseline, connected by a curved leader between aussi and que.','disjoint',kind='insertion or placement')
+c('sphere emphasis','0-underlined sphère','0-sphère without emphasis','0-underlined sphère','A separate horizontal stroke starts under s and ends under final e.','disjoint',kind='other')
+c('cancelled de before A,B','deleted [de?]','omitted','deleted [de?]','Small dark crossed group remains between parties and A; ascender survives but the joined lower loop is blotted.','bottom',kind='omission',conf='low')
+c('last paragraph verb','sont dit','sont dites','sont dit','Final t has a long exit; no e or s follows before the line ends.','bottom',kind='abbreviation expanded or spelling modernised')
+c('disjoint sets qualification','(au sens de la contrée C -- ou C-disjointes)',r'(\ill{} contrée C) — ou emphasized C-disjointes —','(au sens de la contrée C -- ou C-disjointes)','au sens de la is readable; opening parenthesis precedes au and closing parenthesis follows disjointes; no underline under C-disjointes.','bottom',kind=r'readable ink left as \ill{}',mark='yes')
+c('recurring underlying locus letter','L','L',r'\mathcal L','Long curved ascender with an extended low rightward foot matches the previously recorded manuscript locus letter; same identifier in both witnesses.','middle',True,False)
+c('powerset letter','P_2',r'\mathfrak P_2',r'\mathcal P_2','Angular doubled bowl on long stem and lower 2; font mapping follows the same manuscript sign already recorded.','disjoint',True,False)
+for loc,rd,why,cr,cf in [
+ ('inserted second figure and V’s figure','C|G','Open curve without definite inner G bar; preserve the alternate.','condition','medium'),
+ ('cancelled first brace group',r'\{x\}\{\}\{|\{x\}\}','Brace strokes intersect the cancellation; exact nesting is uncertain.','cancel_formula','low'),
+ ('cancelled relation sign','-|=','Short upper stroke with possible lower stroke merged into cancellation.','cancel_formula','medium'),
+ ('named point figure','F|E','Multiple overwritten bars.','middle','low'),
+ ('second margin subject','y','Main text intersects the descending letter.','margins_full','low'),
+ ('overwritten pair arguments',r'\{x\},\{y\}','Small former arguments lie under the replacement Fs.','middle','low'),
+ ('cancelled phrase after x≠y','on dit alors','Cancellation obscures initial on and part of alors.','cancel_si','medium'),
+ ('cancelled definition fragment','i.e ssi','Compressed letters under stroke.','disjoint','low'),
+ ('cancelled incomplete brace fragment',r'\{x','Lower stroke intersects the x.','disjoint','medium'),
+ ('cancelled word before A,B','de','Dark overwrite limits word identification.','bottom','low')]:p.doubt(loc,rd,why,cr,cf)
+p.inventory([
+ ('text','top','Pour les contrées non ensemblistes'),('margin note','left of heading','(?)'),('margin note','slanted near heading','remplace Cont 4'),('text','upper condition','Cont 1/4 Pour que deux figures'),('insertion','above figures','F,C/G'),('margin note','left of condition','vertical rule'),('deletion','condition line 3','strates dist.'),('deletion','condition after U≠V','on ait'),('deletion','condition quantification','tout'),('deletion','condition preliminary formula','brace group -/= {x,y}'),('text','condition continuation','{{x},{y}} soit une figure'),('margin note','diagonal upper left','NB Les contrées ensemblistes'),('text','middle','NB Pour tout x∈L'),('margin note','diagonal lower left','NB Un lieu x de L'),('deletion','second margin quantifier','≠'),('deletion','middle opening draft','Dire que les fig'),('text','middle continuation','Si x,y∈L dire que'),('deletion','overwritten pair','{x},{y}'),('deletion','before une figure','une'),('text','below figure assertion',"C’est toujours vrai si x=y"),('deletion','new case abandoned','Si x≠y, on dit alors'),('insertion','above cancellation','On dit'),('deletion','before x,y','{'),('text','disjointness definition','x,y sont disjoints'),('deletion','after compatibles','i.e ssi {x'),('text','sphere naming','On dit aussi alors que'),('insertion','above aussi que','alors'),('text','bottom','Deux parties A,B'),('deletion','between parties and A','de')])
+p.notation('locus alphabet',r'\mathcal L','Curved tall ascender and low extended foot, repeated in main text and both margins.')
+p.notation('powerset sign',r'\mathcal P','Long stem with angular upper bowl and doubled short bar, subscript 2.')
+p.r['abbreviations']=[dict(abbreviation='il f. et s.',expansion='il faut et suffit',evidence='condition heading'),dict(abbreviation='pts',expansion='points',evidence='first diagonal NB'),dict(abbreviation='pt.',expansion='point',evidence='second diagonal NB'),dict(abbreviation='él.',expansion='éléments',evidence='first diagonal NB'),dict(abbreviation='dist.',expansion='distinctes',evidence='cancelled strates phrase'),dict(abbreviation='fig',expansion='figures',evidence='cancelled Dire que les fig')]
+p.save()

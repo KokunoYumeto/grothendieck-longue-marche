@@ -1,0 +1,123 @@
+Mechanical first-pass validation through scan 365
+UTC: 2026-11-17 16:22:08 UTC
+Scope: read-only textual structure; no images/context, interpretation, transcription edits, combined transcription, or freeze.
+
+
+Command: python -B /workspace/scratch/e329932b5352/MPL_136_328-376/records/validate_package.py
+Exit: 1
+ERROR: No inventory rows for existing page 366
+ERROR: Missing done record for existing page 366
+INFO: Partial mode: 35 / 45 expected page files present.
+INFO: Command outside convenience allow-list: \boxed (scans 355, 362)
+INFO: Command outside convenience allow-list: \fbox (scans 359)
+INFO: Command outside convenience allow-list: \linewidth (scans 343)
+INFO: Command outside convenience allow-list: \rotatebox (scans 343, 363, 364, 366)
+INFO: Command outside convenience allow-list: \textcircled (scans 329)
+INFO: Command outside convenience allow-list: \varinjlim (scans 343, 345, 355, 359)
+INFO: Command outside convenience allow-list: \varprojlim (scans 343, 345, 355)
+INFO: Combined transcription not yet present.
+INFO: Inventory covers 34 expected scan(s).
+RESULT: 2 error(s), 0 warning(s).
+Scope: mechanical structure only; no visual or mathematical certification.
+
+
+Command: python -B /workspace/scratch/e329932b5352/MPL_136_328-376/records/check_math_shifts.py --through 365
+Exit: 1
+REVIEW: MPL_136_328-376_136_scan363.tex:18: Explicit $ occurs inside active \[ math
+REVIEW: MPL_136_328-376_136_scan363.tex:18: Explicit $ occurs inside active \[ math
+Explicit math-shift check: 34 page files; 2 finding(s).
+This is a lexical check, not compilation; custom-macro and TikZ-cell mode behavior is not certified.
+
+
+Scoped count comparison
+Expected: 34
+Page files: 34
+Inventory scans: 34
+Done scans: 34
+
+
+page files: missing=[]; extra=[]
+
+inventory: missing=[]; extra=[]
+
+done records: missing=[]; extra=[]
+
+Scoped recheck after accounting for concurrently written scan 366 and graphicx text-box behavior
+The earlier scan366 completeness notices were outside the requested 328–365 scope. The earlier scan363 line18 math-shift notice was a lexical false positive: rotatebox content is typeset in a text box. No manuscript file changed.
+
+Command: python -B /workspace/scratch/e329932b5352/MPL_136_328-376/records/validate_package.py --through 365
+Exit: 0
+INFO: Partial mode: 34 / 45 expected page files present.
+INFO: Command outside convenience allow-list: \boxed (scans 355, 362)
+INFO: Command outside convenience allow-list: \fbox (scans 359)
+INFO: Command outside convenience allow-list: \linewidth (scans 343)
+INFO: Command outside convenience allow-list: \rotatebox (scans 343, 363, 364)
+INFO: Command outside convenience allow-list: \textcircled (scans 329)
+INFO: Command outside convenience allow-list: \varinjlim (scans 343, 345, 355, 359)
+INFO: Command outside convenience allow-list: \varprojlim (scans 343, 345, 355)
+INFO: Combined transcription not yet present.
+INFO: Inventory covers 34 expected scan(s).
+RESULT: 0 error(s), 0 warning(s).
+Scope: mechanical structure only; no visual or mathematical certification.
+
+Command: python -B /workspace/scratch/e329932b5352/MPL_136_328-376/records/check_math_shifts.py --through 365
+Exit: 0
+Explicit math-shift check: 34 page files; 0 finding(s).
+This is a lexical check, not compilation; custom-macro and TikZ-cell mode behavior is not certified.
+
+
+Real local TeX compilation
+==========================
+The installed /usr/share/texlive/texmf-dist tree contains amsmath, amssymb,
+tikz-cd, graphicx, the LaTeX kernel/classes, PGF/TikZ, and font metrics.
+The default kpathsea configuration used database-only (!!) lookup, while the
+corresponding filename databases were unavailable. Process-local TEXMF and
+TEXMFDBS overrides, both set to /usr/share/texlive/texmf-dist, restored lookup.
+A private pdflatex format was generated under ../latex_syntax_work; no package
+installation, network use, system configuration change, combined transcription,
+PDF output, or manuscript edit occurred. ulem.sty was not found locally.
+
+records/compile_individual_pages.py compiles one page at a time in pdfTeX draft
+mode, with transparent editorial/underline wrappers. The diagram wrapper
+preserves tokenization of TikZ-CD ampersands; simply collecting its full argument
+in an ordinary macro gives misleading PGF internal-control-sequence failures.
+TikZ shapes.geometric is loaded for the standard ellipse key. Final underline
+and deletion typography is outside this syntax test.
+
+Result: 30 pages passed; scans 328, 342, 345, and 357 exposed concrete syntax
+problems. The first fatal error per page was retained in compile_328-365.txt.
+
+Concrete source findings and minimal syntax-only remedies
+--------------------------------------------------------
+1. pages/MPL_136_328-376_136_scan328.tex, diagram lines23-30:
+   row2 column3's upward arrow targets the empty row1 column3. TikZ-CD omits a
+   node for a completely empty cell, yielding 'No shape named tikz@f@2-1-3'.
+   Inserting an explicit {} in that already blank target cell creates its anchor
+   without adding visible manuscript content. The source arrow is at line25.
+2. pages/MPL_136_328-376_136_scan342.tex, diagram lines25-36:
+   row2 column2's downward bidirectional arrow targets empty row3 column2,
+   yielding 'No shape named tikz@f@4-3-2'. An explicit {} in the already blank
+   target cell provides the anchor. The source arrow is at line28.
+3. pages/MPL_136_328-376_136_scan345.tex, line59:
+   "\delta_0,\delta_1" has a top-level comma inside a quoted arrow label;
+   PGF splits it into separate keys. Use "{\delta_0,\delta_1}".
+   The same lexical hazard occurs at line64 with
+   "C^\bullet(\delta_0),C^\bullet(\delta_1)"; enclose the full label in braces
+   inside its quotation marks. Both changes protect the existing label content.
+4. pages/MPL_136_328-376_136_scan357.tex, line83:
+   \margin{\unsure{signe}(\sigma)} contains \sigma in text mode and produces
+   'Missing $ inserted'. Wrapping the existing (\sigma) in math delimiters is
+   the minimal syntax remedy, e.g. \margin{\unsure{signe}$(\sigma)$}.
+
+No source file was changed by the mechanical agent. Any change to arrow
+content/direction remains the primary visual reader's responsibility. After
+these limited fixes, rerun the failed pages to reveal any later errors hidden
+by the first-error stopping policy:
+
+python -B records/compile_individual_pages.py --through 365 \
+  --scans 328 342 345 357 --report records/compile_328-365_recheck.txt
+
+The supplied standard commands \boxed, \fbox, \linewidth, \rotatebox,
+\textcircled, \varinjlim and \varprojlim are supported by the harness's local
+LaTeX/packages. No unsupported TikZ key remained in pages that reached a clean
+compile; pages stopped by the findings above still need their targeted recheck.

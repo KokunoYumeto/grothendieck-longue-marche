@@ -1,0 +1,70 @@
+{
+  "scope": "synthetic temporary projects only; real pages/records/logs untouched",
+  "results": [
+    {
+      "case": "freeze_with_119_map_rows",
+      "blocked": true,
+      "reason": "Expected 120 pages, found 119",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_no_done_statuses",
+      "blocked": true,
+      "reason": "Page lacks completion or audit: 156-4 2",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_no_audit_statuses",
+      "blocked": true,
+      "reason": "Page lacks completion or audit: 156-4 2",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "audit_before_all_done",
+      "blocked": true,
+      "reason": "All pages must be done before second reading can be recorded",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "audit_out_of_order",
+      "blocked": true,
+      "reason": "Earlier page has no audit: 156-4 2",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "duplicate_audit",
+      "blocked": true,
+      "reason": "Page already marked audited",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_with_missing_page_file",
+      "blocked": true,
+      "reason": "Syntax failures: {'SYNTHETIC_156-4_scan002.tex': ['Missing page file']}",
+      "freeze_manifest_created": false
+    },
+    {
+      "case": "freeze_accepts_statuses_without_matching_done_audit_log_entries",
+      "accepted": true,
+      "hashed_files": 121
+    },
+    {
+      "case": "post_freeze_checks",
+      "audit_mark_locked": true,
+      "initial_hashes_valid": true,
+      "page_mutation_detected": true,
+      "mismatch_count": 1
+    },
+    {
+      "case": "freeze_accepts_boolean_statuses",
+      "accepted": true,
+      "hashed_files": 121
+    }
+  ],
+  "observed_risks": [
+    "freeze accepts any truthy done/audited status, including booleans; it does not validate timestamp strings.",
+    "freeze does not corroborate completion/audit statuses against progress.log entries.",
+    "The manifest detects later byte changes; ordinary filesystem writes are not prevented.",
+    "Static inspection: freeze appends its frozen marker/hashes before atomically writing freeze.sha256; an I/O interruption can leave an incomplete freeze log/manifest transaction."
+  ]
+}
