@@ -1,0 +1,10 @@
+- Scan 020 — 2026-11-17 13:15:04 UTC: Re-read the whole image and both halves against the page file; no change.
+- Scan 021 — 2026-11-17 13:15:44 UTC: Whole image and both halves re-read. The first local dimension bound resembles k more than h; changed that occurrence to unsure{k|h}, leaving the other h readings as written. Rechecked deletion scope, dense-open insertion, and diagonal margin.
+- Scan 022 — 2026-11-17 13:18:09 UTC: Whole page and both halves checked; the article in Vu la prop.2 is resolved as la from the lower half.
+- Scan 023 — 2026-11-17 13:18:26 UTC: Whole and both halves re-read, including the reworked hypotheses, margin question and the h+1/h_0 ambiguity; no change.
+- Scan 024 — 2026-11-17 13:18:38 UTC: Whole and both halves compared line by line, including both union displays and the intersection condition; no change.
+- Scan 025 — 2026-11-17 13:18:55 UTC: Whole and halves re-read, including diagonal margin and cancelled formal-equidimensionality passage. The inserted subject is ranked y_0 before Y from its visible small loop; uncertainty is retained.
+- Scan 026 — 2026-11-17 13:19:07 UTC: Whole and halves checked, including typed headings, redaction numbers, underlined prime ideals, containment direction and both exact-sequence diagrams; no change.
+- Scan 027 — 2026-11-17 13:19:32 UTC: Whole and halves re-read. Marked n/h among the generators; ranked the final lower-case dimension letter k before h and mais before univ. in Cor.2 according to the strokes. Lower-left margin retains low-certainty readings.
+- Scan 028 — 2026-11-17 13:19:47 UTC: Whole and both halves inspected; the title insertion, deleted title word, pair (X,Y), and corner foliation are accounted for. No change.
+- Scan 030 — 2026-11-17 13:20:18 UTC: Whole and halves checked again, with enlarged lower crop. Revised the very faint clause to ici / on se borne and marked the inserted verb voulons/montrons. The lower cancelled paragraph and its margin insertion remain low-confidence rather than being reconstructed from the argument.
