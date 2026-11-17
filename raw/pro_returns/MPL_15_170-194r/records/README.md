@@ -1,0 +1,15 @@
+# Work records
+
+The canonical text is in `pages/` and the combined transcription. The `pageNNN.py` scripts record the first-pass saves; they deliberately refuse to overwrite a completed page and are not regeneration scripts for the audited final text. Later visual corrections are in the canonical files and documented in `visual_audit.md`. The inventory's quoted openings are locators, not replacement transcriptions.
+
+No OCR was used. The whole images and the supplied halves were read by a single transcription stream, in the prescribed order. Additional crops and rotated inspection views were temporary aids and are excluded from the deliverable and checkpoints. `reused_typed` includes the manuscript sides of reused typed sheets; visible reverse-side show-through was not treated as new writing on the scanned face.
+
+The context archive was not read before the transcription freeze. An initial archive-member listing exposed filenames only; this procedural deviation is recorded in `progress.log`. The later context-opening and hash-verification entries identify the evidence barrier. Context-informed reading suggestions, if any, belong exclusively in the research notes.
+
+The delivered LaTeX is a fragment using the requested diplomatic macros, which the receiving project must define. Structural validation checked braces, environments, math delimiters and page order. A temporary compilation harness was attempted, but the environment lacks the XeLaTeX format and the tikz-cd package; a successful compilation is not claimed. No rendering or input image forms part of the transcription.
+
+The inventory uses `reused_typed` for eleven physical sheets: the seven faces carrying the distinct root/Lie/cohomology/list texts (171,181,184,186,188,192,194), and the handwritten motivic faces on reused typed sheets (183,185,187,193). It has two `text` sheets (170,191), one `cancelled_draft` (179), and four `cover` sheets (180,182,189,190). These physical classifications are distinct from the subject and textual status discussed in the research notes.
+
+The canonical interpretation is `MPL_15_170-194r_notes.md`: 59 numbered main notes and 21 entries in the two standing registers, with the requested comparison tables, contextual locators, register IDs and primary bibliography. Research drafts and assembly fragments were intermediate working material; they are not additional authoritative versions and are excluded from the final ZIP. The final ZIP retains the transcription work records, validation and research-review record, rather than duplicating those superseded research drafts. No supplied source archive or image is included.
+
+Scripts are preserved as a work record, not instructions to rerun the frozen workflow. In particular, `assemble_check.py` belongs to the pre-freeze stage and writes the combined fragment; the final hash verification reads the frozen files without rewriting them. `finalize.py` validates the delivered selection and packages only the canonical deliverables and the explicitly listed records/scripts.
