@@ -1,0 +1,728 @@
+--- code/check_checkpoint29_preconditions.py
++++ code/check_checkpoint30_preconditions.py
+@@ -1,4 +1,8 @@
+-"""Verify frozen paper and required actual evidence before the single capture."""
++"""Read-only checks of frozen checkpoint30 evidence before its sole capture.
++
++Pages, PDF identity and visual counts come from the actual final records.
++The checkpoint29 compression measurement is not a checkpoint30 estimate.
++"""
+ from pathlib import Path
+ from collections import Counter
+ import csv
+@@ -6,61 +10,121 @@
+ import json
+ import re
+ 
+-root = Path(__file__).resolve().parents[1]
+-read = lambda rel: json.loads((root / rel).read_text())
+-sha = lambda rel: hashlib.sha256((root / rel).read_bytes()).hexdigest()
+-m = read('records/checkpoint29_metrics.json')
+-assert m['statements'] == 314 and m['pages'] == 551 and m['task_rows'] == 49
+-assert m['statuses'] == {'Known': 6, 'Proved': 270, 'Refuted': 19, 'Open': 19}
+-assert m['bibliography_entries'] == 114
+-assert not m['overfull'] and not m['warnings'] and not m['errors']
+-assert sha('LM4_SUCCESSOR_paper.pdf') == m['pdf_sha256']
+-review = read('records/checkpoint29_root_formal_reviews.json')
+-assert review['status'] == 'PASS_COMPLETE_SOURCE_REVIEW' and len(review['copies']) == 6
+-for row in review['copies']:
+-    assert (root / row['source']).read_bytes() == (root / row['target']).read_bytes()
+-    assert sha(row['target']) == row['sha256']
+-assert read('records/checkpoint29_formal_source_copies.json')['copies'] == review['copies']
+-rows = list(csv.DictReader((root / 'LM4_SUCCESSOR_results.csv').open()))
+-assert len(rows) == 314 and dict(Counter(r['status'] for r in rows)) == m['statuses']
+-tasks = list(csv.DictReader((root / 'task_coverage.csv').open()))
+-assert len(tasks) == 49
+-for task in ('A.8', 'B.4'):
+-    assert next(r for r in tasks if r['task'] == task)['outcome'] == 'Open'
+-assert (root / 'LM4_SUCCESSOR_report.md').read_text().splitlines()[0] == 'INCOMPLETE'
+-entries = re.split(r'(?m)(?=^@)', (root / 'LM4_SUCCESSOR_references.bib').read_text())[1:]
+-assert len(entries) == 114
+-assert all(re.search(r'\b(?:verified|unverified)\b', entry, re.I) for entry in entries)
+-assert len(re.findall(r'\\bibitem', (root / 'LM4_SUCCESSOR_paper.bbl').read_text())) == 114
+-visual = read('records/checkpoint29_visual_review.json')
+-assert visual['visual_review'] == 'PASS' and visual['pdf_sha256'] == m['pdf_sha256']
+-assert set(visual['required_math_pages']) <= set(visual['individually_inspected_pages'])
+-assert len(visual['required_math_pages']) == 24 and visual['contact_sheets_inspected'] == 5
+-assert len(visual['individually_inspected_pages']) == 30 and len(visual['rendered_pages']) == 39
+-assert visual['final_log_and_stdout_case_insensitive'] == 'PASS'
+-qa = (root / 'records/checkpoint29_typesetting.txt').read_text()
+-assert 'Visual review: PASS' in qa and m['pdf_sha256'] in qa
+-estimate = read('records/checkpoint29_size_estimate.json')
+-assert estimate['estimated_total_with_allowance'] < estimate['delivery_cap_bytes'] == 536870912
+-for kind in ('images', 'documents'):
+-    assert estimate['prospective_bundles'][kind]['compression'] == 'ZIP_LZMA'
+-freeze = read('records/checkpoint29_writer_pause.json')
+-assert freeze['all_writers_paused'] and len(freeze['agents']) == 3
+-assert not freeze['live_producers']
+-for rel in ('records/twenty_ninth_hour_research_report.md',
+-            'records/checkpoint29_computation_audit_state.md',
+-            'records/primary_readings29.md',
+-            'records/checkpoint29_authored_pdf_retention.json',
+-            'records/root_coarse_correction_review29.md',
+-            'records/root_arbitrary_section_moment_certificate29.md'):
+-    assert (root / rel).is_file(), rel
+-late = read('records/checkpoint29_root_late_reviews.json')
+-assert late['status'] == 'PASS_COMPLETE_LATE_PROOF_REVIEW_WITH_EXPLICIT_REMAINING_GATES'
+-assert late['formal_statement_count'] == 314 and not late['formal_promotion']
+-assert len(late['proof_sources']) >= 6
+-for rel, digest in late['proof_sources'].items():
+-    assert sha(rel) == digest, rel
+-for rel,digest in late['independent_reviews'].items():
+-    assert sha(rel) == digest, rel
+-assert not (root.parent / 'LM4_SUCCESSOR_checkpoint_29.zip').exists()
+-print('PASS314 statements,551 pages,49tasks,114printed references;full proof and final visual QA;both main decisions Open.')
++
++def main():
++    root = Path(__file__).resolve().parents[1]
++    read = lambda rel: json.loads((root / rel).read_text())
++    sha = lambda rel: hashlib.sha256((root / rel).read_bytes()).hexdigest()
++    m = read('records/checkpoint30_metrics.json')
++    assert m['statements'] == 323 and m['task_rows'] == 49
++    assert m['statuses'] == {'Known': 6, 'Proved': 279, 'Refuted': 19, 'Open': 19}
++    assert m['bibliography_entries'] == 114 and m['pages'] > 0
++    assert not m['overfull'] and not m['warnings'] and not m['errors']
++    assert sha('LM4_SUCCESSOR_paper.pdf') == m['pdf_sha256']
++    assert (root / 'LM4_SUCCESSOR_paper.pdf').stat().st_size == m['pdf_bytes']
++
++    review = read('records/checkpoint30_root_formal_reviews.json')
++    assert review['status'] == 'PASS_COMPLETE_SOURCE_REVIEW'
++    expected = {'A.89', 'A.90', 'A.91', *('B.' + str(n) for n in range(142, 148))}
++    assert len(review['copies']) == 9
++    assert {row['statement'] for row in review['copies']} == expected
++    for row in review['copies']:
++        assert (root / row['source']).read_bytes() == (root / row['target']).read_bytes()
++        assert sha(row['target']) == row['sha256']
++    assert read('records/checkpoint30_formal_source_copies.json')['copies'] == review['copies']
++    for rel, digest in review['independent_reviews'].items():
++        assert sha(rel) == digest, rel
++    rows = list(csv.DictReader((root / 'LM4_SUCCESSOR_results.csv').open()))
++    assert len(rows) == 323 and dict(Counter(r['status'] for r in rows)) == m['statuses']
++    tasks = list(csv.DictReader((root / 'task_coverage.csv').open()))
++    assert len(tasks) == 49
++    for task in ('A.8', 'B.4'):
++        assert next(r for r in tasks if r['task'] == task)['outcome'] == 'Open'
++    assert (root / 'LM4_SUCCESSOR_report.md').read_text().splitlines()[0] == 'INCOMPLETE'
++    entries = re.split(r'(?m)(?=^@)', (root / 'LM4_SUCCESSOR_references.bib').read_text())[1:]
++    assert len(entries) == 114
++    assert all(re.search(r'\b(?:verified|unverified)\b', entry, re.I) for entry in entries)
++    assert len(re.findall(r'\\bibitem', (root / 'LM4_SUCCESSOR_paper.bbl').read_text())) == 114
++
++    visual = read('records/checkpoint30_visual_review.json')
++    render = read('records/pdf_qa/checkpoint30_final/render_manifest.json')
++    assert visual['visual_review'] == 'PASS'
++    assert visual['pdf_sha256'] == render['pdf_sha256'] == m['pdf_sha256']
++    assert render['page_count'] == m['pages'] and render['dpi'] == 144
++    assert visual['rendered_pages'] == render['rendered_pages']
++    assert visual['required_math_pages'] == render['required_new_mathematical_pages']
++    assert len(visual['required_math_pages']) == 22 and len(visual['rendered_pages']) == 33
++    assert set(visual['required_math_pages']) <= set(visual['individually_inspected_pages'])
++    assert set(visual['individually_inspected_pages']) <= set(visual['rendered_pages'])
++    assert visual['contact_sheets_inspected'] == render['contact_sheets'] == 4
++    assert visual['each_contact_sheet_opened_separately']
++    assert not visual['truncated_outputs_counted']
++    assert visual['final_log_and_stdout_case_insensitive'] == 'PASS'
++    previous = read('records/checkpoint29_visual_review.json')
++    old_notices = Counter(previous['final_log_and_stdout_audits'][0]['underfull_notices'])
++    assert sum(old_notices.values()) == 18
++    assert len(visual['final_log_and_stdout_audits']) >= 2
++    for audit in visual['final_log_and_stdout_audits']:
++        assert sha(audit['path']) == audit['sha256'], audit['path']
++        assert not audit['warnings'] and not audit['issues']
++        notices = Counter(audit['underfull_notices'])
++        assert sum(notices.values()) == 19 and old_notices <= notices
++        assert sum((notices - old_notices).values()) == 1
++    assert visual['underfull_scope'], 'Document the one new, visually accepted B147 notice.'
++    qa = (root / 'records/checkpoint30_typesetting.txt').read_text()
++    assert 'Visual review: PASS' in qa and m['pdf_sha256'] in qa
++
++    measurement = read('records/checkpoint30_data64_measurement.json')
++    compatibility = read('records/checkpoint30_storage_extension_check.json')
++    assert measurement['input_archive'] == 'LM4_SUCCESSOR_checkpoint_29.zip'
++    assert measurement['dictionary_bytes'] == compatibility['dictionary_bytes'] == 67108864
++    assert measurement['zip_method'] == 'ZIP_LZMA'
++    assert measurement['unchanged_standard_library_decoder_roundtrip'] == 'PASS_EVERY_BYTE_SHA256_AND_LENGTH'
++    assert measurement['decoder_eof'] and not measurement['creates_zip']
++    assert not measurement['mutates_earlier_archive'] and not measurement['new_work_estimate']
++    assert compatibility['backward_reader_compatibility'] == 'PASS'
++    assert compatibility['unchanged_standard_decoder_roundtrip'] == 'PASS_EXACT_BYTES'
++    assert compatibility['dictionary_context_normal_and_exception_restore'] == 'PASS'
++    assert compatibility['original_archive_unchanged'] and not compatibility['creates_zip']
++    assert compatibility['original_archive_sha256'] == measurement['input_archive_sha256']
++    prior = read('records/checkpoint29_archive_verification.json')
++    assert prior['sha256'] == measurement['input_archive_sha256']
++    assert prior['bytes'] == measurement['input_archive_bytes']
++    assert prior['prior_entries_retained'] + prior['entries'] == 114462
++    assert prior['crc'] == prior['every_manifest_entry'] == prior['every_retained_version'] == 'PASS'
++    expected_archives = {f'LM4_SUCCESSOR_checkpoint_{n:02d}.zip' for n in range(1, 30)}
++    assert {p.name for p in root.parent.glob('LM4_SUCCESSOR_checkpoint_[0-9][0-9].zip')} == expected_archives
++
++    estimate = read('records/checkpoint30_size_estimate.json')
++    assert estimate['estimated_total_with_allowance'] < estimate['delivery_cap_bytes'] == 536870912
++    assert not estimate['creates_zip'] and not estimate['writes_authored_input_files']
++    assert estimate['baseline_archive'] == prior['archive']
++    assert estimate['baseline_bytes'] == prior['bytes'] and estimate['baseline_sha256'] == prior['sha256']
++    assert estimate['current_main_pdf_sha256'] == m['pdf_sha256']
++    for kind in ('images', 'documents', 'data'):
++        assert estimate['prospective_bundles'][kind]['zip_method'] == 'ZIP_LZMA'
++    assert estimate['prospective_bundles']['data']['dictionary_bytes'] == 67108864
++
++    freeze = read('records/checkpoint30_writer_pause.json')
++    assert freeze['all_writers_paused'] and len(freeze['agents']) == 3
++    assert not freeze['live_producers']
++    for rel in ('records/thirtieth_hour_research_report.md',
++                'records/checkpoint30_computation_audit_state.md',
++                'records/primary_readings30.md',
++                'code/verify_checkpoint30_system_tars.py'):
++        assert (root / rel).is_file(), rel
++    late = read('records/checkpoint30_root_late_reviews.json')
++    assert late['status'] == 'PASS_COMPLETE_LATE_PROOF_REVIEW_WITH_EXPLICIT_REMAINING_GATES'
++    assert late['formal_statement_count'] == 323 and not late['formal_promotion']
++    assert late['proof_sources'] and late['independent_reviews']
++    for field in ('proof_sources', 'independent_reviews'):
++        for rel, digest in late[field].items():
++            assert sha(rel) == digest, rel
++    assert not (root.parent / 'LM4_SUCCESSOR_checkpoint_30.zip').exists()
++    print(f"PASS: 323 statements, {m['pages']} pages, 49 tasks, 114 printed references; "
++          'nine reviewed formal sources; documented 18+1 underfull notices; '
++          'three-container estimate and actual 64 MiB stream compatibility; both mains Open.')
++
++
++if __name__ == '__main__':
++    main()
+
+--- code/capture_checkpoint29.py
++++ code/capture_checkpoint30.py
+@@ -1,4 +1,8 @@
+-"""Create exactly one immutable checkpoint29 after its scheduled review."""
++"""Create exactly one immutable checkpoint30 after its scheduled review.
++
++Preparation alone must not execute this driver. It writes review records,
++refreshes retention and invokes the sole actual packager only when run.
++"""
+ from datetime import datetime, timezone
+ from pathlib import Path
+ import json
+@@ -6,60 +10,66 @@
+ import sys
+ import time
+ 
+-root = Path(__file__).resolve().parents[1]
+-deadline = datetime(2026, 11, 17, 5, 49, 30, tzinfo=timezone.utc)
+-archive = root.parent / 'LM4_SUCCESSOR_checkpoint_29.zip'
+-assert not archive.exists()
+-remaining = (deadline - datetime.now(timezone.utc)).total_seconds()
+-assert remaining <= 60, 'Start only within one minute of the scheduled review.'
+-while remaining > 0:
+-    time.sleep(min(.5, remaining))
++
++def main():
++    root = Path(__file__).resolve().parents[1]
++    deadline = datetime(2026, 11, 17, 6, 49, 30, tzinfo=timezone.utc)
++    next_review = '2026-11-17 07:49:30 UTC'
++    archive = root.parent / 'LM4_SUCCESSOR_checkpoint_30.zip'
++    assert not archive.exists()
+     remaining = (deadline - datetime.now(timezone.utc)).total_seconds()
+-now = datetime.now(timezone.utc)
+-subprocess.run([sys.executable, str(root / 'code/check_checkpoint29_preconditions.py')], check=True)
+-m = json.loads((root / 'records/checkpoint29_metrics.json').read_text())
+-research = (root / 'records/twenty_ninth_hour_research_report.md').read_text()
+-audit = (root / 'records/checkpoint29_computation_audit_state.md').read_text()
+-late = json.loads((root / 'records/checkpoint29_root_late_reviews.json').read_text())
+-review = f'''# Twenty-ninth-hour progress review
++    assert remaining <= 60, 'Start only within one minute before the scheduled review, or later.'
++    while remaining > 0:
++        time.sleep(min(.5, remaining))
++        remaining = (deadline - datetime.now(timezone.utc)).total_seconds()
++    subprocess.run([sys.executable, str(root / 'code/check_checkpoint30_preconditions.py')], check=True)
++    now = datetime.now(timezone.utc)
++    read = lambda rel: json.loads((root / rel).read_text())
++    m = read('records/checkpoint30_metrics.json')
++    visual = read('records/checkpoint30_visual_review.json')
++    research = (root / 'records/thirtieth_hour_research_report.md').read_text()
++    audit = (root / 'records/checkpoint30_computation_audit_state.md').read_text()
++    late = read('records/checkpoint30_root_late_reviews.json')
++    review = f'''# Thirtieth-hour progress review
+ 
+-Scheduled review:2026-11-17 05:49:30 UTC.
++Scheduled review:2026-11-17 06:49:30 UTC.
+ Actual review record: {now.isoformat()}.
+ Decision: CONTINUE.
+ 
+-Both main decisions remain Open. New substantive work gives the actual
+-full Alexander coefficient test, the canonical congruence modulo8,
+-the full-GT dyadic comparison and its remaining odd-head criterion,
+-and exact obstructions to sections of the actual coarse filling.
+-The unrestricted obstruction retains arbitrary lifts and is detected
+-by eight exact first-order equations, with a genuine finite mod3 route
+-for the full completion. Faithful regional graph kernels, an exact
+-ordinary cyclic retraction, its explicit ambient discontinuity, and the
+-whole cyclic mixed-square recurrence further sharpen the filling gate.
+-These are concrete new comparisons, not formalization alone. Neither
+-local progress nor nonsplitting settles the final fixed-source equality
+-or the actual icosahedral K=1 decision.
++Both main decisions remain Open. The nine frozen formal sources A89--A91
++and B142--B147 retain the actual full-GT and marked covariance hypotheses,
++the unrestricted and virtual coarse-filling nonsplitting proofs, the
++exact one-family fixed-source presentation, and the complete cyclic
++normalization/carrier and prescribed-center nonextension arguments.
++The exact current research and remaining gates are recorded below.
++No carrier properness, quotient comparison or nonsplitting obstruction
++is substituted for actual filling survival or the icosahedral K=1 gate.
+ 
+-The formal paper has551 pages and314 statements:270 Proved,19 Refuted,
+-19 Open and6 Known. All49 task/lead rows and114 bibliography entries are
+-retained; all114 references are printed. The six new frozen formal
+-sources are byte-identical to their fully reviewed inputs. Final PDF
+-SHA-256:{m['pdf_sha256']}.
+-All24 new mathematical pages were individually inspected;30 final pages
+-in total were individually viewed, and five separate contact sheets
+-cover39 rendered pages. Final log and actual stabilized engine stdout
+-have no overfull boxes, actual warnings, undefined references or errors.
+-Their18 pre-existing underfull notices are unchanged by exact multiset.
+-The separate late record binds{len(late['proof_sources'])} complete
+-research proofs without increasing the frozen formal statement count.
++The formal paper has {m['pages']} pages and323 statements:279 Proved,
++19 Refuted,19 Open and6 Known. All49 task/lead rows and114 bibliography
++entries are retained; all114 references are printed. All nine integrated
++formal sources are byte-identical to their fully reviewed inputs.
++Final PDF bytes:{m['pdf_bytes']}; SHA-256:{m['pdf_sha256']}.
++All {len(visual['required_math_pages'])} new mathematical pages were
++individually inspected; {len(visual['individually_inspected_pages'])}
++final pages were individually viewed and
++{visual['contact_sheets_inspected']} separately inspected contact sheets
++cover {len(visual['rendered_pages'])} rendered pages at144dpi.
++Final log and stabilized engine stdout have no overfull boxes, actual
++warnings, undefined references or errors. The18 retained underfull
++notices and one new visually accepted B147 notice total19; this change
++is documented rather than described as unchanged.
++The late record binds {len(late['proof_sources'])} complete research
++proofs without increasing the frozen formal statement count.
+ 
+-All105724 logical entries of the28 previous immutable archives are
+-retained byte-exactly with zero omissions. Every original image and
+-historical or preview PDF path and byte is retained in standard TAR
+-containers using lossless ZIP_LZMA. The current main PDF remains a
+-direct ZIP entry. We create no test ZIP and change no earlier archive.
+-Independent native restoration of both actual new containers follows
+-capture.
++All114462 logical entries of the29 previous immutable archives are
++retained byte-exactly with zero omissions. Original image, historical
++or preview PDF, and selected historical/data paths retain their exact
++bytes in three standard TAR containers using lossless ZIP_LZMA. The data
++container uses a standard64MiB dictionary; the current main PDF remains
++a direct ZIP entry. No test ZIP is created and no prior archive is changed.
++After capture, the actual ZIP data-stream property and independent native
++restoration of all three containers must pass before delivery recording.
+ 
+ {research}
+ 
+@@ -67,53 +77,56 @@
+ 
+ {audit}
+ 
+-Next hourly review/checkpoint:2026-11-17 06:49:30 UTC.
++Next hourly review/checkpoint:{next_review}.
+ Resume substantive research immediately after immutable capture closes.
+ '''
+-(root / 'records/progress_review_29h.md').write_text(review)
+-p = root / 'LM4_SUCCESSOR_report.md'
+-s = p.read_text()
+-assert '## Twenty-ninth-hour progress review\n' not in s
+-s += f'''
+-## Twenty-ninth-hour progress review
++    review_path = root / 'records/progress_review_30h.md'
++    assert not review_path.exists(), 'Preserve any previous driver attempt for review.'
++    report_path = root / 'LM4_SUCCESSOR_report.md'
++    report = report_path.read_text()
++    continuation_path = root / 'records/continuation_state.md'
++    continuation = continuation_path.read_text()
++    assert '## Thirtieth-hour progress review\n' not in report
++    assert '## Actual thirtieth-hour review\n' not in continuation
++    review_path.write_text(review)
++    report_path.write_text(report + f'''
++## Thirtieth-hour progress review
+ 
+-At {now.isoformat()} we recorded CONTINUE. A87/A88 and B138--B141
+-are integrated with complete root and independent proof reviews.
+-Subsequent complete research includes the actual hexagon coefficient
+-identity, full-GT dyadic/odd-head reduction, and unrestricted ordinary
+-and compact nonsplitting of the actual coarse filling, together with
+-the precise center-line and mixed-square comparisons. Exact latest
+-scopes and any further reviewed consequences are in the bound late
+-record and research report. No local, quotient, or nonsplitting result
+-is substituted for the final ambient fixed-source comparison. Both
+-main decisions remain Open. The frozen formal baseline is314 statements,
+-551 pages,114 printed references and49 synchronized task rows.
+-Next review:2026-11-17 06:49:30 UTC.
+-'''
+-p.write_text(s)
+-p = root / 'records/continuation_state.md'
+-p.write_text(p.read_text() + f'''
+-## Actual twenty-ninth-hour review
++At {now.isoformat()} we recorded CONTINUE. The nine sources A89--A91 and
++B142--B147 are integrated with complete root and independent source
++reviews. Exact latest research, failure records and limits are bound in
++the late review and research report. Both main decisions remain Open.
++The frozen formal baseline is323 statements, {m['pages']} pages,
++114 printed references and49 synchronized task rows. The sole new
++archive retains all29 predecessors through three lossless standard TAR
++containers; its actual streams and every restored path will be checked.
++Next review:{next_review}.
++''')
++    continuation_path.write_text(continuation + f'''
++## Actual thirtieth-hour review
+ 
+ CONTINUE recorded at {now.isoformat()}. All writers are paused for this
+ single immutable capture. Release all three immediately when the archive
+-closes, before verification or upload; then verify all entries and both
+-native TAR restorations, save, and deliver in commentary. Both main
+-decisions remain Open. The frozen formal baseline is314 statements,
+-551 pages,114 printed references and49 task rows. Continue the actual
+-odd-head/nonlinear cusp gate under its exact GT hypotheses and the
+-remaining fixed-kernel and complete mixed-filling/source comparisons.
+-The actual coarse extension has no section, so subsequent work must
+-retain its nonsplit extension structure.
+-Next review/checkpoint:2026-11-17 06:49:30 UTC.
++closes, before verification or upload; then verify every logical entry,
++all three native TAR restorations and the actual64MiB data stream, save,
++and deliver in commentary. Both main decisions remain Open. The frozen
++formal baseline is323 statements, {m['pages']} pages,114 printed references
++and49 task rows. Continue the exact odd-head/nonlinear cusp and actual
++ambient filling/fixed-source gates with every conjugator and source orbit.
++Next review/checkpoint:{next_review}.
+ ''')
+-print('Timed twenty-ninth-hour review:', now.isoformat(), 'CONTINUE', flush=True)
+-subprocess.run([sys.executable, str(root / 'code/refresh_computation_inventory.py')], check=True)
+-with (root / 'records/checkpoint_version_retention_run.out').open('w') as stream:
+-    subprocess.run([sys.executable, str(root / 'code/preserve_checkpoint_versions.py')], stdout=stream, check=True)
+-retention = json.loads((root / 'records/checkpoint_version_retention_summary.json').read_text())
+-assert retention['archives'] == 28 and retention['archive_entries'] == 105724
+-assert retention['omissions'] == 0
+-subprocess.run([sys.executable, str(root / 'code/package_checkpoint.py'), '29'], check=True)
+-assert archive.stat().st_size <= 536870912, 'Never mutate an already captured archive.'
+-print('Immutable capture completed:', datetime.now(timezone.utc).isoformat(), flush=True)
++    print('Timed thirtieth-hour review:', now.isoformat(), 'CONTINUE', flush=True)
++    subprocess.run([sys.executable, str(root / 'code/refresh_computation_inventory.py')], check=True)
++    with (root / 'records/checkpoint30_version_retention_run.out').open('x') as stream:
++        subprocess.run([sys.executable, str(root / 'code/preserve_checkpoint_versions.py')],
++                       stdout=stream, check=True)
++    retention = read('records/checkpoint_version_retention_summary.json')
++    assert retention['archives'] == 29 and retention['archive_entries'] == 114462
++    assert retention['omissions'] == 0
++    subprocess.run([sys.executable, str(root / 'code/package_checkpoint.py'), '30'], check=True)
++    assert archive.stat().st_size <= 536870912, 'Never mutate an already captured archive.'
++    print('Immutable capture completed:', datetime.now(timezone.utc).isoformat(), flush=True)
++
++
++if __name__ == '__main__':
++    main()
+
+--- code/verify_checkpoint29_saved_identity.py
++++ code/verify_checkpoint30_saved_identity.py
+@@ -1,20 +1,34 @@
+-"""Verify returned attributes and unchanged archive bytes before receipt normalization."""
++"""Verify saved attributes and immutable bytes before normalizing one receipt.
++
++Run only after capture, independent archive verification and saving.
++"""
+ from pathlib import Path
+ import hashlib
+ import json
+ import os
+ 
+-root=Path(__file__).resolve().parents[1]
+-archive=root.parent/'LM4_SUCCESSOR_checkpoint_29.zip'
+-attrs=json.loads((root/'records/checkpoint29_xattrs.json').read_text())
+-for item in attrs:
+-    assert os.getxattr(archive,item['name']).decode()==item['value'],item['name']
+-verified=json.loads((root/'records/checkpoint29_archive_verification.json').read_text())
+-assert archive.stat().st_size==verified['bytes']
+-assert hashlib.sha256(archive.read_bytes()).hexdigest()==verified['sha256']
+-path=root/'records/checkpoint29_upload_result.json'
+-receipt=json.loads(path.read_text())
+-assert receipt['results'][0]['status']=='succeeded'
+-receipt['results'][0]['local_metadata_applied']=True
+-path.write_text(json.dumps(receipt,indent=2)+'\n')
+-print('PASS: every returned local attribute; unchanged archive size/SHA256; receipt normalized after verification.')
++
++def main():
++    root = Path(__file__).resolve().parents[1]
++    archive = root.parent / 'LM4_SUCCESSOR_checkpoint_30.zip'
++    attrs = json.loads((root / 'records/checkpoint30_xattrs.json').read_text())
++    assert attrs, 'Returned identity attributes must be present.'
++    for item in attrs:
++        assert os.getxattr(archive, item['name']).decode() == item['value'], item['name']
++    verified = json.loads((root / 'records/checkpoint30_archive_verification.json').read_text())
++    assert verified['archive'] == archive.name
++    assert archive.stat().st_size == verified['bytes'] <= 536870912
++    assert hashlib.sha256(archive.read_bytes()).hexdigest() == verified['sha256']
++    path = root / 'records/checkpoint30_upload_result.json'
++    receipt = json.loads(path.read_text())
++    assert len(receipt['results']) == 1
++    result = receipt['results'][0]
++    assert result['status'] == 'succeeded' and result['file_name'] == archive.name
++    result['local_metadata_applied'] = True
++    path.write_text(json.dumps(receipt, indent=2) + '\n')
++    print('PASS: every returned local attribute; unchanged archive size/SHA256; '
++          'single receipt normalized only after verification.')
++
++
++if __name__ == '__main__':
++    main()
+
+--- code/record_checkpoint29_delivery.py
++++ code/record_checkpoint30_delivery.py
+@@ -1,61 +1,102 @@
+-"""Record checkpoint29 after immutable verification and saved identity."""
++"""Record checkpoint30 only after immutable, native-TAR and saved-identity checks."""
+ from pathlib import Path
+ from datetime import datetime, timezone
+ import csv
++import hashlib
+ import json
+ import re
++import struct
++import zipfile
+ 
+-root = Path(__file__).resolve().parents[1]
+-read = lambda name: json.loads((root / 'records' / name).read_text())
+-v = read('checkpoint29_archive_verification.json')
+-t = read('checkpoint29_system_tars_verification.json')
+-results = read('checkpoint29_upload_result.json')['results']
+-assert len(results) == 1
+-r = results[0]
+-assert r['status'] == 'succeeded' and r['local_metadata_applied']
+-found = []
+-def walk(value):
+-    if isinstance(value, dict):
+-        if value.get('library_file_id') == r['library_file_id'] and value.get('name') == r['file_name']:
+-            found.append(value)
+-        for item in value.values(): walk(item)
+-    elif isinstance(value, list):
+-        for item in value: walk(item)
+-walk(read('checkpoint29_library_metadata.json'))
+-assert len(found) == 1
+-item = found[0]
+-assert r['file_name'] == v['archive'] == 'LM4_SUCCESSOR_checkpoint_29.zip'
+-assert item['size_bytes'] == v['bytes'] <= 536870912
+-assert item['file_id'] == r['file_id'] and item['version_id'] == '0'
+-assert v['prior_entries_retained'] == 105724
+-assert v['crc'] == v['every_manifest_entry'] == v['every_retained_version'] == 'PASS'
+-assert t['both_system_tar_restores'] == t['current_main_pdf_direct'] == 'PASS'
+-assert t['both_container_zip_lzma_methods'] == 'PASS'
+-assert t['archive_sha256'] == v['sha256']
+-for kind in ('images', 'documents'):
+-    assert t['containers'][kind]['system_tar_restore'] == 'PASS'
+-    assert t['containers'][kind]['every_original_path_size_and_hash'] == 'PASS'
+-retention = read('checkpoint_version_retention_summary.json')
+-assert retention['archives'] == 28 and retention['archive_entries'] == 105724
+-assert retention['omissions'] == 0
+-m = read('checkpoint29_metrics.json')
+-assert m['statements'] == 314 and m['pages'] == 551 and m['bibliography_entries'] == 114
+-assert m['statuses'] == {'Known': 6, 'Proved': 270, 'Refuted': 19, 'Open': 19}
+-release = read('checkpoint29_writer_release.json')
+-p = read('checkpoint_29_packaging.json')
+-assert p['image_paths'] == t['containers']['images']['paths']
+-assert p['standard_tar_hardlinks'] == t['containers']['images']['hardlink_paths']
+-assert p['document_paths'] == t['containers']['documents']['paths']
+-assert p['standard_tar_document_hardlinks'] == t['containers']['documents']['hardlink_paths']
+-assert p['image_zip_method'] == p['document_zip_method'] == 'ZIP_LZMA'
+-inventory_count = len(list(csv.DictReader((root / 'records/computation_inventory.csv').open())))
+-review = (root / 'records/progress_review_29h.md').read_text()
+-review_time = re.search(r'^Actual review record: (.+)\.$', review, re.M).group(1)
+-driver = (root / 'records/checkpoint29_capture_driver.log').read_text()
+-capture_time = re.search(r'^Immutable capture completed:\s*(.+)$', driver, re.M).group(1)
+-qa = read('checkpoint29_visual_review.json')
+-late = read('checkpoint29_root_late_reviews.json')
+-record = f'''## Checkpoint29: saved and verified
++
++def main():
++    root = Path(__file__).resolve().parents[1]
++    read = lambda name: json.loads((root / 'records' / name).read_text())
++    v = read('checkpoint30_archive_verification.json')
++    t = read('checkpoint30_system_tars_verification.json')
++    results = read('checkpoint30_upload_result.json')['results']
++    assert len(results) == 1
++    r = results[0]
++    assert r['status'] == 'succeeded' and r['local_metadata_applied']
++    found = []
++
++    def walk(value):
++        if isinstance(value, dict):
++            if value.get('library_file_id') == r['library_file_id'] and value.get('name') == r['file_name']:
++                found.append(value)
++            for child in value.values():
++                walk(child)
++        elif isinstance(value, list):
++            for child in value:
++                walk(child)
++
++    walk(read('checkpoint30_library_metadata.json'))
++    assert len(found) == 1
++    item = found[0]
++    assert r['file_name'] == v['archive'] == t['archive'] == 'LM4_SUCCESSOR_checkpoint_30.zip'
++    assert item['size_bytes'] == v['bytes'] <= 536870912
++    assert item['file_id'] == r['file_id'] and item['version_id'] == '0'
++    assert v['prior_entries_retained'] == 114462
++    assert v['crc'] == v['every_manifest_entry'] == v['every_retained_version'] == 'PASS'
++    assert t['all_three_system_tar_restores'] == t['current_main_pdf_direct'] == 'PASS'
++    assert t['all_three_container_zip_lzma_methods'] == 'PASS'
++    assert t['data_lzma_dictionary_bytes'] == 67108864
++    assert t['archive_sha256'] == v['sha256']
++    for kind in ('images', 'documents', 'data'):
++        assert t['containers'][kind]['system_tar_restore'] == 'PASS'
++        assert t['containers'][kind]['every_original_path_size_and_hash'] == 'PASS'
++    retention = read('checkpoint_version_retention_summary.json')
++    assert retention['archives'] == 29 and retention['archive_entries'] == 114462
++    assert retention['omissions'] == 0
++    m = read('checkpoint30_metrics.json')
++    assert m['statements'] == 323 and m['task_rows'] == 49 and m['bibliography_entries'] == 114
++    assert m['statuses'] == {'Known': 6, 'Proved': 279, 'Refuted': 19, 'Open': 19}
++    release = read('checkpoint30_writer_release.json')
++    p = read('checkpoint_30_packaging.json')
++    for kind, field, hardlinks in (
++            ('images', 'image', 'standard_tar_hardlinks'),
++            ('documents', 'document', 'standard_tar_document_hardlinks'),
++            ('data', 'data', 'standard_tar_data_hardlinks')):
++        assert p[field + '_paths'] == t['containers'][kind]['paths']
++        assert p[hardlinks] == t['containers'][kind]['hardlink_paths']
++        assert p[field + '_bundle_sha256'] == t['containers'][kind]['bundle_sha256']
++        assert p[field + '_zip_method'] == 'ZIP_LZMA'
++    assert p['data_lzma_dictionary_bytes'] == 67108864
++
++    archive = root.parent / v['archive']
++    assert archive.stat().st_size == v['bytes']
++    assert hashlib.sha256(archive.read_bytes()).hexdigest() == v['sha256']
++    prefix = 'LM4_SUCCESSOR/'
++    with zipfile.ZipFile(archive) as z:
++        assert json.loads(z.read(prefix + 'records/checkpoint_30_packaging.json')) == p
++        assert json.loads(z.read(prefix + 'records/checkpoint30_metrics.json')) == m
++        assert json.loads(z.read(prefix + 'records/checkpoint_version_retention_summary.json')) == retention
++        pdf = z.read(prefix + 'LM4_SUCCESSOR_paper.pdf')
++        assert len(pdf) == m['pdf_bytes'] and hashlib.sha256(pdf).hexdigest() == m['pdf_sha256']
++        # Agents resume immediately after capture. Describe the captured records,
++        # not later mutable inventory or research files in the active workspace.
++        inventory_text = z.read(prefix + 'records/computation_inventory.csv').decode()
++        inventory_count = len(list(csv.DictReader(inventory_text.splitlines())))
++        review = z.read(prefix + 'records/progress_review_30h.md').decode()
++        qa = json.loads(z.read(prefix + 'records/checkpoint30_visual_review.json'))
++        late = json.loads(z.read(prefix + 'records/checkpoint30_root_late_reviews.json'))
++        for basename in ('verification_images.tar', 'historical_documents.tar', 'historical_data.tar'):
++            assert z.getinfo(prefix + basename).compress_type == zipfile.ZIP_LZMA
++        data_info = z.getinfo(prefix + 'historical_data.tar')
++    with archive.open('rb') as raw:
++        raw.seek(data_info.header_offset)
++        header = raw.read(30)
++        assert header[:4] == b'PK\x03\x04'
++        name_size, extra_size = struct.unpack('<HH', header[26:30])
++        raw.seek(name_size + extra_size, 1)
++        properties = raw.read(9)
++    assert properties[:2] == bytes([9, 4]) and struct.unpack('<H', properties[2:4])[0] == 5
++    assert struct.unpack('<I', properties[5:9])[0] == 67108864
++
++    review_time = re.search(r'^Actual review record: (.+)\.$', review, re.M).group(1)
++    driver = (root / 'records/checkpoint30_capture_driver.log').read_text()
++    capture_time = re.search(r'^Immutable capture completed:\s*(.+)$', driver, re.M).group(1)
++    record = f'''## Checkpoint30: saved and verified
+ 
+ Review:{review_time}, CONTINUE.
+ Immutable capture completed:{capture_time}.
+@@ -70,56 +111,60 @@
+ Independent metadata matches name, size, identity and version; local identity applied.
+ 
+ CRC, every logical manifest entry and every retained version:PASS.
+-All105724 logical entries of the28 previous immutable archives are retained
++All114462 logical entries of the29 previous immutable archives are retained
+ byte-exactly with zero omissions. History contains
+ {retention['total_historical_copies']} distinct copies totaling
+ {retention['total_historical_bytes']} bytes. The computation inventory has
+ {inventory_count} programs at capture. The standard image TAR retains
+ {p['image_paths']} original PNG paths with{p['standard_tar_hardlinks']} hardlinks;
+ the standard document TAR retains{p['document_paths']} historical/preview
+-PDF paths with{p['standard_tar_document_hardlinks']} hardlinks. Both use
+-lossless ZIP_LZMA. The current main PDF is a direct ZIP entry.
+-Independent native tar extraction of the actual archived containers
++PDF paths with{p['standard_tar_document_hardlinks']} hardlinks; the standard
++data TAR retains{p['data_paths']} selected original paths with
++{p['standard_tar_data_hardlinks']} hardlinks. All three use lossless
++ZIP_LZMA. The actual data-stream property is64MiB, independently read from
++its ZIP local header and checked against the packaging and native verification.
++The current main PDF remains a direct ZIP entry.
++Independent native tar extraction of all three actual archived containers
+ verified every original path, size and byte hash without importing the
+ packager or its logical reader. Restore from the ZIP extraction parent:
+ tar -xf LM4_SUCCESSOR/verification_images.tar
+ tar -xf LM4_SUCCESSOR/historical_documents.tar
+-All28 earlier archives remain unchanged. Exactly one new ZIP was created.
++tar -xf LM4_SUCCESSOR/historical_data.tar
++All29 earlier archives remain unchanged. Exactly one new ZIP was created.
+ 
+-The formal PDF has551 pages and314 statements:270 Proved,19 Refuted,
+-19 Open and6 Known; all114 references are printed and49 task rows retained.
++The formal PDF has {m['pages']} pages and323 statements:279 Proved,
++19 Refuted,19 Open and6 Known; all114 references are printed and49 task rows retained.
+ PDF bytes:{m['pdf_bytes']}; SHA-256:{m['pdf_sha256']}.
+-The first combined build is final: no overfull boxes, actual warnings,
+-undefined references or errors. Its18 pre-existing underfull notices
+-are unchanged. Both final engine stdout and full log were scanned
+-case-insensitively. All24 new mathematical pages136--142 and446--462
+-were individually inspected, within{len(qa['individually_inspected_pages'])}
+-individual views. Five separately inspected contact-sheet images cover
+-{len(qa['rendered_pages'])} rendered pages.
++The final combined build has no overfull boxes, actual warnings, undefined
++references or errors. Both final engine stdout and full log were scanned
++case-insensitively. Eighteen existing underfull notices and one new visually
++accepted B147 notice total19; the additional notice is explicitly documented.
++All {len(qa['required_math_pages'])} new mathematical pages were individually
++inspected within {len(qa['individually_inspected_pages'])} individual views.
++The {qa['contact_sheets_inspected']} separately inspected contact sheets cover
++{len(qa['rendered_pages'])} final rendered pages.
+ 
+-The six frozen formal sources A87/A88/B138/B139/B140/B141 have complete
+-root and independent source reviews. They establish the actual marked
+-cusp-frame and full coefficient criterion, modulo8 comparison, whole
+-compact unfilled-edge intersection, exact one-family fixed-source
+-comparison, named-section repair obstruction, and faithful regional
+-kernel/mixed filling presentation. The separate late record binds
+-{len(late['proof_sources'])} complete proofs with exact current scopes,
+-including the full-GT dyadic/odd-head reduction and unrestricted coarse
+-nonsplitting, without promoting additional formal statements. Their
+-further reviewed consequences are recorded there explicitly. No local,
+-quotient, or nonsplitting result is substituted for the final ambient
+-fixed-source equality or either main decision. Main A and the actual
+-Main-B icosahedral K=1 decision remain Open.
++All nine frozen formal sources A89--A91 and B142--B147 have complete root
++and independent source reviews. The separate late record binds
++{len(late['proof_sources'])} complete proof records at their exact current
++scopes without promoting additional formal statements. The actual odd-head,
++icosahedral, and full ambient filling/fixed-source gates remain explicit.
++Neither carrier properness nor quotient or nonsplitting results settle
++either main decision. Main A and Main B remain Open.
+ 
+ This postcapture verification, save receipt, metadata and delivery record
+-enter checkpoint30. All three agents resumed substantive research
+-immediately after capture, before verification or saving.
+-Next review/checkpoint:2026-11-17 06:49:30 UTC.
++enter checkpoint31. Agents resume substantive research after capture,
++before verification and saving, according to the recorded writer release.
++Next review/checkpoint:2026-11-17 07:49:30 UTC.
+ '''
+-for relative in ('records/checkpoints.md', 'records/continuation_state.md'):
+-    path = root / relative
+-    old = path.read_text()
+-    assert '## Checkpoint29: saved and verified' not in old
+-    path.write_text(old + '\n' + record)
+-print('Checkpoint29 archive, both native TAR restorations, receipt and metadata agree.')
+-print('Delivery record written', datetime.now(timezone.utc).isoformat())
++    destinations = [root / rel for rel in ('records/checkpoints.md', 'records/continuation_state.md')]
++    old_values = [path.read_text() for path in destinations]
++    assert all('## Checkpoint30: saved and verified' not in old for old in old_values)
++    for path, old in zip(destinations, old_values):
++        path.write_text(old + '\n' + record)
++    print('Checkpoint30 archive, three native TAR restorations, actual64MiB stream, receipt and metadata agree.')
++    print('Delivery record written', datetime.now(timezone.utc).isoformat())
++
++
++if __name__ == '__main__':
++    main()

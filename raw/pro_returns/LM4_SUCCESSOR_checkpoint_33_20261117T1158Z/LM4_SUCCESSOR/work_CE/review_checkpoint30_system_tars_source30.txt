@@ -1,0 +1,18 @@
+COMPLETE INDEPENDENT VERIFIER SOURCE REVIEW: PASS
+
+Read the complete verify_checkpoint30_system_tars.py source. It imports
+no packager, logical reader, or TAR builder. The exact archived manifest
+defines each of the three disjoint path selections; duplicate paths and
+direct/bundled overlaps are rejected. Each container is hashed against
+its archived packaging record. Before native tar extraction every member
+is restricted to a safe relative LM4_SUCCESSOR path and to a regular file
+or a hardlink to an already verified regular member. All original paths
+are then restored with system tar and checked byte-for-byte by size/hash.
+
+The actual ZIP local header is parsed to inspect the data container's
+ZIP-LZMA property bytes, independently confirming its 64 MiB dictionary.
+The method checks cover all three containers. The final archive SHA and
+direct main-PDF presence have the stated limited scope; the separate full
+snapshot verifier remains responsible for other direct logical entries.
+No flaw or correction found. This is a full source audit only: checkpoint30
+does not yet exist, and no runtime restore has been claimed.
