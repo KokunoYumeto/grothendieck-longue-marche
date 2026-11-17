@@ -1,0 +1,36 @@
+% Generic syntax example only. Not part of the transcription.
+% Verified against official TikZ-cd/PGF documentation; not compiled here,
+% because the runtime lacks the required TeX package/format files.
+\documentclass{article}
+\usepackage{tikz-cd}
+
+% Core PGF layer support; no extra TikZ library is required.
+\pgfdeclarelayer{construction}
+
+\begin{document}
+\begingroup
+\pgfsetlayers{construction,main}
+
+\begin{tikzcd}[
+  ampersand replacement=\&,
+  every matrix/.append style={/tikz/name=auxcd},
+  /tikz/execute at end picture={
+    \begin{pgfonlayer}{construction}
+      \draw[draw=black!25,line width=.25pt,arrows=-]
+        ([xshift=-4mm,yshift=2mm]auxcd-1-1.center)
+        -- ([xshift=3mm,yshift=-2mm]auxcd-2-2.center);
+      \draw[draw=black!25,line width=.25pt,arrows=-]
+        ([xshift=2mm,yshift=1mm]auxcd-2-1.center)
+        .. controls
+          ([xshift=-2mm,yshift=3mm]auxcd-1-1.center)
+          and ([xshift=2mm,yshift=-3mm]auxcd-1-2.center)
+        .. ([xshift=-2mm,yshift=-1mm]auxcd-2-2.center);
+    \end{pgfonlayer}
+  }
+]
+  A \arrow[r] \arrow[d] \& B \arrow[d] \\
+  C \arrow[r]           \& D
+\end{tikzcd}
+
+\endgroup
+\end{document}

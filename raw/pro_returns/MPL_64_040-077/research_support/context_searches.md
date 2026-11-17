@@ -1,0 +1,1390 @@
+# Per-item context searches
+
+All searches were executed after the freeze, against the attached extracted context only. A lexical hit is a retrieval lead, not a verification; the selected file/scan comparison is stated in each note. Sample hit lines are limited to ten per item; the full query searched every supplied Markdown/TeX context file. The source attachments themselves are intentionally not duplicated in this deliverable.
+
+## RN001
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `infini|Tate|modulaire|tangent`  
+Returned hit lines: 48
+
+Selected comparison: `MPL_149_091-136_notes.md`, RN099-03 (149/099–100), RN100-01 (149/100–101); `LM_140-3_text.tex`, scan 025, explicitly names the point at infinity of the elliptic modular curve. These are the target and an earlier proposed test, not a construction added by this packet.
+
+```text
+./LM_140-3_text.tex:153:(VI) Caractérisation \inserted{modulaire} du triplet \unsure{\((\varepsilon_1,\sigma,\rho)\)|\((\varepsilon,\sigma,\rho)\)} \hfill 462
+./LM_140-3_text.tex:1112:de Jacobi unimodulaire de $\pi$, équivaut à celui d'une base $(e_1,e_2)$ de $\pi$ \inserted{(comme $\mathbb Z$-module)} telle que $e_1\wedge e_2=\unsure{\eta|\gamma}$. L'élément $e_1$ \inserted{(comme base de $V$ sur $\mathbb C$)} permet d'ailleurs d'identifier $V$ à $\mathbb C$, $e_1$ devenant 1. Ainsi la donnée de $E$ avec sa rigidification de Jacobi unimodulaire, équivaut à celle d'un élément $e_2=\tau$ de $\unsure{\mathbb C|E}$, tel que
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./MPL_149_001-090_notes.md:9:For each item, searches used its objects, notation, or characteristic words across the supplied context; the cited scan blocks were then compared with the present passage. A statement that no direct match was located reports the outcome of those searches, not an exhaustive proof of absence. The filenames and scan numbers refer to the supplied working transcriptions, whose README reports the following coverage:
+./MPL_149_001-090_notes.md:21:External comparisons use the primary publications, author texts, and mathematical references identified in the bibliography. The stated theorem, version, hypotheses, and conjugation convention govern each comparison; a proved open-Hom statement is not substituted for a stronger cyclotomic-centralizer criterion, and an older article's description of a conjecture is not evidence of its current status. Bibliographic and theorem checks were made during the research phase on 11–12 November 2026.
+./LM_GLOBAL_PASS.md:24:  of inertia are Nakamura's; for the torsion-free extension statement, cf. the profinite Nielsen realisation
+./LM_GLOBAL_PASS.md:68:- Recover algebraically the position of the points at infinity on the components of X^σ (437, margin).
+./MPL_142_001-093_notes.md:7:The report contains **307 separately indexed items**. Each gives a scan and position, a brief quotation or formula anchor where it concerns the source, a main discussion of one to four sentences, and a specific comparison with the supplied context. The five kinds are those requested: **conjecture** includes the author's questions, expectations, and proposed programmes; **unproved claim** includes deferred arguments and identities for which the note supplies a check; **unpursued implication** identifies a consequence or hypothesis left undeveloped; **own idea** identifies a construction, counterexample, or research connection supplied here; **reading question** records a significant uncertainty or conflict without emendation. Confidence statements apply to our analysis, not to the physical ink unless expressly stated, and no novelty claim is intended.
+./MPL_142_001-093_notes.md:9:Every item was searched separately against all five context transcription files using its objects, notation, and vocabulary; matched passages were then inspected for the comparison recorded with that item. A report of “no matching argument found” concerns those searches and inspected passages, not an assertion that the entire archive has been exhaustively proved free of a parallel. Earlier generated notes and overviews served only as leads, and are not cited as established mathematical results. Source quotations in these research notes are short anchors, sometimes with explicit omissions or normalized mathematical typography; the diplomatic wording and state of the page are in the separate transcription.
+```
+
+## RN002
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Kummer|kumm|norme|conormal`  
+Returned hit lines: 28
+
+Selected comparison: `LM_140-2_text.tex`, scans 073, 075–078; `MPL_149_091-136_notes.md`, RN095-01 (149/095). The latter is a first-pass contextual lead.
+
+```text
+./LM_140-3_text.tex:11433:\qquad\text{de \uline{norme} égale à }1\\
+./LM_140-3_text.tex:11465:{\xrightarrow{\text{norme}}}\unsure{\mathbb G_m|G_m}\right)
+./LM_GLOBAL_PASS.md:123:- Γ_Q → an extension of Ẑ* by Ẑ (157). The Kummer-type maps: surjective, or with open image, linearly independent
+./LM_GLOBAL_PASS.md:160:- D8. The Fermat tower and the Kummer-type maps (T11).
+./MPL_142_001-093_notes.md:1610:**Context comparison:** Adds an explicit link between `LM_140-4_text.tex`, scans 252–260 (first-pass topological arc germs and half-rays), and `LM_140-2_text.tex`, scans 025–026 (second-pass local arithmetic discs and Kummer inertia) and 075–077 (first-pass uniformizer/tangent splitting construction). `ARCH_147_003-137_text.tex`, scan 088 (first pass), asks for a normal-crossing extension, which suggests a broader direction but does not prove it.
+./MPL_142_001-093_notes.md:1612:**Own-idea confidence and reason:** high for smooth curves in characteristic zero: the cited tangential-fiber construction and the elementary Kummer local model supply the bridge.
+./MPL_146_100-134_notes.md:178:The “torseur tangent unitaire” at a marked point and the contracted product of the two branch-direction torsors at a node have different tautological classes that should be tracked through the product $SP_G$. Under the tangent-direction convention, they are respectively the circle bundles of $L_i^{-1}$ and $L_+^{-1}\otimes L_-^{-1}$, giving classes $-\psi_i$ and $-\psi_+-\psi_-$; Wolpert (2007, §4, pp. 11–12) identifies the cotangent tensor product with the **conormal** line, so dualizing is essential. This describes the class on the branch-labelled stratum, after which graph symmetries and branch permutations must be descended. **Context—adds the curve-specific identification:** the normal/torseur search locates `ARCH_147_003-137_text.tex`, scans 122–123, where normal invertible sheaves produce multiplicative torsors and permutation descent; that is the same general mechanism, but it does not state the node’s two-cotangent-factor formula.
+./hua_project/64.modern.tex:78:% de M_11(4) » (pp. 65-68, stops mid-sentence); the equivalence of the Kummer
+./hua_project/64.modern.tex:158:\keywords{Klein four-group, symmetric group S4, dihedral group D4, octahedral group, contracted product of torsors, GL2(Z/4Z), level-4 structure, 4-torsion points, octahedral configuration, Klein quotient of P1, moduli of four points on P1, Legendre family, lambda-line, rigidification, tamely ramified Kummer covering, tangential base point, fine moduli space, dicyclic group, Weierstrass function, chord-tangent addition law, division points, upper half-plane, SL2(Z), mapping class group of the torus, Teichmüller group, normality of quadratic extensions}
+./LM_140-2_text.tex:667:dont le noyau, on le sait par Kummer, est canoniquement isom. à
+```
+
+## RN003
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Tate|dégén|degener|tangent|Legendre`  
+Returned hit lines: 48
+
+Selected comparison: `MPL_149_091-136_notes.md`, RN099-03 (149/099–100); `LM_140-2_text.tex`, scans 517–520 (elliptic family and quotient groupoid). This is a proposed continuation, not a claim already established there.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:1787:(en termes des groupes fondamentaux) de la Théorie de Legendre
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./MPL_147_048-137_notes.md:82:The claimed correspondence between \(2^\mu\) contractions and closed smooth submultiplicities requires deciding whether these are local branches, normalized closures, or their images in the global moduli stack. Global images can identify branches and acquire self-intersections, precisely the issue exhibited in scans 069–073 and revisited on scans 134–137. The statement is therefore safest to investigate first in a branch-labelled local chart, without changing the manuscript's use of “inclusion”.
+./LM_GLOBAL_PASS.md:24:  of inertia are Nakamura's; for the torsion-free extension statement, cf. the profinite Nielsen realisation
+./LM_GLOBAL_PASS.md:153:  extension statement (T1, T2), discrete and profinite.
+./MPL_147_003-047_notes.md:7:Each numbered item identifies its manuscript location, one of the requested kinds, a short quotation or formula anchor, and a comparison with an exact file and scan in the supplied context. An **unproved claim** may be a claim whose proof is compressed or deferred at that location, even when later pages or published work supply the argument. **Own idea** identifies an argument, example, or proposed comparison supplied in these notes; it does not claim mathematical originality. Confidence concerns the stated calculation or comparison, and does not upgrade a doubtful handwritten reading.
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./LM_140-3_notes.md:27:The ink reads "Σ ≃ Z/2Z × Z/2Z × Z/2Z", with two-stroke crosses; a free product * remains the alternative. The two readings are different statements. For ×, Σ is elementary abelian of order 8, and one must show three commuting independent involutions. For *, Σ is the infinite free product, and one needs a normal-form or ping-pong argument excluding all relations. *Reason:* the first pass took * as read.
+./LM_140-3_notes.md:66:Take X = R², G = Z acting by translations. Every hypothesis on scan 6 holds: connected surface, discrete group acting properly, trivial stabilisers (orientation-preserving and faithful). Then Y^! = ∅, but Π_1(X,G) ≅ G, and Γ = G ≠ 1 has a lift that is maximal under any reading of "maximaux". So the Proposition as written is false unless Γ (or G) is finite; restoring "cycliques" would not help, since Z is cyclic. With finite Γ (for example G = 𝔖_3, as applied on scan 9) the statement is the expected one. *Reason:* the example is checked; it no longer depends on the status of the struck word.
+```
+
+## RN004
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `congruence|cyclotom|GT_0|GT0|multiplicateur`  
+Returned hit lines: 33
+
+Selected comparison: `LM2_CONGRUENCE_ROWS.md`, C.d1 and C.r1–C.r3; `LM_140-3_text.tex`, scans 022–026 and 176–178; `LM_140-2_text.tex`, scans 567–570. These are broader arithmetic and central/projective questions to which the current calculation supplies finite input.
+
+```text
+./LM_140-3_text.tex:19:\uline{39}\quad Propriétés de congruence de l'opération
+./LM_140-3_text.tex:1153:\uline{39} \deleted{\unsure{Propriétés}}\inserted{Les} conditions de congruence
+./LM_GLOBAL_PASS.md:81:- Literature: GT action on SL2-hat, the two-level relations (Ihara, Lochak-Schneps), congruence subgroup property
+./LM_GLOBAL_PASS.md:90:- Congruence relations on (0,3) and (1,1): are they "de nature arithmétique" or consequences of a purely algebraic
+./MPL_149_001-090_notes.md:21:External comparisons use the primary publications, author texts, and mathematical references identified in the bibliography. The stated theorem, version, hypotheses, and conjugation convention govern each comparison; a proved open-Hom statement is not substituted for a stronger cyclotomic-centralizer criterion, and an older article's description of a conjecture is not evidence of its current status. Bibliographic and theorem checks were made during the research phase on 11–12 November 2026.
+./MPL_149_001-090_notes.md:29:| C | 047–068 | 63 | Section packets, cyclotomic fixed groups, reconstruction |
+./LM_140-3_notes.md:271:Text checked: `second_pass/LM_P061_checked.tex`. Scan 21 ends §38 (the modular curve as a quotient of the half-plane); scans 22–30 are §39, "Les conditions de congruence pour l'opération extérieure de Γℚ sur Π̂₀,₃" (ms. pp. 299–303). Each first-pass note keeps its number and is marked **keep**, **correct** or **drop**, with the reason. Notes A–I are the second pass's own, labelled as such. Mathematical identities stated in the notes were checked by hand; anything not proved here is said to be so.
+./LM_140-3_notes.md:291:9. **Scan 24, around (7) — unpursued implication — keep.** The two "conditions assez fortes" (stability of the congruence kernel; an outer action on Sl(2,Ẑ) coming from Ẑ*/Ẑ*²) are independent tests on an outer automorphism. The text does not claim that they characterise the image of Γℚ.
+./MPL_142_001-093_notes.md:163:After compactifying the ends, trivial action on ordinary integral homology forces the punctures to be fixed individually and makes the compact-surface Lefschetz number \(2-2g\); a nontrivial orientation-preserving periodic map has isolated fixed points of index \(+1\), by its local rotation model. For \(g\geq2\) the negative Lefschetz number is impossible, for \(g=1\) a puncture supplies a fixed point despite Lefschetz number zero, and for \(g=0\) hyperbolicity supplies at least three fixed punctures although a nontrivial periodic sphere rotation has only two. This is a proof strategy for the integral-homology version, conditional on spelling out end extension and the local rotation theorem; the mod-\(n\) version additionally needs the torsion-freeness of the principal congruence kernel at level \(n\geq3\) (Constantin & Kolev, 1994; Serre, 1961).
+./MPL_142_001-093_notes.md:167:**Own-idea confidence and reason:** medium: the fixed-point count is decisive once the listed topological and congruence inputs are supplied, but those inputs are not reproved here.
+```
+
+## RN005
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Gauss|Cartier|connexion|connection|courbure|uniform|cristall`  
+Returned hit lines: 33
+
+Selected comparison: `README.md`, S20; `hua_project/64.modern.tex`, pp.126–151 (corresponding to scans 127–152, outside this packet); `SECTIONS_STATE.md`, catalogue entries for cotes93/159. Full Hua scope is mapped in `research_support/s20_scope.md`; the later manuscript images were not available.
+
+```text
+./MPL_149_001-090_notes.md:663:The move to groups “associés à des modèles affines” should retain the distinction between a model's classifying topos of locally constant data and its full étale topos, whose open/closed gluing supplies additional information. `LM_140-2_text.tex`, scans 119 and 164, adds exactly that gluing construction and identifies the local henselian étale topos, a connection not explicitly made in this paragraph. Carlson and Stix (2026, Theorem A/4.1) establish reconstruction for finite-type schemes over sub-$p$-adic fields with pinned geometric morphisms after localization at universal homeomorphisms; those target-morphism and localization conditions prevent treating it as an automatic proof of the classifying-topos or model-filtration conjecture here.
+./MPL_149_001-090_notes.md:746:The uniformizer construction and the assertion that splitting classes form “un torseur” under $H^1(\Gamma,T)\simeq\varprojlim_n K^\times/(K^\times)^n$ repeat `LM_140-2_text.tex`, scans 073–075, which give Kummer theory and compatible roots of a local parameter in greater detail. After choosing one splitting of the appropriate decomposition extension, the torsor assertion follows from continuous cocycles modulo coboundaries; to justify the inverse-limit identification, one can use a countable cofinal sequence of integers and the Mittag–Leffler property of the finite groups $H^0(K,\mu_n)$. Thus the local construction is well motivated, but its written use of the centralizer in (2) remains subject to C054.1.
+./LM_140-3_text.tex:9445:Mais on sait que \inserted{le choix d'}un \unsure{uniformisant|uniformisante}
+./LM_140-3_text.tex:9451:scindage \inserted{(associé à une \unsure{uniformisante})}
+./MPL_142_001-093_notes.md:7:The report contains **307 separately indexed items**. Each gives a scan and position, a brief quotation or formula anchor where it concerns the source, a main discussion of one to four sentences, and a specific comparison with the supplied context. The five kinds are those requested: **conjecture** includes the author's questions, expectations, and proposed programmes; **unproved claim** includes deferred arguments and identities for which the note supplies a check; **unpursued implication** identifies a consequence or hypothesis left undeveloped; **own idea** identifies a construction, counterexample, or research connection supplied here; **reading question** records a significant uncertainty or conflict without emendation. Confidence statements apply to our analysis, not to the physical ink unless expressly stated, and no novelty claim is intended.
+./MPL_142_001-093_notes.md:1259:**Kind:** conjecture. **Assessment:** Author construction programme; literature connection.
+./MPL_147_048-137_notes.md:322:The uniform boundary contribution should be checked using the automorphism group of a pointed nodal rational curve, whose branch-exchanging involution remains nontrivial in characteristic two. Its constant order-two group must not be replaced there by the nonreduced group scheme \(\mu_2\), since these encode different stabilizer geometry. Even with the correct constant group, assigning the value \(1/2\) in characteristic two requires the weighting convention of N063-01, rather than an unqualified appeal to tame quotient methods.
+./MPL_147_048-137_notes.md:1180:### R098.4 — A quantitative test for disconnection
+./LM_GLOBAL_PASS.md:140:  curve by a finite group? Cf. Behrend-Noohi, uniformisation of DM curves.
+./LM_140-3_notes.md:229:"la donnée d'une courbe elliptique E sur ℂ équivaut à celle d'un espace V de dim 1 sur ℂ, et d'un "réseau" π ⊂ V", with the marginal "équivalence de catégories …": uniformisation, and morphisms must be specified. *Reason:* unchanged.
+```
+
+## RN006
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `E14|E16|C29|P09|déformation|deformation`  
+Returned hit lines: 18
+
+Selected comparison: `notes/RESULTS_STATE.md`, “What other packages’ research notes say,” E14/E16/C29/P09; the cited `MPL_93_002-046_notes.md` is not included. `SECTIONS_STATE.md` supplies only catalogue-level information; no unavailable scan number is fabricated.
+
+```text
+./MPL_147_048-137_notes.md:92:**Location:** scan 051, entire paragraph, “on y reviendra par la suite”. **Kind:** unproved claim. **Context:** C0; intended terms: schémas modulaires formels, croisements normaux, déformation.
+./MPL_147_048-137_notes.md:94:The deferred proof needs independent smoothing parameters for the nodes, unobstructed deformation of the pointed stable curve, and a description of how its automorphisms permute those parameters. Deligne and Mumford (1969, Theorem 5.2) establish the smooth-stack and normal-crossing-boundary statement in their stable-curve setting; the manuscript still needs to connect that local geometry to its particular graph-indexed objects and morphisms. Scans 106–137 pursue the corresponding abstract branch formalism, rather than supplying this deformation calculation.
+./MPL_147_003-047_notes.md:167:**Literature/calculation check:** The Stacks Project Authors (2026, Tag 0H8M) and Deligne and Mumford (1969), § 1 local node deformations; the singular-ideal computation is direct.
+./MPL_147_003-047_notes.md:513:**Note:** A versal nodal deformation chart supplies one independent smoothing parameter \(t_e\) for each node, and the smooth-curve locus is obtained by inverting their product. Because the ambient fibre is smooth, these coordinate divisors have no component containing an open subset of the fibre, which gives the stronger schematic density claimed here.
+./MPL_146_100-134_notes.md:554:Wolpert, S. A. (2012). *Infinitesimal deformations of nodal stable curves* [Preprint]. arXiv. [https://doi.org/10.48550/arXiv.1204.3680](https://doi.org/10.48550/arXiv.1204.3680)
+./notes/RESULTS_STATE.md:21:- **What other packages' notes say about these cotes:** MPL_93_002-046: E14 (formal deformation against the coarse invariant, a conjecture), E16 (families realizing the two smallest displayed orders), C29 (a first-order bridge back to the elliptic deformation sheet), P09 (what a comparison with cotes 159 and 64 must establish).
+./notes/RESULTS_STATE.md:25:  2. The deformation sheet and the coarse invariant: settle E14, test E16 and C29 on these pages, and record what P09 asks of cote 64.
+./MPL_146_001-099_notes.md:481:**Confidence:** medium. **Reason:** The same generator labels occur in the drawing and the later presentation, but no deformation-retract or cellular-completeness proof has been located.
+./MPL_146_001-099_notes.md:622:Own idea: the repeated assertions of “commutativité dans $\Pi_1V^{**}$” can be organized as compatibility squares for the selected path families, then composed to compare concatenated words in the proposed generators. The next proof obligation is to show that these comparisons respect every defining relation, with the phase, sign, and normalization questions in scans 036, 038, and 049 fixed at the level of the argument. LM_140-2_text.tex, scan 246, explicitly turns a homotopy into an isomorphism of induced equivalences, giving a structural parallel not made here. The scope is the selected path comparisons: no global deformation retraction of the arrangement complement onto one punctured eigenline follows from these squares.
+./LM_140-2_notes.md:1156:slip for L'_{i'}, kept in the transcription; the NB itself is to be checked on the ink in package P09.
+```
+
+## RN007
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `End|endomorph|matrices scalaires|sl\(`  
+Returned hit lines: 47
+
+Selected comparison: `hua_project/64.modern.tex`, “Une proposition sur End(V),” pp.41–42 = scans 042–043; `LM_140-2_text.tex`, scan 569, requests the related scalar-quotient calculation, while `LM_140-2_notes.md`, R17, already supplies an editorial formula. This packet gives the explicit preceding module structure.
+
+```text
+./LM_140-3_text.tex:3:% not manuscript: printed logo of the Institut Montpelliérain Alexander Grothendieck (archive cover image of cote 140-3).
+./LM_140-3_text.tex:26:théorie de Legendre
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./LM_GLOBAL_PASS.md:8:Sources read: second_pass/NOTES_A_conjectures.md (Grothendieck's conjectures, questions, expectations and programme,
+./LM_GLOBAL_PASS.md:37:  is a strong candidate: Grothendieck's 1981 formulation, discrete and profinite.
+./MPL_147_003-047_notes.md:3:These **75 notes** accompany the complete diplomatic transcription of the 45 supplied scans of *Structure à l'infini des \(M_{g,\nu}\)*. The transcription was frozen at **2026-11-11 01:30:36 UTC**, before the context archive was opened; the interpretations, proofs, examples, and suggested readings below have not been substituted into it. The proposition at the end of scan 047 continues beyond the supplied range and is not completed by conjectural transcription.
+./MPL_147_003-047_notes.md:13:The one-to-four-sentence explanatory cores remain separate from their context and literature checks. Appendices A and B give full calculations for selected counterexamples and recovery arguments, so the abbreviated notes can be checked directly. Modern literature was consulted as primary papers or official mathematical documentation; APA references and stable source locators appear at the end.
+./LM_140-3_notes.md:7:Scans 3–5 are Grothendieck's contents of the second part ("2ème partie — Variations sur l'équation des lacets", §§38–49, ms pp. 291–650). Scans 6–10 are the opening of §38 (ms pp. 291 bis, 292 bis, 293). In the corrected text the cartographic group is written with the same script S as $\mathfrak S_3$: $\mathfrak S_{0,3}$, $\mathfrak S^{+}_{0,3}$ (changes, rows 3 and 58).
+./LM_140-3_notes.md:11:**R1. Scan 3, §46 heading. Grothendieck's question about notation. Kept.**
+```
+
+## RN008
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `trace|orthogon|alternée|alterné`  
+Returned hit lines: 25
+
+Selected comparison: `hua_project/64.modern.tex`, End(V) subsection, pp.41–42; `LM_140-2_text.tex`, scans 568–569, trace-zero matrices versus scalars. The current margin is more local than the later congruence-kernel use.
+
+```text
+./LM_140-3_text.tex:11364:$E$ loc. libre de rang 2, il est can. isomorphe à $\mathbb E^1$ ou à $\mathbb E^1\times\mathbb G_m$ (suivant que le rang est 1 ou 2) dans le cas d'\deleted{\unsure{$\mathrm{Sl}(2)$|$\mathrm{Gl}(2)$}}une forme de $\mathrm{Sl}(2)$ \deleted{\unsure{ou $\mathrm{GP}(1)$}}, c'est donné par la \uline{\unsure{Trace}}
+./LM_140-3_text.tex:12060:quand on suppose déjà que $\xi,\eta$ \unsure{satisfont} à l'équation des \deleted{traces et des} déterminants \inserted{et des traces}
+./MPL_147_048-137_notes.md:672:**Quoted anchor:** `enlevant les traces des diviseurs à l'infini`.
+./MPL_147_048-137_notes.md:674:**Context:** C0 (search terms: germe; trace; diviseurs; épointé).
+./MPL_149_001-090_notes.md:170:The conclusion “$Z\subset\pi_{\bar K/K}$” reduces the arithmetic centralizer calculation to the trace of the original open subgroup in the geometric kernel. The trace is open, but the next step also needs the geometric inverse-limit presentation to carry the centre-freeness property of its model groups to the field group. `LM_140-2_text.tex`, scan 118, formulates that geometric open-subgroup condition, while scan 496 only discusses finite-rank free groups; cote 149 adds the transition between those two levels, comparable to Mochizuki’s (1999, Lemma 15.7) explicitly surjective system.
+./LM_140-3_notes.md:75:"X = X̂∖S donc Y = Ŷ∖T … avec Ŷ = X̂/G". The extension of the action to X̂ and the definition of T are not given. The retraced cluster after T remains `\unsure{\ne\varnothing}`. *Reason:* the reading is unchanged.
+./LM_140-3_notes.md:208:(25) follows from (24): ℓ'_∞ℓ'_1ℓ'_0 = ρ^{-1}σ_∞σ_∞ρ = 1, ℓ'^2_1 = σ_∞² = 1, ℓ'^3_∞ = ρ^{-3} = 1. That (25) is a complete presentation is the content of R25. The index of the middle relation is retraced (1|∞) in the ink; the algebra requires 1. *Reason:* reading doubt added; derivation given.
+./MPL_142_001-093_notes.md:583:After identifying the six \(b\)-arrows in inverse pairs, the picture has six vertices, nine geometric edges, and two asserted face relations, giving Euler characteristic \(6-9+2=-1\), as required for the three-punctured sphere. That count is only a consistency check: a proof of the presentation must trace the two attaching words with their actual endpoints and show that the resulting complex has the intended homotopy type. Collapsing a spanning tree and reducing the two relations should then recover a free vertex group of rank two, provided the doubtful indices are resolved in a future reading.
+./MPL_142_001-093_notes.md:1229:The determinant of the standard two-dimensional permutation representation is $\operatorname{sg}(g)$, so a direct action on the three-dimensional oriented ambient space forces the same sign on the orthogonal polar line.  Thus $\det(g|_E)=1$, whereas $\tau=\mathrm{id}_V\oplus(-\mathrm{id}_\Delta)$ has determinant $-1$ and fixes the equator pointwise.  This checks both the orthogonal decomposition and the distinction between a transposition realized as a spatial half-turn and the central equatorial reflection.
+./MPL_146_100-134_notes.md:206:The requested clarification of how $P_C\times m_C$ “s'identifie à une trace de voisinage tubulaire” must specify whether the claim is about a germ, a sufficiently small neighborhood, a normal-bundle model, or an embedding on the entire written parameter domain. Local plumbing gives the expected polar coordinates $q_a=r_ae^{i\theta_a}$, with the phase coordinates living in the possibly nontrivial normal-circle torsor rather than a globally trivial torus product. Hubbard and Koch (2013, Theorem 9.11 and the following paragraph) prove a sufficiently-small **local** homeomorphism and expressly exclude global injectivity in general, so their theorem supports a local formulation and cannot certify the strongest global reading. **Context—restates the residual-neighborhood objective and adds an explicit model:** searches for residual germs and normal torsors locate `ARCH_147_003-137_text.tex`, scans 78–80 and 122–123; scan 78 itself warns that the relevant stratum maps may only be local immersions.
+```
+
+## RN009
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `orientation|non scind|End|trace`  
+Returned hit lines: 47
+
+Selected comparison: `hua_project/64.modern.tex`, End(V) subsection and “Détermination de M_{1, 1}(4),” pp.65–68; `LM_140-2_text.tex`, scan 569, same natural module/scalar comparison. Hua already states that the opening proposition underlies (41).
+
+```text
+./LM_140-3_text.tex:3:% not manuscript: printed logo of the Institut Montpelliérain Alexander Grothendieck (archive cover image of cote 140-3).
+./LM_140-3_text.tex:26:théorie de Legendre
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./MPL_146_001-099_notes.md:25:First-pass formulae, cancelled arguments, and uncertain contextual readings are qualified where they matter. External literature is cited in author–date form and listed at the end; it supports specified comparison arguments and does not determine the manuscript's readings.
+./MPL_146_001-099_notes.md:50:### R002 — The orientation torsor must survive the choice of tangent directions
+./LM_GLOBAL_PASS.md:8:Sources read: second_pass/NOTES_A_conjectures.md (Grothendieck's conjectures, questions, expectations and programme,
+./LM_GLOBAL_PASS.md:37:  is a strong candidate: Grothendieck's 1981 formulation, discrete and profinite.
+./MPL_147_003-047_notes.md:3:These **75 notes** accompany the complete diplomatic transcription of the 45 supplied scans of *Structure à l'infini des \(M_{g,\nu}\)*. The transcription was frozen at **2026-11-11 01:30:36 UTC**, before the context archive was opened; the interpretations, proofs, examples, and suggested readings below have not been substituted into it. The proposition at the end of scan 047 continues beyond the supplied range and is not completed by conjectural transcription.
+./MPL_147_003-047_notes.md:13:The one-to-four-sentence explanatory cores remain separate from their context and literature checks. Appendices A and B give full calculations for selected counterexamples and recovery arguments, so the abbreviated notes can be checked directly. Modern literature was consulted as primary papers or official mathematical documentation; APA references and stable source locators appear at the end.
+```
+
+## RN010
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `commutatif|commutative|Azumaya|transposition`  
+Returned hit lines: 29
+
+Selected comparison: `hua_project/64.modern.tex`, footnote after the End(V) proposition, pp.41–42; no matching “commutatif” claim was found in the frozen scan 042 text.
+
+```text
+./LM_140-3_text.tex:419:un diagramme commutatif de compatibilité:
+./LM_140-3_text.tex:1835:défini (à isom \unsure{can.} près) par la condition de rendre commutatif
+./MPL_147_048-137_notes.md:504:**Internal comparison:** 075: adjacent transpositions supply paths; 081–089: composition and coherence require stronger data.
+./MPL_147_048-137_notes.md:548:**Quoted anchor:** `transposition des deux élts consécutifs`.
+./LM_GLOBAL_PASS.md:191:  - The 2-category of Azumaya algebras (250); "bien profond" for simple connectedness (259).
+./LM_140-3_notes.md:78:k_a is compared with k_b "(pour b = f̂(a)), moyennant l'isom. can. (11) T_a ≃ T_b", and "on aura un diagramme commutatif de compatibilité". *Reason:* f̂ is now settled. It is the extended quotient map, the f of (13).
+./LM_140-3_notes.md:283:5. **Scan 23, centraliser step — unproved claim — correct (an omitted computation, not a gap).** "commute à Sl(2,Ẑ) … c'est un scalaire" is a two-line matrix computation valid over any commutative ring (own note C). With it, the injectivity of (5) is fully proved by the argument on the page.
+./LM_140-2_text.tex:941:rende commutatif le diagramme suivant
+./LM_140-2_text.tex:1336:et \unsure{i.e.|où} la face \inserted{verticale} postérieure des prismes est commutative (deux conditions, sur deux carrés), la face \inserted{verticale} antérieure aussi (c'est \uline{une} condition, sur le carré de droite, l'autre carré
+./MPL_142_094-122_notes.md:286:Use the transitive action of \(S_3\) on three letters as a finite test: each point stabilizer has order two, but their intersection is the identity, so a transposition can satisfy the membership test at one component while failing it at another. This isolates the role of the inserted quantifier “\(\forall\alpha\)” without claiming that the abstract example is itself an arithmetic realization of the particular (g^T_{y,x}\(u\)). **Context relation: adds a finite countertest** to the \(G\)-set formalism of `LM_140-2_text.tex`, scan 18, and is complementary to scans 390–393 of that file, where failure to distinguish fixing a point from permuting a finite set also forces a correction; searches for `intersection`, `conjugués`, `noyau`, and `mathfrak S` found no exact version of this example. **Confidence: high**, because the three stabilizers are \(\{1,(23)\}\), \(\{1,(13)\}\), and \(\{1,(12)\}\), whose intersection can be read directly.
+```
+
+## RN011
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `torseur|indépend|constan|quatre|Legendre`  
+Returned hit lines: 39
+
+Selected comparison: `hua_project/64.modern.tex`, relative diagram at p.39 = scan 040, and §II.2, pp.53–56 = scans 054–057; `LM_140-2_text.tex`, scans 518–520. The current later margin makes the three-cover distinction explicit.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:1014:les quatre premières sont claires, la dernière s'écrit
+./MPL_147_048-137_notes.md:138:A chosen graph pinning identifies the automorphism group of the underlying standard curve with \(\Gamma\), but a different pinning conjugates that identification. For a curve obtained by nontrivial descent, the automorphism group scheme may instead be an inner form of the constant group, with its sections depending on the torsor. The precise claim should therefore be proved for the pinned object stated here and distinguished from the arbitrary object of \(B\Gamma\) considered on scan 052.
+./MPL_147_048-137_notes.md:168:**Location:** scan 058, same expectation. **Kind:** own idea. **Context:** C0; intended terms: réalisation, automorphismes de graphes, quatre drapeaux, sous-groupes.
+./MPL_142_001-093_notes.md:136:For the cyclic, orientation-preserving action under consideration, one needs local classification of periodic surface homeomorphisms, a conformal structure on the quotient with its branch data, and its lift to the source. The local classification also explains why a nontrivial orientation-preserving periodic map has isolated fixed points, whereas an orientation-reversing involution can fix a curve (Constantin & Kolev, 1994, Lemma 2.5 and the disc theorem). Nielsen realization addresses the different problem of realizing an abstract finite subgroup of the mapping class group and should not replace this step without explaining the passage from the given action.
+./MPL_142_001-093_notes.md:163:After compactifying the ends, trivial action on ordinary integral homology forces the punctures to be fixed individually and makes the compact-surface Lefschetz number \(2-2g\); a nontrivial orientation-preserving periodic map has isolated fixed points of index \(+1\), by its local rotation model. For \(g\geq2\) the negative Lefschetz number is impossible, for \(g=1\) a puncture supplies a fixed point despite Lefschetz number zero, and for \(g=0\) hyperbolicity supplies at least three fixed punctures although a nontrivial periodic sphere rotation has only two. This is a proof strategy for the integral-homology version, conditional on spelling out end extension and the local rotation theorem; the mod-\(n\) version additionally needs the torsion-freeness of the principal congruence kernel at level \(n\geq3\) (Constantin & Kolev, 1994; Serre, 1961).
+./LM_GLOBAL_PASS.md:183:  H^*(B_{X,U},F) → H^*(X_ét, f^*F) an isomorphism for torsion F (124)? Rejected for genus 0 with locally constant
+./MPL_146_100-134_notes.md:142:The assertion that the boundary of a pointed holomorphic disc “hérite une structure de $\mathbb U$-torseur” can be justified by choosing a Riemann map taking the centre to zero and extending it to the Jordan boundary, since changing that map by a rotation leaves the transported circle action unchanged. This argument provides an action without a chosen boundary point, a distinction needed when finite sets of tangential basepoints are introduced later. It **adds a concrete holomorphic boundary realization to** the tangent-direction and covering-torsor constructions in `LM_140-4_text.tex`, scans 263–265, and **differs from** their more general differentiable germ formulation.
+./MPL_146_100-134_notes.md:178:The “torseur tangent unitaire” at a marked point and the contracted product of the two branch-direction torsors at a node have different tautological classes that should be tracked through the product $SP_G$. Under the tangent-direction convention, they are respectively the circle bundles of $L_i^{-1}$ and $L_+^{-1}\otimes L_-^{-1}$, giving classes $-\psi_i$ and $-\psi_+-\psi_-$; Wolpert (2007, §4, pp. 11–12) identifies the cotangent tensor product with the **conormal** line, so dualizing is essential. This describes the class on the branch-labelled stratum, after which graph symmetries and branch permutations must be descended. **Context—adds the curve-specific identification:** the normal/torseur search locates `ARCH_147_003-137_text.tex`, scans 122–123, where normal invertible sheaves produce multiplicative torsors and permutation descent; that is the same general mechanism, but it does not state the node’s two-cotangent-factor formula.
+./MPL_147_003-047_notes.md:163:**Note:** The constructive definition has an étale node locus of locally constant degree and hence describes families with simultaneous normalization, not all nodal families in the stable compactification. The local family \(uv=t\) smooths its node and is outside this class; even \(uv=\epsilon\) over \(k[\epsilon]/(\epsilon^2)\) has the same sole geometric nodal fibre but relative singular scheme \(\operatorname{Spec}k\), which is not étale over the base. Consequently, the fibrewise clause on scan 017 must retain its preceding hypothesis that the family is already “standard”; geometric type alone does not cut out the intended locus over nonreduced bases.
+```
+
+## RN012
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Klein|octa|axes|involution`  
+Returned hit lines: 32
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, pp.44–46 = scans 045–047; `MPL_142_094-122_notes.md`, B01, cote 142/108, has the same elementary Klein model as a prior lead.
+
+```text
+./MPL_149_001-090_notes.md:166:The assertion that “le centralisateur de $\tau$” is “réduit à $(1,\tau)$” combines the restriction on torsion in an absolute Galois group with the assertion that an involution centralizes only its own order-two subgroup. `LM_140-2_text.tex`, scans 496–497, develops the Artin–Schreier torsion argument but does not spell out this centralizer step, so the present page adds a separate ingredient. Pál and Quick (2025, Lemma 2.3) give the latter statement and its real-closure proof; together these inputs exclude a nontrivial finite subgroup centralizing an infinite open arithmetic subgroup.
+./MPL_142_001-093_notes.md:100:**Context comparison:** Adds a homological sufficient condition to `LM_140-2_text.tex`, scans 137–138, and restates the level-\(n\) versus level-two distinction discussed there on scans 538 and 547. Those latter passages concern elliptic moduli and their residual involution, rather than a proof for every open surface.
+./MPL_142_001-093_notes.md:136:For the cyclic, orientation-preserving action under consideration, one needs local classification of periodic surface homeomorphisms, a conformal structure on the quotient with its branch data, and its lift to the source. The local classification also explains why a nontrivial orientation-preserving periodic map has isolated fixed points, whereas an orientation-reversing involution can fix a curve (Constantin & Kolev, 1994, Lemma 2.5 and the disc theorem). Nielsen realization addresses the different problem of realizing an abstract finite subgroup of the mapping class group and should not replace this step without explaining the passage from the given action.
+./MPL_146_100-134_notes.md:218:The words “homogène unique invariante” must be read together with the subsequent choice of radius $1$: invariance under the finite permutation group alone does not determine an arbitrary positive metric. A direct proof for the normalized round metric is to map the labelled triple by a Möbius transformation to an equilateral triple on the unit sphere; every permutation of that target triple is induced by a rotation, so the pulled-back round metric does not depend on the ordering used, whereas multiplying a metric by a nonconstant invariant positive function shows why unrestricted invariance is insufficient. For uniqueness within normalized round conformal metrics, the order-three subgroup makes the marks a latitude orbit, while a conjugating involution reverses that latitude and hence forces it to be the equator; the three marked points then determine the conformal identification uniquely, whereas an unrestricted invariant metric need not be round. **Context—restates the sphere symmetry and adds metric normalization:** the sphere/permutation search gives `LM_140-3_text.tex`, scans 85–86, with an equator, meridians, twelve spherical triangles, and the $\mathfrak S_3\times\mathbb Z/2$ action; those pages do not formulate this metric uniqueness.
+./MPL_146_100-134_notes.md:234:The frozen alternatives $\sigma/o$ in the factor indexed by a lifted half-edge must remain unresolved in the transcription. **Context—differs if the glyph is literally $\sigma$:** searching “origine” and the half-edge involution gives `ARCH_147_003-137_text.tex`, scan 9, explicitly defining $o:\widetilde A\to S$ as origin and $\sigma$ as the edge involution, and scan 94, using fibres over $o_G$ to collect flags at a vertex. That type information makes $o(\widetilde x)$ a plausible context-suggested reading, but does not authorize replacing the locally ambiguous ink or exclude a different local convention.
+./LM_140-3_text.tex:3643:les \unsure{antiinvolutions|anti-involutions} $\tau'_i$ $(i=0,1,\infty)$ sont particulièrement intéressantes, \unsure{données} par
+./LM_140-3_text.tex:18475:cas modulaire, on peut introduire des ``anti-involutions'' qui généralisent les réflexions géométriques
+./MPL_147_048-137_notes.md:174:**Location:** scan 058, map(72). **Kind:** unpursued implication. **Context:** C0; intended terms: S_4, action, U_0,3, Klein.
+./MPL_147_048-137_notes.md:178:Even a full \(\mathfrak S_4\) image on the four labels acts on the cross-ratio parameter through \(\mathfrak S_3\), with the Klein four group acting trivially on the base. Consequently the realization question and the effective-action question are different, and the quotient stack retains information lost by the latter. The factor-of-four tension in the Euler-characteristic calculation on scans 062–063 is a concrete consequence.
+./LM_GLOBAL_PASS.md:67:T6. Real structures: anti-involutions, X^σ, and maximal free abelian subgroups (scans 436-470).
+```
+
+## RN013
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `normalisateur|normalizer|Klein|octa`  
+Returned hit lines: 30
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, pp.51–52 = scans 052–053; primary literature comparison: Beauville, *Finite subgroups of PGL(2,K)*, Proposition 1.1 and Theorem 4.2 proof, whose prime-to-characteristic convention does not cover the characteristic-three S4 case.
+
+```text
+./LM_140-3_text.tex:7914:\margin{\uline{NB} $\widetilde M_{0,3}$ est aussi le normalisateur de $\widehat{\mathcal G}_{0,3}^{+}$ dans $\widehat{\widehat{\mathcal G}}_{0,3}$, et de $\overline{\mathrm m}$ $\widetilde N_{0,3}$ le \unsure{normalisateur|normalis.} de $\unsure{\widehat{\mathcal T}_{0,3}}=\unsure{\mathcal T_{0,3}}$ dans $\widehat{\widehat{\mathcal T}}_{0,3}$}
+./LM_140-3_text.tex:9055:factorise par le dit normalisateur --- si on préfère le voir en termes du
+./MPL_147_048-137_notes.md:174:**Location:** scan 058, map(72). **Kind:** unpursued implication. **Context:** C0; intended terms: S_4, action, U_0,3, Klein.
+./MPL_147_048-137_notes.md:178:Even a full \(\mathfrak S_4\) image on the four labels acts on the cross-ratio parameter through \(\mathfrak S_3\), with the Klein four group acting trivially on the base. Consequently the realization question and the effective-action question are different, and the quotient stack retains information lost by the latter. The factor-of-four tension in the Euler-characteristic calculation on scans 062–063 is a concrete consequence.
+./MPL_147_003-047_notes.md:1146:which are distinct, so the four-point set has precisely the Klein-four Möbius symmetries; all preserve the partition into pairs. Besides the identity these are
+./MPL_142_001-093_notes.md:812:The formula $u(l_0)=\eta^{-1}l_0^p\eta$ does not keep the chosen subgroup $\overline{\langle l_0\rangle}$ fixed unless the conjugating element satisfies an additional normalizer condition.  The same obstruction appears at the two-object level: an isomorphic transported peripheral subgroupoid need not coincide with the one generated by the two originally selected arcs.  This distinguishes a condition intrinsic to the puncture from a stronger condition dependent on connecting paths, and explains why moving to the $Q$ vertices changes the clean form of the inertia constraint.
+./MPL_142_001-093_notes.md:1590:At the correctly indexed equatorial point, the holomorphic transposition fixing it and complex conjugation commute and generate a Klein four-group. A chosen path \(p:P_+\to Q\) transports its based action to \(\pi_1(U_{0,3},P_+)\); replacing \(p\) by \(pa\) changes a transported automorphism \(\beta_p\) to \(\beta_{pa}=\operatorname{Ad}(a^{-1})\beta_p\operatorname{Ad}(a)\). Thus the particular lifts denoted \(\sigma_\infty,\tau_\infty\) are part of the pinning data, while their outer action is independent of the path. Once the path-name question in N051.3 and the index question in N059.2 are resolved, the commuting generator calculations on 055 prove the composed transformation (40).
+./LM_140-3_notes.md:1347:glyph as in (39)), "le groupe (40) d'ordre (4)" is a Klein group generated by σ∞, τ∞, and the indeterminacy
+./LM_140-3_notes.md:2324:  uniformisante" (now: "qui est en fait une section du sous-groupe de M^{!}_{0,3} normalisateur de L₀"); not settled.
+./LM_140-2_text.tex:1779:On exige que $\alpha\in\Gamma$ (qui conjugue $\unsure{f_{\mathcal E}}$ en $\unsure{f'_{\mathcal E}}$\}, et est \unsure{probablement} uniquement déterminé par cette condition) et $\alpha_{i'}$ (qui est sans doute déterminé mod \deleted{\unsure{conjugaison}} composition à g. avec un élt \unsure{des normalisateurs|du normalisateur} de $\mathcal E_i$ (du moins des transporteurs \inserted{des $\mathcal E_i$} d'un ss-groupe ouvert de $\mathcal E_i$ --- c'est itou si $f$ est iso) puissent être choisis de telle façon que, posant
+```
+
+## RN014
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `caractéristique|car. 5|fixateur|octa|120`  
+Returned hit lines: 39
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1 characteristic-five and sum-argument footnotes, pp.48–52; his referenced Lean source is not supplied and was not audited. `MPL_142_094-122_notes.md`, B01 (142/108), supplies the same generic model, not this exception.
+
+```text
+./LM_140-3_text.tex:1040:avec les relations caractéristiques
+./LM_140-3_text.tex:4775:qui correspond aux caractéristiques
+./MPL_147_048-137_notes.md:19:| Whether the abstract incidence axioms reconstruct the geometry | R110.2; R114.1; R116-02; R120-01; R121-02 | A finite category tests monicity, and an immersed curve tests whether all geometric intersections are recorded. |
+./MPL_147_048-137_notes.md:244:**Location:** scan 062, last display and NB in the margin. **Kind:** reading question. **Context:** C0; intended terms: caractéristique EP, -1/24, -1/6, S_4.
+./LM_GLOBAL_PASS.md:93:- Only two explicit solutions, u = 1 and u = τ∞: "pas ... d'en construire explicitement une seule" (120).
+./MPL_147_003-047_notes.md:1210:Knudsen, F. F. (1983). The projectivity of the moduli space of stable curves, II: The stacks \(M_{g,n}\). *Mathematica Scandinavica, 52*, 161–199. [https://doi.org/10.7146/math.scand.a-12001](https://doi.org/10.7146/math.scand.a-12001). Verified text: Theorem 2.7, p. 179; Theorem 3.4, pp. 181–182; Corollary 3.9, p. 190, visually read in the [publisher PDF](https://journals.msp.org/mscand/article/download/1622/1621/1653). The stronger printed assertion in Corollary 3.9(b) is tested in N048 and is not used to justify a global closed immersion.
+./LM_140-3_notes.md:214:The words of even length form a subgroup of index 2 in ⟨τ'_0, τ'_1, τ'_∞ | τ'^2_i, (τ'_0τ'_∞)², (τ'_1τ'_0)³⟩, and Reidemeister–Schreier gives it the generators ℓ'_1 = τ'_0τ'_∞, ℓ'_∞ = τ'_1τ'_0 with the relations ℓ'^2_1 = ℓ'^3_∞ = 1 only. So (25) is the presentation ℤ/2 * ℤ/3 of Π'_{0,3} ≅ Sl(2,ℤ)', the "caractéristiques" relations (P059, R33, made the same computation for scan 10). *Reason:* the vague comparison is replaced by the result.
+./LM_140-3_notes.md:1262:**R16 — scan 120 — question / acknowledged gap — keep.** "pas même d'en construire explicitement une seule, en dehors de celles qui correspondent au cas u = 1, et u = τ∞" is legible as transcribed.
+./LM_140-2_text.tex:2441: .. controls (72,144) and (95,120) .. (101,117)
+./LM_140-2_text.tex:3385:[NB, en caractéristique $p\geq0$, on doit se borner
+```
+
+## RN015
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `étale|opposition|cinq|octa|stabilisateur`  
+Returned hit lines: 39
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, Corollary1 footnote, their pp.51–52; this is a checked extension of Hua’s stated five-structure correction to the relative étaleness assertion.
+
+```text
+./LM_140-3_text.tex:296:opérant proprement, les stabilisateurs \inserted{$G_x$} des $x\in X$
+./LM_140-3_text.tex:328:si $a\in X$ est au dessus de $b$, le stabilisateur $G_a$ est
+./MPL_149_001-090_notes.md:38:“$B_K$ se reconstitue à partir de $\Pi_K$” requires the continuous groupoid, rather than its underlying abstract category: the concrete equivalence sends an étale $K$-scheme to its geometric points with their continuous Galois action (The Stacks Project Authors, 2026, Tag 04JI). The assertion restates the reconstruction in `LM_140-2_text.tex`, scan 007, Proposition 1.4, while adding the field-theoretic interpretation of the objects of the groupoid. A proof should distinguish the category of finite covers, its enlargement to discrete continuous actions, and the associated sheaf topos.
+./MPL_149_001-090_notes.md:66:The instruction to regard a finite radicial extension as “triviale” calls for localization at purely inseparable field extensions, with a specified class of morphisms. It matches the invariance of the small étale site under universal homeomorphisms (The Stacks Project Authors, 2026, Tag 04DY), and scan 052 later proposes the analogous localization for schemes. Searches for “radici” and the quotient formulation yielded no direct contextual counterpart; `LM_140-2_text.tex`, scan 018, provides the field-to-topos construction that is being modified, so this is an added characteristic-$p$ qualification.
+./MPL_142_001-093_notes.md:60:**Brief source quotation:** « est pl. fidèle »; « il doit exister un rev. fini étale ».
+./MPL_142_001-093_notes.md:201:**Brief source quotation:** « le stabilisateur … s'identifie … [au] groupe des \(Y\)-autom. ».
+./MPL_147_048-137_notes.md:252:**Location:** scan 062, paragraph after diagram (78), “un seul pt à l'infini”. **Kind:** unpursued implication. **Context:** C0; intended terms: point à l'infini, trajectoire, stabilisateur, D_4.
+./MPL_147_048-137_notes.md:384:**Location:** scan 069, same quotient statement. **Kind:** own idea. **Context:** C0; intended terms: stabilisateur, ordre 12, ordre 8, incidence, branche.
+./LM_GLOBAL_PASS.md:192:  - Compare A^1-homotopy (Morel-Voevodsky) and étale homotopy. A possible D10.
+./MPL_147_003-047_notes.md:11:In the analysis, \(\overline{\mathcal M}_{g,n}\) denotes the stack of stable curves with individually labelled markings; unordered finite étale marking divisors require the corresponding symmetric-group quotient. The distinction is explicit when a graph automorphism is allowed to permute legs. **All modular and stratum dimensions are relative over \(\operatorname{Spec}\mathbb Z\), equivalently dimensions of geometric fibres**; the absolute dimension over \(\mathbb Z\) is one greater in the cases considered. Fieldwise statements are kept separate from claims over general, possibly nonreduced bases. Loops contribute two incident half-edges to valence.
+```
+
+## RN016
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `faux|petit argument|fixateur|caractéristique`  
+Returned hit lines: 36
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, arithmetic footnote at pp.49–50; the finite-field checks in `research_support/octahedral_checks.md` verify the distinction, not the exact ink of uncertain words.
+
+```text
+./LM_140-3_text.tex:1040:avec les relations caractéristiques
+./LM_140-3_text.tex:4775:qui correspond aux caractéristiques
+./MPL_147_048-137_notes.md:244:**Location:** scan 062, last display and NB in the margin. **Kind:** reading question. **Context:** C0; intended terms: caractéristique EP, -1/24, -1/6, S_4.
+./MPL_147_048-137_notes.md:288:**Location:** scan 064, middle paragraph, “sauf erreur”. **Kind:** conjecture. **Context:** C0; intended terms: caractéristique 2, caractéristique 3, ordre 24, ordre 12.
+./LM_GLOBAL_PASS.md:40:- Is T̂ normal in T̂̂ = Outext? The question of 322-323 (one conjecture retracted as "ultra-faux"); T̂⁺ invariant;
+./LM_GLOBAL_PASS.md:53:- Γ → 𝚪_g (g ≥ 2) and Γ → 𝚪_{1,1}: "peut-être est-ce tout à fait faux ?" (504-505).
+./MPL_147_003-047_notes.md:113:**Scan/location:** scan 007, “pleinement fidèle” and “faux tel quel !”; scan 008, top margin.
+./MPL_147_003-047_notes.md:115:**Source:** “faux p. ex. sur les … duaux d'un corps (si I≠∅)”.
+./LM_140-3_notes.md:214:The words of even length form a subgroup of index 2 in ⟨τ'_0, τ'_1, τ'_∞ | τ'^2_i, (τ'_0τ'_∞)², (τ'_1τ'_0)³⟩, and Reidemeister–Schreier gives it the generators ℓ'_1 = τ'_0τ'_∞, ℓ'_∞ = τ'_1τ'_0 with the relations ℓ'^2_1 = ℓ'^3_∞ = 1 only. So (25) is the presentation ℤ/2 * ℤ/3 of Π'_{0,3} ≅ Sl(2,ℤ)', the "caractéristiques" relations (P059, R33, made the same computation for scan 10). *Reason:* the vague comparison is replaced by the result.
+./LM_140-3_notes.md:2611:24. **Scan 275 — exact sequence and marginal warning.** *Correct (answered).* In the split model B̃₀* = {(p ℓ; 0 q) : q² = 1} and the kernel of det is {p = q = ±1} = μ₂·L₀, not L₀; the sequence 1 → L₀ → B̃₀* → G_m → 1 is therefore false, as the margin "C'est faux, cf plus bas" says. G reaches this on scan 279 (μ₂) and scan 280 ((71), q² = 1).
+```
+
+## RN017
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `régulière|regular|octa|bijection|normalisateur`  
+Returned hit lines: 39
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, theorem pp.51–52; `notes/RESULTS_STATE.md`, Hua finding 64-octahedral-configurations-relative, truncated candidate/conjecture entry.
+
+```text
+./LM_140-3_text.tex:366:\uline{Proposition}\quad On a une bijection entre $Y^!$
+./LM_140-3_text.tex:7914:\margin{\uline{NB} $\widetilde M_{0,3}$ est aussi le normalisateur de $\widehat{\mathcal G}_{0,3}^{+}$ dans $\widehat{\widehat{\mathcal G}}_{0,3}$, et de $\overline{\mathrm m}$ $\widetilde N_{0,3}$ le \unsure{normalisateur|normalis.} de $\unsure{\widehat{\mathcal T}_{0,3}}=\unsure{\mathcal T_{0,3}}$ dans $\widehat{\widehat{\mathcal T}}_{0,3}$}
+./MPL_149_001-090_notes.md:603:The proposed equivalence involving “un plongement de corps $K\subset K'$” has a precise relative counterpart in Mochizuki (1999, Theorem B/17.1): for function fields regular over one sub-$p$-adic field $k$, $k$-embeddings correspond to open continuous Galois homomorphisms over $\Gamma_k$, modulo geometric inner conjugation. The common-base regularity and conjugation convention are part of that theorem, so applying it to the original formulation requires the constant-field preparation of B041.2. `LM_140-2_text.tex`, scan 058, adds the finite algebraic base case, but neither that context calculation nor this modern theorem establishes the proposed centralizer replacements c) or c').
+./MPL_149_001-090_notes.md:651:A precise candidate for the “filtrations modéliques” condition on $\varphi:E_{K'}\to E_K$ is: for each model $U$ of $K$, some model $U'$ of $K'$ satisfies $\varphi(\ker(E_{K'}\to E_{U'}))\subseteq\ker(E_K\to E_U)$, so that a map between the model quotients exists. Confidence: high for this formal distinction, because those model kernels need not be open, and continuity only controls individual finite quotients rather than one simultaneous factorization through the entire generally infinite $E_U$. No direct occurrence of the model-filtration condition was found in the context; `LM_140-2_text.tex`, scans 119 and 164, adds the closest fixed-model sheaf/gluing data, while scan 480 differs by proposing further Frobenius admissibility conditions. Mochizuki's (1999) open-image field theorem B does not need this extra axiom in its own regular common-base setting, which does not by itself remove it from the manuscript's broader c') proposal.
+./MPL_147_048-137_notes.md:1194:Composition is straightforward only after defining how a marking represented by a formerly cut flag is transported through the next map. Write that substitution together with the graph injections, then verify associativity and preservation of the strict bijections. The geometric contravariant functor on 101 needs the corresponding coherent composition, rather than an objectwise recipe alone.
+./MPL_147_048-137_notes.md:1274:The criterion is stated for a normalization morphism already given, not for an arbitrary pair of graphs with isomorphic total normalizations. A proof should show that bijectivity after total normalization forces precisely the vertex and complete-marking bijections of 095. It must not forget which flags were paired in the original graphs.
+./MPL_142_001-093_notes.md:194:For finite-type hyperbolic surfaces, the identity component of the homeomorphism group is contractible; a precise modern statement covering the noncompact cases and recalling the compact cases is Yagasaki (2000, Theorem 1.1 and Lemma 2.1). To transfer that result to the component of a covering map, the orbit bijection \(u\mapsto f\circ u\) must be shown to be a homeomorphism, or at least an appropriate homotopy equivalence, using parametrized covering lifts. The manuscript establishes freeness and transitivity but does not write this topological step.
+./MPL_142_001-093_notes.md:259:Take three objects \(X,Y,Z\), with \(\operatorname{Aut}(Y)=P\) an infinite profinite group and the other automorphism groups trivial, and set \(\operatorname{Hom}(X,Y)=P\), \(\operatorname{Hom}(Y,Z)=P\), \(\operatorname{Hom}(X,Z)=P\), with the evident middle regular actions and composition \((q,p)\mapsto qp\). All arrow stabilizers are closed, but the manuscript's orbit topology makes the first two Hom sets profinite and the third discrete, so composition is not continuous. The image \(H_u\) for \(u:X\to Y\) is trivial and not open, showing exactly why the added finite-index hypothesis on 011 matters.
+./LM_GLOBAL_PASS.md:32:- The bijection (∗) Φ(Π,Γ) ← Φ(Π',Γ) ⨿ I'^! (289-290), not proved outside realisable cases.
+./LM_GLOBAL_PASS.md:178:  - The bijection question "Cette application est-elle bijective ??" (139), and its component-level analogue for an
+```
+
+## RN018
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `orientation|racines|octa|Pol_`  
+Returned hit lines: 36
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, orientation paragraph and Corollary2, pp.50–52; `LM_140-1_text.tex`, scan 017, orientation/torsor discussion is a conceptual parallel only.
+
+```text
+./LM_140-3_text.tex:297:\deleted{\unsure{étant}} conservant l'orientation et opérant fidèlement
+./LM_140-3_text.tex:561:\unsure{conservant} l'orientation locale en $x$
+./MPL_147_048-137_notes.md:352:**Location:** scan 067, marginal NB and paragraph beginning “Un côté”. **Kind:** unproved claim. **Context:** C0; intended terms: couleurs, carré, triangle, incidence, orientation.
+./MPL_147_048-137_notes.md:354:The colour construction should be proved to associate to each edge an unordered pair of disjoint two-element subsets, independently of the presentation choices that the orientation permits. Its incidence condition must then agree with membership of one of those two pairs, exactly as the corrected phrase “l'une des deux paires” states. Checking this equivariance would establish the bridge from the drawings to the \(\mathfrak S_I^+\)-action asserted on scan 068.
+./LM_140-3_notes.md:51:"G_a est un groupe cyclique d'ordre d_a = d_b fini". G_a is finite because the discrete group acts properly. It embeds in SO(2) because it acts faithfully near a and preserves orientation, and finite subgroups of SO(2) are cyclic. *Reason:* the reading is unchanged; the struck word before "un groupe" is still only doubtfully "donc".
+./LM_140-3_notes.md:54:An explicit check of orientation conventions on a disk with a rotation. *Reason:* unchanged.
+./LM_140-2_text.tex:2583:l'ensemble \inserted{\unsure{\(\omega\)}} \unsure{des|ses} deux orientations,
+./LM_140-2_text.tex:2591:--- une \(T\)-orientation de \(X\) sera par définition un \unsure{élém.}
+./MPL_142_094-122_notes.md:304:The heading “Groupoïde fondamental d'une carte trouée” with “(14 pages)” and the printed notice dated “24.03.80” invite a codicological check of sheet pairing, orientation, and the numbering restart at scan 114 before assigning a date to the surrounding mathematical argument. If a mathematical text demonstrably reuses that printed sheet, the printing provides a terminus post quem for writing on that sheet, but mere adjacency in the archive’s PDF does not establish the same bound for a whole packet. **Context relation: no exact parallel notice located** under `24.03.80`, `28.03.1980`, `Coste`, `Micali`, and `carte trouée`; the closest comparators are the first-pass descriptive entries in `LM_140-1_text.tex`, scans 3, 5, 7 and 28, reporting reused institutional sheets from 1978 and 1982, whose images would need checking before using their dates as evidence. **Confidence: high for the need to establish the physical association, low for a packet-level dating inference**, because that association has not been established from the supplied scan order alone.
+./MPL_142_094-122_notes.md:320:The two written transformations \(z\mapsto-z\) and \(z\mapsto1/z\) give the Klein four group \(K=\{z,-z,1/z,-1/z\}\), with invariant quotient \(q(z)=z^2+z^{-2}\). Its degree is four, and its three branch fibers are exactly the drawn pairs \(\{0,\infty\},\{1,-1\},\{i,-i\}\), mapping to \(\infty,2,-2\), respectively. The additional Möbius transformation \(g(z)=(z+i)/(z-i)\) has order three, cyclically permutes those pairs, normalizes \(K\), and therefore realizes the displayed extension as \(K\rtimes\langle g\rangle\simeq A_4\); on the quotient it induces \(q\mapsto2(q-6)/(q+2)\). **Context search and relationship — adds to:** `LM_140-2_text.tex`, scans 568–571, discusses the geometric exponent-two cover with group \(\mathbb F_2^{\{0,1,\infty\}}/\mathrm{diagonal}\), the proposed octahedral level-four model, and the tetrahedral group \(A_4\); the calculation supplies explicit coordinates, without identifying the distinct modular covers merely because these groups occur in them.
+```
+
+## RN019
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `conique|Tr|Fermat|faces|Sylow`  
+Returned hit lines: 50
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, Corollary2, p.52 = scan 053; `LM_140-2_text.tex`, scan 363, Fermat conic paragraph gives a related geometric model, not this complete relative descent statement.
+
+```text
+./LM_140-3_text.tex:84:et construction de l'extension $\widetilde{N}_{1,1}$
+./LM_140-3_text.tex:109:5) Comparaison \unsure{entre} \illegible{1}, \unsure{relations} des \hfill 394
+./MPL_149_001-090_notes.md:5:These 247 research items accompany the complete diplomatic transcription of scans 001–090; the mathematical discussion begins on scan 003, after the cover and wrapper on scans 001–002. Each heading gives the scan, an approximate line or visible location, and one of the five requested kinds; locations follow the manuscript's reading order, not line numbers in the reflowed LaTeX. Short quotations refer to the frozen reading, with omitted text indicated by an ellipsis; a doubtful source formula may be shown in code with its diplomatic macro. “Own idea” identifies an analysis or proposed construction made for this task, with confidence and a reason, and makes no claim of novelty.
+./MPL_149_001-090_notes.md:7:The page files and combined transcription were independently audited and frozen at **2026-11-11 23:18:49 UTC**, before any context file contents were opened. Initial intake had listed only the context archive's member names and sizes; that metadata-only access is disclosed in `progress.log`. Every subsequent reading suggestion remains in these notes, and the final hash check in the log verifies that all 91 frozen files are unchanged. No OCR was used for the manuscript transcription.
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:7:The transcription was frozen at **2026-11-11 10:26:58 UTC**, before the context archive was opened, and was not changed during this research phase. These notes distinguish the author's conjectures, questions and programmes from claims requiring proof, consequences, reading problems, and explicitly attributed ideas of our own. “Unproved claim” describes the argument supplied at the cited passage; it does not assert that a result is unknown in the literature. “Conjecture” also includes explicit expectations and deferred programmes, within the five kinds requested. No item claims novelty or infers a historical influence merely from a mathematical resemblance.
+./LM_GLOBAL_PASS.md:4:the nodes, you find which things are worth trying to crack." / "How do the agents know how to develop something when
+./LM_GLOBAL_PASS.md:5:you do it in bounded prompts? The point was to look at the full structure." The per-package agents only check the
+./MPL_142_001-093_notes.md:5:These notes accompany the diplomatic transcription of the 90 supplied nonblank scans of Montpellier cote 142; scans 023, 043, and 065 were omitted as blank in the supplied image archive. All 90 pages were transcribed and independently audited before the transcription was frozen at **12 November 2026, 12:40:21 UTC**. The context archive was opened at **12:40:33 UTC**, after that freeze. Mathematical analysis and context-suggested readings below have not been written back into the transcription.
+./MPL_142_001-093_notes.md:7:The report contains **307 separately indexed items**. Each gives a scan and position, a brief quotation or formula anchor where it concerns the source, a main discussion of one to four sentences, and a specific comparison with the supplied context. The five kinds are those requested: **conjecture** includes the author's questions, expectations, and proposed programmes; **unproved claim** includes deferred arguments and identities for which the note supplies a check; **unpursued implication** identifies a consequence or hypothesis left undeveloped; **own idea** identifies a construction, counterexample, or research connection supplied here; **reading question** records a significant uncertainty or conflict without emendation. Confidence statements apply to our analysis, not to the physical ink unless expressly stated, and no novelty claim is intended.
+```
+
+## RN020
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `anisotrope|conique|forme|PGL`  
+Returned hit lines: 36
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1, final reference-model paragraph; Beauville, *Finite subgroups of PGL(2,K)*, Proposition 1.1, under its prime-to-characteristic convention. `LM_140-2_text.tex`, scan 363, supplies the same conic as a comparison.
+
+```text
+./LM_140-3_text.tex:391:Supposons maintenant que $X$ soit de la forme
+./LM_140-3_text.tex:780:$\tau y$ sont \unsure{respectivement} de la forme
+./MPL_147_048-137_notes.md:92:**Location:** scan 051, entire paragraph, “on y reviendra par la suite”. **Kind:** unproved claim. **Context:** C0; intended terms: schémas modulaires formels, croisements normaux, déformation.
+./MPL_147_048-137_notes.md:536:**Quoted anchor:** `une spécialisation de la forme`.
+./MPL_147_003-047_notes.md:659:**Literature/calculation check:** compare the normalization statement in Abramovich et al. (2015), proof of Proposition 3.4.1; the distinction between old and newly formed nodes is the analysis of these manuscript pages.
+./MPL_147_003-047_notes.md:1106:For comparison, \(x+\epsilon x^2=x/(1-\epsilon x)\) comes from a matrix \(\left(\begin{smallmatrix}1&0\\-\epsilon&1\end{smallmatrix}\right)\) in \(\operatorname{PGL}_2(R)\); it moves the infinity section. This is why the cubic gives the cleaner nonextension argument.
+./LM_140-3_notes.md:113:Three involutions with (τ'_0τ'_∞)² = (τ'_1τ'_0)³ = 1 and no other relations give the Coxeter group of the (2,3,∞) triangle, the extended modular group PGL(2,Z) = Gl(2,Z)/±1. This group has trivial centre. Π_1(U^{an}_{0,3}, 𝔖_3 × Z/2) is the same group: Γ(2)/±1, free of rank 2, has quotient of order 12 ≅ 𝔖_3 × Z/2 in PGL(2,Z). So the annotation "≃ Gl(2,Z)" under 𝒯'_{1,1} is true only as Gl(2,Z)' = Gl(2,Z)/±1, matching "≃ Sl(2,Z)'" in (15). Taken literally with Gl(2,Z), whose centre is {±1}, it is false.
+./LM_140-3_notes.md:223:For det u < 0, Im f_u(z) = −det u · Im z / |c z̄ + d|² > 0, so (28) preserves D. Because the entries are real, complex conjugation commutes with every Möbius map, which gives f_{uv} = f_u ∘ f_v in all four sign cases. The kernel on Gl(2,ℝ) is ℝ^*, so GP(1,ℝ) acts faithfully, as the group of conformal and anticonformal automorphisms of D. Grothendieck's "conformes" includes the orientation-reversing maps, as in his earlier "automorphismes conformes … Sl(2,R)˜ = {det u = ±1} … θ_u τ^{det u}" (CSG ll. 2996–3002). *Reason:* checked; cross-reference added.
+./LM_140-2_text.tex:693:que \deleted{et forme} de $i(\xi)=\xi'$
+./LM_140-2_text.tex:701:et pour $\xi'$ variable forme un syst. loc. sur $\Pi_1(D_s)$,
+```
+
+## RN021
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `icosa|D_4|orientation|torseur`  
+Returned hit lines: 40
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1 theorem footnote and Corollary2, pp.51–52, and §II.2, p.53; its explicit modernization differs from the frozen notation and attachment.
+
+```text
+./LM_140-3_text.tex:297:\deleted{\unsure{étant}} conservant l'orientation et opérant fidèlement
+./LM_140-3_text.tex:561:\unsure{conservant} l'orientation locale en $x$
+./LM_140-1_text.tex:238:% not manuscript: sujet d'examen imprimé, session de Juin 1978, C4 Math. Pures et Approfondies, option de M. Petrich; question sur les classes de conjugaison et l'icosaèdre.
+./LM_140-1_text.tex:864:% the last glyph is inverted: it stands in the orientation of the printed text, not of the handwriting
+./SECTIONS_STATE.md:46:| Géométrie et topologie combinatoire (69–89, nested in 66–89) | 2,063 | 1976–86 Montpellier work: cubic graphs and complexes; n-polyhedra; regular polyhedra and polygons in any dimension and characteristic; cyclotomic polynomials; Jordan theorem; cellular n-maps; affine quadrics; pseudoline systems; immersions of disc and circle; SO(3) ≃ GP(1); icosahedra, bi-icosahedra and rank-4 Azumaya algebras; quadratic forms; convex polyhedra; standard maps | Notes; course texts 1976–78. Grothendieck's only account: Esquisse §§3–4 (1984) | Course texts only: [U30d](https://csg.igrothendieck.org/wp-content/uploads/2024/04/U30d.pdf) (cote 69), [U28d](https://csg.igrothendieck.org/wp-content/uploads/2024/04/U28d.pdf) and [U29d](https://csg.igrothendieck.org/wp-content/uploads/2024/04/U29d.pdf) (cote 75) | Malgoire–Voisin (1977, 1980); Jones–Singerman (1978); dessins d'enfants (Schneps 1994; Lando–Zvonkin 2004); C. Ji (2023) on regular polyhedra over finite fields; pseudoline arrangements | ≈2,055 | — |
+./SECTIONS_STATE.md:58:| Dossiers rassemblés par Grothendieck (161-1–161-6; 162-1, 162-5, 162-6 top-level) | 358 | G's numbered folders: categories; universal algebra; topos (popularization); introduction to algebraic geometry (popularization, perhaps for Vietnam); Barsotti–Tate offprints; graphs and icosahedron. 162-1: borrowed papers; 162-5: Tapis de Quillen (1968); 162-6: isolated documents | Notes, offprints; Tapis de Quillen = 1968 typescript | 162-5: scan ([CSG U7u1](https://csg.igrothendieck.org/wp-content/uploads/2024/10/U7u1.pdf)); partial transcription ([Wayback](https://web.archive.org/web/20211118185830/https://agrothendieck.github.io/divers/tapisQ.pdf)). Others: none | Quillen's Theorem A (1973), Thomason (1980), test categories | ≈290 | — |
+./MPL_147_048-137_notes.md:130:**Location:** scan 055, tables(65)–(66). **Kind:** reading question. **Context:** C0; intended terms: D_4, D_2, Gamma, automorphismes.
+./MPL_147_048-137_notes.md:132:The labels “\(D_4\)” and “\(D_2\)” should be checked against the actual permutations of flags, since competing conventions index a dihedral group by its order or by the number of polygon vertices. The first two-ended rational graph has \((\mathfrak S_2\times\mathfrak S_2)\rtimes\mathfrak S_2\) of order eight, whereas the two-edge cycle has independent vertex and edge swaps, giving order four. These calculations supply a convention check while leaving the written group labels intact.
+./LM_140-2_notes.md:1043:"un sous-K_i^*-torseur (i.e. un élément de Σ_i/K_i^*)" (K_i^* inserted) is confirmed: the datum is an orbit, not a
+./LM_140-2_notes.md:1089:de ces torseurs" is confirmed. Replacing t by at (a ∈ k^*, lifted to O^*) changes the section by the Kummer class of
+```
+
+## RN022
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `trace|Tr|Fermat|conique|carrés`  
+Returned hit lines: 50
+
+Selected comparison: `hua_project/64.modern.tex`, §II.2, pp.54–55 = scans 055–056; `LM_140-2_text.tex`, scan 363, Fermat conic, and scan 570, proposed Jacobi/conic comparison. This adds a relative descent check without settling the latter moduli question.
+
+```text
+./LM_140-3_text.tex:84:et construction de l'extension $\widetilde{N}_{1,1}$
+./LM_140-3_text.tex:109:5) Comparaison \unsure{entre} \illegible{1}, \unsure{relations} des \hfill 394
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:7:The transcription was frozen at **2026-11-11 10:26:58 UTC**, before the context archive was opened, and was not changed during this research phase. These notes distinguish the author's conjectures, questions and programmes from claims requiring proof, consequences, reading problems, and explicitly attributed ideas of our own. “Unproved claim” describes the argument supplied at the cited passage; it does not assert that a result is unknown in the literature. “Conjecture” also includes explicit expectations and deferred programmes, within the five kinds requested. No item claims novelty or infers a historical influence merely from a mathematical resemblance.
+./LM_GLOBAL_PASS.md:4:the nodes, you find which things are worth trying to crack." / "How do the agents know how to develop something when
+./LM_GLOBAL_PASS.md:5:you do it in bounded prompts? The point was to look at the full structure." The per-package agents only check the
+./MPL_147_003-047_notes.md:3:These **75 notes** accompany the complete diplomatic transcription of the 45 supplied scans of *Structure à l'infini des \(M_{g,\nu}\)*. The transcription was frozen at **2026-11-11 01:30:36 UTC**, before the context archive was opened; the interpretations, proofs, examples, and suggested readings below have not been substituted into it. The proposition at the end of scan 047 continues beyond the supplied range and is not completed by conjectural transcription.
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./LM_140-3_notes.md:5:Each research note of the first pass (R1–R33, from `answers/unzipped/LM_P059/LM_P059_notes.md`, section 5) is checked against `LM_P059_checked.tex` and kept, corrected or dropped, with a reason. Quotations follow the corrected transcription. R3, R4, R7, R8, R11, R15, R19, R20, R24, R26 and R33 remain the first-pass model's own ideas. Notes added in this pass are labelled "second pass (own)". The first pass's table of doubts and list of abbreviations are superseded by `LM_P059_changes.md`.
+./LM_140-3_notes.md:18:A concordance of parameters should track the two cocycle families named in §42 VII and VIII, "cocycles sous ρ" and "cocycles sous σ_∞" (both in $\mathrm{Sl}(2,\widehat{\mathbb Z})'$). It should also track §44's list "(les ρ?, g?, h, f, α, β…)" and the §46 parameters (α_0, β_0, f, ζ, η). *Reason:* the first pass read "transp" and "non σ̄_0" and could not name the families.
+```
+
+## RN023
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `z²|z\^2|bigon|Klein|R084|B01`  
+Returned hit lines: 27
+
+Selected comparison: `MPL_142_094-122_notes.md`, B01 (cote 142/108); `MPL_146_001-099_notes.md`, R084 (cote 146/065, 067); `LM_140-2_text.tex`, scan 363. The two contextual notes are earlier own-idea leads; only their displayed rational identities are rechecked here.
+
+```text
+./LM_140-3_text.tex:439:f(z)=\frac{3^3}{2^2}\frac{z^2(z-1)^2}{(z^2-z+1)^3}
+./LM_140-3_text.tex:716:f(z)=\frac{3^3}{2^2}\frac{z^2(z-1)^2}{(z^2-z+1)^3}
+./MPL_147_048-137_notes.md:174:**Location:** scan 058, map(72). **Kind:** unpursued implication. **Context:** C0; intended terms: S_4, action, U_0,3, Klein.
+./MPL_147_048-137_notes.md:178:Even a full \(\mathfrak S_4\) image on the four labels acts on the cross-ratio parameter through \(\mathfrak S_3\), with the Klein four group acting trivially on the base. Consequently the realization question and the effective-action question are different, and the quotient stack retains information lost by the latter. The factor-of-four tension in the Euler-characteristic calculation on scans 062–063 is a concrete consequence.
+./MPL_147_003-047_notes.md:1124:C:\quad XY=\epsilon Z^2
+./MPL_147_003-047_notes.md:1146:which are distinct, so the four-point set has precisely the Klein-four Möbius symmetries; all preserve the partition into pairs. Besides the identity these are
+./LM_140-3_notes.md:87:4(z²−z+1)³ − 27z²(z−1)² = (z+1)²(z−2)²(2z−1)² (values 4 = 4 at z = 0 and 400 = 400 at z = 3), so f(z) − 1 = −(z+1)²(z−2)²(2z−1)²/(4(z²−z+1)³). The formula is §37's (58), "f(z) = 3³/2² · z²(z−1)²/(z²−z+1)³" (CSG draft), as the reference "(p. 286' (58))" says. *Reason:* the reading is unchanged; the source of the formula is now confirmed.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-2_text.tex:4720:ou \(\pi\simeq\mathbb Z^2\) (\deleted{\unsure{card}} \(I=\varnothing\))),
+./LM_140-2_text.tex:4729:Le cas \(\pi\simeq\mathbb Z^2\) est plus intéressant,
+```
+
+## RN024
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `quatre|transposition|Legendre|homograph`  
+Returned hit lines: 29
+
+Selected comparison: `hua_project/64.modern.tex`, §II.2, p.53 = scan 054; `LM_140-2_text.tex`, scans 518–520, four-pointed quotient. The present formulas supply the elementary extension proof.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:1014:les quatre premières sont claires, la dernière s'écrit
+./MPL_147_048-137_notes.md:168:**Location:** scan 058, same expectation. **Kind:** own idea. **Context:** C0; intended terms: réalisation, automorphismes de graphes, quatre drapeaux, sous-groupes.
+./MPL_147_048-137_notes.md:212:**Location:** scan 060, final paragraph, “J'ai l'impression”. **Kind:** conjecture. **Context:** C0; intended terms: quatre cas élémentaires, pi_1 discrets, cas général, Teichmüller.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-3_notes.md:205:"les quatre premières sont claires": by (22) the first three say σ̃_∞² = σ̃_0² = τ_∞² = 1 in the notation of [C], and with the NB τ_∞ = σ_∞σ̃_∞ = σ̃_∞σ_∞ one gets τ'_0τ'_∞ = σ̃_∞σ̃_∞σ_∞ = σ_∞, so (τ'_0τ'_∞)² = σ_∞² = 1. The fifth reduces to σ̃_0σ̃_∞ = ρ^{-1}, "[C], formule 13". *Reason:* the reduction is now explicit.
+./LM_140-2_text.tex:133:\unsure{37.} Modules des courbes elliptiques via Legendre, ou
+./LM_140-2_text.tex:822:$2^\circ)$ \deleted{Deux} \inserted{Quatre} foncteurs
+./MPL_142_094-122_notes.md:286:Use the transitive action of \(S_3\) on three letters as a finite test: each point stabilizer has order two, but their intersection is the identity, so a transposition can satisfy the membership test at one component while failing it at another. This isolates the role of the inserted quantifier “\(\forall\alpha\)” without claiming that the abstract example is itself an arithmetic realization of the particular (g^T_{y,x}\(u\)). **Context relation: adds a finite countertest** to the \(G\)-set formalism of `LM_140-2_text.tex`, scan 18, and is complementary to scans 390–393 of that file, where failure to distinguish fixing a point from permuting a finite set also forces a correction; searches for `intersection`, `conjugués`, `noyau`, and `mathfrak S` found no exact version of this example. **Confidence: high**, because the three stabilizers are \(\{1,(23)\}\), \(\{1,(13)\}\), and \(\{1,(12)\}\), whose intersection can be read directly.
+./LM_140-4_text.tex:2858:Les ``quatre cas de \uline{signes}'' dans $(\mathbb Z/12\mathbb Z)^*$ sont donnés dans le tableau
+```
+
+## RN025
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `constant|torseur|contract|Kummer`  
+Returned hit lines: 39
+
+Selected comparison: `hua_project/64.modern.tex`, §II.2, pp.55–56; Hua records the relation but calls his margin reading incomplete. `LM_140-2_text.tex`, scans 518–520, provides the earlier rigidification setting; the explicit removal of constancy is added here.
+
+```text
+./LM_140-3_text.tex:1795:équivalente canoniquement à celle des torseurs sous le groupe
+./LM_140-3_text.tex:1811:équivalente à celle des torseurs sous le groupe
+./MPL_147_048-137_notes.md:17:| Fixed-source contractions, global closures, and local branches | N049-01; N050-02; R088-01; R099.3; R137-01 | Boolean counts and smooth normalized strata must retain the morphism or branch data that a global image can forget. |
+./MPL_147_048-137_notes.md:36:## 1. Scans 048–070: Contractions, small dimensions, and boundary examples
+./LM_GLOBAL_PASS.md:123:- Γ_Q → an extension of Ẑ* by Ẑ (157). The Kummer-type maps: surjective, or with open image, linearly independent
+./LM_GLOBAL_PASS.md:160:- D8. The Fermat tower and the Kummer-type maps (T11).
+./MPL_142_094-122_notes.md:122:Let a pointed hyperbolic curve \((X_0,x_0)\) be defined over a number field \(L\), and base-change it to \(K=L(t)\); its geometric fundamental group and based Galois action identify with the original ones after extension of algebraically closed fields. The action of \(G_K\) therefore factors through \(G_L\), and the nontrivial geometric kernel of \(G_K\to G_L\), witnessed for example by the extension obtained by adjoining \(\sqrt t\) over \(\overline L(t)\), prevents uniqueness. **Context relationship—differs:** `LM_140-2_text.tex`, scan 24, replaces the base field by the finite constant field \(H^0(X,\mathcal O_X)\) to obtain geometric connectedness, whereas this example concerns descent across a transcendental extension; scan 502 provides the closest faithfulness question over a number field. The example supports a need to exclude superfluous transcendence but does not show that a field-of-moduli condition alone removes every kernel.
+./MPL_142_094-122_notes.md:158:The promise “je vais revenir sur ce point de vue plus bas” proposes expressing peripheral structure through morphisms from punctured local objects rather than only through schemes of finite type. **Context relationship—restates and broadens:** `LM_140-2_text.tex`, scan 89, gives the curve-level local-disk framework, while `ARCH_147_003-137_text.tex`, scans 80–82, develops generization groupoids with a twisted \(\mathbf Z^C\) contribution associated with contracted edges. The latter working transcription supplies a concrete higher-dimensional comparison but is first-pass material, so its uncertain formulas are not imported as established theorems. A proof would have to define the local category, show independence from the chosen model, and establish compatibility with the global fundamental groupoid.
+./MPL_147_003-047_notes.md:21:| N056–N075 | 035–047 | Generalized graph maps, contractions, genus, and stability |
+./MPL_147_003-047_notes.md:163:**Note:** The constructive definition has an étale node locus of locally constant degree and hence describes families with simultaneous normalization, not all nodal families in the stable compactification. The local family \(uv=t\) smooths its node and is outside this class; even \(uv=\epsilon\) over \(k[\epsilon]/(\epsilon^2)\) has the same sole geometric nodal fibre but relative singular scheme \(\operatorname{Spec}k\), which is not étale over the base. Consequently, the fibrewise clause on scan 017 must retain its preceding hypothesis that the family is already “standard”; geometric type alone does not cut out the intended locus over nonreduced bases.
+```
+
+## RN026
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `principal|identité|biquadr|abél|admiss`  
+Returned hit lines: 42
+
+Selected comparison: `hua_project/64.modern.tex`, §II.2, pp.54–55; `LM_140-2_text.tex`, scans 568–570, elementary-two cover of the punctured line. This explains a refinement explicit in the current insertions.
+
+```text
+./MPL_142_094-122_notes.md:60:**Location:** scan 095, condition (a), upper middle. **Kind:** unproved claim. **Context search:** `points rationnels`, `points.*fixes`, `admissible`, `rat.`.
+./MPL_142_094-122_notes.md:62:The clause “l'identité sur \(I'\cap X'_K\)” strengthens bare liftability by requiring every indicated rational object to be fixed individually. Necessity for an actual \(u\in G_K\) follows from the canonical action on the cover and its rational points, but an abstract lift supplied only by the transporter calculation need not have this property. **Context relationship—adds:** `LM_140-2_text.tex`, scan 481, asks that admissible effective actions correspond to rational points of \(U_{0,3}\); the present condition tests their behaviour simultaneously on the rational objects of each finite cover. To turn this into a criterion, one must specify whether the rational objects are given as extra arithmetic data or reconstructed internally.
+./LM_140-4_text.tex:20:50. Enveloppes schématiques de groupes discrets : cas métabélien \hfill 650
+./LM_140-4_text.tex:28:4°) Enveloppe schématique d'un groupe métabélien \hfill $658'$
+./LM_140-1_text.tex:1335:alors le fibré \unsure{principal}
+./LM_140-1_text.tex:1961:\unsure{revêt}\deleted{\unsure{ement}} principal de $(U_{0,3},\mathfrak S_3)$
+./SECTIONS_STATE.md:40:| SGA (27–37; 39–42 top-level) | 1,052 | Drafts and remnants: SGA 3 complements; fundamental group with letters 1959/67/69; SGA 4 "résidus de rédaction" (with Deligne's notes); corrections; "SGA 1965 MS brouillon"; SGA 7 notes, plan and "ma part"; re-editions of SGA/EGA (letters 1967–71); formal schemes, principal bundles, étale morphisms, lattices of local rings | Drafts; final texts printed: SGA 3, SGA 4, SGA 5 (1977), SGA 7 I (1972) | Letters from cote 37 ([L15d](https://csg.igrothendieck.org/wp-content/uploads/2025/10/L15d.pdf), [L16d](https://csg.igrothendieck.org/wp-content/uploads/2024/09/L16d.pdf), [L17d](https://csg.igrothendieck.org/wp-content/uploads/2025/10/L17d.pdf), [L19d](https://csg.igrothendieck.org/wp-content/uploads/2025/10/L19d.pdf), [L20d](https://csg.igrothendieck.org/wp-content/uploads/2024/09/L20d.pdf)) and cote 29 ([L12d](https://csg.igrothendieck.org/wp-content/uploads/2025/11/L12d.pdf)) | New SGA 3 (Gille–Polo 2011); SGA 4 retyped (Laszlo–Orgogozo); SGA 1, 2 (SMF); Grothendieck–Murre (1971) | ≈1,020 (drafts; final text mostly printed) | — |
+./SECTIONS_STATE.md:42:| Variétés abéliennes (45–54; 55–56 top-level) | 337 | Semisimple groups (typescript 1961); group schemes and principal bundles; convolution and Fourier transform on abelian varieties; plan of EGA VII; Pic of abelian schemes; notes on Lang's book; good reduction (Shimura–Koizumi); Torelli; algebraic groups (letter 1973); duality in cohomology of AV; analytic spaces; Lefschetz–Hodge and vanishing cycles (1962) | Notes. Related printed texts: SGA 3; SGA 7 I (Néron models and monodromy) | None found | Mukai (1981), Laumon; Bosch–Lütkebohmert–Raynaud (1990); SGA 7 | 337 | — |
+./LM_140-2_notes.md:33:**S1. Scan 3, §§5, 7 and 8, conjecture (the plan of the first part).** The table announces the "Conjecture anabélienne"
+./LM_140-2_notes.md:40:completely, "dans les cas anabéliens", by exterior groups with loops; the first pass's "dans le cas considéré" dropped
+```
+
+## RN027
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Pic|genre|torseur|involution|Legendre`  
+Returned hit lines: 45
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, pp.57–58 = scans 058–059; `LM_140-2_text.tex`, scans 518–520, elliptic curves versus four-pointed quotients. The current passage adds genus-one torsors and their fixed loci.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:838:\figure{\begin{tikzpicture}[x=.016cm,y=-.016cm,line cap=round,line join=round,font=\scriptsize]
+./MPL_147_048-137_notes.md:46:**Location:** scan 048, first display and following definition of \(G'_\alpha\). **Kind:** unpursued implication. **Context:** C0; intended terms: pi_0, composante connexe, genre, graphe quotient.
+./MPL_147_048-137_notes.md:98:**Location:** scan 052, conditions(a)–(d). **Kind:** unproved claim. **Context:** C0; intended terms: dimension modulaire nulle, genre 0, poids marqué, maximal.
+./LM_GLOBAL_PASS.md:14:## Topics, cote 140-2 (scans 1-575, manuscript pp. 1-292), as read so far
+./LM_GLOBAL_PASS.md:67:T6. Real structures: anti-involutions, X^σ, and maximal free abelian subgroups (scans 436-470).
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./MPL_147_003-047_notes.md:57:**Source:** “est une application de degré 2, d'où une involution sans pts … fixes”.
+./LM_140-3_notes.md:27:The ink reads "Σ ≃ Z/2Z × Z/2Z × Z/2Z", with two-stroke crosses; a free product * remains the alternative. The two readings are different statements. For ×, Σ is elementary abelian of order 8, and one must show three commuting independent involutions. For *, Σ is the infinite free product, and one needs a normal-form or ping-pong argument excluding all relations. *Reason:* the first pass took * as read.
+./LM_140-3_notes.md:99:"on devrait trouver dans le premier mb [= membre] trois générateurs τ'_0, τ'_1, τ'_∞ (correspondants aux gén. analogues σ_0, σ_1, σ_∞ des groupes cartographiques correspondant(s))". The involutions are sought in the left member $\mathfrak S_{0,3}$ of (16), together with the claim that the second (17) presents it. *Reason:* "mb" and the plural "des groupes cartographiques" are new readings.
+```
+
+## RN028
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `quotient|Pic|symétrie|torseur`  
+Returned hit lines: 45
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, p.58 = scan 059; `LM_140-2_text.tex`, scans 518–519, quotient construction. The present torsor formulation adds the explicit role of the given involution.
+
+```text
+./LM_140-3_text.tex:312:quotients de $\mathbb Z/d_b\mathbb Z$, et plus précisément encore,
+./LM_140-3_text.tex:319:déduit par passage au quotient de l'hom ext
+./MPL_147_048-137_notes.md:20:| When a torus fibre contributes an injective lattice | R080-02; R088-02; R130-01; R130-02 | The boundary map from π₂ controls the quotient of the lattice; the notes give an explicit noninjective example. |
+./MPL_147_048-137_notes.md:42:The assertion “est stable … ssi les … le sont” needs the half-edges leaving each contracted fibre to become marked flags on that fibre; omitting those flags changes the stability inequality. A proof should sum \(2g_v-2+n_v>0\) over each connected fibre, identify its new genus as the sum of vertex genera plus its first Betti number, and then check the quotient vertex inequality. Scans 093–099 later develop the flag and fibre bookkeeping, so this is a point elaborated within the supplied pages, although the stability calculation is not written here.
+./LM_GLOBAL_PASS.md:14:## Topics, cote 140-2 (scans 1-575, manuscript pp. 1-292), as read so far
+./LM_GLOBAL_PASS.md:52:- Γ → Out(π̂_1(U)) is faithful for an anabelian U (497, 502); also after the quotient by the script T (502).
+./MPL_149_001-090_notes.md:30:| D | 069–090 | 60 | Relative curves, inertia, Picard obstructions, valuations |
+./MPL_149_001-090_notes.md:66:The instruction to regard a finite radicial extension as “triviale” calls for localization at purely inseparable field extensions, with a specified class of morphisms. It matches the invariance of the small étale site under universal homeomorphisms (The Stacks Project Authors, 2026, Tag 04DY), and scan 052 later proposes the analogous localization for schemes. Searches for “radici” and the quotient formulation yielded no direct contextual counterpart; `LM_140-2_text.tex`, scan 018, provides the field-to-topos construction that is being modified, so this is an added characteristic-$p$ qualification.
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./MPL_147_003-047_notes.md:11:In the analysis, \(\overline{\mathcal M}_{g,n}\) denotes the stack of stable curves with individually labelled markings; unordered finite étale marking divisors require the corresponding symmetric-group quotient. The distinction is explicit when a graph automorphism is allowed to permute legs. **All modular and stratum dimensions are relative over \(\operatorname{Spec}\mathbb Z\), equivalently dimensions of geometric fibres**; the absolute dimension over \(\mathbb Z\) is one greater in the cases considered. Fieldwise statements are kept separate from claims over general, possibly nonreduced bases. Loops contribute two incident half-edges to valence.
+```
+
+## RN029
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `douze|six|octa|ordre|degré`  
+Returned hit lines: 38
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, p.60 = scan 061; current scans 047 and 068–069 provide the same six-vertex configuration, and `LM_140-2_text.tex`, scans 568–570, is the level-four comparator.
+
+```text
+./LM_140-3_text.tex:329:\deleted{\unsure{donc}} un groupe cyclique d'ordre $d_a=d_b$
+./LM_140-3_text.tex:693:($b=f(a)$, $\nu(a)=[G_a]=$ degré de \unsure{ramification}
+./MPL_147_048-137_notes.md:182:**Location:** scan 059, case\(1^\circ\), inserted \(\widetilde\mu_{\alpha_0}\in\{1,2\}\). **Kind:** reading question. **Context:** C0; intended terms: sommet isolé, genre 1, ordre, type(1,2).
+./MPL_147_048-137_notes.md:288:**Location:** scan 064, middle paragraph, “sauf erreur”. **Kind:** conjecture. **Context:** C0; intended terms: caractéristique 2, caractéristique 3, ordre 24, ordre 12.
+./MPL_147_003-047_notes.md:57:**Source:** “est une application de degré 2, d'où une involution sans pts … fixes”.
+./MPL_147_003-047_notes.md:63:**Context check — adds:** The closest combinatorial hit is `LM_140-1_text.tex`, scan 032, in a **cancelled** block: an “autom. σ d'ordre 2 … ss pt fixe” on a set, together with another permutation. That is an earlier use of the same involution device, not a statement about nodal normalization; the present passage supplies that geometric interpretation. Search terms: `involution`, `ss pt fixe`, `sans point`, `points doubles`, `pts doubles`.
+./LM_140-3_notes.md:51:"G_a est un groupe cyclique d'ordre d_a = d_b fini". G_a is finite because the discrete group acts properly. It embeds in SO(2) because it acts faithfully near a and preserves orientation, and finite subgroups of SO(2) are cyclic. *Reason:* the reading is unchanged; the struck word before "un groupe" is still only doubtfully "donc".
+./LM_140-3_notes.md:180:**R14. Scan 15, the six points over y = −j̄. Claim without proof. Corrected: checked.**
+./LM_140-2_text.tex:606:\inserted{soit de degré $\geq 1$ (resp. $\geq 3$)}.
+./LM_140-2_text.tex:962:``degrés de ramification'' $d_{i'}$ $(i'\in\pi_0(\Pi'_{D^*}))$.}
+```
+
+## RN030
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `cartési|normalis|produit fibr|ramifi`  
+Returned hit lines: 41
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, pp.60–61; `LM_140-2_text.tex`, scans 533–535, uses normalized fiber products in cover correspondences and warns to specify relative statements carefully.
+
+```text
+./LM_140-3_text.tex:299:``signature'' $\underline d=d(X/Y)$ définie par la \unsure{ramification}
+./LM_140-3_text.tex:418:Si $d_a$ désigne encore l'indice de ramification en $a$, on aura
+./MPL_147_048-137_notes.md:80:**Location:** scan 050, final paragraph, “correspondance biunivoque”. **Kind:** reading question. **Context:** C0; intended terms: sous-multiplicités, fermées, lisses, générisations, normalisation.
+./MPL_147_048-137_notes.md:378:**Location:** scan 069, entire paragraph, “un seul diviseur … un seul pt critique”. **Kind:** unpursued implication. **Context:** C0; intended terms: quotient S_5, auto-intersection, normalisation, branches.
+./LM_GLOBAL_PASS.md:19:- Normaliser and transporter of the loop subgroups: N_E(L_i) = E_i (84), Trans_E(L_i^d, L_i) = E_i (69).
+./LM_GLOBAL_PASS.md:23:- Literature: the centre-freeness of profinite surface groups and of free profinite groups is known; the normalisers
+./MPL_147_003-047_notes.md:49:**Context check — adds:** `LM_140-2_text.tex`, scan 437, § 33, contains the topological analogue: “X est déterminé à homéom. unique près comme ‘compactifié pur’ de U”. MPL adds an algebraic completion theorem allowing nodes already present in the open curve; the context passage is about smooth surfaces and supplies no proof of the nodal algebraic assertion. Search terms: `complétion`, `compactifié`, `compactifier`, `courbe`, `normalis`.
+./MPL_147_003-047_notes.md:77:**Context check — differs:** `LM_140-2_text.tex`, scan 534, Proposition (1) and NB, gives an equivalence \(\mathrm{Rev}(X,G)\simeq\mathrm{Rev}_{\underline d}(Y)\) and says its inverse is obtained “en normalisant \(X\times_Y Y'\)”. Both passages reconstruct geometry from quotient data, but context concerns ramified covers of regular curves; MPL concerns pinching distinct points and only the isomorphism categories. No nodal pinching equivalence was found in context. Search terms: `quotient`, `recollement`, `normalisant`, `équivalence`, `graphe`.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-3_notes.md:142:"les stabilisateurs G_x (x∈X) opèrent fidèlement au voisinage de x, en conservant l'orientation locale en x". Testing the quotient construction on a disk with a finite rotation group is a sensible local check; under the hypothesis each nontrivial G_x is finite cyclic, which is what makes ν_x = [G_x] a ramification index. *Reason:* the reading is unchanged.
+```
+
+## RN031
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `poudre|non unique|presque une|Legendre|gerbe`  
+Returned hit lines: 32
+
+Selected comparison: `LM_140-2_text.tex`, scans 518–520, especially519’s “presque une équivalence”; `hua_project/64.modern.tex`, §II.3, pp.61–62. The current qualification restates the gerbe issue and prepares its tangent refinement.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:1787:(en termes des groupes fondamentaux) de la Théorie de Legendre
+./MPL_147_048-137_notes.md:262:### N063-02 — The smooth elliptic gerbe and its band
+./MPL_147_048-137_notes.md:264:**Location:** scan 063, equation (78) and following paragraph. **Kind:** unproved claim. **Context:** C0; intended terms: gerbe, groupe constant, plus ou moins 1, quatre points.
+./LM_GLOBAL_PASS.md:187:  - Neutrality of a gerbe, "brr!" (240-241: consult Giraud or Breen).
+./MPL_149_001-090_notes.md:138:The description as an “extension successive de ... groupes profinis libres” needs affine curve fibres and exactness with an injective fibre-group map, rather than just right exactness of a homotopy sequence. Artin’s elementary fibrations provide punctured smooth curve fibres, but the successive asphericity and completion steps still need justification (Artin, 1973, Exposé XI, §§3–4). `LM_140-2_text.tex`, scan 526, uses a curve $K(\pi,1)$ comparison to control a gerbe obstruction, whereas cote 149 adds an iteration of this mechanism in higher dimension.
+./MPL_149_001-090_notes.md:1073:“des suites exactes de Kummer” suggests organizing the finite-level obstruction through root gerbes of the boundary line and then comparing compatible levels. **Context:** `ARCH_147_003-137_text.tex`, scans 122–125 and 130, adds the higher-rank normal-crossings torus and its homotopy caveat, so this would connect the rank-one discussion here to its boundary-stratum construction. **Confidence: medium**, because root constructions provide explicit finite-level objects and transition data, while their comparison with all the profinite normalizer extensions and the $\pi_2$ issue still needs proof (Cadman, 2007, Definitions 2.2.4 and 2.2.6).
+./MPL_142_001-093_notes.md:346:The proposed replacement of transcendental paths by algebraic étale paths must use a modular stack or the author's modular topos, because the automorphism groups of curves remain part of the groupoid. Passing to the coarse moduli scheme can erase that inertia and change the fundamental groupoid, so it cannot be an interchangeable implementation of the “multiplicité modulaire” on 015. The elliptic level-two gerbe in the supplied context provides a particularly explicit warning.
+./MPL_142_001-093_notes.md:348:**Context comparison:** Restates the modular-topos viewpoint of `LM_140-2_text.tex`, scans 326–328, and adds its role in the completed finite-cover category. Scans 538 and 547 distinguish the level-two stack from its coarse scheme by a \(\mathbb Z/2\)-gerbe, directly supporting the need to retain inertia.
+./MPL_147_003-047_notes.md:363:**Context check and search:** Searches for `équivalence`, `courbes elliptiques`, `champ`, and `symétrie` lead to `LM_140-2_text.tex`, scans 518–520: the elliptic-to-four-pointed-line construction is explicitly called “presque une équivalence” because the elliptic involution disappears. **Adds:** scan 019 offers a normalization-and-gluing equivalence in which the full isomorphism groupoids must survive; the context example supplies a concrete warning about what an objectwise comparison can miss.
+```
+
+## RN032
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `intrinsèque|elliptiques|quotient|Legendre`  
+Returned hit lines: 43
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, pp.62–64, restates the intrinsic request and computes the formula; `LM_140-2_text.tex`, scans 518–520 and 568–570, supplies the earlier quotient/level setting.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:312:quotients de $\mathbb Z/d_b\mathbb Z$, et plus précisément encore,
+./LM_140-1_notes.md:33:- **1 — scan 10, question ("sous-groupe d'ordre 2 à déterminer"). Correct.** The digit is a clear bold 2. But no subgroup of Sℓ(2,Z/6Z) of any order has E (order 36) as quotient; see B5.
+./LM_140-1_notes.md:73:- **B5 — scan 10, the guess E ≃ Sℓ(2,Z/6Z)/H cannot hold (claim refuted).** E maps onto Z/12Z. This follows from the cartesian square and from the page's map ρ ↦ 10, σ ↦ 3, since 3 + 10 ≡ 1 mod 12. But Sℓ(2,Z/6Z) ≅ Sℓ(2,Z/2Z) × Sℓ(2,Z/3Z) ≅ S₃ × Sℓ(2,F₃) has abelianisation Z/2 × Z/3 = Z/6, so none of its quotients maps onto Z/12Z. The order count fails too: |Sℓ(2,Z/6Z)| = 144, so a quotient of order 36 would need |H| = 4, not the written 2. The level must be 12, not 6: the abelianisation Sℓ(2,Z) → Z/12Z does not factor through Sℓ(2,Z/6Z). This fits the author's "à déterminer" and the later switch (scan 15) to the comparison of orders 72 and 6·24.
+./MPL_147_048-137_notes.md:20:| When a torus fibre contributes an injective lattice | R080-02; R088-02; R130-01; R130-02 | The boundary map from π₂ controls the quotient of the lattice; the notes give an explicit noninjective example. |
+./MPL_147_048-137_notes.md:42:The assertion “est stable … ssi les … le sont” needs the half-edges leaving each contracted fibre to become marked flags on that fibre; omitting those flags changes the stability inequality. A proof should sum \(2g_v-2+n_v>0\) over each connected fibre, identify its new genus as the sum of vertex genera plus its first Betti number, and then check the quotient vertex inequality. Scans 093–099 later develop the flag and fibre bookkeeping, so this is a point elaborated within the supplied pages, although the stability calculation is not written here.
+./LM_GLOBAL_PASS.md:52:- Γ → Out(π̂_1(U)) is faithful for an anabelian U (497, 502); also after the quotient by the script T (502).
+./LM_GLOBAL_PASS.md:139:- Modular multiplicities over Q and Z (193-197): is every such multiplicity a quotient of a smooth quasi-projective
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./MPL_147_003-047_notes.md:11:In the analysis, \(\overline{\mathcal M}_{g,n}\) denotes the stack of stable curves with individually labelled markings; unordered finite étale marking divisors require the corresponding symmetric-group quotient. The distinction is explicit when a graph automorphism is allowed to permute legs. **All modular and stratum dimensions are relative over \(\operatorname{Spec}\mathbb Z\), equivalently dimensions of geometric fibres**; the absolute dimension over \(\mathbb Z\) is one greater in the cases considered. Fieldwise statements are kept separate from claims over general, possibly nonreduced bases. Loops contribute two incident half-edges to valence.
+```
+
+## RN033
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `ambigu|multiplicité|degré quatre|quotient`  
+Returned hit lines: 41
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, pp.62–63, gives the degree-four and branch-multiplicity calculation; `LM_140-2_text.tex`, scans 568–570, is the corresponding degree-four cover setting.
+
+```text
+./LM_140-3_text.tex:312:quotients de $\mathbb Z/d_b\mathbb Z$, et plus précisément encore,
+./LM_140-3_text.tex:319:déduit par passage au quotient de l'hom ext
+./MPL_147_048-137_notes.md:20:| When a torus fibre contributes an injective lattice | R080-02; R088-02; R130-01; R130-02 | The boundary map from π₂ controls the quotient of the lattice; the notes give an explicit noninjective example. |
+./MPL_147_048-137_notes.md:42:The assertion “est stable … ssi les … le sont” needs the half-edges leaving each contracted fibre to become marked flags on that fibre; omitting those flags changes the stability inequality. A proof should sum \(2g_v-2+n_v>0\) over each connected fibre, identify its new genus as the sum of vertex genera plus its first Betti number, and then check the quotient vertex inequality. Scans 093–099 later develop the flag and fibre bookkeeping, so this is a point elaborated within the supplied pages, although the stability calculation is not written here.
+./LM_GLOBAL_PASS.md:52:- Γ → Out(π̂_1(U)) is faithful for an anabelian U (497, 502); also after the quotient by the script T (502).
+./LM_GLOBAL_PASS.md:139:- Modular multiplicities over Q and Z (193-197): is every such multiplicity a quotient of a smooth quasi-projective
+./MPL_149_001-090_notes.md:66:The instruction to regard a finite radicial extension as “triviale” calls for localization at purely inseparable field extensions, with a specified class of morphisms. It matches the invariance of the small étale site under universal homeomorphisms (The Stacks Project Authors, 2026, Tag 04DY), and scan 052 later proposes the analogous localization for schemes. Searches for “radici” and the quotient formulation yielded no direct contextual counterpart; `LM_140-2_text.tex`, scan 018, provides the field-to-topos construction that is being modified, so this is an added characteristic-$p$ qualification.
+./MPL_149_001-090_notes.md:96:### A009.2 — Scans 009–010, geometric kernel and arithmetic quotient — unproved claim
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./MPL_147_003-047_notes.md:11:In the analysis, \(\overline{\mathcal M}_{g,n}\) denotes the stack of stable curves with individually labelled markings; unordered finite étale marking divisors require the corresponding symmetric-group quotient. The distinction is explicit when a graph automorphism is allowed to permute legs. **All modular and stratum dimensions are relative over \(\operatorname{Spec}\mathbb Z\), equivalently dimensions of geometric fibres**; the absolute dimension over \(\mathbb Z\) is one greater in the cases considered. Fieldwise statements are kept separate from claims over general, possibly nonreduced bases. Loops contribute two incident half-edges to valence.
+```
+
+## RN034
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `racine|sqrt|radic|t\(1|quadratique`  
+Returned hit lines: 36
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, p.63 = scan 064, explicit editorial radical correction; `LM_140-2_notes.md`, R21 (LM140-2/570), offers related square-root conic coordinates but not authority for this reading.
+
+```text
+./LM_140-3_text.tex:1125:pondent respectivement aux $\tau$ qui \unsure{avec} $1$ \unsure{engendrent} \unsure{l'un} réseau des entiers alg. de $\mathbb{Q}(i)$ (soit $\mathbb{Z}+i\mathbb{Z}$), et le réseau des entiers de $\mathbb{Q}(j)$, formé des nbs de la forme $aj+b\bar{j}$ ($j=\dfrac{-1+i\sqrt{3}}{2}=\exp\dfrac{2i\pi}{3}$); la ramification \unsure{correspondante} est $2$ et $3$.
+./LM_140-3_text.tex:1245:\unsure{quotient} ``multiquadratique'' de $\Gamma_{\mathbb Q}$ -- et cette
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./MPL_147_048-137_notes.md:568:Our proposed check is to compare a total order on $I$ with its reversal: for an unoriented chain, reversing all vertices preserves the same labelled graph even though it is not generated merely by exchanges within the two end pairs. This concerns redundancy of the order parametrization and does not contradict uniqueness of a label-preserving isomorphism between two presentations. An additional orientation or endpoint convention could remove the redundancy, so that convention should be located before sharpening the author's claim.
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./MPL_147_003-047_notes.md:1102:\phi^*(x-1)=(x-1)\left(1+\epsilon\frac{x^3}{x-1}\right)
+./LM_140-3_notes.md:339:D. **Scan 24, (6) — own verification.** Ẑ*/Ẑ*² = ∏ₚ ℤₚ*/ℤₚ*² ≅ (ℤ/2)² × ∏_{p odd} ℤ/2, and by Kronecker–Weber the kernel of (6) is the subgroup fixing ℚ(√−1, √2, √p : p odd prime), the compositum of all quadratic fields. So "(Γ_{ℚ ab})₂ — le quotient multiquadratique" is the Galois group of that field, identified with Ẑ*/Ẑ*² by (6). Confidence high.
+./LM_140-3_notes.md:2189:  (μ²(1 + B²) μB; μB 1) = μ(R S; S U) by (159). In (162) the second line ξ = ηℓ₁^{−ν} contradicts (134) ξ = ηℓ₁^ν and the
+./LM_140-2_text.tex:4424:Sinon, les ss-groupes de stabilité \inserted{$\Gamma_x$} des $x\in D$ étant d'ordre $<$ \deleted{\illegible{1}} $\operatorname{card}\Gamma$, par hyp. de récurrence, les $\Gamma_x$ ont la structure dite dans le th., donc \unsure{$D^\Gamma=U$|$D/\Gamma=U$} est une surface topologique et \unsure{$D\longrightarrow U$|$D\longrightarrow D^\Gamma$} est un rev ramifié, choisissons une structure \deleted{conforme complexe} \inserted{conforme} sur $U$ \deleted{NB $U$ est orienté}; il y a une unique structure conforme sur $D$ telle que $D\longrightarrow U$ soit \deleted{\unsure{conforme|holomorphe}} \inserted{``conforme''} (hol. ou anti-holomorphe), celle-ci est invariante par $\Gamma$, et d'après a) $\Gamma$ admet un p\textsuperscript{t} fixe, contradiction.
+./LM_140-2_text.tex:4431:Soit donc $x\in D^{*\Gamma}$ --- on va aboutir à une contradiction. Considérons le rev. universel $\widetilde D^*$ de $D^*$ ponctué en $x$, \deleted{OPS} donc $\Gamma$ opère sur $\widetilde D^*$ \unsure{avec} p\textsuperscript{t} fixe $\widetilde x$ au dessus de $x$. Ici $\pi=\pi_1(D^*)\simeq\mathbb Z$, et $\Gamma$ y opère \unsure{trivial\textsuperscript{t}} (car $\Gamma=\Gamma^\circ$) donc $\Gamma\times\mathbb Z$ opère sur $\widetilde D^*$. OPS $D=\mathbb C$, \unsure{$o=0$|$0=0$}, $x=1$, $D^*=\mathbb C^*$, $\widetilde D^*=\mathbb C$, $\widetilde x=0$, $\widetilde D^*\longrightarrow\widetilde D$ donné par $\exp 2i\pi z$, \deleted{\unsure{donc}} et $\mathbb Z$ opérant sur $\mathbb C$ par $\Theta_nz=z+n$ ($n\in\mathbb Z$).
+```
+
+## RN035
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `c_t|Legendre|multiplicité|Fermat`  
+Returned hit lines: 38
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, pp.63–64; `LM_140-2_text.tex`, scans 569–570, relates the same level-four geometry to the Fermat conic but leaves its canonical identification as a question.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:1787:(en termes des groupes fondamentaux) de la Théorie de Legendre
+./MPL_147_048-137_notes.md:80:**Location:** scan 050, final paragraph, “correspondance biunivoque”. **Kind:** reading question. **Context:** C0; intended terms: sous-multiplicités, fermées, lisses, générisations, normalisation.
+./MPL_147_048-137_notes.md:104:**Location:** scan 052, equations (60)–(61), “à isom unique près”. **Kind:** unpursued implication. **Context:** C0; intended terms: courbe standart, G-épinglée, multiplicité classifiante, torsor.
+./LM_GLOBAL_PASS.md:59:  "Idem pour une approche du th. de Fermat" (65).
+./LM_GLOBAL_PASS.md:120:T11. The level-12 congruence subgroup and the Fermat tower (C4 58-171).
+./MPL_147_003-047_notes.md:375:**Context check and search:** Searches for `multiplicités`, `schéma`, `discrètes`, and `rigide` identify `LM_140-2_text.tex`, scans 546–547, where categorical representability is separated from representation by a scheme, and scan 550, where the rational pointed cases require at least three points for the étale multiplicity framework. **Restates/differs:** scan 020 agrees with that categorical framework; the literal “schéma” on scan 022 is looser than the explicit distinction in scans 546–547. This is a terminology/reading question, not a proposed edit to the frozen word.
+./MPL_147_003-047_notes.md:383:**Source:** “plutôt, une équivalence”; “la multiplicité mixte”.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-3_notes.md:356:Text checked: `second_pass/LM_P062_checked.tex`. Scans 31–39 continue §39, "Les conditions de congruence pour l'opération extérieure de Γℚ sur Π̂₀,₃" (ms. pp. 303–307). It asks how much of N₁,₁ and of the homomorphism (21) N₁,₁ → Gl(2,Ẑ) can be rebuilt from a group Γ of outer automorphisms of π̂₀,₃. Scans 39–40 begin §40, "Paraphrase topologico-isotopique (en termes des groupes fondamentaux) de la Théorie de Legendre" (ms. p. 307 verso–308). Each first-pass note keeps its number and is marked **keep**, **correct** or **drop**, with the reason. Notes A–I are the second pass's own, labelled as such. Mathematical identities stated here were checked by hand; anything not proved is said to be so.
+```
+
+## RN036
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `OK|vérifier|Legendre|quotient`  
+Returned hit lines: 45
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, p.64 = scan 065, verifies the final equality; the elementary quotient formulas in `MPL_146_001-099_notes.md`, R084 (146/065, 067), provide a neighboring sign/normalization comparison only.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:260:\unsure{\(M\xrightarrow{\sim}M_{\rho,\sigma}^{\unsure{\rightleftarrows|\leftrightarrows}}/H_\rho\hookrightarrow M_{\rho,\sigma}/H_\rho\)}.
+./MPL_149_001-090_notes.md:66:The instruction to regard a finite radicial extension as “triviale” calls for localization at purely inseparable field extensions, with a specified class of morphisms. It matches the invariance of the small étale site under universal homeomorphisms (The Stacks Project Authors, 2026, Tag 04DY), and scan 052 later proposes the analogous localization for schemes. Searches for “radici” and the quotient formulation yielded no direct contextual counterpart; `LM_140-2_text.tex`, scan 018, provides the field-to-topos construction that is being modified, so this is an added characteristic-$p$ qualification.
+./MPL_149_001-090_notes.md:96:### A009.2 — Scans 009–010, geometric kernel and arithmetic quotient — unproved claim
+./MPL_147_048-137_notes.md:20:| When a torus fibre contributes an injective lattice | R080-02; R088-02; R130-01; R130-02 | The boundary map from π₂ controls the quotient of the lattice; the notes give an explicit noninjective example. |
+./MPL_147_048-137_notes.md:42:The assertion “est stable … ssi les … le sont” needs the half-edges leaving each contracted fibre to become marked flags on that fibre; omitting those flags changes the stability inequality. A proof should sum \(2g_v-2+n_v>0\) over each connected fibre, identify its new genus as the sum of vertex genera plus its first Betti number, and then check the quotient vertex inequality. Scans 093–099 later develop the flag and fibre bookkeeping, so this is a point elaborated within the supplied pages, although the stability calculation is not written here.
+./MPL_142_001-093_notes.md:98:For a compact curve, the level-\(n\) rigidity invoked here is grounded in Serre's theorem for finite-order automorphisms of an abelian variety acting trivially on its \(n\)-torsion, with \(n\geq3\), together with the curve-to-Jacobian argument (Serre, 1961, appendix; Grothendieck, 1961, §3). For a punctured curve, one must additionally control the permutation of the ends and the toric part of the generalized Jacobian; the compact theorem alone does not supply those steps. The level-two restriction is material, since inversion acts trivially on two-torsion.
+./MPL_142_001-093_notes.md:118:The opening alternatives change the force of the reduction to the free-action case, while “propre” could change which homology theory is being invoked. The compact and open-surface arguments must therefore state their own coefficient and support conventions rather than treating this insertion as an unambiguous reference to ordinary homology or compactly supported homology. The context supports the general rigidity theme but does not decide either piece of ink.
+./LM_GLOBAL_PASS.md:5:you do it in bounded prompts? The point was to look at the full structure." The per-package agents only check the
+./LM_GLOBAL_PASS.md:52:- Γ → Out(π̂_1(U)) is faithful for an anabelian U (497, 502); also after the quotient by the script T (502).
+```
+
+## RN037
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `itér|congruence|puiss|Legendre`  
+Returned hit lines: 34
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, p.64; `LM_140-3_text.tex`, scans 022–026, explicit congruence/outer-action discussion; `LM2_CONGRUENCE_ROWS.md`, C.d1 and C.r1–C.r3.
+
+```text
+./LM_140-3_text.tex:19:\uline{39}\quad Propriétés de congruence de l'opération
+./LM_140-3_text.tex:26:théorie de Legendre
+./MPL_147_048-137_notes.md:268:On the smooth locus with \(2\) invertible, the suggested construction is to quotient an elliptic curve by inversion, retaining the image of the origin as the distinguished one of four branch points. A proof of the gerbe assertion should identify the automorphism kernel, show local existence of the double cover, and verify descent, without assuming a globally chosen Legendre equation. Fulton and Olsson (2007, §5.1) give a directly checked characteristic-three local Legendre model with the corresponding order-two kernel, while the compactified assertion needs the separate test in N063-03.
+./MPL_147_048-137_notes.md:2156:**Checked scope:** §5.1: characteristic-three local Legendre presentation and its stabilizer kernel; not a proof of the compactified gerbe assertion.
+./LM_GLOBAL_PASS.md:81:- Literature: GT action on SL2-hat, the two-level relations (Ihara, Lochak-Schneps), congruence subgroup property
+./LM_GLOBAL_PASS.md:90:- Congruence relations on (0,3) and (1,1): are they "de nature arithmétique" or consequences of a purely algebraic
+./MPL_149_001-090_notes.md:495:“Il se pourrait qu'on puisse en déduire $P=Q$” asks whether $p$-primary differences on every relevant prime-to-$p$ finite cover force equality of the original points, a condition stronger than the one-Jacobian Kummer test. The written covering “$Y'$ de $X$” needs its target clarified, and the cancelled isogeny paragraph does not provide the missing implication. `LM_140-4_text.tex`, scan 171, adds an explicit construction of curve covers by pulling back torus isogenies in the Fermat tower, but differs from the proposed criterion for all covers and does not establish it.
+./MPL_142_001-093_notes.md:163:After compactifying the ends, trivial action on ordinary integral homology forces the punctures to be fixed individually and makes the compact-surface Lefschetz number \(2-2g\); a nontrivial orientation-preserving periodic map has isolated fixed points of index \(+1\), by its local rotation model. For \(g\geq2\) the negative Lefschetz number is impossible, for \(g=1\) a puncture supplies a fixed point despite Lefschetz number zero, and for \(g=0\) hyperbolicity supplies at least three fixed punctures although a nontrivial periodic sphere rotation has only two. This is a proof strategy for the integral-homology version, conditional on spelling out end extension and the local rotation theorem; the mod-\(n\) version additionally needs the torsion-freeness of the principal congruence kernel at level \(n\geq3\) (Constantin & Kolev, 1994; Serre, 1961).
+./MPL_142_001-093_notes.md:167:**Own-idea confidence and reason:** medium: the fixed-point count is decisive once the listed topological and congruence inputs are supplied, but those inputs are not reproved here.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+```
+
+## RN038
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `image inverse|torsion|multiplicité|itér`  
+Returned hit lines: 43
+
+Selected comparison: `hua_project/64.modern.tex`, §II.3, p.64; `LM_140-2_text.tex`, scans 568–570, provides the earlier four-torsion cover setting but no matching divisor-multiplicity repair was located.
+
+```text
+./LM_140-3_text.tex:608: d) Description d'un foncteur quasi-inverse par image inverse ``normalisée''.
+./LM_140-3_text.tex:1366:(par image inverse de l'extension
+./MPL_147_048-137_notes.md:80:**Location:** scan 050, final paragraph, “correspondance biunivoque”. **Kind:** reading question. **Context:** C0; intended terms: sous-multiplicités, fermées, lisses, générisations, normalisation.
+./MPL_147_048-137_notes.md:104:**Location:** scan 052, equations (60)–(61), “à isom unique près”. **Kind:** unpursued implication. **Context:** C0; intended terms: courbe standart, G-épinglée, multiplicité classifiante, torsor.
+./LM_GLOBAL_PASS.md:21:- "Toute extension sans torsion d'un groupe fini par un groupe à lacets est (canoniquement) un groupe à lacets"
+./LM_GLOBAL_PASS.md:24:  of inertia are Nakamura's; for the torsion-free extension statement, cf. the profinite Nielsen realisation
+./MPL_147_003-047_notes.md:171:**Additional context check — adds:** `LM_140-4_text.tex`, scan 143, starts its local coefficient construction from an actual étale cover; `LM_140-2_text.tex`, scan 518, imposes invertibility of 2 before using a locally constant 2-torsion system. Searches for local systems, étaleness, and arbitrary bases therefore reinforce the distinction between fibrewise data and an actual étale object over the base.
+./MPL_147_003-047_notes.md:375:**Context check and search:** Searches for `multiplicités`, `schéma`, `discrètes`, and `rigide` identify `LM_140-2_text.tex`, scans 546–547, where categorical representability is separated from representation by a scheme, and scan 550, where the rational pointed cases require at least three points for the étale multiplicity framework. **Restates/differs:** scan 020 agrees with that categorical framework; the literal “schéma” on scan 022 is looser than the explicit distinction in scans 546–547. This is a terminology/reading question, not a proposed edit to the frozen word.
+./LM_140-3_notes.md:151:"Description d'un foncteur quasi-inverse par image inverse "normalisée"" announces the inverse; §37's N.B. (CSG ll. 10533–10537) names it, the normalised (X, G)-covering of X ×_Y Y', but neither place checks unit and counit. *Reason:* reading unchanged; cross-reference added.
+./LM_140-3_notes.md:372:7. **Scan 33, (28)–(29) — unproved claim — correct (verified).** The kernel of (28) is {λ·1 : λ² = 1}. The 2-torsion of Ẑ* = ∏ ℤ_p* is ∏_p {±1}, also at p = 2 because ℤ₂* = {±1} × (1+4ℤ₂). So ₂Ẑ* ≃ (ℤ/2ℤ)^P, as stated.
+```
+
+## RN039
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `torseur|End|modulo|relèv|niveau`  
+Returned hit lines: 48
+
+Selected comparison: `hua_project/64.modern.tex`, level-four subsection, pp.65–67; `LM_140-2_text.tex`, scans 567–569, reduction mod 2 and its kernel. This adds an explicit reference module and descent proof to the current torsor assertion.
+
+```text
+./LM_140-3_text.tex:3:% not manuscript: printed logo of the Institut Montpelliérain Alexander Grothendieck (archive cover image of cote 140-3).
+./LM_140-3_text.tex:26:théorie de Legendre
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./LM_GLOBAL_PASS.md:8:Sources read: second_pass/NOTES_A_conjectures.md (Grothendieck's conjectures, questions, expectations and programme,
+./LM_GLOBAL_PASS.md:37:  is a strong candidate: Grothendieck's 1981 formulation, discrete and profinite.
+./MPL_147_003-047_notes.md:3:These **75 notes** accompany the complete diplomatic transcription of the 45 supplied scans of *Structure à l'infini des \(M_{g,\nu}\)*. The transcription was frozen at **2026-11-11 01:30:36 UTC**, before the context archive was opened; the interpretations, proofs, examples, and suggested readings below have not been substituted into it. The proposition at the end of scan 047 continues beyond the supplied range and is not completed by conjectural transcription.
+./MPL_147_003-047_notes.md:13:The one-to-four-sentence explanatory cores remain separate from their context and literature checks. Appendices A and B give full calculations for selected counterexamples and recovery arguments, so the abbreviated notes can be checked directly. Modern literature was consulted as primary papers or official mathematical documentation; APA references and stable source locators appear at the end.
+./LM_140-3_notes.md:7:Scans 3–5 are Grothendieck's contents of the second part ("2ème partie — Variations sur l'équation des lacets", §§38–49, ms pp. 291–650). Scans 6–10 are the opening of §38 (ms pp. 291 bis, 292 bis, 293). In the corrected text the cartographic group is written with the same script S as $\mathfrak S_3$: $\mathfrak S_{0,3}$, $\mathfrak S^{+}_{0,3}$ (changes, rows 3 and 58).
+./LM_140-3_notes.md:11:**R1. Scan 3, §46 heading. Grothendieck's question about notation. Kept.**
+```
+
+## RN040
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `somme|Hom|extension|End|trace`  
+Returned hit lines: 47
+
+Selected comparison: `hua_project/64.modern.tex`, level-four subsection, pp.65–67; `LM_140-2_text.tex`, scans 568–569, kernel and scalar quotient. The current construction refines the relative marking object.
+
+```text
+./LM_140-3_text.tex:3:% not manuscript: printed logo of the Institut Montpelliérain Alexander Grothendieck (archive cover image of cote 140-3).
+./LM_140-3_text.tex:21:\unsure{Liées|Lien} : l'hom
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./LM_GLOBAL_PASS.md:8:Sources read: second_pass/NOTES_A_conjectures.md (Grothendieck's conjectures, questions, expectations and programme,
+./LM_GLOBAL_PASS.md:20:- Discreteness of the Hom-categories (53).
+./MPL_147_003-047_notes.md:3:These **75 notes** accompany the complete diplomatic transcription of the 45 supplied scans of *Structure à l'infini des \(M_{g,\nu}\)*. The transcription was frozen at **2026-11-11 01:30:36 UTC**, before the context archive was opened; the interpretations, proofs, examples, and suggested readings below have not been substituted into it. The proposition at the end of scan 047 continues beyond the supplied range and is not completed by conjectural transcription.
+./MPL_147_003-047_notes.md:13:The one-to-four-sentence explanatory cores remain separate from their context and literature checks. Appendices A and B give full calculations for selected counterexamples and recovery arguments, so the abbreviated notes can be checked directly. Modern literature was consulted as primary papers or official mathematical documentation; APA references and stable source locators appear at the end.
+./LM_140-3_notes.md:7:Scans 3–5 are Grothendieck's contents of the second part ("2ème partie — Variations sur l'équation des lacets", §§38–49, ms pp. 291–650). Scans 6–10 are the opening of §38 (ms pp. 291 bis, 292 bis, 293). In the corrected text the cartographic group is written with the same script S as $\mathfrak S_3$: $\mathfrak S_{0,3}$, $\mathfrak S^{+}_{0,3}$ (changes, rows 3 and 58).
+./LM_140-3_notes.md:11:**R1. Scan 3, §46 heading. Grothendieck's question about notation. Kept.**
+```
+
+## RN041
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `trace|matrices|somme|déterminant`  
+Returned hit lines: 34
+
+Selected comparison: `LM_140-2_text.tex`, scans 568–569; `LM_140-2_notes.md`, R14–R17; `hua_project/64.modern.tex`, level-four subsection, pp.66–67. The terminology overlaps, but the maps and objects differ.
+
+```text
+./LM_140-3_text.tex:1892:En somme, je suis en train de faire une
+./LM_140-3_text.tex:1990:\uline{somme} des coefficients. Le noyau $\widetilde{\pi}'$ de (66) est un groupe à lacets de type $(1,4)$ --- mais ce n'est pas \unsure{tout} à fait un groupe extérieur --- il n'est pas défini ``\unsure{mod.|aux} \unsure{autom.} int'', \deleted{mais} seulement modulo (en plus) l'opération extérieure de \unsure{symétrie} de $\mathbb Z/2\mathbb Z$
+./MPL_147_048-137_notes.md:162:**Location:** scan 058, opening paragraph, “n'importe quel sous-groupe … sauf erreur”. **Kind:** conjecture. **Context:** C0; intended terms: sous-groupe S_4, image Gamma, sauf erreur, sommet distingué.
+./MPL_147_048-137_notes.md:182:**Location:** scan 059, case\(1^\circ\), inserted \(\widetilde\mu_{\alpha_0}\in\{1,2\}\). **Kind:** reading question. **Context:** C0; intended terms: sommet isolé, genre 1, ordre, type(1,2).
+./LM_GLOBAL_PASS.md:101:- Pairs of matrices satisfying the loop relation; the scheme of solutions and its relative dimension (C3 151).
+./MPL_147_003-047_notes.md:309:**Context check — adds:** `LM_140-2_text.tex`, scan 351, (3) and margin, gives multiplicativity of \(2g-2+\operatorname{card}I\) under covers and calls the positive case anabelian. The present argument gives an additive decomposition over the normalized components of a nodal curve, a different operation not developed in that context passage. Search terms: `2g`, `EP`, `anabélien`, `graphe`, `somme`.
+./MPL_147_003-047_notes.md:671:**Context check — adds, closest analogy in a different category:** `LM_140-2_text.tex`, scan 168, describes a “somme amalgamée” as the fundamental-groupoid translation of “bouchage de trous”; that does not prove the scheme-theoretic gluing here, but it suggests comparing the two constructions after passing to fundamental groupoids.
+./LM_140-3_notes.md:75:"X = X̂∖S donc Y = Ŷ∖T … avec Ŷ = X̂/G". The extension of the action to X̂ and the definition of T are not given. The retraced cluster after T remains `\unsure{\ne\varnothing}`. *Reason:* the reading is unchanged.
+./LM_140-3_notes.md:208:(25) follows from (24): ℓ'_∞ℓ'_1ℓ'_0 = ρ^{-1}σ_∞σ_∞ρ = 1, ℓ'^2_1 = σ_∞² = 1, ℓ'^3_∞ = ρ^{-3} = 1. That (25) is a complete presentation is the content of R25. The index of the middle relation is retraced (1|∞) in the ink; the algebra requires 1. *Reason:* reading doubt added; derivation given.
+./LM_140-2_text.tex:189:b) toute somme de topos multigaloisiens (i.e. \deleted{\illegible{1}}
+```
+
+## RN042
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `face|signe|scalaire|épingl|niveau`  
+Returned hit lines: 44
+
+Selected comparison: `LM_140-2_text.tex`, scans 519–520 and 567–569, central sign on level structures; `hua_project/64.modern.tex`, pp.67–68 = scans 068–069. This adds the exact forgotten fiber.
+
+```text
+./LM_140-3_text.tex:143:(IV) Un épinglage canonique associé à \(\rho,\sigma\) \hfill 446
+./LM_140-3_text.tex:155:\uline{VII} Récapitulation sur les épinglages. \hfill 476
+./MPL_147_048-137_notes.md:21:| Completing the first face and its coherence | R104.4; R127-02; R133-02; R134-03; R135-01; R137-04 | The source ends while the geometric construction is still in progress, so a completed functor or gluing theorem is not supplied. |
+./MPL_147_048-137_notes.md:86:**Location:** scan 050, equation (59). **Kind:** unpursued implication. **Context:** C0; intended terms: Gamma!, Ker, points marqués, épinglage.
+./LM_GLOBAL_PASS.md:23:- Literature: the centre-freeness of profinite surface groups and of free profinite groups is known; the normalisers
+./LM_GLOBAL_PASS.md:27:T2. Γ-actions on surfaces and their group data: the 2-functor and the 2-equivalence conjecture (scans 270-306).
+./MPL_147_003-047_notes.md:49:**Context check — adds:** `LM_140-2_text.tex`, scan 437, § 33, contains the topological analogue: “X est déterminé à homéom. unique près comme ‘compactifié pur’ de U”. MPL adds an algebraic completion theorem allowing nodes already present in the open curve; the context passage is about smooth surfaces and supplies no proof of the nodal algebraic assertion. Search terms: `complétion`, `compactifié`, `compactifier`, `courbe`, `normalis`.
+./MPL_147_003-047_notes.md:331:**Scan/location:** scan 017, definition of “G-épinglée”.
+./LM_140-3_notes.md:24:"Un épinglage canonique associé à ρ,σ" (now at p. 446) announces a canonical construction whose definition is not on these pages. *Reason:* the reading is unchanged except for the page number.
+./LM_140-3_notes.md:33:"Où on se bat avec "les signes" ε_2, ε_3 dans la relation des lacets — calculs — brouillons…" The heading flags provisional sign computations. *Reason:* the reading is unchanged.
+```
+
+## RN043
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `symplect|déterminant|mu_4|scalaire`  
+Returned hit lines: 17
+
+Selected comparison: `LM_140-2_text.tex`, scans 567–570, especially the choice of i and symplectic subgroup; `LM_140-3_text.tex`, scans 176–178, central lifting; `hua_project/64.modern.tex`, p.68. This is a finite comparison, not an arithmetic-image calculation.
+
+```text
+./LM_140-3_text.tex:1225:que c'est un scalaire -- i.e.
+./LM_140-3_text.tex:5281:de $\lambda$ dans $\mathrm{Gl}(2,\widehat{\mathbb Z})'$ \unsure{ne|en} déterminant une
+./LM_140-3_notes.md:283:5. **Scan 23, centraliser step — unproved claim — correct (an omitted computation, not a gap).** "commute à Sl(2,Ẑ) … c'est un scalaire" is a two-line matrix computation valid over any commutative ring (own note C). With it, the injectivity of (5) is fully proved by the argument on the page.
+./LM_140-3_notes.md:1565:- **F9. Scan 154 — unproved claim recalled from earlier.** Keep. "Nous avons déjà remarqué que (67), (68) déterminent u seulement modulo … un scalaire λ∈ℤ̂*" refers to earlier pages outside this package.
+./MPL_146_100-134_notes.md:290:“Traitons d'abord le premier cas” leaves the $(1,1)$ alternative untreated in scans 118–125. This **differs in coverage from** `ARCH_147_003-137_text.tex`, scans 56–57 and 63–64, which discuss both alternatives and the exceptional elliptic stabilizers, and from `LM_140-4_text.tex`, scan 239, which gives explicit presentations for an extended genus-one tangential group. Over $\mathbb C$, the orientation-preserving comparison is the orbifold $\mathcal M_{1,1}=[\mathfrak h/\operatorname{SL}_2(\mathbb Z)]$, with generic stabilizer $\mu_2$ and exceptional $\mu_4,\mu_6$; its nonzero-tangent moduli has fundamental group a central extension of $\operatorname{SL}_2(\mathbb Z)$ (Hain, 2014, Exercise 8, Definition 3.12, Proposition 8.1). This gives a precise continuation target but does not identify the contextual extended $\operatorname{GL}_2(\mathbb Z)$ construction with the orientation-preserving one.
+./MPL_146_001-099_notes.md:359:The assertion “passant aux déterminants” identifies the fibre quotient with the sign-twisted line after trivializing \(\Delta_{\alpha'}\) by either of its two equal coordinates. The exact sequence gives \(\det V(J)\) the sign character of permutations of J, while exchanging β and γ leaves the chosen generator of \(\Delta_{\alpha'}\) unchanged. This supplies a direct representation-theoretic verification, and also explains why forgetting equivariance would lose the distinction being tested.
+./MPL_146_001-099_notes.md:366:**Context search terms:** `déterminants`; `orientation`; `V_J`; `\mathcal O(1)`.
+./LM_140-1_text.tex:1985: \underset{\substack{\Vert\\\pi_1(PU_{0,3},\mathfrak S_3\times\mu_4)}}{\widetilde\Pi_{0,3}^D(4)}\arrow[r,very thick]\&
+./LM_140-1_text.tex:2021: \overbrace{S\Pi_{0,3}^D(4)}^{\pi_1(U_{0,3},\mathfrak S_3\times\mu_4)}\arrow[r]\&\Pi_{0,3}^D
+./MPL_149_001-090_notes.md:46:The phrase “restriction des scalaires” identifies the inverse-image operation along the Galois homomorphism, but the geometric morphism of topoi points in the same direction as the homomorphism and its inverse-image functor points oppositely. This restates, in the field case, `LM_140-2_text.tex`, scan 104, where $u:\pi'\to\pi$ gives $u^*:\operatorname{Ens}(\pi)\to\operatorname{Ens}(\pi')$. The action-category equivalence supplies a verification of this variance, without supplying arrowheads absent from the frozen manuscript (The Stacks Project Authors, 2026, Tag 04JI).
+```
+
+## RN044
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `isomorph|échelon|scalaire|épingl`  
+Returned hit lines: 37
+
+Selected comparison: `LM_140-2_text.tex`, scans 519–520 and 567–568; `LM_140-3_text.tex`, scans 176–178; `hua_project/64.modern.tex`, level-four discussion. The present note prevents overinterpreting RN042.
+
+```text
+./LM_140-3_text.tex:143:(IV) Un épinglage canonique associé à \(\rho,\sigma\) \hfill 446
+./LM_140-3_text.tex:155:\uline{VII} Récapitulation sur les épinglages. \hfill 476
+./MPL_149_001-090_notes.md:46:The phrase “restriction des scalaires” identifies the inverse-image operation along the Galois homomorphism, but the geometric morphism of topoi points in the same direction as the homomorphism and its inverse-image functor points oppositely. This restates, in the field case, `LM_140-2_text.tex`, scan 104, where $u:\pi'\to\pi$ gives $u^*:\operatorname{Ens}(\pi)\to\operatorname{Ens}(\pi')$. The action-category equivalence supplies a verification of this variance, without supplying arrowheads absent from the frozen manuscript (The Stacks Project Authors, 2026, Tag 04JI).
+./MPL_149_001-090_notes.md:62:The word “conservatif” asserts detection of isomorphisms among already given field morphisms, and does not assert that every abstract Galois-group isomorphism comes from a field map. `LM_140-2_text.tex`, scans 023–024, asks for full faithfulness and explicitly discusses its limitations, so the present result is logically weaker than that programme. Uchida’s (1976) isomorphism theorem provides an arithmetic comparison, but its reconstruction assertion must not be substituted for the elementary conservativity argument here.
+./MPL_147_003-047_notes.md:45:**Note:** The assertion is correct over the stated algebraically closed field: complete each component of the normalization smoothly, then restore only the original pairs of branches at nodes, leaving the added points smooth. Any two such completions are uniquely isomorphic over the original curve, by extension on the normal components and the same gluing data; the smoothness condition at infinity is essential to the formulation of uniqueness. Projectivity follows from properness for a scheme of dimension at most one over a field, not from a separate stability hypothesis.
+./MPL_147_003-047_notes.md:69:**Scan/location:** scan 006, paragraph “Inversement”, diagram, and the equivalence restricted to isomorphisms.
+./MPL_147_048-137_notes.md:40:**Location:** scan 048, upper and lower paragraphs, after the connected-component isomorphism. **Kind:** unproved claim. **Context:** C0; intended terms: maquette, générisation, fibre, rigidité MD.
+./MPL_147_048-137_notes.md:62:**Location:** scan 049, first paragraph, “le nb des générisations … est \(2^{\mu'}\)”. **Kind:** unproved claim. **Context:** C0; intended terms: maquettes quotients, parties, générisations, isomorphisme.
+./MPL_142_001-093_notes.md:62:Full faithfulness of the product functor on coverings gives uniqueness of a trivialization once it exists, whereas existence requires essential surjectivity as well. For the surfaces and interval in the manuscript, homotopy lifting and covering classification make restriction to \(Y\times\{0\}\) an inverse up to natural isomorphism to \(Y'\mapsto Y'\times I\), thereby supplying the omitted argument. The opening identification with paths in the space of finite covering maps also needs the chosen mapping-space topology and the corresponding parametrized lifting statement; it should not be inferred from full faithfulness alone (Hatcher, 2002, §1.3).
+./MPL_142_001-093_notes.md:73:**Context comparison:** Adds finite covering arrows to the homeomorphism-only equivalence in `LM_140-2_text.tex`, scan 222, and extends the identity-component torsors used for isomorphism spaces on scan 264. The more general ramified-arrow problem on scans 092–093 remains outside this proof.
+```
+
+## RN045
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Jacobi|Fermat|wedge|rigidif|conique`  
+Returned hit lines: 36
+
+Selected comparison: `LM_140-2_text.tex`, scans 567–570; `LM_140-2_notes.md`, R12–R23 and S5–S8 are editorial leads, with R17’s scalar-quotient calculation already supplied there; `hua_project/64.modern.tex`, pp.65–68.
+
+```text
+./LM_140-3_text.tex:223:\(\mathrm{Gl}(2,\mathbb Z)^{\wedge}/\pm1\) à \(\mathrm{Gl}(2,\mathbb Z)^{\wedge}\) \hfill \unsure{565|555}
+./LM_140-3_text.tex:248:\uline{\(8^{\circ})\)} Le cas universel, \(\mathfrak S^{\wedge}\)\(=\mathrm{Gl}(2,\mathbb Z)^{\wedge}\). Le
+./LM_GLOBAL_PASS.md:59:  "Idem pour une approche du th. de Fermat" (65).
+./LM_GLOBAL_PASS.md:80:- "Je doute qu'il en existe une" (524): the rigidification.
+./LM_140-1_text.tex:231:\widetilde\Pi_n^\circ\mathop{\wedge}_{\mathbb Z\bar\omega}\mathbb Z\omega
+./LM_140-1_text.tex:1436:\deleted{\unsure{x}\longrightarrow\unsure{x^2\wedge\omega_0}}
+./MPL_142_001-093_notes.md:98:For a compact curve, the level-\(n\) rigidity invoked here is grounded in Serre's theorem for finite-order automorphisms of an abelian variety acting trivially on its \(n\)-torsion, with \(n\geq3\), together with the curve-to-Jacobian argument (Serre, 1961, appendix; Grothendieck, 1961, §3). For a punctured curve, one must additionally control the permutation of the ends and the toric part of the generalized Jacobian; the compact theorem alone does not supply those steps. The level-two restriction is material, since inversion acts trivially on two-torsion.
+./MPL_142_001-093_notes.md:140:### N007.2 — The generalized-Jacobian embedding criterion is a reading and hypothesis question
+./SECTIONS_STATE.md:41:| Jacobiennes (43–44) | 215 | Duality of groups, generalized Jacobians (1961–c.1968); intermediate Jacobians (1964) | Notes; letter to Serre 12.8.1964 constructing abelian varieties J^i(X) from cycles | Letter to Serre ([CSG L23d](https://csg.igrothendieck.org/wp-content/uploads/2024/04/L23d.pdf)) | Griffiths (1968), Deligne's 1-motives (1974), Murre, Laumon (1996) | ≈210 | — |
+./SECTIONS_STATE.md:60:The estimates add up to about 11,300 of the 16,074 scan pages (about 11,500 with the unmatched part of cote 119) without any edition, transcription or study of the manuscript itself. About a quarter of these (the SGA and EGA drafts, Picard, Jacobians, abelian varieties, elliptic curves, and the 1950s notes) concern subjects that Grothendieck or his collaborators published in final form.
+```
+
+## RN046
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `B\.38|D\.12|E\.24|congruence|arithmétique`  
+Returned hit lines: 33
+
+Selected comparison: `notes/RESULTS_STATE.md`, exact LM4_SUCCESSOR B.38, LM4 D.12, EXIT_TOWER E.24 rows; `LM_140-3_text.tex`, scans 024–026 and 176–178, provides the broader arithmetic setting.
+
+```text
+./LM_140-3_text.tex:19:\uline{39}\quad Propriétés de congruence de l'opération
+./LM_140-3_text.tex:1153:\uline{39} \deleted{\unsure{Propriétés}}\inserted{Les} conditions de congruence
+./LM_GLOBAL_PASS.md:81:- Literature: GT action on SL2-hat, the two-level relations (Ihara, Lochak-Schneps), congruence subgroup property
+./LM_GLOBAL_PASS.md:90:- Congruence relations on (0,3) and (1,1): are they "de nature arithmétique" or consequences of a purely algebraic
+./LM_140-3_notes.md:271:Text checked: `second_pass/LM_P061_checked.tex`. Scan 21 ends §38 (the modular curve as a quotient of the half-plane); scans 22–30 are §39, "Les conditions de congruence pour l'opération extérieure de Γℚ sur Π̂₀,₃" (ms. pp. 299–303). Each first-pass note keeps its number and is marked **keep**, **correct** or **drop**, with the reason. Notes A–I are the second pass's own, labelled as such. Mathematical identities stated in the notes were checked by hand; anything not proved here is said to be so.
+./LM_140-3_notes.md:291:9. **Scan 24, around (7) — unpursued implication — keep.** The two "conditions assez fortes" (stability of the congruence kernel; an outer action on Sl(2,Ẑ) coming from Ẑ*/Ẑ*²) are independent tests on an outer automorphism. The text does not claim that they characterise the image of Γℚ.
+./LM_140-2_text.tex:21:\uuline{5.} Introduction du contexte arithmétique
+./LM_140-2_text.tex:46:13. Retour au cas arithmétique : formulations "galoisiennes" \hfill 53
+./MPL_142_094-122_notes.md:116:The expectation “Je ne serais pas étonné qu'on ait unicité dans ce cas” is attached to the requirement that \(K\) be finite over the “corps modulaire” of \(X\). A rigorous version must distinguish a field of moduli from an actual field of definition and specify whether markings or automorphisms of the curve are included, because descent data affect the Galois action being tested. **Context relationship—no exact parallel located:** the exact two expressions return no match in the supplied transcriptions, and the broader search finds only different uses of modular spaces or “transcendance arithmétique”; the closest mathematical comparator is `LM_140-2_text.tex`, scan 502, which treats faithfulness over a number field. Thus these pages add a positive-transcendence-degree restriction to that number-field discussion, but neither supplied passage proves sufficiency of the restriction.
+./MPL_142_094-122_notes.md:238:The statement that \(\widehat\Pi_1(Y,f_2(I'_2))\) “peut s'interpréter comme un quotient” needs a groupoid-level proof, including the map on objects and connected components as well as the surjective maps on vertex groups. Once those data are specified, descent of the action should mean that the corresponding kernel congruence is invariant; checking only one vertex-group kernel leaves the component and object identifications implicit. **Context relation: adds this geometric quotient assertion** to `LM_140-2_text.tex`, scan 14, which carefully distinguishes an equivalence of fundamental groupoids from surjectivity on their objects, and to scan 18, which keeps the comparison isomorphism in a morphism over a base groupoid. No exact instance of the combined condition 5 was found under `quotient`, `surjectif`, `groupoïde`, and `noyau`; `LM_140-3_text.tex`, scan 676, is the closest explicit quotient-automorphism comparator.
+```
+
+## RN047
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Kummer|kumm|conormal|norme|tangent`  
+Returned hit lines: 41
+
+Selected comparison: `LM_140-2_text.tex`, scans 075–078, roots of uniformizers and conormal class; `hua_project/64.modern.tex`, Kummer digression, pp.70–73 = scans 071–074. The current pages add a relative line-root formulation.
+
+```text
+./LM_140-3_text.tex:3983:($\sigma_i$ dans un repère de carte \deleted{\unsure{fait échange}}\inserted{\unsure{change}} la \deleted{\illegible{2}}\inserted{de \unsure{dim} $i$} du repère, donc pour un biarc $\sigma_0$ et $\sigma_2$ sont resp. les \deleted{\unsure{passages}\ \illegible{2}}\inserted{chg\textsuperscript{t} d'orientation} \unsure{tangentielle|tangentielles} resp. transversale, $\sigma_1$ le passage au biarc ``\uline{adjacent}''
+./LM_140-3_text.tex:11433:\qquad\text{de \uline{norme} égale à }1\\
+./MPL_149_001-090_notes.md:28:| B | 024–046 | 65 | Semiabelian targets, translation rigidity, Kummer separation |
+./MPL_149_001-090_notes.md:273:## B. Geometric rigidity, Kummer theory, and field morphisms — scans 024–046
+./MPL_142_001-093_notes.md:35:| How do blowups, peripheral directions, and tangential basepoints fit together? | N046.3, N047.1–N049.1, N060.1 |
+./MPL_142_001-093_notes.md:48:| 048–070, excluding blank 065 | 48 | Peripheral models, cuts, tangential paths, and arithmetic comparison |
+./MPL_146_100-134_notes.md:76:The written “hom canonique” from branch coordinates to edge coordinates can be tested locally on $zw=t$: multiplying the two branch phases multiplies the smoothing phase, so the induced map on winding numbers is $(m,n)\mapsto m+n$. The associated normal line is the tensor product of the two branch tangent lines, as in Wolpert (2012, Theorem 16 and the ensuing normal-bundle discussion), giving a geometric candidate for the contracted-product map. This **adds a nodal interpretation to** the normal-line torsors of `ARCH_147_003-137_text.tex`, scans 122–123, and **restates their descent requirement** when branches or edges are permuted; it does not turn the frozen dash into an arrow or settle the uncertain index.
+./MPL_146_100-134_notes.md:142:The assertion that the boundary of a pointed holomorphic disc “hérite une structure de $\mathbb U$-torseur” can be justified by choosing a Riemann map taking the centre to zero and extending it to the Jordan boundary, since changing that map by a rotation leaves the transported circle action unchanged. This argument provides an action without a chosen boundary point, a distinction needed when finite sets of tangential basepoints are introduced later. It **adds a concrete holomorphic boundary realization to** the tangent-direction and covering-torsor constructions in `LM_140-4_text.tex`, scans 263–265, and **differs from** their more general differentiable germ formulation.
+./MPL_147_048-137_notes.md:1604:The deleted sufficiency argument must not be read as a settled negative conclusion: scan 120 restates it using the live commutative square (179) and the étale source projection. A partial analytic proof is to identify that projection locally with an isomorphism and compare the resulting maps to X; if D_d→X is a local immersion, then the induced map to D_{d′} is locally injective on tangent spaces and hence a local immersion between the smooth spaces. This proves the intended local statement under the stated smooth analytic hypotheses, not an unrestricted theorem in every site.
+./MPL_147_048-137_notes.md:1652:Context: C0 (search terms: germes; intersection; transversale; tangent branches; codimension)
+```
+
+## RN048
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `norme|uniformis|signe|conormal`  
+Returned hit lines: 37
+
+Selected comparison: `LM_140-2_text.tex`, scan 078, norm-of-one-forms request; `MPL_149_091-136_notes.md`, RN095-01 (149/095), which points to LM140-3/238’s sign question; primary definition checked at Stacks Project Tag 0BD2.
+
+```text
+./LM_140-3_text.tex:219:\uline{II} Les groupes \unsure{\(M_{\rho,\sigma}^{*}\)} etc.\ ``sans signes'' -- nouvelles
+./LM_140-3_text.tex:225:[\uline{IV} Où on se bat avec ``les signes'' \(\varepsilon_2,\varepsilon_3\)
+./MPL_147_048-137_notes.md:542:For the intended trivalent chain with $n$ markings, the two end vertices carry two markings each and every interior vertex one, giving $n-2$ vertices and $n-3$ edges. These counts verify stability and maximal degeneration, provided the markings in each original part of the partition are assigned along the corresponding subchain. The restriction $n\geq6$ belongs to the author's reduction after the already-treated dimension-two case on scan 073; this numerical check does not settle the doubtful $2\mid1$ label inside drawing (93).
+./MPL_147_048-137_notes.md:1434:Take J to have two incomparable codimension-one elements and consider a point where two branches meet; the two branch germs realize this poset locally. If d(J) were interpreted merely as the maximum assigned codimension, then d=1 and H(J) in 110 would be empty, because a one-element ground set has only one subset of cardinality one. This does not refute the formula under a stronger intended definition, but shows why a least element or a supporting-intersection datum cannot be omitted without explanation.
+./LM_GLOBAL_PASS.md:116:- The "lemme dubitatif": does integrality of signed combinations of divided powers or exponentials force integrality
+./LM_GLOBAL_PASS.md:140:  curve by a finite group? Cf. Behrend-Noohi, uniformisation of DM curves.
+./MPL_147_003-047_notes.md:871:**Context check — adds:** `LM_140-2_text.tex`, scan 014, defines morphisms in the fundamental groupoid through their source and target points; scan 038 adds the explicit incidence condition needed when an edge is assigned an identity.
+./MPL_147_003-047_notes.md:999:**Note:** For two successive contractions, the weight assigned to a final vertex is independent of the order of collapsing its edges, because for a connected fiber graph \(H\) and disjoint connected contracted subgraphs \(K_i\), one has \(b_1(H)=b_1(H/\{K_i\})+\sum_i b_1(K_i)\). Substitution into the sum-of-genera formula makes the two resulting weights equal term by term, while the marking maps compose as ordinary maps of finite sets. This gives a direct coherence proof for decorated contractions beyond the one-step calculation displayed on scan 045.
+./LM_140-3_notes.md:33:"Où on se bat avec "les signes" ε_2, ε_3 dans la relation des lacets — calculs — brouillons…" The heading flags provisional sign computations. *Reason:* the reading is unchanged.
+./LM_140-3_notes.md:229:"la donnée d'une courbe elliptique E sur ℂ équivaut à celle d'un espace V de dim 1 sur ℂ, et d'un "réseau" π ⊂ V", with the marginal "équivalence de catégories …": uniformisation, and morphisms must be specified. *Reason:* unchanged.
+```
+
+## RN049
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `inertie|stabilisateur|Kummer|tangent`  
+Returned hit lines: 41
+
+Selected comparison: `LM_140-2_text.tex`, scans 073–078, tame Kummer/inertia and first-order parameters; `hua_project/64.modern.tex`, Kummer digression, pp.71–72. The present displayed embedding makes the compatibility issue concrete.
+
+```text
+./LM_140-3_text.tex:296:opérant proprement, les stabilisateurs \inserted{$G_x$} des $x\in X$
+./LM_140-3_text.tex:328:si $a\in X$ est au dessus de $b$, le stabilisateur $G_a$ est
+./MPL_142_094-122_notes.md:30:| C01–C25 | 115–122 | Real blowups and tangential objects; canonical paths; typed groupoid words; generator elimination; free graph models; presentation counts; peripheral relations and filling holes |
+./MPL_142_094-122_notes.md:78:**Location:** scan 095, last part of condition (b). **Kind:** unproved claim. **Context search:** `orbites`, `stabilisateur`, `puissance`.
+./MPL_149_001-090_notes.md:28:| B | 024–046 | 65 | Semiabelian targets, translation rigidity, Kummer separation |
+./MPL_149_001-090_notes.md:273:## B. Geometric rigidity, Kummer theory, and field morphisms — scans 024–046
+./MPL_142_001-093_notes.md:35:| How do blowups, peripheral directions, and tangential basepoints fit together? | N046.3, N047.1–N049.1, N060.1 |
+./MPL_142_001-093_notes.md:48:| 048–070, excluding blank 065 | 48 | Peripheral models, cuts, tangential paths, and arithmetic comparison |
+./SECTIONS_STATE.md:54:| Autour de la Longue Marche (141–149) | 917 | Kummer theory note; Galois action on Teichmüller (from 1978); paradigms of algebraic curves; "Teichmülleries" 1981–82; spring 1981 draft; Teichmüller groupoids; structure at infinity of M_{g,ν} (pp. 1–90); Teichmüller 1983; untitled pp. 1–67 | Notes 1978–83 | Fragments: "Structure à l'infini des Mg,ν" ([Wayback](https://web.archive.org/web/20211125213555/https://agrothendieck.github.io/divers/Mgv.pdf)); "Notes anabéliennes" 1983, source cote not stated ([Wayback](https://web.archive.org/web/20211126070024/https://agrothendieck.github.io/divers/NAG.pdf)) | Teichmüller tower (Hatcher–Lochak–Schneps 2000; Nakamura–Schneps 2000; Boggi et al.); Ptolemy–Teichmüller groupoid | ≈870 | — |
+./SECTIONS_STATE.md:309:Content, from Grothendieck's own table of contents (Circle, https://webusers.imj-prg.fr/~leila.schneps/grothendieckcircle/LM/tableLM.pdf [V]). Part I (§§1–37): multi-Galois topoi; the fundamental anabelian conjecture (§5) and its "bordélique" reformulation; taxonomy; tangential structure at the cusps; the topological analogy and outer groups "à lacets"; filling and drilling holes; finite subgroups of outer automorphism groups; the Teichmüller tower (§19); Teichmüller spaces; special Teichmüller groups; profinite Teichmüller groups and the modular Teichmüller topos, with a "conjecture hâtive" (§26) and its revision; change of type (g, ν); the injectivity of Γ_Q → Autext(π̂₀,₃) (§35) and Γ_Q ↪ Autext(SL(2,Z)^) (§36); moduli of elliptic curves via Legendre (§37). Part II (§§38–53): the group S₀,₃; congruence properties of the Galois action; cocycle computations in SL(2, Ẑ); the groups M_{ρ,σ} and the loop equation (§§48–49); schematic envelopes of discrete groups, metabelian case (§50); the Fermat tower (§51); Lie approximations of Galois–Teichmüller systems (§52); the special Teichmüller group ST₁,₁ ≅ GL(2, Z) (§53).
+```
+
+## RN050
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `équivalence|ad hoc|modér|ramifi|Kummer`  
+Returned hit lines: 38
+
+Selected comparison: `hua_project/64.modern.tex`, Kummer digression, pp.71–73, likewise presents the assertion without proof; `LM_140-2_text.tex`, scans 533–535, stresses precision in relative cover equivalences, and 078 leaves the norm-functoriality problem open.
+
+```text
+./LM_140-3_text.tex:299:``signature'' $\underline d=d(X/Y)$ définie par la \unsure{ramification}
+./LM_140-3_text.tex:418:Si $d_a$ désigne encore l'indice de ramification en $a$, on aura
+./MPL_149_001-090_notes.md:28:| B | 024–046 | 65 | Semiabelian targets, translation rigidity, Kummer separation |
+./MPL_149_001-090_notes.md:273:## B. Geometric rigidity, Kummer theory, and field morphisms — scans 024–046
+./MPL_142_001-093_notes.md:73:**Context comparison:** Adds finite covering arrows to the homeomorphism-only equivalence in `LM_140-2_text.tex`, scan 222, and extends the identity-component torsors used for isomorphism spaces on scan 264. The more general ramified-arrow problem on scans 092–093 remains outside this proof.
+./MPL_142_001-093_notes.md:107:Even if the finite ramification set \(S'\), including fixed points of nonidentity powers, is invariant under \(\sigma\), an isotopy from \(\sigma\) to the identity on \(Y'\) need not preserve \(S'\) at intermediate times, so its restriction to \(Y'\setminus S'\) is not automatic. The proposed reduction to a free action therefore needs an isotopy relative to the added punctures, or an independent proof of rigidity such as N007.6. This is a logical gap in that particular reduction, not a counterexample to Proposition 2 itself; relative-isotopy results explicitly impose additional hypotheses (Yagasaki, 2000, §3).
+./MPL_147_048-137_notes.md:586:**Quoted anchor:** `l'équivalence commute à l'action`.
+./MPL_147_048-137_notes.md:588:**Context:** C0 (search terms: équivalence; action; fini; Aut).
+./LM_GLOBAL_PASS.md:123:- Γ_Q → an extension of Ẑ* by Ẑ (157). The Kummer-type maps: surjective, or with open image, linearly independent
+./LM_GLOBAL_PASS.md:160:- D8. The Fermat tower and the Kummer-type maps (T11).
+```
+
+## RN051
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `inertie|équivalence|Kummer|quadratique`  
+Returned hit lines: 35
+
+Selected comparison: `hua_project/64.modern.tex`, Kummer digression, pp.72–73, no such counterexample located; `LM_140-2_text.tex`, scans 533–535, supplies the related need to specify cover data and their relative hypotheses.
+
+```text
+./LM_140-3_text.tex:606: c) Ce foncteur est une équivalence de catégories.
+./LM_140-3_text.tex:1106:\margin{équivalence de catégories \illegible{1}.}
+./MPL_147_048-137_notes.md:586:**Quoted anchor:** `l'équivalence commute à l'action`.
+./MPL_147_048-137_notes.md:588:**Context:** C0 (search terms: équivalence; action; fini; Aut).
+./LM_GLOBAL_PASS.md:123:- Γ_Q → an extension of Ẑ* by Ẑ (157). The Kummer-type maps: surjective, or with open image, linearly independent
+./LM_GLOBAL_PASS.md:160:- D8. The Fermat tower and the Kummer-type maps (T11).
+./MPL_149_091-136_notes.md:27:### RN091-01 — The Kummer obstruction and the choice of a splitting [unproved claim; scan 091, manuscript p. 45, approximately lines 8–15]
+./MPL_149_091-136_notes.md:29:The phrase “seul le facteur $I_{s^{\prime}}\simeq T$” isolates the inertia left before a residual section can be chosen. This restates the splitting problem in `LM_140-2_text.tex`, scan 73 (“un torseur”), with scan 82 calling the peripheral extension trivial: split does not mean that its cyclotomic conjugation action is trivial. For an equicharacteristic-zero henselian trait, a uniformizer supplies a splitting, and its inertia-conjugacy classes form a torsor under $H^1(k,\widehat{\mathbf Z}(1))\simeq\varprojlim_n k^\times/(k^\times)^n$ (The Stacks Project Authors, n.d., Tag 03PK). Thus the asserted second-species section is a choice in that torsor, rather than a canonical removal of the Kummer factor.
+./MPL_147_003-047_notes.md:77:**Context check — differs:** `LM_140-2_text.tex`, scan 534, Proposition (1) and NB, gives an equivalence \(\mathrm{Rev}(X,G)\simeq\mathrm{Rev}_{\underline d}(Y)\) and says its inverse is obtained “en normalisant \(X\times_Y Y'\)”. Both passages reconstruct geometry from quotient data, but context concerns ramified covers of regular curves; MPL concerns pinching distinct points and only the isomorphism categories. No nodal pinching equivalence was found in context. Search terms: `quotient`, `recollement`, `normalisant`, `équivalence`, `graphe`.
+./MPL_147_003-047_notes.md:339:**Context check — adds:** `LM_140-2_text.tex`, scan 548, (24), says a quotient map “n'est plus une équivalence, car Γ′_n n'opère pas librement”, with ramification of degrees two and three. That is a distinct modular example, but it already warns against replacing a moduli object with a coarse quotient while ignoring stabilizers; MPL's graph pinning requires the same care. Search terms: `épinglage`, `rigidification`, `autom`, `n'opère pas librement`, `équivalence`.
+```
+
+## RN052
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `unique|groupoïde|automorph|Legendre`  
+Returned hit lines: 45
+
+Selected comparison: `hua_project/64.modern.tex`, Kummer digression and initial Legendre section, pp.71–74; `LM_140-2_text.tex`, scan 519, residual ±1 in the elliptic groupoid.
+
+```text
+./MPL_147_003-047_notes.md:9:Context searches covered all four `LM_140-*_text.tex` files, using the relevant objects and vocabulary: normalization, pinching, quotient, torsor, pointed curve, automorphism, anabelian condition, genus, graph, specialization, compactification, groupoid, and amalgamated sum, with French variants and notation where appropriate. The cited hits were read in the actual working transcriptions. “Not located” reports the outcome of those searches, not a proof that a topic is absent from the archive; a **closest analogy** is identified as such rather than presented as an earlier theorem. The accompanying context research notes and overviews were treated as leads, never as established mathematical results. “Adds,” “restates,” “differs,” and “contradicts” describe the relation between texts and assertions, without inferring their historical chronology.
+./MPL_147_003-047_notes.md:11:In the analysis, \(\overline{\mathcal M}_{g,n}\) denotes the stack of stable curves with individually labelled markings; unordered finite étale marking divisors require the corresponding symmetric-group quotient. The distinction is explicit when a graph automorphism is allowed to permute legs. **All modular and stratum dimensions are relative over \(\operatorname{Spec}\mathbb Z\), equivalently dimensions of geometric fibres**; the absolute dimension over \(\mathbb Z\) is one greater in the cases considered. Fieldwise statements are kept separate from claims over general, possibly nonreduced bases. Loops contribute two incident half-edges to valence.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-3_notes.md:223:For det u < 0, Im f_u(z) = −det u · Im z / |c z̄ + d|² > 0, so (28) preserves D. Because the entries are real, complex conjugation commutes with every Möbius map, which gives f_{uv} = f_u ∘ f_v in all four sign cases. The kernel on Gl(2,ℝ) is ℝ^*, so GP(1,ℝ) acts faithfully, as the group of conformal and anticonformal automorphisms of D. Grothendieck's "conformes" includes the orientation-reversing maps, as in his earlier "automorphismes conformes … Sl(2,R)˜ = {det u = ±1} … θ_u τ^{det u}" (CSG ll. 2996–3002). *Reason:* checked; cross-reference added.
+./LM_GLOBAL_PASS.md:17:- Centralizer and centre triviality, uniqueness of conjugators (scans 53-54, 62; 496: "je cale sur a)", centre of a
+./LM_GLOBAL_PASS.md:63:  for g > 0 and for g = 0 (487); a unique invariant loop structure, "Ce n'est pas la peine" (483).
+./MPL_147_048-137_notes.md:18:| Automorphisms of low-dimensional factors and compactifications | N060-01; N062-02; N063-03; N064-03; N070-01; R071-03 | Explicit permutations, stabilizers, and incidence calculations test several provisional or inconsistent assertions. |
+./MPL_147_048-137_notes.md:76:The \(\delta!\) assertion follows by ordering the contracted edges when the source and final contraction remain fixed and intermediate isomorphisms commute with those maps. Quotienting additionally by automorphisms of the source can identify different orders, so “à isom. près” needs that precise relative interpretation. This gives a useful test of the chain categories subsequently encoded by the nerve on scans 128–132.
+./MPL_146_001-099_notes.md:41:The heading “Calcul de” and the reduction to three marked points make the product decomposition into an explicit finite-object groupoid with a specified lattice of automorphisms. This adds actual algebraic data to the neighbouring programme, but does not by itself construct the comparison maps for every generization of graphs. A proof of the global programme still has to identify these models with the geometric groupoids compatibly with graph automorphisms and contractions.
+./MPL_146_001-099_notes.md:48:**Context search terms:** `dim. modulaire`; `groupoïde`; `Programme`; `générisation`.
+```
+
+## RN053
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `quadratique|carré|groupoïde|gerbe|Legendre`  
+Returned hit lines: 40
+
+Selected comparison: `LM_140-2_text.tex`, scans 518–520; `hua_project/64.modern.tex`, pp.73–74 and later relative section pp.79–92, the latter beyond this scan packet.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:1245:\unsure{quotient} ``multiquadratique'' de $\Gamma_{\mathbb Q}$ -- et cette
+./MPL_147_048-137_notes.md:262:### N063-02 — The smooth elliptic gerbe and its band
+./MPL_147_048-137_notes.md:264:**Location:** scan 063, equation (78) and following paragraph. **Kind:** unproved claim. **Context:** C0; intended terms: gerbe, groupe constant, plus ou moins 1, quatre points.
+./LM_GLOBAL_PASS.md:187:  - Neutrality of a gerbe, "brr!" (240-241: consult Giraud or Breen).
+./hua_project/64.modern.tex:22:% Legendre » (pp. 69-99), IV « Descriptions explicites par fonctions P de
+./hua_project/64.modern.tex:30:% E/+-1 = P^1), then used to rigidify E (Part III: Legendre pinnings, fine
+./MPL_147_003-047_notes.md:31:**Source:** “Structure à l'infini des groupoïdes fondamentaux”; “types canoniques associés à une stratification”.
+./MPL_147_003-047_notes.md:35:**Context check and search:** Searches for `compactif`, `croisement`, `stratif`, and `groupoïde` locate the substantive comparison in `LM_140-2_text.tex`, scan 403: “Il est possible qu'il faille faire intervenir des propriétés des ... liés à la compactification.” **Adds:** scan 003 names a more explicit geometric programme for boundary groupoids; it does not identify that programme with the arithmetic condition sought in scan 403. No direct `croisement` occurrence or substantive stratification discussion was located in the four context transcription files by these searches.
+./LM_140-1_notes.md:60:- **Scan 18, final item "8. Groupes et groupoïdes fondamentaux. On montrera …" — claim left for later. Keep.**
+```
+
+## RN054
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `étales|Sigma|Kummer|ponct|ramifi`  
+Returned hit lines: 40
+
+Selected comparison: `hua_project/64.modern.tex`, Kummer digression, p.73 = scan 074; current scans 055–056 and 075 define the star notation, and `LM_140-2_text.tex`, scans 075–078, keeps the punctured Kummer domain explicit.
+
+```text
+./LM_140-3_text.tex:68:cocycles sous $\sigma_\infty$
+./LM_140-3_text.tex:138:\unsure{\(B'_0\simeq B_{\rho,\sigma}\)} \hfill \(434'\)
+./MPL_147_048-137_notes.md:1060:**Quoted anchor:** `Y/\sigma_{\widetilde A'}`.
+./MPL_147_048-137_notes.md:1062:**Context:** C0 (search terms: Y; sigma; normalisée; quotient).
+./LM_GLOBAL_PASS.md:123:- Γ_Q → an extension of Ẑ* by Ẑ (157). The Kummer-type maps: surjective, or with open image, linearly independent
+./LM_GLOBAL_PASS.md:160:- D8. The Fermat tower and the Kummer-type maps (T11).
+./MPL_147_003-047_notes.md:73:**Note:** The precise construction is the pushout \((Y\setminus I)\amalg_{\widetilde A}A\), where \(A=\widetilde A/\sigma\); there need not be an involution of all of \(Y\). At a glued pair of smooth points its completed local ring is \(k[[u]]\times_k k[[v]]\cong k[[u,v]]/(uv)\), so the result has exactly the required nodes. Normalization and completion recover the original data, proving the asserted equivalence of **groupoids**; no equivalence for arbitrary scheme morphisms is asserted.
+./MPL_147_003-047_notes.md:77:**Context check — differs:** `LM_140-2_text.tex`, scan 534, Proposition (1) and NB, gives an equivalence \(\mathrm{Rev}(X,G)\simeq\mathrm{Rev}_{\underline d}(Y)\) and says its inverse is obtained “en normalisant \(X\times_Y Y'\)”. Both passages reconstruct geometry from quotient data, but context concerns ramified covers of regular curves; MPL concerns pinching distinct points and only the isomorphism categories. No nodal pinching equivalence was found in context. Search terms: `quotient`, `recollement`, `normalisant`, `équivalence`, `graphe`.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-3_notes.md:142:"les stabilisateurs G_x (x∈X) opèrent fidèlement au voisinage de x, en conservant l'orientation locale en x". Testing the quotient construction on a disk with a finite rotation group is a sensible local check; under the hypothesis each nontrivial G_x is finite cyclic, which is what makes ν_x = [G_x] a ramification index. *Reason:* the reading is unchanged.
+```
+
+## RN055
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `orientation|tangent|déterminant|Legendre`  
+Returned hit lines: 42
+
+Selected comparison: `hua_project/64.modern.tex`, initial Legendre section, p.74 = scan 075; `LM_140-1_text.tex`, scan 017, gives a conceptual orientation-torsor parallel, not this tangent identity.
+
+```text
+./notes/RESULTS_STATE.md:11:## Orientation for this package (curated 17 Nov 2026 by Claude Opus 5.5 at effort max from our records; leads, unrefereed)
+./notes/RESULTS_STATE.md:24:  1. How the moduli are built in characteristic ≠ 2: Legendre form, level-2 structure, the λ-line and its S_3 action, the points j = 0 and 1728; is the moduli stack ("multiplicité") treated?
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:297:\deleted{\unsure{étant}} conservant l'orientation et opérant fidèlement
+./MPL_147_048-137_notes.md:268:On the smooth locus with \(2\) invertible, the suggested construction is to quotient an elliptic curve by inversion, retaining the image of the origin as the distinguished one of four branch points. A proof of the gerbe assertion should identify the automorphism kernel, show local existence of the double cover, and verify descent, without assuming a globally chosen Legendre equation. Fulton and Olsson (2007, §5.1) give a directly checked characteristic-three local Legendre model with the corresponding order-two kernel, while the compactified assertion needs the separate test in N063-03.
+./MPL_147_048-137_notes.md:352:**Location:** scan 067, marginal NB and paragraph beginning “Un côté”. **Kind:** unproved claim. **Context:** C0; intended terms: couleurs, carré, triangle, incidence, orientation.
+./MPL_149_091-136_notes.md:31:### RN091-02 — Cuspidal splittings and geometric tangent directions [own idea; scan 091, manuscript p. 45, final clause of the first paragraph; compare scan 095, first paragraph]
+./MPL_149_091-136_notes.md:33:The conclusion “de deuxième espèce” should be compared with the later restriction to splittings arising from a uniformizer, rather than silently identifying those two families. This differs in scope from `LM_140-2_text.tex`, scan 79, which explicitly distinguishes the whole Kummer-cohomology torsor from a smaller “sous-famille” called geometric and parametrized by a $k^\times$-torsor. Our elementary test over $\mathbf Q$ is a compatible family of classes of $p^{a_n}$, with $(a_n)\in\widehat{\mathbf Z}$ not arising from an ordinary integer: its valuation at $p$ prevents it from being the Kummer class of any rational number (The Stacks Project Authors, n.d., Tag 03PK). Confidence is high because rational valuations are integers, so this supplies explicit non-tangent classes in the local splitting torsor while making no claim to prove a global section conjecture.
+./MPL_147_003-047_notes.md:269:**Note:** On a normalized component with \(r\) special points, the relevant tangent space is \(H^0(Y_v,T_{Y_v}(-D_v))\), whose line bundle has degree \(2-2g_v-r\); its vanishing gives exactly the listed genus-zero/genus-one thresholds and holds in every characteristic. The proper pointed automorphism functor is then finite and unramified, hence finite étale over the field, with finite permutations of components and special points causing no change to the criterion. Condition (a) must be read as finiteness of geometric automorphisms: the automorphism functor of the open curve itself can have the infinitesimal automorphisms in N007, even when those geometric automorphisms form a finite group. “Anabélien” here supplies the numerical hyperbolicity condition; this page proves no reconstruction theorem from an absolute fundamental group.
+./MPL_147_003-047_notes.md:473:**Confidence/reason:** high — the special equation is $y^2=x^2(x-1)$, with distinct tangent directions after passing to an algebraic closure, and the cubic remains proper and flat with arithmetic genus one.
+```
+
+## RN056
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `mu_4|mu_2|carré|diagonales|orientation`  
+Returned hit lines: 37
+
+Selected comparison: `hua_project/64.modern.tex`, initial Legendre section, p.75 = scan 076; `LM_140-2_text.tex`, scans 519–520, residual sign in the quotient, and 568–570, fourth-root/pairing data.
+
+```text
+./LM_140-3_text.tex:297:\deleted{\unsure{étant}} conservant l'orientation et opérant fidèlement
+./LM_140-3_text.tex:561:\unsure{conservant} l'orientation locale en $x$
+./MPL_149_001-090_notes.md:130:“Par voie transcendante” requires an embedding of the constants into $\mathbb C$ and an explicit comparison of geometric base points with the chosen analytic base point. `LM_140-2_text.tex`, scans 329–333, tracks the resulting choice of embedding and the effect of complex conjugation on oriented discretifications; this adds an orientation issue not pursued in the present field-level formula. The finite-cover comparison is the appropriate theorem here, while a geometric generic point is not literally an ordinary point of $U_i(\mathbb C)$ without a chosen realization or change-of-base-point identification (Grothendieck, 1971, Exposé XII, §5).
+./MPL_149_001-090_notes.md:321:The observation “les translations $\tau_a$ induisent l'identité” identifies the information lost by a geometric outer fundamental group, with the manuscript itself restricting its full-group claim to characteristic zero or an abelian variety. `LM_140-2_text.tex`, scans 179–181 and 224, repeats translations as the exceptional phenomenon for abelian surface types, but adds orientation and fixed-point qualifications in its topological setting. Those qualifications warn against importing the context's conclusion unchanged into the profinite or positive-characteristic assertions here.
+./MPL_142_094-122_notes.md:304:The heading “Groupoïde fondamental d'une carte trouée” with “(14 pages)” and the printed notice dated “24.03.80” invite a codicological check of sheet pairing, orientation, and the numbering restart at scan 114 before assigning a date to the surrounding mathematical argument. If a mathematical text demonstrably reuses that printed sheet, the printing provides a terminus post quem for writing on that sheet, but mere adjacency in the archive’s PDF does not establish the same bound for a whole packet. **Context relation: no exact parallel notice located** under `24.03.80`, `28.03.1980`, `Coste`, `Micali`, and `carte trouée`; the closest comparators are the first-pass descriptive entries in `LM_140-1_text.tex`, scans 3, 5, 7 and 28, reporting reused institutional sheets from 1978 and 1982, whose images would need checking before using their dates as evidence. **Confidence: high for the need to establish the physical association, low for a packet-level dating inference**, because that association has not been established from the supplied scan order alone.
+./MPL_142_094-122_notes.md:350:Does \(D\) here denote a holomorphic dihedral action, its enlargement by orientation-reversing symmetries, or a group identified elsewhere by the chosen spherical model? In the standard holomorphic \(S_3\)-action on a projective line with distinguished set \(\{0,1,\infty\}\), the compact quotient has the three exceptional orbits \(R=\{0,1,\infty\}\), \(Q=\{2,-1,1/2\}\), and the two roots of \(z^2-z+1\), with stabilizer orders \(2,2,3\), whereas adjoining complex conjugation produces a real quotient with reflection loci and requires additional boundary data. This is a conditional comparison, not a resolution of the uncertain pole letters or of the partly legible caption. **Context search and relationship — differs from:** `LM_140-2_text.tex`, scans 507–509, treats the holomorphic \(S_3\) quotient and explicitly lists inertia orders \(2,2,3\), while `LM_140-3_text.tex`, scans 86 and 89, uses the order-twelve group \(S_3\times C_2\) and stabilizers of orders four and six; searches for `points critiques`, `stabilisateur`, `signature`, and `D_n` therefore show why these two quotient conventions cannot be merged without first identifying the manuscript's \(D\).
+./MPL_147_048-137_notes.md:322:The uniform boundary contribution should be checked using the automorphism group of a pointed nodal rational curve, whose branch-exchanging involution remains nontrivial in characteristic two. Its constant order-two group must not be replaced there by the nonreduced group scheme \(\mu_2\), since these encode different stabilizer geometry. Even with the correct constant group, assigning the value \(1/2\) in characteristic two requires the weighting convention of N063-01, rather than an unqualified appeal to tame quotient methods.
+./MPL_147_048-137_notes.md:352:**Location:** scan 067, marginal NB and paragraph beginning “Un côté”. **Kind:** unproved claim. **Context:** C0; intended terms: couleurs, carré, triangle, incidence, orientation.
+./MPL_142_001-093_notes.md:136:For the cyclic, orientation-preserving action under consideration, one needs local classification of periodic surface homeomorphisms, a conformal structure on the quotient with its branch data, and its lift to the source. The local classification also explains why a nontrivial orientation-preserving periodic map has isolated fixed points, whereas an orientation-reversing involution can fix a curve (Constantin & Kolev, 1994, Lemma 2.5 and the disc theorem). Nielsen realization addresses the different problem of realizing an abstract finite subgroup of the mapping class group and should not replace this step without explaining the passage from the given action.
+./MPL_142_001-093_notes.md:138:**Context comparison:** Restates the explicit qualification in `LM_140-2_text.tex`, scans 137–138, including the warning about orientation-reversing involutions. Scan 102 poses the separate finite-subgroup realization problem, helping distinguish the two inputs.
+```
+
+## RN057
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `précisera|carré|Q_0|Legendre`  
+Returned hit lines: 29
+
+Selected comparison: `hua_project/64.modern.tex`, initial Legendre section, pp.74–79, followed by the relative section pp.79–92; only pp.74–76 correspond to the supplied scans 075–077.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:1787:(en termes des groupes fondamentaux) de la Théorie de Legendre
+./MPL_147_048-137_notes.md:268:On the smooth locus with \(2\) invertible, the suggested construction is to quotient an elliptic curve by inversion, retaining the image of the origin as the distinguished one of four branch points. A proof of the gerbe assertion should identify the automorphism kernel, show local existence of the double cover, and verify descent, without assuming a globally chosen Legendre equation. Fulton and Olsson (2007, §5.1) give a directly checked characteristic-three local Legendre model with the corresponding order-two kernel, while the compactified assertion needs the separate test in N063-03.
+./MPL_147_048-137_notes.md:352:**Location:** scan 067, marginal NB and paragraph beginning “Un côté”. **Kind:** unproved claim. **Context:** C0; intended terms: couleurs, carré, triangle, incidence, orientation.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-3_notes.md:356:Text checked: `second_pass/LM_P062_checked.tex`. Scans 31–39 continue §39, "Les conditions de congruence pour l'opération extérieure de Γℚ sur Π̂₀,₃" (ms. pp. 303–307). It asks how much of N₁,₁ and of the homomorphism (21) N₁,₁ → Gl(2,Ẑ) can be rebuilt from a group Γ of outer automorphisms of π̂₀,₃. Scans 39–40 begin §40, "Paraphrase topologico-isotopique (en termes des groupes fondamentaux) de la Théorie de Legendre" (ms. p. 307 verso–308). Each first-pass note keeps its number and is marked **keep**, **correct** or **drop**, with the reason. Notes A–I are the second pass's own, labelled as such. Mathematical identities stated here were checked by hand; anything not proved is said to be so.
+./LM_140-2_text.tex:133:\unsure{37.} Modules des courbes elliptiques via Legendre, ou
+./LM_140-2_text.tex:141:sous-ext. finies de \(\mathbb Q_0/\mathbb Q\)
+./notes/RESULTS_STATE.md:24:  1. How the moduli are built in characteristic ≠ 2: Legendre form, level-2 structure, the λ-line and its S_3 action, the points j = 0 and 1728; is the moduli stack ("multiplicité") treated?
+./notes/RESULTS_STATE.md:278:  - open A.24: The remaining Legendre route to A1. This route has not proved cofinite integrality for every n…
+```
+
+## RN058
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `deux|signe|torseur|Legendre`  
+Returned hit lines: 40
+
+Selected comparison: `hua_project/64.modern.tex`, p.76 = scan 077 and its later relative treatment; `LM_140-2_text.tex`, scan 519, central inversion. This is a checked fiber/groupoid qualification.
+
+```text
+./LM_140-3_text.tex:7:\uline{NB} Les pages 291,292 figurent deux fois
+./LM_140-3_text.tex:26:théorie de Legendre
+./MPL_147_048-137_notes.md:268:On the smooth locus with \(2\) invertible, the suggested construction is to quotient an elliptic curve by inversion, retaining the image of the origin as the distinguished one of four branch points. A proof of the gerbe assertion should identify the automorphism kernel, show local existence of the double cover, and verify descent, without assuming a globally chosen Legendre equation. Fulton and Olsson (2007, §5.1) give a directly checked characteristic-three local Legendre model with the corresponding order-two kernel, while the compactified assertion needs the separate test in N063-03.
+./MPL_147_048-137_notes.md:340:**Brief manuscript quote:** <code>Deux tels diviseurs</code>
+./LM_GLOBAL_PASS.md:116:- The "lemme dubitatif": does integrality of signed combinations of divided powers or exponentials force integrality
+./MPL_149_001-090_notes.md:291:The live hypothesis “si $f$ ou $g$ est dominant” is followed by a much less legible marginal “conjecture forte,” whose final dominance qualification cannot securely be assigned either polarity. `LM_140-2_text.tex`, scans 065–067, differs by expressly discussing constant arithmetic morphisms and separating faithfulness from fullness; it does not resolve the marginal reading here. Any mathematical restatement must therefore retain the live dominance condition and the explicit constant-map objection on scan 026, without treating the uncertain margin as a conjecture that definitely removes dominance.
+./MPL_149_001-090_notes.md:333:The replacement “deux applications constantes de $X$ dans $Y$!” gives an immediate obstruction to purely geometric faithfulness without dominance, and supersedes the cancelled elliptic-group construction on the same line. `LM_140-2_text.tex`, scans 065–066, differs by retaining constant maps in an arithmetic extension category, where they become section data. This comparison isolates the role of arithmetic: constant geometric maps induce trivial geometric homomorphisms, whereas their rational-point sections can still be distinguished.
+./MPL_147_003-047_notes.md:153:**Context check — adds:** `LM_140-2_text.tex`, scan 434, flags a different relative pitfall: “deux sections distinctes de U sur S peuvent ne pas être disjointes !”. This is the closest actual warning about transferring field statements to families, not a result on reduced bases or the functor (6). Search terms: `réduite`, `réduit`, `base`, `sections`, `pleinement fidèle`.
+./MPL_147_003-047_notes.md:347:**Source:** “les G-épinglages ... s'identifient aux sections d'un certain ... torseur”.
+./LM_140-3_notes.md:33:"Où on se bat avec "les signes" ε_2, ε_3 dans la relation des lacets — calculs — brouillons…" The heading flags provisional sign computations. *Reason:* the reading is unchanged.
+```
+
+## RN059
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `signe|tangent|épingl|symplect|scalaire`  
+Returned hit lines: 39
+
+Selected comparison: `LM_140-2_text.tex`, scans 519–520 and 567–570; `LM_140-3_text.tex`, scans 176–178; `hua_project/64.modern.tex`, pp.68 and 74–76.
+
+```text
+./LM_140-3_text.tex:143:(IV) Un épinglage canonique associé à \(\rho,\sigma\) \hfill 446
+./LM_140-3_text.tex:155:\uline{VII} Récapitulation sur les épinglages. \hfill 476
+./MPL_147_048-137_notes.md:86:**Location:** scan 050, equation (59). **Kind:** unpursued implication. **Context:** C0; intended terms: Gamma!, Ker, points marqués, épinglage.
+./MPL_147_048-137_notes.md:104:**Location:** scan 052, equations (60)–(61), “à isom unique près”. **Kind:** unpursued implication. **Context:** C0; intended terms: courbe standart, G-épinglée, multiplicité classifiante, torsor.
+./LM_GLOBAL_PASS.md:116:- The "lemme dubitatif": does integrality of signed combinations of divided powers or exponentials force integrality
+./MPL_149_091-136_notes.md:31:### RN091-02 — Cuspidal splittings and geometric tangent directions [own idea; scan 091, manuscript p. 45, final clause of the first paragraph; compare scan 095, first paragraph]
+./MPL_149_091-136_notes.md:33:The conclusion “de deuxième espèce” should be compared with the later restriction to splittings arising from a uniformizer, rather than silently identifying those two families. This differs in scope from `LM_140-2_text.tex`, scan 79, which explicitly distinguishes the whole Kummer-cohomology torsor from a smaller “sous-famille” called geometric and parametrized by a $k^\times$-torsor. Our elementary test over $\mathbf Q$ is a compatible family of classes of $p^{a_n}$, with $(a_n)\in\widehat{\mathbf Z}$ not arising from an ordinary integer: its valuation at $p$ prevents it from being the Kummer class of any rational number (The Stacks Project Authors, n.d., Tag 03PK). Confidence is high because rational valuations are integers, so this supplies explicit non-tangent classes in the local splitting torsor while making no claim to prove a global section conjecture.
+./MPL_147_003-047_notes.md:269:**Note:** On a normalized component with \(r\) special points, the relevant tangent space is \(H^0(Y_v,T_{Y_v}(-D_v))\), whose line bundle has degree \(2-2g_v-r\); its vanishing gives exactly the listed genus-zero/genus-one thresholds and holds in every characteristic. The proper pointed automorphism functor is then finite and unramified, hence finite étale over the field, with finite permutations of components and special points causing no change to the criterion. Condition (a) must be read as finiteness of geometric automorphisms: the automorphism functor of the open curve itself can have the infinitesimal automorphisms in N007, even when those geometric automorphisms form a finite group. “Anabélien” here supplies the numerical hyperbolicity condition; this page proves no reconstruction theorem from an absolute fundamental group.
+./MPL_147_003-047_notes.md:331:**Scan/location:** scan 017, definition of “G-épinglée”.
+./LM_140-4_text.tex:704:($A$, $\mathbb Z$-algèbre commutative) -- qu'on va désigner par $\underline M$.
+```
+
+## RN060
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `64-legendre|schéma de modules|Legendre|Jacobi`  
+Returned hit lines: 28
+
+Selected comparison: `notes/RESULTS_STATE.md`, Hua finding64-legendre-pinning-moduli; `hua_project/64.modern.tex`, “L’épinglage de Legendre sur un corps,” pp.74–79, and “sur une base; le schéma de modules,” pp.79–92. Later scan correspondences are listed in `research_support/s20_scope.md`.
+
+```text
+./LM_OVERVIEW.md:25:7. §§34–37: a "description heuristique profinie" of the category of algebraic curves over number fields; injectivity of `𝕀Γ_Q → Autext_lac(π̂_{0,3})`; `𝕀Γ_Q` and `𝕀Γ_{1,1}`, `SL(2, Z)^`; Legendre.
+./MPL_149_001-090_notes.md:285:The frozen text reads “$a\in Y$” although the revised statement has an embedding $i:Y\to G$ and translation in $G$; no general reason forces $g(x)-f(x)$ to lie in the embedded subset $Y$. No direct context match for this particular letter was found; the closest relevant locus, `LM_140-4_text.tex`, scans 146–147, differs by explicitly separating the degree-one Jacobian torsor from its degree-zero translation group. The resulting research question is whether the intended membership was $a\in G$, while the visible $Y$ remains unchanged in the transcription.
+./MPL_149_001-090_notes.md:303:The phrase “se factorisent de façon unique” invokes a pointed universal semiabelian Albanese, rather than an arbitrary generalized Jacobian carrying the same name. Serre (1958–1959b, Theorem 7) and Barbieri-Viale and Srinivas (2001, consulted preprint Proposition 5.7) provide precise versions, the latter explicitly for the smooth locus. `LM_140-4_text.tex`, scans 144–147, adds concrete curve Jacobians and degree-one torsors; it does not supply the general reduced-source construction required by scan 024.
+./MPL_142_001-093_notes.md:98:For a compact curve, the level-\(n\) rigidity invoked here is grounded in Serre's theorem for finite-order automorphisms of an abelian variety acting trivially on its \(n\)-torsion, with \(n\geq3\), together with the curve-to-Jacobian argument (Serre, 1961, appendix; Grothendieck, 1961, §3). For a punctured curve, one must additionally control the permutation of the ends and the toric part of the generalized Jacobian; the compact theorem alone does not supply those steps. The level-two restriction is material, since inversion acts trivially on two-torsion.
+./MPL_142_001-093_notes.md:140:### N007.2 — The generalized-Jacobian embedding criterion is a reading and hypothesis question
+./hua_project/64.modern.tex:22:% Legendre » (pp. 69-99), IV « Descriptions explicites par fonctions P de
+./hua_project/64.modern.tex:30:% E/+-1 = P^1), then used to rigidify E (Part III: Legendre pinnings, fine
+./notes/RESULTS_STATE.md:24:  1. How the moduli are built in characteristic ≠ 2: Legendre form, level-2 structure, the λ-line and its S_3 action, the points j = 0 and 1728; is the moduli stack ("multiplicité") treated?
+./notes/RESULTS_STATE.md:71:- A.182-A.188: the curve 3u^8 - 2v^8 = 1 (genus 21) has a Jacobian that splits into 12 factors, all of positive rank;
+./MPL_149_091-136_notes.md:113:The margin “dans le contexte des VA” plausibly alludes to the abelian-variety good-reduction criterion, but neither the abbreviation nor this autobiographical claim identifies a particular publication. Its terminology restates the use of “V.A.” and $\pi_{\mathrm{ab}}$ in `LM_140-2_text.tex`, scan 64, but that passage concerns recognizing points and does not establish a curve-reduction theorem. The Néron–Ogg–Shafarevich–Serre–Tate criterion detects good reduction of an abelian variety from its prime-to-residue-characteristic Tate module; the precise statement was checked in Andreatta et al. (2015, Theorem 1.1), with Serre and Tate (1968) retained as the original bibliographic reference. For a proper curve this controls its Jacobian, and the compact-type example below prevents transferring the criterion to the curve itself.
+```
+
+## RN061
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Gauss|Cartier|déformation|uniform|E14|P09`  
+Returned hit lines: 34
+
+Selected comparison: `README.md`, S20; `notes/RESULTS_STATE.md`, E14/E16/C29/P09 title/status summaries; `hua_project/64.modern.tex`, later analytic sections pp.126–151 provide an out-of-range lead.
+
+```text
+./README.md:9:- **64** scans 40-77: "Modules courbes elliptiques en caractéristiques ≠2 : notes manuscrites (s.d.)." ([à partir de 1980- 1982][55]). Book III, III.6 Elliptic curves, conformal surfaces, uniformization; rank 12.
+./README.md:18:claims). S20 (a guess): Gauss-Manin, the Cartier operation and projective connections in 1972-82 are possibly one
+./MPL_149_091-136_notes.md:29:The phrase “seul le facteur $I_{s^{\prime}}\simeq T$” isolates the inertia left before a residual section can be chosen. This restates the splitting problem in `LM_140-2_text.tex`, scan 73 (“un torseur”), with scan 82 calling the peripheral extension trivial: split does not mean that its cyclotomic conjugation action is trivial. For an equicharacteristic-zero henselian trait, a uniformizer supplies a splitting, and its inertia-conjugacy classes form a torsor under $H^1(k,\widehat{\mathbf Z}(1))\simeq\varprojlim_n k^\times/(k^\times)^n$ (The Stacks Project Authors, n.d., Tag 03PK). Thus the asserted second-species section is a choice in that torsor, rather than a canonical removal of the Kummer factor.
+./MPL_149_091-136_notes.md:33:The conclusion “de deuxième espèce” should be compared with the later restriction to splittings arising from a uniformizer, rather than silently identifying those two families. This differs in scope from `LM_140-2_text.tex`, scan 79, which explicitly distinguishes the whole Kummer-cohomology torsor from a smaller “sous-famille” called geometric and parametrized by a $k^\times$-torsor. Our elementary test over $\mathbf Q$ is a compatible family of classes of $p^{a_n}$, with $(a_n)\in\widehat{\mathbf Z}$ not arising from an ordinary integer: its valuation at $p$ prevents it from being the Kummer class of any rational number (The Stacks Project Authors, n.d., Tag 03PK). Confidence is high because rational valuations are integers, so this supplies explicit non-tangent classes in the local splitting torsor while making no claim to prove a global section conjecture.
+./LM_140-4_notes.md:30:   to one n over a quasi-compact base. In char p, fibrewise quasi-unipotence means finite order (scan 5). A uniform n
+./LM_140-4_notes.md:68:   second coefficient of (12 bis) is written ½ where (12) gives 1/6. This is harmless (C4): with 2 a uniformiser, 3 is a
+./MPL_149_001-090_notes.md:746:The uniformizer construction and the assertion that splitting classes form “un torseur” under $H^1(\Gamma,T)\simeq\varprojlim_n K^\times/(K^\times)^n$ repeat `LM_140-2_text.tex`, scans 073–075, which give Kummer theory and compatible roots of a local parameter in greater detail. After choosing one splitting of the appropriate decomposition extension, the torsor assertion follows from continuous cocycles modulo coboundaries; to justify the inverse-limit identification, one can use a countable cofinal sequence of integers and the Mittag–Leffler property of the finite groups $H^0(K,\mu_n)$. Thus the local construction is well motivated, but its written use of the centralizer in (2) remains subject to C054.1.
+./MPL_149_001-090_notes.md:770:The claimed passage “par passage à la limite” from open curves to $E_L\to E_K$ needs a compatible rational place across the system of models. It adds an inverse-limit step to the local splitting construction in `LM_140-2_text.tex`, scans 073–075, where a fixed chosen cusp and uniformizer supply compatibility from the outset. In the present argument the rational point or cusp produced separately at each stage must be shown to persist under restriction and to determine a single valuation, rather than merely exist on every model.
+./MPL_146_001-099_notes.md:519:- **adds** — LM_140-1_text.tex, scan(s) 028: The context metadata records a later printed notice, illustrating why paper dates should be handled locally rather than used as a uniform manuscript chronology.
+./MPL_146_001-099_notes.md:1076:“Je dis qu’on a alors un morphisme canonique” asserts the schematic map from the punctured tangent line to the generic-point groupoid, but the page stops before constructing it. LM 140-2 develops the characteristic-zero henselian k-algebra case by adjoining roots of a uniformizer and proves that isomorphism classes of resulting sections depend only on its nonzero class in m/m². This strongly develops the claim, while the passage from that setup to an arbitrary regular local ring A with residue field k, and the exact groupoid-level canonicity in (55), still require a careful comparison.
+```
+
+## TN001
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Fourbis|39|pagination|pages`  
+Returned hit lines: 49
+
+Selected comparison: `hua_project/64.modern.tex`, “Fourbis combinatoires,” end at p.39 = scan 040; no corresponding package-level count is supplied by the context.
+
+```text
+./LM_140-3_text.tex:5:Pages 291--650 $+$ table des matières
+./LM_140-3_text.tex:7:\uline{NB} Les pages 291,292 figurent deux fois
+./MPL_149_001-090_notes.md:32:The items comprise 27 conjectures, 102 unproved claims, 45 unpursued implications, 39 own ideas, and 34 reading questions. These labels describe the role of the passage or analysis in these notes; an “unproved claim” may have a verified proof in later literature, as the item specifies.
+./MPL_149_001-090_notes.md:533:### B039.1 — Scan 039, approximately lines 1–12 — unpursued implication
+./MPL_142_001-093_notes.md:5:These notes accompany the diplomatic transcription of the 90 supplied nonblank scans of Montpellier cote 142; scans 023, 043, and 065 were omitted as blank in the supplied image archive. All 90 pages were transcribed and independently audited before the transcription was frozen at **12 November 2026, 12:40:21 UTC**. The context archive was opened at **12:40:33 UTC**, after that freeze. Mathematical analysis and context-suggested readings below have not been written back into the transcription.
+./MPL_142_001-093_notes.md:290:**Context comparison:** Restates a real topological distinction already made explicitly in `LM_140-2_text.tex`, scan 320, where the author passes from a nonseparated discrete-subgroup quotient to the quotient by its closure. The present pages add a general completion formula without yet stating that convention.
+./MPL_146_100-134_notes.md:7:“Line” and “TeX line” mean the physical line in the corresponding frozen file `pages/MPL_146_100-134_scanNNN.tex`, not a reconstructed line number on the handwritten sheet. The scan number remains the primary locator. Brief quotations retain manuscript wording; an ellipsis in a research-note quotation indicates an excerpt and does not replace any transcription. Mathematical notation introduced for an argument below is analytical notation, not a silent resolution of a doubtful handwritten letter or accent.
+./MPL_146_100-134_notes.md:9:Each item has one of the requested classifications: **conjecture**, **unproved claim**, **unpursued implication**, **own idea**, or **reading question**. The classification “conjecture” includes an explicit question or expectation written by Grothendieck, without suggesting that he states it as a formal conjecture. “Unproved claim” means that the present pages do not supply the indicated justification; it does not imply that the claim lacks a known proof. Confidence assessments concern the stated deduction or proposed construction, and do not assert novelty or historical priority. Statements involving stacks or orbifolds use their classifying-space homotopy types unless specified otherwise.
+./MPL_147_048-137_notes.md:42:The assertion “est stable … ssi les … le sont” needs the half-edges leaving each contracted fibre to become marked flags on that fibre; omitting those flags changes the stability inequality. A proof should sum \(2g_v-2+n_v>0\) over each connected fibre, identify its new genus as the sum of vertex genera plus its first Betti number, and then check the quotient vertex inequality. Scans 093–099 later develop the flag and fibre bookkeeping, so this is a point elaborated within the supplied pages, although the stability calculation is not written here.
+./MPL_147_048-137_notes.md:308:The formula “\(\zeta_p=[\operatorname{Spec}\mathbf Z/p\mathbf Z]=i_{p!}(1)\)” presupposes a localization-compatible theory over \(\operatorname{Spec}\mathbf Z\), but the target \(K_!\), the meaning of its Tate element, and the base-change maps are not specified on these pages. A useful proof obligation is to show that restricting the expression to the complement of \(p\) kills \(\zeta_p\), while pullback to the fibre produces the intended point class. Scan 063's augmentation does not by itself determine these operations.
+```
+
+## TN002
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `25 p|octaéd|pagination|pages`  
+Returned hit lines: 40
+
+Selected comparison: `hua_project/64.modern.tex`, §II.1 opening footnote, p.43 = scan 044, expressly reads “(25 p.)”; this differs from the frozen comment. The arithmetic count of supplied body images corroborates the proposal but cannot decide the ink.
+
+```text
+./LM_140-3_text.tex:5:Pages 291--650 $+$ table des matières
+./LM_140-3_text.tex:7:\uline{NB} Les pages 291,292 figurent deux fois
+./MPL_147_048-137_notes.md:42:The assertion “est stable … ssi les … le sont” needs the half-edges leaving each contracted fibre to become marked flags on that fibre; omitting those flags changes the stability inequality. A proof should sum \(2g_v-2+n_v>0\) over each connected fibre, identify its new genus as the sum of vertex genera plus its first Betti number, and then check the quotient vertex inequality. Scans 093–099 later develop the flag and fibre bookkeeping, so this is a point elaborated within the supplied pages, although the stability calculation is not written here.
+./MPL_147_048-137_notes.md:308:The formula “\(\zeta_p=[\operatorname{Spec}\mathbf Z/p\mathbf Z]=i_{p!}(1)\)” presupposes a localization-compatible theory over \(\operatorname{Spec}\mathbf Z\), but the target \(K_!\), the meaning of its Tate element, and the base-change maps are not specified on these pages. A useful proof obligation is to show that restricting the expression to the complement of \(p\) kills \(\zeta_p\), while pullback to the fibre produces the intended point class. Scan 063's augmentation does not by itself determine these operations.
+./MPL_147_003-047_notes.md:7:Each numbered item identifies its manuscript location, one of the requested kinds, a short quotation or formula anchor, and a comparison with an exact file and scan in the supplied context. An **unproved claim** may be a claim whose proof is compressed or deferred at that location, even when later pages or published work supply the argument. **Own idea** identifies an argument, example, or proposed comparison supplied in these notes; it does not claim mathematical originality. Confidence concerns the stated calculation or comparison, and does not upgrade a doubtful handwritten reading.
+./MPL_147_003-047_notes.md:423:**Note:** Scan 020 requires stable vertex types, but scan 022 uses “semi-stable” without a definition on these pages. If the latter permits a rational component with exactly two special points, its automorphism group fixing those points is $\mathbb G_m$, so the factor lies outside the étale/Deligne–Mumford framework of scan 020. Smoothness as an Artin stack can still hold, so the word does not by itself refute the smoothness assertion; the issue is whether the intended category has changed or the term is being used loosely.
+./LM_140-3_notes.md:24:"Un épinglage canonique associé à ρ,σ" (now at p. 446) announces a canonical construction whose definition is not on these pages. *Reason:* the reading is unchanged except for the page number.
+./LM_140-3_notes.md:63:The struck qualifier before "Γ ≠ 1" is not securely "finis". It begins with "(" and fits "(cycliques" best, which would be redundant with "les dits Γ sont nécessairement cycliques". No cancelled finiteness hypothesis can be read off it. "maximaux" is still undefined on these pages. *Reason:* the first pass built its finiteness discussion on "finis".
+./MPL_146_100-134_notes.md:7:“Line” and “TeX line” mean the physical line in the corresponding frozen file `pages/MPL_146_100-134_scanNNN.tex`, not a reconstructed line number on the handwritten sheet. The scan number remains the primary locator. Brief quotations retain manuscript wording; an ellipsis in a research-note quotation indicates an excerpt and does not replace any transcription. Mathematical notation introduced for an argument below is analytical notation, not a silent resolution of a doubtful handwritten letter or accent.
+./MPL_146_100-134_notes.md:9:Each item has one of the requested classifications: **conjecture**, **unproved claim**, **unpursued implication**, **own idea**, or **reading question**. The classification “conjecture” includes an explicit question or expectation written by Grothendieck, without suggesting that he states it as a formal conjecture. “Unproved claim” means that the present pages do not supply the indicated justification; it does not imply that the claim lacks a known proof. Confidence assessments concern the stated deduction or proposed construction, and do not assert novelty or historical priority. Statements involving stacks or orbifolds use their classifying-space homotopy types unless specified otherwise.
+```
+
+## TN003
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Épinglage|Legendre|Digression|pagination`  
+Returned hit lines: 31
+
+Selected comparison: `hua_project/64.modern.tex`, PartIII title and Kummer digression, pp.69–73, then Legendre pp.74–99; current sources cover only scans 070–077.
+
+```text
+./LM_140-3_text.tex:26:théorie de Legendre
+./LM_140-3_text.tex:75:43\quad Digression sur les $1$-cocycles des groupes \unsure{cycl.}
+./MPL_147_048-137_notes.md:86:**Location:** scan 050, equation (59). **Kind:** unpursued implication. **Context:** C0; intended terms: Gamma!, Ker, points marqués, épinglage.
+./MPL_147_048-137_notes.md:150:**Location:** scan 057, equation (71). **Kind:** unproved claim. **Context:** C0; intended terms: iso can, épinglage, produit, I chapeau.
+./MPL_147_003-047_notes.md:339:**Context check — adds:** `LM_140-2_text.tex`, scan 548, (24), says a quotient map “n'est plus une équivalence, car Γ′_n n'opère pas librement”, with ramification of degrees two and three. That is a distinct modular example, but it already warns against replacing a moduli object with a coarse quotient while ignoring stabilizers; MPL's graph pinning requires the same care. Search terms: `épinglage`, `rigidification`, `autom`, `n'opère pas librement`, `équivalence`.
+./MPL_147_003-047_notes.md:347:**Source:** “les G-épinglages ... s'identifient aux sections d'un certain ... torseur”.
+./LM_140-3_notes.md:24:"Un épinglage canonique associé à ρ,σ" (now at p. 446) announces a canonical construction whose definition is not on these pages. *Reason:* the reading is unchanged except for the page number.
+./LM_140-3_notes.md:122:f(z) = (27/4)·z²(z−1)²/(z²−z+1)³ = 1728/j(z), where j(λ) = 256(λ²−λ+1)³/(λ²(λ−1)²) is the j-invariant of the Legendre curve. So f maps the cusps {0,1,∞} to 0 (j = ∞), {2,−1,1/2} to 1 (j = 1728) and {−j̄,−j} to ∞ (j = 0), with ramification orders 2, 2 and 3. Over 1 and ∞ these are the orders in (14), l'_1² = l'_∞³ = 1. Over 0 the points are punctures, and the order 2 is the factor d_a = 2 of (12), recorded in (16) as "ε_i² = l_i".
+./LM_140-2_text.tex:50:14. Digression cohomologique (sur le "bouchage de trous") \hfill 58
+./LM_140-2_text.tex:70:20. Digression : description 2-isotopique
+```
+
+## TN004
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `Détermination|Courbes relatives|Relations|Digression|Opération`  
+Returned hit lines: 37
+
+Selected comparison: `hua_project/64.modern.tex`, PartII and the following Kummer subsection; Hua reorganizes headings in places, so source numbering is taken from the frozen pages.
+
+```text
+./MPL_149_001-090_notes.md:82:The equivalence $\operatorname{Ind}(\mathrm{corps.t.f})\to\mathrm{corps}$ is attributed to “raisons triviales,” but full faithfulness deserves a separate argument. For a field generated by finitely many elements as a field, the images of those generators in a filtered union lie in one stage, and their algebraic relations and nonzero denominators already hold there; equality of two such maps is also detected on the same finite generating set. Searches for “Ind,” “corps.t.f,” and inductive field systems found no direct contextual version; `LM_140-2_text.tex`, scan 016, is only a programme for pro-variants, so this is an added categorical justification.
+./MPL_149_001-090_notes.md:122:The identification in (10), attributed to “résultats bien connus,” follows by descending finite étale covers to a sufficiently small affine model, with all groups based at the same geometric generic point. This is precisely the finite-cover continuity mechanism in The Stacks Project Authors (2026, Tag 0BTU, Lemma 58.14.1). `LM_140-2_text.tex`, scan 434, contrasts the group of a parameter scheme with that of its generic point; the present limit formula adds the relationship between those groups rather than identifying any one model with the generic point.
+./LM_140-3_text.tex:15:\uline{38}\quad Détermination de
+./LM_140-3_text.tex:19:\uline{39}\quad Propriétés de congruence de l'opération
+./MPL_142_001-093_notes.md:474:**Brief source quotation:** « déterminer … cette catégorie … avec les opérations de \(\operatorname{Aut}k\) dessus ».
+./MPL_142_001-093_notes.md:476:The stated target includes all relevant objects, the noninvertible covering arrows, their compositions, and the field-automorphism action, first over \(\overline{\mathbb Q}\) and then over algebraic closures of finitely generated fields. A faithful Galois representation on one fundamental group would address only one part of this programme. Group-theoretic relations and compatibility with a tower of moduli groups provide related realizations, but do not alone identify the full arithmetic image or construct this precise category (Hatcher et al., 2000).
+./MPL_146_100-134_notes.md:29:| III | 117–125 | 25 | Torus relations, four-point stabilizers, square and tetrahedral reductions |
+./MPL_146_100-134_notes.md:42:### R02 — The insertion specifies a group action, not a presentation without relations
+./MPL_147_048-137_notes.md:58:The opening identifies \(B\) as the edges that contract to a point, while the subsequent fibre graph uses \(C'\) and describes the complementary branches through \(B'=A'\setminus C'\); scan 049 then defines the contraction rank by \(|C'|\). The relationships among these letters need to be checked before treating every subset symbol as the same contraction datum. Because scan 048 begins mid-argument and the supplied context contains no preceding material, this remains a notation question rather than a justified correction.
+./MPL_147_048-137_notes.md:170:My proposed test is to attach finite rigid graph gadgets to a four-flag core and encode an \(H\)-invariant relation on those flags, then check that its full induced automorphism group is exactly the chosen \(H\leq\mathfrak S_4\). Confidence is medium because attaching four individually distinguished trees realizes some obvious stabilizers, but a general subgroup may require correlations between the attachments and trivalent replacement gadgets. This is a construction problem suggested by “doit pouvoir”, not a claim of a proved realization theorem or of novelty.
+```
+
+## TN005
+
+UTC: 2026-11-17 23:35:22 UTC  
+Query: `1982|mars|Personnel|pagination|End`  
+Returned hit lines: 47
+
+Selected comparison: `README.md`, dossier catalogue date range; `hua_project/64.modern.tex`, End(V) pp.41–42 follows the intervening circular in scan numbering but is not a diplomatic transcription of it. No matching circular was located elsewhere in the supplied context.
+
+```text
+./LM_140-3_text.tex:3:% not manuscript: printed logo of the Institut Montpelliérain Alexander Grothendieck (archive cover image of cote 140-3).
+./LM_140-3_text.tex:26:théorie de Legendre
+./MPL_147_048-137_notes.md:5:These 222 entries concern the 90 supplied scans, 048–137, of Alexander Grothendieck's handwritten notes, *Structure à l'infini des Mg,ν*, Montpellier archive, cote 147 (undated). Scan numbers refer to the archive PDF and supplied image filenames; the author's own page numbers are separate. The manuscript images are the primary evidence for quotations, and the accompanying diplomatic transcription retains their uncertain readings, deletions, insertions, notation, and unfinished ending.
+./MPL_147_048-137_notes.md:9:**C0 means that comparison with the supplied earlier-work context was unavailable.** The attached MPL_147_048-137_context.zip was a valid **22-byte ZIP with zero entries**: it contained no files and no README. There was consequently no context text to search, no earlier filename or scan to cite, and no basis for deciding whether earlier work added, restated, differed from, or contradicted a point. Each entry records intended search terms under C0; those terms are **not** a record of an executed search or of a “no match” result. Crosslinks within scans 048–137 are identified separately and do not substitute for the missing earlier material.
+./LM_GLOBAL_PASS.md:8:Sources read: second_pass/NOTES_A_conjectures.md (Grothendieck's conjectures, questions, expectations and programme,
+./LM_GLOBAL_PASS.md:37:  is a strong candidate: Grothendieck's 1981 formulation, discrete and profinite.
+./MPL_147_003-047_notes.md:3:These **75 notes** accompany the complete diplomatic transcription of the 45 supplied scans of *Structure à l'infini des \(M_{g,\nu}\)*. The transcription was frozen at **2026-11-11 01:30:36 UTC**, before the context archive was opened; the interpretations, proofs, examples, and suggested readings below have not been substituted into it. The proposition at the end of scan 047 continues beyond the supplied range and is not completed by conjectural transcription.
+./MPL_147_003-047_notes.md:13:The one-to-four-sentence explanatory cores remain separate from their context and literature checks. Appendices A and B give full calculations for selected counterexamples and recovery arguments, so the abbreviated notes can be checked directly. Modern literature was consulted as primary papers or official mathematical documentation; APA references and stable source locators appear at the end.
+./MPL_149_001-090_notes.md:7:The page files and combined transcription were independently audited and frozen at **2026-11-11 23:18:49 UTC**, before any context file contents were opened. Initial intake had listed only the context archive's member names and sizes; that metadata-only access is disclosed in `progress.log`. Every subsequent reading suggestion remains in these notes, and the final hash check in the log verifies that all 91 frozen files are unchanged. No OCR was used for the manuscript transcription.
+./MPL_149_001-090_notes.md:19:The context notes, overview, and global pass were used as leads, never as established mathematical results. Comparisons below explicitly identify repetition, an addition, a difference, a contradiction, or the closest locus where no direct match was located. These comparisons do not independently authenticate the handwriting of the context manuscripts.
+```
+

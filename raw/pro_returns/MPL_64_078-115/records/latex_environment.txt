@@ -1,0 +1,64 @@
+LATEX ENVIRONMENT INVESTIGATION
+Recorded UTC: 2026-11-17 22:57:05
+Scope: installed environment/runtime files and a synthetic fragment only.
+No scan images, transcription page contents, or context texts were read.
+
+Result: real XeLaTeX compilation IS possible without installations/downloads.
+XeTeX: TeX Live 2025/dev/Debian, XeTeX 0.999996.
+Primary runtime bundle: 26.1112.11217.
+Primary runtime path: /opt/codex/runtimes/codex-primary-runtime.
+No separate TeX tree was found under that runtime path.
+Installed TeX tree: /usr/share/texlive/texmf-dist.
+Additional installed tree: /usr/share/texmf.
+
+The default kpathsea configuration uses database-only (!!) tree searches;
+its usable filename database/format files are absent. Overriding TEXMF with
+ordinary tree paths resolves fontspec, AMS mathematics, TikZ/tikz-cd, geometry,
+xcolor, and polyglossia. A private xelatex.fmt can be generated from the
+installed xelatex.ini and latex.ltx.
+
+Required environment (the runner below sets these):
+  TEXMF={/etc/texmf,/usr/share/texmf,/usr/share/texlive/texmf-dist}
+  TEXMFVAR=<private output directory>/texmf-var
+  TEXMFCONFIG=<private output directory>/texmf-config
+  TEXMFCACHE=<private output directory>/texmf-cache
+  TEXFORMATS=<private output directory>/formats//:
+
+Private format generation:
+  /usr/bin/xetex -ini -etex -interaction=nonstopmode -halt-on-error
+    -no-shell-escape -jobname=xelatex
+    -output-directory=<private output directory>/formats xelatex.ini
+
+Reproducible runner, to be invoked by root after the audit:
+  python3 records/run_latex_qa.py
+Or supply --fragment ABSOLUTE_PATH and --output-dir ABSOLUTE_PATH.
+The default fragment is MPL_64_078-115_transcription.tex in the package root.
+Default output is the adjacent workspace work/latex_qa directory.
+No source fragment is modified by the runner.
+
+Wrapper adjustments:
+- French Babel french.ldf is absent; polyglossia/gloss-french.ldf is present.
+  The wrapper selects polyglossia when French Babel is unavailable.
+- French hyphenation patterns are absent. Polyglossia emits a warning and
+  uses no hyphenation; accents and French text render normally.
+- ulem.sty is absent. The QA wrapper uses plain single/double underline
+  fallbacks; these text underlines cannot break across lines.
+- tikz-cd bodies inside editorial macro arguments are already tokenized.
+  The wrapper captures each tikzcd body and substitutes only top-level
+  alignment ampersands with a PGF control-sequence separator, retaining
+  braced cell contents. This changes only rendering, never source files.
+- Deletions are colored red in this QA renderer rather than struck through.
+
+Verification performed:
+1. Private format generation completed with return code 0.
+2. The QA wrapper compiled a synthetic fragment containing French Unicode,
+   nested deletion/insertion marks, unsure readings, math underlines,
+   a tikz-cd nested inside a one-argument margin note, and a TikZ drawing.
+3. Synthetic compilation completed with return code 0 and produced a
+   two-page PDF at work/latex_env_probe/synthetic_probe.pdf.
+4. Synthetic logs are in work/latex_env_probe; no live transcription build
+   was performed by this infrastructure-only agent.
+
+This establishes executable composition capability only. It is not a
+certificate of visual fidelity, mathematical validity, or transcription
+completeness/accuracy.

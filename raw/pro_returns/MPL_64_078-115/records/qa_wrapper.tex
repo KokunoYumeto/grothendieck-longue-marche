@@ -1,0 +1,106 @@
+% Infrastructure-only QA wrapper. Never concatenate this preamble into the
+% diplomatic transcription fragment. Requires XeLaTeX and the packages below.
+% Override \TranscriptionInput on the command line to use another fragment.
+\documentclass[a4paper,11pt]{article}
+\usepackage[margin=20mm]{geometry}
+\usepackage{fontspec}
+\IfFontExistsTF{TeX Gyre Termes}
+  {\setmainfont{TeX Gyre Termes}}
+  {\setmainfont{Latin Modern Roman}}
+\IfFileExists{french.ldf}
+  {\usepackage[french]{babel}}
+  {\usepackage{polyglossia}\setdefaultlanguage{french}}
+\usepackage{amsmath,amssymb}
+\usepackage{xcolor}
+\IfFileExists{ulem.sty}
+  {\usepackage[normalem]{ulem}}
+  {% Minimal QA fallback when ulem is absent; text underlines do not line-break.
+   \long\def\uline##1{\underline{##1}}
+   \long\def\uuline##1{\underline{\underline{##1}}}}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,calc,decorations.pathreplacing,positioning}
+% A tikzcd body is already tokenized when it occurs inside \diagram or \margin.
+% Capture it explicitly and replace top-level alignment ampersands by the PGF
+% control-sequence separator. Braced cell contents and ordinary arrays outside
+% tikzcd retain their own ampersands. Nothing in the source fragment is changed.
+\let\qaOriginalTikzcd\tikzcd
+\let\qaOriginalEndTikzcd\endtikzcd
+\ExplSyntaxOn
+\tl_new:N \l__qa_tikzcd_body_tl
+\RenewDocumentEnvironment{tikzcd}{O{} +b}
+  {
+    \group_begin:
+    \tl_set:Nn \l__qa_tikzcd_body_tl {#2}
+    \tl_replace_all:Nnn \l__qa_tikzcd_body_tl {&} {\&}
+    \qaOriginalTikzcd[ampersand~replacement=\&,#1]
+    \tl_use:N \l__qa_tikzcd_body_tl
+    \qaOriginalEndTikzcd
+    \group_end:
+  }
+  {}
+\ExplSyntaxOff
+\allowdisplaybreaks
+\tracinglostchars=3 % Missing glyphs are QA failures, not silent omissions.
+\errorcontextlines=20
+\setlength{\emergencystretch}{3em}
+\setlength{\parindent}{1em}
+\setlength{\parskip}{.35em}
+
+\definecolor{qaDeleted}{RGB}{155,25,35}
+\definecolor{qaInserted}{RGB}{20,65,160}
+\definecolor{qaUnsure}{RGB}{150,85,0}
+\definecolor{qaMargin}{RGB}{0,100,95}
+
+% Transparent groups are intentional: boxing, \sout, and \text around arbitrary
+% arguments would break displays, nested editorial marks, and tikz-cd material.
+% Cancellations are shown in red rather than struck through in this QA renderer.
+% The source \deleted command remains the authoritative cancellation record.
+\NewDocumentCommand{\deleted}{+m}{\begingroup\color{qaDeleted}#1\endgroup}
+\NewDocumentCommand{\inserted}{+m}{\begingroup\color{qaInserted}#1\endgroup}
+\NewDocumentCommand{\unsure}{+m}{\begingroup\color{qaUnsure}#1\endgroup}
+\NewDocumentCommand{\illegible}{m}{%
+  \ifmmode
+    \text{\color{qaUnsure}[illisible : #1]}%
+  \else
+    {\color{qaUnsure}[illisible : #1]}%
+  \fi}
+\NewDocumentCommand{\margin}{+m}{%
+  \ifmmode
+    \begingroup\color{qaMargin}#1\endgroup
+  \else
+    \par\begingroup\color{qaMargin}\noindent#1\par\endgroup
+  \fi}
+\NewDocumentCommand{\diagram}{+m}{\begingroup#1\endgroup}
+% article.cls defines \figure as the start of a float. This task instead uses
+% a one-argument editorial macro containing an already explicit TikZ picture.
+\RenewDocumentCommand{\figure}{+m}{\begingroup#1\endgroup}
+
+\let\qaTextUline\uline
+\let\qaTextUuline\uuline
+\RenewDocumentCommand{\uline}{+m}{%
+  \ifmmode\underline{#1}\else\qaTextUline{#1}\fi}
+\RenewDocumentCommand{\uuline}{+m}{%
+  \ifmmode\underline{\underline{#1}}\else\qaTextUuline{#1}\fi}
+
+\newcommand{\qaCote}{64}
+\NewDocumentCommand{\cotefile}{m}{\gdef\qaCote{#1}}
+\NewDocumentCommand{\scanpage}{m}{%
+  \clearpage\section*{Cote \qaCote\ --- scan #1}}
+\NewDocumentCommand{\mspage}{m}{%
+  \par\noindent\textbf{Page manuscrite : #1}\par}
+
+\providecommand{\TranscriptionInput}{MPL_64_078-115_transcription.tex}
+\begin{document}
+\thispagestyle{empty}
+\section*{Transcription diplomatique : contrôle de composition}
+\noindent Ce rendu sert uniquement au contrôle technique. Les commandes du
+fragment source restent les marques éditoriales faisant autorité.
+
+\noindent\deleted{Rouge : suppression.}\quad
+\inserted{Bleu : insertion.}\quad
+\unsure{Brun : lecture incertaine.}\quad
+{\color{qaMargin}Vert : note marginale.}
+
+\input{\TranscriptionInput}
+\end{document}
