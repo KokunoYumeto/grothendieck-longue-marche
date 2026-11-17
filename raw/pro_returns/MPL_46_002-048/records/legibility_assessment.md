@@ -1,0 +1,5 @@
+## Overall assessment
+
+Legibility varies sharply: the typescripts and many displayed formulas are comparatively clear, while the cancelled contents entries, heavily crossed headings, and diagonal marginal prose are substantially less reliable. The least trusted readings are scan 003 (cancelled VIII and compressed XII), 029 (cancelled heading), 038 (cancelled titles), 045 (diagonal verification note), and 047 (construction insertion, lower margin, and final incidence remark); cancelled passages on 013, 018, 031 and 036 also need particular care. A proposed reading is not evidence that the mathematical assertion is correct, and diagram placement and freehand outlines are approximate reconstructions of the drawn shapes.
+
+The item-specific low-confidence assessments take precedence over the mechanically indexed medium-confidence repetitions of the same inline doubt. Every supplied whole image and both supplied halves were visually inspected in the single transcription stream; the second reading and the last cross-page notation comparison were completed before any context was opened. The work does not claim an error-free decipherment.

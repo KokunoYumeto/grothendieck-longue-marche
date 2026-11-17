@@ -1,0 +1,5 @@
+# Final notation comparison before context
+
+All 42 pages have individual second-reading timestamps in progress.log and records/second_reading.md. The final comparison rechecked doubled finite-field and integer strokes (007–009, 012, 017, 030–032); the distinctions between f, phi, ordinary F, and Fr; primes and exclamation-like strokes (especially 036); explicit underlines on O, E, L and Omega; the lower tilde on V/P; headless shafts and labelled diagram arrows; and quotation marks. It retained source differences between P_S and p_S, ordinary and decorated O, F and F-bullet, and differing Frobenius indices where the ink did not authorize normalization.
+
+Enlargements of 012, 018, 020, 021 and 022 resolved or marked the last alphabet/underline discrepancies. The bent boundary and curved insertion pointer on 013 were added from the whole-page view. The inventory was reordered for the drawing rows added in the second reading, and obsolete explanatory doubts were reconciled with the current inline readings. No context member had been read at this point.

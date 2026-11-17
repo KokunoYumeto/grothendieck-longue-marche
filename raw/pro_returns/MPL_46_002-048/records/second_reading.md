@@ -1,0 +1,42 @@
+- Scan 002 (2026-11-17 11:16:05 UTC): Re-read the complete cover against fragment; ambiguous principal ending and pencil foliation remain marked. No change.
+- Scan 003 (2026-11-17 11:16:31 UTC): Second whole-page comparison and renewed VIII/XII crops. The obliterated VIII text and tentative XII readings remain marked; no restoration from a known chapter plan.
+- Scan 004 (2026-11-17 11:16:49 UTC): Re-read cover; corrected stale inventory/doubts metadata that still retained the superseded initial title reading. The TeX reading p/φ-structures is unchanged.
+- Scan 005 (2026-11-17 11:17:11 UTC): Compared each paragraph, all four formulas, and the champ insertion. Replaced the initial supplied arrowhead by a dash; the small φ-arrow terminal stroke remains as first read.
+- Scan 006 (2026-11-17 11:17:33 UTC): Rechecked noncommutative equation b⁻¹a=f(u)u⁻¹ without correction, square labels/directions, and final identity. Removed deletion status from unstruck incomplete notation to the left of the square.
+- Scan 007 (2026-11-17 11:18:00 UTC): Read formulas and all marginal material again. Added the omitted theorem emphasis stroke; Lang morphism and axiomatique claims retained as written.
+- Scan 008 (2026-11-17 11:18:16 UTC): Re-read the deleted covering phrase, live G(F_q), E^(p) formula, and f-rigidification. Incomplete corollary grammar is preserved; no change.
+- Scan 009 (2026-11-17 11:18:39 UTC): Re-read complete page and question. Compared finite-field F with scans 007–008 and changed the doubled-stroke alphabet consistently to mathbb; script L remains doubtful.
+- Scan 010 (2026-11-17 11:18:49 UTC): Re-read title Frobenius and foliation 9; no change.
+- Scan 011 (2026-11-17 11:19:09 UTC): Re-read five-object diagram, equivalence conditions, Ω equality, ideal exponents, and both references. Preserved the exceptional F/Fr spelling doubt and J^p notation.
+- Scan 012 (2026-11-17 11:19:32 UTC): Re-read absolute Frobenius definition, all three margins, circled notation, square, and base-change functor. Preserved handwritten P/p variation and instruction to reverse horizontal arrows without redrawing them as reversed.
+- Scan 013 (2026-11-17 11:20:09 UTC): Checked all tensor-product subscripts, E insertions, both marginal formulas, and the exactness paragraph. Harmonized visibly underlined O on this sheet and inspected 008–009; restored circle at C’est.
+- Scan 014 (2026-11-17 11:24:15 UTC): Compared the entire page, formulas, marginal squares and enlarged lower diagram; retained the visible dashed rightward composite and the altered f by p_S(X).
+- Scan 015 (2026-11-17 11:24:58 UTC): Compared the full sheet and rotated polynomial margin; retained doubtful cancelled functor wording and the overwritten letter in the invertible-module sentence.
+- Scan 016 (2026-11-17 11:24:58 UTC): Compared full page and enlarged bottom revisions; retained h/nu ambiguity and the unchanged nu on p_S despite the h nu in Frobenius.
+- Scan 017 (2026-11-17 11:25:13 UTC): Compared all text, cancelled proposition and diagonal kernel margin; preserved the written k and h/nu alternatives.
+- Scan 018 (2026-11-17 11:25:26 UTC): Compared cancelled first proof, its insertions and subindices, then the live affine-neighbourhood proof; retained the uncertain word following homeomorphisme.
+- Scan 019 (2026-11-17 11:25:35 UTC): Compared the complete proposition and margin; checked nested cancellation of the inserted power condition and the replacement identique.
+- Scan 020 (2026-11-17 11:26:03 UTC): Compared exact sequences term by term, including the headless terminal segment, underbrace and the normality question; no missing term supplied.
+- Scan 021 (2026-11-17 11:26:03 UTC): Compared the Cartier paragraph, added rational-function condition, deleted claims and final displayed quotient; retained the quotient as written without an extra p-power denominator.
+- Scan 022 (2026-11-17 11:26:42 UTC): Compared all three problem statements, cancelled target, square, both boxes and left marginal text; added uncertainty for the loop at the last boxed delimiter.
+- Scan 023 (2026-11-17 11:27:34 UTC): Read the rotated typescript in full, including the malformed axiom reference, delimiter shapes, printed plurals and membership signs.
+- Scan 027 (2026-11-17 11:28:03 UTC): Compared every diagram edge and label, altered bottom exponent, typed paragraphs and both page numbers.
+- Scan 028 (2026-11-17 11:28:15 UTC): Compared all three underlined title lines and faint pencil sheet number; retained the coined title spelling with doubt.
+- Scan 029 (2026-11-17 11:28:37 UTC): Re-read the full sheet and enlarged rotated cancelled corner; the struck title remains low-confidence and has not been reconstructed from subject matter.
+- Scan 030 (2026-11-17 11:29:09 UTC): Compared all adjunction formulas, headless and two-headed maps, crossed-out arrowhead, footnote and its outline; repaired stacked-label TeX syntax.
+- Scan 031 (2026-11-17 11:29:52 UTC): Compared top evaluations, cancelled construction, lower base-change triangle and both margin diagrams; preserved reversals and stars.
+- Scan 032 (2026-11-17 11:29:52 UTC): Compared both paragraphs, quotient square, parenthetical topological condition and marginal uniqueness argument; retained the last ssi with doubt.
+- Scan 033 (2026-11-17 11:30:08 UTC): Compared all three cohomological diagrams, deleted horizontal arrows, derived-category insertions and proof; retained borne sup. and the source notation in the derived diagram.
+- Scan 034 (2026-11-17 11:31:08 UTC): Compared category hypotheses and both squares; enlarged the faint left vertical label and retained the insertion oval and source p/S versus p/X difference.
+- Scan 036 (2026-11-17 11:31:08 UTC): Compared the complete sheet, cancelled opening formula, implication question, extension characterization, constant diagram and withdrawn topology comment.
+- Scan 038 (2026-11-17 11:31:40 UTC): Compared all cancelled heading strokes at enlargement; retained weak title and group qualification as explicit doubts.
+- Scan 039 (2026-11-17 11:31:40 UTC): Compared the inverted underlined Steinberg title and upright pencil number; no other text.
+- Scan 040 (2026-11-17 11:31:48 UTC): Compared title, chapter abbreviation and over-/underlined VI, plus sheet number.
+- Scan 041 (2026-11-17 11:32:14 UTC): Compared title cancellations, all three propositions, line-bundle formula, boxed rotated margin, corollary and last cancelled examples.
+- Scan 042 (2026-11-17 11:32:25 UTC): Read rotated typescript in full; checked permutation products, subscripts, scalar-product equality and unusual printed poulcrier without normalizing it.
+- Scan 043 (2026-11-17 11:32:54 UTC): Compared all corollaries, local-factorial insertions, brackets, definition, lower cancellations and short margin conditions; marked first implication direction as uncertain.
+- Scan 044 (2026-11-17 11:33:07 UTC): Read the rotated typescript fully, checking graph incidence inequalities, products and the continuation of the Coxeter proof; retained y faut et y suffit.
+- Scan 045 (2026-11-17 11:33:45 UTC): Compared main statements, double check over P, descent warning, weakened hypotheses and rotated diagonal verification note; the latter remains low-confidence.
+- Scan 046 (2026-11-17 11:33:57 UTC): Read the rotated sheet fully, including initial editorial sentence, all graph definitions, inequality signs and handwritten sinon insertion in Lemma 6.
+- Scan 047 (2026-11-17 11:35:35 UTC): Compared full sheet and enlarged/rotated margins; added omitted tjs abbreviation, revised weak margin readings with alternatives and retained explicit doubts in the final incidence remark.
+- Scan 048 (2026-11-17 11:36:14 UTC): Read the typescript completely, checked both exact sequences, underlining, punctuation and terminal ornament; lower half contains no further text.

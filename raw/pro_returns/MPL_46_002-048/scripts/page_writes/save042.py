@@ -1,0 +1,21 @@
+import sys
+sys.path.insert(0,'/workspace/scratch/0abb0718b9e3/MPL_46_002-048_work/scripts')
+from record_page import save
+save(42,r'''\scanpage{42}
+\mspage{-VI-6-}
+\hfill n°383
+
+indices $1,\ldots,n$ ; soit $\pi$ la permutation de $\{1,2,\ldots,n\}$ correspondante ; posons $s_i=s_{H_i}$. Notre assertion est vraie dans les cas suivants :
+
+a) $\pi$ est la permutation circulaire $(1,2,\ldots,n)$ : en effet on a
+\[
+s_2s_3\ldots s_ns_1=s_1^{-1}(s_1s_2\ldots s_n)s_1\ ;
+\]
+
+b) $\pi$ est la transposition $(i,i+1)$ de deux indices $i,i+1$ (ici on identifie $1$ et $n+1$) tels que $s_is_{i+1}=s_{i+1}s_i$ ; c'est, en effet, trivial. Notons que la relation $s_is_{i+1}=s_{i+1}s_i$ revient à dire que $H_i$ et $H_{i+1}$ sont perpendiculaires, c'est-à-dire qu'on a $(e_i|e_{i+1})=0$. Donc, d'après le lemme 5 et la prop.1, il existe un couple d'indices $(i,i+1)$ tels que $s_is_{i+1}=s_{i+1}s_i$.
+
+Il reste donc à montrer que le sous-groupe $\underline{T}$ du groupe symétrique $\underline{S}_n$, engendré par la permutation circulaire $(1,\ldots,n)$ et la transposition $(i,i+1)$ est égal à $\underline{S}_n$. Or, comme $(j,j+1)=(1,\ldots,n)(j-1,j)(1,\ldots,n)^{-1}$ (pour $j=1,\ldots,n$ ; on identifie aussi $0$ et $n$), on voit par récurrence que toute transposition de la forme $(j,j+1)$ appartient à $\underline{T}$. D'autre part, pour tout $\pi\in\underline{S}_n$, la permutation $\pi'=(1,2)(2,3)\ldots(\pi(1)-1,\pi(1))\pi$ laisse l'élément $1$ invariant ; ceci démontre, par récurrence sur $n$, que $\underline{S}_n$ est engendré par les transpositions $(j,j+1)$. On a donc bien $\underline{S}_n=\underline{T}$. C.Q.F.D.
+
+Il résulte de la prop.2 que toutes les transformations de \unsure{poulcrier} de $G$ ont le même ordre $h=h(G)$. Ce nombre s'appelle le \uline{nombre de Coxeter} de $G$.
+\mspage{41}''',[
+('text','typed header','-VI-6- ; n°383'),('text','top continuation','indices 1,...,n ; soit π'),('text','a)','π est la permutation circulaire'),('display','a), following line','s₂s₃...sₙs₁ = s₁⁻¹(s₁...sₙ)s₁'),('text','b)','π est la transposition (i,i+1)'),('text','middle to lower','Il reste donc à montrer que le sous-groupe T'),('text','final paragraph','Il résulte de la prop.2'),('text','opposite orientation, corner','41')],sheet_kind='reused_typed',doubts=[('last paragraph','poulcrier','Unusual typed name; letters not restored from the mathematical context','low')],notation=[('Underlined group letters in typescript',r'\underline{S}_n,\underline{T}','Preserve underline rather than substituting a different alphabet')],abbreviations=[('C.Q.F.D.','ce qu’il fallait démontrer')],observation='Reused typescript is upside down relative to pencil foliation. Both halves were additionally rotated for reading. The anomalous typed name in the final paragraph is left explicitly doubtful.')
