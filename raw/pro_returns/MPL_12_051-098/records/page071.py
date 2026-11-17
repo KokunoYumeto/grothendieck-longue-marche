@@ -1,0 +1,62 @@
+from save_page import save_page
+save_page(71,r'''\scanpage{71}
+% archive foliation: 70
+$X$ \unsure{projective|projectif} lisse \inserted{géo. connexe} sur $k$ corps fini à $q$ éléments.
+Par passage à la limite sur les \deleted{\unsure{quotients}} \inserted{coefficients} finis, on trouve
+\diagram{\begin{tikzcd}[column sep=small]
+0\arrow[r]&H^{i-1}(\overline{X},\mathbf{Q}_\ell(j))_\pi\arrow[r]&H^i(X\deleted{^{\unsure{\circ}}},\mathbf{Q}_\ell(j))\arrow[r]&H^i(\overline{X},\mathbf{Q}_\ell(j))^\pi_{\deleted{\unsure{\pi}}}\arrow[r]&0
+\end{tikzcd}}
+d'où le résultat
+\[
+\text{si }i\ne2j,2j+1,\qquad H^i(X,\mathbf{Q}_\ell(j))=0
+\]
+si $i=2j$
+\diagram{\begin{tikzcd}
+H^{2j}(X,\mathbf{Q}_\ell(j))={}&H^{2j}(\overline{X},\mathbf{Q}_\ell(j))^\pi\arrow[d,phantom,"\wr" description,"\text{Conj. de Tate}"]\\
+&A^j(X/k)\otimes_{\unsure{\mathbf{Z}|\mathbf{Q}}}\mathbf{Q}_\ell
+\end{tikzcd}}
+si $i=2j+1$
+\diagram{\begin{tikzcd}
+H^{2j+1}(X,\mathbf{Q}_\ell(j))={}&H^{2j\deleted{\unsure{+1}}}(\overline{X},\mathbf{Q}_\ell(j))_\pi\arrow[d,phantom,"\wr" description,"\substack{\text{Tate + action}\\\text{semi-simple}}"]\\
+&A^j(X/k)\otimes_{\unsure{\mathbf{Z}|\mathbf{Q}}}\mathbf{Q}_\ell
+\end{tikzcd}}
+
+Soit maintenant $k_n$ l'extension de degré $n$ de $k$ dans $\overline{k}$, et étudions
+\[
+\varinjlim_n H^i(X_{k_n},\mathbf{Q}_\ell(j))
+\]
+on trouve $0$ pour $i\ne2j,2j+1$ ; pour $i=2j$, on trouve
+\[
+H^{2j}(\overline{X},\mathbf{Q}_\ell(j))^{\unsure{\mathfrak{g}|0}}=A^j(\overline{X})\otimes_{\unsure{\mathbf{Z}|\mathbf{Q}}}\mathbf{Q}_\ell,
+\]
+enfin pour $i=2j+1$, on trouve également $A^j(\overline{X})\otimes_{\mathbf{Z}}\mathbf{Q}_\ell$.
+Donc on \unsure{trouve} \inserted{\unsure{du pt de vue motifs}}
+\[
+\begin{array}{rcl}
+\varinjlim H^i(X_{k_n},\mathbf{Q}(j))&=&\begin{cases}
+0&\text{si }i\ne2j,2j+1\\
+A^j(\overline{X})\otimes_{\unsure{\mathbf{Z}|\mathbf{Q}}}\mathbf{Q}&\text{si }i=2j\deleted{,2j+1}\\
+\deleted{\unsure{A^j(\overline{X})}}\ \mathrm{id}&\text{si }i=2j+1,
+\end{cases}\\
+\rotatebox{90}{$=$}&&\text{mais pas \uuline{canoniquement} en }\unsure{k}\ !\\
+H^i(\overline{X},\mathbf{Q}(j))&&\inserted{\unsure{fonctoriellement}}
+\end{array}
+\]
+\margin{\uline{N.B.} \unsure{Remplacer} $k$ par $k_n$ revient à multiplier l'isom obtenu par \unsure{$n$} ---}
+''',[
+('top','text','X projective lisse sur k corps fini'),
+('upper','text','Par passage à la limite'),
+('upper','diagram','0 → H^{i-1}(Xbar,Q_l(j))_π → H^i(X,Q_l(j)) → invariants → 0'),
+('upper middle','text','d’où le résultat'),
+('upper middle','display','si i ≠ 2j,2j+1: H^i=0'),
+('middle','diagram','si i=2j: H^{2j} = invariants; Conj. de Tate; A^j tensor Q_l'),
+('middle','diagram','si i=2j+1: H^{2j+1} = coinvariants; Tate+action semi-simple'),
+('middle lower','text','Soit maintenant k_n l’extension'),
+('lower','display','lim H^i(X_{k_n},Q_l(j))'),
+('lower','text','on trouve 0 pour i ≠ 2j,2j+1'),
+('lower','display','H^{2j}(Xbar,Q_l(j))^g = A^j(Xbar) tensor Q_l'),
+('lower','text','enfin pour i=2j+1'),
+('bottom','text','Donc on trouve'),
+('bottom','display','lim H^i(X_{k_n},Q(j)) = cases; H^i(Xbar,Q(j))'),
+('bottom right','text','mais pas canoniquement en k !')
+],remarks='Dense footer read using two large enlargements; wording above the last cases and cancelled third case are low-confidence. Handwritten Z/Q tensor bases repeatedly overdrawn. Last vertical equals and tiny functorial qualification preserved.')

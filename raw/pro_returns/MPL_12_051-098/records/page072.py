@@ -1,0 +1,18 @@
+from save_page import save_page
+save_page(72,r'''\scanpage{72}
+% archive foliation: 71
+% Typescript is upside down in the supplied whole-page orientation.
+\deleted{
+Ceci donne une démonstration plus sympatique et élémentaire de 11.9.6. Quant à 11.9.3. (ii), il varésulter d'un
+
+\uline{Lemme} (ou corollaire à la proposition précédente). Sous les hypothèses de la proposition, ne supposons plus \unsure{néc|nec} que $A'$ soit projectif sur $A$, mais seulement ceci: pour tout quotient intègre $B=A/\underline{p}$ de $A$, posant $B'=B\otimes_A A'$, il existe un $h\ B-(0)$ tel que $B_h$ soit \deleted{projectif} \inserted{libre} sur $A_h$.
+Alors la conclusion de la proposition reste encore valable.
+
+Soit en effet $\phi$ une section de $F'$ dont les images par les $u'$ sont nulles, prouvons $\phi=0$, i.e. $\mathrm{supp}\,\phi=\varnothing$. Dans le cas contraire, il existerait un point maximal $x'$ dans $\mathrm{supp}\,\phi$, correspondant à l'idéal premier $\underline{p}'$ de $A'$. Soit \deleted{$\underline{p}=\unsure{\underline{p}'\cap A'|\underline{p}'\cap A}$} \inserted{$x$} son image dans $X$, défini par l'idéal $\underline{p}$ trace de $\underline{p}'$ sur $A$, alors en vertu de l'hypothèse appliquée à $A/\underline{p}$, on voit que, quitte à remplacer $X$ par un voisinage ouvert affine de $x$, on peut supposer que $\unsure{B'|A'}/\underline{p}B'$ est \deleted{projectif} \inserted{libre} sur $A/\underline{p}$. Notons que nous pouvions choisir $x'$ de façon que $x$ soit également maximal dans $g(\mathrm{supp}\,\phi)$ (commencer par choisir $x$ maximal dans $g(\mathrm{supp}\,\phi)$, puis $x'$ maximal dans $g^{-1}(x)$), ce qui signifie que localisant en $\underline{p}$, le support de $\phi_{\underline{p}}$ est contenu dans $\mathrm{Spec}(A'_{\underline{p}}/\underline{p}A'_{\underline{p}})$, donc $\phi_{\underline{p}}$ est annulé par une puissance de $\underline{p}\,A'_{\underline{p}}$, ou encore que l'on peut trouver $h\ A-\underline{p}$ tel que
+}
+''',[
+('bottom of original; start of rotated text','text','Ceci donne une démonstration plus sympatique'),
+('lower original; next in rotated reading','text','Lemme (ou corollaire à la proposition précédente)'),
+('middle original; next in rotated reading','text','Alors la conclusion de la proposition'),
+('middle through upper original; rotated reading','text','Soit en effet φ une section de F’')
+],sheet_kind='reused_typed',remarks='Original whole and halves viewed, then 180-degree rotation for reading; full reused typescript cancelled by one long diagonal pen stroke. Typed overstrikes and replacement libre retained. No membership glyph is visible in h B-(0) or h A-p; none supplied.')

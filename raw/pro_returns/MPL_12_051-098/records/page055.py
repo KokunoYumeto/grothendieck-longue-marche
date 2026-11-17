@@ -1,0 +1,18 @@
+from save_page import save_page
+save_page(55,r'''\scanpage{55}
+% archive foliation: 54
+Le cas 1°) \deleted{\unsure{dit}} signifie aussi que $T_\ell(E)(\beta)$ est tel que $\pi_1(X)$ y opère à travers un \uline{quotient} \uline{fini} [Mais cet énoncé ne se généralise guère via filtration de $\pi_1$, comme on voit sur $X=\mathrm{Spec}$ corps fini].
+
+Supposons $E$ \inserted{$\in\mathrm{Ob}\,M^+$} \uline{semi-simple}, donc $T_\ell(E)$ semi-simple. Soit $E_i$ la composante de $E$ de type dimensionnel $i$, comment caractériser $T_\ell(E_i)\subset T_\ell(E)$ du pt de vue Galoisien ?
+\inserted{Lorsque $X=\mathrm{Spec}$ corps fini, c'est purement \unsure{arithmétique} en termes de Frobenius.}
+
+\deleted{
+\unsure{les poids} \deleted{\unsure{homogènes de degré}} [la décomposition de $T_\ell(E)$ en composantes \deleted{\unsure{de degré}} homogènes est canoniquement déterminée]. On est ramené de proche en proche \deleted{[\unsure{Autant que}} \deleted{$\unsure{\mathbf{Z}(1)}$ et} [disons que le type dimensionnel précédent] à donner le maximum de type \inserted{dimensionnel} $i$, \unsure{quel cas de type dimensionnel} \deleted{\unsure{type dimensionnel 1}} \deleted{\unsure{alors}} \deleted{\unsure{le type dimensionnel}} \deleted{\unsure{qui sont des}} \unsure{qui sont nuls}.
+}
+\deleted{Le cas général \unsure{ne} \illegible{1} difficulté \unsure{pas} \illegible{2}, \unsure{si on connaît tous les Frobenius $\in\pi_1$}...}
+''',[
+('upper','text','Le cas 1°) signifie aussi que T_l(E)(beta)'),
+('middle','text','Supposons E semi-simple; composante E_i; du pt de vue Galoisien ?'),
+('lower; overwritten draft','text','la décomposition de T_l(E) en composantes homogènes'),
+('lower; crossed draft continuation','text','On est ramené de proche en proche; type dimensionnel'),
+('bottom edge','text','Le cas général; difficulté; Frobenius in pi_1')],remarks='Whole page, both halves, two enlarged lower crops inspected. The heavily cancelled lower passage is a low-confidence, fragment-by-fragment reading; physically obscured words are counted in place. The upper two paragraphs are substantially clearer.')
