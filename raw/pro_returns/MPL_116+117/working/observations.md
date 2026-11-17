@@ -1,0 +1,82 @@
+> First-pass process record, superseded by the audited frozen transcription and final research notes wherever they differ.
+
+- 116 scan 002: Cover title: “Mapping cone”; no authorial page count is visible.
+- 116 scan 003: Loose sheet contains unproved shorthand “i est tot 0-asph.” and localization/pl. fid. assertions. Several superscripts are pale or overwritten; do not infer mathematical conventions from them.
+- 116 scan 003: The archive foliation 2 is at lower left. No authorial page number is identified.
+- 116 scan 004: Own heading “Relation entre morphismes de topos et recollements de topos.” No title page count.
+- 116 scan 004: Withdrawn/reworded on the same scan: “strictement asphérique” has “asphérique” struck out and “équiv. h.” (uncertain final abbreviation) inserted; cohomology formula for every sheaf immediately follows.
+- 116 scan 004: Unproved assertions: topological/topos mapping-cone construction; the closed inclusion gives cohomology isomorphisms for every sheaf; marginal retraction r with displayed r^*; marginal amalgam formula.
+- 116 scan 004: Explicit reading issue: a separate lower mark at f^* in (2), and heavily overwritten 0/1 indices, must not be silently regularized.
+- 116 scan 004: An open parenthesis in the final recollement paragraph is preserved because no closing one is securely visible.
+- 116 scan 005: Self-flagged: “fort asphérique (réciproque ?)” and a separate large marginal “?”; this is a question, not an established converse.
+- 116 scan 005: Gluing characterization requires preservation of arbitrary inverse limits and a left adjoint f^* that is left exact; the text underlines “plus”.
+- 116 scan 005: Relative cohomology is defined as supported cohomology on the gluing topos, with f “sous-entendu”; two exact sequences (5), (5′) are displayed. Last line specializes to F_0=f^*(F_1), u tautolog.
+- 116 scan 005: Insertion “distinguer un” has uncertain attachment; the visible original “un” is retained rather than silently deleted.
+- 116 scan 006: Withdrawn/reworded on this scan: “asphérique” replaced by “équiv. faible” in the assertion about f; the open inclusion into the mapping-cone is asserted to have the same property.
+- 116 scan 006: The locally constant sheaf triple is visibly written with F_1 first, followed by f^*(F_1); retained without reordering.
+- 116 scan 006: The NB ends with an ambiguous support index which appears 0; do not normalize to 1 from context.
+- 116 scan 006: Open subtopos is related to a morphism into Top(Δ_1); universal open {0} and closed {1} explicitly recorded.
+- 116 scan 007: He seeks conditions on (X_0,X_1,φ) ensuring that both inclusions are weak equivalences; this is a programmatic question, not an assertion for every recollement.
+- 116 scan 007: “accessible” is inserted among the properties of the gluing functor.
+- 116 scan 007: The inserted phrase is “i.e. a un adjoint à droite f^*”, despite φ=f_* and inverse-limit preservation in the surrounding text; preserve droite and discuss any inconsistency only in the notes.
+- 116 scan 007: He explicitly drops the previous left-exactness assumption: “mais on n’a pas envie de le supposer ici”.
+- 116 scan 007: Near the end an X-hat-like expression is deleted and replaced by Top(X), X in (Cat).
+- 116 scan 008: The left-adjoint wording “à g. f^*” here differs from “à droite f^*” inserted on scan 007; do not use this later statement to correct scan 007.
+- 116 scan 008: He explicitly passes from presheaf topoi to a bifunctor X_0^op × X_1 → (Ens), with displayed value h(x_1,x_0); the reversed argument order is retained.
+- 116 scan 008: Lower half blank apart from archive foliation 7.
+- 116 scan 010: Loose note: “A fibrant” and underlined “iso” over the comparison between inverse limits over A_/b and A_b, for all F on A (or A_/b); no proof or explicit quantification on b.
+- 116 scan 010: The square A ← A′, B ← B′ and the sideways “∫ dans Hot” are separate jottings with no written explanation linking them.
+- 116 scan 010: Blank omitted scan 009 is absent from the supplied image set, as stated in the prompt; supplied scan 010 has archive foliation 9.
+- 116 scan 011: Reused typed sheet: university defence notice, dated “MONTPELLIER, le 19 JUIN 1981”, announcing 30 June 1981, 16 h 30. This is the notice’s date, not an autograph date for the mathematical notes.
+- 116 scan 011: Title: “AVIS DE SOUTENANCE D’UN DIPLOME D’ETUDES SUPERIEURES D’UNIVERSITE”; no authorial mathematical page count.
+- 116 scan 011: Full printed text and signature are transcribed; stylized signature reading explicitly uncertain and flourishes approximated in TikZ.
+- 117 scan 002: Autograph heading “Structure des dérivateurs”; autograph date “déc. 83”. This is internal dating evidence, unlike the reused printed notices.
+- 117 scan 002: Three levels of Hom are distinguished: set, object of (Hot), and underlined internal object in Hot(I). All spellings of the homotopy operator retain a suffix doubt.
+- 117 scan 002: The two adjunction groups include internal Hom projection formulas, boxed (3′) and corrected (3′′), with f_* on their right sides.
+- 117 scan 002: The right-hand note says that (2′) is obtained by integrating ∫_J; some preceding words about π_0 remain uncertain.
+- 117 scan 002: No proof of these structural/enrichment formulas is given on this sheet. The correction of (3′′) must be preserved in the comparison with later derivator texts.
+- 117 scan 003: Scratch sheet of Hom, π_0/π_1, paths, parallel arrows and zigzags. No connected proof or explicitly quantified theorem is written.
+- 117 scan 003: The expressions Ch_W(x,y) (cancelled) and Cl(M,W), with a possible “simplexes purs” note, may bear on localization constructions; any identification with a named later model must be treated as a research lead.
+- 117 scan 003: A formula beginning π_1(x,y;f)= has its right-hand side cancelled; do not quote the deleted side as an assertion.
+- 117 scan 003: Bottom edge cuts a further line; only small upper fragments of its writing survive in the supplied scan.
+- 117 scan 004: Programmatic a–g list; e says On a sans doute, and proposes mapping objects in Hot and explicit simplicial complexes, rather than supplying a construction.
+- 117 scan 004: Margin calls the homotopical notions indispensable for derived categories and f/g operations particulièrement peu comprises (reading tentative).
+- 117 scan 004: Model truncations versus delicate truncations on H; invariants pi_i or H_i in an associated often abelian category.
+- 117 scan 005: Explicit dated margin (24.11.83) asks for relations between internal Hom and Homhot(x,y) in Ob Hot from e), with double question mark.
+- 117 scan 005: K(H) from exact triangles and higher K_n proposed; author asks Cas additif seulement ?!?.
+- 117 scan 005: Final Sauf peut-être les Structures f) et g), il semble que tout puisse se décrire en termes de (M,W subset Fl(M)); underlined Dégager les bons axiomes.
+- 117 scan 006: Authorial pagination 1 starts here; archive foliation 5 is separate. Strict 2-contravariance and alpha_A evaluation are introduced, with size terminology repeatedly revised.
+- 117 scan 006: H(Delta0)=Hot_H and general Hom(B,A) action yield evaluation when B=Delta0.
+- 117 scan 007: Nonmathematical reused account sheet, separate from exposition; all entries transcribed. No date or authorial page count; archive numeral 6 only.
+- 117 scan 008: Hot 1 coproduct-to-product axiom survives at top. Large lower draft of integration via H(Ahat), L_A, and f_! is cancelled with long diagonal strokes; should be classified as withdrawn working formulation, not adopted axioms.
+- 117 scan 009: Second nonmathematical account sheet: Grothendieck column has a dash, Charles column 858,00 and matching total; no date.
+- 117 scan 010: Reformulated Hot 2 requires left adjoints; explicit caution Il faut faire Attention, s’il ne faudrait pas se borner ici aux f cofibrants, marginal voir.
+- 117 scan 010: Declared f_! direction repeats H(B)→H(A) despite left-adjoint prose; preserve as manuscript mismatch and flag reading/mathematics separately.
+- 117 scan 010: Transitivity integral_A X=integral_B f_!(X); NB links f_! existence to sums and apparently says Bien voir comment. Hot 3 right adjoints/cointégration introduced.
+- 117 scan 011: Third administrative account sheet, all rows and totals included; no authorial mathematical page number or date.
+- 117 scan 012: Duality stated by H°(A)=H(A)° without explicit A-opposite in this formula; left/right adjoints and integrals/products exchange.
+- 117 scan 012: Margin asserts existence of f_* implies products in H(A), preserved by f_*. Additive/k-linear case addressed in a short final paragraph.
+- 117 scan 013: Fourth administrative account sheet, Roby and Nouazé headings, two Thérond entries and total. No authorial mathematical number or date.
+- 117 scan 014: Ex 1 representable/ordinary diagram theory with arbitrary limits and colimits called trivial; Hot_H=M.
+- 117 scan 014: Ex 2 construction H(A)=W_A^{-1}Hom(A,M), W_A objectwise weak equivalences, restriction evident. Margin cautions about coproduct/product compatibility, apparently except finite I; exact opening words uncertain.
+- 117 scan 015: Fifth reused administrative account sheet; no date or mathematical exposition.
+- 117 scan 016: M→M′ preserving W induces a transformation commuting with restrictions; text explicitly says this does not imply commutation with left/right adjoints.
+- 117 scan 016: For W,W′ consisting of isomorphisms, adjoint commutation reduces to preservation of colimits/limits; equivalence case continues next manuscript page.
+- 117 scan 017: Sixth reused administrative account sheet: both columns have a dash; no date or mathematical numbering.
+- 117 scan 018: Sufficient criterion for pointwise equivalence of special theories: f has a right adjoint g, f⁻¹(W′)=W, and counit fg(X′)→X′ lies in W′. Written transfer to all diagram categories, with no full proof on this sheet.
+- 117 scan 018: Name spéciale for theories described by a pair (M,W); says this imposes draconian conditions without enumerating them.
+- 117 scan 019: Administrative sheet headed 1981; does not independently date the mathematical writing.
+- 117 scan 020: Explicit question about common pair (M,W) receiving maps from two presentations and realizing the given isomorphism of associated homotopy theories.
+- 117 scan 020: Ex 3: M=Cat and W a fundamental localizer. Author claims existence of left adjoints already proved, but explicitly not yet right adjoints; speculates finiteness conditions on A,B might be necessary.
+- 117 scan 021: Ex 4: complexes in an abelian category and quasi-isomorphisms; identifies diagram categories with complexes of diagram categories and, for sheaves, with modules on a product topos.
+- 117 scan 021: Self-correction: initially claims generally no left adjoint to inverse image on derived categories, then Si pourtant reverses this. Assertion of exactness/preservation of quasi-isomorphisms needs careful qualification, not silently repaired.
+- 117 scan 021: Hot 4 base-change conditions: f cofibrant for left Kan, f fibrant for right Kan; alternatives involving g explicitly have double question marks.
+- 117 scan 021: Hot 5 asserts fully faithful indexing functor gives localization and fully faithful adjoints; Hot 6 asserts indexing localization gives fully faithful restriction and localization adjoints. These assertions are not proved on this sheet.
+- 117 scan 022: Cofinality program asks conditions ensuring ∫A₀ i*ξ≈∫Aξ. Explicit je présume and circled question mark on i_H*=j!H for an adjoint pair; footnote later supplies argument via presheaf square.
+- 117 scan 022: Marginal question on filtered categories and cofinal functors; not a proof that total asphericity implies filteredness.
+- 117 scan 022: Example terminal object should evaluate integral; diagram indices after substitution may themselves be draft slips (i/j), retained uncertain.
+- 117 scan 023: Hot 7 asks locally surjective restriction/gluing on arrows for full subcategories that are both sieves or both cosieves; only speculates (elle a des chances) about bijectivity on objects.
+- 117 scan 023: NB pushout A=A′⨿A₀A″ in Cat; applications to a branching category, its dual, and products by any B∈Cat.
+- 117 scan 024: Typed circular dated 15 April 1983, meeting 28 April, course planning 1983–1984. Date belongs to reused paper, not an authorial date of Hot 7.
+- 117 scan 025: Diagrammatic iteration of loop/fibre sequence Y←X←Z←ΩY←ΩX←ΩZ… with inserted e objects, morphisms f,g,h and their loop iterates; no accompanying theorem or exactness definition.
+- 117 scan 026: Reused ministry circular dated 30 March 1983, receipt 11 April and transmission 13 April 1983. These dates concern the paper and cannot alone date the mathematical diagrams on its reverse.

@@ -1,0 +1,34 @@
+- 116 scan 002: Cover reread: Mapping cone, no hyphen or accent; archive foliation 1 only.
+- 116 scan 003: Reread complete sheet; retained explicitly doubtful indices and clipped top adjunction. Added the visible vertical separator.
+- 116 scan 004: Margins reread in rotated crops; retained cancelled amalgam expression. Replaced expanded même by the literal = sign; marked f/h in corrected équiv. and a doubtful tuple parenthesis.
+- 116 scan 005: Full rereading of conditions, relative long exact sequences and overwritten 0/1 indices; literal = shorthand harmonized from the ink. No mathematical correction of indices.
+- 116 scan 006: Compared triangle directions, replacement of asphérique by équiv. faible, tuple order F₁,f*F₁ and open/closed subtopos paragraph. Retained source order and doubtful index.
+- 116 scan 007: Reread every insertion and adjunction direction. The ink says à droite; kept despite the variance issue. Literal = shorthand confirmed.
+- 116 scan 008: Confirmed opposite written op, hats, direction of extension and visibly reversed argument order h(x₁,x₀).
+- 116 scan 010: Checked four-arrow square, inverse-limit restriction, isolated i_b/j_b and rotated integral-in-Hot note. Ambiguous comparison arrow remains marked.
+- 116 scan 011: Rechecked the complete reused thesis notice, chemical formulae, jury, signature, and archive foliation; no change.
+- 117 scan 002: Checked all Hom operators against the enlarged lower half; Homht/Homhot remains locally doubtful. Confirmed literal equals shorthand and added the two unlabelled curved annotation strokes.
+- 117 scan 003: Compared each loose diagram and formula, including a high-resolution crop of the lower-left higher-cell sketch; restored its lower reverse arrowhead and placed the horizontal arrow between the two vertical cells.
+- 117 scan 004: Rechecked programme items, both marginal braces and prose notes, the crossed list item and overwritten numbering; retained the locally doubtful word endings.
+- 117 scan 005: Rechecked the K-theory question, dated marginal Homhot note, two-variable formula and overwritten numbering; enlarged the uncertain variables and important/imposé without removing their doubt marks.
+- 117 scan 006: Rechecked strict variance and the evaluation/currying displays; enlarged the restriction arrow and confirmed its terminal hook. Added local doubt to ornate X and fixed a missing math delimiter around the deleted H.
+- 117 scan 007: Rechecked the rotated account sheet, names and every amount. Corrected the table row terminator and aligned the right-hand total with the second left-hand entry, as in the scan.
+- 117 scan 008: Checked naturality square (5), Hot 1 and all contents of the cancelled lower draft. Confirmed that only L itself is underlined in the L_A labels; retained the doubtful doubled stars and overwritten Hot 2.
+- 117 scan 009: Rechecked the whole administrative sheet, both headings, dash, 858,00 entry and total; no change.
+- 117 scan 010: Confirmed the written B-to-A variance of f_!, the unclosed parenthesis and cofibrancy warning. Wider rotated inspection changes the NB ending to Bien sûr les f_! y commutent, with local doubt retained.
+- 117 scan 011: Rechecked every amount, total and name on the reused account sheet; the three existing name/digit doubts remain.
+- 117 scan 012: Checked products, the marginal commutation assertion, both duality formulae and the additive case. The missing/overwritten opposite-circle alternatives remain visible in the transcription.
+- 117 scan 013: Rechecked the oppositely rotated account sheet, all amounts, headings, braces and dash; retained the Thérond/Théond uncertainty.
+- 117 scan 014: Rechecked both examples and enlarged the complete lower half and oblique margin. Separated the main-text insertion pose from the marginal line; revised the warning to il n’est pas clair ici que, with explicit doubt.
+- 117 scan 015: Rechecked the complete account sheet: Moreau/Molino headings, Maury/Albert/Giraud entries and both totals; no change.
+- 117 scan 016: Rechecked functoriality, the insertion bi, the separate f_!/f_* qualification and both limit arrows; kept the final A/opposite-marker ambiguity.
+- 117 scan 017: Rechecked both account headings, Fixe/Points labels, braces and dashes; no additional writing is visible.
+- 117 scan 018: Rechecked both sufficient conditions, overwritten indices in the adjunction diagrams, equals-sign shorthand, and the inverted crossed prior-use address. No additional correction.
+- 117 scan 019: Rechecked the 1981 account sheet, every amount and both grouping braces. Replaced the header spanning syntax with explicit cells and completed the final row terminator; written content unchanged.
+- 117 scan 020: Rechecked the comparison-pair question and Ex 3 existence/finiteness remarks. The cancelled word above the comparison diagram appears closer to définition; retained relation as an alternative.
+- 117 scan 021: Rechecked both halves, the oblique marginal note, all three Hot axioms and the withdrawal in Ex 4. Enlarged lower-left prose suggests pas dur; added local k/h doubt and preserved quasi-isom. en iso exactly.
+- 117 scan 022: Rechecked cofinality, all adjunction corrections, proof footnote and the pale inverted fragment. Marked the uncertain word after qui est and removed an unsupported arrowhead on the plain diagonal p stroke.
+- 117 scan 023: Rechecked the complete Hot 7 statement, apparent repeated de réunion A, pushout marginal note and fork drawings. Harmonized the xi/zeta uncertainty with the preceding page rather than silently choosing a Greek letter.
+- 117 scan 024: Rechecked the full typed D.E.A. circular, date, room/time, course-year range, dashed underlining and signature; no change.
+- 117 scan 025: Checked all staircase exponents and arrow labels row by row, both chains and sketches. Converted the lower two-square diagram to tikz-cd, retained the two isolated points, and explicitly marked the crossed trial as deleted.
+- 117 scan 026: Rechecked the whole typed circular, address, reception and Montpellier stamps, handwritten transmission, signature and P.S.; no reading changed.
