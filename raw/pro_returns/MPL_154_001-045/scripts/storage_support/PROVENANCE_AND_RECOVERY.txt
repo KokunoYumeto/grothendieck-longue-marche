@@ -1,0 +1,57 @@
+PERSISTENCE SUPPORT — MPL_154_001-045
+
+Scope: administrative file persistence only. The support agent did not inspect
+scans, page transcriptions, the context ZIP, or research content, and did not
+create or upload a checkpoint.
+
+Helpers were retrieved from the current c0/library skill during this run and
+copied here on 2026-11-17 13:28:21 UTC. The only companion required by the transfer
+helper is library_hosted_apps.py. Both files are unmodified except for the final
+newline added when writing the downloaded resource.
+
+Source resources:
+skill://plugin_connector_1p_1b8ff8edfc1481918b252c8277e23125/library/scripts/library_file_transfer.py
+skill://plugin_connector_1p_1b8ff8edfc1481918b252c8277e23125/library/scripts/library_hosted_apps.py
+
+SHA-256 of these copies:
+library_file_transfer.py  acd44c7471495a240e4f2d97037fe6f83c48793ab98938801e5393f5584a029b
+library_hosted_apps.py    cf40f74293ed9f4739c9ce2bca38003155a278420c375fb412de633efed7dbf8
+
+Current-run upload procedure (one ZIP smaller than approximately 50 MiB):
+1. Root creates the complete checkpoint at the hourly mark. First due:
+   2026-11-17 13:33:10 UTC. Use a new sequential checkpoint number; never overwrite.
+2. In one functions.exec invocation, call
+   tools.mcp__codex_apps__library_create_library_file({
+     file: ABSOLUTE_ZIP_PATH, library_artifact_type: "other"
+   }). Do not return to the model before completing step 3.
+3. Prefer structuredContent; otherwise parse the JSON text result. Inspect the
+   per-item success status and obtain its exact returned library_file_id and
+   complete xattrs array, or [] when no xattrs were returned. Invoke:
+   python3 ABSOLUTE_HELPER_PATH apply-xattrs ABSOLUTE_ZIP_PATH LIBRARY_FILE_ID
+   Send that complete xattrs array as JSON on stdin. Quote all shell arguments
+   properly; do not interpolate returned data into unquoted shell code.
+4. Require helper exit code zero. Retain the complete returned metadata and
+   original local path together: library_file_id, file_id, version, filename,
+   Library path, and xattrs. Do not read back merely to confirm a successful save.
+5. If the create succeeded but metadata application failed, retry only the
+   metadata helper after diagnosing the failure; do not create a duplicate file.
+
+The create tool schema, rechecked at 13:28 UTC, is unchanged:
+{ directory_id?: string|null, file?: string, files?: string[],
+  library_artifact_type?: "other"|"image"|"image_gen"|"report"|"sheet"|"slides"|null }
+Exactly one of file or files is required; files permits 1–20 paths.
+For larger/multiple uploads, consult the current Library skill's prepared-upload
+route rather than bypassing it.
+
+Recovery in a new run:
+Read the current Library skill and refresh its helpers in a new private
+directory according to that skill's current instructions. This archived copy
+records the procedure and code used by this run; it is not an instruction to
+reuse stale helpers. Restore the checkpoint's working files and the original
+attachments. Do not use Library search/list or access unrelated files.
+Continue from progress.log, preserving the one-reader transcription rule and
+the prohibition on opening context until the transcription audit and freeze.
+
+Final delivery link after a successful final ZIP upload:
+[MPL_154_001-045.zip](https://chatgpt.com/library?file_id=EXACT_RETURNED_LIBRARY_FILE_ID&account_id=personal)
+The final ZIP is the only user-facing download.
