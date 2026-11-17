@@ -1,0 +1,32 @@
+% Temporary syntax-check wrapper only; not part of the transcription fragment.
+% Compile from MPL_137_045-086/, with a normal TeX installation supplying
+% amsmath, amssymb, tikz-cd, ulem, xcolor, and graphicx.
+% This wrapper has NOT been compiled here: the installed engines cannot find
+% article.cls, pdflatex.fmt, amsmath.sty, tikz-cd.sty, or ulem.sty.
+% Editorial macros are deliberately transparent for a syntax smoke check.
+% They are not a proposed appearance for a publishable edition.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz-cd}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor,graphicx}
+\newcommand{\cotefile}[1]{\par\bigskip\noindent Cote #1\par}
+\newcommand{\scanpage}[1]{\clearpage\noindent Scan #1\par\medskip}
+\newcommand{\mspage}[1]{\par\noindent Manuscript page #1\par}
+\long\def\deleted#1{#1}
+\long\def\inserted#1{#1}
+\long\def\margin#1{#1}
+% Keep the expansion grouped: a frozen fragment can use \unsure directly as
+% the single token after a math subscript/superscript marker.
+\long\def\unsure#1{{#1}}
+\newcommand{\illegible}[1]{\ifmmode\text{[illegible #1]}\else[illegible #1]\fi}
+% Set the ampersand catcode BEFORE consuming the diagram argument. This is
+% needed because tikz-cd diagrams are supplied as arguments of \diagram.
+\def\diagram{\begingroup\catcode`\&=13\relax\diagrambody}
+\long\def\diagrambody#1{#1\endgroup}
+\long\def\figure#1{#1}
+\begin{document}
+\input{MPL_137_045-086_transcription.tex}
+\end{document}

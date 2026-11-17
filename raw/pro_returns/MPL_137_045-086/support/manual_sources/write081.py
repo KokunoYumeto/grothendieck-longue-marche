@@ -1,0 +1,30 @@
+import sys
+sys.path.insert(0,'MPL_137_045-086/support')
+from record import save
+text=r'''\scanpage{81}
+% archive foliation: 80
+Ainsi
+\[X\longrightarrow\Gamma^*(X)=(\Gamma^i(X))_{i\geq0}\]
+est un foncteur (pas \inserted{\unsure{néc.}} additif !)
+\[P_1\longrightarrow\operatorname{Grad}(P_1)\]
+qui est en fait un foncteur ``transformant sommes en $\otimes$''. Comme tout objet de $P_1$ est un \inserted{\unsure{objet}} groupe comm. pour l'opération $\oplus$, il s'ensuit que dans chaque $\Gamma^*(X)$ il y a une structure $\otimes$-algèbre \inserted{graduée} comm., fonctorielle en $X$.
+\margin{Pour $\unsure{\Gamma}$ \unsure{voir que} \unsure{ces assertions} \unsure{résultent des} \deleted{\unsure{bigradués}} \unsure{avec en fait} $2$ \unsure{structures}.}
+\deleted{En particulier}
+
+On en définit \inserted{dans $P_1$} un hom, fonctoriel en $X$
+\[\text{(\unsure{\alpha})}\qquad\Gamma^p(\Gamma^q(X))\longleftarrow\Gamma^{pq}(X)\]
+ou ce qui revient au m., un hom de degré $pq$
+\[X\longrightarrow\Gamma^p(\Gamma^q(X)).\]
+On prend le composé
+\diagram{\begin{tikzcd}[column sep=large]
+X\arrow[r,"\unsure{e}^X_q","{\substack{\text{hom univ.}\\\text{de degré }q}}"']&\Gamma^q(X)\arrow[r,"\unsure{e}^{\Gamma^q(X)}_p","{\substack{\text{hom univ.}\\\text{de degré }p}}"']&\Gamma^p(\Gamma^q(X))
+\end{tikzcd}}
+On a la condition ``d'associativité''
+\diagram{\begin{tikzcd}[column sep=huge,row sep=large]
+\text{(A)}&\Gamma^{pqr}(X)\arrow[r,"{\alpha^X_{\unsure{p,qr}}}"]\arrow[d,"{\alpha^X_{pq,r}}"']&\Gamma^p(\Gamma^{qr}(X))\arrow[d,"{\Gamma^p(\alpha^{\unsure{\Gamma^r(X)}}_{q,r})}"]\\
+&\Gamma^{pq}(\Gamma^r(X))\arrow[r,"{\deleted{\unsure{\Gamma}}\alpha^{\Gamma^r(X)}_{p,q}}"']\arrow[ur,phantom,"\text{comm.}" description]&\Gamma^p(\Gamma^q(\Gamma^r(X)))
+\end{tikzcd}}
+et d'\uline{unité} : l'\unsure{isom.} $\unsure{\alpha}$ est l'identité \unsure{car pour} $\Gamma^1X=X$, $\Gamma^0X=1$
+'''
+e=[('text','top','Ainsi'),('display','top','X -> Gamma*(X) = (Gamma^i(X))'),('text','upper','est un foncteur'),('insertion','upper parenthesis','néc.'),('display','upper','P1 -> Grad(P1)'),('text','upper-middle','qui est en fait un foncteur'),('insertion','above groupe','objet'),('insertion','above algèbre','graduée'),('margin note','left middle oblique','Pour Gamma ... 2 structures'),('deletion','within left margin','bigradués'),('deletion','middle','En particulier'),('text','middle','On en définit'),('insertion','middle above line','dans P1'),('display','middle','Gamma^p(Gamma^q(X)) <- Gamma^pq(X)'),('text','below middle','ou ce qui revient au m.'),('display','below middle','X -> Gamma^p(Gamma^q(X))'),('text','lower','On prend le composé'),('diagram','lower','X -> Gamma^q(X) -> Gamma^p(Gamma^q(X))'),('text','lower','On a la condition'),('diagram','bottom','A: Gamma^pqr to iterated Gamma'),('deletion','bottom diagram lower arrow label','Gamma'),('text','bottom','et d’unité')]
+save(81,text,e)

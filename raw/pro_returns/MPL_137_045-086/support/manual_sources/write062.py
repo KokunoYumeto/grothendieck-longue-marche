@@ -1,0 +1,40 @@
+import sys
+sys.path.insert(0,'MPL_137_045-086/support')
+from record import save
+s=r'''\scanpage{62}
+% archive foliation: 61
+\uline{Remarque} Supposons le \unsure{pt préc.} Alors
+la catégorie $\mathcal P\simeq\mathcal P_\bullet$ \deleted{\unsure{est ab.}} admet des $\Sigma$-
+noyaux (et des \unsure{Conoyaux}, mais un
+bimorphisme n'est pas néc. un iso). \deleted{Je}
+\deleted{\unsure{On fera attention que les mono}}
+c'est \unsure{tjs|donc} vrai que si $N$ est le noyau
+de $A\unsure{-|\longrightarrow}B$, alors $N\unsure{-|\longrightarrow}A$ est un $\Sigma$-
+mono, i.e. s'insère dans une suite $\Sigma$-exacte
+$0\longrightarrow N\unsure{-|\longrightarrow}A\unsure{-|\longrightarrow}A'\unsure{-|\longrightarrow}0$; mais le mono
+$A'\unsure{-|\longrightarrow}B$ ne sera pas en général un
+$\Sigma$-mono. Aussi on ne peut interpréter
+$(\mathcal P,\deleted{\unsure{\Psi^0}},C^\bullet,\deleted{\unsure{\Phi^\bullet,\varepsilon}}\inserted{\Sigma})$
+comme \unsure{sol. d'un} \unsure{Pb} universel en appliquant tels quels les
+développements précédents.
+
+\deleted{Mais, \deleted{\unsure{d'autre part}}\inserted{on peut} généraliser
+de façon naturelle, pour une
+$B$ $k$-linéaire, la notion d'objet plat,}
+\deleted{\unsure{et alors}} le syst. ci-dessus est universel
+pour les $B$ \inserted{$k$-additives}, \unsure{munis} d'un complexe
+de cochaînes \deleted{$\unsure{C^\bullet}$, et d'une \deleted{\unsure{ss}}\inserted{classe} $\Sigma$
+de suites exactes, telle que tt hom
+\inserted{$u:A\unsure{-|\longrightarrow}B$} de $B$ ait un noyau tel que
+$\operatorname{Ker}u\longrightarrow A$ soit $\in\Sigma$}
+$C^\bullet$ et d'une classe
+$\Sigma_C$ de suites exactes, telle que tt
+morphisme $u:A\unsure{-|\longrightarrow}B$ de $B$ admette
+un noyau $K$ tel que $K\unsure{-|\longrightarrow}A$ soit un
+$\Sigma_C$-mono : (on \unsure{prend} comme
+\unsure{morphismes entre tels syst. ceux qui}
+\unsure{transforme|transforment} $C^\bullet$ en $C'^\bullet$ et qui
+\unsure{soit|sont} $\Sigma$-exact \uline{à g}).
+'''
+e=[('text','heading and upper','Remarque Supposons le pt préc.'),('deletion','upper second line','est ab.'),('text','upper','noyaux et des Conoyaux'),('deletion','upper end of paragraph','Je'),('deletion','upper','On fera attention que les mono'),('text','upper middle','c’est tjs vrai que si N'),('display','upper middle inline','0 ->N-A-A prime-0'),('text','middle','A prime-B ne sera pas'),('display','middle inline','tuple P Psi0 C Phi epsilon Sigma'),('deletion','tuple first cancellation','Psi0'),('deletion','tuple second cancellation','Phi epsilon'),('insertion','above tuple','Sigma'),('text','middle','comme sol. d’un Pb universel'),('deletion','central crossed block','Mais généraliser de façon naturelle'),('deletion','inside crossed block','d’autre part'),('insertion','inside crossed block','on peut'),('deletion','central lower','et alors'),('text','central lower','le syst. ci-dessus est universel'),('insertion','above B','k-additives'),('deletion','lower crossed block','C bullet et d’une classe Sigma'),('deletion','inside lower crossed block','ss'),('insertion','inside lower crossed block','classe'),('insertion','left lower crossed block','u:A-B'),('text','lower live continuation','C bullet et d’une classe Sigma_C'),('text','bottom parenthesis','on prend comme morphismes')]
+save(62,s,e)
