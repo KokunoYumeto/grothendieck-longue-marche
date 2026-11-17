@@ -1,0 +1,48 @@
+- 12/002: Whole-page second reading checked against the saved fragment; unresolved crossed ink remains marked.
+- 12/003: Corrected pure to purement from the ink; checked level indices, cancellations, margins, and coproduct signs.
+- 12/004: Checked the two different weight expressions without correcting them, and the Tate/Hodge margin and tensor-category conditions.
+- 12/005: Rechecked the acting-letter doubt, tensor-functor diagram, characteristic-zero insertion, and circled proof reservation.
+- 12/006: Rechecked gerbe passage, regular-base pullback and fibre-functor indices; basepoint letter retained as a doubt pending the cross-page reconciliation.
+- 12/007: Enlarged the crowded heading: restored a star on T_Hdg and put the visibly raised 1 first in the inserted pi reading; crossed heading remains low-confidence.
+- Recurring basepoint: personally compared scans 006–008; the multi-bend form on 008 supports ξ. The same first reading is now used on 006, retaining ζ as an explicit alternative.
+- 12/008: Checked all four realizations and the wholly cancelled lower passage; compared basepoint shapes with 006–007.
+- 12/009: Enlarged the voit/voir alteration: peut is above the line and only the ending is overwritten, so the cancellation is now localized to t; checked the printed letterhead.
+- 12/010: An enlarged view resolves the boxed monodromy letter as phi, not rho; changed to varphi and retained the distinct projection letter on later pages.
+- 12/011: Rechecked all printed letterhead text and the absence of further manuscript text.
+- 12/012: Checked the retraction identity and dashed diagram, the semisimplicity insertion, and the Frobenius centre expressions; re-enlarged cancelled box remains physically obscured.
+- 12/013: Enlargement reads mod twist, replacing the first-pass torsion. Reordered the equality/inclusion doubt so the visible equal sign is first.
+- 12/014: Checked invariant quotient, finite-residue-field indexing, and both compatibility arrows.
+- 12/015: Rechecked grading alphabet, centrality condition, both Hodge cocharacters, and the deleted diagonalizable-group formula.
+- 12/016: Restored the visible Ob before C; kept the membership sign and Tate signs explicit as doubts, and checked which side bears complex conjugation.
+- 12/017: Rechecked P/P-prime and H/H-prime, the circled instruction, the Hodge insertion and the cut-off footnote; marked operation/application as uncertain.
+- 12/018: Enlarged the formula and restored its right arrow in place of an equal sign; recovered un vectoriel under cancellation, with a doubt mark.
+- 12/019: Checked Hodge-conjecture equality and empty positivity heading; marked the faint category connecting stroke as uncertain.
+- 12/021: Checked all nineteen numbered topics, the title box and inserted/replaced wording; nineteen is an item count, not a stated page count.
+- 12/023: Checked Ob, n nonzero, double underline on derived tensor, exactness, and proper-or-excellent condition; categorical M typography queued for cross-page consistency.
+- 12/024: Re-read whole sheet and enlarged, rotated upper-left margin; unresolved connective words remain explicitly marked. Category/object alphabet distinction queued for the cross-page notation reconciliation.
+- 12/025: Compared whole and both halves; restored dash-first readings in f_i0 and v_i, where no arrowhead is visible. Rechecked the inserted category phrase and the exact/faithful qualification.
+- 12/026: Re-read whole sheet, cancelled realization passage and both marginal qualifications. The first derived-category connector is a plain dash; marked the overwritten coefficient at the bottom Q/Z.
+- 12/027: Re-read all displayed signs and the lisse/geometrically connected insertions. Kept the overwritten Q/Z letters and clear final Z coefficients; changed X-to-S connector to dash-first doubt.
+- 12/028: Compared whole and lower half, including the diagonal marginal note; corrected final word sous to pour from its descender and letters. Marked the wavy object-map connector; retained the written +1 on the tensor factor.
+- 12/029: Re-read the complete page against the saved fragment, including the twist equivalence, internal Hom displays, added derived Hom and final f-shriek note. No lexical correction needed.
+- 12/030: Whole-page and enlarged lower-line comparison recovered a raised i and a wedge/lambda operator before u; corrected the former u-to-lambda-power reading, preserving the two visible glyph possibilities.
+- 12/031: Re-read all displays and weight-filtration insertions. Restored the centred check accent over the dual M and the heavy numeral-one alphabet; kept the written raised filtration indices and the instruction indices en bas.
+- 12/032: Re-read the cancelled beginning, both margin notes and every filtration index; enlarged the spaced-out word disons. Preserved the written dimension bound j and marked the plain X-to-Y dash.
+- 12/033: Re-read the full weight-filtration extension and the crossed comment below the zero convention. Retained the absent plus in the middle category expression and the explicit upper/lower-index distinction; the crossed words remain low-confidence.
+- 12/034: Whole and lower-half audit checked the added quotient identifications and equivalent/isomorphic revisions. Restored the tilde beneath the final inclusion symbol; kept the parity-sensitive C_i/C_2i doubt.
+- 12/035: Re-read main text and all marginal qualifications, with a rotated enlargement of the lower-left oval. The first line there now has formel as the ink-led candidate, finit as alternative; recovered tentative remarque in a crossed word. These readings remain low-confidence.
+- 12/036: Whole/lower-half audit restored a short crossed que before condition locale and the doubled underline on Ext. The heading Anneaux is readable, with straight ring M distinct from the category symbol below.
+- 12/037: Enlarged the word previously read unite: the leading ascender and remaining strokes support droite, retained as unsure because the middle is compressed. Restored a small crossed le/la before lambda-anneau and the underline on crossed elements. Rechecked category versus ring M.
+- 12/038: Re-read the free-module diagram and all Sigma index conventions; checked the hook-arrow directions and the absent parentheses in later exponents. The small object-map sign is retained as a wavy-arrow/mapsto doubt.
+- 12/039: Compared both the whole sheet and its upper half. The noun before inversible has the same d-led shape as droite on 037; corrected unite to the explicitly doubtful droite. Retained degree 1 and the brackets without an unwritten inverse.
+- 12/040: Re-read full sheet and enlarged final coefficient subscript, indexing condition and overwritten margin. The subscript is visibly wavy, so tilde is first. Replaced an editorial question-mark exponent by a low-confidence xi-minus-one candidate inside a deletion; recorded x,y/u,v ambiguity. The partition left index is 2i-first from the visible strokes.
+- 12/041: Re-read the entire page, the three cancellations and the final finite-group symbol. Preserved projetee/projective as a reading doubt; matched the centred dual accent over x and retained wavy-map doubts.
+- 12/042: Re-read the spectral-sequence display, coefficient overwrites, drawing and projectivity margin. Enlargements recovered tentative provenance de in the cancellation and a small codim p/en dim p annotation omitted on the first pass; reproduced the two stem-and-loop callout marks.
+- 12/043: Whole-page and enlarged marginal comparison restored a crossed isomorphism-like glyph before the live H^i connector, and retained the equals-like shorthand before composant. The unexpected K after gpe is visible and remains explicitly marked. Heading connector is dash-first.
+- 12/044: Whole-page and rotated-margin audit checked the cancelled injectivity/surjectivity questions and inserted transcendence-degree condition. In the difficult margin, replaced estimated unreadable words by tentative definition, rigide/rigidite and a/et candidates; all remain low-confidence. Marked map shapes from ink.
+- 12/045: Re-read the two-level dimension-filtration display and crossed lower expansion. Recast the gr-to-gr-prime display with its vertical equality as the actual two-dimensional diagram, removing the repeated left-hand expression introduced by linear typesetting.
+- 12/046: Re-read the overwritten beta/gamma indices and the sign qualification. Enlarged the faint phrase under lisse sur K and moved its uncertain deletion to that actual position; restored the underline and the oval around au signe pres. Preserved the equals-like shorthand after construction.
+- 12/047: Re-read the entire page, including the change from bipure component to image, the crossed de in the limit index, injectif replacing bijectif and the qualifier sans doute inutile. Preserved X in the categorical arguments and the uncertain overwritten plus.
+- 12/048: Re-read whole page, the inserted inclusion into the open-set cohomology limit, the two-arrow margin and the final faithfulness question. Enlarged the bracket about rational functions; kept via/si on as an unresolved ink reading rather than completing its syntax.
+- 12/049: Re-read all text and both inserted hypotheses, the repeated algebraic-closure margin, the two question examples and the small surface annotation. Kept the literal ring-bracket notation, the feminine ending candidate and spherique without replacing it by the expected algebrique.
+- 12/050: Re-read the ruled-variety question, each insertion, the small cancellation and the explicit negative answer in characteristic p. Kept the awkward opening wording and the E-times-E example exactly as legible.
