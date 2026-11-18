@@ -148,3 +148,11 @@ the question of cote 149, scans 35-36 ("Il se pourrait qu'on puisse en deduire P
 configuration exactness, even for complex curves; the run says the "cuspidalization literature" disputes or uses it.
 Check: (1) literature on E_C after 2017; (2) AG.40-AG.42 (sections in agent_geometric/); (3) which paper asserts full
 prime-to-p exactness and whether a published proof rests on it (as with F17, nobody is told before this is checked).
+
+## F19 (17 Nov 03:03 UTC; follow-ups @654) Knudsen 1983, Cor. 3.9(b) read globally: check before anyone is told.
+From the notes of MPL_147_003-047 (N048; cote 147, scans 030-031): for a stable chain E1 ∪ E2 ∪ E3 of elliptic curves
+with distinct j-invariants, the separating clutching map M̄_{1,1} × M̄_{2,1} → M̄_3 has two distinct preimages of the
+chain, so it is not a closed immersion (finite and unramified, Cor. 3.9(a), unaffected). Open Knudsen 1983 and decide
+whether the printed (b) is meant globally or only locally/onto its image, and whether the run's counterexample reads it
+as printed. As with F17 and F18, nobody is told before this is checked ([[informing-authors]]). Bounded; with the
+user's OK (Fable).

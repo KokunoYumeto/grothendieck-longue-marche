@@ -26,3 +26,16 @@ built from them goes through the push-rule lint (claude_tools/push_rule_pro_prom
   (g^12 = -27) and at E_i[1 - i] is -1 + i, so that S6's nomes are q1 = (w/1728)^2 g_a(rho)^12 and q2 = (w/1728) g_b(i)^6
   exactly; then decide whether S6's level-12 corner realizes the 12th root g_a(rho)/g_b(i) and so carries the Kummer
   character of 3^{1/4} (Delta's bit on G_{Q^ab}). Waits for F16.
+- **A6 (17 Nov 03:03 UTC; new cluster).** Grothendieck's tame topology (Esquisse §5-6 and §8; cotes 39, 120, 121,
+  150-152, 154, 156): ten items from the Pro notes (follow-ups @160, @210, @835, @168, @935, @1387, @944, @1008, @1003,
+  @1039; claims #133, rank 1; field_experts/UNPROMPTED_IDEAS_AUDIT_20261117.md, last section). One prompt, written when P063, P065 and SP04
+  have returned. Hua's conjectures 39-inverse-function-axioms-henselian and 154-generisation-cube go in, credited.
+- **A7 (17 Nov 03:03 UTC; new cluster).** Cycles, motives and integral structures (cotes 11, 14, 44, 56, 131, 133, 136,
+  153, 155): ten items (follow-ups @792, @1146, @120, @145, @237, @247, @305, @304, @215, @254), and from the claims
+  pass #243, #964, #189, #1039, #1264, and from the gap pass g1048 and g1004. One prompt, written
+  when P062, P081, P047 and P101 have returned. Hua's findings 14-albanese-equivalence-ring, 136-pd-de-rham-shadows and
+  conjecture 11-simplicial-bivariant-poincare-equivalence go in, credited.
+- **A8 (17 Nov; new cluster POLY, small).** Regular polyhedra over rings (Esquisse §4; cotes 72, 79): gap pass g1557
+  (the pinned regular hyperpolyhedra and the equivalence of 72/077) and g1558 (the level-N regular polyhedron against
+  the Farey map on X(N)). It waits for cote 79's six queued packages. Then it becomes its own prompt or the §4 part of
+  A6.

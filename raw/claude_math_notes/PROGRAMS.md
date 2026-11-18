@@ -53,3 +53,11 @@ programme.
   audit), about steps in other people's papers. (h): S6 and Derivateurs.
 - §31: S6 (the LG flat coordinate as S6's chart at its multiplicity-3 point) and outside (moonshine at Landau-Ginzburg
   points; the user's Eisenstein/Leech note).
+
+## Where the notes go (the user, 16 Nov 13:40 UTC, P5891; PLANS_REGISTER 'Our notes and our companion work as papers of their own')
+- S6 arithmetic notes (§30 (j), §31, §33-§34, corrected by §38) stay out of the S6 paper. They go either into a separate
+  paper on S6 and modular forms, or into the Galois side of the Grothendieck programme (Delta's bit, DELTA_ON_GT A.12),
+  inside the paper written from the companion work.
+- Companion work becomes papers of its own, after the companion is separate from the editions, framed as our results on
+  the programme Grothendieck outlined in the Montpellier archive. It cites his text and does not reproduce it, and can go
+  to Hexagon.
