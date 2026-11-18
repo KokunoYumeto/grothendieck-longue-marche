@@ -1,0 +1,417 @@
+\subsection{A prescribed-point criterion from an automorphism orbit}
+
+\begin{claim}{B.145}{Proved}{Long automorphism orbits force pointed class-number witnesses}
+Let $C/k$ be smooth, proper and geometrically connected of genus
+$g\ge2$ over $k=\mathbf F_q$ of characteristic $p$.
+Let $P\in C(k)$, let $\ell\ne p$ be an odd prime, and let
+$\chi:J_C(k)\twoheadrightarrow\mathbf Z/\ell$.
+Suppose there is $\tau\in\operatorname{Aut}_k(C)$ and
+$u\in(\mathbf Z/\ell)^\times$ such that
+\[
+ \chi\circ\tau_*=u\chi,\qquad
+ u\in\langle p\rangle,\qquad
+ m:=\operatorname{ord}_{\ell}(u)>g-1 .
+                                                            \tag{B.145.1}
+\]
+Put $a=\chi([\tau P-P])$.
+Index the constant twists of the associated pointed Lang cover by
+$t\in\mathbf Z/\ell$, so that a closed point of degree $d$
+acquires the added Frobenius translation $dt$.
+The only possibly bad twist, meaning one whose relative class
+number is divisible by $p$, is
+\[
+                              t=\frac{a}{u-1}.
+                                                            \tag{B.145.2}
+\]
+In particular, if $a\ne0$, the specified $P$-split cover, at
+$t=0$, is a class-number witness already over $k$.
+That same cover remains a witness over every constant extension
+of degree prime to $\ell$.
+There is no restriction that the order of $\tau$ be prime to $p$.
+
+An explicit genus-three plane-quartic example is
+\[
+ C:\ Y^3Z-YZ^3=X^4,\qquad
+ k=\mathbf F_{27}=\mathbf F_3[t]/(t^3-t-1),\qquad
+ P=(x,y)=(1,t),\qquad \ell=7 .
+                                                            \tag{B.145.3}
+\]
+The automorphism is $\tau(x,y)=(x,y+1)$.
+The character specified below has $u=2=3^2\bmod7$ and $a=1$.
+Its constant cyclic cover has genus fifteen and
+\[
+\begin{split}
+ \#J_C(k)&=18928,\\
+ \frac{\#J_D(k)}{\#J_C(k)}&=427439613252172921
+                                  \equiv1\pmod3,\\
+ \#J_D(k)&=8090576999637129048688 .
+\end{split}                                                   \tag{B.145.4}
+\]
+At this particular field and marking the least admissible
+witness prime is seven.
+All twenty-four points of $C(k)\setminus C(\mathbf F_3)$
+are certified by this character construction.
+The four original $\mathbf F_3$ pointings are not certified
+by the nonzero-shift hypothesis, but the separate finite twist
+calculation also gives them a degree-seven witness over $k$,
+with relative class number $121740744925904896$.
+For each original pointing the first field admitting an
+odd-prime class-number witness has degree three over
+$\mathbf F_3$, and seven is the least prime at that field.
+For the displayed seven twists over $k$, base change to
+$\mathbf F_{27^n}$ has relative class number prime to three
+exactly when $4\nmid n$ for twist one, and exactly when
+$28\nmid n$ for every other twist.
+At the stated field, the split pointed models are twist one
+for the four original markings and twists zero, four and six
+for the twenty-four new markings.  Twists two, three and five
+have no split $k$-rational marking; their assertion is only
+the relative class-number unit test.
+\end{claim}
+\begin{proof}
+\medskip\noindent\textbf{The general character polynomial and its degree modulo $p$.}
+We use the connected constant Lang cover attached to $\chi$,
+with its chosen rational point over $P$, as constructed in B.2.
+Fix a primitive $\ell$-th root of unity $\zeta$.
+For $i\ne0\bmod\ell$ let
+\[
+ A_d(i)=\sum_{\substack{D\ge0\\ \deg D=d}}
+              \zeta^{\,i\chi([D-dP])},\qquad
+                 L_i(T)=\sum_{d\ge0}A_d(i)T^d .
+                                                            \tag{B.145.5}
+\]
+The sum is over effective divisors defined over $k$.
+Its Euler product is the unramified character factor of the cover.
+We recall the exact Riemann--Roch reduction needed here.
+
+Identify $\operatorname{Pic}^d(C)(k)$ with $J_C(k)$ using $dP$.
+The number of effective divisors in a line-bundle class $M$
+is $(q^{h^0(M)}-1)/(q-1)$.
+For $d>2g-2$, that number is the same in every class, so
+nontrivial character orthogonality gives $A_d(i)=0$.
+For $g\le d\le2g-2$, Riemann--Roch and the same orthogonality
+give the exact identity
+\[
+ A_d(i)=q^{d+1-g}\zeta^{\,i c}
+                      A_{2g-2-d}(-i),\qquad
+             c=\chi([K_C-(2g-2)P]).
+                                                            \tag{B.145.6}
+\]
+Indeed replace $M$ by $K_C\otimes M^{-1}$.
+Its section dimension differs from $h^0(M)$ by $g-1-d$.
+The contribution of the constant term in the numerator
+$q^{h^0(M)}-1$ vanishes after summing the character.
+Factoring out $q^{d+1-g}$ leaves the effective-divisor count
+for $K_C\otimes M^{-1}$, with character multiplier
+$\zeta^{ic}$.
+The rational point ensures these line-bundle classes and their
+linear systems are defined over $k$.
+Consequently
+\[
+                   \deg(\overline L_i)\le g-1,\qquad
+                            \overline L_i(0)=1
+                                                            \tag{B.145.7}
+\]
+after reduction at any prime above $p$.
+The polynomial is therefore not identically zero.
+
+\medskip\noindent\textbf{The affine action on twists.}
+The automorphism $\tau$ permutes the effective divisors of
+each degree.  For any such divisor,
+\[
+ [\tau D-dP]=\tau_*[D-dP]+d[\tau P-P].
+\]
+Applying $\chi$ and summing gives
+\[
+                  A_d(iu)=\zeta^{-ida}A_d(i),\qquad
+                         L_{iu}(T)=L_i(\zeta^{-ia}T).
+                                                            \tag{B.145.8}
+\]
+Choose $j\ge1$ with $p^j=u\bmod\ell$.
+If the $i$-th character factor of twist $t$ vanishes modulo $p$,
+then $\overline L_i(\bar\zeta^{it})=0$.
+Raising this equality to the $p^j$-th power and using
+(B.145.8) gives
+\[
+              \overline L_i(\bar\zeta^{\,i(ut-a)})=0.
+                                                            \tag{B.145.9}
+\]
+Here coefficients are sums of rational-integer multiples of
+roots of unity, so the same power changes the character index
+from $i$ to $iu$.
+The image $\bar\zeta$ has exact order $\ell$, because
+$\ell\ne p$.
+
+The affine map $t\mapsto ut-a$ has the unique fixed point
+$a/(u-1)$, and every other orbit has length $m$.
+Indeed, after translating by that fixed point, it is
+multiplication by $u$ on $\mathbf F_\ell$.
+The assumption $m>g-1\ge1$ ensures $u\ne1$.
+For any nonfixed $t$, iteration of (B.145.9) would give
+$m$ distinct roots of the nonzero polynomial
+$\overline L_i$, contradicting (B.145.7).
+This excludes a vanishing factor for every primitive index $i$,
+with the same unique exceptional twist for all of them.
+
+As in the direct Euler-factor calculation of B.141, the product
+of the nontrivial character factors at one is exactly
+$\#J_{D_t}(k)/\#J_C(k)$.
+It is an integer, and it is divisible by $p$ precisely when one
+of those reduced factors vanishes.
+This proves (B.145.2), including the assertion for the
+prescribed $P$-split twist.
+
+For a degree-$n$ constant extension with $\ell\nmid n$,
+the same cover has character
+$\chi_n=\chi\circ\operatorname{Nm}_{k_n/k}$.
+Norm commutes with $\tau_*$, so the eigencharacter relation
+still holds with $u$.
+Moreover
+$\chi_n([\tau P-P])=n\chi([\tau P-P])=na\ne0$.
+The character is nonzero since its restriction to $J_C(k)$
+is $n\chi$.
+The already proved argument over $k_n$ proves persistence.
+
+\medskip\noindent\textbf{A nonempty genus-three example.}
+The three partial derivatives of
+$Y^3Z-YZ^3-X^4$ in characteristic three are
+$-X^3,-Z^3,Y^3$; they have no common projective zero.
+Thus (B.145.3) is a smooth plane quartic of genus three.
+Its unique point at infinity is $O=(0:1:0)$.
+The line $Z=0$ cuts out $4O$, so $K_C\sim4O$.
+There is a degree-two morphism
+\[
+ \pi:C\longrightarrow E,\qquad
+ E:\ v^2=u^3-u,\qquad (u,v)=(y,x^2),
+                                                            \tag{B.145.10}
+\]
+which sends $O$ to the elliptic origin and intertwines $\tau$
+with $\tau_E(u,v)=(u+1,v)$.
+
+The point $R=(t,1)$ belongs to $E(k)$.
+The doubling law gives
+$2R=(t+1,1)$, $4R=(t+2,1)$ and $8R=R$.
+Hence $R$ has exact order seven.
+Over $\mathbf F_3$, the elliptic curve has four points and
+Frobenius trace zero.  Its two Frobenius roots have sum zero,
+so their cubes also have sum zero and $\#E(k)=28$.
+All four points of $E[2]$ are already rational over
+$\mathbf F_3$.
+It follows that
+\[
+                    E(k)=E[2]\oplus\langle R\rangle .
+\]
+Define $\chi_E:E(k)\to\mathbf Z/7$ by
+$\chi_E(R)=1$ and $\chi_E(E[2])=0$.
+Since $\tau_E(R)=2R$ and $\tau_E$ permutes $E[2]$,
+$\chi_E\circ\tau_E=2\chi_E$.
+Set $\chi=\chi_E\circ\pi_*:J_C(k)\to\mathbf Z/7$.
+For $P=(1,t)$, one has $\pi(P)=R$ and
+\[
+                 \chi([\tau P-P])=\chi_E(2R-R)=1.
+\]
+Thus $\chi$ is surjective, its eigenvalue is $u=2=3^2\bmod7$,
+and $m=3>2=g-1$.
+The cover is a witness by the general theorem.
+This verifies the criterion's hypotheses geometrically and
+arithmetically, before any finite class-number computation.
+
+\medskip\noindent\textbf{The complete finite arithmetic certificate.}
+The program \path{finite_checks/code/b145_quartic_example.py}
+uses the displayed cubic field and
+$\mathbf F_{729}=k[s]/(s^2+1)$.
+Its elements are encoded by $a+27b$ with $a,b\in k$;
+the $27$-power Frobenius sends $s$ to $-s$.
+It retains every degree-one point and every degree-two
+closed-point orbit used below, together with their elliptic
+norms and character values.
+The elliptic addition and character tables are also retained
+and checked on every pair.
+
+The exact curve counts over $\mathbf F_3,\mathbf F_9,k$ and
+$\mathbf F_{729}$ are respectively $4,4,28,676$.
+For the first three, Newton's identities give the
+$\mathbf F_3$ Frobenius polynomial
+\[
+                         (X^2-3)^2(X^2+3).
+\]
+Cubing its roots gives $(X^2-27)^2(X^2+27)$ over $k$,
+and hence $\#J_C(k)=(-26)^2\cdot28=18928$.
+For the character based at $P$, the degree-one and
+degree-two effective-divisor occupancy vectors are
+\[
+\begin{split}
+ (n_0,\ldots,n_6)&=(8,8,0,8,0,0,4),\\
+ (m_0,\ldots,m_6)&=(116,116,116,116,116,34,116).
+\end{split}                                                   \tag{B.145.11}
+\]
+The second vector includes the $28\cdot29/2=406$ unordered
+pairs of rational points, with repetition, and all
+$(676-28)/2=324$ closed points of degree two.
+The character of a degree-two closed point is computed by
+the elliptic norm of its two geometric points minus $2R$.
+Thus these are the complete coefficient sums in (B.145.5),
+not point-count proxies for the degree-two coefficient.
+
+One has $c=\chi([4O-4P])=-4=3\bmod7$.
+Writing
+\[
+       S=8+8\zeta+8\zeta^3+4\zeta^6,
+\]
+the resulting full character factor is
+\[
+ L_1(T)=1+ST-82\zeta^5T^2+
+             27\zeta^3 S(\zeta^{-1})T^3+729\zeta^3T^4 .
+                                                            \tag{B.145.12}
+\]
+Here the degree-two vector reduces to $-82\zeta^5$
+using $1+\zeta+\cdots+\zeta^6=0$, and the two high-degree
+coefficients follow from (B.145.6).
+At one, it is represented by
+\[
+ A(Z)=225+8Z+216Z^2+953Z^3+108Z^4-82Z^5+4Z^6 .
+\]
+The complete integer norm is
+\[
+ \operatorname{Res}_Z(1+Z+\cdots+Z^6,A(Z))
+                         =427439613252172921 .
+                                                            \tag{B.145.13}
+\]
+The program computes this norm both as an integer resultant
+and as the determinant of multiplication on
+$\mathbf Z[Z]/\Phi_7$; it also retains the full relative
+zeta numerator of degree twenty-four.
+As a separate unit check, $\operatorname{ord}_7(3)=6$,
+so $\Phi_7$ is irreducible modulo three, whereas
+$A(Z)\bmod3=2Z+2Z^3+2Z^5+Z^6$ is nonzero and is not
+a multiple of $\Phi_7$.
+This proves (B.145.4).
+Since $5\nmid18928$ and five is the only smaller odd prime
+different from three, no admissible smaller prime can give
+a constant pointed cyclic quotient at this field.
+Seven is therefore the least witness prime at this field.
+
+For clarity about the marking, $C(\mathbf F_3)$ consists of
+$O$ and $(0,j)$ for $j\in\mathbf F_3$.
+Their images under $\pi$ lie in $E[2]$, so their
+$\chi([\tau P-P])$ values are zero.
+The complete $k$-point table gives nonzero
+$\chi_E(\pi(P))$ at every other point: there are eight
+points at each of the three values $1,2,4$.
+These are exactly the other twenty-four points.
+For each, the automorphism shift is
+$(2-1)\chi_E(\pi(P))\ne0$, proving the assertion for
+all of those new pointings.
+The three sets are permuted by $\tau$, and the pointed
+character factors depend only on the displayed value,
+so their relative class number is the same integer.
+
+\medskip\noindent\textbf{The remaining twist and the original pointings.}
+The criterion leaves twist one undecided in this example,
+since $a/(u-1)=1$.
+The complete finite calculation settles it too.
+The exact norms for all twists are
+\[
+\begin{array}{c|r}
+ t & \#J_{D_t}(k)/\#J_C(k)\\ \hline
+ 0,4,6&427439613252172921\\
+ 1&121740744925904896\\
+ 2,3,5&56515205339274361 .
+\end{array}                                                  \tag{B.145.14}
+\]
+Every displayed integer is a three-adic unit.
+For an original $\mathbf F_3$ point $P_0$, one has
+$\chi_E(\pi(P_0))=0$, whereas $\chi_E(\pi(P))=1$.
+Changing the pointing from $P$ to $P_0$ therefore adds one
+to every degree-one exponent and $d$ to every degree-$d$
+exponent.  Its split model is exactly twist one.
+This proves the witness assertion for all four original
+pointings, by the finite calculation rather than the
+nonzero-shift criterion.
+
+There is also an exact test through every constant extension
+for each of these seven covers.
+Work now in characteristic three and put
+\[
+ U=\bar\zeta+\bar\zeta^2+\bar\zeta^4,\qquad
+                    \eta=1+2U .
+\]
+The quadratic-period identity $U^2+U+2=0$ gives
+$\eta^2=-1$.
+Reducing (B.145.12) and substituting $\bar\zeta T$ gives
+\[
+ \overline L_{1,1}(T)=1+\eta T-T^2=(1-\eta T)^2,
+ \qquad
+ \overline L_{1,t}(T)
+                  =(1-\eta\bar\zeta^{\,t-1}T)^2 .
+                                                            \tag{B.145.15}
+\]
+All other primitive character factors are its conjugates.
+The nonzero reduced Frobenius roots consequently have
+order four for $t=1$, and order twenty-eight for $t\ne1$,
+since $\eta$ and a nontrivial seventh root have coprime
+orders four and seven.
+Under a degree-$n$ extension, every Frobenius root is
+replaced by its $n$-th power.
+Roots that reduce to zero cannot contribute a factor
+divisible by three in the evaluation at one.
+For the other roots, such divisibility occurs exactly
+when their $n$-th power is one.
+Hence
+\[
+ 3\nmid\frac{\#J_{D_t}(\mathbf F_{27^n})}
+                 {\#J_C(\mathbf F_{27^n})}
+ \quad\Longleftrightarrow\quad
+ \begin{cases}
+  4\nmid n,&t=1,\\
+  28\nmid n,&t\ne1 .
+ \end{cases}                                                \tag{B.145.16}
+\]
+This is a proof for all extension degrees, not extrapolation
+from a finite list of extensions.
+The program separately checks the coefficient identities
+in (B.145.15) and the exact orders four and twenty-eight
+in $\mathbf F_3[Z]/\Phi_7$.
+
+Finally the base Frobenius polynomial already computed gives
+\[
+ \#J_C(\mathbf F_3)=16,\qquad
+ \#J_C(\mathbf F_9)=256,\qquad
+ \#J_C(\mathbf F_{27})=16\cdot7\cdot13^2 .
+                                                            \tag{B.145.17}
+\]
+A constant cyclic pointed cover of odd prime degree requires
+a quotient of the rational Jacobian of that order.
+The first two orders exclude all such covers.
+At degree three the twist-one witness exists and the third
+order makes seven the least admissible prime there.
+This proves the claimed field-first minimum for every
+original $\mathbf F_3$ marking.
+\end{proof}
+
+\paragraph{Exact scope and predecessor comparison.}
+The general statement proves B1 for the entire marked-curve
+family satisfying (B.145.1) with nonzero automorphism shift.
+It includes B.141 by taking the hyperelliptic involution in
+genus two, and the genus-three example proves that its scope
+is larger.  It imposes a real automorphism and eigencharacter
+condition; it does not manufacture such an automorphism for
+an arbitrary curve, and it does not settle the unrestricted
+threshold $p>(2g-2)^2$.
+The finite quartic certificate treats new
+$\mathbf F_{27}$ pointings and, by the separate twist calculation,
+the first-field minimum for all four original $\mathbf F_3$
+pointings of this quartic.  It gives the exact constant-extension
+unit test for each of the seven displayed covers.
+It does not determine the least prime when arbitrary extension
+degrees are allowed, the least witness among all covers over
+every extension, or the full B6 census.
+
+\paragraph{Check record.}
+Written and checked by GPT-6 Astra Pro, finite-checks reader,
+18 November 2026; the separate effort setting is not exposed.
+All finite inputs and complete outputs are retained with the
+program and JSON certificate.
+The infinite family is proved by the automorphism and
+Riemann--Roch argument, not inferred from the finite example.
+Independent second-reading events are recorded separately.

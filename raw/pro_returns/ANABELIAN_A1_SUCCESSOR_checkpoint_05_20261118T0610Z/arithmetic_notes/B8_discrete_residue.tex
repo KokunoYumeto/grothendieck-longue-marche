@@ -1,0 +1,782 @@
+\subsection{Discrete mixed-characteristic bases with finitely generated residue field}
+
+\begin{claim}{B.META.20}{Proved}{Completion, Kummer kernels and the deep-unit subspace beyond finite local fields}
+Let $D$ be finitely generated over $\mathbb Q$, with
+a discrete valuation of mixed characteristic $(0,p)$
+whose residue field $k$ is finitely generated over
+$\mathbb F_p$.
+Let $M$ be its completion, choose an algebraic closure
+$\overline M$, and let $\Omega$ be the algebraic closure
+of $D$ inside $\overline M$.
+The following assertions hold, also after every finite
+extension of the valued field $D$.
+
+First, $D^h=M\cap\Omega$, and completion gives an
+equivalence on finite separable extensions of $D^h$
+and $M$.  Thus $G_M$ identifies with the chosen
+decomposition subgroup of $G_D$, with its inertia
+subgroup $I_M$.
+For finite $L/M$, its algebraic part $L\cap\Omega$
+is finite over $D^h$, dense in $L$, and $L$ has an
+$M$-basis in that algebraic part.
+The field $\Omega$ admits a complex embedding.
+
+Second, the rational $p$-Kummer kernel of $M$ is
+exactly the finite group $\mu(M)$.
+There is a canonical injective $\mathbb Q_p$-linear map
+\[
+         \iota_M:M\lhook\joinrel\longrightarrow
+                      H^1(G_M,\mathbb Q_p(1)),                 \tag{META.DV1}
+\]
+characterized on sufficiently small $x$ by
+$\iota_M(x)=\kappa_M(\exp x)$.
+It is compatible with finite extensions and their
+Galois actions.
+No assertion that (META.DV1) exhausts the cohomology
+is made.
+
+Finally the image of $I_M$ in $G_{\mathbb Q_p}$ is
+$I_{L_0}$ for some finite extension $L_0/\mathbb Q_p$.
+In particular the cyclotomic character on $I_M$ is
+nontrivial, restriction
+$H^1(G_M,\mathbb Q_p(1))\to H^1(I_M,\mathbb Q_p(1))$
+is injective, and every successive closed derived
+quotient of $I_M$ is nontrivial.
+\end{claim}
+\begin{proof}
+Write $v_M(M^\times)=\mathbb Z$ and $e=v_M(p)>0$.
+The completion is a complete discrete valuation
+field with the same value group and residue field.
+The real-valued henselian comparison in Temkin,
+Theorem~1.9.5(ii), \S1.9.7 and Lemma~1.9.8,
+identifies the henselization with the relative
+separable closure in the completion
+\citep{AN_TemkinValuations}.
+In characteristic zero this gives $D^h=M\cap\Omega$.
+The proof of Stacks Tag~09EJ, Lemma~15.115.2,
+works for an arbitrary DVR and supplies descent
+of every finite separable extension of $M$
+\citep{AN_Stacks09EJ}.
+Here is also the full-faithfulness comparison.
+A henselian field is relatively separably closed
+in its completion.  Since $D^h$ is relatively
+algebraically closed in $M$, it is linearly disjoint
+from $M$ in each finite Galois extension; hence
+completion preserves finite extension degrees.
+Every finite extension of $D^h$ is henselian,
+and its field embeddings preserve the uniquely
+extended valuation, so extend uniquely to embeddings
+of its completion.
+Conversely an embedding of those completions carries
+the elements algebraic over $D^h$ into the relative
+algebraic part of the target, which is exactly the
+original finite henselian field.
+This proves full faithfulness and the claimed
+equivalence.  It identifies the Galois and inertia
+groups by preserving the residue extension.
+It also proves the assertion about $L\cap\Omega$;
+any basis before completion remains a basis afterwards.
+In particular the algebraic part is dense.
+Finally an embedding of the algebraic closure of
+$\mathbb Q$ in $\Omega$ into $\mathbb C$ extends
+across a finite transcendence basis and then across
+its algebraic closure, giving the asserted embedding.
+These arguments used neither finiteness of the
+residue field nor local compactness.
+
+We next prove the Kummer statements, including the
+distinction between deep units and all units.
+The algebraic closure $k_0$ of $\mathbb F_p$ in $k$
+is finite.  Indeed if $t$ is a finite transcendence
+basis, the degrees of all finite constant subfields
+are bounded by $[k:\mathbb F_p(t)]$.
+Moreover
+\[
+                       \bigcap_{n\ge0}k^{p^n}=k_0.             \tag{META.DV2}
+\]
+To see this, take a normal proper model of $k/k_0$.
+The divisor of an element in every $k^{p^n}$ has
+all its integer coefficients divisible by every
+$p^n$, and is therefore zero.
+Normality makes that rational function regular
+everywhere, and properness makes it algebraic over
+$k_0$.  It consequently belongs to $k_0$.
+The reverse inclusion holds because the finite
+field $k_0$ is perfect.
+
+Put $U_m=1+\mathfrak m_M^m$.
+For an integer $m>e/(p-1)$ the convergent power
+series for logarithm and exponential give inverse
+group isomorphisms
+\[
+             U_m\xrightarrow{\log}\mathfrak m_M^m,
+                 \qquad\log(u^p)=p\log u.                    \tag{META.DV3}
+\]
+For completeness, in the logarithm the terms
+$x^j/j$ tend to zero for $v_M(x)>0$; for the
+exponential, $v_M(j!)\le ej/(p-1)$ gives convergence
+when $v_M(x)>e/(p-1)$.
+The first term has strictly smaller valuation
+than all subsequent terms on that smaller ball;
+the formal inverse identities then converge and
+give (META.DV3).
+Repeated $p$-th powers carry all of $U_1$ into
+$U_m$ after a uniformly bounded number $N$ of
+iterations.  In fact, if $v_M(u-1)=a\ge1$, the
+binomial expansion gives
+\[
+                  v_M(u^p-1)\ge\min(pa,a+e)>a.
+\]
+Thus $N=m$ is already a sufficient bound.
+
+The topology on $U_m$ induced by the $p$-power
+quotients of $M^\times$ is its full $p$-adic topology.
+If $b^{p^n}\in U_m$, valuation gives $v_M(b)=0$,
+and reduction gives $\overline b^{p^n}=1$.
+In characteristic $p$ this forces $\overline b=1$,
+so $b\in U_1$.
+For $n\ge N$ we obtain the explicit inclusions
+\[
+ U_m^{p^n}\ \subset\ U_m\cap(M^\times)^{p^n}
+                 \ \subset\ U_m^{p^{\,n-N}}.                 \tag{META.DV4}
+\]
+Completeness and (META.DV3) now give an injection
+\[
+ U_m=\varprojlim_n U_m/U_m^{p^n}
+       \lhook\joinrel\longrightarrow
+             \varprojlim_n M^\times/(M^\times)^{p^n}.
+\]
+The inverse-limit Kummer sequence identifies the
+right side with $H^1(G_M,\mathbb Z_p(1))$.
+Its possible $\varprojlim^1$ term is zero:
+the groups of $p^n$-th roots of unity in $M$ are
+finite, so their inverse system is Mittag--Leffler.
+Continuous cocycles of a profinite group in
+$\mathbb Q_p(1)$ have bounded image; multiplication
+by a power of $p$ puts them in $\mathbb Z_p(1)$.
+The same observation for coboundaries proves
+\[
+ H^1(G_M,\mathbb Z_p(1))\otimes_{\mathbb Z_p}\mathbb Q_p
+                         =H^1(G_M,\mathbb Q_p(1)).
+\]
+After tensoring the injection with $\mathbb Q_p$,
+(META.DV3) identifies its domain with $M$.
+This is (META.DV1); explicitly, for any $x\in M$
+and sufficiently large $r$,
+\[
+                \iota_M(x)=p^{-r}\kappa_M(\exp(p^rx)).
+\]
+The formula proves independence of $r$, as well
+as extension compatibility and Galois equivariance.
+
+Suppose $\kappa_M(a)=0$.
+Some $p^j$ multiple of the integral Kummer class
+is zero, so $a^{p^j}\in(M^\times)^{p^n}$ for every $n$.
+The value group gives $v_M(a)=0$, and reduction
+together with (META.DV2) puts $\overline a$ in
+$k_0^\times$.
+Hensel's lemma lifts it to a root of unity $\zeta$
+of order prime to $p$.
+Then $u=a/\zeta\in U_1$ and $\kappa_M(u)=0$.
+Raise it to $p^N$ to enter $U_m$.
+The injection just proved gives $\log(u^{p^N})=0$,
+and (META.DV3) gives $u^{p^N}=1$.
+Thus $a$ is a root of unity; the converse follows
+by tensoring the torsion Kummer class with $\mathbb Q_p$.
+There are only finitely many roots of unity in $M$:
+the prime-to-$p$ ones inject into the finite group
+$k_0^\times$, while a primitive $p^n$-th root has
+normalized $p$-adic value
+$v_p(\zeta_{p^n}-1)=1/(p^{n-1}(p-1))$.
+The latter follows from the Eisenstein polynomial
+$\Phi_{p^n}(1+T)$, and those denominators must divide
+$e$.  This also includes $p=2$.
+All these assertions apply to finite extensions,
+whose residue fields remain finitely generated.
+
+It remains to justify the useful finite-local
+quotient of inertia without asserting wild freeness.
+Embed $\overline{\mathbb Q}_p$ in $\overline M$
+over the canonical copy $\mathbb Q_p\subset M$,
+and put
+\[
+                  T=M^{\mathrm{nr}}\cap\overline{\mathbb Q}_p.
+\]
+Finite unramified constant extensions stay etale
+after base change to the valuation ring of $M$,
+so $\mathbb Q_p^{\mathrm{nr}}\subset T$.
+Every finite $L'/\mathbb Q_p$ inside $T$ has
+$e(L'/\mathbb Q_p)\mid e$, since $M^{\mathrm{nr}}$
+has the same value group as $M$.
+Also
+\[
+ [L'\mathbb Q_p^{\mathrm{nr}}:\mathbb Q_p^{\mathrm{nr}}]
+                                      =e(L'/\mathbb Q_p).
+\]
+For this equality, take the maximal unramified
+subextension of $L'/\mathbb Q_p$ and an Eisenstein
+polynomial for a uniformizer of the remaining
+totally ramified extension.
+After unramified base change the polynomial remains
+Eisenstein, giving exactly the displayed degree.
+The union $T/\mathbb Q_p^{\mathrm{nr}}$ thus has
+bounded finite subextension degree, at most $e$,
+and is finite.  Hence $T=L_0\mathbb Q_p^{\mathrm{nr}}$
+for one finite $L_0/\mathbb Q_p$.
+The image of $I_M$ in $G_{\mathbb Q_p}$ is closed
+and has fixed field $T$, so is exactly $I_{L_0}$.
+The local cyclotomic character has infinite image
+there.  Thus $\mathbb Q_p(1)^{I_M}=0$, and
+inflation--restriction proves the asserted injection.
+
+Finally $I_{L_0}$ has strictly decreasing closed
+derived series.  Its wild inertia is free pro-$p$
+of infinite rank by Iwasawa Theorem~2(ii)
+\citep{AN_Iwasawa1955}.
+For every $r$, mapping finitely many free generators
+to the adjacent elementary matrices of
+$\operatorname{UT}_{2^r+1}(\mathbb F_p)$ shows that
+its $r$-th derived subgroup is nontrivial:
+balanced commutators use
+$[1+E_{ab},1+E_{bc}]=1+E_{ac}$ and terminate at
+$1+E_{1,2^r+1}$.
+Hence every derived subgroup of $I_{L_0}$ is
+nontrivial.  From the first commutator onward it
+is pro-$p$, and a nontrivial pro-$p$ group has
+a nontrivial abelian quotient, by taking any
+nontrivial finite $p$-group quotient and then
+a quotient of order $p$.
+The first derived quotient is already nontrivial
+by tame inertia.
+Surjectivity $I_M\to I_{L_0}$ carries closed
+derived subgroups onto closed derived subgroups,
+so proves strictness for $I_M$ as well.
+\end{proof}
+
+\begin{claim}{B.META.21}{Proved}{Reconstruction at derived and nilpotent inertia fields with arbitrary finite residue transcendence}
+Keep $D,M,\Omega,k$ of Claim~B.META.20, and put
+$I=I_M\subset G_D$.
+For the closed derived series $I^{(0)}=I$ and
+$I^{(r+1)}=\overline{[I^{(r)},I^{(r)}]}$, and the
+closed lower central series $\gamma_c(I)$, set
+\[
+ F_r=\Omega^{I^{(r)}}\quad(r\ge0),\qquad
+ K_{\mathrm{nil}}=\Omega^{\,\bigcap_{c\ge1}\gamma_{c+1}(I)}.
+                                                               \tag{META.DV5}
+\]
+Every finite extension of every $F_r$ and of
+$K_{\mathrm{nil}}$ satisfies full closed-point-preserving
+relative etale reconstruction for finite-type schemes
+localized at universal homeomorphisms, with the
+structural isomorphism retained.
+The property also descends to any subfield over which
+one of these reconstructed fields is algebraic.
+
+In particular, for the Gauss $p$-valuation on
+$D=\mathbb Q(t_1,\ldots,t_s)$, this gives positive
+families with residue transcendence degree $s$ for
+every $s\ge1$ and every prime $p$.
+No assertion for all proper normal subgroups of
+$G_M$ is included.
+\end{claim}
+\begin{proof}
+We first establish the arithmetic inputs, and then
+give the precise change in the analytic norm proof.
+The tame/wild inertia theorem for an arbitrary DVR,
+Stacks Tag~0BUA, Lemma~58.13.5, gives
+\[
+             1\longrightarrow P\longrightarrow I
+               \longrightarrow \prod_{\ell\ne p}\mathbb Z_\ell(1)
+               \longrightarrow1,                            \tag{META.DV6}
+\]
+with $P$ pro-$p$ \citep{AN_Stacks0BUA}.
+The source does not require a perfect residue field.
+All the prime-to-$p$ tame orders occur here by
+adjoining roots of a uniformizer to the strict
+henselization; units have roots of those orders by
+Hensel's lemma.  The strict henselian residue field
+is $k^{\mathrm{sep}}$, which need not be perfect.
+Nothing below replaces it by an algebraic closure.
+
+\medskip\noindent\textbf{The derived fields.}
+Let $r\ge2$, put $K=F_r$ and $A=F_{r-1}$, and
+let $E/K$ be finite.
+If $a\in E^\times$ has zero rational Kummer class,
+choose a finite Galois $D_1/D$ containing $a$ and
+generators of $E/K$, and replace $E$ by $KD_1$.
+Its completion $M_1$ is finite over $M$ and again
+has finitely generated residue field.
+Set
+\[
+ J=I\cap G_{D_1}=I_{M_1},\quad
+ H=I^{(r)}\cap J,\quad \Gamma=J/H,\quad
+ C=(I^{(r-1)}\cap J)/H,\quad V=\mathbb Q_p(1).
+\]
+The Kummer class on $J$ vanishes on $H$, which fixes
+$V$, so inflates from a unique element of
+$H^1(\Gamma,V)$.
+For $g\in I^{(r-1)}$, Galoisness of $D_1/D$ makes
+$g$ normalize $J$.
+It acts trivially on $C$, on $\Gamma/C$ and on $V$.
+Inflation--restriction gives a two-step filtration
+of $H^1(\Gamma,V)$ on whose pieces $g$ is the identity:
+\[
+ 0\longrightarrow H^1(\Gamma/C,V)
+  \longrightarrow H^1(\Gamma,V)
+  \longrightarrow H^1(C,V)^{\Gamma/C}.
+\]
+Thus $(g-1)^2=0$.
+The particular Kummer vector has finite $g$-orbit,
+because $a\in D_1$ has one.  If $g^n$ fixes it,
+the equality $g^n-1=n(g-1)$ on that vector makes
+$g$ fix it as well.
+Therefore $\kappa_J(g(a)/a)=0$.
+The inertia restriction injection and the finite
+root-of-unity Kummer kernel of Claim~B.META.20 give
+\[
+       g(a)/a\in\mu(M_1)\quad(g\in I^{(r-1)}),\qquad
+                         a^m\in A\text{ for some }m\ge1.       \tag{META.DV7}
+\]
+One exponent works for all $g$, since $g$ preserves
+the one field $M_1$ and $\mu(M_1)$ is finite.
+This proof includes every finite $E/K$.
+
+By Claim~B.META.20 the derived inclusions are strict,
+so choose $b\in K\setminus A$.
+Both fields contain all roots of unity, since the
+cyclotomic action of inertia is abelian.
+If the classes of $b$ and $1-b$ both vanished,
+(META.DV7) would give
+$g(b)=\zeta_gb$ and $g(1-b)=\eta_g(1-b)$, with
+$\zeta_g,\eta_g\in\mu_\infty\subset A$.
+If some $\zeta_g\ne\eta_g$, adding expresses $b$
+as an element of $A$; if all are equal, adding
+makes them one, so again every $g$ fixes $b$.
+This contradiction supplies a nonzero Kummer class
+over $K$, surviving every finite extension by
+rational restriction and corestriction.
+
+For projection degree $d$ use the grids
+\[
+       \mathcal G_0=\{u+iv:0\le u,v\le4d\},
+                         \qquad \mathcal G_1=b+\mathcal G_0.
+\]
+If a monic equal-degree rational function $R=P/Q$
+has zero Kummer classes at all the grid values,
+(META.DV7) makes $gR(a)/R(a)$ a root of unity at
+every first-grid centre.
+In a complex embedding of $\Omega$, the difference
+of the squared absolute values of its monic
+numerator and denominator has degree at most $4d$
+separately in $u,v$.
+Successive interpolation makes it zero.
+Writing $z=u+iv,w=u-iv$ gives the product identity
+$U(z)\overline U(w)=V(z)\overline V(w)$; monicity
+then gives $gR=R$.
+The translated grid similarly gives
+$gR(gb+Z)=R(b+Z)$.
+Choose $g$ moving $b$.
+A rational function with the nonzero additive
+period $gb-b$ is constant, by its finite pole set
+or its leading polynomial finite difference.
+Its value at infinity is one, so $R=1$.
+This proves the required uniform two-grid test.
+
+\medskip\noindent\textbf{The nilpotent union.}
+Put $N=\bigcap_c\gamma_{c+1}(I)$ and $K=\Omega^N$.
+Every finite inertia quotient is an extension of
+a finite $p$-group by a cyclic prime-to-$p$ group.
+In a nilpotent quotient all Sylow subgroups commute,
+and all tame cyclic quotients survive.
+Consequently
+\[
+       I/N=Q_{(p)}\times\prod_{\ell\ne p}\mathbb Z_\ell(1),
+                                                               \tag{META.DV8}
+\]
+where $Q_{(p)}$ is pro-$p$.
+Let $e=v_M(p)$ for the integer normalization.
+Choose an odd prime $\ell\nmid ep(p-1)$, and put
+$b=p^{1/\ell}$.
+The strict henselization has value group
+$e^{-1}\mathbb Z$ in the normalization $v(p)=1$;
+thus adjoining $b$ gives a tame cyclic extension
+of degree $\ell$.
+Choose a central element in the pro-$\ell$ factor
+of (META.DV8) moving $b$, and lift it to $\tau\in I$.
+Its $p$-cyclotomic value is one: a pro-$\ell$ group
+maps neither to a nontrivial pro-$p$ subgroup of
+$\mathbb Z_p^\times$ nor to its torsion subgroup
+of order dividing $p-1$.
+Inertia fixes all other roots of unity, so $\tau$
+fixes $\mu_\infty$ and $\tau b=\omega b\ne b$.
+
+Here is the stable-kernel argument over this
+complete DVR.
+If $\kappa_E(a)=0$ for a finite $E/K$, then
+compatible $p$-power roots of $a$ belong to $E$:
+$G_E$ fixes $\mathbb Z_p(1)$, so its integral
+$H^1$ is a torsion-free group of homomorphisms.
+Choose finite Galois $D_1/D$ containing the data.
+Let $F$ be the compositum of $D_1$, the relative
+strict henselization, and $\mu_{p^\infty}$;
+let $R/F$ be generated by all $p$-power roots of
+the finitely many inertia conjugates of $a$.
+Both fields are Galois over the strict henselization,
+$R\subset KD_1$, and
+$D_R=\operatorname{Gal}(R/F)$ is a torsion-free
+closed subgroup of $\mathbb Z_p(1)^m$.
+The image of $N$ in the Galois group of $R$
+over the strict henselization is finite, since
+$KD_1/K$ is finite.
+Centrality of $\tau$ modulo $N$ puts
+$[\tau,D_R]$ both in that finite image and in
+$D_R$, hence makes it trivial.
+
+For $J=I_{M_1}$ and $J_0=J\cap\ker\chi_p$,
+the group $J_0$ surjects onto $D_R$.
+The commutator equality, including the trivial
+coefficient action of $\tau$, therefore gives
+$\kappa_{J_0}(\tau a)=\kappa_{J_0}(a)$.
+Restriction from $H^1(J,V)$ to $H^1(J_0,V)$ is
+injective: $J/J_0$ is abelian with nontrivial
+cyclotomic character, and comparing a cocycle
+at $xy$ and $yx$ gives
+$(\chi(x)-1)c(y)=(\chi(y)-1)c(x)$, so it is a
+coboundary.
+Claim~B.META.20 also gives inertia restriction
+injectivity and the Kummer kernel in $M_1$.
+We conclude
+\[
+             \kappa_E(a)=0\quad\Longrightarrow\quad
+                                  \tau(a)/a\in\mu_\infty.      \tag{META.DV9}
+\]
+Choose the complex embedding with $b>0$.
+Since
+$|1-\omega b|^2-|1-b|^2=2b(1-\operatorname{Re}\omega)>0$,
+the class of $1-b$ is nonzero and remains so over
+every finite extension.
+For $\mathcal G_0,b+\mathcal G_0$, the preceding
+absolute-square interpolation applied to $\tau$
+first gives $\tau R=R$ and then
+$R(\tau b+Z)=R(b+Z)$.
+The nonzero period gives $R=1$.
+Thus both arithmetic inputs hold at every prime,
+including $2$ and $3$.
+
+\medskip\noindent\textbf{Local normalization and cyclic extensions.}
+For either field $K$ just treated, start with an
+arbitrary finite $E/K$, a smooth geometrically
+integral affine source $X/E$, and a pinned relative
+map to $\mathbb A^1_E$.
+If its actual point map is nonconstant, each
+actual fibre is a proper closed subset.
+Choose a finite Noether projection of degree $d$
+and the two grids above.
+On a principal open $V$ of affine space avoiding
+the branch locus and all the grid-fibre images,
+the pulled-back and corestricted Kummer classes are
+\[
+          \xi_a=\beta_a+\sum_j\lambda_{aj}\kappa(h_j),
+                      \qquad\lambda_{aj}\in\mathbb Q_p.        \tag{META.DV10}
+\]
+The geometric Picard group is zero, and the
+geometric units modulo constants are freely
+generated by the prime boundary equations $h_j$,
+which proves this decomposition by Kummer theory
+and inflation--restriction.
+The actual evaluation is $\kappa(P_t(a))$ for
+the monic degree-$d$ norm polynomial $P_t$;
+the factor $(-1)^d$ from corestricting $Y-a$
+is torsion and disappears in rational Kummer theory.
+
+Choose one finite Galois $D_1/D$ containing
+all coefficients, grid centres, a normalizing
+parameter $t_*$ and its actual norm values,
+all coordinates of the finitely many points in
+one good projection fibre, and generators of $E/K$.
+Let $M_1$ be its completion and $E_1=KD_1$.
+The normality of the inertia kernel gives
+$N_1=G_{E_1}\triangleleft G_{M_1}$ and
+$\chi_p(N_1)=1$.
+Evaluation at $t_*$ expresses
+$\beta_a=\kappa(P_{t_*}(a))-\sum_j\lambda_{aj}
+\kappa(h_j(t_*))$ as the restriction of a class
+over $M_1$.
+Thus (META.DV10), including its Tate coefficient
+action, is $G_{M_1}$-invariant.
+Comparison at $t$ and $\sigma t$ puts all grid
+values of $P_{\sigma t}/\sigma P_t$ in the stable
+kernel over a common finite extension.
+The proved two-grid test yields
+$P_{\sigma t}=\sigma P_t$ uniformly.
+
+The nonzero Kummer class restricts nontrivially
+to $N_1$.
+Its integral image is $p^u\mathbb Z_p$; taking
+an actual $p^u$-th root of its argument in $E_1$
+makes that image all of $\mathbb Z_p$.
+Adjoin this argument and $\mu_{p^s}$ to $M_1$
+inside the local fixed field of $N_1$.
+The resulting cyclic extension $L/M_1$ generated
+by a $p^s$-th root has degree $q=p^s>d+1$ and
+receives a surjection from $N_1$.
+Normality persists under these finite enlargements.
+Claim~B.META.20 supplies an $M_1$-basis of $L$
+in $L\cap\Omega$, and
+$E_1(L\cap\Omega)/E_1$ is finite:
+the henselian $E_1$ contains $M_1\cap\Omega$
+after the indicated algebraic enlargements.
+All scalar algebraic parameter sets used below
+are consequently dense.
+
+Actual maps are valuation-continuous over every
+finite extension of $E_1$.
+Indeed CHW Proposition~3.6 and the representable
+etale inverse-image comparison in \S4.13 and
+Corollary~A.9 give etale-open continuity, and
+JTWY Corollary~6.13 identifies that topology
+with the valuation topology for these henselian
+non-separably-closed fields
+\citep{AN_CHW2024,AN_JTWY2024}.
+The nonzero Kummer class established above
+verifies non-separable-closedness at every finite
+extension.  Affine charts handle nonseparated
+finite-type schemes.
+
+\medskip\noindent\textbf{The scalar-error step using deep units only.}
+The chosen good etale projection fibre already
+splits over $M_1$, before the cyclic $L/M_1$
+was chosen.  Work near it with the $d$ analytic
+inverse branches; no further base enlargement
+is used to split this fibre.
+For actual parameters in $L\cap\Omega$, local
+norm equivariance puts the coefficients of $P_t$
+in $L$; continuity gives continuity of those
+coefficients on the dense algebraic parameter set.
+At such a parameter put
+\[
+ \theta_t=\kappa_L(P_t(a))-\beta_a|_{G_L}
+                  -\sum_j\lambda_{aj}\kappa_L(h_j(t)).
+\]
+It vanishes on $N_1\cap G_L$.
+By inflation--restriction it inflates from
+$G_L/(N_1\cap G_L)$.
+Conjugation by $N_1$ is the identity on this
+quotient and on $V$, since $N_1$ is normal in
+$G_{M_1}$, $L/M_1$ is Galois, and $\chi_p(N_1)=1$.
+Hence every $\theta_t$ is $N_1$-invariant.
+
+Choose an actual centre $t_0$ and shrink the ball
+so that, for every grid centre and every $h_j$,
+the ratios $P_t(a)/P_{t_0}(a)$ and
+$h_j(t)/h_j(t_0)$ lie in a deep unit group of $L$.
+This uses only their actual continuity, not an
+analytic extension of $P_t$.
+Claim~B.META.20 now gives the exact identity
+\[
+ \theta_t-\theta_{t_0}
+   =\iota_L\left(
+      \log\frac{P_t(a)}{P_{t_0}(a)}
+        -\sum_j\lambda_{aj}\log\frac{h_j(t)}{h_j(t_0)}
+             \right).                                        \tag{META.DV11}
+\]
+Injectivity and Galois equivariance of $\iota_L$
+make the scalar in parentheses fixed by $N_1$.
+Since $N_1$ surjects onto $\operatorname{Gal}(L/M_1)$,
+that scalar lies in $M_1$.
+This is the exact replacement for a logarithm on
+all of $H^1(G_L,V)$; residue-unit classes need not
+belong to the deep-unit subspace.
+
+Write $\tau$ for a generator of $\operatorname{Gal}(L/M_1)$
+and $r_i(t,Z)=\tau^iP_t(Z)/P_t(Z)$ at actual points.
+Subtract the $\tau^i$-transform of (META.DV11).
+With the signs in the order transform minus original,
+the result is
+\[
+ \log\frac{r_i(t,a)}{r_i(t_0,a)}
+ =\sum_j\lambda_{aj}
+   \left(
+    \log\frac{h_j(\tau^it)}{h_j(\tau^it_0)}
+       -\log\frac{h_j(t)}{h_j(t_0)}
+   \right).                                                   \tag{META.DV12}
+\]
+After a further shrink, all finite linear combinations
+are in the exponential convergence ball.
+Exponentiating therefore recovers each ratio value
+as $r_i(t_0,a)$ times an analytic function.
+No global branch of logarithm on arbitrary residue
+units has been chosen.
+Differentiating gives exactly the matching-block
+logarithmic equations of the norm proof in
+Claim~B.META.14.
+
+\medskip\noindent\textbf{Analytic recovery and the algebraic graph.}
+We explain why that proof applies over the present
+complete DVR without a local-compactness hypothesis.
+Minimize the finite integer sum of conjugate gcd
+degrees on the actual parameter ball.
+At a minimizing point the relevant nonzero
+subresultants remain nonzero by continuity;
+the minimum then makes every gcd degree locally
+constant on the dense actual set.
+Recenter (META.DV11)--(META.DV12) at this
+minimizing actual point.
+For each reduced monic degree-$e_i$ ratio, its
+values at $2e_i$ centres determine its numerator
+and denominator analytically by (META.DV12).
+The interpolation kernel is zero because
+$\delta A B-A\delta B$ has degree at most $2e_i-1$
+and has $2e_i$ roots; coprimality and monicity
+then make both variations zero.
+
+Use scalar coordinates for $\operatorname{Res}_{L/M_1}$,
+with an algebraic $M_1$-basis and centre $t_0$.
+After extending coefficients to $L$, the $q$
+embedding blocks are permuted by the semilinear
+cyclic action even if $t_0\notin M_1$.
+The extended derivations of algebraic meromorphic
+germs and the $4d+1$-centre rational identity
+classify each nonconstant root by a unique block.
+The rational identity has denominator degree at
+most $4d$ and numerator degree at most $4d-1$,
+so the centre count still proves it identically.
+The divisor cocycle gives
+$D_i=\tau^i B_0-B_0+C_i$.
+A constant root is algebraic over $D$ after one
+actual specialization, and its occurrence on an
+open set contradicts proper closed actual fibres.
+Thus $C_i=0$.
+A negative coefficient of $B_0$ would give
+$q-1>d$ distinct poles among the reduced ratios.
+Their denominator least common multiple divides
+the actual degree-$d$ polynomial at actual points,
+which is impossible after a degree-preserving
+specialization.
+
+That specialization uses a nonempty analytic open,
+not an algebraic open.
+There are only finitely many nonzero minors and
+subresultants to avoid.
+A nonzero convergent power-series germ over a
+complete nonarchimedean characteristic-zero field
+cannot vanish on a scalar open ball: the
+one-variable assertion follows by the first
+nonzero term near an accumulation point, and
+successive variables prove the multivariable
+assertion.
+Thus their complements are open and dense; a
+finite intersection is nonempty and meets the
+dense algebraic scalar parameter set.
+Neither Baire's theorem nor local compactness
+is used.
+
+The effective type-zero divisor is already the
+analytic monic reduced denominator $Q$ of $r_1$.
+The exact derivatives obtained from (META.DV12)
+give
+$d\log Q(t,a)=\sum_j\lambda_{aj}\,dh_j/h_j$.
+The constants of the meromorphic-germ differential
+field are $L$, as follows term by term in a
+power series.
+Claim~B.135 therefore gives $Q\in L(t)[Z]$.
+Its values at actual algebraic parameters are
+algebraic over $D$, since it divides $P_t$ there;
+finite rational interpolation gives
+$Q\in\Omega(t)[Z]$.
+Residues of its logarithmic derivatives make the
+exponents integral.
+Normalizing once more at an actual parameter
+and using the two grids gives $P_t=Q_tC$ for a
+single constant monic polynomial $C$.
+Any root of a positive-degree $C$ would force
+every projection fibre to meet one proper closed
+actual fibre, contrary to finite-image dimension.
+Hence $C=1$, and all projection norms have been
+reconstructed.
+
+The graph argument of Claim~B.META.14 is algebraic
+over $\Omega$ and uses no additional local-field
+property: one recovered norm bounds graph closure
+finitely over a dense source open; a generic finite
+linear projection separates its dominating
+components and is birational on the generic
+output fibres.
+If their degrees over the source are $e_i$, the
+distinct minimal output polynomials have degrees
+$e_i d'$ and their product divides the recovered
+degree-$d'$ norm.  Thus $\sum_i e_i\le1$, forcing
+a unique component of degree one.
+The finite coefficient conditions descend from
+$\Omega(Y)$ to a nonempty open set over $\Omega$
+by clearing denominators and expanding in $Y$.
+Thus the actual map agrees densely with a rational
+function, which descends to the original field
+by equivariance.
+The valuation continuity already proved excludes
+poles using algebraic transverse curves, and
+excludes exceptional point values by approximation
+in an etale chart.
+Normality of the smooth source makes the function
+regular.
+Geometric components descend after a finite
+extension by the same uniqueness.
+CHW Theorem~4.18 and Corollary~2.32 give the full
+stated reconstruction property
+\citep{AN_CHW2024}.
+
+\medskip\noindent\textbf{Descent and strict additional scope.}
+The proof has included every finite extension of
+$F_r$ for $r\ge2$ and of $K_{\mathrm{nil}}$.
+For an algebraic subfield, base change a pinned map
+along the algebraic extension using the compatible
+finite constant-object slices.
+Every finitely presented etale object, morphism
+and finite covering family descends to one finite
+scalar extension, so these compatible slice functors
+give the required inverse-image functor on the limit
+site, preserving finite limits and covers.
+Closed points remain closed since their residue
+coordinates remain algebraic.
+Reconstruct there and descend the unique resulting
+scheme morphism by its equivariant actual point map.
+This is the finite-site algebraic descent already
+proved in Claim~B.META.16; it uses no finite-local-field
+assumption.
+Applying it to $F_0,F_1\subset F_2$ proves their
+assertions, including every finite extension by
+taking its finite compositum with $F_2$.
+
+For $D=\mathbb Q(t_1,\ldots,t_s)$ the Gauss
+valuation has group $\mathbb Z$ and residue
+$\mathbb F_p(t_1,\ldots,t_s)$.
+All fields in (META.DV5) are algebraic over $D$,
+so have transcendence degree $s$ over $\mathbb Q$;
+their residue fields are algebraic over that
+residue field and hence have transcendence degree
+$s$ over $\mathbb F_p$.
+For $s>0$ they are not isomorphic to any henselian
+subfield of $\overline{\mathbb Q}_p$ carrying its
+induced $p$-adic valuation.
+Indeed both valuations would be nontrivial of
+rank one on the same non-separably-closed field.
+If inequivalent they are independent, contradicting
+the two-henselian-valuations theorem of F.\ K.\ Schmidt,
+in the opened formulation Kuhlmann Theorem~9.44
+\citep{AN_Kuhlmann9}; if equivalent their residue
+transcendence degrees would agree, whereas every
+residue field inside $\overline{\mathbb Q}_p$ is
+algebraic over $\mathbb F_p$.
+Thus this is a strictly additional field family.
+
+The argument deliberately makes no assertion that
+wild inertia for these residue fields is free,
+or that all its nontrivial normal subgroups are
+nonabelian.
+Consequently it does not extend the all-proper-normal
+conclusion of Claim~B.META.18 to the present bases.
+That normal-subgroup boundary, other algebraic
+subgroups, and more general nondiscrete valuations
+remain separate questions.
+No priority or external human verification is claimed.
+\end{proof}
