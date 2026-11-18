@@ -1,0 +1,72 @@
+"""Mechanically regenerated from the saved page and authoritative JSON.
+No scan reading or mathematical correction is performed by this script.
+"""
+from save_page import save_page
+
+save_page(133,
+    "\\scanpage{133}\n% archive foliation: 132\n\\deleted{\\unsure{(iv)}}\n\n$S$ préschém. loc. noeth.\n\n$F$ foncteur\n\\diagram{\\begin{tikzcd}(\\text{Sch})_{/S}\\arrow[r] & (\\text{Ens})\\end{tikzcd}}\n\n(i) $F$ compatible aux limites inductives d'anneaux\n\n(ii) $F$ compatible aux descentes \\unsure{fidèlement} plats qua. cpts. \\inserted{et localisation}\n\n[(iii) Si $A$ anneau local noeth. \\uline{complet} sur $S$, corps résiduel $k$, alors $F(A)\\xrightarrow{\\sim}F(k)$,\n\n(iv) $F$ séparé.\n\n(v) Pour \\unsure{tt} corps $k$ sur $S$, $F(k)$ est \\uline{fini}, et si $K'$ est une ext. alg. close de $k$, \\deleted{\\unsure{plat|$k$}} alg. clos, $F(k)\\unsure{-|\\to}F(k')$ est bijectif.\n\nAlors $F$ représentable par un \\deleted{foncteur} objet étale \\deleted{et qu.} séparé qu. fini sur $S$.\n\n\\deleted{\\unsure{Recommençons}}\n\nSupposons $S$ le spectre d'un anneau local complet $A$, \\inserted{à corps résiduel alg. clos.} \\deleted{et que} de dim $\\unsure{n|1}$, et qu'on sache que sur $S_1=S-\\unsure{y|s}$, le foncteur $F$ soit représentable par $M_1$. \\deleted{Considérons les \\unsure{points}} Soient $\\xi_i^0\\deleted{\\unsure{\\in F_0/k}}$ \\inserted{$(i\\in I)$}, éléments de $F(k)$, ils proviennent d'éléments $\\xi_i\\in F(A)$ bien déterminés, considérons leurs restrictions $\\xi_i'=\\xi_i|S_1\\in F(S_1)$, ils correspondent à des\n",
+    elements=[['deletion', 'isolated upper left mark', '(iv)'],
+ ['text', 'initial hypothesis', 'S préschém. loc. noeth.'],
+ ['text', 'functor introduction', 'F foncteur'],
+ ['diagram', 'category arrow', '(Sch)/S → (Ens)'],
+ ['text', 'condition i', 'F compatible aux limites inductives d’anneaux'],
+ ['text', 'condition ii', 'F compatible aux descentes'],
+ ['insertion', 'under condition ii', 'et localisation'],
+ ['text', 'bracketed condition iii', 'Si A anneau local noeth. complet'],
+ ['text', 'condition iv', 'F séparé'],
+ ['text', 'condition v', 'Pour tt corps k sur S'],
+ ['deletion', 'v before alg. clos', 'plat or k'],
+ ['text', 'conclusion', 'Alors F représentable'],
+ ['deletion', 'conclusion before objet', 'foncteur'],
+ ['deletion', 'after étale', 'et qu.'],
+ ['deletion', 'between conclusion and proof', 'Recommençons'],
+ ['text', 'beginning of argument', 'Supposons S le spectre d’un anneau local complet'],
+ ['insertion', 'above line starting A', 'à corps résiduel alg. clos.'],
+ ['deletion', 'after A', 'et que'],
+ ['deletion', 'after M₁', 'Considérons les points'],
+ ['deletion', 'after ξ_i^0', '∈F₀/k'],
+ ['insertion', 'above ξ_i^0', '(i∈I)']],
+    doubts=[['isolated top mark', 'cancelled (iv)', 'numeral resembles iv but heavily retraced', 'low'],
+ ['ii',
+  'fidèlement plats qua. cpts.',
+  'compressed ending of fidèlement; agreement and abbreviations retained',
+  'medium'],
+ ['v',
+  'tt; K′ in prose; k′ in formula',
+  'abbreviation and capitalization retained as seen',
+  'medium'],
+ ['v cancelled material', 'plat or k', 'dense stroke over small group of letters', 'low'],
+ ['map in v',
+  'F(k) - F(k′)',
+  'connector appears a dash without clear head; arrow is alternative',
+  'medium'],
+ ['cancelled heading',
+  'Recommençons',
+  'whole word crossed; possible different opening R-word',
+  'low'],
+ ['local proof dimension', 'n', '1 is alternative; stroke is nearly horizontal', 'low'],
+ ['open complement', 'S₁=S-y', 's is also possible; y-like descender visible', 'low'],
+ ['cancelled words after M₁',
+  'Considérons les points',
+  'last word crossed through too densely to settle',
+  'low'],
+ ['cancelled formula after ξ_i^0',
+  '∈F₀/k',
+  'partly erased by multiple strokes; all symbols tentative',
+  'low'],
+ ['condition iii bracket',
+  'opening square bracket only',
+  'no closing bracket appears beside the condition; not supplied',
+  'high']],
+    leads=['The page proposes a representability criterion: limit compatibility, descent/localization, '
+ 'invariance F(A)≃F(k) for complete local noetherian A, separatedness, and finite geometric values '
+ 'with algebraically closed extension invariance should yield a separated étale quasi-finite '
+ 'representing object.',
+ 'The argument begins over a complete local base with algebraically closed residue field, assumes '
+ 'representability on a punctured open, and lifts residue-field elements uniquely using condition '
+ '(iii). The dimension and the point notation are uncertain; the page ends mid-sentence before '
+ 'gluing is explained.',
+ 'Condition (iii) is visibly bracketed, so its status deserves a note; the page does not '
+ 'explicitly label that bracket as doubt or withdrawal.'],
+    sheet_kind='text',
+)

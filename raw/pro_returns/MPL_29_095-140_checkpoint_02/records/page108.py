@@ -1,0 +1,50 @@
+"""Mechanically regenerated from the saved page and authoritative JSON.
+No scan reading or mathematical correction is performed by this script.
+"""
+from save_page import save_page
+
+save_page(108,
+    "\\scanpage{108}\n% archive foliation: 107\n% Pale reversed typescript is mirror-image show-through from the other face.\n\\[\nP=QQ'\\qquad QR+Q'R'=1\n\\]\n\\margin{$(P)=(Q)(Q')=(Q)\\cap(Q')$\\par\ncar $s\\in(Q)$, $s\\in(Q')$\\par\n$\\Longrightarrow s=Q'sR'+QsR\\in(QQ')$}\n\\[\nA[t]/(P)\\longrightarrow A[t]/(Q)\\times A[t]/(Q')\n\\]\ninjectif car $(\\unsure{P})=(Q)\\cap(Q')$\n\nSurjectif car par Nakayama on est ramené au cas\n\n$A[t]$\n\n\\uline{Lemme.} Soient $Q,Q'\\subset A$ \\uline{\\unsure{id\\textsuperscript{x}} étrangers}.\n\nAlors $A/(QQ')\\longrightarrow A/Q\\times A/Q'$ est un \\unsure{isom}.\n\nEn effet,\\quad (i)\\quad $(Q)\\cap(Q')=QQ'$\n\ncar\n\\[\n\\underline Q\\cap\\underline {Q'}=\\underline Q\\cap\\underline {Q'}(\\underline Q+\\underline {Q'})\n\\subset\\underline {Q'}\\underline Q+QQ'=QQ'.\n\\]\n(ii) $\\underline Q+\\underline {Q'}=A$, \\unsure{par hypothèse}; \\unsure{il s'ensuit} que\n\\[\nx\\in A,\\ y\\in A\\quad\\Longrightarrow\\quad\n\\begin{gathered}\n\\exists\\unsure{b}\\in Q\\quad\\text{qui est }\\equiv y\\quad(Q')\\\\\n\\exists a\\in Q'\\quad\\text{qui est }\\equiv x\\quad(Q).\n\\end{gathered}\n\\]\ndonc\n\\[\na+b\\equiv\\begin{cases}x&(Q)\\\\y&(Q')\\end{cases}\n\\]\n\\figure{\\begin{tikzpicture}\\draw[very thick] (0,0) .. controls (1.8,-0.09) and (3.0,-0.04) .. (4.8,0.01);\\draw (0.05,-0.07)--(4.68,-0.02);\\end{tikzpicture}}\n\n\\diagram{\\begin{tikzcd}[column sep=small,row sep=small]\nA/Q.Q'\\longrightarrow A/Q\\unsure{\\times|+}A/Q' & \\text{surjectif }\\deleted{\\unsure{ssi}} \\arrow[d,Leftrightarrow] & \\\\\n& \\text{bijectif} \\arrow[d,Leftrightarrow] & \\\\\n& Q+Q'=A \\arrow[r,Rightarrow] & QQ'=Q\\cap Q'\n\\end{tikzcd}}\n",
+    elements=[['display', 'top left and centre', 'P=QQ′; QR+Q′R′=1'],
+ ['margin note', 'top right', '(P)=(Q)(Q′)=(Q)∩(Q′); s∈(Q),s∈(Q′)'],
+ ['display', 'upper left', 'A[t]/(P)→A[t]/(Q)×A[t]/(Q′)'],
+ ['text', 'upper explanation', 'injectif car (P)=(Q)∩(Q′)'],
+ ['text', 'upper middle', 'Surjectif car par Nakayama on est ramené au cas'],
+ ['display', 'isolated below upper explanation', 'A[t]'],
+ ['text', 'middle lemma', 'Lemme. Soient Q,Q′⊂A idˣ étrangers'],
+ ['text', 'lemma conclusion', 'Alors A/(QQ′)→A/Q×A/Q′ est un isom'],
+ ['text', 'proof (i)', 'En effet, (i) (Q)∩(Q′)=QQ′'],
+ ['display', 'proof (i) expansion', 'Q∩Q′=(Q∩Q′)(Q+Q′)⊂Q′Q+QQ′=QQ′'],
+ ['text', 'proof (ii)', 'Q+Q′=A, par hypothèse'],
+ ['display', 'proof existence', 'x∈A,y∈A⇒∃b∈Q … ∃a∈Q′'],
+ ['display', 'proof congruences', 'a+b≡{x (Q), y (Q′)}'],
+ ['drawing', 'above final diagram', 'double horizontal separator'],
+ ['diagram', 'bottom', 'surjectif ⇔ bijectif ⇔ Q+Q′=A ⇒ QQ′=Q∩Q′'],
+ ['deletion', 'bottom after surjectif', 'ssi']],
+    doubts=[['lemma hypothesis',
+  'idˣ étrangers',
+  'abbreviation for ideals uncertain; not expanded in transcription',
+  'medium'],
+ ['lemma conclusion', 'isom', 'end of word compressed, probably abbreviation', 'medium'],
+ ['proof (ii) transition', 'par hypothèse; il s’ensuit', 'heavily compressed handwriting', 'low'],
+ ['proof first existential element',
+  'b',
+  'overwritten with an earlier loop; b is best reading',
+  'medium'],
+ ['final map product symbol', '×', 'could be a plus; literal alternative retained', 'medium'],
+ ['pale typescript beneath manuscript',
+  'mirror-image reverse-side show-through',
+  'orientation checked by rotation; not a second text written on this face',
+  'high'],
+ ['ideal-product proof, first equality',
+  'Q∩Q′ = Q∩Q′(Q+Q′)',
+  'no parentheses surround the first factor on the right; audit removed supplied parentheses',
+  'high']],
+    leads=['Chinese remainder calculation for P=QQ′ with QR+Q′R′=1; the short first surjectivity argument '
+ 'invokes Nakayama but breaks off at “ramené au cas” and isolated A[t]. A separate lemma supplies '
+ 'an elementary ideal-theoretic proof below.',
+ 'Final diagram asserts equivalence of surjectivity, bijectivity, and Q+Q′=A for the displayed '
+ 'quotient map, and the implication to QQ′=Q∩Q′; check independently if this equivalence is used '
+ 'later.'],
+    sheet_kind='text',
+)
