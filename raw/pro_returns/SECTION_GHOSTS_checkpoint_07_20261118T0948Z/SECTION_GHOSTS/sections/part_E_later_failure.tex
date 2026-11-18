@@ -1,0 +1,505 @@
+% Independent reconstruction of GT C.2.13--16 and C.2.18.
+\subsection{Selected later failures and the limits of fixed finite tests}
+
+\begin{result}{E.35}{Proved}{An explicit augmentation bound for a five-coordinate group}
+\label{coh:augmentation-bound}
+Let $p\ge5$ be prime, $a\ge1$, and $M=p^a$.  The universal
+two-generator group of nilpotency class at most three and exponent
+dividing $M$, denoted $P_M$, has order $M^5$.  If $I$ is the
+augmentation ideal of $\mathbb F_p[P_M]$, then
+\[
+                         I^{1+10(M-1)}=0.
+ \tag{E.35.1}
+\]
+This confirms the exact bound in GT\_TOWER\_CHECK C.2.14.
+\end{result}
+\begin{proof}
+Use the commutator convention $[u,v]=uvu^{-1}v^{-1}$ and put
+$c=[x,y]$, $d=[c,x]$, $e=[c,y]$.  The integral Hall model of class
+three has five coordinates, with unique normal forms
+$x^iy^jc^hd^ue^v$.  Its polynomial denominators involve only two and
+three.  Reduction modulo $M$ therefore gives a group with $M^5$
+elements.  Equivalently, the truncated Baker--Campbell--Hausdorff
+law on the free class-three Lie algebra over $\mathbb Z/M$ gives
+that group, with coordinates in weights $1,1,2,3,3$.  Powers are
+integer multiples of logarithms, so its exponent divides $M$.
+In any class-three exponent-$M$ group, the five Hall generators have
+orders dividing $M$; hence every word whose Hall exponents are
+multiples of $M$ maps to the identity.  This proves the asserted
+universal property as well as the order.
+
+In the group algebra write
+\[
+ X=x-1,\quad Y=y-1,\quad C=c-1,\quad D=d-1,\quad E=e-1.
+\]
+The ordered monomials
+\[
+ X^iY^jC^hD^uE^v,\qquad 0\le i,j,h,u,v<M,
+ \tag{E.35.2}
+\]
+are a basis.  Indeed their binomial expansions in the ordered group
+basis are triangular with diagonal one.  Each of $X,Y,C,D,E$ has
+$M$-th power zero, since $(g-1)^M=g^M-1$ in characteristic $p$.
+The last two variables are central.  The group identities
+$yx=xyc^{-1}d^{-1}e^{-1}$, $cx=xcd$, $cy=yce$ give exactly
+\[
+\begin{aligned}
+ YX&=XY+(1+X)(1+Y)
+       \big((1+C)^{-1}(1+D)^{-1}(1+E)^{-1}-1\big),\\
+ CX&=XC+(1+X)(1+C)D,\\
+ CY&=YC+(1+Y)(1+C)E.
+\end{aligned}
+ \tag{E.35.3}
+\]
+Every inverse is the finite geometric series in its nilpotent
+variable.  Assign weights $1,1,2,3,3$ to $X,Y,C,D,E$.  Every
+summand on the right of each rule has weight at least that of the
+left.
+
+We justify that this local observation gives a filtration for
+arbitrary products.  Move $D,E$ to the right.  First count inversions
+of $X,Y$, ignoring occurrences of $C$, and then count occurrences
+of a $C$ before an $X$ or $Y$.  Move intervening $C$'s right by the
+last two rules when needed, and apply the first rule to a $YX$
+inversion.  Every resulting summand has fewer $X,Y$ inversions:
+it has either the correctly ordered pair, one letter of the pair,
+or neither, and introduces no new $X$ or $Y$.  The last two rules
+do not increase the first count and strictly decrease the second.
+A first-rule step can create only finitely many $C$'s.  Lexicographic
+induction on the two counts therefore terminates in ordered
+monomials, throughout without lowering weight.  Terms with an
+exponent at least $M$ vanish.
+
+Let $J_n$ be the span of basis monomials of weight at least $n$.
+The collection just proved gives $J_rJ_s\subset J_{r+s}$.
+The augmentation ideal is $J_1$, since these are precisely all
+nonconstant basis monomials.  The largest possible weight in
+(E.35.2) is $10(M-1)$, proving (E.35.1).
+\end{proof}
+
+\begin{result}{E.36}{Proved}{A finite integral class already detects the incompatible local data}
+\label{coh:local-finite-exclusion}
+Let $p\ge5$, let $q\ne p$ be a rational prime with $q\equiv1\pmod p$,
+and let $m\ne0$ be an integer.  Set
+\[
+ k=v_p(m),\qquad B(p,m)=10(p^{k+1}-1).
+ \tag{E.36.1}
+\]
+In the tangentially marked geometrically pro-$p$ quotient over
+$\mathbb Q_q$ of integral nilpotency class $B(p,m)$, there is no
+continuous section having tame inertia with abelian coordinates
+$(m,0)$ and geometric Frobenius coordinate a nonzero central element
+in the class-two exponent-$p$ quotient $H_p$.
+This confirms GT\_TOWER\_CHECK C.2.15 with its stated constant.
+\end{result}
+\begin{proof}
+Put $s=B(p,m)$, $M=p^{k+1}$ and $P=P_M$ from E.35.  Its universal
+property makes the quotient from the free pro-$p$ group
+characteristic.  The actual arithmetic action therefore descends
+to $P$, and reduction of its first three Hall coordinates gives
+the actual quotient $P\to H_p$.
+
+Suppose the asserted section exists.  By E.32 the tangential
+action at $q$ is unramified at every integral class.  Wild and
+non-$p$ tame inertia have zero geometric image.  For tame
+$p$-inertia $T$ and arithmetic Frobenius $F$, let $V,U$ be the
+section's geometric coordinates.  If $\varphi_q$ is the actual
+Frobenius action, the identities are
+\[
+ U\varphi_q(V)U^{-1}=V^q,\qquad
+ \varphi_q(x)=x^q,\qquad
+ \operatorname{gr}_i(\varphi_q)=q^i.
+ \tag{E.36.2}
+\]
+Work temporarily in the rational class-$s$ Hall group over
+$\mathbb Q_p$.  Successive central corrections, dividing in weight
+$i$ by the nonzero scalar $q^i-1$, give $W$ with
+$W^{-1}U\varphi_q(W)=1$.  Thus $V'=W^{-1}VW$ satisfies
+$\varphi_q(V')=(V')^q$ and has abelian image $(m,0)$.
+Compare $V'$ with $x^m$.  At the first differing central layer of
+weight $i\ge2$, their difference is killed by $q^i-q$, which is
+nonzero in $\mathbb Q_p$.  Induction gives
+\[
+                         W^{-1}VW=x^m.
+ \tag{E.36.3}
+\]
+
+Only the integral consequences of this conjugacy will be evaluated
+in a finite group algebra.  The truncated Magnus series of $V$
+and $x^m$ have coefficients in $\mathbb Z_p$.  Rational conjugacy
+implies equality of the sums of their coefficients on each cyclic
+orbit of words through degree $s$.  The integral quotient of the
+word module by cyclic rotations is free, with those orbits as
+basis.  Therefore the integral difference of the two series is
+an integral sum of additive algebra commutators, through degree
+$s$.  This is the finite-level form of the argument in A.30.
+
+Evaluate those integral expressions, and only those expressions,
+at $X=x-1,Y=y-1$ in $\mathbb F_p[P]$.  E.35 gives
+$I^{s+1}=0$, so higher-degree terms vanish.  The images of $V$
+and $x^m$ are consequently equal in
+$\mathbb F_p[P]/[\mathbb F_p[P],\mathbb F_p[P]]$.
+This quotient has the conjugacy classes of $P$ as basis: an
+additive commutator of group elements is a difference within one
+conjugacy class, and every conjugate difference has this form.
+Equality of two group basis elements implies that they are
+conjugate.  We obtain $h\in P$ with $h^{-1}Vh=x^m$.
+There has been no attempt to evaluate the rational element $W$
+in characteristic $p$.
+
+After geometric conjugation by $h$ the Frobenius coordinate is
+$U'=h^{-1}U\varphi_q(h)$.  On $H_p$ the actual class-two action
+is the cyclotomic action and is the identity since $q\equiv1$
+modulo $p$.  The prescribed central image of $U$ is therefore
+unchanged.  Equation (E.36.2) in $P$ now gives
+\[
+                         U'x^{qm}(U')^{-1}=x^{qm}.
+ \tag{E.36.4}
+\]
+Use the class-three Lie basis over $\mathbb Z/M$
+\[
+ X_0,\ Y_0,\ C_0=[X_0,Y_0],\
+ D_0=[C_0,X_0],\ E_0=[C_0,Y_0],
+\]
+and write
+$\log U'=aX_0+bY_0+c_0C_0+d_0D_0+e_0E_0$.
+The finite exponential of its adjoint action yields
+\[
+ \log(U'x^{qm}(U')^{-1})
+ =qmX_0-qmbC_0+
+ qm(c_0+ab/2)D_0+qmb^2E_0/2.
+ \tag{E.36.5}
+\]
+Since $v_p(qm)=k$, the $C_0$ coordinate of (E.36.4) forces
+$b\equiv0\pmod p$, and the $D_0$ coordinate then forces
+$c_0\equiv0\pmod p$.  In $H_p$, where a central element also
+has zero $a,b$ coordinates, this rules out a nonzero central
+image of $U'$.  That contradicts the preserved Frobenius image,
+and proves the claim.
+\end{proof}
+
+We will use the following actual finite specialization, without
+requiring equations for a generic Heisenberg cover.  For every
+$p\ge5$, reduce the point-three section in the tangential class-two
+exponent-$p$ quotient.  It gives a continuous homomorphism
+\[
+ \rho_{3,p}:G_{\mathbb Q}\longrightarrow
+                 H_p\rtimes\mathbb F_p^\times.
+ \tag{E.37.0}
+\]
+Its image is the entire group and the maximal abelian subfield
+of its fixed field $L_p$ is $\mathbb Q(\mu_p)$.  Indeed, over
+$\mathbb Q(\mu_p)$ the Kummer characters of $3,-2$ are independent:
+their valuations at three and two are one, and these primes are
+unramified in that cyclotomic field.  The image therefore surjects
+onto $H_p^{\rm ab}$.  A subgroup with that property is $H_p$
+itself, because commutators of two lifts with independent abelian
+coordinates generate its center.  The cyclotomic quotient is
+surjective as well.  Finally, the derived subgroup of
+$H_p\rtimes\mathbb F_p^\times$ is exactly $H_p$: conjugation by
+the scalar two produces all its abelian coordinates through the
+invertible scalar $2-1$, and their commutators produce the center.
+This proves the maximal-abelian assertion with the actual marking.
+
+Also, for every $p\ge5$,
+\[
+ H^1(G_{\mathbb Q,\{p,\infty\}},\mathbb F_p(2))=0.
+ \tag{E.37.1}
+\]
+Inflation injects the integral first cohomology into the absolute
+group, which is zero at $p$ by A.26.  Its integral second cohomology
+is $K_2(\mathbb Z)\{p\}=0$ by A.22.  The multiplication-by-$p$
+continuous coefficient sequence gives (E.37.1).
+
+\begin{result}{E.37}{Proved}{Selected fixed-depth examples have a bounded later first failure}
+\label{coh:selected-fixed-depth-failure}
+For every $R\ge1$ and $N\ge1$, the construction in E.33 can be
+chosen to give an ordinary infinite-support pair that survives
+full integral class $R$ with the specified finite Magnus
+congruence, but whose first empty unrestricted integral section
+fibre is a finite class $r>R$.  More precisely, let
+\[
+ R_0=\max(R,3),\quad d=R_0-1,\quad n=J!,\quad
+ a=v_5(n),
+\]
+and choose the permitted constant $C$ additionally divisible by
+five.  At a distinguished first positive support prime $q$, put
+$m=E_0(q)$.  Then
+\[
+ v_5(m)=v_5(C)+da+v_5(d!),\qquad
+ R_0<r\le10(5^{v_5(m)+1}-1).
+ \tag{E.37.2}
+\]
+The pair has no full geometrically pro-five section.  The
+point-three twist of the characteristic Heisenberg cover of
+geometric degree $125$, fixed independently of $R,N$, detects
+that full pro-five exclusion.  This confirms GT\_TOWER\_CHECK
+C.2.13 and C.2.16.  It determines a two-sided bound, not the
+exact least class within that interval.
+\end{result}
+\begin{proof}
+Run E.33 for $R_0,N$, enlarging $C$ by five.  At the first arithmetic
+stage of E.31 let $P$ be the complete CRT modulus, and let
+$\sigma_F$ be the prescribed automorphism of
+$F=\mathbb Q(\mu_P)$.  It fixes $\mu_n$, since its CRT class is
+one modulo $n$.  Here $5\mid n$.  We impose one additional
+condition on the first positive support prime.
+
+Let $L_5$ be the actual specialization field from (E.37.0), and put
+\[
+ R_b=F((-2)^{1/n}),\qquad R'=R_b(3^{1/5}).
+ \tag{E.37.3}
+\]
+E.31 gives an extension of $\sigma_F$ to $R_b$ fixing the displayed
+$n$-th root: the original radical field over $\mathbb Q(\mu_n)$
+has that field as its maximal abelian subfield.  The fifth-power
+classes of $3,-2$ are independent in any cyclotomic field $F$.
+For a nontrivial rational combination its valuation at two or
+three is not divisible by five.  Its real fifth root has degree
+five and generates a nonnormal real field, which cannot be a
+subfield of an abelian extension of $\mathbb Q$.
+The cyclic extension $R_b/F$ has its unique degree-five
+subextension $F((-2)^{1/5})$.  Thus
+$R_b\cap F(3^{1/5})=F$, and $\sigma_F$ extends to an
+automorphism $\sigma_{R'}$ fixing both displayed radicals.
+
+Since $L_5\cap F=\mathbb Q(\mu_5)$, we have
+$\operatorname{Gal}(L_5F/F)=H_5$.  The abelian extension
+$R'/F$ contains its full maximal abelian subextension.
+Therefore, exactly,
+\[
+                 L_5F\cap R'=F(3^{1/5},(-2)^{1/5}).
+ \tag{E.37.4}
+\]
+Choose any nonzero central element $z$ of $H_5$.  Its action on
+$L_5$ and $\sigma_F$ on $F$ agree on their intersection.
+The combined action on $L_5F$ agrees with $\sigma_{R'}$ on
+(E.37.4), since both fix the two radicals and have the same
+restriction to $F$.  These are compatible automorphisms of the
+actual compositum.  Chebotarev therefore supplies arbitrarily
+large first primes $q$ satisfying every original CRT and radical
+condition, also splitting $3^{1/5}$, and with
+$\rho_{3,5}(\operatorname{Frob}_q)$ central nonzero.
+All stated conditions are conjugacy invariant; conjugation may
+scale $z$ by a nonzero scalar and cannot make it zero.
+Choose such a $q$ and continue the arithmetic recursion unchanged.
+E.31 and E.33 retain all their conclusions for this same pair.
+
+We show that every integral class-two section above it has the
+same $H_5$ reduction as the point-three section.  Choose the
+literal convergent Kummer cocycles of the constructed products.
+Every fresh exponent is divisible by five, so their reductions
+are the literal cocycles of $(3,-2)$.  After aligning abelian
+cocycles, the difference of the central coordinates is a
+$\mathbb F_5(2)$-cocycle.  At a fresh support prime its inertia
+is zero: E.32 gives central inertia in $(E_q/2)\mathbb Z_5$,
+and the point-three inertia is zero.  At any other prime greater
+than three and different from five, both integral inertia
+coordinates are zero by the tame weight relation.  At two and
+three, the difference is killed on inertia by $q'(q'-1)$,
+a unit modulo five.  The difference is consequently unramified
+outside five and is a coboundary by (E.37.1).
+
+At the selected $q$, the cyclotomic action modulo five is the
+identity, so a central coboundary vanishes on its Frobenius.
+Its geometric Frobenius image is therefore the same nonzero
+central element for every integral lift.  Geometric conjugation
+also preserves that value.  Its inertia abelianization is $(m,0)$.
+E.36 excludes a section at integral class
+$10(5^{v_5(m)+1}-1)$ already after restriction to
+$G_{\mathbb Q_q}$ and projection to the pro-five quotient.
+Hence the full integral fibre at that class is empty.
+It is nonempty through class $R_0$ by E.33; projection makes
+nonemptiness downward closed.  A least empty class therefore
+exists in the interval (E.37.2), and no full pro-five section can
+exist.
+
+The exponent is exact.  The first-stage shell in E.31 gives
+$v_5(q-1)=v_5(n)=a\ge1$.  For $i\ge1$,
+$v_5(q^i-1)=a+v_5(i)$: the assertion for $i$ prime to five follows
+by summing a geometric series, and passage from $i$ to $5i$
+adds one by the binomial expansion of a number congruent to one
+modulo five.  Applying this to
+$m=Cn\prod_{i=2}^d(q^i-1)$ proves the formula in (E.37.2).
+
+For completeness we give the promised cover comparison in the
+same actual marking.  Let $K$ be the characteristic kernel of
+$\Pi\to H_5$.  The inverse image of the point-three section in
+$H_5\rtimes G_{\mathbb Q}$ defines a degree-$125$ cover $Y_5$
+with a rational point above three.  Its geometric pro-five
+topology is the full induced topology, by the prime-power-index
+comparison C.3.  The preceding class-two calculation would
+geometrically conjugate any hypothetical full pro-five section
+above our pair into this cover subgroup.
+
+At the selected prime, the ordinary local point $t_q$ has positive
+valuation $m$.  It is a fifth power in $\mathbb Q_q$: its class
+relative to three is a fifth power, and $q$ was chosen to split
+$3^{1/5}$.  Also $1-t_q$ is a principal $q$-unit and hence a
+fifth power.  The actual point section thus has zero abelian
+Frobenius coordinates modulo five, and its central inertia is
+$mu$, zero modulo five, for an integral local primitive $u$.
+Its Frobenius image in $H_5$ is central.  It cannot be nonzero,
+because the point section exists in every integral class and
+would contradict E.36.  Therefore its entire local $H_5$ image
+is the identity.  This argument establishes the needed local
+marking comparison without an unproved generic cover equation.
+
+The local $Y_5$-fibre is the coset set $H_5$.  The identity image
+of the ordinary point section and the nonzero central
+point-three Frobenius make Frobenius act there by a nontrivial
+central translation, which has no fixed coset.  A full pro-five
+section with the given nonzero ordinary valuation would be
+locally conjugate to that point section by A.31, and its global
+factorization through $Y_5$ would supply a fixed coset, a
+contradiction.  This gives the stated single fixed-cover
+detection as well as the earlier explicit finite-class bound.
+\end{proof}
+
+\begin{result}{E.38}{Proved}{Any prescribed finite geometric test can coexist with first failure at class three}
+\label{coh:arbitrary-finite-first-three}
+Let $N\triangleleft\Pi$ be open and normal in the full arithmetic
+group, and put $Q=\Pi/N$.  There exists an ordinary
+infinite-support completed pair with a continuous section of
+\[
+ E_Q\times_{E_{Q^{\rm ab}}}E_{\rm ab}
+       =E_U/(N\cap\overline{[\Pi,\Pi]}),
+ \tag{E.38.1}
+\]
+whose $Q$-component is the point-three section, and whose
+restriction at every finite prime is geometrically conjugate
+to the image of its ordinary point; at the real place it is
+the image of three.  Nevertheless its unrestricted full
+integral class-two fibre is nonempty and its class-three
+fibre is empty.
+
+Thus, for every one fixed finite geometric quotient, existence
+with the joint full abelianization and all those local
+comparisons does not imply integral class-three liftability.
+This confirms the exact quantifiers of GT\_TOWER\_CHECK C.2.18.
+\end{result}
+\begin{proof}
+Use the fully reconstructed finite-cover recursion E.20, and
+retain its point-three cover $Y$, finite Galois boundary field
+$F$, degree $M=[F:\mathbb Q]$, bad-prime integer $\Delta$, and
+the conductors $f_3,f_{-2}$ of its fixed auxiliary radical fields.
+These data are fixed before the following new coefficient prime.
+Put
+\[
+ B_0=\operatorname{lcm}(24,4M,|Q|,\Delta,f_3,f_{-2}),
+ \quad p\ge7,\quad p\nmid B_0,\quad N_0=pB_0,
+ \tag{E.38.2}
+\]
+and take $C=\operatorname{lcm}(24,4M,|Q|,p)$.  These are allowed
+parameters of E.20, since $C\mid N_0$.  Its exponents are
+$n_j=N_0(j+4)!$, and $v_p(n_0)=1$.
+
+At the initial stage choose the actual rational point over three
+with Kummer coordinates $(1,1)$ at every old local place.
+The first CRT class is therefore one at every prime.  If $P$ is
+its modulus, E.20 permits the usual required precisions, and the
+precision at $p$ is at least
+$2v_p(N_0\,6!)+4=6$.  In particular
+\[
+                    q\equiv1\pmod P,\qquad p^2\mid P
+ \tag{E.38.3}
+\]
+is the original allowed condition on the first positive support
+prime.  We add one compatible central Frobenius condition.
+
+Let $L_p$ be the actual point-three field (E.37.0), and write
+\[
+ K=F\mathbb Q(\mu_P),\qquad
+ R_b=K((-2)^{1/n_0}),\qquad R'=R_b(3^{1/p}).
+ \tag{E.38.4}
+\]
+The maximal-abelian assertion after (E.37.0) gives
+$L_p\cap\mathbb Q(\mu_P)=\mathbb Q(\mu_p)$, and
+$L_p\mathbb Q(\mu_P)/\mathbb Q(\mu_P)$ has group $H_p$.
+The Galois extension $K/\mathbb Q(\mu_P)$ has degree dividing
+$M$, prime to $p$.  The two extensions are linearly disjoint.
+Consequently
+\[
+ \operatorname{Gal}(L_pK/K)=H_p,\qquad
+                  L_p\cap K=\mathbb Q(\mu_p).
+ \tag{E.38.5}
+\]
+
+The classes of $3,-2$ are independent modulo $p$-th powers in
+$\mathbb Q(\mu_P)$, by the nonnormal-real-radical argument used
+in E.37, now with degree $p$.  They remain independent in $K$:
+restriction followed by norm is multiplication by the
+prime-to-$p$ extension degree.  The cyclic extension $R_b/K$
+therefore has unique degree-$p$ subextension
+$K((-2)^{1/p})$, and
+$R_b\cap K(3^{1/p})=K$.  The abelian extension $R'/K$ contains
+the full maximal abelian subextension of $L_pK/K$, so
+\[
+                   L_pK\cap R'=K(3^{1/p},(-2)^{1/p}).
+ \tag{E.38.6}
+\]
+Take a nonzero central element on $L_p$, the identity on $K$,
+and the identity on $R'$.  Equations (E.38.5)--(E.38.6) prove
+that these restrictions agree on every intersection and define
+an automorphism of the actual compositum.  Chebotarev supplies
+arbitrarily large primes $q$ in its conjugacy class.  Such a
+prime satisfies (E.38.3), splits in $F$ and in the original
+first radical field
+$\mathbb Q(\mu_{n_0},(-2)^{1/n_0})$, and its point-three
+$H_p$ Frobenius is central nonzero.  Conjugation only rescales
+that nonzero central value.  Thus it is a legal first prime of
+E.20 with the added condition.  Continue every remaining choice
+by E.20.  Its component maps and compact local conjugator argument
+give exactly the section and local comparisons in (E.38.1)
+for the ordinary pair
+\[
+             A=3\prod_{j\ge0}q_j^{n_j},\qquad
+             B=-2\prod_{j\ge0}r_j^{n_j}.
+ \tag{E.38.7}
+\]
+
+Every $n_j$ is divisible by $p$.  After aligning literal abelian
+cocycles, the reduction of any integral class-two section differs
+centrally from point three by a $\mathbb F_p(2)$-cocycle.
+At a new support prime its central inertia is the valuation times
+an integral local primitive, hence zero modulo $p$.  At all other
+primes greater than three and different from $p$, both inertia
+values are integrally zero.  At two and three the difference is
+killed by $q'(q'-1)$, a unit modulo $p$.  It is therefore
+unramified outside $p$ and is a coboundary by (E.37.1).
+Every integral class-two lift has the point-three $H_p$ image.
+
+At our selected $q$, its actual Frobenius coordinates consequently
+satisfy
+$\alpha\equiv\beta\equiv0\pmod p$ and
+$\gamma\not\equiv0\pmod p$.  Geometric conjugation preserves these
+properties because $q\equiv1\pmod p$ and this image is central.
+The ordinary valuation vector is $(m,0)$ with $m=n_0$ and
+$v_p(m)=1$.  Locally the second Kummer cocycle is an integral
+coboundary $b=\delta u$; its primitive is integral because
+$1-t_q$ is a principal $q$-unit.  The exact class-two tame
+identity gives $\beta=(q-1)u$ and $h(T)=mu$ for every integral
+lift.  B.23 therefore gives its actual first weight-three residue
+\[
+ Z_{D,q}=m(\gamma-q\alpha u)
+                  +(q^2-1)u\binom m2.
+ \tag{E.38.8}
+\]
+The first summand has valuation exactly one, while the second has
+valuation at least three: $p^2\mid(q-1)$, $p\ge7$, and
+$v_p\binom m2=1$.  Hence $v_p(Z_{D,q})=1$ but
+$v_p(q^2-1)\ge2$.  This is a nonzero local integral obstruction,
+already nonzero modulo $p^2$.  No integral class-two section
+above the pair can lift to class three.  A.25 supplies integral
+class-two existence, so the first unrestricted integral failure
+is exactly class three.
+
+The last argument concerns reductions of every integral
+class-two section.  It does not classify arbitrary finite
+coefficient class-two sections, which may have additional
+ramification and central classes.  The locally matching section
+of (E.38.1), on the other hand, is the actual one proved by
+E.20, with the full abelianization retained; it is not merely a
+section modulo a further finite coefficient.  These are the
+distinct quantifiers needed for the assertion.
+\end{proof}

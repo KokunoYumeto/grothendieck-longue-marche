@@ -1,0 +1,735 @@
+\subsection{A qualitative repair of the ten-point geometric comparison}
+
+The following argument supplies the finite recognition and fusion
+input at the ten-point Klein configuration.  It does not assert the
+particular numerical recursion in historical A.4.34--A.4.35 or the
+compiler bound in A.4.57.  In particular, ordinary fixed loci are
+not identified with profinite centralizers without an intervening
+finite-cover argument.
+
+\begin{result}{E.176}{Proved}
+{Finite fixed-component recognition and finite fusion}
+Let \(X\) be a connected aspherical smooth manifold of real
+dimension \(d\), with a smooth action of a finite group \(C\).
+Suppose that \(P=\pi_1(X,x)\) is finitely generated and is an
+iterated extension of finitely generated free groups of rank at
+least two.  Let \(H=C_2^2\leq C\), and choose \(x\in X^H\).
+Let
+\[
+ 1\longrightarrow P\longrightarrow E
+   =\pi_1^{\rm orb}([X/C],x)\longrightarrow C\longrightarrow1
+\tag{E.176.1}
+\]
+be the actual path extension; the fixed point gives its named
+subgroup \(H\).
+For every finite quotient \(q:E\to Q\), after joining the label
+map to \(C\), there is a finite-index subgroup \(V\leq P\),
+characteristic in \(P\) and contained in \(\ker q\), such that
+\[
+ \operatorname{im}\bigl(C_{E/V}(H)\longrightarrow Q\bigr)
+                       =q(C_E(H)).
+\tag{E.176.2}
+\]
+There is such a refinement with the following additional
+property.  Choose one point \(x_j\) in each component of \(X^H\),
+and paths \(\gamma_j:x\to x_j\).  They give actual subgroups
+\[
+ s_j(h)=\bigl(h,\gamma_j*(h\gamma_j)^{-1}\bigr)\in E.
+\tag{E.176.3}
+\]
+Every homomorphism \(\iota:H\to E/V\) whose composite to \(C\)
+is the named inclusion has, in \(Q\), the form
+\[
+             \operatorname{pr}_Q\iota(h)
+                       =q(p)\,q(s_j(h))\,q(p)^{-1}
+              \qquad(h\in H)
+\tag{E.176.4}
+\]
+for some \(p\in P\) and some component \(j\).
+The same refinement works for every such \(\iota\).
+Only finitely many components will be used in E.177.
+\end{result}
+
+\begin{proof}
+An element of the extension E.176.1 is a label \(c\in C\)
+together with a homotopy class of paths from \(x\) to \(cx\).
+Multiplication concatenates the first path with the \(c\)-image
+of the second.  This description gives the action of \(E/U\)
+on the connected cover \(Y_U=\widetilde X/U\) whenever \(U\)
+is normal in \(E\).  It also proves E.176.3 directly, including
+its homomorphism identity.
+
+We first give the cohomology input, rather than assume
+profinite goodness.  For every finite-index subgroup \(U\leq P\)
+there is a finite-index subgroup \(U'\leq U\) such that
+\[
+ H^{>0}(U,\mathbb F_2)\longrightarrow H^{>0}(U',\mathbb F_2)
+                         \quad\hbox{is zero}.
+\tag{E.176.5}
+\]
+Here and below the cohomology in this construction is ordinary
+discrete group cohomology.  For a free group \(F\) of rank \(r\geq2\)
+put \(N=F'F^2\) and \(W=F/(N'N^2)\).  The group \(W\) is finite:
+its order is \(2^{r+1+2^r(r-1)}\).  Its centre has trivial image
+in \(F/N\).  To see this, use the regular \(C_2^r\)-cover of
+the rose.  The squared \(j\)-th generator is the nonzero
+mod-two cycle supported on the two \(j\)-edges based at
+\(\{0,e_j\}\).  For every nonzero translation \(v\in C_2^r\)
+choose \(j\) with \(v\notin\{0,e_j\}\).  That translation moves
+the cycle to a distinct chain.  Graph homology embeds in
+edge chains, so the deck action on \(H_1(N,\mathbb F_2)\)
+is faithful.  A central element of \(W\) must act trivially
+on that module, proving the assertion about its projection.
+
+If \(F\) is normal in a group \(G\), the conjugation action
+on \(W\) has a finite-index kernel \(J\) satisfying
+\(J\cap F\subset F'F^2\).  Indeed the kernel of the inner
+action of \(F\) on \(W\) is the inverse image of its centre.
+Now induct on the length of the free extension tower.
+For \(1\to F\to G\to B\to1\), take a subgroup \(B_0\leq B\)
+as in the induction hypothesis and intersect its inverse
+image with \(J\).  Write the resulting extension as
+\(1\to F_1\to G_1\to B_1\to1\).  In the natural
+Lyndon--Hochschild--Serre comparison only rows \(0,1\) occur.
+The row-one coefficient map
+\(H^1(F,\mathbb F_2)\to H^1(F_1,\mathbb F_2)\) is zero,
+whereas the positive-degree row-zero map factors through
+the zero restriction to \(B_0\).  Thus the map on each
+associated graded of positive total degree is zero.
+There are at most two filtration pieces.  Repeating the
+construction inside \(G_1\) gives a composite that is zero
+on the actual positive cohomology groups.  Finite-index
+subgroups inherit the free extension tower, by intersection
+and projection, and their free factors have finite ranks.
+This proves E.176.5.
+
+The subgroup in E.176.5 may be made characteristic in \(P\)
+without losing the vanishing.  If \([P:U']=m\), its coset
+action shows that
+\[
+ \kappa_m(P):=\bigcap_{\varphi:P\to\mathfrak S_m}\ker\varphi
+                              \subset U'.
+\tag{E.176.6}
+\]
+This intersection has finite index because \(P\) is finitely
+generated.  It is characteristic, including under continuous
+automorphisms of \(\widehat P\) after completion.  Start with
+\(U_0=P\cap\ker q\) and repeat this construction to obtain
+normal subgroups of \(E\)
+\[
+ U_0\supset U_1\supset\cdots\supset U_{(d+2)^2},
+ \qquad H^{>0}(U_i,\mathbb F_2)
+             \longrightarrow H^{>0}(U_{i+1},\mathbb F_2)=0
+             \quad\hbox{as a map}.
+\tag{E.176.7}
+\]
+The displayed zero denotes the restriction map, not a
+claim that the target cohomology group is zero.
+Let \(V=U_{(d+2)^2}\).
+
+Here is the fixed-point argument with its convergence
+and component conditions.  A smooth finite-group action
+has an equivariant triangulation; for example see
+\cite[opening Theorem, part 1, p.199; conventions, p.201]{LitIllman1978}.
+One may include the chosen fixed point as a vertex and
+barycentrically subdivide.  The cells have dimension at
+most \(d\), and their stabilizers fix them pointwise.
+Lift this triangulation to every \(Y_i=\widetilde X/U_i\).
+It need not have finitely many cells.  Cellular cochains
+then use products; a product of free-orbit cochain modules
+for a finite cyclic group is coinduced and has zero Tate
+cohomology, just as a finite free-orbit module does.
+Thus no compactness of \(X\) or finiteness of the cell
+set is being assumed here.
+
+For \(A=C_2\), use its complete rank-one resolution with
+alternating maps \(1-a,1+a\), and a cochain complex with
+degrees between \(-1\) and \(d\).
+The ordinary-cohomology-first spectral sequence has only
+\(d+2\) terms in each total degree.  A map zero on ordinary
+cohomology is zero on this page and strictly moves the
+finite filtration on Tate hypercohomology.  A composite
+of \(d+2\) such maps is zero on the abutment.
+Restriction to the \(A\)-fixed subcomplex is a Tate
+isomorphism: its kernel consists of the free-orbit
+relative cellular cochains.  On the fixed subcomplex
+the two horizontal maps are zero over \(\mathbb F_2\).
+Consequently the zero Tate map gives zero on every
+ordinary cohomology group of that fixed subcomplex.
+The bounded vertical range justifies these comparisons
+despite the complete resolution being unbounded in both
+horizontal directions.
+
+First use the canonical \(H\)-actions fixing the chosen
+basepoint lifts \(y_i\).  Asphericity identifies the
+cohomology restrictions in E.176.7 with those of \(Y_i\).
+Since the covers are connected, the relative complexes
+\(C^*(Y_i,y_i;\mathbb F_2)\) have zero maps on all
+cohomology.  Apply the cyclic argument to a subgroup
+\(A\leq H\), and then to \(H/A\) on the \(A\)-fixed
+complexes.  After the \((d+2)^2\) maps it gives zero on
+\[
+ H^0(Y_0^H,\{y_0\};\mathbb F_2)
+                  \longrightarrow H^0(Y_V^H,\{y_V\};\mathbb F_2).
+\tag{E.176.8}
+\]
+The characteristic functions of components show that
+every fixed point upstairs projects into the component
+of \(y_0\) downstairs.  Fixed loci of smooth finite-group
+actions are locally path connected, so points in that
+component can be joined by a fixed path.
+
+Let \(\bar g\in C_{E/V}(H)\).  Then \(\bar g y_V\) is
+fixed, and its image in \(Y_0\) can be joined to \(y_0\)
+by such a path.  Project that path to \(X\), and denote
+it by \(\beta\).  Its endpoints are \(x,cx\), where \(c\)
+is the label of \(g\).  Since the labels are retained,
+\(c\) commutes with every \(h\in H\); moreover \(h\beta=\beta\).
+Thus \((c,\beta)\in E\) centralizes \(H\) by the literal
+path multiplication.  Its residue in \(E/U_0\), and
+hence in \(Q\), equals that of \(g\), because the lifted
+path has the prescribed endpoint.  This proves the
+forward inclusion of E.176.2.  The reverse inclusion
+is given by the images of ordinary commuting elements.
+
+For fusion use the actions of an arbitrary \(\iota\)
+and its projections on the same covers.  These actions
+are equivariant under the covering maps, but no longer
+fix the selected basepoints.  Replace the relative
+complexes by
+\[
+ \widetilde C^*(Y_i)
+      =\operatorname{Cone}\bigl(\mathbb F_2
+                                 \longrightarrow C^*(Y_i;\mathbb F_2)\bigr),
+\tag{E.176.9}
+\]
+with constants in degree \(-1\).  Connectedness and
+E.176.7 again give zero cohomology maps in all degrees.
+The same two cyclic Tate comparisons apply.
+In the restriction to the fixed subcomplex the constants
+cancel from the mapping cone, so its relative kernel
+still consists exactly of free-orbit cellular cochains.
+They imply a zero map on the reduced-cone cohomology
+of the \(H\)-fixed loci after \((d+2)^2\) levels.
+If \(Y_0^{\iota(H)}\) were empty, all the upper fixed
+loci would be empty and the map in degree \(-1\)
+would be the identity of \(\mathbb F_2\).  This
+contradiction proves that \(Y_0^{\iota(H)}\) is nonempty.
+
+Choose one of its fixed points \(z\), projecting to a
+point of the component containing \(x_j\).  Join that
+point to \(x_j\) within \(X^H\).  Its lift, preceded by
+\(\gamma_j\), gives a lift fixed by \(s_j(H)\).
+An ordinary deck element \(p\in P\) moves that lift to
+\(z\).  The actions of \(\iota(h)\) and
+\(p s_j(h)p^{-1}\) on \(Y_0\) cover the same map \(h\)
+and fix the same point.  Uniqueness of a lift with a
+given value makes them equal.  Passing to \(Q\)
+proves E.176.4.  This proves fusion uniformly over
+all the complements at the stated refined input.
+\end{proof}
+\begin{result}{E.177}{Proved}
+{The actual ten-point Klein comparison and its permitted corrector}
+Let \(H=\langle a,b\rangle=C_2^2\) act on the sphere by
+\(a(z)=-z,\ b(z)=1/z\).  Mark the three exceptional pairs
+\[
+ A_\pm=(0,\infty),\qquad B_\pm=(1,-1),\qquad
+ C_\pm=(i,-i)
+\tag{E.177.1}
+\]
+and the regular orbit
+\(D_h=h(z_0)\), \(h\in H\), for \(z_0=1+\sqrt2\).
+Put \(M=\Gamma_{0,[10]}\), \(P=\Gamma_{0,10}\), and let
+\(G\leq M\) be the inverse image of
+\(C_{\mathfrak S_{10}}(H)\).  Write \(N=C_G(H)\).
+For every finite quotient \(q:G\to Q\) there are finite
+refinements recognizing \(q(N)\) as in E.176.2 and fusing
+every elementwise labelled copy of \(H\) as in E.176.4.
+In the fusion conclusion the correcting element can
+always be chosen in
+\[
+                          P\ \cup\ P\theta ,
+\tag{E.177.2}
+\]
+where \(\theta\) is one fixed half twist interchanging
+only the labels \(C_+,C_-\).
+It is killed by both four-point forgetting maps retaining
+\(\{A_+,A_-,D_1,D_b\}\) and
+\(\{B_+,B_-,D_1,D_a\}\).
+
+Consequently
+\[
+              C_{\widehat G}(H)=\overline N .
+\tag{E.177.3}
+\]
+Every continuous automorphism \(\alpha\) of
+\(\widehat M\) that induces the identity on label
+permutations admits one correcting element in
+\(\widehat P\cup\widehat P\theta\) after which it fixes
+the two named involutions pointwise and preserves
+\(\overline N\).
+These are qualitative finite and profinite comparisons;
+no historical explicit refinement bound is asserted.
+\end{result}
+
+\begin{proof}
+Use \(X=\mathcal M_{0,10}(\mathbb C)\).  Fixing three
+labels identifies it with the ordered configuration
+space of seven points on a triply punctured sphere.
+Successive forgetting maps are locally trivial:
+disjoint small discs about the retained points and
+isotopies supported there supply local trivializations.
+Their fibres are spheres with successively
+\(3,4,\ldots,9\) points removed.  They are aspherical,
+with free fundamental groups of ranks \(2,\ldots,8\).
+Their homotopy exact sequences prove inductively that
+\(X\) is aspherical and that \(P\) has the required
+free extension tower.  Its real dimension is fourteen.
+The label action is holomorphic.  Its actual orbifold
+path extension is the stated subgroup \(G\) of the
+mapping class group; compare the definitions and
+orbifold interpretation in
+\cite[\S\S1--2, pp.656--660]{LitSchneps2006Automorphisms}.
+Thus E.176 applies, for example with \(16^2=256\)
+cohomology-killing refinements.
+
+Here is the exact fixed-locus calculation.  At a point
+of \(X^H\), each labelled permutation \(h\) is realized
+by a unique Möbius map, because three distinct marked
+points determine that map.  These maps form a faithful
+copy of \(H\).  Normalize the two \(A\)-labels to
+\(0,\infty\) and the label \(B_+\) to \(1\).
+The map \(a\) must be \(-z\).  The map \(b\) exchanges
+\(0,\infty\), fixes \(1\), and is therefore \(1/z\).
+The other \(B\)-label is \(-1\), and the two \(C\)-labels
+are \(i,-i\) in one of their two possible orders.
+All four \(D\)-labels are determined by \(D_1=z\).
+The sole remaining condition is
+\[
+                  z\notin\{0,\infty,1,-1,i,-i\}.
+\tag{E.177.4}
+\]
+Conversely every such \(z\), in either \(C\)-ordering,
+gives a fixed configuration.  Hence \(X^H\) is
+precisely two copies of the connected six-punctured
+sphere.  No unlabelled identification of the two
+components is made.
+
+The centralizer of the label permutations is
+\[
+ C_{\mathfrak S_{10}}(H)
+        =C_2[A]\times C_2[B]\times C_2[C]\times H[D].
+\tag{E.177.5}
+\]
+The three size-two orbits have different stabilizers
+in \(H\), so they cannot be interchanged by a
+permutation commuting with \(H\).  Within them their
+flips are independent; on the regular orbit the
+centralizer is its group of translations.  This
+proves E.177.5, of order thirty-two.
+The single \(C\)-flip exchanges the two components
+in E.177.4.  The fixed path subgroups E.176.3 can
+therefore be represented by \(H\) and
+\(\theta H\theta^{-1}\): an actual half twist supplies
+the path from the first base configuration to the
+one with its two \(C\)-labels interchanged.
+E.176.4 then supplies a pure deck correction.
+Taking its inverse when necessary gives exactly
+the correcting cosets E.177.2.
+The half twist is supported in a disc containing
+the two \(C\)-marks and no others.  After those
+marks are forgotten its mapping class is trivial,
+which proves the two stated forgetting properties.
+
+Equation E.176.2 at every finite output implies
+E.177.3.  In fact its proof gives a slightly more
+specific statement: the same closure is generated
+densely by the ordinary path elements \((c,\beta)\)
+with \(c\) commuting with \(H\) and \(\beta\) a path
+inside the base component of \(X^H\).
+This follows from the particular representative
+constructed after E.176.8, and does not require a
+separate ordinary centralizer classification theorem.
+
+Finally \(\alpha(H)\) is an elementwise labelled
+copy of \(H\).  At each finite output E.176 gives
+a correction in E.177.2.  The corresponding closed
+sets of corrections in
+\(\widehat P\cup\widehat P\theta\) have the finite
+intersection property: a common refinement handles
+any finite set of outputs.  This space is compact.
+Its intersection therefore supplies one correction
+fixing both involutions at every finite level.
+The corrected automorphism preserves their full
+centralizer, which is \(\overline N\) by E.177.3.
+This last compactness argument uses one fixed compact
+correction space and a cofinal family of genuine
+finite quotients.
+\end{proof}
+\begin{result}{E.178}{Proved}
+{The two actual coloured forgettings have one common source}
+With the ten-point marking of E.177, let
+\[
+ R_0=\langle v,d\mid(vd)^2=1\rangle,\qquad
+ R=\widehat R_0,\qquad S(v)=d,\quad S(d)=v.
+\tag{E.178.1}
+\]
+The two labelled four-point forgettings in E.177 induce
+continuous surjections
+\[
+        q_b,q_a:\overline N/H\longrightarrow R,
+                         \qquad q_a=S q_b .
+\tag{E.178.2}
+\]
+The generators and basepoint comparisons can be chosen as
+specified below so that the last equality is literal.
+For arbitrary other fixed geometric basepaths it has one
+retained inner factor, which can be absorbed in the
+corresponding target comparison.
+Both maps are restrictions of actual forgetting homomorphisms
+on their finite-index label stabilizers, followed by the
+effective coloured four-point quotient.
+\end{result}
+
+\begin{proof}
+Let \(Z\) be the base component of \(X^H\) in E.177,
+with coordinate \(z\) and with the \(C\)-ordering \((i,-i)\).
+Write an element of E.177.5 by its three pair-flip bits
+\((e_A,e_B,e_C)\) and its regular-orbit translation.
+Normalization of the \(A\)-labels and \(B_+\) gives
+the following literal transformations on the fixed locus:
+the \(A\)-flip sends \((z,\delta)\) to \((z^{-1},-\delta)\),
+the \(B\)-flip sends it to \((-z,-\delta)\), and the
+\(C\)-flip sends it to \((z,-\delta)\), where
+\(C_+=\delta i\).  The two regular-orbit translations
+act on \(z\) by \(-z,z^{-1}\) and leave \(\delta\) fixed.
+Thus the label subgroup preserving \(Z\) is
+\[
+ C^+=\{e_A+e_B+e_C=0\}\times H[D].
+\tag{E.178.3}
+\]
+Its kernel on \(Z\) is exactly the named \(H\).
+Its quotient acts freely on \(Z\) by
+\(z\mapsto-z,z\mapsto1/z\), because all their fixed
+points were removed.  The invariant coordinate is
+\[
+                 u=z^2+z^{-2},\qquad
+ Z/(C^+/H)=\mathbb P^1_u\setminus\{\infty,2,-2\}.
+\tag{E.178.4}
+\]
+The ordinary orbifold path group
+\(E_H=\pi_1^{\rm orb}([Z/C^+],z_0)\) therefore has
+quotient by its named \(H\) equal to the free
+fundamental group of that triply punctured sphere.
+One can also see the kernel directly:
+\(C^+=H\times H[D]\), where \(H\) acts trivially
+and \(H[D]\) acts freely on \(Z\).
+The map \(E_H\to G\) induced by inclusion has image
+\(N^{\rm fix}\subset N\).  Injectivity of this map
+is not required.  The fixed-path conclusion in
+E.177 proves
+\[
+                         \overline{N^{\rm fix}}=\overline N .
+\tag{E.178.5}
+\]
+
+Let \(M_b\) preserve separately the two blocks
+\(\{A_+,A_-\}\) and \(\{D_1,D_b\}\), and let \(M_a\)
+preserve separately \(\{B_+,B_-\}\) and \(\{D_1,D_a\}\).
+They are finite-index subgroups of \(M\).
+Put \(N_i^{\rm fix}=N^{\rm fix}\cap M_i\).
+The regular-orbit translation labels show
+\[
+ N^{\rm fix}=H N_i^{\rm fix},\qquad
+ H\cap N_b^{\rm fix}=\langle b\rangle,\quad
+ H\cap N_a^{\rm fix}=\langle a\rangle.
+\tag{E.178.6}
+\]
+Indeed stabilizing a given two-element regular block
+has index two, and the named \(H\) acts transitively
+on the two such blocks.
+
+The effective moduli orbifold of four points in two
+unordered labelled pairs has coordinate
+\(u=\lambda+\lambda^{-1}\), where
+\(\lambda\in\mathbb P^1\setminus\{0,1,\infty\}\).
+It has punctures at \(\infty,2\) and an order-two
+cone at \(-2\).  Its orbifold fundamental group is
+E.178.1.  The ineffective double flip of the two
+pairs is killed in this quotient.  Thus the
+forgotten image of \(b\), respectively \(a\), in
+E.178.6 is killed.  The actual forgetting
+homomorphisms on \(M_i\) consequently descend from
+\(N_i^{\rm fix}\) to \(N^{\rm fix}/H\).
+
+For the first quartet \(\{0,\infty,z,1/z\}\) the
+coordinate is exactly E.178.4.  For the second
+quartet use
+\[
+ r=\frac{z-1}{z+1},\qquad
+        r^2+r^{-2}=\frac{2(u+6)}{u-2}=:T(u).
+\tag{E.178.7}
+\]
+The Möbius map used here sends its \(B\)-pair
+to \(0,\infty\) and its selected \(D\)-pair to
+\(r,1/r\).  The transformation \(T\) exchanges
+the two punctures and fixes the cone.  The
+chosen \(z_0=1+\sqrt2\) has \(u_0=6\), fixed
+by \(T\).  In the coordinate
+\(w=(u-6)/(u+2)\), \(T\) is \(w\mapsto-w\);
+the basepoint is \(0\), the cone is \(\infty\)
+and the punctures are \(1,-1\).  Choose positive
+cusp loops along the two radial arcs exchanged
+by this rotation, with \(d\) at \(u=2\) and
+\(v\) at \(u=\infty\).  This gives precisely
+the based automorphism \(S\) in E.178.1.
+Hence E.178.2 holds on the image of \(E_H\).
+Each quotient map from the triply punctured
+sphere to the orbifold is onto, so these maps
+are surjective.
+
+For completeness, all completion maps in this
+argument use the ambient induced topology.
+A finite-index subgroup \(M_i\leq M\) has its
+full profinite completion as its closure.
+Its actual forgetting map therefore extends
+continuously to that closure.
+Moreover
+\[
+ \overline N=H\,\overline{N_i^{\rm fix}},\qquad
+ H\cap\overline{N_i^{\rm fix}}=H\cap N_i^{\rm fix}.
+\tag{E.178.8}
+\]
+The first equality follows from E.178.5--E.178.6
+and the finiteness of \(H\); the second follows
+from the retained label quotient.  Since \(H\)
+is central in \(\overline N\) and the appropriate
+intersection in E.178.8 is killed, the extended
+maps descend to \(\overline N/H\).  Compactness
+and the ordinary surjectivity prove profinite
+surjectivity.  The equality between the two
+maps extends from the dense fixed-path image.
+No unidentified completion of \(N/H\) is used.
+\end{proof}
+
+\begin{result}{E.179}{Proved}
+{The full-GT mixed relation with its exact Schreier coefficient}
+Let \(F=(\lambda,f)\) belong to the full profinite
+Grothendieck--Teichmüller group.  In the index-two
+subgroup of \(\widehat F(x,y)\) with \(x\) odd and
+\(y\) even, define \(c=c_2(f)\) by
+\[
+ [f]_{\rm ab}=(0,c,-c)
+       \quad\hbox{on the Schreier basis }
+                       (x^2,y,xyx^{-1}).
+\tag{E.179.1}
+\]
+Then the following identities hold in the actual
+profinite orbifold and mixed braid groups:
+\[
+ \begin{aligned}
+ f(d,v^2)d^{-4c}f(v,d^2)&=v^{4c}
+                         \quad\text{in }R,\\
+ f(u,w^4)&=w^{8c}f(u^2,w^2)u^{4c}(uw)^{-6c}
+                         \quad\text{in }\widehat B_3 .
+ \end{aligned}
+\tag{E.179.2}
+\]
+The second identity takes place in the completion
+of the actual index-three subgroup
+\(\langle u,w^2\rangle\leq B_3\), with its retained
+central generator \((uw)^3\).
+This reconstructs the qualitative same-parameter
+input of historical A.4.39 for full GT.  It does
+not assert its explicit finite pentagon bound.
+E.179 alone retains the Schreier coefficient.
+The separate proof E.180 identifies it with the
+historical symmetrizer coefficient; no additional
+relation \((\mathrm{III}\prime)\) or later CM
+covariance is concluded here.
+\end{result}
+
+\begin{proof}
+The standard full-GT action on the mixed genus-zero
+mapping class groups fixes label permutations and
+commutes, up to the actual basepath inner comparisons,
+with labelled forgetting.  These are the standard
+genus-zero actions, not an assumed action on a
+higher-genus tower; see
+\cite[\S1, equation (1.1), author pp.2--3]
+{SymNakamuraSchneps2000}.
+Apply E.177 to its action on \(\widehat M\).
+The single correcting element belongs to
+\(\widehat P\cup\widehat P\theta\), hence to
+both retained label stabilizers.  It fixes
+the named \(H\) pointwise and preserves
+\(\overline N\).  The two actual forgettings
+of E.178 therefore give an induced
+automorphism \(\alpha_N\) of \(\overline N/H\)
+and two target inner comparisons.
+
+Here is the target action with its marking made
+explicit.  On \(B_3=\langle u,w\mid uwu=wuw\rangle\)
+the standard formula is
+\[
+ u\longmapsto u^\lambda,\qquad
+ w\longmapsto f(u^2,w^2)^{-1}w^\lambda f(u^2,w^2).
+\tag{E.179.3}
+\]
+In the coloured subgroup put \(d=u,v=w^2\).
+Its central cap has presentation \(R_0\).
+By antisymmetry, if \(h=f(v,d^2)\), its raw
+action sends \(d\) to \(d^\lambda\) and
+\(v\) to \(h v^\lambda h^{-1}\).  Conjugating
+by \(h^{-1}\) gives
+\[
+        \phi(v)=v^\lambda,\qquad
+        \phi(d)=h^{-1}d^\lambda h .
+\tag{E.179.4}
+\]
+This also follows directly from the four-strand
+sphere formula: the actual projection sends
+\((\sigma_1,\sigma_2,\sigma_3)\) to \((u,w,u)\);
+its third conjugator becomes
+\(f(u^2,u^{-2})=1\).
+Thus no equivariance of an unspecified finite
+centralizer quotient has been assumed.
+The effective coloured quartet has exactly the
+two positive cusp markings in E.178; fixed
+geometric basepath changes merely change its
+inner representative.
+
+Consequently, for some \(g_b,g_a\in R\), the
+actual two squares are
+\[
+ q_b\alpha_N=\operatorname{Inn}(g_b)\phi q_b,\qquad
+ q_a\alpha_N=\operatorname{Inn}(g_a)\phi q_a .
+\tag{E.179.5}
+\]
+Here one source automorphism \(\alpha_N\) occurs
+in both equalities.  Substituting \(q_a=S q_b\)
+and cancelling the surjection \(q_b\) proves
+that \(\phi\) and \(\psi=S\phi S\) are inner
+equivalent.  Any retained inner factor from
+an alternative choice in E.178.2 is absorbed
+in \(g_a\); it does not create two source
+automorphisms or two independently chosen
+Schreier coefficients.
+
+We include the exact centralizer deduction.
+In \(R_0=C_2*\mathbb Z\), write \(a=vd\).
+For a finite quotient retaining \(a\), with
+kernel \(K\), the associated graph has edges
+the quotient group and vertices its cosets
+modulo \(\langle a\rangle\).
+If \(n\) is the order of the image of \(d\),
+the cycle \(d^n\) has mod-two edge support
+exactly the cyclic subgroup generated by
+that image.  Its deck stabilizer is that
+cyclic subgroup.  In the refinement
+\(R_0/(K'K^2)\), every element centralizing
+\(d\) must therefore project to a power of
+\(d\) in the old quotient.  Conversely those
+powers centralize \(d\).  As the old quotient
+was arbitrary, this proves
+\[
+                    C_R(d)=\langle d\rangle^{\wedge}.
+\tag{E.179.6}
+\]
+The same argument after \(S\) gives the result
+for \(v\).  Unit powers have the same
+centralizers.
+
+Put \(k=f(d,v^2)\).  The equality of the two
+inner-related actions first on \(d\), then
+on \(v\), and E.179.6 give \(s,t\in\widehat{\mathbb Z}\)
+with
+\[
+                              k d^t h=v^s .
+\tag{E.179.7}
+\]
+Both \(h\) and \(k\) have zero abelianization
+in \(R\).  Its abelianization is
+\(\widehat{\mathbb Z}[d]\oplus C_2[a]\).
+Thus \(t=-s\) and \(s\) is even.
+The equality lies in the actual index-two
+free subgroup
+\[
+                       K_{\rm std}=F(v,d^2).
+\tag{E.179.8}
+\]
+Write its abelian basis as \(X=v,Y=d^2\).
+The substitution \((x,y)\mapsto(d,v^2)\)
+sends the Schreier basis in E.179.1 to
+\[
+                       Y,\quad X^2,\quad(X^{-1}Y^{-1})^2.
+\tag{E.179.9}
+\]
+The last identity is the square of
+\(dvd^{-1}=v^{-1}d^{-2}\).
+It follows that \([k]=(4c,2c)\), whereas
+\([h]=0\).  Abelianizing E.179.7 in
+E.179.8 gives
+\[
+                      (4c,2c+t/2)=(s,0).
+\tag{E.179.10}
+\]
+Division by two here is on the subgroup
+\(2\widehat{\mathbb Z}\), where it is
+unambiguous.  Hence \(t=-4c,s=4c\),
+which proves the first identity in E.179.2.
+
+Finally retain the centre.  The discrete
+coloured braid subgroup has presentation
+\[
+ J=\langle d,V\mid(dV)^2=(Vd)^2\rangle,\qquad
+              z=(dV)^2=(uw)^3,\quad d=u,\ V=w^2 .
+\tag{E.179.11}
+\]
+Its central quotient is \(R_0\).
+The inverse image of the free index-two
+subgroup E.179.8 is a central extension of
+a free group by \(\mathbb Z[z]\); it splits
+because lifts of a free basis define a
+section.  It is therefore \(F_2\times\mathbb Z\).
+Taking full completions of this finite-index
+subgroup proves that the kernel of
+\(\widehat J\to R\) is precisely
+\(\widehat{\mathbb Z}[z]\).
+The first identity, using antisymmetry,
+therefore gives
+\[
+               f(d,V^2)=V^{4c}f(d^2,V)d^{4c}z^e
+\tag{E.179.12}
+\]
+for some \(e\in\widehat{\mathbb Z}\).
+The actual character \(J\to\mathbb Z\)
+sending \(d\mapsto1,V\mapsto0\) sends
+\(z\) to \(2\).  Applying it to E.179.12
+gives \(0=4c+2e\), hence \(e=-2c\).
+This proves the second identity in E.179.2
+with its central factor, not just its cap.
+
+There is a useful precise literature boundary.
+The Schreier coefficient is
+\(-A_F(-1,1)\), by applying the two-state
+Schreier abelianization to the commutator
+generator; that generator has vector
+\((0,-1,1)\), and conjugation by \(x\)
+interchanges the last two coordinates.
+Nakamura--Schneps identify this coefficient
+with their symmetrizer-defined \(\rho_2\)
+on the subgroup satisfying their additional
+relation \(({\rm III}')\), not on all GT
+merely by definition
+\cite[Definition 5.1 and Proposition 5.3,
+author pp.17--18]{SymNakamuraSchneps2000}.
+The result here retains the exact
+Schreier coefficient.  E.180 independently proves
+its equality with the historical symmetrizer
+coefficient by an explicit modular marking and
+a continuous character.  Neither proof supplies
+relation \((\mathrm{III}\prime)\) or the later CM
+branch-covariance squares.
+\end{proof}
+

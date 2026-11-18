@@ -1,0 +1,1048 @@
+\subsection{Symmetry constraints and the exact scope of the LM4 comparisons}
+
+Here \(F=\widehat F(x,y)\), \(z=(xy)^{-1}\), and
+\(c(x)=x^{-1},c(y)=y^{-1}\). The semidirect product
+\(E=F\rtimes\langle c\rangle\) is the free profinite product
+of the three reflection groups represented by \(c,xc,y^{-1}c\).
+We use a separate symbol \(\mathfrak B=C_2\amalg C_3\) for the
+profinite modular group in the second half of this audit. No statement
+below identifies an automorphism problem with a section problem.
+
+\begin{result}{E.50}{Proved}{LM4 A.70: an exact finite source-central equivariance obstruction}
+Let \(N=\ker(F\to(\mathbb Z/12)^2)\). The actual group
+\(E/\overline{[N,E]}\), of order \(13824\), admits an involutory
+automorphism fixing \(c\), preserving the three named reflection
+classes, and preserving the three peripheral classes with common
+multiplier congruent to seven modulo twenty-four. There is no full
+reflection-class-preserving peripheral lift, of any order.
+\end{result}
+\begin{proof}
+Write \(w=[x,y]=xyx^{-1}y^{-1}\). Since \(F'\subseteq N\),
+centralizing \(N\) in \(F\) gives the class-two presentation with
+\(w^{12}=1\). Its kernel over \((\mathbb Z/12)^2\) is generated
+by \(x^{12},y^{12},w\). Centralizing it also with \(c\) imposes
+\(x^{24}=y^{24}=1\), since \(c\) fixes \(w\). Conversely these
+relations give the required central kernel, so the quotient has exactly
+the normal forms \(x^ay^bw^dc^e\), with
+\[
+ a,b\in\mathbb Z/24,\quad d\in\mathbb Z/12,\quad e\in\mathbb Z/2,
+\]
+and multiplication
+\[
+ (a,b,d,e)(u,v,k,f)=
+ (a+(-1)^eu,b+(-1)^ev,d+k-b(-1)^eu,e+f).
+\]
+This explicit group proves the converse as well as the order; a finite
+count alone would not identify the actual source quotient.
+
+The map \(\theta(x)=x^7,\theta(y)=y^7,\theta(c)=c\) is
+\((a,b,d,e)\mapsto(7a,7b,d,e)\), because \(49\equiv1\pmod{12}\).
+It squares to the identity and fixes the central kernel of order 48.
+The conjugators for \(c,xc,y^{-1}c\) are \(1,x^3,y^{-3}\).
+Moreover
+\[
+ (xy)^7=x^7y^7w^{-21},\qquad
+ \theta(xy)=x^3(xy)^7x^{-3},\qquad
+ \theta(z)=x^3z^7x^{-3}.
+\]
+The residue seven is a genuine profinite unit: take its dyadic component
+to be \(-1\) and every odd component to be one.
+
+Suppose a full lift existed. The parity character on the three
+reflection classes preserves \(F\). Normalize the lift by an inner
+automorphism from \(F\) so that it fixes \(c\); its common multiplier
+\(\Lambda\) still satisfies \(\Lambda\equiv7\pmod{24}\).
+If its restriction \(\phi\) sends \(x\) to
+\(ax^\Lambda a^{-1}\), commutation with \(c\) gives
+\(a^{-1}c(a)\in C_F(x)=\overline{\langle x\rangle}\).
+The centralizer equality is the free-factor case of
+\citet[Theorem B', pp.~159--160]{SymHerfortRibes1985}.
+Writing \(a^{\rm ab}=(r,s)\) yields
+\(a^{-1}c(a)=x^{-2r}\) and \(s=0\). Thus \(ax^{-r}\) is
+fixed by \(c\). By \citet[Proposition 4(i), p.~574; proof p.~581]{SymLochakSchneps1997},
+it is one. Therefore \(\phi(x)=x^\Lambda\), and similarly
+\(\phi(y)=y^\Lambda\).
+
+In \(S_4\), take \(X=(234)\), \(Y=(1234)\), with rightmost
+permutations acting first. Since \(\Lambda\equiv7\pmod{12}\),
+\(X^\Lambda Y^\Lambda\) has order two whereas
+\((XY)^\Lambda\) has order four. This contradicts the third
+peripheral condition. No order assumption on the full lift entered.
+The independent certificate \path{code/check_symmetry_audit.py}
+checks all 13824 normal forms, all 41472 generator edges, the central
+kernel, the displayed conjugators and the two permutation orders.
+\end{proof}
+
+\begin{result}{E.51}{Proved}{LM4 A.74: prescribed frames can obstruct an otherwise trivial lift}
+There is an actual finite quotient of \(E\) for which the identity
+action, with multiplier one, has compatible prescribed frames on the
+entire orientation-central refinement, including the required quotient
+norms, but no full equivariant lift retaining those frames. Allowing
+the frames to change restores the full identity lift.
+\end{result}
+\begin{proof}
+In \(Q=\operatorname{SL}_2(\mathbb F_5)\), put
+\[
+ X=\begin{pmatrix}0&4\\1&4\end{pmatrix},\quad
+ Y=\begin{pmatrix}0&1\\4&4\end{pmatrix},\quad
+ J=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+Both \(X,Y\) have order three, generate \(Q\), and are inverted
+by conjugation with \(J\). Generation also follows from
+\(X^{-1}Y=-\left(\begin{smallmatrix}1&2\\0&1\end{smallmatrix}\right)\)
+and \(XY^{-1}=-\left(\begin{smallmatrix}1&0\\2&1\end{smallmatrix}\right)\).
+Their fifth powers give \(-I\), and upper and lower unipotents
+generate \(Q\). Conjugating unipotents by \(\operatorname{diag}(2,3)\)
+shows that \(Q\) is perfect. The independent matrix enumeration gives
+orders120 for both the group and its derived subgroup.
+
+For \(N=\ker(q:F\to Q)\), we claim
+\[
+ F/\overline{[N,F]}\xrightarrow{\ (q,\mathrm{ab})\ }
+ Q\times\widehat{\mathbb Z}^{2}
+ \quad\hbox{is an isomorphism}. \tag{E.51.1}
+\]
+The primary ATLAS entry records multiplier two for \(A_5\) and
+identifies its double cover with \(\operatorname{SL}_2(5)\)
+\citep{SymATLASA5}. As this double cover is perfect, it is the
+universal central extension. Here is the needed centrally closed
+consequence, including arbitrary profinite central kernels.
+For a central extension \(D\to Q\) with kernel \(M\), perfectness
+gives \(D=MD'\), hence the abstract derived subgroup \(D'\) is
+perfect. An element of \(D'\) above the center of \(Q\) defines
+a central-valued commutator homomorphism on \(D'\), which is zero.
+Consequently \(D'\to A_5\) is central. Universality supplies a map
+\(Q\to D'\) whose composite with \(D'\to Q\) is the identity.
+This map is continuous because its domain is finite. Its image and the
+central kernel generate \(D'\); perfectness makes the latter kernel
+trivial. Thus \(D=Q\times M\), uniquely, and abelianization proves
+(E.51.1). Under this identification
+\[
+ x=(X,e_1),\quad y=(Y,e_2),\quad
+ c=(\operatorname{Ad}(J),-1).
+\]
+It follows that the actual full source-central quotient is
+\((Q\times C_2^2)\rtimes C_2\), of order960.
+
+Take the identity action and prescribe \(\beta=(-I,0)\) as the
+\(x\)-cusp and \(xc\)-reflection conjugator, and one for the other
+frames. This central, \(c\)-fixed element has order two, so all
+conjugacy equations and \(\beta c(\beta)=1\) hold, even on the
+entire group in (E.51.1).
+For a hypothetical full lift, the external reflection frame has trivial
+image in \(Q\). Normalize it to fix \(c\) literally. The normalizing
+element lies in \(N\), so it does not alter any prescribed \(Q\)-frame
+or the identity action in (E.51.1). Its restriction to \(F\) commutes
+with \(c\), has multiplier one, and by the calculation in E.50 fixes
+both \(x,y\). Every full conjugator of \(x\) then lies in
+\(\overline{\langle x\rangle}\); its \(Q\)-image belongs to
+\(\langle X\rangle\), of order three, and cannot be \(-I\).
+This proves the prescribed-frame obstruction. It imposes the extra
+equivariance equation, not merely a negative cocycle equation; the
+identity with trivial frames remains an actual full solution.
+\end{proof}
+
+\begin{result}{E.52}{Proved}{LM4 B.43: a uniform forbidden simple section}
+For every prime \(p\) and \(d\le97\), no subgroup of
+\(\operatorname{GL}_d(\mathbb F_p)\) has a section isomorphic to
+\(A_{10000}\). The same holds for every finite section of a closed
+subgroup of \(\operatorname{Aut}(\widehat F_d^{(p)})\).
+\end{result}
+\begin{proof}
+Pad the representation to dimension 97. If \(q\ne p\), a finite
+\(q\)-subgroup lifts faithfully to \(\operatorname{GL}_{97}(\mathbb Z_p)\):
+at each step the matrix lifting defect is an additive two-cocycle, and
+averaging by the invertible group order kills its cohomology class.
+The compatible corrections give the lift, faithful on reduction.
+Over an algebraic closure of \(\mathbb Q_p\), its character is a sum
+of ordinary irreducible characters, which also yields a complex
+representation of dimension 97. Apply
+\citet[Theorem A, p.~412]{SymCollins2007} in characteristic zero.
+There is an abelian normal subgroup of index at most \(98!\).
+Simultaneous diagonalization bounds the generator rank of every
+subgroup and quotient of that abelian subgroup by 97.
+
+If \(C_q^r\) is a section of the original \(q\)-group, intersect
+with the abelian normal subgroup and then project. Its image has rank
+at most 97, and the quotient has order at most \(98!\). Hence
+\[
+ r\le97+\lfloor\log_q(98!)\rfloor
+ =608\quad(q=2),\qquad =419\quad(q=3).
+\]
+But \(A_{10000}\) contains \(C_2^{2500}\), from disjoint double
+transpositions, and \(C_3^{3333}\), from disjoint three-cycles.
+A Sylow subgroup of the inverse image of either subgroup under a
+putative section map surjects onto it. Choose \(q=2\) unless \(p=2\),
+and choose \(q=3\) in that case. Either rank is impossible.
+
+The kernel of the Frattini action of the free pro-\(p\) automorphism
+group is pro-\(p\). Indeed on successive characteristic finite
+\(p\)-group quotients, the kernel is filtered by additive
+\(\mathbb F_p\)-correction modules; take the inverse limit.
+The finite groups having no \(A_{10000}\)-section are closed under
+subgroups, quotients and extensions: in a putative simple section, the
+image of the intersection with the normal subgroup is either trivial
+or the whole simple group. Thus the section must already occur in one
+of the two factors. This proves the automorphism assertion.
+The two factorial logarithms are checked with exact integers in the
+independent certificate, without a floating-point approximation.
+\end{proof}
+
+\begin{result}{E.53}{Proved}{LM4 B.42: an arithmetic ambiguity invisible on the Fermat relative tower}
+Let \(F\) now be the index-six pure subgroup of
+\(\mathfrak B=C_2\amalg C_3\), and put \(H_0=\overline{F'F^3}\).
+The prosolvable residual \(R_{\rm sol}\) of \(G_{\mathbb Q}\) is
+nontrivial. Its normalized arithmetic automorphisms, full cyclotomic
+multiplier, and both pure torsion-generator conjugator frames are trivial
+on \(\mathfrak B/R_{\rm nil}(H_0)\), including their modulo-twelve
+images. Thus right multiplication by \(R_{\rm sol}\) preserves those
+relative data for every full lift to which they are prescribed.
+\end{result}
+\begin{proof}
+The cover for \(H_0\) is the degree-nine Fermat cubic
+\(X^3+Y^3=Z^3\), with its nine coordinate-axis points removed.
+Over \(k=\mathbb Q(\zeta_3)\) its boundary is rational, and the
+automorphism \((X:Y:Z)\mapsto(\zeta_3X:Y:Z)\) fixes the origin
+\((0:1:1)\). Its action on the compact Tate module has minimal
+polynomial \(T^2+T+1\). Consequently the centralizer on the rational
+Tate module is a commutative quadratic algebra, also at 2 and 3. In
+\[
+ 0\longrightarrow\mathbb Z_p(1)^8\longrightarrow
+ H_1(E^\circ_{\bar k},\mathbb Z_p)
+ \longrightarrow T_pE\longrightarrow0,
+\]
+the two diagonal images of \(G_k\) are therefore abelian, and the
+kernel of their product action is additive. The full homology image
+is prosolvable. Extending from \(k\) to \(\mathbb Q\) adds only
+an order-two quotient. The tangential action is this geometric action:
+the branches \(X/Z=t^{1/3},Y/Z=(1-t)^{1/3}\), with leading coefficient
+one, give the comparison; changing the lift changes homology by no
+inner action.
+
+Put \(P_p=\mathfrak B/O^p(H_0)\) and \(U_p=H_0^{(p)}\).
+Here \(U_p\) is free pro-\(p\) of rank10 and has index54.
+The deck action on its homology is faithful: triviality on the
+rank-eight boundary module fixes all nine punctures, and a nonidentity
+automorphism of a complex elliptic curve has at most four fixed points.
+For the latter assertion, write it as \(z\mapsto az+b\): a nontrivial
+translation has none, and for \(a\ne1\) the possible elliptic units
+have \(\deg(a-1)\le4\).
+The centralizer \(C_{P_p}(U_p)\) is therefore trivial, since its
+intersection with the centerless free pro-\(p\) subgroup is trivial.
+Restriction embeds \(\operatorname{Aut}(P_p;U_p)\) into
+\(\operatorname{Aut}(U_p)\). The pro-\(p\) Frattini kernel and the
+homology calculation show that the arithmetic image in this
+automorphism group is prosolvable. The group \(P_p\) itself is
+prosolvable as a pro-\(p\)-by-solvable group.
+
+Write \(\phi_g(s)=\beta_gs\beta_g^{-1}\) and
+\(\phi_g(r)=A_grA_g^{-1}\) on \(G_k\). Their pure frames are
+unique, since the full free-factor centralizers intersect \(F\)
+trivially, by \citet[Theorem B']{SymHerfortRibes1985}.
+Composition gives
+\(\beta_{gh}=\phi_g(\beta_h)\beta_g\), and the same for \(A\).
+Thus \(g\mapsto(\beta_g^{-1},A_g^{-1},\phi_g)\) is a continuous
+homomorphism to a prosolvable semidirect product
+\((P_p\times P_p)\rtimes\rho_p(G_k)\).
+The prosolvable residual of \(G_k\) equals \(R_{\rm sol}\):
+intersect a solvable-quotient kernel of this normal index-two subgroup
+with its conjugate, then extend by the order-two quotient. Therefore
+\(R_{\rm sol}\) kills all these framed homomorphisms and the abelian
+cyclotomic character.
+
+The relative pronilpotent quotient is the fibre product of the
+\(P_p\)'s over \(\mathfrak B/H_0\): its kernel is
+\(H_0^{\rm nil}=\prod_pH_0^{(p)}\), so any tuple with one common
+head is obtained by choosing a representative of that head and then
+its independent kernel coordinates. This proves the simultaneous
+assertion. For the marked modulo-twelve quotient the exact images are
+\[
+ q_{12}(F)=V_4\times\operatorname{SL}_2(\mathbb F_3),\qquad
+ q_{12}(H_0)=V_4\times Q_8.
+\]
+Choose the projective sign by the diagonal-one representative modulo 4;
+the four representatives form \(V_4\). The derived subgroup of
+\(\operatorname{SL}_2(\mathbb F_3)\) is \(Q_8\), its abelian
+quotient has order 3, and cubing preserves \(V_4\). The image of
+\(H_0\) is a 2-group, so this quotient factors through \(P_2\).
+Independent matrix enumeration verifies all four orders 96, 32, 24, 8
+and the ambient order 576.
+
+Finally \(x^5-x-1\) is irreducible modulo 3, and has square-free
+factor degrees2 and3 modulo 2; both checks were executed. Its Galois
+group is transitive of prime degree and contains a transposition by
+cubing the latter Frobenius. It is primitive; the graph formed by the
+conjugate transpositions is connected and its edges generate \(S_5\).
+The image of \(R_{\rm sol}\) in this quotient is exactly \(A_5\):
+it contains the solvable residual of \(S_5\) and is contained in the
+sign kernel. Hence \(R_{\rm sol}\ne1\). The faithful arithmetic
+embedding, stated in \citet[Theorem 1, p.~573]{SymLochakSchneps1997},
+ensures that distinct such Galois elements are distinct full actions.
+\end{proof}
+
+\begin{result}{E.54}{Proved}{LM4 B.44: a simultaneous nontrivial kernel for two relative systems}
+Let \(N_{12}=\ker(\mathfrak B\to
+\operatorname{SL}_2(\mathbb Z/12)/\{\pm I\})\).
+There is a nontrivial closed subgroup \(Z\le G_{\mathbb Q}\) whose
+multiplier, normalized automorphism and both canonical pure frames
+are trivial at every relative pro-\(p\) level over \(H_0\) and over
+\(N_{12}\), simultaneously. Consequently a full lift with these
+prescriptions leaves at least the entire coset \(\Phi Z\)
+undetermined.
+\end{result}
+\begin{proof}
+The two subgroups have indices 54 and 576, and free ranks 10 and 97.
+Their finite quotient maps inject both finite free factors, so the
+kernel is torsion-free by the full profinite torsion theorem
+\citep[Theorem A']{SymHerfortRibes1985}; the open-subgroup Kurosh
+formula, or Euler characteristic \(-1/6\), gives the ranks.
+The actual arithmetic action preserves \(H_0\) and \(N_{12}\).
+For the latter, the modular representation has conjugacy covariance
+over \(\widehat{\mathbb Z}\), hence after reduction modulo 12;
+\citet[\S4, pp.~774--776]{SymMarin2008} proves the covariance and
+identifies its arithmetic shear. Conjugacy covariance preserves the
+kernel, which is all that is needed here.
+
+Let \(\mathscr C\) be the finite groups without an
+\(A_{10000}\)-section. For \(U=H_0,N_{12}\), the group
+\(P_{U,p}=\mathfrak B/O^p(U)\) is pro-\(\mathscr C\), being
+an extension of the free pro-\(p\) group \(U_p\) by a group of
+order at most 576. Its automorphism group preserving \(U_p\) is
+also pro-\(\mathscr C\). Indeed restriction to \(U_p\) has finite
+kernel of order at most \(576^{576}\): the centralizer of \(U_p\)
+injects into the finite quotient, and an automorphism trivial on
+\(U_p\) is determined by its corrections on at most 576 coset
+representatives, each correction lying in that centralizer.
+This order is smaller than \(10000!/2\). The restriction image is
+pro-\(\mathscr C\) by E.52, so extension closure proves the assertion.
+
+The class of pro-\(\mathscr C\) groups is closed under products
+and closed subgroups as well. A finite quotient of a closed subgroup
+of a product factors through a subgroup of a finite product of finite
+quotients: take a product-open normal neighborhood whose intersection
+lies in its kernel. Apply the finite subgroup and extension closures.
+On \(G_k\), take the product of both framed homomorphisms of E.53
+over both \(U\)'s and every \(p\), and retain the cyclotomic
+character. Its image is pro-\(\mathscr C\). Let \(Z\) be its kernel.
+All prescribed vanishing properties hold by construction.
+
+To prove nontriviality, use the fully specified polynomial
+\[
+ f(X)=X^{10000}+15X^{9999}+10X^2+30.
+\]
+It is Eisenstein at 5. Modulo 2 its coprime factors are
+\(X^{9999}(X+1)\); the lifted first factor is Eisenstein of odd
+degree 9999, so tame inertia gives a 9999-cycle. Modulo 3 its coprime
+factors are \(X^2(X^{9998}+1)\), with the latter separable. The
+lifted quadratic factor is Eisenstein and tame, while the other roots
+are unramified. Its inertia gives a transposition. Transitivity and
+the 9999-cycle imply double transitivity; the conjugate-transposition
+graph again proves that the group is \(S_{10000}\). These exact
+conditions also verify \citet[Corollary 1 to Theorem 3, p.~442]{SymOsada1987}.
+
+The image on \(G_k\) is \(S_{10000}\) or \(A_{10000}\). If
+\(Z\) had trivial image, this finite quotient would factor through
+the pro-\(\mathscr C\) image just constructed, a contradiction.
+Its nontrivial normal image therefore contains \(A_{10000}\), so
+\(Z\ne1\). Every factorization, order inequality and rank bound
+used here is checked in \path{code/check_symmetry_audit.py}.
+This proof constructs a nontrivial arithmetic kernel. Its effect on
+the additional tripod and resolvent maps is determined next.
+\end{proof}
+
+\begin{result}{E.55}{Proved}{LM4 B.45: each tested value varies injectively on the arithmetic coset}
+Use the subgroup \(Z\) of E.54. On the multiplier-one symmetric
+peripheral group \(\mathcal H\), each labelled three-cusp test of
+the icosahedral cover and each of the three correctly typed quintic
+resolvents is injective on every coset \(\Phi Z\).
+The first two resolvents have target \(\widehat{GT}_0\); the third
+has target \(\operatorname{Out}_{\partial}(C_3\amalg C_3)\).
+At most one member of \(\Phi Z\) belongs to the geometric kernel
+\(\mathcal K\). The relative data therefore leave these values
+undetermined, even when a full ordinary lift has already been chosen.
+\end{result}
+\begin{proof}
+We reconstruct the maps needed here, so this assertion does not import
+the older unexamined LM7 lifting theorem. Let \(q_5:\mathfrak B\to A_5\)
+be the modular quotient and \(K=\ker q_5\). The quotient is the
+triangle quotient obtained by imposing \(\tau^5=1\), where
+\(\tau=sr\) is the cusp generator. Thus peripheral automorphisms
+preserve \(K\). An automorphism with multiplier one induces an inner
+automorphism of \(A_5\): \(\operatorname{Aut}(A_5)=S_5\), and an
+odd automorphism interchanges the two classes of five-cycles. Adjust
+its representative to induce the identity on \(A_5\). This adjustment
+is unique modulo \(K\), because \(Z(A_5)=1\), and so gives a
+canonical outer restriction to \(K\). A cusp conjugator has image
+in the centralizer of the five-cycle, namely its cyclic subgroup.
+Consequently this restriction fixes each of the twelve cusp classes,
+indexed by \(A_5/\langle q_5(\tau)\rangle\).
+
+The corresponding cover is \(X(5)\) with its twelve cusps removed.
+Its compactification has genus zero, and its cusps are rational over
+\(\mathbb Q(\zeta_5)\). Explicitly they are \(0,\infty\) and
+\(\zeta_5^i\varphi,\zeta_5^i\bar\varphi\), with
+\(\varphi=(1+\sqrt5)/2\); see
+\citet[\S1.3]{SymFisher2003}. Killing the other nine cusp normal
+subgroups gives the full fundamental group of the three-punctured
+sphere. This follows directly from its profinite presentation, with
+the product of the twelve meridians equal to one. Restriction and
+quotient therefore give continuous homomorphisms
+\(\mathfrak T_t:\mathcal H\to\mathcal P\).
+For an arithmetic element fixing \(\mathbb Q(\zeta_5)\), the
+construction is the natural arithmetic action on that three-punctured
+curve. A fractional linear coordinate change over this field identifies
+it with the usual tripod. Its Galois action is faithful, by the Belyi
+faithfulness recorded in \citet[\S0.2 and Main Theorem(a)]{SymHarbaterSchneps2000}.
+Every element of \(Z\) has trivial full cyclotomic character, so
+this applies to \(Z\).
+
+For the resolvents, let \(T=A_4\le A_5\) stabilize a letter, and
+let \(J=q_5^{-1}(T)\). Since \(N_{A_5}(T)=T\), outer restriction
+to \(J\) is canonical after an inner adjustment. The degree-five
+cover has model
+\[
+ j=t^3(t^2+5t+40),\qquad
+ j-1728=(t-3)(t^2+4t+24)^2.
+\]
+The branch cycles on five letters have types \(3\,1^2\),
+\(2^2\,1\), and \(5\). Thus its orbifold has cone orders
+\(2,3,3\), at \(3,r_+,r_-\), and one cusp, where
+\(r_\pm=(-5\pm3\sqrt{-15})/2\).
+Its full profinite group is \(C_2\amalg C_3\amalg C_3\).
+For a multiplier-one action, normalize its \(A_5\)-action to the
+identity. The residual conjugator of the three-cycle then belongs to
+its centralizer in \(A_5\); this centralizer fixes the other two
+letters separately. Hence both order-three classes are preserved.
+The unique order-two class and cusp are preserved as well.
+Killing either order-three factor gives a homomorphism to the
+peripheral outer group of \(C_2\amalg C_3\), identified with
+\(\widehat{GT}_0\) by the symmetric peripheral comparison of
+\citet[\S1.3, Propositions 3--4]{SymHarbaterSchneps2000}.
+Killing the order-two factor gives the third stated target, with both
+order-three classes still named. Only this multiplier-one domain is
+needed for B.45; no larger domain is assumed silently.
+
+Put \(k=\mathbb Q(\sqrt{-15})\). The affine coordinates
+\(j'_\pm=1728(t-r_\pm)/(3-r_\pm)\) identify the first two
+filled orbifolds with the standard \((2,3,\infty)\) orbifold over
+\(k\). Functoriality of arithmetic fundamental groups therefore
+makes both resolvents the identity on the chosen Galois embedding of
+\(G_k\). For the third, the coordinate
+\((t-r_+)/(r_--r_+)\) gives the orbifold with cone orders three
+at zero and one and a cusp at infinity. Its arithmetic action is
+faithful on \(G_{k(\zeta_3)}\), as follows directly from the cover
+\[
+ \mathbb P^1_z\setminus\mu_3\longrightarrow
+ \mathbb P^1_t(3,3;\infty),\qquad
+ t=\frac{z^3}{z^3-1}.
+\]
+This is a degree-three finite \emph{etale map to the root stack},
+with kernel \(P\cong\widehat F_2\) in
+\(C_3\amalg C_3\to C_3\), sending the cone generators to
+\(1,-1\). The rational point \(z=2\) gives compatible based
+arithmetic actions. If an arithmetic element is inner on
+\(C_3\amalg C_3\), its outer restriction to \(P\) is a deck
+class. A nontrivial deck class permutes all three cusps \(\mu_3\),
+whereas an element of \(G_{k(\zeta_3)}\) fixes them. Its action on
+\(P\) is therefore outer trivial, and tripod faithfulness makes the
+Galois element one. Again \(Z\subset G_{k(\zeta_3)}\).
+
+Each map \(R\) just constructed is a homomorphism and is injective
+on \(Z\). Thus \(R(\Phi\sigma)=R(\Phi)R(\sigma)\) has distinct
+values for distinct \(\sigma\in Z\). A pure geometric mapping
+class becomes trivial after forgetting to three punctures; the same
+holds for its completion by continuity. Consequently
+\(\mathfrak T_t(\mathcal K)=1\), and the injectivity just proved
+allows at most one element of \(\Phi Z\) in \(\mathcal K\).
+This proves the historical coset conclusion, but neither asserts that
+the complete set of allowed lifts is one coset nor asserts that the
+coset meets \(\mathcal K\).
+\end{proof}
+
+\begin{result}{E.56}{Proved}{The relative principal-congruence tower is not cofinal}
+For \(12\mid N\), put \(U_N=\ker(\mathfrak B\to
+\operatorname{SL}_2(\mathbb Z/N)/\{\pm I\})\).
+The intersection \(\bigcap_{12\mid N}R_{\rm nil}(U_N)\)
+is nontrivial. In particular compatibility of involutions on this
+entire tower, as asserted in LM4 A.31, would not imply an involution
+of the full profinite group. The proof of this limitation is independent
+of the unexamined arithmetic existence clause of A.31.
+\end{result}
+\begin{proof}
+Every finite quotient of \(\mathfrak B/R_{\rm nil}(U_N)\)
+is an extension of a congruence quotient by a finite nilpotent group.
+The only possible nonabelian simple composition factors are
+\(\operatorname{PSL}_2(\mathbb F_p)\), with \(p\) prime:
+reduce \(\operatorname{SL}_2(\mathbb Z/p^a)\) modulo \(p\),
+whose congruence kernel is a \(p\)-group, and then remove its scalar
+center. The same restriction holds for any finite quotient of the
+open normal pure subgroup, by intersecting the finitely many conjugates
+of its kernel in the ambient group.
+
+The free rank-two pure group surjects onto \(A_7\): a seven-cycle
+and a consecutive three-cycle generate it. The independent finite
+enumeration in \path{code/check_symmetry_audit.py} produces all
+2520 elements. This simple group is not any
+\(\operatorname{PSL}_2(\mathbb F_p)\). Its order contains no
+prime greater than seven, so such a \(p\) would be among
+\(2,3,5,7\), whose projective special-linear orders are
+\(6,12,60,168\), respectively.
+
+If the intersection of the relative kernels were trivial, their
+directed family would be cofinal among open normal subgroups: for
+an open normal \(V\), compactness applied to the complements of
+\(V\) gives finitely many relative kernels whose intersection lies
+in \(V\), and a common multiple of their moduli gives one such
+kernel. The \(A_7\)-quotient would then factor through a finite
+quotient of the relative tower, contradicting its composition factors.
+More strongly, the intersection maps onto \(A_7\), since its image
+is normal and cannot be trivial. This is a failure of cofinality, not
+a failure of compactness for a fixed family of closed conditions.
+\end{proof}
+
+\begin{result}{E.57}{Proved}{The ordinary central lifting criterion used by LM4's R2}
+Let \(\Lambda\) be either the free profinite tripod group, with
+peripherals \(x,y,(xy)^{-1}\), or \(C_2\amalg C_3\), with
+peripherals \(s,r,(sr)^{-1}\). Let \(N\) be closed normal.
+A multiplier-one peripheral automorphism of \(\Lambda/N\), with
+three specified conjugators, has a full peripheral lift retaining
+those conjugators if and only if it has such a lift to
+\(\Lambda/\overline{[N,\Lambda]}\).
+In particular every such automorphism of
+\(\Lambda/R_{\rm nil}(U)\), for an open normal \(U\), lifts.
+This assertion imposes no order, equivariance, or norm condition on
+the full lift. It independently reconstructs the finite count and
+compactness steps of LM7\_PUSH D.50 and E.58 used as LM4's R2.
+\end{result}
+\begin{proof}
+We prove the finite count, including all proper subgroup images.
+Fix a finite source quotient \(q:\Lambda\twoheadrightarrow E\),
+write \(A=q(N)\), \(D=E/A\), and let \(T_i\) be the
+\(A\)-conjugacy class of the three peripheral images \(X_i\).
+For every subgroup \(J\le E\) onto \(D\), put \(M=J\cap A\).
+We need only consider those \(J\) for which all \(T_i\cap J\)
+are nonempty. For a \(J\)-invariant irreducible complex representation
+\(\rho\) of \(M\), of dimension \(d\), put \(e=\exp(J)\) and
+\[
+ \widetilde J_\rho=\{(g,B):g\in J,\quad
+ B\rho(m)B^{-1}=\rho(gmg^{-1}),\quad\det B\in\mu_e\}.
+\]
+Schur's lemma makes each fibre a torsor under \(\mu_{de}\).
+Hence this is a finite central extension of \(J\). The normal graph
+\(m\mapsto(m,\rho(m))\) meets the scalar kernel trivially.
+Quotienting by it gives a central extension \(Q_\rho\to D\),
+and the displayed group identifies exactly with
+\(J\times_DQ_\rho\). Its matrix coordinate defines a representation
+\(\Psi_\rho\) of this pullback restricting to \(\rho\) on \(M\).
+
+There is an actual map \(R_\rho^0:\Lambda\to Q_\rho\) above
+the given map to \(D\). For a free source choose two lifts. For the
+modular source, choose \(a_s\in T_1\cap J\) and
+\(a_r\in T_2\cap J\). Their implementing matrices have scalar
+squares and cubes; scale them to have square and cube one. Their
+determinants then lie in \(\mu_e\), so their classes give a map
+from \(C_2\amalg C_3\), retaining its actual torsion relations.
+Take the joint image of the maps to \(D\) and all \(Q_\rho\).
+This gives an actual finite source quotient \(D^\dagger\to D\)
+with central kernel. In particular its source map kills
+\([N,\Lambda]\).
+
+Here is the count which this refinement controls. For a surjection
+\(\chi:\Lambda\to D\), and \(M\)-conjugacy-invariant subsets
+\(U_i\subset J_{\chi(x_i)}\), use any actual lifts
+\(R_\rho:\Lambda\to Q_\rho\) of \(\chi\). The number of
+peripheral homomorphisms to \(J\) with these boundary values is
+\[
+ \frac1{|M|}\sum_{\rho\in\operatorname{Irr}(M)^J}
+ \frac1{\dim\rho}
+ \prod_{i=1}^3\sum_{a\in U_i}
+             \operatorname{tr}\Psi_\rho(a,R_\rho(x_i)).
+ \tag{E.57.1}
+\]
+For a direct proof, put \(B_i=\sum_{a\in U_i}a\in\mathbb C[J]\).
+Each \(B_i\) commutes with \(\mathbb C[M]\), and
+\(B_1B_2B_3\in\mathbb C[M]\). If one quotient generator moves
+the primitive central idempotent of \(\rho\), the corresponding
+block of \(B_i\) is zero. The first two quotient values generate
+\(D\), so only \(J\)-invariant representations survive.
+For one of these, each lifted matrix sum commutes with \(\rho(M)\)
+and is its trace divided by \(d\), times the identity. The product
+of three lifted elements has \(Q_\rho\)-coordinate one, and is
+therefore the graph of their product in \(M\). The regular-character
+identity \(\mathbf1_{\{1\}}(m)=|M|^{-1}\sum_\rho d\,
+\operatorname{tr}\rho(m)\) now gives (E.57.1): three scalar
+denominators, one matrix trace, and the factor \(d\) leave \(d^{-1}\).
+This is a genus-zero argument. No positive-genus counting theorem is
+being applied to the tripod.
+
+Suppose a second epimorphism to \(D^\dagger\) conjugates its three
+source peripherals by \(r_i\). Write \(h_i\) for their images in
+\(D\), lift them to \(H_i\in E\), and transport \(T_i\) by
+\(H_i\). For a subgroup \(J\) onto \(D\), choose \(j_i\in J\)
+above \(h_i\). Since \(H_ij_i^{-1}\in A\), the transported
+intersection is exactly
+\(j_i(T_i\cap J)j_i^{-1}\); empty intersections remain empty.
+The pair of \(j_i\) with the projection of \(r_i\) to
+\(Q_\rho\) conjugates the matrices in (E.57.1) literally.
+Thus every subgroup homomorphism count is unchanged. Finite subgroup
+lattice inversion gives equality of the epimorphism counts as well:
+\[
+ \#\operatorname{Epi}_{\rm per}(\Lambda,E)
+       =\sum_{J\le E}\mu(J,E)\,
+          \#\operatorname{Hom}_{\rm per}(\Lambda,J).
+\]
+Subgroups not onto \(D\) contribute zero. The original map \(q\)
+makes the common reference count positive. In the modular case the
+conjugacy classes already force the two source orders, so every map
+counted is a map from the actual modular source.
+
+Now precompose the source map to \(D^\dagger\) by the hypothesized
+automorphism of \(\Lambda/[N,\Lambda]\). The preceding positive
+count produces an epimorphism to \(E\) with the prescribed
+conjugators modulo \(D\). In the compact space \(\Lambda^3\)
+impose the peripheral product equation, generation in each finite
+quotient, and agreement with all prescribed conjugator coordinates
+modulo \(N\). Every finite collection is covered by one joint finite
+quotient \(E\), and is solvable by the count. Their intersection
+gives a surjective continuous endomorphism of \(\Lambda\).
+It is an automorphism: inverse image under a surjection permutes the
+finite set of open subgroups of any given index, so its kernel lies
+in every open subgroup and is one. Necessity follows by descending
+a full lift; such a lift preserves \(N\), and therefore also
+\([N,\Lambda]\).
+
+Finally \(R=R_{\rm nil}(U)\) satisfies \([R,\Lambda]=R\).
+In every finite quotient its image is the stable lower central term
+of the image of \(U\), by compactness of descending closed terms.
+That stable term equals its commutator with the image of \(U\),
+hence with the ambient image. Equality in every finite quotient gives
+the claimed closed equality. The central criterion therefore applies
+directly. The restored independent finite-count program was rerun in
+\path{code/check_restored_D50_finite.py}; its finite tests supplement
+this proof and do not substitute for the character argument.
+\end{proof}
+
+\begin{result}{E.58}{Proved}{LM4 A.18: mixed-sign involutions do not lift with their order}
+Here \(F=\widehat F(x,y)\) and \(c(x)=x^{-1},c(y)=y^{-1}\).
+The automorphism of \(\prod_pF^{(p)}\) equal to standard conjugation
+on \(F^{(3)}\) and the identity on every other factor has a full
+peripheral lift, but has no full peripheral involution lift.
+Thus ordinary lifting in E.57 cannot preserve order in general.
+\end{result}
+\begin{proof}
+Its multiplier is the genuine unit \(\lambda\) with
+\(\lambda_3=-1\) and \(\lambda_p=1\) for \(p\ne3\).
+The product action preserves the three peripheral classes and has
+order two, as its three-primary abelianization shows. Choose a Galois
+automorphism of multiplier \(\lambda\), using the surjectivity of
+the cyclotomic character. Translate by its inverse, apply E.57 to the
+resulting multiplier-one pronilpotent action, then translate back.
+This produces a full ordinary peripheral lift.
+
+We prove directly the only torsion exclusion needed here: a full pure
+peripheral involution with \(\lambda_2=1\) is the identity.
+A pure peripheral outer class has a unique normalized representative
+\(x\mapsto x^\lambda,\ y\mapsto f^{-1}y^\lambda f\), with
+\(f\in F'\). Existence follows by adjusting the two abelian
+coordinates of a cusp conjugator; uniqueness follows from the
+free-factor centralizers. The normalized representatives form a
+homomorphic section, so an outer involution gives an actual
+automorphism \(\alpha\) with \(\alpha^2=1\).
+On \(F^{(2)}\), it is the identity: it is trivial on the full
+\(\mathbb Z_2\)-abelianization, and a first nonzero correction in
+the Magnus filtration would double on squaring, impossible in a
+torsion-free graded piece. The filtration separates the free pro-two
+group. Thus \(F\rtimes_\alpha C_2\) maps to
+\(F^{(2)}\times C_2\).
+
+For a cusp generator \(c_i\), its normalizer in this semidirect
+product is an extension of \(C_2\) by
+\(\overline{\langle c_i\rangle}\). Write a lift of the nontrivial
+coset as \(a_i\), with \(a_i^2=c_i^{m_i}\).
+Then \((\lambda-1)m_i=0\). In the pro-two product quotient,
+the free-factor centralizer makes the two-adic coordinate of
+\(m_i\) divisible by two. At an odd prime with \(\lambda_p=1\)
+one can divide by two, and where \(\lambda_p=-1\) the coordinate
+of \(m_i\) is zero. Hence
+\((1+\lambda)u_i=-m_i\) is soluble in \(\widehat{\mathbb Z}\),
+and \(a_ic_i^{u_i}\) is an involution. Its section subgroup
+centralizes \(c_i^{e_2\mathbb Z_2}\), where \(e_2\) is the
+dyadic idempotent.
+
+For \(G=F\rtimes_\alpha C_2\), the profinite Brown theorem gives
+\[
+ \sum_{[S]}\bigl(1+\dim_{\mathbb F_2}H^1(C_F(S),\mathbb F_2)\bigr)
+ \le 1+\dim H^1(F,\mathbb F_2)=3. \tag{E.58.1}
+\]
+Precisely, use \citet[Theorem 2 and \S1.1, equations(1)--(6),
+author pp.~3--4]{SymKochloukovaZalesskii2007}. There is no
+\(C_2\times C_2\) subgroup, since finite subgroups inject into
+\(G/F=C_2\); the open subgroup \(F\) has cohomological
+two-dimension one. The theorem's dense restriction embedding is an
+isomorphism here because the source has finite dimension. The
+normalizer of each order-two subgroup is \(C_F(S)\times S\),
+so its K\"unneth formula gives exactly (E.58.1).
+Each peripheral section contributes at least two, since the ambient
+abelian character detects its centralized dyadic cusp subgroup.
+Therefore the three peripheral sections are conjugate. Their common
+fixed subgroup \(C\), after these conjugations, contains conjugates
+of all three dyadic cusp subgroups. The first two independent ambient
+abelian characters show \(\dim H^1(C,\mathbb F_2)\ge2\), and
+(E.58.1) makes it exactly two.
+
+We finish with the required rank argument, rather than assuming that
+a closed subgroup of rank two must be all of \(F\). If \(C\) were
+proper and open, Schreier's formula already gives rank greater than
+two. If it has infinite index, the two-adic valuations of
+\([F:V]\), for open \(V\supset C\), are unbounded. Otherwise
+choose a maximal valuation; all further indices are odd, so
+restriction on \(H^1(-,\mathbb F_2)\) is injective by
+restriction--corestriction. The unbounded Schreier ranks would embed
+in \(H^1(C,\mathbb F_2)=\varinjlim_{V\supset C}H^1(V,\mathbb F_2)\),
+a contradiction. This direct-limit identity follows by extending a
+finite character from \(C\) to \(CW\) after choosing an open
+normal \(W\) whose intersection with \(C\) lies in its kernel.
+
+Choose such a cover of even degree. Each of the three selected
+boundaries has odd degree, because its group contains the full
+dyadic cusp subgroup. There must be at least a fourth boundary:
+otherwise the unique boundary over each base cusp would have the
+even total degree. Boundary homology has only the total-sum relation,
+so those three classes are independent modulo two. Their restrictions
+to \(C\) remain independent, since the selected dyadic elements are
+odd multiples of them. This contradicts \(\dim H^1(C,\mathbb F_2)=2\).
+Thus \(C=F\). The order-two subgroup defining \(C\) then
+centralizes all of \(F\), so \(\alpha\) is inner. Its normalized
+representative is consequently the identity.
+Every proposed involution lift of the displayed mixed-sign action
+would have \(\lambda_2=1\) and \(\lambda_3=-1\), contradicting
+this exclusion. No classification of all full peripheral involutions,
+nor their conjugacy to complex conjugation, has been imported.
+\end{proof}
+
+\begin{result}{E.59}{Proved}{The exact finite A.76 and A.79 detectors, and removal of cusp normalization}
+The original stored finite datum in LM4 A.76 excludes a full globally
+negative involution retaining its specified finite \(s\)-frame and
+literal cusp. The changed stored finite action in A.79 excludes such
+a full involution without prescribing either frame: every full positive
+peripheral lift fixing the literal cusp has a negative image of exact
+order four on the actual finite detector of order
+\(2^{2700}72\,7^{13}\). Its old quotient has order
+\(2^{972}72\,7^{13}\).
+
+Moreover, for this A.79 action and every prime
+\(p\nmid2\cdot72\cdot7\), there is an involution on the actual
+quotient \(\mathfrak B/\Phi_p(N_0)\), with both old norm-one
+frames retained, that has no full negative peripheral involution lift,
+even allowing an unspecified full cusp conjugator.
+Here \(N_0\) is the kernel of the old finite quotient and
+\(\Phi_p(N_0)=\overline{N_0'N_0^p}\).
+
+These are independent proofs of the negative finite clauses of A.76,
+A.79 and the subsequent unnormalized obstruction. They do not by
+themselves certify the additional positive ordinary-lifting and
+all-iteration clauses of A.79, or the first-central-compatibility
+construction of A.81.
+\end{result}
+\begin{proof}
+\emph{The exact source and its coefficient module.}
+In this proof the canonical modular involution is
+\(c(s)=s\), \(c(r)=sr^{-1}s\), so \(c(\tau)=\tau^{-1}\).
+Let \(Q_6=S_3\times A_4\), with
+\[
+ s=((12),(12)(34)),\qquad r=((123),(123)).
+\]
+These give a surjection from \(\mathfrak B\). Its kernel is
+free of rank thirteen. The actual first seven-primary relation
+quotient is
+\[
+ H=M_7\rtimes Q_6,\qquad M_7=\mathbb F_7^{13}.
+\]
+The splitting and source vectors are obtained by averaging the
+augmented cellular sequence of its Bass--Serre graph: seventy-two
+edges, thirty-six order-two vertices, and twenty-four order-three
+vertices. Thus this is an actual source quotient, not an arbitrarily
+chosen semidirect product.
+
+Put \(k=\mathbb F_8\). The preserved builder
+\path{code/lm4_source_verifiers/work_A/check_Q6_forced_frame.py}
+constructs the specified nonzero character of \(M_7\), with
+\(Q_6\)-orbit of size thirty-six and stabilizer \(\langle s\rangle\).
+Its character orbit is disjoint from its two nontrivial Frobenius
+translates and is closed under negation. The induced monomial module
+\(V=k^{36}\) is consequently simple as an additive binary
+\(H\)-module, with endomorphism field exactly \(k\).
+The three cyclic fixed spaces have dimensions
+\[
+ \dim_k V^s=20,\qquad \dim_k V^r=12,\qquad
+ \dim_k V^\tau=4,
+ \qquad \tau=sr.
+\]
+The source cocycle equations are precisely
+\((1+s)d(s)=0\) and \((1+r+r^2)d(r)=0\).
+Their solution space has dimension \(20+24=44\), the coboundary
+space has dimension thirty-six, and the complete restriction map is
+\[
+ H^1(\mathfrak B,V)\xrightarrow{\sim}
+ H^1(\langle s\rangle,V)\oplus H^1(\langle\tau\rangle,V),
+ \qquad 8=4+4.                                      \tag{E.59.1}
+\]
+The last cyclic group here is the actual procyclic source subgroup.
+Its cohomology is \(V/(\tau-1)V\); it is not replaced by the
+cohomology of its finite image.
+The independent structural program
+\path{code/check_symmetry_source_structure.py} checks the complete
+weight orbit, the additive endomorphism field, and all these ranks.
+
+Choose the eight recorded cocycles. Their joint affine image is
+all of \(V^8\): a proper residual image would have a nonzero
+simple quotient, giving a linear combination that factors through
+\(H\), whereas \(H^1(H,V)=0\). This last vanishing, and
+\(H^2(H,V)=0\), follow by averaging over the normal odd subgroup
+\(M_7\), whose invariants on \(V\) are zero. The old finite
+group \(Q\) has normal forms
+\[
+ (a,m,q),\qquad a\in V^8,\quad
+ m\in\operatorname{Sym}^2_k(k^8),\quad q\in H.
+\]
+Its central cocycle pairs opposite physical weights. When a monomial
+permutation reverses an oriented opposite pair, add the corresponding
+quadratic carry; the displayed order-two source is repaired by the
+recorded parity carry. These formulas are fully preserved in
+\path{code/lm4_source_verifiers/work_A/check_Q6_central_cover.py}.
+They give \(S^2=R^3=1\). Opposite-weight commutators give all
+thirty-six symmetric matrix units, so the actual source image is the
+entire displayed group. Its order is
+\(2^{3(36\cdot8+36)}72\,7^{13}\), as asserted.
+
+The two witness files are retained byte for byte. For A.79 the hash is
+\[
+\begin{gathered}\texttt{4135fabf1500006d5ec6bbe5dc0571ea}\\[-2pt]
+\texttt{91018abf911e32136cf965729d18d4e9}.
+\end{gathered}
+\]
+The original A.76 hash and both complete hashes occur in
+\path{code/check_symmetry_stored_frames.json}.
+That independent substitution checks literal cusp preservation,
+the negative square, both source conjugacy equations and both
+normalizer norms under the original group law. The maps are products
+of invertible coefficient maps, the written quadratic carry, inner
+automorphisms and cocycle shears. Thus they are automorphisms;
+identities on the generating source pair are identities on \(Q\).
+
+\emph{The A.79 detector and forced descent of every candidate.}
+Use the four normalized cusp cocycles \(a_i\), for which
+\(a_i(s)=0\), and put \(T_0=V^{(3)}\), the cubed monomial
+representation, and \(T=T_0^{16}\). Define the actual finite law
+\[
+\begin{aligned}
+ E&=Q\times T,\\
+ (g,z)(h,w)&=
+ \bigl(gh,z+\rho_3(g)w+
+       (a_i(g)^{[2]}\,\rho(g)a_j(h))_{0\le i,j\le3}\bigr).
+\end{aligned}
+                                                        \tag{E.59.2}
+\]
+Products and squares inside the last parenthesis are coordinatewise.
+The source lifts are \(S=(s,0)\) and
+\(R=(r,\mathcal C(a(r),\rho(r)^2a(r)))\); direct multiplication
+gives their orders two and three. The image is all of \(E\).
+Indeed, at one physical weight, different-row commutators have the
+binary span of \((u^2v,v^2u)\), which is all of \(k^2\), and
+same-row commutators have the span of \(u^2v+v^2u\), which is
+all of \(k\). Their binary ranks, six and three, are independently
+checked; alternatively a trace annihilator gives a polynomial with
+distinct powers two and four and forces its coefficients to vanish.
+These brackets have zero old opposite-weight center. They therefore
+attain the sixteen new copies independently. This proves both the
+actual source assertion and \(|E|=2^{2700}72\,7^{13}\).
+
+The same odd averaging, followed by the five-term exact sequence for
+\(1\to\ker(Q\to H)\to Q\to H\to1\), gives
+\[
+ H^1(Q,T_0)=\operatorname{Hom}_H(V^8,T_0)=k^8.
+\]
+The additive intertwiner is explicitly
+\(v_\lambda\mapsto v_{-\lambda}^{,4}\).
+The eight source classes form the complete source cohomology, so
+inflation to \(H^1(\mathfrak B,T_0)\) is an isomorphism.
+For \(N_0=\ker(\mathfrak B\to Q)\), its next five-term
+sequence therefore makes transgression injective:
+\[
+ \operatorname{Hom}_Q(N_0,T_0)\hookrightarrow H^2(Q,T_0).
+                                                        \tag{E.59.3}
+\]
+The sixteen kernel maps of (E.59.2) transgress to
+\(e_i^{[2]}\smile e_j\). The fixed old positive action fixes
+the cusp classes. Equivariance and (E.59.3) force every full lift
+of that old action to preserve their joint kernel and to act
+identically on \(T\). Canonical conjugation similarly has the
+forced cubed monomial action. No kernel-stability condition has
+been added to the candidate lifting problem.
+
+For any \(g\in C_Q(s)\), the lift \((g,0)\) centralizes
+\(S\): both cup terms with \(s\) vanish. Hence
+\(C_E(S)\to C_Q(s)\) is onto, including every head and
+residual coordinate. Two peripheral actions of \(E\) over the
+fixed old action therefore have \(T\)-conjugate \(S\)-images,
+even when neither frame is prescribed. Their difference is a
+\(T\)-valued cocycle on \(Q\). Its \(s\)-restriction class
+is zero; literal cusp equality makes its cusp restriction zero.
+By (E.59.1), every candidate is
+\[
+ h_E=\operatorname{Inn}(v)h_*,\qquad v\in T^\tau,
+                                                        \tag{E.59.4}
+\]
+where \(h_*\) is the stored action on (E.59.2).
+The negative coefficient action fixes \(T^\tau\) pointwise.
+Thus, writing \(b_*=h_*c\), every candidate has square
+\[
+ (\operatorname{Inn}(v)b_*)^2=b_*^2
+   =\operatorname{Inn}(t),\qquad
+ t_{00,\,\mathrm{weight}\,0}=1.                          \tag{E.59.5}
+\]
+The restored verifier
+\path{code/lm4_source_verifiers/work_A/code/verify_fixed_action_ordinary_square.py}
+was rerun. It checks the ranks \(44,40,36\), the square on
+both actual source generators, and all 192 binary cusp-inner
+directions. The square moves a source generator. Since \(T\)
+has exponent two, it is nonidentity of order two; the negative
+action therefore has exact order four. This proves the A.79
+negative assertion for every candidate, rather than for one choice
+of its frames.
+
+\emph{The original A.76 frame.}
+Replace (E.59.2) by the six cups \(e_i\smile e_j\),
+\(i<j\), with coefficient \(V^{(2)}\). The same averaging,
+complete source cohomology and injective transgression force
+preservation of this actual six-cup quotient. Retaining the original
+old \(s\)-frame and literal cusp again makes every action change
+inner by a cusp-fixed coefficient vector. Transporting its frame
+with that inner change leaves its normalizer-square residue unchanged.
+Every remaining frame change lies in \((V^{(2)})^s\), of
+dimension twenty, and changes the residue by the complete norm
+\(1+D_s\), of rank eight. Evaluation at physical weight 23
+annihilates that entire image. The six original residues, in the
+order \(01,02,03,12,13,23\), are
+\[
+                         (0,0,5,0,5,5)\in k^6.           \tag{E.59.6}
+\]
+The rerun direct-law verifier checks all 360 binary frame columns
+and all 72 cusp-inner columns. This is a linear annihilator of the
+complete allowed variation space, not a failure of a search.
+
+If a full negative involution existed with the specified old frame
+\(\beta\), then
+\(\beta^{-1}b(\beta^{-1})\in C_{\mathfrak B}(s)=\langle s\rangle\),
+by the full free-factor theorem
+\citep[Theorem B']{SymHerfortRibes1985}. Its old \(S_3\)-image
+is one, whereas \(s\) has nonidentity image, so this element is
+one. Its six-cup residue would vanish, contradicting (E.59.6).
+
+\emph{An actual odd relation quotient removes the cusp normalization.}
+Here is a direct construction, with no appeal to an unspecified
+centralizer theorem. Put \(L=N_0\), \(M=L/\Phi_p(L)\),
+and let \(b_0=h_0c_Q\) be the checked old involution. Its two
+checked norm-one frames allow the permutation modules
+\(k_p[Q/\langle s\rangle]\) and
+\(k_p[Q/\langle r\rangle]\) to extend to
+\(Q\rtimes\langle b_0\rangle\), where \(k_p=\mathbb F_p\).
+For instance \(b_0(q\langle s\rangle)=b_0(q)\beta\langle s\rangle\);
+the norm-one equation makes its square one. The Bass--Serre sequence
+therefore gives a virtual extension of the actual relation module:
+\[
+ [M]=[1]+[k_pQ]-[k_p[Q/\langle s\rangle]]
+                    -[k_p[Q/\langle r\rangle]].         \tag{E.59.7}
+\]
+Its boundary submodule is the permutation module on
+\(Q/\langle t\rangle\), modulo the total sum, with
+\(t=q(\tau)\). Give it the negative permutation action of
+\(b_0\); this sends \([\tau^{\operatorname{ord}(t)}]\)
+to its negative.
+
+For an index-two extension in characteristic prime to its order,
+every actual subgroup module whose class is a virtual restriction is
+an actual restriction. To prove this, apply semisimplicity to each
+orbit of simple subgroup modules. A two-element orbit extends by
+induction. For a fixed simple module \(W\), write
+\(\operatorname{Ind}W=\bigoplus_i X_i^{n_i}\), with
+\(\operatorname{Res}X_i=W^{e_i}\). Reciprocity gives
+\(\sum n_ie_i=2\); all possible multiplicities are therefore
+one, or the only possible multiplicity is two. Every nonnegative
+integer in their restriction lattice is realized. Applying this to
+the semisimple complement of the boundary module in (E.59.7) gives
+a semilinear involution \(B\) on the actual \(M\), retaining
+that negative boundary action.
+
+Odd averaging splits the actual finite extension as \(M\rtimes Q\).
+Write its actual cusp as \((a,t)\), and put \(m=\operatorname{ord}(t)\).
+The boundary condition is
+\(B\bar a=-\bar a\), with
+\(\bar a=m^{-1}\sum_{j=0}^{m-1}t^ja\). Thus
+\[
+ (1-t^{-1})v=-t^{-1}a-Ba
+\]
+is soluble. Twisting \((B,b_0)\) by \(\operatorname{Inn}(v)\)
+inverts the literal cusp. Its square is inner by \(v+Bv\),
+which is both \(B\)-fixed and \(t\)-fixed. Subtracting
+\((v+Bv)/2\) from \(v\) makes the square one while keeping
+the cusp equation. To lift the frames, work in
+\((M\rtimes Q)\rtimes\langle b_p\rangle\). The old subgroups
+\(\langle s,\beta^{-1}b_0\rangle\cong C_2\times C_2\)
+and \(\langle r,J^{-1}b_0\rangle\cong S_3\) have order
+prime to \(p\). Averaging in degree two splits their preimages,
+and averaging in degree one conjugates each complement so that it
+contains the actual source element \(S\), respectively \(R\).
+The involution in each complement supplies the required lifted
+frame, with its prescribed old image and norm one. The two choices
+are independent. This constructs the asserted actual finite
+involution for every indicated \(p\).
+
+In this relation quotient,
+\[
+ C_{M\rtimes Q}(\tau)\longrightarrow Q
+       \quad\hbox{has image }\langle t\rangle.           \tag{E.59.8}
+\]
+Indeed a centralizer element fixes the positive boundary class
+\([\tau^m]\). Distinct boundary classes are distinct modulo the
+total-sum relation in odd characteristic, and their stabilizer in
+\(Q\) is exactly \(\langle t\rangle\). Conversely cusp
+powers give that entire image.
+In the full group,
+\(C_{\mathfrak B}(\tau)=\overline{\langle\tau\rangle}
+\cong\widehat{\mathbb Z}\): intersect with the index-six pure
+group, where \(\tau^2\) is a free-factor cusp generator, apply
+the full free-factor centralizer theorem, and use the order-two
+cusp image in \(S_3\).
+
+Suppose a full involution satisfies
+\(b(\tau)=u\tau^{-1}u^{-1}\) and induces the constructed
+finite action. Equation (E.59.8) gives \(q(u)\in\langle t\rangle\).
+Involutivity gives \(b(u)u=\tau^a\). Applying \(b\) to
+this equality and also using the cusp equation gives
+\(\tau^a=\tau^{-a}\); torsion-freeness gives \(a=0\).
+Multiplying \(u\) by a cusp power arranges \(q(u)=1\)
+without changing its conjugacy equation or norm. Then
+\(\operatorname{Inn}(u^{-1})b\) is a full involution,
+inverts the cusp literally, and still induces \(b_0\) on
+\(Q\). This contradicts (E.59.5).
+
+\emph{The exact remaining positive comparison.}
+If an actual quotient \(\mathfrak B/U\) with
+\([U,\mathfrak B]=U\) carries the old action and both norm-one
+frames, and maps to \(Q\), then \(U\subset N_j\) for every
+\(N_{j+1}=[N_j,\mathfrak B]\). Thus all actual central iterates
+inherit the action and frames, and E.57 gives one ordinary full
+lift. Each iterate is finite: its central kernel is finitely generated,
+and transfer shows its exponent divides six times the preceding
+finite index. This deduction is rigorous, but constructing that
+particular \(U\) and its action is additional. LM4 does so through
+A.56, A.62--65. Their entire integral and older-family compatibility
+construction is not certified by the finite calculations above.
+Similarly, A.81 additionally constructs an anti-symplectic action on
+compact cover homology and solves its actual first central cusp
+equation at selected fresh primes. It claims first-central
+compatibility, not compatibility at every iterate. Those extra
+positive assertions remain separately marked pending in the historical
+audit. No failed compactness argument follows from their scope.
+\end{proof}

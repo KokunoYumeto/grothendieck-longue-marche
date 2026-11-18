@@ -1,0 +1,698 @@
+\subsection{The missing arithmetic inputs at exact class-four constants}
+
+\begin{result}{E.80}{Proved}{The exact four-place weight-three matching map}
+The continuous restriction map
+\[
+\begin{split}
+ H^1(G_{\mathbb Q},\widehat{\mathbb Z}(3))\longrightarrow{}&
+ H^1(G_{\mathbb Q_2},\mathbb Z_7(3))
+ \oplus H^1(G_{\mathbb Q_3},\mathbb Z_{13}(3))\\
+ &\oplus H^1(G_{\mathbb Q_3},\mathbb Z_2(3))
+ \oplus H^1(G_{\mathbb R},\mathbb Z_2(3))
+\end{split}
+\tag{E.80.1}
+\]
+is surjective. The four targets have orders $7,13,2,2$.
+This independently confirms SECTIONS\_OVER\_Q A.60.
+Consequently, above the distinguished integral class-two
+section of an ordinary pair whose valuations at two and three
+are $(0,1)$ and $(1,0)$, respectively, any global integral
+class-three lift can be changed to match the ordinary local
+point classes at these four indicated places and coefficients.
+Both central weight-three coordinates can be prescribed
+independently. No local section theorem is used.
+\end{result}
+\begin{proof}
+For a finite place $q\ne\ell$, the integral tame calculation is
+\[
+ H^1(G_{\mathbb Q_q},\mathbb Z_\ell(3))
+       =\mathbb Z_\ell/(q^3-1)\mathbb Z_\ell.
+\]
+The inertia invariant term is zero because multiplication by
+$q^2-1$ is injective on $\mathbb Z_\ell$. At the real place,
+complex conjugation acts by minus one, so the first cohomology
+of its order-two group is $\mathbb Z_2/2$. This proves the
+orders of the displayed groups.
+
+Let $S_\ell=\{\ell,\infty\}$. A.22 proves
+$H^2(G_{\mathbb Q,S_\ell},\mathbb Z_\ell(3))=0$,
+including $\ell=2$. The actual coefficient sequence therefore
+makes
+\[
+ H^1(G_{\mathbb Q,S_\ell},\mathbb Z_\ell(3))
+ \longrightarrow H^1(G_{\mathbb Q,S_\ell},\mathbb F_\ell(3))
+ \tag{E.80.2}
+\]
+surjective. We produce finite classes with the required local
+values and lift them through this map; we do not infer integral
+lifting merely from a finite local calculation.
+
+For $\ell=7,13$, put $K=\mathbb Q(\zeta_\ell)$ and define the
+actual cyclotomic $S_\ell$-unit
+\[
+ u_\ell=\prod_{a=1}^{\ell-1}(1-\zeta_\ell^a)^{a^2}.
+ \tag{E.80.3}
+\]
+For $\sigma_b(\zeta_\ell)=\zeta_\ell^b$, reindexing the
+product gives
+$[\sigma_bu_\ell]=b^{-2}[u_\ell]$ in
+$K^\times/(K^\times)^\ell$. Every factor is a unit away from
+$\ell$. Its Kummer torsor is consequently unramified there.
+Over $K$ identify the coefficient module with
+$\mathbb F_\ell(3)=\mu_\ell\otimes\mathbb F_\ell(2)$.
+The additional character $b^2$ cancels the inverse-square
+character of (E.80.3). The resulting cohomology class is
+$\operatorname{Gal}(K/\mathbb Q)$-invariant.
+
+Restriction in the finite Hochschild--Serre sequence is an
+isomorphism onto these invariants: the quotient group has order
+$\ell-1$, invertible on the coefficient module, and averaging
+kills its positive-degree cohomology. We therefore obtain a
+class in the right side of (E.80.2). This also specifies its
+descent, not just a class over the cyclotomic field. The Kummer
+identification used here is the actual radical-torsor map of
+\citet[Theorems 5.30 and 5.32, pp.75--76]{RootMilneFT}.
+
+At $(q,\ell)=(2,7)$ or $(3,13)$, $q$ has order three modulo
+$\ell$. A completion of $K$ at $q$ is therefore the unramified
+degree-three extension of $\mathbb Q_q$. Write $\tau$ for the
+residue of the polynomial variable in the following exact
+finite fields, and take $\overline\zeta_\ell=\tau^2$:
+\[
+\begin{array}{c|c|c|c}
+ (q,\ell)&\text{residue field}&\overline u_\ell&
+       \overline u_\ell^{(q^3-1)/\ell}\\ \hline
+ (2,7)&\mathbb F_2[\tau]/(\tau^3+\tau+1)&\tau^2&\tau^2\\
+ (3,13)&\mathbb F_3[\tau]/(\tau^3-\tau-1)&
+                 2\tau+2\tau^2&2+2\tau^2
+\end{array}
+\tag{E.80.4}
+\]
+Both cubics have no root in their base field, hence are
+irreducible. In both cases $\tau^2$ has the claimed prime order,
+and the last entry is not one. All multiplications in this table,
+as well as the complete inverse-square eigencharacter identities,
+were executed in \path{code/check_weight3_matching.py}; its
+output gives the literal coefficient triples. The cyclic
+multiplicative group of the residue field then shows that the
+unit is not an $\ell$th power. Hensel lifting identifies this
+with a nonzero unramified local Kummer class. Restriction to the
+degree-three extension is injective on the base local class,
+since restriction followed by corestriction multiplies by three.
+The integral lift from (E.80.2) thus maps nontrivially to the
+order-$\ell$ target, and generates it.
+
+For $\ell=2$ the finite coefficient module is trivial. The
+two square classes $-1,2$ define classes unramified outside
+$\{2,\infty\}$, and both lift by (E.80.2). At $q=3$ their
+unit residues are both nonsquares, so both give the nonzero
+unramified quadratic class. At the real place, only $-1$ is
+negative. Coefficient reduction is injective on each of the
+order-two integral local first-cohomology groups. With columns
+$(-1,2)$ and rows $(\mathbb Q_3,\mathbb R)$, the actual matrix is
+\[
+                     \begin{pmatrix}1&1\\1&0\end{pmatrix}
+                   \quad\text{over }\mathbb F_2.
+ \tag{E.80.5}
+\]
+Its determinant is one. Thus the two targets at coefficient two
+can be prescribed independently. Continuous cochains into a
+product of the Tate modules are precisely products of continuous
+cochains. The same holds for cocycles and coboundaries, so first
+cohomology with $\widehat{\mathbb Z}(3)$ is the product of its
+prime components. Combining the three coefficient-prime choices
+proves (E.80.1).
+
+For the section consequence, the specified local class-two
+restrictions already match actual point sections. At $(2,7)$
+and $(3,13)$ the local central weight-two groups are zero. At
+$(3,2)$ the distinguished class has been selected by B.101;
+the nonzero valuation is one, so its zero third obstruction is
+exactly the strong class-two matching condition of B.24. At the
+real place the ordinary abelian signs select an ordinary
+component, and the weight-two first cohomology is zero.
+Choose local conjugators aligning these lower sections. The
+differences from their actual point lifts at class three are
+classes in the two copies of the four target groups in
+(E.80.1). Surjectivity supplies a global central twist with
+their negatives. After this twist all four local section
+classes match. At the real place a possible lower stabilizer
+changes the chosen discrepancy representative, but not this
+existence argument: we correct any one aligned representative.
+\end{proof}
+
+\begin{result}{E.81}{Proved}{The original exact class-four valuation bound}
+Suppose an ordinary completed pair has valuation patterns $(0,1)$
+at two and $(1,0)$ at three, and at every prime $q>3$ either
+$(0,0)$ or one of
+\[
+ (M_q,0),\quad(0,M_q),\quad(-M_q,-M_q),\qquad
+ M_q=24e_q(q^2-1)(q^3-1),
+ \tag{E.81.1}
+\]
+where the $e_q$ are nonnegative integers tending to zero in
+$\widehat{\mathbb Z}$. Its distinguished integral class-two section
+has a lift to the actual integral class-four arithmetic quotient.
+This independently confirms the precise constant and assertion of
+SECTIONS\_OVER\_Q A.61. It does not assert ordinary local matching
+of this class-four lift at the new support primes.
+\end{result}
+\begin{proof}
+E.65 applies with $e_q(q^3-1)$ in place of its $e_q$, since this
+sequence also tends to zero in each $\mathbb Z_\ell$. It gives an
+integral class-three section. Apply E.80 in its two central
+coordinates to make this section match the actual point sections
+at $(q,\ell)=(2,7),(3,13),(3,2)$ and at the real place for
+coefficient two. We prove that its class-four obstruction vanishes.
+
+Fix $\ell$ and a fresh support prime $q>3$, $q\ne\ell$.
+Write $m=M_q$ for positive support and $m=-M_q$ for negative
+support. Use the degree-graded free rational Lie algebra on
+$X=\log x,Y=\log y$, truncated after degree four. Let $L_i$ be
+its integral free Lie lattice in degree $i$. Choose arithmetic
+Frobenius $F$ and the tame $\ell$-generator $T$, and write $U,V$
+for the geometric coordinates of their images under the class-three
+section. The actual tangential action satisfies
+\[
+ \sigma(x)=x^q,\qquad \sigma(y)=f^{-1}y^qf,
+       \quad f\in\Gamma_2,
+ \qquad U\sigma(V)U^{-1}=V^q.
+ \tag{E.81.2}
+\]
+The action is unramified at $q$, and the equality is at class three.
+There is no replacement of the actual path element $f$ by its graded
+action.
+
+We record explicitly the denominator estimates used below. Put
+$C=[x,y]$, $D=[x,C]$, $E=[y,C]$; reversing the sign of the
+weight-three basis from B.23 changes none of these lattices.
+Expansion of the finite series
+$\exp Z=\sum_{j=0}^4Z^j/j!$ and
+$\log(1+Z)=\sum_{j=1}^4(-1)^{j+1}Z^j/j$ gives
+\[
+\begin{array}{c|ccc}
+ &\text{degree two}&\text{degree three}&\text{degree four}\\\hline
+ \log C&L_2&\frac12L_3&\frac1{12}L_4\\
+ \log D,\log E&0&L_3&\frac12L_4
+\end{array}
+\tag{E.81.3}
+\]
+and for arbitrary integral Hall coordinates
+\[
+ Z=\log(y^b x^aC^hD^dE^e):\qquad
+       Z_1\in L_1,\quad Z_2\in\tfrac12L_2,
+       \quad Z_3\in\tfrac1{12}L_3.
+ \tag{E.81.4}
+\]
+All coefficients of $Z_4$ have denominator dividing $24$.
+Its terms linear in $h$ have denominator dividing $12$;
+those linear in $d,e$ have denominator dividing two; and every
+nonlinear monomial involves at most one of $d,e$.
+These are polynomial identities in the five formal scalar
+variables, not estimates obtained by testing finitely many
+integral substitutions. The retained program
+\path{code/check_class4_denominators.py} expands all expressions
+exactly over $\mathbb Q$, keeps the scalar variables formal,
+and verifies each assertion. To see that associative coefficients
+control the Lie lattice, in degrees two, three and four use the
+bases
+\[
+ [X,Y];\qquad [X,[X,Y]],[Y,[X,Y]];\qquad
+ [X,[X,[X,Y]]],[Y,[X,[X,Y]]],[Y,[Y,[X,Y]]].
+\]
+Their successive leading associative words are
+\[
+ XY;\qquad XXY,XYY;\qquad XXXY,XXYY,XYYY.
+\]
+Their coefficients are $\pm1$, and their coefficient matrices
+are triangular. Thus these lattices are
+saturated in their rational spans. The estimates hold also at
+two and three. The universal Baker--Campbell--Hausdorff
+coefficients through degree four have respective denominator
+bounds $1,2,12,24$, as the same exact expansion verifies.
+
+Write $W_i=(\log V)_i$ and $Z_i=(\log U)_i$.
+The ordinary valuation patterns give
+\[
+ W_1=mX,\quad mY,\quad\text{or }m(X+Y).
+\]
+The degree-two part of (E.81.2) reads
+\[
+              (q-1)W_2=-[Z_1,W_1].
+ \tag{E.81.5}
+\]
+In the first pattern the second Kummer class is locally trivial,
+so its Frobenius value $\beta$ is $(q-1)u$ for integral $u$.
+In the second pattern the first value $\alpha$ is $(q-1)u$.
+In the third pattern, the unit ratio tends to $-1$ in the local
+Kummer group, so
+\[
+                 \beta-\alpha=(q-1)(u+\tfrac12),
+                 \qquad u\in\mathbb Z_\ell.
+\]
+This is the actual identity for the Kummer cocycle of $-1$,
+$(\chi-1)/2$, with an integral coboundary; it is valid at two.
+Consequently
+\[
+                            W_2\in\tfrac m2L_2.
+ \tag{E.81.6}
+\]
+
+The path element has $(\log f)_2\in L_2$ and
+$(\log f)_3\in\frac12L_3$ by (E.81.3).
+Thus its only extra term in the degree-three action on $W_1$
+is in $qmL_3$. Taking degree three in
+$\exp(\operatorname{ad}Z)\sigma(W)=qW$ now gives
+\[
+ (q^2-1)W_3\in\tfrac m2L_3.
+ \tag{E.81.7}
+\]
+Indeed the remaining terms, after division by the unit $q$,
+are $q[Z_1,W_2]$, $[Z_2,W_1]$ and
+$\frac12[Z_1,[Z_1,W_1]]$; (E.81.4) and (E.81.6)
+put each in $\frac m2L_3$.
+Set
+\[
+ K=12e_q(q^3-1),\qquad J=e_q(q^3-1).
+ \tag{E.81.8}
+\]
+Signs have no effect on the following ideal inclusions.
+Equations (E.81.6)--(E.81.7) show that $W_1,W_2,W_3$ all
+lie in $KL_1,KL_2,KL_3$, respectively.
+
+Take the Hall lift $\widetilde V$ to class four with new
+weight-four coordinates zero. The coordinates $a,b$ of $V$
+are multiples of $K$. The degree-two inverse formula makes
+$h$ a multiple of $K$, since its quadratic correction has
+denominator two and $12\mid K$. The degree-three inverse
+formula gives only
+\[
+                            d,e\in(K/2)\mathbb Z_\ell.
+\]
+This possible loss of two is retained. In that formula the
+linear $h$ term has denominator two, and all remaining
+nonlinear lower-coordinate terms have denominator dividing
+$12$, hence are multiples of $K$. By (E.81.3), the degree-four
+terms linear in $h,d,e$ lie in $(K/12)L_4$. A nonlinear
+term has at least two coordinates, at most one from $d,e$,
+and denominator dividing $24$, so it lies in
+$(K^2/48)L_4\subseteq(K/12)L_4$. Therefore
+\[
+                    (\log\widetilde V)_4\in JL_4.
+ \tag{E.81.9}
+\]
+
+Choose any integral lift $\widetilde U$ of $U$. Its first three
+logarithmic components obey (E.81.4); its fourth component
+cannot affect conjugation in degree four. The degree-four part
+of $\sigma(\log\widetilde V)$ consists of $q^4W_4$,
+a term in $(m/2)L_4$ from the degree-three part of $\log f$,
+and a term in $(m/2)L_4$ from its degree-two part acting on
+$W_2$. All lie in $JL_4$. In applying
+$\exp(\operatorname{ad}Z)$, the other possible degree-four
+terms are
+\[
+\begin{split}
+ &[Z_1,(\sigma W)_3],\quad[Z_2,(\sigma W)_2],
+       \quad[Z_3,(\sigma W)_1],\\
+ &\tfrac12[Z_1,[Z_1,(\sigma W)_2]],\quad
+   \tfrac12[Z_1,[Z_2,(\sigma W)_1]],\quad
+   \tfrac12[Z_2,[Z_1,(\sigma W)_1]],\\
+ &\tfrac16[Z_1,[Z_1,[Z_1,(\sigma W)_1]]].
+\end{split}
+\]
+Their denominator losses are at most $2,12,4,6$ as indicated
+by (E.81.4). Terms involving $W_1$ contain $m=24e_q(q^2-1)(q^3-1)$;
+the others contain $K=12J$. Each term is therefore in $JL_4$.
+
+The two logarithms
+$\log(\widetilde U\sigma(\widetilde V)\widetilde U^{-1})$
+and $\log(\widetilde V^q)$ agree through degree three by
+(E.81.2). Their difference is central, so taking their quotient
+introduces no further Baker--Campbell--Hausdorff term. We obtain
+\[
+ \widetilde U\sigma(\widetilde V)\widetilde U^{-1}
+       \widetilde V^{-q}\in J L_4.
+ \tag{E.81.10}
+\]
+In the tame transgression calculation B.22 this central relator
+is, up to sign and multiplication by the unit $q$, the residue
+of the actual obstruction cocycle. Consequently its unique
+normalized residue, divided by $q^3-1$, lies in
+$e_q\mathbb Z_\ell^3$. These residues are integral and tend
+to zero. At a zero-support prime the section has trivial
+inertia, by successive torsion-free tame equations, so its
+residue is zero.
+
+At the old primes two and three, the only nonunit factors of
+$q^3-1$ are respectively $7$ and $2,13$. The chosen local
+class-three point matches make their fourth obstruction classes
+zero; thus their normalized residue coordinates are integral.
+All other coefficient primes have unit denominators there.
+There are finitely many old places, so they cause no convergence
+issue. A.22 now places the global class-four obstruction in
+$H^2(G_{\mathbb Q,\{\ell,\infty\}},\mathbb Z_\ell(4))^3$.
+
+For odd $\ell$ this last group is zero, by the exact comparison
+with $K_6(\mathbb Z)\{\ell\}=0$. For $\ell=2$ its kernel
+under real restriction is zero: the comparison in
+\citet[VI.9.11, case $n=6$, pp.57--58; VI.10.3, p.61]{CohWeibelKbook}
+identifies that kernel with $K_6(\mathbb Z[1/2])\{2\}=0$.
+Localizing at $\ell$ does not change the $\ell$-primary part,
+since $K_5(\mathbb F_\ell)$ has order $\ell^3-1$.
+The same source, VI.8.2, gives the odd-primary comparison.
+The real class is zero because E.80 made the class-three
+restriction an actual real point section, which has a full
+lift. Thus the fixed-ramification obstruction is zero at two
+as well. Continuous primitives provide global pro-$\ell$
+class-four lifts. Taking their product proves the integral
+class-four assertion.
+\end{proof}
+
+\begin{result}{E.82}{Proved}{The exact cubic-exponent ordinary recursion, including initial factorial six}
+Let $24\mid C$, and let $J\geq6$ be at least every prime
+divisor of $C$. With exactly the parameters
+\[
+ n_j=(j+J)!,\qquad D_j=6Cn_j^3,\qquad
+ E_j(Q)=Cn_j(Q^2-1)(Q^3-1),
+ \tag{E.82.1}
+\]
+there are disjoint sequences of distinct primes $q_j,r_j,s_j>3$
+for which
+\[
+ A=3\prod_{j\geq0}\frac{q_j^{E_j(q_j)}}{s_j^{E_j(s_j)}},
+ \qquad
+ B=-2\prod_{j\geq0}\frac{r_j^{E_j(r_j)}}{s_j^{E_j(s_j)}}
+ \tag{E.82.2}
+\]
+is ordinary at every finite prime and has infinite support.
+Its valuation patterns are $(0,1)$ at two, $(1,0)$ at three,
+and respectively $(E_j(q_j),0),(0,E_j(r_j))$ and
+$(-E_j(s_j),-E_j(s_j))$ at the new primes.
+This independently confirms SECTIONS\_OVER\_Q A.62 with its
+literal $J=6$ option. With $C=24,J=6$, E.81 gives an actual
+integral class-four section above this pair.
+\end{result}
+\begin{proof}
+We verify the small-factorial estimates that are not supplied
+by the general $J\geq18$ bound in E.30--E.31, and then give
+the resulting recursion with these exact parameters.
+Fix a stage and write $n=n_j$, $D=D_j$ and $E=E_j$.
+For $p\mid n$ put $v=v_p(n)$, $c_p=v_p(C)$,
+$a_2=2$, and $a_p=1$ for odd $p$.
+The exact logarithmic identity for $z=1+p^vu$ is
+\[
+ E(z)\log z=6Cn p^{3v}u^3H(u),
+ \quad
+ H(u)=\left(1+\frac{p^vu}{2}\right)
+       \left(1+p^vu+\frac{p^{2v}u^2}{3}\right)
+       \frac{\log(1+p^vu)}{p^vu}.
+ \tag{E.82.3}
+\]
+At two $v\geq4$, and at three $v\geq2$ because $6!\mid n$.
+For all other $p\mid n$, $v\geq1$.
+The coefficient of $u^{k-1}$ in the final factor has valuation
+$(k-1)v-v_p(k)$. At two this is at least $v-1\geq3$ for
+$k\geq2$; at three it is at least two; for $p\geq5$
+it is at least one. These estimates tend to infinity with $k$.
+The two polynomial factors satisfy the same or stronger bounds.
+Consequently
+\[
+ H\in1+p^{1+v_p(3)}\mathbb Z_p\langle u\rangle.
+ \tag{E.82.4}
+\]
+This is the precise coefficient estimate used in E.30.
+
+For clarity, put $u=1+p^{a_p}w$ and $e=v_p(3)$.
+After its constant value is removed,
+$u^3H(u)$ divided by $p^{a_p+e}$ has the form
+$\lambda w+pG(w)$, with $\lambda\in\mathbb Z_p^\times$
+and $G$ an integral restricted power series. The binomial
+coefficients of $u^3$ prove this directly; (E.82.4) gives
+one extra factor $p$ for the nonconstant contribution of
+$H-1$. Contraction in $\mathbb Z_p$ proves that this map is
+a bijection. Thus the exact shell map is
+\[
+\begin{split}
+ 1+p^v+p^{v+a_p}\mathbb Z_p&\xrightarrow{\sim}
+ z_0^{E(z_0)}(1+p^{W_p}\mathbb Z_p),\\
+ W_p&=c_p+4v+v_p(6)+a_p+v_p(3),\\
+ z_0&=1+p^v.
+\end{split}
+\tag{E.82.5}
+\]
+Logarithm and exponential are taken in their usual inverse
+isometric domains; at two all values here lie in $4\mathbb Z_2$.
+The map agrees with the literal integer power on positive integer
+inputs, and preserves congruences. Throughout its shell,
+\[
+ v_p(E(z))=c_p+3v+v_p(6)=v_p(D),
+ \qquad W_p\leq2v_p(D).
+ \tag{E.82.6}
+\]
+Indeed the difference in the inequality is
+$c_p+2v+v_p(6)-a_p-v_p(3)$, nonnegative also at two and
+three with the just proved minimum values of $v$.
+
+If $p\nmid n$, then $p\geq7$ and $p\nmid C$.
+On a Teichmuller residue ball with $\omega^2,\omega^3\ne1$
+modulo $p$, retain separately a frozen exponent
+$e_0\bmod(p-1)$. The map
+\[
+ z\longmapsto\omega^{e_0}
+            \exp(E(z)\log(z/\omega))
+ \tag{E.82.7}
+\]
+is a bijection onto $\omega^{e_0}(1+p\mathbb Z_p)$.
+Its logarithm, after $z=\omega(1+pw)$ and division by $p$,
+is $E(\omega)w+pG_0(w)$ with unit $E(\omega)$.
+This proves the assertion by contraction. It agrees with the
+ordinary power when the independently imposed integer congruence
+$E(z)\equiv e_0\pmod{p-1}$ holds. At most four nonzero
+residues are excluded by $\omega^2=1$ or $\omega^3=1$.
+Since $p\geq7$, at least one permitted residue always remains.
+
+Here is the complete induction to which these maps are applied.
+Put $B(D)=(D+1)^4$ and $H_j(p)=2v_p(D_j)+j+3$.
+Keep disjoint-support coefficients
+$a=3u^{24},b=-2v^{24},c=w^{24}$, unit-coordinate local
+solutions to $aX^{D_j}+bY^{D_j}=cZ^{D_j}$ at every finite
+prime, and $v_p(a+b-c)\geq H_j(p)$ for $p\leq B(D_j)$.
+The initial coefficients $(3,-2,1)$ satisfy both conditions
+exactly. Choose $P\geq B(D_{j+1})$ including all old support,
+and precisions $L_p\geq H_{j+1}(p)$ with $p^{L_p}>P$.
+Increase them to retain the full shells in (E.82.5).
+
+Process primes $p\leq P$ increasingly. Earlier congruences
+fix each future input modulo $p-1$ and hence its own frozen
+exponent $e_i$. The shell valuations (E.82.6), and the exclusion
+of square and cube roots of one at primes not dividing $n$, give
+\[
+ \gcd(e_i,p-1)=\gcd(D,p-1)
+       \quad\text{for each of the three input variables}.
+ \tag{E.82.8}
+\]
+All prime factors of $6C$ divide $n$, so there is no omitted
+exception to this valuation calculation. Thus all three
+finite-field power maps have the same image. Every excluded
+residue has order two or three and maps to one.
+
+For $p\mid n$ the three images in (E.82.5) are the same
+principal-unit coset. The near-sum invariant and
+$H_j(p)\geq W_p$ allow correction of an output with unit
+coefficient to solve the exact local equation. Invert its
+shell map. For $p\nmid n$, $p\leq B(D)$, choose a common
+nonzero power residue different from one if the image has
+more than one element. Every preimage is then permitted.
+If the power image is trivial, all nonzero residues are
+preimages and the four exclusions leave a permitted one.
+The common residue and the near-sum invariant allow a
+principal-unit correction with a unit coefficient; (E.82.7)
+attains the corrected output. For $p>B(D)$ use the maintained
+unit-coordinate solution, and scale its three coordinates by
+a common unit so that no resulting power value is one modulo
+$p$. There are at most three forbidden scaling powers and
+$(p-1)/\gcd(D,p-1)>3$. Formula (E.82.8) and (E.82.7)
+then give the three exact inputs. This includes old support
+primes larger than $B(D)$.
+
+Retain these inputs modulo $p^{L_p}$. Their congruence
+preservation gives the required next error precision.
+CRT produces three unit classes, each one modulo $n$.
+The three fields in (E.31.6) have maximal abelian subfield
+$\mathbb Q(\mu_n)$ by its fully proved radical-intersection
+argument, which uses only $24\mid n$ and the specified
+coefficient forms. They therefore admit simultaneously the
+identity on each radical field and its prescribed CRT
+cyclotomic automorphism. Chebotarev chooses distinct
+$q,r,s>P$ in those classes and respective splitting fields.
+Update by $a'=aq^{E(q)},b'=br^{E(r)},c'=cs^{E(s)}$.
+Each exponent is a multiple of $24$.
+
+The next local-solubility checks of E.31 use only estimates
+already established here. At $p\leq P$, the retained error
+is greater than twice the derivative valuation for exponent
+$D_{j+1}$, so strong Hensel gives a unit point. At a new prime
+$Q$, the exact shell valuations and excluded residue one
+at newly entering prime divisors give
+$\gcd(D_{j+1},Q-1)=n_j$. The split radical is an
+$n_j$th power, as are all new cross-factors, so it is a
+$D_{j+1}$th power modulo $Q$; simple-root Hensel solves
+using the other two unit coordinates. At the remaining
+primes, all coefficients are units and $p>B(D_{j+1})$.
+The precise diagonal-curve Weil estimate proved in E.31
+gives a nonzero residue point, which again Hensel-lifts.
+This proves the induction without enlarging $J$ or changing
+any exponent in (E.82.1).
+
+Finally, every update exponent is divisible by $n_j$.
+The three global products converge in the power completion.
+At each fixed finite prime their valuations eventually
+stabilize, their unit components converge, and the increasing
+near-sum precision gives nonzero limits $a_p+b_p=c_p$.
+Thus $x_p=a_p/c_p$ and $1-x_p=b_p/c_p$ are the two required
+ordinary local numbers. Their valuations are exactly the
+stated ones. Disjoint new supports give infinite support.
+For $C=24$ the coefficients $e_{q_j},e_{r_j},e_{s_j}$ in
+(E.81.1) are $n_j$, which tend to zero in every $\mathbb Z_\ell$.
+E.81 applies. The valuation at two excludes the cusp-zero
+pattern, that at three excludes cusp one, and their unequal
+coordinates exclude cusp infinity. Infinite support excludes
+a rational-point pair.
+\end{proof}
+
+\begin{result}{E.83}{Proved}{The same ordinary ghost has a global class-four section and no locally matching class-two section}
+There is an output of the exact recursion E.82 with $C=24,J=6$
+satisfying
+\[
+ (A,B)\bmod8=([3],[-2]),\qquad
+                         x_{1129}\equiv828\pmod{1129}.
+ \tag{E.83.1}
+\]
+It admits an actual continuous global integral class-four section,
+and its everywhere locally point-or-cusp-matching integral
+class-two fibre is empty. In particular its everywhere locally
+point-or-cusp-matching class-four fibre is empty as well.
+This confirms the full assertions of SECTIONS\_OVER\_Q A.207
+and A.209 for the same completed pair. The exclusion is already
+seen in the actual geometric order-$32$ quotient of E.70;
+its order-$128$ predecessor gives the stated class-four exclusion.
+No assertion that the unrestricted class-two or class-four
+fibres are empty is made.
+\end{result}
+\begin{proof}
+Modify exactly one local input of the first stage of E.82.
+Let $p=1129$, so
+\[
+ n_0=720,\quad D_0=144\cdot720^3=53747712000,
+ \quad p-1=24\cdot47,\quad \gcd(D_0,p-1)=24.
+\]
+Direct modular exponentiation gives
+\[
+ 59^{D_0}\equiv276,\quad28^{D_0}\equiv978,
+ \quad3\cdot276-2\cdot978\equiv1\pmod p.
+ \tag{E.83.2}
+\]
+The integer $D_0$ is a $p$-adic unit. Hensel's lemma therefore
+gives the unique $Z_0\in1+p\mathbb Z_p$ satisfying
+\[
+ Z_0^{D_0}=3\cdot59^{D_0}-2\cdot28^{D_0}.
+ \tag{E.83.3}
+\]
+When the increasing-prime CRT process reaches $p$, the already
+fixed congruences determine three possibly different exponent
+classes $e_i$ modulo $p-1$. By (E.82.8) each has greatest
+common divisor $24$ with $p-1$. Their images are the same
+order-$47$ subgroup. Each target $276,978,1$ has exactly
+$24$ preimages under each map. At most four nonzero residues
+are square or cube roots of one. Thus each target has a
+permitted preimage. The frozen-exponent bijections (E.82.7)
+attain the exact three outputs
+\[
+                         59^{D_0},\quad28^{D_0},\quad Z_0^{D_0}.
+\]
+Their equation is (E.83.3). Retain their inputs to the original
+precision $p^{L_p}$. Every exclusion and error precision used
+in E.82 is preserved, including those required when later
+primes are processed. The radical fields and their CRT
+intersections have not changed. The original Chebotarev
+construction is therefore valid with this local modification.
+
+The first updated coefficients have residues
+$(a_1,b_1,c_1)=(828,302,1)\pmod p$.
+At each later stage $p\leq B(D_j)$. If $p\nmid n_j$,
+use the common output residue of the small-prime step in
+E.82; its principal-unit corrections leave that residue
+unchanged. Multiplying the three coefficients by a common
+residue preserves $a_j/c_j\pmod p$. Once $p\mid n_j$,
+each input is one modulo $p$, so all three multipliers
+are one modulo $p$ and again preserve the ratio.
+All recursive support primes exceed the processed bound;
+none equals $1129$. The ordinary limiting ratio is
+therefore $828$ modulo $1129$.
+
+Every update exponent is divisible by $24$, proving the
+individual mod-eight classes in (E.83.1). The exact valuations
+are those of E.81 with $e_q=n_j$, tending to zero in the
+power completion. Its continuous integral class-four lift
+exists by E.81. This proves the positive assertion for this
+particular pair, rather than for a different fixed-depth output.
+Choosing the least permitted residue at unspecified finite
+steps, the unique roots on the chosen shells, and then the
+least successive primes in the established CRT and radical
+classes specifies a complete effective recursion. The
+astronomical first prime search has not been executed.
+
+We also check the literal eight-sheet calculation in A.207.
+The four quartic branch residues of $C$ at $1129$, in its
+original order, are $16,430,699,1113$. The radicand of the
+cyclic-eight cover at $t=828$ is $1115$. Substitution in the
+actual birational maps (E.70.4), followed by the four quadratic
+characters of $x-\theta$, gives
+\[
+\begin{array}{r|r|r|c}
+ z&x&y&\text{four Kummer bits}\\\hline
+ 35&28&454&0101\\
+ 44&941&603&1100\\
+ 235&1101&629&1010\\
+ 511&188&306&0011\\
+ 618&188&823&0011\\
+ 894&1101&500&1010\\
+ 1085&941&526&1100\\
+ 1094&28&675&0101
+\end{array}
+\tag{E.83.4}
+\]
+The full branch-coordinate Kummer comparison, including the
+rational fifth coordinate, was proved in E.70. Here bit zero
+means a square unit and bit one a nonsquare unit. Every
+entry is a unit, and every root derivative is a unit, so
+these data persist on the entire residue disc by simple-root
+Hensel lifting. The projection to the quadratic norm pairs
+the first and fourth bits, and the second and third bits.
+Every row therefore projects to $(1,1)$. E.70 proves that
+the entire global projected Selmer image has local vector
+$(0,0)$ at this prime. This excludes all eight sheets
+without assuming the earlier full two-Selmer computation.
+It also proves the originally stated order-$128$ exclusion,
+since that arithmetic quotient maps to the order-$32$ one.
+
+For the constructed pair, $AB^3\bmod8=[-24]$.
+Any locally point-or-cusp-matching integral class-two section
+would consequently map to the empty locus of E.70.
+Full local multiplicative Kummer injectivity fixes its
+ordinary centre to $x_{1129}$. A cusp cannot give these two
+local coordinates: the three cusp patterns would require
+$1-x=1$, $x=1$, or $(1-x)/x=-1$, none of which holds.
+The map from class four to class two carries local point
+and cusp sections to the same type of sections, proving
+both exclusions.
+
+The retained program \path{code/check_cubic_recursion.py}
+checks primality, all $46\cdot3$ frozen-exponent/target
+cases, the initial residues, all eight cover points and
+all their full and projected Kummer vectors. Its output
+is included. The infinite recursion, continuous lifting,
+and all-place projected Selmer bound are provided by the
+proofs, not inferred from this finite certificate.
+\end{proof}

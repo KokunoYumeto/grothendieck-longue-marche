@@ -1,0 +1,74 @@
+#!/usr/bin/env python3
+"""Refresh the third-period report without changing proof or audit statuses."""
+from pathlib import Path
+from collections import Counter
+import csv
+
+root = Path(__file__).resolve().parents[1]
+path = root / 'SECTION_GHOSTS_report.md'
+text = path.read_text()
+historical = list(csv.DictReader((root / 'notes/historical_audit.csv').open()))
+hc = Counter(r['audit_status'] for r in historical)
+rows = {
+ 'P.1': ('P.1–P.13; A.22–A.24', '(a) The requested literature scope and comparisons are established with opened primary sources and derivations. Published nongeometric pro-p examples, fixed-S unipotent results, continuous cohomology, and full-section density results do not decide the ordinary limit question. No priority claim is made.'),
+ 'A.2': ('A.2; A.20–A.21; A.31; B.25–B.26; E.66–E.69; E.130–E.133', 'Undecided. Full survival forces matching of the actual local point class at every nonzero-support place q in every coefficient component ell different from q. At coefficient three, the fixed-ramification H2 obstruction is zero in every weight; the remaining induction is simultaneous H1 matching. For the E.125 family its fourth matching layer is now an exact finite Frobenius system with an exact prefix-extension criterion. Neither finite Frobenius freedom nor a fixed-depth survivor resolves all frozen primes at all later weights. Next: solve or obstruct the compatible sequence for one fixed ordinary ghost.'),
+ 'A.3': ('A.2–A.3; A.30–A.31; E.66–E.69; E.123–E.136', 'Undecided for2,3 and every prime at least5. For the minimal-denominator three-primary support pattern, each odd/even pair is a finite linear matching problem. E.130–E.132 give one fixed finite representation controlling weight4 and exactly characterize extendible finite prefixes. E.133 proves dense fourth-matching failure while E.132 proves the remaining set nonempty. E.135 reformulates the narrower finite-field fixed-reference question as integrality of a unique rational Frobenius path; E.136 shows growing degree/genus alone cannot settle it. Next: retain the changing lower section and the old-prime constraints through arbitrary depth.'),
+ 'A.4': ('A.22–A.29; B.20–B.26; E.66–E.69; E.130–E.134', 'The exact class-two and class-three continuous tests, including strict c0, are proved. At coefficient three matched predecessors have no fixed-ramification H2 remainder, but preserving local matches is a separate finite H1 system. The fourth system and selected failures are explicit in their stated families. The obstruction for every class of every original A.44 output remains unevaluated. Pointwise finite-coefficient vanishing and the mere existence of lim-one classes do not settle it. Next: decide the successive matching systems.'),
+ 'B.1': ('B.21–B.26; B.101–B.102; E.130–E.134', 'The original local class-three remainder has exact scalar tests with one global predecessor fixed first; strict c0 remains necessary. A different three-primary matched family now has a nonempty closed fourth-matching remainder and open dense failure outside it. This neither classifies the original all-coefficient remainder nor supplies its universal finite exclusion. Next: compare its later matched layers, retaining the pair and all old primes.'),
+ 'B.2': ('E.35–E.38; E.60–E.65; E.70–E.72; E.80–E.83; E.118–E.134', 'The same-pair A.207/A.209 construction is now fully reconstructed, including the literal24 and J=6 constants and every one of the eight local sheets. It has a global class-four section but no everywhere point/cusp-matched class-two section. A selected E.123 example first fails support matching at class4 while still having a global class-four lift. The complete first-exclusion table remains undecided for the closed remainders and the harmonic and A.196 dependencies. Next: close those original audits and decide the higher matching remainder.'),
+ 'C.2': ('C.1–C.3; E.110–E.136', 'Odd-prime Heisenberg genera and the prime-two exception are proved. The compact and affine abelian three-primary tests are reconstructed. E.134 shows that every E.123 member matched through class4 already passes the compact elliptic support tests; E.129 supplies a matched-through-class3 example failing that class4 condition. None of these conclusions computes every-prime Selmer groups or decides the surviving closed remainder. Next: use further proper-cover quotients with the exact inherited geometric group.'),
+ 'C.3': ('C.4; A.8; E.50–E.59; E.90–E.97', 'The compact-system separation lemma, exact LM4 negative detectors, and the positive compatible relative towers are independently proved. E.95–E.97 supply the actual marked arithmetic CM base, including the necessary equianharmonic twist. The relative tower remains noncofinal. Full-GT parity vanishing and the finite configuration compiler remain pending; they are not inferred from the arithmetic subgroup. No common universal ghost-exclusion theorem has been established. Next: prove the missing configuration comparison or replace that proposed route.'),
+ 'E.1': ('A.20–A.31; B.20–B.26; Part E', 'Prior claims used as proved inputs have independent proofs in their exact stated scopes. Exact low-depth constants, same-pair class-four survival and the LM4 positive towers are now reconstructed. E.98–E.100 repair R8: the precise Fermat sections over Q exist, but the universal reading is false and their tripod pairs are nonordinary. The remaining historical claims are retained as pending and are not imported as authorities. Next: recover or independently prove the missing harmonic initialization, the A.196 global obstruction and the full-GT configuration step.'),
+ 'E.2': ('notes/historical_audit.csv; Part E audit table', f'The complete demanded list has a row. The current audit has {len(historical)} rows: {hc.get("confirmed",0)} confirmed, {hc.get("repaired",0)} repaired, {hc.get("refuted",0)} refuted and {hc.get("pending",0)} pending. The literal class-four and LM4 arithmetic/positive-tower gaps are closed. Missing harmonic mixed-exponent initialization and other unfinished dependencies remain explicit. A partial source check does not certify the whole earlier assertion. Next: complete each remaining dependency or identify its exact error.'),
+ 'L.5': ('C.1–C.5; C.7–C.8; A.8; E.50–E.59; E.90–E.97', 'Compact finite separation and the actual LM4 symmetry examples are proved in their stated scopes, including the positive relative towers. The arithmetic discrepancy vanishes, but the extension from the Galois image to every pentagon-satisfying GT element remains a separate geometric comparison. Thus the claimed common rigid-object theorem and a universal target for ordinary ghosts remain undecided. Next: establish that comparison and the required section-side transfer.')
+}
+lines=[]
+for line in text.splitlines():
+ if line.startswith('| '):
+  key=line.split('|')[1].strip()
+  if key in rows:
+   refs,state=rows[key]
+   line=f'| {key} | {refs} | {state} |'
+ lines.append(line)
+text='\n'.join(lines)+'\n'
+text=text.replace('The original same-pair class-four claim still requires its literal construction audit.', 'At checkpoint02 the same-pair class-four audit was pending; E.80–E.83 now complete it.')
+text=text.replace('The positive full-tower clauses are not inferred from their finite negative detectors.', 'The positive full-tower clauses were not inferred from their finite negative detectors; E.90–E.97 now provide their separate proof.')
+text=text.replace('Its consistency is not proved, and the theorem supplies no effective stopping test for finding the controlling places.', 'At checkpoint02 its consistency was not decided. E.130–E.133 now give exact weight-four data and an extension criterion for finite construction prefixes; no all-depth consistency theorem follows.')
+old='The unintegrated working source sections/part_E_joint_action.tex is included for preservation, but its proposed E.127 is not yet part of the paper or results table in this checkpoint. The finite compact_h9 exploration is explicitly marked exploratory; its marked arithmetic comparison is still being checked.'
+new='E.127 and the marked H9 calculation are now independently checked and integrated. The finite certificates support only their stated identities; the paper supplies the separate arithmetic and inverse-limit arguments. New typography errors, including raw underscores in bibliography paths, were corrected before rebuilding.'
+text=text.replace(old,new)
+marker='## Third work period: new exact criteria and completed audits'
+if marker in text:
+ text=text.split(marker)[0].rstrip()+'\n\n'
+text += '''## Third work period: new exact criteria and completed audits
+
+E.80 proves the exact four-place weight-three localization surjectivity. E.81 retains the original class-four factor24 through integral Hall denominators, including the extra half-integral third-weight coordinates. E.82 proves the cubic-power recursion with the literal lower boundJ=6. E.83 then verifies the original1129 seed, all138 finite target cases and all eight local sheets, so the global class-four and finite local-matching exclusion hold for the same ordinary ghost. These are completed historical audits; another fixed-depth survivor alone is not counted as movement on the all-depth question.
+
+E.127 computes the actual joint arithmetic/geometric image for the rational base5/16 at all coefficient primes. E.128 proves the compatible fixed-root Chebotarev lemma. E.129 carries out a marked H9 calculation over the finite field at6551 and transfers it to a legal fresh support prime. E.134 identifies the triangle quotient of order243, with lower-central orders243,27,9,3,1, showing exactly why that compact elliptic failure is already a class-four matching failure.
+
+E.130 normalizes the integral fourth-layer lift in one fixed finite quotient of order3^11. E.131 expresses every fourth-layer equation using one fixed finite Galois representation and its Frobenius data. E.132 proves that a construction prefix extends to fourth matching exactly when its existing finite system is consistent. E.133 gives open dense inconsistency by a common central shift: at most nine candidates occupy a27-element target, leaving at least18 excluding shifts. The consistent remainder is nonempty. Its arbitrary-depth continuation is still unresolved.
+
+E.95–E.97 complete the arithmetic base for the earlier relative automorphism towers. Actual transported paths identify the two pure frames. The equianharmonic Legendre fibre requires a quadratic twist; omitting it would reverse the signed conclusion. The prescribed reflection, both compatible frames and the seven-primary head are established separately from the finite negative detectors. This closes the corresponding historical rows but does not make the relative congruence tower cofinal.
+
+Further attempted routes have explicit limits. E.135 reduces finite-field point/cusp equality to the integral status of a unique rational Frobenius-invariant path. No general failure of integrality is proved. E.136 exhibits an abelian Fermat tower of unbounded genus whose rational point count remains exactlyq+1, so degree/genus growth and compatible rational lifts alone give no contradiction. P.12 checks the more recent density-zero theorem for full Selmer sections; the ordinary constructions can be made sparse enough to satisfy that conclusion after every finite field extension. P.13 checks the infinite-ramification deformation theorem and identifies the auxiliary weight-one direction missing from the fixed higher-Tate lifting problem.
+
+The additional recovered SECTIONS_OVER_Q background contains original LM6 proof bodies and some related material. E.98–E.100 reconstruct its precise Fermat constructions over Q for exponents that are powers of three or five. The full pronilpotent construction uses a genuine product cocycle; the full profinite metabelian construction uses the characteristic averaging idempotent in the completed Alexander module. Their projected tripod pairs are nonordinary already at two. The unrestricted assertion for all Fermat curves is false: the even plus Fermat curve has a real obstruction already in the pro-2 abelian quotient. R8 is therefore marked repaired, with these scopes explicit. The recovered files do not contain the original A.134 harmonic mixed-exponent initialization proof or its full certificate. The supplied register was read to identify that missing dependency, not to certify it.
+
+E.137 gives an earlier necessary gate for the full-pronilpotent problem: at any support prime at least five, off-diagonal local class-two matching determines at most one of the twenty-four global classes; an inconsistency is witnessed at at most two support primes. It makes no matching claim at a coefficient prime or at a place outside the support. No ordinary ghost passing this all-prime support gate has yet been constructed or excluded.
+
+E.140–E.145 separate finite embedding solvability from ordinary integral continuation. Finite odd-Tate kernels permit weak solutions and prescribed finite local modifications, but E.141 gives a cubic character whose finite local correction has no integral lift. E.143 gives a finite section with central inertia that no ordinary point can realize. For the lower exponent-three tower, E.144 proves that every ordinary next extension must solve the quotient by the two peripheral power directions over the unchanged old ramification set, retaining all old local point conditions and finite aligning frames. For the selected support pattern this is an explicit finite first-cohomology system. It is necessary, not sufficient. E.145 proves that the free pro-three Galois group over Q(zeta_3) acquires exactly one independent second-cohomology class for each frozen minimal support prime. Arbitrary finite embedding theorems and projectivity at three alone therefore do not solve this continuation problem.
+
+The first three-hour review and checkpoint 03 are due around 05:45–05:48 UTC / 06:45–06:48 CET. The review itself, the complete open-row ledger, the final build counts and the saved checkpoint identity are recorded in PROGRESS_LEDGER.md after those actions occur. The main problem remains unresolved.
+'''
+for old,new in {
+ 'for2,3':'for 2, 3', 'least5':'least 5', 'weight4':'weight four',
+ 'literal24':'literal 24', 'factor24':'factor 24', 'boundJ=6':'bound J=6',
+ 'original1129':'original 1129', 'all138':'all 138', 'base5/16':'base 5/16',
+ 'at6551':'at 6551', 'order243':'order 243', 'orders243,27,9,3,1':'orders 243, 27, 9, 3, 1',
+ 'order3^11':'order 3^11', 'a27-element':'a 27-element', 'least18':'least 18',
+ 'exactlyq+1':'exactly q+1', 'class4':'class four', 'class3':'class three',
+ 'checkpoint02':'checkpoint 02'
+}.items(): text=text.replace(old,new)
+path.write_text(text)
+print('Updated report table and third-period findings.')
+print('Historical statuses:',dict(hc))
