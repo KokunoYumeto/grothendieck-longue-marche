@@ -1,0 +1,91 @@
+% OPTIONAL SUPPORT WRAPPER. Not part of the diplomatic transcription.
+% No manuscript content is embedded here.
+% Run from the package root; see README.md for dependencies and test limitations.
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,mathtools,mathrsfs}
+\usepackage{xcolor}
+\usepackage[normalem]{ulem}
+\usepackage{tikz-cd}
+\usetikzlibrary{arrows.meta,calc,decorations.pathmorphing,shapes.geometric}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.6em}
+\emergencystretch=3em
+
+\definecolor{MSDoubt}{RGB}{20,55,150}
+\definecolor{MSInsertion}{RGB}{0,100,75}
+\definecolor{MSDeletion}{RGB}{145,35,35}
+
+\makeatletter
+\def\ms@cote{}
+\DeclareRobustCommand{\cotefile}[1]{\gdef\ms@cote{#1}}
+\DeclareRobustCommand{\scanpage}[1]{%
+  \clearpage\section*{Cote \ms@cote\quad Scan #1}}
+\DeclareRobustCommand{\mspage}[1]{%
+  \ifmmode\text{[manuscript page #1]}%
+  \else\textsf{[manuscript page #1]}\fi}
+
+% \mathpalette preserves display/text/script size for a mathematical strikeout.
+% The text branch also accepts inline mathematics in dollar delimiters.
+\newcommand{\ms@mathstrike}[2]{%
+  \hbox{\sout{\ensuremath{#1#2}}}}
+\DeclareRobustCommand{\deleted}[1]{%
+  \ifmmode{\color{MSDeletion}\mathpalette\ms@mathstrike{#1}}%
+  \else{\color{MSDeletion}\sout{#1}}\fi}
+
+\DeclareRobustCommand{\inserted}[1]{%
+  \ifmmode
+    {\color{MSInsertion}\mathopen{\langle}{}^{+}#1\mathclose{\rangle}}%
+  \else
+    {\color{MSInsertion}\ensuremath{\langle^{+}}#1\ensuremath{\rangle}}%
+  \fi}
+\DeclareRobustCommand{\unsure}[1]{%
+  \ifmmode
+    {\color{MSDoubt}\mathopen{\langle}?\,#1\mathclose{\rangle}}%
+  \else
+    {\color{MSDoubt}\ensuremath{\langle}\textbf{?}\,#1\ensuremath{\rangle}}%
+  \fi}
+\DeclareRobustCommand{\illegible}[1]{%
+  \ifmmode\text{\color{MSDoubt}[illegible: #1 words]}%
+  \else{\color{MSDoubt}\textsf{[illegible: #1 words]}}\fi}
+\DeclareRobustCommand{\margin}[1]{%
+  \ifmmode{\color{gray}\text{[margin: }#1\text{]}}%
+  \else{\color{gray}\textsf{[margin: }#1\textsf{]}}\fi}
+
+% Keep ulem's wrapping text underlines, and supply mathematical branches.
+\NewCommandCopy\ms@textuline\uline
+\NewCommandCopy\ms@textuuline\uuline
+\DeclareRobustCommand{\uline}[1]{%
+  \ifmmode\underline{#1}\else\ms@textuline{#1}\fi}
+\DeclareRobustCommand{\uuline}[1]{%
+  \ifmmode\underline{\underline{#1}}\else\ms@textuuline{#1}\fi}
+
+% TikZ-cd cells are mathematical by default. Preserve the normal text command
+% while allowing a circled label in such a cell without changing the fragment.
+\NewCommandCopy\ms@textcircled\textcircled
+\DeclareRobustCommand{\textcircled}[1]{%
+  \ifmmode\mathord{\text{\ms@textcircled{\ensuremath{#1}}}}%
+  \else\ms@textcircled{#1}\fi}
+
+% These content wrappers impose no extra math/text mode or placement.
+\DeclareRobustCommand{\diagram}[1]{#1}
+% The task's \figure macro replaces the article class's float-begin command.
+% Do not use a LaTeX figure environment in this QA document.
+\DeclareRobustCommand{\figure}[1]{#1}
+\makeatother
+
+\providecommand{\TranscriptionInput}{MPL_119_144-161+119_276-281_transcription.tex}
+\begin{document}
+% tikz-cd manual, section 3.4: arguments collected by \diagram or \margin
+% otherwise fix plain ampersands at the alignment-tab catcode too early.
+% Scope the documented active-ampersand workaround to this fragment only.
+\begingroup
+\def\MSAlignmentTab{&}
+\catcode`\&=\active
+\let&=\MSAlignmentTab
+\input{\TranscriptionInput}
+\endgroup
+\end{document}
