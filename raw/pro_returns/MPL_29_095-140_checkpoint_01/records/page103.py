@@ -1,0 +1,94 @@
+from save_page import save_page
+
+save_page(103, r'''
+\scanpage{103}
+% archive foliation: 102
+\textcircled{3} \uline{Corollaire} $X$ schéma normal \deleted{\unsure{et}} loc. \unsure{intègre}
+
+$\unsure{D_i}$ diviseurs\inserted{de Cartier} intègres \deleted{\unsure{réunis}}
+
+\margin{\diagram{\begin{tikzcd}[column sep=small,row sep=small]
+K \arrow[r,dash] & \widetilde K \arrow[r,dash] & M \\
+X & \widetilde X & X'
+\end{tikzcd}}}
+
+$X'$ revêtt \deleted{\unsure{plat}} normal galoisien, groupe $G$, tel que les grpes d'inertie\inserted{\deleted{$\unsure{I_i}$}$\bar I_i$ (d'ordre $n_i$)} \deleted{relatifs à \unsure{chacun des}} $D_i$ \unsure{soient} invariants \deleted{et commutent deux à deux, et que}\inserted{et que} $X'$ soit modérément ramifié p.r. \deleted{aux \unsure{points de}}\inserted{à} $D$. Donc on a, \deleted{où $\xi$ est un pt géom. de $X$}
+
+\deleted{Alors}
+\diagram{\begin{tikzcd}[column sep=small]
+1 \arrow[r,dash] & \bar I \arrow[r,dash] & G \arrow[r,dash] & \Gamma \arrow[r,dash] & \unsure{1}\mathbin{-}1
+\end{tikzcd}}
+\deleted{$\bar I$ est \unsure{isomorphe au produit des} $\unsure{\mu(n_i)}$}. De plus,
+
+$X'/\bar I\unsure{{}_a}=\widetilde X$ est \deleted{\unsure{donc}} un rec. \uline{principal} de $X$ de groupe $\Gamma$. Donc la classe $\alpha\in H^2(\Gamma,\bar I)$ de l'extension définit une classe \unsure{de} $\alpha\in H^2(X,\widetilde X\mathbin{\times}^{\Gamma}\bar I)$, \deleted{\unsure{D'}}\inserted{et à fortiori} en $H^2(D,\widetilde D\mathbin{\times}^{\Gamma}\bar I)$. \unsure{Or} on a un isomorphisme canonique
+\[
+\deleted{\unsure{I_{\widetilde X}}}\widetilde D\mathbin{\times}^{\Gamma}I
+\simeq\deleted{\prod\mu_{n_i,D}}\mu_{\unsure{n},D}
+\]
+i.e. un isom. compatible avec les opérations de $\Gamma$ \deleted{\unsure{et}} sur les faisceaux envisagés sur $(\widetilde X,\Gamma)$
+\[
+\unsure{\text{en}}\qquad \bar I_{\widetilde D}\deleted{\unsure{\simeq\mu_{\widetilde X}}}\simeq\mu_{\underline n,\widetilde D}
+\]
+\deleted{\unsure{Pour définir}} cet isomorphisme est tel que, \unsure{en le} \unsure{par fibres}, opérateurs $\bar I_{\widetilde X}\simeq\mu_{\underline n}$, $X'$ est \deleted{\unsure{pareil}} Kummérien sur $\widetilde X$, relatif aux $\widetilde D_i$, à exposants $\underline n=(n_i)$.
+
+Ceci dit, l'image de $\alpha$ dans $H^2(D,\mu_{\underline n})$ est égale à la classe déduite sur $D$ par $c(\underline{O}_X(D))\in H^2(X,\mu_{\underline n})$, i.e.
+\margin{\fbox{\parbox{0.8\linewidth}{\deleted{On peut supposer} $X$ intègre. Le choix d'un pt géométrique $\bar\xi_i$ de $X'$ \unsure{au-dessus d'un pt gén.} $D_i$ définit un isom $I_i\simeq\mu$.}}}
+\diagram{\begin{tikzcd}[column sep=large]
+c(T_{D/X})\in H^2(D,\mu_{\underline n}) \arrow[r,bend right=15] & \text{\uline{fibré normal}}
+\end{tikzcd}}
+''', [
+('text','top, circled 3 and corollary','X schéma normal loc. intègre'),
+('deletion','top, before loc.','et'),
+('text','upper, divisor hypothesis','D_i diviseurs intègres'),
+('insertion','above divisor hypothesis','de Cartier'),
+('deletion','upper, after intègres','réunis'),
+('diagram','top-right margin, two rows','K-K tilde-M; X X tilde X prime'),
+('text','upper through middle, cover and inertia hypotheses','X prime revêtt normal galoisien'),
+('deletion','upper, before normal','plat'),
+('insertion','upper, over inertie relatifs','bar I_i (d\u0027ordre n_i)'),
+('deletion','within inertia insertion','I_i'),
+('deletion','upper, after inertie','relatifs à chacun des'),
+('deletion','upper-middle, after invariants','et commutent deux à deux et que'),
+('insertion','upper-middle right','et que'),
+('deletion','upper-middle, after p.r.','aux points de'),
+('insertion','above deleted aux','à'),
+('deletion','middle, after Donc on a','où xi est un pt géom. de X'),
+('deletion','middle-left before extension','Alors'),
+('diagram','middle, group extension','1-bar I-G-Gamma-1-1'),
+('deletion','middle, beneath extension','bar I est isomorphe au produit des mu(n_i)'),
+('text','middle, principal cover and extension class','X prime/bar I = X tilde'),
+('deletion','middle, after est','donc'),
+('deletion','middle-right before à fortiori','D prime'),
+('insertion','middle-right, restriction to D','et à fortiori'),
+('display','lower-middle, canonical isomorphism','D tilde times^Gamma I simeq mu_n,D'),
+('deletion','lower-middle, beginning of isomorphism','I_X tilde'),
+('deletion','lower-middle, former target','product mu_n_i,D'),
+('text','lower-middle, equivariance explanation','i.e. un isom. compatible'),
+('deletion','lower-middle after Gamma','et'),
+('display','lower, sheaf comparison','bar I_D tilde simeq mu_n,D tilde'),
+('deletion','lower, old sheaf target','simeq mu_X tilde'),
+('text','lower, Kummer property','cet isomorphisme est tel que'),
+('deletion','lower-left, before cet isomorphisme','Pour définir'),
+('deletion','lower-right, after X prime est','pareil'),
+('text','bottom, class identity','Ceci dit l\u0027image de alpha'),
+('margin note','bottom, boxed/interposed note','X intègre; Le choix d\u0027un pt géométrique'),
+('deletion','top line of boxed note','On peut supposer'),
+('diagram','bottom edge, annotation arrow','c(T_D/X) in H^2; fibré normal')
+], [
+('title hypothesis','loc. intègre','Final word compressed; not silently replaced with noetherian','medium'),
+('divisor line','D_i; intègres; deleted réunis','Suffixes and abandoned word uncertain','low'),
+('cover hypothesis, deleted word','plat','Crossed almost completely','low'),
+('inertia conditions','chacun des; soient; points de','Many revisions; these phrases remain provisional','low'),
+('extension sequence ending','1-1','Two distinct 1-like strokes and a dash retained','low'),
+('cancelled line under extension','isomorphe au produit des mu(n_i)','Faint under a long horizontal strike','low'),
+('quotient cover','bar I with a-like lower stroke','Could be a crossed subscript or a correction stroke','low'),
+('extension class paragraph','de alpha; D prime deleted; Or','Small and overlapping words','low'),
+('canonical isomorphisms','I versus bar I; n / vector n','Overwritten formulas retain each visible bar/underline separately','low'),
+('Kummer-property sentence','en le; par fibres; deleted pareil','The clause is syntactically incomplete; no connective supplied','low'),
+('boxed note','au-dessus d\u0027un pt gén. D_i','Small words partly crossed by the outline','low'),
+('boxed note top line','On peut supposer treated as deleted','Outline runs through these words; cancellation status uncertain','low')
+], [
+'Corollary connects a tame Galois covering with normal inertia and the extension class in H^2(Gamma,bar I), restricted to a divisor D. The final class is expressed through c(O_X(D)), equivalently c(T_D/X), annotated fibré normal.',
+'The explicit condition that the inertia groups commute two by two is crossed out on this leaf. Record the withdrawal, without treating it as a proved correction of the preceding semi-global result.',
+'The setup shifts between families D_i and D; bars, indices, and quotient-cover corrections are unusually hard to read. Any mathematical use should retain the reading qualifications.'
+])

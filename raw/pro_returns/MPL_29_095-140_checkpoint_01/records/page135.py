@@ -1,0 +1,60 @@
+from save_page import save_page
+
+save_page(135, r'''
+\scanpage{135}
+% archive foliation: 134
+\uline{Lemme} Soit $S$ un préschém. loc noeth., et pour tout $s\in S$, soit $\deleted{\unsure{X_s}}$ $X(s)$ un préschém. quasi fini \uline{étale} \uline{séparé} sur $\operatorname{Spec}(\mathcal O_s)$, et pour $t\in S$, $s\in\overline t$, soit $\varphi_{st}:X(t)\unsure{-|\to}X(s)$ rendant cartésien le diagramme ci-contre.
+\diagram{\begin{tikzcd}[column sep=large]
+X(s) \arrow[d] & X(t) \arrow[l] \arrow[d] \\
+\operatorname{Spec}(\mathcal O_s) & \operatorname{Spec}(\mathcal O_t) \arrow[l]
+\end{tikzcd}}
+On suppose que $\varphi_{ss}=\text{identité}$
+\[
+\varphi_{st}\varphi_{tu}=\varphi_{su}.
+\]
+\deleted{\unsure{des}}
+\inserted{[On suppose que pour tt $s\in S$, il existe \unsure{une définition de} \deleted{\unsure{la}} $\mathcal X$ de $X(s)$ sur un voisinage ouvert $U$ de $s$, \deleted{\unsure{le groupe}} pour tt $t\in U$, un hom \deleted{$\unsure{X_t}$} $\mathcal X\times_U\operatorname{Spec}(\mathcal O_t)\to X(t)$, ces hom étant compatibles avec les \unsure{$\varphi$}.]}
+\diagram{\begin{tikzcd}[column sep=small,font=\small]
+X(s) \arrow[r,no head] \arrow[d] & \mathcal X \arrow[d] & \mathcal X\times_U\operatorname{Spec}(\mathcal O_t) \arrow[l] \arrow[r] \arrow[d] & X(t) \\
+\operatorname{Spec}(\mathcal O_s) \arrow[r] & U & \operatorname{Spec}(\mathcal O_t) \arrow[l] &
+\end{tikzcd}}
+Alors il existe un préschém. étale \inserted{quasi-fini séparé} sur $S$, soit $X$, et des \inserted{$\mathcal O_s$-}isom
+\[
+\varphi_s:X\times_S\operatorname{Spec}(\mathcal O_s)\unsure{-|\to}X(s)
+\]
+rendant commutatifs les diagrammes qu'on pense. $X$ est unique à isom unique près.
+
+Ce dernier fait résulte d'un énoncé plus général sur les catégories des préschémas de type fini sur $S$, qui donne un foncteur pleinement fidèle. \unsure{Je vais pour du moins ramener au local} et supposer $S$ affine, donc noeth. \unsure{le prouver} par récurrence noethérienne, en supposant l'énoncé prouvé pour les sous-préschémas fermés de $S\ne S$.
+''', [
+('text','lemma statement','Lemme Soit S un préschém. loc noeth.'),
+('deletion','before X(s)','X_s'),
+('diagram','first commutative square','X(s) ← X(t) over Spec O_s ← Spec O_t'),
+('text','identity condition','On suppose que φ_ss = identité'),
+('display','composition condition','φ_st φ_tu = φ_su'),
+('deletion','above Alors','des'),
+('insertion','long left-margin addition linked to composition conditions','On suppose que pour tt s∈S'),
+('deletion','margin first line end','la'),
+('deletion','margin after U de s','le groupe'),
+('deletion','margin before product expression','X_t'),
+('diagram','bottom of rotated left margin','X(s)—𝓧 ← 𝓧×_U Spec O_t → X(t)'),
+('text','existence conclusion','Alors il existe un préschém. étale'),
+('insertion','above sur S in conclusion','quasi-fini séparé'),
+('insertion','above isom','O_s-'),
+('display','conclusion isomorphisms','φ_s: X×_S Spec O_s — X(s)'),
+('text','uniqueness','rendant commutatifs les diagrammes qu’on pense'),
+('text','last paragraph','Ce dernier fait résulte d’un énoncé plus général'),
+], [
+('cancelled symbol before X(s)','X_s','dense crossed letter; subscript uncertain','low'),
+('inline φ_st and φ_s connectors','dash','no definite arrowheads; arrows given as alternatives','medium'),
+('left-margin opening wording','une définition de','perhaps un modèle; rapid strokes do not settle the phrase','low'),
+('left-margin cancellations','la; le groupe; X_t','all strongly overwritten, especially the mathematical letter','low'),
+('left-margin final qualifier','compatibles avec les φ','very small writing, final symbol/word uncertain','low'),
+('left-margin diagram first upper connector','X(s)—𝓧','straight line has no visible head; retained as a dash','high'),
+('main proof introduction after pleinement fidèle','Je vais pour du moins ramener au local','compressed cursive; syntax remains unresolved rather than regularized','low'),
+('before par récurrence','le prouver','ending r is not secure','low'),
+('final comparison','sous-préschémas fermés de S ≠ S','same S repeated without added prime; not repaired','high'),
+], [
+'The lemma reconstructs a separated quasi-finite étale S-scheme from compatible schemes over local rings O_s. The marginal insertion requires a model on an open neighborhood and compatible maps to the local objects; this additional condition is part of the claim, not optional decoration.',
+'Existence is asserted and uniqueness reduced to a more general fully faithful functor for finite-type preschemes; noetherian induction over proper closed subschemes is proposed. The proof introduction is palaeographically uncertain and does not itself supply the gluing details.',
+'Keep the distinction between local rings O_s and residue fields k(s): the visible Spec O_s objects belong to localization data, not just fibres at geometric points.',
+], sheet_kind='text')
