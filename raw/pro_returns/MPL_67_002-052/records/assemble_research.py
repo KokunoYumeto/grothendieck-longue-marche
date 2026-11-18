@@ -1,0 +1,451 @@
+"""Assemble post-freeze research notes and a reproducible context-search ledger.
+
+This program never reads images and never writes transcription files.
+The written notes are root-authored; research agents supply separately credited
+context locators and the independent review of C03.
+"""
+from pathlib import Path
+from datetime import datetime, timezone
+import csv, json, re, subprocess
+
+ROOT=Path(__file__).resolve().parents[1]
+CTX=ROOT.parent/'context'
+notes=[]
+def add(id, section, scan, kind, quote, body, context, rs, terms, confidence=''):
+    notes.append(dict(id=id,section=section,scan=scan,kind=kind,quote=quote,
+                      body=body,context=context,rs=rs,terms=terms,confidence=confidence))
+
+S='Surgery, elliptic descriptions and the Bers letter'
+add('N01',S,'003, items 1–2','unproved claim','relation d’équivalence “admissible”',
+    'Cutting along a compact rectifiable one-complex and regluing along an admissible boundary relation are stated as operations on conformal surfaces; the page leaves the admissibility test and the conformal gluing argument unstated.',
+    'Hua, modernised reading of cote 67, §I, “Les opérations” (source pages 2–3 = scans 003–004), restates the construction; the completed sewing assertions indexed in RESULTS_STATE are later comparison targets, with their own hypotheses and claimed status.',
+    'EXIT_TOWER E.35 [Proved, return’s claim; not re-proved here]', ['rectifiable','recollage','admissible','sewing'])
+add('N02',S,'003–004, collar operations','unproved claim','structure Riemannienne … de long. totale 1',
+    'The annular germ, length-one boundary structure and rectifiable boundary identification are the data used to remove or add collars, and “panachage” combines the two operations. A research account must retain those choices when specifying the resulting reglued surface and the boundary transport used to construct it.',
+    'Hua §I, subsections on rétrécissage, élargissage and the mixed operation (source pages 2–3 = scans 003–004), supplies the same sequence but leaves the mixed operation’s name unread; the frozen page adds the reading “panachage”.',
+    'EXIT_TOWER E.35 [Proved, return’s claim]', ['panachage','rétréc','élarg','collier'])
+add('N03',S,'004, middle paragraph','unproved claim','Commutativité',
+    'Commutativity is asserted for operations at separate connected components of the cutting complex, without a written proof. At the quotient-set level the comparison sends a point’s class after the two successive identifications to its class under their union; the conformal atlas and chosen collar identifications still have to accompany that map.',
+    'Hua §I, “Les opérations”, mixed-operation discussion (source page 3 = scan 004), restates this commutation; RESULTS_STATE’s planning question 4 asks for precisely such a surgery relation, while the five-puncture frames in the cited open item are additional data not written on this page.',
+    'PUSH_ORDER5_FRAME Itemsfromt 2 [Open]; EXIT_TOWER E.35 [Proved, return’s claim]', ['commut','panachage','pentagon','Itemsfromt'])
+add('N04',S,'004, item 6','unpursued implication','Recoller … par un cylindre',
+    'For an isolated real-analytic loop, the manuscript replaces an annular neighborhood by a cylinder and asks about small conformal annular embeddings. This gives a concrete collar-to-cylinder operation whose boundary parametrizations can be compared with the framed sewing maps named in the research register.',
+    'Hua §I (source page 3 = scan 004) restates the loop construction; `MPL_147_048-137_notes.md`, the discussion of sections 9–10 and scans 090–104, concerns the angular links and normalizations cited by EXIT_TOWER E.35.',
+    'EXIT_TOWER E.35 and E.39 [Proved, return’s claims]', ['cylindre','couronne','angular','normalisation'])
+add('N05',S,'005, first paragraphs','unproved claim','On élimine ainsi les autos',
+    'Rigidification by an isotopy class of homeomorphisms of the triple S⊂K⊂X is claimed to remove automorphisms apart from the written low-degree exceptions. The exact operator group, its action on the triple and the exceptional components must be retained in comparing this claim to a level-zero automorphism problem.',
+    'Hua §I, “Les modules d’une surface munie d’un graphe” (source pages 4–6 = scans 005–007), restates the rigidification; `LM_140-2_text.tex`, §23, scans 279–281, is the source locus named by RESULTS_STATE for the outstanding level-zero comparison.',
+    'LM4 C.12 [Open, return’s claim]', ['rigidifi','isotopie','level-0','279'])
+add('N06',S,'005 bottom and 007 top','self-flagged: a step he himself marks as unverified','pas de métrique nat const.',
+    'The effort to impose finitely many moduli runs into the unpunctured-disc pieces, for which the proposed natural metric is unavailable in the form used in the preceding sentence. The continuation tries a piecewise condition, whose word is a separate reading question in N09.',
+    'Hua §I, “Les modules d’une surface munie d’un graphe” (source pages 4–6 = scans 005–007), records the same obstruction; its §IV, source page 43 = scan 044, explicitly parametrizes the distinguished disc metrics by a chosen interior point.',
+    'No dedicated RESULTS_STATE entry located for this finite-dimensional disc-metric choice', ['disques','ponctu','métrique','Modules'])
+add('N07',S,'006, bottom formulas and diagram','unproved claim','(K̃,L̃) est “pur”',
+    'The colimit of the lower pieces K_x is accompanied by a map to K and a claimed homeomorphism on the complements of L̃ and L. The drawings and formulas do not spell out the indexing category or a proof, so the particular colimit and comparison map remain the objects to check.',
+    'Hua §I, discussion of the isolated combinatorial sheet (source page 5 = scan 006), restates the pure replacement; RESULTS_STATE’s EXIT_TOWER B.27 summary concerns a finite groupoid-colimit assertion, for which an explicit passage from this poset diagram would still be required.',
+    'EXIT_TOWER B.27 [status retained as the register’s claim]', ['colim','pur','groupoid','B.27'])
+add('N08',S,'007, dimension displays','self-flagged: a step he himself marks as unverified','≥ with a question mark',
+    'The real-moduli count is compared with the genus expression, and the final inequality is visibly questioned; the coefficients, signs and Π/π readings carry uncertainties in the frozen text. The live final μ is defined as the number of disc faces, after an earlier μ definition has been deleted, so those two states cannot be merged into a single unqualified count.',
+    'Hua §I, “Les modules d’une surface munie d’un graphe” (source page 6 = scan 007), offers a modernised count and says that the disc contribution is absent; the frozen page instead contains the final 3/2(μ+1−λ) term and its live disc-face definition, a textual difference requiring source review rather than a correction after freeze.',
+    'No dedicated RESULTS_STATE dimension-count entry located', ['modules','mu','lambda','disque'])
+add('N09',S,'007, opening continuation','reading question','homographiques',
+    'The frozen continuation reads “homographiques par morceaux”, while Hua gives “horocycliques par morceaux”; the two readings remain separately attributed. The final ink decision requires a future image review, and no mathematical preference has been used to replace the frozen word.',
+    'Hua §I, “Les modules d’une surface munie d’un graphe” (source pages 4–6 = scans 005–007), is the exact competing reading; its neighboring account of the metric difficulty is the same topic as N06.',
+    'No dedicated RESULTS_STATE entry located', ['homograph','horocycl','morceaux'])
+add('N10',S,'009 and 011, numbered descriptions','unproved claim','géod. fermée orientée',
+    'The successive descriptions pass from an oriented closed elliptic geodesic to a compact real subtorus, a primitive lattice element, and a multiplicative torsor with a discrete cyclic subgroup. The unfinished items 5–6 on scan 009 and the revisions on scan 011 make the completed dictionary a research object rather than a proof recorded on the first sheet.',
+    'Hua §II, “Courbe elliptique et géodésique fermée” (source pages 8, 10, 12 = scans 009, 011, 013), develops this dictionary; `LM_140-3_text.tex`, scans 019–020, gives the direct lattice/Jacobi dictionary, and `LM_140-2_text.tex`, §37, scans 533–538, supplies the elliptic modular comparison.',
+    'No dedicated RESULTS_STATE entry for this elliptic marking dictionary', ['géodésique','primitif','torseur','37'])
+add('N11',S,'011 and 013, cyclic subgroup and orientation chains','unpursued implication','or(Γ₀) … gén(Z) … Triv(T)',
+    'Scan 013 makes orientation, a generator of the rank-one subgroup, a torus trivialization and a choice of fixed point/Borel part of one chain of choices. The explicit analytic construction behind the multiplicative description is the quotient map exp(2πiz): C→C* followed by C*→C*/⟨q⟩, with q=exp(2πiτ) and Im τ>0; reversing the chosen lattice generator changes the corresponding orientation data.',
+    'Hua §II (source pages 10–12 = scans 011–013) supplies that quotient construction, and `LM_140-3_text.tex`, scans 019–020, gives the normalization e₁=1, e₂=τ for its lattice/Jacobi comparison.',
+    'No dedicated RESULTS_STATE entry for this explicit elliptic quotient construction', ['exp','géodésique','orientation','générateur'])
+add('N12',S,'011 item 6 and 013 item 6','reading question','GP(1)',
+    'The frozen pages retain GP(1), whereas Hua’s commentary reports a source reading “Gl(1)” and then uses PGL₂ for the automorphism group of the projective line. The comparison map in that interpretation is [M]↦([v]↦[Mv]); its mathematical role does not decide the handwritten letters.',
+    'Hua §II, explanatory note to the projective-group description (source pages 10–12 = scans 011–013), explicitly makes the substitution; `LM_140-3_text.tex`, scan 019, equation (26) and action (28), independently writes GP(1,R)=GL₂(R)/R* and its fractional-linear action, supporting the interpretation while leaving the ink reading separate.',
+    'No dedicated RESULTS_STATE reading entry located', ['Gl(1)','PGL','projective','formes'])
+add('N13',S,'014, handwritten trace calculation','unpursued implication','λ+λ⁻¹=α',
+    'The envelope links the unordered eigenvalue pair to its trace and discriminant α²−4, with |λ|≠1 and the segment [−2,2] present in the argument. This is the scalar calculation accompanying the semisimple projective automorphism in scan 013; the deleted connector and remaining uncertainty should remain visible in any later eigenvalue analysis.',
+    'Hua §II (source page 13 = scan 014), the trace/eigenvalue discussion, restates the same test; the supplied register gives no separate checked row for this calculation.',
+    'No dedicated RESULTS_STATE entry located', ['discriminant','lambda','trace','segment'])
+add('N14',S,'016, rigidification paragraph','unproved claim','a homotopy equivalence',
+    'The letter defines the rigidification using that phrase without writing peripheral or orientation conditions in the sentence. Hua already flags this scope issue; the explicit pants self-map in N15 exhibits the particular extra marking information at stake.',
+    'Hua §III, opening paragraph and footnote (source page 15 = scan 016), adds peripheral and orientation qualifications; the manuscript is preserved as written.',
+    'EXIT_TOWER E.35 [Proved, return’s claim; its labelled framing is additional specified data]', ['homotopy','homotopie','périph','rigidification'])
+add('N15',S,'016, same rigidification paragraph','own idea','a homotopy equivalence',
+    'For a pants spine with generators a,b, the map a↦ab, b↦b has inverse a↦ab⁻¹, b↦b, but sends the peripheral word (ab)⁻¹ to (ab²)⁻¹ with abelianization (−1,−2). That vector is outside the six vectors ±(1,0), ±(0,1), ±(1,1), so the resulting self homotopy equivalence does not carry that peripheral class to a peripheral conjugacy class; the full map is written in `records/research_checks.md`, C05.',
+    'This adds an explicit witness to Hua §III’s already stated qualification of scan 016, without a new claim about the whole outer automorphism group.',
+    'EXIT_TOWER E.35 [background claim only]', ['homotopie','périph','GL','pants'],
+    'High confidence in this explicit witness: the inverse graph map and the abelianization obstruction are checked directly')
+add('N16',S,'017, semigroup paragraphs','conjecture','I expect the semi-group',
+    'The expected intrinsic retraction, free positive-scaling action on the nondegenerate locus and product-shaped fibers are stronger data than the displayed length coordinates alone. The page itself says that the coordinate action’s independence from a pants decomposition is unclear.',
+    'Hua §III (source page 16 = scan 017) restates the expectation and the same reservation; `notes/RESULTS_STATE.md`, planning questions 1–2, asks for the shadow construction and the induced moduli/group maps.',
+    'MPL_152+120 Q1-07 [checked-map claim; source ledger absent]; EXIT_TOWER E.36 [Proved, return’s claim]', ['semi-groupe','intrins','rétraction','Q1-07'])
+add('N17',S,'017 → 019–020','withdrawn in the same text','does’nt quite match',
+    'On scan 019 he says the bounded-radii expectation conflicts with the earlier scaling expectation except at infinite bounds, and on scan 020 calls the initial length-coordinate fibration intuition “probably not really relevant”. This is a local revision of the proposed action and coordinate description; the orange model remains an explicit question to Bers on scan 020.',
+    'Hua §III, paragraphs on admissible radii and the orange model (source pages 18–19 = scans 019–020), records the revision; its §VIII later argues boundedness of shadows, on source pages 62–69 outside this scan packet.',
+    'MPL_152+120 Q1-07 [claim cited for orientation; comparison unresolved and source absent]', ['rayons','infinis','révision','semi-groupe'])
+add('N18',S,'017–018, cone filling','unproved claim','this should give the desired retraction',
+    'The proposed map fills each genuine boundary circle by its conformal cone, keeps collapsed boundary components as marked points, and passes to rigidified isomorphism classes. Its stated admissibility test compares the circle action from the pointed filling disc with the action obtained from the hyperbolic arclength on the complementary surface.',
+    'Hua §III, “Boucher les trous, et les disques admissibles” (source pages 16–18 = scans 017–019), restates this construction; `LM_140-2_text.tex`, scan 302, manuscript folio 152, writes the homomorphism obtained by “recollt des disques”, and EXIT_TOWER E.36 names capping and stabilization with its stated target-boundary qualification.',
+    'EXIT_TOWER E.36 [Proved, return’s claim]; MPL_152+120 Q1-07 [checked-map claim, unresolved comparison]', ['bouche','admissib','capping','cône'])
+add('N19',S,'018–019, tangent discs','unpursued implication','canonically embedded in the tangent space',
+    'The pointed-disc tangent image appears explicitly here: the context writes it as dφ₀∘φ⁻¹ for a disc uniformization φ with φ(0)=s. RESULTS_STATE already assigns the checked map to MPL_152+120 Q1-07, so this note locates the manuscript occurrence and retains the unresolved comparison with the requested cote 136 “ombre”.',
+    'Hua §III, “Boucher les trous” (source page 17 = scan 018), and §VIII (source pages 62–63, beyond the packet), use the same map and name it an ombre; Q1-07, its source/search ledger, and MPL_121_001-048 Q1 are referenced in `notes/RESULTS_STATE.md` but their files are absent from the supplied context.',
+    'MPL_152+120 Q1-07 [checked-map claim; comparison unresolved]; planning question 1', ['ombre','Q1-07','pointed-disc','tangent'])
+add('N20',S,'019, admissible radii paragraph','conjecture','well determined … set … of radii',
+    'The expectation has two separate written parts: injectivity of the assignment from admissible disc systems to radii, and an image described by independent upper bounds rᵢ<ρᵢ. The author’s following reservation addresses compatibility with the earlier scaling action; it supplies neither proof of injectivity nor proof of the product description.',
+    'Hua §III (source page 18 = scan 019) restates both parts and §VIII compares them with the later January expectations; the supplied Q1-07 register entry concerns the pointed-disc map itself and leaves its broader comparison unresolved.',
+    'MPL_152+120 Q1-07 [claim with unresolved comparison]', ['rayons','rho','admissible','déterminé'])
+add('N21',S,'019 bottom–020, spherical metric','reading question','its usual euclidean metric',
+    'Hua interprets the equidistant triple 0,1,∞ using the spherical metric invariant under its six label permutations, and the explicit matrix A₀ in C03 realizes that metric. The coordinate Fubini–Study metric has a different displayed distance pattern for this triple, as the pullback formula in C02 and the computed Hermitian overlaps in C03 specify; the letter’s wording stays frozen.',
+    'Hua §III, “Le modèle des quartiers d’orange” (source pages 18–19 = scans 019–020), explicitly supplies this metric interpretation and the poles e±iπ/3.',
+    'No dedicated RESULTS_STATE orange-model entry located', ['euclidienne','équidist','pôles','orange'])
+add('N22',S,'019–020, orange-cell model','conjecture','whether the model above is likely to hold',
+    'The model proposes all admissible systems as concentric contractions of the three fixed spherical cells, including collapsed discs, and then proposes a product with the corresponding parameter intervals. He asks Bers whether it is true or “definitely false”, and does not decide that question in these six letter pages.',
+    'Hua §III, “Le modèle des quartiers d’orange” (its stated pages 18–21; the model here is on scans 019–020), supplies its own extremal-length objection; N23 records a targeted check of that credited argument.',
+    'No dedicated RESULTS_STATE row; planning question 3 on the Bers letter', ['quartiers','orange','admissib','Bers'])
+add('N23',S,'019–020, same model','own idea','admissible system',
+    'A concrete check of Hua’s argument uses the pants C(32,0,0) and the annulus 4/3<|z+1/2|<7/5 outside Q₀={|z|≤1, Re z≤1/2}: the model’s cap containment gives Ext≤2π/log(21/20), whereas its boundary length and area give Ext≥1024/(2π). The strict inequality 1024 log(21/20)>4π² proves that this actual pants cannot have the predicted containment; `records/research_checks.md`, C03, supplies the full geometric map, definitions, exact bounds and primary references.',
+    'This is a numerical witness and targeted proof check of Hua §III’s explicitly credited objection to scans 019–020, including its use of two degenerate discs; it does not supply a verdict on the separate radii-injectivity question in N20.',
+    'No prior RESULTS_STATE row for this objection; refined statement C03.orange_containment', ['quartiers','longueur extrémale','pantalon','rayons'],
+    'High confidence in the stated witness after checking the annulus inclusion, the core class and both extremal-length bounds; the underlying obstruction is credited to Hua’s project')
+add('N24',S,'020–021, final questions','conjecture','what about the relation … between the two corresponding metrics ?',
+    'The letter asks how the hyperbolic metric changes after a boundary collar is removed, and asks for an explicit metric expression in the proposed spherical parameters. The failed fixed-cell model in N23 supplies no such formula, so the collar question is retained in its own right.',
+    'Hua §III, last paragraph (source pages 19–20 = scans 020–021), repeats this open request; the canonical-metric discussion in §IV establishes the intended metrics but does not calculate their comparison after collar removal.',
+    'EXIT_TOWER E.36 [background capping claim; no analytic collar-metric computation in the cited row]', ['collier','métrique','explicite','pants'])
+
+S='Canonical metrics, real structures and the author’s corrections'
+add('N25',S,'025, list a–d′','unproved claim','un couple compatible d’antipodisme et inversion',
+    'The sheet lists compatible anti-involutions, a spherical metric with a great circle, a circle with toric structure, and a compact torus with a nontrivial orbit as interchangeable data. The metric-to-circle and conjugate-pole maps are made explicit in C02b, while the complete compatibility vocabulary remains the manuscript’s stated task.',
+    'Hua §IV, “Données équivalentes sur une sphère conforme” (source pages 24–25 = scans 025–026), expands the same list and refers forward to the sphere-with-compact-group discussion.',
+    'LM4_SUCCESSOR E.10 [Open; this sheet gives geometric real-structure data]', ['antipodisme','inversion','torique','orbite'])
+add('N26',S,'026, cohomology display','reading question','H¹(⟨σ⟩,E)',
+    'The scratch sequence 0→Π→V→E→0 is followed by an uncertain H²|H¹ term and the quotient Π^σ/(1+σ)Π. Hua’s later lattice discussion explicitly uses the degree-two connecting term; the frozen degree ambiguity stays visible.',
+    'Hua §IV, “Données équivalentes” (source page 25 = scan 026), points to §XII, “Modules munis d’une involution” and “Période, points réels, torseurs” (source pages 90–100, beyond this packet), where the same norm quotient appears.',
+    'LM4_SUCCESSOR E.10 and LM6 C.12 [Open; their profinite-kernel computations are not carried out by this lattice scratch calculation]', ['H^1','H^2','1+','torseur'])
+add('N27',S,'027, theorem and first corollaries','unproved claim','Conditions équivalentes',
+    'The theorem combines uniformization, constancy of entire maps and finite-type numerical tests, and the corollaries concern open subdomains and interiors of bordered surfaces. The statement is carried as the manuscript’s theorem here; neither the frozen 2|3 coefficient nor the conditions in brackets are silently regularized.',
+    'Hua §IV, “Surfaces hyperboliques” (source pages 26 and 44 = scans 027 and 045), supplies a modern account of the same statements and their intended order.',
+    'No dedicated RESULTS_STATE uniformization entry located', ['hyperbolique','uniformisation','entière','Corollaire'])
+add('N28',S,'027–029 and 045–046, continuations','reading question','1′|19; 2′|21',
+    'The two late loose sheets complete sentences and corollaries near the beginning of the metric text, but their handwritten numbers remain uncertain. The reading order proposed by Hua is scans 027, 045, 028, 046, 029–044; the delivered transcription retains scan order and preserves both page-number alternatives.',
+    'Hua, “Le fil du dossier, l’ordre des feuillets, les conventions”, and §IV opening (source order 26,44,27,45,28–43), explicitly give this interleaving.',
+    'No dedicated RESULTS_STATE entry; title/page-count record T03', ['feuillets','26, 44','45','ordre'])
+add('N29',S,'028–029, 031 and 046, quotient normalization','own idea','l’aire totale … =1',
+    'For the free degree-two orientation quotient p with p* g_X=g_Xor, integration gives Area(Xor)=2 Area(X), so an area-one metric upstairs descends to area one-half downstairs. This exact covering calculation specifies the normalization side that must be tracked in the genus-one and antipodal passages, without replacing their wording.',
+    'Hua §IV, “Les surfaces non hyperboliques, et leurs métriques” (source pages 27,45,28–30 = scans 028,046,029–031), uses the same descent; the local normalization check is C02d.',
+    'No dedicated RESULTS_STATE area-normalization entry located', ['aire','descend','antipod','genre'],
+    'High confidence: the calculation is the degree-two change-of-variables formula for the specified covering')
+add('N30',S,'029–030, multiplicative group metric','own idea','longueur du cercle |z|=1 … 1',
+    'The displayed exponential w↦exp(2πiw) pulls |dz|²/(4π²|z|²) back to |dw|², and the unit circle has length one. This gives the exact metric matching the manuscript’s deletion of 2π and replacement by 1.',
+    'Hua §IV, “Les surfaces non hyperboliques, et leurs métriques” (source pages 28–29 = scans 029–030), restates this cylindrical normalization; C02d gives the direct calculation.',
+    'No dedicated RESULTS_STATE entry located', ['cylind','exp','longueur','2\\pi'],
+    'High confidence: direct differentiation and the circle-length integral verify both constants')
+add('N31',S,'030–031 and 038, affine and spherical metrics','unpursued implication','quasi-invariantes',
+    'The affine metric class is acted on by z↦az+b through the factor |a|², while the sphere passage rules out a metric even up to a global scalar under its entire automorphism group. C02d checks the latter statement with the specific Möbius map z↦2z: total area fixes the scalar at one, and its derivative at 0 then forces 4g(0)=g(0).',
+    'Hua §IV, the affine discussion and “Récapitulation” (source pages 29–30 and 37 = scans 030–031 and 038), contains the same claims; the present check supplies this particular local obstruction.',
+    'No dedicated RESULTS_STATE metric-invariance entry located', ['quasi-invar','affine','sphère','homothétie'])
+add('N32',S,'032, positive Hermitian form','unproved claim','invarie nécessairement une forme hermitienne déf. pos.',
+    'The compact holomorphic subgroup is lifted to SL(V), and an invariant positive Hermitian form supplies the proposed spherical metric. The inverse image, the averaging measure and the passage from a positive ray to the normalized metric are the stated argument’s concrete objects; C02a gives the last map explicitly.',
+    'Hua §IV, “La sphère munie d’un groupe compact” (source pages 30–36 = scans 031–037), spells out the invariant-form approach; the general averaging assertion is carried here without a fresh proof check of all compact groups.',
+    'LM4 F.7 and LM4_SUCCESSOR B.39 [Open; relevant finite-symmetry comparison retained with its stated scope]', ['hermit','compact','moyenn','sphérique'])
+add('N33',S,'033, margin and fixed-axis paragraph','self-flagged: a step he himself marks as unverified','à vérifier',
+    'The flag accompanies the claim that the H⁺-invariant metrics are also invariant under the compact torus containing a nontrivial H⁺, followed by their parametrization through torus orbits. C02b checks the explicit half-turn z↦−z: the fixed positive Hermitian forms are diagonal, just as for all rotations, and d/a maps to the equator |z|=√(d/a).',
+    'Hua §IV, “La sphère munie d’un groupe compact” (source page 32 = scan 033), treats the same fixed-axis family; this run records that concrete case rather than a complete check of the whole proposition.',
+    'LM4 C.12 [Open; no infinite operator-group example supplied]', ['à vérifier','demi-droite','tore','orbites'])
+add('N34',S,'034, anti-involution cases','own idea','le choix … d’une paire de pts',
+    'For conjugation, the explicit correspondence p=s+it with t>0 ↦ t⁻¹[[1,−s],[−s,s²+t²]] gives the determinant-one real positive form whose opposite poles are p and p̄; for z↦−1/z̄, the fixed positive forms are exactly scalar matrices. These verified maps give the respective family and single normalized metric in the manuscript’s two displayed models.',
+    'Hua §IV, “La sphère munie d’un groupe compact” (source page 33 = scan 034), restates the pole description; C02a–b supplies the requested coefficient-level realization, related also to the marginal request on scan 037.',
+    'LM4_SUCCESSOR E.10 [Open; only these explicit geometric models are checked]', ['inversion','antipodisme','conjugués','hermit'],
+    'High confidence: fixed-form equations and the inverse parameters are written out and checked in C02')
+add('N35',S,'034 → 035–036','withdrawn in the same text','C’est l’inverse!',
+    'The marginal correction reverses the first assignment of pole behavior to the action on the rotation torus. Direct composition gives s_a u_θ s_a⁻¹=u_θ⁻¹ for s_a(z)=az̄ and t_b u_θ t_b⁻¹=u_θ for t_b(z)=b/z̄, exactly the corrected assignment used on the next pages.',
+    'Hua §IV, “La sphère munie d’un groupe compact” (source pages 33–35 = scans 034–036), incorporates the correction; C02c checks it while the frozen text retains the earlier wording and its marginal reversal.',
+    'LM4_SUCCESSOR E.10 [Open; action conventions matter to its conjugation formula]', ['inverse','centrale','sigma','tore'])
+add('N36',S,'034 and 036, extension calculations','unproved claim','i.e. l’extension N est scindée',
+    'The two displayed H² quotients distinguish the trivial and inversion actions on the circle group, and the later coordinate argument computes σ². In the actual pole-fixing model σ(z)=az̄ the square is |a|²z, which lies in the rotation torus only at |a|=1 and then is the identity; this is the concrete splitting calculation the page supplies.',
+    'Hua §IV (source pages 33–35 = scans 034–036) makes the same coordinate correction, while `notes/RESULTS_STATE.md`, LM4_SUCCESSOR E.10, separately names the still-open H¹(C₂,K_c) and fixed-kernel computations.',
+    'LM4_SUCCESSOR E.10 and LM6 C.12 [Open]', ['H^2','scind','centrale','K_c'])
+add('N37',S,'037–039, proposition and three-parameter space','own idea','traduire en termes d’alg. linéaire',
+    'The map [A]↦det(A)|dz|²/[πq_A(z)²] sends a positive Hermitian ray to an area-one spherical metric, and pullback by M is [A]↦[M*AM], with coefficient conjugation for the antiholomorphic action. The linear coordinates A=[[t+x,y+iz],[y−iz,t−x]] give det A=t²−x²−y²−z², so determinant-one positive representatives explicitly realize the three-parameter hyperboloid mentioned in C02.',
+    'Hua §IV, “La sphère munie d’un groupe compact” (source page 36 = scan 037), explicitly credits to its own commentary the Hermitian-ray/hyperbolic-space model and fixed subspaces; this run credits that model and adds the displayed area-normalized coordinate formula and coefficient checks.',
+    'LM4 C.12, LM4 F.7 and LM4_SUCCESSOR B.39 [Open; no completion comparison proved here]', ['alg','linéaire','homogène','Herm'],
+    'High confidence in the displayed maps: substitution, determinant and fixed-form identities are checked in C02, with the primary Hermitian/Lorentz reference there')
+add('N38',S,'037, proposition and margin','self-flagged: a step he himself marks as unverified','En résumé et sauf erreur',
+    'The proposition is introduced with that reservation and ends with “à rectifier|vérifier”; its existence clause does not itself repeat the H-invariance qualification supplied by the surrounding discussion. The notes retain that textual scope and the uncertain marginal verb rather than treating the modernised statement as a source correction.',
+    'Hua §IV, “La sphère munie d’un groupe compact” (source page 36 = scan 037), states the invariant-metric version; N33–N37 record the limited explicit checks performed in this run.',
+    'LM4 C.12, LM4 F.7 and LM4_SUCCESSOR B.39 [Open; no status upgrade]', ['sauf erreur','rectifier','vérifier','invariante'])
+add('N39',S,'039, opening NB on maps','unpursued implication','pas de facette … fixe par H',
+    'For a conformal surface attached to a map, the manuscript translates the absence of a common fixed point into the absence of a fixed facet and uses the automorphism group to select a spherical metric. The actual cell action and its realization on the sphere are the data needed to test that translation for a chosen map.',
+    'Hua §IV, “Récapitulation” (source page 38 = scan 039), instead reads “conique” and calls the passage too fragmentary, a discrepancy recorded in N64; `LM_140-3_text.tex`, §42, scans 084–085, gives the six Möbius formulas, central conjugation and three reflection circles for a concrete finite-sphere comparison.',
+    'LM4 F.7 and LM4_SUCCESSOR B.39 [Open nonsolvable comparison; finite-metric selection carried as a source claim]', ['facette','carte','centralizer','A_5'])
+add('N40',S,'040, equivalence and double','unproved claim','X=X′/σ',
+    'The stated functor sends a bordered conformal surface to its holomorphic double with anti-involution and recovers the surface by quotient. Locally at a boundary point the written construction is modeled by conjugation z↦z̄ on a disc and the quotient coordinate represented by the closed upper half-disc; that model specifies how the fixed locus becomes boundary.',
+    'Hua §IV, “Surfaces à bord” (source pages 39–43 = scans 040–044), restates this doubling and quotient construction; the later normal-propagator passage in its §X is beyond this packet.',
+    'EXIT_TOWER E.35 [background sewing claim]; LM4_SUCCESSOR E.10 [Open real-structure computations]', ['double','anti-involution','bord','quotient'])
+add('N41',S,'040, numerical hyperbolicity test','reading question','2g +|− 2 + ν ≥1',
+    'The plus alternative at (g,ν)=(0,1) gives a true inequality, whereas the next written test 2g+ν≥3 is false; C04 records this exact substitution. Hua uses the minus version, but the frozen sign alternatives are unchanged.',
+    'Hua §IV, “Surfaces à bord” (source page 39 = scan 040), is the competing reading and retains the Euler-characteristic argument preceding it.',
+    'No dedicated RESULTS_STATE sign entry located', ['chi','2g','hyperbolique','bord'])
+add('N42',S,'040–041, double and interior metrics','unpursued implication','le bord est géodésique',
+    'The doubling construction gives a descended metric with geodesic boundary, and the page also points to the hyperbolic metric on the interior. The closed disc exhibits the two constructions explicitly: its double is P¹ with reflection, while its interior has the disk metric; the common inclusion of the interior and the quotient map from the double specify the comparison requested by the text.',
+    'Hua §IV, “Surfaces à bord” (source pages 39–40 = scans 040–041), emphasizes the same comparison; its §III final collar question (scan 021) asks for the relation between actual metrics after surgery.',
+    'No dedicated RESULTS_STATE analytic metric-comparison entry located', ['Int','géodésique','disque','double'])
+add('N43',S,'041–044, exceptional bordered surfaces','unproved claim','il faut se donner un pt du disque ouvert',
+    'The direct and doubled prescriptions require compatible distinguished metrics on the double in the exceptional affine and spherical cases, and the final summary records one scaling parameter or a family of two or three real parameters. C02b supplies the interior-point-to-metric map for the disc double with conjugation, including the inverse parameterization.',
+    'Hua §IV, “Surfaces à bord” (source pages 40–43 = scans 041–044), presents the same exceptions; the unpunctured-disc difficulty on scan 005 is thereby given a concrete parameter choice later in this packet.',
+    'LM4 C.12 [Open; only finite-dimensional choices described here]', ['demi-plan','disque','paramètres','distinguée'])
+add('N44',S,'045, Corollary 3(a)','reading question','card(X\\X′)',
+    r'For the actual inclusion X=P¹\{0,1,∞}⊂X′=P¹, the frozen order X\X′ gives the empty set while X′\X gives the three removed points. Hua writes the latter order, so C04 records an exact set-theoretic reading question without changing the delivered corollary.',
+    'Hua §IV, “Surfaces hyperboliques” (source page 44 = scan 045), supplies the competing complement order and places the sheet after source page 26.',
+    'No dedicated RESULTS_STATE entry located', ['smallsetminus','complément','Corollaire','hyperboliques'])
+add('N45',S,'028 and 026, real elliptic notation','unpursued implication','E_a^!',
+    'The nonorientable genus-one surface is expressed through a real genus-one curve with no real points, and the E_a^! notation points to the later elliptic real-form discussion. The lattice exact sequence on scan 026 supplies the indicated cohomological object for comparing the translation part of such involutions.',
+    'Hua §IV (source page 27 = scan 028) and §XII, “Deux familles” and “Période, points réels, torseurs” (source pages 92 and 98–100, beyond this packet), make this connection; `LM_140-2_text.tex`, §33, scans 440–448, supplies the neighboring real-point/involution comparison with its stated hypotheses.',
+    'LM4_SUCCESSOR E.10 and LM6 C.12 [Open; no congruence-kernel calculation supplied by this notation]', ['E_a','réelles','torseurs','37'])
+
+S='Normal propagators, anabelian questions and Teichmüller presentations'
+add('N46',S,'048, first half','unproved claim','un isomorphisme de Teichmüller',
+    'The page assigns an outer fundamental-group isomorphism to X≃_T Y with a normal propagator on the stable curve, then assigns a based isomorphism after compatible base points are chosen. The relation between the two is the projection Isom(π₁(X,x),π₁([Y,N],y))→Isom_out(π₁(X),π₁([Y,N])), which quotients the target conjugations; a full definition of [Y,N] is not given on this sheet.',
+    'Hua §V (source page 47 = scan 048) restates these maps and points to its later §X, source page 74, for the branch-tangent tensor; `MPL_147_003-047_notes.md`, N075, source scan 003 items 9–12 and scans 035–047, supplies a first-pass boundary-compatibility lead rather than a construction of these exact maps.',
+    'MPL_147_003-047 N075 [first-pass lead]; EXIT_TOWER E.35 [Proved, return’s claim]', ['propagateur','extérieur','N075','Teichmüller'])
+add('N47',S,'048, lower paragraph','unproved claim','n’est pas compatible avec les actions ext.',
+    'The claimed obstruction concerns the outer Galois actions even after a sufficiently large finite field extension; the page gives no proof or explicit witness. It is direct manuscript evidence for the problem of retaining a vanishing-cycle class under arithmetic comparison, and is recorded with the actual extension and outer-action qualifiers.',
+    'Hua §V (source page 47 = scan 048) repeats the incompatibility; `LM_140-2_text.tex`, scan 084, explicitly writes the outer cyclotomic compatibility equation, and `MPL_149_091-136_notes.md`, RN103-05 at scan 103, carries a prior Tate-cusp/weight-obstruction calculation, while WG H2 remains an unchecked limit-action hunch.',
+    'WG H2 [unchecked hunch]; EXIT_TOWER E.24 and E.45 [Open]', ['vanishing','limit action','compatible','Gal'])
+add('N48',S,'048, marginal NB','self-flagged: a step he himself marks as unverified','Mettre en évidence trois classes',
+    'The margin asks for three conjugacy classes of maps Ẑ(1)→π₁(X), with one empty family in the unpunctured case. The sheet does not name all three families, so the ν=0 remark is retained as evidence for a puncture-related family without assigning names to the two remaining classes.',
+    'Hua §V (source page 47 = scan 048) likewise says the classes are not specified; `LM_140-2_text.tex`, scans 083–085, especially the displayed κᵢ:T→π equation on scan 084, provides the explicit peripheral comparison map without naming the remaining requested classes.',
+    'WG H2 [unchecked]; LM6 F.43 [Proved, return’s claim]; LM6 A.22 [Open]', ['trois classes','cyclotom','inertie','propagateur'])
+add('N49',S,'049, question (a)','conjecture','Extension de la conjecture fondamentale',
+    'The requested extension explicitly includes singular anabelian curves equipped with normal propagators, and the question mark belongs to that task. It records a program for reconstructing this enhanced object; the sheet does not state the comparison functor or the full faithfulness assertion in a form checked here.',
+    'Hua §V (source page 48 = scan 049) restates question (a); `LM_140-2_text.tex`, §34, scans 483–484, states the earlier curve-to-outer-group program and identifies base extension with restriction of the arithmetic action, while `MPL_149_091-136_notes.md`, RN101-04 at scan 101, adds the “structure à l’infini” lead.',
+    'LM6 F.43 [Proved, return’s claim]; WG2 §1.1 #6 and §1.4 #3 [unchecked planning items]', ['singuli','anabél','normal','compactification'])
+add('N50',S,'049, question (b)','conjecture','est-il vrai qu’on récupère',
+    'The proposed recognition uses conjugacy classes of procyclic subgroups, exterior invariance under π₁(K), and the cyclotomic action to recover singular and marked points. The word “automatiquement” attaches an additional assertion to the character of that action, which is carried as a claim rather than checked from the written question.',
+    '`LM_140-2_text.tex`, §34, scan 483, gives the open-normalizer-image recognition proposal, and `LM_140-2_notes.md`, LM_P049 second-pass B4, records a checked-note objection to its unrestricted marginal wording; scan 049 adds the explicit procyclic restriction and singular-point target, while Hua §V restates that question.',
+    'LM6 A.22 [Open, full CM group, C⊂R and normalizer image open in G_Q(i)]; LM6 B.27 [Open]; FLAGGED_149 ZCF6 [Open existence-issue background; detailed assertions absent from the digest]', ['procyclic','normalizer','cyclotom','Sing'])
+add('N51',S,'049, question (c)','conjecture','Comportement par spécialisation ???',
+    'The manuscript asks for an anabelian compactification modeled on the Deligne–Mumford compactifications and explicitly leaves specialization unresolved. The normal lines, their punctured total spaces and the specialization maps are concrete data to track in comparing this question with the later boundary framework.',
+    'Hua §V (source page 48 = scan 049) restates question (c); `LM_140-2_text.tex`, scans 402–403, raises compactification beyond forgetful compatibility, `MPL_147_048-137_notes.md`, R122-01/R123-01 at scans 122–123, describes the normal-line/torseur maps, and `MPL_149_091-136_notes.md`, X02 at scan 136, records the still-qualified boundary comparison.',
+    'LM6 F.43 [Proved, return’s claim]; EXIT_TOWER E.35 [Proved, return’s claim]; WG2 §1.1 #6 and §1.4 #3 [unchecked]', ['compactification','spécialisation','normal','angular'])
+add('N52',S,'048–049, propagator comparison','own idea','propagateur normal',
+    'For xy=t, the exact coordinate change x′=ax, y′=by gives t′=ab t and t′∂x′⊗∂y′=t∂x⊗∂y; polar coordinates give ((r_x,r_y),(ζ_x,ζ_y))↦(r_xr_y,ζ_xζ_y). These formulas provide a local tensor and angular comparison for the normal datum, with the published polar model and its page reference in C06.',
+    'Hua §X, source pages 73–81 beyond the packet, describes the tensor of branch tangents and thus adds a later definition to §V’s scans 048–049; LM6 F.43 names the neighboring normal-stratum object, whose complete register proof is not supplied here.',
+    'LM6 F.43 [Proved, return’s claim]; EXIT_TOWER E.35 [Proved, return’s claim]; WG H2 [unchecked]', ['propagateur','tensor','branches','log'],
+    'High confidence in these coordinate identities; the global arithmetic identification of [Y,N] has not been constructed in this run')
+add('N53',S,'050, heading and first paragraph','conjecture','Je m’attends à trouver trois types',
+    'The three complementary presentations are organized by pants/triads, a complete box of Lego pieces with automorphisms and deformation paths, and orientation-reversing involutions. Their common arithmetic significance is an expectation on this page, while the explicitly displayed genus-one relations provide the finite calculation checked in N55.',
+    'Hua §V (source page 49 = scan 050) restates all three forms; `LM_140-4_text.tex`, §53, scans 234–236, supplies the named reflection example and `MPL_147_048-137_notes.md`, scans 090–104, supplies the later gluing context cited by EXIT_TOWER.',
+    'EXIT_TOWER E.23, E.35 and E.39 [Proved, return’s claims]; EXIT_TOWER E.24 and E.45 [Open]', ['Lego','Légo','pantalons','présentation'])
+add('N54',S,'050, pants paragraph','reading question','cubiques|critiques',
+    'The frozen adjective describing the most extreme boundary points has the alternatives “cubiques|critiques”, while Hua reports “antiques” and interprets the phrase through maximally degenerate curves. That interpretation supplies a mathematical comparator, but does not choose the letters in the frozen adjective.',
+    'Hua §V, footnote to the pants presentation (source page 49 = scan 050), is the exact competing reading; its stable-curve interpretation is also the context for the three presentation forms in N53.',
+    'No dedicated RESULTS_STATE reading entry; EXIT_TOWER E.35 retained as background', ['antiques','cubiques','triades','dégén'])
+add('N55',S,'050, genus-one and reflection displays','own idea','(r₁r₂)²=(r₂r₃)³',
+    'The explicit matrices in C01 satisfy rᵢ²=I, det rᵢ=−1, r₁r₂=S, r₂r₃=R and S²=R³=−I, so the two written product relations hold under that assignment. The dictionary σ↦S, ρ↦R and r₃=−ACA for the context’s reflection matrices retains the central sign rather than dropping it.',
+    '`LM_140-2_notes.md`, LM_P052, second-pass S01, scans 513–516, already records the SL₂(Z) amalgam calculation; `LM_140-4_text.tex`, §53, scans 234–236, gives A,B,C, so this note adds the source-to-source assignment and does not repeat the prior presentation proof.',
+    'No new RESULTS_STATE presentation result; LM4_SUCCESSOR E.10 remains open', ['SL','r_1','réflex','S01'],
+    'High confidence in the finite matrix relations and dictionary: exact multiplication verifies them, without certifying a presentation')
+add('N56',S,'051, first exact-sequence diagrams','reading question','T_{0|1,1}',
+    'The handwritten genus index remains 0|1 in the frozen diagrams, and the next lines explicitly display SL₂(Z)/±1. Hua replaces the index by (1,1); the associated quotient map SL₂(Z)→PSL₂(Z) explains that interpretation but does not decide the ambiguous digit.',
+    'Hua §V, last paragraph and footnote (source page 50 = scan 051), explicitly makes this index change; `LM_140-2_text.tex`, §37, scans 533–537, especially (7) on scan 536 and diagram (8) on scan 537, gives the direct modular quotient comparison, while `LM_140-3_text.tex`, scans 009–010, supplies its central/primed conventions.',
+    'LM4 D.32 [Proved, refereed 14 Nov; its three-cusp result is cited with scope and not re-derived]', ['PSL','0,1','1,1','S_3'])
+add('N57',S,'051, unfinished quotient modulo 4','reading question','SL(2,Z/4Z)/---',
+    'The denominator is unfinished on the page, and the frozen transcription retains its dashes. The rank-two normal subgroup of the mod-4 kernel described at the context locator is a concrete comparison candidate, but this packet does not identify the missing denominator with it.',
+    '`LM_140-4_text.tex`, §51, scan 066, equation (117), between the marked folios 680 and 681 (680 verso inferred), identifies ker(SL₂(Z/4)→SL₂(F₂)) with sl₂(F₂) and writes a rank-two subgroup sl₂(F₂)′; the margin displays a quotient by that subgroup, adding a precise search target to Hua §V’s shorter account of scan 051.',
+    'LM4_SUCCESSOR E.10 [Open]; LM2_CONGRUENCE_ROWS.md [claims only, no identification imported]', ['117','sl_2','modulo','congruence'])
+add('N58',S,'051, Borel and rational points','own idea','Borel',
+    'The explicit map g↦g·[1:0] identifies the displayed quotient with rational lines: its stabilizer consists of ±[[1,n],[0,1]], and every rational line has a primitive integral column extendible to determinant one by Bézout. Reducing that primitive column modulo 2 gives the written map to P¹(F₂), with no choice of sign remaining over F₂.',
+    'Hua §V, last paragraph (source page 50 = scan 051), reads the same Borel quotient as modular cusps; `LM_140-4_text.tex`, §53, scans 234–236, supplies the surrounding modular-generator conventions.',
+    'No dedicated RESULTS_STATE row for this explicit orbit/stabilizer map', ['Borel','mathbb{P}','cusps','ration'],
+    'High confidence in this explicit orbit/stabilizer map: the stabilizer and inverse construction via a primitive column are given directly')
+add('N59',S,'051, loop products and shared seam','reading question','ℓ∞=ℓ′∞',
+    'The seam equality is written without an inverse in the frozen text, alongside the two pants loop products. Comparing it with a glued-surface presentation requires recording the chosen loop directions and base paths; the orientation reversal t↦−t on a boundary circle is the precise map that introduces an inverse when induced boundary orientations are used.',
+    'Hua §V (source page 50 = scan 051) records the cusp-loop relation but not that seam convention in detail; the framed sewing framework indexed by EXIT_TOWER E.35 retains the relevant boundary markings.',
+    'EXIT_TOWER E.35 [Proved, return’s claim]; PUSH_ORDER5_FRAME Itemsfromt 2 [Open]', ['lacets','ell','sewing','framed'])
+add('N60',S,'051, lower forgetful sequence','unproved claim','Π_{g,ν−1}',
+    'The sketch places the punctured-surface group in the kernel of forgetting the last mark and identifies the middle object with a fundamental group construction on the universal family. The stable range and the handling of low-type automorphisms are not written beside this sketch.',
+    '`LM_140-2_text.tex`, scan 188, writes the universal-curve homotopy sequence with the range 2g+ν≥3; reindexing its puncture count by ν↦ν−1 gives the actual comparison to this sequence, while Hua §V (source page 50 = scan 051) records the same forgetful pattern.',
+    'EXIT_TOWER E.36 [Proved, return’s claim]; EXIT_TOWER E.45 [Open restriction image]', ['universelle','suite','oubli','2g'])
+add('N61',S,'004, 050–051, surgery relations and tower maps','unpursued implication','Commutativité; chemins de déformation',
+    'These scans supply a disjoint-component commutation, the Lego presentation program, concrete genus-one relations and a forgetful sketch. They do not write the three rigid five-point frames or a five-point pentagon identity in this packet, so the source contribution to the open frame problem is recorded as the indicated operations and relations.',
+    '`notes/RESULTS_STATE.md`, planning questions 2 and 4, requests these exact connections; `MPL_147_048-137_notes.md`, scans 090–104, and the entries E.23/E.35/E.36/E.39 give the completed-tower claims with which those operations are to be compared.',
+    'PUSH_ORDER5_FRAME Itemsfromt 2 [Open]; EXIT_TOWER E.23, E.35, E.36 and E.39 [Proved, return’s claims]; E.24 and E.45 [Open]', ['pentagon','commut','clutching','forget'])
+add('N62',S,'026, 032–039 and 050, involution and symmetry comparisons','unpursued implication','anti-involution; groupe … compact',
+    'The explicit geometric actions and their fixed metrics specify concrete representatives and conventions for later comparisons with involutions and finite symmetries. This run has computed their pullbacks and matrix relations, while the fixed congruence kernel, H¹(C₂,K_c), and nonsolvable completion centralizers remain recorded under the open entries below.',
+    '`notes/RESULTS_STATE.md` locates LM4 C.12 at §23 scans 279–281, LM4 F.7 at §30 scans 383–387 and LM6 C.12 at §33 scans 440–448 of `LM_140-2_text.tex`; Hua §IV and §V connect the present metric and reflection passages.',
+    'LM4 C.12, LM4 F.7, LM4_SUCCESSOR B.39 and E.10, LM6 C.12 [Open; no status upgrade]', ['involution','centralizer','K_c','C.12'])
+
+S='Further exact context comparisons and reading questions'
+add('N63',S,'035, sentence after the two antiholomorphic families','reading question','commutent à T',
+    'The frozen sentence reads “commutent”, with uncertainty only in “seconds|seuls”, while Hua’s footnote says the source reads “normalisent”. The explicit conjugation identities in C02c determine the two actions used in the mathematical discussion, but both claimed word readings are retained separately.',
+    'Hua §IV, “La sphère munie d’un groupe compact”, central-extension footnote (source page 34 = scan 035), is the competing source attribution.',
+    'LM4_SUCCESSOR E.10 [Open; no word reading inferred from its action convention]', ['normalisent','commutent','centralise'])
+add('N64',S,'039, opening bracketed NB','reading question','carte; facette',
+    'The frozen passage has a map, its finite automorphism group and the absence of an H-fixed facet. Hua reads “conique” and leaves the passage unrestored, so the supplied text adds the cartographic reading relative to that modernised account, with its own transcription confidence retained.',
+    'Hua §IV, final footnote of “Récapitulation” (source page 38 = scan 039), is the exact discrepancy; the related explicit finite action is `LM_140-2_text.tex`, §37, scan 535, example (4).',
+    'LM4 F.7 and LM4_SUCCESSOR B.39 [Open; no identification of the manuscript’s unspecified H with their A₅]', ['conique','facette','carte'])
+add('N65',S,'028, opening nonorientable cases','reading question','rev. universels hol.',
+    'The phrase attaches P¹ and C* to the two nonorientable examples, while Hua describes orientation coverings at this point. The exact maps for the punctured projective plane are C→C*, w↦exp(2πiw), followed by C*→C*/(z↦−1/z̄), so the intermediate cover and the composite can be specified without changing “universels” in the transcription.',
+    'Hua §IV, “Les surfaces non hyperboliques, et leurs métriques”, footnote at source page 27 = scan 028, supplies that covering clarification and the Möbius-band model.',
+    'No dedicated RESULTS_STATE covering-reading entry located', ['universels','orientations','Möbius','antipodisme'])
+add('N66',S,'040, double/quotient diagram; 051, quotient sequences','unpursued implication','X=X′/σ',
+    'The manuscript’s quotient assignment can be compared with the explicit functor X′↦X′/G in LM §37 and its normalized-pullback inverse X×_Y Y′. LM writes faithful, locally orientation-preserving stabilizers and a ramification signature, while the present double carries the written anti-involution; an actual comparison must carry those actions and the two source functors through the map.',
+    '`LM_140-2_text.tex`, §37, scans 533–535, proposition and formulas (1)–(3), provides both functors, and scans 536–537 give the S₃ homotopy/arithmetic sequences linked to scan 051; Hua §IV, “Surfaces à bord”, restates the double construction and adds a morphism qualification.',
+    'EXIT_TOWER E.35 and E.36 [Proved, return’s claims]; LM6 C.12 [Open]', ['Rev','produit fibré','orientation locale','ramification'])
+add('N67',S,'042–043, half-plane automorphisms','own idea','le groupe affine réel',
+    'For q(x+iy)=x+i|y|, a commuting holomorphic affine map f(z)=az+b with real a≠0 and b induces F(x+iy)=ax+b+i|a|y on the closed upper half-plane. The antiholomorphic map a z̄+b induces the same F, and the kernel of the full conformal-centralizer map consists of 1 and conjugation; this explicitly accounts for the quotient wording added by Hua.',
+    'Hua §IV, “Surfaces à bord” (source page 42 = scan 043), adds “modulo celle-ci” while using the full conformal centralizer; the frozen page phrases its source group through complex affine automorphisms commuting with conjugation.',
+    'No identification with the kernel in LM4 C.12 is claimed; that entry remains open', ['affine','modulo celle-ci','centralisateur','demi-plan'],
+    'High confidence in the displayed map and kernel: the real and imaginary coordinates show the induced map and its identity fiber directly')
+add('N68',S,'007, final genus-one NB','unproved claim','g(f)=0 tjrs',
+    'The written genus-one calculation asserts that every complementary face has genus zero. Hua supplies an embedded-tree-in-a-disc example on a torus against the unrestricted assertion; the source’s hypotheses and that concrete example are recorded here as the exact target for a further topological check, without importing an additional homological condition into the transcription.',
+    'Hua §I, “Les modules d’une surface munie d’un graphe”, last footnote (source page 6 = scan 007), gives this counterexample and discusses an extra restriction; this run carries that credited objection as a lead and does not certify the further general assertion.',
+    'No dedicated RESULTS_STATE genus-one face entry located', ['arbre','tore troué','g(f)','homolog'])
+add('N69',S,'007, Euler calculation and intermediate coefficient','reading question','λ la connexité de K',
+    'The frozen margin uses “connexité”, and the intermediate line retains an uncertain 3|1 over 2 coefficient after the λ−1 term. Hua interprets λ as the first Betti number and rewrites the intermediate coefficient as 1/2; those two editorial steps remain explicitly attributed.',
+    'Hua §I, “Les modules d’une surface munie d’un graphe” (source page 6 = scan 007), makes this Euler-based interpretation and repair, while N08 separately records the live disc-face term that its commentary describes as absent.',
+    'No dedicated RESULTS_STATE entry located', ['connexité','Betti','lambda','Euler'])
+add('N70',S,'009, 011 and 013, geodesic and lattice choices','reading question','géod. fermée orientée',
+    'Hua inserts “simple” in its modernized geodesic description, while the frozen source has the displayed oriented closed-geodesic wording and then the primitive element or rank-one direct factor. The comparison of marking data is explicitly given by an oriented lattice basis (e₁,e₂)↦e₁↦Ze₁ and by forgetting the chosen translate of the geodesic; these maps keep the successive choices visible.',
+    'Hua §II, “Courbe elliptique et géodésique fermée” (source pages 8–12 = scans 009–013), makes the insertion and interprets scan 013’s unoriented version; `LM_140-3_text.tex`, scans 019–020, manuscript folios 297 verso–298, gives the elliptic lattice and oriented Jacobi-basis comparison.',
+    'No dedicated RESULTS_STATE entry for this marking dictionary', ['simple','Jacobi','primitif','facteur direct'])
+
+S='Title sheets, written pagination and documentary dates'
+add('T01',S,'002, cover','reading question','Chirurgie des surfaces conformes',
+    'The cover carries that title, an uncertain I and trailing stroke, and “1978|6 ou 77 ?)” in the frozen reading; it gives no written total page count. Hua reads 1976 and attributes the cover note to an archival hand, which is recorded as a competing attribution rather than adopted after freeze.',
+    'Hua, “Le fil du dossier, l’ordre des feuillets, les conventions”, and §I opening (source page 1 = scan 002), gives that date/hand interpretation; `README.md` provides the broader archive date range.',
+    'No dedicated RESULTS_STATE entry; package placement III.6, rank 12', ['1976','1977','chemise','Chirurgie'])
+add('T02',S,'016–021, letter pages 1–6','unpursued implication','Les Aumettes 15.4.1984',
+    'The letter is addressed to Lipman Bers, dated 15 April 1984, and carries six consecutive author page numbers 1–6; it names the microseminar with Yves Ladegaillerie. The context’s publication lead is concretely supported by the CSG edited transcription L28d, whose visible title and editorial page identify this letter, cote 67 and a September 2024 draft; its PDF has ten pages, including the six printed letter pages.',
+    '`SECTIONS_STATE.md`, “Autour de l’enseignement (66–68)” / “Read and published?”, links L28d, while `README.md` says “in print”; the verified public document is the edited transcription at <https://csg.igrothendieck.org/wp-content/uploads/2024/09/L28d.pdf>, PDF pp. 1–2 for provenance and pp. 4–9 for the six-page letter. Hua §III labels a wider source range 15–21 and describes an additional carbon duplicate; that wider claim is not adjudicated from the six letter scans supplied here.',
+    'RESULTS_STATE planning question 3 [publication lead checked to this stated extent]', ['Bers','L28d','Ladegaillerie','1984'])
+add('T03',S,'024–046, metric dossier','reading question','Métriques canoniques sur surfaces conformes',
+    'Scan 024 is the title sheet, scans 025–026 are loose preliminary sheets, and scans 027–044 carry author numbers 1–18 followed in scan order by the uncertain 1′|19 and 2′|21 on scans 045–046. Counting the supplied sheets gives twenty numbered text sheets after the two preliminaries; no written total “20 pages” has been added to the transcription.',
+    'Hua §IV opening (source pages 23–45 = scans 024–046) gives the same dossier and the alternate reading order recorded in N28; its source page numbers are one less than the PDF scan numbers used here.',
+    'No dedicated RESULTS_STATE entry; N28 records the ordering question', ['Métriques canoniques','feuillets','23','26, 44'])
+add('T04',S,'048–049, anabelian sheets','reading question','15.1.',
+    'The two sheets carry author numbers 1 and 2, and scan 048 has the date 15.1. without a written year. The adjoining machine-paper identifier is partly uncertain and supplies no resolved authorial year in this transcription.',
+    'Hua §V opening (source page 47 = scan 048) likewise records a date without year; its association of the Lego program with January 1984 is contextual interpretation, not an added digit on this sheet.',
+    'WG H2 [unchecked hunch]; planning chronology retained as a lead', ['15.1','janvier','1984','propagateur'])
+add('T05',S,'050–051, presentation heading and working sheet','unpursued implication','Générateurs et relations',
+    'Scan 050 carries the title for Teichmüller groupoids and groups, including the parenthetic special, ordinary and possible toric versions; no author page count is written there or on the working sheet 051. Scan 051’s printed job lines give 16 AUG 82 and a journal update of 11-08-82, preserving the dated reused support as part of the documentary record.',
+    'Hua §V (source pages 49–50 = scans 050–051) covers the presentations and working sheet, while its introductory inventory mentions the computer listings used as paper.',
+    'No dedicated RESULTS_STATE dating entry', ['présentations','listing','1982','Lego'])
+add('T06',S,'008, 010, 012–014, printed and postal supports','reading question','20.12.77',
+    'The book-list sheet and institutional envelopes remain fully represented in the transcription and inventory, including the Nagoya postal date 20.12.77 on scan 014 and the sender address on scan 013. Their printed names, stamps and catalogue numbering are documentary elements; none supplies an additional written total page count for the mathematical dossiers.',
+    'Hua’s opening inventory, “Le fil du dossier, l’ordre des feuillets, les conventions” (source pages 7,9,11–13 = scans 008,010,012–014), mentions these reused supports but does not diplomatically reproduce all their printed content.',
+    'No dedicated RESULTS_STATE entry', ['Nagoya','envelop','catalogue','1977'])
+
+FLAGS=[
+ ('N02','003, item 3','the uncertain question mark after “s. conforme avec bord”','The mark itself is an uncertain reading; it is not promoted to a resolved authorial objection.'),
+ ('N06','005, last paragraphs','“On pourrait”; “Mais on a des ennuis”; “pas de métrique nat const.”','Choice of finite moduli and the disc pieces remains under discussion.'),
+ ('N08','007, final comparison','the question mark over ≥','The dimension inequality is expressly left in question.'),
+ ('N16','017, coordinate action','“I expect”; “it is not clear that this operation is intrinsic”','Intrinsicness is unverified.'),
+ ('N20','019, radii expectation','“My expectation is”','Injectivity and independent bounds are proposed.'),
+ ('N17','019, following paragraph','“does’nt quite match”; “I must confess I did’nt look too thoroughly yet”','The earlier scaling proposal is qualified by the author.'),
+ ('N17','020, length-coordinate fibration','“Maybe it is unreasonable to expect”; “probably not really relevant”','The initial coordinate intuition is revised.'),
+ ('N22','020, question to Bers','“likely to hold, or is definitely false”','The orange model is posed as a question, with no authorial verdict here.'),
+ ('N24','021, final paragraph','“what about the relation … between the two corresponding metrics ?”','The collar/metric comparison is requested.'),
+ ('N33','033, margin','“à vérifier”','The invariant metric/torus orbit passage is flagged.'),
+ ('N35','034, margin','“C’est l’inverse!”','The action assignment is corrected in the same text, through scans 035–036.'),
+ ('N38','037, opening and margin','“En résumé et sauf erreur”; “à rectifier|vérifier”; “Il faudrait arriver à traduire …”','The proposition and linear-algebra description remain expressly qualified.'),
+ ('N48','048, margin','“Mettre en évidence trois classes”','The three families are requested rather than individually defined.'),
+ ('N49','049, question (a)','“À examiner”; the uncertain trailing “?|P”','The singular extension is on the examination list; the final mark is itself uncertain.'),
+ ('N50','049, question (b)','“est-il vrai qu’on récupère”','The procyclic recognition is asked, with the cyclotomic assertion attached.'),
+ ('N51','049, question (c)','“Comportement par spécialisation ???”','Specialization is explicitly unresolved.'),
+ ('N53','050, first paragraph','“Je m’attends à trouver”','The three arithmetic presentation forms are expected.')
+]
+
+HEADER=r'''# Research notes — MPL_67_002-052
+
+## Scope and evidence
+
+These English notes accompany the frozen diplomatic transcription of cote 67, packet 002–052: 46 nonblank scans, with 015, 022, 023, 047 and 052 omitted as blank in the supplied selection. All 46 pages were transcribed and audited by the root in one stream; contextual research began only after the 47 transcription-file hashes were recorded with the freeze at 2026-11-18 00:48:20 UTC. None of the contextual readings below replaces a frozen reading.
+
+The root read the supplied README, all of `notes/RESULTS_STATE.md`, the Hua-project README and all of `hua_project/67.modern.tex`, then searched the neighboring texts and notes by the objects named in each item. The three research agents supplied context locators after the freeze and did no image transcription. `records/context_search_ledger.tsv` records per-item searches and exact hit locations; the three `records/context_*.md` files preserve the agents’ evidence ledgers. The item citations below supply file and scan locators rather than relying on keyword matches alone.
+
+“Hua” means **Michel Hua’s project, modernised reading of cote 67**, the AI-produced interpretation supplied in the context and credited by its README. Its source “page n” corresponds to PDF scan n+1 for the passages in this packet; references to its later pages are explicitly marked as beyond this packet. Its arguments and textual substitutions retain that attribution. Earlier notes and RESULTS_STATE rows retain the status actually stated there: a run’s claim is carried as a claim, and a limited referee statement is cited with its stated scope.
+
+The full source registers and the files for MPL_152+120 Q1-07 and the requested cote 136 comparison were not included in the supplied context. This limits the comparison with those references to the available register summaries; it does not license reconstruction of their missing proofs. The explicit calculations performed here are in `records/research_checks.md`, with executable identities in `records/check_calculations.py` and the recorded output. `CHECK_EVENTS.tsv` separates actual proof/computation checks, textual comparisons and background claims.
+
+Each numbered item has one to four explanatory sentences, followed by its context relationship and register references; the confidence field applies only to this run’s own explicitly identified ideas. A statement’s presence in the manuscript is not recorded as a mathematical proof check.
+'''
+
+FOOTER=r'''
+## Primary sources used for the explicit checks
+
+The mathematical claims used from these sources are specified at the point of use in `records/research_checks.md`; no broader theorem from them is treated as proved in this run.
+
+| Source | Exact locus used | Use |
+|---|---|---|
+| Richard Borcherds, course 261 notes 18, [author PDF](https://math.berkeley.edu/~reb/courses/261/18.pdf) | pp. 58–59 | Hermitian determinant and Lorentz coordinates for C02 |
+| Maryam Mirzakhani, *Simple geodesics and Weil–Petersson volumes of moduli spaces of bordered Riemann surfaces*, Inventiones 167 (2007), [PDF](https://www.labri.fr/perso/vdelecro/toprint/mirzakhani1-pdf2up.pdf) | §2 p. 186; §3 p. 190, PDF pp. 4 and 6 | The particular pants C(32,0,0), including cusps |
+| Matthias Weber, David Hoffman and Michael Wolf, *An embedded genus-one helicoid*, Annals 169 (2009), [author PDF](https://math.rice.edu/~mwolf/whw09.pdf) | §2.5, pp. 368–369 | Extremal-length definition, annular core value and embedded-annulus comparison |
+| Curtis McMullen, *From Conformal Invariants to Percolation*, course notes, [author PDF](https://people.math.harvard.edu/~ctm/papers/home/text/class/harvard/219/course/course.pdf) | p. 44, §4 | Explicit spherical cell of the 0,1,∞ configuration |
+| Chikara Nakayama and Arthur Ogus, *Relative rounding in toric and logarithmic geometry*, Geometry & Topology 14 (2010), [publisher PDF](https://msp.org/gt/2010/14-4/gt-v14-n4-p09-p.pdf) | pp. 2189–2190 | The exact polar model xy=t in C06 |
+| CSG, edited transcription of Grothendieck’s *Letter to L. Bers, 15.4.1984*, [L28d PDF](https://csg.igrothendieck.org/wp-content/uploads/2024/09/L28d.pdf) | PDF pp. 1–2 and printed letter pages 1–6 at PDF pp. 4–9 | Publication/provenance comparison in T02; the visible title is used, since the retrieval metadata carries an unrelated Deligne title |
+
+## Register-use boundary
+
+This packet adds source locations, explicit action conventions and the finite calculations just specified. The arithmetic-image and higher-genus-restriction problems **EXIT_TOWER E.24/E.45**, the rigid-frame problem **PUSH_ORDER5_FRAME Itemsfromt 2**, the kernel computations **LM4_SUCCESSOR E.10**, and the nonsolvable centralizer problems **LM4 F.7 / LM4_SUCCESSOR B.39** retain their open status in these notes. The completed-sewing, capping, tower-action and normal-stratum statements **EXIT_TOWER E.23/E.35/E.36/E.39** and **LM6 F.43** are cited as the supplied returns’ claims, without a fresh derivation. The explicitly refereed three-cusp entry **LM4 D.32** is carried within the scope recorded by RESULTS_STATE; D.34 occurs in its referee-summary list without a full statement in this supplied digest and is not used to supply a theorem here.
+
+The concrete orange-containment obstruction is credited to Hua’s project and checked here as **C03.orange_containment**. The manuscript’s radii-injectivity question, its complete admissible-parameter image and its collar-metric question are separately recorded in N20 and N24. The readings and page ordering suggested by context remain research questions alongside the unchanged scan-order transcription.
+'''
+
+def main():
+    now=datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')
+    parts=[HEADER]
+    current=None
+    for n in notes:
+        if n['section']!=current:
+            current=n['section']; parts.append('\n## '+current+'\n')
+        parts.append('\n### '+n['id']+' — cote 67, scan '+n['scan']+'\n')
+        parts.append('\n**Kind:** '+n['kind']+'  \n**Source words:** “'+n['quote']+'”\n')
+        parts.append('\n'+n['body']+'\n')
+        parts.append('\n**Context and relationship:** '+n['context']+'\n')
+        parts.append('\n**RESULTS_STATE:** '+n['rs']+'\n')
+        if n['confidence']:
+            parts.append('\n**Confidence and reason:** '+n['confidence']+'.\n')
+    parts.append('\n## Steps the manuscript itself marks as unverified or revises\n\n')
+    parts.append('This index collects the explicit qualifications and questions; the linked note supplies its context search and register comparison. An uncertain transcription of a mark is identified as such.\n\n')
+    parts.append('| Note | Cote 67 scan | Author’s words or mark | Scope |\n|---|---|---|---|\n')
+    for id,scan,words,scope in FLAGS:
+        parts.append('| '+id+' | '+scan+' | '+words.replace('|','\\|')+' | '+scope+' |\n')
+    parts.append(FOOTER)
+    (ROOT/'MPL_67_002-052_notes.md').write_text(''.join(parts),encoding='utf-8')
+    (ROOT/'records/research_items.json').write_text(json.dumps(notes,ensure_ascii=False,indent=2),encoding='utf-8')
+    # Real, per-item keyword searches, with a bounded excerpt per file and term.
+    # Full hit counts are retained even when only the first six lines are excerpted.
+    rows=[]
+    for n in notes:
+        for term in n['terms']:
+            p=subprocess.run(['rg','--json','-i','-F','--',term,str(CTX)],text=True,capture_output=True)
+            if p.returncode not in (0,1):
+                raise RuntimeError(p.stderr)
+            byfile={}
+            for line in p.stdout.splitlines():
+                event=json.loads(line)
+                if event['type']!='match':
+                    continue
+                data=event['data']
+                path=data['path']['text']
+                ln=str(data['line_number'])
+                excerpt=data['lines']['text'].rstrip('\r\n')
+                byfile.setdefault(path,[]).append((ln,excerpt))
+            if not byfile:
+                rows.append([n['id'],now,term,'NO MATCH','0','0',''])
+            for path,hits in byfile.items():
+                for ln,excerpt in hits[:6]:
+                    rows.append([n['id'],now,term,str(Path(path).relative_to(CTX)),str(len(hits)),ln,excerpt])
+    with (ROOT/'records/context_search_ledger.tsv').open('w',encoding='utf-8',newline='') as f:
+        w=csv.writer(f,delimiter='\t');w.writerow(['note_id','utc','literal_term','context_file','total_hits_in_file','line','excerpt']);w.writerows(rows)
+    print(json.dumps({'notes':len(notes),'self_flag_rows':len(FLAGS),'search_rows':len(rows),'utc':now},ensure_ascii=False))
+
+if __name__=='__main__':
+    main()
+
+
+
