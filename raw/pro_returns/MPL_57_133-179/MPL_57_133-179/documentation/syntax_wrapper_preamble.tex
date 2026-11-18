@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=15mm]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\usepackage{amsmath,amssymb,tikz-cd}
+\usetikzlibrary{arrows.meta}
+\newcommand{\cotefile}[1]{\par\section*{Cote #1}}
+\newcommand{\scanpage}[1]{\par\section*{Scan #1}}
+\newcommand{\mspage}[1]{\par\textit{#1}\par}
+\newcommand{\deleted}[1]{#1}
+\newcommand{\inserted}[1]{#1}
+\newcommand{\margin}[1]{#1}
+\newcommand{\uline}[1]{#1}
+\newcommand{\uuline}[1]{#1}
+\newcommand{\unsure}[1]{#1}
+\newcommand{\illegible}[1]{\ensuremath{\langle\textrm{illegible }#1\rangle}}
+\tikzcdset{ampersand replacement=\&}
+\ExplSyntaxOn
+\tl_new:N \l__mpl_diagram_tl
+\NewDocumentCommand{\diagram}{m}{
+\group_begin:
+\tl_set:Nn \l__mpl_diagram_tl {#1}
+\tl_replace_all:Nnn \l__mpl_diagram_tl { & } { \& }
+\par\noindent\ensuremath{\tl_use:N \l__mpl_diagram_tl}\par
+\group_end:
+}
+\ExplSyntaxOff
+\renewcommand{\figure}[1]{\par\noindent#1\par}
+\begin{document}
