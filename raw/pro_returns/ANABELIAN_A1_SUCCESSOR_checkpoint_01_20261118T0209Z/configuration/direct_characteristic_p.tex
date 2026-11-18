@@ -1,0 +1,503 @@
+% New working identifiers A.DC1--A.DC4, allocated paper numbers A.45--A.48.
+% GPT-6 Astra Pro, Pro mode; separate effort setting not exposed.
+% This is a direct algebraic replacement for the characteristic-zero route.
+\subsection{A direct algebraic configuration argument}
+
+We give a proof in characteristic $p$ whose inputs contain neither lifting
+of curves to characteristic zero nor the specialization statements of
+SGA~1, Expos\'e XIII, 2.9--2.11. It also allows $p\in\Sigma$.
+We retain the definitions of $F_{\mathrm{cr}}$ and $E_{\mathrm{cr}}$ in
+A.CF2, now using geometric \emph{\'etale} fundamental groups, with
+$r\in\Sigma$ and $r\ne p$.
+
+\begin{claim}{A.DC1}{Proved}{Finite single-prime torsors in a constant compactification}
+Let $k$ be algebraically closed of characteristic $p\geq0$, let $r$ be
+a prime invertible in $k$, and let $C_0,S$ be smooth proper connected
+$k$-curves, with $g(S)\geq1$. Let $m\geq1$, and let
+$d_1,\ldots,d_m:S\to C_0\times S$ be pairwise disjoint sections.
+Put $X=C_0\times S$, $D=\coprod_i d_i(S)$, $U=X-D$, and
+$f:U\to S$. For a geometric point $s$ of $S$, every finite $r$-group
+quotient of $\pi_1(U_s)$ is dominated by the restriction of a finite
+$r$-group quotient of $\pi_1(U)$. Equivalently,
+$\pi_1(U_s)^{(r)}\to\pi_1(U)^{(r)}$ is injective.
+More precisely, every finite $r$-group torsor on $U_s$ extends to a
+torsor with the same group on $U\times_S S'$ for some connected
+finite \'etale cover $S'\to S$ whose Galois closure is an $r$-cover.
+\end{claim}
+
+\begin{proof}
+Write $a=\mathbf F_r$ for the constant sheaf and fix an identification
+$a(1)\simeq a$, possible over $k$. All cohomology in this proof is
+\'etale cohomology unless continuous group cohomology is explicitly
+indicated. We use the following algebraic inputs, in the exact forms
+recorded in our source table: cohomological purity for a smooth pair of
+codimension one (\citealp[Theorem 16.7]{CF_Milne2013}), proper base change
+(ibid., Theorem 17.10), the cohomology of a proper smooth curve (ibid.,
+Proposition 14.2), Leray (ibid., Theorem 12.7), and Cartan--Leray for
+finite \'etale covers and their inverse limits (ibid., Theorem 14.9 and
+Remark 14.10). None of these inputs is a characteristic-zero comparison.
+
+\paragraph{The relative abelian calculation.}
+Let $j:U\hookrightarrow X$ and $i:D\hookrightarrow X$.
+Purity and localization give the distinguished triangle
+\[
+ i_*a_D(-1)[-2]\longrightarrow a_X\longrightarrow Rj_*a_U
+ \longrightarrow i_*a_D(-1)[-1].
+\]
+Push it forward by the proper projection $\bar f:X\to S$.
+Proper base change identifies $R^q\bar f_*a$ with the constant sheaf
+$H^q(C_0,a)_S$. Since $D$ is a disjoint union of $m$ sections,
+its higher direct images vanish in positive degrees. Thus
+\[
+ R^0f_*a=a_S,\qquad R^qf_*a=0\ (q\geq2),
+\]
+and, with $\mathcal M=R^1f_*a$,
+\[
+ 0\to H^1(C_0,a)_S\to\mathcal M
+ \to a(-1)_S^{\,m}\overset{\sum}{\longrightarrow}a(-1)_S\to0.       \tag{DC.1}
+\]
+The last map sends every labelled point class to its degree, namely one.
+It is surjective even when $r\mid m$. In particular $\mathcal M$ is
+a finite locally constant sheaf. The two terms in the resulting short
+exact sequence
+\[
+ 0\to H^1(C_0,a)_S\to\mathcal M
+ \to\ker(a^m\overset{\sum}{\longrightarrow}a)_S(-1)\to0
+\]
+are constant. After a vector-space splitting at one geometric point,
+monodromy is a subgroup of the additive group of homomorphisms from the
+last vector space to the first. Its image is therefore an elementary
+abelian $r$-group. No equivariant splitting and no division by $m$ is
+used.
+
+Here the identifications with the cohomology of $U_s$ are themselves
+part of the argument, not an unproved base-change assertion for an open
+morphism. Pulling the displayed localization triangle to a geometric
+fibre gives its localization triangle: a section is transverse to the
+fibre with intersection multiplicity one, so its local Kummer residue
+map is unchanged. Proper base change for $X$ and $D$, followed by the
+five lemma in (DC.1), identifies the stalk of $\mathcal M$ with
+$H^1(U_s,a)$ and the remaining stalks with $H^q(U_s,a)$. The same
+argument commutes with every finite \'etale base change $S'\to S$.
+The local compatibility just used can also be checked in a relative
+parameter $t$: the residue of a Kummer class $t$ is $1$, both before
+and after restriction to the fibre. All schemes in this calculation
+are smooth over $k$ and all torsion has order invertible in $k$.
+
+\paragraph{Killing cohomology by $r$-covers of the base.}
+If $\mathcal V$ is a finite locally constant $a$-sheaf on $S$ with
+$r$-group monodromy image $B$, a class of $H^1(S,\mathcal V)$ is a
+continuous crossed homomorphism $c:\pi_1(S)\to V$. The map
+\[
+ g\longmapsto(c(g),\rho(g))\in V\rtimes B
+\]
+is a continuous homomorphism to a finite $r$-group. Its kernel defines
+a connected finite Galois $r$-cover on which both the sheaf and the
+class become trivial.
+
+Also, $H^2(S,a)$ is killed by pullback to any connected \'etale cover
+of degree $r$. Such a cover exists because $g(S)\geq1$ and
+$H^1(S,\mu_r)\simeq\operatorname{Pic}^0(S)[r]\ne0$.
+Under the degree description
+$H^2(S,\mu_r)\simeq\operatorname{Pic}(S)/r\simeq\mathbf Z/r$,
+pullback multiplies degree by $r$, and is zero. These statements remain
+true after every finite \'etale base change, since its genus is still
+at least one. A tower of finite Galois $r$-covers is dominated by a
+finite Galois $r$-cover of the original base: take a finite normal core,
+whose kernel quotient embeds in a product of conjugate $r$-groups.
+
+The first five terms of Leray show that every prescribed class of
+$H^1(U_s,a)$ extends to $H^1(U_{S'},a)$ after such a base change.
+Indeed, first kill the $r$-group monodromy of $\mathcal M$; the class
+then becomes a section of $\mathcal M$. Its sole obstruction to lifting
+is its transgression in $H^2(S',a)$, which the preceding degree-$r$
+cover kills.
+
+Moreover every class in $H^2(U,a)$ is killed after a finite $r$-cover
+of the base. Since $R^2f_*a=0$ and $H^3(S,a)=0$, the Leray filtration
+gives the exact sequence
+\[
+ H^2(S,a)\longrightarrow H^2(U,a)
+ \longrightarrow H^1(S,\mathcal M)\longrightarrow0.              \tag{DC.2}
+\]
+Kill the image in the last term by its affine $r$-group representation
+as above. The restricted class then comes from $H^2(S',a)$, and a
+further degree-$r$ \'etale cover kills that term. The filtration and
+these operations are functorial in the base change.
+
+\paragraph{Central induction for nonabelian torsors.}
+We prove the extension assertion by induction on the order of the finite
+$r$-group $G$. The trivial group is immediate. Choose a central
+subgroup $A\subseteq G$ of order $r$, and put $G_0=G/A$.
+Inductively, the quotient of the prescribed fibre $G$-torsor extends to
+a $G_0$-torsor on $U_{S_1}$, with a chosen identification on the fibre.
+Write $h_0:\pi_1(U_{S_1})\to G_0$ for its continuous homomorphism.
+The central extension $1\to A\to G\to G_0\to1$ defines a class
+$\omega\in H^2(G_0,A)$, and its pullback
+$h_0^*\omega\in H^2_{\mathrm{cont}}(\pi_1(U_{S_1}),A)$ is the
+obstruction to a continuous lift to $G$. This assertion follows
+directly by choosing a set-theoretic section $G_0\to G$: its factor
+set is a two-cocycle, and changing a lift by a one-cochain removes the
+defect precisely when that class vanishes. All cochains here are
+continuous and have finite values.
+
+For any connected scheme $Z$ used here there is a natural injection
+\[
+ H^2_{\mathrm{cont}}(\pi_1(Z),A)\hookrightarrow H^2(Z,A).         \tag{DC.3}
+\]
+To verify it, apply Cartan--Leray to the inverse system of all connected
+finite \'etale Galois covers. The first cohomology of that universal
+pro-cover is zero: every finite $A$-torsor occurring at a finite level
+is trivialized at a higher level. The five-term sequence therefore
+gives (DC.3). This argument also shows the natural identification of
+continuous and \'etale $H^1$, and is functorial for our base changes.
+In particular we have not assumed that the total space is an \'etale
+$K(\pi,1)$.
+
+By (DC.2), after a finite $r$-cover of the base the image of
+$h_0^*\omega$ in \'etale $H^2$ vanishes. Injectivity in (DC.3) supplies
+a continuous lift $h:\pi_1(U_{S_2})\to G$. Its restriction to the
+fibre and the prescribed fibre lift have the same image in $G_0$.
+Their pointwise ratio, because $A$ is central, is a homomorphism to
+$A$, hence a class of $H^1(U_s,A)$. Extend that class after one more
+$r$-cover of the base by the preceding $H^1$ argument, and multiply
+$h$ by the resulting central character. The adjusted lift restricts
+to the prescribed fibre homomorphism. Thus its associated $G$-torsor
+is the required extension. If the original fibre torsor is connected,
+the total torsor is connected as well, since each connected component
+of a finite \'etale cover surjects onto the connected base space and
+would otherwise disconnect its fibre.
+
+Finally replace $S'\to S$ by a dominating Galois $r$-cover.
+Its pullback gives a normal $r$-index subgroup $H'$ of $H=\pi_1(U)$.
+The extended torsor is a finite $r$-quotient of $H'$, with kernel $J$.
+The intersection of $\gamma J\gamma^{-1}$ over the finitely many
+cosets $H/H'$ is normal in $H$; its quotient is an extension of an
+$r$-group by an $r$-group. Restriction to the fibre dominates the
+prescribed quotient. Finite quotients separate points in a pro-$r$
+group, which proves injectivity.
+\end{proof}
+
+\begin{claim}{A.DC2}{Proved}{Right exactness for tame configuration quotients}
+In the situation of A.DC1, let $U\to S$ be the open projection.
+For every connected finite Galois \'etale cover $W\to U$ tame along
+$D$, with group $T$, the image $I\subseteq T$ of $\pi_1(U_s)$ is
+normal, and $T/I$ is a quotient of $\pi_1(S)$ through the projection.
+Consequently the sequence of tame fundamental groups is exact at its
+middle and right terms. The same conclusion holds for any quotient of
+$\pi_1(U)$ all of whose finite quotients are tame along $D$.
+\end{claim}
+
+\begin{proof}
+Normalize $X$ in $W$, obtaining $\bar W\to X$. The normalization is
+finite, since $X$ is excellent, and is proper over $S$.
+SGA~1, Expos\'e XIII, Proposition 5.2, says that a tame cover of a
+regular local scheme with normal-crossings boundary becomes \'etale
+after adjoining roots of the boundary parameters of orders equal to
+the relevant inertia least common multiples; the orders are invertible.
+For our smooth relative divisor with disjoint sections, each strictly
+local connected branch is therefore a Kummer chart $z^e=t$, where
+$t$ is a relative parameter and $e$ is invertible. This chart is smooth
+over $S$, with relative coordinate $z$; its boundary $z=0$ is \'etale
+over $S$. Thus $\bar W\to S$ is smooth proper, and
+$\bar W-W$ is finite \'etale over $S$.
+
+The Stein factor $S_W$ of $\bar W\to S$ is finite \'etale over $S$.
+For clarity, this is the usual proper-smooth connected-component
+statement: the geometric fibres are reduced, and the algebra of
+global functions on a proper smooth fibre is a product of copies of
+its algebraically closed ground field; proper base change and the
+Stein factorization identify these algebras in a finite \'etale family.
+Equivalently, SGA~1, Expos\'e X, Proposition 1.2 applies to this proper
+flat morphism with geometrically separable fibres.
+Its fibre over $s$ is the set of connected components of $\bar W_s$.
+Deleting finitely many points from a connected smooth curve does not
+disconnect it, so this is also the set of components of $W_s$.
+
+The $T$-action extends uniquely to the normalization and to $S_W$.
+At $s$, its transitive action on components identifies that finite set
+with $T/I$ as a homogeneous set. Since $S_W$ is connected, its base
+monodromy is transitive and commutes with $T$. The automorphism group
+of the transitive $T$-set $T/I$ is $N_T(I)/I$; it can be transitive
+only when $N_T(I)=T$. Hence $I$ is normal. It follows that
+$S_W\to S$ is the finite \'etale Galois cover with group $T/I$, and
+the quotient map $\pi_1(U)\to T/I$ factors through $\pi_1(S)$.
+Surjectivity to the base follows because the pullback of every
+connected finite \'etale base cover remains connected. Taking all
+finite quotients gives the assertion; images of profinite groups are
+closed, so equality of their images in every finite quotient is
+equality of the closed subgroups themselves.
+\end{proof}
+
+\paragraph{The repaired proof of A.CF12 (paper A.13).}
+Let $C/k$ be smooth proper of genus at least two over an algebraically
+closed field of characteristic $p>0$. Let $\Sigma$ be arbitrary and
+$r\in\Sigma\setminus\{p\}$. Start with a finite quotient $Q$ of
+$F_{\mathrm{cr}}$, let $R$ be its normal $r$-subgroup given by the
+image of $K_F$, and let $A=Q/R$. The finite quotient $A$ of
+$\Delta=\pi_1(C)^\Sigma$ defines a connected finite \'etale proper
+Galois cover $C'\to C$. There is no restriction on the $p$-part of
+$|A|$. Pull back the two coordinates to obtain
+\[
+ V=(C'\times C')-\coprod_{a\in A}\Gamma_a.
+\]
+This is a connected finite \'etale Galois cover of $U$ with group
+$A\times A$; its second projection has constant compactification and
+the disjoint labelled sections $y\mapsto(ay,y)$. Its fibre is the
+cover of $C-P$ corresponding to the kernel of its proper quotient $A$.
+The restriction of $Q$ to that fibre has $r$-group image. A.DC1
+dominates it by a finite $r$-quotient of $H=\pi_1(V)$, with kernel
+$J$. Write $G=\pi_1(U)$ and
+$J_0=\bigcap_{g\in G/H}gJg^{-1}$. Since $J$ is normal in $H$,
+this finite intersection is normal in $G$, and $H/J_0$ embeds
+in the product of the conjugate finite $r$-quotients $H/gJg^{-1}$.
+Consequently $T=G/J_0$ fits into
+an exact sequence
+\[
+ 1\to R_T\to T\to A\times A\to1,
+ \qquad R_T\text{ a finite }r\text{-group}.
+\]
+Every prime divisor of $|T|$ belongs to $\Sigma$, so $G\to T$
+factors through $E=G^\Sigma$. Its map to $A\times A$ factors
+through the proper product $\Delta\times\Delta$; hence the image
+of $K_E$ lies in $R_T=H/J_0$, and the map factors through
+$E_{\mathrm{cr}}$. If a fibre element maps trivially to $T$,
+its proper image in $A$ is trivial, so it belongs to the fibre
+of $V\to C'$; there it is killed by the chosen quotient of $H$
+and therefore by $Q$. Thus the fibre restriction dominates $Q$.
+This proves injectivity of
+$F_{\mathrm{cr}}\to E_{\mathrm{cr}}$ for every such $\Sigma$.
+
+We spell out the middle exactness, which cannot be inferred from an
+unrestricted homotopy sequence for an open morphism in characteristic
+$p$. Every inertia group along the diagonal has trivial image in the
+proper product. Its image in every finite quotient of
+$E_{\mathrm{cr}}$ consequently lies in the image of $K_E$, an
+$r$-group. Since $r\ne p$, the corresponding cover is tame along the
+diagonal. A.DC2 applies. If $T$ is such a finite quotient and $I$ its
+fibre image, $T/I$ comes from the second proper curve. It is a finite
+$\Sigma$-group, so this factorization is through $\Delta$.
+Thus every element of $\ker(E_{\mathrm{cr}}\to\Delta)$ has image in
+$I$ in every finite quotient, and hence belongs to the closed image
+of $F_{\mathrm{cr}}$. The reverse inclusion is immediate. Projection
+to $\Delta$ is onto, and we obtain
+\[
+ 1\to F_{\mathrm{cr}}\to E_{\mathrm{cr}}
+ \overset{\operatorname{pr}_2}{\longrightarrow}\Delta\to1.
+\]
+This argument proves both the originally asserted relative exactness
+and the full finite-domination assertion with quotient $A\times A$.
+It uses neither Stix's theorem nor a lift to characteristic zero.
+Stix's Proposition 2.7 remains a verified alternative source for the
+single-prime relative fibre step, not a dependency of this proof.
+
+For the constant-compactification variant, choose the proper fibre
+cover for a prescribed finite fibre quotient, and pull it back along
+each of the finitely many section maps. A common proper Galois base
+cover trivializing those torsors has group a subgroup of a finite
+product of their $\Sigma$-deck groups. On the resulting product the
+inverse boundary is disjoint and labelled. A.DC1 and the same finite
+core produce an $r$-group by the product of the two proper deck
+groups, and A.DC2 gives middle and right exactness. Finally A.DC4
+below proves the boundary and arithmetic transport clause of A.CF12.
+That proof derives its own geometric fibre input from A.DC1--A.DC2,
+so this reference creates no circular dependency.
+
+\begin{claim}{A.DC3}{Proved}{Algebraic survival of the entire $r$-adic cusp inertia}
+For $C/k$ smooth proper of genus at least one over an algebraically
+closed field of characteristic $p\geq0$, $P\in C(k)$, and $r\ne p$,
+the tame $r$-inertia $\mathbf Z_r(1)$ at $P$ injects into
+$\pi_1(C-P)^{(r)}$. Consequently it injects into every
+$F_{\mathrm{cr}}$ with $r\in\Sigma$.
+\end{claim}
+
+\begin{proof}
+Choose a nonzero element of $\operatorname{Pic}^0(C)[r]$.
+Its Kummer torsor is a connected cyclic \'etale cover $C'\to C$
+of degree $r$. There are at least two distinct points $P_1,P_2$ above
+$P$. For every $n\geq1$, divisibility of $\operatorname{Pic}^0(C')(k)$
+under $r^n$ gives a degree-zero divisor class $[B]$ with
+$r^n[B]=[P_1-P_2]$. Choosing a representing divisor, we obtain a
+rational function $h$ with
+\[
+ \operatorname{div}(h)=P_1-P_2-r^nB.
+\]
+The extension $z^{r^n}=h$ has degree $r^n$ because the valuation of
+$h$ at $P_1$ is congruent to $1$ modulo $r^n$. It has inertia of
+order $r^n$ at $P_1$ and $P_2$, and is unramified elsewhere outside
+the preimage of $P$: every other valuation is divisible by $r^n$,
+and the residue fields are algebraically closed. Taking the compositum
+of its conjugates under the cyclic deck group of $C'\to C$ produces
+a Galois extension of $k(C)$ with $r$-group Galois group, ramified
+only above $P$, whose inertia surjects onto a cyclic group of order
+$r^n$.
+
+These are finite \'etale $r$-covers of $C-P$ for every $n$.
+The image of the local tame $\mathbf Z_r(1)$ therefore has unbounded
+$r$-power finite quotients; its kernel, a closed subgroup of
+$\mathbf Z_r$, must be zero. All these quotients factor through
+$F_{\mathrm{cr}}$, since their images of $K_F$ are $r$-groups.
+The Kummer and Picard facts used here are algebraic; see
+\citet[Propositions 14.1--14.2]{CF_Milne2013}. In particular the proof
+does not use the topological presentation of a punctured surface.
+\end{proof}
+
+\begin{claim}{A.DC4}{Proved}{Diagonal boundary and arithmetic transport, with $p$ allowed in $\Sigma$}
+Let $C/k$ be smooth proper geometrically connected of genus at least
+two over a finite field of characteristic $p$, and let
+$r\in\Sigma\setminus\{p\}$. Let $\Pi_C$ be the geometrically
+pro-$\Sigma$ arithmetic fundamental group, retaining the whole $G_k$.
+Let $\mathcal E_{\mathrm{cr}}$ be the arithmetic relative
+cuspidally pro-$r$ configuration group. There is a diagonal boundary
+subgroup $\mathcal D\subseteq\mathcal E_{\mathrm{cr}}$ with exact
+sequence
+\[
+ 1\to\mathbf Z_r(1)\to\mathcal D\to\Pi_C\to1.
+\]
+Its map to $\Pi_C\times_{G_k}\Pi_C$ is diagonal.
+For each $P\in C(k)$, with compatible paths, the arithmetic group
+$\Pi_{C-P,\mathrm{cr}}$ equals
+$\operatorname{pr}_2^{-1}(s_P(G_k))$, and its actual cusp subgroup
+is $\mathcal D\cap\operatorname{pr}_2^{-1}(s_P(G_k))$.
+If the proper sections at $P$ and $Q$ are geometrically conjugate,
+their punctured arithmetic groups are isomorphic over the identity of
+$\Pi_C$ and $G_k$, with the first actual cusp taken to a geometric
+conjugate of the second.
+\end{claim}
+
+\begin{proof}
+We first obtain the geometric fibre input directly from A.DC1--A.DC2.
+For a finite fibre quotient $Q$, divide by its cuspidal $r$-subgroup
+to obtain the proper quotient $A$, and use the $A\times A$ deck-graph
+cover $V$. A.DC1 gives a finite $r$-quotient of $\pi_1(V)$ detecting
+the restriction of $Q$. The intersection of its kernel's conjugates
+over $A\times A$ has quotient in $\pi_1(V)$ embedded in a finite
+product of $r$-groups. Its total quotient is an $r$-group by
+$A\times A$, factors through $E_{\mathrm{cr}}$, and dominates $Q$
+on the fibre: an element killed in the total quotient first has
+trivial proper $A$-image and is then killed by the chosen fibre
+quotient. Thus the fibre map is injective. Its finite total quotients
+are tame along the diagonal, since diagonal inertia has $r$-power
+image; A.DC2 gives middle and right exactness. This establishes
+the required geometric short exact sequence within the present
+proof, independently of A.CF12.
+
+Put $X=C\times_k C$, $D=\operatorname{diag}(C)$, and
+$N=\mathcal O_X(D)|_D$. For $n=r^a$, the root stack
+$\mathfrak X_n=\sqrt[n]{(X,D)}$ is defined locally, if $D=(t)$, by
+\[
+ \bigl[\operatorname{Spec}(R[z]/(z^n-t))/\mu_n\bigr].
+\]
+Its boundary $\mathfrak G_n$ is the gerbe of $n$-th roots of $N$ on
+$D$. We use this language for descent of the Kummer charts; we do not
+attribute a statement about stacks to SGA~1.
+Specifically, SGA~1 XIII, Proposition 5.2, extends any finite tame
+cover whose inertia orders divide $n$ to an \'etale cover of each
+Kummer chart. Uniqueness of normalization extends the descent
+isomorphisms, including their $\mu_n$-equivariance, from the dense open
+complement. They glue to a finite \'etale cover of $\mathfrak X_n$.
+Conversely, restriction of a finite \'etale cover of that stack to
+$X-D$ has inertia of order dividing $n$. This proves precisely the
+cover comparison used below, by finite \'etale descent.
+
+A finite \'etale cover of $\mathfrak G_n$ on which its stabilizer
+$\mu_n$ acts trivially descends to $D$: this is ordinary descent on
+local trivializations $B\mu_n\times D_i$. Pullbacks of covers of $D$
+are fully faithful. The corresponding fundamental group sequence is
+therefore right exact:
+\[
+ \mu_n\longrightarrow\pi_1(\mathfrak G_n)
+ \longrightarrow\pi_1(C)\longrightarrow1.                       \tag{DC.4}
+\]
+No injectivity of the finite stabilizer is assumed. The transition
+maps for $r^{a+1}\to r^a$ are onto on the base and on the stabilizer
+images, hence onto on the middle groups. Compact inverse limits of
+(DC.4) give
+\[
+ \mathbf Z_r(1)\longrightarrow\mathcal T
+ \longrightarrow\pi_1(C)\longrightarrow1.                      \tag{DC.5}
+\]
+Every finite quotient of $\mathcal E_{\mathrm{cr}}$ is tame with
+$r$-power inertia, for the reason just given.
+Restriction of its extended root-stack cover to the boundary produces
+compatible maps from $\mathcal T$; thus there is a continuous map
+$\mathcal T\to\mathcal E_{\mathrm{cr}}$ over the diagonal proper
+map. Define $\mathcal D$ as its closed image.
+
+Here is the precise quotient argument at the proper geometric base.
+Write $\mathcal T_{\bar k}$ for the geometric kernel of $\mathcal T$,
+and replace it by its maximal pro-$\Sigma$ quotient, leaving $G_k$
+unchanged. The resulting arithmetic quotient $\mathcal T_\Sigma$
+has a right exact sequence
+\[
+ \mathbf Z_r(1)\longrightarrow\mathcal T_\Sigma
+ \longrightarrow\Pi_C\longrightarrow1.                        \tag{DC.6}
+\]
+Indeed, on geometric groups (DC.5) is an extension of $\pi_1(C_{\bar k})$
+by the inertia image. After maximal pro-$\Sigma$ quotient, quotienting
+out this image represents exactly the finite $\Sigma$-quotients of
+$\pi_1(C_{\bar k})$; this is right exactness of completion, not an
+assumption that it preserves arbitrary kernels. The map to
+$\mathcal E_{\mathrm{cr}}$ factors through $\mathcal T_\Sigma$
+because its geometric image is pro-$\Sigma$. Consequently
+$\mathcal D\to\Pi_C$ is onto, with kernel exactly its inertia image,
+a quotient of $\mathbf Z_r(1)$.
+
+The fibre immersion $C-P\to X-D$, $x\mapsto(x,P)$, extends to a
+map of pairs transverse to $D$ with multiplicity one. In the local
+Kummer charts it takes the diagonal inertia to the actual cusp inertia
+with that multiplicity. A.DC3 shows that the latter is the whole
+$\mathbf Z_r(1)$ in $F_{\mathrm{cr}}$, and the geometric injection
+just proved embeds this fibre group into $E_{\mathrm{cr}}$. Thus inertia in (DC.6) has
+zero kernel in $\mathcal D$, proving the displayed short exact
+sequence of the statement. This argument also works for $r=2$.
+
+The actual arithmetic fibre induces a homomorphism
+\[
+ \Pi_{C-P,\mathrm{cr}}\longrightarrow
+ \mathcal E_{\mathrm{cr}}\times_{\Pi_C,s_P}G_k.
+\]
+It is an isomorphism on geometric kernels by the exact sequence
+proved above and the identity
+on $G_k$; comparison of short exact sequences makes it an isomorphism.
+Since $s_P$ is injective, the target is
+$\operatorname{pr}_2^{-1}(s_P(G_k))$. The local punctured henselian
+trait at $P$ gives the actual cusp decomposition subgroup. Its
+inertia is $\mathbf Z_r(1)$ by A.DC3 and its residue quotient is the
+whole $G_k$, retained injectively by the proper point section.
+Its map into $\mathcal D$ is the identity on these inertia and
+residue groups. The short exact sequence comparison therefore
+identifies it with the full inverse image of $s_P(G_k)$ in
+$\mathcal D$. Paths may be chosen in the same connected boundary
+tower for all points under comparison, so this statement uses one
+common $\mathcal D$ and does not assume point separation.
+
+Finally suppose $\gamma\in\Delta$ satisfies
+$\gamma s_P(g)\gamma^{-1}=s_Q(g)$ for every $g\in G_k$.
+Choose a geometric element $d\in\mathcal D$ mapping to $\gamma$.
+Conjugation by $d$ identifies the two fibre subgroups and their actual
+cusps. On the first proper coordinate it induces
+$\operatorname{Inn}(\gamma)$. The geometric subgroup of the $Q$-fibre
+surjects onto $\Delta$ under that first coordinate, so choose in it
+$e$ mapping to $\gamma^{-1}$. Then conjugation by $ed$ is over the
+identity of $\Pi_C$ and $G_k$. It carries the first actual cusp to
+$e$ times the second cusp times $e^{-1}$, a geometric conjugate.
+All choices change the resulting identifications only by the geometric
+inner conjugacies explicitly allowed in the statement.
+\end{proof}
+
+\paragraph{Dependency conclusion for G1(ii).}
+The geometric proof of A.CF12 is A.DC1 plus the finite proper-cover
+and finite-core construction written out above, followed by A.DC2
+for exactness at the middle term. Its boundary and arithmetic clause
+uses A.DC4. The latter independently derives its geometric input
+from A.DC1--A.DC2 and uses A.DC3 for inertia; it does not depend on
+A.CF12. These four arguments are in characteristic $p$,
+including when $p\in\Sigma$; they invoke no lifting theorem and none
+of SGA~1 III 7.3--7.4 or XIII 2.9--2.11. SGA~1 XIII 5.2 is used for
+local tame Kummer charts only. In contrast, the original Stix route
+uses XIII 4.3--4.4, and the latter explicitly cites XIII 2.9 for its
+cohomological hypotheses. It proves the desired geometry without an
+actual lift, but does not by itself satisfy the stricter literal
+source-exclusion condition. The present direct central-induction proof
+removes that dependency rather than concealing it.

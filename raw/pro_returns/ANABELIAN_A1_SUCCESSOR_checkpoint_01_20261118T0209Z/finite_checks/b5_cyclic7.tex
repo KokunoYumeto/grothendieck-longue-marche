@@ -1,0 +1,160 @@
+\subsection{The completed characteristic-two cyclic-seven search}
+
+\begin{claim}{B.82}{Proved}{No supersingular factor in the bounded rational-branch family}
+Let $H/\overline{\mathbf F}_2$ be a smooth proper connected curve
+with a cyclic degree-seven map to the projective line. Suppose its
+branch locus is contained in $\mathbf P^1(\mathbf F _8)$ and has at
+most seven points. Then $J_H$ has no positive-dimensional
+supersingular isogeny factor, even geometrically. Consequently $H$
+has no nonconstant map to a supersingular curve of positive genus.
+For the normalized branch patterns with four through seven branch
+points, the exhaustive counts are respectively
+$620,2775,6666,6665$, and every one fails the supersingular-factor
+test. This settles precisely the finite search family, not B5.
+\end{claim}
+
+\begin{proof}
+Put $\mathbf F _8=\mathbf F _2[\alpha]/(\alpha^3+\alpha+1)$.
+There are at least two unbranched rational points on the projective
+line. A projective linear transformation over $\mathbf F _8$ can
+send two of them to $0,\infty$ and one branch point to $1$.
+Kummer theory, since seven is prime to two, and a change of cyclic
+generator give the geometric model
+\[
+ y^7=\prod_{i=0}^6(x-\alpha^i)^{e_i},\qquad
+ e_0=1,\quad e_i\in\{0,1,\ldots,6\},\quad
+                       \sum_i e_i=0\pmod7.                 \tag{FC.7}
+\]
+Indeed valuations give the exponents modulo seven, and a rational
+function with all valuations divisible by seven is a constant times
+a seventh power on the projective line. A constant becomes a seventh
+power over the algebraic closure. Thus this normalization loses no
+geometric isomorphism class in the stated family. Let $r$ be the
+number of nonzero exponents. The cases $r\le2$ have genus zero or
+are impossible; the case $r=3$ is treated below without a search.
+
+Let $\zeta$ be a primitive seventh root of unity and let
+$\chi_m:\mathbf F _{8^m}^{\times}\to\langle\zeta\rangle$
+be the norm-compatible character with $\chi_1(\alpha)=\zeta$.
+At an unramified finite point use $\chi_m(f(x))$, at a ramified
+point use zero, and at infinity use one, because the degree in
+(FC.7) is divisible by seven and its leading coefficient is one.
+Write $S_m$ for the sum of these values. The nontrivial character
+factor is
+\[
+ L(T)=\exp\left(\sum_{m\ge1}S_mT^m/m\right)
+     =\sum_{j=0}^{r-2}a_jT^j,
+ \qquad a_0=1,\qquad
+             j a_j=\sum_{m=1}^jS_ma_{j-m}.                 \tag{FC.8}
+\]
+Here is a direct degree bound. The finite Euler product is the
+Dirichlet $L$-series of the character obtained by evaluating monic
+polynomials at the $r$ branch points and taking the prescribed
+powers of the residue characters. For degree at least $r$, the
+values at these points range uniformly and independently, so the
+coefficient sum vanishes by the nontrivial character sum in any one
+coordinate. The character is trivial on constants because
+$\sum e_i=0$ modulo seven. Its finite $L$-polynomial therefore has
+the factor $1-T$: sum over all polynomials of degree below $r$,
+first grouping by their nonzero scalar multiple, to obtain zero
+again by uniform evaluation. Restoring the unramified Euler factor
+at infinity divides by $1-T$. This proves $\deg L\le r-2$.
+The six nontrivial factors are its conjugates under
+$\zeta\mapsto\zeta^j$, $1\le j\le6$; their product is the zeta
+numerator of $H$, since the invariant factor is the zeta function
+of the projective line. These statements also follow directly by
+multiplying the seven local Kummer Euler factors. Thus the finite
+sums through $m=r-2$ determine every root that needs testing.
+
+We next prove that the test list is complete. A supersingular
+Frobenius root $\lambda$ over $\mathbf F _8$ has
+$\lambda/\sqrt8$ a root of unity. To justify this implication,
+all its finite valuations, after this division, are zero: the
+Newton slopes at two are $1/2$, and the other valuations vanish
+because a Weil number has norm a power of two. All complex
+absolute values are one. An algebraic unit with this property is
+a root of unity: the monic polynomials of its powers have bounded
+integer coefficients and bounded degree, so only finitely many
+powers can occur among their roots. This is the needed elementary
+form of Kronecker's argument.
+
+Put $K=\mathbf Q(\zeta)$. If $\lambda$ is a root of one of our
+character factors, then $[K(\lambda):K]\le5$. The root of unity
+$\beta=\lambda^2/8$ has order $N$, whence
+\[
+ [K(\beta):K]=\frac{\varphi(\operatorname{lcm}(7,N))}{6}\le5.
+\]
+Write $N=7^a m$ with $7\nmid m$. Necessarily $a\le1$ and
+$\varphi(m)\le5$, so
+\[
+                 m\in\{1,2,3,4,5,6,8,10,12\}.
+\]
+After multiplying $\lambda$ by a power of $\zeta$, its square
+divided by eight has order $m$. The resulting number belongs to
+a cyclotomic field ramified only at primes dividing $2m$. That
+field is linearly disjoint from $K$: every nontrivial subfield of
+$K$ is ramified at seven. Its degree over $K$ is therefore its
+degree over $\mathbf Q$.
+
+Factoring
+$\operatorname{Res}_Z(\Phi_m(Z),U^2-8Z)$ for the nine displayed
+values of $m$ now gives exactly the following possible minimal
+polynomials of degree at most five:
+\[
+\begin{gathered}
+ U^2-8,\quad U^2+8,\quad U^2\pm4U+8,\\
+ U^4\pm8U^2+64,\qquad
+ U^4\pm4U^3+8U^2\pm32U+64,
+\end{gathered}                                                \tag{FC.9}
+\]
+where the two signs in the last expression agree. The remaining
+factors, for $m=5,8,10$, have degree eight and are irreducible.
+These small rational factorizations, with every coefficient, are
+also checked symbolically in the certificate. The listed factors
+are irreducible over $K$ by the same disjointness argument.
+They all have degree at least two, which proves the assertion for
+$r=3$ immediately.
+
+For each of the $16726$ normalized exponent vectors with $r\ge4$,
+the program computes (FC.8) in the integral basis
+$1,\zeta,\ldots,\zeta^5$ and tests divisibility by the reciprocal
+polynomial of each of (FC.9), after all seven changes
+$T\mapsto\zeta^jT$. No division succeeds. The complete character
+polynomials and every power-sum residue count are retained, not
+merely the absence of a search hit. The exact arithmetic uses the
+fields of degrees $3,6,9,12,15$ over $\mathbf F _2$ with respective
+binary moduli $11,67,529,4179,32771$; the full nonzero power table
+checks that each proposed modulus gives a field and each chosen
+generator has full order. The embeddings of $\alpha$ and norm
+characters are recorded as well. This exhausts (FC.7) and (FC.9),
+so no Frobenius root is supersingular.
+
+The conclusion persists under every finite constant extension:
+if $\lambda^n/8^{n/2}$ were a root of unity, then
+$\lambda/\sqrt8$ would be one. Finally a nonconstant map to a
+positive-genus supersingular curve induces pullback and norm on
+Jacobians whose composition is multiplication by the degree.
+Its Jacobian would therefore be a positive-dimensional
+supersingular isogeny factor, a contradiction. This argument also
+covers inseparable morphisms.
+\end{proof}
+
+\paragraph{Check record and exact boundary.}
+Checked only in this writing: GPT-6 Astra Pro, finite-checks reader,
+18 November 2026. We completed the supplied search, proved completeness
+of the previously heuristic eight-factor list, and retained all
+$16726$ character polynomials. The program
+\path{code/b5_cyclic7_complete.py} is an inspected adaptation of the
+supplied search, not a blind independent implementation. Its full
+output and compressed polynomial certificate are retained. A separate verifier, \path{code/b5_cyclic7_verify.py}, imports no
+producer code. It checks all Newton identities by cyclic convolution,
+then proves nondivisibility by descending polynomial division after
+specializing $\zeta$ at split primes. Of its $841596$ nondivisibility
+checks, $840805$ have a nonzero remainder modulo $29$ and the remaining
+$791$ have one modulo $43$. The leading coefficients are units in
+these fields, so each nonzero remainder is a valid characteristic-zero
+nondivisibility certificate. The effort
+setting is not separately exposed. Branch sets with eight or nine
+$\mathbf F _8$-points, branch points over larger fields, and arbitrary
+prime-to-two correspondences are outside this statement. In particular
+this negative finite family neither proves nor refutes B5.

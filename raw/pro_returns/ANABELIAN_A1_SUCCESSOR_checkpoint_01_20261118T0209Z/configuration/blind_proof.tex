@@ -1,0 +1,237 @@
+% S1 blind proof. Written from the parent-supplied statement alone, before
+% opening A_configuration.tex, any A.CF proof/audit, or the full task prompt.
+% Authoring model: GPT-6 Astra Pro; reasoning-effort metadata is not exposed.
+\section{Independent configuration proof (blind record)}
+\label{sec:configuration-blind}
+
+Throughout, $C$ is a connected smooth proper complex curve of genus $g\geq2$,
+$P\in C$, $\Sigma$ is a set of primes, and $r\in\Sigma$ is a prime.
+All fundamental groups in the first stage are discrete topological groups.
+Write
+\[
+ \Lambda=\pi_1(C-\{P\}),\quad B=\pi_1(C),\quad
+ \Gamma=\pi_1\bigl((C\times C)-\operatorname{diag}\bigr),\quad
+ \Delta=B^\Sigma.
+\]
+The superscript $\Sigma$ means maximal pro-$\Sigma$ completion, and
+$(-)^{(r)}$ means maximal pro-$r$ quotient (or completion, for a discrete
+group). Put $F=\Lambda^\Sigma$, $E=\Gamma^\Sigma$,
+$K_F=\ker(F\to\Delta)$, and $K_E=\ker(E\to\Delta\times\Delta)$.
+Define
+\[
+ N_F=\ker(K_F\to K_F^{(r)}),\quad
+ N_E=\ker(K_E\to K_E^{(r)}),\quad
+ F_{\mathrm{cr}}=F/N_F,\quad E_{\mathrm{cr}}=E/N_E.
+\]
+The subgroups $N_F,N_E$ are characteristic in the corresponding kernels,
+and hence closed normal in the ambient groups. The abbreviation
+``finite $\Sigma$-group'' means a finite group whose order has no prime
+divisor outside $\Sigma$.
+
+\subsection{The free-kernel auxiliary lemma}
+
+\begin{lemma}\label{lem:blind-free-kernel}
+Let $1\to L\to H\to B_0\to1$ be an exact sequence of discrete groups.
+Assume that $L$ is a free group of finite rank $d\geq2$ and that the image
+of conjugation $H\to\operatorname{Aut}(L/[L,L]L^r)$ is an $r$-group.
+Then $L^{(r)}\to H^{(r)}$ is injective. More precisely, for every finite
+$r$-group quotient $q:L\to Q$, there is a homomorphism $h:H\to T$ to a
+finite $r$-group with $\ker(h|_L)\subseteq\ker q$.
+\end{lemma}
+
+\begin{proof}
+Let $\widehat L=L^{(r)}$, the free pro-$r$ group of rank $d$.
+There is a descending characteristic neighbourhood basis $(U_n)$ at $1$
+in $\widehat L$: for instance, intersect the finitely many open normal
+subgroups of index at most $r^n$. Topological finite generation ensures
+that each such intersection is open. Set $P_n=\widehat L/U_n$.
+Conjugation by $H$ extends to continuous automorphisms of $\widehat L$
+and preserves every $U_n$.
+
+We use two standard elementary properties of finite/free pro-$r$ groups:
+(a) for a finite $r$-group $P$, the kernel of
+$\operatorname{Aut}(P)\to\operatorname{Aut}(P/\Phi(P))$ is an $r$-group;
+(b) a nonabelian free pro-$r$ group has trivial centre.
+For (a), an automorphism acting trivially on $P/\Phi(P)$ acts unipotently
+on the successive $r$-central quotients, and the kernel filtration has
+elementary abelian $r$-group subquotients. Equivalently, this is the
+automorphism form of the finite $r$-group basis theorem.
+For (b), the Magnus embedding sends a free basis $x_i$ to $1+X_i$ in
+$\mathbf F_r\langle\!\langle X_1,\ldots,X_d\rangle\!\rangle^\times$.
+A series commuting with $X_1$ belongs to $\mathbf F_r[[X_1]]$ (compare
+the coefficients of words in $fX_1=X_1f$); a series there also commuting
+with $X_2$ is constant. The image of every group element has constant
+term $1$, so a central element has image $1$, and injectivity of the
+Magnus embedding proves (b).
+
+The natural surjection
+$L/[L,L]L^r\twoheadrightarrow P_n/\Phi(P_n)$ is $H$-equivariant.
+By the hypothesis and (a), the image
+\[
+ T_n=\operatorname{im}\bigl(H\longrightarrow\operatorname{Aut}(P_n)\bigr)
+\]
+is a finite $r$-group. The restriction of this homomorphism to $L$
+is the inner-automorphism action of the image of $L$ on $P_n$.
+Consequently its kernel on $\widehat L$ is
+\[
+ Z_n=\{x\in\widehat L:[x,\widehat L]\subseteq U_n\},
+\]
+the inverse image of $Z(P_n)$. These are descending compact subgroups,
+and $\bigcap_n Z_n=Z(\widehat L)=1$ by (b). If
+$V=\ker(\widehat L\to Q)$, compactness implies $Z_n\subseteq V$ for some
+$n$: otherwise the nested nonempty compact sets
+$Z_n\cap(\widehat L-V)$ would have nonempty intersection.
+Thus $H\to T_n$ has the asserted domination property.
+The maps to all finite $r$-groups $T_n$ factor through $H^{(r)}$ and
+separate points of $L^{(r)}$, proving injectivity.
+\end{proof}
+
+\begin{remark}
+No residual-$r$ hypothesis on $B_0$ is required. A proof using only
+$H\to\operatorname{Aut}(L/R)$ for one prescribed quotient $L/R$ would
+lose the centre of $L/R$; the shrinking central preimages $Z_n$ above
+are the step that repairs this issue. The rank assumption is material:
+it is precisely what gives a centreless free pro-$r$ group.
+\end{remark}
+
+\subsection{The finite cover and its homological monodromy}
+
+Let $A$ be any finite $\Sigma$-quotient of $B$, and let
+$f:C_A\to C$ be its connected finite unramified Galois cover. Its genus
+is $1+|A|(g-1)\geq2$. Pulling the configuration space back along
+$f\times f$ gives
+\[
+ U_A=(C_A\times C_A)-\bigcup_{a\in A}\Gamma_a,
+ \qquad \Gamma_a=\{(a y,y):y\in C_A\}.
+\]
+The graphs are disjoint, since the deck action is free. Projection to
+the second factor is a locally trivial bundle with fibre
+$C_A-\{a y:a\in A\}$. The complement $U_A$ is connected and is a
+Galois cover of the original configuration space with group $A\times A$.
+Writing $H_A=\pi_1(U_A)$ and
+$L_A=\pi_1(C_A-\{a y:a\in A\})$, we obtain
+\[
+ 1\longrightarrow L_A\longrightarrow H_A
+ \longrightarrow\pi_1(C_A)\longrightarrow1,
+ \qquad \Gamma/H_A\simeq A\times A.
+\]
+The exactness on the left uses $\pi_2(C_A)=0$. The group $L_A$ is free of
+rank $2g(C_A)+|A|-1\geq2$. With compatible fibre base points,
+\[
+ L_A=\Lambda\cap H_A
+   =\ker\bigl(\Lambda\longrightarrow B\longrightarrow A\bigr).
+\]
+
+Let $W=H_1(L_A,\mathbf F_r)$ and $V=H_1(C_A,\mathbf F_r)$.
+The homology sequence for deleting the $|A|$ points gives the exact
+sequence of monodromy modules
+\[
+ 0\longrightarrow M_A\longrightarrow W\longrightarrow V\longrightarrow0,
+ \qquad M_A=\mathbf F_r[A]\big/\mathbf F_r\Bigl(\sum_{a\in A}e_a\Bigr).
+\]
+The diagonal map $\mathbf F_r\to\mathbf F_r[A]$ is injective in every
+characteristic: its image of $1$ is the nonzero vector with all entries
+$1$. In particular, this argument never divides by $|A|$.
+All graphs are globally labelled sections, so monodromy fixes every
+peripheral class and acts trivially on $M_A$. After filling the punctures,
+the family is the product $C_A\times C_A\to C_A$, so it acts trivially
+on $V$ as well. A vector-space splitting of the displayed sequence
+identifies its monodromy with a subgroup of
+\[
+ \left\{\begin{pmatrix}1&u\\0&1\end{pmatrix}:u\in
+ \operatorname{Hom}_{\mathbf F_r}(V,M_A)\right\}.
+\]
+This group is the additive elementary abelian $r$-group
+$\operatorname{Hom}(V,M_A)$. No equivariant splitting is asserted or
+needed. Thus conjugation by $H_A$ has $r$-group image on
+$L_A/[L_A,L_A]L_A^r$, and Lemma~\ref{lem:blind-free-kernel} applies.
+
+\subsection{Domination of an arbitrary cuspidally pro-$r$ fibre quotient}
+
+Let $q:F_{\mathrm{cr}}\twoheadrightarrow Q$ be a finite continuous
+quotient. Denote by $R$ the image of $K_F$ in $Q$; this is an $r$-group.
+The quotient $Q/R$ is a finite $\Sigma$-quotient of $\Delta$.
+Choose a finite $\Sigma$-quotient $\Delta\twoheadrightarrow A$ through
+which $\Delta\twoheadrightarrow Q/R$ factors. One may simply take
+$A=Q/R$, although taking a larger quotient is useful for simultaneous
+domination. Then the subgroup $L_A\subset\Lambda$ defined above maps
+under $q$ into the finite $r$-group $R$.
+
+The auxiliary lemma supplies a finite $r$-group quotient of $H_A$ whose
+kernel $D\trianglelefteq H_A$ satisfies
+$D\cap L_A\subseteq\ker(q|_{L_A})$.
+As $H_A\trianglelefteq\Gamma$ has finite index, form the finite core
+\[
+ D^\circ=\bigcap_{\gamma\in\Gamma/H_A}\gamma D\gamma^{-1}.
+\]
+Here one representative for every coset is sufficient: normality of
+$D$ in $H_A$ makes the intersection independent of that choice.
+Then $D^\circ\trianglelefteq\Gamma$, and
+$H_A/D^\circ$ embeds in a finite product of conjugates of the finite
+$r$-group $H_A/D$. Hence it is an $r$-group and
+\[
+ 1\longrightarrow H_A/D^\circ\longrightarrow
+ T:=\Gamma/D^\circ\longrightarrow A\times A\longrightarrow1
+\]
+is exact. In particular $T$ is a finite $\Sigma$-group.
+Moreover $D^\circ\cap\Lambda\subseteq L_A$, and therefore
+\[
+ D^\circ\cap\Lambda
+ \subseteq D\cap L_A\subseteq\ker(q|_\Lambda).
+\]
+Thus the image of $\Lambda$ in $T$ surjects onto $Q$.
+
+The quotient $\Gamma\to T$ extends uniquely to $E\to T$.
+Its composite to $A\times A$ factors through $\Delta\times\Delta$,
+so $K_E$ has $r$-group image in $T$. The universal property of maximal
+pro-$r$ quotients implies $N_E\subseteq\ker(E\to T)$; hence this is
+a quotient of $E_{\mathrm{cr}}$. Its restriction to the fibre factors
+through $F_{\mathrm{cr}}$ for the same reason. The inclusion of kernels
+proved on dense $\Lambda$ implies domination on the profinite fibre:
+the continuous map from the image of $F_{\mathrm{cr}}$ in $T$ to $Q$
+exists because both target groups are finite and the maps agree on
+the dense image of $\Lambda$.
+We have proved the asserted strong finite-quotient statement, with
+exact quotient $A\times A$ and an $r$-group kernel.
+
+\subsection{Right exactness and the claimed short exact sequence}
+
+The discrete Fadell--Neuwirth sequence is
+\[
+ 1\longrightarrow\Lambda\longrightarrow\Gamma
+ \overset{\operatorname{pr}_2}{\longrightarrow} B\longrightarrow1.
+\]
+For completeness, maximal pro-$\Sigma$ completion is right exact:
+if $J$ is the closed image of $F\to E$, then finite $\Sigma$-quotients
+of $E/J$ are exactly finite $\Sigma$-quotients of $\Gamma$ killing
+$\Lambda$, hence exactly finite $\Sigma$-quotients of $B$.
+It follows that $E/J\simeq\Delta$ and
+$J=\ker(E\to\Delta)$. The image is closed because $F$ is compact.
+
+The fibre map $F\to E$ takes $K_F$ into $K_E$.
+Since $K_E/N_E$ is pro-$r$, it therefore induces a continuous map
+$i:F_{\mathrm{cr}}\to E_{\mathrm{cr}}$.
+For every finite quotient of $F_{\mathrm{cr}}$, the previous subsection
+constructed a finite quotient of $E_{\mathrm{cr}}$ dominating it on
+the fibre. Consequently $\ker i$ lies in the kernel of every finite
+quotient of $F_{\mathrm{cr}}$, and $i$ is injective.
+Finally $N_E\subseteq K_E\subseteq J$, so the surjection
+$E\to\Delta$ descends to $E_{\mathrm{cr}}\to\Delta$ with kernel
+$J/N_E$, which is precisely the image of $i$. Hence
+\[
+ \boxed{\quad1\longrightarrow F_{\mathrm{cr}}
+ \longrightarrow E_{\mathrm{cr}}
+ \overset{\operatorname{pr}_2}{\longrightarrow}\Delta
+ \longrightarrow1\quad}
+\]
+is exact.
+
+\paragraph{Scope of this blind record.}
+This establishes the complex-topological statement for every prime set
+$\Sigma$ and every $r\in\Sigma$. It makes no assertion yet about
+specialization to characteristic $p$, especially when $p\in\Sigma$.
+That is a separate transport problem requiring its own geometric and
+source audit. No comparison with the pre-existing proof was used in
+constructing this record. The standard group-theoretic facts isolated
+inside the auxiliary lemma must be given verified references in the
+subsequent source audit.

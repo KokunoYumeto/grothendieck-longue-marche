@@ -1,0 +1,484 @@
+\subsection{An independent finite separation certificate}
+
+\begin{claim}{A.50}{Proved}{A common cyclic-nineteen witness for the two characteristic-two points}
+Let
+\[
+ C/\mathbf F _2:\quad y^2+x(x+1)y=x^5+1,
+ \qquad P=(0,1),\quad Q=(1,0),\quad O=\infty.
+\]
+Set $L=\mathbf F _8=\mathbf F _2[t]/(t^3+t+1)$ and $J=J_{C_L}$.
+Then $\#J(L)=76$ and $H=J(L)[2^\infty]$ has order four.
+The Lang map $F_8-1:J\longrightarrow J$ factors as
+\[
+ J\longrightarrow J/H\xrightarrow{\lambda}J,
+ \qquad \deg\lambda=19.
+\]
+Pulling $\lambda$ back along $j_P:R\mapsto[R-P]$ gives a connected,
+constant cyclic, finite \emph{\'etale} cover $D\to C_L$ of degree
+nineteen, with the chosen point $(P,0)$ above $P$. Its fibre above $Q$
+also splits completely. It has genus twenty and
+\[
+ \frac{\#J_D(L)}{\#J(L)}=12284193340665686881,
+\]
+an odd integer. In particular this cover is a class-number witness at
+both $P$ and $Q$, independent of the proof of the point-section theorem.
+The same construction based at any of the nine points of $C(L)$ is a
+class-number witness. Its relative class number is the displayed integer
+at $P,Q,O$ and is $81428104953590501$ at each of the other six points.
+\end{claim}
+
+\begin{proof}
+We give the finite data, their interpretation, and the collision criterion.
+First we check the geometric model. The partial derivative with respect
+to $y$ is $x(x+1)$. At its zeros the derivative with respect to $x$
+is $y+x^4$, which equals one at both points on the curve. Thus the
+affine model is smooth. Dividing by $x^2(x+1)^2$ gives the
+Artin--Schreier equation for $y/(x(x+1))$. Its poles at $1$ and
+infinity are simple; at zero the pole of order two becomes simple
+after subtracting $(1/x)^2+1/x$. Thus there are precisely three
+simple poles. Their different exponents are two, and
+Riemann--Hurwitz gives genus two. There is a unique ramified point
+at infinity. The degree-two hyperelliptic pencil has canonical class
+$2O$; equivalently the regular differential $dx/(x(x+1))$ has divisor
+$2O$.
+Write an element of $L$ as the integer whose binary digits are its
+coefficients in $1,t,t^2$. In that convention the points, in the order
+used below, are
+\[
+ (0,1),(1,0),(3,2),(3,4),(5,4),(5,6),(7,2),(7,6),O.
+\]
+Direct enumeration over $\mathbf F _2,\mathbf F _4,\mathbf F _8,
+\mathbf F _{64}$ gives respectively $3,3,9,87$ points. The genus-two
+identity
+\[
+ \#J(\mathbf F _q)
+       =\tfrac12\bigl(\#C(\mathbf F _q)^2+
+                           \#C(\mathbf F _{q^2})\bigr)-q
+\]
+follows from the first two Newton identities and the reciprocal Weil
+polynomial. At $q=8$ it gives $76$. An independent enumeration of all
+reduced Mumford representatives gives exactly seventy-six as well.
+Here a representative is $(u,v)$ with $u$ monic of degree at most two,
+$\deg v<\deg u$, and $u\mid v^2+(x^2+x)v+x^5+1$.
+The program gives every representative and the whole addition table;
+it checks all $76^3$ associativity triples and all inverses.
+
+We specify the arithmetic sufficiently to reproduce that table.
+For $D_i=(u_i,v_i)$ put
+\[
+ d=\gcd(u_1,u_2,v_1+v_2+h),\qquad
+ s_1u_1+s_2u_2+s_3(v_1+v_2+h)=d,
+ \quad h=x^2+x,
+\]
+and form
+\[
+ u=\frac{u_1u_2}{d^2},\qquad
+ v=\frac{s_1u_1v_2+s_2u_2v_1+s_3(v_1v_2+f)}d\pmod u,
+ \quad f=x^5+1.
+\]
+While $\deg u>2$, replace $u$ by the monic associate of
+$(f+hv+v^2)/u$ and $v$ by $h+v$ modulo this new polynomial.
+These formulas are the ideal product and reduction for the quadratic
+algebra $L[x,y]/(y^2+hy-f)$: cancellation of the common ideal is
+encoded by the displayed Bezout relation, and replacing the ideal by
+its complementary factor in the norm gives the reduction formula.
+All divisions have zero remainder in the retained execution.
+
+Multiplication by four maps the seventy-six representatives onto a
+cyclic group of order nineteen with kernel $H$. Choose the generator
+specified in the JSON certificate; taking discrete logarithms after
+multiplication by four gives a homomorphism
+$\chi:J(L)\twoheadrightarrow\mathbf Z/19$. Its table is checked on
+all $76^2$ pairs. On the displayed points its values on $[R-P]$ are
+\[
+       0, 0, 1, 18, 7, 12, 8, 11, 0.                 \tag{FC.1}
+\]
+The same list holds with $Q$ or $O$ as base point. Direct Mumford
+arithmetic checks that $[P-Q]$ is nonzero of exact order two.
+Geometrically, $\operatorname{div}(x/(x+1))=2P-2Q$, since the two
+points are ramification points of the degree-two $x$-map; a principal
+divisor $P-Q$ would give a degree-one map to the projective line,
+contradicting the genus. This also proves its exact order without
+relying on the table.
+
+The Lang map is separable, with constant kernel $J(L)$. Quotienting its
+source by $H$ leaves a separable isogeny with constant kernel
+$J(L)/H$ of order nineteen. The Abel map induces the isomorphism on
+prime-to-characteristic geometric abelian fundamental groups established
+in the Kummer compatibility argument. Its pullback is therefore a
+geometrically connected cyclic cover. The point $P$ splits by
+construction. Equation (FC.1) shows that $Q$ splits too. Equivalently,
+the Frobenius translation on its fibre is $\chi([Q-P])=0$.
+Riemann--Hurwitz gives $g(D)=1+19(g(C)-1)=20$.
+
+For completeness we compute the relative class number, not only its
+parity. For a nontrivial character $\zeta^\chi$ of the cyclic deck
+group, expand the unramified Euler product by effective divisors.
+The resulting polynomial in genus two is
+\[
+ L_P(\chi,T)=1+
+   \left(\sum_{R\in C(L)}\zeta^{\chi([R-P])}\right)T
+       +8\zeta^{\chi([K_C-2P])}T^2.
+\]
+Indeed Riemann--Roch makes every coefficient above degree two vanish
+and gives the displayed coefficient of degree two; the sum of a
+nontrivial character over $J(L)$ is zero. The canonical class is
+$2O=2P$, so the last root of unity is one. Therefore
+\[
+ L_P(\chi,1)=12+\zeta+\zeta^{18}+\zeta^7+
+                      \zeta^{12}+\zeta^8+\zeta^{11}.
+\]
+Factoring the regular-representation Euler factor at each closed point
+gives $Z(D,T)/Z(C,T)=\prod_{i=1}^{18}L_P(\chi^i,T)$. Evaluation at
+one gives the asserted class-number ratio. The independent integer
+resultant is
+\[
+ \operatorname{Res}_Z\left(\sum_{j=0}^{18}Z^j,
+      12+Z+Z^{18}+Z^7+Z^{12}+Z^8+Z^{11}\right)
+           =12284193340665686881.
+\]
+There is also a short parity check: $2$ has order eighteen modulo
+nineteen, so the first polynomial is irreducible over $\mathbf F _2$;
+the second polynomial reduces to six nonzero monomials and is not
+its multiple. For the other base points, subtract the corresponding
+entry of (FC.1) from every exponent and use
+$\chi([K_C-2R])=-2\chi([R-O])$. The same finite resultant calculation
+gives the second integer in the statement. Each is odd.
+
+We finish by proving why an odd relative class number excludes a
+collision, without invoking A1. If the two sections of $C_L$ were
+geometrically conjugate, choose an invariant geometric path between
+their base points. Its lift to the pointed cyclic cover produces an
+$L$-rational $Q'$ above $Q$ and geometrically conjugate sections at
+$P',Q'$. The Kummer compatibility applied on $D$ implies
+$T=[Q'-P']\in J_D(L)[2^\infty]$. The class is nonzero because the
+Abel map of a positive-genus smooth proper curve is injective on
+geometric points.
+
+Let $B=(\ker(J_D\to J))^0$. Pullback followed by norm is
+multiplication by nineteen, and $J\times B\to J_D$ is an isogeny.
+Thus $\#B(L)$ is exactly the computed odd ratio. On the rational
+two-primary group the averaging idempotent
+$19^{-1}\sum_{g\in\mathbf Z/19}g$ has complementary image in
+$B(L)[2^\infty]=0$. Hence every deck transformation fixes $T$.
+For a generator $g$ this gives the equivalence of the distinct disjoint
+effective divisors $gQ'+P'$ and $Q'+gP'$. They define a degree-two
+pencil. Such a pencil on a curve of positive genus in characteristic
+two is separable: a purely inseparable degree-two map to the projective
+line would identify the square subfield with a rational function
+field and force genus zero. Thus $D$ is hyperelliptic. Its unique
+hyperelliptic involution is central in its automorphism group. The
+order-nineteen deck transformation descends to an order-nineteen
+automorphism of the projective line. A fixed point of this latter
+automorphism has at most two geometric points above it, and an
+odd-order permutation fixes both. This contradicts the free action
+of the nonidentity deck transformation on an \emph{\'etale} cover.
+All implications used in this finite test have now been proved.
+\end{proof}
+
+\paragraph{Check record.}
+Checked only in this writing: GPT-6 Astra Pro, finite-checks reader,
+18 November 2026. We wrote independent finite-field and divisor-class
+arithmetic, enumerated the full group, checked the full operation and
+character tables, and computed integer resultants. A second program
+recomputed every addition using plain integer polynomial arithmetic
+and all nine norms by integer Bareiss determinants. The effort setting
+is not separately exposed by the runtime. Inputs, outputs, group
+tables and cover definitions are in
+\path{code/s2_f8_witness.py} and \path{code/s2_f8_witness.json}.
+
+\subsection{A finite nonnilpotent test of the relative configuration sequence}
+
+\begin{claim}{A.51}{Proved}{An explicit nonnilpotent cusp quotient and a dominating configuration quotient}
+Let $\Gamma=P_2(S_2)$ be the pure braid group on two points of a
+closed oriented genus-two surface, and let
+$\Lambda=\langle a,b,c,d\rangle$ be its first fibre. For $p=2$,
+$r=5$, and $A=\mathbf Z/3$, the fibre has a quotient
+\[
+ Q=\mathbf F _5^2\rtimes\mathbf Z/3,
+ \qquad \sigma|_{\mathbf F _5^2}=
+ S=\begin{pmatrix}0&-1\\1&-1\end{pmatrix},
+ \qquad |Q|=75,
+\]
+in which the normal cusp subgroup is $\mathbf F _5^2$ and is
+noncentral. An explicitly specified finite quotient $T$ of $\Gamma$
+has order $9\cdot5^{40}$ and a normal exponent-five subgroup of
+order $5^{40}$ and nilpotency class three with quotient $A\times A$. Its
+restriction to $\Lambda$ dominates $Q$. Consequently the two maps
+factor through the respective cuspidally pro-five groups over their
+pro-odd proper quotients. This is a nonnilpotent finite test of the
+relative configuration sequence.
+\end{claim}
+
+\begin{proof}
+We use Bellingeri's Theorem 1.2 \citep[Theorem~1.2]{Bellingeri2004} for a closed oriented surface of
+genus $g\ge1$, specialized to $g=n=2$. This gives generators
+$a,b,c,d,\sigma$ for the full braid group. Its four same-generator,
+four different-handle, two mixed same-handle, and one surface
+relations are transcribed in the input certificate. Put
+$t=[a,b^{-1}][c,d^{-1}]=\sigma^2$ and
+$A_i=\sigma x_i\sigma^{-1}$, where
+$(x_1,x_2,x_3,x_4)=(a,b,c,d)$. Index-two Reidemeister--Schreier
+rewriting with representatives $1,\sigma$ gives a presentation of
+$\Gamma$ with the eight generators $x_i,A_i$. Rewriting each of
+the eleven relations and its $\sigma$-conjugate gives twenty-two
+relators. During the rewriting, a positive $\sigma$-edge from the
+second coset contributes $t$, a negative $\sigma$-edge from the
+first contributes $t^{-1}$, and the other two edges contribute
+one. This completely specifies the presentation computation.
+
+Let $K$ be the kernel of $\Lambda\to\mathbf Z/3$ given by
+$a\mapsto1$ and $b,c,d\mapsto0$. The cover of the compact surface
+is the degree-three cover $C'\to C$; its punctured fibre has three
+punctures and free group $K$ of rank ten. Representatives
+$1,a,a^2$ give a free basis by all positively oriented Cayley edges
+except the first two $a$-edges. The program retains the ten resulting
+free words. Define
+\[
+ P=K/\bigl(\gamma_3(K)K^5\bigr).
+\]
+This is the free class-two exponent-five group on ten generators,
+of order $5^{55}$. A concrete model is
+\[
+ P=V\oplus\bigwedge^2V,
+ \quad (v,z)(w,u)=(v+w,z+u+\tfrac12v\wedge w),
+ \quad V=\mathbf F _5^{10}.
+\]
+Every automorphism used below is specified by two matrices $(M,B)$,
+of sizes $10\times10$ and $45\times10$, respectively, acting by
+\[
+              (v,z)\longmapsto(Mv,(\bigwedge^2M)z+Bv).
+                                                               \tag{FC.2}
+\]
+The eight pairs of matrices in the certificate thus specify elements
+of a concrete finite matrix group, not formal symbols.
+
+For the first four generators, use the action on $K$ by conjugation
+with $x_i$. For the second four, the point-push words are as follows:
+write $u_i=t x_i^{-1}t x_i t^{-1}$ and $w_i=u_i^{-1}t$.
+They send $x_i$ to $t x_i t^{-1}$. If $i$ is odd, the partner
+$x_{i+1}$ goes to $t x_{i+1}t^{-1}u_i$; if $i$ is even,
+$x_{i-1}$ goes to $x_{i-1}t^{-1}$. Earlier handles are fixed,
+and later handles are conjugated by $w_i$. These formulas follow
+by rewriting Bellingeri's same-handle and different-handle relations.
+For an independently checkable safeguard, we do not rely on that
+derivation alone: substituting the eight finite matrices into all
+twenty-two relators gives the identity, exactly over $\mathbf F _5$.
+Thus they define a homomorphism
+$\rho:\Gamma\to\operatorname{Aut}(P)$ even independently of
+any statement about automorphisms of a free group.
+
+Append the two deck coordinates
+$\delta:\Gamma\twoheadrightarrow(\mathbf Z/3)^2$, assigning
+$(1,0)$ to $a$, $(0,1)$ to $A_1$, and zero to the other six
+generators. Put $T=\operatorname{im}(\rho,\delta)$.
+This defines a finite group explicitly as the subgroup generated
+by eight specified matrices with their specified deck coordinates.
+Let $H_0=\ker\delta$. Geometrically it is the fundamental group of
+$C'\times C'$ minus the three deck graphs. Representatives
+$a^iA_1^j$ for $0\le i,j<3$ give seventy-two Schreier generators
+of $H_0$. Their linear parts are all $1+N_h$. If $W\subset V$
+is the two-dimensional space spanned by the three cusp classes,
+the certificate checks
+\[
+ N_h(V)\subset W,\qquad N_h(W)=0
+ \quad\hbox{for all seventy-two generators}.
+\]
+It checks all $72^2$ identities $N_hN_{h'}=0$ as well; the span of
+the $N_h$ has dimension four. Therefore the linear image of $H_0$
+is an elementary abelian five-group. The kernel of
+$\operatorname{Aut}(P)\to\operatorname{GL}(V)$ in (FC.2) is
+$\operatorname{Hom}(V,\bigwedge^2V)$, also a five-group.
+It follows that $\rho(H_0)$ is a five-group. We now determine its
+order, without enumerating all of its elements.
+
+Here is the finite logarithm argument used for this purpose. If $I$
+is an associative algebra over $\mathbf F _5$ with $I^5=0$, the
+polynomials
+\[
+ \log(1+D)=D-\frac{D^2}{2}+\frac{D^3}{3}-\frac{D^4}{4},
+ \qquad
+ \exp(X)=1+X+\frac{X^2}{2}+\frac{X^3}{6}+\frac{X^4}{24}
+\]
+are inverse. Multiplication is transported to the BCH polynomial
+through bracket degree four; its denominators divide $24$, so they
+are invertible in the field. For matrices $g_i=\exp(X_i)$, their
+generated group is exactly $\exp(L)$, where $L$ is the Lie algebra
+generated by the $X_i$. To prove the reverse inclusion, which is the
+nontrivial direction, first work in the free nilpotent Lie algebra
+of class four on the symbols $X_i$. Give a bracket word its ordinary
+bracket length. The logarithm of an iterated group commutator equals
+its corresponding Lie bracket modulo larger bracket lengths.
+Integer powers supply all five scalar multiples. Products add the
+terms of the current smallest length modulo larger lengths.
+Consequently every homogeneous linear combination of bracket length
+$j$ can be realized modulo terms of length $j+1$. Starting at $j=1$
+and correcting successively through $j=4$ realizes the exponential
+of every Lie element exactly. Mapping this free algebra to $I$
+proves the assertion for the matrices in question. In particular,
+$|\langle g_i\rangle|=5^{\dim L}$. The same argument identifies
+successive lower central factors on the group and Lie sides.
+
+To check the hypothesis, put $E_h=\bigwedge^2(1+N_h)$. The
+operator $E_h-1$ lowers the filtration
+\[
+ \bigwedge^2 V\supset W\wedge V\supset\bigwedge^2 W\supset0
+\]
+by one step. The operators $N_h$ lower $V\supset W\supset0$
+by one step. The full augmentation matrices have blocks
+$\left(\begin{smallmatrix}N_h&0\\ B_h&E_h-1\end{smallmatrix}\right)$.
+A product of five such matrices is zero: a nonzero block path uses
+at most one $N$ step, at most one $B$ step, and at most two $E-1$
+steps. Thus the algebra $I$ they generate satisfies $I^5=0$.
+
+The certificate computes the seventy-two logarithms, whose linear
+span has dimension twenty, and closes their span under brackets.
+The resulting Lie algebra has dimension forty. Its lower central
+series has dimensions
+\[
+                   40,\quad24,\quad4,\quad0.
+\]
+The retained basis and all bracket reductions are exact over
+$\mathbf F _5$. Hence $\rho(H_0)$ has order $5^{40}$, exponent
+five, and nilpotency class exactly three. Since the appended deck
+coordinates are surjective,
+\[
+             |T|=9\cdot5^{40}
+                =81854523159563541412353515625.
+\]
+A second computation uses no logarithms. It constructs a common
+invariant flag of dimensions $19,41,47,55$, makes all seventy-two
+matrices unitriangular, and collects actual matrix commutators in
+increasing triangular pivot order. It obtains forty generators of
+order five. All pair commutators collect, as do all original
+generators. Collection terminates because every commutator raises
+the triangular pivot filtration. Distinct ordered products have
+distinct first unequal pivot coordinates, so their $5^{40}$ normal
+forms are distinct. This independently confirms the order.
+
+This construction also realizes the finite-core step of the relative
+completion proof. The subgroup
+$J_0=\ker(H_0\to\operatorname{Aut}(P))$ is invariant under
+$\Gamma$, since it is the intersection of $H_0$ with a homomorphism
+kernel. Thus its core over the nine cosets is already $J_0$.
+The subgroup $K$ is preserved by every generator, as the displayed
+words preserve its abelian degree-three quotient. Its quotient $P$
+is characteristic. Hence the core just used has precisely the
+cover, shear, and normality interpretation required by that proof.
+
+It remains to check domination of the nonnilpotent fibre quotient.
+Define $q:\Lambda\to Q$ by
+\[
+ a\mapsto(0,\sigma),\qquad b\mapsto((1,0),1),
+ \qquad c,d\mapsto1.
+\]
+The matrix $S$ has order three and no invariant line over
+$\mathbf F _5$. The images generate all seventy-five elements of
+$Q$. The nonzero image of $t$ and its $S$-translate span the
+normal subgroup $\mathbf F _5^2$, so this is exactly the normal
+cusp subgroup. In particular $Q$ is nonnilpotent. The restriction
+of $q$ to $K$ factors through a rank-two linear map
+$\lambda:V\twoheadrightarrow\mathbf F _5^2$; its matrix is
+provided in the certificate.
+
+Suppose $x\in\Lambda$ is killed by $(\rho,\delta)$. Its first
+deck coordinate shows that $x\in K$. Its action on $P$ is the
+inner action of its image. The centre of $P$ is exactly
+$\bigwedge^2V$: if $v\ne0$, choose $w$ independent of $v$, so
+$v\wedge w\ne0$. Equivalently the certificate computes rank ten
+for $v\mapsto(w\mapsto v\wedge w)$. Thus $x$ has zero image in
+$V$ and is killed by $\lambda$, hence by $q$. This proves the
+required kernel inclusion and therefore domination.
+
+Finally the kernel of the proper-product quotient maps into
+$\rho(H_0)$, a five-group. The maps therefore kill the kernels of
+the maximal pro-five quotients of the corresponding cusp groups.
+This proves the asserted factorization. No nilpotent quotient of
+the entire fibre has been substituted for $Q$.
+\end{proof}
+
+\paragraph{Check record.}
+Checked only in this writing: GPT-6 Astra Pro, finite-checks reader,
+18 November 2026, source inspection, explicit presentation rewriting,
+matrix computation, and the complete kernel argument above.
+The effort setting is not separately exposed by the runtime.
+A second program independently recomputed all eighty generator images
+in a truncated tensor algebra and verified all twenty-two relations
+as full $55\times55$ matrices. The source, all words, all matrices,
+all shear tests and the factor map
+are retained in \path{code/s3_nonnilpotent.py} and its JSON output.
+The two independent order methods and their full bases are in
+\path{code/s3_group_order.py} and \path{code/s3_order_collect.py},
+with their JSON certificates.
+
+\subsection{Independent reruns of the four retained finite claims}
+
+\begin{claim}{A.52}{Proved}{Agreement of the independent finite certificates}
+The finite assertions in A.7, A.12, A.27, and A.29 have been checked
+by a newly written program from their mathematical inputs, before
+opening their original program sources, and by rerunning those original
+programs. The two computations agree. More precisely:
+\begin{enumerate}
+\item The two integral rank-eighty-two homology matrices of A.7 are
+integrally conjugate by a supplied matrix of determinant $\pm1$.
+Their restricted matrices are
+$\left(\begin{smallmatrix}1&3\\0&1\end{smallmatrix}\right)$ and
+$\left(\begin{smallmatrix}1&0\\-3&1\end{smallmatrix}\right)$,
+and their product has the claimed nonzero minus-one eigenvector
+modulo five.
+\item The five transvections in A.12 agree entry by entry, generate
+$51840$ matrices, and the specified word has exact order five.
+\item The finite-field, point, orbit, and group-order calculations
+in A.27 agree: $129$ points over $\mathbf F _{128}$, $126$ of exact
+degree seven, and $|\operatorname{GL}_4(\mathbf F _3)|=24261120$.
+\item The group in A.29 has order $576$, the stated generators,
+commutator subgroup of order $64$, trivial complement core, and the
+specified order-seven automorphism. All $576^2$ product
+compatibilities hold.
+\end{enumerate}
+This statement concerns the finite certificates. The profinite and
+geometric consequences still require the separate proofs in the
+corresponding statements.
+\end{claim}
+
+\begin{proof}
+For A.7 we computed the induced action on the graph-cycle space of
+the Heisenberg cover using a breadth-first tree that uses positive
+generators only. Its eighty-two non-tree edges give coordinates.
+Substitution of the point-push words in each closed lifted word gives
+the integral action. The original program uses a different, signed
+tree. We therefore evaluated every original basis word in our basis,
+obtaining a matrix $U$ with determinant $\pm1$, and verified
+$M_{
+m new}U=UM_{
+m old}$ for both complete matrices. This
+explains the only coordinate differences; the mathematical data agree.
+
+For A.12 the independent computation starts from the geometric
+transvection formula on $\mathbf F _3^4$, with directions
+$e_1,e_2,e_3,e_4,e_1+e_3$ and coefficient two. Exhaustive multiplication
+gives $51840$ distinct matrices and five successive powers verify
+the exact order of the indicated word. The original program was
+separately rerun to check its derivation from full Schreier homology.
+We do not describe the independent calculation as a second derivation
+of all of its free-group words.
+
+For A.27 we implemented polynomial-basis binary-field arithmetic,
+verified $a^{127}=1$ for every nonzero element of the proposed
+field, enumerated its curve points, and computed the full seven-point
+Frobenius orbit. For A.29 we independently enumerated all elements
+of $\mathbf F _{64}\rtimes\mathbf Z/9$, all products required by
+the automorphism test, the generator orbit and the conjugate
+complement intersection. The complete outputs and comparisons are
+retained. All assertions are finite identities or exhaustive finite
+enumerations, so their retained programs constitute reproducible
+certificates for the assertions just listed.
+\end{proof}
+
+\paragraph{Check record.}
+Also checked in this writing, to the finite scope just stated:
+GPT-6 Astra Pro, finite-checks reader, 18 November 2026. The blind
+program hash, the precise scope of independence, the unmodified
+rerun inputs, all outputs, and the comparison are recorded in
+\path{S6_BLIND_PROTOCOL.json}, \path{code/independent_s6.py},
+and \path{code/s6_comparison.json}.

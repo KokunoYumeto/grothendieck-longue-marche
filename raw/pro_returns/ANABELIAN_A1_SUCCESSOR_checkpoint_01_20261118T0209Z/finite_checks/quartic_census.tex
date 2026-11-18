@@ -1,0 +1,169 @@
+\subsection{A complete pointed input census and first character fields}
+
+\begin{claim}{B.81}{Proved}{Pointed quartic representatives and the first possible character fields}
+There are exactly $3001$ pointed smooth plane-quartic isomorphism
+classes over $\mathbf F _3$, and exactly $94283$ over $\mathbf F _5$.
+Here a point is part of the object and is rational over the stated
+base field; isomorphisms preserve it. Complete equations, point
+counts over the first three extensions, and Weil polynomials are
+retained for every class.
+
+For each such pointed curve let $m_\ell$ be the least positive
+integer $m$ for which a nonzero character
+$J_C(\mathbf F _{q^m})\twoheadrightarrow\mathbf Z/\ell$ exists.
+For the smallest admissible odd prime, namely $\ell=5$ when $q=3$
+and $\ell=3$ when $q=5$, the exact distributions are
+\[
+\begin{array}{c|rrrrrr}
+q=3:\ m_5&1&2&3&6&8&24\\ \hline
+\text{classes}&650&515&49&86&327&350\\[2pt]
+m_5&31&56&62&72&168&504\\ \hline
+\text{classes}&255&47&261&79&73&309
+\end{array}
+\]
+and
+\[
+\begin{array}{c|rrrrr}
+q=5:\ m_3&1&4&8&13&56\\ \hline
+\text{classes}&41623&5163&19699&14400&13398.
+\end{array}
+\]
+These are first fields of existence of a nonzero constant character,
+not first fields of a class-number witness.
+\end{claim}
+
+\begin{proof}
+A smooth plane quartic is canonically embedded, so its abstract
+isomorphisms are exactly the projective linear transformations of
+its equation. Send the marked point to $P=(0:0:1)$ and its tangent
+to $Y=0$, then normalize the coefficient of $YZ^3$ to one. Its
+unique general form is
+\[
+\begin{split}
+ F={}&YZ^3+(aX^2+bXY+cY^2)Z^2\\
+     &+(dX^3+eX^2Y+fXY^2+gY^3)Z+Q_4(X,Y).
+\end{split}                                                   \tag{FC.10}
+\]
+The stabilizer is
+\[
+ (X,Y,Z)\longmapsto(AX+BY,CY,DX+EY+Z),\qquad A,C\ne0,
+                                                               \tag{FC.11}
+\]
+followed by division of the polynomial by $C$. Over $\mathbf F _3$
+this group has order $108$. Enumerate all $3^{12}=531441$ coefficient
+vectors and mark their full orbits under (FC.11).
+
+For $\mathbf F _5$ the following three slices suffice:
+\[
+\begin{array}{c|c|c|c}
+\text{tangent contact}&\text{fixed coefficients}&\text{free}&w\\ \hline
+2&a=1,\ b=c=d=0&8&2\\
+3&a=0,\ d=1,\ b=c=e=0&7&3\\
+4&a=d=0,\ u=1,\ b=c=v=0&6&4,
+\end{array}
+\]
+where $u,v$ are the coefficients of $X^4,X^3Y$ in $Q_4$.
+Here is a proof of completeness and uniqueness up to the stated
+residual group. The transformed first coefficients are
+\[
+\begin{aligned}
+a'&=aA^2/C,&b'&=3D+2aAB/C+bA,\\
+c'&=3E+aB^2/C+bB+cC,&d'&=2aA^2D/C+dA^3/C.
+\end{aligned}
+\]
+If $a\ne0$, choose $C=aA^2$, $D=-dA/(2a)$,
+$B=-A(3D+bA)/2$, then the unique $E$ for which $c'=0$.
+If $a=0,d\ne0$, choose $C=dA^3$, $D=-bA/3$, then the unique
+$B$ making $e'=3D^2+2bAD+3B/A+eA^2$ zero, and again the
+unique $E$ making $c'=0$.
+If $a=d=0$, smoothness forces $u\ne0$, since otherwise the tangent
+line is a component. Choose $C=uA^4$, $D=-bA/3$, then the unique
+$B$ making $v'=D^3+bAD^2+eA^2D+4B/A+vA^3$ zero and the unique
+$E$ making $c'=0$. All denominators are nonzero in characteristic
+five. Conversely these coefficient equations show that a map between
+two forms of the same slice has $C=A^w$ and $D=B=E=0$.
+Its action on the coefficient of $X^iY^jZ^{4-i-j}$ is therefore
+multiplication by $A^{i+wj-w}$. The residual group has order four.
+This reduces the enumeration to $5^8+5^7+5^6=484375$ forms under
+four diagonal transformations. The contact orders distinguish the
+three slices intrinsically.
+
+Smoothness is tested over the algebraic closure, not merely at
+rational points. In three variables, multiply each of the three
+cubic partial derivatives by every degree-four monomial and form
+the resulting $45\times36$ coefficient matrix in degree seven.
+The curve is smooth exactly when this matrix has rank $36$.
+Indeed Euler's identity has invertible coefficient four in both
+characteristics. A common nonzero zero of the partials makes degree
+seven nonzero in their homogeneous quotient. In the absence of such
+a zero the three cubic partials form a regular sequence in the
+three-variable polynomial ring. Its quotient has Hilbert series
+$(1+T+T^2)^3$ and hence no degree-seven part. These arguments prove
+both directions of the rank test.
+
+The complete enumeration gives $3001$ smooth orbits, with total
+orbit size $315360$, over $\mathbf F _3$. Over $\mathbf F _5$ the
+three slices give $75418,15626,3239$ smooth orbits. Their sum is
+$94283$. An orbit of size $s$ in a slice corresponds to $500s$
+forms in (FC.10), because the full stabilizer has order $2000$.
+The weighted total is $187512000$. These identities are checked
+by the program itself, and every smooth representative, its orbit
+size and contact order is retained in the output tables.
+
+For each representative, direct point enumeration gives
+$N_i=\#C(\mathbf F _{q^i})$ for $i=1,2,3$. The implementation
+uses the chart $Y=1$, in which (FC.10) is monic cubic in $Z$;
+precomputed exact cubic-root counts over the six small fields
+avoid repeated polynomial solving. The chart $Y=0$ is counted
+separately. The complete genus-three Frobenius polynomial is
+\[
+ H(U)=U^6+a_1U^5+a_2U^4+a_3U^3+qa_2U^2+q^2a_1U+q^3,
+\]
+where, putting $s_i=q^i+1-N_i$, Newton's identities give
+\[
+ a_1=-s_1,\qquad
+ 2a_2=s_1^2-s_2,\qquad
+ 3a_3=-(s_3+a_1s_2+a_2s_1).
+\]
+These are integer identities, so the divisions are taken before
+reduction modulo $\ell$.
+
+A nonzero quotient to $\mathbf Z/\ell$ exists exactly when
+$\ell$ divides the finite abelian group order
+$\#J_C(\mathbf F _{q^m})$. Modulo $\ell$ this order is
+$\prod_j(1-\lambda_j^m)$, where the $\lambda_j$ are the roots
+of $H$ in an algebraic closure of $\mathbf F _\ell$. Therefore
+\[
+ m_\ell=\min_f\operatorname{ord}(U\bmod f),                  \tag{FC.12}
+\]
+with $f$ ranging over the distinct monic irreducible factors of
+$H$ modulo $\ell$. This does not assume semisimplicity: the
+singularity of $F^m-1$, or simply its determinant, is enough.
+For a factor of degree $d$, the root order divides $\ell^d-1$;
+exact modular powering, removing prime divisors from that integer,
+computes the order. Every factor and order is retained. Applying
+(FC.12) to the full tables gives the stated distributions.
+The pointed Lang pullback realizes each resulting quotient with
+its unique split fibre at $P$, so the character existence has its
+usual geometric interpretation.
+\end{proof}
+
+\paragraph{Check record and boundary.}
+Also checked in this writing for the census totals carried from
+AS-A.72--AS-A.73, and checked only in this writing for the complete
+first-character-field distributions: GPT-6 Astra Pro, 18 November
+2026, finite-checks reader. The programs
+\path{code/pointed_quartic_census.cpp},
+\path{code/quartic_weil_census.cpp}, and
+\path{code/quartic_character_fields.py} were written from the
+mathematical descriptions, without access to the absent prior
+census programs or their large data files. Their equations, all
+point counts, Weil polynomials, factors and root orders are retained.
+The effort setting is not separately exposed.
+
+The large first degrees $56$ and $504$ show why a search through a
+few constant extensions cannot decide B6. This statement does not
+compute the required Cartier action on the new Jacobian parts at
+those fields. It also concerns quartics with a point over the base
+field; curves acquiring their first point only after extension
+remain part of the uncompleted universal question.

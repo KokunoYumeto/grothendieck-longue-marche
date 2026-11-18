@@ -1,0 +1,98 @@
+\subsection{Independent re-proof and the configuration proof comparison}
+
+The independent proof was written from the statement of A.CF2 and the
+hypothesis of A.CF1 before either earlier proof or any earlier audit was
+opened. Its preserved source is \path{work/configuration/blind_proof.tex},
+with SHA-256
+\begin{center}\footnotesize\ttfamily
+d435494f67de82bd06f08a04cc519501e739a7abf0f88dc3b8b42ef5c96c6ac9.
+\end{center}
+The comparison then checked every line 1--140 of
+\path{background/A1_checkpoint03/sections/A_configuration.tex}; the
+line-level record is \path{work/configuration/S1_line_comparison.tsv}.
+This is an independent re-proof by GPT-6 Astra Pro, followed by a
+targeted line-by-line comparison. It is not a claim of review by a
+different model family. The run is in Pro mode; a separate effort
+setting is not exposed.
+
+The proofs agree. The independent proof detects finite fibre quotients
+inside finite automorphism groups rather than first passing to the
+whole profinite automorphism group. To make this version completely
+self-contained, we record its group-theoretic details.
+Let $P$ be a nonabelian finitely generated free pro-$r$ group, and let
+$U_n$ be a decreasing characteristic open basis. Put $P_n=P/U_n$ and
+\[
+ Z_n=\{x\in P:[x,P]\subseteq U_n\}.
+\]
+The finite group
+$\ker(\operatorname{Aut}(P_n)\to\operatorname{Aut}(P_n/\Phi(P_n)))$
+is an $r$-group: it acts freely on the ordered lifts of a basis of
+$P_n/\Phi(P_n)$, a set of cardinality $|\Phi(P_n)|^d$.
+Each lift generates $P_n$, since otherwise its generated subgroup is
+contained in a maximal subgroup and its image cannot span the
+Frattini quotient. Freeness of the action and the orbit formula give
+the claim. Thus a group acting through an $r$-group on $P/\Phi(P)$
+has $r$-group image in every $\operatorname{Aut}(P_n)$.
+
+The centre of $P$ is trivial. For completeness the Magnus homomorphism
+sends a free basis $x_i$ to $1+X_i$ in
+$1+(X_1,\ldots,X_d)\mathbf F_r\langle\!\langle X_1,\ldots,X_d\rangle\!\rangle$.
+Its target is pro-$r$ under degree truncation, so the map exists by
+the universal property of $P$. For every finite $r$-quotient $Q$,
+substitution $X_i\mapsto q_i-1$ recovers the quotient in
+$\mathbf F_r[Q]^\times$. The augmentation ideal is nilpotent:
+choose a central element $z$ of order $r$, apply induction to
+$Q/\langle z\rangle$, and use $(z-1)^r=0$; if the quotient
+augmentation ideal has exponent $m$, the original ideal has exponent
+at most $mr$. Hence the substitution is defined on formal series,
+and separation by finite quotients proves injectivity of Magnus.
+A homogeneous polynomial commuting with $X_1$ has only the monomial
+$X_1^n$: a monomial beginning in another letter would contribute to
+$fX_1$ but not to $X_1f$; factor out $X_1$ and repeat.
+Commutation with $X_2$ eliminates every term of positive degree.
+A central Magnus unit therefore equals $1$.
+
+Consequently $\bigcap_nZ_n=Z(P)=1$. Given an open normal $V\subset P$,
+compactness implies $Z_n\subset V$ for some $n$. The finite
+$r$-group image of $H$ in $\operatorname{Aut}(P_n)$ has kernel on
+the fibre contained in $V$. This proves A.CF1 and its domination
+assertion without assuming residual-$r$ properties of the base.
+It also explains why using one prescribed finite fibre quotient
+alone would be insufficient: its centre could be lost. The earlier
+proof avoids that loss by using the whole centreless $P$, and is
+equally valid. The earlier proof supplies a more explicit argument
+for Magnus injectivity than the initially saved blind proof; the
+argument just given incorporates and verifies that detail.
+
+For A.CF2, the independent proof wrote the peripheral homology module
+explicitly as
+\[
+ M_A=\mathbf F_r[A]/\mathbf F_r\Bigl(\sum_{a\in A}e_a\Bigr).
+\]
+The vector in the denominator is nonzero in every characteristic.
+The monodromy is trivial on $M_A$ and on $H_1(C',\mathbf F_r)$,
+and hence consists of shears. This verifies the earlier assertion
+even when $r\mid|A|$; no averaging or equivariant splitting appears
+in either proof. The earlier choice $A=Q/R$ is sufficient; the blind
+proof permits any larger proper quotient, which gives the same
+conclusion and can dominate several fibre quotients simultaneously.
+
+Both proofs use the normal cover with deck group $A\times A$, the
+identity $\Lambda\cap\pi_1(U_A)=\pi_1(C'-a^{-1}(P))$, and the finite
+core over the cosets of that normal subgroup. The normal core has
+$r$-group kernel over $A\times A$, because it embeds in a product of
+conjugate $r$-group quotients. The image of $K_E$ lies in this kernel,
+so the quotient factors through $E_{\mathrm{cr}}$. The simultaneous
+finite image of the maps to $T$ and $Q$ verifies that fibre domination
+persists after completion. Finally both proofs derive middle and
+right exactness from the finite-quotient universal property of
+pro-$\Sigma$ completion. There is no appeal to left exactness of a
+completion functor. We found no error in A.CF1 or A.CF2.
+
+\paragraph{Check record.}
+A.CF1 and A.CF2 were also checked in this writing, by independent
+re-proof before access to the earlier proofs and by subsequent
+line-by-line comparison, on 18 November 2026. Their earlier checks
+are retained in the inherited check ledger. The direct
+characteristic-$p$ argument A.DC1--A.DC4 was checked only in this
+writing; it is logically separate from this blind comparison.
