@@ -1,0 +1,844 @@
+\subsection{Reconstructing the harmonic completed triple and its finite detector}
+
+The original proof of SECTIONS\_OVER\_Q A.134 and its mixed-exponent
+input A.90 are absent from the recovered sources.  The following
+construction replaces that missing dependency.  It uses the exact
+coefficients and the local centres needed in the supplied A.137 and
+A.139, but supplies a new, fully specified finite initialization.
+It does not claim to reproduce the unavailable historical certificate.
+Throughout this subsection put
+\[
+\begin{gathered}
+ h=\tfrac12,\quad R=\tfrac{529}{382},\quad
+ r=1119169,\quad Q=139r=155564491,\quad c=-\tfrac{338}{191},\\
+ (a_0,a_1,a_h)=\left(\tfrac{529}{382},\tfrac{147}{382},
+                     \tfrac{(13Q)^2}{191}\right),\qquad
+ d=7\cdot17Q=18512174429,\quad \rho=\tfrac{34}{7Q},\\
+ C^\circ:\quad T-c_i=a_iX_i^4\quad(i=0,1,h),\qquad
+ (c_0,c_1,c_h)=(0,1,h),\quad X_0X_1X_h\ne0,\\
+ S=\{2,3,7,13,17,23,139,191,r\}.
+\end{gathered}
+\tag{E.160.1}
+\]
+
+\begin{result}{E.160}{Proved}{A complete finite local and root-symbol initialization}
+The curve $C^\circ$ has an ordinary point with $T\ne c$ over every
+completion of $\mathbb Q$.  Its proper smooth model has genus $33$.
+The finite centres may be chosen with
+\[
+ T_2=31/2,\quad T_{17}=1+a_1 17^4,\quad
+ T_{139}=T_r=h+a_h,\quad
+ T_p=R\quad(p=3,7,13,23,191).
+\tag{E.160.2}
+\]
+There are choices of the fourth roots $X_{i,v}$ such that, for each
+of the two displayed generators $D$ in its row,
+\[
+\begin{array}{c|c|c}
+ i& D&\text{real sign of }X_i\\ \hline
+ 0&-1146,\ -382&-\\
+ 1&382,\ 191\cdot23\cdot13Q&+\\
+ h&191,\ -3&+
+\end{array}
+\qquad
+ \prod_v(X_{i,v},D)_v=1.
+\tag{E.160.3}
+\]
+All $X_{i,p}$ are units except $v_{17}(X_1)=1$ and
+$v_{457}(X_h)=1$.  Thus the rational normalizers
+$(b_0,b_1,b_h)=(1,17,457)$ make $X_{i,p}/b_i$ a unit at every
+finite prime and preserve all six product identities.
+\end{result}
+\begin{proof}
+The three coordinate functions have independent divisors modulo
+four.  Hence the geometric cover has degree $4^3=64$.  At each of
+$0,1,h,\infty$ it has $16$ points of ramification index four.
+Riemann--Hurwitz gives $2g-2=-128+4\cdot48=64$, so $g=33$,
+with $64$ geometric boundary points.  At every prime outside $S$
+it has tame good reduction.  The trace formula and Weil bound
+\citep[(1.5.1), p.~275, and Theorem (1.6), p.~276]{RootDeligne1974}
+give
+\[
+ \#C^\circ(\mathbb F_p)\ge p+1-66\sqrt p-64>0
+ \qquad(p>5000).
+\tag{E.160.4}
+\]
+Such an interior residue point lifts by Hensel's lemma, with all
+three roots units.  Its $T$-coordinate can be chosen rational and
+different from $c$: a sufficiently small rational perturbation
+stays in the same three open fourth-power classes.
+
+The retained exact certificate
+\path{code/check_harmonic_audit.py} and its JSON output enumerate
+all $661$ primes $p\le5000$ outside $S$.  For $660$ of them they
+record the least residue $t$ for which all three nonzero ratios
+$(t-c_i)/a_i$ are fourth powers.  At the remaining prime $457$
+both $(h-c_0)/a_0$ and $(h-c_1)/a_1$ are fourth powers; take
+$T_{457}=h+a_h457^4$.  Hensel gives the other two unit roots,
+while $X_h=457$.  The same computation checks that both $191$
+and $-3$ are squares modulo $457$.
+
+At the odd primes in $S$, the exact rational centres in
+(E.160.2) have all three ratio valuations divisible by four and
+their unit residues fourth powers.  The sole nonunit root there
+is $X_{1,17}=17$.  The certificate includes all these valuations,
+unit residues and a fourth-root residue for each.  At $2$ the
+three ratios are units with residues
+\[
+ 17,\quad177,\quad209\pmod {256}.
+\]
+It records roots modulo $256$ in the classes $5,3,5$ modulo $8$,
+respectively.  The derivative has valuation two, whereas the
+error has valuation at least eight, so strong Hensel lifting
+preserves those root classes.  At infinity use $T=R$ and the
+signs in (E.160.3).
+
+For completeness the symbol computation is specified without
+depending on an opaque algebra package.  For odd $p$, with
+$x=p^\alpha u$ and $D=p^\beta v$,
+\[
+ (x,D)_p=(-1)^{\alpha\beta(p-1)/2}
+          (u/p)^\beta(v/p)^\alpha.
+\]
+At $2$ its exponent is
+$((u-1)/2)((v-1)/2)+\alpha(v^2-1)/8+\beta(u^2-1)/8$
+modulo two.  These are the tame-symbol formula and the explicit
+dyadic formula in \citet[VIII, \S5.8--5.10, pp.~246--247,
+and p.~248]{RootMilneCFT}.  Choose the odd-prime roots square
+modulo the primes ramifying in their row's $D$, with one
+exception: choose $X_{1,139}$ nonsquare.  The required choices
+exist; at $r$, the residue $(h-1)/a_1$ is an eighth power, so
+$X_{1,r}$ is square.  All these conditions are checked in the
+certificate.  Its complete list of negative symbols is
+\[
+\begin{array}{c|c|c}
+ i&D&\text{places with symbol }-1\\ \hline
+0&-1146&2,\infty\\
+0&-382&2,\infty\\
+1&191\cdot23\cdot13Q&2,139.
+\end{array}
+\tag{E.160.5}
+\]
+All other symbols are positive.  Outside $S\cup\{457\}$ both
+entries are odd-prime units.  At $457$ the only nonunit root
+has both row characters split.  At $17$, both characters in
+row $1$ are squares.  Finally division by the positive rational
+$b_i$ preserves the product by Hilbert reciprocity
+\citep[VIII, (5.10), p.~247]{RootMilneCFT}.
+\end{proof}
+
+\begin{result}{E.161}{Proved}{Exact root-stabilizer intersections for every refinement exponent}
+Let $4\mid m$ and $a'_i=a_iw_i^4$, where $w_i\in\mathbb Q^\times$
+is a unit at $3,13,23,191$.  For $j\ne i$ choose
+\[
+ \alpha_{ij}^m=(c_i-c_j)/a'_j,
+\]
+using the positive real root for a positive radicand and
+$\zeta_{2m}$ times its absolute positive root otherwise.  Put
+$K_i=\mathbb Q(\alpha_{ij}:j\ne i)$.
+Fix an integer $M_0$ divisible by $8\prod_{p\in S\cup\{457\}}p$,
+and put $F=\mathbb Q(\mu_{2mM_0})$, $L_i=FK_i$.  Then
+\[
+\begin{split}
+K_0\cap F&=B_0=\mathbb Q(\sqrt{-1146},\sqrt{-382}),\\
+K_1\cap F&=B_1=\mathbb Q(\sqrt{382},\sqrt{191\cdot23\cdot13Q}),\\
+K_h\cap F&=B_h=\mathbb Q(\sqrt{191},\sqrt{-3}),
+\end{split}
+\qquad L_i^{\mathrm{ab}}=F.
+\tag{E.161.1}
+\]
+Consequently, if $2mM_0\mid M$, every unit class modulo $M$
+whose cyclotomic automorphism fixes $B_i$ contains arbitrarily
+large primes at which the two radicands have simultaneous
+$m$th roots.  No condition that this class be one modulo $m$
+is required.
+\end{result}
+\begin{proof}
+If a positive real number $\beta$ with $\beta^m\in\mathbb Q$
+lies in an abelian extension of $\mathbb Q$, then
+$\mathbb Q(\beta)$ is real and Galois.  All its conjugates are
+real roots of $Z^m-\beta^m$, hence belong to $\{\beta,-\beta\}$.
+Thus $\beta^2\in\mathbb Q$.
+
+Apply this observation to absolute monomials in the two radicals.
+The private valuations $v_{23}(a'_0)=2$,
+$v_3(a'_1)=1$, $v_{13}(a'_h)=2$, and the common valuation
+$v_{191}(a'_i)=-1$ determine exactly when a radical monomial
+can belong to $F$.  In coordinates $(j=1,h)$ for row zero,
+$(j=0,h)$ for row one, and $(j=0,1)$ for row $h$, its exponent
+lattice is respectively
+\[
+\begin{split}
+ R_0&=(m/2)\mathbb Z^2,\qquad R_h=(m/2)\mathbb Z^2,\\
+ R_1&=\{(ma/4,mb/4):a,b\in\mathbb Z,\ a+b\equiv0\pmod2\}.
+\end{split}
+\tag{E.161.2}
+\]
+Indeed the valuation-one prime in rows $0,h$ forces its
+exponent into $(m/2)\mathbb Z$; the valuation-two private prime
+first forces $(m/4)\mathbb Z$, and the common prime $191$
+then forces $(m/2)\mathbb Z$.  In row $1$, the two private
+primes force multiples of $m/4$, and $191$ forces their
+integer coefficients to have even sum.  Conversely these
+conditions make every positive monomial a rational multiple
+of the relevant fixed square roots.  The factors $w_j^4$
+contribute rational numbers, since $4e_j/m$ is integral.
+
+The actual, signed monomial values generating the relation
+lattice give precisely the fields in (E.161.1).  In row $1$
+the half powers of the two radicands have the same squareclass
+$382$, and the quarter power of their product has squareclass
+$191\cdot23\cdot13Q$; here
+\[
+ \frac{1}{a_0}\frac{1/2}{a_h}
+       =\left(\frac{191}{23\cdot13Q}\right)^2.
+\]
+The signed half powers in rows $0,h$ give the other displayed
+bases.  Their squareclasses are independent.
+
+The perfect Kummer pairing
+\citep[Theorem 5.30 and Remark 5.32, pp.~75--76]{RootMilneFT}
+shows that monomials representing distinct cosets of $R_i$
+are linearly independent over $F$.  Every rational polynomial
+in the radicals is a sum of such monomials with coefficients
+in the field generated by the relation values, namely $B_i$.
+Its intersection with $F$ is therefore exactly $B_i$.
+Moreover every intermediate field of the abelian extension
+$L_i/F$ is spanned by the monomial eigenspaces whose characters
+vanish on the corresponding subgroup.  If such a field is
+abelian over $\mathbb Q$, the positive part of each generating
+monomial has rational square by the first paragraph.  The
+valuation calculation then puts that monomial in $F$.
+This proves $L_i^{\mathrm{ab}}=F$.
+
+The image of $\operatorname{Gal}(L_i/K_i)$ on $F$ has fixed
+field $F\cap K_i=B_i$, hence is exactly
+$\operatorname{Gal}(F/B_i)$.  An indicated residue class
+therefore extends to an automorphism of $L_i$ fixing both
+chosen radicals.  Also $L_i\cap\mathbb Q(\mu_M)=F$, since
+the intersection is abelian over $\mathbb Q$.  The two
+automorphisms agree on this intersection, and so define an
+automorphism of the compositum.  Chebotarev
+\citep[Theorem 8.31, p.~147]{CohMilneANT} gives arbitrarily
+large primes in its conjugacy class.  Conjugation preserves
+the cyclotomic residue and the existence of one simultaneously
+fixed pair of roots.  Reduction at an unramified such prime
+gives the asserted two residue roots.
+\end{proof}
+
+\begin{result}{E.162}{Proved}{A complete mixed-exponent construction with the exact harmonic initialization}
+There are classes $A_0,A_1,A_h\in\widehat{\mathbb Q^\times}$
+and ordinary $T_p\in\mathbb Q_p\setminus\{0,1,h,c\}$ at every
+finite prime such that
+\[
+ (A_i)_p=\kappa_p(T_p-c_i),\qquad A_i\bmod4=[a_i].
+\tag{E.162.1}
+\]
+The centres in (E.160.2) remain exactly those displayed.
+All three global signs are positive and agree with the real
+centre $R$.  Each coordinate has infinitely many private
+primes of positive, ordinary integral valuation.  All finite
+choices are effective; no infinite collection is claimed to
+have been executed.
+\end{result}
+\begin{proof}
+Start at exponent $n_0=4$ with coefficients
+$a_{i,0}=a_i b_i^4$, where $(b_0,b_1,b_h)=(1,17,457)$.
+Divide the roots in E.160 by $b_i$.  They are now units at
+every finite prime and satisfy all six product identities.
+The real signs are $(-,+,+)$.  Choose cofinal exponents
+$n_j=4(j+1)!$.  We give one complete passage from $n=n_j$
+to $m=n_{j+1}=n k$, with three fresh positive primes $q_i$.
+
+The maintained coefficients are positive and differ from
+the original $a_i$ by fourth powers of rationals that are
+units at $3,13,23,191$.  The maintained curve has ordinary
+local points with unit roots everywhere finite.  At the
+first step its six symbol products are those of E.160;
+after that step every individual symbol at a prime of $S$
+will be positive, and the real roots will be positive.
+
+Choose a finite set $\mathcal T$ containing $S\cup\{457\}$,
+every prime dividing a coefficient or $mM_0$, all previously
+frozen primes, and all primes through a bound $B_m$ for the
+Weil estimate below.  Retain the existing centre $T_p$ at
+each $p\in\mathcal T$ exactly.  Choose signs
+$\varepsilon=(-,+,+)$ for the first step and $(+,+,+)$
+thereafter.  At each such prime require
+\[
+ q_i\ \text{arbitrarily close to }X_{i,p}/\varepsilon_i.
+\tag{E.162.2}
+\]
+All targets are units.  Choose the precision so that
+$X_{i,p}/(\varepsilon_iq_i)$ has a $k$th root $Y_{i,p}$
+arbitrarily close to one.  Openness of the local power map
+near one, or strong Hensel lifting, gives this precision
+also when $p\mid k$.
+
+The congruences (E.162.2) are compatible with fixing $B_i$.
+Here is the exact reciprocity check.  For any basis character
+$D$ of $B_i$, the product of the local symbols of their unit
+targets is
+\[
+ \prod_{p\in\mathcal T}(X_{i,p}/\varepsilon_i,D)_p
+ =\frac{\prod_{p<\infty}(X_{i,p},D)_p}
+        {\prod_{p<\infty}(\varepsilon_i,D)_p}=1.
+\tag{E.162.3}
+\]
+Both products omitted outside $\mathcal T$ are trivial.
+The numerator is the inverse real symbol by the maintained
+product identity; the denominator is the same real symbol
+by rational reciprocity, since $X_{i,\infty}$ has sign
+$\varepsilon_i$.  To interpret this without assuming a prime
+already exists, take any positive integer in the CRT class,
+coprime to its modulus.  Hilbert reciprocity computes its
+quadratic Dirichlet character as the displayed product.
+Thus the cyclotomic automorphism of the class fixes both
+generators of $B_i$.
+
+Select $q_0,q_1,q_h$ in that order, each larger than $B_m$
+and outside all old supports.  Before choosing $q_i$, use the
+already updated coefficients in earlier coordinates and
+the old coefficients in later coordinates.  E.161 gives a
+prime satisfying (E.162.2) at which
+\[
+ (c_i-c_j)/a_j^{\rm current}\quad(j\ne i)
+\]
+have simultaneous $m$th roots.  At a previously chosen
+$q_s$ in the same step, also impose
+\[
+ (\varepsilon_iq_i)^n\equiv
+                 (c_s-c_i)/a_i^{\rm old}\pmod {q_s}.
+\tag{E.162.4}
+\]
+This has a unit solution because, when $q_s$ was selected,
+its right side had an $m$th root; a $k$th power of that root
+is an $n$th root.  The added congruences do not alter
+(E.162.3), since $q_s\notin S$ and both entries of every
+row's Hilbert symbol are units there.  Enlarge the CRT
+modulus by these primes and by $2mM_0$.  E.161 still applies.
+Set
+\[
+ a_i^{\rm new}=a_i^{\rm old}(\varepsilon_iq_i)^n.
+\tag{E.162.5}
+\]
+In particular the first negative factor is essential to
+the chosen real-root compatibility in (E.162.3); its even
+power keeps the coefficient positive.
+
+At every $p\in\mathcal T$, the roots $Y_{i,p}$ just selected
+satisfy $T_p-c_i=a_i^{\rm new}Y_{i,p}^{m}$, so the centre is
+unchanged.  At a new prime $q_s$ put
+$T_{q_s}=c_s+a_s^{\rm new}$ and $Y_s=1$.  In earlier
+coordinates the required nonzero residue ratio is an
+$m$th power by the root condition for $q_s$; in later
+coordinates it is one by (E.162.4).  Hensel gives unit roots,
+since $q_s\nmid m$.  These centres are positive and hence
+different from $c<0$.
+
+At any remaining prime the new curve has tame good reduction.
+For the exponent $m$ its degree is $m^3$, its genus is
+$g_m=m^3-2m^2+1$, and it has $4m^2$ geometric boundary points.
+For example
+\[
+ B_m=(2g_m+4m^2+2)^2
+\]
+ensures $p+1-2g_m\sqrt p-4m^2>0$ when $p>B_m$.
+Choose an interior residue point and lift it, with a rational
+centre different from $c$.  All roots are units.  At the
+primes in $S$ the already chosen roots are close enough to
+one to be squares.  At all other primes the $D$ are units.
+Thus all finite symbols for the new roots are positive;
+choose all real roots positive at $T=R$.  This proves every
+induction invariant.  Excluding all old support primes also
+preserves the four valuations used in E.161.
+
+At stage $j$ freeze, in addition, all primes at most $j$.
+Every fixed finite prime therefore has its centre unchanged
+from some stage onward.  The coefficients are a Cauchy
+sequence in the full power completion: each ratio in
+(E.162.5) is an $n_j$th power and $n_j$ is eventually divisible
+by every integer.  Write its limit as $A_i$.  At a fixed
+prime the maintained roots are units and
+$a_{i,j}=(T_p-c_i)X_{i,p}^{-n_j}$.  Exponentiation by $n_j$
+tends uniformly to one on $\mathbb Z_p^\times$, since every
+finite quotient of that compact group has finite exponent.
+Hence the local limit is the ordinary element $T_p-c_i$,
+giving (E.162.1).  Fourth-power classes and signs were
+preserved at every step.  A fresh $q_i$ acquires valuation
+$n_j>0$ in just coordinate $i$, and is never used again.
+This proves all support and convergence assertions.
+\end{proof}
+
+\begin{result}{E.163}{Proved}{The uniform proper Brauer obstruction and the missing completed coordinate}
+The quaternion class
+\[
+ \alpha_C=(T-c,d)\in\operatorname{Br}(\overline C)[2]
+\]
+is defined on the proper smooth model and has invariant $1/2$
+at every $2$-adic point and zero at every point over every
+other completion.  In particular $\overline C(\mathbb Q)$
+is empty, and no rational squareclass $b$ makes
+$T-c=bY^2$, $Y\ne0$, soluble everywhere over $C^\circ$.
+For the completed triple in E.162 there is no rational
+squareclass, and hence no completed class, whose finite
+localizations are the classes of $T_p-c$.
+\end{result}
+\begin{proof}
+Put $a=a_0a_1a_h$ and $F(T)=T(T-1)(T-h)$.  The product map
+$W=X_0X_1X_h$ takes $C^\circ$ to the affine curve
+\[
+ D^\circ:\quad W^4=F(T)/a,\qquad W\ne0,
+ \quad T\ne0,1,h.
+\tag{E.163.1}
+\]
+Its smooth proper model has genus three.  The following
+identities are checked as exact rational equalities in the
+certificate:
+\[
+ a=\frac{318039202706815117780707}{27871484},\qquad
+ \frac{F(c)}a=-\rho^2,\qquad
+ \frac{d}{2\rho}=\left(\frac{1088951437}{2}\right)^2.
+\tag{E.163.2}
+\]
+At a point over $T=c$, its nonzero residue root $w$ gives
+$\iota=w^2/\rho$, $\iota^2=-1$, and
+$((1-\iota)w)^2=2\rho$.  Thus its residue field contains
+$\sqrt d$.  The residue of $(T-c,d)$ vanishes there.
+At infinity $T$ has pole order four on $\overline D$, so
+that residue also vanishes; every other point has a unit
+first entry.  The residue exact sequence for the Brauer
+group of a smooth curve in characteristic zero
+\citep[\S4.4, p.~20]{LitColliotThelene2015AWS}
+therefore extends $(T-c,d)$ to $\alpha_D\in
+\operatorname{Br}(\overline D)[2]$.  Its pullback is $\alpha_C$.
+
+At $2$, the three coefficient valuations on $C$ are
+$(-1,-1,0)$.  If $T$ is integral, the valuations of both
+$T$ and $T-1$ would be $-1$ modulo four, impossible because
+one of them is a unit.  If $v_2(T)<-1$, all three differences
+have the same valuation, again incompatible with those
+coefficient valuations modulo four.  Thus $v_2(T)=-1$.
+Since $v_2(c)=1$, also $v_2(T-c)=-1$.  The unit $d$ is
+$5$ modulo eight, so $\mathbb Q_2(\sqrt d)$ is the unramified
+quadratic extension.  Its norm subgroup has even valuation,
+giving invariant $1/2$.
+
+At $7$, the coefficient valuations are $(0,2,0)$.
+Negative valuation of $T$ is incompatible with the three
+fourth-power equations.  For integral $T$, they force
+$T\equiv1\pmod7$.  Since $c\equiv6\pmod7$, the first entry
+is congruent to $2$, a square.  At $139$ and $r$, the
+coefficient valuations are $(0,0,2)$; the same argument
+forces $T\equiv h$.  The unit $h-c=867/382$ has squareclass
+$1146$, a square at both primes by the certificate.
+These are the three ramified odd primes of $d$ apart from $17$.
+
+At $17$ all coefficients are units.  If $v_{17}(T)<0$,
+that valuation is divisible by four and its leading unit
+has the squareclass of $a_0$, which is square modulo $17$.
+This makes the Hilbert symbol trivial.  If $T$ is integral,
+the three ratios modulo $17$ must belong to
+$\{0,1,4,13,16\}$.  Direct substitution, recorded by the
+certificate, leaves only $T\equiv1$.  Then $T-c\equiv9$
+is square.
+
+At $3$, the valuations $(0,1,0)$ force $T$ integral and
+$T\equiv1$, while $c\equiv2$; hence $T-c$ and $d$ are units.
+At $13$, the valuations $(0,0,2)$ force $T\equiv h$,
+whereas $c\equiv0$, again giving two units.  At $23$ and
+$191$, $d$ itself is a local square, as certified.
+
+At an odd prime outside $S$ it is useful to work on the
+larger curve $D$, so that the argument will also apply to
+its other local sheets below.  All displayed constants
+are units.  If $v_p(T)<0$, the equation gives
+$4v_p(W)=3v_p(T)$, so $4\mid v_p(T)=v_p(T-c)$.
+If $T$ is integral and $T-c$ is a unit, the symbol is
+trivial.  Otherwise reduction at $T=c$ gives a nonzero
+root $w^4=-\rho^2$; the identities in (E.163.2) then make
+$d$ square in the residue field and hence in $\mathbb Q_p$.
+This proves vanishing on every ordinary local $D$-point
+outside $S$.  At the real place $d>0$.
+
+These calculations prove the assertion on the dense ordinary
+locus.  Evaluation of a proper Brauer class is continuous,
+and every point of a smooth curve over a local field has
+ordinary points arbitrarily near it; thus the assertion
+extends across all missing finite and boundary points.
+The continuity and reciprocity facts are recalled in
+\citet[\S3.2 and Theorem 3.4, pp.~14--15]{LitColliotThelene2015AWS}.
+The invariant sum is $1/2$, excluding a rational point.
+If $T-c=bY^2$ were everywhere soluble, evaluation would
+instead be the local class $(b,d)$ everywhere.  Its real
+value is zero regardless of $b$, and reciprocity contradicts
+the same finite invariant sum.  The argument applies in
+particular to the centres of E.162, which remain on the
+original quartic curve because their coordinates have the
+original fourth-power classes.  A putative completed new
+coordinate would provide such a rational class modulo two.
+\end{proof}
+
+\begin{result}{E.164}{Proved}{The actual order-$4096$, class-eight harmonic detector}
+For the completed triple of E.162 put
+\[
+ A=-4A_0A_1,\qquad B=4A_h^2,\qquad x_p=4T_p(1-T_p).
+\tag{E.164.1}
+\]
+This is an ordinary completed tripod pair with both
+coordinates of infinite support.  Write $\Pi$ for the full
+geometric fundamental group of the tripod, $E_U$ for its
+arithmetic fundamental group, and
+\[
+ H_D=\ker\bigl(\Pi\xrightarrow{\,2\kappa(t)+\kappa(1-t)\,}
+                         \mathbb Z/8\bigr),\qquad
+ K_D=\overline{H_D^2[H_D,H_D]}.
+\]
+Then $K_D$ is normal in $E_U$ and
+\[
+ \Pi/K_D\simeq(C_2)^8\rtimes C_{16},\qquad
+ |\Pi/K_D|=4096,\qquad \operatorname{class}(\Pi/K_D)=8,
+\tag{E.164.2}
+\]
+where $C_{16}$ rotates the eight coordinates.  There is no
+section of $E_U/K_D\to G_{\mathbb Q}$ whose finite local
+images are geometrically conjugate to those of the specified
+$x_p$ and whose real image is ordinary or cuspidal.
+In particular this excludes locally matching sections of
+the full metabelian quotient and of the lower-central
+quotient of class eight, and excludes a full Selmer section
+with pair $(A,B)$.  It reconstructs A.139 for this exact
+coefficient initialization and proves the finite exclusion
+in A.137 as well.  The separate exact class-seventeen
+calculation is reconstructed in E.165 below.
+\end{result}
+\begin{proof}
+The elementary identities
+\[
+ 1-4T(1-T)=4(T-h)^2,\qquad
+ A^2B=64(A_0A_1A_h)^2\equiv64a^2\pmod{8}
+\tag{E.164.3}
+\]
+give the asserted completed pair and its finite local
+coordinates.  None of the $x_p$ is $0$ or $1$ because
+$T_p\notin\{0,1,h\}$.  The private supports in coordinates
+$0,1$ give infinite support of $A$, and those in coordinate
+$h$ give twice their positive valuations in $B$.  The real
+ordinary centre is $4R(1-R)=-77763/36481$.
+
+The curve in (E.163.1) is, over the tripod, the finite
+degree-eight cover
+\[
+ W^8=\frac{t^2(1-t)}{64a^2},\qquad
+ t=4T(1-T),\qquad T=h-\frac{4aW^4}{t}.
+\tag{E.164.4}
+\]
+Both compositions follow from $T(T-1)=-t/4$ and
+$(T-h)^2=(1-t)/4$.  The exponent at $t=1$ is one, so the
+cover is geometrically connected, with geometric subgroup
+$H_D$.  Its degree-four model over the $T$-line has four
+totally ramified boundary points, and genus three.
+
+Take free meridians $x,y$ around $0,1$ and the Nielsen basis
+$u=xy^{-2}$, $v=y$.  A Schreier basis of the index-eight
+subgroup $H_D$ is
+\[
+ u_j=v^juv^{-j}\ (0\le j<8),\qquad z=v^8.
+\]
+Its quotient by $K_D$ is elementary abelian on these nine
+independent generators.  Conjugation by $v$ rotates the
+$u_j$ and fixes $z$; also $v^{16}=z^2=1$.
+These relations give mutually inverse homomorphisms to
+the semidirect product in (E.164.2): its independent
+order-two classes are the eight lamps and $v^8$.
+Thus the kernel is exactly $K_D$, not just a subgroup of it.
+The Kummer character defining $H_D$ is multiplied by a
+cyclotomic unit under arithmetic conjugation, so $H_D$
+and its characteristic subgroup $K_D$ are arithmetic-normal.
+
+Write the lamp module as
+$L=\mathbb F_2[C_8]=\mathbb F_2[\tau]/(\tau^8)$,
+$\tau=v-1$.  Its actual lower-central recurrence is
+\[
+ \Gamma_j(\Pi/K_D)=\tau^{j-1}L\quad(2\le j\le8),
+ \qquad\Gamma_9=1.
+\tag{E.164.5}
+\]
+The dimensions are $7,6,5,4,3,2,1$; the weight-eight
+commutator is $\tau^7u_0=\sum_{j=0}^7u_j\ne0$.
+Also $\Pi'\subset H_D$ implies $\Pi''\subset K_D$.
+These prove the two asserted arithmetic quotient maps.
+
+Suppose a section as in the statement exists.  The combined
+mod-eight Kummer character descends to this quotient;
+on $K_D$ its integral values are multiples of sixteen.
+Its rational Kummer class has the same localization as
+$64a^2$ at every finite prime by (E.164.3).  Such classes
+are globally equal: valuations of their rational ratio
+are divisible by eight, so that ratio is a sign times an
+eighth power, and a negative sign is not an eighth power
+in $\mathbb Q_3$.  Thus the pullback of the torsor in
+(E.164.4) is trivial.  It fixes a geometric sheet, and,
+after geometric conjugation, the section lands in the
+actual subgroup $E_D/K_D$ of $E_U/K_D$.
+
+Every local point on $D$ above $x_p$ has
+$T=T_p$ or $T=1-T_p$.  Since $F(1-T)=-F(T)$, the second
+sheet exists precisely when $-1$ is a fourth power in
+$\mathbb Q_p$, that is, for odd $p\equiv1\pmod8$;
+it does not occur at $2$.  Outside $S$, E.163 proves that
+$\alpha_D$ vanishes at every local $D$-point.  Within $S$
+the only possible second sheets are at $17$ and $r$.
+For the fixed centres of E.160,
+\[
+\begin{array}{c|cc}
+ p&T_p-c&1-T_p-c\\ \hline
+17&9&8\\
+r&867/382&867/382
+\end{array}
+\quad\text{in }\mathbb F_p.
+\tag{E.164.6}
+\]
+All four entries are nonzero squares; at $r$ this is
+$(1146/r)=1$.  Hence every local sheet above the specified
+point has invariant $1/2$ at $2$ and zero elsewhere.
+
+Here is the exact descent of the Brauer class to the finite
+geometric quotient, without assuming an arithmetic splitting
+of $E_D$.  Lift $\alpha_D$ by the Kummer sequence to
+$H^2_{\mathrm{et}}(\overline D,\mu_2)$ and restrict to $D^\circ$.
+There is a natural isomorphism
+\[
+ H^2(E_D,\mathbb F_2)\simeq
+ H^2_{\mathrm{et}}(D^\circ,\mu_2).
+\tag{E.164.7}
+\]
+Indeed the geometric affine curve has free profinite
+fundamental group, its finite-coefficient cohomology
+vanishes in degrees at least two, and its degree-one
+cohomology is the character group.  The group and etale
+Hochschild--Serre spectral sequences therefore have the
+same geometric terms and comparison maps.  The required
+geometric vanishing, spectral sequence and comparison are
+\citet[Theorem 14.9, Remark 14.10 and Proposition 14.12,
+pp.~96--97; Theorem 21.1, p.~130]{LitMilneLEC2013}.
+
+Represent the corresponding class by a central extension
+$1\to\mathbb F_2\to\widetilde E_D\to E_D\to1$.
+It splits over the free geometric group $H_D$: lift a
+free basis to obtain a continuous homomorphism
+$j:H_D\to\widetilde E_D$.  For any $g\in\widetilde E_D$,
+the maps $h\mapsto gj(h)g^{-1}$ and
+$h\mapsto j(\overline g h\overline g^{-1})$ differ by a
+character $H_D\to\mathbb F_2$.  Every such character kills
+$K_D$.  Therefore $j(K_D)$ is normal and intersects the
+central kernel trivially.  Quotienting gives
+\[
+\begin{gathered}
+ 1\longrightarrow\mathbb F_2\longrightarrow
+ \widetilde E_D/j(K_D)\longrightarrow E_D/K_D\longrightarrow1,\\
+ \widetilde E_D\simeq E_D\mathbin{\times}_{E_D/K_D}
+                          \bigl(\widetilde E_D/j(K_D)\bigr).
+\end{gathered}
+\tag{E.164.8}
+\]
+For the second assertion, injectivity is the trivial
+intersection just noted; surjectivity follows by correcting
+any lift with $j(k)$, $k\in K_D$.  Compactness gives the
+topological isomorphism.  Thus the class genuinely
+inflates from $H^2(E_D/K_D,\mathbb F_2)$.
+
+Pull this descended class back along the proposed global
+section.  It is a rational Brauer class.  At a finite
+prime the stipulated geometric conjugator can be lifted
+to the full geometric group.  Since $K_D\subset H_D$,
+the fixed finite sheet then gives a Galois-fixed sheet
+of the actual cover over $x_p$, hence an actual point of
+$D^\circ(\mathbb Q_p)$.  Naturality in (E.164.7)--(E.164.8)
+identifies the local Brauer value with that point's
+evaluation.  All its possible sheets were treated above.
+At infinity an ordinary image has value zero because
+$d>0$.  For a cuspidal image, its fixed inertia orbit
+gives a real point on the proper normalization above
+the cusp.  The proper cohomology class pulls back through
+that point: the map to $\overline D$ kills cusp inertia.
+Its value is again zero.  The global invariant sum is
+therefore $1/2$, contradicting Brauer reciprocity.
+
+For a full Selmer section with the completed pair,
+injectivity of the ordinary local Kummer map fixes
+the local point as $x_p$.  A cusp cannot have these
+two complete local Kummer coordinates: at cusps
+$0,1,\infty$ the regular-coordinate conditions respectively
+force $B=1$, $A=1$, or $B/A=-1$ locally, whereas an ordinary
+pair $(x_p,1-x_p)$ satisfies none of them.  Thus the finite
+exclusion applies to it.  Finally the harmonic quartic
+cover of A.137 dominates the cyclic product cover in
+(E.164.4), so its geometric subgroup $H$ lies in $H_D$,
+and $\overline{H^2[H,H]}\subset K_D$.  This gives an actual
+map from its order-$2^{136}$ quotient to our detecting
+quotient and proves its finite-section exclusion as well.
+The independent claim about that larger quotient's exact
+class seventeen is the subject of E.165.
+\end{proof}
+
+\begin{result}{E.165}{Proved}{The exact class seventeen of the large harmonic quotient}
+Let $\Lambda=\ker(\Pi\to\mathbb Z/2)$ for the character
+taking $x$ to zero and $y$ to one, and put
+\[
+ H=\ker(\Lambda\to\Lambda^{\mathrm{ab}}/4),\qquad
+ K=\overline{H^2[H,H]},\qquad Q_C=\Pi/K.
+\]
+These are the actual geometric subgroups of A.137.
+Then $|Q_C|=2^{136}$ and $Q_C$ has exact nilpotency class
+seventeen.  In the convention $[a,b]=aba^{-1}b^{-1}$,
+start with $[x,y]$ and commute successively with the fifteen
+letters
+\[
+                  \texttt{xxxxyxyxyyyyyyy}.
+\tag{E.165.1}
+\]
+The resulting weight-seventeen element is nonzero.
+Consequently the arithmetic quotient of class seventeen
+and the third-derived arithmetic quotient both map to
+the detecting quotient of A.137.  Combined with E.160--E.164,
+this independently reconstructs all the stated exclusions
+of A.137, including its exact quotient class.
+\end{result}
+\begin{proof}
+The index-two subgroup $\Lambda$ is free on
+$x,yxy^{-1},y^2$.  Thus the deck group $G=\Pi/H$ is
+\[
+ G=(C_4)^2\rtimes C_8,
+\]
+where $x=(1,0,0)$, $y=(0,0,1)$ and odd elements of $C_8$
+swap the two $C_4$ coordinates.  The multiplication is
+literal: for $a,b,a',b'\in\mathbb Z/4$ and
+$e,e'\in\mathbb Z/8$,
+\[
+ (a,b,e)(a',b',e')=
+ \begin{cases}
+ (a+a',b+b',e+e'),&e\text{ even},\\
+ (a+b',b+a',e+e'),&e\text{ odd}.
+ \end{cases}
+\tag{E.165.2}
+\]
+The images of $x,yxy^{-1},y^2$ are three independent
+order-four generators of the even subgroup.  Hence its
+kernel on $\Lambda$ is exactly $H$, not merely a quotient
+of its mod-four abelianization.  The group $G$ has order
+$128$ and class three: its commutator subgroup is generated
+by the difference of the two $C_4$ coordinates, conjugation
+by $y$ negates that difference, and a second commutator
+is its double, which is central.
+
+Use the connected covering graph with vertex set $G$ and
+directed edges $(g,x)$ from $g$ to $gx$ and $(g,y)$ from
+$g$ to $gy$.  Let $R=\mathbb F_2[G]$.  Its chain complex is
+\[
+ C_1=R e_x\oplus R e_y\xrightarrow{\partial} C_0=R,
+ \qquad
+ \partial(g e_x)=gx-g,\quad\partial(g e_y)=gy-g.
+\tag{E.165.3}
+\]
+The graph has $128$ vertices and $256$ edges.  A spanning
+tree shows that $Z_1=\ker\partial$ has dimension $129$.
+More explicitly, the loops from the identity along a tree
+to a non-tree edge and back form a free Schreier basis of
+$H$ and a cycle basis after reduction modulo two.
+Consequently the path-chain map identifies
+\[
+              H/\overline{H^2[H,H]}\simeq Z_1.
+\tag{E.165.4}
+\]
+This also proves the assertion for the full profinite
+group: both sides of (E.165.4) are the finite mod-two
+abelian quotients of that finite free Schreier basis.
+
+The actual finite quotient is the image of the path map
+\[
+ \Pi\longrightarrow (R^2)\rtimes G,\qquad
+ x\longmapsto(e_x,x),\quad y\longmapsto(e_y,y),
+\tag{E.165.5}
+\]
+whose cocycle law is $P(uv)=P(u)+\overline uP(v)$.
+Its kernel is contained in $H$ and is exactly $K$ there
+by (E.165.4).  Thus the representation is faithful on
+$Q_C$.  Its order is $128\cdot2^{129}=2^{136}$, and
+conjugation on the kernel $Z_1$ is the left regular
+$G$-action, independently of the path component.
+
+Here is the full finite lower-central calculation.
+Let $c_2=[x,y]$, and take the four weight-four seeds
+\[
+ [[c_2,x],x],\quad [[c_2,x],y],\quad
+ [[c_2,y],x],\quad [[c_2,y],y].
+\tag{E.165.6}
+\]
+Their vertex components are the identity since $G$ has
+class three.  The fourth lower-central subgroup of the
+free group is the closed normal closure of these seeds:
+its third subgroup is normally generated by $[c_2,x]$
+and $[c_2,y]$, and making both generators commute with
+$x,y$ makes that whole third subgroup central.  Since
+the kernel in (E.165.4) is elementary abelian, the image
+$M_4=\Gamma_4 Q_C$ is therefore exactly the $R$-span of
+their four path vectors.
+
+For every $j\ge4$ the exact recurrence is
+\[
+             M_{j+1}=(x-1)M_j+(y-1)M_j.
+\tag{E.165.7}
+\]
+Indeed $M_j$ lies in the abelian kernel, and its
+commutators with $g\in G$ are $(1-g)M_j$.  The
+augmentation ideal is the right ideal generated by
+$x-1,y-1$; telescoping a word in $x,y$ proves this
+also for inverse letters.  As $M_j$ is an $R$-submodule,
+(E.165.7) is the entire commutator subgroup.
+
+The retained exact integer-bit certificate
+\path{code/check_harmonic_large_quotient.py} uses precisely
+(E.165.2)--(E.165.7).  It enumerates $128$ vertices and
+$256$ chain coordinates, not the elements of $Q_C$.
+Gaussian elimination over $\mathbb F_2$ gives
+\[
+\begin{array}{c|rrrrrrrr}
+ j&4&5&6&7&8&9&10&11\\ \hline
+ \dim M_j&124&121&115&107&97&85&71&55
+\end{array}
+\]
+\[
+\begin{array}{c|rrrrrrr}
+ j&12&13&14&15&16&17&18\\ \hline
+ \dim M_j&41&29&19&11&5&2&0.
+\end{array}
+\tag{E.165.8}
+\]
+At every step it verifies that the computed space consists
+of cycles and is invariant under $x$ and $y$.
+It separately evaluates the individual commutator
+(E.165.1), both by the kernel recurrence and by multiplying
+its complete expanded word in (E.165.5).  Its vector is
+\[
+                \sum_{g\in G}g e_x\ne0.
+\tag{E.165.9}
+\]
+The expanded unreduced word has length $196606$;
+its SHA256 and the full dimension list are retained
+in the JSON certificate.  Thus $\Gamma_{17}Q_C\ne1$
+and $\Gamma_{18}Q_C=1$ are certified in the actual quotient.
+
+Finally $\Lambda$ is stable under the actual arithmetic
+action: its mod-two $y$-character is fixed, since the
+cyclotomic multiplier is odd and conjugation vanishes in
+abelianization.  Also $H$ is characteristic in $\Lambda$, and $K$ is
+characteristic in $H$, so both are normal in the full
+arithmetic group.  Also $\Pi'\subset\Lambda$,
+$\Pi''\subset\Lambda'\subset H$, and
+$\Pi'''\subset[H,H]\subset K$.  Together with
+$\Gamma_{18}\Pi\subset K$, these give the asserted
+actual arithmetic maps.  E.164 already proves the
+section obstruction for $E_U/K$ by its map to $E_U/K_D$,
+so all quotient consequences now follow.
+\end{proof}

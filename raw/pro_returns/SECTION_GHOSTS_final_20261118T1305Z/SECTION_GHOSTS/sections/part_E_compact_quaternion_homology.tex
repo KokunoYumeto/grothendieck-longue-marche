@@ -1,0 +1,230 @@
+% E207: full root and ghost proof/code reviews positive; independent ghost rerun passed.
+\subsection{The actual faithful homology map of the compact detector}
+
+\begin{result}{E.207}{Proved}
+{The missing quaternion homology certificate is reconstructed exactly}
+Retain the literal groups $\Sigma,N_8,T,L_c,R_c,P_c$ of E.203.
+Put
+\[
+ A=T/(T'T^3)=H_1(T,\mathbb F_3),\qquad
+ H=(\mathbb Z/3)^2\subseteq\Sigma/T=Q_8\times H.
+\]
+Let $z=(-1,0)$ be the unique involution in $\Sigma/T$, and
+write $A=A^+\oplus A^-$ for its eigenspaces.  The actual
+surface-word map induces an equivariant linear map
+\[
+ \Theta:A\longrightarrow N_8/L_c,\qquad
+ \operatorname{rank}\Theta=12,\qquad
+ \dim A^+=37,\quad\dim A^-=36.                                  \tag{E.207.1}
+\]
+The image is an abelian group of exponent three.  If
+$\mathfrak m_H$ is the augmentation ideal of $\mathbb F_3[H]$,
+then the exact kernel is
+\[
+                 \ker\Theta=A^+\oplus\mathfrak m_H^2A^-.
+                                                                    \tag{E.207.2}
+\]
+The second summand has dimension twenty-four.  On a specified
+primitive eighteen-dimensional quaternion multiplicity space
+$M\subset A^-$, the kernel is exactly $\mathfrak m_H^2M$,
+of dimension twelve, and the image has dimension six.
+Every linear normalizer of $H$ on this module preserves that
+kernel.
+
+All thirty-six actual peripheral lifts have zero $\Theta$ image;
+their homology classes span a thirty-five-dimensional space.
+There is also the actual characteristic common source
+\[
+ \begin{gathered}
+ K^- =\ker(T\longrightarrow A/A^+),\qquad
+ E^- =\Sigma/(K^-\cap\Sigma'\Sigma^{12}),\\
+ |E^-|=288\cdot3^{36},\qquad E^-\twoheadrightarrow P_c,
+ \end{gathered}                                                   \tag{E.207.3}
+\]
+where the epimorphism is induced by the identity of $\Sigma$.
+This independently confirms the faithful-homology,
+augmentation-kernel and characteristic-source clauses of
+historical GT A.4.18.  Together with E.203 it reconstructs that
+finite detector from its definitions.  It does not prove the
+unavailable numerical BCV/HCF/KFU compiler bounds of A.4.57.
+\end{result}
+
+\begin{proof}
+We retain the actual based words throughout.  The map
+$\Sigma\to Q_8\times(\mathbb Z/3)^2$ is surjective: its image
+projects onto each factor, whose orders are coprime.  Thus
+$[\Sigma:T]=72$.  The Cayley cover has $144$ positive edges
+and $72$ vertices; its free fundamental group has rank
+$144-72+1=73$.
+
+The independent program
+\path{code/check_compact_quaternion_homology.py} constructs
+this cover directly, using the same breadth-first letter order
+$a,b,a^{-1},b^{-1}$ as E.203.  Every non-tree positive edge
+gives its literal Schreier word.  Rewriting each such word in
+the nine-generator quaternion basis and applying the
+$14\times45$ quotient map of E.203 gives a specified
+$14\times73$ matrix $\Theta$.  Its rank is twelve.  The
+certificate checks every bracket between its seventy-three
+generator images; all are zero.  The target group has exponent
+three, so this proves that the actual group map factors through
+$T/(T'T^3)$.  It is not a linear map introduced only by a
+dimension comparison.
+
+Conjugation on $A$ by a representative of $\Sigma/T$ is
+independent of that representative, since inner $T$ actions
+are trivial on its homology.  We use the following actual lifts:
+\[
+ z:a^6,\qquad i:a^9,\qquad j:b^9,\qquad
+ h_1:a^4,\qquad h_2:b^4.                                        \tag{E.207.4}
+\]
+Their labels in $Q_8\times H$ are respectively
+$(-1,0),(i,0),(j,0),(1,(1,0)),(1,(0,1))$.
+The code rewrites their conjugates of all seventy-three
+Schreier words and retains the five resulting $73\times73$
+matrices.  It checks the quaternion relations, both order-three
+relations, commutation of the two translation matrices, and
+commutation of the translations with the quaternion action.
+It also rewrites the four surface substitutions of E.203
+and verifies the four literal intertwining equations
+\[
+                   \Theta D_\gamma=M_\gamma\Theta
+ \quad\bigl(\gamma=u,l,\operatorname{Ad}(a),
+                         \operatorname{Ad}(b)\bigr),             \tag{E.207.5}
+\]
+where the right matrices are exactly the previously reconstructed
+$14\times14$ quotient matrices.  In particular all the
+deck equivariances used below are consequences of actual
+surface-word maps.
+
+\paragraph{The exact kernel.}
+Over $\mathbb F_3$ the two projectors are
+$p_\pm=2(I\pm D_z)$.  The program checks their idempotence
+and obtains ranks thirty-seven and thirty-six.  It retains
+actual column bases $C_+$ and $C_-$, and verifies
+\[
+                   \Theta(I+D_z)=0,\qquad
+                   \Theta p_-=\Theta.                            \tag{E.207.6}
+\]
+Thus $A^+$ is killed and the whole image is faithful for the
+central quaternion involution.
+
+Put $X=D_{h_1}-I$ and $Y=D_{h_2}-I$.  The two verified
+commuting order-three actions give
+\[
+ \mathbb F_3[H]=\mathbb F_3[X,Y]/(X^3,Y^3),\qquad
+ \mathfrak m_H^2=(X^2,XY,Y^2).
+\]
+The exact image of that ideal on $A^-$ is therefore the
+column space of
+\[
+               \mathcal J=[X^2C_-\ \ XY C_-\ \ Y^2C_-].          \tag{E.207.7}
+\]
+The independently reconstructed matrices give
+\[
+ \Theta\mathcal J=0,\qquad \operatorname{rank}\mathcal J=24,
+ \qquad \operatorname{rank}(\Theta C_-)=12.
+\]
+Inclusion in the kernel and these ranks prove equality on
+the thirty-six-dimensional space $A^-$.  With (E.207.6),
+this proves both inclusions of (E.207.2).
+
+Here is a literal choice of the multiplicity space.  On $A^-$
+the quaternion matrices satisfy
+$D_i^2=D_j^2=-I$ and $D_iD_j=-D_jD_i$.  Hence
+$(D_i+D_j)^2=I$ and
+\[
+                   e=2(I+D_i+D_j)p_-                            \tag{E.207.8}
+\]
+is an idempotent.  It is a primitive idempotent in the
+faithful quaternion block.  One can see this without any
+character convention: that block is the full matrix algebra
+generated by
+\[
+ i\longmapsto\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+ j\longmapsto\begin{pmatrix}1&1\\1&-1\end{pmatrix}
+       \quad\text{over }\mathbb F_3,
+\]
+and (E.207.8) has rank one in that two-dimensional model.
+The two matrices and their product, together with the identity,
+are linearly independent.  Thus they identify the
+four-dimensional block with $M_2(\mathbb F_3)$.
+
+The certificate gives a column basis $C_M$ of $M=eA$ with
+eighteen columns.  Since $e$ commutes with $H$, the exact
+augmentation-square image is
+$[X^2C_M\ \ XY C_M\ \ Y^2C_M]$.  Its rank is twelve,
+it is killed by $\Theta$, and
+$\operatorname{rank}(\Theta C_M)=6$.  This proves the
+asserted kernel and quotient on $M$.  If $g$ normalizes $H$
+as a linear group on $M$, then
+\[
+ g(h-1)(k-1)v=(ghg^{-1}-1)(gkg^{-1}-1)gv.
+\]
+Applying this equality also to $g^{-1}$ proves invariance
+with equality of $\mathfrak m_H^2M$.  It does not identify
+such a linear normalizer with a geometric one.
+
+\paragraph{The peripheral and characteristic-source clauses.}
+The word $c$ has label $(-1,0)$ of order two in $\Sigma/T$.
+Thus the seventy-two cosets split into thirty-six pairs
+under multiplication by that label.  Choose one actual
+Schreier transversal word from each pair.  The words
+$w c^2w^{-1}$ are precisely the thirty-six peripheral
+lifts.  The code retains all thirty-six words, rewrites
+their homology vectors, and verifies rank thirty-five
+and zero image under $\Theta$.  These are the boundary
+loops of the actual compactification, with the original
+commutator marking.
+
+The group $T$ is characteristic in $\Sigma$.  The involution
+$z$ is the unique element of order two in $\Sigma/T$, so
+every automorphism preserves it.  Its action on
+$T/(T'T^3)$ is independent of its chosen lift, and its
+positive eigenspace is consequently preserved.  This
+proves characteristicness of $K^-$ and of the final
+intersection in (E.207.3), also in the full profinite
+free group.  The quotient $T/K^-$ has order $3^{36}$,
+so $|\Sigma/K^-|=72\cdot3^{36}$.
+
+Its exponent lattice is exactly $6\mathbb Z^2$.
+Containment follows from $K^-\subseteq T$.  For the
+reverse containment use
+$w_a=a^6c$ and $w_b=b^6c$, both in $T$.
+For either word $w$ and any lift $\widetilde z$ of $z$,
+the elements $w\widetilde z w\widetilde z^{-1}$ and
+$w^3$ lie in $K^-$.  The first has homology in the
+positive eigenspace, while the second dies modulo three.
+Their exponent vectors are twice and three times that
+of $w$; an integer combination gives the vector of $w$.
+This yields $(6,0)$ and $(0,6)$.  The abelian modulo-twelve
+join therefore adds exactly four, proving the order in
+(E.207.3).
+
+Finally (E.207.6) shows $K^-\subseteq L_c$: the actual
+map on $T$ factors through $A$ and kills $A^+$.
+Intersecting with the abelian modulo-twelve kernel gives
+the displayed epimorphism to $P_c$.  This proves an
+identity-induced source map, rather than merely matching
+the orders of two finite groups.
+
+\paragraph{The independent certificate and its scope.}
+The new program first reruns the complete E.203--E.204
+certificate in a temporary directory and checks its
+exact payload digest.  It then constructs the rank-seventy-three
+cover from scratch.  Its JSON retains all Schreier and
+peripheral words, the $14\times73$ matrix, the five deck
+matrices, both faithful bases, both augmentation-square
+image matrices, and all four actual surface covariance
+matrices.  Every calculation is exact over $\mathbb F_3$.
+The final payload SHA256 is
+\[
+ \begin{gathered}
+ \texttt{e7c5ff2b43bcc8239a94c56b2b2fc04d}\\[-2pt]
+ \texttt{7329a367c3c109c433d96549f6657ab5}.
+ \end{gathered}                                                   \tag{E.207.9}
+\]
+These finite inputs complete the stated clauses of A.4.18.
+The missing bound functions and finite same-parameter
+branch comparison of A.4.57 remain separate requirements.
+\end{proof}

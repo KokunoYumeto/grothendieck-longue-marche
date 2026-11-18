@@ -1,0 +1,240 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=26mm,headheight=14pt]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase]
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype,booktabs,longtable,array,enumitem}
+\usepackage[authoryear,round]{natbib}
+\usepackage{xcolor,xurl}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small SECTION\_GHOSTS}
+\rhead{\small Incomplete research audit}
+\cfoot{\thepage}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{4pt plus 1pt}
+\setlength{\parindent}{0pt}
+\setlist{itemsep=2pt,topsep=4pt}
+\allowdisplaybreaks[2]
+\newenvironment{result}[3]{%
+  \par\addvspace{9pt}\phantomsection\label{result:#1}%
+  \noindent\textbf{#1.\enspace #3}\quad\textsf{[#2]}\par\nobreak
+}{\par\addvspace{3pt}}
+\renewcommand{\proofname}{Proof}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\supp}{supp}
+\title{Ordinary completed unit equations and the full pronilpotent section tower\\[5pt]
+\large SECTION\_GHOSTS: proofs, corrections, and the remaining limit problem}
+\author{AI-produced by GPT-6 Astra (OpenAI, ChatGPT Pro mode)}
+\date{18 November 2026\\\small Final incomplete return; research stopped under the specified rule}
+\begin{document}
+\maketitle
+\begin{abstract}
+We investigate whether an ordinary completed unit-equation pair for
+\(\mathbb P^1_{\mathbb Q}\setminus\{0,1,\infty\}\) that admits a continuous
+section of the full geometrically pronilpotent quotient must have finite
+prime support. We have not proved this assertion or constructed a
+counterexample. We establish the precise fixed-pair compactness reduction,
+reconstruct the factorial-prime ordinary ghosts, and retain the strict
+continuous-cohomology obstruction, including classes invisible at all
+finite coefficient levels. Two exceptional-prime tests select a unique
+class-two candidate for the original ghosts, reducing their class-three
+problem to explicit scalar residue sequences. We distinguish this fixed-pair
+compactness from the false compactness assertion for a varying ghost family.
+For every odd coefficient prime not dividing the class number of its
+cyclotomic field, including three and five, we prove that the
+fixed-ramification second cohomology vanishes in every weight.
+The remaining inductive condition is simultaneous local boundary matching.
+The exact integral correction groups are computed, and a matching failure
+above one fixed predecessor is witnessed by at most two support places.
+At coefficient three, for a constructed support pattern,
+odd matching layers are automatic and each adjacent odd--even pair is
+controlled by a finite linear system. At weight four one fixed finite
+Galois representation supplies its coefficients; the consistency criterion
+for a finite construction prefix is exact, with both extendible and
+excluded prefixes. This reduction does not establish that the comparisons
+can all be satisfied for one fixed pair at every weight.
+For a cofinal finite pro-three tower, we prove an exact one-step
+criterion over the unchanged old ramification set. Its remaining
+conditions are finitely many plus-character Frobenius equations.
+A simultaneous arithmetic refinement preserves ordinarity at every
+coefficient prime along any actual infinite path through those
+equations. Such a path is not constructed; explicit frozen
+predecessors fail the equations and cannot be repaired by adding
+ordinary support primes.
+At coefficient two we compute the fixed-ramification obstruction
+in every weight and prove that prescribing the actual real point
+class loses no full survivor. On an explicit support pattern,
+each odd-weight matching step has one scalar modulo four per
+central coordinate, with its full real-frame ambiguity retained;
+each even-weight step has one finite torsion choice.
+We construct one ordinary infinite-support pair with an integral
+all-prime class-two section matching every off-diagonal support
+point. It has a global class-three lift, but no higher matching
+or full-tower survival is inferred.
+For the unchanged original factorial family, a two-first-prime
+construction produces a coefficient-five class-two section matching
+every support point and a global class-three lift. Its next matching
+gate is compatibility of explicit two-coordinate residues; each
+individual local constraint can be made solvable.
+
+We additionally prove that selected outputs of the original factorial family
+first fail at pro-five class four. A different primitive-five support family
+has a common twenty-five-element class-four matching catalog, and a selected
+subfamily has an off-five matched class-four lift. The already proved
+nonresonant steps preserve matching through class seven and give a global
+class-eight lift. Weight-eight matching and all-depth survival remain open.
+Relative coefficient interpolation is proved at fixed classes two, three
+and four with its actual arithmetic compatibility hypotheses; it is not a
+nilpotency-class transition.
+An explicit finite characteristic pro-prime quotient separates interior
+point sections from cusp sections over finite fields, with the full
+arithmetic action retained. This is a local detector, not a global
+finite-support theorem.
+
+We also identify the odd-prime Heisenberg-cover genera, repair the exponent-two
+exception, and prove the relevant comparison for passage to covers.
+The full-section consequence of a positive answer is stronger than the
+prompt states: Stix's theorem already resolves the locally ordinary case
+with rational abelian pair. Every unresolved assertion is retained as such;
+the audit register distinguishes complete proofs from unfinished checks.
+No priority is claimed, and no result is attributed to a human contributor.
+\end{abstract}
+\begingroup\small\tableofcontents\endgroup
+\newpage
+\section*{Conventions and status}
+\addcontentsline{toc}{section}{Conventions and status}
+We use the actual arithmetic action on the geometric fundamental group,
+with a rational tangential base point when coordinates are needed.
+Sections and cochains are continuous; conjugacy means geometric conjugacy.
+An ordinary completed pair \((A,B)\) lies in
+\(\varprojlim_n\mathbb Q^\times/(\mathbb Q^\times)^n\) in both coordinates
+and has local representatives \((x_q,1-x_q)\) at every finite prime.
+The power quotients have their discrete topology. A ghost is such a pair
+with infinite prime support. A section with ordinary abelian localization
+is not by definition a locally geometric section of a nonabelian quotient.
+We distinguish those properties throughout.
+
+The labels \emph{Proved}, \emph{Refuted}, and \emph{Known} apply to the exact
+numbered statements, not to every task to which they contribute. A statement
+labelled \emph{Open} records a question not settled in this run. The report
+and result register give the task-level accounting. Earlier unpublished
+AI-produced statements are not treated as authorities: the paper either
+supplies the proof used or explicitly withholds certification. The supplied
+unrefereed local section theorem is not used.
+
+
+\subsection*{Final stopping status and textual recovery}
+The two consecutive scheduled reviews at approximately 11:45 and 12:45 UTC
+on 18 November 2026 recorded no qualifying movement on an original open
+main question. We stopped research under the specified rule. The nine open
+entries remain A.2, A.7, B.1, B.2, B.3, C.7, D.3, E.120 and E.1.
+The subsequent work only restores and packages the results already reached.
+The exact checkpoint08 source was restored and its archive hash verified.
+The later parts P.16 and E.214--E.218 include clearly identified fresh
+transcriptions of reviewed conversation proofs. They are not claimed to be
+byte-identical to the lost working files. The accompanying report and
+provenance records distinguish mathematical review, executed computations,
+and final build and visual verification.
+
+\section{P. Literature and the scope of established results}
+\input{sections/part_P_literature}
+\input{sections/part_P_additional_literature}
+\input{sections/part_P_massey_scope}
+\input{sections/part_P_regular_embedding_scope}
+\input{sections/part_P_pal_schlank_matching_reconstructed}
+\section{A. The fixed-pair limit and continuous obstructions}
+\input{sections/part_A_comparison}
+\input{sections/part_A_cohomology}
+\input{sections/part_A_projective_route}
+\input{sections/part_A_density}
+\input{sections/part_A_arithmetic_generated}
+\section{B. The class-three remainder and finite exclusions}
+\input{sections/part_B_cohomology}
+\input{sections/part_B_arithmetic_generated}
+\input{sections/part_B_tasks}
+\section{C. Covers, rigid targets, and reciprocity}
+\input{sections/part_C_geometry}
+\section{D. Consequences for the manuscript assertions}
+\input{sections/part_D_consequences}
+\section{E. Independent proofs and the audit register}
+\input{sections/part_E_arithmetic_generated}
+\input{sections/part_E_finite_quotient}
+\input{sections/part_E_fixed_depth}
+\input{sections/part_E_later_failure}
+\input{sections/part_E_multiple_punctures}
+\input{sections/part_E_symmetry_audit}
+\input{sections/part_E_positive_tower_audit}
+\input{sections/part_E_arithmetic_cm_base}
+\input{sections/part_E_fermat_audit}
+\input{sections/part_E_gt_scope_audit}
+\input{sections/part_E_exact_class_three}
+\input{sections/part_E_exact_four}
+\input{sections/part_E_coefficient_three}
+\input{sections/part_E_regular_coefficients}
+\input{sections/part_E_two_place_matching}
+\input{sections/part_E_two_step}
+\input{sections/part_E_genus_two}
+\input{sections/part_E_elliptic_audit}
+\input{sections/part_E_joint_action}
+\input{sections/part_E_weight_four}
+\input{sections/part_E_embedding_gate}
+\input{sections/part_E_embedding_step}
+\input{sections/part_E_everywhere_finite}
+\input{sections/part_E_ordinary_invariant}
+\input{sections/part_E_failed_predecessor}
+\input{sections/part_E_finite_field_sections}
+\input{sections/part_E_full_ordinary_bridge}
+\input{sections/part_E_relative_approximation}
+\input{sections/part_E_coefficient_two}
+\input{sections/part_E_real_two}
+\input{sections/part_E_dyadic_matching}
+\input{sections/part_E_harmonic_audit}
+\input{sections/part_E_two_inert_audit}
+\input{sections/part_E_two_primary_root}
+\input{sections/part_E_all_prime_class_two}
+\input{sections/part_E_gt_geometric_repair}
+\input{sections/part_E_gt_coefficient_bridge}
+\input{sections/part_E_gt_tower_repair}
+\input{sections/part_E_gt_two_point_marking}
+\input{sections/part_E_gt_translation_fusion}
+\input{sections/part_E_gt_involution_bridge}
+\input{sections/part_E_gt_eight_point_parameter}
+\input{sections/part_E_gt_cm_covariance}
+\input{sections/part_E_gt_cm_character}
+\input{sections/part_E_finite_field_detector}
+\input{sections/part_E_gt_finite_separation}
+\input{sections/part_E_gt_witness_normalization}
+\input{sections/part_E_gt_strict_inclusion}
+\input{sections/part_E_detector_global}
+\input{sections/part_E_relative_cm_identity}
+\input{sections/part_E_compact_quaternion_detector}
+\input{sections/part_E_compact_quaternion_homology}
+\input{sections/part_E_dyadic_presentation}
+\input{sections/part_E_frobenius_splitting}
+\input{sections/part_E_compact_catalog}
+\input{sections/part_E_original_five_shell}
+\input{sections/part_E_original_first_gate}
+\input{sections/part_E_original_five_continuation}
+\input{sections/part_E_first_gate_duality}
+\input{sections/part_E_first_prime_spin}
+\input{sections/part_E_original_five_matching}
+\input{sections/part_E_two_first_primes}
+\input{sections/E214_fragment}
+\input{sections/part_E_primitive_five_support_reconstructed}
+\input{sections/primitive_five_catalog_and_matching_addendum_reconstructed}
+\input{sections/E216_fragment}
+\input{sections/E217_fragment}
+\input{sections/part_E_all_prime_local_detector_reconstructed}
+\input{sections/part_E_register}
+\input{sections/part_E_audit_table}
+\bibliographystyle{apalike}
+\bibliography{SECTION_GHOSTS_references}
+\end{document}

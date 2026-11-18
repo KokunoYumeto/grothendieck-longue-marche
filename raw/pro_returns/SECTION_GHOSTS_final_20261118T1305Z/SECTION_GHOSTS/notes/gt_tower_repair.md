@@ -1,0 +1,33 @@
+# The normalized mixed and forgetting action: E181–E182
+
+## Exact outcome and remaining gate
+
+E181 factors every full GT element as `F = F_* sigma`, where `sigma` is arithmetic and `F_*` has multiplier one and historical symmetrizer coefficient zero. The integral parity argument uses the full class-two quotient, including the prime two. The arithmetic image calculation is exactly `kappa_2(G_{Q^ab}) = 2 Zhat`; it does not replace the arithmetic subgroup by a hypothetical section of the cyclotomic character.
+
+The already proved E179–E180 relation gives normalized IV for `F_*`. The literal final calculation of Schneps2006, printed p670, derives R using IV and the ordinary three GT relations alone. Although the surrounding paper normalizes both rho2 and rho3, rho3 is absent from this calculation. The boundary central coordinate is retained using the two-boundary torus argument in Hatcher–Lochak–Schneps2000, Lemma7, printed p22. This establishes membership in the exact published Lambda group.
+
+E182 explicitly extends the published pure action to a specified mixed group by `alpha_P(g) = W(P,gP) g`. Here W is the actual product of the published flat A/S weights. It verifies ordinary forgetting edge by edge: an A support meeting a filled puncture becomes a pair of pants, so its two twist images commute and its commutator-word weight is one. S supports survive for stable targets. This yields the actual completed Birman-kernel action, not an action on an abstract replacement kernel. A separate finite Cayley-homology proof establishes the full induced topology of a free normal subgroup; the discrete point-pushing sequence is reconstructed from evaluation and center-freeness.
+
+These results do not prove a labelled branched-cover square. In particular the comparison of the action induced by an elliptic involution quotient with the *same* genus-zero GT parameter still needs a proof. They also do not reconstruct the numerical finite-pentagon bounds in historical A4.40/A4.57. The four remaining historical GT audit rows remain pending.
+
+## Primary sources actually opened
+
+1. Hatcher, A., Lochak, P., & Schneps, L. (2000). On the Teichmüller tower of mapping class groups. *Journal für die reine und angewandte Mathematik, 521*, 1–24. https://doi.org/10.1515/crll.2000.028. Primary author-hosted published scan: https://webusers.imj-prg.fr/~pierre.lochak/textes/crelle.pdf. Opened with web refs `turn616056330view0`, `turn111016760view1`; downloaded and OCR-read in the excluded build directory. Definition of Lambda p4; exact tower arrows pp5–6; Theorem2 and pants cells in §2; Theorems4–5, pp18–23; formula(3) and Lemma6, pp18–19; actual center/derived argument in Lemma7, p22. Owner visually inspected printed pp18 and22 through the rendered page images. The actual journal/year/pages are also verified on Hatcher's primary publication list, https://pi.math.cornell.edu/~hatcher/Papers/publist.html (`turn728914656search0`). The printed theorem states subsurface-inclusion compatibility for pure groups; E182's additional compatibility is proved, not attributed verbatim to that theorem.
+
+2. Schneps, L. (2006). Automorphisms of curves and their role in Grothendieck–Teichmüller theory. *Mathematische Nachrichten, 279*(5–6), 656–671. https://doi.org/10.1002/mana.200410383. Primary author-hosted publisher PDF: https://webusers.imj-prg.fr/~leila.schneps/automorphisms.pdf. Reopened refs `turn111016760view0`, `turn881180230view0`. Exact normalized definitions p659; derivation of R from IV and (I)–(III), p670, especially final displayed six-factor to five-factor calculation. Its earlier III-prime derivation uses a stronger special-morphism relation and is not imported.
+
+3. Nakamura–Schneps2000, primary author version https://webusers.imj-prg.fr/~leila.schneps/newGT.pdf, Definition5.1 author p17, supplies the exact arithmetic convention for the symmetrizer. The full-GT coefficient equality is independently proved in E180, not inferred from Proposition5.3's III-prime-restricted statement.
+
+## Search and scope checks
+
+Searches included the exact HLS title and DOI, the Hatcher publication list, Asada's monodromy paper and primary Birman sources. The Birman1969 publisher metadata opened, but its full article did not; the author's downloadable DJVU was unsupported by web retrieval. No unopened Birman or Asada proof is used. Instead E182 proves the needed discrete sequence directly from the evaluation fibration and the trivial center of the punctured-torus free group. No assertion about the unavailable historical quilt file is inferred from its register.
+
+All downloaded papers and rendered review images remain under `build/gt_repair_work`, excluded from the checkpoint deliverable. This note retains only source locators and the checks performed.
+
+## Exact comparison reopened at09:01UTC on18November2026
+
+Lochak–Nakamura–Schneps2026, arXiv:2602.12462v1, was reopened independently at https://arxiv.org/html/2602.12462v1 as turn674744563view0. Section1, lines70–74, distinguishes the known full-GT one/two-point actions from Lego-compatible actions; section8, lines771–781, reopened as turn809290075view0, retains a future question about extending the IΓ Lego action to full GT and about equality with its specific standard higher-genus action. These are accurate prior-literature scope statements.
+
+Nakamura–Schneps2000, authorversion3.14 pp3–4, was reopened as turn900680572view1 and turn811137528view1. Its Definition1.1 imposes BOTH III-prime and IV on IΓ. E179–E180 establish IV by the present finite-fixed-path/mixed-modular argument; they do not establish III-prime. Hatcher–Lochak–Schneps2000 defines Lambda, at multiplier one, by I–III and its separate relation R (printedp4). Schneps2006 printedp670, reopened as turn811137528view0, explicitly derives R from IV and I–III in the displayed six-factor calculation, without using III-prime or rho3. Thus E181 does make a new normalized-Lego deduction from the newly proved IV, rather than attributing full-GT Lego covariance to an already-published theorem.
+
+The exact statement remains narrower than IΓ=GT or a canonical action of every multiplier on the entire Lego tower. Arithmetic factorization supplies an individual normalized factor, sufficient for the character calculation. It does not alone prove independence of that factorization for a full-tower action, its cross-factor composition law, or equality with the LNS2026 chosen higher-genus formulas. These stronger conclusions are not used in E190–E191 and E195. The existing E182 statement proves the needed actual genus-zero/genus-one mixed and forgetting action for each normalized factor.

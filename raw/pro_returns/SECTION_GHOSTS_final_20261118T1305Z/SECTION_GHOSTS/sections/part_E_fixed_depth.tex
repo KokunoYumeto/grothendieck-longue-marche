@@ -1,0 +1,714 @@
+% Independently reconstructed fixed-depth survival theorem.
+% The pair in E.33 depends on the prescribed depth and modulus.
+\subsection{An independent reconstruction of fixed-depth survival}
+
+The following results reconstruct C.2.10--C.2.12 in
+\path{GT_TOWER_CHECK} and A.65--A.66 in \path{SECTIONS_OVER_Q}.
+All arithmetic conditions are
+made simultaneous before Chebotarev is used.  At the cohomological
+step we retain the literal $c_0$ condition of A.22, as well as the
+possible nonzero finite arithmetic kernel.
+
+\begin{result}{E.30}{Proved}{Exact local images for the variable exponent}
+\label{coh:variable-image}
+Let $d\ge2$, let $24\mid C$, and choose $h\ge2d^2$ at least every
+prime divisor of $C$.  Set
+\[
+ n=h!,\qquad E(Z)=Cn\prod_{r=2}^d(Z^r-1),\qquad D=Cd!n^d.
+\]
+For $p\mid n$, put $v=v_p(n)$, $e=v_p(d)$, and $a_p=1$ for
+odd $p$, $a_2=2$.  Then the map
+\[
+ F_p(z)=\exp(E(z)\log z)
+\]
+is a bijection
+\[
+ 1+p^v+p^{v+a_p}\mathbb Z_p
+ \xrightarrow{\sim}
+ F_p(1+p^v)(1+p^{W_p}\mathbb Z_p),\qquad
+ W_p=v_p(C)+(d+1)v+v_p(d!)+a_p+e.
+ \tag{E.30.1}
+\]
+It preserves congruences, agrees with $z^{E(z)}$ on positive integer
+inputs, and throughout this shell
+\[
+ v_p(z-1)=v,\qquad v_p(E(z))=v_p(D),\qquad W_p\le2v_p(D).
+ \tag{E.30.2}
+\]
+For $p\nmid n$, let $\omega\in\mu_{p-1}(\mathbb Z_p)$ satisfy
+$\omega^r\not\equiv1\pmod p$ for $2\le r\le d$.  For a fixed
+integer $e_0$ modulo $p-1$, the map
+\[
+ z\longmapsto \omega^{e_0}
+       \exp(E(z)\log(z/\omega))
+ \tag{E.30.3}
+\]
+is a congruence-preserving bijection from $\omega(1+p\mathbb Z_p)$
+to $\omega^{e_0}(1+p\mathbb Z_p)$.  It equals the ordinary variable
+power on those positive integer inputs for which $E(z)\equiv e_0$
+modulo $p-1$.
+\end{result}
+\begin{proof}
+For $p\mid n$ write $z=1+p^v u$.  Factoring the lowest power from
+each factor gives an exact identity of convergent series
+\[
+ E(z)\log z=K u^d H(u),\qquad K=Cn\,d!\,p^{dv},
+\]
+\[
+ H(u)=\prod_{r=2}^d
+ \frac{(1+p^vu)^r-1}{rp^vu}\,
+ \frac{\log(1+p^vu)}{p^vu}.
+ \tag{E.30.4}
+\]
+We first check the useful coefficient bound
+$H\in1+p^{e+1}\mathbb Z_p\langle u\rangle$.  A nonconstant
+coefficient of a polynomial factor, indexed by $k\ge2$, has valuation
+at least $v(k-1)-v_p(k)$, since
+$\binom rk/r=\binom{r-1}{k-1}/k$.  If $p\le d$, the factorial
+gives $v\ge\lfloor h/p\rfloor\ge2d$, more than the possible
+denominator loss.  If $p>d$, those polynomial denominators are units
+and $e=0$.  The logarithmic factor has the same bound for every
+$k\ge2$.  Its minimum is at least $v$ for odd $p$ and at least
+$v-1$ for $p=2$: use $v_p(k)\le k-2$ in the first case and
+$v_2(k)\le k-1$ in the second.  The bounds tend to infinity with
+$k$, and at two $v\ge4$.  They prove the asserted bound on $H$.
+
+Now set $u=1+p^{a_p}w$.  The resulting series has the form
+\[
+ u^dH(u)=H(1)+p^{a_p+e}(\lambda w+pG(w)),
+ \quad \lambda\in\mathbb Z_p^\times,
+ \quad G\in\mathbb Z_p\langle w\rangle.
+ \tag{E.30.5}
+\]
+Indeed, $v_p\binom dk\ge e-v_p(k)$, and after division by
+$p^{a_p+e}$ a term of degree $k\ge2$ from $u^d$ has valuation
+at least $a_p(k-1)-v_p(k)\ge1$.  After its constant term is removed,
+the perturbation $u^d(H(u)-1)$ has the same extra factor $p$.
+The remaining linear coefficient is $d/p^e$ modulo $p$.
+Integral restricted power series are one-Lipschitz.  Consequently the
+equation $\lambda w+pG(w)=t$ has exactly one solution for each
+$t\in\mathbb Z_p$, by the contraction
+$w\mapsto\lambda^{-1}(t-pG(w))$.  Multiplication by $K$ gives the
+claimed logarithmic coset.  Exponential and logarithm are inverse
+isometries on $p\mathbb Z_p$ for odd $p$ and on $4\mathbb Z_2$ at
+two; all expressions lie in these domains.  This proves (E.30.1).
+
+The same polynomial factor estimates give
+$v_p(z^r-1)=v+v_p(r)$, so summation gives $v_p(E(z))=v_p(D)$.
+The remaining inequality follows from
+\[
+ 2v_p(D)-W_p
+   =v_p(C)+(d-1)v+v_p(d!)-a_p-e\ge0.
+\]
+On this shell the polynomial, logarithm, product, and exponential all
+preserve congruences.  The identity between logarithms of integer
+powers gives the asserted agreement with $z^{E(z)}$.
+
+If $p\nmid n$, then $p>h\ge2d^2$, and $E(\omega)$ is a unit.
+Putting $z=\omega(1+pt)$ in (E.30.3) gives
+\[
+ \frac{\log(F(z)/\omega^{e_0})}{p}
+       =E(\omega)t+pG_0(t),\qquad
+ G_0\in\mathbb Z_p\langle t\rangle.
+\]
+The nonlinear logarithmic coefficient $p^{k-1}/k$ is divisible by
+$p$ for every $k\ge2$; the other factor is an integral polynomial.
+The same contraction proves the last bijection.  Keeping $e_0$
+fixed is essential: the residue exponent is not a continuous function
+of an arbitrary $p$-adic input.  Its congruence with $E(z)$ is imposed
+separately on the integer inputs in E.31.
+\end{proof}
+
+\begin{result}{E.31}{Proved}{The simultaneous variable-exponent arithmetic recursion}
+\label{coh:variable-arithmetic}
+Fix $d\ge2$, $24\mid C$, and $J\ge2d^2$ at least every prime
+divisor of $C$.  Write
+\[
+ n_j=(j+J)!,\quad D_j=Cd!n_j^d,\quad
+ E_j(Q)=Cn_j\prod_{r=2}^d(Q^r-1).
+ \tag{E.31.1}
+\]
+There are pairwise disjoint sequences of distinct primes
+$q_j,r_j,s_j>3$ for which
+\[
+ A=3\prod_{j\ge0}\frac{q_j^{E_j(q_j)}}{s_j^{E_j(s_j)}},\qquad
+ B=-2\prod_{j\ge0}\frac{r_j^{E_j(r_j)}}{s_j^{E_j(s_j)}}
+ \tag{E.31.2}
+\]
+form an ordinary completed unit-equation pair.  Both coordinates have
+infinite support, their quotients by $3,-2$ are global $C$-th powers,
+and their nonzero valuation patterns are exactly
+\[
+ \begin{array}{c|c}
+ 2&(0,1)\\3&(1,0)\\
+ q_j&(E_j(q_j),0)\\r_j&(0,E_j(r_j))\\
+ s_j&(-E_j(s_j),-E_j(s_j)).
+ \end{array}
+ \tag{E.31.3}
+\]
+Every prime choice is specified by finitely many congruences and
+complete splitting in one explicitly given radical field; those
+conditions have an actual simultaneous Galois element.
+\end{result}
+\begin{proof}
+Set $B(D)=(D+1)^4$ and $H_j(p)=2v_p(D_j)+j+3$.  Inductively keep
+pairwise coprime coefficients
+\[
+ a_j=3u_j^{24},\qquad b_j=-2v_j^{24},\qquad c_j=w_j^{24},
+\]
+with positive $u_j,v_j,w_j$ of disjoint support away from two and three,
+and impose the two invariants
+\[
+ a_jX^{D_j}+b_jY^{D_j}=c_jZ^{D_j}
+       \text{ has a solution in }(\mathbb Z_p^\times)^3
+       \text{ for every }p,
+ \tag{E.31.4}
+\]
+\[
+ v_p(a_j+b_j-c_j)\ge H_j(p)\quad(p\le B(D_j)).
+ \tag{E.31.5}
+\]
+The initial triple $(3,-2,1)$ satisfies them with $(X,Y,Z)=(1,1,1)$.
+
+We first prove the precise field compatibility required below.
+For $24\mid n$, let $F_n=\mathbb Q(\mu_n)$.  If $(a,b,c)$ is any
+current triple, each of
+\[
+ F_n((b/c)^{1/n}),\qquad F_n((a/c)^{1/n}),\qquad
+ F_n((-a/b)^{1/n})
+ \tag{E.31.6}
+\]
+has maximal abelian subfield $F_n$.  The radicands have squareclasses
+$-2,3,6$, whose square roots lie in $F_n$.  None is an odd-prime
+power in $F_n$: a valuation at two or three is $1$ or $-1$, so an
+odd-prime radical has that prime degree over $\mathbb Q$; its real
+radical field has nonreal conjugates and is not normal.  If any such
+root lay in $F_n$, multiplication by a root of unity would put its
+real root in an abelian extension, a contradiction.  Similarly no
+radicand is a fourth power there.  Its fourth root, after removing
+rational factors and roots of unity already in $F_n$, gives respectively
+$2^{1/4}$, $3^{1/4}$, or $6^{1/4}$.  For the third radicand one uses
+$(3/2)^{1/4}=6^{1/4}/\sqrt2$.  These irreducible real quartic fields
+are nonnormal as well.
+
+Kummer theory therefore gives a cyclic kernel $H$ of order $n/2$ in
+the Galois group $G$ of each field (E.31.6).  For clarity, if the kernel
+had order $m$, the $m$-th power of the chosen $n$-th root would belong
+to $F_n$; the radicand would be an $(n/m)$-th power.  The preceding
+exclusions and the existing square root force $n/m=2$.
+Conjugation on $H$ has cyclotomic multiplier.  Every multiplier is odd,
+and complex conjugation gives $-1$, so $[H,G]=2H$.  The fixed field of
+$2H$ contains the splitting field of the relevant pure quartic, which
+is a nonabelian dihedral extension of degree eight.  Hence $G/2H$ is
+not abelian.  Since $G/H$ is abelian and $H/2H$ has order two, it follows
+that $[G,G]=H$, proving the maximal-abelian assertion.
+
+In particular, for $n\mid M$ the intersection of a field (E.31.6)
+with $\mathbb Q(\mu_M)$ is exactly $F_n$.  Any CRT unit class equal
+to one modulo $n$ defines a cyclotomic automorphism agreeing on that
+intersection with the identity of (E.31.6).  The two automorphisms give
+an element of the fibre-product Galois group of the compositum.
+Chebotarev supplies arbitrarily large primes with both required
+restrictions \cite[Theorem 8.31, p.147]{CohMilneANT}.  The restrictions
+are preserved under conjugacy, so the Frobenius conjugacy-class
+formulation suffices.
+
+At stage $j$, abbreviate $n=n_j$, $D=D_j$, $E=E_j$ and
+$(a,b,c)=(a_j,b_j,c_j)$.  Choose $P\ge B(D_{j+1})$ at least every
+old support prime.  Before processing the primes $p\le P$ in increasing
+order, fix precisions
+\[
+ L_p\ge H_{j+1}(p),\quad p^{L_p}>P,\quad
+ L_p\ge v_p(n)+a_p\quad(p\mid n).
+ \tag{E.31.7}
+\]
+For each of the three future prime variables we require, locally,
+\[
+ \begin{cases}
+ z\in1+p^{v_p(n)}+p^{v_p(n)+a_p}\mathbb Z_p,&p\mid n,\\
+ z\in\mathbb Z_p^\times,\quad z^r\not\equiv1\pmod p
+                         \ (2\le r\le d),&p\nmid n.
+ \end{cases}
+ \tag{E.31.8}
+\]
+The second case has $p>j+J\ge2d^2$, whereas the forbidden set has
+size at most $\sum_{r=2}^dr<d^2$, so permitted residues exist.
+
+When a prime $p$ is reached, the earlier conditions already fix each
+future input modulo $p-1$: every prime-power divisor of $p-1$ is
+smaller than $P$, its prime was processed earlier, and (E.31.7) fixed
+more than that precision.  Thus they fix separately the three classes
+$e_i=E(z_i)\bmod(p-1)$.  At every prime $\ell\mid p-1$,
+(E.30.2) and (E.31.8) give
+$v_\ell(E(z_i))=v_\ell(D)$ for inputs consistent with the choices.
+For $\ell\nmid n$ both sides are zero, since all prime divisors of
+$C d!$ divide $n$.  It follows that
+\[
+ \gcd(e_i,p-1)=\gcd(D,p-1),\qquad
+ (\mathbb F_p^\times)^{e_i}=(\mathbb F_p^\times)^D.
+ \tag{E.31.9}
+\]
+Every forbidden residue has order dividing some $r\le d$ and $p-1$;
+that order divides $\gcd(D,p-1)$, and hence every $e_i$.  All forbidden
+residues therefore map to one under each power map in (E.31.9).
+
+We now solve the local equation
+$aF_a(z_a)+bF_b(z_b)=cF_c(z_c)$ without changing earlier congruences.
+If $p\mid n$, use the common shell map (E.30.1).  Starting with its
+common value $F_0=F_p(1+p^{v_p(n)})$, the error is
+$(a+b-c)F_0$, divisible by $p^{H_j(p)}$ and therefore by $p^{W_p}$.
+At least one coefficient is a unit.  Vary that output in the entire
+coset $F_0+p^{W_p}\mathbb Z_p$ to cancel the error, then take its
+unique preimage under E.30.  Here $p\le B(D)$, as $D\ge n$.
+
+Suppose $p\nmid n$.  Use (E.30.3) with the separately fixed $e_i$.
+If $p\le B(D)$, choose a common value
+$\lambda\in(\mathbb F_p^\times)^D$ and permitted preimages for the
+three maps.  If this image has more than one element, choose
+$\lambda\ne1$; no forbidden preimage can occur.  If it has one
+element, all nonzero residues are preimages, and the forbidden-set
+bound still leaves a choice.  The three output balls are then the same
+ball $\widetilde\lambda(1+p\mathbb Z_p)$.  At their common
+Teichmuller value the error is divisible by $p$, by (E.31.5).  Vary an
+output with unit coefficient inside this ball to cancel it exactly.
+If instead $p>B(D)$, start with the unit solution (E.31.4).  Scale its
+three coordinates by one common unit so that none of the three
+$D$-th-power residues equals one.  There are at most three forbidden
+values of the scaling power, whereas
+$(p-1)/\gcd(D,p-1)>3$.  The resulting three output values have
+permitted preimages by (E.31.9), and the local bijections E.30 attain
+these exact $p$-adic unit values.  This also covers old coefficient
+primes larger than $B(D)$, since (E.31.4) gives unit coordinates there.
+
+Replace these inputs by residues modulo $p^{L_p}$.  Congruence
+preservation retains an error divisible by $p^{H_{j+1}(p)}$.
+The residues fix the exponent classes at later primes, so this
+triangular process is consistent throughout.  The resulting three
+classes modulo $M=\prod_{p\le P}p^{L_p}$ are units and equal one
+modulo $n$.  Apply the already proved field-intersection calculation
+to select distinct $q,r,s>P$ in these classes, splitting respectively
+in the three fields (E.31.6).  Define
+\[
+ a'=a q^{E(q)},\qquad b'=b r^{E(r)},\qquad c'=c s^{E(s)}.
+ \tag{E.31.10}
+\]
+The support conditions and twenty-fourth-power forms persist.
+
+At $p\le P$ the new error has precision $H_{j+1}(p)$.
+Vary a coordinate with unit coefficient at $(1,1,1)$.
+Its derivative has valuation $v_p(D_{j+1})$, and the error has
+strictly greater than twice that valuation.  The elementary strong
+Hensel criterion yields a nearby unit solution for exponent $D_{j+1}$.
+
+At a new prime $Q\in\{q,r,s\}$ the shell conditions give
+$v_\ell(Q-1)=v_\ell(n)$ for every $\ell\mid n$.  A prime divisor
+of $D_{j+1}$ not dividing $n$ is at most $j+J+1\le P$; its second
+condition in (E.31.8), already with $r=2$, excludes $Q\equiv1$
+modulo that prime.  Since $n\mid D_{j+1}$, we obtain the exact identity
+\[
+                  \gcd(D_{j+1},Q-1)=n.
+ \tag{E.31.11}
+\]
+Thus the $D_{j+1}$-power and $n$-th-power images in $\mathbb F_Q^\times$
+coincide.  At $q$, the split radical makes $c/b$ an $n$-th power, and
+the newly introduced $r,s$ powers are also $n$-th powers.  With
+$X=Z=1$, solve $Y^{D_{j+1}}=(c'-a')/b'$ by simple-root Hensel.
+At $r$, take $Y=Z=1$ and use the split ratio $c/a$.
+At $s$, take $Y=Z=1$ and solve
+$X^{D_{j+1}}=(c'-b')/a'$ using the split ratio $-b/a$.
+All roots and derivatives are units because the new primes exceed
+$B(D_{j+1})$.
+
+At any remaining prime $p>B(D_{j+1})$ all coefficients are units and
+$p\nmid D_{j+1}$.  The smooth projective diagonal curve of degree
+$D_{j+1}$ has genus $(D_{j+1}-1)(D_{j+1}-2)/2$.  The Weil bound
+\cite[(1.5.1) and Theorem (1.6), pp.275--276]{RootDeligne1974}
+and at most $3D_{j+1}$ boundary points give at least
+\[
+ p+1-(D_{j+1}-1)(D_{j+1}-2)\sqrt p-3D_{j+1}>0
+\]
+points with all coordinates nonzero.  To check the strict inequality,
+put $t=\sqrt p>(D_{j+1}+1)^2$ and replace
+$(D_{j+1}-1)(D_{j+1}-2)$ by $D_{j+1}^2$; then
+$t^2-D_{j+1}^2t-3D_{j+1}+1>
+t(2D_{j+1}+1)-3D_{j+1}+1>0$.  A nonzero coordinate derivative
+lifts such a point to a unit solution.  This proves both inductive
+invariants at every prime.  The curve bound is an independent
+replacement for the Jacobi-sum estimate in the historical proof.
+
+Finally every new exponent is divisible by $Cn_j$.  In the global
+power completion, the products and their versions with exponents
+divided by $C$ converge: modulo any fixed positive integer power,
+every sufficiently late factor is trivial.  At a fixed finite prime
+$p$ each coefficient valuation eventually stabilizes.  Later factors
+are units, and growing factorial exponents annihilate every finite
+quotient of $\mathbb Z_p^\times$.  Hence the coefficient sequences
+converge in $\mathbb Q_p^\times$ to nonzero $a_p,b_p,c_p$.
+Condition (E.31.5) applies eventually to this prime with precision
+tending to infinity, and gives $a_p+b_p=c_p$.  The ordinary point
+$t_p=a_p/c_p$ has $1-t_p=b_p/c_p$ and precisely the localized
+completed pair (E.31.2).  At the real place the signs are $(+,-)$,
+represented for example by $(3,-2)$.  Distinctness of the support
+primes proves (E.31.3), and the divided convergent products prove the
+$C$-th-power assertion.  This completes the recursion and the audit
+of its continuity and field compatibility.
+\end{proof}
+
+\begin{result}{E.32}{Proved}{Uniform Hall, inertia, and arithmetic-kernel bounds}
+\label{coh:fixed-depth-bounds}
+Fix $R\ge3$.  Let $N_r=\Pi/\Gamma_{r+1}\Pi$ and
+$L_r=\Gamma_r\Pi/\Gamma_{r+1}\Pi=\widehat{\mathbb Z}(r)^{b_r}$.
+Use the actual point-three section $s_3$ to identify
+$E_r=N_r\rtimes_{\rho_3}G_{\mathbb Q}$.  Define
+\[
+ K_r(m)=\ker\left(N_r\longrightarrow
+ (1+I)((\mathbb Z/m)\langle X,Y\rangle/I^{r+1})\right),
+ \qquad I=(X,Y),
+ \tag{E.32.1}
+\]
+using the integral Magnus images $x\mapsto1+X$, $y\mapsto1+Y$.
+If $h_R$ is the number of Hall basis elements through weight $R$, put
+\[
+ D_H=(R!)^{h_R+1},\quad T=2(R!)^R,\quad
+ B_r=2|K_{2r-2}(\mathbb Z)|\quad(2\le r\le R).
+ \tag{E.32.2}
+\]
+Then $K_r(m)$ is characteristic, the continuous Hall set section
+$\sigma_r:N_{r-1}\to N_r$ with zero new coordinates satisfies
+\[
+ \sigma_r(K_{r-1}(D_Hm))\subset K_r(m),
+ \tag{E.32.3}
+\]
+and the finite integer $B_r$ annihilates
+$H^2(G_{\mathbb Q,\{\ell,\infty\}},\mathbb Z_\ell(r))$ for every
+coefficient prime $\ell$.
+
+At a fresh prime $q>3$, $q\ne\ell$, suppose an ordinary local
+abelian pair has valuation pattern $(E,0)$, $(0,E)$, or $(-E,-E)$.
+For any actual class-$(r-1)$ section with this pair, the central
+defect $c$ of its canonical Hall set lift satisfies the strict
+tame-residue bound
+\[
+ \frac{z_q(c)}{q^{r-1}-1} \in
+ \frac{E}{T\prod_{k=2}^{r-1}(q^k-1)}
+                      \mathbb Z_\ell^{b_r}.
+ \tag{E.32.4}
+\]
+The product is empty for $r=2$.  We use this assertion when all the
+displayed ideals are integral.  At a prime $q>3$, $q\ne\ell$,
+where both ordinary valuations are zero, the defect residue is zero.
+\end{result}
+\begin{proof}
+The Hall model and its pro-$\ell$ universal property were established
+in A.20.  The product over $\ell$ gives $N_r$: a finite nilpotent
+group is the product of its Sylow groups, and these are precisely its
+finite nilpotent quotients of class at most $r$.  On a weight-$r$
+commutator the actual Galois action is $\chi^r$; conjugating the
+tangential action by the point-three section does not change this
+central graded action.
+
+Substituting the integral Magnus series of any two generator images
+preserves the ideal of coefficients divisible by $m$.  This proves
+that $K_r(m)$ is characteristic.  To check (E.32.3) without excluding
+small coefficient primes, use a Lyndon Hall basis.  Its lowest Magnus
+polynomials have distinct leading words with coefficient one; successive
+Hall exponent extraction is integral and triangular.  If an exponent
+$a$ is divisible by an integral ideal $J$, every nonconstant coefficient
+of its Hall power through degree $R$ is divisible by $J/(R!)$:
+\[
+           \binom ak=\frac ak\binom{a-1}{k-1},\qquad k\le R.
+\]
+The identity applies in $\mathbb Z_\ell$, including when $\ell\mid k$.
+Extract an exponent and remove its Hall power successively.  There are
+at most $h_R$ removals, each losing at most $R!$ in this conservative
+bound.  Starting with coefficients divisible by $D_Hm$, every
+extracted exponent is still divisible enough that its extension
+through degree $r$ is one modulo $m$.  Multiplying the extended
+Hall powers proves (E.32.3).
+
+Quillen's finite-generation theorem and Borel's rank formula show
+that each even positive group $K_{2r-2}(\mathbb Z)$ is finite
+\cite[IV.6.9, author p.59; IV.1.17--1.18, author p.12]{CohWeibelKbook}.
+At odd $\ell$, the integral comparison identifies the displayed
+$H^2$ with its $\ell$-primary part
+\cite[VI.8.2, author p.47]{CohWeibelKbook}.
+Inverting $\ell$ does not change that primary part: localization adds
+only the adjacent finite-field $K$-groups, whose nonzero orders are
+$\ell^i-1$ \cite[IV.1.13; V.6.8]{CohWeibelKbook}.
+At two, VI.9.11 of the same source gives the comparison with the
+real-place term retained.  For $r\not\equiv0\pmod4$ the group is
+the two-primary $K$-group (the possible integer $\rho$ is zero since
+the real rank is one).  For $r\equiv0\pmod4$, its kernel under
+restriction to the real place is that group and the remaining image
+has exponent at most two.  Thus the additional factor two in $B_r$
+annihilates the entire group in every case.  This is the precise
+finite-kernel calculation used in A.22 and B.25; it neither assumes
+an unknown even $K$-group to vanish nor discards a derived-limit class.
+
+We next check that the action used in the tame bound is the actual
+unramified action.  For $q\ne\ell$ the tangential action in class
+two is diagonal cyclotomic: its actual path commutator lies in
+$\Gamma_2$ and is central in this quotient.  Suppose the action is
+unramified in class $i$.  The kernel of the next automorphism map is
+a submodule of $\operatorname{Hom}(N_1,L_{i+1})$, of Frobenius
+weight $i$.  Wild inertia and non-$\ell$ tame inertia map trivially
+to this pro-$\ell$ torsion-free module.  For the remaining generator,
+$FTF^{-1}=T^q$ makes its image annihilated by $q^i-q$.  For $i\ge2$
+this integer is nonzero, so the image vanishes.  The tangential action
+is therefore unramified at every class.  For $q>3$ the point-three
+section is itself unramified: its abelian inertia values are zero,
+and successively the same tame relation kills a first possible
+nonzero coordinate in every weight at least two.  Hence $\rho_3$
+is unramified at all fresh support primes.
+
+In local class two, write the actual tame inertia as
+$V_2=y^n x^m [x,y]^t$.  The explicit ordinary local cup primitives in
+A.25 show
+\[
+                m,n\in E\mathbb Z_\ell,\qquad
+                t\in(E/2)\mathbb Z_\ell.
+ \tag{E.32.5}
+\]
+For a positive pattern the central coordinate is the valuation times
+an integral primitive.  For the negative pattern it is such a product
+plus a binomial in the valuation, whose denominator is at most two.
+This bound holds for every local integral lift: the difference of
+two central primitives is a $\mathbb Z_\ell(2)$-cocycle, and its
+inertia value is killed by $q-1$, hence is zero.  Since $s_3(T)=1$,
+these are also the relative inertia coordinates.  Extending $V_2$
+canonically through degree $R$ is consequently one modulo
+$E/(2R!)$ in the Magnus algebra.
+
+Suppose an actual class-$i$ section is given.  Let $\bar V$ be the
+canonical lift of its class-$(i-1)$ inertia and write its last
+coordinate as $Z_i\in L_i$.  If $U$ is its actual Frobenius coordinate
+and $\varphi_q$ the actual unramified action, the tame relation reads
+\[
+ U\varphi_q(\bar V)U^{-1}\bar V^{-q}
+                     = Z_i^{-q(q^{i-1}-1)}.
+ \tag{E.32.6}
+\]
+Integral substitution, multiplication, conjugation and powers preserve
+any integral Magnus coefficient ideal.  The left side is central;
+its weight-$i$ Hall coordinates are therefore extracted integrally,
+with no denominator.  Divide by $q^{i-1}-1$ (and the unit $q$), and
+allow a further factor $R!$ to extend the resulting Hall power through
+degree $R$.  Starting from (E.32.5), induction gives the bound
+\[
+ V_i^{\rm can}\equiv1\pmod{
+ E/(2(R!)^{i-1}\prod_{k=2}^{i-1}(q^k-1))}
+                  \quad(2\le i\le R)
+ \tag{E.32.7}
+\]
+for the canonical extension of actual inertia.
+
+The central relator of the canonical lift is exactly $qz_q(c)$ by
+the cochain-to-purity calculation B.22.  Use (E.32.7) at $i=r-1$,
+and divide once more by $q^{r-1}-1$; the weaker denominator $T$
+in (E.32.4) absorbs all factorial losses.  For $r=2$, an actual local
+class-two lift exists by A.25 and (E.32.5) supplies its correction,
+giving the stronger bound $z_q(c)/(q-1)\in(E/2)\mathbb Z_\ell$.
+If both valuations are zero, all successive inertia coordinates vanish
+by the torsion-free tame relation, so the canonical relator is zero.
+
+All cochains here lie in the actual tame domain of B.22.  Indeed the
+tangential action is unramified, and a local pro-$\ell$ section kills
+wild and prime-to-$\ell$ tame inertia.  Its relative cocycle and its
+Hall set lift factor through that same tame quotient.  This observation
+also applies at $q=2,3$ when $q\ne\ell$, although $\rho_3$ there may
+have inner inertia.  In particular the residue bounds are bounds on
+the strict global localization representative, not just on a formal
+relator in a diagonally acted group.
+\end{proof}
+
+\begin{result}{E.33}{Proved}{Ordinary infinite support at every prescribed integral depth}
+\label{coh:fixed-depth}
+For every integer $R\ge1$ and positive integer $N$ there is an ordinary
+infinite-support completed pair $(A,B)$ and a continuous section of
+the actual integral class-$R$ quotient with that abelianization.
+It agrees with the point-three section in the finite arithmetic quotient
+defined by (E.32.1) modulo $N$.  Its pair is neither a rational-point
+pair nor a cuspidal pair.  The pair and the section may depend on $R,N$.
+This proves the fixed-depth content of GT\_TOWER\_CHECK C.2.12 and
+SECTIONS\_OVER\_Q A.65, with C.2.10--11/A.66 reconstructed above.
+\end{result}
+\begin{proof}
+It suffices to treat $R\ge3$, and project for smaller depth.  Let
+$D_H,T,B_r$ be as in E.32 and put
+\[
+ D_r^{\rm old}=(2^{r-1}-1)(3^{r-1}-1),\qquad
+ M_R=N,\qquad M_{r-1}=D_H B_r M_rD_r^{\rm old}\quad(2\le r\le R).
+ \tag{E.33.1}
+\]
+Choose $C$ divisible by $24$, $M_1$, and all $TB_rM_r$.
+Apply E.31 with $d=R-1$ and an allowed $J$.  At each fresh support
+prime $q$ its absolute nonzero valuation is
+\[
+ E_q=C e_q\prod_{k=2}^{R-1}(q^k-1),\qquad
+ e_q=n_j\ \text{on the three primes of stage }j,\qquad
+ e_q\longrightarrow0\text{ in }\widehat{\mathbb Z}.
+ \tag{E.33.2}
+\]
+The relative classes $A/3,B/(-2)$ are global $M_1$-th powers.  Choose
+literal relative Kummer cocycles pointwise divisible by $M_1$;
+these start the class-one section induction.
+
+Suppose a section through class $r-1$ has relative cocycle $z$ with
+$z(g)\in K_{r-1}(M_{r-1})$ for every $g$.  Lift it by $\sigma_r$.
+By (E.32.3) its values lie in $K_r(L)$, where
+$L=B_rM_rD_r^{\rm old}$.  Its normalized central multiplication
+defect $c$ has values in $LL_r$: all Magnus coefficients of the defect
+are divisible by $L$, and central Hall extraction is integral.
+Thus $c/(B_rM_r)$ is an actual integral continuous two-cocycle.
+
+Fix a coefficient prime $\ell$.  At an old support prime $q=2,3$,
+$q\ne\ell$, the cochain formula B.22 makes the strict residue of
+$c/(B_rM_r)$ divisible by $D_r^{\rm old}$.  Division by the needed
+$q^{r-1}-1$ is therefore integral; the factor $q^{-1}$ in that formula
+is an $\ell$-adic unit.  At a fresh support prime $q\ne\ell$, E.32
+and (E.33.2) give
+\[
+ \frac{z_q(c/(B_rM_r))}{q^{r-1}-1}
+ \in
+ \frac{C e_q\prod_{k=r}^{R-1}(q^k-1)}{TB_rM_r}
+                   \mathbb Z_\ell^{b_r}
+ \ \subset\ e_q\mathbb Z_\ell^{b_r}.
+ \tag{E.33.3}
+\]
+At every other prime away from $\ell$ the residue is zero.  The
+coordinatewise quotients are integral and tend to zero, hence belong
+to the literal $c_0$ module of A.22.  Its exact localization sequence
+therefore places
+\[
+                         \beta=[c/(B_rM_r)]
+ \tag{E.33.4}
+\]
+in the image of $H^2(G_{\mathbb Q,\{\ell,\infty\}},
+\mathbb Z_\ell(r)^{b_r})$.  E.32 gives $B_r\beta=0$.
+It follows that $[c]=0$, so there is a continuous integral cochain
+$h$ with $\delta h=-c$ and hence an actual class-$r$ lift.
+
+We must retain the finite congruence, rather than merely produce some
+lift.  Reduction of $h$ modulo $B_rM_r$ is a cocycle.  The two
+coefficient connecting maps satisfy the literal identities
+\[
+ \partial_{B_rM_r}[\bar h]=-\beta,\qquad
+ \partial_{M_r}[\bar h\bmod M_r]=-B_r\beta=0.
+ \tag{E.33.5}
+\]
+The second identity is just
+$\delta h/M_r=B_r(\delta h/(B_rM_r))$.  Exactness for
+$0\to L_r\xrightarrow{M_r}L_r\to L_r/M_r\to0$ now lifts the
+reduced cohomology class to an integral one-cocycle $z_r$.  If the
+representatives differ by a finite coboundary, lift its zero-cochain
+and adjust $z_r$ by the corresponding integral coboundary.  Thus
+$z_r\equiv h\pmod{M_r}$ pointwise.  Replacing $h$ by $h-z_r$
+preserves $\delta h=-c$ and makes every new central coordinate
+divisible by $M_r$.  Together with the original set lift this gives
+a class-$r$ cocycle pointwise in $K_r(M_r)$, completing the induction.
+
+These exact sequences are sequences of continuous cochain complexes:
+a finite-valued cochain lifts by choosing lifts of its finitely many
+values.  The argument can be carried out in every $\ell$-component.
+A map into a product is continuous exactly when its components are
+continuous, so the corrected component cocycles form one continuous
+section of the full integral quotient.  This also justifies the full
+$\widehat{\mathbb Z}$ formulation of (E.33.5).
+
+For precision, the actual finite arithmetic quotient is
+\[
+ E_R\longrightarrow
+ (N_R/K_R(N))\rtimes\operatorname{im}(\bar\rho_3),\qquad
+ (z,g)\longmapsto(z\bmod K_R(N),\bar\rho_3(g)),
+ \tag{E.33.6}
+\]
+where $\bar\rho_3$ is the induced finite action.  The characteristic
+property in E.32 makes this a well-defined homomorphism.  Since
+$M_R=N$, its two section maps are literally equal, as claimed.
+
+Finally E.31 gives infinitely many nonzero valuation coordinates,
+so the pair cannot come from a rational point.  The actual abelian
+cusp map has second coordinate trivial at zero, first coordinate
+trivial at one, and equal valuation coordinates at infinity.
+The permanent patterns $(0,1)$ at two and $(1,0)$ at three exclude
+each case.  Ordinary localization is supplied by E.31, independently
+of any assertion that the particular higher section is locally a
+point section.  No such higher local matching is inferred.  In
+particular this theorem does not choose one pair for all $R$; applying
+the fixed-pair compactness theorem A.21 to this varying family would
+change its quantifiers and is invalid.
+\end{proof}
+
+\begin{result}{E.34}{Proved}{Why the denominator-clearing recursion does not diagonalize}
+\label{coh:diagonal-barrier}
+For a fixed prime $q$, put
+\[
+ P_R(q)=\prod_{k=2}^{R-1}(q^k-1)\qquad(R\ge3).
+\]
+For every coefficient prime $\ell\ne q$,
+$v_\ell(P_R(q))\to\infty$.  Consequently
+\[
+ \bigcap_{R\ge3}P_R(q)\mathbb Z=\{0\},\qquad
+ \bigcap_{R\ge3}P_R(q)\widehat{\mathbb Z}
+ =\{z\in\widehat{\mathbb Z}:z_\ell=0\text{ for all }\ell\ne q\}.
+ \tag{E.34.1}
+\]
+Thus the sufficient exponent divisibilities imposed in E.33 cannot be
+maintained at a fixed nonzero ordinary valuation through unbounded
+nilpotent depth. Moreover, the abelian outputs of the displayed
+E.33 construction converge in the global power completion to
+$(3,-2)$ as $R\to\infty$, for arbitrary choices of its finite
+moduli $N_R$. This also verifies the exact convergence assertion
+GT C.2.1 about the displayed SECTIONS A.65 parameters.
+Neither statement says that the exponent divisibilities are necessary
+for actual nilpotent survival.
+\end{result}
+\begin{proof}
+For odd $\ell\ne q$, let $t$ be the multiplicative order of $q$
+modulo $\ell$.  Every positive multiple of $t$ contributes at least
+one to the valuation of $P_R(q)$, except that the omitted index $k=1$
+must be removed if $t=1$.  Hence
+\[
+ v_\ell(P_R(q))\ge
+ \left\lfloor\frac{R-1}{t}\right\rfloor-\mathbf1_{t=1}
+ \longrightarrow\infty.
+\]
+This also covers $q=2$, since then every other coefficient prime is
+odd.  If $\ell=2\ne q$, the prime $q$ is odd and $q^2\equiv1\pmod8$.
+Every even index contributes at least three, giving
+\[
+ v_2(P_R(q))\ge3\left\lfloor\frac{R-1}{2}\right\rfloor
+ \longrightarrow\infty.
+\]
+There is no factor divisible by $q$ itself.  These observations prove
+the componentwise intersection in (E.34.1).  Its intersection with
+the diagonal copy of $\mathbb Z$ is zero, since a nonzero integer has
+finite valuation at every prime.  In particular, an ordinary support
+coordinate $E_q\ne0$ cannot satisfy $P_R(q)\mid E_q$ for all $R$.
+The actual sufficient condition (E.33.2) is still stronger, so has
+this obstruction already before its other congruence moduli are used.
+
+For the exact historical convergence assertion, the constants in
+(E.32.2) and (E.33.1) satisfy
+$R!\mid D_H=(R!)^{h_R+1}\mid M_1\mid C_R$.
+The divided products in E.31 show that $A_R/3$ and
+$B_R/(-2)$ are global $C_R$-th powers.
+Given any positive integer $m$, every $R\geq\max(3,m)$
+has $m\mid R!\mid C_R$. Their images in
+$\mathbb Q^\times/(\mathbb Q^\times)^m$ are therefore
+trivial for all sufficiently large $R$, independently
+of the moduli $N_R$.
+This is exactly convergence to $(3,-2)$ in the
+inverse-limit power topology. Infinite support at each
+finite stage is compatible with this rational limiting pair.
+
+The argument concerns the mechanism that clears all displayed tame
+denominators by divisibility of the valuation.  It does not apply to
+a different mechanism in which the local central numerator itself
+cancels those denominators.  Actual local point sections provide such
+cancellation; A.31 and B.25 explain its integral and continuous forms.
+Therefore this obstruction neither refutes an ordinary all-depth ghost
+nor proves finite support for such a ghost.  It pinpoints the missing
+step in an attempted diagonalization of E.33 or of its historical
+fixed-depth predecessors.
+\end{proof}

@@ -1,0 +1,15 @@
+# Compact quaternion detector: independent reconstruction
+
+Initially an unintegrated working source for checkpoint07; now fully reviewed by root and cohomology with independent copied-code reruns. The full proof is in `sections/part_E_compact_quaternion_detector.tex`, E203–E204, and the code is `code/check_compact_quaternion_detector.py`. Both proof/code reviews are positive; no broad historical row has been upgraded from these finite inputs.
+
+The program constructs the quaternion multiplication and a literal rank-nine Schreier basis, then uses the free class-two exponent-three group of dimension45. It kills the exact21-dimensional exterior square of the seven-dimensional period kernel and the normal Lie ideal of the actual peripheral square. The complete relation space has dimension31, leaving6 abelian and8 central coordinates. All four actual modular/deck substitutions descend.
+
+The exact finite source image is computed by9216 linear-base representatives and all36864 Cayley–Schreier rows. The inner derivations have dimension6 and the remaining kernel dimension4. After the actual eight-element deck quotient the detected ordinary image has order93312. All36 commuting period residues are tested against every one of81 kernel elements. Exactly18 residues lift, each in9 ways, and their modulo-four and modulo-three exponents have the same parity.
+
+The actual ordinary outer-image comparison has a short independent proof. The central kernel K=C2² of P_c→Σ/L_c injects into the abelianization. The unique three-subgroup N is characteristic, and the verified faithful quaternion action on N^ab gives C_(P_c)(N)=K×Z(N). An ordinary automorphism trivial in the detected image can be inner-corrected to fix N pointwise and the abelianization. Its remaining difference is a cocycle of the order32 quotient with values in Z(N); explicit averaging kills it. This proves faithfulness without the missing hermitian normalizer enumeration.
+
+The same code rebuilds the actual ordered-pole free-group actions from the four involution meridians. It checks all braid relations, the full twist, both pole markings, and the two primitive point-pushing rows. The quotient is exactly W=P_c×C12, and its ordinary outer image is C12² semidirect J, of order13436928. The signed period acts on that module. This confirms the actual finite output and FCP.L1–L3 inputs; it does not claim bounded same-parameter branch covariance for an arbitrary gentle element.
+
+The final payload SHA256 is `868ede05a7e14876221494203a607efef6a1d3e982d93207feeac268bdac5d6f`. The JSON retains the actual words, all four14×14 matrices, the relation and quotient matrices, inner and kernel bases, and all36 centralizer representatives. The `.out` file is the executed program output. There is no floating-point arithmetic and no imported historical data.
+
+The exact A4.57 compiler remains pending: missing numerical BCV and HCF/KFU definitions and their finite comparisons are not supplied by this finite detector. E203 also does not certify the full historical73-dimensional faithful-module/augmentation-square identification, which is a separate clause of A4.18.
