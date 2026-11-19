@@ -17,7 +17,7 @@ Whole sheet and both halves inspected. Cover/title sheet only, with no visible p
 
 ## Scan 181
 
-Whole sheet and both halves inspected. Unrelated computer/typescript list, printed upside down relative to the scan. A rotated inspection crop was read by eye; no OCR. The array is transcribed in its natural printed reading order, 0170 through 0183, followed by FIN LISTE; orientation is recorded here and in the inventory. All six fields of each row were checked character by character, including leading zeroes, capital letters, and the final 2A2 column. No accents are supplied to the printed names. No other written content is visible except bottom pencil 180.
+Whole sheet and both halves inspected. Unrelated computer/typescript list, printed upside down relative to the scan. A rotated inspection crop was read by eye; no OCR. The array is transcribed in its natural printed reading order, 0170 through 0183, followed by [name redacted] [name redacted]; orientation is recorded here and in the inventory. All six fields of each row were checked character by character, including leading zeroes, capital letters, and the final 2A2 column. No accents are supplied to the printed names. No other written content is visible except bottom pencil 180.
 
 ## Scan 182
 
