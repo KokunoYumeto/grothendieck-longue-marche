@@ -1,0 +1,47 @@
+import sys,json
+from pathlib import Path
+sys.path.insert(0,'SP02_CW_10+12/scripts')
+from root_record import Record
+r=Record('B10-02',10,50);ch=r.change
+r.edit(r'Comme (v)',r'Comme (\deleted{\unsure{g}}v)')
+r.edit(r'se factoriser $G\handwritten{\to}\underline{\operatorname{Aut}}_{\inserted{\handwritten{V_i}}}\deleted{\unsure{(V_i)}}$',r'se factoriser $G\handwritten{\to}\underline{\operatorname{Aut}}_{\inserted{\handwritten{V_i}}}\deleted{(V_i)}$')
+r.edit(r'\unsure{ra de}',r'ra de')
+r.edit(r'points\deleted{\unsure{,}}',r'points\deleted{,}')
+r.edit(r'11.11.1. Soient',r'11.11.1.\handwritten{\unsure{,}} Soient')
+def pic(t,p):return r'\begin{tikzpicture}[x=1cm,y=1cm,baseline=(n.base)]\node (n) at (0,0) {'+t+r'};\draw '+p+r';\end{tikzpicture}'
+r.edit(r'\inserted{plus petit}',r'\inserted{'+pic('plus petit',r'(0,0) ellipse (.9 and .23);\draw (-.6,-.25) .. controls (-.8,-.2) and (-.8,-.4) .. (-.8,-.55)')+'}')
+r.edit(r'\inserted{peut}',r'\inserted{'+pic('peut',r'(-.45,-.65) .. controls (-.5,-.2) and (-.1,-.3) .. (.4,-.2) .. controls (.5,-.15) and (.5,-.1) .. (.5,-.05)')+'}')
+r.edit(r'\inserted{et séparé}',r'\inserted{'+pic('et séparé',r'(-.6,-.6) .. controls (-.7,-.2) and (-.1,-.2) .. (.6,-.2) .. controls (.8,-.15) and (.8,-.1) .. (.8,-.03)')+'}')
+r.edit(r'corps\inserted{$k$}',r'corps\inserted{'+pic('$k$',r'(-.35,.08) .. controls (-.2,.08) and (-.15,-.2) .. (0,-.5)--(.3,.1)')+'}')
+r.edit(r'ouvert\inserted{$G$}',r'ouvert\inserted{'+pic('$G$',r'(.3,.18) .. controls (.3,-.15) and (-.2,-.45) .. (-.15,-.65)')+'}')
+ch('manuscript number','18','omitted','18','Tall 1 and two-loop 8.','number','omission')
+ch('first cancelled Aut argument',r'\unsure{(V_i)}','omitted',r'\unsure{(V_i)}','Opening curve, V and lowered i survive; right closing edge remains obscured by the hatch.','Aut1','omission','low')
+ch('cancelled punctuation after 11.11',r'\unsure{.}','omitted',r'\unsure{.}','An x covers the small round dark mark; original punctuation is not fully separable.','dot','omission','low')
+ch('overtyped condition label after Comme','v','v',r'\deleted{\unsure{g}}v','Under the dark v are a separate lower oval and a left return resembling a typewritten g descender; original letter remains qualified.','v-overprint','omission','medium',True,True)
+for locus,crop in [('Prenons ... suivant argument','upper-revision; mid; lower'),('Lemme 11.11.1 statement','lemma'),('Il revient ... universellement proof','bottom')]:
+ ch(locus+' deletion state','deleted','live; diagonal cancellation described only in note','deleted','Two long crossing diagonal strokes span this block; the preceding opening paragraph is outside them.',crop,'deletion state (struck given live or live given struck)','high',False,True,False,True)
+ch('plus petit placement','le plus petit sous-groupe','le deleted sous-groupe plus petit sous-groupe','le plus petit sous-groupe','Only one sous-groupe is typed. The oval encloses the raised plus petit, with its anchor after le; it does not cancel sous-groupe.','upper-revision','text not on the page')
+ch('second cancelled Aut argument',r'\unsure{(V_i)}','omitted','(V_i)','Both curved parentheses, the V point and the separately dotted lower i are distinguishable.','Aut2','omission','medium',True,True)
+ch('cancelled existe opening parenthesis','(existe','existe','(existe','A long opening curve precedes e and shares the cancellation line.','upper-revision','omission')
+ch('third cancelled Aut form',r'\unsure{Aut(V_i)}',r'\ill{}',r'\unsure{Aut(V_i)}','Aut and an opening curve followed by V remain; the lower index and final curve are crowded under hatch strokes.','Aut3','readable ink left as \\ill{}','low',False,True,True)
+ch('left circled inclusion sign','TikZ circled superset','omitted','TikZ circled superset','Open-left bowed sign sits inside an almost closed oval.','supset','drawing or diagram')
+ch('fidèlement underline','underlined','italic','underlined','Distinct horizontal stroke under the full word.','mid','other')
+ch('cancelled extra character after par',r'\unsure{r}','omitted',r'\unsure{r}','Dense x overtyping conceals the character except for short upper/lower serif fragments.','r','omission','low')
+ch('separator after trouvé','TikZ slanting stroke','omitted','TikZ slanting stroke','Short oblique rises from after é into the descending long cancellation line.','mid','drawing or diagram')
+ch('structure sheaf alphabet',r'\underline{O}_G',r'\underline{\mathcal{O}}_G',r'\underline{O}_G','Plain typed oval O, with separate pen underline.','lower','misread symbol or index')
+ch('cancelled ending after résulte',r'\unsure{ra de}',r'\ill{}','ra de','r shoulder and a lower bowl are followed by a gap, then d ascender and final e fragments between horizontal cancellation strokes.','rade','readable ink left as \\ill{}','medium',True,True,True)
+ch('lemma heading underline','Lemme underlined','whole heading bold','Lemme underlined','Pen line is confined to Lemme.','lemma','other')
+ch('lemma first overwritten symbol',r'\deleted{\unsure{G}}H',r'\struck{H}\add{G}',r'\deleted{\unsure{G}}H','The dark live strokes are two uprights with a crossbar; an earlier curved form is covered by them.','H','deletion state (struck given live or live given struck)','medium',False,True,False,True)
+ch('lemma cancelled continuation','G un sous-',r'\ill{}','G un sous-','Original G, un, sous and final hyphen are readable between x overstrikes.','lemma','readable ink left as \\ill{}','high',False,True,True)
+ch('lemma period placement','after added k, before cancelled G un sous-','after cancelled phrase','after added k, before cancelled G un sous-','Round pen dot lies immediately after the insertion caret and before typed G.','lemma','insertion or placement')
+ch('left lemma grouping line','TikZ line','omitted','TikZ line','Short vertical pen line spans the lemma’s two lines.','lemma-margin','drawing or diagram')
+ch('cancelled comma after points',r'\unsure{,}','omitted',',','Separate descending comma tail remains below the x and baseline.','comma','omission','medium',True,True)
+ch('small mark after lemma number','omitted','omitted',r'\handwritten{\unsure{,}}','A short curved descending mark lies after the printed period; it is comma-shaped but may be an incidental pen mark.','lemma-punct','other','low',True,True)
+for i,(place,shape,crop) in enumerate([('plus petit','oval with lower left insertion anchor','upper-revision'),('peut','curved lower insertion hook','upper-revision'),('et séparé','long curved insertion bracket','lower'),('k in lemma','V-shaped insertion mark','lemma'),('G in lemma','right curved insertion stroke','lemma')],36):
+ ch(place+' insertion marks','omitted','omitted','TikZ '+shape,'Visible '+shape+'.',crop,'drawing or diagram','high',True,True)
+ r.r['inventory_extra'].append(dict(scan='10:050',sheet_kind='typescript',hand='his hand',element=f'050-{i:02d}',kind='drawing',position=place,first_words_or_objects=shape,transcribed='yes'))
+for i,kind,pos,words in [(41,'deletion','condition after Comme','g-like earlier glyph under v'),(42,'text','lemma heading punctuation','small comma-shaped mark')]:r.r['inventory_extra'].append(dict(scan='10:050',sheet_kind='typescript',hand='unnamed hand',element=f'050-{i:02d}',kind=kind,position=pos,first_words_or_objects=words,transcribed='yes'))
+for p,rd,alt,co in [('first cancelled Aut argument','(V_i)','','low'),('after 11.11','.','','low'),('earlier glyph below condition v','g','','medium'),('third cancelled Aut form','Aut(V_i)','','low'),('after par','r','','low'),('earlier lemma group symbol','G','','low'),('mark after lemma number',',','incidental mark','low')]:r.doubt(p,rd,alt,co)
+r.r['crops']=json.loads(Path('work/crops050.json').read_text())
+r.r['inspection_note']='Whole image, then top and bottom halves, read in order. Enlarged the complete cancelled block, every formula/index and every inner cancellation/insertion, together with both marginal marks. All agreed prose and preserved Soient H un read in the ink. No context or mathematical check.'
+r.save('work/record050.json')
