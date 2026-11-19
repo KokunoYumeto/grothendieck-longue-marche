@@ -1,0 +1,6 @@
+import sys
+sys.path.insert(0,'out/scripts');from work import commit
+names=['0170 TAULELLE VERONIQUE','0171 TIGNY SANDRINE','0172 TOURIERE SOPHIE','0173 TRIAIRE AGNES','0174 TRIAIRE FRANCOISE','0175 TUFFERY ISABELLE','0176 VALMALETTE SOPHIE','0177 VEDEL KARINE','0178 VERGER ESTELLE','0179 VICART DAVID','0180 VIDAL CAROLE','0181 VILLAR MAXIME','0182 WINTREBERT CLAIRE','0183 WOUTERS FREDERIQUE']
+I=[dict(kind='text',position='upright list row '+str(n+1),text=s+'; both numerical/code columns and 2A2',hand='print') for n,s in enumerate(names)]
+I.append(dict(kind='text',position='upright list footer',text='***** FIN LISTE *****',hand='print'))
+commit(15,181,dict(changes=[],inventory=I,sheet_kind='list',hand='print',observations='Whole image then both supplied halves personally inspected before C. List is upside down; entire printed block cropped and rotated180, then enlarged3x. Every one of14 names/forenames, all13-digit numbers, all7-character codes, sequence numbers0170–0183 and repeated2A2 read character by character from list_upright; no substantive discrepancy with C. No accents added to uppercase names. Five asterisks on each side of FIN LISTE. Initial zero0170 interrupted by a paper crease but its upper/bottom curve survives. Rest of sheet blank, archive180 comment only. H absent. No context consulted.'))
