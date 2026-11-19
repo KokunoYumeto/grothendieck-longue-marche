@@ -369,7 +369,7 @@ The documentary CSV records source-list entries without resolving people across 
 
 The juries on scans 060, 062, 064, 068 have 4, 5, 4, 3 entries, totaling 16 occurrences. The three thesis forms have eight labelled fields each. Scan 066 has six dated sessions, 116–121; session 118 has two lettered descriptions, giving seven description units, and session 119 lists six personnel categories. Scan 064 names three ecological indices.
 
-On scan 070 the upper lists have eight representation pairs, ten absent/excused tokens, and four directors. The lower session has three agenda items, twelve present tokens, four representation pairs, and nine literal comma-delimited absence atoms. Replacing the single atom ROUZAUD followed by a TeX line break and BERTRAND by two tokens gives ten; that precise candidate split is recorded without a source edit or person-identity claim.
+On scan 070 the upper lists have eight representation pairs, ten absent/excused tokens, and four directors. The lower session has three agenda items, twelve present tokens, four representation pairs, and nine literal comma-delimited absence atoms. Replacing the single atom [name redacted] followed by a TeX line break and [name redacted] by two tokens gives ten; that precise candidate split is recorded without a source edit or person-identity claim.
 
 The 47-row page metadata preserves every manuscript-page marker, including two occurrences of 60 on 061. Documentary metadata preserves the printed 5|3 on 070 alongside manuscript 69, and keeps 066's addressee label 5, Recueil 16, postcode 34060, and session numbers in their printed roles.
 

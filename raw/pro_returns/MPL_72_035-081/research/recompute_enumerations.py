@@ -422,13 +422,13 @@ def documentary_data():
         ("D062-jury",62,"Composition du jury proposé",["PISTOULET, Président","ROBERT","RAYMOND","LEROUX HUGON","THUILLIER"]),
         ("D064-jury",64,"Composition du jury",["M. R. LEGENDRE, Président","M. M. GODRON","M. J. BONS","M. G. PASTEUR"]),
         ("D068-jury",68,"Membres du jury",["David W. LEE","B. SAUGIER","F. HALLE"]),
-        ("D070-represented-top",70,"Etaient représentés (top)",[("GOUT","ROUZEYRE"),("ROBIN","VERNET"),("THALER","ASSENMACHER"),("KAMENKA","BERTRAND"),("CHATELLIER","FERRATON"),("GIRARD","LABORDE"),("TRIAIRE","RIBES"),("LERNER","MANI")]),
-        ("D070-absent-top",70,"Etaient absents ou excusés (top)",["CHARLES","CORRIU","LEFRANC","PIETRASANTA","BENOIST","SIVADE","CHICOIX","MAGOUS","Mle JUSTRABO","Mme RUSSELLO"]),
-        ("D070-directors",70,"Directeur d'U.E.R.",["BRUN","CANO","DURANTE","VIALLEFONT"]),
+        ("D070-represented-top",70,"Etaient représentés (top)",[("GOUT","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]")]),
+        ("D070-absent-top",70,"Etaient absents ou excusés (top)",["[name redacted]","[name redacted]","[name redacted]","[name redacted]","[name redacted]","[name redacted]","[name redacted]","[name redacted]","Mle [name redacted]","Mme [name redacted]"]),
+        ("D070-directors",70,"Directeur d'U.E.R.",["[name redacted]","[name redacted]","[name redacted]","[name redacted]"]),
         ("D070-agenda-120",70,"CONSEIL RESTREINT AUX ENSEIGNANTS: agenda",["I. Approbation d'un procès-verbal","II. Commissions de spécialistes","III. Sécurité dans les laboratoires"]),
-        ("D070-present-120",70,"Etaient présents (120ème séance)",["CORRIU","GAUFRES","GOUT","LEFRANC","MAURIN","Mme PARIS","ROUZEYRE","THALER","Mme VERNET","DUCROT","FERRATON","RIBES"]),
-        ("D070-represented-120",70,"Etaient représentés (120ème séance)",[("AVEROUS","ROUZEYRE"),("ASSENMACHER","THALER"),("DUSSEAU","DUCROT"),("PEYTAVIN","RIBES")]),
-        ("D070-absent-120-literal-atoms",70,"Etaient absents ou excusés (120ème séance), comma-delimited atoms",["AMANIEU","CHARLES","PIETRASANTA","Mme ROBIN","M.M. ROUZAUD\\\\\nBERTRAND","Mme CASSAGNE MEJEAN","M.M. LABORDE","LERNER","SIVADE"]),
+        ("D070-present-120",70,"Etaient présents (120ème séance)",["[name redacted]","[name redacted]","GOUT","[name redacted]","[name redacted]","Mme PARIS","[name redacted]","[name redacted]","Mme [name redacted]","[name redacted]","[name redacted]","[name redacted]"]),
+        ("D070-represented-120",70,"Etaient représentés (120ème séance)",[("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]"),("[name redacted]","[name redacted]")]),
+        ("D070-absent-120-literal-atoms",70,"Etaient absents ou excusés (120ème séance), comma-delimited atoms",["[name redacted]","[name redacted]","[name redacted]","Mme [name redacted]","M.M. [name redacted]\\\\\nBERTRAND","Mme [name redacted] [name redacted]","M.M. [name redacted]","[name redacted]","[name redacted]"]),
         ("D066-personnel-119",66,"personnels (119ème séance)",["enseignants","chercheurs","administratifs","techniques","ouvriers","de service"]),
         ("D064-indices",64,"Différents indices",["probabilité de présence","diversité spécifique","richesse spécifique"]),
     ]
@@ -455,7 +455,7 @@ def documentary_data():
                 items.append({"id":list_id,"scan":scan,"label":label,"index":index,"literal_item":value[0],"representative":value[1]})
             else:
                 items.append({"id":list_id,"scan":scan,"label":label,"index":index,"literal_item":value,"representative":""})
-        totals.append({"id":list_id,"scan":scan,"label":label,"total":len(values),"unit":"representation pairs" if isinstance(values[0],tuple) else "listed items", "qualification":"The ROUZAUD line break BERTRAND atom remains unsplit; a two-name reading gives10 persons." if "literal-atoms" in list_id else "Literal listed entries; no cross-list identity merge."})
+        totals.append({"id":list_id,"scan":scan,"label":label,"total":len(values),"unit":"representation pairs" if isinstance(values[0],tuple) else "listed items", "qualification":"The [name redacted] line break [name redacted] atom remains unsplit; a two-name reading gives10 persons." if "literal-atoms" in list_id else "Literal listed entries; no cross-list identity merge."})
     session_rows=[]
     for number,date,types in sessions:
         session_rows.append({"scan":66,"session_number":number,"literal_date":date,"council_descriptions":types,"description_count":len(types)})
@@ -473,7 +473,7 @@ def documentary_data():
     dump_csv("documentary_totals.csv",totals)
     dump_csv("documentary_sessions.csv",session_rows)
     dump_csv("documentary_metadata.csv",metadata)
-    dump_json("documentary_lists.json",{"lists":[{"id":i,"scan":p,"label":l,"items":v} for i,p,l,v in lists],"sessions":session_rows,"totals":totals,"metadata":metadata,"reading_question":{"scan":70,"literal_atom":"M.M. ROUZAUD\\\\\nBERTRAND","comma_delimited_atoms":9,"two_name_split_total":10,"operation_for_candidate":"Replace the one literal atom by the two tokens ROUZAUD and BERTRAND; no source edit or person-identity claim."}})
+    dump_json("documentary_lists.json",{"lists":[{"id":i,"scan":p,"label":l,"items":v} for i,p,l,v in lists],"sessions":session_rows,"totals":totals,"metadata":metadata,"reading_question":{"scan":70,"literal_atom":"M.M. [name redacted]\\\\\nBERTRAND","comma_delimited_atoms":9,"two_name_split_total":10,"operation_for_candidate":"Replace the one literal atom by the two tokens [name redacted] and [name redacted]; no source edit or person-identity claim."}})
     return {"source_lists":len(lists)+1,"literal_items_excluding_sessions":len(items),"sessions":6,"jury_occurrences":16,"last_absence_literal_atoms":9,"last_absence_candidate_names":10}
 
 

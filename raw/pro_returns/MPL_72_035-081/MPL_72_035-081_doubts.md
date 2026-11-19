@@ -422,10 +422,10 @@ Locations are approximate; `TeX line` identifies a line in the individual page f
 | 72 | 069 | TeX line 19 | `\rho=` | — | medium |
 | 72 | 069 | TeX line 22 | `\alpha_0+2` | — | medium |
 | 72 | 069 | TeX line 29 | `\alpha_1^2` | `\alpha_1` | medium |
-| 72 | 070 | TeX line 2 | `5` | `3` | medium |
-| 72 | 070 | TeX line 30 | `Con` | — | medium |
-| 72 | 070 | TeX line 31 | `démissio` | — | medium |
-| 72 | 070 | TeX line 32 | `ce` | — | medium |
+| 72 | 070 | [redacted] | [redacted] | [redacted] | [redacted] |
+| 72 | 070 | [redacted] | [redacted] | [redacted] | [redacted] |
+| 72 | 070 | [redacted] | [redacted] | [redacted] | [redacted] |
+| 72 | 070 | [redacted] | [redacted] | [redacted] | [redacted] |
 | 72 | 071 | TeX line 2 | `\mathcal E` | `E` | low |
 | 72 | 071 | TeX line 6 | `E_{\lambda}` | — | low |
 | 72 | 071 | TeX line 13 | `cela exist` | — | low |

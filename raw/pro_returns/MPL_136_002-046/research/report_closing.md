@@ -45,7 +45,7 @@ No sheet in this supplied range states a total such as “19 pages” or “Page
 | 037 | Lower 36; cancelled rotated Cayley-graph fragment beneath the live Hom calculation | Two text orientations and cancellation states on one sheet, not two counted scan pages. |
 | 038 | “IX”; “--180--”; labels 498 twice, one boxed; lower 37; “Remarque 13.4.18.” | Reused typed source. This page does not continue the manuscript's parenthesized lecture numbering. |
 | 039 | Lower 38 | Live continuation of the graded-Hom calculation. |
-| 040 | “.7.”; lower 39; “EXAMEN DE LA PROPOSITION DE M. MORET” | Reused administrative minutes, with a reference to another minutes page 4; not a de Rham title or count. |
+| 040 | “.7.”; lower 39; “EXAMEN DE LA PROPOSITION DE M. [name redacted]” | Reused administrative minutes, with a reference to another minutes page 4; not a de Rham title or count. |
 | 041 | Lower 40 | Live continuation of graded-Hom cases. |
 | 042 | “.6.”, with 0 as a marked alternative; lower 41 | Reused administrative minutes; the isolated digit is uncertain. |
 | 043 | Lower 42 | Live p-typical calculation. |

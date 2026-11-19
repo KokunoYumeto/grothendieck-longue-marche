@@ -78,7 +78,7 @@ Every table is reproduced by:
 
 ## E18 — Scan 070: attendance and line break
 
-**Kind: literal counts and explicit extraction question.** The upper “Etaient représentés” list has eight pairs, the upper absence list ten tokens, and the director list four; the lower “120ème séance” has three agenda items, twelve present tokens, four representation pairs, and nine comma-delimited absence atoms. Replacing the single ROUZAUD–line-break–BERTRAND atom by two tokens gives ten, and [documentary_lists.json](documentary_lists.json) preserves both totals without assigning the upper meeting the lower heading's identity. **Context relation:** the unnumbered README planning brief requests the enumerations; no numbered documentary-list result is present in the supplied context.
+**Kind: literal counts and explicit extraction question.** The upper “Etaient représentés” list has eight pairs, the upper absence list ten tokens, and the director list four; the lower “120ème séance” has three agenda items, twelve present tokens, four representation pairs, and nine comma-delimited absence atoms. Replacing the single [name redacted]–line-break–[name redacted] atom by two tokens gives ten, and [documentary_lists.json](documentary_lists.json) preserves both totals without assigning the upper meeting the lower heading's identity. **Context relation:** the unnumbered README planning brief requests the enumerations; no numbered documentary-list result is present in the supplied context.
 
 ## E19 — Scans 035–081: page and printed numbering
 

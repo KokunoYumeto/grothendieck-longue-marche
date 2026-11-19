@@ -49,8 +49,8 @@ The six sheets remain fully transcribed. Dates below are dates printed in those 
 
 ### D070 — Two blocks of council attendance
 
-**72/070; kind: documentary observation and reading question; quote: “Etaient représentés” and “120ème séance.”** The upper block has eight representation pairs, ten absent/excused tokens and four directors, while the lower session has three agenda items, twelve present tokens, four representation pairs and nine literal comma-separated absence atoms. The one atom “ROUZAUD” followed by a line break and “BERTRAND” gives ten names under the explicit two-token split, and both counts are recorded with their extraction rules. **Context:** README enumeration request — adds a fully specified tokenization question; the lower meeting's printed date is Vendredi 3 Mars 1978 and the upper block's session number is not supplied on this scan.
-<!-- context-query: ROUZAUD;BERTRAND;120;enumeration -->
+**72/070; kind: documentary observation and reading question; quote: “Etaient représentés” and “120ème séance.”** The upper block has eight representation pairs, ten absent/excused tokens and four directors, while the lower session has three agenda items, twelve present tokens, four representation pairs and nine literal comma-separated absence atoms. The one atom “[name redacted]” followed by a line break and “[name redacted]” gives ten names under the explicit two-token split, and both counts are recorded with their extraction rules. **Context:** README enumeration request — adds a fully specified tokenization question; the lower meeting's printed date is Vendredi 3 Mars 1978 and the upper block's session number is not supplied on this scan.
+<!-- context-query: [name redacted];[name redacted];120;enumeration -->
 
 ## Own follow-up tasks, with confidence and reasons
 

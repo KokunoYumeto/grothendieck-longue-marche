@@ -4,20 +4,20 @@ record(181, r'''\scanpage{181}
 
 \diagram{\[
 \begin{array}{llllll}
-\texttt{0170}&\texttt{TAULELLE}&\texttt{VERONIQUE}&\texttt{2740730007019}&\texttt{930728S}&\texttt{2A2}\\
-\texttt{0171}&\texttt{TIGNY}&\texttt{SANDRINE}&\texttt{2710769383109}&\texttt{900477U}&\texttt{2A2}\\
-\texttt{0172}&\texttt{TOURIERE}&\texttt{SOPHIE}&\texttt{2740434172243}&\texttt{942009J}&\texttt{2A2}\\
-\texttt{0173}&\texttt{TRIAIRE}&\texttt{AGNES}&\texttt{2720934111012}&\texttt{910300B}&\texttt{2A2}\\
-\texttt{0174}&\texttt{TRIAIRE}&\texttt{FRANCOISE}&\texttt{2720934111013}&\texttt{910299A}&\texttt{2A2}\\
-\texttt{0175}&\texttt{TUFFERY}&\texttt{ISABELLE}&\texttt{2700534172087}&\texttt{931766V}&\texttt{2A2}\\
-\texttt{0176}&\texttt{VALMALETTE}&\texttt{SOPHIE}&\texttt{2710778551110}&\texttt{941607X}&\texttt{2A2}\\
-\texttt{0177}&\texttt{VEDEL}&\texttt{KARINE}&\texttt{2710643157065}&\texttt{911395S}&\texttt{2A2}\\
-\texttt{0178}&\texttt{VERGER}&\texttt{ESTELLE}&\texttt{2730234172047}&\texttt{920133V}&\texttt{2A2}\\
-\texttt{0179}&\texttt{VICART}&\texttt{DAVID}&\texttt{1720362119173}&\texttt{910910P}&\texttt{2A2}\\
-\texttt{0180}&\texttt{VIDAL}&\texttt{CAROLE}&\texttt{2720434172236}&\texttt{910273X}&\texttt{2A2}\\
-\texttt{0181}&\texttt{VILLAR}&\texttt{MAXIME}&\texttt{1700934032119}&\texttt{900007H}&\texttt{2A2}\\
-\texttt{0182}&\texttt{WINTREBERT}&\texttt{CLAIRE}&\texttt{2730334172023}&\texttt{923054V}&\texttt{2A2}\\
-\texttt{0183}&\texttt{WOUTERS}&\texttt{FREDERIQUE}&\texttt{2721059350782}&\texttt{920453T}&\texttt{2A2}
+\texttt{0170}&\texttt{TAULELLE}&\texttt{VERONIQUE}&\texttt{[number redacted]}&\texttt{930728S}&\texttt{2A2}\\
+\texttt{0171}&\texttt{TIGNY}&\texttt{SANDRINE}&\texttt{[number redacted]}&\texttt{900477U}&\texttt{2A2}\\
+\texttt{0172}&\texttt{TOURIERE}&\texttt{SOPHIE}&\texttt{[number redacted]}&\texttt{942009J}&\texttt{2A2}\\
+\texttt{0173}&\texttt{TRIAIRE}&\texttt{AGNES}&\texttt{[number redacted]}&\texttt{910300B}&\texttt{2A2}\\
+\texttt{0174}&\texttt{TRIAIRE}&\texttt{FRANCOISE}&\texttt{[number redacted]}&\texttt{910299A}&\texttt{2A2}\\
+\texttt{0175}&\texttt{TUFFERY}&\texttt{ISABELLE}&\texttt{[number redacted]}&\texttt{931766V}&\texttt{2A2}\\
+\texttt{0176}&\texttt{VALMALETTE}&\texttt{SOPHIE}&\texttt{[number redacted]}&\texttt{941607X}&\texttt{2A2}\\
+\texttt{0177}&\texttt{VEDEL}&\texttt{KARINE}&\texttt{[number redacted]}&\texttt{911395S}&\texttt{2A2}\\
+\texttt{0178}&\texttt{VERGER}&\texttt{ESTELLE}&\texttt{[number redacted]}&\texttt{920133V}&\texttt{2A2}\\
+\texttt{0179}&\texttt{VICART}&\texttt{DAVID}&\texttt{[number redacted]}&\texttt{910910P}&\texttt{2A2}\\
+\texttt{0180}&\texttt{VIDAL}&\texttt{CAROLE}&\texttt{[number redacted]}&\texttt{910273X}&\texttt{2A2}\\
+\texttt{0181}&\texttt{VILLAR}&\texttt{MAXIME}&\texttt{[number redacted]}&\texttt{900007H}&\texttt{2A2}\\
+\texttt{0182}&\texttt{WINTREBERT}&\texttt{CLAIRE}&\texttt{[number redacted]}&\texttt{923054V}&\texttt{2A2}\\
+\texttt{0183}&\texttt{WOUTERS}&\texttt{FREDERIQUE}&\texttt{[number redacted]}&\texttt{920453T}&\texttt{2A2}
 \end{array}
 \]}
 

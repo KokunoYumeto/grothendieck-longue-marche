@@ -29,7 +29,7 @@ The invariant-subspace program enumerates all reduced-row-echelon subspaces for 
 
 The bridge program enumerates all determinant-one matrices at its eleven listed levels, quotients them by the single global sign subgroup, and verifies the marked cycles independently of the closed count formulas. It computes the adjoint kernel, column and nilpotent orbits, and projective conic points; at odd levels it also constructs the actual geometric support sets and flag triples. The manuscript-coordinate basis change has determinant \(-2\), so that particular identification is made over \(\mathbf Z[1/2]\), while the integral adjoint and conic formulas are computed on their separately stated bases.
 
-The Clifford program records 11 exact checks, all 16 products of its four even generators, and all 16 matrix-unit actions. The documentary lists count literal entries, representation pairs and labelled fields, with the ROUZAUD/BERTRAND line-break alternative specified as a separate extraction operation. No identity merge, handwriting date or unseen page is inferred by those counts.
+The Clifford program records 11 exact checks, all 16 products of its four even generators, and all 16 matrix-unit actions. The documentary lists count literal entries, representation pairs and labelled fields, with the [name redacted]/[name redacted] line-break alternative specified as a separate extraction operation. No identity merge, handwriting date or unseen page is inferred by those counts.
 
 ## Transcription verification and limits
 
