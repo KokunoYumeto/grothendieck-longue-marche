@@ -1,0 +1,50 @@
+# Second visual reading and notation audit
+
+Root was the sole page reader. The second reading was performed by the same model after all 24 first-pass page saves; it is not an independent human or second-model verification. Actual completion times below reproduce the page records and progress log. No OCR, PDF text layer, text-recognition library, external transcription, or context packet was used to settle the ink.
+
+| Scan | First-pass save UTC | Second audit UTC | Audit result |
+|---|---|---|---|
+| 002 | 2026-11-19 20:25:43 UTC | 2026-11-19 21:13:39 UTC | Second full-image reading: all live/struck lines, three clauses and lower NB checked; plain subset, literal beta x in family, incomplete opening un, asymmetric support delimiters and superscript doubt retained. No further change. |
+| 003 | 2026-11-19 20:27:05 UTC | 2026-11-19 21:14:15 UTC | Full-page rereading completed including proof cancellations and interline eta. Re-enlarged transition: implication now first, equal retained as alternative. Other live/old states unchanged. |
+| 004 | 2026-11-19 20:29:04 UTC | 2026-11-19 21:14:25 UTC | Full-image second reading, including both cancelled drawings, all lower deleted formulas, diagonal idiot note, and the footer definition. Non-surabondance, finite/artinien wording and aborted example preserved; no new correction. |
+| 005 | 2026-11-19 20:31:45 UTC | 2026-11-19 21:14:52 UTC | Second whole-page reading plus rotated upper margin and enlarged overlap: indexation fidèle, biuniv./transp. inv., literal éléments de A, and union indices rechecked. The heavily superposed upper relation phrase remains explicitly doubtful; no speculative reconstruction added. |
+| 006 | 2026-11-19 20:35:24 UTC | 2026-11-19 21:15:24 UTC | Whole-page second reading and 4× parenthetical family detail. This glyph has a closed Phi-like loop and short stem without the usual long foot; retained Phi/Psi/L uncertainty as a local exception. Convexity proof and NB finite insertion rechecked; no further reading changes. |
+| 007 | 2026-11-19 20:36:34 UTC | 2026-11-19 21:15:33 UTC | Full-page rereading includes the overwritten boundary formula, old proof start, and lower inserted saturation hypothesis. Its leader belongs to b; relation subscripts and tiny a/x remain doubtful. No further change. |
+| 008 | 2026-11-19 20:38:18 UTC | 2026-11-19 21:15:44 UTC | Second full-image reading includes Scholie insertion order, inserted a-prime, b/c supports and every cancelled d fragment. Literal Psi adm. and malformed final support parenthesis retained. Local Phi/L doubt remains; no further change. |
+| 009 | 2026-11-19 20:39:52 UTC | 2026-11-19 21:15:56 UTC | Second full-image reading, including overwritten equal-support proof, literal B(x) membership, final strict inclusion and cancelled bottom words. No new text supplied where ink remains crossed beyond recovery; no further change. |
+| 010 | 2026-11-19 20:41:25 UTC | 2026-11-19 21:16:04 UTC | Second full image checked across first folder boundary: recurring footed family glyph agrees with earlier L-family glyph, separate Psi remains distinct. Literal bare partie de Psi, two cancelled car clauses, inserted family-circle and sss retained. No further change. |
+| 011 | 2026-11-19 20:43:27 UTC | 2026-11-19 21:16:36 UTC | Full-image second reading including all margins and lower cancelled draft. Enlarged collection-of-figures glyph for direct comparison with 025: same hooked stem and left middle bar. Corollary insertion, union Sup claim and old finite-Sup discussion unchanged. |
+| 012 | 2026-11-19 20:44:54 UTC | 2026-11-19 21:16:45 UTC | Second complete image reading: au sens fort and literal C2 final Y checked; C3 overwritten X/Y and family letters, singular majoré, and Remords old page number retained. No further change. |
+| 013 | 2026-11-19 20:48:12 UTC | 2026-11-19 21:16:57 UTC | Second full image read includes deleted NB, minimal/least wording, the displayed nested braces, and the final L nonempty rewrite. The written X_A <= F, nested example, and ambient de L remain literal; S mathematics still deferred. No further change. |
+| 014 | 2026-11-19 20:49:02 UTC | 2026-11-19 21:17:04 UTC | Second full image checked: double braces, cardinal boundary >=1, finite restriction, and assertion that C4 is automatic are all written. No mathematical repair; no further reading change. |
+| 015 | 2026-11-19 20:50:49 UTC | 2026-11-19 21:19:08 UTC | Second visual reading of whole page, all clauses, nested braces, overwritten family letters, cancellation states, and boundary formula; retained literal union signs and the uncertain lower predicate, with no correction from its mathematical meaning. |
+| 016 | 2026-11-19 20:51:53 UTC | 2026-11-19 21:19:14 UTC | Second visual reading: title, disjointness insertion, both support paragraphs, cancelled Le F(L′ and est, and faint paper marks; no change to the consolidated readings. |
+| 017 | 2026-11-19 20:54:16 UTC | 2026-11-19 21:19:22 UTC | Second visual reading of the Stone paragraph, upper and slanted notes, successive support/cosupport insertions, and both bottom displays. Retained the visibly unusual f U terms, brace/parenthesis mismatch and final uncertain comparison; no normalization to an expected topological formula. |
+| 018 | 2026-11-19 20:59:08 UTC | 2026-11-19 21:20:13 UTC | Second visual reading of dated heading, top replacements, topological restrictions, both slanted notes and cancellations. Direct crops of scans002,015,018 identify the repeated boundary glyph; replaced folder-three delta by partial in its two occurrences. Retained the uncertain lower ordinal phrase and dense cancelled marginal draft. |
+| 019 | 2026-11-19 21:00:33 UTC | 2026-11-19 21:20:26 UTC | Second visual reading of local finiteness, finite/type-finite definitions, topological realization and marginal indexing note; the repeated alors and unstable syntax after il remain literal, with doubtful readings marked. |
+| 020 | 2026-11-19 21:01:36 UTC | 2026-11-19 21:20:39 UTC | Second visual reading of topological-family interpretation, inserted mais oui and chacune, refinement heading and proposition a; re-enlarged the section separator and added its exact crop reference to the evidence row. |
+| 021 | 2026-11-19 21:03:35 UTC | 2026-11-19 21:20:48 UTC | Second visual reading of condition b, both directions of the proof, overwritten variables, support-map marginal NB and lower lemma. Retained literal A intersection F at the top and the uncertain superscript on minimal B; checked every cancelled chain against its surrounding live formulas. |
+| 022 | 2026-11-19 21:05:11 UTC | 2026-11-19 21:20:56 UTC | Second visual reading of the continuation, support and nonempty-set vertical annotations, saturation proof, and corollary; retained the marginal preorder/order wording and the exact quantifier scope in b-prime. |
+| 023 | 2026-11-19 21:07:19 UTC | 2026-11-19 21:21:12 UTC | Second visual reading of the rewritten corollary proof, all deleted chains, definition/example/NB and subdivision criterion. Re-viewed 023_maximal_full.jpg: the two separated dotted low runs continue to favour minimal, while maximal remains the recorded alternative; the reading was not changed to fit the order statement. |
+| 024 | 2026-11-19 21:11:51 UTC | 2026-11-19 21:21:24 UTC | Second visual reading of both implications, upper marginal alternative conditions, singleton construction, corollary and definition; re-viewed the complete rotated lower margin. The lower margin remains the least secure passage on this page and is not promoted to coherent conjectured prose; retained the contradictory subfigure wording at the opening. |
+| 025 | 2026-11-19 21:13:08 UTC | 2026-11-19 21:21:38 UTC | Second visual reading of notation, diagram and all prose; re-viewed 025_diagram.jpg to confirm the faint i label, the p/q positions, the two different inclusion decorations, and the bottom phi arrow. The collection glyph was compared directly to scan011 during this audit cycle and remains F first, J as local alternative. Final direct-image sentence is physically unfinished. |
+
+## Notation comparisons
+
+The notation table at the top of the doubts file records the comparisons across all three witness-C folders. The audit changed the preferred transition sign on scan003, restored F as the first collection-glyph reading on scan025 after direct comparison with scan011, and harmonized the boundary glyph on scan018 with the two visible variants already present on scan002 and scan015. Ambiguous Phi-like family signs on scans006,008,009 remain local exceptions rather than being forcibly standardized.
+
+## Witness S coverage
+
+| S row | Supplied scan scope | Treatment in this package |
+|---|---|---|
+| SA21-K5-01 | 013–015 | The connecting-family and connectedness assertions are visibly present; the literal ink was retained. Mathematical evaluation belongs to post-freeze notes. |
+| SA21-K5-02 | 026 | Outside the 002–025 scan package; no image supplied, no ink verdict in this task. |
+| SA21-K5-03 | 049 | Outside the 002–025 scan package; no image supplied, no ink verdict in this task. |
+| SA21-K5-04 | 002 | Plain inclusion glyph confirmed; no strictness decoration added. |
+| SA21-K5-05 | 004 | Cancelled finite example and referral to an infinite example confirmed; mathematical force is assessed separately after freeze. |
+
+## Evidence and reproducibility
+
+Each crop is an enlargement/rotation of a supplied JPEG, re-encoded as a JPEG for review; crop coordinates, source, scale, rotation, and metadata timestamps are in records/crops.jsonl. The metadata for 005_upper_margin_detail.jpg was reconstructed from its known parent crop; the unknown original creation time is explicitly null. The source scans and witness/context packets are omitted from the return, as requested.
+
+The page generator scripts document first-pass creation. Do not rerun them over the audited pages: audit scripts and final page files supersede those first-pass outputs. The frozen hashes recorded at 2026-11-19 21:25:11 UTC identify the authoritative delivered transcription; all25 are verified again at completion.

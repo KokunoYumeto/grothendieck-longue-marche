@@ -1,0 +1,38 @@
+import sys,json
+from pathlib import Path
+sys.path.insert(0,'SP02_CW_10+12/scripts')
+from root_record import Record
+r=Record('B10-01',10,41);ch=r.change
+r.edit(r'\underset{i\handwritten{>}j}',r'\underset{i\handwritten{\geqslant}j}')
+r.edit(r'\handwritten{\unsure{G|\mathbb{G}}}',r'\handwritten{G}')
+r.edit(r'{\mathbb{D}\mathrm{ihom}}',r'{\unsure{\mathbb{D}|D}\mathrm{ihom}}')
+r.edit(r'\handwritten{\longmapsto}',r'\handwritten{\rightsquigarrow}')
+r.edit('% The final word continues beyond the supplied scans.','% The final word continues on the next scan in this package.')
+ch('manuscript number','9','omitted','9','Looped handwritten 9.','number','omission')
+ch('opening condition','i>j',r'i\geqslant j','i>j','Only two strokes forming >; no lower comparison bar.','ineq1','misread symbol or index','high',False,True,False,True)
+ch('direct-limit index','i>j',r'i\geqslant j',r'i\geqslant j','A separate oblique lower bar is clearly visible beneath > at 6x.','ineq2','misread symbol or index','high',True,False,False,True)
+ch('first Dihom first argument H',r'\unsure{H|H\prime|\mathbb{H}|\mathbb{H}\prime}','H',r'\unsure{H|H\prime|\mathbb{H}|\mathbb{H}\prime}','Heavily retraced H; faint elevated mark at right could be a remnant or prime. Alphabet/prime uncertainty cannot be separated.','arguments','misread symbol or index','medium')
+ch('first Dihom second argument G',r'\unsure{G|\mathbb{G}}','G','G','Heavy G outline with ordinary inner opening; no separate doubled upright or second alphabet-specific stroke.','arguments','other','high',True,False)
+ch('Dihom after limit',r'\mathbb{D}','D',r'\unsure{\mathbb{D}|D}','D has a second inner upright/curve unlike ordinary D elsewhere; possible retracing cannot be distinguished from doubled alphabet.','Dihom','misread symbol or index','medium',True,True)
+ch('ii after S-groupe',r'\deleted{\unsure{fini}}',r'\struck{\ill{}}',r'\deleted{\unsure{fini}}','Tall first stroke and compact i/n/i traces under dense horizontal cancelling lines.','fini','readable ink left as \\ill{}','low',False,True,True)
+ch('ii end punctuation','no readable period','period','no readable period','Final parenthesis meets the clipped edge; no separate period in visible field.','ii','text not on the page','low')
+ch('10.15 label','plain label, short dash','bold label, em dash','plain label, short dash','Same typed weight and short dash as body, replacement Définition above old Proposition.','definition','other')
+ch('10.15 enngroupes','enngroupes','en groupes','enngroupes','Two adjacent n letters, with no space before groupes.','enngroupes','abbreviation expanded or spelling modernised')
+ch('10.15 opératerus','opératerus with two exchange arrows','opérateurs','opératerus with two exchange arrows','Typed r precedes u; opposed curved arrows above and below exchange those letters.','opératerus','drawing or diagram')
+ch('defining phrase','underlined','italic','underlined','Straight rules under two lines; upright type throughout.','definition','other')
+ch('map on elements',r'\longmapsto',r'\mapsto',r'\rightsquigarrow','Three zigzag bends form the shaft and meet a full right arrowhead; there is no left vertical mapsto bar.','mapsto','misread symbol or index','high',True,True)
+ch('scheme paragraph cancelled noun',r'\deleted{groupe}',r'\struck{\ill{}}',r'\deleted{groupe}','g descender, r/o/u/p/e remain readable between overtyped X marks.','groupe','readable ink left as \\ill{}','high',False,True,True)
+for p,cr in [('IV 4.4.3','scheme'),('IV 5.1.5','principal'),('IV 5.6 (ii)','principal')]:
+ ch(p,r'\deleted{Exp.}','Exp.',r'\deleted{Exp.}','Diagonal cancelling stroke crosses Exp.',''+cr,'deletion state (struck given live or live given struck)')
+ch('10.16 heading','plain with short dash','bold with em dash','plain with short dash','Ordinary type and short dash at beginning of last line.','bottom','other')
+ch('10.16 full opening line','underlined','no underline','underlined','Continuous rule beneath last line.','bottom','omission')
+r.doubt('first Dihom H','H',r"H\prime | \mathbb{H} | \mathbb{H}\prime",'medium')
+r.doubt('Dihom after limit',r'\mathbb{D}','D','medium')
+r.doubt('ii cancelled word','fini','','low')
+r.doubt('ii right edge','no readable period','possibly clipped punctuation','low')
+r.r['crops']=json.loads(Path('work/crops041.json').read_text())
+for n,b,s in [('ineq1',[1334,145,1417,202],5),('ineq2',[627,458,685,497],6),('mapsto',[1568,1138,1643,1196],5),('enngroupes',[1066,991,1234,1042],4)]:r.crop(n,b,scale=s)
+r.notation('inequality strokes',r'> versus \geqslant','10/041 first condition >; direct-limit index has additional lower bar geqslant')
+r.notation('map-on-elements arrow',r'\rightsquigarrow','10/041 10.15: wavy/zigzag shaft with right head, no mapsto bar')
+r.r['inspection_note']='Whole and halves read in order; every block enlarged; all C doubts enlarged further. Critical strict/non-strict comparison differs within this page; changed limit only. Formula arguments, J in ii, all products, primes, and all topology letters checked. C inventory verified in full; revised only its out-of-scope comment about next page.'
+r.save('work/record041.json')
