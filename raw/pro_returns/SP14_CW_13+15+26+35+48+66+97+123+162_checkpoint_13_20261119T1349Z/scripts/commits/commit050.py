@@ -1,0 +1,52 @@
+import sys
+sys.path.insert(0,'out/scripts');from work import commit
+R=[(r'\unsure{..|.}','..'),(r'\unsure{préc.|précisé}','puis'),(r'\unsure{à|:}',':'),(r'\unsure{:|à}',':'),(r'\unsure{....}','....'),(r'\margin{réseau $+$ connexion}',r'\margin{\begin{tikzpicture}[baseline=(n.base)]\node[draw,ellipse,align=center] (n) {réseau $+$\\connexion};\end{tikzpicture}}'),('% loc: paper watermark, read sideways and compared across sheets','% loc: paper watermark, read sideways on this sheet')]
+L=[]
+def a(p,c,h,f,s,k='other',v='high',C=False,H=True,m='no',q=None):
+ d=dict(place=p,c=c,h=h,final=f,ink=s,kind=k,confidence=v,against_c=C,against_h=H,marked_in_H=m)
+ if q:d['consequential']=q
+ L.append(d)
+a('opening abbreviation','tjrs','très','tjrs','top: a descending j follows t, with reduced r and terminal s; the abbreviation is not très.','misread word')
+a('reduction phrase','pour ceci','pour cela','pour ceci','top: the final short i stroke has a point above it; the preceding c is open.','misread word')
+a('punctuation after k=C',r'\unsure{..|.}','single period','two periods','punct and continuation: two separate black dots lie at the baseline before the next C.','other','high',True)
+a('conjecture count','la conjecture','2 conjectures','la conjecture','continuation: the small la precedes a singular conjecture, with no numeral 2 or final s.','misread word')
+a('quoted title','``du double réseau’’','« du double niveau »','``du double réseau’’','continuation: two small quotation strokes enclose the phrase; réseau has an initial r and accented é, with no initial n.','misread word')
+a('last connective',r'\unsure{préc.|précisé}','plus','puis','puis and continuation: after the descending p, the short rounded u and dotted i precede the low final s; there is no tall l or extra syllable.','misread word','medium',True)
+a('before item reference',r'\unsure{à|:}',':',':','colon: two detached dots stand one above the other, without a letter body.','other','high',True,False)
+a('slanted margin',r'réseau + connexion',r'uncertain réseau + connexion','réseau + connexion','margin_upright, rotated -27 degrees: both words and the intervening plus are legible within an oval.','misread word','high',False,True,'yes')
+a('margin enclosure','oval omitted','oval omitted','oval drawn around two-line caption','margin_upright: a continuous curved enclosure surrounds the caption; it is reproduced in TikZ.','drawing or diagram','high',True)
+a('item 6 insertion',r'sur old unsure Q un corps de nbs','old ill un corps de nbs',r'sur old unsure Q un corps de nbs','item6 and old_Q: sur is live before the dense cancellation; the rounded old glyph and descending tail suggest Q, but its internal strokes remain masked.','readable ink left as \\ill{}','low',False,True,'yes')
+a('item 6 main line','on a le foncteur','ill : le struck foncteur','on a le foncteur','item6: the small on a le stands below the insertion leader; that leader passes above foncteur, without cancelling its letters.','deletion state (struck given live or live given struck)','high',False,True,'yes',q='Keeps the functor live; the long line is an insertion leader, not a strike through foncteur.')
+a('verb ending',r'résultera deleted unsure it/t it','résulterait',r'résultera deleted unsure it/t it','result and item6: the final ending is overwritten, leaving a thick horizontal old stroke under the final raised t; the old letters cannot be separated securely.','omission','low')
+a('second conjecture title','double réseau','double niveau','double réseau','item6: the initial reduced r and accented é are visible, followed by the same seau sequence as above.','misread word')
+a('cancelled parenthesis opening','(qui, elle,','qu’elle','(qui, elle,','item6: an opening parenthesis, descending q, dotted i, comma and separate elle survive above and below the strike.','misread word')
+a('cancelled final word',r'\unsure{génér}','génér ill',r'\unsure{génér}','old_gener: a descending g and accent strokes survive, while the central letters overlap the cancellation rule; no secure complete reading can replace the doubt.','readable ink left as \\ill{}','low',False,True,'yes')
+a('cancelled interlinear reference',r'inserted (de unsure 3/?)','inserted tout',r'inserted (de unsure 3/?)','old3: an opening curve and tall d are followed by a small e; the last hooked glyph is too overlapped by the strike to settle the numeral.','misread word','low')
+a('end of item 6','pl. fidèle with no final period','pl. fidèle.','pl. fidèle with no final period','NB: the line ends at the final e of fidèle before a separate opening bracket; no separate period is visible.','other')
+a('NB form','underlined NB si','N.B. Si','underlined NB si','NB: one line underlines NB, without points between the capitals; si begins with a small lowercase s.','other')
+a('number-field abbreviation','corps de nb','corps de nbs','corps de nb','NBnb: n and looped b are followed directly by the comma; no s intervenes.','abbreviation expanded or spelling modernised')
+a('NB pronoun','cela','uncertain ceci','cela','NB: the last two letters form a tall looped l and rounded a; there is no final dotted i.','misread word','high',False,True,'yes')
+a('NB reduction punctuation',r'\unsure{:|à}',':',':','NBcolon: two detached dark marks are stacked vertically; the unexpected colon is retained.','other','high',True,False)
+a('NB title','double réseau','double niveau','double réseau','NB: the accented é follows the reduced initial r; the last line spells réseau.','misread word')
+a('NB final punctuation',r'\unsure{....})','ellipsis and )','four dots and )','dots and NB: four distinct dots precede the closing parenthesis; the opening delimiter is a bracket, and the mismatch is preserved.','other','high',True)
+a('watermark fragments',r'unsure trong/rong; Extra; unsure ry/y 1808; unsure Mauno/Maun','omitted',r'unsure trong/rong; Extra; unsure ry/y 1808; unsure Mauno/Maun','watermark and watermark_full, rotated 90 degrees with grayscale levels: outlined capitals Extra and digits 1808 are visible; the partial left capital word and script fragments remain too faint to settle their edges. No completion from another sheet is made.','omission','low')
+a('title placed after NB','absent on this page','Remarques sur la caractérisation des classes de coh. D.R. essentiellement algébriques, followed by a title description','absent on this page','Whole, both halves and the lower blank field: this page ends with NB and the watermark; no further manuscript title is written here. H has attached the following sheet’s title to this page.','text not on the page')
+I=[]
+def i(k,p,t,hand=None):
+ d=dict(kind=k,position=p,text=t)
+ if hand:d['hand']=hand
+ I.append(d)
+i('text','top continuation of 5','Par contre, sans hypothèse sur k … (4.2) soit tjrs pleinement fidèle.')
+i('margin note','left oval, slanted','réseau + connexion')
+i('drawing','left margin','oval enclosure around caption')
+i('text','reduction paragraph','On est ramené pour ceci … la conjecture du double réseau … puis : 6)')
+i('text','item 6','6) Si S de type fini … on a le foncteur de 3) … T_DR(M).')
+i('insertion','above type fini','sur old uncertain Q un corps de nbs')
+i('deletion','within insertion','old uncertain Q')
+i('text','item 6 conclusion','Il résultera old ending it … que ce foncteur est pl. fidèle')
+i('deletion','verb ending','uncertain it/t')
+i('deletion','after double réseau','(qui, elle, uncertain génér')
+i('insertion','within cancelled parenthesis','(de uncertain 3/?)')
+i('text','closing NB','[NB si S est le spectre d’un corps de nb, cela se réduit : l’énoncé du double réseau....)')
+i('text','paper watermark','uncertain trong/rong; Extra; uncertain ry/y 1808; uncertain Mauno/Maun','print')
+commit(13,50,dict(replace=R,changes=L,inventory=I,sheet_kind='text',observations='Whole page and both halves personally read before witnesses. Every divergence and C doubt examined in enlarged crops; slanted oval caption rotated upright. Faint watermark inspected on this page after rotation and grayscale level adjustment. Cancelled original letters remain uncertain where hatching masks them. Context remains unopened.'))

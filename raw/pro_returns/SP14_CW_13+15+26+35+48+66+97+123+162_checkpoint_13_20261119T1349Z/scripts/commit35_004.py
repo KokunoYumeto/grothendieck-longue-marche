@@ -1,0 +1,33 @@
+import sys
+sys.path.insert(0,'out/scripts');from work import commit
+R=[(r'\unsure{-|\textquoteleft}Yale',r'\raisebox{.6ex}{\unsure{-|\textquoteleft}}Yale'),(r'\unsure{Grothendeik|Grothendiek|Grothendieck}','Grothendeik'),(r'\unsure{Lendman|Landman}','Lendman'),(r'\deleted{\unsure{4|0}}\unsure{6|4}',r'\deleted{\unsure{4|0}}6'),(r'\unsure{\textquoteright|´}',r'\textquoteright'),(r'\llap{\raisebox{.98em}{\inserted{Deligne-}\kern.1em}}\tikz[baseline,overlay]{\draw (-.13,-.05) .. controls (-.10,.24) and (.20,.10) .. (.35,.29);}',r'\rlap{\hspace*{-.9em}\raisebox{1.05em}{\inserted{Deligne-}}}\tikz[baseline,overlay]{\draw (-.15,-.10) .. controls (-.15,.25) and (.66,.14) .. (.76,.42);}')]
+L=[]
+def a(p,c,h,f,ink,conf='high',ac=False,ah=True,k='other',mh='no'):
+ L.append(dict(place=p,c=c,h=h,final=f,ink=ink,confidence=conf,against_c=ac,against_h=ah,kind=k,marked_in_H=mh))
+a('[17], mark before Yale',r'\unsure{-|\textquoteleft} at baseline','baseline dash separating author and title',r'raised \unsure{-|\textquoteleft}','yale 9x: a short nearly horizontal stroke, broken by a pale central gap, stands at the upper left of Y. Its raised position is definite; dash versus an opening quote remains uncertain.','low',True,True,'insertion or placement')
+for n,cr in [(18,'g18 10x'),(19,'g19 9x')]:
+ a('['+str(n)+'], author spelling',r'\unsure{Grothendeik|Grothendiek|Grothendieck}','Grothendieck','Grothendeik',cr+': after the tall d the looped e precedes a short dotted i and the tall final k; there is no additional open c between them. The literal order e-i is retained.','medium',True,True,'abbreviation expanded or spelling modernised')
+a('[18], title',r'\unsure{Inventiones|Inventionis}','Inventiones',r'\unsure{Inventiones|Inventionis}','invent 10x, compared with higher 6x: the penultimate body is a closed e-like loop, but a separate dot is directly above it; the dot could belong to i or be displaced. The ink does not settle the two spellings.','low',False,True,'misread word')
+a('[19], added name punctuation','Deligne-','Deligne','Deligne-','g19/deligne_upright 8x rotated -7 degrees: a detached short horizontal dash follows the final e, before the curved leader.','high',False,True,'omission')
+a('[19], inserted name and leader placement','added Deligne- wholly left of author; short curved leader','added name above author; leader not drawn','added Deligne- overlapping the upper left of the author; extended curved leader','g19 and deligne_upright: the addition begins to the left of G but extends above the first part of the surname; the separate curve rises from below-left of G, crosses its upper stroke and curls upward beside the addition.','high',True,True,'drawing or diagram')
+a('[19], surname deletion state','surname live under the page-spanning diagonal',r'\struck{Grothendieck}','surname live apart from the common page-spanning diagonal','g19/leftstroke: the local curved mark passes above most of the surname and only crosses the top of G; no horizontal or local oblique cancellation traverses the name. The long grey diagonal is separately reproduced across several entries.','high',False,True,'deletion state (struck given live or live given struck)')
+a('[19], SGA 7 placement','right margin','after title with a dash','right margin','sga 7x: the paler SGA 7 is detached at the extreme right, without an intervening dash, beside the monodromy entry.','high',False,True,'insertion or placement')
+a('[20], surname',r'\unsure{Lendman|Landman}','Landman','Lendman','land 10x: the small letter immediately after L has an open entry and a narrow upper loop, like this hand’s e; it differs from the closed a near the end of the name.','medium',True,True,'abbreviation expanded or spelling modernised')
+a('[20], former date digit',r'\deleted{\unsure{4|0}}','overwritten earlier digit described, not transcribed',r'\deleted{\unsure{4|0}}','date 14x: a residual downward stem and angular cross inside the new loop favour old4, but the heavy retracing conceals enough of the former outline that0 cannot be excluded.','low',False,True,'omission')
+a('[20], live date digit',r'\unsure{6|4}','6','6','date 14x: the newest broad stroke makes an open upper hook continuous with a rounded closed lower bowl, giving6.','medium',True,False)
+a('[23], terminal raised stroke',r'\unsure{\textquoteright|´}','omitted',r'\textquoteright','paperend 14x: a detached short sloping apostrophe-like stroke stands above and to the right of final r; it is not attached to the e or r as a letter stroke.','medium',True,True,'omission')
+a('across bibliography','two long hooked diagonal strokes drawn','two strokes described in a note','two long hooked diagonal strokes drawn','leftstroke/rightstroke 3x: the left paler diagonal crosses the author column and returns upward-right below [23]; the right darker diagonal crosses the title column and has a short reversed hook below the final row.','high',False,True,'drawing or diagram')
+I=[]
+def i(k,p,t,hand=None):
+ d=dict(kind=k,position=p,text=t)
+ if hand:d['hand']=hand
+ I.append(d)
+for n,t in [(17,'Griffiths, P.; raised dash/quote; Yale talk'),(18,'Grothendeik, A.; Inventiones/Inventionis'),(19,'Grothendeik, A.; S.G.A. on monodromy'),(20,'Lendman, A.; Berkeley thesis (1966)'),(21,'Lieberman, D.; Higher Picard varieties'),(22,'Schmid, W.; On a Conjecture of Langlands'),(23,"Wu, H.; Acta paper'")]:i('text','entry ['+str(n)+']',t)
+i('insertion','above beginning of [19] surname','Deligne-','another unnamed hand (annotation)')
+i('drawing','below Deligne-','curved insertion leader rising over G','another unnamed hand (annotation)')
+i('marginnote','far right of [19]','SGA 7','another unnamed hand (annotation)')
+i('deletion','[20] last date digit','former4/0 overwritten')
+i('insertion','[20] last date digit','new6')
+i('drawing','across author column','long pale diagonal with long lower return hook','another unnamed hand (marking)')
+i('drawing','across title column','long dark diagonal with short lower reverse hook','another unnamed hand (marking)')
+commit(35,4,dict(replace=R,changes=L,inventory=I,sheet_kind='list',hand='another unnamed hand (bibliography)',observations='Whole image and both supplied halves personally viewed before witness comparison. All seven entries, author initials, punctuation, titles and date read directly; every C doubt and discrepancy enlarged, and the slanted Deligne addition rotated upright. Known names and journal titles have not supplied the spelling. The neat bibliography hand and the paler annotations are not assigned a personal identity from content. Lower page blank; no readable watermark. Archive3 remains comment only. No context opened.'))

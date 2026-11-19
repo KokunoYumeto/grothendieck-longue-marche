@@ -1,0 +1,53 @@
+import sys
+sys.path.insert(0,'out/scripts');from work import commit
+arrow=r'\mathrel{\mbox{-}\mkern-2mu\mbox{-}\mkern-2mu\mbox{-}\mkern-2mu\mbox{-}\mkern-2mu\mbox{-}\mkern-2mu\mbox{-}\mkern-3mu\handwritten{\to}}'
+R=[(r'\mspage{(31}',r'\mspage{\unsure{\handwritten{(31}|(31}}'),(arrow,r'\underset{\begin{tikzpicture}[x=1cm,y=1cm]\draw (.35,0)--(.38,.10);\end{tikzpicture}}{'+arrow+'}')]
+L=[]
+def a(p,c,h,f,ink,conf='high',ac=False,ah=True,k='other',mh='no',con=None):
+ d=dict(place=p,c=c,h=h,final=f,ink=ink,confidence=conf,against_c=ac,against_h=ah,kind=k,marked_in_H=mh)
+ if con:d['consequential']=con
+ L.append(d)
+a('top right pagination','(31','31 in added heading','(31','header: opening parenthesis before31; no closing parenthesis.',k='omission')
+a('pagination provenance','not distinguished','not distinguished',r'\unsure{\handwritten{(31}|(31}','header: smooth figures with no lower serif on1 differ from the serif body type. Manual origin is primary but not conclusively established by this image.','low',True,True,'other')
+a('added heading','none','Dactylographie, p.31','none','whole/header: no word Dactylographie is printed or written above the opening line.',k='text not on the page')
+a('whole sheet cancellation','deleted body and pencil diagonal','body presented live','deleted body and pencil diagonal','whole and all enlarged body crops: a continuous pale pencil line cuts down-left through the body from beside the opening sentence to the last paragraph.','high',False,True,'deletion state (struck given live or live given struck)')
+a('first display membership-like sign',r'\unsure{\in|\mathrm E}',r'\in',r'\unsure{\in|\mathrm E}','firstE/map: the left boundary rounds slightly at the lower corner but has three fairly flat arms; it does not decisively distinguish E from a squarely written membership sign.','low',False,True,'misread symbol or index')
+a('first display category exponent',r'\unsure{o|0|\circ}',r'\circ',r'\unsure{o|0|\circ}','map: raised closed oval with no distinguishing interior stroke; o/zero/circle remain indistinguishable. Later occurrence uses the same primary o.','low',False,True,'misread symbol or index')
+a('first formula label',r'\unsure{\underline{\overline\ast}|\underline\ast|\ast}',r'\ast',r'\unsure{\underline{\overline\ast}|\underline\ast|\ast}','star1: crossed central body has prominent flat top and bottom bars; unclear whether these are separate strokes or features of the typed asterisk glyph. Doubt retained.','low',False,True,'misread symbol or index')
+a('formula label repeated in prose',r'\underline{\overline\ast}',r'\ast',r'\underline{\overline\ast}','star2: same flat top and bottom bars and crossed centre as first occurrence. Primary notation repeated after the first in-page uncertainty.','medium',False,True,'misread symbol or index')
+a('first display arrow','six separated typed dashes and handwritten arrowhead','continuous long arrow','six separated typed dashes and handwritten arrowhead','map: six short horizontal segments with white gaps precede the separate final right-pointing pen segment.',k='drawing or diagram')
+a('isolated stroke below first arrow','omitted','omitted','short sloping stroke drawn below arrow','tiny/map: a distinct small dark oblique stroke stands below the right half of the shaft; no letter or mathematical attachment is assigned to it.','medium',True,True,'omission')
+a('7.9.2 first membership-like sign',r'\mathrm E',r'\in',r'\mathrm E','E: straight left spine and three straight horizontal arms, with squared lower-left corner. The following-line sign is curved, as shown in in.','high',False,True,'misread symbol or index',con='The first 7.9.2 condition retains the literal E-shaped mark; the second uses the curved membership sign.')
+a('7.9.2 arrow to Ens','three separated dashes plus hand arrow','continuous long arrow','three separated dashes plus hand arrow','seven92b: three short separated typed bars and a handwritten terminal right arrow are visible.',k='drawing or diagram')
+for p,form,cr in [('composite','ZxY','seven92b'),('image statement','YxY','seven92c'),('diagonal sentence','YxY','seven92c')]:
+ a('7.9.2 '+p+' product',form,form.replace('x','×'),form,cr+': the middle character is a small serif typewriter x, sitting on the alphabetic baseline, not a larger centred cross.',k='misread symbol or index')
+a('7.9.3 arrow to Ens','three separated dashes plus hand arrow','continuous long arrow','three separated dashes plus hand arrow','seven93: three separated short typed bars precede the right arrowhead.',k='drawing or diagram')
+I=[]
+def i(k,p,t,hand='typewriter with his handwritten mathematical infill'):I.append(dict(kind=k,position=p,text=t,hand=hand))
+i('text','top right','(31; provenance uncertain','his hand or typewriter, uncertain')
+i('text','opening lines','les morphismes se définissant... homomorphisme évident','typewriter')
+i('display','first formula','star label; direct limit over (Y,xi) in/E C_phi^o; check Y to phi')
+i('insertion','first formula','xi, membership-like sign, phi, opposite exponent, arrows, check accent','his hand')
+i('drawing','below first display shaft','small detached oblique stroke','his hand, uncertain')
+i('text','between formulas','en remarquant que','typewriter')
+i('display','Hom chain','Hom(direct limit check Y,phi) isomorphic inverse limit Hom(check Y,phi) isomorphic inverse limit phi(tilde Y)')
+i('insertion','Hom chain','right/left arrows, phi subscripts and arguments, check and tilde accents, isomorphism signs','his hand')
+i('text','first prose paragraph beginning','Or on a un élément canonique... en associant à tout (Y,xi)...')
+i('insertion','first prose paragraph beginning','inverse-limit arrow; phi, tilde, xi','his hand')
+i('text','finite limits sentences','Utilisant le fait que les lim finies... Y leads to phi(tilde Y)... à fortion... pseudo-filtrant')
+i('insertion','finite limits sentences','left arrows, wavy arrow, phi and o superscript','his hand')
+i('text','inductive limits sentence','Utilisant que tout faisceau F est limite inductive... on conclut aisement... représentation annoncée.')
+i('insertion','inductive limits sentence','tilde over Y and phi','his hand')
+i('text','paragraph number','7.9.2.','his hand')
+i('text','7.9.2 opening','Remarquons également... E topos, Y objet... foncteur fibre phi pour E/Y... couple(phi,xi)')
+i('insertion','7.9.2 opening','phi and xi','his hand')
+i('text','7.9.2 fibre and composite','fibre pour E, et xi E phi(Y). Au foncteur fibre psi:E/Y --> Ens... phi(Z)=psi(ZxY)')
+i('insertion','7.9.2 fibre and composite','xi, E-shaped mark, phi, psi, right arrow','his hand')
+i('text','7.9.2 final sentence','xi in phi(Y)=psi(YxY)... unique élément de psi(Y)... morphisme diagonal de YxY')
+i('insertion','7.9.2 final sentence','xi, curved membership, phi, psi','his hand')
+i('text','paragraph number','7.9.3.','his hand')
+i('text','7.9.3 paragraph','Revenons maintenant au cas du site C=tilde X ét... phi:tilde X ét-->Ens...')
+i('insertion','7.9.3 paragraph','tilde accents, phi, arrowhead','his hand')
+i('deletion','across body','long pencil cancellation','his hand')
+i('drawing','across body','down-left diagonal from upper right of text to near last paragraph','his hand')
+commit(26,6,dict(replace=R,changes=L,inventory=I,sheet_kind='cancelled_draft',hand='typewriter with his handwritten mathematical infill',observations='Whole and both supplied halves viewed before C/H. Every agreed word checked; literal à fortion and aisement retained, all accents/punctuation read. All C doubts enlarged and retained with reasons. Every mathematical group enlarged: check accents differ from later tilde accents; direct/inverse-limit arrows, phi/psi, xi, category exponents, E underlines, plain alphabets and literal x products checked. IndexC confirms serif typed C, not handwritten C. E,F,C,Y,X,Z have single typed bodies; underline below E is separate, no doubled letter calls for mathbb. No slanted marginal wording present. All crop26_006.py crops viewed. Archive5 comment only; context unopened.'))

@@ -1,0 +1,7 @@
+import sys
+sys.path.insert(0,'out/scripts');from work import crop,ROOT,OUT
+from PIL import Image
+items=[('topnote',(1244,20,1537,85),7),('heading',(237,175,1290,218),4),('iword',(292,275,538,326),8),('igroupe',(665,275,810,327),8),('marginlabels',(35,265,122,1108),5),('ii1',(327,419,883,474),6),('iiend',(1473,424,1657,477),7),('iiiall',(243,558,1274,617),4),('iiinote',(1275,482,1643,634),7),('ivword',(460,701,669,753),8),('vnames',(31,666,310,955),6),('app',(216,881,314,958),8),('appedge',(1437,911,1677,962),7),('rim',(34,948,166,1003),8),('modules',(331,945,1185,1008),6),('viinum',(214,954,316,1030),8),('viiiline',(332,1014,1075,1068),7),('gmath',(992,1017,1068,1066),12),('viilower',(227,1018,322,1106),8),('orthogonality',(1020,1008,1588,1111),6),('ixline',(348,1057,1639,1112),4),('ixs',(537,1057,591,1110),10),('ixle',(976,1054,1041,1109),10),('ixend',(325,1125,466,1177),9),('bottom',(220,1190,1667,1328),5),('bottomnum',(227,1192,290,1247),12),('oldla',(576,1197,671,1245),12),('oldet',(1578,1200,1658,1252),12),('oldetla',(286,1251,388,1318),12),('deligne',(39,1199,188,1252),8)]
+for label,box,scale in items:crop(35,2,label,box,scale)
+p=crop(35,2,'slanted',(48,667,300,882),7);o=ROOT/'work/crops/H35-01_35_scan002_slanted_upright.png';Image.open(p).rotate(-44,expand=True,fillcolor='white').save(o)
+with (OUT/'crop_manifest.tsv').open('a') as f:f.write(f'{o.name}\t{p}\twhole crop\t1\t-44\n')

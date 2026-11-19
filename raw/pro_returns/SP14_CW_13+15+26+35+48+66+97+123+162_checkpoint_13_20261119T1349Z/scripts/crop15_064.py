@@ -1,0 +1,4 @@
+import sys
+sys.path.insert(0,'out/scripts');from work import crop
+for label,box,scale in [('header',(779,206,937,254),5),('top',(339,271,1691,513),3),('middle',(338,499,1694,779),3),('section2',(242,784,1690,1097),3),('proof',(235,1100,1688,1511),2),('bottom',(239,1517,1693,1966),2),('connexe',(1594,322,1692,367),8),('definies',(1551,386,1694,427),8),('ensemble',(1585,798,1693,842),8),('variete',(1560,922,1693,972),8),('imaginary',(1362,972,1440,1036),8),('Rfield',(437,1518,482,1559),10),('closing',(1560,1521,1693,1574),8),('voisinage',(1590,1585,1693,1631),8),('section2number',(257,790,315,840),8),('hyphen',(947,1450,995,1502),8)]:crop(15,64,label,box,scale)
+for label,box,scale in [('Hfirst',(927,669,999,721),10),('na_hyphen',(274,1656,316,1702),9),('dapres',(1542,1786,1695,1834),7),('symbol_formula',(1362,969,1566,1052),6)]:crop(15,64,label,box,scale)
