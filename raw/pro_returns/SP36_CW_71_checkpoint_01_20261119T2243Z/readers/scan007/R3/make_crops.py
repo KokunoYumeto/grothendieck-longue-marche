@@ -1,0 +1,14 @@
+from pathlib import Path
+import json
+from PIL import Image, ImageOps
+root=Path(__file__).parent
+items=[('01_phi', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_a.jpg', [185, 235, 305, 405], 2400, 'Upper-left arrow label, phi form'), ('02_sigma_script_x', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_a.jpg', [330, 712, 602, 824], 2800, 'Standalone Sigma alphabet and script X'), ('03_first_nested_index', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_a.jpg', [466, 865, 894, 990], 3000, 'First large-diagram object, nested last index'), ('04_delta_overwrite', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_a.jpg', [1292, 855, 1541, 973], 2800, 'Third top object, earlier boundary mark overwritten by Delta'), ('05_cancelled_suffix', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_a.jpg', [507, 1052, 756, 1182], 2800, 'Intermediate Sigma object and cancelled trailing suffix'), ('06_bottom_connector', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_b.jpg', [1200, 130, 1350, 213], 2600, 'Bottom connector between boundary X and X'), ('07_bottom_right_index', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_b.jpg', [1528, 115, 1668, 223], 2600, 'Bottom-right boundary X index'), ('08_lower_column_indices', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_b.jpg', [866, 433, 991, 621], 2800, 'Top two lower-column X indices and inclusion'), ('09_final_alpha', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_b.jpg', [890, 871, 1020, 995], 2600, 'Final lower-right X index alpha or 2'), ('10_lower_cancellations', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_b.jpg', [400, 906, 699, 1239], 3000, 'Lower cancelled subscript, connector and Sigma object'), ('11_pi_D', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_b.jpg', [1170, 629, 1574, 756], 3000, 'Lower-right pi-zero and D alphabets'), ('12_faint_arc', '/workspace/scratch/17347c1714f0/source/SP36_CW_71_scans/J71-01_71_scan007_a.jpg', [1105, 553, 1158, 591], 2400, 'Faint short arc left of the three-branch trace')]
+log=[]
+for name,source,box,width,place in items:
+    im=ImageOps.autocontrast(Image.open(source).convert("L").crop(box))
+    scale=width/im.width
+    im=im.resize((width,round(im.height*scale)),Image.Resampling.LANCZOS)
+    target=root/(name+".jpg")
+    im.save(target,format="JPEG",quality=97)
+    log.append({"file":str(target),"source":source,"box":box,"rotation":0,"output_width":width,"scale":scale,"processing":"grayscale; autocontrast; LANCZOS enlargement; JPEG quality 97; no sharpening","place":place,"observed":"PENDING VIEW"})
+(root/"crop_log.json").write_text(json.dumps(log,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")

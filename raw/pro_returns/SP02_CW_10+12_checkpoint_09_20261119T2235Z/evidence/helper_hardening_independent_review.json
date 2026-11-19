@@ -1,0 +1,127 @@
+{
+  "checked_utc": "2026-11-19 21:07:13 UTC",
+  "code_hashes": [
+    {
+      "path": "scripts/record_page.py",
+      "sha256": "4169a107c15439e7e04c0947bbf363c151929d12f83e1c2ffa43102c0bee87c2",
+      "matches_hardening_evidence": true
+    },
+    {
+      "path": "scripts/record_audit.py",
+      "sha256": "7e3dc0cfa292c0aca4b9314a4ed42b4a794417c3e3b5d71c5efac510aeef4fa5",
+      "matches_hardening_evidence": true
+    },
+    {
+      "path": "scripts/freeze_transcription.py",
+      "sha256": "c02e8ad072358d76541b9ad0ed647d04adeee233908bd635937d90a2a7f8f970",
+      "matches_hardening_evidence": true
+    },
+    {
+      "path": "scripts/README_tools.md",
+      "sha256": "a0620df1a9a0b9e123290d42970c871b6a03f0fc1456dfb0d15a5e9c0e281063",
+      "matches_hardening_evidence": true
+    },
+    {
+      "path": "scripts/tests/test_audit_hardening.py",
+      "sha256": "66599efe33538b7723a36d1555d4003d407222957cf1661e12a494ec6177b3a4",
+      "matches_hardening_evidence": true
+    },
+    {
+      "path": "scripts/tests/test_freeze_hardening.py",
+      "sha256": "7b309b0c0d3736002d16f71ff36396bcf652778f3b68458f5c405c614d7eb72d",
+      "matches_hardening_evidence": true
+    }
+  ],
+  "recorded_test_count": 28,
+  "review_type": "Independent static code/evidence review; no tests rerun",
+  "reviewer": "Separate delegated reviewer; parent verified the cited parser branches",
+  "findings": [
+    {
+      "id": "FREEZE-PARSER-1",
+      "status": "resolved_by_parser_alignment",
+      "scope": "Pre-freeze parser consistency and retry evidence",
+      "file": "scripts/freeze_transcription.py",
+      "functions": [
+        "progress_evidence",
+        "collect_ready_state"
+      ],
+      "code_lines": [
+        129,
+        131,
+        136,
+        268
+      ],
+      "summary": "Malformed completion/audit-looking lines are silently skipped and omitted from the retry fingerprint.",
+      "control_flow": [
+        "progress_evidence continues when EVENT.fullmatch fails.",
+        "collect_ready_state fingerprints only EVENT.fullmatch lines.",
+        "An additional malformed event-looking line after an interrupted preparation can therefore leave readiness and the persisted fingerprint unchanged when all recognized evidence remains valid."
+      ],
+      "synthetic_example_not_executed": "scan 001 audited INVALID_TIMESTAMP cote=10 audit_id=synthetic",
+      "comparison": "record_audit.require_order rejects such event-looking malformed lines.",
+      "related_parser_inconsistency": "freeze progress fields use dict(re.findall(...)), silently selecting the last duplicate identity field; audit parsing rejects duplicates. This duplicate-field case is fingerprinted if its full event line is recognized, so it is a separate parsing ambiguity rather than the unchanged-fingerprint example.",
+      "recommended_narrow_correction": "Reject malformed event-looking lines and duplicate identity fields consistently before computing readiness/fingerprint. Add a focused synthetic malformed-event-after-preparation retry test.",
+      "live_data_status": "No live progress/audit/freeze state was inspected; this finding does not assert any actual task event is malformed.",
+      "status_at_review": "remaining"
+    }
+  ],
+  "otherwise_consistent": [
+    "Inventory identity/allowed-field checks",
+    "Shared preview/final metadata and report staging",
+    "Complete audit metadata/event-prefix gates",
+    "Observed freeze preparation/commit reporting",
+    "Fingerprint refusal for changed recognized event and retained file/history/session evidence"
+  ],
+  "actions": {
+    "helper_code_modified": false,
+    "existing_reports_modified": false,
+    "page_records_or_transcription_modified": false,
+    "tests_rerun": false,
+    "source_or_image_files_opened": false,
+    "context_accessed": false,
+    "live_audit_or_freeze_invoked": false,
+    "packaging_or_upload": false
+  },
+  "resolution": {
+    "completed_utc": "2026-11-19 21:12:23 UTC",
+    "finding": "FREEZE-PARSER-1",
+    "status": "fixed",
+    "changes": [
+      "Reject completion/audit-looking lines that do not match the event grammar.",
+      "Reject duplicate identity fields before interpreting identities or computing the retry fingerprint."
+    ],
+    "focused_validation": {
+      "command": "From SP02_CW_10+12/scripts/tests: PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_freeze_hardening.FreezeHardeningTests.test_malformed_completion_event_refuses_retry test_freeze_hardening.FreezeHardeningTests.test_duplicate_identity_fields_refuse_retry test_freeze_hardening.FreezeHardeningTests.test_unchanged_retry_preserves_manifest_and_verifies",
+      "tests_run": 3,
+      "all_passed": true,
+      "coverage": [
+        "Malformed event appended after interrupted preparation is rejected by readiness and writing retry without writes.",
+        "Duplicate identity fields are rejected by parsing itself and retry without writes.",
+        "Unchanged retry preserves the manifest and verifies107 synthetic files."
+      ],
+      "output": "evidence/helper_hardening_parser_tests.txt",
+      "broader_suite_rerun": false
+    },
+    "changed_files": [
+      {
+        "path": "scripts/freeze_transcription.py",
+        "bytes": 30131,
+        "sha256": "8fa9d75703cd037f6464898079027188049008e20f9b8dd121541531c83c2ba3",
+        "python_ast_pass": true
+      },
+      {
+        "path": "scripts/README_tools.md",
+        "bytes": 23878,
+        "sha256": "5e08b08ade036ec31561e9c6d09e0765d435514818cfbf722e223f632d824f89",
+        "python_ast_pass": null
+      },
+      {
+        "path": "scripts/tests/test_freeze_hardening.py",
+        "bytes": 15215,
+        "sha256": "a33e806c7bdcbd2390926533451fbc9a362acbfc690ef711fc5fcb4f1f4aeb11",
+        "python_ast_pass": true
+      }
+    ],
+    "live_state_accessed_or_modified": false
+  }
+}

@@ -1,0 +1,67 @@
+import sys,json
+from pathlib import Path
+sys.path.insert(0,'SP02_CW_10+12/scripts')
+from root_record import Record
+r=Record('B10-04',10,62);ch=r.change
+r.edit(r'\unsure{\deleted{i}o|\deleted{o}i|\.{o}}',r'\unsure{\deleted{i}o|\deleted{o}i}')
+r.edit(r'\unsure{\deleted{o}d|\deleted{d}o|d}',r'\unsure{\deleted{o}d|\deleted{d}o|d|\deleted{l}o}')
+r.edit(r'\deleted{\unsure{i|,}}ou',r'\deleted{i}\unsure{ou|eu}')
+r.edit(r'1\leq i\leq r',r'1\leqslant i\leqslant r')
+r.edit(r'\unsure{\pi|\Pi}',r'\pi')
+r.edit(r'La catégorie $\handwritten{\mathcal{M}}$ est connue',r'\unsure{\deleted{L}\handwritten{l}|L}a catégorie $\handwritten{\mathcal{M}}$ est connue')
+r.edit(r'\operatorname{Br}(\handwritten{Z_\sigma})',r'\operatorname{Br}(\deleted{k}\handwritten{Z_{\unsure{\sigma|\gamma}}})')
+r.edit(r'de $S$ le \deleted{classe de}',r'de $S$ la \deleted{classe de}')
+r.edit(r'$\operatorname{End}(\handwritten{M})$',r'$\operatorname{End}(\deleted{\unsure{S}}\handwritten{M})$')
+hook=r'\begin{tikzpicture}[x=1cm,y=1cm,baseline=-.1cm]\draw[thin] (0,.15).. controls (.1,-.1) and (-.2,-.1)..(-1,-.1)--(-2.1,-.1).. controls (-2.3,-.1) and (-2.35,-.2)..(-2.35,-.5);\end{tikzpicture}'
+slash=r'\begin{tikzpicture}[x=1cm,y=1cm,baseline=-.1cm]\draw[thin] (-.1,-.25).. controls (0,0) and (.15,.1)..(.25,.35);\end{tikzpicture}'
+r.edit(r'est séparable sur $k$.',r'est séparable sur $k$.'+slash)
+r.edit(r'\inserted{$1\leqslant i\leqslant r$,}',r'\inserted{$1\leqslant i\leqslant r$,'+hook+'}')
+r.edit(r'\inserted{$M\'_i$}',r'\inserted{$M\'_i$}') if False else None
+r.edit("\\inserted{$M'_i$}","\\inserted{$M'_i$"+slash+'}')
+r.edit(r'\inserted{Si $\handwritten{\mathcal{M}}$ est semi-simple,}',r'\inserted{Si $\handwritten{\mathcal{M}}$ est semi-simple,'+hook+'}')
+r.edit(r'\inserted{\handwritten{$\sigma$}}',r'\inserted{\handwritten{$\sigma$'+slash+'}}')
+ch('heading style','upright typed text','italic','upright typed text','The heading has the same upright typewriter letterforms as the body and no underline.','top','other')
+ch('ainsi overtyping',r'\unsure{ainss|ain\deleted{is}si|ain\deleted{si}is}','ainsi',r'\unsure{ainss|ain\deleted{is}si|ain\deleted{si}is}','Both final cells contain s curves, upright i strokes and upper dots; their typing order is not separable.','ainsi','misread word','low')
+ch('objet first-letter layers',r'\unsure{\deleted{i}o|\deleted{o}i|\.{o}}','o',r'\unsure{\deleted{i}o|\deleted{o}i}','The round o encloses a clear upright stem and has a separate i dot above it. A merely dotted o does not represent the inner stem.','objet','misread word','low',True,True)
+ch('composé overwritten cell',r'\unsure{\deleted{o}d|\deleted{d}o|d}','o',r'\unsure{\deleted{o}d|\deleted{d}o|d|\deleted{l}o}','A tall serifed ascender passes inside the round bowl; an overwritten l is also possible alongside the d/o candidates. Layer order remains unclear.','compose','misread word','low',True,True)
+ch('cancelled de corps','de corps',r'\ill{}','de corps','The letters d-e, c-o-r-p-s are distinct underneath the x row, including the p descender.','de-corps','readable ink left as \\ill{}','high',False,True,True)
+ch('vrai replacement',r'v\deleted{rai} handwritten \unsure{èrifié|érifié}',r'vrai live with added \ill{}; note claims one letter',r'v\deleted{rai} handwritten \unsure{èrifié|érifié}','The old r-a-i is overlaid by several connected handwritten letters, a descending f-like stroke and two accents. It is not a single inserted letter; the first accent remains grave/acute uncertain.','verifie; verifie-rot','deletion state (struck given live or live given struck)','low',False,True,True)
+ch('une emphasis','double underline','plain','double underline','Two separate dark horizontal strokes lie below une.','ext; ext-rot','other')
+ch('parfaite reading and underline','underlined parfaite',r'\uncertain{parfaite}, underline noted','underlined parfaite','All eight letters are clear; one continuous pen rule lies below the word.','semi','misread word','high',False,True,True)
+ch('cancelled mark before ou',r'\unsure{i|,}','omitted','i','The cancelled cell has a separate high dot and upright stem; the upper dot excludes a baseline comma.','old-ou','omission','medium',True,True)
+ch('live ou cell and state','ou live','ou cancelled',r'\unsure{ou|eu} live','The cancellation ends before the two following cells. The first live round letter contains a horizontal middle stroke, leaving an e/o ambiguity.','old-ou','deletion state (struck given live or live given struck)','medium',True,True)
+ch('séparable punctuation mark','omitted','omitted','oblique pen stroke beside the full stop in TikZ','A distinct ascending stroke touches the left side of the full stop after k.','slash','drawing or diagram','high',True,True)
+ch('parenthetical missing words',"au cas n'est pas supposé simple",r"au cas \supplied{où M n'}est pas supposé simple","au cas n'est pas supposé simple",'The right edge reads au cas n est and the next line begins pas supposé simple; no où or M is visible.','semi','text not on the page','high',False,True,True,True)
+ch('façon cancelled extra letter',r'fa\deleted{\unsure{y|c}}çon','façon',r'fa\deleted{\unsure{y|c}}çon','A separate crossed letter cell follows fa before the live ç; its descending stroke permits y but the cancellation also permits c.','fac','omission','low')
+ch('enn','enn','en','enn','A faint but complete second n stands after the dark en.','enn','abbreviation expanded or spelling modernised')
+ch('inserted inequality shape',r'1\leq i\leq r',r'1\leq i\leq r',r'1\leqslant i\leqslant r','The lower strokes of both inequality signs slant down to the right, parallel to the lower arms of the angle signs.','ineq','misread symbol or index','high',True,True)
+ch('inequality insertion bracket','omitted','omitted','curved bracket in TikZ','A line below the raised inequality hooks upward at the right and drops before alors at the left.','ineq','drawing or diagram','high',True,True)
+ch('isotypic word spacing','composantsisotypiques','composants isotypiques','composantsisotypiques','The last s of composants and first i of isotypiques occupy adjacent character positions without a space.','decomp','abbreviation expanded or spelling modernised')
+ch('correspondants ending','correspondants','correspondant','correspondants','A final s precedes the space before aux.','decomp','abbreviation expanded or spelling modernised')
+ch('M-prime-i insertion stroke','omitted','omitted','curved rising insertion stroke in TikZ','A curved pen stroke rises from the gap before the sentence stop to the right of the raised M-prime-i.','Mi','drawing or diagram','high',True,True)
+ch('Galois-action letter',r'\unsure{\pi|\Pi}',r'\pi',r'\pi','The right leg curves outward below the baseline, and the left leg ends in a rounded short turn; these are lower-case pi strokes.','pi','misread symbol or index','medium',True,False)
+ch('generalization ellipsis','four stops','three-stop ellipsis','four stops','Four separate baseline dots follow semi-simples.','bottom','misread symbol or index')
+ch('semisimplicity insertion bracket','omitted','omitted','long curved bracket in TikZ','A thin rule runs under the raised clause, with a right upturn and left descending attachment before La.','simple-insert','drawing or diagram','high',True,True)
+ch('initial letter after semisimplicity insertion','La','La',r'\unsure{\deleted{L}\handwritten{l}|L}a','A small loop and descending handwritten stroke lie over the typed capital L. A correction to lower-case l is possible, but the pen overlaps the insertion bracket.','simple-insert','deletion state (struck given live or live given struck)','low',True,True)
+ch('Brauer argument underlayer','handwritten Z_sigma only','Z_sigma only',r'\deleted{k} before handwritten Z','A thin typed lower-case k stem and diagonal arms remain inside and below the larger handwritten Z.','lower-map','deletion state (struck given live or live given struck)','high',True,True,False,True)
+ch('Brauer argument subscript',r'\sigma',r'\sigma',r'\unsure{\sigma|\gamma}','The rightmost small sign has a low loop and crossing horizontal stroke, with a descending stem; it is less closed than the other sigmas on this page.','lower-map','misread symbol or index','medium',True,True,False,True)
+ch('class sigma insertion','present','omitted','present','A separate small looped sigma is written above the gap between classe and d objet.','last-line','omission','high',False,True,False,True)
+ch('class sigma insertion slash','omitted','omitted','oblique attachment stroke in TikZ','A long rising separator stroke follows the raised sigma and lands in the gap before d objet.','last-line','drawing or diagram','high',True,True)
+ch('last simple-object M',r'\unsure{\mathbb{M}|M}','M',r'\unsure{\mathbb{M}|M}','The final typed M is much denser and has overlapping/doubled-looking outlines; the distinction from a reinforced ordinary M is not secure.','Mfont','misread symbol or index','medium')
+ch('last article reading','le','la in cancelled phrase','la live','The final letter has two bowls and a right-hand foot, matching typed a; the strike starts at classe and does not cross la.','last-le; last-line','misread word','high',True,True)
+ch('last article replacement and deletion span','classe de cancelled; centre inserted','la classe de cancelled; le centre inserted','la live; classe de cancelled; centre inserted','Only classe de carries the horizontal cancellation. The insertion reads centre followed by Z_sigma, with no added le.','last-line; centre-rot','insertion or placement','high',False,True)
+ch('last End argument earlier layer','handwritten M only','M only',r'\deleted{\unsure{S}}\handwritten{M}','A thin lower bowl and left serif-like end remain inside the thick handwritten M, suggesting an earlier typed S. The upper outline is hidden.','lastEnd','omission','medium',True,True,False,True)
+for id,pos,txt in [('punct-slash','after séparable sur k','oblique mark beside stop'),('ineq-hook','below inequality','curved insertion bracket'),('Mi-hook','after composants simples','curved insertion stroke'),('simple-hook','before numerical data','long insertion bracket'),('sigma-slash','after classe','oblique insertion stroke')]:
+ r.r['inventory_extra'].append(dict(scan='10:062',sheet_kind='typescript',hand='his hand',element='062-'+id,kind='drawing',position=pos,first_words_or_objects=txt,transcribed='yes'))
+for id,pos,txt in [('La-layer','start of numerical data','possible L superseded by handwritten l'),('Br-k','Brauer argument','typed k below handwritten Z'),('End-S','last End argument','uncertain typed S below handwritten M')]:
+ r.r['inventory_extra'].append(dict(scan='10:062',sheet_kind='typescript',hand='typewriter',element='062-'+id,kind='deletion',position=pos,first_words_or_objects=txt,transcribed='yes'))
+r.r['inventory_overrides']={'062-017':{'first_words_or_objects':'i'},'062-026':{'first_words_or_objects':r'1\leqslant i\leqslant r,'},'062-028':{'first_words_or_objects':r'\pi'},'062-034':{'hand':'typewriter'},'062-041':{'first_words_or_objects':r'Z_{\unsure{\sigma|\gamma}}'}}
+for p,rd,alt,co in [('ainsi layers','ainss',r'ain\deleted{is}si; ain\deleted{si}is','low'),('objet first cell',r'\deleted{i}o',r'\deleted{o}i','low'),('composé cell',r'\deleted{o}d',r'\deleted{d}o; d; \deleted{l}o','low'),('handwritten verified word','èrifié','érifié','low'),('live connective','ou','eu','medium'),('façon extra cancelled cell','y','c','low'),('initial La correction',r'\deleted{L}\handwritten{l}','L','low'),('Brauer subscript',r'\sigma',r'\gamma','medium'),('last simple-object M',r'\mathbb{M}','M','medium'),('last End underlayer','S','','medium')]:r.doubt(p,rd,alt,co)
+r.notation('Galois-action sign',r'\pi','10/062 first occurrence and orbit display','read from curved right leg; no later page used')
+r.notation('typed inequalities',r'\leqslant','10/062 inserted 1 through r bounds','read')
+r.notation('Brauer argument small sign',r'\sigma|\gamma','10/062 last argument of Br','unresolved')
+r.notation('last simple-object M alphabet',r'\mathbb{M}|M','10/062 final prose line','unresolved; other typed Ms inspected separately')
+r.r['abbreviations']=[dict(abbreviation='ext.',expansion='extension',attestations='10/062 handwritten replacement over k cloture'),dict(abbreviation='sss',expansion='si et seulement si',attestations='10/062 first paragraph')]
+r.r['crops']=json.loads(Path('work/crops062.json').read_text())
+r.r['inspection_note']='Read whole page then upper and lower halves in order. Enlarged all prose blocks, formulas, capitals and indices, each C/H difference, each C doubt, and every overtyped or inserted area. Three slanted handwritten additions were also rotated. No source spelling or missing words were repaired by meaning. Distinct ordinary typed Ms and the dense final M were inspected separately. Old typed k in the Brauer argument is visible beneath the handwritten Z; the less secure End underlayer remains marked. No later page or sealed context used.'
+r.save('work/record062.json')

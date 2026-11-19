@@ -1,0 +1,25 @@
+# SP37_CW_71 — Notes while reading
+
+No material beyond the supplied pages and witnesses was researched. A report of a manuscript claim does not certify its proof. Mathematical checks actually performed are distinguished in CHECK_EVENTS.tsv.
+
+## Scan 036
+
+**N036.1 — What the page does.** Manuscript IX finishes an angular argument for the preceding lemma: the exterior sector exceeds π and the interior sector is below π; the convex hull supplies at least three vertices. It states Lemme XI (two vertices visible through the interior) and begins a proof with the triangle on a vertex and its two neighbors. These are reports of the page’s claims, not an independent verification of the entire proof.
+
+**N036.2 — Mathematics and reading decisions.** The crossed-loop sign in the intersection equations is phi-shaped in the ink. Its use indicates the empty-set role, but the transcription keeps `\phi|\varnothing` at the first occurrence and the visible first candidate subsequently. The second-case inclusion is intact; a detached diagonal with a lower hook is drawn beside it. A bare containment does not imply nonemptiness (the empty set is a counterexample), consistent with the circled `non vide?`; this is a check of that local logical implication only. The original Lemma XI wording fails for a triangle: every pair of distinct vertices is joined by a boundary edge, so its open segment is not in the interior. This confirms the diagnosis in S, SA01-K71-01. S’s condition n≥4 is not substituted for the overwritten `n >|≥ 3` in the scan; sufficiency for all larger polygons is not independently proved here.
+
+**N036.3 — The page’s objections and slips.** The annotations read `faux pour n=3!`; `OPS Γ non convexe (sinon c’est clair grâce à --)`; underlined `lemme X`; `ambigu` beside `triangle`; underlined `faux`; `il faut prendre s comme dans le|la dém du lemme VIII (pas son énoncé!)`; a cancelled two-word note that remains unreadable; `→|est non vide?`; and `dire avant! (et tu as au lemme|tu as un lemme|tu auras lemme VIII)`. The first proof reference really has VIII despite the marginal correction to X. The main text’s `et et`, `mésure`, `ennoncée`, and missing accents are kept. No inference is made from what the referred lemmas should contain.
+
+**N036.4 — Pagination and material.** Manuscript number IX, ruled above and below, appears at upper right; archive sheet number 35 is a comment only. Lemme XI is the heading. There is no date or total page count. Main fair-copy ink, darker corrections and pale pencil-like annotations are distinguished, but no named author is assigned from these strokes alone.
+
+## Scan 037
+
+The page continues the nonempty $\mathring T\cap\Gamma$ case of the preceding proof. It forms a hull, invokes IV to choose a visible point and V for an edge, introduces an auxiliary triangle, and concludes with a corollary about two polygon vertices visible through the complement of $\Gamma$, with their joining open interval on $\partial E(\Gamma)$. The parenthetical claim beginning “Noter aussi que” is reported, not independently proved.
+
+The ink settles $y\notin S(\partial C)$ by a crossing stem, and $S'(\Gamma)$ by a separate raised tick. The reinforced hull C and ordinary C are preserved as different visible forms. The role of the pierced oval does not eliminate the graphic $\phi|\varnothing$ ambiguity. The conditional remains $z',z''\in[s',s'']$, although the proposed edge is $[z,z']$ and $z''$ was just chosen in $\mathring T$. The overworked endpoint prime and $s|S$ are not repaired from the geometry.
+
+Two limited consistency checks were made. After the added closed brackets are read as closing the base interval, its endpoints $s',s''\in\Gamma$ belong to the hull-defining set and hence its convex hull. The next written inclusion excludes both endpoints via $[s,s']\cup[s,s'']$, so it is incompatible with that amended definition. Separately, $z''\in\mathring T$ cannot also lie on the base $[s',s'']$ of the nondegenerate triangle. These observations identify local tensions; they do not verify or refute the whole visibility lemma and do not supply a corrected transcription.
+
+The objections and suggestions are preserved: “!!” at the opening and corollary; “ce n'est \unsure{pas un|pas une} ``\unsure{ens.|env.} conv.''!”; and “compliqué, prendre \unsure{un|le|les} sommet de \unsure{$\Gamma\in$|$\in\Gamma$} \deleted{\unsure{$\mathring T$|$\alpha$}} \unsure{et} qui est à dist. max. de la droite \deleted{\unsure{$\Delta$}} $(s's'')$”. The thin leaders and branch are drawn. The source has the nonstandard apostrophe “il'y a”, absent accents in “Considerons”, “interieur”, “considerons” and “demonstration”, and the ending “c.q-f.d.”.
+
+Manuscript page X is ruled above and below; archive number 36 is recorded as a comment. No date or page-count statement occurs. The main fair-copy ink, dark corrections and pencil annotations are distinguished without naming their writers. H supplies an editorial summary and marginal readings, so six omitted main-text blocks are counted without treating its summary as literal prose.

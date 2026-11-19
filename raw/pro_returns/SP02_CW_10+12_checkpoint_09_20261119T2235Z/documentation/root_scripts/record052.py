@@ -1,0 +1,41 @@
+import sys,json
+from pathlib import Path
+sys.path.insert(0,'SP02_CW_10+12/scripts')
+from root_record import Record
+r=Record('B10-03',10,52);ch=r.change
+r.edit('est intersection des',r'est \unsure{intrésection|intersection} des')
+r.edit('est noethérien',r'est n\oe{} thérien')
+r.edit(r'\handwritten{\sum\varphi}_{\unsure{j|i}}',r'\handwritten{\sum\varphi}_j')
+r.edit(r'\unsure{$S$|$k$}',r'$S$')
+r.edit(r'\unsure{f ltrante|filtrante}','f ltrante')
+r.edit('Alors, chaque algèbre','Alors, cahque algèbre')
+r.edit(r"est la $k$-algèbre d'un",r"est la \begin{tikzpicture}[x=1cm,y=1cm,baseline=(n.base)]\node (n) at (0,0) {$k$};\draw (-.12,.3)--(-.01,.38)--(.03,.4);\end{tikzpicture}-algèbre d'un")
+r.edit(r'\lim}V_i',r'\lim}V_{\begin{tikzpicture}[x=1cm,y=1cm,baseline=(n.base)]\node[inner sep=0pt] (n) at (0,0) {\scriptsize $i$};\draw (.01,-.04)--(.19,-.04)--(.15,-.09);\end{tikzpicture}}')
+ch('manuscript number','20','omitted','20','Looped 2 with low baseline turn, followed by narrow oval 0.','number','omission')
+ch('top paragraph deletion state','deleted','live text with cancellation described in note','deleted','Several long oblique strokes cross the complete paragraph.','top','deletion state (struck given live or live given struck)','high',False,True,False,True)
+ch('top intersection spelling','intersection',r'\uncertain{intrésection}',r'\unsure{intrésection|intersection}','After int the overworked pair has an r-like shoulder then e with a short upper stroke; the overlapping earlier layer prevents exclusion of er.','intersection','misread word','medium',True,True,True)
+ch('top noetherian spelling','noethérien','noethérien',r'n\oe{} thérien','Joined oe shape is followed by a full character-width space before thérien.','noeth','abbreviation expanded or spelling modernised','high',True,True)
+ch('top reference prefix',r'\deleted{\unsure{I}}','I',r'\deleted{\unsure{I}}','A narrow typed upright is covered by dense short cancellation strokes; the lower serifs remain.','I','deletion state (struck given live or live given struck)','low',False,True)
+ch('lemma underlining','entire statement underlined','bold heading; plain statement','entire statement underlined','Continuous separate rules run below all three lines.','lemma','other')
+ch('lemma symbol after A=',r'\unsure{\mathscr{A}|\mathscr{O}}',r'\mathcal{A}',r'\unsure{\mathscr{A}|\mathscr{O}}','A lower open bowl joins an elevated loop and descending right stroke; the ornamental A/O distinction remains uncertain.','A','misread symbol or index','medium')
+ch('lemma end punctuation','no terminal period','period','no terminal period','The final G reaches the right edge; no terminal dot is visible within the scan.','lemma','other')
+for place,old,new,crop in [('lemma insertion','un sous-k-espace vectoriel de dimension finie','une sous-k-algèbre de type fini','lemma'),('proof insertion','sous-espace vectoriel','sous-k-algèbre','proof1')]:
+ ch(place,'deleted old phrase with inserted new phrase','struck old phrase; new phrase on baseline, position described in note','deleted old phrase with inserted new phrase','The new phrase is typed directly above the x-cancelled old phrase: '+new+'.',crop,'other')
+for place,word,crop in [('HA1 reference','Exp.','proof1'),('HA2 reference','Exp','proof2'),('bottom reference','Exp.','bottom')]:
+ ch(place,word+' deleted',word+' live',word+' deleted','A separate oblique dark stroke crosses the printed reference prefix.',crop,'deletion state (struck given live or live given struck)')
+ch('second HA1 right-hand phi index',r'\unsure{j|i}','j','j','Full lower curved descender and dot are visible; the foot descends below the other typed indices.','j','misread symbol or index','high',True,False,False,True)
+ch('proof paragraph layout','one paragraph, all formulas inline','extra paragraphs and second HA1 formula displayed','one paragraph, all formulas inline','No paragraph spacing or fresh indent appears at Soit or Soit alors; the second HA1 equality shares its line with et on en déduit.','proof1; proof2','other')
+ch('proposition underlining','entire statement underlined','bold heading; plain statement','entire statement underlined','All three lines have continuous lower rules.','proposition','other')
+ch('cancelled proposition opening',r'Soit G un \unsure{S|k}-groupe affine',r'\struck{\ill{}}','Soit G un S-groupe affine','Typed letter traces remain between the repeated x strokes; the old base letter has an upper right curve and lower bowl with capital serifs.','proposition; old-S','readable ink left as \\ill{}','medium',True,True,True)
+ch('proposition punctuation','A. . Alors','A. Alors','A. . Alors','Two distinct round periods occur with a blank space between them.','proposition','other')
+ch('bottom filtrante spelling',r'\unsure{f ltrante|filtrante}','filtrante','f ltrante','Between f and l there is an empty character position; no stem or dot of an i is visible.','f-ltrante','abbreviation expanded or spelling modernised','high',True,True)
+ch('bottom cahque spelling','chaque',r'\uncertain{cahque}','cahque','The second letter is a with a right upright, followed by a tall h and q descender.','chaque','misread word','high',True,True,True)
+ch('bottom clipped character',r'\unsure{G}','omitted',r'\unsure{G}','Only a small upper arch is inside the page boundary; its lower half is outside the image.','G','omission','low')
+ch('short tick above last k-algèbre','omitted','omitted','TikZ oblique tick above k','A short dark rising stroke has a thicker upper-right end above the initial k.','tick','drawing or diagram','medium',True,True)
+ch('pen stroke on final index i','i only','i only','i with small rightward hooked baseline stroke in TikZ','A dark added stroke extends the baseline of i to the right and turns downward at its end.','limit','drawing or diagram','high',True,True)
+for element,pos,words in [('052-tick','above last k-algèbre','short rising tick'),('052-index-stroke','final V_i','rightward hooked baseline stroke')]:r.r['inventory_extra'].append(dict(scan='10:052',sheet_kind='typescript',hand='his hand',element=element,kind='drawing',position=pos,first_words_or_objects=words,transcribed='yes'))
+for p,rd,alt,co in [('top spelling','intrésection','intersection','medium'),('top cancelled reference prefix','I','','low'),('lemma algebra symbol',r'\mathscr{A}',r'\mathscr{O}','medium'),('bottom clipped character','G','','low')]:r.doubt(p,rd,alt,co)
+r.notation('ornamental algebra symbol',r'\mathscr{A}|\mathscr{O}','10/052 lemma A=…(G)','unresolved')
+r.r['crops']=json.loads(Path('work/crops052.json').read_text())
+r.r['inspection_note']='Whole page and both halves read in order, then all enlarged text/formula blocks, all C doubts and C/H differences. Every index, arrow, tensor sign, reference and insertion/cancellation checked; small terminal strokes separately enlarged. GL is uppercase in both top occurrences. One-f G_af, tel after inserted feminine phrase, la before cancelled masculine phrase, two periods and final V_i are retained as written. The curved stroke after fermée belongs to the long cancellation, not an added parenthesis. No context or mathematical check.'
+r.save('work/record052.json')

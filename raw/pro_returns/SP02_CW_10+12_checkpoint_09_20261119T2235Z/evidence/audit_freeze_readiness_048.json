@@ -1,0 +1,312 @@
+{
+  "report_saved_utc": "2026-11-19 20:35:21 UTC",
+  "review_type": "Read-only audit/freeze helper readiness review at the48-record first-pass snapshot",
+  "snapshot": {
+    "checked_utc": "2026-11-19 20:31:08 UTC",
+    "record_count": 48,
+    "map_count": 106,
+    "map_cote_counts": {
+      "10": 84,
+      "12": 22
+    },
+    "last_finalized": "B10-06_10_scan081",
+    "next_page": "B10-06_10_scan082",
+    "record_map_prefix": true,
+    "done_events": 48,
+    "done_order_matches": true,
+    "issues": [],
+    "counts": {
+      "changes": 1444,
+      "against_C": 610,
+      "against_H": 1399,
+      "inventory_rows": 2088,
+      "crop_recipes": 1324,
+      "records_with_audits": 0
+    },
+    "inventory_duplicate_ids": [],
+    "audit_start_events": 0,
+    "audit_completion_events": 0,
+    "audit_sessions": [],
+    "freeze_manifest_present": false,
+    "freeze_marker_present": false,
+    "context_marker_present": false,
+    "report_counts": {
+      "inventory": {
+        "rows": 2088,
+        "expected_rows": 2088,
+        "header_matches": true
+      },
+      "collation": {
+        "rows": 1399,
+        "expected_rows": 1399,
+        "header_matches": true
+      }
+    },
+    "combined": {
+      "bytes": 192341,
+      "sha256": "17c4625f06f2a16a26b64ef58e2a66fefa936088317acb5636a08512e770f16c",
+      "equals_current_ordered_pages": false,
+      "expected_current_bytes": 200933,
+      "expected_current_sha256": "694e046fdf469f6a51f7d08020458edc06905aafd6cf55f15594b6247fd7fa31",
+      "last_assembly_present_pages": 46
+    },
+    "helper_hashes": {
+      "record_page.py": "fbf4b9880706e36455ee1a554a16a3f3c043d2303b79902d71ceb482484c90ee",
+      "record_audit.py": "53a97182404e4b8168fccb4739c42d62bd8bc9e146a601964f5b49cec43efeef",
+      "freeze_transcription.py": "0d0be588238e9df6d77c9ea20001b33564747e57ff9551ae146ff7d67719835f",
+      "assemble_and_index.py": "4d16072985097a8aa4b623b3c2b51e05baa0f92282b22bc7a49132bbd7eb5dc0",
+      "validate_tex.py": "2a7ea5e1bd32176b7e6d286330c49dc79603e8feb009265dd41b0ee548cf0033"
+    },
+    "helper_syntax_issues": [],
+    "record_page_snapshot_changed": [],
+    "progress_snapshot_changed": false,
+    "scope": "Record fields and event metadata only; page bytes hashed/concatenated without displaying text. No witness prose, notes, context, or image content opened; no audit/freeze command executed."
+  },
+  "additional_metadata_checks": {
+    "checked_utc": "2026-11-19 20:33:45 UTC",
+    "reviewed_records": 48,
+    "duplicate_json_and_record_timestamp_issues": [],
+    "recognized_log_events": 48,
+    "recursive_record_count": 48,
+    "recursive_page_count": 48,
+    "nested_record_files": [],
+    "nested_page_files": []
+  },
+  "synthetic_validation_evidence": {
+    "scope": "Pure in-memory synthetic fixtures only. No task records, sessions, progress events, or files were changed. No begin/finalize/freeze command was invoked.",
+    "invalid_crop_accepted_by_build_revision": true,
+    "invalid_crop_rejected_only_by_later_metadata_validator": true,
+    "inventory_scan_mismatch_survives_build_and_metadata_validation": true,
+    "unsupported_inventory_patch_field_survives": true
+  },
+  "protocol": {
+    "audit_begin": {
+      "command": "python SP02_CW_10+12/scripts/record_audit.py --begin PAGE_KEY",
+      "current_gate": "All mapped page and record paths exist; prior mapped records have an audits list; no started/commit_pending session; current page hash matches record; no freeze/context marker.",
+      "event": "scan NNN audit started YYYY-MM-DD HH:MM:SS UTC cote=C audit_id=AUDIT_ID",
+      "effects": "Actual start timestamp, baseline page/record hashes, immutable before snapshots and session. Does not mark a page audited."
+    },
+    "audit_finish": {
+      "preview_command": "python SP02_CW_10+12/scripts/record_audit.py --record work/audit_record.json",
+      "commit_command": "python SP02_CW_10+12/scripts/record_audit.py --record work/audit_record.json --finalize",
+      "required_payload": [
+        "audit_id",
+        "baseline_page_sha256",
+        "audit_reading_complete=true",
+        "audit_inventory_confirmed=true"
+      ],
+      "event": "scan NNN audited YYYY-MM-DD HH:MM:SS UTC cote=C audit_id=AUDIT_ID",
+      "effects": "Exact edits apply to current consolidated page; unchanged decisions/metadata persist; full root-supplied locus revisions and explicit removals update current projections; before/after snapshots and root payload remain in immutable history; completion line follows successful publication."
+    },
+    "audit_recovery": {
+      "status_command": "python SP02_CW_10+12/scripts/record_audit.py --status AUDIT_ID",
+      "resume_command": "python SP02_CW_10+12/scripts/record_audit.py --resume AUDIT_ID",
+      "conditions": "Only previously authorized prepared revisions with root declarations and coherent before/after states. Recovery retains original audit timestamps and logs actual recovery time. Missing start may be restored from session; conflicting/duplicate starts or completion without any start require explicit reconciliation."
+    },
+    "freeze": {
+      "page_count": 106,
+      "cote_counts": {
+        "10": 84,
+        "12": 22
+      },
+      "hash_file_count": 107,
+      "checks": [
+        "Exact recursive mapped page/record filename sets and valid unique map identities",
+        "Current page hashes and record identities",
+        "Every session completed and matched to unique record audit IDs",
+        "Root completion declarations and all immutable history files present",
+        "Current page and record bytes identical to latest immutable audited revision",
+        "First done events and first completed audits in map order; all first done events precede first audit start; every session has exact matching timestamped events; no open or overlapping audit",
+        "Recognized event times never decrease; corrected lines ignored",
+        "Combined bytes exactly equal ordered page bytes without normalization"
+      ],
+      "preview_command": "python SP02_CW_10+12/scripts/freeze_transcription.py --freeze",
+      "commit_command": "python SP02_CW_10+12/scripts/freeze_transcription.py --freeze --write",
+      "commit_event": "transcription frozen YYYY-MM-DD HH:MM:SS UTC",
+      "hash_events": [
+        "freeze hashes begin MANIFEST_SHA256 ACTUAL_UTC",
+        "SHA256 FILE_SHA256 RELATIVE_PATH (107 entries)",
+        "freeze hashes end MANIFEST_SHA256"
+      ],
+      "context_behavior": "No context access or context-opened event is performed. A freeze or context-opened marker blocks another freeze. Root may open/log context after a committed freeze."
+    },
+    "verification": {
+      "read_only_command": "python SP02_CW_10+12/scripts/freeze_transcription.py --verify",
+      "logging_command": "python SP02_CW_10+12/scripts/freeze_transcription.py --verify --write",
+      "behavior": "Checks all107 frozen file hashes/sizes and unexpected page files against the committed manifest/hash block. Logs actual success/failure only with --write, including after context opens. Does not revalidate audit history or modify transcription."
+    }
+  },
+  "helper_findings": [
+    {
+      "id": "AUDIT-1",
+      "category": "validation_gap",
+      "helper": "scripts/record_audit.py",
+      "functions": [
+        "build_revision",
+        "finalize_audit"
+      ],
+      "lines": [
+        173,
+        289,
+        319
+      ],
+      "summary": "The non-finalizing audit preview returns before full record metadata/render validation.",
+      "evidence": "A pure in-memory fixture with an out-of-bounds crop passes build_revision and fails only the later record metadata validator. Actual finalization stages rp.render, so it rejects this case before publishing a revised page.",
+      "impact": "A successful preview is weaker than a successful commit preflight.",
+      "recommendation": "Run complete record metadata and projection validation before returning the non-writing preview."
+    },
+    {
+      "id": "AUDIT-2",
+      "category": "confirmed_validation_defect",
+      "helper": "scripts/record_audit.py",
+      "functions": [
+        "build_revision"
+      ],
+      "lines": [
+        222,
+        236
+      ],
+      "summary": "Audit inventory patches can change a row to another scan and retain unsupported fields.",
+      "evidence": "Pure in-memory fixtures with a mismatching scan identity and an unsupported inventory field pass both build_revision and validate_record_metadata.",
+      "impact": "A root-authored patch with a mistaken scan label or field name can survive validation and produce misidentified or silently ignored inventory data. No current record has this defect.",
+      "recommendation": "Restrict audit patch/addition fields and validate every resolved row's scan identity against its page record."
+    },
+    {
+      "id": "AUDIT-3",
+      "category": "gate_scope_limit",
+      "helper": "scripts/record_audit.py",
+      "functions": [
+        "require_order",
+        "begin_audit"
+      ],
+      "lines": [
+        44,
+        57,
+        125,
+        156
+      ],
+      "summary": "Audit begin checks mapped page/record existence and earlier records' audit lists, rather than the complete first-pass event trail.",
+      "evidence": "require_order does not inspect done events, exact recursive filename sets, or completed earlier session/log evidence. The freeze helper validates those later.",
+      "impact": "The current 48-page snapshot is correctly blocked by 58 missing mapped pages, but begin is a weaker metadata gate than eventual freeze.",
+      "recommendation": "Before the first real audit, validate all first-pass completion events and page identities; consider sharing the stronger gate in the helper."
+    },
+    {
+      "id": "FREEZE-1",
+      "category": "confirmed_reporting_defect",
+      "helper": "scripts/freeze_transcription.py",
+      "functions": [
+        "freeze",
+        "main"
+      ],
+      "lines": [
+        283,
+        315,
+        431,
+        432
+      ],
+      "summary": "An exception is always reported with written=false, even after partial freeze preparation writes.",
+      "evidence": "The manifest and hash block can be written before the final readiness recheck raises; main then prints written=false.",
+      "impact": "The error JSON can misdescribe an existing uncommitted manifest/hash block. The final freeze marker is still withheld.",
+      "recommendation": "Report preparation writes separately from committed freeze state; preserve and inspect partial preparation on error."
+    },
+    {
+      "id": "FREEZE-2",
+      "category": "retry_identity_limit",
+      "helper": "scripts/freeze_transcription.py",
+      "functions": [
+        "collect_ready_state",
+        "freeze"
+      ],
+      "lines": [
+        259,
+        290,
+        294,
+        311,
+        315
+      ],
+      "summary": "Uncommitted-manifest reuse compares transcription files, ordered identities, and latest-audit summaries but not the prior full state fingerprint.",
+      "evidence": "The state fingerprint is checked within one freeze attempt but is not stored in the manifest. A later retry revalidates current evidence without comparing its full byte fingerprint to the earlier attempt.",
+      "impact": "This is a narrower retry identity guarantee than byte-identical audit evidence across attempts. No such change exists in the current unaudited snapshot.",
+      "recommendation": "If retries must pin all recorded audit evidence, persist and compare the relevant fingerprint in the manifest."
+    }
+  ],
+  "current_readiness": {
+    "all_existing_records_consistent": true,
+    "remaining_first_pass_pages": 57,
+    "audits_completed": 0,
+    "audit_begin_currently_ready": false,
+    "freeze_currently_ready": false,
+    "reason": "Updated49-page prefix through082; no audits yet. The original48-record metadata review and separate082QA are both retained."
+  },
+  "mutations": {
+    "evidence_reports_only": true,
+    "page_records": false,
+    "pages": false,
+    "helpers": false,
+    "progress_log": false,
+    "audit_or_freeze_commands_executed": false,
+    "packaging": false,
+    "uploads": false
+  },
+  "post_snapshot_scan082_addendum": {
+    "checked_utc": "2026-11-19 20:36:52 UTC",
+    "page": "B10-06_10_scan082",
+    "metadata_qa_pass": true,
+    "page_bytes": 5674,
+    "counts": {
+      "edits": 27,
+      "changes": 53,
+      "against_C": 27,
+      "against_H": 45,
+      "crops": 53,
+      "inventory": 99,
+      "inventory_all_yes": true
+    },
+    "image_headers": [
+      {
+        "source": "source/SP02_CW_10+12_scans/B10-06_10_scan082.jpg",
+        "width": 1687,
+        "height": 2157,
+        "file_bytes": 919486
+      }
+    ],
+    "work_json_comparison": {
+      "path": "work/record082.json",
+      "sha256": "c54899131b2589855c347a6632a6ad86ee4e64111ee65068c00a60a73d6327af",
+      "root_fields_checked": 16,
+      "root_field_differences": [],
+      "derived_final_fields": [
+        "inventory_resolved",
+        "key",
+        "map",
+        "page_sha256",
+        "recorded_utc",
+        "source_C_sha256"
+      ],
+      "unchanged_during_check": true
+    },
+    "completion": {
+      "finalized_records": 49,
+      "map_prefix": true,
+      "last_page": "B10-06_10_scan082",
+      "next_page": "B10-06_10_scan083",
+      "done_events": 49,
+      "done_order_matches": true,
+      "remaining_first_pass_pages": 57,
+      "expected_current_combined_bytes": 206607,
+      "expected_current_combined_sha256": "baaffa96c003f8a928dab0a76fc167bef524f4c4afcd2d15a0784bd68c1d6ddc"
+    },
+    "actual_combined_bytes": 192341,
+    "actual_combined_sha256": "17c4625f06f2a16a26b64ef58e2a66fefa936088317acb5636a08512e770f16c",
+    "combined_matches_current49_pages": false
+  },
+  "readiness_at_48_record_snapshot": {
+    "all_existing_records_consistent": true,
+    "remaining_first_pass_pages": 58,
+    "audits_completed": 0,
+    "audit_begin_currently_ready": false,
+    "freeze_currently_ready": false,
+    "reason": "Expected incomplete first pass:48 of106 pages; no audits yet. Current combined file is the earlier46-page checkpoint assembly."
+  },
+  "current_readiness_as_of": "2026-11-19 20:36:52 UTC"
+}
