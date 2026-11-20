@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "cote": "142",
+  "recorded_at_utc": "2026-11-20 19:13:43 UTC",
+  "reviewer": {
+    "agent": "reader_c",
+    "model": "GPT-6 Astra Pro",
+    "effort": "not exposed",
+    "role": "Independent apparatus consistency reviewer"
+  },
+  "review_kind": "Read-only metadata and editorial consistency QA",
+  "scope": {
+    "work_root": "/workspace/scratch/2ffd329dab39/SP72_C13_142_work",
+    "description": "Bounded review of the apparatus for required deliverable schemas and fields, relative file references, audit-revised descriptions, certainty-only versus substantive classification, and reconciliation of metadata counts. The review did not reassess manuscript readings.",
+    "materials_reviewed": [
+      "documentation/task_prompt.md: applicable deliverable schemas and method requirements",
+      "scripts/validate_delivery.py: read as source only",
+      "scripts/build_deliverables.py",
+      "scripts/package.py",
+      "scripts/normalize_report_metadata.py",
+      "documentation/decided/scan077.json through scan100.json: apparatus metadata, with targeted reading of notes, hand logs, and accepted audit descriptions",
+      "Root-level deliverable Markdown, TSV, CSV, and transcription files",
+      "documentation/error_category_index.tsv",
+      "documentation/feedback_additions.md",
+      "Crop manifest and file-path existence metadata, without opening image contents"
+    ],
+    "limits": [
+      "The last page audit was still pending when the reviewed metadata snapshot was taken.",
+      "The root's completed in-place uncertainty-macro coverage check was not repeated.",
+      "The final all-audits validator gate was reserved for root.",
+      "No optional stylistic rewriting or broader review was undertaken."
+    ]
+  },
+  "checks_performed": [
+    {
+      "check": "Required deliverable table schemas",
+      "result": "Required TSV and CSV headers were checked against the supplied task requirements; no missing, extra, or misnamed required column was found."
+    },
+    {
+      "check": "Comparison metadata completeness",
+      "result": "All current comparison objects had the required readings, flags, category, kind, confidence, ink evidence, bounding box, crop reference, consequential flag, and mathematical-note field. Comparison identifiers were unique."
+    },
+    {
+      "check": "Canonical metadata values",
+      "result": "Collation kinds, inventory kinds, confidence values, decision values, and check-event types matched the prescribed categories. Repeated statement identifiers in check events represented separately attributed checks, not duplicated event records."
+    },
+    {
+      "check": "Decisions and certainty",
+      "result": "The 315 decision objects comprised 175 MARKS decisions and 140 supplementary decisions. Decision identifiers were unique. No settled decision contained an unresolved unsure or illegible reading. No C-change flag was found whose only difference was removal of uncertainty around the same preferred reading."
+    },
+    {
+      "check": "Substantive counts and exclusions",
+      "result": "The 760 comparison objects yielded 756 counted places. The four excluded objects had both witness-change flags false and explicit exclusion or withdrawal explanations. C and H flag totals reconciled to the snapshot below."
+    },
+    {
+      "check": "Relative file references",
+      "result": "Relative Markdown targets in the checked root-level and documentation Markdown files resolved. Referenced current comparison crop files existed and were recorded in the crop manifest. This was an existence and metadata check, not an image inspection."
+    },
+    {
+      "check": "Audit-revised descriptions",
+      "result": "Notes and hand-log descriptions were compared with accepted audit dispositions at revised places. The three concrete findings below were sent to root; root confirmed their correction."
+    }
+  ],
+  "findings": [
+    {
+      "id": "QA-C-01",
+      "location": "scripts/build_deliverables.py; generated SP72_C13_142_doubts.md certainty-only section",
+      "issue": "The heading 'Resolved certainty-only places' incorrectly included entries that retained uncertainty: scan082 M0335 and M0341, the second connai-t occurrence on scan086, and scan096 M0428.",
+      "effect": "Presentation contradicted the recorded uncertainty status; substantive classification and counts were already correct.",
+      "root_confirmed_disposition": "Root changed the heading to 'Certainty-only decisions' and the explanation to cover decisions that resolve, narrow, or retain uncertainty, with unresolved cases also represented in the remaining-doubt table. No page, classification, or count change.",
+      "confirmation_basis": "Direct root message confirming the builder change."
+    },
+    {
+      "id": "QA-C-02",
+      "location": "documentation/decided/scan098.json notes[6]; generated SP72_C13_142_notes.md",
+      "issue": "An earlier unqualified sentence said 'Pourtant is cancelled', contradicting the accepted second reading, revised row 098-36, decision, and inventory.",
+      "effect": "The notes asserted a cancellation state that the final transcription leaves uncertain with live pourtant preferred.",
+      "root_confirmed_disposition": "Root corrected the sentence in both the primary and decided scan098 notes to state the live-first/deleted-alternative reading and the shared-t-crossbar reason.",
+      "confirmation_basis": "Direct root message confirming both note corrections."
+    },
+    {
+      "id": "QA-C-03",
+      "location": "documentation/decided/scan094.json hand_log[5].scope; generated SP72_C13_142_hand_log.md",
+      "issue": "The scope quotation retained 'comme endom.' although the accepted audit removed the terminal point at that occurrence; the next hand-log entry correctly described it as unpointed.",
+      "effect": "Two adjacent hand-log entries disagreed about the literal punctuation of the same occurrence.",
+      "root_confirmed_disposition": "Root changed the exact scope quotation in both primary and decided reports to 'Equals before comme endom; …'. Other occurrences, including endom. ord., were left unchanged.",
+      "confirmation_basis": "Direct root message confirming the exact quotation correction."
+    }
+  ],
+  "counts_snapshot": {
+    "label": "Pre-final-scan100 snapshot; these are not asserted to be final delivery totals",
+    "stage": "Scan099 had been consolidated; the final scan100 audit was still pending.",
+    "comparison_objects": 760,
+    "counted_places": 756,
+    "excluded_comparison_objects": 4,
+    "changes_against_C": 258,
+    "changes_against_H": 633,
+    "MARKS_decisions": 175,
+    "supplementary_decisions": 140,
+    "total_decisions": 315,
+    "inventory_elements": 416,
+    "check_events": 20
+  },
+  "conclusion": "No further concrete apparatus contradiction, broken checked relative reference, or missing required metadata field was found within this bounded review. The three reported findings received root-confirmed dispositions.",
+  "activity_declaration": {
+    "images_reread_or_viewed": false,
+    "crops_created_or_recreated": false,
+    "OCR_performed": false,
+    "external_research_performed": false,
+    "TeX_compilation_performed": false,
+    "all_audits_validator_run": false,
+    "mathematical_check_performed": false,
+    "files_changed_during_review": [],
+    "record_creation": "This QA record was written only after root explicitly authorized it; no other file was changed for that request."
+  }
+}

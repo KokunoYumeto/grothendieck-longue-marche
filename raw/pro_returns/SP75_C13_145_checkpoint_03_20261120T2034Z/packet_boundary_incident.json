@@ -1,0 +1,37 @@
+{
+  "utc": "2026-11-20 19:42:57 UTC",
+  "issue": "Default CSV quote handling absorbed raw difference rows after a literal quotation token in scan024 row12. The source is literal TSV, not CSV with quoted multiline cells.",
+  "old_parsed_total": 894,
+  "correct_literal_TSV_total": 1017,
+  "impact": "Only scan024 and later counts were affected. All previously finalized page coverage arrays match literal-TSV page counts. Scan024 packet was replaced with its35 rows before the report was finalized.",
+  "checked_finalized_pages": [
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+  ],
+  "accidental_exposure": {
+    "reader": "/root/reader_b",
+    "material": "Difference-list rows only for scans025,026,027; no images, witnesses or reports for those pages.",
+    "must_not_blind_audit": [
+      25,
+      26,
+      27
+    ]
+  },
+  "repair": "Source parsing now uses csv.QUOTE_NONE; output TSVs retain ordinary CSV quoting so multiline independent readings are safe. No scans or transcriptions were changed."
+}

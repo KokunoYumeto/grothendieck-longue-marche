@@ -1,3 +1,0 @@
-# Scan015 shared source-row reminder
-
-The packet contains21 actual rows under Doubtful readings. Three rows each name two local questions: source row1 (heading predecessor; word Version), row9 (cancelled parenthetical; overwritten relation), and row21 (component abbreviation; first Sigma index). Keep the original row identity and report each local ink decision. The seven Notation rows, three Slips retained rows and seven Abbreviations rows remain in their source categories; a reader may still report every additional ink disagreement there. This note supplies no ink reading and is sent identically to all three independent readers.

@@ -1,0 +1,5 @@
+# Main-reader adjudication — 143_scan034
+
+The original scan was viewed once in its supplied orientation and all three existing rotated crops were inspected. The printed numerical list and blue annotations are upside down relative to the pencil 33. The two unit endings are small loops and remain m/s|m/o. The heavily retraced U subscript supports m but no independently legible prior character. The written value 25.939 is not completed to the separate stack's 25.9398.
+
+The first stack's ambiguous-looking post-decimal upright is retained as 1, distinguished from the broader-topped crossed 7 and corroborated by the reader's explicitly logged exact subtraction. No arithmetic operator or column description is supplied where the source has none. The first reader's full row collation found no change against C; H is absent. The allowed inventory category list is used for the computer printout, and print/unnamed blue/unnamed pencil hands remain distinct. The independent second reader will inspect the complete sheet again after all first readings are accepted.

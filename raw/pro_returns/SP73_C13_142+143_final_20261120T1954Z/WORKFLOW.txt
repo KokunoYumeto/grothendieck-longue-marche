@@ -1,0 +1,31 @@
+SP73_C13_142+143 — diplomatic collation work package
+
+Authoritative deliverables are pages/*.tex and SP73_C13_142+143_transcription.tex,
+plus the named reports, decisions.tsv, CHECK_EVENTS.tsv, and progress.log.
+The combined transcription is a fragment and uses the supplied PREAMBLE.tex;
+the source preamble itself is intentionally not copied into this package.
+
+readings/ contains each first reader's proposed page and evidence record, including
+main-reader adjudications made before acceptance. audits/ contains the independent
+second readings. state/*_accepted.json is the structured source used to regenerate
+the current reports; state/*_main_review.json documents personal main-reader review.
+A proposed reading in readings/ or audits/ is not authoritative over pages/.
+
+crops/ contains enlarged source details and their original pixel boxes are recorded
+in the evidence files and reports. Halves and original attachments are excluded.
+The supplied scans and texts must be restored separately if the environment is lost.
+No OCR, external research, or LaTeX compilation is used in this workflow.
+
+scripts/prepare_page.py creates each page's native overlapping halves once and its
+single-page packet. scripts/make_crop.py makes one crop from original coordinates
+and refuses to overwrite a saved crop. accept_page.py and accept_audit.py require
+explicit saved main-reader adjudication records. build_reports.py regenerates the
+reports from accepted records. make_checkpoint.py permits a new numbered ZIP only
+after 45 minutes from the start or preceding checkpoint, excludes source material
+and previous ZIPs, and never overwrites earlier checkpoints. Uploading that ZIP is
+a separate persistence operation. Checkpoint numbers and timing are in state/.
+
+All dates and progress timestamps in this package are UTC. Model effort settings
+are not exposed in this environment and are reported as such, rather than guessed.
+Mathematical check events describe only the checks actually performed; transcription
+and comparison of a formula are not classified as proof verification.

@@ -1,0 +1,9 @@
+# Independent image-only second reading
+
+You are assigned a page you have NOT read in the first pass. Read only its supplied original image and `work/second/<page>_boxes.tsv`, plus this protocol and the supplied PREAMBLE.tex for macro syntax. Do NOT open either witness, any page draft, final page, first.tsv, report, notes, notation table, first-pass crops, or other readers' work for this page. The box list and original ink are your only reading evidence. Do not infer a reading from a box kind.
+
+For each box, make one crop from the original pixels using Pillow. Save to `work/crops/<page>_second_<box>.png`, scale with LANCZOS to roughly 2200–2800 pixels wide; autocontrast and rotate a slanted passage upright if needed. View the crop. Read every word/symbol in the designated region, including cancellations, inserted text, underlines, numbers and punctuation. Crops can include adjacent context, but transcribe the main coherent passage represented by the box. Preserve ambiguity honestly with unsure. No OCR, no web, no TeX compilation. Do not recrop a decided box.
+
+Use the standard supplied macros: deleted, inserted, margin, uline, uuline, unsure{reading|alternative}, illegible{n}; mathematics exactly as ink, do not expand abbreviations or silently repair a mathematical slip. Do not use illegible for an identifiable mathematical symbol. Only text physically unreadable may be illegible.
+
+Write `work/second/<page>_second.tsv` with columns `box`, `reading`, one row per box in box-list order. Write brief ink observations and uncertainties in `work/second/<page>_second_notes.md`, without comparisons (you have no first reading). Your readings must be written before seeing any comparison. Do not modify first.tsv or box lists. Return counts/paths and wait for the next assignment. Root will compare by script and adjudicate every difference on the crop.

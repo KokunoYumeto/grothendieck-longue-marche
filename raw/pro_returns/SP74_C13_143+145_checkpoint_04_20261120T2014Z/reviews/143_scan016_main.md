@@ -1,0 +1,7 @@
+# Main adjudication: 143_scan016
+
+Main inspected original once, all seven reader crops, and five new main crops. The opener has on aura; first definition label has d, tall f, then a low continuation compatible with n. The small extra groupoid index is f/phi-shaped, not securely accented e. Its ambiguity is retained. Every point argument, prime, tilde and lower pi-one was inspected.
+
+The cancelled initial Comme remains partially obscured. The next cancelled line has a definite opening square bracket before lower-case les opérations. The le groupoïde insertion sits before Pi-one. The action diagram has two vertical equality signs, both rightward arrowheads, and both tildes above the shafts, directly below the g label/question mark. The question mark is the author's unresolved construction prompt, retained.
+
+B_g has two low dark dots after its subscript, potentially a colon but slightly diagonal; this is not securely punctuation. The E-prime to G-prime shaft ends in a rounded blot without a secure pointed head, so a bare shaft is preferred with uncertainty. The final first B_g is heavily retraced but not distinctly struck. The parenthetical line begins with a round parenthesis and ends with a square bracket, with I clearly written where J would match the preceding torsor discussion; I is retained. On note que l'on a is legible. Both final wedge labels are below their wedges. Bottom pencil numeral is 15; no date.

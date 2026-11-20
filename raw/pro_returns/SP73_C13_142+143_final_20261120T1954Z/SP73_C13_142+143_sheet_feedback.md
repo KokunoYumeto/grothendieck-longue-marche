@@ -1,0 +1,944 @@
+# Feedback on the error sheet
+
+Counts refer to distinct substantive disagreement locations recorded in the changes log, each assigned one primary error-sheet category. They are not counts of every word or symbol on the pages and do not establish an error rate. Locations can differ from C, H, or both. Certainty-only decisions are counted separately in decisions.tsv.
+
+| Category | Recorded places | Against C | Against H |
+| --- | --- | --- | --- |
+| 1. Symbols and indices | 169 | 50 | 157 |
+| 2. Words | 121 | 40 | 96 |
+| 3. Omissions | 95 | 34 | 87 |
+| 4. Drawings and diagrams | 230 | 217 | 86 |
+| 5. Readable ink left as illegible | 43 | 2 | 43 |
+| 6. Insertion placement | 52 | 29 | 40 |
+| 7. Struck text / deletion state | 22 | 5 | 19 |
+| 8. Abbreviations expanded or spelling modernised | 37 | 14 | 33 |
+| 9. Text not on the page | 80 | 27 | 64 |
+| 10. Other | 27 | 5 | 26 |
+
+
+## Locations by category
+
+### 1. Symbols and indices
+
+- 142_scan101D03, 142_scan101, Upper margin, first Θ: $\Theta$ soit trivial.
+- 142_scan101D06, 142_scan101, Upper margin, exponent of the power: \Theta^{\unsure{\nu K}}.
+- 142_scan101D11, 142_scan101, Upper margin, X′_K ≠ empty-set glyph: X'_K\ne\phi.
+- 142_scan101D15, 142_scan101, First main-text hypothesis, empty-set glyph: I'\cap X'_K\ne\phi.
+- 142_scan101D19, 142_scan101, Inserted condition-2 note, acting sign: \pi.
+- 142_scan101D28, 142_scan101, Condition 3, displayed source basepoint: \widehat{\pi}_1(X',x).
+- 142_scan101D32, 142_scan101, Lower margin, deleted quantifier: \deleted{\unsure{tt\|$\forall$}}.
+- 142_scan101D33, 142_scan101, Lower margin, membership I without prime: x'\in X'_K\cap I.
+- 142_scan101D37, 142_scan101, Lower margin, group acted on: \pi_1(X',x').
+- 142_scan101D45, 142_scan101, Condition 4, empty-set glyph: \ne\phi.
+- 142_scan101D47, 142_scan101, Condition 4, source groupoid without hat: \Pi_1.
+- 142_scan103_D02, 142_scan103, Second line, interlinear morphism correction: \inserted{$-X$ un}.
+- 142_scan103_D11, 142_scan103, First path l, separator between lower indices: l^T_{y',x'}.
+- 142_scan103_D18, 142_scan103, Deleted comparison expression below comparer: \deleted{$\unsure{u(l_{y',x'})}$}.
+- 142_scan103_D21, 142_scan103, Formula (53), lower-index separator: l^T_{y',x'}.
+- 142_scan103_D23, 142_scan103, Membership display following (53), g's lower indices: g^{T\deleted{\unsure{u}}}_{x,y}(u).
+- 142_scan103_D24, 142_scan103, Membership display, T's arguments: T(u x',u y').
+- 142_scan103_D27, 142_scan103, Formula (54), lower-index separator on the left g: g^T_{y',x'}(u).
+- 142_scan104D20, 142_scan104, Margin: script E after the functor name: $\mathcal E$.
+- 142_scan104D37, 142_scan104, Cancelled x/y pair replaced by the universal component condition: \deleted{$\unsure{x',y'\|x,y}$}.
+- 142_scan104A04, 142_scan104, Marginal note, superscript after 2 before mb de (55): 2\textsuperscript{e} mb.
+- 142_scan106_D06, 142_scan106, Figure 3, cancelled caption above the drawing: \unsure{3\|1} cas.
+- 142_scan106_D11, 142_scan106, Figure 5, label above the one circle: A_+^{01}.
+- 142_scan108D05, 142_scan108, First small mapping, arrow tail: z \arrow[r] \& -z.
+- 142_scan108D07, 142_scan108, Second small mapping, arrow tail: z \arrow[r] \& \dfrac{1}{z}.
+- 142_scan108D10, 142_scan108, Extension, cursive A with subscript 4: \mathcal{A}_4.
+- 142_scan108D19, 142_scan108, Lower sphere, upper right path label: $\eta$ relevé.
+- 142_scan108D20, 142_scan108, Lower sphere, lower right path label: $\eta$ relevé.
+- 142_scan110_D03, 142_scan110, Upper square, bottom-right subgroup argument: \operatorname{Ssgr}(\unsure{\Pi\|E})/\pi.
+- 142_scan110_D04, 142_scan110, Brace annotation, leading letter: \mathcal{E}.
+- 142_scan110_D06, 142_scan110, Second diagram, left margin quotient: \mathcal{E}/\pi=\Gamma.
+- 142_scan110_D07, 142_scan110, Second diagram, upper-left object: \mathcal{E}(=\Gamma.\pi).
+- 142_scan110_D08, 142_scan110, Second diagram, upper-right action label: \mathcal{E}.
+- 142_scan110_D14, 142_scan110, Division by D, ramification labels: P_\omega\quad Q_a,\ R_s.
+- 142_scan110_D19, 142_scan110, Sphere C, signed S labels: S_1^+,S_1^-.
+- 142_scan110_D30, 142_scan110, Sphere D, upper pole: -\overline{\xi}.
+- 142_scan110_D31, 142_scan110, Sphere D, lower pole: -\xi.
+- 142_scan110_D32, 142_scan110, Sphere D, signed S labels: S_1^+,S_1^-.
+- 142_scan111D05, 142_scan111, Left side of the dual-line formula: \mathcal{O}(1).
+- 142_scan111D06, 142_scan111, Exterior-product formula: decoration on the O factor: F\wedge\underline{\mathcal{O}}_\Sigma(1).
+- 142_scan111D13, 142_scan111, Pairing margin: three wedge products: x\wedge y\wedge e_i=x\wedge y\wedge e_j=x\wedge y\wedge e_k.
+- 142_scan111D19, 142_scan111, Cotangent display: underline beneath Omega: \underline{\Omega}^1_\Sigma.
+- 142_scan111D21, 142_scan111, Cotangent display: orientation underline: (\underline{\omega}).
+- 142_scan111D22, 142_scan111, Tangent display: underline beneath checked Omega: \underline{\check{\Omega}}^1_\Sigma.
+- 142_scan111D23, 142_scan111, Tangent display: orientation underline: (\underline{\omega}).
+- 142_scan111D26, 142_scan111, Projective-space name at the end of the R-points heading: P\Sigma.
+- 142_scan111D27, 142_scan111, Ambient space in the R_i definition: \unsure{\mathbb{V}\|V}(J).
+- 142_scan111D28, 142_scan111, Subscript of O in the R_i generator line: \mathcal{O}_{\unsure{k\|\Sigma}}.
+- 142_scan111D31, 142_scan111, Alphabets in the cancelled R-points definition: P\Sigma_J=\check{V}^{*}(\mathcal{O}_\Sigma(1)).
+- 142_scan111D34, 142_scan111, Section phi_jk display: underlined O: \underline{\mathcal{O}}_\Sigma(1).
+- 142_scan111D36, 142_scan111, Ambient space in the Q_i definition: \unsure{\mathbb{V}\|V}.
+- 142_scan111D37, 142_scan111, Q_i definition: underline under J: \underline{J}.
+- 142_scan111D39, 142_scan111, Q margin: argument of the line bundle: \mathcal{O}(\omega)_{Q_i}^{*}.
+- 142_scan111D41, 142_scan111, Q margin: two named privileged points: Q_i,\ Q'_i.
+- 142_scan111D44, 142_scan111, Inserted equality: order of the omega indices: \unsure{e_{\omega^2i}-e_{\omega i}}.
+- 142_scan111D46, 142_scan111, Cancelled expression after classe de: $\deleted{\unsure{\varphi_{ji}\|V(J)}}$.
+- 142_scan111D48, 142_scan111, Cancelled formula above the box: second subscript: \varphi_{\omega i,\omega^2i}(Q_i)=.
+- 142_scan111D49, 142_scan111, Q box: final live phi subscript: \inserted{\varphi_{\omega i,i}}.
+- 142_scan111D52, 142_scan111, NB box: inverse exponent: Q_i^{\omega^{-1}}.
+- 142_scan111D53, 142_scan111, NB box: cancelled lower inverse omega: {}_{\deleted{\unsure{\omega^{-1}}}}.
+- 142_scan111D56, 142_scan111, P-points heading: index of the orientation torsor: \underline{\omega}_J.
+- 142_scan111D58, 142_scan111, P-points heading: final omega domain: \omega\in\omega.
+- 142_scan111D59, 142_scan111, Short cancellation immediately before racine: \deleted{$\unsure{\zeta}$}.
+- 142_scan112D04, 142_scan112, Definition, decoration of the initial Sigma: \Sigma_n^{\substack{*\\*}*}.
+- 142_scan112D05, 142_scan112, Definition, delimiters of removed union: \bigl(S(\Sigma_n)\cup A(\Sigma_n)\cup F(\Sigma_n)\bigr).
+- 142_scan112D11, 142_scan112, Upper diagram, first source node: \Sigma_n^{\substack{*\\*}*}.
+- 142_scan112D12, 142_scan112, Upper diagram, first target Sigma before projective-line expression: \Sigma_1^{\substack{*\\*}*}.
+- 142_scan112D14, 142_scan112, Upper diagram, rightmost Sigma decoration: \Sigma_3^{\substack{*\\\cdot}\cdot}.
+- 142_scan112D18, 142_scan112, Right-hand parenthesis, bar over Sigma: \overline{\Sigma}.
+- 142_scan112D19, 142_scan112, Right-hand parenthesis, Sigma subscript: \unsure{a\|\alpha}.
+- 142_scan112D21, 142_scan112, Upper diagram, intermediate quotient numerator and decoration: \Sigma_n^{\substack{*\\*}*}/D_n.
+- 142_scan112D24, 142_scan112, Upper diagram, lower-left Sigma decoration: \Sigma_{2n}^{\substack{*\\*}\unsure{\cdot\|*}}.
+- 142_scan112D25, 142_scan112, Upper diagram, lower-middle Sigma after the unlabelled arrow: index and three-position decoration: \Sigma_1^{\substack{*\\*}\cdot}.
+- 142_scan112D26, 142_scan112, Upper diagram, lower right Sigma: \Sigma_1^{\substack{*\\*}\cdot}\simeq U_0^3.
+- 142_scan112D30, 142_scan112, Left margin, first Sigma in the action clause: \Sigma_n^{\substack{*\\*}*}.
+- 142_scan112D31, 142_scan112, Left margin, Sigma_2n in the parenthetical isomorphism: \Sigma_{2n}^{\substack{*\\*}\cdot}.
+- 142_scan112D33, 142_scan112, First lower quotient diagram, apex equation: \Sigma_n^{\substack{*\\*}*}\simeq\Sigma_{2n}^{\substack{*\\*}\cdot}.
+- 142_scan112D34, 142_scan112, First lower quotient diagram, right node: \Sigma_n^{\substack{*\\*}*}/D_n^+.
+- 142_scan112D35, 142_scan112, First lower quotient diagram, left node: \Sigma_{2n}^{\substack{*\\*}\cdot}/D_{2n}^+.
+- 142_scan112D36, 142_scan112, First lower quotient diagram, bottom-left node: \Sigma_{2n}^{\substack{*\\*}\cdot}/D_{2n}.
+- 142_scan112D37, 142_scan112, First lower quotient diagram, central quotient: \Sigma^{\substack{*\\*}*}/D_n.
+- 142_scan112D42, 142_scan112, Enclosed quotient diagram, apex equation: \Sigma_n^{\substack{*\\*}*}\simeq\Sigma_{2n}^{\substack{*\\*}\cdot}.
+- 142_scan112D43, 142_scan112, Enclosed quotient diagram, central row first quotient: \Sigma_n^{\substack{*\\*}*}/D_n^+.
+- 142_scan112D44, 142_scan112, Enclosed quotient diagram, central row Sigma_1: \Sigma_1^{\substack{*\\*}*}.
+- 142_scan112D45, 142_scan112, Enclosed quotient diagram, central row Sigma_2: \Sigma_2^{\substack{*\\*}\cdot}.
+- 142_scan112D46, 142_scan112, Enclosed quotient diagram, left node numerator: \Sigma^{\substack{*\\*}\substack{*\\\unsure{*\|\cdot}}}.
+- 142_scan112D47, 142_scan112, Enclosed quotient diagram, right quotient: \Sigma_n^{\substack{*\\*}*}/D_n.
+- 142_scan112D48, 142_scan112, Enclosed quotient diagram, bottom quotient: \Sigma_n^{\substack{*\\*}\cdot}/D_{2n}.
+- 142_scan112D50, 142_scan112, Bottom-left small quotient diagram, source decoration: \Sigma_n^{\substack{*\\*}\cdot}.
+- 142_scan112D51, 142_scan112, Bottom-left small quotient diagram, target decoration: \Sigma_1^{\substack{*\\*}\cdot}.
+- 142_scan113_D14, 142_scan113, Top drawing, R2 cylinder, upper-left endpoint: \widetilde R_2^{\omega'}.
+- 142_scan113_D16, 142_scan113, Top drawing, R2 cylinder, lower-right live endpoint label: R_2^\omega.
+- 142_scan113_D29, 142_scan113, Second formula, exponent on omega in the second R subscript: R_{\omega^4i}.
+- 142_scan113_D30, 142_scan113, Second formula, relation before the far-right minus-P term: =.
+- 142_scan114A02, 142_scan114, Formula (4), first relation between tau0 squared and tau1 squared: \mathrel{\unsure{\begin{tikzpicture}[baseline=-.35ex,line cap=round,line join=round]<br>\draw[line width=.4pt] (0,.09)<br> .. controls (.07,.11) and (.15,.095) .. (.18,.065)<br> .. controls (.20,.02) and (.19,-.02) .. (.17,-.035)<br> -- (.035,-.055);<br>\end{tikzpicture}}}.
+- 142_scan115D03, 142_scan115, (7), subscript operator: \sigma_k(r).
+- 142_scan115D04, 142_scan115, (7), left superscript: R_r^{i,j}.
+- 142_scan115D05, 142_scan115, (7), separator before k: \cdot.
+- 142_scan115D08, 142_scan115, proche paragraph, middle type symbol: R_o.
+- 142_scan115D16, 142_scan115, (9), live and cancelled source indices: R_r^{i\deleted{\unsure{+2\|i+2}},i+1}.
+- 142_scan115D33, 142_scan115, first diagonal NB, permutation notation: (0,1,\infty)\longmapsto(1,\infty,0).
+- 142_scan115D43, 142_scan115, second diagonal NB, R has no overbar: R_r^i.
+- 142_scan116_D01, 142_scan116, Opening tilde-X: three-position star decoration: \widetilde{X}^{\substack{*\\*}*}.
+- 142_scan116_D05, 142_scan116, Inline key after comme suit: \substack{\infty\\0}1.
+- 142_scan116_D06, 142_scan116, First variant after on définirait de même: \widetilde{X}^{\substack{*\\\cdot}*}.
+- 142_scan116_D07, 142_scan116, Middle variant: dense upper-left dot or star: \widetilde{X}^{\substack{\unsure{\cdot\|*}\\*}*}.
+- 142_scan116_D08, 142_scan116, Third variant after on définirait de même: \widetilde{X}^{\substack{*\\*}\cdot}.
+- 142_scan116_D11, 142_scan116, Interior notation after est notée: X^{\substack{*\\*}*}.
+- 142_scan116_D13, 142_scan116, Untilded X following on définit de =: X^{\substack{*\\\cdot}*}.
+- 142_scan116_D16, 142_scan116, Tilde-X after dans, following d’homotopie: \widetilde{X}^{\substack{*\\*}*}.
+- 142_scan116_D19, 142_scan116, Parenthesis after C-infinity, before analytique réelle: \unsure{et $=$\|$\ne$}.
+- 142_scan116_D20, 142_scan116, Source of map (11): three-star tilde-X: \widetilde{X}^{\substack{*\\*}*}.
+- 142_scan116_D23, 142_scan116, Space in On a, dans Pi_1 X, la relation: X^{\substack{*\\*}*}.
+- 142_scan116_D31, 142_scan116, Closing presentation sentence, second relation reference: (17).
+- 142_scan116_D32, 142_scan116, Tilde-X in the final groupoid: \widetilde{X}^{\substack{*\\*}*}.
+- 142_scan116_D33, 142_scan116, Opening delimiter before the final R-object family: \unsure{\{\|(}.
+- 142_scan117D07, 142_scan117, Cancelled mathematics at left of the first display: \deleted{\unsure{\tau_0\tau_\infty\|\tau_0}}.
+- 142_scan117D12, 142_scan117, Formula (13), first lambda subscript: \lambda_{\tau_{i+1}}^i.
+- 142_scan117D13, 142_scan117, Formula (13), first source-target connector: \mathrel{\tikz[baseline=-.5ex]{\draw[line width=.45pt] (0,0)--(.6,0)--(.6,.07);}}.
+- 142_scan117D14, 142_scan117, Formula (13), second lambda subscript letter: \lambda_{\sigma_{i-1}(r)}^i.
+- 142_scan117D15, 142_scan117, Formula (13), second source-target connector: \mathrel{\tikz[baseline=-.5ex]{\draw[line width=.45pt] (0,0)--(.6,0)--(.6,.07);}}.
+- 142_scan117D16, 142_scan117, Formula (13), final target superscript: R_{\tau_{i-1}(r)}^{i-1}.
+- 142_scan117D25, 142_scan117, Drawing, overworked second-index position after 0 on R_tau1r: R_{\tau_1r}^{0\unsure{\tikz[x=.045cm,y=.045cm,baseline=-.4ex]{\draw[line width=.45pt] (0,0)--(.8,2)--(1.8,.3)--(.2,1.5)--(2,1.3);}}}.
+- 142_scan117D26, 142_scan117, Drawing, lower right transformed R subscript: R_{\tau_\infty r}^{1\infty}.
+- 142_scan117D27, 142_scan117, Drawing, lower right transformed lambda subscript: \lambda_{\tau_\infty r}^{1}.
+- 142_scan118D03, 142_scan118, Display (14), superscript on R: R_r^{i,j}.
+- 142_scan118D06, 142_scan118, Display (15), second capital Lambda exponent: \Lambda_r^{\prime\infty}.
+- 142_scan118D12, 142_scan118, Cancelled (16), first parenthesized word and its three inverse clusters: (a_{\tau_1r}^{-1}\lambda_{\tau_1r}^{1\,-1}a_{\tau_1r}^{\infty})^{-1}.
+- 142_scan118D13, 142_scan118, Cancelled (16), first beta underbrace subscript: \beta_{\sigma_1r}^{1\,-1}.
+- 142_scan118D18, 142_scan118, Cancelled NB ending, operator after par: \sigma_1r.
+- 142_scan118D22, 142_scan118, Left tiling note, opening parenthesis before dont: (dont.
+- 142_scan118D46, 142_scan118, Live (16), outer exponent on first parenthesized group: \unsure{+\|-1}.
+- 142_scan120_D01, 142_scan120, Opening groupoid, three-star space: \widetilde{X}^{\substack{*\\*}*}.
+- 142_scan120_D07, 142_scan120, Punctuation after conduit aussi: :.
+- 142_scan120_D18, 142_scan120, Beginning of the long cancelled index condition: \deleted{$\unsure{i,j\ne\infty}$,}.
+- 142_scan120_D21, 142_scan120, Second memory equality: unindexed Q: Q_{\tau_\infty(r)}.
+- 142_scan120_D24, 142_scan120, First source in (18), possible comma under the cancellation: \unsure{R_r^{01}\|R_r^{0,1}}.
+- 142_scan120_D27, 142_scan120, Cancelled Lambda in the second row of (18), prime and adjacent comma: \unsure{,}\deleted{\unsure{\Lambda_r^{\prime1}\|\Lambda_r^1}}.
+- 142_scan120_D28, 142_scan120, Second row of (18), target tau_1 subscript and closer: \unsure{R_{\tau_1(r)}^{01}\|R_{\tau_1r}^{01},}.
+- 142_scan120_D29, 142_scan120, Third row of (18), target tau_0 subscript and closer: \unsure{R_{\tau_0(r)}^{1,0}\|R_{\tau_0r}^{1,0},}.
+- 142_scan120_D62, 142_scan120, Set notation in the last groupoid: S-S_i.
+- 142_scan120_D63, 142_scan120, Closing delimiter after cas explicité: ].
+- 142_scan121D10, 142_scan121, Marginal boxed relation: index on right R: \sigma_\infty r.
+- 142_scan121D15, 142_scan121, First line of(21): target index: \sigma_0(r).
+- 142_scan121D17, 142_scan121, Second line of(21): connector: \longrightarrow.
+- 142_scan121D18, 142_scan121, Second line of(21): target index: \sigma_1r.
+- 142_scan121D21, 142_scan121, First line of(22): first Lambda subscript, previously unmarked: \Lambda_{\unsure{\sigma\|r}}^0.
+- 142_scan121D22, 142_scan121, First line of(22): second Lambda subscript: \sigma_1(r).
+- 142_scan121D23, 142_scan121, Second line of(22): second A subscript: \sigma_0(r).
+- 142_scan121D31, 142_scan121, Lower paragraph: member variable before in S: s.
+- 143_scan002D05, 143_scan002, Display (2), separator after G with barred-X subscript: G_{\overline X}:\operatorname{Aut}(\overline X/\overline{\mathbf Q}).
+- 143_scan002D08, 143_scan002, Right pencil diagram, O decoration: \underline{\mathcal O}_X.
+- 143_scan002D37, 143_scan002, Display (5), two group-letter occurrences: \mathcal E(X,\widetilde X)\ \text{ou}\ \mathcal E_X.
+- 143_scan002D38, 143_scan002, Display (5), overloaded separator inside Aut: \unsure{\mathbin{\tikz[baseline=-.45ex,x=1em,y=1em]{\draw[line width=.65pt] (.06,-.32)--(.26,.34);\draw[line width=.85pt] (-.03,0)--(.42,0);\fill (.42,0)--(.31,.065)--(.31,-.065)--cycle;}}}.
+- 143_scan003D01, 143_scan003, Sequence (6), middle group symbol: \mathcal E_X.
+- 143_scan003D08, 143_scan003, Diagram (8), left group symbol: \mathcal E_X.
+- 143_scan003D09, 143_scan003, Diagram (8), vertical inclusion-like sign: \draw[line width=.6pt] (2.48,-.41)..controls(2.46,-.74)and(2.46,-1.05)..(2.54,-1.08)..controls(2.59,-1.06)and(2.65,-.91)..(2.68,-.80);.
+- 143_scan004_D16, 143_scan004, Upper live replacement map, codomain: \inserted{\Gamma\prime\longrightarrow\mathcal E_X}.
+- 143_scan004_D17, 143_scan004, Lower cancelled map, codomain: \deleted{\Gamma\prime\longrightarrow\mathcal E_X}.
+- 143_scan004_D18, 143_scan004, Diagram (10), leftmost object: \mathcal E_X.
+- 143_scan005D07, 143_scan005, Hom target in (11), cursive E: \mathcal E.
+- 143_scan005D10, 143_scan005, Rightmost target in (11), cursive E_X: \mathcal E_X.
+- 143_scan005D25, 143_scan005, Subgroup subscript, two punctuation clusters between the Xs: \mathcal G_{\unsure{X',X\|X;X}}.
+- 143_scan005D31, 143_scan005, Refinement addition, prime in G_X-prime(I): \mathcal G_{X'}(I).
+- 143_scan005D32, 143_scan005, Refinement addition, period after (I): \mathcal G_{X'}(I)..
+- 143_scan006_D03, 143_scan006, Display (14), middle extension object: \mathcal E_{X'}.
+- 143_scan006_D07, 143_scan006, Diagram (15), left object: \mathcal E_{X'}.
+- 143_scan006_D17, 143_scan006, Right marginal Homext formula, Q bar: \unsure{\mathbf Q\|\overline{\mathbf Q}}.
+- 143_scan007D13, 143_scan007, Live action group after the cancellation: \mathcal E_{X\prime}.
+
+### 2. Words
+
+- 142_scan101D08, 142_scan101, Upper margin, final adjective: \unsure{triviale\|trivial}.
+- 142_scan101D16, 142_scan101, Inserted condition-2 note, comme une: comme une condition.
+- 142_scan101D18, 142_scan101, Inserted condition-2 note, before π₁: d'un $\pi_1(X,x)$.
+- 142_scan101D24, 142_scan101, Condition 3, article before Θ′: le $\Theta\prime$.
+- 142_scan101D27, 142_scan101, Condition 3, stable: stable.
+- 142_scan101D30, 142_scan101, Lower margin, en supposant / ne supposant: en \unsure{en supposant\|ne supposant} \unsure{pas}.
+- 142_scan101D48, 142_scan101, Condition 4, les groupoïdes: les groupoïdes.
+- 142_scan101D50, 142_scan101, Condition 4, final noun before cf 2°: ambiguïté.
+- 142_scan102D02, 142_scan102, Opening, difficult to require a fifth condition: d'exiger.
+- 142_scan102D09, 142_scan102, Struck adjective after hom: \deleted{\unsure{fibrant}}.
+- 142_scan102D14, 142_scan102, paramètres virtuels: virtuels.
+- 142_scan102D15, 142_scan102, Final noun before néc. et suff.: \unsure{condition\|conditions}.
+- 142_scan102D16, 142_scan102, Final verb qui permettra de: permettra.
+- 142_scan103_D03, 142_scan103, After « qui sur », cancelled phrase: \deleted{la partie de}.
+- 142_scan103_D04, 142_scan103, « se décompose en un ... fini »: nb.
+- 142_scan103_D17, 142_scan103, After comparer and the cancelled formula: :.
+- 142_scan103_D19, 142_scan103, Parenthesis after l^T_{u(y'),u(x')}: (qui est défini par hyp. d'horizontalité).
+- 142_scan104D01, 142_scan104, Opening word between Pour and the cancelled strate: \unsure{que}.
+- 142_scan104D02, 142_scan104, Cancelled opening noun: \deleted{strate}.
+- 142_scan104D04, 142_scan104, Cancelled phrase before images: \deleted{\unsure{différentes im.}}.
+- 142_scan104D05, 142_scan104, de l’un d’eux: de l'un d'eux.
+- 142_scan104D10, 142_scan104, Adjective after condition: intrigante.
+- 142_scan104D18, 142_scan104, Margin: via le: via le.
+- 142_scan104D19, 142_scan104, Margin: quoted functor name: ``foncteur-fibre''.
+- 142_scan104D21, 142_scan104, Margin: défini par: défini par.
+- 142_scan104D23, 142_scan104, Margin: predicate after (55): (55), est le.
+- 142_scan104D27, 142_scan104, Margin: de before the permutation representation: de $\pi\longrightarrow\mathfrak S_E$.
+- 142_scan104D33, 142_scan104, Parenthetical before puisse: p. ex se borner.
+- 142_scan104D36, 142_scan104, rat /K: rat$ /K$.
+- 142_scan110_D05, 142_scan110, Brace annotation, following verb: \text{\unsure{opère\|opérant} ci-dessus}.
+- 142_scan111D08, 142_scan111, Upper-right warning: plural ending: attention signes!.
+- 142_scan111D11, 142_scan111, Pairing margin: chosen cyclic order: un ordre circulaire fixé $(i,j,k)$.
+- 142_scan111D29, 142_scan111, Explanation of the R_i orientation identification: en associant à $e_k-e_j$ l'orientation $(i,j,k)$.
+- 142_scan111D30, 142_scan111, Opening words of the cancelled R-points definition: \deleted{Points les $\widetilde{R}_i$ de.
+- 142_scan111D40, 142_scan111, Q margin: word preceding par: indexés.
+- 142_scan111D47, 142_scan111, Cancelled formula above the box: introductory word: \deleted{par.
+- 142_scan112D01, 142_scan112, Title, second line: du polygône régulier.
+- 142_scan112D02, 142_scan112, Opening prose, article after en: en le trouant.
+- 142_scan112D10, 142_scan112, Caption above the degree-n arrow: \unsure{diviser\|division} par $D_n^+\subset D_{2n}^+$.
+- 142_scan112D17, 142_scan112, Right-hand parenthesis, opening words: carte régulière.
+- 142_scan112D52, 142_scan112, Final prose, noun phrase: de la ramification.
+- 142_scan112D53, 142_scan112, Final prose, preposition before les arêtes: sous.
+- 142_scan113_D24, 142_scan113, Prose, first signs of the second block: \unsure{pq\|$P_i$}.
+- 142_scan114D04, 142_scan114, Opening, noun after aussi: aussi la \unsure{surface}.
+- 142_scan114D05, 142_scan114, Opening, topological-surface qualifier: topologique sous-jacente : $X$.
+- 142_scan114D07, 142_scan114, Orientation sentence, ce triangle: ce triangle.
+- 142_scan114D08, 142_scan114, Adjacency sentence, régions: Les régions.
+- 142_scan114D10, 142_scan114, Adjacency adjective ending: ``adjacentes''.
+- 142_scan114D11, 142_scan114, Adjacency sentence, sont before the tau list: sont.
+- 142_scan114D12, 142_scan114, Adjacency sentence, opposées: opposées.
+- 142_scan114D13, 142_scan114, Adjacency sentence, de type: de type.
+- 142_scan114D16, 142_scan114, First rotation clause, du type: du type $\infty$.
+- 142_scan114D17, 142_scan114, First rotation clause, resp. before 0: resp. $0$.
+- 142_scan114D20, 142_scan114, Prose after formula (2), des sommets: autour des sommets.
+- 142_scan114D21, 142_scan114, Prose after formula (2), choisie pour: choisie pour.
+- 142_scan115D01, 142_scan115, after (6), final s of indiqués: indiqués.
+- 142_scan115D19, 142_scan115, contour paragraph, object surrounded: drapeau.
+- 142_scan115D20, 142_scan115, contour paragraph, repère versus repéré: repère.
+- 142_scan115D23, 142_scan115, raised phrase above par contre / les lambda: \inserted{\unsure{de = désignent}}.
+- 142_scan115D27, 142_scan115, arcs around the vertex/vertices: des sommets.
+- 142_scan115D32, 142_scan115, first diagonal NB, cyclic successor wording: $i+1$ au lieu du résultat de la permutation circulaire.
+- 142_scan115D34, 142_scan115, first diagonal NB, quotient identification: i.e. on identifie $\{0,1,\infty\}$ à $\mathbb{Z}/3\mathbb{Z}\ldots$.
+- 142_scan115D36, 142_scan115, second diagonal NB, par les: par les.
+- 142_scan115D40, 142_scan115, second diagonal NB, les flèches obtenues: les flèches obtenues.
+- 142_scan115D41, 142_scan115, second diagonal NB, bouchage phrase: après bouchage de certains trous.
+- 142_scan115D47, 142_scan115, final NB, future supposera: supposera.
+- 142_scan115D48, 142_scan115, final NB, article after que: la.
+- 142_scan115D49, 142_scan115, final NB, carte combinatoire se trouve: carte combinatoire se trouve.
+- 142_scan115D50, 142_scan115, final paragraph, article before découpe: le.
+- 142_scan115D51, 142_scan115, final paragraph, découpe versus découpage: découpe.
+- 142_scan115D52, 142_scan115, last words on sheet, le versus la: on le note.
+- 142_scan116_D03, 142_scan116, First sentence, after the list 0,1,infinity: disposés.
+- 142_scan116_D04, 142_scan116, First sentence, comme suit: suit.
+- 142_scan116_D10, 142_scan116, Interior sentence, est notée: notée.
+- 142_scan116_D14, 142_scan116, Les chemins précédents seront regardés: seront.
+- 142_scan116_D25, 142_scan116, Basepoint phrase to the right of (12): lacet en.
+- 142_scan117D01, 142_scan117, Opening, quoted adjective: ``polarisée''.
+- 142_scan117D03, 142_scan117, Opening, de type: de type.
+- 142_scan117D04, 142_scan117, Opening cancellation after celle: \deleted{\unsure{soit la\|qui est la}}.
+- 142_scan117D19, 142_scan117, Caption, word in the second resp. insertion: resp. en sens opposé.
+- 142_scan118D08, 142_scan118, Relations paragraph, ending of redondance(s): \unsure{redondances\|redondance}.
+- 142_scan118D15, 142_scan118, Cancelled clause after old (16), lacet: (lacet en $R_r^{\infty1}$).
+- 142_scan118D19, 142_scan118, Left tiling note, word after dont: les.
+- 142_scan118D50, 142_scan118, Right marginal stability note, poser: poser.
+- 142_scan120_D05, 142_scan120, Deux côtés du triangle: du triangle.
+- 142_scan120_D06, 142_scan120, Fondamental before i.e.: fondamental i.e..
+- 142_scan120_D08, 142_scan120, Verb following conduit aussi: éliminer.
+- 142_scan120_D13, 142_scan120, Cancelled centres rather than contours: des centres des faces.
+- 142_scan120_D14, 142_scan120, Inserted abbreviation above cancelled faces: \inserted{etc.}.
+- 142_scan120_D19, 142_scan120, Verbal continuation of the long cancellation: \deleted{\unsure{les côtés ne passent pas par $\infty$})}.
+- 142_scan121D03, 142_scan121, First parenthesis after proches: (disons).
+- 142_scan121D05, 142_scan121, End of inserted phrase above mais aussi: \unsure{d'indice\|d'arc} $\infty$.
+- 142_scan121D06, 142_scan121, Second parenthesis before de type1: (disons).
+- 142_scan121D20, 142_scan121, Prose introducing(22): on a les relations de redondance.
+- 143_scan002D02, 143_scan002, Left pencil question, word beginning the lower line: \unsure{comment\|comme}.
+- 143_scan002D14, 143_scan002, Main paragraph (3), between barred X and K: \unsure{:\|à}.
+- 143_scan002D28, 143_scan002, Finite-field descent parenthesis, inserted adverb: peut \inserted{alors}.
+- 143_scan003D04, 143_scan003, Interline NB condition, final abbreviation after et: \unsure{sep}.
+- 143_scan003D06, 143_scan003, After On trouve alors, opening of the conditional clause: si on choisit.
+- 143_scan003D13, 143_scan003, Last paragraph, word before autom: avec.
+- 143_scan003D15, 143_scan003, Last paragraph, plural intérieurs: intérieurs.
+- 143_scan004_D01, 143_scan004, Cancelled opening, first two words: \deleted{s'envoie injectivement}.
+- 143_scan004_D02, 143_scan004, Cancelled parenthesis, introductory abbreviations: (i.e. ext. d'une VA par un tore).
+- 143_scan004_D03, 143_scan004, Cancelled line after the parenthetical tore: alors.
+- 143_scan004_D10, 143_scan004, First subgroup abbreviation following sur: ss-groupe.
+- 143_scan004_D11, 143_scan004, Second subgroup abbreviation following sur un: ss groupe.
+- 143_scan004_D13, 143_scan004, Prose transition after G-bar-X(xi): de sorte qu'on a un.
+- 143_scan004_D15, 143_scan004, Word following the first hom abbreviation: composé.
+- 143_scan004_D21, 143_scan004, Closing paragraph, word after the second dash: sinon.
+- 143_scan004_D27, 143_scan004, Clipped final word after pi_1(X).: \unsure{Soulignons}.
+- 143_scan005D02, 143_scan005, Second line, des before phi_xi: des.
+- 143_scan005D04, 143_scan005, Opening bracketed hypothesis, verb after X: s'envoie.
+- 143_scan005D05, 143_scan005, Last words before (11), ce germe: ce germe.
+- 143_scan005D23, 143_scan005, After (13), article before sous-groupe: le.
+- 143_scan005D24, 143_scan005, After (13), singular sous-groupe: sous-groupe.
+- 143_scan005D26, 143_scan005, Added encore above notera, misidentified by H as ouvert under the index: \inserted{encore}.
+- 143_scan005D27, 143_scan005, On le notera, singular pronoun: On le notera.
+- 143_scan006_D05, 143_scan006, Qualifier first word and initial case: \unsure{Circonstanciellement\|circonstanciellement}.
+- 143_scan007D10, 143_scan007, After maximaux, before D: des.
+- 143_scan007D14, 143_scan007, M0649, opening words of the explanatory clause: qui transporte.
+- 143_scan007D15, 143_scan007, M0649, short word before structure: \unsure{de\|la}.
+
+### 3. Omissions
+
+- 142_scan101D31, 142_scan101, Lower margin, pas after struck quantifier: \unsure{pas}.
+- 142_scan101D39, 142_scan101, Lower margin, f before final target: $f$.
+- 142_scan101D42, 142_scan101, Condition 4, deleted déjà que: \deleted{déjà que}.
+- 142_scan103_D01, 142_scan103, Opening line, complex point space: X_{\mathbb C}(\mathbb C).
+- 142_scan103_D13, 142_scan103, Immediately before the cancelled Π₁ expression: \deleted{$\unsure{\in}$}.
+- 142_scan103_D14, 142_scan103, Cancelled Π₁ expression, arguments: \deleted{$\unsure{\widehat{\Pi}_1(X'_{\overline K},x',y')}$}.
+- 142_scan103_D15, 142_scan103, Cancelled right-side block after the first « et son transformé »: \deleted{\unsure{le} \illegible{1} \unsure{de} $T$ qui passe par $x',y'$}.
+- 142_scan103_D20, 142_scan103, Formula (53), repaired left action sign: \deleted{\unsure{u}}{}^u l^T_{y',x'}.
+- 142_scan103_D22, 142_scan103, Membership display following (53), cancelled superscript: g^{T\deleted{\unsure{u}}}_{x,y}(u).
+- 142_scan103_A05, 142_scan103, Detached surviving period after the cancelled comparison formula, below comparer: \deleted{$\unsure{u(l_{y',x'})}$}. :.
+- 142_scan104D08, 142_scan104, Verb implique before the quoted la: implique.
+- 142_scan104D11, 142_scan104, Number at the left of the second display: (55).
+- 142_scan104D14, 142_scan104, Margin: discret: discret.
+- 142_scan104D35, 142_scan104, Cancelled K- before structure: \deleted{$K$-}.
+- 142_scan104D39, 142_scan104, Cancelled closing parenthesis before the final insertion: \deleted{)}.
+- 142_scan106_D01, 142_scan106, Figure 1, overworked numeral before relations: \deleted{\unsure{1}}\inserted{2} relations.
+- 142_scan106_D13, 142_scan106, Figure 5, return connector from the one circle toward zero: \draw[->] (690,1228)--(444,1273);.
+- 142_scan108D17, 142_scan108, Lower sphere, upper-left tilde beta label: \widetilde{\beta}.
+- 142_scan108D18, 142_scan108, Lower sphere, central tilde beta label: \widetilde{\beta}.
+- 142_scan110_D01, 142_scan110, Upper square, initial dot: \cdot E_0.
+- 142_scan110_D41, 142_scan110, Cancelled sphere E, glyph right of left equatorial 0: \deleted{\unsure{b\|6}}.
+- 142_scan111D09, 142_scan111, Cross-shaped mark above the upper warning: \margin{$+$}.
+- 142_scan111D12, 142_scan111, Pairing margin: second cancelled phrase: \deleted{en prenant}.
+- 142_scan111D14, 142_scan111, Pairing margin: introduction of the variables: où $x\in F$.
+- 142_scan111D18, 142_scan111, Pairing margin, complete minors phrase and detached dash after mineurs: i.e. donné par les \inserted{\unsure{3\|2}} mineurs -<br>de la matrice de $(x,y)$..
+- 142_scan111D20, 142_scan111, Cotangent display: cancelled round sign: \deleted{\unsure{0}}.
+- 142_scan111D24, 142_scan111, Earlier cancelled cyclic relation in the left margin: \deleted{\unsure{\varphi_{ij}+\varphi_{jk}+\varphi_{ki}=0}}.
+- 142_scan111D35, 142_scan111, Q-points heading: cancelled lower omega: Q_i^\omega{}_{\deleted{\unsure{\omega}}}.
+- 142_scan111D38, 142_scan111, Q_i generator: cancelled coefficient: \deleted{\unsure{0}}.
+- 142_scan111D45, 142_scan111, Words below the inserted equality: classe de.
+- 142_scan111D51, 142_scan111, Q box: cancelled lower omega on the left-hand Q: Q_i^\omega{}_{\deleted{\unsure{\omega}}}.
+- 142_scan111D54, 142_scan111, NB box: cancelled lower omega on the right-hand Q: {}_{\deleted{\unsure{\omega}}}.
+- 142_scan111D57, 142_scan111, P-points heading: cancelled lower omega: P_i^\omega{}_{\deleted{\unsure{\omega}}}.
+- 142_scan111D60, 142_scan111, Small cancellation after on prendra: \deleted{$\unsure{\zeta}$}.
+- 142_scan112D06, 142_scan112, Initial decoration key, upper label: sommets.
+- 142_scan112D07, 142_scan112, Initial decoration key, right label: milieux arêtes.
+- 142_scan112D20, 142_scan112, Right-hand parenthesis, phrase after barred Sigma: à deux sommets.
+- 142_scan112D28, 142_scan112, Left margin, cancelled word before isomorphisme: \deleted{de}.
+- 142_scan112D29, 142_scan112, Left margin, cancelled group after on fait: \deleted{$\unsure{D_n}$}.
+- 142_scan112D38, 142_scan112, First lower quotient diagram, arrow from right node to left node: \Sigma_n^{\substack{*\\*}*}/D_n^+\longrightarrow\Sigma_{2n}^{\substack{*\\*}\cdot}/D_{2n}^+.
+- 142_scan112D40, 142_scan112, First lower quotient diagram, central to bottom-left map: \Sigma^{\substack{*\\*}*}/D_n\longrightarrow\Sigma_{2n}^{\substack{*\\*}\cdot}/D_{2n}.
+- 142_scan113_D07, 142_scan113, Top drawing, Q3 lens, upper endpoint decoration: \overset{\unsure{\sim}}{Q}_3^{\omega'}.
+- 142_scan113_D13, 142_scan113, Top drawing, R1 outer lower-right label, small cancelled suffix: R_1^\omega{}_{\deleted{\unsure{-}}}.
+- 142_scan113_D17, 142_scan113, Top drawing, R2 cylinder, small cancelled lower-right glyph after numeral 2: R_2^\omega{}_{\deleted{\unsure{\omega}}}.
+- 142_scan115D02, 142_scan115, after (6), extent of the underline: comme indi\uline{qués, satisfaisant}.
+- 142_scan115D15, 142_scan115, (8), extra comma in source superscript: R_r^{i,i+1,}.
+- 142_scan115D21, 142_scan115, orientation, cancelled opposé also underlined: \deleted{\uline{opposé}}.
+- 142_scan115D25, 142_scan115, one small live word above cancelled sont: \begin{tikzpicture}[baseline=(oldverb.base)]<br>  \node[anchor=base west,inner sep=0pt] (oldverb) at (0,0) {\deleted{sont}};<br>  \node[anchor=base west,inner sep=0pt] at (0,.43) {\inserted{\unsure{sont\|des}}};<br>\end{tikzpicture}.
+- 142_scan115D26, 142_scan115, cancelled une before portions: \deleted{\unsure{une}}.
+- 142_scan115D45, 142_scan115, third diagonal parenthetical NB, distinct physical note: \margin{\begin{tabular}{@{}l@{}}<br>(\uline{NB} si\\<br>les disques où\\<br>$\lambda_r^i$ devient $=1$)<br>\end{tabular}}.
+- 142_scan116_D02, 142_scan116, Opening tilde-X: short upright after the right star: \unsure{\vcenter{\hbox{\tikz[x=1mm,y=1mm]{\draw[line width=.4pt] (0,0)--(.04,.85);}}}}.
+- 142_scan116_D15, 142_scan116, Comma after comme points et chemins: chemins, (.
+- 142_scan116_D18, 142_scan116, Detached looped/angular ink below the dash after the second tilde-X: \tikz[baseline=-.35ex]{<br>  \draw[line width=.4pt] (0,0)--(.55,.025);<br>  \node[inner sep=0pt] at (.08,-.18) {$\unsure{\vcenter{\hbox{\tikz[x=1mm,y=1mm,line width=.45pt]{<br>    \draw (.12,.72) .. controls (-.1,.54) and (.03,.14) .. (.38,.13)<br>      .. controls (.68,.11) and (.7,.48) .. (.45,.58)<br>      .. controls (.28,.64) and (.11,.46) .. (.2,.3);<br>    \draw (.4,.61)--(.77,.18)--(.6,-.03);<br>  }}}}$};<br>}.
+- 142_scan116_D34, 142_scan116, Superscript on the final R_r family: R_r^{i,j}.
+- 142_scan117D06, 142_scan117, Opening, colon after nécessairement: nécessairement :.
+- 142_scan117D29, 142_scan117, Drawing, cancelled prefix before upper transformed R: \deleted{\unsure{\Lambda}}R_{\tau_0r}^{\infty,0}.
+- 142_scan118D01, 142_scan118, Top heading, cancelled word and following live letter: \deleted{Soit} $i$.
+- 142_scan118D16, 142_scan118, Cancelled NB, earlier inverse beneath the replacement: \deleted{\unsure{inverse}}.
+- 142_scan118D21, 142_scan118, Left tiling note, relative clause and negation before type 1: qui ne sont pas de type $1$.
+- 142_scan118_A05, 142_scan118, Cancelled relation after du type, tall curly stroke immediately before Lambda_r^0=1: \deleted{du type $\unsure{\vcenter{\hbox{%<br>\begin{tikzpicture}[x=.55cm,y=.55cm]<br>\draw[line width=.45pt] (0.02,.65)..controls(0.03,.48)and(0.06,.30)..(0.015,.23)<br> ..controls(-.02,.17)and(-.13,.20)..(-.12,.12)<br> ..controls(-.10,.06)and(.07,.07)..(.08,-.04)<br> ..controls(.10,-.12)and(.06,-.25)..(.13,-.26)--(.22,-.24);<br>\end{tikzpicture}}}}\Lambda_r^0=1$}.
+- 142_scan120_D02, 142_scan120, Inserted fixed-index parenthesis after a_r^i: \inserted{($i$ fixé), dans l’exemple $i=1$)}.
+- 142_scan120_D16, 142_scan120, Live avec after the retained R_r^{ij}: avec.
+- 142_scan120_D20, 142_scan120, Display (17), superscript i,j: R_r^{i,j}.
+- 142_scan120_D22, 142_scan120, Comma after the first memory equality: R_{\tau_\infty r}^{0,1},.
+- 142_scan120_D26, 142_scan120, Quantifier in the first row of (18): (\forall r\in\mathcal{R}).
+- 142_scan120_D61, 142_scan120, Tiny detached tick beneath the final lowest star: \unsure{\vcenter{\hbox{\tikz[x=1mm,y=1mm]{\draw[line width=.35pt] (0,0)--(.35,0);}}}}.
+- 142_scan121D07, 142_scan121, Inserted R-label above de type0: R_r^{i.j}.
+- 142_scan121D08, 142_scan121, Southwest indicator beside the object in(20): \mathrel{\tikz[baseline=-.6ex,x=1em,y=1em,>=stealth]{\draw (.70,.70)--(.42,.42);\draw[->] (.29,.29)--(0,0);}}.
+- 142_scan121D14, 142_scan121, First line of(21): source R superscript: R_r^{0,1}.
+- 142_scan121D28, 142_scan121, Groupoid expression: puncture exponent on tilde X: \widetilde{X}^{\substack{*\\*}*}.
+- 142_scan121D30, 142_scan121, Lower paragraph: index after trou R: \unsure{\varphi s\|s}.
+- 143_scan002D03, 143_scan002, Black word introducing display (2): où.
+- 143_scan002D07, 143_scan002, Right pencil diagram, first argument of Gamma: X_{\mathrm{red}}.
+- 143_scan002D12, 143_scan002, Right pencil note, phrase before Gamma_X: de $\mathbf Q$ ds.
+- 143_scan002D17, 143_scan002, Diagram (4), terminal comma: ,.
+- 143_scan002D19, 143_scan002, Lower left pencil note, extra right cluster after descente: \unsure{et l'hypothèse}.
+- 143_scan002D24, 143_scan002, Local-finiteness phrase, underline: \uline{loc de t f.}.
+- 143_scan002D35, 143_scan002, Universal-cover map, small label above the arrow: \unsure{h\|b}.
+- 143_scan002D39, 143_scan002, Left pencil question, separate upper-line unresolved cluster: \unsure{\tikz[baseline=-.4ex,x=.6em,y=.6em]{\draw (.10,1.20) .. controls (.45,1.75) and (.85,1.70) .. (.70,1.20) .. controls (.45,.70) and (.20,.15) .. (-.05,-1.10);\draw (.65,1.25) .. controls (1.10,1.65) and (1.20,1.25) .. (.80,.98)--(.55,-.45) .. controls (.60,-.10) and (1.12,-.15) .. (1.15,-.50);\draw (-.10,.85)--(.80,1.08);\draw (-.15,.60) .. controls (.45,.70) and (.65,.55) .. (1.00,.80);}}.
+- 143_scan003D03, 143_scan003, Considérons un point, extra X-like strokes beside xi: \unsure{\begin{tikzpicture}[x=.008cm,y=-.008cm,baseline=(xibase.base),line cap=round,line join=round]<br>\node[inner sep=0pt] (xibase) at (1038,561) {\phantom{$x$}};<br>% The xi and adjacent X-like overwork are kept at their visible relative positions.<br>\draw[line width=.55pt] (1022,521)..controls(1037,519)and(1048,516)..(1058,514)<br> ..controls(1064,514)and(1054,522)..(1038,526)--(1023,536)<br> ..controls(1024,541)and(1048,539)..(1075,534);<br>\draw[line width=.55pt] (1024,537)..controls(1020,543)and(1030,547)..(1027,555)<br> ..controls(1024,566)and(1022,573)..(1025,584)<br> ..controls(1038,584)and(1047,587)..(1049,591);<br>\draw[line width=.65pt] (1025,584)..controls(1028,597)and(1024,603)..(1024,610);<br>\draw[line width=.5pt] (1073,535)..controls(1069,541)and(1056,544)..(1055,548)<br> ..controls(1057,552)and(1063,550)..(1065,551);<br>\draw[line width=.55pt] (1079,535)..controls(1073,539)and(1070,549)..(1069,555)<br> ..controls(1068,562)and(1075,565)..(1081,565);<br>\draw[line width=.4pt] (1026,579)--(1076,538);<br>\draw[line width=.55pt] (1079,549)..controls(1083,547)and(1085,548)..(1086,549);<br>\end{tikzpicture}}.
+- 143_scan003D11, 143_scan003, Last paragraph, ne before trouve: on ne trouve.
+- 143_scan004_D04, 143_scan004, Cancelled l'application, underline: \deleted{\uline{l'application}}.
+- 143_scan004_D05, 143_scan004, Cancelled map, target immediately right of the arrow: \deleted{X(\overline{\mathbf Q})\longrightarrow J}.
+- 143_scan004_D19, 143_scan004, Diagram (10), superscript on the diagonal arrow label: \varphi_\xi^t.
+- 143_scan005D01, 143_scan005, Opening line, germe underline: \uline{germe}.
+- 143_scan005D12, 143_scan005, Inner bracketed comment, abélien after H^1: abélien.
+- 143_scan005D20, 143_scan005, Raised i.e. lisse, opening parenthesis: \inserted{(i.e. lisse)}.
+- 143_scan005D29, 143_scan005, Parenthesis after notera, par: par.
+- 143_scan006_D13, 143_scan006, Display (17), curved leader beneath T: Curved directed leader from below T to the top-left of the lim expression..
+- 143_scan006_D18, 143_scan006, Cancelled marginal note, opening conditional clause: \deleted{il faut supposer $\chi=1$}.
+- 143_scan006_D19, 143_scan006, Cancelled marginal note, connective candidate: \deleted{\unsure{si l'on veut}}.
+- 143_scan006_D20, 143_scan006, Cancelled marginal note, interpréter ça par candidate: \deleted{\unsure{interpréter ça par}}.
+- 143_scan006_D21, 143_scan006, Cancelled marginal note, lower extended candidate: \deleted{\unsure{purement arithmétique}}.
+- 143_scan006_D23, 143_scan006, Cancelled marginal note, terminal detached points: \deleted{\unsure{\dots}}.
+- 143_scan007D21, 143_scan007, Lower note, point after trouve: trouve. alors.
+
+### 4. Drawings and diagrams
+
+- 142_scan101D10, 142_scan101, Upper margin, full extent of the rule beneath sur I: \begin{tikzpicture}[baseline=(surI.base),line cap=round]<br>\node[inner sep=0pt] (surI) at (0,0) {sur $I$.};<br>\draw[line width=.35pt] (-1.40,-.15)<br> ..controls(-.50,-.27)and(.74,-.22)..(1.55,-.12);<br>\end{tikzpicture}.
+- 142_scan101D41, 142_scan101, Condition 4, separated double-underlines and their right-hand scope: (\uuline{pas néc.} \uuline{un $X$-morphisme} !).
+- 142_scan101D52, 142_scan101, Condition 3, terminal geometry of the displayed connector: \mathrel{\begin{tikzpicture}[baseline=-.35ex,line cap=round,line join=round]<br>\draw[line width=.4pt] (0,0)--(.88,.055)<br> ..controls(.92,.06)and(.94,.09)..(.96,.11)--(1.015,.035);<br>\end{tikzpicture}}.
+- 142_scan101A03, 142_scan101, Condition 4, first restriction sign after X-prime_1: I'_1=X'_1\mathrel{\begin{tikzpicture}[baseline=-.50ex,line cap=round]<br>\draw[line width=.4pt] (0,-.17)--(0,.21);<br>\draw[line width=.4pt] (0,0)--(.10,.01);<br>\end{tikzpicture}} I.
+- 142_scan101A04, 142_scan101, Condition 4, curved attachment beneath inserted prolongée: \begin{tikzpicture}[baseline=(deTheta.base),line cap=round]<br>\node[anchor=base west,inner sep=0pt] (deTheta) at (.27,0) {de $\Theta$};<br>\node[anchor=base west,inner sep=0pt] (prolongee) at (-.15,.46) {\inserted{prolongée}};<br>\draw[line width=.35pt] ([xshift=1pt,yshift=-1pt]prolongee.south east)<br> ..controls(1.25,.08)and(.20,.31)..(.05,.16)<br> ..controls(-.01,.12)and(-.03,.07)..(-.03,.01);<br>\end{tikzpicture}.
+- 142_scan102D03, 142_scan102, Upper and right cancelled branch of the diagram: \diagram{\begin{tikzcd}[ampersand replacement=\&,row sep=3em,column sep=4em,<br>execute at end picture={<br>  \path (agA102.east) -- (agB102.west)<br>    coordinate[pos=.12] (agH102a) coordinate[pos=.35] (agH102b)<br>    coordinate[pos=.58] (agH102c) coordinate[pos=.82] (agH102d);<br>  \draw ([yshift=-.22em]agH102a) -- ([yshift=.32em]agH102b)<br>    -- ([yshift=-.22em]agH102b) -- ([yshift=.32em]agH102c)<br>    -- ([yshift=-.22em]agH102c) -- ([yshift=.32em]agH102d);<br>  \path (agB102.south) -- (agD102.north)<br>    coordinate[pos=.10] (agV102a) coordinate[pos=.32] (agV102b)<br>    coordinate[pos=.54] (agV102c) coordinate[pos=.76] (agV102d);<br>  \draw ([xshift=-.35em]agV102a) -- ([xshift=.35em]agV102a)<br>    -- ([xshift=-.35em]agV102b) -- ([xshift=.35em]agV102b)<br>    -- ([xshift=-.35em]agV102c) -- ([xshift=.35em]agV102c)<br>    -- ([xshift=-.35em]agV102d) -- ([xshift=.35em]agV102d);<br>}]<br>\|[alias=agA102]\| X'_1 \arrow[r,"\deleted{f_1}"] \arrow[dr,"f_1"] \&<br>\|[alias=agB102]\| \deleted{\unsure{Y_1}} \arrow[d,"\deleted{f}"] \\<br>X'_2 \arrow[r,"f_2"] \& \|[alias=agD102]\| Y_{\unsure{\deleted{2}\|2}}<br>\end{tikzcd}}.
+- 142_scan102D04, 142_scan102, Live diagonal arrow and its f_1 label: \arrow[dr,"f_1"].
+- 142_scan103_D25, 142_scan103, Membership display: lower bracket beneath T's arguments: \underset{\substack{\text{strate horizontale}\\\text{de }X'_T\text{ qui contient}\\u(x'),u(y')}}{<br>  \tikz[baseline=(term.base)]{<br>    \node[inner sep=0pt] (term) {$T(u x',u y')$};<br>    \draw[line width=.4pt]<br>      ([yshift=-1pt]term.south west) -- ([yshift=-4pt]term.south west)<br>      -- ([yshift=-4pt]term.south east) -- ([yshift=-1pt]term.south east);<br>  }<br>}.
+- 142_scan103_D26, 142_scan103, Formula (54), extent of the underbrace: \widehat f\underbrace{\bigl(g^T_{y',x'}(u)\bigr)}_{\substack{\rotatebox{-90}{$\in$}\\\widehat{\pi}_1(X,T)}}.
+- 142_scan103_A02, 142_scan103, Small baseline trace between X prime_T and si, below the inserted T adjacents: $x',y'\in X'_T$ \unsure{\tikz[baseline=0pt,x=1ex,y=1ex]{<br>  \draw[line width=.45pt] (.6,.8) -- (.32,.58)<br>    .. controls (-.05,.55) and (-.18,.2) .. (.05,.08)<br>    .. controls (.38,-.02) and (.4,.3) .. (.28,.44)<br>    .. controls (.35,-.1) and (.15,-.5) .. (.05,-.7);<br>}} \inserted{$T$ adjacents;}.
+- 142_scan104A01, 142_scan104, Lower prose, connector between X prime and X after f:: f:X'\mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1em,y=1em]\draw[line width=.4pt,line cap=round] (0,0) -- (1.35,.10) .. controls (1.40,.10) and (1.42,.08) .. (1.43,-.04);\end{tikzpicture}}}}X.
+- 142_scan104A02, 142_scan104, Marginal note, T-to-X connector after défini par: T\mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1em,y=1em]\draw[line width=.4pt,line cap=round] (0,0) -- (1.35,0) .. controls (1.40,0) and (1.42,-.02) .. (1.43,-.12);\end{tikzpicture}}}}X.
+- 142_scan104A03, 142_scan104, Marginal note, final connector from pi to the permutation-group sign: \pi\mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1em,y=1em]\draw[line width=.4pt,line cap=round] (0,0) -- (1.6,.06);\draw[line width=.65pt,line cap=round] (1.6,0) -- (1.6,.13);\end{tikzpicture}}}}\mathfrak S_E.
+- 142_scan106_D02, 142_scan106, Figure 1, pale circle construction at infinity: \draw[gray!40,line width=.3pt] (430,185) .. controls (438,119) and (548,125) .. (546,191) .. controls (536,266) and (420,261) .. (430,185);.
+- 142_scan106_D03, 142_scan106, Figure 1, pale circle construction at zero: \draw[gray!40,line width=.3pt] (249,378) .. controls (250,311) and (340,298) .. (337,402) .. controls (328,454) and (238,441) .. (249,378);.
+- 142_scan106_D04, 142_scan106, Figure 1, pale circle construction at one: \draw[gray!40,line width=.3pt] (660,415) .. controls (659,328) and (766,325) .. (771,379) .. controls (785,460) and (676,473) .. (660,415);.
+- 142_scan106_D05, 142_scan106, Figure 2, pale round construction at infinity: \draw[gray!40,line width=.3pt] (1309,205) .. controls (1313,135) and (1200,130) .. (1191,203) .. controls (1194,283) and (1305,284) .. (1309,205);.
+- 142_scan106_D07, 142_scan106, Figure 3, pointed ending on upper-right side of the zero circle: \draw (320,807)--(325,820)--(328,809);.
+- 142_scan106_D08, 142_scan106, Figure 4, inner return stroke at lower-left of the one circle: \draw (1364,886) .. controls (1371,902) and (1391,910) .. (1406,905);.
+- 142_scan106_D09, 142_scan106, Figure 4, small outward hook on upper-right of the one circle: \draw (1464,810) .. controls (1476,816) and (1474,824) .. (1466,834);.
+- 142_scan106_D10, 142_scan106, Figure 5, pale construction contour of the zero circle: \draw[gray!40,line width=.3pt] (433,1254) .. controls (448,1178) and (321,1173) .. (320,1254) .. controls (320,1335) and (426,1340) .. (438,1279);.
+- 142_scan106_A01, 142_scan106, Figure 1, interior marker just below-left of the label 0: \node at (300,376) {$0$}; \draw[line width=.35pt] (287,389) circle (2.8);.
+- 142_scan106_A02, 142_scan106, Figure 1, small interior marker below the label 1: \node at (716,375) {$1$}; \draw[line width=.55pt] (713.5,398) .. controls (713.2,393) and (718.6,392.7) .. (718.7,397.2);.
+- 142_scan106_A03, 142_scan106, Figure 1, right end of the upper arc labelled lambda^1_+: \draw[->] (765,374) .. controls (746,308) and (662,320) .. (658,404);<br>% Literal short returning hook at the right endpoint; no second arrowhead asserted.<br>\draw (765,374) .. controls (763,370) and (758,370) .. (754,372);.
+- 142_scan106_A04, 142_scan106, Figure 5, separate dark short upright with a hooked lower end at the right side of the one-circle: \draw[gray!40,line width=.3pt] (692,1218)--(793,1189);<br>% Separate short upright/hooked residue on the pale chord, without vertex semantics.<br>\node[anchor=base west,inner sep=0,outer sep=0] at (789,1187) {\unsure{\begin{tikzpicture}[x=.0072cm,y=-.0072cm,line width=.45pt,line cap=round,line join=round,baseline=0pt]\draw (0,-5) .. controls (1.5,-3) and (1.3,1) .. (1,3) .. controls (2,6) and (5,4.5) .. (4,2);\end{tikzpicture}}};.
+- 142_scan108D01, 142_scan108, Upper sphere, lower-left meridian incident with the circle at 1: \draw[<-] (-2.39,-0.98) .. controls (-2.04,-2.3) and (-1.25,-3.15) .. (-0.72,-3.2);.
+- 142_scan108D02, 142_scan108, Upper sphere, four short arcs around 1: \draw[<->] (-2.43,-0.12) .. controls (-2.22,-0.25) and (-2.12,-0.43) .. (-2.12,-0.61);<br>\draw[<->] (-2.15,-0.76) .. controls (-2.26,-0.91) and (-2.45,-0.93) .. (-2.53,-0.87);<br>\draw[<->] (-2.62,-0.76) .. controls (-2.78,-0.56) and (-2.76,-0.46) .. (-2.69,-0.35);<br>\draw[<->] (-2.72,-0.25) .. controls (-2.62,-0.08) and (-2.53,-0.04) .. (-2.48,-0.05);.
+- 142_scan108D03, 142_scan108, Upper sphere, small centre mark inside the circle at 1: \draw (-2.48,-0.53) circle (0.025);.
+- 142_scan108D04, 142_scan108, Upper sphere, centre mark inside the circle at i: \draw (0.55,-0.78) circle (0.025);.
+- 142_scan108D11, 142_scan108, Lower sphere, multiply traced 0-like mark above the north polar loop: \node at (0.03,2.93) {$\unsure{0}$};<br>\draw (0.03,2.92) ellipse (0.17 and 0.09);<br>\draw[thin] (0.015,2.918) ellipse (0.135 and 0.072);<br>\draw[thin] (0.045,2.93) ellipse (0.092 and 0.055);.
+- 142_scan108D12, 142_scan108, Lower sphere, short chord-like arrow across the north polar loop: \draw[->,thick] (-0.31,2.53) -- (-0.02,2.64);.
+- 142_scan108D13, 142_scan108, Lower sphere, additional leftward head on the back rim of the north polar loop: \draw[->,thick] (0.20,2.69) -- (-0.01,2.67);.
+- 142_scan108D14, 142_scan108, Lower sphere, dashed rear meridian arriving at the south polar loop: \draw[dashed,->] (-0.34,2.48) .. controls (-0.93,1.87) and (-0.92,0.84) .. (-0.88,0.18) .. controls (-0.84,-1.3) and (-0.64,-2.26) .. (-0.3,-2.40);.
+- 142_scan108D16, 142_scan108, Lower sphere, faint residue above-left of the live -i: \node[gray] at (-1.37,0.34) {$\unsure{-i}$};<br>\draw[gray,thin] (-1.56,0.32) .. controls (-1.52,0.49) and (-1.27,0.53) .. (-1.17,0.33);<br>\draw[gray,thin] (-1.13,0.28) .. controls (-1.08,0.19) and (-1.12,0.12) .. (-1.2,0.12);.
+- 142_scan108A01, 142_scan108, Upper sphere, pale left interior contour and separate lower fragments: % Pale left interior construction contour and separated lower fragments.<br>\draw[gray,thin] (-0.97,2.90) .. controls (-1.72,2.30) and (-2.07,0.85) .. (-2.04,-0.43);<br>\draw[gray,thin] (-1.91,-2.05) .. controls (-1.78,-2.31) and (-1.64,-2.48) .. (-1.48,-2.63);<br>\draw[gray,thin] (-1.43,-2.69) .. controls (-1.24,-2.88) and (-1.02,-3.03) .. (-0.88,-3.08);<br>.
+- 142_scan108A02, 142_scan108, Upper sphere, close pale right interior contour pair: % Two close pale right interior contours, ending above the back equator.<br>\draw[gray,thin] (0.83,2.98) .. controls (1.36,2.65) and (1.43,1.54) .. (1.31,0.64);<br>\draw[gray,thin] (0.90,2.97) .. controls (1.43,2.61) and (1.48,1.54) .. (1.37,0.66);<br>.
+- 142_scan108A03, 142_scan108, Lower sphere, downward head at the front vertical path’s i junction: \draw[<->,thick] (0.78,-0.56) .. controls (0.91,0.3) and (0.92,1.78) .. (0.57,2.48);.
+- 142_scan108A04, 142_scan108, Lower sphere, pale stem/foot and detached point immediately right of the live i: % Additional pale stem/foot and detached point beside i; no deletion or chronology inferred.<br>\draw[gray,thin] (1.17,-0.71) .. controls (1.14,-0.77) and (1.14,-0.84) .. (1.18,-0.86) -- (1.29,-0.84);<br>\fill[gray] (1.29,-0.65) circle (0.016);<br>.
+- 142_scan109D01, 142_scan109, Secretary’s signature: outer flourish and rising tail: \draw[line width=.35pt] (445,27)<br>  .. controls (381,37) and (146,107) .. (50,143)<br>  .. controls (26,151) and (27,158) .. (62,153)<br>  .. controls (164,137) and (417,81) .. (498,60)<br>  .. controls (523,52) and (521,44) .. (484,46)<br>  .. controls (445,46) and (390,51) .. (365,58);.
+- 142_scan109D02, 142_scan109, Secretary’s signature: cursive monogram: \unsure{\begin{tikzpicture}[x=.015cm,y=-.015cm,line width=.35pt]<br>\draw (40,12) .. controls (35,29) and (25,31) .. (17,26);<br>\draw (31,13) .. controls (24,24) and (8,54) .. (2,66)<br>  .. controls (-2,77) and (10,72) .. (17,67);<br>\draw (16,39) .. controls (15,50) and (28,51) .. (23,40);<br>\fill (31,48) circle[radius=.16mm];<br>\draw (50,31) .. controls (54,14) and (65,-3) .. (76,1)<br>  .. controls (92,7) and (78,25) .. (66,25)<br>  .. controls (53,24) and (57,35) .. (61,46)<br>  .. controls (69,61) and (57,73) .. (52,64)<br>  .. controls (48,58) and (53,51) .. (54,48);<br>\fill (79,43) circle[radius=.16mm];<br>\end{tikzpicture}}.
+- 142_scan110_D09, 142_scan110, Second diagram, downward arrow endpoint: \mathcal{E}\arrow[dd] to \operatorname{Ssgr}(\pi)/\pi.
+- 142_scan110_D13, 142_scan110, Sphere A, upper-left small equatorial loop: Small circle with point and short rim chevron.
+- 142_scan110_D15, 142_scan110, Sphere B, left outer meridian direction: Arrow from lower 0 toward upper infinity.
+- 142_scan110_D28, 142_scan110, Sphere C, dashed b_1^- route across equatorial band: Route continues from Q_1 across band to lower polar circle.
+- 142_scan110_D29, 142_scan110, Sphere C, polar construction stroke: Very thin near-vertical stroke between polar loops.
+- 142_scan110_D34, 142_scan110, Sphere D, circle-1 turning heads, corrected position of second head: \draw[->,thick] (1.48,0.01) arc (90:180:0.27 and 0.3);<br>\draw[->,thick] (1.21,-0.29) arc (180:270:0.27 and 0.3);.
+- 142_scan110_D35, 142_scan110, Sphere D, light meridian construction curves: Additional thin inner-left and outer-right polar curves.
+- 142_scan110_D38, 142_scan110, Cancelled sphere E, central infinity and point: \deleted{\infty} above separate dark point in central circle.
+- 142_scan110_D42, 142_scan110, Cancelled sphere E, directed left equatorial arcs: Thick arrow into central circle along rear arc; rightward arrow on left front arc.
+- 142_scan110_D43, 142_scan110, Cancelled sphere F, 0/infinity/1 connectors: Three branches meeting at a junction below infinity.
+- 142_scan110_D44, 142_scan110, Cancelled sphere F, hatched regions: Close hatching in broad left sector and thin right wedge.
+- 142_scan110_D45, 142_scan110, Cancelled sphere F, long crossing stroke extent: Diagonal ends at front equatorial region (0.65,-0.12).
+- 142_scan110_D46, 142_scan110, Mapping table, first-row shaft with crest and downturned terminal: 0,\infty\,\tikz[baseline=-0.4ex,x=1em,y=1em]{\draw (0,0) .. controls (0.34,0) and (0.65,0.01) .. (0.80,0.07) -- (0.88,0.08) -- (0.87,-0.10);\draw[thick] (0.79,0.07) -- (0.81,0.16) -- (0.89,0.09);}\,\infty.
+- 142_scan110_A01, 142_scan110, Upper upright square, left vertical connector: \arrow[d, no head, to path={(\tikztostart) -- coordinate[pos=0.78] (leftbranch110) (\tikztotarget) (leftbranch110) -- ++(0.12,-0.11) \tikztonodes}].
+- 142_scan110_A02, 142_scan110, Isolated curved pen stroke between spheres A and B: \draw (2.42,0.02) .. controls (2.56,0.25) and (2.76,0.45) .. (2.96,0.58);.
+- 142_scan110_A03, 142_scan110, Sphere A, upper-left outer contour head: \draw[thick] (-1.59,0.63) -- (-1.48,0.80) -- (-1.44,0.61);.
+- 142_scan110_A04, 142_scan110, Sphere A, lower-right outer-side route head: \draw[thick] (1.25,-0.71) -- (1.34,-0.53) -- (1.43,-0.69);.
+- 142_scan110_A05, 142_scan110, Sphere B, upper-right contour taper/return and unsupported top terminal: \draw (1.83,0.2) .. controls (1.76,1.0) and (1.25,1.66) .. (0.25,1.83);<br>\draw[thick] (1.18,1.42) -- (1.46,1.10) .. controls (1.32,1.15) and (1.25,1.25) .. (1.20,1.31);.
+- 142_scan110_A06, 142_scan110, Sphere C, far-left equatorial turn head: \draw[thick] (-2.00,0.04) -- (-1.90,-0.09) -- (-1.82,0.03);.
+- 142_scan110_A07, 142_scan110, Sphere C, lower-left equatorial return head: \draw[thick] (-1.72,-0.14) -- (-1.59,-0.25) -- (-1.74,-0.26);.
+- 142_scan110_A08, 142_scan110, Sphere C, upper-left turning head on circle labelled 1: \draw[thick] (0.86,-0.08) -- (0.84,-0.22) -- (0.99,-0.17);.
+- 142_scan110_A10, 142_scan110, Sphere D, small opening of infinity loop below left junction: \draw[thick] (-0.37,0.22) arc (180:-160:0.3);.
+- 142_scan110_A11, 142_scan110, Cancelled sphere E, upper-right contour branch: \draw[thick] (0.84,0.91) -- (1.02,0.68) .. controls (0.92,0.73) and (0.87,0.78) .. (0.84,0.80);.
+- 142_scan110_A12, 142_scan110, Cancelled sphere E, lower-left long angular/parallel return: \draw[thick] (-1.00,-0.54) -- (-0.89,-0.89) -- (-0.75,-1.04);<br>\draw[thick] (-0.89,-0.89) .. controls (-0.94,-0.81) and (-0.96,-0.70) .. (-0.95,-0.62);.
+- 142_scan110_A13, 142_scan110, Cancelled sphere E, bottom opening of small loop beside 1: \draw (0.94,-0.25) .. controls (0.79,-0.20) and (0.80,0.03) .. (0.95,0.05) .. controls (1.15,0.08) and (1.16,-0.10) .. (1.14,-0.18);.
+- 142_scan110_A14, 142_scan110, Cancelled sphere E, right terminal head of small loop beside 1: \draw[thick] (1.04,-0.13) -- (1.14,-0.18) -- (1.16,-0.08);.
+- 142_scan110_A15, 142_scan110, Cancelled sphere F, isolated dash just right/below infinity point: \draw[thick] (0.36,0.34) -- (0.43,0.32);.
+- 142_scan110_A16, 142_scan110, Cancelled sphere F, three separated exterior strokes below lower rim: \draw[thick] (-0.13,-1.74) .. controls (-0.05,-1.79) and (0.01,-1.84) .. (0.02,-1.90);<br>\draw[thick] (0.16,-2.02) -- (0.29,-2.12);<br>\draw[thick] (0.42,-2.24) -- (0.55,-2.35);.
+- 142_scan110_A18, 142_scan110, Mapping table, third-row tail bar and short right cap: -1\,\tikz[baseline=-0.4ex,x=1em,y=1em]{\draw (0,0) -- (0.90,0.03);\draw (0,-0.13) -- (0,0.13);\draw[thick] (0.90,0.10) -- (0.90,-0.08);}\,1.
+- 142_scan111D01, 142_scan111, Upper-right sequence: initial object and shaft: \cdot \arrow[r,dash] \& V(J).
+- 142_scan111D03, 142_scan111, Tautological sequence: final shaft: \mathcal{O}_\Sigma(1) \arrow[r,dash] \& 0.
+- 142_scan111D43, 142_scan111, Insertion above classe de: curved attachment stroke: \inserted{\figure{\begin{tikzpicture}[x=1cm,y=1cm]<br>\node[anchor=west] (eq) at (0,0.7) {$e_i-e_j=\unsure{e_{\omega^2i}-e_{\omega i}}$};<br>\node[anchor=west] (cl) at (-0.4,0) {classe de $\deleted{\unsure{\varphi_{ji}\|V(J)}}$ dans $V(J)\ \text{mod }Q_i$};<br>\draw (-0.05,0.91) .. controls (-0.34,0.84) and (-0.37,0.47) .. (-0.05,0.42)<br> .. controls (0.55,0.36) and (1.52,0.47) .. (1.78,0.36)<br> .. controls (1.96,0.27) and (1.97,0.2) .. (1.98,0.13);<br>\end{tikzpicture}}}.
+- 142_scan111D63, 142_scan111, Open contour and insertion stem around tilde R_i: \begin{tikzpicture}[baseline=(base.base),x=1cm,y=1cm]<br>\node[inner sep=0pt] (base) at (-0.46,-0.57) {$R_i$};<br>\node[inner sep=0pt] (r) at (0,0) {$\inserted{\widetilde{R}_i}$};<br>\draw (-0.25,-0.19)<br> .. controls (-0.43,-0.02) and (-0.33,0.26) .. (-0.03,0.28)<br> .. controls (0.27,0.31) and (0.39,0.16) .. (0.36,-0.06)<br> .. controls (0.34,-0.22) and (0.16,-0.27) .. (0.03,-0.28)<br> .. controls (-0.06,-0.29) and (-0.13,-0.33) .. (-0.13,-0.42)<br> -- (-0.13,-0.58);<br>\end{tikzpicture}.
+- 142_scan111_A01, 142_scan111, Upper-right sequence, right terminal of the connector labelled somme: \mathcal{O}^J \arrow[r,"\text{somme}"',/tikz/arrows={-\|}] \& \mathcal{O}.
+- 142_scan112D09, 142_scan112, Initial decoration cluster, small dark dot: \node at (.66,.58) {$\scriptstyle\unsure{\cdot}$};.
+- 142_scan112D22, 142_scan112, Upper diagram, vertical equality above intermediate quotient: \Sigma_1^{\substack{*\\*}*}\;\Vert\;\Sigma_n^{\substack{*\\*}*}/D_n.
+- 142_scan112D23, 142_scan112, Upper diagram, vertical isomorphism below intermediate quotient: \rotatebox{90}{$\simeq$}.
+- 142_scan112D27, 142_scan112, Curved leader from the upper diagram lower-left node to marginal parenthesis: Curved arrow from the Sigma_2n node toward (on n'a enlevé...).
+- 142_scan112D39, 142_scan112, First lower quotient diagram, arrow from right node to central quotient: \Sigma_n^{\substack{*\\*}*}/D_n^+\longrightarrow\Sigma^{\substack{*\\*}*}/D_n.
+- 142_scan112D41, 142_scan112, Guide arrow from central quotient to enclosed regrouping: Curved guide toward upper-left edge of the enclosure.
+- 142_scan112D49, 142_scan112, Enclosed quotient diagram, lower-right connection: \arrow[dl,dash].
+- 142_scan112D55, 142_scan112, Upper diagram, vertical isomorphism at left: \arrow[dddd,phantom,"\rotatebox{90}{$\simeq$}" description].
+- 142_scan113_D03, 142_scan113, Top drawing, R3 cylinder, central connecting segment: -\widetilde R_3\longrightarrow\widetilde R_3.
+- 142_scan113_D04, 142_scan113, Top drawing, R3 cylinder, curved right side: -R_3^{\omega'}\longrightarrow R_3^{\omega'}.
+- 142_scan113_D05, 142_scan113, Top drawing, outer-band approach immediately left of the R3 cylinder: \draw[thin,->] (-1.48,2.74) .. controls (-1.29,2.79) and (-1.08,2.84) .. (-0.91,2.8);.
+- 142_scan113_D06, 142_scan113, Top drawing, faint inner-band and upper-left R3-loop construction strokes: Faint short angular and retraced contours retained beside and above the R_{3,\omega} end of the inner loop.
+- 142_scan113_D09, 142_scan113, Top drawing, Q3 narrow lens, directions on both sides: \text{left side: }\overset{\unsure{\sim}}{Q}_3^{\omega'}\longrightarrow Q_3^\omega;\quad\text{right side: upward return; repeated heads retained}.
+- 142_scan113_D10, 142_scan113, Top drawing, R1 cylinder, slant of the whole local construction: \begin{scope}[shift={(-4.7,-2.05)},rotate=-43].
+- 142_scan113_D11, 142_scan113, Top drawing, R1 cylinder, lower/outer rim arrowheads: Both arcs retain opposed heads; the extra short downward direction stroke on the upper arc is also reproduced.
+- 142_scan113_D12, 142_scan113, Top drawing, R1 cylinder, upper/inner rim extra heads: Opposed head retained at the left of the lower inner arc, with the additional downward-right head on the upper arc.
+- 142_scan113_D15, 142_scan113, Top drawing, R2 cylinder, left connecting side: Opposed upward and downward left-side arrows.
+- 142_scan113_D18, 142_scan113, Twelve-point circle, top outer segment: -R_1^\omega\longrightarrow R_2^{\omega'}.
+- 142_scan113_D19, 142_scan113, Twelve-point circle, upper-right intervening outer segment: R_3^\omega\longrightarrow -R_1^{\omega'}.
+- 142_scan113_D20, 142_scan113, Twelve-point circle, lower-right intervening outer segment: -R_2^\omega\longrightarrow R_3^{\omega'}.
+- 142_scan113_D21, 142_scan113, Twelve-point circle, lower-left intervening outer segment: -R_3^\omega\longrightarrow R_1^{\omega'}.
+- 142_scan113_D22, 142_scan113, Twelve-point circle, paired right-hand R3 arcs: \text{outer }R_3^{\omega'}\longrightarrow R_3^\omega;\quad\text{inner }R_3^\omega\longrightarrow R_3^{\omega'}.
+- 142_scan113_D23, 142_scan113, Twelve-point circle, faint construction lines beside the upper and lower-left radii: Faint doubled/wavy radii and short angular pencil construction strokes reproduced.
+- 142_scan113_A01, 142_scan113, Upper drawing, pale crossed and looped trace immediately left of the dark Q3 cross: \draw[thin,black!55] (-0.165,-1.535)--(-0.075,-1.625);<br>\draw[thin,black!55] (-0.135,-1.635)..controls (-0.12,-1.59) and (-0.1,-1.56)..(-0.08,-1.545);<br>\draw[thin,black!45] (-0.09,-1.545)..controls (-0.05,-1.51) and (-0.085,-1.505)..(-0.1,-1.54)..controls (-0.13,-1.56) and (-0.12,-1.58)..(-0.085,-1.565);<br>\draw (0,-1.56) ++(-0.045,-0.06) -- ++(0.09,0.12);\draw (0,-1.56) ++(-0.04,0.06) -- ++(0.08,-0.12);.
+- 142_scan113_A02, 142_scan113, Small lower circle, interruption and short upturned endpoint on its lower contour: \draw (-71:1.1) arc (-71:287.5:1.1);<br>\draw (-71:1.1)--++(-0.012,0.035);.
+- 142_scan113_A03, 142_scan113, R2 cylinder, small upward projection on the back of the upper rim and detached oblique dash to its left: \draw[->,thick] (0.62,0.52) -- (-0.48,0.47);<br>\fill (0.015,0.54)--(0.035,0.66)--(0.10,0.55)--cycle;<br>\draw[thick,line cap=round] (-0.12,0.57)--(-0.10,0.60);.
+- 142_scan113_A04, 142_scan113, R2 cylinder, direction at the far-left end of the long front/lower curve of the upper rim: \draw[<-,thick] (-0.6,0.29) -- (0.6,0.34);.
+- 142_scan113_A05, 142_scan113, R2 cylinder, interrupted short mark below the upper rim, left of the central tilded R2 label: \draw[thick,line cap=round] (-0.64,0.16)--(-0.44,0.10);<br>\draw[thick,line cap=round] (-0.64,0.16)--(-0.65,0.20);<br>\draw[thin,black!40] (-0.44,0.10)--(-0.34,0.09);<br>\fill (-0.35,0.06)--(-0.36,0.09)--(-0.32,0.13)--(-0.21,0.13)--(-0.27,0.06)--cycle;<br>\node[rotate=-12] at (0,0.27) {$\widetilde{R}_2$};.
+- 142_scan113_A06, 142_scan113, Inner R1 point construction, short lower inner return beside the existing outer lower arrow: \draw[->,thick] (0.08,-0.4) .. controls (0.4,-0.53) and (0.49,-0.29) .. (0.52,-0.19);<br>\draw[->] (0.47,-0.26) .. controls (0.43,-0.37) and (0.34,-0.43) .. (0.23,-0.41);.
+- 142_scan113_A07, 142_scan113, R2 cylinder, interrupted back contour of the lower rim and raised cap: \draw[thick] (0.72,-0.45) arc (0:-180:0.72 and 0.15);<br>\draw[->,thick] (0.18,-0.30)..controls (-0.15,-0.28) and (-0.49,-0.32)..(-0.70,-0.44);<br>\draw[thick,line cap=round] (0.18,-0.30)--(0.18,-0.22);<br>\draw[thin,black!35] (0.18,-0.30)..controls (0.23,-0.30) and (0.28,-0.31)..(0.34,-0.32);<br>\draw[thick] (0.34,-0.32)..controls (0.54,-0.34) and (0.66,-0.38)..(0.72,-0.45);.
+- 142_scan114D23, 142_scan114, Drawing, central loop about r: \draw[->,very thick] (6.77,-7.54) arc[start angle=135,end angle=465,x radius=.38,y radius=.44];.
+- 142_scan114D24, 142_scan114, Drawing, left outer slanted segment from near 0 toward left 1: \draw[<->,thick] (2.45,-6.45)--(3.1,-7.25);.
+- 142_scan114D25, 142_scan114, Drawing, short upward connector just above R_a: R_a\ (1); \draw[->,thick] (9.55,-8.1) to[out=85,in=-85] (9.5,-7.7);.
+- 142_scan114D26, 142_scan114, Drawing, short upward connector near the outer right 0: \draw[->,thick] (11.3,-6.05) to[out=110,in=-70] (11.05,-5.72);.
+- 142_scan114D27, 142_scan114, Drawing, curved connector immediately above lower-right infinity: \draw[<->,thick] (11.3,-10.3) to[out=-130,in=0] (10.7,-10.4);.
+- 142_scan114D28, 142_scan114, Drawing, lower left side of the bottom triangular extension: \draw[thin] (S)--(B);.
+- 142_scan114A01, 142_scan114, Drawing, detached pale fragment below/right of far-left infinity and beneath LL–S baseline: % Detached pale trace below the LL--S baseline; its role is unresolved.<br>\draw[thin,gray,opacity=.55] (.63,-10.37)<br> .. controls (.70,-10.39) and (.75,-10.50) .. (.84,-10.48)<br> .. controls (.96,-10.45) and (1.06,-10.42) .. (1.14,-10.39);.
+- 142_scan115D06, 142_scan115, (7), open enclosure and position of condition: \begin{tikzpicture}[baseline=(relation.base)]<br>  \node[inner xsep=3pt,inner ysep=5pt] (relation)<br>    {$R_r^{i,j}=R_{\sigma_k(r)}^{i,j}\quad\cdot$};<br>  \draw[line width=.45pt] (relation.north west) -- (relation.south west)<br>    -- (relation.south east) -- (relation.north east);<br>  \node[anchor=west,inner sep=0pt,xshift=-1pt] at (relation.east)<br>    {$k\notin\{i,j\}$};<br>\end{tikzpicture}.
+- 142_scan115D12, 142_scan115, proche paragraph, two insertion connectors; contour of the sommet leader: du<br>\begin{tikzpicture}[baseline=(baseR.base)]<br>  \node[anchor=base west,inner sep=0pt] (baseR) at (0,0) {$R_r^i$};<br>  \node[anchor=base west,inner sep=0pt] at (-.20,.59) {\inserted{sommet}};<br>  \node[anchor=base west,inner sep=0pt] at (.74,.33) {\inserted{de $r$}};<br>  \draw[line width=.4pt] (-.10,.06) .. controls (-.12,.35) and (.02,.50) .. (.22,.43)<br>    .. controls (.40,.36) and (.59,.40) .. (.68,.53);<br>  \draw[line width=.4pt] (.79,.24) .. controls (.78,.13) and (.67,.06) .. (.64,-.02);<br>\end{tikzpicture}.
+- 142_scan115D18, 142_scan115, start of contour paragraph, insertion connector beneath les a_r^i: \deleted{qui}<br>\begin{tikzpicture}[baseline=(entourent.base)]<br>  \node[anchor=base west,inner sep=0pt] (entourent) at (0,0) {entourent};<br>  \node[anchor=base west,inner sep=0pt] at (-.25,.52) {\inserted{les $a_r^i$}};<br>  \draw[line width=.4pt] (-.08,.04) .. controls (-.08,.27) and (.18,.37) .. (.43,.35)<br>    .. controls (.65,.34) and (.88,.39) .. (.91,.47);<br>\end{tikzpicture}.
+- 142_scan116_D26, 142_scan116, Triangle, horizontal inner b_r^0 segment and its rising continuation: \draw[<->] (.47,.2) .. controls (.8,.2) and (1.04,.2) .. (1.24,.23); \draw[->] (1.21,.23) .. controls (1.23,.32) and (1.33,.43) .. (1.42,.5);.
+- 142_scan116_D28, 142_scan116, Triangle, separate outer contours and retraced base: Three separately drawn contours, with small pen gaps at the upper apex and near 1, and a second dark stroke along the middle of the base.
+- 142_scan116_D29, 142_scan116, Triangle, dense lower endpoint of the corner arc by 0: \draw[line width=.85pt] (.33,.16)--(.38,.115)--(.41,.205);.
+- 142_scan116_D30, 142_scan116, Triangle, dense cluster beneath the live lower-right 1: \node[inner sep=0pt] at (1.91,-.06) {$\unsure{\vcenter{\hbox{\tikz[x=1mm,y=1mm,line width=.55pt]{<br>    \draw (0,.35) .. controls (-.08,1.03) and (.64,1.25) .. (.91,.59)<br>      .. controls (1.08,.02) and (1.57,.01) .. (1.63,.55)<br>      .. controls (1.69,1.12) and (.91,1.35) .. (.61,.72)<br>      .. controls (.38,.26) and (.15,.02) .. (0,.35);<br>    \draw[line width=.8pt] (-.04,.21)--(1.52,.85);<br>    \draw[line width=.7pt] (.12,.85)--(1.66,.2);<br>    \draw (.31,.09)--(.94,1.05)--(1.38,.08);<br>  }}}}$};.
+- 142_scan116_A01, 142_scan116, Relation (12), four-sided frame around the three underbraced factors and =1: \begin{tikzpicture}[baseline=(eq116.base),line width=.4pt]<br>\node[inner sep=6pt] (eq116) {$\displaystyle<br>\underbrace{(\lambda_r^0)^{-1}a_r^1}_{\underset{=}{\text{def}}\ b_r^\infty}<br>\underbrace{(\lambda_r^\infty)^{-1}a_r^0}_{b_r^1}<br>\underbrace{(\lambda_r^1)^{-1}a_r^\infty}_{b_r^0}=1<br>$};<br>% Four independent pen strokes; all four corners remain open.<br>\draw ([xshift=-1pt,yshift=-1pt]eq116.north west)<br>  -- ([xshift=-3pt,yshift=3pt]eq116.north east);<br>\draw ([xshift=0pt,yshift=-3pt]eq116.north east)<br>  -- ([xshift=3pt,yshift=3pt]eq116.south east);<br>\draw ([xshift=2pt,yshift=-2pt]eq116.south west)<br>  -- ([xshift=3pt,yshift=0pt]eq116.south east);<br>\draw ([xshift=-1pt,yshift=-5pt]eq116.north west)<br>  -- ([xshift=0pt,yshift=0pt]eq116.south west);<br>\end{tikzpicture}.
+- 142_scan117D22, 142_scan117, Drawing, central small lambda-infinity arc: \draw[thick,<->] (2.81,3.85) to[bend right=15] (3.26,3.90);.
+- 142_scan117D23, 142_scan117, Drawing, diagonal from near outer 1 toward the lower transformed R: \draw[thick,<->] (0.54,2.10)--(1.34,1.31);.
+- 142_scan117D24, 142_scan117, Drawing, upper head of lambda_r^1: \draw[thick,->] (3.98,2.56) to[bend right=20] (3.80,2.05); \node[inner sep=0pt,font=\tiny,rotate=-20] at (3.98,2.56) {$\unsure{\blacktriangle}$};.
+- 142_scan117D30, 142_scan117, Drawing, additional overworked residue beside the upper return arrow: \node[inner sep=0pt] at (3.53,3.98) {$\unsure{\tikz[x=.055cm,y=.055cm,baseline=-.5ex]{\draw[line width=.6pt] (0,0)--(1,2.7)--(2.8,.1)--(.3,1.6)--(3,1.8);\draw[line width=.6pt] (.2,2.4)--(2.5,.2) (1.1,-.2)--(2.1,2.4);}}$};.
+- 142_scan117D31, 142_scan117, Drawing, outer 0-to-infinity lower side: \draw[thin] (A)--(F);.
+- 142_scan117_A01, 142_scan117, Opening correction condition / dernière, curved insertion leader: \begin{tikzpicture}[baseline=(condition117.base)]<br>\node[anchor=base west,inner sep=0pt] (condition117) at (0,0) {\deleted{condition}};<br>\node[anchor=south west,inner sep=0pt] (derniere117)<br>  at ([xshift=-4pt,yshift=4pt]condition117.north west) {\inserted{dernière}};<br>\draw[line width=.35pt] ([xshift=-4pt,yshift=-2pt]condition117.west)<br>  .. controls ([xshift=-4pt,yshift=4pt]condition117.north west)<br>  and ([xshift=-1pt,yshift=-1pt]derniere117.south west) .. (derniere117.south west)<br>  -- ([xshift=-1pt,yshift=-1pt]derniere117.south east)<br>  .. controls ([xshift=2pt,yshift=-1pt]derniere117.south east)<br>  and ([xshift=3pt,yshift=0pt]derniere117.south east)<br>  .. ([xshift=2pt,yshift=2pt]derniere117.south east);<br>\end{tikzpicture}.
+- 142_scan117_A02, 142_scan117, Caption after (13), leader beneath resp. (i,i−1): \begin{tikzpicture}[baseline=(type117.base)]<br>\node[anchor=base west,inner sep=0pt] (type117) at (0,0) {$(i,i+1)$,};<br>\node[anchor=south west,inner sep=0pt] (resptype117)<br>  at ([xshift=1pt,yshift=6pt]type117.north east) {\inserted{resp. $(i,i-1)$}};<br>\draw[line width=.35pt] ([xshift=-4pt,yshift=-2pt]type117.base east)<br>  .. controls ([xshift=-5pt,yshift=3pt]type117.east)<br>  and ([xshift=-4pt,yshift=-2pt]resptype117.south west)<br>  .. ([xshift=0pt,yshift=-1pt]resptype117.south west)<br>  -- ([xshift=-1pt,yshift=-1pt]resptype117.south east)<br>  .. controls ([xshift=2pt,yshift=-1pt]resptype117.south east)<br>  and ([xshift=3pt,yshift=1pt]resptype117.south east)<br>  .. ([xshift=2pt,yshift=2pt]resptype117.south east);<br>\end{tikzpicture}.
+- 142_scan117_A03, 142_scan117, Caption after (13), leader beneath resp. en sens opposé: \begin{tikzpicture}[baseline=(orientation117.base)]<br>\node[anchor=base west,inner sep=0pt] (orientation117) at (0,0) {$r$. On a les};<br>\node[anchor=south west,inner sep=0pt] (respsens117)<br>  at ([xshift=2pt,yshift=4pt]orientation117.north west) {\inserted{resp. en sens opposé}};<br>\draw[line width=.35pt] (.17,-.09)<br>  .. controls (.17,.15) and (.25,.20) .. (.50,.23)<br>  .. controls (1.0,.30) and ([xshift=-6pt,yshift=-2pt]respsens117.south east)<br>  .. ([xshift=-1pt,yshift=-1pt]respsens117.south east)<br>  .. controls ([xshift=2pt,yshift=-1pt]respsens117.south east)<br>  and ([xshift=3pt,yshift=1pt]respsens117.south east)<br>  .. ([xshift=2pt,yshift=2pt]respsens117.south east);<br>\end{tikzpicture}.
+- 142_scan117_A04, 142_scan117, Relation (14), first frame joins: \draw[line width=.35pt] ([xshift=0pt,yshift=1pt]eq14a.north west)<br>  -- ([xshift=1pt,yshift=2pt]eq14a.north east)<br>  -- ([xshift=3pt,yshift=4pt]eq14a.south east);<br>\draw[line width=.35pt] ([xshift=-2pt,yshift=-2pt]eq14a.north west)<br>  -- ([xshift=-1pt,yshift=1pt]eq14a.south west);<br>\draw[line width=.35pt] ([xshift=0pt,yshift=-1pt]eq14a.south west)<br>  -- ([xshift=3pt,yshift=-1pt]eq14a.south east)<br>  -- ([xshift=3pt,yshift=1pt]eq14a.south east);.
+- 142_scan117_A05, 142_scan117, Relation (14), second frame joins: \draw[line width=.35pt] ([xshift=1pt,yshift=2pt]eq14b.north west)<br>  -- ([xshift=1pt,yshift=3pt]eq14b.north east);<br>\draw[line width=.35pt] ([xshift=-1pt,yshift=0pt]eq14b.north west)<br>  -- ([xshift=0pt,yshift=-1pt]eq14b.south west)<br>  -- ([xshift=-5pt,yshift=-1pt]eq14b.south east);<br>\draw[line width=.35pt] ([xshift=2pt,yshift=0pt]eq14b.north east)<br>  -- ([xshift=4pt,yshift=-1pt]eq14b.south east)<br>  -- ([xshift=1pt,yshift=-1pt]eq14b.south east);.
+- 142_scan117_A06, 142_scan117, Relation (14), fine oblique trace at the first frame’s lower side: \draw[line width=.18pt] ([xshift=15pt,yshift=-1.4pt]eq14a.south)<br>  -- ([xshift=19pt,yshift=4.6pt]eq14a.south);.
+- 142_scan117_A07, 142_scan117, Drawing, separated pencil-stroke tips at the outer vertex labelled 1: \draw[gray] (G)--(.17,2.55);<br>\draw[gray] (.15,2.38)--(C);<br>\draw[gray] (.18,2.29)--(A);.
+- 142_scan117_A08, 142_scan117, Drawing, upper horizontal pencil overhang at G: \draw[gray] (G)--(.03,4.4);.
+- 142_scan117_A09, 142_scan117, Drawing, faint short oblique inside the upper-left pencil corner: \draw[gray!45,thin] (.23,4.34)<br>  .. controls (.29,4.31) and (.35,4.18) .. (.34,4.06);.
+- 142_scan117_A10, 142_scan117, Drawing, downturned hook of the upper incoming pencil segment near infinity: \draw[gray] (G)--(2.70,4.26)<br>  .. controls (2.78,4.25) and (2.81,4.18) .. (2.76,4.12);<br>\draw[gray!45,thin] (2.76,4.12)<br>  .. controls (2.83,4.10) and (2.88,4.19) .. (C);.
+- 142_scan118D02, 142_scan118, Opening insertion où: omitted curved attachment stroke: \begin{tikzpicture}[baseline=(one.base)]<br>\node[anchor=base west,inner sep=0pt] (one) at (.65,0) {$1$};<br>\node[anchor=base west,inner sep=0pt] at (0,.40) {\inserted{où}};<br>\draw[line width=.4pt] (.52,.45) .. controls (.57,.30) and (.29,.16) .. (.16,.08);<br>\end{tikzpicture}.
+- 142_scan118D05, 142_scan118, Display (14), short left curly stroke beside R: \begin{tikzpicture}[baseline=(rij.base)]<br>\node[inner sep=0pt] (rij) at (0,0) {$R_r^{i,j}$};<br>\draw[line width=.55pt] (-.48,.04) .. controls (-.51,-.09) and (-.51,-.15) .. (-.45,-.17)<br>  .. controls (-.42,-.28) and (-.44,-.45) .. (-.53,-.45);<br>\end{tikzpicture}.
+- 142_scan118D14, 142_scan118, Cancelled (16), local formula frame geometry: \draw[line width=.45pt] ([xshift=4pt,yshift=3pt]oldformula.north west)--([xshift=3pt,yshift=3pt]oldformula.north east); \draw[line width=.45pt] ([xshift=-3pt,yshift=-2pt]oldformula.north west)--([xshift=-2pt,yshift=-7pt]oldformula.base west); \draw[line width=.45pt] ([xshift=-1pt,yshift=-8pt]oldformula.base west)--([xshift=4pt,yshift=-4pt]oldformula.base east); \draw[line width=.45pt] ([xshift=2pt,yshift=0pt]oldformula.north east)--([xshift=7pt,yshift=-1pt]oldformula.base east);.
+- 142_scan118D24, 142_scan118, Large tiling, upper-left 0 corner E: \draw[line width=.65pt] (357,1604)--(433,1531)--(502,1647) (350,1617)--(353,1710)--(407,1804);.
+- 142_scan118D25, 142_scan118, Large tiling, upper central infinity corner C: \draw (433,1531)--(502,1647) (522,1648)--(600,1550) (357,1708)--(506,1666) (520,1672)--(589,1787);.
+- 142_scan118D26, 142_scan118, Large tiling, upper-right 0 corner H: \draw (600,1550)--(623,1681) (632,1694)--(783,1689) (633,1699)--(594,1781);.
+- 142_scan118D27, 142_scan118, Large tiling, lower central 0 corner A: \draw (353,1710)--(407,1804) (423,1812)--(585,1789) (416,1823)--(402,1941) (270,1819)--(403,1817);.
+- 142_scan118D28, 142_scan118, Large tiling, lower-right infinity corner J: \draw (783,1689)--(751,1770) (598,1786)--(739,1784); \draw[densely dotted] (635,1703)--(741,1781) (743,1794)..controls(739,1850)and(715,1905)..(705,1933);.
+- 142_scan118D29, 142_scan118, Large tiling, bottom infinity corner L: \draw (583,1800)--(513,1905) (499,1917)--(402,1941); \draw[densely dotted] (694,1937)..controls(638,1922)and(568,1919)..(519,1915) (502,1907)--(421,1824);.
+- 142_scan118D30, 142_scan118, Large tiling, cross-edge from upper-left 0 to central infinity: \draw[dash pattern=on 5pt off 4pt,line width=.45pt] (361,1616)--(501,1660);.
+- 142_scan118D31, 142_scan118, Large tiling, dotted continuation from lower-left outer vertex toward lambda-zero curve: \draw[densely dotted,line width=.85pt] (313,1868)--(365,1837);.
+- 142_scan118D32, 142_scan118, Large tiling, filled point on upper-right side of central infinity: \fill (542,1628) circle[radius=2.8];.
+- 142_scan118D33, 142_scan118, Large tiling, filled endpoint on upper-left arc by central infinity: \fill (483,1620) circle[radius=2.8]; \draw[line width=1.25pt,<->] (483,1623)..controls(470,1617)and(461,1646)..(462,1675);.
+- 142_scan118D34, 142_scan118, Large tiling, thick shaft along D--C: \fill (463,1683) circle[radius=3.0]; \draw[line width=1.35pt,<-] (390,1699)--(462,1684);.
+- 142_scan118D35, 142_scan118, Large tiling, thick shaft along A--B: \fill (455,1805) circle[radius=2.7]; \fill (546,1795) circle[radius=3.0]; \draw[line width=1.3pt,<-] (455,1805)--(546,1795);.
+- 142_scan118D36, 142_scan118, Large tiling, short vertical arc just below D--C edge: \fill (378,1737) circle[radius=2.7]; \draw[line width=.9pt,<->] (390,1708)..controls(391,1720)and(381,1728)..(378,1737);.
+- 142_scan118D37, 142_scan118, Large tiling, heavy lower return about central infinity: \fill (528,1705) circle[radius=3.0]; \draw[line width=1.25pt,<->] (464,1679)..controls(477,1710)and(510,1721)..(528,1705);.
+- 142_scan118D38, 142_scan118, Large tiling, thin inner hook and lower curve inside central-infinity return: \draw[line width=.55pt,->] (510,1674)..controls(508,1686)and(496,1686)..(502,1691); \fill (497,1697) circle[radius=1.8]; \draw[line width=.5pt] (499,1698)..controls(506,1707)and(520,1705)..(526,1699);.
+- 142_scan118D39, 142_scan118, Large tiling, short horizontal path beside H--B: \fill (606,1739) circle[radius=3.0]; \draw[line width=.8pt,<-] (567,1739)--(605,1739);.
+- 142_scan118D40, 142_scan118, Large tiling, extra loop immediately beside tau_1(r): \node[font=\small] at (427,1735) {$\tau_1(r)$}; \draw[line width=.45pt] (408,1737)..controls(402,1735)and(400,1738)..(403,1743)..controls(406,1747)and(411,1740)..(409,1737);.
+- 142_scan118D41, 142_scan118, Large tiling, upper-left hatching region including the first stroke overshooting the dark boundary: \draw[gray!55,line width=.25pt]<br> (361,1686)--(397,1563)--(411,1518) (373,1691)--(412,1549) (389,1687)--(430,1544)<br> (407,1681)--(444,1562) (426,1675)--(456,1584) (445,1669)--(469,1605);.
+- 142_scan118D42, 142_scan118, Large tiling, upper-right hatching continuing below dotted C--H: \draw[gray!55,line width=.25pt] (524,1703)--(547,1627) (539,1724)--(564,1607) (554,1739)--(579,1584) (574,1730)--(594,1572) (593,1714)--(605,1616);.
+- 142_scan118D43, 142_scan118, Large tiling, right hatching region: \draw[gray!55,line width=.25pt] (613,1750)--(669,1697) (613,1768)--(700,1694) (632,1775)--(728,1695) (658,1777)--(748,1701) (686,1779)--(763,1723);.
+- 142_scan118D44, 142_scan118, Large tiling, lower-central hatching: \draw[gray!55,line width=.25pt] (414,1897)--(522,1810) (415,1878)--(498,1811) (427,1922)--(555,1806) (452,1925)--(568,1828) (478,1918)--(550,1855);.
+- 142_scan118D45, 142_scan118, Large tiling, outer lower-left hatching: \draw[gray!55,line width=.25pt] (280,1823)--(387,1931) (302,1823)--(396,1914) (325,1823)--(398,1884) (348,1820)--(399,1864) (370,1818)--(400,1848);.
+- 142_scan118D49, 142_scan118, Live (16), notched open frame and intersecting tail of old NB: \[<br>(16)\qquad<br>\begin{tikzpicture}[baseline=(live.base)]<br>\node[inner xsep=5pt,inner ysep=8pt,font=\scriptsize] (live)<br> {$\displaystyle \Lambda_{\tau_1(r)}^{\prime\infty}\underbrace{(a_{\tau_1r}^{0}(\lambda_{\tau_1r}^1)^{-1}a_{\tau_1r}^{\infty})}_{\beta_{\tau_1(r)}^1\,\deleted{\unsure{-1}}}^{\unsure{+\|-1}}\Lambda_r^0\underbrace{((a_r^\infty)^{-1}\lambda_r^1(a_r^0)^{-1})}_{\beta_r^{1\,-1}}=1$};<br>% Last words of the cancelled NB cross the new upper border at its notch.<br>\node[anchor=base west,inner sep=0pt,font=\scriptsize] at ([xshift=5pt]live.north)<br> {par $\sigma_1r$};<br>\draw[line width=.45pt] ([xshift=1pt,yshift=3pt]live.north west)<br> -- ([yshift=9pt]live.north) -- (live.north)<br> -- ([xshift=4pt]live.north east);<br>\draw[line width=.45pt] ([xshift=3pt,yshift=-2pt]live.north east)<br> -- ([xshift=5pt,yshift=2pt]live.south east);<br>\draw[line width=.45pt] ([xshift=2pt,yshift=-2pt]live.south east)<br> -- ([xshift=11pt,yshift=-4pt]live.south west);<br>\draw[line width=.45pt] ([xshift=-2pt,yshift=-4pt]live.north west)<br> -- ([xshift=-1pt,yshift=9pt]live.south west);<br>\end{tikzpicture}<br>\].
+- 142_scan118D52, 142_scan118, Small triangle, open corners and extended lower edge: \draw[line width=.55pt] (129,2127)--(31,2301); \draw[line width=.55pt] (137,2118)..controls(142,2108)and(146,2108)..(149,2120)--(220,2293); \draw[line width=.6pt] (24,2308)--(240,2295);.
+- 142_scan118D53, 142_scan118, Small triangle, intermediate head on bent inner route: \draw[line width=.75pt,->] (159,2284)--(189,2253); \draw[line width=.65pt,->] (189,2253)--(151,2172);.
+- 142_scan118D54, 142_scan118, Small triangle, lower-left corner arc: \draw[line width=.7pt,<->] (56,2266)..controls(65,2274)and(67,2284)..(69,2295);.
+- 142_scan118_A02, 142_scan118, Large tiling, faint long oblique construction stroke above and outside the upper-right part: \draw[gray!35,line width=.22pt] (595,1462)--(792,1674);<br>\draw[gray!50,line width=.22pt] (595,1462)--(609,1477);.
+- 142_scan118_A03, 142_scan118, Large tiling, pale exterior return beside the right side of the upper-middle solid triangle: \draw[gray!55,line width=.25pt] (600,1550)..controls(616,1564)and(622,1617)..(638,1650);.
+- 142_scan120_D23, 142_scan120, Three-sided enclosure around the memory relations: Separate top, left and bottom outline strokes, open at right, around the two-line braced formula.
+- 142_scan120_D30, 142_scan120, Tiny oval just left of the central-left junction: 0 at approximately (256,1745).
+- 142_scan120_D31, 142_scan120, Overworked glyph above the central-right hatched edge: \node[inner sep=0pt] at (483,1724) {$\unsure{\vcenter{\hbox{\tikz[x=1mm,y=1mm,line width=.4pt]{<br>  \draw (.1,.45)--(.42,.95)--(.68,.48)--(.37,.03)--(.1,.45);<br>  \draw (.43,.88)..controls(.72,.58)and(.44,.24)..(.56,-.12);<br>}}}}$};<br>.
+- 142_scan120_D42, 142_scan120, Southeast outer ray from the central-right junction: The full southeast ray has its visible head pointing up-left toward the central junction, near (490,1773); no duplicate detached arrow.
+- 142_scan120_D43, 142_scan120, Dark lower closing segment above the lower-right circled infinity: Dark segment from approximately (494,1843) back left to (432,1835).
+- 142_scan120_D44, 142_scan120, Inner southeast contour at its lower tip: Plain inner contour meeting the lower closing segment, with no terminal arrowhead at (494,1843).
+- 142_scan120_D45, 142_scan120, Rightmost hatched triangle, upper infinity endpoint: No head at the upper infinity endpoint of the hatched slope; a separate rightward head remains on the lower 0-to-1 side.
+- 142_scan120_D46, 142_scan120, Doubled inward-sloping trace at the right of the central junction: The dark inward-sloping route has a second nearby trace and short crossing strokes.
+- 142_scan120_D47, 142_scan120, Horizontal hatching to the right of the central junction: Irregular individual transverse strokes along the horizontal edge, with overlapping arc/label strokes preserved separately.
+- 142_scan120_D48, 142_scan120, Hooked last hatch on the rightmost sloping side: Short transverse hatches ending with a separate hooked final stroke.
+- 142_scan120_D55, 142_scan120, Pale connector from lower-left infinity to lower point 1: Pale segment (169,1858)--(260,1868).
+- 142_scan120_A01, 142_scan120, Curved leader under the fixed-index insertion: \begin{tikzpicture}[baseline=(base)]<br>\coordinate (base) at (0,-.22);<br>\node[anchor=south west,inner sep=0pt] (fixed) at (0,0) {\inserted{($i$ fixé), dans l'exemple $i=1$)}};<br>\draw[line width=.35pt] ([xshift=-.10cm,yshift=-.19cm]fixed.south west)<br> ..controls ([xshift=-.13cm,yshift=-.02cm]fixed.south west) and ([xshift=.12cm,yshift=-.08cm]fixed.south west)..([xshift=.35cm,yshift=-.08cm]fixed.south west)<br> ..controls ([xshift=-.40cm,yshift=-.13cm]fixed.south east) and ([xshift=.04cm,yshift=-.02cm]fixed.south east)..([xshift=.03cm,yshift=.06cm]fixed.south east);<br>\end{tikzpicture}.
+- 142_scan120_A03, 142_scan120, Leader under et ceux qui leur sont reliés: \begin{tikzpicture}[baseline=(infini.base)]<br>\node[anchor=west,inner sep=0pt] (infini) at (0,0) {\deleted{infini}};<br>\node[anchor=south west,inner sep=0pt] at (0,.15) {\inserted{$\infty$}};<br>\node[anchor=south west,inner sep=0pt] (relies) at (.90,.31) {\inserted{et ceux qui leur sont reliés}};<br>\draw[line width=.35pt] (.82,-.03)<br> ..controls (.72,.16) and (.94,.21)..(1.17,.21)<br> ..controls ([xshift=-.45cm,yshift=-.12cm]relies.south east) and ([xshift=.03cm,yshift=-.04cm]relies.south east)..([xshift=.02cm,yshift=.05cm]relies.south east);<br>\end{tikzpicture}.
+- 142_scan120_A04, 142_scan120, Capped replacement connector in the first row of (18): \underset{\vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]<br>\draw[line width=.4pt] (0,0)..controls(2,-.15)and(5,.12)..(7,.12);<br>\draw[line width=.5pt] (7,-.35)--(7,.62);<br>\end{tikzpicture}}}}{\deleted{\unsure{\to R}}}.
+- 142_scan120_A05, 142_scan120, Insertion leader under avec before the redundancy relations: \begin{tikzpicture}[baseline=(base)]<br>\coordinate (base) at (0,-.20);<br>\node[anchor=south west,inner sep=0pt] (avec) at (0,0) {\inserted{avec}};<br>\draw[line width=.35pt] ([xshift=-.05cm,yshift=-.19cm]avec.south west)<br> ..controls ([xshift=-.12cm,yshift=-.04cm]avec.south west) and ([xshift=.12cm,yshift=-.07cm]avec.south west)..([xshift=.23cm,yshift=-.07cm]avec.south west)<br> ..controls ([xshift=-.17cm,yshift=-.08cm]avec.south east) and ([xshift=.02cm,yshift=-.04cm]avec.south east)..([xshift=.04cm,yshift=.02cm]avec.south east);<br>\end{tikzpicture}.
+- 142_scan120_A06, 142_scan120, Open left corners of the frame around (19): \begin{tikzpicture}[baseline=(relation.base)]<br>\node[inner sep=4pt] (relation) {$\begin{aligned}<br>\Lambda_r^0\Lambda_{\tau_1(r)}^0&=1\\<br>\Lambda_r^{\prime1}\Lambda_{\tau_0(r)}^{\prime1}&=1<br>\end{aligned}$};<br>\draw[line width=.4pt] ([xshift=-.02cm,yshift=.08cm]relation.north west)<br> --([xshift=.10cm,yshift=.17cm]relation.north east)<br> --([xshift=.11cm,yshift=-.02cm]relation.south east)<br> --([xshift=.02cm,yshift=-.11cm]relation.south west);<br>\draw[line width=.4pt] ([xshift=-.13cm,yshift=-.04cm]relation.north west)<br> --([xshift=-.12cm,yshift=.05cm]relation.south west);<br>\end{tikzpicture}.
+- 142_scan120_A07, 142_scan120, Small opening in the upper pale circular contour: % The upper pale ring stops on both sides of the spoke; its gap is not closed.<br>\draw[gray!75] (373.0,1550.3) arc[start angle=-96.5,end angle=248.5,radius=44];<br>\draw[gray!75] (431,1851) circle (41);.
+- 142_scan120_A08, 142_scan120, Leftward dark horizontal stops before the central-left upright: \draw[very thick] (270,1748)--(116,1763);.
+- 142_scan120_A09, 142_scan120, Three separately ended dark tips beside the inner lower 1: % The upright ends separately above the two lower oblique tips beside 1.<br>\draw[thick] (167,1994)--(257,1877) (265,1876)--(340,1977)--(470,1995);.
+- 142_scan120_A10, 142_scan120, Curved leader for faces in the drawing caption: \begin{tikzpicture}[baseline=(base)]<br>\coordinate (base) at (0,-.20);<br>\node[anchor=south west,inner sep=0pt] (faces) at (0,0) {\inserted{faces}};<br>\draw[line width=.35pt] ([xshift=-.08cm,yshift=-.19cm]faces.south west)<br> ..controls ([xshift=-.10cm,yshift=-.02cm]faces.south west) and ([xshift=.12cm,yshift=-.08cm]faces.south west)..([xshift=.26cm,yshift=-.08cm]faces.south west)<br> ..controls ([xshift=-.20cm,yshift=-.10cm]faces.south east) and ([xshift=.05cm,yshift=-.03cm]faces.south east)..([xshift=.03cm,yshift=.06cm]faces.south east);<br>\end{tikzpicture}.
+- 142_scan120_A11, 142_scan120, Low oblique stroke after the caption dash: --- \raisebox{-.45ex}{$\unsure{\vcenter{\hbox{\tikz[x=1mm,y=1mm]{\draw[line width=.35pt] (0,0)--(.65,.4);}}}}$} les coins.
+- 142_scan121D09, 142_scan121, Broken shaft of the southwest indicator in(20): \mathrel{\tikz[baseline=-.6ex,x=1em,y=1em,>=stealth]{\draw (.70,.70)--(.42,.42);\draw[->] (.29,.29)--(0,0);}}.
+- 142_scan121D24, 142_scan121, Drawing: rightmost near-vertical curved connector: \draw[<->] (2.49,0.79) to[bend left=14] (2.44,1.17);.
+- 142_scan121D25, 142_scan121, Drawing: isolated small dot near central side: \fill (1.72,0.42) circle (0.023);.
+- 142_scan121D26, 142_scan121, Drawing: bottom outline approaching vertex1: \draw (A)--(C)--(D)--(B);\draw (A)--(1.60,-0.09);.
+- 142_scan121D27, 142_scan121, Drawing: start of larger A-arc at lower horizontal path: \draw[->] (0.62,0.05)--(1.16,0.02);\draw[->] (1.16,0.02)..controls(1.30,0.67)and(1.78,0.48)..(1.97,0.32);.
+- 142_scan121A01, 142_scan121, Opening insertion trois, swept leader beneath the raised word: \begin{tikzpicture}[baseline=(oldcount.base),line cap=round,line join=round]<br>  \node[anchor=base west,inner sep=0pt] (oldcount) at (0,0) {\deleted{6}};<br>  \node[anchor=base west,inner sep=0pt] at (-.12,.54) {\inserted{trois}};<br>  \draw[line width=.4pt] (-.14,-.03)<br>    .. controls (-.11,.20) and (.14,.29) .. (.46,.38)<br>    .. controls (.68,.44) and (.92,.56) .. (.98,.61)<br>    .. controls (1.01,.65) and (.98,.67) .. (.95,.63);<br>\end{tikzpicture}.
+- 142_scan121A02, 142_scan121, Opening long interlinear insertion, swept leader and lower attachment before mais: \begin{tikzpicture}[baseline=(continuation.base),line cap=round,line join=round]<br>  \node[anchor=base west,inner sep=0pt] at (-.55,0) {$\infty$};<br>  \node[anchor=base west,inner sep=0pt] at (-.06,-.01) {,};<br>  \node[anchor=base west,inner sep=0pt] (continuation) at (.28,0)<br>    {mais aussi ceux proches des sommets};<br>  \node[anchor=base west,inner sep=0pt,font=\footnotesize] (linkedinsert) at (-.22,.55)<br>    {\inserted{et les sommets qui leur sont liés \unsure{d'indice\|d'arc} $\infty$}};<br>  \draw[line width=.4pt] (-.26,-.18)<br>    .. controls (-.18,-.23) and (-.17,.07) .. (-.12,.19)<br>    .. controls (-.07,.30) and (.02,.31) .. (.15,.31)<br>    -- ([xshift=-.08cm,yshift=-.12cm]linkedinsert.south east)<br>    .. controls ([xshift=.08cm,yshift=-.12cm]linkedinsert.south east)<br>       and ([xshift=.12cm,yshift=-.03cm]linkedinsert.south east)<br>       .. ([xshift=.03cm,yshift=-.03cm]linkedinsert.south east);<br>\end{tikzpicture}.
+- 142_scan121A03, 142_scan121, Inserted R_r^{i.j} before de type 0, short curved leader: \begin{tikzpicture}[baseline=(typezero.base),line cap=round,line join=round]<br>  \node[anchor=base west,inner sep=0pt] (typezero) at (0,0) {de};<br>  \node[anchor=base west,inner sep=0pt] at (-.35,.55) {\inserted{$R_r^{i.j}$}};<br>  \draw[line width=.4pt] (-.15,-.04)<br>    .. controls (-.15,.19) and (-.08,.29) .. (.10,.30)<br>    .. controls (.25,.31) and (.41,.39) .. (.47,.46)<br>    .. controls (.49,.49) and (.47,.51) .. (.44,.48);<br>\end{tikzpicture}.
+- 142_scan121A04, 142_scan121, Drawing, two endpoint positions of thick inner double-headed arc around 1: \draw[very thick,<->] (1.19,-.068) to[bend left=22] (1.52,.31);.
+- 143_scan002D06, 143_scan002, Right pencil diagram, horizontal arrow tail: \mathrel{\tikz[baseline=-.45ex,x=1em,y=1em]{\draw[->] (0,0)--(1.8,0);\draw (.30,-.12) .. controls (.02,-.12) and (.02,-.35) .. (.30,-.35);}}.
+- 143_scan002D15, 143_scan002, Diagram (4), upper horizontal connector: \mathrel{\tikz[baseline=-.45ex,x=1em,y=1em]{\draw (0,0)--(1.8,0);\fill (1.8,0)--(1.60,.12)--(1.60,0)--cycle;}}.
+- 143_scan002D16, 143_scan002, Diagram (4), vertical sign between Gamma and Gamma_K: \cup.
+- 143_scan002D21, 143_scan002, Reducedness condition, pencil oval: \tikz[baseline=(w.base)]{\node[inner sep=0pt] (w) at (0,0) {réduit};\node[inner sep=0pt] at (.48,.20) {?};\draw (.08,.06) ellipse (.73cm and .32cm);}.
+- 143_scan002D27, 143_scan002, Main homomorphism connector before Gamma: \mathrel{\tikz[baseline=-.45ex,x=1em,y=1em]{\draw (0,0)--(1.5,0);\fill (1.5,0)--(1.36,.08)--(1.36,0)--cycle;}}.
+- 143_scan002D40, 143_scan002, Leader beneath inserted alors: \tikz[baseline=0pt]{\node[inner sep=0pt] at (.12,.60) {\inserted{alors}};\draw (-.35,-.13) .. controls (-.30,.25) and (.28,.31) .. (.48,.39);}.
+- 143_scan002D41, 143_scan002, Leader attaching the nonemptiness insertion: \tikz[baseline=0pt]{\node[inner sep=0pt] at (.18,.53) {\inserted{$\ne\varnothing$}};\draw (-.23,-.18) .. controls (-.35,.06) and (.55,.27) .. (.78,.80);}.
+- 143_scan003D05, 143_scan003, NB interline insertion, under-running line and left descending leader: \begin{tikzpicture}[baseline=(gx.base)]<br>\node[anchor=base west,inner sep=0pt] (gx) at (1.55,0) {$G_X$};<br>\node[anchor=base west,inner sep=0pt] (nbinsert) at (0,.62)<br> {\inserted{$X$ est de t.f. $/\overline{\mathbf Q}$ et \unsure{sep}}};<br>% The under-running line bends down on the left to attach before G_X.<br>\draw[line width=.35pt] ([xshift=-1pt,yshift=-2pt]nbinsert.south east)<br> -- ([xshift=-1pt,yshift=-5pt]nbinsert.south east)<br> ..controls(3.30,.33)and(2.03,.43)..(1.48,.36)<br> ..controls(1.20,.31)and(1.21,.04)..(1.42,-.17);<br>\end{tikzpicture}.
+- 143_scan003D07, 143_scan003, Raised universal-cover label before pointé, curved leader: \begin{tikzpicture}[baseline=(pointed.base)]<br>\node[anchor=base west,inner sep=0pt] (pointed) at (.75,0) {pointé};<br>\node[anchor=base west,inner sep=0pt] at (.02,.50) {\inserted{$\widetilde X(\xi)$}};<br>\draw[line width=.35pt] (.92,.34)..controls(.66,.12)and(.23,.23)..(.10,-.18);<br>\end{tikzpicture}.
+- 143_scan003D10, 143_scan003, Diagram (8), segment between G_X and 1: \draw[line width=.55pt] (3.03,0)--(3.69,0)--(3.69,-.055);.
+- 143_scan004_D08, 143_scan004, Diagram (9), relation between upper Gamma and lower Gamma prime: \Gamma\arrow[d,phantom,"\cup" description] \\ \Gamma\prime.
+- 143_scan004_D12, 143_scan004, Inline map after the inserted de xi: \Gamma'\mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]\draw[line width=.45pt] (0,0)--(6,0)--(6,-.4);\end{tikzpicture}}}}\mathcal G_{\overline X}.
+- 143_scan004_A01, 143_scan004, Separate irregular enclosure around the cancelled opening: \figure{<br>\begin{tikzpicture}[x=.009cm,y=-.009cm,font=\small]<br>% The cancelled passage has three separate enclosing strokes, not a closed box.<br>\node[anchor=west,inner sep=0pt] at (240,125) {\deleted{s'envoie injectivement dans un groupe algébrique}};<br>\node[anchor=west,inner sep=0pt] at (240,215) {\deleted{commutatif de rang unipotent nul}};<br>\node[anchor=west,inner sep=0pt] at (250,305) {\deleted{(i.e. ext. d'une VA par un tore) alors}};<br>\node[anchor=west,inner sep=0pt] at (260,412) {\deleted{\uline{l'application}}};<br>\node[anchor=west,inner sep=0pt] at (570,480) {\begin{tikzcd}[ampersand replacement=\&,column sep=18mm]<br>{\deleted{X(\overline{\mathbf Q})}}\arrow[r]\&{\deleted{J}}<br>\end{tikzcd}};<br>\draw[line width=.4pt] (230,130)..controls(650,100)and(1190,99)..(1580,125);<br>\draw[line width=.4pt] (245,155)..controls(235,230)and(223,350)..(224,392)<br> ..controls(224,406)and(228,412)..(233,402);<br>\draw[line width=.4pt] (526,440)..controls(520,466)and(516,501)..(531,516)<br> ..controls(590,536)and(730,507)..(945,513)<br> ..controls(929,475)and(922,387)..(922,348)<br> ..controls(1010,330)and(1365,347)..(1552,329);<br>% Oblique cancellation is retained as physical ink, not counted as another error.<br>\draw[line width=.35pt] (484,140)--(367,371) (837,126)--(572,488)<br> (1094,142)--(814,468) (1436,148)--(1258,296) (1577,153)--(1514,284);<br>\end{tikzpicture}<br>}.
+- 143_scan004_A02, 143_scan004, Leader below the inserted xi condition: \begin{tikzpicture}[baseline=(base)]<br>\coordinate (base) at (0,-.23);<br>\node[anchor=south west,inner sep=0pt] (xinote) at (0,0) {\inserted{$\xi\in X(\overline{\mathbf Q})$ donné, et pour}};<br>\draw[line width=.35pt] ([xshift=-.05cm,yshift=-.22cm]xinote.south west)<br> ..controls ([xshift=-.13cm,yshift=-.08cm]xinote.south west) and ([xshift=-.04cm,yshift=-.02cm]xinote.south west)..([xshift=.12cm,yshift=-.03cm]xinote.south west)<br> ..controls ([xshift=-.50cm,yshift=.01cm]xinote.south east) and ([xshift=-.20cm,yshift=-.08cm]xinote.south east)..([xshift=.01cm,yshift=-.08cm]xinote.south east);<br>% Only the definite sweep is copied; its far-right extent merges with crease/edge.<br>\end{tikzpicture}.
+- 143_scan004_A03, 143_scan004, Leader below germe d' before hom composé: \begin{tikzpicture}[baseline=(base)]<br>\coordinate (base) at (0,-.22);<br>\node[anchor=south west,inner sep=0pt] (germe) at (0,0) {\inserted{germe d'}};<br>\draw[line width=.35pt] ([xshift=-.06cm,yshift=-.20cm]germe.south west)<br> ..controls ([xshift=-.17cm,yshift=-.08cm]germe.south west) and ([xshift=-.02cm,yshift=-.02cm]germe.south west)..([xshift=.18cm,yshift=-.03cm]germe.south west)<br> ..controls ([xshift=-.40cm,yshift=-.10cm]germe.south east) and ([xshift=-.15cm,yshift=.01cm]germe.south east)..([xshift=.02cm,yshift=.05cm]germe.south east);<br>\end{tikzpicture}.
+- 143_scan004_A04, 143_scan004, Detached chevron on the upper live replacement map: \inserted{\Gamma'\mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]<br>\draw[line width=.45pt,line cap=round] (0,0)..controls(2,.12)and(5,.48)..(6.6,.32);<br>\draw[line width=.45pt,line cap=round] (7,.8)--(7.3,.2)--(6.95,-.1);<br>\end{tikzpicture}}}}\mathcal E_X}.
+- 143_scan005D06, 143_scan005, Below limit in (11), purported dotted underline of ouvert: \text{ouvert}.
+- 143_scan005D13, 143_scan005, Section number before (12), enclosing circle: \textcircled{4}.
+- 143_scan005D14, 143_scan005, Display (12), open enclosure of the divisor sum: \begin{tikzpicture}[baseline=(div.base),line cap=round,line join=round]<br>\node[inner sep=0pt] (div) at (2.15,0) {$\displaystyle D=\sum_{i\in I}D_i$};<br>% Open underneath: left outward foot, rounded roof, curled right foot.<br>\draw[line width=.45pt] (-.10,-.53)--(.50,-.53)<br> ..controls(.37,-.20)and(.29,.48)..(.70,.64)<br> ..controls(1.80,.89)and(3.20,.86)..(3.88,.79)<br> ..controls(3.86,.40)and(3.66,-.30)..(4.00,-.36)<br> ..controls(4.10,-.41)and(4.22,-.38)..(4.31,-.38);<br>\end{tikzpicture}.
+- 143_scan005D16, 143_scan005, Raised effectif, under-running attachment curve: \begin{tikzpicture}[baseline=(sur.base)]<br>\node[anchor=base west,inner sep=0pt] (sur) at (.48,0) {sur $X$,};<br>\node[anchor=base west,inner sep=0pt] at (-.34,.60) {\inserted{effectif}};<br>\draw[line width=.35pt] (-.38,.35)..controls(-.39,.17)and(.34,.32)..(.40,.04)<br> ..controls(.45,-.07)and(.43,-.15)..(.39,-.20);<br>\end{tikzpicture}.
+- 143_scan005D21, 143_scan005, Raised i.e. lisse, descending leader before en les: \begin{tikzpicture}[baseline=(enles.base)]<br>\node[anchor=base west,inner sep=0pt] (enles) at (.63,0) {en les};<br>\node[anchor=base west,inner sep=0pt] at (-.10,.61) {\inserted{(i.e. lisse)}};<br>\draw[line width=.35pt] (1.61,.42)..controls(1.30,.15)and(.57,.40)..(.36,.09)<br> ..controls(.25,-.05)and(.26,-.16)..(.27,-.23);<br>\end{tikzpicture}.
+- 143_scan005D28, 143_scan005, Added encore, curved leader: \begin{tikzpicture}[baseline=(par.base)]<br>\node[anchor=base west,inner sep=0pt] (par) at (.61,0) {(par};<br>\node[anchor=base west,inner sep=0pt] at (.05,.53) {\inserted{encore}};<br>\draw[line width=.35pt] (1.07,.40)..controls(.89,.22)and(.35,.26)..(.12,-.06);<br>\end{tikzpicture}.
+- 143_scan005D33, 143_scan005, Refinement addition, long under-running leader: \begin{tikzpicture}[baseline=(alors.base)]<br>\node[anchor=base west,inner sep=0pt] (alors) at (.47,0) {Alors on a};<br>\node[anchor=base west,inner sep=0pt] (refinement) at (-.19,.67)<br> {\inserted{\unsure{--\|ou} plus précisém\unsure{ent\|t} $\mathcal G_{X'}(I)$.}};<br>\draw[line width=.35pt] ([xshift=-1pt,yshift=-2pt]refinement.south east)<br> ..controls(3.55,.33)and(1.65,.46)..(.43,.42)<br> ..controls(.12,.37)and(.02,-.16)..(.18,-.26);<br>\end{tikzpicture}.
+- 143_scan006_D01, 143_scan006, Display (14), connector from 1 to pi_1(X prime): \mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]<br>\draw[line width=.45pt] (0,0)--(3,0);<br>\draw[line width=.6pt] (3,.1)--(3,-.22);<br>\end{tikzpicture}}}}.
+- 143_scan006_D02, 143_scan006, Display (14), connector from pi_1(X prime) to E_X prime: \mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]<br>\draw[line width=.45pt] (0,0)--(6,0);<br>\draw[line width=.65pt] (6,.24)--(6,-.24);<br>\end{tikzpicture}}}}.
+- 143_scan006_D08, 143_scan006, Diagram (15), first connector: \vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]\draw[line width=.45pt] (0,0)--(6,0)--(6,.5);\end{tikzpicture}}}.
+- 143_scan006_D09, 143_scan006, Diagram (15), relation between Gamma and Gamma prime: \cup.
+- 143_scan006_D12, 143_scan006, Display (17), phi_i stem crossing its arrow: One connected phi_i stem crosses the horizontal shaft; no independent bar is added..
+- 143_scan006_D24, 143_scan006, Display (18), parenthetical first connector: \mathrel{\vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]\draw[line width=.45pt] (0,0)--(5.5,0)--(5.55,.22)--(5.7,0);\end{tikzpicture}}}}.
+- 143_scan007D02, 143_scan007, Inserted references after opérations, curved attachment line: \tikz[baseline=0pt]{<br>  \node[inner sep=0pt] at (.10,.52) {\inserted{(16) et (18)}};<br>  \draw (-.62,-.12) .. controls (-.66,.26) and (-.48,.35) .. (-.20,.35)<br>    .. controls (.36,.35) and (.55,.27) .. (.78,.34);<br>}.
+- 143_scan007D03, 143_scan007, Display (19), overworked second argument: \mathbf T(\unsure{\tikz[baseline=-.4ex,x=1em,y=1em]{<br>  \draw (-.05,.87)--(.72,.89);<br>  \draw (.17,.64) .. controls (.03,.39) and (.03,.03) .. (-.10,-.38);<br>  \draw (.23,.30) .. controls (.46,.72) and (.78,.63) .. (.58,.24)<br>    .. controls (.42,-.04) and (.18,-.05) .. (.16,.20);<br>  \draw[line width=.65pt] (.10,.09) .. controls (.25,-.11) and (.43,.02) .. (.54,.18);<br>  \draw[line width=.65pt] (.23,.12)--(.20,-.16);<br>  \fill (.72,.34) circle (.035);<br>  \draw[line width=.65pt] (.62,.17)--(.64,-.16);<br>}}).
+- 143_scan007D04, 143_scan007, Deleted Supposons X, looped trace at the right: \deleted{Supposons $X$} \unsure{\tikz[baseline=-.4ex,x=1em,y=1em]{<br>  \draw (-.30,.40)--(1.35,.40);<br>  \draw (-.55,.10)--(1.18,.10);<br>  \draw (.15,.30) .. controls (.87,.35) and (1.10,.29) .. (1.13,.15)<br>    .. controls (.94,.03) and (.84,.04) .. (.80,.10);<br>  \draw (.45,-.03) .. controls (.80,.03) and (1.03,-.05) .. (1.37,.02);<br>}}.
+- 143_scan007D11, 143_scan007, Display (20), connector ending: \mathrel{\tikz[baseline=-.45ex,x=1em,y=1em]{<br>  \draw (0,0)--(1.80,0);<br>  \draw[line width=.65pt] (1.80,0) .. controls (1.82,.12) and (1.75,.15) .. (1.73,.035);<br>}}.
+- 143_scan007D18, 143_scan007, M0650, final main-line cluster after comma: \unsure{\tikz[baseline=-.35ex,x=1em,y=1em]{<br>  \draw (.03,.04) .. controls (-.07,.22) and (.23,.27) .. (.16,.04)<br>    .. controls (.11,-.06) and (-.02,-.02) .. (.03,.04);<br>  \draw (-.08,.17)--(.12,.34);<br>  \draw (.20,.05) .. controls (.28,.23) and (.37,.18) .. (.37,.05)<br>    --(1.25,.01) .. controls (1.37,.01) and (1.41,-.02) .. (1.45,-.08);<br>}}.
+- 143_scan007D23, 143_scan007, Lower note, enclosing and attachment strokes: \begin{tikzpicture}[x=1em,y=1em]<br>  \node[anchor=west,inner sep=0pt] at (.35,1.75) {C'est un espace hom.};<br>  \node[anchor=west,inner sep=0pt] at (.85,.85) {sous $\pi_1(X')$. On};<br>  \node[anchor=west,inner sep=0pt] at (.95,-.05) {trouve.};<br>  \node[anchor=west,inner sep=0pt] at (5.70,-.05) {alors};<br>  % Left parenthetical/enclosing curve, locally retraced at its lower turn.<br>  \draw (-.05,2.18) .. controls (-1.05,1.85) and (-1.00,.85) .. (-.65,.55)<br>    .. controls (-.15,.10) and (.02,-.18) .. (.14,-.48);<br>  \draw (-.66,.62) .. controls (-.18,.48) and (.01,-.12) .. (.14,-.48);<br>  % Continuing enclosure/attachment stroke; this does not delete the lower words.<br>  \draw (.45,-.43) .. controls (.05,-.08) and (.66,.25) .. (1.10,.25)<br>    .. controls (4.25,.34) and (7.20,.10) .. (8.65,.53)<br>    .. controls (8.83,.66) and (8.78,.86) .. (9.05,.94);<br>\end{tikzpicture}.
+
+### 5. Readable ink left as illegible
+
+- 142_scan101D04, 142_scan101, Upper margin, after d’exiger: \unsure{1°}.
+- 142_scan101D05, 142_scan101, Upper margin, puissance wording: et qu'une puissance.
+- 142_scan101D07, 142_scan101, Upper margin, after the power: de $\Theta$.
+- 142_scan101D09, 142_scan101, Upper margin, sur I: sur $I$.
+- 142_scan101D12, 142_scan101, Upper margin, signs before connexe: $\unsure{+}$, $\unsure{=}$ connexe.
+- 142_scan101D14, 142_scan101, First main-text hypothesis, crossed expression: \deleted{$\unsure{\exists a\prime\in}$}.
+- 142_scan101D25, 142_scan101, Condition 3, deleted words after Θ′: \deleted{\unsure{des tels}}.
+- 142_scan101D29, 142_scan101, Lower margin, deleted généraliser: \deleted{\unsure{généraliser}}.
+- 142_scan101D34, 142_scan101, Lower margin, deleted l’imposant: \deleted{\unsure{l'imposant}}.
+- 142_scan101D38, 142_scan101, Lower margin, kernel wording: \unsure{préserve le noyau de} $f$.
+- 142_scan101D46, 142_scan101, Condition 4, deleted le morph: \deleted{le morph}.
+- 142_scan101D49, 142_scan101, Condition 4, final parenthetical wording and order: (pour un choix compatible de cette action, s'il y a.
+- 142_scan102D07, 142_scan102, Struck word after f_2: \deleted{\unsure{ét.}}.
+- 142_scan102D11, 142_scan102, Struck de before Θ prime 2: \deleted{de}.
+- 142_scan103_D09, 142_scan103, Cancelled wording following « on ne peut affirmer que »: \deleted{\unsure{ils le soient}}.
+- 142_scan104D34, 142_scan104, Cancelled phrase after puisse: \deleted{se représenter}.
+- 142_scan111D10, 142_scan111, Pairing margin: first cancelled word: \deleted{fixant}.
+- 142_scan111D15, 142_scan111, Pairing margin: quotient qualification on y: mod $F$.
+- 142_scan111D17, 142_scan111, Pairing margin: words following i.e.: donné par.
+- 142_scan111D55, 142_scan111, NB margin: doubling formula: \varphi_{\omega i,\omega^2i}(Q_i)=2Q_i^\omega{}_{\deleted{\unsure{\omega}}}.
+- 142_scan113_D25, 142_scan113, Prose, crossed term before zeta: \deleted{$P_i^{\unsure{\omega}}$}.
+- 142_scan113_D28, 142_scan113, First formula, cancelled superscript immediately after omega: P_i^{\omega\deleted{\unsure{\zeta}}}.
+- 142_scan115D13, 142_scan115, cancelled words after côté: \deleted{\unsure{du plus proche}}.
+- 142_scan115D14, 142_scan115, cancelled phrase before au sommet, middle word: \deleted{\illegible{1} \unsure{repère} opposé}.
+- 142_scan115D24, 142_scan115, cancelled par contre recovered in H: \deleted{par contre}.
+- 142_scan115D28, 142_scan115, parenthesis Cela ... semble, cancelled pronoun: \deleted{\unsure{nous}}.
+- 142_scan115D38, 142_scan115, second diagonal NB, lettres: lettres.
+- 142_scan116_D09, 142_scan116, Cancelled word before L’intérieur: \deleted{Donc}.
+- 142_scan117D11, 142_scan117, General-case paragraph, cancelled phrase after dans le: \deleted{\unsure{demi-tour} \unsure{indiqué\|défini}}.
+- 142_scan118D07, 142_scan118, Display (15), hatched condition following second row: \deleted{\unsure{i\in\{0,\infty\}}}.
+- 142_scan120_D12, 142_scan120, First word of the cancelled centres clause: \deleted{\unsure{enfin}}.
+- 142_scan120_D25, 142_scan120, Cancelled old arrow/letter in the first row of (18): \deleted{\unsure{\to R}}.
+- 142_scan121D01, 142_scan121, Opening cancelled numeral before inserted trois: \deleted{6}.
+- 143_scan002D09, 143_scan002, Right pencil note, opening verb phrase: Il faut supposer.
+- 143_scan002D10, 143_scan002, Right pencil note, word after p.ex.: que.
+- 143_scan002D11, 143_scan002, Right pencil note, phrase after barred Q: est la clôt. int..
+- 143_scan002D18, 143_scan002, Lower left pencil note, descente phrase: grain de sel d'effectivité de descente.
+- 143_scan002D25, 143_scan002, Cancelled interlinear qualification after de t.f.: \deleted{quasi-proj}.
+- 143_scan005D09, 143_scan005, After Hom in (11), quotient slash and Int: /\operatorname{Int}.
+- 143_scan005D34, 143_scan005, Last baseline, Alors on a: Alors on a.
+- 143_scan006_D22, 143_scan006, Cancelled marginal note, lowest short run: \deleted{\unsure{un objet}}.
+- 143_scan007D12, 143_scan007, Cancelled predecessor of the action group: \deleted{\unsure{\mathcal G_{X'}\|\mathcal G_X}}.
+- 143_scan007D22, 143_scan007, Lower note, final word: alors.
+
+### 6. Insertion placement
+
+- 142_scan101D44, 142_scan101, Condition 4, placement of deleted plus précisément que: \deleted{plus précisément que} after $\ne\phi$,.
+- 142_scan102D05, 142_scan102, Live bottom arrow f_2 label: \arrow[r,"f_2"].
+- 142_scan102D12, 142_scan102, Mais je ne suis pas sûr si j’aurai: sûr si j'aurai.
+- 142_scan103_D07, 142_scan103, Interlinear qualifier after x',y'∈X'_T, insertion state: \inserted{$T$ adjacents;}.
+- 142_scan103_A01, 142_scan103, Opening inserted X=, curved attachment stroke: \inserted{\tikz[baseline=0pt,x=1em,y=1ex]{<br>  \node[inner sep=0pt] at (0,1.8) {$X=$};<br>  \draw[line width=.4pt] (-.65,1.0) .. controls (-.3,.45) and (.45,.55) .. (.45,-.1) -- (.62,-1.8);<br>}}.
+- 142_scan104D06, 142_scan104, Crowded insertion after Donc, including its nested cancellation and final quantification: \inserted{si \deleted{\unsure{on peut}} la condition sur $x'_\alpha,y'_\alpha$ est vraie pour tt $\alpha$,}.
+- 142_scan104D13, 142_scan104, Margin: inserted definition of E: \inserted{$E=\pi_0(X'_T)$}.
+- 142_scan104D24, 142_scan104, Margin: placement of noyau in the closing clause: est le sous-groupe \inserted{dist.} de $\pi$ noyau.
+- 142_scan104D26, 142_scan104, Margin: inserted dist.: \inserted{dist.}.
+- 142_scan104D31, 142_scan104, Attachment of inserted étale: \inserted{étale} fini.
+- 142_scan108D15, 142_scan108, Lower sphere, front meridian attachment to the south polar loop: \draw[->,thick] (0.78,-0.56) .. controls (0.78,-1.22) and (0.53,-2.22) .. (0.29,-2.42);.
+- 142_scan109D03, 142_scan109, Printed E. S I A U relative to the signature flourish: \node[anchor=base west,inner sep=0pt,font=\ttfamily\normalsize] at (222,139)<br>  {E.\qquad S\ I\ A\ U};<br>\draw[line width=.35pt] (222,145) -- (427,145);.
+- 142_scan110_D20, 142_scan110, Sphere C, i above rear equatorial arc: i node at (1.15,0.5).
+- 142_scan110_D40, 142_scan110, Cancelled sphere E, lower interior 0 and point: \deleted{0} to left of isolated point.
+- 142_scan110_D47, 142_scan110, Upper-square brace annotation, position and overworking of 2/z-like mark: Graphical brace with the unsure 2\|z-like mark over its left portion, entwined with the rewritten curled E below; no exponent relation asserted..
+- 142_scan111D07, 142_scan111, Exterior-product formula, lowered cancelled Sigma after the inner closing parenthesis: \mathcal{O}_\Sigma(\omega){}_{\deleted{\Sigma}}.
+- 142_scan111D16, 142_scan111, Pairing margin: raised digit before mineurs: les \inserted{\unsure{3\|2}} mineurs.
+- 142_scan111D25, 142_scan111, Circled insertion above the first R_i: \begin{tikzpicture}[baseline=(base.base),x=1cm,y=1cm]<br>\node[inner sep=0pt] (base) at (-0.46,-0.57) {$R_i$};<br>\node[inner sep=0pt] (r) at (0,0) {$\inserted{\widetilde{R}_i}$};<br>\draw (-0.25,-0.19)<br> .. controls (-0.43,-0.02) and (-0.33,0.26) .. (-0.03,0.28)<br> .. controls (0.27,0.31) and (0.39,0.16) .. (0.36,-0.06)<br> .. controls (0.34,-0.22) and (0.16,-0.27) .. (0.03,-0.28)<br> .. controls (-0.06,-0.29) and (-0.13,-0.33) .. (-0.13,-0.42)<br> -- (-0.13,-0.58);<br>\end{tikzpicture}.
+- 142_scan111D50, 142_scan111, Q box: vertical revision layers: \underset{\deleted{\unsure{\varphi_{i,\omega^2i}}}}{\overset{\inserted{\varphi_{\omega i,i}}}{\deleted{\unsure{\varphi_{i,\omega i}}}}}(Q_i).
+- 142_scan112D08, 142_scan112, Initial decoration key, three attachment strokes: Three small curved/plain leaders to the upper-left, lower-left and right asterisks.
+- 142_scan112D16, 142_scan112, Upper-right division annotation, cancelled fragment and replacement position: \begin{tabular}{@{}l@{}}division\\\deleted{\unsure{par le}}\end{tabular} par $D_n/D_n^+$.
+- 142_scan113_D08, 142_scan113, Top drawing, Q3 lens, detached mark upper-left of lower Q3 label: \node at (-0.03,-3.06) {$Q_3^\omega$};\node[anchor=east] at (-0.23,-2.94) {$\scriptstyle\unsure{\deleted{\omega}\|\sim}$};.
+- 142_scan114D03, 142_scan114, Opening, à and cancelled aux: à \deleted{\unsure{aux}}.
+- 142_scan114D15, 142_scan114, First d’un cran, after rotation: \inserted{d'un cran}.
+- 142_scan115D10, 142_scan115, proche paragraph, du is baseline text: du.
+- 142_scan115D11, 142_scan115, proche paragraph, baseline R expression: R_r^i.
+- 142_scan115D17, 142_scan115, start of contour paragraph, raised les a: \inserted{les $a_r^i$}.
+- 142_scan115D30, 142_scan115, first diagonal NB, body labels misattached by H: .
+- 142_scan115D42, 142_scan115, second diagonal NB, trailing clause belongs to this physical group: si on bouche\\ $R_r^i$,.
+- 142_scan116_D17, 142_scan116, Tilde-X following ne sont pas dans: local triangular placement: \widetilde{X}^{\substack{*\ *\\*}}.
+- 142_scan117D05, 142_scan117, Opening interlinear addition, -ci soit: celle\deleted{\unsure{soit la\|qui est la}}\inserted{-ci soit}.
+- 142_scan117D18, 142_scan117, Caption, punctuation at resp. (i,i−1) insertion: $(i,i+1)$, \inserted{resp. $(i,i-1)$} dans.
+- 142_scan117D20, 142_scan117, Caption, attachment of resp. en sens opposé: par l'orientation de $r$\inserted{resp. en sens opposé}..
+- 142_scan118D11, 142_scan118, Curved attachment beside cancelled les relations: \begin{tikzpicture}[baseline=(red.base)]<br>\node[anchor=base west,inner sep=0pt] (red) at (0,0) {\unsure{redondances\|redondance}};<br>\node[anchor=base west,inner sep=0pt] (oldwords) at (3.05,0) {\deleted{les relations}};<br>\node[anchor=base west,inner sep=0pt] at (3.05,.46) {\inserted{pour $i=0$ et $i=\infty$}};<br>\draw[line width=.45pt] (2.85,-.26) .. controls (2.86,-.04) and (2.99,.02) .. (3.10,.03);<br>\end{tikzpicture}<br>\deleted{du type $\Lambda_r^0=1$}.
+- 142_scan118D17, 142_scan118, Cancelled NB, raised replacement où r est remplacé: \inserted{où $r$ est remplacé}.
+- 142_scan118D47, 142_scan118, Live (16), scope of the first underbrace relative to the outer exponent: \underbrace{(a_{\tau_1r}^{0}(\lambda_{\tau_1r}^1)^{-1}a_{\tau_1r}^{\infty})}_{\beta_{\tau_1(r)}^1\,\deleted{\unsure{-1}}}^{\unsure{+\|-1}}.
+- 142_scan118D48, 142_scan118, Live (16), vertical placement of the cancelled small inverse beside the first beta annotation: \beta_{\tau_1(r)}^{1\,\deleted{\unsure{-1}}}.
+- 142_scan120_D11, 142_scan120, Attachment of et ceux qui leur sont reliés: \inserted{$\infty$ et ceux qui leur sont reliés}.
+- 142_scan120_D15, 142_scan120, Cancelled les R_r^i before live à ne garder: \deleted{les $R_r^i$}.
+- 142_scan120_D17, 142_scan120, Separate cancelled pour above the long deleted line: \deleted{\unsure{pour}}.
+- 142_scan120_D57, 142_scan120, Faces inserted in the drawing caption: \inserted{faces}.
+- 142_scan120_D60, 142_scan120, Final tilde-X, local three-star arrangement: \widetilde{X}^{\vcenter{\hbox{\begin{tikzpicture}[x=1mm,y=1mm]<br>\node[inner sep=0pt] at (0,1.5) {$\scriptstyle *$};<br>\node[inner sep=0pt] at (1.5,1.5) {$\scriptstyle *$};<br>\node[inner sep=0pt] at (1.05,.2) {$\scriptstyle *$};<br>\node[inner sep=0pt] at (.95,-.8) {$\unsure{\vcenter{\hbox{\tikz[x=1mm,y=1mm]{\draw[line width=.35pt] (0,0)--(.35,0);}}}}$};<br>\end{tikzpicture}}}}.
+- 142_scan121D16, 142_scan121, First line of(21): r-domain qualifier placement: \qquad(r\in\mathcal{R}).
+- 143_scan002D31, 143_scan002, Second item heading, full extent of underline: \uline{Supposons $X$ connexe \inserted{$\ne\varnothing$}, et}.
+- 143_scan002D32, 143_scan002, Second item heading, inserted nonemptiness condition: \inserted{$\ne\varnothing$}.
+- 143_scan002D33, 143_scan002, Second item heading, et state: et.
+- 143_scan004_D20, 143_scan004, Diagram (10), side of the diagonal arrow carrying its label: \arrow[ull,"{\varphi_\xi^t}"{below}].
+- 143_scan005D08, 143_scan005, Cancelled old subscript inside Hom and replacement below E: \begin{tikzpicture}[baseline=(ext.base)]<br>\node[inner sep=0pt] (ext) at (0,0) {$\mathcal E$};<br>\node[anchor=base west,inner sep=0pt,font=\scriptsize] at (.20,-.10)<br> {$\deleted{\unsure{\overline X}}$};<br>\node[inner sep=0pt,font=\scriptsize] at (.03,-.43) {$\inserted{X}$};<br>\end{tikzpicture}.
+- 143_scan005D30, 143_scan005, Refinement addition, position after G_X-prime: \begin{tikzpicture}[baseline=(alors.base)]<br>\node[anchor=base west,inner sep=0pt] (alors) at (.47,0) {Alors on a};<br>\node[anchor=base west,inner sep=0pt] (refinement) at (-.19,.67)<br> {\inserted{\unsure{--\|ou} plus précisém\unsure{ent\|t} $\mathcal G_{X'}(I)$.}};<br>\draw[line width=.35pt] ([xshift=-1pt,yshift=-2pt]refinement.south east)<br> ..controls(3.55,.33)and(1.65,.46)..(.43,.42)<br> ..controls(.12,.37)and(.02,-.16)..(.18,-.26);<br>\end{tikzpicture}.
+- 143_scan006_D10, 143_scan006, Diagram (15), side of diagonal phi_xi label: \arrow[ull,"{\varphi_\xi}"{below}].
+- 143_scan007D05, 143_scan007, Normalisé de X, cancelled overhead cluster: \overset{\unsure{\tikz[baseline=0pt,x=1em,y=1em]{<br>  \draw (0,.17) .. controls (.14,.42) and (.25,.07) .. (.43,.22)<br>    .. controls (.58,.40) and (.70,.11) .. (.82,.20);<br>  \draw[line width=.7pt] (-.03,.10)--(.34,.39)--(.09,.13)--(.48,.39)<br>    --(.22,.11)--(.69,.35)--(.45,.08)--(.89,.29);<br>  \draw[line width=.7pt] (.87,.18)--(.66,-.02)--(.84,-.08)--(.78,-.20);<br>}}}{X}.
+- 143_scan007D06, 143_scan007, Opening quotation around l’extension: ``l'extension.
+
+### 7. Struck text / deletion state
+
+- 142_scan101D26, 142_scan101, Condition 3, laisse deletion state: laisse.
+- 142_scan102D06, 142_scan102, Diagram target: overworked subscript after Y: Y_{\unsure{\deleted{2}\|2}}.
+- 142_scan103_D16, 142_scan103, « et le comparer », live underlined word: et le \uline{comparer}.
+- 142_scan104D15, 142_scan104, Margin: cancelled est: \deleted{est}.
+- 142_scan108D09, 142_scan108, Third small mapping, live z and leftward arrow: z \& {} \arrow[l].
+- 142_scan110_D02, 142_scan110, Upper square, equality and cancellation extent: =\deleted{E_0/\pi\,\operatorname{Ssgr}}(.
+- 142_scan110_D27, 142_scan110, Sphere C, upper polar R label and deletion state: \unsure{R_\infty^-}.
+- 142_scan111D04, 142_scan111, Closing sign after the definition of the orientation torsor: \underline{\omega}(J)\deleted{\unsure{)}},.
+- 142_scan111D32, 142_scan111, Global-sections display: cancelled J after Sigma: \Sigma_{\deleted{J}}.
+- 142_scan115D22, 142_scan115, after orientation dash, live les: les.
+- 142_scan115D35, 142_scan115, second diagonal NB, désigne live: On désigne.
+- 142_scan115D37, 142_scan115, second diagonal NB, cancelled short word: \deleted{\unsure{ces}}.
+- 142_scan116_D21, 142_scan116, Live words before R_r^{ij} va sur: Le point.
+- 142_scan116_D22, 142_scan116, Replacement after où phi est le: \deleted{point} \inserted{sommet}.
+- 142_scan120_D04, 142_scan120, Live equality-shaped abbreviation after on élimine: $=$.
+- 142_scan120_D10, 142_scan120, Infini replaced by the infinity sign: \deleted{infini} \inserted{$\infty$}.
+- 142_scan121D04, 142_scan121, Cancelled R-label between des and sommets: \deleted{$\unsure{R_\varphi\|R_q}$}.
+- 142_scan121D33, 142_scan121, Final live underlined les: \uline{les}.
+- 143_scan002D01, 143_scan002, Opening: Si X=bar X: X=\overline X.
+- 143_scan002D34, 143_scan002, Second item, first Considérons un: Considérons un.
+- 143_scan006_D14, 143_scan006, Live display number (17), separate from the cancelled margin: Live (17), lower than the map baseline, in the regular left display-number column..
+- 143_scan007D20, 143_scan007, Lower note, trouve deletion state: trouve.
+
+### 8. Abbreviations expanded or spelling modernised
+
+- 142_scan101D17, 142_scan101, Inserted condition-2 note, ss-groupes: ss-groupes.
+- 142_scan101D21, 142_scan101, Condition 3, quantifier before hom: tt.
+- 142_scan101D22, 142_scan101, Condition 3, hom abbreviation punctuation: hom.
+- 142_scan101D35, 142_scan101, Lower margin, quantifier before ν: tt $\nu$.
+- 142_scan101D40, 142_scan101, Condition 4, pas néc.: pas néc..
+- 142_scan102D01, 142_scan102, Opening capital A: A vrai dire.
+- 142_scan102D13, 142_scan102, Parenthetical et = de 2°, 3°, 4°: =.
+- 142_scan103_D05, 142_scan103, « de points de X' au dessus de T »: au dessus.
+- 142_scan103_D06, 142_scan103, Interlinear qualifier after x',y'∈X'_T, separator: $T$ adjacents.
+- 142_scan103_D08, 142_scan103, Slanted left-margin hypothesis on x',y': \unsure{en supp.\textsuperscript{t}\|en supposant} $x',y'\in X'_{\overline K}$.
+- 142_scan103_D10, 142_scan103, « soient encore T adjacents »: $T$ adjacents.
+- 142_scan104D03, 142_scan104, Replacement above strate: \inserted{comp. conn.}.
+- 142_scan104D30, 142_scan104, Abbreviated revêt: revêt.
+- 142_scan106_D14, 142_scan106, Figure 4, word before flèches in its caption: \unsure{troi\|trois}.
+- 142_scan114D01, 142_scan114, Opening, first ens. before des repères: ens..
+- 142_scan114D02, 142_scan114, Opening, l’ens de ces: l'ens.
+- 142_scan114D18, 142_scan114, Rotation clause, second resp.: resp..
+- 142_scan114D19, 142_scan114, End of rotation prose, On a de =: On a de $=$.
+- 142_scan116_D12, 142_scan116, On définit de =: $=$.
+- 142_scan116_D24, 142_scan116, Definition label beneath the first brace: def.
+- 142_scan117D09, 142_scan117, General-case paragraph, op.: op..
+- 142_scan120_D59, 142_scan120, Abbreviation in the closing paragraph: ens..
+- 142_scan121D02, 142_scan121, Opening abbreviation pts: pts.
+- 142_scan121D12, 142_scan121, Definition label over equality in first line of(21): def.
+- 143_scan002D20, 143_scan002, Lower left pencil note, final abbreviation and absent second de: \unsure{qu. proj.\|gr. proj.}.
+- 143_scan003D14, 143_scan003, Last paragraph, autom abbreviation: autom.
+- 143_scan004_D23, 143_scan004, Closing paragraph, defini and absent accent: defini.
+- 143_scan004_D25, 143_scan004, Closing paragraph, uncertain autom abbreviation: \unsure{autom}.
+- 143_scan004_D26, 143_scan004, Closing paragraph, int. abbreviation at the start of the clipped lower line: int..
+- 143_scan005D03, 143_scan005, Restriction parenthesis, ss groupe: ss groupe.
+- 143_scan005D11, 143_scan005, Inner bracketed comment, abbreviation after et: $=$.
+- 143_scan005D19, 143_scan005, After component parenthesis, mult.: mult..
+- 143_scan005D22, 143_scan005, Generic-points phrase, gén. abbreviation: gén..
+- 143_scan005_A01, 143_scan005, Last narrative line before (11), spelling of connait before ce germe: connait.
+- 143_scan006_D11, 143_scan006, Kummer paragraph, quantifier after pour: pour $\forall\,i$.
+- 143_scan007D08, 143_scan007, Word following quoted extension: definie.
+- 143_scan007D19, 143_scan007, Lower note, abbreviation after espace: espace hom..
+
+### 9. Text not on the page
+
+- 142_scan101D01, 142_scan101, Opening, before de Θ: .
+- 142_scan101D02, 142_scan101, Opening, after une action: une action de $\Theta$.
+- 142_scan101D13, 142_scan101, First main-text hypothesis, supplied Si: \deleted{$\unsure{\exists a\prime\in}$}.
+- 142_scan101D20, 142_scan101, Inserted condition-2 note, supposed trailing illegible: .
+- 142_scan101D23, 142_scan101, Condition 3, supplied on: peut trouver.
+- 142_scan101D36, 142_scan101, Lower margin, tel with no following que: tel $\Theta\prime^\nu.
+- 142_scan101D43, 142_scan101, Condition 4, J definition and duplicate clause in H: que $J\overset{\mathrm{def}}=I'_1\cap f^{-1}(I'_2)\ne\phi$.
+- 142_scan101D54, 142_scan101, Condition 4, punctuation after the second restriction definition: $I'_2=X'_2\vert I$ on suppose.
+- 142_scan101D55, 142_scan101, Condition 4, punctuation after groupoïdes: groupoïdes (pour.
+- 142_scan101A06, 142_scan101, Condition-2 insertion, no period after the final pi: sous l'action de $\pi$.
+- 142_scan102D08, 142_scan102, Abbreviation hom before the struck adjective: hom.
+- 142_scan103_D12, 142_scan103, Quoted interlinear qualifier for l^T: \inserted{``$T$-horizontal''}.
+- 142_scan103_A04, 142_scan103, Membership display: unsupported terminal period: \bigr).
+- 142_scan104D07, 142_scan104, H parentheses around the amended Donc sentence: Donc ... la formule 54 implique.
+- 142_scan104D12, 142_scan104, Punctuation after the second displayed Γ subscript: \Gamma_{\overline K/K}.
+- 142_scan104D16, 142_scan104, Margin: H’s celui: .
+- 142_scan104D22, 142_scan104, Margin: words after the dash: -- une action.
+- 142_scan104D25, 142_scan104, Margin: isolated I supplied by C: .
+- 142_scan104D28, 142_scan104, Margin: final punctuation: \mathfrak S_E$.
+- 142_scan104D32, 142_scan104, Parentheses around fini in H: fini.
+- 142_scan104D40, 142_scan104, H title attributed to a different sheet, absent on this page: .
+- 142_scan108D06, 142_scan108, First small mapping, punctuation after -z: -z.
+- 142_scan108D08, 142_scan108, Second small mapping, punctuation after the fraction: \dfrac{1}{z}.
+- 142_scan108D21, 142_scan108, Lower sphere, end of symétrique de annotation: symétrique de.
+- 142_scan111D42, 142_scan111, Q margin: ending at the right paper edge: $((i,\omega)\in J\times\underline{\omega}$.
+- 142_scan111D61, 142_scan111, End of the root-of-unity parenthesis: \zeta=\exp 2i\pi/3.
+- 142_scan112D03, 142_scan112, Opening prose, after milieux: milieux des segments.
+- 142_scan112D15, 142_scan112, Upper diagram, U index punctuation: U_{0\,3}.
+- 142_scan112D32, 142_scan112, Left margin, end after donc/dont: \unsure{donc\|dont}.
+- 142_scan112D54, 142_scan112, Final prose, terminal punctuation: arêtes.
+- 142_scan113_D02, 142_scan113, Top drawing, R3 cylinder, lower-left endpoint: No -R_3^\omega label is written at this endpoint.
+- 142_scan113_D26, 142_scan113, Prose, end of first line after distinctes: distinctes.
+- 142_scan113_D27, 142_scan113, Prose, unfinished end after les six: les six.
+- 142_scan114D06, 142_scan114, First displayed inclusion, after X: \subset X.
+- 142_scan114D22, 142_scan114, Formula (3), terminal punctuation: \rho_1(r).
+- 142_scan114D33, 142_scan114, Drawing, H’s claimed single-index R vertices: The main vertices are R_s, R_a, R_f; the nearby truncated-corner labels have two indices, as separately inventoried..
+- 142_scan114D34, 142_scan114, Drawing, punctuation inside right-upper endpoint index: R_r^{1\infty}.
+- 142_scan114D35, 142_scan114, Drawing, punctuation inside lower-left endpoint index: R_r^{0\infty}.
+- 142_scan115D07, 142_scan115, (7), terminal punctuation: k\notin\{i,j\}.
+- 142_scan115D09, 142_scan115, proche paragraph, supposed cancelled de: .
+- 142_scan115D29, 142_scan115, (10), final punctuation: \boxed{a_r^i=a_{\tau_i(r)}^i}.
+- 142_scan115D31, 142_scan115, first diagonal NB, absent reference (11): .
+- 142_scan115D39, 142_scan115, second diagonal NB, absent minuscules: .
+- 142_scan115D44, 142_scan115, second diagonal NB, period after trous: trous.
+- 142_scan115D46, 142_scan115, H supposed trous de dimension in lower margin: .
+- 142_scan117D08, 142_scan117, First display, punctuation in i.e: \text{i.e}.
+- 142_scan117D21, 142_scan117, Formula (14), terminal punctuation: \boxed{\Lambda_r^{\prime i}\Lambda_{\tau_{i-1}(r)}^{\prime i}=1}.
+- 142_scan117D28, 142_scan117, Drawing, punctuation in R_r^01: R_r^{01}.
+- 142_scan118D04, 142_scan118, Display (14), right of R before the condition brace: R_r^{i,j}.
+- 142_scan118D09, 142_scan118, Cancelled opening of les relations du type: \deleted{les relations du type $\Lambda_r^0=1$}.
+- 142_scan118D10, 142_scan118, End of relations paragraph immediately before old (16): .
+- 142_scan118D20, 142_scan118, Left tiling note, unsupported seulement seuls: .
+- 142_scan118_A01, 142_scan118, Display (14), abbreviation after the condition i ou j est égal à 1: \text{i.e}.
+- 142_scan120_D03, 142_scan120, Et les sommets: no separately established numeral: les sommets.
+- 142_scan120_D09, 142_scan120, Raised phi condition: unmatched closer and its insertion leader: \begin{tikzpicture}[baseline=(base)]<br>\coordinate (base) at (0,-.20);<br>\node[anchor=south west,inner sep=0pt] (phi) at (0,0) {\inserted{$\varphi\in S$)}};<br>\draw[line width=.35pt] ([xshift=-.06cm,yshift=-.19cm]phi.south west)<br> ..controls ([xshift=-.12cm,yshift=-.02cm]phi.south west) and ([xshift=.15cm,yshift=-.08cm]phi.south west)..([xshift=.27cm,yshift=-.08cm]phi.south west)<br> ..controls ([xshift=-.20cm,yshift=-.11cm]phi.south east) and ([xshift=.03cm,yshift=-.04cm]phi.south east)..([xshift=.02cm,yshift=.04cm]phi.south east);<br>\end{tikzpicture}.
+- 142_scan120_D58, 142_scan120, Arrondis in the drawing caption: arrondis.
+- 142_scan120_D64, 142_scan120, Single cancelled faces in the centres clause; H duplicates it: \deleted{des centres des faces} \inserted{etc.}.
+- 142_scan121D11, 142_scan121, Marginal boxed relation: right superscript: 01.
+- 142_scan121D13, 142_scan121, Crowded junction of first inverse and middle factor in(21): (a_{\tau_0r}^\infty)^{-1}(\Lambda_r^{\prime1})^{-1}.
+- 142_scan121D19, 142_scan121, Second line of(21): target superscript: R_{\sigma_1r}^{01}.
+- 142_scan121D32, 142_scan121, Final clause: purported cancelled token before flèches: des flèches.
+- 143_scan002D04, 143_scan002, Display (2), end of first row: \operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q).
+- 143_scan002D13, 143_scan002, Right pencil note, terminal punctuation: $\Gamma_X$.
+- 143_scan002D22, 143_scan002, Underlined local-finiteness phrase, loc punctuation: loc.
+- 143_scan002D23, 143_scan002, Underlined local-finiteness phrase, t/f punctuation: t f..
+- 143_scan002D26, 143_scan002, Main text before the final homomorphism, hom punctuation: hom.
+- 143_scan002D36, 143_scan002, Next line after the cover map, bare X: $X$, et.
+- 143_scan003D02, 143_scan003, Sequence (6), after final 1: 1.
+- 143_scan003D12, 143_scan003, Last paragraph, mod before composition: mod.
+- 143_scan004_D09, 143_scan004, First prose line after diagram (9), between sur and ss-groupe: sur ss-groupe ouvert.
+- 143_scan005D15, 143_scan005, Display (12), un diviseur without parentheses: un diviseur.
+- 143_scan005D17, 143_scan005, Component parenthesis, l’ens without final dot: l'ens.
+- 143_scan005D18, 143_scan005, Component parenthesis, irréd without final dot: irréd.
+- 143_scan006_D04, 143_scan006, Qualifier after relèvement, supplied opening parenthesis: [no opening parenthesis].
+- 143_scan006_D15, 143_scan006, Display (17), repeated T(Q-bar) in the lower equality: =\varprojlim\mu_n(\overline{\mathbf Q}).
+- 143_scan006_D16, 143_scan006, Display (17), punctuation after the target: \pi_1(X').
+- 143_scan006_D25, 143_scan006, Closing paragraph, one overtraced opération: l'\unsure{opération\|Opération}.
+- 143_scan006_D26, 143_scan006, Final line, comma after pi_1(X prime): sur $\pi_1(X')$ est.
+- 143_scan007D09, 143_scan007, Image-inverse paragraph, ens punctuation: ens.
+- 143_scan007D16, 143_scan007, M0649, absent opening parenthesis before qui: .
+
+### 10. Other
+
+- 142_scan101D51, 142_scan101, Condition 4, final cross-reference: cf 2°.
+- 142_scan101D53, 142_scan101, Opening, quotation marks around K-connexe: ``$K$-connexe''.
+- 142_scan104D09, 142_scan104, Quotation marks around la: ``la''.
+- 142_scan104D17, 142_scan104, Margin: quotation marks around fibre: ``fibre''.
+- 142_scan104D29, 142_scan104, Main paragraph initial capital: C'est là.
+- 142_scan104D38, 142_scan104, Boundary before the final parenthesis: T-adjacents (Ce.
+- 142_scan111D02, 142_scan111, Word cancelled before the tautological sequence: \deleted{Suite}.
+- 142_scan111D62, 142_scan111, Last word above the page number: alors.
+- 142_scan111_A03, 142_scan111, Text to the right of the tangent-sheaf display, separator before Sigma: \qquad\text{fibré tangent : }\Sigma.
+- 142_scan112D13, 142_scan112, Upper diagram, quotation marks around pôles: ``pôles''.
+- 142_scan114D09, 142_scan114, Quotation marks around adjacentes: ``adjacentes''.
+- 142_scan114D14, 142_scan114, Quotation marks around rotation: ``rotation''.
+- 142_scan117D02, 142_scan117, Opening, quotation glyphs: ``polarisée''.
+- 142_scan117D10, 142_scan117, General-case paragraph, quotes around d’un cran: ``d'un cran''.
+- 142_scan117D17, 142_scan117, Caption after (13), quotation scope: rotation d'un double cran''.
+- 142_scan121D29, 142_scan121, Quoted bouchage in lower paragraph: ``bouchage''.
+- 143_scan002D29, 143_scan002, First item number: \textcircled{1}.
+- 143_scan002D30, 143_scan002, Second item number: \textcircled{2}.
+- 143_scan004_D06, 143_scan004, Live item number at the left of Supposons: \textcircled{3}.
+- 143_scan004_D07, 143_scan004, Live opening, quotation marks around germe de relèvement: ``germe de relèvement''.
+- 143_scan004_D14, 143_scan004, First hom abbreviation, before composé: hom.
+- 143_scan004_D22, 143_scan004, Closing paragraph, hom abbreviation: hom.
+- 143_scan004_D24, 143_scan004, Closing paragraph, mod abbreviation: mod.
+- 143_scan006_D06, 143_scan006, Qualifier, autom punctuation: autom.
+- 143_scan007D01, 143_scan007, Opening parenthetical phrase, quotation marks: (``structure Kummérienne'').
+- 143_scan007D07, 143_scan007, Closing quotation after extension: extension''.
+- 143_scan007D17, 143_scan007, After i in I, before soit: ).
+
+## Additional recurring phenomena
+
+No wholly new primary error class was needed beyond the ten classes in the supplied sheet. The following recurring, more specific failure modes merit explicit reminders in later runs. The page records and evidence crops give the local readings and strokes.
+
+- **A partial terminal is not a complete arrowhead.** Several shafts end in a cap, a short upturn or a downward tick. Standard arrow commands can add geometry that is absent, while a minus command can suppress a real terminal: 142_scan101,104,110–111,117,120 and 143_scan002–004,006–007. Copy the endpoint before deciding its mathematical interpretation. On 143_scan004 the upper live replacement has a complete chevron separated from its shaft by white paper, while the lower cancelled arrow has a joined head. Conversely, the second reading of 108 recovered a real small downward head at the front i junction; the sphere loops on 110 also have locally distinct heads and open returns.
+- **A relation sign can have a joined contour.** The first sign in 142_scan114(4) has a right-hand join between its upper and lower strokes, while the following equals signs are separated. The physical shape is qualified literally, and use of the intended equality in the mathematical checks is stated as an assumption.
+- **A label can form part of the drawn connector.** In 143_scan006 (17), the long stem of phi_i itself crosses the shaft. Treating the label and crossing bar as independent objects would duplicate a stroke. Nearby, the high arc at the tiny marginal Q can belong to its parenthesis rather than be a separate overbar. Distinguish connected pen paths from independent decorations.
+- **Long enclosure and insertion lines can cross live words.** The additions on 143_scan005 have distinct leaders and attachment points. The second readings restored the under-running prolongée leader on 142_scan101 and the X= leader on 142_scan103. On 143_scan007 the long lower line crosses trouve and the l of alors without cancelling either word. The two 115 and three 117 leaders are single continuous sweeps; an invented doubled-back return would add a branch. The five 120 and three 121 leaders likewise remain single sweeps; the long 121 leader has its own curled end beside a separate comma. The two leaders on 143_scan004 likewise remain separate from their words; the long one reaches a crease at the paper edge, where its exact continuation stays unresolved. A crossing line is not automatically a deletion, underline or parenthesis.
+- **Retracing need not represent two textual states.** The single overworked opération on 143_scan006, the interior of the second argument in 143_scan007 (19), and the loop beside cancelled Supposons X on that leaf do not establish a clean original word plus a clean replacement. Preserve the overwork without inventing a revision chronology.
+- **Article placement and leader attachment can change the span of an insertion or quotation.** Compare the separate final refinement and earlier parenthesis on 143_scan005, the position of the opening quotation before l’extension on 143_scan007, and the marginal leaders on 143_scan002. Read the attachment independently of the inserted words.
+- **Punctuation clusters must be counted before assigning several roles.** The two marks between the Xs on 143_scan005 do not justify both a prime and a semicolon, which would require a third mark. The closing parenthesis crowded against I on 143_scan007 is much longer than a comma. The point after trouve on that page is distinct from the following small a.
+- **Rule spans and central cusps are source geometry.** On 142_scan101 two separate double-underline pairs leave a gap and stop before the exclamation mark. On 142_scan103 the membership annotation has a flat lower bracket, while the later formula has a genuine cusped underbrace. The 116 frame has four independent corner gaps, and each 117 frame has its own segmented construction. The 120 (19) frame leaves both left corners open. The opening cancellation on 143_scan004 has three separate enclosing runs with gaps, rather than a single closed box. A convenient standard command can silently join spans, close a pen gap or add a cusp.
+- **A point marker can be a ring, cap or retraced shape.** On 142_scan106 the interior 0 marker has a white centre, the interior 1 marker has an open lower notch, and a separate last-circle remnant cannot safely be assigned an extra vertex meaning. Copy the visible shape before choosing a generic filled-node command.
+- **Pale residue and incomplete contours are not automatically deletions.** On 142_scan108 a pale i-like trace remains beside the live i, and additional interior curves stop or break before other contours. On 142_scan110 detached strokes, open small loops and cancelled-sphere fragments likewise require separate physical treatment. On 142_scan113 the pale crossed/looped trace beside Q3, the small-circle gap and interrupted R2 rim are similarly copied without added point or topological meanings; on 114 the pale fragment remains detached below the baseline. The 117 pencil skeleton has separated tips and a short overhang; the 118 tiling has pale exterior construction strokes beyond the dark edges. The 120 drawing also has an open pale ring and separated local junction tips; the 121 thick inner arc has one attached and one detached endpoint. Retain the visible fragments without completing them by symmetry or assigning an earlier/later revision merely from ink density. An isolated speck with no textual or graphic role is a different case and is excluded.
+
+The scope of a witness also needs to be recorded precisely. H’s unavailable drawing files cannot be reconstructed from generic figure prose; only its supplied explicit local claims were collated. Where H expressly acknowledged an overwork, crossing stroke or unreadable note, that acknowledgment was retained in the evidence discussion instead of charging a blanket omission. Different physical details and genuinely recovered text were assessed separately.
+
+The same sign can have several local roles, and clear authorial variation must survive reconciliation. In particular, the closed sigma forms and open tau forms on 142_scan115–121 were not made identical solely to improve a formula, nor were the clear A crossbar on 142_scan106 or local commas and dots in vertex indices suppressed. The notation table records these distinctions; conditional mathematical diagnostics remain in the notes.

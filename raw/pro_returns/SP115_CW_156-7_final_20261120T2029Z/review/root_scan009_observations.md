@@ -1,0 +1,18 @@
+# Root initial visual observations, before final009 record
+
+Root personally viewed the whole009 image once, both supplied halves once, then all25 named crops once. Source layout and every horizontal line were read against C/H. Agent report is pending at this point; no page is yet finalized.
+
+- Head numeral8; introductory d'autres visible at end. No completion of that unfinished sentence is supplied.
+- Upper AtDC1 draft and both Cor statements crossed by common long diagonals. Its first line also has a long horizontal cancellation; earlier overwritten compatibility/parallel signs and the local cancelled formula remain separate.
+- Deleted word before raised Soient begins A, but thick strike prevents all remaining letters from being plain; retain a doubt between Alors/At rather than a certain supplied word.
+- Cor1 has a clear open C after F, and F∥C; first F in F≪F has no prime. C′≪G contrasts with a clearly barred final G′.
+- Cor2 first L in Supposons is unprimed: the apparent raised tick belongs to the preceding F,G∈scriptF comma on the upper baseline (agent confirmed this source-plane explanation). C′ in its two premises is clear. The conclusion's rounded G′ has a downturned foot and is not as flat as those Cs; pending comparison, retain G/C uncertainty if needed.
+- NB marginal note has long-stemmed phi-like empty symbols, difficult corrected inequalities, apparent primes in the second implication premise, and a raised cross after a later Z. These need full-formula uncertainty, not normalization to expected algebra.
+- AtDC2 uses spacieux. K has a dense earlier L-like stroke under it. tt is compressed. Crucially, the curved stroke under Y′≪Y, X′∥K has a small right-pointing head at its middle; a simple underline loses this feature. Agent asked to reproduce it explicitly.
+- On voudra la, not voudrait. Propriété1, not Proposition. Reference cf GF VI p73 is live; long line crosses the lower Montrons sentence. Both bands of VI retained. Last short implication-like sign in the live reference has rounded head and remains faithfully drawn rather than forced to a standard arrow.
+- Ceci est équivalent (si on le voit de façon générale) à l'ancien At12, qui prend le nom is visible.
+- Lower axiom has altered DD/DC/CD label, slanted interlinear short phrase, and crowded connective between variable pairs. Keep doubtful rather than imposing consistency. Main text defines K and then uses L subscripts; preserve mismatch.
+- The NB after this axiom reads l'inverse more plausibly than l'énoncé, with the earlier est struck. No generic always-true theorem was proved merely by reading it.
+- Criterion marginal note has genuine underlines through the title and sous-figures; preserve all following prose. Figure has4 sides, a slightly open oval, one diagonal connecting opposite vertices,2 thick points at oval intersections,1 small cross inside and2 external crosses (right and below). They are drawings, not letter labels. Original orientation differs from C's idealized rotated diamond; reproduce actual relative geometry.
+- Later note has two upright strokes crossed twice between X′ and Y′; reproduce the sign rather than call it a standard incompatibility by expectation. C'est begins with the large C itself, not an extra opening parenthesis. Its words and At references remain partly doubtful.
+- Lower Cor. Main labels are abbreviated, not Corollaire. Numerals lie outside title underlines. Lower implication has a clear C′ premise where G′ would give a consistent bound variable. Final equivalence similarly has C′/G′ shaped forms requiring local discrimination.

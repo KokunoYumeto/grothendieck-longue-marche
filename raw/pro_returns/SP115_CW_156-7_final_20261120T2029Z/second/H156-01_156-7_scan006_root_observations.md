@@ -1,0 +1,50 @@
+# Root observations on frozen blind differences, scan006
+
+Direct visual adjudication of the fresh blind crops; provisional until decisions.json is applied. No OCR, no TeX compilation, no external research.
+
+- B004: retain live 6 over cancelled uncertain 5. Curved upper stroke and loop belong to 6; flatter neck of the old character survives. Underline includes At.
+- B005: retain live 5 over cancelled uncertain 6. Flat top and lower bowl distinguish live 5 from the hatched underlying loop.
+- B006: retain live 7 over cancelled uncertain 6, without an insertion wrapper. Replacement is already represented by deleted old character then live character.
+- B007: retain At_M0; only wrappers differ. Rule crosses below the t as well as A.
+- B008: CHANGE A01: underline ends after A, before t, in the lower At_M1 label. Use text{uline{A}t}_M1 here only.
+- B009/B010: retain At_M2 and At_M3, with underline across At. Numerals have respectively the curved shoulder/flat base and paired lobes.
+- B011: CHANGE A02: resolve isolated 1. Single upright with short upper head is legible as numeral 1; no competing letter body.
+- B012: retain script F, comma, less-than with lower bar, and both parentheses. Only math delimiters differ.
+- B013: retain equivaut with accent. The q descender and final t are clear; no tall l or separate ent sequence supports equivalent.
+- B014: cancelled X/inequality/compatibility knot remains uncertain but contains legible crossed strokes, so retain partial deleted formula instead of replacing all by illegible. CHANGE A03: opening explanatory relation label is abbreviated, with rel and a tall looped character followed by a point and comma-like mark. Replace expanded relation alternative by rel b. versus rel with raised tion, retain the uncertainty and add the visible separating comma. The following word is reflexive, followed by sym; no separate et is secure.
+- B015: cancelled formula has crossed X under a top wave, not a secure F with x subscript. Retain tilde X, the unsure cancelled initial forall x in M, and tentative etre above the right end. Posant belongs above the line. Curved return beneath it is not an additional word.
+- B016: no cancelling stroke crosses posant at its letter height. Retain inserted tentative posant as live insertion; the large curved attachment beneath it is not treated as a secure comma.
+- B017: retain majorée, reunion and d'ens. The modifier has a descending j and later accented e, not the b/s/i/q pattern of basique. No separate live Phi precedes union; the right-hand hook belongs to the beginning of reunion. Preserve the existing small-index x/X uncertainty.
+- B018: retain the tentative cancelled exists sign; its three horizontal levels are partly crossed. The adjoining r/e beginning does not form a separate live Phi.
+- B019: retain the de/d' uncertainty and the complete marginal definition. CHANGE A04: the short bottom preposition is compressed into p plus point/low strokes; pour and p. r. remain possible, so mark both rather than claim a fully written word.
+- B020: retain capital X,Y under the cote's shared glyph convention; the forked Y and crossed X match the other main-line stratum variables. Both primes, two less-than-or-equal bars, the double implication shaft, final prime and point are visible.
+- B021: retain capital main-line X,Y and the whole At3 sentence. CHANGE A05 (same place as B022): the tiny crossed group above X admits de as well as x.
+- B022: CHANGE A05: a left loop/ascender and right curved return survive across the strike; neither a single crossed x nor a compressed de is secure. Preserve both alternatives within deletion.
+- B023: retain par strates. Initial s is elongated, followed by a high t and r-a-t-e-s sequence; it is not a capital A followed by tomes. Both underline spans are visible.
+- B025: CHANGE A02 as in B011, the same isolated numeral 1. Less-than-or-equal, et, double angle and terminal point agree.
+- B026: retain the existing At4 formula. Large main-line crosses/forks are X,Y under the shared notation. Both arrows of equivalence, the universal/existential signs, comma and t.q. agree.
+- B027: retain par strates and bracketed Corollaire. Two t stems and the initial long s support strates; Atomes lacks the visible r-a-t sequence. Underlines and brackets agree.
+- B028: retain M centered underneath the double angle, not a right subscript; the main sentence is otherwise the same.
+- B029: retain petite strate, not Atome: long s followed by t-r-a-t-e is visible. CHANGE A06: article before plus has a flattened exit that admits la/le. CHANGE A07: add the short headless arch and detached dash above Axiome; the already represented rising connector arrow remains. The arch is separate ink from letters and from the Corollaire bracket.
+- B030: retain the crossed forall, main-line X,F in script F, triangular relation, large first exponent X and small later exponent x, old uncertain less-than-or-equal under the double angle, and comma/point uncertainty. There is no separate legible live inserted universal sign above an earlier illegible group.
+- B031: the forall's two limbs and crossbar remain visible under cancelling strokes. Retain deleted forall; do not add an uncrossed replacement that is not visible.
+- B032: the outer lower stroke belongs to an overwritten relation and the two live chevrons are darker. Retain deleted uncertain less-than-or-equal then live double angle, not a new triple-angle relation.
+- B033: retain the literal X as least element, although the next line gives the mathematical reason to question it; ink stays X. CHANGE A08: label contains d and tall f, whose right return could be final n or just f's exit; add df among the existing abbreviation alternatives. No full-word expansion is made. Circles, primes, triangle and equality agree.
+- B034: retain capital X,Y, Omb(Y) with superscript open circle, separate descriptive line and underline limited to raffinement interne. Math wrappers/operator styling alone are otherwise different.
+- B035: retain the first reading's complete marginal prose, including tentative sous-figures/strates and extrinsèq./intrinsèq. rather than the blind gaps. CHANGE A09: add the thin elbow connector ending in an angular loop to the right of the insertion. CHANGE A10: add the visible colon after the cancelled row. CHANGE A11: the cancelled row can tentatively be read Axiome (large A and portions of x/i/o/m/e survive), but remains unsure under dense hatching. CHANGE A12: the final figures has its own underline; de lies in the gap after the preceding underline. Preserve parentheses and final s, not a separate period. Long upper curve and crossing branch already represented.
+- B036: inserted Si G,H remains physically uncrossed above the cancellation; the thin rightward strokes belong to the elbow connector, not another illegible word. The colon below/right of the cancelled row is retained (A10), and its tentative Axiome reading is A11.
+- B037: CHANGE A11 as above, tentative Axiome under the crossing; not a resolved reading. Live lower sous-figures and figure F are separate from this row, not an inserted F,G group.
+- B038: CHANGE A12 as above: underline begins with f of figures and ends at its terminal s. The preceding dot is part of the crowded de/adjacent stroke context already visible in B035, not a newly asserted sentence stop. Curved closing parenthesis retained.
+- B039: retain the At5 formula with X,Y and double angle in antecedent. Main-line capitals, M and implication direction agree under the shared notation.
+- B040: retain both reformulations. Tilde F, less-than-or-equal, double angle, F,G in M, compatibility and final equivalence all agree; only delimiters differ.
+- B041: CHANGE A13: add the long connector above Transitivité, with the visible short returning strokes at its left end. It is separate from the word's underline and from the existing curved leader around At7. The short right terminal is drawn without inventing a second arrowhead. Retain Transitivité du raffinement interne and its existing curved leader.
+- B042: retain Soient and capitals X,Y,Z. The middle decoration is darker and nearly filled, unlike the open flanking circles; preserve bullet/circle uncertainty. No new source punctuation is asserted.
+- B043: retain the complete tuple M, less-than-or-equal, double angle, tilde script F; only math delimiters differ.
+- B044: CHANGE A01 as B008: only A is underlined in At_M1, while At_M0 has an underline across both letters. Other formula content agrees.
+- B045: retain strict less-than after pour: only the angled stroke is present, with no separate lower bar. Keep the phi-shaped empty-set sign under the established glyph mapping. The separate live Psi and partly overwritten pa beginning remain as first read.
+- B046: retain live Psi on the baseline and the cancelled pa-like beginning before partie. The Psi's extra diagonal foot does not establish a separate inserted replacement; an old p/a trace is visible to its right.
+- B047: frozen first excerpt is empty because of excerpt construction, but the frozen initial page contains the entire At_M3 block. Directly checked the complete block here; retain it, including telles que (two l-like stems and ending), capital variables, deleted uncertain {X,Y}, existential Phi without prime, M above union, all parentheses and final point. No transcription omission or blind-induced change is counted.
+- B048: retain uncertain deleted {X,Y}; braces and comma show but hatching obscures parts of both letters. The live following X is distinct.
+- B049: retain exists Phi, tilde script F, comma and X,Y membership in unprimed Phi; the small handwritten crosses/forks do not warrant a new alphabet choice.
+- B050: retain union with M above it, tilde script F, closing parenthesis and terminal point. M is the shared double-humped M form, not a newly introduced mu.
+- B051: retain live 6 above the cancelled uncertain 5, as B004. The tall curved head of 6 and its lower loop are distinct from the flatter old upper stroke. Underline stops before the numeral.

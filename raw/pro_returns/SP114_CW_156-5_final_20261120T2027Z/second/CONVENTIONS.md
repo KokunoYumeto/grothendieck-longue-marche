@@ -1,0 +1,17 @@
+# Independent image-only second reading
+
+Read only the assigned source JPG images, the assigned `_boxes.tsv`, and this conventions file. Do not open witnesses, page transcriptions, `_first.tsv`, first-reader crops, notes, change records, scripts that contain readings, or another reader's output. No OCR, recognition library, PDF text layer, external research, or TeX compilation.
+
+For each listed original-coordinate box, make one crop from the whole JPG, enlarge with LANCZOS to roughly 2500–3500 pixels across (rotate slanted writing upright if useful), and inspect the actual image. Save each image in `deliverable/crops/second_scanNNN_<box>.png`. Autocontrast and modest sharpening may clarify faint ink; do not erase strokes or invent missing ink. Record original box, rotation, and viewing time. All coordinates use the whole JPG, top-left origin.
+
+Transcribe the central complete words, formula, or passage in each box. Read both ends of arrows and the complete formula when doubtful; include insertions, deletions, labels, underlines and marginal words. At clipped edges, do not complete an unseen word from context. You may view the supplied whole page or halves to locate an attachment. Partial adjacent-line context at the edges need not be included as if it were the target passage. Record any clipping or scope ambiguity in your separate notes.
+
+Write literal diplomatic LaTeX in UTF-8. Preserve source spelling, abbreviations, punctuation, repeated words, clear slips, and unmatched source parentheses. Do not repair an argument. Use `$...$` or `\[...\]` for mathematics; standard mathematical LaTeX plus TikZ and tikz-cd are allowed.
+
+The edition macros are `\mspage{n}` for the manuscript numeral, `\deleted{...}` for cancelled text, `\inserted{...}` for an insertion, `\margin{...}` for a marginal note, `\uline{...}` and `\uuline{...}` for single and double underlining, `\diagram{\begin{tikzcd}...\end{tikzcd}}`, and `\figure{\begin{tikzpicture}...\end{tikzpicture}}`. Reproduce diagrams/drawings in code rather than replacing them with prose. Where the whole enclosing passage is struck but a box contains only an excerpt, retain the enclosing deletion wrapper in the excerpt.
+
+Use `\unsure{preferred}` or `\unsure{preferred|alternative}` for genuine uncertainty, with the preferred ink reading first. A struck word stays doubtful unless all letters are legible. Do not use `\illegible{n}` for a mathematical symbol; give a candidate with doubt. Use `\illegible{n}` only for physically unreadable textual ink. Separate uncertain state from uncertain letters, e.g. `\unsure{word|\deleted{word}}` when warranted. Punctuation specks are included only when they have writing density and a plausible position. Pale watermark/bleed-through is not source text.
+
+Output `second/J156-5-04_156-5_scanNNN_second.tsv` with exactly the columns `box`, `reading`, one row for every box ID supplied, using Python's CSV writer with a tab delimiter so multiline readings are quoted correctly. Also write `second/J156-5-04_156-5_scanNNN_blind_notes.json` with the reader identity, an image-only independence statement, and one object per box containing crop path, source coordinates, rotation, confidence, concrete visual observations, and UTC viewed time. These notes must record what you actually inspected, not merely a crop-generation list.
+
+Complete one assigned page before requesting another. Never compare with the first reading yourself. The main reader performs the later token comparison and crop adjudication.

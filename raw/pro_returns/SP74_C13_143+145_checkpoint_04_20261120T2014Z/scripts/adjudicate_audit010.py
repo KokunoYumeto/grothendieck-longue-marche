@@ -1,0 +1,22 @@
+from pathlib import Path
+import json,copy
+R=Path(__file__).resolve().parents[1];key='143_scan010';reader='A'
+r=json.loads((R/'reviews'/f'{key}_accepted.json').read_text())
+a=json.loads((R/'reviews'/f'{key}_audit{reader}.json').read_text());by={x['place']:x for x in r['changes']}
+p={'key':key,'reader':reader,'findings':[
+ {'index':1,'decision':'reject','reason':'Main inspected the reused upper-margin crop. Three compact dark points are supported. The intervening fourth candidate is gray and soft-edged, materially paler than those writing points. Under the prompt rule for faint punctuation, alignment alone does not establish source ink, so no extra point or point-doubt is transcribed.'},
+ {'index':2,'decision':'accept','reason':'Main inspected the reused lower-margin crop. The compact ts is visibly raised to the right of the descending p, above the following de baseline. Preserve its position without expanding the abbreviation.'},
+ {'index':3,'decision':'accept','reason':'Main inspected the reused final-maps crop and the existing display4 comparison. The local graph has an acute apex, two close converging strokes and a foot, whereas the two clear I graphs have broad caps. Delta is the preferred visual alternative; compressed I remains credible because the opening parenthesis meets its base. No definite authorial slip is inferred.'}],
+ 'change_operations':[], 'remaining_doubts_remove':[r['remaining_doubts'][0]['place']],
+ 'remaining_doubts_add':[a['remaining_doubts'][0],a['remaining_doubts'][2]],
+ 'notes_add':[{'id':'143_scan010-audit-main-N1','text':'The second reading and main reinspection preserve raised ts in the lower-margin abbreviation. In the first final mapping, the argument has a triangular apex and foot: Delta is the preferred visual reading, with compressed I retained as an explicit alternative. The surrounding I/J notation calls for I, but it is not used to replace the observed shape or declare a definite source slip. The possible fourth upper-margin point is too pale to establish source punctuation; only the three dark points are transcribed.'}],
+ 'hand_log_add':[a['hand_log'][1],a['hand_log'][3]],'check_events_add':[],
+ 'main_summary':'Main re-inspected the existing upper-margin, lower-margin, final-maps, display4, and operations crops. Accepted raised ts and the local Delta/I uncertainty; rejected the pale possible extra point under the source-ink rule. Aligned the pure E/Sigma confidence records to the shared low-confidence convention. M0662 and all other accepted material stand.'}
+old='Upper oblique margin, end of note';z=copy.deepcopy(by[old]);z['ink']+=' Three compact dark continuation points are secure. An intervening gray trace proposed in the audit is too pale to establish another source point and is excluded under the prompt rule.';p['change_operations'].append({'operation':'replace','place':old,'row':z})
+old='Lower oblique margin, opening words';z=copy.deepcopy(by[old]);z['final']=z['final'].replace('pts',r'p\textsuperscript{ts}');z['against_C']=True;z['confidence']='medium';z['ink']+=' The raised placement is now encoded explicitly; the words themselves remain secure.';p['change_operations'].append({'operation':'replace','place':old,'row':z})
+old='(5), first map';z=copy.deepcopy(by[old]);z['final']=a['findings'][2]['after'];z['ink']='The connector is a single slightly rising horizontal stroke with a flat rounded end and no arrowhead branch; that reading is high confidence. Tilde and prime are visible. The first argument has an acute apex, two converging strokes and a low foot, unlike the broadly capped I in display (4) and the codomain. It prefers Delta, with compressed I still possible where the opening parenthesis meets the base. The argument identification is low confidence and controls this composite row confidence. X retains the shared decorated alphabet encoding.';z['confidence']='low';p['change_operations'].append({'operation':'replace','place':old,'row':z})
+for old in ['(5), operations, acting letter','(5), applications, acting letter']:
+ z=copy.deepcopy(by[old]);z['confidence']='low';p['change_operations'].append({'operation':'replace','place':old,'row':z})
+for e in a['check_events']:
+ z=copy.deepcopy(e);z.update(date='2026-11-20',who='GPT-6 Astra Pro; inherited effort not exposed; SP74 second pass; second reader A');p['check_events_add'].append(z)
+(R/'reviews'/f'{key}_main_audit_plan.json').write_text(json.dumps(p,ensure_ascii=False,indent=2))

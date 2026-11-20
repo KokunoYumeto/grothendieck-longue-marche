@@ -1,0 +1,11 @@
+# Main-reader adjudication — 143_scan033
+
+Main viewed the original once, all 21 existing tight crops, and six additional crops of differences that the first reader had settled from the page. Every material row and retained uncertainty was adjudicated. The six additional boxes are in main_crop_manifest.jsonl. The tall printed-numeral crop initially exceeded the image channel limit; a rotated and scaled viewing copy of the same saved crop was then inspected. No second crop was made.
+
+The ten live group graphs and cancelled predecessor use pi consistently with the previously inspected flat-cap pi hand. The first-X index is now xi/g, still undecided: the upper turn is open while the nearby g bowls are closed. This preference-only change is not counted. The second X retains j/xi. The separator after it is omitted: the very pale trace is not securely blue source ink, so neither witness's separator is supplied. This is a material omission against both witnesses, recorded with medium confidence.
+
+Small heads on the horizontal edges are preserved individually. The upper middle Gamma–1 edge remains left/right uncertain; the upper bottom exit remains headed/bare uncertain. The two lower Gamma strokes have blunt ends and interior projections; their literal TikZ approximation is retained. The upper two auxiliary links, lower first auxiliary link and lower 1-to-Gamma link are plain shafts. The lower final exit is also bare. No conventional exact-sequence pattern is used to change them.
+
+The word is traces, with a closed third-letter bowl and an open following c. Its connected lower letter strokes do not form a separate brace. Its placement under the operator-to-Gamma span is retained. K is uppercase; the first membership line has no terminal comma. The bottom cancelled symbol keeps its g index and uncertainty, and the separate superscript wave is not nested under the live hat.
+
+The printed sequence 6–0, 2975–132, 31 IBM logos and pencil 32 are retained. Inventory categories are normalized only to the permitted vocabulary: this face is classified as text, the printed marks as print, and pencil attribution remains unnamed. No mathematical proof or computation was performed.

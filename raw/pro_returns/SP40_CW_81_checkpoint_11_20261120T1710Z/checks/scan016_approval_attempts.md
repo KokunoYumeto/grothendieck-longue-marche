@@ -1,3 +1,0 @@
-# Scan016 approval-script correction
-
-The first approval invocation stopped before writing the page: the draft-record hash had changed through the clerk's verification-only metadata tail, and the copied approval script resolved reader paths from the workspace instead of out/. The later commit invocation had no page record to read and stopped. Root inspected and accepted the new verification metadata, corrected the explicit packet-versus-output path base in the approval script, and retried. No image, source reading, selected TeX, mathematical check or compiler operation occurred in this correction.
