@@ -1,0 +1,136 @@
+from pathlib import Path
+import json
+root=Path('out/readings/scan011/R2')
+base='readings/scan011/R2/'
+f=[]
+def add(id,place,c,h,final,evidence,confidence,kind,marked,diffc,diffh,bbox,crop='',action='',math='',s=''):
+ f.append(dict(id=id,place=place,c=c,h=h,final=final,evidence=evidence,confidence=confidence,kind=kind,marked_in_H=marked,diff_c=diffc,diff_h=diffh,bbox=bbox,crop=base+crop+'.png' if crop else '',doubt_action=action,s_id=s,math_note=math))
+add('C01','Opening contraction after sous',r'\unsure{grpe|grp}','groupe',r'\unsure{grp|grpe}','Crop: descender and compressed terminal shoulders support a contraction; no full oupe. A separate terminal e cannot be distinguished. Primary reordered to grp.','medium','abbreviation expanded or spelling modernised',False,True,True,[963,77,1081,128],'01_heading','retain')
+add('C02','Opening group letter; recurring upper-block group notation',r'\unsure{\mathbb{Z}|\mathbb{G}|Z|G}','Z',r'\mathbb{Z}','Crop: long top and bottom bars and a diagonal with a distinct inner return give doubled Z. A rounded G construction is not supported here.','high','misread symbol or index',False,True,True,[1091,61,1164,120],'01_heading','resolve','Alphabet read from the diagonal and return, not inferred from cyclicity.')
+add('C03','First crossed display, overall structure',r'\deleted{\unsure{\operatorname{Aut}_{\substack{G\text{-ens}\\G\text{-}\unsure{\mathrm{var}|\mathrm{op}}}}(\unsure{T|D})\longrightarrow\operatorname{Aut}(G)}}',r'\struck{\operatorname{Aut}(Z,T)\to\operatorname{Aut}(G)}; note: premier essai biffé, avec deux mots ajoutés dessous, également biffés',r'\deleted{\unsure{\operatorname{Aut}_{\substack{G\text{-ens}\\G\text{-}\unsure{\mathrm{var}|\mathrm{op}}}}(\unsure{D|T})\longrightarrow\operatorname{Aut}(G)}}','Crop: two low lines are visible beneath Aut; cancellation cuts through the operator and argument. Retain uncertainty on the global segmentation rather than substituting H’s clean two-argument expression.','low','misread symbol or index',True,True,True,[298,151,874,252],'02_cancelled_aut','retain')
+add('C04','Second low line of crossed Aut subscript',r'\unsure{\mathrm{var}|\mathrm{op}}','two added words noted but not transcribed',r'\unsure{\mathrm{var}|\mathrm{op}}','Crop: three low remnants favour var; the oblique cancellation and merged middle prevent excluding op.','low','omission',True,False,True,[364,213,474,253],'02_cancelled_aut','retain')
+add('C05','Argument of first crossed Aut',r'\unsure{T|D}','T',r'\unsure{D|T}','Crop: the final form has a long upright, top bar and large right return, favouring D. Cancellation makes T still possible.','low','misread symbol or index',True,True,True,[508,150,591,211],'02_cancelled_aut','retain')
+add('C06','Definition of q_t',r'on a un \unsure{splitting} q_t, défini par',r'on a une section q_t, définie par',r'on a un splitting q_t, défini par','Half a: the English word has the close central tall strokes and a final descending g; un and the masculine défini are also visible. The word was settled in the half reading.','high','misread word',False,True,True,[491,434,1438,511],'','resolve')
+add('C07','On ... t\u2032=t.g',r'\unsure{avait|aurait|écrit}','aura',r'\unsure{avait|aurait}','Crop: a low closed initial a and a terminal raised crossed stroke support avait/aurait; the middle wave does not distinguish them. No initial accented é is visible; H’s aura lacks the final t-like stroke.','medium','misread word',False,True,True,[427,824,556,873],'03_verb','retain')
+add('C08','Verification display between int(i(g)) and (q_t(γ))',r'\unsure{\circ}','no composition circle',r'\circ','Crop: a small closed loop sits immediately left of the tall opening parenthesis, distinct from its main stroke.','high','misread symbol or index',False,True,True,[878,1082,926,1145],'04_underbrace','resolve')
+add('C09','First gamma in the first canceled proof line',r'\unsure{\gamma}',r'\gamma',r'\gamma','Crop: although retraced, the two upper arms and lower loop of gamma remain visible inside the parentheses.','medium','misread symbol or index',False,True,False,[589,1253,642,1305],'05_cancelled_gamma','resolve')
+add('C10','Second q subscript in the first live proof row',r'q_{\unsure{t|b}}(\gamma)t=t',r'q_t(\gamma)t=t',r'q_{\unsure{b|t}}(\gamma)t=t','Crop: the second subscript has a closed low bowl and an upright, unlike the first subscript’s near-straight t. This favours b; a looped t remains possible.','medium','misread symbol or index',False,True,True,[1287,1370,1402,1428],'06_live_subscript','retain','The conjugation check uses q_t(t)=t. That mathematical requirement cannot erase the b-like bowl.')
+add('C11','NB, word before n=2',r'\unsure{si}','si',r'\unsure{si}','Crop: two compressed strokes fit si, but the first is unusually low and the i has no separable dot. Retain the original doubt.','medium','misread word',False,False,False,[1444,1641,1501,1690],'07_nb','retain')
+add('C12','Small canceled fragment below Ex',r'\deleted{\unsure{\Gamma\subset|\Gamma\in}}',r'\struck{\ill{}}',r'\deleted{\Gamma\in}','Crop: Gamma’s upright/top are recoverable. The following curved sign has a separate middle arm below the cancellation, so membership is preferred securely over a bare subset curve. Both are canceled.','medium','readable ink left as \\ill{}',True,True,True,[500,1709,590,1759],'08_cancelled_gamma_relation','resolve')
+add('C13','Right note beside lower Aff',r'\unsure{diédral|diédhral}','diédral','diédral','Crop: after the second tall d the short shoulder is an r; no additional h-height ascender occurs. Acute mark above the e and terminal al are present.','high','misread word',False,True,False,[1325,1902,1487,1953],'09_dihedral','resolve')
+add('C14','Canceled words before inverse-generators insertion',r'\deleted{\unsure{d\u0027ordre $n$}.}',r'\struck{d\u0027ordre n}',r'\deleted{\unsure{d\u0027ordre $n$}.}','Crop: d/apostrophe, another tall d and the final low n-like trace survive; the overstrike obscures the middle. The detached terminal period is present below the line end.','medium','omission',False,False,True,[1256,2128,1526,2172],'10_bottom_correction','retain')
+add('N01','Sign between torseur and droite','à',r'\uncertain{à droite}',r'\unsure{:|à} droite','Crop: two separated compact dark points lie one above the other; no a-loop is resolved. Colon-like ink is primary, with compressed à retained as the alternative.','low','misread symbol or index',True,True,True,[602,71,630,111],'01_heading')
+add('N02','Three group-letter occurrences in upper sequence',r'\mathbb{Z}; \operatorname{Aut}(\mathbb{Z},T); \operatorname{Aut}(\mathbb{Z})',r'Z; \operatorname{Aut}(Z,T); \operatorname{Aut}(Z)',r'\mathbb{Z}; \operatorname{Aut}(\mathbb{Z},T); \operatorname{Aut}(\mathbb{Z})','Half a: each angular group glyph has the inner return/doubling seen in the opening letter. H’s plain Z is distinguished from its declared bold encoding of double-stroke symbols.','high','misread symbol or index',False,False,True,[526,263,1239,326])
+add('N03','Final shaft of upper sequence',r'\arrow[r,dash]',r'\arrow[r]',r'\arrow[r,dash]','Half a: the short final horizontal segment has no arrowhead; the preceding genuine heads provide a visible comparison.','high','drawing or diagram',False,False,True,[1247,278,1341,321])
+add('N04','Two defining equations for q_t','aligned at equals signs','cases, left starts aligned','left-start alignment inside the brace','Half a: the two expressions begin nearly together, but their equals signs fall at different horizontal positions.','high','insertion or placement',False,True,False,[624,550,1005,695])
+add('N05','Arrow after gamma in the conjugation display',r'\gamma\longrightarrow',r'\gamma\mapsto',r'\gamma\longrightarrow','Half a: a plain horizontal shaft ends in a right head; there is no source bar, unlike the explicit mapsto in the following display.','high','misread symbol or index',False,False,True,[1239,910,1355,953])
+add('N06','Verification brace, equality, and lower product',r'\underbrace{\operatorname{int}(i(g))\circ(q_t(\gamma))}_{\substack{\rotatebox{90}{$=$}\\ i(g)q_t(\gamma)i(g)^{-1}}}',r'\underbrace{\operatorname{int}(i(g))(q_t(\gamma))}_{=\,i(g)q_t(\gamma)i(g)^{-1}}','TikZ brace beginning after int and ending below q_t; displaced equals slanting about -60 degrees; product on the line below','Crop: the brace starts near the first opening parenthesis, ends below q_t, and the two equality strokes slant down-right. The product is a separate lower line.','high','drawing or diagram',False,True,True,[701,1083,1103,1220],'04_underbrace')
+add('N07','Before or t\u2032=tg','or','; or','or','Half b: or begins without a preceding semicolon; no two-component punctuation mark is present at the left.','high','text not on the page',False,False,True,[350,1202,684,1252])
+add('N08','Left margin note opening','Itou','Idem','Itou','Half b: tall initial I, crossed t and joined ou are legible. The final letters do not form em.','high','misread word',False,False,True,[108,1513,280,1576])
+add('N09','Group letter in Itou note',r'\mathbb{Z}','Z',r'\mathbb{Z}','Half b: the small group letter repeats the angular doubled construction. This also disposes of the contextual C note about the Itou alphabet, under C02’s resolved recurring reading.','high','misread symbol or index',False,False,True,[362,1519,413,1571])
+add('N10','Position and enclosure of Itou note',r'\margin{TikZ enclosure}, with default right margin',r'Idem pour ...; note: relié par un trait à la section q_t du diagramme','left margin; open curved enclosure meeting at a rightward point beside the end of the proof','Half b: the curve begins above and to the right of the note, bends round its right side and returns below it. It does not continue upward to the top diagram. Explicit left-margin selection is supplied.','high','drawing or diagram',True,True,True,[104,1420,612,1617])
+add('N11','Group letters in Ex and End/Aut arguments',r'\mathbb{Z}=\mathbb{Z}_n; \operatorname{End}\mathbb{Z}; \operatorname{Aut}\mathbb{Z}',r'Z=\mathbf{Z}_n; \operatorname{End}Z; \operatorname{Aut}Z',r'\mathbb{Z}=\mathbb{Z}_n; \operatorname{End}\mathbb{Z}; \operatorname{Aut}\mathbb{Z}','Half b: group arguments repeat the angular doubled glyph; the indexed numerical Z also has two separated diagonal strokes. H’s bold numerical Z is equivalent encoding and is not counted.','high','misread symbol or index',False,False,True,[486,1567,1020,1708])
+add('N12','Example block alignment and canceled fragment placement','Ex and Z=Z_n inline with a vertically centered aligned brace; separate centered canceled display','Ex Z=Z_n before a separate displayed cases block; separate canceled display','Ex and Z=Z_n on the lower Aut-row baseline; canceled Γ∈ below Z=Z_n','Half b: End stands above the Ex baseline, whereas Aut and Ex are level; the canceled fragment sits under the left equality, not centered under the cases.','high','insertion or placement',False,True,True,[352,1566,1304,1762])
+add('N13','D in the dihedral note','D_n',r'\mathbf{D}_n',r'\mathbb{D}_n','Crop: two separate vertical stems are visible inside the D. H’s heavy-letter macro is treated here as equivalent encoding, not a substantive difference.','high','misread symbol or index',False,True,False,[1510,1952,1598,2011],'09_dihedral')
+add('N14','Detached hooked point left of the Aff displays','omitted','omitted','small hooked dark point drawn in TikZ, with uncertainty on writing versus surface status','Crop: a dark L-like flick lies left of the display between its first line and the upward-opening curve. It resembles ink but has no recoverable textual function.','medium','omission',False,True,True,[355,1846,376,1869],'11_detached_point')
+add('N15','Raised inverse-generators replacement',r'\inserted{inverses l\u0027un de l\u0027}autre','inverses l\u0027un de l\u0027autre as ordinary running text',r'\raisebox{.7ex}{\inserted{inverses l\u0027un de l\u0027}}autre','Half b and correction crop: inverses l’un de l’ is visibly above the crossed d’ordre n. The following autre is on the next main text line. No connector is visible.','high','insertion or placement',False,False,True,[1260,2095,1641,2175],'10_bottom_correction')
+add('N16','Unheaded connectors in final sequence',r'\arrow[r,dash,"i"], \arrow[r,dash,"p"], \arrow[r,dash]',r'\arrow[r,"i"], \arrow[r,"p"], \arrow[r]',r'\arrow[r,dash,"i"], \arrow[r,dash,"p"], \arrow[r,dash]','Half b: the i and p segments and final segment are flat shafts. The first arrow and curved return q have actual heads, so the absence is locally observable.','high','drawing or diagram',False,False,True,[698,2215,1246,2312])
+add('N17','Half in produit 1/2 direct',r'$1/2$','½',r'${}^1\! /\! {}_2$','Half b: 1 is raised and 2 lowered on opposite sides of a slanting fraction stroke. The change to C is placement; H’s half glyph is equivalent.','high','insertion or placement',False,True,False,[1192,1762,1256,1827])
+add('N18','Detached mark above un splitting','omitted','omitted','short horizontal dark trace drawn above un, uncertain writing/surface status','Crop: a small dark dash with a brownish edge lies above un, separate from all letter strokes. Its purpose and whether it is writing remain undecidable.','low','omission',False,True,True,[685,423,709,444],'12_upper_detached')
+add('N19','Two detached points above/right of direct)','omitted','omitted','two diagonally displaced points drawn in TikZ; uncertain writing/surface status','Crop: two compact round dark marks stand above the formula baseline to the right of the closing parenthesis. They are preserved without calling them a colon or quotation marks.','low','omission',False,True,True,[1489,1764,1515,1787],'13_right_detached')
+inv=[]
+def item(element,kind,pos,first):
+ inv.append(dict(sheet_kind='text',hand='his hand',element=element,kind=kind,position=pos,first_words_or_objects=first,transcribed='yes'))
+item('Opening torsor description','text','top, y 60–126','T torseur ... droite sous grp Z')
+item('Crossed initial Aut attempt and both low lines','deletion','y 149–252','Aut; G-ens; G-var/op; D/T; Aut(G)')
+item('Upper exact-sequence-like diagram','diagram','y 265–390','1, doubled Z, Aut(Z,T), Aut(Z), 1; i, p, dashed q_t')
+item('Detached short mark above definition','drawing','x 685–709, y 423–444','short dark horizontal trace')
+item('Definition prose','text','y 438–509','∀t∈T, on a un splitting q_t, défini par')
+item('Two conditions defining q_t','display','y 550–695','q_t(γ)(t)=t; p(q_t(γ))=γ')
+item('Question comparing splittings','text','y 744–807','Quelle est la relation entre q_t et q_t′ ?')
+item('Choice of t′ and calculation introduction','text','y 821–887','On avait/aurait t′=t.g, et on trouve')
+item('Conjugation formula','display','y 906–980','q_t′=int(i(g))∘q_t : γ→...')
+item('Opening proof bracket and prose','text','y 1023–1096','[ Pour le vérifier, il suffit de voir que')
+item('Verification map and lower product','display','y 1084–1220','int(i(g))∘(q_t(γ)) : t′↦t′')
+item('Partial underbrace and displaced slanted equality','drawing','y 1139–1181','brace under the middle of the expression; slanted =')
+item('or and t′=tg','text','y 1204–1251','or t′=tg')
+item('First discarded verification calculation','deletion','y 1250–1310','q_t(γ)(t′)=q_t(γ)(t)γ(g)=t.γ(g)')
+item('Second discarded calculation','deletion','y 1329–1382','int(i(g)) q_t(γ)(t′)=')
+item('Live calculation and closing bracket','display','y 1367–1519','i(g)^−1(t′)=t ... q_b/t(γ)t=t; ... tg=t′; ok ]')
+item('Itou extension note','margin note','left, y 1505–1576','Itou pour Aut^Γ(doubled Z,T)')
+item('Open enclosure round Itou note','drawing','left, x 279–606, y 1426–1609','curved upper/lower strokes meeting in a rightward point')
+item('Cyclic-group example with End and Aut','display','y 1572–1708','Ex; doubled Z=Z_n; End Z=Z_n; Aut Z=Z_n*⊃{±1}=Γ')
+item('NB exceptional modulus','margin note','right, y 1637–1743','(NB si n=2, +1=−1 dans Z_n*...)')
+item('Canceled Gamma membership fragment','deletion','x 500–590, y 1709–1759','Γ∈')
+item('Affine semidirect-product identity','display','y 1765–1831','Aff(Z_n)=Z_n.Z_n* (produit 1/2 direct)')
+item('Pair of detached points','drawing','right, x 1489–1515, y 1764–1787','two diagonally displaced dark points')
+item('Detached hooked point','drawing','left of formula, x 355–376, y 1846–1869','small dark L-like flick')
+item('Upward-opening curve between affine formulas','drawing','x 541–568, y 1858–1889','rotated subset/open U')
+item('Affine subgroup identity','display','y 1890–1969','Aff^{±1}(Z_n)=Z_n.{±1}')
+item('Dihedral name and n≠2 condition','margin note','right, y 1903–2043','groupe diédral d’indice n, doubled D_n (on suppose n≠2...)')
+item('Final torsor and generators paragraph','text','y 2066–2247','Soit T torseur sous Z groupe cyclique d’ordre n≥3 ... famille {u,u^−1} de 2 gén. ... autre.')
+item('Canceled generator-order phrase','deletion','y 2128–2172','d’ordre n.')
+item('Raised replacement above cancellation','insertion','y 2095–2145','inverses l’un de l’')
+item('Final sequence with inverse-preserving automorphisms','diagram','y 2217–2338','1→Z—Aut^{±1}(T,Z)—{±1}—1; i, p, curved q')
+item('Archive foliation, comment only','margin note','lower left, y 2278–2330','10')
+notation=[
+ dict(sign='Angular doubled Z',reading=r'\mathbb{Z}',ink='Top/bottom bars with a diagonal and distinct inner return; repeated in the heading, upper sequence, Itou and Ex arguments.',place='upper block and Ex'),
+ dict(sign='Numerical indexed Z',reading=r'\mathbb{Z}_n',ink='Two separated diagonal strokes; n is a small low undulating stroke. H’s bold Z is equivalent encoding.',place='Ex, NB and both Aff equations'),
+ dict(sign='Plain Z',reading='Z',ink='Single long diagonal between bars; no interior doubled stroke.',place='final paragraph and final sequence'),
+ dict(sign='Doubled D',reading=r'\mathbb{D}_n',ink='Two separate vertical stems inside the broad D bowl.',place='dihedral note'),
+ dict(sign='gamma',reading=r'\gamma',ink='Two upper arms, one descending loop; retraced but still recoverable in the first canceled equation.',place='splitting conditions and proof'),
+ dict(sign='q subscript variation',reading=r'q_t; q_{\unsure{b|t}}',ink='Most t indices have a short straight/crossed stem. The final q index in the live proof has a closed bowl.',place='proof, original y 1380–1425'),
+ dict(sign='arrow versus shaft',reading=r'\longrightarrow;\longmapsto;\arrow[r,dash]',ink='Gamma arrow lacks a source bar; t′ map has a source bar. Several sequence connectors have no head.',place='two sequences and conjugation/verification displays'),
+ dict(sign='composition circle',reading=r'\circ',ink='Small independently closed loop beside the opening parenthesis.',place='verification display'),
+ dict(sign='slanted equals',reading=r'\rotatebox{-60}{$=$}',ink='Two short down-right strokes between the partial brace and its lower product.',place='under verification expression'),
+ dict(sign='canceled relation',reading=r'\Gamma\in',ink='Following curved relation has a middle arm below the strike.',place='under Ex'),
+ dict(sign='upward-open U',reading=r'\rotatebox{90}{$\subset$}',ink='Open U-shaped curve without a lower equality line; H’s cup is geometrically equivalent.',place='between Aff equations'),
+ dict(sign='low product point',reading='.',ink='Baseline dots in t.g, t.γ(g), and both Aff products.',place='conjugation prose, canceled proof, Aff equations'),
+ dict(sign='heading colon-like trace',reading=r'\unsure{:|à}',ink='Two separated compact points; no resolved a-loop.',place='between torseur and droite'),
+ dict(sign='plus/minus and inequalities',reading=r'\pm1;\supset;\ne;\ge',ink='Cross over a low minus; open containment curve; diagonal crossing unequal sign; greater-than with lower bar.',place='example and final paragraph')
+]
+abbr=[dict(written=a,expansion=b) for a,b in [('grp/grpe','groupe'),('Ex','exemple'),('Aut','automorphismes'),('End','endomorphismes'),('int','automorphisme intérieur'),('NB','nota bene'),('gén.','générateurs'),('ens','ensembles'),('var/op','variétés/opérations: expansion remains uncertain with the subscript reading')]]
+checks=[
+ dict(statement='The displayed conjugate fixes t′=t.g and has the same projected automorphism γ.',event_type='actual algebraic check',reasoning='With i(g) acting by right translation on this abelian-group torsor, i(g)^−1(t.g)=t. The defining equation gives q_t(γ)(t)=t, and applying i(g) returns t.g. Since p(i(g))=1, projecting the conjugate gives γ. Uniqueness follows because a semilinear torsor map is determined by the image of one torsor point.',outcome='The main conjugation formula is consistent. The proof’s b-like final index remains an ink ambiguity and is not silently changed to t.'),
+ dict(statement='The canceled q_t(γ)(t′)=t.γ(g) line is compatible with the splitting definition.',event_type='actual algebraic check',reasoning='Semilinearity gives q_t(γ)(t.g)=q_t(γ)(t).γ(g); the fixed-point condition makes this t.γ(g).',outcome='The canceled line is algebraically valid under the displayed setup; its deletion is preserved as a writing-state fact, not diagnosed as an error.'),
+ dict(statement='For n≥3, the ±1 subgroup of Z_n* has two elements and Z_n⋊{±1} has order 2n; at n=2 the signs coincide.',event_type='actual elementary group check',reasoning='The residues 1 and −1 coincide exactly when n divides 2. For n≥3 they are distinct units, inversion has order two, and the semidirect product has n·2 underlying pairs. If a generator u of order n≥3 satisfied u=u^−1, then u²=1, a contradiction.',outcome='The NB and the final n≥3 generator-pair restriction are consistent with the affine/dihedral example. No interpretation of the author’s phrase d’indice beyond its written wording was imposed.')
+]
+unresolved=[
+ dict(place='opening, after torseur',reading='colon-like two-point mark',alternatives=': | compressed à',confidence='low'),
+ dict(place='opening contraction',reading='grp',alternatives='grp | grpe',confidence='medium'),
+ dict(place='crossed first Aut expression',reading='Aut with G-ens and G-var/op low lines, argument D/T',alternatives='global subscript/argument segmentation remains uncertain under the crossing',confidence='low'),
+ dict(place='second low subscript of crossed expression',reading='var',alternatives='var | op',confidence='low'),
+ dict(place='argument of crossed Aut',reading='D',alternatives='D | T',confidence='low'),
+ dict(place='On ... t′=t.g',reading='avait',alternatives='avait | aurait',confidence='medium'),
+ dict(place='second q subscript in live proof',reading='b',alternatives='b | t',confidence='medium'),
+ dict(place='NB before n=2',reading='si',alternatives='si; individual strokes too compressed for certainty',confidence='medium'),
+ dict(place='canceled phrase before inverse-generators insertion',reading='d’ordre n',alternatives='d’ordre n; middle strokes hidden by cancellation',confidence='medium'),
+ dict(place='above un splitting',reading='short detached dark trace',alternatives='incidental ink | surface trace; no function assigned',confidence='low'),
+ dict(place='left of Aff displays',reading='small hooked dark point',alternatives='incidental ink | surface trace; no function assigned',confidence='medium'),
+ dict(place='above/right of direct)',reading='two diagonal dark points',alternatives='incidental ink | surface traces; no punctuation assigned',confidence='low')
+]
+report=dict(scan='011',reader='R2',start_utc='2026-11-20 02:43:08 UTC',end_utc='pending final self-check',images_viewed=[f'/workspace/scratch/be39e9f81d6d/source/SP38_CW_75_scans/J75-02_75_scan011{x}.jpg' for x in ('','_a','_b')],reading_file='out/readings/scan011/R2/reading.tex',crop_count=13,findings=f,inventory=inv,notation=notation,abbreviations=abbr,notes=[
+ 'Complete handwritten page about right torsors, splittings, their conjugation on changing the basepoint, and the cyclic/dihedral affine example. No manuscript title or date; Ex is an underlined local label. Archive foliation 10 is only a comment.',
+ 'Whole page was viewed once for layout (1685×2361); half a once and half b once, in order. Half b begins at whole-image y=1100. All textual lines, correction states, diagrams and marginal elements were compared against both witnesses before tight-crop resolution.',
+ 'Thirteen enhanced tight crops were inspected, each for one unresolved locus. Two detached-mark loci were identified during coverage reconciliation and cropped once each. No whole/half image was reopened, no settled locus was recropped, and no OCR, text layer, external research, other page or other reader was used.',
+ 'S.json contains an empty array: there are no sweep rows to decide. There is no H_drawings supplement in this page packet.',
+ 'The author asks Quelle est la relation entre q_t et q_t′ ?, then writes Pour le vérifier and concludes ok. The NB and the parenthetical on suppose n≠2 are retained. These are author statements; separate checks below record what was actually calculated.',
+ 'Original C doubts are numbered C01–C14 in their literal occurrence order, including the nested C03/C04/C05 doubts. Each has a findings row and explicit retain/resolve action. The contextual C doubt about the Itou alphabet is covered by C02 and N09.',
+ 'The upright/bowl at the proof’s final q subscript triggered a mathematical consistency check but did not supply the reading. Similarly the surprising colon-like opening trace and the canceled Γ∈ are preserved from their strokes.',
+ 'H’s declared heavy-letter encodings for numerical double strokes are treated as equivalent; plain Z in upper group arguments differs from the observed doubled form. H’s heavy D is likewise treated as equivalent encoding. The open U/cup versus rotated-subset syntax is not counted as a collation difference.',
+ 'Baseline product points, primes, unmatched writing states, the raised replacement, the left Itou enclosure and the underbrace geometry are preserved. The three detached-mark loci remain visually represented without invented function.',
+ 'No TeX compilation was performed; verification is limited to coverage, JSON consistency, literal brace/environment balance and mathematical checks explicitly listed.'
+ ],checks=checks,unresolved=unresolved,original_c_doubt_map=[dict(id=f'C{i:02}',finding=f'C{i:02}',action=next(x['doubt_action'] for x in f if x['id']==f'C{i:02}')) for i in range(1,15)],self_check={})
+# Keep literal apostrophes rather than unicode escape spellings in witness text.
+def normalize(x):
+ if isinstance(x,str):return x.replace('\\u0027',"'").replace('\\u2032','′')
+ if isinstance(x,list):return [normalize(y) for y in x]
+ if isinstance(x,dict):return {k:normalize(v) for k,v in x.items()}
+ return x
+report=normalize(report)
+(root/'report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+p=root/'crop_manifest.json';manifest=json.loads(p.read_text())
+for row in manifest['crops']:row['inspected']=True
+manifest['crop_count']=len(manifest['crops'])
+p.write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+print('Wrote reading.tex and report.json:',len(f),'findings;',len(inv),'inventory elements;',len(checks),'actual checks.')

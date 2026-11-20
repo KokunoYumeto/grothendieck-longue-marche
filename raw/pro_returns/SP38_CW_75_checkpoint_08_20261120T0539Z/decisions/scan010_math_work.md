@@ -1,0 +1,15 @@
+# Scan010 — actual main mathematical work, before ink adjudication
+
+Use K for the abstract group whose handwritten letter is unresolved. This symbol is for the check only, never substituted in the transcription. No image has been viewed by main.
+
+For a left regular action, an automorphism pair (gamma,rho) obeys rho(gx)=gamma(g)rho(x). Setting x=e gives rho(g)=gamma(g)a with a=rho(e), and every such pair with gamma an automorphism and a in K works. Composition is componentwise. Projection to gamma is onto, split by q(gamma)=(gamma,gamma). The kernel consists of right translations R_a:x->xa. Since R_a R_b=R_(ba), the identification i(g)=R_(g^-1) is a homomorphism K->kernel. A positive right-translation convention is anti-multiplicative in a nonabelian group. Thus the raised translation mark and its deletion state cannot be resolved from the desired exact sequence.
+
+The boxed conjugation statement checks under this identification: gamma R_(g^-1) gamma^-1=R_(gamma(g)^-1)=i(gamma(g)). Projection from pairs to rho is injective, because left regular translations L_g are faithful and rho L_g rho^-1=L_(gamma(g)); its image is their normalizer in Sym(K). The displayed inclusion in Aut(K) times Sym(K) is immediate from the pair description.
+
+For Gamma<=Aut(K), its inverse image under p is a subgroup and the restricted section gives K semidirect Gamma. In coordinates i(z)q(gamma), multiplication is (z,gamma)(zprime,gammaprime)=(z gamma(zprime),gamma gammaprime). This follows by conjugating i(zprime) through q(gamma). It does not select the page's word structural/naturel.
+
+For actions on E,Eprime with rho(gx)=gamma(g)rho(x), if Eprime is a Gprime-torsor and E is nonempty, choose x in E. Freeness says there is at most one h with h rho(x)=rho(gx), determining gamma(g). Only target freeness is needed for uniqueness; existence of gamma for an arbitrary rho is not asserted. If E is empty, equivariance is vacuous and gamma need not be determined. If only E is a torsor, take E=C2 regularly acted on, Eprime a point with trivial C2 action, rho constant: the trivial and identity homomorphisms both work. This distinguishes the C/H draft statements but does not decide primes in the ink. Composition of equivariant pairs also checks: rho2 rho1(gx)=gamma2 gamma1(g) rho2 rho1(x).
+
+For the additive group of an R-vector space V, an affine map x->z+gamma(x) composes by (z,gamma)(zprime,gammaprime)=(z+gamma(zprime),gamma gammaprime), has identity (0,id), and inverse (-gamma^-1 z,gamma^-1). If gamma is R-linear, the subset is a subgroup; this verifies Aff_R(V)=V semidirect Aut_R(V).
+
+For affine x->z+A x, Q of a difference is preserved exactly when Q(A v)=Q(v) for every v; translations cancel in differences. Hence the affine transformations preserving Q-differences form V semidirect Orth(V,Q). Calling sqrt(Q(x-y)) a real distance additionally needs positive definiteness: the nondegenerate real Q(x,y)=x^2-y^2 gives Q(0,1)=-1. This is a qualification on the use of distance, not a replacement for the handwritten word or a proof that every unrestricted isometry is affine.

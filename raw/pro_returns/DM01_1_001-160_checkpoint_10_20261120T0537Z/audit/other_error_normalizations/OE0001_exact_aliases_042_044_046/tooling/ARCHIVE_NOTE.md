@@ -1,0 +1,3 @@
+# Historical tooling copies
+
+These scripts were executed from work/error_alias_fix. Their relative root calculation describes that original location; do not execute them directly from this audit folder. The installed runtime helper is scripts/other_error_aliases.py and the current explicit registry is audit/OTHER_ERROR_ALIASES.json. The completed transaction and its before/after hashes are authoritative. A future reviewed alias requires a new registry/table audit transaction; never overwrite this one. The focused verification report describes preparation-time tests, and the ordinary root verifier passed after installation.

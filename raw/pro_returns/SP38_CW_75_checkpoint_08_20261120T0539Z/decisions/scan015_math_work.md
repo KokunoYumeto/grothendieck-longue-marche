@@ -1,0 +1,59 @@
+# Scan 015 — actual main mathematical work
+
+No ink was inspected for these checks. The three independent readers were working separately. The proofs use only the supplied pages and explicit reasoning; no outside research.
+
+## BG015-TRIANGULATION — carried as background without fault found
+
+The elementary theorem that every simple planar polygon admits a triangulation by diagonals is used as background for the interior-angle sum. It is not reproved in this run. The embedding requirement is the supplied course's definition of rectilinear realization on scans004–005, not an added assumption of injectivity.
+
+## M015-ANGLE-SUM — targeted proof check
+
+For a triangulation with n boundary vertices and no interior vertices, let d be its diagonals and t its triangles. Counting triangle edges gives 3t=n+2d; each added noncrossing diagonal splits one region, giving t=d+1. Thus t=n−2 and the sum of polygon interior angles is (n−2)pi. If those interior angles are equal, each is pi−2pi/n<pi. Traversing the boundary with its interior on the left therefore turns each edge by +2pi/n. The triangulation existence theorem is only background, BG015-TRIANGULATION.
+
+## M015-EXISTENCE — independent re-proof
+
+For n≥3 let zeta=exp(2pi i/n). Its n powers are distinct roots of z^n=1; a degree-n polynomial has no further roots. Put x_j=r zeta^j with r>0. These are vertices in circular order of a convex polygon, whose successive chords meet only at neighboring endpoints; each chord has length r|zeta−1|=2r sin(pi/n), and each interior angle is pi−2pi/n. The earlier abstract n-cycle can be assigned to these n consecutive vertices and edges, giving an embedded rectilinear regular realization.
+
+## M015-DIGON — refuted
+
+If part a's existence assertion is extended to every combinatorial polygon allowed earlier, it fails for n=2. The course admits two-vertex polygons, but a straight realization sends each of their two distinct arcs to the same segment between the two vertex images. The two arc interiors then have coincident images, contradicting the earlier embedding definition. Refined statement id M015-EXISTENCE restricts to n≥3, the bound written explicitly in part b. This is a scope qualification of part a, not a claim that its later n≥3 hypothesis is false or an insertion into the ink.
+
+## M015-NORMALIZE — targeted proof check
+
+The length 2r sin(pi/n) is positive for n≥3. Taking r=1/(2sin(pi/n)) normalizes every side to one. A Euclidean similarity scales all lengths by its common positive factor, so a similarity between two normalized realizations has scale one and is an isometry.
+
+## M015-RIGID — independent re-proof
+
+Interpret angles as the polygon interior angles, and take the embedded polygon from the course definition. By M015-ANGLE-SUM its directed edge vectors satisfy e_j=e_0 zeta^j after a positively oriented cyclic listing, where |e_0| is the common nonzero side length and zeta=exp(2pi i/n). Summing gives x_j=x_0+e_0(1−zeta^j)/(1−zeta)=c+u zeta^j, with c=x_0+e_0/(1−zeta) and u=−e_0/(1−zeta). This proves that every such realization is a similarity image of the same regular n-gon. It also proves convexity without separately assuming it.
+
+## M015-CYCLE-ISOM — targeted proof check
+
+A combinatorial isomorphism of n-cycles, n≥3, sends a chosen vertex j=0 to some a and its successor to one of the two neighbors a+epsilon, epsilon=±1. Subsequent vertices are forced by adjacency and the prohibition on returning to the preceding vertex. Hence every such isomorphism has j↦a+epsilon j modulo n. There are exactly 2n possibilities. In the n=3 case the same argument gives all six permutations.
+
+## M015-EXTEND — independent re-proof
+
+Write the two regular realizations as x_j=c+u zeta^j and y_j=cprime+v zeta^j with u,v nonzero. For a given cycle isomorphism j↦a+epsilon j, if epsilon=+1 use T(z)=cprime+(v zeta^a/u)(z−c). If epsilon=−1 use T(z)=cprime+(v zeta^a/conjugate(u))conjugate(z−c). These are similarities and send every vertex, hence every straight edge, to the specified target. Their common scale is |v|/|u|, the side-length ratio; normalized realizations therefore give isometries. These formulas check the precise statement about inducing a prescribed combinatorial isomorphism.
+
+## M015-UNIQUE-COUNT — targeted proof check
+
+Three vertices of a regular n-gon for n≥3 are noncollinear. Two affine maps agreeing on these vertices agree on the whole affine plane, so the similarity inducing a prescribed combinatorial isomorphism is unique. Without prescribing that isomorphism, the 2n distinct maps supplied by M015-CYCLE-ISOM and M015-EXTEND give 2n possibilities, not one. This explains the mathematical role of the canceled unique, but cannot decide its ink or the doubtful sign after exists.
+
+## M015-CENTROID — targeted proof check
+
+Since sum_{j=0}^{n−1} zeta^j=0, the vertex centroid of x_j=c+u zeta^j is c. An affine map T preserves a finite barycenter: T((1/n)sum x_j)=(1/n)sum T(x_j). Therefore the centroid is invariant under polygon automorphisms and is transported by every induced similarity. Choosing it as the origin turns the affine envelope into a vector plane in a way compatible with all combinatorial isomorphisms.
+
+## M015-ENVELOPE — independent re-proof
+
+An intrinsic two-dimensional real space can be constructed inside R^S. For any cyclic enumeration j, let c_j=cos(2pi j/n) and s_j=sin(2pi j/n), and let W be the span of the two corresponding vectors c,s. Shifting the enumeration rotates this pair and reversing it changes s's sign; hence W is independent of both choices and functorial under cycle isomorphisms. For n≥3, sums of zeta^j and zeta^{2j} vanish, giving <c,c>=<s,s>=n/2 and <c,s>=0. Orthogonal projection of the standard basis vector e_j to W is (2/n)(cos(2pi j/n)c+sin(2pi j/n)s); these points form a regular n-gon, span W affinely, and have centroid zero. Its side length is 2sqrt(2/n)sin(pi/n), so rescaling gives a canonical normalized model. The uniqueness from M015-UNIQUE-COUNT identifies this model with any normalized realization through the prescribed vertex correspondence. This supplies the corollary's affine/vector envelope without claiming a free affine envelope of dimension n−1.
+
+## M015-ORIENTATION — targeted proof check
+
+An orientation of the cycle selects cyclic enumerations differing only by shifts. Their ordered bases (c,s) of W differ by rotations of determinant +1, so they define the same plane orientation. Reversing the cycle changes (c,s) to (c,−s), reversing plane orientation. Thus the two orientations of the combinatorial polygon correspond bijectively to the two orientations of its real envelope. Equivalently, the induced similarities for epsilon=±1 have determinant sign epsilon.
+
+## M015-MINOR-ANGLE — refuted
+
+If all angles is instead read as all smaller unoriented angles between incident edges, the rigidity assertion is false even for embedded polygons. The 12 vertices in scan015_finite_certificate.json bound a plus-shaped polygon: all twelve sides have length one, all consecutive edge dot products vanish, and all 54 nonadjacent edge pairs are disjoint. Thus every smaller angle is pi/2, while four interior angles are 3pi/2 and eight pi/2. It is not similar to the convex regular 12-gon, whose interior angle is 5pi/6. Refined statement id M015-RIGID uses polygon interior angles and the course's embedding definition. This is a qualification of an ambiguous mathematical convention, not a claimed refutation of the manuscript under the usual interior-angle reading and not an ink correction.
+
+## M015-FINITE-CERT — computation or formal certificate
+
+Executed scripts/math015.py with exact integer arithmetic. It verifies 12 distinct vertices, all 12 squared edge lengths equal to one, all 12 consecutive dot products zero, eight positive and four negative unit turn determinants, absence of intersections for all 54 nonadjacent edge pairs, and shoelace area five. The certificate supports the angle-convention qualification only; the general existence and rigidity proofs are algebraic arguments recorded separately.

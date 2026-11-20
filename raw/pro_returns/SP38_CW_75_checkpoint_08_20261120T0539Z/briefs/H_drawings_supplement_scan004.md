@@ -1,0 +1,3 @@
+## Witness H drawing supplement — first used during scan 004
+
+The page packet may also contain H_drawings/. These are H's supplied TikZ redraws for this very page, identified by their header’s PDF-page number. Read those files as part of witness H. Do not count H's prose drawing marker as a missing drawing when its supplied redraw exists; compare that actual geometry, dots, labels and topology with the ink. Do not count stylistic coordinate/scaling differences. Do not reopen the whole page/halves already viewed: use your recorded visual reading, or one tight crop for any genuinely new open drawing locus.

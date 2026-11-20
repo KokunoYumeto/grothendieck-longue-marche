@@ -1,0 +1,9 @@
+# Scan 005 — main mathematical working note, before adjudication
+
+This is conditional analysis of the witness text, not a decided reading.
+
+If the page defines rectilinear realization solely as a homeomorphic embedding whose edge images are segments, uniqueness as a parametrized map with fixed vertices does not follow: for the one-edge graph [0,1], f(t)=t and g(t)=t² are distinct homeomorphisms onto the same segment, both fixing 0 and 1. Their inverses on [0,1] are t and sqrt(t). Thus the uniqueness statement needs an additional convention, such as the canonical affine map on every coordinate segment, or identifying parametrizations with the same image. This check must not change an observed ∃1 into another symbol.
+
+The strengthened fixed-vertex statement is true for affine edge maps under the written incidence/nonintersection conditions: affine interpolation is fixed by the two endpoints, and distinct edge interiors do not meet; on a finite graph this continuous injective map from a compact realization into a Hausdorff vector space is a homeomorphism onto its image. This is a local check using the stated finite hypothesis, not outside research.
+
+For the connected contour claim, given a nonempty connected graph with exactly two incident edges at each vertex and exactly two distinct vertices at each edge, following an edge in either direction has a unique unused continuation. Either the walk closes as a finite cycle (including the two-vertex/two-parallel-edge case), or extends in both directions without repetition. Connectivity then includes every vertex in that cycle or bi-infinite path. This supports one isomorphism type for each finite vertex count ≥2 and for countably infinite vertices. This reasoning does not choose the handwritten heading (C offers Dualité/Densité, H Dénombrement).

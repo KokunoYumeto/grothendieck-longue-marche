@@ -1,0 +1,19 @@
+# Targeted checks prompted by 123/018
+
+These arguments use only the supplied page claims and elementary algebra. They do not establish the general group-theoretic classification asserted by the page.
+
+## Exactness from split sequences
+
+Assume that the representation category in question is semisimple, and that a filtration on the forgetful functor is natural for representation morphisms. On V⊕W, the inclusions show FⁿV⊕FⁿW⊂Fⁿ(V⊕W), and the two projections give the reverse inclusion. Thus the filtration respects a direct-sum decomposition. Every short exact sequence in a semisimple category splits, so the induced sequence on every filtration step is exact. This checks the elementary mechanism behind the source's inserted characteristic-zero exactness remark. Complete reducibility for a reductive group in characteristic zero is an explicit background input; it is not proved here. This does not decide the later handwritten doubt about how far the Dynkin construction extends beyond characteristic zero.
+
+## Fixed weights and Levi splittings for GL(V)
+
+For a cocharacter i of GL(V), write V=⊕V_m with i(t)|V_m=t^m and use the associated weight filtration. Its stabilizer P preserves that filtration. The centralizer L preserves every weight summand, so L is the block diagonal Levi subgroup. Conversely, once the weight multiset c is fixed, a splitting of the filtration into these summands recovers i uniquely by the formula t^m on V_m. Thus, in this linear setting, the correspondence between a cocharacter of fixed class and a filtration together with a compatible Levi splitting is directly checked. The general equivalence for the source's G, scheme representability, descent, and the Weyl-chamber classification remain background assertions, not established by this example.
+
+## The stabilizer question and the cancelled torsor claim
+
+For the embedding Sl₂→SL₃ acting on k²⊕k, a matrix commuting with both E₁₂ and E₂₁ has block form diag(a,a,b); determinant one imposes a²b=1. Hence the group centralizer is diag(t,t,t⁻²), a one-dimensional torus. Its Lie algebra is spanned by diag(1,1,−2), as checked exactly in 123_018_stabilizer_certificate.json. This supplies a concrete answer to the source's question about dimension and semisimplicity: semisimplicity does not hold in general. It does not refute a source assertion, since the source explicitly asks for investigation.
+
+For G=SL₂×SL₂ and f(s)=(s,1), the centralizer has dimension 3 (the second factor, with only a finite center in the first). The conjugacy orbit of f therefore has dimension 6−3=3. A torsor under the automorphism group of G has dimension 6: the identity component acts by independent inner automorphisms on the two factors. Thus the source's explicitly cancelled identification with an Isom(G₁,G) torsor cannot hold in this example. Dimension formulas and the elementary descriptions of these groups are checked here; no historical explanation for the cancellation is claimed.
+
+For clarity, the automorphism-dimension input in the cancelled-claim example can be checked at the Lie-algebra level. In the basis E,H,F with [H,E]=2E, [H,F]=−2F and [E,F]=H, write arbitrary images for a derivation D and impose those three relations. The solutions are D(E)=aE+bH, D(H)=−2hE−2bF, D(F)=hH−aF, with three free scalars a,b,h. These are precisely the inner derivations. For the direct product, cross-factor components of a derivation vanish because each factor equals its own commutator algebra and the factors commute. Its derivation algebra thus has dimension 6. Inner automorphisms already give a six-dimensional subgroup; faithfulness of the differential on automorphisms of the connected characteristic-zero group gives the matching upper bound. That last standard differential fact is a background input, not a separate theorem proved in this run.

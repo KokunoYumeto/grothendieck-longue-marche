@@ -1,0 +1,77 @@
+--- deliverable/scripts/reconcile.py
++++ deliverable/scripts/reconcile.py
+@@ -17,6 +17,7 @@
+ import re
+ import sys
+ from typing import Any
++from other_error_aliases import ErrorAliases
+ 
+ FIELDS = ['id', 'scan', 'decision', 'reading', 'what the ink shows', 'crop', 'confidence']
+ EVENT_FIELDS = ['statement id', 'date', 'who (model, effort, run)', 'type', 'outcome']
+@@ -316,6 +317,17 @@
+         path = path or self.workspace / f'work/scan{scan:03}.json'
+         data = json.loads(path.read_text(encoding='utf-8'))
+         rows, meta = self.validate_rows(scan, data)
++        error_fields = ['scan','place','the reading','what the ink shows']
++        existing_errors = tsv_read(self.out / 'other_errors.tsv')
++        incoming_errors = []
++        for error in meta.get('other_errors',[]):
++            row = {key:str(error.get(key,'')) for key in error_fields}
++            if row['scan'] and int(row['scan']) != scan:
++                fail(f'scan {scan:03}: unmarked error assigned to another scan')
++            row['scan'] = str(scan)
++            incoming_errors.append(row)
++        aliases = ErrorAliases.load(self.out / 'audit/OTHER_ERROR_ALIASES.json')
++        other_errors = aliases.append(existing_errors, incoming_errors)
+         who = who or meta.get('who') or meta.get('reader')
+         if not who or not isinstance(who, str):
+             fail('Supply --who "model; effort; run" or submission metadata who/reader; no provenance is inferred')
+@@ -349,17 +361,6 @@
+             if not part_path.is_file():
+                 fail(f'Missing declared source submission: {part_path}')
+             atomic(self.out / 'audit/parts' / part_path.name,part_path.read_bytes())
+-        error_fields = ['scan','place','the reading','what the ink shows']
+-        other_errors = tsv_read(self.out / 'other_errors.tsv')
+-        if other_errors and set(other_errors[0]) != set(error_fields):
+-            fail('Unexpected other_errors.tsv header')
+-        for error in meta.get('other_errors',[]):
+-            row = {key:str(error.get(key,'')) for key in error_fields}
+-            if row['scan'] and int(row['scan']) != scan:
+-                fail(f'scan {scan:03}: unmarked error assigned to another scan')
+-            row['scan'] = str(scan)
+-            if row not in other_errors:
+-                other_errors.append(row)
+         atomic(self.out / 'other_errors.tsv',tsv_bytes(error_fields,other_errors))
+         patterns_path = self.out / 'PATTERNS.md'
+         patterns_text = patterns_path.read_text(encoding='utf-8') if patterns_path.exists() else '# Recurring doubts and errors\n'
+@@ -441,22 +442,24 @@
+             if event not in events:
+                 events.append(event)
+                 added += 1
++        fields=['scan','place','the reading','what the ink shows']
++        existing_errors=tsv_read(self.out/'other_errors.tsv')
++        incoming_errors=[{key:str(row[key]) for key in fields}
++                         for row in data.get('other_errors',[])]
++        aliases=ErrorAliases.load(self.out/'audit/OTHER_ERROR_ALIASES.json')
++        errors=aliases.append(existing_errors,incoming_errors)
+         target = self.out / 'audit' / path.name
+         content = (json.dumps(data,ensure_ascii=False,indent=2)+'\n').encode('utf-8')
+         if target.exists() and target.read_bytes() != content:
+             fail(f'Independent-check audit file already exists with different content: {target.name}')
+         atomic(target,content)
+         atomic(self.out / 'CHECK_EVENTS.tsv',tsv_bytes(EVENT_FIELDS,events))
+-        fields=['scan','place','the reading','what the ink shows']
+-        errors=tsv_read(self.out/'other_errors.tsv')
+-        for row in data.get('other_errors',[]):
+-            error={key:str(row[key]) for key in fields}
+-            if error not in errors:
+-                errors.append(error)
+         atomic(self.out/'other_errors.tsv',tsv_bytes(fields,errors))
+         print(json.dumps({'imported_check':path.name,'new_check_events':added,'rows':len(rows)},ensure_ascii=False))
+ 
+     def verify(self, final: bool):
++        aliases = ErrorAliases.load(self.out / 'audit/OTHER_ERROR_ALIASES.json')
++        aliases.assert_canonical(tsv_read(self.out / 'other_errors.tsv'))
+         receipts = self.receipts()
+         all_rows = []
+         for receipt in receipts:

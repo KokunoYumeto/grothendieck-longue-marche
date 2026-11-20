@@ -1,0 +1,71 @@
+# Scan 016 — actual main mathematical work
+
+Performed from the supplied text witnesses while independent readers worked. These checks do not adjudicate ink. Qualifications of abbreviated candidate definitions are expressly conditional.
+
+## M016-FUNCTOR — independent re-proof
+
+Use a right G-set X and left G-set Y, with (xg,y) identified with (x,gy). For a homomorphism alpha:G→H and alpha-equivariant maps f:X→Xprime and h:Y→Yprime, define [x,y]↦[f(x),h(y)]. The generating relation maps to [f(x)alpha(g),h(y)]=[f(x),alpha(g)h(y)]=[f(x),h(gy)], proving well-definedness. Identity triples induce identity maps; composing triples gives [x,y]↦[fprime(f(x)),hprime(h(y))], exactly the composite map. Thus contracted product is functorial in the group and two sets under these specified morphisms. These action conventions are a mathematical interpretation, not a reading of an unclear character in the triplet.
+
+## M016-CHARTS — independent re-proof
+
+Let P be a nonempty right G-torsor, E a left G-set, and F=P×_G E. For p in P define phi_p(e)=[p,e]. Every q in P is uniquely pg, so [q,e]=[p,ge], proving surjectivity. Under the equivalent diagonal relation (p,e)·g=(pg,g^(-1)e), an equality [p,e]=[p,eprime] forces pg=p for the group element relating the pairs; freeness gives g=1 and e=eprime. Thus phi_p:E→F is bijective, including the case E empty.
+
+## M016-EQUIVARIANCE — targeted proof check
+
+On B=Bij(E,F), define the right G-action b·g=b composed with rho(g), where rho is the given left action on E. Then (b·g)·h=b rho(g)rho(h)=b rho(gh)=b·(gh). The balanced-product relation gives phi_(pg)(e)=[pg,e]=[p,ge]=(phi_p·g)(e). Hence p↦phi_p is right G-equivariant with exactly these conventions; no inverse is inserted on the right precomposition action.
+
+## M016-STABILIZERS — independent re-proof
+
+For each b in Bij(E,F), b·g=b is equivalent to b rho(g)=b. Since b is injective, this is equivalent to rho(g)=id_E. Every stabilizer is therefore exactly K=ker(rho). Consequently a faithful action on E makes the action on B free, in the manuscript’s explicit sense that xg=x forces g=1. Conversely freeness of B implies faithfulness only when B is nonempty; here the charts from a nonempty torsor provide an element of B. A faithful action on E need not itself be free: the natural S3 action on three points is a concrete example.
+
+## M016-FREE-ORBITS — targeted proof check
+
+For any right G-set B, freeness is equivalent to every stabilizer G_b being {1}. The canonical decomposition into its nonempty G-orbits writes B as their disjoint union. Each orbit is transitive by construction and is free exactly when its point stabilizers are trivial, hence is a G-torsor. Thus free B is precisely a sum of torsors. No choice of a representative in every orbit is needed for this decomposition into the actual orbit sets.
+
+## M016-INJECTIVITY — independent re-proof
+
+Fix p in the nonempty torsor. For q=pg, phi_q=phi_p if and only if rho(g)=id_E, by the chart bijectivity. Thus the fibers of P→Bij(E,F) are exactly the right K-orbits pK, K=ker(rho). The map is injective exactly when K={1}, equivalently when G acts faithfully on E. This proves both the stated implication and the inserted converse. The result also covers E empty: B has one element, so injectivity holds precisely for the trivial torsor group.
+
+## M016-ORBIT — independent re-proof
+
+Equivariance and transitivity of P imply that its image O in Bij(E,F) is a single G-orbit, independent of a choice of p. The induced map P/K→O is a bijection. Since K is normal, P/K has a free transitive right G/K-action. Hence every twist F carries the stated orbit, even when the action on E is not faithful; what is recovered then is the quotient torsor, not necessarily P itself.
+
+## M016-EVALUATION — independent re-proof
+
+Conversely let O be any G-orbit in Bij(E,F). Evaluation induces O×_G E→F, [b,e]↦b(e), because (b·g)(e)=b(ge). It is surjective after choosing any b in the nonempty orbit. If bprime=b·g and bprime(eprime)=b(e), injectivity of b gives geprime=e, and [bprime,eprime]=[b,geprime]=[b,e], proving injectivity. Thus evaluation is a bijection even without faithfulness. When the action on E is faithful, STABILIZERS makes O itself a G-torsor.
+
+## M016-STRUCT-EQUIV — independent re-proof
+
+With E faithful, twisting gives an equivalence between the groupoid of nonempty right G-torsors and the groupoid of sets F endowed with a G-orbit O⊂Bij(E,F); morphisms on the latter side are bijections carrying O to Oprime by postcomposition. A torsor map induces [p,e]↦[a(p),e], and a structured bijection f induces O→Oprime, b↦f composed with b. The natural equivariant map P→O is bijective by INJECTIVITY; the natural evaluation O×_G E→F is bijective by EVALUATION. These maps exhibit the two inverse constructions. For a fixed F, one may equivalently retain a torsor together with its equivariant chart map to Bij(E,F), up to torsor isomorphism. This is a precise interpretation of the small note; it does not supply its unreadable terminal words.
+
+## M016-NONFAITHFUL-RECOVERY — refuted
+
+Removing faithfulness from the torsor-recovery equivalence fails at the level of morphisms. Take G=C2, E a singleton, and P=G with its right regular action. The identity and the nontrivial left translation are distinct equivariant automorphisms of P, but both induce the identity of the one-point twist. Thus twisting is not faithful and cannot be an equivalence of these groupoids. Refined statement id M016-STRUCT-EQUIV retains faithfulness. Without it, M016-ORBIT and M016-EVALUATION recover the G/K-torsor P/K, K=ker(rho), and its orbit structure.
+
+## M016-SIMILARITY — used and rechecked in this run
+
+Rechecked the preceding page’s regular-polygon construction for embedded n-gons, n≥3, using equal interior angles and equal nonzero side lengths. The angle-sum calculation makes each turn 2pi/n, and summing the edge recurrence yields x_j=c+u zeta^j with zeta=exp(2pi i/n). A cycle isomorphism j↦a+epsilon j is induced by z↦cprime+(v zeta^a/u)(z−c) for epsilon=+1, or z↦cprime+(v zeta^a/conjugate(u))conjugate(z−c) for epsilon=−1. Three noncollinear vertices force uniqueness. This checks uniqueness for a prescribed combinatorial isomorphism and equivalence up to arbitrary similarities; it does not imply equivalence under homotheties alone in a fixed plane.
+
+## M016-HOMOTHETY — refuted
+
+If unicité modulo homothétie is read literally for regular polygons as subsets of a fixed affine Euclidean plane, it is too strong. The square with vertices (−1,−1),(1,−1),(1,1),(−1,1) and the diamond (0,−1),(1,0),(0,1),(−1,0) are related by the similarity with matrix [[1/2,−1/2],[1/2,1/2]]. They are not homothetic: a map x↦a+lambda x with nonzero scalar lambda preserves edge directions, but the square has horizontal boundary edges and the diamond has none. Refined statement id M016-SIMILARITY uses all similarities, or one must first quotient by Euclidean congruence before discussing scale alone. This is a conditional scope qualification, not a replacement of the written word.
+
+## M016-REGULARITY-CANDIDATES — refuted
+
+If either of the opening candidate conditions is taken alone as a definition of regularity, it is insufficient. A non-square rectangle has all four interior angles equal but squared side lengths 16,4,16,4. The rhombus (−2,0),(0,1),(2,0),(0,−1) has all four squared side lengths five but alternating consecutive edge dot products 3 and −3, so its interior angles differ. The opening paragraph lists possible definitions and inserts les deux; this event refutes only the isolated alternatives. Refined statement id M016-SIMILARITY uses the conjunction of equal sides and equal interior angles, as checked on scan015.
+
+## M016-TRANSITIVITY-SCOPE — refuted
+
+Bare transitivity must specify its underlying set. The sign changes (x,y)↦(±x,±y) preserve a non-square rectangle and act transitively on its four vertices; that polygon is not regular. The same sign changes preserve the stated non-square rhombus and act transitively on its four unoriented edges; it too is not regular. Thus vertex transitivity alone or edge transitivity alone is insufficient. Refined statement id M016-FLAGTRANS requires transitivity on vertex-edge incidence flags, or the stronger explicit combination of transitivity on both vertices and edges. No missing object of transitivity is supplied to the transcription.
+
+## M016-FLAGTRANS — targeted proof check
+
+For an embedded polygon, Euclidean symmetries preserve edge lengths and interior angles. Transitivity on edges therefore makes all lengths equal, and transitivity on vertices makes all interior angles equal. Under n≥3, M016-SIMILARITY then proves regularity. Flag transitivity implies these two transitivities. Conversely a regular n-gon has the rotations j↦a+j and reflections j↦a−j, which act transitively on the 2n vertex-edge incidence flags. This gives a precise symmetry criterion while leaving the manuscript’s abbreviated phrase unchanged.
+
+## M016-FINITE-SIMILARITIES — targeted proof check
+
+A similarity preserving a finite set of at least two points has scale factor one. Its diameter D is positive and finite; the image diameter equals both D and lambda D, so lambda=1. Thus every similarity preserving a nondegenerate polygon vertex set is an isometry. This explains why the two witness words symétries and similitudes can lead to related mathematical groups, but it does not decide which word is written.
+
+## M016-FINITE-CERT — computation or formal certificate
+
+Executed scripts/math016.py with finite permutations and exact rational/integer arithmetic. For natural S3 on three points, the six charts are distinct and all six bijection stabilizers are trivial. For its two-point sign action, the kernel and every stabilizer have size three, the image has two elements, and both fibers have size three. The empty-set cases for S3 and the trivial group also satisfy the precise criterion. The script checks 109 chart-equivariance identities and 180 balanced relations, plus 36 homomorphism identities and the induced quotient map for S3→C2. It verifies the rectangle vertex orbit, rhombus edge orbit, exact side lengths and dot products, and the rational square-to-diamond similarity. The certificate supports these examples; the general arguments are recorded separately.
