@@ -1,0 +1,8 @@
+from read_support import *
+d=record_dir(29)
+rows=read_rows(d/'doubts.tsv')
+rows.append(doubt('Audit: end of Lemma V proof','prouve','montre','high','Resolved during second reading: one new crop (615,1615,1185,1695) shows a descending initial p, short r, closed o, u/v connection and final e. The half-image suggestion montre was rejected; C prouve is retained.'))
+write_rows(d/'doubts.tsv',DOUBT_FIELDS,rows)
+with (d/'unresolved.md').open('a') as f:f.write('\n- Second-reading crop: scan029 (615,1615,1185,1695), rotation0, end-of-proof verb; prouve confirmed, montre rejected. This is a new place, not a repeat crop.\n')
+record_audit(29,'''Second image reading: both supplied memoir halves read against all prose and formulas. Rechecked the cancelled initial interval, visa, every occurrence of the convex-set alphabet, the equals-sign abbreviation in the NB, half-space subscripts, raised subset insertion, crossed indices, the three phi-shaped signs and old interval endpoints. Rechecked the lower definition, bent mark, partial underlines, isolated dot and cancelled letters. A new doubt arose at the end-of-proof verb: the half-image initially suggested montre, but a single new crop (615,1615,1185,1695) clearly shows descending p, r, o and u/v strokes, confirming prouve. C is retained and this resolved doubt is logged without a change row. No other reading change or additional mathematical proof check was made.''')
+(OUT/'WORK_IN_PROGRESS.md').write_text('All first readings saved; second readings saved through scan029. Next audit scan030. New audit crop029_audit_montre needs inclusion in regenerated complete crop appendix before final packaging.\n')

@@ -1,0 +1,3 @@
+from read_support import *
+record_audit(28,'''Second image reading: both supplied halves inspected. Rechecked the four marked points and labels x, y, s, s-prime, the heavy straight segment through y and the thin interrupted line to x with its short curved trace. The lower half contains no further authored text or diagram beyond the archive number. No further reading change or new crop was warranted. H supplies only a description; no text-collation or mathematical-check event was added.''')
+(OUT/'WORK_IN_PROGRESS.md').write_text('All first readings saved; second readings saved through scan028. Next audit scan029.\n')

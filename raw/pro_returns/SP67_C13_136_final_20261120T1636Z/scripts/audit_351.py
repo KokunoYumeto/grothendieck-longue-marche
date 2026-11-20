@@ -1,0 +1,2 @@
+from audit_tools import *
+finish(351,note='Reread both upright views of the originally upside-down typescript. Every sentence, integral, matrix entry and footnote agrees with the consolidated text. Confirmed the five title underlines, handwritten matrix parentheses, separate underline beneath y, footnote separator, spelling ingegrals and the unfilled blank after homology invariants of. No authorship attribution is inferred, and H remains absent. No further transcription change.')

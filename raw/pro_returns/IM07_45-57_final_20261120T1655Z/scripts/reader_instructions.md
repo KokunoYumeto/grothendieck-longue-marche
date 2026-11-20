@@ -1,0 +1,22 @@
+# One-page diplomatic transcription review
+
+Read only the assigned page directory: its page .tex, its page .jpg, rows.json, and PREAMBLE.tex. Do not inspect other pages or the full correction table. Use only local tools; no web research and absolutely no OCR, PDF text layer, recognition library, or automatic handwriting recognition. You are one of three readers. Handle only the page assigned now, then return to the main reader, who assigns the next page in table order.
+
+Decide every supplied row:
+- a: the transcription misreads the ink; change exactly the row's locus using existing macros.
+- b: the transcription shows the ink and the proposed change corrects his own slip or refines the mathematics; preserve the text and supply a note saying what is written and the proposed intended statement.
+- c: the page already has what the row asks; no edit.
+- d: the asserted locus is not on this page; no edit, identify its location only if visible from supplied evidence.
+
+Inspect the page image visually with view_image and inspect a tight enlarged contrast-raised crop of each relevant locus. All no/flag/open/not-sorted/second-model rows and all disagreements with the row's claimed original MUST be decided from ink, not mathematical expectation. Apply Michel Hua's human facsimile checks unless ink plainly contradicts them, recording the contrary strokes. All supplied rows can benefit from visual checking; do it. For an unresolved reading use \\unsure{reading|alternative} at the locus; never force a plausible reading. If original already has an adequate doubt mark, avoid unnecessary changes. Preserve spelling, accents, abbreviations, slips, notation, layout, all unrelated text and all existing tikz-cd diagrams. A cancellation is \\deleted{...}; insertion \\inserted{...}; margin \\margin{...}; doubt \\unsure{...}; illegible ink \\illegible{n}. Watermark EXTRA STRONG and paper specks are never text. Changes must be justified only by the assigned rows.
+
+Use /workspace/scratch/a63a818922dc/IM07_45-57_work/scripts/make_crop.py for crops, e.g. python .../make_crop.py PAGE.jpg .../crops/PAGE_ID_locus.png x0 y0 x1 y1 --width 2400. Preserve crops and their sidecar metadata. The original scans are already enhanced; the helper raises contrast gently. You may create a smaller whole-page preview for locating text but retain at least one tight crop per locus and view it. Name crops with page and statement id. Separate loci of one row require separate crops; duplicate rows for the same locus may share a crop. Do not substitute mathematics for stroke evidence.
+
+Write results to review/PAGE.json and a candidate page to review/PAGE.proposed.tex. Never write edited_pages, placements.tsv, notes.md, CHECK_EVENTS.tsv, or progress.log: main reader reviews and writes these. Return a brief report naming these paths and any remaining doubts. JSON schema:
+{
+  "page": "45_scan059", "reader": "reader_1", "completed_utc": "actual UTC timestamp", "rows": [
+    {"row_index": 1, "id": "L892", "cote": "45", "scan": "59", "decision": "a|b|c|d", "find": "EXACT UNIQUE ORIGINAL SPAN for a, else empty", "replace": "CORRECTED SPAN for a, else empty", "what_the_ink_shows": "Describe actual observed strokes and reading, with relative crops/PAGE_ID_locus.png references", "confidence": "high|medium|low", "note": "For b: what is written and what is meant (identify mathematical refinement as supplied, not independently re-proved). For d: location, if known. For ambiguity: precise unresolved alternatives.", "unresolved": false, "crops": ["crops/PAGE_ID_locus.png"], "check_event": {"date": "actual UTC timestamp", "type": "used and rechecked in this run", "outcome": "Precisely describe visual comparison and result; do not claim proof checking."}}
+  ]
+}
+
+For each a, the find span must occur exactly once in the ORIGINAL assigned page. Preserve line endings and trailing newline. Verify candidate differs only at these exact spans. If two rows concern the same edit, give the same original find/replace for both, apply it only once to the candidate, and explain overlap. Do not mark a row c merely because you changed it in another row: decisions are against the supplied original. If needed, mark unresolved true and propose an explicit in-place doubt for parent review. Do not reprove the mathematics; distinguish visual checking from accepting a supplied mathematical note. CHECK_EVENTS must accurately describe what actually happened.

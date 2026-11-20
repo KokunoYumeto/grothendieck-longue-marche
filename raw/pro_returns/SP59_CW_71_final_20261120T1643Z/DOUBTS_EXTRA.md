@@ -1,0 +1,3 @@
+The notation table was reconciled across the complete ordered second readings. The hand log's cross-page reconciliation states which recurrent forms agree and which differences remain literal. In particular, capital Phi on 030/032 and the memoir's lower-case phi empty-set form are separate notations; plain/doubled alphabets, primes, stars, raised numerals, accents and delimiter shapes were not normalized across clear local differences.
+
+One new close-reading question arose during the second reading of 029: whether the proof-ending verb was prouve or montre. The single new crop (615, 1615, 1185, 1695) confirmed prouve, already in C and the consolidated page. This is a resolved certainty entry, not a counted textual correction.

@@ -1,0 +1,3 @@
+from audit import *
+k='136_scan329'
+finish(k,'Reread every diagram and line of the final sheet against the image, including the top overwritten A/B argument, the clear B on gamma, the two looped e superscripts, the headless Hom and functor connectors, the cancelled heading and adjective, both circled labels, the two-line brace and the entire underbrace explanation. Reinspected the existing crop of the structure qualifier: numér./itérée remains unresolved. Confirmed the literal pq product index without inserting the mathematically expected plus. The opening word, tensor interior and compressed compatibility list remain qualified. No additional textual change.')

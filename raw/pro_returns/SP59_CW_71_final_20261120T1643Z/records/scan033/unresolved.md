@@ -1,0 +1,2 @@
+- Com(o)un lettering, cancelled à/la, the ending of inutil, old si/exists and the words of the crossed margin remain uncertain.
+- Scan 033 crop boxes: comun (131,618,290,679); old à (386,628,432,679); inutil (23,883,152,996), rotated -42 degrees; old si (268,948,315,991); old exists (1250,1036,1299,1089); margin (14,1160,146,1542); final E delimiters (1517,2100,1639,2156). The single margin crop was displayed in several rotations to find its reading orientation, finally -55 degrees relative to the original; it was not cropped again.

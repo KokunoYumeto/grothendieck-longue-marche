@@ -1,0 +1,2 @@
+from audit import *
+finish('120_scan010','Reread all three propositions, the axiom, the interlinear qualifier and both hooked diagram arrows. Re-inspected the existing crop of the last category subscript: its branched small mark is retained as *, consistently with the same family notation above. The crossed symbol in the axiom remains doubtful. The plural Soient and the written Y=∅ after the overwritten Y/Z diagram are retained. No additional textual change.')

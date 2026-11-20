@@ -1,0 +1,2 @@
+from audit_tools import *
+finish(358,note='Second reading confirms all ten K forms, the missing close in the first target and one missing outer close in the normalized source, the isolated dot, E.Z. punctuation, the paired vertical equality strokes, and the two diagonal cancellation strokes across the entire parenthesized invariant/cohomology block. The bottom half contains no further live text beyond foot359; faint reverse impressions are not transcribed as new writing. No transcription change.')

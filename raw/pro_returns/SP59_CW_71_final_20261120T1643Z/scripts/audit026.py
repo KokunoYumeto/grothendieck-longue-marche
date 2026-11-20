@@ -1,0 +1,3 @@
+from read_support import *
+record_audit(26,'''Second image reading: inspected the blank supplied upper half and read the lower half in its existing upright rotation. Rechecked all three cancelled draft lines, Gamma superscript 1 rather than the stars on scan025, réliant, both betas, the interline de Gamma^1_xy, and the boxed V subscript. The unresolved Gamma_xy/xy distinction in that box remains. The diagonal cancellation covers the whole draft. No further reading change, crop, H collation row, or proof check was made.''')
+(OUT/'WORK_IN_PROGRESS.md').write_text('All first readings saved; second readings saved through scan026. Next audit scan027.\n')

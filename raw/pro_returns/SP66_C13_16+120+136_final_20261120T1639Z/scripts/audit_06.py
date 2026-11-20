@@ -1,0 +1,4 @@
+from audit import *
+k='120_scan006'
+add_certainty(k,[('cancelled noun in lower slanted margin',r'\unsure{espace|discret}','espace','The cancelled word has the e/s/p outline and the descending p; modèle is the live replacement.','120_scan006 (20,1590,440,2110); rotated −40°','medium')])
+finish(k,'Reread all main text, diagrams and marginal additions, then re-inspected the existing rotated crop of the long diagonal note. Its overlap with the example lines does not justify appending a further R^n phrase: the nearby power belongs to the example text. The uncertain stretches of that note and the two crossed words near the foot remain explicitly marked. Checked graph indices I∪J, the asymmetric headed/headless function strokes, inserted object convention and the colon after équivalente. No additional textual change.')

@@ -1,0 +1,2 @@
+- Old origin letter z/x; old b; square/obliterated prose; compressed juste.; E-to-Gamma opening delimiter; first reliér/relié ending remain marked.
+- Scan 031 crops: (385,950,490,1015) first verb; (1160,1140,1212,1195) old origin; (1110,1390,1263,1450) connexe; (1385,1427,1436,1479) old b; (1361,1615,1408,1668) square; (821,1790,1022,1853) considĕre; (40,1918,119,2040) margin; (907,2012,1104,2070) lower insertion; (1297,1380,1338,1445) stippled marks. Each was viewed once.
