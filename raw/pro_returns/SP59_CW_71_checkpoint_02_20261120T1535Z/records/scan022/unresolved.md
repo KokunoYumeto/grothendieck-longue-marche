@@ -1,0 +1,2 @@
+- Remaining doubts: overtraced x; clipped final formula; rajouter/rajout de; singular/plural endings in a and b.
+- Additional crops: 022 (1030,395,1135,467), first third-formula index; (530,745,755,835), rajouter; (1335,813,1590,889), sommets in b. Each inspected once; no additional crop made.

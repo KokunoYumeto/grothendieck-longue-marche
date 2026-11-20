@@ -1,0 +1,102 @@
+{
+  "audit_id": "audit_002_013",
+  "created_utc": "2026-11-20T12:19:12.365348+00:00",
+  "scope": {
+    "scans": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "decision_files": 11,
+    "reader_returns": 33,
+    "changes": 322,
+    "unresolved_rows": 117,
+    "inventory_rows": 478,
+    "notation_rows": 198,
+    "check_events": 28
+  },
+  "method": "Read-only mechanical/documentary comparison of the specified decisions, their final page TeX, A/B/C report.json and reading.tex, records/reader_runs.json, briefs/history.json, progress.log, brief headings through v10, and scripts/validate.py. Compared substantive reader-return differences against explicit A/B/C decision entries. Checked referenced image path existence as metadata only. Applied validate.py check_tex and its schema constants without invoking its writing main().",
+  "restrictions_observed": [
+    "No source image, crop, PDF, original witness, future-page packet, or scan014 return opened.",
+    "No OCR, outside research, delegation, or LaTeX compilation.",
+    "No deliverable or reader record edited; only records/audit_002_013.json and records/audit_002_013.md written."
+  ],
+  "result": "One minor final-inventory wording inconsistency; no substantive transcription change proposed.",
+  "findings": [
+    {
+      "id": "AUD-S002-001",
+      "severity": "minor",
+      "scan": 2,
+      "category": "inventory/final-text inconsistency",
+      "place": "Example 1 heading, final s after Exemple",
+      "summary": "The final inventory claims that a cancelled-state alternative is marked, although the committed choice is an unqualified live handwritten s.",
+      "evidence": [
+        {
+          "file": "decisions/scan002.json",
+          "json_pointer": "/inventory/19/first_words_or_objects",
+          "line": 1154,
+          "element": "Heading final s",
+          "value": "s, preferably live; alternate cancelled state marked",
+          "transcribed": "yes"
+        },
+        {
+          "file": "decisions/scan002.json",
+          "json_pointer": "/changes/7/final",
+          "place": "Example 1 heading: live added s",
+          "value": "Exemple\\handwritten{s}"
+        },
+        {
+          "file": "pages/H103-01_103_scan002.tex",
+          "line": 16,
+          "excerpt": "\\uline{Exemple\\handwritten{s}\\unsure{.|,}\\deleted{1}} \\handwritten{1.}"
+        },
+        {
+          "file": "readers/scan002/A/report.json",
+          "json_pointer": "/inventory/19/first_words_or_objects",
+          "value": "s, preferably live; alternate cancelled state marked",
+          "context": "Reader A retained a live/cancelled uncertainty in its reading; the final decision did not."
+        }
+      ],
+      "recommended_action": "Update only the final inventory description to agree with the already-recorded resolved live s (for example: \"live handwritten s\"). Preserve the transcription, the recorded three-reader comparison, and the historical reader A report.",
+      "source_image_claim": false
+    }
+  ],
+  "checks_without_fault": [
+    "Every substantive difference identified between final A/B/C readings is represented by a three-reader comparison in the relevant decision. Shared readings are not required to carry redundant A/B/C maps.",
+    "All explicit image-path references checked in the scoped decisions and reader reports exist. Every changed-witness entry has a nonempty crop list. Image contents were not inspected or validated.",
+    "No unresolved-table reading contradicts the final page after allowing for shortened descriptions, macro grouping, first-occurrence reservations, and the separately positioned point over the cancelled article on scan010.",
+    "No notation entry was found to contradict a final in-place reading or uncertainty choice.",
+    "All inventoried elements are represented in the final text, macro structure, or explicitly permitted archive-number comments, apart from the stale uncertainty description identified as AUD-S002-001.",
+    "Check-event types belong to the allowed validator set and every outcome is a string. No type/outcome schema defect found.",
+    "All 33 reader-run starts and ends match their report timestamps. Starts precede ends, all returns precede each page-completion time, and each page’s readers start after the preceding audited page was completed.",
+    "Decision and reader-run brief filenames match the version sequence in briefs/history.json.",
+    "Scoped final-page TeX passes the existing validator’s brace, dollar, display/inline delimiter, and environment checks. Full validator main() was not invoked because it writes records/validation.json."
+  ],
+  "documented_non_faults": [
+    {
+      "place": "briefs/brief_v07.md title",
+      "explanation": "The title says v06 / scan007 although the filename is v07. briefs/history.json explicitly records the inherited title error and its correction in v08. The decision and run filenames match v07 for scan009; this is already documented, not an additional brief-use mismatch."
+    },
+    {
+      "place": "scan009 and scan010 check-events at 2026-11-20 12:08:09 UTC",
+      "explanation": "These are expressly later \"used and rechecked in this run\" events. Their dates after the original page-completion times are not reader-run chronology defects."
+    },
+    {
+      "place": "scan010 cancelled article after où",
+      "explanation": "The unresolved row abbreviates the choice as deleted de/le. The final page separates deleted d/l from deleted e so the uncertain point can be placed above e; the letter choices agree."
+    },
+    {
+      "place": "scan012 abbreviation after f",
+      "explanation": "The unresolved table uses the unbraced TeX form \\mathrm f while the page uses \\mathrm{f}; this is a macro spelling difference, not a different reading."
+    }
+  ],
+  "limits": "This audit validates documentation consistency and path existence only. It neither verifies what the manuscript ink says nor endorses crop sufficiency or mathematical correctness. No source-based transcription is inferred from reader agreement."
+}

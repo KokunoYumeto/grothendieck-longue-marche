@@ -1,0 +1,13 @@
+- 01_margin_psi: C001; circled marginal psi/Psi
+- 02_opening_mu: C002; opening handwritten second law
+- 03_deleted_j: C003; cancelled fragment before pr2j(x)
+- 04_abandoned_formula: C004-C006; abandoned formula, signs, separator and terminal phi(
+- 05_ces: C007; ces/ses and possible overlapping type
+- 06_interchange_marks: Graphic marks at label and left side of (2.1.1.2)
+- 07_section_E: C008; first E of 2.2 and cancelled following character
+- 08_torseur_E: E in En particulier after le torseur; possible same-letter double strike
+- 09_Groupe: C009; Groupe/groupe and possible overtype
+- 10_De_plus: De plus insertion and initial Ces state
+- 11_unit_tails: C010-C011; both cancelled formula tails in (2.2.3)
+- 12_bottom_deletion: C012; cancelled phrase after annoncée
+- 13_archive_number: Archive sheet number in original source orientation

@@ -1,0 +1,108 @@
+--- supplied C.tex
++++ reader A reading.tex
+@@ -1,8 +1,9 @@
+ \scanpage{22}
++\tikz[remember picture,overlay]\coordinate (scxxiitop);
+ 
+-p.116 line -6, $\unsure{R|K}_{\unsure{h|n}}\subset R_n$'' should be $R_h\subset\Sigma_h$.
++p.116 line -6, $\unsure{R|K}_h\subset\unsure{R|K}_n$\raisebox{-1.1ex}{\unsure{''}} should be $R_h\subset\Sigma_h$.
+ 
+-p117 line 11 \& 12, ``commutation .... with.''
++p117 line 11 \& 12, commutation .... with.''
+ 
+ line -17 ``I'd better assume ...''
+ 
+@@ -16,9 +17,16 @@
+ 
+ p114 \& 115 handwritten comment: is \S52 intended rather than \S51.
+ 
+-p.121 line -17 ``endows''
++\tikz[remember picture,overlay]\coordinate (scxxiiendows);p.121 line -17 ``endows''
+ 
+-\margin{\deleted{\unsure{?} \unsure{*} p122 \unsure{?}}}
++\reversemarginpar
++\margin{\tikz[baseline=(cancelref.base)]{
++\node[inner sep=0pt](cancelref){\deleted{\unsure{?} \unsure{*} p122 \unsure{?}}};
++\draw[line width=.45pt] ([xshift=-.25em,yshift=-.35ex]cancelref.west) -- ([xshift=.25em,yshift=.15ex]cancelref.east);
++\draw[line width=.45pt] ([xshift=-.35em,yshift=-.6ex]cancelref.west) -- ([xshift=.05em,yshift=.45ex]cancelref.east);
++\draw[line width=.35pt] ([xshift=.65em,yshift=-.75ex]cancelref.west) -- ([xshift=-.1em,yshift=-.15ex]cancelref.east);
++}}
++\normalmarginpar
+ 
+ p.123 \deleted{\unsure{l}}line 9 ``standard''
+ 
+@@ -30,7 +38,7 @@
+ 
+ p131 line 16 ``commutes with'', line 18 ``it is''
+ 
+-p132 line -14 ``wasn't''
++p132 line -14 `wasn't''
+ 
+ 133 line 13 (handwritten \unsure{?}) ``commutes with'
+ 
+@@ -46,28 +54,57 @@
+ 
+ 142 line 15 $s_1=\delta_0$. line -15, ``allow one to''
+ 
+-p.146 line -3, ``usual'' \deleted{\unsure{does}} line -1 ``doesn't \unsure{or} shouldn't''
++p.146 line -3, ``usual'' \deleted{\unsure{does}} line -1 ``doesn't or shouldn't''
+ 
+ 147 \deleted{\unsure{st}} line 2 ``standard' line 10 ``commutes with'', line 18 ``doesn't''
+ 
+-line 20 ``with' not to''
++line 20\unsure{.|,} ``with' not to''
+ 
+ 148 line 21 ``developed'' line -1. ``standard.''
+ 
+-149. \unsure{``}line 7 ``standard'' line 12 ``isn't''
++149. ``line 7 ``standard'' line 12 ``isn't''
+ 
+ \tikz[remember picture,overlay]\coordinate (scxxiip);p.151 line 8 ``isn't'', line 17 ``a long time ago'' line 18 ``putting off'' would be more usual.
+ 
+ p.152 line 17 ``developed''.; line -10. ``lead to develop''; line -9 ``\deleted{\unsure{allow}} ``which will allow us to define''
+ 
+-\tikz[remember picture,baseline=(n.base)]{\node[inner sep=1pt](n){151}; \draw (n.center) ellipse[x radius=1.04em,y radius=.67em]; \draw[overlay,->] ([yshift=-.5ex]scxxiip) .. controls +(-1.8em,-3.8ex) and +(-3.2em,1.4ex) .. (n.north);} line -4 ``where\deleted{\unsure{as}}as in the target category $(\mathrm{Cat})$ of $(2)$'' \deleted{\unsure{If th}} the target \deleted{\unsure{of}} \deleted{we'll \unsure{work|write}} \unsure{in|n} in $(2)$ is $\widehat{A}$.
++\tikz[remember picture,baseline=(n.base)]{\node[inner sep=1pt](n){151}; \draw[rotate around={32:(n.center)}] (n.center) ellipse[x radius=1.04em,y radius=.67em]; \draw[overlay,->] ([yshift=-.5ex]scxxiip) .. controls +(-1.8em,-3.8ex) and +(-3.2em,1.4ex) .. (n.north);} line -4 ``where\deleted{\unsure{as}}as in the target category $(\mathrm{Cat})$ of $(2)$'' \deleted{\unsure{If th}} the target \deleted{\unsure{of}} \deleted{we'll \unsure{work|write}} \unsure{n|in} in $(2)$ is $\widehat{A}$.
+ 
+-p.153 line 4 ``developed'' \deleted{``handiness''} ``handy \deleted{\unsure{n \&}} n \& \unsure{\uline{s}|S}'' would be better
++p.153 line 4 ``developed'' \deleted{``handiness''} ``handy \tikz[baseline=(oldns.base)]{
++\node[inner sep=0pt](oldns){\deleted{\unsure{n \&}}};
++\draw[line width=.35pt] ([xshift=.65em,yshift=1.05ex]oldns.base west) -- ([xshift=.61em,yshift=.66ex]oldns.base west);
++\draw[line width=.35pt] ([xshift=.83em,yshift=1.06ex]oldns.base west) -- ([xshift=.85em,yshift=.67ex]oldns.base west);
++} n \& \tikz[baseline=(finals.base)]{
++\node[inner sep=0pt](finals){\unsure{\uline{s}|S|$s_1$}};
++\draw[line width=.35pt] ([xshift=.42em,yshift=-.7ex]finals.base west) -- ([xshift=.45em,yshift=-2.05ex]finals.base west);
++}'' would be better
+ 
+-p154 line 9 \deleted{\unsure{allo}} ``will even allow us to handle''
++p154 line 9 \deleted{allo} will even allow us to handle''
+ 
+-line -9 ``don't'' line -6 ``wouldn't'' \deleted{\unsure{it}}
++line -9 ``don't'' line -6 ``wouldn't'' \deleted{\unsure{to|it}}
+ 
+-line -2 ``standard''
++line -2 \unsure{``|`}standard\unsure{''|'}
++
++
++\tikz[remember picture,overlay]\coordinate (scxxiibottom);
++\figure{\begin{tikzpicture}[remember picture,overlay]
++% left-rule: long left vertical rule
++\draw[line width=.25pt,opacity=.7] ([xshift=.35em,yshift=1.8ex]scxxiitop) -- ([xshift=.35em,yshift=-1ex]scxxiibottom);
++% right-rule: long right vertical rule
++\draw[line width=.25pt,opacity=.7] ([xshift=.97\linewidth,yshift=1.9ex]scxxiitop) -- ([xshift=.97\linewidth,yshift=-1ex]scxxiibottom);
++% far-left-trace: short faint trace at the far left of the upper block
++\draw[line width=.2pt,opacity=.4] ([xshift=-1.6em,yshift=.5ex]scxxiitop) -- ([xshift=-1.6em,yshift=.7ex]scxxiiendows);
++% upper-left-ring: faint oval trace left of the opening entries
++\begin{scope}[shift={([xshift=-.55em,yshift=-1.8ex]scxxiitop)}]
++\draw[line width=.2pt,opacity=.3] (.35em,.65ex) .. controls (-.4em,1.05ex) and (-.7em,-.1ex) .. (-.35em,-.7ex) .. controls (.1em,-1.1ex) and (.7em,-.45ex) .. (.6em,.15ex);
++\draw[line width=.3pt,opacity=.7] (-.48em,.2ex) -- (-.48em,-.2ex);
++\draw[line width=.15pt,opacity=.3] (-.05em,.95ex) -- (.2em,.95ex);
++\end{scope}
++% lower-left-mark: small dark mark near the foot of the left rule
++\begin{scope}[shift={([xshift=.35em,yshift=.5ex]scxxiibottom)}]
++\draw[line width=.55pt] (-.13em,.25ex) .. controls (-.01em,.08ex) and (.04em,.2ex) .. (.14em,-.06ex);
++\draw[line width=.35pt] (.04em,.35ex) -- (.06em,-.45ex);
++\end{scope}
++\end{tikzpicture}}
+ 
+ % archive sheet number: 21

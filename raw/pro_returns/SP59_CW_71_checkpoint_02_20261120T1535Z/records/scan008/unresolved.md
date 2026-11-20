@@ -1,0 +1,1 @@
+- Opening overwritten capital/raised sign and erased suffix; two overwritten symbols after Posons; several lower cancellations; final capital of inverted address; article and clipped last-line words. All remain marked in the page text.

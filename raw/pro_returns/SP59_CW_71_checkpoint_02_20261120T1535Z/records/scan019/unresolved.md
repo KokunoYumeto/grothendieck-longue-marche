@@ -1,0 +1,2 @@
+- Remaining alternatives are in the doubts table.
+- Crop 019 (460,285,530,345): a high point and low rounded hook after réduit allow contracted à or colon. No recrop or mathematical substitution.

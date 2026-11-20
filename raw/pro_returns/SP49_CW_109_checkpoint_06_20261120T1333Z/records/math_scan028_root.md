@@ -1,0 +1,3 @@
+# Scan028: main-reader mathematical scope
+
+The current witness and page-specific context contain an editorial correction list for referenced pages335–354. The recurring commutes-with phrases lack named morphisms or an argument on this sheet, and the of/from discussion is explicitly one of usage. Root will read the underline strokes beneath initial i and the old rounded letter independently of linguistic expectation. No proof, computation or substantive mathematical claim is checked merely by transcribing these correction fragments; no CHECK_EVENTS row is created for this scope record. The qualifications perhaps, is perhaps better, and can also be used but is less usual must remain in the notes. No outside material was consulted.

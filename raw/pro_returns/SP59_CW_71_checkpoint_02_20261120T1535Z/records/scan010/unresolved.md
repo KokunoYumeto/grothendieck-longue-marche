@@ -1,0 +1,1 @@
+- Trailing mark after d; erased raised signs and old frontier equality; rel abbreviation; overwritten D/K; cancelled corollary connective and de/sur; abbreviated topolog; final B/B-prime in erased decomposition; overwritten cup/amalg.

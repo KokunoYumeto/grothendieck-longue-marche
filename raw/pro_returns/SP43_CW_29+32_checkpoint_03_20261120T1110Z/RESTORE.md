@@ -1,0 +1,7 @@
+# Reconstructing the working inputs
+
+Restore the newest cumulative checkpoint as `out/` and unpack the original attached archive once as `source/`, keeping its already unpacked nested folders. Run `python out/scripts/rebuild_inputs.py` from the workspace root. This reconstructs only disposable `work/` bundles and the unchanged supplied preamble; it does not reset the progress log, notation, decisions, check events or checkpoint index. Do not rerun the historical `setup_work.py` over restored deliverables: that original initialization script resets some records.
+
+Use `decisions/` and `progress.log` to identify completed pages. Preserve the three independent candidate returns and all previous crops. An incomplete page must still receive three fresh independent readers if its earlier reader runs cannot resume; document the interrupted attempt rather than claiming it was completed. No next page begins until the current page has been adjudicated and its file and records written. Previous checkpoint ZIPs remain separately saved and are never nested inside later ZIPs.
+
+Crop source paths record the original run location; the source image filename and pixel box identify the corresponding supplied image after relocation. All local evidence paths in the consolidated decision tables are relative to `out/`. The checkpoint index records completed durable saves. A checkpoint cannot contain its own eventual upload receipt; that receipt appears in the next cumulative package and the final package.

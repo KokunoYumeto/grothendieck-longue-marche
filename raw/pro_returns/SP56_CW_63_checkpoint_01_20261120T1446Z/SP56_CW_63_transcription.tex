@@ -1,0 +1,705 @@
+\cotefile{63}
+\scanpage{53}
+\begin{flushright}
+at\illegible{1} \mspage{13}
+\end{flushright}
+
+\noindent exist for the smaller primes as well. As an example with $q=5$ we find:
+
+\uline{Let}*$t(n)=c(5^{\alpha}n)/c(5^{\alpha})$. \uline{Then}
+\par\noindent\rule{\linewidth}{0.3pt}\par
+\noindent * Since\reversemarginpar\margin{\handwritten{on line}} $\handwritten{\mathord{\tikz[x=1ex,y=1ex,baseline=0pt]{\draw (.82,1.85) .. controls (.42,1.55) and (.34,-.54) .. (0,-.35);}}}\raisebox{.37ex}{$5^{\alpha+1}$}\handwritten{\mathord{\tikz[x=1ex,y=1ex,baseline=0pt]{\draw (0,1.62) .. controls (.04,1.02) and (-.13,.29) .. (.35,.1);}}}\handwritten{\mid}c(5^{\alpha}n)$ and $5^{\alpha+1}\handwritten{\parallel}c(5^{\alpha})$ this definition is legitimate in any residue class ring modulo $5^{\beta}$.
+\par\noindent\rule{\linewidth}{0.3pt}\par
+\[
+\begin{aligned}[b]
+&t(5n)\handwritten{\equiv}t(5)t(n)\qquad(\mathrm{mod}\;5^{3\alpha}),\\
+\text{\uline{and} }\;&t(np)-t(n)t(p)+p^{-1}t(n/p)\handwritten{\equiv}0\quad(\mathrm{mod}\;5^{3\alpha})\quad\text{\uline{if} }p\mathrel{\rlap{$\handwritten{/}$}=}5\ \text{\uline{is} \uline{prime}.}
+\end{aligned}
+\tag*{(7.1)}
+\]
+
+For $q=2,3,5,\text{and }7$ these results can be fully proved as for $q=13$; for $q=11$ we have again the same reservations as for $q=19$. In a s\makebox[0pt][l]{\handwritten{\tikz[x=1em,y=1ex,baseline=0pt]{\draw (.02,-.28)--(.54,-.28)--(.54,1.54)--(1.01,1.6);}}}nese we may feel that the Ramanujan-type properties (2.5) which do not generalise to higher primes have previously concealed the existence of the multiplicative properties. Thus(to suppose what is in fact false) had $c(2^{\alpha}\inserted{\handwritten{\text{\uline{$n$}}}})$ been prime to $2$,its multiplicative properties might have been sought and found by hand; as it is\handwritten{,}the first non-Ramanujan prime is $13$ which is beyond the scope of hand computation. On the other hand had $p(5n+4)$ been prime to $5$ the whole possibility of considering congruences for modular forms m\inserted{\handwritten{i}}ght never have been noticed.
+
+We may finally try to summarise the distinction between Ramanujan-type and multiplicative properties in this way. The Ramanujan-type property asserts that
+\[
+\handwritten{\sum_{n=1}^{\infty}}c(5^{\alpha}n)\inserted{\handwritten{x^{n}}}=5^{\alpha+1}P(x),
+\]
+where \uline{$P(x$}$)$ is a power series with integral coefficients. The multiplicative property now asserts that \uline{$P(x$}$)$ itself is an interesting series.
+
+8. \uline{Notes} \uline{on} \uline{computation}. The main requirement for most of this work was the ability to compute the Fo\makebox[0pt][l]{\handwritten{\tikz[x=1em,y=1ex,baseline=0pt]{\draw (.02,-.28)--(.54,-.28)--(.54,1.54)--(1.01,1.6);}}}ruier expansions of various modular forms and functions modulo \uline{$m$}. If we have available in store various power series $g_{i}(x)$ up to the term in $x^{N}$,then it is clear that addition and subtraction of constant multiples of these series,testing for ``accidents'',etc.,takes a time approximately proportional to $N$; we shall abbreviate this to ``takes $O(N)$''. The test for M-results takes
+\normalmarginpar
+% archive sheet number: 52
+\scanpage{54}
+\begin{flushright}
+\illegible{1}\unsure{t}kin \mspage{14}
+\end{flushright}
+
+\[
+\handwritten{O\left(\sum_{p<N}N/p\right)=O\left(N\unsure{-\log|\log}-\log N\right)}
+\]
+$=O(N)$ in practice for computers in this millenium.
+
+Next if we have a given series $g(x)$,and multiply(divide) it by Euler's series*
+
+\noindent\rule{\linewidth}{0.3pt}\par
+\noindent *or other suitable $\handwritten{\vartheta}$-series of the form $\handwritten{\sum\lambda(n)\ldotp x^{an^{2}+bn}}$
+\par\noindent\rule{\linewidth}{0.3pt}
+{\small
+\[
+f(x)=\handwritten{\prod_{r=1}^{\infty}}(1-x^{r})=1-x-x^{2}+x^{5}+x^{7}-x^{12}\ldots=1+\handwritten{\sum_{n=1}^{\infty}}(-1)^{n}\handwritten{\left\{x^{\frac12 n(3n-1)}+x^{\frac12 n(3n+1)}\right\},}
+\]
+}
+this takes $O(N^{3/2})$. The subroutines for this were expertly coded by Dr. Paul Bryant \inserted{from my Fortran version}. Specifically the time required for $1000N$ terms was about $\handwritten{\frac14}N^{3/2}\deleted{\unsure{/4|/-4}}$\reversemarginpar\margin{\handwritten{\tikz[x=1ex,y=1ex,baseline=0pt]{\draw (0,-1.1)--(1.8,2.5) (.95,1.23) .. controls (1.78,2.7) and (.25,1.7) .. (.55,.6) .. controls (1.25,-.1) and (1.38,.36) .. (.91,.76);}}} seconds,so that(for example)to compute \uline{$p(n$}$)$ modulo \uline{$m$} for $n\handwritten{\leqslant}40000$ takes about a minute. The reduction modulo $m$ in the operation
+\[
+\handwritten{a(n)=b(n)-b(n-1)-b(n-2)+b(n-5)+b(n-7)-b(n-12)\ldots}
+\]
+is performed only at the end(and not after each individual $+$ or $-$ ), so that to avoid overflow there is a restriction that $m=(N/6)^{1/2}$ be less than $6.7\times10^{10}$.
+
+Finally multiplication(division) of two given general series takes $O(N^{2})$ \inserted{and had to be avoided at all costs}. In view of this a certain amount of modular(rather than programming)ingenuity was required; in one case a natural definition $g^{2}(x)$ with $g(x)$ already computed was replaced by $g^{2}(x)=$ a sum of three terms each involving several $\handwritten{\vartheta}$-multiplications and divisions.
+
+The possibility of multiplying(dividing) by Jacobi's series
+\[
+f^{3}(x)=1-3x+5x^{3}-\ldots=\handwritten{\sum_{n=0}^{\infty}(-1)^{n}(2n+1)x^{\frac12 n(n+1)}}
+\]
+was considered,but it turned out to be slightly slower than 3 successive uses of Euler's series,and also involved a heavier restriction on the size of $m$ and $N$.
+
+In the end the limiting factor for most of these programs was store rather than speed. Although the Atlas Supervisor has a ``drum learning'' program which enables many jobs to use the concept of a one-level store of about 90K without serious loss of efficiency,
+\normalmarginpar
+% archive sheet number: 53
+\scanpage{55}
+\begin{flushright}
+atkin \mspage{15}
+\end{flushright}
+
+\reversemarginpar the random access involv\margin{\handwritten{/}}\deleted{\unsure{a|e}}\inserted{\handwritten{e}}d in using Euler's series to multiply (divide) \uline{$g(x$}$)$ meant that almost all the terms of \uline{$g(x$}$)$ had to be stored in core. In practice $N=43000$ was about the limit.
+
+The main programs for each prime \uline{$q$} were written in Fortran calling on the coded subroutines described above. The only additional feature was a Fortran function $\mathrm{IJMODK}(\mathrm{K},\unsure{0|\mathrm{O}|\mathrm{C}},\mathrm{I},\mathrm{J})$ which obtains the residue of $\mathrm{I}\ldotp\mathrm{J}\ (\mathrm{mod}\ \mathrm{K})$ and overwrites its calling sequence in the\normalmarginpar\margin{\handwritten{\unsure{''}}} execution run,which Dr. Don Russell ingeniously devised for me. This allows both $\mathrm{I}$ and $\mathrm{J}$ to be as large as $6.7\times10^{10}$,whereas the direct use of Fortran would limit $\mathrm{I}\ldotp\mathrm{J}$ to this size,and also be about three times as slow. It might be appropriate here to express a hope that computer design should allow for the easy extraction of an integer \uline{\unsure{remain\`{d}er|remainder}} after division,as \reversemarginpar w\margin{\handwritten{/}}\deleted{a}\inserted{\handwritten{e}}ll as the quotient mainly required in floating point work.
+
+Finally it may be of interest that some of these programs when run in 1964 exposed a low-probability \inserted{timing} fault in the machine's hardware. Whereas a convergent process of numerical integration(for example) may not be aff\deleted{t}ected if a fault occurs once in a million times, arithmetic modulo \uline{$m$} depending on remainders rather than quotients is totally destroyed.
+\normalmarginpar
+% archive sheet number: 54
+\scanpage{57}
+\begin{center}
+CONGRUENCE HECKE OPERATORS
+
+by
+
+A.O.L.ATKIN
+\end{center}
+
+1. \handwritten{\uline}{Introduction}. \quad In \handwritten{\uwave}{(2)} the au\deleted{l}thor has given an account of some results on congruences for modular forms based on real time order of discovery,ind\deleted{\unsure{i}}espensably aided by a computer. Here we attempt(with a certain amount of hindsight)to start at the other end,and consider what kind of relevant congruence properties might be expected \handwritten{\uline}{a} \handwritten{\uline}{priori} ; our conclusion is,that something like the results of \handwritten{\uwave}{(2)} are the most that can be hoped for.
+
+We give no proofs in this paper. The historical aspect,and a precise account of what we can prove and what is conjecture(with overwhelming evidence)is in \handwritten{\uwave}{(2)}; detailed proofs will appear elsewhere. Our purpose here is to indicate that some \reversemarginpar\margin{\handwritten{German\\ `pee'}}\normalmarginpar``$\handwritten{\underline}{\handwritten{\mathfrak{p}}}$-adic'' theory of Hecke operators exists analogous to the exact classical theory. We sketch this classical theory of Hecke operators with a view to our analogy,so that the approach is mildly eccentric. The reader can find more satisfactory accounts in Gunning\handwritten{\uwave}{(4)},Lehner\handwritten{\uwave}{(7)}, or Rankin\handwritten{\uwave}{(8)}.
+
+We observe finally that,while we only present our conjectures and theorems for the Fourier coefficients of modular functions(i.e.,forms of dimension $0$)and the subgroup $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$\margin{\handwritten{Cap.\\ gamma}} for $\handwritten{\underline}{q}$ prime,we have in fact a good deal of further evidence for forms of various dimensions(including half-integral)and other subgroups. In particular,for the reader whose interests lie in the ``romantic'' tradition of Ramanujan's famous formulae for the partition function $\handwritten{\underline}{p(n)}$:
+\[
+\begin{aligned}
+\handwritten{\underline}{p(5n+4)}  &\handwritten{\equiv} 0 \qquad (\mathrm{mod}\ 5)  &,\\
+\handwritten{\underline}{p(7n+5)}  &\handwritten{\equiv} 0 \qquad (\mathrm{mod}\ 7)  &,\\
+\handwritten{\underline}{p(11n+6)} &\handwritten{\equiv} 0 \qquad (\mathrm{mod}\ 11) &,
+\end{aligned}
+\]
+we can offer such results as
+\[
+\handwritten{\underline}{p(206839n+2623)}\ \handwritten{\equiv}\ 0 \qquad (\mathrm{mod}\ 17).
+\]
+However we can only prove this by means of the multiplicative congruence properties which we consider below.
+
+% archive sheet number: 56
+\scanpage{58}
+\noindent\hfill atkin page 2\mspage{2}\par
+\begingroup
+\csname tagsleft@true\endcsname
+
+2. \handwritten{\uline}{The} \handwritten{\uline}{full} \handwritten{\uline}{modular} \handwritten{\uline}{group}. We consider the modular group $\handwritten{\underline}{\handwritten{\Gamma}}$ consisting of all linear fractional transformations
+\[
+z\ \rightarrow\ Vz=(az+b)/(cz+d)
+\quad \text{(with } \handwritten{\underline}{a,b,c,d},\text{rational integers and }\handwritten{\underline}{ad-bc\mathrel{\handwritten{=}}}1)
+\]
+acting on the upper half $\handwritten{\underline}{z}$-plane $\handwritten{\underline}{H}$,and write
+\[
+\handwritten{\underline}{x}=\handwritten{\underline}{e}^{2\handwritten{\underline}{\handwritten{\pi}}\handwritten{\underline}{iz}} \qquad \unsure{.}
+(\,|x|<1\tikz[remember picture,baseline]{\node[inner sep=0pt](punctfiftyeight){$\deleted{\cdot}\mathpunct{,}$};}\quad \mathrm{Im}\ \handwritten{\underline}{z}>0\,)\ .
+\]
+\reversemarginpar\margin{\handwritten{\unsure{.} pi}}\normalmarginpar
+\margin{\handwritten{\tikz[remember picture,baseline]{\node[inner sep=0pt](delefiftyeight){\tikz[baseline=-.4ex,x=.85em,y=.85em]{\draw (.03,-.7) .. controls (.36,-.06) and (.83,.64) .. (.59,.63) .. controls (.18,.63) and (.16,.06) .. (.45,.22) .. controls (.61,.35) and (.32,.56) .. (.46,.68) -- (.93,1.12);}};}\tikz[remember picture,overlay]{\draw[->] (punctfiftyeight.north east) to[bend left=6] (delefiftyeight.west);}}}
+
+We define a \handwritten{\uline}{modular} \handwritten{\uline}{form} $\handwritten{\underline}{F(z)}$ of dimension $\handwritten{\underline}{k}$(which we take to be an even integer throughout this paper) by
+\[
+\handwritten{\underline}{F(Vz)=(cz+d)^{-k}F(z)\quad \text{for all } V \handwritten{\in}\handwritten{\underline}{\handwritten{\Gamma}}}\quad ,
+\tag*{(M1)}
+\]
+\[
+\parbox[t]{.82\linewidth}{\raggedright \handwritten{\uline}{$F(z)$ is meromorphic in the fundamental domain $D=I+B$ of $\handwritten{\underline}{\handwritten{\Gamma}}$} ,}
+\tag*{(M2)}
+\]
+\handwritten{\uline}{where $I$ is that part of $D$ inside $H$,and $B$(the cusps of $D$) is that part of $D$ on the boundary of $H$; here we may take $B$ as the single point $z=i\handwritten{\infty}$.}
+
+The conditions (M1) and (M2) seem insufficient to produce much number theory,and we therefore define further restrictions as follows:
+\[
+\text{an \handwritten{\uline}{entire} form is regular in } I\quad ,
+\tag*{(M3a)}
+\]
+\[
+\text{a \handwritten{\uline}{regular} form is regular in } D=I+B\quad ,
+\tag*{(M3b)}
+\]
+\[
+\text{a \handwritten{\uline}{cuspform} is regular in } I \text{ and zero in } B.
+\tag*{(M3c)}
+\]
+Clearly a cuspform is a regular form,and a regular form is an entire form. We denote the vector spaces of entire,regular,and cusp-,forms(for the given dimension $\handwritten{\underline}{k}$) by $\handwritten{\underline}{C},\handwritten{\underline}{C}^{\handwritten{+}}$,and $\handwritten{\underline}{C}^{\handwritten{0}}\handwritten{,}$respectively. The last two \tikz[baseline=(old.base)]{\node[inner sep=0pt](old){\deleted{\unsure{aure|aare}}};\draw (old.center) ellipse [x radius=1em,y radius=.65em];}\inserted{\handwritten{\tikz[baseline=(new.base)]{\node[inner sep=0pt](new){are};\draw (new.center) ellipse [x radius=.9em,y radius=.65em];}}} finite-dimensional($\handwritten{\underline}{C}$ is not). Since $\handwritten{\underline}{C}^{\handwritten{+}}$ is the direct sum of $\handwritten{\underline}{C}^{\handwritten{0}}$ and a well-defined Eisenstein series,we ignore $\handwritten{\underline}{C}^{\handwritten{+}}$ from now on.
+
+By the \handwritten{\uline}{Fourier} \handwritten{\uline}{series} (FS)\unsure{-} of a modular form we understand its expansion in powers of $\handwritten{\underline}{x}$,the local variable at the cu\deleted{p}sp $\handwritten{\underline}{z}=\handwritten{\underline}{i}\handwritten{\infty}$ $\handwritten{\vdots}$
+\[
+F(z)=F(x)=\handwritten{\sum_{n=N}^{\infty}}a(n)\,x^{n}\qquad (N>-\handwritten{\infty})\qquad ,
+\]
+and we call \tikz[remember picture,baseline=(oldcoeff.base)]{\node[inner sep=0pt](oldcoeff){\deleted{\illegible{1}}};}\reversemarginpar\margin{\handwritten{\tikz[remember picture,baseline]{\node[inner sep=0pt](deletwo){\tikz[baseline=-.4ex,x=.85em,y=.85em]{\draw (.03,-.7) .. controls (.36,-.06) and (.83,.64) .. (.59,.63) .. controls (.18,.63) and (.16,.06) .. (.45,.22) .. controls (.61,.35) and (.32,.56) .. (.46,.68) -- (.93,1.12);}};}\tikz[remember picture,overlay]{\draw (oldcoeff.north) to[bend right=7] (deletwo.east);}}}\normalmarginpar $\handwritten{\underline}{a(n)}$ the Fourier coefficients. Roughly speaking, the number theory associated with modular theory arises from the Fourier coefficients of entire modular forms. Indeed,prior to Ramanujan and his work on congruences and(with Hardy)asymptotic formulae for $\handwritten{\underline}{p(n)}$,one could read ``regular''for ``entire'' in the last sentence. The author does not know of any number theory associated with modular forms which have poles inside $\handwritten{\underline}{H}$.
+\endgroup
+
+% archive sheet number: 57
+\scanpage{59}
+\noindent\hfill\unsure{atkin page 3}\mspage{3}\par
+\begingroup
+\csname tagsleft@true\endcsname
+
+We now define the Hecke operator $\handwritten{\underline}{T_p}$ for prime $\handwritten{\underline}{p}$ acting on a modular form $\handwritten{\underline}{\deleted{\unsure{E|F}}\handwritten{F}(z)}$ of dimension $\handwritten{\underline}{k}$ by
+\[
+T_p\,F(z)=p^{-1}\handwritten{\sum_{\underline{\lambda}=0}^{p-1}F\left(\frac{z+\underline{\lambda}}{p}\right)}
++p^{-k-1}F(pz),
+\]
+\margin{\handwritten{lambda}}
+or equivalently in terms of the FS:
+\[
+T_p\,F(x)=\handwritten{\sum_n}\handwritten{\Bigl\{}a(np)+\unsure{\cdot}p^{-k-1}\,a(n/p)\handwritten{\Bigr\}}\,x^n\qquad ,
+\]
+where $\handwritten{\underline}{a}(\handwritten{\underline}{\alpha})$ is defined as zero if $\handwritten{\underline}{\alpha}$ is non-integral or $\handwritten{\underline}{\alpha}<\handwritten{\underline}{N}$.\margin{\handwritten{alpha}} It is then a matter of formal algebra to establish the two following properties:
+\[
+\text{\handwritten{\uline}{$T_p$ maps $C$ into $C$,and $C^{\handwritten{0}}$ into $C^{\handwritten{0}}$}}\ ,
+\tag*{(H1)}
+\]
+\[
+\text{\handwritten{\uline}{All the $T_p$ commute.}}
+\tag*{(H2)}
+\]
+The further development of the classical theory now requires Petersson's scalar(inner)product
+\[
+(F,G)=\handwritten{\iint_{D}}\,F(z)\,\handwritten{\overline}{G(z)}\,\handwritten{\underline{\eta}^{-k-2}\,d\underline{\xi}\,d\underline{\eta}}
+\qquad (z=\handwritten{\underline{\xi}+i\underline{\eta}})\ ,
+\]
+\margin{\handwritten{gsi\\ eta}}
+which co\handwritten{n}verges provided $\handwritten{\underline}{F,G}\handwritten{\in}\handwritten{\underline}{C}^{\handwritten{+}}$ and at least one of $\handwritten{\underline}{F,G}\handwritten{\in}\handwritten{\underline}{C}^{\handwritten{0}}$, and makes $\handwritten{\underline}{C}^{\handwritten{0}}$ into a Hilbert space. We then have
+\[
+\text{\handwritten{\uline}{$T_p$ is an hermitian operator on $C^{\handwritten{0}}$,i.e.}}, 
+\tag*{(H3)}
+\]
+\[
+(T_pF,G)=(F,T_pG)\ ,
+\]
+and we have already stated
+\margin{\handwritten{\tikz[x=.6em,y=.6em]{\draw[very thin] (.3,2.1) .. controls (.95,1.7) and (.9,1.4) .. (.17,1.51) .. controls (-.5,1.72) and (-.27,1.12) .. (.25,1.33) .. controls (.75,1.61) and (.5,.52) .. (1,-.6);}}}
+\[
+\text{\handwritten{\uline}{The Hilbert space $C^{\handwritten{0}}$ is finite-dimensional}.}
+\tag*{(H4)}
+\]
+The properties (H1) through (H4) suffice to establish the following
+
+\handwritten{\uline}{Theorem} 1. (\handwritten{\uline}{Hecke-Petersson}).
+
+\handwritten{\uline}{The space of cuspforms of dimension $k$ on the full modular group has a basis $F_i(z)$ of forms which are simultaneous eigenforms}*\margin{\handwritten{*footnote\\ on cover\\ page}} \handwritten{\uline}{of all the operators $T_p$} . \handwritten{\uline}{In terms of the Fourier series} $\handwritten{\sum\limits_{n=1}^{\infty}}\,a(n)\,x^{n}$ \handwritten{\uline}{of a typical} $F_i(z)$ \handwritten{\uline}{normalized by} $a(1)=1$ \handwritten{\uline}{this is equivalent to the ``multiplicative'' relation}
+\csname tagsleft@false\endcsname
+\[
+\handwritten{\underline}{a(np)-a(n)a(p)+p^{-k-1}a(n/p)=0}\quad
+(\text{\handwritten{\uline}{all prime} }p,\text{\handwritten{\uline}{all integral} }n)\ .
+\tag*{( 1 )\,\handwritten{\#}}
+\]
+From (1) and the values of $\handwritten{\underline}{a(p)}$ for prime $\handwritten{\underline}{p}$ the values of $\handwritten{\underline}{a(n)}$ are completely determined; in particular $\handwritten{\underline}{a(mn)=a(m)a(n)}$ if $\handwritten{\underline}{(m,n)=1}$. For this reason we have not defined the operators $\handwritten{\underline}{T_m}$ for composite $\handwritten{\underline}{m}$ which form a ring,but merely the \deleted{group}\inserted{\handwritten{\unsure{multiplicative|multiplicatif|multiplicat.} \uline{semi} group!}} of $\handwritten{\underline}{T_p}$ ,since the number theory(if not the algebra) is completely described by the equation (1). One can infer Theorem 1 in any specific case with a much weaker form of(H3),and indeed without the scalar product; it suffices to have (H1),(H2),(H4),together with
+\csname tagsleft@true\endcsname
+\[
+\begin{aligned}
+&\text{\handwritten{\uline}{At least one} } T_p\ \text{(\handwritten{\uline}{considered as a matrix acting on some basis}}\\
+&\text{for } C^{\handwritten{0}}\text{ ) has distinct eigenvalues.}
+\end{aligned}
+\tag*{(H3\unsure{*|$\cdot$})}
+\]
+\endgroup
+
+% archive sheet number: 58
+\scanpage{60}
+\begin{center}atkin page 4\mspage{4}\end{center}
+
+If we now consider the possibility of extending some form of Theorem 1 to $\handwritten{\underline}{C}$(rather than $\handwritten{\underline}{C}^{0}$ )then there is no problem with (H1) and (H2). However\deleted{\unsure{,}} (H4)\handwritten{,}which is essential\handwritten{,}breaks down since the only finite-dimensional subspaces of $\handwritten{\underline}{C}$ which are mapped into themselves by all the $\handwritten{\underline}{T_p}$ are subspaces of $\handwritten{\underline}{C}^{\handwritten{+}}$. Indeed any modular form with a pole\handwritten{\tikz[baseline,overlay,x=1em,y=1em]{\draw[very thin,gray] (-.9,-.35) .. controls (-.7,-.63) and (.85,-.8) .. (1.3,-1) .. controls (1.55,-1.1) and (1.39,-.59) .. (1.58,-.66) .. controls (1.76,-.79) and (1.63,-.92) .. (1.48,-1.06);}} gives rise to an infinite-dimensional subspace by the repeated action of only one $\handwritten{\underline}{T_p}$ .
+
+The essential distinction,then,lies between $\handwritten{\underline}{C}$ and $\handwritten{\underline}{C}^{\handwritten{0}}$. It so happens that $\handwritten{\underline}{C}^{\handwritten{0}}$ is null for $\handwritten{\underline}{k}\handwritten{\geqslant}0$ and there is thus an association between Theorem 1 and forms of negative dimension. In fact such theory as we are able to develop for $\handwritten{\underline}{C}$ is viable for forms of any dimension,but the author has mainly pursued it for positive and zero dimension where nothing else is available.
+
+We now choose the simplest of all modular forms,in fact the modular function($\handwritten{\underline}{k}=0$) $\handwritten{\underline}{j(z)}$ which is the Hauptmodul of $\handwritten{\underline}{\handwritten{\Gamma}}$ defined by
+\[
+\begin{aligned}
+j(z)&=\handwritten{\left\{1+240\sum_{n=1}^{\infty}\underline{\sigma}_{3}(n)\,x^n\right\}^{3}\Bigm/ x\prod_{r=1}^{\infty}(1-x^{r})^{24}}\\
+&=x^{-1}+744+\handwritten{\sum_{n=1}^{\infty}}c(n)\,x^n,
+\end{aligned}
+\]
+\reversemarginpar\margin{\handwritten{Sigma}}\normalmarginpar
+and consider what kind of property
+\[
+a(1)=1,\ a(np)-a(n)a(p)+p^{-1}a(n/p)=0\quad (\text{all prime }p,\text{all integral }n),
+\tag*{(2)}
+\]
+can exist for $\handwritten{\underline}{a(n)}$ associated in some way with $\handwritten{\underline}{c(n)}$. Nothing identical is possible,for the reasons already given. However (2) makes sense if the $\handwritten{\underline}{a(n)}$ are considered not\inserted{necessarily} as complex numbers but as elements of any commutative ring with identity; since in fact the $\handwritten{\underline}{a(n)}$ of Theorem 1 are algebraic integers(as shown by Rankin and Rushforth\handwritten{\uwave}{(9)}) a natural choice of ring is $\handwritten{\underline}{Z/q^{\handwritten{\underline}{\alpha}}Z}$\margin{\handwritten{alpha}} ,that is, the integers modulo $\handwritten{\underline}{q}^{\handwritten{\underline}{\alpha}}$,for some fixed prime $\handwritten{\underline}{q}$. We cannot expect some \handwritten{\uline}{fixed} $\handwritten{\underline}{a(n)}$ to be involved for all $\handwritten{\underline}{q}$,or even for fixed $\handwritten{\underline}{q}$ and all $\handwritten{\underline}{\alpha}$,for then (2) would be identical again. Thus we may expect $\handwritten{\underline}{a(n)}$ to depend on $\handwritten{\underline}{q}$ and $\handwritten{\underline}{\alpha}$ . At this point we \deleted{\illegible{1}} state some actual results,which indicate that something of this kind actually happens; for $\handwritten{\underline}{q}=2,3,5,7$,and $13$ we can prove for all $\handwritten{\underline}{\alpha}$,and otherwise.for a few fixed $\unsure{a|\alpha}$ the following
+
+% archive sheet number: 59
+\scanpage{61}
+
+\handwritten{\uline}{Conjecture} 1.
+
+\handwritten{\tikz[baseline,overlay,x=1em,y=1em]{\draw[very thin,gray] (-1.55,-1.12) -- (-.72,-.51) -- (-.48,-.77) (-.76,-.44) -- (-.3,-.49);}}\handwritten{\uline}{Let} $q\handwritten{\leqslant}23$ be \handwritten{\uline}{prime},\handwritten{\uline}{and} $p$ \inserted{\handwritten{be}} a \handwritten{\uline}{prime other than} $q$,\handwritten{\uline}{and let $\handwritten{\underline}{\alpha}$\inserted{and $n$} be any positive integers} . \handwritten{\uline}{Let also}
+\[
+a(n)=c(q^{\handwritten{\underline}{\alpha}}n)/c(q^{\handwritten{\underline}{\alpha}})\ .
+\]
+\handwritten{\uline}{Then}
+\[
+\begin{aligned}
+a(np)-a(n)a(p)+p^{-1}a(n/p)&\handwritten{\equiv}0 \qquad (\mathrm{mod}\ q^{\handwritten{\underline}{\alpha}})\qquad ,\\
+a(nq)-a(n)a(q)&\handwritten{\equiv}0 \qquad (\mathrm{mod}\ q^{\handwritten{\underline}{\alpha}}).
+\end{aligned}
+\]
+\margin{\handwritten{\#}}
+
+In fact for $\handwritten{\underline}{q}\handwritten{\leqslant}5$ the modulus of the congruences can be improved to $q^{\handwritten{\underline}{\theta}}$\reversemarginpar\margin{\handwritten{theta}}\normalmarginpar with $\handwritten{\underline}{\theta}>\handwritten{\underline}{\alpha}$ . The reader familiar with the Ramanujan-type congruences(Lehner\handwritten{\uwave}{(5)},\handwritten{\uwave}{(6)},Atkin\handwritten{\uwave}{(1)})
+\[
+c(q^{\handwritten{\underline}{\alpha}}n)\handwritten{\equiv}0\quad(\mathrm{mod}\ q^{\handwritten{\underline}{\beta}})
+\tag*{(3)}
+\]
+for $\handwritten{\underline}{q}=2,3,5,7,11$ and $\handwritten{\underline}{\beta}=3\handwritten{\underline}{\alpha}+8,2\handwritten{\underline}{\alpha}+3,\handwritten{\underline}{\alpha}+1,\handwritten{\underline}{\alpha},\handwritten{\underline}{\alpha}$\reversemarginpar\margin{\handwritten{beta}}\normalmarginpar respectively may query the definition of $\handwritten{\underline}{a(n)}$,but in fact for $\handwritten{\underline}{n}=1$ the result of (3) is best possible(i.\handwritten{e}. $\handwritten{\underline}{q^{\handwritten{\underline}{\beta}}\handwritten{\parallel}c(q^{\handwritten{\underline}{\alpha}})}$),and the division is therefore valid in any ring $\handwritten{\underline}{Z/q^{\handwritten{\underline}{\theta}}Z}$ . Next we state
+
+\handwritten{\uline}{Conjecture} 2. \quad \handwritten{\uline}{Let} $\handwritten{\underline}{q=29\ \text{or}}$ $31$,\inserted{\handwritten{and}} $p$ \handwritten{\uline}{be a prime other than} $q$,\handwritten{\uline}{and $\handwritten{\underline}{\alpha}$ and $n$ be any positive integers}. \handwritten{\uline}{Then}
+\[
+c(q^{\handwritten{\underline}{\alpha}}n)/c(q^{\handwritten{\underline}{\alpha}})=\handwritten{\underline}{\handwritten{\lambda}}a(n)+\handwritten{\underline}{\handwritten{\bar{\lambda}}}\,\handwritten{\overline}{a(n)}\ ,
+\]
+\handwritten{\uline}{where}$\handwritten{\underline}{\handwritten{\lambda}},a(n)$ \handwritten{\uline}{and their conjugates}$\handwritten{\underline{\bar{\lambda}}},\handwritten{\overline}{a(n)}$ \handwritten{\uline}{lie in a quadratic extension} $E$ of $Z/q^{\handwritten{\underline}{\alpha}}Z$ \handwritten{\uline}{and}
+\[
+\begin{aligned}
+a(np)-a(n)a(p)+p^{-1}a(n/p)&=0\ ,\\
+a(nq)-a(n)a(q)&=0.
+\end{aligned}
+\]
+\margin{\handwritten{\#}}
+(We have written ``$=$'' rather than ``$\handwritten{\equiv}$'' in $E$ \ ). The situation for $\handwritten{\underline}{q}\handwritten{\geqslant}37$ appears to be that something like \deleted{c}\handwritten{C}onjecture 2 is valid; one finds that $\handwritten{\underline}{c(q^{\handwritten{\underline}{\alpha}}n)/c(q^{\handwritten{\underline}{\alpha}})}$ is a linear combination of ``congruence multiplicative'' coefficients lying in extensions of $\handwritten{\underline}{Z/q^{\handwritten{\underline}{\alpha}}Z}$ and the ``dimension'' of the``congruence space'' appears to be the integral part of $\handwritten{\underline}{q}/12$ (this is somewhat speculative) in the sense that the ``dimension'' is 1 in conjecture 1 and 2 in Conjecture 2.
+
+We have so far considered the coefficient $\handwritten{\underline}{c(n)}$ on the full modular group. H\inserted{\handwritten{o}}wever the results quoted above give the prime $q$ a sp ecial role,\handwritten{\tikz[baseline,overlay,x=1em,y=1em]{\draw[very thin] (1.16,1.03) .. controls (1.29,1.31) and (1.46,1.16) .. (1.62,.69);}}both as to the definition of $\handwritten{\underline}{a(n)}$ and the multiplicative property; also $\handwritten{\sum\limits_{n=1}^{\infty}}c(q^{\handwritten{\underline}{\alpha}}n)\,x^{n}$ is (for all $\handwritten{\underline}{\alpha}$ ) a function on the subgroup $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$ defined by $\handwritten{\underline}{c\handwritten{\equiv}0\ (\mathrm{mod}\ q)}$ in
+
+$z\ \rightarrow\ Vz=(az+b)/(cz+d)$. It therefore seems that these results are naturally associated with $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(q)$ and we now consider this
+
+% archive sheet number: 60
+\scanpage{62}
+in more detail.
+
+3. \handwritten{\uline}{The} \handwritten{\uline}{subgroup} $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(q)$ \handwritten{\uline}{for} $q$ \handwritten{\uline}{prime}.
+
+The theory of \handwritten{\S}2 carries through with some minor changes,and the replacement of the operator $\handwritten{\underline}{T_q}$ by the operator $\handwritten{\underline}{U_q}$ defined by
+\[
+ U_q F(z)=q^{-1}\mathop{\handwritten{\sum}}\limits_{\handwritten{\underline}{\handwritten{\lambda}}=\handwritten{0}}^{\handwritten{q-1}} \handwritten{F\left(\frac{z+\underline{\lambda}}{q}\right)}=\mathop{\handwritten{\sum}}\limits_{\handwritten{n}}a(nq)\,x^n\,.
+\]
+(M1) need only hold for $V \handwritten{\in}\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(q)$,and in (M2) the \handwritten{\uline}{two} cusps $\handwritten{\underline}{B}$ can be taken as $z=0$ and $z=i\handwritten{\infty}$. The existence of another cusp enables us to have\inserted{entire} functions which are as it were ``cusp'' functions with a zero at $\handwritten{\underline}{z}=i\handwritten{\infty}$ by virtue of having a pole at $\handwritten{\underline}{z}=0$ . With regard to the classical theory it is convenient to discard the cuspforms $\handwritten{\underline}{G(z)}$ and $\handwritten{\underline}{G(qz)}$ on $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$ where $\handwritten{\underline}{G(z)}$ is a cuspform of the same dimension on the full modular group(and so a fortiori on $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(q)$ ),and to consider $C^0$ as the space of ``newforms'' which are the remaining cuspforms on $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$ of dimension $\handwritten{\underline}{k}$. We then have
+
+\deleted{Theorem}
+\begingroup\csname tagsleft@true\endcsname
+\[
+ \handwritten{\underline}{T_p\text{ and }U_q\text{ map }C\text{ into }C\text{ and }C^{\handwritten{0}}\text{ into }C^{\handwritten{0}}}\,, \tag*{(H1q)}
+\]
+\[
+ \handwritten{\underline}{\text{All the } \deleted{T\unsure{s|p}}\handwritten{T_p}\text{ commute,and commute with }U}_{q}\,, \tag*{(H2q)}
+\]
+\[
+ \handwritten{\underline}{T_p\text{ is an hermitian operator on }C^{\handwritten{0}}\text{ (note }U_q\text{ is not)}}\,, \tag*{(H3q)}
+\]
+\[
+ \handwritten{\underline}{C^{\handwritten{0}}\text{ is finite dimensional}}. \tag*{(H4q)}
+\]
+\endgroup
+
+This leads (with a little extra work to deal with $U_q$) to
+
+\handwritten{\uline}{Theorem} 2. \handwritten{\uline}{The space of new cuspforms on} $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(q)$ \handwritten{\uline}{has a basis} $F_i(z)$ \handwritten{\uline}{of forms} \handwritten{\uline}{which are simultaneous eigenforms} of \handwritten{\uline}{all the operators} $T_p$ \handwritten{\uline}{and of} $U_q$ . In \handwritten{\uline}{terms of the Fourier series} $\mathop{\handwritten{\sum}}\limits_{\handwritten{n=1}}^{\handwritten{\infty}}a(n)\,x^n$ of \handwritten{\uline}{a typica}\deleted{\unsure{o|l}}l $F_i(z)$ \handwritten{\uline}{normalized by} $a(1)=1$ this \handwritten{\uline}{is equivalent to the multiplicative} \handwritten{\uline}{relations}
+\[
+ \begin{aligned}
+ a(np)-a(n)a(p)+p^{-k-1}a(n/p)&=0,\qquad (\text{\handwritten{\uline}{all prime} }p\handwritten{\ne}q,\text{\handwritten{\uline}{all integral} } n),\\
+ a(nq)-a(n)a(q)&=0. 
+ \end{aligned}
+\]
+\margin{\handwritten{\#}}
+(In fact we have,in the case of negative $k$ where Theorem 2 is non-trivial,that $a(q)=\mathbin{\handwritten{\pm}}q^{-k/2\,-1}$. The theory on $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(m)$ for a general $\handwritten{\underline}{m}$ will appear in a paper by Joseph Lehner and the author). We now state\deleted{\unsure{a form|form}}\inserted{an extension} of Conjecture 1 which is more closely analogous to Theorem 2.
+% archive sheet number: 61
+\scanpage{63}
+\begin{center}atkin page \handwritten{7}\end{center}\mspage{7}
+
+\handwritten{\uline}{Conjecture} 3. \handwritten{\uline}{Let} $q\handwritten{\leqslant}23$ \handwritten{\uline}{be prime},\handwritten{\uline}{and $p$ be a prime other than} $q$, \handwritten{\uline}{and $n$ be a positive integer}. \handwritten{\uline}{Then for integral} $\handwritten{\underline}{\alpha}\handwritten{\geqslant}1$ \handwritten{\uline}{there exists a sequence of entire functions} $F_{\alpha}(z)=F_{\alpha}(x)$ \handwritten{\uline}{on} $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(q)$ \handwritten{\uline}{which are zero} at $z=i\handwritten{\infty}$ \handwritten{\uline}{(and hence have poles at $z=0$),such that if the FS of} $F_{\handwritten{\underline}{\alpha}}(x)$ \handwritten{\uline}{is given by}
+\[
+ F_{\alpha}(x)=x+\mathop{\handwritten{\sum}}\limits_{\handwritten{n=1}}^{\handwritten{\infty}}a_{\handwritten{\underline}{\alpha}}(n)\,x^n
+ \qquad(\text{the }a_{\alpha}(n)\text{ are integral}),
+\]
+\handwritten{\uline}{then}
+\[
+ \begin{aligned}
+ \text{(i\handwritten{\tikz[baseline,overlay,x=1em,y=1em]{\draw[line width=.08em] (0,.23) -- (.30,.23);}})}\quad &a_{\handwritten{\underline}{\alpha}}(np)-a_{\handwritten{\underline}{\alpha}}(n)a_{\handwritten{\underline}{\alpha}}(p)+p^{-1}a_{\handwritten{\underline}{\alpha}}(n/p)\handwritten{\equiv}0 &(\mathrm{mod}\ q^{\alpha})\,,\\
+ \text{(ii)}\quad &a_{\handwritten{\underline}{\alpha}}(nq)-a_{\handwritten{\underline}{\alpha}}(n)a_{\handwritten{\underline}{\alpha}}(q)\handwritten{\equiv}0 &(\mathrm{mod}\ q^{\alpha})\,,\\
+ \text{(iii)}\quad &a_{\handwritten{\underline}{\alpha}+1}(n)\handwritten{\equiv}a_{\handwritten{\underline}{\alpha}}(n) &(\mathrm{mod}\ q^{\alpha})\,,
+ \end{aligned}
+\]
+(iv) \handwritten{\uline}{any entire function} $F(x)$ \handwritten{\uline}{on} $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(q)$ \handwritten{\uline}{with integral} \handwritten{\uline}{FS is such} \handwritten{\uline}{that for} \handwritten{\uline}{some} $\beta$ \handwritten{\uline}{we have} \inserted{\handwritten{for all $\alpha\geqslant1$}}
+\[
+ U_q^{\handwritten{\underline}{\alpha+\beta}} F(x)\handwritten{\equiv}\handwritten{k+}k_{\handwritten{\underline}{\alpha\beta},} F_{\handwritten{\underline}{\alpha}}(z)
+ \qquad(\mathrm{mod}\ q^{\alpha})\,,
+\]
+\handwritten{\uline}{where}\inserted{\handwritten{$k$ and}} $k_{\handwritten{\underline}{\alpha\beta}}$ \deleted{\unsure{is}}\handwritten{are} \handwritten{\uline}{constant}\handwritten{s.}\margin{\handwritten{\#}}
+
+It seems possible that such an $F_{\handwritten{\underline}{\alpha}}(x)$ is unique but the author can see no approach to prove this. It is clearly attractive,in view of (iii),to replace the sequence of functions $F_{\handwritten{\underline}{\alpha}}(x)$ by a single function $\handwritten{\underline}{F(x)}$ with $\handwritten{\underline}{q}$-adic Fourier coefficients. However the author's only methods of proof are based on classical modular theory,and for each fixed $\handwritten{\underline}{\alpha}$ we do have a genuine function on $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$ with a pole of finite order at $\handwritten{\underline}{z}=0$;one can prove the congruence properties via the exact properties. One may hope for some deeper method of proof,which in view of the exciting modern applications of algebraic geometry to modular theory is perhaps not wildly optimistic.
+
+We may sum up the conclusions of Conjecture 3 as follows. Given ``any'' entire function on $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$, then repeated application of $\handwritten{\underline}{U_q}$ leads to a series of Fourier coefficients which become multi\deleted{\unsure{p|i}}\handwritten{p}licative modulo increasing powers of $\handwritten{\underline}{q}$. It is true that we have made the condition that the original FS be integral,but this is not an essential restriction,since it seems likely that any\inserted{entire} form on any \handwritten{\uline}{congruence} subgroup of the modular group is a finite linear combination of forms with integral FS(and this is certainly \deleted{t}true for functions on $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$ with $\handwritten{\underline}{q}\handwritten{\leqslant}23$ ).
+\par\noindent\hspace*{.25\linewidth}\handwritten{\tikz[baseline,x=1em,y=1em]{\fill (-.58,-.12) circle (.025); \draw[line width=.045em] (.15,.51) .. controls (.08,.38) and (.13,.36) .. (.17,.25) .. controls (.28,.13) and (.01,.12) .. (.02,.05) .. controls (.05,-.02) and (.18,.01) .. (.2,0);}}
+% archive sheet number: 62
+\scanpage{64}
+\begin{flushright}atkin page 8\end{flushright}\mspage{8}
+
+Finally we may extend Conjecture 2 in the same way as Conjecture \handwritten{3} extends Conjecture 1. Our proofs(where available) have two difficulties; the first,and most crucial,is to obtain the analogy of (H4q) and show that congruentially we can\inserted{for all $\handwritten{\underline}{\alpha}$} obtain a finite-dimensional subspace of $\handwritten{\underline}{C}$,which we can only do when $\handwritten{\underline}{\handwritten{\Gamma}}_{\handwritten{0}}(\handwritten{\underline}{q})$ has genus zero by the methods of Atkin and O'Brien\handwritten{\uwave}{(3)},where the case $\handwritten{\underline}{q}=13$ of Conjecture 1 is stated. For the remaining values of $\handwritten{\underline}{q}$ we are limited to a few fixed values of $\handwritten{\underline}{\alpha}$. The second difficulty,which only arises for $\handwritten{\underline}{q}\handwritten{\geqslant}29$ when the ``congruence space'' has dimension greater than one,is to obtain a criterion for simultaneous diagonalization such as (H3q). In fact we can use an (H3q*) analogous to (H3*) in \handwritten{\S}2 to the effect that at least one matrix has distinct eigenvalues modulo $\handwritten{\underline}{q}$(it will a fortiori then have distinct eigenvalues modulo $\handwritten{\underline}{q}^{\handwritten{\underline}{\alpha}}$). As indicated in \handwritten{\S}2,there is no problem with (H1q) and (H2q) which carry over for $\handwritten{\underline}{C}$ exactly as for $\handwritten{\underline}{C}^{\handwritten{0}}$.
+
+\handwritten{\uline}{References}.
+
+1. A.O.L.Atkin,Proof of a conjecture of Ramanujan,Glasgow Math.J. \handwritten{\uwave}{8}(1967),14-32.
+
+2. A.O.L.Atkin,Congruences for modular forms,Proceedings of IBM Conference on computers in mathematical research,Blaricum 1966,published North Holland(1967).
+
+3.A.O.L.Atkin and J.N.O'Brien,Some properties of $p(n)$ and $c(n)$ modulo powers of 13,Trans. Amer. Math. Soc. \handwritten{\uwave}{126}(1967),442-459.
+
+4. R.C.Gunning,Lectures on modular forms,Princeton 1962.
+
+5. J.Lehner,Divisibility properties of the Fourier coefficients of the modular invariant $j(\handwritten{\underline}{\handwritten{\tau}})$,Amer. J.Math.\handwritten{\uwave}{71}(1949),\deleted{\unsure{1}\illegible{1}\unsure{5|3}}\inserted{\handwritten{136-148}}.\reversemarginpar\margin{\handwritten{\unsure{Fin|Fiu}}}\normalmarginpar
+
+6. J.Lehner,Further congruence properties of the Fourier coefficients of the modular invariant $j(\handwritten{\underline}{\handwritten{\tau}})$,Amer.J.Math.\handwritten{\uwave}{71}(1949),373-386.
+
+7.J.Lehner,A short course in automorphic functions,New York 1965.
+
+8. R.A.Rankin,Elliptic \deleted{\unsure{M|m}}\handwritten{m}odular \deleted{\unsure{F|f}}\handwritten{f}unctions and \deleted{\unsure{F|f}}\handwritten{f}orms,Lecture notes ,Bloomington,Indiana,1964.
+
+\deleted{\unsure{8|0}}9. R.A.Rankin and J.M.Rushforth,The coefficients of certain integral modular forms,Proc. Cambridge Phil.Soc. \handwritten{\uwave}{50}(1954),305-308.\margin{\handwritten{\#}}
+
+\unsure{The} \unsure{Atlas} \unsure{Computer} Laboratory,Chilton,Didcot,England:
+% archive sheet number: 63
+\scanpage{78}
+\mspage{\handwritten{- 1 -}}
+
+\noindent\uline{A\,V\,A\,N\,T\,-\,P\,R\,O\,P\,O\,S}
+
+\medskip
+\noindent\begin{minipage}{\linewidth}\small
+I.\qquad
+% One continuous oblique pen stroke, from above the opening down into the footnote.
+\tikz[remember picture,overlay]{\coordinate (cotesixtythreestart) at (-0.7em,1.8ex);}
+Le but principal du présent Séminaire est de développer le formalisme de la ``cohomologie de Weil'' des Schémas. A partir essentiellement des résultats qui sont démontrés ici, des arguments bien connus, d'ailleurs dûs à Weil lui-même, \'{p}ermettent de déduire une partie des conjectures de Weil sur les fonctions $\mathrm{L}$ des variétés projectives non singulières sur un corps fini\textsuperscript{\handwritten{(1)}}. Cette déduction sera d'ailleurs présentée dans SGA \handwritten{1964/65}, dans un séminaire qui fera suite à celui-ci.
+
+Dans le présent séminaire, nous nous bornons à l'étude de la cohomologie des schémas relativement à la \uline{topologie étale} . Cette topologie par sa description est fort proche des topologies des variétés topologiques habituelles\handwritten{,} et on verra que la plupart des résultats classiques concernant la cohomologie des espaces topologiques.ordinaires (suites spectrales variées, théorèmes de finitude, K\handwritten{\"}{u}nneth, dualité, théorème de Lefschetz) peuvent se formuler et se démontrer dans le nouveau contexte, à condition de se borner le cas échéant aux faisceaux de torsion \uline{premiers aux caractéristiques résiduelles} des schémas envisagés\unsure{.|,} On obtiendra une théorie cohomologique ``à coefficient de caractéristique $0$'' (comme demandée par Weil) par un passage à la limite projective e\makebox[0pt][l]{\deleted{ss}}ssentiellement trivial (cf SGA \handwritten{1965}), permettant de définir une cohomologie à coefficient d\deleted{\unsure{e}}\handwritten{\unsure{a|e}ns} l'anneau $\underline{\mathrm{Z}_{\mathord{\rlap{\handwritten{$\scriptstyle/$}}\mathrm{l}}}}$ des entiers $\mathord{\rlap{\handwritten{$/$}}\mathrm{l}}$-adiques à partir des coefficients $\underline{\mathrm{Z}}\handwritten{/}\mathord{\rlap{\handwritten{$/$}}\mathrm{l}}^{\handwritten{\nu}}\underline{\mathrm{Z}}$ ., $\handwritten{\nu\longrightarrow}+\handwritten{\infty}$ . Lorsque $\mathord{\rlap{\handwritten{$/$}}\mathrm{l}}$ est premier aux caractéristiques résiduelles, cette cohomologie possède toutes les bonnes propriétés habituelles dans la cohomologie à coefficient $\underline{\mathrm{Z}}$ classique (et se prête donc à la formulation des conjectures de Weil). D'ailleurs, lorsque les schémas envisagés sont de type fini sur le corps des complexes $\underline{\mathrm{C}}$, nous verrons que la cohomologie (à coefficient\handwritten{s} de torsion) est essentiellement identique à la cohomologie
+
+\smallskip
+\noindent\rule{0.32\linewidth}{0.4pt}\par
+{\footnotesize\noindent\textsuperscript{\handwritten{(1)}}\quad Au moment d'écrire ces lignes, il n'est pas prouvé que les valeurs propres de l'homomorphisme de Frobenius opérant sur les $\mathrm{H}^{\handwritten{i}}\handwritten{(}\mathrm{X},\underline{\mathrm{Z}}_{\handwritten{\ell}}\handwritten{)}$ sont des entiers algébriques, ni à fortiori que leurs\handwritten{\tikz[remember picture,overlay]{\draw[line width=0.4pt] (cotesixtythreestart) -- (-0.45em,0.15ex);}} valeurs absolues sont égales à $\mathrm{q}^{\handwritten{i/2}}$ .\par}
+\end{minipage}
+% archive sheet number: 77
+\clearpage
+\scanpage{80}
+% Short oblique impression at the upper left of the sheet.
+\reversemarginpar
+\margin{\figure{\tikz[x=1em,y=1em]{\draw[line width=.23pt] (0,0) -- (1.5,1.25); \fill (0,0) -- (.15,.02) -- (.25,.19) -- (.14,.19) -- cycle; \fill (1.37,1.11) -- (1.47,1.27) -- (1.53,1.22) -- (1.43,1.13) -- cycle;}}}
+\normalmarginpar
+\mspage{X-1}
+
+\begin{center}
+Liste des courbes elliptiques à multiplication complexe\\
+dont l'invariant modulaire $\mathrm{j}$ est rationnel
+
+\medskip
+-{}-{}-
+\end{center}
+
+Ces courbes s'obtiennent à partir des ordres de corps quadratiques imaginaires de nombre de classes $1$. On doit donc :
+
+a) faire la liste des corps quadratiques imaginaires $\underline{\underline{\mathrm{Q}}}(\handwritten{\sqrt}{-\mathrm{d}})$ dont l'ordre maximal (i.e. l'anneau des entiers) est principal. Le résultat est :
+\reversemarginpar
+\margin{\handwritten{\uline{NB}\quad les $\mathrm{d}$\\sont premiers !}}
+\normalmarginpar
+\[
+\begin{aligned}
+&\mathrm{d} = \handwritten{\overbrace}{1,\,2,\,3,\,7,\,11}^{\inserted{\handwritten{\text{``\unsure{euclidiens|euclidien}''}}}},\,19,\,43,\,67,\,163 \quad \text{plus peut-être}\\
+&\text{une autre valeur}\quad \mathrm{d}_{?}\quad .
+\end{aligned}
+\]
+
+b) Pour chacune des valeurs de $\mathrm{d}$ ci-dessus, déterminer quels sont les conducteurs $\underline{\mathrm{f}}$ qui conduisent à un ordre ayant un nombre de classes égal à $1$.
+
+On trouve $\underline{\mathrm{f}}=1,2$ pour $\mathrm{d}=1$ , $\underline{\mathrm{f}}=1,2,3$ pour $\mathrm{d}=3$, $\underline{\mathrm{f}}=1,2$ pour $\mathrm{d}=7$, et $\underline{\mathrm{f}}=1$ pour $\mathrm{d}=2,\,11,\,19,\,43,\,67,\,163$ et $\mathrm{d}_{?}$ (s'il existe).
+
+c) Pour chaque couple $(\mathrm{d},\underline{\mathrm{f}})$, prendre une base $(1,\mathrm{t})$ de l'ordre correspondant, et calculer $\mathrm{j}(\mathrm{t})$; c'est l'invariant modulaire cherché; il est rationnel.
+
+Les valeurs de $\mathrm{j}(\mathrm{t})$ se trouvent toutes dans H.WEBER, \uline{Lehrbuch der Algebra}, t.III; de façon plus précise, Weber donne les valeurs de deux fonctions $\mathrm{f}(\mathrm{t})$ et $\mathrm{f}_{1}(\mathrm{t})$ liées à $\mathrm{j}$ par lesrelations
+\[
+\mathrm{j}=(\mathrm{f}^{24}-16)^{3}/\mathrm{f}^{24}
+       =(\mathrm{f}_{1}^{24}+16)^{3}/\mathrm{f}_{1}^{24}\quad .
+\]
+
+On obtient ainsi les résultats suivants :
+
+\begingroup
+\makeatletter\tagsleft@true\makeatother
+\[
+(\mathrm{d}=1,\ \underline{\mathrm{f}}=1)\quad \rightarrow\quad
+\mathrm{j}=\mathrm{j}(\mathrm{i})=2^{6}3^{3}
+\tag*{1.1.}
+\]
+(courbe elliptique ayant un groupe d'automorphismes d'ordre $4$)
+
+\[
+(\mathrm{d}=1,\ \underline{\mathrm{f}}=2)\quad \rightarrow\quad
+\mathrm{j}=\mathrm{j}(2\mathrm{i})=(2.3.11)^{3}
+\tag*{1.2}
+\]
+\endgroup
+% archive sheet number: 79
+\clearpage
+\scanpage{81}
+\reversemarginpar
+\margin{\figure{\tikz[x=1em,y=1em]{\draw[black!18,line width=.4pt] (0,0) -- (1.5,1.25); \fill (0,0) -- (.14,.02) -- (.22,.18) -- (.13,.20) -- cycle; \fill (1.34,1.08) -- (1.48,1.28) -- (1.54,1.24) -- (1.44,1.09) -- cycle;}}}
+\normalmarginpar
+\mspage{X-2}
+
+\diagram{\[
+\text{\small
+\setlength{\arraycolsep}{.25em}
+$\begin{array}{@{}r l c l l@{}}
+2.1 & (\mathrm{d}=2,\ \underline{\mathrm{f}}=1) & \rightarrow &
+\mathrm{j}=\mathrm{j}(\handwritten{\sqrt}{-2})=(2^{2}.5)^{3} & \text{(Weber, p.721)}\\[.6ex]
+3.1 & (\mathrm{d}=3,\ \underline{\mathrm{f}}=1) & \rightarrow &
+\mathrm{j}=\mathrm{j}(\dfrac{-1+\handwritten{\sqrt}{-3}}{2})=0 & \\[.3ex]
+& \multicolumn{4}{l}{\quad\text{(courbe elliptique ayant un groupe d'autom.d'ordre }6\text{)}}\\[.6ex]
+3.2 & (\mathrm{d}=3,\ \underline{\mathrm{f}}=2) & \rightarrow &
+\mathrm{j}=\mathrm{j}(\handwritten{\sqrt}{-3})=2^{4}3^{3}5^{3} & \text{(Weber, p.721)}\\[.6ex]
+3.3 & (\mathrm{d}=\rlap{$\deleted{\unsure{3|6}}$}\handwritten{\unsure{3|6}},\ \underline{\mathrm{f}}=3\handwritten{)} & \rightarrow &
+\mathrm{j}=\mathrm{j}(\dfrac{-1+3\handwritten{\sqrt}{-3}}{2})=-3.2^{15}5^{3} & \text{(Weber,462)}\\[.6ex]
+7.1 & (\mathrm{d}=7,\ \underline{\mathrm{f}}=1) & \rightarrow &
+\mathrm{j}=\mathrm{j}(\dfrac{-1+\handwritten{\sqrt}{-7}}{2})=-3^{3}5^{3} & \text{(Weber,460)}\\[.6ex]
+7\unsure{,|.}2 & (\mathrm{d}=7,\ \underline{\mathrm{f}}=2) & \rightarrow &
+\mathrm{j}=\mathrm{j}(\handwritten{\sqrt}{-7})=(3.5.17)^{3} & \text{(Weber, 475)}\\[.6ex]
+11.1 & (\mathrm{d}=11,\ \underline{\mathrm{f}}=1) & \rightarrow &
+\mathrm{j}=\mathrm{j}\bigl(\dfrac{-1+\handwritten{\sqrt}{-1\rlap{$1$}}\phantom{1}}{2}\bigr)=-2^{15} & \text{(Weber, 462)}\\[.6ex]
+19.1 & & \rightarrow & \mathrm{j}=-(2^{5}.3)^{3} & \multicolumn{1}{c}{\text{''}}\\[.6ex]
+43.1 & & \rightarrow\,\raisebox{.5ex}{\scriptsize\unsure{,|.}} & \mathrm{j}=-(2^{6}.3.5)^{3} & \multicolumn{1}{c}{\text{''}}\\[.6ex]
+67.1 & & \rightarrow & \mathrm{j}=-(2^{5}.3.5.11)^{3} & \multicolumn{1}{c}{\text{''}}\\[.6ex]
+163.1 & & \rightarrow & \mathrm{j}=-(2^{6}.3.5.23.29)^{3} & \multicolumn{1}{c}{\text{''}}\\[.6ex]
+\mathrm{d}_{?}.1 & & \rightarrow & \mathrm{j}=\ ? &
+\end{array}$}
+\]}
+
+\begin{center}
+***
+\end{center}
+% archive sheet number: 80
+\clearpage
+\scanpage{83}
+\reversemarginpar
+\margin{\figure{\tikz[x=1em,y=1em]{\draw[line width=.22pt] (0,0) -- (1.48,-.04); \draw[black!48,line width=.2pt] (1.48,-.04) -- (2.02,-.05); \fill (0,0) ellipse (.13 and .055); \fill (1.48,-.03) ellipse (.045 and .033); \draw (2,-.01) -- (2.03,-.09); \draw[black!50,line width=.26pt] (.40,.64) .. controls (.51,.61) and (.50,.58) .. (.43,.53); \draw[black!22,line width=.18pt] (.44,.51) -- (.40,.04);}}}
+\normalmarginpar
+\mspage{B-1}
+
+\begin{center}
+COURBES ELLIPTIQUES :\quad BIBLIOGRAPHIE
+\end{center}
+
+1)\quad \uline{Fonctions elliptiques et modulaires}
+
+C.JORDAN - Cours d'Analyse, Gauthi\makebox[0pt][l]{\deleted{\unsure{o|e}}}er-Villars
+
+A.HURWITZ et R.COURANT - Vorlesungen über allgemeine Funktionentheorie und elliptische Funktionen, Springer (4ème édition - 1964)
+
+R.FRICKE - Die elliptischen Funktionen und ihre Anwendungen, Teubner, Leipzig, 1922
+
+2)\quad \uline{Multiplication complexe} (\uline{méthodes analytiques})
+
+H.WEBER - Algebra, vol.III, Strasbourg, 1908
+
+R.FUETER - Vorlesungen über die singulären Moduln und die komplexe Multiplik.tion der elliptischen Funktionen, I, 1924, II, 1927, Teubner.
+
+H.HASSE - Neue Begründung der komplexen Multiplikation, I, Journ.Crelle, 157, p.115-139 (1927); II, \uline{ibid}., 165, p.64-88 (1931)
+
+Seminar on complex multiplication, Inst.Adv.Study, Princeton, 1957-1958
+
+M.DEURING - Die Klassenkörper der komplexen Multiplikation, Enz.Math.Wiss., I 2, 23, Teubner, 1958
+
+3)\quad \uline{Corps de fonctions algébriques d'une variable}
+
+C.CHEVALLEY - Introduction to the theory of algebraic functions of one variable, Math.Surveys, VI, New-York, 1951
+
+M.EICHLER - Einführung in die Theorie der algebraischen Zahlen und Funktionen, Birkhäuser Verlag, 1963
+% archive sheet number: 82
+\clearpage
+\scanpage{84}
+\reversemarginpar
+\margin{\figure{\tikz[x=1em,y=1em]{\draw[black!17,line width=.2pt] (0,0) -- (1.85,-.02); \fill (0,0) ellipse (.17 and .085); \fill (1.8,-.03) -- (1.86,.055) -- (1.94,.02) -- (1.9,-.06) -- cycle;}}}
+\normalmarginpar
+\mspage{B-2}
+
+4)\quad \uline{Courbes algébriques}
+
+\reversemarginpar
+\margin{\handwritten{\figure{\tikz[x=1em,y=1em]{\draw[black!58,line width=.36pt] (0,-1.7) .. controls (.43,-1.1) and (1.08,-.39) .. (1.62,0);}}}}
+A.WEIL - Sur \makebox[0pt][l]{\deleted{\unsure{-|=}}}les courbes algébriques et les variétés qui s'en déduisent, Hermann, 1948
+
+J-P.SERRE - Groupes algébriques et corps de classes, Hermann, 1959
+
+5)\quad \uline{Courbes elliptiques} (\uline{théorie algébrique})
+
+H.HASSE - Zur Theorie der abstrakten elliptischen Funktionenkörper, I, II, III, Journ.Crelle, 175 (1936)
+
+M.DEURING - Die Typen der Multiplikatorenringe elliptischer Funktionenkörper, Abh.Hamb., 16, 1949, p.32-47
+
+6)\quad \uline{Schémas modulaires} (\uline{théorie algebrique})
+
+J.IGUSA - Fibre systems of Jacobian varieties, III, Amer.J. of Maths., 81, 1959, p.453-476
+
+J.IGUSA - On the transformation theory of elliptic functions, Amer.J.of Maths., 81, 1959, p.436-452
+
+J.IGUSA - Kroneckerian model of fields of elliptic modular functions, Amer.J.of Maths., 81, 1959, p.561-577
+
+7)\quad \uline{Variétés abéliennes} - \uline{Schémas abéliens}
+
+\margin{\handwritten{\figure{\tikz[x=1em,y=1em]{\draw[black!54,line width=.33pt] (.42,-2.53) .. controls (.15,-2.64) and (.01,-2.62) .. (0,-2.58) .. controls (.68,-2.03) and (1.74,-1.4) .. (2.7,-.03);}}}}
+A.WEIL - Variétés ab\unsure{é|e}liennes et courbes algébriques, Hermann, 1948
+
+\margin{\handwritten{\figure{\tikz[x=1em,y=1em]{\draw[black!42,line width=.31pt] (0,-2.1) .. controls (.54,-1.55) and (1.12,-.64) .. (1.7,0);}}}}
+S.LANG - Abelian Varieties, Interscience Tracts, n\textsuperscript{o}7, 1959
+
+A.GROTHENDIECK - Fondements de la Géométrie algébrique (extraits du séminaire Bourbaki 1957-62), exp.232 et 236
+
+A.NERON - Modèles minimaux des variétés abéliennes sur les corps locaux et globaux, Publ.Math.IHES, n\textsuperscript{o}21, 1964
+
+D.MUMFORD - Geometric invariant theory, Ergebn.Math., 1965
+\normalmarginpar
+% archive sheet number: 83
+\clearpage
+\scanpage{85}
+\reversemarginpar
+\margin{\figure{\tikz[x=1em,y=1em]{\draw[black!18,line width=.24pt] (0,0) -- (1.81,-.05); \fill (0,.03) -- (.22,.08) -- (.23,-.08) -- (0,-.06) -- cycle; \fill[black!50] (.74,0) circle (.033); \fill[black!50] (1.16,-.035) circle (.033); \fill (1.68,-.14) -- (1.77,.035) -- (1.86,.05) -- (1.94,0) -- (1.82,-.05) -- cycle;}}}
+\normalmarginpar
+\mspage{B-3}
+
+\makebox[0pt][l]{\deleted{\unsure{3|8}}}8)\quad \uline{Multiplication complexe} (\uline{théorie algébrique})
+
+M.DEURING - Algebraische Begründung der komplexen Multiplikation, Abh.Hamb., 16, 1949, p.32-47
+
+\reversemarginpar
+\margin{\handwritten{\figure{\tikz[x=1em,y=1em]{\draw[black!47,line width=.34pt] (0,-2.04) .. controls (.73,-1.35) and (1.24,-.52) .. (1.83,0);}}}}
+G.SHIMURA et Y.TAN1YAMA - Complex multiplication of abelian varieties, Publ.Math.Soc.Japan, n\textsuperscript{o}6, 1961
+
+A.WEIL - On the theory of complex multiplication, Proc.Tokyo-Nikko Symp., p.9-22, 1955
+
+M.DEURING - Die Zetafunktion einer algebraischen Kurve vom Geschlechte Eins, I, II, III, IV, Gött.Nach., 1953, 1955, 1956, 1957
+
+9)\quad \uline{Autres questions arithmétiques relatives aux courbes elliptiques}
+
+\margin{\handwritten{\figure{\tikz[x=1em,y=1em]{\draw[black!52,line width=.34pt] (0,-2.27) .. controls (.65,-1.92) and (1.98,-.64) .. (2.87,0);}}}}
+S.LANG - Diophantine Geometry, Interscience Tracts, n\textsuperscript{o}11, 1962
+
+J.CASSELS - Arithmetic on an elliptic curve, Proc.Int.Cong., 1962, p.234-246
+
+J-P.SERRE - Groupes de Lie $\mathord{\rlap{\handwritten{$/$}}\mathrm{l}}$-adiques attachés aux courbes elliptiques, Colloque de Clermont, 1964
+
+J.TATE - Rational points on elliptic cur\makebox[0pt][l]{\deleted{:}}\kern.11em\raisebox{.18ex}{v}es , Haverford College, 1961
+
+10)\quad \uline{Multiplication complexe ``formelle''}
+
+J.LUBIN - One parameter formal Lie groups over $\mathrm{p}$-adic integer rings, Ann.of Maths., 1965
+
+J.LUBIN et J.TATE - Formal complex multiplication in local fields, Ann.of Maths., 1965
+
+\begin{center}
+***
+\end{center}
+\normalmarginpar
+% archive sheet number: 84
+\scanpage{87}\mspage{T-1}
+
+\begin{center}
+COURBES ELLIPTIQUES - FORMULAIRE
+
+(Traduction libre d'un manuscrit inédit de TATE)
+\end{center}
+
+\figure{\begin{tikzpicture}[x=0.016cm,y=0.016cm]
+\draw[gray,thin] (0,0) .. controls (8,0) and (13,9) .. (22,14) .. controls (35,29) and (56,42) .. (77,43) .. controls (93,43) and (95,46) .. (97,50) -- (101,46);
+\draw[gray,thin] (25,15) .. controls (32,0) and (43,-13) .. (47,-27);
+\end{tikzpicture}}
+
+1. \uline{Formules générales}
+
+Si l'on part d'une c\deleted{\unsure{a|u}}ourbe elliptique $E$, munie d'une origine $O$, et d'une forme de première espèce $\pi\ne 0$, on peut trouver $x$ et $y$ sur $E$, telles que $x$ (resp. $y$) ait un pôle double (resp. triple) en $O$, et soit morphique ailleurs; de plus, si $\pi=dt+\ldots$, on peut s'arranger (quitte à multiplier $x$ et $y$ par des constantes) pour que $x\handwritten{=}{t}^{-2}+\ldots$, $y=-t^{-3}+\ldots$
+
+Dans le plongement projectif défini par le diviseur $3(O)$, l'équation de la courbe $E$ s'écrit :
+{\makeatletter\tagsleft@true\makeatother
+\[
+ y^{2}+a_{1}xy+a_{3}y=x^{3}+a_{2}x^{2}+a_{4}x+a_{6}
+ \tag*{$(\ast)$}
+\]
+}
+
+(Homogénéite : $y$ est de poids $3$, $x$ de poids $2$, et les $a_{i}$ de poids $i$. Cela signifie que, si l'on remplace $\pi$ par $u\pi$, $x$ est remplacé par $u^{-2}x$, $y$ par $u^{-3}y$, etc.)
+
+Inversement, partons d'une équation de la forme $(\ast)$. On posera :
+\[
+\begin{aligned}
+& b_{2}=a_{1}^{2}+4a_{2} \qquad b_{4}=a_{1}a_{3}+2a_{4} \qquad b_{6}=a_{3}^{2}+4a_{6} \\
+& -b_{8}=a_{1}a_{3}a_{4}+a_{4}^{2}-a_{1}^{2}a_{6}-a_{2}a_{3}^{2}-4a_{2}a_{6} \\
+& b_{8}=b_{2}a_{6}+a_{2}a_{3}^{2}-a_{1}a_{3}a_{4}-a_{4}^{2}=a_{2}b_{6}+a_{1}^{2}a_{6}-a_{4}^{2}-a_{1}a_{3}a_{4} \\
+& \hspace{4em}-4\,b_{8}=b_{4}^{2}-b_{2}b_{6}
+\end{aligned}
+\]
+% archive sheet number: 86
+\scanpage{88}\mspage{T-2}
+
+On pose également:
+\[
+ c_{4}=b_{2}^{2}-24\,b_{4}\qquad -c_{6}=b_{2}^{3}-36b_{2}b_{4}+216b_{6}
+\]
+
+(Les $c_{i}$ sont liés aux classiques $g_{2}$ et $g_{3}$ par les formule\rlap{\hspace{-.16em}\handwritten{\tikz[baseline=0pt]{\draw[line width=.32pt] (0,.04ex) .. controls (.18em,-.30ex) and (.45em,-.52ex) .. (.73em,-.71ex);}}}s:
+\[
+ c_{4}=\underset{\handwritten{2^{\unsure{2'|2}}\mathord{.}3}}{12}\,g_{2}
+ \qquad c_{6}=\underset{\handwritten{2^{3}\mathord{.}3^{3}}}{216}\,g_{3}\ .)
+\]
+
+Et :
+\[
+\begin{aligned}
+\handwritten{\Delta}&=-b_{2}^{2}b_{8}-8b_{4}^{3}-27b_{6}^{2}+9b_{2}b_{4}b_{6}\\
+&=b_{4}^{3}-27b_{6}^{2}+b_{8}(36b_{4}-b_{2}^{2}).
+\end{aligned}
+\]
+
+On a :
+\[
+ \underset{\handwritten{2^{6}\,3^{3}}}{1728}\,\handwritten{\Delta}=c_{4}^{3}-c_{6}^{2}\ .
+\]
+
+On pose enfin (pour $\handwritten{\Delta}$ inversible) :
+\[
+ j=\frac{c_{4}^{3}}{\handwritten{\Delta}}\qquad
+ (j-1728)\handwritten{\Delta}=c_{6}^{2}\qquad
+ \frac{j}{j-1728}=\frac{c_{4}^{3}}{c_{6}^{2}}
+\]
+
+Si l'on pose $F=y^{2}+a_{1}xy+a_{3}y-x^{3}-a_{2}x^{2}-a_{4}x-a_{6}$, on a :
+\[
+ F_{y}=2y+a_{1}x+a_{3}\qquad -F_{x}=3x^{2}+2a_{2}x+a_{4}-a_{1}y\ .
+\]
+
+Si $(\ast)$ définit bien une courbe elliptique (i.e. si $\handwritten{\Delta}$ est inversible), on peut écrire la forme différentielle $\pi$ de départ sous la forme $\pi=dx/F_{y}=-dy/F_{x}$, i.e. :
+\[
+ \pi=\frac{dx}{2y+a_{1}x+a_{3}}=\frac{dy}{3x^{2}+2a_{2}x+a_{4}-a_{1}y}
+\]
+% archive sheet number: 87

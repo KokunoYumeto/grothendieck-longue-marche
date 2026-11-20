@@ -1,0 +1,51 @@
+# Root crop observations — scan031, provisional before final returns
+
+- A02: reference has a long descending-slanted stem with a hooked two-sided lower termination. Down-arrow shape favors C first reading, but stylized1 cannot yet be excluded. Hat sits over plain capital A, lowered ab clear with upright b. Small separate black short oblique lies between left hat branch and upper-left A stroke; preserve once as unassigned geometry if reader returns omit it (not an inferred accent). No substantive mathematical check.
+
+- A03: old own has crossed o-like loop, w-like middle and terminal descending return; cancellation intersects all. Retain own doubt; closing pair stands above/right, live.
+- A07: cancelled word is crossed by two strong levels, the/its remains unresolved. Raised its is clearly above it, with a separate low point at the left of the t crossbar. No lexical expansion.
+- A08: point over extra upright inside the a supports old i, but overlap keeps uncertainty. a p.p of is raised; low branched caret stands below gap before relier; single high opener before relier visible.
+- A11: upwards sign has two head limbs and a hooked base, decisively arrow-like rather than isolated quote; it sits ABOVE the first of two separate ditto pairs. Point in l.4 clear.
+- A14: old digit2 remains crossed; diagonal lines traverse reference and its, opener pair lies just above crossing, closer touched by long diagonal. Cancellation scope of opener requires final-return comparison.
+- A16: being followed by high joined double-limbed group (left shorter/right longer) and three separated low continuation points. Retain count ambiguity; do not infer from quotation grammar.
+- A17: second crossed its has readable i/t/s remnants, but oblique bands cover the central join. Opener pair clear above/outside left boundary; closer first stem touched, second stands separate. Keep lexical and state decisions separate.
+- A23: initial live d has an upper angular loop and crossing, with an older t-like stem possible. Only one following o, no expanded old to repeated.
+- A26: old l and 1-like/angular next glyph crossed; (84) overlaps right edge. Two separate faint low marks below crossing before parenthesis deserve separate preservation if returns omit them.
+- A31: leading long vertical has short right bulge, no open loop; p/l stays unresolved, p plausible in the long descending geometry. Small separate dot above may belong to incomplete letter form, not independently assigned punctuation.
+- A01: first analogue closer has two black bodies; right one angled, narrow pale connection does not erase the two strokes. Double closer secure.
+- A04: l point separate; sign before5 horizontal bar with pronounced central downstroke (T-like/plus-like), not a simple uniform minus. Consider plus/minus doubt without normalizing from other negative references.
+- A05: didnt opener one curved outer stroke with separate interior branch sharing left junction; double/single count remains.
+- A06: categories opener two detached strokes; closer two small cups connected low. Underline confined to final s, no confident change from C.
+- A09: l3 has continuous terminal l foot and clear gap before3, no separate period. Remove C abbreviation stop.
+- A10: first copy has detached low comma-shaped stroke, upper vertical and left-bent foot. Add literal comma, subject to report comparison.
+- A12: dont opener two discrete strokes, retains C.
+- A13: t in final409 its overlies a small sinuous double-loop old form. Potential old s overwritten by t should be assessed in reports; closer has dark left hook plus a lighter separated right stem, compatible with C pair.
+- A15: one broad retraced baseline underline beneath before; no separated second rule. Retain single underline and scope.
+- A18: l17 shouldnt opener has a long curved stroke plus a separate short oblique high point; two marks visible, add second quote relative C single.
+- A19: l19 shouldnt opener similarly comprises C-shaped left curve and a detached right slant; two visible bodies, retain double against possible reader uncertainty.
+- A20: p411 copy terminal low mark is right-bent/downward angled stroke. Comma favored over period, retain comma/period uncertainty if reader disagreement.
+- A21: after p.407 terminal mark has rounded upper head and short leftward lower stem, comma-like but compact; comma/period uncertainty warranted against C plain stop.
+- A22: first412 formulary opener has two limbs sharing low junction, double/single unresolved.
+- A24: wont closer is a vertical with short rightward branch sharing its middle; no distinct separated second quotation. Fused pair/single ambiguity survives; do not import prior-page cross reading automatically.
+- A25: one detached midheight point after416, separate from material vertical band. Preserve spatial position, not an assumed baseline period. Existing low point after l-1 is distinct.
+- A27: make sense opener has one long stem with an attached short right branch; single/fused-double doubt, single first favors one continuous body.
+- A28: final419 dont opener visibly two separated strokes; add second relative C single.
+- A29: two separate compact dark spots rise toward right in blank left of gray margin band; preserve both without punctuation/author assignment.
+- A30: formulary closer fused two-limbed group remains count-uncertain. Raised in clear; insertion indicator is a long nearly vertical line with a short rightward hooked foot and detached high small mark, not a simple symmetrical caret. Preserve actual geometry.
+- A32:425 its opener has two long branches joined high, double/single uncertain; closer two separate strokes.
+- C36/C37: both long traces have a definite dark narrow upper trajectory, with interrupted intensity and slight bends. Their tops begin within first row height, not at page top. Retain observable geometry with origin unassigned rather than assert material-only identity. Upper-right circular rim/shadow is a material feature, not a drawn circle.
+- C38: lower left trace pale, interrupted, with a stronger segment at the425 row and diffuse continuation below; do not draw uniformly black through bottom.
+- C39: right trace fades and ends above archive30; circular rim is material, archive30 clear.
+- C04: l before8 has detached low thick mark, slightly oblique with short tail. Period remains plausible; compare final C report for comma/period doubt.
+- B03/B05:404 wouldnt and405 commutes with have two separated marks at both quotation edges, retain C.
+- B07: after English, the low black body at left of capital I connects through a short rising lead-in to the I lower serif; no independent stop elsewhere in the gap. Remove C period, preserve capital It.
+- C08: around closer is one high arch with two descending limbs, double/single ambiguity; opening group has two countable angled parts.
+- C14: the408 isolated mark is a compact dark point, separate from quotes and preceding-line descender.
+- C23: initial by has a tall curved stem with one right bowl, compatible with lowercase b; no secure second capital-B bowl. Do not change by purely because it starts continuation line.
+- C24:412 negative reference has one low point BELOW the left/middle of the minus, not to its left at baseline. Preserve that point once spatially; do not duplicate as l. plus a second drawn dot.
+- C25:413 formulary terminal point is a compact low body, no developed tail; C stop remains supported. (75)e has ordinary baseline e; no equation checked.
+- C26:413 commutes with closer has tall angled body plus separate short right slant, two countable strokes.
+
+- B36: detached low-contrast dark point above/right of423 is separate from the letter and margin feature; preserve once, origin unassigned. Viewed before the context compaction, added to registry now.
+- C07: the low body before capital I remains distinguishable from the main serif; the apparent rising attachment is very thin. The earlier B07 provisional omission was too categorical. Retain the witness and all three readers’ English period; no C change.
+- B02: separate low point below4 is clear. Old own has an o loop, w troughs and n shoulder despite crossing, supporting resolution at medium confidence; this replaces the earlier A03 provisional retention.

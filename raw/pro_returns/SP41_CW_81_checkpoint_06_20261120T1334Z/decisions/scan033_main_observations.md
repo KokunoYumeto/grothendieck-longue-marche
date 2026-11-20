@@ -1,0 +1,38 @@
+# Scan 033 — main reader's local-image ledger
+
+The main reader viewed no whole or half image. All three complete texts, all findings, notes and inventories were compared. Actual local views: R2 crops 01–13; R3 crops 11 and 13; R1 crops 04, 10, 12, 13 and 15; seven main crops. Total: 27 actual views, 20 existing and seven newly created. An earlier call intended to emit R1 crops 12 and 13 returned only a truncation message. Those images were subsequently emitted and actually viewed; that failed delivery is not counted. No crop was remade.
+
+## Upper formulas
+
+- R2 01: the small definition label has d/e/f bodies and no separate acute. Extra crossed diagonals lie within the live Sigma; retain older X|Sigma rather than R2's resolved X. The separate short horizontal has one arm and no independent cancellation, so its identity is a dash and its state stays open. The next dense knot includes an enclosure beneath the live non-equality; both the older identity and the boundary/state of that layer remain open.
+- R2 02: capital Si has a looped S and dotted i. Its low stroke follows the bases of the letters without a separate extending cancellation. Resolve live Si with R2/R3; record R1's uncertainty. The isolated tick beneath (5) remains comma/apostrophe uncertain.
+- R2 03: the first raised round mark has a closed thick outline and small pale center. Retain circle/o/zero. Later matching marks use circle as the first rendering.
+- R2 04 and R1 04: the first parenthetical glyph has a worked left cup and a rounded low right cup with an upward finish, matching the clearer omega already viewed in (7). Resolve omega with R1/R2; retain R3's w alternative in the record. The following sign has two rightward arms and a joined bent left stroke extending below the lower arm. Membership is the first reading; non-equality/equality remain open.
+- R2 05: the small old exponent has an angled high turn and low foot, favouring 2 over epsilon. Its state is inseparable from retouching, so uncertainty covers identity and state. The low 1/+ and 2/minus marks have dense uprights/curves and crossbars that cannot each be separated from the epsilon returns; retain state uncertainty with R3. The detached low point is round, without a comma tail. The second live epsilon has a separate high prime.
+- R2 06: both parenthetical epsilons have separate high primes. The low older suffixes remain uncertain in identity and state; H's note acknowledges the primes and uncertain indices, while retaining numbered low suffixes. No expected unprimed/primed pairing replaces the written pair of primes.
+- R2 07: a high dot above Sigma and a comma between its circle and epsilon are visible. The lower terminal mark has an upper loop, middle arm/stem and lower tail; epsilon-plus-comma is first, with semicolon, epsilon and comma retained.
+- Main eq8_rings: each of three bars extends across Sigma and the raised circle/epsilon group. The following unbarred Sigma repeats the round superscript. This supplies direct root evidence for the recurring H zero/circle difference.
+- Main trois: a high crossed t, connected r/o, dotted i and final s remain beneath the cancellation. Read cancelled trois.
+- Main eq5_period: an isolated filled point follows the lower slashed oval. C **already contains this point**, as does H. R3 finding F028's claim of C omission is rejected after exact witness-string comparison; no change row is counted.
+
+## Lower text and formulas
+
+- R2 08: the first cancelled line has On / a / le / cas. The second begins low lowercase on and ends in the tall d and its exit in cond; no separate following i or abbreviation point is visible. Both separate cancellation strokes are preserved.
+- R2 09: a cap and two hanging legs support pi/Pi uncertainty, pi first. The older Sigma subscript is a lighter curled form under the live 1, still epsilon/2 uncertain.
+- R2 10 and R1 10: the underlined word retains parallèles/paralèles uncertainty. The long rule starts after the p descender and ends beneath the word; non is visibly outside it.
+- R3 11: the raised phrase si elles sont distinctes, et is attached by its long bent leader before s'il. H explicitly acknowledges the whole insertion; no macro-only difference is counted.
+- Main eq9_second_pi, prose_dot_and_pi and final_first_pi, together with R1 15 and R2 09: recurring family letters have the same cap and paired descending legs. The final first-family legs have curved feet. Use pi consistently after its first case uncertainty. The prose crop also shows a separate round dot after un, with no comma tail.
+- R2 11: after équivaut stand an upper oblique mark and a lower filled point. No independent a body or additional punctuation group is visible. R1/R2 resolve a colon; R3 prefers à with colon retained. Main chooses colon|à, preserving uncertainty over the compressed lower body.
+- R3 13: after encore the corresponding two separated marks again favour colon; the same uncertainty is documented at its first occurrence and the recurring first reading is used here.
+- R2 12: between 11 and b stands a short separate upright. Put 11'bis first, retaining 11bis and 11 bis.
+- R2 13 and R1 12: the second prose Sigma's small low cap bends down on the right. It is broader than the nearby upright 1, so 2 remains first with 1 retained.
+- R1 13: d, compressed e, tall f, two i dots and final s are visible. No separate e appears before s and no detached acute appears above the first e. Read definis with R1; record R2's définis and R3's accent uncertainty.
+- R1 15: the final low Sigma index has a short cap and down-right hook with a compressed foot, resembling the adjacent fuller 2. Main keeps 2|1 with R2; R1 favours 1 and R3 resolves 2. The pair's expected indices do not decide the mark.
+- R2 13: the final label's second digit has a roof and long descent without a clear lower horizontal foot. All three lead with 17; retain 17|12 and H's explicit note.
+- Main equivalence_10_11bis: all three formula bodies are visible: (10) Sigma_1^+ intersection Sigma_2^+ equals empty set; (11) Sigma_1^+ subset Sigma_2^-; the bis line Sigma_2^+ subset Sigma_1^-. The complete connecting words condition qui équivaut and ou encore are visible. The crop confirms the formulas quoted by S SA01-K81-01; punctuation is adjudicated above. No formula has been repaired from the interval counterexample.
+
+## Mathematical check and record decisions
+
+The supplied sweep's concrete interval example was computed at 10:24:25 UTC with the exact seven-cell representation documented in scripts/scan033_interval_check.py and validation/scan033_interval_certificate.json. The cell-union/index-set maps are inverse and preserve the set operations used. Both inclusions hold, the positive intersection is exactly {2}, both closed pairs cover [0,3], and their members and the pairs are distinct. This refutes the manuscript's asserted equivalence for that concrete pair. The source wording remains in the transcription. The sweep's broader assertions about later use were not imported as proved results.
+
+H collation excludes uncertainty-markup changes alone when the first reading remains H's reading. Thus parallèles and the two retained 2/1 uncertainties have no standalone H error row; the underline scope remains a separate H difference. H's note explicitly identifies both corrected parenthetical primes; that note is included with the C-doubt resolution. Its surviving low suffix state differences have their own rows. The extra old glyph before the first epsilon is not specifically identified by H's note, so marked_in_H is no there.

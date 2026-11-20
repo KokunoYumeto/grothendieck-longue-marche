@@ -1,0 +1,343 @@
+# SP60_CW_71 — Changes and crop decisions
+
+Counts are distinct recorded places, not changed characters. A place differing from both witnesses counts once in the confidence columns and once against each witness. Changes of certainty alone are listed in the doubts file and excluded from these counts. Macro-only changes are excluded. **H has source text on scans 38, 47 and 48, principally marginal annotations and short source locators. Its editorial `\note` synopses are not source text. Untranscribed body blocks on those three pages are recorded as coverage omissions, not as attempted readings that H got wrong.** H has no source-text collation rows for scans 39–46. See the sheet-feedback file for the separate coverage and recovery counts. The `kind` field is a primary classification of a place; C and H can differ for different reasons at that same place. Pixel boxes refer to the supplied whole-page JPG; decisions settled by the supplied halves or second-reading whole image needed no crop.
+
+## Counts
+
+| Scan | Against C | Against H | Distinct places | High | Medium | Low |
+|---|---|---|---|---|---|---|
+| 38 | 0 | 13 | 13 | 13 | 0 | 0 |
+| 39 | 2 | 0 | 2 | 0 | 0 | 2 |
+| 40 | 3 | 0 | 3 | 0 | 3 | 0 |
+| 41 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 42 | 2 | 0 | 2 | 0 | 1 | 1 |
+| 43 | 4 | 0 | 4 | 3 | 0 | 1 |
+| 44 | 8 | 0 | 8 | 4 | 4 | 0 |
+| 45 | 2 | 0 | 2 | 1 | 1 | 0 |
+| 46 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 47 | 5 | 13 | 15 | 11 | 3 | 1 |
+| 48 | 6 | 15 | 18 | 10 | 4 | 4 |
+| Total | 32 | 41 | 67 | 42 | 16 | 9 |
+
+### Confidence by witness
+
+| Scan | C high | C medium | C low | H high | H medium | H low |
+|---|---|---|---|---|---|---|
+| 38 | 0 | 0 | 0 | 13 | 0 | 0 |
+| 39 | 0 | 0 | 2 | 0 | 0 | 0 |
+| 40 | 0 | 3 | 0 | 0 | 0 | 0 |
+| 41 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 42 | 0 | 1 | 1 | 0 | 0 | 0 |
+| 43 | 3 | 0 | 1 | 0 | 0 | 0 |
+| 44 | 4 | 4 | 0 | 0 | 0 | 0 |
+| 45 | 1 | 1 | 0 | 0 | 0 | 0 |
+| 46 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 47 | 3 | 2 | 0 | 10 | 2 | 1 |
+| 48 | 3 | 1 | 2 | 9 | 3 | 3 |
+| Total | 14 | 12 | 6 | 32 | 5 | 4 |
+
+## Consequential corrections
+
+- Scan 39, 039-C1: The dark mark in the second local containment is cancelled; a live subtraction is no longer silently supplied.
+- Scan 42, 042-C1: The superscript after int Λ is read 4 before 1 on the ink, although the argument uses Λ¹; the doubt remains explicit.
+- Scan 43, 043-C2: The removed endpoint is y′, matching the adjacent arc; the crop shows its descender.
+- Scan 43, 043-C3: An omitted dot above x is restored; no mathematical role is inferred.
+- Scan 45, 045-C02: The crowded exponent after Comme is primarily read as 4, with 1 and + alternatives retained; no silently repaired Λ¹ is supplied.
+- Scan 47, 047-H01: The pencil strengthening uses p for the number of sides, rather than H’s n.
+
+## Scan 38
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 038-H01 — title | 3 - Preuve du théorĕme 1 | not transcribed (editorial synopsis / untranscribed marks) | 3 - Preuve du théorĕme 1 | Underlined title, with 1 outside the underline. Seen on supplied halves; no crop required. | high |
+| 038-H02 — opening paragraph | Soit Γ un polygone ... (cf. Remarque 1). | not transcribed (editorial synopsis / untranscribed marks) | Soit Γ un polygone ... (cf. Remarque 1). | Four inked lines; ss′ subscripts, open interval, VIII reference, and inserted (de Γ). Seen on supplied halves; no crop required. | high |
+| 038-H03 — construction paragraph | Soit Λ_ss′ l’arc de polygone [s,s′] ... selon {s,s′}. | not transcribed (editorial synopsis / untranscribed marks) | Soit Λ_ss′ l’arc de polygone [s,s′] ... selon {s,s′}. | Three inked lines, with Λ_ss′ and the two Γ arcs. Seen on supplied halves; no crop required. | high |
+| 038-H04 — Lemme XII | Si Λ¹ (resp. Λ²) est un J-polygone ... ext Λ²) | not transcribed (editorial synopsis / untranscribed marks) | Si Λ¹ (resp. Λ²) est un J-polygone ... ext Λ²) | Three lines of statement; a,b replace s,s′; the two parenthetic alternatives lack a connective in the ink. Seen on supplied halves; no crop required. | high |
+| 038-H05 — proof XII | Demonstration : Il est clair que ... c.q.f.d. | not transcribed (editorial synopsis / untranscribed marks) | Demonstration : Il est clair que ... c.q.f.d. | Three lines, including struck glyph before R² and the empty intersection. Seen on supplied halves; no crop required. | high |
+| 038-H06 — transition | On suppose maintenant [inserted que] Λ¹ et Λ² [deleted que] sont des J-polygones. | not transcribed (editorial synopsis / untranscribed marks) | On suppose maintenant [inserted que] Λ¹ et Λ² [deleted que] sont des J-polygones. | Inserted que above the line, cancelled word after Λ². Seen on supplied halves; no crop required. | high |
+| 038-H07 — Lemme XIII and display | Si x∈∂E(Γ) ... ext∂E(Γ) ∩ [deleted D_x] ⊂ extΛ^i, i=1,2. | not transcribed (editorial synopsis / untranscribed marks) | Si x∈∂E(Γ) ... ext∂E(Γ) ∩ [deleted D_x] ⊂ extΛ^i, i=1,2. | Two prose lines and one display; D_x is crossed out, while the intersection sign remains live. Seen on supplied halves; no crop required. | high |
+| 038-H08 — proof XIII | Démonstration : Comme E(Λ^i)⊂E(Γ) ... ext∂E(Λ) ce qui entraîne l’ennoncé. | not transcribed (editorial synopsis / untranscribed marks) | Démonstration : Comme E(Λ^i)⊂E(Γ) ... ext∂E(Λ) ce qui entraîne l’ennoncé. | Two lines; deleted ∂E( and closing parenthesis, final Λ without i, double n in ennoncé. Seen on supplied halves; no crop required. | high |
+| 038-H09 — upper-left margin | ! | not transcribed (editorial synopsis / untranscribed marks) | ! | An exclamation mark stands beside the opening paragraph. Seen on supplied halves; no crop required. | high |
+| 038-H10 — upper-right margin | vertical stroke | not transcribed (editorial synopsis / untranscribed marks) | vertical stroke | Short vertical mark beside the first paragraph. Seen on supplied halves; no crop required. | high |
+| 038-H11 — left margin under endpoint note | 1 | not transcribed (editorial synopsis / untranscribed marks) | 1 | A small numeral 1 stands below the pencil endpoint equivalences. Seen on supplied halves; no crop required. | high |
+| 038-H12 — proof XII side marks | left and right vertical strokes | not transcribed (editorial synopsis / untranscribed marks) | left and right vertical strokes | One vertical marginal stroke on each side of the proof. Seen on supplied halves; no crop required. | high |
+| 038-H13 — manuscript folio XI | $\underline{\overline{\mathrm{XI}}}$ | not transcribed | $\underline{\overline{\mathrm{XI}}}$ | Second reading: XI is present at the upper right with an upper and a lower rule. The whole image settles the folio; no new crop needed. | high |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 038-R1 — title accent | \unsure{théorĕme&#124;théorème} / editorial synopsis only | \unsure{théorĕme&#124;théorème} | Concave curved stroke above the second e, not an unequivocal straight grave. Scan 38 crop (280,100,585,205). | medium |
+| 038-R2 — opening, after sommets | \deleted{\illegible{1}} / not transcribed | \deleted{\illegible{1}} | Compact over-inked blot; no defensible surviving word. Scan 38 crop (530,310,760,425). | low |
+| 038-R3 — XII, exponent after ext | \Lambda^{\deleted{\unsure{2}}1} / editorial synopsis only | \Lambda^{\deleted{\unsure{2}}1} | Large replacement 1 above crossed smaller bent mark, compatible with 2 but not certain. Scan 38 crop (785,1050,1020,1185). | medium |
+| 038-R4 — proof XII, before R² | \deleted{\unsure{\partial&#124;E}} / not transcribed | \deleted{\unsure{\partial&#124;E}} | Dense cancellation with a left edge and short right projection; neither candidate is secured. Scan 38 crop (1070,1310,1340,1435). | low |
+| 038-R5 — On suppose, struck word | \deleted{\unsure{que}} / not transcribed | \deleted{\unsure{que}} | Loop at left, long descender and rightward ending under horizontal hatching. The separately inserted que is clear. Scan 38 crop (710,1590,960,1715). | medium |
+| 038-R6 — XIII, participle | \unsure{vérifiont&#124;vérifiant} / editorial synopsis only | \unsure{vérifiont&#124;vérifiant} | Rounded closed vowel followed immediately by n; the ordinary a reading remains possible in this cursive join. Scan 38 crop (1250,1685,1590,1795). | medium |
+| 038-R7 — right margin, exponent on R | 2&#124;7 / 2 | \unsure{2&#124;7} | Pencil exponent is a high curved hook descending at right, with no secure lower foot. 2 is favored by the plane notation; the ink does not fully exclude 7. Scan 38 crop (1235,1760,1665,1960). | medium |
+
+### Remaining doubts
+
+title: théorĕme / théorème; after sommets: \deleted{\illegible{1}}; XII corrected exponent: \deleted{2}1; proof XII before R²: \deleted{\partial} / E; On suppose cancelled word: que; XIII participle: vérifiont / vérifiant; right-margin R exponent: 2 / 7.
+
+## Scan 39
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 039-C1 — XIV, subtraction after second D_s | \unsure{-} | no source text | \deleted{\unsure{-&#124;\subset}} | Several horizontal overstrikes cover a small looped sign; there is no independently legible replacement. Cancellation state restored, with the original glyph still doubtful. Scan 39 crop (540,419,800,526). | low |
+| 039-C2 — after La conjonction, struck verb | \deleted{\unsure{entraînent&#124;entraîne}} | no source text | \deleted{\unsure{entraîne&#124;entraînent}} | The surviving final loop favors e; no terminal t rises above the cancellation. The ending remains obscured. Scan 39 crop (1030,1408,1210,1506). | low |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 039-R1 — manuscript page number | X bis&#124;XI; XII? / no source text | X bis&#124;XI; XII | The final X and two tall uprights are distinguishable; earlier loops below remain ambiguous. Scan 39 crop (1430,15,1590,112). | medium |
+| 039-R2 — before et resp. | \deleted{\unsure{(}} / no source text | \deleted{\unsure{(}} | A curved line coincides with the first letter of et; the cancelled matching closing parenthesis supports but does not settle the opening. Scan 39 crop (990,416,1228,532). | low |
+| 039-R3 — first endpoint in global inclusion | g&#124;s / no source text | g | Closed upper bowl and lower return hook, unlike the adjacent open s. Scan 39 crop (390,1490,630,1595). | high |
+| 039-R4 — interlinear annotations | Γ²; isolated dash; Γ^{1&#124;2}; point? / no source text | Γ²; isolated dash; Γ^{1&#124;2}; point | Two paired upright ditto strokes, clear isolated dash, dark raised digit favoring 1, and distinct low point after the right subscript. Scan 39 crop (430,1560,1300,1704). | medium |
+
+### Remaining doubts
+
+under overwritten XII: X bis / XI; XIV dark subtraction: \deleted{-} / \deleted{\subset}; XIV opening parenthesis: \deleted{(}; cancelled verb: entraîne / entraînent; right interlinear Γ exponent: 1 / 2.
+
+## Scan 40
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 040-C1 — triangle insertion, second accent | theorème | no source text | \unsure{theorēme&#124;theorème} | No accent on first e; the second mark is a short almost horizontal bar with a slightly descending right end. Scan 40 crop (1120,1115,1650,1220). | medium |
+| 040-C2 — last paragraph, first hypothèse | \unsure{hypothèse&#124;hypothēse} | no source text | \unsure{hypothēse&#124;hypothèse} | Flat detached horizontal stroke above e; the macron-like form is placed first, ordinary grave remains possible. Scan 40 crop (180,2030,400,2120). | medium |
+| 040-C3 — last line, second hypothèse | hypothèse | no source text | hypothēse | The same flat bar recurs above e in the final line; recurring ambiguity is marked only at its first occurrence on this page. Bottom half settles the shape; no new crop. | medium |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 040-R1 — opening ext overwritten by int | \deleted{\unsure{ext}} int / no source text | \deleted{\unsure{ext}} int | A looped old e remains beneath the reinforced i, with crossing strokes beneath n. Scan 40 crop (820,62,1030,156). | medium |
+| 040-R2 — first display, ext overwritten by int | \deleted{\unsure{ext}} int / no source text | \deleted{\unsure{ext}} int | An old e loop and crossed middle are visible beneath int. Scan 40 crop (835,180,1025,286). | medium |
+| 040-R3 — D_x equality, first int | \deleted{\unsure{ext}} int / no source text | \deleted{\unsure{ext}} int | Reinforced i and n cover a former reading; short old curves are compatible with ext but not fully secured. Scan 40 crop (585,750,780,858). | medium |
+| 040-R4 — D_x equality, second int | \deleted{\unsure{ext}} int / no source text | \deleted{\unsure{ext}} int | The overwritten beginning shows extra left loop and crossed middle, as in the other replacements. Scan 40 crop (900,750,1070,860). | medium |
+| 040-R5 — main theorem accent | \unsure{théorĕme&#124;théorème} / no source text | \unsure{théorĕme&#124;théorème} | Small shallow concave stroke above the second e; acute over the first. Scan 40 crop (480,1230,800,1325). | medium |
+| 040-R6 — definition of U | U=intΛ¹−(intΛ²∪(Γ²_ss′∩intΛ²)) / editorial synopsis only | U=intΛ¹−(intΛ²∪(Γ²_ss′∩intΛ²)) | The intersection is an arch, the last superscript is a clear 2, and both closing parentheses are present. No correction to the mathematically expected exponent 1. Scan 40 crop (430,1920,1265,2030). | high |
+
+### Remaining doubts
+
+opening ext overwritten by int: deleted ext; first display, ext overwritten by int: deleted ext; D_x equality, first int: deleted ext; D_x equality, second int: deleted ext; triangle insertion: theorēme / theorème; main induction sentence: théorĕme / théorème; both hypothēse occurrences: hypothēse / hypothèse.
+
+## Scan 41
+
+No substantive difference from the applicable witness text.
+
+### Remaining doubts
+
+None recorded.
+
+## Scan 42
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 042-C1 — end of no-intersection paragraph | Λ^{\unsure{1&#124;4}} | no source text | Λ^{\unsure{4&#124;1}} | Crop scan 42 (915,1520,1120,1618): descending diagonal meets a vertical stem with a clear crossbar projecting right. The dark overlap still prevents excluding a reworked 1. | medium |
+| 042-C2 — analogue a celui, raised mark | overset c&#124;2&#124;? over ce | no source text | overset 2&#124;c&#124;? over ce | Crop scan 42 (280,1894,450,1982): small raised mark has a flat head, descending diagonal and lower foot, closer to 2 than c; it may be a reworked letter. | low |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 042-R1 — punctuation after x,y∈U | ;&#124;, / no source text | ;&#124;, | Crop scan 42 (1000,912,1110,998): An upper lobe and a descending comma-like lower lobe nearly touch; semicolon is favored but not certain. | medium |
+| 042-R2 — cancelled letter after relié | r&#124;e / no source text | r&#124;e | Crop scan 42 (105,1005,250,1085): Dense strokes obscure the final letter; its upstroke and exit favor r but do not settle it. | low |
+| 042-R3 — mark over e in relier | prime&#124;dot / no source text | prime&#124;dot | Crop scan 42 (385,1080,535,1174): A small dark angular blob is present above e, distinct from the i-dot; its original shape is obscured. | low |
+| 042-R4 — Λ subscript after second Si | x / no source text | x | Crop scan 42 (234,1630,413,1735): A crossed pair of strokes survives within an overwritten subscript; x remains the best reading. | low |
+| 042-R5 — foçon | foçon / no source text | foçon | Crop scan 42 (1445,1797,1638,1905): The first vowel is a closed o without the separate exit stem of a; the spelling foçon is retained. | high |
+| 042-R6 — mark beside three-sided enclosure | * / no source text | * | Crop scan 42 (1580,1918,1685,2045): Dark compact blot with several peripheral rays at the page edge; asterisk remains possible, not secure. | low |
+| 042-R7 — cancelled bottom opening | Soit maintenant Γ / no source text | Soit maintenant Γ | Crop scan 42 (118,1955,512,2054): Soit and maintenant remain legible through parallel cancellation lines; the final capital has a Γ-like top but is heavily struck. | low |
+
+### Remaining doubts
+
+punctuation after x,y∈U: ; / ,; cancelled final letter after relié: r / e; mark over e in relier: prime / dot; end of first Si paragraph, Λ exponent: 4 / 1; second Si, first subscript of Λ: x; raised mark over ce in celui: 2 / c; unidentified mark; right of enclosure: * / unidentified blot; cancelled final capital in Soit maintenant Γ: Γ.
+
+## Scan 43
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 043-C1 — page number | XV | no source text | XV with top and bottom rules | Upper half: short parallel rules enclose the Roman folio. | high |
+| 043-C2 — Comme, second singleton | \{v′\}&#124;\{y′\} | no source text | \{y′\} | Crop scan 43 (1190,520,1310,603): the right branch continues below the join into a short descending tail, so y rather than v. | high |
+| 043-C3 — first Si paragraph of V proof | x | no source text | dot x | Crop scan 43 (671,1631,742,1725): a separate, dark point stands above the x; it is retained without assigning a derivative meaning. | high |
+| 043-C4 — last punctuation after R² | ,&#124;;&#124;) | no source text | )&#124;,&#124;; | Crop scan 43 (1568,2260,1650,2351): a tall curved descending stroke begins just below the exponent. It is longer than a normal comma, favoring a closing parenthesis, but its attachment is uncertain. | low |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 043-R1 — y after Il | \.{y}&#124;\′{y}&#124;y / no source text | \.{y}&#124;\′{y}&#124;y | Crop scan 43 (1180,170,1315,252): An isolated short rising mark is present; its size admits a sloping dot or acute. | medium |
+| 043-R2 — exìste | exìste&#124;existe / no source text | exìste&#124;existe | Crop scan 43 (1140,245,1280,324): The i mark falls to the right; it may be a long dot, so the marked grave remains first. | medium |
+| 043-R3 — cancelled fai | fai&#124;fait / no source text | fai&#124;fait | Crop scan 43 (1385,325,1520,402): f, a, dotted i show through; the terminal overlap could hide a t. | low |
+| 043-R4 — underlying indices in A=Γ | s, s / no source text | s, s | Crop scan 43 (1280,395,1425,490): Short curled earlier shapes remain beneath the final x′ and y′; no more definite underlying letters can be recovered. | low |
+| 043-R5 — blackened cancellation after first ≠∅ | illegible 1 / no source text | illegible 1 | Crop scan 43 (716,515,805,608): Compact filled oblong, with no recoverable token. | low |
+| 043-R6 — sign before {y′} in second endpoint choice | leftarrow&#124;minus / no source text | leftarrow&#124;minus | Crop scan 43 (1285,1045,1374,1125): A broad pointed left end is distinct from the shaft; the lower lobe is heavily retraced. | medium |
+| 043-R7 — before fait | dee&#124;deu&#124;du / no source text | dee&#124;deu&#124;du | Crop scan 43 (305,1225,407,1310): Two small loop forms follow d; no clear ordinary u. | medium |
+| 043-R8 — last formula of upper sheet | dot y; Int&#124;int; R / no source text | dot y; Int&#124;int; R | Crop scan 43 (908,1360,1640,1460): The y-dot is separate; the first int has an undotted stem; R has one main stem, unlike the doubled real-plane R. | medium |
+| 043-R9 — mixed-case membership | in / no source text | in | Crop scan 43 (581,1887,686,1976): The lower left tail continues the membership curve; no separate diagonal negation crosses it. | high |
+| 043-R10 — cancelled after Λzy | −{z} / no source text | −{z} | Crop scan 43 (574,2020,724,2110): The dash and parts of braces survive dense zigzag hatching; the central z remains uncertain. | low |
+| 043-R11 — before clair | cancelled q / no source text | cancelled q | Crop scan 43 (1225,2030,1287,2114): A q-like loop and descending stem survive in the overwritten group. | low |
+| 043-R12 — quén | quén&#124;qu'en / no source text | quén&#124;qu'en | Crop scan 43 (1368,2030,1500,2110): Rising detached stroke stands over e rather than in the usual apostrophe gap. | medium |
+| 043-R13 — arc in final recollant sentence | Λzz / no source text | Λzz | Crop scan 43 (579,2132,710,2222): Both low letters have a 3-like head and lower loop; neither has the open two-pronged head of y. | high |
+| 043-R14 — proof-ending initials | c.q.s.d. / no source text | c.q.s.d. | Crop scan 43 (1436,2295,1600,2356): Third initial is a small long s with a lower curl, no tall upper loop or f crossbar. | high |
+
+### Remaining doubts
+
+Il y: \.{y} / \'{y}; plain y; exìste: exìste / existe; cancelled word after lemme I: fai / fait; A=Γ, underlying indices: s; s; after first ≠∅: illegible 1; second endpoint-choice sign: leftarrow / minus; cela résulte … fait: dee / deu; du; U formula, first interior word: Int / int; cancelled after Λzy: −{z}; cancelled before clair: q; quén: quén / qu'en; final punctuation: ) / ,; semicolon.
+
+## Scan 44
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 044-C01 — manuscript folio | XVI | No source text (editorial synopsis only) | XVI with upper and lower rules | Halves: separate horizontal rules above and below the numeral. | high |
+| 044-C02 — first definition 1 | defnition &#124; definition | No source text (editorial synopsis only) | definition &#124; defnition | Scan 44 crop (585,572,770,668): an additional undotted minim between f and n favors definition; the cramped junction remains uncertain. | medium |
+| 044-C03 — second definition 1 | defnition &#124; definition | No source text (editorial synopsis only) | definition &#124; defnition | Scan 44 crop (1150,941,1357,1027): an additional undotted minim between f and n favors definition; the cramped junction remains uncertain. | medium |
+| 044-C04 — circled inserted lemma reference | circled XIV &#124; XV | No source text (editorial synopsis only) | circled XIV with upper/lower rules | Scan 44 crop (760,1010,868,1097): central upright gives XIV; horizontal rules lie inside the circle. | high |
+| 044-C05 — s before pour | unsure s + pour | No source text (editorial synopsis only) | s + p with a dot above + our | Scan 44 crop (704,1115,816,1190): small live s overlaps the left side of p; a separate dark point is immediately above the p. The point is retained without assigning meaning. | high |
+| 044-C06 — concluding conjunction | conjonction &#124; conjonetion | No source text (editorial synopsis only) | conjonetion &#124; conjonction | Scan 44 crop (236,1310,422,1400): the letter before t has a closed upper eye and a lower exit stroke, favoring e rather than open c. | medium |
+| 044-C07 — cancelled symbol before card | deleted s &#124; S | No source text (editorial synopsis only) | deleted S &#124; s | Scan 44 crop (772,1592,826,1670): broad rounded upper and lower lobes favor capital S; cancellation leaves case uncertain. | medium |
+| 044-C08 — last word, division after autre | autrement | no source text | autre\textsuperscript{.}\\ment | Second reading. A discrete solid raised dot follows the e of autre at the right edge; ment resumes on the next line. Both the dot and the division are retained, without assigning a syntactic function. Scan 44 crop (1465,2150,1648,2256). | high |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 044-R01 — J-polygone | J &#124; j &#124; y / No source text (editorial synopsis only) | J &#124; j &#124; y | Scan 44 crop (1271,1460,1322,1547): Looped lower body with upper entry flourish; no separate dot. Jordan notation favors J, but the written outline resembles y. | medium |
+| 044-R02 — cancelled opening word | Posons? / No source text (editorial synopsis only) | Posons? | Scan 44 crop (196,1850,307,1928): P and successive round lower loops survive the hatching; internal joins are partly hidden. | medium |
+| 044-R03 — cancelled word before les | égale &#124; égals / No source text (editorial synopsis only) | égale &#124; égals | Scan 44 crop (632,1845,740,1934): Descending g, a bowl and tall l remain visible; final e/s and initial accent intersect hatching. | low |
+| 044-R04 — les deux arcs | deux &#124; dex / No source text (editorial synopsis only) | deux &#124; dex | Scan 44 crop (805,1851,880,1926): The u/x area is heavily retraced; two stems favor ux, but the older stroke cannot be separated completely. | medium |
+| 044-R05 — cancelled text after Λ¹ | l’arc &#124; le / No source text (editorial synopsis only) | l’arc | Scan 44 crop (874,2002,984,2077): Tall initial l, detached apostrophe and space for a-r-c under the cancellation. | high |
+| 044-R06 — cancelled letter before obtenu | f? / No source text (editorial synopsis only) | f | Scan 44 crop (1464,1970,1620,2057): A tall ascender and a descender loop make f; a diagonal stroke cancels it before the separate o. | high |
+| 044-R07 — recollement accent | rēcollement &#124; récollement / No source text (editorial synopsis only) | rēcollement &#124; récollement | Scan 44 crop (1090,2082,1325,2161): Short nearly horizontal accent above the first e, with a slight rise; not confidently distinguished from an acute. | medium |
+
+### Remaining doubts
+
+first definition 1: definition / defnition; second definition 1: definition / defnition; concluding conjunction: conjonetion / conjonction; J-polygone: J / j; y; cancelled symbol before card: S / s; cancelled opening word: Posons; cancelled word before les: égale / égals; les deux arcs: deux / dex; recollement accent: rēcollement / récollement.
+
+## Scan 45
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 045-C01 — manuscript folio | XVII | No source text (editorial synopsis only) | XVII with upper and lower rules | Halves: both horizontal rules visibly bound the numeral. | high |
+| 045-C02 — Lemme XIX proof, Comme Λ exponent | 1 &#124; 4 &#124; + | No source text (editorial synopsis only) | 4 &#124; 1 &#124; + | Scan 45 crop (520,1990,594,2064): a diagonal upstroke, long right stem and projecting crossbar favor 4. Retracing leaves 1 or + possible; the expected 1 does not override the crossbar. | medium |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 045-R01 — under first live inclusion in XVIII | deleted superset? / No source text (editorial synopsis only) | deleted superset? | Scan 45 crop (792,336,875,395): A reverse-curved remnant protrudes to the upper left of the heavy live subset; the underlying sign is not fully separable. | low |
+| 045-R02 — secteur angulaire | secteur &#124; seeteur / No source text (editorial synopsis only) | secteur | Scan 45 crop (645,594,795,667): Second rounded letter has an opening to the right, unlike the closed first e. | high |
+| 045-R03 — cancelled et before tel que | et? / No source text (editorial synopsis only) | et | Scan 45 crop (179,1053,239,1122): Low initial loop and tall crossed t survive the diagonal cancellation. | high |
+| 045-R04 — reworked inclusion after ]s,s′[ | deleted not-subset? then subset / No source text (editorial synopsis only) | same | Scan 45 crop (1200,1124,1263,1185): A thinner upright survives inside the heavily retraced inclusion. Its original sign remains doubtful. | low |
+| 045-R05 — boxed deletion after int Λi | not equal empty &#124; equal empty / No source text (editorial synopsis only) | same | Scan 45 crop (1384,1104,1472,1177): Two short horizontals and the pierced ring survive; diagonal hatching prevents certain separation of a negation stroke. | low |
+| 045-R06 — cela montre que x∈ext Λi | ext / No source text (editorial synopsis only) | ext | Scan 45 crop (1031,1223,1099,1287): Looped e, crossed x and tall t are separately visible despite heavy ink. | high |
+| 045-R07 — before ]s,s′[ in Cela permet | deleted cap? and dotted minus? / No source text (editorial synopsis only) | deleted cap? and dotted minus | Scan 45 crop (856,1327,935,1411): The point above the dash is separate and definite; two uprights under hatching favor an earlier cap. | medium |
+| 045-R08 — cancelled ending of relié | r &#124; e / No source text (editorial synopsis only) | r &#124; e | Scan 45 crop (1348,1761,1470,1830): Dense retracing leaves only short diagonal/curved endings; neither candidate is secure. | low |
+| 045-R09 — inserted il exìste | exìste &#124; existe / No source text (editorial synopsis only) | same | Scan 45 crop (225,2068,362,2127): Long falling, slightly curved mark over i; it could be an elongated i-dot rather than a grave accent. | medium |
+| 045-R10 — last line exìste | exìste &#124; existe / No source text (editorial synopsis only) | same | Scan 45 crop (199,2260,321,2327): The falling mark over i is longer than an ordinary dot; lexical expectation alone does not settle its status. | medium |
+| 045-R11 — opening puìsque | puìsque &#124; puisque / No source text (editorial synopsis only) | same | Scan 45 crop (1280,88,1445,158): Short diagonal falling to the right over i; elongated dot and grave remain possible. | medium |
+
+### Remaining doubts
+
+opening puìsque: puìsque / puisque; first inclusion in XVIII, underlying sign: deleted superset; reworked inclusion after ]s,s′[: deleted not-subset; boxed deletion after int Λi: ≠∅ / =∅; cancelled sign before dotted minus: cap; ending of relié: deleted r / deleted e; Comme Λ exponent: 4 / 1; +; inserted il exìste: exìste / existe; last line exìste: exìste / existe.
+
+## Scan 46
+
+No substantive difference from the applicable witness text.
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 046-R01 — inverted fragment, initial bracket | deleted ]? before [s,s′]∩ / No source text | same | Scan 46 crop (1195,2193,1585,2268), rotated 180°: both left-pointing short strokes remain beside the stronger right-pointing feet of [. An underlying ] is possible, but extended serif-like strokes cannot be excluded. The final cap has no operand. | low |
+
+### Remaining doubts
+
+inverted fragment, overwritten opening bracket: deleted ].
+
+## Scan 47
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 047-C01 — manuscript folio | XVIII without rules | not transcribed | $\overline{\underline{\mathrm{XVIII}}}$ | Two horizontal rules enclose XVIII at the upper right; seen on whole and top half. | high |
+| 047-H01 — pencil addition to XX, number of sides | p&#124;n | n | p | Scan 47 crop (820,378,1650,485), rotated −3°: the letter has a long descending stem and a right bowl; the stem continues toward the attachment line. It is p, not n. | high |
+| 047-C02 — pencil addition to XX, cotés | côtés&#124;cotés | côtés (within uncertain nb de côtés) | cotés&#124;côtés | Scan 47 crop (820,378,1650,485): no secure circumflex is visible over o; the small rising mark is nearer e. Preserve the uncertain unmodernized form first. | medium |
+| 047-C03 — outline and attachment of pencil addition to XX | insertion without outline | opening parenthesis only | three-sided curved enclosure, lower rule and attachment stem | Scan 47 crop (820,378,1650,485): the left curve is continuous with a long lower line which curls upward at the right; a short descending attachment stands under the left part. It is represented as a connected drawn enclosure, not an isolated unmatched parenthesis. | high |
+| 047-C04 — insertion interieurs des, attachment stroke | insertion words only | not transcribed in its lemma locator | interieurs des with lower line and downward attachment notch | Scan 47 crop (820,378,1650,485), lower part: the word interieurs has a line beneath it with a downward notch toward the insertion position after les. The drawing preserves this attachment without assigning an emphatic meaning. | high |
+| 047-H02 — left margin beside bon sommet | tel que? …? | \ill{} | \unsure{tel que}\ldots | Scan 47 crop (28,743,220,861), rotated −35°: tall t and l, descending q, and faint ue are distinguishable; three small trailing marks support the ellipsis. The words remain moderately uncertain. | medium |
+| 047-H03 — left margin below the two cases | deleted faux? | \ill{} | \deleted{\unsure{faux}} | Scan 47 crop (39,1277,147,1394), rotated −30°: a tall f-like stroke, rounded middle and ux-like ending survive under crossing strokes. The reading faux is tentative; deletion is visible. | low |
+| 047-C05 — before nécessairement | mais&#124;Mais | not transcribed | Mais&#124;mais | Scan 47 crop (1248,1716,1345,1770): the angular initial has a long first upright, about twice the height of a, and a second high peak. Capital M is favored, but overwriting leaves lowercase possible. | medium |
+| 047-HB01 — completion of XIX | mais Λ_zy∩]s,s′[=∅ ... c.q.f.d. | not transcribed beyond editorial quotation locators | mais Λ_zy∩]s,s′[=∅ ... c.q.f.d. | Five lines finish the preceding proof, including the retained exterior inclusion and Λ¹/Λ² interchange. Read on the supplied halves; no additional crop needed. | high |
+| 047-HB02 — unquoted parts of XX | Lemme XX ... interieurs des triangles corespondants soient contenus dans intΓ | not transcribed beyond editorial quotation locators | Lemme XX ... interieurs des triangles corespondants soient contenus dans intΓ | Ruled XX, live statement, struck au moins, and the separate inserted qualifier; H quotes a short locator but does not transcribe the full statement. Read on the supplied halves; no additional crop needed. | high |
+| 047-HB03 — induction argument and disk parenthesis | Démonstration : L’hypothēse ... def.1 ... etc) | not transcribed beyond editorial quotation locators | Démonstration : L’hypothēse ... def.1 ... etc) | The two t_i choices and disk argument are fully written; H supplies only the bon sommet locator. Read on the supplied halves; no additional crop needed. | high |
+| 047-HB04 — two-case argument beyond H locators | Dans le cas contraire ... puisque ]s″,s′[⊄Γ | not transcribed beyond editorial quotation locators | Dans le cas contraire ... puisque ]s″,s′[⊄Γ | The prose, two alternatives and final justification are present; the first s″ is circled. H quotes partial locators only. Read on the supplied halves; no additional crop needed. | high |
+| 047-HB05 — polygon reconstruction beyond H locator | Si ]s″,s′[∩Γ=∅ ... réliant s à s′ ... A(Γ) | not transcribed beyond editorial quotation locators | Si ]s″,s′[∩Γ=∅ ... réliant s à s′ ... A(Γ) | The paragraph includes the visibility claim, deleted bracket and blackened token, and mismatched arc endpoints; H quotes only the beginning of the gluing clause. Read on the supplied halves; no additional crop needed. | high |
+| 047-HB06 — cardinality sentence beyond H locators | Mais nécessairement ... au cardinal ... Λ¹ ... A(Γ) | not transcribed beyond editorial quotation locators | Mais nécessairement ... au cardinal ... Λ¹ ... A(Γ) | The full strict comparison is written between the two pencil questions; H quotes only portions as locators. Read on the supplied halves; no additional crop needed. | high |
+| 047-HB07 — last paragraph | Si ]s″,s′[∩S(Γ)≠∅ ... de s=t ... a) ...; b) | not transcribed beyond editorial quotation locators | Si ]s″,s′[∩S(Γ)≠∅ ... de s=t ... a) ...; b) | Four lines end at the live b); the circle above triangle denotes its interior. H gives no source transcription of this paragraph. Read on the supplied halves; no additional crop needed. | high |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 047-R01 — example | example&#124;exemple / not transcribed, except so what in lower margin | example | Scan 47 crop (817, 895, 973, 954): The middle vowel has a closed bowl and a right-hand stem, supporting a. | high |
+| 047-R02 — two cases, last relation | \not\subset / not transcribed, except so what in lower margin | \not\subset | Scan 47 crop (1191, 1235, 1252, 1314): A curved inclusion sign has two long arms and one crossing vertical stroke; not an extra middle arm of membership. | high |
+| 047-R03 — overwritten opening bracket | \deleted{\unsure{[}}] / not transcribed, except so what in lower margin | \deleted{\unsure{[}}] | Scan 47 crop (225, 1363, 273, 1431): Live left-facing upper and lower feet form ]; an older short right-facing bottom stroke supports the doubtful earlier [. | medium |
+| 047-R04 — first visible de s′, interieur | interieur&#124;intérieur / not transcribed, except so what in lower margin | interieur | Scan 47 crop (1214, 1335, 1430, 1407): Only the i dots occur above the word; no acute over the first e. | high |
+| 047-R05 — first new polygon after alors | \Lambda^{1'}_{\cdot}&#124;\Lambda^{1!}&#124;\Lambda^{11}_{\cdot} / not transcribed, except so what in lower margin | \Lambda^{1'}_{\cdot}&#124;\Lambda^{1!}&#124;\Lambda^{11}_{\cdot} | Scan 47 crop (1276, 1401, 1363, 1481): A hooked 1 is followed by a tall separate tick and a detached lower dot. Later occurrences support prime notation, but this local mark still resembles an exclamation point. | medium |
+| 047-R06 — cancelled token after selon | \deleted{\illegible{1}} / not transcribed, except so what in lower margin | \deleted{\illegible{1}} | Scan 47 crop (626, 1538, 673, 1593): Dense opaque ink covers the token; surviving edge projections do not determine a word. | low |
+| 047-R07 — lower pencil margin | so what&#124;So what / not transcribed, except so what in lower margin | so what | Scan 47 crop (22, 1945, 153, 2052): Rotated −32°: the initial is a small cursive s with a high exit, followed by o; w, tall h and final t are readable. | high |
+| 047-R08 — final visibility sentence, interieur | interieur&#124;intérieur / not transcribed, except so what in lower margin | interieur | Scan 47 crop (548, 2073, 779, 2153): No acute stands over e; the long horizontal spot belongs to the initial i dot. | high |
+
+### Remaining doubts
+
+pencil cotés: cotés / côtés; pencil tel que: tel que; struck pencil word: faux; overwritten bracket: deleted [; first Λ after alors: \Lambda^{1'}_{\cdot} / \Lambda^{1!}; \Lambda^{11}_{\cdot}; cancelled token after selon: \deleted{\illegible{1}}; before nécessairement: Mais / mais.
+
+## Scan 48
+
+| ID / place | Witness C | Witness H | Final reading | What the scan shows | Confidence |
+|---|---|---|---|---|---|
+| 048-C01 — manuscript folio | XIX without rules | not transcribed | XIX between upper and lower rules | Two oblique horizontal rules enclose the upper-right folio. Seen on whole and top half. | high |
+| 048-C02 — cancelled letter before first A(Γ) | deleted A&#124;R | not transcribed | deleted R&#124;A | Scan 48 crop (147,149,197,201): a right-hand upper bowl and a downward diagonal leg favor R beneath the hatching; A remains possible. | low |
+| 048-C03 — insertion after second XIX, punctuation after fois | comma&#124;period | not transcribed | no separate punctuation before Le | Scan 48 crop (976,876,1630,984): the descending last stroke of s meets the lower attachment rule and the following L. There is no distinct comma or full stop between the words. | medium |
+| 048-C04 — insertion after second XIX, connecting line | words of insertion only | not transcribed | two-line insertion with bent lower connecting rule | Scan 48 crop (976,876,1630,984): a lower rule starts beside XIX, runs beneath the first part, bends down-left, then continues under prouve le reste. This is an attachment outline, not a cancellation. | high |
+| 048-C05 — long pencil margin, last line first group | ses&#124;s. | \ill{} | s.&#124;ses | Scan 48 crop (15,1390,173,1745), rotated −46°: a single compressed s-like trace followed by a detached dot is visible. The expanded ses reading is less well supported. | low |
+| 048-H01 — long pencil margin, before choisit | ne choisit? | \ill{} \uncertain{choisit} | ne choisit | Scan 48 crop (15,1390,173,1745), rotated −46°: two low humps of ne precede c, tall h, rounded o, two i marks and final t. The negative particle is recoverable. | medium |
+| 048-H02 — long pencil margin, third line | pas bien? | \ill{} | pas bien | Scan 48 crop (15,1390,173,1745): descending p, a small round a and final s precede the tall b and ien ending. | medium |
+| 048-H03 — long pencil margin, last word | notations&#124;solutions | \ill{} | notations&#124;solutions | Scan 48 crop (15,1390,173,1745): tall central strokes and a compressed ending support notations, but the pale opening and joins do not exclude solutions. The uncertain partial recovery is retained. | low |
+| 048-H04 — long pencil margin, trailing marks | --&#124;… | not transcribed | --&#124;… | Scan 48 crop (15,1390,173,1745): two pale short marks lie beyond the last word; dash-like form favored, exact punctuation unresolved. | low |
+| 048-C06 — long pencil margin, side stroke | no side stroke | no side stroke | long oblique side stroke | Scan 48 crop (15,1390,173,1745): one long straight stroke runs alongside the comment and toward the adjacent assertion, crossing its far-right letter strokes incidentally. It is retained as a drawn attachment/side mark. | high |
+| 048-H05 — lower underlined pencil word | douteux&#124;donc ? | \ill{} | douteux&#124;donc ? (underlined) | Scan 48 crop (17,1852,180,1980), rotated −31°: a looped d, low ou-like middle, tall t-like stroke and compressed final marks favor douteux. The ending is too faint for certainty; the long underline is clear. | medium |
+| 048-HB01 — continuation of XX, opening | toutes les [deleted so?] .? arêtes ... A(Λ¹′)∩A(Γ)<A(Γ)∩A(Λ¹) | not transcribed beyond editorial quotation locators | toutes les [deleted so?] .? arêtes ... A(Λ¹′)∩A(Γ)<A(Γ)∩A(Λ¹) | Two lines preserve the corrected opening word, le cardinal de vérifie, and strict comparison of written set expressions. Read on the supplied halves; individual uncertain places have the crops listed above. | high |
+| 048-HB02 — finite descent and case a) | Comme il n’ya ... a) Il existe n ... appliqué n-fois, | not transcribed beyond editorial quotation locators | Comme il n’ya ... a) Il existe n ... appliqué n-fois, | Five lines include struck bien, iterated superscript 1(n), inserted bon and arêtes Γ without de. The pencil ou bien, is separately transcribed by H and agrees. Read on the supplied halves; individual uncertain places have the crops listed above. | high |
+| 048-HB03 — case b) beyond H locator | b) ... donc card A¹⁽ⁿ⁾=3 ... c.q.f.d. | not transcribed beyond editorial quotation locators | b) ... donc card A¹⁽ⁿ⁾=3 ... c.q.f.d. | The continuation after H’s short cardinality locator, inserted seul, and the added sentence about Λ² are written. Read on the supplied halves; individual uncertain places have the crops listed above. | high |
+| 048-HB04 — Lemme XXI | Si Γ est un polygone non-convexe ... le interieur du triangle corespondant ... extΓ | not transcribed beyond editorial quotation locators | Si Γ est un polygone non-convexe ... le interieur du triangle corespondant ... extΓ | Ruled lemma number and underlined heading, with the insertion interieur du, are present. Read on the supplied halves; individual uncertain places have the crops listed above. | high |
+| 048-HB05 — XXI demonstration beyond H locators | Demonstration : le lemme VIII ... ce qui permet de prouver le lemme. | not transcribed beyond editorial quotation locators | Demonstration : le lemme VIII ... ce qui permet de prouver le lemme. | Seven lines preserve the two Λ labels, V formula, substitutions, cancellations, unaccented a and corespondent; H gives partial locators only. Read on the supplied halves; individual uncertain places have the crops listed above. | high |
+| 048-HB06 — conclusion | Le lemme XX le lemme XXI ... montent&#124;montrent le théorème 2, c.q.f.d. | not transcribed beyond editorial quotation locators | Le lemme XX le lemme XXI ... montent&#124;montrent le théorème 2, c.q.f.d. | Two lines conclude the memoir; the overwritten opening and doubtful verb are preserved. Read on the supplied halves; individual uncertain places have the crops listed above. | high |
+| 048-HB07 — dated closing and signature | le 15 juillet 1976, Montpellier; Mauré&#124;Mouré&#124;Maury&#124;Maurice. | not transcribed beyond editorial quotation locators | le 15 juillet 1976, Montpellier; Mauré&#124;Mouré&#124;Maury&#124;Maurice. | Date, place and a signed name occur at lower right. H mentions them only inside its editorial note; the signature remains uncertain. Read on the supplied halves; individual uncertain places have the crops listed above. | high |
+
+### Crop decisions retaining a reading
+
+| ID / place | C / H | Decision | Ink and crop | Confidence |
+|---|---|---|---|---|
+| 048-R01 — opening correction | tou[deleted s?]tes&#124;ts / not transcribed as continuous source text | tou[deleted s]tes | Scan 48 crop (130, 61, 239, 120): The old s remains below a long replacement t; the following e loop and final s are distinct. | high |
+| 048-R02 — cancelled fragment and following dot | so&#124;sa; dot? / not transcribed as continuous source text | same | Scan 48 crop (297, 70, 377, 115): Two loops survive crossing strokes, with a distinct detached dot to the right; its textual function is uncertain. | low |
+| 048-R03 — struck bien | bien? / not transcribed as continuous source text | same | Scan 48 crop (1427, 247, 1513, 296): Tall b loop and i dot survive; en is partly buried under the horizontal cancellation. | medium |
+| 048-R04 — cancelled letter before Λ¹⁽ⁿ⁾ | A&#124;R / not transcribed as continuous source text | same | Scan 48 crop (620, 356, 677, 411): Oblique legs converge above; horizontal hatching obscures any original bar or upper bowl. | low |
+| 048-R05 — récurrence | récurrence&#124;récurence / not transcribed as continuous source text | récurrence | Scan 48 crop (1199, 336, 1368, 397): Two separate short r shoulders follow u before the e loop. | high |
+| 048-R06 — foçon | foçon&#124;façon / not transcribed as continuous source text | foçon | Scan 48 crop (1384, 332, 1485, 394): The first vowel is a closed isolated oval without an a downstroke, matching the earlier foçon form. | high |
+| 048-R07 — b), letter inside A(...) | Λ&#124;A / not transcribed as continuous source text | Λ | Scan 48 crop (852, 668, 907, 737): The two legs have no internal crossbar; the extra stroke lies across the apex and outside the right leg. | high |
+| 048-R08 — exìste | exìste&#124;existe / not transcribed as continuous source text | same | Scan 48 crop (981, 1235, 1073, 1293): The i mark is long, downward-curving to the right; an unusually dragged dot remains possible. | medium |
+| 048-R09 — exterieur | exterieur&#124;extérieur / not transcribed as continuous source text | exterieur | Scan 48 crop (772, 1320, 950, 1395): No detached accent occurs above either e; the dot belongs to i. | high |
+| 048-R10 — first numèro | numèro&#124;numéro&#124;numero / not transcribed as continuous source text | same | Scan 48 crop (206, 1422, 350, 1485): A short upright mark leans downward-right above e; the direction is not completely secure. | medium |
+| 048-R11 — cancelled prefix before -relativement | co&#124;lo / not transcribed as continuous source text | same | Scan 48 crop (278, 1590, 324, 1647): Two low lobes remain, with tall intersecting hatching on the left; neither first-letter candidate is secured. | low |
+| 048-R12 — précedent | précedent&#124;précédent / not transcribed as continuous source text | précedent | Scan 48 crop (1257, 1532, 1437, 1605): One acute stands over the first e; none appears over the second. | high |
+| 048-R13 — cancelled partial word before bon sommet | trian&#124;triang / not transcribed as continuous source text | same | Scan 48 crop (953, 1632, 1062, 1693): Tall initial t, i dot and low joined ending remain under the strike; a terminal g cannot be securely isolated. | low |
+| 048-R14 — corespondent | corespondent&#124;corespondant / not transcribed as continuous source text | corespondent | Scan 48 crop (367, 1737, 645, 1809): The vowel after d is an open e-like loop, unlike the a in the preceding lemma statement. | high |
+| 048-R15 — overwritten opening of conclusion | deleted Le&#124;Les; live Le&#124;Lee / not transcribed as continuous source text | same | Scan 48 crop (151, 1931, 240, 1999): Overlapping large L loops and a circled/overworked small loop precede a separate e. Which old strokes belong to the discarded word remains uncertain. | low |
+| 048-R16 — montent | montent&#124;montrent / not transcribed as continuous source text | same | Scan 48 crop (1136, 1957, 1307, 2020): The tall t joins almost directly to e; a compressed r could share that joining stroke. Do not insert r from grammar. | medium |
+| 048-R17 — month in date | juillet&#124;jullet / not transcribed as continuous source text | juillet | Scan 48 crop (1114, 2070, 1250, 2155): A short additional upright occurs between the u strokes and the first of the two l loops. Dots are faint, but the i stroke is present. | high |
+| 048-R18 — signature | Mauré&#124;Mouré&#124;Maury&#124;Maurice / not transcribed as continuous source text | same | Scan 48 crop (1166, 2140, 1366, 2240): Long M, overlapping small oval and stem, joined u/r-like strokes, e-like terminal loop and raised accent/flourish. The name cannot be securely identified. | low |
+
+### Remaining doubts
+
+cancelled opening fragment: so / sa; dot after cancelled fragment: .; cancelled letter before first A(Γ): R / A; cancelled bien: bien; cancelled letter before Λ¹⁽ⁿ⁾: A / R; exìste: exìste / existe; first numèro: numèro / numéro; numero; pencil final-line opening: s. / ses; pencil final word: notations / solutions; pencil trailing marks: -- / …; cancelled prefix before -relativement: co / lo; cancelled trian: trian / triang; underlined pencil word: douteux / donc ?; cancelled opening of conclusion: Le / Les; live opening of conclusion: Le / Lee; concluding verb: montent / montrent; signature: Mauré / Mouré; Maury; Maurice.

@@ -1,0 +1,3 @@
+# Root mathematical reading notes — scan031, before final reader comparison
+
+This is an editorial correction list. The hatted A with lowered ab is an example showing the text the corrector says is missing in an absent copy. Neither the referred diagram105 nor formulae(75)e and(84)e are reproduced, so their content or mathematical validity cannot be checked here. Direction of a small pointer and the exact subscript are ink-identification questions. The passage about formulaire/formulary and the proposed binding translation of relier records the writer’s linguistic views and qualifications; this run does not research or validate those claims. No actual mathematical check event has been performed by root on this sheet.

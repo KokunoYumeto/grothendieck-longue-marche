@@ -1,0 +1,2 @@
+- Remaining uncertain words and cancelled equality are retained in place; mathematical interpretation does not supply missing letters.
+- Crop register, scan 027: (409,744,569,793) Esquisse; (18,1040,189,1202), rotated −30°, slanted adjective; (1100,1155,1658,1220) marginal instruction; (905,1048,1100,1100) interieur; (172,1596,266,1660) arète; (24,1612,80,1716) pencil vis and lower sign; (416,2091,527,2148) cancelled equality; (260,2178,435,2235) distence.

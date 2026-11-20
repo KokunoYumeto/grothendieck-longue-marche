@@ -1,0 +1,2 @@
+- All remaining marks are tagged in place. No extra reference numeral or unrecorded correction is supplied.
+- Crop register, scan 025: (1253,95,1330,157) first star; (887,266,939,322) inserted beta; (1144,315,1209,375) cancelled beta; (785,972,827,1029) mark after definition 1; (569,1207,727,1272) decoupé; (1125,1202,1195,1270) old formula letter; (650,1575,745,1647) alpha subscript; (1285,1530,1450,1605) alpha range; (149,1890,226,1947) cancelled Une/Un; (193,2170,233,2214) raised note mark; (1227,2153,1332,2208) old de/un.

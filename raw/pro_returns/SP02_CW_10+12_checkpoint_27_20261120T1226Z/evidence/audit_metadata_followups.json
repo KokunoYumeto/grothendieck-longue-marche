@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "B10-02_10_scan043__043-30__hand",
+      "status": "pending",
+      "page_key": "B10-02_10_scan043",
+      "source_audit_id": "B10-02_10_scan043_audit001",
+      "recorded_utc": "2026-11-20T09:35:01.066296+00:00",
+      "decision_author": "root",
+      "current_value_at_recording": "unknown",
+      "correction": {
+        "inventory_patches": {
+          "043-30": {
+            "hand": "another unnamed hand"
+          }
+        }
+      },
+      "reason": "Confirmed root payload construction overwrote the 043-30 hand patch when updating its first_words_or_objects.",
+      "apply_stage": "Root post-106-audit reconciliation, before freeze, through explicit audit history.",
+      "requires_explicit_root_audit": true,
+      "applied": false,
+      "source_record_sha256": "43c8ddbb496d9e10763e7ad12c49fc7651db27d74f75b422a5a5bc452e513a07"
+    },
+    {
+      "id": "B10-02_10_scan048__audit_preview_contrast",
+      "status": "pending",
+      "page_key": "B10-02_10_scan048",
+      "source_audit_id": "B10-02_10_scan048_audit001",
+      "recorded_utc": "2026-11-20T11:05:56.168529Z",
+      "decision_author": "root",
+      "required_reconciliation": {
+        "stage": "Root image-first post-106 reconciliation",
+        "regenerate_with_all_declared_flags": true,
+        "root_personal_image_review_required": true,
+        "recipes": [
+          {
+            "id": "audit-title-pale",
+            "contrast": 2.5
+          },
+          {
+            "id": "audit-volume",
+            "contrast": 2
+          },
+          {
+            "id": "audit-Groupes",
+            "contrast": 1.5
+          }
+        ]
+      },
+      "reason": "The former work/make_audit_crops.py ignored contrast flags for these three nonidentity recipes. Stored crop boxes and rotations were unchanged. This is a historical preview-processing discrepancy, not a reading decision.",
+      "apply_stage": "After all 106 ordered audits and before freeze; retain pending status until root supplies the later actual image-first reconciliation.",
+      "requires_explicit_root_reconciliation": true,
+      "applied": false,
+      "source_record_sha256": "64e8fc65158f208fb18726524828916c34376028d94a2c4c713570ec6f4f92de",
+      "evidence_refs": [
+        {
+          "path": "evidence/audit_crop_transform_flags_fix.json",
+          "sha256": "58c287700783b41714c344dbef877710d31f2b7dddd76d3c82bd56e604287102"
+        },
+        {
+          "path": "evidence/audit_crop_transform_flags_fix.md",
+          "sha256": "c673db9df95bab522b50dfc085d60547811c19ee7fb2e94f1417558d67a16269"
+        }
+      ]
+    }
+  ]
+}

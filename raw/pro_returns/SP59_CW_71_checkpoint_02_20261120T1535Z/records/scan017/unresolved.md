@@ -1,0 +1,2 @@
+- Remaining alternatives are listed in the doubts table.
+- Additional inspected crops: 017 (460,1165,600,1248) intersection index i/1; (1480,1280,1600,1360) Gamma index 1/2; (1370,1670,1475,1740) second pi subscript 0/absent; (500,2075,930,2165) verb ending and pas/ps.; (1100,2250,1445,2340) surjectif descender, no separate underline.

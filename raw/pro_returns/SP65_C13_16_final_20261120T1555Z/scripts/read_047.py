@@ -1,0 +1,24 @@
+from record_api import Page
+p=Page(47);p.p['sheet_kind']='letter'
+p.r(r'\unsure{Soc.}',r'So\unsure{c|f}.')
+p.r(r'\unsure{wihl|will}',r'wi\deleted{\unsure{h}}\inserted{l}l')
+p.r(r'\unsure{biratmonally|birationally}',r'birat\deleted{m}\inserted{i}onally')
+p.r('hypersurface -- this','hypersurface - this')
+p.d('M0386','undecided',r'So\unsure{c|f}.','The last character has a rounded c body with an extra tall hooked stroke; the overtyped components are not fully separable.','scan 047 (785,330,875,385)','low')
+p.d('M0387','alternative',r'wi\deleted{\unsure{h}}\inserted{l}l','The live l has the same tall stem, upper serif and lower foot as the final l; a rounded old shoulder remains under it.','scan 047 (1420,845,1530,900)','medium')
+p.d('M0388','alternative',r'birat\deleted{m}\inserted{i}onally','A dotted i is overtyped on the earlier m: the extra m uprights remain on both sides.','scan 047 (1040,1050,1305,1110)','high')
+p.ch('wi(h/l)l',r'\unsure{wihl|will}','will',r'wi\deleted{\unsure{h}}\inserted{l}l','The replacement l has clear serifs and foot; the old shoulder is still visible and left doubtful. scan 047 (1420,845,1530,900)',flags='CH',kind='deletion state (struck given live or live given struck)',error=7,confidence='medium')
+p.ch('first birationally',r'\unsure{biratmonally|birationally}','birationally',r'birat\deleted{m}\inserted{i}onally','Dotted i overtyped upon m, whose side uprights remain. scan 047 (1040,1050,1305,1110)',flags='CH',kind='deletion state (struck given live or live given struck)',error=7)
+p.ch('product in item 2',r'X\mathrm{x}Y',r'X\times Y',r'X\mathrm{x}Y','Baseline typed lower-case x.',kind='misread symbol or index',error=1)
+p.ch('Kleiman(n)',r"Kleiman\deleted{n}'s","Kleimann's",r"Kleiman\deleted{n}'s",'The final n is crossed with a short overstrike; the preceding n is live.',kind='deletion state (struck given live or live given struck)',error=7)
+for word in ['strong','week']:
+ p.ch('quotation '+word,"``"+word+"''",'« '+word+' »',"``"+word+"''",'Paired straight typewriter quotation strokes, without guillemet angles.',kind='misread symbol or index',error=1)
+p.ch('before this cannot work','--','---','-','One short typewriter hyphen separates the clauses.',flags='CH',kind='misread symbol or index',error=1)
+p.p['certainty']=[['Soc.','Narrowed uncertainty to the last letter only; c is the first reading, with f as an alternative. scan 047 (785,330,875,385).']]
+p.p['doubts']=[['bibliographic abbreviation','c|f in So…','Superposed rounded and tall hooked strokes','low'],['old letter under replacement l','h','Only the rounded shoulder of the overtyped character remains','low']]
+p.inv(('text','first paragraph','By the way, the fact that the πi…','typewriter'),('insertion','π slot','π','his hand'),('insertion','above thirty years','nearly'),('text','item 2','In car.0, A(X) is known…','typewriter'),('insertion','dimension comparison','≤'),('text','last main paragraph','Thus the main problems arise…','typewriter'),('deletion','Kleimann','last n','typewriter'),('deletion','wihl','old doubtful h','typewriter'),('insertion','over old h','l','typewriter'),('deletion','biratmonally','m','typewriter'),('insertion','over m','i','typewriter'),('text','closing','Sincerely your’s','typewriter'),('text','bottom left','46','unnamed hand (pencil)'))
+p.p['notes']='Final leaf of the first Coates letter, pencil folio 46. It cites a Hodge paper as “Algebraic correspondances between surfaces, Proc. London Math. So[c/f]. Seeies 2, Vol XLIV, 1938, p.226”, then gives item 2 and discusses a proposed reduction to hypersurfaces. The citation and dates are transcribed as on the sheet; no bibliography was consulted. The original spellings Seeies, week, spcialisation and your’s are retained. Nearly is inserted above thirty years. In the first birationally, a dotted i is overtyped upon m; in will, the replacement l overlays a doubtful old h. The author attributes the objection “this cannot work … because such an X would have to be simply connected” to Serre. That objection and the dimension claims are recorded as the letter’s claims, without a proof check here. H’s following editorial heading and discussion of the next letter are not ink on this page and are excluded.'
+p.p['notation']=[['Typed quotations','Paired straight quotation strokes','044,047','Rendered with two backticks and two apostrophes'],['Overtyped corrections','Replacement glyph and surviving earlier strokes occupy one position','047','Readable earlier letters retained with deletion/insertion state']]
+p.p['hand']=[['Typewriter corrections preserve ghost shoulders and uprights beneath the replacement','047','Observed in will and birationally; c/f stays unresolved','C often retained the earlier letter; H gave the replacement without the earlier state']]
+p.p['abbreviations']=[['Proc.','Proceedings'],['Math.','Mathematical'],['Soc.','Society (reading of c remains uncertain)'],['Vol','Volume']]
+p.save()

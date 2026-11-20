@@ -1,0 +1,5 @@
+An otherwise blank sheet carries a small drawing at upper left: a thick straight segment with endpoints s and s′, a marked intermediate point y, and a fine interrupted path rising from y to a point x. A small fine curved remnant lies beside the interrupted path. All four marked points and all four labels are represented in TikZ. The lower half has no text apart from archive number 27; isolated lower-edge specks are blemishes, not letters. No title, date, manuscript page numeral, or total appears.
+
+The tiny lower endpoint letter has a bent two-part outline admitting s or z in isolation. The clearer other endpoint is s′, and the adjacent discussion of consecutive vertices s,s′ and an exterior point x supports s for the pair. This is a notation decision among admitted shapes, not a correction of a clear conflicting letter. The x and y labels are clear from their crossed strokes and descender. No arrowheads are visible and none are supplied.
+
+No mathematical claim is written and no proof check was performed. H has only a description of this sheet, so there are no H collation rows.

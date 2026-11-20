@@ -1,0 +1,1 @@
+- Only the tiny printer name Sodel/Sodé remains doubtful.

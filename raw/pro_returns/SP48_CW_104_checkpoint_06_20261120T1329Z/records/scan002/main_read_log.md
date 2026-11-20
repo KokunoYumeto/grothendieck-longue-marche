@@ -1,0 +1,7 @@
+# Main adjudication: scan 002
+
+Only the reader returns and decision crops were viewed; the main reader did not open a whole page or either half. Reader C crops 01–06 and reader A crop07 were viewed once. Fourteen new crops were generated for the remaining drawing and inequality differences; their source boxes are in crops/main_crop_manifest.jsonl. Six image outputs from one overlarge tool response were unavailable after truncation and were delivered again in batches of two before adjudication. No decided locus was re-cropped or re-read.
+
+All three returns, C’s contextual doubts, the H page and H drawing were compared. Decisions and all three readings are in decision.json and the generated changes log. The main crop review supplied five additional contour refinements overlooked in all three returned traces: the longest segment’s shaft gap, the two-cell strip’s internal gap, the upper lens pair’s inward stub, the lower three-cell strip’s terminal return, and the lower double lobe’s central gap/right stub. These are visible drawing features, with no mathematical interpretation assigned.
+
+All listed elements are present in the consolidated page. A visible scribble is preserved graphically with its unresolved status in a local comment, rather than an empty uncertainty macro or an invented word count. H’s general drawing-regularization notes do not count as in-place doubt marks in marked_in_H.

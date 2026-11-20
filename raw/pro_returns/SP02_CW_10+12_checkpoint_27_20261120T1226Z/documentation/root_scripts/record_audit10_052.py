@@ -1,0 +1,38 @@
+from pathlib import Path
+import json,sys,copy
+sys.path.insert(0,str(Path('SP02_CW_10+12/scripts').resolve()))
+from record_audit import build_revision,stable_changes
+key='B10-03_10_scan052';out=Path('SP02_CW_10+12');s=json.loads((out/f'documentation/audit_sessions/{key}_audit001.json').read_text());r=json.loads((out/f'documentation/page_records/{key}.json').read_text());c=stable_changes(r,key);t=(out/f'pages/{key}.tex').read_text()
+p=dict(audit_id=s['audit_id'],baseline_page_sha256=s['baseline_page_sha256'],audit_reading_complete=True,audit_inventory_confirmed=True,edits=[],upsert_changes=[])
+def edit(old,new,count=1):p['edits'].append(dict(old=old,new=new,count=count))
+def update(i,**kw):
+ z=copy.deepcopy(c[i]);z.update(kw);p['upsert_changes'].append(z)
+edit(r'\inserted{une sous-$k$-algèbre de type fini}',r'\inserted{une sous-$k$-algèbre de type fini.}')
+opening=r"D'après (11.3), on peut remplacer $G$ par $G_{\mathrm{af}}$, donc on peut supposer $G$ affine."
+edit(opening+' Soit',r'\inserted{'+opening+'}\n\nSoit')
+edit("l'homomorphisme",r"l'ho-\linebreak momorphisme")
+edit('fidèlement plats.}','fidèlement plats}.')
+new_structure=r's\unsure{\deleted{rt}\inserted{tr}|\deleted{tr}\inserted{rt}}ucture'
+edit('structure',new_structure)
+number=r'\mspage{\handwritten{20}}'
+new_number=r'\mspage{\handwritten{20}\,\raisebox{.5ex}{\begin{tikzpicture}[x=1cm,y=1cm,baseline=0pt]\draw[line width=.6pt] (0,.04)--(.025,0)--(0,-.025);\end{tikzpicture}}}'
+edit(number,new_number)
+update(8,C='deleted old phrase; inserted une sous-k-algèbre de type fini without period',H='struck old phrase; unmarked replacement without period',final=r'\deleted{un sous-$k$-espace vectoriel de dimension finie}\inserted{une sous-$k$-algèbre de type fini.}',shows='The replacement is typed above the x-cancelled phrase. A separate round baseline dot follows fini; the dot is below and to the right of the final i, distinct from its upper dot.',crop='audit-lemma;audit-lemma-insertion;audit-lemma-old-end',against_C=True,kind='insertion or placement')
+update(14,final='Inserted D’après sentence above the proof; Soit starts the proof paragraph; subsequent formulas remain inline',shows='D’après and Soit start at the same indented horizontal position. The D’après sentence occupies the half-line space immediately above Soit, while subsequent typed baselines are regularly twice as far apart. Soit is therefore retained as the indented proof opening beneath the insertion. Soit alors begins at the left text edge without a fresh indent; the second HA1 equality shares its line with et on en déduit.',crop='audit-inserted-opening;audit-proof1;audit-proof2',confidence='medium',against_C=True,kind='insertion or placement')
+update(15,final='Statement underlined through final word; terminal period outside underlining',shows='Three lower rules run beneath the statement. The last rule fades out within the final s of plats, well before the separate terminal period; the word is retained within the underline and the period outside it.',crop='audit-proposition;audit-prop-end',against_C=True)
+rows=[('bottom physical end-line division',"l’homomorphisme","l’homomorphisme",r"l'ho-\linebreak momorphisme",'The line ends with l’ho- and the next line starts momorphisme. The printed hyphen is clear.','audit-bottom;audit-homomorphism-division','high','other'),('overprinted pair in structure','structure','structure',new_structure,'Both the second and third positions contain a tall t ascender and crossbar together with an r shoulder and flat foot. The darker upright at the first position and shoulder at the second favour live tr over old rt, but the order of the superposed typed layers cannot be securely separated. Both layer orders remain qualified.','audit-structure;audit-structure-pair;audit-structure-comparison','low','deletion state (struck given live or live given struck)'),('isolated mark right of manuscript number','omitted','omitted','short raised angular tick reproduced in TikZ','An isolated dark two-stroke wedge lies above and to the right of 20, separate from both digits. Its visible shape is reproduced without interpreting it as a period or a number.','audit-number-tail;audit-number-upright','medium','drawing or diagram')]
+for no,row in enumerate(rows,24):
+ place,C,H,final,shows,crop,confidence,kind=row;p['upsert_changes'].append(dict(id=key+f'-L{no:03}',place=place,C=C,H=H,final=final,shows=shows,crop=crop,confidence=confidence,against_C=True,against_H=True,marked_in_H=False,kind=kind,consequential=False))
+p['remaining_doubts']=copy.deepcopy(r['remaining_doubts'])
+p['remaining_doubts'].append(dict(line='bottom structure, overprinted second and third letters',reading='old rt / live tr',alternatives='old tr / live rt',confidence='low',comment='Both t and r shapes occur at each position; the order of the layers remains unresolved.'))
+p['inventory_patches']={}
+for el in r['inventory_resolved']:
+ if el['hand']=='unknown':p['inventory_patches'].setdefault(el['element'],{}).update(hand='another unnamed hand')
+p['inventory_patches'].setdefault('lemma-proof',{}).update(first_words_or_objects='Soit (φ_i)',position='middle, below inserted D’après sentence')
+p['inventory_patches'].setdefault('subalgebra',{}).update(first_words_or_objects='une sous-k-algèbre de type fini.')
+p['inventory_extra']=[]
+for el,hand,kind,pos,words in [('archive','another unnamed hand','margin note','bottom left','archive folio51 retained in comment'),('proof-opening','typewriter','insertion','half-line immediately above Soit','D’après (11.3), on peut remplacer G par G_af'),('structure-old','typewriter','deletion','bottom structure, letters 2–3','old rt|tr'),('structure-new','typewriter','insertion','same overprinted pair','live tr|rt'),('number-mark','another unnamed hand','drawing','above and right of manuscript20','short angular tick without lexical interpretation')]:p['inventory_extra'].append(dict(scan='10:052',sheet_kind='typescript',hand=hand,element='audit-'+el,kind=kind,position=pos,first_words_or_objects=words,transcribed='yes'))
+p['crops_upsert']=json.loads(Path('work/audit10_052_crops.json').read_text())
+p['observations']='Root ordered second reading: whole image and both actual supplied halves viewed before the image-first receipt and text opening; 40 fresh enlarged crops personally inspected, including rotated manuscript20. All agreed and differing words, accents, formulas, indices, deletions, insertions, underlines and margin marks checked. The inserted lemma phrase ends in a distinct period. The D’après sentence occupies the half-line immediately above the indented Soit proof opening and is recorded as an insertion. The lower physical l’ho-/momorphisme division is restored. The proposition terminal period falls outside the underline. The two overprinted t/r positions in structure are now represented with unresolved layer order. The isolated angular mark beside manuscript20 is drawn without a lexical reading. The cancelled top paragraph, GL lettering, nœ thérien spacing, G_af with one f, all summation indices and tensor bases, the three separate Exp cancellations, A. . punctuation, f ltrante, cahque, V_i in the final limit, the index hook and lower tick were verified. The clipped G, ornamental A/O, top spelling and cancelled I remain doubtful. Manuscript20 and archive51 remain distinct. Five doubts remain. No context or mathematical proof check was used.'
+Path('work/audit10_052.json').write_text(json.dumps(p,ensure_ascii=False,indent=2));_,new=build_revision(p,s,r,t);Path('work/audited10_052.tex').write_text(new)
+print('edits',len(p['edits']),'upserts',len(p['upsert_changes']),'crops',len(p['crops_upsert']))

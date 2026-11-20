@@ -1,0 +1,5 @@
+# Root scan 032 crop inspection
+
+All three full returns were compared before adjudication. Root viewed no full or half image. Nine existing crops were inspected: B_first_display, B_second_display, B_prose_fields, B_deux_punctuation; A06_upper_trace, A07_right_upper_trace, A08_right_lower_trace, A09_lower_left_trace, A10_lower_central_trace. No new root crop was needed. The first requested delivery of the two display crops was truncated before either image was visible; the existing files were then delivered successfully, once each. No extra crop or source opening resulted.
+
+The three formula crops cover every H field-state locus, the capital alphabet doubt, the single dash and the two formula gaps. The point crop supports the qualified added point. All five peripheral regions are reproduced geometrically. Their unknown status is retained in the doubts. H’s original batch comment and preceding page note were checked to exclude its already-recorded handwriting of A/S from state-only correction counts.

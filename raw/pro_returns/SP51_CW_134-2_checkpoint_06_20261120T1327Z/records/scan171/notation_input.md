@@ -1,0 +1,16 @@
+# Working notation table
+
+Entries are visual readings, not rules imposed on subsequent pages. Recheck each on the new page. Line numbers count the main handwritten baselines; above-line additions are tied to their destination.
+
+| Sign or form | Representation | Evidence / scope |
+| --- | --- | --- |
+| Open two-lobed category capital with low n | `\unsure{\mathcal E|E}_n` at first occurrence on each page; then `\mathcal E_n` | Scan 170 L1 insertion and later repeats; rounded capital, typographic alphabet still uncertain. |
+| Groupoid capital with long descending return | `G_n` | Scan 170 L6–12; interrupted upper loop on L8 is read as part of G, not a separate hat. Cancelled L8 glyph remains `G_n|\mathcal E_n`. |
+| Equals-like shorthand for même | `\unsure{=|\overline m}` when this form remains ambiguous | Scan 170 L5: near-horizontal top and lower line with a low entry hump. Do not spell out même in the transcription. |
+| Category targets | `(n\text{-}\mathrm{Cat})`, later `(n\text{-}\mathrm{cat})` | Scan 170 L6 capital C; L15–16 lower c. Preserve observed case per occurrence. |
+| Hom notation | `\underline{\mathrm{Hom}}_n` | Scan 170 L15: single rule beneath Hom, low n. |
+| Limits | `\unsure{\varprojlim|\underline{\lim}}`, then `\varinjlim` | Scan 170 L18–19: first left barb incomplete; second right arrow clear to all readers. Do not resolve the first from mathematics alone. |
+| Double quotation marks | two backticks / two apostrophes | Scan 170 L1 paired upper ticks, not guillemets. |
+| Underlines | `\uline`, mathematical `\underline` | Scan 170 spéciale, galoisienne, Hom and NB single-ruled. H emph is equivalent author emphasis where scope agrees. |
+| Abbreviations | `cat.`, `loc.`, `top.`, `NB` | Scan 170. Preserve observed stops and letter case. |
+| Local-system rank | `n` in n-systèmes | Scan 170 L10; distinguish earlier `(n-1)` in champs. |

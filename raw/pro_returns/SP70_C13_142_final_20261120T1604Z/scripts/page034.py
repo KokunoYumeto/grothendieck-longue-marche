@@ -1,0 +1,34 @@
+from record import *
+t=begin(34)
+t=t.replace(r'\unsure{de|des}','de').replace(r'\unsure{0|i}','0').replace(r'\xi',r'\zeta').replace(r'\unsure{dans}','dans')
+for sign in ['II','III','IV']:
+ t=t.replace('\\mathrm{'+sign+'}',r'\overline{\underline{\mathrm{'+sign+'}}}')
+change('opening sentence','du groupoïde','des groupoïdes','du groupoïde','Singular du and no terminal s on groupoïde.',dc=False)
+change('inserted qualification','profini','profinis','profini','Insertion ends in i with no plural s.',dc=False)
+for place in ['commute à, opening paragraph','action de, opening paragraph']:
+ change(place,r'G_J',r'\widetilde{\mathfrak S}_J',r'G_J','Rounded open G with an interior return stroke; no detached tilde.',dc=False,kind='misread symbol or index',cat=1)
+change('before compatible',r'\deleted{qui}','omitted',r'\deleted{qui}','Short qui is overwritten/crossed immediately before compatible.',dc=False,kind='omission',cat=3)
+change('(54), second line last psi',r'\psi_{\unsure{0|i}}^\omega',r'\psi_i^\omega',r'\psi_0^\omega','Closed oval with open white centre, no detached i dot or vertical stem.',dc=False,kind='misread symbol or index',cat=1,crop='034 (1160,1000,1270,1090)',conseq='The last psi in the second line of (54) is indexed 0, not i; the apparent slip is preserved.')
+for place in ['(54), third line: two occurrences','parameter list after (54)','triple in the long paragraph','inserted parameter before de IV','(55), second equality: two occurrences']:
+ change(place,r'\xi',r'\zeta',r'\zeta','Single angular upper turn and long descending curve, the same parameter introduced in (36); consistently read zeta.',dh=False,kind='misread symbol or index',cat=1,conf='medium')
+change('before groupoïde envisagé',r'le \deleted{le}',r'\deleted{le}\inserted{le}',r'le \deleted{le}','Two le forms, upper one live and lower one crossed; the crossed duplicate follows the live word in the line sequence.',dc=False,kind='insertion or placement',cat=6)
+change('endomorphism qualification, attachment','after un endom.','after III, before donc','after un endom.','Parenthesis is above/right of endom.; the insertion corner sits immediately after that abbreviated noun.',dc=False,kind='insertion or placement',cat=6)
+change('endomorphism qualification, abbreviation','comm.','commutant','comm.','Visible dot follows comm; no utant.',dc=False,kind='abbreviation expanded or spelling modernised',cat=8,crop='034 (1470,1730,1660,1830)')
+change('endomorphism qualification, group',r'G_J',r'\mathfrak S_3',r'G_J','Same looping G; subscript has the angular hook of J used in the opening paragraph.',dc=False,kind='misread symbol or index',cat=1,conf='medium',crop='034 (1470,1730,1660,1830)')
+for place in ['un endom. after donc','tel endom. of II','autre tel endom. of IV']:
+ change(place,'endom.','endomorphisme','endom.','Abbreviated word ends after m with a point.',dc=False,kind='abbreviation expanded or spelling modernised',cat=8)
+change('revient à celle','live baseline text','inserted text','live baseline text','Words continue the baseline after the endom. clause; they are not written as a separate insertion.',dc=False,kind='insertion or placement',cat=6)
+change('before endom. of IV','autre tel','omitted','autre tel','Both short words occur at the right end of the line following d’un.',dc=False,kind='omission',cat=3)
+change('parameter of IV',r'\inserted{\xi}',r'\zeta',r'\inserted{\zeta}','Parameter is inserted above the gap between endom. and de IV.',dc=False,kind='insertion or placement',cat=6)
+change('after se recollent',r'\deleted{\unsure{en} \unsure{dans} III}',r'\deleted{\ill{}} III',r'\deleted{\unsure{en} dans III}','The cancellation passes through the whole phrase including III; dans is legible, the first short word less secure.',dc=False,kind='deletion state (struck given live or live given struck)',cat=7,conf='medium',crop='034 (735,2090,1105,2185)',marked='yes')
+change('following cancellation','par un =','pour un =','par un =','Short middle a, no ou sequence.',dc=False)
+for place,sign in [('union, first member','II'),('union, second member','IV'),('intersection','III'),('endomorphism of II','II'),('endomorphism of IV','IV'),('cancelled restriction','III'),('live restriction','III')]:
+ change('Roman numeral: '+place,sign,sign,r'\overline{\underline{\mathrm{'+sign+'}}}','Common horizontal strokes above and below the numeral are explicitly retained; they identify the written numeral style, not an inferred completion operation.',kind='other',cat=10)
+decision(52,'first','de','Single e exit stroke, no separately formed terminal s.','034 (1305,605,1415,685)','medium')
+decision(53,'first','0','Closed oval, visibly unlike the dotted i subscripts nearby.','034 (1160,1000,1270,1090)')
+for k,p,w in [('text','top','15'),('display','top','(53)'),('text','upper','La donnée d’un endomorphisme'),('insertion','above groupoïde','profini'),('deletion','upper','éléments'),('deletion','upper before compatible','qui'),('text','above display','On aura'),('display','middle','(54)'),('text','lower','avec lambda, zeta, eta; Au lieu de refaire'),('deletion','lower before groupoïde','le'),('insertion','above un endom.','la donnée d’'),('insertion','after un endom.','fixant les sommets et comm. à G_J'),('insertion','before endom. of II','tel'),('insertion','above endom. of IV','zeta'),('deletion','bottom','en? dans III'),('display','bottom','(55)'),('margin note','bottom-left','33')]:inv(k,p,w)
+note('Author page 15, archive 33. Endomorphisms of the profinite groupoid are expressed using lambda, eta and zeta. The author avoids a fresh “calcul, un peu fastidieux” by viewing the groupoid as the union of II and IV over III; (55) equates the two expressions for tilde-alpha. The second line of (54) visibly ends with psi_0, although the index i would fit the surrounding family. The closed zero is retained and the discrepancy is not repaired. The inserted fixed-vertex/G_J condition qualifies the endomorphism, not the preceding intersection III. Horizontal framing strokes on the Roman numerals are retained as written numeral style, not interpreted as a mathematical completion. This page’s gluing argument is reported without an independent proof.')
+hand('Zero versus dotted i; abbreviated endom.','In (54) the last psi subscript is a closed zero; nearby i subscripts have separated dots and short stems. This is an isolated written index, not a general replacement of i by 0. The repeated endom. and comm. end in visible points; H expands them. G_J again has a curled open body, and its small angular J can resemble a 3.')
+notation('Roman groupoid numerals','II, III, IV etc. are often framed by common upper/lower strokes; represented explicitly where visible, without assigning a completion meaning.','033–034')
+abbrev('endom.','endomorphisme');abbrev('comm.','commutant');abbrev('= (in prose)','même')
+finish(t)

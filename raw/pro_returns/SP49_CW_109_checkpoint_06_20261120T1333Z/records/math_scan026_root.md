@@ -1,0 +1,3 @@
+# Scan026: main-reader mathematical scope
+
+Before the final reader returns, the root read C and the page-specific C context. The opening equality/overwritten arrow has no definitions or argument on this correction sheet. The quoted phrase ending in M-prime is explicitly abbreviated; its missing verb cannot be verified in the absent typescript. The comments on commutation, terminology and dictionary usage are the writer’s proposals, not externally checked assertions. No mathematical proof or independent computation was performed by the root for this page. Symbol and deletion-state decisions must come from the retained crops. No external material was consulted.

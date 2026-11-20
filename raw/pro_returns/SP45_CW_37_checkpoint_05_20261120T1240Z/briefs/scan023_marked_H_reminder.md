@@ -1,0 +1,1 @@
+Identical reminder sent to all three scan023 readers: marked_in_H denotes an explicit uncertainty, illegibility or supplied-doubt marking, not a routine note describing a correction or graphic; add and struck alone are not doubt marks. No source reading or other reader finding was shared.

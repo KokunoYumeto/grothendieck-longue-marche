@@ -1,0 +1,2 @@
+- Main diagram: the extra dotted i is certain, but its nested level is not.
+- Overwritten partial, overwritten i_k, lower-column indices, erased cap d-prime, and struck arrow remain marked in place.

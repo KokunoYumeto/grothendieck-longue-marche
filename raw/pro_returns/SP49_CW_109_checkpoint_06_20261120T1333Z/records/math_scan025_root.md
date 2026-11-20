@@ -1,0 +1,3 @@
+# Mathematical attention during scan025
+
+The witness gives an asphericity equivalence and calls the uncorrected statement a tautology; a formula defining W as an inverse image; a proposed map with a tiny subscript into N; and a criticism that pi_0 and pi_1 are undefined in the cited text. The definitions, surrounding claims and cited typescript are absent. These observations identify ink-sensitive indices, cancellation states and literal qualifiers, but do not supply enough premises to verify the asphericity claim, the W formula or the undefined-notation criticism. No mathematical proof/computation/check event is claimed by the main reader for merely parsing these fragments. The glyphs and insertion/deletion states will be decided from the three returns and crops.

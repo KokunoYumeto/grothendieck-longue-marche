@@ -1,0 +1,1 @@
+- Several erased signs; C double contour; dot/bar layering on U-prime; unreadable cancelled group; opening isolated point.

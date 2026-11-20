@@ -1,0 +1,17 @@
+# SP47_CW_103 — second-pass transcription
+
+The required deliverables are the combined LaTeX fragment, individual page fragments, changes and adjudications, H collation, doubts and notation, inventory, notes, workflow and progress log. `CHECK_EVENTS.tsv` distinguishes actual mathematical checks from statements merely carried as background.
+
+`pages/` contains settled page files in archive scan order. The combined fragment is `SP47_CW_103_transcription.tex`. `SP47_CW_103_standalone.tex` is a convenience wrapper using the supplied `PREAMBLE.tex`; no successful LaTeX compilation is claimed. Reader scan014/A attempted compilation but the missing pdflatex.fmt prevented it from starting; its report and standalone input are retained. The main workflow did not compile, and brief v12 explicitly limits later readers to syntax and integrity checks. The syntax/integrity checks are documented separately and do not certify visual fidelity.
+
+`readers/` preserves all three fresh independent readings and reports for each page, with their derived evidence crops. `decisions/` and `adjudication/` preserve the main reader's explicit choices. `crops/` holds additional main-reader crops. Original scan images, original witness files and input attachments are excluded; `records/source_manifest.tsv` identifies the supplied inputs by filename, size and SHA-256.
+
+The current completion state is recorded in `progress.log`, `records/counts.json` and the page table in the changes log. An absent scan file means that page has not yet been settled in this checkpoint. The requested order is 002, 003, 004, 005, 006, 007, 009, 010, 011, 012, 013, 014, 015, 016, 017, 018; scan 008 is outside this task.
+
+Changes counts include added, resolved or reordered uncertainty marks and source-state distinctions, but exclude mere equivalent macro renaming. They are counts of adjudicated loci, not measured error rates. Confidence belongs to the final reading. A retained doubtful fragment can include several plausible forms without establishing any of them.
+
+The scripts assist extraction of the supplied witness passages, cropping, assembly, record formatting, syntax checks and packaging. They do not use OCR, recognition software or an external text. The main adjudication configurations are explicit human/model decisions, never automated text corrections. The three readers receive only the current page packet and notation snapshot; no reader is reused for another scan.
+
+After the last page, the 16 page files and combined transcription are frozen by SHA-256 and checked again before final packaging. Checkpoints are complete ZIP archives scheduled at 45-minute work intervals under successively numbered names; actual creation/upload times and the recorded checkpoint03 delay appear in progress.log, records/checkpoints.json and the workflow journal. No page-boundary archive is added, and no earlier checkpoint ZIP is nested in a later archive. The final archive contains the current deliverables and the accumulated work documentation.
+
+Cross-page notation adjudications may follow an initial page decision before the final freeze. For scans013–014, the retained crops led to a common q/g candidate order. The earlier scan013 page/decision/config are preserved in records/scan013_before_notation_review.json, with the explicit overlay in adjudication/review_scan013_014.py. Historical reader returns and frozen per-reader notation snapshots are never overwritten. If recreating the decision from the initial scan013 builder, apply that review overlay as well.

@@ -1,0 +1,37 @@
+from pathlib import Path
+import json,subprocess,sys
+out=Path(__file__).resolve().parents[1]
+plan=[]
+def reuse(label,path):plan.append({'number':len(plan)+1,'locus':label,'path':'records/scan007/'+path,'viewed':False,'source':'reader reuse'})
+def new(label,name,box,width=2800):
+ subprocess.run([sys.executable,str(out/'scripts/make_crop.py'),'7',name,*map(str,box),'--width',str(width)],check=True,stdout=subprocess.DEVNULL)
+ plan.append({'number':len(plan)+1,'locus':label,'path':f'crops/scan007_{name}.png','viewed':False,'source':'new main crop','bbox':box})
+reuse('modeles accent and quotation ticks','reader_A/crops/01_modeles.png')
+new('item i: complete fleche and monomorphique','item_i',[410,200,1300,365],3200)
+reuse('canceled autom and raised end','reader_A/crops/03_autom_end.png')
+reuse('par','reader_A/crops/04_par.png')
+new('quoted inclusion and first sous objets gap','inclusion_subobjects',[185,645,955,765],3000)
+new('end of identification: tilde D without period','identification_end',[1060,705,1200,800])
+new('complete two-row map and star label','mapping',[175,870,985,1090],3000)
+reuse('first citation enclosures','reader_B/crops/04_references.png')
+new('ens, canceled de, Phi and M insertion leader','subset_and_insertion',[200,1195,955,1425],3200)
+reuse('plain N and canceled I','reader_C/crops/06_deleted_I_K.png')
+new('ens, preordonne insertion and classes','class_line',[620,1470,1245,1615],3000)
+new('long interlinear sentence and underline','order_insertion',[710,1560,1580,1680],3200)
+new('period after preceding M','M_period',[620,1605,755,1710])
+new('quantifier and first doubled N','quantifier_N',[970,1610,1310,1725])
+reuse('canceled letter between un and objet','reader_B/crops/10_cancelled_ending.png')
+new('complete old D and live M','D_M_complete',[450,1705,575,1825],2400)
+reuse('mark above classe n','reader_A/crops/14_n_mark.png')
+new('first isom without stop','first_isom',[1400,1720,1620,1820])
+reuse('a cluster, detached stroke and cause de ii','reader_C/crops/13_a_cause.png')
+new('lower ens without stop','lower_ens',[200,1890,445,1995])
+reuse('D_n equals doubled J_n','reader_A/crops/16_D_J.png')
+new('defini and second isom without stop','defini_isom',[1140,1885,1620,2005],3000)
+new('complete canceled phrase, inserted une and live famille','canceled_phrase_famille',[1090,1970,1620,2120],3200)
+reuse('displayed family','reader_A/crops/18_family.png')
+new('footer d ens, comma and indexes','footer',[190,2170,970,2290],3000)
+(out/'records/scan007/main_crop_plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n')
+with (out/'records/scan007/main_observations.md').open('a') as f:
+ f.write('\nAll three complete readings and all 115 reported issues were compared before any main image inspection. Planned 25 distinct adjudication crops: 15 new and 10 reused. New crops supply complete words/labels and cover half-settled witness differences. A\'s clipped fleche crop is not reused; the complete item-i line is selected. Adjacent clipped material in a crop is context only, not a repeat decision.\n')
+print(json.dumps({'crops':len(plan),'new':sum(x['source']=='new main crop' for x in plan),'reused':sum(x['source']=='reader reuse' for x in plan)}))

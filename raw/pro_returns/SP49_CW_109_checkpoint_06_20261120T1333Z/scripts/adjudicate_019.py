@@ -1,0 +1,10 @@
+"""Unanimous page 019 reading, with the changed punctuation inspected by root."""
+from common import *
+R=load_page(19);texts={r:(W/f'readers/019/{r}/reading.tex').read_text() for r in 'ABC'}
+assert len(set(texts.values()))==1
+d=copy.deepcopy(R['B']['changes'][0]);d['final']=d.pop('reading');d.pop('crop')
+d['crops']=['readers/019/B/crops/02.jpg'];d['readers']={r:'line -16.' for r in 'ABC'}
+d['evidence']='All three readers resolve the mark to a period. The main reader inspected the crop: it is a short closed upright oval below the numeral, without a trailing comma tail. The C doubt macro is removed; the period itself is retained.'
+write_record(19,'B','brief_v06.md',texts['B'],[d],doubt_decisions(R['C'],19,'C'),R['C']['remaining_doubts'],R['A']['notes'],'The three full readings are byte-identical. All seven C doubt/context loci were decided, with one closing quotation remaining doubtful. Root inspected the only changed locus on B’s existing crop. The 11-row inventory covers the manuscript number, all text blocks and the parenthetical continuation, nested underline and archive-number comment. The lower half contains only the archive foliation. The variable-renaming remark was checked as ink, not as a mathematical assertion against another page.',viewed=['readers/019/B/crops/02.jpg'],notation=R['C']['notation'])
+with (W/'SP49_CW_109_workflow.md').open('a') as f:f.write('\nAfter scan 019, version 06 remains unchanged. The three full readings were identical, with one resolved period/comma doubt and one retained closing-quote doubt. The exact-diff requirement produced no false collation claims. Root reused one crop. A transient exec transport failure during this page recovered on the next retry with the workspace intact; no restoration or extra checkpoint was necessary.\n\n| Scan | A | B | C | Main new | Main reused | Total distinct crops |\n| --- | ---: | ---: | ---: | ---: | ---: | ---: |\n| 019 | 5 | 4 | 3 | 0 | 1 | 12 |\n')
+print('Scan 019: one C change, one remaining doubt, eleven inventory rows.')

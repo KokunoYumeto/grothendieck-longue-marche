@@ -1,0 +1,10 @@
+This ZIP retains every logical document and original crop.
+
+The page TeX, reader TeX, JSON, tables, notes, scripts and logs are ordinary files.
+Large PNG crops use a reversible lossless storage encoding to fit the single-file delivery limit. Every encoded crop was decoded and reconstructed to exactly the original PNG bytes, with SHA-256 equality checked before packaging. No pixel, crop boundary or reading was changed.
+
+To restore the exact PNG paths referenced in the records, extract this ZIP and run:
+    python3 RESTORE_CROPS.py
+Use the Pillow and zlib versions recorded in CROP_STORAGE.json. Pillow must have WebP support. The script verifies each reconstructed hash and refuses to overwrite a different existing file. The LOSSLESS_CROPS payloads are also directly viewable images.
+
+ARCHIVE_MANIFEST.json describes the original logical files. CROP_STORAGE.json gives the one-to-one original-path/payload mapping, original and payload hashes, PNG replay settings, and the explicit inverse. Prior archives and source work files were not overwritten or deleted.

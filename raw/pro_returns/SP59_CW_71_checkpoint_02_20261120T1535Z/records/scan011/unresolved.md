@@ -1,0 +1,1 @@
+- Initial q/g and nu/v; blotted final index; older A/H; G/E alphabet and wedge/cross in top pencil diagram; detached short tick.

@@ -1,0 +1,2 @@
+- Only the content of the box beneath V remains uncertain; both alternatives are transcribed.
+- Crop register, scan 026: (737,1933,812,1993) boxed subscript, rotated 180°; (896,2051,1030,2110) réliant, rotated 180°.

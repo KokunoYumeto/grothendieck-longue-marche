@@ -1,0 +1,45 @@
+# Root crop observations — scan 030 (working, before reader comparison)
+
+All items below were observed on existing reader A crops; no new root crops so far. A16 display had previously been truncated; redisplayed singly successfully and now counts as seen. Hypotheses remain provisional until full returns.
+
+- A01: p.371 p intersects orange-brown material damage; no reason to delete p. Low point after p. Mark after l is a short midheight dash/two connected lobes, suggesting l-14 rather than C l.14.
+- A02: reference reads l16 with distinct low black point between 1 and 6, just right of 1 foot. Preserve once at that position; do not invent numerical l1.6.
+- A03: verse ending visible; undotted joined initial strokes still allow inverse/unverse/universe. Keep doubt. Closing pair clear. High short gray dash above finite may be its first i dot; do not duplicate dot plus separate mark. Second i has point. Thin vertical trace crosses final e.
+- A04: no separate low point after p373. Detached upper numeral fragments are not quotes.
+- A05: recommendation opener is an arch with two legs joined at apex; retain double/single doubt.
+- A06: low gray point after p374 is visible; use p.374.
+- A07: commuting opener has two separated high bodies; retain double opener. Large c alone is not capitalization evidence.
+- A08: old/live digits at381 overlap one glyph space. Live3 has two open-left bowls; old8 obscured beneath. Resolve live3 provisionally, retain old8 doubt. Mark after l elongated dash/comma, not round point.
+- A09: bothering closer one connected hook with two prongs; double/single doubt.
+- A10: suggest opener arch with joined legs; double/single doubt. Tiny spot near S likely letter discontinuity.
+- A11: after inner with four separated low dark bodies, first two smaller/slanted then two larger descending. C three-dot ellipsis loses a body. Closing paren/pair clear.
+- A12: before congruence one raised cross-shaped connected glyph, four arms. C pair/single/plus alternatives still plausible; if plus is retained, preserve its raised position. Congruence one wave/two bars clear; closing pair clear. Formula7 absent, no mathematical conclusion.
+- A13: cancelled suffix after commute buried in loops; retain deleted s doubt. e appears live.
+- A14: cancelled with under zigzag; following pair clearly above/beyond ending cancellation, retained live. to and its closing pair live.
+- A15: three high bodies are two opening quotes plus i dot, not three quotes.
+- A16: saying closer has two legs joined by thick diagonal; double/single doubt. Display successful after earlier truncation.
+- A17: with closer has separate angular left stroke and slanted right stroke: double pair retained. Gray downward trace beneath left belongs to vertical material course unless contrary wider evidence.
+- A18: 397/391 still ambiguous; short upper arm + long bent stem. p point visible. Do not resolve from sequence.
+- A19: k-M and round parentheses clear; opener one bent body with tiny prong, single/fused double uncertain. Root also sees separate small black point left of opening parenthesis below opener, preserve as separate geometry if all readers omit it. Closing pair clear.
+- A20: corner last digit has two open-left bowls with long lower arc; 23 remains possible alongside inherited29. Keep archive number as comment with doubt, not body text.
+- A21: isolated compact dark point below/right377 is visible, with no connection to text. Preserve unassigned origin, not punctuation.
+- A22: separate small dark vertical oval point right of394 closing pair, at quote height. Reproduce separately, not as baseline full stop.
+- A23: two separate dark points rise to right, near396, left of a diffuse segmented gray vertical material course. Preserve two points unconnected; course is not a black ink rule in this local crop.
+- A24: lower-right spot has two diffuse dark upper cores and green/yellow/blue-gray halo, no distinct pen trajectory; looks material damage/stain rather than a writing sign. Await all reader classifications, document presence.
+- A25: after usual an oblique curved comma-shaped body with lower foot, not a round full stop. Comma supported, assess whether period alternative needed after all returns.
+- A26: l.-3 has distinct low point followed by horizontal dash; C omitted point.
+- C02: first371 didnt opener has two distinct strokes, one longer and one short. Retain double opener. Gray low stroke at left is the4 reference, not a separate cross.
+- C05: compact its372 opener has two angled strokes plus i-dot continuation/merged low part; closer a joined n-shaped pair with two substantial stems. Not automatically three quotes or a single hook. Provisional retain C pair pending C explanation.
+- C07: wont377 has two long opening strokes joined at foot, and two separated closing strokes. Retain both C double edges.
+- B03:377 l.-15 already C point before dash; an additional separate small dark body with gray tail lies between1/5 at middle height, preserve if proposed; its opener two distinct small ticks, closer two joined arms.
+- B05: insufficient379 has two clear separated opening strokes and two closing strokes; word and quotes confirm C.
+- B06: dont380 opener has two identifiable C-shaped lobes joined diagonally, double retained; l.15 clear. Crop upper edge excludes part of closer; consult existing C09 only if closer is disputed.
+- B10: left vertical trace thin gray with dark beads/interruptions, materially different from black handwriting; locally straight course at fixed gutter between page and line refs. Do not infer full endpoints from this middle crop. Material/ink classification to reconcile returns.
+- B11: right vertical course dark and almost continuous upper portion, segmented/beaded below, very straight. Need reader layout classification; local crop alone cannot assign handwriting or determine all endpoints.
+- B14:386 l.-11 has a faint gray low point between l and dash; retain C period, no removal merely for faintness.
+- B24: separate compact dark point to right393 is visible; reproduce as an isolated point with origin unassigned.
+- B25: isolated dark upper oval with downward faint short slant below/right393; preserve short descending stroke without attaching meaning.
+- C09: crop for dont380 was explicitly opener-only (x329–498); B06 also ends496 and lacks full closer. The apparent long pair are ff descenders from preceding insufficient. New root01 includes previously uncovered right-hand closer x498+ and the connecting ff above. One short detached closing slant is visible to right of second f descender; a second mark might be merged with that descender, but is not separately visible. Reject B absence, narrow C pair to single-first/double-second doubt. One new root crop, not a re-enhancement or re-reading of a settled locus. Improve next brief: crop bounds must contain whole disputed edge and neighbouring stroke source before claiming absence.
+- C21: interpreted395 opener one arch with a long left limb and short right limb, supports pair/single uncertainty. Low mark beneath it belongs to initial i; do not draw twice. saying closer independently uncertain as A16.
+- CORRECTION of earlier C02 working observation: source-coordinate comparison with A01 places the clear black4 in the reference at x283–308, while C02 low gray hook/cross lies farther right around x323–345. They are distinct. Adopt C geometric preservation of the faint low group before didnt; do not misidentify it as the already transcribed4. A01 was redisplayed for this new comparison; no new crop.
+- A01 separator after l is two touching dark lobes at midheight, wide/short enough for dash versus elongated point. Root will keep dash/point uncertainty rather than flattening it to a conventional stop.

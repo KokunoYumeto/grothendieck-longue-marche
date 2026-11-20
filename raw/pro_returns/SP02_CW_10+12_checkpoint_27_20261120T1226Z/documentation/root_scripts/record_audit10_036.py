@@ -1,0 +1,11 @@
+from pathlib import Path
+import json,sys
+sys.path.insert(0,str(Path('SP02_CW_10+12/scripts').resolve()))
+from record_audit import build_revision
+key='B10-01_10_scan036';out=Path('SP02_CW_10+12');s=json.loads((out/f'documentation/audit_sessions/{key}_audit001.json').read_text());r=json.loads((out/f'documentation/page_records/{key}.json').read_text())
+p=dict(audit_id=s['audit_id'],baseline_page_sha256=s['baseline_page_sha256'],audit_reading_complete=True,audit_inventory_confirmed=True)
+p['inventory_patches']={'edge-deletion':{'hand':'another unnamed hand'},'accent':{'first_words_or_objects':'handwritten acute over typed e and apostrophe in d’équivalence'}}
+p['inventory_extra']=[dict(scan='10:036',sheet_kind='typescript',hand='another unnamed hand',element='audit-archive',kind='margin note',position='bottom left',first_words_or_objects='archive folio35 retained in comment',transcribed='yes')]
+p['crops_upsert']=json.loads(Path('work/audit10_036_crops.json').read_text())
+p['observations']='Root ordered second reading, whole and both actual halves before image-first observations/text-open receipt. All15 fresh audit crops were personally viewed. Every word, accent, punctuation, mathematical letter/index, product, quotient slash, topology sign, arrow, underline and editorial state was compared with the consolidated page. The square was checked corner by corner and label by label: R,X/X,X with pr1 o v, pr2 o v and two p labels; the surprising lower-right X is unequivocal and retained. The absent multiplication cross in the last quotient of10.7 and absent tel que after i>=j are also retained. The first composition oval remains uncertain as to typographic o/circle; the cancelled du, cancelled formula after soient, lower projection-arrow head and clipped right-edge deletion remain unresolved after enlargement. The handwritten acute and apostrophe in d’équivalence are visible. Top4 and bottom35 have separate manuscript/archival roles; the archival comment is added to inventory. No textual change is justified; no context or mathematical proof check was used.'
+Path('work/audit10_036.json').write_text(json.dumps(p,ensure_ascii=False,indent=2));_,t=build_revision(p,s,r,(out/f'pages/{key}.tex').read_text());Path('work/audited10_036.tex').write_text(t)

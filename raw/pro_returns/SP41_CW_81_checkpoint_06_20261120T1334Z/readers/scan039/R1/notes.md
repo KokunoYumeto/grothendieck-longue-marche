@@ -1,0 +1,27 @@
+## scan039-note-01
+
+The page writes (26) with x and y above vertical membership signs and omega suffixes. The right side contains alpha unequal beta and the order sign indexed by the pair of Pi-shaped objects. Its underbrace adds i.e. and the intersection formula ending in a crossed empty-set oval. Those visible strokes, rather than an expected construction, determine the transcription.
+
+## scan039-note-02
+
+The upper slanted note says “il faut vérifier la transitivité de cette relation -- c’est immédiat”. Transitivité remains uncertain where it crosses Alors. The author’s request and “c’est immédiat” are source remarks; this reader performed no proof check of transitivity.
+
+## scan039-note-03
+
+Display (27) gives a map from C to a P-shaped target with a compressed subscript, followed by the element assignment (alpha,x) to Sigma-alpha with superscript x. The prose contains croissante, injective, isomorphisme d’ens ordonnés, and the written abbreviated criterion “il f et s. que ... strictement non panaché”. The target subscript and the ending of elle(s) remain unresolved. The singular soit was not used to remove the visible ending uncertainty.
+
+## scan039-note-04
+
+The separate line “Indépendamment de X :” precedes the underlined Définition. The defined term begins maquette/moquette and ends in live ordonnée over older de-like material. The definition includes finite C through the added fini, an added sigma, the point abbreviation with raised t, and an order relation. An additional colon is visibly written after la before the next-line propriété(s) suivante(s). The article does not settle the ambiguous noun and adjective endings.
+
+## scan039-note-05
+
+Several trial formulations and branch labels are cancelled. The final a) line uses the written sss. Its old comparables, et sigma y < sigma x continuation lies below the live non comparables insertion. A long cancellation beginning near b) crosses that older a) continuation; the lower b) implication remains live. The transcription preserves the author’s revision rather than relocating that old continuation after the b) premises.
+
+## scan039-note-06
+
+The lower slanted NB uses compar. and congrus mod sigma. The earlier cancelled trial visibly ends mod C, with an open capital C and a comma. Both written forms are retained in their separate positions. The final horizontal NB has an underlined NB and an unresolved indique/implique word.
+
+## scan039-note-07
+
+No authorial date or separate title is visible. The light pencil 38 at the lower-left edge is retained only as the archive sheet number. No authorial manuscript page number is assigned. Display labels are (26), (27) and uncertain (28). There is no independent drawing or graph diagram on this page; arrows and braces belong to the displayed formulas and insertion apparatus.

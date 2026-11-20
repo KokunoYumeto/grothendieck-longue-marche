@@ -1,0 +1,3 @@
+# Main adjudication, scan 009
+
+All three returns and their complete text differences were compared. Main inspected seven existing reader crops and one new insertion crop, once each. The connected overprint found by R3 is confirmed; both f/c correction orders remain. The date crop is artifact-dominated, so the full C date uncertainty is retained instead of narrowing its scope. The normality cancellation and reference overprint remain qualified. The inserted n, Already, absent terminal period at the edge, and dotted subscript i are confirmed. The D_i note corrects prior descriptive evidence without changing either witness’s literal index. Actual mathematical checks are recorded separately.

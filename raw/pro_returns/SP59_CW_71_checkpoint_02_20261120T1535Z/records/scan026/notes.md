@@ -1,0 +1,5 @@
+The sheet is almost blank. A three-line draft headed Lemme I is upside down at its foot and cancelled by one diagonal stroke. The top half has no text. The lower half was rotated 180 degrees without enlargement for its one line-by-line reading. No manuscript page numeral, date or page total appears; archive number 25.
+
+This is an unfinished version of the neighborhood lemma: it stops at “il vérifie”. It writes Gamma^1_xy, with a single raised upright, rather than the star on scan 025; that distinction is retained. “l’un de deux arcs” and the acute in réliant are visible. The family symbol is beta in both places. The boxed mark below V has two parallel top strokes sharing the left side: these may be a Gamma within the box, or a retraced box around xy. The existing Gamma_xy/xy alternatives remain.
+
+No new mathematical assertion is complete on this leaf, and no proof check was performed. H has no transcription for it, so this page is checked against C alone and contributes no H collation rows.

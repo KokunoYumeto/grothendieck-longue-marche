@@ -1,0 +1,37 @@
+from pathlib import Path
+import json,sys,copy
+sys.path.insert(0,str(Path('SP02_CW_10+12/scripts').resolve()))
+from record_audit import build_revision,stable_changes
+key='B10-02_10_scan050';out=Path('SP02_CW_10+12');s=json.loads((out/f'documentation/audit_sessions/{key}_audit001.json').read_text());r=json.loads((out/f'documentation/page_records/{key}.json').read_text());c=stable_changes(r,key);t=(out/f'pages/{key}.tex').read_text()
+p=dict(audit_id=s['audit_id'],baseline_page_sha256=s['baseline_page_sha256'],audit_reading_complete=True,audit_inventory_confirmed=True,edits=[],upsert_changes=[])
+def edit(old,new,count=1):p['edits'].append(dict(old=old,new=new,count=count))
+def update(i,**kw):
+ z=copy.deepcopy(c[i]);z.update(kw);p['upsert_changes'].append(z)
+edit('trivialement','triviale-\\linebreak ment')
+edit('se factorise par','se facto-\\linebreak rise par')
+edit('système projectif de groupes','système projectif de grou-\\linebreak pes')
+edit("est un monomorphisme. On a donc", "est un monomor-\\linebreak phisme. On a donc")
+edit(r'\deleted{\unsure{g}}v',r'\deleted{g}v')
+edit(r'\deleted{ra de}',r'\deleted{ra d\unsure{e|a}}')
+edit(r'\draw (0,0) ellipse (.6 and .38);',r'\draw (.39,.31) .. controls (.5,.55) and (-.25,.5) .. (-.6,.1) .. controls (-1,-.5) and (.25,-.5) .. (.55,-.05) .. controls (.7,.2) and (.5,.3) .. (.34,.28);')
+edit(r'\draw (0,0) ellipse (.9 and .23);\draw (-.6,-.25) .. controls (-.8,-.2) and (-.8,-.4) .. (-.8,-.55);',r'\draw (-.55,-.18) .. controls (-1.2,-.13) and (-1.2,.35) .. (0,.3) .. controls (1.1,.3) and (1.2,-.2) .. (.2,-.24) .. controls (-.7,-.24) and (-.8,-.2) .. (-.8,-.55);')
+edit('par lequel',r'par le\handwritten{q}uel')
+edit(r'le schéma quasi-compact\inserted',r'le schéma quasi-compa\deleted{\unsure{t}}\handwritten{c}t\inserted')
+update(3,final=r'\deleted{g}v',shows='A lower oval descender with a left return and a surviving upper bowl at the left of v identify an underlying typewritten g. The darker v remains on top.',crop='audit-v-overprint',confidence='medium')
+update(11,final='TikZ superset sign inside almost closed oval with upper-right gap',shows='The open-left bowed sign is unchanged. The thin surrounding oval has two distinct endpoints near the upper right, leaving a visible small gap; that gap is preserved.',crop='audit-supset',against_C=True)
+update(15,crop='audit-structure-sheaf')
+update(16,final=r'ra d\unsure{e|a}',shows='The r shoulder, a bowl, space and d ascender are separable under the horizontal cancellation. The final rounded glyph and rightward lower trace are merged with the cancelling strokes; e remains the preferred reading but a cannot be excluded.',crop='audit-rade',confidence='low')
+update(24,final='TikZ open oval-like enclosure continuing into lower-left insertion anchor',shows='The left arc ends under the first letters of plus, while the returning lower edge continues into the downward insertion anchor after le. The two lower-left endpoints do not close into an ellipse.',crop='audit-plus-petit')
+rows=[('physical end-line divisions','trivialement; factorise; groupes; monomorphisme','same undivided words',r'triviale-\linebreak ment; facto-\linebreak rise; grou-\linebreak pes; monomor-\linebreak phisme','The source has a visible hyphen at each physical line end and resumes each word on the following line. The divisions are retained within the existing cancellation state.','audit-opening;audit-upper-revision;audit-mid;audit-Gprime-arrow','high','other'),('overlapping letter in quasi-compact before inserted et séparé','compact','compact',r'compa\deleted{\unsure{t}}\handwritten{c}t','The c-shaped outer curve overlaps a tall central upright and crossbar. The underlying glyph resembles t but is partly merged with the correction; its uncertainty is retained separately from the live c.','audit-separe','low','deletion state (struck given live or live given struck)')]
+for no,row in enumerate(rows,30):
+ place,C,H,final,shows,crop,confidence,kind=row;p['upsert_changes'].append(dict(id=key+f'-L{no:03}',place=place,C=C,H=H,final=final,shows=shows,crop=crop,confidence=confidence,against_C=True,against_H=True,marked_in_H=False,kind=kind,consequential=False))
+p['remaining_doubts']=[copy.deepcopy(d) for d in r['remaining_doubts'] if d['line']!='earlier glyph below condition v']
+p['remaining_doubts'] += [dict(line='cancelled ending after résulte, last letter',reading='e',alternatives='a',confidence='low',comment='Horizontal cancellation merges with the final bowl and rightward lower trace.'),dict(line='quasi-compact underlying letter',reading='t',alternatives='',confidence='low',comment='Central upright and crossbar overlap the live c-shaped correction.')]
+p['inventory_patches']={x['element']:{'hand':'another unnamed hand'} for x in r['inventory_resolved'] if x['hand'] in ['unknown','unnamed hand']}
+for el,kw in {'050-20':{'kind':'drawing'},'050-35':{'kind':'drawing'},'050-36':{'first_words_or_objects':'open oval-like enclosure continuing into lower-left insertion anchor'},'050-15':{'first_words_or_objects':'superset sign in oval with small upper-right gap'},'050-23':{'first_words_or_objects':'ra d with final e|a doubtful'},'050-41':{'first_words_or_objects':'g beneath v resolved'}}.items():p['inventory_patches'].setdefault(el,{}).update(kw)
+p['inventory_extra']=[]
+for el,hand,kind,pos,words in [('archive','another unnamed hand','margin note','bottom left','archive folio49 retained in comment'),('q-retouch','his hand','text','par lequel','q retouched, with long descending stem'),('compact-under','typewriter','deletion','quasi-compact before et séparé','underlying t-like glyph, doubtful'),('compact-over','his hand','insertion','same word','c-shaped correction over preceding glyph')]:p['inventory_extra'].append(dict(scan='10:050',sheet_kind='typescript',hand=hand,element='audit-'+el,kind=kind,position=pos,first_words_or_objects=words,transcribed='yes'))
+p['crops_upsert']=json.loads(Path('work/audit10_050_crops.json').read_text())
+p['observations']='Root ordered second reading: whole and both actual supplied halves personally viewed before image-first receipt and text opening, then39 fresh crops viewed, including the slanted manuscript number rotated upright. Every agreed and differing word, accent, arrow, index, underline, cancellation and addition was compared with the ink. Four physical word divisions restored. The underlying g below condition v is resolved from its two bowls/descender. The final letter of cancelled ra de remains uncertain e|a after closer inspection. The retouched q in lequel is tagged handwritten without a lexical collation row, since the word is unchanged. A t-like underlying glyph in quasi-compact is retained with doubt beneath the c correction. Circled superset and plus petit enclosure gaps/tails are represented. All three implications show paired shafts; morphism arrows and the leftward limit arrow remain single. Aut arguments retain their differing levels of legibility. The live H over an uncertain earlier G, lemma comma-like mark, plain underlined O, Soient and the large cancellation scope are retained. Manuscript18 and archive49 remain distinct. Eight doubts remain. No context or mathematical proof check was used.'
+Path('work/audit10_050.json').write_text(json.dumps(p,ensure_ascii=False,indent=2));_,new=build_revision(p,s,r,t);Path('work/audited10_050.tex').write_text(new)
+print('edits',len(p['edits']),'upserts',len(p['upsert_changes']),'crops',len(p['crops_upsert']))

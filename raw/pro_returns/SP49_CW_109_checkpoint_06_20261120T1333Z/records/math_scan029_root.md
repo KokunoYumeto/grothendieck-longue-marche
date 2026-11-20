@@ -1,0 +1,3 @@
+# Mathematical attention — scan029
+
+The page is a wording-correction list. The crossed formula at the357 reference and the star in the355 quotation require ink scrutiny: a superscript star/plus can change an operation, and a buried argument/subscript cannot be inferred from expected variance. The surrounding definitions and cited Formulae(2)/(B or3) are absent here. The author explicitly writes that formulae are unreadable and asks a question; this is a qualification to preserve, not a theorem or equation available for proof. No substantive mathematical claim has been checked by the root at this stage, so there is no mathematical check event. Final crop decisions remain for the three independent returns.

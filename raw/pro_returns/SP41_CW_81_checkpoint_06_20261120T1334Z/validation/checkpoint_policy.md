@@ -1,0 +1,11 @@
+# Checkpoint schedule and reconstruction
+
+The run began at 2026-11-20 08:53:22 UTC. Checkpoint due times are that start plus integer multiples of 45 minutes: 09:38:22, 10:23:22, 11:08:22 UTC, and so on. A new numbered ZIP is created only at a due time. No earlier checkpoint ZIP is included or modified.
+
+Archives contain the complete `work/` tree as it exists at the checkpoint, with an archive manifest. A final page is represented by `decisions/scanNNN.json`, its `pages/` file, and its completion line in `progress.log`. Raw readers for an in-progress page may be present but remain unadjudicated until that completion line. Draft alignment files under `decisions/drafts/` are aids to the main reader, not decisions.
+
+To reconstruct the working environment, unpack the original user ZIP once into `source/`, restore the newest checkpoint into `work/`, and recreate source-only `runtime_inputs/` using `scripts/prepare_packets.py` and `scripts/index_c_doubts.py` (attach each generated C_doubt_index.tsv path to packet.json). Original inputs and source-only packets are deliberately omitted from checkpoints. The bundled Library upload helper can be obtained unchanged through the Library skill; it is an environment integration helper, not a transcription deliverable.
+
+All paths stored in raw evidence are absolute to the original workspace. Final decision crop paths are relative to the archive. Rebase source and work roots when restoring elsewhere. The single run register records assigned independent readers and brief/notation snapshots; it does not certify completion on its own. No OCR, text layer, compilation, or external research is part of this workflow.
+
+From checkpoint 02 onward, scripts/checkpoint_scheduler.py runs in a persistent executor session and performs only the already-specified scheduled snapshot/upload. It starts at the next due slot, never saves an extra archive on exit, and stops when private/checkpoint_scheduler.stop exists. The main reader inspects each saved result. An initial detached-child launch did not persist or create a state file; the scheduler was then started in a tracked foreground session. No checkpoint was created by that unsuccessful launch.

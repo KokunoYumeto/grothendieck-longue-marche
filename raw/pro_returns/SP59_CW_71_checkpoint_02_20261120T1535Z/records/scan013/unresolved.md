@@ -1,0 +1,1 @@
+- Ornamental X and K alphabets; second union index delimiter; cancelled alpha/x, X/K and Sigma/E.

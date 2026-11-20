@@ -1,0 +1,2 @@
+- All remaining readings are explicitly marked in the page and doubts table.
+- Additional crop evidence: 021 (445,185,950,245) byline n/u join; (1490,1075,1610,1145) overwritten u/e ending; (1430,2175,1635,2240) s and hatched formula; (38,2205,140,2300) rotated -20 degrees, faut/faux.

@@ -1,0 +1,37 @@
+\scanpage{54}
+\begin{flushright}
+\illegible{1}\unsure{t}kin \mspage{14}
+\end{flushright}
+
+\[
+\handwritten{O\left(\sum_{p<N}N/p\right)=O\left(N\unsure{-\log|\log}-\log N\right)}
+\]
+$=O(N)$ in practice for computers in this millenium.
+
+Next if we have a given series $g(x)$,and multiply(divide) it by Euler's series*
+
+\noindent\rule{\linewidth}{0.3pt}\par
+\noindent *or other suitable $\handwritten{\vartheta}$-series of the form $\handwritten{\sum\lambda(n)\ldotp x^{an^{2}+bn}}$
+\par\noindent\rule{\linewidth}{0.3pt}
+{\small
+\[
+f(x)=\handwritten{\prod_{r=1}^{\infty}}(1-x^{r})=1-x-x^{2}+x^{5}+x^{7}-x^{12}\ldots=1+\handwritten{\sum_{n=1}^{\infty}}(-1)^{n}\handwritten{\left\{x^{\frac12 n(3n-1)}+x^{\frac12 n(3n+1)}\right\},}
+\]
+}
+this takes $O(N^{3/2})$. The subroutines for this were expertly coded by Dr. Paul Bryant \inserted{from my Fortran version}. Specifically the time required for $1000N$ terms was about $\handwritten{\frac14}N^{3/2}\deleted{\unsure{/4|/-4}}$\reversemarginpar\margin{\handwritten{\tikz[x=1ex,y=1ex,baseline=0pt]{\draw (0,-1.1)--(1.8,2.5) (.95,1.23) .. controls (1.78,2.7) and (.25,1.7) .. (.55,.6) .. controls (1.25,-.1) and (1.38,.36) .. (.91,.76);}}} seconds,so that(for example)to compute \uline{$p(n$}$)$ modulo \uline{$m$} for $n\handwritten{\leqslant}40000$ takes about a minute. The reduction modulo $m$ in the operation
+\[
+\handwritten{a(n)=b(n)-b(n-1)-b(n-2)+b(n-5)+b(n-7)-b(n-12)\ldots}
+\]
+is performed only at the end(and not after each individual $+$ or $-$ ), so that to avoid overflow there is a restriction that $m=(N/6)^{1/2}$ be less than $6.7\times10^{10}$.
+
+Finally multiplication(division) of two given general series takes $O(N^{2})$ \inserted{and had to be avoided at all costs}. In view of this a certain amount of modular(rather than programming)ingenuity was required; in one case a natural definition $g^{2}(x)$ with $g(x)$ already computed was replaced by $g^{2}(x)=$ a sum of three terms each involving several $\handwritten{\vartheta}$-multiplications and divisions.
+
+The possibility of multiplying(dividing) by Jacobi's series
+\[
+f^{3}(x)=1-3x+5x^{3}-\ldots=\handwritten{\sum_{n=0}^{\infty}(-1)^{n}(2n+1)x^{\frac12 n(n+1)}}
+\]
+was considered,but it turned out to be slightly slower than 3 successive uses of Euler's series,and also involved a heavier restriction on the size of $m$ and $N$.
+
+In the end the limiting factor for most of these programs was store rather than speed. Although the Atlas Supervisor has a ``drum learning'' program which enables many jobs to use the concept of a one-level store of about 90K without serious loss of efficiency,
+\normalmarginpar
+% archive sheet number: 53

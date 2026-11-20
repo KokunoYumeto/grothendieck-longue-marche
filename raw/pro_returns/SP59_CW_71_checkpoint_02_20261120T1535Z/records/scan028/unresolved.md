@@ -1,0 +1,2 @@
+- No unresolved text after the paired-label decision.
+- Crop register, scan 028: (243,296,268,322) lower endpoint label.

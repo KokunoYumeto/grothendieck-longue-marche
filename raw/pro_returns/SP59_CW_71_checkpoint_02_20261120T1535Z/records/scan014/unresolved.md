@@ -1,0 +1,4 @@
+- v/nu: crop 014 (900,40,1135,115), same cupped form in all three letters.
+- Upper cancelled figure label v/x: crop 014 (490,465,557,522), blackened body prevents decision.
+- Cancelled arrow, crossed sentence and crowded proof words as listed in doubts.
+- Last implication initial c): crop 014 (1180,985,1270,1070), open right side and no b ascender resolve C doubt.

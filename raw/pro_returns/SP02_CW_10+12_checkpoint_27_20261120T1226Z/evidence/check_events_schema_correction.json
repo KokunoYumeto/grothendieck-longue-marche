@@ -1,0 +1,85 @@
+{
+  "result": "PASS",
+  "checked_utc": "2026-11-20T09:30:51.835859+00:00",
+  "scope": "Correction of the mechanical CHECK_EVENTS vocabulary to the explicit user schema. Helper/docs/templates and isolated synthetic tests only; no live audit, context, mathematical check or transcription operation.",
+  "authorized_columns": [
+    "statement_id",
+    "date",
+    "who",
+    "type",
+    "outcome"
+  ],
+  "canonical_event_types": [
+    "targeted proof check",
+    "independent re-proof",
+    "computation or formal certificate",
+    "used and rechecked in this run",
+    "carried as background without fault found",
+    "refuted"
+  ],
+  "refuted_handling": {
+    "canonical_type": "refuted",
+    "outcome_forms": [
+      "refined statement ID: ID",
+      "refined statement ID = ID",
+      "refined statement ID ID",
+      "refined SID=ID",
+      "refined_statement_id=ID",
+      "SID=ID"
+    ],
+    "supported_equivalent_type": "refuted: ID",
+    "case": "Label words case-insensitive; identifiers preserved. Quoted terminal punctuation preserved; plain terminal sentence punctuation excluded.",
+    "conflicting_explicit_ids": "Rejected rather than silently chosen.",
+    "no_extra_target_row_or_declaration_required": true
+  },
+  "coverage_rules": {
+    "all_six_types_accepted_for_mathematical_statement_coverage": true,
+    "background_reported_separately_from_performed_checks": true,
+    "bibliographic_transcription_questions_require_reviewed_evidence_but_no_event_row": true,
+    "no_invented_types_permitted": true
+  },
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python scripts/tests/test_final_readiness.py CheckEventVocabularyTests FinalReadinessTests.test_complete_gate_is_readonly FinalReadinessTests.test_bibliographic_question_requires_evidence_but_no_check_event FinalReadinessTests.test_transcription_question_requires_evidence_but_no_check_event FinalReadinessTests.test_additional_math_event_before_context FinalReadinessTests.test_bibliographic_question_does_not_satisfy_global_math_gate",
+    "passed": 15,
+    "failed": 0,
+    "runtime_seconds": 4.2,
+    "scope": "Ten vocabulary/refutation unit tests plus five selected synthetic full-gate/phase/nonmathematical-exemption tests. No broad rerun or live validator invocation.",
+    "initial_attempt": "An isolated test-file placement error left self.reject() on the new unit class; corrected before the final 15-test PASS. No live artifact was affected."
+  },
+  "files": {
+    "scripts/validate_final_readiness.py": {
+      "bytes": 34414,
+      "sha256": "531bf19713dce3bf98602c75a77ee68bbd280ee7d016c009147054fdf79c315b"
+    },
+    "scripts/tests/test_final_readiness.py": {
+      "bytes": 25974,
+      "sha256": "e7240e9aae0bfac1194f56f261f863c48258b38f8f87254744f0918440caf831"
+    },
+    "documentation/final_readiness_schema.md": {
+      "bytes": 13179,
+      "sha256": "4206e65cc686eedad5de4678b50eccc4a801a9ef407633773e3d5bc79ce011bf"
+    },
+    "documentation/ordered_audit_quick_reference.md": {
+      "bytes": 12064,
+      "sha256": "82b7ac538f20452a861c7ba6495f9e5914022efe36b3d1e719800699c4550f1b"
+    },
+    "documentation/templates/final_readiness/README.md": {
+      "bytes": 1240,
+      "sha256": "626d77214e7f210aeac18144cd70948a4cffdd3cc3a8389434bddcb3b575763a"
+    },
+    "documentation/templates/final_readiness/CHECK_EVENTS.tsv": {
+      "bytes": 35,
+      "sha256": "dd24c34e0a87d344d18048d222591ae12e50f7db7f224d9deaebf0243bc1241d"
+    }
+  },
+  "CHECK_EVENTS": {
+    "live_bytes": 35,
+    "live_sha256_before": "dd24c34e0a87d344d18048d222591ae12e50f7db7f224d9deaebf0243bc1241d",
+    "live_sha256_after": "dd24c34e0a87d344d18048d222591ae12e50f7db7f224d9deaebf0243bc1241d",
+    "live_event_rows": 0,
+    "unchanged": true,
+    "template_event_rows": 0
+  },
+  "historical_evidence": "Earlier helper reports/checkpoints are retained unchanged. Their old event vocabulary is superseded by this explicit correction and the current schema guide.",
+  "protected_live_work": "No live pages, page records, audit histories/sessions/receipts, projections, progress, or CHECK_EVENTS were written."
+}

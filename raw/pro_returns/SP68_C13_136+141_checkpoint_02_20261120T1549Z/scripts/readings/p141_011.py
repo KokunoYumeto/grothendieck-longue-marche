@@ -1,0 +1,67 @@
+import sys,re
+from pathlib import Path
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
+from workflow import Page
+p=Page(141,11)
+p.replace(r'\unsure{Tte}','Tte');p.replace(r'\unsure{standart|standard}','standart');p.replace(r'\unsure{comb.|conv.}','comb.');p.replace(r'\unsure{ép.}','ép.');p.replace(r'\unsure{\omega|W}',r'\omega')
+p.replace('est homéomorphe à un','est homéomorphe : un')
+# Replace the regular radial fan by a manual coordinate copy of the observed strokes.
+a=p.tex.index(r'\draw (9,3.1)');b=p.tex.index(r'\node at (-.3,1)',a)
+fan=r'''\begin{scope}[shift={(7.9,3.15)},x=.0105cm,y=-.0105cm]
+\draw (15,94)--(118,19)--(218,110)--(206,198) (204,208)--(100,208) (85,204)--(20,110);
+\draw (125,122)--(118,30) (113,112)--(75,69) (120,123)--(25,105);
+\draw (133,112)--(153,57) (138,115)--(186,85);
+\draw[line width=1.2pt] (128,122)--(208,111);
+\draw (145,134)--(205,143) (142,137)--(207,196) (142,137)--(180,206);
+\draw (126,138)--(135,227) (112,144)--(90,198) (114,135)--(69,185) (119,131)--(49,159);
+\draw[line width=.9pt] (118,19) circle(4);
+\foreach \x/\y in {15/94,218/110,206/208,85/204,128/122}{\fill (\x,\y) circle(4);}
+\end{scope}
+'''
+p.tex=p.tex[:a]+fan+p.tex[b:]
+p.replace(r'\node at (6,.9)',r'\fill (2.58,.81) circle(.025);'+'\n'+r'\node at (6,.9)')
+p.replace(r'\draw[->] (3.8,6.2)..controls(4.5,5.95)and(5.3,6)..(5.9,5.65);',r'\draw (3.8,6.2)..controls(4.5,5.95)and(5.3,6)..(5.9,5.65);'+'\n'+r'\draw[->] (5.15,5.91)--(5.55,5.8);')
+p.replace(r'\draw[->,thick] (6.2,5.35)',r'\draw (6.08,5.48)--(6.34,5.1);'+'\n'+r'\draw[->,thick] (6.2,5.35)')
+p.replace(r'\draw[->,thick] (9.4,4.53)',r'\fill (9.15,4.26) circle(.018);\fill (9.05,4.06) circle(.02);'+'\n'+r'\draw[->,thick] (9.4,4.53)')
+p.replace(r'\draw[->,thick] (8.65,2.8)--(8.32,2.57);',r'\draw[->,thick] (8.32,2.57)--(8.65,2.8);')
+p.replace(r'\draw (8.3,2.52)--(8.45,2.32);\draw (8.19,2.2)--(8.43,2.22);',r'\draw (8.3,2.52)--(8.45,2.32);\draw[thick] (8.19,2.2)--(8.43,2.22);')
+p.replace(r'\draw[gray,densely dotted] (12.9,.65) circle(.3);',r'\draw[gray] (12.9,.95)..controls(13.1,1.01)and(13.17,.88)..(13.17,.8) (12.66,.76)--(12.7,.84);'+'\n'+r'\foreach \x/\y in {12.9/.96,13.17/.8,12.66/.57,13.02/.35}{\fill (\x,\y) circle(.02);}')
+p.replace(r'\node[draw,inner sep=8pt] at (5,3.5)',r'\draw (3.6,4)--(6.6,4)--(6.55,2.95) (3.45,3.8)--(3.5,2.98)..controls(4.3,2.72)and(5.6,2.85)..(6.3,2.85);'+'\n'+r'\node[inner sep=8pt] at (5,3.5)')
+p.replace(r'--(3.5,.9)--(2,{.2+1})--(1.65,2.65)--cycle;',r'--(3.5,.9)--(3.3,.95) (3.18,.98)--(2,{.2+1})--(1.65,2.65);')
+p.replace(r'\draw (2.4,3.2)--(1.65,2.65);',r'\draw (2.4,3.2)--(1.65,2.65);\fill (1.55,3.3) circle(.025);\fill (2.1,3.55) circle(.025);')
+p.change('qualification under X','surf. top.','surface top.','surf. top.','The first word ends after f and has a stop; the abbreviation is not expanded.',kind='abbreviation expanded or spelling modernised',against_c=False)
+p.change('component sentence','Tte comp. … est homéomorphe','les comp. … sont homéomorphes','Tte comp. … est homéomorphe','A tall initial T and compressed te begin the line; the verb est and singular homéomorphe are written.',kind='misread word',against_c=False)
+p.change('after homéomorphe','à','à',':','The crop has two separate compact marks, one above the other, with no connected a body. Their visible form is a colon.',kind='other',confidence='medium',crop='141_scan011 (1225,333,1295,402)')
+p.change('spelling of standard disk','doubtful standart or standard','standard','standart','The final letter has a vertical stem and cross-stroke, a t, unlike the preceding looped d.',kind='abbreviation expanded or spelling modernised',confidence='medium',against_c=False)
+p.change('polygon abbreviation','doubtful comb. or conv.',r'\uncertain{pol. conv.}','comb.','After co the compressed m leads into a high-stemmed final b and a distinct stop.',kind='misread word',against_c=False,crop='141_scan011 (422,508,604,597)')
+p.change('following polygon abbreviation','doubtful ép.',r'\ill{}','ép.','Small e with a raised accent mark, long p stem and a separate final stop.',kind=r'readable ink left as \ill{}',confidence='medium',against_c=False,crop='141_scan011 (422,508,604,597)')
+p.change('polygon order phrase','d’ordre n','à n côtés','d’ordre n','A clear d and raised apostrophe precede ordre; one final n follows. No word côtés is written.',kind='misread word',against_c=False)
+p.change('polygon data delimiter',':','=',' : ','Two separate vertically placed dots separate Πn from its tuple.',kind='misread symbol or index',against_c=False)
+p.change('polygon tuple last entry','Rn',r'\uncertain{Fn}','Rn','The letter has a top loop and descending oblique leg, R, before the low n.',kind='misread symbol or index',against_c=False,math=True)
+p.change('first interval left delimiter',']0,1]',r'[0,1] with doubt in note',']0,1]','The heavy first bracket has its terminal strokes turned left, matching the later written ]0,1].',kind='misread symbol or index',against_c=False,math=True)
+p.change('fan inside upper pentagon','14 regular rays ending at sides/vertices; solid top vertex','about a dozen rays; small circle at top','13 interior strokes, some detached, lower one projecting beyond edge; open top vertex','The inspected figure has thirteen radial/near-radial strokes. Several stop short of the centre or boundary. The lowest central stroke crosses the bottom edge; the top vertex is an open ring, and the ray to the right is thickened.',kind='drawing or diagram',against_h=False,crop='141_scan011 (1090,780,1325,1020)')
+p.change('below seven-point line','omitted small dot','omitted small dot','small dot below line','A small blue point lies below the middle-left segment, apart from the seven points on the line.',kind='omission')
+p.change('right upper arc','arrowhead at endpoint','arrow within arc','arrow within arc, line continues','The point is on the descending arc before its right endpoint; a thin continuation follows it.',kind='drawing or diagram',against_h=False)
+p.change('start of thick sloping segment','single stroke','single stroke described','short parallel stroke at upper end','A short thin diagonal accompanies the upper end of the thick descending segment.',kind='drawing or diagram')
+p.change('beneath divided circle','omitted dots','omitted dots','two tiny dots','Two isolated small dark points lie below the left part of the bottom circumference.',kind='omission')
+p.change('lower circle, upper-left external arrow','points down-left','direction not specified','points up-right along circumference','The broad triangular head is toward the upper-right end of this short arc. The inner rotation arrow already points upward/right.',kind='drawing or diagram',against_h=False)
+p.change('lower circle thickening count','four thick stretches plus arrowed fifth','six thick arcs','five thick stretches including arrowed upper-left; separate cross marks','Five extended thick stretches can be distinguished; the short transverse mark at the left is a separate crossing stroke, now drawn thicker.',kind='drawing or diagram',against_c=False)
+p.change('middle of three right-margin circle traces','complete dotted circle','omitted','four dots and two faint partial strokes','Four isolated small marks lie around a very faint incomplete outline; a complete ring of closely spaced dots is not present.',kind='drawing or diagram')
+p.change('first and last right-margin circle traces','two other traces drawn','omitted','broken upper circle and doubly traced lower circle','The right margin also carries a four-part dark broken circle above and a small thin doubled oval below.',kind='omission',against_c=False)
+p.change('boxed second argument','doubtful ω or W',r'\uncertain{W}',r'\omega','Two rounded lower bowls and the inward curl of the right terminal stroke match the ω forms on scan 010; no angular capital-W skeleton is visible.',kind='misread symbol or index',confidence='medium',against_c=False,crop='141_scan011 (977,1910,1068,1995)')
+p.change('frame around Déc','closed box','closed box','frame open at upper left and lower right','The upper edge begins to the right of the left upright; the lower edge stops before the right upright.',kind='drawing or diagram')
+p.change('bottom graph, upper-left connection','direct extra edge from left circled vertex to fork junction','five circled vertices with pendant edges; extra junctions not specified','five-vertex cycle, with two extra upper-left vertices and no direct left-vertex/fork edge','The left circled vertex reaches the fork through a small intermediate corner. The direct diagonal to the upper circled vertex remains. No separate direct edge joins it to the fork.',kind='drawing or diagram',math=True)
+p.change('bottom graph, lower edge','continuous','continuous cycle described','short gap before lower-right circled vertex','The lower sloping edge stops and resumes near the right circle. The small upper-left corner and fork junction also carry ink points.',kind='drawing or diagram')
+p.decision('M1155','first','Tte','Tall initial T and a small crossed t followed by e; short form retained.',confidence='high')
+p.decision('M1156','first','standart','Final t with stem and cross-stroke; the preceding d provides a local comparison.',confidence='medium')
+p.decision('M1157','first','comb.','Compressed middle humps and a high final b stem before a separate stop.',crop='141_scan011 (422,508,604,597)',confidence='high')
+p.decision('M1158','first','ép.','Small accented e, descending p and final dot.',crop='141_scan011 (422,508,604,597)',confidence='medium')
+p.decision('M1159','first',r'\omega','Rounded bowls with inward right curl, matching the period notation on the preceding sheet.',crop='141_scan011 (977,1910,1068,1995)',confidence='medium')
+for k,pos,w in [('text','top left','Carte trouée'),('diagram','top','(X superset K), tels que; downward qualification arrows, surf. top.; sous-variété fermée de dim 1'),('text','upper','Tte comp. de Déc(X,K) est homéomorphe : un Dn*'),('text','parenthesis below','disque troué standart, 1 ≤ n ≤ +infinity'),('text','polygon line','Πn pol. comb. ép. d’ordre n'),('display','left under polygon line','underlined |Πn|×]0,1] superset |Πn| superset Sn'),('display','right of polygon line','Πn:(Sn,An,Rn); Sn subset |Πn|'),('display','below interval','Dn*=|Πn|×]0,1] minus Sn'),('drawing','upper right','pentagon, open top point, four filled vertices, filled centre, thirteen interior strokes'),('drawing','across middle left','seven-point line with two left and three right dots, small dot below'),('drawing','between figures','isolated point above divided circle'),('drawing','middle left','two arcs with arrowheads and transverse arrows; thick slant with short parallel stroke; four thin fan strokes'),('drawing','middle right','seven circumference points, central point, slanted diameter, thick radius, tangent, zigzag, bottom arrow and two lower dots'),('display','right of divided circle','±1/n'),('drawing','below divided circle','circle with five extended thick portions, transverse marks and rotation arrow'),('drawing','right margin lower','three partial circle/oval traces'),('display','lower left','sigma0 sigma1 underlined together; sigma2; E'),('display','lower middle','Déc(hat X,omega) in frame open at two corners'),('display','lower right','tilde X - F'),('drawing','bottom','five circled vertices, extra two upper-left vertices, fork, pendant edges, circled central point, lower-edge gap'),('drawing','right of bottom graph','six-ray asterisk'),('margin note','bottom left','10')]:p.element(k,pos,w,hand='another unnamed hand' if k=='margin note' else 'his hand')
+p.note('Blue-ink sheet headed Carte trouée, foliation 10, no date. It gives conditions on (X⊃K), a cut-space condition involving standard punctured disks, and a combinatorial polygon description of Dn*. The lower two-thirds contain polygon, line, circle and graph drawings, with labels σ0,σ1,σ2, E, Déc(hat X,ω) and tilde X−F. These definitions and sketches are reported rather than proved.')
+p.note('The component sentence has a colon-shaped pair of ink marks where both witnesses supplied à. The spelling standart, singular est homéomorphe, abbreviated Tte/comb./ép., colon before the polygon tuple and open-left interval ]0,1] are retained. The last tuple letter is R. The upper fan is copied with thirteen interior strokes and its visible gaps; the bottom graph loses the extra edge that C had introduced. No mathematical inference is used to fill or complete either drawing.')
+p.habit('This blue hand writes low n as a short raised hump, and abbreviates Tte, comb. and ép. quite heavily. The repeated omega has rounded lower bowls and an inward upper-right curl, consistent with scan 010. A colon may occupy a place where grammar leads both witnesses to supply à. Frames and graph edges can stop short; they must not be closed automatically.')
+p.notation('Tte; comb.; ép.; standart','Short forms and final t retained, without grammatical or spelling regularisation.')
+p.notation(']0,1]; Rn; omega','The interval is open at zero in both occurrences. Tuple has Rn. Boxed rounded symbol is ω by comparison with scan 010.')
+for a,b in [('surf.','surface'),('top.','topologique'),('dim','dimension'),('Tte','toute'),('comp.','composante'),('Déc','découpage, probably'),('pol.','polygone'),('comb.','combinatoire'),('ép.','épais, possibly; expansion uncertain')]:p.abbr(a,b)
+p.save()

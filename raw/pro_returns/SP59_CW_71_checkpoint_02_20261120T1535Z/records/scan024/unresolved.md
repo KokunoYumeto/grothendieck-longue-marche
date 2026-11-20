@@ -1,0 +1,2 @@
+- Definition/Définition; inserted de points; bracket orientation; minus/equality; subset/membership.
+- Crop register, scan 024: (262,170,306,220) x; (160,1718,1530,1820) first strip line; (145,1808,1530,1912) second strip line and insertion; (800,1915,1490,2010) formula. The last three were horizontally mirrored before autocontrast/enlargement. No second crop was made.

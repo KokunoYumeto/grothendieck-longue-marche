@@ -1,0 +1,65 @@
+import sys,json
+from pathlib import Path
+sys.path.insert(0,'SP02_CW_10+12/scripts')
+from root_record import Record
+r=Record('B10-06',10,81);ch=r.change
+r.edit('\\scanpage{81}','\\scanpage{81}\n\\mspage{80}')
+r.edit('% archive sheet number: 80','')
+r.edit('canoniques sous',r'canoniqu\rlap{d}es sous')
+r.edit('(rappelons',r'(\unsure{\rlap{a}r|r}appelons')
+r.edit(r'\deleted{\unsure{G|Gr}}',r'\deleted{\unsure{Gl|G|Gr}}')
+r.edit('et que pour',r'et que p\rlap{i}our')
+r.edit(r'\deleted{\unsure{homogèn|homogène}}',r'\deleted{homogèn}')
+r.edit(r'on trouve \unsure{alons|alors} que si',r'on trou\rlap{e}ve al\unsure{\rlap{r}o|o}\unsure{\rlap{n}r|n|r}s que \rlap{e}si')
+# Three insertion guides and the faint arc above the final inserted i.
+g1=r'\handwritten{\begin{tikzpicture}[baseline=0cm,x=1cm,y=1cm]\draw[thin] (0,-.42)--(0,0)..controls (0,.12) and (.08,.12)..(.18,.12)--(3.1,.17)--(3.1,.28);\end{tikzpicture}}'
+r.edit(r'\operatorname{Rep}(\underline{H})$}}',r'\operatorname{Rep}(\underline{H})$}}'+g1)
+g2=r'\handwritten{\begin{tikzpicture}[baseline=0cm,x=1cm,y=1cm]\draw[thin] (0,-.18)..controls (.04,.15) and (.38,.12)..(.65,.08)..controls (.9,.05) and (1.25,.16)..(1.3,.24)..controls (1.33,.27) and (1.3,.3)..(1.28,.32);\end{tikzpicture}}'
+r.edit(r'\inserted{$(E,F_E)$}',r'\inserted{$(E,F_E)$}'+g2)
+g3=r'\handwritten{\begin{tikzpicture}[baseline=0cm,x=1cm,y=1cm]\draw[thin] (0,-.2)..controls (0,.13) and (.38,.14)..(.62,.16)..controls (.89,.18) and (1.02,.33)..(.97,.36);\end{tikzpicture}}'
+r.edit(r'\inserted{F-iso}',r'\inserted{F-iso}'+g3)
+arc=r'\rlap{\raisebox{.5em}{\begin{tikzpicture}[x=1cm,y=1cm]\draw[gray,thin] (-.15,.1)..controls (0,.38) and (.45,.3)..(.55,-.03);\end{tikzpicture}}}'
+r.edit(r'\inserted{\handwritten{i}}',r'\inserted{\handwritten{'+arc+r'i}}')
+ch('typed scalar Q bodies','plain underlined Q','double underlined Q','plain underlined Q','Each Q has a single oval and tail; the lower pen rule is separate.','top; maps; central','misread symbol or index','high',False,True,False,True)
+ch('geometrically quotation marks','paired pen quotes','guillemets','paired pen quotes','The delimiters are pairs of short pen strokes, without angles.','margin; margin-rot','other','high',False,True)
+ch('end of margin insertion','no comma','comma','no comma','The closing parenthesis is followed by the rising foot of the guide; no comma occurs on the text baseline.','margin; margin-rot','text not on the page','high',False,True)
+ch('top insertion guide','omitted','omitted','long bracket-shaped guide drawn','A fine line descends before mais, turns across beneath the added words, then rises at the far right.','margin; margin-rot','drawing or diagram','high',True,True)
+ch('canoniques e cell','e','e','d/e overlap','The e bowl and middle bar coexist with a raised d stem and upper serif.','ques','misread word','high',True,True)
+ch('cancelled ho','ho',r'\ill{}','ho','The h stem/shoulder and o oval survive the two x impressions.','ho','readable ink left as \\ill{}','high',False,True,True)
+ch('cancelled à l’aide fragment',"(à l'aide",r'\ill{}',"(à l'aide",'The opening parenthesis, grave accent, apostrophe and all letter bodies remain legible; the final x is bare.','aide','readable ink left as \\ill{}','high',False,True,True)
+ch('inessentiel dots','two points','ellipsis','two points','Exactly two typed points precede the closing parenthesis.','sec9','other','high',False,True)
+ch('Fcriso case in both occurrences','lowercase c','uppercase C','lowercase c','Both category names have the low round c body after F.','sec9; central','misread symbol or index','high',False,True)
+ch('rappelons first cell','r','r','a/r overlap or r qualified','A lower closed bowl and right foot cross the r body; retyping remains possible.','rappel','misread word','medium',True,True)
+ch('cancelled de after noyau','de',r'\ill{}','de','The d ascender and e middle stroke are clear through the cancellation.','de','readable ink left as \\ill{}','high',False,True,True)
+ch('cancelled G fragment','G/Gr uncertain',r'\ill{}','Gl/G/Gr uncertain','The first glyph is G. Above the second x a pale long upper serif and vertical stem favour l; the rest is obscured.','oldG; oldG-contrast','readable ink left as \\ill{}','low',True,True,True)
+ch('pour second cell','o','o','i/o overlap','The oval contains a serifed upright with a distinct dot above it.','pour','misread word','high',True,True)
+ch('first F-isocristal parenthesis','cancelled opening parenthesis under hyphen','omitted','cancelled opening parenthesis under hyphen','The curved stroke extends above and below the heavy horizontal replacement.','paren1','omission','high',False,True)
+ch('cancelled homogèn','homogèn/homogène uncertain',r'\ill{}','homogèn','The accent and n body survive. The last x has no old e bowl or middle bar beneath it.','homogen','readable ink left as \\ill{}','high',True,True,True)
+ch('de pente emphasis','underline','italic','underline','A continuous pen rule runs beneath both words.','slope','other','high',False,True)
+ch('first trivial quotation marks','paired typewriter quotes','guillemets','paired typewriter quotes','Both sides have two short vertical strokes.','slope','other','high',False,True)
+ch('Rep(H) continuation placement','inserted interline','ordinary continuation','inserted interline','The Rep(H) through zero line is squeezed between the body line and Considérons, rather than on normal line spacing.','slope','insertion or placement','high',False,True)
+ch('trouve v cell in lower paragraph','v','v','e/v overlap','An e upper bowl and central bar cross the angular v body.','trouve','misread word','high',True,True)
+ch('alors composite cells','alons/alors uncertain','alors','qualified r/o and n/r overlaps','Both central cells retain multiple typewriter bodies: an oval with an upright/shoulder, then an arch with a right foot. Their order is not inferred.','alors','misread word','low',True,True)
+ch('si first cell in lower paragraph','s','s','e/s overlap','An e loop and horizontal middle stroke remain inside the s curves.','si','misread word','high',True,True)
+ch('central emphasis','underline','italic','underline','A separate rule extends beneath the entire word.','central','other','high',False,True)
+ch('E F_E insertion guide','text insertion only','text insertion only','text insertion plus curved guide','The guide rises from before se, runs beneath the inserted pair, and curls upward to the right.','insertionE','drawing or diagram','high',True,True)
+ch('composantes isopentiques emphasis','underline and pen quotes','italic and guillemets','underline and paired pen quotes','One long lower rule and paired pen ticks enclose the phrase.','central','other','high',False,True)
+ch('second trivial quotation marks','paired typewriter quotes','guillemets','paired typewriter quotes','The word has short paired vertical typewriter marks on each side.','central','other','high',False,True)
+ch('F-iso before cristal de Tate','actual insertion','supplied F-iso','actual typed insertion with guide','F-iso is visibly typed above cristal and attached by a curved pen guide.','Fisoguide','insertion or placement','high',True,True)
+ch('Tate K argument','1/l uncertain','1','1/l uncertain','The glyph has a long horizontal upper serif and lower foot, matching the shared typewriter 1/l body. Ink alone does not securely distinguish them.','K1','misread symbol or index','medium',False,True,False,True)
+ch('second F-isocristal parenthesis','cancelled opening parenthesis under hyphen','omitted','cancelled opening parenthesis under hyphen','The old parenthesis remains visible on both sides of the horizontal stroke.','paren2','omission','high',False,True)
+ch('summation index Z rule','double Z without underline','underlined double Z','double Z without underline','The diagonal is doubled inside the Z; its bottom horizontal is the glyph foot, with no separate underline.','sum','misread symbol or index','high',False,True,False,True)
+ch('final inequality','0<i≤1','0≤i<1','0<i≤1','The left sign is one angle; the right sign has an independent lower oblique bar.','bounds','misread symbol or index','high',False,True,False,True)
+ch('final inserted i and arc','inserted i, arc omitted','ordinary i, arc omitted','inserted i with pale upper arc drawn','A thin curved i and separate dot lie between the heavy signs. A faint curved arc rises above them.','bounds','drawing or diagram','high',True,True)
+ch('folio','comment only','omitted','mspage 80','A looped pencil8 and small0 are clear at the bottom left.','folio','omission','high',True,True)
+for line,read,alt,conf in [('rappelons first cell','a/r overlap','r; retracing','medium'),('cancelled G fragment','Gl','G; Gr','low'),('alors central cells','r/o and n/r overlaps','alons; alors; order unresolved','low'),('K argument','1','l','medium')]:r.doubt(line,read,alt,conf)
+r.notation('ordinary scalar alphabet','three typed Q bodies plain with separate lower rules','10/081')
+r.notation('last inequality','literal 0<i≤1 with faint inserted i and upper arc','10/081')
+r.notation('integer index alphabet','handwritten double Z in summation with no separate underline','10/081')
+r.notation('Tate argument 1/l','shared serifed typewriter glyph; qualified first occurrence','10/081','unresolved')
+r.r['inventory_overrides']={'081-022':{'first_words_or_objects':'cancelled Gl/G/Gr uncertain'},'081-034':{'first_words_or_objects':'cancelled homogèn'},'081-044':{'first_words_or_objects':'on trouve with e/v overlap; al with r/o and n/r overlaps; si with e/s overlap'}}
+for id,pos,txt,kind,hand in [('ques','top','d/e overlap in canoniques','text','typewriter'),('rappel','upper middle','qualified a/r overlap','text','typewriter'),('pour','upper middle','i/o overlap','text','typewriter'),('trouve','lower paragraph','e/v overlap','text','typewriter'),('alors','lower paragraph','qualified r/o and n/r overlaps','text','typewriter'),('si','lower paragraph','e/s overlap','text','typewriter'),('top-guide','top margin','long bracket-shaped insertion guide','drawing','unnamed hand'),('E-guide','lower interline','curved insertion guide','drawing','unnamed hand'),('Fiso-guide','Tate line','curved insertion guide','drawing','unnamed hand'),('i-arc','last inequality','pale arc above i','drawing','unnamed hand'),('folio','bottom left','80','margin note','unnamed hand')]:r.r['inventory_extra'].append(dict(scan='10:081',sheet_kind='typescript',hand=hand,element='081-extra-'+id,kind=kind,position=pos,first_words_or_objects=txt,transcribed='yes'))
+r.r['abbreviations']=[dict(abbreviation='i.e.',expansion='id est',attestations='10/081'),dict(abbreviation='sss',expansion='si et seulement si',attestations='10/081'),dict(abbreviation='resp.',expansion='respectivement',attestations='10/081')]
+r.r['crops']=json.loads(Path('work/crops081.json').read_text())
+r.r['inspection_note']='Whole then both halves viewed, followed by C/H/doubts/inventory. All31 crops viewed, including rotated top addition and contrast variant of cancelled G fragment. Every agreed word, symbol, index and mathematical sign checked. Adjacent i/t in soit and t/a in cristal were examined and retained as neighbouring letters, not extra overprints. No OCR, parallel transcription, compilation or context access.'
+r.save('work/record081.json')

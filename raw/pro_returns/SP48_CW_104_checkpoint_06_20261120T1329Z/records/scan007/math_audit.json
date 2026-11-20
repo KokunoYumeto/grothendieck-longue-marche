@@ -1,0 +1,68 @@
+{
+  "scan": 7,
+  "audit_id": "scan007-text-only-math-audit",
+  "audit_started_utc": "2026-11-20 12:14:19 UTC",
+  "proof_checks_completed_utc": "2026-11-20 12:15:07 UTC",
+  "auditor": {
+    "agent": "/root/scan007_math_check",
+    "model": "inherited/not exposed",
+    "effort": "inherited/not exposed"
+  },
+  "scope": "Focused mathematical audit of the supplied text and proposed arguments. Independence means separately reasoned verification; this was not a blind audit, since the proposed math_checks.json was read. No transcription, glyph, ink, or authorial-intention decision is made.",
+  "content_inputs": [
+    "reader_inputs/scan007/C.tex",
+    "reader_inputs/scan007/H.tex",
+    "SP48_CW_104/records/scan007/math_checks.json"
+  ],
+  "excluded_sources": "No image, crop, PDF, OCR, web source, other page, or independent-reader return was consulted. No additional agent was used.",
+  "assumptions": [
+    "Every arrow of M is monic.",
+    "Every endomorphism of every object of M is its identity.",
+    "A subobject of D is an equivalence class of monomorphisms into D under isomorphism of domains; its order is factorization.",
+    "The relation on object isomorphism classes is the usual reachability relation: [A] <= [B] if an arrow A -> B exists."
+  ],
+  "events": [
+    {
+      "statement_id": "007-INJECTIVE",
+      "date": "2026-11-20 12:15:07 UTC",
+      "who": "/root/scan007_math_check; model inherited/not exposed; effort inherited/not exposed",
+      "type": "independent re-proof",
+      "result": "passed",
+      "outcome": "The displayed map is well-defined and injective under (i) and (ii).",
+      "reasoning": "By (i), each u:D' -> D represents a subobject. If u and v represent the same subobject, there is an isomorphism a:D' -> D' with u = v composed with a. This a is an endomorphism, so (ii) gives a = id_D' and hence u = v. The image consists exactly of subobjects whose representing domain is isomorphic to D': for a representative m:X -> D and an isomorphism b:D' -> X, the arrow m composed with b has the same subobject class. Only triviality of automorphisms is needed for the injectivity step; (ii) supplies it."
+    },
+    {
+      "statement_id": "007-CLASS-ORDER",
+      "date": "2026-11-20 12:15:07 UTC",
+      "who": "/root/scan007_math_check; model inherited/not exposed; effort inherited/not exposed",
+      "type": "independent re-proof",
+      "result": "passed",
+      "outcome": "Reachability is a partial order on isomorphism classes under (ii).",
+      "reasoning": "Existence of an arrow is unchanged when either endpoint is replaced by an isomorphic object, by composing with the endpoint isomorphisms. Identities give reflexivity and composition gives transitivity. For arrows f:A -> B and g:B -> A, (ii) gives g composed with f = id_A and f composed with g = id_B. Thus f is an isomorphism with inverse g, and [A] = [B]. This establishes antisymmetry. Hypothesis (i) is not needed for this argument."
+    },
+    {
+      "statement_id": "007-CANONICAL-TRANSPORT",
+      "date": "2026-11-20 12:15:07 UTC",
+      "who": "/root/scan007_math_check; model inherited/not exposed; effort inherited/not exposed",
+      "type": "independent re-proof",
+      "result": "passed",
+      "outcome": "Isomorphic representatives have a unique M-isomorphism, yielding a distinguished, coherent order isomorphism between their subobject posets.",
+      "reasoning": "For isomorphisms a,b:A -> B, b^{-1} composed with a is an endomorphism of A, hence the identity by (ii), so a = b. Existence comes from the assumption that A and B represent the same isomorphism class. For the unique isomorphism a, define T_a([m:X -> A]) = [a composed with m:X -> B]. Isomorphisms preserve monicity under composition. Any domain isomorphism witnessing equality of representatives continues to witness equality after composition with a. A factorization m = n composed with h becomes a composed with m = (a composed with n) composed with h, so T_a preserves order. T_(a^{-1}) is its inverse, so it also reflects order. Finally T_id is the identity and T_(b composed with a) = T_b composed with T_a; these equations give coherent transport under changes of representative. This proves a canonical induced isomorphism, without classifying arbitrary abstract order isomorphisms."
+    },
+    {
+      "statement_id": "007-SUBOBJECT-ALL-ISOS",
+      "date": "2026-11-20 12:15:07 UTC",
+      "who": "/root/scan007_math_check; model inherited/not exposed; effort inherited/not exposed",
+      "type": "targeted counterexample verification",
+      "result": "counterexample passed; stronger statement refuted",
+      "outcome": "The category with two parallel arrows satisfies both hypotheses and has a nontrivial automorphism of Sub(B). This refutes only uniqueness among all abstract poset isomorphisms, not necessarily the author's intended canonical meaning of 'à isom unique près'.",
+      "reasoning": "Define M with objects A,B; Hom(A,A) = {id_A}, Hom(B,B) = {id_B}, Hom(A,B) = {f,g} with f distinct from g, and Hom(B,A) empty. Identity compositions define all possible composites and satisfy the category axioms. The identities are monic. To test either f or g for monicity, each set Hom(X,A) has at most one member, so any parallel arrows into A are equal before composition. The only endomorphisms are identities. All arrows into B are f, g, id_B. The first two define distinct subobjects because their only possible domain automorphism is id_A; neither is equivalent to id_B because A and B are not isomorphic. Both lie below [id_B]. If [f] <= [g], a factorization would require f = g composed with h for h:A -> A, forcing h = id_A and f = g, a contradiction; the reverse comparison is equally impossible. Thus Sub(B) has exactly two incomparable elements [f],[g] below one greatest element. Swapping [f] and [g] and fixing [id_B] is a nonidentity order automorphism. The canonical transport induced by id_B is instead the identity."
+    }
+  ],
+  "conclusion": {
+    "required_corrections_to_existing_proofs": [],
+    "finding": "All four requested arguments are valid with the interpretation distinctions already present in math_checks.json. The counterexample must remain limited to the explicitly stronger uniqueness claim.",
+    "size_qualification": "The audit uses the text's stated set-level conventions. Conditions (i) and (ii) alone do not establish that all object isomorphism classes or all subobjects form sets; a suitable size convention or separate smallness/well-poweredness assumption is needed for those literal set assertions. This does not invalidate the local proofs above.",
+    "transcription_qualification": "All conclusions are conditional on the stated mathematical hypotheses and definitions. No conclusion selects a reading or attributes the stronger interpretation to the author."
+  }
+}

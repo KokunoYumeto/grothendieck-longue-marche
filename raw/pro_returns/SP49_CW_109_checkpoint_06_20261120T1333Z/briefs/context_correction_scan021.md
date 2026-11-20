@@ -1,0 +1,3 @@
+# Input correction first used during scan 021
+
+The initial extractor selected doubt rows beginning with the scan number and prose paragraphs saying Scan N. H109-02 also puts notation in tables with the scan in column two and notes in numeric table rows. These were omitted. The main reader supplied C_context_addendum.md equally to all three scan021 readers during the crop stage, without peer readings or a request to reopen whole/halves. The extraction logic was corrected for future page inputs and restoration. Original supplied context is excluded from archives as requested; the source paths remain in page metadata and the attachment.

@@ -1,0 +1,27 @@
+% Preamble for the Codex-web transcription folders of the Montpellier archive (13 Nov 2026). LuaLaTeX or pdfLaTeX.
+% A folder's standalone file is: \input{PREAMBLE.tex} \begin{document} \input{<ID>_transcription} \end{document}
+\documentclass[11pt]{article}
+\usepackage{iftex}
+\ifLuaTeX\usepackage{fontspec}\else\usepackage[T1]{fontenc}\usepackage[utf8]{inputenc}\fi
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{tikz,tikz-cd}
+\usepackage{enumitem}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\setlength{\marginparwidth}{2.2cm}
+% \cotefile{C}: start of archive file C.pdf; \scanpage{N}: start of scan page N of that PDF
+\newcommand{\cotefile}[1]{\par\medskip\noindent\textsf{[cote #1]}\par}
+\newcommand{\scanpage}[1]{\marginpar{\footnotesize\textsf{[scan #1]}}}
+% \mspage{n}: his own page or sheet number, or the typed page number of a typescript
+\newcommand{\mspage}[1]{\marginpar{\footnotesize\textsf{p.~#1}}}
+% doubt marks
+\newcommand{\unsure}[1]{\ifmmode{\color{orange}#1}^{?}\else{\color{orange}#1}\textsuperscript{?}\fi}
+\newcommand{\illegible}[1]{\ifmmode\text{[illeg.~#1]}\else[illeg.~#1]\fi}
+% state of the page
+\newcommand{\handwritten}[1]{#1}
+\newcommand{\deleted}[1]{\ifmmode\text{\sout{$#1$}}\else\sout{#1}\fi}
+\newcommand{\inserted}[1]{\ifmmode\langle#1\rangle\else$\langle$#1$\rangle$\fi}
+\newcommand{\margin}[1]{\marginpar{\footnotesize #1}}
+\newcommand{\diagram}[1]{\par\begin{center}#1\end{center}\par}
+% drawings that are not diagrams, reproduced in TikZ (the archive's macro name; LaTeX's figure float is not used)
+\renewcommand{\figure}[1]{\par\begin{center}#1\end{center}\par}

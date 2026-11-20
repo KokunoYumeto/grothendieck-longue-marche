@@ -1,0 +1,3 @@
+A printed Crédit Lyonnais circular dated “Janvier 1978”, with a detachable “AUTORISATION DE PRÉLÈVEMENTS” form for EDF–GDF. The complete printed letter, instructions, issuer number, blank form labels, company registration numbers, reference, scissors, logos, and imprint are transcribed/reproduced. The printed face is upside down in the supplied scan, so its two halves were viewed upright after a half turn. No mathematical annotation is present. The form is blank. Archive number 8 is excluded from the printed text and retained as a comment.
+
+H has no text for this scan. C's full printed reading is confirmed except that its tiny printer-name doubt remains unresolved; no textual correction is asserted.

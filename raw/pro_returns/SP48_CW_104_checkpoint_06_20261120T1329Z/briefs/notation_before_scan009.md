@@ -1,0 +1,65 @@
+# Notation table
+
+This table records observed forms; every new occurrence must still be checked in its own ink. It supplies no licence to normalize a surprising form.
+
+| Sign or form | Consolidated convention and ink | Scans | Status |
+|---|---|---|---|
+| Ss sets | Tall S, smaller joined s, space before sets; no hyphen | 002 | Resolved |
+| Category names | Ordinary single-stroke capitals in Cat and Ord; no double-struck alphabet | 002 | Resolved |
+| First two links in category row | Left-facing head and right return, `\hookleftarrow`; second is heavily retraced | 002 | Live shapes resolved; earlier sign under second uncertain |
+| Last two links in category row | Open-left inclusion curves, `\supset` | 002 | Resolved |
+| Préord / PréOrd | Acute visible; o/O case obscured; possible older Ord underneath | 002 | Retain alternatives |
+| Fx, Fy | Capital F with upper and middle arms; x/y on the baseline | 002 | Resolved |
+| x ≤ y | Separate lower bar in relation; long y descender; shallow separate curves beneath both variables rendered `\underset{\smile}{…}` | 002 | Resolved |
+| Triang | Struck short form ending in descending g, no visible final stop; Maquettes above | 002 | Resolved |
+| Graphic marks | Trace nonlinguistic ink and state uncertain status locally; no invented word count | 002 | Lens scribble and edge-mark origins uncertain |
+| F, doubled F, f | Use plain F for a single straight stem, mathbb F for distinct parallel stems with white channels, f for curved upper hook; initial upper F and live overwritten Fl remain doubtful | 003 | Occurrence-specific, no alphabet normalization from context |
+| mu indices/exponents | Long left main stem; first exponent has triangular counter/crossbar and reads 4; later upper 2s, lower 1,1,2 | 003 | Resolved from strokes |
+| a / looped l / r | Three vertically separated symbols; isolated looped l rendered ell (same letter as C’s l) | 003 | Resolved |
+| Circle and S-like glyph | A alone subscripted below I; following separator is one hollow oval; narrow glyph has open lower sweep | 003 | Circle resolved; S/s case uncertain |
+| Triangle signs | Lower-right product has a second left diagonal on both triangles; trace directly in TikZ, ordinary single-outline Delta elsewhere | 003 | No abstract alphabet inferred |
+| Ob / Fl | Ob has closed O then tall b; l is looped; crossed and overwritten old groups kept separately | 003 | Live overwritten F alphabet and earlier lettering uncertain |
+| Prime strokes | Single prime in second product/equality, two distinct ticks at last n; separate prime-like mark after live l | 003 | Last two ticks secure; mark after l uncertain |
+| Drawing endpoints | Preserve white counters within mostly black knots, separate dots, gaps and attached returns individually | 002–003 | Graphic distinctions, no semantic normalization |
+| Continuation strokes | Two horizontal strokes in the long product; final small sign left-angle/cross remains doubtful | 003 | Dashes resolved; sign unresolved |
+| Looped arguments versus C | Closed ascending loop in upper Fl_0 arguments and third F_3 argument reads ell; the nearby C has an open arc | 004 | Top ell index n/1 uncertain; replacement ell_1 and later ell_3 resolved |
+| F alphabets on scan 004 | Long separated uprights justify doubled F in top parenthesis, inclusions and first two pairs. Partial upper doubling at third F_3 Fl and last F_n Fl is mathbb F/F, first occurrence marked | 004 | Occurrence-specific; the two partial forms remain doubtful |
+| Wedges and 2-shaped separator | Two branches opening right give literal < in F_3 and F_n products. One connected curl after F_n is 2-shaped, without two equality bars | 004 | Resolved as visible shapes; no mathematical repair |
+| Amalgamation versus square cup | Two short uprights on a common projecting baseline, once cancelled and once live | 004 | Encoded amalg; cancellation of upper occurrence preserved |
+| Hatted and dotted O/F composites | Large marks have peaks/arches; smaller subscript mark is a compact oblique dot. Oval and F arms overlap; older/live order is uncertain | 004 | First large occurrence marks both orders; small composite also permits B |
+| X pair | First low crossed oval permits zero/empty-set; second low upright is 1. Connecting flourish, extra diagonal and upper tick are literal traces | 004 | First index and function of flourish remain uncertain |
+| Pair indices | Last O has retraced 3/n index; last plain F has compressed n/n+1/3; no comma there, unlike first two pairs | 004 | Alternatives retained; no index sequence inferred |
+| Graphic gaps and flecks | Preserve detached heads/stubs, endpoint gaps, white counters, small returns and isolated marks; do not assign a lexical or algebraic function from position alone | 004 | Shapes recorded; origins/functions of incidental marks unassigned |
+
+| F alphabets on scan 005 | First, second and fourth chain F, several lower memberships and existential F_0 have distinct returning stems. The array has plain F_0/F_1/F'_0 and doubled F'_1; live c F_1 remains F/mathbb F | 005 | Read each occurrence; no uniform alphabet imposed |
+| Vertical membership | Six downward-open arches with middle strokes between upper witness and lower F label, encoded rotatebox -90 of in | 005 | Each occurrence resolved on its own crop |
+| Level labels | First two levels have three principal separated bars: Xi/E, Xi first; last E_2 has a clear connecting left stem | 005 | First uncertainty marked at level 0; level 2 not normalized |
+| Upper difference arguments | Descending forked/looped forms read y/f, y first; first and last inner opening parentheses absent | 005 | Local letter ambiguity retained; unmatched punctuation literal |
+| Boundary indices | Initial u index i/i-1 remains compressed; inserted v_i clear. First equality u subscript is point/i/1; later small bent indices retain i/1 | 005 | No dimension correction inferred |
+| g/f in C_i | Small upper return and long lower loop leave g/f; NB form shares this ambiguity | 005 | g first, uncertainty explicit at first occurrence and in records |
+| Relations and connectors | C_i t relation has three contours, equiv/= remains uncertain. Final c' t relation has one bar, encoded minus. Headless connectors remain headless; wave overlaps E1 arrow shaft | 005 | Literal shapes, no equation or arrowhead supplied |
+| Small and canceled marks | Isolated stroke below array 1/prime; struck fragment w/exists w/u; struck f_1/f before u-v; pi index f/1 | 005 | Remaining local doubts retained |
+| Graphics and grouping | First chain head gapped; paired arcs have separated endpoints; final pi note has top-left curved enclosure; lower sketch puts w and prime on opposite sides of downstroke, three points below | 005 | Literal paths; isolated marks have no assigned mathematical function |
+
+| D and I alphabets on scan 006 | Isolated upper D has a long internal returning stem; mathbb D. Domain N retains mathscr N/N. The downward-map I and both upper-note I forms have separate returning stems; mathbb I. Other D and lower I forms remain plain | 006 | Occurrence-specific; script/plain N remains uncertain |
+| Map labels on scan 006 | Sideways chain begins J; u_eta/g/y and u_xi/f/x remain crowded; both vertical memberships open downward. Live lower map is k/kappa/K; older oval-and-stem letter resolves phi | 006 | First live occurrence carries each shared doubt; cleaner repetitions do not resolve case/alphabet independently |
+| Relation and index details on scan 006 | Long calculation dash stays unbroken. Large lower opening relation has right-converging strokes, >/=; final equals has two parallel bars. The x/y comparisons are strict <. Image index is <=n | 006 | Literal signs; no correction from the expected computation |
+| Subset symbol and F chain on scan 006 | Two-lobed upper form with central stem resolves Phi; n-prime,n. F0 is plain; F1 and F2 have separated returning stems, mathbb F. Footer is pi_0(F_*,x) | 006 | Each resolved locally; pi_0 is not changed to pi_1 |
+| Canceled and ambiguous forms on scan 006 | Upper old I_n/D_n, old image qualifier in n/<n, crossed connector downarrow/I/=, opening Soit/Sinon, old tilded D_n-prime/D_n and B/mathbb B/mathscr B remain uncertain | 006 | Cancellation extent retained; no live connector added beneath the canceled cluster |
+| Graphic geometry on scan 006 | Common D sits between membership rows; n-double-prime crosses the upper arc; lower arc has a break. Open loop has separate ends and lower returns. First lower F-pair head is detached. Additional points and short traces are literal paths | 006 | Preserve positions and gaps without assigned mathematical roles |
+
+| Alphabets on scan 007 | M, D and the first N are plain; subsequent indexing N forms have barred returning uprights, mathbb N. The subobject-order symbol is mathbb J_n, with doubled contours and a lower left hook | 007 | Occurrences checked separately; no global alphabet imposed |
+| Subobject map on scan 007 | Hom(D′,D) right-arrow to tilded plain D above u mapsto u(D′); M is below terminal m of Hom. Lower u is indented and its shaft starts farther left than the upper arrow | 007 | Literal two-row geometry; star label between row levels, far left |
+| Phi and insertion on scan 007 | Closed oval with a bisecting stem resolves Phi; low D′. Small M- has a leader to the gap before isomorphes, not to Phi | 007 | Preserve the prefix as inserted text |
+| Ambiguous forms on scan 007 | modèles/modéles and flèche/fléche retain accent-direction doubts; first reference is (i]/[i]/(i); leading quantifier forall/H remains unusual | 007 | Alternatives ordered by the local ink, including asymmetric brackets |
+| Canceled forms on scan 007 | Short autom/autom. before raised end; de uncertain; barred old I resolved; e/s retained; old D under live M resolved; plui/plus, une canceled before inserted une | 007 | Detached dot favors plui without grammatical repair |
+| Mark before cause on scan 007 | Reduced à/colon followed by a separate lower-right oblique stroke; cause de (ii), | 007 | Do not combine the separate stroke into a certain therefore sign |
+| Other marks on scan 007 | Raised asterisk after classe n; no abbreviation stop after each ens or isom, nor after raised end; two-tick quotation pairs | 007 | Period after classification M retained; final identification D has none |
+
+| Alphabets on scan 008 | Live subobject symbols are plain J, with one right stem and a low left return; the old canceled I has top and bottom bars. D is plain, including tilded D; N is barred/doubled | 008 | Preserve the local plain J even though scan007 has doubled J; no global alphabet substitution |
+| Quantifier-shaped sign on scan 008 | Two separately ending near-upright legs joined by a crossbar: H/forall, H first | 008 | Medium; unlike scan007's locally preferred forall/H order; syntax does not join the legs |
+| Type map and quotations | tau_n above J_n to mathbb N; separate tau_n, application opening two ticks type, without closing ticks. Opening ticks before D_n also remain unclosed | 008 | No supplied quotation closure or surrounding parentheses |
+| Hom maps on scan 008 | First lower maps-to tail begins slightly right of the upper hook and ends slightly farther right; second target has flat lower brackets with J labels | 008 | Literal two-row displacement and bracket placement retained |
+| High mark and lower relation | High 4/asterisk has triangular counter, transverse arm and descender, separate from n prime. Lower relation has a curled left vertical, straight right vertical and an upper-left point | 008 | Medium doubts; lower relation traced literally inside unsure; tall brackets enclose sign and Hom together |
+| Double indices on scan 008 | Definition J_{n-prime,n}; final diagram J_{n,n-prime}; rho_{n,n-prime} at both arrows | 008 | Both orders confirmed and retained; type discrepancy belongs only to the notes |
+| Detached strokes and final curve | One point after canceled I_{<=n} des; two points right/below second Hom, upper farther right. Final inclusion curve headless, curled left end, right endpoint below-left of final J | 008 | Preserve literal detached traces and gaps; no punctuation or arrowheads inferred |
