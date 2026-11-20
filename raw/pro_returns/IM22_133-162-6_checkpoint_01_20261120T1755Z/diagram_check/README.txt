@@ -1,0 +1,1 @@
+A focused render check of the edited scan 136:008 diagram was attempted. The installed pdflatex executable could not find pdflatex.fmt, so no compiled or rendered verification is claimed. The source hook, direction, label position, and absence of target head were checked against the manuscript crop. No unrelated page text was altered.
