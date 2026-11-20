@@ -1,0 +1,26 @@
+# Independent second reading: 145_scan033
+
+All 18 supplied boxes were cropped once from the original JPEG with the exact supplied native bounds, grayscale autocontrast, and LANCZOS enlargement to 2400 pixels wide. Every crop was personally viewed. The existing B12 crop was then rotated clockwise 25 degrees (Pillow angle -25, expanded white canvas) and resized to 2400 pixels wide to read the diagonal marginal note; it was viewed again. No second source crop was made. All other rotations are 0. The exact evidence bounds and rotations are in `145_scan033_crop_manifest.tsv`.
+
+One full-original view was used for orientation, particularly for the cancelled incomplete word and the position of the marginal note. No witness, first reading, draft, final page, notation table, report, first-pass crop, or comparison was opened. Readings were written independently before any comparison.
+
+## Ink observations and uncertainties
+
+- B01: Elevated `1)` near the top. A very faint oblique stroke above/right is visible but does not securely form an accent or another character.
+- B02: Circled 2. Only `Le groupe` is underlined. The group expression has an ordinary S followed by a calligraphic E with two distinct stacked hats. A period follows.
+- B03: `Par`, with a capital P.
+- B04: Tuple `(rho, sigma, g0, g1, g-infinity) = tilde u`, labelled (1). Each membership annotation is stacked beneath its corresponding entry; the membership glyphs open downward. These vertical placements are retained in the TSV. The first lower group is Z-hat-star. The next lower glyph is a large looped S-like form, preferred as fraktur S3 but G3 remains possible. The three final lower glyphs are hatted pi forms; manuscript case does not securely distinguish Pi from pi, so both are recorded. The first tuple entry and repeated exponents have a p/rho-like stem with an upper right loop, read as rho.
+- B05: Product relation labelled (2). The first g0 is heavily retraced around its loop and descender. I cannot securely recover a distinct cancelled earlier symbol; the TSV does not manufacture one. The three exponents are rho. The subscripts of the three ell symbols read sigma(0), sigma(1), sigma(infinity); their small parentheses are tightly compressed. The third ell factor has a thin opening parenthesis immediately before it and a clear closing parenthesis. Product dots and final `= 1` are visible.
+- B06: Parenthesized 2.
+- B07: Cancelled incomplete word, with recognizable `morph` and a small final i-like stroke/dot. `morphi` is preferred over `morph`; no unseen ending `-isme` has been supplied.
+- B08: Three rows under a left brace, labelled (3). The first relation mark has a left upright, two horizontal strokes, and a right arrowhead. It is rendered as a double-stroked mapping arrow, not silently replaced by an equality. It may contain an overwritten equality, but the chronology cannot be securely isolated. Rows two and three have ordinary equalities. All three left-hand u symbols are unaccented; all three exponents are rho.
+- B09: The inserted two-line phrase reads `ce qui explicite l'hom can`. The two abbreviated words have no securely detached final periods.
+- B10: Label (4); arrow label p. Both E symbols carry two hats. Subscript of Aut reads `loc`. The hatted pi has the same case ambiguity noted at B04.
+- B11: Label (5); the upper horizontal part of the handwritten 5 is detached but is not treated as a tilde. The map name is ordinary dotted Latin i. Product sign is an x-shaped multiplication sign. The exponent on hatted Z is the set `{0,1,infinity}`. Target is S followed by the double-hatted E.
+- B12: Diagonal marginal note, read after rotation: `On retrouve que (*) est sur- / jectif, et a pour noyau i(pi-hat)`. The symbol inside the parenthesized reference is heavily retraced, with * preferred and 4 retained as an alternative. The `sur-`/`jectif` division is preserved. Nearby (6), (7), and body-text fragments fall within the rectangular crop but are separate from the marginal note and are not duplicated in this row.
+- B13: Parenthesized 6. An oblique marginal-word fragment above it is not part of this label.
+- B14: `i(g; alpha0, alpha1, alpha-infinity) = (1,1,g ell0^alpha0,g ell1^alpha1,g ell-infinity^alpha-infinity)` followed by `donc`. The ell1 subscript is heavily filled but has a vertical 1 shape. The first two tuple entries are both 1.
+- B15: Label (7), then cancelled `donc`, then `pi(g;...) = int g`. No composition circle is visible between p and i. The following sentence says `La multiplication dans` followed by double-hatted E alone, then `est donnée par`; no S is added before that E.
+- B16: Label (8). Two tuple factors have underbraces labelled tilde u and tilde u-prime. The three RHS subscripts look like sigma-prime applied to 0, 1, infinity; their tiny marks are retained as uncertain against sigma-inverse. The very last visible mark at the far right is comma-shaped and may be a clipped closing parenthesis; no unquestioned missing outer closer is supplied.
+- B17: Manuscript page number 32.
+- B18: `du calcul`. The long low return stroke at the right is continuous with the final l and is not treated as an underline or added punctuation.

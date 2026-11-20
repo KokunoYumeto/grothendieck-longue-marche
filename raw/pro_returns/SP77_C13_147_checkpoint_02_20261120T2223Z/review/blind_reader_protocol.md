@@ -1,0 +1,13 @@
+# Independent second reading
+
+Read only the assigned original page image and its `_boxes.tsv`. Do not open C, H, any page draft/final, `_first.tsv`, any first-reader record, any first-reader crop, notes or notation table for the page. You must not have read this page in the first round.
+
+For each listed box, make exactly one fresh crop from the original image, using its original-coordinate bounds, autocontrast and LANCZOS enlargement to a few thousand pixels across. Sharpen faint ink and rotate slanted writing if needed. Save it in `crops/` with the name `147_scanNNN_audit_BXX.jpg`. The shared crop helper may be used; it reads only the original image. View every new crop yourself. Do not use OCR, external research or TeX compilation.
+
+Read the visible inscription independently: letters and their case, numerical digits, punctuation, signs, arrows with their decorations, indices, exponents, accents, cancellations, insertions and their attachment. Preserve the written spelling and abbreviations. Where the edge clips neighbouring material, do not invent a completion. A formula's expected meaning must not override the ink. State doubts explicitly, including uncertainty about whether a stroke cancels something. Cancelled letters are certain only if all their strokes are plain.
+
+Use the edition's conventions: `\deleted{...}`, `\inserted{...}`, `\margin{...}`, `\uline{...}`, `\uuline{...}`, `\unsure{reading}`, `\unsure{reading|alternative}`, `\illegible{n}` only for physically unreadable prose, `\mspage{n}` for a page number, standard LaTeX mathematical notation, `\diagram{...}` with tikz-cd, and `\figure{...}` with TikZ. Preserve two-stroke double quotation marks as two backticks/two apostrophes. No witness-specific macros are needed.
+
+Write `second/147_scanNNN_second.tsv`, with exactly the columns `box` and `reading`, one row for each supplied box ID in its order. Use Python's csv writer with tab delimiter so any literal quotes, tabs or newlines are properly escaped. Do not compare your readings to any other text before this file is complete. After writing it, leave it unchanged; main review will reconcile the readings separately.
+
+Write `second/147_scanNNN_second_reader.json` with this exact metadata structure: `{"reader":"your actual blind reader ID", "started":"UTC timestamp", "completed":"UTC timestamp", "no_previous_reading":true, "inputs":["image path","box-list path"], "crop_files":["crops/147_scanNNN_audit_B01.jpg", "..."]}`. Use your actual reader ID and all saved audit crop paths. Send only a completion message with file paths, number of boxes actually viewed, and any unresolved places you independently identified. Do not request access to the first reading.

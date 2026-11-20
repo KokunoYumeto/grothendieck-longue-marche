@@ -1,0 +1,13 @@
+# Scope and continuation
+
+The governing instructions are the attached `PROMPT(20261120-214818).md`. This run covers all 23 pages listed in `page_order.txt`. The attached scans and witnesses are excluded from the deliverable archive; the evidence crops are included. No OCR, web research or TeX compilation is used.
+
+`pages/` contains the main reader's accepted transcription. `records/` stores its page-level decisions and evidence. `work/proposed/` preserves reader proposals and their working documentation; these are not substitutes for the accepted page files. The combined transcription and reports are regenerated from the accepted records by `scripts/assemble.py`.
+
+During the first reading, exactly three readers receive one page at a time. The next page goes to the first reader freed by main-reader acceptance. Only after every first-reading page is accepted does the independent reading begin. Each page then goes to a different reader, using only the original scan and its box list. `scripts/second_reader_guide.md` specifies that restricted assignment. The independent TSV must be completed before `scripts/audit_compare.py` compares it with the first reading. Every difference is adjudicated visually by the main reader.
+
+If restoring a checkpoint into a new workspace, extract this archive into a directory named `result`, recover `work/proposed/` into the sibling `proposed/`, and restore the attached ZIP's contents into the sibling `source/`. Keep the governing prompt at `upload/PROMPT(20261120-214818).md`. The scripts derive the workspace from their location. `scripts/prepare.py` can regenerate missing page packets and halves after an environment loss; it preserves existing progress, hand logs, notation and already-prepared halves. Do not rerun it merely to reread an image. Refresh a new first-reader packet's notation from the current working table before assignment.
+
+The progress log is authoritative for accepted and audited pages. Each accepted record names its first reader and the crops actually reviewed by the main reader. `records/main_review_crops.json` also records reviewed crops for pending pages. A written proposal is not accepted until the main reader has set its review fields and run the acceptance step.
+
+Checkpoint ZIPs are immutable and are saved at 45-minute intervals from the run's start. No earlier checkpoint is embedded in another archive. At completion, validate the 23-page set, 261 supplied doubt decisions and all independent readings, freeze the 24 transcription hashes, and verify those hashes again before producing the final ZIP.

@@ -1,0 +1,20 @@
+# Independent image-only second reading — 147_scan018
+
+All eight supplied boxes B01–B08 were cropped once from the original JPG and personally viewed before these readings were written. No first reading, witness, draft/consolidated page, report, comparison, first-pass crop, or other reader's notes was accessed. Only the current original, neutral boxes, protocol, and supplied syntax were used. No OCR, research, or TeX compilation was used.
+
+## Crop metadata
+
+One exact original-pixel crop per supplied box was made with Pillow, autocontrasted, and enlarged proportionally to 2500 pixels wide with Lanczos. The passages were readable in their original orientation. All eight saved rotations are **0 degrees**. The manifest contains the original bounds and rotations. No recrop or full-page redisplay was used.
+
+## Ink observations
+
+- **B01:** A small isolated `8` stands above the opening passage. `géom.` is abbreviated. X is hatted; I has a separate underline below its bottom bar. The lower line lies close to the crop boundary. Its plural noun is read `maquettes`, with `raquettes` retained as an alternative because the initial compressed strokes are weak. The interlinear parenthetical reads approximately `(ou en MD-graphes)`; the first initial could be N rather than M. The long linking stroke places this parenthetical after the plural noun and before `sur`.
+- **B02:** The tuple opens with a canceled S-like symbol and a surviving underlined S. The canceled trace might itself have a tilde; that uncertainty is preserved. The underlines on S, tilde A, and I are distinct from ordinary letter strokes, and the subscript of sigma is also the underlined tilde A. The added upper-right map reads underlined S to N with subscript S; the arrow label g has a short underline. It is linked into the tuple after the final original comma. The textual abbreviation before `finis étales` is read `rev.`, possibly `rec.`; it has not been expanded. `de S` is inserted above the gap before `et`.
+- **B03:** `loc.` is retained. The phrase `loc. isomorphe à la maquette G donnée` is legible. A short canceled opening word before `On appelle` is uncertain between Le and En. G followed by a hyphen is inserted above the opening of `épinglage`. Opening quotation strokes are visible; I did not confidently identify closing quotation strokes in this box, and did not supply them.
+- **B04:** The tuple has hatted X and underlined I. The first G in `G_S` does not show the separate underline that is clear under the subsequent `G(hat X, underlined I)`. The symbol canceled after `Si` is probably Gamma, alternatively G. Formula `(18)` clearly reads Gamma equals Aut G. No additional formula punctuation was supplied.
+- **B05:** The first term is Gamma with subscript S followed by `-torseur,`. `qui est le` is horizontally crossed out, and `appelé` is written above it. The replacement noun phrase `torseur des G-épinglages` is underlined across the line break. The final tuple again has hatted X and underlined I, followed by a period.
+- **B06:** The insertion reads `(pour les iso)`; no period after `iso` is clear. It is linked after `la catégorie` and before `des courbes standard`. The visible ending is `standard`, without a separately identified final plural s.
+- **B07:** `G-épinglées` ends with a period. After `Pour`, a universal-quantifier-shaped sign is visible and is retained as written rather than expanded to a French word. `ens.` is abbreviated. I-alpha on the left is hatted, while the I-alpha on the right is not. The joining sign has a horizontal base and two short uprights: amalg is preferred, with square cup retained as an alternative. The following wording reads `l'ensemble (de cardinal hat nu_alpha = poids total de alpha) somme`; the final `somme` is left incomplete because the designated passage ends there.
+- **B08:** The lower marginal handwritten page number is `17`.
+
+The TSV has exactly eight box rows in the supplied order. Uncertainty remains exposed for root adjudication. The box list and first reading were not modified.
