@@ -1,0 +1,52 @@
+import sys,json
+from pathlib import Path
+sys.path.insert(0,'SP02_CW_10+12/scripts')
+from root_record import Record
+r=Record('B10-03',10,51);ch=r.change
+r.edit('\\cotefile{10}\n','')
+r.edit(r'\unsure{pas|est}','pas')
+r.edit(r'\unsure{\otimes|\times}',r'\otimes')
+r.edit(r'\deleted{\unsure{on}}',r'\deleted{on}')
+r.edit(r'\deleted{\unsure{$k$}}',r'\deleted{$k$}')
+r.edit(r'\handwritten{\unsure{1|3}}',r'\handwritten{1}')
+r.edit(r'\handwritten{\unsure{5|3}}',r'\handwritten{5}')
+r.edit(r'\handwritten{\leq}',r'\handwritten{\leqslant}')
+r.edit(r'localement noethérien',r'localement n\oe{} thérien')
+r.edit(r'(iii) On peut',r'(iii) \unsure{G|O}n peut')
+r.edit(r'sur $\handwritten{S}$.',r'sur $\handwritten{\unsure{\mathbb{S}|S}}$.')
+def pic(t,p):return r'\begin{tikzpicture}[x=1cm,y=1cm,baseline=(n.base)]\node (n) at (0,0) {'+t+r'};\draw '+p+r';\end{tikzpicture}'
+r.edit(r'\inserted{ $S$ localement n\oe{} thérien}',r'\inserted{'+pic(r'$S$ localement n\oe{} thérien',r'(-2.1,.1) .. controls (-2.2,-.2) and (-1.8,-.2) .. (-.8,-.2)--(-.7,-.65)--(-.65,-.2)--(2.1,-.2)--(2.2,.1)')+'}')
+r.edit(r'\inserted{ et $S$ noethérien\handwritten{?}}',r'\inserted{'+pic(r'et $S$ noethérien\handwritten{?}',r'(-1.25,.3) .. controls (-1.9,.2) and (-1.8,-.2) .. (-1.5,-.2)--(-.9,-.25)--(-.9,-.7)--(-.8,-.25)--(1.55,-.25) .. controls (1.9,-.2) and (1.9,.3) .. (1.5,.35)--(1.15,.35)')+'}')
+r.edit(r'$S$. On a alors',r'$S$. \begin{tikzpicture}[x=1cm,y=1cm,baseline=(n.base)]\node (n) at (0,0) {On};\node at (.12,-.26) {\handwritten{n}};\draw (-.03,.33)--(.08,.33);\fill (.18,.33) circle (.018);\end{tikzpicture} a alors')
+ch('manuscript number','19','omitted','19','Upright 1 followed by looped 9 with long descending tail, read after rotation.','number','omission')
+for locus,crop in [('opening continuation','top'),('lower Remarque 11.11.2','bottom')]:
+ ch(locus+' deletion state','deleted','live text; deletion stated only in note','deleted','Two crossing long diagonal strokes cancel this block.',crop,'deletion state (struck given live or live given struck)','high',False,True,False,True)
+ch('cancelled word after il',r'\unsure{pas|est}','nous','pas','Three letter positions: first has a descending p stem/bowl, middle a rounded a, final s; a transverse cancellation crosses all three.','word','misread word','medium',True,True)
+ch('qu’il overprint',r'\unsure{il|ih}','il',r'\unsure{il|ih}','After i, a tall l stem is superimposed with a lighter rounded h-like shoulder.','il','misread word','medium')
+ch('H base-change sign',r'\unsure{\otimes|\times}',r'\otimes',r'\otimes','A complete oval surrounds the diagonal cross; the long deletion line is separate, to its right.','tensor','other','high',True,False)
+ch('on replaced by il',r'\deleted{\unsure{on}}\handwritten{il}',r'\struck{il}',r'\deleted{on}\handwritten{il}','Typed o loop and n arch remain under the dark handwritten dotted i and looped l; the new il is live within the cancelled paragraph.','on-il','deletion state (struck given live or live given struck)','medium',True,True)
+ch('cancelled k before k-prime',r'\unsure{k}',r'\ill{}','k','Tall stem and two right arms of k remain under the cancellation, beside the x overstrike.','k','readable ink left as \\ill{}','medium',True,True,True)
+ch('cancelled qui at right edge',r'\unsure{qui}',r'\ill{}',r'\unsure{qui}','q descender and u bowl are visible, but the last letter is clipped at the right edge.','qui','readable ink left as \\ill{}','low',False,True,True)
+ch('first remark old number',r'\deleted{\unsure{3|1}}','omitted',r'\deleted{\unsure{3|1}}','Curved earlier strokes remain under the new dark stem; separation of the old digit is incomplete.','renumber','omission','low')
+ch('first remark new number',r'\unsure{1|3}','1','1','Dark replacement has a top diagonal and continuous straight right downstroke.','renumber','other','medium',True,False)
+ch('dimension bound',r'\leq',r'\leqslant',r'\leqslant','Lower independent bar slopes down to the right parallel to the lower arm of the angle.','leq','misread symbol or index','high',True,False)
+ch('first noetherian spelling','noethérien','noethérien',r'n\oe{} thérien','o and e are joined tightly in one ligature-like group, followed by a full gap before th; the lower noethérien has normally separated letters and no such gap.','noetherien; noeth-bottom','abbreviation expanded or spelling modernised','medium',True,True)
+ch('condition iii initial word','On','On',r'\unsure{G|O}n','The circular capital includes a distinct horizontal middle arm and short right upright like G; an underlying O outline remains possible.','On-iii','misread word','medium',True,True)
+ch('question on noetherian condition','?','omitted','?','Curved stem ends above a separate round dot, despite dark overworking at its top.','question','omission','high',False,True,False,True)
+ch('last handwritten base S','S','S',r'\unsure{\mathbb{S}|S}','Outer S is accompanied by an inner near-vertical stroke and short rising arm in its lower bowl; double-stroke alphabet versus retracing remains open.','final-S','misread symbol or index','medium',True,True)
+ch('relocation arrow','TikZ bracket and curved arrow','described as long margin bracket','TikZ bracket and curved arrow','Lower bracket spans the second remark and joins a long curved line ending in an arrowhead above the first remark.','margin','drawing or diagram')
+ch('prefix of homomorphisme',r'\unsure{G\prime|l\prime}',r'l\prime',r'\unsure{G\prime|l\prime}','Round G outline and right middle arm overlap a tall serifed stem; apostrophe is separate.','hom','misread word','low')
+ch('final reference old digit',r'\deleted{\unsure{3}}','no deletion','deleted uncertain 3','Fainter right curves remain beneath the dark replacement.','reference','omission','low')
+ch('final reference live digit',r'\unsure{5|3}','3','5','Dark upper horizontal, short left turn and broad lower curved stroke form 5.','reference','misread symbol or index','medium',True,True,False,True)
+for place,crop in [('first Remarque','remark'),('plat','remark'),('second Remarque','bottom')]:ch(place+' underline','underlined','bold heading or italic word','underlined','Separate line below this word, not below the entire heading.',crop,'other')
+for i,(place,shape,crop) in enumerate([('S localement nœ thérien','lower bracket with central downward insertion point','remark'),('et S noethérien ?','rounded enclosure with downward insertion point','conditions')],28):
+ ch(place+' marks','omitted','omitted','TikZ '+shape,'Visible '+shape+'.',crop,'drawing or diagram','high',True,True)
+ r.r['inventory_extra'].append(dict(scan='10:051',sheet_kind='typescript',hand='his hand',element=f'051-{i}',kind='drawing',position=place,first_words_or_objects=shape,transcribed='yes'))
+ch('marks around On before a alors','On only','On only','On with lower handwritten n and short upper dash/dot in TikZ','A distinct handwritten n lies below the typed n; a short horizontal and a dot lie above it.','On','omission','high',True,True)
+r.r['inventory_extra'].append(dict(scan='10:051',sheet_kind='typescript',hand='his hand',element='051-30',kind='insertion',position='On before a alors',first_words_or_objects='lower n and upper dash/dot',transcribed='yes'))
+r.r['inventory_overrides']={'est':{'first_words_or_objects':'pas'}}
+for p,rd,alt,co in [('qu’il overprint','il','ih','medium'),('cancelled qui','qui','','low'),('first remark old digit','3','1','low'),('condition iii first word','Gn','On','medium'),('last base symbol',r'\mathbb{S}','S','medium'),('homomorphisme prefix',"G'","l'",'low'),('last reference old digit','3','','low')]:r.doubt(p,rd,alt,co)
+r.notation('slanted lower inequality bar',r'\leqslant','10/051 dimension bound; compare 10/041–042 inequalities','read')
+r.r['crops']=json.loads(Path('work/crops051.json').read_text())
+r.r['inspection_note']='Whole page then both halves read. All agreed words, accents, primes, indices, inequalities and arrows checked in enlarged blocks; every deletion/insertion and marginal arrow inspected. Small number rotated upright. Two recurring overlapping letter forms remain qualified. Redundant C folder-level cotefile command removed as structural macro normalization only. No context or mathematical check.'
+r.save('work/record051.json')

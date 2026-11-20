@@ -1,0 +1,204 @@
+{
+  "saved_utc": "2026-11-19 21:12:23 UTC",
+  "supersedes_helper_findings_from": "evidence/audit_freeze_readiness_048.json",
+  "fixes": [
+    {
+      "id": "AUDIT-1",
+      "status": "fixed",
+      "description": "Preview and finalization now run identical complete record metadata validation and temporary report staging, with baseline, projection metadata, and completion-event gates rechecked before any publication. Preview creates no completion timestamp or live output/event."
+    },
+    {
+      "id": "AUDIT-2",
+      "status": "fixed",
+      "description": "Resolved inventory rows reject unsupported fields and mismatching page scan identities. Audit patches reject unknown fields and identity changes; an idempotent same-identity patch remains accepted. Additions must satisfy the same complete row schema."
+    },
+    {
+      "id": "AUDIT-3",
+      "status": "fixed",
+      "description": "Begin/finalize/recovery require all106 mapped page/record identities and exact recursive file sets, matching page hashes, first-pass inventory confirmation and ordered done events. Completed prior audits require matching record/session/log evidence and coherent timestamps. The selected active or pending session alone receives explicit interrupted-start/commit recovery handling."
+    },
+    {
+      "id": "FREEZE-1",
+      "status": "fixed",
+      "description": "Freeze errors carry observed preparation and commit state. written, write_attempted, prepared, committed, manifest_created/reused and hash_block_appended distinguish partial writes from a committed marker, including errors after publication/append."
+    },
+    {
+      "id": "FREEZE-2",
+      "status": "fixed",
+      "description": "New manifests persist a versioned full state fingerprint over page/record/session/history/combined bytes and recognized completion/audit event lines. Read-only and writing retries reject changed or missing pins. Added freeze hash blocks do not change the fingerprint; committed legacy schema1 verification remains supported."
+    },
+    {
+      "id": "FREEZE-PARSER-1",
+      "status": "fixed",
+      "description": "Freeze parsing now matches audit parsing for malformed event-looking lines and duplicate identity fields; both are rejected before readiness/fingerprinting."
+    }
+  ],
+  "changed_files": [
+    {
+      "path": "scripts/record_page.py",
+      "bytes": 29826,
+      "sha256": "4169a107c15439e7e04c0947bbf363c151929d12f83e1c2ffa43102c0bee87c2",
+      "python_ast_pass": true
+    },
+    {
+      "path": "scripts/record_audit.py",
+      "bytes": 36424,
+      "sha256": "7e3dc0cfa292c0aca4b9314a4ed42b4a794417c3e3b5d71c5efac510aeef4fa5",
+      "python_ast_pass": true
+    },
+    {
+      "path": "scripts/freeze_transcription.py",
+      "bytes": 30131,
+      "sha256": "8fa9d75703cd037f6464898079027188049008e20f9b8dd121541531c83c2ba3",
+      "python_ast_pass": true
+    },
+    {
+      "path": "scripts/README_tools.md",
+      "bytes": 23878,
+      "sha256": "5e08b08ade036ec31561e9c6d09e0765d435514818cfbf722e223f632d824f89",
+      "python_ast_pass": null
+    },
+    {
+      "path": "scripts/tests/test_audit_hardening.py",
+      "bytes": 14713,
+      "sha256": "66599efe33538b7723a36d1555d4003d407222957cf1661e12a494ec6177b3a4",
+      "python_ast_pass": true
+    },
+    {
+      "path": "scripts/tests/test_freeze_hardening.py",
+      "bytes": 15215,
+      "sha256": "a33e806c7bdcbd2390926533451fbc9a362acbfc690ef711fc5fcb4f1f4aeb11",
+      "python_ast_pass": true
+    }
+  ],
+  "validation": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s SP02_CW_10+12/scripts/tests -p 'test_*hardening.py' -v",
+    "exit_code": 0,
+    "tests_run": 28,
+    "audit_tests": 17,
+    "freeze_tests": 11,
+    "all_passed": true,
+    "test_output": "evidence/helper_hardening_tests.txt",
+    "all_changed_python_files_ast_pass": true,
+    "fixtures": "Invented106-page trees under temporary work/helper_hardening_fixtures directories; explicit temporary output/map arguments for every audit/freeze call.",
+    "fixture_entries_remaining": 0,
+    "independent_review": "Code-only review identified a started-session recovery interruption; resume now persists commit_pending/completed_utc before publication, and a two-interruption regression test passes.",
+    "revision_scope": "Initial28-test full run before the narrow parser follow-up; retained as historical evidence.",
+    "source_hashes_at_run": [
+      {
+        "path": "scripts/record_page.py",
+        "bytes": 29826,
+        "sha256": "4169a107c15439e7e04c0947bbf363c151929d12f83e1c2ffa43102c0bee87c2",
+        "python_ast_pass": true
+      },
+      {
+        "path": "scripts/record_audit.py",
+        "bytes": 36424,
+        "sha256": "7e3dc0cfa292c0aca4b9314a4ed42b4a794417c3e3b5d71c5efac510aeef4fa5",
+        "python_ast_pass": true
+      },
+      {
+        "path": "scripts/freeze_transcription.py",
+        "bytes": 29777,
+        "sha256": "c02e8ad072358d76541b9ad0ed647d04adeee233908bd635937d90a2a7f8f970",
+        "python_ast_pass": true
+      },
+      {
+        "path": "scripts/README_tools.md",
+        "bytes": 23506,
+        "sha256": "a0620df1a9a0b9e123290d42970c871b6a03f0fc1456dfb0d15a5e9c0e281063",
+        "python_ast_pass": null
+      },
+      {
+        "path": "scripts/tests/test_audit_hardening.py",
+        "bytes": 14713,
+        "sha256": "66599efe33538b7723a36d1555d4003d407222957cf1661e12a494ec6177b3a4",
+        "python_ast_pass": true
+      },
+      {
+        "path": "scripts/tests/test_freeze_hardening.py",
+        "bytes": 13942,
+        "sha256": "7b309b0c0d3736002d16f71ff36396bcf652778f3b68458f5c405c614d7eb72d",
+        "python_ast_pass": true
+      }
+    ]
+  },
+  "compatibility": [
+    "Existing CLI flags remain unchanged.",
+    "resume_audit retains its first two positional arguments and adds optional witnesses; --resume now honors --witness-root for the complete event gate.",
+    "Same-identity inventory patches remain valid; unknown fields and different identities are rejected.",
+    "Committed schema1 freezes without a fingerprint remain verifiable; uncommitted legacy manifests lacking a pin are preserved and refused rather than silently adopted."
+  ],
+  "scope": {
+    "live_audit_or_freeze_invoked": false,
+    "live_completion_events_modified": false,
+    "page_records_or_transcription_modified": false,
+    "images_or_context_accessed": false,
+    "witness_prose_accessed": false,
+    "packaging_or_upload": false
+  },
+  "bounded_scan083_qa": {
+    "report": "evidence/scan083_mechanical_qa.json",
+    "passed": true,
+    "scope": "Bounded metadata and syntax; no witness/source prose files or image files opened. Crop geometry and safe paths checked without image dimensions. Source-C edit replay and pixel-extent bounds were not repeated in this restricted pass."
+  },
+  "initial_saved_utc": "2026-11-19 21:01:02 UTC",
+  "parser_alignment_followup": {
+    "completed_utc": "2026-11-19 21:12:23 UTC",
+    "finding": "FREEZE-PARSER-1",
+    "status": "fixed",
+    "changes": [
+      "Reject completion/audit-looking lines that do not match the event grammar.",
+      "Reject duplicate identity fields before interpreting identities or computing the retry fingerprint."
+    ],
+    "focused_validation": {
+      "command": "From SP02_CW_10+12/scripts/tests: PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_freeze_hardening.FreezeHardeningTests.test_malformed_completion_event_refuses_retry test_freeze_hardening.FreezeHardeningTests.test_duplicate_identity_fields_refuse_retry test_freeze_hardening.FreezeHardeningTests.test_unchanged_retry_preserves_manifest_and_verifies",
+      "tests_run": 3,
+      "all_passed": true,
+      "coverage": [
+        "Malformed event appended after interrupted preparation is rejected by readiness and writing retry without writes.",
+        "Duplicate identity fields are rejected by parsing itself and retry without writes.",
+        "Unchanged retry preserves the manifest and verifies107 synthetic files."
+      ],
+      "output": "evidence/helper_hardening_parser_tests.txt",
+      "broader_suite_rerun": false
+    },
+    "changed_files": [
+      {
+        "path": "scripts/freeze_transcription.py",
+        "bytes": 30131,
+        "sha256": "8fa9d75703cd037f6464898079027188049008e20f9b8dd121541531c83c2ba3",
+        "python_ast_pass": true
+      },
+      {
+        "path": "scripts/README_tools.md",
+        "bytes": 23878,
+        "sha256": "5e08b08ade036ec31561e9c6d09e0765d435514818cfbf722e223f632d824f89",
+        "python_ast_pass": null
+      },
+      {
+        "path": "scripts/tests/test_freeze_hardening.py",
+        "bytes": 15215,
+        "sha256": "a33e806c7bdcbd2390926533451fbc9a362acbfc690ef711fc5fcb4f1f4aeb11",
+        "python_ast_pass": true
+      }
+    ],
+    "live_state_accessed_or_modified": false
+  },
+  "latest_validation": {
+    "command": "From SP02_CW_10+12/scripts/tests: PYTHONDONTWRITEBYTECODE=1 python -m unittest -v test_freeze_hardening.FreezeHardeningTests.test_malformed_completion_event_refuses_retry test_freeze_hardening.FreezeHardeningTests.test_duplicate_identity_fields_refuse_retry test_freeze_hardening.FreezeHardeningTests.test_unchanged_retry_preserves_manifest_and_verifies",
+    "tests_run": 3,
+    "all_passed": true,
+    "coverage": [
+      "Malformed event appended after interrupted preparation is rejected by readiness and writing retry without writes.",
+      "Duplicate identity fields are rejected by parsing itself and retry without writes.",
+      "Unchanged retry preserves the manifest and verifies107 synthetic files."
+    ],
+    "output": "evidence/helper_hardening_parser_tests.txt",
+    "broader_suite_rerun": false
+  },
+  "current_suite_method_counts": {
+    "test_audit_hardening.py": 17,
+    "test_freeze_hardening.py": 13
+  }
+}

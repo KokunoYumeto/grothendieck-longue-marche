@@ -1,0 +1,72 @@
+{
+  "completed_utc": "2026-11-20 02:25:47 UTC",
+  "finding": "PACKAGE-PARTIAL-NAME",
+  "status": "fixed; focused synthetic tests passed",
+  "scope": "Code and temporary synthetic fixtures only. No live packaging, upload, audit/freeze, image/witness/context inspection, or page/record/log mutations.",
+  "changed_files": [
+    "scripts/package_output.py",
+    "scripts/tests/test_package_publication.py",
+    "evidence/package_publication_fix.json",
+    "evidence/package_publication_fix.md"
+  ],
+  "changes": [
+    "Prepare the ZIP in an exclusive same-directory temporary file created by mkstemp; close, flush/fsync and CRC-check it before publication.",
+    "Calculate size and SHA-256 from the validated temporary ZIP, then publish the final name with exclusive os.link.",
+    "Refuse existing archives and preserve another writer's final file if it appears during preparation.",
+    "Clean only the tool-owned temporary name; preparation failures cannot occupy the final name. A killed process or failed cleanup may leave only its uniquely named temporary file.",
+    "Return successful publication metadata with an optional temporary_cleanup_warning if the committed archive is valid but removing its temporary name fails.",
+    "Keep the existing CLI, exclusions, manifest fields, checkpoint/final names and dry-run behavior."
+  ],
+  "tests": {
+    "command": [
+      "python",
+      "/workspace/scratch/57a811ad3c84/SP02_CW_10+12/scripts/tests/test_package_publication.py"
+    ],
+    "cwd": "/workspace/scratch/57a811ad3c84/work",
+    "environment": {
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "exit_code": 0,
+    "tests_run": 4,
+    "elapsed_seconds_reported_by_unittest": 0.008,
+    "results": [
+      {
+        "test": "test_crc_failure_does_not_publish_final_name",
+        "result": "PASS"
+      },
+      {
+        "test": "test_existing_archive_is_byte_identical_after_refusal",
+        "result": "PASS"
+      },
+      {
+        "test": "test_interrupted_entry_write_leaves_final_absent_and_retry_succeeds",
+        "result": "PASS"
+      },
+      {
+        "test": "test_publication_race_preserves_other_writer_bytes",
+        "result": "PASS"
+      }
+    ],
+    "fixture_policy": "Each test uses TemporaryDirectory beneath its working directory; only dummy alpha/beta text files and fixture ZIPs are accessed. Fixtures are removed by unittest cleanup. No old or broad test suite was run."
+  },
+  "code_sha256_before": "eaa6a7377e178e188eb7ea642eaff8ea354fda99636220b9ae42680869f02bed",
+  "file_hashes": {
+    "scripts/package_output.py": {
+      "bytes": 6327,
+      "sha256": "d149d5ac4da5f45c430dcfb85ec041285f9862779ed9e7cc4b15543121a01ea8"
+    },
+    "scripts/tests/test_package_publication.py": {
+      "bytes": 3800,
+      "sha256": "e3c90f69ef72cd635d529d575f764ae186d5c6850fc4ce42d83b256b173a7861"
+    }
+  },
+  "existing_checkpoint14": {
+    "path": "/workspace/scratch/57a811ad3c84/checkpoints/SP02_CW_10+12_checkpoint_14.zip",
+    "bytes": 2608261,
+    "sha256_before": "46d22155081fbd6bc4b52f65f0bcd25c40c82c5001218f541ec1112e2aa25f88",
+    "sha256_after": "46d22155081fbd6bc4b52f65f0bcd25c40c82c5001218f541ec1112e2aa25f88",
+    "unchanged": true,
+    "access": "Raw bytes only for SHA-256; archive entries were not opened."
+  },
+  "live_page_record_log_state": "Not accessed or modified by this fix; parent owns the protected-input snapshot."
+}

@@ -1,0 +1,41 @@
+{
+  "completed_utc": "2026-11-20 02:24:56 UTC",
+  "finding": "VERIFY-WRITE-STATUS",
+  "scope": "Narrow helper code and isolated synthetic logging-failure fixtures only. No live freeze, audit, progress/CHECK_EVENTS change, image/witness/context access, page or record change, packaging or upload.",
+  "changed_code": [
+    "scripts/freeze_transcription.py",
+    "scripts/tests/test_verify_write_status.py"
+  ],
+  "change": "Verification uses freeze_write to observe the log before and after an attempted append. Structured VerificationOperationError reports actual written/write_attempted status and logging_ok=false while retaining hashes_ok, checked-file count and detailed hash failures. CLI preserves that structured report and exits nonzero on a logging failure. Read-only verification makes no append attempt.",
+  "command": [
+    "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+    "-B",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "scripts/tests",
+    "-p",
+    "test_verify_write_status.py",
+    "-v"
+  ],
+  "cwd": "/workspace/scratch/57a811ad3c84/SP02_CW_10+12",
+  "returncode": 0,
+  "tests_run": 4,
+  "test_output": "test_cli_fsync_failure_reports_observed_write_and_hash_success (test_verify_write_status.VerifyWriteStatusTests.test_cli_fsync_failure_reports_observed_write_and_hash_success) ... ok\ntest_failure_before_append_reports_no_observed_change (test_verify_write_status.VerifyWriteStatusTests.test_failure_before_append_reports_no_observed_change) ... ok\ntest_logging_failure_keeps_existing_hash_mismatch_details (test_verify_write_status.VerifyWriteStatusTests.test_logging_failure_keeps_existing_hash_mismatch_details) ... ok\ntest_read_only_verification_never_attempts_log_write (test_verify_write_status.VerifyWriteStatusTests.test_read_only_verification_never_attempts_log_write) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.005s\n\nOK\n",
+  "synthetic_cases": [
+    "CLI fsync failure after a complete append reports written=true and hashes_ok=true",
+    "Failure before append reports written=false and unchanged synthetic log",
+    "Read-only verification never invokes the append helper",
+    "Hash mismatch details remain distinct from a subsequent logging failure"
+  ],
+  "new_code_sha256": {
+    "scripts/freeze_transcription.py": "5d52d1431f1ba0d9d13f3ce34e2c5ab31b7d4ce18a901fcf58ee8e0c6f6caed5",
+    "scripts/tests/test_verify_write_status.py": "f6e9bdcf5e2f83d788dbf7b5c4579c48a03f5800e7b52d0be2e8a6df776ec151"
+  },
+  "preflight_code_sha256": {
+    "freeze_transcription.py": "8fa9d75703cd037f6464898079027188049008e20f9b8dd121541531c83c2ba3"
+  },
+  "live_operations_executed": [],
+  "limitations": "The tests stub committed-manifest validation and reduce the synthetic page count to one so they isolate verification logging; they do not claim to revalidate the complete audit/freeze pipeline."
+}
