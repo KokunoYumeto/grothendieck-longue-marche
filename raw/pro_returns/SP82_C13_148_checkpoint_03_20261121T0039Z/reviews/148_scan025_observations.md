@@ -1,0 +1,3 @@
+# Main-reader observations, scan 025
+
+All nine existing evidence crops and the whole sheet were viewed. The upper and lower bars of the tetrahedron letter make I/T close; the notation on the same row justifies T without claiming the foot alone settles it. The struck arrow over Q is separate from Q. Orienté and hexagone are wholly struck, their neighbours live. The fourth symbol is too overwritten to identify an underlying letter. The left H carries a bar, while the E subscripts carry headed arrows. Both dimension braces close towards their labels; the last has its point facing right. The graph has four vertices and eight edges including the four external branches, with no arrowheads. Foliation 24 is clear.

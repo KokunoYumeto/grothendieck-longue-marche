@@ -1,0 +1,3 @@
+# Main-reader observations, scan 029
+
+Whole page and all five saved crops viewed. The repeated blue G/U-like grid is laterally reversed: its G bowls open the wrong way and the group order is mirrored. The START/ROOM listing and French footer have the same pale blue reverse-side appearance; they are not front-side writing and must be omitted, not labelled illegible. Only the top-right dark M with subscripts 0,5 and its short raised horizontal stroke, plus bottom foliation 28, are front handwriting. The top stroke could be the detached top of the 5 or a separate raised dash; its role remains doubtful. The 28 is plain. No other front word, drawing or page date was found.

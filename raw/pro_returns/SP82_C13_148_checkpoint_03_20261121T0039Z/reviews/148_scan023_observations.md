@@ -1,0 +1,3 @@
+# Main-reader review: scan 023
+
+The whole page and all 21 saved crops were inspected. The printing is front-side text; the apostrophe is a handwritten insertion. The rounded G is preferred, with the overwritten index uncertain. Nine horizontal rulings produce eight bands in the triangular mesh; the square mesh has four columns and five uneven bands. Three horizontal strokes per lower E favor an unbarred E, with the alternative retained. The small mark beside the tetrahedron remains uncertain. The letter O in the separate heading Orienté is visibly larger than the lowercase o below. Counts and incidence sums were recomputed without using them to change the manuscript.
