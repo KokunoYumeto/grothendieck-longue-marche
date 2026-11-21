@@ -1,0 +1,1 @@
+The B10 root adjudication initially lost its two closing quotation ticks through adjacent Python string literals. The ticks were restored in the root script, choices, plan, adjudication TSV, and audit-change record. The page and collation row already had the intended literal quotes; no reading, count, first TSV, second TSV, fixed box, or comparison record changed.

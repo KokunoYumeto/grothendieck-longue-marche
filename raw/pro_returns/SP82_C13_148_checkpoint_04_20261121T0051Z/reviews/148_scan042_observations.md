@@ -1,0 +1,13 @@
+# Main-reader observations, scan 042
+
+The whole sheet, both full-resolution halves and all eight saved crops were successfully displayed and read. Faint reverse-side marks, especially the lower half, are not front-side text.
+
+- Heading initial o is body height, supporting opérations. Objects also begins with a low loop followed by a tall b: objets, against C's capital. Sommets has the broader taller initial S. The objects group has a large brace beginning above objets and an inner brace joining the two circles lines.
+- The parenthetical labels have an opening curve before périphériques, then intérieurs below. A separate comma after périphériques and a closing parenthesis after intérieurs are not established; remove the supplied punctuation. The longer accented ending distinguishes intérieurs from H's internes.
+- Condition: the dense cancelled word remains tentative de. Live quotes, anabélienne, ou de stabilité and square brackets are visible.
+- Diamonds: the top live left glyph matches the angular cap, curved upright and returning foot of the other calligraphic T forms on this page; resolve M0643 first at medium. The cancelled SD group stays doubtful. All diamond side connectors and the left S-to-D connector lack heads. The middle thin arrow starts above D mathcal-T and reaches toward the left vertex of the right diamond, not from S mathcal-T. The longer lower curve starts at D mathcal-T and ends near the right vertex. The upper and bottom connecting arrows point right. Right-hand s,d are lowercase, and the doubled crossed t-like base glyph remains t/blackboard-L uncertain, consistently with041.
+- Catalogue: Somme; gommage (partiel) de/du marquage unresolved; live sur- prefix in surmarquage. Both vertical double arrows have heads at both ends, with the second spanning the heights of4 and5. Two left braces join1–3 and4–6.
+- Item4's comma is only a tiny point after the parenthesis and remains doubtful. Item5's underline stops under the middle of amalgamation. The old line has a dense short cancelled word, then an opening-parenthesis-like curve and residual données de-like letters; preserve uncertainty and its cancellation. Sans gommage! is an interlinear replacement and the closing parenthesis at the far right is live.
+- Items6 and7 have de, without an added s before cercles. Item7's final word is intérieurs, with the longer accented ending. Final foncteurs et iso ``twist'' is present; no expansion of iso. Folio41 is a separate thin hand.
+
+No mathematical statement was proved or refuted while reading this catalogue; its arrow geometry was settled from ink, not mathematical expectation.

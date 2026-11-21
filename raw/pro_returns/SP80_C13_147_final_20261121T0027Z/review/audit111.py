@@ -1,0 +1,37 @@
+"""Root decisions after inspection of all12 differing fresh crops."""
+from edition.scripts.root_audit import Audit
+a=Audit(111)
+a.change('B01',r"est clair sur l'expression. 155, \deleted{\unsure{les|des}} $J'\subset J$,",'A separate dark point stands after expression and before155; it is not a parenthesis or part of a letter. The cancelled group has a tall loop and low es forms, admitting les/des, with no secure separate accent. The comma after155 and after J remains.')
+a.keep('B02','The struck qui is a separate group followed by live est, not a single étant. The old e/J prime remains inseparable under the strike. The replacement x, unequal-to-eJ insertion and d’abord are clear. The overwritten comparison still admits not-equal or less-or-equal; a plain less-than alone omits its additional strokes.')
+a.change('B03',r"\inserted{défini par fonctorialité \unsure{par|pour} l'inclusion $\{x\}\unsure{\hookrightarrow|\subset}J'$}",'After fonctorialité the p descender and low joined remainder permit par or pour; neither full vowel sequence is independently separable. Retain par first with pour alternative. The relation has a left curl and long lower shaft but a compressed right end, so hook/subset remains unresolved.')
+oldlabel=r'\unsure{\mathrm{can.}|\mathrm{iso.}}'
+newlabel=r'\unsure{\mathrm{par\ fonct.}|\mathrm{can.}|\mathrm{iso.}}'
+b4=a.comparison['B04']['first'].replace(oldlabel,newlabel).replace("fonctorialité par l'inclusion",r"fonctorialité \unsure{par|pour} l'inclusion")
+a.change('B04',b4,'The cancelled lower route has a longer label than a single three-letter abbreviation: an initial descending p-like stroke and a distinct tall f-like stem support tentative par fonct. Crossing strokes prevent full resolution, so can./iso. remain alternatives. The lower Dd,delta, both deleted diagonal routes and the upper chain agree. The annotation repeats B03’s par/pour uncertainty.')
+a.keep('B06','159 has a single headed shaft. The tiny detached short fleck below its middle is irregular and has no established label form or mathematical attachment; it is not transcribed as a new dot label. Dd,delta has its visible comma and delta.')
+a.keep('B07','Suivant and où retain their low joined forms. The defined word has dr, a p descender and eau ending, drapeau; no dotted i and double-m sequence supports diagramme. The cancelled type and crossed avec remain distinguishable. The two filled vertices have one headless shaft. Car/si and the cancelled resp. remain tentative; the latter has a surviving descender unlike a simple ou.')
+a.keep('B08','The live short words after the struck parenthesis are on and a, followed by comma. The tiny a is a filled small loop, matching the prose hand rather than an isolated diagram vertex. J= is raised and live; the later au lieu de is struck. The cancelled introductory word retains its existing alternatives.')
+a.keep('B09','The old trace has a narrow loop and crossing upper stroke, but no intact capital-J or F skeleton can be separated from cancellation. The prior l-apostrophe remains tentative. The live l’isom and canonique are clear and the abbreviation has no final point.')
+a.keep('B10','The D exponent has a vertical stem and detached point, a bang; the high black cluster is crossed. The operation is an angular wedge, with the ornate S group and its D base below it. The powerset P matches earlier forms. The old (d) letters survive beneath the strike and the replacement d is low and separate.')
+pour=r'\unsure{\deleted{pour}|pour}'
+b11=a.comparison['B11']['first'].replace(r'\deleted{pour}',pour)
+a.change('B11',b11,'The low horizontal stroke traversing pour favors a strike, but merges with its connected letter bodies; preserve live pour as a deletion-state alternative. The insertion has an upright d and separate high prime, and its cod argument has an e loop and prime, not a clear x. La notation is singular; the tiny introductory word retains its existing alternatives.')
+a.keep('B12','The powerset subscript repeats delta’s loop and high return from160, without a separate detachable prime. The upper arrow is headed and the lower one has its initial bar and right head.161 and h(x) agree; blackboard-versus-calligraphic encoding alone does not change the ornate P.')
+a.keep('B13','The pencil digits are1,1,0. The final page already uses a margin wrapper, so the TSV scope difference requires no change.')
+a.replace("l'expression 155,", "l'expression. 155,")
+a.replace(r'\deleted{\unsure{les}}',r'\deleted{\unsure{les|des}}')
+a.replace("fonctorialité par l'inclusion",r"fonctorialité \unsure{par|pour} l'inclusion")
+a.replace(oldlabel,newlabel)
+a.replace(r'\deleted{pour}',pour)
+a.update_row(1,'B01',C="l'expression 155,",H="l'expression (155) ;",final="l'expression. 155,",against_C=True,confidence='high')
+a.update_row(2,'B01',final=r'\deleted{\unsure{les|des}}',confidence='low')
+for i in (8,9):
+    a.update_row(i,'B03',final=a.report['rows'][i]['final'].replace("fonctorialité par l'inclusion",r"fonctorialité \unsure{par|pour} l'inclusion"),confidence='medium')
+a.update_row(29,'B11',final=pour,confidence='medium')
+a.add_row('B04','158, cancelled diagonal-route label',r'\unsure{\mathrm{can.}}',r'\note{sous la flèche, un passage biffé : « $D_{\{x\}}$ \ill{} iso. ».}',newlabel,'low','misread word','Struck text',True,True,marked_in_H=True)
+a.doubt('opening cancelled word',r'\deleted{\unsure{les|des}}','Tall loop and low es survive; initial l/d is not settled.','low',replace_place='opening cancelled word')
+a.doubt('f_x annotation preposition',r'\unsure{par|pour}','Joined low vowels cannot be separated securely.','medium')
+a.doubt('158 cancelled label',newlabel,'Long crossed label has a p-like start and f-like stem; neither full form is secure.','low',replace_place='158 cancelled label')
+a.doubt('last paragraph, pour deletion state',pour,'Heavy horizontal line may merge with normal letter joins.','medium')
+a.note('Independent image-only rereading: all12 differing boxes were adjudicated. A point after expression is restored. The opening cancellation admits les/des; par/pour and pour’s deletion state are explicit doubts. The cancelled diagonal label now leads with par fonct., retaining the earlier can./iso. candidates. The bang, below-wedge group, I(d)-to-Id correction and delta in161 were retained. Overlapping B03/B04 count as two changed boxes, although their annotation is one textual location.')
+a.finish()

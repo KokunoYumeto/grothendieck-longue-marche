@@ -1,0 +1,25 @@
+# Scan124 independent reader notes
+
+The assigned page, supplied box list, and full generic rules were read. Exactly one fresh crop was made for each of the 17 fixed boxes, with no rotation. Every fresh crop was opened and emitted with `view_image`. A view call for B12–B14 was interrupted by replacement of the exec runtime; the same existing files were then viewed successfully, without recropping. No witness, first/final text, report, notation table, comparison, other page, old crop, OCR, research, or TeX compilation was consulted.
+
+## Reading uncertainties and edge observations
+
+- B01: complete ink page number `61`.
+- B02: `considérons`; the raised accent over the compressed middle is retained as an acute accent.
+- B03: the entire small formula is canceled. The first base glyph is read as T beneath the strike. A tiny raised mark after its d may be a prime; T_{d'}/T_d are retained as alternatives. The following D_{d,d'} sits below and to the right and is encoded as a base subscript, without adding parentheses. The strike crosses several strokes, so this reading remains uncertain. The tiny mark above the following D is accounted for by the tentative prime, not expanded into an additional symbol. A bottom-edge ink tip from the next line is not expanded.
+- B04: explicit handwritten `(193)`.
+- B05: the two expressions share a left brace. Both right-hand descriptions read `syst. local de rang ... sur ...`; abbreviations have not been expanded. In the second row there is a tiny overtraced raised mark following the first d in both the argument and the D subscript. Its visible crossed shape may be a canceled prime or an asterisk-like mark, and both are retained. The second argument in the second row has no securely separable prime: d/d' are preserved as alternatives. These marks have not been normalized to the first row. The terminal D_{d,d'} in each prose annotation is readable at the right page edge.
+- B06: `hom`, with a very small filled loop for o; no punctuation is clearly present.
+- B07: complete quoted word `tautologique`, closing double quote, and closing parenthesis. The tall vertical stroke entering from above near the closing quote is a descender from the preceding line, not part of this word.
+- B08: formula number `(194)`, the two T expressions, and the right-pointing connector are complete. In the target expression the separator between the arguments is a small dot-like mark; comma/period remain alternatives. Both subscripts, d at the source and d' at the target, are retained.
+- B09: the complete formula has ! on the left D and on the first right-hand D, no ! on the last D, and base D_d under the multiplication sign. These distinctions were read directly from the ink.
+- B10: `com.`; no expansion to a complete adjective is supplied.
+- B11: complete diagram and handwritten number `(195)` are encoded. The first source symbol has an ornate P-like shape, retained as calligraphic/plain P alternatives. It carries subscript d', raised `(I_d)`, and a further base D_{d'}^!, before simeq and D_{d,d'}^!. The upper horizontal connector is dashed and points right. The left diagonal points to D_d^!; the middle diagonal points to D_{d,d'}; the right vertical points down to D_{d'}. The two arrows out of D_{d,d'} point down-left to D_d and down-right to D_{d'}. The connector from D_d^! to D_d is visibly a plain oblique line with no secure arrowhead at either end, and is encoded without a head. Its group label has subscript d. The right vertical group label has subscript d'. The upper diagonal group label has d followed by a tiny overtraced raised mark, represented with the same canceled-prime/asterisk uncertainty as the visible form in B05, rather than silently resolving it. All three ornate group glyphs remain G/mathfrak S alternatives. The upper border contains cut descenders from the preceding prose, which are not reconstructed.
+- B12: the initial s is heavily overwritten and retained as uncertain; the apostrophe and `identifie` are legible. Two small isolated ink specks above the middle of the word have no secure lexical value and have not been turned into an accent or additional letters.
+- B13: complete `l'hom`, with no visible final period.
+- B14: complete `(196)` and Z^d to Z^{d'}, with double diagonal strokes in both Z glyphs. A tiny dot lies below the upper left stroke of the first Z; it has no secure status as a separate mathematical mark and is noted here without assigning a new index or accent.
+- B15: the complete word begins `l'`; the compressed following letters are read ens, with un retained as an alternative. No period or expansion to `ensemble` is supplied. The top edge contains the clipped tail of a preceding-line descender.
+- B16: complete Z^d simeq Z^{I_d}, including the final comma. The capital I has top and bottom bars, with d attached as its subscript inside the exponent.
+- B17: pencil margin number `123`.
+
+These notes and the complete 17-row reading TSV were written before comparison. Completed readings must remain unchanged after comparison.

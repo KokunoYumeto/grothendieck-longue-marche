@@ -1,0 +1,7 @@
+The clear manuscript baselines and most of the machine text can be read with high confidence. The least secure material is the small, repeatedly crossed writing, raised replacements among existing strokes, slanted margin notes, and retraced symbols. The canceled conditions on scan 046 and several glyphs in the dense classification and programme pages remain particularly difficult. A local doubt records the surviving ink; it is not an invitation to supply the mathematically expected expression.
+
+Neither witness consistently settles the other. C preserves much more of the cancellation and drawing structure, but some of its unmarked words, abbreviation expansions, underlines and diagram details required correction. H sometimes supplies the better word or short form, while frequently omitting canceled material, changing its status, or supplying punctuation absent from the sheet. Agreement between the two was never treated as evidence. The changes counts describe editorial places in these pages; they are not independent estimates of either model's error rate.
+
+Fine drawing details are less secure than the main connections: pale short strokes, gaps, heavy points with a small light center, and overlapping cancellation strokes are especially vulnerable. The saved crops remain the evidence for these decisions. Reused typed sheets also carry reverse-side show-through; only writing belonging to the inspected face is transcribed. The paper watermark is not source text.
+
+This assessment will be supplemented after all blind readings are adjudicated.
