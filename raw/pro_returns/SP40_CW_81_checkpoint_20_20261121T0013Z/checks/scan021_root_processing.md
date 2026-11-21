@@ -1,0 +1,24 @@
+# Scan021 root processing provenance
+
+2026-11-20T22:05:47.995494+00:00 Root begins supplied witness packet text reads after scan020 was committed at2026-11-20 22:04:08 UTC. Three fresh independent readers A/B/C have briefv19 and the same prepared packet. No scan021 image has been opened by root.
+
+2026-11-20T22:06:30.624219+00:00 Root read full C/H, metadata, actualC doubt/notation/slip extraction, empty Cnotes, exact Srow, and all21 originalC inventory entries. The actualC table has15rows/15localparts, catalogued separately from notation/slip/context rows. No reader partialreturn or image has been inspected by root. S author scope remains no-scan-view; no local bar is inferred.
+
+2026-11-20T22:17:17.019222+00:00 Phase messages only: A reports its complete whole/a/b and15local-crop inspections with no repeats or failed image deliveries, then source assembly. C reports whole/a/b and22local crops complete, all15actualCrows addressed, and source assembly; it disclosed an earlier truncated combined text output corrected by complete bounded source reads before images. Root has not read partial returns or viewed any scan021 image. These phase counts will be reconciled with the complete final returns.
+
+2026-11-20T22:19:56.517925+00:00 Reader B reports15plannedlocal crops completed with one successful view each and no retry, now complete TeX/report/source-audit assembly. All three readers have reported finishing their visual phase. Root still has no scan021 image view and has not opened a partial return. Final counts and all selections await the complete returns.
+
+2026-11-20T22:28:30.277722+00:00 Checkpoint 18 raw snapshot completed with A final and immutable, B/C saved and paused mid-source repair, and record021 read-only. All are released after the raw ZIP completed. Root began the complete A return read only after its final notification. One aggregate reading.md text output was truncated by 15 tokens; the affected lines 93–112 were reread completely. This was text only, with no image delivery or root image view.
+
+2026-11-20T22:29:46.629018+00:00 Root completed A reading.tex, reading.md, all report fields, crop manifest and image audit, all source-audit group metadata, and every repeated exact fragment through its already-read identical full reading.tex source. Two text-output truncations were recovered by complete bounded reads of the affected material. A metadata print stopped on the last diagram lacking a nodes key after emitting its complete metadata; the remaining top-level audit fields were read in the next call. These are source-text operations, not image deliveries. No root scan021 image has been opened.
+
+2026-11-20T22:38:48.067354+00:00 — Complete B/C final returns and all three full pairwise TeX diffs read. C supplementary audit output was initially truncated in three text-only calls; all nonduplicated metadata recovered in bounded reads, every duplicated source excerpt matched its already-read TeX. No image attempted or viewed before comparison gate.
+2026-11-20T22:52:14.586829+00:00 — Root crop decisions and source-only S/content consolidation complete. 24 distinct views, 2 new root PNGs, 1 absent-filename attempt with no delivered image, no reopens. Source drafting now underway.
+Source-only section25 C outcome summary corrected immediately to include R10 in the stated nine retained rows; section17 already retained R10 and no ink decision changed.
+Source-only section14 heading corrected from seven to six Sigma labels: the recorded diagram has four upright and two sideways Sigma groups; all original component choices and counts remain unchanged.
+
+Root completed the full selected-TeX read at 2026-11-20T23:14:14.351288+00:00: all480 physical lines, read in four contiguous source chunks, SHA-256 96772b7d5d36792f72827807deffaa39e746d1876f771e9dd498cbcf0238ddce. This is a source read only. The selected map/record/inventory/doubts/notes and final audit remain pending; no approval or page commit is asserted.
+
+2026-11-20T23:42:20.669992+00:00 — Root completed the bounded repair review: all 71 replacement local H bases, all 15 flag changes, both reverse associations and their current mirrors, exact Q04/Q05 descriptions and A/B/C readings, Q06 attributed complement wording, all eight Q08 hand scopes, and the complete 58-ID Q07 inventory permutation. The 1296 old-to-new current map-hash fields (1295 attachment bindings plus the current map SHA) are reserved for the independent bounded replay check. All other changed before/after values were read in full, including provenance. No image was opened and no new ink or mathematical decision was made. Bounded QA closure and final root approval remain pending.
+
+2026-11-20T23:45:16.583602+00:00 — Complete bounded closure report and JSON read; frozen corrected hashes verified; root accepts the corrected bundle for formal approval.
