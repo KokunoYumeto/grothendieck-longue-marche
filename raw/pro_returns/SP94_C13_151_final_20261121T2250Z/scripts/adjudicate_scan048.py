@@ -1,0 +1,23 @@
+"""Root decisions after viewing every token-disagreement crop."""
+from pathlib import Path
+import csv,json
+W=Path(__file__).resolve().parents[1];p='151_scan048';r=json.loads((W/'reports'/f'{p}.json').read_text());t=(W/'pages'/f'{p}.tex').read_text();dec={}
+def d(b,e,changed=False): dec[b]={'decision':'retain first with local doubt' if changed else 'retain first','changed':'yes' if changed else 'no','evidence':e}
+d('b03','The filled first subscript has a short upper return and rightward shoulder consistent with retraced r; it does not separately expose the lower rays seen in the clear stars on this crop, so the existing unsure r remains sufficient. A distinct dark middle dot is present immediately before X_i*. The missing second inequality in the first row and literal I_i in the last row remain. The whole formula, braces, indices, relations and coproducts were checked.')
+d('b04','The first I delimiters have hooked upper parts and curved/retraced lower parts, so the existing brace/parenthesis alternatives remain. The right-hand gloss is visibly beside the definition, with drapeaux underlined. Its final I at the edge has a cap and stem; no illegible symbol is needed. Text/roman math wrappers do not differ in reading.')
+d('b05','The X, Delta_r subscript, subset and r+1 power over Delta_0 agree exactly; only delimiters differ.')
+d('b06','The second inclusion and final dot are present. Placing that dot inside or outside the math wrapper changes no ink reading.')
+d('b07','After the deep p descender is a separate rounded o body, then contracted s/i and a tall t with a rightward low continuation and an i point. This supports composition; compacite would require different bodies and a final accented e. Both pairs of raised double quotation ticks and (9) are clear.')
+d('b09','The dark nearly horizontal portion lies on the connected baseline of the contracted a/n strokes, not on an independently drawn cancelling stroke. The two t stems and initial accented e remain live. The existing des/les doubt already describes the overtraced tall loop.')
+d('b10','The end following c has a low i/a run rising into a final l-like shoulder and return, rather than an e body with terminal s. Retain simplicial, with the clear half fraction and no added hyphen.')
+d('b11','The star on the left, r on the right and r greater-than-or-equal-to zero below the closing parenthesis agree; the full display was inspected.')
+d('b12','The crowded initial loop and high small mark still do not establish whether an initial d/apostrophe is separate. Retain the explicit ou/d-ou alternatives already in the first reading; no physically illegible span is substituted. The application and half-simpliciale wording agree.')
+d('b13','One single-shaft right arrow connects the unprimed r source to the primed r target. Alpha has a star. Only delimiters differ.')
+d('b14','The low joined word after a has several shallow returns; its final elongated return favors une but does not independently close an e body. Retain une with un now explicit as an alternative, rather than decide from the gender of application.',True)
+t=t.replace('associé à une application',r'associé à \unsure{une|un} application')
+r['doubts'].append({'place':'final line, after associé à','reading':'une','alternatives':'un','confidence':'medium','reason':dec['b14']['evidence']})
+r['notes'].append('scan048.N14: Blind adjudication leaves the first r doubtful without reconstructing a star or old glyph, retains the distinct dot before X_i* in (10), and preserves the brace/parenthesis and ou/d-ou alternatives. Composition and simplicial are supported by their internal strokes. Etant remains live. The compressed final une is now marked with un as an alternative. All whole formulas were compared, and the visible index irregularities discussed in N13 stand unchanged.')
+with (W/'second'/f'{p}_comparison.tsv').open() as f:comp={q['box']:q for q in csv.DictReader(f,delimiter='\t')}
+with (W/'second'/f'{p}_boxes.tsv').open() as f:boxes={q['box']:[int(q[k]) for k in ('x0','y0','x1','y1')] for q in csv.DictReader(f,delimiter='\t')}
+r['second_changes']=[{'box_id':'b14','place':'last line, associé à une','first':comp['b14']['first'],'second':comp['b14']['second'],'final':r'associé à \unsure{une|un}','evidence':dec['b14']['evidence'],'crop':f'crops/second_{p}_b14.jpg','box':boxes['b14'],'confidence':'medium'}]
+(W/'pages'/f'{p}.tex').write_text(t);(W/'reports'/f'{p}.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n');(W/'audit'/f'{p}_adjudication.json').write_text(json.dumps(dec,ensure_ascii=False,indent=2)+'\n')

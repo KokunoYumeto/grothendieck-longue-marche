@@ -1,0 +1,29 @@
+"""Root decisions after all three differing blind crops and existing detail crops."""
+from pathlib import Path
+import csv,json
+W=Path(__file__).resolve().parents[1];p='151_scan054';r=json.loads((W/'reports'/f'{p}.json').read_text());t=(W/'pages'/f'{p}.tex').read_text()
+dec={
+'b01':{'decision':'retain first','changed':'no','evidence':'The reference has a closed low d bowl and its tall loop, followed by an independent right parenthesis. It is d), not ds or ne. The full two-row formula, unaccented def above equality, brace, Inf and final question mark were inspected and agree.'},
+'b02':{'decision':'correct and qualify first from ink','changed':'yes','evidence':'The ends of celles and déduites have low terminal returns; des has its separate final s return, and the raised cercles has a final curved s below its preceding e. Retain the plurals. The shorthand is the barred reduced m/vu form, without expanding it to même. The word cone has no independently secure accent, so prefer the literal unaccented form but retain cône as a doubtful alternative. The old phrase after dessus is largely covered: d-un sommet remains a possible reading; the blind d-origine is now recorded as another possibility, although no clear g descender survives. The crossed n-est pas has a visible apostrophe, p descender and low terminal strokes, but its covered middle warrants an explicit doubt. The live Il matches the same initial form above; its looped l is not changed to Je. Disconnexe has low n/n movements and a crossing x near the end, unlike discontinue; montrera continues with additional low r/a strokes after montre. The four round vertex labels remain consistently 0/o doubtful. The first drawing retains ink visible in the crop: a parallel lower A trace, short stub below a, internal separated strokes and a gap between the left boundary and the ring; the simpler blind rendering omits these.'},
+'b03':{'decision':'qualify first from ink','changed':'yes','evidence':'The tiny reference letter after 1-prime is a flattened oval with a right return. It favors a but does not fully exclude 0, which is now explicit. There are exactly two right parentheses and then a comma. The literal capital I, both unpunctuated l-ens forms, the insertion leader, both cancellations and the complete formula (25) remain as first read.'}}
+repls=[('cône dessus',r'\unsure{cone|cône} dessus'),(r'\unsure{d\'un sommet}',r'\unsure{d\'un sommet|d\'origine}')]
+# Apostrophes are ordinary text, not TeX escapes.
+t=t.replace('cône dessus',r'\unsure{cone|cône} dessus').replace("\\unsure{d'un sommet}","\\unsure{d'un sommet|d'origine}").replace(r'\deleted{n\'est pas}',r'\deleted{\unsure{n\'est pas}}')
+t=t.replace("\\deleted{n'est pas}","\\deleted{\\unsure{n'est pas}}").replace("(par (1' a)),", "(par (1' \\unsure{a|0})),")
+with (W/'second'/f'{p}_comparison.tsv').open() as f:comp={q['box']:q for q in csv.DictReader(f,delimiter='\t')}
+with (W/'second'/f'{p}_boxes.tsv').open() as f:boxes={q['box']:[int(q[k]) for k in ('x0','y0','x1','y1')] for q in csv.DictReader(f,delimiter='\t')}
+for q in r['changes']:
+ if q['id']=='r10':q.update(final="\\deleted{\\unsure{d'un sommet|d'origine}}",evidence=dec['b02']['evidence'])
+ if q['id']=='r15':q.update(final="Il \\deleted{\\unsure{n'est pas}} ne me",confidence='medium',evidence=dec['b02']['evidence'])
+ if q['id']=='r23':q.update(final="(par (1' \\unsure{a|0})),",confidence='medium',evidence=dec['b03']['evidence'])
+r['changes'].append({'id':'r28','place':'before dessus, accent of cone','c':'cône','h':'cône','final':r'\unsure{cone|cône}','evidence':'No detached circumflex is securely visible above the round o. The blind reader independently preferred unaccented cone; retain that literal reading with the accented alternative explicit.','confidence':'medium','kind':'abbreviation expanded or spelling modernised','error_category':8,'diff_c':True,'diff_h':True,'marked_h':False,'crop':f'crops/second_{p}_b02.jpg','box':boxes['b02'],'consequential':''})
+for q in r['doubts']:
+ if q.get('reading')=="\\deleted{\\unsure{d'un sommet}}":q.update(reading="\\deleted{\\unsure{d'un sommet|d'origine}}",alternatives="d'origine; middle and final letters covered",reason=dec['b02']['evidence'])
+for place,reading,alt,b in [('before dessus','cone','cône','b02'),('cancelled phrase after live Il',"n'est pas",'ne followed by unreadable remainder','b02'),('reference after par 1-prime','a','0','b03')]:r['doubts'].append({'place':place,'reading':reading,'alternatives':alt,'confidence':'medium','reason':dec[b]['evidence']})
+r['notes'].append('scan054.N14. Blind adjudication preserves the actual plural des cercles, disconnexe, montrera, four matching 0/o labels and the detailed drawing. The accent of cone/cône is uncertain, with the unaccented form preferred. The crossed d-un sommet now records d-origine as another doubtful proposal, and n-est pas is explicitly qualified because its middle lies under the strike. The small a/0 in the reference remains unresolved. These qualifications do not alter the conditional mathematical checks above.')
+finals={}
+for b in ['b02','b03']:
+ s=comp[b]['first'].replace('cône dessus',r'\unsure{cone|cône} dessus').replace("\\unsure{d'un sommet}","\\unsure{d'un sommet|d'origine}").replace("\\deleted{n'est pas}","\\deleted{\\unsure{n'est pas}}").replace("(par (1' a)),","(par (1' \\unsure{a|0})),")
+ finals[b]=s
+r['second_changes']=[{'box_id':b,'place':'blind box '+b,'first':comp[b]['first'],'second':comp[b]['second'],'final':v,'evidence':dec[b]['evidence'],'crop':f'crops/second_{p}_{b}.jpg','box':boxes[b],'confidence':'medium'} for b,v in finals.items()]
+(W/'pages'/f'{p}.tex').write_text(t);(W/'reports'/f'{p}.json').write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n');(W/'audit'/f'{p}_adjudication.json').write_text(json.dumps(dec,ensure_ascii=False,indent=2)+'\n')

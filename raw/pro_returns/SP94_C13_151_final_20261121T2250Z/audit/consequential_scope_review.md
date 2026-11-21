@@ -1,0 +1,3 @@
+# Scope of consequential corrections
+
+The root reviewed every pre-audit consequential flag. Pure punctuation, grammatical agreement, foliation provenance, label placement, brace extent without a changed assertion, and alphabet styling without a distinct mathematical role were removed from the consequential list; their complete change rows remain. Missing mathematical conditions, terms, indices, relations, and the state of mathematical revision remain eligible. The list reports a consequential reading change, not a proof of the written claim. Final audit changes will be judged by the same criterion.

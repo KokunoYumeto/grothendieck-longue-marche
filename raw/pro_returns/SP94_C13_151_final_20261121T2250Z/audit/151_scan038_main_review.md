@@ -1,0 +1,5 @@
+# Main-reader adjudication, scan038
+
+The whole page and all 19 saved crops were visually inspected. The singular opening, ainsi, du topos, (8), subscript stars, j-shaped descending stem, surviving comma after actuel, and two dark dots of the colon are accepted. Both F font marks remain undecided. Défini is first in an explicit défini/définie doubt; grammar does not decide the ending. The heavily cancelled phrases, local B overwrite and cancelled isolated symbols remain doubtful.
+
+The inserted formula has no opening parenthesis independent of the descender from général; its final iso) and its arrowhead with tilde were confirmed. Its short curved pi forms differ from the capital Π in the lower definitions. The two clear rounded V forms match the notation table and are mathcal V; cancelled instances retain whole-expression doubt. One surviving comma is transcribed once at the condition replacement. The pale 37 is a separate hand. Local and full-block cancellation layers are retained.

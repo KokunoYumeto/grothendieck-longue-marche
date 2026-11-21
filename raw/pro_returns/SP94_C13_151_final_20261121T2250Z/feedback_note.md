@@ -1,0 +1,12 @@
+The ten categories above are a bookkeeping assignment of one principal category to each physical changed place. Several places involve more than one mechanism, such as a subscript beside an insertion leader; they are counted once under their principal category. Distinct occurrences of a repeated sign, and distinct endpoints of quotation marks, are separate physical places. Doubt-only changes and equivalent macro syntax are excluded.
+
+The supplied error sheet anticipated most mechanisms found here. The useful refinements are local:
+
+- **Attached caps and detached bars need separate decisions.** The scripted neighbourhood V on scans056–061 has a hooked cap which can look like an overbar. A true additional bar occurs in other formulas and in scan059’s doubtful drawing label. The upper cap alone is not evidence for a barred object.
+- **Set inclusion and order can be deliberately distinct.** Scan049 explicitly allows a nonreflecting indexed family. Later formulas on scans057–060 cannot safely be corrected by assuming every inclusion reflects the index order. Several statements need additional hypotheses, as the mathematical notes and counterexamples show; their literal indices are retained.
+- **An abbreviation’s stop is not portable.** The same run has dotted and undotted ens, imm, rev, top and i.e/ie forms. Local stop counts, not a preferred expansion, decide the transcription. Scan053’s four points after etc are also preserved.
+- **The dot or heavy patch in a genuine picture may be a separate component.** Scan059’s large drawing contains a small upper dot and a lower dark blot in addition to its central junction. Its two curved arrows have different origins and distinct endpoints. The small drawing’s single Xi label must not also be transcribed as a second prose Xi.
+- **A boundary can remove part of a framing stroke.** Scan061’s authorial number has an open surviving frame at the top image edge. Completing the oval would add ink.
+- **A long letter return can imitate annotation.** The descender of g in scan060’s singulière is continuous with the line beneath the opening letters; it does not establish a separate underline. This is the same stroke-tracing discipline needed for insertion leaders and apparent cancellations.
+
+The hand log records the evidence and limits of each observation. A stable notation does not authorize replacing locally different indices, commas, primes, relation signs, or genuinely different empty-set forms.

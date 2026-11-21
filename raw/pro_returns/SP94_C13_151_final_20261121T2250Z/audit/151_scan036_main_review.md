@@ -1,0 +1,5 @@
+# Main-reader adjudication, scan036
+
+All 19 saved crops were visually inspected, including the three b-numbered formula/foliation crops. The whole-page layout was checked. Root accepts the proposal with M0943 first (medium), M0944 undecided, and M0945 alternative 0 (medium). The vowel of the article is compact enough that la/les is retained despite a first impression of la. The closed oval 0 contrasts with the adjacent a exit stroke. No dire is supplied in cela veut que. Capital Π, curved scripted V, doubled-stem disk D, omitted marginal text, literal =s, exact insertion positions, and unmatched parenthesis were confirmed. The apparent quadrilateral is intersecting handwriting, not a figure.
+
+The local invariants factorization was checked by equivariance and recorded in N10. Purely visual checks are documented in this review and notes, not mislabelled as mathematical proof events. Multiple occurrences previously grouped in the draft report were separated into place-specific rows without altering the reading.

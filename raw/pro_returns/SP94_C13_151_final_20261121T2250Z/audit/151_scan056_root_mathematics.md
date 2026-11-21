@@ -1,0 +1,7 @@
+# Targeted checks for scan 056
+
+For the construction already read on scans048–050, a point of X_Delta_r is represented by (x,i_0<=...<=i_r). The structure map associated with alpha selects the subsequence i_alpha(0),...,i_alpha(r'). If alpha(0)=0, the first index is unchanged. Membership in both the starred piece and its dotted complement is determined at that first index, so the two equalities in (29) hold when alpha^* on subsets is interpreted as inverse image along the displayed structure map. The notation uses alpha^* for that map and for its inverse-image action; the transcription preserves the literal notation and degrees.
+
+For a concrete check of failure under other faces, take two closed pieces indexed 0<1, with X_0=Y a nonempty proper closed subset of X_1=X. The component of degree one indexed (0,1) is Y, and its entire starred part is Y because 0 is the least index. The face selecting vertex 1 maps it into the Y subset of X_1, which is outside X_1^*=X backslash Y. Thus the starred family is not generally preserved by all faces. This supports the visible star after les, independently of the letterform evidence, and does not replace that evidence.
+
+For contrast internal to the check, a dotted point at i_0 has some strictly smaller containing index j<i_0; then j<i_alpha(0) for every selected later vertex as well. Thus the dotted pieces are preserved by all such maps. H's dotted reading in the negative statement changes the mathematics. The distinction is recorded in the change row, not silently harmonized.
