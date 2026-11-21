@@ -1,0 +1,59 @@
+from pathlib import Path
+from PIL import Image,ImageOps,ImageFilter
+import json
+base=Path('/workspace/scratch/d7279cb02214')
+work=base/'SP92_C13_150+151_work'
+im=Image.open(base/'source/SP92_C13_150+151_scans/151_scan003.jpg')
+boxes=[
+('top_diagram',[162,16,679,397]),
+('top_returns',[368,68,467,217]),
+('top_groups',[326,190,671,369]),
+('top_cancel_arrows',[170,238,467,397]),
+('delta_coordinates',[714,60,1144,323]),
+('top_margin',[1173,75,1604,325]),
+('circled1',[1547,143,1674,286]),
+('projection_coordinates',[727,338,1220,625]),
+('projection_cancel',[781,451,914,544]),
+('rho_margin',[1294,394,1664,494]),
+('p_relations',[166,410,514,489]),
+('p_rho_relations',[163,507,588,755]),
+('sigma_relations',[151,699,443,909]),
+('cancelled_coordinates',[468,651,1011,758]),
+('delta_relations',[985,640,1374,869]),
+('prose_full',[192,906,1646,1172]),
+('prose_avoir',[285,920,800,1040]),
+('prose_entre',[1193,906,1463,1001]),
+('prose_cancel',[198,950,262,1024]),
+('prose_groups',[739,984,1389,1097]),
+('p0_identity',[169,1164,486,1350]),
+('cancelled_p1',[454,1191,644,1302]),
+('main_chain',[645,1138,1474,1369]),
+('chain_cancel1',[925,1221,1024,1326]),
+('chain_cancel2',[1151,1220,1226,1312]),
+('sigma_delta0',[172,1327,488,1486]),
+('large_cancellation',[191,1346,1367,1771]),
+('cancelled_ie',[625,1348,1318,1523]),
+('cancelled_inequality',[263,1497,870,1771]),
+('values_box',[905,1519,1407,2085]),
+('values_rho',[1188,1731,1299,1864]),
+('margin_values',[1387,1572,1676,1933]),
+('lower_diagram',[117,1836,824,2310]),
+('cancelled_Ens',[330,1839,478,1925]),
+('cancelled_group1',[230,1950,326,2035]),
+('lower_groups',[433,1920,750,2050]),
+('final_box',[901,2020,1671,2288]),
+('final_formula',[995,2196,1559,2367]),
+('final_cancel',[1366,2227,1478,2300]),
+('folio2',[39,2304,88,2365]),
+]
+manifest=[]
+for name,box in boxes:
+ crop=im.crop(box)
+ width=2600
+ crop=crop.resize((width,round(crop.height*width/crop.width)),Image.Resampling.LANCZOS)
+ crop=ImageOps.autocontrast(crop,cutoff=0.2).filter(ImageFilter.UnsharpMask(radius=1.2,percent=110,threshold=3))
+ rel=f'crops/151_scan003_{name}.png'
+ crop.save(work/rel)
+ manifest.append({'name':name,'crop':rel,'box':box,'rotation':0})
+(work/'records/151_scan003_crop_manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
+print(f'Saved {len(manifest)} crops.')

@@ -1,0 +1,42 @@
+from pathlib import Path
+import json,datetime
+W=Path(__file__).resolve().parents[1];pg='150_scan082';p=W/'pages'/f'{pg}.tex'
+s=p.read_text();old=r'\deleted{$3^{\mathrm o})$ si $j\in J$, $l\in L$';new=r'\deleted{$3^{\mathrm o})$ si $j\in J$, $l\in I$'
+assert s.count(old)==1;s=s.replace(old,new)
+old2=r'On voit directement que $L$ est un coidéal';new2=r'On voit directement que $I$ est un coidéal'
+assert s.count(old2)==1;s=s.replace(old2,new2);p.write_text(s);(W/'records'/p.name).write_text(s)
+rp=W/'records'/f'{pg}.json';r=json.loads(rp.read_text());c=json.loads((W/'second'/f'{pg}_comparison.json').read_text());b={x['box']:x for x in c['results']}
+for ident,place,original,final,box,conseq,evidence in [
+ ('C25','Cancelled condition a)3: set following l membership',r'l\in L',r'l\in I','B05',False,'The capital has a short upper crossbar extending left of its upright and a thick bottom bar on both sides. The separate L in the same canceled line ending J cap L has a plain elbow and only a rightward foot. The written capital is I, despite both drafts reading L.'),
+ ('C26','Proof conclusion before est un coidéal',r'L',r'I','B13',True,'The initial capital has an upper crossbar and a lower bar extending on both sides of the stem. It matches the clear capital I later in this same crop and differs from the uncrossed elbow of L at the bottom. The literal I is preserved, although the argument would prove the claim for L.')]:
+ r['changes'].append(dict(id=ident,place=place,C=original,H=original,final=final,evidence=evidence,
+   crop=f'crops/{pg}_blind_{box}.png',box=b[box]['coordinates'],confidence='medium',kind='misread symbol or index',
+   error_kind='1 symbols/indices',against_C=True,against_H=True,consequential=conseq,marked_in_H=False,phase='blind audit'))
+for x in r.get('deletion_insertion_review',[]):
+ if isinstance(x,dict) and isinstance(x.get('reading'),str) and r'3^{\mathrm o}' in x['reading']:
+  x['reading']=x['reading'].replace(r'l\in L',r'l\in I')
+r['notes']+='\n### Blind-reading letter corrections\n\nTwo additional literal capital I forms were found: l belongs to I in the canceled third condition, and I est un coidéal de I′ in the live proof conclusion. Both have upper and lower bars rather than the plain elbow used for L. These differ from both drafts and are retained. The earlier final un élément de I remains literal as well. The other blind alternatives did not establish a missing word or a different deletion state: the lowered replacement under the strike remains live, the double petite remains, On voit is live, and the concluding abbreviation has no separate initial c. The small reference and the doubled-stop question remain uncertain.\n\nThe coideal conclusion for L was rechecked: if l is in L, x is in I′ and l <= x, formula (67) supplies x <= l1 for some l1 in L; convexity of L gives x in L. The written assertion with the ambient I instead of L fails in general. For the chain I={0<1<2}, J=L={1}, the stated band and domination hypotheses hold and formula (67) gives I′={1}; the ambient I is not even a subset of I′. This counterexample is only a note on the literal slip and does not alter the transcription.\n'
+stamp=datetime.datetime.now(datetime.timezone.utc).isoformat()
+r['check_events'] += [
+ dict(statement_id='150-082-literal-coideal-I',date=stamp,who='root; GPT-6 Astra Pro; effort not exposed; run SP92',type='refuted, with refined statement 150-082-coideal-L-recheck',outcome='The newly read literal conclusion I is a coideal of I-prime fails: on the chain I={0<1<2}, J=L={1} satisfies the displayed hypotheses, while formula67 gives I-prime={1}, which does not contain I. This is a finite counterexample to the literal general claim; the source I is retained.'),
+ dict(statement_id='150-082-coideal-L-recheck',date=stamp,who='root; GPT-6 Astra Pro; effort not exposed; run SP92',type='used and rechecked in this run',outcome='For l in L and x in I-prime with l<=x, formula67 supplies x<=l1 with l1 in L. Since L is a band, l<=x<=l1 puts x in L. Thus L is a coideal of I-prime. This repeats the dual step of statement150-082-lemma-67 to interpret the newly observed literal I slip.')
+]
+r['hand_log'].append(dict(habit='Short top serif distinguishes I from an elbow-shaped L even under a strike',places='Canceled a)3; coideal conclusion; final un élément de I',scope='All three local I forms compared with L in the same crops. The first two were missed on the first pass.',witness_errors='Both drafts read L at the first two positions; the clear literal I remains even where mathematically inappropriate.'))
+rp.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+notes={}
+def put(box,evidence,final=None):
+ x=dict(viewed=True,evidence=evidence)
+ if final is not None:x.update(changed=True,final=final)
+ notes[box]=x
+put('B03','The two raised small circular ordinal signs and their digits agree. Superscript roman o versus circ is equivalent encoding of the written small circle; braces and spacing add no text.')
+put('B05','The capital after l membership has a top serif and a bilateral lower foot, unlike the L at the right end of the next line: change L to literal I. The small ordinal has the two joined turns of3 and a separate raised circle, so the extra ordinal doubt is not adopted. The inequality remains l<=j; le versus leq and placing both memberships in one math span are equivalent.',b['B05']['first'].replace(r'l\in L',r'l\in I'))
+put('B06','The isolated preceding elevated tick and the following prime are both visible. The preceding tick is not securely attached to I as a prime, so retain the narrow whole-reading alternative with and without it. Superscript prime versus apostrophe syntax does not settle that attachment.')
+put('B07','The long cancellation traverses the upper old il existe/une plus line. The lower replacement connector and la plus petite lie below it and remain live, followed by another petite at the start of the next baseline. The blind reading extends the strike into that lower replacement and omits live material. The low comma-like mark cannot be separated from the overwritten connector; keep the existing et/c’est doubt, not an independently supplied comma. The canceled une stays doubtful, while the upper insertion and the inserted I-prime attach as in the first reading.')
+put('B08','The ending of donnée has two separate low short bodies with a raised accent, supporting the final e missing in the blind reading. Both complete formulas otherwise agree; le and leq name the same relation. Retain donnée.')
+put('B09','The extra67 at the top is a clipped part of the preceding display, already represented there. The leader attaches the raised ainsi que clause after triviale; no enclosing parenthesis is supplied. The final sweep of donné/donnée and the dark two-digit reference remain too crowded to resolve. The other differences concern math-span placement, not new ink.')
+put('B11','The raised small circle and digit2 agree with the first reading; roman-o versus circ is encoding only. Both closing parentheses and the comma are visible and retained.')
+put('B12','The second stop is smaller than the first and accompanied by a finer raised speck; its punctuation status remains uncertain. The apparent comma after bande is the curl/attachment of the insertion leader, not a separate punctuation mark. On voit has joined baseline strokes and letter returns, without an independent canceling line across both words; retain it live. The ordinal circle, le/leq and math-delimiter differences are equivalent. The inserted parenthetic phrase and all intermediate inequalities remain unchanged.')
+put('B13','The initial capital has the upper and lower bars of I, matching the later clear I and contrasting with bottom-line L: change the initial L to literal I. At the right of the first line, the old baseline de par is crossed while a separate raised par remains live before the accented définition. The closed bowl and descender belong to q; no independent c precedes qfd. The second reader’s d’après and omission of the raised par are not supported. Retain the earlier narrow doubt in the crossed old par.',b['B13']['first'].replace('$L$ est un coidéal','$I$ est un coidéal',1))
+put('B14','The light numeral reads81. The handwritten wrapper does not change the number or its placement; retain its existing attribution to another hand.')
+(W/'second'/f'{pg}_root_crop_notes.json').write_text(json.dumps(notes,ensure_ascii=False,indent=2)+'\n')
+print('082: ten observed differing crops decided; two literal I corrections.')

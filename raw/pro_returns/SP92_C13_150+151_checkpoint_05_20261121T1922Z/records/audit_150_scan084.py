@@ -1,0 +1,55 @@
+from pathlib import Path
+import json
+W=Path(__file__).resolve().parents[1];pg='150_scan084';rp=W/'records'/f'{pg}.json';r=json.loads(rp.read_text());c=json.loads((W/'second'/f'{pg}_comparison.json').read_text());b={x['box']:x for x in c['results']};notes={}
+oldphrase=r'\deleted{\unsure{avec les flèches de}}';phrase=r'\deleted{\unsure{au lieu de}}'
+oldquote=r'`` drapeaux \inserted{$(i_0-i_n)$}';quote=r'drapeaux \inserted{``$(i_0-i_n)$}'
+reps=[('de proespaces,','des proespaces,'),(oldphrase,phrase),(oldquote,quote),
+ (r'i_0\ldots i_n',r'i_0\mathord{\cdot}\mathord{-}i_n'),
+ (r'i_0<\ldots<i_n',r'i_0<\mathord{\cdot}\mathord{-}<i_n'),
+ (r'i_0,\ldots,i_n',r'i_0,\mathord{\cdot}\mathord{\cdot}i_n'),
+ (r"d\to H^q(V_d^{X'},F))",r"d\to H^q(V_d^{X'},F)\unsure{)}")]
+p=W/'pages'/f'{pg}.tex';s=p.read_text()
+for old,new in reps:assert s.count(old)==1,(old,s.count(old));s=s.replace(old,new)
+p.write_text(s);(W/'records'/p.name).write_text(s)
+ch={x['id']:x for x in r['changes']}
+ch['C19'].update(place='Next live line: des proespaces',final='des proespaces',against_C=True,evidence='The d has its low oval and ascender; after the e loop there is a separate low s return before the word gap. Read des, not de. The following proespaces has a second descending p and no b/t sequence of pro-objets.',crop=f'crops/{pg}_blind_B10.png',box=b['B10']['coordinates'])
+ch['C21'].update(final=phrase,against_C=True,confidence='low',evidence='The crossed line has three compact groups with one high l in the middle and a final clearly looped de. The longer flèches sequence and its f descender cannot be followed. Au lieu de is favoured, but crossed middle letters remain uncertain.',crop=f'crops/{pg}_blind_B13.png',box=b['B13']['coordinates'])
+ch['C24'].update(place='Opening quotation ticks attached to the inserted indices',C=r'`` drapeaux \inserted{$(i_0-i_n)$}',H=r'« drapeaux $(i_0\ldots i_n)$',final=quote,against_C=True,evidence='Two short parallel high ticks are written on the raised index line, immediately left of its opening parenthesis and above the end of drapeaux. They belong to the insertion containing (i0-in), not before the baseline word. Their straight strokes also differ from H’s chevrons.',crop=f'crops/{pg}_blind_B16.png',box=b['B16']['coordinates'],kind='insertion or placement',error_kind='6 insertion placement')
+for ident,place,C,H,final,why in [
+ ('C35','(71), V subscript continuation',r'i_0\ldots i_n',r'i_0\ldots i_n',r'i_0\mathord{\cdot}\mathord{-}i_n','A small separate point is followed by one short horizontal rule between the two indices; there are not three dots.'),
+ ('C36','(71), strict chain continuation',r'i_0<\ldots<i_n',r'i_0<\cdots<i_n',r'i_0<\mathord{\cdot}\mathord{-}<i_n','Between the two inequality signs are a point and a short rule. Both inequality signs are separately visible.'),
+ ('C37','(71), list in the brace',r'i_0,\ldots,i_n',r'i_0,\ldots,i_n',r'i_0,\mathord{\cdot}\mathord{\cdot}i_n','There is one comma after i0, then two separate low dots and the next i. No second comma or third dot is visible.')]:
+    r['changes'].append(dict(id=ident,place=place,C=C,H=H,final=final,evidence=why,crop=f'crops/{pg}_blind_B12.png',box=b['B12']['coordinates'],confidence='high',kind='misread symbol or index',error_kind='1 symbols/indices',against_C=True,against_H=True,consequential=False,marked_in_H=False,phase='blind audit'))
+for d in r['doubts']:
+    if d['place']=='Cancelled phrase above les flèches':d.update(reading='au lieu de',alternatives=['crossed middle letters uncertain'],reason=ch['C21']['evidence'],crop=f'crops/{pg}_blind_B13.png',box=b['B13']['coordinates'])
+r['doubts'].append(dict(place='(73), outer closing parenthesis at the cropped right edge',reading=r")\unsure{)}",alternatives=['small inner closing parenthesis plus partly clipped outer closing curve'],confidence='medium',reason='The small closing parenthesis immediately after F is visible. A longer separate lower diagonal reaches the right border below it, but the remainder of the outer closing curve is clipped. Mark the partial outer character rather than silently treating it as fully visible.',crop=f'crops/{pg}_blind_B19.png',box=b['B19']['coordinates']))
+for x in r['inventory']:
+    for k in ['first_words_or_objects','description']:
+        if k in x:
+            x[k]=x[k].replace('avec les flèches de','au lieu de').replace('de proespaces,','des proespaces,')
+r['notes']+='\n### Blind reading corrections\n\nThe live phrase after un système reads des proespaces: a third low s follows de. Formula (71) has a dot and rule in its V subscript, a dot and rule between inequalities, and two dots in the membership list, with no second comma in that list. The crossed line above les flèches is best read as uncertain au lieu de. The opening quotation ticks lie on the raised index insertion, immediately before its opening parenthesis; their former attachment before drapeaux is corrected. In (73), the small inner closing parenthesis is visible and a separate lower fragment of the outer closing curve reaches the clipped right edge, so the outer character is now explicitly uncertain. The marginal note remains locally uncertain as before; the blind alternatives did not establish clearer replacements for its retouched words.\n'
+r['hand_log'].append(dict(habit='Continuation signs vary within a single display.',places='Three continuations in formula71',scope='Each separate group was read on the complete formula crop.',witness_errors='Both drafts used ellipses; the source distinguishes dot-rule and two-dot groups.'))
+def put(box,evidence,final=None):
+    notes[box]=dict(viewed=True,evidence=evidence)
+    if final is not None:notes[box].update(changed=True,final=final)
+put('B02','The four V terms, inequalities, index conditions and raised set difference agree. The only token differences are quad spacing commands; no source text changes.')
+put('B03','The existing crop was rotated clockwise40 degrees. The initial NB sentence, phi, and underlines agree. The middle retains separable Et / ça se and donc / par around a heavily reworked réduit-like word; the blind n’a/pas sequence is not clearer. The digits70 and the preceding dans are visible, and the separate low word before them remains uncertain. The single dash after the small V expression is present. The lower phrase remains too crossed to certify in place of inutile et peu. The raised two-line addition has il reste and a last f-like descender in conclusif, rather than a clearly legible vaut mieux coinitial. Quatre has q oval/descender, ua, tall t and re; cas and both underlines are distinct. Retain the existing narrow doubts and all visible material, rather than omit the reference or insertion.')
+put('B04','There are two separate i dots in finie and a low terminal e return, not a tall final l. The closing parenthesis is distinct; retain (finie).')
+put('B05','The noun has pro followed by the low espace sequence with a second p descender, not the b and terminal t of objets. The preceding des and the raised entre ces espaces are overlapping portions already transcribed in context. The canceled les remains canceled.')
+put('B06','The raised entre ces espaces is attached by its long curved leader to the crossed baseline clause. Qui en remains legible under the strike, but the last word is not fully readable: keep résultent/explicite rather than resolve the new résulte alternative. The final stop lies below and beyond the cancellation endpoint and remains live outside the crossed phrase. The upper finie/des/proespaces fragments overlap the previous line.')
+put('B07','The bar under lim has a distinct pointed rightward head. The explicit underset-longrightarrow and varinjlim encode the same visible operator. The preceding la is already present in the complete page.')
+put('B08','On a and the lower i/j/k indices are visible. The upper zigzags repeatedly cross the old base/word area; they do not isolate an independent X-prime superscript. Retain the existing les and Vijk doubts. The initial Si on below belongs to the following live sentence.')
+put('B09','The word before un has several low joined bodies and a final raised t, supporting veut rather than the single a. The old semi-simplicial is crossed. The upper canceled line and raised stable par intersections overlap boxes B08/B10 and are already represented.')
+put('B10',ch['C19']['evidence']+' The comma lies on the baseline after proespaces; the curved line attaches stable par intersections above it. Keep the comma before the insertion and the following qui par. The upper Si on is overlap.',b['B10']['first'].replace('de proespaces,','des proespaces,'))
+put('B11','The canceled word has the rec-like low start and two tall medial loops, not only mult; its hidden letters remain uncertain. The raised item has the l loop and short i/m run over a horizontal rule, supporting the limit notation rather than leur. Its right endpoint remains too compact to distinguish underline from arrow, so the existing local doubt stays. The next word starts with a looped d, followed by low o/n/n/e, hence donne rather than somme.')
+f=b['B12']['first']
+for old,new in reps[3:6]:f=f.replace(old,new)
+put('B12','The V subscript has a point and one short rule; the chain has the same two marks between its inequalities. The membership list has one comma after i0, two dots, and no further comma before in. Replace the normalized ellipses with those literal marks. All indices, primes, braces and the written71 agree.',f)
+put('B13',ch['C21']['evidence'],phrase)
+put('B14','After the d ascender there is a low e-like body, an n join and the terminal crossed t, with no separate final s. Read correspondent, not correspondants.')
+put('B15','The main J has a retraced top and lower hook; beside it is a doubled brace-like mark whose cancellation state cannot be separated securely. Keep the existing combined local uncertainty instead of asserting a clean live brace. Both inclusions and all remaining terms agree.')
+put('B16',ch['C24']['evidence']+' The leader attaches the indices after drapeaux; it does not cancel qui or form an independent comma. The index dash is one continuous stroke.',b['B16']['first'].replace(oldquote,quote))
+put('B17','The complete Vd, where-clause and ens without a stop agree. On a donc un at the upper edge overlaps the preceding body line and is already present there.')
+put('B19','The full crop shows the small closing parenthesis after F and a separate lower diagonal fragment reaching the right border; the outer curve is clipped. Mark only that outer character uncertain. Both cohomology expressions, double left arrow, p/q indices, number73 and plain d-to arrow agree. The opening On aura p.ex fragment overlaps the preceding prose.',b['B19']['first'].replace(r"d\to H^q(V_d^{X'},F))",r"d\to H^q(V_d^{X'},F)\unsure{)}"))
+rp.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n');(W/'second'/f'{pg}_root_crop_notes.json').write_text(json.dumps(notes,ensure_ascii=False,indent=2)+'\n')
+print('084: all17 differing boxes observed; five changed boxes.')

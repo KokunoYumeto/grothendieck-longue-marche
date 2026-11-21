@@ -1,0 +1,5 @@
+## Crop encoding and ZIP extraction
+
+Every crop remains at its recorded `crops/` path as a valid PNG. The packaging process verified identical dimensions and exact equality of every decoded RGBA pixel against the original crop; it did not resize, sharpen, quantize, or otherwise alter the evidence. The original crop files and earlier checkpoints remain unchanged. The encoding receipts record both original and packaged PNG hashes, and the final manifest records the bytes actually included.
+
+Some PNGs store their internal scanline data without compression so that ZIP BZIP2 can compress that data more effectively. This makes the extracted crop files larger than the original compressed PNGs. `packaging/pixel_verification_summary.json` records the exact extracted crop size, and `packaging/ZIP_METHODS.tsv` records each archive entry's compression method. Extraction requires a ZIP reader with BZIP2 (method 12) support; the local Python `zipfile` implementation was used to create and verify these entries. After extraction, the crops need only ordinary PNG support.
