@@ -1,0 +1,277 @@
+{
+  "status": "proposal only; root decision after026 pending; no target changed",
+  "target": "out/scripts/validate.py",
+  "expected_before_sha256": "36dd396ed69e6aa37f45766f6e71ee53e168fd1179825d0ee679f5f7557de358",
+  "proposed_after_sha256": "e0805651314a843f009c4fa563e240224bb3cd187ed431dd329d03c1488c2e66",
+  "before_snapshot": {
+    "path": "out/checks/final_readiness026_validate.before.py",
+    "sha256": "36dd396ed69e6aa37f45766f6e71ee53e168fd1179825d0ee679f5f7557de358",
+    "bytes": 4963
+  },
+  "complete_proposed_source": {
+    "path": "out/checks/final_readiness026_validate.proposed.py",
+    "sha256": "e0805651314a843f009c4fa563e240224bb3cd187ed431dd329d03c1488c2e66",
+    "bytes": 6525
+  },
+  "unified_diff": {
+    "path": "out/checks/final_readiness026_validate.diff",
+    "sha256": "c2b1e9a6844aa91ec3c715555593d4cc86d3e10800eaf98e07477f6fc6a18540",
+    "bytes": 3234
+  },
+  "exact_rule_data": {
+    "path": "out/checks/final_readiness026_status_rule_data.json",
+    "sha256": "4bf28c7a90b1399a7843d29557884e36c13fa1ceb9738fbbe09de7b29cdff9f8",
+    "bytes": 38555
+  },
+  "rule": "Retain the original three accepted values. For other current statuses, require the exact scan and decision id, exact full status string, exact source-row/part bindings and qualification fields, and every exact documented source-outcome guard. Guard-node comparison uses ordered compact JSON, retaining scalar types and object key order. The rule data file is itself SHA-256 guarded. No prefix matching or status reduction is used.",
+  "forward_replacements": [
+    {
+      "old_text": "records=[json.loads(p.read_text()) for p in sorted((R/'records').glob('scan*.json'))]",
+      "new_text": "\ndef documented_c_doubt_status(record, decision):\n    status = decision.get('C_doubt_status')\n    if status in {None, 'resolved', 'retained'}:\n        return True\n    evidence_path = R/'checks/final_readiness026_status_rule_data.json'\n    evidence_bytes = evidence_path.read_bytes()\n    if hashlib.sha256(evidence_bytes).hexdigest() != '4bf28c7a90b1399a7843d29557884e36c13fa1ceb9738fbbe09de7b29cdff9f8':\n        return False\n    evidence = json.loads(evidence_bytes)\n    matches = [case for case in evidence['cases']\n               if case['scan'] == record['scan'] and case['decision_id'] == decision['id']]\n    if len(matches) != 1:\n        return False\n    case = matches[0]\n    if status != case['exact_status']:\n        return False\n    def exact(left, right):\n        return json.dumps(left, ensure_ascii=False, separators=(',', ':')) == json.dumps(right, ensure_ascii=False, separators=(',', ':'))\n    if any(key not in decision or not exact(decision[key], value) for key, value in case['decision_fields'].items()):\n        return False\n    try:\n        for guard_id in case['source_guards']:\n            for pointer, expected in evidence['source_guards'][guard_id]:\n                value = record\n                for key in pointer.split('/')[1:]:\n                    key = key.replace('~1', '/').replace('~0', '~')\n                    value = value[int(key)] if isinstance(value, list) else value[key]\n                if not exact(value, expected):\n                    return False\n    except (KeyError, IndexError, TypeError, ValueError):\n        return False\n    return True\n\nrecords=[json.loads(p.read_text()) for p in sorted((R/'records').glob('scan*.json'))]",
+      "expected_occurrences": 1
+    },
+    {
+      "old_text": "        if d.get('C_doubt_status') not in {None,'resolved','retained'}:issues.append(f\"scan {r['scan']} invalid C doubt status at {d['id']}\")",
+      "new_text": "        if not documented_c_doubt_status(r,d):issues.append(f\"scan {r['scan']} invalid C doubt status at {d['id']}\")",
+      "expected_occurrences": 1
+    }
+  ],
+  "inverse_replacements": [
+    {
+      "old_text": "        if not documented_c_doubt_status(r,d):issues.append(f\"scan {r['scan']} invalid C doubt status at {d['id']}\")",
+      "new_text": "        if d.get('C_doubt_status') not in {None,'resolved','retained'}:issues.append(f\"scan {r['scan']} invalid C doubt status at {d['id']}\")",
+      "expected_occurrences": 1
+    },
+    {
+      "old_text": "\ndef documented_c_doubt_status(record, decision):\n    status = decision.get('C_doubt_status')\n    if status in {None, 'resolved', 'retained'}:\n        return True\n    evidence_path = R/'checks/final_readiness026_status_rule_data.json'\n    evidence_bytes = evidence_path.read_bytes()\n    if hashlib.sha256(evidence_bytes).hexdigest() != '4bf28c7a90b1399a7843d29557884e36c13fa1ceb9738fbbe09de7b29cdff9f8':\n        return False\n    evidence = json.loads(evidence_bytes)\n    matches = [case for case in evidence['cases']\n               if case['scan'] == record['scan'] and case['decision_id'] == decision['id']]\n    if len(matches) != 1:\n        return False\n    case = matches[0]\n    if status != case['exact_status']:\n        return False\n    def exact(left, right):\n        return json.dumps(left, ensure_ascii=False, separators=(',', ':')) == json.dumps(right, ensure_ascii=False, separators=(',', ':'))\n    if any(key not in decision or not exact(decision[key], value) for key, value in case['decision_fields'].items()):\n        return False\n    try:\n        for guard_id in case['source_guards']:\n            for pointer, expected in evidence['source_guards'][guard_id]:\n                value = record\n                for key in pointer.split('/')[1:]:\n                    key = key.replace('~1', '/').replace('~0', '~')\n                    value = value[int(key)] if isinstance(value, list) else value[key]\n                if not exact(value, expected):\n                    return False\n    except (KeyError, IndexError, TypeError, ValueError):\n        return False\n    return True\n\nrecords=[json.loads(p.read_text()) for p in sorted((R/'records').glob('scan*.json'))]",
+      "new_text": "records=[json.loads(p.read_text()) for p in sorted((R/'records').glob('scan*.json'))]",
+      "expected_occurrences": 1
+    }
+  ],
+  "finite_existing_record_check": {
+    "before_accepted_decisions": 1126,
+    "proposed_accepted_decisions": 1156,
+    "exact_added_acceptances": [
+      {
+        "scan": 15,
+        "decision_id": "015-D13",
+        "exact_status": "retained; primary capitalization changed",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 15,
+        "decision_id": "015-D16",
+        "exact_status": "retained; primary candidate order changed",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 15,
+        "decision_id": "015-D19",
+        "exact_status": "retained; H formula survives as alternative",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 16,
+        "decision_id": "016-D06",
+        "exact_status": "retained; primary candidate order changed",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 16,
+        "decision_id": "016-D10a",
+        "exact_status": "retained; primary candidate order changed",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 16,
+        "decision_id": "016-D12a",
+        "exact_status": "retained; square-form glyph resolved while predecessor/live state remains qualified",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 16,
+        "decision_id": "016-D12a-old",
+        "exact_status": "mixed: square-form glyph resolved; predecessor state retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 16,
+        "decision_id": "016-D12b",
+        "exact_status": "retained; square-form glyph resolved while predecessor/live state remains qualified",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 16,
+        "decision_id": "016-D12b-old",
+        "exact_status": "mixed: square-form glyph resolved; predecessor state retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 17,
+        "decision_id": "017-D06a",
+        "exact_status": "mixed",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L02",
+        "exact_status": "C024-R01: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L03",
+        "exact_status": "C024-R02: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L04",
+        "exact_status": "C024-R02: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L06",
+        "exact_status": "C024-R03: resolved",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L08",
+        "exact_status": "C024-R04: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L13",
+        "exact_status": "C024-R05: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L15",
+        "exact_status": "C024-R06: resolved",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L19",
+        "exact_status": "C024-R07: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L22",
+        "exact_status": "C024-R08: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L25",
+        "exact_status": "C024-R09: accent scope retained; punctuation scope resolved",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L26",
+        "exact_status": "C024-R09: punctuation scope resolved; accent scope retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L28",
+        "exact_status": "C024-R16: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L30",
+        "exact_status": "C024-R17: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L33",
+        "exact_status": "C024-R10: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L37",
+        "exact_status": "C024-R11: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L40",
+        "exact_status": "C024-R18: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L45",
+        "exact_status": "C024-R12: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L47",
+        "exact_status": "C024-R13: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L50",
+        "exact_status": "C024-R14: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      },
+      {
+        "scan": 24,
+        "decision_id": "SRC024-L56",
+        "exact_status": "C024-R15: retained",
+        "before_gate": false,
+        "proposed_gate": true
+      }
+    ],
+    "other_existing_acceptances_unchanged": true,
+    "proposal_code_executed_imported_or_compiled": false,
+    "method": "Independently evaluate the exact equality predicate on the current record data; preserve proposed code as inert text."
+  },
+  "replay": {
+    "forward_proposed_bytes_sha256_matches": true,
+    "inverse_recovers_exact_original_script_bytes": true,
+    "original_status_fields_or_records_changed": false,
+    "actual_validator_unchanged": true
+  },
+  "scope_limit": "This finite rule covers the 30 enumerated existing decisions through025. The scan026 record and its actual status values are not yet present."
+}

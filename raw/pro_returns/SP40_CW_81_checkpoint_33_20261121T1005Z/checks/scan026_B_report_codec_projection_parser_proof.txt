@@ -1,0 +1,42 @@
+INDEPENDENT HUMAN-PROJECTION INVERSE: EXACT BYTE PROOF
+
+The accompanying projection_parser.py reads all ten human-readable projection
+chunks. It decodes every displayed S literal, every displayed M member, and every
+displayed N ordered container, then expands the single displayed root @N1009.
+It recovers no report values from data.json or the original report.
+
+The parser preserves scalar types and the displayed object-member/array order.
+It rejects missing or repeated definition IDs, undefined references, reference
+cycles, duplicate object keys, malformed separators, and unreachable definitions.
+All 228 S definitions, 691 M definitions, and 1,010 N definitions are reachable.
+
+Finite inverse argument: a literal scalar expands to itself; an S reference
+expands to its whole literal string; an M reference expands to its whole ordered
+key/value member. An N array expands each displayed child in its displayed index;
+an N object expands each displayed member in its displayed position. Induction
+on finite node height establishes preservation of every ordered subtree. Every
+source field and complete candidate state therefore survives the inverse. This
+argument is supplemented by the direct exhaustive byte comparison below.
+
+The recovered root is serialized as UTF-8 JSON with ensure_ascii=False, indent=2,
+and one trailing LF. Direct comparison of the resulting byte strings succeeded:
+
+Source byte length:   566169
+Replayed byte length: 566169
+First mismatching byte: none
+Source SHA-256:
+  a179435ea1b8c12387b1fb0c035b430efff397544c3392c35183b6dc6bfcc20e
+Replayed SHA-256:
+  a179435ea1b8c12387b1fb0c035b430efff397544c3392c35183b6dc6bfcc20e
+
+The comparison checks actual bytes, independently of the SHA-256 comparison.
+The replay also equals the existing reconstructed.json file byte for byte.
+A separate typed ordered-tree comparison with the source parse succeeded.
+
+Checksums of every pre-existing codec output were recorded before and after
+verification. Every pre-existing projection, codec, manifest, path map, original
+proof, build script, and replay remained unchanged. The source remained unchanged.
+Only this new parser source and its new JSON/text proof files were written.
+The JSON proof contains the complete unchanged-output checksum inventory.
+
+This verifies the codec. It makes no claim that root has read or reviewed B.

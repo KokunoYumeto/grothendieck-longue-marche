@@ -1,0 +1,52 @@
+--- out/scripts/validate.py
++++ proposed/out/scripts/validate.py
+@@ -30,6 +30,40 @@
+     forbidden=re.findall(r'\\(?:documentclass|usepackage|newcommand|renewcommand|input|include|includegraphics)\b',s)
+     if forbidden:errors.append('non-fragment commands '+repr(forbidden))
+     return {'file':str(p.relative_to(R)),'errors':errors,'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'marks':{k:len(re.findall(r'\\'+k+r'\{',s)) for k in ['unsure','illegible','deleted','inserted','margin','figure','diagram']}}
++
++def documented_c_doubt_status(record, decision):
++    status = decision.get('C_doubt_status')
++    if status in {None, 'resolved', 'retained'}:
++        return True
++    evidence_path = R/'checks/final_readiness026_status_rule_data.json'
++    evidence_bytes = evidence_path.read_bytes()
++    if hashlib.sha256(evidence_bytes).hexdigest() != '4bf28c7a90b1399a7843d29557884e36c13fa1ceb9738fbbe09de7b29cdff9f8':
++        return False
++    evidence = json.loads(evidence_bytes)
++    matches = [case for case in evidence['cases']
++               if case['scan'] == record['scan'] and case['decision_id'] == decision['id']]
++    if len(matches) != 1:
++        return False
++    case = matches[0]
++    if status != case['exact_status']:
++        return False
++    def exact(left, right):
++        return json.dumps(left, ensure_ascii=False, separators=(',', ':')) == json.dumps(right, ensure_ascii=False, separators=(',', ':'))
++    if any(key not in decision or not exact(decision[key], value) for key, value in case['decision_fields'].items()):
++        return False
++    try:
++        for guard_id in case['source_guards']:
++            for pointer, expected in evidence['source_guards'][guard_id]:
++                value = record
++                for key in pointer.split('/')[1:]:
++                    key = key.replace('~1', '/').replace('~0', '~')
++                    value = value[int(key)] if isinstance(value, list) else value[key]
++                if not exact(value, expected):
++                    return False
++    except (KeyError, IndexError, TypeError, ValueError):
++        return False
++    return True
++
+ records=[json.loads(p.read_text()) for p in sorted((R/'records').glob('scan*.json'))]
+ pages=[R/'pages'/r['filename'] for r in records]
+ results=[check_tex(p) for p in pages]
+@@ -64,7 +98,7 @@
+         if d['kind'] not in collation_kinds:issues.append(f"scan {r['scan']} invalid collation kind at {d['id']}")
+         if d.get('diff_H') and r['hua_has']!='text':issues.append(f"scan {r['scan']} H row on a page without H text")
+         if d['confidence'] not in {'high','medium','low'}:issues.append(f"scan {r['scan']} invalid confidence at {d['id']}")
+-        if d.get('C_doubt_status') not in {None,'resolved','retained'}:issues.append(f"scan {r['scan']} invalid C doubt status at {d['id']}")
++        if not documented_c_doubt_status(r,d):issues.append(f"scan {r['scan']} invalid C doubt status at {d['id']}")
+ out={'complete_scans':scans,'structural_results':results,'record_issues':issues,'tex_ok':all(not x['errors'] for x in results)}
+ (R/'checks/structural_validation.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+ print(json.dumps(out,ensure_ascii=False,indent=2))

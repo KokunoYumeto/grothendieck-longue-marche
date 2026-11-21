@@ -1,0 +1,158 @@
+{
+  "closure_utc": "2026-11-21T04:26:30Z",
+  "author": "/root/codec_v2",
+  "authorization": "Root explicitly authorized the four bounded v2-only corrections R1-R4 following the complete independent source review.",
+  "status": "R1-R4 addressed in saved source; full changed sources and exact diffs read; runtime validation not performed.",
+  "source_review_basis": "Both changed scripts were read in full after editing, followed by both complete before/after diffs. Only source reads, copies, edits, diffs, and hashes were used.",
+  "findings": [
+    {
+      "id": "R1",
+      "source_status": "addressed",
+      "changed_locations": [
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            200,
+            210
+          ]
+        },
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            408,
+            411
+          ]
+        },
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            420,
+            420
+          ]
+        }
+      ],
+      "correction": "Resolve audit_path once; reject equality with source/output and reject an existing audit path before opening the source. Write the final audit with exclusive creation mode xb and report the same resolved path.",
+      "source_closure": "Both alias assignments from R1 now reach a preflight exception. The final audit write also refuses an existing path instead of replacing it."
+    },
+    {
+      "id": "R2",
+      "source_status": "addressed",
+      "changed_locations": [
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            232,
+            234
+          ]
+        },
+        {
+          "file": "out/scripts/checkpoint_transport_restore_v2.py",
+          "lines": [
+            108,
+            143
+          ]
+        },
+        {
+          "file": "out/scripts/checkpoint_transport_restore_v2.py",
+          "lines": [
+            193,
+            194
+          ]
+        },
+        {
+          "file": "out/scripts/checkpoint_transport_restore_v2.py",
+          "lines": [
+            210,
+            228
+          ]
+        }
+      ],
+      "correction": "Share a target-validation function between pack and restore. Reject empty target parts, duplicate target tuples, and file/descendant conflicts. Reserve all declared targets and implicit parents. Choose temporary names using UUID4, reject names in the reserved set, open exclusively, and remove a remaining temporary file on exit.",
+      "source_closure": "a.bin and ./a.bin map to the same tuple and are rejected. Temporary names no longer derive from the original filename plus .restore-part; the reserved-set check excludes every original target and implicit parent."
+    },
+    {
+      "id": "R3",
+      "source_status": "addressed",
+      "changed_locations": [
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            129,
+            131
+          ]
+        }
+      ],
+      "correction": "Require cache metadata parsed by json.loads to be a dict before calling get; continue the cache-location loop for every other result type.",
+      "source_closure": "JSON null, arrays, and scalars reach the cache-miss path without invoking get; later cache locations and fresh encoding remain reachable."
+    },
+    {
+      "id": "R4",
+      "source_status": "addressed",
+      "changed_locations": [
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            199,
+            199
+          ]
+        },
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            344,
+            344
+          ]
+        },
+        {
+          "file": "out/scripts/checkpoint_transport_pack_v2.py",
+          "lines": [
+            376,
+            376
+          ]
+        }
+      ],
+      "correction": "Sample a UUID4 execution_id once per build; store it in byte_audit.json and include the same value in the event statement_id with the source digest and MIXED-JXL7 variant.",
+      "source_closure": "The event identifier now incorporates per-run state rather than only source digest and a constant suffix."
+    }
+  ],
+  "v2_sources": {
+    "pack": {
+      "path": "out/scripts/checkpoint_transport_pack_v2.py",
+      "before_sha256": "02cad84a6fe1eddc4d30c2d5ef2e10605146dfaf9b82986aeb113f66eca46a35",
+      "after_sha256": "5081b5e1141599b44c0c40c4d6c7cf1b76dd77536b4a4f0ef054349109830d93",
+      "before_copy": "out/checks/checkpoint_transport_v2_r1_r4_before/checkpoint_transport_pack_v2.py",
+      "after_copy": "out/checks/checkpoint_transport_v2_r1_r4_after/checkpoint_transport_pack_v2.py",
+      "diff": "out/checks/checkpoint_transport_v2_r1_r4_pack.diff",
+      "diff_sha256": "59d8631e19a3a42ec43c7bed2632e7e6e88c3e7d5e71955fc2890a5787c5c808",
+      "full_changed_source_lines_read": 442
+    },
+    "restore": {
+      "path": "out/scripts/checkpoint_transport_restore_v2.py",
+      "before_sha256": "cf721c734b4591c034ce6dab9a25df5f1ad1eb583bb4fb452e04d0403a559b12",
+      "after_sha256": "94a07fcae8d1697b977f5bd8a1883eeb685308cc4161acbfb0b66651883454fe",
+      "before_copy": "out/checks/checkpoint_transport_v2_r1_r4_before/checkpoint_transport_restore_v2.py",
+      "after_copy": "out/checks/checkpoint_transport_v2_r1_r4_after/checkpoint_transport_restore_v2.py",
+      "diff": "out/checks/checkpoint_transport_v2_r1_r4_restore.diff",
+      "diff_sha256": "a247234b9482fa5f3013cd3e15d0ce23a77213dddaa992ba983feb740c25c27f",
+      "full_changed_source_lines_read": 260
+    }
+  },
+  "v1_unchanged": {
+    "out/scripts/checkpoint_transport_pack.py": "4ea2ab7e5feb12944eeb785084c507ae900882b889062e6176494744474e5620",
+    "out/scripts/checkpoint_transport_restore.py": "e00367d3a524a5d3bf607db494976858b0d634a868d0de93f8741e1548a422c5"
+  },
+  "historical_review": "out/checks/checkpoint_transport_v2_independent_source_review.md",
+  "historical_records_preserved": true,
+  "activity": {
+    "codec_executed": false,
+    "v2_imported_or_executed": false,
+    "compilation_or_tests_run": false,
+    "image_or_manuscript_inspected": false,
+    "archive_created_or_inspected": false,
+    "rendering_research_installation_or_upload": false,
+    "manuscript_check_event_created": false
+  },
+  "gate": "V2 remains unexecuted and unselected until a completed later v1 transport actually exceeds the cap.",
+  "result_limits": "Source closure only. No codec equality, compression ratio, performance, manuscript, mathematical, or ink result is claimed.",
+  "checkpoint_handoff": "Coherent saved source, before/after copies, diffs, and closure prepared before the requested 2026-11-21 04:29:40 UTC writing cutoff."
+}

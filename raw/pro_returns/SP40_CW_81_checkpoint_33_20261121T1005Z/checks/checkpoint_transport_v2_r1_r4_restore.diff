@@ -1,0 +1,90 @@
+--- out/checks/checkpoint_transport_v2_r1_r4_before/checkpoint_transport_restore_v2.py	2026-11-21 05:25:28.977423278 +0100
++++ out/scripts/checkpoint_transport_restore_v2.py	2026-11-21 05:25:30.433487171 +0100
+@@ -17,6 +17,7 @@
+ import shutil
+ from pathlib import Path, PurePosixPath
+ import sys
++import uuid
+ import zipfile
+ import zlib
+ 
+@@ -104,6 +105,32 @@
+     return value
+ 
+ 
++def validate_restoration_targets(entries: list[dict]) -> set[tuple[str, ...]]:
++    """Reject target aliases and file/descendant conflicts; reserve all targets."""
++    declared: dict[tuple[str, ...], dict] = {}
++    for entry in entries:
++        parts = safe_relative_path(entry["path"]).parts
++        if not parts:
++            raise ValueError(f"Original path maps to the restoration root: {entry['path']!r}")
++        if parts in declared:
++            raise ValueError(
++                f"Original paths share a restoration target: "
++                f"{declared[parts]['path']!r} and {entry['path']!r}"
++            )
++        declared[parts] = entry
++    reserved = set(declared)
++    for parts, entry in declared.items():
++        for length in range(1, len(parts)):
++            parent = parts[:length]
++            if parent in declared and not declared[parent]["is_directory"]:
++                raise ValueError(
++                    f"Original file is also a restoration parent: "
++                    f"{declared[parent]['path']!r} and {entry['path']!r}"
++                )
++            reserved.add(parent)
++    return reserved
++
++
+ def load_manifest(archive: zipfile.ZipFile) -> dict:
+     manifest = json.loads(archive.read(MANIFEST_PATH))
+     if manifest.get("format") != "checkpoint-lossless-png-transport":
+@@ -113,8 +140,7 @@
+     names = [entry["path"] for entry in manifest["entries"]]
+     if len(names) != len(set(names)):
+         raise ValueError("Duplicate original paths in manifest")
+-    for name in names:
+-        safe_relative_path(name)
++    validate_restoration_targets(manifest["entries"])
+     return manifest
+ 
+ 
+@@ -165,6 +191,7 @@
+     try:
+         with zipfile.ZipFile(archive_path) as archive:
+             manifest = load_manifest(archive)
++            reserved_targets = validate_restoration_targets(manifest["entries"])
+             if reference is not None:
+                 original_names = [i.filename for i in reference.infolist()]
+                 manifest_names = [i["path"] for i in manifest["entries"]]
+@@ -181,10 +208,24 @@
+                         target.mkdir(parents=True, exist_ok=True)
+                     else:
+                         target.parent.mkdir(parents=True, exist_ok=True)
+-                        temporary = target.with_name(target.name + ".restore-part")
+-                        with temporary.open("xb") as handle:
+-                            handle.write(data)
+-                        os.replace(temporary, target)
++                        while True:
++                            temporary_parts = relative.parts[:-1] + (
++                                ".checkpoint-restore-" + uuid.uuid4().hex + ".part",
++                            )
++                            if temporary_parts in reserved_targets:
++                                continue
++                            temporary = destination.joinpath(*temporary_parts)
++                            try:
++                                handle = temporary.open("xb")
++                            except FileExistsError:
++                                continue
++                            break
++                        try:
++                            with handle:
++                                handle.write(data)
++                            os.replace(temporary, target)
++                        finally:
++                            temporary.unlink(missing_ok=True)
+                         permission = (entry["zip_metadata"]["external_attr"] >> 16) & 0o777
+                         if permission:
+                             target.chmod(permission)

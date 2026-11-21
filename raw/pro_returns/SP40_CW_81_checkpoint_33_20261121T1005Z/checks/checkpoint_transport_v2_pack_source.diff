@@ -1,0 +1,280 @@
+--- pack_v1
++++ pack_v2
+@@ -28,15 +28,17 @@
+ 
+ from PIL import Image, ImageFile
+ 
+-import checkpoint_transport_restore as restore
+-
+-
+-ENCODER = {"format": "WEBP", "lossless": True, "quality": 75, "method": 4, "exact": True}
++import checkpoint_transport_restore_v2 as restore
++
++
++WEBP_ENCODER = {"format": "WEBP", "lossless": True, "quality": 75, "method": 4, "exact": True}
++JXL_ENCODER = {"format": "JPEG XL", "distance": 0, "effort": 7, "modular": 1, "threads": 1}
++ENCODER = {"selection": "smallest candidate passing direct original pixel and PNG byte comparisons", "webp": WEBP_ENCODER, "jxl": JXL_ENCODER}
+ PNG_OPTIONS = {"compress_level": 6, "optimize": False}
+ ROOT_README = "CHECKPOINT_TRANSPORT_README.txt"
+ ROOT_RESTORE = "RESTORE_CHECKPOINT.py"
+ PREFIX = "_checkpoint_transport/"
+-CACHE_VERSION = "v1_webp_lossless_q75_m4_exact_png6"
++CACHE_VERSION = "v2_best_exact_webp75m4_jxl0e7mod1_png6"
+ _cache_locks: dict[str, threading.Lock] = {}
+ _cache_locks_lock = threading.Lock()
+ 
+@@ -87,8 +89,6 @@
+     data = archive.read(info)
+     entry = record(info, data)
+     digest = entry["original_sha256"]
+-    cache_file = cache_root / f"{digest}.webp"
+-    cache_metadata = cache_root / f"{digest}.json"
+     with _cache_locks_lock:
+         lock = _cache_locks.setdefault(digest, threading.Lock())
+     with lock:
+@@ -96,86 +96,94 @@
+             with Image.open(io.BytesIO(data)) as source:
+                 source.load()
+                 if source.mode not in ("RGB", "RGBA", "L") or source.info:
+-                    entry["png_transport_check"] = {
+-                        "adopted": False, "reason": "unsupported_mode_or_metadata_preserved_original",
+-                        "mode": source.mode, "metadata_keys": sorted(source.info),
+-                    }
++                    entry["png_transport_check"] = {"adopted": False,
++                        "reason": "unsupported_mode_or_metadata_preserved_original",
++                        "mode": source.mode, "metadata_keys": sorted(source.info)}
+                     return entry
+                 direct = io.BytesIO()
+                 source.save(direct, format="PNG", **PNG_OPTIONS)
+                 if direct.getvalue() != data:
+-                    entry["png_transport_check"] = {
+-                        "adopted": False, "reason": "pillow_png_reserialization_differs_preserved_original",
+-                        "direct_png_byte_comparison": False,
+-                    }
++                    entry["png_transport_check"] = {"adopted": False,
++                        "reason": "pillow_png_reserialization_differs_preserved_original",
++                        "direct_png_byte_comparison": False}
+                     return entry
+-                pixel_bytes = source.tobytes()
+-                pixel_digest = restore.sha256(pixel_bytes)
+-                cached = False
+-                encoded = None
+-                if cache_file.exists() and cache_metadata.exists():
++                pixels = source.tobytes()
++                candidates = []
++                attempts = []
++                for extension, settings, kind in (
++                    ("webp", WEBP_ENCODER, "png-via-lossless-webp"),
++                    ("jxl", JXL_ENCODER, "png-via-lossless-jxl")):
+                     try:
+-                        metadata = json.loads(cache_metadata.read_bytes())
+-                        candidate = cache_file.read_bytes()
+-                        if (metadata["original_sha256"] == digest
+-                                and metadata["encoder"] == ENCODER
+-                                and metadata["encoded_sha256"] == restore.sha256(candidate)):
+-                            encoded = candidate
+-                            cached = True
+-                    except (OSError, ValueError, KeyError):
+-                        pass
+-                if encoded is None:
+-                    encoded_buffer = io.BytesIO()
+-                    source.save(encoded_buffer, **ENCODER)
+-                    encoded = encoded_buffer.getvalue()
+-                with Image.open(io.BytesIO(encoded)) as decoded:
+-                    decoded.load()
+-                    if decoded.mode != source.mode:
+-                        decoded = decoded.convert(source.mode)
+-                    pixel_exact = decoded.size == source.size and decoded.tobytes() == pixel_bytes
+-                    decoded.info.clear()
+-                    reconstructed = io.BytesIO()
+-                    decoded.save(reconstructed, format="PNG", **PNG_OPTIONS)
+-                    png_exact = reconstructed.getvalue() == data
+-                savings = len(data) - len(encoded)
+-                check = {
+-                    "adopted": pixel_exact and png_exact and savings > 0,
+-                    "direct_png_byte_comparison": True,
+-                    "decoded_pixel_byte_comparison": pixel_exact,
+-                    "reconstructed_png_byte_comparison": png_exact,
+-                    "original_bytes": len(data), "encoded_bytes": len(encoded),
+-                    "payload_bytes_saved": savings, "cache_reused": cached,
+-                }
+-                entry["png_transport_check"] = check
+-                if not check["adopted"]:
+-                    check["reason"] = "failed_exact_comparison_or_no_savings_preserved_original"
+-                    return entry
+-                encoded_digest = restore.sha256(encoded)
+-                metadata = {
+-                    "original_sha256": digest, "encoded_sha256": encoded_digest,
+-                    "original_bytes": len(data), "encoded_bytes": len(encoded),
+-                    "encoder": ENCODER, "software_versions": software,
+-                    "pixel_byte_comparison": True, "png_file_byte_comparison": True,
+-                }
+-                atomic_write(cache_file, encoded)
+-                atomic_write(cache_metadata, json_bytes(metadata))
+-                entry["storage"] = {
+-                    "kind": "png-via-lossless-webp",
+-                    "path": PREFIX + f"png_payloads/{digest}.webp",
+-                    "sha256": encoded_digest, "bytes": len(encoded),
+-                    "original_mode": source.mode, "dimensions": list(source.size),
+-                    "pixel_sha256": pixel_digest, "encoder": ENCODER,
+-                    "png_serialization": {"format": "PNG", "save_options": PNG_OPTIONS,
+-                                          "pillow_maxblock": ImageFile.MAXBLOCK,
+-                                          "original_metadata_keys": []},
+-                }
++                        cache_file = cache_root / f"{digest}.{extension}"
++                        cache_meta = cache_root / f"{digest}.{extension}.json"
++                        possible = [(cache_file, cache_meta)]
++                        if extension == "webp":
++                            prior = cache_root.parent / "v1_webp_lossless_q75_m4_exact_png6"
++                            possible.append((prior / f"{digest}.webp", prior / f"{digest}.json"))
++                        encoded = None
++                        cached = False
++                        for payload_path, metadata_path in possible:
++                            if payload_path.exists() and metadata_path.exists():
++                                metadata = json.loads(metadata_path.read_bytes())
++                                payload = payload_path.read_bytes()
++                                if (metadata.get("original_sha256") == digest and
++                                    metadata.get("encoder") == settings and
++                                    metadata.get("encoded_sha256") == restore.sha256(payload)):
++                                    encoded = payload
++                                    cached = True
++                                    break
++                        if encoded is None:
++                            if extension == "webp":
++                                buffer = io.BytesIO()
++                                source.save(buffer, **WEBP_ENCODER)
++                                encoded = buffer.getvalue()
++                            else:
++                                encoded = restore.encode_jxl(source, JXL_ENCODER)
++                        storage = {"kind": kind,
++                            "path": PREFIX + f"png_payloads/{digest}.{extension}",
++                            "sha256": restore.sha256(encoded), "bytes": len(encoded),
++                            "original_mode": source.mode, "dimensions": list(source.size),
++                            "pixel_sha256": restore.sha256(pixels), "encoder": settings,
++                            "png_serialization": {"format": "PNG", "save_options": PNG_OPTIONS,
++                                "pillow_maxblock": ImageFile.MAXBLOCK, "original_metadata_keys": []}}
++                        decoded = restore.decode_pixel_image(encoded, storage)
++                        pixel_exact = decoded.size == source.size and decoded.mode == source.mode and decoded.tobytes() == pixels
++                        decoded.info.clear()
++                        buffer = io.BytesIO()
++                        decoded.save(buffer, format="PNG", **PNG_OPTIONS)
++                        png_exact = buffer.getvalue() == data
++                        check = {"codec": extension, "adopted": False,
++                            "direct_png_byte_comparison": True,
++                            "decoded_pixel_byte_comparison": pixel_exact,
++                            "reconstructed_png_byte_comparison": png_exact,
++                            "original_bytes": len(data), "encoded_bytes": len(encoded),
++                            "payload_bytes_saved": len(data) - len(encoded), "cache_reused": cached}
++                        attempts.append(check)
++                        if pixel_exact and png_exact:
++                            atomic_write(cache_file, encoded)
++                            atomic_write(cache_meta, json_bytes({"original_sha256": digest,
++                                "encoded_sha256": storage["sha256"], "encoder": settings,
++                                "software_versions": software, "pixel_byte_comparison": True,
++                                "png_file_byte_comparison": True}))
++                            if len(encoded) < len(data):
++                                candidates.append((len(encoded), storage, check))
++                    except Exception as error:
++                        attempts.append({"codec": extension, "adopted": False,
++                            "reason": "codec_exception", "exception_type": type(error).__name__,
++                            "exception_message": str(error)[:1000]})
++                entry["codec_attempts"] = attempts
++                if candidates:
++                    _, storage, check = min(candidates, key=lambda item: item[0])
++                    entry["storage"] = storage
++                    entry["png_transport_check"] = dict(check, adopted=True)
++                else:
++                    entry["png_transport_check"] = {"adopted": False,
++                        "reason": "all_codec_checks_failed_or_no_savings_preserved_original"}
+                 return entry
+         except Exception as error:
+             entry["storage"] = original_storage(info, digest)
+-            entry["png_transport_check"] = {
+-                "adopted": False, "reason": "codec_exception_preserved_original",
+-                "exception_type": type(error).__name__,
+-            }
++            entry["png_transport_check"] = {"adopted": False,
++                "reason": "source_exception_preserved_original", "exception_type": type(error).__name__}
+             return entry
+ 
+ 
+@@ -225,9 +233,9 @@
+             if info.filename not in records:
+                 records[info.filename] = record(info, original.read(info))
+         ordered = [records[i.filename] for i in infos]
+-        encoded_entries = [e for e in ordered if e["storage"]["kind"] == "png-via-lossless-webp"]
++        encoded_entries = [e for e in ordered if e["storage"]["kind"] != "original"]
+         manifest = {
+-            "format": "checkpoint-lossless-png-transport", "format_version": 1,
++            "format": "checkpoint-lossless-png-transport", "format_version": 2,
+             "purpose": "Reversible transport encoding of this exact existing checkpoint snapshot",
+             "source_archive": {"basename": source.name, "bytes": source_size, "sha256": source_digest},
+             "software_versions": software, "encoder": ENCODER,
+@@ -243,13 +251,13 @@
+             f"Original ZIP SHA-256: {source_digest}\n\n"
+             "This package contains every file from the identified original checkpoint. "
+             "Ordinary non-PNG files retain their original paths and bytes. Some PNG files "
+-            "are represented by lossless WebP payloads and an exact-checked PNG restoration recipe. "
++            "are represented by lossless WebP or JPEG XL payloads and an exact-checked PNG restoration recipe. "
+             "PNG files whose checks failed or whose payload did not shrink remain ordinary PNG files.\n\n"
+             "Restore all original files into an empty directory:\n"
+             f"  python RESTORE_CHECKPOINT.py --archive {destination.name} --destination restored_checkpoint\n\n"
+             "Verify all original file hashes without writing a restored tree:\n"
+             f"  python RESTORE_CHECKPOINT.py --archive {destination.name} --verify-only\n\n"
+-            "The restoration script uses Python and Pillow. Creation and full byte-comparison "
++            "The restoration script uses Python, Pillow, and FFmpeg with libjxl. Creation and full byte-comparison "
+             f"verification used: {json.dumps(software, sort_keys=True)}\n"
+             "Each reconstructed file is checked against its recorded original size and SHA-256. "
+             "A different software runtime is accepted only when those checks pass. "
+@@ -277,7 +285,7 @@
+                         raise ValueError("Original entry changed during packaging")
+                     packaged.writestr(copy(info), data)
+                 elif storage["path"] not in written_payloads:
+-                    payload = (cache_root / f"{entry['original_sha256']}.webp").read_bytes()
++                    payload = (cache_root / f"{entry['original_sha256']}.{Path(storage['path']).suffix[1:]}").read_bytes()
+                     if restore.sha256(payload) != storage["sha256"]:
+                         raise ValueError("Cache payload hash changed during packaging")
+                     payload_info = zipfile.ZipInfo(storage["path"], info.date_time)
+@@ -288,8 +296,8 @@
+             packaged.writestr(restore.MANIFEST_PATH, json_bytes(manifest))
+             packaged.writestr(ROOT_RESTORE, restore_script)
+             packaged.writestr(ROOT_README, readme)
+-            packaged.writestr(PREFIX + "checkpoint_transport_pack.py", pack_script)
+-            packaged.writestr(PREFIX + "checkpoint_transport_restore.py", restore_script)
++            packaged.writestr(PREFIX + "checkpoint_transport_pack_v2.py", pack_script)
++            packaged.writestr(PREFIX + "checkpoint_transport_restore_v2.py", restore_script)
+         print(json.dumps({"stage": "verifying_every_original_entry", "entries": len(ordered),
+                           "encoded_pngs": len(encoded_entries),
+                           "transport_bytes_before_audit": temporary.stat().st_size}), flush=True)
+@@ -326,6 +334,7 @@
+             "original_png_entries": len(png_infos),
+             "original_png_bytes": sum(e["original_bytes"] for e in ordered if e["path"].lower().endswith(".png")),
+             "encoded_png_entries": len(encoded_entries),
++            "adopted_storage_kinds": dict(Counter(e["storage"]["kind"] for e in encoded_entries)),
+             "unique_encoded_payloads": len(written_payloads),
+             "encoded_payload_bytes_before_deduplication": sum(e["storage"]["bytes"] for e in encoded_entries),
+             "png_entries_preserved_as_original": len(kept_pngs),
+@@ -347,10 +356,10 @@
+             "statement_id", "date", "who", "type", "outcome"], delimiter="\t")
+         event_writer.writeheader()
+         event_writer.writerow({
+-            "statement_id": "SP40-TRANSPORT-" + source_digest + "-EXACT-BYTE-RECOVERY",
++            "statement_id": "SP40-TRANSPORT-" + source_digest + "-MIXED-JXL7-EXACT-BYTE-RECOVERY",
+             "date": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
+             "who": "/root; GPT-6 Astra Pro; inherited effort setting not separately exposed; "
+-                   "checkpoint_transport_pack.py run for " + source.name,
++                   "checkpoint_transport_pack_v2.py run for " + source.name,
+             "type": "computation or formal certificate",
+             "outcome": (
+                 f"Finite storage checks for fixed source {source.name}, SHA-256 {source_digest}: "
+@@ -375,8 +384,8 @@
+                 raise ValueError("Stored byte audit differs")
+             for name, expected in ((ROOT_RESTORE, restore_script), (ROOT_README, readme),
+                                    (PREFIX + "CHECK_EVENTS.tsv", event_data),
+-                                   (PREFIX + "checkpoint_transport_pack.py", pack_script),
+-                                   (PREFIX + "checkpoint_transport_restore.py", restore_script)):
++                                   (PREFIX + "checkpoint_transport_pack_v2.py", pack_script),
++                                   (PREFIX + "checkpoint_transport_restore_v2.py", restore_script)):
+                 if packaged.read(name) != expected:
+                     raise ValueError(f"Transport support file byte check failed: {name}")
+         os.replace(temporary, destination)

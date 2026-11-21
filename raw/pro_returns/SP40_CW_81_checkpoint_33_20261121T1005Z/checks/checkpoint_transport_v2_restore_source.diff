@@ -1,0 +1,131 @@
+--- restore_v1
++++ restore_v2
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env python3
+ """Restore every original file in a checkpoint transport ZIP and check its bytes.
+ 
+-Only the Python standard library and Pillow are used. The manifest records the
++Python, Pillow, and FFmpeg with libjxl are used. The manifest records the
+ versions used to create and validate the archive. Different versions may be
+ tried, but every reconstructed file must match its recorded SHA-256 and size.
+ """
+@@ -13,6 +13,8 @@
+ import io
+ import json
+ import os
++import subprocess
++import shutil
+ from pathlib import Path, PurePosixPath
+ import sys
+ import zipfile
+@@ -20,7 +22,7 @@
+ 
+ 
+ MANIFEST_PATH = "_checkpoint_transport/manifest.json"
+-FORMAT_VERSION = 1
++FORMAT_VERSION = 2
+ 
+ 
+ def sha256(data: bytes) -> str:
+@@ -31,7 +33,10 @@
+     import PIL
+     from PIL import ImageFile, features
+ 
++    ffmpeg = shutil.which("ffmpeg")
++    ffmpeg_version = subprocess.run([ffmpeg,"-version"],capture_output=True,text=True,check=True).stdout.splitlines()[0] if ffmpeg else None
+     return {
++        "ffmpeg": ffmpeg_version,
+         "python": sys.version.split()[0],
+         "pillow": PIL.__version__,
+         "libwebp": features.version("webp"),
+@@ -39,6 +44,56 @@
+         "zlib_runtime": zlib.ZLIB_RUNTIME_VERSION,
+         "pillow_maxblock": ImageFile.MAXBLOCK,
+     }
++
++
++PIXEL_FORMATS = {"RGB": "rgb24", "RGBA": "rgba", "L": "gray"}
++
++
++def ffmpeg_bytes(arguments: list[str], data: bytes) -> bytes:
++    executable = shutil.which("ffmpeg")
++    if executable is None:
++        raise RuntimeError("FFmpeg with libjxl is required for JPEG XL restoration")
++    result = subprocess.run([executable, "-v", "error", "-nostdin", *arguments],
++                            input=data, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
++                            check=False)
++    if result.returncode:
++        raise RuntimeError("FFmpeg failed: " + result.stderr.decode("utf-8", "replace")[:1000])
++    return result.stdout
++
++
++def encode_jxl(source, settings: dict) -> bytes:
++    pixel_format = PIXEL_FORMATS[source.mode]
++    width, height = source.size
++    return ffmpeg_bytes([
++        "-f", "rawvideo", "-pixel_format", pixel_format,
++        "-video_size", f"{width}x{height}", "-i", "pipe:0",
++        "-frames:v", "1", "-c:v", "libjxl", "-distance", "0",
++        "-effort", str(settings["effort"]), "-modular", "1",
++        "-threads", "1", "-pix_fmt", pixel_format, "-f", "image2pipe", "pipe:1"
++    ], source.tobytes())
++
++
++def decode_pixel_image(payload: bytes, storage: dict):
++    from PIL import Image
++    mode = storage["original_mode"]
++    if storage["kind"] == "png-via-lossless-webp":
++        with Image.open(io.BytesIO(payload)) as image:
++            image.load()
++            decoded = image.copy() if image.mode == mode else image.convert(mode)
++    elif storage["kind"] == "png-via-lossless-jxl":
++        pixel_format = PIXEL_FORMATS[mode]
++        pixels = ffmpeg_bytes([
++            "-i", "pipe:0", "-frames:v", "1", "-threads", "1",
++            "-pix_fmt", pixel_format, "-f", "rawvideo", "pipe:1"
++        ], payload)
++        width, height = storage["dimensions"]
++        channels = {"RGB": 3, "RGBA": 4, "L": 1}[mode]
++        if len(pixels) != width * height * channels:
++            raise ValueError("Decoded raw pixel byte count differs from recorded dimensions")
++        decoded = Image.frombytes(mode, (width, height), pixels)
++    else:
++        raise ValueError("Unsupported pixel storage kind")
++    return decoded
+ 
+ 
+ def safe_relative_path(name: str) -> PurePosixPath:
+@@ -73,22 +128,18 @@
+         raise ValueError(f"Stored payload size mismatch: {entry['path']}")
+     if storage["kind"] == "original":
+         original = payload
+-    elif storage["kind"] == "png-via-lossless-webp":
+-        from PIL import Image, ImageFile
+-
++    elif storage["kind"] in ("png-via-lossless-webp", "png-via-lossless-jxl"):
++        from PIL import ImageFile
+         ImageFile.MAXBLOCK = storage["png_serialization"]["pillow_maxblock"]
+-        with Image.open(io.BytesIO(payload)) as decoded:
+-            decoded.load()
+-            if tuple(decoded.size) != tuple(storage["dimensions"]):
+-                raise ValueError(f"Decoded dimensions mismatch: {entry['path']}")
+-            if decoded.mode != storage["original_mode"]:
+-                decoded = decoded.convert(storage["original_mode"])
+-            if sha256(decoded.tobytes()) != storage["pixel_sha256"]:
+-                raise ValueError(f"Decoded pixel hash mismatch: {entry['path']}")
+-            decoded.info.clear()
+-            buffer = io.BytesIO()
+-            decoded.save(buffer, format="PNG", **storage["png_serialization"]["save_options"])
+-            original = buffer.getvalue()
++        decoded = decode_pixel_image(payload, storage)
++        if tuple(decoded.size) != tuple(storage["dimensions"]):
++            raise ValueError(f"Decoded dimensions mismatch: {entry['path']}")
++        if sha256(decoded.tobytes()) != storage["pixel_sha256"]:
++            raise ValueError(f"Decoded pixel hash mismatch: {entry['path']}")
++        decoded.info.clear()
++        buffer = io.BytesIO()
++        decoded.save(buffer, format="PNG", **storage["png_serialization"]["save_options"])
++        original = buffer.getvalue()
+     else:
+         raise ValueError(f"Unsupported storage kind: {storage['kind']}")
+     if len(original) != entry["original_bytes"]:

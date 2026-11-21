@@ -1,0 +1,94 @@
+{
+  "reviewed_utc": "2026-11-21T04:22:14Z",
+  "reviewer": "/root/codec_v2",
+  "scope": "Complete source-only read of both v1 and both v2 scripts plus preparation and root review JSON records.",
+  "status": "Four concrete source findings; v2 remains unexecuted and unselected.",
+  "source_hashes": {
+    "out/scripts/checkpoint_transport_pack.py": "4ea2ab7e5feb12944eeb785084c507ae900882b889062e6176494744474e5620",
+    "out/scripts/checkpoint_transport_restore.py": "e00367d3a524a5d3bf607db494976858b0d634a868d0de93f8741e1548a422c5",
+    "out/scripts/checkpoint_transport_pack_v2.py": "02cad84a6fe1eddc4d30c2d5ef2e10605146dfaf9b82986aeb113f66eca46a35",
+    "out/scripts/checkpoint_transport_restore_v2.py": "cf721c734b4591c034ce6dab9a25df5f1ad1eb583bb4fb452e04d0403a559b12",
+    "out/checks/checkpoint_transport_v2_preparation.json": "17e8008c92acccdcb4042984811350c182f778942fd4b387170777ecc441b86e",
+    "out/checks/checkpoint_transport_v2_root_source_review.json": "323bd909da12ec29f2f660ebb98e6272ab15622a90f9d9665af9866ef160ddac"
+  },
+  "v1_hashes_match_preservation_records": true,
+  "initial_to_current_v2_pack_hash_change_explained_by_root_review": true,
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "high",
+      "title": "Audit destination can replace the source or finished archive",
+      "locations": [
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [55, 59]},
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [196, 208]},
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [326, 327]},
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [395, 396]}
+      ],
+      "evidence": "Only source/output equality is rejected. args.audit is passed to atomic_write after source-integrity verification and after installing the output. Assigning the audit path to source or output replaces that archive with audit JSON.",
+      "inherited_from_v1": true,
+      "v1_locations": [[182, 195], [382, 383]],
+      "bounded_suggestion": "Resolve and validate audit at v2 preflight; reject equality with source/output and require a new audit path to protect existing frozen files. Leave v1 unchanged unless separately directed.",
+      "observed_checkpoint_impact": "None asserted. Root states checkpoint25 used distinct source/output/audit paths."
+    },
+    {
+      "id": "R2",
+      "severity": "medium",
+      "title": "Original paths accepted by the source can collide during tree restoration",
+      "locations": [
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [213, 218]},
+        {"file": "out/scripts/checkpoint_transport_restore_v2.py", "lines": [99, 118]},
+        {"file": "out/scripts/checkpoint_transport_restore_v2.py", "lines": [178, 187]}
+      ],
+      "evidence": "Raw names a.bin and ./a.bin both map to parts (a.bin) and the same target; the second replacement overwrites the first. Entry order a.bin.restore-part then a.bin makes the latter's fixed temporary path equal an existing restored original and its exclusive open fail. Per-entry in-memory byte verification does not exercise these filesystem mappings.",
+      "inherited_from_v1": true,
+      "bounded_suggestion": "Preflight the exact original-name-to-target mapping and reject collisions before packaging/restoration; allocate exclusive temporary paths reserved away from every original target.",
+      "observed_checkpoint_impact": "None asserted. No checkpoint entries were inspected."
+    },
+    {
+      "id": "R3",
+      "severity": "medium",
+      "title": "Non-object parsed cache metadata skips fresh encoding",
+      "locations": [
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [125, 144]},
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [173, 176]}
+      ],
+      "evidence": "JSON null parses as None and metadata.get raises AttributeError outside the inner OSError/ValueError/KeyError handler. The outer codec handler then skips the remaining cache location and fresh encoder for that codec.",
+      "exactness_effect": "Original storage or another exact-checked candidate remains available; this finding concerns incomplete cache-miss recovery and candidate availability.",
+      "bounded_suggestion": "Require isinstance(metadata, dict) before field lookup and treat all other JSON result types as invalid cache records, continuing lookup or fresh encoding.",
+      "observed_checkpoint_impact": "None asserted. No cache payload or codec was executed."
+    },
+    {
+      "id": "R4",
+      "severity": "medium",
+      "title": "Repeated executions of the same snapshot reuse the statement ID",
+      "locations": [
+        {"file": "out/scripts/checkpoint_transport_pack_v2.py", "lines": [362, 366]}
+      ],
+      "evidence": "statement_id depends only on source_digest and the constant MIXED-JXL7 variant suffix. Every invocation over the same snapshot therefore generates the same ID, while completion dates belong to separate executions.",
+      "inherited_from_v1": true,
+      "v1_locations": [[350, 351]],
+      "bounded_suggestion": "Add a per-run identifier to the v2 event ID and record it in the audit, retaining source digest and codec variant.",
+      "observed_checkpoint_impact": "None asserted. No completed v2 event exists within this review."
+    }
+  ],
+  "source_observations": {
+    "candidate_adoption_requires_direct_original_png_pixel_and_reconstructed_png_comparisons": true,
+    "candidate_adoption_requires_payload_savings": true,
+    "unsupported_and_failed_images_keep_original_storage": true,
+    "staged_transport_compares_every_original_entry_directly": true,
+    "source_size_and_sha256_check_present_before_final_audit_write": true,
+    "ffmpeg_uses_argument_lists_and_pipes_without_shell_invocation": true,
+    "v2_import_format_and_bundled_names_agree": true
+  },
+  "activity": {
+    "scripts_changed": false,
+    "codec_executed": false,
+    "tests_or_compilation_run": false,
+    "archive_created_or_inspected": false,
+    "images_or_manuscript_inspected": false,
+    "research_installation_rendering_or_upload": false,
+    "manuscript_check_event_created": false
+  },
+  "selection_gate": "V2 remains unexecuted and unselected until a completed later v1 transport actually exceeds the cap.",
+  "result_limits": "No compression ratio, performance, codec equality, manuscript, mathematical, or ink result is claimed."
+}

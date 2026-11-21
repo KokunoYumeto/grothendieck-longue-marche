@@ -1,0 +1,85 @@
+--- out/checks/checkpoint_transport_v2_r1_r4_before/checkpoint_transport_pack_v2.py	2026-11-21 05:25:28.976171537 +0100
++++ out/scripts/checkpoint_transport_pack_v2.py	2026-11-21 05:25:29.985478277 +0100
+@@ -24,6 +24,7 @@
+ import sys
+ import threading
+ import time
++import uuid
+ import zipfile
+ 
+ from PIL import Image, ImageFile
+@@ -126,6 +127,8 @@
+                             if payload_path.exists() and metadata_path.exists():
+                                 try:
+                                     metadata = json.loads(metadata_path.read_bytes())
++                                    if not isinstance(metadata, dict):
++                                        continue
+                                     payload = payload_path.read_bytes()
+                                     if (metadata.get("original_sha256") == digest and
+                                         metadata.get("encoder") == settings and
+@@ -193,12 +196,18 @@
+ 
+ def build(args: argparse.Namespace) -> dict:
+     started = time.monotonic()
++    execution_id = uuid.uuid4().hex
+     source = args.source.resolve()
+     destination = args.output.resolve()
++    audit_path = args.audit.resolve()
+     if source == destination:
+         raise ValueError("The output must differ from the original ZIP path")
+     if destination.exists():
+         raise FileExistsError(f"Output already exists: {destination}")
++    if audit_path in (source, destination):
++        raise ValueError("The audit path must differ from the source and output paths")
++    if audit_path.exists():
++        raise FileExistsError(f"Audit output already exists: {audit_path}")
+     source_size = source.stat().st_size
+     source_digest = file_hash(source)
+     if args.expected_source_sha256 and source_digest != args.expected_source_sha256:
+@@ -220,6 +229,9 @@
+                 raise ValueError(f"Reserved transport path already in source: {info.filename}")
+             if stat.S_ISLNK(info.external_attr >> 16):
+                 raise ValueError("Source contains a symlink; this packer preserves regular-file trees")
++        restore.validate_restoration_targets([
++            {"path": info.filename, "is_directory": info.is_dir()} for info in infos
++        ])
+         png_infos = [i for i in infos if not i.is_dir() and i.filename.lower().endswith(".png")]
+         print(json.dumps({"stage": "encoding", "source_sha256": source_digest,
+                           "source_bytes": source_size, "entries": len(infos),
+@@ -329,6 +341,7 @@
+                      and e["storage"]["kind"] == "original"]
+         audit = {
+             "scope": "Observed finite file-byte checks for storage provenance of one fixed checkpoint snapshot",
++            "execution_id": execution_id,
+             "source_archive": manifest["source_archive"], "software_versions": software,
+             "codec_settings": ENCODER,
+             "png_serialization": {"format": "PNG", "save_options": PNG_OPTIONS,
+@@ -360,7 +373,7 @@
+             "statement_id", "date", "who", "type", "outcome"], delimiter="\t")
+         event_writer.writeheader()
+         event_writer.writerow({
+-            "statement_id": "SP40-TRANSPORT-" + source_digest + "-MIXED-JXL7-EXACT-BYTE-RECOVERY",
++            "statement_id": "SP40-TRANSPORT-" + source_digest + "-MIXED-JXL7-" + execution_id + "-EXACT-BYTE-RECOVERY",
+             "date": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC"),
+             "who": "/root; GPT-6 Astra Pro; inherited effort setting not separately exposed; "
+                    "checkpoint_transport_pack_v2.py run for " + source.name,
+@@ -393,7 +406,9 @@
+                 if packaged.read(name) != expected:
+                     raise ValueError(f"Transport support file byte check failed: {name}")
+         os.replace(temporary, destination)
+-        atomic_write(args.audit, audit_data)
++        audit_path.parent.mkdir(parents=True, exist_ok=True)
++        with audit_path.open("xb") as audit_handle:
++            audit_handle.write(audit_data)
+     output_size = destination.stat().st_size
+     result = {
+         "output": str(destination), "output_bytes": output_size,
+@@ -402,7 +417,7 @@
+         "below_512_mib": output_size < 536870912,
+         "headroom_bytes": 536870912 - output_size,
+         "original_entries_verified": len(verified), "encoded_pngs": len(encoded_entries),
+-        "preserved_original_pngs": len(kept_pngs), "audit": str(args.audit.resolve()),
++        "preserved_original_pngs": len(kept_pngs), "audit": str(audit_path),
+         "seconds": round(time.monotonic() - started, 1),
+     }
+     print(json.dumps({"stage": "complete", **result}, sort_keys=True), flush=True)
