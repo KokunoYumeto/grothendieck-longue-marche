@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-11-21T01:57:59.260Z",
+  "reader": "reader_b",
+  "scope": "Read-only documentation and static QA against the governing prompt. No manuscript images were interpreted, no OCR or external research was used, and no TeX was compiled.",
+  "snapshot": {
+    "diagnostics": "qa/reader_b_static_diagnostics.json",
+    "pages": 23,
+    "completed_audits": 16,
+    "pending_audits_expected": 7,
+    "material_places": 707,
+    "against_c": 262,
+    "against_h": 634,
+    "decisions": 261,
+    "doubts": 262,
+    "inventory_elements": 518
+  },
+  "constraints_respected": [
+    "No accepted page, record, frozen first/second TSV, or aggregate deliverable was modified.",
+    "Only new QA documentation/scripts were written under result/qa.",
+    "Pending audits from 067 onward were not reported as missing-completion errors."
+  ],
+  "checks_passed": [
+    "23 expected page files and page records are present; required page-record keys and change-row keys were present.",
+    "261 decision IDs exactly match supplied MARKS.tsv in order; IDs are unique.",
+    "Current aggregate decisions and H-collation rows match page records.",
+    "All referenced change/decision/implicit-decision crop files exist; required main-reader review registrations are present.",
+    "All check-event statement IDs map to actual notes.",
+    "Collation kinds, error-sheet categories, inventory sheet kinds and element kinds use the permitted values.",
+    "All frozen _first.tsv readings match the retained record second_boxes; existing comparison files retain matching first readings.",
+    "The automatic doubt-substring candidates were accounted for by separate reading/alternative fields, shared scope or parameterized drawing labels; no confirmed missing remaining-doubt entry was found.",
+    "No exact final-equals-C/H overcount was found on the 16 completed audits. Conservative macro normalization produced only two genuine certainty-only candidates on still-pending 067; the other matches were real word-spacing differences."
+  ],
+  "findings": [
+    {
+      "id": "BQA-001",
+      "severity": "high",
+      "category": "material-count underflag",
+      "status": "actionable on completed audit",
+      "locations": [
+        "records/148_scan058.json changes[id=148_scan058-01]",
+        "records/148_scan058.json notes[id=148_scan058-N07]"
+      ],
+      "record_ids": [
+        "148_scan058-01",
+        "148_scan058-N07"
+      ],
+      "evidence": {
+        "c": "\\deleted{\\unsure{ordinaires}} \\inserted{liées}",
+        "h": "\\add{liées} \\struck{ordinaires}",
+        "final": "\\deleted{\\unsure{ord.|sol.}} \\inserted{liées}",
+        "diff_c": true,
+        "diff_h": false
+      },
+      "finding": "After the completed audit, the old adjective is an abbreviation with a new leading reading, while H still has the full word ordinaires. This is a material H difference, not merely serialization order or certainty. No separate change row on this page covers that adjective.",
+      "recommended_action": "Set diff_h=true on 148_scan058-01 if its adjudicated final stays as recorded. Revise N07 so its historical macro-order exclusion is not presented as the current classification, then regenerate aggregates.",
+      "count_effect": "At the inspected snapshot: against H +1; total material places unchanged; against C unchanged.",
+      "confidence": "high"
+    },
+    {
+      "id": "BQA-002",
+      "severity": "medium",
+      "category": "certainty-only overcount",
+      "status": "pending page; recheck after 067 adjudication",
+      "locations": [
+        "records/148_scan067.json changes[id=148_scan067-15]",
+        "records/148_scan067.json changes[id=148_scan067-26]"
+      ],
+      "record_ids": [
+        "148_scan067-15",
+        "148_scan067-26"
+      ],
+      "evidence": [
+        {
+          "id": "148_scan067-15",
+          "c": "\\deleted{\\unsure{arêtes orientées}}",
+          "final": "\\deleted{\\unsure{arêtes orientées|arêtes repérées}}",
+          "diff_c": true,
+          "diff_h": true
+        },
+        {
+          "id": "148_scan067-26",
+          "c": "\\unsure{\\simeq}",
+          "final": "\\unsure{\\simeq|\\not\\simeq}",
+          "diff_c": true,
+          "diff_h": true
+        }
+      ],
+      "finding": "The C primary readings and revision states are unchanged; each final only adds an alternative. Both currently count against C.",
+      "recommended_action": "If these same primary readings remain after the pending audit, make diff_c=false on both and keep the doubts/decisions and material H rows. Do not apply this automatically if adjudication changes the primary reading.",
+      "count_effect": "Conditional on retaining the inspected readings: against C -2; H and total material-place counts unchanged.",
+      "confidence": "high for the snapshot; final action conditional"
+    },
+    {
+      "id": "BQA-003",
+      "severity": "high",
+      "category": "stale mathematical summary",
+      "status": "actionable on completed audit",
+      "locations": [
+        "records/148_scan064.json notes[id=148_scan064-N04]",
+        "records/148_scan064.json check_events[statement_id=148_scan064-N04]"
+      ],
+      "record_ids": [
+        "148_scan064-N04",
+        "148_scan064-N-audit",
+        "148_scan064-27",
+        "148_scan064-29"
+      ],
+      "evidence": {
+        "old_note": "The margin says that the displayed Sigma is formally empty",
+        "old_check_outcome": "The mathematical reason for taking Sigma formally empty and changing the working category is carried as the note’s background claim.",
+        "accepted_reading": "ne joue aucun ... rôle",
+        "audit_note": "the ink says that the Sigma datum ne joue aucun role, not that it est formellement vide"
+      },
+      "finding": "The baseline note and its check-event outcome still attribute the superseded formally-empty claim to the source. N-audit and the accepted text contradict them.",
+      "recommended_action": "Update N04 and its carried-background outcome to the adjudicated plays-no-role claim, retaining the present caution about the middle prose. Keep the audit note as history.",
+      "confidence": "high"
+    },
+    {
+      "id": "BQA-004",
+      "severity": "medium",
+      "category": "stale revision-state documentation",
+      "status": "actionable on completed audit",
+      "locations": [
+        "records/148_scan064.json notes[id=148_scan064-N05]",
+        "records/148_scan064.json notation[2, sign=Curved insertion leaders]"
+      ],
+      "record_ids": [
+        "148_scan064-N05",
+        "148_scan064-N-audit",
+        "148_scan064-11"
+      ],
+      "evidence": {
+        "old_note": "No matching opening parentheses are manufactured from their curved left ends.",
+        "old_notation_witness_error": "C supplies an opening parenthesis before en tant que",
+        "accepted_change_11": "p\\textsuperscript{ts}-base dans $R$, \\inserted{pour $R\\ne\\phi$,} (en tant que",
+        "audit_note": "Opening parentheses before en tant que and d'un are restored after separating their curves from the insertion leaders."
+      },
+      "finding": "The baseline explanation still suggests the opening parentheses are unsupported and lists C's opening as an error, although the audit explicitly restored those parentheses.",
+      "recommended_action": "Scope the leader observation to the actual leader strokes and acknowledge the separately visible opening parentheses. Remove the now-obsolete witness-error attribution about C's opening before en tant que.",
+      "confidence": "high"
+    },
+    {
+      "id": "BQA-005",
+      "severity": "medium",
+      "category": "stale formula-doubt mapping",
+      "status": "actionable on completed audit",
+      "locations": [
+        "records/148_scan061.json notes[id=148_scan061-N03]",
+        "records/148_scan061.json check_events[statement_id=148_scan061-N03]",
+        "records/148_scan061.json notation[2, sign=\\mathbb Z]"
+      ],
+      "record_ids": [
+        "148_scan061-N03",
+        "148_scan061-N-audit",
+        "148_scan061-28"
+      ],
+      "evidence": {
+        "old_note": "its numerator remains Z|Z_a because the foot is overworked",
+        "old_check_outcome": "Preserved the written source/target indices and the local numerator doubt.",
+        "old_notation_scope": "The target numerator in item3 has a locally ambiguous foot.",
+        "accepted_final": "$\\mathbb Z/\\unsure{d|d_a}r_a\\mathbb Z$"
+      },
+      "finding": "The remaining uncertainty moved from the numerator's a index to the multiplier d/d_a, but the note, check-event wording and hand-log input still describe the old numerator doubt.",
+      "recommended_action": "Synchronize all three descriptions to the unindexed target Z letters and the retained multiplier d/d_a uncertainty. Preserve the distinct indexed source quotient.",
+      "confidence": "high"
+    },
+    {
+      "id": "BQA-006",
+      "severity": "medium",
+      "category": "stale diagram summary",
+      "status": "actionable on completed audit",
+      "locations": [
+        "records/148_scan053.json notes[id=148_scan053-N02]"
+      ],
+      "record_ids": [
+        "148_scan053-N02",
+        "148_scan053-N-audit",
+        "148_scan053-29",
+        "148_scan053-62"
+      ],
+      "evidence": {
+        "old_note": "the further right target remembers gamma weighting but not r weighting. The cancellation of bi ...",
+        "accepted_weight": "\\unsure{\\sigma|\\gamma}",
+        "accepted_cancellation": "\\deleted{\\unsure{\\mathrm{b}|\\mathrm{ph}}}\\mathrm{i}"
+      },
+      "finding": "The baseline note asserts unqualified gamma and cancellation of bi, while the audit retains sigma/gamma and leaves the adjacent dotted i live.",
+      "recommended_action": "Update N02 to state the local sigma/gamma doubt and cancelled b/ph-like group with live i, without changing the recorded diagram-typing check.",
+      "confidence": "high"
+    },
+    {
+      "id": "BQA-007",
+      "severity": "medium",
+      "category": "stale cancelled-text summary",
+      "status": "actionable on completed audit",
+      "locations": [
+        "records/148_scan063.json notes[id=148_scan063-N06]"
+      ],
+      "record_ids": [
+        "148_scan063-N06",
+        "148_scan063-N-audit"
+      ],
+      "evidence": {
+        "old_note": "an unreadable initial unit plus doubtful données is the leading segmentation, with the single-word reading explicitly retained as an alternative",
+        "current_doubt_place": "Cancelled run replaced by structures",
+        "current_doubt_reading": "\\deleted{\\unsure{fl.} \\unsure{(}des \\unsure{unités|données}}"
+      },
+      "finding": "N06 still describes the superseded unreadable-unit/single-word segmentation, while the accepted text, current doubt entry and audit note expose fl.-like letters, a possible opening parenthesis, des and unités/données.",
+      "recommended_action": "Replace only the obsolete segmentation summary with the current retained alternatives. Do not add a closing parenthesis or an expansion of fl.",
+      "confidence": "high"
+    },
+    {
+      "id": "BQA-008",
+      "severity": "low",
+      "category": "stale alternative in notes",
+      "status": "actionable on completed audit",
+      "locations": [
+        "records/148_scan058.json notes[id=148_scan058-N03]"
+      ],
+      "record_ids": [
+        "148_scan058-N03",
+        "148_scan058-19",
+        "M0746"
+      ],
+      "evidence": {
+        "old_note": "en près/en plus and réverser/inverser",
+        "accepted_short_expression": "\\unsure{en près}",
+        "current_change": "148_scan058-19"
+      },
+      "finding": "The note still lists en plus as a current alternative after the completed audit narrowed this place to doubtful en près.",
+      "recommended_action": "Remove en plus from the current-summary wording, or identify it explicitly as the superseded first-reading alternative. Keep réverser/inverser unchanged.",
+      "confidence": "high"
+    },
+    {
+      "id": "BQA-009",
+      "severity": "low",
+      "category": "notation-table synchronization",
+      "status": "advisory finalization check",
+      "locations": [
+        "notation_final.md",
+        "SP83_C13_148+149_doubts.md notation section",
+        "records/148_scan061.json notation[8]",
+        "records/148_scan064.json notation[4]"
+      ],
+      "record_ids": [
+        "148_scan061-55",
+        "148_scan064-26"
+      ],
+      "evidence": {
+        "new_061_form": "\\mathrel{:\\!|}",
+        "new_064_margin_alternatives": "\\unsure{\\widetilde{\\Sigma}|\\overline{\\Sigma}|\\Sigma}",
+        "old_064_notation_sign": "\\unsure{\\widetilde{\\Sigma}|\\Sigma}"
+      },
+      "finding": "The concise final notation table does not yet mention the audited dotted divisibility form from 061. The 064 local notation entry and concise table still describe only tilde/plain-Sigma uncertainty, although the margin now also admits an overline.",
+      "recommended_action": "During the final notation consolidation, add or link the local dotted-divisor observation and scope the 064 overline alternative to the margin. Do not propagate the bar alternative to the separate tuple occurrence unless the accepted text already has it.",
+      "confidence": "high about the documentary mismatch; completeness priority low"
+    }
+  ],
+  "not_findings": [
+    "048-02 and 048-44 become equal to C only if the visible Gra/bipond word gap is erased; these are not pure macro differences.",
+    "Rows with an excerpt wider than their named place were not automatically assigned additional diff flags when the extra discrepancy is counted in a separate row.",
+    "Historical first-reading files and audit readings may differ by design and were not proposed for editing."
+  ],
+  "next_action": "Main reader should apply accepted documentation/flag corrections, regenerate aggregates, then rerun final validation after completing pending audits."
+}
