@@ -1,0 +1,7 @@
+# Evidence image encoding
+
+All saved evidence crops are included. They use lossless JPEG XL or the original lossless PNG/WebP, whichever is smaller. New encodings are checked by full decoded RGBA byte-string comparison. Unchanged source/output pairs are checked by SHA-256 against a prior full RGBA comparison. The pixels are identical to the immutable source. Dimensions, pixel hashes, byte hashes, and verification modes are recorded in evidence_encoding.json. No crop was resized, altered, removed, or subjected to text recognition during encoding. Evidence references in audit metadata use the actual archive suffix. Transcription fragments and the original first/second reading and comparison files remain byte-for-byte unchanged; the manifest maps any original evidence filename to its archive filename. Earlier checkpoints were not changed.
+
+JPEG XL images can be decoded to PNG with an FFmpeg build supporting libjxl: `ffmpeg -i input.jxl output.png`. The included script records the precise lossless encoding and raw-pixel comparison procedure.
+
+Selected images use additional lossless frame-option tuning. lossless_tuning_manifest.json identifies their actual archive files. The exact parameter values and C shim are included under scripts/compression. The pixel_verification field of each image record states whether this run used full RGBA comparison or matching source/output SHA-256 certificates from a prior full comparison.
