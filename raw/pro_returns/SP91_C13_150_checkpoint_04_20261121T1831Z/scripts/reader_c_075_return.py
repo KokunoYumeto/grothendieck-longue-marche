@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+"""Atomic first-reader return for scan 075; no OCR or proof check."""
+from pathlib import Path
+import csv
+import json
+import os
+from collections import Counter
+
+EDITION = Path(__file__).resolve().parents[1]
+ROOT = EDITION.parent
+RETURN = EDITION / "reader_returns"
+RETURN.mkdir(exist_ok=True)
+C = (ROOT / "input/SP91_C13_150_texts/pages/150_scan075.tex").read_text()
+H = (ROOT / "input/SP91_C13_150_texts/hua/hua_150_scan075.tex").read_text()
+CROPS = json.loads((EDITION / "scripts/reader_c_075_crop_manifest.json").read_text())
+
+def atomic_text(path, value):
+    tmp = path.with_name(path.name + ".reader_c.tmp")
+    with tmp.open("w", encoding="utf-8") as f:
+        f.write(value)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, path)
+
+TEX = r"""\scanpage{75}
+\mspage{33}
+On choisit un voisinage tubulaire \unsure{standard|standart} $T_{(0)}$ de
+$X_{(0)}$ dans $X$, et on pose
+\[
+\begin{aligned}
+\deleted{(\unsure{48})}\qquad&
+\left\{\begin{aligned}
+X^{(1)}_{\deleted{\unsure{i}}}&=X\setminus\mathring T_{(0)}\\
+X^{(1)}_{(d)}&=X^{(1)}\cap X_{(d)}\qquad(=\varnothing\text{ si }d\leq0)
+\end{aligned}\right.\\
+&\quad X^{(1)}_i=X^{(1)}\cap X_i
+\qquad\text{de sorte que}\quad
+X^{(1)}_{(d)}=\bigcup_{\substack{i\in I\\\delta(i)\leq d}}X^{(1)}\cap X_i
+\end{aligned}
+\]
+% The brace ends above the body of the third row; that row and its right continuation are unbraced.
+
+On \deleted{pose}\inserted{prend} alors un voisinage tubulaire
+standart \deleted{de} $T_1^{\unsure{\deleted{1}|1}}$ de $X_{(1)}$ dans $X$
+(petit par rapport au choix de $T_0$), soit $T_1^{(1)}$ sa trace dans
+$X^{(1)}$, qui est un vois. tub. standart de $X^{(1)}_{(1)}$ dans
+$x^{(1)}$. On pose
+\[
+\deleted{(\unsure{49})}\qquad
+\begin{aligned}
+X^{(2)}&=X^{(1)}\setminus\mathring T^{(1)}_{(1)}
+=X^{(1)}\cap(X\setminus\mathring T_1)\\
+&=X^{\deleted{\unsure{2}}}\setminus(\mathring T_0\cup\mathring T_1)
+\end{aligned}
+\]
+\margin{OPS $T_d=\displaystyle\bigcup_{\substack{i\in I\\\delta(i)\leq d}}T_i$,
+où $T_i$ est un vois. tub. de $X_i$ dans $X$}
+% The oblique note lies to the left of the second display and the following paragraph.
+
+On prend un voisinage tubulaire $T_d$ de $X_{(d)}$ dans $X$,
+petit p.r. aux vois. tubulaires $T_{d'}$ ($d'<d$) déjà construits,
+et on pose
+\[
+(48)\qquad X^{(d)}=X-\bigcup_{\alpha<d}\mathring T_\alpha.
+\]
+% Two tiny isolated points below the equality are recorded as unassigned marks in the audit record.
+Ceci posé, on pose, pour $i\in I$, $d=\delta(i)$
+\[
+(\unsure{49|41})\qquad|\quad
+\begin{aligned}
+\Sigma_i&=X_i\cap X_{(d)}
+=X_i\setminus\deleted{\unsure{\{}}\bigcup_{\underline{\alpha}<d}X_i\cap
+\unsure{\dot T_\alpha|\mathring T_\alpha}
+\qquad\deleted{\unsure{\subset X_i|\cap X_i}}\\
+&=X_i\setminus\bigcup_{\underset{\sim}{j}<i}X_i\cap\mathring T_j
+\qquad\subset X_i^*
+\end{aligned}
+\]
+% The isolated upright before Sigma has no assigned mathematical function here.
+\margin{74}
+% Foliation in another, unnamed hand at the lower left.
+"""
+
+atomic_text(RETURN / "150_scan075.tex", TEX)
