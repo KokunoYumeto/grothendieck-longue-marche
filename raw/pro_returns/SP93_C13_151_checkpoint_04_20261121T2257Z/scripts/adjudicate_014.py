@@ -1,0 +1,27 @@
+from pathlib import Path
+import json,csv
+R=Path('/workspace/scratch/d12e26a9cd50/SP93_C13_151_work');p=R/'reports/151_scan014.json';d=json.loads(p.read_text());tp=R/'reports/151_scan014.tex';t=tp.read_text()
+f={r['box']:r['first'] for r in csv.DictReader((R/'second/151_scan014_comparison.tsv').open(),delimiter='\t')}
+b={r['box']:[int(r[k]) for k in ('x0','y0','x1','y1')] for r in csv.DictReader((R/'second/151_scan014_boxes.tsv').open(),delimiter='\t')}
+word=r'\unsure{evident|evid\textsuperscript{t}}'
+assert 'essentiellement evident' in t;t=t.replace('essentiellement evident','essentiellement '+word)
+assert r'façon que}' in t;t=t.replace(r'façon que}',r'façon pour}')
+c=next(c for c in d['changes'] if c['id']=='P014-007');c.update(final=word,confidence='medium',crop='crops/151_scan014_second_B007.png',box=b['B007'],evidence='The initial low e/v movement, internal i-dot and tall d are visible; no accent is visible over the first e. The compact final rise/return after d does not securely distinguish a compressed ent from a raised abbreviated t. The word remains evident/evid-t, unaccented in both alternatives; trivial has no supporting initial tall t.')
+c=next(c for c in d['changes'] if c['id']=='P014-010');c.update(final=c['final'].replace('façon que','façon pour'),crop='crops/151_scan014_second_B009.png',box=b['B009'],evidence='The long strike crosses Mais ... avoir and stops before b). Below it de la, the equals sign, façon and pour form the replacement. The final word begins with the tall p stem/descending course and continues through low ou into the raised angular r return; it is pour, not que. The far-right hooked continuation of the cancellation is not a separate canceled a. The connecting letters of peut-on avoir remain doubtful under the strike; b) et c) is live on the upper line.')
+d['doubts'].append(dict(place='Word after essentiellement, ending',reading='evident',alternatives=[r'evid\textsuperscript{t}'],confidence='medium',reason='The initial e/v, dotted i and tall d are visible without an initial accent; the compact ending does not settle full ent versus abbreviated raised t. Second-reading crop B007.'))
+d['notes']=[s.replace('façon que','façon pour').replace('The word after essentiellement is unaccented evident, supported','The word after essentiellement is unaccented evident or abbreviated evid-t, supported').replace('Oui -- et c’est essentiellement evident','Oui -- et c’est essentiellement evident [ending now doubtful]') for s in d['notes']]
+d['notes'].append('Independent audit: the ending of the word after essentiellement is now doubtful between evident and evid-t, with no initial accent in either reading. The below-line revision reads pour b) et c), supported by the initial p and terminal r. The small post-colimit sequence and the separate possible punctuation blot remain unresolved.')
+e={
+'B001':'The top numeral is 4, with its diagonal, bar and long upright. The mspage wrapper is already in the page.',
+'B002':'The a) label, phi exclamation index, terminal-object subscripts, arrow and est épi agree; text/math wrappers and braces do not change their reading.',
+'B003':'Both phi indices retain separate lower exclamation dots. The alpha/beta factors, quantifier, Ob A and lack of a comma after épi agree; operator/font syntax alone differs.',
+'B004':'The fibre-product bases, the three objects of the cospan and the downward direction of both maps agree, as does the final period after A. Matrix syntax does not change the reading.',
+'B005':'The cancellation is a compact opaque horizontal mass; neither reading establishes its letter. The existing à remains only an explicit doubtful proposal. The separate live accented à after it is clear and unaffected.',
+'B006':'The source calligraphic X has bowed crossing curves and a horizontal bar; f, colon, right arrow and A-hat agree. Math wrappers add no ink reading.',
+'B007':'There is no accent over the first e. The internal dotted i and tall d agree, but the final compressed rise does not safely distinguish full ent from abbreviated raised t. The final word is marked evident/evid-t, rather than accepting the second reader’s accent or retaining an unqualified full ending.',
+'B008':'After the formula the three separated units are point, low wavering horizontal stroke, point. The first reading already leaves their ellipsis interpretation unresolved; the second dot-dash-dot rendering does not settle that interpretation. A separate dark low blot immediately before On voit remains separately marked as possible period. The formula and A/F base agree.',
+'B009':'The below-line final word has a tall p with descending course, low ou and an angular r return: pour, not que. The long top strike leaves some letters of peut-on avoir hidden, so its doubt remains. The far-right short hooked stroke continues the cancellation rather than establishing an extra a. The equals sign and attachment to b) et c) are clear.',
+'B010':'The thin pale foliation reads 13. It agrees, and its margin wrapper is already present.'}
+m={k:dict(changed=k in ('B007','B009'),evidence=v) for k,v in e.items()}
+m['B007']['final']=f['B007'].replace('evident',word);m['B009']['final']=f['B009'].replace('façon que','façon pour')
+(R/'reviews/151_scan014_manual.json').write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n');p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n');tp.write_text(t)
