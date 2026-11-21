@@ -1,0 +1,159 @@
+SCAN 058: PROPOSED TIKZ-CD REPRESENTATION PATCH
+
+Scope
+-----
+Replace only the accepted upper-left marginal diagram block beginning
+\margin{\diagram{\begin{tikzpicture} and ending \end{tikzpicture}}}.
+The three mathematical nodes and three directed edges use TikZ-cd. Four
+unheaded decorative paths remain in its end-picture hook. This proposal
+has not been applied to accepted files or first/audit records.
+
+Sources actually inspected
+--------------------------
+- edition/pages/150_scan058.tex (accepted page).
+- edition/records/150_scan058.json: relevant changes 058-12--17, M0595,
+  inventory E03, diagram doubts, notation and audit B06.
+- Existing crop edition/crops/150_scan058_p06_margin_diagram.png,
+  original box [43,175,240,605], explicitly displayed.
+No new crop, whole/half reread, OCR, web lookup, or TeX compilation was used.
+The initial full-record print was truncated; the complete relevant diagram
+records were then extracted and successfully read.
+
+Replacement block
+-----------------
+\margin{\diagram{\begin{tikzcd}[
+  row sep={1.3cm,between origins},
+  column sep=0pt,
+  cells={nodes={anchor=center}},
+  /tikz/execute at end picture={
+    % D1--D4: four disconnected continuation components, relative to N1.
+    \draw[line width=.35pt]
+      ([xshift=-2mm,yshift=12mm]scan058top.center)--
+      ([xshift=-1.8mm,yshift=11mm]scan058top.center);
+    \draw[line width=.35pt]
+      ([xshift=-1.8mm,yshift=9.5mm]scan058top.center)--
+      ([xshift=-1.8mm,yshift=8.3mm]scan058top.center);
+    \draw[line width=.35pt]
+      ([xshift=-1.6mm,yshift=6.9mm]scan058top.center)--
+      ([xshift=-1.6mm,yshift=6.1mm]scan058top.center);
+    \draw[line width=.35pt]
+      ([xshift=-1.4mm,yshift=4.6mm]scan058top.center)--
+      ([xshift=-1.2mm,yshift=3.4mm]scan058top.center);
+  }
+]
+% N1: alias adds only an invisible coordinate name.
+|[alias=scan058top]| \Sigma^{\unsure{<|*}}(2)
+\arrow[from=1-1,to=2-1,
+  /tikz/arrows=->,/tikz/>=stealth,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=-4mm,yshift=-3mm]\tikztostart.center)--
+    ([xshift=-4mm,yshift=3mm]\tikztotarget.center)
+    node[midway,right] {$\uline{s}'$}\tikztonodes
+  }]
+\arrow[from=1-1,to=2-1,
+  /tikz/arrows=->,/tikz/>=stealth,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=3mm,yshift=-3mm]\tikztostart.center)--
+    ([xshift=3mm,yshift=3mm]\tikztotarget.center)
+    node[midway,right] {$\uline{b}'$}\tikztonodes
+  }]
+\\
+% N2: exact accepted label and unsure scope.
+\unsure{\Sigma^{<}(1)|\Sigma^{*}(1)}
+\arrow[from=2-1,to=3-1,
+  /tikz/arrows=->,/tikz/>=stealth,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=-4mm,yshift=-2.5mm]\tikztostart.center)--
+    ([xshift=-4mm,yshift=3mm]\tikztotarget.center)
+    node[midway,right] {$\uline{b}$}\tikztonodes
+  }]
+\\[-.1cm]
+% N3: exact accepted label.
+\Sigma=\Sigma^{\unsure{<|*}}(0)
+\end{tikzcd}}}
+
+One-to-one node mapping
+----------------------
+Coordinates below are centimetres. New centres are stated relative to N1.
+
+ID | Accepted centre | TikZ-cd cell | New centre | Exact label
+N1 | (0,.45)  | 1-1 | (0,0)     | \Sigma^{\unsure{<|*}}(2)
+N2 | (0,-.85) | 2-1 | (0,-1.30) | \unsure{\Sigma^{<}(1)|\Sigma^{*}(1)}
+N3 | (0,-2.05)| 3-1 | (0,-2.50) | \Sigma=\Sigma^{\unsure{<|*}}(0)
+
+Centre anchors and row separation between origins retain the 1.3 cm and
+1.2 cm node separations: the second uses the additional -.1 cm after row 2.
+The alias on N1 creates no visible content or extra node. All node strings,
+including uncertainty alternatives, their order and macro scope, are copied
+exactly from the accepted block.
+
+One-to-one directed-edge and label mapping
+-----------------------------------------
+E1: accepted (-.4,.15)->(-.4,-.55); new (-.4,-.30)->(-.4,-1.00).
+    Cell 1-1 -> cell 2-1. Exact label: \uline{s}'
+    The label remains midway, right of the LEFT upper shaft.
+E2: accepted (.3,.15)->(.3,-.55); new (.3,-.30)->(.3,-1.00).
+    Cell 1-1 -> cell 2-1. Exact label: \uline{b}'
+    The label remains midway, right of the RIGHT upper shaft.
+E3: accepted (-.4,-1.1)->(-.4,-1.75); new (-.4,-1.55)->(-.4,-2.20).
+    Cell 2-1 -> cell 3-1. Exact label: \uline{b}
+    The label remains midway, right of the lower shaft.
+
+Each accepted arrow maps to one directed \arrow path. All point downward
+with terminal stealth heads and no source head. E1/E2 remain distinct,
+parallel, 0.7 cm apart, and each 0.7 cm long. E3 remains aligned with E1 and
+0.65 cm long. Zero shortening preserves the explicit endpoints. The edge
+width .4 pt makes the original plain-TikZ default explicit. Each prime
+stays outside its letter's \uline scope. The custom path labels preserve
+the accepted node[midway,right] placement without a label-style conversion.
+
+One-to-one continuation-stroke mapping
+-------------------------------------
+D1: accepted (-.20,1.65)->(-.18,1.55);
+    new relative to N1 (-.20,1.20)->(-.18,1.10).
+D2: accepted (-.18,1.40)->(-.18,1.28);
+    new relative to N1 (-.18,.95)->(-.18,.83).
+D3: accepted (-.16,1.14)->(-.16,1.06);
+    new relative to N1 (-.16,.69)->(-.16,.61).
+D4: accepted (-.14,.91)->(-.12,.79);
+    new relative to N1 (-.14,.46)->(-.12,.34).
+
+There is one unheaded .35 pt path per accepted component. D1/D4 retain their
+small horizontal drift; D2/D3 remain vertical. All four lengths and all
+three intervening gaps are retained. No segment connects these components,
+and no segment connects D4 to N1. They remain decorations above the chain;
+the end-picture hook includes them within the TikZ-cd picture bounds.
+
+Explicit content-preservation correspondence
+-------------------------------------------
+Nodes: {N1,N2,N3} -> {cells 1-1,2-1,3-1}.
+Edges: {E1,E2,E3} -> {the three directed \arrow paths}.
+Strokes: {D1,D2,D3,D4} -> {the four unheaded end-hook paths}.
+For every point listed above, new = T(old), where
+T(x,y) = (x,y-.45 cm).
+Exact rational arithmetic verified this translation for all 3 node centres,
+6 arrow endpoints and 8 continuation endpoints. The explicit correspondence
+preserves every label, directed incidence and disconnected component; the
+declared coordinate paths retain their lengths, parallelism and gaps.
+The count is exactly 3 mathematical nodes, 3 directed arrows, 3 arrow labels
+and 4 separate continuation strokes. This is a representation correspondence
+with the accepted transcription; it introduces no new manuscript reading
+or mathematical claim about the represented objects.
+
+Static checks and verification boundary
+--------------------------------------
+- All three node strings and three complete edge-label strings: exact match.
+- All 17 point translations: exact rational-coordinate match.
+- 3 \arrow commands, 4 unheaded \draw commands: verified.
+- Grouping balanced; one matching tikzcd environment; no tikzpicture block.
+- No TeX engine was run; rendered layout has not been claimed as tested.
+- Accepted page and accepted record bytes were checked unchanged after writing.
+
+Source identifiers
+------------------
+Accepted page SHA-256: 242b7b032ce3a02929488df872d5dc6da16e0a629c19cb276517f4228fbc4576
+Accepted diagram-block SHA-256: 2261ec3d7967facfcac762f9c43b4f1968763e167bee85d92ac27e19fb62a522
+Accepted record SHA-256: b7d136d595f56a774ef534e7d5d6b2ec0c2aedc895190821f5af5140fa5aa5f5

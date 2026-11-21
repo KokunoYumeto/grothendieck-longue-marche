@@ -1,0 +1,115 @@
+# Scan062: tikz-cd replacement proposal
+
+Source: accepted edition/pages/150_scan062.tex, its accepted record's B05, and the existing crop crops/150_scan062_p05_square.png (original box [666,608,1330,883]). No witness file, new source image, or new crop was used.
+
+Scope: replace the first diagram block only. Apply the same diagram block to the diagram portion of accepted record B05 when the root accepts the proposal. No accepted file has been edited by this worker.
+
+## Coordinate map and nodes
+
+Let O be s62a.center. Every accepted coordinate (x,y), expressed in centimetres, maps to O+(x cm,y cm). Fixed 40 mm column-origin separation and 16.5 mm row-origin separation, followed by the two stated lower-node x shifts, give:
+
+| Node | Accepted centre, cm | tikz-cd cell and alias | Exact written label |
+|---|---|---|---|
+| A | (0,0) | row1 col1; s62a | \Sigma^{\unsure{<|*}}(2) |
+| B | (4,0) | row1 col2; s62b | \Sigma^{<}(1) |
+| C | (1.5,-1.65) | row2 col1 +15 mm in x; s62c | \Sigma^{<}(1) |
+| D | (5,-1.65) | row2 col2 +10 mm in x; s62d | \Sigma |
+
+The lower side is 3.5 cm between node origins; the upper side is 4 cm. This retains the accepted skew and all four label strings.
+
+## Edge and stroke mapping
+
+All coordinate tuples below use the accepted centimetre system relative to O. A semicolon separates a Bezier start, its two controls, and its end.
+
+| Element | Source/target or role | Exact accepted path retained |
+|---|---|---|
+| AB | A to B; unheaded upper shaft | (1.17,-.04)--(3.45,-.04), then controls (3.5,-.04),(3.5,-.01), ending (3.48,.05) |
+| AC | A to C; headed descending diagonal | (.25,-.45)--(1.03,-1.29) |
+| BD | B to D; headed descending diagonal | (4.2,-.38)--(4.87,-1.25) |
+| CD | C to D; headed rightward terminal part | (3.28,-1.62); (3.65,-1.59),(4.02,-1.60); (4.32,-1.62) |
+| UH1 | upper hook fragment 1 | (1.12,.22)--(1.06,.20) |
+| UH2 | upper hook fragment 2 | (.98,.15)--(.94,.12) |
+| UH3 | upper hook fragment 3 | (.94,.05)--(.98,.01) |
+| UH4 | upper hook fragment 4 | (1.05,-.02)--(1.12,-.02) |
+| LH1 | lower hook fragment 1 | (2.18,-1.40); (2.10,-1.39),(2.08,-1.43); (2.06,-1.47) |
+| LH2 | lower hook fragment 2 | (2.07,-1.54)--(2.09,-1.58) |
+| LS1 | lower first short shaft segment | (2.21,-1.62)--(2.55,-1.62) |
+| LS2 | lower following shaft segment | (2.62,-1.62)--(3.28,-1.62) |
+| LR | lower retraced/open-loop stroke | (3.24,-1.62); (3.58,-1.77),(4.00,-1.73); (4.18,-1.62) |
+
+There are four matrix objects and four edge relations. AB has no head; AC and BD retain their two diagonal heads; CD retains its terminal head. Six detached hook fragments remain separate. The 0.07 cm gap between LS1 and LS2 and the two distinct lower traces remain explicit. All paths retain 0.4 pt line width and the accepted stealth tip on the three headed paths. The matrix nodes explicitly use rectangular centre anchors, preserving the accepted node-centre convention.
+
+## Label mapping
+
+| Label | Exact accepted centre, cm | Placement retained |
+|---|---|---|
+| \uline{b}' | (2.35,.22) | above AB; prime outside underline |
+| p_2 | (.93,-.68) | above/right of AC |
+| p_1 | (4.75,-.65) | right of BD |
+| \uline{b} | (2.75,-1.32) | above the lower shaft |
+
+## Replacement block
+
+REPLACEMENT_BEGIN
+\diagram{\begin{tikzcd}[
+  column sep={40mm,between origins},
+  row sep={16.5mm,between origins},
+  nodes={shape=rectangle,anchor=center,inner sep=0pt,outer sep=0pt},
+  arrows={line width=.4pt,>=stealth,shorten <=0pt,shorten >=0pt},
+  execute at end picture={
+    \begin{scope}[shift={(s62a.center)},x=1cm,y=1cm,line width=.4pt]
+    % UH1--UH4: the four separate upper hook fragments.
+    \draw[line width=.4pt] (1.12,.22)--(1.06,.20);
+    \draw[line width=.4pt] (.98,.15)--(.94,.12);
+    \draw[line width=.4pt] (.94,.05)--(.98,.01);
+    \draw[line width=.4pt] (1.05,-.02)--(1.12,-.02);
+    % LH1--LH2: the two separate lower hook fragments.
+    \draw (2.18,-1.40) .. controls (2.10,-1.39) and (2.08,-1.43) .. (2.06,-1.47);
+    \draw[line width=.4pt] (2.07,-1.54)--(2.09,-1.58);
+    % LS1--LS2: the lower shaft retains the gap from x=2.55 to x=2.62.
+    \draw (2.21,-1.62)--(2.55,-1.62);
+    \draw (2.62,-1.62)--(3.28,-1.62);
+    % LR: the second, lower trace of the elongated open loop.
+    \draw (3.24,-1.62) .. controls (3.58,-1.77) and (4.00,-1.73) .. (4.18,-1.62);
+    % All four labels keep the accepted positions and underline scopes.
+    \node at (2.35,.22) {$\uline{b}'$};
+    \node at (.93,-.68) {$p_2$};
+    \node at (4.75,-.65) {$p_1$};
+    \node at (2.75,-1.32) {$\uline{b}$};
+    \end{scope}
+  }
+]
+|[alias=s62a]| \Sigma^{\unsure{<|*}}(2)
+  \arrow[r,no head,to path={
+    ([xshift=11.7mm,yshift=-.4mm]s62a.center)--
+    ([xshift=34.5mm,yshift=-.4mm]s62a.center)
+    .. controls ([xshift=35mm,yshift=-.4mm]s62a.center)
+    and ([xshift=35mm,yshift=-.1mm]s62a.center)
+    .. ([xshift=34.8mm,yshift=.5mm]s62a.center)
+  }]
+  \arrow[d,->,to path={
+    ([xshift=2.5mm,yshift=-4.5mm]s62a.center)--
+    ([xshift=10.3mm,yshift=-12.9mm]s62a.center)
+  }]
+&
+|[alias=s62b]| \Sigma^{<}(1)
+  \arrow[d,->,to path={
+    ([xshift=42mm,yshift=-3.8mm]s62a.center)--
+    ([xshift=48.7mm,yshift=-12.5mm]s62a.center)
+  }]
+\\
+|[alias=s62c,xshift=15mm]| \Sigma^{<}(1)
+  \arrow[r,->,to path={
+    ([xshift=32.8mm,yshift=-16.2mm]s62a.center)
+    .. controls ([xshift=36.5mm,yshift=-15.9mm]s62a.center)
+    and ([xshift=40.2mm,yshift=-16mm]s62a.center)
+    .. ([xshift=43.2mm,yshift=-16.2mm]s62a.center)
+  }]
+&
+|[alias=s62d,xshift=10mm]| \Sigma
+\end{tikzcd}}
+REPLACEMENT_END
+
+## Static validation
+
+The proposal uses tikz-cd matrix nodes and four tikz-cd arrow declarations. Custom to-path coordinates preserve the four accepted edge paths. The end-picture scope preserves the nine remaining independent drawn strokes and four label positions. The source uncertainty and all labels are unchanged. No compilation or rendering has been performed. Static checks passed: all four custom-arrow coordinate sequences, all nine overlay-stroke coordinate sequences, and all four literal label/position pairs exactly match their accepted counterparts. Brace, dollar and environment balance passed. These checks do not constitute a rendered-layout inspection.

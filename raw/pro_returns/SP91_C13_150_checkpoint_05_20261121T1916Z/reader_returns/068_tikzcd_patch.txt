@@ -1,0 +1,103 @@
+SCAN 068: MAIN-READER REPRESENTATION PATCH
+
+The accepted four-node square has two left-pointing horizontal arrows and
+two vertical shafts terminating in filled marks. The replacement below
+uses four tikz-cd cells and four explicit paths. Formula labels and all
+path, marker and label coordinates are retained under T(x,y)=(x,y-1.35cm),
+with the old X node as the new coordinate origin. This is a change of the
+LaTeX container. It adds no source reading or mathematical claim.
+
+Replacement block
+-----------------
+\diagram{\begin{tikzcd}[
+  column sep={2cm,between origins},
+  row sep={1.35cm,between origins},
+  cells={nodes={anchor=center}},
+  /tikz/line cap=round,/tikz/line join=round,
+  /tikz/execute at end picture={
+    \node[above] at ([xshift=.98cm,yshift=.03cm]scan068x.center) {$f'$};
+    \node[below] at ([xshift=.99cm,yshift=-1.37cm]scan068x.center) {$g$};
+    \node[left] at ([xshift=-.10cm,yshift=-.66cm]scan068x.center) {$f$};
+    \node[right] at ([xshift=2.11cm,yshift=-.62cm]scan068x.center) {$g'$};
+    \fill ([xshift=.01cm,yshift=-.90cm]scan068x.center) circle (.052cm);
+    \fill ([xshift=1.965cm,yshift=-.82cm]scan068x.center)--
+      ([xshift=2.055cm,yshift=-.87cm]scan068x.center)--
+      ([xshift=2.015cm,yshift=-.945cm]scan068x.center)--
+      ([xshift=1.975cm,yshift=-.905cm]scan068x.center)--cycle;
+  }
+]
+|[alias=scan068x]|X
+\arrow[from=1-1,to=2-1,
+  /tikz/arrows=-,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([yshift=-.32cm]\tikztostart.center)--
+    ([xshift=.01cm,yshift=-.88cm]\tikztostart.center)\tikztonodes
+  }]
+&X'
+\arrow[from=1-2,to=1-1,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=1.69cm]\tikztotarget.center)--
+    ([xshift=.30cm]\tikztotarget.center)\tikztonodes
+  }]
+\arrow[from=1-2,to=2-2,
+  /tikz/arrows=-,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([yshift=-.32cm]\tikztostart.center)--
+    ([xshift=.01cm,yshift=-.85cm]\tikztostart.center)\tikztonodes
+  }]
+\\
+Y&Y'
+\arrow[from=2-2,to=2-1,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=1.69cm]\tikztotarget.center)--
+    ([xshift=.30cm]\tikztotarget.center)\tikztonodes
+  }]
+\end{tikzcd}}
+
+Explicit correspondence
+-----------------------
+Node X at (0,1.35) maps to cell 1-1 at (0,0).
+Node X' at (2,1.35) maps to cell 1-2 at (2,0).
+Node Y at (0,0) maps to cell 2-1 at (0,-1.35).
+Node Y' at (2,0) maps to cell 2-2 at (2,-1.35).
+The matrix uses centre anchors and exact 2cm/1.35cm origin separation.
+
+Upper arrow: accepted shaft (.30,1.35)--(1.69,1.35), head at the left,
+maps to (1.69,0)--(.30,0), head at the final left point. Its path parameter
+is reversed, t maps to 1-t; its directed incidence remains X' to X.
+Lower arrow: accepted shaft (.30,0)--(1.69,0), head at the left,
+maps to (1.69,-1.35)--(.30,-1.35), again with reversed path parameter
+and unchanged directed incidence Y' to Y.
+Left shaft: (0,1.03)--(.01,.47) maps to (0,-.32)--(.01,-.88).
+Right shaft: (2,1.03)--(2.01,.50) maps to (2,-.32)--(2.01,-.85).
+Both vertical paths remain unheaded; the independently retained filled
+termini follow below them. Zero shortening retains all four endpoints.
+
+The left filled circle has old centre (.01,.45), new centre (.01,-.90),
+and unchanged radius .052cm. The four ordered vertices of the right
+filled mark map as follows:
+(1.965,.53) -> (1.965,-.82)
+(2.055,.48) -> (2.055,-.87)
+(2.015,.405) -> (2.015,-.945)
+(1.975,.445) -> (1.975,-.905).
+The final closing segment is retained.
+
+The four exact label strings and placements map as follows:
+f' above (.98,1.38) -> above (.98,.03)
+g below (.99,-.02) -> below (.99,-1.37)
+f left (-.10,.69) -> left (-.10,-.66)
+g' right (2.11,.73) -> right (2.11,-.62).
+The alias creates only an invisible coordinate name. End-picture nodes
+contain the same LaTeX label strings as the accepted code. No extra
+object, shaft, head, point or label is introduced.
+
+The underlying source square and its endpoint shapes were already
+reviewed in the first pass. This patch uses the accepted paths and labels,
+and no new image crop was made. The coordinate translation was checked
+with exact rational arithmetic. TeX compilation was not performed.

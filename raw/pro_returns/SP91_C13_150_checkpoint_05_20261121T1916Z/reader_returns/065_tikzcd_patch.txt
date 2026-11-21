@@ -1,0 +1,312 @@
+SCAN 065: TWO PROPOSED REPRESENTATION CHANGES
+
+Scope and evidence
+------------------
+This proposal concerns the accepted first open-frame block and the second,
+seven-node diagram (41). No accepted page, accepted record or first/audit
+record was edited. The later inline arrow-and-point sample is outside this
+task and is not changed.
+
+Actually read:
+- edition/pages/150_scan065.tex;
+- relevant portions of edition/records/150_scan065.json (frame, diagram,
+  hook geometry, labels, formula number, detached points, doubts/inventory);
+- existing crop edition/crops/150_scan065_p13_diagram.png,
+  original box [484,1425,1318,1864], explicitly displayed;
+- existing crop edition/crops/150_scan065_p18_frame_context.png,
+  original box [930,1000,1671,1230], explicitly displayed.
+No new crop, whole/half reread, OCR, web lookup or TeX compilation was used.
+The far-left number (41) is outside p13; its accepted token and coordinate
+are preserved from the accepted page/record, with no new visual claim.
+
+A. Earlier open frame: wrapper-only classification change
+--------------------------------------------------------
+Recommendation: change its outer \diagram to \figure, retaining the
+complete argument byte-for-byte. The observed graphical object comprises
+three open frame paths: top, left upright, and bottom with a short upturn.
+Their coordinates refer to the bounds of the typeset equality. The block
+contains a formula in a LaTeX math node and the crossed word défini in a
+LaTeX text node. Those glyphs remain node contents; none is converted to
+stroke geometry. Under the supplied conventions, \figure represents this
+drawn open frame, while the equality remains a typeset display within it.
+
+The correspondence is the identity on both node bodies, all node options,
+all three path commands and every coordinate. Only the wrapper name changes.
+The right opening and all existing uncertainties/cancellations remain.
+The following standalone crossed une is outside the block and remains in
+its accepted position.
+
+Exact proposed first-block replacement:
+
+\figure{\begin{tikzpicture}[baseline=(eq.base)]
+\node[anchor=base west,inner sep=0pt] (eq) at (0,0)
+{$\Sigma_{ijk}\deleted{\unsure{\ne|\subset}}=
+\deleted{\unsure{\Sigma_{ik}|\Sigma_{ik}\cap}}
+b_{ij}^{-1}\unsure{(\Sigma_{ij})|\deleted{(\Sigma_{ij})}}$};
+\node[anchor=base west,inner sep=0pt] at (eq.base east)
+{\deleted{\unsure{défini}}};
+\draw ([xshift=-.03cm,yshift=.16cm]eq.north west)
+-- ([xshift=.03cm,yshift=.16cm]eq.north east);
+\draw ([xshift=-.16cm,yshift=.03cm]eq.north west)
+-- ([xshift=-.16cm,yshift=-.12cm]eq.south west);
+\draw ([xshift=-.20cm,yshift=-.18cm]eq.south west)
+-- ([xshift=.03cm,yshift=-.22cm]eq.south east)
+-- ([xshift=.03cm,yshift=-.14cm]eq.south east);
+\end{tikzpicture}}
+
+B. Diagram (41): exact custom paths inside TikZ-cd
+------------------------------------------------
+The seven mathematical nodes occupy a fixed-origin matrix. Explicit cell
+shifts recover their accepted irregular locations. Nine TikZ-cd arrows use
+the accepted straight/cubic path data. Formula number, six arrow labels,
+two cart labels and two detached points are placed in the end-picture hook.
+All textual and mathematical glyphs remain typeset LaTeX.
+
+Exact proposed second-block replacement:
+
+\diagram{\begin{tikzcd}[
+  /tikz/x=1.15cm,/tikz/y=1.15cm,
+  column sep={1.15cm,between origins},
+  row sep={1.725cm,between origins},
+  cells={nodes={anchor=center}},
+  /tikz/execute at end picture={
+    \node[anchor=center] at ([xshift=-1.725cm,yshift=0.0575cm]scan065I.center) {(41)};
+    \node[anchor=center] at ([xshift=0.736cm,yshift=1.2075cm]scan065I.center) {$s_{ik}$};
+    \node[anchor=center] at ([xshift=3.3465cm,yshift=2.2425cm]scan065I.center) {$b_{ik}$};
+    \node[anchor=center] at ([xshift=6.371cm,yshift=1.219cm]scan065I.center) {$b_{jk}$};
+    \node[anchor=center] at ([xshift=0.7245cm,yshift=-1.2305cm]scan065I.center) {$s_{ij}$};
+    \node[anchor=center] at ([xshift=3.4155cm,yshift=-2.2655cm]scan065I.center) {$b_{ij}$};
+    \node[anchor=center] at ([xshift=5.9915cm,yshift=-0.966cm]scan065I.center) {$s_{jk}$};
+    \node[anchor=center] at ([xshift=4.1055cm,yshift=0.989cm]scan065I.center) {cart};
+    \node[anchor=center] at ([xshift=4.186cm,yshift=-0.8165cm]scan065I.center) {cart};
+    % The two detached points retain their accepted radii and remain unassigned.
+    \fill ([xshift=2.691cm,yshift=-2.2655cm]scan065I.center) circle (.012);
+    \fill ([xshift=2.7485cm,yshift=-2.1965cm]scan065I.center) circle (.012);
+  }
+]
+ & |[alias=scan065IK,xshift=0.805cm]| \Sigma_{ik} & & |[alias=scan065K,xshift=1.38cm]| \Sigma_k & \\
+|[alias=scan065I,yshift=-0.115cm]| \Sigma_i & & |[alias=scan065IJK,xshift=0.805cm]| \Sigma_{ijk} & & |[alias=scan065JK,xshift=1.955cm]| \Sigma_{jk} \\
+ & |[alias=scan065IJ,xshift=0.805cm]| \unsure{\Sigma}_{ij} & & |[alias=scan065J,xshift=1.38cm]| \Sigma_j &
+% E1: IK -> I; accepted path coordinates, translated with scan065I.
+\arrow[from=1-2,to=2-1,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=1.426cm,yshift=1.4145cm]scan065I.center)--([xshift=0.4945cm,yshift=0.4945cm]scan065I.center)
+    \tikztonodes
+  }]
+% E2: IK -> K; accepted path coordinates, translated with scan065I.
+\arrow[from=1-2,to=1-4,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=2.645cm,yshift=2.0125cm]scan065I.center)
+    ..controls ([xshift=2.3575cm,yshift=1.8975cm]scan065I.center) and ([xshift=2.369cm,yshift=1.6905cm]scan065I.center)..([xshift=2.6565cm,yshift=1.6905cm]scan065I.center)
+    --([xshift=4.048cm,yshift=1.6905cm]scan065I.center)
+    \tikztonodes
+  }]
+% E3: JK -> K; accepted path coordinates, translated with scan065I.
+\arrow[from=2-5,to=1-4,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=5.865cm,yshift=0.7475cm]scan065I.center)
+    ..controls ([xshift=6.325cm,yshift=0.5175cm]scan065I.center) and ([xshift=6.325cm,yshift=0.943cm]scan065I.center)..([xshift=5.4855cm,yshift=1.4605cm]scan065I.center)
+    \tikztonodes
+  }]
+% E4: IJK -> IK; accepted path coordinates, translated with scan065I.
+\arrow[from=2-3,to=1-2,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=2.645cm,yshift=0.782cm]scan065I.center)
+    ..controls ([xshift=3.0475cm,yshift=0.552cm]scan065I.center) and ([xshift=3.036cm,yshift=0.943cm]scan065I.center)..([xshift=2.3805cm,yshift=1.38cm]scan065I.center)
+    \tikztonodes
+  }]
+% E5: IJK -> JK; accepted path coordinates, translated with scan065I.
+\arrow[from=2-3,to=2-5,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=3.772cm,yshift=0.322cm]scan065I.center)
+    ..controls ([xshift=3.4845cm,yshift=0.1955cm]scan065I.center) and ([xshift=3.496cm,yshift=0.023cm]scan065I.center)..([xshift=3.7605cm,yshift=0.023cm]scan065I.center)
+    --([xshift=5.7155cm,yshift=0.023cm]scan065I.center)
+    \tikztonodes
+  }]
+% E6: IJK -> IJ; accepted path coordinates, translated with scan065I.
+\arrow[from=2-3,to=3-2,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=2.714cm,yshift=-0.322cm]scan065I.center)--([xshift=2.277cm,yshift=-1.081cm]scan065I.center)
+    \tikztonodes
+  }]
+% E7: IJ -> I; accepted path coordinates, translated with scan065I.
+\arrow[from=3-2,to=2-1,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=1.426cm,yshift=-1.288cm]scan065I.center)--([xshift=0.4945cm,yshift=-0.4945cm]scan065I.center)
+    \tikztonodes
+  }]
+% E8: IJ -> J; accepted path coordinates, translated with scan065I.
+\arrow[from=3-2,to=3-4,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=2.76cm,yshift=-1.4145cm]scan065I.center)
+    ..controls ([xshift=2.4495cm,yshift=-1.564cm]scan065I.center) and ([xshift=2.4495cm,yshift=-1.7365cm]scan065I.center)..([xshift=2.7485cm,yshift=-1.7365cm]scan065I.center)
+    --([xshift=4.0595cm,yshift=-1.7365cm]scan065I.center)
+    \tikztonodes
+  }]
+% E9: JK -> J; accepted path coordinates, translated with scan065I.
+\arrow[from=2-5,to=3-4,
+  /tikz/arrows=->,/tikz/>=to,/tikz/line width=.4pt,
+  /tikz/shorten >=0pt,/tikz/shorten <=0pt,
+  to path={
+    ([xshift=5.957cm,yshift=-0.3335cm]scan065I.center)--([xshift=5.3475cm,yshift=-1.288cm]scan065I.center)
+    \tikztonodes
+  }]
+\end{tikzcd}}
+
+Coordinate convention and the single translation
+------------------------------------------------
+The accepted diagram has x=y=1.15 cm per coordinate unit. The replacement
+keeps those units. Use O as the first-row/first-column matrix origin.
+Columns have origins x=0,1,2,3,4 units; rows have origins y=0,-1.5,-3 units.
+The table below gives each cell's explicit shift in these same units.
+Every accepted point (x,y) becomes (x,y-1.6) relative to O. In physical
+centimetres this is the one translation T(X,Y)=(X,Y-1.84 cm).
+The alias scan065I is the shifted I-node centre (0,-1.6), so an end-hook or
+path point with its accepted physical offset from that alias is exactly
+T of the accepted point.
+
+One-to-one node table
+---------------------
+ID | Accepted centre | Cell | Grid origin | Cell shift | New centre | Exact label
+I | (0,0) | 2-1 | (0,-1.5) | (0,-0.1) | (0,-1.6) | \Sigma_i
+IK | (1.7,1.6) | 1-2 | (1,0) | (0.7,0) | (1.7,0) | \Sigma_{ik}
+K | (4.2,1.6) | 1-4 | (3,0) | (1.2,0) | (4.2,0) | \Sigma_k
+IJK | (2.7,0.1) | 2-3 | (2,-1.5) | (0.7,0) | (2.7,-1.5) | \Sigma_{ijk}
+JK | (5.7,0.1) | 2-5 | (4,-1.5) | (1.7,0) | (5.7,-1.5) | \Sigma_{jk}
+IJ | (1.7,-1.4) | 3-2 | (1,-3) | (0.7,0) | (1.7,-3) | \unsure{\Sigma}_{ij}
+J | (4.2,-1.4) | 3-4 | (3,-3) | (1.2,0) | (4.2,-3) | \Sigma_j
+
+All seven labels are copied exactly, including \unsure{\Sigma}_{ij}.
+The seven aliases are invisible coordinate names. Empty matrix cells carry
+no visible content. Fixed separation between origins makes the declared
+column/row grid independent of the seven formula widths.
+
+One-to-one arrow and control-point table
+---------------------------------------
+Point lists below follow the accepted path order. A cubic list is start,
+control 1, control 2, cubic end; a fifth point is the following straight
+shaft end. All coordinates are in accepted 1.15 cm units.
+E1: IK -> I; straight; cell 1-2 -> cell 2-1.
+  accepted: (1.24,1.23) ; (0.43,0.43)
+  new:      (1.24,-0.37) ; (0.43,-1.17)
+E2: IK -> K; continuous source hook; cell 1-2 -> cell 1-4.
+  accepted: (2.3,1.75) ; (2.05,1.65) ; (2.06,1.47) ; (2.31,1.47) ; (3.52,1.47)
+  new:      (2.3,0.15) ; (2.05,0.05) ; (2.06,-0.13) ; (2.31,-0.13) ; (3.52,-0.13)
+E3: JK -> K; continuous source hook; cell 2-5 -> cell 1-4.
+  accepted: (5.1,0.65) ; (5.5,0.45) ; (5.5,0.82) ; (4.77,1.27)
+  new:      (5.1,-0.95) ; (5.5,-1.15) ; (5.5,-0.78) ; (4.77,-0.33)
+E4: IJK -> IK; continuous source hook; cell 2-3 -> cell 1-2.
+  accepted: (2.3,0.68) ; (2.65,0.48) ; (2.64,0.82) ; (2.07,1.2)
+  new:      (2.3,-0.92) ; (2.65,-1.12) ; (2.64,-0.78) ; (2.07,-0.4)
+E5: IJK -> JK; continuous source hook; cell 2-3 -> cell 2-5.
+  accepted: (3.28,0.28) ; (3.03,0.17) ; (3.04,0.02) ; (3.27,0.02) ; (4.97,0.02)
+  new:      (3.28,-1.32) ; (3.03,-1.43) ; (3.04,-1.58) ; (3.27,-1.58) ; (4.97,-1.58)
+E6: IJK -> IJ; straight; cell 2-3 -> cell 3-2.
+  accepted: (2.36,-0.28) ; (1.98,-0.94)
+  new:      (2.36,-1.88) ; (1.98,-2.54)
+E7: IJ -> I; straight; cell 3-2 -> cell 2-1.
+  accepted: (1.24,-1.12) ; (0.43,-0.43)
+  new:      (1.24,-2.72) ; (0.43,-2.03)
+E8: IJ -> J; continuous source hook; cell 3-2 -> cell 3-4.
+  accepted: (2.4,-1.23) ; (2.13,-1.36) ; (2.13,-1.51) ; (2.39,-1.51) ; (3.53,-1.51)
+  new:      (2.4,-2.83) ; (2.13,-2.96) ; (2.13,-3.11) ; (2.39,-3.11) ; (3.53,-3.11)
+E9: JK -> J; straight; cell 2-5 -> cell 3-4.
+  accepted: (5.18,-0.29) ; (4.65,-1.12)
+  new:      (5.18,-1.89) ; (4.65,-2.72)
+
+There is one directed \arrow command for each accepted edge. E2, E3, E4,
+E5 and E8 retain their five distinct continuous source hooks. No generic
+hook substitutes for a cubic component. E1, E6, E7 and E9 retain straight
+shafts. No label or head is added to a source endpoint; every original
+terminal direction is preserved. Explicit zero shortening keeps all path
+endpoints. The original ordinary TikZ -> is expressed with its native to
+tip and .4 pt line width, rather than inheriting TikZ-cd's math-font arrow
+style. The node order and the source/target matrix declarations agree with
+the accepted incidence list above.
+
+One-to-one label, formula-number and detached-point table
+--------------------------------------------------------
+The first nine entries below are typeset node contents copied exactly.
+Content | Accepted position | New position (same units)
+(41) | (-1.5,0.05) | (-1.5,-1.55)
+$s_{ik}$ | (0.64,1.05) | (0.64,-0.55)
+$b_{ik}$ | (2.91,1.95) | (2.91,0.35)
+$b_{jk}$ | (5.54,1.06) | (5.54,-0.54)
+$s_{ij}$ | (0.63,-1.07) | (0.63,-2.67)
+$b_{ij}$ | (2.97,-1.97) | (2.97,-3.57)
+$s_{jk}$ | (5.21,-0.84) | (5.21,-2.44)
+cart | (3.57,0.86) | (3.57,-0.74)
+cart | (3.64,-0.71) | (3.64,-2.31)
+P1, filled circle radius .012 | (2.34,-1.97) | (2.34,-3.57)
+P2, filled circle radius .012 | (2.39,-1.91) | (2.39,-3.51)
+
+The upper and lower cart strings remain separate, unpointed labels in their
+accepted interior positions. The (41) token remains to the left of I. The
+six arrow labels retain their exact coordinates and contents. The two filled
+points retain their individual centres and the literal circle (.012)
+parameter under the unchanged x/y units. Their roles remain unassigned.
+
+Direct verification of the correspondence
+------------------------------------------
+1. Every matrix node equals its grid origin plus its stated shift. Exact
+   rational arithmetic checked that result against T of its accepted centre.
+2. Each of the 31 arrow endpoint/control coordinates, 9 label/number
+   positions and 2 detached-point centres is an accepted coordinate offset
+   from scan065I. Its physical position therefore adds (0,-1.84 cm).
+   Together with the 7 node centres, all 49 point correspondences passed.
+3. For each straight segment, (1-t)(P0+v)+t(P1+v)
+   = (1-t)P0+tP1+v, with v=(0,-1.84 cm).
+   For each of the five cubic components, substitution of its four translated
+   points yields the old cubic plus v times
+   (1-t)^3+3(1-t)^2 t+3(1-t)t^2+t^3.
+   Expansion was checked as the coefficient vector (1,0,0,0), so each of
+   these five complete curves is exactly the translated accepted curve.
+   The connecting straight components share their corresponding translated
+   endpoints. Tangent directions, joins and all five hook contours persist.
+4. Both point circles retain their radii and translated centres. All labels
+   and formulas are literal node/cell strings; there is no glyph-path step.
+5. The first frame's complete argument is byte-identical after the wrapper
+   substitution. This is the identity map on its content and path data.
+
+Thus the explicit component bijection preserves the accepted seven nodes,
+nine directed paths, five hooks, six arrow labels, two cart labels, formula
+number and two detached points. The proof concerns this representation of
+the accepted transcription; it asserts no new relation between the
+mathematical objects displayed in the manuscript.
+
+Static checks and limits
+------------------------
+- Exact seven mathematical node strings: passed.
+- Exact nine text/math label strings in the end hook: passed.
+- Nine arrows, five cubic components, two fill commands: passed.
+- All 49 coordinate correspondences: exact rational checks passed.
+- All ten cubic control points retained in their original five paths.
+- Grouping balance and environment delimiters: passed.
+- The hexagon replacement contains no tikzpicture environment.
+- The frame replacement retains its typeset contents and path commands
+  byte-for-byte, changing only \diagram to \figure.
+- No TeX engine was run; rendered layout is not claimed as tested.
+- Accepted page and record bytes were checked unchanged after writing.
+
+Source identifiers
+------------------
+Accepted page SHA-256: 21709dcd92d541065fb4409536e598e62ace5de18f9d630c604368d9a6c78f30
+Accepted frame block SHA-256: a90932db6c50dfcd169f57768b3736df6ce611b9bca6c85a3ae6e85dece78b24
+Accepted hexagon block SHA-256: 13eb56c1f7fb8d2483ddc709a36979ccbbb2bcd90f8805ba83238b93cc0d7794
+Accepted record SHA-256: 6295b2b8dcfdd02fa9ca2550637a62cc79ea71ddd22f775124fe5b4aa77ff1e7

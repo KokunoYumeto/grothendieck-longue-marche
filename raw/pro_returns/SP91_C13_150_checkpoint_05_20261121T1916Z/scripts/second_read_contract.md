@@ -1,0 +1,17 @@
+# Blind second reading
+
+You are assigned one page you did not read in the first pass. You may read only this instruction, that page's original scan / two halves, its `second/150_scanNNN_boxes.tsv`, and `scripts/crop.py`. Do not open witnesses, page files, first readings, reader returns, other page material, notes, crop manifests from the first reading, or comparison results. Do not use OCR, external research, or other agents.
+
+For each box, crop its rectangle from the original image once and save the crop under `crops/150_scanNNN_second_BOX.png` using crop.py (or Pillow with identical enlargement/autocontrast). Inspect every crop visually with view_image and emit the image. Read all foreground ink inside the box, including struck letters and insertions. Write exactly what is visible, preserving abbreviations, symbols, line-relative states, and uncertainty. A neighbouring line fragment caught by the box may be separated with a source-position comment when needed; do not add invisible text.
+
+Use at most three emitted crops per tool call, fewer for large boxes. A truncated or failed display does not count as an inspection: display the existing file again in a smaller batch, without creating another crop. Record any rotation in the observations. The crop helper saves each finished PNG atomically; use the same atomic-save practice for any custom equivalent image workflow.
+
+Use the established macros: \deleted{...}, \inserted{...}, \margin{...}, \uline{...}, \uuline{...}, \unsure{reading}, \unsure{reading|alternative}, \illegible{n}. Use standard LaTeX for math. A struck reading remains doubtful unless every letter is plain. A long shaft with no head must not acquire a head. Numbers and small indices need direct inspection. No new theorem or hypothesis belongs in this exercise.
+
+Reproduce a genuine diagram with \diagram{...} and tikz-cd, and a genuine drawing with \figure{...} and TikZ. Count its points, strokes, joins and gaps from the image; preserve open/filled points and endpoint shapes. Running letters, symbols and cancelled words remain text, even when heavily overdrawn. Never use \illegible inside a mathematical expression or diagram: keep the visible candidate under \unsure and explain the obscured contour in the observations. Double quotation marks use two backticks and two apostrophes; use guillemets only where their chevrons are drawn. Formula numbers stay at the left. A faint paper mark acquires no punctuation or mathematical function from context alone.
+
+Write `second/150_scanNNN_second.tsv` with exactly columns `box`, `reading`, one row per given box in the same order. Record your independent reading before any comparison. Use Python csv.writer to escape tabs/newlines; do not encode literal \n in place of meaningful source text. Also write `second/150_scanNNN_second_observations.md` listing crop file names, original boxes, and concise ink observations for your unresolved places. Give your name, actual date/time, and state which images were inspected. Do not say the audit is complete: the main reader must compare and adjudicate it.
+
+Save the completed TSV and observations through temporary files followed by atomic rename. Do not publish a partially assembled TSV under its final name. These are intermediate files for the main reader's final archive; do not make a separate upload or user-facing deliverable.
+
+Return just completion paths, count of boxes read, and your particularly uncertain box IDs. Do not read `_first.tsv` even after writing your return. Wait for another assignment.
