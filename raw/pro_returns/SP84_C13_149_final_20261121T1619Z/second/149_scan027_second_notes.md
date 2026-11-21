@@ -1,0 +1,56 @@
+# Scan 027: independent image-only reading
+
+## Independence and coverage
+
+Reader: reader_c. I did not own the first reading of this page. This return was made from the original image, the neutral coordinate list, the established neutral instructions/method, and my own generated crops. I did not open either witness, a work packet, page TeX, a first-reading TSV, a review/report, notation decisions, another reader's return, or comparison output. No comparison was run, and no OCR or external research was used.
+
+All 28 prescribed boxes were personally inspected in listed order. The initial attempted display of b02 was truncated before context compaction; it was not counted as an inspection. Its successful display on continuation was the actual b02 inspection. The original was viewed for layout and again to distinguish target baselines, attachments, and the extent of the lower cancellation. Text outside a box has not been supplied as a certain completion of clipped target ink.
+
+The crop script was run once. Each TSV row records the target baseline/formula, retaining adjacent complete context where needed to show the correction. Neighboring line fragments are excluded. Literal double backslashes represent manuscript line breaks rather than TSV line breaks.
+
+## Rotation and display provenance
+
+- b17: same saved crop rotated **33 degrees clockwise** (manifest value **-33**), with expanded white canvas.
+- b21: same saved crop rotated **45 degrees clockwise** (manifest value **-45**), with expanded white canvas.
+- Every other prescribed crop retains rotation **0**.
+- The rotation operations used Pillow bicubic resampling; their cumulative angles are recorded in `149_scan027_crop_manifest.tsv`.
+- `edition/crops/149_scan027_second_b17_display.png` and `edition/crops/149_scan027_second_b21_display.png` are whole-image reductions of those already rotated crops to a maximum dimension of 1800 pixels, for a more legible display. They contain exactly the same prescribed rectangle, with no additional source ink. Both were personally inspected. No new rectangle was taken from the original.
+
+## Scope, boundary loss, and local observations
+
+- **b01 / b28:** The dark upper `13` and thinner lower-left `26` are distinct numbering hands. Both digits in each number are complete. The black strip below b28 is the scan/page edge, not writing.
+- **b02:** Both Pi forms have a cap and two legs, with numeric subscript 1. The raised stroke after the first function is recorded as a prime. The word between the terms is `et`; its heavy crossings are in the letter strokes, without a separate cancellation extending across the word.
+- **b03:** The target is `signifie donc`. The tall central f reaches the upper boundary; its upper tip is clipped, while the lower loop and the surrounding letters remain visible. The large low loop belongs to g, not to an enclosing mark.
+- **b04:** The bottom boundary clips the initial q descender and the final `que` descender. The alpha, membership sign, Pi, subscript 1, Y, parentheses, and comma are in the box. The prose letters remain legible despite those descender losses.
+- **b05:** The small `int` expression is inserted after the equality by a curved/V-shaped leader. I have retained the whole inserted expression as doubtful because the outer parenthesis count is not secure where the closing curve meets the leader. The leader itself is neither an additional multiplication sign nor cancellation. Both gamma-shaped arguments and both numeric indices are included.
+- **b06:** The right end of the map shaft has a tiny bent/capped terminal; I cannot securely separate a complete arrowhead from that endpoint, hence the arrow-versus-shaft alternatives. No mathematical expectation determines the head. The lower part of `pour` and the high tip of the function in the raised label approach or meet a boundary; no extra letter or prime has been supplied.
+- **b07 / b08:** These are adjacent pieces of the same baseline. b07 begins with the visible opening parenthesis; its text is the written abbreviation `tjrs vrai`. b08 records `dans` and the complete Pi expression without a terminal stop.
+- **b09:** A continuous oblique strike crosses `D'ailleurs` across its width. No terminal stop is separately visible.
+- **b10:** The raised nonempty expression and following comma form the insertion. Its curved attachment descends into a lower baseline, which is cropped at the bottom; those incomplete base-line letter fragments are not transcribed as part of the insertion. The insertion itself is complete.
+- **b11:** Two complete target baselines are retained. The lower `que` descender reaches the bottom boundary. Small fragments above and the inserted word visible at the bottom belong to neighboring baselines. The group letter is G; the first symbol of the second formula has a separate cap/stem and a lower small u, read as tau subscript u. The large opening bracket is heavily retraced/doubled in outline; it is recorded as one bracket, without treating it as a deletion through the following prose.
+- **b12:** **Material lower clipping:** the opening parenthesis, lower parts of `désignant`, and especially the two function letters after `par` extend below the prescribed boundary. Their tentative readings are explicitly marked. The raised `morphismes` and the horizontal cancellation of `applications` are visible; the cancellation has narrower scope than the whole line. The map after that correction and final `et` are included. Cropped fragments from the preceding baseline at the top are excluded.
+- **b13:** The minus before u is a separate short horizontal stroke. The following u has its own rising/return stroke; I do not count that return as a crossing of the minus. The left map has a source bar and a small bent right terminal, read as mapsto. Neighboring descender fragments at the top are excluded.
+- **b14:** The initial closing parenthesis is visible and is retained. The top tip of the second tall function stroke touches/is cut by the upper boundary, but the remaining function shape and its raised prime are visible. No subscript u is added to that term.
+- **b15:** **Material upper clipping:** this rectangle cuts the upper portions of the target baseline, including the U and the word after the large closing bracket; it also contains only the low fragments of the following mathematical assertion at upper right. The opening part of `groupe` meets the left edge. These are not silently completed. `groupe`, U, and `alors` are qualified, and the inadequately included following formula is represented by one illegible unit. The line under the word read as `alors` is wavy; `uline` records that emphasis. The large closing bracket is separate from the dash that follows it.
+- **b16:** The formula u = 0 and final stop are clear. The preceding abbreviation has a check/upright-like first stroke, a detached middle point, and an open final curve; `i.e` / `v.c` remain alternatives. No expansion is supplied and no extra terminal stop is added to that abbreviation.
+- **b17:** The complete slanted marginal note was read upright. Only NB is independently underlined. `rev.` is retained as an abbreviation. The sequence following it is read as `étale fini`; the tall strokes are part of those two words, not a separate `le` after an abbreviation. Main-text fragments intrude at the right (including heavy descenders and portions of the following baseline); they are excluded from the note. No terminal period after the final Pi expression is confidently separate from neighboring ink, so none is supplied. The note's intended text is not visibly cut off.
+- **b18:** The target baseline is complete. The upper-left speck/fragment belongs to another baseline.
+- **b19:** The short first word has a rounded opening and compressed medial strokes. I retain `voie` / `une` rather than complete the phrase from the argument. The tall loops in `géométrique` are fully included.
+- **b20:** The target is a single word, beginning with the small a/r/i strokes before the tall h-like formation; those initial strokes are not a separate `est`. The final return does not securely isolate a terminal s, so plural/singular remain alternatives. The visible underline covers the main word. The final punctuation has an upper dark point and a lower curved stroke, recorded as a semicolon. The long horizontal/curved stroke below belongs to the enclosure of the following cancelled paragraph, not to the word's underline.
+- **b21:** The upright reading is `Si cf.` followed by `plus bas !`. The first word has a large S and a short dotted i. The next cluster has c, a tall crossed f, and a detached stop. The exclamation mark has a separate lower point. The note is complete; no initial phrase has been reconstructed.
+- **b22–b27:** The original shows a common lower paragraph cancellation/enclosure, with long diagonal cancelling strokes through the later lines. Each row carries deletion state for its corresponding target portion. The long diagonals and the upper enclosure edge are not read as accent marks or mathematical signs.
+- **b22:** The opening J is crowded by the upper/left enclosure stroke. Its loop and following e remain readable. Neighboring text fragments along the upper boundary are excluded.
+- **b23:** The first word has its own horizontal cancellation in addition to the paragraph-level cancellation; this nested state is retained. Its reading `facile` remains tentative because the cross-stroke masks the middle. The following word is read as `généraliser`.
+- **b24:** The lower descender of q in `géométrique` is cut by the bottom boundary. The short word between `en` and `que` is tentative as `notant`, because its compressed strokes do not separate all letters securely. The opening parenthesis and `quitte` are included at the right. Neighboring remnants above/below are excluded.
+- **b25:** The very short initial unit meets the left cancellation/enclosure area and is tentative as `à`. The rest of the target baseline, including X, `non vide`, and `convenable`, is included. No following line is attached to this row.
+- **b26:** The q descender near the left and the lower end of the final tall function/letter stroke are cut at the bottom boundary. The last word is tentative as `modifie`. The short sequence `ni ne` is retained; I do not expand `hyp`, and I do not add an unisolated abbreviation stop.
+- **b27:** This baseline lies immediately above the physical black page/scan edge. The lower strokes at the left and the q descender of `que` meet that edge. `conclusion` is tentative. The compressed S-like group after the closing parenthesis is recorded literally/tentatively as `SS`, without expansion. X and the words `est une variété` are retained; no continuation or terminal punctuation is invented beyond the page edge.
+
+## Freeze
+
+All 28 rows were validated for box order, exact two-column TSV structure, nonempty readings, balanced braces and math delimiters, and apostrophe prime syntax. This was a structural check of this independent return only. No comparison was made.
+
+Frozen UTC: 2026-11-21 15:17:47 UTC
+
+SHA-256 of `edition/second/149_scan027_second.tsv`:
+`5abde473a2f34062014cd485083c063cbffa7bae2c3b1258824c5513d78244a9`

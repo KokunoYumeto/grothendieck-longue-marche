@@ -1,0 +1,39 @@
+"""One-shot root adjudication of six differing blind boxes on scan 050."""
+from pathlib import Path
+import json
+R=Path(__file__).resolve().parents[1];p='149_scan050';rp=R/'records'/f'{p}.json';r=json.loads(rp.read_text());pp=R/'pages'/f'{p}.tex';s=pp.read_text();cmp={x['box']:x for x in json.loads((R/'second'/f'{p}_comparison.json').read_text())};f={b:x['first'] for b,x in cmp.items()}
+repls=[(r'\unsure{\simeq|=}',r'\unsure{\simeq|=|\xrightarrow{\sim}}'),(r'_{X,x}',r'_{X,\unsure{x}}'),(r'_{X,\unsure{x}})$}, $V=$',r'_{X,\unsure{x}})$}\unsure{,} $V=$'),(r'\unsure{ess.|ets.}',r'\unsure{ess.|ets.|en.}')]
+for old,new in repls:
+    assert old in s,old;s=s.replace(old,new)
+    for b in f:f[b]=f[b].replace(old,new)
+pp.write_text(s)
+def coords(b):return next(x['coords'] for x in r['audit_boxes'] if x['box']==b)
+r['rows'][11].update(final=repls[0][1],scan_shows='The whole E_Q-to-Gamma_Q formula has two heavy strokes and a lower-right returning hook. The upper course could be a flattened tilde; the lower hook could be a compressed arrowhead. Keep simeq first, equality second, and admit an isomorphism arrow as another graphical alternative.',crop=f'crops/{p}_second_B03.jpg',box=coords('B03'))
+r['rows'][15]['final']=r['rows'][15]['final'].replace(repls[1][0],repls[1][1])
+r['rows'][15]['scan_shows']+=' The blind audit reread the complete cancellation; the small second subscript now remains locally unsure, separately from the clear parentheses.'
+r['rows'][18].update(final=repls[3][1],scan_shows='The initial e and terminal stop are clear. The heavily retraced middle admits the original ess./ets. readings and the blind en. segmentation. Preserve all as written short forms, with ess. primary; no expansion is placed in the transcription.',crop=f'crops/{p}_second_B05.jpg',box=coords('B05'))
+for d in r['decisions']:
+    if d['id']=='M1126':d.update(reading=repls[3][1],ink='Initial e and terminal point are visible. The dark joined middle admits ess., ets. or en.; no mathematical expansion settles its literal letters.',crop=f'crops/{p}_second_B05.jpg',box=coords('B05'))
+for d in r['doubts']:
+    if d['place']=='Projection formula relation':d.update(reading=repls[0][1],alternatives=r'\simeq | = | \xrightarrow{\sim}',reason='The heavy upper course may be a flattened tilde, while the lower-right hook may be a compressed arrowhead; the whole formula does not settle the exact sign.')
+    if d['place']=='M1126 abbreviation after inserted réguliers':d.update(reading=repls[3][1],alternatives='ess. | ets. | en.',reason='The heavily retraced middle admits both the inherited readings and the blind en. segmentation; all remain unexpanded.')
+r['doubts'].extend([dict(place='Cancelled Spec expression, small second subscript',reading=r'\unsure{x}',alternatives='exact crossed or compressed lower-letter strokes unresolved',confidence='medium',reason='The capital X is clear, but the following small joined course is too compressed to certify every x stroke; the full formula was reread.'),dict(place='After cancelled Spec expression',reading=r'\unsure{,}',alternatives='curved leader endpoint rather than separate comma',confidence='medium',reason='The short curve is close to the raised réguliers attachment stroke and cannot be confidently separated from it.')])
+for n in r['notation']:
+    n['form']=n['form'].replace(repls[0][0],repls[0][1])
+    if 'Relation to the rational-field' in n['meaning']:n['evidence']='Whole blind B03 formula: heavy upper course and lower-right hook leave simeq/equality/isomorphism-arrow alternatives.'
+for a in r['abbreviations']:
+    if a['form']==repls[3][0]:a.update(form=repls[3][1],expansion='The primary ess. would abbreviate essentiellement; ets. and en. remain literal alternatives without an asserted expansion.')
+r['notes']=r['notes'].replace('with the unresolved ess./ets. abbreviation','with the unresolved ess./ets./en. abbreviation').replace('with equality as an alternative','with equality and an isomorphism arrow as alternatives').replace('The canceled O and the ess./ets. abbreviation remain uncertain.','The canceled O, the small second subscript x, its following comma, and the ess./ets./en. abbreviation remain uncertain.')
+r['notes']+='\n\n[Blind audit] All six differing crops were inspected. De after the second inverse limit has no additional s; t.f still lacks a terminal stop. The apparent comma after imm. ouvertes is the curved leader ending and is not added. The full projection formula retains the first relation reading with an additional possible isomorphism-arrow shape. The isolated short stroke after its comma does not provide the two letter bodies of a second et; the clear et at the next baseline is already transcribed. Telles remains resolved from two successive l ascenders and its final low es course, despite the blind tels/telle. The entire cancelled Spec formula was reread; the small second subscript and adjacent comma gain local uncertainty, while the visible Spec, parentheses and capital X remain. The final geometric-group definition was reread in full: the first Pi/pi remains uncertain; the following pi_1 uses the established local fundamental-group letter form, whose angular cap and legs alone do not force a capital. No new mathematical verification was performed.'
+inks={
+'B02':'The word after the inverse limit is d plus e with a terminal pen tail, not an additional s. T.f has the internal stop and a long f descender, with no terminal dot before sur. The raised imm. has a real stop; the curve after ouvertes continues into its leader, not a separate comma. Q font is conventional. The complete inverse-limit symbol and closing comma agree.',
+'B03':'The complete E_V-to-E_U and E_Q/Gamma_Q expressions were reread. The first arrow has a clear curved head. The second relation has a potentially wavy upper stroke and a lower-right hook, so add the possible isomorphism arrow while retaining simeq and equality. The small isolated horizontal mark after its comma does not supply readable e/t bodies; do not add a second et before the clear et on the next line. Script braces, Q font and arrow length are syntax or typography.',
+'B04':'The word has initial t/e, two successive tall l courses, and a low e/s ending. Retain literal telles and its resolved M1125 reading; neither grammatical expectation nor the blind alternatives remove a visible l.',
+'B05':'The whole cancelled formula was reread. Spec, both parentheses and capital X are visible; retain the existing O doubt and add a local doubt to the tiny second subscript. The short curve after the cancellation is not securely separable from the nearby réguliers leader, so mark the comma uncertain. Pour remains attached before live U, and réguliers remains attached after locaux. The e-led abbreviation has a terminal stop but a retraced middle; add en. to ess./ets. without expansion. P.ex. spacing and Q font are formatting.',
+'B06':'The final horizontal dash is a single prose separator; double TeX hyphen versus a Unicode em dash is typographic encoding. The anabéliens course remains clear.',
+'B07':'The entire definition was reread. The first variable has a flat cap and detached slanting legs, so its Pi/pi case doubt remains. The following function has the familiar joined cap/leg form used for pi_1 elsewhere on these leaves; flatness alone does not establish a capital Pi. Keep the function pi_1, its visible 1, the bar over U, and the equality. The blind whole-formula alternatives do not require changing the already local variable doubt.'}
+reviews=[]
+for b,x in cmp.items():
+    if not x['different']:continue
+    changed=f[b]!=x['first'];reviews.append(dict(box=b,decision='mark doubt' if changed else ('formatting' if b=='B06' else 'keep'),final=f[b],ink=inks[b],changed=changed))
+(R/'second'/f'{p}_review.json').write_text(json.dumps({'box_reviews':reviews},ensure_ascii=False,indent=2)+'\n');rp.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')

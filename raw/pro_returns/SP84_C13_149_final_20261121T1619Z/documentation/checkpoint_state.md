@@ -1,0 +1,15 @@
+# State prepared for checkpoint05
+
+All first page readings005–027 are finalized. All independent second readings005–027 have been returned and frozen. Root has completed and logged independent adjudications005–023; audits024–027 remain in progress. Frozen first/second TSVs are preserved and must not be edited after comparison. Reader B must not independently audit018–022 because of the documented first-phase packet exposure.
+
+Root has personally inspected all differing boxes for scans024 and025. The 025 decisions have been sent to reader B and implementation is in progress; 024 may remain unapplied with root decisions saved at the snapshot. Root adjudication of026 and027 is pending. Reader C has supplied a post-comparison consultation limited to four existing scan024 crops; it is preserved in documentation/scan024_postcomparison_consultation.md. That consultation is advisory, not a new frozen independent reading, and root decides the adopted text. Any current root audit-choice files and saved crops are included in this edition snapshot, but their presence alone does not establish audit completion; consult progress.log and the adjudication records.
+
+The feedback and legibility drafts have been approved and copied into feedback_addendum.md and legibility_note.md, the assembler inputs. Their review drafts remain in documentation/. They distinguish useful refinements from new error categories and disclose the limits of model-based, selected-box independence. They contain no final totals or blanket audit-completion claim.
+
+All missing first-crop coordinate provenance has now been recovered. documentation/first_crop_coordinates.tsv includes the proven coordinates, and the coordinate_recovery_reader_a/b/c notes and supporting files document recovery. Reader C verified the last outstanding rectangles by reproducing every saved RGB pixel through the recorded pipeline. No guessed coordinate labels were accepted. Historical notes listing those gaps are superseded by this recovery evidence.
+
+Remaining work: finish root adjudications024–027, final notation and hand-log review, reconcile any stale apparatus statements with the adopted readings, rebuild aggregates, perform structural validation without TeX compilation, freeze the required final hashes and end verification, then create and save the final ZIP. The existing mathematical-check records remain the evidence for any proof work; no new checks are implied by this checkpoint.
+
+The checkpoint excludes original scans, source witness texts, full-resolution halves and earlier ZIPs. Restore source/ from the attached archive when resuming. The supplied differences TSV is literal/unquoted and requires csv.QUOTE_NONE; generated CSV-quoted TSVs use their corresponding parser. No OCR, external research or TeX compilation is authorized.
+
+Checkpoint05 is due2026-11-21 15:42:03 UTC. Its upload receipt and resulting hash are recorded after saving in documentation/checkpoints.json and progress.log; a ZIP cannot contain its own completed upload receipt. The next checkpoint is due2026-11-21 16:27:03 UTC if work is still ongoing.
