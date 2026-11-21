@@ -1,0 +1,26 @@
+# Main-reader visual review: scan 042
+
+The main reader directly viewed all 30 initial place crops, including the three rotated pieces of the long diagonal note and the later complete small-index crop. The misplaced au_dessus_main crop and its necessary au_dessus_completion crop were also directly viewed. This is a record of visual observations before final integration of the complete return.
+
+- The marks after axiome and équivaut consist of two separated small strokes, without the loop of an a: colon is preferred at medium confidence. formuler has a terminal r.
+- The raised extension reads des Σ_i Σ_j. The lower foot of the first i is not an extra comma, and no additional i precedes the second j. The baseline en is crossed; the curved stroke attaches the raised phrase.
+- Main est/et, the compressed manifestement and its nearby punctuation remain doubtful. par construction is baseline text, followed by one closing parenthesis. The canceled une remains doubtful under the dense stroke.
+- satisfaisant (3) belongs to the main line. The slanting page reference belongs to the margin note. d'une is supported; Catégorie dans has a g descender and a separated dans. The categorical map has a right head and a final stop.
+- The diagonal note begins with one live, overtraced en fait, not a separately repeated cancellation. ordonné is underlined. l'ens is an abbreviation. Its flag list has a comma after zero, but no independent comma before the final i_n.
+- The long intersection's first factor ends in an upright 1. Its final factor remains compressed. The small formula has a certain comma after the left-hand j and in the last j,k; the first right-hand comma is not separately secure. The overtraced left ij remains doubtful.
+- tt is literal. The Σ_* to I connector admits dash/arrow. The small diagram has a left-tail hook on its rightward map and two vertical double bars. Later prose has Σ(z), without a star; induit is underlined. Cela signifie is canceled.
+- À l'aide has a detached accent over the capital A. sans utiliser en fait is live baseline text. The canceled hypotheses and the raised les, canceled deux and conditions must retain their separate states. The canceled word before (2) is de/et; digit 2 is preferred over H's 3.
+- The weaker formula's connector is headless; the omitted index has a visible dotted i and p. plongement is followed by a detached low stop. The canceled bord remains doubtful. coniques has no detached circumflex. No independent stop follows obtenu).
+- The canceled pair reads d,d, without a detached second prime. ne soit pas is visible in the main line. The curve above de longueur n is an insertion leader for the raised tuple: it stays above the word bodies and touches ascender tops; the phrase is live. The tuple has a comma after i_0 but none independently before i_n. The count is literally 2^n, with the closing parenthesis and final stop. Foliation 41 is thin and belongs to another hand.
+- The two additional au dessus crops establish separated words and no hyphen. The first was mistargeted and is retained as workflow evidence; the second supplies the missing target.
+
+The conditional subset-count observation is recorded separately as an actual mathematical check: both subsets containing a fixed maximum and subsets excluding it have 2^n elements when the original set has n+1 elements and the empty subset is permitted in the latter family. It does not choose the negation and is not a verification of the author's complete construction.
+# Continuation-mark review after complete return
+
+The root reread the complete returned TeX and all metadata fields. Reopening the existing margin_middle crop exposed normalization of literal continuation strokes as three-dot macros. Root and reader independently confirmed: two short strokes in the x-chain, one long dash in the prose flag, one long dash in each full-flag marginal Sigma index, and two short strokes inside the long intersection. Root also reopened weaker_map: two short strokes in its source index, one long stroke before the hatted i_p and two short strokes after it. The existing dprime_tuple crop has a horizontal group entangled with the descending q from the line above; only a narrow dash doubt is supported there. One newly necessary full-index crop, opening_index_count, was made for this previously uncovered question and directly viewed by root: one continuous long dash lies between i_0 and i_n. These corrections are to be propagated through the final text, evidence rows and audit readings without rewriting original witness quotations.
+
+The uncertainty-only est/et, comma/closing-parenthesis, dash/arrow and canceled de/et alternatives must not be counted as substantive witness changes while the witness reading remains admitted. The separate canceled digit 2 versus H's 3 remains a real correction.
+
+## Approval
+
+The final revised page and its complete structured return were read. All 33 images representing 32 places were directly inspected. Ten continuation groups now preserve their individual stroke counts; the new opening crop and reopened formula crops agree with the corrected text and audit readings. All 13 original C marks are accounted for. Approved for first-pass consolidation.

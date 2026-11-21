@@ -1,0 +1,20 @@
+# Root visual review — scan 041
+
+Root read both witnesses and the C/H difference rows in full and directly viewed all thirty-two first-reading crop images. The full returned page and every metadata record were subsequently read and approved. All twenty neutral audit boxes were checked for coverage of the required places.
+
+- The author's page number is 16. The thin lower foliation is 40; these are distinct entries.
+- Each of the three équivaut clauses has a single compressed two-level mark. An accented à is possible because this hand also reduces a to a dot in au; a colon remains possible where the bowl is not visible. H's first : à supplies two tokens although only one cluster is present. Do not settle this from French syntax alone.
+- At the right paper edge the partition word is shortened or clipped after the readable partit/partiti portion. There are no safely visible final on strokes. The exact shortened form awaits agreement with the reader; no full word is supplied from either witness.
+- Au dessus has no hyphen. The tiny a and linked flattened u are readable. The cancelled et/de remains covered by its strike. The crossed product I×I is readable. Drap's small subscript remains 1/2 under its cancellation; the point after the closing parenthesis survives uncrossed.
+- The live I×I product uses a hooked-foot I. The lower product and final I after dans show varying lower feet too, so this alone does not establish a J slip.
+- The empty-set sign is a loop with a long descender, matching the phi form on scan 040. The convention has i not-less-or-equal j and Sigma_ii=Sigma_i. No point follows its closing parenthesis.
+- The first diagram has a rightward hook and an ordinary downward arrow. The second has ordinary right/down arrows, with underlined b and s. A detached dot above the first horizontal arrow does not have a secure label role. Quotation marks around source and but survive. The isolated diagonal stroke is a dash-like mark, not an arrow or a readable letter.
+- The live word after the cancelled NB has capital C, a small e-like loop, a conspicuous tall l-like loop, and a flattened final body. It resembles Cela/Celle more than the drafts' car/Comme. It must remain narrowly doubtful unless comparison with this page's letter forms settles it. The cancelled NB le cas, bord and celle remain doubtful where the strikes hide letter bodies.
+- The raised de type I has a curved insertion leader, not an underline. The body words et des are clear. The graduation word has a descending g, r/a shapes, tall d, compressed middle, t and dotted i; whether this fully resolves C's mark is recorded in the adopted metadata.
+- The loc. abbreviation and its raised t are readable on their crop; the leader attaches it before un morphisme bord. Où has a detached accent and an open o with flattened u. The source's short form stays abbreviated.
+- The extra a after On a de plus has a closed bowl and short downstroke. Tiny dark dots to its right are recorded only if their punctuation attachment is secure. The identity and composition connectors have tiny thickened ends; the crop, not the expected map, must decide whether a head is sufficiently formed.
+- The closing parenthesis and following dash are visible. Morphisme identité has quotation marks and a following comma. Revient à remains the unfinished end of the page, without supplied continuation.
+
+This is a record of visual inspection, not a proof check of the proposed categorical reconstruction. Final readings, remaining alternatives, and any additional decision are in the approved page and metadata.
+
+Adopted details: the edge fragment is `partit\unsure{i|.}`; the live word is `\unsure{Cela|Celle}`; graduation resolves from its complete visible g/r/a/d, compressed u/a, t, dotted i and low on. The extra a is plain, followed by a narrowly doubtful colon. Both final connectors remain dash/arrow uncertain, and the target retains `i\unsure{k|n}`. The final revient cluster also remains à/colon uncertain. The unassigned stroke is reproduced as graphic-only TikZ without text nodes. Six C marks resolve, one becomes a different narrow doubt, and seven remain undecided.

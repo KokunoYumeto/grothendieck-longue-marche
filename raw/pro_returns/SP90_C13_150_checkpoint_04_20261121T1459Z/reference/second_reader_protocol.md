@@ -1,0 +1,15 @@
+# Independent second reading
+
+You are reading one page that you did not first-read. Your permitted evidence is its original scan image and the supplied neutral box list. Do not open either witness, any first-reader return, any approved page, any `_first.tsv`, any editorial notes, or another reader's crop. Do not seek external sources or use OCR. Do not compare your readings with any earlier text.
+
+For each box, crop its original-pixel coordinates once and view the enlarged image. The shared `scripts/crop_place.py` can be called with scan, `audit_<box>`, four coordinates, and `--second`; rotate an oblique passage upright when needed. This creates a new second-phase crop and its pixel metadata. Read the coherent words, symbols, formulas, insertions, cancellations, and margin text wholly contained in the box. Do not invent continuations outside its edges. Preserve handwritten mistakes and doubtful strokes. Use the established transcription macros, not verbal descriptions of running text.
+
+Write `second/150_scanNNN_second.tsv`, with exactly the columns `box` and `reading`, one row for every supplied box ID in its order. Use a proper TSV writer to quote tabs/newlines if any. A comment about an ambiguous stroke may be recorded separately in `second/150_scanNNN_reader_notes.json`; it must come only from this image reading. Do not edit the box list or any other page record.
+
+Before reporting completion, check that all box IDs have a reading and that every crop has actually been viewed. Report the output path and any limitations candidly. Then wait for the editor's next assignment. The editor, not you, compares the independently written readings and adjudicates differences.
+
+## Neutral transcription conventions
+
+Write the source language, spelling, accents, abbreviations, punctuation and incomplete text literally. Use `\deleted{...}` for visible cancellations, `\inserted{...}` for inserted text, `\margin{...}` for marginal text, `\uline{...}` and `\uuline{...}` for single and double underlining. `\unsure{reading}` and `\unsure{reading|alternative}` preserve local doubts. `\illegible{n}` is reserved for physically unreadable prose; keep a plausible symbol with doubt inside a formula. Do not expand abbreviations. Distinguish a placement leader from a strike or punctuation by tracing the actual stroke.
+
+Use ordinary LaTeX math, `\diagram{\begin{tikzcd}...\end{tikzcd}}` for diagrams and `\figure{\begin{tikzpicture}...\end{tikzpicture}}` for genuine drawings. Written labels are transcribed; running words, letters and signs must not be converted to drawn shapes. Preserve vertical double bars as vertical relations between stacked objects. Double quotation marks are two backticks and two apostrophes where the ink has double quotation strokes. Authorial page numbers can use `\mspage{...}`; separate foliation can use `\margin{...}`. Macro/layout choices may differ from the unseen first reading; the editor will classify those differences after your independent text has been written.

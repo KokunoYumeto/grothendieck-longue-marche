@@ -1,0 +1,331 @@
+from pathlib import Path
+import json, re
+root = Path('/workspace/scratch/481648fc487b/SP90_C13_150_work')
+page = r'''\scanpage{27}
+$p|_{\dot X_0\times I}$ induise $\dot X_0\times I_{\unsure{2|\ell}}\longrightarrow Y_0\times I$,
+s'identifiant à $p_0\times\operatorname{id}_I$, où $p_0:X_0\longrightarrow Y_0$.
+
+\deleted{Compatibilité}\inserted{Transversalité} d'une famille \deleted{finie}
+$(B_i,E_{B_i})$ de voisinages cylindriques \unsure{des|de} parties $B_i$ de $X$.
+La condition s'exprime en disant que pour
+tout $J\subset I$, $I$ fini, la structure de
+\[
+\bigcap_{i\in J}E_{B_i}\overset{\mathrm{def}}=E_J,
+\quad\text{autour de}\quad
+B_J\overset{\mathrm{def}}=\bigcap_{i\in J}B_i,
+\]
+est celle de $B_J\times I^J$, l'homothétie
+$\lambda_{E_j}$ de $E_j$ \inserted{(pour $j\in J$)} induisant
+\[
+(b,(t_\alpha)_{\alpha\in J})\longmapsto(b,\unsure{(t'_\alpha)|(t'_\alpha]}),
+\qquad
+t'_\alpha=t_\alpha\ \text{si }\alpha\ne j,\quad
+\text{et }\unsure{t'_\alpha|t_\alpha}=\lambda t_\alpha\ \text{si }\alpha=j.
+\]
+\margin{cet homéom. $E_J\simeq B_J\times I^J$ est
+canonique, si
+$\dot B_J=\bigcap_{j\in J}\dot E_j
+\underset{\substack{\text{\unsure{multiplié}}\\
+\text{\deleted{\unsure{par}\ \illegible{1}}}\\
+\text{l'élément \unsure{unité|nul} de}\\I^J}}{\xrightarrow{\sim}}B_J$
+\ldots}
+
+Cela peut aussi s'expliciter en exigeant
+que $E_J$ soit cylindrique dans chaque $E_{B_j}$ etc\ldots
+Cette relation de transversalité passe aux germes.
+
+On dit que la famille précédente \uline{et}
+un voisinage conique $T$ de $Y\subset X$ sont
+\inserted{transversaux} \deleted{\unsure{compatibles|compatible}}
+si \deleted{la structure des $T\cap E_i$}
+\inserted{\uuline{de plus} $\forall\deleted{\unsure{j}}J$ comme dessus,}
+\margin{\unsure{induit par} \unsure{\ldots}
+$E_J\simeq B_J\times I^J$ et}
+\[
+\begin{array}{l@{\quad}lcl@{\quad}l}
+& E_J\cap T & \simeq & T_J\times I^J
+& (\text{où }T_J=T\cap B_J)\\
+&\cup&&\cup&\\
+\text{induisant}&\dot E_J\cap\dot T&\simeq&\dot T_J\times I^J
+&(\text{où }\dot T_J=\dot T\cap B_J)\\
+&E_J\cap Y&\simeq&Y_J\times I^J
+&(\text{où }Y_J=Y\sim B_J)
+\end{array}
+\]
+\margin{26}
+'''
+
+boxes = {
+'opening_map':[865,55,1275,163], 'heading':[390,365,855,499],
+'family_pair':[1185,357,1557,503], 'parties':[934,506,1207,589],
+'definition':[330,806,1608,996], 'product_words':[332,1016,744,1119],
+'homothety':[300,1096,1028,1280], 'coordinate_map':[1075,1109,1640,1383],
+'coordinate_conditions':[442,1272,1525,1389], 'diagonal_note':[17,1041,370,1598],
+'cylindrique':[1245,1517,1661,1658], 'germes':[1230,1654,1669,1775],
+'famille_precedente':[775,1780,1559,1889], 'condition_overwrite':[304,1960,1596,2105],
+'bottom_note':[32,2134,548,2310], 'bottom_formulas':[637,2092,1667,2348],
+'folio':[22,2293,87,2347], 'induisant_placement':[315,2220,985,2346],
+'conique':[770,1889,1024,2002]
+}
+changes=[]
+def change(place,C,H,final,evidence,crop,confidence,kind,error_kind,marked=False,c=True,h=True,consequential=''):
+    changes.append(dict(place=place,C=C,H=H,final=final,evidence=evidence,crop=f'150_scan027_{crop}.jpg',box=boxes[crop],confidence=confidence,kind=kind,error_kind=error_kind,marked_in_H=marked,change_C=c,change_H=h,consequential=consequential))
+
+change('line 1 / detached stroke after the second I',
+ r'\dot X_0\times I\longrightarrow Y_0\times I',
+ r'\dot X_0\times\mathbf{I}\to Y_0\times\mathbf{I}',
+ r'\dot X_0\times I_{\unsure{2|\ell}}\longrightarrow Y_0\times I',
+ 'A dark small curved/angular stroke stands below the gap between the second I and the beginning of the arrow. It has a down-left stroke and a short rightward foot. A 2 or an open handwritten ell is possible. Its attachment is not settled; the proposed subscript position is provisional, and an extraneous pen stroke remains possible. No mathematical argument identifies it.',
+ 'opening_map','low','omission','symbols and indices',consequential='Potentially changes the interval label; both identity and attachment remain unresolved.')
+change('line 3 / finie',r'\deleted{finie}','finie',r'\deleted{finie}',
+ 'One horizontal pen stroke passes through the bodies of the letters in finie. This is a cancellation, not an underline.','family_pair','high','deletion state (struck given live or live given struck)','struck text',c=False,consequential='The finiteness qualifier is canceled here; I fini remains later in the sentence.')
+change('line 3 / pair of neighborhoods',r'(B_i,E_{B_i})',r'(B_i,E_i)',r'(B_i,E_{B_i})',
+ 'The E has a descending B with its own small dotted i underneath. That two-level subscript is visible and is not a lone i.','family_pair','high','misread symbol or index','symbols and indices',c=False)
+change('line 4 / before parties','des','de',r'\unsure{des|de} parties',
+ 'The group ends in a short downward pen return after a long low connection. It can carry a final s, but the return of de in est celle de is similar. The singular/plural grammar does not decide the ink; the C/H difference remains open.','parties','low','misread word','words',c=False)
+change('line 7 / definition labels',r'\overset{\mathrm{def}}=',r'\overset{\text{déf}}{=}',r'\overset{\mathrm{def}}=',
+ 'Both small labels have d-e-f strokes without a detached accent above e. The written unaccented short form is retained.','definition','high','abbreviation expanded or spelling modernised','abbreviation/spelling',c=False)
+change('line 7 / between the definitions','autour de','au-dessus de',r'\text{autour de}',
+ 'After the initial au, a tall t and a low connected our are visible. There is no descending s sequence or hyphen for au-dessus.','definition','high','misread word','words',c=False)
+change('line 8 / beginning of the product sentence','est celle de',r'\add{\uncertain{est isomorphe}} à celle de','est celle de',
+ 'There are exactly three written groups: the flattened est, the two tall loops of celle, and de. No word is inserted above this span, and there are no strokes for isomorphe à.','product_words','high','text not on the page','text not on page',marked=True,c=False)
+change('line 9 / domain of the homothety',r'de $E_j$',r'de $E_J$',r'de $E_j$',
+ 'The subscript has a narrow downward stem with a leftward foot, matching the lowercase j in the preceding lambda subscript. It lacks the broad upper horizontal of the capital J in the adjacent inserted j∈J.','homothety','high','misread symbol or index','symbols and indices',c=False)
+change('line 9 / attachment of pour j∈J',r'$\lambda_{E_j}$ de $E_j$ \inserted{(pour $j\in J$)}',r'$\lambda_{E_j}$ \add{(pour $j\in J$)} de $E_J$',r'$\lambda_{E_j}$ de $E_j$ \inserted{(pour $j\in J$)}',
+ 'The parenthesis is written above induisant, with a curved leader entering the gap after E_j and before that word. Its placement after de E_j is visible independently of its content.','homothety','high','insertion or placement','insertion placement',c=False)
+change('line 9 / H ci-dessus','induisant',r'(ci-dessus) \uncertain{correspondant à}','induisant',
+ 'The letters under the insertion leader read i-n-d-u-i-s-a-n-t. There is no parenthetical ci-dessus on this line. The tall curved stroke before the word is the insertion leader, not a parenthesis enclosing a further phrase.','homothety','high','text not on the page','text not on page',marked=True,c=False)
+change('line 9 / verb before coordinate map','induisant',r'\uncertain{correspondant à}','induisant',
+ 'The initial dotted i and the tall d loop are visible; the whole word is one short group ending in an angular t. There is neither an initial c nor a separate à.','homothety','high','misread word','words',marked=True,c=False)
+change('line 10 / conjunction in coordinate conditions',r'\text{et }t\prime_\alpha',r't\prime_\alpha',r'\text{et }\unsure{t\prime_\alpha|t_\alpha}',
+ 'A separate joined e-t group stands between the two coordinate conditions. H omits it. The prime in the following t is independently doubtful and is not used to decide this word.','coordinate_conditions','high','omission','omissions',c=False)
+# Use the page's exact apostrophe notation for the preceding row.
+changes[-1]['C']=r'\text{et }t\prime_\alpha'.replace(r't\prime',"t'")
+changes[-1]['H']="t'_\\alpha"
+changes[-1]['final']=r'\text{et }\unsure{t\prime_\alpha|t_\alpha}'.replace(r't\prime',"t'")
+change('diagonal margin / opening determiner','cet homéom.','et homéomorphisme','cet homéom.',
+ 'The first word begins with an open c before the e-t connection. The initial letter is not absent.','diagonal_note','high','misread word','words',c=False)
+change('diagonal margin / abbreviated noun','homéom.','homéomorphisme','homéom.',
+ 'The written noun stops after the second m and a separate point. There is no following orphisme.','diagonal_note','high','abbreviation expanded or spelling modernised','abbreviation/spelling',c=False)
+change('diagonal margin / first product',r'E_J\simeq B_J\times I^J',r'E_J\simeq B_J^{\mathbf{I}}',r'E_J\simeq B_J\times I^J',
+ 'The cross between B_J and I is explicit, and a small bracket-shaped J is raised to the upper right of I. The I is a factor, not an exponent on B_J.','diagonal_note','high','misread symbol or index','symbols and indices',c=False)
+change('diagonal margin / est canonique',r'est canonique,',r'\ill{} \ill{}','est\ncanonique,',
+ 'At the right of the product stands est; below it the connected c-a-n-o-n-i-q-u-e group ends in a comma. The q descender is especially clear.','diagonal_note','high',r'readable ink left as \ill{}','readable ink left as illegible',marked=True,c=False)
+changes[-1]['final']='est\ncanonique,'.replace('\\n','\n')
+change('diagonal margin / conditional word',r'\unsure{via|si}',r'[absent]', 'si',
+ 'The short group after the comma consists of an s-like low turn followed by a dotted i. There is no third a-shaped group for via. The same compressed si occurs in the coordinate conditions.','diagonal_note','high','misread word','words',marked=True)
+change('diagonal margin / intersection index',r'\dot B_J=\bigcap_{i\in J}\dot E_{\unsure{j|i}}',r'\dot B_J=\bigcap_{i\in J}\dot E_i',r'\dot B_J=\bigcap_{j\in J}\dot E_j',
+ 'The E subscript has a long descending stem and a hooked foot, as in the two main-line E_j forms. The first index under the intersection likewise descends with a hooked foot rather than the short separate stroke of main-line i. The latter is small; the bound-index reading is less secure than the E subscript.','diagonal_note','medium','misread symbol or index','symbols and indices',marked=True)
+change('diagonal margin / isomorphism sign before B_J',r'\simeq',r'[absent]',r'\xrightarrow{\sim}',
+ 'Under the upper wavy stroke, the lower horizontal stroke terminates in a definite rightward arrowhead. It is an isomorphism arrow, not an equality-shaped simeq.','diagonal_note','high','misread symbol or index','symbols and indices',marked=True,consequential='Preserves direction of the indicated map.')
+annotation = r'''\substack{\text{\unsure{multiplié}}\\
+\text{\deleted{\unsure{par}\ \illegible{1}}}\\
+\text{l'élément \unsure{unité|nul} de}\\I^J}'''
+change('diagonal margin / small annotation beneath the arrow',r'\substack{\unsure{multiplié}\\\unsure{l\prime élément nul de}\\I^J}',r'\ldots',annotation,
+ 'The enlarged rotated crop shows a small first group resembling multiplié, a separate middle line crossed by a horizontal stroke, and a lower phrase ending de above I^J. The crossed line appears to begin par, but the following group is physically obscured and remains illegible. In the lower line the medial strokes may read unité rather than nul; neither is settled. This is a provisional segmentation, not a reconstructed grammatical sentence.','diagonal_note','low','omission','struck text',marked=True,consequential='The construction asserted to identify the dotted intersection with B_J remains unresolved.')
+changes[-1]['C']=r"\substack{\unsure{multiplié}\\\unsure{l'élément nul de}\\I^J}"
+change('diagonal margin / final dots',r'\unsure{\ldots}',r'\ldots',r'\ldots',
+ 'Three discrete dark points follow below the left side of the marginal formula. They are actual ellipsis points rather than an illegible further word.','diagonal_note','high','other','other',c=True,h=False)
+change('line 12 / after E_Bj',r'etc\ldots',r'\ldots',r'etc\ldots',
+ 'A small connected e-t-c group precedes three separate points. The letters are not merely the beginning of the ellipsis.','cylindrique','high','omission','omissions',c=False)
+change('line 13 / germ statement','passe aux germes.',r'\ill{} \uncertain{pour} un germe \ill{}','passe aux germes.',
+ 'The long p descender begins a connected passe. It is followed by a compact aux group and germes, whose g has a large looped descender. The source has neither pour nor the separate word un. The final point is at the sheet edge.','germes','high',r'readable ink left as \ill{}','readable ink left as illegible',marked=True,c=False,consequential='Restores the assertion that the relation passes to germs.')
+change('line 14 / family noun phrase',r'\unsure{la famille précédente|les familles précédentes}','la famille précédente','la famille précédente',
+ 'The article is the short la shape; neither famille nor précédente has a separate final s. The terminal returns match their final e, and the adjective accent strokes are visible.','famille_precedente','high','misread word','words',c=True,h=False)
+change('line 15 / spelling of conique','cônique','cônique','conique',
+ 'The tight crop includes ample blank space over the o. There is no circumflex or other detached accent there. Both witnesses supplied one.','conique','high','abbreviation expanded or spelling modernised','abbreviation/spelling')
+change('line 16 / replacement transversaux','transversaux',r'\emph{transversaux}',r'\inserted{transversaux}',
+ 'Transversaux is written on a raised replacement line directly above the canceled compatibles. It has no independent underline; the horizontal cancellation below it belongs to the old word. The proposed wrapper records that visible insertion.','condition_overwrite','high','insertion or placement','insertion placement')
+change('line 16 / canceled compatibility word',r'\deleted{compatibles}',r'\struck{compatible si la structure des $T\cap E_J$}',r'\deleted{\unsure{compatibles|compatible}}',
+ 'The old compatibility word is certainly crossed out. The final ending is obscured by the strike and pen return, so a final s cannot be established independently. The si to its right is outside the cancellation and remains live.','condition_overwrite','low','deletion state (struck given live or live given struck)','struck text',c=False)
+change('line 16 / canceled original condition',r'\deleted{la structure des $T\cap E_i$}',r'\struck{compatible si la structure des $T\cap E_J$}',r'\deleted{la structure des $T\cap E_i$}',
+ 'A long cancellation passes through la structure des and the T∩E expression. The E subscript retains a separate small dot and a short stem, so i is preferable to capital J; the live si precedes this struck span.','condition_overwrite','high','misread symbol or index','symbols and indices',c=False)
+change('line 16 / state of inserted de plus',r'\deleted{de plus}',r'\add{\uncertain{de plus}}',r'\uuline{de plus}',
+ 'Two parallel strokes are below the letter bodies of de plus, with no crossing through those letters. I therefore read live double underlining within the insertion. The nearby leader and older cancellation make the state somewhat crowded, so the decision is retained at medium confidence.','condition_overwrite','medium','deletion state (struck given live or live given struck)','struck text',marked=True,c=True,h=False)
+change('line 16 / order of canceled quantifier index',r'$\forall\deleted{\unsure{j}}J$',r'$\forall J$ \struck{\ill{}}',r'$\forall\deleted{\unsure{j}}J$',
+ 'The dark crossed symbol lies immediately after ∀ and before the clean capital J. Its underlying identity is still not separable through the hatching. H places the struck group after the replacement J; the image places it before.','condition_overwrite','high','insertion or placement','insertion placement',marked=True,c=False)
+change('line 16 / punctuation after comme dessus','comme dessus,',r'comme dessus, \struck{compatible si la structure des $T\cap E_J$} :','comme dessus,',
+ 'One descending comma stands to the right of dessus, beyond the end of the canceled line. There are not two vertically separated points for an added colon.','condition_overwrite','high','text not on the page','text not on page',c=False)
+change('lower display / T_J in first row and its definition',r'\overline T_J',r'T_J',r'T_J',
+ 'Each T in these two places has only its ordinary top crossbar and vertical stem. There is no second bar above either crossbar. H correctly gives plain T_J.','bottom_formulas','high','misread symbol or index','symbols and indices',c=True,h=False,consequential='Avoids introducing a closure or barred object absent from the source.')
+change('lower display / vertical inclusions',r'\cup',r'\qquad\cup',r'&\cup&&\cup&',
+ 'Two U-shaped inclusion marks stand between the first and second rows: one under the left E_J, another under the right T_J. Both are separate from the dots over the following row. The two-column vertical placement is retained.','bottom_formulas','high','omission','symbols and indices',consequential='Restores the parallel vertical inclusion on the product side.')
+change('lower margin / introductory phrase',r'\unsure{s\prime induisant par}',r'\uncertain{induit par}',r'\unsure{induit par}',
+ 'The first word is short: an initial dotted i, a low n connection, a tall d, and a final raised t-like stroke precede par. There is no clear initial s-apostrophe or the longer sant sequence. Induit par is preferred but remains marked because the connecting strokes are compressed.','bottom_note','medium','misread word','words',marked=True,c=True,h=False)
+changes[-1]['C']=r"\unsure{s'induisant par}"
+change('lower margin / small marks after par',r'[absent]',r'[absent]',r'\unsure{induit par} \unsure{\ldots}',
+ 'Three small groups remain to the right of par before the note continues on the next line. The central group is elongated, so an ellipsis is only a tentative reading; I have not expanded them into words.','bottom_note','low','omission','omissions')
+change('lower margin / final conjunction',r'$E_J\simeq B_J\times I^J$ et',r'$E_J\simeq B_J\times\mathbf{I}^J$',r'$E_J\simeq B_J\times I^J$ et',
+ 'Below the marginal product there is a small e-t-like joined group. It is separate from the thin foliation number and leads into the main-line induisant.','bottom_note','medium','omission','omissions',c=False)
+change('lower display / induisant occurs once and to the left',r'induisant',r'''\dot E_J\cap\dot T\simeq\dot T_J\times\mathbf{I}^J & \text{induisant} & (\text{où } \dot T_J=\dot T\cap B_J)\\
+E_J\cap Y\simeq Y_J\times\mathbf{I}^J & \text{induisant} & (\text{où } Y_J=Y\cap B_J)''',r'''\text{induisant}&\dot E_J\cap\dot T&\simeq&\dot T_J\times I^J
+&(\text{où }\dot T_J=\dot T\cap B_J)\\
+&E_J\cap Y&\simeq&Y_J\times I^J
+&(\text{où }Y_J=Y\sim B_J)''',
+ 'One induisant is written to the left of the dotted row. The corresponding space to the left of the final Y row is blank. H duplicates the word and puts it between the formula and parenthesis.','induisant_placement','high','insertion or placement','insertion placement',c=False)
+change('lower display / final definition',r'Y_J=Y\cap B_J',r'Y_J=Y\cap B_J',r'Y_J=Y\sim B_J',
+ 'The sign between Y and B_J is a horizontal wave with a trough and rise, unlike the two arched intersections immediately above. H also explicitly recognizes the written tilde in its editorial note, but its main text regularizes it.','bottom_formulas','high','misread symbol or index','symbols and indices',marked=True,consequential='Preserves the apparent author slip; an intersection is mathematically expected but is not the visible sign.')
+change('bottom-left foliation',r'\margin{26}',r'[absent]',r'\margin{26}',
+ 'The two thin gray digits at bottom left are 2 and 6. Their pen/ink is noticeably finer and lighter than the text; attribution to the author is not established. They are transcribed as a margin number, not as his own page heading.','folio','high','omission','omissions',c=False)
+
+marks=[]
+def mark(m,context,decision,reading,evidence,crop,confidence):
+    marks.append(dict(mark=m,context=context,decision=decision,reading=reading,evidence=evidence,crop=f'150_scan027_{crop}.jpg',box=boxes[crop],confidence=confidence))
+mark(r'\unsure{via|si}','canonique,', 'alternative','si',
+ 'The group has two letters, the second dotted; no third a-shaped letter. It agrees with the compressed si of the coordinate conditions.','diagonal_note','high')
+mark(r'\unsure{j|i}',r'\bigcap_{i\in J}\dot E_', 'first','j',
+ 'The subscript has the same long downstroke and hooked foot as lowercase j in the main-line homotheties. This resolves the E subscript; the separate bound index is recorded at medium confidence.','diagonal_note','high')
+mark(r'\unsure{multiplié}',r'\underset{\substack{', 'undecided',r'\unsure{multiplié}',
+ 'The initial and medial groups support multipli-, but the short ending/possible accent is too crowded for a complete letter-by-letter resolution.','diagonal_note','low')
+mark(r"\unsure{l'élément nul de}",r'\unsure{multiplié}\\', 'undecided',r"l'élément \unsure{unité|nul} de",
+ 'The l’élément and final de are readable. The middle word shows several humps and a raised stroke compatible with unité; nul is not decisively excluded because adjacent strokes cross this line.','diagonal_note','low')
+mark(r'\unsure{\ldots}',r'B_J$ [end of diagonal margin]', 'first',r'\ldots',
+ 'Three individual dark points are visible below the formula at the left.','diagonal_note','high')
+mark(r'\unsure{la famille précédente|les familles précédentes}','On dit que', 'first','la famille précédente',
+ 'The article and both following endings lack an additional s-shaped letter; the source shows the singular phrase.','famille_precedente','high')
+mark(r'\unsure{j}',r'\forall\deleted{', 'undecided',r'\unsure{j}',
+ 'The symbol has been repeatedly hatched; no complete underlying letter can be followed through every crossing. Its position before the clean J is certain.','condition_overwrite','low')
+mark(r"\unsure{s'induisant par}",r'\margin{ [lower margin]', 'undecided',r'\unsure{induit par}',
+ 'The visible word is shorter than s’induisant, and its last raised t-like stroke favors induit. The joined strokes remain sufficiently compressed to retain doubt in the replacement reading.','bottom_note','medium')
+
+inventory=[]
+def inv(element,kind,position,first,hand='his hand',sheet='text'):
+    inventory.append(dict(element=element,kind=kind,position=position,first_words_or_objects=first,sheet_kind=sheet,hand=hand,transcribed='yes'))
+inv('opening','text','main lines 1–2 / top',r'p|_{\dot X_0\times I} induise; s’identifiant à p_0×id_I')
+inv('heading_old','deletion','main line 3', 'Compatibilité; finie')
+inv('heading_new','insertion','above main line 3', 'Transversalité')
+inv('family_definition','text','main lines 3–6','d’une famille (B_i,E_{B_i}) de voisinages cylindriques; La condition s’exprime')
+inv('intersection_definitions','display','main line 7',r'\bigcap_{i\in J}E_{B_i}=E_J; B_J=\bigcap_{i\in J}B_i')
+inv('homothety_sentence','text','main lines 8–9','est celle de B_J×I^J, l’homothétie λ_{E_j} de E_j induisant')
+inv('homothety_quantifier','insertion','above main line 9','(pour j∈J), with curved attachment leader')
+inv('coordinate_action','display','main lines 9–10','(b,(t_α)_{α∈J}) maps to (b,(t′_α)); coordinate conditions')
+inv('diagonal_canonicity','margin note','left diagonal margin beside main lines 8–11','cet homéom. E_J≃B_J×I^J est canonique, si dot B_J=intersection dot E_j → B_J; small label; ellipsis')
+inv('diagonal_cancellation','deletion','small annotation within diagonal margin','provisional struck par and one unreadable group under multiplié')
+inv('reformulation_germs','text','main lines 11–13','Cela peut aussi s’expliciter; Cette relation de transversalité passe aux germes')
+inv('conical_family_sentence','text','main lines 14–15','On dit que la famille précédente et un voisinage conique T de Y⊂X sont')
+inv('compatibility_cancellation','deletion','main line 16','compatibles / compatible; la structure des T∩E_i; si remains live')
+inv('transversality_replacement','insertion','above main line 16','transversaux')
+inv('conical_quantifier','insertion','above main line 16','double-underlined de plus; ∀[struck symbol]J comme dessus,')
+inv('conical_index_cancellation','deletion','within the insertion above main line 16','hatched uncertain j before clean J')
+inv('lower_product_restrictions','display','main lines 17–19 / bottom','E_J∩T≃T_J×I^J; two vertical cups; dotted restriction; Y restriction; three parenthetical definitions')
+inv('lower_marginal_note','margin note','left of main lines 17–18','induit par [small uncertain marks] E_J≃B_J×I^J et')
+inv('lower_induisant','text','left of main line 18 only','induisant')
+inv('folio26','margin note','bottom-left corner','26',hand='attribution uncertain; visibly thin, lighter pen or pencil than the main hand')
+
+notes=[
+ 'The page gives a defining product condition for transversal cylindrical neighborhoods: intersections E_J near B_J are modeled on B_J×I^J, with each λ_{E_j} acting in the corresponding coordinate. This is a report of the manuscript statement, not a proof of existence or uniqueness.',
+ 'The diagonal note calls the product homeomorphism canonical subject to a condition identifying the dotted intersection with B_J. Its small annotation below the isomorphism arrow is unresolved and must not be expanded into a mathematical construction on the basis of context alone.',
+ 'The text asserts that the condition can also be expressed by cylindricity of E_J in each E_{B_j}, and says that the transversality relation passes to germs. No proof of this asserted reformulation was checked in this reading.',
+ 'The final paragraph extends the terminology to a family together with a conical neighborhood T of Y, displaying restrictions to dotted objects and to Y. The live product-side T_J is unbarred, and there are two vertical inclusion cups between the first two rows.',
+ 'The opening p_0:X_0→Y_0 has no dot on X_0, whereas the preceding restrictions use dotted X_0. The undotted source is preserved; no correction to the mathematically expected domain is made.',
+ 'The final parenthesis has Y_J=Y∼B_J in the ink. The likely intended intersection is not silently substituted.',
+ 'The detached stroke below the opening map is not securely identified or attached. I_2 / I_ell is only a provisional placement for an explicitly doubtful transcription; a nonsemantic pen stroke remains possible and should receive second-pass adjudication.',
+ 'The second t in the coordinate conditions has no clearly separated prime; an upward branch of its cross-stroke could carry the prime. The tuple’s right inner delimiter also looks more square than the other parentheses. Both are retained as narrow doubts without inventing an underlying canceled term in the heavy retracing.',
+ 'The article before parties and the canceled compatible(s) ending remain doubtful: final pen returns can look like s, and grammatical agreement is insufficient evidence.',
+ 'The two strokes below inserted de plus are read provisionally as double underlining, not cancellation. The original long condition is separately canceled, while si remains live.',
+ 'The lower note’s short initial phrase is provisionally induit par; the three small groups after par remain uncertain. They are not reconstructed as an extra word.',
+ 'The only foliation visible is the thin 26 at bottom left. No own page number or date is visible at the head. The foliation hand is not attributed with certainty.',
+ 'line_count=19 counts the principal horizontal manuscript baselines, including the three bottom formula rows. Replacement lines, insertion leaders, diagonal annotation lines, and lower margin lines are separately inventoried.',
+ 'Every source image in the supplied packet was viewed directly without OCR. Nineteen first-pass crops were made and viewed. This return does not contain a TeX compilation or a mathematical proof check.'
+]
+checks=[
+ {'statement_id':'150.027.N1','type':'carried as background without fault found','outcome':'Read the coordinate product condition as a definition. No existence theorem, equivalence proof, or independent re-proof was attempted.'},
+ {'statement_id':'150.027.N2','type':'carried as background without fault found','outcome':'Recorded the marginal canonicity assertion as written, with its annotation still doubtful. Its mathematical validity was not checked.'},
+ {'statement_id':'150.027.N3','type':'carried as background without fault found','outcome':'Recorded the claims of an equivalent cylindrical formulation and passage to germs; no proof claim is made.'},
+ {'statement_id':'150.027.N4','type':'carried as background without fault found','outcome':'Read the three product-restriction rows and their vertical inclusions. Checked the visible symbol distinctions, not the asserted topological construction.'}
+]
+notation=[
+ {'form':r'I','meaning_or_shape':'Ordinary serif capital I; used as interval factor. The page does not visibly distinguish a bold alphabet.','places':'opening restriction, B_J×I^J, coordinate product restrictions'},
+ {'form':r'J','meaning_or_shape':'Capital J often resembles a right square bracket, with a horizontal top and hooked lower foot.','places':'J⊂I; E_J; B_J; powers I^J; replacement ∀J'},
+ {'form':r'j','meaning_or_shape':'Narrow downstroke with a leftward foot; distinguishes the coordinate index from bracket-shaped capital J.','places':'λ_{E_j}, E_j, inserted j∈J; diagonal intersection'},
+ {'form':r'\dot X_0,\dot B_J,\dot E_j,\dot T','meaning_or_shape':'A distinct dot above the object; the precise geometric meaning is not defined on this page.','places':'opening, diagonal marginal formula, second lower row'},
+ {'form':r'\xrightarrow{\sim}','meaning_or_shape':'Wavy stroke above a right-pointing arrow; distinguish from the equality-shaped simeq in the product identifications.','places':'diagonal margin, map to B_J'},
+ {'form':r'\cup','meaning_or_shape':'Vertical inclusion mark between stacked rows, repeated under both the left E_J and the right T_J; not a union in a running formula.','places':'between lower display rows 1 and 2'},
+ {'form':r'T_J','meaning_or_shape':'The bar is the sole ordinary crossbar of T, not a separate overline.','places':'first lower row and its parenthetical definition'},
+ {'form':r'Y\sim B_J','meaning_or_shape':'Horizontal tilde in the last parenthesis, preserved as an apparent source slip for an intersection.','places':'final formula'},
+ {'form':r'\mathrm{def}','meaning_or_shape':'Unaccented small handwritten d-e-f above both defining equality signs.','places':'main line 7'}
+]
+abbreviations=[
+ {'form':'homéom.','expansion':'homéomorphisme'},
+ {'form':'def','expansion':'définition'},
+ {'form':'etc','expansion':'et cetera'},
+ {'form':'id','expansion':'identité'}
+]
+hand_log=[
+ {'habit':'Capital J is bracket-shaped, whereas coordinate j has a narrow stem and hooked foot.','places':'line 6 J⊂I; line 7 E_J; line 9 E_j and j∈J; diagonal note','consistent':'The distinction holds in the clear main-line occurrences. The small bound index in the margin remains less secure.','witness_errors':'H has E_J for main-line E_j and E_i for marginal E_j; C leaves the latter doubtful and uses i in the marginal bound index.'},
+ {'habit':'The top crossbar of T can be detached slightly from its vertical stroke; this alone does not create an overline.','places':'first lower row and its right-hand definition; compare the adjacent plain T in T∩B_J','consistent':'All clear lower-row unpointed T forms have a single top bar.','witness_errors':'C adds overlines to two T_J forms.'},
+ {'habit':'Low connecting strokes and terminal downward returns can imitate a final s.','places':'disputed de(s) parties; est celle de; canceled compatible(s)','consistent':'Only a local warning is established; the two disputed endings remain open.','witness_errors':'C/H disagree on des/de and compatibles/compatible; neither disagreement is claimed as fully settled.'},
+ {'habit':'A long curved insertion leader may run above a word without striking it.','places':'(pour j∈J) above induisant','consistent':'One clear occurrence on this page.','witness_errors':'H supplies ci-dessus and correspondant à where the leader arches over induisant.'},
+ {'habit':'Final t in short running words can be an angular raised return.','places':'induisant in the homothety sentence and left of the lower dotted row; short lower-margin induit','consistent':'Clear in both induisant occurrences; the shorter lower-margin word remains marked doubtful.','witness_errors':'H replaces the first induisant with uncertain correspondant à; C proposes a longer lower-margin phrase.'},
+ {'habit':'Greek coordinate subscripts can be heavily retraced; do not treat every added-looking stroke as a recoverable deleted letter.','places':'coordinate tuple at the right of line 9','consistent':'The main coordinate conditions support alpha, but the tuple’s dense retracing and final delimiter remain locally difficult.','witness_errors':'No distinct C/H error in the alpha indices is established.'},
+ {'habit':'A lower straight stroke ending in an arrowhead distinguishes an isomorphism arrow from simeq.','places':'diagonal marginal map to B_J versus product identifications','consistent':'Clear at the one directed marginal map.','witness_errors':'C typesets the marginal arrow as simeq; H does not transcribe the end of the marginal formula.'}
+]
+doubts=[
+ {'place':'line 1 / detached stroke below second I and arrow start','reading':r'I_{\unsure{2|\ell}}','alternatives':'2; ell; uncertain attachment to I versus arrow gap; possibly an extraneous pen stroke','confidence':'low'},
+ {'place':'line 4 / de(s) parties','reading':r'\unsure{des|de} parties','alternatives':'des parties | de parties','confidence':'low'},
+ {'place':'line 9 / right inner delimiter of coordinate tuple','reading':r'\unsure{(t\prime_\alpha)|(t\prime_\alpha]}','alternatives':'round closing parenthesis | square-looking closing bracket','confidence':'medium'},
+ {'place':'line 10 / prime on second t before equality','reading':r'\unsure{t\prime_\alpha|t_\alpha}','alternatives':'t′_alpha | t_alpha','confidence':'medium'},
+ {'place':'diagonal note / bound index under intersection','reading':r'\bigcap_{j\in J}\dot E_j','alternatives':'j in the bound index is preferred; a compressed i is not completely excluded','confidence':'medium'},
+ {'place':'diagonal note / first small label word','reading':r'\unsure{multiplié}','alternatives':'ending and accent not securely separable','confidence':'low'},
+ {'place':'diagonal note / crossed middle label line','reading':r'\deleted{\unsure{par}\ \illegible{1}}','alternatives':'first group resembles par; next group obscured; segmentation and cancellation scope provisional','confidence':'low'},
+ {'place':'diagonal note / label noun phrase','reading':r"l'élément \unsure{unité|nul} de",'alternatives':'unité | nul','confidence':'low'},
+ {'place':'line 16 / ending of canceled compatibility word','reading':r'\deleted{\unsure{compatibles|compatible}}','alternatives':'compatibles | compatible','confidence':'low'},
+ {'place':'line 16 / inserted de plus state','reading':r'\uuline{de plus}','alternatives':'live double underlining preferred; crowded placement warrants a second check against cancellation','confidence':'medium'},
+ {'place':'line 16 / hatched symbol before clean J','reading':r'\deleted{\unsure{j}}','alternatives':'underlying symbol not fully readable; j is retained as a doubtful proposal','confidence':'low'},
+ {'place':'lower margin / opening words','reading':r'\unsure{induit par}','alternatives':'induit par preferred; longer s’induisant par lacks visible length/strokes','confidence':'medium'},
+ {'place':'lower margin / marks to right of par','reading':r'\unsure{\ldots}','alternatives':'three punctuation-like groups versus compressed unidentified writing','confidence':'low'}
+]
+for d in doubts:
+    d['reading']=d['reading'].replace(r't\prime',"t'")
+
+second=[]
+def sb(coords,kind,reading,reason):
+    second.append(dict(box=f'b{len(second)+1:02}',kind=kind,coords=coords,reading=reading,reason=reason))
+sb([300,48,1645,163],'handwritten number; doubt formula; low-confidence departure',r'$p|_{\dot X_0\times I}$ induise $\dot X_0\times I_{\unsure{2|\ell}}\longrightarrow Y_0\times I$, s’identifiant','All handwritten zero subscripts on the first line and the complete map with its doubtful detached stroke; no digit treated as certain merely by context.')
+sb([300,174,1092,265],'handwritten number',r'à $p_0\times\operatorname{id}_I$, où $p_0:X_0\longrightarrow Y_0$.','All remaining handwritten zero subscripts in the opening paragraph.')
+sb(boxes['heading'],'insertion; struck passage',r'\deleted{Compatibilité}\inserted{Transversalité}', 'Whole canceled heading and its above-line replacement; underline-versus-strike distinction visible.')
+sb(boxes['family_pair'],'struck passage; C/H word difference',r'\deleted{finie} $(B_i,E_{B_i})$', 'Canceled finie, which H leaves live, plus the small two-level subscript.')
+sb(boxes['parties'],'C/H word difference; low-confidence departure',r'\unsure{des|de} parties','C/H des/de difference left narrowly unresolved.')
+sb(boxes['definition'],'C/H word difference',r'\bigcap_{i\in J}E_{B_i}\overset{\mathrm{def}}=E_J,\quad\text{autour de}\quad B_J\overset{\mathrm{def}}=\bigcap_{i\in J}B_i,','Both whole defining formulas; def/déf and autour/au-dessus differences.')
+sb(boxes['product_words'],'C/H word difference','est celle de','H inserts isomorphe à and marks the beginning as an addition; all visible words included.')
+sb(boxes['diagonal_note'],'margin note; struck passage; doubt formula; C/H word difference; low-confidence departure',r"cet homéom. $E_J\simeq B_J\times I^J$ est canonique, si $\dot B_J=\bigcap_{j\in J}\dot E_j\underset{\substack{\text{\unsure{multiplié}}\\\text{\deleted{\unsure{par}\ \illegible{1}}}\\\text{l'élément \unsure{unité|nul} de}\\I^J}}{\xrightarrow{\sim}}B_J$ \ldots",'Complete diagonal marginal note, every formula containing a C doubt, provisional struck label line, all five marginal C marks, and all C/H marginal word differences; crop was rotated −45° for first reading.')
+sb(boxes['homothety'],'insertion; C/H word difference',r'$\lambda_{E_j}$ de $E_j$ \inserted{(pour $j\in J$)} induisant','Complete quantifier insertion and its leader, E_j case, induisant/correspondant à, and H-only ci-dessus.')
+sb([1075,1109,1640,1268],'doubt formula',r"(b,(t_\alpha)_{\alpha\in J})\longmapsto(b,\unsure{(t'_\alpha)|(t'_\alpha]}),",'Whole coordinate map containing the proposed delimiter doubt; dense subscripts remain visible for independent checking.')
+sb(boxes['coordinate_conditions'],'doubt formula; C/H word difference',r"t'_\alpha=t_\alpha\ \text{si }\alpha\ne j,\quad\text{et }\unsure{t'_\alpha|t_\alpha}=\lambda t_\alpha\ \text{si }\alpha=j.",'Both complete scalar conditions, proposed prime doubt, and et omitted by H.')
+sb(boxes['cylindrique'],'C/H word difference',r'chaque $E_{B_j}$ etc\ldots','The etc omitted by H with its immediately neighboring small index and ellipsis.')
+sb(boxes['germes'],'C/H word difference','passe aux germes.','Whole disputed ending of the germ statement, including the point at the edge.')
+sb(boxes['famille_precedente'],'C/H word difference',r'la famille précédente \uline{et}','The entire C doubted singular/plural phrase and the independently visible underline on et.')
+sb(boxes['conique'],'C/H word difference','conique','Agreed witness accent rejected after a tight crop; all space over o included.')
+sb(boxes['condition_overwrite'],'insertion; struck passage; doubt formula; C/H word difference; low-confidence departure',r'\inserted{transversaux} \deleted{\unsure{compatibles|compatible}} si \deleted{la structure des $T\cap E_i$} \inserted{\uuline{de plus} $\forall\deleted{\unsure{j}}J$ comme dessus,}', 'Every lower replacement and struck span, including insertion struck again, the uncertain quantifier symbol with its whole formula, compatibility ending, live si, de plus state, and final comma.')
+sb(boxes['bottom_formulas'],'doubt formula',r'E_J\cap T\simeq T_J\times I^J;\quad\cup\ \cup;\quad\dot E_J\cap\dot T\simeq\dot T_J\times I^J;\quad E_J\cap Y\simeq Y_J\times I^J\quad(\text{où }Y_J=Y\sim B_J)', 'Whole lower array for bars/dots, both vertical inclusions, and final tilde. The source has no invented overline; this audit also protects adjacent symbols near the crowded corrections.')
+sb(boxes['bottom_note'],'margin note; doubt formula; C/H word difference; low-confidence departure',r'\unsure{induit par} \unsure{\ldots} $E_J\simeq B_J\times I^J$ et','Entire lower margin note and its formula, including the C disputed initial phrase, small additional marks, and et.')
+sb(boxes['induisant_placement'],'C/H word difference','induisant [only beside the dotted row; blank beside the Y row]','Visible single occurrence and the blank space where H duplicates it; placement is source evidence.')
+sb(boxes['folio'],'margin note; handwritten number','26','Both handwritten foliation digits and their distinct lighter/thinner ink; attribution remains open.')
+
+result=dict(scan=27,reader='reader_c',line_count=19,changes=changes,marks=marks,inventory=inventory,doubts=doubts,notes=notes,check_events=checks,notation=notation,abbreviations=abbreviations,hand_log=hand_log,second_boxes=second)
+# Exact source-content check for proposal snippets; comparison collapses whitespace only.
+norm=lambda s: re.sub(r'\s+',' ',s).strip()
+for i,row in enumerate(changes,1):
+    if norm(row['final']) not in norm(page):
+        raise AssertionError(f'change {i} final not found: {row["final"]}')
+for collection in [changes,marks]:
+    for item in collection:
+        assert (root/'crops'/item['crop']).is_file(), item['crop']
+        assert len(item['box'])==4
+stack=[]
+for i,ch in enumerate(page):
+    if ch in '{}':
+        preceding=0
+        p=i-1
+        while p>=0 and page[p]=='\\':
+            preceding+=1;p-=1
+        if preceding%2: continue
+        if ch=='{': stack.append(i)
+        elif stack: stack.pop()
+        else: raise AssertionError(f'Unmatched closing brace {i}')
+assert not stack,stack
+assert len(marks)==8
+out=root/'reader_returns'
+(out/'150_scan027.tex').write_text(page,encoding='utf-8')
+(out/'150_scan027.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print(json.dumps({'scan':27,'changes':len(changes),'C_marks':len(marks),'inventory':len(inventory),'doubts':len(doubts),'second_boxes':len(second),'crops':len(boxes),'brace_balance':'OK','change_snippets':'all present','outputs':[str(out/'150_scan027.tex'),str(out/'150_scan027.json')]},ensure_ascii=False))

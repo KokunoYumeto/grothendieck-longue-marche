@@ -1,0 +1,21 @@
+# Main-reader visual review: scan 045
+
+The main reader directly viewed all 24 initial crops, the expanded margin_bc_full completion, and the original whole-page geometry once to determine the attachment of the separately oriented injection annotation. Returned TeX and metadata remain to be reviewed.
+
+- Author number 18 and pale lower-left foliation 44 are distinct. The opening i<j<k has no terminal comma. Condition b is circled; (28) and its intersection are legible.
+- d'un, l'hom. d'ens., and the absence of a hyphen in au dessus are supported. The first map has a small rightward head; the lower ideal maps have left hooks and right heads. The raised qui par label remains cramped. The right-margin order note has only z as its subscript, without an additional less-than-or-equal sign.
+- The word injection is underlined and horizontal in the original scan, immediately beside the first lower-ideal map. The longer left note has a rising diagonal baseline. Injection must be transcribed separately, not used as the object of the diagonal note's aient =. The diagonal note's group reads y soient cofinaux from a y descender, following s/i strokes, and cofi with tall f, but crossing letters may remain doubtful. The following clause has an equality sign used in the prose and element final i.
+- The insertion dans I attaches by a curved leader above the main minorant clause. The emptiness sign is phi-shaped, with a long near-upright slash through a small oval. The parenthetical subset formula has blank paper before its closing parenthesis; no target is supplied.
+- The margin-c label has a circled c and the doubtful Gros group. The note includes an equality sign in the prose before element final k, and its last phi-shaped sign has no independently secure stop.
+- The right family note was initially clipped at its upper edge. The one expanded completion includes (d_alpha)_alpha and est. Its compressed and overlapping words require narrow doubts; no completion is inferred from expected intersection laws.
+- Live bord-ts is an abbreviation. The preceding bord is canceled. The main reference reads grace with its written accent followed by a colon and (30); no independent a with grave accent follows it. The raised et (28) has its own placement leader.
+- The bottom flag has two short horizontal continuation marks, not three, and no extra comma before i_n. The initial tiny digit is heavily filled. The following list has an upright first digit and a low-foot second digit, admitting 0/1 and 1/2 doubts respectively; sequence expectations do not settle them. Its continuation has two marks, one point-like and one short horizontal stroke. The last Sigma index has one dash, not an ellipsis. The final full stop is distinct.
+- The long bottom-left condition-d note crosses main-line words and indices; retain doubts at compressed groups, and do not duplicate the main text as marginal content. Condition d is circled. All note prose remains ordinary LaTeX text.
+
+## Final adjudication
+
+The complete returned TeX and all metadata were read. The existing first_maps and condition_c crops were reopened: the tiny enclosed reference contains an a-like body and has no independent numeral 1 to its left; Gros has an open G, r, round o and returning s. Both are accepted at medium confidence.
+
+The margin_d_overlap completion was viewed directly: the apparent un drapeau is horizontal main text, and the several d-prime groups belong to already transcribed marginal clauses. No second un drapeau de d-prime is supplied. The marginal sentence therefore remains incomplete. H explicitly quotes partial readings of this note; the collation quotes that evidence and records recovered portions, not a wholly absent block.
+
+The reference30_complete crop includes the previously clipped upper edge. Its long lead-in belongs to the numeral 2; after 8 is one low comma, not a full-height parenthesis. The final reading is inserted et 28,. This supersedes the provisional parenthetical description above. The expanded b21 audit box includes every upper stroke. All 27 crop images (24 distinct places) have now been viewed by the main reader. Full metadata and revised witness accounting are approved.
