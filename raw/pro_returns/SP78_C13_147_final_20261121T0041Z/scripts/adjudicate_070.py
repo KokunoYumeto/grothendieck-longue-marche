@@ -1,0 +1,33 @@
+from pathlib import Path
+import json,csv
+w=Path(__file__).resolve().parents[1];page='147_scan070'
+ev={
+'B01':'The author number34, case4, underlined Cas de, both hats, first bang and 1,2/1,I indices agree. The crossed second exponent still exposes only part of a bang-like mark. After card I=2 the canceled sign has right-facing upper/lower returns, but its interior is obscured; keep the tentative brace rather than replacing it by a question mark.',
+'B02':'The left brace and two vertical dividers, three arrowheads with labels2,1,1, and the isolated codimension-zero object agree. Both arcs stop just short of P0’s right filled vertex, unlike the blind closed arcs. The genus1 labels have connected feet only. The tiny isolated spot well below the left1 has no label or connecting stroke and is not promoted to an additional graph vertex, consistently with the first physical inspection. Keep the first geometry and G0/P0 versus G1/P1 labels.',
+'B03':'The five loop-divisor occurrences retain a small filled right point and the segment symbols have both endpoint dots. A straight stroke crosses dont through its letter bodies, while the raised P0 et P1 and its connector are independent; do not make dont live. The following containing prepositions have d ascenders and low an/s tails, supporting dans rather than en. Keep the actual prose P0 even though the diagram’s common target is P1.',
+'B04':'The short word has an initial s, low a group, narrow i and a later s/i/r run; there is no independently crossed t for sentir. Retain saisir. Bien is raised with its curved connector; the live schematic adjective and remaining words agree.',
+'B05':'The whole formula has both hats, infinity on both M symbols and a separate bang on the second. Reunion amalgamee and lisses are live. The crossed group retains a plausible upper wedge and M-like upright pair but is too overwritten to resolve; keep the qualified hat M, not an undifferentiated question mark. The graph subscripts agree.',
+'B06':'The pointed loop, isomorphe phrase and full pair agree. The raised mark on M is a solid stem with a spur, still uncertain as a bang; Gamma’s separate upright and dot are plain. Keep the whole-formula uncertainty and the original equivalent encoding.',
+'B07':'The MD- group is interlinear with its own connector. The loop has a pointed right junction, slightly slanted oval body, filled point and I(2) label; retain its first approximation. The comma, Gamma0 and son groupe agree.',
+'B08':'The exclamation on Gamma, kernel, right-headed arrow, looped symmetric-group letter with I(G0) index, and double-stroked Z/2 agree. A focused crop through the right image edge shows no separate period after the2. Remove the supplied stop; the closeness of the sheet edge is recorded rather than completing punctuation.',
+'B09':'Both hats and double-stroked P/Z agree. The U has a plain tall returning stem, not an independently ornamented alphabet; its lowered0,3 Z is retained. The three insertions have their own guides. The long strike obscures parts of facon and intrinseque, so their doubts remain. The replacement starts with a large C then e/c/i, not ce qui. The choice1 stays overworked. A focused crop shows a short upright and detached dot immediately before the closing parenthesis, its top touching that parenthesis: a real exclamation omitted by both witnesses. Retain trouve (initial crossed t, no f descender), the low en before quotient, and the initial bar on the element map.'}
+first={r['box']:r['reading'] for r in csv.DictReader((w/'second'/f'{page}_first.tsv').open(),delimiter='\t')}
+d={b:{'root_viewed':True,'changed':False,'evidence':e} for b,e in ev.items()}
+d['B08'].update(changed=True,final=first['B08'][:-1])
+d['B09'].update(changed=True,final=first['B09'].replace(r'$\infty$) donc',r'$\infty$ !) donc'))
+assert d['B09']['final']!=first['B09']
+p=w/'pages'/f'{page}.tex';t=p.read_text()
+for b in ['B08','B09']:
+ assert first[b] in t,b;t=t.replace(first[b],d[b]['final'])
+p.write_text(t)
+(w/'second'/f'{page}_root_decisions.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+p=w/'reviewed'/f'{page}.json';r=json.loads(p.read_text())
+r['changes'][42].update(C=') donc',H='), donc',final=') donc',evidence='The closing parenthesis is followed directly by the initial stroke of donc, without a detached comma. The newly recognized exclamation lies before the parenthesis and is recorded separately in070-49.')
+r['changes'].extend([
+ {'id':'070-48','place':'Kernel formula, end at right sheet edge','C':r'\mathbb Z/2$.','H':r'\mathbb{Z}/2$.','final':r'\mathbb Z/2$','evidence':ev['B08'],'crop':f'{page}_second_root_B08_end.png','box':[1550,1680,1691,1818],'confidence':'medium','against_C':True,'against_H':True,'kind':'text not on the page','marked_in_H':False,'error_sheet_kind':'text not on page','consequential':False},
+ {'id':'070-49','place':'Bottom parenthetical choice, punctuation before closing delimiter','C':r'$\infty$)','H':r'$\infty$)','final':r'$\infty$ !)','evidence':'A short near-vertical stroke with a distinct dark point below it stands immediately before the large closing parenthesis. Its top touches the parenthesis but its lower stem and dot are separately visible. Both witnesses omitted this exclamation.','crop':f'{page}_second_root_B09_close.png','box':[1250,2200,1530,2335],'confidence':'high','against_C':True,'against_H':True,'kind':'omission','marked_in_H':False,'error_sheet_kind':'omissions','consequential':False}
+])
+r['notes'].append('Blind audit: the main reader personally checked all nine differing boxes. Two punctuation corrections were made: the kernel formula has no visible period at the right sheet edge, and a clear exclamation stands before the bottom parenthesis, its stem touching the parenthesis above but its dot independent. Diagram gaps, canceled dont, literal P0/P1 discrepancy, plain U, inserted capital Ceci, en before quotient and the barred map remain. The two tiny unconnected spots in the diagram are not additional vertices.')
+r['root_review_notes']+=' All nine differing blind boxes checked. Two punctuation corrections; focused edge and closing-parenthesis crops saved.'
+p.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+p=w/'workflow/root_audit_views.json';v=json.loads(p.read_text());v['70']={'crops':[f'{page}_second_{b}.png' for b in ev]+[f'{page}_second_root_B08_end.png',f'{page}_second_root_B09_close.png'],'extra_boxes':{'B08_end':[1550,1680,1691,1818],'B09_close':[1250,2200,1530,2335]},'observations':ev};p.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n')
