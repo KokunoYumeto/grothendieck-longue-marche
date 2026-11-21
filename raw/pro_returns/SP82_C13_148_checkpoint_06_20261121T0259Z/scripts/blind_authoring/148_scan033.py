@@ -1,0 +1,395 @@
+"""Blind scan033 authoring, based only on the assigned fixed crop views.
+No OCR, external sources, witnesses, first-pass files, or TeX compilation.
+"""
+import csv
+import json
+import os
+from pathlib import Path
+
+OUT = Path('/workspace/scratch/8132fe1cca43/work/SP82_C13_148/second')
+
+
+def fig(w, h, ink, scale='.019'):
+    return (r'\figure{\begin{tikzpicture}[x=' + scale + 'cm,y=-' + scale
+            + r'cm,line cap=round,line join=round,>=stealth]'
+            + '\n' + r'\definecolor{inkgreen}{RGB}{63,84,35}'
+            + '\n' + rf'\clip (0,0) rectangle ({w},{h});' + '\n'
+            + ink.strip() + '\n' + r'\end{tikzpicture}}')
+
+
+rows = [
+ ('S33-subtotal180', r'\(180\left\{\vphantom{\begin{matrix}0\\0\\0\end{matrix}}\right.\)'),
+ ('S33-row180a', r'\(60=3\times20=2\times30\qquad f_{\unsure{B},s}\)'),
+ ('S33-row180b', r'\(120=4\times30=2\times60\qquad f_{\overrightarrow{Q},a}\)'),
+ ('S33-subtotal420', r'\(420\)'),
+ ('S33-row420a', r'\(60=1\times60=4\times60\qquad\tau_{\pi,s}\)'),
+ ('S33-row420insert', r'''\inserted{\(120=1\times120=1\times\unsure{220|120}\)}
+\diagram{\begin{tikzcd}[column sep=large]
+{} & |[draw,circle]| {\tau_r^0}\arrow[l]
+\end{tikzcd}}
+\(60=1\times60=5\times12\qquad\gamma_{\unsure{R|\pi},s}\)'''),
+ ('S33-row420b', r'\(60=1\times60=5\times12\qquad\gamma_{\unsure{R|\pi},s}\)'),
+ ('S33-row420c', r'\(60=1\times60=3\times20\qquad\gamma_{\pi,s}^{\prime}\)'),
+ ('S33-row420d', r'\(120=1\times120=6\times20\qquad\gamma_r^0\)'),
+ ('S33-subtotal1020', r'''\inserted{\(1020\)}\\
+\deleted{\(\unsure{780|900}\)}'''),
+ ('S33-row1020a', r'\(120=2\times60=1\times120\qquad\tau_{\pi,\unsure{g|\rho}}\)'),
+ ('S33-row1020b', r'\(120=\unsure{\deleted{1\times120}\inserted{2\times60}|2\times60}=2\times60\qquad\gamma_{\pi,\unsure{g|\rho}}\)'),
+ ('S33-row1020c', r'\(120=\deleted{\unsure{2\times60}}\inserted{1\times120}=2\times60\qquad\unsure{\tau|\gamma}_{\deleted{\unsure{\pi,g}}\inserted{r}}\)'),
+ ('S33-row1020d', r'\(120=1\times120=2\times60\qquad\gamma_r^1\)'),
+ ('S33-row1020e', r'\(120=\overset{\inserted{3\times40=3\times40}}{\deleted{\unsure{1\times120=2\times60}}}\qquad\gamma_r^{1\prime}\)'),
+ ('S33-row1020f', r'\(120=2\times60=2\times60\qquad\gamma_r^2\)'),
+ ('S33-row1020g', r'\(60=1\times60=2\times30\qquad\gamma_r^{2\prime}\)'),
+ ('S33-total', r'\(\underset{\inserted{1620}}{\overline{\overline{\deleted{\unsure{1380|1480}}}}}=5\times60+\deleted{\unsure{9}}\inserted{11}\times120\)'),
+ ('S33-programme1', r'''Programme de travail :\\
+1) déterminer \unsure{un|les} syst. fondamental de\\
+relations entre les 1620 flèches\\
+du diagramme, se partageant\\
+\deleted{entre} 14 \deleted{paquets de}\inserted{orbites} sous \(G_K\) (ou 542\\
+segments, se partageant \deleted{entre} 9 orbites)'''),
+ ('S33-programme1-strikes', r'\deleted{entre} 14 \deleted{paquets de}\inserted{orbites} \unsure{so}'),
+ ('S33-margin', r'''\margin{en particulier,\\
+écrire toutes les\\
+flèches comme\\
+composées de\\
+flèches ``provenant de\\
+dimensions ambiantes \(\leq1\)''}'''),
+ ('S33-cancelled-start', r'\deleted{2) \unsure{Éli.}}'),
+ ('S33-programme2-live', r'''2) Reprendre la question, en éliminant\\
+les sommets de niveau 0 (sauf\\
+peut-être ceux de type \(\mathrm{I}_{\unsure{20|\omega}}\) ?),'''),
+ ('S33-programme2-deleted', r'''\deleted{et \(\mathrm{I}_1\) \deleted{\unsure{ceux}} (ceux de type \(\mathrm{II}_1\) (qui reviennent\\
+à ceux de type \(\mathrm{III}_1\)) -- mais attention\\
+aux \unsure{twist|twists} \inserted{\(\mathrm{tw}_{1/6}\)} / \unsure{relèvements} : \(\mathrm{II}_1\) (qui donne\\
+une structure de \illegible{1})}'''),
+ ('S33-tw-insertion', r'\inserted{\(\mathrm{tw}_{1/6}\)}'),
+ ('S33-programme3', r'''3) Éliminer de plus les pièces\\
+\deleted{``gauches''} \inserted{``tétraèdres''} \(\mathrm{II}_1\) -- et toutes\\
+les pièces qui ne semblent pas\\
+simplifier la présentation des relations.'''),
+ ('S33-gauches', r'\deleted{``gauches''}'),
+]
+
+rows.append(('S33-pants', fig(232, 198, r'''
+\draw[line width=.8pt] (58,44) .. controls (55,27) and (79,21) .. (91,22)
+ .. controls (108,24) and (118,23) .. (123,33)
+ .. controls (110,46) and (78,53) .. (58,44);
+\draw[line width=.8pt] (58,44) .. controls (65,88) and (59,120) .. (34,151);
+\draw[line width=.8pt] (119,35) .. controls (124,76) and (145,87) .. (166,87) -- (195,88);
+\draw[line width=.8pt] (87,183) .. controls (113,155) and (138,139) .. (161,140) -- (199,140);
+\draw[line width=.9pt] (34,151) .. controls (54,137) and (88,151) .. (88,168)
+ .. controls (90,190) and (73,185) .. (59,178)
+ .. controls (47,172) and (34,162) .. (34,151);
+\draw[line width=.9pt] (197,88) .. controls (222,79) and (231,111) .. (214,137)
+ .. controls (202,158) and (184,129) .. (195,89);
+\draw[line width=.7pt] (61,145) -- (126,71) -- (136,79);
+\draw[line width=.45pt,dash pattern=on 7pt off 5pt] (61,180) .. controls (97,153) and (124,118) .. (140,87);
+\draw[black!45,line width=.35pt] (70,48) .. controls (72,80) and (69,120) .. (61,143);
+\draw[black!45,line width=.35pt] (94,50) .. controls (106,66) and (128,78) .. (146,88);
+\draw[black!40,line width=.3pt] (0,115) -- (23,54);
+\draw[black!40,line width=.3pt] (198,184) -- (232,153);
+''')))
+
+rows.append(('S33-four_top', fig(232, 190, r'''
+\draw[line width=.85pt] (22,49) .. controls (15,34) and (43,7) .. (56,17)
+ .. controls (69,27) and (48,46) .. (31,50) -- (22,49);
+\draw[line width=.75pt] (58,22) .. controls (67,36) and (103,38) .. (124,43);
+\draw[line width=.75pt] (138,38) .. controls (151,34) and (158,29) .. (165,25);
+\draw[line width=.8pt] (165,25) .. controls (174,11) and (208,22) .. (211,39)
+ .. controls (212,57) and (193,50) .. (180,45)
+ .. controls (167,40) and (157,30) .. (165,25);
+\draw[line width=.8pt] (35,49) .. controls (51,65) and (56,84) .. (55,101);
+\draw[line width=.8pt] (207,51) .. controls (199,99) and (207,113) .. (217,127);
+\draw[line width=.8pt] (52,116) .. controls (51,136) and (42,145) .. (38,155);
+\draw[line width=.8pt] (38,155) .. controls (61,151) and (84,167) .. (90,181)
+ .. controls (63,188) and (31,174) .. (38,155);
+\draw[line width=.75pt] (90,181) .. controls (118,146) and (132,134) .. (148,140)
+ .. controls (164,141) and (179,148) .. (188,157);
+\draw[line width=.85pt] (188,157) .. controls (201,139) and (209,130) .. (217,127)
+ .. controls (228,148) and (209,173) .. (197,171)
+ .. controls (188,171) and (182,164) .. (188,157);
+\draw[line width=.55pt] (81,169) -- (79,179) -- (84,179);
+\draw[line width=.55pt,dash pattern=on 6pt off 5pt] (58,98) .. controls (110,83) and (150,79) .. (200,94);
+\draw[line width=.55pt,dash pattern=on 5pt off 6pt] (130,43) .. controls (152,72) and (155,104) .. (134,138);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 3pt off 5pt] (54,101) .. controls (113,83) and (153,78) .. (200,93);
+\draw[inkgreen,line width=1.2pt,dash pattern=on 3pt off 5pt] (133,44) .. controls (153,67) and (152,102) .. (145,137);
+\draw[black!40,line width=.3pt] (0,36) -- (15,0);
+''')))
+
+rows.append(('S33-four_middle', fig(190, 145, r'''
+\draw[line width=.95pt] (64,26) .. controls (65,7) and (93,2) .. (112,12)
+ .. controls (121,18) and (122,33) .. (111,37)
+ .. controls (91,39) and (65,40) .. (64,26);
+\draw[line width=.85pt] (65,25) .. controls (50,56) and (25,90) .. (15,110);
+\draw[line width=.8pt] (118,20) -- (156,40);
+\draw[line width=.85pt] (109,37) -- (141,95);
+\draw[line width=.85pt] (156,40) .. controls (174,39) and (177,66) .. (166,81);
+\draw[line width=.75pt] (156,41) .. controls (142,53) and (163,66) .. (170,53);
+\draw[line width=.85pt] (166,79) -- (165,111);
+\draw[line width=.9pt] (15,110) .. controls (24,97) and (43,118) .. (40,130)
+ .. controls (35,143) and (16,138) .. (11,125) -- (15,110);
+\draw[line width=.9pt] (142,102) .. controls (154,88) and (168,98) .. (164,118)
+ .. controls (165,134) and (136,129) .. (136,117) -- (142,102);
+\draw[line width=.85pt] (39,131) .. controls (83,128) and (111,121) .. (144,127);
+\draw[line width=.65pt] (19,121) -- (32,115);
+\draw[line width=.55pt,dash pattern=on 5pt off 5pt] (40,112) -- (149,59);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 4pt off 5pt] (42,70) .. controls (75,60) and (119,63) .. (164,78);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 4pt off 5pt] (45,77) -- (71,126) -- (127,72) -- (132,34);
+''')))
+
+rows.append(('S33-cancelled_drawing', r'\deleted{' + fig(226, 151, r'''
+\draw[line width=.8pt] (69,54) -- (75,33);
+\draw[line width=.8pt] (119,14) .. controls (128,32) and (163,35) .. (184,27);
+\draw[line width=.7pt] (144,28) .. controls (151,58) and (144,70) .. (132,82);
+\draw[line width=.75pt] (55,67) .. controls (91,60) and (136,57) .. (187,82)
+ .. controls (184,92) and (189,100) .. (195,104);
+\draw[line width=.55pt] (187,82) .. controls (192,65) and (205,65) .. (202,48);
+\draw[line width=.7pt,dash pattern=on 7pt off 5pt] (16,107) -- (57,75);
+\draw[line width=.7pt,dash pattern=on 7pt off 5pt] (40,128) .. controls (72,123) and (95,111) .. (110,122) -- (164,134);
+\draw[line width=.6pt,dash pattern=on 6pt off 5pt] (110,122) -- (137,79);
+\draw[inkgreen,line width=1pt,dash pattern=on 4pt off 5pt] (144,28) -- (143,65) -- (189,82);
+\draw[black!65,line width=.8pt] (0,81) -- (145,0);
+\draw[black!65,line width=.9pt] (52,66) -- (163,17) -- (43,105) -- (163,54)
+ .. controls (105,92) and (39,135) .. (128,97) -- (185,82)
+ -- (112,123) -- (181,112);
+\draw[black!60,line width=.7pt] (72,57) -- (120,20);
+''') + '}'))
+
+rows.append(('S33-five_holes', fig(303, 283, r'''
+\draw[line width=.8pt] (115,18) .. controls (124,2) and (185,3) .. (198,17)
+ .. controls (196,35) and (126,36) .. (115,18);
+\draw[line width=.85pt] (111,20) .. controls (98,53) and (64,76) .. (35,82);
+\draw[line width=.85pt] (199,20) .. controls (208,55) and (224,87) .. (240,90) -- (274,97);
+\draw[line width=.85pt] (35,82) .. controls (21,72) and (5,105) .. (11,122)
+ .. controls (22,141) and (43,111) .. (40,96) -- (35,82);
+\draw[line width=.85pt] (274,97) .. controls (286,112) and (281,137) .. (272,152)
+ .. controls (256,148) and (257,110) .. (269,99) -- (274,97);
+\draw[line width=.85pt] (12,126) .. controls (43,136) and (61,160) .. (61,189) -- (59,239);
+\draw[line width=.85pt] (272,152) .. controls (247,172) and (235,206) .. (243,239);
+\draw[line width=.85pt] (59,239) .. controls (76,233) and (109,247) .. (111,254)
+ .. controls (92,271) and (62,262) .. (57,247) -- (59,239);
+\draw[line width=.85pt] (243,239) .. controls (234,232) and (216,250) .. (210,261)
+ .. controls (224,273) and (246,260) .. (248,245) -- (243,239);
+\draw[line width=.75pt] (110,255) .. controls (149,237) and (184,242) .. (210,261);
+\draw[black!45,line width=.35pt] (37,74) .. controls (107,-9) and (229,-2) .. (264,86);
+\draw[black!40,line width=.35pt] (11,130) .. controls (8,182) and (34,224) .. (57,238);
+\draw[black!45,line width=.35pt] (33,135) .. controls (88,98) and (177,82) .. (237,128);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 4pt off 5pt] (69,76) -- (102,101) -- (137,248);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 4pt off 5pt] (106,44) -- (208,157);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 5pt off 5pt] (48,144) .. controls (89,105) and (164,62) .. (223,54);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 4pt off 5pt] (228,89) -- (203,150) -- (246,160);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 4pt off 5pt] (203,150) -- (199,184) -- (242,196);
+\draw[inkgreen,line width=1.3pt,dash pattern=on 5pt off 5pt] (62,197) -- (111,177);
+\draw[inkgreen,line width=1.3pt] (140,177) -- (192,181) -- (182,243);
+\draw[black!45,line width=.35pt] (139,99) -- (112,105) -- (139,243);
+''')))
+
+rows.append(('S33-sphere_left', fig(343, 345, r'''
+\draw[line width=.9pt] (151,30) .. controls (123,53) and (77,58) .. (50,91)
+ .. controls (26,118) and (21,149) .. (20,179)
+ .. controls (17,230) and (28,264) .. (54,278)
+ .. controls (84,294) and (119,288) .. (139,310);
+\draw[line width=.9pt] (228,29) .. controls (248,59) and (289,56) .. (309,87)
+ .. controls (329,112) and (332,146) .. (331,187)
+ .. controls (332,247) and (292,276) .. (224,295);
+\draw[line width=.9pt] (151,28) .. controls (142,12) and (207,13) .. (226,17)
+ .. controls (243,34) and (198,41) .. (151,28);
+\draw[line width=.95pt] (139,308) .. controls (133,324) and (204,332) .. (218,314) -- (224,295);
+\draw[line width=.6pt,dash pattern=on 6pt off 5pt] (143,303) .. controls (161,291) and (192,293) .. (209,302);
+\draw[line width=1.05pt] (68,203) .. controls (79,179) and (100,168) .. (120,180)
+ .. controls (143,195) and (138,226) .. (126,234)
+ .. controls (104,248) and (69,231) .. (67,213) -- (68,203);
+\draw[line width=1.05pt] (257,194) .. controls (264,166) and (290,153) .. (307,169)
+ .. controls (330,193) and (308,218) .. (290,222)
+ .. controls (268,228) and (250,214) .. (257,194);
+\draw[line width=.9pt] (20,182) -- (68,203);
+\draw[line width=.9pt] (135,214) .. controls (173,222) and (219,214) .. (255,207);
+\draw[line width=.9pt] (314,187) -- (330,177);
+\draw[line width=.65pt,dash pattern=on 5pt off 4pt] (149,143) .. controls (150,124) and (180,105) .. (195,114)
+ .. controls (219,125) and (219,163) .. (201,173)
+ .. controls (178,178) and (153,169) .. (149,143);
+\draw[line width=.6pt,dash pattern=on 3pt off 5pt] (26,162) .. controls (63,146) and (110,142) .. (150,145);
+\draw[line width=.55pt] (218,141) .. controls (254,145) and (281,140) .. (307,148);
+\draw[black!50,line width=.45pt] (137,46) .. controls (132,85) and (155,134) .. (148,208)
+ .. controls (135,248) and (106,277) .. (110,291);
+\draw[black!50,line width=.45pt] (246,53) .. controls (252,94) and (226,122) .. (230,171)
+ .. controls (229,219) and (262,270) .. (235,289);
+\draw[black!55,line width=.5pt] (135,139) .. controls (124,109) and (151,86) .. (207,83)
+ .. controls (274,77) and (309,86) .. (318,113)
+ .. controls (323,140) and (291,140) .. (263,145);
+\draw[black!45,line width=.45pt] (50,103) .. controls (83,84) and (118,138) .. (138,147)
+ .. controls (167,167) and (204,192) .. (252,181);
+\draw[black!55,line width=.5pt] (310,149) .. controls (276,133) and (233,166) .. (241,206)
+ .. controls (238,250) and (279,269) .. (314,239);
+\draw[black!45,line width=.45pt] (140,235) .. controls (156,258) and (184,278) .. (233,290);
+\draw[black!40,line width=.4pt,dash pattern=on 5pt off 5pt] (91,185) -- (122,213);
+\draw[black!40,line width=.4pt] (270,174) -- (310,193);
+''')))
+
+rows.append(('S33-sphere_right', fig(364, 363, r'''
+\draw[line width=.85pt] (159,27) .. controls (141,59) and (92,69) .. (53,90)
+ .. controls (29,110) and (10,149) .. (15,181)
+ .. controls (23,261) and (61,315) .. (100,332)
+ .. controls (166,359) and (267,338) .. (304,312)
+ .. controls (333,281) and (352,241) .. (351,190)
+ .. controls (351,136) and (339,95) .. (301,75)
+ .. controls (284,63) and (263,65) .. (258,39);
+\draw[line width=.85pt] (153,25) .. controls (171,10) and (215,7) .. (248,22)
+ .. controls (276,40) and (243,47) .. (219,44)
+ .. controls (187,45) and (166,39) .. (159,27);
+\draw[line width=.85pt] (15,199) .. controls (29,214) and (47,215) .. (66,217);
+\draw[line width=.85pt] (123,231) .. controls (171,238) and (220,244) .. (260,240);
+\draw[line width=.85pt] (313,225) -- (345,199);
+\draw[line width=1.05pt] (66,217) .. controls (66,190) and (96,184) .. (113,199)
+ .. controls (130,213) and (122,244) .. (107,250)
+ .. controls (87,259) and (65,239) .. (66,217);
+\draw[line width=.85pt] (260,240) .. controls (255,215) and (272,198) .. (286,201)
+ .. controls (304,205) and (321,228) .. (310,249)
+ .. controls (295,272) and (268,255) .. (260,240);
+\draw[line width=.6pt,dash pattern=on 6pt off 5pt] (112,146) .. controls (115,125) and (140,116) .. (154,134)
+ .. controls (168,153) and (158,181) .. (146,183)
+ .. controls (132,184) and (110,171) .. (112,146);
+\draw[line width=.65pt] (277,153) .. controls (278,133) and (301,131) .. (316,145)
+ -- (324,151) -- (323,171);
+\draw[line width=.65pt] (320,179) .. controls (309,190) and (289,180) .. (278,176);
+\draw[line width=.55pt,dash pattern=on 5pt off 4pt] (24,177) .. controls (57,157) and (87,161) .. (112,146);
+\draw[line width=.6pt] (163,149) -- (193,155);
+\draw[line width=.6pt] (228,155) -- (274,157);
+\draw[line width=.6pt] (327,169) -- (348,176);
+\draw[black!55,line width=.6pt] (126,63) .. controls (91,108) and (45,147) .. (47,224)
+ .. controls (45,276) and (65,298) .. (98,286)
+ .. controls (156,265) and (216,126) .. (261,43);
+\draw[black!50,line width=.6pt] (129,67) .. controls (107,114) and (116,218) .. (161,343);
+\draw[black!45,line width=.5pt] (131,62) .. controls (165,69) and (176,106) .. (174,148);
+\draw[black!50,line width=.5pt] (276,67) .. controls (245,136) and (203,233) .. (202,337);
+\draw[black!50,line width=.5pt] (263,52) .. controls (251,104) and (214,155) .. (207,194)
+ .. controls (188,258) and (181,318) .. (166,343);
+\draw[line width=.55pt,dash pattern=on 6pt off 5pt] (278,73) -- (269,169);
+\draw[line width=.6pt,dash pattern=on 7pt off 6pt] (259,180) -- (253,213);
+\draw[black!40,line width=.45pt] (272,72) .. controls (261,192) and (257,316) .. (220,337)
+ .. controls (199,351) and (197,321) .. (203,286);
+''')))
+
+surface = r'''
+\draw[black!50,line width=.6pt] (53,229) .. controls (7,185) and (45,125) .. (110,86)
+ .. controls (163,43) and (226,9) .. (275,32)
+ .. controls (324,94) and (287,151) .. (225,177)
+ .. controls (159,226) and (83,260) .. (53,229);
+\draw[line width=.8pt] (53,229) .. controls (100,275) and (243,200) .. (281,120)
+ .. controls (301,83) and (297,58) .. (275,32);
+\draw[line width=.7pt] (275,32) .. controls (334,136) and (456,229) .. (575,291)
+ .. controls (671,323) and (841,286) .. (973,261);
+\draw[black!50,line width=.5pt] (281,43) .. controls (350,162) and (489,235) .. (577,286)
+ .. controls (694,319) and (858,277) .. (974,257);
+\draw[line width=.7pt] (53,229) .. controls (112,305) and (180,426) .. (158,516)
+ .. controls (148,600) and (80,689) .. (20,733);
+\draw[black!50,line width=.5pt] (55,238) .. controls (133,321) and (195,448) .. (179,499)
+ .. controls (161,588) and (98,623) .. (0,661);
+\draw[black!55,line width=.5pt] (59,246) -- (89,302);
+\draw[line width=.65pt] (973,261) .. controls (942,266) and (921,319) .. (914,383);
+\draw[line width=.65pt] (914,383) .. controls (906,431) and (892,504) .. (903,550)
+ .. controls (912,580) and (929,599) .. (948,608);
+\draw[black!50,line width=.45pt] (965,266) .. controls (935,322) and (950,419) .. (957,447);
+\draw[black!50,line width=.45pt] (910,390) .. controls (891,494) and (879,562) .. (930,590);
+\draw[line width=.65pt] (948,608) .. controls (876,641) and (804,639) .. (751,660)
+ .. controls (710,690) and (650,713) .. (638,751);
+\draw[black!50,line width=.45pt] (940,602) .. controls (850,638) and (769,643) .. (722,682)
+ .. controls (678,710) and (657,731) .. (653,756);
+\draw[black!45,line width=.45pt] (20,733) .. controls (46,729) and (69,735) .. (91,758);
+'''
+for x, y in [(53,229),(72,130),(171,48),(275,32),(258,147),(169,217)]:
+    surface += f'\n\\draw[line width=.75pt] ({x-8},{y}) -- ({x+8},{y});'
+    surface += f'\n\\draw[line width=.75pt] ({x},{y-8}) -- ({x},{y+8});'
+    surface += f'\n\\draw[line width=.6pt] ({x-6},{y-5}) -- ({x+6},{y+6});'
+    surface += f'\n\\draw[line width=.6pt] ({x-6},{y+5}) -- ({x+6},{y-6});'
+for x,y in [(49,170),(111,86),(221,28),(291,93),(227,177),(113,236)]:
+    surface += f'\n\\fill ({x},{y}) circle[radius=1.6pt];'
+for a,b in [((40,194),(44,192)),((49,145),(72,154)),((89,106),(96,111)),
+            ((135,64),(143,72)),((188,32),(194,47)),((247,22),(248,28)),
+            ((286,55),(296,61)),((265,117),(294,126)),((243,158),(249,166)),
+            ((199,193),(207,200)),((138,213),(148,235)),((82,234),(83,240))]:
+    surface += f'\n\\draw[line width=.7pt] ({a[0]},{a[1]}) -- ({b[0]},{b[1]});'
+rows.append(('S33-large_surface', fig(997,771,surface,scale='.011')))
+
+rows.append(('S33-isolated-arc', fig(110,82,r'''
+\draw[black!65,line width=.6pt] (14,29) .. controls (16,56) and (31,68) .. (53,65)
+ .. controls (70,65) and (81,61) .. (87,49);
+\draw[black!45,line width=.35pt] (88,46) -- (91,32);
+''')))
+
+rows.append(('S33-folio', r'\margin{32}'))
+
+
+def atomic(path, callback):
+    temp=path.with_name(path.name+'.tmp')
+    with temp.open('w',encoding='utf-8',newline='') as stream:
+        callback(stream)
+        stream.flush()
+        os.fsync(stream.fileno())
+    os.replace(temp,path)
+
+
+def main():
+    assert len(rows)==37
+    assert len({n for n,_ in rows})==37
+    OUT.mkdir(parents=True,exist_ok=True)
+    def write_tsv(stream):
+        w=csv.writer(stream,delimiter='\t')
+        w.writerow(['box','reading'])
+        w.writerows(rows)
+    atomic(OUT/'148_scan033_second.tsv',write_tsv)
+
+    nearest={'S33-row180a','S33-row180b','S33-row420a','S33-row420insert',
+             'S33-row420b','S33-row1020b','S33-row1020c','S33-row1020e',
+             'S33-subtotal1020','S33-total'}
+    detail={'S33-programme1','S33-programme2-deleted','S33-margin','S33-programme2-live'}
+    observations={
+      'S33-row420a':'The visible arithmetic is 60=1 times 60=4 times 60. It is not corrected to an expected equality.',
+      'S33-row420insert':'The inserted last multiplicand appears 220, with 120 retained as a local alternative. A circled tau_r^0 has a left-pointing connector. The legible lower overlapping row is also included.',
+      'S33-row420b':'The first subscript character after gamma is R or pi; the numerical final factor is read as 12.',
+      'S33-subtotal1020':'New 1020 is above a cancelled old number. The old number is tentatively 780, with 900 as a visual alternative.',
+      'S33-row1020b':'Final middle product 2 times 60 is legible; a possible older 1 times 120 under the heavy retracing remains an alternative layer.',
+      'S33-row1020c':'The middle product has overlapping old and new strokes, tentatively 2 times 60 changed to 1 times 120. The right label is heavily overwritten; tau/gamma and the cancelled subscript remain local doubts.',
+      'S33-row1020e':'The live inserted arithmetic 3 times 40=3 times 40 is above the cancelled product line. The old line is tentatively 1 times 120=2 times 60. The left brace curl is not treated as an extra digit.',
+      'S33-total':'The live lower total is 1620. Double bars are above the cancelled old total. Old total 1380/1480 and old coefficient 9 are tentative; the visible newer coefficient is 11. Arithmetic was not used to normalize the layers.',
+      'S33-programme1':'The opening determiner before syst. is un/les. The deleted entre, cancelled paquets de, and replacement orbites are retained. The diagram group label is G_K; counts 1620, 14, 542 and 9 follow the ink.',
+      'S33-programme1-strikes':'Focused crop confirms the cancellation of entre and paquets de, with orbites above. Only the clipped beginning so of the next word is supplied; it is not completed beyond the rectangle.',
+      'S33-margin':'The f descender in flèches extends into the lower line; it is not interpreted as an additional word. One alternate image was discarded by the tool output limit and was successfully viewed in a separate retry.',
+      'S33-cancelled-start':'The crossed opening is 2) followed by a tentative abbreviated Éli.; the cancellation prevents a secure full word.',
+      'S33-programme2-live':'The uncertain small index after I is read as 20 with omega as alternative. No type is substituted from mathematical expectations.',
+      'S33-programme2-deleted':'Entire passage is enclosed/crossed out. Nested earlier deletion, the tw_1/6 insertion, Roman type labels, and punctuation are retained. Twist/twists and relèvements are tentative. The last physically cancelled prose word after de is unreadable; it is not a formula placeholder.',
+      'S33-tw-insertion':'The added note is read tw with a lower-right fractional index 1/6.',
+      'S33-programme3':'The quoted gauches is struck out; quoted tétraèdres is the replacement. The live final lines read qui ne semblent pas / simplifier la présentation des relations.',
+      'S33-cancelled_drawing':'Cancelled underlying curved surface and segmented lines are represented along with the diagonal hatching. The whole figure is marked deleted.',
+      'S33-large_surface':'The rim retains individual stars, filled points, and transverse ticks, plus duplicate construction curves. The regularly spaced black circles at the right are physical punched page holes and the lower black strip is the page edge; neither is turned into graph ink.',
+      'S33-isolated-arc':'Only the definite curved gray stroke is represented. Diffuse upper marks are not promoted to characters.',
+      'S33-folio':'Margin number 32.',
+    }
+    boxes=[]
+    for name,_ in rows:
+        views=['successful enhanced JPEG view']
+        if name in nearest:
+            views.append('successful nearest-neighbor contrast view')
+        if name in detail:
+            views.append('successful enlarged region view from the same fixed crop')
+        boxes.append({'box':name,'viewed':True,'views':views,'rotation':0,
+                      'observation':observations.get(name,
+                         'Independently read in the assigned rectangle; visible ink and geometry retained, paper texture and show-through excluded.')})
+    journal={'page':'148_scan033',
+      'blind_inputs':['/workspace/scratch/8132fe1cca43/work/blind_inputs/148_scan033/scan.jpg',
+                      '/workspace/scratch/8132fe1cca43/work/blind_inputs/148_scan033/boxes.tsv'],
+      'boxes':boxes,
+      'unresolved':['Several overdrawn arithmetic layers and formula indices have explicit local alternatives.',
+                    'The cancelled prose block retains uncertainty in its opening, twist/relèvement wording, and one unreadable final prose word.',
+                    'The small type index after I remains 20/omega.'],
+      'authoring_script':'scripts/blind_authoring/148_scan033.py',
+      'excluded':'Paper holes, page edges, paper specks and reverse-side show-through are not face text.'}
+    def write_journal(stream):
+        json.dump(journal,stream,ensure_ascii=False,indent=2)
+        stream.write('\n')
+    atomic(OUT/'148_scan033_blind_journal.json',write_journal)
+    print('Atomically wrote all 37 scan033 readings and the viewing journal.')
+
+
+if __name__=='__main__':
+    main()
