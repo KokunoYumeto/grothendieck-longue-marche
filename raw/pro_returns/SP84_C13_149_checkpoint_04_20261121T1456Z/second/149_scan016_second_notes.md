@@ -1,0 +1,37 @@
+# Scan 016: independent second-reading scope notes
+
+## Isolation and completion
+
+All 19 neutral crops b01–b19 were personally inspected in listed order. The crop generator was run exactly once. Every saved crop remains at rotation 0 degrees; no rotation was needed. Only the assigned scan, its neutral boxes, the crop generator, the neutral method/conventions, and this reader's generated crops/output were used. No witness, first TSV, consolidated page, report, notation decisions, other reader return, or comparison was opened. No OCR, research, or TeX compilation was used.
+
+The TSV preserves local readings and does not complete wording outside a crop boundary. Context included in a formula or prose row is identified below. Leaders are not converted into manuscript parentheses. Endpoint uncertainty is confined to the shaft, not the surrounding objects or indices. All primes use apostrophes.
+
+## Scope, clipping and uncertainties
+
+- b01: The full raised K-to-K-prime map is visible. Its arrowhead has separately visible upper and lower branches. The curve underneath is a leader, not a parenthesis. The lower A-prime and following baseline fragments are context only and partly clipped; no full attachment beyond the rectangle is asserted.
+- b02: Complete numeral 1. Its lower horizontal foot is part of the numeral rather than an added underline. No target clipping.
+- b03: Read on voit des. The first o is a small closed form; voit has a distinct i dot and the tall crossed t. The last word has a looped d and compressed es. No final punctuation is supplied. Target is contained in the box.
+- b04: Two parallel horizontal strokes are read as equality. The lower stroke has a short upturned start and a thickened/retraced right end, but neither changes the relation. No clipping.
+- b05: Complete B with K-prime index, shaft, and B with K index. The terminal of the shaft has a small downward cap/turn rather than a clearly separated two-branch head. Dash is first reading, arrow the retained alternative. B is rendered ordinary: it has a stem and two right lobes, without deliberate alphabet doubling. No terminal punctuation supplied.
+- b06: The first tiny letter does not securely separate e from o; en/on remains open. The following des is visible. The unrelated vertical fragment from the line above is excluded. No punctuation was supplied.
+- b07: Complete Pi map with K-prime/K indices, including the final comma. The shaft ends in a small curved terminal without a distinct second branch, so its head is uncertain. The terminal comma starts near the formula baseline and descends below it; it is not supplied as a closing parenthesis. No target clipping.
+- b08: The canceled word is tentatively read as the abbreviation recipro. with an acute accent on the e and a visible final stop. The long p descender and compressed ending are partly masked by the crossing strokes, so the whole canceled reading is qualified. The following bien is live context. The cancellation is not extended over that word. No target clipping.
+- b09: The short initial group is tentatively dc. with a visible final point; its middle letter is too reduced for certainty. It is not expanded to a longer French word. The following en particulier ainsi des is readable. Small fragments below the line are excluded. No target clipping; the uncertainty is about the short written group, not a missing edge.
+- b10: Morphisme is favored, but the compressed terminal run could include an additional s; this is left open. Structurel has a clear final looped l and no secure following s. The p descender of the first word is cut by the lower boundary. An unrelated upper-edge fragment is excluded. No ending is regularized to agree with another word.
+- b11: B_K to B_Q has a clear curved arrowhead with both branches. The Q includes an internal diagonal/parallel stroke and is rendered double-struck. The following en is included as visible context. No target clipping or terminal punctuation supplied.
+- b12: Complete Pi_K-to-Pi_Q expression with final comma. Q has the additional inner stroke supporting the double-struck alphabet. The shaft's tiny terminal cap does not establish a clear two-branch arrowhead; dash/arrow remains open. Upper and lower neighboring fragments are excluded.
+- b13: Raised intrinsèquement/intrinsiquement is read as one insertion. The mark over the vowel before q is dot-like, while the low vowel stroke is very compressed, so è/i remains unresolved. The long curve beneath the word is an attachment leader, not an underline or parentheses. Baseline comme un is context only. The insertion itself fits in the box; only unrelated upper fragments are clipped.
+- b14: Raised profinis is read literally, without expansion. The top of the tall f reaches beyond the upper edge, but the sequence of letters, including the final s, is visible. The long curved attachment line is excluded from the word. Clipped baseline cat... and neighboring fragments are context only; the full attachment target is not present in this rectangle.
+- b15: Complete E_K-to-E_Q expression with an actual terminal point. Both E forms have visible stems and three bars and are rendered ordinary here. Q includes its inner stroke. The shaft ends in a short vertical tick crossing its terminal; this is not a secure two-branch arrowhead, so dash/arrow remains open. No mapsto bar is added at the left. No target clipping.
+- b16: Read peu différent, including the terminal comma. The tall consecutive f strokes, the mark over the following vowel, and the final t support différent. The tall f tops and one lower descender are clipped, but their bodies and the rest of the word are visible. An unrelated upper-left fragment is excluded.
+- b17: The full equality and complete bar-K/K index are included. Both E-like capitals are heavily overtraced; the first has an additional parallel left contour and the second has several retraced bars and stem strokes. Ordinary E is favored, but deliberate double-struck E cannot be securely excluded from these traces. The TSV preserves that alphabet uncertainty for each glyph. No deleted-old/new-letter chronology is asserted. The final K and slash are visible. Lower neighboring writing is clipped and excluded.
+- b18: The upper insertion is read as à isom unique près, with no abbreviation stop silently added after isom. The initial tiny loop plus long upper stroke favors à, but could be an exclamation mark; that ambiguity is retained. The upper final comma is visible. The baseline pour Pi_bar-K/K and fixés is included to locate the smaller lower et Gamma insertion. Its curly attachment stroke is not read as a parenthesis. The final mark after fixés may be a separate comma or part of the terminal stroke, so it is qualified. Upper formulas and left-edge tail fragments of surrounding text are clipped and excluded. The two additions remain separate; no additional insertion chronology is inferred.
+- b19: Complete marginal 15 in a smaller, thinner hand. The black lower strip is the scan/page boundary; it does not clip either numeral. No rotation was needed. Unrelated left-edge/bottom material is excluded.
+
+## Freeze
+
+Frozen before comparison. Neither the TSV nor these scope notes is to be revised after another reading is revealed. This is an independent return, not an adjudication.
+
+- Frozen at: 2026-11-21 14:30:58 UTC
+- Boxes: 19
+- TSV SHA-256: 5e7b7de9a04ef7705a78c0fedc572ae4ab09c13969518ee89aa3ae30e5cbb03b

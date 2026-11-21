@@ -1,0 +1,38 @@
+# Scan 013: independent second-reading scope notes
+
+## Isolation and completion
+
+All 20 neutral crops b01–b20 were personally inspected in listed order. The crop generator was run once. Every crop remains at rotation 0 degrees; no rotation was needed. The first attempt to display b19 was truncated by the tool context limit and did not count as inspection; it was displayed successfully afterwards, before b20. The crowded b14 was re-opened once to preserve the lower cancellation's uncertainty. No witness, first TSV, consolidated page, first report, notation decisions, other reader return, or comparison was accessed. No OCR, external research, or TeX compilation was used.
+
+This is an image-only reading. The rows below distinguish target writing from neighboring context; they do not supply missing syntax beyond a box edge. The two lines of the final replacement remain separate in b16 and b17. Their line-end split conte-/nue is preserved. The overwritten old passage remains separate in b18 and b19.
+
+## Scope, clipping and uncertainties
+
+- b01: Complete numeral 6, no clipping of the target.
+- b02: Read dim coh. The first word has a dotted i and an m run; the second has an open c, a small closed o and a high h. The top of h meets or slightly crosses the upper box edge. A fragment from the page number above is excluded. The terminal stop is visible.
+- b03: Complete local E_i est <= n+2 expression. The subscript is dotted i. The final 2 is close to the right boundary but its body is visible. No terminal stop was supplied. E has a visible stem and bars.
+- b04: Canceled sign and following 2 are retained as uncertain. The first sign has two horizontal strokes with interfering diagonal/vertical strokes, allowing a crossed not-equal sign or a crossed 4-like glyph; the alternative is not chosen by mathematical sense. Live de n-torsion, is included as context. Neighboring upper fragments are excluded.
+- b05: The repeated dim coh. is independently legible, with the h top close to the upper edge and a terminal stop. No abbreviation expansion was made.
+- b06: The full bar-K/K index is visible. The raised superscript is retraced and can be t or ell. The strokes do not securely establish a deleted-letter/new-letter sequence. The E is stemmed rather than the clearly curved calligraphic form in b12.
+- b07: The whole display is read, including (14), both complete indices, the numerical bound, the ell condition and the lower parenthetic abbreviation nb premier. The final closing parenthesis is partly clipped at the right edge, though its curved ink is identifiable. Fragments from the preceding formula at the upper edge are excluded. The relation before 2 has two bars and a crossing stroke; it is read as a live not-equal sign here. No dots after coh or nb were supplied.
+- b08: Two prose lines are read together. The tops of some letters and accents in underlined egalites meet the upper boundary; the complete word is still readable. The final n of description is close to the right edge. Lower neighboring fragments are excluded. No terminal punctuation was supplied after description.
+- b09: Complete underlined theorem heading and numeral 1. No terminal stop is visible. The underline has a separate short final segment beneath the numeral.
+- b10: Only the raised insertion is transcribed. The terminal curl may belong to the n or be an additional s, so extension/extensions remains open. The curved ink below functions as a leader; it is not transcribed as parentheses. Clipped baseline de type is context only. The full attachment scope cannot be recovered from this rectangle alone.
+- b11: Canceled Alors is readable beneath its long horizontal strike. The bottom of the capital A meets the crop edge. No punctuation was supplied.
+- b12: Complete curved calligraphic E, without a prime or index. Its two lobes have no straight vertical stem.
+- b13: Item is favored over Idem. The medial tall stroke can be t or d under the close joins. The initial capital I's lower serif is not treated as an underline. No terminal punctuation is visible.
+- b14: The upper local formula reads Gamma-prime subset Gamma with an e/c-like subscript. Its leftmost Gamma begins at the left edge. The lower line is heavily canceled. A Gamma-prime-like start, a partly masked relation and a Gamma_K-like group are tentative, and the boundary of their cancellation cannot be securely separated. The later Gamma with a bar-Q/Q index, closing parenthesis and prime is visible, but the opening parenthesis and exact relation to the canceled run are not recoverable securely. The TSV therefore qualifies the whole reconstructed lower fragment, including its deletion scope; it deliberately does not add an opening parenthesis to balance the visible closing one. Q has inner/parallel strokes favoring the double-struck alphabet, but the cancellation obscures some adjacent details. A right-edge fragment of neighboring text is excluded. The space between upper and lower formula readings is represented by quad, not by invented manuscript punctuation.
+- b15: Raised equality Gamma_bar-K/K and its curved leader are read as an insertion. The baseline E dans Gamma, qui is context only, and the lower neighboring line is clipped. No parentheses are supplied from the leader. The exact attachment remains a matter of layout rather than a word added to the row.
+- b16: First line of the raised replacement is read. The first curved E has a separate prime. The second curved E has a nearby high stroke that might be a prime, so that distinction is left open. A large curve before dans may be a leader or opening parenthesis; a corresponding closing pair is not clear and no parentheses are asserted. The actual terminal hyphen after conte is kept. Upper baseline and crossed lower line are excluded from this row.
+- b17: Second line of the replacement begins nue, continuing the prior split without silently joining the rows. The article le is partly masked by an old formula's index and is qualified. Gamma-prime is retained. The terminal small curved mark is read as a comma. Upper crossed old text and lower neighboring fragments are excluded.
+- b18: Crossed old line is read separately from both raised replacement lines. Initial fait is only tentative beneath the masking strokes. The full bar-K/K index and centralise are visible. The glyph after son image may be lowercase gamma or uppercase Gamma. The row ends at dans, without supplying the continuation outside its target line. Cancellation is kept across this old line.
+- b19: The next old line begins Gamma centralise Gamma-prime. A long strike runs through that group and appears to stop before the final words. The following short word is de/et; its joined loop and tall stroke do not settle the alternative. The final Gamma with a double-struck-Q-like subscript is retained. The local deletion wrapper follows the actual visible strike extent, not an inferred paragraph-wide deletion scope; whether the following unstruck tail belongs to the same canceled passage is left as a scope issue. Upper-edge fragments from the preceding line are excluded. No stop is supplied at the end.
+- b20: Complete marginal 12, in a smaller, thinner hand than the main text. No rotation or character restoration was needed. Unrelated dark fragments at the bottom edge are excluded.
+
+## Freeze
+
+Frozen before any comparison. After this freeze, the TSV and these scope notes are not to be revised against another reading. This record is an independent reading, not an adjudication.
+
+- Frozen at: 2026-11-21 14:23:51 UTC
+- Boxes: 20
+- TSV SHA-256: 89dfd752d29e847bd2164a3a75584d32bb0ddefc7765283aff508fe141a45721

@@ -1,0 +1,38 @@
+# Error-sheet feedback — SP85_C13_149
+
+One primary error-sheet kind is assigned to each material logged place, to avoid counting the same physical place repeatedly. These are observed correction counts, not error-rate estimates for all tokens. H-only disagreements are included in all-places counts.
+
+| Error-sheet kind | All logged places | Places changing C |
+| --- | --- | --- |
+| Symbols and indices | 159 | 103 |
+| Words | 157 | 53 |
+| Omissions | 46 | 15 |
+| Drawings and diagrams | 3 | 2 |
+| Readable ink left as illegible | 49 | 10 |
+| Insertions put in the wrong place | 41 | 11 |
+| Struck text | 37 | 17 |
+| Abbreviations expanded, spelling modernised | 67 | 47 |
+| Text that is not on the page | 37 | 8 |
+| Other | 34 | 14 |
+
+## Recurrence and additional observations
+
+The ten supplied categories are broad enough to contain the observed errors; the run does not establish a new statistical error class. The following more specific recurrences should nevertheless be carried into the next reading of this hand. Counts above concern logged physical places, not a sample-based estimate of accuracy.
+
+- **Extension capitals are repeatedly flattened to ordinary E.** The rounded two-lobed extension symbol recurs on scans 029–031, 041, 043, 045–050, 052, and 053. Each occurrence was checked; the change to `\mathcal E` is an alphabet reading, not a change of the extension's mathematical identity. This particular recurring substitution deserves an explicit example beside the error sheet's general alphabet cautions.
+- **H repeatedly substitutes the semantic label “admissible” for written “anabélien.”** Scans 043, 045, 046, 047, 048, 049, and 050 provide the local series. These are different words, not interchangeable editorial labels. Each occurrence still requires its own crop; the recurring error does not decide a later token by itself.
+- **H sometimes rewrites a whole short clause coherently while losing its actual object or tense.** Examples include “passage / par bouchage de trous” on 039, the replacement clause on 040, “d'où que” and “ce dernier” on 041, and “l'hom d'extensions,” “intéresse,” and “sont” on 043. The danger is the cumulative plausibility of the rewritten clause. Recording only its most conspicuous mistaken word would leave other added, omitted, or moved words unaccounted for.
+- **An internal dot-like pen movement in `hom` is not a terminal abbreviation stop.** Scans 041, 042, 043, 046, 048, and 050 give repeated examples with blank space after the final m. The supplied sheet already warns against invented stops; these leaves add a useful concrete shape to compare. Stops that really occur elsewhere are retained.
+- **The prose same-meaning shorthand has more than one actual shape.** Literal two-stroke `=` is clear in several occurrences (039, 041, 042); a barred-m reading remains possible at another occurrence (031);040 resolves to two flat bars in the blind audit. A global replacement of one by the other would erase the visible variation. Expansions belong only in the abbreviation list.
+- **Authorial additive and multiplicative forms can coexist in one argument.** The sequence involving `U+u`, `x\mapsto xu`, and `u=1` on 037 and the later equality to 1 on 040 must not be silently regularized to a uniform group law. These are retained source features rather than counted witness errors where both witnesses had them right.
+
+The hand log gives the exact places, scope of confirmation, and witness involvement. A q-descender mistaken for a prime on 041, a hooked final inclusion on 038, and the extra uncertain word after “ainsi” on 045 are useful individual warnings, but are not asserted to be statistically recurring mechanisms on this small set. Independent second-reading changes are separately recorded with both readings in the changes log and in `second/`.
+
+- **Adjacent leaves can genuinely differ in abbreviation stops.** The raised immersion phrase is `imm` on049 and `imm.` on050. The first has blank space after the short m course; the second has a detached dark point. This local contrast prevents a notation-table convention from supplying punctuation.
+- **Dark retracing can remain live beside an actual cancellation.** The live `surtout` on051 and the nearby cancelled `topos` provide a same-line contrast; the first has thickened letter courses, the second a separate crossing line. The live retraced `homomorphisme` on048 and `pour` on050 likewise do not establish an independently recoverable cancelled word.
+
+- **A hyphen after a subscript can be mistaken for part of the indexed letter.** Both kernel-conjugaison phrases on053 have a short detached horizontal bar above and to the right of the low K; H preserves it and C omits it. The main reader corrected the first-stage proposal after following the separate strokes on the saved crops.
+
+- **The blind reading can reveal an overconfident first-pass phrase, not just an omitted sign.** Scan036’s marginal on voit X, de sorte qu’on replaces a longer guessed phrase about étales; the nearby sauf erreur is distinguished by its f descender. Scan035’s des pts and scan037’s le jacobien généralisé likewise show why grammatical expectations must not settle small articles and endings. These are concrete warnings within the existing word/omission categories.
+- **A stroke can be real yet have unresolved attachment.** The small lower oval in scan037’s torus expression, the tiny mark beside the first extension K on041, and the bar/hat decorations on042 are kept locally uncertain with their candidate attachments. Their presence is recorded independently of the preferred interpretation.
+
