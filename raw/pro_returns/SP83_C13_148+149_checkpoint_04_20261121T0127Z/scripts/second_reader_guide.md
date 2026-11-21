@@ -1,0 +1,11 @@
+# Independent second reading
+
+Read only the assigned original scan and its `second/<page>_boxes.tsv`. Do not open either witness, the consolidated page, `_first.tsv`, first-reading crops, notes, records, notation tables, or comparison files for this page. You must be a different reader from its first reader.
+
+For each listed box, crop the original at exactly the given pixel coordinates. Save a new enlarged crop as `result/crops/<page>_second_<box>.png`. Use Pillow, LANCZOS, autocontrast and, where useful, sharpening; rotate oblique writing to make it readable. Do not use OCR or any text-recognition library. View every crop directly. A box can contain several kinds of target ink. Read all its target text, formulas and revision layers, without guessing the wording from neighbouring pages. Record physically unreadable words and uncertain signs in place.
+
+Use the box kind and position to distinguish its target from surrounding context. In a margin-note box, follow the marginal baseline and do not import larger main-text letters merely because they cross it. Preserve the complete visible target unit; report an uncertain boundary or clipped target instead of inventing a continuation.
+
+Use the established diplomatic macros: `\mspage`, `\deleted`, `\inserted`, `\margin`, `\uline`, `\uuline`, `\unsure{reading}` or `\unsure{reading|alternative}`, `\illegible{n}`, `\diagram` with tikz-cd, and `\figure` with TikZ. Preserve abbreviations, spelling, punctuation, visible underlines, overwritten characters and the placement of additions. Use two backticks and two apostrophes for raised double quotation marks; use guillemets only where drawn. Write all visible formula symbols; do not replace a mathematical symbol by an illegible-word count. Reproduce diagrams and drawings, not prose descriptions of them.
+
+Write `result/second/<page>_second.tsv`, with the exact columns `box` and `reading`, one row per supplied box in order. Use a TSV writer so multiline readings remain a single field. Finish the complete reading before any comparison is made. Do not inspect comparison output or alter the independent reading after seeing a first-pass reading. Report the box count, crop filenames and any clipped boundary that prevented a complete reading. Do not mark the page audited: the main reader compares and adjudicates it afterwards.

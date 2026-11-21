@@ -1,0 +1,21 @@
+# Scope and continuation
+
+The governing instructions are the attached `PROMPT(20261120-214818).md`. This run covers all 23 pages listed in `page_order.txt`. The attached scans and witnesses are excluded from the deliverable archive; the evidence crops are included. No OCR, web research or TeX compilation is used.
+
+`pages/` contains the main reader's accepted transcription. `records/` stores its page-level decisions and evidence. `work/proposed/` preserves reader proposals and their working documentation; these are not substitutes for the accepted page files. The combined transcription and reports are regenerated from the accepted records by `scripts/assemble.py`.
+
+During the first reading, exactly three readers receive one page at a time. The next page goes to the first reader freed by main-reader acceptance. Only after every first-reading page is accepted does the independent reading begin. Each page then goes to a different reader, using only the original scan and its box list. `scripts/second_reader_guide.md` specifies that restricted assignment. The independent TSV must be completed before `scripts/audit_compare.py` compares it with the first reading. Every difference is adjudicated visually by the main reader.
+
+The audit comparison retains both complete box readings and every token edit. In the audit progress line, B is the number of independently read boxes, D the number of boxes with different token sequences, and K the number whose adjudicated reading differs from the first reading. `second/<page>_adjudication.tsv` preserves both readings, the final reading, the main reader's evidence and the viewed crop for every differing box. After the accepted page and its witness records have been updated, `scripts/finish_audit.py` verifies this coverage, records the independent reader and hashes the second-reading TSV. It does not make reading decisions. The original first readings remain in `_first.tsv` and the reader proposals.
+
+If restoring a checkpoint into a new workspace, extract this archive into a directory named `result`, recover `work/proposed/` into the sibling `proposed/`, and restore the attached ZIP's contents into the sibling `source/`. Keep the governing prompt at `upload/PROMPT(20261120-214818).md`. The scripts derive the workspace from their location. `scripts/prepare.py` can regenerate missing page packets and halves after an environment loss; it preserves existing progress, hand logs, notation and already-prepared halves. Do not rerun it merely to reread an image. Refresh a new first-reader packet's notation from the current working table before assignment.
+
+The progress log is authoritative for accepted and audited pages. Each accepted record names its first reader and the crops actually reviewed by the main reader. `records/main_review_crops.json` also records reviewed crops for pending pages. A written proposal is not accepted until the main reader has set its review fields and run the acceptance step.
+
+Checkpoint ZIPs are immutable and are saved at 45-minute intervals from the run's start. No earlier checkpoint is embedded in another archive. At completion, validate the 23-page set, 261 supplied doubt decisions and all independent readings, freeze the 24 transcription hashes, and verify those hashes again before producing the final ZIP.
+
+Large literal TikZ geometry can exceed the standard CSV field limit. Audit scripts allow fields up to 16 MiB. Token comparison retains both exact readings and every unequal interval; for more than 20,000 tokens, the sequence matcher uses its repeated-token heuristic to choose matching blocks without dropping any tokens from the retained readings or edit intervals.
+
+The static brace check counts the parity of preceding backslashes, so a grouping brace after a TeX line-break command is not mistaken for an escaped literal brace. This corrected a false alarm in scan067; the transcription itself required no brace repair. No TeX compilation is performed.
+
+In the collation column marked_in_H, yes includes explicit H uncertainty and illegibility macros, including those inside struck text, and explicit editorial doubt about a displayed glyph. A generic editorial note is not automatically a doubt mark. The metadata-only corrections are listed in records/h_marker_metadata_corrections.json.

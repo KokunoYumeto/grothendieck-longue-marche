@@ -1,0 +1,32 @@
+# Feedback on the recurring-error sheet
+
+Counts concern substantive logged places, assigned one principal error-sheet category. They are not estimates of error rates, and a place can differ from one or both witnesses. Certainty-only decisions are excluded.
+
+| Error-sheet category | Places |
+| --- | --- |
+| symbols and indices | 67 |
+| words | 171 |
+| omissions | 88 |
+| drawings and diagrams | 25 |
+| readable ink left as illegible | 37 |
+| insertion placement | 35 |
+| struck text | 54 |
+| abbreviations and spelling | 58 |
+| text not on the page | 69 |
+| other | 31 |
+
+## Additional recurring observations
+
+No recurring error encountered here has been established as a wholly new kind outside the ten categories in the supplied error sheet. Several local refinements are useful for later runs:
+
+- Preserve unusual connector geometry before assigning a conventional arrow symbol. Scan103 has a short return at the left end of the upper connector in146 and two successive right heads on one shaft in148. Several other short endpoints remain uncertain between a dash, a downward half-head and a full arrow (for example scans088,100,102 and104). These belong to symbols/indices and drawings/diagrams, rather than to a new category.
+- Separate a missing diagram label from an editorial note that paraphrases it. The three-line annotation of146 belongs on its arrow even though H discusses it afterward. Likewise, editorial discussion of a rewritten object is not a transcription of its cancelled state (scans095 and103).
+- Check the placement of continuations across physical scans. H attaches the opening continuation of101 to100. This is a placement issue; it is not a new word supplied by the manuscript.
+- Count punctuation and delimiter structure from the actual strokes. A manuscript may contain an isolated point within an unusual phrase, an unmatched opening parenthesis, or a closing parenthesis without its expected opener. Examples occur on scans093,098,102,103 and106. Grammar and mathematical readability do not license completion.
+- Distinguish a recoverable live character from an unrecoverable earlier state. Heavy retracing on scans096–097 and107 can expose parts of more than one letter without establishing a secure order of revision. The current reading and any proposed earlier state require separate evidence.
+- Check overlapping crops for duplicated transcription. On scan098 one large G stands beside the lower drawing and the end of the slanted margin note. The first consolidated page repeated it in both locations; blind adjudication retains the single glyph once. Crop overlap is evidence about spatial identity, not a second occurrence.
+- Stop at the actual paper edge. Scans090 and099 expose only prefixes of normalisation;102 likewise exposes short transf and automatiq with a raised t. A doubt wrapper does not license supplying invisible terminal letters.
+- Preserve written abbreviations and agreement mismatches together. Examples include st.ble on094, the overlined m on098, néc/comm/iso and est réduit on103, and les commutation on104. These refine the existing word, spelling and abbreviation categories.
+
+The category counts above are counts of logged substantive departures, each assigned one principal category, with confidence stated for every place. They are not independently established error rates. A place may differ from both witnesses; medium- and low-confidence preferred readings remain provisional. Added uncertainty alone and equivalent macro syntax are excluded. Where an unresolved alternative still admits a witness reading, the apparatus does not turn that uncertainty into a settled correction. Reading and comparison coverage is documented separately in the page reports, crop log, blind records and progress log.
+
