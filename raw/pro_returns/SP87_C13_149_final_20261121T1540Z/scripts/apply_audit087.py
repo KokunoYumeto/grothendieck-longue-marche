@@ -1,0 +1,57 @@
+from pathlib import Path
+import json,csv
+w=Path('/workspace/scratch/b8c6ff258063/SP87_C13_149_work');p='149_scan087';rp=w/'review'/f'{p}_reviewed.json';r=json.loads(rp.read_text());pp=w/'pages'/f'{p}.tex';t=pp.read_text()
+oldmargin=r"\margin{\deleted{\unsure{c'est l'extension} $E_{U_{\unsure{\widetilde K|K}}}$ \unsure{correspondante à $N_{s'}$}}}"
+newmargin=r"\margin{\deleted{\unsure{c'est l'extension} $E_{U_{\unsure{\widetilde K|K}}}$ \unsure{correspondante|correspondant}} \unsure{\deleted{\unsure{à le $s$|à la $s$}}}}"
+oldline=r"\deleted{\unsure{considérer} \unsure{d'autres|d'abord} \unsure{par le|pts que} \unsure{scindage|scindages} de}"
+newline=r"\deleted{\unsure{considérer|considère} d'autre part les scindages \unsure{de|des}}"
+oldlocal=r'\deleted{\unsure{\widetilde Z}}\inserted{\widetilde{\underline O}_s}'
+newlocal=r'\deleted{\unsure{(\widetilde S)_w|(\widetilde S)_s|\widetilde Z}}\inserted{\unsure{\widetilde{\underline O}_s|\underline O_s}}'
+reps=[(oldmargin,newmargin),('(globale,','(plutôt,'),(r'\deleted{\unsure{Comme}}',r'\deleted{\unsure{Si on|Comme}}'),(oldline,newline),('la suivante : soit',r'\unsure{la|le} \unsure{suivante|suivant} : Soit'),(oldlocal,newlocal),(r'et la \deleted{suite}',r'et \unsure{la|le} \deleted{\unsure{suite|seule|sous}}')]
+for a,b in reps:
+ assert a in t,a
+ t=t.replace(a,b)
+pp.write_text(t)
+manifest={x['box']:x for x in json.loads((w/'second'/f'{p}_crop_manifest.json').read_text())}
+def update(place,box,**kw):
+ c=next(x for x in r['changes'] if x['place']==place);c.update(crop=f'crops/second_{p}_{box}.png',box=manifest[box]['coordinates'],**kw)
+update('087.margin','B003',final=newmargin,against_c=True,confidence='low',evidence='The first two lines are crossed by diagonal hatching. In the detached last line, after à there is a tall closed loop followed by a small low return, then a separate s-like curl: le/la s, not the two uprights and diagonal of N with a subscript. The hatching does not independently cross this last line, so its deletion state is now explicitly uncertain. The covered end of correspondante/correspondant and the K tilde remain doubtful.')
+update('087.globale','B004',final='plutôt',against_c=True,against_h=False,confidence='medium',evidence='The initial letter has a straight descending p stem and upper bowl, followed by a tall looped l, low u and the t/ô/t group. It does not supply the two distinct b/l ascenders required by globale. Blind review corrects the first reading to plutôt.')
+update('087.comme','B007',final=r'\deleted{\unsure{Si on|Comme}}',against_c=True,against_h=False,confidence='low',evidence='A high dot follows the large initial curved letter; a separate low o-like turn and n-like terminal survive farther right. These support Si on ahead of Comme, though the heavy strike obscures the initial lower turn and connecting letters. Keep both readings under deletion.')
+update('087.deleted_line','B008',final=newline,against_c=True,against_h=True,confidence='medium',evidence='The cancelled line has d with apostrophe, a/u and crossed t followed by a short r/e return: d’autre. The following long p descender, a/r and tall t give part, followed by a looped l and low e/s. Scindages has its separate g descender and terminal s. The exact ending of considérer/considère and of de/des remains covered, so those alone retain alternatives.')
+update('087.replacement_O','B010',final=newlocal,against_c=True,confidence='low',evidence='Both curved enclosing strokes survive around the old central symbol, with a small lower-right w/s-like group. The central letter under two heavy crossing strokes supports (tilde S)_w or _s, while the old Z candidate remains possible. The new underlined O and s are clear; the short curved trace above O may be its tilde or part of the descending correction stroke, so tilde presence is left open.')
+r['changes'].append(dict(place='capital of Soit after colon',c='soit',h='soit',final='Soit',evidence='The initial S after the two-dot colon rises well above the neighboring low s of suivante; its large upper/lower curves form a capital. The article and adjective endings remain doubtful, but the capital itself is visible.',crop=f'crops/second_{p}_B009.png',box=manifest['B009']['coordinates'],confidence='medium',kind='other',against_c=True,against_h=True,marked_in_h=False,consequential=False))
+for u in r['unresolved']:
+ if u['place']=='087.margin':u.update(reading=newmargin,alternatives='correspondante/correspondant; le/la; uncertain deletion state of final line; K tilde')
+ if u['place']=='087.comme':u.update(reading='Si on',alternatives='Comme; partly covered letters')
+ if u['place']=='087.deleted_line':u.update(reading=newline,alternatives='considérer/considère; de/des')
+ if u['place']=='087.replacement_O':u.update(reading=newlocal,alternatives='old (tilde S)_w / (tilde S)_s / tilde Z; presence of new O tilde')
+r['unresolved'] += [dict(place='before Soit',reading=r'\unsure{la|le} \unsure{suivante|suivant}',alternatives='article and adjective terminal returns',confidence='medium'),dict(place='article and cancelled word before inserted E',reading=r'\unsure{la|le} \deleted{\unsure{suite|seule|sous}}',alternatives='la/le; suite/seule/sous under strike',confidence='low')]
+for inv in r['inventory']:
+ if inv['element']=='cancelled_comme':inv['first_words_or_objects']='Si on | Comme (doubtful)'
+ if inv['element']=='cancelled_interline':inv['first_words_or_objects']=newline
+ if inv['element']=='old_local_symbol':inv['first_words_or_objects']=r'(\widetilde S)_w | (\widetilde S)_s | \widetilde Z (cancelled, doubtful)'
+ if inv['element']=='new_local_symbol':inv['first_words_or_objects']=r'\widetilde{\underline O}_s | \underline O_s'
+ if inv['element']=='cancelled_suite':inv['first_words_or_objects']='suite | seule | sous (doubtful)'
+r['notes'] += '\n\nBlind adjudication corrects globale to plutôt and recovers d’autre part les scindages in the cancelled interline. The cancelled initial fragment now prefers Si on, retaining Comme. The detached last marginal line has a looped l and separate s, not an N with subscript; its deletion scope is explicitly doubtful because hatching covers the two upper lines more clearly. The old local-ring symbol and the replacement tilde remain locally uncertain. Soit has a large initial S. The diagram retains its tiny but angled arrow ends, its two explicit headless initial links, the straight and curved downward maps, and the vertical rotated isomorphism under E_tilde O; the round lower target is O, not S. All fifteen token-different boxes were inspected.\n'
+rp.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n')
+cs={x['box']:x for x in csv.DictReader((w/'second'/f'{p}_comparison.tsv').open(),delimiter='\t')}
+e={
+'B001':'The bar is over s within parentheses; no set braces are drawn. Three separate points follow the last s, then a comma. The page already preserves this comma outside the frozen box excerpt. Keep the reading; the brace and ellipsis macros differ only in encoding.',
+'B002':'The index has a short hooked top, one upright stem and a horizontal basal foot, rather than the curved upper part and diagonal of 2. Retain pi_1 and the ordinary cursive E; the full stop is clear.',
+'B003':'The detached last line has à then a tall closed loop with low return and a separate s curl, supporting le/la s rather than N_s-prime. The last line lies beyond the most visible hatching, so its cancellation state is explicitly marked doubtful. The first two lines remain cancelled; their covered letters and K tilde are not resolved.',
+'B004':'The straight p descender, looped l, low u and later t/ô/t group favor plutôt. There are not separate b and l ascenders for globale. Correct the first reading to plutôt.',
+'B007':'The surviving high dot after the initial curved capital and separate low o/n forms favor Si on. The strike hides the connecting strokes, so Comme remains an alternative. Change the preferred reading without resolving all cancelled letters.',
+'B008':'Read d’autre from the apostrophe and a/u/t/r/e sequence, part from its p descender and a/r/t, then the tall l and low e/s of les. The scindages g descender and terminal s survive. Retain doubt only over considérer/considère and de/des endings, which overlap the strike.',
+'B009':'The article’s terminal loop and the adjective’s final turn do not securely distinguish la/le and suivante/suivant. Keep the first alternatives with explicit doubt. The punctuation has two separate points, not a descending comma tail; retain colon. The following S is large and raised relative to the neighboring low s: capitalize Soit.',
+'B010':'The old symbol has surviving enclosing curves and a small lower-right w/s form. (Tilde S)_w or _s is preferable to isolated tilde Z, but crossing strokes prevent certainty. The new underlined O and s are clear; the curved trace above O overlaps the correction path, so its tilde is now doubtful.',
+'B011':'The insertion reads (trait hensélien), with its curved leader ending after the Spec expression and before the comma/K phrase. The blind crop starts midway through that expression and ends after son; do not remove the complete Spec or corps des wording from the full-page reading. The tilde on the repeated O is separately visible here.',
+'B013':'The small parenthetical word has g loop and descender, a low r/ou run, then p descender and final e: groupe. Retain the complete word, the clear label (23), N_s-prime, K and barred K, and the two-stroke isomorphism sign; E/font and array layout differences do not alter the ink.',
+'B014':'The small article’s final return does not securely settle la/le. The cancellation crosses the interior of the following s/u/i/t/e-like word, so suite remains first with seule/sous alternatives. The live inserted E has its two bowls and medial turn, matching the other E symbols, and extension remains uncancelled.',
+'B016':'The two initial row connectors have no heads. The other horizontal ends have small angled tips or returns, including the two final links, unlike those initial blunt shafts; retain the first reading’s arrows. The straight downward map ends in a small pointed return and the curved map has a clearer head. The lower target is a closed rounded O with tilde, not S. The lower vertical relation has one wavy and one straight stroke, hence rotated isomorphism, whereas the upper two relations are paired straight strokes. Preserve all positions and numerals.',
+'B017':'Both k forms have looped ascenders; the second is darker but its loop, short body and low diagonals match lowercase k. Do not change case on darkness alone. Est and the final point are clear.',
+'B018':'The bold top numeral is 43: angular 4 and two rounded open turns of 3. Preserve its manuscript-page wrapper.',
+'B019':'The lower thin numeral is 86: closed two-loop 8 and curled lower-loop 6. Preserve marginal foliation, distinct from the head number.'}
+changed=['B003','B004','B007','B008','B009','B010','B014'];d={k:dict(evidence=v,changed=k in changed) for k,v in e.items()}
+d['B003']['final']=newmargin;d['B004']['final']='(plutôt,';d['B007']['final']=r'\deleted{\unsure{Si on|Comme}}';d['B008']['final']=newline;d['B009']['final']=r'\unsure{la|le} \unsure{suivante|suivant} : Soit';d['B010']['final']='$'+newlocal+'$';d['B014']['final']=r'et \unsure{la|le} \deleted{\unsure{suite|seule|sous}}\inserted{$E$} extension'
+(w/'review'/f'{p}_audit_decisions.json').write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')

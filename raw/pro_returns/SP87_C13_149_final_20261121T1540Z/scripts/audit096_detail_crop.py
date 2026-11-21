@@ -1,0 +1,4 @@
+from PIL import Image,ImageEnhance,ImageFilter
+from pathlib import Path
+import json
+w=Path('/workspace/scratch/b8c6ff258063/SP87_C13_149_work');box=(900,45,1260,180);im=Image.open(w.parent/'source/SP87_C13_149_scans/149_scan096.jpg').crop(box);im=im.resize((1800,round(im.height*1800/im.width)),Image.Resampling.LANCZOS);im=ImageEnhance.Contrast(im).enhance(1.25);im=im.filter(ImageFilter.UnsharpMask(radius=1.5,percent=115,threshold=3));im.save(w/'crops/audit_149_scan096_pour_context.png');(w/'review/149_scan096_additional_crop_manifest.json').write_text(json.dumps({'source':'149_scan096.jpg','coordinates':box,'crop':'crops/audit_149_scan096_pour_context.png','reason':'Distinguish a proposed comma after pour from the beginning of following des; anonymous B001 ends near that boundary.','stage':'root adjudication after blind TSV saved'},indent=2)+'\n')

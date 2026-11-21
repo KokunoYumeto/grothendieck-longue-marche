@@ -1,0 +1,22 @@
+from pathlib import Path
+import json
+r=Path(__file__).resolve().parents[1];s=r/'second';comp=json.loads((s/'149_scan107_comparison.json').read_text());data=json.loads((r/'review/accepted/149_scan107.json').read_text());boxes={x['box']:x for x in data['audit_boxes']}
+evidence={
+'b01':'The dark upper number is 53: the second digit turns back at its right-hand join rather than having a continuous descending diagonal of 2. Its form is compatible with the authorial sequence 51, 52, 53, 54 on these leaves. Retain 53 as authorial numbering, not a marginal annotation.',
+'b03':'Each superscript has the same crossed X or forked Y construction as the corresponding lower capital, reduced only by its superscript position. Both free waves and the single right-pointing arrow are visible; retain tilde X and tilde Y.',
+'b04':'After the looped d, the final letter has an open u trough and upward join, not an enclosed e loop. Retain du.',
+'b05':'The first group is the low o-n of on. The following continuous word has a looped d, low e-v-r-a, dotted i and final t. The overlapping short strokes are internal retracing, without a separate cancellation across fait or soit. Retain live devrait.',
+'b06':'The initial letter of the abbreviation has a long returning g descender, not the straight q descender of que. The compact following run supports gén and ends at a detached point. The first abbreviation remains.',
+'b09':'The Pi expression starts appreciably below the top of the large B and is attached as its subscript. It has a flat cap, two straight posts and the parenthesized capital X. No extra index 1 is written.',
+'b11':'The whole word and group expression are cancelled. A q-like initial loop survives; the following strokes are too obscured to choose e rather than i at the end. Add qui to the existing doubtful que. The superscript remains tilde X/tilde alpha because its loop overlaps the cancellation; the smaller shape is not independently a lowercase x.',
+'b12':'In (7), the two X shapes in the ordered pair share the same crossing and capital scale; the raised terminal X repeats that form under its wave. The arrow has a barred tail and right head. Retain the capitals and mapsto.',
+'b17':'The point sign remains the same reduced zeta/xi form, with reversed preference alone in the second reading. The t of the short pt form is raised relative to the p body, supporting the retained superscript convention. The final horizontal stroke is the written dash.',
+'b18':'The thin lower foliation clearly reads 106, including the closed lower loop of 6. It is distinct from the dark authorial page 53 and remains a margin entry.'}
+rows=[]
+for c in comp:
+ if not c['different']:continue
+ b=c['box'];changed=b=='b11';final=c['first'].replace(r'\unsure{que}',r'\unsure{que|qui}') if changed else c['first']
+ rows.append({'box':b,'root_visually_inspected':True,'final':final,'evidence':evidence[b],'crop':f'crops/149_scan107_second_{b}.png','bbox':boxes[b]['bbox'],'confidence':'medium' if b in ['b01','b06','b11','b17'] else 'high','changed':changed})
+(s/'149_scan107_adjudications.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2)+'\n');old=next(x for x in data['changes'] if x['id']=='p09');iv=next(x for x in data['inventory'] if x['element']=='e05')
+plan={'scan':107,'page_replacements':[{'old':r'\unsure{que}','new':r'\unsure{que|qui}'}],'changes_updates':[{'id':'p09','patch':{'final':old['final'].replace(r'\unsure{que}',r'\unsure{que|qui}'),'evidence':old['evidence']+' Independent audit: the final e/i distinction is obscured, so qui is retained as a second possibility; this is an uncertainty refinement only.'}}],'doubts_updates':[{'place':'main line 11, first word of deleted fragment','patch':{'reading':r'\unsure{que|qui}','alternatives':'que; qui. The final e/i distinction is under the cancellation.','confidence':'low'}}],'inventory_updates':[{'element':'e05','patch':{'first_words_or_objects':iv['first_words_or_objects'].replace(r'\unsure{que}',r'\unsure{que|qui}')}}],'notes_append':['Independent audit: ten token-different boxes were adjudicated. The final e/i of the cancelled que/qui was left explicitly open; the preferred lexical reading and witness-error counts are unchanged. The visible smaller X and Y forms are superscript capitals in the recurring cover notation.']}
+(s/'149_scan107_update_plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2)+'\n')
