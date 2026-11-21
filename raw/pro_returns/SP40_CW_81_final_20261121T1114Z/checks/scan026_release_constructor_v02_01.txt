@@ -1,0 +1,160 @@
+"""Build a reviewable source-only record; no page/record/application writes."""
+from pathlib import Path
+import collections
+import copy
+import hashlib
+import json
+
+BASE=Path(__file__).resolve().parents[2]
+OUT=BASE/'out/checks'
+P='scan026_release_'
+def sha(b):return hashlib.sha256(b).hexdigest()
+def compact(v):return json.dumps(v,ensure_ascii=False,separators=(',',':'))
+def encoded(v):return (json.dumps(v,ensure_ascii=False,indent=2)+'\n').encode()
+def read(name):return json.loads((OUT/name).read_text())
+def save(name,value):
+    assert name.startswith(P)
+    b=encoded(value);(OUT/name).write_bytes(b)
+    return {'path':'out/checks/'+name,'sha256':sha(b),'bytes':len(b)}
+def ref(name,p=''):return {'path':'out/checks/'+name,'json_pointer':p}
+def esc(k):return str(k).replace('~','~0').replace('/','~1')
+def ptr(v,p):
+    for k in p.split('/')[1:] if p else []:
+        k=k.replace('~1','/').replace('~0','~');v=v[int(k)] if isinstance(v,list) else v[k]
+    return v
+
+input_names=[
+    'scan026_source_union_v01.json','scan026_source_union_state_pool_v01.json','scan026_source_union_sources_v01.json',
+    'scan026_source_record_scaffold_v01.json','scan026_source_selected_contract_v01.json',
+    'scan026_root_decisions.json','scan026_root_locus_supplement_v01.json',
+    'scan026_root_scalar_authority_v01.json','scan026_root_consequential_authority_v01.json','scan026_root_notes_abbreviation_authority_v01.json',
+    P+'audit_v02.json',P+'scalar_authority_projection_v02.json',P+'witness_bindings_v02.json',
+    P+'exact_raw_values_v01.json',P+'exact_own_source_spans_v01.json',P+'inventory_bindings_v01.json',P+'C_row_outcomes_v01.json',
+    'scan026_source_context_inventory_v01.json','scan026_final_draft.tex','scan026_final_source_map.json','scan026_source_audit.md',
+]
+input_manifest=[{'path':'out/checks/'+n,'sha256':sha((OUT/n).read_bytes()),'bytes':(OUT/n).stat().st_size} for n in input_names]
+union=read('scan026_source_union_v01.json');union_by={x['locus_id']:x for x in union};union_ix={x['locus_id']:i for i,x in enumerate(union)}
+scaffold=read('scan026_source_record_scaffold_v01.json')
+contract=read('scan026_source_selected_contract_v01.json');contract_by={x['locus_id']:x for x in contract['loci']};contract_ix={x['locus_id']:i for i,x in enumerate(contract['loci'])}
+audit=read(P+'audit_v02.json');audit_by={x['source_locus_id']:x for x in audit['rows']}
+scalar=read(P+'scalar_authority_projection_v02.json')['rows'];scalar_by={x['source_locus_id']:x for x in scalar}
+authority=read('scan026_root_scalar_authority_v01.json')
+consequence=read('scan026_root_consequential_authority_v01.json')
+notes=read('scan026_root_notes_abbreviation_authority_v01.json')
+root_decisions=read('scan026_root_decisions.json')
+root_supplement=read('scan026_root_locus_supplement_v01.json')
+raw_list=read(P+'exact_raw_values_v01.json')['records'];raw={x['record_id']:x for x in raw_list}
+span_pool=read(P+'exact_own_source_spans_v01.json');spans={x['span_id']:x for x in span_pool['spans']}
+registry=read('scan026_source_union_sources_v01.json')
+for alias,info in registry.items():assert sha((BASE/info['path']).read_bytes())==info['sha256']
+loaded_json={};loaded_bytes={}
+reference_table={x['reference_id']:x for x in contract['reference_table']}
+final_bytes=(OUT/'scan026_final_draft.tex').read_bytes();final_text=final_bytes.decode()
+assert sha(final_bytes)==contract['final_staged_source']['sha256']
+attachment_maps=[]
+def final_attachment(original):
+    a,b=original['char_start'],original['char_end'];literal=final_text[a:b]
+    assert sha(literal.encode())==original['literal_sha256']
+    result={'path':'checks/scan026_final_draft.tex','sha256':sha(final_bytes),'manifest':'root.final_draft.tex',
+            'char_start':a,'char_end':b,'utf8_byte_start':len(final_text[:a].encode()),'utf8_byte_end':len(final_text[:b].encode()),
+            'line_start':original['line_start'],'line_end':original['line_end'],'body_sha256':original['literal_sha256'],
+            'scope':original['scope'],'original_staged_source_span':copy.deepcopy(original)}
+    assert final_bytes[result['utf8_byte_start']:result['utf8_byte_end']]==literal.encode()
+    attachment_maps.append({'before':original,'after':result,'same_exact_literal_bytes':True})
+    return result
+def reference_value(jid):
+    r=reference_table[jid];path=r['path']
+    if path not in loaded_json:
+        loaded_bytes[path]=(BASE/path).read_bytes();loaded_json[path]=json.loads(loaded_bytes[path])
+    assert sha(loaded_bytes[path])==r['file_sha256']
+    value=ptr(loaded_json[path],r['json_pointer'])
+    exact=loaded_bytes[path].decode()[r['raw_json_char_start']:r['raw_json_char_end']]
+    assert sha(exact.encode())==r['raw_json_sha256'] and compact(json.loads(exact))==compact(value)
+    assert sha(compact(value).encode())==r['ordered_decoded_value_sha256']
+    return copy.deepcopy(value)
+for jid in reference_table:reference_value(jid)
+
+selected_models={};selected_inverse=[]
+def selected_model(lid,stack=()):
+    assert lid not in stack
+    if lid in selected_models:return selected_models[lid]
+    binding=contract_by[lid]['selected_state_binding'];kind=binding['kind']
+    if kind=='exact_complete_candidate_array':
+        model={'kind':kind,'candidates':reference_value(binding['array_ref'])}
+        assert len(model['candidates'])==binding['candidate_count']
+    elif kind=='singleton_exact_object':
+        model={'kind':kind,'candidates':[reference_value(binding['object_ref'])]}
+    elif kind=='whole_object_permutation':
+        original=reference_value(binding['original_array_ref']);order=binding['new_index_to_old_index']
+        values=[original[i] for i in order]
+        inverse=[values[i] for i in binding['inverse_old_index_to_new_index']]
+        assert compact(inverse)==compact(original)
+        model={'kind':kind,'candidates':values,'exact_original_candidates':original,'new_index_to_old_index':order,'inverse_old_index_to_new_index':binding['inverse_old_index_to_new_index'],'root_scope':reference_value(binding['root_scope_ref'])}
+    elif kind=='exact_parent_component_projection':
+        model={'kind':kind,'component_values':[reference_value(j) for j in binding['ordered_value_refs']],
+               'root_scope':reference_value(binding['shared_root_scope_ref']),
+               'complete_parent_candidates':reference_value(binding['parent_array_ref']),
+               'explicit_parent_indices':binding['explicit_parent_indices']}
+    elif kind in ['fixed_parent_with_scoped_child_candidates','fixed_parent_text_with_scoped_child_candidates']:
+        model={'kind':kind,'root_scope':reference_value(binding['root_scope_ref']),
+               'children':[{'locus_id':child,'complete_selected_scope':selected_model(child,stack+(lid,))} for child in binding['child_loci']],
+               'scope_rule':binding['scope_rule']}
+        if 'original_A_parent_candidate_provenance_ref' in binding:
+            model['original_A_parent_candidate_provenance']=reference_value(binding['original_A_parent_candidate_provenance_ref'])
+    else:raise AssertionError((lid,kind))
+    selected_models[lid]=model
+    selected_inverse.append({'locus_id':lid,'contract_pointer':f'/loci/{contract_ix[lid]}/selected_state_binding','kind':kind,'expanded_ordered_sha256':sha(compact(model).encode()),'contract_binding_exact':binding})
+    return model
+for row in scalar:selected_model(row['source_locus_id'])
+
+# The excluded fields stay intact in the frozen R object. Rejoining the two exact
+# key sets in the original key order is checked below for each public projection.
+excluded_report_fields=[
+    'C','H','C_anchor','H_anchor','C_reading_summary','H_reading_summary','C_doubt_status',
+    'diff_C','diff_H','marked_in_H','C_count_parent','H_count_parent','H_parent_scope',
+    'raw_diff_C','raw_diff_H','raw_diff_H_before_parent_count','witness_excerpt_policy',
+]
+reader_projection_maps=[]
+def reader_value(lid,role):
+    bundle=audit_by[lid]['readers'][role]
+    categories=bundle['source_categories']
+    own_literals=[]
+    for sid in bundle['exact_local_source_span_ids']:
+        item=spans[sid]
+        own_literals.append({'span_id':sid,'literal':item['span']['literal']})
+    groups=[{'raw_record':rid,'exact_original_fields':copy.deepcopy(raw[rid]['value'])} for rid in categories.get('source_group_records',[])]
+    own_rows=[]
+    for category in ['difference_records','doubt_records']:
+        for rid in categories.get(category,[]):
+            original=raw[rid]['value']
+            retained={k:v for k,v in original.items() if k not in excluded_report_fields}
+            excluded={k:v for k,v in original.items() if k in excluded_report_fields}
+            recovered={k:(retained[k] if k in retained else excluded[k]) for k in original}
+            assert compact(recovered)==compact(original)
+            own_rows.append({'raw_record':rid,'original_role':category,'own_fields':retained})
+            reader_projection_maps.append({'locus_id':lid,'reader':role,'raw_record':rid,'original_key_order':list(original),'retained_keys':list(retained),'excluded_keys':list(excluded),'exact_source_ref':raw[rid]['source']})
+    value={
+        'reader':role,'exact_local_source':own_literals,'complete_original_source_groups':groups,
+        'own_report_and_doubt_fields':own_rows,
+        'original_report_and_doubt_records':[{'raw_record':rid,'original_role':category,'exact_original_fields':copy.deepcopy(raw[rid]['value'])} for category in ['difference_records','doubt_records'] for rid in categories.get(category,[])],
+        'original_inventory_scopes':[{'raw_record':rid,'exact_original_fields':copy.deepcopy(raw[rid]['value'])} for rid in categories.get('inventory_records',[])],
+        'original_complete_source_scope_records':[{'raw_record':rid,'exact_original_fields':copy.deepcopy(raw[rid]['value'])} for rid in categories.get('other_state_records',[])],
+        'original_declared_crop_metadata':[{'raw_record':rid,'exact_original_fields':copy.deepcopy(raw[rid]['value'])} for rid in categories.get('declared_crop_records',[])],
+        'complete_own_source_partition':ref('scan026_source_state_catalog_v01.json',f'/complete_source_partitions/{role}'),
+    }
+    text=compact(value);assert compact(json.loads(text))==text
+    return text
+
+record_rows=[];blueprint_rows=[]
+for i,s in enumerate(scalar):
+    lid=s['source_locus_id'];entry=copy.deepcopy(s);a=audit_by[lid];root=a['root_authority'];rd=root['decision'];model=selected_models[lid]
+    if 'candidates' in model:
+        alternatives=[compact(x) for x in model['candidates']]
+        assert compact([json.loads(x) for x in alternatives])==compact(model['candidates'])
+    else:
+        alternatives=[compact(model)]
+        assert compact(json.loads(alternatives[0]))==compact(model)
+    if lid=='L051':
+        evidence=rd['evidence'];evidence_ref=ref('scan026_root_locus_supplement_v01.json','/agreed_locus/evidence')
+    else:
+        evidence=ptr(root_decisions,root['body_ref']['json_pointer']);evidence_ref=root['body_ref']

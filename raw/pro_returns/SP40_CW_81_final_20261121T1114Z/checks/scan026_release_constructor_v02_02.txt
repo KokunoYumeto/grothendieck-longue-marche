@@ -1,0 +1,119 @@
+    entry.update(
+        readers={role:reader_value(lid,role) for role in 'ABC'},alternatives=alternatives,evidence=evidence,
+        qualification=compact(rd),root_selected_state_model=model,
+        selected_state_binding=contract_by[lid]['selected_state_binding'],
+        selected_group_ids=contract_by[lid]['selected_source_groups'],
+        source_attachments=[final_attachment(span) for span in contract_by[lid]['selected_source_spans']],
+        witness_source_references=a['exact_witnesses'],
+        C_source_part_ids=a['C_source_part_ids'],C_recurrence_binding=a['C_recurrence_binding'],
+        crop=[root['crop_path']] if root.get('crop_path') else [],root_crop_evidence=[root] if root.get('crop_path') else [],
+        root_ink_choice_applied=True,root_source_audit_choice_applied=True,
+        mathematical_consequence=consequence['mathematical_consequence_by_locus'].get(lid,consequence['all_other_loci_mathematical_consequence']),
+        provenance={'root_scalar_ref':ref('scan026_root_scalar_authority_v01.json',f'/rows/{i}'),'authorized_witness_projection_ref':ref(P+'scalar_authority_projection_v02.json',f'/rows/{i}'),'root_evidence_ref':evidence_ref,'root_qualification_object_ref':root['decision_ref'],'selected_contract_ref':ref('scan026_source_selected_contract_v01.json',f'/loci/{contract_ix[lid]}'),'original_all_reader_union_ref':a['original_union_ref']},
+    )
+    for k,v in s.items():assert compact(entry[k])==compact(v)
+    entry['root_final_exact']=entry['final']
+    entry['final']=entry['root_final_exact']+'\nComplete selected state objects, with original scopes and fields:\n'+compact(model)
+    assert entry['final'].split('\nComplete selected state objects, with original scopes and fields:\n',1)==[s['final'],compact(model)]
+    record_rows.append(entry)
+    blueprint_rows.append({'record_index':i,'locus_id':lid,'scalar_index':i,'original_union_index':union_ix.get(lid),'selected_contract_index':contract_ix[lid],'root_decision_ref':root['decision_ref'],'root_evidence_ref':evidence_ref,'source_attachment_count':len(entry['source_attachments']),'mathematical_consequence_pointer':'/mathematical_consequence_by_locus/'+lid if lid in consequence['mathematical_consequence_by_locus'] else '/all_other_loci_mathematical_consequence'})
+
+# Inventory kinds are finite source-scope proposals for root review. These choices
+# do not change any selected reading, component state, attribution or count flag.
+L_kinds={
+ 'L001':'text','L002':'text','L003':'display','L004':'text','L005':'text','L006':'drawing','L007':'insertion','L008':'insertion','L009':'text','L010':'drawing',
+ 'L011':'insertion','L012':'deletion','L013':'drawing','L014':'drawing','L015':'diagram','L016':'deletion','L017':'drawing','L018':'drawing','L019':'drawing','L020':'drawing',
+ 'L021':'text','L022':'drawing','L023':'text','L024':'drawing','L025':'text','L026':'drawing','L027':'drawing','L028':'text','L029':'display','L030':'drawing',
+ 'L031':'deletion','L032':'insertion','L033':'drawing','L034':'text','L035':'drawing','L036':'insertion','L037':'drawing','L038':'drawing','L039':'text','L040':'drawing',
+ 'L041':'drawing','L042':'text','L043':'drawing','L044':'drawing','L045':'deletion','L046':'text','L047':'text','L048':'drawing','L049':'drawing','L050':'drawing','L051':'text','L052':'drawing',
+}
+hand_fields=[]
+def collect_hand_nodes(value,path=''):
+    if isinstance(value,dict):
+        for k,v in value.items():
+            p=path+'/'+esc(k)
+            if 'hand' in k.lower():yield p,v
+            else:yield from collect_hand_nodes(v,p)
+    elif isinstance(value,list):
+        for i,v in enumerate(value):yield from collect_hand_nodes(v,path+'/'+str(i))
+
+inventory=[];inventory_review=[]
+for i,d in enumerate(record_rows):
+    lid=d['source_locus_id'];rd=audit_by[lid]['root_authority']['decision']
+    field_nodes=[]
+    if 'hand' in rd:field_nodes.append({'source_scope':'root_decision','pointer':'/hand','value':rd['hand']})
+    field_nodes.extend({'source_scope':'root_selected_state_model','pointer':p,'value':v} for p,v in collect_hand_nodes(d['root_selected_state_model']))
+    values=[];lookup={};assignments=[]
+    for item in field_nodes:
+        k=compact(item['value'])
+        if k not in lookup:lookup[k]=len(values);values.append(item['value'])
+        assignments.append({'source_scope':item['source_scope'],'pointer':item['pointer'],'value_index':lookup[k]})
+    reconstructed=[{'source_scope':a['source_scope'],'pointer':a['pointer'],'value':values[a['value_index']]} for a in assignments]
+    assert compact(reconstructed)==compact(field_nodes)
+    hand_text=compact({'exact_hand_field_values':values})
+    kind='deletion' if lid=='S06' else 'display' if lid.startswith('S') else L_kinds[lid]
+    inv={
+        'sheet_kind':'text','hand':hand_text,'element':'026.S.'+lid,'kind':kind,'position':d['location'],
+        'first_words_or_objects':d['root_final_exact'],'transcribed':'yes','main_approved':False,
+        'selection_status':'Proposed exact root-selected source coverage; pending final record approval.',
+        'hand_status':'Every exact hand value retains its original root, candidate, component or provenance scope in selected_hand_scope_map.',
+        'decision_ids':[d['id']],'selected_group_ids':d['selected_group_ids'],'source_attachments':d['source_attachments'],
+        'source_inventory_identity':'026.S.'+lid,'source_inventory_role':'root-selected locus proposal','page_order':i+1,
+        'selected_hand_scope_map':{'values':values,'assignments':assignments},
+        'original_reader_inventory_bindings_ref':ref(P+'inventory_bindings_v01.json','/reader_inventory_bindings'),
+        'provenance':{'root_scope_ref':audit_by[lid]['root_authority']['decision_ref'],'selected_contract_ref':ref('scan026_source_selected_contract_v01.json',f'/loci/{contract_ix[lid]}'),'inventory_kind_is_reviewable_proposal':True},
+    }
+    inventory.append(inv)
+    inventory_review.append({'record_inventory_index':i,'locus_id':lid,'element':inv['element'],'kind_proposal':kind,'position':inv['position'],'first_words_or_objects_exact_scalar_ref':ref(P+'scalar_authority_projection_v02.json',f'/rows/{i}/final'),'hand_exact_values':values,'hand_assignment_count':len(assignments),'hand_scope_map_ref':ref(P+'record_proposal_v02.json',f'/inventory/{i}/selected_hand_scope_map'),'source_contract_ref':inv['provenance']['selected_contract_ref']})
+
+context_supplement=read('scan026_source_context_inventory_v01.json')
+assert context_supplement['selected_source']['sha256']==sha(final_bytes)
+context_kinds={'CTX001':'text','CTX002':'text','CTX003':'text','CTX004':'display','CTX005':'text','CTX006':'display','CTX007':'text','CTX008':'deletion','CTX009':'display','CTX010':'text','CTX011':'display','CTX012':'display','CTX013':'display','CTX014':'display','CTX015':'display'}
+source_partition=[]
+for part in context_supplement['complete_source_partition']:
+    ex=part['source'];source_partition.append(final_text[ex['char_start']:ex['char_end']])
+assert ''.join(source_partition).encode()==final_bytes
+context_hand_maps=[]
+for context_index,context in enumerate(context_supplement['contexts']):
+    cid=context['context_id'];values=[];lookup={};assignments=[]
+    for source in context['original_inventory_refs']:
+        rid=source['pool_record_id'];original=raw[rid]['value']
+        for p,v in collect_hand_nodes(original):
+            k=compact(v)
+            if k not in lookup:lookup[k]=len(values);values.append(v)
+            assignments.append({'reader':source['reader'],'raw_record':rid,'field_pointer':p,'value_index':lookup[k]})
+            assert compact(values[lookup[k]])==compact(ptr(original,p))
+    children=context['contained_or_partly_contained_locus_ids']
+    inv={'sheet_kind':'text','hand':compact({'original_inventory_hand_field_values':values}),'element':'026.CONTEXT.'+cid,
+         'kind':context_kinds[cid],'position':context['title'],'first_words_or_objects':context['title'],'transcribed':'yes','main_approved':False,
+         'selection_status':'Proposed exact selected-source context coverage; no additional physical difference count.',
+         'hand_status':context['attribution_scope'],
+         'decision_ids':[record_by_locus['id'] for lid in children for record_by_locus in [next(d for d in record_rows if d['source_locus_id']==lid)]],
+         'selected_group_ids':[],'source_attachments':[final_attachment(context['selected_source'])],
+         'source_inventory_identity':'026.CONTEXT.'+cid,'source_inventory_role':'complete agreed/context source container','page_order':len(inventory)+1,
+         'original_inventory_hand_scope_map':{'values':values,'assignments':assignments},
+         'selected_child_hand_scope_refs':[{'locus_id':lid,'record_inventory_pointer':f'/inventory/{next(j for j,d in enumerate(record_rows) if d["source_locus_id"]==lid)}/selected_hand_scope_map'} for lid in children],
+         'original_inventory_refs':context['original_inventory_refs'],
+         'provenance':{'context_supplement_ref':ref('scan026_source_context_inventory_v01.json',f'/contexts/{context_index}'),'inventory_kind_is_reviewable_proposal':True}}
+    index=len(inventory);inventory.append(inv)
+    inventory_review.append({'record_inventory_index':index,'context_id':cid,'element':inv['element'],'kind_proposal':inv['kind'],'position':inv['position'],'first_words_or_objects':inv['first_words_or_objects'],'original_hand_exact_values':values,'original_hand_assignment_count':len(assignments),'selected_child_loci':children,'context_supplement_ref':inv['provenance']['context_supplement_ref']})
+    context_hand_maps.append({'context_id':cid,'original_hand_scopes':inv['original_inventory_hand_scope_map'],'selected_child_hand_scope_refs':inv['selected_child_hand_scope_refs']})
+assert len(inventory)==106
+
+c_outcomes=read(P+'C_row_outcomes_v01.json')['rows'];c_source_rows=copy.deepcopy(scaffold['C_source_rows'])
+record_by={x['source_locus_id']:x for x in record_rows}
+for i,row in enumerate(c_source_rows):
+    outcome=c_outcomes[i];cid=row['source_id'];assert cid==outcome['source_id']
+    loci=outcome['source_binding']['loci']
+    row['selected_outcome']=authority['all_C_parent_outcomes'][cid]
+    row['decision_ids']=[record_by[lid]['id'] for lid in loci]
+    row['root_outcome_mapping_ref']=ref(P+'C_row_outcomes_v01.json',f'/rows/{i}')
+    for j,part in enumerate(row['source_parts']):
+        exact=outcome['source_parts'][j]
+        part_loci=loci
+        if cid=='C026-R02':part_loci=[outcome['source_binding']['four_local_part_correspondences'][j]['locus']]
+        part['selected_outcome']=exact['selected_outcome_exact']
+        part['decision_ids']=[record_by[lid]['id'] for lid in part_loci]
+        part['source_attachments']=[copy.deepcopy(span) for lid in part_loci for span in record_by[lid]['source_attachments']]
+        part['root_authority']=exact['root_ref'];part['main_approved']=False
+    if cid=='C026-R15':row['recurrence_outcomes']=outcome['recurrence_outcomes']

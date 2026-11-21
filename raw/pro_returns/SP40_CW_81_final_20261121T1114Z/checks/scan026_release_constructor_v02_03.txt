@@ -1,0 +1,73 @@
+assert len(c_source_rows[1]['source_parts'])==4 and len(c_source_rows[14]['source_parts'])==1
+
+doubts=[]
+for d in record_rows:
+    if d['remaining_doubt']:
+        doubts.append({'id':'D026-'+d['source_locus_id'],'decision_id':d['id'],'location':d['location'],'reading':d['final'],'alternatives':d['alternatives'],'confidence':d['confidence'],'reason':d['qualification'],'selected_group_ids':d['selected_group_ids'],'source_attachments':d['source_attachments'],'root_crop_evidence':d['root_crop_evidence'],'main_approved':False,'selected_state_binding':d['selected_state_binding']})
+assert len(doubts)==66
+
+record={k:copy.deepcopy(scaffold[k]) for k in ['scan','folder','their_page','hua_has','filename']}
+selected_groups=[]
+for gid,original in contract['source_group_registry'].items():
+    entry=copy.deepcopy(original);entry['final_source']=final_attachment(original['final_source'])
+    entry['original_contract_group_ref']=ref('scan026_source_selected_contract_v01.json','/source_group_registry/'+gid)
+    selected_groups.append(entry)
+selected_coverage=[]
+for i,original in enumerate(contract['loci']):
+    entry=copy.deepcopy(original);entry['selected_source_spans']=[final_attachment(s) for s in original['selected_source_spans']]
+    entry['original_contract_locus_ref']=ref('scan026_source_selected_contract_v01.json',f'/loci/{i}')
+    selected_coverage.append(entry)
+abbreviations=copy.deepcopy(notes['abbreviations'])
+for i,abbr in enumerate(abbreviations):
+    if i==0:
+        a=final_text.index('ens.');b=a+4
+        ex={'path':contract['final_staged_source']['path'],'file_sha256':sha(final_bytes),'char_start':a,'char_end':b,'utf8_byte_start':len(final_text[:a].encode()),'utf8_byte_end':len(final_text[:b].encode()),'line_start':final_text.count('\n',0,a)+1,'line_end':final_text.count('\n',0,b-1)+1,'literal_sha256':sha(b'ens.'),'scope':'exact agreed opening ens. occurrence'}
+        abbr['source_attachments']=[final_attachment(ex)]
+    else:abbr['source_attachments']=copy.deepcopy(record_by[abbr['root_loci'][0]]['source_attachments'])
+    abbr['root_authority']=ref('scan026_root_notes_abbreviation_authority_v01.json',f'/abbreviations/{i}');abbr['main_approved']=False
+record.update(
+    brief_version='scan026 source-only review proposal v02',main_adjudicated=False,main_approved=False,
+    decisions=record_rows,doubts=doubts,inventory=inventory,C_source_rows=c_source_rows,
+    selected_graphical_groups=selected_groups,
+    source_locus_coverage=selected_coverage,
+    abbreviations=abbreviations,notes=notes['notes'],
+    attributed_content_note={'text':notes['notes'],'root_authority':ref('scan026_root_notes_abbreviation_authority_v01.json','/notes'),'attributed_only':notes['attributed_only'],'mathematical_check':notes['mathematical_check'],'main_approved':False},
+    root_selected_content_note={'text':notes['notes'],'root_authority':ref('scan026_root_notes_abbreviation_authority_v01.json','/notes'),'main_approved':False},
+    check_events=copy.deepcopy(notes['check_events']),
+    counts={'C':70,'H':82,'decision_loci':91,'remaining_doubt_loci':66,'inventory_elements':len(inventory),'check_events':0},
+    count_status='Exact root scalar authority applied to this review proposal.',
+    root_count_authorization=ref('scan026_root_scalar_authority_v01.json',''),
+    pending_root_decision_ids=[],root_actions_pending=['Review and approve proposed public inventory kinds and exact scoped hand-field projection.','Review all final record fields and approve.'],
+    root_approval_status='Final record approval pending.',
+    source_attachment_status='Exact frozen final-draft spans; root approval remains pending.',
+    selected_draft='checks/scan026_final_draft.tex',selected_source_map='checks/scan026_final_source_map.json',root_source_audit='checks/scan026_source_audit.md',selected_source_contract=ref('scan026_source_selected_contract_v01.json',''),
+    original_reader_inventory_bindings=read(P+'inventory_bindings_v01.json'),
+    all_reader_raw_pool_ref=ref(P+'exact_raw_values_v01.json',''),
+    complete_own_source_span_pool_ref=ref(P+'exact_own_source_spans_v01.json',''),
+    complete_selected_source_contexts=context_supplement,
+    provenance={'frozen_inputs':input_manifest,'root_scalar_authority':ref('scan026_root_scalar_authority_v01.json',''),'S06_exact_correction':ref(P+'S06_scope_correction_v01.json',''),'selected_contract':ref('scan026_source_selected_contract_v01.json','')},
+)
+assert sum(x['diff_C'] for x in record_rows)==70 and sum(x['diff_H'] for x in record_rows)==82
+assert sum(x['marked_in_H']=='yes' for x in record_rows)==9
+assert len(record['check_events'])==0 and record['notes']==notes['notes']
+for i,original in enumerate(notes['abbreviations']):
+    for k,v in original.items():assert compact(record['abbreviations'][i][k])==compact(v)
+for source in input_manifest:assert sha((BASE/source['path']).read_bytes())==source['sha256']
+record_manifest=save(P+'record_proposal_v02.json',record)
+selected_manifest=save(P+'expanded_selected_models_v02.json',{'models':selected_models,'inverse_mappings':selected_inverse})
+projection_manifest=save(P+'reader_projection_maps_v02.json',{'exact_excluded_report_field_names':excluded_report_fields,'rows':reader_projection_maps,'all_finite_field_rejoins_equal_original_ordered_values':True})
+inventory_manifest=save(P+'inventory_review_v02.json',{'status':'Kind proposals and exact scoped hand-field projection await root; agreed contexts are being attached.','rows':inventory_review})
+attachment_manifest=save(P+'final_attachment_maps_v02.json',{'maps':attachment_maps,'forward_inverse_identity_on_exact_selected_bytes':True})
+blueprint_manifest=save(P+'record_blueprint_v02.json',{
+    'record':record_manifest,'source_inputs':input_manifest,'row_bindings':blueprint_rows,
+    'public_reader_serializer':{'json_ensure_ascii':False,'json_separators':[',',':'],'field_order':['reader','exact_local_source','complete_original_source_groups','own_report_and_doubt_fields','original_report_and_doubt_records','original_inventory_scopes','original_complete_source_scope_records','original_declared_crop_metadata','complete_own_source_partition'],'report_projection':projection_manifest},
+    'final_reading_constructor':{'root_exact_field':'root_final_exact','separator':'\nComplete selected state objects, with original scopes and fields:\n','state_object':'root_selected_state_model','serializer':{'ensure_ascii':False,'separators':[',',':']},'doubt_reading':'Copy the complete constructed final field only for the 66 exact root remaining_doubt true rows.'},
+    'selected_alternatives_rule':'For a candidates array, serialize every complete candidate object independently with the compact JSON serializer, preserving its array order. For a scoped parent or component-projection model, serialize its complete expanded object once; its child arrays and complete parent states remain inside the object.',
+    'evidence_rule':'Copy the exact root section body; L051 copies the exact agreement-supplement evidence. The qualification string is the exact compact JSON serialization of the root locus object.',
+    'hand_scope_rule':'Traverse selected model dictionaries in original key order and arrays in index order. A key containing hand contributes its entire exact value; descendants of that contributed value stay inside it. Root hand is separately retained first when present. Pool only exactly identical typed values; preserve every ordered source scope/pointer assignment and its value index. Reverse expansion is checked against the full traversal.',
+    'inventory_kind_proposals':{'S06':'deletion','all_other_S_loci':'display','L_loci':L_kinds,'context_kinds':context_kinds},
+    'selected_models':selected_manifest,'inventory_review':inventory_manifest,
+    'attachment_maps':attachment_manifest,'agreed_context_supplement':ref('scan026_source_context_inventory_v01.json',''),
+    'root_review_claimed':False,'no_original_source_mutations':True,
+})
+print(json.dumps({'record':record_manifest,'blueprint':blueprint_manifest,'inventory':inventory_manifest,'reader_projection':projection_manifest},ensure_ascii=False))
