@@ -1,0 +1,49 @@
+from pathlib import Path
+import json
+W=Path(__file__).resolve().parents[1];pg='150_scan089';rp=W/'records'/f'{pg}.json';r=json.loads(rp.read_text());c=json.loads((W/'second'/f'{pg}_comparison.json').read_text());b={x['box']:x for x in c['results']};notes={}
+db=r'\mathord{\cdot}\mathord{-}'
+reps=[(r'i_0\ldots i_n',r'i_0'+db+r'i_n'),(r'J_1\ldots J_n',r'J_1'+db+r'J_n'),(r'V_{\unsure{J}}',r'V_{\unsure{\Sigma|J|\Delta}}'),(r'\deleted{\unsure{ens.}}',r'\deleted{\unsure{ens.|cat.}}'),(r'\unsure{intersections} quelconques',r'\unsure{intersecti-|intersections}, quelconques'),(r'\deleted{\unsure{Si}} Soit',r'\unsure{\S|\deleted{Si}|\deleted{L}} Soit'),('top. associée à',r'top. \unsure{associé|associée} à'),("celui de $I$, i.e.\n", "celui de $I$, i.e\n")]
+p=W/'pages'/f'{pg}.tex';s=p.read_text()
+for a,z in reps:assert s.count(a)==1,(a,s.count(a));s=s.replace(a,z)
+p.write_text(s);(W/'records'/p.name).write_text(s)
+ch={x['id']:x for x in r['changes']}
+for x in r['changes']:
+ for a,z in reps:x['final']=x['final'].replace(a,z)
+ch['C01']['evidence']='After J1 lie a distinct point and one short horizontal rule. No comma intervenes; the comma after J0 remains clear. The continuation itself is separately logged against both witnesses.'
+ch['C03']['evidence']+=' Blind audit shows the final written group ending in i followed by a short rule and a detached comma at the page edge; preserve the truncated/overtraced reading locally rather than silently supplying the full ending.'
+ch['C03']['final']=r'stable par \unsure{intersecti-|intersections}, quelconques et par réunions \deleted{finies}, quelconques'
+for ident,place,C,H,final,box,why,kind,ek,conf in [
+ ('C32','Heading, first indexed V continuation',r'i_0\ldots i_n',r'i_0\ldots i_n',r'i_0'+db+r'i_n','B01','The continuation contains one dark point followed by one short horizontal rule, wider than the adjacent i dots.','misread symbol or index','1 symbols/indices','high'),
+ ('C33','Heading, last indexed V continuation',r'J_1\ldots J_n',r'J_1,\ldots J_n',r'J_1'+db+r'J_n','B01','The two continuation marks are one point and one horizontal rule. The absence of the extra comma is already logged separately.','misread symbol or index','1 symbols/indices','high'),
+ ('C34','Stability sentence, right-edge continuation and comma',r'intersections quelconques',r'\struck{intersection,} réunions',r'\unsure{intersecti-|intersections}, quelconques','B03','At the right edge the dense word ends in a dotted i-like upright followed by a separate short rule and a detached comma. The overwritten word remains uncertain; the terminal punctuation is preserved.','other','10 other','medium'),
+ ('C35','After celui de I, abbreviated i.e without final stop','i.e.','i.e.', 'i.e','B08','The i has its upper dot, and a separate stop stands between i and e. The e ends in a connected rightward return; no detached stop follows before the wide blank.','abbreviation expanded or spelling modernised','8 abbreviation/spelling','high')]:
+ r['changes'].append(dict(id=ident,place=place,C=C,H=H,final=final,evidence=why,crop=f'crops/{pg}_blind_{box}.png',box=b[box]['coordinates'],confidence=conf,kind=kind,error_kind=ek,against_C=True,against_H=True,consequential=False,marked_in_H=ident=='C34',phase='blind audit'))
+for d in r['doubts']:
+ if d['place']=='heading, third V index':d.update(reading=r'V_{\unsure{\Sigma|J|\Delta}}',alternatives=[r'\Sigma','J',r'\Delta'],reason='A top horizontal cap, oblique middle and broad curved lower return favour Sigma; retracing closes part of the form and leaves J/Delta alternatives. The adjacent clean J is differently shaped. No underlying cancellation is separately recoverable.')
+ if d['place']=='cancelled ens. after forment une':d.update(reading=r'\deleted{\unsure{ens.|cat.}}',alternatives=['ens.','cat.'],reason='The low opening joins lie under the heavy strike; a raised terminal remnant also admits cat. Neither reading has all its letters independently clear.')
+ if d['place']=='overwritten intersections after stable par':d.update(reading=r'\unsure{intersecti-|intersections}',alternatives=['intersecti-','intersections'],reason='The terminal i-like stroke, short rule and following comma are visible. The dense overwritten interior prevents a secure full-word reading; no completion is silently supplied.')
+ if d['place']=='cancelled opening before Soit':d.update(reading=r'\unsure{\S|\deleted{Si}|\deleted{L}}',alternatives=[r'\S',r'\deleted{Si}',r'\deleted{L}'],reason='The isolated opening has two vertically overlapping loop/curve groups and a long lower return. No independent i dot or separate cancelling stroke is secure; a section sign and an overtraced abandoned letter remain alternatives.')
+r['doubts'].append(dict(place='Top. associée, ending before à',reading=r'\unsure{associé|associée}',alternatives=['associé','associée'],confidence='medium',reason='The final accented stroke and small terminal return can represent a single é; an additional e cannot be isolated securely. Keep the agreement unresolved.',crop=f'crops/{pg}_blind_B08.png',box=b['B08']['coordinates']))
+for x in r['inventory']:
+ if 'first_words_or_objects' in x:
+  for a,z in reps:x['first_words_or_objects']=x['first_words_or_objects'].replace(a,z)
+r['notes']+='\n### Blind reading corrections\n\nBoth heading continuations are one point followed by one short rule. The retraced third V index now admits Sigma/J/Delta without forcing the notation. The dense stability word has a visible terminal rule and following comma; its interior remains doubtful. The isolated sign before Soit is also left uncertain between a section mark and canceled lettering. Tte, can without a stop, de I, the terminal e in inserted ouverte, and the written equals sign for même were confirmed. After celui de I the short form is i.e without a terminal stop. No order-theoretic statement was changed by these spelling and notation decisions.\n'
+def put(box,why,changed=False):
+ notes[box]=dict(viewed=True,evidence=why)
+ if changed:
+  f=b[box]['first']
+  for a,z in reps:f=f.replace(a,z)
+  if box=='B08':f=f.replace('celui de $I$, i.e.','celui de $I$, i.e')
+  notes[box].update(changed=True,final=f)
+put('B01','The full enlarged exact crop shows point-rule in both index continuations. The third index has a top cap, diagonal middle and broad curved lower stroke, favouring Sigma while leaving retraced J/Delta possible. All title words, 41,17, commas and the final stop agree. Rounded V stays the established V encoding.',True)
+put('B02','The raised J is attached after partie by its leader. The inequality, membership signs and implication are all visible and agree. The second reader includes the next-line overlap Les parties fermées de, already in the following text; display delimiters and spacing do not change ink.')
+put('B03','The whole exact crop shows the canceled short form still buried beneath its strike; retain ens./cat. alternatives. The right-edge overtraced word ends in an i-like dotted stroke, short rule and comma; its interior stays uncertain. Finies is crossed and the adjacent comma remains live. The line order quelconques et par réunions is unchanged. The missing opening in the blind reading is only crop overlap, and P brace syntax is immaterial.',True)
+put('B04','The full exact crop shows a tall looped initial l in the baseline les, crossed by the diagonal stroke, and the raised replacement les. Before I there is a rising looped d and low e, not three low sur strokes. A separate dark point follows the canceled canonique before inf. Its underline belongs to the baseline; inférieure is raised above it. Soit L=I\\setminus J and the doubtful on a remain under the long strike. The different grouping of deletion wrappers changes no word or state.')
+put('B05','The two raised t stems share a transverse stroke, and a small e return follows at their lower right. Retain tte without a stop; the full A de I phrase agrees.')
+put('B06','All of82, its left number, bar A, quantifiers, inequality and set braces agree. The note has adh. and top. with stops but can without a stop. Display position and margin line wrapping are encoding differences.')
+put('B07','The full exact crop leaves the isolated initial double-loop sign uncertain between section mark and canceled Si/L; no independent i dot or separate strike is secure. The first A has its cap joined to the apex, unlike the clearly detached bar above the later A, so retain unbarred A. The later J remains literal. The inserted adjective has a small e return after its tall t, supporting ouverte. The attachment leader, single underline, quotes, abbreviations and remaining stops agree.',True)
+put('B08','The full exact crop leaves the terminal accented-e/extra-e distinction uncertain. The canceled I-like character before celui remains under its own retracing. The canceled membership has an obscured initial upright and I-like terminal barred shape; keep l/i uncertainty, without supplying an ellipsis or changing the clear live inequality. The short i.e has no detached final dot after its e. Ell versus l and display wrappers encode the same live letter.',True)
+put('B09','The whole83 formula has the tilde on B, existential j in B, and i greater than or equal to j. The left handwritten number83 agrees. Only its grouping inside/outside the display and line wrapping differ.')
+put('B11','The crop shows two horizontal bars after au, with no letters for même. Keep the written equals sign. Pour is raised with its leader attaching before live capital Une; loc! has a shaft and detached lower dot. The closed/open intersection and J=bar J cap tilde J, commas and closing parenthesis agree.')
+rp.write_text(json.dumps(r,ensure_ascii=False,indent=2)+'\n');(W/'second'/f'{pg}_root_crop_notes.json').write_text(json.dumps(notes,ensure_ascii=False,indent=2)+'\n')
+print('089: all10 differing boxes observed; four changed boxes.')
