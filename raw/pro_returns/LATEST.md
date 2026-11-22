@@ -111,5 +111,6 @@ their deliverables only. Older checkpoints stay as they were pushed.
 | SP92_C13_150+151 | **[final](SP92_C13_150+151_final_20261121T2107Z/)** | 2026-11-21 21:07 | 1 |
 | SP93_C13_151 | **[checkpoint 04](SP93_C13_151_checkpoint_04_20261121T2257Z/)** | 2026-11-21 22:57 | 1 |
 | SP94_C13_151 | **[final](SP94_C13_151_final_20261121T2250Z/)** | 2026-11-21 22:50 | 1 |
+| SP95_C13_151+152 | **[final](SP95_C13_151+152_final_20261122T0815Z/)** | 2026-11-22 08:15 | 1 |
 
 173 other folders here have no checkpoint number and date in their names, so the table doesn't rank them.
