@@ -41,6 +41,9 @@ their deliverables only. Older checkpoints stay as they were pushed.
 | SECTIONS_OVER_Q | **[checkpoint 17](SECTIONS_OVER_Q_checkpoint_17_20261116T1754Z/)** | 2026-11-16 17:54 | 10 |
 | SP02_CW_10+12 | **[checkpoint 27](SP02_CW_10+12_checkpoint_27_20261120T1226Z/)** | 2026-11-20 12:26 | 8 |
 | SP04_CW_156-4+156-6 | **[checkpoint 05](SP04_CW_156-4+156-6_checkpoint_05_20261117T1757Z/)** | 2026-11-17 17:57 | 4 |
+| SP100_CW_81 | **[final](SP100_CW_81_final_20261122T1944Z/)** | 2026-11-22 19:44 | 1 |
+| SP101_CW_29 | **[final](SP101_CW_29_final_20261122T2006Z/)** | 2026-11-22 20:06 | 1 |
+| SP102_CW_29+32 | **[checkpoint 04](SP102_CW_29+32_checkpoint_04_20261123T1511Z/)** | 2026-11-23 15:11 | 4 |
 | SP114_CW_156-5 | **[final](SP114_CW_156-5_final_20261120T2027Z/)** | 2026-11-20 20:27 | 1 |
 | SP115_CW_156-7 | **[final](SP115_CW_156-7_final_20261120T2029Z/)** | 2026-11-20 20:29 | 1 |
 | SP116_CW_75 | **[checkpoint 01](SP116_CW_75_checkpoint_01_20261120T1903Z/)** | 2026-11-20 19:03 | 1 |
@@ -113,5 +116,8 @@ their deliverables only. Older checkpoints stay as they were pushed.
 | SP94_C13_151 | **[final](SP94_C13_151_final_20261121T2250Z/)** | 2026-11-21 22:50 | 1 |
 | SP95_C13_151+152 | **[final](SP95_C13_151+152_final_20261122T0815Z/)** | 2026-11-22 08:15 | 1 |
 | SP96_WK_1 | **[final](SP96_WK_1_final_20261122T1045Z/)** | 2026-11-22 10:45 | 1 |
+| SP97_WK_1 | **[final](SP97_WK_1_final_20261122T1856Z/)** | 2026-11-22 18:56 | 1 |
+| SP98_WK_1 | **[final](SP98_WK_1_final_20261122T1823Z/)** | 2026-11-22 18:23 | 1 |
+| SP99_CW_81 | **[final](SP99_CW_81_final_20261122T1626Z/)** | 2026-11-22 16:26 | 1 |
 
 173 other folders here have no checkpoint number and date in their names, so the table doesn't rank them.
