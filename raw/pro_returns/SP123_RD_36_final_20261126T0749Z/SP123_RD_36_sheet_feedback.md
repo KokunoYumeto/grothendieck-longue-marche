@@ -1,0 +1,36 @@
+# SP123_RD_36 — Error-sheet feedback
+
+Each logged reading or graphic locus has one primary error-sheet category. These counts use loci, not token edits or audit boxes; they are not population error-rate estimates. The interpretation below distinguishes these units and witness counts.
+
+| Error-sheet kind | Loci | Places |
+| --- | --- | --- |
+| Symbols and indices | 76 | 003-001, 004-002, 004-004, 004-006, 005-001, 005-002, 005-004, 006-003, 007-002, 028-011, 028-013, 028-014, 029-001, 029-004, 029-006, 029-009, 029-015, 029-018, 029-021, 029-024, 029-026, 029-028, 029-029, 029-040, 029-046, 029-047, 029-055, 029-057, 029-061, 030-001, 030-002, 030-004, 030-008, 030-011, 030-015, 031-022, 031-030, 032-001, 033-013, 033-022, 033-025, 033-028, 033-038, 034-003, 034-006, 034-008, 036-001, 036-010, 036-015, 036-018, 037-002, 037-013, 037-015, 037-016, 038-001, 039-014, 039-020, 041-003, 041-005, 041-007, 041-008, 041-010, 042-013, 042-018, 042-019, 043-002, 043-005, 043-006, 043-018, 043-019, 043-020, 043-021, 043-026, 043-027, 043-028, 043-034 |
+| Words | 73 | 003-008, 005-003, 005-007, 006-008, 007-001, 007-006, 029-003, 029-019, 029-027, 029-030, 029-032, 029-034, 029-049, 029-054, 029-056, 029-060, 029-062, 029-063, 029-064, 030-009, 030-012, 031-001, 031-002, 031-005, 031-011, 031-015, 031-017, 031-019, 032-005, 033-003, 033-005, 033-007, 033-008, 033-009, 033-010, 033-015, 033-017, 033-019, 033-027, 033-035, 034-015, 036-002, 036-003, 036-011, 036-012, 037-003, 037-004, 037-005, 037-007, 037-008, 037-010, 037-012, 039-001, 039-004, 039-007, 039-011, 040-005, 040-007, 040-008, 040-010, 040-011, 040-012, 040-015, 042-005, 042-006, 042-008, 042-009, 042-011, 042-015, 042-016, 043-001, 043-015, 043-033 |
+| Omissions | 48 | 003-005, 003-011, 004-005, 006-006, 007-003, 028-001, 028-006, 028-012, 029-016, 029-033, 029-039, 029-041, 029-043, 029-045, 029-051, 029-052, 029-053, 029-058, 031-026, 031-029, 032-007, 032-013, 033-002, 033-014, 033-016, 033-020, 033-024, 033-030, 033-031, 033-036, 033-037, 036-007, 036-009, 036-016, 036-019, 037-001, 037-009, 037-014, 039-005, 039-013, 039-019, 039-021, 040-016, 041-013, 043-007, 043-008, 043-029, 043-030 |
+| Drawings and diagrams | 89 | 003-006, 003-007, 003-010, 003-012, 005-008, 005-009, 005-010, 006-002, 006-009, 006-010, 007-004, 007-007, 007-008, 007-009, 007-010, 007-011, 007-012, 008-001, 008-002, 008-003, 028-002, 028-003, 028-004, 028-005, 028-007, 028-008, 028-009, 028-010, 028-015, 029-005, 029-007, 029-008, 029-010, 029-012, 029-022, 029-023, 029-036, 029-065, 030-003, 030-013, 030-014, 031-003, 031-008, 031-010, 031-012, 031-027, 031-028, 031-033, 031-034, 032-009, 032-018, 032-019, 033-021, 033-023, 033-032, 034-005, 034-013, 034-014, 036-006, 036-008, 036-013, 036-017, 039-008, 039-009, 039-010, 039-012, 039-015, 039-016, 039-017, 039-018, 040-003, 040-004, 040-006, 041-001, 041-002, 041-006, 041-011, 041-012, 042-001, 042-002, 042-003, 043-003, 043-004, 043-009, 043-010, 043-012, 043-016, 043-023, 043-032 |
+| Readable ink left as illegible | 17 | 029-044, 029-048, 029-050, 031-013, 031-025, 033-001, 033-006, 033-011, 033-012, 033-029, 036-005, 037-006, 039-003, 040-014, 041-009, 043-017, 043-024 |
+| Insertions put in the wrong place | 28 | 003-002, 003-009, 004-001, 004-003, 006-001, 006-004, 029-031, 029-038, 031-009, 031-021, 032-002, 032-003, 032-004, 032-006, 032-010, 032-012, 032-014, 032-015, 032-016, 032-017, 034-002, 034-007, 034-009, 034-010, 034-012, 036-014, 043-011, 043-014 |
+| Struck text | 22 | 003-003, 029-002, 029-014, 029-025, 029-037, 029-042, 030-005, 030-007, 030-010, 031-004, 031-014, 031-018, 031-020, 034-001, 034-004, 034-011, 036-004, 039-002, 041-004, 042-014, 043-013, 043-025 |
+| Abbreviations expanded, spelling modernised | 5 | 029-035, 029-059, 031-024, 031-031, 040-017 |
+| Text that is not on the page | 20 | 003-004, 005-011, 029-013, 029-020, 031-006, 031-023, 033-004, 033-018, 033-026, 033-034, 037-011, 039-006, 040-001, 040-002, 040-009, 042-004, 042-007, 042-012, 042-017, 043-022 |
+| Other | 18 | 005-005, 005-006, 006-005, 006-007, 007-005, 029-011, 029-017, 030-006, 031-007, 031-016, 031-032, 032-008, 032-011, 033-033, 035-001, 040-013, 042-010, 043-031 |
+
+## Interpretation of the counts
+
+These totals are derived from the current logged loci. One locus has one primary error-sheet category and can involve both witnesses; C and H columns are not independent observations. They are neither token-edit totals nor estimates of error rates in the archive. A doubt resolved in favor of its existing first candidate is a mark decision, not proof of an earlier wrong reading. Added uncertainty without a changed preferred reading belongs in the doubts apparatus. Audit-box counts use a separate unit and are reported in the audit table.
+
+Pure macro syntax, H editorial synopses and stated or well-supported editorial font conventions are filtered as described in the page notes.
+
+## Repeated problems illustrated by this selection
+
+The supplied error sheet already names the principal reading failures found here: small indices, underlines, abbreviated words, cancellation scope, insertion attachment and invented completions. The following more specific operational cases deserve explicit reminders in future runs:
+
+- **Page orientation can turn one foliation into a false second number.** On042, H's apparent17 and the native41 are one pale inscription in different orientations. The body and foliation layers must be oriented separately.
+- **An editorial synopsis is not a source transcription.** H's summaries on003–008,030,032,034 were tested against the image but not converted into hundreds of false omission entries. H034's Picard title belongs on the actual cover035.
+- **A verbal drawing description can preserve evidence absent from the displayed formula.** Accurate H descriptions, for example the final frame extension on041 and the curve sketches on043, are not themselves transcription omissions. The consolidated edition still reproduces the actual contours.
+- **One manuscript formula can mix underlined and bare operators.** The neighboring Pic, Hom, Ext and H forms on039–043 cannot be regularized from one clearer occurrence. H's declared cohomology-underlining convention on041 is distinguished from genuine extra source-underlining claims elsewhere.
+- **The annotation and the annotated typescript can use different forms for one sign.** Closed body phi versus open marginal varphi on032/034 should not become an artificial disagreement of mathematical identity or an excuse to erase the graphic distinction.
+- **Global cancellation does not erase local revision states.** The three obliques through042 coexist with local deletions, an inserted underlined cycle and its separate attachment leader. Each layer survives in the transcription and inventory.
+- **Related mathematics does not establish a leaf join.** The phrase and formula joins support the typed sequence034→032→030, while the selected scan order remains unchanged. A shared Picard topic does not join the unfinished calculations on041/043 to042's last sentence.
+
+These observations are specific to the supplied22 scans. They are not estimates of an error rate in the whole archive, and they do not assign a historical writer on the basis of colour or style alone.

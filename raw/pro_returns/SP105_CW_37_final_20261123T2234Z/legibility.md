@@ -1,0 +1,5 @@
+Most live typewritten text is clear. The least secure readings are characters underneath same-cell overtyping or repeated x cancellation, light pencil accents, and words at the physical right edge of the sheet. The remaining-doubts table records these places individually; a grammatically or mathematically plausible completion is not treated as visible ink.
+
+C is substantially more complete about cancelled text, source typing errors and blank mathematical spaces. Its retained doubts were useful prompts, but several could be resolved from particular surviving strokes; other doubts remain. H has actual text for four letters only (93, 94, 97, 98). It often supplies expected mathematical arrows or accents and omits deleted layers. Its descriptions of the other seven scans are editorial and produce no collation entries. Agreement between the witnesses was not used as evidence.
+
+Pale watermark and reverse-side show-through were excluded. The paper watermark **EXTRA STRONG** is named here once as non-textual evidence and is not transcribed. Small pale flecks are not punctuation merely because a sentence might accept a mark there.

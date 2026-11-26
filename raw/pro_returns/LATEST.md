@@ -1,7 +1,8 @@
 # The most recent return of each run
 
 The table marks the most recent checkpoint or final of each run. Returns added from 22 November 2026 hold
-their deliverables only. Older checkpoints stay as they were pushed.
+their mathematics only (papers, results, registers, checks, cited programs), with their papers from 26
+November 2026. Older checkpoints stay as they were pushed.
 
 | Run | Most recent | Delivered (UTC) | Folders here |
 |---|---|---|---:|
@@ -43,11 +44,30 @@ their deliverables only. Older checkpoints stay as they were pushed.
 | SP04_CW_156-4+156-6 | **[checkpoint 05](SP04_CW_156-4+156-6_checkpoint_05_20261117T1757Z/)** | 2026-11-17 17:57 | 4 |
 | SP100_CW_81 | **[final](SP100_CW_81_final_20261122T1944Z/)** | 2026-11-22 19:44 | 1 |
 | SP101_CW_29 | **[final](SP101_CW_29_final_20261122T2006Z/)** | 2026-11-22 20:06 | 1 |
-| SP102_CW_29+32 | **[checkpoint 04](SP102_CW_29+32_checkpoint_04_20261123T1511Z/)** | 2026-11-23 15:11 | 4 |
+| SP102_CW_29+32 | **[final](SP102_CW_29+32_final_20261123T1810Z/)** | 2026-11-23 18:10 | 5 |
+| SP103_CW_36 | **[final](SP103_CW_36_final_20261123T2121Z/)** | 2026-11-23 21:21 | 1 |
+| SP104_CW_37 | **[final](SP104_CW_37_final_20261123T2147Z/)** | 2026-11-23 21:47 | 1 |
+| SP105_CW_37 | **[final](SP105_CW_37_final_20261123T2234Z/)** | 2026-11-23 22:34 | 1 |
+| SP106_CW_103 | **[final](SP106_CW_103_final_20261123T2328Z/)** | 2026-11-23 23:28 | 1 |
+| SP107_CW_104 | **[final](SP107_CW_104_final_20261124T1337Z/)** | 2026-11-24 13:37 | 1 |
+| SP108_CW_109 | **[final](SP108_CW_109_final_20261124T1226Z/)** | 2026-11-24 12:26 | 1 |
+| SP109_CW_134-2 | **[final](SP109_CW_134-2_final_20261124T1320Z/)** | 2026-11-24 13:20 | 1 |
+| SP110_CW_134-2 | **[final](SP110_CW_134-2_final_20261124T1149Z/)** | 2026-11-24 11:49 | 1 |
+| SP111_CW_156-4+156-6 | **[final](SP111_CW_156-4+156-6_final_20261124T1910Z/)** | 2026-11-24 19:10 | 1 |
+| SP112_CW_156-6 | **[checkpoint 09](SP112_CW_156-6_checkpoint_09_20261124T2021Z/)** | 2026-11-24 20:21 | 1 |
+| SP113_CW_63 | **[final](SP113_CW_63_final_20261124T1612Z/)** | 2026-11-24 16:12 | 1 |
 | SP114_CW_156-5 | **[final](SP114_CW_156-5_final_20261120T2027Z/)** | 2026-11-20 20:27 | 1 |
 | SP115_CW_156-7 | **[final](SP115_CW_156-7_final_20261120T2029Z/)** | 2026-11-20 20:29 | 1 |
 | SP116_CW_75 | **[checkpoint 01](SP116_CW_75_checkpoint_01_20261120T1903Z/)** | 2026-11-20 19:03 | 1 |
 | SP117_CW_97+123+162-1 | **[checkpoint 02](SP117_CW_97+123+162-1_checkpoint_02_20261120T1949Z/)** | 2026-11-20 19:49 | 1 |
+| SP118_RD_37 | **[final](SP118_RD_37_final_20261126T0254Z/)** | 2026-11-26 02:54 | 1 |
+| SP119_RD_37 | **[final](SP119_RD_37_final_20261126T0108Z/)** | 2026-11-26 01:08 | 1 |
+| SP120_RD_162-5 | **[final](SP120_RD_162-5_final_20261126T0348Z/)** | 2026-11-26 03:48 | 1 |
+| SP121_RD_162-5 | **[final](SP121_RD_162-5_final_20261126T0545Z/)** | 2026-11-26 05:45 | 1 |
+| SP122_RD_162-5 | **[final](SP122_RD_162-5_final_20261126T0230Z/)** | 2026-11-26 02:30 | 1 |
+| SP123_RD_36 | **[final](SP123_RD_36_final_20261126T0749Z/)** | 2026-11-26 07:49 | 1 |
+| SP124_RD_36 | **[final](SP124_RD_36_final_20261126T0738Z/)** | 2026-11-26 07:38 | 1 |
+| SP125_RD_36 | **[final](SP125_RD_36_final_20261126T0639Z/)** | 2026-11-26 06:39 | 1 |
 | SP12_CW_45+46+53+57+63 | **[checkpoint 11](SP12_CW_45+46+53+57+63_checkpoint_11_20261119T1250Z/)** | 2026-11-19 12:50 | 3 |
 | SP14_CW_13+15+26+35+48+66+97+123+162 | **[checkpoint 13](SP14_CW_13+15+26+35+48+66+97+123+162_checkpoint_13_20261119T1349Z/)** | 2026-11-19 13:49 | 4 |
 | SP31_CW_156-3 | **[final](SP31_CW_156-3_final_20261119T2221Z/)** | 2026-11-19 22:21 | 2 |
@@ -83,8 +103,11 @@ their deliverables only. Older checkpoints stay as they were pushed.
 | SP61_CW_75 | **[final](SP61_CW_75_final_20261120T1502Z/)** | 2026-11-20 15:02 | 1 |
 | SP62_CW_162-1+162-6 | **[final](SP62_CW_162-1+162-6_final_20261120T1444Z/)** | 2026-11-20 14:44 | 1 |
 | SP63_C13_15 | **[final](SP63_C13_15_final_20261120T1549Z/)** | 2026-11-20 15:49 | 2 |
+| SP64_C13_142-147 | **[checkpoint 09](SP64_C13_142-147_checkpoint_09_20261124T1806Z/)** | 2026-11-24 18:06 | 1 |
 | SP64_C13_15+16 | **[final](SP64_C13_15+16_final_20261120T1633Z/)** | 2026-11-20 16:33 | 2 |
+| SP65_C13_147-149 | **[checkpoint 03](SP65_C13_147-149_checkpoint_03_20261124T1421Z/)** | 2026-11-24 14:21 | 1 |
 | SP65_C13_16 | **[final](SP65_C13_16_final_20261120T1555Z/)** | 2026-11-20 15:55 | 1 |
+| SP66_C13_149-152 | **[checkpoint 03](SP66_C13_149-152_checkpoint_03_20261124T1420Z/)** | 2026-11-24 14:20 | 1 |
 | SP66_C13_16+120+136 | **[final](SP66_C13_16+120+136_final_20261120T1639Z/)** | 2026-11-20 16:39 | 1 |
 | SP67_C13_136 | **[final](SP67_C13_136_final_20261120T1636Z/)** | 2026-11-20 16:36 | 1 |
 | SP68_C13_136+141 | **[checkpoint 02](SP68_C13_136+141_checkpoint_02_20261120T1549Z/)** | 2026-11-20 15:49 | 1 |
@@ -119,5 +142,14 @@ their deliverables only. Older checkpoints stay as they were pushed.
 | SP97_WK_1 | **[final](SP97_WK_1_final_20261122T1856Z/)** | 2026-11-22 18:56 | 1 |
 | SP98_WK_1 | **[final](SP98_WK_1_final_20261122T1823Z/)** | 2026-11-22 18:23 | 1 |
 | SP99_CW_81 | **[final](SP99_CW_81_final_20261122T1626Z/)** | 2026-11-22 16:26 | 1 |
+| SR01_63 | **[final](SR01_63_final_20261124T1558Z/)** | 2026-11-24 15:58 | 1 |
+| SR02_63-71 | **[final](SR02_63-71_final_20261124T2155Z/)** | 2026-11-24 21:55 | 1 |
+| SR03_71 | **[checkpoint 02](SR03_71_checkpoint_02_20261124T2037Z/)** | 2026-11-24 20:37 | 1 |
+| SR04_71-162-6 | **[final](SR04_71-162-6_final_20261124T2126Z/)** | 2026-11-24 21:26 | 1 |
+| SR05_10 | **[checkpoint 05](SR05_10_checkpoint_05_20261124T2217Z/)** | 2026-11-24 22:17 | 1 |
+| SR06_10 | **[final](SR06_10_final_19791231T2300Z/)** | 1979-12-31 23:00 | 1 |
+| SR07_10-12 | **[final](SR07_10-12_final_20261125T0213Z/)** | 2026-11-25 02:13 | 1 |
+| SR10_156-4-46 | **[final](SR10_156-4-46_final_20261125T1925Z/)** | 2026-11-25 19:25 | 1 |
+| SR21_120-16 | **[final](SR21_120-16_final_20261126T0132Z/)** | 2026-11-26 01:32 | 1 |
 
 173 other folders here have no checkpoint number and date in their names, so the table doesn't rank them.

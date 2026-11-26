@@ -1,0 +1,42 @@
+# Error-sheet feedback
+
+Counts are distinct logged substantive loci differing from at least one witness, classified once by principal effect; they are not rates for all words on the page. Certainty decisions are excluded.
+
+| Error-sheet category / principal collation kind | Loci |
+| --- | --- |
+| misread symbol or index | 21 |
+| misread word | 26 |
+| omission | 44 |
+| drawing or diagram | 0 |
+| readable ink left as \ill{} | 12 |
+| insertion or placement | 2 |
+| deletion state | 5 |
+| abbreviation expanded or spelling modernised | 6 |
+| text not on the page | 8 |
+| other | 4 |
+
+## Places
+
+- **misread symbol or index:** 059, Action display label; 059, Origin of lower arrow chain; 059, Label above E-to-B arrow; 059, Subscript of D at torn foot; 060, Parenthesized reference, overwritten first digit; 060, Parenthesized reference, overwritten last digit; 060, Bottom-left archival foliation; 061, Full formula, subscript on tensor sign; 061, Full formula, final Q; 061, End of third handwritten content line, after éclaté; 064, Eighth list row, page number; 078, Whole L Omega formula, disputed subscript; 078, Second instruction, mark after commune; 079, Quotation marks around English phrase; 081, Handwritten heading, Roman reference; 083, Fourth list row, punctuation after l; 083, Sixth list row, Roman reference; 100, Appendix left margin; 100, Appendix terminal punctuation; 100, Item b, entire inline formula; 100, Item b, last reference opening.
+- **misread word:** 059, First cancelled word after tau(E); 059, Cancelled word after Je; 059, Opening of lower sentence; 060, First handwritten sentence, verb after VII; 060, Last handwritten line, word following Peut-être; 060, Last handwritten line, preposition before l'Exp; 062, First handwritten line, noun after Tenir compte; 063, Verb after page reference; 063, Beginning of second manuscript line; 063, Accent in a fortiori; 064, Upper-left annotation, second group; 064, Ninth list row, small letters inside parentheses; 079, Overwritten initial in opening cancelled block; 079, Word after et in cancelled block; 079, Initial cross-reference abbreviation; 082, Second item, noun after du th. de; 082, Second item, parenthesis; 082, Third item, clause after ordinaire,; 082, Third item, parenthesis opening; 082, Third item, parenthesis continuation; 083, Seventh list row, annotation before question mark; 095, Handwritten parenthesis; 100, Item a, brace first line; 100, Item a, after affines; 100, Item b, end of first instruction; 100, Item b, instruction after 6.5.11.
+- **omission:** 058, First line, ruled Roman II; 058, Second line, ruled Roman V; 059, Punctuation at end of torn line; 060, Printed letterhead; 061, Printed letterhead; 062, Printed letterhead; 063, Printed letterhead as one omitted block; 064, Printed letterhead, both lines and short rule; 064, Roman reference at p. 43; 064, Roman reference at p 47; 064, Roman reference at p. 51; 064, Roman reference at p. 52; 064, Roman reference at p. 56; 064, Roman reference at p. 59; 064, Roman reference at eighth row; 078, Heading, Roman VI; 079, Printed letterhead, one omitted block; 079, Opening cancelled Roman reference; 079, Middle Roman reference; 079, Lower Roman reference, framing rules; 080, Printed letterhead, two lines and short rule; 080, Heading, Roman reference; 081, Printed letterhead; 082, Printed letterhead; 082, Third item, mark after lower margin reference; 082, First reference framing; 082, Second reference framing; 082, Upper marginal reference framing; 082, Lower marginal reference framing; 083, Opening heading, XVIII; 083, Opening live SGA 5 reference, IV; 083, First list row, XIV; 083, Second list row, SGA 5 IV; 083, Third list row, XVI; 083, Fifth list row, XVI; 083, Eighth list row, XVI; 083, Ninth list row, XII; 095, Printed letterhead; 100, Printed letterhead; 100, Item b, after 21; 100, Item a, rules around IV; 100, Item b, rules around II; 100, Item b, rules around IV before21; 100, Item c, rules around IV.
+- **drawing or diagram:** none established.
+- **readable ink left as \ill{}:** 059, Inserted phrase above cancelled Je phrase; 059, Cancelled lower word; 059, Middle cancelled lower sign; 059, Final cancelled lower sign; 059, Words at torn foot; 063, Crossed number below SGA; 079, First bibliographical title; 082, Third item, abbreviation before ouvert; 083, Opening cancelled reference before the separately legible Exp; 100, Appendix, proper name; 100, Item b, qualifying parenthesis; 100, Item d, wording.
+- **insertion or placement:** 079, Placement of Sylow phrase; 083, H file boundary: appended cover heading.
+- **deletion state:** 063, Reinforced digit after SGA; 063, Opening of parfait; 079, State of de before Griffiths; 080, Crowded middle digit in the penultimate page reference; 100, Appendix, thickly retraced short word.
+- **abbreviation expanded or spelling modernised:** 059, Universal quantifier after Pour; 063, Abbreviation before finie; 079, Abbreviation in Sylow phrase; 079, Second bibliographical abbreviation and stops; 079, Opening of final note; 082, Third item, abbreviation after En d'autres termes,.
+- **text not on the page:** 058, First main line, abbreviation Exp before II; 058, Middle left, pale outlined large letters; 060, End of last handwritten line, punctuation following Exp; 064, Second list row, abbreviation before 47; 079, Punctuation after lower replacement; 083, Second list row, page abbreviation; 083, Third list row, line abbreviation; 083, Fifth list row, page abbreviation.
+- **other:** 080, Upper-right bibliography heading; 082, Second item, personal name; 082, Conjunction between marginal references; 083, Fifth list row, dash before Roman reference.
+
+## Recurring observations for subsequent runs
+
+- **Upper and lower rules around references:** H often retains the numeral but omits at least the upper rule. The rules must be checked per occurrence. Scan64 is a useful counterexample to normalization: the first IX has only its X underlined, and the IX at p.70 is unruled. Scans58,60,63,79–83 and100 supply locally inspected ruled forms. This is principally omission, not an alphabet or numerical error.
+- **Retracing versus a deleted token:** crowded strokes in63,64,80 and95 cannot by themselves establish a separate earlier word or digit. The explicit alternatives in60 and80 and the crossed blocks on79,83 and84 need to remain distinct from these cases. A hidden token should never be created solely to explain thick ink.
+- **Abbreviation stops and endings:** p/p., l/l./l,, pres./prés., dim/dim., and the competing Coh/Cohom demonstrate why punctuation and endings cannot be normalized from another occurrence. The local differences are recorded in63,64,79–83 and100.
+- **Column placement:** the independent upper-right bibliography on80 is not paired with the first rows of its left-hand reference table. The wrapped Sylow phrase on79 is not an insertion merely because it lies near the next bibliographic line.
+- **File boundaries versus manuscript words:** H’s scan83 file includes an editorially identified cover heading that belongs to the supplied scan84. Record that placement discrepancy and keep the inscription on its physical leaf. Do not turn the editorial note into manuscript text.
+- **Foliation versus content references:** lower archive numbers, exposition numerals, numbered bibliography entries and page/line references are different systems. The apparent lower53 on60 is not silently replaced to fit the scan sequence; it receives its own blind reading.
+
+These observations refine categories already present in the supplied error sheet. No additional alphabet-wide substitution or previously unnamed general handwriting rule was established strongly enough to apply without checking each occurrence. The package-level file-boundary discrepancy is the most distinct operational finding; it is supported by the two physical leaves and H’s own attached note, not outside research.
+
+Counts above classify a locus once by its principal effect. A single crop may support several separately situated marks, and a locus can differ from both witnesses. Certainty-only resolutions are separately counted in the changes log and are not added to these substantive error counts. Blind comparison counts concern boxes; overlapping boxes can cover the same physical mark, so their changed-box count is not a count of unique erroneous words.
